@@ -26,6 +26,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.Measurement;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
@@ -53,6 +54,7 @@ import org.miradi.questions.ProtectedAreaCategoryQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.questions.ScopeBoxColorQuestion;
+import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
@@ -69,6 +71,7 @@ import org.miradi.questions.TncOperatingUnitsQuestion;
 import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
 import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
+import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.questions.WwfEcoRegionsQuestion;
 import org.miradi.questions.WwfManagingOfficesQuestion;
@@ -140,6 +143,9 @@ public class XmlSchemaCreator
 		defineVocabulary(writer, VOCABULARY_WWF_ECOREGIONS, new WwfEcoRegionsQuestion());
 		defineVocabulary(writer, VOCABULARY_FOS_TRAINING_TYPE, new FosTrainingTypeQuestion());
 		defineVocabulary(writer, VOCABULARY_PROGRESS_REPORT_STATUS, new ProgressReportLongStatusQuestion());
+		defineVocabulary(writer, VOCABULARY_MEASUREMENT_TREND, new TrendQuestion());
+		defineVocabulary(writer, VOCABULARY_MEASUREMENT_STATUS, new StatusQuestion());
+		defineVocabulary(writer, VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE, new StatusConfidenceQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -460,6 +466,9 @@ public class XmlSchemaCreator
 	public static final String VOCABULARY_WWF_ECOREGIONS = "vocabulary_wwf_ecoregions";
 	public static final String VOCABULARY_FOS_TRAINING_TYPE = "vocabulary_fos_training_type";
 	public static final String VOCABULARY_PROGRESS_REPORT_STATUS = "vocabulary_progress_report_status";
+	public static final String VOCABULARY_MEASUREMENT_TREND = "vocabulary_measurement_trend";
+	public static final String VOCABULARY_MEASUREMENT_STATUS = "vocabulary_measurement_status";
+	public static final String VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE = "vocabulary_measurement_status_confidence";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
@@ -511,4 +520,8 @@ public class XmlSchemaCreator
 	public static final String WWF_REGIONS = WwfProjectData.TAG_REGIONS;
 	public static final String WWF_ECOREGIONS = WwfProjectData.TAG_ECOREGIONS;
 	public static final String PROGRESS_REPORT_STATUS = ProgressReport.TAG_PROGRESS_STATUS;
+	public static final String MEASUREMENT_TREND = Measurement.TAG_TREND;
+	public static final String MEASUREMENT_STATUS = Measurement.TAG_STATUS;	
+	public static final String MEASUREMENT_STATUS_CONFIDENCE = Measurement.TAG_STATUS_CONFIDENCE;
 }
+

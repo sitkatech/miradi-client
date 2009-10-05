@@ -20,10 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.Measurement;
+
 public class MeasurementObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public MeasurementObjectSchemaElement()
 	{
 		super("Measurement");
+		
+		createCodeField(XmlSchemaCreator.MEASUREMENT_TREND, XmlSchemaCreator.VOCABULARY_MEASUREMENT_TREND);
+		createCodeField(XmlSchemaCreator.MEASUREMENT_STATUS, XmlSchemaCreator.VOCABULARY_MEASUREMENT_STATUS);
+		createDateField(Measurement.TAG_DATE);
+		createTextField(Measurement.TAG_SUMMARY);
+		createTextField(Measurement.TAG_DETAIL);
+		createCodeField(XmlSchemaCreator.MEASUREMENT_STATUS_CONFIDENCE, XmlSchemaCreator.VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE);
+		createTextField(Measurement.TAG_COMMENTS);
 	}
 }
