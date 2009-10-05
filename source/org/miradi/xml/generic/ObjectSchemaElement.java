@@ -62,6 +62,12 @@ class ObjectSchemaElement extends SchemaElement
 		FieldSchemaElement field = new DateUnitEffortsFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
 	}
+	
+	protected void createDateUnitExpenseField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new DateUnitExpenseFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
 
 	protected void createThreatTargetThreatRatingField()
 	{

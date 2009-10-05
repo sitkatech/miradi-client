@@ -238,6 +238,7 @@ public class XmlSchemaCreator
 		defineMonthElement(writer);
 		defineWorkUnitsDayElement(writer);
 		defineDateUnitEfforts(writer);
+		defineDateUnitExpense(writer);
 		
 		defineVocabularyDefinedAlias(writer, VOCABULARY_FISCAL_YEAR_START, "FiscalYearStartMonth");
 		defineVocabularyDefinedAlias(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, PROTECTED_AREA_CATEGORIES_ELEMENT_NAME);
@@ -273,10 +274,19 @@ public class XmlSchemaCreator
 		writer.defineAlias("DateUnitEfforts.element", "element miradi:DateUnitEfforts");
 		writer.startBlock();
 		writer.printlnIndented("element miradi:DateUnitEffortsDateUnit{WorkUnitsDay.element | Month.element | Quarter.element | Year.element | WorkUnitsFullProjectTimespan.element } &");
-		writer.printlnIndented("element miradi:DateUnitEffortsNumberOfUnits { xsd:decimal }");
+		writer.printlnIndented("element miradi:NumberOfUnits { xsd:decimal }");
 		writer.endBlock();
 	}
 
+	private void defineDateUnitExpense(SchemaWriter writer)
+	{
+		writer.defineAlias("DateUnitExpense.element", "element miradi:DateUnitExpense");
+		writer.startBlock();
+		writer.printlnIndented("element miradi:DateUnitEffortsDateUnit{WorkUnitsDay.element | Month.element | Quarter.element | Year.element | WorkUnitsFullProjectTimespan.element } &");
+		writer.printlnIndented("element miradi:Expense { xsd:decimal }");
+		writer.endBlock();
+	}
+	
 	private void defineFullProjectTimeSpanElement(SchemaWriter writer)
 	{
 		writer.defineAlias("WorkUnitsFullProjectTimespan.element", "element miradi:WorkUnitsFullProjectTimespan");

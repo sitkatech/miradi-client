@@ -20,16 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.objects.ExpenseAssignment;
+import java.io.IOException;
 
-public class ExpenseAssignmentObjectSchemaElement extends BaseObjectSchemaElement
+public class DateUnitExpenseFieldSchemaElement extends FieldSchemaElement
 {
-	public ExpenseAssignmentObjectSchemaElement()
+	protected DateUnitExpenseFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
 	{
-		super("ExpenseAssignment");
+		super(objectTypeNameToUse, fieldNameToUse);
+	}
+	
+	@Override
+	public void output(SchemaWriter writer) throws IOException
+	{
+		super.output(writer);
 		
-		createFundingSourceIdField(FUNDING_SOURCE_ID);
-		createAccountingCodeIdField(ACCOUNTING_CODE_ID);
-		createDateUnitExpenseField(ExpenseAssignment.TAG_DATEUNIT_EFFORTS);
+		writer.write("{ DateUnitExpense.element }*");
 	}
 }
