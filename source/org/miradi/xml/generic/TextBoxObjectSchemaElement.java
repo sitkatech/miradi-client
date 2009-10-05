@@ -20,10 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.DiagramFactor;
+
 public class TextBoxObjectSchemaElement extends FactorObjectSchemaElement
 {
 	public TextBoxObjectSchemaElement()
 	{
 		super("TextBox");
+		
+		createBooleanField(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);
+		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME);
+		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME);		
+		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME);
+		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME);
 	}
 }
