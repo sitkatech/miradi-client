@@ -22,7 +22,7 @@ package org.miradi.xml.generic;
 
 import org.miradi.objects.ProgressPercent;
 
-public class ProgressPercentObjectSchemaElement extends BaseObjectSchemaElement
+public class ProgressPercentObjectSchemaElement extends ObjectSchemaElement
 {
 	public ProgressPercentObjectSchemaElement()
 	{
