@@ -34,6 +34,7 @@ public class DesireSchemaElement extends BaseObjectSchemaElement
 		createTextField(Desire.TAG_FULL_TEXT);
 		createIdListField("RelevantIndicatorIds", "Indicator");
 		createIdListField("RelevantStrategyIds", "Strategy");
+		createIdListField("RelevantActivityIds", XmlSchemaCreator.ACTIVITY_ID_ELEMENT_NAME);
 		createIdListField("ProgressPercentIds", XmlSchemaCreator.PROGRESS_PERCENT_ID_ELEMENT_NAME);
 		createTextField(Goal.TAG_COMMENTS);
 	}
