@@ -345,46 +345,50 @@ public class XmlSchemaCreator
 	
 	private void defineFullProjectTimeSpanElement(SchemaWriter writer, String fullProjectTimeSpanElementName)
 	{
-		writer.defineAlias(fullProjectTimeSpanElementName + ".element", "element miradi:" + fullProjectTimeSpanElementName);
-		writer.startBlock();
-		writer.printlnIndented("attribute WorkUnitsFullProjectTimespan { vocabulary_work_units_full_project_timespan }");
-		writer.endBlock();
+		String[] subElements = new String[]{"attribute WorkUnitsFullProjectTimespan { vocabulary_work_units_full_project_timespan }"};
+		defineElement(writer, fullProjectTimeSpanElementName, subElements);
 	}
 	
 	private void defineYearElement(SchemaWriter writer, String yearElementName)
 	{
-		writer.defineAlias(yearElementName + ".element", "element miradi:" + yearElementName);
-		writer.startBlock();
-		writer.printlnIndented("attribute StartYear {vocabulary_year} &");
-		writer.printlnIndented("attribute StartMonth {vocabulary_month}");
-		writer.endBlock();
+		String[] subElements = new String[]{"attribute StartYear {vocabulary_year}", "attribute StartMonth {vocabulary_month}"};
+		defineElement(writer, yearElementName, subElements);
 	}
 		
 	private void defineQuarterElement(SchemaWriter writer, String quarterElementName)
 	{
-		writer.defineAlias(quarterElementName + ".element", "element miradi:" + quarterElementName);
-		writer.startBlock();
-		writer.printlnIndented("attribute Year {vocabulary_year} &");
-		writer.printlnIndented("attribute StartMonth {vocabulary_month}");
-		writer.endBlock();
+		String[] subElements = new String[]{"attribute Year {vocabulary_year}", "attribute StartMonth {vocabulary_month}"};
+		defineElement(writer, quarterElementName, subElements);
 	}
 	
 	private void defineMonthElement(SchemaWriter writer, String monthElementName)
 	{
-		writer.defineAlias(monthElementName + ".element", "element miradi:" + monthElementName);
-		writer.startBlock();
-		writer.printlnIndented("attribute Year {vocabulary_year} &");
-		writer.printlnIndented("attribute Month {vocabulary_month}");
-		writer.endBlock();
+		String[] subElements = new String[]{"attribute Year {vocabulary_year}", "attribute Month {vocabulary_month}"};
+		defineElement(writer, monthElementName, subElements);
 	}
 	
 	private void defineDayElement(SchemaWriter writer, String dayElementName)
 	{
-		writer.defineAlias(dayElementName + ".element", "element miradi:" + dayElementName);
+		String[] subElements = new String[]{"attribute Date {vocabulary_date}"};
+		defineElement(writer, dayElementName, subElements);
+	}
+	
+	private void defineElement(SchemaWriter writer, String elementName, String[] subElements)
+	{
+		writer.defineAlias(elementName + ".element", "element miradi:" + elementName);
 		writer.startBlock();
-		writer.printlnIndented("attribute Date {vocabulary_date}");
+		for (int index = 0; index < subElements.length; ++index)
+		{
+			if (index > 0)
+				writer.println(" &");
+			
+			writer.printIndented(subElements[index]);
+		}
+		
+		writer.println();
 		writer.endBlock();
 	}
+	
 	
 	private void defineVocabularyDefinedAlias(SchemaWriter writer, String vocabularyFiscalYearStartElementName, String elementName)
 	{
