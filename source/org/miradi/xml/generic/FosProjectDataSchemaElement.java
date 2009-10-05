@@ -20,10 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.FosProjectData;
+
 public class FosProjectDataSchemaElement extends BaseObjectSchemaElement
 {
 	public FosProjectDataSchemaElement()
 	{
 		super("FosProjectData");
+		
+		createCodeField(FosProjectData.TAG_TRAINING_TYPE, XmlSchemaCreator.VOCABULARY_FOS_TRAINING_TYPE);
+		createTextField(FosProjectData.TAG_TRAINING_DATES);
+		createTextField(FosProjectData.TAG_TRAINERS);
+		createTextField(FosProjectData.TAG_COACHES);
 	}
 }
