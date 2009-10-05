@@ -34,6 +34,7 @@ import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
+import org.miradi.objects.WwfProjectData;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
@@ -66,6 +67,9 @@ import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
 import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.questions.WwfEcoRegionsQuestion;
+import org.miradi.questions.WwfManagingOfficesQuestion;
+import org.miradi.questions.WwfRegionsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.Translation;
 
@@ -128,6 +132,9 @@ public class XmlSchemaCreator
 		defineVocabulary(writer, VOCABULARY_TNC_TERRESTRIAL_ECO_REGION, new TncTerrestrialEcoRegionQuestion());
 		defineVocabulary(writer, VOCABULARY_TNC_MARINE_ECO_REGION, new TncMarineEcoRegionQuestion());
 		defineVocabulary(writer, VOCABULARY_TNC_FRESHWATER_ECO_REGION, new TncFreshwaterEcoRegionQuestion());
+		defineVocabulary(writer, VOCABULARY_WWF_MANAGING_OFFICES, new WwfManagingOfficesQuestion());
+		defineVocabulary(writer, VOCABULARY_WWF_REGIONS, new WwfRegionsQuestion());
+		defineVocabulary(writer, VOCABULARY_WWF_ECOREGIONS, new WwfEcoRegionsQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -240,6 +247,9 @@ public class XmlSchemaCreator
 		defineVocabularyDefinedAlias(writer, VOCABULARY_TNC_TERRESTRIAL_ECO_REGION, TNC_TERRESTRIAL_ECO_REGION);
 		defineVocabularyDefinedAlias(writer, VOCABULARY_TNC_MARINE_ECO_REGION, TNC_MARINE_ECO_REGION);
 		defineVocabularyDefinedAlias(writer, VOCABULARY_TNC_FRESHWATER_ECO_REGION, TNC_FRESHWATER_ECO_REGION);
+		defineVocabularyDefinedAlias(writer, VOCABULARY_WWF_MANAGING_OFFICES, WWF_MANAGING_OFFICES);
+		defineVocabularyDefinedAlias(writer, VOCABULARY_WWF_REGIONS, WWF_REGIONS);
+		defineVocabularyDefinedAlias(writer, VOCABULARY_WWF_ECOREGIONS, WWF_ECOREGIONS);
 		
 		writer.flush();
     }
@@ -309,6 +319,9 @@ public class XmlSchemaCreator
 	public static final String VOCABULARY_TNC_TERRESTRIAL_ECO_REGION = "vocabulary_tnc_terrestrial_eco_region";
 	public static final String VOCABULARY_TNC_MARINE_ECO_REGION = "vocabulary_tnc_marine_eco_region";
 	public static final String VOCABULARY_TNC_FRESHWATER_ECO_REGION = "vocabulary_tnc_freshwater_eco_region";
+	public static final String VOCABULARY_WWF_MANAGING_OFFICES = "vocabulary_wwf_managing_offices";
+	public static final String VOCABULARY_WWF_REGIONS = "vocabulary_wwf_regions";
+	public static final String VOCABULARY_WWF_ECOREGIONS = "vocabulary_wwf_ecoregions";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
@@ -354,4 +367,7 @@ public class XmlSchemaCreator
 	public static final String TNC_TERRESTRIAL_ECO_REGION = ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION;
 	public static final String TNC_MARINE_ECO_REGION = ProjectMetadata.TAG_TNC_MARINE_ECO_REGION;
 	public static final String TNC_FRESHWATER_ECO_REGION = ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION;
+	public static final String WWF_MANAGING_OFFICES = WwfProjectData.TAG_MANAGING_OFFICES;
+	public static final String WWF_REGIONS = WwfProjectData.TAG_REGIONS;
+	public static final String WWF_ECOREGIONS = WwfProjectData.TAG_ECOREGIONS;
 }
