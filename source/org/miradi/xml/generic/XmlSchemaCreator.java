@@ -232,13 +232,19 @@ public class XmlSchemaCreator
 		writer.printlnIndented("element miradi:height { xsd:integer } ");
 		writer.endBlock();
 		
-		defineFullProjectTimeSpanElement(writer);
-		defineYearElement(writer);
-		defineQuarterElement(writer);
-		defineMonthElement(writer);
-		defineWorkUnitsDayElement(writer);
 		defineDateUnitEfforts(writer);
+		defineWorkUnitsFullProjectTimeSpanElement(writer);
+		defineWorkUnitsYearElement(writer);
+		defineWorkUnitsQuarterElement(writer);
+		defineWorkUnitsMonthElement(writer);
+		defineWorkUnitsDayElement(writer);
+		
 		defineDateUnitExpense(writer);
+		defineExpenseFullProjectTimeSpanElement(writer);
+		defineExpenseYearElement(writer);
+		defineExpenseQuarterElement(writer);
+		defineExpenseMonthElement(writer);
+		defineExpenseDayElement(writer);
 		
 		defineVocabularyDefinedAlias(writer, VOCABULARY_FISCAL_YEAR_START, "FiscalYearStartMonth");
 		defineVocabularyDefinedAlias(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, PROTECTED_AREA_CATEGORIES_ELEMENT_NAME);
@@ -273,7 +279,7 @@ public class XmlSchemaCreator
 	{
 		writer.defineAlias("DateUnitEfforts.element", "element miradi:DateUnitEfforts");
 		writer.startBlock();
-		writer.printlnIndented("element miradi:DateUnitEffortsDateUnit{WorkUnitsDay.element | Month.element | Quarter.element | Year.element | WorkUnitsFullProjectTimespan.element } &");
+		writer.printlnIndented("element miradi:DateUnitEffortsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element } &");
 		writer.printlnIndented("element miradi:NumberOfUnits { xsd:decimal }");
 		writer.endBlock();
 	}
@@ -282,51 +288,94 @@ public class XmlSchemaCreator
 	{
 		writer.defineAlias("DateUnitExpense.element", "element miradi:DateUnitExpense");
 		writer.startBlock();
-		writer.printlnIndented("element miradi:DateUnitEffortsDateUnit{WorkUnitsDay.element | Month.element | Quarter.element | Year.element | WorkUnitsFullProjectTimespan.element } &");
+		writer.printlnIndented("element miradi:DateUnitEffortsDateUnit{ExpenseDay.element | ExpenseMonth.element | ExpenseQuarter.element | ExpenseYear.element | ExpenseFullProjectTimespan.element } &");
 		writer.printlnIndented("element miradi:Expense { xsd:decimal }");
 		writer.endBlock();
 	}
 	
-	private void defineFullProjectTimeSpanElement(SchemaWriter writer)
+	private void defineExpenseFullProjectTimeSpanElement(SchemaWriter writer)
+	{
+		writer.defineAlias("ExpenseFullProjectTimespan.element", "element miradi:ExpenseFullProjectTimespan");
+		writer.startBlock();
+		writer.printlnIndented("attribute WorkUnitsFullProjectTimespan { vocabulary_work_units_full_project_timespan }");
+		writer.endBlock();
+	}
+	
+	private void defineExpenseYearElement(SchemaWriter writer)
+	{
+		writer.defineAlias("ExpenseYear.element", "element miradi:ExpenseYear");
+		writer.startBlock();
+		writer.printlnIndented("attribute StartYear {vocabulary_year} &");
+		writer.printlnIndented("attribute StartMonth {vocabulary_month}");
+		writer.endBlock();
+	}
+	
+	private void defineExpenseQuarterElement(SchemaWriter writer)
+	{
+		writer.defineAlias("ExpenseQuarter.element", "element miradi:ExpenseQuarter");
+		writer.startBlock();
+		writer.printlnIndented("attribute Year {vocabulary_year} &");
+		writer.printlnIndented("attribute StartMonth {vocabulary_month}");
+		writer.endBlock();
+	}
+
+	private void defineExpenseMonthElement(SchemaWriter writer)
+	{
+		writer.defineAlias("ExpenseMonth.element", "element miradi:ExpenseMonth");
+		writer.startBlock();
+		writer.printlnIndented("attribute Year {vocabulary_year} &");
+		writer.printlnIndented("attribute Month {vocabulary_month}");
+		writer.endBlock();
+	}
+	
+	private void defineExpenseDayElement(SchemaWriter writer)
+	{
+		writer.defineAlias("ExpenseDay.element", "element miradi:ExpenseDay");
+		writer.startBlock();
+		writer.printlnIndented("attribute Date {vocabulary_date}");
+		writer.endBlock();
+	}
+	
+	private void defineWorkUnitsFullProjectTimeSpanElement(SchemaWriter writer)
 	{
 		writer.defineAlias("WorkUnitsFullProjectTimespan.element", "element miradi:WorkUnitsFullProjectTimespan");
 		writer.startBlock();
 		writer.printlnIndented("attribute WorkUnitsFullProjectTimespan { vocabulary_work_units_full_project_timespan }");
 		writer.endBlock();
 	}
-
-	private void defineWorkUnitsDayElement(SchemaWriter writer)
+	
+	private void defineWorkUnitsYearElement(SchemaWriter writer)
 	{
-		writer.defineAlias("WorkUnitsDay.element", "element miradi:WorkUnitsDay");
-		writer.startBlock();
-		writer.printlnIndented("attribute Date {vocabulary_date}");
-		writer.endBlock();
-	}
-
-	private void defineQuarterElement(SchemaWriter writer)
-	{
-		writer.defineAlias("Quarter.element", "element miradi:Quarter");
-		writer.startBlock();
-		writer.printlnIndented("attribute Year {vocabulary_year} &");
-		writer.printlnIndented("attribute StartMonth {vocabulary_month}");
-		writer.endBlock();
-	}
-
-	private void defineYearElement(SchemaWriter writer)
-	{
-		writer.defineAlias("Year.element", "element miradi:Year");
+		writer.defineAlias("WorkUnitsYear.element", "element miradi:WorkUnitsYear");
 		writer.startBlock();
 		writer.printlnIndented("attribute StartYear {vocabulary_year} &");
 		writer.printlnIndented("attribute StartMonth {vocabulary_month}");
 		writer.endBlock();
 	}
 
-	private void defineMonthElement(SchemaWriter writer)
+	private void defineWorkUnitsQuarterElement(SchemaWriter writer)
 	{
-		writer.defineAlias("Month.element", "element miradi:Month");
+		writer.defineAlias("WorkUnitsQuarter.element", "element miradi:WorkUnitsQuarter");
+		writer.startBlock();
+		writer.printlnIndented("attribute Year {vocabulary_year} &");
+		writer.printlnIndented("attribute StartMonth {vocabulary_month}");
+		writer.endBlock();
+	}
+
+	private void defineWorkUnitsMonthElement(SchemaWriter writer)
+	{
+		writer.defineAlias("WorkUnitsMonth.element", "element miradi:WorkUnitsMonth");
 		writer.startBlock();
 		writer.printlnIndented("attribute Year {vocabulary_year} &");
 		writer.printlnIndented("attribute Month {vocabulary_month}");
+		writer.endBlock();
+	}
+	
+	private void defineWorkUnitsDayElement(SchemaWriter writer)
+	{
+		writer.defineAlias("WorkUnitsDay.element", "element miradi:WorkUnitsDay");
+		writer.startBlock();
+		writer.printlnIndented("attribute Date {vocabulary_date}");
 		writer.endBlock();
 	}
 
