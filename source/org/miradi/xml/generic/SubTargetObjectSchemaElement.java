@@ -20,10 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.SubTarget;
+
 public class SubTargetObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public SubTargetObjectSchemaElement()
 	{
 		super("SubTarget");
+		
+		createTextField(SubTarget.TAG_SHORT_LABEL);
+		createTextField(SubTarget.TAG_DETAIL);
 	}
 }
