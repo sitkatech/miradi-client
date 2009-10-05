@@ -26,6 +26,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ScopeBox;
@@ -47,6 +48,7 @@ import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
+import org.miradi.questions.ProgressReportLongStatusQuestion;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
@@ -137,6 +139,7 @@ public class XmlSchemaCreator
 		defineVocabulary(writer, VOCABULARY_WWF_REGIONS, new WwfRegionsQuestion());
 		defineVocabulary(writer, VOCABULARY_WWF_ECOREGIONS, new WwfEcoRegionsQuestion());
 		defineVocabulary(writer, VOCABULARY_FOS_TRAINING_TYPE, new FosTrainingTypeQuestion());
+		defineVocabulary(writer, VOCABULARY_PROGRESS_REPORT_STATUS, new ProgressReportLongStatusQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -326,6 +329,7 @@ public class XmlSchemaCreator
 	public static final String VOCABULARY_WWF_REGIONS = "vocabulary_wwf_regions";
 	public static final String VOCABULARY_WWF_ECOREGIONS = "vocabulary_wwf_ecoregions";
 	public static final String VOCABULARY_FOS_TRAINING_TYPE = "vocabulary_fos_training_type";
+	public static final String VOCABULARY_PROGRESS_REPORT_STATUS = "vocabulary_progress_report_status";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
@@ -375,4 +379,5 @@ public class XmlSchemaCreator
 	public static final String WWF_MANAGING_OFFICES = WwfProjectData.TAG_MANAGING_OFFICES;
 	public static final String WWF_REGIONS = WwfProjectData.TAG_REGIONS;
 	public static final String WWF_ECOREGIONS = WwfProjectData.TAG_ECOREGIONS;
+	public static final String PROGRESS_REPORT_STATUS = ProgressReport.TAG_PROGRESS_STATUS;
 }

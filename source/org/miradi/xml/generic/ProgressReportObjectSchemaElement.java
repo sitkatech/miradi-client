@@ -20,10 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-public class ProgressReportObjectSchemaElement extends BaseObjectSchemaElement
+import org.miradi.objects.ProgressReport;
+
+public class ProgressReportObjectSchemaElement extends ObjectSchemaElement
 {
 	public ProgressReportObjectSchemaElement()
 	{
 		super("ProgressReport");
+		
+		createDateField(ProgressReport.TAG_PROGRESS_DATE);
+		createTextField(ProgressReport.TAG_DETAILS);
+		createCodeField(XmlSchemaCreator.PROGRESS_REPORT_STATUS, XmlSchemaCreator.VOCABULARY_PROGRESS_REPORT_STATUS);
 	}
 }
