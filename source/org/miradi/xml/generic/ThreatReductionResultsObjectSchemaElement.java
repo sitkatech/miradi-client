@@ -29,6 +29,7 @@ public class ThreatReductionResultsObjectSchemaElement extends FactorObjectSchem
 		super("ThreatReductionResults");
 		
 		createThreatReductionResultsThreatIdField("RelatedDirectThreatId");
-		createIdListField(Factor.TAG_OBJECTIVE_IDS, "Objective");
+		createIdListField(Factor.TAG_OBJECTIVE_IDS, OBJECTIVE_TYPE_NAME);
+		createIdListField(Factor.TAG_INDICATOR_IDS, INDICATOR_TYPE_NAME);
 	}
 }
