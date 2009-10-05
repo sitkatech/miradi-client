@@ -237,6 +237,7 @@ public class XmlSchemaCreator
 		defineQuarterElement(writer);
 		defineMonthElement(writer);
 		defineWorkUnitsDayElement(writer);
+		defineDateUnitEfforts(writer);
 		
 		defineVocabularyDefinedAlias(writer, VOCABULARY_FISCAL_YEAR_START, "FiscalYearStartMonth");
 		defineVocabularyDefinedAlias(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, PROTECTED_AREA_CATEGORIES_ELEMENT_NAME);
@@ -266,6 +267,15 @@ public class XmlSchemaCreator
 		
 		writer.flush();
     }
+
+	private void defineDateUnitEfforts(SchemaWriter writer)
+	{
+		writer.defineAlias("DateUnitEfforts.element", "element miradi:DateUnitEfforts");
+		writer.startBlock();
+		writer.printlnIndented("element miradi:DateUnitEffortsDateUnit{WorkUnitsDay.element | Month.element | Quarter.element | Year.element | WorkUnitsFullProjectTimespan.element } &");
+		writer.printlnIndented("element miradi:DateUnitEffortsNumberOfUnits { xsd:decimal }");
+		writer.endBlock();
+	}
 
 	private void defineFullProjectTimeSpanElement(SchemaWriter writer)
 	{
