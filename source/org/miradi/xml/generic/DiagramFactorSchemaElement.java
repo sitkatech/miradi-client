@@ -28,10 +28,10 @@ public class DiagramFactorSchemaElement extends BaseObjectSchemaElement
 	{
 		super("DiagramFactor");
 		
-		createWrappedByDiagramFactorIdField(DiagramFactor.TAG_WRAPPED_REF);
+		createWrappedByDiagramFactorIdField("WrappedFactorId");
 		createDiagramPointField(DiagramFactor.TAG_LOCATION);
 		createDiagramSizeField(DiagramFactor.TAG_SIZE);
-		createIdListField(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, "DiagramFactor");
+		createIdListField("GroupBoxChildrenIds", "DiagramFactor");
 		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME);
 		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME);		
 		createTextField(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);		

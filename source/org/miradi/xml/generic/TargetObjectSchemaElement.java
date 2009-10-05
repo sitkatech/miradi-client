@@ -32,7 +32,7 @@ abstract public class TargetObjectSchemaElement extends FactorObjectSchemaElemen
 		createCodeListField(XmlSchemaCreator.TARGET_STATUS_ELEMENT_NAME);
 		createCodeListField(XmlSchemaCreator.TARGET_VIABILITY_MODE_ELEMENT_NAME);
 		createTextField(AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION);
-		createIdListField(AbstractTarget.TAG_SUB_TARGET_REFS, XmlSchemaCreator.SUB_TARGET_ID_ELEMENT_NAME);
+		createIdListField("SubTargetIds", XmlSchemaCreator.SUB_TARGET_ID_ELEMENT_NAME);
 		createIdListField(AbstractTarget.TAG_GOAL_IDS, XmlSchemaCreator.GOAL_ELEMENT_NAME);
 		createIdListField(AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, XmlSchemaCreator.KEA_ID_ELEMENT_NAME);
 	}
