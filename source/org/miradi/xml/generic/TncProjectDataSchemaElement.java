@@ -20,10 +20,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.TncProjectData;
+import org.miradi.objects.Xenodata;
+
 public class TncProjectDataSchemaElement extends BaseObjectSchemaElement
 {
 	public TncProjectDataSchemaElement()
 	{
 		super("TncProjectData");
+		
+		createTextField(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
+		createTextField(Xenodata.TAG_PROJECT_ID);
+		createBooleanField(TncProjectData.TAG_PROJECT_SHARING_CODE);
+		createTextField(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
+		createCodeListField(XmlSchemaCreator.TNC_PROJECT_PLACE_TYPES);
+		createCodeListField(XmlSchemaCreator.TNC_ORGANIZATIONAL_PRIORITIES);
+		createTextField(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
+		createTextField(TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
+		createCodeListField(XmlSchemaCreator.TNC_OPERATING_UNITS);
+		createCodeListField(XmlSchemaCreator.TNC_TERRESTRIAL_ECO_REGION);
+		createCodeListField(XmlSchemaCreator.TNC_MARINE_ECO_REGION);
+		createCodeListField(XmlSchemaCreator.TNC_FRESHWATER_ECO_REGION);
+		createTextField(ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 	}
 }
