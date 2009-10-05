@@ -288,34 +288,34 @@ public class XmlSchemaCreator
 	{
 		writer.defineAlias("DateUnitExpense.element", "element miradi:DateUnitExpense");
 		writer.startBlock();
-		writer.printlnIndented("element miradi:DateUnitEffortsDateUnit{ExpenseDay.element | ExpenseMonth.element | ExpenseQuarter.element | ExpenseYear.element | ExpenseFullProjectTimespan.element } &");
+		writer.printlnIndented("element miradi:DateUnitEffortsDateUnit{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element } &");
 		writer.printlnIndented("element miradi:Expense { xsd:decimal }");
 		writer.endBlock();
 	}
 	
 	private void defineExpenseFullProjectTimeSpanElement(SchemaWriter writer)
 	{
-		defineFullProjectTimeSpanElement(writer, "ExpenseFullProjectTimespan");
+		defineFullProjectTimeSpanElement(writer, "ExpensesFullProjectTimespan");
 	}
 	
 	private void defineExpenseYearElement(SchemaWriter writer)
 	{
-		defineYearElement(writer, "ExpenseYear");
+		defineYearElement(writer, "ExpensesYear");
 	}
 
 	private void defineExpenseQuarterElement(SchemaWriter writer)
 	{
-		defineQuarterElement(writer, "ExpenseQuarter");
+		defineQuarterElement(writer, "ExpensesQuarter");
 	}
 	
 	private void defineExpenseMonthElement(SchemaWriter writer)
 	{
-		defineMonthElement(writer, "ExpenseMonth");
+		defineMonthElement(writer, "ExpensesMonth");
 	}
 	
 	private void defineExpenseDayElement(SchemaWriter writer)
 	{
-		defineDayElement(writer, "ExpenseDay");
+		defineDayElement(writer, "ExpensesDay");
 	}
 	
 	private void defineWorkUnitsFullProjectTimeSpanElement(SchemaWriter writer)
