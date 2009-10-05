@@ -173,7 +173,7 @@ public class XmlSchemaCreator
 		
 		writer.defineAlias("ThreatReductionResultThreatId.element", "element ThreatReductionResultThreatId");
 		writer.startBlock();
-		writer.printlnIndented("threatId.element");
+		writer.printlnIndented("ThreatId.element");
 		writer.endBlock();
 		
 		writer.defineAlias("LinkableFactorId.element", "element WrappedByDiagramFactorId");
@@ -252,7 +252,7 @@ public class XmlSchemaCreator
 		writer.println();
 	}
 	
-	private static final String VOCABULARY_FISCAL_YEAR_START = "vocabulary_fiscal_year_start";
+	private static final String VOCABULARY_FISCAL_YEAR_START = "vocabulary_fiscal_year_start_month";
 	private static final String VOCABULARY_PROTECTED_AREA_CATEGORIES = "vocabulary_protected_area_categories";
 	private static final String VOCABULARY_RESOURCE_TYPE = "vocabulary_resource_type";
 	private static final String VOCABULARY_RESOURCE_ROLE_CODES = "vocabulary_resource_role_codes";
