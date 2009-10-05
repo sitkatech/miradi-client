@@ -175,6 +175,7 @@ public class XmlSchemaCreator
 		defineIdElement(writer, EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
 		defineIdElement(writer, RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
 		defineIdElement(writer, RESOURCE_ID_ELEMENT_NAME);
+		defineIdElement(writer, ACTIVITY_ID_ELEMENT_NAME);
 		
 		writer.defineAlias("WrappedByDiagramLinkId.element", "element WrappedByDiagramLinkId");
 		writer.startBlock();
@@ -400,6 +401,7 @@ public class XmlSchemaCreator
 	public static final String RESOURCE_ID_ELEMENT_NAME = "Resource";
 	public static final String INDICATOR_ID_ELEMENT_NAME = "Indicator";
 	public static final String BIODIVERSITY_TARGET_ID_ELEMENT_NAME = "BiodiversityTarget";
+	public static final String ACTIVITY_ID_ELEMENT_NAME = "Acitivity"; 
 	public static final String DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME = DiagramFactor.TAG_FONT_SIZE;
 	public static final String DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME = DiagramFactor.TAG_FONT_STYLE;
 	public static final String DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME = DiagramFactor.TAG_BACKGROUND_COLOR;
