@@ -43,6 +43,7 @@ import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.questions.DiagramLinkColorQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
+import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
@@ -135,6 +136,7 @@ public class XmlSchemaCreator
 		defineVocabulary(writer, VOCABULARY_WWF_MANAGING_OFFICES, new WwfManagingOfficesQuestion());
 		defineVocabulary(writer, VOCABULARY_WWF_REGIONS, new WwfRegionsQuestion());
 		defineVocabulary(writer, VOCABULARY_WWF_ECOREGIONS, new WwfEcoRegionsQuestion());
+		defineVocabulary(writer, VOCABULARY_FOS_TRAINING_TYPE, new FosTrainingTypeQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -322,6 +324,7 @@ public class XmlSchemaCreator
 	public static final String VOCABULARY_WWF_MANAGING_OFFICES = "vocabulary_wwf_managing_offices";
 	public static final String VOCABULARY_WWF_REGIONS = "vocabulary_wwf_regions";
 	public static final String VOCABULARY_WWF_ECOREGIONS = "vocabulary_wwf_ecoregions";
+	public static final String VOCABULARY_FOS_TRAINING_TYPE = "vocabulary_fos_training_type";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
