@@ -28,6 +28,7 @@ public class IntermediateResultObjectSchemaElement extends FactorObjectSchemaEle
 	{
 		super("IntermediateResult");
 		
-		createIdListField(Factor.TAG_OBJECTIVE_IDS, "Objective");
+		createIdListField(Factor.TAG_OBJECTIVE_IDS, OBJECTIVE_TYPE_NAME);
+		createIdListField(Factor.TAG_INDICATOR_IDS, INDICATOR_TYPE_NAME);
 	}
 }

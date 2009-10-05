@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.Factor;
 
 
 abstract public class TargetObjectSchemaElement extends FactorObjectSchemaElement
@@ -35,5 +36,6 @@ abstract public class TargetObjectSchemaElement extends FactorObjectSchemaElemen
 		createIdListField("SubTargetIds", XmlSchemaCreator.SUB_TARGET_ID_ELEMENT_NAME);
 		createIdListField(AbstractTarget.TAG_GOAL_IDS, XmlSchemaCreator.GOAL_ELEMENT_NAME);
 		createIdListField(AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, XmlSchemaCreator.KEA_ID_ELEMENT_NAME);
+		createIdListField(Factor.TAG_INDICATOR_IDS, INDICATOR_TYPE_NAME);
 	}
 }

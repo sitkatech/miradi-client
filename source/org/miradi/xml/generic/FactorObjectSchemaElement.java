@@ -32,6 +32,8 @@ public class FactorObjectSchemaElement extends BaseObjectSchemaElement
 		createTextField(Factor.TAG_SHORT_LABEL);
 		createTextField(Factor.TAG_TEXT);
 		createTextField(Factor.TAG_COMMENTS);
-		createIdListField(Factor.TAG_INDICATOR_IDS, "Indicator");
 	}
+	
+	protected static final String INDICATOR_TYPE_NAME = "Indicator";
+	protected static final String OBJECTIVE_TYPE_NAME = "Objective";
 }
