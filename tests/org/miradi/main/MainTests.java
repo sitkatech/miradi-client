@@ -209,6 +209,7 @@ import org.miradi.views.workplan.TestDeleteActivity;
 import org.miradi.xml.conpro.TestConProCodeMapHelper;
 import org.miradi.xml.conpro.exporter.TestConproXmlExporter;
 import org.miradi.xml.conpro.importer.TestConproXmlImporter;
+import org.miradi.xml.wcs.TestWcsExporter;
 
 public class MainTests extends TestCase
 {
@@ -460,6 +461,7 @@ public class MainTests extends TestCase
 		
 		//xml.export
 		suite.addTest(new TestSuite(TestReportXmlExporter.class));
+		suite.addTest(new TestSuite(TestWcsExporter.class));
 		
 		//xml.conpro
 		suite.addTest(new TestSuite(TestConProCodeMapHelper.class));

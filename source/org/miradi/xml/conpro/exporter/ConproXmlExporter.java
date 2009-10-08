@@ -1138,26 +1138,6 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeOptionalElement(out, elementName, ratingCodeToXmlValue(code));
 	}
 	
-	private void writeEndElement(UnicodeWriter out, String endElementName) throws IOException
-	{
-		out.writeln("</" + endElementName + ">");
-	}
-	
-	private void writeStartElement(UnicodeWriter out, String startElementName) throws IOException
-	{
-		out.writeln("<" + startElementName + ">");
-	}
-
-	private void writeStartElementWithAttribute(UnicodeWriter out, String startElementName, String attributeName, int attributeValue) throws IOException
-	{
-		writeStartElementWithAttribute(out, startElementName, attributeName, Integer.toString(attributeValue));
-	}
-	
-	private void writeStartElementWithAttribute(UnicodeWriter out, String startElementName, String attributeName, String attributeValue) throws IOException
-	{
-		out.write("<" + startElementName + " " + attributeName + "='" + attributeValue + "'>");
-	}
-		
 	private String ratingCodeToXmlValue(int code)
 	{
 		return ratingCodeToXmlValue(Integer.toString(code));

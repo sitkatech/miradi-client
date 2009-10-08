@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.database.ProjectServer;
@@ -87,6 +88,26 @@ public abstract class XmlExporter
 		return project;
 	}
 	
+	protected void writeStartElementWithAttribute(UnicodeWriter out, String startElementName, String attributeName, int attributeValue) throws IOException
+	{
+		writeStartElementWithAttribute(out, startElementName, attributeName, Integer.toString(attributeValue));
+	}
+	
+	protected void writeStartElementWithAttribute(UnicodeWriter out, String startElementName, String attributeName, String attributeValue) throws IOException
+	{
+		out.write("<" + startElementName + " " + attributeName + "='" + attributeValue + "'>");
+	}
+	
+	protected void writeStartElement(UnicodeWriter out, String startElementName) throws IOException
+	{
+		out.writeln("<" + startElementName + ">");
+	}
+	
+	protected void writeEndElement(UnicodeWriter out, String endElementName) throws IOException
+	{
+		out.writeln("</" + endElementName + ">");
+	}
+
 	abstract public void exportProject(UnicodeWriter out) throws Exception;
 	
 	private Project project;
