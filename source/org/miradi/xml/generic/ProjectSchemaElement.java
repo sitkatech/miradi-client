@@ -23,6 +23,8 @@ package org.miradi.xml.generic;
 import java.io.IOException;
 import java.util.Vector;
 
+import org.miradi.xml.wcs.WcsXmlConstants;
+
 
 class ProjectSchemaElement extends SchemaElement
 {
@@ -101,7 +103,7 @@ class ProjectSchemaElement extends SchemaElement
 	
 	String getProjectElementName()
 	{
-		return "ConservationProject";
+		return WcsXmlConstants.CONSERVATION_PROJECT;
 	}
 
 	private Vector<ObjectSchemaElement> objectTypes;

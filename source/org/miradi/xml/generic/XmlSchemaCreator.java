@@ -78,6 +78,7 @@ import org.miradi.questions.WwfManagingOfficesQuestion;
 import org.miradi.questions.WwfRegionsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.Translation;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class XmlSchemaCreator
 {
@@ -95,7 +96,7 @@ public class XmlSchemaCreator
 	public void printXmlRncSchema(SchemaWriter writer) throws Exception
 	{
 		ProjectSchemaElement rootElement = new ProjectSchemaElement();
-		writer.println("namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/1'");
+		writer.println("namespace miradi = '" + WcsXmlConstants.NAME_SPACE + "'");
 		writer.defineAlias("start", rootElement.getProjectElementName() + ".element");
 		rootElement.output(writer);
 		
