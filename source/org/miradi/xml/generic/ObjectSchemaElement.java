@@ -147,12 +147,6 @@ class ObjectSchemaElement extends SchemaElement
 		fields.add(field);
 	}
 
-	protected void createCountriesField(String fieldNameToUse)
-	{
-		FieldSchemaElement field = new CountriesFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
-		fields.add(field);
-	}
-	
 	protected void createCodeListField(String fieldNameToUse)
 	{
 		FieldSchemaElement field = new CodeListFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
