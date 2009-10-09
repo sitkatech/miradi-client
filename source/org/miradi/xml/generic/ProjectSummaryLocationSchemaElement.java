@@ -29,7 +29,7 @@ public class ProjectSummaryLocationSchemaElement extends ObjectSchemaElement
 		super("ProjectSummaryLocation");
 
 		createGeospatialLocationField("ProjectLocation");
-		createCountriesField(ProjectMetadata.TAG_COUNTRIES);
+		createCodeListField(XmlSchemaCreator.COUNTRIES);
 		createTextField(ProjectMetadata.TAG_STATE_AND_PROVINCES);
 		createTextField(ProjectMetadata.TAG_MUNICIPALITIES);
 		createTextField(ProjectMetadata.TAG_LEGISLATIVE_DISTRICTS);
