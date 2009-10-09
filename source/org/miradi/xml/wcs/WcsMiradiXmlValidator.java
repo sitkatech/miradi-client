@@ -17,18 +17,18 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.xml.conpro.exporter;
 
+package org.miradi.xml.wcs;
 
 import org.miradi.xml.MiradiXmlValidator;
 
-
-public class ConProMiradiXmlValidator extends MiradiXmlValidator
+public class WcsMiradiXmlValidator extends MiradiXmlValidator
 {
+	@Override
 	protected String getSchemaFileName()
 	{
-		return MIRADI_CONPRO_SCHEMA_FILE_NAME;
+		return WCS_MIRADI_SCHEMA_FILE_NAME;
 	}
 	
-	private static final String MIRADI_CONPRO_SCHEMA_FILE_NAME = "xml/ConProMiradi.rnc";
+	private static final String WCS_MIRADI_SCHEMA_FILE_NAME = "xml/wcsMiradiSchemaFileName.rnc";
 }
