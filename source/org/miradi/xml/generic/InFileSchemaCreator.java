@@ -29,7 +29,7 @@ public class InFileSchemaCreator
 	{
 		File miradiSchemaFile = new File(args[0]);
 		if (!miradiSchemaFile.exists())
-			throw new Exception(args[0] + " file could not be found");
+			miradiSchemaFile.createNewFile();
 		
 		SchemaWriter writer = new SchemaWriter(new PrintStream(miradiSchemaFile));
 		new XmlSchemaCreator().printXmlRncSchema(writer);
