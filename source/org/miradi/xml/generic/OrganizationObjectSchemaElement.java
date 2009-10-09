@@ -28,7 +28,6 @@ public class OrganizationObjectSchemaElement extends BaseObjectSchemaElement
 	{
 		super("Organization");
 		
-		createTextField(Organization.TAG_LABEL);
 		createTextField(Organization.TAG_SHORT_LABEL);
 		createTextField(Organization.TAG_ROLES_DESCRIPTION);
 		createTextField(Organization.TAG_CONTACT_FIRST_NAME);

@@ -38,6 +38,7 @@ import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.CountriesQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
@@ -104,7 +105,6 @@ public class XmlSchemaCreator
 		writer.println("vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } ");
 		writer.println("vocabulary_month = xsd:NMTOKEN { pattern = '[0-9]{2}' } ");
 		writer.println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
-		writer.printlnIndented("vocabulary_iso_country_code = xsd:NMTOKEN { pattern = '[A-Z]{3}' }");
 		defineVocabulary(writer, VOCABULARY_FISCAL_YEAR_START, new FiscalYearStartQuestion());
 		defineVocabulary(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, new ProtectedAreaCategoryQuestion());
 		defineVocabulary(writer, VOCABULARY_RESOURCE_TYPE, new ResourceTypeQuestion());
@@ -147,6 +147,7 @@ public class XmlSchemaCreator
 		defineVocabulary(writer, VOCABULARY_MEASUREMENT_TREND, new TrendQuestion());
 		defineVocabulary(writer, VOCABULARY_MEASUREMENT_STATUS, new StatusQuestion());
 		defineVocabulary(writer, VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE, new StatusConfidenceQuestion());
+		defineVocabulary(writer, VOCABULARY_COUNTRIES, new CountriesQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -278,6 +279,7 @@ public class XmlSchemaCreator
 		defineVocabularyDefinedAlias(writer, VOCABULARY_WWF_MANAGING_OFFICES, WWF_MANAGING_OFFICES);
 		defineVocabularyDefinedAlias(writer, VOCABULARY_WWF_REGIONS, WWF_REGIONS);
 		defineVocabularyDefinedAlias(writer, VOCABULARY_WWF_ECOREGIONS, WWF_ECOREGIONS);
+		defineVocabularyDefinedAlias(writer, VOCABULARY_COUNTRIES, COUNTRIES);
 		
 		writer.flush();
     }
@@ -470,6 +472,7 @@ public class XmlSchemaCreator
 	public static final String VOCABULARY_MEASUREMENT_TREND = "vocabulary_measurement_trend";
 	public static final String VOCABULARY_MEASUREMENT_STATUS = "vocabulary_measurement_status";
 	public static final String VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE = "vocabulary_measurement_status_confidence";
+	public static final String VOCABULARY_COUNTRIES = "vocabulary_countries";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
@@ -524,5 +527,6 @@ public class XmlSchemaCreator
 	public static final String MEASUREMENT_TREND = Measurement.TAG_TREND;
 	public static final String MEASUREMENT_STATUS = Measurement.TAG_STATUS;	
 	public static final String MEASUREMENT_STATUS_CONFIDENCE = Measurement.TAG_STATUS_CONFIDENCE;
+	public static final String COUNTRIES = ProjectMetadata.TAG_COUNTRIES; 
 }
 
