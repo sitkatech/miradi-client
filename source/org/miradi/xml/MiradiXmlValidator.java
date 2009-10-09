@@ -40,9 +40,9 @@ abstract public class MiradiXmlValidator
 	public boolean isValid(InputStream xmlInputStream) throws Exception
 	{
 		PropertyMapBuilder properties = getValidatorProperties();
-		URL resourceURL = ResourcesHandler.getEnglishResourceURL(getSchemaFileName());
+		URL resourceURL = ResourcesHandler.getEnglishResourceURL(getSchemaFileRelativePathName());
 		if(resourceURL == null)
-			throw new Exception("Schema not found: " + getSchemaFileName());
+			throw new Exception("Schema not found: " + getSchemaFileRelativePathName());
 		
 		InputSource schemaInputSource = new InputSource(resourceURL.openStream());
 		SchemaReader schemaReader = CompactSchemaReader.getInstance();
@@ -76,5 +76,5 @@ abstract public class MiradiXmlValidator
 		return properties;
 	}
 	
-	abstract protected String getSchemaFileName();
+	abstract protected String getSchemaFileRelativePathName();
 }

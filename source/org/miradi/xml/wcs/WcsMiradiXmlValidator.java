@@ -25,10 +25,10 @@ import org.miradi.xml.MiradiXmlValidator;
 public class WcsMiradiXmlValidator extends MiradiXmlValidator
 {
 	@Override
-	protected String getSchemaFileName()
+	protected String getSchemaFileRelativePathName()
 	{
-		return WCS_MIRADI_SCHEMA_FILE_NAME;
+		return WCS_MIRADI_SCHEMA_FILE_RELATIVE_PATH;
 	}
 	
-	private static final String WCS_MIRADI_SCHEMA_FILE_NAME = "xml/wcsMiradiSchemaFileName.rnc";
+	private static final String WCS_MIRADI_SCHEMA_FILE_RELATIVE_PATH = "xml/WcsMiradiSchema.rnc";
 }
