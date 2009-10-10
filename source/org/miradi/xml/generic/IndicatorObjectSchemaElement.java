@@ -21,12 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.Indicator;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class IndicatorObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public IndicatorObjectSchemaElement()
 	{
-		super("Indicator");
+		super(WcsXmlConstants.INDICATOR);
 		
 		createTextField(Indicator.TAG_SHORT_LABEL);
 		createTextField(Indicator.TAG_DETAIL);

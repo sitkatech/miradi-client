@@ -20,12 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.xml.wcs.WcsXmlConstants;
+
 
 public class GroupBoxObjectSchemaElement extends FactorObjectSchemaElement
 {
 	public GroupBoxObjectSchemaElement()
 	{
-		super("GroupBox");
+		super(WcsXmlConstants.GROUP_BOX);
 		
 		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME);
 		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME);		

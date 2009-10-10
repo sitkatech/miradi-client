@@ -21,12 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.WcsProjectData;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class WcsDataSchemaElement extends ObjectSchemaElement
 {
 	public WcsDataSchemaElement()
 	{
-		super("WCSData");
+		super(WcsXmlConstants.WCS_PROJECT_DATA);
 		
 		createTextField(WcsProjectData.TAG_ORGANIZATIONAL_FOCUS);
 		createTextField(WcsProjectData.TAG_ORGANIZATIONAL_LEVEL);

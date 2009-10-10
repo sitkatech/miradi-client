@@ -21,12 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.FundingSource;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class FundingSourceObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public FundingSourceObjectSchemaElement()
 	{
-		super("FundingSource");
+		super(WcsXmlConstants.FUNDING_SOURCE);
 		
 		createTextField(FundingSource.TAG_CODE);
 		createTextField(FundingSource.TAG_COMMENTS);

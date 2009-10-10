@@ -21,12 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.DiagramFactor;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class TextBoxObjectSchemaElement extends FactorObjectSchemaElement
 {
 	public TextBoxObjectSchemaElement()
 	{
-		super("TextBox");
+		super(WcsXmlConstants.TEXT_BOX);
 		
 		createBooleanField(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);
 		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME);

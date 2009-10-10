@@ -21,12 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.ExpenseAssignment;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class ExpenseAssignmentObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public ExpenseAssignmentObjectSchemaElement()
 	{
-		super("ExpenseAssignment");
+		super(WcsXmlConstants.EXPENSE_ASSIGNMENT);
 		
 		createFundingSourceIdField(FUNDING_SOURCE_ID);
 		createAccountingCodeIdField(ACCOUNTING_CODE_ID);

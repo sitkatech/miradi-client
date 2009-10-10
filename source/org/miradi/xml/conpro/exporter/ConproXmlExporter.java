@@ -28,7 +28,6 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.martus.util.UnicodeWriter;
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.diagram.ThreatTargetChainObject;
 import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.ids.BaseId;
@@ -1062,31 +1061,6 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		}
 	}
 	
-	private void writeElement(UnicodeWriter out, String elementName, String data) throws Exception
-	{
-		out.write("<" + elementName + ">");
-		writeXmlEncodedData(out, data);
-		out.writeln("</" + elementName + ">");
-	}
-
-	private void writeOptionalElement(UnicodeWriter out, String elementName, String data) throws Exception
-	{
-		if (data == null || data.length() == 0)
-			return;
-		
-		writeElement(out, elementName, data);
-	}
-	
-	private void writeXmlEncodedData(UnicodeWriter out, String data) throws IOException
-	{
-		out.write(XmlUtilities.getXmlEncoded(data));
-	}
-	
-	private void writeOptionalElement(UnicodeWriter out, String elementName, BaseObject object, String fieldTag) throws Exception
-	{
-		writeOptionalElement(out, elementName, object.getData(fieldTag));
-	}
-	
 	private void writeLabelElement(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
 	{
 		String label = object.getData(tag);
@@ -1094,11 +1068,6 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			label = UNSPECIFIED_LABEL;
 		
 		writeElement(out, elementName, label);
-	}
-
-	private void writeElement(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
-	{
-		writeElement(out, elementName, object.getData(tag));
 	}
 
 	private ProjectMetadata getProjectMetadata()

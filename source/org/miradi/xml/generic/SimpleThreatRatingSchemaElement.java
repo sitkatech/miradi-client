@@ -20,12 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.xml.wcs.WcsXmlConstants;
+
 
 public class SimpleThreatRatingSchemaElement extends ObjectSchemaElement
 {
 	public SimpleThreatRatingSchemaElement()
 	{
-		super("SimpleThreatRating");
+		super(WcsXmlConstants.SIMPLE_BASED_THREAT_RATING);
 		
 		createCodeField("Scope", XmlSchemaCreator.VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE);
 		createCodeField("Severity", XmlSchemaCreator.VOCABULARY_SIMPLE_THREAT_RATING_SEVERITY_CODE);

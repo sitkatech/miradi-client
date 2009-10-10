@@ -22,12 +22,13 @@ package org.miradi.xml.generic;
 
 import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class StrategyObjectSchemaElement extends FactorObjectSchemaElement
 {
 	public StrategyObjectSchemaElement()
 	{
-		super("Strategy");
+		super(WcsXmlConstants.STRATEGY);
 		
 		createIdListField(Factor.TAG_OBJECTIVE_IDS, XmlSchemaCreator.OBJECTIVE_ID_ELEMENT_NAME);
 		createIdListField(Strategy.TAG_ACTIVITY_IDS, XmlSchemaCreator.ACITIVTY_ID_ELEMENT_NAME);

@@ -20,10 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.xml.wcs.WcsXmlConstants;
+
 public class ResultsChainSchemaElement extends DiagramSchemaElement
 {
 	public ResultsChainSchemaElement()
 	{
-		super("ResultsChain");
+		super(WcsXmlConstants.RESULTS_CHAIN);
 	}
 }

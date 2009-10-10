@@ -23,12 +23,13 @@ package org.miradi.xml.generic;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class TncProjectDataSchemaElement extends BaseObjectSchemaElement
 {
 	public TncProjectDataSchemaElement()
 	{
-		super("TncProjectData");
+		super(WcsXmlConstants.TNC_PROJECT_DATA);
 		
 		createTextField(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		createTextField(Xenodata.TAG_PROJECT_ID);

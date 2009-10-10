@@ -21,12 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.ProjectResource;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class ProjectResourceObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public ProjectResourceObjectSchemaElement()
 	{
-		super("ProjectResource");
+		super(WcsXmlConstants.PROJECT_RESOURCE);
 		
 		createCodeListField(XmlSchemaCreator.RESOURCE_TYPE_ELEMENT_NAME);
 		createTextField(ProjectResource.TAG_GIVEN_NAME);

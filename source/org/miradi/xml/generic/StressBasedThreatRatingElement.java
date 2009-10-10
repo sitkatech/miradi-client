@@ -21,12 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.ThreatStressRating;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class StressBasedThreatRatingElement extends ObjectSchemaElement
 {
 	public StressBasedThreatRatingElement()
 	{
-		super("StressBasedThreatRating");
+		super(WcsXmlConstants.STRESS_BASED_THREAT_RATING);
 		
 		createIdField("StressId", XmlSchemaCreator.STRESS_ID_ELEMENT_NAME);
 		createCodeField(ThreatStressRating.TAG_CONTRIBUTION, XmlSchemaCreator.VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE);

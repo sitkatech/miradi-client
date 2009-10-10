@@ -20,11 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.xml.wcs.WcsXmlConstants;
+
 public class ThreatTargetThreatRatingElement extends ObjectSchemaElement
 {
 	public ThreatTargetThreatRatingElement()
 	{
-		super("ThreatRating");
+		super(WcsXmlConstants.THREAT_RATING);
 		
 		createIdField("TargetId", XmlSchemaCreator.BIODIVERSITY_TARGET_ID_ELEMENT_NAME);
 		createIdField("ThreatId", XmlSchemaCreator.THREAT_ID_ELEMENT_NAME);

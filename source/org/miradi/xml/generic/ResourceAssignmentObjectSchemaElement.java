@@ -21,12 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.ResourceAssignment;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class ResourceAssignmentObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public ResourceAssignmentObjectSchemaElement()
 	{
-		super("ResourceAssignment");
+		super(WcsXmlConstants.RESOURCE_ASSIGNMENT);
 		
 		createIdField(ResourceAssignment.TAG_RESOURCE_ID, XmlSchemaCreator.RESOURCE_ID_ELEMENT_NAME);
 		createFundingSourceIdField(FUNDING_SOURCE_ID);

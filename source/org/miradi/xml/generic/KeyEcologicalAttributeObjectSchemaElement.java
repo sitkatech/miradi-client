@@ -22,12 +22,13 @@ package org.miradi.xml.generic;
 
 import org.miradi.objects.Factor;
 import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class KeyEcologicalAttributeObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public KeyEcologicalAttributeObjectSchemaElement()
 	{
-		super("KeyEcologicalAttribute");
+		super(WcsXmlConstants.KEY_ECOLOGICAL_ATTRIBUTE);
 		
 		createTextField(KeyEcologicalAttribute.TAG_SHORT_LABEL);
 		createIdListField(Factor.TAG_INDICATOR_IDS, "Indicator");
