@@ -21,12 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 class ProjectSummarySchemaElement extends ObjectSchemaElement
 {
 	public ProjectSummarySchemaElement()
 	{
-		super("ProjectSummary");
+		super(WcsXmlConstants.PROJECT_SUMMARY);
 	
 		createTextField(ProjectMetadata.TAG_PROJECT_NAME);
 		createDateField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);

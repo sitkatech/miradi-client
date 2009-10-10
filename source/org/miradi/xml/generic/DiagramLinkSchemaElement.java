@@ -21,12 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.DiagramLink;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class DiagramLinkSchemaElement extends BaseObjectSchemaElement
 {
 	public DiagramLinkSchemaElement()
 	{
-		super("DiagramLink");
+		super(WcsXmlConstants.DIAGRAM_LINK);
 
 		createWrappedByDiagramLinkIdField(DiagramLink.TAG_WRAPPED_ID);
 		createLinkableFactorIdField(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);

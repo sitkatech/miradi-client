@@ -21,12 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.FosProjectData;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class FosProjectDataSchemaElement extends BaseObjectSchemaElement
 {
 	public FosProjectDataSchemaElement()
 	{
-		super("FosProjectData");
+		super(WcsXmlConstants.FOS_PROJECT_DATA);
 		
 		createCodeField(FosProjectData.TAG_TRAINING_TYPE, XmlSchemaCreator.VOCABULARY_FOS_TRAINING_TYPE);
 		createTextField(FosProjectData.TAG_TRAINING_DATES);

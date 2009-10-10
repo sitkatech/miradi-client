@@ -21,12 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.AccountingCode;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class AccountingCodeObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public AccountingCodeObjectSchemaElement()
 	{
-		super("AccountingCode");
+		super(WcsXmlConstants.ACCOUNTING_CODE);
 		
 		createTextField(AccountingCode.TAG_CODE);
 		createTextField(AccountingCode.TAG_COMMENTS);

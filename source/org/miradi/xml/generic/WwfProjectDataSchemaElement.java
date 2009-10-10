@@ -20,12 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.xml.wcs.WcsXmlConstants;
+
 
 public class WwfProjectDataSchemaElement extends BaseObjectSchemaElement
 {
 	public WwfProjectDataSchemaElement()
 	{
-		super("WwfProjectData");
+		super(WcsXmlConstants.WWF_PROJECT_DATA);
 		
 		createCodeListField(XmlSchemaCreator.WWF_MANAGING_OFFICES);
 		createCodeListField(XmlSchemaCreator.WWF_REGIONS);

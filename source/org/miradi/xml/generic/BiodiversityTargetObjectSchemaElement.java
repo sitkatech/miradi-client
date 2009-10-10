@@ -21,12 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.Target;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class BiodiversityTargetObjectSchemaElement extends TargetObjectSchemaElement
 {
 	public BiodiversityTargetObjectSchemaElement()
 	{
-		super("BiodiversityTarget");
+		super(WcsXmlConstants.BIODIVERSITY_TARGET);
 
 		createIdListField("StressIds", "Stress");
 		createCodeListField(XmlSchemaCreator.BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME);

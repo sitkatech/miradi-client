@@ -20,10 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.xml.wcs.WcsXmlConstants;
+
 public class ConceptualModelSchemaElement extends DiagramSchemaElement
 {
 	public ConceptualModelSchemaElement()
 	{
-		super("ConceptualModel");
+		super(WcsXmlConstants.CONCEPTUAL_MODEL);
 	}
 }

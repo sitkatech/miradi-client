@@ -21,12 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.Task;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class TaskObjectSchemaElement extends FactorObjectSchemaElement
 {
 	public TaskObjectSchemaElement()
 	{
-		super("Task");
+		super(WcsXmlConstants.TASK);
 		
 		createIdListField(EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createIdListField(Task.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);

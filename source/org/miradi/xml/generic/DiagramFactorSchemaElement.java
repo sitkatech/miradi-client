@@ -21,12 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.DiagramFactor;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class DiagramFactorSchemaElement extends BaseObjectSchemaElement
 {
 	public DiagramFactorSchemaElement()
 	{
-		super("DiagramFactor");
+		super(WcsXmlConstants.DIAGRAM_FACTOR);
 		
 		createWrappedByDiagramFactorIdField("WrappedFactorId");
 		createDiagramPointField(DiagramFactor.TAG_LOCATION);

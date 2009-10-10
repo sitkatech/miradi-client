@@ -23,8 +23,10 @@ import java.io.File;
 import java.io.IOException;
 
 import org.martus.util.UnicodeWriter;
+import org.martus.util.xml.XmlUtilities;
 import org.miradi.database.ProjectServer;
 import org.miradi.main.EAM;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.Translation;
 
@@ -106,6 +108,36 @@ public abstract class XmlExporter
 	protected void writeEndElement(UnicodeWriter out, String endElementName) throws IOException
 	{
 		out.writeln("</" + endElementName + ">");
+	}
+	
+	protected void writeElement(UnicodeWriter out, String elementName, String data) throws Exception
+	{
+		out.write("<" + elementName + ">");
+		writeXmlEncodedData(out, data);
+		out.writeln("</" + elementName + ">");
+	}
+
+	protected void writeOptionalElement(UnicodeWriter out, String elementName, String data) throws Exception
+	{
+		if (data == null || data.length() == 0)
+			return;
+		
+		writeElement(out, elementName, data);
+	}
+	
+	protected void writeXmlEncodedData(UnicodeWriter out, String data) throws IOException
+	{
+		out.write(XmlUtilities.getXmlEncoded(data));
+	}
+	
+	protected void writeOptionalElement(UnicodeWriter out, String elementName, BaseObject object, String fieldTag) throws Exception
+	{
+		writeOptionalElement(out, elementName, object.getData(fieldTag));
+	}
+	
+	protected void writeElement(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
+	{
+		writeElement(out, elementName, object.getData(tag));
 	}
 
 	abstract public void exportProject(UnicodeWriter out) throws Exception;
