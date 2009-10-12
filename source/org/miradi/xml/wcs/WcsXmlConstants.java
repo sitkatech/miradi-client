@@ -24,11 +24,12 @@ public interface WcsXmlConstants
 {
 	public static final String PREFIX = "miradi:";
 	
-	public static final String NAME_SPACE_VERSION = "2";
+	public static final String NAME_SPACE_VERSION = "3";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
 	
+	public static final String ID = "Id";
 	public static final String CONSERVATION_PROJECT = "ConservationProject";
 	public static final String PROJECT_SUMMARY = "ProjectSummary";
 	public static final String PROJECT_RESOURCE = "ProjectResource";
