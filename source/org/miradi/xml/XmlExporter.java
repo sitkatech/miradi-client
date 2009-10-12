@@ -26,7 +26,9 @@ import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.database.ProjectServer;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.WcpaProjectData;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.Translation;
@@ -154,6 +156,12 @@ public abstract class XmlExporter
 		{
 			writeElement(out, elementName, codeList.get(codeIndex));
 		}
+	}
+	
+	protected WcpaProjectData getWcpaProjectData()
+	{
+		ORef wcpaProjectDataRef = getProject().getSingletonObjectRef(WcpaProjectData.getObjectType());
+		return (WcpaProjectData) WcpaProjectData.find(getProject(), wcpaProjectDataRef);
 	}
 
 	abstract public void exportProject(UnicodeWriter out) throws Exception;
