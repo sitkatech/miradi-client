@@ -32,9 +32,11 @@ public class ResourceTypeQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] getStaticChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", EAM.text("Person")),
-			new ChoiceItem("Group", EAM.text("Group")),
+			new ChoiceItem(PERSON_CODE, EAM.text("Person")),
+			new ChoiceItem(GROUP_CODE, EAM.text(GROUP_CODE)),
 		};
 	}
-
+	
+	public static final String GROUP_CODE = "Group";
+	public static final String PERSON_CODE = "";
 }

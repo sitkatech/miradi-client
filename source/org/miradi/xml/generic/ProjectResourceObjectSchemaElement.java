@@ -29,7 +29,7 @@ public class ProjectResourceObjectSchemaElement extends BaseObjectSchemaElement
 	{
 		super(WcsXmlConstants.PROJECT_RESOURCE);
 		
-		createCodeListField(XmlSchemaCreator.RESOURCE_TYPE_ELEMENT_NAME);
+		createCodeField(XmlSchemaCreator.RESOURCE_TYPE_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_RESOURCE_TYPE);
 		createTextField(ProjectResource.TAG_GIVEN_NAME);
 		createTextField(ProjectResource.TAG_SUR_NAME);
 		createTextField(ProjectResource.TAG_INITIALS);

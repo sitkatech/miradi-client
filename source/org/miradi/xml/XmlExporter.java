@@ -28,6 +28,7 @@ import org.miradi.database.ProjectServer;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.Translation;
 
 public abstract class XmlExporter
@@ -138,6 +139,21 @@ public abstract class XmlExporter
 	protected void writeElement(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
 	{
 		writeElement(out, elementName, object.getData(tag));
+	}
+	
+	protected void writeCodeListElements(UnicodeWriter out, String parentElementName, String elementName, CodeList codeList) throws Exception
+	{
+		out.writeln("<" + parentElementName + ">");
+		writeCodeListElements(out, elementName, codeList);
+		out.writeln("</" + parentElementName + ">");
+	}
+	
+	private void writeCodeListElements(UnicodeWriter out, String elementName, CodeList codeList) throws Exception
+	{
+		for (int codeIndex = 0; codeIndex < codeList.size(); ++codeIndex)
+		{
+			writeElement(out, elementName, codeList.get(codeIndex));
+		}
 	}
 
 	abstract public void exportProject(UnicodeWriter out) throws Exception;

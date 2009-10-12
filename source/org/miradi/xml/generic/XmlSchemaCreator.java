@@ -257,7 +257,6 @@ public class XmlSchemaCreator
 		
 		defineVocabularyDefinedAlias(writer, VOCABULARY_FISCAL_YEAR_START, "FiscalYearStartMonth");
 		defineVocabularyDefinedAlias(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, PROTECTED_AREA_CATEGORIES_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_RESOURCE_TYPE, RESOURCE_TYPE_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, VOCABULARY_RESOURCE_ROLE_CODES, RESOURCE_ROLE_CODES_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, VOCABULARY_HIDDEN_TYPES, HIDDEN_TYPES_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE, DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME);
@@ -404,7 +403,7 @@ public class XmlSchemaCreator
 	{
 		writer.defineAlias(elementName + ".element", "element miradi:" + elementName + "");
 		writer.startBlock();
-		writer.printlnIndented("element miradi:code { " + vocabularyFiscalYearStartElementName + " }* ");
+		writer.printlnIndented("element miradi:" + CODE_ELEMENT_NAME + " { " + vocabularyFiscalYearStartElementName + " }* ");
 		writer.endBlock();
 	}
 	
@@ -429,7 +428,7 @@ public class XmlSchemaCreator
 	
 	private static final String VOCABULARY_FISCAL_YEAR_START = "vocabulary_fiscal_year_start_month";
 	private static final String VOCABULARY_PROTECTED_AREA_CATEGORIES = "vocabulary_protected_area_categories";
-	private static final String VOCABULARY_RESOURCE_TYPE = "vocabulary_resource_type";
+	public static final String VOCABULARY_RESOURCE_TYPE = "vocabulary_resource_type";
 	private static final String VOCABULARY_RESOURCE_ROLE_CODES = "vocabulary_resource_role_codes";
 	private static final String VOCABULARY_HIDDEN_TYPES = "vocabulary_hidden_types";
 	private static final String VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE = "vocabulary_diagram_factor_font_size";
@@ -530,5 +529,6 @@ public class XmlSchemaCreator
 	public static final String MEASUREMENT_STATUS_CONFIDENCE = Measurement.TAG_STATUS_CONFIDENCE;
 	public static final String COUNTRIES = ProjectMetadata.TAG_COUNTRIES;
 	public static final String LABEL_ELEMENT_NAME = BaseObject.TAG_LABEL;
+	public static final String CODE_ELEMENT_NAME = "code";
 }
 

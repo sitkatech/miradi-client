@@ -167,6 +167,11 @@ public class ProjectResource extends BaseObject
 		return getRoleCodes().contains(ResourceRoleQuestion.TEAM_LEADER_CODE);
 	}
 	
+	public String getProjectTypeCode()
+	{
+		return resourceType.get();
+	}
+	
 	public double getCostPerUnit()
 	{
 		if (costPerUnit.toString().length() == 0)
