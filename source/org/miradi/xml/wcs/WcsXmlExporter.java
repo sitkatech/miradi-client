@@ -25,6 +25,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.generic.XmlSchemaCreator;
 
@@ -341,71 +342,94 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 
 	private void writeProjectResourceObjectSchemaElement() throws Exception
 	{
-		writeWcsStartContainerElement(PROJECT_RESOURCE);
+		writeStartContainerElement(PROJECT_RESOURCE);
 		ProjectResource[] resources = getProject().getResourcePool().getAllProjectResources();
 		for (int index = 0; index < resources.length; ++index)
 		{
-			writeStartElementWithAttribute(getWriter(), PROJECT_RESOURCE, ID, resources[index].getId().toString());
-			writeWcsElement(PROJECT_RESOURCE, XmlSchemaCreator.LABEL_ELEMENT_NAME, resources[index], XmlSchemaCreator.LABEL_ELEMENT_NAME);
-			//FIXME urgent - wcs xml output uncomment and make work
-			//		createTextField(BaseObject.TAG_LABEL);		
-			//		createCodeListField(XmlSchemaCreator.RESOURCE_TYPE_ELEMENT_NAME);
-			//		createTextField(ProjectResource.TAG_GIVEN_NAME);
-			//		createTextField(ProjectResource.TAG_SUR_NAME);
-			//		createTextField(ProjectResource.TAG_INITIALS);
-			//		createCodeListField(XmlSchemaCreator.RESOURCE_ROLE_CODES_ELEMENT_NAME);
-			//		createTextField(ProjectResource.TAG_ORGANIZATION);
-			//		createTextField(ProjectResource.TAG_POSITION);
-			//		createTextField(ProjectResource.TAG_LOCATION);
-			//		createTextField(ProjectResource.TAG_PHONE_NUMBER);
-			//		createTextField(ProjectResource.TAG_PHONE_NUMBER_MOBILE);
-			//		createTextField(ProjectResource.TAG_PHONE_NUMBER_HOME);
-			//		createTextField(ProjectResource.TAG_PHONE_NUMBER_OTHER);
-			//		createTextField(ProjectResource.TAG_EMAIL);
-			//		createTextField(ProjectResource.TAG_ALTERNATIVE_EMAIL);
-			//		createTextField(ProjectResource.TAG_IM_ADDRESS);
-			//		createTextField(ProjectResource.TAG_IM_SERVICE);
-			//		createDateField(ProjectResource.TAG_DATE_UPDATED);
-			//		createNumericField(ProjectResource.TAG_COST_PER_UNIT);
-			//		createTextField(ProjectResource.TAG_COMMENTS);
-			//		createTextField(ProjectResource.TAG_CUSTOM_FIELD_1);
-			//		createTextField(ProjectResource.TAG_CUSTOM_FIELD_2);
-
+			ProjectResource resource = resources[index];
+			writeStartElementWithAttribute(getWriter(), PROJECT_RESOURCE, ID, resource.getId().toString());			
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, XmlSchemaCreator.LABEL_ELEMENT_NAME);
+			writeCodeElement(XmlSchemaCreator.RESOURCE_TYPE_ELEMENT_NAME, resource.getProjectTypeCode());
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_GIVEN_NAME);
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_SUR_NAME);
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_INITIALS);
+			writeCodeListElement(XmlSchemaCreator.RESOURCE_ROLE_CODES_ELEMENT_NAME, XmlSchemaCreator.RESOURCE_ROLE_CODES_ELEMENT_NAME, resource.getRoleCodes());
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_ORGANIZATION);
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_POSITION);
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_LOCATION);
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_PHONE_NUMBER);
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_PHONE_NUMBER_MOBILE);
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_PHONE_NUMBER_HOME);
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_PHONE_NUMBER_OTHER);
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_EMAIL);
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_ALTERNATIVE_EMAIL);
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_IM_ADDRESS);
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_IM_SERVICE);
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_DATE_UPDATED);
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_COST_PER_UNIT);
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_COMMENTS);
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_CUSTOM_FIELD_1);
+			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_CUSTOM_FIELD_2);
 			writeEndElement(out, PROJECT_RESOURCE);
 		}
 		
-		writeWcsEndContainerElement(PROJECT_RESOURCE);
+		writeEndContainerElement(PROJECT_RESOURCE);
 	}
 
 	private void writeProjectSummaryElement() throws Exception
 	{
 		writeStartElement(out, PROJECT_SUMMARY);
 		
-		writeWcsElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_NAME, getMetadata(), ProjectMetadata.TAG_PROJECT_NAME);
-		writeWcsElement(PROJECT_SUMMARY, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, getMetadata(), ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
-		writeWcsElement(PROJECT_SUMMARY, ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
-		writeWcsElement(PROJECT_SUMMARY, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
-		writeWcsElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_URL, getMetadata(), ProjectMetadata.TAG_PROJECT_URL);
-		writeWcsElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_DESCRIPTION, getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION);
-		writeWcsElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_STATUS, getMetadata(), ProjectMetadata.TAG_PROJECT_STATUS);
-		writeWcsElement(PROJECT_SUMMARY, ProjectMetadata.TAG_NEXT_STEPS, getMetadata(), ProjectMetadata.TAG_NEXT_STEPS);
+		writeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_NAME, getMetadata(), ProjectMetadata.TAG_PROJECT_NAME);
+		writeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, getMetadata(), ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
+		writeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
+		writeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
+		writeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_URL, getMetadata(), ProjectMetadata.TAG_PROJECT_URL);
+		writeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_DESCRIPTION, getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION);
+		writeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_STATUS, getMetadata(), ProjectMetadata.TAG_PROJECT_STATUS);
+		writeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_NEXT_STEPS, getMetadata(), ProjectMetadata.TAG_NEXT_STEPS);
 
 		writeEndElement(out, PROJECT_SUMMARY);
 	}	
 	
-	protected void writeWcsElement(String parentElementName, String elementName, BaseObject object, String tag) throws Exception
+	private void writeElementWithSameTag(String parentElementName, BaseObject object, String tag) throws Exception
+	{
+		writeElement(parentElementName, tag, object, tag);
+	}
+	
+	private void writeElement(String parentElementName, String elementName, BaseObject object, String tag) throws Exception
 	{
 		writeElement(getWriter(), parentElementName + elementName, object, tag);
 	}
 	
-	protected void writeWcsStartContainerElement(String startElementName) throws Exception
+	private void writeStartContainerElement(String startElementName) throws Exception
 	{
 		writeStartElement(out, WcsXmlConstants.CONTAINER_ELEMENT_TAG + startElementName);
 	}
 	
-	protected void writeWcsEndContainerElement(String endElementName) throws Exception
+	private void writeEndContainerElement(String endElementName) throws Exception
 	{
 		writeEndElement(out, WcsXmlConstants.CONTAINER_ELEMENT_TAG + endElementName);
+	}
+	
+	private void writeCodeListElement(String containerElementName, String elementName, CodeList codes) throws Exception
+	{
+		writeStartContainerElement(containerElementName);
+		for (int index = 0; index < codes.size(); ++index)
+		{
+			writeStartElement(getWriter(), elementName);
+			writeElement(getWriter(), XmlSchemaCreator.CODE_ELEMENT_NAME, codes.get(index));
+			writeEndElement(getWriter(), elementName);
+		}
+		
+		writeEndContainerElement(containerElementName);
+	}
+	
+	private void writeCodeElement(String elementName, String code) throws Exception
+	{
+		writeStartElement(getWriter(), elementName);
+		writeElement(getWriter(), XmlSchemaCreator.CODE_ELEMENT_NAME, code);
+		writeEndElement(getWriter(), elementName);
 	}
 
 	private ProjectMetadata getMetadata()

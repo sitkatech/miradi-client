@@ -79,6 +79,7 @@ import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
+import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyFeasibilityQuestion;
@@ -609,6 +610,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_LOCATION, "1 SomeStreet ave. Tampa FL 33600");
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_PHONE_NUMBER, "555-555-5555");
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_ORGANIZATION, "TurtleWise Corp");
+		fillObjectUsingCommand(projectResource, ProjectResource.TAG_RESOURCE_TYPE, ResourceTypeQuestion.GROUP_CODE);
 		fillCostPerUnitField(projectResource, "10");
 	}
 	

@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/2'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/4'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -64,7 +64,7 @@ ProjectResource.element = element miradi:ProjectResource
 {
   attribute Id {xsd:integer}  &
   element miradi:ProjectResourceLabel { text } &
-  element miradi:ProjectResourceResourceType { ResourceType.element } &
+  element miradi:ProjectResourceResourceType { vocabulary_resource_type  } &
   element miradi:ProjectResourceName { text } &
   element miradi:ProjectResourceSurName { text } &
   element miradi:ProjectResourceInitials { text } &
@@ -844,11 +844,6 @@ FiscalYearStartMonth.element = element miradi:FiscalYearStartMonth
 ProtectedAreaCategories.element = element miradi:ProtectedAreaCategories
 {
   element miradi:code { vocabulary_protected_area_categories }* 
-}
-
-ResourceType.element = element miradi:ResourceType
-{
-  element miradi:code { vocabulary_resource_type }* 
 }
 
 RoleCodes.element = element miradi:RoleCodes
