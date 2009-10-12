@@ -21,7 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.wcs;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Organization;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
@@ -336,8 +338,25 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 
 	private void writeOrganizationObjectSchemaElement() throws Exception
 	{
-		writeStartElement(out, ORGANIZATION);
-		writeEndElement(out, ORGANIZATION);
+		writeStartContainerElement(ORGANIZATION);
+		ORefList organizationRefs = getProject().getPool(Organization.getObjectType()).getSortedRefList();
+		for (int index = 0; index < organizationRefs.size(); ++index)
+		{
+			Organization organization = Organization.find(getProject(), organizationRefs.get(index));
+			writeStartElementWithAttribute(getWriter(), ORGANIZATION, ID, organization.getId().toString());			
+			writeElementWithSameTag(ORGANIZATION, organization, XmlSchemaCreator.LABEL_ELEMENT_NAME);					
+			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_SHORT_LABEL);
+			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_ROLES_DESCRIPTION);
+			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_CONTACT_FIRST_NAME);
+			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_CONTACT_LAST_NAME);
+			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_EMAIL);
+			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_PHONE_NUMBER);
+			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_COMMENTS);
+	
+			writeEndElement(out, PROJECT_RESOURCE);
+		}
+		
+		writeEndContainerElement(ORGANIZATION);
 	}
 
 	private void writeProjectResourceObjectSchemaElement() throws Exception
