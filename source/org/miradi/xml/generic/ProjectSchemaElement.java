@@ -33,8 +33,8 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes = new Vector<ObjectSchemaElement>();
 		
 		objectTypes.add(new ProjectSummarySchemaElement());
-		objectTypes.add(new ProjectResourceObjectSchemaElement());
-		objectTypes.add(new OrganizationObjectSchemaElement());
+		objectTypes.add(new ObjectContainerSchemaElement(new ProjectResourceObjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new OrganizationObjectSchemaElement()));
 		objectTypes.add(new ProjectSummaryScopeSchemaElement());
 		objectTypes.add(new ProjectSummaryLocationSchemaElement());
 		objectTypes.add(new ProjectSummaryPlanningSchemaElement());

@@ -3,8 +3,8 @@ start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
   ProjectSummary.element &
-  ProjectResource.element &
-  Organization.element &
+  ProjectResourceContainer.element &
+  OrganizationContainer.element &
   ProjectSummaryScope.element &
   ProjectSummaryLocation.element &
   ProjectSummaryPlanning.element &
@@ -59,6 +59,7 @@ ProjectSummary.element = element miradi:ProjectSummary
   element miradi:ProjectSummaryNextSteps { text }
 }
 
+ProjectResourceContainer.element = ProjectResource.element*
 ProjectResource.element = element miradi:ProjectResource
 {
   attribute Id {xsd:integer}  &
@@ -86,6 +87,7 @@ ProjectResource.element = element miradi:ProjectResource
   element miradi:ProjectResourceCustom.Custom2 { text }
 }
 
+OrganizationContainer.element = Organization.element*
 Organization.element = element miradi:Organization
 {
   attribute Id {xsd:integer}  &
@@ -963,3 +965,4 @@ Countries.element = element miradi:Countries
 {
   element miradi:code { vocabulary_countries }* 
 }
+
