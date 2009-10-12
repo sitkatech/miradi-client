@@ -22,6 +22,8 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
+import org.miradi.xml.wcs.WcsXmlConstants;
+
 public class ObjectContainerSchemaElement extends ObjectSchemaElement
 {
 	public ObjectContainerSchemaElement(ObjectSchemaElement elementToWrap)
@@ -46,7 +48,7 @@ public class ObjectContainerSchemaElement extends ObjectSchemaElement
 
 	private static String getContainerName(String wrappedObjectTypeName)
 	{
-		return wrappedObjectTypeName + "Container";
+		return wrappedObjectTypeName + WcsXmlConstants.CONTAINER_ELEMENT_TAG;
 	}
 
 	private ObjectSchemaElement objectSchemaElement;
