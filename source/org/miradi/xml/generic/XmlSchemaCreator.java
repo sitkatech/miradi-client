@@ -22,6 +22,7 @@ package org.miradi.xml.generic;
 
 import org.miradi.main.Miradi;
 import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -527,6 +528,7 @@ public class XmlSchemaCreator
 	public static final String MEASUREMENT_TREND = Measurement.TAG_TREND;
 	public static final String MEASUREMENT_STATUS = Measurement.TAG_STATUS;	
 	public static final String MEASUREMENT_STATUS_CONFIDENCE = Measurement.TAG_STATUS_CONFIDENCE;
-	public static final String COUNTRIES = ProjectMetadata.TAG_COUNTRIES; 
+	public static final String COUNTRIES = ProjectMetadata.TAG_COUNTRIES;
+	public static final String LABEL_ELEMENT_NAME = BaseObject.TAG_LABEL;
 }
 

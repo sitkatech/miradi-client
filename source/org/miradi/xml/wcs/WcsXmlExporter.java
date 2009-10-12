@@ -23,8 +23,10 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.xml.XmlExporter;
+import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 {
@@ -339,8 +341,40 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 
 	private void writeProjectResourceObjectSchemaElement() throws Exception
 	{
-		writeStartElement(out, PROJECT_RESOURCE);
-		writeEndElement(out, PROJECT_RESOURCE);
+		writeWcsStartContainerElement(PROJECT_RESOURCE);
+		ProjectResource[] resources = getProject().getResourcePool().getAllProjectResources();
+		for (int index = 0; index < resources.length; ++index)
+		{
+			writeStartElementWithAttribute(getWriter(), PROJECT_RESOURCE, ID, resources[index].getId().toString());
+			writeWcsElement(PROJECT_RESOURCE, XmlSchemaCreator.LABEL_ELEMENT_NAME, resources[index], XmlSchemaCreator.LABEL_ELEMENT_NAME);
+			//FIXME urgent - wcs xml output uncomment and make work
+			//		createTextField(BaseObject.TAG_LABEL);		
+			//		createCodeListField(XmlSchemaCreator.RESOURCE_TYPE_ELEMENT_NAME);
+			//		createTextField(ProjectResource.TAG_GIVEN_NAME);
+			//		createTextField(ProjectResource.TAG_SUR_NAME);
+			//		createTextField(ProjectResource.TAG_INITIALS);
+			//		createCodeListField(XmlSchemaCreator.RESOURCE_ROLE_CODES_ELEMENT_NAME);
+			//		createTextField(ProjectResource.TAG_ORGANIZATION);
+			//		createTextField(ProjectResource.TAG_POSITION);
+			//		createTextField(ProjectResource.TAG_LOCATION);
+			//		createTextField(ProjectResource.TAG_PHONE_NUMBER);
+			//		createTextField(ProjectResource.TAG_PHONE_NUMBER_MOBILE);
+			//		createTextField(ProjectResource.TAG_PHONE_NUMBER_HOME);
+			//		createTextField(ProjectResource.TAG_PHONE_NUMBER_OTHER);
+			//		createTextField(ProjectResource.TAG_EMAIL);
+			//		createTextField(ProjectResource.TAG_ALTERNATIVE_EMAIL);
+			//		createTextField(ProjectResource.TAG_IM_ADDRESS);
+			//		createTextField(ProjectResource.TAG_IM_SERVICE);
+			//		createDateField(ProjectResource.TAG_DATE_UPDATED);
+			//		createNumericField(ProjectResource.TAG_COST_PER_UNIT);
+			//		createTextField(ProjectResource.TAG_COMMENTS);
+			//		createTextField(ProjectResource.TAG_CUSTOM_FIELD_1);
+			//		createTextField(ProjectResource.TAG_CUSTOM_FIELD_2);
+
+			writeEndElement(out, PROJECT_RESOURCE);
+		}
+		
+		writeWcsEndContainerElement(PROJECT_RESOURCE);
 	}
 
 	private void writeProjectSummaryElement() throws Exception
@@ -362,6 +396,16 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 	protected void writeWcsElement(String parentElementName, String elementName, BaseObject object, String tag) throws Exception
 	{
 		writeElement(getWriter(), parentElementName + elementName, object, tag);
+	}
+	
+	protected void writeWcsStartContainerElement(String startElementName) throws Exception
+	{
+		writeStartElement(out, WcsXmlConstants.CONTAINER_ELEMENT_TAG + startElementName);
+	}
+	
+	protected void writeWcsEndContainerElement(String endElementName) throws Exception
+	{
+		writeEndElement(out, WcsXmlConstants.CONTAINER_ELEMENT_TAG + endElementName);
 	}
 
 	private ProjectMetadata getMetadata()

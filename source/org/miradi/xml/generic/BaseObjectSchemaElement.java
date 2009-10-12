@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.objects.BaseObject;
 
 abstract public class BaseObjectSchemaElement extends ObjectSchemaElement
 {
@@ -29,7 +28,7 @@ abstract public class BaseObjectSchemaElement extends ObjectSchemaElement
 		super(objectTypeNameToUse);
 		
 		createIdAttribute(objectTypeNameToUse);
-		createTextField(BaseObject.TAG_LABEL);
+		createTextField(XmlSchemaCreator.LABEL_ELEMENT_NAME);
 	}
 	
 	protected static final String FUNDING_SOURCE_ID = "FundingSourceId";
