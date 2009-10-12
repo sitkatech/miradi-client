@@ -56,6 +56,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
+import org.miradi.objects.Organization;
 import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
@@ -380,6 +381,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return activity;
 	}
 	
+	public Organization createAndPopulateOrganization() throws Exception
+	{
+		Organization organization = createOrganization();
+		populateOrganization(organization);
+		
+		return organization;
+	}
+	
 	public ProjectResource createProjectResource() throws Exception
 	{
 		ORef projectResourceRef = createObject(ProjectResource.getObjectType());
@@ -526,6 +535,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef threatReductionResultRef = createObject(ThreatReductionResult.getObjectType());
 		return ThreatReductionResult.find(this, threatReductionResultRef);
+	}
+	
+	public Organization createOrganization() throws Exception
+	{
+		ORef organizationRef = createObject(Organization.getObjectType());
+		return Organization.find(this, organizationRef);
 	}
 	
 	public void populateTarget(Target target) throws Exception
@@ -772,6 +787,18 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(threatRatingCommentsData, ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP, stressBasedThreatRatingCommentsMap.toString());
 	}
 	
+	public void populateOrganization(Organization organization) throws Exception
+	{
+		fillObjectUsingCommand(organization, Organization.TAG_LABEL, "Some organization name");
+		fillObjectUsingCommand(organization, Organization.TAG_SHORT_LABEL, "Some organization id");
+		fillObjectUsingCommand(organization, Organization.TAG_ROLES_DESCRIPTION, "Some organization roles");
+		fillObjectUsingCommand(organization, Organization.TAG_CONTACT_FIRST_NAME, "Some organization contact first name");
+		fillObjectUsingCommand(organization, Organization.TAG_CONTACT_LAST_NAME, "Some organization contact last name");
+		fillObjectUsingCommand(organization, Organization.TAG_EMAIL, "Some organization email");
+		fillObjectUsingCommand(organization, Organization.TAG_PHONE_NUMBER, "Some organization phone number");
+		fillObjectUsingCommand(organization, Organization.TAG_COMMENTS, "Some organization comments");
+	}
+	
 	public void populateEverything() throws Exception
 	{
 		switchToStressBaseMode();
@@ -793,6 +820,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateStrategyThreatTargetAssociation();
 		createAndPopulateActivity();
 		createAndPopulateIndicatorContainingWhiteSpacePaddedCode();
+		createAndPopulateOrganization();
 	}
 
 	public void switchToStressBaseMode() throws Exception
