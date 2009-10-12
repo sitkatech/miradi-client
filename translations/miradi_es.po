@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-10 11:46-0500\n"
+"POT-Creation-Date: 2009-10-12 14:49-0500\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -3098,10 +3098,6 @@ msgstr "Otra "
 #: miradi/source/org/miradi/questions/ResourceTypeQuestion.java:35
 msgid "Person"
 msgstr "Persona "
-
-#: miradi/source/org/miradi/questions/ResourceTypeQuestion.java:36
-msgid "Group"
-msgstr "Grupo "
 
 #: miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:34
 msgid "Forest"
@@ -29876,6 +29872,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Group"
+#~ msgstr "Grupo "
 
 #~ msgid ""
 #~ "html|/resources/views/ThreatMatrixView/MoreInfo.html|<p><table>\t<tr>\t"
