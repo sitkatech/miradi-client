@@ -50,6 +50,12 @@ public class ObjectContainerSchemaElement extends ObjectSchemaElement
 	{
 		return wrappedObjectTypeName + WcsXmlConstants.CONTAINER_ELEMENT_TAG;
 	}
+	
+	@Override
+	public boolean isContainer()
+	{
+		return true;
+	}
 
 	private ObjectSchemaElement objectSchemaElement;
 }

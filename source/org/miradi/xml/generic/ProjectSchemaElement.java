@@ -88,8 +88,12 @@ class ProjectSchemaElement extends SchemaElement
 		{
 			ObjectSchemaElement objectElement = objectTypes.get(i);
 			writer.printIndented(getDotElement(objectElement.getObjectTypeName()));
+			if (objectElement.isContainer())
+				writer.print(WcsXmlConstants.OPTIONAL_ELEMENT);
+				
 			if(i < objectTypes.size() - 1)
 				writer.print(" &");
+
 			writer.println();
 		}
 		writer.endBlock();

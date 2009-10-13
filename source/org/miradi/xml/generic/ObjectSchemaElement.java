@@ -204,6 +204,11 @@ class ObjectSchemaElement extends SchemaElement
 		writer.endBlock();
 	}
 	
+	public boolean isContainer()
+	{
+		return false;
+	}
+	
 	private String objectTypeName;
 	private Vector<AttributeSchemaElement> attributes;
 	private Vector<FieldSchemaElement> fields;
