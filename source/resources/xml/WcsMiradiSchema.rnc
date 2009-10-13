@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/4'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/5'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -59,7 +59,7 @@ ProjectSummary.element = element miradi:ProjectSummary
   element miradi:ProjectSummaryNextSteps { text }
 }
 
-ProjectResourceContainer.element = ProjectResource.element*
+ProjectResourceContainer.element = element miradi:ProjectResourceContainer { ProjectResource.element* }
 ProjectResource.element = element miradi:ProjectResource
 {
   attribute Id {xsd:integer}  &
@@ -87,7 +87,7 @@ ProjectResource.element = element miradi:ProjectResource
   element miradi:ProjectResourceCustom.Custom2 { text }
 }
 
-OrganizationContainer.element = Organization.element*
+OrganizationContainer.element = element miradi:OrganizationContainer { Organization.element* }
 Organization.element = element miradi:Organization
 {
   attribute Id {xsd:integer}  &
@@ -234,7 +234,7 @@ FosProjectData.element = element miradi:FosProjectData
   element miradi:FosProjectDataCoaches { text }
 }
 
-ConceptualModelContainer.element = ConceptualModel.element*
+ConceptualModelContainer.element = element miradi:ConceptualModelContainer { ConceptualModel.element* }
 ConceptualModel.element = element miradi:ConceptualModel
 {
   attribute Id {xsd:integer}  &
@@ -247,7 +247,7 @@ ConceptualModel.element = element miradi:ConceptualModel
   element miradi:ConceptualModelSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }
 }
 
-ResultsChainContainer.element = ResultsChain.element*
+ResultsChainContainer.element = element miradi:ResultsChainContainer { ResultsChain.element* }
 ResultsChain.element = element miradi:ResultsChain
 {
   attribute Id {xsd:integer}  &
@@ -260,7 +260,7 @@ ResultsChain.element = element miradi:ResultsChain
   element miradi:ResultsChainSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }
 }
 
-DiagramFactorContainer.element = DiagramFactor.element*
+DiagramFactorContainer.element = element miradi:DiagramFactorContainer { DiagramFactor.element* }
 DiagramFactor.element = element miradi:DiagramFactor
 {
   attribute Id {xsd:integer}  &
@@ -276,7 +276,7 @@ DiagramFactor.element = element miradi:DiagramFactor
   element miradi:DiagramFactorBackgroundColor { BackgroundColor.element }
 }
 
-DiagramLinkContainer.element = DiagramLink.element*
+DiagramLinkContainer.element = element miradi:DiagramLinkContainer { DiagramLink.element* }
 DiagramLink.element = element miradi:DiagramLink
 {
   attribute Id {xsd:integer}  &
@@ -289,7 +289,7 @@ DiagramLink.element = element miradi:DiagramLink
   element miradi:DiagramLinkColor { Color.element }
 }
 
-BiodiversityTargetContainer.element = BiodiversityTarget.element*
+BiodiversityTargetContainer.element = element miradi:BiodiversityTargetContainer { BiodiversityTarget.element* }
 BiodiversityTarget.element = element miradi:BiodiversityTarget
 {
   attribute Id {xsd:integer}  &
@@ -309,7 +309,7 @@ BiodiversityTarget.element = element miradi:BiodiversityTarget
   element miradi:BiodiversityTargetSpeciesLatinName { text }
 }
 
-HumanWelfareTargetContainer.element = HumanWelfareTarget.element*
+HumanWelfareTargetContainer.element = element miradi:HumanWelfareTargetContainer { HumanWelfareTarget.element* }
 HumanWelfareTarget.element = element miradi:HumanWelfareTarget
 {
   attribute Id {xsd:integer}  &
@@ -326,7 +326,7 @@ HumanWelfareTarget.element = element miradi:HumanWelfareTarget
   element miradi:HumanWelfareTargetIndicatorIds { IndicatorId.element* }
 }
 
-CauseContainer.element = Cause.element*
+CauseContainer.element = element miradi:CauseContainer { Cause.element* }
 Cause.element = element miradi:Cause
 {
   attribute Id {xsd:integer}  &
@@ -340,7 +340,7 @@ Cause.element = element miradi:Cause
   element miradi:CauseIndicatorIds { IndicatorId.element* }
 }
 
-StrategyContainer.element = Strategy.element*
+StrategyContainer.element = element miradi:StrategyContainer { Strategy.element* }
 Strategy.element = element miradi:Strategy
 {
   attribute Id {xsd:integer}  &
@@ -361,7 +361,7 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyIndicatorIds { IndicatorId.element* }
 }
 
-ThreatReductionResultsContainer.element = ThreatReductionResults.element*
+ThreatReductionResultsContainer.element = element miradi:ThreatReductionResultsContainer { ThreatReductionResults.element* }
 ThreatReductionResults.element = element miradi:ThreatReductionResults
 {
   attribute Id {xsd:integer}  &
@@ -374,7 +374,7 @@ ThreatReductionResults.element = element miradi:ThreatReductionResults
   element miradi:ThreatReductionResultsIndicatorIds { IndicatorId.element* }
 }
 
-IntermediateResultContainer.element = IntermediateResult.element*
+IntermediateResultContainer.element = element miradi:IntermediateResultContainer { IntermediateResult.element* }
 IntermediateResult.element = element miradi:IntermediateResult
 {
   attribute Id {xsd:integer}  &
@@ -386,7 +386,7 @@ IntermediateResult.element = element miradi:IntermediateResult
   element miradi:IntermediateResultIndicatorIds { IndicatorId.element* }
 }
 
-GroupBoxContainer.element = GroupBox.element*
+GroupBoxContainer.element = element miradi:GroupBoxContainer { GroupBox.element* }
 GroupBox.element = element miradi:GroupBox
 {
   attribute Id {xsd:integer}  &
@@ -400,7 +400,7 @@ GroupBox.element = element miradi:GroupBox
   element miradi:GroupBoxBackgroundColor { BackgroundColor.element }
 }
 
-TextBoxContainer.element = TextBox.element*
+TextBoxContainer.element = element miradi:TextBoxContainer { TextBox.element* }
 TextBox.element = element miradi:TextBox
 {
   attribute Id {xsd:integer}  &
@@ -415,7 +415,7 @@ TextBox.element = element miradi:TextBox
   element miradi:TextBoxBackgroundColor { BackgroundColor.element }
 }
 
-ScopeBoxContainer.element = ScopeBox.element*
+ScopeBoxContainer.element = element miradi:ScopeBoxContainer { ScopeBox.element* }
 ScopeBox.element = element miradi:ScopeBox
 {
   attribute Id {xsd:integer}  &
@@ -426,7 +426,7 @@ ScopeBox.element = element miradi:ScopeBox
   element miradi:ScopeBoxScopeBoxColorCode { ScopeBoxColorCode.element }
 }
 
-KeyEcologicalAttributeContainer.element = KeyEcologicalAttribute.element*
+KeyEcologicalAttributeContainer.element = element miradi:KeyEcologicalAttributeContainer { KeyEcologicalAttribute.element* }
 KeyEcologicalAttribute.element = element miradi:KeyEcologicalAttribute
 {
   attribute Id {xsd:integer}  &
@@ -438,7 +438,7 @@ KeyEcologicalAttribute.element = element miradi:KeyEcologicalAttribute
   element miradi:KeyEcologicalAttributeKeyEcologicalAttributeType { vocabulary_key_ecological_attribute_type  }
 }
 
-StressContainer.element = Stress.element*
+StressContainer.element = element miradi:StressContainer { Stress.element* }
 Stress.element = element miradi:Stress
 {
   attribute Id {xsd:integer}  &
@@ -450,7 +450,7 @@ Stress.element = element miradi:Stress
   element miradi:StressScope { vocabulary_stress_scope  }
 }
 
-SubTargetContainer.element = SubTarget.element*
+SubTargetContainer.element = element miradi:SubTargetContainer { SubTarget.element* }
 SubTarget.element = element miradi:SubTarget
 {
   attribute Id {xsd:integer}  &
@@ -459,7 +459,7 @@ SubTarget.element = element miradi:SubTarget
   element miradi:SubTargetDetail { text }
 }
 
-GoalContainer.element = Goal.element*
+GoalContainer.element = element miradi:GoalContainer { Goal.element* }
 Goal.element = element miradi:Goal
 {
   attribute Id {xsd:integer}  &
@@ -473,7 +473,7 @@ Goal.element = element miradi:Goal
   element miradi:GoalComments { text }
 }
 
-ObjectiveContainer.element = Objective.element*
+ObjectiveContainer.element = element miradi:ObjectiveContainer { Objective.element* }
 Objective.element = element miradi:Objective
 {
   attribute Id {xsd:integer}  &
@@ -487,7 +487,7 @@ Objective.element = element miradi:Objective
   element miradi:ObjectiveComments { text }
 }
 
-IndicatorContainer.element = Indicator.element*
+IndicatorContainer.element = element miradi:IndicatorContainer { Indicator.element* }
 Indicator.element = element miradi:Indicator
 {
   attribute Id {xsd:integer}  &
@@ -506,7 +506,7 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorAssignmentIds { ResourceAssignmentId.element* }
 }
 
-ActivityContainer.element = Activity.element*
+ActivityContainer.element = element miradi:ActivityContainer { Activity.element* }
 Activity.element = element miradi:Activity
 {
   attribute Id {xsd:integer}  &
@@ -518,7 +518,7 @@ Activity.element = element miradi:Activity
   element miradi:ActivityAssignmentIds { ResourceAssignmentId.element* }
 }
 
-MethodContainer.element = Method.element*
+MethodContainer.element = element miradi:MethodContainer { Method.element* }
 Method.element = element miradi:Method
 {
   attribute Id {xsd:integer}  &
@@ -530,7 +530,7 @@ Method.element = element miradi:Method
   element miradi:MethodAssignmentIds { ResourceAssignmentId.element* }
 }
 
-TaskContainer.element = Task.element*
+TaskContainer.element = element miradi:TaskContainer { Task.element* }
 Task.element = element miradi:Task
 {
   attribute Id {xsd:integer}  &
@@ -542,7 +542,7 @@ Task.element = element miradi:Task
   element miradi:TaskAssignmentIds { ResourceAssignmentId.element* }
 }
 
-ResourceAssignmentContainer.element = ResourceAssignment.element*
+ResourceAssignmentContainer.element = element miradi:ResourceAssignmentContainer { ResourceAssignment.element* }
 ResourceAssignment.element = element miradi:ResourceAssignment
 {
   attribute Id {xsd:integer}  &
@@ -553,7 +553,7 @@ ResourceAssignment.element = element miradi:ResourceAssignment
   element miradi:ResourceAssignmentDetails{ DateUnitWorkUnits.element }*
 }
 
-ExpenseAssignmentContainer.element = ExpenseAssignment.element*
+ExpenseAssignmentContainer.element = element miradi:ExpenseAssignmentContainer { ExpenseAssignment.element* }
 ExpenseAssignment.element = element miradi:ExpenseAssignment
 {
   attribute Id {xsd:integer}  &
@@ -563,7 +563,7 @@ ExpenseAssignment.element = element miradi:ExpenseAssignment
   element miradi:ExpenseAssignmentDetails{ DateUnitExpense.element }*
 }
 
-ProgressReportContainer.element = ProgressReport.element*
+ProgressReportContainer.element = element miradi:ProgressReportContainer { ProgressReport.element* }
 ProgressReport.element = element miradi:ProgressReport
 {
   element miradi:ProgressReportProgressDate { vocabulary_date } &
@@ -571,7 +571,7 @@ ProgressReport.element = element miradi:ProgressReport
   element miradi:ProgressReportProgressStatus { vocabulary_progress_report_status  }
 }
 
-ProgressPercentContainer.element = ProgressPercent.element*
+ProgressPercentContainer.element = element miradi:ProgressPercentContainer { ProgressPercent.element* }
 ProgressPercent.element = element miradi:ProgressPercent
 {
   element miradi:ProgressPercentPercentDate { vocabulary_date } &
@@ -579,7 +579,7 @@ ProgressPercent.element = element miradi:ProgressPercent
   element miradi:ProgressPercentPercentCompleteNotes { text }
 }
 
-ThreatRatingContainer.element = ThreatRating.element*
+ThreatRatingContainer.element = element miradi:ThreatRatingContainer { ThreatRating.element* }
 ThreatRating.element = element miradi:ThreatRating
 {
   element miradi:ThreatRatingTargetId{ BiodiversityTargetId.element } &
@@ -588,7 +588,7 @@ ThreatRating.element = element miradi:ThreatRating
   element miradi:ThreatRating{ SimpleThreatRating.element | StressBasedThreatRating.element }
 }
 
-SimpleThreatRatingContainer.element = SimpleThreatRating.element*
+SimpleThreatRatingContainer.element = element miradi:SimpleThreatRatingContainer { SimpleThreatRating.element* }
 SimpleThreatRating.element = element miradi:SimpleThreatRating
 {
   element miradi:SimpleThreatRatingScope { vocabulary_simple_threat_rating_scope_code  } &
@@ -596,7 +596,7 @@ SimpleThreatRating.element = element miradi:SimpleThreatRating
   element miradi:SimpleThreatRatingIrreversibility { vocabulary_simple_threat_rating_irreversibility_code  }
 }
 
-StressBasedThreatRatingContainer.element = StressBasedThreatRating.element*
+StressBasedThreatRatingContainer.element = element miradi:StressBasedThreatRatingContainer { StressBasedThreatRating.element* }
 StressBasedThreatRating.element = element miradi:StressBasedThreatRating
 {
   element miradi:StressBasedThreatRatingStressId{ StressId.element } &
@@ -604,7 +604,7 @@ StressBasedThreatRating.element = element miradi:StressBasedThreatRating
   element miradi:StressBasedThreatRatingIrreversibility { vocabulary_irreversibility_code  }
 }
 
-MeasurementContainer.element = Measurement.element*
+MeasurementContainer.element = element miradi:MeasurementContainer { Measurement.element* }
 Measurement.element = element miradi:Measurement
 {
   attribute Id {xsd:integer}  &
@@ -618,7 +618,7 @@ Measurement.element = element miradi:Measurement
   element miradi:MeasurementComments { text }
 }
 
-AccountingCodeContainer.element = AccountingCode.element*
+AccountingCodeContainer.element = element miradi:AccountingCodeContainer { AccountingCode.element* }
 AccountingCode.element = element miradi:AccountingCode
 {
   attribute Id {xsd:integer}  &
@@ -627,7 +627,7 @@ AccountingCode.element = element miradi:AccountingCode
   element miradi:AccountingCodeComments { text }
 }
 
-FundingSourceContainer.element = FundingSource.element*
+FundingSourceContainer.element = element miradi:FundingSourceContainer { FundingSource.element* }
 FundingSource.element = element miradi:FundingSource
 {
   attribute Id {xsd:integer}  &

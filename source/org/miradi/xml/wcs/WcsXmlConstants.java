@@ -23,8 +23,10 @@ package org.miradi.xml.wcs;
 public interface WcsXmlConstants
 {
 	public static final String PREFIX = "miradi:";
+	public static final String SINGLE_SPACE = " ";
+	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	
-	public static final String NAME_SPACE_VERSION = "4";
+	public static final String NAME_SPACE_VERSION = "5";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
