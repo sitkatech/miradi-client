@@ -44,6 +44,12 @@ class ObjectSchemaElement extends SchemaElement
 		FieldSchemaElement field = new TextFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
 	}
+	
+	public void createOptionalTextField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new OptionalTextFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
 
 	public void createNumericField(String fieldNameToUse)
 	{

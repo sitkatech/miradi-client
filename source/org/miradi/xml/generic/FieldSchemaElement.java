@@ -41,7 +41,7 @@ class FieldSchemaElement extends SchemaElement
 		return "miradi:" + getObjectTypeName() + getFieldName();
 	}
 
-	private String getObjectTypeName()
+	protected String getObjectTypeName()
 	{
 		return objectTypeName;
 	}

@@ -255,31 +255,43 @@ public class XmlSchemaCreator
 		defineExpenseMonthElement(writer);
 		defineExpenseDayElement(writer);
 		
-		defineVocabularyDefinedAlias(writer, VOCABULARY_FISCAL_YEAR_START, "FiscalYearStartMonth");
-		defineVocabularyDefinedAlias(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, PROTECTED_AREA_CATEGORIES_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_RESOURCE_ROLE_CODES, RESOURCE_ROLE_CODES_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_HIDDEN_TYPES, HIDDEN_TYPES_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE, DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE, DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR, DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR, DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_DIAGRAM_LINK_COLOR, DIAGRAM_LINK_COLOR_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION, BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_TARGET_STATUS, TARGET_STATUS_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_TARGET_VIABILITY_MODE, TARGET_VIABILITY_MODE_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_SCOPE_BOX_COLOR, SCOPE_BOX_COLOR_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_STRESS_SEVERITY, STRESS_SEVERITY_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_STRESS_SCOPE, STRESS_SCOPE_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_TNC_PROJECT_PLACE_TYPES, TNC_PROJECT_PLACE_TYPES);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_TNC_ORGANIZATIONAL_PRIORITIES, TNC_ORGANIZATIONAL_PRIORITIES);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_TNC_OPERATING_UNTIS, TNC_OPERATING_UNITS);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_TNC_TERRESTRIAL_ECO_REGION, TNC_TERRESTRIAL_ECO_REGION);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_TNC_MARINE_ECO_REGION, TNC_MARINE_ECO_REGION);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_TNC_FRESHWATER_ECO_REGION, TNC_FRESHWATER_ECO_REGION);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_WWF_MANAGING_OFFICES, WWF_MANAGING_OFFICES);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_WWF_REGIONS, WWF_REGIONS);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_WWF_ECOREGIONS, WWF_ECOREGIONS);
-		defineVocabularyDefinedAlias(writer, VOCABULARY_COUNTRIES, COUNTRIES);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.PROJECT_SUMMARY_PLANNING, VOCABULARY_FISCAL_YEAR_START, "FiscalYearStartMonth");
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.PROJECT_SUMMARY_SCOPE, VOCABULARY_PROTECTED_AREA_CATEGORIES, PROTECTED_AREA_CATEGORIES_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.PROJECT_RESOURCE, VOCABULARY_RESOURCE_ROLE_CODES, RESOURCE_ROLE_CODES_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.CONCEPTUAL_MODEL, VOCABULARY_HIDDEN_TYPES, HIDDEN_TYPES_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.RESULTS_CHAIN, VOCABULARY_HIDDEN_TYPES, HIDDEN_TYPES_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.DIAGRAM_FACTOR, VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE, DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.DIAGRAM_FACTOR, VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE, DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.DIAGRAM_FACTOR, VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR, DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.DIAGRAM_FACTOR, VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR, DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.GROUP_BOX, VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE, DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.GROUP_BOX, VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE, DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.GROUP_BOX, VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR, DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.GROUP_BOX, VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR, DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TEXT_BOX, VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE, DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TEXT_BOX, VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE, DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TEXT_BOX, VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR, DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TEXT_BOX, VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR, DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.DIAGRAM_LINK, VOCABULARY_DIAGRAM_LINK_COLOR, DIAGRAM_LINK_COLOR_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.BIODIVERSITY_TARGET, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION, BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.BIODIVERSITY_TARGET, VOCABULARY_TARGET_STATUS, TARGET_STATUS_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.BIODIVERSITY_TARGET, VOCABULARY_TARGET_VIABILITY_MODE, TARGET_VIABILITY_MODE_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.HUMAN_WELFARE_TARGET, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION, BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.HUMAN_WELFARE_TARGET, VOCABULARY_TARGET_STATUS, TARGET_STATUS_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.HUMAN_WELFARE_TARGET, VOCABULARY_TARGET_VIABILITY_MODE, TARGET_VIABILITY_MODE_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.SCOPE_BOX, VOCABULARY_SCOPE_BOX_COLOR, SCOPE_BOX_COLOR_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.STRESS, VOCABULARY_STRESS_SEVERITY, STRESS_SEVERITY_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.STRESS, VOCABULARY_STRESS_SCOPE, STRESS_SCOPE_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_PROJECT_PLACE_TYPES, TNC_PROJECT_PLACE_TYPES);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_ORGANIZATIONAL_PRIORITIES, TNC_ORGANIZATIONAL_PRIORITIES);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_OPERATING_UNTIS, TNC_OPERATING_UNITS);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_TERRESTRIAL_ECO_REGION, TNC_TERRESTRIAL_ECO_REGION);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_MARINE_ECO_REGION, TNC_MARINE_ECO_REGION);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_FRESHWATER_ECO_REGION, TNC_FRESHWATER_ECO_REGION);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.WWF_PROJECT_DATA, VOCABULARY_WWF_MANAGING_OFFICES, WWF_MANAGING_OFFICES);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.WWF_PROJECT_DATA, VOCABULARY_WWF_REGIONS, WWF_REGIONS);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.WWF_PROJECT_DATA, VOCABULARY_WWF_ECOREGIONS, WWF_ECOREGIONS);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.PROJECT_SUMMARY_LOCATION, VOCABULARY_COUNTRIES, COUNTRIES);
 		
 		writer.flush();
     }
@@ -399,11 +411,11 @@ public class XmlSchemaCreator
 	}
 	
 	
-	private void defineVocabularyDefinedAlias(SchemaWriter writer, String vocabularyFiscalYearStartElementName, String elementName)
+	private void defineVocabularyDefinedAlias(SchemaWriter writer, String parentElementName, String vocabularyElementName, String elementName)
 	{
-		writer.defineAlias(elementName + ".element", "element miradi:" + elementName + "");
+		writer.defineAlias(parentElementName + elementName+WcsXmlConstants.CONTAINER_ELEMENT_TAG + ".element", "element miradi:" + parentElementName + elementName+WcsXmlConstants.CONTAINER_ELEMENT_TAG);
 		writer.startBlock();
-		writer.printlnIndented("element miradi:" + CODE_ELEMENT_NAME + " { " + vocabularyFiscalYearStartElementName + " }* ");
+		writer.printlnIndented("element miradi:" + CODE_ELEMENT_NAME + " { " + vocabularyElementName + " } * ");
 		writer.endBlock();
 	}
 	

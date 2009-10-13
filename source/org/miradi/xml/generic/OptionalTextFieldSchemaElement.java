@@ -22,17 +22,16 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-import org.miradi.xml.wcs.WcsXmlConstants;
-
-public class CodeListFieldSchemaElement extends FieldSchemaElement
+public class OptionalTextFieldSchemaElement extends FieldSchemaElement
 {
-	protected CodeListFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
+	public OptionalTextFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
 	{
 		super(objectTypeNameToUse, fieldNameToUse);
 	}
 
 	public void output(SchemaWriter writer) throws IOException
 	{
-		writer.print(WcsXmlConstants.SINGLE_SPACE + WcsXmlConstants.SINGLE_SPACE + getObjectTypeName() + getFieldName() + WcsXmlConstants.CONTAINER_ELEMENT_TAG + ".element");
+		super.output(writer);
+		writer.write(" { text }?");
 	}
 }
