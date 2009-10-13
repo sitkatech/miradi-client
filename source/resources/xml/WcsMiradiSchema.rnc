@@ -1,10 +1,10 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/5'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/6'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
   ProjectSummary.element &
-  ProjectResourceContainer.element &
-  OrganizationContainer.element &
+  ProjectResourceContainer.element ?  &
+  OrganizationContainer.element ?  &
   ProjectSummaryScope.element &
   ProjectSummaryLocation.element &
   ProjectSummaryPlanning.element &
@@ -13,38 +13,38 @@ ConservationProject.element = element miradi:ConservationProject
   WCSData.element &
   RareProjectData.element &
   FosProjectData.element &
-  ConceptualModelContainer.element &
-  ResultsChainContainer.element &
-  DiagramFactorContainer.element &
-  DiagramLinkContainer.element &
-  BiodiversityTargetContainer.element &
-  HumanWelfareTargetContainer.element &
-  CauseContainer.element &
-  StrategyContainer.element &
-  ThreatReductionResultsContainer.element &
-  IntermediateResultContainer.element &
-  GroupBoxContainer.element &
-  TextBoxContainer.element &
-  ScopeBoxContainer.element &
-  KeyEcologicalAttributeContainer.element &
-  StressContainer.element &
-  SubTargetContainer.element &
-  GoalContainer.element &
-  ObjectiveContainer.element &
-  IndicatorContainer.element &
-  ActivityContainer.element &
-  MethodContainer.element &
-  TaskContainer.element &
-  ResourceAssignmentContainer.element &
-  ExpenseAssignmentContainer.element &
-  ProgressReportContainer.element &
-  ProgressPercentContainer.element &
-  ThreatRatingContainer.element &
-  SimpleThreatRatingContainer.element &
-  StressBasedThreatRatingContainer.element &
-  MeasurementContainer.element &
-  AccountingCodeContainer.element &
-  FundingSourceContainer.element
+  ConceptualModelContainer.element ?  &
+  ResultsChainContainer.element ?  &
+  DiagramFactorContainer.element ?  &
+  DiagramLinkContainer.element ?  &
+  BiodiversityTargetContainer.element ?  &
+  HumanWelfareTargetContainer.element ?  &
+  CauseContainer.element ?  &
+  StrategyContainer.element ?  &
+  ThreatReductionResultsContainer.element ?  &
+  IntermediateResultContainer.element ?  &
+  GroupBoxContainer.element ?  &
+  TextBoxContainer.element ?  &
+  ScopeBoxContainer.element ?  &
+  KeyEcologicalAttributeContainer.element ?  &
+  StressContainer.element ?  &
+  SubTargetContainer.element ?  &
+  GoalContainer.element ?  &
+  ObjectiveContainer.element ?  &
+  IndicatorContainer.element ?  &
+  ActivityContainer.element ?  &
+  MethodContainer.element ?  &
+  TaskContainer.element ?  &
+  ResourceAssignmentContainer.element ?  &
+  ExpenseAssignmentContainer.element ?  &
+  ProgressReportContainer.element ?  &
+  ProgressPercentContainer.element ?  &
+  ThreatRatingContainer.element ?  &
+  SimpleThreatRatingContainer.element ?  &
+  StressBasedThreatRatingContainer.element ?  &
+  MeasurementContainer.element ?  &
+  AccountingCodeContainer.element ?  &
+  FundingSourceContainer.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -960,4 +960,3 @@ Countries.element = element miradi:Countries
 {
   element miradi:code { vocabulary_countries }* 
 }
-
