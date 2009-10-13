@@ -49,50 +49,51 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		
 		writeProjectSummaryElement();
 		writeProjectResourceObjectSchemaElement();
-		writeOrganizationObjectSchemaElement();
-		writeProjectSummaryScopeSchemaElement();
-		writeProjectSummaryLocationSchemaElement();
-		writeProjectSummaryPlanningSchemaElement();
-
-		writeTncProjectDataSchemaElement();
-		writeWwfProjectDataSchemaElement();
-		writeWcsDataSchemaElement();
-		writeRareProjectDataSchemaElement();
-		writeFosProjectDataSchemaElement();
-		
-		writeConceptualModelSchemaElement();
-		writeResultsChainSchemaElement();
-		writeDiagramFactorSchemaElement();
-		writeDiagramLinkSchemaElement();
-				
-		writeBiodiversityTargetObjectSchemaElement();
-		writeHumanWelfareTargetSchemaElement();
-		writeCauseObjectSchemaElement();
-		writeStrategyObjectSchemaElement();
-		writeThreatReductionResultsObjectSchemaElement();
-		writeIntermediateResultObjectSchemaElement();
-		writeGroupBoxObjectSchemaElement();
-		writeTextBoxObjectSchemaElement();
-		writeScopeBoxObjectSchemaElement();
-		writeKeyEcologicalAttributeObjectSchemaElement();
-		writeStressObjectSchemaElement();
-		writeSubTargetObjectSchemaElement();
-		writeGoalObjectSchemaElement();
-		writeObjectiveSchemaElement();
-		writeIndicatorObjectSchemaElement();
-		writeActivityObjectSchemaElement();
-		writeMethodObjectSchemaElement();
-		writeTaskObjectSchemaElement();
-		writeResourceAssignmentObjectSchemaElement();
-		writeExpenseAssignmentObjectSchemaElement();
-		writeProgressReportObjectSchemaElement();
-		writeProgressPercentObjectSchemaElement();
-		writeThreatTargetThreatRatingElement();
-		writeSimpleThreatRatingSchemaElement();
-		writeStressBasedThreatRatingElement();
-		writeMeasurementObjectSchemaElement();
-		writeAccountingCodeObjectSchemaElement();
-		writeFundingSourceObjectSchemaElement();
+//FIXME urgent - wcs - uncomment and make it validate		
+//		writeOrganizationObjectSchemaElement();
+//		writeProjectSummaryScopeSchemaElement();
+//		writeProjectSummaryLocationSchemaElement();
+//		writeProjectSummaryPlanningSchemaElement();
+//
+//		writeTncProjectDataSchemaElement();
+//		writeWwfProjectDataSchemaElement();
+//		writeWcsDataSchemaElement();
+//		writeRareProjectDataSchemaElement();
+//		writeFosProjectDataSchemaElement();
+//		
+//		writeConceptualModelSchemaElement();
+//		writeResultsChainSchemaElement();
+//		writeDiagramFactorSchemaElement();
+//		writeDiagramLinkSchemaElement();
+//				
+//		writeBiodiversityTargetObjectSchemaElement();
+//		writeHumanWelfareTargetSchemaElement();
+//		writeCauseObjectSchemaElement();
+//		writeStrategyObjectSchemaElement();
+//		writeThreatReductionResultsObjectSchemaElement();
+//		writeIntermediateResultObjectSchemaElement();
+//		writeGroupBoxObjectSchemaElement();
+//		writeTextBoxObjectSchemaElement();
+//		writeScopeBoxObjectSchemaElement();
+//		writeKeyEcologicalAttributeObjectSchemaElement();
+//		writeStressObjectSchemaElement();
+//		writeSubTargetObjectSchemaElement();
+//		writeGoalObjectSchemaElement();
+//		writeObjectiveSchemaElement();
+//		writeIndicatorObjectSchemaElement();
+//		writeActivityObjectSchemaElement();
+//		writeMethodObjectSchemaElement();
+//		writeTaskObjectSchemaElement();
+//		writeResourceAssignmentObjectSchemaElement();
+//		writeExpenseAssignmentObjectSchemaElement();
+//		writeProgressReportObjectSchemaElement();
+//		writeProgressPercentObjectSchemaElement();
+//		writeThreatTargetThreatRatingElement();
+//		writeSimpleThreatRatingSchemaElement();
+//		writeStressBasedThreatRatingElement();
+//		writeMeasurementObjectSchemaElement();
+//		writeAccountingCodeObjectSchemaElement();
+//		writeFundingSourceObjectSchemaElement();
 		
 		writeEndElement(out, CONSERVATION_PROJECT);
 	}
@@ -327,63 +328,63 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 
 	private void writeProjectSummaryLocationSchemaElement() throws Exception
 	{
-		writeStartElement(out, PROJECT_SUMMARY_LOCATION);
+		writeStartElement(out, PROJECT_SUMMARY_LOCATION);		
 		writeEndElement(out, PROJECT_SUMMARY_LOCATION);
 	}
 
 	private void writeProjectSummaryScopeSchemaElement() throws Exception
 	{
-		writeStartElement(out, PROJECT_SUMMARY_SCOPE);
+//		writeStartElement(out, PROJECT_SUMMARY_SCOPE);
 		
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_PROJECT_SCOPE);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_PROJECT_VISION);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_SCOPE_COMMENTS);		
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_PROJECT_AREA);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_PROJECT_AREA_NOTES);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_RED_LIST_SPECIES);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_OTHER_NOTABLE_SPECIES);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_HUMAN_POPULATION);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_HUMAN_POPULATION_NOTES);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_SOCIAL_CONTEXT);
-		writeCodeListElement(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, getMetadata(), ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES);		
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_LEGAL_STATUS);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_LEGISLATIVE);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_PHYSICAL_DESCRIPTION);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_BIOLOGICAL_DESCRIPTION);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_SOCIO_ECONOMIC_INFORMATION);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_HISTORICAL_DESCRIPTION);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_CULTURAL_DESCRIPTION);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_ACCESS_INFORMATION);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_VISITATION_INFORMATION);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_CURRENT_LAND_USES);
-		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_MANAGEMENT_RESOURCES);				
-		
-		writeEndElement(out, PROJECT_SUMMARY_SCOPE);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_PROJECT_SCOPE);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_PROJECT_VISION);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_SCOPE_COMMENTS);		
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_PROJECT_AREA);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_PROJECT_AREA_NOTES);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_RED_LIST_SPECIES);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_OTHER_NOTABLE_SPECIES);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_HUMAN_POPULATION);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_HUMAN_POPULATION_NOTES);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_SOCIAL_CONTEXT);
+		  // writeCodeListElement(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, getMetadata(), ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES);		
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_LEGAL_STATUS);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_LEGISLATIVE);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_PHYSICAL_DESCRIPTION);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_BIOLOGICAL_DESCRIPTION);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_SOCIO_ECONOMIC_INFORMATION);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_HISTORICAL_DESCRIPTION);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_CULTURAL_DESCRIPTION);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_ACCESS_INFORMATION);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_VISITATION_INFORMATION);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_CURRENT_LAND_USES);
+//		writeElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_MANAGEMENT_RESOURCES);				
+//		
+//		writeEndElement(out, PROJECT_SUMMARY_SCOPE);
 	}
 
 	private void writeOrganizationObjectSchemaElement() throws Exception
 	{
-		writeStartContainerElement(ORGANIZATION);
-		ORefList organizationRefs = getProject().getPool(Organization.getObjectType()).getSortedRefList();
-		for (int index = 0; index < organizationRefs.size(); ++index)
-		{
-			Organization organization = Organization.find(getProject(), organizationRefs.get(index));
-			writeStartElementWithAttribute(getWriter(), ORGANIZATION, ID, organization.getId().toString());			
-			writeElementWithSameTag(ORGANIZATION, organization, XmlSchemaCreator.LABEL_ELEMENT_NAME);					
-			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_SHORT_LABEL);
-			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_ROLES_DESCRIPTION);
-			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_CONTACT_FIRST_NAME);
-			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_CONTACT_LAST_NAME);
-			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_EMAIL);
-			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_PHONE_NUMBER);
-			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_COMMENTS);
-	
-			writeEndElement(out, PROJECT_RESOURCE);
-		}
-		
-		writeEndContainerElement(ORGANIZATION);
+//		writeStartContainerElement(ORGANIZATION);
+//		ORefList organizationRefs = getProject().getPool(Organization.getObjectType()).getSortedRefList();
+//		for (int index = 0; index < organizationRefs.size(); ++index)
+//		{
+//			Organization organization = Organization.find(getProject(), organizationRefs.get(index));
+//			writeStartElementWithAttribute(getWriter(), ORGANIZATION, ID, organization.getId().toString());			
+//			writeElementWithSameTag(ORGANIZATION, organization, XmlSchemaCreator.LABEL_ELEMENT_NAME);					
+//			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_SHORT_LABEL);
+//			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_ROLES_DESCRIPTION);
+//			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_CONTACT_FIRST_NAME);
+//			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_CONTACT_LAST_NAME);
+//			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_EMAIL);
+//			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_PHONE_NUMBER);
+//			writeElementWithSameTag(ORGANIZATION, organization, Organization.TAG_COMMENTS);
+//	
+//			writeEndElement(out, ORGANIZATION);
+//		}
+//		
+//		writeEndContainerElement(ORGANIZATION);
 	}
 
 	private void writeProjectResourceObjectSchemaElement() throws Exception
@@ -395,11 +396,11 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 			ProjectResource resource = resources[index];
 			writeStartElementWithAttribute(getWriter(), PROJECT_RESOURCE, ID, resource.getId().toString());			
 			writeElementWithSameTag(PROJECT_RESOURCE, resource, XmlSchemaCreator.LABEL_ELEMENT_NAME);
-			writeCodeElement(XmlSchemaCreator.RESOURCE_TYPE_ELEMENT_NAME, resource.getProjectTypeCode());
+			writeCodeElement(PROJECT_RESOURCE, XmlSchemaCreator.RESOURCE_TYPE_ELEMENT_NAME, resource.getProjectTypeCode());
 			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_GIVEN_NAME);
 			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_SUR_NAME);
 			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_INITIALS);
-			writeCodeListElement(XmlSchemaCreator.RESOURCE_ROLE_CODES_ELEMENT_NAME, XmlSchemaCreator.RESOURCE_ROLE_CODES_ELEMENT_NAME, resource.getRoleCodes());
+			writeCodeListElement(PROJECT_RESOURCE, XmlSchemaCreator.RESOURCE_ROLE_CODES_ELEMENT_NAME, resource.getRoleCodes());
 			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_ORGANIZATION);
 			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_POSITION);
 			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_LOCATION);
@@ -411,7 +412,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_ALTERNATIVE_EMAIL);
 			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_IM_ADDRESS);
 			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_IM_SERVICE);
-			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_DATE_UPDATED);
+			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_DATE_UPDATED);
 			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_COST_PER_UNIT);
 			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_COMMENTS);
 			writeElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_CUSTOM_FIELD_1);
@@ -438,6 +439,11 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeEndElement(out, PROJECT_SUMMARY);
 	}	
 	
+	private void writeOptionalElementWithSameTag(String parentElementName, BaseObject object, String tag) throws Exception
+	{
+		writeOptionalElement(parentElementName, tag, object, tag);
+	}
+	
 	private void writeElementWithSameTag(String parentElementName, BaseObject object, String tag) throws Exception
 	{
 		writeElement(parentElementName, tag, object, tag);
@@ -448,39 +454,43 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeElement(getWriter(), parentElementName + elementName, object, tag);
 	}
 	
+	private void writeOptionalElement(String parentElementName, String elementName, BaseObject object, String tag) throws Exception
+	{
+		writeOptionalElement(getWriter(), parentElementName + elementName, object, tag);
+	}
+	
+	
 	private void writeStartContainerElement(String startElementName) throws Exception
 	{
-		writeStartElement(out, WcsXmlConstants.CONTAINER_ELEMENT_TAG + startElementName);
+		writeStartElement(out, createContainerElementName(startElementName));
 	}
-	
+
 	private void writeEndContainerElement(String endElementName) throws Exception
 	{
-		writeEndElement(out, WcsXmlConstants.CONTAINER_ELEMENT_TAG + endElementName);
+		writeEndElement(out, createContainerElementName(endElementName));
 	}
 	
-	private void writeCodeListElement(String containerElementName, String elementName, BaseObject baseObject, String tag) throws Exception
+	private String createContainerElementName(String startElementName)
 	{
-		writeCodeListElement(containerElementName, elementName, baseObject.getCodeList(tag));
+		return startElementName + WcsXmlConstants.CONTAINER_ELEMENT_TAG;
 	}
-	
-	private void writeCodeListElement(String containerElementName, String elementName, CodeList codes) throws Exception
+		
+	private void writeCodeListElement(String parentElementName, String containerElementName, CodeList codes) throws Exception
 	{
-		writeStartContainerElement(containerElementName);
+		writeStartContainerElement(parentElementName + containerElementName);
 		for (int index = 0; index < codes.size(); ++index)
 		{
-			writeStartElement(getWriter(), elementName);
 			writeElement(getWriter(), XmlSchemaCreator.CODE_ELEMENT_NAME, codes.get(index));
-			writeEndElement(getWriter(), elementName);
 		}
 		
-		writeEndContainerElement(containerElementName);
+		writeEndContainerElement(parentElementName + containerElementName);
 	}
 	
-	private void writeCodeElement(String elementName, String code) throws Exception
+	private void writeCodeElement(String parentElementName, String elementName, String code) throws Exception
 	{
-		writeStartElement(getWriter(), elementName);
-		writeElement(getWriter(), XmlSchemaCreator.CODE_ELEMENT_NAME, code);
-		writeEndElement(getWriter(), elementName);
+		writeStartElement(getWriter(), parentElementName + elementName);
+		writeXmlEncodedData(getWriter(), code);
+		writeEndElement(getWriter(), parentElementName + elementName);
 	}
 
 	private ProjectMetadata getMetadata()

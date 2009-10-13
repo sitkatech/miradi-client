@@ -32,7 +32,7 @@ public class DateFieldSchemaElement extends FieldSchemaElement
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
-		writer.write(" { vocabulary_date }");
+		writer.write(" { vocabulary_date }?");
 	}
 
 }
