@@ -32,7 +32,7 @@ public class NumericFieldSchemaElement extends FieldSchemaElement
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
-		writer.write(" { xsd:decimal }");
+		writer.write(" { xsd:decimal }?");
 	}
 
 }

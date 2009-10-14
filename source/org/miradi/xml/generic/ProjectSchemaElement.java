@@ -35,9 +35,9 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new ProjectSummarySchemaElement());
 		objectTypes.add(new ObjectContainerSchemaElement(new ProjectResourceObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new OrganizationObjectSchemaElement()));
+		objectTypes.add(new ProjectSummaryScopeSchemaElement());
 		
 //FIXME urgent - wcs - uncomment as each xml element is completed and validated		
-//		objectTypes.add(new ProjectSummaryScopeSchemaElement());
 //		objectTypes.add(new ProjectSummaryLocationSchemaElement());
 //		objectTypes.add(new ProjectSummaryPlanningSchemaElement());
 //
