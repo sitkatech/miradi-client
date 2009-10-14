@@ -24,15 +24,15 @@ import java.io.IOException;
 
 public class OptionalNumericFieldSchemaElement extends FieldSchemaElement
 {
-	OptionalNumericFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
+	public OptionalNumericFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
 	{
 		super(objectTypeNameToUse, fieldNameToUse);
 	}
 
+	@Override
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
 		writer.write(" { xsd:decimal }?");
 	}
-
 }
