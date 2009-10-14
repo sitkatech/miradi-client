@@ -33,9 +33,11 @@ public class DiagramFactorFontStyleQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", EAM.text("Plain (Default)")),
-			new ChoiceItem("<B>", EAM.text("Bold")),
+			new ChoiceItem(BOLD_CODE, EAM.text("Bold")),
 			new ChoiceItem("<U>", EAM.text("Underline")),
 			new ChoiceItem("<S>", EAM.text("Strike through")),
 		};
 	}
+	
+	public static final String BOLD_CODE = "<B>";
 }

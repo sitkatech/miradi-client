@@ -87,4 +87,13 @@ public interface WcsXmlConstants
 	public static final String DIAGRAM_FACTOR_ID_ELEMENT_NAME = "DiagramFactorId";
 	public static final String DIAGRAM_LINK_ID_ELEMENT_NAME = "DiagramLinkId";
 	public static final String SELECTED_TAGGED_OBJECT_SET_IDS = "SelectedTaggedObjectSetIds";
+	public static final String DIAGRAM_POINT_ELEMENT_NAME = "DiagramPoint";
+	public static final String DIAGRAM_SIZE_ELEMENT_NAME = "DiagramSize";
+	public static final String X_ELEMENT_NAME = "x";
+	public static final String Y_ELEMENT_NAME = "y";
+	public static final String WIDTH_ELEMENT_NAME = "width";
+	public static final String HEIGHT_ELEMENT_NAME = "height";
+	public static final String WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME = "WrappedByDiagramFactorId";
+	public static final String WRAPPED_FACTOR_ID_ELEMENT_NAME = "WrappedFactorId";
+	public static final String ID_ELEMENT_NAME = "Id";
 }

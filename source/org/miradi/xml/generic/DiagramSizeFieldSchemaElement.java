@@ -22,18 +22,19 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
+import org.miradi.xml.wcs.WcsXmlConstants;
+
 public class DiagramSizeFieldSchemaElement extends FieldSchemaElement
 {
-	protected DiagramSizeFieldSchemaElement(String objectTypeNameToUse,
-			String fieldNameToUse)
+	protected DiagramSizeFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
 	{
 		super(objectTypeNameToUse, fieldNameToUse);
 	}
 
+	@Override
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
-		writer.write(" { DiagramSize.element }");
+		writer.write(" { " + WcsXmlConstants.DIAGRAM_SIZE_ELEMENT_NAME + ".element }");
 	}
-
 }

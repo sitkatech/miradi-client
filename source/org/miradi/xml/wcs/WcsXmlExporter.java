@@ -29,13 +29,16 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.Factor;
 import org.miradi.objects.FosProjectData;
 import org.miradi.objects.Organization;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.Target;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
@@ -76,9 +79,10 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		
 		writeConceptualModelSchemaElement();
 		writeResultsChainSchemaElement();
+		writeDiagramFactorSchemaElement();
 		
 //FIXME urgent - wcs - uncomment and make it validate		
-//		writeDiagramFactorSchemaElement();
+//		
 //		writeDiagramLinkSchemaElement();
 //				
 //		writeBiodiversityTargetObjectSchemaElement();
@@ -286,12 +290,76 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 //		writeStartElement(out, DIAGRAM_LINK);
 //		writeEndElement(out, DIAGRAM_LINK);
 //	}
-//
-//	private void writeDiagramFactorSchemaElement() throws Exception
-//	{
-//		writeStartElement(out, DIAGRAM_FACTOR);
-//		writeEndElement(out, DIAGRAM_FACTOR);
-//	}
+
+	private void writeDiagramFactorSchemaElement() throws Exception
+	{
+		writeStartContainerElement(DIAGRAM_FACTOR);
+		ORefList diagramFactorRefs = getProject().getDiagramFactorPool().getSortedRefList();
+		for (int index = 0; index < diagramFactorRefs.size(); ++index)
+		{
+			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), diagramFactorRefs.get(index));
+			writeStartElementWithAttribute(getWriter(), DIAGRAM_FACTOR, ID, diagramFactor.getId().toString());
+			writeWrappedFactorId(diagramFactor);
+			
+			writeDiagramFactorLocation(diagramFactor);
+			writeDiagramFactorSize(diagramFactor);
+			writeIds(DIAGRAM_FACTOR, "GroupBoxChildrenIds", "DiagramFactorId", diagramFactor.getGroupBoxChildrenRefs());
+			
+			writeCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_SIZE, diagramFactor.getFontSize());
+			writeCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_STYLE, diagramFactor.getFontStyle());
+			writeCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FOREGROUND_COLOR, diagramFactor.getFontColor());
+			writeCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_BACKGROUND_COLOR, diagramFactor.getBackgroundColor());
+			writeOptionalElement(DIAGRAM_FACTOR, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, diagramFactor, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);
+			
+			writeEndElement(out, DIAGRAM_FACTOR);
+		}
+		
+		writeEndContainerElement(DIAGRAM_FACTOR);		
+	}
+
+	private void writeWrappedFactorId(DiagramFactor diagramFactor) throws Exception
+	{
+		writeStartElement(DIAGRAM_FACTOR + WRAPPED_FACTOR_ID_ELEMENT_NAME);
+		writeStartElement(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
+		
+		Factor wrappedFactor = diagramFactor.getWrappedFactor();
+		String factorTypeName = getFactorTypeName(wrappedFactor);
+		
+		writeElement(factorTypeName, ID_ELEMENT_NAME, diagramFactor.getWrappedId().toString());
+		
+		writeEndElement(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
+		writeEndElement(DIAGRAM_FACTOR + WRAPPED_FACTOR_ID_ELEMENT_NAME);
+	}
+
+	private String getFactorTypeName(Factor wrappedFactor)
+	{
+		if (Target.is(wrappedFactor))
+			return WcsXmlConstants.BIODIVERSITY_TARGET;
+		
+		return wrappedFactor.getTypeName();
+	}
+
+	private void writeDiagramFactorSize(DiagramFactor diagramFactor) throws Exception
+	{
+		String sizeElementName = createParentAndChildElementName(DIAGRAM_FACTOR, "Size");
+		writeStartElement(sizeElementName);
+		writeStartElement(DIAGRAM_SIZE_ELEMENT_NAME);
+		writeElement(getWriter(), WIDTH_ELEMENT_NAME, diagramFactor.getSize().width);		
+		writeElement(getWriter(), HEIGHT_ELEMENT_NAME, diagramFactor.getSize().height);
+		writeEndElement(DIAGRAM_SIZE_ELEMENT_NAME);
+		writeEndElement(sizeElementName);
+	}
+
+	private void writeDiagramFactorLocation(DiagramFactor diagramFactor) throws Exception
+	{
+		String locationElementName = createParentAndChildElementName(DIAGRAM_FACTOR, "Location");
+		writeStartElement(locationElementName);
+		writeStartElement(DIAGRAM_POINT_ELEMENT_NAME);
+		writeElement(getWriter(), X_ELEMENT_NAME, diagramFactor.getLocation().x);
+		writeElement(getWriter(), Y_ELEMENT_NAME, diagramFactor.getLocation().y);
+		writeEndElement(DIAGRAM_POINT_ELEMENT_NAME);
+		writeEndElement(locationElementName);
+	}
 
 	private void writeResultsChainSchemaElement() throws Exception
 	{
@@ -327,13 +395,13 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 
 	private void writeIds(String parentElementName, String childElementName, String idElementName, ORefList refList) throws Exception
 	{
-		writeStartElement(getWriter(), createParentAndChildElementName(CONCEPTUAL_MODEL, childElementName));
+		writeStartElement(getWriter(), createParentAndChildElementName(parentElementName, childElementName));
 		for (int index = 0; index < refList.size(); ++index)
 		{
 			writeElement(getWriter(), idElementName, refList.get(index).getObjectId().toString());
 		}
 		
-		writeEndElement(getWriter(), createParentAndChildElementName(CONCEPTUAL_MODEL, childElementName));
+		writeEndElement(getWriter(), createParentAndChildElementName(parentElementName, childElementName));
 	}
 
 	private void writeFosProjectDataSchemaElement() throws Exception
@@ -625,6 +693,11 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeElement(getWriter(), parentElementName + elementName, object, tag);
 	}
 	
+	private void writeElement(String parentElementName, String elementName, String data) throws Exception
+	{
+		writeElement(getWriter(), parentElementName + elementName, data);
+	}
+	
 	private void writeOptionalElement(String parentElementName, String elementName, BaseObject object, String tag) throws Exception
 	{
 		writeOptionalElement(getWriter(), parentElementName + elementName, object, tag);
@@ -667,6 +740,16 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeStartElement(getWriter(), parentElementName + elementName);
 		writeXmlEncodedData(getWriter(), code);
 		writeEndElement(getWriter(), parentElementName + elementName);
+	}
+	
+	private void writeStartElement(String startElementName) throws Exception
+	{
+		writeStartElement(getWriter(), startElementName);
+	}
+	
+	private void writeEndElement(String endElementName) throws Exception
+	{
+		writeEndElement(getWriter(), endElementName);
 	}
 	
 	private String createParentAndChildElementName(String parentElementName, String childElementName)

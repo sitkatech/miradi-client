@@ -186,12 +186,12 @@ public class XmlSchemaCreator
 		defineIdElement(writer, RESOURCE_ID_ELEMENT_NAME);
 		defineIdElement(writer, ACTIVITY_ID_ELEMENT_NAME);
 		
-		writer.defineAlias("WrappedByDiagramLinkId.element", "element WrappedByDiagramLinkId");
+		writer.defineAlias("WrappedByDiagramLinkId.element", "element " + WcsXmlConstants.PREFIX + "WrappedByDiagramLinkId");
 		writer.startBlock();
 		writer.printlnIndented("FactorLinkId.element");
 		writer.endBlock();
 		
-		writer.defineAlias("WrappedByDiagramFactorId.element", "element WrappedByDiagramFactorId");
+		writer.defineAlias(WcsXmlConstants.WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME + ".element", "element " + WcsXmlConstants.PREFIX + WcsXmlConstants.WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
 		writer.startBlock();
 		writer.printlnIndented("BiodiversityTargetId.element |");
 		writer.printlnIndented("HumanWelfareTargetId.element |");
@@ -207,12 +207,12 @@ public class XmlSchemaCreator
 		writer.endBlock();
 		
 		
-		writer.defineAlias("ThreatReductionResultThreatId.element", "element ThreatReductionResultThreatId");
+		writer.defineAlias("ThreatReductionResultThreatId.element", "element " + WcsXmlConstants.PREFIX + "ThreatReductionResultThreatId");
 		writer.startBlock();
 		writer.printlnIndented("ThreatId.element");
 		writer.endBlock();
 		
-		writer.defineAlias("LinkableFactorId.element", "element WrappedByDiagramFactorId");
+		writer.defineAlias("LinkableFactorId.element", "element " + WcsXmlConstants.PREFIX + WcsXmlConstants.WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
 		writer.startBlock();
 		writer.printlnIndented("BiodiversityTargetId.element |");
 		writer.printlnIndented("HumanWelfareTargetId.element |");
@@ -225,25 +225,25 @@ public class XmlSchemaCreator
 		
 		writer.defineAlias("GeospatialLocation.element", "element miradi:GeospatialLocation");
 		writer.startBlock();
-		writer.printlnIndented("element miradi:latitude { xsd:decimal } &");
-		writer.printlnIndented("element miradi:longitude { xsd:decimal } ");
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + "latitude { xsd:decimal } &");
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + "longitude { xsd:decimal } ");
 		writer.endBlock();
 		
-		writer.defineAlias("ProjectIds.element", "element miradi:ProjectIds");
+		writer.defineAlias("ProjectIds.element", "element " + WcsXmlConstants.PREFIX + "ProjectIds");
 		writer.startBlock();
-		writer.printlnIndented("element miradi:ProjectId { xsd:integer }*");
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + "ProjectId { xsd:integer }*");
 		writer.endBlock();
 		
-		writer.defineAlias("DiagramPoint.element", "element miradi:DiagramPoint");
+		writer.defineAlias(WcsXmlConstants.DIAGRAM_POINT_ELEMENT_NAME + ".element", "element " + WcsXmlConstants.PREFIX + WcsXmlConstants.DIAGRAM_POINT_ELEMENT_NAME);
 		writer.startBlock();
-		writer.printlnIndented("element miradi:x { xsd:integer } &");
-		writer.printlnIndented("element miradi:y { xsd:integer } ");
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + WcsXmlConstants.X_ELEMENT_NAME + " { xsd:integer } &");
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + WcsXmlConstants.Y_ELEMENT_NAME + " { xsd:integer } ");
 		writer.endBlock();
 		
-		writer.defineAlias("DiagramSize.element", "element miradi:DiagramSize");
+		writer.defineAlias(WcsXmlConstants.DIAGRAM_SIZE_ELEMENT_NAME + ".element", "element " + WcsXmlConstants.PREFIX + WcsXmlConstants.DIAGRAM_SIZE_ELEMENT_NAME);
 		writer.startBlock();
-		writer.printlnIndented("element miradi:width { xsd:integer } &");
-		writer.printlnIndented("element miradi:height { xsd:integer } ");
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + WcsXmlConstants.WIDTH_ELEMENT_NAME + " { xsd:integer } &");
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + WcsXmlConstants.HEIGHT_ELEMENT_NAME + " { xsd:integer } ");
 		writer.endBlock();
 		
 		defineDateUnitEfforts(writer);
@@ -303,19 +303,19 @@ public class XmlSchemaCreator
 
 	private void defineDateUnitEfforts(SchemaWriter writer)
 	{
-		writer.defineAlias("DateUnitWorkUnits.element", "element miradi:DateUnitWorkUnits");
+		writer.defineAlias("DateUnitWorkUnits.element", "element " + WcsXmlConstants.PREFIX + "DateUnitWorkUnits");
 		writer.startBlock();
-		writer.printlnIndented("element miradi:WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element } &");
-		writer.printlnIndented("element miradi:NumberOfUnits { xsd:decimal }");
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + "WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element } &");
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + "NumberOfUnits { xsd:decimal }");
 		writer.endBlock();
 	}
 
 	private void defineDateUnitExpense(SchemaWriter writer)
 	{
-		writer.defineAlias("DateUnitExpense.element", "element miradi:DateUnitExpense");
+		writer.defineAlias("DateUnitExpense.element", "element " + WcsXmlConstants.PREFIX + "DateUnitExpense");
 		writer.startBlock();
-		writer.printlnIndented("element miradi:ExpensesDateUnit{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element } &");
-		writer.printlnIndented("element miradi:Expense { xsd:decimal }");
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + "ExpensesDateUnit{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element } &");
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + "Expense { xsd:decimal }");
 		writer.endBlock();
 	}
 	
@@ -426,7 +426,7 @@ public class XmlSchemaCreator
 	
 	private void defineIdElement(SchemaWriter writer, String baseName)
 	{
-		writer.println(baseName + "Id.element = element " + baseName + "Id { xsd:integer }");
+		writer.println(baseName + "Id.element = element " + WcsXmlConstants.PREFIX + baseName + "Id { xsd:integer }");
 	}
 	
 	private void defineVocabulary(SchemaWriter writer, String vocabularyName, ChoiceQuestion question)
@@ -448,10 +448,10 @@ public class XmlSchemaCreator
 	public static final String VOCABULARY_RESOURCE_TYPE = "vocabulary_resource_type";
 	private static final String VOCABULARY_RESOURCE_ROLE_CODES = "vocabulary_resource_role_codes";
 	private static final String VOCABULARY_HIDDEN_TYPES = "vocabulary_hidden_types";
-	private static final String VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE = "vocabulary_diagram_factor_font_size";
-	private static final String VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE = "vocabulary_diagram_factor_font_style";
-	private static final String VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR = "vocabulary_diagram_factor_background_color";
-	private static final String VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR = "vocabulary_diagram_factor_foreground_color";
+	static final String VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE = "vocabulary_diagram_factor_font_size";
+	public static final String VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE = "vocabulary_diagram_factor_font_style";
+	public static final String VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR = "vocabulary_diagram_factor_background_color";
+	public static final String VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR = "vocabulary_diagram_factor_foreground_color";
 	private static final String VOCABULARY_DIAGRAM_LINK_COLOR = "vocabulary_diagram_link_color";
 	private static final String VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION = "vocabulary_biodiversity_target_habitat_association";
 	private static final String VOCABULARY_TARGET_STATUS = "vocabulary_target_status";
