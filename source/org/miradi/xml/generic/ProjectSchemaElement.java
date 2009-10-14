@@ -41,11 +41,9 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new TncProjectDataSchemaElement());
 		objectTypes.add(new WwfProjectDataSchemaElement());
 		objectTypes.add(new WcsDataSchemaElement());
+		objectTypes.add(new RareProjectDataSchemaElement());
 		
 //FIXME urgent - wcs - uncomment as each xml element is completed and validated		
-//		
-//		
-//		objectTypes.add(new RareProjectDataSchemaElement());
 //		objectTypes.add(new FosProjectDataSchemaElement());
 //		
 //		objectTypes.add(new ObjectContainerSchemaElement(new ConceptualModelSchemaElement()));

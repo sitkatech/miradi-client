@@ -31,6 +31,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Organization;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.RareProjectData;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
@@ -65,10 +66,11 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeTncProjectDataSchemaElement();
 		writeWwfProjectDataSchemaElement();
 		writeWcsDataSchemaElement();
+		writeRareProjectDataSchemaElement();
 		
 //FIXME urgent - wcs - uncomment and make it validate		
 //		
-//		writeRareProjectDataSchemaElement();
+//		
 //		writeFosProjectDataSchemaElement();
 //		
 //		writeConceptualModelSchemaElement();
@@ -305,13 +307,36 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 //		writeStartElement(out, FOS_PROJECT_DATA);
 //		writeEndElement(out, FOS_PROJECT_DATA);
 //	}
-//
-//	private void writeRareProjectDataSchemaElement() throws Exception
-//	{
-//		writeStartElement(out, RARE_PROJECT_DATA);
-//		writeEndElement(out, RARE_PROJECT_DATA);
-//	}
-//
+
+	private void writeRareProjectDataSchemaElement() throws Exception
+	{
+		writeStartElement(out, RARE_PROJECT_DATA);
+		 
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_COHORT);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_THREATS_ADDRESSED_NOTES);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_AUDIENCE);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_BIODIVERSITY_HOTSPOTS);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_FLAGSHIP_SPECIES_COMMON_NAME);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_FLAGSHIP_SPECIES_DETAIL);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_CAMPAIGN_THEORY_OF_CHANGE);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_CAMPAIGN_SLOGAN);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_MAIN_ACTIVITIES_NOTES);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_THREAT_REDUCTION_OBJECTIVE_NOTES);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_MONITORING_OBJECTIVE_NOTES);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_COURSE_MANAGER_NOTES);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_REGIONAL_DIRECTOR_NOTES);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_CAMPAIGN_MANAGER_NOTES);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_LOCAL_PARTNER_CONTACT_NOTES);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_BINGO_PARTNER_CONTACT_NOTES);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_THREAT_REDUCTION_PARTNER_CONTACT_NOTES);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_MONITORING_PARTNER_CONTACT_NOTES);
+		
+		writeEndElement(out, RARE_PROJECT_DATA);
+	}
+
 	private void writeWcsDataSchemaElement() throws Exception
 	{
 		writeStartElement(out, WCS_PROJECT_DATA);

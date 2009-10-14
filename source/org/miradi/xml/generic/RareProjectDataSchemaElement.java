@@ -23,35 +23,35 @@ package org.miradi.xml.generic;
 import org.miradi.objects.RareProjectData;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class RareProjectDataSchemaElement extends BaseObjectSchemaElement
+public class RareProjectDataSchemaElement extends ObjectSchemaElement
 {
 	public RareProjectDataSchemaElement()
 	{
 		super(WcsXmlConstants.RARE_PROJECT_DATA);
 		
-		createTextField(RareProjectData.TAG_COHORT);
+		createOptionalTextField(RareProjectData.TAG_COHORT);
 		
-		createTextField(RareProjectData.TAG_THREATS_ADDRESSED_NOTES);
-		createTextField(RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
-		createTextField(RareProjectData.TAG_AUDIENCE);
-		createTextField(RareProjectData.TAG_BIODIVERSITY_HOTSPOTS);
-		createTextField(RareProjectData.TAG_FLAGSHIP_SPECIES_COMMON_NAME);
-		createTextField(RareProjectData.TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME);
-		createTextField(RareProjectData.TAG_FLAGSHIP_SPECIES_DETAIL);
+		createOptionalTextField(RareProjectData.TAG_THREATS_ADDRESSED_NOTES);
+		createOptionalTextField(RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
+		createOptionalTextField(RareProjectData.TAG_AUDIENCE);
+		createOptionalTextField(RareProjectData.TAG_BIODIVERSITY_HOTSPOTS);
+		createOptionalTextField(RareProjectData.TAG_FLAGSHIP_SPECIES_COMMON_NAME);
+		createOptionalTextField(RareProjectData.TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME);
+		createOptionalTextField(RareProjectData.TAG_FLAGSHIP_SPECIES_DETAIL);
 		
-		createTextField(RareProjectData.TAG_CAMPAIGN_THEORY_OF_CHANGE);
-		createTextField(RareProjectData.TAG_CAMPAIGN_SLOGAN);
-		createTextField(RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES);
-		createTextField(RareProjectData.TAG_MAIN_ACTIVITIES_NOTES);
-		createTextField(RareProjectData.TAG_THREAT_REDUCTION_OBJECTIVE_NOTES);
-		createTextField(RareProjectData.TAG_MONITORING_OBJECTIVE_NOTES);
+		createOptionalTextField(RareProjectData.TAG_CAMPAIGN_THEORY_OF_CHANGE);
+		createOptionalTextField(RareProjectData.TAG_CAMPAIGN_SLOGAN);
+		createOptionalTextField(RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES);
+		createOptionalTextField(RareProjectData.TAG_MAIN_ACTIVITIES_NOTES);
+		createOptionalTextField(RareProjectData.TAG_THREAT_REDUCTION_OBJECTIVE_NOTES);
+		createOptionalTextField(RareProjectData.TAG_MONITORING_OBJECTIVE_NOTES);
 		
-		createTextField(RareProjectData.TAG_COURSE_MANAGER_NOTES);
-		createTextField(RareProjectData.TAG_REGIONAL_DIRECTOR_NOTES);
-		createTextField(RareProjectData.TAG_CAMPAIGN_MANAGER_NOTES);
-		createTextField(RareProjectData.TAG_LOCAL_PARTNER_CONTACT_NOTES);
-		createTextField(RareProjectData.TAG_BINGO_PARTNER_CONTACT_NOTES);
-		createTextField(RareProjectData.TAG_THREAT_REDUCTION_PARTNER_CONTACT_NOTES);
-		createTextField(RareProjectData.TAG_MONITORING_PARTNER_CONTACT_NOTES);
+		createOptionalTextField(RareProjectData.TAG_COURSE_MANAGER_NOTES);
+		createOptionalTextField(RareProjectData.TAG_REGIONAL_DIRECTOR_NOTES);
+		createOptionalTextField(RareProjectData.TAG_CAMPAIGN_MANAGER_NOTES);
+		createOptionalTextField(RareProjectData.TAG_LOCAL_PARTNER_CONTACT_NOTES);
+		createOptionalTextField(RareProjectData.TAG_BINGO_PARTNER_CONTACT_NOTES);
+		createOptionalTextField(RareProjectData.TAG_THREAT_REDUCTION_PARTNER_CONTACT_NOTES);
+		createOptionalTextField(RareProjectData.TAG_MONITORING_PARTNER_CONTACT_NOTES);
 	}
 }

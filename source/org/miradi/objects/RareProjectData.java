@@ -22,8 +22,10 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class RareProjectData extends BaseObject
@@ -62,6 +64,16 @@ public class RareProjectData extends BaseObject
 	public static boolean canReferToThisType(int type)
 	{
 		return false;
+	}
+	
+	public static RareProjectData find(ObjectManager objectManager, ORef rareProjectDataRef)
+	{
+		return (RareProjectData) objectManager.findObject(rareProjectDataRef);
+	}
+	
+	public static RareProjectData find(Project project, ORef rareProjectDataRef)
+	{
+		return find(project.getObjectManager(), rareProjectDataRef);
 	}
 	
 	void clear()
