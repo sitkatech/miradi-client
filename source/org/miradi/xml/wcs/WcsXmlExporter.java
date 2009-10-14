@@ -33,6 +33,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcpaProjectData;
+import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
@@ -63,9 +64,10 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeProjectSummaryPlanningSchemaElement();
 		writeTncProjectDataSchemaElement();
 		writeWwfProjectDataSchemaElement();
+		writeWcsDataSchemaElement();
 		
 //FIXME urgent - wcs - uncomment and make it validate		
-//		writeWcsDataSchemaElement();
+//		
 //		writeRareProjectDataSchemaElement();
 //		writeFosProjectDataSchemaElement();
 //		
@@ -310,11 +312,19 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 //		writeEndElement(out, RARE_PROJECT_DATA);
 //	}
 //
-//	private void writeWcsDataSchemaElement() throws Exception
-//	{
-//		writeStartElement(out, WCS_PROJECT_DATA);
-//		writeEndElement(out, WCS_PROJECT_DATA);
-//	}
+	private void writeWcsDataSchemaElement() throws Exception
+	{
+		writeStartElement(out, WCS_PROJECT_DATA);
+
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getWcsProjectData(), WcsProjectData.TAG_ORGANIZATIONAL_FOCUS);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getWcsProjectData(), WcsProjectData.TAG_ORGANIZATIONAL_LEVEL);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getWcsProjectData(), WcsProjectData.TAG_SWOT_COMPLETED);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getWcsProjectData(), WcsProjectData.TAG_SWOT_URL);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getWcsProjectData(), WcsProjectData.TAG_STEP_COMPLETED);
+		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getWcsProjectData(), WcsProjectData.TAG_STEP_URL);
+		
+		writeEndElement(out, WCS_PROJECT_DATA);
+	}
 
 	private void writeWwfProjectDataSchemaElement() throws Exception
 	{

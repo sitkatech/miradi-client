@@ -22,8 +22,10 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class WcsProjectData extends BaseObject
@@ -62,6 +64,16 @@ public class WcsProjectData extends BaseObject
 	public static boolean canReferToThisType(int type)
 	{
 		return false;
+	}
+	
+	public static WcsProjectData find(ObjectManager objectManager, ORef wcsProjectDataRef)
+	{
+		return (WcsProjectData) objectManager.findObject(wcsProjectDataRef);
+	}
+	
+	public static WcsProjectData find(Project project, ORef wcsProjectDataRef)
+	{
+		return find(project.getObjectManager(), wcsProjectDataRef);
 	}
 	
 	void clear()
