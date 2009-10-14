@@ -22,9 +22,9 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-public class NumericFieldSchemaElement extends FieldSchemaElement
+public class OptionalNumericFieldSchemaElement extends FieldSchemaElement
 {
-	NumericFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
+	OptionalNumericFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
 	{
 		super(objectTypeNameToUse, fieldNameToUse);
 	}
