@@ -22,16 +22,17 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-public class BooleanFieldSchemaElement extends FieldSchemaElement
+public class TncProjectIdFieldSchemaElement extends FieldSchemaElement
 {
-	protected BooleanFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
+	public TncProjectIdFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
 	{
 		super(objectTypeNameToUse, fieldNameToUse);
 	}
 
+	@Override
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
-		writer.write(" { xsd:boolean }?");
+		writer.write(" { ProjectIds.element }");
 	}
 }

@@ -83,4 +83,5 @@ public interface WcsXmlConstants
 	public static final String GEOSPATIAL_LOCATION = "GeospatialLocation";
 	public static final String LATITUDE = "latitude";
 	public static final String LONGITUDE = "longitude";
+	public static final String PROJECT_IDS_ELEMENT_NAME = "ProjectIds";
 }
