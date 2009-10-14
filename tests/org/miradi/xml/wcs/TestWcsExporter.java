@@ -35,18 +35,19 @@ public class TestWcsExporter extends TestCaseWithProject
 	{
 		super(name);
 	}
-
- //FIXME urgent - wcs exporter test commented out 
-	@Override
-	public void setUp() throws Exception
+	
+	public void testValidateEmptyProject() throws Exception
 	{
-		super.setUp();
-		
-		getProject().populateEverything(); 
+		validateProject();
 	}
 	
-	
-	public void testValidate() throws Exception
+	public void testValidateFilledProject() throws Exception
+	{
+		getProject().populateEverything();
+		validateProject();
+	}
+
+	private void validateProject() throws Exception
 	{
 		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
 		UnicodeWriter writer = new UnicodeWriter(bytes);
@@ -54,11 +55,17 @@ public class TestWcsExporter extends TestCaseWithProject
 		writer.close();
 		String xml = new String(bytes.toByteArray(), "UTF-8");
 		
-
+		//FIXME this is temp and for develop only
+//		File file = new File("C:\\Users\\Nima\\develop\\rnv\\project.xml");
+//		file.createNewFile();
+//		UnicodeWriter tempWriter = new UnicodeWriter(file);
+//		tempWriter.writeln(xml);
+//		tempWriter.close();
+		
 		InputStreamWithSeek inputStream = new StringInputStreamWithSeek(xml);
 		if (!new WcsMiradiXmlValidator().isValid(inputStream))
 		{
 			throw new ValidationException(EAM.text("File to import does not validate."));
-		}	
+		}
 	}
 }
