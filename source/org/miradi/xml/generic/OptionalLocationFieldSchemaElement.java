@@ -22,9 +22,9 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-public class LocationFieldSchemaElement extends FieldSchemaElement
+public class OptionalLocationFieldSchemaElement extends FieldSchemaElement
 {
-	public LocationFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
+	public OptionalLocationFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
 	{
 		super(objectTypeNameToUse, fieldNameToUse);
 	}
