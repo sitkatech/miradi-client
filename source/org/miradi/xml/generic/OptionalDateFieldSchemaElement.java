@@ -24,15 +24,15 @@ import java.io.IOException;
 
 public class OptionalDateFieldSchemaElement extends FieldSchemaElement
 {
-	OptionalDateFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
+	public OptionalDateFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
 	{
 		super(objectTypeNameToUse, fieldNameToUse);
 	}
 
+	@Override
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
 		writer.write(" { vocabulary_date }?");
 	}
-
 }
