@@ -23,7 +23,7 @@ package org.miradi.xml.generic;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
 
-public class WwfProjectDataSchemaElement extends BaseObjectSchemaElement
+public class WwfProjectDataSchemaElement extends ObjectSchemaElement
 {
 	public WwfProjectDataSchemaElement()
 	{

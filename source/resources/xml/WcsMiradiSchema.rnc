@@ -8,7 +8,8 @@ ConservationProject.element = element miradi:ConservationProject
   ProjectSummaryScope.element &
   ProjectSummaryLocation.element &
   ProjectSummaryPlanning.element &
-  TncProjectData.element
+  TncProjectData.element &
+  WwfProjectData.element
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -138,6 +139,13 @@ TncProjectData.element = element miradi:TncProjectData
   TncProjectDataTNC.MarineEcoRegionContainer.element &
   TncProjectDataTNC.FreshwaterEcoRegionContainer.element &
   element miradi:TncProjectDataTNC.LessonsLearned { text }?
+}
+
+WwfProjectData.element = element miradi:WwfProjectData
+{
+  WwfProjectDataManagingOfficesContainer.element &
+  WwfProjectDataRegionsContainer.element &
+  WwfProjectDataEcoRegionsContainer.element
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
