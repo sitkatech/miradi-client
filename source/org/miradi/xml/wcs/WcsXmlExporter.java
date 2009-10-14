@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.FosProjectData;
 import org.miradi.objects.Organization;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
@@ -67,12 +68,9 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeWwfProjectDataSchemaElement();
 		writeWcsDataSchemaElement();
 		writeRareProjectDataSchemaElement();
+		writeFosProjectDataSchemaElement();
 		
 //FIXME urgent - wcs - uncomment and make it validate		
-//		
-//		
-//		writeFosProjectDataSchemaElement();
-//		
 //		writeConceptualModelSchemaElement();
 //		writeResultsChainSchemaElement();
 //		writeDiagramFactorSchemaElement();
@@ -301,12 +299,18 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 //		writeStartElement(out, CONCEPTUAL_MODEL);
 //		writeEndElement(out, CONCEPTUAL_MODEL);
 //	}
-//
-//	private void writeFosProjectDataSchemaElement() throws Exception
-//	{
-//		writeStartElement(out, FOS_PROJECT_DATA);
-//		writeEndElement(out, FOS_PROJECT_DATA);
-//	}
+
+	private void writeFosProjectDataSchemaElement() throws Exception
+	{
+		writeStartElement(out, FOS_PROJECT_DATA);
+		
+		writeCodeElement(FOS_PROJECT_DATA, FosProjectData.TAG_TRAINING_TYPE, getFosProjectData().getData(FosProjectData.TAG_TRAINING_TYPE));
+		writeOptionalElementWithSameTag(FOS_PROJECT_DATA, getFosProjectData(), FosProjectData.TAG_TRAINING_DATES);
+		writeOptionalElementWithSameTag(FOS_PROJECT_DATA, getFosProjectData(), FosProjectData.TAG_TRAINERS);
+		writeOptionalElementWithSameTag(FOS_PROJECT_DATA, getFosProjectData(), FosProjectData.TAG_COACHES);
+		
+		writeEndElement(out, FOS_PROJECT_DATA);
+	}
 
 	private void writeRareProjectDataSchemaElement() throws Exception
 	{

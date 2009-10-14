@@ -22,8 +22,10 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -63,6 +65,16 @@ public class FosProjectData extends BaseObject
 	public static boolean canReferToThisType(int type)
 	{
 		return false;
+	}
+	
+	public static FosProjectData find(ObjectManager objectManager, ORef fosProjectDataRef)
+	{
+		return (FosProjectData) objectManager.findObject(fosProjectDataRef);
+	}
+	
+	public static FosProjectData find(Project project, ORef fosProjectDataRef)
+	{
+		return find(project.getObjectManager(), fosProjectDataRef);
 	}
 	
 	void clear()

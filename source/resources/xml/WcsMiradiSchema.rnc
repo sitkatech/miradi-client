@@ -11,7 +11,8 @@ ConservationProject.element = element miradi:ConservationProject
   TncProjectData.element &
   WwfProjectData.element &
   WCSData.element &
-  RareProjectData.element
+  RareProjectData.element &
+  FosProjectData.element
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -183,6 +184,14 @@ RareProjectData.element = element miradi:RareProjectData
   element miradi:RareProjectDataBingoPartnerContactNotes { text }? &
   element miradi:RareProjectDataThreatReductionPartnerContactNotes { text }? &
   element miradi:RareProjectDataMonitoringPartnerContactNotes { text }?
+}
+
+FosProjectData.element = element miradi:FosProjectData
+{
+  element miradi:FosProjectDataTrainingType { vocabulary_fos_training_type  } &
+  element miradi:FosProjectDataTrainingDates { text }? &
+  element miradi:FosProjectDataTrainers { text }? &
+  element miradi:FosProjectDataCoaches { text }?
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
