@@ -33,6 +33,6 @@ public class LocationFieldSchemaElement extends FieldSchemaElement
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
-		writer.write(" { GeospatialLocation.element }");
+		writer.write(" { GeospatialLocation.element }?");
 	}
 }
