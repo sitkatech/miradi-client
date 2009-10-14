@@ -29,10 +29,10 @@ public class ProjectSummaryPlanningSchemaElement extends ObjectSchemaElement
 	{
 		super(WcsXmlConstants.PROJECT_SUMMARY_PLANNING);
 		
-		createDateField(ProjectMetadata.TAG_START_DATE);
-		createDateField(ProjectMetadata.TAG_EXPECTED_END_DATE);
-		createDateField(ProjectMetadata.TAG_WORKPLAN_START_DATE);
-		createDateField(ProjectMetadata.TAG_WORKPLAN_END_DATE);
+		createOptionalDateField(ProjectMetadata.TAG_START_DATE);
+		createOptionalDateField(ProjectMetadata.TAG_EXPECTED_END_DATE);
+		createOptionalDateField(ProjectMetadata.TAG_WORKPLAN_START_DATE);
+		createOptionalDateField(ProjectMetadata.TAG_WORKPLAN_END_DATE);
 		createFiscalYearStartField(ProjectMetadata.TAG_FISCAL_YEAR_START);
 		createOptionalNumericField(ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR);
 		createTextField(ProjectMetadata.TAG_PLANNING_COMMENTS);

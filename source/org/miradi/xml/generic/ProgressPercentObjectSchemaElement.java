@@ -29,7 +29,7 @@ public class ProgressPercentObjectSchemaElement extends ObjectSchemaElement
 	{
 		super(WcsXmlConstants.PROGRESS_PERCENT);
 		
-		createDateField(ProgressPercent.TAG_DATE);
+		createOptionalDateField(ProgressPercent.TAG_DATE);
 		createOptionalNumericField(ProgressPercent.TAG_PERCENT_COMPLETE);
 		createTextField(ProgressPercent.TAG_PERCENT_COMPLETE_NOTES);
 	}

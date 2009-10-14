@@ -45,7 +45,7 @@ public class ProjectResourceObjectSchemaElement extends BaseObjectSchemaElement
 		createOptionalTextField(ProjectResource.TAG_ALTERNATIVE_EMAIL);
 		createOptionalTextField(ProjectResource.TAG_IM_ADDRESS);
 		createOptionalTextField(ProjectResource.TAG_IM_SERVICE);
-		createDateField(ProjectResource.TAG_DATE_UPDATED);
+		createOptionalDateField(ProjectResource.TAG_DATE_UPDATED);
 		createOptionalNumericField(ProjectResource.TAG_COST_PER_UNIT);
 		createOptionalTextField(ProjectResource.TAG_COMMENTS);
 		createOptionalTextField(ProjectResource.TAG_CUSTOM_FIELD_1);
