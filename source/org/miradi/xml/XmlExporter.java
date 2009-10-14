@@ -28,6 +28,7 @@ import org.miradi.database.ProjectServer;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.FosProjectData;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcpaProjectData;
@@ -190,6 +191,12 @@ public abstract class XmlExporter
 	{
 		ORef rareProjectDataRef = getProject().getSingletonObjectRef(RareProjectData.getObjectType());
 		return RareProjectData.find(getProject(), rareProjectDataRef);
+	}
+	
+	protected FosProjectData getFosProjectData()
+	{
+		ORef fosProjectDataRef = getProject().getSingletonObjectRef(FosProjectData.getObjectType());
+		return FosProjectData.find(getProject(), fosProjectDataRef);
 	}
 	
 	abstract public void exportProject(UnicodeWriter out) throws Exception;

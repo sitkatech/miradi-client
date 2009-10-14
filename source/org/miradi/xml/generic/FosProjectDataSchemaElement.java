@@ -23,15 +23,15 @@ package org.miradi.xml.generic;
 import org.miradi.objects.FosProjectData;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class FosProjectDataSchemaElement extends BaseObjectSchemaElement
+public class FosProjectDataSchemaElement extends ObjectSchemaElement
 {
 	public FosProjectDataSchemaElement()
 	{
 		super(WcsXmlConstants.FOS_PROJECT_DATA);
 		
 		createCodeField(FosProjectData.TAG_TRAINING_TYPE, XmlSchemaCreator.VOCABULARY_FOS_TRAINING_TYPE);
-		createTextField(FosProjectData.TAG_TRAINING_DATES);
-		createTextField(FosProjectData.TAG_TRAINERS);
-		createTextField(FosProjectData.TAG_COACHES);
+		createOptionalTextField(FosProjectData.TAG_TRAINING_DATES);
+		createOptionalTextField(FosProjectData.TAG_TRAINERS);
+		createOptionalTextField(FosProjectData.TAG_COACHES);
 	}
 }
