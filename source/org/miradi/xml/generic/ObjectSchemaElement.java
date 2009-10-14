@@ -171,7 +171,7 @@ class ObjectSchemaElement extends SchemaElement
 		fields.add(field);
 	}
 	
-	protected void createFiscalYearStartField(String fieldNameToUse)
+	protected void createOptionalFiscalYearStartField(String fieldNameToUse)
 	{
 		FieldSchemaElement field = new FiscalYearStartFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
