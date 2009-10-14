@@ -31,11 +31,11 @@ public class ProjectSummaryLocationSchemaElement extends ObjectSchemaElement
 
 		createGeospatialLocationField("ProjectLocation");
 		createCodeListField(XmlSchemaCreator.COUNTRIES);
-		createTextField(ProjectMetadata.TAG_STATE_AND_PROVINCES);
-		createTextField(ProjectMetadata.TAG_MUNICIPALITIES);
-		createTextField(ProjectMetadata.TAG_LEGISLATIVE_DISTRICTS);
-		createTextField(ProjectMetadata.TAG_LOCATION_DETAIL);
-		createTextField(ProjectMetadata.TAG_SITE_MAP_REFERENCE);
-		createTextField(ProjectMetadata.TAG_LOCATION_COMMENTS);
+		createOptionalTextField(ProjectMetadata.TAG_STATE_AND_PROVINCES);
+		createOptionalTextField(ProjectMetadata.TAG_MUNICIPALITIES);
+		createOptionalTextField(ProjectMetadata.TAG_LEGISLATIVE_DISTRICTS);
+		createOptionalTextField(ProjectMetadata.TAG_LOCATION_DETAIL);
+		createOptionalTextField(ProjectMetadata.TAG_SITE_MAP_REFERENCE);
+		createOptionalTextField(ProjectMetadata.TAG_LOCATION_COMMENTS);
 	}
 }
