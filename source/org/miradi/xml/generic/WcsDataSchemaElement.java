@@ -29,14 +29,11 @@ public class WcsDataSchemaElement extends ObjectSchemaElement
 	{
 		super(WcsXmlConstants.WCS_PROJECT_DATA);
 		
-		createTextField(WcsProjectData.TAG_ORGANIZATIONAL_FOCUS);
-		createTextField(WcsProjectData.TAG_ORGANIZATIONAL_LEVEL);
-				
-		createTextField(WcsProjectData.TAG_SWOT_COMPLETED);
-		createTextField(WcsProjectData.TAG_SWOT_URL);
-
-		createTextField(WcsProjectData.TAG_STEP_COMPLETED);
-		createTextField(WcsProjectData.TAG_STEP_URL);
+		createOptionalTextField(WcsProjectData.TAG_ORGANIZATIONAL_FOCUS);
+		createOptionalTextField(WcsProjectData.TAG_ORGANIZATIONAL_LEVEL);
+		createOptionalTextField(WcsProjectData.TAG_SWOT_COMPLETED);
+		createOptionalTextField(WcsProjectData.TAG_SWOT_URL);
+		createOptionalTextField(WcsProjectData.TAG_STEP_COMPLETED);
+		createOptionalTextField(WcsProjectData.TAG_STEP_URL);
 	}
-
 }
