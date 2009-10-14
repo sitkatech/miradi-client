@@ -22,9 +22,9 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-public class FiscalYearStartFieldSchemaElement extends FieldSchemaElement
+public class OptionalFiscalYearStartFieldSchemaElement extends FieldSchemaElement
 {
-	protected FiscalYearStartFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
+	protected OptionalFiscalYearStartFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
 	{
 		super(objectTypeNameToUse, fieldNameToUse);
 	}
