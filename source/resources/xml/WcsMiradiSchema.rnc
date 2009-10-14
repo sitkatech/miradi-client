@@ -10,7 +10,8 @@ ConservationProject.element = element miradi:ConservationProject
   ProjectSummaryPlanning.element &
   TncProjectData.element &
   WwfProjectData.element &
-  WCSData.element
+  WCSData.element &
+  RareProjectData.element
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -157,6 +158,31 @@ WCSData.element = element miradi:WCSData
   element miradi:WCSDataSwotUrl { text }? &
   element miradi:WCSDataStepCompleted { text }? &
   element miradi:WCSDataStepUrl { text }?
+}
+
+RareProjectData.element = element miradi:RareProjectData
+{
+  element miradi:RareProjectDataCohort { text }? &
+  element miradi:RareProjectDataThreatsAddressedNotes { text }? &
+  element miradi:RareProjectDataNumberOfCommunitiesInCampaignArea { text }? &
+  element miradi:RareProjectDataAudience { text }? &
+  element miradi:RareProjectDataBiodiversityHotspots { text }? &
+  element miradi:RareProjectDataFlagshipSpeciesCommonName { text }? &
+  element miradi:RareProjectDataFlagshipSpeciesScientificName { text }? &
+  element miradi:RareProjectDataFlagshipSpeciesDetail { text }? &
+  element miradi:RareProjectDataCampaignTheoryOfChange { text }? &
+  element miradi:RareProjectDataCampaignSlogan { text }? &
+  element miradi:RareProjectDataSummaryOfKeyMessages { text }? &
+  element miradi:RareProjectDataMainActivitiesNotes { text }? &
+  element miradi:RareProjectDataThreatReductionObjectiveNotes { text }? &
+  element miradi:RareProjectDataMonitoringObjectiveNotes { text }? &
+  element miradi:RareProjectDataCourseManagerNotes { text }? &
+  element miradi:RareProjectDataRegionalDirectorNotes { text }? &
+  element miradi:RareProjectDataCampaignManagerNotes { text }? &
+  element miradi:RareProjectDataLocalPartnerContactNotes { text }? &
+  element miradi:RareProjectDataBingoPartnerContactNotes { text }? &
+  element miradi:RareProjectDataThreatReductionPartnerContactNotes { text }? &
+  element miradi:RareProjectDataMonitoringPartnerContactNotes { text }?
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
