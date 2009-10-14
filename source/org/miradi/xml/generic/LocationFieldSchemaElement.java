@@ -24,16 +24,15 @@ import java.io.IOException;
 
 public class LocationFieldSchemaElement extends FieldSchemaElement
 {
-	LocationFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
+	public LocationFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
 	{
 		super(objectTypeNameToUse, fieldNameToUse);
 	}
 
+	@Override
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
 		writer.write(" { GeospatialLocation.element }");
 	}
-
-
 }
