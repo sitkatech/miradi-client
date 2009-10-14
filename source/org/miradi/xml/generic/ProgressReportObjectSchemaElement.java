@@ -29,7 +29,7 @@ public class ProgressReportObjectSchemaElement extends ObjectSchemaElement
 	{
 		super(WcsXmlConstants.PROGRESS_REPORT);
 		
-		createDateField(ProgressReport.TAG_PROGRESS_DATE);
+		createOptionalDateField(ProgressReport.TAG_PROGRESS_DATE);
 		createTextField(ProgressReport.TAG_DETAILS);
 		createCodeField(XmlSchemaCreator.PROGRESS_REPORT_STATUS, XmlSchemaCreator.VOCABULARY_PROGRESS_REPORT_STATUS);
 	}

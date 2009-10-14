@@ -33,7 +33,7 @@ public class IndicatorObjectSchemaElement extends BaseObjectSchemaElement
 		createTextField(Indicator.TAG_DETAIL);
 		createTextField(Indicator.TAG_COMMENTS);
 		createCodeField(Indicator.TAG_PRIORITY, XmlSchemaCreator.VOCABULARY_PRIORITY_RATING_CODE);
-		createDateField(Indicator.TAG_FUTURE_STATUS_DATE);
+		createOptionalDateField(Indicator.TAG_FUTURE_STATUS_DATE);
 		createTextField(Indicator.TAG_FUTURE_STATUS_SUMMARY);
 		createCodeField(Indicator.TAG_FUTURE_STATUS_RATING, XmlSchemaCreator.VOCABULARY_STATUS_CODE);
 		createTextField(Indicator.TAG_FUTURE_STATUS_DETAIL);
