@@ -22,9 +22,9 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-public class DateFieldSchemaElement extends FieldSchemaElement
+public class OptionalDateFieldSchemaElement extends FieldSchemaElement
 {
-	DateFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
+	OptionalDateFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
 	{
 		super(objectTypeNameToUse, fieldNameToUse);
 	}
