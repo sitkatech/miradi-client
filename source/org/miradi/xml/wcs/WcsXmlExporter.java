@@ -28,11 +28,14 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FosProjectData;
 import org.miradi.objects.Organization;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RareProjectData;
+import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
@@ -64,15 +67,17 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeProjectSummaryScopeSchemaElement();
 		writeProjectSummaryLocationSchemaElement();
 		writeProjectSummaryPlanningSchemaElement();
+		
 		writeTncProjectDataSchemaElement();
 		writeWwfProjectDataSchemaElement();
 		writeWcsDataSchemaElement();
 		writeRareProjectDataSchemaElement();
 		writeFosProjectDataSchemaElement();
 		
+		writeConceptualModelSchemaElement();
+		writeResultsChainSchemaElement();
+		
 //FIXME urgent - wcs - uncomment and make it validate		
-//		writeConceptualModelSchemaElement();
-//		writeResultsChainSchemaElement();
 //		writeDiagramFactorSchemaElement();
 //		writeDiagramLinkSchemaElement();
 //				
@@ -287,18 +292,49 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 //		writeStartElement(out, DIAGRAM_FACTOR);
 //		writeEndElement(out, DIAGRAM_FACTOR);
 //	}
-//
-//	private void writeResultsChainSchemaElement() throws Exception
-//	{
-//		writeStartElement(out, RESULTS_CHAIN);
-//		writeEndElement(out, RESULTS_CHAIN);
-//	}
-//
-//	private void writeConceptualModelSchemaElement() throws Exception
-//	{
-//		writeStartElement(out, CONCEPTUAL_MODEL);
-//		writeEndElement(out, CONCEPTUAL_MODEL);
-//	}
+
+	private void writeResultsChainSchemaElement() throws Exception
+	{
+		writeDiagram(RESULTS_CHAIN, ResultsChainDiagram.getObjectType());
+	}
+
+	private void writeConceptualModelSchemaElement() throws Exception
+	{
+		writeDiagram(CONCEPTUAL_MODEL, ConceptualModelDiagram.getObjectType());
+	}
+
+	private void writeDiagram(String diagramElementName, int diagramObjectType) throws Exception
+	{
+		writeStartContainerElement(diagramElementName);
+		ORefList diagramObjectRefs = getProject().getPool(diagramObjectType).getSortedRefList();
+		for (int index = 0; index < diagramObjectRefs.size(); ++index)
+		{
+			DiagramObject conceptualModel = DiagramObject.findDiagramObject(getProject(), diagramObjectRefs.get(index));
+			writeStartElementWithAttribute(getWriter(), diagramElementName, ID, conceptualModel.getId().toString());			
+			writeOptionalElementWithSameTag(diagramElementName, conceptualModel, ConceptualModelDiagram.TAG_LABEL);					
+			writeOptionalElementWithSameTag(diagramElementName, conceptualModel, ConceptualModelDiagram.TAG_SHORT_LABEL);
+			writeOptionalElementWithSameTag(diagramElementName, conceptualModel, ConceptualModelDiagram.TAG_DETAIL);
+			writeIds(diagramElementName, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DIAGRAM_FACTOR_ID_ELEMENT_NAME, conceptualModel.getAllDiagramFactorRefs());
+			writeIds(diagramElementName, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DIAGRAM_LINK_ID_ELEMENT_NAME, conceptualModel.getAllDiagramLinkRefs());
+			writeCodeListElement(diagramElementName, XmlSchemaCreator.HIDDEN_TYPES_ELEMENT_NAME, conceptualModel.getHiddenTypes());
+			writeIds(diagramElementName, WcsXmlConstants.SELECTED_TAGGED_OBJECT_SET_IDS, "TaggedObjectSetId", conceptualModel.getSelectedTaggedObjectSetRefs());
+			
+			writeEndElement(out, diagramElementName);
+		}
+		
+		writeEndContainerElement(diagramElementName);
+	}
+
+	private void writeIds(String parentElementName, String childElementName, String idElementName, ORefList refList) throws Exception
+	{
+		writeStartElement(getWriter(), createParentAndChildElementName(CONCEPTUAL_MODEL, childElementName));
+		for (int index = 0; index < refList.size(); ++index)
+		{
+			writeElement(getWriter(), idElementName, refList.get(index).getObjectId().toString());
+		}
+		
+		writeEndElement(getWriter(), createParentAndChildElementName(CONCEPTUAL_MODEL, childElementName));
+	}
 
 	private void writeFosProjectDataSchemaElement() throws Exception
 	{
