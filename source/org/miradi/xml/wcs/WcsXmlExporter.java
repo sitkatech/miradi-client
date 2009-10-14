@@ -33,6 +33,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcpaProjectData;
+import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
@@ -61,10 +62,9 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeProjectSummaryLocationSchemaElement();
 		writeProjectSummaryPlanningSchemaElement();
 		writeTncProjectDataSchemaElement();
+		writeWwfProjectDataSchemaElement();
 		
 //FIXME urgent - wcs - uncomment and make it validate		
-//		
-//		writeWwfProjectDataSchemaElement();
 //		writeWcsDataSchemaElement();
 //		writeRareProjectDataSchemaElement();
 //		writeFosProjectDataSchemaElement();
@@ -315,12 +315,17 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 //		writeStartElement(out, WCS_PROJECT_DATA);
 //		writeEndElement(out, WCS_PROJECT_DATA);
 //	}
-//
-//	private void writeWwfProjectDataSchemaElement() throws Exception
-//	{
-//		writeStartElement(out, WWF_PROJECT_DATA);
-//		writeEndElement(out, WWF_PROJECT_DATA);
-//	}
+
+	private void writeWwfProjectDataSchemaElement() throws Exception
+	{
+		writeStartElement(out, WWF_PROJECT_DATA);
+		
+		writeCodeListElement(WWF_PROJECT_DATA, XmlSchemaCreator.WWF_MANAGING_OFFICES, getWwfProjectData(), WwfProjectData.TAG_MANAGING_OFFICES);
+		writeCodeListElement(WWF_PROJECT_DATA, XmlSchemaCreator.WWF_REGIONS, getWwfProjectData(), WwfProjectData.TAG_REGIONS);
+		writeCodeListElement(WWF_PROJECT_DATA, XmlSchemaCreator.WWF_ECOREGIONS, getWwfProjectData(), WwfProjectData.TAG_ECOREGIONS);
+		
+		writeEndElement(out, WWF_PROJECT_DATA);
+	}
 
 	private void writeTncProjectDataSchemaElement() throws Exception
 	{
