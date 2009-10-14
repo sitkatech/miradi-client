@@ -123,7 +123,7 @@ class ObjectSchemaElement extends SchemaElement
 		fields.add(field);
 	}
 	
-	protected void createGeospatialLocationField(String fieldNameToUse)
+	protected void createOptionalGeospatialLocationField(String fieldNameToUse)
 	{
 		FieldSchemaElement field = new OptionalLocationFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);

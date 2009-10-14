@@ -29,7 +29,7 @@ public class ProjectSummaryLocationSchemaElement extends ObjectSchemaElement
 	{
 		super(WcsXmlConstants.PROJECT_SUMMARY_LOCATION);
 
-		createGeospatialLocationField("ProjectLocation");
+		createOptionalGeospatialLocationField("ProjectLocation");
 		createCodeListField(XmlSchemaCreator.COUNTRIES);
 		createOptionalTextField(ProjectMetadata.TAG_STATE_AND_PROVINCES);
 		createOptionalTextField(ProjectMetadata.TAG_MUNICIPALITIES);
