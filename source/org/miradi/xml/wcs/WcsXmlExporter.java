@@ -52,10 +52,9 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeOrganizationObjectSchemaElement();
 		writeProjectSummaryScopeSchemaElement();
 		writeProjectSummaryLocationSchemaElement();
+		writeProjectSummaryPlanningSchemaElement();
 		
 //FIXME urgent - wcs - uncomment and make it validate		
-//		writeProjectSummaryPlanningSchemaElement();
-//
 //		writeTncProjectDataSchemaElement();
 //		writeWwfProjectDataSchemaElement();
 //		writeWcsDataSchemaElement();
@@ -320,13 +319,30 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 //		writeStartElement(out, TNC_PROJECT_DATA);
 //		writeEndElement(out, TNC_PROJECT_DATA);
 //	}
-//
-//	private void writeProjectSummaryPlanningSchemaElement() throws Exception
-//	{
-//		writeStartElement(out, PROJECT_SUMMARY_PLANNING);
-//		writeEndElement(out, PROJECT_SUMMARY_PLANNING);
-//	}
-//
+
+	private void writeProjectSummaryPlanningSchemaElement() throws Exception
+	{
+		writeStartElement(out, PROJECT_SUMMARY_PLANNING);
+
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_START_DATE);
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_EXPECTED_END_DATE);
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_WORKPLAN_START_DATE);
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_WORKPLAN_END_DATE);
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_FISCAL_YEAR_START);
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR);
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_PLANNING_COMMENTS);
+		
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_CURRENCY_TYPE);
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_CURRENCY_SYMBOL);
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_CURRENCY_DECIMAL_PLACES);
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_TOTAL_BUDGET_FOR_FUNDING);
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_BUDGET_SECURED_PERCENT);
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_KEY_FUNDING_SOURCES);
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_FINANCIAL_COMMENTS);
+		
+		writeEndElement(out, PROJECT_SUMMARY_PLANNING);
+	}
+
 	private void writeProjectSummaryLocationSchemaElement() throws Exception
 	{
 		writeStartElement(getWriter(), PROJECT_SUMMARY_LOCATION);

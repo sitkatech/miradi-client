@@ -35,14 +35,14 @@ public class ProjectSummaryPlanningSchemaElement extends ObjectSchemaElement
 		createOptionalDateField(ProjectMetadata.TAG_WORKPLAN_END_DATE);
 		createFiscalYearStartField(ProjectMetadata.TAG_FISCAL_YEAR_START);
 		createOptionalNumericField(ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR);
-		createTextField(ProjectMetadata.TAG_PLANNING_COMMENTS);
+		createOptionalTextField(ProjectMetadata.TAG_PLANNING_COMMENTS);
 		
-		createTextField(ProjectMetadata.TAG_CURRENCY_TYPE);
-		createTextField(ProjectMetadata.TAG_CURRENCY_SYMBOL);
+		createOptionalTextField(ProjectMetadata.TAG_CURRENCY_TYPE);
+		createOptionalTextField(ProjectMetadata.TAG_CURRENCY_SYMBOL);
 		createOptionalNumericField(ProjectMetadata.TAG_CURRENCY_DECIMAL_PLACES);
 		createOptionalNumericField(ProjectMetadata.TAG_TOTAL_BUDGET_FOR_FUNDING);
 		createOptionalNumericField(ProjectMetadata.TAG_BUDGET_SECURED_PERCENT);
-		createTextField(ProjectMetadata.TAG_KEY_FUNDING_SOURCES);
-		createTextField(ProjectMetadata.TAG_FINANCIAL_COMMENTS);
+		createOptionalTextField(ProjectMetadata.TAG_KEY_FUNDING_SOURCES);
+		createOptionalTextField(ProjectMetadata.TAG_FINANCIAL_COMMENTS);
 	}
 }

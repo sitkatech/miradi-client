@@ -6,7 +6,8 @@ ConservationProject.element = element miradi:ConservationProject
   ProjectResourceContainer.element ?  &
   OrganizationContainer.element ?  &
   ProjectSummaryScope.element &
-  ProjectSummaryLocation.element
+  ProjectSummaryLocation.element &
+  ProjectSummaryPlanning.element
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -93,7 +94,7 @@ ProjectSummaryScope.element = element miradi:ProjectSummaryScope
 
 ProjectSummaryLocation.element = element miradi:ProjectSummaryLocation
 {
-  element miradi:ProjectSummaryLocationProjectLocation { GeospatialLocation.element } &
+  element miradi:ProjectSummaryLocationProjectLocation { GeospatialLocation.element }? &
   ProjectSummaryLocationCountriesContainer.element &
   element miradi:ProjectSummaryLocationStateAndProvinces { text }? &
   element miradi:ProjectSummaryLocationMunicipalities { text }? &
@@ -101,6 +102,24 @@ ProjectSummaryLocation.element = element miradi:ProjectSummaryLocation
   element miradi:ProjectSummaryLocationLocationDetail { text }? &
   element miradi:ProjectSummaryLocationSiteMapReference { text }? &
   element miradi:ProjectSummaryLocationLocationComments { text }?
+}
+
+ProjectSummaryPlanning.element = element miradi:ProjectSummaryPlanning
+{
+  element miradi:ProjectSummaryPlanningStartDate { vocabulary_date }? &
+  element miradi:ProjectSummaryPlanningExpectedEndDate { vocabulary_date }? &
+  element miradi:ProjectSummaryPlanningWorkPlanStartDate { vocabulary_date }? &
+  element miradi:ProjectSummaryPlanningWorkPlanEndDate { vocabulary_date }? &
+  element miradi:ProjectSummaryPlanningFiscalYearStart { vocabulary_fiscal_year_start_month }? &
+  element miradi:ProjectSummaryPlanningFullTimeEmployeeDaysPerYear { xsd:decimal }? &
+  element miradi:ProjectSummaryPlanningPlanningComments { text }? &
+  element miradi:ProjectSummaryPlanningCurrencyType { text }? &
+  element miradi:ProjectSummaryPlanningCurrencySymbol { text }? &
+  element miradi:ProjectSummaryPlanningCurrencyDecimalPlaces { xsd:decimal }? &
+  element miradi:ProjectSummaryPlanningTotalBudgetForFunding { xsd:decimal }? &
+  element miradi:ProjectSummaryPlanningBudgetSecuredPercent { xsd:decimal }? &
+  element miradi:ProjectSummaryPlanningKeyFundingSources { text }? &
+  element miradi:ProjectSummaryPlanningFinancialComments { text }?
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 

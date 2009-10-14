@@ -32,6 +32,6 @@ public class FiscalYearStartFieldSchemaElement extends FieldSchemaElement
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
-		writer.write(" { vocabulary_fiscal_year_start_month }");
+		writer.write(" { vocabulary_fiscal_year_start_month }?");
 	}
 }
