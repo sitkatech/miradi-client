@@ -30,32 +30,32 @@ public class ProjectSummaryScopeSchemaElement extends ObjectSchemaElement
 	{
 		super(WcsXmlConstants.PROJECT_SUMMARY_SCOPE);
 		
-		createTextField(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
-		createTextField(ProjectMetadata.TAG_PROJECT_SCOPE);
-		createTextField(ProjectMetadata.TAG_PROJECT_VISION);
-		createTextField(ProjectMetadata.TAG_SCOPE_COMMENTS);		
+		createOptionalTextField(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
+		createOptionalTextField(ProjectMetadata.TAG_PROJECT_SCOPE);
+		createOptionalTextField(ProjectMetadata.TAG_PROJECT_VISION);
+		createOptionalTextField(ProjectMetadata.TAG_SCOPE_COMMENTS);		
 
-		createTextField(ProjectMetadata.TAG_PROJECT_AREA);
-		createTextField(ProjectMetadata.TAG_PROJECT_AREA_NOTES);
-		createTextField(ProjectMetadata.TAG_RED_LIST_SPECIES);
-		createTextField(ProjectMetadata.TAG_OTHER_NOTABLE_SPECIES);
+		createOptionalTextField(ProjectMetadata.TAG_PROJECT_AREA);
+		createOptionalTextField(ProjectMetadata.TAG_PROJECT_AREA_NOTES);
+		createOptionalTextField(ProjectMetadata.TAG_RED_LIST_SPECIES);
+		createOptionalTextField(ProjectMetadata.TAG_OTHER_NOTABLE_SPECIES);
 
 		createNumericField(ProjectMetadata.TAG_HUMAN_POPULATION);
-		createTextField(ProjectMetadata.TAG_HUMAN_POPULATION_NOTES);
-		createTextField(ProjectMetadata.TAG_SOCIAL_CONTEXT);
+		createOptionalTextField(ProjectMetadata.TAG_HUMAN_POPULATION_NOTES);
+		createOptionalTextField(ProjectMetadata.TAG_SOCIAL_CONTEXT);
 
 		createCodeListField(XmlSchemaCreator.PROTECTED_AREA_CATEGORIES_ELEMENT_NAME);
-		createTextField(ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES);
-		createTextField(WcpaProjectData.TAG_LEGAL_STATUS);
-		createTextField(WcpaProjectData.TAG_LEGISLATIVE);
-		createTextField(WcpaProjectData.TAG_PHYSICAL_DESCRIPTION);
-		createTextField(WcpaProjectData.TAG_BIOLOGICAL_DESCRIPTION);
-		createTextField(WcpaProjectData.TAG_SOCIO_ECONOMIC_INFORMATION);
-		createTextField(WcpaProjectData.TAG_HISTORICAL_DESCRIPTION);
-		createTextField(WcpaProjectData.TAG_CULTURAL_DESCRIPTION);
-		createTextField(WcpaProjectData.TAG_ACCESS_INFORMATION);
-		createTextField(WcpaProjectData.TAG_VISITATION_INFORMATION);
-		createTextField(WcpaProjectData.TAG_CURRENT_LAND_USES);
-		createTextField(WcpaProjectData.TAG_MANAGEMENT_RESOURCES);				
+		createOptionalTextField(ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES);
+		createOptionalTextField(WcpaProjectData.TAG_LEGAL_STATUS);
+		createOptionalTextField(WcpaProjectData.TAG_LEGISLATIVE);
+		createOptionalTextField(WcpaProjectData.TAG_PHYSICAL_DESCRIPTION);
+		createOptionalTextField(WcpaProjectData.TAG_BIOLOGICAL_DESCRIPTION);
+		createOptionalTextField(WcpaProjectData.TAG_SOCIO_ECONOMIC_INFORMATION);
+		createOptionalTextField(WcpaProjectData.TAG_HISTORICAL_DESCRIPTION);
+		createOptionalTextField(WcpaProjectData.TAG_CULTURAL_DESCRIPTION);
+		createOptionalTextField(WcpaProjectData.TAG_ACCESS_INFORMATION);
+		createOptionalTextField(WcpaProjectData.TAG_VISITATION_INFORMATION);
+		createOptionalTextField(WcpaProjectData.TAG_CURRENT_LAND_USES);
+		createOptionalTextField(WcpaProjectData.TAG_MANAGEMENT_RESOURCES);				
 	}
 }

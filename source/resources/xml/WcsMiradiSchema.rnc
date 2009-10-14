@@ -1,22 +1,23 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/7'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/8'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
   ProjectSummary.element &
   ProjectResourceContainer.element ?  &
-  OrganizationContainer.element ? 
+  OrganizationContainer.element ?  &
+  ProjectSummaryScope.element
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
 {
-  element miradi:ProjectSummaryProjectName { text } &
+  element miradi:ProjectSummaryProjectName { text }? &
   element miradi:ProjectSummaryDataEffectiveDate { vocabulary_date }? &
-  element miradi:ProjectSummaryOtherOrgProjectNumber { text } &
-  element miradi:ProjectSummaryOtherOrgRelatedProjects { text } &
-  element miradi:ProjectSummaryProjectURL { text } &
-  element miradi:ProjectSummaryProjectDescription { text } &
-  element miradi:ProjectSummaryProjectStatus { text } &
-  element miradi:ProjectSummaryNextSteps { text }
+  element miradi:ProjectSummaryOtherOrgProjectNumber { text }? &
+  element miradi:ProjectSummaryOtherOrgRelatedProjects { text }? &
+  element miradi:ProjectSummaryProjectURL { text }? &
+  element miradi:ProjectSummaryProjectDescription { text }? &
+  element miradi:ProjectSummaryProjectStatus { text }? &
+  element miradi:ProjectSummaryNextSteps { text }?
 }
 
 ProjectResourceContainer.element = element miradi:ProjectResourceContainer { ProjectResource.element* }
@@ -41,7 +42,7 @@ ProjectResource.element = element miradi:ProjectResource
   element miradi:ProjectResourceIMAddress { text }? &
   element miradi:ProjectResourceIMService { text }? &
   element miradi:ProjectResourceDateUpdated { vocabulary_date }? &
-  element miradi:ProjectResourceCostPerUnit { xsd:decimal } &
+  element miradi:ProjectResourceCostPerUnit { xsd:decimal }? &
   element miradi:ProjectResourceComments { text }? &
   element miradi:ProjectResourceCustom.Custom1 { text }? &
   element miradi:ProjectResourceCustom.Custom2 { text }?
@@ -59,6 +60,34 @@ Organization.element = element miradi:Organization
   element miradi:OrganizationEmail { text } &
   element miradi:OrganizationPhoneNumber { text } &
   element miradi:OrganizationComments { text }
+}
+
+ProjectSummaryScope.element = element miradi:ProjectSummaryScope
+{
+  element miradi:ProjectSummaryScopeShortProjectScope { text }? &
+  element miradi:ProjectSummaryScopeProjectScope { text }? &
+  element miradi:ProjectSummaryScopeProjectVision { text }? &
+  element miradi:ProjectSummaryScopeScopeComments { text }? &
+  element miradi:ProjectSummaryScopeProjectArea { text }? &
+  element miradi:ProjectSummaryScopeProjectAreaNote { text }? &
+  element miradi:ProjectSummaryScopeRedListSpecies { text }? &
+  element miradi:ProjectSummaryScopeOtherNotableSpecies { text }? &
+  element miradi:ProjectSummaryScopeHumanPopulation { xsd:decimal }? &
+  element miradi:ProjectSummaryScopeHumanPopulationNotes { text }? &
+  element miradi:ProjectSummaryScopeSocialContext { text }? &
+  ProjectSummaryScopeProtectedAreaCategoriesContainer.element &
+  element miradi:ProjectSummaryScopeProtectedAreaCategoryNotes { text }? &
+  element miradi:ProjectSummaryScopeLegalStatus { text }? &
+  element miradi:ProjectSummaryScopeLegislativeContext { text }? &
+  element miradi:ProjectSummaryScopePhysicalDescription { text }? &
+  element miradi:ProjectSummaryScopeBiologicalDescription { text }? &
+  element miradi:ProjectSummaryScopeSocioEconomicInformation { text }? &
+  element miradi:ProjectSummaryScopeHistoricalDescription { text }? &
+  element miradi:ProjectSummaryScopeCulturalDescription { text }? &
+  element miradi:ProjectSummaryScopeAccessInformation { text }? &
+  element miradi:ProjectSummaryScopeVisitationInformation { text }? &
+  element miradi:ProjectSummaryScopeCurrentLandUses { text }? &
+  element miradi:ProjectSummaryScopeManagementResources { text }?
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
@@ -445,3 +474,4 @@ ProjectSummaryLocationCountriesContainer.element = element miradi:ProjectSummary
 {
   element miradi:code { vocabulary_countries } * 
 }
+

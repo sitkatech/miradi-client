@@ -20,6 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
+import java.io.ByteArrayOutputStream;
+
+import org.martus.util.UnicodeWriter;
+import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
+import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
+import org.miradi.exceptions.ValidationException;
+import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 
 public class TestWcsExporter extends TestCaseWithProject
@@ -41,17 +48,17 @@ public class TestWcsExporter extends TestCaseWithProject
 	
 	public void testValidate() throws Exception
 	{
-//		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-//		UnicodeWriter writer = new UnicodeWriter(bytes);
-//		new WcsXmlExporter(getProject()).exportProject(writer);
-//		writer.close();
-//		String xml = new String(bytes.toByteArray(), "UTF-8");
-//		
-//		System.out.println("TMP OUTPUT = " + xml);
-//		InputStreamWithSeek inputStream = new StringInputStreamWithSeek(xml);
-//		if (!new WcsMiradiXmlValidator().isValid(inputStream))
-//		{
-//			throw new ValidationException(EAM.text("File to import does not validate."));
-//		}	
+		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+		UnicodeWriter writer = new UnicodeWriter(bytes);
+		new WcsXmlExporter(getProject()).exportProject(writer);
+		writer.close();
+		String xml = new String(bytes.toByteArray(), "UTF-8");
+		
+
+		InputStreamWithSeek inputStream = new StringInputStreamWithSeek(xml);
+		if (!new WcsMiradiXmlValidator().isValid(inputStream))
+		{
+			throw new ValidationException(EAM.text("File to import does not validate."));
+		}	
 	}
 }

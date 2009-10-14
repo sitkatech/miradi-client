@@ -29,13 +29,13 @@ class ProjectSummarySchemaElement extends ObjectSchemaElement
 	{
 		super(WcsXmlConstants.PROJECT_SUMMARY);
 	
-		createTextField(ProjectMetadata.TAG_PROJECT_NAME);
+		createOptionalTextField(ProjectMetadata.TAG_PROJECT_NAME);
 		createDateField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
-		createTextField(ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
-		createTextField(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
-		createTextField(ProjectMetadata.TAG_PROJECT_URL);
-		createTextField(ProjectMetadata.TAG_PROJECT_DESCRIPTION);
-		createTextField(ProjectMetadata.TAG_PROJECT_STATUS);
-		createTextField(ProjectMetadata.TAG_NEXT_STEPS);
+		createOptionalTextField(ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
+		createOptionalTextField(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
+		createOptionalTextField(ProjectMetadata.TAG_PROJECT_URL);
+		createOptionalTextField(ProjectMetadata.TAG_PROJECT_DESCRIPTION);
+		createOptionalTextField(ProjectMetadata.TAG_PROJECT_STATUS);
+		createOptionalTextField(ProjectMetadata.TAG_NEXT_STEPS);
 	}
 }
