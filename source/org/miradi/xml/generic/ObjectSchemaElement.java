@@ -129,6 +129,12 @@ class ObjectSchemaElement extends SchemaElement
 		fields.add(field);
 	}
 	
+	protected void createTncProjectIdField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new TncProjectIdFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
+	
 	protected void createDiagramPointField(String fieldNameToUse)
 	{
 		FieldSchemaElement field = new DiagramPointFieldSchemaElement(getObjectTypeName(), fieldNameToUse);

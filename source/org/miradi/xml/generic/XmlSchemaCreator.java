@@ -229,6 +229,11 @@ public class XmlSchemaCreator
 		writer.printlnIndented("element miradi:longitude { xsd:decimal } ");
 		writer.endBlock();
 		
+		writer.defineAlias("ProjectIds.element", "element miradi:ProjectIds");
+		writer.startBlock();
+		writer.printlnIndented("element miradi:ProjectId { xsd:integer }*");
+		writer.endBlock();
+		
 		writer.defineAlias("DiagramPoint.element", "element miradi:DiagramPoint");
 		writer.startBlock();
 		writer.printlnIndented("element miradi:x { xsd:integer } &");

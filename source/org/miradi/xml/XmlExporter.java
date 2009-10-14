@@ -28,6 +28,7 @@ import org.miradi.database.ProjectServer;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcpaProjectData;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
@@ -162,6 +163,12 @@ public abstract class XmlExporter
 	{
 		ORef wcpaProjectDataRef = getProject().getSingletonObjectRef(WcpaProjectData.getObjectType());
 		return (WcpaProjectData) WcpaProjectData.find(getProject(), wcpaProjectDataRef);
+	}
+	
+	protected TncProjectData getTncProjectData()
+	{
+		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
+		return TncProjectData.find(getProject(), tncProjectDataRef);
 	}
 
 	abstract public void exportProject(UnicodeWriter out) throws Exception;

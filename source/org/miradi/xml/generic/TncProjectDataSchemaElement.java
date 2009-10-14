@@ -25,24 +25,24 @@ import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class TncProjectDataSchemaElement extends BaseObjectSchemaElement
+public class TncProjectDataSchemaElement extends ObjectSchemaElement
 {
 	public TncProjectDataSchemaElement()
 	{
 		super(WcsXmlConstants.TNC_PROJECT_DATA);
 		
-		createTextField(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
-		createTextField(Xenodata.TAG_PROJECT_ID);
+		createOptionalTextField(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
+		createTncProjectIdField(Xenodata.TAG_PROJECT_ID);
 		createBooleanField(TncProjectData.TAG_PROJECT_SHARING_CODE);
-		createTextField(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
+		createOptionalTextField(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		createCodeListField(XmlSchemaCreator.TNC_PROJECT_PLACE_TYPES);
 		createCodeListField(XmlSchemaCreator.TNC_ORGANIZATIONAL_PRIORITIES);
-		createTextField(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
-		createTextField(TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
+		createOptionalTextField(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
+		createOptionalTextField(TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
 		createCodeListField(XmlSchemaCreator.TNC_OPERATING_UNITS);
 		createCodeListField(XmlSchemaCreator.TNC_TERRESTRIAL_ECO_REGION);
 		createCodeListField(XmlSchemaCreator.TNC_MARINE_ECO_REGION);
 		createCodeListField(XmlSchemaCreator.TNC_FRESHWATER_ECO_REGION);
-		createTextField(ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
+		createOptionalTextField(ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 	}
 }

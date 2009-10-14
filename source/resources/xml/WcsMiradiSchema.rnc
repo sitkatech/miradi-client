@@ -7,7 +7,8 @@ ConservationProject.element = element miradi:ConservationProject
   OrganizationContainer.element ?  &
   ProjectSummaryScope.element &
   ProjectSummaryLocation.element &
-  ProjectSummaryPlanning.element
+  ProjectSummaryPlanning.element &
+  TncProjectData.element
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -120,6 +121,23 @@ ProjectSummaryPlanning.element = element miradi:ProjectSummaryPlanning
   element miradi:ProjectSummaryPlanningBudgetSecuredPercent { xsd:decimal }? &
   element miradi:ProjectSummaryPlanningKeyFundingSources { text }? &
   element miradi:ProjectSummaryPlanningFinancialComments { text }?
+}
+
+TncProjectData.element = element miradi:TncProjectData
+{
+  element miradi:TncProjectDataTNC.DatabaseDownloadDate { text }? &
+  element miradi:TncProjectDataProjectId { ProjectIds.element } &
+  element miradi:TncProjectDataProjectSharingCode { xsd:boolean }? &
+  element miradi:TncProjectDataOtherOrgRelatedProjects { text }? &
+  TncProjectDataProjectPlaceTypesContainer.element &
+  TncProjectDataOrganizationalPrioritiesContainer.element &
+  element miradi:TncProjectDataTNC.PlanningTeamComment { text }? &
+  element miradi:TncProjectDataConProParentChildProjectText { text }? &
+  TncProjectDataTNC.OperatingUnitListContainer.element &
+  TncProjectDataTNC.TerrestrialEcoRegionContainer.element &
+  TncProjectDataTNC.MarineEcoRegionContainer.element &
+  TncProjectDataTNC.FreshwaterEcoRegionContainer.element &
+  element miradi:TncProjectDataTNC.LessonsLearned { text }?
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
@@ -240,6 +258,11 @@ GeospatialLocation.element = element miradi:GeospatialLocation
 {
   element miradi:latitude { xsd:decimal } &
   element miradi:longitude { xsd:decimal } 
+}
+
+ProjectIds.element = element miradi:ProjectIds
+{
+  element miradi:ProjectId { xsd:integer }*
 }
 
 DiagramPoint.element = element miradi:DiagramPoint

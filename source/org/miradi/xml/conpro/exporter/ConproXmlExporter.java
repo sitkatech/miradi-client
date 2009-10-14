@@ -904,12 +904,6 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		return concatenated;
 	}
 	
-	private TncProjectData getTncProjectData()
-	{
-		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
-		return TncProjectData.find(getProject(), tncProjectDataRef);
-	}
-	
 	private String getMiradiVersionAsToken() throws Exception
 	{
 		String versionToken = VersionConstants.getVersionAndTimestamp();

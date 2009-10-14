@@ -20,13 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
+import java.util.Set;
+
 import org.martus.util.UnicodeWriter;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Organization;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcpaProjectData;
+import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.XmlExporter;
@@ -53,9 +60,10 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeProjectSummaryScopeSchemaElement();
 		writeProjectSummaryLocationSchemaElement();
 		writeProjectSummaryPlanningSchemaElement();
+		writeTncProjectDataSchemaElement();
 		
 //FIXME urgent - wcs - uncomment and make it validate		
-//		writeTncProjectDataSchemaElement();
+//		
 //		writeWwfProjectDataSchemaElement();
 //		writeWcsDataSchemaElement();
 //		writeRareProjectDataSchemaElement();
@@ -313,12 +321,56 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 //		writeStartElement(out, WWF_PROJECT_DATA);
 //		writeEndElement(out, WWF_PROJECT_DATA);
 //	}
-//
-//	private void writeTncProjectDataSchemaElement() throws Exception
-//	{
-//		writeStartElement(out, TNC_PROJECT_DATA);
-//		writeEndElement(out, TNC_PROJECT_DATA);
-//	}
+
+	private void writeTncProjectDataSchemaElement() throws Exception
+	{
+		writeStartElement(out, TNC_PROJECT_DATA);
+		
+		writeOptionalElementWithSameTag(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
+		writeProjectId();
+		writeOptionalElementWithSameTag(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_PROJECT_SHARING_CODE);
+		writeOptionalElementWithSameTag(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
+		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_PROJECT_PLACE_TYPES, getTncProjectData(), TncProjectData.TAG_PROJECT_PLACE_TYPES);
+		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_ORGANIZATIONAL_PRIORITIES, getTncProjectData(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);
+		writeOptionalElementWithSameTag(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
+		writeOptionalElementWithSameTag(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
+		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_OPERATING_UNITS, getMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS);
+		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_TERRESTRIAL_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION);
+		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_MARINE_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION);
+		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_FRESHWATER_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION);
+		writeOptionalElementWithSameTag(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
+		
+		writeEndElement(out, TNC_PROJECT_DATA);
+	}
+	
+	private void writeProjectId() throws Exception
+	{
+		writeStartElement(getWriter(), createParentAndChildElementName(TNC_PROJECT_DATA, Xenodata.TAG_PROJECT_ID));
+		
+		writeStartElement(getWriter(), PROJECT_IDS_ELEMENT_NAME);
+		String stringRefMapAsString = getProject().getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
+		StringRefMap stringRefMap = new StringRefMap(stringRefMapAsString);
+		Set keys = stringRefMap.getKeys();
+		for(Object key: keys)
+		{
+			ORef xenodataRef = stringRefMap.getValue((String) key);
+			if (xenodataRef.isInvalid())
+			{
+				EAM.logWarning("Invalid Xenodata ref found for key: " + key + " while exporting.");
+				continue;
+			}
+
+			Xenodata xenodata = Xenodata.find(getProject(), xenodataRef);
+			String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
+
+			writeStartElement(getWriter(), Xenodata.TAG_PROJECT_ID);
+			writeXmlEncodedData(out, projectId);
+			writeEndElement(out, Xenodata.TAG_PROJECT_ID);
+		}
+		
+		writeEndElement(getWriter(), PROJECT_IDS_ELEMENT_NAME);
+		writeEndElement(getWriter(), createParentAndChildElementName(TNC_PROJECT_DATA, Xenodata.TAG_PROJECT_ID));
+	}
 
 	private void writeProjectSummaryPlanningSchemaElement() throws Exception
 	{
