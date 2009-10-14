@@ -84,4 +84,7 @@ public interface WcsXmlConstants
 	public static final String LATITUDE = "latitude";
 	public static final String LONGITUDE = "longitude";
 	public static final String PROJECT_IDS_ELEMENT_NAME = "ProjectIds";
+	public static final String DIAGRAM_FACTOR_ID_ELEMENT_NAME = "DiagramFactorId";
+	public static final String DIAGRAM_LINK_ID_ELEMENT_NAME = "DiagramLinkId";
+	public static final String SELECTED_TAGGED_OBJECT_SET_IDS = "SelectedTaggedObjectSetIds";
 }

@@ -21,17 +21,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.DiagramObject;
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 abstract public class DiagramSchemaElement extends BaseObjectSchemaElement
 {
 	public DiagramSchemaElement(String objectTypeNameToUse)
 	{
 		super(objectTypeNameToUse);
-		createTextField(DiagramObject.TAG_SHORT_LABEL);
-		createTextField(DiagramObject.TAG_DETAIL);
+
+		createOptionalTextField(DiagramObject.TAG_SHORT_LABEL);
+		createOptionalTextField(DiagramObject.TAG_DETAIL);
 		createIdListField(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, "DiagramFactor");
 		createIdListField(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, "DiagramLink");
 		createCodeListField(XmlSchemaCreator.HIDDEN_TYPES_ELEMENT_NAME);
-		createIdListField("SelectedTaggedObjectSetIds", XmlSchemaCreator.TAGGED_OBJECT_SET_ELEMENT_NAME);
+		createIdListField(WcsXmlConstants.SELECTED_TAGGED_OBJECT_SET_IDS, XmlSchemaCreator.TAGGED_OBJECT_SET_ELEMENT_NAME);
 	}
 }

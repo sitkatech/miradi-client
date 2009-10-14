@@ -12,7 +12,9 @@ ConservationProject.element = element miradi:ConservationProject
   WwfProjectData.element &
   WCSData.element &
   RareProjectData.element &
-  FosProjectData.element
+  FosProjectData.element &
+  ConceptualModelContainer.element ?  &
+  ResultsChainContainer.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -192,6 +194,32 @@ FosProjectData.element = element miradi:FosProjectData
   element miradi:FosProjectDataTrainingDates { text }? &
   element miradi:FosProjectDataTrainers { text }? &
   element miradi:FosProjectDataCoaches { text }?
+}
+
+ConceptualModelContainer.element = element miradi:ConceptualModelContainer { ConceptualModel.element* }
+ConceptualModel.element = element miradi:ConceptualModel
+{
+  attribute Id {xsd:integer}  &
+  element miradi:ConceptualModelLabel { text } &
+  element miradi:ConceptualModelShortLabel { text }? &
+  element miradi:ConceptualModelDetail { text }? &
+  element miradi:ConceptualModelDiagramFactorIds { DiagramFactorId.element* } &
+  element miradi:ConceptualModelDiagramFactorLinkIds { DiagramLinkId.element* } &
+  ConceptualModelHiddenTypesContainer.element &
+  element miradi:ConceptualModelSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }
+}
+
+ResultsChainContainer.element = element miradi:ResultsChainContainer { ResultsChain.element* }
+ResultsChain.element = element miradi:ResultsChain
+{
+  attribute Id {xsd:integer}  &
+  element miradi:ResultsChainLabel { text } &
+  element miradi:ResultsChainShortLabel { text }? &
+  element miradi:ResultsChainDetail { text }? &
+  element miradi:ResultsChainDiagramFactorIds { DiagramFactorId.element* } &
+  element miradi:ResultsChainDiagramFactorLinkIds { DiagramLinkId.element* } &
+  ResultsChainHiddenTypesContainer.element &
+  element miradi:ResultsChainSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
