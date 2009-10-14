@@ -22,19 +22,19 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
+import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class DiagramPointFieldSchemaElement extends FieldSchemaElement
 {
-	protected DiagramPointFieldSchemaElement(String objectTypeNameToUse,
-			String fieldNameToUse)
+	protected DiagramPointFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
 	{
 		super(objectTypeNameToUse, fieldNameToUse);
 	}
 
+	@Override
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
-		writer.write(" { DiagramPoint.element }");
+		writer.write(" { " + WcsXmlConstants.DIAGRAM_POINT_ELEMENT_NAME + ".element }");
 	}
-
 }

@@ -19,6 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.project;
 
+import java.awt.Dimension;
+import java.awt.Point;
+
 import org.martus.util.MultiCalendar;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
@@ -74,6 +77,9 @@ import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.DiagramFactorBackgroundQuestion;
+import org.miradi.questions.DiagramFactorFontColorQuestion;
+import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
@@ -97,6 +103,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
+import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.PointList;
 import org.miradi.utils.Translation;
@@ -387,6 +394,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		populateOrganization(organization);
 		
 		return organization;
+	}
+	
+	public DiagramFactor createAndPopulateDiagramFactor() throws Exception
+	{
+		DiagramFactor diagramFactor = createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		populateDiagramFactor(diagramFactor);
+		
+		return diagramFactor;
 	}
 	
 	public ProjectResource createProjectResource() throws Exception
@@ -797,6 +812,17 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(organization, Organization.TAG_EMAIL, "Some organization email");
 		fillObjectUsingCommand(organization, Organization.TAG_PHONE_NUMBER, "Some organization phone number");
 		fillObjectUsingCommand(organization, Organization.TAG_COMMENTS, "Some organization comments");
+	}
+	
+	public void populateDiagramFactor(DiagramFactor diagramFactor) throws Exception
+	{
+		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(new Point(10, 10)));
+		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FONT_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(30, 120)));
+		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_BACKGROUND_COLOR, DiagramFactorBackgroundQuestion.ORANGE_COLOR_CODE);
+		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FOREGROUND_COLOR, DiagramFactorFontColorQuestion.BROWN_HEX);
+		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FONT_SIZE, "2.5");
+		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FONT_STYLE, DiagramFactorFontStyleQuestion.BOLD_CODE);
+		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, "someZOrder");		
 	}
 	
 	public void populateEverything() throws Exception

@@ -44,6 +44,7 @@ public class TestWcsExporter extends TestCaseWithProject
 	public void testValidateFilledProject() throws Exception
 	{
 		getProject().populateEverything();
+		getProject().createAndPopulateDiagramFactor();
 		validateProject();
 	}
 

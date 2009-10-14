@@ -28,7 +28,7 @@ abstract public class BaseObjectSchemaElement extends ObjectSchemaElement
 		super(objectTypeNameToUse);
 		
 		createIdAttribute(objectTypeNameToUse);
-		createTextField(XmlSchemaCreator.LABEL_ELEMENT_NAME);
+		createOptionalTextField(XmlSchemaCreator.LABEL_ELEMENT_NAME);
 	}
 	
 	protected static final String FUNDING_SOURCE_ID = "FundingSourceId";

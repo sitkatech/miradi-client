@@ -118,6 +118,11 @@ public abstract class XmlExporter
 		out.writeln("</" + endElementName + ">");
 	}
 	
+	protected void writeElement(UnicodeWriter out, String elementName, int data) throws Exception
+	{
+		writeElement(out, elementName, Integer.toString(data));
+	}
+	
 	protected void writeElement(UnicodeWriter out, String elementName, String data) throws Exception
 	{
 		out.write("<" + elementName + ">");

@@ -37,7 +37,7 @@ public class DiagramFactorBackgroundQuestion extends StaticChoiceQuestion
 			new ChoiceItem("", EAM.text("Light Gray (Default)"), DiagramConstants.TEXT_BOX_COLOR),
 			new ChoiceItem("White", EAM.text("White"), new Color(255, 255, 255)),
 			new ChoiceItem("Pink", EAM.text("Pink"), new Color(255, 0, 255)),
-			new ChoiceItem("Orange", EAM.text("Light Orange"), new Color(255, 128, 64)),
+			new ChoiceItem(ORANGE_COLOR_CODE, EAM.text("Light Orange"), new Color(255, 128, 64)),
 			new ChoiceItem("LightYellow", EAM.text("Light Yellow"), new Color(255, 255, 205)),
 			new ChoiceItem("LightGreen", EAM.text("Light Green"), new Color(95, 251, 23)),
 			new ChoiceItem("LightBlue", EAM.text("Light Blue"), new Color(0, 204, 255)),
@@ -55,4 +55,6 @@ public class DiagramFactorBackgroundQuestion extends StaticChoiceQuestion
 			new ChoiceItem("Brown", EAM.text("Brown"), new Color(200, 90, 23)),
 		};
 	}
+
+	public static final String ORANGE_COLOR_CODE = "Orange";
 }

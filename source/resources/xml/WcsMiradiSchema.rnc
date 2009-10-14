@@ -14,7 +14,8 @@ ConservationProject.element = element miradi:ConservationProject
   RareProjectData.element &
   FosProjectData.element &
   ConceptualModelContainer.element ?  &
-  ResultsChainContainer.element ? 
+  ResultsChainContainer.element ?  &
+  DiagramFactorContainer.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -33,7 +34,7 @@ ProjectResourceContainer.element = element miradi:ProjectResourceContainer { Pro
 ProjectResource.element = element miradi:ProjectResource
 {
   attribute Id {xsd:integer}  &
-  element miradi:ProjectResourceLabel { text } &
+  element miradi:ProjectResourceLabel { text }? &
   element miradi:ProjectResourceResourceType { vocabulary_resource_type  } &
   element miradi:ProjectResourceName { text }? &
   element miradi:ProjectResourceSurName { text }? &
@@ -61,7 +62,7 @@ OrganizationContainer.element = element miradi:OrganizationContainer { Organizat
 Organization.element = element miradi:Organization
 {
   attribute Id {xsd:integer}  &
-  element miradi:OrganizationLabel { text } &
+  element miradi:OrganizationLabel { text }? &
   element miradi:OrganizationShortLabel { text } &
   element miradi:OrganizationRolesDescription { text } &
   element miradi:OrganizationContactFirstName { text } &
@@ -200,7 +201,7 @@ ConceptualModelContainer.element = element miradi:ConceptualModelContainer { Con
 ConceptualModel.element = element miradi:ConceptualModel
 {
   attribute Id {xsd:integer}  &
-  element miradi:ConceptualModelLabel { text } &
+  element miradi:ConceptualModelLabel { text }? &
   element miradi:ConceptualModelShortLabel { text }? &
   element miradi:ConceptualModelDetail { text }? &
   element miradi:ConceptualModelDiagramFactorIds { DiagramFactorId.element* } &
@@ -213,13 +214,29 @@ ResultsChainContainer.element = element miradi:ResultsChainContainer { ResultsCh
 ResultsChain.element = element miradi:ResultsChain
 {
   attribute Id {xsd:integer}  &
-  element miradi:ResultsChainLabel { text } &
+  element miradi:ResultsChainLabel { text }? &
   element miradi:ResultsChainShortLabel { text }? &
   element miradi:ResultsChainDetail { text }? &
   element miradi:ResultsChainDiagramFactorIds { DiagramFactorId.element* } &
   element miradi:ResultsChainDiagramFactorLinkIds { DiagramLinkId.element* } &
   ResultsChainHiddenTypesContainer.element &
   element miradi:ResultsChainSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }
+}
+
+DiagramFactorContainer.element = element miradi:DiagramFactorContainer { DiagramFactor.element* }
+DiagramFactor.element = element miradi:DiagramFactor
+{
+  attribute Id {xsd:integer}  &
+  element miradi:DiagramFactorLabel { text }? &
+  element miradi:DiagramFactorWrappedFactorId{ WrappedByDiagramFactorId.element } &
+  element miradi:DiagramFactorLocation { DiagramPoint.element } &
+  element miradi:DiagramFactorSize { DiagramSize.element } &
+  element miradi:DiagramFactorGroupBoxChildrenIds { DiagramFactorId.element* } &
+  element miradi:DiagramFactorFontSize { vocabulary_diagram_factor_font_size  } &
+  element miradi:DiagramFactorFontStyle { vocabulary_diagram_factor_font_style  } &
+  element miradi:DiagramFactorTextBoxZOrderCode { text }? &
+  element miradi:DiagramFactorFontColor { vocabulary_diagram_factor_foreground_color  } &
+  element miradi:DiagramFactorBackgroundColor { vocabulary_diagram_factor_background_color  }
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
@@ -269,43 +286,43 @@ vocabulary_measurement_trend = ''|'Unknown'|'StrongIncrease'|'MildIncrease'|'Fla
 vocabulary_measurement_status = ''|'1'|'2'|'3'|'4'
 vocabulary_measurement_status_confidence = ''|'RoughGuess'|'ExpertKnowledge'|'RapidAssessment'|'IntensiveAssessment'
 vocabulary_countries = 'ZZZ'|'XXX'|'AFG'|'ALA'|'ALB'|'DZA'|'ASM'|'AND'|'AGO'|'AIA'|'ATA'|'ATG'|'ARG'|'ARM'|'ABW'|'AUS'|'AUT'|'AZE'|'BHS'|'BHR'|'BGD'|'BRB'|'BLR'|'BEL'|'BLZ'|'BEN'|'BMU'|'BTN'|'BOL'|'BIH'|'BWA'|'BVT'|'BRA'|'IOT'|'VGB'|'BRN'|'BGR'|'BFA'|'BDI'|'KHM'|'CMR'|'CAN'|'CPV'|'CYM'|'CAF'|'TCD'|'CHL'|'CHN'|'CXR'|'CCK'|'COL'|'COM'|'COG'|'COK'|'CRI'|'CIV'|'HRV'|'CUB'|'CYP'|'CZE'|'PRK'|'COD'|'DNK'|'DJI'|'DMA'|'DOM'|'ECU'|'EGY'|'SLV'|'GNQ'|'ERI'|'EST'|'ETH'|'FRO'|'FLK'|'FJI'|'FIN'|'FRA'|'FXX'|'GUF'|'PYF'|'ATF'|'GAB'|'GMB'|'GEO'|'DEU'|'GHA'|'GIB'|'GRC'|'GRL'|'GRD'|'GLP'|'GUM'|'GTM'|'GIN'|'GNB'|'GUY'|'HTI'|'HMD'|'VAT'|'HND'|'HKG'|'HUN'|'ISL'|'IND'|'IDN'|'IRN'|'IRQ'|'IRL'|'IMN'|'ISR'|'ITA'|'JAM'|'JPN'|'JOR'|'KAZ'|'KEN'|'KIR'|'KWT'|'KGZ'|'LAO'|'LVA'|'LBN'|'LSO'|'LBR'|'LBY'|'LIE'|'LTU'|'LUX'|'MAC'|'MKD'|'MDG'|'MWI'|'MYS'|'MDV'|'MLI'|'MLT'|'MHL'|'MTQ'|'MRT'|'MUS'|'MYT'|'MEX'|'FSM'|'MCO'|'MNG'|'MSR'|'MAR'|'MOZ'|'MMR'|'NAM'|'NRU'|'NPL'|'NLD'|'ANT'|'NCL'|'NZL'|'NIC'|'NER'|'NGA'|'NIU'|'NFK'|'MNP'|'NOR'|'PSE'|'OMN'|'PAK'|'PLW'|'PAN'|'PNG'|'PRY'|'PER'|'PHL'|'PCN'|'POL'|'PRT'|'PRI'|'QAT'|'KOR'|'MDA'|'REU'|'ROU'|'RUS'|'RWA'|'SHN'|'KNA'|'LCA'|'SPM'|'VCT'|'WSM'|'SMR'|'STP'|'SAU'|'SEN'|'SCG'|'SYC'|'SLE'|'SGP'|'SVK'|'SVN'|'SLB'|'SOM'|'ZAF'|'SGS'|'ESP'|'LKA'|'SDN'|'SUR'|'SJM'|'SWZ'|'SWE'|'CHE'|'SYR'|'TWN'|'TJK'|'THA'|'TLS'|'TGO'|'TKL'|'TON'|'TTO'|'TUN'|'TUR'|'TKM'|'TCA'|'TUV'|'UGA'|'UKR'|'ARE'|'GBR'|'TZA'|'UMI'|'USA'|'VIR'|'URY'|'UZB'|'VUT'|'VEN'|'VNM'|'WLF'|'PSE'|'ESH'|'YEM'|'ZMB'|'ZWE'
-ConceptualModelId.element = element ConceptualModelId { xsd:integer }
-ResultsChainId.element = element ResultsChainId { xsd:integer }
-DiagramFactorId.element = element DiagramFactorId { xsd:integer }
-BiodiversityTargetId.element = element BiodiversityTargetId { xsd:integer }
-HumanWelfareTargetId.element = element HumanWelfareTargetId { xsd:integer }
-CauseId.element = element CauseId { xsd:integer }
-StrategyId.element = element StrategyId { xsd:integer }
-ThreatReductionResultId.element = element ThreatReductionResultId { xsd:integer }
-IntermediateResultId.element = element IntermediateResultId { xsd:integer }
-GroupBoxId.element = element GroupBoxId { xsd:integer }
-TextBoxId.element = element TextBoxId { xsd:integer }
-ScopeBoxId.element = element ScopeBoxId { xsd:integer }
-ActivityId.element = element ActivityId { xsd:integer }
-StressId.element = element StressId { xsd:integer }
-DiagramLinkId.element = element DiagramLinkId { xsd:integer }
-FactorLinkId.element = element FactorLinkId { xsd:integer }
-GoalId.element = element GoalId { xsd:integer }
-ObjectiveId.element = element ObjectiveId { xsd:integer }
-IndicatorId.element = element IndicatorId { xsd:integer }
-KeyEcologicalAttributeId.element = element KeyEcologicalAttributeId { xsd:integer }
-TaggedObjectSetId.element = element TaggedObjectSetId { xsd:integer }
-SubTargetId.element = element SubTargetId { xsd:integer }
-ThreatId.element = element ThreatId { xsd:integer }
-AccountingCodeId.element = element AccountingCodeId { xsd:integer }
-FundingSourceId.element = element FundingSourceId { xsd:integer }
-ProgressReportId.element = element ProgressReportId { xsd:integer }
-ProgressPercentId.element = element ProgressPercentId { xsd:integer }
-ExpenseAssignmentId.element = element ExpenseAssignmentId { xsd:integer }
-ResourceAssignmentId.element = element ResourceAssignmentId { xsd:integer }
-ResourceId.element = element ResourceId { xsd:integer }
-AcitivityId.element = element AcitivityId { xsd:integer }
-WrappedByDiagramLinkId.element = element WrappedByDiagramLinkId
+ConceptualModelId.element = element miradi:ConceptualModelId { xsd:integer }
+ResultsChainId.element = element miradi:ResultsChainId { xsd:integer }
+DiagramFactorId.element = element miradi:DiagramFactorId { xsd:integer }
+BiodiversityTargetId.element = element miradi:BiodiversityTargetId { xsd:integer }
+HumanWelfareTargetId.element = element miradi:HumanWelfareTargetId { xsd:integer }
+CauseId.element = element miradi:CauseId { xsd:integer }
+StrategyId.element = element miradi:StrategyId { xsd:integer }
+ThreatReductionResultId.element = element miradi:ThreatReductionResultId { xsd:integer }
+IntermediateResultId.element = element miradi:IntermediateResultId { xsd:integer }
+GroupBoxId.element = element miradi:GroupBoxId { xsd:integer }
+TextBoxId.element = element miradi:TextBoxId { xsd:integer }
+ScopeBoxId.element = element miradi:ScopeBoxId { xsd:integer }
+ActivityId.element = element miradi:ActivityId { xsd:integer }
+StressId.element = element miradi:StressId { xsd:integer }
+DiagramLinkId.element = element miradi:DiagramLinkId { xsd:integer }
+FactorLinkId.element = element miradi:FactorLinkId { xsd:integer }
+GoalId.element = element miradi:GoalId { xsd:integer }
+ObjectiveId.element = element miradi:ObjectiveId { xsd:integer }
+IndicatorId.element = element miradi:IndicatorId { xsd:integer }
+KeyEcologicalAttributeId.element = element miradi:KeyEcologicalAttributeId { xsd:integer }
+TaggedObjectSetId.element = element miradi:TaggedObjectSetId { xsd:integer }
+SubTargetId.element = element miradi:SubTargetId { xsd:integer }
+ThreatId.element = element miradi:ThreatId { xsd:integer }
+AccountingCodeId.element = element miradi:AccountingCodeId { xsd:integer }
+FundingSourceId.element = element miradi:FundingSourceId { xsd:integer }
+ProgressReportId.element = element miradi:ProgressReportId { xsd:integer }
+ProgressPercentId.element = element miradi:ProgressPercentId { xsd:integer }
+ExpenseAssignmentId.element = element miradi:ExpenseAssignmentId { xsd:integer }
+ResourceAssignmentId.element = element miradi:ResourceAssignmentId { xsd:integer }
+ResourceId.element = element miradi:ResourceId { xsd:integer }
+AcitivityId.element = element miradi:AcitivityId { xsd:integer }
+WrappedByDiagramLinkId.element = element miradi:WrappedByDiagramLinkId
 {
   FactorLinkId.element
 }
 
-WrappedByDiagramFactorId.element = element WrappedByDiagramFactorId
+WrappedByDiagramFactorId.element = element miradi:WrappedByDiagramFactorId
 {
   BiodiversityTargetId.element |
   HumanWelfareTargetId.element |
@@ -320,12 +337,12 @@ WrappedByDiagramFactorId.element = element WrappedByDiagramFactorId
   StressId.element 
 }
 
-ThreatReductionResultThreatId.element = element ThreatReductionResultThreatId
+ThreatReductionResultThreatId.element = element miradi:ThreatReductionResultThreatId
 {
   ThreatId.element
 }
 
-LinkableFactorId.element = element WrappedByDiagramFactorId
+LinkableFactorId.element = element miradi:WrappedByDiagramFactorId
 {
   BiodiversityTargetId.element |
   HumanWelfareTargetId.element |
