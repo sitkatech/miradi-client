@@ -51,7 +51,7 @@ class ObjectSchemaElement extends SchemaElement
 		fields.add(field);
 	}
 
-	public void createNumericField(String fieldNameToUse)
+	public void createOptionalNumericField(String fieldNameToUse)
 	{
 		FieldSchemaElement field = new OptionalNumericFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
