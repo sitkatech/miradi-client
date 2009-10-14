@@ -29,7 +29,7 @@ public class TextBoxObjectSchemaElement extends FactorObjectSchemaElement
 	{
 		super(WcsXmlConstants.TEXT_BOX);
 		
-		createBooleanField(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);
+		createOptionalBooleanField(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);
 		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME);
 		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME);		
 		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME);
