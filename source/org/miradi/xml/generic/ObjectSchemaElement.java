@@ -59,7 +59,7 @@ class ObjectSchemaElement extends SchemaElement
 
 	public void createDateField(String fieldNameToUse)
 	{
-		FieldSchemaElement field = new DateFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		FieldSchemaElement field = new OptionalDateFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
 	}
 	
