@@ -79,4 +79,8 @@ public interface WcsXmlConstants
 	public static final String MEASUREMENT = "Measurement";
 	public static final String ACCOUNTING_CODE = "AccountingCode";
 	public static final String FUNDING_SOURCE = "FundingSource";
+	public static final String PROJECT_LOCATION = "ProjectLocation";
+	public static final String GEOSPATIAL_LOCATION = "GeospatialLocation";
+	public static final String LATITUDE = "latitude";
+	public static final String LONGITUDE = "longitude";
 }

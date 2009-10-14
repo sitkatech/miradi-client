@@ -51,9 +51,9 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeProjectResourceObjectSchemaElement();
 		writeOrganizationObjectSchemaElement();
 		writeProjectSummaryScopeSchemaElement();
+		writeProjectSummaryLocationSchemaElement();
 		
 //FIXME urgent - wcs - uncomment and make it validate		
-//		writeProjectSummaryLocationSchemaElement();
 //		writeProjectSummaryPlanningSchemaElement();
 //
 //		writeTncProjectDataSchemaElement();
@@ -327,11 +327,33 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 //		writeEndElement(out, PROJECT_SUMMARY_PLANNING);
 //	}
 //
-//	private void writeProjectSummaryLocationSchemaElement() throws Exception
-//	{
-//		writeStartElement(out, PROJECT_SUMMARY_LOCATION);		
-//		writeEndElement(out, PROJECT_SUMMARY_LOCATION);
-//	}
+	private void writeProjectSummaryLocationSchemaElement() throws Exception
+	{
+		writeStartElement(getWriter(), PROJECT_SUMMARY_LOCATION);
+		
+		createGeospatialLocationField();
+		writeCodeListElement(WcsXmlConstants.PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_COUNTRIES, getMetadata(), ProjectMetadata.TAG_COUNTRIES);
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_LOCATION, getMetadata(), ProjectMetadata.TAG_STATE_AND_PROVINCES);
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_LOCATION, getMetadata(), ProjectMetadata.TAG_MUNICIPALITIES);
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_LOCATION, getMetadata(), ProjectMetadata.TAG_LEGISLATIVE_DISTRICTS);
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_LOCATION, getMetadata(), ProjectMetadata.TAG_LOCATION_DETAIL);
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_LOCATION, getMetadata(), ProjectMetadata.TAG_SITE_MAP_REFERENCE);
+		writeOptionalElementWithSameTag(PROJECT_SUMMARY_LOCATION, getMetadata(), ProjectMetadata.TAG_LOCATION_COMMENTS);
+			
+		writeEndElement(getWriter(), PROJECT_SUMMARY_LOCATION);
+	}
+
+	private void createGeospatialLocationField() throws Exception
+	{
+		writeStartElement(getWriter(), createParentAndChildElementName(PROJECT_SUMMARY_LOCATION, PROJECT_LOCATION));
+		
+		writeStartElement(getWriter(), GEOSPATIAL_LOCATION);
+		writeOptionalElement(getWriter(), LATITUDE, getMetadata().getLatitude());
+		writeOptionalElement(getWriter(), LONGITUDE, getMetadata().getLongitude());
+		writeEndElement(getWriter(), GEOSPATIAL_LOCATION);
+		
+		writeEndElement(getWriter(), createParentAndChildElementName(PROJECT_SUMMARY_LOCATION, PROJECT_LOCATION));
+	}
 
 	private void writeProjectSummaryScopeSchemaElement() throws Exception
 	{
@@ -497,6 +519,11 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeStartElement(getWriter(), parentElementName + elementName);
 		writeXmlEncodedData(getWriter(), code);
 		writeEndElement(getWriter(), parentElementName + elementName);
+	}
+	
+	private String createParentAndChildElementName(String parentElementName, String childElementName)
+	{
+		return parentElementName + childElementName;
 	}
 
 	private ProjectMetadata getMetadata()

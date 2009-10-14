@@ -5,7 +5,8 @@ ConservationProject.element = element miradi:ConservationProject
   ProjectSummary.element &
   ProjectResourceContainer.element ?  &
   OrganizationContainer.element ?  &
-  ProjectSummaryScope.element
+  ProjectSummaryScope.element &
+  ProjectSummaryLocation.element
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -88,6 +89,18 @@ ProjectSummaryScope.element = element miradi:ProjectSummaryScope
   element miradi:ProjectSummaryScopeVisitationInformation { text }? &
   element miradi:ProjectSummaryScopeCurrentLandUses { text }? &
   element miradi:ProjectSummaryScopeManagementResources { text }?
+}
+
+ProjectSummaryLocation.element = element miradi:ProjectSummaryLocation
+{
+  element miradi:ProjectSummaryLocationProjectLocation { GeospatialLocation.element } &
+  ProjectSummaryLocationCountriesContainer.element &
+  element miradi:ProjectSummaryLocationStateAndProvinces { text }? &
+  element miradi:ProjectSummaryLocationMunicipalities { text }? &
+  element miradi:ProjectSummaryLocationLegislativeDistricts { text }? &
+  element miradi:ProjectSummaryLocationLocationDetail { text }? &
+  element miradi:ProjectSummaryLocationSiteMapReference { text }? &
+  element miradi:ProjectSummaryLocationLocationComments { text }?
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
