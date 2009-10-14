@@ -173,7 +173,7 @@ class ObjectSchemaElement extends SchemaElement
 	
 	protected void createOptionalBooleanField(String fieldNameToUse)
 	{
-		FieldSchemaElement field = new BooleanFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		FieldSchemaElement field = new OptionalBooleanFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
 	}
 	
