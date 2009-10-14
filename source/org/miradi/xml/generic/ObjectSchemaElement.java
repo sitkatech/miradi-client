@@ -125,7 +125,7 @@ class ObjectSchemaElement extends SchemaElement
 	
 	protected void createGeospatialLocationField(String fieldNameToUse)
 	{
-		FieldSchemaElement field = new LocationFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		FieldSchemaElement field = new OptionalLocationFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
 	}
 	
