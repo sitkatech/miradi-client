@@ -21,8 +21,10 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.CodeListData;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.questions.CountriesQuestion;
 import org.miradi.questions.WwfEcoRegionsQuestion;
 import org.miradi.questions.WwfManagingOfficesQuestion;
@@ -65,6 +67,16 @@ public class WwfProjectData extends BaseObject
 	public static boolean canReferToThisType(int type)
 	{
 		return false;
+	}
+	
+	public static WwfProjectData find(ObjectManager objectManager, ORef wwfProjectDataRef)
+	{
+		return (WwfProjectData) objectManager.findObject(wwfProjectDataRef);
+	}
+	
+	public static WwfProjectData find(Project project, ORef wwfProjectDataRef)
+	{
+		return find(project.getObjectManager(), wwfProjectDataRef);
 	}
 	
 	void clear()
