@@ -96,7 +96,10 @@ abstract public class BaseObjectContainerExporter implements WcsXmlConstants
 		return wcsXmlExporter;
 	}
 	
-	abstract protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception;
+	protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception
+	{
+		writeOptionalElementWithSameTag(baseObject, BaseObject.TAG_LABEL);
+	}
 	
 	private WcsXmlExporter wcsXmlExporter;
 	private int objectType;

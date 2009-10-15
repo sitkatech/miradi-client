@@ -17,7 +17,8 @@ ConservationProject.element = element miradi:ConservationProject
   ResultsChainContainer.element ?  &
   DiagramFactorContainer.element ?  &
   DiagramLinkContainer.element ?  &
-  BiodiversityTargetContainer.element ? 
+  BiodiversityTargetContainer.element ?  &
+  HumanWelfareTargetContainer.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -272,6 +273,23 @@ BiodiversityTarget.element = element miradi:BiodiversityTarget
   element miradi:BiodiversityTargetStressIds { StressId.element* } &
   BiodiversityTargetHabitatAssociationContainer.element &
   element miradi:BiodiversityTargetSpeciesLatinName { text }?
+}
+
+HumanWelfareTargetContainer.element = element miradi:HumanWelfareTargetContainer { HumanWelfareTarget.element* }
+HumanWelfareTarget.element = element miradi:HumanWelfareTarget
+{
+  attribute Id {xsd:integer}  &
+  element miradi:HumanWelfareTargetLabel { text }? &
+  element miradi:HumanWelfareTargetShortLabel { text }? &
+  element miradi:HumanWelfareTargetText { text }? &
+  element miradi:HumanWelfareTargetComments { text }? &
+  element miradi:HumanWelfareTargetTargetStatus { vocabulary_target_status  } &
+  element miradi:HumanWelfareTargetViabilityMode { vocabulary_target_viability_mode  } &
+  element miradi:HumanWelfareTargetCurrentStatusJustification { text }? &
+  element miradi:HumanWelfareTargetSubTargetIds { SubTargetId.element* } &
+  element miradi:HumanWelfareTargetGoalIds { GoalId.element* } &
+  element miradi:HumanWelfareTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* } &
+  element miradi:HumanWelfareTargetIndicatorIds { IndicatorId.element* }
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 

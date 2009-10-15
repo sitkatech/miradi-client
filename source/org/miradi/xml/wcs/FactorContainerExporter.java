@@ -22,6 +22,7 @@ package org.miradi.xml.wcs;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Factor;
 
 public abstract class FactorContainerExporter extends BaseObjectContainerExporter
 {
@@ -32,6 +33,10 @@ public abstract class FactorContainerExporter extends BaseObjectContainerExporte
 
 	protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception
 	{
+		super.exportFields(writer, baseObject);
 		
+		writeOptionalElementWithSameTag(baseObject, Factor.TAG_SHORT_LABEL);
+		writeOptionalElementWithSameTag(baseObject, Factor.TAG_TEXT);
+		writeOptionalElementWithSameTag(baseObject, Factor.TAG_COMMENTS);
 	}
 }
