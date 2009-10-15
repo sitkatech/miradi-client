@@ -29,15 +29,15 @@ public class IndicatorObjectSchemaElement extends BaseObjectSchemaElement
 	{
 		super(WcsXmlConstants.INDICATOR);
 		
-		createTextField(Indicator.TAG_SHORT_LABEL);
-		createTextField(Indicator.TAG_DETAIL);
-		createTextField(Indicator.TAG_COMMENTS);
+		createOptionalTextField(Indicator.TAG_SHORT_LABEL);
+		createOptionalTextField(Indicator.TAG_DETAIL);
+		createOptionalTextField(Indicator.TAG_COMMENTS);
 		createCodeField(Indicator.TAG_PRIORITY, XmlSchemaCreator.VOCABULARY_PRIORITY_RATING_CODE);
 		createOptionalDateField(Indicator.TAG_FUTURE_STATUS_DATE);
-		createTextField(Indicator.TAG_FUTURE_STATUS_SUMMARY);
+		createOptionalTextField(Indicator.TAG_FUTURE_STATUS_SUMMARY);
 		createCodeField(Indicator.TAG_FUTURE_STATUS_RATING, XmlSchemaCreator.VOCABULARY_STATUS_CODE);
-		createTextField(Indicator.TAG_FUTURE_STATUS_DETAIL);
-		createTextField(Indicator.TAG_FUTURE_STATUS_COMMENT);	
+		createOptionalTextField(Indicator.TAG_FUTURE_STATUS_DETAIL);
+		createOptionalTextField(Indicator.TAG_FUTURE_STATUS_COMMENT);	
 		createIdListField(WcsXmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
 		createIdListField(WcsXmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createIdListField(Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);

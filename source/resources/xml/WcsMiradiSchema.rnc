@@ -30,7 +30,8 @@ ConservationProject.element = element miradi:ConservationProject
   StressContainer.element ?  &
   SubTargetContainer.element ?  &
   GoalContainer.element ?  &
-  ObjectiveContainer.element ? 
+  ObjectiveContainer.element ?  &
+  IndicatorContainer.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -444,9 +445,9 @@ Goal.element = element miradi:Goal
   element miradi:GoalLabel { text }? &
   element miradi:GoalShortLabel { text }? &
   element miradi:GoalFullText { text }? &
+  element miradi:GoalRelevantIndicatorIds { IndicatorId.element* } &
   element miradi:GoalRelevantStrategyIds { StrategyId.element* } &
   element miradi:GoalRelevantActiviyIds { ActivityId.element* } &
-  element miradi:GoalRelevantIndicatorIds { IndicatorId.element* } &
   element miradi:GoalProgressPercentIds { ProgressPercentId.element* } &
   element miradi:GoalComments { text }?
 }
@@ -458,11 +459,30 @@ Objective.element = element miradi:Objective
   element miradi:ObjectiveLabel { text }? &
   element miradi:ObjectiveShortLabel { text }? &
   element miradi:ObjectiveFullText { text }? &
+  element miradi:ObjectiveRelevantIndicatorIds { IndicatorId.element* } &
   element miradi:ObjectiveRelevantStrategyIds { StrategyId.element* } &
   element miradi:ObjectiveRelevantActiviyIds { ActivityId.element* } &
-  element miradi:ObjectiveRelevantIndicatorIds { IndicatorId.element* } &
   element miradi:ObjectiveProgressPercentIds { ProgressPercentId.element* } &
   element miradi:ObjectiveComments { text }?
+}
+
+IndicatorContainer.element = element miradi:IndicatorContainer { Indicator.element* }
+Indicator.element = element miradi:Indicator
+{
+  attribute Id {xsd:integer}  &
+  element miradi:IndicatorLabel { text }? &
+  element miradi:IndicatorShortLabel { text }? &
+  element miradi:IndicatorDetail { text }? &
+  element miradi:IndicatorComments { text }? &
+  element miradi:IndicatorPriority { vocabulary_priority_rating_code  } &
+  element miradi:IndicatorFutureStatusDate { vocabulary_date }? &
+  element miradi:IndicatorFutureStatusSummary { text }? &
+  element miradi:IndicatorFutureStatusRating { vocabulary_status_code  } &
+  element miradi:IndicatorFutureStatusDetail { text }? &
+  element miradi:IndicatorFutureStatusComment { text }? &
+  element miradi:IndicatorProgressReportIds { ProgressReportId.element* } &
+  element miradi:IndicatorExpenseIds { ExpenseAssignmentId.element* } &
+  element miradi:IndicatorAssignmentIds { ResourceAssignmentId.element* }
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
