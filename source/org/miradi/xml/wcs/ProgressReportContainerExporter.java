@@ -18,19 +18,26 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.generic;
+package org.miradi.xml.wcs;
 
+import org.martus.util.UnicodeWriter;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressReport;
-import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class ProgressReportObjectSchemaElement extends ObjectSchemaElement
+public class ProgressReportContainerExporter extends ObjectContainerExporter
 {
-	public ProgressReportObjectSchemaElement()
+	public ProgressReportContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
-		super(WcsXmlConstants.PROGRESS_REPORT);
+		super(wcsXmlExporterToUse, PROGRESS_REPORT, ProgressReport.getObjectType());
+	}
+	
+	@Override
+	protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception
+	{
+		super.exportFields(writer, baseObject);
 		
-		createOptionalDateField(ProgressReport.TAG_PROGRESS_DATE);
-		createOptionalTextField(ProgressReport.TAG_DETAILS);
-		createCodeField(XmlSchemaCreator.PROGRESS_REPORT_STATUS, XmlSchemaCreator.VOCABULARY_PROGRESS_REPORT_STATUS);
+		writeElementWithSameTag(baseObject, ProgressReport.TAG_PROGRESS_DATE);
+		writeElementWithSameTag(baseObject, ProgressReport.TAG_DETAILS);
+		writeCodeElementSameAsTag(baseObject, ProgressReport.TAG_PROGRESS_STATUS);
 	}
 }
