@@ -30,10 +30,10 @@ public class KeyEcologicalAttributeObjectSchemaElement extends BaseObjectSchemaE
 	{
 		super(WcsXmlConstants.KEY_ECOLOGICAL_ATTRIBUTE);
 		
-		createTextField(KeyEcologicalAttribute.TAG_SHORT_LABEL);
+		createOptionalTextField(KeyEcologicalAttribute.TAG_SHORT_LABEL);
 		createIdListField(Factor.TAG_INDICATOR_IDS, "Indicator");
-		createTextField(KeyEcologicalAttribute.TAG_DESCRIPTION);
-		createTextField(KeyEcologicalAttribute.TAG_DETAILS);
+		createOptionalTextField(KeyEcologicalAttribute.TAG_DESCRIPTION);
+		createOptionalTextField(KeyEcologicalAttribute.TAG_DETAILS);
 		createCodeField(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, XmlSchemaCreator.VOCABULARY_KEA_TYPE);
 	}
 }
