@@ -102,4 +102,6 @@ public interface WcsXmlConstants
 	public static final String FROM_DIAGRAM_FACTOR_ID = "FromDiagramFactorId";
 	public static final String TO_DIAGRAM_FACTOR_ID = "ToDiagramFactorId";
 	public static final String BEND_POINTS_ELEMENT_NAME = "BendPoints";
+	public static final String GROUP_BOX_CHILDREN_IDS = "GroupBoxChildrenIds";
+	public static final String GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID = "GroupedDiagramLinkIds";
 }
