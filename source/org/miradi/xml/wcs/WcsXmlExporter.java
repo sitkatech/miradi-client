@@ -108,7 +108,6 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 //FIXME urgent - wcs - uncomment and make it validate
 //		writeResourceAssignmentObjectSchemaElement();
 //		writeExpenseAssignmentObjectSchemaElement();
-//		writeProgressPercentObjectSchemaElement();
 //		writeThreatTargetThreatRatingElement();
 //		writeSimpleThreatRatingSchemaElement();
 //		writeStressBasedThreatRatingElement();
