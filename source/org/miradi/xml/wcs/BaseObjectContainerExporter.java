@@ -76,6 +76,16 @@ abstract public class BaseObjectContainerExporter implements WcsXmlConstants
 		getWcsXmlExporter().writeCodeListElement(getContainerName(), codeListElementName, baseObject, tag);
 	}
 	
+	protected void writeCodeElementSameAsTag(BaseObject baseObject, String tag) throws Exception
+	{
+		writeCodeElement(tag, baseObject.getData(tag));
+	}
+	
+	protected void writeCodeElement(String codeElementName, String code) throws Exception
+	{
+		getWcsXmlExporter().writeCodeElement(getContainerName(), codeElementName, code);
+	}
+	
 	protected String getContainerName()
 	{
 		return containerName;

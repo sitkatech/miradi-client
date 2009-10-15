@@ -86,6 +86,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeDiagramLinkSchemaElement();
 		writeBiodiversityTargetObjectSchemaElement();
 		new HumanWelfareTargetContainerExporter(this).exportBaseObjectContainer();
+		new CauseContainerExporter(this).exportBaseObjectContainer();
 		
 //FIXME urgent - wcs - uncomment and make it validate		
 //		writeHumanWelfareTargetSchemaElement();
@@ -807,7 +808,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeEndContainerElement(parentElementName + containerElementName);
 	}
 	
-	private void writeCodeElement(String parentElementName, String elementName, String code) throws Exception
+	public void writeCodeElement(String parentElementName, String elementName, String code) throws Exception
 	{
 		writeStartElement(getWriter(), parentElementName + elementName);
 		writeXmlEncodedData(getWriter(), code);
