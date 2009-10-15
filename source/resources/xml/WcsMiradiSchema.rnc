@@ -28,7 +28,9 @@ ConservationProject.element = element miradi:ConservationProject
   ScopeBoxContainer.element ?  &
   KeyEcologicalAttributeContainer.element ?  &
   StressContainer.element ?  &
-  SubTargetContainer.element ? 
+  SubTargetContainer.element ?  &
+  GoalContainer.element ?  &
+  ObjectiveContainer.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -433,6 +435,34 @@ SubTarget.element = element miradi:SubTarget
   element miradi:SubTargetLabel { text }? &
   element miradi:SubTargetShortLabel { text } &
   element miradi:SubTargetDetail { text }
+}
+
+GoalContainer.element = element miradi:GoalContainer { Goal.element* }
+Goal.element = element miradi:Goal
+{
+  attribute Id {xsd:integer}  &
+  element miradi:GoalLabel { text }? &
+  element miradi:GoalShortLabel { text }? &
+  element miradi:GoalFullText { text }? &
+  element miradi:GoalRelevantStrategyIds { StrategyId.element* } &
+  element miradi:GoalRelevantActiviyIds { ActivityId.element* } &
+  element miradi:GoalRelevantIndicatorIds { IndicatorId.element* } &
+  element miradi:GoalProgressPercentIds { ProgressPercentId.element* } &
+  element miradi:GoalComments { text }?
+}
+
+ObjectiveContainer.element = element miradi:ObjectiveContainer { Objective.element* }
+Objective.element = element miradi:Objective
+{
+  attribute Id {xsd:integer}  &
+  element miradi:ObjectiveLabel { text }? &
+  element miradi:ObjectiveShortLabel { text }? &
+  element miradi:ObjectiveFullText { text }? &
+  element miradi:ObjectiveRelevantStrategyIds { StrategyId.element* } &
+  element miradi:ObjectiveRelevantActiviyIds { ActivityId.element* } &
+  element miradi:ObjectiveRelevantIndicatorIds { IndicatorId.element* } &
+  element miradi:ObjectiveProgressPercentIds { ProgressPercentId.element* } &
+  element miradi:ObjectiveComments { text }?
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 

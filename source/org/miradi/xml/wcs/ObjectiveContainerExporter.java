@@ -18,23 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.generic;
+package org.miradi.xml.wcs;
 
-import org.miradi.objects.Desire;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.objects.Objective;
 
-public class DesireSchemaElement extends BaseObjectSchemaElement
+public class ObjectiveContainerExporter extends DesireContainerExporter
 {
-	public DesireSchemaElement(String objectTypeNameToUse)
+	public ObjectiveContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
-		super(objectTypeNameToUse);
-		
-		createOptionalTextField(Desire.TAG_SHORT_LABEL);
-		createOptionalTextField(Desire.TAG_FULL_TEXT);
-		createIdListField(WcsXmlConstants.RELEVANT_INDICATOR_IDS, WcsXmlConstants.INDICATOR);
-		createIdListField(WcsXmlConstants.RELEVANT_STRATEGY_IDS, WcsXmlConstants.STRATEGY);
-		createIdListField(WcsXmlConstants.RELEVANT_ACTIVITY_IDS, WcsXmlConstants.ACTIVITY);
-		createIdListField(WcsXmlConstants.PROGRESS_PERCENT_IDS, XmlSchemaCreator.PROGRESS_PERCENT_ID_ELEMENT_NAME);
-		createOptionalTextField(Desire.TAG_COMMENTS);
+		super(wcsXmlExporterToUse, OBJECTIVE, Objective.getObjectType());
 	}
 }

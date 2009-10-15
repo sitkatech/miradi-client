@@ -107,7 +107,11 @@ public interface WcsXmlConstants
 	public static final String FUNDING_SOURCE_ID = "FundingSourceId";
 	public static final String ACCOUNTING_CODE_ID = "AccountingCodeId";
 	public static final String PROGRESS_REPORT_IDS = "ProgressReportIds";
+	public static final String PROGRESS_PERCENT_IDS = "ProgressPercentIds";
 	public static final String EXPENSE_IDS = "ExpenseIds";
 	public static final String RELATED_THREAT_ID = "RelatedDirectThreatId";
 	public static final String THREAT_ID = "ThreatId";
+	public static final String RELEVANT_ACTIVITY_IDS = "RelevantActiviyIds";
+	public static final String RELEVANT_STRATEGY_IDS = "RelevantStrategyIds";	
+	public static final String RELEVANT_INDICATOR_IDS = "RelevantIndicatorIds";
 }

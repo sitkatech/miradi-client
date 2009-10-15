@@ -116,6 +116,11 @@ abstract public class BaseObjectContainerExporter implements WcsXmlConstants
 		writeIds(WcsXmlConstants.PROGRESS_REPORT_IDS, WcsXmlConstants.PROGRESS_REPORT, baseObject.getProgressReportRefs());
 	}
 	
+	protected void writeProgressPercetIds(ORefList progressPercentRefs) throws Exception
+	{
+		writeIds(WcsXmlConstants.PROGRESS_PERCENT_IDS, WcsXmlConstants.PROGRESS_PERCENT, progressPercentRefs);
+	}
+	
 	protected void writeExpenseAssignmentIds(BaseObject baseObject) throws Exception
 	{
 		writeIds(WcsXmlConstants.EXPENSE_IDS, WcsXmlConstants.EXPENSE_ASSIGNMENT, baseObject.getExpenseAssignmentRefs());
@@ -128,7 +133,12 @@ abstract public class BaseObjectContainerExporter implements WcsXmlConstants
 	
 	protected void writeIndicatorIds(ORefList indicatorRefs) throws Exception
 	{
-		writeIds("IndicatorIds", WcsXmlConstants.INDICATOR, indicatorRefs);
+		writeIndicatorIds("IndicatorIds", indicatorRefs);
+	}
+
+	protected void writeIndicatorIds(String idsElementName, ORefList indicatorRefs) throws Exception
+	{
+		writeIds(idsElementName, WcsXmlConstants.INDICATOR, indicatorRefs);
 	}
 	
 	private WcsXmlExporter wcsXmlExporter;
