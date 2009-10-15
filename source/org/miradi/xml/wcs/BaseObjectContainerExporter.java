@@ -126,6 +126,11 @@ abstract public class BaseObjectContainerExporter implements WcsXmlConstants
 		writeIds(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, WcsXmlConstants.RESOURCE_ASSIGNMENT, baseObject.getResourceAssignmentRefs());
 	}
 	
+	protected void writeIndicatorIds(ORefList indicatorRefs) throws Exception
+	{
+		writeIds("IndicatorIds", WcsXmlConstants.INDICATOR, indicatorRefs);
+	}
+	
 	private WcsXmlExporter wcsXmlExporter;
 	private int objectType;
 	private String containerName;

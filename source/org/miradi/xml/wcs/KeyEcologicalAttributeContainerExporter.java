@@ -22,31 +22,25 @@ package org.miradi.xml.wcs;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Factor;
+import org.miradi.objects.KeyEcologicalAttribute;
 
-public abstract class FactorContainerExporter extends BaseObjectContainerExporter
+public class KeyEcologicalAttributeContainerExporter extends BaseObjectContainerExporter
 {
-	public FactorContainerExporter(WcsXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
+	public KeyEcologicalAttributeContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, containerNameToUse, objectTypeToUse);
+		super(wcsXmlExporterToUse, KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.getObjectType());
 	}
-
+	
+	@Override
 	protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception
 	{
 		super.exportFields(writer, baseObject);
 		
-		writeOptionalElementWithSameTag(baseObject, Factor.TAG_SHORT_LABEL);
-		writeOptionalElementWithSameTag(baseObject, Factor.TAG_TEXT);
-		writeOptionalElementWithSameTag(baseObject, Factor.TAG_COMMENTS);
-	}
-	
-	protected void writeIndicatorIds(Factor factor) throws Exception
-	{
-		writeIndicatorIds(factor.getDirectOrIndirectIndicatorRefs());
-	}
-
-	protected void writeObjectiveIds(Factor factor) throws Exception
-	{
-		writeIds("ObjectiveIds", WcsXmlConstants.OBJECTIVE, factor.getObjectiveRefs());
+		writeOptionalElementWithSameTag(baseObject, KeyEcologicalAttribute.TAG_SHORT_LABEL);
+		writeOptionalElementWithSameTag(baseObject, KeyEcologicalAttribute.TAG_DETAILS);
+		writeOptionalElementWithSameTag(baseObject, KeyEcologicalAttribute.TAG_DESCRIPTION);
+		KeyEcologicalAttribute keyEcologicalAttribute = (KeyEcologicalAttribute) baseObject;
+		writeIndicatorIds(keyEcologicalAttribute.getIndicatorRefs());
+		writeCodeElementSameAsTag(keyEcologicalAttribute, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
 	}
 }
