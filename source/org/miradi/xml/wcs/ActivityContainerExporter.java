@@ -18,15 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.generic;
-
-import org.miradi.xml.wcs.WcsXmlConstants;
+package org.miradi.xml.wcs;
 
 
-public class TaskObjectSchemaElement extends AbstractTaskObjectSchemaElement
+public class ActivityContainerExporter extends AbstractTaskContainerExporter
 {
-	public TaskObjectSchemaElement()
+	public ActivityContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
-		super(WcsXmlConstants.TASK);
+		super(wcsXmlExporterToUse, ACTIVITY);
 	}
 }

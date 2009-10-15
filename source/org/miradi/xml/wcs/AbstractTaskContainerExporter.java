@@ -18,15 +18,25 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.generic;
+package org.miradi.xml.wcs;
 
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.martus.util.UnicodeWriter;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.Task;
 
-
-public class TaskObjectSchemaElement extends AbstractTaskObjectSchemaElement
+abstract public class AbstractTaskContainerExporter extends FactorContainerExporter
 {
-	public TaskObjectSchemaElement()
+	public AbstractTaskContainerExporter(WcsXmlExporter wcsXmlExporterToUse, String containerNameToUse)
 	{
-		super(WcsXmlConstants.TASK);
+		super(wcsXmlExporterToUse, containerNameToUse, Task.getObjectType());
+	}
+	
+	@Override
+	protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception
+	{
+		super.exportFields(writer, baseObject);
+		
+		writeExpenseAssignmentIds(baseObject);
+		writeResourceAssignmentIds(baseObject);
 	}
 }

@@ -99,11 +99,11 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		new GoalContainerExporter(this).exportBaseObjectContainer();
 		new ObjectiveContainerExporter(this).exportBaseObjectContainer();
 		new IndicatorContainerExporter(this).exportBaseObjectContainer();
+		new ActivityContainerExporter(this).exportBaseObjectContainer();
+		new MethodContainerExporter(this).exportBaseObjectContainer();
+		new TaskContainerExporter(this).exportBaseObjectContainer();
 		
 //FIXME urgent - wcs - uncomment and make it validate
-//		writeActivityObjectSchemaElement();
-//		writeMethodObjectSchemaElement();
-//		writeTaskObjectSchemaElement();
 //		writeResourceAssignmentObjectSchemaElement();
 //		writeExpenseAssignmentObjectSchemaElement();
 //		writeProgressReportObjectSchemaElement();
