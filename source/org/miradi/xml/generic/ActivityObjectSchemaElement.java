@@ -29,7 +29,7 @@ public class ActivityObjectSchemaElement extends FactorObjectSchemaElement
 	{
 		super(WcsXmlConstants.ACTIVITY);
 		
-		createIdListField(EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
+		createIdListField(WcsXmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createIdListField(Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
 	}
 }

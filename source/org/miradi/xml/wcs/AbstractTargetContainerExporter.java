@@ -40,9 +40,9 @@ public abstract class AbstractTargetContainerExporter extends FactorContainerExp
 		writeElementWithSameTag(baseObject, AbstractTarget.TAG_TARGET_STATUS);
 		writeElementWithSameTag(baseObject, AbstractTarget.TAG_VIABILITY_MODE);
 		writeOptionalElementWithSameTag(baseObject, AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION);
-		writeIds("SubTargetIds", "SubTargetId", abstractTarget.getSubTargetRefs());
-		writeIds("GoalIds", "GoalId", abstractTarget.getGoalRefs());
-		writeIds("KeyEcologicalAttributeIds", "KeyEcologicalAttributeId", abstractTarget.getKeyEcologicalAttributeRefs());
-		writeIds("IndicatorIds", "IndicatorId", abstractTarget.getDirectOrIndirectIndicatorRefs());
+		writeIds("SubTargetIds", WcsXmlConstants.SUB_TARGET, abstractTarget.getSubTargetRefs());
+		writeIds(AbstractTarget.TAG_GOAL_IDS, WcsXmlConstants.GOAL, abstractTarget.getGoalRefs());
+		writeIds(AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, WcsXmlConstants.KEY_ECOLOGICAL_ATTRIBUTE, abstractTarget.getKeyEcologicalAttributeRefs());
+		writeIndicatorIds(abstractTarget);
 	}
 }

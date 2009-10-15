@@ -29,8 +29,8 @@ public class ExpenseAssignmentObjectSchemaElement extends BaseObjectSchemaElemen
 	{
 		super(WcsXmlConstants.EXPENSE_ASSIGNMENT);
 		
-		createFundingSourceIdField(FUNDING_SOURCE_ID);
-		createAccountingCodeIdField(ACCOUNTING_CODE_ID);
+		createFundingSourceIdField(WcsXmlConstants.FUNDING_SOURCE_ID);
+		createAccountingCodeIdField(WcsXmlConstants.ACCOUNTING_CODE_ID);
 		createDateUnitExpenseField(ExpenseAssignment.TAG_DATEUNIT_EFFORTS);
 	}
 }

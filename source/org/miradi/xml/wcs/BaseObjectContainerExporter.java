@@ -68,7 +68,7 @@ abstract public class BaseObjectContainerExporter implements WcsXmlConstants
 	
 	protected void writeIds(String idsElementName, String idElementName, ORefList refs) throws Exception
 	{
-		getWcsXmlExporter().writeIds(getContainerName(), idsElementName, idElementName, refs);
+		getWcsXmlExporter().writeIds(getContainerName(), idsElementName, idElementName + WcsXmlConstants.ID, refs);
 	}
 	
 	protected void writeCodeListElement(String codeListElementName, BaseObject baseObject, String tag) throws Exception
@@ -109,6 +109,21 @@ abstract public class BaseObjectContainerExporter implements WcsXmlConstants
 	protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception
 	{
 		writeOptionalElementWithSameTag(baseObject, BaseObject.TAG_LABEL);
+	}
+	
+	protected void writeProgressReportIds(BaseObject baseObject) throws Exception
+	{
+		writeIds(WcsXmlConstants.PROGRESS_REPORT_IDS, WcsXmlConstants.PROGRESS_REPORT, baseObject.getProgressReportRefs());
+	}
+	
+	protected void writeExpenseAssignmentIds(BaseObject baseObject) throws Exception
+	{
+		writeIds(WcsXmlConstants.EXPENSE_IDS, WcsXmlConstants.EXPENSE_ASSIGNMENT, baseObject.getExpenseAssignmentRefs());
+	}
+	
+	protected void writeResourceAssignmentIds(BaseObject baseObject) throws Exception
+	{
+		writeIds(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, WcsXmlConstants.RESOURCE_ASSIGNMENT, baseObject.getResourceAssignmentRefs());
 	}
 	
 	private WcsXmlExporter wcsXmlExporter;

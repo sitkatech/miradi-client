@@ -39,4 +39,14 @@ public abstract class FactorContainerExporter extends BaseObjectContainerExporte
 		writeOptionalElementWithSameTag(baseObject, Factor.TAG_TEXT);
 		writeOptionalElementWithSameTag(baseObject, Factor.TAG_COMMENTS);
 	}
+	
+	protected void writeIndicatorIds(Factor factor) throws Exception
+	{
+		writeIds("IndicatorIds", WcsXmlConstants.INDICATOR, factor.getDirectOrIndirectIndicatorRefs());
+	}
+
+	protected void writeObjectiveIds(Factor factor) throws Exception
+	{
+		writeIds("ObjectiveIds", WcsXmlConstants.OBJECTIVE, factor.getObjectiveRefs());
+	}
 }
