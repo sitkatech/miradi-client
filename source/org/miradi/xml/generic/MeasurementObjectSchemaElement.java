@@ -32,9 +32,9 @@ public class MeasurementObjectSchemaElement extends BaseObjectSchemaElement
 		createCodeField(XmlSchemaCreator.MEASUREMENT_TREND, XmlSchemaCreator.VOCABULARY_MEASUREMENT_TREND);
 		createCodeField(XmlSchemaCreator.MEASUREMENT_STATUS, XmlSchemaCreator.VOCABULARY_MEASUREMENT_STATUS);
 		createOptionalDateField(Measurement.TAG_DATE);
-		createTextField(Measurement.TAG_SUMMARY);
-		createTextField(Measurement.TAG_DETAIL);
+		createOptionalTextField(Measurement.TAG_SUMMARY);
+		createOptionalTextField(Measurement.TAG_DETAIL);
 		createCodeField(XmlSchemaCreator.MEASUREMENT_STATUS_CONFIDENCE, XmlSchemaCreator.VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE);
-		createTextField(Measurement.TAG_COMMENTS);
+		createOptionalTextField(Measurement.TAG_COMMENTS);
 	}
 }
