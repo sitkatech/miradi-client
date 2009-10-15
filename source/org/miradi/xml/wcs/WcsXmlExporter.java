@@ -85,25 +85,25 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeDiagramFactorSchemaElement();
 		writeDiagramLinkSchemaElement();
 		writeBiodiversityTargetObjectSchemaElement();
-		new HumanWelfareTargetContainerExporter(this).exportBaseObjectContainer();
-		new CauseContainerExporter(this).exportBaseObjectContainer();
-		new StrategyContainerExporter(this).exportBaseObjectContainer();
-		new ThreatReductionResultsContainerExporter(this).exportBaseObjectContainer();
-		new IntermediateResultContainerExporter(this).exportBaseObjectContainer();
-		new GroupBoxContainerExporter(this).exportBaseObjectContainer();
-		new TextBoxContainerExporter(this).exportBaseObjectContainer();
-		new ScopeBoxContainerExporter(this).exportBaseObjectContainer();
-		new KeyEcologicalAttributeContainerExporter(this).exportBaseObjectContainer();
-		new StressContainerExporter(this).exportBaseObjectContainer();
-		new SubTargetContainerExporter(this).exportBaseObjectContainer();
-		new GoalContainerExporter(this).exportBaseObjectContainer();
-		new ObjectiveContainerExporter(this).exportBaseObjectContainer();
-		new IndicatorContainerExporter(this).exportBaseObjectContainer();
-		new ActivityContainerExporter(this).exportBaseObjectContainer();
-		new MethodContainerExporter(this).exportBaseObjectContainer();
-		new TaskContainerExporter(this).exportBaseObjectContainer();
-		new ProgressReportContainerExporter(this).exportBaseObjectContainer();
-		new ProgressPercentContainerExporter(this).exportBaseObjectContainer();
+		new HumanWelfareTargetContainerExporter(this).exportObjectContainer();
+		new CauseContainerExporter(this).exportObjectContainer();
+		new StrategyContainerExporter(this).exportObjectContainer();
+		new ThreatReductionResultsContainerExporter(this).exportObjectContainer();
+		new IntermediateResultContainerExporter(this).exportObjectContainer();
+		new GroupBoxContainerExporter(this).exportObjectContainer();
+		new TextBoxContainerExporter(this).exportObjectContainer();
+		new ScopeBoxContainerExporter(this).exportObjectContainer();
+		new KeyEcologicalAttributeContainerExporter(this).exportObjectContainer();
+		new StressContainerExporter(this).exportObjectContainer();
+		new SubTargetContainerExporter(this).exportObjectContainer();
+		new GoalContainerExporter(this).exportObjectContainer();
+		new ObjectiveContainerExporter(this).exportObjectContainer();
+		new IndicatorContainerExporter(this).exportObjectContainer();
+		new ActivityContainerExporter(this).exportObjectContainer();
+		new MethodContainerExporter(this).exportObjectContainer();
+		new TaskContainerExporter(this).exportObjectContainer();
+		new ProgressReportContainerExporter(this).exportObjectContainer();
+		new ProgressPercentContainerExporter(this).exportObjectContainer();
 		
 //FIXME urgent - wcs - uncomment and make it validate
 //		writeResourceAssignmentObjectSchemaElement();
@@ -120,7 +120,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 	
 	private void writeBiodiversityTargetObjectSchemaElement() throws Exception
 	{
-		new BiodiversityTargetContainerExporter(this).exportBaseObjectContainer();
+		new BiodiversityTargetContainerExporter(this).exportObjectContainer();
 	}
 
 	private void writeDiagramLinkSchemaElement() throws Exception

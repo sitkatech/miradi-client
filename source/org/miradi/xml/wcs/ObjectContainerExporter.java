@@ -34,7 +34,7 @@ abstract public class ObjectContainerExporter implements WcsXmlConstants
 		objectType = objectTypeToUse;
 	}
 
-	public void exportBaseObjectContainer() throws Exception
+	public void exportObjectContainer() throws Exception
 	{
 		getWcsXmlExporter().writeStartContainerElement(containerName);
 		ORefList refs = getProject().getPool(getObjectType()).getSortedRefList();
