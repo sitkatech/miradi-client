@@ -312,14 +312,14 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 	
 	private void writeDiagramLinkBendPoints(DiagramLink diagramLink) throws Exception
 	{
-		writeStartElement(DIAGRAM_LINK + "BendPoints");
+		writeStartElement(DIAGRAM_LINK + BEND_POINTS_ELEMENT_NAME);
 		PointList bendPoints = diagramLink.getBendPoints();
 		for (int index = 0; index < bendPoints.size(); ++index)
 		{
 			writeDiagramPoint(bendPoints.get(index));
 		}
 		
-		writeEndElement(DIAGRAM_LINK + "BendPoints");
+		writeEndElement(DIAGRAM_LINK + BEND_POINTS_ELEMENT_NAME);
 	}
 
 	private void writeFromDiagramFactorId(DiagramLink diagramLink) throws Exception

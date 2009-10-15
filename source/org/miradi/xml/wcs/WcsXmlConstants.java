@@ -101,4 +101,5 @@ public interface WcsXmlConstants
 	public static final String LINKABLE_FACTOR_ID = "LinkableFactorId";
 	public static final String FROM_DIAGRAM_FACTOR_ID = "FromDiagramFactorId";
 	public static final String TO_DIAGRAM_FACTOR_ID = "ToDiagramFactorId";
+	public static final String BEND_POINTS_ELEMENT_NAME = "BendPoints";
 }
