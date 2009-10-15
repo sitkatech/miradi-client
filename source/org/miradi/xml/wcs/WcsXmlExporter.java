@@ -90,9 +90,9 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		new StrategyContainerExporter(this).exportBaseObjectContainer();
 		new ThreatReductionResultsContainerExporter(this).exportBaseObjectContainer();
 		new IntermediateResultContainerExporter(this).exportBaseObjectContainer();
+		new GroupBoxContainerExporter(this).exportBaseObjectContainer();
 		
 //FIXME urgent - wcs - uncomment and make it validate		
-//		writeIntermediateResultObjectSchemaElement();
 //		writeGroupBoxObjectSchemaElement();
 //		writeTextBoxObjectSchemaElement();
 //		writeScopeBoxObjectSchemaElement();
