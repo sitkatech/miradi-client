@@ -40,7 +40,7 @@ public class CauseContainerExporter extends FactorContainerExporter
 		
 		writeCodeElementSameAsTag(cause, Cause.TAG_IS_DIRECT_THREAT);
 		writeCodeElementSameAsTag(cause, Cause.TAG_TAXONOMY_CODE);
-		writeIds("ObjectiveIds", "ObjectiveId", cause.getObjectiveRefs());
-		writeIds("IndicatorIds", "IndicatorId", cause.getDirectOrIndirectIndicatorRefs());
+		writeObjectiveIds(cause);
+		writeIndicatorIds(cause);
 	}
 }

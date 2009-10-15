@@ -32,13 +32,13 @@ public class StrategyObjectSchemaElement extends FactorObjectSchemaElement
 		
 		createIdListField(Factor.TAG_OBJECTIVE_IDS, XmlSchemaCreator.OBJECTIVE_ID_ELEMENT_NAME);
 		createIdListField(Strategy.TAG_ACTIVITY_IDS, XmlSchemaCreator.ACITIVTY_ID_ELEMENT_NAME);
-		createTextField(Strategy.TAG_STATUS);
+		createOptionalTextField(Strategy.TAG_STATUS);
 		createCodeField(XmlSchemaCreator.STRATEGY_TAXONOMY_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_STRATEGY_TAXONOMY_CODE);
 		createCodeField(XmlSchemaCreator.STRATEGY_IMPACT_RATING_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_STRATEGY_IMAPACT_RATING_CODE);
 		createCodeField(XmlSchemaCreator.STRATEGY_FEASIBILITY_RATING_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE);
-		createTextField(Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
-		createIdListField(PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
-		createIdListField(EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
+		createOptionalTextField(Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
+		createIdListField(WcsXmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
+		createIdListField(WcsXmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createIdListField(Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createIdListField(Factor.TAG_INDICATOR_IDS, INDICATOR_TYPE_NAME);
 	}

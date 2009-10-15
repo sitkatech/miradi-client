@@ -87,6 +87,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeBiodiversityTargetObjectSchemaElement();
 		new HumanWelfareTargetContainerExporter(this).exportBaseObjectContainer();
 		new CauseContainerExporter(this).exportBaseObjectContainer();
+		new StrategyContainerExporter(this).exportBaseObjectContainer();
 		
 //FIXME urgent - wcs - uncomment and make it validate		
 //		writeHumanWelfareTargetSchemaElement();

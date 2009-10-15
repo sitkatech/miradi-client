@@ -29,7 +29,7 @@ public class MethodObjectSchemaElement extends FactorObjectSchemaElement
 	{
 		super(WcsXmlConstants.METHOD);
 		
-		createIdListField(EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
+		createIdListField(WcsXmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createIdListField(Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
 	}
 }

@@ -22,13 +22,13 @@ package org.miradi.xml.wcs;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Target;
+import org.miradi.objects.Strategy;
 
-public class BiodiversityTargetContainerExporter extends AbstractTargetContainerExporter
+public class StrategyContainerExporter extends FactorContainerExporter
 {
-	public BiodiversityTargetContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public StrategyContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, BIODIVERSITY_TARGET, Target.getObjectType());
+		super(wcsXmlExporterToUse, STRATEGY, Strategy.getObjectType());
 	}
 	
 	@Override
@@ -36,9 +36,18 @@ public class BiodiversityTargetContainerExporter extends AbstractTargetContainer
 	{
 		super.exportFields(writer, baseObject);
 		
-		Target target = (Target) baseObject;
-		writeIds("StressIds", WcsXmlConstants.STRESS, target.getStressRefs());
-		writeCodeListElement("HabitatAssociation", baseObject, Target.TAG_HABITAT_ASSOCIATION);
-		writeOptionalElementWithSameTag(baseObject, Target.TAG_SPECIES_LATIN_NAME);
+		Strategy strategy = (Strategy) baseObject;
+		
+		writeObjectiveIds(strategy);
+		writeIds(Strategy.TAG_ACTIVITY_IDS, WcsXmlConstants.ACTIVITY, strategy.getActivityRefs());
+		writeOptionalElementWithSameTag(strategy, Strategy.TAG_STATUS);
+		writeCodeElementSameAsTag(strategy, Strategy.TAG_TAXONOMY_CODE);		
+		writeCodeElementSameAsTag(strategy, Strategy.TAG_IMPACT_RATING);
+		writeCodeElementSameAsTag(strategy, Strategy.TAG_FEASIBILITY_RATING);
+		writeOptionalElementWithSameTag(strategy, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
+		writeProgressReportIds(strategy);
+		writeExpenseAssignmentIds(strategy);
+		writeResourceAssignmentIds(strategy);
+		writeIndicatorIds(strategy);
 	}
 }
