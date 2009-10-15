@@ -84,7 +84,7 @@ class ProjectSchemaElement extends SchemaElement
 	
 	public void output(SchemaWriter writer) throws IOException
 	{
-		writer.defineAlias(getDotElement(getProjectElementName()), "element miradi:" + getProjectElementName());
+		writer.defineAlias(getDotElement(getProjectElementName()), "element " + WcsXmlConstants.PREFIX + getProjectElementName());
 		writer.startBlock();
 		for(int i = 0; i < objectTypes.size(); ++i)
 		{
