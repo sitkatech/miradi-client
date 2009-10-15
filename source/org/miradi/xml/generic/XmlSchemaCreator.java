@@ -278,8 +278,6 @@ public class XmlSchemaCreator
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TEXT_BOX, VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR, DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TEXT_BOX, VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR, DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.BIODIVERSITY_TARGET, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION, BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, WcsXmlConstants.BIODIVERSITY_TARGET, VOCABULARY_TARGET_STATUS, TARGET_STATUS_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, WcsXmlConstants.BIODIVERSITY_TARGET, VOCABULARY_TARGET_VIABILITY_MODE, TARGET_VIABILITY_MODE_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.HUMAN_WELFARE_TARGET, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION, BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.HUMAN_WELFARE_TARGET, VOCABULARY_TARGET_STATUS, TARGET_STATUS_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.HUMAN_WELFARE_TARGET, VOCABULARY_TARGET_VIABILITY_MODE, TARGET_VIABILITY_MODE_ELEMENT_NAME);
@@ -453,8 +451,8 @@ public class XmlSchemaCreator
 	public static final String VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR = "vocabulary_diagram_factor_foreground_color";
 	public static final String VOCABULARY_DIAGRAM_LINK_COLOR = "vocabulary_diagram_link_color";
 	private static final String VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION = "vocabulary_biodiversity_target_habitat_association";
-	private static final String VOCABULARY_TARGET_STATUS = "vocabulary_target_status";
-	private static final String VOCABULARY_TARGET_VIABILITY_MODE = "vocabulary_target_viability_mode";
+	static final String VOCABULARY_TARGET_STATUS = "vocabulary_target_status";
+	static final String VOCABULARY_TARGET_VIABILITY_MODE = "vocabulary_target_viability_mode";
 	public static final String VOCABULARY_THREAT_TAXONOMY_CODE = "vocabulary_cause_taxonomy_code";
 	public static final String VOCABULARY_STRATEGY_TAXONOMY_CODE = "vocabulary_strategy_taxonomy_code";
 	private static final String VOCABULARY_SCOPE_BOX_COLOR = "vocabulary_scope_box_color";

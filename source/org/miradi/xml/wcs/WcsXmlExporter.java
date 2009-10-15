@@ -28,6 +28,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringRefMap;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
@@ -84,11 +85,9 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeResultsChainSchemaElement();
 		writeDiagramFactorSchemaElement();
 		writeDiagramLinkSchemaElement();
+		writeBiodiversityTargetObjectSchemaElement();
 		
 //FIXME urgent - wcs - uncomment and make it validate		
-//		
-//				
-//		writeBiodiversityTargetObjectSchemaElement();
 //		writeHumanWelfareTargetSchemaElement();
 //		writeCauseObjectSchemaElement();
 //		writeStrategyObjectSchemaElement();
@@ -282,11 +281,34 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 //		writeEndElement(out, HUMAN_WELFARE_TARGET);
 //	}
 //
-//	private void writeBiodiversityTargetObjectSchemaElement() throws Exception
-//	{
-//		writeStartElement(out, BIODIVERSITY_TARGET);
-//		writeEndElement(out, BIODIVERSITY_TARGET);
-//	}
+	private void writeBiodiversityTargetObjectSchemaElement() throws Exception
+	{
+		writeStartContainerElement(BIODIVERSITY_TARGET);
+		ORefList targetRefs = getProject().getPool(Target.getObjectType()).getSortedRefList();
+		for (int index = 0; index < targetRefs.size(); ++index)
+		{
+			Target target = Target.find(getProject(), targetRefs.get(index));
+			writeStartElementWithAttribute(getWriter(), BIODIVERSITY_TARGET, ID, target.getId().toString());
+			writeOptionalElementWithSameTag(BIODIVERSITY_TARGET, target, Target.TAG_LABEL);					
+			writeOptionalElementWithSameTag(BIODIVERSITY_TARGET, target, Target.TAG_SHORT_LABEL);
+			writeOptionalElementWithSameTag(BIODIVERSITY_TARGET, target, Target.TAG_TEXT);
+			writeOptionalElementWithSameTag(BIODIVERSITY_TARGET, target, Target.TAG_COMMENTS);
+			writeElementWithSameTag(BIODIVERSITY_TARGET, target, AbstractTarget.TAG_TARGET_STATUS);
+			writeElementWithSameTag(BIODIVERSITY_TARGET, target, Target.TAG_VIABILITY_MODE);
+			writeOptionalElementWithSameTag(BIODIVERSITY_TARGET, target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
+			writeIds(BIODIVERSITY_TARGET, "SubTargetIds", "SubTargetId", target.getSubTargetRefs());
+			writeIds(BIODIVERSITY_TARGET, "GoalIds", "GoalId", target.getGoalRefs());
+			writeIds(BIODIVERSITY_TARGET, "KeyEcologicalAttributeIds", "KeyEcologicalAttributeId", target.getKeyEcologicalAttributeRefs());
+			writeIds(BIODIVERSITY_TARGET, "IndicatorIds", "IndicatorId", target.getDirectOrIndirectIndicatorRefs());
+			writeIds(BIODIVERSITY_TARGET, "StressIds", "StressId", target.getStressRefs());
+			writeCodeListElement(BIODIVERSITY_TARGET, "HabitatAssociation", target, Target.TAG_HABITAT_ASSOCIATION);
+			writeOptionalElementWithSameTag(BIODIVERSITY_TARGET, target, Target.TAG_SPECIES_LATIN_NAME);
+			
+			writeEndElement(out, BIODIVERSITY_TARGET);
+		}
+		
+		writeEndContainerElement(BIODIVERSITY_TARGET);
+	}
 
 	private void writeDiagramLinkSchemaElement() throws Exception
 	{
