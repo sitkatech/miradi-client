@@ -29,7 +29,7 @@ public class ThreatReductionResultsObjectSchemaElement extends FactorObjectSchem
 	{
 		super(WcsXmlConstants.THREAT_REDUCTION_RESULTS);
 		
-		createThreatReductionResultsThreatIdField("RelatedDirectThreatId");
+		createThreatReductionResultsThreatIdField(WcsXmlConstants.RELATED_THREAT_ID);
 		createIdListField(Factor.TAG_OBJECTIVE_IDS, OBJECTIVE_TYPE_NAME);
 		createIdListField(Factor.TAG_INDICATOR_IDS, INDICATOR_TYPE_NAME);
 	}

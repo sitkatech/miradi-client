@@ -108,4 +108,6 @@ public interface WcsXmlConstants
 	public static final String ACCOUNTING_CODE_ID = "AccountingCodeId";
 	public static final String PROGRESS_REPORT_IDS = "ProgressReportIds";
 	public static final String EXPENSE_IDS = "ExpenseIds";
+	public static final String RELATED_THREAT_ID = "RelatedDirectThreatId";
+	public static final String THREAT_ID = "ThreatId";
 }

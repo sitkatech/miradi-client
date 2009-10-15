@@ -138,7 +138,7 @@ public abstract class XmlExporter
 		writeElement(out, elementName, data);
 	}
 	
-	protected void writeXmlEncodedData(UnicodeWriter out, String data) throws IOException
+	public void writeXmlEncodedData(UnicodeWriter out, String data) throws IOException
 	{
 		out.write(XmlUtilities.getXmlEncoded(data));
 	}
