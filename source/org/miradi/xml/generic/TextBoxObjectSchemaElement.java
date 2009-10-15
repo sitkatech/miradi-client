@@ -30,9 +30,9 @@ public class TextBoxObjectSchemaElement extends FactorObjectSchemaElement
 		super(WcsXmlConstants.TEXT_BOX);
 		
 		createOptionalBooleanField(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);
-		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME);
-		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME);		
-		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME);
-		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME);
+		createCodeField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE);
+		createCodeField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE);		
+		createCodeField(XmlSchemaCreator.DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR);
+		createCodeField(XmlSchemaCreator.DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR);
 	}
 }

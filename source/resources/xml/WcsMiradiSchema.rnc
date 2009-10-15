@@ -23,7 +23,8 @@ ConservationProject.element = element miradi:ConservationProject
   StrategyContainer.element ?  &
   ThreatReductionResultsContainer.element ?  &
   IntermediateResultContainer.element ?  &
-  GroupBoxContainer.element ? 
+  GroupBoxContainer.element ?  &
+  TextBoxContainer.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -369,6 +370,21 @@ GroupBox.element = element miradi:GroupBox
   element miradi:GroupBoxFontStyle { vocabulary_diagram_factor_font_style  } &
   element miradi:GroupBoxFontColor { vocabulary_diagram_factor_foreground_color  } &
   element miradi:GroupBoxBackgroundColor { vocabulary_diagram_factor_background_color  }
+}
+
+TextBoxContainer.element = element miradi:TextBoxContainer { TextBox.element* }
+TextBox.element = element miradi:TextBox
+{
+  attribute Id {xsd:integer}  &
+  element miradi:TextBoxLabel { text }? &
+  element miradi:TextBoxShortLabel { text }? &
+  element miradi:TextBoxText { text }? &
+  element miradi:TextBoxComments { text }? &
+  element miradi:TextBoxTextBoxZOrderCode { xsd:boolean }? &
+  element miradi:TextBoxFontSize { vocabulary_diagram_factor_font_size  } &
+  element miradi:TextBoxFontStyle { vocabulary_diagram_factor_font_style  } &
+  element miradi:TextBoxFontColor { vocabulary_diagram_factor_foreground_color  } &
+  element miradi:TextBoxBackgroundColor { vocabulary_diagram_factor_background_color  }
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
