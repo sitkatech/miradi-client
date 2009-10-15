@@ -22,7 +22,8 @@ ConservationProject.element = element miradi:ConservationProject
   CauseContainer.element ?  &
   StrategyContainer.element ?  &
   ThreatReductionResultsContainer.element ?  &
-  IntermediateResultContainer.element ? 
+  IntermediateResultContainer.element ?  &
+  GroupBoxContainer.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -356,6 +357,20 @@ IntermediateResult.element = element miradi:IntermediateResult
   element miradi:IntermediateResultIndicatorIds { IndicatorId.element* }
 }
 
+GroupBoxContainer.element = element miradi:GroupBoxContainer { GroupBox.element* }
+GroupBox.element = element miradi:GroupBox
+{
+  attribute Id {xsd:integer}  &
+  element miradi:GroupBoxLabel { text }? &
+  element miradi:GroupBoxShortLabel { text }? &
+  element miradi:GroupBoxText { text }? &
+  element miradi:GroupBoxComments { text }? &
+  element miradi:GroupBoxFontSize { vocabulary_diagram_factor_font_size  } &
+  element miradi:GroupBoxFontStyle { vocabulary_diagram_factor_font_style  } &
+  element miradi:GroupBoxFontColor { vocabulary_diagram_factor_foreground_color  } &
+  element miradi:GroupBoxBackgroundColor { vocabulary_diagram_factor_background_color  }
+}
+
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
 vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } 
 vocabulary_month = xsd:NMTOKEN { pattern = '[0-9]{2}' } 
@@ -584,26 +599,6 @@ ConceptualModelHiddenTypesContainer.element = element miradi:ConceptualModelHidd
 ResultsChainHiddenTypesContainer.element = element miradi:ResultsChainHiddenTypesContainer
 {
   element miradi:code { vocabulary_hidden_types } * 
-}
-
-DiagramFactorFontSizeContainer.element = element miradi:DiagramFactorFontSizeContainer
-{
-  element miradi:code { vocabulary_diagram_factor_font_size } * 
-}
-
-DiagramFactorFontStyleContainer.element = element miradi:DiagramFactorFontStyleContainer
-{
-  element miradi:code { vocabulary_diagram_factor_font_style } * 
-}
-
-DiagramFactorBackgroundColorContainer.element = element miradi:DiagramFactorBackgroundColorContainer
-{
-  element miradi:code { vocabulary_diagram_factor_background_color } * 
-}
-
-DiagramFactorFontColorContainer.element = element miradi:DiagramFactorFontColorContainer
-{
-  element miradi:code { vocabulary_diagram_factor_foreground_color } * 
 }
 
 GroupBoxFontSizeContainer.element = element miradi:GroupBoxFontSizeContainer
