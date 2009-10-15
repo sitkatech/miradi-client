@@ -28,7 +28,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringRefMap;
-import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
@@ -283,31 +282,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 //
 	private void writeBiodiversityTargetObjectSchemaElement() throws Exception
 	{
-		writeStartContainerElement(BIODIVERSITY_TARGET);
-		ORefList targetRefs = getProject().getPool(Target.getObjectType()).getSortedRefList();
-		for (int index = 0; index < targetRefs.size(); ++index)
-		{
-			Target target = Target.find(getProject(), targetRefs.get(index));
-			writeStartElementWithAttribute(getWriter(), BIODIVERSITY_TARGET, ID, target.getId().toString());
-			writeOptionalElementWithSameTag(BIODIVERSITY_TARGET, target, Target.TAG_LABEL);					
-			writeOptionalElementWithSameTag(BIODIVERSITY_TARGET, target, Target.TAG_SHORT_LABEL);
-			writeOptionalElementWithSameTag(BIODIVERSITY_TARGET, target, Target.TAG_TEXT);
-			writeOptionalElementWithSameTag(BIODIVERSITY_TARGET, target, Target.TAG_COMMENTS);
-			writeElementWithSameTag(BIODIVERSITY_TARGET, target, AbstractTarget.TAG_TARGET_STATUS);
-			writeElementWithSameTag(BIODIVERSITY_TARGET, target, Target.TAG_VIABILITY_MODE);
-			writeOptionalElementWithSameTag(BIODIVERSITY_TARGET, target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
-			writeIds(BIODIVERSITY_TARGET, "SubTargetIds", "SubTargetId", target.getSubTargetRefs());
-			writeIds(BIODIVERSITY_TARGET, "GoalIds", "GoalId", target.getGoalRefs());
-			writeIds(BIODIVERSITY_TARGET, "KeyEcologicalAttributeIds", "KeyEcologicalAttributeId", target.getKeyEcologicalAttributeRefs());
-			writeIds(BIODIVERSITY_TARGET, "IndicatorIds", "IndicatorId", target.getDirectOrIndirectIndicatorRefs());
-			writeIds(BIODIVERSITY_TARGET, "StressIds", "StressId", target.getStressRefs());
-			writeCodeListElement(BIODIVERSITY_TARGET, "HabitatAssociation", target, Target.TAG_HABITAT_ASSOCIATION);
-			writeOptionalElementWithSameTag(BIODIVERSITY_TARGET, target, Target.TAG_SPECIES_LATIN_NAME);
-			
-			writeEndElement(out, BIODIVERSITY_TARGET);
-		}
-		
-		writeEndContainerElement(BIODIVERSITY_TARGET);
+		new BiodiversityTargetContainerExporter(this).exportBaseObjectContainer();
 	}
 
 	private void writeDiagramLinkSchemaElement() throws Exception
@@ -489,7 +464,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeEndContainerElement(diagramElementName);
 	}
 
-	private void writeIds(String parentElementName, String childElementName, String idElementName, ORefList refList) throws Exception
+	public void writeIds(String parentElementName, String childElementName, String idElementName, ORefList refList) throws Exception
 	{
 		writeStartElement(getWriter(), createParentAndChildElementName(parentElementName, childElementName));
 		for (int index = 0; index < refList.size(); ++index)
@@ -774,12 +749,12 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeEndElement(out, PROJECT_SUMMARY);
 	}	
 	
-	private void writeOptionalElementWithSameTag(String parentElementName, BaseObject object, String tag) throws Exception
+	public void writeOptionalElementWithSameTag(String parentElementName, BaseObject object, String tag) throws Exception
 	{
 		writeOptionalElement(parentElementName, tag, object, tag);
 	}
 	
-	private void writeElementWithSameTag(String parentElementName, BaseObject object, String tag) throws Exception
+	public void writeElementWithSameTag(String parentElementName, BaseObject object, String tag) throws Exception
 	{
 		writeElement(parentElementName, tag, object, tag);
 	}
@@ -800,12 +775,12 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 	}
 	
 	
-	private void writeStartContainerElement(String startElementName) throws Exception
+	void writeStartContainerElement(String startElementName) throws Exception
 	{
 		writeStartElement(out, createContainerElementName(startElementName));
 	}
 
-	private void writeEndContainerElement(String endElementName) throws Exception
+	void writeEndContainerElement(String endElementName) throws Exception
 	{
 		writeEndElement(out, createContainerElementName(endElementName));
 	}
@@ -815,7 +790,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		return startElementName + WcsXmlConstants.CONTAINER_ELEMENT_TAG;
 	}
 		
-	private void writeCodeListElement(String parentElementName, String containerElementName, BaseObject object, String tag) throws Exception
+	public void writeCodeListElement(String parentElementName, String containerElementName, BaseObject object, String tag) throws Exception
 	{
 		writeCodeListElement(parentElementName, containerElementName, object.getCodeList(tag));
 	}
@@ -863,7 +838,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		out = outToUse;
 	}
 	
-	private UnicodeWriter getWriter()
+	public UnicodeWriter getWriter()
 	{
 		return out;
 	}
