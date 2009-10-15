@@ -38,7 +38,8 @@ ConservationProject.element = element miradi:ConservationProject
   ProgressReportContainer.element ?  &
   ProgressPercentContainer.element ?  &
   MeasurementContainer.element ?  &
-  AccountingCodeContainer.element ? 
+  AccountingCodeContainer.element ?  &
+  FundingSourceContainer.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -565,6 +566,15 @@ AccountingCode.element = element miradi:AccountingCode
   element miradi:AccountingCodeLabel { text }? &
   element miradi:AccountingCodeCode { text }? &
   element miradi:AccountingCodeComments { text }?
+}
+
+FundingSourceContainer.element = element miradi:FundingSourceContainer { FundingSource.element* }
+FundingSource.element = element miradi:FundingSource
+{
+  attribute Id {xsd:integer}  &
+  element miradi:FundingSourceLabel { text }? &
+  element miradi:FundingSourceCode { text }? &
+  element miradi:FundingSourceComments { text }?
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
