@@ -24,7 +24,8 @@ ConservationProject.element = element miradi:ConservationProject
   ThreatReductionResultsContainer.element ?  &
   IntermediateResultContainer.element ?  &
   GroupBoxContainer.element ?  &
-  TextBoxContainer.element ? 
+  TextBoxContainer.element ?  &
+  ScopeBoxContainer.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -387,6 +388,17 @@ TextBox.element = element miradi:TextBox
   element miradi:TextBoxBackgroundColor { vocabulary_diagram_factor_background_color  }
 }
 
+ScopeBoxContainer.element = element miradi:ScopeBoxContainer { ScopeBox.element* }
+ScopeBox.element = element miradi:ScopeBox
+{
+  attribute Id {xsd:integer}  &
+  element miradi:ScopeBoxLabel { text }? &
+  element miradi:ScopeBoxShortLabel { text }? &
+  element miradi:ScopeBoxText { text }? &
+  element miradi:ScopeBoxComments { text }? &
+  element miradi:ScopeBoxScopeBoxColorCode { vocabulary_scope_box_color  }
+}
+
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
 vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } 
 vocabulary_month = xsd:NMTOKEN { pattern = '[0-9]{2}' } 
@@ -675,11 +687,6 @@ HumanWelfareTargetTargetStatusContainer.element = element miradi:HumanWelfareTar
 HumanWelfareTargetViabilityModeContainer.element = element miradi:HumanWelfareTargetViabilityModeContainer
 {
   element miradi:code { vocabulary_target_viability_mode } * 
-}
-
-ScopeBoxScopeBoxColorCodeContainer.element = element miradi:ScopeBoxScopeBoxColorCodeContainer
-{
-  element miradi:code { vocabulary_scope_box_color } * 
 }
 
 StressSeverityContainer.element = element miradi:StressSeverityContainer
