@@ -337,10 +337,13 @@ public class DiagramLink extends BaseObject
 	
 	public Color getColor()
 	{
+		return getColorChoiceItem().getColor();
+	}
+
+	public ChoiceItem getColorChoiceItem()
+	{
 		ChoiceQuestion question = getProject().getQuestion(DiagramLinkColorQuestion.class);
-		ChoiceItem colorChoice = question.findChoiceByCode(color.get());
-		
-		return colorChoice.getColor();
+		return question.findChoiceByCode(color.get());
 	}
 	
 	public boolean isCoveredByGroupBoxLink()

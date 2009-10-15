@@ -28,6 +28,7 @@ import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objects.DiagramFactor;
 
 public class TestWcsExporter extends TestCaseWithProject
 {
@@ -44,7 +45,9 @@ public class TestWcsExporter extends TestCaseWithProject
 	public void testValidateFilledProject() throws Exception
 	{
 		getProject().populateEverything();
-		getProject().createAndPopulateDiagramFactor();
+		DiagramFactor diagramFactor1 = getProject().createAndPopulateDiagramFactor();
+		DiagramFactor diagramFactor2 = getProject().createAndPopulateDiagramFactor();
+		getProject().createDiagramFactorLinkAndAddToDiagram(diagramFactor1, diagramFactor2);
 		validateProject();
 	}
 

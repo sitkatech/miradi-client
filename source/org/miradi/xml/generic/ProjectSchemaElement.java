@@ -48,9 +48,9 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new ObjectContainerSchemaElement(new ConceptualModelSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new ResultsChainSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new DiagramFactorSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new DiagramLinkSchemaElement()));
 		
 //FIXME urgent - wcs - uncomment as each xml element is completed and validated		
-//		objectTypes.add(new ObjectContainerSchemaElement(new DiagramLinkSchemaElement()));
 //				
 //		objectTypes.add(new ObjectContainerSchemaElement(new BiodiversityTargetObjectSchemaElement()));
 //		objectTypes.add(new ObjectContainerSchemaElement(new HumanWelfareTargetSchemaElement()));

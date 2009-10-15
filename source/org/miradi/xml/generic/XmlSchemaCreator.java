@@ -212,7 +212,7 @@ public class XmlSchemaCreator
 		writer.printlnIndented("ThreatId.element");
 		writer.endBlock();
 		
-		writer.defineAlias("LinkableFactorId.element", "element " + WcsXmlConstants.PREFIX + WcsXmlConstants.WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
+		writer.defineAlias(WcsXmlConstants.LINKABLE_FACTOR_ID + ".element", "element " + WcsXmlConstants.PREFIX + WcsXmlConstants.LINKABLE_FACTOR_ID);
 		writer.startBlock();
 		writer.printlnIndented("BiodiversityTargetId.element |");
 		writer.printlnIndented("HumanWelfareTargetId.element |");
@@ -277,7 +277,6 @@ public class XmlSchemaCreator
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TEXT_BOX, VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE, DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TEXT_BOX, VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR, DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TEXT_BOX, VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR, DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, WcsXmlConstants.DIAGRAM_LINK, VOCABULARY_DIAGRAM_LINK_COLOR, DIAGRAM_LINK_COLOR_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.BIODIVERSITY_TARGET, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION, BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.BIODIVERSITY_TARGET, VOCABULARY_TARGET_STATUS, TARGET_STATUS_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.BIODIVERSITY_TARGET, VOCABULARY_TARGET_VIABILITY_MODE, TARGET_VIABILITY_MODE_ELEMENT_NAME);
@@ -452,7 +451,7 @@ public class XmlSchemaCreator
 	public static final String VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE = "vocabulary_diagram_factor_font_style";
 	public static final String VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR = "vocabulary_diagram_factor_background_color";
 	public static final String VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR = "vocabulary_diagram_factor_foreground_color";
-	private static final String VOCABULARY_DIAGRAM_LINK_COLOR = "vocabulary_diagram_link_color";
+	public static final String VOCABULARY_DIAGRAM_LINK_COLOR = "vocabulary_diagram_link_color";
 	private static final String VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION = "vocabulary_biodiversity_target_habitat_association";
 	private static final String VOCABULARY_TARGET_STATUS = "vocabulary_target_status";
 	private static final String VOCABULARY_TARGET_VIABILITY_MODE = "vocabulary_target_viability_mode";
