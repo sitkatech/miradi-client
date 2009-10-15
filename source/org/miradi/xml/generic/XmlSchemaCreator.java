@@ -277,7 +277,6 @@ public class XmlSchemaCreator
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.HUMAN_WELFARE_TARGET, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION, BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.HUMAN_WELFARE_TARGET, VOCABULARY_TARGET_STATUS, TARGET_STATUS_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.HUMAN_WELFARE_TARGET, VOCABULARY_TARGET_VIABILITY_MODE, TARGET_VIABILITY_MODE_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, WcsXmlConstants.SCOPE_BOX, VOCABULARY_SCOPE_BOX_COLOR, SCOPE_BOX_COLOR_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.STRESS, VOCABULARY_STRESS_SEVERITY, STRESS_SEVERITY_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.STRESS, VOCABULARY_STRESS_SCOPE, STRESS_SCOPE_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_PROJECT_PLACE_TYPES, TNC_PROJECT_PLACE_TYPES);
@@ -451,7 +450,7 @@ public class XmlSchemaCreator
 	static final String VOCABULARY_TARGET_VIABILITY_MODE = "vocabulary_target_viability_mode";
 	public static final String VOCABULARY_THREAT_TAXONOMY_CODE = "vocabulary_cause_taxonomy_code";
 	public static final String VOCABULARY_STRATEGY_TAXONOMY_CODE = "vocabulary_strategy_taxonomy_code";
-	private static final String VOCABULARY_SCOPE_BOX_COLOR = "vocabulary_scope_box_color";
+	public static final String VOCABULARY_SCOPE_BOX_COLOR = "vocabulary_scope_box_color";
 	public static final String VOCABULARY_STRESS_SEVERITY = "vocabulary_stress_severity";
 	public static final String VOCABULARY_STRESS_SCOPE = "vocabulary_stress_scope";
 	public static final String VOCABULARY_STRATEGY_IMAPACT_RATING_CODE = "vocabulary_strategy_impact_rating_code";

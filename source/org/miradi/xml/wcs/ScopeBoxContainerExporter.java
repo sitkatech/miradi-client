@@ -18,16 +18,24 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.generic;
+package org.miradi.xml.wcs;
 
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.martus.util.UnicodeWriter;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.ScopeBox;
 
-public class ScopeBoxObjectSchemaElement extends FactorObjectSchemaElement
+public class ScopeBoxContainerExporter extends FactorContainerExporter
 {
-	public ScopeBoxObjectSchemaElement()
+	public ScopeBoxContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
-		super(WcsXmlConstants.SCOPE_BOX);
+		super(wcsXmlExporterToUse, SCOPE_BOX, ScopeBox.getObjectType());
+	}
+	
+	@Override
+	protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception
+	{
+		super.exportFields(writer, baseObject);
 		
-		createCodeField(XmlSchemaCreator.SCOPE_BOX_COLOR_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_SCOPE_BOX_COLOR);
+		writeCodeElementSameAsTag(baseObject, ScopeBox.TAG_SCOPE_BOX_COLOR_CODE);
 	}
 }

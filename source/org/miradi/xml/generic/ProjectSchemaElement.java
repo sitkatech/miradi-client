@@ -57,9 +57,9 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new ObjectContainerSchemaElement(new IntermediateResultObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new GroupBoxObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new TextBoxObjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new ScopeBoxObjectSchemaElement()));
 		
 //FIXME urgent - wcs - uncomment as each xml element is completed and validated		
-//		objectTypes.add(new ObjectContainerSchemaElement(new ScopeBoxObjectSchemaElement()));
 //		objectTypes.add(new ObjectContainerSchemaElement(new KeyEcologicalAttributeObjectSchemaElement()));
 //		objectTypes.add(new ObjectContainerSchemaElement(new StressObjectSchemaElement()));
 //		objectTypes.add(new ObjectContainerSchemaElement(new SubTargetObjectSchemaElement()));
