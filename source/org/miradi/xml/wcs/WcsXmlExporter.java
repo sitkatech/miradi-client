@@ -301,7 +301,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 			writeToDiagramFactorId(diagramLink);
 			writeDiagramLinkBendPoints(diagramLink);
 			
-			writeIds(DIAGRAM_LINK, "GroupedDiagramLinkIds", WcsXmlConstants.DIAGRAM_LINK_ID_ELEMENT_NAME, diagramLink.getGroupedDiagramLinkRefs());
+			writeIds(DIAGRAM_LINK, GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, WcsXmlConstants.DIAGRAM_LINK_ID_ELEMENT_NAME, diagramLink.getGroupedDiagramLinkRefs());
 			writeCodeElement(DIAGRAM_LINK, DiagramLink.TAG_COLOR, diagramLink.getColorChoiceItem().getCode());
 			
 			writeEndElement(out, DIAGRAM_LINK);
@@ -371,7 +371,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 			
 			writeDiagramFactorLocation(diagramFactor);
 			writeDiagramFactorSize(diagramFactor);
-			writeIds(DIAGRAM_FACTOR, "GroupBoxChildrenIds", WcsXmlConstants.DIAGRAM_FACTOR_ID_ELEMENT_NAME, diagramFactor.getGroupBoxChildrenRefs());
+			writeIds(DIAGRAM_FACTOR, GROUP_BOX_CHILDREN_IDS, WcsXmlConstants.DIAGRAM_FACTOR_ID_ELEMENT_NAME, diagramFactor.getGroupBoxChildrenRefs());
 			
 			writeCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_SIZE, diagramFactor.getFontSize());
 			writeCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_STYLE, diagramFactor.getFontStyle());

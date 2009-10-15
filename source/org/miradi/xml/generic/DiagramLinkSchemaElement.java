@@ -33,7 +33,7 @@ public class DiagramLinkSchemaElement extends BaseObjectSchemaElement
 		createLinkableFactorIdField(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 		createLinkableFactorIdField(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
 		createDiagramPointListField(DiagramLink.TAG_BEND_POINTS);
-		createIdListField("GroupedDiagramLinkIds", "DiagramLink");
+		createIdListField(WcsXmlConstants.GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, WcsXmlConstants.DIAGRAM_LINK);
 		createCodeField(XmlSchemaCreator.DIAGRAM_LINK_COLOR_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_LINK_COLOR);
 	}
 }
