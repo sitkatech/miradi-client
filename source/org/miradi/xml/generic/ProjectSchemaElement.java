@@ -51,10 +51,10 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new ObjectContainerSchemaElement(new DiagramLinkSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new BiodiversityTargetObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new HumanWelfareTargetSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new CauseObjectSchemaElement()));
 		
 //FIXME urgent - wcs - uncomment as each xml element is completed and validated		
 //				
-//		objectTypes.add(new ObjectContainerSchemaElement(new CauseObjectSchemaElement()));
 //		objectTypes.add(new ObjectContainerSchemaElement(new StrategyObjectSchemaElement()));
 //		objectTypes.add(new ObjectContainerSchemaElement(new ThreatReductionResultsObjectSchemaElement()));
 //		objectTypes.add(new ObjectContainerSchemaElement(new IntermediateResultObjectSchemaElement()));
