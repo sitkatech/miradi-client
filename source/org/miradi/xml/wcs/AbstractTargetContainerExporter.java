@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.wcs;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 
 public abstract class AbstractTargetContainerExporter extends FactorContainerExporter
@@ -34,5 +35,14 @@ public abstract class AbstractTargetContainerExporter extends FactorContainerExp
 	protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception
 	{
 		super.exportFields(writer, baseObject);
+		
+		AbstractTarget abstractTarget = (AbstractTarget) baseObject;					
+		writeElementWithSameTag(baseObject, AbstractTarget.TAG_TARGET_STATUS);
+		writeElementWithSameTag(baseObject, AbstractTarget.TAG_VIABILITY_MODE);
+		writeOptionalElementWithSameTag(baseObject, AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION);
+		writeIds("SubTargetIds", "SubTargetId", abstractTarget.getSubTargetRefs());
+		writeIds("GoalIds", "GoalId", abstractTarget.getGoalRefs());
+		writeIds("KeyEcologicalAttributeIds", "KeyEcologicalAttributeId", abstractTarget.getKeyEcologicalAttributeRefs());
+		writeIds("IndicatorIds", "IndicatorId", abstractTarget.getDirectOrIndirectIndicatorRefs());
 	}
 }

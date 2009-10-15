@@ -20,25 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
-import org.martus.util.UnicodeWriter;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Target;
+import org.miradi.objects.HumanWelfareTarget;
 
-public class BiodiversityTargetContainerExporter extends AbstractTargetContainerExporter
+public class HumanWelfareTargetContainerExporter extends AbstractTargetContainerExporter
 {
-	public BiodiversityTargetContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public HumanWelfareTargetContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, BIODIVERSITY_TARGET, Target.getObjectType());
-	}
-	
-	@Override
-	protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception
-	{
-		super.exportFields(writer, baseObject);
-		
-		Target target = (Target) baseObject;
-		writeIds("StressIds", "StressId", target.getStressRefs());
-		writeCodeListElement("HabitatAssociation", baseObject, Target.TAG_HABITAT_ASSOCIATION);
-		writeOptionalElementWithSameTag(baseObject, Target.TAG_SPECIES_LATIN_NAME);
+		super(wcsXmlExporterToUse, HUMAN_WELFARE_TARGET, HumanWelfareTarget.getObjectType());
 	}
 }
