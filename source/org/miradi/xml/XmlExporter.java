@@ -93,7 +93,7 @@ public abstract class XmlExporter
 		return commandLineArguments.length != 2;
 	}
 	
-	protected Project getProject()
+	public Project getProject()
 	{
 		return project;
 	}
@@ -103,7 +103,7 @@ public abstract class XmlExporter
 		writeStartElementWithAttribute(out, startElementName, attributeName, Integer.toString(attributeValue));
 	}
 	
-	protected void writeStartElementWithAttribute(UnicodeWriter out, String startElementName, String attributeName, String attributeValue) throws IOException
+	public void writeStartElementWithAttribute(UnicodeWriter out, String startElementName, String attributeName, String attributeValue) throws IOException
 	{
 		out.write("<" + startElementName + " " + attributeName + "='" + attributeValue + "'>");
 	}
@@ -113,7 +113,7 @@ public abstract class XmlExporter
 		out.writeln("<" + startElementName + ">");
 	}
 	
-	protected void writeEndElement(UnicodeWriter out, String endElementName) throws IOException
+	public void writeEndElement(UnicodeWriter out, String endElementName) throws IOException
 	{
 		out.writeln("</" + endElementName + ">");
 	}
