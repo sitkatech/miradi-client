@@ -35,7 +35,8 @@ ConservationProject.element = element miradi:ConservationProject
   ActivityContainer.element ?  &
   MethodContainer.element ?  &
   TaskContainer.element ?  &
-  ProgressReportContainer.element ? 
+  ProgressReportContainer.element ?  &
+  ProgressPercentContainer.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -531,6 +532,14 @@ ProgressReport.element = element miradi:ProgressReport
   element miradi:ProgressReportProgressDate { vocabulary_date }? &
   element miradi:ProgressReportDetails { text }? &
   element miradi:ProgressReportProgressStatus { vocabulary_progress_report_status  }
+}
+
+ProgressPercentContainer.element = element miradi:ProgressPercentContainer { ProgressPercent.element* }
+ProgressPercent.element = element miradi:ProgressPercent
+{
+  element miradi:ProgressPercentPercentDate { vocabulary_date }? &
+  element miradi:ProgressPercentPercentComplete { xsd:decimal }? &
+  element miradi:ProgressPercentPercentCompleteNotes { text }?
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
