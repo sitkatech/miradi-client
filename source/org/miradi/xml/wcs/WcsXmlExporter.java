@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
+import java.awt.Point;
 import java.util.Set;
 
 import org.martus.util.UnicodeWriter;
@@ -30,6 +31,7 @@ import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FosProjectData;
@@ -46,6 +48,7 @@ import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.PointList;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.generic.XmlSchemaCreator;
 
@@ -80,10 +83,10 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeConceptualModelSchemaElement();
 		writeResultsChainSchemaElement();
 		writeDiagramFactorSchemaElement();
+		writeDiagramLinkSchemaElement();
 		
 //FIXME urgent - wcs - uncomment and make it validate		
 //		
-//		writeDiagramLinkSchemaElement();
 //				
 //		writeBiodiversityTargetObjectSchemaElement();
 //		writeHumanWelfareTargetSchemaElement();
@@ -284,12 +287,77 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 //		writeStartElement(out, BIODIVERSITY_TARGET);
 //		writeEndElement(out, BIODIVERSITY_TARGET);
 //	}
-//
-//	private void writeDiagramLinkSchemaElement() throws Exception
-//	{
-//		writeStartElement(out, DIAGRAM_LINK);
-//		writeEndElement(out, DIAGRAM_LINK);
-//	}
+
+	private void writeDiagramLinkSchemaElement() throws Exception
+	{
+		writeStartContainerElement(DIAGRAM_LINK);
+		ORefList diagramLinkRefs = getProject().getDiagramFactorLinkPool().getSortedRefList();
+		for (int index = 0; index < diagramLinkRefs.size(); ++index)
+		{
+			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRefs.get(index));
+			writeStartElementWithAttribute(getWriter(), DIAGRAM_LINK, ID, diagramLink.getId().toString());
+			writeWrappedFactorLinkId(diagramLink);
+			writeFromDiagramFactorId(diagramLink);
+			writeToDiagramFactorId(diagramLink);
+			writeDiagramLinkBendPoints(diagramLink);
+			
+			writeIds(DIAGRAM_LINK, "GroupedDiagramLinkIds", "DiagramLinkId", diagramLink.getGroupedDiagramLinkRefs());
+			writeCodeElement(DIAGRAM_LINK, DiagramLink.TAG_COLOR, diagramLink.getColorChoiceItem().getCode());
+			
+			writeEndElement(out, DIAGRAM_LINK);
+		}
+		
+		writeEndContainerElement(DIAGRAM_LINK);
+	}
+	
+	private void writeDiagramLinkBendPoints(DiagramLink diagramLink) throws Exception
+	{
+		writeStartElement(DIAGRAM_LINK + "BendPoints");
+		PointList bendPoints = diagramLink.getBendPoints();
+		for (int index = 0; index < bendPoints.size(); ++index)
+		{
+			writeDiagramPoint(bendPoints.get(index));
+		}
+		
+		writeEndElement(DIAGRAM_LINK + "BendPoints");
+	}
+
+	private void writeFromDiagramFactorId(DiagramLink diagramLink) throws Exception
+	{
+		writeStartElement(DIAGRAM_LINK + FROM_DIAGRAM_FACTOR_ID);
+		writeStartElement(LINKABLE_FACTOR_ID);
+		
+		Factor fromFactor = diagramLink.getFromDiagramFactor().getWrappedFactor();
+		String fromFactorTypeName = getFactorTypeName(fromFactor);
+		writeElement(fromFactorTypeName, ID_ELEMENT_NAME, diagramLink.getWrappedId().toString());
+		
+		writeEndElement(LINKABLE_FACTOR_ID);
+		writeEndElement(DIAGRAM_LINK + FROM_DIAGRAM_FACTOR_ID);
+	}
+	
+	private void writeToDiagramFactorId(DiagramLink diagramLink) throws Exception
+	{
+		writeStartElement(DIAGRAM_LINK + TO_DIAGRAM_FACTOR_ID);
+		writeStartElement(LINKABLE_FACTOR_ID);
+		
+		Factor toFactor = diagramLink.getToDiagramFactor().getWrappedFactor();
+		String toFactorTypeName = getFactorTypeName(toFactor);
+		writeElement(toFactorTypeName, ID_ELEMENT_NAME, diagramLink.getWrappedId().toString());
+		
+		writeEndElement(LINKABLE_FACTOR_ID);
+		writeEndElement(DIAGRAM_LINK + TO_DIAGRAM_FACTOR_ID);
+	}
+
+	private void writeWrappedFactorLinkId(DiagramLink diagramLink) throws Exception
+	{
+		writeStartElement(DIAGRAM_LINK + WRAPPED_FACTOR_LINK_ID_ELEMENT_NAME);
+		writeStartElement(WRAPPED_BY_DIAGRAM_LINK_ID_ELEMENT_NAME);
+		
+		writeElement("FactorLink", ID_ELEMENT_NAME, diagramLink.getWrappedId().toString());
+		
+		writeEndElement(WRAPPED_BY_DIAGRAM_LINK_ID_ELEMENT_NAME);
+		writeEndElement(DIAGRAM_LINK + WRAPPED_FACTOR_LINK_ID_ELEMENT_NAME);
+	}
 
 	private void writeDiagramFactorSchemaElement() throws Exception
 	{
@@ -354,11 +422,17 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 	{
 		String locationElementName = createParentAndChildElementName(DIAGRAM_FACTOR, "Location");
 		writeStartElement(locationElementName);
-		writeStartElement(DIAGRAM_POINT_ELEMENT_NAME);
-		writeElement(getWriter(), X_ELEMENT_NAME, diagramFactor.getLocation().x);
-		writeElement(getWriter(), Y_ELEMENT_NAME, diagramFactor.getLocation().y);
-		writeEndElement(DIAGRAM_POINT_ELEMENT_NAME);
+		Point location = diagramFactor.getLocation();
+		writeDiagramPoint(location);
 		writeEndElement(locationElementName);
+	}
+
+	private void writeDiagramPoint(Point point) throws Exception
+	{
+		writeStartElement(DIAGRAM_POINT_ELEMENT_NAME);
+		writeElement(getWriter(), X_ELEMENT_NAME, point.x);
+		writeElement(getWriter(), Y_ELEMENT_NAME, point.y);
+		writeEndElement(DIAGRAM_POINT_ELEMENT_NAME);
 	}
 
 	private void writeResultsChainSchemaElement() throws Exception

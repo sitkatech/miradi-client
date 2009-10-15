@@ -15,7 +15,8 @@ ConservationProject.element = element miradi:ConservationProject
   FosProjectData.element &
   ConceptualModelContainer.element ?  &
   ResultsChainContainer.element ?  &
-  DiagramFactorContainer.element ? 
+  DiagramFactorContainer.element ?  &
+  DiagramLinkContainer.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -239,6 +240,19 @@ DiagramFactor.element = element miradi:DiagramFactor
   element miradi:DiagramFactorBackgroundColor { vocabulary_diagram_factor_background_color  }
 }
 
+DiagramLinkContainer.element = element miradi:DiagramLinkContainer { DiagramLink.element* }
+DiagramLink.element = element miradi:DiagramLink
+{
+  attribute Id {xsd:integer}  &
+  element miradi:DiagramLinkLabel { text }? &
+  element miradi:DiagramLinkWrappedLinkId{ WrappedByDiagramLinkId.element } &
+  element miradi:DiagramLinkFromDiagramFactorId{ LinkableFactorId.element } &
+  element miradi:DiagramLinkToDiagramFactorId{ LinkableFactorId.element } &
+  element miradi:DiagramLinkBendPoints{ DiagramPoint.element* } &
+  element miradi:DiagramLinkGroupedDiagramLinkIds { DiagramLinkId.element* } &
+  element miradi:DiagramLinkColor { vocabulary_diagram_link_color  }
+}
+
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
 vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } 
 vocabulary_month = xsd:NMTOKEN { pattern = '[0-9]{2}' } 
@@ -342,7 +356,7 @@ ThreatReductionResultThreatId.element = element miradi:ThreatReductionResultThre
   ThreatId.element
 }
 
-LinkableFactorId.element = element miradi:WrappedByDiagramFactorId
+LinkableFactorId.element = element miradi:LinkableFactorId
 {
   BiodiversityTargetId.element |
   HumanWelfareTargetId.element |
@@ -527,11 +541,6 @@ TextBoxBackgroundColorContainer.element = element miradi:TextBoxBackgroundColorC
 TextBoxFontColorContainer.element = element miradi:TextBoxFontColorContainer
 {
   element miradi:code { vocabulary_diagram_factor_foreground_color } * 
-}
-
-DiagramLinkColorContainer.element = element miradi:DiagramLinkColorContainer
-{
-  element miradi:code { vocabulary_diagram_link_color } * 
 }
 
 BiodiversityTargetHabitatAssociationContainer.element = element miradi:BiodiversityTargetHabitatAssociationContainer
