@@ -94,6 +94,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		new TextBoxContainerExporter(this).exportBaseObjectContainer();
 		new ScopeBoxContainerExporter(this).exportBaseObjectContainer();
 		new KeyEcologicalAttributeContainerExporter(this).exportBaseObjectContainer();
+		new StressContainerExporter(this).exportBaseObjectContainer();
 		
 //FIXME urgent - wcs - uncomment and make it validate		
 //		writeKeyEcologicalAttributeObjectSchemaElement();
