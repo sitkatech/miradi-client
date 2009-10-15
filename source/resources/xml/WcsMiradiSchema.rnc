@@ -16,7 +16,8 @@ ConservationProject.element = element miradi:ConservationProject
   ConceptualModelContainer.element ?  &
   ResultsChainContainer.element ?  &
   DiagramFactorContainer.element ?  &
-  DiagramLinkContainer.element ? 
+  DiagramLinkContainer.element ?  &
+  BiodiversityTargetContainer.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -251,6 +252,26 @@ DiagramLink.element = element miradi:DiagramLink
   element miradi:DiagramLinkBendPoints{ DiagramPoint.element* } &
   element miradi:DiagramLinkGroupedDiagramLinkIds { DiagramLinkId.element* } &
   element miradi:DiagramLinkColor { vocabulary_diagram_link_color  }
+}
+
+BiodiversityTargetContainer.element = element miradi:BiodiversityTargetContainer { BiodiversityTarget.element* }
+BiodiversityTarget.element = element miradi:BiodiversityTarget
+{
+  attribute Id {xsd:integer}  &
+  element miradi:BiodiversityTargetLabel { text }? &
+  element miradi:BiodiversityTargetShortLabel { text }? &
+  element miradi:BiodiversityTargetText { text }? &
+  element miradi:BiodiversityTargetComments { text }? &
+  element miradi:BiodiversityTargetTargetStatus { vocabulary_target_status  } &
+  element miradi:BiodiversityTargetViabilityMode { vocabulary_target_viability_mode  } &
+  element miradi:BiodiversityTargetCurrentStatusJustification { text }? &
+  element miradi:BiodiversityTargetSubTargetIds { SubTargetId.element* } &
+  element miradi:BiodiversityTargetGoalIds { GoalId.element* } &
+  element miradi:BiodiversityTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* } &
+  element miradi:BiodiversityTargetIndicatorIds { IndicatorId.element* } &
+  element miradi:BiodiversityTargetStressIds { StressId.element* } &
+  BiodiversityTargetHabitatAssociationContainer.element &
+  element miradi:BiodiversityTargetSpeciesLatinName { text }?
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
@@ -546,16 +567,6 @@ TextBoxFontColorContainer.element = element miradi:TextBoxFontColorContainer
 BiodiversityTargetHabitatAssociationContainer.element = element miradi:BiodiversityTargetHabitatAssociationContainer
 {
   element miradi:code { vocabulary_biodiversity_target_habitat_association } * 
-}
-
-BiodiversityTargetTargetStatusContainer.element = element miradi:BiodiversityTargetTargetStatusContainer
-{
-  element miradi:code { vocabulary_target_status } * 
-}
-
-BiodiversityTargetViabilityModeContainer.element = element miradi:BiodiversityTargetViabilityModeContainer
-{
-  element miradi:code { vocabulary_target_viability_mode } * 
 }
 
 HumanWelfareTargetHabitatAssociationContainer.element = element miradi:HumanWelfareTargetHabitatAssociationContainer

@@ -29,9 +29,9 @@ public class FactorObjectSchemaElement extends BaseObjectSchemaElement
 	{
 		super(objectTypeName);
 
-		createTextField(Factor.TAG_SHORT_LABEL);
-		createTextField(Factor.TAG_TEXT);
-		createTextField(Factor.TAG_COMMENTS);
+		createOptionalTextField(Factor.TAG_SHORT_LABEL);
+		createOptionalTextField(Factor.TAG_TEXT);
+		createOptionalTextField(Factor.TAG_COMMENTS);
 	}
 	
 	protected static final String INDICATOR_TYPE_NAME = "Indicator";
