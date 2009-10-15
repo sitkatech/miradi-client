@@ -26,7 +26,8 @@ ConservationProject.element = element miradi:ConservationProject
   GroupBoxContainer.element ?  &
   TextBoxContainer.element ?  &
   ScopeBoxContainer.element ?  &
-  KeyEcologicalAttributeContainer.element ? 
+  KeyEcologicalAttributeContainer.element ?  &
+  StressContainer.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -410,6 +411,18 @@ KeyEcologicalAttribute.element = element miradi:KeyEcologicalAttribute
   element miradi:KeyEcologicalAttributeDescription { text }? &
   element miradi:KeyEcologicalAttributeDetails { text }? &
   element miradi:KeyEcologicalAttributeKeyEcologicalAttributeType { vocabulary_key_ecological_attribute_type  }
+}
+
+StressContainer.element = element miradi:StressContainer { Stress.element* }
+Stress.element = element miradi:Stress
+{
+  attribute Id {xsd:integer}  &
+  element miradi:StressLabel { text }? &
+  element miradi:StressShortLabel { text }? &
+  element miradi:StressText { text }? &
+  element miradi:StressComments { text }? &
+  element miradi:StressSeverity { vocabulary_stress_severity  } &
+  element miradi:StressScope { vocabulary_stress_scope  }
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
