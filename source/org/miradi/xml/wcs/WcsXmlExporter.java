@@ -106,6 +106,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		new ProgressPercentContainerExporter(this).exportObjectContainer();
 		new MeasurementContainerExporter(this).exportObjectContainer();
 		new AccountingCodeContainerExporter(this).exportObjectContainer();
+		new FundingSourceContainerExporter(this).exportObjectContainer();
 		
 //FIXME urgent - wcs - uncomment and make it validate
 //		writeResourceAssignmentObjectSchemaElement();
@@ -113,8 +114,6 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 //		writeThreatTargetThreatRatingElement();
 //		writeSimpleThreatRatingSchemaElement();
 //		writeStressBasedThreatRatingElement();
-//		writeAccountingCodeObjectSchemaElement();
-//		writeFundingSourceObjectSchemaElement();
 		
 		writeEndElement(out, CONSERVATION_PROJECT);
 	}

@@ -18,18 +18,25 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.generic;
+package org.miradi.xml.wcs;
 
+import org.martus.util.UnicodeWriter;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.FundingSource;
-import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class FundingSourceObjectSchemaElement extends BaseObjectSchemaElement
+public class FundingSourceContainerExporter extends BaseObjectContainerExporter
 {
-	public FundingSourceObjectSchemaElement()
+	public FundingSourceContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
-		super(WcsXmlConstants.FUNDING_SOURCE);
+		super(wcsXmlExporterToUse, FUNDING_SOURCE, FundingSource.getObjectType());
+	}
+	
+	@Override
+	protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception
+	{
+		super.exportFields(writer, baseObject);
 		
-		createOptionalTextField(FundingSource.TAG_CODE);
-		createOptionalTextField(FundingSource.TAG_COMMENTS);
+		writeOptionalElementWithSameTag(baseObject, FundingSource.TAG_CODE);
+		writeOptionalElementWithSameTag(baseObject, FundingSource.TAG_COMMENTS);
 	}
 }
