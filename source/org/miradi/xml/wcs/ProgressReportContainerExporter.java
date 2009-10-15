@@ -36,8 +36,8 @@ public class ProgressReportContainerExporter extends ObjectContainerExporter
 	{
 		super.exportFields(writer, baseObject);
 		
-		writeElementWithSameTag(baseObject, ProgressReport.TAG_PROGRESS_DATE);
-		writeElementWithSameTag(baseObject, ProgressReport.TAG_DETAILS);
+		writeOptionalElementWithSameTag(baseObject, ProgressReport.TAG_PROGRESS_DATE);
+		writeOptionalElementWithSameTag(baseObject, ProgressReport.TAG_DETAILS);
 		writeCodeElementSameAsTag(baseObject, ProgressReport.TAG_PROGRESS_STATUS);
 	}
 }

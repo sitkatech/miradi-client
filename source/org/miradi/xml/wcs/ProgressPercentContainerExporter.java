@@ -36,8 +36,8 @@ public class ProgressPercentContainerExporter extends ObjectContainerExporter
 	{
 		super.exportFields(writer, baseObject);
 		
-		writeElementWithSameTag(baseObject, ProgressPercent.TAG_DATE);
-		writeElementWithSameTag(baseObject, ProgressPercent.TAG_PERCENT_COMPLETE);
+		writeOptionalElementWithSameTag(baseObject, ProgressPercent.TAG_DATE);
+		writeOptionalElementWithSameTag(baseObject, ProgressPercent.TAG_PERCENT_COMPLETE);
 		writeCodeElementSameAsTag(baseObject, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES);
 	}
 }
