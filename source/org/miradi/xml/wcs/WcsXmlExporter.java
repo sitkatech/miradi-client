@@ -88,11 +88,9 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		new HumanWelfareTargetContainerExporter(this).exportBaseObjectContainer();
 		new CauseContainerExporter(this).exportBaseObjectContainer();
 		new StrategyContainerExporter(this).exportBaseObjectContainer();
+		new ThreatReductionResultsContainerExporter(this).exportBaseObjectContainer();
 		
 //FIXME urgent - wcs - uncomment and make it validate		
-//		writeHumanWelfareTargetSchemaElement();
-//		writeCauseObjectSchemaElement();
-//		writeStrategyObjectSchemaElement();
 //		writeThreatReductionResultsObjectSchemaElement();
 //		writeIntermediateResultObjectSchemaElement();
 //		writeGroupBoxObjectSchemaElement();
@@ -778,7 +776,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 	}
 	
 	
-	void writeStartContainerElement(String startElementName) throws Exception
+	public void writeStartContainerElement(String startElementName) throws Exception
 	{
 		writeStartElement(out, createContainerElementName(startElementName));
 	}
@@ -816,12 +814,12 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeEndElement(getWriter(), parentElementName + elementName);
 	}
 	
-	private void writeStartElement(String startElementName) throws Exception
+	public void writeStartElement(String startElementName) throws Exception
 	{
 		writeStartElement(getWriter(), startElementName);
 	}
 	
-	private void writeEndElement(String endElementName) throws Exception
+	void writeEndElement(String endElementName) throws Exception
 	{
 		writeEndElement(getWriter(), endElementName);
 	}

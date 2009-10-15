@@ -20,7 +20,8 @@ ConservationProject.element = element miradi:ConservationProject
   BiodiversityTargetContainer.element ?  &
   HumanWelfareTargetContainer.element ?  &
   CauseContainer.element ?  &
-  StrategyContainer.element ? 
+  StrategyContainer.element ?  &
+  ThreatReductionResultsContainer.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -327,6 +328,19 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyExpenseIds { ExpenseAssignmentId.element* } &
   element miradi:StrategyAssignmentIds { ResourceAssignmentId.element* } &
   element miradi:StrategyIndicatorIds { IndicatorId.element* }
+}
+
+ThreatReductionResultsContainer.element = element miradi:ThreatReductionResultsContainer { ThreatReductionResults.element* }
+ThreatReductionResults.element = element miradi:ThreatReductionResults
+{
+  attribute Id {xsd:integer}  &
+  element miradi:ThreatReductionResultsLabel { text }? &
+  element miradi:ThreatReductionResultsShortLabel { text }? &
+  element miradi:ThreatReductionResultsText { text }? &
+  element miradi:ThreatReductionResultsComments { text }? &
+  element miradi:ThreatReductionResultsRelatedDirectThreatId{ ThreatReductionResultThreatId.element }? &
+  element miradi:ThreatReductionResultsObjectiveIds { ObjectiveId.element* } &
+  element miradi:ThreatReductionResultsIndicatorIds { IndicatorId.element* }
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 

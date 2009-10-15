@@ -51,7 +51,7 @@ abstract public class BaseObjectContainerExporter implements WcsXmlConstants
 		getWcsXmlExporter().writeEndContainerElement(containerName);
 	}
 
-	private UnicodeWriter getWriter()
+	protected UnicodeWriter getWriter()
 	{
 		return getWcsXmlExporter().getWriter();
 	}
