@@ -64,11 +64,11 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new ObjectContainerSchemaElement(new GoalObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new ObjectiveSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new IndicatorObjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new ActivityObjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new MethodObjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new TaskObjectSchemaElement()));
 		
 //FIXME urgent - wcs - uncomment as each xml element is completed and validated		
-//		objectTypes.add(new ObjectContainerSchemaElement(new ActivityObjectSchemaElement()));
-//		objectTypes.add(new ObjectContainerSchemaElement(new MethodObjectSchemaElement()));
-//		objectTypes.add(new ObjectContainerSchemaElement(new TaskObjectSchemaElement()));
 //		objectTypes.add(new ObjectContainerSchemaElement(new ResourceAssignmentObjectSchemaElement()));
 //		objectTypes.add(new ObjectContainerSchemaElement(new ExpenseAssignmentObjectSchemaElement()));
 //		objectTypes.add(new ObjectContainerSchemaElement(new ProgressReportObjectSchemaElement()));

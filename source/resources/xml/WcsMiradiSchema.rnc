@@ -31,7 +31,10 @@ ConservationProject.element = element miradi:ConservationProject
   SubTargetContainer.element ?  &
   GoalContainer.element ?  &
   ObjectiveContainer.element ?  &
-  IndicatorContainer.element ? 
+  IndicatorContainer.element ?  &
+  ActivityContainer.element ?  &
+  MethodContainer.element ?  &
+  TaskContainer.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -483,6 +486,42 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorProgressReportIds { ProgressReportId.element* } &
   element miradi:IndicatorExpenseIds { ExpenseAssignmentId.element* } &
   element miradi:IndicatorAssignmentIds { ResourceAssignmentId.element* }
+}
+
+ActivityContainer.element = element miradi:ActivityContainer { Activity.element* }
+Activity.element = element miradi:Activity
+{
+  attribute Id {xsd:integer}  &
+  element miradi:ActivityLabel { text }? &
+  element miradi:ActivityShortLabel { text }? &
+  element miradi:ActivityText { text }? &
+  element miradi:ActivityComments { text }? &
+  element miradi:ActivityExpenseIds { ExpenseAssignmentId.element* } &
+  element miradi:ActivityAssignmentIds { ResourceAssignmentId.element* }
+}
+
+MethodContainer.element = element miradi:MethodContainer { Method.element* }
+Method.element = element miradi:Method
+{
+  attribute Id {xsd:integer}  &
+  element miradi:MethodLabel { text }? &
+  element miradi:MethodShortLabel { text }? &
+  element miradi:MethodText { text }? &
+  element miradi:MethodComments { text }? &
+  element miradi:MethodExpenseIds { ExpenseAssignmentId.element* } &
+  element miradi:MethodAssignmentIds { ResourceAssignmentId.element* }
+}
+
+TaskContainer.element = element miradi:TaskContainer { Task.element* }
+Task.element = element miradi:Task
+{
+  attribute Id {xsd:integer}  &
+  element miradi:TaskLabel { text }? &
+  element miradi:TaskShortLabel { text }? &
+  element miradi:TaskText { text }? &
+  element miradi:TaskComments { text }? &
+  element miradi:TaskExpenseIds { ExpenseAssignmentId.element* } &
+  element miradi:TaskAssignmentIds { ResourceAssignmentId.element* }
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
