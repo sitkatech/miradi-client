@@ -36,6 +36,6 @@ public class DateUnitExpenseFieldSchemaElement extends FieldSchemaElement
 	{
 		super.output(writer);
 		
-		writer.write("{ " + WcsXmlConstants.DATE_UNITS_EXPENSE + ".element }*");
+		writer.write("{ " + WcsXmlConstants.DATE_UNITS_EXPENSE + ".element* }?");
 	}
 }

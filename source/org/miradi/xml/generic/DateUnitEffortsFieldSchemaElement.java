@@ -34,6 +34,6 @@ public class DateUnitEffortsFieldSchemaElement extends FieldSchemaElement
 	{
 		super.output(writer);
 		
-		writer.write("{ DateUnitWorkUnits.element }*");
+		writer.write("{ DateUnitWorkUnits.element* }?");
 	}
 }
