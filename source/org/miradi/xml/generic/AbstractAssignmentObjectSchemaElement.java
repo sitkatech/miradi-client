@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.objects.ExpenseAssignment;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
 abstract public class AbstractAssignmentObjectSchemaElement extends BaseObjectSchemaElement
@@ -31,6 +30,5 @@ abstract public class AbstractAssignmentObjectSchemaElement extends BaseObjectSc
 		
 		createFundingSourceIdField(WcsXmlConstants.FUNDING_SOURCE_ID);
 		createAccountingCodeIdField(WcsXmlConstants.ACCOUNTING_CODE_ID);
-		createDateUnitExpenseField(ExpenseAssignment.TAG_DATEUNIT_EFFORTS);
 	}
 }
