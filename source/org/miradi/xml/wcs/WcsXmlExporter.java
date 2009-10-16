@@ -107,10 +107,9 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		new AccountingCodeContainerExporter(this).exportObjectContainer();
 		new FundingSourceContainerExporter(this).exportObjectContainer();
 		new ExpenseAssignmentContainerExporter(this).exportObjectContainer();
+		new ResourceAssignmentContainerExporter(this).exportObjectContainer();
 		
 //FIXME urgent - wcs - uncomment and make it validate
-//		new ResourceAssignmentContainerExporter(this).exportObjectContainer();
-//		writeExpenseAssignmentObjectSchemaElement();
 //		writeThreatTargetThreatRatingElement();
 //		writeSimpleThreatRatingSchemaElement();
 //		writeStressBasedThreatRatingElement();

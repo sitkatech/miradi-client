@@ -40,7 +40,8 @@ ConservationProject.element = element miradi:ConservationProject
   MeasurementContainer.element ?  &
   AccountingCodeContainer.element ?  &
   FundingSourceContainer.element ?  &
-  ExpenseAssignmentContainer.element ? 
+  ExpenseAssignmentContainer.element ?  &
+  ResourceAssignmentContainer.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -585,7 +586,18 @@ ExpenseAssignment.element = element miradi:ExpenseAssignment
   element miradi:ExpenseAssignmentLabel { text }? &
   element miradi:ExpenseAssignmentFundingSourceId{ FundingSourceId.element }? &
   element miradi:ExpenseAssignmentAccountingCodeId{ AccountingCodeId.element }? &
-  element miradi:ExpenseAssignmentDetails{ DateUnitExpense.element }*
+  element miradi:ExpenseAssignmentDetails{ DateUnitExpense.element* }?
+}
+
+ResourceAssignmentContainer.element = element miradi:ResourceAssignmentContainer { ResourceAssignment.element* }
+ResourceAssignment.element = element miradi:ResourceAssignment
+{
+  attribute Id {xsd:integer}  &
+  element miradi:ResourceAssignmentLabel { text }? &
+  element miradi:ResourceAssignmentFundingSourceId{ FundingSourceId.element }? &
+  element miradi:ResourceAssignmentAccountingCodeId{ AccountingCodeId.element }? &
+  element miradi:ResourceAssignmentResourceId{ ResourceId.element }? &
+  element miradi:ResourceAssignmentDetails{ DateUnitWorkUnits.element* }?
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
@@ -727,8 +739,8 @@ DiagramSize.element = element miradi:DiagramSize
 
 DateUnitWorkUnits.element = element miradi:DateUnitWorkUnits
 {
-  element miradi:WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element } &
-  element miradi:NumberOfUnits { xsd:decimal }
+  element miradi:WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element }? &
+  element miradi:NumberOfUnits { xsd:decimal }?
 }
 
 WorkUnitsFullProjectTimespan.element = element miradi:WorkUnitsFullProjectTimespan

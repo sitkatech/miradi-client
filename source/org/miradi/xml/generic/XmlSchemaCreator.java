@@ -297,8 +297,8 @@ public class XmlSchemaCreator
 	{
 		writer.defineAlias("DateUnitWorkUnits.element", "element " + WcsXmlConstants.PREFIX + "DateUnitWorkUnits");
 		writer.startBlock();
-		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + "WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element } &");
-		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + "NumberOfUnits { xsd:decimal }");
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + "WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element }? &");
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + "NumberOfUnits { xsd:decimal }?");
 		writer.endBlock();
 	}
 

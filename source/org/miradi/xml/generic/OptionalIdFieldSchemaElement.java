@@ -20,16 +20,24 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import java.io.IOException;
 
-public class ResourceAssignmentObjectSchemaElement extends AbstractAssignmentObjectSchemaElement
+public class OptionalIdFieldSchemaElement extends FieldSchemaElement
 {
-	public ResourceAssignmentObjectSchemaElement()
+	protected OptionalIdFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse, String idNameToUse)
 	{
-		super(WcsXmlConstants.RESOURCE_ASSIGNMENT);
+		super(objectTypeNameToUse, fieldNameToUse);
 		
-		createOptionalIdField(ResourceAssignment.TAG_RESOURCE_ID, XmlSchemaCreator.RESOURCE_ID_ELEMENT_NAME);
-		createDateUnitEffortsField(ResourceAssignment.TAG_DATEUNIT_EFFORTS);
+		idName = idNameToUse;
 	}
+	
+	@Override
+	public void output(SchemaWriter writer) throws IOException
+	{
+		super.output(writer);
+		
+		writer.print("{ " + idName + "Id.element }?");
+	}
+	
+	private String idName;
 }

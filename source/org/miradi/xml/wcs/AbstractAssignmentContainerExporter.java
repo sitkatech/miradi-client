@@ -21,8 +21,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.wcs;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
+import org.miradi.utils.DateUnitEffort;
+import org.miradi.utils.DateUnitEffortList;
 
 abstract public class AbstractAssignmentContainerExporter extends BaseObjectContainerExporter
 {
@@ -40,4 +43,98 @@ abstract public class AbstractAssignmentContainerExporter extends BaseObjectCont
 		exportId(assignment.getFundingSourceRef(), FUNDING_SOURCE_ID);
 		exportId(assignment.getFundingSourceRef(), ACCOUNTING_CODE_ID);
 	}	
+	
+	protected void exportDateUnitEfforList(DateUnitEffortList dateUnitEffortList, String dateUnitsElementName) throws Exception
+	{
+		getWcsXmlExporter().writeStartElement(getContainerName() + Assignment.TAG_DATEUNIT_EFFORTS);
+		for (int index = 0; index < dateUnitEffortList.size(); ++index)
+		{
+			DateUnitEffort dateUnitEffort = dateUnitEffortList.getDateUnitEffort(index);
+			getWcsXmlExporter().writeStartElement(dateUnitsElementName);
+			
+			writeDateUnit(dateUnitEffort.getDateUnit());
+			writeQuantity(dateUnitEffort.getQuantity());
+			
+			getWcsXmlExporter().writeEndElement(dateUnitsElementName);
+		}
+		getWcsXmlExporter().writeEndElement(getContainerName() + Assignment.TAG_DATEUNIT_EFFORTS);
+	}
+
+	private void writeDateUnit(DateUnit dateUnit) throws Exception
+	{
+		getWcsXmlExporter().writeStartElement(getDateUnitElementName());
+		
+		if (dateUnit.isProjectTotal())
+			writeProjectTotal(dateUnit);
+		
+		if (dateUnit.isYear())
+			writeYear(dateUnit);
+		
+		if (dateUnit.isQuarter())
+			writeQuarter(dateUnit);
+		
+		if (dateUnit.isMonth())
+			writeMonth(dateUnit);
+		
+		if (dateUnit.isDay())
+			writeDay(dateUnit);
+		
+		getWcsXmlExporter().writeEndElement(getDateUnitElementName());
+	}
+
+	private void writeDay(DateUnit dateUnit) throws Exception
+	{
+		getWcsXmlExporter().writeStartElementWithAttribute(getWriter(), getDayElementName(), DATE, dateUnit.toString());
+		getWcsXmlExporter().writeEndElement(getDayElementName());
+	}
+
+
+	private void writeMonth(DateUnit dateUnit) throws Exception
+	{
+		getWcsXmlExporter().writeStartElementWithTwoAttributes(getWriter(), getMonthElementName(), YEAR, dateUnit.getYear(), MONTH, dateUnit.getMonth());
+		getWcsXmlExporter().writeEndElement(getMonthElementName());
+	}
+
+	private void writeQuarter(DateUnit dateUnit) throws Exception
+	{		
+		getWcsXmlExporter().writeStartElementWithTwoAttributes(getWriter(), getQuarterElementName(), YEAR, dateUnit.getYear(), START_MONTH, dateUnit.getYearStartMonth());
+		getWcsXmlExporter().writeEndElement(getQuarterElementName());
+	}
+
+	private void writeYear(DateUnit dateUnit) throws Exception
+	{
+		int yearStartMonth = dateUnit.getYearStartMonth();
+		int year2 = Integer.parseInt(dateUnit.getYearYearString());
+		getWcsXmlExporter().writeStartElementWithTwoAttributes(getWriter(), getYearElementName(), START_YEAR, year2, START_MONTH, yearStartMonth);
+		getWcsXmlExporter().writeEndElement(getYearElementName());
+	}
+
+	private void writeProjectTotal(DateUnit dateUnit) throws Exception
+	{		
+		getWcsXmlExporter().writeStartElementWithAttribute(getWriter(), getFullProjectTimespanElementName(), WORK_UNITS_FULL_PROJECT_TIMESPAN, "Total");
+		getWcsXmlExporter().writeEndElement(getFullProjectTimespanElementName());
+	}
+
+	private void writeQuantity(double expense) throws Exception
+	{
+		getWcsXmlExporter().writeStartElement(getQuantatityElementName());
+		
+		getWriter().writeln(Double.toString(expense));
+		
+		getWcsXmlExporter().writeEndElement(getQuantatityElementName());
+	}
+	
+	abstract protected String getDateUnitElementName();
+	
+	abstract protected String getDayElementName();
+	
+	abstract protected String getMonthElementName();
+	
+	abstract protected String getQuarterElementName();
+	
+	abstract protected String getYearElementName();
+	
+	abstract protected String getFullProjectTimespanElementName();
+	
+	abstract protected String getQuantatityElementName();
 }
