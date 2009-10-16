@@ -39,6 +39,41 @@ public class ResourceAssignmentContainerExporter extends AbstractAssignmentConta
 		
 		ResourceAssignment resourceAssignment = (ResourceAssignment) baseObject;
 		exportId(resourceAssignment.getResourceRef(), XmlSchemaCreator.RESOURCE_ID_ELEMENT_NAME + WcsXmlConstants.ID);
-		//FIXME URGENT = export dateunits
+		exportDateUnitEfforList(resourceAssignment.getDateUnitEffortList(), WcsXmlConstants.DATE_UNIT_WORK_UNITS);
+	}
+	
+	protected String getDateUnitElementName()
+	{
+		return WcsXmlConstants.WORK_UNITS_DATE_UNIT;
+	}
+	
+	protected String getDayElementName()
+	{
+		return WORK_UNITS_DAY;
+	}
+	
+	protected String getMonthElementName()
+	{
+		return WORK_UNITS_MONTH;
+	}
+	
+	protected String getQuarterElementName()
+	{
+		return WORK_UNITS_QUARTER;
+	}
+	
+	protected String getYearElementName()
+	{
+		return WORK_UNITS_YEAR;
+	}
+	
+	protected String getFullProjectTimespanElementName()
+	{
+		return WORK_UNITS_FULL_PROJECT_TIMESPAN;
+	}
+	
+	protected String getQuantatityElementName()
+	{
+		return WcsXmlConstants.WORK_UNITS;
 	}
 }

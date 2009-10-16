@@ -128,5 +128,11 @@ public interface WcsXmlConstants
 	public static final String DATE = "Date";
 	public static final String START_MONTH = "StartMonth";
 	public static final String MONTH = "Month";
-	
+	public static final String WORK_UNITS = "NumberOfUnits";
+	public static final String DATE_UNIT_WORK_UNITS = "DateUnitWorkUnits";
+	public static final String WORK_UNITS_DATE_UNIT = "WorkUnitsDateUnit";
+	public static final String WORK_UNITS_DAY = "WorkUnitsDay";
+	public static final String WORK_UNITS_MONTH = "WorkUnitsMonth";
+	public static final String WORK_UNITS_QUARTER = "WorkUnitsQuarter";
+	public static final String WORK_UNITS_YEAR = "WorkUnitsYear";
 }
