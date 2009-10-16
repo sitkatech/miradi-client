@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-12 14:49-0500\n"
+"POT-Creation-Date: 2009-10-16 13:19-0500\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -27,7 +27,7 @@ msgstr "[Tidak Diberi Nama] "
 msgid "Label|(Undefined Resource)"
 msgstr " (Sumber Daya Tak Terdefinisi) "
 
-#: miradi/source/org/miradi/objects/AccountingCode.java:70
+#: miradi/source/org/miradi/objects/AccountingCode.java:71
 msgid "Label|(Undefined Accounting Code)"
 msgstr " (Kode Akuntansi Tak Terdefinisi) "
 
