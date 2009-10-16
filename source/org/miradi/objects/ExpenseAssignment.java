@@ -50,6 +50,7 @@ public class ExpenseAssignment extends Assignment
 		return new TimePeriodCosts(getFundingSourceRef(), getAccountingCodeRef(), quantity);
 	}
 	
+	@Override
 	public ORef getFundingSourceRef()
 	{
 		if (fundingSourceRef.getRef().isInvalid())
@@ -58,6 +59,7 @@ public class ExpenseAssignment extends Assignment
 		return fundingSourceRef.getRef();
 	}
 	
+	@Override
 	public ORef getAccountingCodeRef()
 	{
 		if (accountingCodeRef.getRef().isInvalid())
@@ -78,11 +80,13 @@ public class ExpenseAssignment extends Assignment
 		return getLabel();
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;

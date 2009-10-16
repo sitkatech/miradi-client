@@ -121,11 +121,13 @@ public class ResourceAssignment extends Assignment
 		return convertDateUnitEffortList().getRolledUpDateRange(projectDateRange);
 	}
 	
+	@Override
 	public ORef getFundingSourceRef()
 	{
 		return fundingIdData.getRef();
 	}
 	
+	@Override
 	public ORef getAccountingCodeRef()
 	{
 		return accountingIdData.getRef();

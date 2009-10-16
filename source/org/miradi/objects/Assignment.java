@@ -117,6 +117,10 @@ abstract public class Assignment extends BaseObject
 	
 	abstract protected TimePeriodCosts createTimePeriodCosts(OptionalDouble quantity);
 	
+	abstract public ORef getFundingSourceRef();
+	
+	abstract public ORef getAccountingCodeRef();
+	
 	public static final String TAG_DATEUNIT_EFFORTS = "Details";
 	
 	private ObjectData detailListData;
