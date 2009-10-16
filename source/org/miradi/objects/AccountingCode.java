@@ -27,6 +27,7 @@ import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class AccountingCode extends BaseObject
@@ -89,6 +90,16 @@ public class AccountingCode extends BaseObject
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
+	}
+	
+	public static AccountingCode find(ObjectManager objectManager, ORef accountingCodeRef)
+	{
+		return (AccountingCode) objectManager.findObject(accountingCodeRef);
+	}
+	
+	public static AccountingCode find(Project project, ORef accountingCodeRef)
+	{
+		return find(project.getObjectManager(), accountingCodeRef);
 	}
 		
 	public void clear()
