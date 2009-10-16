@@ -72,10 +72,10 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new ObjectContainerSchemaElement(new MeasurementObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new AccountingCodeObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new FundingSourceObjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new ExpenseAssignmentObjectSchemaElement()));
 		
 //FIXME urgent - wcs - uncomment as each xml element is completed and validated		
 //		objectTypes.add(new ObjectContainerSchemaElement(new ResourceAssignmentObjectSchemaElement()));
-//		objectTypes.add(new ObjectContainerSchemaElement(new ExpenseAssignmentObjectSchemaElement()));
 //		objectTypes.add(new ObjectContainerSchemaElement(new ThreatTargetThreatRatingElement()));
 //		objectTypes.add(new ObjectContainerSchemaElement(new SimpleThreatRatingSchemaElement()));
 //		objectTypes.add(new ObjectContainerSchemaElement(new StressBasedThreatRatingElement()));

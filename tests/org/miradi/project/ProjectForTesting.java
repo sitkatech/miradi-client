@@ -46,6 +46,7 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objecthelpers.TimePeriodCosts;
+import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -404,6 +405,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return diagramFactor;
 	}
 	
+	public ExpenseAssignment createAndPopulateExpenseAssignment() throws Exception
+	{
+		ExpenseAssignment expenseAssignment = createExpenseAssignment();
+		populateExpenseAssignment(expenseAssignment);
+		
+		return expenseAssignment;
+	}
+	
 	public ProjectResource createProjectResource() throws Exception
 	{
 		ORef projectResourceRef = createObject(ProjectResource.getObjectType());
@@ -540,10 +549,22 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return ResourceAssignment.find(this, assignmentRef);
 	}
 	
+	public ExpenseAssignment createExpenseAssignment() throws Exception
+	{
+		ORef expenseAssignmentRef = createObject(ExpenseAssignment.getObjectType());
+		return ExpenseAssignment.find(this, expenseAssignmentRef);
+	}
+	
 	public FundingSource createFundingSource() throws Exception
 	{
 		ORef fundingSourceRef = createObject(FundingSource.getObjectType());
 		return FundingSource.find(this, fundingSourceRef);
+	}
+	
+	public AccountingCode createAccountingCode() throws Exception
+	{
+		ORef accountingCodeRef = createObject(AccountingCode.getObjectType());
+		return AccountingCode.find(this, accountingCodeRef);
 	}
 	
 	public ThreatReductionResult createThreatReductionResult() throws Exception
@@ -825,6 +846,17 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, "someZOrder");		
 	}
 	
+	public void populateExpenseAssignment(ExpenseAssignment expenseAssignment) throws Exception
+	{
+		fillObjectUsingCommand(expenseAssignment, ExpenseAssignment.TAG_LABEL, "Some Expense");
+		fillObjectUsingCommand(expenseAssignment, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, createFundingSource().getRef().toString());
+		fillObjectUsingCommand(expenseAssignment, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, createAccountingCode().getRef().toString());
+		
+		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+		dateUnitEffortList.add(createDateUnitEffort(2008, 2008, 10.0));
+		fillObjectUsingCommand(expenseAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+	}
+	
 	public void populateEverything() throws Exception
 	{
 		switchToStressBaseMode();
@@ -847,6 +879,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateActivity();
 		createAndPopulateIndicatorContainingWhiteSpacePaddedCode();
 		createAndPopulateOrganization();
+		createAndPopulateExpenseAssignment();
 	}
 
 	public void switchToStressBaseMode() throws Exception
@@ -1408,8 +1441,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public DateUnitEffort createDateUnitEffort(int startYear, int endYear) throws Exception
 	{
+		return createDateUnitEffort(startYear, endYear, 0.0);
+	}
+	
+	public DateUnitEffort createDateUnitEffort(int startYear, int endYear, double effort) throws Exception
+	{
 		DateUnit dateUnit = createDateUnit(startYear, endYear);
-		return new DateUnitEffort(dateUnit,  0.0);
+		return new DateUnitEffort(dateUnit,  effort);
 	}
 	
 	public DateUnitEffort createDateUnitEffort(MultiCalendar startDate, MultiCalendar endDate) throws Exception

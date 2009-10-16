@@ -20,7 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
+import java.io.IOException;
+
 import org.martus.util.UnicodeWriter;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
@@ -89,6 +92,20 @@ abstract public class ObjectContainerExporter implements WcsXmlConstants
 	protected void writeCodeElement(String codeElementName, String code) throws Exception
 	{
 		getWcsXmlExporter().writeCodeElement(getContainerName(), codeElementName, code);
+	}
+	
+	protected void exportId(ORef ref, String idElementName) throws Exception, IOException
+	{
+		if (ref.isValid())
+		{
+			getWcsXmlExporter().writeStartElement(getContainerName() + idElementName);
+			getWcsXmlExporter().writeStartElement(idElementName);
+			
+			getWriter().write(ref.getObjectId().toString());
+			
+			getWcsXmlExporter().writeEndElement(idElementName);
+			getWcsXmlExporter().writeEndElement(getContainerName() + idElementName);
+		}
 	}
 	
 	protected String getContainerName()

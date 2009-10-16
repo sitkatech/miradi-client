@@ -114,4 +114,19 @@ public interface WcsXmlConstants
 	public static final String RELEVANT_ACTIVITY_IDS = "RelevantActiviyIds";
 	public static final String RELEVANT_STRATEGY_IDS = "RelevantStrategyIds";	
 	public static final String RELEVANT_INDICATOR_IDS = "RelevantIndicatorIds";
+	public static final String DATE_UNITS_EXPENSE = "DateUnitExpense";
+	public static final String EXPENSE = "Expense";
+	public static final String EXPENSES_DATE_UNIT = "ExpensesDateUnit";
+	public static final String EXPENSES_FULL_PROJECT_TIMESPAN = "ExpensesFullProjectTimespan";
+	public static final String WORK_UNITS_FULL_PROJECT_TIMESPAN = "WorkUnitsFullProjectTimespan";
+	public static final String EXPENSES_YEAR = "ExpensesYear";
+	public static final String EXPENSES_QUARTER = "ExpensesQuarter";
+	public static final String EXPENSES_MONTH = "ExpensesMonth";
+	public static final String EXPENSES_DAY = "ExpensesDay";
+	public static final String START_YEAR = "StartYear";
+	public static final String YEAR = "Year";
+	public static final String DATE = "Date";
+	public static final String START_MONTH = "StartMonth";
+	public static final String MONTH = "Month";
+	
 }
