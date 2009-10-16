@@ -34,6 +34,6 @@ public class FundingSourceIdSchemaElement extends FieldSchemaElement
 	{
 		super.output(writer);
 		
-		writer.print("{ FundingSourceId.element }");
+		writer.print("{ FundingSourceId.element }?");
 	}
 }

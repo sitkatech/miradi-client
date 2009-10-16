@@ -18,22 +18,27 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.generic;
+package org.miradi.xml.wcs;
 
-import java.io.IOException;
+import org.martus.util.UnicodeWriter;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.ResourceAssignment;
+import org.miradi.xml.generic.XmlSchemaCreator;
 
-public class AccountingCodeIdSchemaElement extends FieldSchemaElement
+public class ResourceAssignmentContainerExporter extends AbstractAssignmentContainerExporter
 {
-	protected AccountingCodeIdSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
+	public ResourceAssignmentContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
-		super(objectTypeNameToUse, fieldNameToUse);
+		super(wcsXmlExporterToUse, RESOURCE_ASSIGNMENT, ResourceAssignment.getObjectType());
 	}
-
+	
 	@Override
-	public void output(SchemaWriter writer) throws IOException
+	protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception
 	{
-		super.output(writer);
+		super.exportFields(writer, baseObject);
 		
-		writer.print("{ AccountingCodeId.element }?");
+		ResourceAssignment resourceAssignment = (ResourceAssignment) baseObject;
+		exportId(resourceAssignment.getResourceRef(), XmlSchemaCreator.RESOURCE_ID_ELEMENT_NAME + WcsXmlConstants.ID);
+		//FIXME URGENT = export dateunits
 	}
 }

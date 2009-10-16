@@ -104,7 +104,7 @@ public class XmlSchemaCreator
 		
 		writer.println("vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } ");
 		writer.println("vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } ");
-		writer.println("vocabulary_month = xsd:NMTOKEN { pattern = '[0-9]{2}' } ");
+		writer.println("vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='31' } ");
 		writer.println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
 		defineVocabulary(writer, VOCABULARY_FISCAL_YEAR_START, new FiscalYearStartQuestion());
 		defineVocabulary(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, new ProtectedAreaCategoryQuestion());
@@ -306,8 +306,8 @@ public class XmlSchemaCreator
 	{
 		writer.defineAlias("DateUnitExpense.element", "element " + WcsXmlConstants.PREFIX + "DateUnitExpense");
 		writer.startBlock();
-		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + "ExpensesDateUnit{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element } &");
-		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + "Expense { xsd:decimal }");
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + WcsXmlConstants.EXPENSES_DATE_UNIT + "{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element }? &");
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + WcsXmlConstants.EXPENSE + " { xsd:decimal }?");
 		writer.endBlock();
 	}
 	

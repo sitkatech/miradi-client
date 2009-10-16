@@ -39,7 +39,8 @@ ConservationProject.element = element miradi:ConservationProject
   ProgressPercentContainer.element ?  &
   MeasurementContainer.element ?  &
   AccountingCodeContainer.element ?  &
-  FundingSourceContainer.element ? 
+  FundingSourceContainer.element ?  &
+  ExpenseAssignmentContainer.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -577,9 +578,19 @@ FundingSource.element = element miradi:FundingSource
   element miradi:FundingSourceComments { text }?
 }
 
+ExpenseAssignmentContainer.element = element miradi:ExpenseAssignmentContainer { ExpenseAssignment.element* }
+ExpenseAssignment.element = element miradi:ExpenseAssignment
+{
+  attribute Id {xsd:integer}  &
+  element miradi:ExpenseAssignmentLabel { text }? &
+  element miradi:ExpenseAssignmentFundingSourceId{ FundingSourceId.element }? &
+  element miradi:ExpenseAssignmentAccountingCodeId{ AccountingCodeId.element }? &
+  element miradi:ExpenseAssignmentDetails{ DateUnitExpense.element }*
+}
+
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
 vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } 
-vocabulary_month = xsd:NMTOKEN { pattern = '[0-9]{2}' } 
+vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='31' } 
 vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }
 vocabulary_fiscal_year_start_month = ''|'10'|'7'|'4'
 vocabulary_protected_area_categories = 'Ia'|'Ib'|'II'|'III'|'IV'|'V'|'VI'
@@ -750,8 +761,8 @@ WorkUnitsDay.element = element miradi:WorkUnitsDay
 
 DateUnitExpense.element = element miradi:DateUnitExpense
 {
-  element miradi:ExpensesDateUnit{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element } &
-  element miradi:Expense { xsd:decimal }
+  element miradi:ExpensesDateUnit{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element }? &
+  element miradi:Expense { xsd:decimal }?
 }
 
 ExpensesFullProjectTimespan.element = element miradi:ExpensesFullProjectTimespan

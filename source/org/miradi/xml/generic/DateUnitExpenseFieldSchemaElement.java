@@ -22,6 +22,8 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
+import org.miradi.xml.wcs.WcsXmlConstants;
+
 public class DateUnitExpenseFieldSchemaElement extends FieldSchemaElement
 {
 	protected DateUnitExpenseFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
@@ -34,6 +36,6 @@ public class DateUnitExpenseFieldSchemaElement extends FieldSchemaElement
 	{
 		super.output(writer);
 		
-		writer.write("{ DateUnitExpense.element }*");
+		writer.write("{ " + WcsXmlConstants.DATE_UNITS_EXPENSE + ".element }*");
 	}
 }
