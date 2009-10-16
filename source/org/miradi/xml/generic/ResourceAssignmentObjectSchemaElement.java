@@ -23,15 +23,12 @@ package org.miradi.xml.generic;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class ResourceAssignmentObjectSchemaElement extends BaseObjectSchemaElement
+public class ResourceAssignmentObjectSchemaElement extends AbstractAssignmentObjectSchemaElement
 {
 	public ResourceAssignmentObjectSchemaElement()
 	{
 		super(WcsXmlConstants.RESOURCE_ASSIGNMENT);
 		
 		createIdField(ResourceAssignment.TAG_RESOURCE_ID, XmlSchemaCreator.RESOURCE_ID_ELEMENT_NAME);
-		createFundingSourceIdField(WcsXmlConstants.FUNDING_SOURCE_ID);
-		createAccountingCodeIdField(WcsXmlConstants.ACCOUNTING_CODE_ID);
-		createDateUnitEffortsField(ResourceAssignment.TAG_DATEUNIT_EFFORTS);
 	}
 }
