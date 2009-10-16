@@ -30,5 +30,6 @@ public class ResourceAssignmentObjectSchemaElement extends AbstractAssignmentObj
 		super(WcsXmlConstants.RESOURCE_ASSIGNMENT);
 		
 		createIdField(ResourceAssignment.TAG_RESOURCE_ID, XmlSchemaCreator.RESOURCE_ID_ELEMENT_NAME);
+		createDateUnitEffortsField(ResourceAssignment.TAG_DATEUNIT_EFFORTS);
 	}
 }
