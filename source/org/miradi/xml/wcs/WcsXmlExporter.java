@@ -37,7 +37,6 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.FosProjectData;
 import org.miradi.objects.Organization;
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Target;
@@ -68,7 +67,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeStartElementWithAttribute(getWriter(), CONSERVATION_PROJECT, XMLNS, NAME_SPACE);
 		
 		writeProjectSummaryElement();
-		writeProjectResourceObjectSchemaElement();
+		new ProjectResourceContainerExporter(this).exportObjectContainer();
 		writeOrganizationObjectSchemaElement();
 		writeProjectSummaryScopeSchemaElement();
 		writeProjectSummaryLocationSchemaElement();
@@ -109,7 +108,6 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		new FundingSourceContainerExporter(this).exportObjectContainer();
 		
 //FIXME urgent - wcs - uncomment and make it validate
-//		writeResourceAssignmentObjectSchemaElement();
 //		writeExpenseAssignmentObjectSchemaElement();
 //		writeThreatTargetThreatRatingElement();
 //		writeSimpleThreatRatingSchemaElement();
@@ -533,42 +531,6 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		}
 		
 		writeEndContainerElement(ORGANIZATION);
-	}
-
-	private void writeProjectResourceObjectSchemaElement() throws Exception
-	{
-		writeStartContainerElement(PROJECT_RESOURCE);
-		ProjectResource[] resources = getProject().getResourcePool().getAllProjectResources();
-		for (int index = 0; index < resources.length; ++index)
-		{
-			ProjectResource resource = resources[index];
-			writeStartElementWithAttribute(getWriter(), PROJECT_RESOURCE, ID, resource.getId().toString());			
-			writeElementWithSameTag(PROJECT_RESOURCE, resource, XmlSchemaCreator.LABEL_ELEMENT_NAME);
-			writeCodeElement(PROJECT_RESOURCE, XmlSchemaCreator.RESOURCE_TYPE_ELEMENT_NAME, resource.getProjectTypeCode());
-			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_GIVEN_NAME);
-			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_SUR_NAME);
-			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_INITIALS);
-			writeCodeListElement(PROJECT_RESOURCE, XmlSchemaCreator.RESOURCE_ROLE_CODES_ELEMENT_NAME, resource.getRoleCodes());
-			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_ORGANIZATION);
-			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_POSITION);
-			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_LOCATION);
-			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_PHONE_NUMBER);
-			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_PHONE_NUMBER_MOBILE);
-			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_PHONE_NUMBER_HOME);
-			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_PHONE_NUMBER_OTHER);
-			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_EMAIL);
-			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_ALTERNATIVE_EMAIL);
-			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_IM_ADDRESS);
-			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_IM_SERVICE);
-			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_DATE_UPDATED);
-			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_COST_PER_UNIT);
-			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_COMMENTS);
-			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_CUSTOM_FIELD_1);
-			writeOptionalElementWithSameTag(PROJECT_RESOURCE, resource, ProjectResource.TAG_CUSTOM_FIELD_2);
-			writeEndElement(out, PROJECT_RESOURCE);
-		}
-		
-		writeEndContainerElement(PROJECT_RESOURCE);
 	}
 
 	private void writeProjectSummaryElement() throws Exception
