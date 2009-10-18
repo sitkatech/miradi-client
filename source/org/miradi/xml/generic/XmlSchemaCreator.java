@@ -82,7 +82,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.Translation;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class XmlSchemaCreator
+public class XmlSchemaCreator implements WcsXmlConstants
 {
 	public static void main(String[] args) throws Exception
 	{
@@ -246,6 +246,8 @@ public class XmlSchemaCreator
 		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + WcsXmlConstants.HEIGHT_ELEMENT_NAME + " { xsd:integer } ");
 		writer.endBlock();
 		
+		defineSimpleThreatRatingElement(writer);
+		defineStressBasedThreatRatingElement(writer);
 		defineDateUnitEfforts(writer);
 		defineWorkUnitsFullProjectTimeSpanElement(writer);
 		defineWorkUnitsYearElement(writer);
@@ -291,7 +293,27 @@ public class XmlSchemaCreator
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.PROJECT_SUMMARY_LOCATION, VOCABULARY_COUNTRIES, COUNTRIES);
 		
 		writer.flush();
+	}	
+		
+	private void defineSimpleThreatRatingElement(SchemaWriter writer)
+	{
+		writer.defineAlias("SimpleThreatRating.element"	, ELEMENT_NAME + PREFIX + "SimpleThreatRating");
+		writer.startBlock();
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + "SimpleThreatRatingScope { vocabulary_simple_threat_rating_scope_code }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + "SimpleThreatRatingSeverity { vocabulary_simple_threat_rating_severitiy_code }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + "SimpleThreatRatingIrreversibility { vocabulary_simple_threat_rating_irreversibility_code }?");
+		writer.endBlock();
     }
+
+	private void defineStressBasedThreatRatingElement(SchemaWriter writer)
+	{
+		writer.defineAlias("StressBasedThreatRating.element", ELEMENT_NAME + PREFIX + "StressBasedThreatRating");
+		writer.startBlock();
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + "StressBasedThreatRatingStressId{ StressId.element } &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + "StressBasedThreatRatingContribution { vocabulary_contribution_code }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + "StressBasedThreatRatingIrreversibility { vocabulary_irreversibility_code }?");
+		writer.endBlock();
+	}
 
 	private void defineDateUnitEfforts(SchemaWriter writer)
 	{
