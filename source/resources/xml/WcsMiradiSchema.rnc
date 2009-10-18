@@ -41,7 +41,8 @@ ConservationProject.element = element miradi:ConservationProject
   AccountingCodeContainer.element ?  &
   FundingSourceContainer.element ?  &
   ExpenseAssignmentContainer.element ?  &
-  ResourceAssignmentContainer.element ? 
+  ResourceAssignmentContainer.element ?  &
+  ThreatRatingContainer.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -600,6 +601,15 @@ ResourceAssignment.element = element miradi:ResourceAssignment
   element miradi:ResourceAssignmentDetails{ DateUnitWorkUnits.element* }?
 }
 
+ThreatRatingContainer.element = element miradi:ThreatRatingContainer { ThreatRating.element* }
+ThreatRating.element = element miradi:ThreatRating
+{
+  element miradi:ThreatRatingTargetId{ BiodiversityTargetId.element } &
+  element miradi:ThreatRatingThreatId{ ThreatId.element } &
+  element miradi:ThreatRatingComments { text } &
+  element miradi:ThreatRating{ SimpleThreatRating.element | StressBasedThreatRating.element } * 
+}
+
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
 vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } 
 vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='31' } 
@@ -735,6 +745,20 @@ DiagramSize.element = element miradi:DiagramSize
 {
   element miradi:width { xsd:integer } &
   element miradi:height { xsd:integer } 
+}
+
+SimpleThreatRating.element = element miradi:SimpleThreatRating
+{
+  element miradi:SimpleThreatRatingScope { vocabulary_simple_threat_rating_scope_code }? &
+  element miradi:SimpleThreatRatingSeverity { vocabulary_simple_threat_rating_severitiy_code }? &
+  element miradi:SimpleThreatRatingIrreversibility { vocabulary_simple_threat_rating_irreversibility_code }?
+}
+
+StressBasedThreatRating.element = element miradi:StressBasedThreatRating
+{
+  element miradi:StressBasedThreatRatingStressId{ StressId.element } &
+  element miradi:StressBasedThreatRatingContribution { vocabulary_contribution_code }? &
+  element miradi:StressBasedThreatRatingIrreversibility { vocabulary_irreversibility_code }?
 }
 
 DateUnitWorkUnits.element = element miradi:DateUnitWorkUnits
