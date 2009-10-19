@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-19 11:58-0500\n"
+"POT-Creation-Date: 2009-10-19 13:34-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -819,6 +819,19 @@ msgstr ""
 msgid "Relevant Strategies and Activities"
 msgstr ""
 
+#: miradi/source/org/miradi/views/umbrella/doers/WcsProjectZipExporter.java:59
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:96
+msgid ""
+"Please choose a specific IUCN classification (Not a category). Fix needed "
+"for Strategy named:\n"
+"'%s'"
+msgstr ""
+
+#: miradi/source/org/miradi/views/umbrella/doers/WcsProjectZipExporter.java:86
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:173
+msgid "Exported file does not validate."
+msgstr ""
+
 #: miradi/source/org/miradi/views/umbrella/doers/ShowCurrentWizardFileNameDoer.java:41
 msgid ""
 "Current Wizard Step Name:\n"
@@ -845,19 +858,6 @@ msgstr ""
 msgid ""
 "\n"
 "Are you sure you want to delete the selected %s?"
-msgstr ""
-
-#: miradi/source/org/miradi/views/umbrella/doers/ExportValidatedProjectXml.java:59
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:96
-msgid ""
-"Please choose a specific IUCN classification (Not a category). Fix needed "
-"for Strategy named:\n"
-"'%s'"
-msgstr ""
-
-#: miradi/source/org/miradi/views/umbrella/doers/ExportValidatedProjectXml.java:86
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:173
-msgid "Exported file does not validate."
 msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/doers/ViewLegacyTncStrategyRankingDoer.java:38
@@ -5414,6 +5414,14 @@ msgstr ""
 msgid "TT|Zoom In"
 msgstr ""
 
+#: miradi/source/org/miradi/actions/ActionWcsProjectZipExport.java:35
+msgid "Action|Validated Project XML File (BETA)"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionWcsProjectZipExport.java:40
+msgid "TT|Export validated entire project as an XML file"
+msgstr ""
+
 #: miradi/source/org/miradi/actions/ActionRedo.java:34
 msgid "Action|Redo"
 msgstr ""
@@ -5533,14 +5541,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionResourceListModify.java:39
 msgid "TT|Modify resource from list"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionExportValidatedProjectXml.java:35
-msgid "Action|Validated Project XML File (BETA)"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionExportValidatedProjectXml.java:40
-msgid "TT|Export validated entire project as an XML file"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionShowConceptualModel.java:35
