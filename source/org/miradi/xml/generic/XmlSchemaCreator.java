@@ -104,7 +104,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		
 		writer.println("vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } ");
 		writer.println("vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } ");
-		writer.println("vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='31' } ");
+		writer.println("vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } ");
 		writer.println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
 		defineVocabulary(writer, VOCABULARY_FISCAL_YEAR_START, new FiscalYearStartQuestion());
 		defineVocabulary(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, new ProtectedAreaCategoryQuestion());

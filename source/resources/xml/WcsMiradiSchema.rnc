@@ -612,7 +612,7 @@ ThreatRating.element = element miradi:ThreatRating
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
 vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } 
-vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='31' } 
+vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } 
 vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }
 vocabulary_fiscal_year_start_month = ''|'10'|'7'|'4'
 vocabulary_protected_area_categories = 'Ia'|'Ib'|'II'|'III'|'IV'|'V'|'VI'
