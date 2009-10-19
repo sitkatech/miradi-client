@@ -24,9 +24,9 @@ import javax.swing.filechooser.FileFilter;
 
 import org.miradi.main.MainWindow;
 
-public class EAMZipFileChooser extends EAMFileSaveChooser
+public class EAMMpzFileChooser extends EAMFileSaveChooser
 {
-	public EAMZipFileChooser(MainWindow mainWindow)
+	public EAMMpzFileChooser(MainWindow mainWindow)
 	{
 		super(mainWindow);
 	}
