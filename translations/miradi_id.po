@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-16 13:19-0500\n"
+"POT-Creation-Date: 2009-10-19 11:58-0500\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -923,6 +923,19 @@ msgid ""
 "Are you sure you want to delete the selected %s?"
 msgstr ""
 
+#: miradi/source/org/miradi/views/umbrella/doers/ExportValidatedProjectXml.java:59
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:96
+msgid ""
+"Please choose a specific IUCN classification (Not a category). Fix needed "
+"for Strategy named:\n"
+"'%s'"
+msgstr ""
+
+#: miradi/source/org/miradi/views/umbrella/doers/ExportValidatedProjectXml.java:86
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:173
+msgid "Exported file does not validate."
+msgstr "Berkas yang diekspor tidak bisa divalidasi. "
+
 #: miradi/source/org/miradi/views/umbrella/doers/ViewLegacyTncStrategyRankingDoer.java:38
 msgid "Title|View..."
 msgstr "Tampilan… "
@@ -944,17 +957,6 @@ msgstr ""
 #: miradi/source/org/miradi/views/umbrella/doers/EditMethodsDoer.java:31
 msgid "Edit Methods"
 msgstr "Edit Metode "
-
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:96
-msgid ""
-"Please choose a specific IUCN classification (Not a category). Fix needed "
-"for Strategy named:\n"
-"'%s'"
-msgstr ""
-
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:173
-msgid "Exported file does not validate."
-msgstr "Berkas yang diekspor tidak bisa divalidasi. "
 
 #: miradi/source/org/miradi/views/umbrella/Undo.java:63
 msgid "Error during undo"
@@ -1057,11 +1059,11 @@ msgstr ""
 "Nama berkas proyek tidak boleh mengandung tanda baca selain titik, tanda "
 "sambung, dan spasi; serta tidak boleh lebih dari 32 karakter. "
 
-#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:44
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:43
 msgid "Export XML"
 msgstr "Eskpor XML "
 
-#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:46
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:45
 msgid ""
 "This feature is not yet fully supported. It exports all the project data in "
 "an XML file, but the schema of that file is still in flux. Future versions "
@@ -1071,15 +1073,15 @@ msgstr ""
 "proyek ke berkas XML, tetapi skema berkas masih belum stabil. Versi "
 "mendatang Miradi akan mengekspor data ke dalam berbagai macam format. "
 
-#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:52
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:51
 msgid "Export"
 msgstr "Ekspor "
 
-#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:71
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:70
 msgid "Export complete"
 msgstr "Ekspor selesai "
 
-#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:76
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:75
 msgid ""
 "Unable to write XML. Perhaps the disk was full, or you don't have permission "
 "to write to it, or you are using invalid characters in the file name."
@@ -3920,7 +3922,7 @@ msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr ""
 
 #: miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:279
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:466
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:370
 msgid "Menu|Group Box"
 msgstr "Kotak Grup"
 
@@ -4068,39 +4070,39 @@ msgstr "Gunakan produk komunikasi pihak lain "
 msgid "Document key results and lessons"
 msgstr "Dokumentasikan pelajaran dan hasil utama "
 
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:183
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:86
 msgid "MenuBar|File"
 msgstr "Berkas "
 
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:206
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:109
 msgid "Menu|Export Current Project as..."
 msgstr "Ekspor Proyek Saat Ini sebagai…"
 
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:226
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:130
 msgid "Menu|Export Current Page as..."
 msgstr "Ekspor Halaman Saat Ini sebagai…"
 
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:239
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:143
 msgid "Menu|Import"
 msgstr "Impor "
 
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:256
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:160
 msgid "MenuBar|Edit"
 msgstr "Edit "
 
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:323
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:227
 msgid "MenuBar|Actions"
 msgstr "Tindakan "
 
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:478
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:382
 msgid "MenuBar|View"
 msgstr "Tampilan "
 
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:528
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:432
 msgid "MenuBar|Step-by-Step"
 msgstr "Langkah demi Langkah "
 
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:546
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:450
 msgid "MenuBar|Help"
 msgstr "Bantuan "
 
@@ -5879,6 +5881,14 @@ msgstr "Modifikasi Sumber Daya "
 #: miradi/source/org/miradi/actions/ActionResourceListModify.java:39
 msgid "TT|Modify resource from list"
 msgstr "Modifikasi Sumber Daya dari daftar "
+
+#: miradi/source/org/miradi/actions/ActionExportValidatedProjectXml.java:35
+msgid "Action|Validated Project XML File (BETA)"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionExportValidatedProjectXml.java:40
+msgid "TT|Export validated entire project as an XML file"
+msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionShowConceptualModel.java:35
 #: miradi/source/org/miradi/actions/ActionShowConceptualModel.java:40
