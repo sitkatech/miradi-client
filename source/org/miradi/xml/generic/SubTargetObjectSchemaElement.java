@@ -29,7 +29,7 @@ public class SubTargetObjectSchemaElement extends BaseObjectSchemaElement
 	{
 		super(WcsXmlConstants.SUB_TARGET);
 		
-		createTextField(SubTarget.TAG_SHORT_LABEL);
-		createTextField(SubTarget.TAG_DETAIL);
+		createOptionalTextField(SubTarget.TAG_SHORT_LABEL);
+		createOptionalTextField(SubTarget.TAG_DETAIL);
 	}
 }

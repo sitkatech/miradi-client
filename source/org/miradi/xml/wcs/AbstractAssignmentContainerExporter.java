@@ -97,7 +97,8 @@ abstract public class AbstractAssignmentContainerExporter extends BaseObjectCont
 
 	private void writeQuarter(DateUnit dateUnit) throws Exception
 	{		
-		getWcsXmlExporter().writeStartElementWithTwoAttributes(getWriter(), getQuarterElementName(), YEAR, dateUnit.getYear(), START_MONTH, dateUnit.getYearStartMonth());
+		int fiscalYearFirstMonth = getProject().getProjectCalendar().getFiscalYearFirstMonth();
+		getWcsXmlExporter().writeStartElementWithTwoAttributes(getWriter(), getQuarterElementName(), YEAR, dateUnit.getYear(), START_MONTH, fiscalYearFirstMonth);
 		getWcsXmlExporter().writeEndElement(getQuarterElementName());
 	}
 

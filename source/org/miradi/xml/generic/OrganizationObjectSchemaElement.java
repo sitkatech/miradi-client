@@ -29,12 +29,12 @@ public class OrganizationObjectSchemaElement extends BaseObjectSchemaElement
 	{
 		super(WcsXmlConstants.ORGANIZATION);
 		
-		createTextField(Organization.TAG_SHORT_LABEL);
-		createTextField(Organization.TAG_ROLES_DESCRIPTION);
-		createTextField(Organization.TAG_CONTACT_FIRST_NAME);
-		createTextField(Organization.TAG_CONTACT_LAST_NAME);
-		createTextField(Organization.TAG_EMAIL);
-		createTextField(Organization.TAG_PHONE_NUMBER);
-		createTextField(Organization.TAG_COMMENTS);
+		createOptionalTextField(Organization.TAG_SHORT_LABEL);
+		createOptionalTextField(Organization.TAG_ROLES_DESCRIPTION);
+		createOptionalTextField(Organization.TAG_CONTACT_FIRST_NAME);
+		createOptionalTextField(Organization.TAG_CONTACT_LAST_NAME);
+		createOptionalTextField(Organization.TAG_EMAIL);
+		createOptionalTextField(Organization.TAG_PHONE_NUMBER);
+		createOptionalTextField(Organization.TAG_COMMENTS);
 	}
 }
