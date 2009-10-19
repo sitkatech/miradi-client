@@ -36,6 +36,6 @@ public class GroupBoxContainerExporter extends FactorContainerExporter
 	{
 		super.exportFields(writer, baseObject);
 				
-		writeFontStyleAndColors(getCoveringDiagramFactor(baseObject));
+		exportFontStyleAndColors(getCoveringDiagramFactor(baseObject));
 	}
 }

@@ -22,7 +22,6 @@ package org.miradi.xml.wcs;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.TextBox;
 
 public class TextBoxContainerExporter extends FactorContainerExporter
@@ -37,10 +36,6 @@ public class TextBoxContainerExporter extends FactorContainerExporter
 	{
 		super.exportFields(writer, baseObject);
 		
-		DiagramFactor diagramFactor = getCoveringDiagramFactor(baseObject);
-		String zOrderCode = diagramFactor.getData(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);
-		getWcsXmlExporter().writeOptionalCodeElement(getContainerName(), WcsXmlConstants.Z_ORDER_CODE, zOrderCode);
-		
-		writeFontStyleAndColors(diagramFactor);
+		exportFontStyleAndColors(getCoveringDiagramFactor(baseObject));
 	}
 }
