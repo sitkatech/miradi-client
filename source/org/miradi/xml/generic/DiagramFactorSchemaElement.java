@@ -33,10 +33,10 @@ public class DiagramFactorSchemaElement extends BaseObjectSchemaElement
 		createDiagramPointField(DiagramFactor.TAG_LOCATION);
 		createDiagramSizeField(DiagramFactor.TAG_SIZE);
 		createIdListField(WcsXmlConstants.GROUP_BOX_CHILDREN_IDS, WcsXmlConstants.DIAGRAM_FACTOR);
-		createCodeField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE);
-		createCodeField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE);		
+		createOptionalCodeField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE);
+		createOptionalCodeField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE);		
 		createOptionalTextField(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);		
-		createCodeField(XmlSchemaCreator.DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR);
-		createCodeField(XmlSchemaCreator.DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR);
+		createOptionalCodeField(XmlSchemaCreator.DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR);
+		createOptionalCodeField(XmlSchemaCreator.DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR);
 	}
 }
