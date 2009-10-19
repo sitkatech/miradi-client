@@ -259,11 +259,11 @@ DiagramFactor.element = element miradi:DiagramFactor
   element miradi:DiagramFactorLocation { DiagramPoint.element } &
   element miradi:DiagramFactorSize { DiagramSize.element } &
   element miradi:DiagramFactorGroupBoxChildrenIds { DiagramFactorId.element* } &
-  element miradi:DiagramFactorFontSize { vocabulary_diagram_factor_font_size  } &
-  element miradi:DiagramFactorFontStyle { vocabulary_diagram_factor_font_style  } &
+  element miradi:DiagramFactorFontSize { vocabulary_diagram_factor_font_size  }? &
+  element miradi:DiagramFactorFontStyle { vocabulary_diagram_factor_font_style  }? &
   element miradi:DiagramFactorTextBoxZOrderCode { text }? &
-  element miradi:DiagramFactorFontColor { vocabulary_diagram_factor_foreground_color  } &
-  element miradi:DiagramFactorBackgroundColor { vocabulary_diagram_factor_background_color  }
+  element miradi:DiagramFactorFontColor { vocabulary_diagram_factor_foreground_color  }? &
+  element miradi:DiagramFactorBackgroundColor { vocabulary_diagram_factor_background_color  }?
 }
 
 DiagramLinkContainer.element = element miradi:DiagramLinkContainer { DiagramLink.element* }
