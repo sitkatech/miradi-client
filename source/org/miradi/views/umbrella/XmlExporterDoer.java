@@ -26,7 +26,6 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.utils.ConstantButtonNames;
 import org.miradi.utils.EAMFileSaveChooser;
-import org.miradi.utils.EAMXmlFileChooser;
 import org.miradi.views.MainWindowDoer;
 
 abstract public class XmlExporterDoer extends MainWindowDoer
@@ -60,7 +59,7 @@ abstract public class XmlExporterDoer extends MainWindowDoer
 
 	private void export() throws CommandFailedException
 	{
-		EAMFileSaveChooser eamFileChooser = new EAMXmlFileChooser(getMainWindow());
+		EAMFileSaveChooser eamFileChooser = getFileChooser();
 		File chosen = eamFileChooser.displayChooser();
 		if (chosen==null) 
 			return;
@@ -88,6 +87,8 @@ abstract public class XmlExporterDoer extends MainWindowDoer
 	{
 		export();
 	}
-
+	
+	abstract protected EAMFileSaveChooser getFileChooser();
+	
 	abstract protected void export(File chosen) throws Exception;
 }

@@ -325,7 +325,7 @@ Cause.element = element miradi:Cause
   element miradi:CauseText { text }? &
   element miradi:CauseComments { text }? &
   element miradi:CauseIsDirectThreat { xsd:boolean }? &
-  element miradi:CauseTaxonomyCode { vocabulary_cause_taxonomy_code  } &
+  element miradi:CauseTaxonomyCode { vocabulary_cause_taxonomy_code  }? &
   element miradi:CauseObjectiveIds { ObjectiveId.element* } &
   element miradi:CauseIndicatorIds { IndicatorId.element* }
 }
@@ -384,10 +384,10 @@ GroupBox.element = element miradi:GroupBox
   element miradi:GroupBoxShortLabel { text }? &
   element miradi:GroupBoxText { text }? &
   element miradi:GroupBoxComments { text }? &
-  element miradi:GroupBoxFontSize { vocabulary_diagram_factor_font_size  } &
-  element miradi:GroupBoxFontStyle { vocabulary_diagram_factor_font_style  } &
-  element miradi:GroupBoxFontColor { vocabulary_diagram_factor_foreground_color  } &
-  element miradi:GroupBoxBackgroundColor { vocabulary_diagram_factor_background_color  }
+  element miradi:GroupBoxFontSize { vocabulary_diagram_factor_font_size  }? &
+  element miradi:GroupBoxFontStyle { vocabulary_diagram_factor_font_style  }? &
+  element miradi:GroupBoxFontColor { vocabulary_diagram_factor_foreground_color  }? &
+  element miradi:GroupBoxBackgroundColor { vocabulary_diagram_factor_background_color  }?
 }
 
 TextBoxContainer.element = element miradi:TextBoxContainer { TextBox.element* }
@@ -399,10 +399,10 @@ TextBox.element = element miradi:TextBox
   element miradi:TextBoxText { text }? &
   element miradi:TextBoxComments { text }? &
   element miradi:TextBoxTextBoxZOrderCode { xsd:boolean }? &
-  element miradi:TextBoxFontSize { vocabulary_diagram_factor_font_size  } &
-  element miradi:TextBoxFontStyle { vocabulary_diagram_factor_font_style  } &
-  element miradi:TextBoxFontColor { vocabulary_diagram_factor_foreground_color  } &
-  element miradi:TextBoxBackgroundColor { vocabulary_diagram_factor_background_color  }
+  element miradi:TextBoxFontSize { vocabulary_diagram_factor_font_size  }? &
+  element miradi:TextBoxFontStyle { vocabulary_diagram_factor_font_style  }? &
+  element miradi:TextBoxFontColor { vocabulary_diagram_factor_foreground_color  }? &
+  element miradi:TextBoxBackgroundColor { vocabulary_diagram_factor_background_color  }?
 }
 
 ScopeBoxContainer.element = element miradi:ScopeBoxContainer { ScopeBox.element* }

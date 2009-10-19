@@ -20,18 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import java.io.IOException;
-
-public class CodeFieldSchemaElement extends AbstractCodeFieldSchemaElement
+abstract public class AbstractCodeFieldSchemaElement extends FieldSchemaElement
 {
-	protected CodeFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse, String vocabularyNameToUse)
+
+	protected AbstractCodeFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse, String vocabularyNameToUse)
 	{
-		super(objectTypeNameToUse, fieldNameToUse, vocabularyNameToUse);
+		super(objectTypeNameToUse, fieldNameToUse);
+		
+		vocabularyName = vocabularyNameToUse;
 	}
 
-	public void output(SchemaWriter writer) throws IOException
-	{
-		super.output(writer);
-		writer.write(" { " + vocabularyName + "  }");
-	}
+	protected String vocabularyName;	
 }

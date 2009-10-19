@@ -18,20 +18,25 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.generic;
+package org.miradi.actions;
 
-import java.io.IOException;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-public class CodeFieldSchemaElement extends AbstractCodeFieldSchemaElement
+public class ActionExportValidatedProjectXml extends MainWindowAction
 {
-	protected CodeFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse, String vocabularyNameToUse)
+	public ActionExportValidatedProjectXml(MainWindow mainWindowToUse)
 	{
-		super(objectTypeNameToUse, fieldNameToUse, vocabularyNameToUse);
+		super(mainWindowToUse, getLabel());
 	}
 
-	public void output(SchemaWriter writer) throws IOException
+	public static String getLabel()
 	{
-		super.output(writer);
-		writer.write(" { " + vocabularyName + "  }");
+		return EAM.text("Action|Validated Project XML File (BETA)");
+	}
+
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Export validated entire project as an XML file");
 	}
 }
