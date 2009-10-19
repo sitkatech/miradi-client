@@ -24,7 +24,6 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.TextBox;
-import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class TextBoxContainerExporter extends FactorContainerExporter
 {
@@ -38,12 +37,10 @@ public class TextBoxContainerExporter extends FactorContainerExporter
 	{
 		super.exportFields(writer, baseObject);
 		
-		TextBox textBox = (TextBox) baseObject;
+		DiagramFactor diagramFactor = getCoveringDiagramFactor(baseObject);
+		String zOrderCode = diagramFactor.getData(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);
+		getWcsXmlExporter().writeOptionalCodeElement(getContainerName(), WcsXmlConstants.Z_ORDER_CODE, zOrderCode);
 		
-		writeCodeElementSameAsTag(textBox, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);
-		writeCodeElementSameAsTag(textBox, XmlSchemaCreator.DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME);
-		writeCodeElementSameAsTag(textBox, XmlSchemaCreator.DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME);
-		writeCodeElementSameAsTag(textBox, XmlSchemaCreator.DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME);
-		writeCodeElementSameAsTag(textBox, XmlSchemaCreator.DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME);
+		writeFontStyleAndColors(diagramFactor);
 	}
 }

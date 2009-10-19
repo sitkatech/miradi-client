@@ -398,7 +398,7 @@ TextBox.element = element miradi:TextBox
   element miradi:TextBoxShortLabel { text }? &
   element miradi:TextBoxText { text }? &
   element miradi:TextBoxComments { text }? &
-  element miradi:TextBoxTextBoxZOrderCode { xsd:boolean }? &
+  element miradi:TextBoxZOrderCode { xsd:boolean }? &
   element miradi:TextBoxFontSize { vocabulary_diagram_factor_font_size  }? &
   element miradi:TextBoxFontStyle { vocabulary_diagram_factor_font_style  }? &
   element miradi:TextBoxFontColor { vocabulary_diagram_factor_foreground_color  }? &

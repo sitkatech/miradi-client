@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.objects.DiagramFactor;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class TextBoxObjectSchemaElement extends FactorObjectSchemaElement
@@ -29,7 +28,7 @@ public class TextBoxObjectSchemaElement extends FactorObjectSchemaElement
 	{
 		super(WcsXmlConstants.TEXT_BOX);
 		
-		createOptionalBooleanField(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);
+		createOptionalBooleanField(WcsXmlConstants.Z_ORDER_CODE);
 		createOptionalCodeField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE);
 		createOptionalCodeField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE);		
 		createOptionalCodeField(XmlSchemaCreator.DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR);

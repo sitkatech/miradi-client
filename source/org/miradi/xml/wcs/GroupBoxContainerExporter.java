@@ -23,7 +23,6 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.GroupBox;
-import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class GroupBoxContainerExporter extends FactorContainerExporter
 {
@@ -37,10 +36,6 @@ public class GroupBoxContainerExporter extends FactorContainerExporter
 	{
 		super.exportFields(writer, baseObject);
 				
-		GroupBox groupBox = (GroupBox) baseObject;
-		writeCodeElementSameAsTag(groupBox, XmlSchemaCreator.DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME);
-		writeCodeElementSameAsTag(groupBox, XmlSchemaCreator.DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME);
-		writeCodeElementSameAsTag(groupBox, XmlSchemaCreator.DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME);
-		writeCodeElementSameAsTag(groupBox, XmlSchemaCreator.DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME);
+		writeFontStyleAndColors(getCoveringDiagramFactor(baseObject));
 	}
 }
