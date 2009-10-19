@@ -59,7 +59,7 @@ abstract public class XmlExporterDoer extends MainWindowDoer
 
 	private void export() throws CommandFailedException
 	{
-		EAMFileSaveChooser eamFileChooser = getFileChooser();
+		EAMFileSaveChooser eamFileChooser = createFileChooser();
 		File chosen = eamFileChooser.displayChooser();
 		if (chosen==null) 
 			return;
@@ -88,7 +88,7 @@ abstract public class XmlExporterDoer extends MainWindowDoer
 		export();
 	}
 	
-	abstract protected EAMFileSaveChooser getFileChooser();
+	abstract protected EAMFileSaveChooser createFileChooser();
 	
 	abstract protected void export(File chosen) throws Exception;
 }

@@ -118,7 +118,7 @@ public class ExportValidatedProjectXml extends XmlExporterDoer
 	}
 	
 	@Override
-	protected EAMFileSaveChooser getFileChooser()
+	protected EAMFileSaveChooser createFileChooser()
 	{
 		return new EAMZipFileChooser(getMainWindow());
 	}
