@@ -52,14 +52,6 @@ public abstract class FactorContainerExporter extends BaseObjectContainerExporte
 		writeIds("ObjectiveIds", WcsXmlConstants.OBJECTIVE, factor.getObjectiveRefs());
 	}
 	
-	protected void writeFontStyleAndColors(DiagramFactor diagramFactor) throws Exception
-	{
-		writeCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FONT_SIZE);
-		writeCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FONT_STYLE);
-		writeCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FOREGROUND_COLOR);
-		writeCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_BACKGROUND_COLOR);
-	}
-
 	protected DiagramFactor getCoveringDiagramFactor(BaseObject baseObject)
 	{
 		ORefList diagramFactorReferrers = baseObject.findObjectsThatReferToUs(DiagramFactor.getObjectType());
