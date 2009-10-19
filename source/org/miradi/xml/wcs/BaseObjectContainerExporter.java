@@ -69,10 +69,10 @@ abstract public class BaseObjectContainerExporter extends ObjectContainerExporte
 	
 	protected void exportFontStyleAndColors(DiagramFactor diagramFactor) throws Exception
 	{
-		getWcsXmlExporter().writeCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_SIZE, diagramFactor.getFontSize());
-		getWcsXmlExporter().writeCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_STYLE, diagramFactor.getFontStyle());
-		getWcsXmlExporter().writeCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FOREGROUND_COLOR, diagramFactor.getFontColor());
-		getWcsXmlExporter().writeCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_BACKGROUND_COLOR, diagramFactor.getBackgroundColor());
-		getWcsXmlExporter().writeOptionalElement(DIAGRAM_FACTOR, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, diagramFactor, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);
+		writeCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FONT_SIZE);
+		writeCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FONT_STYLE);
+		writeCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FOREGROUND_COLOR);
+		writeCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_BACKGROUND_COLOR);
+		getWcsXmlExporter().writeOptionalElement(DIAGRAM_FACTOR, Z_ORDER_CODE, diagramFactor, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);
 	}
 }
