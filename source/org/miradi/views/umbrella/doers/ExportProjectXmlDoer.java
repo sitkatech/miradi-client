@@ -95,7 +95,7 @@ public class ExportProjectXmlDoer extends XmlExporterDoer
 	}
 	
 	@Override
-	protected EAMFileSaveChooser getFileChooser()
+	protected EAMFileSaveChooser createFileChooser()
 	{
 		return new EAMXmlFileChooser(getMainWindow());
 	}
