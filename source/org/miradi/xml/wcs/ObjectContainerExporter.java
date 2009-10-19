@@ -26,13 +26,13 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.Project;
 
-abstract public class ObjectContainerExporter implements WcsXmlConstants
+abstract public class ObjectContainerExporter extends AbstractContainerExporter
 {
 	public ObjectContainerExporter(WcsXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
 	{
-		wcsXmlExporter = wcsXmlExporterToUse;
+		super(wcsXmlExporterToUse);
+		
 		containerName = containerNameToUse;
 		objectType = objectTypeToUse;
 	}
@@ -118,22 +118,11 @@ abstract public class ObjectContainerExporter implements WcsXmlConstants
 		return objectType;
 	}
 	
-	protected Project getProject()
-	{
-		return wcsXmlExporter.getProject();
-	}
-	
-	protected WcsXmlExporter getWcsXmlExporter()
-	{
-		return wcsXmlExporter;
-	}
-	
 	protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception
 	{
 		writeOptionalElementWithSameTag(baseObject, BaseObject.TAG_LABEL);
 	}
 	
-	private WcsXmlExporter wcsXmlExporter;
 	private int objectType;
 	private String containerName;
 }

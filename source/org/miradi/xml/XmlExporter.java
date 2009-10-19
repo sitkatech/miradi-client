@@ -140,7 +140,7 @@ public abstract class XmlExporter
 		out.writeln("</" + elementName + ">");
 	}
 
-	protected void writeOptionalElement(UnicodeWriter out, String elementName, String data) throws Exception
+	public void writeOptionalElement(UnicodeWriter out, String elementName, String data) throws Exception
 	{
 		if (data == null || data.length() == 0)
 			return;

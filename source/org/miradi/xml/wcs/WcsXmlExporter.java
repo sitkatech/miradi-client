@@ -29,6 +29,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -108,11 +109,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		new FundingSourceContainerExporter(this).exportObjectContainer();
 		new ExpenseAssignmentContainerExporter(this).exportObjectContainer();
 		new ResourceAssignmentContainerExporter(this).exportObjectContainer();
-		
-//FIXME urgent - wcs - uncomment and make it validate
-//		writeThreatTargetThreatRatingElement();
-//		writeSimpleThreatRatingSchemaElement();
-//		writeStressBasedThreatRatingElement();
+		new ThreatTargetThreatRatingElementExporter(this).exportObjectContainer();
 		
 		writeEndElement(out, CONSERVATION_PROJECT);
 	}
@@ -237,6 +234,10 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 	{
 		if (Target.is(wrappedFactor))
 			return WcsXmlConstants.BIODIVERSITY_TARGET;
+		
+		//FIXME urgent - wcs  need to use object schema name
+		if (Cause.is(wrappedFactor))
+			return "Cause";
 		
 		return wrappedFactor.getTypeName();
 	}

@@ -26,7 +26,7 @@ public class ThreatTargetThreatRatingFieldSchemaElement extends	FieldSchemaEleme
 {
 	protected ThreatTargetThreatRatingFieldSchemaElement(String objectTypeNameToUse)
 	{
-		super(objectTypeNameToUse, "");
+		super(objectTypeNameToUse, "Ratings");
 	}
 	
 	@Override
@@ -34,6 +34,6 @@ public class ThreatTargetThreatRatingFieldSchemaElement extends	FieldSchemaEleme
 	{
 		super.output(writer);
 		
-		writer.write("{ SimpleThreatRating.element | StressBasedThreatRating.element } * ");
+		writer.write("{ SimpleThreatRating.element | StressBasedThreatRating.element }");
 	}
 }

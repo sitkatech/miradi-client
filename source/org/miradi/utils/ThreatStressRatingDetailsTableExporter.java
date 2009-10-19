@@ -89,39 +89,39 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractThreatRating
 			return new TaglessChoiceItem(stressForRow.getFullName());
 		
 		if (columnTag.equals(ThreatStressRating.TAG_CONTRIBUTION))
-			return getContribution(stressForRow);
+			return getContribution(getProject(), getTargetRef(), threat.getRef(), stressForRow);
 		
 		if (columnTag.equals(ThreatStressRating.TAG_IRREVERSIBILITY))
-			return getIrreversibility(stressForRow);
+			return getIrreversibility(getProject(), getTargetRef(), threat.getRef(), stressForRow);
 		
 		String valueToConvert = stressForRow.getData(columnTag);
 		return TargetThreatLinkTableModel.convertThreatRatingCodeToChoiceItem(valueToConvert);
 	}
 
-	private ChoiceItem getIrreversibility(Stress stressForRow)
+	public static ChoiceItem getIrreversibility(Project project, ORef targetRef, ORef threatRef, Stress stress)
 	{
-		ThreatStressRating threatStressRating = findThreatStressRating(stressForRow);
+		ThreatStressRating threatStressRating = findThreatStressRating(project, targetRef, threatRef, stress);
 		if (threatStressRating == null)
 			return new EmptyChoiceItem();
 			
 		return threatStressRating.getIrreversibility();
 	}
 
-	private ChoiceItem getContribution(Stress stressForRow)
+	public static ChoiceItem getContribution(Project project, ORef targetRef, ORef threatRef, Stress stress)
 	{
-		ThreatStressRating threatStressRating = findThreatStressRating(stressForRow);
+		ThreatStressRating threatStressRating = findThreatStressRating(project, targetRef, threatRef, stress);
 		if (threatStressRating == null)
 			return new EmptyChoiceItem();
 		
 		return threatStressRating.getContribution();
 	}
 	
-	private ThreatStressRating findThreatStressRating(Stress stress)
+	private static ThreatStressRating findThreatStressRating(Project project, ORef targetRef, ORef threatRef, Stress stress)
 	{
-		ThreatTargetVirtualLinkHelper virtualLink = new ThreatTargetVirtualLinkHelper(getProject());
-		ORef threatStressRatingRef = virtualLink.findThreatStressRating(threat.getRef(), getTargetRef(), stress.getRef());
+		ThreatTargetVirtualLinkHelper virtualLink = new ThreatTargetVirtualLinkHelper(project);
+		ORef threatStressRatingRef = virtualLink.findThreatStressRating(threatRef, targetRef, stress.getRef());
 		
-		return ThreatStressRating.find(getProject(), threatStressRatingRef);
+		return ThreatStressRating.find(project, threatStressRatingRef);
 	}
 
 	@Override

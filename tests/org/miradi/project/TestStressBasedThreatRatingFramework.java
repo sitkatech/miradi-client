@@ -52,7 +52,7 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		Cause threat = getProject().createCause();
 		
 		getProject().enableAsThreat(threat);
-		createThreatFactorLink(threat, target);
+		createThreatFactorLink(getProject(), threat, target);
 	
 		StressBasedThreatRatingFramework frameWork = new StressBasedThreatRatingFramework(getProject());
 		assertEquals("wrong summary rating for target?", 3, frameWork.get2PrimeSummaryRatingValue(target));
@@ -69,19 +69,19 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		assertEquals("wrong rollup rating of threats?", 3, frameWork.getRollupRatingOfThreats());
 	}
 	
-	private void createThreatFactorLink(Cause cause, Target target) throws Exception
+	public static void createThreatFactorLink(ProjectForTesting project, Cause cause, Target target) throws Exception
 	{
-		ORef threatLinkRef = getProject().createFactorLink(cause.getRef(), target.getRef());
-		FactorLink factorLink = FactorLink.find(getProject(), threatLinkRef);
+		ORef threatLinkRef = project.createFactorLink(cause.getRef(), target.getRef());
+		FactorLink factorLink = FactorLink.find(project, threatLinkRef);
 		
-		Stress stress = getProject().createAndPopulateStress();
+		Stress stress = project.createAndPopulateStress();
 		ORefList stressRefs = new ORefList(stress);
 		ORef targetRef = ProjectForTesting.getDownstreamTargetRef(factorLink);
-		getProject().setObjectData(targetRef, Target.TAG_STRESS_REFS, stressRefs.toString());	
+		project.setObjectData(targetRef, Target.TAG_STRESS_REFS, stressRefs.toString());	
 		
-		populateWithThreatStressRating(factorLink, stress.getRef());
-		populateWithThreatStressRating(factorLink, stress.getRef());
-		populateWithThreatStressRating(factorLink, stress.getRef());
+		populateWithThreatStressRating(project, factorLink, stress.getRef());
+		populateWithThreatStressRating(project, factorLink, stress.getRef());
+		populateWithThreatStressRating(project, factorLink, stress.getRef());
 	}
 	
 	private void createFactorLinkWithThreatStressRating() throws Exception
@@ -95,18 +95,18 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		getProject().setObjectData(targetRef, Target.TAG_STRESS_REFS, stressRefs.toString());	
 		getProject().populateDirectThreatLink(factorLink, stressRefs);
 		
-		populateWithThreatStressRating(factorLink, stress.getRef());
-		populateWithThreatStressRating(factorLink, stress.getRef());
-		populateWithThreatStressRating(factorLink, stress.getRef());
-		populateWithThreatStressRating(factorLink, stress.getRef());
+		populateWithThreatStressRating(getProject(), factorLink, stress.getRef());
+		populateWithThreatStressRating(getProject(), factorLink, stress.getRef());
+		populateWithThreatStressRating(getProject(), factorLink, stress.getRef());
+		populateWithThreatStressRating(getProject(), factorLink, stress.getRef());
 		
 		ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
 		assertEquals(4, threatTargetVirtualLink.calculateThreatRatingBundleValue(ProjectForTesting.getUpstreamThreatRef(factorLink), targetRef));
 	}
 
-	private void populateWithThreatStressRating(FactorLink factorLink, ORef stressRef) throws Exception
+	private static void populateWithThreatStressRating(ProjectForTesting project, FactorLink factorLink, ORef stressRef) throws Exception
 	{
-		getProject().createAndPopulateThreatStressRating(stressRef, ProjectForTesting.getUpstreamThreatRef(factorLink));
+		project.createAndPopulateThreatStressRating(stressRef, ProjectForTesting.getUpstreamThreatRef(factorLink));
 	}
 	
 	public void testGetTargetMajorityRating() throws Exception
@@ -140,7 +140,7 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 	{
 		Target target = getProject().createTarget();
 		Cause threat = getProject().createCause();
-		createThreatFactorLink(threat, target);
+		createThreatFactorLink(getProject(), threat, target);
 		
 		getProject().enableAsThreat(threat);		
 		StressBasedThreatRatingFramework framework = getProject().getStressBasedThreatRatingFramework();

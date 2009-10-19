@@ -159,25 +159,25 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 	
 	public void testBundlesForDeletedNodes() throws Exception
 	{
-		ThreatRatingBundle bundle1 = createThreatTargetAndBundle();
+		ThreatRatingBundle bundle1 = createThreatTargetAndBundle(project, framework);
 		BaseObject object1 = project.findObject(new ORef(ObjectType.CAUSE, bundle1.getThreatId()));
 		project.deleteObject(object1);
 		assertFalse("deleted threatId case failed?", framework.isBundleForLinkedThreatAndTarget(bundle1));
 		
-		ThreatRatingBundle bundle2 = createThreatTargetAndBundle();
+		ThreatRatingBundle bundle2 = createThreatTargetAndBundle(project, framework);
 		BaseObject object2 = project.findObject(new ORef(ObjectType.TARGET, bundle2.getTargetId()));
 		project.deleteObject(object2);
 		assertFalse("deleted targetId case failed?", framework.isBundleForLinkedThreatAndTarget(bundle2));
 		
 	}
 
-	private ThreatRatingBundle createThreatTargetAndBundle() throws Exception
+	public static ThreatRatingBundle createThreatTargetAndBundle(ProjectForTesting projectToUse, SimpleThreatRatingFramework frameworkToUse) throws Exception
 	{
-		FactorId threatId = createThreat(project).getWrappedId();
-		FactorId targetId = createTarget(project).getWrappedId();
-		populateBundle(framework, threatId, targetId, framework.getValueOptions()[0]);
-		ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
-		assertFalse("normal case failed?", framework.isBundleForLinkedThreatAndTarget(bundle));
+		FactorId threatId = createThreat(projectToUse).getWrappedId();
+		FactorId targetId = createTarget(projectToUse).getWrappedId();
+		populateBundle(frameworkToUse, threatId, targetId, frameworkToUse.getValueOptions()[0]);
+		ThreatRatingBundle bundle = frameworkToUse.getBundle(threatId, targetId);
+		assertFalse("normal case failed?", frameworkToUse.isBundleForLinkedThreatAndTarget(bundle));
 		return bundle;
 	}
 	
@@ -229,7 +229,7 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 		assertEquals("target2 not very high?", veryHigh, framework.getTargetThreatRatingValue(target2.getWrappedId()));
 	}
 	
-	private static void createLinkageAndBundle(Project projectToUse, DiagramFactor threat, DiagramFactor target, ValueOption value) throws Exception
+	public static void createLinkageAndBundle(Project projectToUse, DiagramFactor threat, DiagramFactor target, ValueOption value) throws Exception
 	{
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
 		projectToUse.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
