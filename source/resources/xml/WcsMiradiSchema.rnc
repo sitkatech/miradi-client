@@ -607,7 +607,7 @@ ThreatRating.element = element miradi:ThreatRating
   element miradi:ThreatRatingTargetId{ BiodiversityTargetId.element } &
   element miradi:ThreatRatingThreatId{ ThreatId.element } &
   element miradi:ThreatRatingComments { text }? &
-  element miradi:ThreatRatingRatings{ SimpleThreatRating.element | StressBasedThreatRating.element }
+  element miradi:ThreatRatingRatings{ SimpleThreatRating.element | StressBasedThreatRating.element* }
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
