@@ -21,7 +21,7 @@ ConservationProject.element = element miradi:ConservationProject
   HumanWelfareTargetContainer.element ?  &
   CauseContainer.element ?  &
   StrategyContainer.element ?  &
-  ThreatReductionResultsContainer.element ?  &
+  ThreatReductionResultContainer.element ?  &
   IntermediateResultContainer.element ?  &
   GroupBoxContainer.element ?  &
   TextBoxContainer.element ?  &
@@ -90,13 +90,13 @@ Organization.element = element miradi:Organization
 {
   attribute Id {xsd:integer}  &
   element miradi:OrganizationLabel { text }? &
-  element miradi:OrganizationShortLabel { text } &
-  element miradi:OrganizationRolesDescription { text } &
-  element miradi:OrganizationContactFirstName { text } &
-  element miradi:OrganizationContactLastName { text } &
-  element miradi:OrganizationEmail { text } &
-  element miradi:OrganizationPhoneNumber { text } &
-  element miradi:OrganizationComments { text }
+  element miradi:OrganizationShortLabel { text }? &
+  element miradi:OrganizationRolesDescription { text }? &
+  element miradi:OrganizationContactFirstName { text }? &
+  element miradi:OrganizationContactLastName { text }? &
+  element miradi:OrganizationEmail { text }? &
+  element miradi:OrganizationPhoneNumber { text }? &
+  element miradi:OrganizationComments { text }?
 }
 
 ProjectSummaryScope.element = element miradi:ProjectSummaryScope
@@ -351,17 +351,17 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyIndicatorIds { IndicatorId.element* }
 }
 
-ThreatReductionResultsContainer.element = element miradi:ThreatReductionResultsContainer { ThreatReductionResults.element* }
-ThreatReductionResults.element = element miradi:ThreatReductionResults
+ThreatReductionResultContainer.element = element miradi:ThreatReductionResultContainer { ThreatReductionResult.element* }
+ThreatReductionResult.element = element miradi:ThreatReductionResult
 {
   attribute Id {xsd:integer}  &
-  element miradi:ThreatReductionResultsLabel { text }? &
-  element miradi:ThreatReductionResultsShortLabel { text }? &
-  element miradi:ThreatReductionResultsText { text }? &
-  element miradi:ThreatReductionResultsComments { text }? &
-  element miradi:ThreatReductionResultsRelatedDirectThreatId{ ThreatReductionResultThreatId.element }? &
-  element miradi:ThreatReductionResultsObjectiveIds { ObjectiveId.element* } &
-  element miradi:ThreatReductionResultsIndicatorIds { IndicatorId.element* }
+  element miradi:ThreatReductionResultLabel { text }? &
+  element miradi:ThreatReductionResultShortLabel { text }? &
+  element miradi:ThreatReductionResultText { text }? &
+  element miradi:ThreatReductionResultComments { text }? &
+  element miradi:ThreatReductionResultRelatedDirectThreatId{ ThreatReductionResultThreatId.element }? &
+  element miradi:ThreatReductionResultObjectiveIds { ObjectiveId.element* } &
+  element miradi:ThreatReductionResultIndicatorIds { IndicatorId.element* }
 }
 
 IntermediateResultContainer.element = element miradi:IntermediateResultContainer { IntermediateResult.element* }
@@ -445,8 +445,8 @@ SubTarget.element = element miradi:SubTarget
 {
   attribute Id {xsd:integer}  &
   element miradi:SubTargetLabel { text }? &
-  element miradi:SubTargetShortLabel { text } &
-  element miradi:SubTargetDetail { text }
+  element miradi:SubTargetShortLabel { text }? &
+  element miradi:SubTargetDetail { text }?
 }
 
 GoalContainer.element = element miradi:GoalContainer { Goal.element* }

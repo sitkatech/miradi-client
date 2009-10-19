@@ -38,8 +38,8 @@ public class CauseContainerExporter extends FactorContainerExporter
 		
 		Cause cause = (Cause) baseObject;
 		
-		writeCodeElementSameAsTag(cause, Cause.TAG_IS_DIRECT_THREAT);
-		writeCodeElementSameAsTag(cause, Cause.TAG_TAXONOMY_CODE);
+		writeOptionalElementWithSameTag(cause, Cause.TAG_IS_DIRECT_THREAT);
+		writeOptionalElementWithSameTag(cause, Cause.TAG_TAXONOMY_CODE);
 		writeObjectiveIds(cause);
 		writeIndicatorIds(cause);
 	}

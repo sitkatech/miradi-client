@@ -55,7 +55,7 @@ public interface WcsXmlConstants
 	public static final String HUMAN_WELFARE_TARGET = "HumanWelfareTarget";
 	public static final String CAUSE = "Cause";
 	public static final String STRATEGY = "Strategy";
-	public static final String THREAT_REDUCTION_RESULTS = "ThreatReductionResults";
+	public static final String THREAT_REDUCTION_RESULTS = "ThreatReductionResult";
 	public static final String INTERMEDIATE_RESULTS = "IntermediateResult";
 	public static final String GROUP_BOX = "GroupBox";
 	public static final String TEXT_BOX = "TextBox";
