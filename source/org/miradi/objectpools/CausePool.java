@@ -61,6 +61,11 @@ public class CausePool extends EAMNormalObjectPool
 	
 	public Cause[] getDirectThreats()
 	{
+		return getDirectThreatsAsVector().toArray(new Cause[0]);
+	}
+
+	public Vector<Cause> getDirectThreatsAsVector()
+	{
 		Vector<Cause> cmNodes = new Vector();
 		FactorId[] ids = getModelNodeIds();
 		Arrays.sort(ids);
@@ -70,6 +75,6 @@ public class CausePool extends EAMNormalObjectPool
 			if(cause.isDirectThreat())
 				cmNodes.add(cause);
 		}
-		return cmNodes.toArray(new Cause[0]);
+		return cmNodes;
 	}
 }
