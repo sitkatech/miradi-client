@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-19 13:34-0500\n"
+"POT-Creation-Date: 2009-10-19 13:53-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -835,6 +835,19 @@ msgstr "数据以制表符分隔格式导出 \t\t"
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr "试图导出到制表符分隔格式文件时出错。 \t\t"
 
+#: miradi/source/org/miradi/views/umbrella/doers/ExportWcsProjectZipDoer.java:59
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:96
+msgid ""
+"Please choose a specific IUCN classification (Not a category). Fix needed "
+"for Strategy named:\n"
+"'%s'"
+msgstr ""
+
+#: miradi/source/org/miradi/views/umbrella/doers/ExportWcsProjectZipDoer.java:86
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:173
+msgid "Exported file does not validate."
+msgstr "导出的文件不正确。 \t\t"
+
 #: miradi/source/org/miradi/views/umbrella/doers/AbstractEditProgressDoer.java:32
 msgid "Edit Progress Percents"
 msgstr "编辑进展百分比 \t\t"
@@ -862,19 +875,6 @@ msgstr "共享活动 \t\t"
 #: miradi/source/org/miradi/views/umbrella/doers/AbstractStrategyActivityRelevancyListDoer.java:40
 msgid "Relevant Strategies and Activities"
 msgstr "相关策略和活动"
-
-#: miradi/source/org/miradi/views/umbrella/doers/WcsProjectZipExporter.java:59
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:96
-msgid ""
-"Please choose a specific IUCN classification (Not a category). Fix needed "
-"for Strategy named:\n"
-"'%s'"
-msgstr ""
-
-#: miradi/source/org/miradi/views/umbrella/doers/WcsProjectZipExporter.java:86
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:173
-msgid "Exported file does not validate."
-msgstr "导出的文件不正确。 \t\t"
 
 #: miradi/source/org/miradi/views/umbrella/doers/ShowCurrentWizardFileNameDoer.java:41
 msgid ""
@@ -5425,6 +5425,14 @@ msgstr ""
 msgid "TT|Move factors right and down as needed to create margins"
 msgstr ""
 
+#: miradi/source/org/miradi/actions/ActionExportWcsProjectZip.java:35
+msgid "Action|Validated Project XML File (BETA)"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionExportWcsProjectZip.java:40
+msgid "TT|Export validated entire project as an XML file"
+msgstr ""
+
 #: miradi/source/org/miradi/actions/ActionPrint.java:34
 msgid "Action|Print"
 msgstr "打印 \t\t"
@@ -5597,14 +5605,6 @@ msgstr "放大 \t\t"
 #: miradi/source/org/miradi/actions/ActionZoomIn.java:39
 msgid "TT|Zoom In"
 msgstr "放大 \t\t"
-
-#: miradi/source/org/miradi/actions/ActionWcsProjectZipExport.java:35
-msgid "Action|Validated Project XML File (BETA)"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionWcsProjectZipExport.java:40
-msgid "TT|Export validated entire project as an XML file"
-msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionRedo.java:34
 msgid "Action|Redo"
