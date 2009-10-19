@@ -159,7 +159,7 @@ public class Actions
 		registerAction(new ActionHowToSave(mainWindow));
 		registerAction(new ActionExportZippedProjectFile(mainWindow));
 		registerAction(new ActionExportProjectXml(mainWindow));
-		registerAction(new ActionExportValidatedProjectXml(mainWindow));
+		registerAction(new ActionWcsProjectZipExport(mainWindow));
 		registerAction(new ActionExportConProXml(mainWindow));
 		registerAction(new ActionImportZippedProjectFile(mainWindow));
 		registerAction(new ActionImportZippedConproProject(mainWindow));
