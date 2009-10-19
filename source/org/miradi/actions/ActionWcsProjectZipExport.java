@@ -23,9 +23,9 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionExportValidatedProjectXml extends MainWindowAction
+public class ActionWcsProjectZipExport extends MainWindowAction
 {
-	public ActionExportValidatedProjectXml(MainWindow mainWindowToUse)
+	public ActionWcsProjectZipExport(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
