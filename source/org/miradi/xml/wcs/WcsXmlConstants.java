@@ -74,6 +74,14 @@ public interface WcsXmlConstants
 	public static final String PROGRESS_REPORT = "ProgressReport";
 	public static final String PROGRESS_PERCENT = "ProgressPercent";
 	public static final String THREAT_RATING = "ThreatRating";
+	public static final String THREAT = "Threat";
+	public static final String TARGET = "Target";
+	public static final String RATINGS = "Ratings";
+	public static final String SCOPE = "Scope";
+	public static final String SEVERITY = "Severity";
+	public static final String IRREVERSIBILITY = "Irreversibility";
+	public static final String CONTRIBUTION = "Contribution";
+	public static final String COMMENTS = "Comments";
 	public static final String SIMPLE_BASED_THREAT_RATING = "SimpleThreatRating";
 	public static final String STRESS_BASED_THREAT_RATING = "StressBasedThreatRating";
 	public static final String MEASUREMENT = "Measurement";

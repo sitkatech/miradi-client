@@ -18,19 +18,28 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.generic;
+package org.miradi.xml.wcs;
 
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.project.Project;
 
-public class ThreatTargetThreatRatingElement extends ObjectSchemaElement
+abstract public class AbstractContainerExporter implements WcsXmlConstants
 {
-	public ThreatTargetThreatRatingElement()
+	public AbstractContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
-		super(WcsXmlConstants.THREAT_RATING);
-		
-		createIdField("TargetId", XmlSchemaCreator.BIODIVERSITY_TARGET_ID_ELEMENT_NAME);
-		createIdField("ThreatId", XmlSchemaCreator.THREAT_ID_ELEMENT_NAME);
-		createOptionalTextField("Comments");
-		createThreatTargetThreatRatingField();
+		wcsXmlExporter = wcsXmlExporterToUse;
 	}
+
+	protected Project getProject()
+	{
+		return wcsXmlExporter.getProject();
+	}
+	
+	protected WcsXmlExporter getWcsXmlExporter()
+	{
+		return wcsXmlExporter;
+	}
+	
+	abstract public void exportObjectContainer() throws Exception;
+	
+	private WcsXmlExporter wcsXmlExporter;
 }

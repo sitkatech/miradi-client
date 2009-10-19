@@ -28,7 +28,14 @@ import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.Target;
+import org.miradi.project.TestSimpleThreatRatingFramework;
+import org.miradi.project.TestStressBasedThreatRatingFramework;
+import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 
 public class TestWcsExporter extends TestCaseWithProject
 {
@@ -48,6 +55,33 @@ public class TestWcsExporter extends TestCaseWithProject
 		DiagramFactor diagramFactor1 = getProject().createAndPopulateDiagramFactor();
 		DiagramFactor diagramFactor2 = getProject().createAndPopulateDiagramFactor();
 		getProject().createDiagramFactorLinkAndAddToDiagram(diagramFactor1, diagramFactor2);
+		getProject().createResourceAssignment();
+		validateProject();
+	}
+	
+	public void testProjectWithStressBasedThreatRatingData() throws Exception
+	{
+		getProject().setMetadata(ProjectMetadata.TAG_THREAT_RATING_MODE, ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
+		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		Cause threat = getProject().createCause();
+		getProject().enableAsThreat(threat);
+		Target target = (Target) targetDiagramFactor.getWrappedFactor();
+		TestStressBasedThreatRatingFramework.createThreatFactorLink(getProject(), threat, target);
+		validateProject();
+	}
+	
+	public void testProjectWithSimpleThreatRatingData() throws Exception
+	{
+		getProject().setMetadata(ProjectMetadata.TAG_THREAT_RATING_MODE, ThreatRatingModeChoiceQuestion.SIMPLE_BASED_CODE);
+		
+		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		getProject().enableAsThreat(threatDiagramFactor.getWrappedORef());
+
+		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		getProject().createFactorLink(threatDiagramFactor.getWrappedORef(), targetDiagramFactor.getWrappedORef());
+		
+		TestSimpleThreatRatingFramework.populateBundle(getProject().getSimpleThreatRatingFramework(), threatDiagramFactor.getWrappedId(), targetDiagramFactor.getWrappedId(), getProject().getSimpleThreatRatingFramework().getValueOptions()[0]);
+		
 		validateProject();
 	}
 
