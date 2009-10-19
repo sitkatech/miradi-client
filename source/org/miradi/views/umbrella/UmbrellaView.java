@@ -225,7 +225,7 @@ import org.miradi.views.umbrella.doers.ExpandAllRowsDoer;
 import org.miradi.views.umbrella.doers.ExportProjectXmlDoer;
 import org.miradi.views.umbrella.doers.ExportRtfDoer;
 import org.miradi.views.umbrella.doers.ExportTableDoer;
-import org.miradi.views.umbrella.doers.WcsProjectZipExporter;
+import org.miradi.views.umbrella.doers.ExportWcsProjectZipDoer;
 import org.miradi.views.umbrella.doers.HowToSaveDoer;
 import org.miradi.views.umbrella.doers.ImportCpmzDoer;
 import org.miradi.views.umbrella.doers.RemoveResourceAssignmentDoer;
@@ -396,7 +396,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionImportZippedProjectFile.class, new ImportZippedProjectFileDoer());
 		addDoerToMap(ActionImportZippedConproProject.class, new ImportCpmzDoer());
 		addDoerToMap(ActionExportProjectXml.class, new ExportProjectXmlDoer());
-		addDoerToMap(ActionWcsProjectZipExport.class, new WcsProjectZipExporter());
+		addDoerToMap(ActionWcsProjectZipExport.class, new ExportWcsProjectZipDoer());
 		addDoerToMap(ActionExportConProXml.class, new ExportCpmzDoer());
 		addDoerToMap(ActionExportRtf.class, new ExportRtfDoer());
 		addDoerToMap(ActionExportTable.class, new ExportTableDoer());
