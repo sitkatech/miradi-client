@@ -34,7 +34,7 @@ import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.utils.EAMFileSaveChooser;
-import org.miradi.utils.EAMMpzFileChooser;
+import org.miradi.utils.MpzFileChooser;
 import org.miradi.views.umbrella.XmlExporterDoer;
 import org.miradi.xml.wcs.WcsMiradiXmlValidator;
 import org.miradi.xml.wcs.WcsXmlExporter;
@@ -120,7 +120,7 @@ public class ExportWcsProjectZipDoer extends XmlExporterDoer
 	@Override
 	protected EAMFileSaveChooser createFileChooser()
 	{
-		return new EAMMpzFileChooser(getMainWindow());
+		return new MpzFileChooser(getMainWindow());
 	}
 	
 	public static final String PROJECT_XML_FILE_NAME = "project.xml";

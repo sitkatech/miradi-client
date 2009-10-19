@@ -27,7 +27,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectZipper;
 import org.miradi.utils.EAMFileSaveChooser;
-import org.miradi.utils.EAMMpzFileChooser;
+import org.miradi.utils.MpzFileChooser;
 import org.miradi.views.MainWindowDoer;
 
 
@@ -50,7 +50,7 @@ public class ExportZippedProjectFileDoer extends MainWindowDoer
 
 	static public void perform(MainWindow mainWindow, File directoryToZip) throws CommandFailedException
 	{
-		EAMFileSaveChooser eamFileChooser = new EAMMpzFileChooser(mainWindow);
+		EAMFileSaveChooser eamFileChooser = new MpzFileChooser(mainWindow);
 		File chosen = eamFileChooser.displayChooser();
 		if (chosen == null)
 			return;
