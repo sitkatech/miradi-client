@@ -21,7 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.wcs;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 
 public abstract class FactorContainerExporter extends BaseObjectContainerExporter
@@ -48,5 +50,22 @@ public abstract class FactorContainerExporter extends BaseObjectContainerExporte
 	protected void writeObjectiveIds(Factor factor) throws Exception
 	{
 		writeIds("ObjectiveIds", WcsXmlConstants.OBJECTIVE, factor.getObjectiveRefs());
+	}
+	
+	protected void writeFontStyleAndColors(DiagramFactor diagramFactor) throws Exception
+	{
+		writeCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FONT_SIZE);
+		writeCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FONT_STYLE);
+		writeCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FOREGROUND_COLOR);
+		writeCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_BACKGROUND_COLOR);
+	}
+
+	protected DiagramFactor getCoveringDiagramFactor(BaseObject baseObject)
+	{
+		ORefList diagramFactorReferrers = baseObject.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		if(diagramFactorReferrers.size() != 1)
+			throw new RuntimeException(baseObject.getTypeName() + " object does not have a diagram factor.");
+		
+		return DiagramFactor.find(getProject(), diagramFactorReferrers.get(0));
 	}
 }

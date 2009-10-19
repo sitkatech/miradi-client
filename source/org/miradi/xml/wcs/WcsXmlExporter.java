@@ -615,6 +615,16 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeEndElement(getWriter(), parentElementName + elementName);
 	}
 	
+	public void writeOptionalCodeElement(String parentElementName, String elementName, String code) throws Exception
+	{
+		if (!code.isEmpty())
+		{
+			writeStartElement(getWriter(), parentElementName + elementName);
+			writeXmlEncodedData(getWriter(), code);
+			writeEndElement(getWriter(), parentElementName + elementName);
+		}
+	}
+	
 	public void writeStartElement(String startElementName) throws Exception
 	{
 		writeStartElement(getWriter(), startElementName);
