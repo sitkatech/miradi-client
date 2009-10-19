@@ -22,9 +22,9 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-public class CodeFieldSchemaElement extends AbstractCodeFieldSchemaElement
+public class OptionalCodeFieldSchemaElement extends AbstractCodeFieldSchemaElement
 {
-	protected CodeFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse, String vocabularyNameToUse)
+	protected OptionalCodeFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse, String vocabularyNameToUse)
 	{
 		super(objectTypeNameToUse, fieldNameToUse, vocabularyNameToUse);
 	}
@@ -32,6 +32,6 @@ public class CodeFieldSchemaElement extends AbstractCodeFieldSchemaElement
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
-		writer.write(" { " + vocabularyName + "  }");
+		writer.write(" { " + vocabularyName + "  }?");
 	}
 }

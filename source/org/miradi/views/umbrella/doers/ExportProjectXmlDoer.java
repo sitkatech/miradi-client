@@ -31,6 +31,8 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramObject;
 import org.miradi.project.Project;
 import org.miradi.utils.BufferedImageFactory;
+import org.miradi.utils.EAMFileSaveChooser;
+import org.miradi.utils.EAMXmlFileChooser;
 import org.miradi.views.umbrella.SaveImageJPEGDoer;
 import org.miradi.views.umbrella.XmlExporterDoer;
 import org.miradi.xml.reports.export.ProjectAsXmlExporter;
@@ -90,5 +92,11 @@ public class ExportProjectXmlDoer extends XmlExporterDoer
 		MainWindow mainWindow = EAM.getMainWindow();
 
 		new SaveImageJPEGDoer().saveImage(out, BufferedImageFactory.createImageFromDiagram(mainWindow, diagramObject));
+	}
+	
+	@Override
+	protected EAMFileSaveChooser getFileChooser()
+	{
+		return new EAMXmlFileChooser(getMainWindow());
 	}
 }
