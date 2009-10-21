@@ -22,7 +22,7 @@ package org.miradi.xml.wcs;
 
 import org.miradi.objects.HumanWelfareTarget;
 
-public class HumanWelfareTargetContainerExporter extends AbstractTargetContainerExporter
+public class HumanWelfareTargetContainerExporter extends AbstractTargetPoolExporter
 {
 	public HumanWelfareTargetContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
