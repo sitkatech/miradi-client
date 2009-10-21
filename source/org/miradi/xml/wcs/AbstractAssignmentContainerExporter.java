@@ -27,7 +27,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 
-abstract public class AbstractAssignmentContainerExporter extends BaseObjectContainerExporter
+abstract public class AbstractAssignmentContainerExporter extends BaseObjectPoolExporter
 {
 	public AbstractAssignmentContainerExporter(WcsXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
 	{

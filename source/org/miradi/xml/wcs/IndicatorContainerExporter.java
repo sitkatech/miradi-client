@@ -24,7 +24,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 
-public class IndicatorContainerExporter extends BaseObjectContainerExporter
+public class IndicatorContainerExporter extends BaseObjectPoolExporter
 {
 	public IndicatorContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{

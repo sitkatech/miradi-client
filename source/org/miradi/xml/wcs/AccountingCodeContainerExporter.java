@@ -24,7 +24,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
 
-public class AccountingCodeContainerExporter extends BaseObjectContainerExporter
+public class AccountingCodeContainerExporter extends BaseObjectPoolExporter
 {
 	public AccountingCodeContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{

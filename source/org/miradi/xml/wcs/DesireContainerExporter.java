@@ -27,7 +27,7 @@ import org.miradi.objects.Desire;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 
-abstract public class DesireContainerExporter extends BaseObjectContainerExporter
+abstract public class DesireContainerExporter extends BaseObjectPoolExporter
 {
 	public DesireContainerExporter(WcsXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
 	{
