@@ -24,7 +24,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressPercent;
 
-public class ProgressPercentContainerExporter extends ObjectContainerExporter
+public class ProgressPercentContainerExporter extends ObjectPoolExporter
 {
 	public ProgressPercentContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
