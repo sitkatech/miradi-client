@@ -115,7 +115,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 	
 	private void writeBiodiversityTargetObjectSchemaElement() throws Exception
 	{
-		new BiodiversityTargetContainerExporter(this).exportObjectPool();
+		new BiodiversityTargetPoolExporter(this).exportObjectPool();
 	}
 
 	private void writeDiagramLinkSchemaElement() throws Exception
