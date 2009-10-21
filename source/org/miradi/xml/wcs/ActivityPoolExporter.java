@@ -21,9 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.wcs;
 
 
-public class ActivityContainerExporter extends AbstractTaskPoolExporter
+public class ActivityPoolExporter extends AbstractTaskPoolExporter
 {
-	public ActivityContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public ActivityPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, ACTIVITY);
 	}
