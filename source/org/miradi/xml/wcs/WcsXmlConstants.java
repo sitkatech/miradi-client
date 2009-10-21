@@ -32,7 +32,7 @@ public interface WcsXmlConstants
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
 	
-	public static final String CONTAINER_ELEMENT_TAG = "Container";
+	public static final String CONTAINER_ELEMENT_TAG = "Pool";
 	
 	public static final String ID = "Id";
 	public static final String CONSERVATION_PROJECT = "ConservationProject";
