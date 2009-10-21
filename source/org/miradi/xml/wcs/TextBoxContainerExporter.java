@@ -22,7 +22,7 @@ package org.miradi.xml.wcs;
 
 import org.miradi.objects.TextBox;
 
-public class TextBoxContainerExporter extends FactorContainerExporter
+public class TextBoxContainerExporter extends FactorPoolExporter
 {
 	public TextBoxContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
