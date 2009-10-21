@@ -159,6 +159,12 @@ class ObjectSchemaElement extends SchemaElement
 		fields.add(field);
 	}
 	
+	protected void createStylingField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new StylingFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
+	
 	protected void createIdListField(String fieldNameToUse, String storedObjectTypeName)
 	{
 		FieldSchemaElement field = new IdListFieldSchemaElement(getObjectTypeName(), fieldNameToUse, storedObjectTypeName);

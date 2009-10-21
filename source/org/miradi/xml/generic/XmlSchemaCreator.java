@@ -246,6 +246,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + WcsXmlConstants.HEIGHT_ELEMENT_NAME + " { xsd:integer } ");
 		writer.endBlock();
 		
+		defineDiagramFactorUiSettings(writer);
 		defineSimpleThreatRatingElement(writer);
 		defineStressBasedThreatRatingElement(writer);
 		defineDateUnitEfforts(writer);
@@ -267,14 +268,6 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.PROJECT_RESOURCE, VOCABULARY_RESOURCE_ROLE_CODES, RESOURCE_ROLE_CODES_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.CONCEPTUAL_MODEL, VOCABULARY_HIDDEN_TYPES, HIDDEN_TYPES_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.RESULTS_CHAIN, VOCABULARY_HIDDEN_TYPES, HIDDEN_TYPES_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, WcsXmlConstants.GROUP_BOX, VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE, DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, WcsXmlConstants.GROUP_BOX, VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE, DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, WcsXmlConstants.GROUP_BOX, VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR, DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, WcsXmlConstants.GROUP_BOX, VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR, DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TEXT_BOX, VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE, DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TEXT_BOX, VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE, DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TEXT_BOX, VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR, DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, WcsXmlConstants.TEXT_BOX, VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR, DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.BIODIVERSITY_TARGET, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION, BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.HUMAN_WELFARE_TARGET, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION, BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.HUMAN_WELFARE_TARGET, VOCABULARY_TARGET_STATUS, TARGET_STATUS_ELEMENT_NAME);
@@ -294,6 +287,17 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		
 		writer.flush();
 	}	
+	
+	private void defineDiagramFactorUiSettings(SchemaWriter writer)
+	{
+		writer.defineAlias(STYLING + ".element"	, ELEMENT_NAME + PREFIX + STYLING);
+		writer.startBlock();
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + DIAGRAM_FACTOR + XmlSchemaCreator.DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME + " { " + XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE + " }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + DIAGRAM_FACTOR + XmlSchemaCreator.DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME + " { " + XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE + " }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + DIAGRAM_FACTOR + XmlSchemaCreator.DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME + " { " + XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR + " }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + DIAGRAM_FACTOR + XmlSchemaCreator.DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME + " { " + XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR + " }?");
+		writer.endBlock();		
+	}
 		
 	private void defineSimpleThreatRatingElement(SchemaWriter writer)
 	{

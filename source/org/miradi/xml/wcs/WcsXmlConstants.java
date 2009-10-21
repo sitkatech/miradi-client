@@ -143,5 +143,5 @@ public interface WcsXmlConstants
 	public static final String WORK_UNITS_MONTH = "WorkUnitsMonth";
 	public static final String WORK_UNITS_QUARTER = "WorkUnitsQuarter";
 	public static final String WORK_UNITS_YEAR = "WorkUnitsYear";
-	public static final String Z_ORDER_CODE = "ZOrderCode";
+	public static final String STYLING = "Styling";
 }

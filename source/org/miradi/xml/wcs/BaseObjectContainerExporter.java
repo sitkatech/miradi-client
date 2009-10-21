@@ -22,7 +22,6 @@ package org.miradi.xml.wcs;
 
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramFactor;
 
 abstract public class BaseObjectContainerExporter extends ObjectContainerExporter
 {
@@ -65,14 +64,5 @@ abstract public class BaseObjectContainerExporter extends ObjectContainerExporte
 	protected void writeIndicatorIds(String idsElementName, ORefList indicatorRefs) throws Exception
 	{
 		writeIds(idsElementName, WcsXmlConstants.INDICATOR, indicatorRefs);
-	}
-	
-	protected void exportFontStyleAndColors(DiagramFactor diagramFactor) throws Exception
-	{
-		writeCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FONT_SIZE);
-		writeCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FONT_STYLE);
-		writeCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FOREGROUND_COLOR);
-		writeCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_BACKGROUND_COLOR);
-		getWcsXmlExporter().writeOptionalElement(DIAGRAM_FACTOR, Z_ORDER_CODE, diagramFactor, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);
 	}
 }

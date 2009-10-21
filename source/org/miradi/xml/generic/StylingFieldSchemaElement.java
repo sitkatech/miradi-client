@@ -18,14 +18,23 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.wcs;
+package org.miradi.xml.generic;
 
-import org.miradi.objects.TextBox;
+import java.io.IOException;
 
-public class TextBoxContainerExporter extends FactorContainerExporter
+import org.miradi.xml.wcs.WcsXmlConstants;
+
+public class StylingFieldSchemaElement extends FieldSchemaElement
 {
-	public TextBoxContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
+	protected StylingFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
 	{
-		super(wcsXmlExporterToUse, TEXT_BOX, TextBox.getObjectType());
+		super(objectTypeNameToUse, fieldNameToUse);
+	}
+
+	@Override
+	public void output(SchemaWriter writer) throws IOException
+	{
+		super.output(writer);
+		writer.write(" { " + WcsXmlConstants.STYLING + ".element } ");
 	}
 }

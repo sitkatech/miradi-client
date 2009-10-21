@@ -89,9 +89,19 @@ abstract public class ObjectContainerExporter extends AbstractContainerExporter
 		writeCodeElement(tag, baseObject.getData(tag));
 	}
 	
+	protected void writeOptionalCodeElementSameAsTag(BaseObject baseObject, String tag) throws Exception
+	{
+		writeOptionalCodeElement(tag, baseObject.getData(tag));
+	}
+	
 	protected void writeCodeElement(String codeElementName, String code) throws Exception
 	{
 		getWcsXmlExporter().writeCodeElement(getContainerName(), codeElementName, code);
+	}
+	
+	protected void writeOptionalCodeElement(String codeElementName, String code) throws Exception
+	{
+		getWcsXmlExporter().writeOptionalCodeElement(getContainerName(), codeElementName, code);
 	}
 	
 	protected void exportId(ORef ref, String idElementName) throws Exception, IOException
