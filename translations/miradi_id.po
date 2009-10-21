@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-19 13:53-0500\n"
+"POT-Creation-Date: 2009-10-21 16:59-0500\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -1060,18 +1060,15 @@ msgstr ""
 "sambung, dan spasi; serta tidak boleh lebih dari 32 karakter. "
 
 #: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:43
-msgid "Export XML"
-msgstr "Eskpor XML "
+msgid "Export Project (BETA)"
+msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:45
 msgid ""
-"This feature is not yet fully supported. It exports all the project data in "
-"an XML file, but the schema of that file is still in flux. Future versions "
-"of Miradi will export the data in different formats."
+"This feature is not yet fully supported. It exports all the project data, "
+"but the XML schema is still in flux. Future versions of Miradi will export "
+"the data in different formats."
 msgstr ""
-"Fitur ini belum didukung secara penuh. Fitur ini mengekspor semua data "
-"proyek ke berkas XML, tetapi skema berkas masih belum stabil. Versi "
-"mendatang Miradi akan mengekspor data ke dalam berbagai macam format. "
 
 #: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:51
 msgid "Export"
@@ -5589,11 +5586,11 @@ msgid "TT|Move factors right and down as needed to create margins"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionExportWcsProjectZip.java:35
-msgid "Action|Validated Project XML File (BETA)"
+msgid "Action|WCS Miradi Project ZIP (BETA)"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionExportWcsProjectZip.java:40
-msgid "TT|Export validated entire project as an XML file"
+msgid "TT|Export entire project as a WCS Miradi Project ZIP file"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionPrint.java:34
@@ -29641,6 +29638,18 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Export XML"
+#~ msgstr "Eskpor XML "
+
+#~ msgid ""
+#~ "This feature is not yet fully supported. It exports all the project data "
+#~ "in an XML file, but the schema of that file is still in flux. Future "
+#~ "versions of Miradi will export the data in different formats."
+#~ msgstr ""
+#~ "Fitur ini belum didukung secara penuh. Fitur ini mengekspor semua data "
+#~ "proyek ke berkas XML, tetapi skema berkas masih belum stabil. Versi "
+#~ "mendatang Miradi akan mengekspor data ke dalam berbagai macam format. "
 
 #~ msgid "Group"
 #~ msgstr "Kelompok"
