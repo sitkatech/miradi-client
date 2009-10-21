@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-19 13:53-0500\n"
+"POT-Creation-Date: 2009-10-21 16:59-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -979,14 +979,14 @@ msgid ""
 msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:43
-msgid "Export XML"
+msgid "Export Project (BETA)"
 msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:45
 msgid ""
-"This feature is not yet fully supported. It exports all the project data in "
-"an XML file, but the schema of that file is still in flux. Future versions "
-"of Miradi will export the data in different formats."
+"This feature is not yet fully supported. It exports all the project data, "
+"but the XML schema is still in flux. Future versions of Miradi will export "
+"the data in different formats."
 msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:51
@@ -5242,11 +5242,11 @@ msgid "TT|Move factors right and down as needed to create margins"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionExportWcsProjectZip.java:35
-msgid "Action|Validated Project XML File (BETA)"
+msgid "Action|WCS Miradi Project ZIP (BETA)"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionExportWcsProjectZip.java:40
-msgid "TT|Export validated entire project as an XML file"
+msgid "TT|Export entire project as a WCS Miradi Project ZIP file"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionPrint.java:34
