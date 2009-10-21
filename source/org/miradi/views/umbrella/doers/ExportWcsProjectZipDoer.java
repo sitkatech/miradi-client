@@ -21,20 +21,31 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella.doers;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URL;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
+import org.miradi.main.ResourcesHandler;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.DiagramObject;
+import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.EAMFileSaveChooser;
+import org.miradi.utils.PNGFileFilter;
 import org.miradi.utils.WcsZipFileChooser;
+import org.miradi.views.umbrella.SaveImagePngDoer;
 import org.miradi.views.umbrella.XmlExporterDoer;
 import org.miradi.xml.wcs.WcsMiradiXmlValidator;
 import org.miradi.xml.wcs.WcsXmlExporter;
@@ -47,7 +58,9 @@ public class ExportWcsProjectZipDoer extends XmlExporterDoer
 		ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(chosen));
 		try
 		{
-			addProjectAsXmlToZip(zipOut);			
+			addProjectAsXmlToZip(zipOut);
+			addSchemaToZip(zipOut);
+			addDiagramImagesToZip(zipOut);
 		}
 		catch(ValidationException e)
 		{
@@ -74,6 +87,29 @@ public class ExportWcsProjectZipDoer extends XmlExporterDoer
 		}
 	}
 	
+	private void addSchemaToZip(ZipOutputStream zipOut) throws Exception
+	{
+		URL resourceURL = ResourcesHandler.getEnglishResourceURL(WcsMiradiXmlValidator.WCS_MIRADI_SCHEMA_FILE_RELATIVE_PATH);
+		if(resourceURL == null)
+			throw new Exception("Schema not found: " + WcsMiradiXmlValidator.WCS_MIRADI_SCHEMA_FILE_RELATIVE_PATH);
+
+		writeContent(zipOut, "schema.rnc", readAll(resourceURL));
+	}
+	
+	private byte[] readAll(URL resourceURL) throws IOException
+	{
+		UnicodeReader reader = new UnicodeReader(resourceURL.openStream());
+		try
+		{
+			String wholeFile = reader.readAll();
+			return wholeFile.getBytes("UTF-8");
+		}
+		finally
+		{
+			reader.close();
+		}
+	}
+
 	private void addProjectAsXmlToZip(ZipOutputStream zipOut) throws Exception
 	{
 		byte[] projectXmlInBytes = exportProjectXmlToBytes();
@@ -123,5 +159,42 @@ public class ExportWcsProjectZipDoer extends XmlExporterDoer
 		return new WcsZipFileChooser(getMainWindow());
 	}
 	
+	// FIXME: All the images code was copied directly from ExportCpmzDoer
+	private void addDiagramImagesToZip(ZipOutputStream zipOut) throws Exception
+	{		
+		ORefList allDiagramObjectRefs = getProject().getAllDiagramObjectRefs();
+		for (int refIndex = 0; refIndex < allDiagramObjectRefs.size(); ++refIndex)
+		{
+			DiagramObject diagramObject = (DiagramObject) getProject().findObject(allDiagramObjectRefs.get(refIndex));
+			String imageName = getDiagramPrefix(diagramObject.getRef()) + refIndex + PNGFileFilter.EXTENSION;
+			writeDiagramImage(zipOut, diagramObject, imageName);
+		}
+	}
+
+	private String getDiagramPrefix(ORef diagramObjectRef)
+	{
+		if (ConceptualModelDiagram.is(diagramObjectRef))
+			return CM_IMAGE_PREFIX;
+		
+		return RC_IMAGE_PREFIX;
+	}
+
+	private void writeDiagramImage(ZipOutputStream zipOut, DiagramObject diagramObject, String imageName) throws Exception
+	{
+		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+		try
+		{
+			new SaveImagePngDoer().saveImage(byteOut, BufferedImageFactory.createImageFromDiagram(getMainWindow(), diagramObject));
+			writeContent(zipOut, IMAGES_DIR_NAME_IN_ZIP + imageName, byteOut.toByteArray());
+		}
+		finally
+		{
+			byteOut.close();
+		}
+	}
+
 	public static final String PROJECT_XML_FILE_NAME = "project.xml";
+	public static final String IMAGES_DIR_NAME_IN_ZIP = "images/";
+	public static final String CM_IMAGE_PREFIX = "CM";
+	public static final String RC_IMAGE_PREFIX = "RC";
 }
