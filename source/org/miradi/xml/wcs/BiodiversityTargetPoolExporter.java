@@ -24,9 +24,9 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Target;
 
-public class BiodiversityTargetContainerExporter extends AbstractTargetPoolExporter
+public class BiodiversityTargetPoolExporter extends AbstractTargetPoolExporter
 {
-	public BiodiversityTargetContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public BiodiversityTargetPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, BIODIVERSITY_TARGET, Target.getObjectType());
 	}
