@@ -44,8 +44,17 @@ public class DiagramFactorContainerExporter extends BaseObjectContainerExporter
 		writeDiagramFactorLocation(diagramFactor);
 		writeDiagramFactorSize(diagramFactor);
 		getWcsXmlExporter().writeIds(DIAGRAM_FACTOR, GROUP_BOX_CHILDREN_IDS, WcsXmlConstants.DIAGRAM_FACTOR_ID_ELEMENT_NAME, diagramFactor.getGroupBoxChildrenRefs());
-		getWcsXmlExporter().writeOptionalElementWithSameTag(DIAGRAM_FACTOR, diagramFactor, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);
+		exportTextBoxZOrder(diagramFactor);
 		exportFontStylingElements(diagramFactor);
+	}
+
+	private void exportTextBoxZOrder(DiagramFactor diagramFactor) throws Exception
+	{
+		String zOrderCode = diagramFactor.getData(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);
+		if (diagramFactor.isDefaultZOrder())
+			zOrderCode = Z_ORDER_BACK_CODE;
+		
+		getWcsXmlExporter().writeOptionalElement(getWriter(), DIAGRAM_FACTOR + DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, zOrderCode);
 	}
 	
 	private void exportFontStylingElements(DiagramFactor diagramFactor) throws Exception
