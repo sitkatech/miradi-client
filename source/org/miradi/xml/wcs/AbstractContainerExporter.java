@@ -39,7 +39,7 @@ abstract public class AbstractContainerExporter implements WcsXmlConstants
 		return wcsXmlExporter;
 	}
 	
-	abstract public void exportObjectContainer() throws Exception;
+	abstract public void exportObjectPool() throws Exception;
 	
 	private WcsXmlExporter wcsXmlExporter;
 }

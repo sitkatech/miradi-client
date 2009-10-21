@@ -234,7 +234,7 @@ class ObjectSchemaElement extends SchemaElement
 		writer.endBlock();
 	}
 	
-	public boolean isContainer()
+	public boolean isPool()
 	{
 		return false;
 	}

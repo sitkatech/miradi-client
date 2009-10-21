@@ -67,7 +67,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeStartElementWithAttribute(getWriter(), CONSERVATION_PROJECT, XMLNS, NAME_SPACE);
 		
 		writeProjectSummaryElement();
-		new ProjectResourceContainerExporter(this).exportObjectContainer();
+		new ProjectResourcePoolExporter(this).exportObjectPool();
 		writeOrganizationObjectSchemaElement();
 		writeProjectSummaryScopeSchemaElement();
 		writeProjectSummaryLocationSchemaElement();
@@ -81,46 +81,46 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		
 		writeConceptualModelSchemaElement();
 		writeResultsChainSchemaElement();
-		new DiagramFactorContainerExporter(this).exportObjectContainer();
+		new DiagramFactorContainerExporter(this).exportObjectPool();
 		writeDiagramLinkSchemaElement();
 		writeBiodiversityTargetObjectSchemaElement();
-		new HumanWelfareTargetContainerExporter(this).exportObjectContainer();
-		new CauseContainerExporter(this).exportObjectContainer();
-		new StrategyContainerExporter(this).exportObjectContainer();
-		new ThreatReductionResultsContainerExporter(this).exportObjectContainer();
-		new IntermediateResultContainerExporter(this).exportObjectContainer();
-		new GroupBoxContainerExporter(this).exportObjectContainer();
-		new TextBoxContainerExporter(this).exportObjectContainer();
-		new ScopeBoxContainerExporter(this).exportObjectContainer();
-		new KeyEcologicalAttributeContainerExporter(this).exportObjectContainer();
-		new StressContainerExporter(this).exportObjectContainer();
-		new SubTargetContainerExporter(this).exportObjectContainer();
-		new GoalContainerExporter(this).exportObjectContainer();
-		new ObjectiveContainerExporter(this).exportObjectContainer();
-		new IndicatorContainerExporter(this).exportObjectContainer();
-		new ActivityContainerExporter(this).exportObjectContainer();
-		new MethodContainerExporter(this).exportObjectContainer();
-		new TaskContainerExporter(this).exportObjectContainer();
-		new ProgressReportContainerExporter(this).exportObjectContainer();
-		new ProgressPercentContainerExporter(this).exportObjectContainer();
-		new MeasurementContainerExporter(this).exportObjectContainer();
-		new AccountingCodeContainerExporter(this).exportObjectContainer();
-		new FundingSourceContainerExporter(this).exportObjectContainer();
-		new ExpenseAssignmentContainerExporter(this).exportObjectContainer();
-		new ResourceAssignmentContainerExporter(this).exportObjectContainer();
-		new ThreatTargetThreatRatingElementExporter(this).exportObjectContainer();
+		new HumanWelfareTargetContainerExporter(this).exportObjectPool();
+		new CauseContainerExporter(this).exportObjectPool();
+		new StrategyContainerExporter(this).exportObjectPool();
+		new ThreatReductionResultsContainerExporter(this).exportObjectPool();
+		new IntermediateResultContainerExporter(this).exportObjectPool();
+		new GroupBoxContainerExporter(this).exportObjectPool();
+		new TextBoxContainerExporter(this).exportObjectPool();
+		new ScopeBoxContainerExporter(this).exportObjectPool();
+		new KeyEcologicalAttributeContainerExporter(this).exportObjectPool();
+		new StressContainerExporter(this).exportObjectPool();
+		new SubTargetContainerExporter(this).exportObjectPool();
+		new GoalContainerExporter(this).exportObjectPool();
+		new ObjectiveContainerExporter(this).exportObjectPool();
+		new IndicatorContainerExporter(this).exportObjectPool();
+		new ActivityContainerExporter(this).exportObjectPool();
+		new MethodContainerExporter(this).exportObjectPool();
+		new TaskContainerExporter(this).exportObjectPool();
+		new ProgressReportContainerExporter(this).exportObjectPool();
+		new ProgressPercentContainerExporter(this).exportObjectPool();
+		new MeasurementContainerExporter(this).exportObjectPool();
+		new AccountingCodeContainerExporter(this).exportObjectPool();
+		new FundingSourceContainerExporter(this).exportObjectPool();
+		new ExpenseAssignmentContainerExporter(this).exportObjectPool();
+		new ResourceAssignmentContainerExporter(this).exportObjectPool();
+		new ThreatTargetThreatRatingElementExporter(this).exportObjectPool();
 		
 		writeEndElement(out, CONSERVATION_PROJECT);
 	}
 	
 	private void writeBiodiversityTargetObjectSchemaElement() throws Exception
 	{
-		new BiodiversityTargetContainerExporter(this).exportObjectContainer();
+		new BiodiversityTargetContainerExporter(this).exportObjectPool();
 	}
 
 	private void writeDiagramLinkSchemaElement() throws Exception
 	{
-		writeStartContainerElement(DIAGRAM_LINK);
+		writeStartPoolElement(DIAGRAM_LINK);
 		ORefList diagramLinkRefs = getProject().getDiagramFactorLinkPool().getSortedRefList();
 		for (int index = 0; index < diagramLinkRefs.size(); ++index)
 		{
@@ -137,7 +137,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 			writeEndElement(out, DIAGRAM_LINK);
 		}
 		
-		writeEndContainerElement(DIAGRAM_LINK);
+		writeEndPoolElement(DIAGRAM_LINK);
 	}
 	
 	private void writeDiagramLinkBendPoints(DiagramLink diagramLink) throws Exception
@@ -221,7 +221,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 
 	private void writeDiagram(String diagramElementName, int diagramObjectType) throws Exception
 	{
-		writeStartContainerElement(diagramElementName);
+		writeStartPoolElement(diagramElementName);
 		ORefList diagramObjectRefs = getProject().getPool(diagramObjectType).getSortedRefList();
 		for (int index = 0; index < diagramObjectRefs.size(); ++index)
 		{
@@ -238,7 +238,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 			writeEndElement(out, diagramElementName);
 		}
 		
-		writeEndContainerElement(diagramElementName);
+		writeEndPoolElement(diagramElementName);
 	}
 
 	public void writeIds(String parentElementName, String childElementName, String idElementName, ORefList refList) throws Exception
@@ -453,7 +453,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 
 	private void writeOrganizationObjectSchemaElement() throws Exception
 	{
-		writeStartContainerElement(ORGANIZATION);
+		writeStartPoolElement(ORGANIZATION);
 		ORefList organizationRefs = getProject().getPool(Organization.getObjectType()).getSortedRefList();
 		for (int index = 0; index < organizationRefs.size(); ++index)
 		{
@@ -471,7 +471,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 			writeEndElement(out, ORGANIZATION);
 		}
 		
-		writeEndContainerElement(ORGANIZATION);
+		writeEndPoolElement(ORGANIZATION);
 	}
 
 	private void writeProjectSummaryElement() throws Exception
@@ -525,14 +525,29 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeEndElement(out, createContainerElementName(endElementName));
 	}
 	
+	public void writeStartPoolElement(String startElementName) throws Exception
+	{
+		writeStartElement(out, createPoolElementName(startElementName));
+	}
+
+	void writeEndPoolElement(String endElementName) throws Exception
+	{
+		writeEndElement(out, createPoolElementName(endElementName));
+	}
+	
 	private String createContainerElementName(String startElementName)
 	{
-		return startElementName + WcsXmlConstants.CONTAINER_ELEMENT_TAG;
+		return startElementName + CONTAINER_ELEMENT_TAG;
+	}
+	
+	private String createPoolElementName(String startElementName)
+	{
+		return startElementName + POOL_ELEMENT_TAG;
 	}
 		
-	public void writeCodeListElement(String parentElementName, String containerElementName, BaseObject object, String tag) throws Exception
+	public void writeCodeListElement(String parentElementName, String poolElementName, BaseObject object, String tag) throws Exception
 	{
-		writeCodeListElement(parentElementName, containerElementName, object.getCodeList(tag));
+		writeCodeListElement(parentElementName, poolElementName, object.getCodeList(tag));
 	}
 	
 	private void writeCodeListElement(String parentElementName, String containerElementName, CodeList codes) throws Exception
