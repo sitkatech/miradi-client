@@ -26,9 +26,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 
-public abstract class FactorContainerExporter extends BaseObjectPoolExporter
+public abstract class FactorPoolExporter extends BaseObjectPoolExporter
 {
-	public FactorContainerExporter(WcsXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
+	public FactorPoolExporter(WcsXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
 	{
 		super(wcsXmlExporterToUse, containerNameToUse, objectTypeToUse);
 	}

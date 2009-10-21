@@ -22,7 +22,7 @@ package org.miradi.xml.wcs;
 
 import org.miradi.objects.GroupBox;
 
-public class GroupBoxContainerExporter extends FactorContainerExporter
+public class GroupBoxContainerExporter extends FactorPoolExporter
 {
 	public GroupBoxContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{

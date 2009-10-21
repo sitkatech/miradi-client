@@ -24,7 +24,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 
-abstract public class AbstractTaskContainerExporter extends FactorContainerExporter
+abstract public class AbstractTaskContainerExporter extends FactorPoolExporter
 {
 	public AbstractTaskContainerExporter(WcsXmlExporter wcsXmlExporterToUse, String containerNameToUse)
 	{
