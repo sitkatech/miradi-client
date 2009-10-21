@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
-import org.martus.util.UnicodeWriter;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.GroupBox;
 
 public class GroupBoxContainerExporter extends FactorContainerExporter
@@ -29,13 +27,5 @@ public class GroupBoxContainerExporter extends FactorContainerExporter
 	public GroupBoxContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, GROUP_BOX, GroupBox.getObjectType());
-	}
-	
-	@Override
-	protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception
-	{
-		super.exportFields(writer, baseObject);
-				
-		exportFontStyleAndColors(getCoveringDiagramFactor(baseObject));
 	}
 }

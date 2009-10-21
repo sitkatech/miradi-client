@@ -43,10 +43,25 @@ public class DiagramFactorContainerExporter extends BaseObjectContainerExporter
 		writeWrappedFactorId(diagramFactor);
 		writeDiagramFactorLocation(diagramFactor);
 		writeDiagramFactorSize(diagramFactor);
-		
 		getWcsXmlExporter().writeIds(DIAGRAM_FACTOR, GROUP_BOX_CHILDREN_IDS, WcsXmlConstants.DIAGRAM_FACTOR_ID_ELEMENT_NAME, diagramFactor.getGroupBoxChildrenRefs());
+		getWcsXmlExporter().writeOptionalElementWithSameTag(DIAGRAM_FACTOR, diagramFactor, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);
+		exportFontStylingElements(diagramFactor);
+	}
+	
+	private void exportFontStylingElements(DiagramFactor diagramFactor) throws Exception
+	{
+		final String STYLING_ELEMENT_NAME = DIAGRAM_FACTOR + STYLING;
+		getWcsXmlExporter().writeStartElement(STYLING_ELEMENT_NAME);
 		
-		exportFontStyleAndColors(diagramFactor);
+		getWcsXmlExporter().writeStartElement(STYLING);
+		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FONT_SIZE);
+		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FONT_STYLE);
+		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FOREGROUND_COLOR);
+		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_BACKGROUND_COLOR);
+		getWcsXmlExporter().writeEndElement(STYLING);
+		
+		getWcsXmlExporter().writeEndElement(STYLING_ELEMENT_NAME);
+		
 	}
 
 	private void writeWrappedFactorId(DiagramFactor diagramFactor) throws Exception

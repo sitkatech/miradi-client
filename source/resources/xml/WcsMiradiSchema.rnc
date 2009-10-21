@@ -259,11 +259,8 @@ DiagramFactor.element = element miradi:DiagramFactor
   element miradi:DiagramFactorLocation { DiagramPoint.element } &
   element miradi:DiagramFactorSize { DiagramSize.element } &
   element miradi:DiagramFactorGroupBoxChildrenIds { DiagramFactorId.element* } &
-  element miradi:DiagramFactorFontSize { vocabulary_diagram_factor_font_size  }? &
-  element miradi:DiagramFactorFontStyle { vocabulary_diagram_factor_font_style  }? &
   element miradi:DiagramFactorTextBoxZOrderCode { text }? &
-  element miradi:DiagramFactorFontColor { vocabulary_diagram_factor_foreground_color  }? &
-  element miradi:DiagramFactorBackgroundColor { vocabulary_diagram_factor_background_color  }?
+  element miradi:DiagramFactorStyling { Styling.element } 
 }
 
 DiagramLinkContainer.element = element miradi:DiagramLinkContainer { DiagramLink.element* }
@@ -383,11 +380,7 @@ GroupBox.element = element miradi:GroupBox
   element miradi:GroupBoxLabel { text }? &
   element miradi:GroupBoxShortLabel { text }? &
   element miradi:GroupBoxText { text }? &
-  element miradi:GroupBoxComments { text }? &
-  element miradi:GroupBoxFontSize { vocabulary_diagram_factor_font_size  }? &
-  element miradi:GroupBoxFontStyle { vocabulary_diagram_factor_font_style  }? &
-  element miradi:GroupBoxFontColor { vocabulary_diagram_factor_foreground_color  }? &
-  element miradi:GroupBoxBackgroundColor { vocabulary_diagram_factor_background_color  }?
+  element miradi:GroupBoxComments { text }?
 }
 
 TextBoxContainer.element = element miradi:TextBoxContainer { TextBox.element* }
@@ -397,12 +390,7 @@ TextBox.element = element miradi:TextBox
   element miradi:TextBoxLabel { text }? &
   element miradi:TextBoxShortLabel { text }? &
   element miradi:TextBoxText { text }? &
-  element miradi:TextBoxComments { text }? &
-  element miradi:TextBoxZOrderCode { xsd:boolean }? &
-  element miradi:TextBoxFontSize { vocabulary_diagram_factor_font_size  }? &
-  element miradi:TextBoxFontStyle { vocabulary_diagram_factor_font_style  }? &
-  element miradi:TextBoxFontColor { vocabulary_diagram_factor_foreground_color  }? &
-  element miradi:TextBoxBackgroundColor { vocabulary_diagram_factor_background_color  }?
+  element miradi:TextBoxComments { text }?
 }
 
 ScopeBoxContainer.element = element miradi:ScopeBoxContainer { ScopeBox.element* }
@@ -747,6 +735,14 @@ DiagramSize.element = element miradi:DiagramSize
   element miradi:height { xsd:integer } 
 }
 
+Styling.element = element miradi:Styling
+{
+  element miradi:DiagramFactorFontSize { vocabulary_diagram_factor_font_size }? &
+  element miradi:DiagramFactorFontStyle { vocabulary_diagram_factor_font_style }? &
+  element miradi:DiagramFactorFontColor { vocabulary_diagram_factor_foreground_color }? &
+  element miradi:DiagramFactorBackgroundColor { vocabulary_diagram_factor_background_color }?
+}
+
 SimpleThreatRating.element = element miradi:SimpleThreatRating
 {
   element miradi:SimpleThreatRatingScope { vocabulary_simple_threat_rating_scope_code }? &
@@ -852,46 +848,6 @@ ConceptualModelHiddenTypesContainer.element = element miradi:ConceptualModelHidd
 ResultsChainHiddenTypesContainer.element = element miradi:ResultsChainHiddenTypesContainer
 {
   element miradi:code { vocabulary_hidden_types } * 
-}
-
-GroupBoxFontSizeContainer.element = element miradi:GroupBoxFontSizeContainer
-{
-  element miradi:code { vocabulary_diagram_factor_font_size } * 
-}
-
-GroupBoxFontStyleContainer.element = element miradi:GroupBoxFontStyleContainer
-{
-  element miradi:code { vocabulary_diagram_factor_font_style } * 
-}
-
-GroupBoxBackgroundColorContainer.element = element miradi:GroupBoxBackgroundColorContainer
-{
-  element miradi:code { vocabulary_diagram_factor_background_color } * 
-}
-
-GroupBoxFontColorContainer.element = element miradi:GroupBoxFontColorContainer
-{
-  element miradi:code { vocabulary_diagram_factor_foreground_color } * 
-}
-
-TextBoxFontSizeContainer.element = element miradi:TextBoxFontSizeContainer
-{
-  element miradi:code { vocabulary_diagram_factor_font_size } * 
-}
-
-TextBoxFontStyleContainer.element = element miradi:TextBoxFontStyleContainer
-{
-  element miradi:code { vocabulary_diagram_factor_font_style } * 
-}
-
-TextBoxBackgroundColorContainer.element = element miradi:TextBoxBackgroundColorContainer
-{
-  element miradi:code { vocabulary_diagram_factor_background_color } * 
-}
-
-TextBoxFontColorContainer.element = element miradi:TextBoxFontColorContainer
-{
-  element miradi:code { vocabulary_diagram_factor_foreground_color } * 
 }
 
 BiodiversityTargetHabitatAssociationContainer.element = element miradi:BiodiversityTargetHabitatAssociationContainer
