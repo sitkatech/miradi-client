@@ -24,9 +24,9 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.IntermediateResult;
 
-public class IntermediateResultContainerExporter extends FactorPoolExporter
+public class IntermediateResultPoolExporter extends FactorPoolExporter
 {
-	public IntermediateResultContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public IntermediateResultPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, INTERMEDIATE_RESULTS, IntermediateResult.getObjectType());
 	}
