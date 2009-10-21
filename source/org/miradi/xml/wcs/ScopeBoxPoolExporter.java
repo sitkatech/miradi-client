@@ -24,9 +24,9 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ScopeBox;
 
-public class ScopeBoxContainerExporter extends FactorPoolExporter
+public class ScopeBoxPoolExporter extends FactorPoolExporter
 {
-	public ScopeBoxContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public ScopeBoxPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, SCOPE_BOX, ScopeBox.getObjectType());
 	}
