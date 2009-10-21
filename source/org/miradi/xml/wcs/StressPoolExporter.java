@@ -24,9 +24,9 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Stress;
 
-public class StressContainerExporter extends FactorPoolExporter
+public class StressPoolExporter extends FactorPoolExporter
 {
-	public StressContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public StressPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, STRESS, Stress.getObjectType());
 	}
