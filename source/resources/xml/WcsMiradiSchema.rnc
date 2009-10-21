@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/8'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/9'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
