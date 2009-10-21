@@ -24,9 +24,9 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 
-public class StrategyContainerExporter extends FactorPoolExporter
+public class StrategyPoolExporter extends FactorPoolExporter
 {
-	public StrategyContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public StrategyPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, STRATEGY, Strategy.getObjectType());
 	}
