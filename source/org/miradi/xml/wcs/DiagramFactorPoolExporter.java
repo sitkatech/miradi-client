@@ -27,9 +27,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 
-public class DiagramFactorContainerExporter extends BaseObjectContainerExporter
+public class DiagramFactorPoolExporter extends BaseObjectContainerExporter
 {
-	public DiagramFactorContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public DiagramFactorPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, DIAGRAM_FACTOR, DiagramFactor.getObjectType());
 	}
