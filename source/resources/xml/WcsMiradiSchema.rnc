@@ -260,7 +260,7 @@ DiagramFactor.element = element miradi:DiagramFactor
   element miradi:DiagramFactorSize { DiagramSize.element } &
   element miradi:DiagramFactorGroupBoxChildrenIds { DiagramFactorId.element* } &
   element miradi:DiagramFactorTextBoxZOrderCode { vocabulary_text_box_z_order  }? &
-  element miradi:DiagramFactorStyling { Styling.element } 
+  element miradi:DiagramFactorStyle { Style.element } 
 }
 
 DiagramLinkPool.element = element miradi:DiagramLinkPool { DiagramLink.element* }
@@ -736,7 +736,7 @@ DiagramSize.element = element miradi:DiagramSize
   element miradi:height { xsd:integer } 
 }
 
-Styling.element = element miradi:Styling
+Style.element = element miradi:Style
 {
   element miradi:DiagramFactorFontSize { vocabulary_diagram_factor_font_size }? &
   element miradi:DiagramFactorFontStyle { vocabulary_diagram_factor_font_style }? &
