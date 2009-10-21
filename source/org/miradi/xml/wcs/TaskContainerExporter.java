@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
-public class TaskContainerExporter extends AbstractTaskContainerExporter
+public class TaskContainerExporter extends AbstractTaskPoolExporter
 {
 	public TaskContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
