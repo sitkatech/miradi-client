@@ -33,8 +33,8 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes = new Vector<ObjectSchemaElement>();
 		
 		objectTypes.add(new ProjectSummarySchemaElement());
-		objectTypes.add(new ObjectContainerSchemaElement(new ProjectResourceObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new OrganizationObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new ProjectResourceObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new OrganizationObjectSchemaElement()));
 		objectTypes.add(new ProjectSummaryScopeSchemaElement());
 		objectTypes.add(new ProjectSummaryLocationSchemaElement());
 		objectTypes.add(new ProjectSummaryPlanningSchemaElement());
@@ -45,36 +45,36 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new RareProjectDataSchemaElement());
 		objectTypes.add(new FosProjectDataSchemaElement());
 		
-		objectTypes.add(new ObjectContainerSchemaElement(new ConceptualModelSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new ResultsChainSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new DiagramFactorSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new DiagramLinkSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new BiodiversityTargetObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new HumanWelfareTargetSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new CauseObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new StrategyObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new ThreatReductionResultsObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new IntermediateResultObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new GroupBoxObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new TextBoxObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new ScopeBoxObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new KeyEcologicalAttributeObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new StressObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new SubTargetObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new GoalObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new ObjectiveSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new IndicatorObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new ActivityObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new MethodObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new TaskObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new ProgressReportObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new ProgressPercentObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new MeasurementObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new AccountingCodeObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new FundingSourceObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new ExpenseAssignmentObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new ResourceAssignmentObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new ThreatTargetThreatRatingElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new ConceptualModelSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new ResultsChainSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new DiagramFactorSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new DiagramLinkSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new BiodiversityTargetObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new HumanWelfareTargetSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new CauseObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new StrategyObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new ThreatReductionResultsObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new IntermediateResultObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new GroupBoxObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new TextBoxObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new ScopeBoxObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new KeyEcologicalAttributeObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new StressObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new SubTargetObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new GoalObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new ObjectiveSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new IndicatorObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new ActivityObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new MethodObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new TaskObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new ProgressReportObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new ProgressPercentObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new MeasurementObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new AccountingCodeObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new FundingSourceObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new ExpenseAssignmentObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new ResourceAssignmentObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new ThreatTargetThreatRatingElement()));
 	}
 	
 	public void output(SchemaWriter writer) throws IOException
@@ -85,7 +85,7 @@ class ProjectSchemaElement extends SchemaElement
 		{
 			ObjectSchemaElement objectElement = objectTypes.get(i);
 			writer.printIndented(getDotElement(objectElement.getObjectTypeName()));
-			if (objectElement.isContainer())
+			if (objectElement.isPool())
 				writer.print(WcsXmlConstants.OPTIONAL_ELEMENT);
 				
 			if(i < objectTypes.size() - 1)

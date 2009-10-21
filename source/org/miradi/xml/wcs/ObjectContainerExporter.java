@@ -37,9 +37,9 @@ abstract public class ObjectContainerExporter extends AbstractContainerExporter
 		objectType = objectTypeToUse;
 	}
 
-	public void exportObjectContainer() throws Exception
+	public void exportObjectPool() throws Exception
 	{
-		getWcsXmlExporter().writeStartContainerElement(containerName);
+		getWcsXmlExporter().writeStartPoolElement(containerName);
 		ORefList refs = getProject().getPool(getObjectType()).getSortedRefList();
 		for (int index = 0; index < refs.size(); ++index)
 		{
@@ -51,7 +51,7 @@ abstract public class ObjectContainerExporter extends AbstractContainerExporter
 			getWcsXmlExporter().writeEndElement(getWriter(), containerName);
 		}
 		
-		getWcsXmlExporter().writeEndContainerElement(containerName);
+		getWcsXmlExporter().writeEndPoolElement(containerName);
 	}
 
 	protected void writeObjectStartElement(BaseObject baseObject) throws Exception

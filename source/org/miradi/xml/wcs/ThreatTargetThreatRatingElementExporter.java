@@ -45,15 +45,15 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractContainerEx
 	}
 
 	@Override
-	public void exportObjectContainer() throws Exception
+	public void exportObjectPool() throws Exception
 	{
-		getWcsXmlExporter().writeStartContainerElement(THREAT_RATING);
+		getWcsXmlExporter().writeStartPoolElement(THREAT_RATING);
 		if (getProject().isStressBaseMode())
 			exportStressBasedThreatRating();
 		else
 			exportSimpleThreatRating();
 		
-		getWcsXmlExporter().writeEndContainerElement(THREAT_RATING);
+		getWcsXmlExporter().writeEndPoolElement(THREAT_RATING);
 	}
 
 	private void exportSimpleThreatRating() throws Exception

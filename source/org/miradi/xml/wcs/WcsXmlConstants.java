@@ -33,6 +33,7 @@ public interface WcsXmlConstants
 	public static final String XMLNS = "xmlns";
 	
 	public static final String CONTAINER_ELEMENT_TAG = "Container";
+	public static final String POOL_ELEMENT_TAG = "Pool";
 	
 	public static final String ID = "Id";
 	public static final String CONSERVATION_PROJECT = "ConservationProject";

@@ -24,11 +24,11 @@ import java.io.IOException;
 
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class ObjectContainerSchemaElement extends ObjectSchemaElement
+public class ObjectPoolSchemaElement extends ObjectSchemaElement
 {
-	public ObjectContainerSchemaElement(ObjectSchemaElement elementToWrap)
+	public ObjectPoolSchemaElement(ObjectSchemaElement elementToWrap)
 	{
-		super(getContainerName(elementToWrap.getObjectTypeName()));
+		super(getPoolName(elementToWrap.getObjectTypeName()));
 		objectSchemaElement = elementToWrap;
 	}
 
@@ -43,16 +43,16 @@ public class ObjectContainerSchemaElement extends ObjectSchemaElement
 	@Override
 	public String getObjectTypeName()
 	{
-		return getContainerName(objectSchemaElement.getObjectTypeName());
+		return getPoolName(objectSchemaElement.getObjectTypeName());
 	}
 
-	private static String getContainerName(String wrappedObjectTypeName)
+	private static String getPoolName(String wrappedObjectTypeName)
 	{
-		return wrappedObjectTypeName + WcsXmlConstants.CONTAINER_ELEMENT_TAG;
+		return wrappedObjectTypeName + WcsXmlConstants.POOL_ELEMENT_TAG;
 	}
 	
 	@Override
-	public boolean isContainer()
+	public boolean isPool()
 	{
 		return true;
 	}
