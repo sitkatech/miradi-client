@@ -30,5 +30,5 @@ public class WcsMiradiXmlValidator extends MiradiXmlValidator
 		return WCS_MIRADI_SCHEMA_FILE_RELATIVE_PATH;
 	}
 	
-	private static final String WCS_MIRADI_SCHEMA_FILE_RELATIVE_PATH = "xml/WcsMiradiSchema.rnc";
+	public static final String WCS_MIRADI_SCHEMA_FILE_RELATIVE_PATH = "xml/WcsMiradiSchema.rnc";
 }
