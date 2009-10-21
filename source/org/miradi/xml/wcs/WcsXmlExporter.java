@@ -84,7 +84,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		new DiagramFactorPoolExporter(this).exportObjectPool();
 		writeDiagramLinkSchemaElement();
 		writeBiodiversityTargetObjectSchemaElement();
-		new HumanWelfareTargetContainerExporter(this).exportObjectPool();
+		new HumanWelfareTargetPoolExporter(this).exportObjectPool();
 		new CauseContainerExporter(this).exportObjectPool();
 		new StrategyContainerExporter(this).exportObjectPool();
 		new ThreatReductionResultsContainerExporter(this).exportObjectPool();
