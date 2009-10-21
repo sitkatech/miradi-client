@@ -32,11 +32,11 @@ public class ActionExportWcsProjectZip extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Validated Project XML File (BETA)");
+		return EAM.text("Action|WCS Miradi Project ZIP (BETA)");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Export validated entire project as an XML file");
+		return EAM.text("TT|Export entire project as a WCS Miradi Project ZIP file");
 	}
 }
