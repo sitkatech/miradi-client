@@ -40,10 +40,10 @@ abstract public class XmlExporterDoer extends MainWindowDoer
 		if(!isAvailable())
 			return;
 
-		String title = EAM.text("Export XML");
+		String title = EAM.text("Export Project (BETA)");
 		String[] body = new String[] {
 			EAM.text("This feature is not yet fully supported. " +
-			"It exports all the project data in an XML file, but the schema of that file is still in flux. " +
+			"It exports all the project data, but the XML schema is still in flux. " +
 			"Future versions of Miradi will export the data in different formats."),
 		};
 
