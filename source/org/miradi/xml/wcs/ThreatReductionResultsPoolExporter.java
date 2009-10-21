@@ -25,9 +25,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ThreatReductionResult;
 
-public class ThreatReductionResultsContainerExporter extends FactorPoolExporter
+public class ThreatReductionResultsPoolExporter extends FactorPoolExporter
 {
-	public ThreatReductionResultsContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public ThreatReductionResultsPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, THREAT_REDUCTION_RESULTS, ThreatReductionResult.getObjectType());
 	}
