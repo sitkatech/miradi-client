@@ -33,7 +33,6 @@ import org.miradi.objectdata.DimensionData;
 import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.PointData;
-import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
@@ -46,6 +45,7 @@ import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
+import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class DiagramFactor extends BaseObject
@@ -326,7 +326,7 @@ public class DiagramFactor extends BaseObject
 		fontStyle = new ChoiceData(TAG_FONT_STYLE, getQuestion(DiagramFactorFontStyleQuestion.class));
 		groupBoxChildrenRefs = new ORefListData(TAG_GROUP_BOX_CHILDREN_REFS);
 		backgroundColor = new ChoiceData(TAG_BACKGROUND_COLOR, getQuestion(DiagramFactorBackgroundQuestion.class));
-		textBoxZOrderCode = new StringData(TAG_TEXT_BOX_Z_ORDER_CODE);
+		textBoxZOrderCode = new ChoiceData(TAG_TEXT_BOX_Z_ORDER_CODE, getQuestion(TextBoxZOrderQuestion.class));
 		
 		addField(TAG_SIZE, size);
 		addField(TAG_LOCATION, location);
@@ -362,5 +362,5 @@ public class DiagramFactor extends BaseObject
 	private ChoiceData fontStyle;
 	private ORefListData groupBoxChildrenRefs;
 	private ChoiceData backgroundColor;
-	public StringData textBoxZOrderCode;
+	public ChoiceData textBoxZOrderCode;
 }
