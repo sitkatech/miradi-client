@@ -27,7 +27,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 
-abstract public class ObjectPoolExporter extends AbstractContainerExporter
+abstract public class ObjectPoolExporter extends AbstractPoolExporter
 {
 	public ObjectPoolExporter(WcsXmlExporter wcsXmlExporterToUse, String poolNameToUse, int objectTypeToUse)
 	{
