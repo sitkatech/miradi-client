@@ -29,17 +29,17 @@ import org.miradi.objects.BaseObject;
 
 abstract public class ObjectPoolExporter extends AbstractContainerExporter
 {
-	public ObjectPoolExporter(WcsXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
+	public ObjectPoolExporter(WcsXmlExporter wcsXmlExporterToUse, String poolNameToUse, int objectTypeToUse)
 	{
 		super(wcsXmlExporterToUse);
 		
-		containerName = containerNameToUse;
+		poolName = poolNameToUse;
 		objectType = objectTypeToUse;
 	}
 
 	public void exportObjectPool() throws Exception
 	{
-		getWcsXmlExporter().writeStartPoolElement(containerName);
+		getWcsXmlExporter().writeStartPoolElement(poolName);
 		ORefList refs = getProject().getPool(getObjectType()).getSortedRefList();
 		for (int index = 0; index < refs.size(); ++index)
 		{
@@ -48,15 +48,15 @@ abstract public class ObjectPoolExporter extends AbstractContainerExporter
 			
 			exportFields(getWriter(), baseObject);
 			
-			getWcsXmlExporter().writeEndElement(getWriter(), containerName);
+			getWcsXmlExporter().writeEndElement(getWriter(), poolName);
 		}
 		
-		getWcsXmlExporter().writeEndPoolElement(containerName);
+		getWcsXmlExporter().writeEndPoolElement(poolName);
 	}
 
 	protected void writeObjectStartElement(BaseObject baseObject) throws Exception
 	{
-		getWcsXmlExporter().writeStartElement(containerName);
+		getWcsXmlExporter().writeStartElement(poolName);
 	}
 
 	protected UnicodeWriter getWriter()
@@ -66,22 +66,22 @@ abstract public class ObjectPoolExporter extends AbstractContainerExporter
 	
 	protected void writeOptionalElementWithSameTag(BaseObject baseObject, String tag) throws Exception
 	{
-		getWcsXmlExporter().writeOptionalElementWithSameTag(getContainerName(), baseObject, tag);
+		getWcsXmlExporter().writeOptionalElementWithSameTag(getPoolName(), baseObject, tag);
 	}
 	
 	protected void writeElementWithSameTag(BaseObject baseObject, String tag) throws Exception
 	{
-		getWcsXmlExporter().writeElementWithSameTag(getContainerName(), baseObject, tag);
+		getWcsXmlExporter().writeElementWithSameTag(getPoolName(), baseObject, tag);
 	}
 	
 	protected void writeIds(String idsElementName, String idElementName, ORefList refs) throws Exception
 	{
-		getWcsXmlExporter().writeIds(getContainerName(), idsElementName, idElementName + WcsXmlConstants.ID, refs);
+		getWcsXmlExporter().writeIds(getPoolName(), idsElementName, idElementName + WcsXmlConstants.ID, refs);
 	}
 	
 	protected void writeCodeListElement(String codeListElementName, BaseObject baseObject, String tag) throws Exception
 	{
-		getWcsXmlExporter().writeCodeListElement(getContainerName(), codeListElementName, baseObject, tag);
+		getWcsXmlExporter().writeCodeListElement(getPoolName(), codeListElementName, baseObject, tag);
 	}
 	
 	protected void writeCodeElementSameAsTag(BaseObject baseObject, String tag) throws Exception
@@ -96,31 +96,31 @@ abstract public class ObjectPoolExporter extends AbstractContainerExporter
 	
 	protected void writeCodeElement(String codeElementName, String code) throws Exception
 	{
-		getWcsXmlExporter().writeCodeElement(getContainerName(), codeElementName, code);
+		getWcsXmlExporter().writeCodeElement(getPoolName(), codeElementName, code);
 	}
 	
 	protected void writeOptionalCodeElement(String codeElementName, String code) throws Exception
 	{
-		getWcsXmlExporter().writeOptionalCodeElement(getContainerName(), codeElementName, code);
+		getWcsXmlExporter().writeOptionalCodeElement(getPoolName(), codeElementName, code);
 	}
 	
 	protected void exportId(ORef ref, String idElementName) throws Exception, IOException
 	{
 		if (ref.isValid())
 		{
-			getWcsXmlExporter().writeStartElement(getContainerName() + idElementName);
+			getWcsXmlExporter().writeStartElement(getPoolName() + idElementName);
 			getWcsXmlExporter().writeStartElement(idElementName);
 			
 			getWriter().write(ref.getObjectId().toString());
 			
 			getWcsXmlExporter().writeEndElement(idElementName);
-			getWcsXmlExporter().writeEndElement(getContainerName() + idElementName);
+			getWcsXmlExporter().writeEndElement(getPoolName() + idElementName);
 		}
 	}
 	
-	protected String getContainerName()
+	protected String getPoolName()
 	{
-		return containerName;
+		return poolName;
 	}
 	
 	private int getObjectType()
@@ -134,5 +134,5 @@ abstract public class ObjectPoolExporter extends AbstractContainerExporter
 	}
 	
 	private int objectType;
-	private String containerName;
+	private String poolName;
 }

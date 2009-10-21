@@ -47,13 +47,13 @@ public class ThreatReductionResultsContainerExporter extends FactorContainerExpo
 	{
 		if (relatedThreatRef.isValid())
 		{
-			getWcsXmlExporter().writeStartElement(getContainerName() + RELATED_THREAT_ID);
-			getWcsXmlExporter().writeStartElement(getContainerName() + THREAT_ID);
+			getWcsXmlExporter().writeStartElement(getPoolName() + RELATED_THREAT_ID);
+			getWcsXmlExporter().writeStartElement(getPoolName() + THREAT_ID);
 			getWcsXmlExporter().writeStartElement(THREAT_ID);
 			getWcsXmlExporter().writeXmlEncodedData(getWriter(), relatedThreatRef.getObjectId().toString());
 			getWcsXmlExporter().writeEndElement(THREAT_ID);
-			getWcsXmlExporter().writeEndElement(getContainerName() + THREAT_ID);
-			getWcsXmlExporter().writeEndElement(getContainerName() + RELATED_THREAT_ID);
+			getWcsXmlExporter().writeEndElement(getPoolName() + THREAT_ID);
+			getWcsXmlExporter().writeEndElement(getPoolName() + RELATED_THREAT_ID);
 		}
 	}
 }
