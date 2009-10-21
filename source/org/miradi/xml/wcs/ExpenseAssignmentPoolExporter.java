@@ -24,9 +24,9 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
 
-public class ExpenseAssignmentContainerExporter extends AbstractAssignmentPoolExporter
+public class ExpenseAssignmentPoolExporter extends AbstractAssignmentPoolExporter
 {
-	public ExpenseAssignmentContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public ExpenseAssignmentPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, EXPENSE_ASSIGNMENT, ExpenseAssignment.getObjectType());
 	}
