@@ -88,7 +88,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		new CausePoolExporter(this).exportObjectPool();
 		new StrategyContainerExporter(this).exportObjectPool();
 		new ThreatReductionResultsContainerExporter(this).exportObjectPool();
-		new IntermediateResultContainerExporter(this).exportObjectPool();
+		new IntermediateResultPoolExporter(this).exportObjectPool();
 		new GroupBoxPoolExporter(this).exportObjectPool();
 		new TextBoxContainerExporter(this).exportObjectPool();
 		new ScopeBoxContainerExporter(this).exportObjectPool();
