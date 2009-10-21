@@ -24,9 +24,9 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 
-public class CauseContainerExporter extends FactorPoolExporter
+public class CausePoolExporter extends FactorPoolExporter
 {	
-	public CauseContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public CausePoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, CAUSE, Cause.getObjectType());
 	}
