@@ -37,7 +37,7 @@ import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.ThreatStressRatingDetailsTableExporter;
 
-public class ThreatTargetThreatRatingElementExporter extends AbstractContainerExporter
+public class ThreatTargetThreatRatingElementExporter extends AbstractPoolExporter
 {
 	public ThreatTargetThreatRatingElementExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
