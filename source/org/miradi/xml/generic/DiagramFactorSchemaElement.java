@@ -34,7 +34,7 @@ public class DiagramFactorSchemaElement extends BaseObjectSchemaElement
 		createDiagramSizeField(DiagramFactor.TAG_SIZE);
 		createIdListField(WcsXmlConstants.GROUP_BOX_CHILDREN_IDS, WcsXmlConstants.DIAGRAM_FACTOR);
 		
-		createOptionalTextField(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);
+		createOptionalCodeField(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, XmlSchemaCreator.VOCABULARY_TEXT_BOX_Z_ORDER);
 		createStylingField(WcsXmlConstants.STYLING);
 	}
 }

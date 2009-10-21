@@ -95,6 +95,7 @@ import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
+import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
@@ -843,7 +844,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FOREGROUND_COLOR, DiagramFactorFontColorQuestion.BROWN_HEX);
 		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FONT_SIZE, "2.5");
 		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FONT_STYLE, DiagramFactorFontStyleQuestion.BOLD_CODE);
-		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, "someZOrder");		
+		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, TextBoxZOrderQuestion.FRONT_CODE);		
 	}
 	
 	public void populateExpenseAssignment(ExpenseAssignment expenseAssignment) throws Exception

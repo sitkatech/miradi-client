@@ -65,6 +65,7 @@ import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
 import org.miradi.questions.StressScopeChoiceQuestion;
 import org.miradi.questions.StressSeverityChoiceQuestion;
+import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
@@ -149,6 +150,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		defineVocabulary(writer, VOCABULARY_MEASUREMENT_STATUS, new StatusQuestion());
 		defineVocabulary(writer, VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE, new StatusConfidenceQuestion());
 		defineVocabulary(writer, VOCABULARY_COUNTRIES, new CountriesQuestion());
+		defineVocabulary(writer, VOCABULARY_TEXT_BOX_Z_ORDER, new TextBoxZOrderQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -508,6 +510,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 	public static final String VOCABULARY_MEASUREMENT_STATUS = "vocabulary_measurement_status";
 	public static final String VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE = "vocabulary_measurement_status_confidence";
 	public static final String VOCABULARY_COUNTRIES = "vocabulary_countries";
+	public static final String VOCABULARY_TEXT_BOX_Z_ORDER = "vocabulary_text_box_z_order";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
