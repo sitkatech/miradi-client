@@ -24,7 +24,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 
-public class ProjectResourcePoolExporter extends BaseObjectContainerExporter
+public class ProjectResourcePoolExporter extends BaseObjectPoolExporter
 {
 	public ProjectResourcePoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{

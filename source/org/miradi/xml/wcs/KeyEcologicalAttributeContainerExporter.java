@@ -24,7 +24,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.KeyEcologicalAttribute;
 
-public class KeyEcologicalAttributeContainerExporter extends BaseObjectContainerExporter
+public class KeyEcologicalAttributeContainerExporter extends BaseObjectPoolExporter
 {
 	public KeyEcologicalAttributeContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{

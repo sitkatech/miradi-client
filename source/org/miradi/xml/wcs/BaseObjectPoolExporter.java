@@ -23,9 +23,9 @@ package org.miradi.xml.wcs;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 
-abstract public class BaseObjectContainerExporter extends ObjectContainerExporter
+abstract public class BaseObjectPoolExporter extends ObjectContainerExporter
 {
-	public BaseObjectContainerExporter(WcsXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
+	public BaseObjectPoolExporter(WcsXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
 	{
 		super(wcsXmlExporterToUse, containerNameToUse, objectTypeToUse);
 	}

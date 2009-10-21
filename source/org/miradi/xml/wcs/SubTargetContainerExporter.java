@@ -24,7 +24,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.SubTarget;
 
-public class SubTargetContainerExporter extends BaseObjectContainerExporter
+public class SubTargetContainerExporter extends BaseObjectPoolExporter
 {
 	public SubTargetContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
