@@ -46,7 +46,7 @@ abstract public class AbstractAssignmentContainerExporter extends BaseObjectPool
 	
 	protected void exportDateUnitEfforList(DateUnitEffortList dateUnitEffortList, String dateUnitsElementName) throws Exception
 	{
-		getWcsXmlExporter().writeStartElement(getContainerName() + Assignment.TAG_DATEUNIT_EFFORTS);
+		getWcsXmlExporter().writeStartElement(getPoolName() + Assignment.TAG_DATEUNIT_EFFORTS);
 		for (int index = 0; index < dateUnitEffortList.size(); ++index)
 		{
 			DateUnitEffort dateUnitEffort = dateUnitEffortList.getDateUnitEffort(index);
@@ -57,7 +57,7 @@ abstract public class AbstractAssignmentContainerExporter extends BaseObjectPool
 			
 			getWcsXmlExporter().writeEndElement(dateUnitsElementName);
 		}
-		getWcsXmlExporter().writeEndElement(getContainerName() + Assignment.TAG_DATEUNIT_EFFORTS);
+		getWcsXmlExporter().writeEndElement(getPoolName() + Assignment.TAG_DATEUNIT_EFFORTS);
 	}
 
 	private void writeDateUnit(DateUnit dateUnit) throws Exception

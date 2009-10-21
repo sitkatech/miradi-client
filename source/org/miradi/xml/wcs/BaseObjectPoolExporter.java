@@ -33,7 +33,7 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 	@Override
 	protected void writeObjectStartElement(BaseObject baseObject) throws Exception
 	{
-		getWcsXmlExporter().writeStartElementWithAttribute(getWriter(), getContainerName(), WcsXmlConstants.ID, baseObject.getId().toString());
+		getWcsXmlExporter().writeStartElementWithAttribute(getWriter(), getPoolName(), WcsXmlConstants.ID, baseObject.getId().toString());
 	}
 	
 	protected void writeProgressReportIds(BaseObject baseObject) throws Exception
