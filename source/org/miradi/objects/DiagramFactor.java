@@ -286,7 +286,7 @@ public class DiagramFactor extends BaseObject
 	
 	public boolean isDefaultZOrder()
 	{
-		return textBoxZOrderCode.get().length() == 0;
+		return textBoxZOrderCode.get().equals(TextBoxZOrderQuestion.DEFAULT_Z_ORDER);
 	}
 		
 	public static boolean is(ORef ref)
