@@ -22,9 +22,9 @@ package org.miradi.xml.wcs;
 
 import org.miradi.objects.Objective;
 
-public class ObjectiveContainerExporter extends DesirePoolExporter
+public class ObjectivePoolExporter extends DesirePoolExporter
 {
-	public ObjectiveContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public ObjectivePoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, OBJECTIVE, Objective.getObjectType());
 	}
