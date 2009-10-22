@@ -45,10 +45,10 @@ import org.miradi.utils.PNGFileFilter;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
-public class ExportCpmzDoer extends AbstractFileSaverDoer
+public class ExportCpmzDoer extends XmlExporterDoer
 {
 	@Override
-	protected void doWork(File chosen) throws Exception
+	protected void export(File chosen) throws Exception
 	{
 		createCpmzFile(chosen);
 	}
@@ -185,6 +185,12 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 		entry.setSize(bytes.length);
 		out.putNextEntry(entry);	
 		out.write(bytes);
+	}
+	
+	@Override
+	protected boolean doesUserPreConfirm() throws Exception
+	{
+		return true;
 	}
 	
 	public static final String PROJECT_XML_FILE_NAME = "project.xml";
