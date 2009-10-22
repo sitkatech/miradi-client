@@ -61,7 +61,7 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 	}
 	
 	@Override
-	protected boolean doesUserPreConfirm() throws Exception
+	protected boolean isBetaExport() throws Exception
 	{
 		if (isInDiagram())
 			EAM.showHtmlInfoMessageOkDialog(MESSAGE_FILE_NAME);
