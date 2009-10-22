@@ -58,7 +58,7 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 		doIt();
 	}
 	
-	protected void preNotifyUser() throws Exception
+	protected void preConfirmUser() throws Exception
 	{
 		if (isInDiagram())
 			EAM.showHtmlInfoMessageOkDialog(MESSAGE_FILE_NAME);
