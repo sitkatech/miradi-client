@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-22 11:10-0500\n"
+"POT-Creation-Date: 2009-10-22 11:58-0500\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -869,7 +869,7 @@ msgstr ""
 "tabuladores."
 
 #: miradi/source/org/miradi/views/umbrella/doers/ExportWcsProjectZipDoer.java:72
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:90
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:92
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
 "for Strategy named:\n"
@@ -877,7 +877,7 @@ msgid ""
 msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/doers/ExportWcsProjectZipDoer.java:122
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:167
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:169
 msgid "Exported file does not validate."
 msgstr "No se valida el archivo exportado."
 
