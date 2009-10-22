@@ -50,12 +50,6 @@ import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 public class ExportCpmzDoer extends AbstractFileSaverDoer
 {
 	@Override
-	public boolean isAvailable()
-	{
-		return (getProject().isOpen());
-	}
-
-	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if (!MainWindow.ALLOW_CONPRO_IMPORT_EXPORT)
