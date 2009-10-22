@@ -44,7 +44,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		
 		try 
 		{
-			if (!isBetaExport())
+			if (!isBetaExport() ||  !doesUserConfirm())
 				return;
 			
 			EAMFileSaveChooser eamFileChooser = createFileChooser();
@@ -77,6 +77,11 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 	}
 	
 	protected boolean isBetaExport() throws Exception
+	{
+		return true;
+	}
+	
+	protected boolean doesUserConfirm() throws Exception
 	{
 		return true;
 	}
