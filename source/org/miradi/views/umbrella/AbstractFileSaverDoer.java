@@ -38,7 +38,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		
 		try 
 		{
-			if (!preConfirmUser())
+			if (!doesUserPreConfirm())
 				return;
 			
 			EAMFileSaveChooser eamFileChooser = createFileChooser();
@@ -70,7 +70,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		return EAM.text("Error Occurred please try saving under different name.");
 	}
 	
-	protected boolean preConfirmUser() throws Exception
+	protected boolean doesUserPreConfirm() throws Exception
 	{
 		return true;
 	}
