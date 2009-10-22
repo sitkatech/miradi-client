@@ -225,7 +225,6 @@ import org.miradi.views.umbrella.doers.ExpandAllRowsDoer;
 import org.miradi.views.umbrella.doers.ExportProjectXmlDoer;
 import org.miradi.views.umbrella.doers.ExportRtfDoer;
 import org.miradi.views.umbrella.doers.ExportTableDoer;
-import org.miradi.views.umbrella.doers.ExportWcsProjectZipDoer;
 import org.miradi.views.umbrella.doers.HowToSaveDoer;
 import org.miradi.views.umbrella.doers.ImportCpmzDoer;
 import org.miradi.views.umbrella.doers.RemoveResourceAssignmentDoer;
@@ -235,6 +234,7 @@ import org.miradi.views.umbrella.doers.SwitchToReportViewDoer;
 import org.miradi.views.umbrella.doers.SwitchToWorkPlanViewDoer;
 import org.miradi.views.umbrella.doers.TreeNodeShareMethodDoer;
 import org.miradi.views.umbrella.doers.ViewLegacyTncStrategyRankingDoer;
+import org.miradi.views.umbrella.doers.WcsXmlExportDoer;
 import org.miradi.wizard.SkeletonWizardStep;
 
 abstract public class UmbrellaView extends JPanel implements CommandExecutedListener
@@ -396,7 +396,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionImportZippedProjectFile.class, new ImportZippedProjectFileDoer());
 		addDoerToMap(ActionImportZippedConproProject.class, new ImportCpmzDoer());
 		addDoerToMap(ActionExportProjectXml.class, new ExportProjectXmlDoer());
-		addDoerToMap(ActionExportWcsProjectZip.class, new ExportWcsProjectZipDoer());
+		addDoerToMap(ActionExportWcsProjectZip.class, new WcsXmlExportDoer());
 		addDoerToMap(ActionExportConProXml.class, new ExportCpmzDoer());
 		addDoerToMap(ActionExportRtf.class, new ExportRtfDoer());
 		addDoerToMap(ActionExportTable.class, new ExportTableDoer());

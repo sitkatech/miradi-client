@@ -32,14 +32,12 @@ import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
-import org.miradi.utils.EAMFileSaveChooser;
-import org.miradi.utils.WcsZipFileChooser;
 import org.miradi.views.umbrella.XmlExporterDoer;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.wcs.WcsMiradiXmlValidator;
 import org.miradi.xml.wcs.WcsXmlExporter;
-//FIXME this is still under contruction
-public class ExportWcsProjectZipDoer extends XmlExporterDoer
+
+abstract public class ExportWcsProjectZipDoer extends XmlExporterDoer
 {
 	@Override
 	protected void export(File chosen) throws Exception
@@ -100,7 +98,7 @@ public class ExportWcsProjectZipDoer extends XmlExporterDoer
 	}
 
 	@Override
-	protected XmlExporter createExporter()
+	protected XmlExporter createExporter() throws Exception
 	{
 		return new WcsXmlExporter(getProject());
 	}
@@ -109,12 +107,6 @@ public class ExportWcsProjectZipDoer extends XmlExporterDoer
 	protected boolean isValid(ByteArrayInputStream inputStream) throws Exception
 	{
 		return new WcsMiradiXmlValidator().isValid(inputStream);
-	}
-
-	@Override
-	protected EAMFileSaveChooser createFileChooser()
-	{
-		return new WcsZipFileChooser(getMainWindow());
 	}
 	
 	public static final String PROJECT_XML_FILE_NAME = "project.xml";
