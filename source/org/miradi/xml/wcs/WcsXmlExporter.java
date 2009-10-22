@@ -30,14 +30,11 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramLink;
-import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FosProjectData;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.RareProjectData;
-import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Target;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcpaProjectData;
@@ -78,8 +75,8 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeRareProjectDataSchemaElement();
 		writeFosProjectDataSchemaElement();
 		
-		writeConceptualModelSchemaElement();
-		writeResultsChainSchemaElement();
+		new ConceptualModelPoolExporter(this).exportObjectPool();
+		new ResultsChainPoolExporter(this).exportObjectPool();
 		new DiagramFactorPoolExporter(this).exportObjectPool();
 		writeDiagramLinkSchemaElement();
 		writeBiodiversityTargetObjectSchemaElement();
@@ -206,38 +203,6 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeElement(getWriter(), X_ELEMENT_NAME, point.x);
 		writeElement(getWriter(), Y_ELEMENT_NAME, point.y);
 		writeEndElement(DIAGRAM_POINT_ELEMENT_NAME);
-	}
-
-	private void writeResultsChainSchemaElement() throws Exception
-	{
-		writeDiagram(RESULTS_CHAIN, ResultsChainDiagram.getObjectType());
-	}
-
-	private void writeConceptualModelSchemaElement() throws Exception
-	{
-		writeDiagram(CONCEPTUAL_MODEL, ConceptualModelDiagram.getObjectType());
-	}
-
-	private void writeDiagram(String diagramElementName, int diagramObjectType) throws Exception
-	{
-		writeStartPoolElement(diagramElementName);
-		ORefList diagramObjectRefs = getProject().getPool(diagramObjectType).getSortedRefList();
-		for (int index = 0; index < diagramObjectRefs.size(); ++index)
-		{
-			DiagramObject conceptualModel = DiagramObject.findDiagramObject(getProject(), diagramObjectRefs.get(index));
-			writeStartElementWithAttribute(getWriter(), diagramElementName, ID, conceptualModel.getId().toString());			
-			writeOptionalElementWithSameTag(diagramElementName, conceptualModel, ConceptualModelDiagram.TAG_LABEL);					
-			writeOptionalElementWithSameTag(diagramElementName, conceptualModel, ConceptualModelDiagram.TAG_SHORT_LABEL);
-			writeOptionalElementWithSameTag(diagramElementName, conceptualModel, ConceptualModelDiagram.TAG_DETAIL);
-			writeIds(diagramElementName, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DIAGRAM_FACTOR_ID_ELEMENT_NAME, conceptualModel.getAllDiagramFactorRefs());
-			writeIds(diagramElementName, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DIAGRAM_LINK_ID_ELEMENT_NAME, conceptualModel.getAllDiagramLinkRefs());
-			writeCodeListElement(diagramElementName, XmlSchemaCreator.HIDDEN_TYPES_ELEMENT_NAME, conceptualModel.getHiddenTypes());
-			writeIds(diagramElementName, WcsXmlConstants.SELECTED_TAGGED_OBJECT_SET_IDS, "TaggedObjectSetId", conceptualModel.getSelectedTaggedObjectSetRefs());
-			
-			writeEndElement(out, diagramElementName);
-		}
-		
-		writeEndPoolElement(diagramElementName);
 	}
 
 	public void writeIds(String parentElementName, String childElementName, String idElementName, ORefList refList) throws Exception
