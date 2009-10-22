@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -35,8 +36,9 @@ import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.EAMXmlFileChooser;
 import org.miradi.views.umbrella.SaveImageJPEGDoer;
 import org.miradi.views.umbrella.XmlExporterDoer;
+import org.miradi.xml.XmlExporter;
 import org.miradi.xml.reports.export.ProjectAsXmlExporter;
-
+//FIXME this class needs to be updated to export xml using latest schema and xml exporter
 public class ExportProjectXmlDoer extends XmlExporterDoer
 {
 	@Override
@@ -98,5 +100,17 @@ public class ExportProjectXmlDoer extends XmlExporterDoer
 	protected EAMFileSaveChooser createFileChooser()
 	{
 		return new EAMXmlFileChooser(getMainWindow());
+	}
+
+	@Override
+	protected XmlExporter createExporter() throws Exception
+	{
+		return null;
+	}
+
+	@Override
+	protected boolean isValid(ByteArrayInputStream inputStream)	throws Exception
+	{
+		return false;
 	}
 }

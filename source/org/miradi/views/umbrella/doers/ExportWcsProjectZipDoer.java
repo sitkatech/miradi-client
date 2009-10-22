@@ -24,12 +24,10 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.zip.ZipOutputStream;
 
 import org.martus.util.UnicodeReader;
-import org.martus.util.UnicodeStringWriter;
 import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
@@ -101,46 +99,13 @@ public class ExportWcsProjectZipDoer extends XmlExporterDoer
 		}
 	}
 
-	private void addProjectAsXmlToZip(ZipOutputStream zipOut) throws Exception
-	{
-		byte[] projectXmlInBytes = exportProjectXmlToBytes();
-		ByteArrayInputStream inputStream = new ByteArrayInputStream(projectXmlInBytes);
-		try
-		{
-			if (!isValid(inputStream))
-			{
-				EAM.logDebug(new String(projectXmlInBytes, "UTF-8"));
-				throw new ValidationException(EAM.text("Exported file does not validate."));
-			}
-
-			writeContent(zipOut, PROJECT_XML_FILE_NAME, projectXmlInBytes);
-		}
-		finally
-		{
-			inputStream.close();
-		}
-	}
-
-	private byte[] exportProjectXmlToBytes() throws IOException, Exception, UnsupportedEncodingException
-	{
-		UnicodeStringWriter writer = UnicodeStringWriter.create();
-		try
-		{
-			createExporter().exportProject(writer);
-		}
-		finally
-		{
-			writer.close();
-		}
-		
-		return writer.toString().getBytes("UTF-8");
-	}
-
+	@Override
 	protected XmlExporter createExporter()
 	{
 		return new WcsXmlExporter(getProject());
 	}
 	
+	@Override
 	protected boolean isValid(ByteArrayInputStream inputStream) throws Exception
 	{
 		return new WcsMiradiXmlValidator().isValid(inputStream);
