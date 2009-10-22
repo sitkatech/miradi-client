@@ -37,7 +37,7 @@ import org.miradi.xml.XmlExporter;
 import org.miradi.xml.wcs.WcsMiradiXmlValidator;
 import org.miradi.xml.wcs.WcsXmlExporter;
 
-abstract public class ExportProjectXmlZipDoer extends XmlExporterDoer
+abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 {
 	@Override
 	protected void export(File chosen) throws Exception

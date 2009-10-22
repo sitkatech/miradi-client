@@ -23,7 +23,7 @@ package org.miradi.views.umbrella.doers;
 import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.WcsZipFileChooser;
 
-public class WcsXmlExportDoer extends ExportProjectXmlZipDoer
+public class WcsXmlExportDoer extends AbstractExportProjectXmlZipDoer
 {
 	@Override
 	protected EAMFileSaveChooser createFileChooser()
