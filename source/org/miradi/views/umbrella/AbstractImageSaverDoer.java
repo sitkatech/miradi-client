@@ -31,6 +31,7 @@ import org.miradi.project.Project;
 
 abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		Project project = getMainWindow().getProject();
@@ -40,6 +41,7 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 		return getView().isImageAvailable();
 	}
 
+	@Override
 	protected void doWork(File chosen) throws Exception
 	{
 		FileOutputStream out = new FileOutputStream(chosen);
@@ -53,15 +55,19 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 		}
 	}
 
+	@Override
 	protected void loopBack() throws CommandFailedException
 	{
 		doIt();
 	}
 	
-	protected void preConfirmUser() throws Exception
+	@Override
+	protected boolean preConfirmUser() throws Exception
 	{
 		if (isInDiagram())
 			EAM.showHtmlInfoMessageOkDialog(MESSAGE_FILE_NAME);
+		
+		return true;
 	}
 	
 	private void saveImage(FileOutputStream out) throws Exception
