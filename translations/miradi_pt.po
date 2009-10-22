@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-22 11:07-0500\n"
+"POT-Creation-Date: 2009-10-22 11:10-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -762,11 +762,11 @@ msgstr ""
 msgid "Instructions"
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:50
+#: miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:56
 msgid "Export complete"
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:70
+#: miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:76
 msgid "Error Occurred please try saving under different name."
 msgstr ""
 
@@ -796,7 +796,7 @@ msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/doers/ExportWcsProjectZipDoer.java:72
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:96
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:90
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
 "for Strategy named:\n"
@@ -804,7 +804,7 @@ msgid ""
 msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/doers/ExportWcsProjectZipDoer.java:122
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:173
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:167
 msgid "Exported file does not validate."
 msgstr ""
 
@@ -982,22 +982,22 @@ msgid ""
 "spaces; and they cannot be longer than 32 characters. "
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:39
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:33
 msgid "Export Project (BETA)"
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:41
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:35
 msgid ""
 "This feature is not yet fully supported. It exports all the project data, "
 "but the XML schema is still in flux. Future versions of Miradi will export "
 "the data in different formats."
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:47
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:41
 msgid "Export"
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:63
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:57
 msgid ""
 "Unable to write XML. Perhaps the disk was full, or you don't have permission "
 "to write to it, or you are using invalid characters in the file name."
