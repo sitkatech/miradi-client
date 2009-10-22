@@ -20,8 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
+import java.awt.Point;
+
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Cause;
+import org.miradi.objects.Factor;
+import org.miradi.objects.Target;
 
 abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 {
@@ -64,5 +69,25 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 	protected void writeIndicatorIds(String idsElementName, ORefList indicatorRefs) throws Exception
 	{
 		writeIds(idsElementName, WcsXmlConstants.INDICATOR, indicatorRefs);
+	}
+	
+	protected String getFactorTypeName(Factor wrappedFactor)
+	{
+		if (Target.is(wrappedFactor))
+			return WcsXmlConstants.BIODIVERSITY_TARGET;
+		
+		//FIXME urgent - wcs  need to use object schema name
+		if (Cause.is(wrappedFactor))
+			return "Cause";
+		
+		return wrappedFactor.getTypeName();
+	}
+	
+	protected void writeDiagramPoint(Point point) throws Exception
+	{
+		getWcsXmlExporter().writeStartElement(DIAGRAM_POINT_ELEMENT_NAME);
+		getWcsXmlExporter().writeElement(getWriter(), X_ELEMENT_NAME, point.x);
+		getWcsXmlExporter().writeElement(getWriter(), Y_ELEMENT_NAME, point.y);
+		getWcsXmlExporter().writeEndElement(DIAGRAM_POINT_ELEMENT_NAME);
 	}
 }

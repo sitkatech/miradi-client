@@ -79,7 +79,7 @@ public class DiagramFactorPoolExporter extends BaseObjectPoolExporter
 		getWcsXmlExporter().writeStartElement(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
 		
 		Factor wrappedFactor = diagramFactor.getWrappedFactor();
-		String factorTypeName = getWcsXmlExporter().getFactorTypeName(wrappedFactor);
+		String factorTypeName = getFactorTypeName(wrappedFactor);
 		
 		getWcsXmlExporter().writeElement(factorTypeName, ID_ELEMENT_NAME, diagramFactor.getWrappedId().toString());
 		
@@ -92,7 +92,7 @@ public class DiagramFactorPoolExporter extends BaseObjectPoolExporter
 		String locationElementName = getWcsXmlExporter().createParentAndChildElementName(DIAGRAM_FACTOR, "Location");
 		getWcsXmlExporter().writeStartElement(locationElementName);
 		Point location = diagramFactor.getLocation();
-		getWcsXmlExporter().writeDiagramPoint(location);
+		writeDiagramPoint(location);
 		getWcsXmlExporter().writeEndElement(locationElementName);
 	}
 	
