@@ -32,7 +32,7 @@ import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 public class SaveImageJPEGDoer extends AbstractImageSaverDoer
 {
-	protected EAMFileSaveChooser getFileChooser()
+	protected EAMFileSaveChooser createFileChooser()
 	{
 		return new EAMJPGFileChooser(getMainWindow());
 	}

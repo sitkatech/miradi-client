@@ -39,7 +39,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		try 
 		{
 			preNotifyUser();
-			EAMFileSaveChooser eamFileChooser = getFileChooser();
+			EAMFileSaveChooser eamFileChooser = createFileChooser();
 			File chosen = eamFileChooser.displayChooser();
 			if (chosen==null) 
 				return;
@@ -71,7 +71,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		doIt();
 	}
 	
-	abstract protected EAMFileSaveChooser getFileChooser();
+	abstract protected EAMFileSaveChooser createFileChooser();
 	
 	abstract protected void doWork(File chosen) throws Exception;
 	

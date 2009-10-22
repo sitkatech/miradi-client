@@ -30,7 +30,7 @@ import org.miradi.utils.EAMPNGFileChooser;
 
 public class SaveImagePngDoer extends AbstractImageSaverDoer
 {
-	protected EAMFileSaveChooser getFileChooser()
+	protected EAMFileSaveChooser createFileChooser()
 	{
 		return new EAMPNGFileChooser(getMainWindow());
 	}
