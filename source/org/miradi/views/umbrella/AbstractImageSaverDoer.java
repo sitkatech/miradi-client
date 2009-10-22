@@ -55,7 +55,7 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 	}
 
 	@Override
-	protected void loopBack() throws CommandFailedException
+	protected void tryAgain() throws CommandFailedException
 	{
 		doIt();
 	}
