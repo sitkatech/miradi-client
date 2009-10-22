@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-22 16:25-0500\n"
+"POT-Creation-Date: 2009-10-22 16:34-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -839,18 +839,13 @@ msgstr "数据以制表符分隔格式导出 \t\t"
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr "试图导出到制表符分隔格式文件时出错。 \t\t"
 
-#: miradi/source/org/miradi/views/umbrella/doers/ExportWcsProjectZipDoer.java:63
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:71
+#: miradi/source/org/miradi/views/umbrella/doers/ExportWcsProjectZipDoer.java:61
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:68
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
 "for Strategy named:\n"
 "'%s'"
 msgstr ""
-
-#: miradi/source/org/miradi/views/umbrella/doers/ExportWcsProjectZipDoer.java:113
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:115
-msgid "Exported file does not validate."
-msgstr "导出的文件不正确。 \t\t"
 
 #: miradi/source/org/miradi/views/umbrella/doers/AbstractEditProgressDoer.java:32
 msgid "Edit Progress Percents"
@@ -1031,28 +1026,32 @@ msgid ""
 msgstr ""
 "项目文件名不能包含除点、破折号和空格之外的标点符号；且不能超过32个字符。 "
 
-#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:44
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:49
 msgid "Export Project (BETA)"
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:46
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:51
 msgid ""
 "This feature is not yet fully supported. It exports all the project data, "
 "but the XML schema is still in flux. Future versions of Miradi will export "
 "the data in different formats."
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:52
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:57
 msgid "Export"
 msgstr "导出 "
 
-#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:68
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:73
 msgid ""
 "Unable to write XML. Perhaps the disk was full, or you don't have permission "
 "to write to it, or you are using invalid characters in the file name."
 msgstr ""
 "无法写入XML。可能该磁盘已满，或者您没有写入该磁盘的许可权，或者您在文件名中使"
 "用了无效的字符。 \t\t"
+
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:86
+msgid "Exported file does not validate."
+msgstr "导出的文件不正确。 \t\t"
 
 #: miradi/source/org/miradi/views/umbrella/DeleteResource.java:65
 msgid ""
