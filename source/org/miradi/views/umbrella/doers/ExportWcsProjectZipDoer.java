@@ -37,6 +37,7 @@ import org.miradi.main.ResourcesHandler;
 import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.WcsZipFileChooser;
 import org.miradi.views.umbrella.XmlExporterDoer;
+import org.miradi.xml.XmlExporter;
 import org.miradi.xml.wcs.WcsMiradiXmlValidator;
 import org.miradi.xml.wcs.WcsXmlExporter;
 //FIXME this is still under contruction and also has duplicated code from cpmz exporter
@@ -106,7 +107,7 @@ public class ExportWcsProjectZipDoer extends XmlExporterDoer
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(projectXmlInBytes);
 		try
 		{
-			if (!new WcsMiradiXmlValidator().isValid(inputStream))
+			if (!isValid(inputStream))
 			{
 				EAM.logDebug(new String(projectXmlInBytes, "UTF-8"));
 				throw new ValidationException(EAM.text("Exported file does not validate."));
@@ -125,7 +126,7 @@ public class ExportWcsProjectZipDoer extends XmlExporterDoer
 		UnicodeStringWriter writer = UnicodeStringWriter.create();
 		try
 		{
-			new WcsXmlExporter(getProject()).exportProject(writer);
+			createExporter().exportProject(writer);
 		}
 		finally
 		{
@@ -133,6 +134,16 @@ public class ExportWcsProjectZipDoer extends XmlExporterDoer
 		}
 		
 		return writer.toString().getBytes("UTF-8");
+	}
+
+	protected XmlExporter createExporter()
+	{
+		return new WcsXmlExporter(getProject());
+	}
+	
+	protected boolean isValid(ByteArrayInputStream inputStream) throws Exception
+	{
+		return new WcsMiradiXmlValidator().isValid(inputStream);
 	}
 
 	@Override
