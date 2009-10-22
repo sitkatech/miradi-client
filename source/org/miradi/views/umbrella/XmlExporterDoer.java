@@ -21,7 +21,6 @@ package org.miradi.views.umbrella;
 
 import java.io.File;
 
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.utils.ConstantButtonNames;
 import org.miradi.utils.EAMFileSaveChooser;
@@ -33,17 +32,7 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 	{
 		return (getProject().isOpen());
 	}
-	
-	@Override
-	public void doIt() throws CommandFailedException
-	{
-		if(!isAvailable())
-			return;
-
-			
-		super.doIt();
-	}
-	
+		
 	@Override
 	protected boolean doesUserPreConfirm() throws Exception
 	{
