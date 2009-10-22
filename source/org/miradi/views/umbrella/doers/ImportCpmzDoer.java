@@ -33,7 +33,6 @@ import org.martus.util.DirectoryUtils;
 import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.arranger.MeglerArranger;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -53,15 +52,6 @@ import org.miradi.xml.conpro.importer.ConproXmlImporter;
 
 public class ImportCpmzDoer extends ImportProjectDoer
 {
-	@Override
-	public void doIt() throws CommandFailedException
-	{
-		if (!isAvailable())
-			return;
-		
-		super.doIt();
-	}
-	
 	@Override
 	public void createProject(File importFile, File homeDirectory, String newProjectFilename) throws Exception
 	{
