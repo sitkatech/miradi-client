@@ -40,6 +40,13 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 		if(!isAvailable())
 			return;
 
+			
+		super.doIt();
+	}
+	
+	@Override
+	protected boolean doesUserPreConfirm() throws Exception
+	{
 		String title = EAM.text("Export Project (BETA)");
 		String[] body = new String[] {
 			EAM.text("This feature is not yet fully supported. " +
@@ -51,10 +58,8 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 			EAM.text("Export"),
 			ConstantButtonNames.CANCEL,
 		};
-		if(!EAM.confirmDialog(title, body, buttons))
-			return;
 		
-		super.doIt();
+		return EAM.confirmDialog(title, body, buttons);
 	}
 
 	@Override
