@@ -38,7 +38,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		
 		try 
 		{
-			preNotifyUser();
+			preConfirmUser();
 			EAMFileSaveChooser eamFileChooser = createFileChooser();
 			File chosen = eamFileChooser.displayChooser();
 			if (chosen==null) 
@@ -68,7 +68,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		return EAM.text("Error Occurred please try saving under different name.");
 	}
 	
-	protected void preNotifyUser() throws Exception
+	protected void preConfirmUser() throws Exception
 	{
 	}
 
