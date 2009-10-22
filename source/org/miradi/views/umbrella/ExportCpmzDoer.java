@@ -30,7 +30,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 import org.martus.util.UnicodeStringWriter;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
@@ -48,12 +47,6 @@ import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
 public class ExportCpmzDoer extends AbstractFileSaverDoer
 {
-	@Override
-	public void doIt() throws CommandFailedException
-	{
-		super.doIt();
-	}
-	
 	@Override
 	protected void doWork(File chosen) throws Exception
 	{
