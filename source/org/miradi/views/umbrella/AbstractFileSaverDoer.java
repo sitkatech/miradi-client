@@ -63,7 +63,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		{
 			EAM.logException(e);
 			EAM.errorDialog(getIOExceptionErrorMessage());
-			loopBack();
+			tryAgain();
 		}
 		catch (Exception e) 
 		{
@@ -86,7 +86,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		return true;
 	}
 
-	protected void loopBack() throws CommandFailedException
+	protected void tryAgain() throws CommandFailedException
 	{
 		doIt();
 	}
