@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-21 17:26-0500\n"
+"POT-Creation-Date: 2009-10-22 11:01-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -806,7 +806,11 @@ msgstr ""
 msgid "Instructions"
 msgstr "说明 \t\t"
 
-#: miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:78
+#: miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:48
+msgid "Export complete"
+msgstr "导出完成 \t\t"
+
+#: miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:68
 msgid "Error Occurred please try saving under different name."
 msgstr "出错，请尝试用不同的文件名保存。 \t\t"
 
@@ -1042,11 +1046,7 @@ msgstr ""
 msgid "Export"
 msgstr "导出 "
 
-#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:70
-msgid "Export complete"
-msgstr "导出完成 \t\t"
-
-#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:75
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:69
 msgid ""
 "Unable to write XML. Perhaps the disk was full, or you don't have permission "
 "to write to it, or you are using invalid characters in the file name."
