@@ -54,10 +54,10 @@ abstract public class XmlExporterDoer extends MainWindowDoer
 		if(!EAM.confirmDialog(title, body, buttons))
 			return;
 		
-		export();
+		doWork();
 	}
 
-	private void export() throws CommandFailedException
+	private void doWork() throws CommandFailedException
 	{
 		EAMFileSaveChooser eamFileChooser = createFileChooser();
 		File chosen = eamFileChooser.displayChooser();
@@ -85,7 +85,7 @@ abstract public class XmlExporterDoer extends MainWindowDoer
 
 	private void loopBack() throws CommandFailedException
 	{
-		export();
+		doWork();
 	}
 	
 	abstract protected EAMFileSaveChooser createFileChooser();
