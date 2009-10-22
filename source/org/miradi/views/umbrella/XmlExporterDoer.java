@@ -39,7 +39,7 @@ import org.miradi.utils.PNGFileFilter;
 abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 {
 	@Override
-	protected boolean doesUserPreConfirm() throws Exception
+	protected boolean isBetaExport() throws Exception
 	{
 		String title = EAM.text("Export Project (BETA)");
 		String[] body = new String[] {
