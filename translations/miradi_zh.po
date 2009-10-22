@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-22 16:34-0500\n"
+"POT-Creation-Date: 2009-10-22 17:01-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -839,7 +839,7 @@ msgstr "数据以制表符分隔格式导出 \t\t"
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr "试图导出到制表符分隔格式文件时出错。 \t\t"
 
-#: miradi/source/org/miradi/views/umbrella/doers/ExportWcsProjectZipDoer.java:61
+#: miradi/source/org/miradi/views/umbrella/doers/ExportWcsProjectZipDoer.java:59
 #: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:68
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
@@ -5536,8 +5536,8 @@ msgid "TT|Change visible rows"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionExportProjectXml.java:34
-msgid "Action|Project XML File (BETA)"
-msgstr "项目XML文件（BETA）"
+msgid "Action|XML Miradi Project ZIP (BETA) "
+msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionExportProjectXml.java:39
 msgid "TT|Export entire project as an XML file"
@@ -6121,6 +6121,14 @@ msgstr "关闭 \t\t"
 #: miradi/source/org/miradi/utils/DefaultHyperlinkHandler.java:50
 msgid "Title|Information"
 msgstr "信息 \t\t"
+
+#: miradi/source/org/miradi/utils/XmpzFileFilter.java:30
+msgid "FileFilter|XMPZ (*"
+msgstr ""
+
+#: miradi/source/org/miradi/utils/XmpzFileFilter.java:30
+msgid ")"
+msgstr ""
 
 #: miradi/source/org/miradi/utils/XLSFileFilter.java:40
 msgid "FileFilter|XLS (*.xls)"
@@ -26994,6 +27002,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Action|Project XML File (BETA)"
+#~ msgstr "项目XML文件（BETA）"
 
 #~ msgid "Export XML"
 #~ msgstr "导出XML \t\t"

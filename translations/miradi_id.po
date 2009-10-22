@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-22 16:34-0500\n"
+"POT-Creation-Date: 2009-10-22 17:01-0500\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -869,7 +869,7 @@ msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 "Terjadi kesalahan saat mencoba mengekspor ke berkas yang dibatasi tab. "
 
-#: miradi/source/org/miradi/views/umbrella/doers/ExportWcsProjectZipDoer.java:61
+#: miradi/source/org/miradi/views/umbrella/doers/ExportWcsProjectZipDoer.java:59
 #: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:68
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
@@ -5698,8 +5698,8 @@ msgid "TT|Change visible rows"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionExportProjectXml.java:34
-msgid "Action|Project XML File (BETA)"
-msgstr "Berkas XML Proyek (BETA)"
+msgid "Action|XML Miradi Project ZIP (BETA) "
+msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionExportProjectXml.java:39
 msgid "TT|Export entire project as an XML file"
@@ -6293,6 +6293,14 @@ msgstr "Tutup "
 #: miradi/source/org/miradi/utils/DefaultHyperlinkHandler.java:50
 msgid "Title|Information"
 msgstr "Informasi "
+
+#: miradi/source/org/miradi/utils/XmpzFileFilter.java:30
+msgid "FileFilter|XMPZ (*"
+msgstr ""
+
+#: miradi/source/org/miradi/utils/XmpzFileFilter.java:30
+msgid ")"
+msgstr ""
 
 #: miradi/source/org/miradi/utils/XLSFileFilter.java:40
 msgid "FileFilter|XLS (*.xls)"
@@ -29637,6 +29645,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Action|Project XML File (BETA)"
+#~ msgstr "Berkas XML Proyek (BETA)"
 
 #~ msgid "Export XML"
 #~ msgstr "Eskpor XML "
