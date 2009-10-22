@@ -20,21 +20,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import java.io.File;
-import java.io.IOException;
 
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.utils.ConstantButtonNames;
 import org.miradi.utils.EAMFileSaveChooser;
-import org.miradi.views.MainWindowDoer;
 
-abstract public class XmlExporterDoer extends MainWindowDoer
+abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		return (getProject().isOpen());
 	}
 	
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if(!isAvailable())
@@ -54,40 +54,23 @@ abstract public class XmlExporterDoer extends MainWindowDoer
 		if(!EAM.confirmDialog(title, body, buttons))
 			return;
 		
-		doWork();
+		super.doIt();
 	}
 
-	private void doWork() throws CommandFailedException
+	@Override
+	protected void doWork(File chosen) throws Exception
 	{
-		EAMFileSaveChooser eamFileChooser = createFileChooser();
-		File chosen = eamFileChooser.displayChooser();
-		if (chosen==null) 
-			return;
-
-		try
-		{
-			export(chosen);
-			EAM.notifyDialog(EAM.text("Export complete"));
-		}
-		catch(IOException e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog(EAM.text("Unable to write XML. Perhaps the disk was full, or you " +
-					"don't have permission to write to it, or you are using invalid characters in the file name."));
-			
-			loopBack();
-		}
-		catch(Exception e)
-		{
-			throw new CommandFailedException(e);
-		}
+		export(chosen);
 	}
 
-	private void loopBack() throws CommandFailedException
+	@Override
+	protected String getIOExceptionErrorMessage()
 	{
-		doWork();
+		return EAM.text("Unable to write XML. Perhaps the disk was full, or you " +
+				"don't have permission to write to it, or you are using invalid characters in the file name.");
 	}
-	
+
+	@Override
 	abstract protected EAMFileSaveChooser createFileChooser();
 	
 	abstract protected void export(File chosen) throws Exception;
