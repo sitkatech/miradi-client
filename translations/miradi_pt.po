@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-22 11:04-0500\n"
+"POT-Creation-Date: 2009-10-22 11:07-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -982,22 +982,22 @@ msgid ""
 "spaces; and they cannot be longer than 32 characters. "
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:43
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:39
 msgid "Export Project (BETA)"
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:45
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:41
 msgid ""
 "This feature is not yet fully supported. It exports all the project data, "
 "but the XML schema is still in flux. Future versions of Miradi will export "
 "the data in different formats."
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:51
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:47
 msgid "Export"
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:69
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:63
 msgid ""
 "Unable to write XML. Perhaps the disk was full, or you don't have permission "
 "to write to it, or you are using invalid characters in the file name."
