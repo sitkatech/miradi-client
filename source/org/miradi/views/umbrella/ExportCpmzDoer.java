@@ -34,6 +34,7 @@ import org.miradi.main.EAM;
 import org.miradi.project.ProjectZipper;
 import org.miradi.utils.CpmzFileChooser;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
+import org.miradi.xml.XmlExporter;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
@@ -108,7 +109,7 @@ public class ExportCpmzDoer extends XmlExporterDoer
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(projectXmlInBytes);
 		try
 		{
-			if (!new ConProMiradiXmlValidator().isValid(inputStream))
+			if (!isValid(inputStream))
 			{
 				EAM.logDebug(new String(projectXmlInBytes, "UTF-8"));
 				throw new ValidationException(EAM.text("Exported file does not validate."));
@@ -127,7 +128,7 @@ public class ExportCpmzDoer extends XmlExporterDoer
 		UnicodeStringWriter writer = UnicodeStringWriter.create();
 		try
 		{
-			new ConproXmlExporter(getProject()).exportProject(writer);
+			createExporter().exportProject(writer);
 			writer.close();
 		}
 		finally
@@ -138,6 +139,15 @@ public class ExportCpmzDoer extends XmlExporterDoer
 		return writer.toString().getBytes("UTF-8");
 	}
 
+	protected XmlExporter createExporter() throws Exception
+	{
+		return new ConproXmlExporter(getProject());
+	}
+	
+	private boolean isValid(ByteArrayInputStream inputStream) throws Exception
+	{
+		return new ConProMiradiXmlValidator().isValid(inputStream);
+	}
 	
 	@Override
 	protected boolean isBetaExport() throws Exception
