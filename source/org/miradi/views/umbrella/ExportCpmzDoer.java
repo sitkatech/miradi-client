@@ -72,7 +72,7 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 		createCpmzFile(chosen);
 	}
 
-	protected CpmzFileChooser getFileChooser()
+	protected CpmzFileChooser createFileChooser()
 	{
 		return new CpmzFileChooser(getMainWindow());
 	}
