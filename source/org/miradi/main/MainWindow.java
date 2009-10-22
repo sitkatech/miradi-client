@@ -1029,7 +1029,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private static final String APP_PREFERENCES_FILENAME = "settings";
 	private static final int TOOP_TIP_DELAY_MILLIS = 1000;
 	
-	public static final boolean ALLOW_CONPRO_IMPORT_EXPORT = true;
 	public static final String DISABLED_CONPRO_IMPORT_EXPORT_MESSAGE = EAM.text("<HTML>Data exchange between Miradi and ConPro is not available in this version of Miradi. <BR> It is currently being tested, and should be available in the next version of Miradi. <BR>If you have questions, contact support@miradi.org.</HTML>");
 
 	protected Actions actions;
