@@ -61,11 +61,13 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 		super.doIt();
 	}
 	
+	@Override
 	protected void doWork(File chosen) throws Exception
 	{
 		createCpmzFile(chosen);
 	}
 
+	@Override
 	protected CpmzFileChooser createFileChooser()
 	{
 		return new CpmzFileChooser(getMainWindow());
