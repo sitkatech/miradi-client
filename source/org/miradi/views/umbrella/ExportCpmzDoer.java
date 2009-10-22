@@ -22,26 +22,18 @@ package org.miradi.views.umbrella;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.DiagramObject;
 import org.miradi.project.ProjectZipper;
-import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.CpmzFileChooser;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
-import org.miradi.utils.PNGFileFilter;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
@@ -90,39 +82,6 @@ public class ExportCpmzDoer extends XmlExporterDoer
 		finally
 		{
 			zipOut.close();
-		}
-	}
-
-	private void addDiagramImagesToZip(ZipOutputStream zipOut) throws Exception
-	{		
-		ORefList allDiagramObjectRefs = getProject().getAllDiagramObjectRefs();
-		for (int refIndex = 0; refIndex < allDiagramObjectRefs.size(); ++refIndex)
-		{
-			DiagramObject diagramObject = (DiagramObject) getProject().findObject(allDiagramObjectRefs.get(refIndex));
-			String imageName = getDiagramPrefix(diagramObject.getRef()) + refIndex + PNGFileFilter.EXTENSION;
-			writeDiagramImage(zipOut, diagramObject, imageName);
-		}
-	}
-
-	private String getDiagramPrefix(ORef diagramObjectRef)
-	{
-		if (ConceptualModelDiagram.is(diagramObjectRef))
-			return CM_IMAGE_PREFIX;
-		
-		return RC_IMAGE_PREFIX;
-	}
-
-	private void writeDiagramImage(ZipOutputStream zipOut, DiagramObject diagramObject, String imageName) throws Exception
-	{
-		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
-		try
-		{
-			new SaveImagePngDoer().saveImage(byteOut, BufferedImageFactory.createImageFromDiagram(getMainWindow(), diagramObject));
-			writeContent(zipOut, IMAGES_DIR_NAME_IN_ZIP + imageName, byteOut.toByteArray());
-		}
-		finally
-		{
-			byteOut.close();
 		}
 	}
 
@@ -179,13 +138,6 @@ public class ExportCpmzDoer extends XmlExporterDoer
 		return writer.toString().getBytes("UTF-8");
 	}
 
-	private void writeContent(ZipOutputStream out, String projectXmlName, byte[] bytes) throws FileNotFoundException, IOException
-	{
-		ZipEntry entry = new ZipEntry(projectXmlName);
-		entry.setSize(bytes.length);
-		out.putNextEntry(entry);	
-		out.write(bytes);
-	}
 	
 	@Override
 	protected boolean doesUserPreConfirm() throws Exception
@@ -194,8 +146,5 @@ public class ExportCpmzDoer extends XmlExporterDoer
 	}
 	
 	public static final String PROJECT_XML_FILE_NAME = "project.xml";
-	public static final String IMAGES_DIR_NAME_IN_ZIP = "images/";
 	public static final String PROJECT_ZIP_FILE_NAME = "project" + MpzFileFilterForChooserDialog.EXTENSION;
-	public static final String CM_IMAGE_PREFIX = "CM";
-	public static final String RC_IMAGE_PREFIX = "RC";
 }
