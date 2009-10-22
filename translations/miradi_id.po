@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-22 17:01-0500\n"
+"POT-Creation-Date: 2009-10-22 17:04-0500\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -869,14 +869,6 @@ msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 "Terjadi kesalahan saat mencoba mengekspor ke berkas yang dibatasi tab. "
 
-#: miradi/source/org/miradi/views/umbrella/doers/ExportWcsProjectZipDoer.java:59
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:68
-msgid ""
-"Please choose a specific IUCN classification (Not a category). Fix needed "
-"for Strategy named:\n"
-"'%s'"
-msgstr ""
-
 #: miradi/source/org/miradi/views/umbrella/doers/AbstractEditProgressDoer.java:32
 msgid "Edit Progress Percents"
 msgstr "Edit Persentase Kemajuan "
@@ -892,6 +884,14 @@ msgstr "Impor "
 #: miradi/source/org/miradi/views/umbrella/doers/HowToSaveDoer.java:45
 msgid "Help"
 msgstr "Bantuan "
+
+#: miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:59
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:68
+msgid ""
+"Please choose a specific IUCN classification (Not a category). Fix needed "
+"for Strategy named:\n"
+"'%s'"
+msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:53
 msgid "Share Method"
