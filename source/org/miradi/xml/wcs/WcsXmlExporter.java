@@ -35,7 +35,6 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FosProjectData;
-import org.miradi.objects.Organization;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.ResultsChainDiagram;
@@ -68,7 +67,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		
 		writeProjectSummaryElement();
 		new ProjectResourcePoolExporter(this).exportObjectPool();
-		writeOrganizationObjectSchemaElement();
+		new OrganizationPoolExporter(this).exportObjectPool();
 		writeProjectSummaryScopeSchemaElement();
 		writeProjectSummaryLocationSchemaElement();
 		writeProjectSummaryPlanningSchemaElement();
@@ -449,29 +448,6 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeOptionalElementWithSameTag(WcsXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_MANAGEMENT_RESOURCES);				
 		
 		writeEndElement(out, PROJECT_SUMMARY_SCOPE);
-	}
-
-	private void writeOrganizationObjectSchemaElement() throws Exception
-	{
-		writeStartPoolElement(ORGANIZATION);
-		ORefList organizationRefs = getProject().getPool(Organization.getObjectType()).getSortedRefList();
-		for (int index = 0; index < organizationRefs.size(); ++index)
-		{
-			Organization organization = Organization.find(getProject(), organizationRefs.get(index));
-			writeStartElementWithAttribute(getWriter(), ORGANIZATION, ID, organization.getId().toString());			
-			writeOptionalElementWithSameTag(ORGANIZATION, organization, XmlSchemaCreator.LABEL_ELEMENT_NAME);					
-			writeOptionalElementWithSameTag(ORGANIZATION, organization, Organization.TAG_SHORT_LABEL);
-			writeOptionalElementWithSameTag(ORGANIZATION, organization, Organization.TAG_ROLES_DESCRIPTION);
-			writeOptionalElementWithSameTag(ORGANIZATION, organization, Organization.TAG_CONTACT_FIRST_NAME);
-			writeOptionalElementWithSameTag(ORGANIZATION, organization, Organization.TAG_CONTACT_LAST_NAME);
-			writeOptionalElementWithSameTag(ORGANIZATION, organization, Organization.TAG_EMAIL);
-			writeOptionalElementWithSameTag(ORGANIZATION, organization, Organization.TAG_PHONE_NUMBER);
-			writeOptionalElementWithSameTag(ORGANIZATION, organization, Organization.TAG_COMMENTS);
-	
-			writeEndElement(out, ORGANIZATION);
-		}
-		
-		writeEndPoolElement(ORGANIZATION);
 	}
 
 	private void writeProjectSummaryElement() throws Exception
