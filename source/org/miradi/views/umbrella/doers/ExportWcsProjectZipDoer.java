@@ -38,7 +38,7 @@ import org.miradi.views.umbrella.XmlExporterDoer;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.wcs.WcsMiradiXmlValidator;
 import org.miradi.xml.wcs.WcsXmlExporter;
-//FIXME this is still under contruction and also has duplicated code from cpmz exporter
+//FIXME this is still under contruction
 public class ExportWcsProjectZipDoer extends XmlExporterDoer
 {
 	@Override
