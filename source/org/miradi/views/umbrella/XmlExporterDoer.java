@@ -19,13 +19,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import org.martus.util.UnicodeStringWriter;
+import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -35,6 +39,7 @@ import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.ConstantButtonNames;
 import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.PNGFileFilter;
+import org.miradi.xml.XmlExporter;
 
 abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 {
@@ -67,6 +72,41 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 	{
 		return EAM.text("Unable to write XML. Perhaps the disk was full, or you " +
 				"don't have permission to write to it, or you are using invalid characters in the file name.");
+	}
+	
+	protected void addProjectAsXmlToZip(ZipOutputStream zipOut) throws Exception
+	{
+		byte[] projectXmlInBytes = exportProjectXmlToBytes();
+		ByteArrayInputStream inputStream = new ByteArrayInputStream(projectXmlInBytes);
+		try
+		{
+			if (!isValid(inputStream))
+			{
+				EAM.logDebug(new String(projectXmlInBytes, "UTF-8"));
+				throw new ValidationException(EAM.text("Exported file does not validate."));
+			}
+	
+			writeContent(zipOut, PROJECT_XML_FILE_NAME, projectXmlInBytes);
+		}
+		finally
+		{
+			inputStream.close();
+		}
+	}
+
+	private byte[] exportProjectXmlToBytes() throws IOException, Exception,	UnsupportedEncodingException
+	{
+		UnicodeStringWriter writer = UnicodeStringWriter.create();
+		try
+		{
+			createExporter().exportProject(writer);
+		}
+		finally
+		{
+			writer.close();
+		}
+		
+		return writer.toString().getBytes("UTF-8");
 	}
 	
 	protected void addDiagramImagesToZip(ZipOutputStream zipOut) throws Exception
@@ -109,6 +149,10 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 		out.putNextEntry(entry);	
 		out.write(bytes);
 	}
+	
+	abstract protected XmlExporter createExporter() throws Exception;
+	
+	abstract protected boolean isValid(ByteArrayInputStream inputStream) throws Exception;
 
 	@Override
 	abstract protected EAMFileSaveChooser createFileChooser();
@@ -118,4 +162,5 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 	public static final String CM_IMAGE_PREFIX = "CM";
 	public static final String RC_IMAGE_PREFIX = "RC";
 	public static final String IMAGES_DIR_NAME_IN_ZIP = "images/";
+	public static final String PROJECT_XML_FILE_NAME = "project.xml";
 }
