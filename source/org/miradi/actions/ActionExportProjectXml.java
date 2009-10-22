@@ -31,7 +31,7 @@ public class ActionExportProjectXml extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Project XML File (BETA)");
+		return EAM.text("Action|XML Miradi Project ZIP (BETA) ");
 	}
 
 	public String getToolTipText()
