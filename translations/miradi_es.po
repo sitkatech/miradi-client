@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-22 11:01-0500\n"
+"POT-Creation-Date: 2009-10-22 11:04-0500\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -833,11 +833,11 @@ msgstr ""
 msgid "Instructions"
 msgstr "Instrucciones"
 
-#: miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:48
+#: miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:50
 msgid "Export complete"
 msgstr "Se completó la exportación."
 
-#: miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:68
+#: miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:70
 msgid "Error Occurred please try saving under different name."
 msgstr "Se produjo un error. Intente grabar con un nombre diferente."
 
