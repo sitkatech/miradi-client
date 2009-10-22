@@ -28,12 +28,6 @@ import org.miradi.utils.EAMFileSaveChooser;
 abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 {
 	@Override
-	public boolean isAvailable()
-	{
-		return (getProject().isOpen());
-	}
-		
-	@Override
 	protected boolean doesUserPreConfirm() throws Exception
 	{
 		String title = EAM.text("Export Project (BETA)");

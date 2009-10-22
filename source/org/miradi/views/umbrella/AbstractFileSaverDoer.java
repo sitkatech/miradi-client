@@ -31,6 +31,12 @@ import org.miradi.views.ViewDoer;
 abstract public class AbstractFileSaverDoer extends ViewDoer
 {
 	@Override
+	public boolean isAvailable()
+	{
+		return (getProject().isOpen());
+	}
+	
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if (!isAvailable())

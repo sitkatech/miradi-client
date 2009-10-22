@@ -27,15 +27,14 @@ import java.io.OutputStream;
 
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
-import org.miradi.project.Project;
 
 abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 {
 	@Override
 	public boolean isAvailable()
 	{
-		Project project = getMainWindow().getProject();
-		if(!project.isOpen())
+		boolean superIsAvailable = super.isAvailable();
+		if (!superIsAvailable)
 			return false;
 		
 		return getView().isImageAvailable();
