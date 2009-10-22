@@ -45,6 +45,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 				return;
 
 			doWork(chosen);
+			EAM.notifyDialog(EAM.text("Export complete"));
 		}
 		catch (ZipException e)
 		{
@@ -53,13 +54,18 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		catch (IOException e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog(BAD_FILE_NAME_ERROR_MESSAGE);
+			EAM.errorDialog(getIOExceptionErrorMessage());
 			loopBack();
 		}
 		catch (Exception e) 
 		{
 			throw new CommandFailedException(e);
 		} 
+	}
+
+	protected String getIOExceptionErrorMessage()
+	{
+		return EAM.text("Error Occurred please try saving under different name.");
 	}
 	
 	protected void preNotifyUser() throws Exception
@@ -74,6 +80,4 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 	abstract protected EAMFileSaveChooser createFileChooser();
 	
 	abstract protected void doWork(File chosen) throws Exception;
-	
-	public static final String BAD_FILE_NAME_ERROR_MESSAGE = EAM.text("Error Occurred please try saving under different name.");
 }
