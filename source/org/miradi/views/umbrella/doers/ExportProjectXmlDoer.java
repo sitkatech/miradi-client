@@ -22,7 +22,7 @@ package org.miradi.views.umbrella.doers;
 import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.XmpzFileChooser;
 
-public class ExportProjectXmlDoer extends ExportProjectXmlZipDoer
+public class ExportProjectXmlDoer extends AbstractExportProjectXmlZipDoer
 {
 	@Override
 	protected EAMFileSaveChooser createFileChooser()
