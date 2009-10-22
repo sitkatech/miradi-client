@@ -36,7 +36,6 @@ import org.miradi.diagram.arranger.MeglerArranger;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -59,12 +58,6 @@ public class ImportCpmzDoer extends ImportProjectDoer
 	{
 		if (!isAvailable())
 			return;
-		
-		if (!MainWindow.ALLOW_CONPRO_IMPORT_EXPORT)
-		{
-			EAM.notifyDialog(MainWindow.DISABLED_CONPRO_IMPORT_EXPORT_MESSAGE);
-			return;
-		}
 		
 		super.doIt();
 	}
