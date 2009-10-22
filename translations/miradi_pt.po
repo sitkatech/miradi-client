@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-22 16:34-0500\n"
+"POT-Creation-Date: 2009-10-22 17:01-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -795,7 +795,7 @@ msgstr ""
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/doers/ExportWcsProjectZipDoer.java:61
+#: miradi/source/org/miradi/views/umbrella/doers/ExportWcsProjectZipDoer.java:59
 #: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:68
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
@@ -5354,7 +5354,7 @@ msgid "TT|Change visible rows"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionExportProjectXml.java:34
-msgid "Action|Project XML File (BETA)"
+msgid "Action|XML Miradi Project ZIP (BETA) "
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionExportProjectXml.java:39
@@ -5936,6 +5936,14 @@ msgstr ""
 #: miradi/source/org/miradi/utils/HyperlinkLabel.java:75
 #: miradi/source/org/miradi/utils/DefaultHyperlinkHandler.java:50
 msgid "Title|Information"
+msgstr ""
+
+#: miradi/source/org/miradi/utils/XmpzFileFilter.java:30
+msgid "FileFilter|XMPZ (*"
+msgstr ""
+
+#: miradi/source/org/miradi/utils/XmpzFileFilter.java:30
+msgid ")"
 msgstr ""
 
 #: miradi/source/org/miradi/utils/XLSFileFilter.java:40
