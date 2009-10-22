@@ -79,7 +79,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		new ResultsChainPoolExporter(this).exportObjectPool();
 		new DiagramFactorPoolExporter(this).exportObjectPool();
 		writeDiagramLinkSchemaElement();
-		writeBiodiversityTargetObjectSchemaElement();
+		new BiodiversityTargetPoolExporter(this).exportObjectPool();
 		new HumanWelfareTargetPoolExporter(this).exportObjectPool();
 		new CausePoolExporter(this).exportObjectPool();
 		new StrategyPoolExporter(this).exportObjectPool();
@@ -109,11 +109,6 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeEndElement(out, CONSERVATION_PROJECT);
 	}
 	
-	private void writeBiodiversityTargetObjectSchemaElement() throws Exception
-	{
-		new BiodiversityTargetPoolExporter(this).exportObjectPool();
-	}
-
 	private void writeDiagramLinkSchemaElement() throws Exception
 	{
 		writeStartPoolElement(DIAGRAM_LINK);
