@@ -24,9 +24,9 @@ import java.io.IOException;
 
 public class OptionalTextFieldSchemaElement extends FieldSchemaElement
 {
-	public OptionalTextFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
+	public OptionalTextFieldSchemaElement(String objectTypeNameToUse, String tagToUse)
 	{
-		super(objectTypeNameToUse, fieldNameToUse);
+		super(objectTypeNameToUse, tagToUse);
 	}
 
 	public void output(SchemaWriter writer) throws IOException

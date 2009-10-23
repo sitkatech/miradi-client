@@ -45,9 +45,9 @@ class ObjectSchemaElement extends SchemaElement
 		fields.add(field);
 	}
 	
-	public void createOptionalTextField(String fieldNameToUse)
+	public void createOptionalTextField(String tagToUse)
 	{
-		FieldSchemaElement field = new OptionalTextFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		FieldSchemaElement field = new OptionalTextFieldSchemaElement(getObjectTypeName(), tagToUse);
 		fields.add(field);
 	}
 
