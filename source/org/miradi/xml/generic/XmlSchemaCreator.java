@@ -151,6 +151,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		defineVocabulary(writer, VOCABULARY_MEASUREMENT_STATUS, new StatusQuestion());
 		defineVocabulary(writer, VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE, new StatusConfidenceQuestion());
 		defineVocabulary(writer, VOCABULARY_COUNTRIES, new CountriesQuestion());
+		defineVocabulary(writer, VOCABULARY_THREAT_RATING, new ThreatRatingQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -305,6 +306,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 	{
 		writer.defineAlias("SimpleThreatRating.element"	, ELEMENT_NAME + PREFIX + "SimpleThreatRating");
 		writer.startBlock();
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + THREAT_TARGET_RATING + " { " + XmlSchemaCreator.VOCABULARY_THREAT_RATING + " }? &");
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + "SimpleThreatRatingScope { vocabulary_simple_threat_rating_scope_code }? &");
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + "SimpleThreatRatingSeverity { vocabulary_simple_threat_rating_severitiy_code }? &");
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + "SimpleThreatRatingIrreversibility { vocabulary_simple_threat_rating_irreversibility_code }?");
@@ -315,6 +317,9 @@ public class XmlSchemaCreator implements WcsXmlConstants
 	{
 		writer.defineAlias("StressBasedThreatRating.element", ELEMENT_NAME + PREFIX + "StressBasedThreatRating");
 		writer.startBlock();
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + STRESS_RATING + " { " + XmlSchemaCreator.VOCABULARY_THREAT_RATING + " }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + THREAT_STRESS_RATING + " { " + XmlSchemaCreator.VOCABULARY_THREAT_RATING + " }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + THREAT_TARGET_RATING + " { " + XmlSchemaCreator.VOCABULARY_THREAT_RATING + " }? &");
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + "StressBasedThreatRatingStressId{ StressId.element } &");
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + "StressBasedThreatRatingContribution { vocabulary_contribution_code }? &");
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + "StressBasedThreatRatingIrreversibility { vocabulary_irreversibility_code }?");
@@ -511,6 +516,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 	public static final String VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE = "vocabulary_measurement_status_confidence";
 	public static final String VOCABULARY_COUNTRIES = "vocabulary_countries";
 	public static final String VOCABULARY_TEXT_BOX_Z_ORDER = "vocabulary_text_box_z_order";
+	public static final String VOCABULARY_THREAT_RATING = "vocabulary_threat_rating";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
