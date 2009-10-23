@@ -60,12 +60,18 @@ abstract public class MainThreatTableModel extends AbstractThreatTargetTableMode
 		return getProject().getFactorLinkPool().getLinkedRef(from, to);
 	}
 	
-	protected String convertIntToString(int calculatedValue)
+	protected static String convertIntToString(int calculatedValue)
 	{
 		if (calculatedValue == 0)
 			return "";
 		
 		return Integer.toString(calculatedValue);
+	}
+	
+	public static ChoiceItem convertThreatRatingCodeToChoiceItem(int rawThreatRatingCode)
+	{
+		String safeThreatRatingCodeAsString = convertIntToString(rawThreatRatingCode);
+		return convertThreatRatingCodeToChoiceItem(safeThreatRatingCodeAsString);
 	}
 	
 	public static ChoiceItem convertThreatRatingCodeToChoiceItem(String valueToConvert)

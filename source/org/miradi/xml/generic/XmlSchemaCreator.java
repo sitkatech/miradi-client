@@ -304,23 +304,23 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		
 	private void defineSimpleThreatRatingElement(SchemaWriter writer)
 	{
-		writer.defineAlias("SimpleThreatRating.element"	, ELEMENT_NAME + PREFIX + "SimpleThreatRating");
+		writer.defineAlias(SIMPLE_BASED_THREAT_RATING + ".element"	, ELEMENT_NAME + PREFIX + SIMPLE_BASED_THREAT_RATING);
 		writer.startBlock();
-		writer.printlnIndented(ELEMENT_NAME + PREFIX + "SimpleThreatRatingScope { vocabulary_simple_threat_rating_scope_code }? &");
-		writer.printlnIndented(ELEMENT_NAME + PREFIX + "SimpleThreatRatingSeverity { vocabulary_simple_threat_rating_severitiy_code }? &");
-		writer.printlnIndented(ELEMENT_NAME + PREFIX + "SimpleThreatRatingIrreversibility { vocabulary_simple_threat_rating_irreversibility_code }?");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + SIMPLE_BASED_THREAT_RATING + SCOPE + " { " + XmlSchemaCreator.VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE + " }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + SIMPLE_BASED_THREAT_RATING + SEVERITY + " { " + XmlSchemaCreator.VOCABULARY_SIMPLE_THREAT_RATING_SEVERITY_CODE +" }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + SIMPLE_BASED_THREAT_RATING + IRREVERSIBILITY + " { " + XmlSchemaCreator.VOCABULARY_SIMPLE_THREAT_RATING_IRREVERSIBILITY_CODE + " }?");
 		writer.endBlock();
     }
 
 	private void defineStressBasedThreatRatingElement(SchemaWriter writer)
 	{
-		writer.defineAlias("StressBasedThreatRating.element", ELEMENT_NAME + PREFIX + "StressBasedThreatRating");
+		writer.defineAlias(STRESS_BASED_THREAT_RATING + ".element", ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING);
 		writer.startBlock();
-		writer.printlnIndented(ELEMENT_NAME + PREFIX + "StressBasedThreatRatingStressId{ StressId.element } &");
-		writer.printlnIndented(ELEMENT_NAME + PREFIX + "StressBasedThreatRatingContribution { vocabulary_contribution_code }? &");
-		writer.printlnIndented(ELEMENT_NAME + PREFIX + "StressBasedThreatRatingIrreversibility { vocabulary_irreversibility_code }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + "StressId{ StressId.element } &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + CONTRIBUTION + " { " + XmlSchemaCreator.VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE + " }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + IRREVERSIBILITY + " { " + XmlSchemaCreator.VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE + " }? &");
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + STRESS_RATING + " { " + XmlSchemaCreator.VOCABULARY_THREAT_RATING + " }? &");
-		writer.printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING + " { " + XmlSchemaCreator.VOCABULARY_THREAT_RATING + " }?");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING + " { " + XmlSchemaCreator.VOCABULARY_THREAT_RATING + " }? ");
 		writer.endBlock();
 	}
 
