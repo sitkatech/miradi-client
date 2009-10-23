@@ -57,9 +57,9 @@ public class TagToElementNameMap implements WcsXmlConstants
 	
 	public String findElementName(String objectName, String tagToUse)
 	{	
-		if (fieldToElementMap.containsKey(objectName))
+		if (fieldTagToElementMap.containsKey(objectName))
 		{
-			HashMap<String, String> objectMap = fieldToElementMap.get(objectName);
+			HashMap<String, String> objectMap = fieldTagToElementMap.get(objectName);
 			if (objectMap.containsKey(tagToUse))
 				return objectMap.get(tagToUse);
 		}
@@ -69,33 +69,33 @@ public class TagToElementNameMap implements WcsXmlConstants
 	
 	private void createTagToElementMap()
 	{
-		fieldToElementMap = new HashMap<String, HashMap<String,String>>();
+		fieldTagToElementMap = new HashMap<String, HashMap<String,String>>();
 		
-		fieldToElementMap.put(TASK, createTaskMap());
-		fieldToElementMap.put(PROJECT_RESOURCE, createProjectResourceMap());
-		fieldToElementMap.put(INDICATOR, createIndicatorMap());
-		fieldToElementMap.put(OBJECTIVE, createObjectiveMap());
-		fieldToElementMap.put(GOAL, createGoalMap());
-		fieldToElementMap.put(PROJECT_METADATA, createProjectMetadataMap());
-		fieldToElementMap.put(ACCOUNTING_CODE, createAccountingCodeMap());
-		fieldToElementMap.put(FUNDING_SOURCE, createFundingSourceMap());
-		fieldToElementMap.put(KEY_ECOLOGICAL_ATTRIBUTE, createKeyEcologicalAttributeMap());
-		fieldToElementMap.put(CONCEPTUAL_MODEL, createConceptualModelMap());
-		fieldToElementMap.put(CAUSE, createCauseMap());
-		fieldToElementMap.put(STRATEGY, createStrategyMap());
-		fieldToElementMap.put(TARGET, createTargetMap());
-		fieldToElementMap.put(INTERMEDIATE_RESULTS, createInterMediateResultMap());
-		fieldToElementMap.put(RESULTS_CHAIN, createResultsChainMap());
-		fieldToElementMap.put(THREAT_REDUCTION_RESULTS, createThreatReductionResultsMap());
-		fieldToElementMap.put(TEXT_BOX, createTextBoxMap());
-		fieldToElementMap.put(MEASUREMENT, createMeasurementMap());
-		fieldToElementMap.put(STRESS, createStressMap());
-		fieldToElementMap.put(GROUP_BOX, createGroupBoxMap());
-		fieldToElementMap.put(SUB_TARGET, createSubTargetMap());
-		fieldToElementMap.put(ORGANIZATION, createOrganizationMap());
-		fieldToElementMap.put(PROGRESS_PERCENT, createProgressPercentMap());
-		fieldToElementMap.put(SCOPE_BOX, createScopeBoxMap());
-		fieldToElementMap.put(HUMAN_WELFARE_TARGET, createHumanWelfareTargetMap());
+		fieldTagToElementMap.put(TASK, createTaskMap());
+		fieldTagToElementMap.put(PROJECT_RESOURCE, createProjectResourceMap());
+		fieldTagToElementMap.put(INDICATOR, createIndicatorMap());
+		fieldTagToElementMap.put(OBJECTIVE, createObjectiveMap());
+		fieldTagToElementMap.put(GOAL, createGoalMap());
+		fieldTagToElementMap.put(PROJECT_METADATA, createProjectMetadataMap());
+		fieldTagToElementMap.put(ACCOUNTING_CODE, createAccountingCodeMap());
+		fieldTagToElementMap.put(FUNDING_SOURCE, createFundingSourceMap());
+		fieldTagToElementMap.put(KEY_ECOLOGICAL_ATTRIBUTE, createKeyEcologicalAttributeMap());
+		fieldTagToElementMap.put(CONCEPTUAL_MODEL, createConceptualModelMap());
+		fieldTagToElementMap.put(CAUSE, createCauseMap());
+		fieldTagToElementMap.put(STRATEGY, createStrategyMap());
+		fieldTagToElementMap.put(TARGET, createTargetMap());
+		fieldTagToElementMap.put(INTERMEDIATE_RESULTS, createInterMediateResultMap());
+		fieldTagToElementMap.put(RESULTS_CHAIN, createResultsChainMap());
+		fieldTagToElementMap.put(THREAT_REDUCTION_RESULTS, createThreatReductionResultsMap());
+		fieldTagToElementMap.put(TEXT_BOX, createTextBoxMap());
+		fieldTagToElementMap.put(MEASUREMENT, createMeasurementMap());
+		fieldTagToElementMap.put(STRESS, createStressMap());
+		fieldTagToElementMap.put(GROUP_BOX, createGroupBoxMap());
+		fieldTagToElementMap.put(SUB_TARGET, createSubTargetMap());
+		fieldTagToElementMap.put(ORGANIZATION, createOrganizationMap());
+		fieldTagToElementMap.put(PROGRESS_PERCENT, createProgressPercentMap());
+		fieldTagToElementMap.put(SCOPE_BOX, createScopeBoxMap());
+		fieldTagToElementMap.put(HUMAN_WELFARE_TARGET, createHumanWelfareTargetMap());
 	}
 
 	private HashMap<String, String> createTaskMap()
@@ -356,5 +356,5 @@ public class TagToElementNameMap implements WcsXmlConstants
 		return projectResourceMap;
 	}
 	
-	private HashMap<String, HashMap<String, String>> fieldToElementMap;
+	private HashMap<String, HashMap<String, String>> fieldTagToElementMap;
 }
