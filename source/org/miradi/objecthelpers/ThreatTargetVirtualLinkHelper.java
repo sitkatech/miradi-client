@@ -72,7 +72,7 @@ public class ThreatTargetVirtualLinkHelper
 		return valueOption.getNumericValue();
 	}
 
-	private int calculateStressBasedThreatRating(ORef threatRef, ORef targetRef)
+	public int calculateStressBasedThreatRating(ORef threatRef, ORef targetRef)
 	{
 		ORefList ratingRefs = getThreatStressRatingRefs(threatRef, targetRef);
 		Vector<Integer> ratingBundleValues = new Vector();

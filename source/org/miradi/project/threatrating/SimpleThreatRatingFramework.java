@@ -298,6 +298,12 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return rollup;
 	}
 	
+	public ChoiceItem getOverallProjectRatingAsChoiceItem()
+	{
+		int rawOverallProjectRating = getOverallProjectRating().getNumericValue();
+		return convertToChoiceItem(rawOverallProjectRating);
+	}
+	
 	public ChoiceItem getThreatThreatRatingValue(ORef threatRef) throws Exception
 	{
 		ValueOption valueOption = getThreatThreatRatingValue(threatRef.getObjectId());
@@ -329,6 +335,12 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	{
 		ThreatRatingBundle[] bundleArray = getBundlesForThisTarget(targetId);
 		return getSummaryOfBundles(bundleArray);
+	}
+	
+	public ChoiceItem getTargetThreatRatingValue(ORef targetRef)
+	{
+		ValueOption targetRating = getTargetThreatRatingValue(targetRef.getObjectId());
+		return convertToChoiceItem(targetRating.getNumericValue());
 	}
 
 	private ThreatRatingBundle[] getBundlesForThisTarget(BaseId targetId)

@@ -116,7 +116,7 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractThreatRating
 		return threatStressRating.getContribution();
 	}
 	
-	private static ThreatStressRating findThreatStressRating(Project project, ORef targetRef, ORef threatRef, Stress stress)
+	public static ThreatStressRating findThreatStressRating(Project project, ORef targetRef, ORef threatRef, Stress stress)
 	{
 		ThreatTargetVirtualLinkHelper virtualLink = new ThreatTargetVirtualLinkHelper(project);
 		ORef threatStressRatingRef = virtualLink.findThreatStressRating(threatRef, targetRef, stress.getRef());
