@@ -70,6 +70,7 @@ public interface WcsXmlConstants
 	public static final String ACTIVITY = "Activity";
 	public static final String METHOD = "Method";
 	public static final String TASK = "Task";
+	public static final String PROJECT_METADATA = "Metadata";
 	public static final String RESOURCE_ASSIGNMENT = "ResourceAssignment";
 	public static final String EXPENSE_ASSIGNMENT = "ExpenseAssignment";
 	public static final String PROGRESS_REPORT = "ProgressReport";

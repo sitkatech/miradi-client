@@ -64,13 +64,13 @@ ProjectResource.element = element miradi:ProjectResource
   element miradi:ProjectResourceName { text }? &
   element miradi:ProjectResourceResourceType { vocabulary_resource_type  } &
   element miradi:ProjectResourceGiveName { text }? &
-  element miradi:ProjectResourceSurName { text }? &
-  element miradi:ProjectResourceInitials { text }? &
+  element miradi:ProjectResourceSurname { text }? &
+  element miradi:ProjectResourceResource_Id { text }? &
   ProjectResourceRoleCodesContainer.element &
   element miradi:ProjectResourceOrganization { text }? &
   element miradi:ProjectResourcePosition { text }? &
   element miradi:ProjectResourceLocation { text }? &
-  element miradi:ProjectResourcePhoneNumber { text }? &
+  element miradi:ProjectResourceOfficePhoneNumber { text }? &
   element miradi:ProjectResourcePhoneNumberMobile { text }? &
   element miradi:ProjectResourcePhoneNumberHome { text }? &
   element miradi:ProjectResourcePhoneNumberOther { text }? &
@@ -79,7 +79,7 @@ ProjectResource.element = element miradi:ProjectResource
   element miradi:ProjectResourceIMAddress { text }? &
   element miradi:ProjectResourceIMService { text }? &
   element miradi:ProjectResourceDateUpdated { vocabulary_date }? &
-  element miradi:ProjectResourceCostPerUnit { xsd:decimal }? &
+  element miradi:ProjectResourceDailyRate { xsd:decimal }? &
   element miradi:ProjectResourceComments { text }? &
   element miradi:ProjectResourceCustom.Custom1 { text }? &
   element miradi:ProjectResourceCustom.Custom2 { text }?
@@ -89,11 +89,11 @@ OrganizationPool.element = element miradi:OrganizationPool { Organization.elemen
 Organization.element = element miradi:Organization
 {
   attribute Id {xsd:integer}  &
-  element miradi:OrganizationLabel { text }? &
-  element miradi:OrganizationShortLabel { text }? &
+  element miradi:OrganizationName { text }? &
+  element miradi:OrganizationId { text }? &
   element miradi:OrganizationRolesDescription { text }? &
-  element miradi:OrganizationContactFirstName { text }? &
-  element miradi:OrganizationContactLastName { text }? &
+  element miradi:OrganizationGivenName { text }? &
+  element miradi:OrganizationSurname { text }? &
   element miradi:OrganizationEmail { text }? &
   element miradi:OrganizationPhoneNumber { text }? &
   element miradi:OrganizationComments { text }?
@@ -228,8 +228,8 @@ ConceptualModelPool.element = element miradi:ConceptualModelPool { ConceptualMod
 ConceptualModel.element = element miradi:ConceptualModel
 {
   attribute Id {xsd:integer}  &
-  element miradi:ConceptualModelLabel { text }? &
-  element miradi:ConceptualModelShortLabel { text }? &
+  element miradi:ConceptualModelName { text }? &
+  element miradi:ConceptualModelId { text }? &
   element miradi:ConceptualModelDetail { text }? &
   element miradi:ConceptualModelDiagramFactorIds { DiagramFactorId.element* } &
   element miradi:ConceptualModelDiagramFactorLinkIds { DiagramLinkId.element* } &
@@ -241,8 +241,8 @@ ResultsChainPool.element = element miradi:ResultsChainPool { ResultsChain.elemen
 ResultsChain.element = element miradi:ResultsChain
 {
   attribute Id {xsd:integer}  &
-  element miradi:ResultsChainLabel { text }? &
-  element miradi:ResultsChainShortLabel { text }? &
+  element miradi:ResultsChainName { text }? &
+  element miradi:ResultsChainId { text }? &
   element miradi:ResultsChainDetail { text }? &
   element miradi:ResultsChainDiagramFactorIds { DiagramFactorId.element* } &
   element miradi:ResultsChainDiagramFactorLinkIds { DiagramLinkId.element* } &
@@ -300,9 +300,9 @@ HumanWelfareTargetPool.element = element miradi:HumanWelfareTargetPool { HumanWe
 HumanWelfareTarget.element = element miradi:HumanWelfareTarget
 {
   attribute Id {xsd:integer}  &
-  element miradi:HumanWelfareTargetLabel { text }? &
-  element miradi:HumanWelfareTargetShortLabel { text }? &
-  element miradi:HumanWelfareTargetText { text }? &
+  element miradi:HumanWelfareTargetName { text }? &
+  element miradi:HumanWelfareTargetId { text }? &
+  element miradi:HumanWelfareTargetDetails { text }? &
   element miradi:HumanWelfareTargetComments { text }? &
   element miradi:HumanWelfareTargetTargetStatus { vocabulary_target_status  } &
   element miradi:HumanWelfareTargetViabilityMode { vocabulary_target_viability_mode  } &
@@ -317,12 +317,12 @@ CausePool.element = element miradi:CausePool { Cause.element* }
 Cause.element = element miradi:Cause
 {
   attribute Id {xsd:integer}  &
-  element miradi:CauseLabel { text }? &
-  element miradi:CauseShortLabel { text }? &
-  element miradi:CauseText { text }? &
+  element miradi:CauseName { text }? &
+  element miradi:CauseId { text }? &
+  element miradi:CauseDetails { text }? &
   element miradi:CauseComments { text }? &
   element miradi:CauseIsDirectThreat { xsd:boolean }? &
-  element miradi:CauseTaxonomyCode { vocabulary_cause_taxonomy_code  }? &
+  element miradi:CauseStandardClassification { vocabulary_cause_taxonomy_code  }? &
   element miradi:CauseObjectiveIds { ObjectiveId.element* } &
   element miradi:CauseIndicatorIds { IndicatorId.element* }
 }
@@ -331,14 +331,14 @@ StrategyPool.element = element miradi:StrategyPool { Strategy.element* }
 Strategy.element = element miradi:Strategy
 {
   attribute Id {xsd:integer}  &
-  element miradi:StrategyLabel { text }? &
-  element miradi:StrategyShortLabel { text }? &
-  element miradi:StrategyText { text }? &
+  element miradi:StrategyName { text }? &
+  element miradi:StrategyId { text }? &
+  element miradi:StrategyDetails { text }? &
   element miradi:StrategyComments { text }? &
   element miradi:StrategyObjectiveIds { ObjectiveId.element* } &
   element miradi:StrategyActivityIds { ActivityId.element* } &
   element miradi:StrategyStatus { text }? &
-  element miradi:StrategyTaxonomyCode { vocabulary_strategy_taxonomy_code  } &
+  element miradi:StrategyStandardClassification { vocabulary_strategy_taxonomy_code  } &
   element miradi:StrategyImpactRating { vocabulary_strategy_impact_rating_code  } &
   element miradi:StrategyFeasibilityRating { vocabulary_strategy_feasibility_rating_code  } &
   element miradi:StrategyLegacyTncStrategyRanking { text }? &
@@ -352,9 +352,9 @@ ThreatReductionResultPool.element = element miradi:ThreatReductionResultPool { T
 ThreatReductionResult.element = element miradi:ThreatReductionResult
 {
   attribute Id {xsd:integer}  &
-  element miradi:ThreatReductionResultLabel { text }? &
-  element miradi:ThreatReductionResultShortLabel { text }? &
-  element miradi:ThreatReductionResultText { text }? &
+  element miradi:ThreatReductionResultName { text }? &
+  element miradi:ThreatReductionResultId { text }? &
+  element miradi:ThreatReductionResultDetails { text }? &
   element miradi:ThreatReductionResultComments { text }? &
   element miradi:ThreatReductionResultRelatedDirectThreatId{ ThreatReductionResultThreatId.element }? &
   element miradi:ThreatReductionResultObjectiveIds { ObjectiveId.element* } &
@@ -365,9 +365,9 @@ IntermediateResultPool.element = element miradi:IntermediateResultPool { Interme
 IntermediateResult.element = element miradi:IntermediateResult
 {
   attribute Id {xsd:integer}  &
-  element miradi:IntermediateResultLabel { text }? &
-  element miradi:IntermediateResultShortLabel { text }? &
-  element miradi:IntermediateResultText { text }? &
+  element miradi:IntermediateResultName { text }? &
+  element miradi:IntermediateResultId { text }? &
+  element miradi:IntermediateResultDetails { text }? &
   element miradi:IntermediateResultComments { text }? &
   element miradi:IntermediateResultObjectiveIds { ObjectiveId.element* } &
   element miradi:IntermediateResultIndicatorIds { IndicatorId.element* }
@@ -377,7 +377,7 @@ GroupBoxPool.element = element miradi:GroupBoxPool { GroupBox.element* }
 GroupBox.element = element miradi:GroupBox
 {
   attribute Id {xsd:integer}  &
-  element miradi:GroupBoxLabel { text }? &
+  element miradi:GroupBoxName { text }? &
   element miradi:GroupBoxShortLabel { text }? &
   element miradi:GroupBoxText { text }? &
   element miradi:GroupBoxComments { text }?
@@ -387,9 +387,9 @@ TextBoxPool.element = element miradi:TextBoxPool { TextBox.element* }
 TextBox.element = element miradi:TextBox
 {
   attribute Id {xsd:integer}  &
-  element miradi:TextBoxLabel { text }? &
+  element miradi:TextBoxName { text }? &
   element miradi:TextBoxShortLabel { text }? &
-  element miradi:TextBoxText { text }? &
+  element miradi:TextBoxDetails { text }? &
   element miradi:TextBoxComments { text }?
 }
 
@@ -397,9 +397,9 @@ ScopeBoxPool.element = element miradi:ScopeBoxPool { ScopeBox.element* }
 ScopeBox.element = element miradi:ScopeBox
 {
   attribute Id {xsd:integer}  &
-  element miradi:ScopeBoxLabel { text }? &
-  element miradi:ScopeBoxShortLabel { text }? &
-  element miradi:ScopeBoxText { text }? &
+  element miradi:ScopeBoxName { text }? &
+  element miradi:ScopeBoxId { text }? &
+  element miradi:ScopeBoxDetails { text }? &
   element miradi:ScopeBoxComments { text }? &
   element miradi:ScopeBoxScopeBoxColorCode { vocabulary_scope_box_color  }
 }
@@ -408,10 +408,10 @@ KeyEcologicalAttributePool.element = element miradi:KeyEcologicalAttributePool {
 KeyEcologicalAttribute.element = element miradi:KeyEcologicalAttribute
 {
   attribute Id {xsd:integer}  &
-  element miradi:KeyEcologicalAttributeLabel { text }? &
-  element miradi:KeyEcologicalAttributeShortLabel { text }? &
+  element miradi:KeyEcologicalAttributeName { text }? &
+  element miradi:KeyEcologicalAttributeId { text }? &
   element miradi:KeyEcologicalAttributeIndicatorIds { IndicatorId.element* } &
-  element miradi:KeyEcologicalAttributeDescription { text }? &
+  element miradi:KeyEcologicalAttributeComments { text }? &
   element miradi:KeyEcologicalAttributeDetails { text }? &
   element miradi:KeyEcologicalAttributeKeyEcologicalAttributeType { vocabulary_key_ecological_attribute_type  }
 }
@@ -420,8 +420,8 @@ StressPool.element = element miradi:StressPool { Stress.element* }
 Stress.element = element miradi:Stress
 {
   attribute Id {xsd:integer}  &
-  element miradi:StressLabel { text }? &
-  element miradi:StressShortLabel { text }? &
+  element miradi:StressName { text }? &
+  element miradi:StressId { text }? &
   element miradi:StressText { text }? &
   element miradi:StressComments { text }? &
   element miradi:StressSeverity { vocabulary_stress_severity  } &
@@ -432,8 +432,8 @@ SubTargetPool.element = element miradi:SubTargetPool { SubTarget.element* }
 SubTarget.element = element miradi:SubTarget
 {
   attribute Id {xsd:integer}  &
-  element miradi:SubTargetLabel { text }? &
-  element miradi:SubTargetShortLabel { text }? &
+  element miradi:SubTargetName { text }? &
+  element miradi:SubTargetId { text }? &
   element miradi:SubTargetDetail { text }?
 }
 
@@ -441,9 +441,9 @@ GoalPool.element = element miradi:GoalPool { Goal.element* }
 Goal.element = element miradi:Goal
 {
   attribute Id {xsd:integer}  &
-  element miradi:GoalLabel { text }? &
-  element miradi:GoalShortLabel { text }? &
-  element miradi:GoalFullText { text }? &
+  element miradi:GoalName { text }? &
+  element miradi:GoalId { text }? &
+  element miradi:GoalText { text }? &
   element miradi:GoalRelevantIndicatorIds { IndicatorId.element* } &
   element miradi:GoalRelevantStrategyIds { StrategyId.element* } &
   element miradi:GoalRelevantActiviyIds { ActivityId.element* } &
@@ -455,9 +455,9 @@ ObjectivePool.element = element miradi:ObjectivePool { Objective.element* }
 Objective.element = element miradi:Objective
 {
   attribute Id {xsd:integer}  &
-  element miradi:ObjectiveLabel { text }? &
-  element miradi:ObjectiveShortLabel { text }? &
-  element miradi:ObjectiveFullText { text }? &
+  element miradi:ObjectiveName { text }? &
+  element miradi:ObjectiveId { text }? &
+  element miradi:ObjectiveText { text }? &
   element miradi:ObjectiveRelevantIndicatorIds { IndicatorId.element* } &
   element miradi:ObjectiveRelevantStrategyIds { StrategyId.element* } &
   element miradi:ObjectiveRelevantActiviyIds { ActivityId.element* } &
@@ -469,9 +469,9 @@ IndicatorPool.element = element miradi:IndicatorPool { Indicator.element* }
 Indicator.element = element miradi:Indicator
 {
   attribute Id {xsd:integer}  &
-  element miradi:IndicatorLabel { text }? &
-  element miradi:IndicatorShortLabel { text }? &
-  element miradi:IndicatorDetail { text }? &
+  element miradi:IndicatorName { text }? &
+  element miradi:IndicatorId { text }? &
+  element miradi:IndicatorDetails { text }? &
   element miradi:IndicatorComments { text }? &
   element miradi:IndicatorPriority { vocabulary_priority_rating_code  } &
   element miradi:IndicatorFutureStatusDate { vocabulary_date }? &
@@ -512,8 +512,8 @@ TaskPool.element = element miradi:TaskPool { Task.element* }
 Task.element = element miradi:Task
 {
   attribute Id {xsd:integer}  &
-  element miradi:TaskLabel { text }? &
-  element miradi:TaskShortLabel { text }? &
+  element miradi:TaskName { text }? &
+  element miradi:TaskId { text }? &
   element miradi:TaskText { text }? &
   element miradi:TaskComments { text }? &
   element miradi:TaskExpenseIds { ExpenseAssignmentId.element* } &
@@ -533,7 +533,7 @@ ProgressPercent.element = element miradi:ProgressPercent
 {
   element miradi:ProgressPercentPercentDate { vocabulary_date }? &
   element miradi:ProgressPercentPercentComplete { xsd:decimal }? &
-  element miradi:ProgressPercentPercentCompleteNotes { text }?
+  element miradi:ProgressPercentDetails { text }?
 }
 
 MeasurementPool.element = element miradi:MeasurementPool { Measurement.element* }
@@ -542,11 +542,11 @@ Measurement.element = element miradi:Measurement
   attribute Id {xsd:integer}  &
   element miradi:MeasurementLabel { text }? &
   element miradi:MeasurementTrend { vocabulary_measurement_trend  } &
-  element miradi:MeasurementStatus { vocabulary_measurement_status  } &
+  element miradi:MeasurementRating { vocabulary_measurement_status  } &
   element miradi:MeasurementDate { vocabulary_date }? &
-  element miradi:MeasurementSummary { text }? &
+  element miradi:MeasurementMeasurementValue { text }? &
   element miradi:MeasurementDetail { text }? &
-  element miradi:MeasurementStatusConfidence { vocabulary_measurement_status_confidence  } &
+  element miradi:MeasurementSource { vocabulary_measurement_status_confidence  } &
   element miradi:MeasurementComments { text }?
 }
 
@@ -554,7 +554,7 @@ AccountingCodePool.element = element miradi:AccountingCodePool { AccountingCode.
 AccountingCode.element = element miradi:AccountingCode
 {
   attribute Id {xsd:integer}  &
-  element miradi:AccountingCodeLabel { text }? &
+  element miradi:AccountingCodeName { text }? &
   element miradi:AccountingCodeCode { text }? &
   element miradi:AccountingCodeComments { text }?
 }
@@ -563,7 +563,7 @@ FundingSourcePool.element = element miradi:FundingSourcePool { FundingSource.ele
 FundingSource.element = element miradi:FundingSource
 {
   attribute Id {xsd:integer}  &
-  element miradi:FundingSourceLabel { text }? &
+  element miradi:FundingSourceName { text }? &
   element miradi:FundingSourceCode { text }? &
   element miradi:FundingSourceComments { text }?
 }
