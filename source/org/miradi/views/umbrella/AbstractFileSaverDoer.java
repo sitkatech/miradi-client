@@ -44,7 +44,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		
 		try 
 		{
-			if (!isBetaExport() ||  !doesUserConfirm())
+			if (!doesConfirmBetaExport() ||  !doesUserConfirm())
 				return;
 			
 			EAMFileSaveChooser eamFileChooser = createFileChooser();
@@ -76,7 +76,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		return EAM.text("Error Occurred please try saving under different name.");
 	}
 	
-	protected boolean isBetaExport() throws Exception
+	protected boolean doesConfirmBetaExport() throws Exception
 	{
 		return true;
 	}
