@@ -30,6 +30,9 @@ public class ThreatTargetThreatRatingElement extends ObjectSchemaElement
 		
 		createIdField("TargetId", XmlSchemaCreator.BIODIVERSITY_TARGET_ID_ELEMENT_NAME);
 		createIdField("ThreatId", XmlSchemaCreator.THREAT_ID_ELEMENT_NAME);
+		createOptionalCodeField(THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING);
+		createOptionalCodeField(TARGET_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING);
+		createOptionalCodeField(OVERALL_PROJECT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING);
 		createOptionalTextField("Comments");
 		createThreatTargetThreatRatingField();
 	}

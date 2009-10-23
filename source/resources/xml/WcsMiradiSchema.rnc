@@ -594,6 +594,9 @@ ThreatRating.element = element miradi:ThreatRating
 {
   element miradi:ThreatRatingTargetId{ BiodiversityTargetId.element } &
   element miradi:ThreatRatingThreatId{ ThreatId.element } &
+  element miradi:ThreatRatingThreatRating { vocabulary_threat_rating  }? &
+  element miradi:ThreatRatingTargetRating { vocabulary_threat_rating  }? &
+  element miradi:ThreatRatingOverallProjectRating { vocabulary_threat_rating  }? &
   element miradi:ThreatRatingComments { text }? &
   element miradi:ThreatRatingRatings{ SimpleThreatRating.element | StressBasedThreatRating.element* }
 }
@@ -646,6 +649,7 @@ vocabulary_measurement_trend = ''|'Unknown'|'StrongIncrease'|'MildIncrease'|'Fla
 vocabulary_measurement_status = ''|'1'|'2'|'3'|'4'
 vocabulary_measurement_status_confidence = ''|'RoughGuess'|'ExpertKnowledge'|'RapidAssessment'|'IntensiveAssessment'
 vocabulary_countries = 'ZZZ'|'XXX'|'AFG'|'ALA'|'ALB'|'DZA'|'ASM'|'AND'|'AGO'|'AIA'|'ATA'|'ATG'|'ARG'|'ARM'|'ABW'|'AUS'|'AUT'|'AZE'|'BHS'|'BHR'|'BGD'|'BRB'|'BLR'|'BEL'|'BLZ'|'BEN'|'BMU'|'BTN'|'BOL'|'BIH'|'BWA'|'BVT'|'BRA'|'IOT'|'VGB'|'BRN'|'BGR'|'BFA'|'BDI'|'KHM'|'CMR'|'CAN'|'CPV'|'CYM'|'CAF'|'TCD'|'CHL'|'CHN'|'CXR'|'CCK'|'COL'|'COM'|'COG'|'COK'|'CRI'|'CIV'|'HRV'|'CUB'|'CYP'|'CZE'|'PRK'|'COD'|'DNK'|'DJI'|'DMA'|'DOM'|'ECU'|'EGY'|'SLV'|'GNQ'|'ERI'|'EST'|'ETH'|'FRO'|'FLK'|'FJI'|'FIN'|'FRA'|'FXX'|'GUF'|'PYF'|'ATF'|'GAB'|'GMB'|'GEO'|'DEU'|'GHA'|'GIB'|'GRC'|'GRL'|'GRD'|'GLP'|'GUM'|'GTM'|'GIN'|'GNB'|'GUY'|'HTI'|'HMD'|'VAT'|'HND'|'HKG'|'HUN'|'ISL'|'IND'|'IDN'|'IRN'|'IRQ'|'IRL'|'IMN'|'ISR'|'ITA'|'JAM'|'JPN'|'JOR'|'KAZ'|'KEN'|'KIR'|'KWT'|'KGZ'|'LAO'|'LVA'|'LBN'|'LSO'|'LBR'|'LBY'|'LIE'|'LTU'|'LUX'|'MAC'|'MKD'|'MDG'|'MWI'|'MYS'|'MDV'|'MLI'|'MLT'|'MHL'|'MTQ'|'MRT'|'MUS'|'MYT'|'MEX'|'FSM'|'MCO'|'MNG'|'MSR'|'MAR'|'MOZ'|'MMR'|'NAM'|'NRU'|'NPL'|'NLD'|'ANT'|'NCL'|'NZL'|'NIC'|'NER'|'NGA'|'NIU'|'NFK'|'MNP'|'NOR'|'PSE'|'OMN'|'PAK'|'PLW'|'PAN'|'PNG'|'PRY'|'PER'|'PHL'|'PCN'|'POL'|'PRT'|'PRI'|'QAT'|'KOR'|'MDA'|'REU'|'ROU'|'RUS'|'RWA'|'SHN'|'KNA'|'LCA'|'SPM'|'VCT'|'WSM'|'SMR'|'STP'|'SAU'|'SEN'|'SCG'|'SYC'|'SLE'|'SGP'|'SVK'|'SVN'|'SLB'|'SOM'|'ZAF'|'SGS'|'ESP'|'LKA'|'SDN'|'SUR'|'SJM'|'SWZ'|'SWE'|'CHE'|'SYR'|'TWN'|'TJK'|'THA'|'TLS'|'TGO'|'TKL'|'TON'|'TTO'|'TUN'|'TUR'|'TKM'|'TCA'|'TUV'|'UGA'|'UKR'|'ARE'|'GBR'|'TZA'|'UMI'|'USA'|'VIR'|'URY'|'UZB'|'VUT'|'VEN'|'VNM'|'WLF'|'PSE'|'ESH'|'YEM'|'ZMB'|'ZWE'
+vocabulary_threat_rating = ''|'1'|'2'|'3'|'4'
 ConceptualModelId.element = element miradi:ConceptualModelId { xsd:integer }
 ResultsChainId.element = element miradi:ResultsChainId { xsd:integer }
 DiagramFactorId.element = element miradi:DiagramFactorId { xsd:integer }
@@ -746,6 +750,7 @@ Style.element = element miradi:Style
 
 SimpleThreatRating.element = element miradi:SimpleThreatRating
 {
+  element miradi:ThreatTargetRating { vocabulary_threat_rating }? &
   element miradi:SimpleThreatRatingScope { vocabulary_simple_threat_rating_scope_code }? &
   element miradi:SimpleThreatRatingSeverity { vocabulary_simple_threat_rating_severitiy_code }? &
   element miradi:SimpleThreatRatingIrreversibility { vocabulary_simple_threat_rating_irreversibility_code }?
@@ -753,6 +758,9 @@ SimpleThreatRating.element = element miradi:SimpleThreatRating
 
 StressBasedThreatRating.element = element miradi:StressBasedThreatRating
 {
+  element miradi:StressRating { vocabulary_threat_rating }? &
+  element miradi:ThreatStressRating { vocabulary_threat_rating }? &
+  element miradi:ThreatTargetRating { vocabulary_threat_rating }? &
   element miradi:StressBasedThreatRatingStressId{ StressId.element } &
   element miradi:StressBasedThreatRatingContribution { vocabulary_contribution_code }? &
   element miradi:StressBasedThreatRatingIrreversibility { vocabulary_irreversibility_code }?

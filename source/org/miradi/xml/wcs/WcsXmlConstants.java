@@ -146,4 +146,9 @@ public interface WcsXmlConstants
 	public static final String WORK_UNITS_YEAR = "WorkUnitsYear";
 	public static final String STYLING = "Style";
 	public static final String Z_ORDER_BACK_CODE = "Back";
+	public static final String STRESS_RATING = "StressRating";
+	public static final String THREAT_STRESS_RATING = "ThreatStressRating";
+	public static final String THREAT_TARGET_RATING = "ThreatTargetRating";
+	public static final String TARGET_RATING = "TargetRating";
+	public static final String OVERALL_PROJECT_RATING = "OverallProjectRating";
 }
