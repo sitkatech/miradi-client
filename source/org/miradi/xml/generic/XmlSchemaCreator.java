@@ -306,7 +306,6 @@ public class XmlSchemaCreator implements WcsXmlConstants
 	{
 		writer.defineAlias("SimpleThreatRating.element"	, ELEMENT_NAME + PREFIX + "SimpleThreatRating");
 		writer.startBlock();
-		writer.printlnIndented(ELEMENT_NAME + PREFIX + THREAT_TARGET_RATING + " { " + XmlSchemaCreator.VOCABULARY_THREAT_RATING + " }? &");
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + "SimpleThreatRatingScope { vocabulary_simple_threat_rating_scope_code }? &");
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + "SimpleThreatRatingSeverity { vocabulary_simple_threat_rating_severitiy_code }? &");
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + "SimpleThreatRatingIrreversibility { vocabulary_simple_threat_rating_irreversibility_code }?");
@@ -317,12 +316,11 @@ public class XmlSchemaCreator implements WcsXmlConstants
 	{
 		writer.defineAlias("StressBasedThreatRating.element", ELEMENT_NAME + PREFIX + "StressBasedThreatRating");
 		writer.startBlock();
-		writer.printlnIndented(ELEMENT_NAME + PREFIX + STRESS_RATING + " { " + XmlSchemaCreator.VOCABULARY_THREAT_RATING + " }? &");
-		writer.printlnIndented(ELEMENT_NAME + PREFIX + THREAT_STRESS_RATING + " { " + XmlSchemaCreator.VOCABULARY_THREAT_RATING + " }? &");
-		writer.printlnIndented(ELEMENT_NAME + PREFIX + THREAT_TARGET_RATING + " { " + XmlSchemaCreator.VOCABULARY_THREAT_RATING + " }? &");
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + "StressBasedThreatRatingStressId{ StressId.element } &");
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + "StressBasedThreatRatingContribution { vocabulary_contribution_code }? &");
-		writer.printlnIndented(ELEMENT_NAME + PREFIX + "StressBasedThreatRatingIrreversibility { vocabulary_irreversibility_code }?");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + "StressBasedThreatRatingIrreversibility { vocabulary_irreversibility_code }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + STRESS_RATING + " { " + XmlSchemaCreator.VOCABULARY_THREAT_RATING + " }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING + " { " + XmlSchemaCreator.VOCABULARY_THREAT_RATING + " }?");
 		writer.endBlock();
 	}
 
