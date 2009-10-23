@@ -597,7 +597,7 @@ ThreatRating.element = element miradi:ThreatRating
   element miradi:ThreatRatingThreatRating { vocabulary_threat_rating  }? &
   element miradi:ThreatRatingTargetRating { vocabulary_threat_rating  }? &
   element miradi:ThreatRatingThreatTargetRating { vocabulary_threat_rating  }? &
-  element miradi:ThreatRatingOverallProjectRating { vocabulary_threat_rating  }? &
+  element miradi:ThreatRatingOverallProjectThreatRating { vocabulary_threat_rating  }? &
   element miradi:ThreatRatingComments { text }? &
   element miradi:ThreatRatingRatings{ SimpleThreatRating.element | StressBasedThreatRating.element* }
 }
@@ -762,7 +762,7 @@ StressBasedThreatRating.element = element miradi:StressBasedThreatRating
   element miradi:StressBasedThreatRatingContribution { vocabulary_contribution_code }? &
   element miradi:StressBasedThreatRatingIrreversibility { vocabulary_irreversibility_code }? &
   element miradi:StressBasedThreatRatingStressRating { vocabulary_threat_rating }? &
-  element miradi:StressBasedThreatRatingThreatStressRating { vocabulary_threat_rating }?
+  element miradi:StressBasedThreatRatingThreatStressRating { vocabulary_threat_rating }? 
 }
 
 DateUnitWorkUnits.element = element miradi:DateUnitWorkUnits
