@@ -89,7 +89,7 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractPoolExporte
 	private void exportSimpleThreatRatingOverallProjectRating() throws Exception
 	{
 		ChoiceItem overallProjectRating = getSimpleThreatRatingFramework().getOverallProjectRatingAsChoiceItem();
-		exportThreatRatingCode(OVERALL_PROJECT_RATING, overallProjectRating);
+		exportThreatRatingCode(OVERALL_PROJECT_THREAT_RATING, overallProjectRating);
 	}
 
 	private void exportSimpleThreatRatingThreatTargetRating(ORef targetRef) throws Exception
@@ -166,7 +166,7 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractPoolExporte
 	{
 		int rawOverallProjectRating = getProject().getStressBasedThreatRatingFramework().getOverallProjectRating();
 		ChoiceItem overallProjectRating = MainThreatTableModel.convertThreatRatingCodeToChoiceItem(rawOverallProjectRating);
-		exportThreatRatingCode(OVERALL_PROJECT_RATING, overallProjectRating);
+		exportThreatRatingCode(OVERALL_PROJECT_THREAT_RATING, overallProjectRating);
 	}
 
 	private void exportStressBasedThreatRatingThreatTargetRating(Target target) throws Exception

@@ -150,5 +150,5 @@ public interface WcsXmlConstants
 	public static final String THREAT_STRESS_RATING = "ThreatStressRating";
 	public static final String THREAT_TARGET_RATING = "ThreatTargetRating";
 	public static final String TARGET_RATING = "TargetRating";
-	public static final String OVERALL_PROJECT_RATING = "OverallProjectRating";
+	public static final String OVERALL_PROJECT_THREAT_RATING = "OverallProjectThreatRating";
 }
