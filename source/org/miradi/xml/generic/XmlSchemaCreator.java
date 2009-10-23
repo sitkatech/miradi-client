@@ -22,7 +22,6 @@ package org.miradi.xml.generic;
 
 import org.miradi.main.Miradi;
 import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
@@ -544,7 +543,6 @@ public class XmlSchemaCreator implements WcsXmlConstants
 	public static final String BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME = Target.TAG_HABITAT_ASSOCIATION;
 	public static final String TARGET_STATUS_ELEMENT_NAME = AbstractTarget.TAG_TARGET_STATUS;
 	public static final String TARGET_VIABILITY_MODE_ELEMENT_NAME = AbstractTarget.TAG_VIABILITY_MODE;
-	public static final String CAUSE_TAXONOMY_ELEMENT_NAME = Cause.TAG_TAXONOMY_CODE;
 	public static final String STRATEGY_TAXONOMY_ELEMENT_NAME = Strategy.TAG_TAXONOMY_CODE;
 	public static final String STRATEGY_IMPACT_RATING_ELEMENT_NAME = Strategy.TAG_IMPACT_RATING;
 	public static final String STRATEGY_FEASIBILITY_RATING_ELEMENT_NAME = Strategy.TAG_FEASIBILITY_RATING;

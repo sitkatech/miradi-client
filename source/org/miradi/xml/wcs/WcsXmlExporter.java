@@ -351,8 +351,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 	
 	public void writeOptionalElement(String parentElementName, String elementName, BaseObject object, String tag) throws Exception
 	{
-		TagToElementNameMap map = new TagToElementNameMap();
-		String convertedElementName = map.findElementName(parentElementName, elementName);
+		String convertedElementName = getConvertedElementName(parentElementName, elementName);
 		writeOptionalElement(getWriter(), parentElementName + convertedElementName, object, tag);
 	}
 	
@@ -404,19 +403,27 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 	
 	public void writeCodeElement(String parentElementName, String elementName, String code) throws Exception
 	{
-		writeStartElement(getWriter(), parentElementName + elementName);
+		String convertedElementName = getConvertedElementName(parentElementName, elementName);
+		writeStartElement(getWriter(), parentElementName + convertedElementName);
 		writeXmlEncodedData(getWriter(), code);
-		writeEndElement(getWriter(), parentElementName + elementName);
+		writeEndElement(getWriter(), parentElementName + convertedElementName);
 	}
 	
 	public void writeOptionalCodeElement(String parentElementName, String elementName, String code) throws Exception
 	{
 		if (!code.isEmpty())
 		{
-			writeStartElement(getWriter(), parentElementName + elementName);
+			String convertedElementName = getConvertedElementName(parentElementName, elementName);
+			writeStartElement(getWriter(), parentElementName + convertedElementName);
 			writeXmlEncodedData(getWriter(), code);
-			writeEndElement(getWriter(), parentElementName + elementName);
+			writeEndElement(getWriter(), parentElementName + convertedElementName);
 		}
+	}
+
+	private String getConvertedElementName(String parentElementName,String elementName)
+	{
+		TagToElementNameMap map = new TagToElementNameMap();
+		return map.findElementName(parentElementName, elementName);
 	}
 	
 	public void writeStartElement(String startElementName) throws Exception
