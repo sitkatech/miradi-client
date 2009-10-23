@@ -33,6 +33,6 @@ public class CodeListFieldSchemaElement extends FieldSchemaElement
 
 	public void output(SchemaWriter writer) throws IOException
 	{
-		writer.print(WcsXmlConstants.SINGLE_SPACE + WcsXmlConstants.SINGLE_SPACE + getObjectTypeName() + getFieldName() + WcsXmlConstants.CONTAINER_ELEMENT_TAG + ".element");
+		writer.print(WcsXmlConstants.SINGLE_SPACE + WcsXmlConstants.SINGLE_SPACE + getObjectTypeName() + getTag() + WcsXmlConstants.CONTAINER_ELEMENT_TAG + ".element");
 	}
 }
