@@ -40,7 +40,7 @@ class FieldSchemaElement extends SchemaElement
 	
 	private String getFullName()
 	{
-		return "miradi:" + getObjectTypeName() + getTag();
+		return "miradi:" + getObjectTypeName() + getConvertedElementName();
 	}
 
 	protected String getObjectTypeName()
@@ -48,7 +48,7 @@ class FieldSchemaElement extends SchemaElement
 		return objectTypeName;
 	}
 
-	protected String getTag()
+	protected String getConvertedElementName()
 	{
 		TagToElementNameMap tagToElementNameMap = new TagToElementNameMap();
 		return tagToElementNameMap.findElementName(getObjectTypeName(), tag);
