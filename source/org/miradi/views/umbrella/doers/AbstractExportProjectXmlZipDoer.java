@@ -104,7 +104,7 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 	}
 	
 	@Override
-	protected boolean isValid(ByteArrayInputStream inputStream) throws Exception
+	protected boolean isValidXml(ByteArrayInputStream inputStream) throws Exception
 	{
 		return new WcsMiradiXmlValidator().isValid(inputStream);
 	}

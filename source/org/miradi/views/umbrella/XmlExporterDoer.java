@@ -80,7 +80,7 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(projectXmlInBytes);
 		try
 		{
-			if (!isValid(inputStream))
+			if (!isValidXml(inputStream))
 			{
 				EAM.logDebug(new String(projectXmlInBytes, "UTF-8"));
 				throw new ValidationException(EAM.text("Exported file does not validate."));
@@ -152,7 +152,7 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 	
 	abstract protected XmlExporter createExporter() throws Exception;
 	
-	abstract protected boolean isValid(ByteArrayInputStream inputStream) throws Exception;
+	abstract protected boolean isValidXml(ByteArrayInputStream inputStream) throws Exception;
 
 	@Override
 	abstract protected EAMFileSaveChooser createFileChooser();
