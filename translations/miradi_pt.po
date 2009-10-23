@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-22 17:04-0500\n"
+"POT-Creation-Date: 2009-10-23 09:10-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -3531,28 +3531,28 @@ msgstr ""
 msgid "Very Effective"
 msgstr ""
 
-#: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:47
+#: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:46
+msgid "Team Member"
+msgstr ""
+
+#: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:52
 msgid "Team Contact"
 msgstr ""
 
-#: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:48
+#: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:53
 msgid "Leader/Manager"
 msgstr ""
 
-#: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:49
+#: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:54
 msgid "Process Facilitator"
 msgstr ""
 
-#: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:50
+#: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:55
 msgid "Project Advisor"
 msgstr ""
 
-#: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:51
-msgid "Stakeholder"
-msgstr ""
-
 #: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:56
-msgid "Team Member"
+msgid "Stakeholder"
 msgstr ""
 
 #: miradi/source/org/miradi/diagram/cells/FactorCell.java:95
