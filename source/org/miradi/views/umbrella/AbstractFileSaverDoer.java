@@ -44,6 +44,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		
 		try 
 		{
+			//FIXME medium - this needs to be cleaned up.  Push down into sub classes.  
 			if (!doesConfirmBetaExport() ||  !doesUserConfirm())
 				return;
 			
