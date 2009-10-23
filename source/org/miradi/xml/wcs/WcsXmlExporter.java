@@ -351,7 +351,9 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 	
 	public void writeOptionalElement(String parentElementName, String elementName, BaseObject object, String tag) throws Exception
 	{
-		writeOptionalElement(getWriter(), parentElementName + elementName, object, tag);
+		TagToElementNameMap map = new TagToElementNameMap();
+		String convertedElementName = map.findElementName(parentElementName, elementName);
+		writeOptionalElement(getWriter(), parentElementName + convertedElementName, object, tag);
 	}
 	
 	public void writeStartContainerElement(String startElementName) throws Exception

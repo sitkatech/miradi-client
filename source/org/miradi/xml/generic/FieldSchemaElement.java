@@ -22,6 +22,8 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
+import org.miradi.xml.wcs.TagToElementNameMap;
+
 class FieldSchemaElement extends SchemaElement
 {
 	protected FieldSchemaElement(String objectTypeNameToUse, String tagToUse)
@@ -48,7 +50,8 @@ class FieldSchemaElement extends SchemaElement
 
 	protected String getTag()
 	{
-		return tag;
+		TagToElementNameMap tagToElementNameMap = new TagToElementNameMap();
+		return tagToElementNameMap.findElementName(getObjectTypeName(), tag);
 	}
 
 	private String objectTypeName;

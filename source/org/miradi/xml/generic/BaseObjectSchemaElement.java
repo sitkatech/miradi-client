@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.BaseObject;
+
 
 abstract public class BaseObjectSchemaElement extends ObjectSchemaElement
 {
@@ -28,6 +30,6 @@ abstract public class BaseObjectSchemaElement extends ObjectSchemaElement
 		super(objectTypeNameToUse);
 		
 		createIdAttribute(objectTypeNameToUse);
-		createOptionalTextField(XmlSchemaCreator.LABEL_ELEMENT_NAME);
+		createOptionalTextField(BaseObject.TAG_LABEL);
 	}
 }

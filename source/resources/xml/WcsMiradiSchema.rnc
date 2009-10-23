@@ -61,9 +61,9 @@ ProjectResourcePool.element = element miradi:ProjectResourcePool { ProjectResour
 ProjectResource.element = element miradi:ProjectResource
 {
   attribute Id {xsd:integer}  &
-  element miradi:ProjectResourceLabel { text }? &
-  element miradi:ProjectResourceResourceType { vocabulary_resource_type  } &
   element miradi:ProjectResourceName { text }? &
+  element miradi:ProjectResourceResourceType { vocabulary_resource_type  } &
+  element miradi:ProjectResourceGiveName { text }? &
   element miradi:ProjectResourceSurName { text }? &
   element miradi:ProjectResourceInitials { text }? &
   ProjectResourceRoleCodesContainer.element &
