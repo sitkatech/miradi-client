@@ -347,7 +347,7 @@ public class TagToElementNameMap implements WcsXmlConstants
 	{
 		HashMap<String, String> projectResourceMap = new HashMap<String, String>();
 		projectResourceMap.put(ProjectResource.TAG_LABEL, "Name");
-		projectResourceMap.put(ProjectResource.TAG_GIVEN_NAME, "GiveName");
+		projectResourceMap.put(ProjectResource.TAG_GIVEN_NAME, "GivenName");
 		projectResourceMap.put(ProjectResource.TAG_INITIALS, "Resource_Id");
 		projectResourceMap.put(ProjectResource.TAG_SUR_NAME, "Surname");
 		projectResourceMap.put(ProjectResource.TAG_PHONE_NUMBER, "OfficePhoneNumber");
