@@ -24,10 +24,10 @@ import java.io.IOException;
 
 class FieldSchemaElement extends SchemaElement
 {
-	protected FieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
+	protected FieldSchemaElement(String objectTypeNameToUse, String tagToUse)
 	{
 		objectTypeName = objectTypeNameToUse;
-		fieldName = fieldNameToUse;
+		tag = tagToUse;
 	}
 	
 	@Override
@@ -38,7 +38,7 @@ class FieldSchemaElement extends SchemaElement
 	
 	private String getFullName()
 	{
-		return "miradi:" + getObjectTypeName() + getFieldName();
+		return "miradi:" + getObjectTypeName() + getTag();
 	}
 
 	protected String getObjectTypeName()
@@ -46,11 +46,11 @@ class FieldSchemaElement extends SchemaElement
 		return objectTypeName;
 	}
 
-	protected String getFieldName()
+	protected String getTag()
 	{
-		return fieldName;
+		return tag;
 	}
 
 	private String objectTypeName;
-	private String fieldName;
+	private String tag;
 }
