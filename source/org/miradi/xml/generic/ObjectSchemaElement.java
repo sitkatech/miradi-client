@@ -105,12 +105,6 @@ class ObjectSchemaElement extends SchemaElement
 		fields.add(field);
 	}
 	
-	protected void createWrappedByDiagramLinkIdField(String fieldNameToUse)
-	{
-		FieldSchemaElement field = new WrappedByDiagramLinkIdFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
-		fields.add(field);
-	}
-	
 	protected void createLinkableFactorIdField(String fieldNameToUse)
 	{
 		FieldSchemaElement field = new LinkableFactorIdFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
