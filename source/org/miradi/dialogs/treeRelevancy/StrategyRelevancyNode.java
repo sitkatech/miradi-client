@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.treeRelevancy;
 
+import java.util.Collections;
 import java.util.Vector;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
@@ -80,6 +81,8 @@ public class StrategyRelevancyNode extends AbstractRelevancyNode
 			ActivityRelevancyNode activityChildNode = new ActivityRelevancyNode(getProject(), task);
 			activityChildren.add(activityChildNode);
 		}
+		
+		Collections.sort(activityChildren);
 	}
 
 	@Override
