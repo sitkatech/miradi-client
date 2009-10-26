@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.DiagramLink;
+import org.miradi.objects.FactorLink;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class DiagramLinkSchemaElement extends BaseObjectSchemaElement
@@ -35,5 +36,6 @@ public class DiagramLinkSchemaElement extends BaseObjectSchemaElement
 		createDiagramPointListField(DiagramLink.TAG_BEND_POINTS);
 		createIdListField(WcsXmlConstants.GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, WcsXmlConstants.DIAGRAM_LINK);
 		createCodeField(XmlSchemaCreator.DIAGRAM_LINK_COLOR_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_LINK_COLOR);
+		createOptionalBooleanField(FactorLink.TAG_BIDIRECTIONAL_LINK);
 	}
 }
