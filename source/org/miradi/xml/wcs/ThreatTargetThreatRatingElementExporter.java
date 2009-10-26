@@ -50,7 +50,7 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 	}
 
 	@Override
-	public void exportObjectPool() throws Exception
+	public void exportXml() throws Exception
 	{
 		getWcsXmlExporter().writeStartPoolElement(THREAT_RATING);
 		if (getProject().isStressBaseMode())
