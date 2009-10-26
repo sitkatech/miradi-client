@@ -24,7 +24,6 @@ import java.util.Vector;
 
 import org.miradi.diagram.ThreatTargetChainObject;
 import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
-import org.miradi.dialogs.threatrating.upperPanel.MainThreatTableModel;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -75,33 +74,12 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 				ORef targetRef = target.getRef();
 				exportTargetId(targetRef);
 				exportThreatId(threatRef);
-				exportSimpleThreatRatingThreatThreatRating(threatRef);
-				exportSimpleThreatRatingThreatTargetRating(targetRef);
 				exportComment(threatRef, targetRef);				
 				exportSimpleBaseThreatRatingDetails(threatRef, targetRef);
 				
 				getWcsXmlExporter().writeEndElement(THREAT_RATING);
 			}		
 		}
-	}
-
-	private void exportSimpleThreatRatingThreatTargetRating(ORef targetRef) throws Exception
-	{
-		ChoiceItem threatTargetRating = getSimpleThreatRatingFramework().getTargetThreatRatingValue(targetRef);
-		exportThreatRatingCode(THREAT_TARGET_RATING, threatTargetRating);
-	}
-
-	private void exportSimpleThreatRatingThreatThreatRating(ORef threatRef) throws Exception
-	{
-		ChoiceItem threatThreatRating = getSimpleThreatRatingFramework().getThreatThreatRatingValue(threatRef);
-		exportThreatRatingCode(THREAT_RATING, threatThreatRating);
-	}
-	
-	private void exportThreatRatingCode(String elementName, ChoiceItem rating) throws Exception
-	{
-		getWcsXmlExporter().writeStartElement(THREAT_RATING + elementName);
-		getWcsXmlExporter().writeXmlEncodedData(getWcsXmlExporter().getWriter(), rating.getCode());
-		getWcsXmlExporter().writeEndElement(THREAT_RATING + elementName);
 	}
 
 	private void exportSimpleBaseThreatRatingDetails(ORef threatRef, ORef targetRef) throws Exception
@@ -144,28 +122,12 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 				ORef threatRef = threat.getRef();
 				exportTargetId(targetRef);
 				exportThreatId(threatRef);
-				exportStressBasedThreatRatingThreatThreatRating(threat);
-				exportStressBasedThreatRatingThreatTargetRating(target);
 				exportComment(threatRef, targetRef);
 				exportStressBasedThreatRatingDetails(target, stress, threat);
 			}
 		}
 		
 		getWcsXmlExporter().writeEndElement(THREAT_RATING);
-	}
-
-	private void exportStressBasedThreatRatingThreatTargetRating(Target target) throws Exception
-	{
-		int rawTargetRatingValue = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(target);
-		ChoiceItem targetThreatRating = MainThreatTableModel.convertThreatRatingCodeToChoiceItem(rawTargetRatingValue);
-		exportThreatRatingCode(THREAT_TARGET_RATING, targetThreatRating);
-	}
-
-	private void exportStressBasedThreatRatingThreatThreatRating(Cause threat) throws Exception
-	{
-		int rawTargetRatingValue = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(threat);
-		ChoiceItem threatThreatRating = MainThreatTableModel.convertThreatRatingCodeToChoiceItem(rawTargetRatingValue);
-		exportThreatRatingCode(THREAT_RATING, threatThreatRating);
 	}
 
 	private void exportStressBasedThreatRatingDetails(Target target, Stress stress, Cause threat) throws Exception
