@@ -274,7 +274,8 @@ DiagramLink.element = element miradi:DiagramLink
   element miradi:DiagramLinkToDiagramFactorId{ LinkableFactorId.element } &
   element miradi:DiagramLinkBendPoints{ DiagramPoint.element* } &
   element miradi:DiagramLinkGroupedDiagramLinkIds { DiagramLinkId.element* } &
-  element miradi:DiagramLinkColor { vocabulary_diagram_link_color  }
+  element miradi:DiagramLinkColor { vocabulary_diagram_link_color  } &
+  element miradi:DiagramLinkBidirectionalLink { xsd:boolean }?
 }
 
 BiodiversityTargetPool.element = element miradi:BiodiversityTargetPool { BiodiversityTarget.element* }
