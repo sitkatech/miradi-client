@@ -157,7 +157,7 @@ public class Cause extends Factor
 		super.clear();
 		taxonomyCode = new ChoiceData(TAG_TAXONOMY_CODE, new ThreatClassificationQuestion());
 		isDirectThreat = new BooleanData(TAG_IS_DIRECT_THREAT);
-		taxonomyCodeLabel = new PseudoQuestionData(PSEUDO_TAG_TAXONOMY_CODE_VALUE, new StrategyClassificationQuestion());
+		taxonomyCodeLabel = new PseudoQuestionData(PSEUDO_TAG_TAXONOMY_CODE_VALUE, new ThreatClassificationQuestion());
 		
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
 		addField(TAG_IS_DIRECT_THREAT, isDirectThreat);
