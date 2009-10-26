@@ -24,9 +24,9 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FundingSource;
 
-public class FundingSourceContainerExporter extends BaseObjectPoolExporter
+public class FundingSourcePoolExporter extends BaseObjectPoolExporter
 {
-	public FundingSourceContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public FundingSourcePoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, FUNDING_SOURCE, FundingSource.getObjectType());
 	}
