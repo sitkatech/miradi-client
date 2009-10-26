@@ -269,7 +269,6 @@ DiagramLink.element = element miradi:DiagramLink
 {
   attribute Id {xsd:integer}  &
   element miradi:DiagramLinkLabel { text }? &
-  element miradi:DiagramLinkWrappedLinkId{ WrappedByDiagramLinkId.element } &
   element miradi:DiagramLinkFromDiagramFactorId{ LinkableFactorId.element } &
   element miradi:DiagramLinkToDiagramFactorId{ LinkableFactorId.element } &
   element miradi:DiagramLinkBendPoints{ DiagramPoint.element* } &
@@ -668,7 +667,6 @@ ScopeBoxId.element = element miradi:ScopeBoxId { xsd:integer }
 ActivityId.element = element miradi:ActivityId { xsd:integer }
 StressId.element = element miradi:StressId { xsd:integer }
 DiagramLinkId.element = element miradi:DiagramLinkId { xsd:integer }
-FactorLinkId.element = element miradi:FactorLinkId { xsd:integer }
 GoalId.element = element miradi:GoalId { xsd:integer }
 ObjectiveId.element = element miradi:ObjectiveId { xsd:integer }
 IndicatorId.element = element miradi:IndicatorId { xsd:integer }
@@ -684,11 +682,6 @@ ExpenseAssignmentId.element = element miradi:ExpenseAssignmentId { xsd:integer }
 ResourceAssignmentId.element = element miradi:ResourceAssignmentId { xsd:integer }
 ResourceId.element = element miradi:ResourceId { xsd:integer }
 AcitivityId.element = element miradi:AcitivityId { xsd:integer }
-WrappedByDiagramLinkId.element = element miradi:WrappedByDiagramLinkId
-{
-  FactorLinkId.element
-}
-
 WrappedByDiagramFactorId.element = element miradi:WrappedByDiagramFactorId
 {
   BiodiversityTargetId.element |

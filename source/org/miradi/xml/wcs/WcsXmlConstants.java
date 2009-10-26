@@ -105,9 +105,7 @@ public interface WcsXmlConstants
 	public static final String HEIGHT_ELEMENT_NAME = "height";
 	public static final String WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME = "WrappedByDiagramFactorId";
 	public static final String WRAPPED_FACTOR_ID_ELEMENT_NAME = "WrappedFactorId";
-	public static final String WRAPPED_FACTOR_LINK_ID_ELEMENT_NAME = "WrappedLinkId";
 	public static final String ID_ELEMENT_NAME = "Id";
-	public static final String WRAPPED_BY_DIAGRAM_LINK_ID_ELEMENT_NAME = "WrappedByDiagramLinkId";
 	public static final String LINKABLE_FACTOR_ID = "LinkableFactorId";
 	public static final String FROM_DIAGRAM_FACTOR_ID = "FromDiagramFactorId";
 	public static final String TO_DIAGRAM_FACTOR_ID = "ToDiagramFactorId";

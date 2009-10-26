@@ -41,7 +41,6 @@ public class DiagramLinkPoolExporter extends BaseObjectPoolExporter
 		super.exportFields(writer, baseObject);
 		
 		DiagramLink diagramLink = (DiagramLink) baseObject;
-		writeWrappedFactorLinkId(diagramLink);
 		writeFromDiagramFactorId(diagramLink);
 		writeToDiagramFactorId(diagramLink);
 		writeDiagramLinkBendPoints(diagramLink);
@@ -94,16 +93,5 @@ public class DiagramLinkPoolExporter extends BaseObjectPoolExporter
 		
 		getWcsXmlExporter().writeEndElement(LINKABLE_FACTOR_ID);
 		getWcsXmlExporter().writeEndElement(DIAGRAM_LINK + TO_DIAGRAM_FACTOR_ID);
-	}
-
-	private void writeWrappedFactorLinkId(DiagramLink diagramLink) throws Exception
-	{
-		getWcsXmlExporter().writeStartElement(DIAGRAM_LINK + WRAPPED_FACTOR_LINK_ID_ELEMENT_NAME);
-		getWcsXmlExporter().writeStartElement(WRAPPED_BY_DIAGRAM_LINK_ID_ELEMENT_NAME);
-		
-		getWcsXmlExporter().writeElement("FactorLink", ID_ELEMENT_NAME, diagramLink.getWrappedId().toString());
-		
-		getWcsXmlExporter().writeEndElement(WRAPPED_BY_DIAGRAM_LINK_ID_ELEMENT_NAME);
-		getWcsXmlExporter().writeEndElement(DIAGRAM_LINK + WRAPPED_FACTOR_LINK_ID_ELEMENT_NAME);
 	}
 }
