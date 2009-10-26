@@ -34,5 +34,6 @@ public class CauseObjectSchemaElement extends FactorObjectSchemaElement
 		createOptionalCodeField(Cause.TAG_TAXONOMY_CODE, XmlSchemaCreator.VOCABULARY_THREAT_TAXONOMY_CODE);
 		createIdListField(Factor.TAG_OBJECTIVE_IDS, OBJECTIVE_TYPE_NAME);
 		createIdListField(Factor.TAG_INDICATOR_IDS, INDICATOR_TYPE_NAME);
+		createOptionalCodeField(THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING);
 	}
 }

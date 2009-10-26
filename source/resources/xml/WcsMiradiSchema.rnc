@@ -292,6 +292,7 @@ BiodiversityTarget.element = element miradi:BiodiversityTarget
   element miradi:BiodiversityTargetGoalIds { GoalId.element* } &
   element miradi:BiodiversityTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* } &
   element miradi:BiodiversityTargetIndicatorIds { IndicatorId.element* } &
+  element miradi:BiodiversityTargetTargetRating { vocabulary_threat_rating  }? &
   element miradi:BiodiversityTargetStressIds { StressId.element* } &
   BiodiversityTargetHabitatAssociationContainer.element &
   element miradi:BiodiversityTargetSpeciesLatinName { text }?
@@ -311,7 +312,8 @@ HumanWelfareTarget.element = element miradi:HumanWelfareTarget
   element miradi:HumanWelfareTargetSubTargetIds { SubTargetId.element* } &
   element miradi:HumanWelfareTargetGoalIds { GoalId.element* } &
   element miradi:HumanWelfareTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* } &
-  element miradi:HumanWelfareTargetIndicatorIds { IndicatorId.element* }
+  element miradi:HumanWelfareTargetIndicatorIds { IndicatorId.element* } &
+  element miradi:HumanWelfareTargetTargetRating { vocabulary_threat_rating  }?
 }
 
 CausePool.element = element miradi:CausePool { Cause.element* }
@@ -325,7 +327,8 @@ Cause.element = element miradi:Cause
   element miradi:CauseIsDirectThreat { xsd:boolean }? &
   element miradi:CauseStandardClassification { vocabulary_cause_taxonomy_code  }? &
   element miradi:CauseObjectiveIds { ObjectiveId.element* } &
-  element miradi:CauseIndicatorIds { IndicatorId.element* }
+  element miradi:CauseIndicatorIds { IndicatorId.element* } &
+  element miradi:CauseThreatRating { vocabulary_threat_rating  }?
 }
 
 StrategyPool.element = element miradi:StrategyPool { Strategy.element* }
@@ -595,8 +598,6 @@ ThreatRating.element = element miradi:ThreatRating
 {
   element miradi:ThreatRatingTargetId{ BiodiversityTargetId.element } &
   element miradi:ThreatRatingThreatId{ ThreatId.element } &
-  element miradi:ThreatRatingThreatRating { vocabulary_threat_rating  }? &
-  element miradi:ThreatRatingTargetRating { vocabulary_threat_rating  }? &
   element miradi:ThreatRatingThreatTargetRating { vocabulary_threat_rating  }? &
   element miradi:ThreatRatingComments { text }? &
   element miradi:ThreatRatingRatings{ SimpleThreatRating.element | StressBasedThreatRating.element* }

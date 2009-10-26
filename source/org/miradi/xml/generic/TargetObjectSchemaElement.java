@@ -37,5 +37,6 @@ abstract public class TargetObjectSchemaElement extends FactorObjectSchemaElemen
 		createIdListField(AbstractTarget.TAG_GOAL_IDS, XmlSchemaCreator.GOAL_ELEMENT_NAME);
 		createIdListField(AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, XmlSchemaCreator.KEA_ID_ELEMENT_NAME);
 		createIdListField(Factor.TAG_INDICATOR_IDS, INDICATOR_TYPE_NAME);
+		createOptionalCodeField(TARGET_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING);
 	}
 }

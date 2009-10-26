@@ -21,8 +21,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.wcs;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.dialogs.threatrating.upperPanel.MainThreatTableModel;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
+import org.miradi.questions.ChoiceItem;
 
 public class CausePoolExporter extends FactorPoolExporter
 {	
@@ -42,5 +45,27 @@ public class CausePoolExporter extends FactorPoolExporter
 		writeOptionalElementWithSameTag(cause, Cause.TAG_TAXONOMY_CODE);
 		writeObjectiveIds(cause);
 		writeIndicatorIds(cause);
+		writeThreatThreatRatingCode(cause);
+	}
+
+	private void writeThreatThreatRatingCode(Cause cause) throws Exception
+	{
+		if (getProject().isStressBaseMode())
+			exportStressBasedThreatRatingThreatThreatRating(cause);
+		else
+			exportSimpleThreatRatingThreatThreatRating(cause.getRef());
+	}
+	
+	private void exportSimpleThreatRatingThreatThreatRating(ORef threatRef) throws Exception
+	{
+		ChoiceItem threatThreatRating = getProject().getSimpleThreatRatingFramework().getThreatThreatRatingValue(threatRef);
+		writeOptionalCodeElement(THREAT_RATING, threatThreatRating.getCode());
+	}
+	
+	private void exportStressBasedThreatRatingThreatThreatRating(Cause threat) throws Exception
+	{
+		int rawTargetRatingValue = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(threat);
+		ChoiceItem threatThreatRating = MainThreatTableModel.convertThreatRatingCodeToChoiceItem(rawTargetRatingValue);
+		writeOptionalCodeElement(THREAT_RATING, threatThreatRating.getCode());
 	}
 }
