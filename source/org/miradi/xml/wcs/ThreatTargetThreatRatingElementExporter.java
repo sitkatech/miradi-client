@@ -77,19 +77,12 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 				exportThreatId(threatRef);
 				exportSimpleThreatRatingThreatThreatRating(threatRef);
 				exportSimpleThreatRatingThreatTargetRating(targetRef);
-				exportSimpleThreatRatingOverallProjectRating();
 				exportComment(threatRef, targetRef);				
 				exportSimpleBaseThreatRatingDetails(threatRef, targetRef);
 				
 				getWcsXmlExporter().writeEndElement(THREAT_RATING);
 			}		
 		}
-	}
-
-	private void exportSimpleThreatRatingOverallProjectRating() throws Exception
-	{
-		ChoiceItem overallProjectRating = getSimpleThreatRatingFramework().getOverallProjectRatingAsChoiceItem();
-		exportThreatRatingCode(OVERALL_PROJECT_THREAT_RATING, overallProjectRating);
 	}
 
 	private void exportSimpleThreatRatingThreatTargetRating(ORef targetRef) throws Exception
@@ -153,7 +146,6 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 				exportThreatId(threatRef);
 				exportStressBasedThreatRatingThreatThreatRating(threat);
 				exportStressBasedThreatRatingThreatTargetRating(target);
-				exportStressBasedThreatRatingOverallProjectRating();
 				exportComment(threatRef, targetRef);
 				exportStressBasedThreatRatingDetails(target, stress, threat);
 			}
@@ -161,26 +153,19 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 		
 		getWcsXmlExporter().writeEndElement(THREAT_RATING);
 	}
-	
-	private void exportStressBasedThreatRatingOverallProjectRating() throws Exception
-	{
-		int rawOverallProjectRating = getProject().getStressBasedThreatRatingFramework().getOverallProjectRating();
-		ChoiceItem overallProjectRating = MainThreatTableModel.convertThreatRatingCodeToChoiceItem(rawOverallProjectRating);
-		exportThreatRatingCode(OVERALL_PROJECT_THREAT_RATING, overallProjectRating);
-	}
 
 	private void exportStressBasedThreatRatingThreatTargetRating(Target target) throws Exception
 	{
 		int rawTargetRatingValue = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(target);
-		ChoiceItem overallProjectRating = MainThreatTableModel.convertThreatRatingCodeToChoiceItem(rawTargetRatingValue);
-		exportThreatRatingCode(THREAT_TARGET_RATING, overallProjectRating);
+		ChoiceItem targetThreatRating = MainThreatTableModel.convertThreatRatingCodeToChoiceItem(rawTargetRatingValue);
+		exportThreatRatingCode(THREAT_TARGET_RATING, targetThreatRating);
 	}
 
 	private void exportStressBasedThreatRatingThreatThreatRating(Cause threat) throws Exception
 	{
 		int rawTargetRatingValue = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(threat);
-		ChoiceItem overallProjectRating = MainThreatTableModel.convertThreatRatingCodeToChoiceItem(rawTargetRatingValue);
-		exportThreatRatingCode(THREAT_RATING, overallProjectRating);
+		ChoiceItem threatThreatRating = MainThreatTableModel.convertThreatRatingCodeToChoiceItem(rawTargetRatingValue);
+		exportThreatRatingCode(THREAT_RATING, threatThreatRating);
 	}
 
 	private void exportStressBasedThreatRatingDetails(Target target, Stress stress, Cause threat) throws Exception

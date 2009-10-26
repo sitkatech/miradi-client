@@ -325,9 +325,21 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_DESCRIPTION, getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION);
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_STATUS, getMetadata(), ProjectMetadata.TAG_PROJECT_STATUS);
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_NEXT_STEPS, getMetadata(), ProjectMetadata.TAG_NEXT_STEPS);
+		writeOptionalOverallProjectThreatRating();
 
 		writeEndElement(out, PROJECT_SUMMARY);
-	}	
+	}
+
+	private void writeOptionalOverallProjectThreatRating() throws Exception
+	{
+		int rawOverallProjectThreatRatingCode = getProject().getProjectSummaryThreatRating();
+		if (rawOverallProjectThreatRatingCode == 0)
+			return;
+		
+		writeStartElement(PROJECT_SUMMARY + OVERALL_PROJECT_THREAT_RATING);
+		writeXmlEncodedData(getWriter(), Integer.toString(rawOverallProjectThreatRatingCode));
+		writeEndElement(PROJECT_SUMMARY + OVERALL_PROJECT_THREAT_RATING);
+	}
 	
 	public void writeOptionalElementWithSameTag(String parentElementName, BaseObject object, String tag) throws Exception
 	{

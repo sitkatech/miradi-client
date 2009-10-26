@@ -54,7 +54,8 @@ ProjectSummary.element = element miradi:ProjectSummary
   element miradi:ProjectSummaryProjectURL { text }? &
   element miradi:ProjectSummaryProjectDescription { text }? &
   element miradi:ProjectSummaryProjectStatus { text }? &
-  element miradi:ProjectSummaryNextSteps { text }?
+  element miradi:ProjectSummaryNextSteps { text }? &
+  element miradi:ProjectSummaryOverallProjectThreatRating { vocabulary_threat_rating  }?
 }
 
 ProjectResourcePool.element = element miradi:ProjectResourcePool { ProjectResource.element* }
@@ -597,7 +598,6 @@ ThreatRating.element = element miradi:ThreatRating
   element miradi:ThreatRatingThreatRating { vocabulary_threat_rating  }? &
   element miradi:ThreatRatingTargetRating { vocabulary_threat_rating  }? &
   element miradi:ThreatRatingThreatTargetRating { vocabulary_threat_rating  }? &
-  element miradi:ThreatRatingOverallProjectThreatRating { vocabulary_threat_rating  }? &
   element miradi:ThreatRatingComments { text }? &
   element miradi:ThreatRatingRatings{ SimpleThreatRating.element | StressBasedThreatRating.element* }
 }
