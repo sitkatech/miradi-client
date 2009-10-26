@@ -28,7 +28,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
