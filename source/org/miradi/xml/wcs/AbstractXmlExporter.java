@@ -22,9 +22,9 @@ package org.miradi.xml.wcs;
 
 import org.miradi.project.Project;
 
-abstract public class AbstractPoolExporter implements WcsXmlConstants
+abstract public class AbstractXmlExporter implements WcsXmlConstants
 {
-	public AbstractPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public AbstractXmlExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
 		wcsXmlExporter = wcsXmlExporterToUse;
 	}

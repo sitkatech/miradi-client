@@ -42,7 +42,7 @@ import org.miradi.questions.StressRatingChoiceQuestion;
 import org.miradi.questions.ThreatStressRatingChoiceQuestion;
 import org.miradi.utils.ThreatStressRatingDetailsTableExporter;
 
-public class ThreatTargetThreatRatingElementExporter extends AbstractPoolExporter
+public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 {
 	public ThreatTargetThreatRatingElementExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
