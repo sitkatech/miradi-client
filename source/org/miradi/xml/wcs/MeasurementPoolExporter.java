@@ -24,9 +24,9 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Measurement;
 
-public class MeasurementContainerExporter extends BaseObjectPoolExporter
+public class MeasurementPoolExporter extends BaseObjectPoolExporter
 {
-	public MeasurementContainerExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public MeasurementPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, MEASUREMENT, Measurement.getObjectType());
 	}
