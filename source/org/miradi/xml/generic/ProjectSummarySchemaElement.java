@@ -37,5 +37,6 @@ class ProjectSummarySchemaElement extends ObjectSchemaElement
 		createOptionalTextField(ProjectMetadata.TAG_PROJECT_DESCRIPTION);
 		createOptionalTextField(ProjectMetadata.TAG_PROJECT_STATUS);
 		createOptionalTextField(ProjectMetadata.TAG_NEXT_STEPS);
+		createOptionalCodeField(OVERALL_PROJECT_THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING);
 	}
 }

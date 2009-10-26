@@ -33,7 +33,6 @@ public class ThreatTargetThreatRatingElement extends ObjectSchemaElement
 		createOptionalCodeField(THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING);
 		createOptionalCodeField(TARGET_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING);
 		createOptionalCodeField(THREAT_TARGET_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING);
-		createOptionalCodeField(OVERALL_PROJECT_THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING);
 		createOptionalTextField("Comments");
 		createThreatTargetThreatRatingField();
 	}
