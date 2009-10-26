@@ -91,7 +91,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		new ActivityPoolExporter(this).exportXml();
 		new MethodPoolExporter(this).exportXml();
 		new TaskPoolExporter(this).exportXml();
-		new ProgressReportContainerExporter(this).exportXml();
+		new ProgressReportPoolExporter(this).exportXml();
 		new ProgressPercentPoolExporter(this).exportXml();
 		new MeasurementContainerExporter(this).exportXml();
 		new AccountingCodePoolExporter(this).exportXml();
