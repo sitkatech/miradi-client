@@ -30,7 +30,6 @@ public class DiagramLinkSchemaElement extends BaseObjectSchemaElement
 	{
 		super(WcsXmlConstants.DIAGRAM_LINK);
 
-		createWrappedByDiagramLinkIdField(DiagramLink.TAG_WRAPPED_ID);
 		createLinkableFactorIdField(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 		createLinkableFactorIdField(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
 		createDiagramPointListField(DiagramLink.TAG_BEND_POINTS);

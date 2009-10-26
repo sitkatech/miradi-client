@@ -169,7 +169,6 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		defineIdElement(writer, STRESS_ID_ELEMENT_NAME);
 		
 		defineIdElement(writer, "DiagramLink");
-		defineIdElement(writer, "FactorLink");
 		 
 		defineIdElement(writer, GOAL_ELEMENT_NAME);
 		defineIdElement(writer, OBJECTIVE_ID_ELEMENT_NAME);
@@ -186,11 +185,6 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		defineIdElement(writer, RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
 		defineIdElement(writer, RESOURCE_ID_ELEMENT_NAME);
 		defineIdElement(writer, ACTIVITY_ID_ELEMENT_NAME);
-		
-		writer.defineAlias("WrappedByDiagramLinkId.element", "element " + WcsXmlConstants.PREFIX + "WrappedByDiagramLinkId");
-		writer.startBlock();
-		writer.printlnIndented("FactorLinkId.element");
-		writer.endBlock();
 		
 		writer.defineAlias(WcsXmlConstants.WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME + ".element", "element " + WcsXmlConstants.PREFIX + WcsXmlConstants.WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
 		writer.startBlock();
