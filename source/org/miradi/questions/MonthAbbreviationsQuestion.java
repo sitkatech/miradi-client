@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import org.miradi.main.EAM;
+
 public class MonthAbbreviationsQuestion extends StaticChoiceQuestion
 {
 	public MonthAbbreviationsQuestion()
@@ -30,18 +32,18 @@ public class MonthAbbreviationsQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] getMonthChoices()
 	{
 		return new ChoiceItem[]{
-				new ChoiceItem("1", "Jan"),
-				new ChoiceItem("2", "Feb"),
-				new ChoiceItem("3", "Mar"),
-				new ChoiceItem("4", "Apr"),
-				new ChoiceItem("5", "May"),
-				new ChoiceItem("6", "Jun"),
-				new ChoiceItem("7", "Jul"),
-				new ChoiceItem("8", "Aug"),
-				new ChoiceItem("9", "Sep"),
-				new ChoiceItem("10", "Oct"),
-				new ChoiceItem("11", "Nov"),
-				new ChoiceItem("12", "Dec"),
+				new ChoiceItem("1", EAM.text("Jan")),
+				new ChoiceItem("2", EAM.text("Feb")),
+				new ChoiceItem("3", EAM.text("Mar")),
+				new ChoiceItem("4", EAM.text("Apr")),
+				new ChoiceItem("5", EAM.text("May")),
+				new ChoiceItem("6", EAM.text("Jun")),
+				new ChoiceItem("7", EAM.text("Jul")),
+				new ChoiceItem("8", EAM.text("Aug")),
+				new ChoiceItem("9", EAM.text("Sep")),
+				new ChoiceItem("10", EAM.text("Oct")),
+				new ChoiceItem("11", EAM.text("Nov")),
+				new ChoiceItem("12", EAM.text("Dec")),
 		};
 	}
 }
