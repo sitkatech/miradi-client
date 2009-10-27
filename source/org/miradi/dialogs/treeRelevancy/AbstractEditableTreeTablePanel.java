@@ -51,8 +51,8 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 
 		model = modelToUse;
 
-		masterScrollBar = new MasterVerticalScrollBar(treeTableScrollPane);
-		treeTableScrollPane.addMouseWheelListener(new MouseWheelHandler(masterScrollBar));
+		masterVerticalScrollBar = new MasterVerticalScrollBar(treeTableScrollPane);
+		treeTableScrollPane.addMouseWheelListener(new MouseWheelHandler(masterVerticalScrollBar));
 
 		rowHeightController = new MultiTableRowHeightController(getMainWindow());
 		rowHeightController.addTable(treeTable);
@@ -67,7 +67,7 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 
 		setEditableSingleBooleanColumnTableModel(createEditableTableModel(mainWindowToUse, treeTable, baseObject));
 		setEditableObjectTable(createEditableTable(mainWindowToUse));
-		mainTableScrollPane = integrateTable(masterScrollBar, scrollController, rowHeightController, selectionController, treeTable, getEditableTable());
+		mainTableScrollPane = integrateTable(masterVerticalScrollBar, scrollController, rowHeightController, selectionController, treeTable, getEditableTable());
 
 		treesPanel = new ShrinkToFitVerticallyHorizontalBox();
 		treesPanel.add(treeTableScrollPane);
@@ -80,7 +80,7 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 		tablesScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		tablesScrollPane.hideVerticalScrollBar();
 
-		scrollController.addScrollBar(masterScrollBar);
+		scrollController.addScrollBar(masterVerticalScrollBar);
 
 		treePlusTablesPanel = new PersistentNonPercentageHorizontalSplitPane(this, mainWindowToUse, getDividerName());
 		treePlusTablesPanel.setDividerSize(5);
@@ -89,7 +89,7 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 
 		// NOTE: Replace treeScrollPane that super constructor put in CENTER
 		add(treePlusTablesPanel, BorderLayout.CENTER);
-		add(masterScrollBar, BorderLayout.AFTER_LINE_ENDS);
+		add(masterVerticalScrollBar, BorderLayout.AFTER_LINE_ENDS);
 
 		rebuildEntireTreeTable();
 	}
@@ -182,7 +182,7 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 	
 	private SingleBooleanColumnEditableModel editableTableModel;
 	private EditableObjectTable editableTable;
-	private JScrollBar masterScrollBar;
+	private JScrollBar masterVerticalScrollBar;
 	private PersistentHorizontalSplitPane treePlusTablesPanel;
 	private JPanel treesPanel;
 	private JPanel tablesPanel;
