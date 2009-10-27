@@ -36,6 +36,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.commands.CommandSetThreatRating;
 import org.miradi.database.DataUpgrader;
 import org.miradi.database.ProjectServer;
+import org.miradi.diagram.cells.DiagramGroupBoxCell;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.FutureVersionException;
@@ -785,21 +786,23 @@ public class Project
 		if (diagramFactorRefs.size() != 0)
 			return;
 		
-		String text = ResourcesHandler.loadResourceFile("TextBoxInitialSizeLocation.txt");
-		int indexOfNewLineForSize = text.indexOf("\n");
-		String size = text.substring(0, indexOfNewLineForSize);
-			
-		String restAfterSize = text.substring(indexOfNewLineForSize + 1, text.length());
-		int indexOfNewLineForLocation = restAfterSize.indexOf("\n");
-		String location = restAfterSize.substring(0, indexOfNewLineForLocation);
-
+		final String diagramInitialHelpTextFileName = "DiagramInitialHelpText.txt";
+		String helpText = ResourcesHandler.loadResourceFile(diagramInitialHelpTextFileName);
+		int labelLineCount = DiagramGroupBoxCell.getLabelLineCount(helpText);
+		final int NUMBER_OF_PIXELS_PER_LINE = 20;
+		int height = labelLineCount * NUMBER_OF_PIXELS_PER_LINE; 
+		
 		ORef textBoxRef = createObject(TextBox.getObjectType());
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(textBoxRef);
 		ORef diagramFactorRef = createObject(DiagramFactor.getObjectType(), extraInfo);
 		
-		setObjectData(diagramFactorRef, DiagramFactor.TAG_SIZE, size);
-		setObjectData(diagramFactorRef, DiagramFactor.TAG_LOCATION, location);
-		setObjectData(textBoxRef, TextBox.TAG_LABEL, Translation.getHtmlContent("DiagramInitialHelpText.txt"));
+		final int WIDTH = 300;
+		setObjectData(diagramFactorRef, DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(WIDTH, height)));
+		
+		final int X_LOCATION = 105;
+		final int Y_LOCATION = 105;
+		setObjectData(diagramFactorRef, DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(new Point(X_LOCATION, Y_LOCATION)));
+		setObjectData(textBoxRef, TextBox.TAG_LABEL, Translation.getHtmlContent(diagramInitialHelpTextFileName));
 		
 		IdList diagramFactorIdList = new IdList(DiagramFactor.getObjectType());
 		diagramFactorIdList.add(diagramFactorRef.getObjectId());
