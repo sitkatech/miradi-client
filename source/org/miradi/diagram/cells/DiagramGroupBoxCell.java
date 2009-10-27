@@ -120,7 +120,12 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 
 	private int getLabelLineCount()
 	{
-		String label = getWrappedFactor().getLabel() + "AvoidSplitTrimmingTrailingNewlines";
+		return getLabelLineCount(getWrappedFactor().getLabel());
+	}
+
+	public static int getLabelLineCount(String factorlabel)
+	{
+		String label = factorlabel + "AvoidSplitTrimmingTrailingNewlines";
 		String[] lines = label.split("\\n");
 		return lines.length;
 	}
