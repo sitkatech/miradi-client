@@ -135,7 +135,6 @@ public class LinkCreateDialog extends DialogWithButtonBar implements ActionListe
 	
 	private UiList createChoices(int linkFromTo)
 	{
-		
 		DiagramModel model = diagramPanel.getDiagramModel();
 		DiagramFactor[] allDiagramFactors = model.getAllDiagramFactorsAsArray();
 		DiagramFactor[] filteredDiagramFactors = getFilteredDiagramFactors(allDiagramFactors);
@@ -215,7 +214,11 @@ public class LinkCreateDialog extends DialogWithButtonBar implements ActionListe
 		
 		public String toString()
 		{
-			return factor.getLabel();
+			String factorLabel = factor.getLabel();
+			if (factorLabel.isEmpty())
+				factorLabel = "[ " + EAM.text("Insert Factor Link dialog|No Label Specified") + " ]";
+			
+			return factorLabel;
 		}
 		
 		private Factor factor;
