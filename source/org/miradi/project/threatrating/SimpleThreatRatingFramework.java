@@ -45,8 +45,6 @@ import org.miradi.objects.Target;
 import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Utility;
@@ -209,31 +207,6 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return convertToChoiceItem(numericValue);
 	}
 	
-	private ChoiceItem convertToChoiceItem(int codeAsInt)
-	{
-		String code = getSafeThreatRatingCode(codeAsInt);
-		return convertToChoiceItem(code);
-	}
-	
-	private String getSafeThreatRatingCode(int codeAsInt)
-	{
-		switch (codeAsInt)
-		{
-			case 1: return "1";
-			case 2: return "2";
-			case 3: return "3";
-			case 4: return "4";
-
-			default: return "";
-		}
-	}
-
-	public ChoiceItem convertToChoiceItem(String code)
-	{
-		ChoiceQuestion question = getProject().getQuestion(ThreatRatingQuestion.class);
-		return question.findChoiceByCode(code);
-	}
-
 	public int getIrreversibilityNumericValue(ThreatRatingBundle bundle)
 	{
 		return getNumericValue(bundle, getIrreversibilityCriterion());
