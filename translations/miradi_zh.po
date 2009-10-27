@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-27 15:01-0500\n"
+"POT-Creation-Date: 2009-10-27 18:50-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -158,7 +158,7 @@ msgstr "迁移 \t\t"
 #: miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: miradi/source/org/miradi/main/InitialSplashPanel.java:166
-#: miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:230
+#: miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:233
 msgid "Button|Cancel"
 msgstr "取消 \t\t"
 
@@ -6786,15 +6786,19 @@ msgstr ""
 "表中的两个因素来快速地添加链接。<br>在多数系统中，要选择第二个因素，只要按住"
 "Ctrl键的同时点击图表中的第二个因素。<br> \t\t"
 
-#: miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:227
+#: miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:219
+msgid "Insert Factor Link dialog|No Label Specified"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:230
 msgid "Button|OK"
 msgstr "确定 \t\t"
 
-#: miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:247
+#: miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:250
 msgid "Incomplete Link"
 msgstr "不完整链接 \t\t"
 
-#: miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:248
+#: miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:251
 msgid "You must select one item in each of the two lists"
 msgstr "您必须在两个列表中各选定一个选项 \t\t"
 
