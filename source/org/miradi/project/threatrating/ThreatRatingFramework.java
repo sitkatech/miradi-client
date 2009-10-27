@@ -22,6 +22,8 @@ package org.miradi.project.threatrating;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.ThreatRatingQuestion;
 
 abstract public class ThreatRatingFramework
 {
@@ -33,6 +35,31 @@ abstract public class ThreatRatingFramework
 	public Project getProject()
 	{
 		return project;
+	}
+	
+	public ChoiceItem convertToChoiceItem(int codeAsInt)
+	{
+		String code = getSafeThreatRatingCode(codeAsInt);
+		return convertToChoiceItem(code);
+	}
+	
+	private String getSafeThreatRatingCode(int codeAsInt)
+	{
+		switch (codeAsInt)
+		{
+			case 1: return "1";
+			case 2: return "2";
+			case 3: return "3";
+			case 4: return "4";
+
+			default: return "";
+		}
+	}
+
+	public ChoiceItem convertToChoiceItem(String code)
+	{
+		ChoiceQuestion question = getProject().getQuestion(ThreatRatingQuestion.class);
+		return question.findChoiceByCode(code);
 	}
 
 	abstract public ChoiceItem getThreatThreatRatingValue(ORef threatRef) throws Exception;
