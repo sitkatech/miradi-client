@@ -64,8 +64,8 @@ public class CausePoolExporter extends FactorPoolExporter
 	
 	private void exportStressBasedThreatRatingThreatThreatRating(Cause threat) throws Exception
 	{
-		int rawTargetRatingValue = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(threat);
-		ChoiceItem threatThreatRating = MainThreatTableModel.convertThreatRatingCodeToChoiceItem(rawTargetRatingValue);
+		int rawThreatRatingValue = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(threat);
+		ChoiceItem threatThreatRating = MainThreatTableModel.convertThreatRatingCodeToChoiceItem(rawThreatRatingValue);
 		writeOptionalCodeElement(THREAT_RATING, threatThreatRating.getCode());
 	}
 }

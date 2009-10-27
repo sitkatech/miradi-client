@@ -111,24 +111,22 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 	
 	private void exportStressBasedThreatRatingDetailsRow(Target target, Vector<Cause> threats) throws Exception
 	{
-		getWcsXmlExporter().writeStartElement(THREAT_RATING);
-		
 		ORefList stressRefs = target.getStressRefs();
 		for (int index = 0; index < stressRefs.size(); ++index)
 		{
 			Stress stress = Stress.find(getProject(), stressRefs.get(index));
 			for(Cause threat : threats)
-			{			 
+			{
+				getWcsXmlExporter().writeStartElement(THREAT_RATING);
 				ORef targetRef = target.getRef();
 				ORef threatRef = threat.getRef();
 				exportTargetId(targetRef);
 				exportThreatId(threatRef);
 				exportComment(threatRef, targetRef);
 				exportStressBasedThreatRatingDetails(target, stress, threat);
+				getWcsXmlExporter().writeEndElement(THREAT_RATING);
 			}
 		}
-		
-		getWcsXmlExporter().writeEndElement(THREAT_RATING);
 	}
 
 	private void exportStressBasedThreatRatingDetails(Target target, Stress stress, Cause threat) throws Exception

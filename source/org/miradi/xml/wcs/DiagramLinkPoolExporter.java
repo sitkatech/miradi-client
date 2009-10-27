@@ -44,7 +44,7 @@ public class DiagramLinkPoolExporter extends BaseObjectPoolExporter
 		writeToDiagramFactorId(diagramLink);
 		writeDiagramLinkBendPoints(diagramLink);
 		
-		writeIds(GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, WcsXmlConstants.DIAGRAM_LINK_ID_ELEMENT_NAME, diagramLink.getGroupedDiagramLinkRefs());
+		writeIds(GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, WcsXmlConstants.DIAGRAM_LINK, diagramLink.getGroupedDiagramLinkRefs());
 		writeCodeElement(DiagramLink.TAG_COLOR, diagramLink.getColorChoiceItem().getCode());
 		writeBidirectionalCode(diagramLink);
 	}
