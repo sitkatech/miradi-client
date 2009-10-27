@@ -127,6 +127,7 @@ import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.Translation;
 import org.miradi.views.diagram.DiagramClipboard;
 import org.miradi.views.diagram.DiagramPageList;
 import org.miradi.views.diagram.DiagramView;
@@ -784,7 +785,7 @@ public class Project
 		if (diagramFactorRefs.size() != 0)
 			return;
 		
-		String text = ResourcesHandler.loadResourceFile("DiagramInitialHelpText.txt");
+		String text = ResourcesHandler.loadResourceFile("TextBoxInitialSizeLocation.txt");
 		int indexOfNewLineForSize = text.indexOf("\n");
 		String size = text.substring(0, indexOfNewLineForSize);
 			
@@ -792,15 +793,13 @@ public class Project
 		int indexOfNewLineForLocation = restAfterSize.indexOf("\n");
 		String location = restAfterSize.substring(0, indexOfNewLineForLocation);
 
-		String restAfterLocation = restAfterSize.substring(indexOfNewLineForLocation, restAfterSize.length());
-			
 		ORef textBoxRef = createObject(TextBox.getObjectType());
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(textBoxRef);
 		ORef diagramFactorRef = createObject(DiagramFactor.getObjectType(), extraInfo);
 		
 		setObjectData(diagramFactorRef, DiagramFactor.TAG_SIZE, size);
 		setObjectData(diagramFactorRef, DiagramFactor.TAG_LOCATION, location);
-		setObjectData(textBoxRef, TextBox.TAG_LABEL, restAfterLocation);
+		setObjectData(textBoxRef, TextBox.TAG_LABEL, Translation.getHtmlContent("DiagramInitialHelpText.txt"));
 		
 		IdList diagramFactorIdList = new IdList(DiagramFactor.getObjectType());
 		diagramFactorIdList.add(diagramFactorRef.getObjectId());
