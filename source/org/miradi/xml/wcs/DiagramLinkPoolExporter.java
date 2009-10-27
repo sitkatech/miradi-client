@@ -26,7 +26,6 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.utils.PointList;
-import org.miradi.xml.wcs.BaseObjectPoolExporter;;
 
 public class DiagramLinkPoolExporter extends BaseObjectPoolExporter
 {
@@ -52,8 +51,11 @@ public class DiagramLinkPoolExporter extends BaseObjectPoolExporter
 
 	private void writeBidirectionalCode(DiagramLink diagramLink) throws Exception
 	{
-		FactorLink wrappedFactorLink = diagramLink.getWrappedFactorLink();
-		String isBidirectional = wrappedFactorLink.getData(FactorLink.TAG_BIDIRECTIONAL_LINK);
+		String NON_BIDIRECTIONAL_LINK = "0";
+		String isBidirectional = NON_BIDIRECTIONAL_LINK; 
+		if (diagramLink.isBidirectional())
+			isBidirectional = FactorLink.BIDIRECTIONAL_LINK;
+		
 		writeOptionalCodeElement(FactorLink.TAG_BIDIRECTIONAL_LINK, isBidirectional);
 	}
 	
