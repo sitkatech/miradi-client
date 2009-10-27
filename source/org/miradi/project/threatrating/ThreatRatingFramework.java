@@ -43,7 +43,7 @@ abstract public class ThreatRatingFramework
 		return convertToChoiceItem(code);
 	}
 	
-	private String getSafeThreatRatingCode(int codeAsInt)
+	public static String getSafeThreatRatingCode(int codeAsInt)
 	{
 		switch (codeAsInt)
 		{

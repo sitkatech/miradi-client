@@ -35,6 +35,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
+import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StressRatingChoiceQuestion;
@@ -153,8 +154,9 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 	{
 		ThreatTargetVirtualLinkHelper virtualLink = new ThreatTargetVirtualLinkHelper(getProject());
 		int rawThreatStressRating = virtualLink.calculateStressBasedThreatRating(threatRef, targetRef);
+		String safeThreatRatingCode = ThreatRatingFramework.getSafeThreatRatingCode(rawThreatStressRating);
 		ChoiceQuestion question = getProject().getQuestion(ThreatStressRatingChoiceQuestion.class);
-		exportStressBasedThreatRatingCode(THREAT_STRESS_RATING, question.findChoiceByCode(Integer.toString(rawThreatStressRating)));
+		exportStressBasedThreatRatingCode(THREAT_STRESS_RATING, question.findChoiceByCode(safeThreatRatingCode));
 	}
 
 	private void exportStressBasedStressRating(String stressRating) throws Exception
