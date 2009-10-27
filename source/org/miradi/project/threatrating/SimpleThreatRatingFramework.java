@@ -280,7 +280,8 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	public ChoiceItem getThreatThreatRatingValue(ORef threatRef) throws Exception
 	{
 		ValueOption valueOption = getThreatThreatRatingValue(threatRef.getObjectId());
-		return new ChoiceItem(Integer.toString(valueOption.getNumericValue()), valueOption.getLabel(), valueOption.getColor());
+		String code = getSafeThreatRatingCode(valueOption.getNumericValue());
+		return new ChoiceItem(code, valueOption.getLabel(), valueOption.getColor());
 	}
 	
 	public ValueOption getThreatThreatRatingValue(BaseId threatId)
