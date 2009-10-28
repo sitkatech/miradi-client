@@ -71,9 +71,6 @@ public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
 	
 		else if (property.equals(Cause.OBJECT_NAME_THREAT))
 			checkBox.setSelected(manager.areDirectThreatsVisible());
-		
-		if (property.equals(Strategy.OBJECT_NAME_DRAFT))
-			checkBox.setSelected(manager.areDraftStrategiesVisible());
 	}
 	
 	protected void addStressLine(TwoColumnPanel jpanel)
