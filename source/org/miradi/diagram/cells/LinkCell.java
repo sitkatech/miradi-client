@@ -171,11 +171,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 			return true;
 		
 		LayerManager layerManager = diagram.getLayerManager();
-		if(!layerManager.areFactorLinksVisible())
-			return false;
-		if(!getTo().isTarget())
-			return true;
-		return layerManager.areTargetLinksVisible();
+		return layerManager.areFactorLinksVisible();
 	}
 	
 	private boolean isSelectedOrRelated(DiagramComponent diagram)
