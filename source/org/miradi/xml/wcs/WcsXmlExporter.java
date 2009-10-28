@@ -424,12 +424,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 	public void writeOptionalCodeElement(String parentElementName, String elementName, String code) throws Exception
 	{
 		if (!code.isEmpty())
-		{
-			String convertedElementName = getConvertedElementName(parentElementName, elementName);
-			writeStartElement(getWriter(), parentElementName + convertedElementName);
-			writeXmlEncodedData(getWriter(), code);
-			writeEndElement(getWriter(), parentElementName + convertedElementName);
-		}
+			writeCodeElement(parentElementName, elementName, code);
 	}
 
 	private String getConvertedElementName(String parentElementName,String elementName)
