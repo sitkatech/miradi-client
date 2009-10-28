@@ -30,7 +30,6 @@ import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Cause;
 import org.miradi.objects.FactorLink;
-import org.miradi.objects.Strategy;
 
 public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
 {
@@ -47,16 +46,6 @@ public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
 	
 	protected void setLegendVisibilityOfFactorCheckBoxes(LayerManager manager, String property)
 	{
-		JCheckBox checkBox = (JCheckBox)checkBoxes.get(property);
-		
-		if (property.equals(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR))
-			manager.setContributingFactorsVisible(checkBox.isSelected());
-		else if (property.equals(Cause.OBJECT_NAME_THREAT))
-			manager.setDirectThreatsVisible(checkBox.isSelected());
-		
-		else if (property.equals(Strategy.OBJECT_NAME_DRAFT))
-			manager.setDraftStrategiesVisible(checkBox.isSelected());
-		
 		super.setLegendVisibilityOfFactorCheckBoxes(manager, property);
 	}
 	
