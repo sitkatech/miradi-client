@@ -23,6 +23,7 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 
 public class KeyEcologicalAttributePoolExporter extends BaseObjectPoolExporter
 {
@@ -41,6 +42,6 @@ public class KeyEcologicalAttributePoolExporter extends BaseObjectPoolExporter
 		writeOptionalElementWithSameTag(baseObject, KeyEcologicalAttribute.TAG_DESCRIPTION);
 		KeyEcologicalAttribute keyEcologicalAttribute = (KeyEcologicalAttribute) baseObject;
 		writeIndicatorIds(keyEcologicalAttribute.getIndicatorRefs());
-		writeCodeElementSameAsTag(keyEcologicalAttribute, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
+		writeCodeElementSameAsTag(keyEcologicalAttribute, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, new KeyEcologicalAttributeTypeQuestion());
 	}
 }

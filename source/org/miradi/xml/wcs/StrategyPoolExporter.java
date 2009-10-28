@@ -23,6 +23,9 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
+import org.miradi.questions.StrategyFeasibilityQuestion;
+import org.miradi.questions.StrategyImpactQuestion;
+import org.miradi.questions.StrategyTaxonomyQuestion;
 
 public class StrategyPoolExporter extends FactorPoolExporter
 {
@@ -41,9 +44,9 @@ public class StrategyPoolExporter extends FactorPoolExporter
 		writeObjectiveIds(strategy);
 		writeIds(Strategy.TAG_ACTIVITY_IDS, WcsXmlConstants.ACTIVITY, strategy.getActivityRefs());
 		writeOptionalElementWithSameTag(strategy, Strategy.TAG_STATUS);
-		writeCodeElementSameAsTag(strategy, Strategy.TAG_TAXONOMY_CODE);		
-		writeCodeElementSameAsTag(strategy, Strategy.TAG_IMPACT_RATING);
-		writeCodeElementSameAsTag(strategy, Strategy.TAG_FEASIBILITY_RATING);
+		writeCodeElementSameAsTag(strategy, Strategy.TAG_TAXONOMY_CODE, new StrategyTaxonomyQuestion());		
+		writeCodeElementSameAsTag(strategy, Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion());
+		writeCodeElementSameAsTag(strategy, Strategy.TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion());
 		writeOptionalElementWithSameTag(strategy, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 		writeProgressReportIds(strategy);
 		writeExpenseAssignmentIds(strategy);

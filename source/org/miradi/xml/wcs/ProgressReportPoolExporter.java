@@ -23,6 +23,7 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressReport;
+import org.miradi.questions.ProgressReportLongStatusQuestion;
 
 public class ProgressReportPoolExporter extends ObjectPoolExporter
 {
@@ -38,6 +39,6 @@ public class ProgressReportPoolExporter extends ObjectPoolExporter
 		
 		writeOptionalElementWithSameTag(baseObject, ProgressReport.TAG_PROGRESS_DATE);
 		writeOptionalElementWithSameTag(baseObject, ProgressReport.TAG_DETAILS);
-		writeCodeElementSameAsTag(baseObject, ProgressReport.TAG_PROGRESS_STATUS);
+		writeCodeElementSameAsTag(baseObject, ProgressReport.TAG_PROGRESS_STATUS, new ProgressReportLongStatusQuestion());
 	}
 }

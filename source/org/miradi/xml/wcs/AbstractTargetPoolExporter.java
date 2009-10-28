@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ThreatRatingQuestion;
 
 public abstract class AbstractTargetPoolExporter extends FactorPoolExporter
 {
@@ -62,12 +63,12 @@ public abstract class AbstractTargetPoolExporter extends FactorPoolExporter
 	{
 		int rawTargetRatingValue = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(target);
 		ChoiceItem targetThreatRating = MainThreatTableModel.convertThreatRatingCodeToChoiceItem(rawTargetRatingValue);
-		writeOptionalCodeElement(TARGET_RATING, targetThreatRating.getCode());
+		writeOptionalCodeElement(TARGET_RATING, new ThreatRatingQuestion(), targetThreatRating.getCode());
 	}
 	
 	private void exportSimpleThreatRatingThreatTargetRating(ORef targetRef) throws Exception
 	{
 		ChoiceItem threatTargetRating = getProject().getSimpleThreatRatingFramework().getTargetThreatRatingValue(targetRef);
-		writeOptionalCodeElement(TARGET_RATING, threatTargetRating.getCode());
+		writeOptionalCodeElement(TARGET_RATING, new ThreatRatingQuestion(), threatTargetRating.getCode());
 	}
 }

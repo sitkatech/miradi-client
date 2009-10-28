@@ -25,6 +25,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
+import org.miradi.questions.DiagramLinkColorQuestion;
 import org.miradi.utils.PointList;
 
 public class DiagramLinkPoolExporter extends BaseObjectPoolExporter
@@ -45,7 +46,7 @@ public class DiagramLinkPoolExporter extends BaseObjectPoolExporter
 		writeDiagramLinkBendPoints(diagramLink);
 		
 		writeIds(GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, WcsXmlConstants.DIAGRAM_LINK, diagramLink.getGroupedDiagramLinkRefs());
-		writeCodeElement(DiagramLink.TAG_COLOR, diagramLink.getColorChoiceItem().getCode());
+		writeCodeElement(DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion(), diagramLink.getColorChoiceItem().getCode());
 		writeBidirectionalCode(diagramLink);
 	}
 
@@ -56,7 +57,7 @@ public class DiagramLinkPoolExporter extends BaseObjectPoolExporter
 		if (diagramLink.isBidirectional())
 			isBidirectional = FactorLink.BIDIRECTIONAL_LINK;
 		
-		writeOptionalCodeElement(FactorLink.TAG_BIDIRECTIONAL_LINK, isBidirectional);
+		getWcsXmlExporter().writeOptionalElement(getWriter(), getPoolName() + FactorLink.TAG_BIDIRECTIONAL_LINK, isBidirectional);
 	}
 	
 	private void writeDiagramLinkBendPoints(DiagramLink diagramLink) throws Exception

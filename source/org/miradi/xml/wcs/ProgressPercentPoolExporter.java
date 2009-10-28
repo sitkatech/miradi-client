@@ -38,6 +38,6 @@ public class ProgressPercentPoolExporter extends ObjectPoolExporter
 		
 		writeOptionalElementWithSameTag(baseObject, ProgressPercent.TAG_DATE);
 		writeOptionalElementWithSameTag(baseObject, ProgressPercent.TAG_PERCENT_COMPLETE);
-		writeCodeElementSameAsTag(baseObject, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES);
+		writeOptionalElementWithSameTag(baseObject, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES);
 	}
 }

@@ -26,6 +26,10 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
+import org.miradi.questions.DiagramFactorBackgroundQuestion;
+import org.miradi.questions.DiagramFactorFontColorQuestion;
+import org.miradi.questions.DiagramFactorFontSizeQuestion;
+import org.miradi.questions.DiagramFactorFontStyleQuestion;
 
 public class DiagramFactorPoolExporter extends BaseObjectPoolExporter
 {
@@ -63,14 +67,13 @@ public class DiagramFactorPoolExporter extends BaseObjectPoolExporter
 		getWcsXmlExporter().writeStartElement(STYLING_ELEMENT_NAME);
 		
 		getWcsXmlExporter().writeStartElement(STYLING);
-		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FONT_SIZE);
-		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FONT_STYLE);
-		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FOREGROUND_COLOR);
-		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_BACKGROUND_COLOR);
+		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
+		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
+		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
+		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion());
 		getWcsXmlExporter().writeEndElement(STYLING);
 		
 		getWcsXmlExporter().writeEndElement(STYLING_ELEMENT_NAME);
-		
 	}
 
 	private void writeWrappedFactorId(DiagramFactor diagramFactor) throws Exception

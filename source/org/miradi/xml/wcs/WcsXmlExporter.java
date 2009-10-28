@@ -37,6 +37,9 @@ import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.generic.XmlSchemaCreator;
@@ -118,7 +121,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 	{
 		writeStartElement(out, FOS_PROJECT_DATA);
 		
-		writeCodeElement(FOS_PROJECT_DATA, FosProjectData.TAG_TRAINING_TYPE, getFosProjectData().getData(FosProjectData.TAG_TRAINING_TYPE));
+		writeCodeElement(FOS_PROJECT_DATA, FosProjectData.TAG_TRAINING_TYPE, new FosTrainingTypeQuestion(), getFosProjectData().getData(FosProjectData.TAG_TRAINING_TYPE));
 		writeOptionalElementWithSameTag(FOS_PROJECT_DATA, getFosProjectData(), FosProjectData.TAG_TRAINING_DATES);
 		writeOptionalElementWithSameTag(FOS_PROJECT_DATA, getFosProjectData(), FosProjectData.TAG_TRAINERS);
 		writeOptionalElementWithSameTag(FOS_PROJECT_DATA, getFosProjectData(), FosProjectData.TAG_COACHES);
@@ -409,18 +412,45 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeEndContainerElement(parentElementName + poolElementName);
 	}
 	
-	public void writeCodeElement(String parentElementName, String elementName, String code) throws Exception
+	public void writeCodeElement(String parentElementName, String elementName, ChoiceQuestion question, String code) throws Exception
 	{
 		String convertedElementName = getConvertedElementName(parentElementName, elementName);
 		writeStartElement(getWriter(), parentElementName + convertedElementName);
-		writeXmlEncodedData(getWriter(), code);
+		
+		if (doesCodeExist(question, code))
+			writeXmlEncodedData(getWriter(), code);
+		else
+			logMissingCode(question, code);
+		
 		writeEndElement(getWriter(), parentElementName + convertedElementName);
 	}
-	
-	public void writeOptionalCodeElement(String parentElementName, String elementName, String code) throws Exception
+
+	public void writeOptionalCodeElement(String parentElementName, String elementName, ChoiceQuestion question, String code) throws Exception
 	{
-		if (!code.isEmpty())
-			writeCodeElement(parentElementName, elementName, code);
+		if (code.isEmpty())
+			return;
+				
+		if (!doesCodeExist(question, code))
+		{
+			logMissingCode(question, code);
+			return;
+		}
+		
+		writeCodeElement(parentElementName, elementName, question, code);
+	}
+	
+	private void logMissingCode(ChoiceQuestion question, String code)
+	{
+		EAM.logWarning(code + " is a code that does not exist in the question:" + question.getClass().getSimpleName());
+	}
+	
+	private boolean doesCodeExist(ChoiceQuestion question, String code)
+	{
+		ChoiceItem choiceItem = question.findChoiceByCode(code);
+		if (choiceItem == null)
+			return false;
+		
+		return true;
 	}
 
 	private String getConvertedElementName(String parentElementName,String elementName)

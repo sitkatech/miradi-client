@@ -23,6 +23,8 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
+import org.miradi.questions.PriorityRatingQuestion;
+import org.miradi.questions.StatusQuestion;
 
 public class IndicatorPoolExporter extends BaseObjectPoolExporter
 {
@@ -40,10 +42,10 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 		writeOptionalElementWithSameTag(baseObject, Indicator.TAG_SHORT_LABEL);
 		writeOptionalElementWithSameTag(baseObject, Indicator.TAG_DETAIL);
 		writeOptionalElementWithSameTag(baseObject, Indicator.TAG_COMMENTS);
-		writeCodeElementSameAsTag(indicator, Indicator.TAG_PRIORITY);
+		writeCodeElementSameAsTag(indicator, Indicator.TAG_PRIORITY, new PriorityRatingQuestion());
 		writeOptionalElementWithSameTag(baseObject, Indicator.TAG_FUTURE_STATUS_DATE);
 		writeOptionalElementWithSameTag(baseObject, Indicator.TAG_FUTURE_STATUS_SUMMARY);
-		writeCodeElementSameAsTag(indicator, Indicator.TAG_FUTURE_STATUS_RATING);
+		writeCodeElementSameAsTag(indicator, Indicator.TAG_FUTURE_STATUS_RATING, new StatusQuestion());
 		writeOptionalElementWithSameTag(baseObject, Indicator.TAG_FUTURE_STATUS_DETAIL);
 		writeOptionalElementWithSameTag(baseObject, Indicator.TAG_FUTURE_STATUS_COMMENT);	
 		writeProgressReportIds(indicator);
