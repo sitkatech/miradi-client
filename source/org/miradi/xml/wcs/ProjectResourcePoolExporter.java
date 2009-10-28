@@ -23,6 +23,7 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
+import org.miradi.questions.ResourceTypeQuestion;
 
 public class ProjectResourcePoolExporter extends BaseObjectPoolExporter
 {
@@ -36,7 +37,7 @@ public class ProjectResourcePoolExporter extends BaseObjectPoolExporter
 	{
 		super.exportFields(writer, baseObject);
 		
-		writeCodeElementSameAsTag(baseObject, ProjectResource.TAG_RESOURCE_TYPE);
+		writeCodeElementSameAsTag(baseObject, ProjectResource.TAG_RESOURCE_TYPE, new ResourceTypeQuestion());
 		writeOptionalElementWithSameTag(baseObject, ProjectResource.TAG_GIVEN_NAME);
 		writeOptionalElementWithSameTag(baseObject, ProjectResource.TAG_SUR_NAME);
 		writeOptionalElementWithSameTag(baseObject, ProjectResource.TAG_INITIALS);

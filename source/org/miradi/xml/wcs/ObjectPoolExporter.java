@@ -26,6 +26,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.questions.ChoiceQuestion;
 
 abstract public class ObjectPoolExporter extends AbstractXmlExporter
 {
@@ -84,24 +85,24 @@ abstract public class ObjectPoolExporter extends AbstractXmlExporter
 		getWcsXmlExporter().writeCodeListElement(getPoolName(), codeListElementName, baseObject, tag);
 	}
 	
-	protected void writeCodeElementSameAsTag(BaseObject baseObject, String tag) throws Exception
+	protected void writeCodeElementSameAsTag(BaseObject baseObject, String tag, ChoiceQuestion question) throws Exception
 	{
-		writeCodeElement(tag, baseObject.getData(tag));
+		writeCodeElement(tag, question, baseObject.getData(tag));
 	}
 	
-	protected void writeOptionalCodeElementSameAsTag(BaseObject baseObject, String tag) throws Exception
+	protected void writeOptionalCodeElementSameAsTag(BaseObject baseObject, String tag, ChoiceQuestion question) throws Exception
 	{
-		writeOptionalCodeElement(tag, baseObject.getData(tag));
+		writeOptionalCodeElement(tag, question, baseObject.getData(tag));
 	}
 	
-	protected void writeCodeElement(String codeElementName, String code) throws Exception
+	protected void writeCodeElement(String codeElementName, ChoiceQuestion question, String code) throws Exception
 	{
-		getWcsXmlExporter().writeCodeElement(getPoolName(), codeElementName, code);
+		getWcsXmlExporter().writeCodeElement(getPoolName(), codeElementName, question, code);
 	}
 	
-	protected void writeOptionalCodeElement(String codeElementName, String code) throws Exception
+	protected void writeOptionalCodeElement(String codeElementName, ChoiceQuestion question, String code) throws Exception
 	{
-		getWcsXmlExporter().writeOptionalCodeElement(getPoolName(), codeElementName, code);
+		getWcsXmlExporter().writeOptionalCodeElement(getPoolName(), codeElementName, question, code);
 	}
 	
 	protected void exportId(ORef ref, String idElementName) throws Exception, IOException

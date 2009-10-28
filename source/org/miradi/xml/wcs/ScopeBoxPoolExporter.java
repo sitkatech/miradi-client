@@ -23,6 +23,7 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ScopeBox;
+import org.miradi.questions.ScopeBoxColorQuestion;
 
 public class ScopeBoxPoolExporter extends FactorPoolExporter
 {
@@ -36,6 +37,6 @@ public class ScopeBoxPoolExporter extends FactorPoolExporter
 	{
 		super.exportFields(writer, baseObject);
 		
-		writeCodeElementSameAsTag(baseObject, ScopeBox.TAG_SCOPE_BOX_COLOR_CODE);
+		writeCodeElementSameAsTag(baseObject, ScopeBox.TAG_SCOPE_BOX_COLOR_CODE, new ScopeBoxColorQuestion());
 	}
 }

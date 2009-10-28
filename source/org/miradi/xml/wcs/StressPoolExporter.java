@@ -23,6 +23,8 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Stress;
+import org.miradi.questions.StressScopeChoiceQuestion;
+import org.miradi.questions.StressSeverityChoiceQuestion;
 
 public class StressPoolExporter extends FactorPoolExporter
 {
@@ -36,7 +38,7 @@ public class StressPoolExporter extends FactorPoolExporter
 	{
 		super.exportFields(writer, baseObject);
 	
-		writeCodeElementSameAsTag(baseObject, Stress.TAG_SEVERITY);
-		writeCodeElementSameAsTag(baseObject, Stress.TAG_SCOPE);
+		writeCodeElementSameAsTag(baseObject, Stress.TAG_SEVERITY, new StressSeverityChoiceQuestion());
+		writeCodeElementSameAsTag(baseObject, Stress.TAG_SCOPE, new StressScopeChoiceQuestion());
 	}
 }

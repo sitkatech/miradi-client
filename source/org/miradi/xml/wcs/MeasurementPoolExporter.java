@@ -23,6 +23,9 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Measurement;
+import org.miradi.questions.StatusConfidenceQuestion;
+import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.TrendQuestion;
 
 public class MeasurementPoolExporter extends BaseObjectPoolExporter
 {
@@ -36,12 +39,12 @@ public class MeasurementPoolExporter extends BaseObjectPoolExporter
 	{
 		super.exportFields(writer, baseObject);
 		
-		writeCodeElementSameAsTag(baseObject, Measurement.TAG_TREND);
-		writeCodeElementSameAsTag(baseObject, Measurement.TAG_STATUS);
+		writeCodeElementSameAsTag(baseObject, Measurement.TAG_TREND, new TrendQuestion());
+		writeCodeElementSameAsTag(baseObject, Measurement.TAG_STATUS, new StatusQuestion());
 		writeOptionalElementWithSameTag(baseObject, Measurement.TAG_DATE);
 		writeOptionalElementWithSameTag(baseObject, Measurement.TAG_SUMMARY);
 		writeOptionalElementWithSameTag(baseObject, Measurement.TAG_DETAIL);
-		writeCodeElementSameAsTag(baseObject, Measurement.TAG_STATUS_CONFIDENCE);
+		writeCodeElementSameAsTag(baseObject, Measurement.TAG_STATUS_CONFIDENCE, new StatusConfidenceQuestion());
 		writeOptionalElementWithSameTag(baseObject, Measurement.TAG_COMMENTS);
 	}
 }
