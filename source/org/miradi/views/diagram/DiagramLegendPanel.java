@@ -40,12 +40,9 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.cells.DiagramGroupBoxCell;
 import org.miradi.diagram.cells.DiagramHumanWelfareTarget;
-import org.miradi.diagram.cells.DiagramScopeBoxCell;
 import org.miradi.diagram.cells.DiagramStrategyCell;
 import org.miradi.diagram.cells.DiagramTargetCell;
-import org.miradi.diagram.cells.DiagramTextBoxCell;
 import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.dialogs.base.ObjectRefListEditorPanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
@@ -265,32 +262,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	
 	protected void setLegendVisibilityOfFactorCheckBoxes(LayerManager manager, String property)
 	{
-		JCheckBox checkBox = findCheckBox(property);
-		
-		if (property.equals(Strategy.OBJECT_NAME))
-			manager.setVisibility(DiagramStrategyCell.class, checkBox.isSelected());
-		else if (property.equals(Target.OBJECT_NAME))
-			manager.setVisibility(DiagramTargetCell.class, checkBox.isSelected());
-		else if (property.equals(HumanWelfareTarget.OBJECT_NAME))
-			manager.setVisibility(DiagramHumanWelfareTarget.class, checkBox.isSelected());
-		else if (property.equals(FactorLink.OBJECT_NAME))
-			manager.setFactorLinksVisible(checkBox.isSelected());
-		else if (property.equals(Goal.OBJECT_NAME))
-			manager.setGoalsVisible(checkBox.isSelected());
-		else if (property.equals(Objective.OBJECT_NAME))
-			manager.setObjectivesVisible(checkBox.isSelected());
-		else if (property.equals(Indicator.OBJECT_NAME))
-			manager.setIndicatorsVisible(checkBox.isSelected());
-		else if (property.equals(ScopeBox.OBJECT_NAME))
-			manager.setScopeBoxVisible(checkBox.isSelected()); 
-		else if (property.equals(TextBox.OBJECT_NAME))
-			manager.setVisibility(DiagramTextBoxCell.class, checkBox.isSelected());
-		else if (property.equals(GroupBox.OBJECT_NAME))
-			manager.setVisibility(DiagramGroupBoxCell.class, checkBox.isSelected());
-		else if (property.equals(FactorLink.OBJECT_NAME_STRESS))
-			manager.setStressesVisible(checkBox.isSelected());
-		else if (property.equals(ScopeBox.OBJECT_NAME))
-			manager.setVisibility(DiagramScopeBoxCell.class, checkBox.isSelected());
 	}
 	
 	public void resetCheckBoxes()
