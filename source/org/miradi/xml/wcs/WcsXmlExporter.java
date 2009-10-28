@@ -399,18 +399,14 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		
 	public void writeCodeListElement(String parentElementName, String poolElementName, BaseObject object, String tag) throws Exception
 	{
-		writeCodeListElement(parentElementName, poolElementName, object.getCodeList(tag));
-	}
-	
-	private void writeCodeListElement(String parentElementName, String containerElementName, CodeList codes) throws Exception
-	{
-		writeStartContainerElement(parentElementName + containerElementName);
+		CodeList codes = object.getCodeList(tag);
+		writeStartContainerElement(parentElementName + poolElementName);
 		for (int index = 0; index < codes.size(); ++index)
 		{
 			writeElement(getWriter(), XmlSchemaCreator.CODE_ELEMENT_NAME, codes.get(index));
 		}
 		
-		writeEndContainerElement(parentElementName + containerElementName);
+		writeEndContainerElement(parentElementName + poolElementName);
 	}
 	
 	public void writeCodeElement(String parentElementName, String elementName, String code) throws Exception
