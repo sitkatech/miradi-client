@@ -298,10 +298,7 @@ public class LayerManager
 	
 	private boolean isTypeVisible(boolean defaultVisibility, String objectTypeName)
 	{
-		if (isHiddenInDiagramObject(getDiagramObject(), objectTypeName))
-			return false;
-		
-		return defaultVisibility;
+		return !isHiddenInDiagramObject(getDiagramObject(), objectTypeName);
 	}
 		
 	private DiagramObject getDiagramObject()
