@@ -24,14 +24,20 @@ import java.util.Set;
 
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ScopeBox;
+import org.miradi.objects.Strategy;
+import org.miradi.objects.Stress;
+import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
+import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ViewData;
 
 public class LayerManager
@@ -154,7 +160,7 @@ public class LayerManager
 	
 	public boolean areContributingFactorsVisible()
 	{
-		return contributingFactorsVisibleFlag;
+		return isTypeVisible(contributingFactorsVisibleFlag, Cause.OBJECT_NAME_CONTRIBUTING_FACTOR);
 	}
 	
 	public void setContributingFactorsVisible(boolean newSetting)
@@ -164,7 +170,7 @@ public class LayerManager
 	
 	public boolean areDirectThreatsVisible()
 	{
-		return directThreatsVisibleFlag;
+		return isTypeVisible(directThreatsVisibleFlag, Cause.OBJECT_NAME_THREAT);
 	}
 	
 	public void setDirectThreatsVisible(boolean newSetting)
@@ -222,7 +228,7 @@ public class LayerManager
 
 	public boolean areDraftStrategiesVisible()
 	{
-		return draftStrategyVisibleFlag;
+		return isTypeVisible(draftStrategyVisibleFlag, Strategy.OBJECT_NAME_DRAFT);
 	}
 	
 	public void setDraftStrategiesVisible(boolean newSetting)
@@ -252,7 +258,7 @@ public class LayerManager
 	
 	public boolean areStressesVisible()
 	{
-		return stressesVisibleFlag;
+		return isTypeVisible(stressesVisibleFlag, Stress.OBJECT_NAME);
 	}
 	
 	public void setStressesVisible(boolean newSetting)
@@ -262,7 +268,7 @@ public class LayerManager
 	
 	public boolean areActivitiesVisible()
 	{
-		return activitiesVisibleFlag;
+		return isTypeVisible(activitiesVisibleFlag, Task.ACTIVITY_NAME);
 	}
 	
 	public void setActivitiesVisible(boolean newSetting)
@@ -272,7 +278,7 @@ public class LayerManager
 	
 	public boolean areIntermediateResultsVisible()
 	{
-		return intermediateResultFlag;
+		return isTypeVisible(intermediateResultFlag, IntermediateResult.OBJECT_NAME);
 	}
 	
 	public void setIntermediateResultVisible(boolean newSetting)
@@ -282,7 +288,7 @@ public class LayerManager
 	
 	public boolean areThreatReductionResultsVisible()
 	{
-		return threatReductionResultFlag;
+		return isTypeVisible(threatReductionResultFlag, ThreatReductionResult.OBJECT_NAME);
 	}
 	
 	public void setThreatReductionResultVisible(boolean newSetting)
