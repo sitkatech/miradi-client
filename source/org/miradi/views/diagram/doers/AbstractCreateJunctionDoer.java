@@ -117,7 +117,7 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 	protected Vector<DiagramFactor> getSelectedDiagramFactors()
 	{
 		Vector<DiagramFactor> diagramFactors = new Vector();
-		EAMGraphCell[] cells = getSelectedCells();
+		EAMGraphCell[] cells = getOnlySelectedCells();
 		for (int index = 0; index < cells.length; ++index)
 		{
 			if (cells[index].isFactor())
@@ -130,9 +130,9 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 		return diagramFactors;
 	}
 	
-	protected EAMGraphCell[] getSelectedCells()
+	private EAMGraphCell[] getOnlySelectedCells()
 	{
-		return getDiagramView().getCurrentDiagramComponent().getSelectedAndRelatedCells();
+		return getDiagramView().getCurrentDiagramComponent().getOnlySelectedCells();
 	}
 	
 	private Point getJunctionPoint(Rectangle diagramFactorBounds)
