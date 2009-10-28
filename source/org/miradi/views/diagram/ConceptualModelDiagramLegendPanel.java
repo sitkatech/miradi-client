@@ -44,11 +44,6 @@ public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
 		addButtonLineWithCheckBox(jpanel, Cause.getObjectType(),  Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, actions.get(ActionInsertContributingFactor.class));
 	}
 	
-	protected void setLegendVisibilityOfFactorCheckBoxes(LayerManager manager, String property)
-	{
-		super.setLegendVisibilityOfFactorCheckBoxes(manager, property);
-	}
-	
 	public void updateCheckBox(LayerManager manager, String property)
 	{
 		super.updateCheckBox(manager, property);
