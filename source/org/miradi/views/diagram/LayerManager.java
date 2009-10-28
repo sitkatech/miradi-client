@@ -160,7 +160,7 @@ public class LayerManager
 	
 	public boolean areContributingFactorsVisible()
 	{
-		return isTypeVisible(contributingFactorsVisibleFlag, Cause.OBJECT_NAME_CONTRIBUTING_FACTOR);
+		return isTypeVisible(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR);
 	}
 	
 	public void setContributingFactorsVisible(boolean newSetting)
@@ -170,7 +170,7 @@ public class LayerManager
 	
 	public boolean areDirectThreatsVisible()
 	{
-		return isTypeVisible(directThreatsVisibleFlag, Cause.OBJECT_NAME_THREAT);
+		return isTypeVisible(Cause.OBJECT_NAME_THREAT);
 	}
 	
 	public void setDirectThreatsVisible(boolean newSetting)
@@ -180,7 +180,7 @@ public class LayerManager
 	
 	public boolean areFactorLinksVisible()
 	{
-		return isTypeVisible(linkagesVisibleFlag, FactorLink.OBJECT_NAME);
+		return isTypeVisible(FactorLink.OBJECT_NAME);
 	}
 	
 	public void setFactorLinksVisible(boolean newSetting)
@@ -190,12 +190,12 @@ public class LayerManager
 
 	public boolean areGoalsVisible()
 	{
-		return isTypeVisible(goalsVisibleFlag, Goal.OBJECT_NAME);
+		return isTypeVisible(Goal.OBJECT_NAME);
 	}
 	
 	public boolean areObjectivesVisible()
 	{
-		return isTypeVisible(objectivesVisibleFlag, Objective.OBJECT_NAME);
+		return isTypeVisible(Objective.OBJECT_NAME);
 	}
 	
 	public void setGoalsVisible(boolean newSetting)
@@ -210,12 +210,12 @@ public class LayerManager
 	
 	public boolean areTextBoxesVisible()
 	{
-		return isTypeVisible(textBoxesVisibleFlag, TextBox.OBJECT_NAME);
+		return isTypeVisible(TextBox.OBJECT_NAME);
 	}
 	
 	public boolean areGroupBoxesVisible()
 	{
-		return isTypeVisible(groupBoxesVisibleFlag, GroupBox.OBJECT_NAME);
+		return isTypeVisible(GroupBox.OBJECT_NAME);
 	}
 	
 	public boolean areDraftsVisible(FactorCell node)
@@ -228,7 +228,7 @@ public class LayerManager
 
 	public boolean areDraftStrategiesVisible()
 	{
-		return isTypeVisible(draftStrategyVisibleFlag, Strategy.OBJECT_NAME_DRAFT);
+		return isTypeVisible(Strategy.OBJECT_NAME_DRAFT);
 	}
 	
 	public void setDraftStrategiesVisible(boolean newSetting)
@@ -238,7 +238,7 @@ public class LayerManager
 
 	public boolean areIndicatorsVisible()
 	{
-		return isTypeVisible(indicatorsVisibleFlag, Indicator.OBJECT_NAME);
+		return isTypeVisible(Indicator.OBJECT_NAME);
 	}
 	
 	public void setIndicatorsVisible(boolean newSetting)
@@ -248,7 +248,7 @@ public class LayerManager
 
 	public boolean isScopeBoxVisible()
 	{
-		return isTypeVisible(scopeBoxVisibleFlag, ScopeBox.OBJECT_NAME);
+		return isTypeVisible(ScopeBox.OBJECT_NAME);
 	}
 	
 	public void setScopeBoxVisible(boolean newSetting)
@@ -258,7 +258,7 @@ public class LayerManager
 	
 	public boolean areStressesVisible()
 	{
-		return isTypeVisible(stressesVisibleFlag, Stress.OBJECT_NAME);
+		return isTypeVisible(Stress.OBJECT_NAME);
 	}
 	
 	public void setStressesVisible(boolean newSetting)
@@ -268,7 +268,7 @@ public class LayerManager
 	
 	public boolean areActivitiesVisible()
 	{
-		return isTypeVisible(activitiesVisibleFlag, Task.ACTIVITY_NAME);
+		return isTypeVisible(Task.ACTIVITY_NAME);
 	}
 	
 	public void setActivitiesVisible(boolean newSetting)
@@ -278,7 +278,7 @@ public class LayerManager
 	
 	public boolean areIntermediateResultsVisible()
 	{
-		return isTypeVisible(intermediateResultFlag, IntermediateResult.OBJECT_NAME);
+		return isTypeVisible(IntermediateResult.OBJECT_NAME);
 	}
 	
 	public void setIntermediateResultVisible(boolean newSetting)
@@ -288,7 +288,7 @@ public class LayerManager
 	
 	public boolean areThreatReductionResultsVisible()
 	{
-		return isTypeVisible(threatReductionResultFlag, ThreatReductionResult.OBJECT_NAME);
+		return isTypeVisible(ThreatReductionResult.OBJECT_NAME);
 	}
 	
 	public void setThreatReductionResultVisible(boolean newSetting)
@@ -296,7 +296,7 @@ public class LayerManager
 		threatReductionResultFlag = newSetting;
 	}
 	
-	private boolean isTypeVisible(boolean defaultVisibility, String objectTypeName)
+	private boolean isTypeVisible(String objectTypeName)
 	{
 		return !isHiddenInDiagramObject(getDiagramObject(), objectTypeName);
 	}
