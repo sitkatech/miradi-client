@@ -52,18 +52,6 @@ public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 	
 	protected void setLegendVisibilityOfFactorCheckBoxes(LayerManager manager, String property)
 	{		
-		JCheckBox checkBox = (JCheckBox)checkBoxes.get(property);
-		
-		if (property.equals(IntermediateResult.OBJECT_NAME))
-			manager.setIntermediateResultVisible(checkBox.isSelected());
-			
-		else if (property.equals(ThreatReductionResult.OBJECT_NAME))
-			manager.setThreatReductionResultVisible(checkBox.isSelected());
-			
-		else if (property.equals(Task.ACTIVITY_NAME))
-			manager.setActivitiesVisible(checkBox.isSelected());
-	
-		
 		super.setLegendVisibilityOfFactorCheckBoxes(manager, property);
 	}
 	
