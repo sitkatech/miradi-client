@@ -46,7 +46,6 @@ public class LayerManager
 		contributingFactorsVisibleFlag = true;
 		directThreatsVisibleFlag = true;
 		linkagesVisibleFlag = true;
-		targetLinkagesVisibleFlag = true;
 		goalsVisibleFlag = true;
 		objectivesVisibleFlag = true;
 		indicatorsVisibleFlag = true;
@@ -316,7 +315,6 @@ public class LayerManager
 	private boolean contributingFactorsVisibleFlag;
 	private boolean directThreatsVisibleFlag;
 	private boolean linkagesVisibleFlag;
-	boolean targetLinkagesVisibleFlag;
 	private boolean goalsVisibleFlag;
 	private boolean objectivesVisibleFlag;
 	private boolean indicatorsVisibleFlag;
