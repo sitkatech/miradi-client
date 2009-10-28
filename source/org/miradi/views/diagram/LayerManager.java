@@ -188,11 +188,6 @@ public class LayerManager
 		return isTypeVisible(targetLinkagesVisibleFlag, FactorLink.OBJECT_NAME_TARGETLINK);
 	}
 	
-	public void setTargetLinksVisible(boolean newSetting)
-	{
-		targetLinkagesVisibleFlag = newSetting;
-	}
-
 	public boolean areGoalsVisible()
 	{
 		return isTypeVisible(goalsVisibleFlag, Goal.OBJECT_NAME);
