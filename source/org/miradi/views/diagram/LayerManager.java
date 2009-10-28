@@ -183,11 +183,6 @@ public class LayerManager
 		linkagesVisibleFlag = newSetting;
 	}
 
-	public boolean areTargetLinksVisible()
-	{
-		return isTypeVisible(targetLinkagesVisibleFlag, FactorLink.OBJECT_NAME_TARGETLINK);
-	}
-	
 	public boolean areGoalsVisible()
 	{
 		return isTypeVisible(goalsVisibleFlag, Goal.OBJECT_NAME);
@@ -321,7 +316,7 @@ public class LayerManager
 	private boolean contributingFactorsVisibleFlag;
 	private boolean directThreatsVisibleFlag;
 	private boolean linkagesVisibleFlag;
-	private boolean targetLinkagesVisibleFlag;
+	boolean targetLinkagesVisibleFlag;
 	private boolean goalsVisibleFlag;
 	private boolean objectivesVisibleFlag;
 	private boolean indicatorsVisibleFlag;
