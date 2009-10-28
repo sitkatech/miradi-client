@@ -256,10 +256,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		}
 	}
 	
-	protected void setLegendVisibilityOfFactorCheckBoxes(LayerManager manager, String property)
-	{
-	}
-	
 	public void resetCheckBoxes()
 	{
 		removeAll();
