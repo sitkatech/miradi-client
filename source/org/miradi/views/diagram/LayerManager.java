@@ -40,7 +40,7 @@ public class LayerManager
 	{
 		diagramObject = diagramObjectToUse;
 	
-		hiddenNodeTypes = new HashSet();
+		hiddenNodeTypes = new HashSet<Class>();
 		hiddenORefs = new ORefList();
 		mode = ViewData.MODE_DEFAULT;
 		contributingFactorsVisibleFlag = true;
@@ -320,7 +320,7 @@ public class LayerManager
 	}
 	
 	private DiagramObject diagramObject;
-	private Set hiddenNodeTypes;
+	private Set<Class> hiddenNodeTypes;
 	private ORefList hiddenORefs;
 	private String mode;
 	private boolean contributingFactorsVisibleFlag;
