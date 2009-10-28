@@ -218,7 +218,7 @@ public class LayerManager
 		return isTypeVisible(GroupBox.OBJECT_NAME);
 	}
 	
-	public boolean areDraftsVisible(FactorCell node)
+	private boolean areDraftsVisible(FactorCell node)
 	{
 		if (!node.isStrategy())
 			throw new RuntimeException("Unexpected non strategy draft");
