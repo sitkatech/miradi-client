@@ -309,7 +309,7 @@ public class LayerManager
 		return defaultVisibility;
 	}
 		
-	public DiagramObject getDiagramObject()
+	private DiagramObject getDiagramObject()
 	{
 		return diagramObject;
 	}
