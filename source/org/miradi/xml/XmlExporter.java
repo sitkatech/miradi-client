@@ -166,16 +166,11 @@ public abstract class XmlExporter
 	protected void writeCodeListElements(UnicodeWriter out, String parentElementName, String elementName, CodeList codeList) throws Exception
 	{
 		out.writeln("<" + parentElementName + ">");
-		writeCodeListElements(out, elementName, codeList);
-		out.writeln("</" + parentElementName + ">");
-	}
-	
-	private void writeCodeListElements(UnicodeWriter out, String elementName, CodeList codeList) throws Exception
-	{
 		for (int codeIndex = 0; codeIndex < codeList.size(); ++codeIndex)
 		{
 			writeElement(out, elementName, codeList.get(codeIndex));
 		}
+		out.writeln("</" + parentElementName + ">");
 	}
 	
 	protected WcpaProjectData getWcpaProjectData()
