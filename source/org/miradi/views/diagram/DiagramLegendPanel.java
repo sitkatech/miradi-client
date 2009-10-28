@@ -49,11 +49,9 @@ import org.miradi.diagram.cells.DiagramTextBoxCell;
 import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.dialogs.base.ObjectRefListEditorPanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetManagementPanel;
 import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetPoolTable;
 import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetPoolTableModel;
-import org.miradi.icons.FactorLinkIcon;
 import org.miradi.icons.GoalIcon;
 import org.miradi.icons.IndicatorIcon;
 import org.miradi.icons.ObjectiveIcon;
@@ -162,7 +160,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		createCheckBox(GroupBox.OBJECT_NAME);
 		
 		createCheckBox(FactorLink.OBJECT_NAME);
-		createCheckBox(FactorLink.OBJECT_NAME_TARGETLINK);
 		createCheckBox(FactorLink.OBJECT_NAME_STRESS);
 		createCheckBox(Task.ACTIVITY_NAME);
 		
@@ -191,7 +188,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			addButtonLineWithCheckBox(jpanel, Strategy.getObjectType(), Strategy.OBJECT_NAME_DRAFT, actions.get(ActionInsertDraftStrategy.class));
 
 		addButtonLineWithCheckBox(jpanel, FactorLink.getObjectType(), FactorLink.OBJECT_NAME, actions.get(ActionInsertFactorLink.class));
-		addTargetLinkLine(jpanel, FactorLink.getObjectType(), FactorLink.OBJECT_NAME_TARGETLINK);
 		
 		addIconLineWithCheckBox(jpanel, Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon());
 		addIconLineWithCheckBox(jpanel, Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon());
@@ -214,13 +210,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	{
 	}
 
-	protected void addTargetLinkLine(JPanel jpanel, int objectType, String objectName)
-	{
-		targetLinkCheckBox = findCheckBox(objectName);
-		jpanel.add(targetLinkCheckBox);
-		jpanel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName), new FactorLinkIcon()));
-	}
-	
 	private void updateCheckBoxes()
 	{
 		if (isInvalidLayerManager(getLayerManager()))
@@ -285,12 +274,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		else if (property.equals(HumanWelfareTarget.OBJECT_NAME))
 			manager.setVisibility(DiagramHumanWelfareTarget.class, checkBox.isSelected());
 		else if (property.equals(FactorLink.OBJECT_NAME))
-		{
 			manager.setFactorLinksVisible(checkBox.isSelected());
-			targetLinkCheckBox.setEnabled(checkBox.isSelected());
-		}
-		else if (property.equals(FactorLink.OBJECT_NAME_TARGETLINK))
-			manager.setTargetLinksVisible(checkBox.isSelected());
 		else if (property.equals(Goal.OBJECT_NAME))
 			manager.setGoalsVisible(checkBox.isSelected());
 		else if (property.equals(Objective.OBJECT_NAME))
@@ -335,9 +319,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		
 		else if (property.equals(FactorLink.OBJECT_NAME))
 			checkBox.setSelected(manager.areFactorLinksVisible());
-		
-		else if (property.equals(FactorLink.OBJECT_NAME_TARGETLINK))
-			checkBox.setSelected(manager.areTargetLinksVisible());
 		
 		else if (property.equals(Goal.OBJECT_NAME))
 			checkBox.setSelected(manager.areGoalsVisible());
@@ -482,7 +463,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	}
 
 	private MainWindow mainWindow;
-	private JCheckBox targetLinkCheckBox;
 	private ObjectRefListEditorPanel editListPanel;
 }
 
