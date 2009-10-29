@@ -21,7 +21,6 @@ package org.miradi.views.umbrella;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -219,9 +218,6 @@ abstract public class LegendPanel extends DisposablePanel implements ActionListe
 		}
 	}
 
-	abstract public CodeList getLegendSettings();
-	abstract public void actionPerformed(ActionEvent event);
-	
 	protected static final String LAYER = "LAYER";
 	Project project;
 	protected Hashtable checkBoxes;
