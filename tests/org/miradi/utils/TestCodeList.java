@@ -154,5 +154,14 @@ public class TestCodeList extends EAMTestCase
 		CodeList withDuplicates = new CodeList(new String[]{"A", "B", "A", "B", "C"});
 		assertEquals("incorrect duplicate list?", withoutDuplicates, withDuplicates.withoutDuplicates());
 	}
+	
+	public void testIsEmpty()
+	{
+		CodeList emptyCodeList = new CodeList();
+		assertTrue("new code list is not empty?", emptyCodeList.isEmpty());
+		
+		emptyCodeList.add("SomeCode");
+		assertFalse("code list should be empty?", emptyCodeList.isEmpty());
+	}
 }
 

@@ -83,7 +83,7 @@ public class TestLayerManager extends EAMTestCase
 	public void testHide() throws Exception
 	{
 		LayerManager manager = new LayerManager(getProject().getTestingDiagramObject());
-		manager.setVisibility(DiagramStrategyCell.class, false);
+		manager.setVisibility(Strategy.OBJECT_NAME, false);
 		
 		DiagramFactor strategyDiagramFactor = getDiagramFactor(45);
 		DiagramFactor targetDiagramFactor = getDiagramFactor(67);
@@ -93,7 +93,7 @@ public class TestLayerManager extends EAMTestCase
 		verifyVisibility("non-hidden type", true, new DiagramTargetCell(cmTarget, targetDiagramFactor), manager);
 		assertFalse("All layers still visible?", manager.areAllNodesVisible());
 		
-		manager.setVisibility(DiagramStrategyCell.class, true);
+		manager.setVisibility(Strategy.OBJECT_NAME, true);
 		verifyVisibility("unhidden type", true, new DiagramTargetCell(cmTarget, targetDiagramFactor2), manager);
 		assertTrue("All layers not visible again?", manager.areAllNodesVisible());
 	}
@@ -159,7 +159,7 @@ public class TestLayerManager extends EAMTestCase
 
 	private void verifyVisibility(String text, boolean expected, FactorCell node, LayerManager manager)
 	{
-		assertEquals("type: " + text + " (" + node + ") ",expected, manager.isTypeVisible(node.getClass()));
+		assertEquals("type: " + text + " (" + node + ") ",expected, manager.isTypeVisible(node.getWrappedFactor().getTypeName()));
 		verifyNodeVisibility(text, expected, node, manager);
 	}
 

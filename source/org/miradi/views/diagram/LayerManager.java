@@ -22,7 +22,9 @@ package org.miradi.views.diagram;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.FactorCell;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramObject;
@@ -39,6 +41,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ViewData;
+import org.miradi.utils.CodeList;
 
 public class LayerManager
 {
@@ -130,11 +133,6 @@ public class LayerManager
 		return diagramObjectToUse.isResultsChain();
 	}
 
-	public boolean isTypeVisible(Class nodeClass)
-	{
-		return !hiddenNodeTypes.contains(nodeClass);
-	}
-	
 	public void setVisibility(Class nodeClass, boolean newVisibility)
 	{
 		if(newVisibility)
@@ -145,7 +143,7 @@ public class LayerManager
 	
 	public boolean areAllNodesVisible()
 	{
-		return hiddenNodeTypes.isEmpty() && hiddenORefs.isEmpty();
+		return getDiagramObject().getHiddenTypes().isEmpty() && hiddenORefs.isEmpty();
 	}
 	
 	public void setHiddenORefs(ORefList oRefsToHide)
@@ -200,14 +198,38 @@ public class LayerManager
 	
 	public void setGoalsVisible(boolean newSetting)
 	{
-		goalsVisibleFlag = newSetting;
+		setVisibility(Goal.OBJECT_NAME, newSetting);
 	}
 	
 	public void setObjectivesVisible(boolean newSetting)
 	{
-		objectivesVisibleFlag = newSetting;
+		setVisibility(Objective.OBJECT_NAME, newSetting);
+	}
+
+	public void setVisibility(String typeName, boolean isVisible)
+	{
+		CodeList hiddenTypes = getDiagramObject().getHiddenTypes();		
+		if (isVisible)
+			hiddenTypes.removeCode(typeName);
+		else
+			hiddenTypes.add(typeName);
+		
+		saveVisibility(hiddenTypes);
 	}
 	
+	private void saveVisibility(CodeList currentHiddenTypes)
+	{
+		try
+		{
+			CommandSetObjectData updateHiddenTypes = new CommandSetObjectData(getDiagramObject(), DiagramObject.TAG_HIDDEN_TYPES, currentHiddenTypes.toString());
+			getDiagramObject().getProject().executeCommand(updateHiddenTypes);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+
 	public boolean areTextBoxesVisible()
 	{
 		return isTypeVisible(TextBox.OBJECT_NAME);
@@ -243,7 +265,7 @@ public class LayerManager
 	
 	public void setIndicatorsVisible(boolean newSetting)
 	{
-		indicatorsVisibleFlag = newSetting;
+		setVisibility(Indicator.OBJECT_NAME, newSetting);
 	}
 
 	public boolean isScopeBoxVisible()

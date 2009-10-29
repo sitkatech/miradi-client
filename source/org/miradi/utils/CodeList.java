@@ -179,6 +179,11 @@ public class CodeList
 		
 		return withoutDuplicates;
 	}
+	
+	public boolean isEmpty()
+	{
+		return size() == 0;
+	}
 		
 	private static final String TAG_IDS = "Codes";
 
