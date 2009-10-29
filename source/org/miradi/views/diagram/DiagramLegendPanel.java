@@ -87,8 +87,8 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	public DiagramLegendPanel(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse.getProject());
+		
 		mainWindow = mainWindowToUse;
-	
 		getProject().addCommandExecutedListener(this);
 		createLegendCheckBoxes();
 		addAllComponents();
