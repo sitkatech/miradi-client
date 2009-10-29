@@ -133,14 +133,6 @@ public class LayerManager
 		return diagramObjectToUse.isResultsChain();
 	}
 
-	public void setVisibility(Class nodeClass, boolean newVisibility)
-	{
-		if(newVisibility)
-			hiddenNodeTypes.remove(nodeClass);
-		else
-			hiddenNodeTypes.add(nodeClass);
-	}
-	
 	public boolean areAllNodesVisible()
 	{
 		return getDiagramObject().getHiddenTypes().isEmpty() && hiddenORefs.isEmpty();
@@ -334,7 +326,7 @@ public class LayerManager
 	}
 	
 	private DiagramObject diagramObject;
-	private Set<Class> hiddenNodeTypes;
+	Set<Class> hiddenNodeTypes;
 	private ORefList hiddenORefs;
 	private String mode;
 	boolean contributingFactorsVisibleFlag;
