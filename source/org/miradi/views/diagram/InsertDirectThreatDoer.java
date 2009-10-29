@@ -50,8 +50,8 @@ public class InsertDirectThreatDoer extends InsertFactorDoer
 
 	public void forceVisibleInLayerManager()
 	{
-		getCurrentLayerManager().setContributingFactorsVisible(true);
-		getCurrentLayerManager().setDirectThreatsVisible(true);
+		getCurrentLayerManager().setVisibility(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, true);
+		getCurrentLayerManager().setVisibility(Cause.OBJECT_NAME_THREAT, true);
 	}
 	
 	protected void doExtraSetup(DiagramFactor newlyInsertedDiagramFactor, FactorCell[] selectedFactorCells) throws Exception
