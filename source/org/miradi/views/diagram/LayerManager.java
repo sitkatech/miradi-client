@@ -149,11 +149,6 @@ public class LayerManager
 		return isTypeVisible(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR);
 	}
 	
-	public void setContributingFactorsVisible(boolean newSetting)
-	{
-		contributingFactorsVisibleFlag = newSetting;
-	}
-	
 	public boolean areDirectThreatsVisible()
 	{
 		return isTypeVisible(Cause.OBJECT_NAME_THREAT);
