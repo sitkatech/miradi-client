@@ -37,7 +37,6 @@ import org.miradi.dialogs.fieldComponents.PanelCheckBox;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.LocationHolder;
@@ -103,13 +102,6 @@ abstract public class LegendPanel extends DisposablePanel implements ActionListe
 		component.addActionListener(this);
 	}
 
-	protected void addCheckBoxLine(JComponent panel, String objectName)
-	{
-		JCheckBox foundCheckBox = findCheckBox(objectName);
-		String foundLabel = EAM.fieldLabel(ObjectType.FAKE, objectName);
-		addIconLine(panel, foundLabel, null, foundCheckBox);
-	}
-	
 	protected void addIconLineWithCheckBox(JComponent panel, int objectType, String objectName, Icon icon)
 	{
 		JCheckBox foundCheckBox = findCheckBox(objectName);
