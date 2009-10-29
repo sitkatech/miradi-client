@@ -32,8 +32,6 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
-import org.miradi.objects.Stress;
-import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ViewData;
@@ -192,16 +190,6 @@ public class LayerManager
 		setVisibility(Indicator.OBJECT_NAME, newSetting);
 	}
 
-	public boolean areStressesVisible()
-	{
-		return isTypeVisible(Stress.OBJECT_NAME);
-	}
-	
-	public boolean areActivitiesVisible()
-	{
-		return isTypeVisible(Task.ACTIVITY_NAME);
-	}
-	
 	public boolean areIntermediateResultsVisible()
 	{
 		return isTypeVisible(IntermediateResult.OBJECT_NAME);
