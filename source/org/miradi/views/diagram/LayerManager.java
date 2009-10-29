@@ -48,20 +48,6 @@ public class LayerManager
 	
 		hiddenORefs = new ORefList();
 		mode = ViewData.MODE_DEFAULT;
-		contributingFactorsVisibleFlag = true;
-		directThreatsVisibleFlag = true;
-		linkagesVisibleFlag = true;
-		goalsVisibleFlag = true;
-		objectivesVisibleFlag = true;
-		indicatorsVisibleFlag = true;
-		scopeBoxVisibleFlag = true;
-		stressesVisibleFlag = true;
-		activitiesVisibleFlag = true;
-		intermediateResultFlag = true;
-		threatReductionResultFlag = true;
-		textBoxesVisibleFlag = true;
-		groupBoxesVisibleFlag = true;
-		draftStrategyVisibleFlag = true;
 	}
 	
 	public boolean isVisible(DiagramObject diagramObjectToUse, FactorCell node)
