@@ -57,6 +57,7 @@ import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Cause;
+import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Goal;
@@ -66,6 +67,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TaggedObjectSet;
@@ -220,6 +222,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	{
 		updateVisiblity();
 		saveSettingsToProject(DiagramObject.TAG_HIDDEN_TYPES);
+		getMainWindow().updateActionStates();
 	}
 	
 	protected void saveSettingsToProject(String tag)
@@ -360,6 +363,12 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			return true;
 		
 		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TARGET_MODE))
+			return true;
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(ConceptualModelDiagram.getObjectType(), ConceptualModelDiagram.TAG_HIDDEN_TYPES))
+			return true;
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(ResultsChainDiagram.getObjectType(), ResultsChainDiagram.TAG_HIDDEN_TYPES))
 			return true;
 		
 		return false;
