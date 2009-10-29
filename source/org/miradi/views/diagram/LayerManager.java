@@ -31,7 +31,6 @@ import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
-import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Task;
@@ -193,11 +192,6 @@ public class LayerManager
 		setVisibility(Indicator.OBJECT_NAME, newSetting);
 	}
 
-	public boolean isScopeBoxVisible()
-	{
-		return isTypeVisible(ScopeBox.OBJECT_NAME);
-	}
-	
 	public boolean areStressesVisible()
 	{
 		return isTypeVisible(Stress.OBJECT_NAME);
