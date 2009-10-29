@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 
 import org.miradi.actions.ActionInsertContributingFactor;
@@ -42,19 +41,6 @@ public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
 	{
 		addButtonLineWithCheckBox(jpanel, Cause.getObjectType(), Cause.OBJECT_NAME_THREAT, actions.get(ActionInsertDirectThreat.class));
 		addButtonLineWithCheckBox(jpanel, Cause.getObjectType(),  Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, actions.get(ActionInsertContributingFactor.class));
-	}
-	
-	public void updateCheckBox(LayerManager manager, String property)
-	{
-		super.updateCheckBox(manager, property);
-		
-		JCheckBox checkBox = (JCheckBox)checkBoxes.get(property);
-		
-		if (property.equals(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR))
-			checkBox.setSelected(manager.areContributingFactorsVisible());
-	
-		else if (property.equals(Cause.OBJECT_NAME_THREAT))
-			checkBox.setSelected(manager.areDirectThreatsVisible());
 	}
 	
 	protected void addStressLine(TwoColumnPanel jpanel)
