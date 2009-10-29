@@ -154,11 +154,6 @@ public class LayerManager
 		return isTypeVisible(Cause.OBJECT_NAME_THREAT);
 	}
 	
-	public void setDirectThreatsVisible(boolean newSetting)
-	{
-		directThreatsVisibleFlag = newSetting;
-	}
-	
 	public boolean areFactorLinksVisible()
 	{
 		return isTypeVisible(FactorLink.OBJECT_NAME);
