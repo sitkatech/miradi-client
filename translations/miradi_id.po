@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-29 09:46-0500\n"
+"POT-Creation-Date: 2009-10-29 09:55-0500\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -756,7 +756,7 @@ msgid "Button|Shared"
 msgstr "Dipakai Bersama "
 
 #: miradi/source/org/miradi/views/diagram/InsertDirectThreatDoer.java:48
-#: miradi/source/org/miradi/views/diagram/InsertContributingFactorDoer.java:42
+#: miradi/source/org/miradi/views/diagram/InsertContributingFactorDoer.java:43
 msgid "Label|New Factor"
 msgstr "Faktor Baru "
 
