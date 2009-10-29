@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 
 import org.miradi.actions.ActionInsertIntermediateResult;
@@ -49,21 +48,4 @@ public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 	{
 		addIconLineWithCheckBox(jpanel, Task.getObjectType(), Task.ACTIVITY_NAME, new ActivityIcon());
 	}
-	
-	public void updateCheckBox(LayerManager manager, String property)
-	{
-		super.updateCheckBox(manager, property);
-		
-		JCheckBox checkBox = (JCheckBox)checkBoxes.get(property);
-		
-		if (property.equals(IntermediateResult.OBJECT_NAME))
-			checkBox.setSelected(manager.areIntermediateResultsVisible());
-	
-		else if (property.equals(ThreatReductionResult.OBJECT_NAME))
-			checkBox.setSelected(manager.areThreatReductionResultsVisible());
-		
-		else if (property.equals(Task.ACTIVITY_NAME))
-			checkBox.setSelected(manager.areActivitiesVisible());
-	}
-
 }
