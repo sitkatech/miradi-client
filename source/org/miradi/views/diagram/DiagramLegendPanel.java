@@ -271,7 +271,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		checkBox.setSelected(manager.isTypeVisible(property));
 	}
 	
-	public CodeList getLegendSettings()
+	private CodeList getLegendSettings()
 	{
 		CodeList hiddenTypes = new CodeList();
 		ChoiceItem[] choices = new DiagramLegendQuestion().getChoices();
