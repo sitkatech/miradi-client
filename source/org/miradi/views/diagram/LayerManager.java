@@ -246,11 +246,6 @@ public class LayerManager
 		return isTypeVisible(Stress.OBJECT_NAME);
 	}
 	
-	public void setStressesVisible(boolean newSetting)
-	{
-		stressesVisibleFlag = newSetting;
-	}
-	
 	public boolean areActivitiesVisible()
 	{
 		return isTypeVisible(Task.ACTIVITY_NAME);
