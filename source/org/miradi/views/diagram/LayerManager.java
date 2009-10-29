@@ -23,7 +23,6 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Goal;
@@ -97,16 +96,6 @@ public class LayerManager
 	public void setMode(String newMode)
 	{
 		mode = newMode;
-	}
-	
-	public boolean areContributingFactorsVisible()
-	{
-		return isTypeVisible(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR);
-	}
-	
-	public boolean areDirectThreatsVisible()
-	{
-		return isTypeVisible(Cause.OBJECT_NAME_THREAT);
 	}
 	
 	public boolean areFactorLinksVisible()
