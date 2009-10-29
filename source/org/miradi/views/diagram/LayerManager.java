@@ -271,11 +271,6 @@ public class LayerManager
 		return isTypeVisible(ThreatReductionResult.OBJECT_NAME);
 	}
 	
-	public void setThreatReductionResultVisible(boolean newSetting)
-	{
-		threatReductionResultFlag = newSetting;
-	}
-	
 	public boolean isTypeVisible(String objectTypeName)
 	{
 		return !isHiddenInDiagramObject(getDiagramObject(), objectTypeName);
