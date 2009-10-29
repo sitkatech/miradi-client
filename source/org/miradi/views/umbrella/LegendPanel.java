@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -30,9 +28,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.border.LineBorder;
 
-import org.martus.swing.UiLabel;
 import org.miradi.actions.EAMAction;
 import org.miradi.actions.ObjectsAction;
 import org.miradi.dialogs.base.DisposablePanel;
@@ -89,17 +85,6 @@ abstract public class LegendPanel extends DisposablePanel implements ActionListe
 		return checkBox.isSelected();
 	}
 
-	public UiLabel createTitleBar(String text)
-	{
-		UiLabel title = new PanelTitleLabel(text);
-		title.setFont(title.getFont().deriveFont(Font.BOLD));
-		title.setBorder(new LineBorder(Color.BLACK, 2));
-		title.setHorizontalAlignment(UiLabel.CENTER);
-		title.setBackground(getBackground());
-		
-		return title;
-	}
-	
 	protected void createCheckboxes(CodeList checkBoxCodes)
 	{
 		for (int i = 0; i < checkBoxCodes.size(); ++i)
