@@ -89,17 +89,6 @@ abstract public class LegendPanel extends DisposablePanel implements ActionListe
 		return checkBox.isSelected();
 	}
 
-	protected void setAllCheckboxes(boolean newSetting)
-	{
-		Object[] keys = checkBoxes.keySet().toArray();
-		for (int i = 0; i < keys.length; ++i)
-		{
-			String property = ((JCheckBox)checkBoxes.get(keys[i])).getClientProperty(LAYER).toString();
-			JCheckBox checkBox = findCheckBox(property);
-			checkBox.setSelected(newSetting);
-		}
-	}
-	
 	public UiLabel createTitleBar(String text)
 	{
 		UiLabel title = new PanelTitleLabel(text);
