@@ -40,9 +40,6 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.cells.DiagramHumanWelfareTarget;
-import org.miradi.diagram.cells.DiagramStrategyCell;
-import org.miradi.diagram.cells.DiagramTargetCell;
 import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.dialogs.base.ObjectRefListEditorPanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
@@ -272,13 +269,13 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			checkBox.setSelected(manager.isScopeBoxVisible());
 	
 		else if (property.equals(Target.OBJECT_NAME))
-			checkBox.setSelected(manager.isTypeVisible(DiagramTargetCell.class));
+			checkBox.setSelected(manager.isTypeVisible(Target.OBJECT_NAME));
 		
 		else if (property.equals(HumanWelfareTarget.OBJECT_NAME))
-			checkBox.setSelected(manager.isTypeVisible(DiagramHumanWelfareTarget.class));
+			checkBox.setSelected(manager.isTypeVisible(HumanWelfareTarget.OBJECT_NAME));
 		
 		else if (property.equals(Strategy.OBJECT_NAME))
-			checkBox.setSelected(manager.isTypeVisible(DiagramStrategyCell.class));
+			checkBox.setSelected(manager.isTypeVisible(Strategy.OBJECT_NAME));
 		
 		else if (property.equals(FactorLink.OBJECT_NAME))
 			checkBox.setSelected(manager.areFactorLinksVisible());

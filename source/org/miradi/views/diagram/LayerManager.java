@@ -103,7 +103,7 @@ public class LayerManager
 		if (node.isActivity())
 			return areActivitiesVisible();
 
-		if(isTypeVisible(node.getClass()))
+		if(isTypeVisible(node.getWrappedFactor().getTypeName()))
 			return true;
 		
 		return false;
@@ -296,7 +296,7 @@ public class LayerManager
 		threatReductionResultFlag = newSetting;
 	}
 	
-	private boolean isTypeVisible(String objectTypeName)
+	public boolean isTypeVisible(String objectTypeName)
 	{
 		return !isHiddenInDiagramObject(getDiagramObject(), objectTypeName);
 	}
