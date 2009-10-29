@@ -27,7 +27,6 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 
 import org.miradi.actions.EAMAction;
 import org.miradi.dialogs.base.DisposablePanel;
@@ -122,12 +121,6 @@ abstract public class LegendPanel extends DisposablePanel implements ActionListe
 		panel.add(new PanelTitleLabel(text, icon));
 	}
 	
-	protected void addSeparator(JComponent panel)
-	{
-		panel.add(new JLabel(" "));
-		panel.add(new JLabel(" "));
-	}
-
 	protected static class LocationButton extends PanelButton implements LocationHolder
 	{
 		public LocationButton(EAMAction action)
