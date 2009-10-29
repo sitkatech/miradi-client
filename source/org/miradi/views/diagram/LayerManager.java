@@ -265,18 +265,4 @@ public class LayerManager
 	private DiagramObject diagramObject;
 	private ORefList hiddenORefs;
 	private String mode;
-	boolean contributingFactorsVisibleFlag;
-	boolean directThreatsVisibleFlag;
-	boolean linkagesVisibleFlag;
-	boolean goalsVisibleFlag;
-	boolean objectivesVisibleFlag;
-	boolean indicatorsVisibleFlag;
-	boolean scopeBoxVisibleFlag;
-	boolean stressesVisibleFlag;
-	boolean activitiesVisibleFlag;
-	boolean intermediateResultFlag;
-	boolean threatReductionResultFlag;
-	boolean textBoxesVisibleFlag;
-	boolean groupBoxesVisibleFlag;
-	boolean draftStrategyVisibleFlag;
 }
