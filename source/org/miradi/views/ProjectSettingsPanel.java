@@ -35,7 +35,7 @@ public class ProjectSettingsPanel extends ObjectDataInputPanel
 		super(projectToUse, projectToUse.getMetadata().getRef());
 		
 		final ChoiceQuestion question = StaticQuestionManager.getQuestion(TargetModeQuestion.class);
-		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TARGET_MODE, question));
+		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, question));
 		
 		updateFieldsFromProject();
 	}
