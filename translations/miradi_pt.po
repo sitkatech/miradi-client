@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-29 08:50-0500\n"
+"POT-Creation-Date: 2009-10-29 09:46-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -544,11 +544,11 @@ msgstr ""
 msgid "Choose Stress to Clone"
 msgstr ""
 
-#: miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:42
+#: miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:41
 msgid "Label|New Scope Box"
 msgstr ""
 
-#: miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:78
+#: miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:77
 msgid "Project Scope"
 msgstr ""
 
@@ -573,7 +573,7 @@ msgstr ""
 msgid "Tag"
 msgstr ""
 
-#: miradi/source/org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:102
+#: miradi/source/org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:101
 msgid "Label|New Group Box"
 msgstr ""
 
@@ -607,7 +607,7 @@ msgstr ""
 msgid "Button|Paste Contents"
 msgstr ""
 
-#: miradi/source/org/miradi/views/diagram/doers/InsertHumanWelfareTargetDoer.java:37
+#: miradi/source/org/miradi/views/diagram/doers/InsertHumanWelfareTargetDoer.java:36
 msgid "Label|New Human Welfare Target"
 msgstr ""
 
@@ -628,7 +628,7 @@ msgstr ""
 msgid "Manage Tagged Object Sets"
 msgstr ""
 
-#: miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:61
+#: miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:60
 msgid "Label|New Draft Strategy"
 msgstr ""
 
