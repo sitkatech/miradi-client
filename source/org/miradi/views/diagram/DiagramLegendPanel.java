@@ -166,7 +166,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 
 	}
 	
-	protected JPanel createLegendButtonPanel(Actions actions)
+	private JPanel createLegendButtonPanel(Actions actions)
 	{
 		TwoColumnPanel jpanel = new TwoColumnPanel();
 		jpanel.disableFill();
@@ -361,7 +361,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		return event.isSetDataCommandWithThisType(TaggedObjectSet.getObjectType());
 	}
 	
-	protected boolean isInvalidLayerManager(LayerManager manager)
+	private boolean isInvalidLayerManager(LayerManager manager)
 	{
 		return manager == null;
 	}
@@ -384,7 +384,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		return getMainWindow().getDiagramView().getCurrentDiagramObject();
 	}
 	
-	class ManageTaggedObjectSetButtonHandler implements ActionListener
+	private class ManageTaggedObjectSetButtonHandler implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e)
 		{
@@ -409,4 +409,3 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	private MainWindow mainWindow;
 	private ObjectRefListEditorPanel editListPanel;
 }
-
