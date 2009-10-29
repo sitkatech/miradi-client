@@ -350,11 +350,19 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		if (isUpdateTaggedObjectSetsCommand(event))
+		if (shouldResetCheckBoxes(event))
 			resetCheckBoxes();
+	}
+
+	private boolean shouldResetCheckBoxes(CommandExecutedEvent event)
+	{
+		if (isUpdateTaggedObjectSetsCommand(event))
+			return true;
 		
 		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TARGET_MODE))
-			resetCheckBoxes();
+			return true;
+		
+		return false;
 	}
 	
 	private boolean isUpdateTaggedObjectSetsCommand(CommandExecutedEvent event)
