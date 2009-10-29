@@ -159,11 +159,6 @@ public class LayerManager
 		return isTypeVisible(FactorLink.OBJECT_NAME);
 	}
 	
-	public void setFactorLinksVisible(boolean newSetting)
-	{
-		linkagesVisibleFlag = newSetting;
-	}
-
 	public boolean areGoalsVisible()
 	{
 		return isTypeVisible(Goal.OBJECT_NAME);
