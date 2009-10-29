@@ -180,14 +180,9 @@ public class LayerManager
 		if (!node.isStrategy())
 			throw new RuntimeException("Unexpected non strategy draft");
 		
-		return areDraftStrategiesVisible();
-	}
-
-	public boolean areDraftStrategiesVisible()
-	{
 		return isTypeVisible(Strategy.OBJECT_NAME_DRAFT);
 	}
-	
+
 	public boolean areIndicatorsVisible()
 	{
 		return isTypeVisible(Indicator.OBJECT_NAME);
