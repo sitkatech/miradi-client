@@ -191,8 +191,6 @@ public class FactorLink extends BaseObject
 	public static final String TAG_BIDIRECTIONAL_LINK = "BidirectionalLink";
 	
 	public static final String OBJECT_NAME = "Link";
-	public static final String OBJECT_NAME_STRESS = "Stress";
-	
 	public static final int FROM = 1;
 	public static final int TO = 2;
 	public static final String BIDIRECTIONAL_LINK = BooleanData.BOOLEAN_TRUE;
