@@ -30,7 +30,6 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 
 import org.miradi.actions.EAMAction;
-import org.miradi.actions.ObjectsAction;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelCheckBox;
@@ -113,16 +112,6 @@ abstract public class LegendPanel extends DisposablePanel implements ActionListe
 	{
 		JButton button = new LocationButton(action);
 
-		panel.add(findCheckBox(objectName));
-		panel.add(button);
-	}
-
-	protected void addPickerButtonLineWithCheckBox(JComponent panel, int objectType, String objectName, ObjectsAction action, ObjectPicker picker)
-	{
-		ObjectsActionButton button = new ObjectsActionButton(action, picker);
-		buttonsToDispose.add(button);
-		button.setText(EAM.fieldLabel(objectType, objectName));
-		
 		panel.add(findCheckBox(objectName));
 		panel.add(button);
 	}
