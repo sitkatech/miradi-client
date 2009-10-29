@@ -218,6 +218,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		}
 	}
 	
+	@Override
 	public void actionPerformed(ActionEvent event)
 	{
 		updateVisiblity();
@@ -225,6 +226,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		getMainWindow().updateActionStates();
 	}
 	
+	@Override
 	protected void saveSettingsToProject(String tag)
 	{
 		try
@@ -239,6 +241,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		}
 	}
 
+	@Override
 	protected CodeList getLegendSettings(String tag)
 	{
 		try
@@ -305,6 +308,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			checkBox.setSelected(manager.areStressesVisible());
 	}
 	
+	@Override
 	public CodeList getLegendSettings()
 	{
 		CodeList hiddenTypes = new CodeList();
