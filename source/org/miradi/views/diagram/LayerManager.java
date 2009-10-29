@@ -24,7 +24,6 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramObject;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
@@ -96,11 +95,6 @@ public class LayerManager
 	public void setMode(String newMode)
 	{
 		mode = newMode;
-	}
-	
-	public boolean areFactorLinksVisible()
-	{
-		return isTypeVisible(FactorLink.OBJECT_NAME);
 	}
 	
 	public boolean areGoalsVisible()
