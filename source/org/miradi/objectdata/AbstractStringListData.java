@@ -49,7 +49,7 @@ abstract public class AbstractStringListData extends ObjectData
 	
 	public CodeList getCodeList()
 	{
-		return data;
+		return new CodeList(data);
 	}
 	
 	public int size()
