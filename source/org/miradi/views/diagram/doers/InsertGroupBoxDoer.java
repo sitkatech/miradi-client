@@ -39,6 +39,9 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 		if (containsDifferentType(getSelectedFactorCells()))
 			return false;
 		
+		if (getDiagramView().isStategyBrainstormMode())
+			return false;
+		
 		return true;
 	}
 	
