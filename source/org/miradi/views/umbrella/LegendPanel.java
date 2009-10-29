@@ -47,6 +47,7 @@ abstract public class LegendPanel extends DisposablePanel implements ActionListe
 	public LegendPanel(Project projectToUse)
 	{
 		super(new BasicGridLayout(0, 1));
+	
 		project = projectToUse;
 		checkBoxes = new Hashtable();
 		buttonsToDispose = new HashSet<ObjectsActionButton>();
