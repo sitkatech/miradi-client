@@ -251,11 +251,6 @@ public class LayerManager
 		return isTypeVisible(Task.ACTIVITY_NAME);
 	}
 	
-	public void setActivitiesVisible(boolean newSetting)
-	{
-		activitiesVisibleFlag = newSetting;
-	}
-	
 	public boolean areIntermediateResultsVisible()
 	{
 		return isTypeVisible(IntermediateResult.OBJECT_NAME);
