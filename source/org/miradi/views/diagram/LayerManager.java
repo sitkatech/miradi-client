@@ -27,13 +27,9 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Goal;
-import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
-import org.miradi.objects.TextBox;
-import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.CodeList;
 
@@ -162,16 +158,6 @@ public class LayerManager
 		}
 	}
 
-	public boolean areTextBoxesVisible()
-	{
-		return isTypeVisible(TextBox.OBJECT_NAME);
-	}
-	
-	public boolean areGroupBoxesVisible()
-	{
-		return isTypeVisible(GroupBox.OBJECT_NAME);
-	}
-	
 	private boolean areDraftsVisible(FactorCell node)
 	{
 		if (!node.isStrategy())
@@ -190,16 +176,6 @@ public class LayerManager
 		setVisibility(Indicator.OBJECT_NAME, newSetting);
 	}
 
-	public boolean areIntermediateResultsVisible()
-	{
-		return isTypeVisible(IntermediateResult.OBJECT_NAME);
-	}
-	
-	public boolean areThreatReductionResultsVisible()
-	{
-		return isTypeVisible(ThreatReductionResult.OBJECT_NAME);
-	}
-	
 	public boolean isTypeVisible(String objectTypeName)
 	{
 		return !isHiddenInDiagramObject(getDiagramObject(), objectTypeName);
