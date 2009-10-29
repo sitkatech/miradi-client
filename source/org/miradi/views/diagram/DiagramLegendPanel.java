@@ -266,7 +266,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		validate();
 	}
 	
-	protected void updateCheckBox(LayerManager manager, String property)
+	private void updateCheckBox(LayerManager manager, String property)
 	{
 		JCheckBox checkBox = findCheckBox(property);
 		checkBox.setSelected(manager.isTypeVisible(property));
