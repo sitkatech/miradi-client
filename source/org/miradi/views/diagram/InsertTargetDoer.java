@@ -19,9 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import org.miradi.diagram.cells.DiagramTargetCell;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Target;
 
 public class InsertTargetDoer extends InsertFactorDoer
 {
@@ -37,6 +37,6 @@ public class InsertTargetDoer extends InsertFactorDoer
 
 	public void forceVisibleInLayerManager()
 	{
-		getCurrentLayerManager().setVisibility(DiagramTargetCell.class, true);
+		getCurrentLayerManager().setVisibility(Target.OBJECT_NAME, true);
 	}
 }

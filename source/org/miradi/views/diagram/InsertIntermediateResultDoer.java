@@ -19,9 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import org.miradi.diagram.cells.DiagramIntermediateResultCell;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.IntermediateResult;
 
 public class InsertIntermediateResultDoer extends InsertFactorDoer
 {
@@ -36,7 +36,7 @@ public class InsertIntermediateResultDoer extends InsertFactorDoer
 	
 	public void forceVisibleInLayerManager()
 	{
-		getCurrentLayerManager().setVisibility(DiagramIntermediateResultCell.class, true);
+		getCurrentLayerManager().setVisibility(IntermediateResult.OBJECT_NAME, true);
 	}
 
 	public String getInitialText()

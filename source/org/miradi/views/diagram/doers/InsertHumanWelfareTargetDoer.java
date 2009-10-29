@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.diagram.cells.DiagramHumanWelfareTarget;
 import org.miradi.main.EAM;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.views.diagram.InsertFactorDoer;
@@ -39,6 +38,6 @@ public class InsertHumanWelfareTargetDoer extends InsertFactorDoer
 
 	public void forceVisibleInLayerManager()
 	{
-		getCurrentLayerManager().setVisibility(DiagramHumanWelfareTarget.class, true);
+		getCurrentLayerManager().setVisibility(HumanWelfareTarget.OBJECT_NAME, true);
 	}
 }

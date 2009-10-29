@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.cells.DiagramStrategyCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
@@ -69,7 +68,7 @@ public class InsertDraftStrategyDoer extends InsertFactorDoer
 
 	public void forceVisibleInLayerManager()
 	{
-		getCurrentLayerManager().setVisibility(DiagramStrategyCell.class, true);
+		getCurrentLayerManager().setVisibility(Strategy.OBJECT_NAME_DRAFT, true);
 	}
 	
 }

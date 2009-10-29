@@ -22,7 +22,6 @@ package org.miradi.views.diagram.doers;
 import java.util.HashSet;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.cells.DiagramGroupBoxCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
@@ -94,7 +93,7 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 	
 	public void forceVisibleInLayerManager()
 	{
-		getMainWindow().getCurrentDiagramComponent().getLayerManager().setVisibility(DiagramGroupBoxCell.class, true);
+		getMainWindow().getCurrentDiagramComponent().getLayerManager().setVisibility(GroupBox.OBJECT_NAME, true);
 	}
 
 	public String getInitialText()
