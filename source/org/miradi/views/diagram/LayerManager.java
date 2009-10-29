@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.main.EAM;
@@ -49,7 +46,6 @@ public class LayerManager
 	{
 		diagramObject = diagramObjectToUse;
 	
-		hiddenNodeTypes = new HashSet<Class>();
 		hiddenORefs = new ORefList();
 		mode = ViewData.MODE_DEFAULT;
 		contributingFactorsVisibleFlag = true;
@@ -326,7 +322,6 @@ public class LayerManager
 	}
 	
 	private DiagramObject diagramObject;
-	Set<Class> hiddenNodeTypes;
 	private ORefList hiddenORefs;
 	private String mode;
 	boolean contributingFactorsVisibleFlag;
