@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-29 12:25-0500\n"
+"POT-Creation-Date: 2009-10-29 12:28-0500\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -679,7 +679,7 @@ msgstr "Anda yakin ingin menghapus Indikator ini?"
 msgid "Manage Tags (BETA)..."
 msgstr "Mengelola Tag (BETA)…"
 
-#: miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:434
+#: miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:399
 msgid "Manage Tagged Object Sets"
 msgstr "Mengelola Kumpulan Obyek yang Ditandai"
 
