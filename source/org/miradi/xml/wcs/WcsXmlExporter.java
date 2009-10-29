@@ -56,7 +56,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 	{
 		setWriter(outToUse);
 		
-		getWriter().writeln("<?xml version='1.0' encoding='UTF-8' ?>");
+		getWriter().writeln("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
 		writeStartElementWithAttribute(getWriter(), CONSERVATION_PROJECT, XMLNS, NAME_SPACE);
 		
 		writeProjectSummaryElement();

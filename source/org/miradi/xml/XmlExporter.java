@@ -105,7 +105,7 @@ public abstract class XmlExporter
 	
 	public void writeStartElementWithAttribute(UnicodeWriter out, String startElementName, String attributeName, String attributeValue) throws IOException
 	{
-		out.write("<" + startElementName + " " + attributeName + "='" + attributeValue + "'>");
+		out.write("<" + startElementName + " " + attributeName + "=\"" + attributeValue + "\">");
 	}
 	
 	public void writeStartElementWithTwoAttributes(UnicodeWriter out, String startElementName, String attributeName1, int attributeValue1, String attributeName2, int attributeValue2) throws IOException
@@ -115,7 +115,7 @@ public abstract class XmlExporter
 	
 	public void writeStartElementWithTwoAttributes(UnicodeWriter out, String startElementName, String attributeName1, String attributeValue1, String attributeName2, String attributeValue2) throws IOException
 	{
-		out.write("<" + startElementName + " " + attributeName1 + "='" + attributeValue1 + "' " + attributeName2 + "='" + attributeValue2 + "'>");
+		out.write("<" + startElementName + " " + attributeName1 + "=\"" + attributeValue1 + "\" " + attributeName2 + "=\"" + attributeValue2 + "\">");
 	}
 	
 	protected void writeStartElement(UnicodeWriter out, String startElementName) throws IOException
