@@ -227,7 +227,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		getMainWindow().updateActionStates();
 	}
 	
-	@Override
 	protected void saveSettingsToProject(String tag)
 	{
 		try

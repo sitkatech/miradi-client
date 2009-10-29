@@ -36,7 +36,6 @@ import javax.swing.border.LineBorder;
 import org.martus.swing.UiLabel;
 import org.miradi.actions.EAMAction;
 import org.miradi.actions.ObjectsAction;
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelCheckBox;
@@ -44,7 +43,6 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.LocationHolder;
@@ -70,21 +68,6 @@ abstract public class LegendPanel extends DisposablePanel implements ActionListe
 		for(ObjectsActionButton button : buttonsToDispose)
 		{
 			button.dispose();
-		}
-	}
-	
-	protected void saveSettingsToProject(String tag)
-	{
-		try
-		{
-			ViewData data = getProject().getCurrentViewData();
-			CommandSetObjectData setLegendSettingsCommand = new CommandSetObjectData(data.getRef(), tag, getLegendSettings().toString());
-			getProject().executeCommand(setLegendSettingsCommand);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog("Unable to update project legend settings:" + e.getMessage());
 		}
 	}
 	
