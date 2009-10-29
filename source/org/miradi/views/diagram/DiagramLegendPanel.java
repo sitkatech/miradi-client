@@ -326,7 +326,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		if (isUpdateTaggedObjectSetsCommand(event))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TARGET_MODE))
+		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE))
 			return true;
 		
 		if (event.isSetDataCommandWithThisTypeAndTag(ConceptualModelDiagram.getObjectType(), ConceptualModelDiagram.TAG_HIDDEN_TYPES))

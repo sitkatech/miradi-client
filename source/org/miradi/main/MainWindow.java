@@ -597,7 +597,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		updateAfterCommand(event);
 		warnOnceIfLowOnMemory();
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TARGET_MODE))
+		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE))
 			updateMenuOptions();
 	}
 	
