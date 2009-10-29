@@ -52,9 +52,6 @@ public class LayerManager
 	
 	public boolean isVisible(DiagramObject diagramObjectToUse, FactorCell node)
 	{
-		if (isHiddenInDiagramObject(diagramObjectToUse, node.getWrappedFactor().getTypeName()))
-			return false;
-		
 		if(hiddenORefs.contains(node.getWrappedFactorRef()))
 			return false;
 		
@@ -70,28 +67,7 @@ public class LayerManager
 			return false;
 		}
 		
-		if(node.isContributingFactor())
-			return areContributingFactorsVisible();
-		
-		if(node.isDirectThreat())
-			return areDirectThreatsVisible();
-		
-		if (node.isIntermediateResult())
-			return areIntermediateResultsVisible();
-		
-		if (node.isThreatRedectionResult())
-			return areThreatReductionResultsVisible();
-
-		if (node.isStress())
-			return areStressesVisible();
-		
-		if (node.isActivity())
-			return areActivitiesVisible();
-
-		if(isTypeVisible(node.getWrappedFactor().getTypeName()))
-			return true;
-		
-		return false;
+		return isTypeVisible(node.getWrappedFactor().getTypeName());
 	}
 
 	private boolean isHiddenInDiagramObject(DiagramObject diagramObjectToUse, String objectTypeName)
@@ -168,9 +144,9 @@ public class LayerManager
 	public void setVisibility(String typeName, boolean isVisible)
 	{
 		CodeList hiddenTypes = getDiagramObject().getHiddenTypes();		
-		if (isVisible)
+		if (isVisible && hiddenTypes.contains(typeName))
 			hiddenTypes.removeCode(typeName);
-		else
+		if (!isVisible)
 			hiddenTypes.add(typeName);
 		
 		saveVisibility(hiddenTypes);
