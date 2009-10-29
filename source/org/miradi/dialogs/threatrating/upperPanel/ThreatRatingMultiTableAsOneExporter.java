@@ -28,6 +28,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
+import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
 import org.miradi.utils.TableExporter;
@@ -76,12 +77,20 @@ public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOne
 
 		if (isFirstBlankTableSummaryRow(modelColumn))
 			return new EmptyChoiceItem();
+		
+		if (isTargetSummaryRowHeader(modelColumn))
+			return new TaglessChoiceItem(ThreatRatingMultiTablePanel.getTargetSummaryRowHeaderLabel());
 
 		int columnWithinSummaryTable = convertToSummaryTableColumn(modelColumn);		
 		if (isColumnWithinSummaryTable(columnWithinSummaryTable))
 			return targetSummaryRowTable.getChoiceItemAt(0, columnWithinSummaryTable);
 		
 		return overallProjectRatingSummaryTable.getChoiceItemAt(0, 0);
+	}
+
+	private boolean isTargetSummaryRowHeader(int modelColumn)
+	{
+		return modelColumn == ThreatNameColumnTableModel.THREAT_NAME_COLUMN_INDEX;
 	}
 
 	private boolean isColumnWithinSummaryTable(int columnWithinSummaryTable)
@@ -108,7 +117,7 @@ public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOne
 	
 	private boolean isFirstBlankTableSummaryRow(int column)
 	{
-		return column < ThreatNameColumnTableModel.COLUMN_COUNT;
+		return column < ThreatNameColumnTableModel.THREAT_NAME_COLUMN_INDEX;
 	}
 
 	private int convertToSummaryTableColumn(int column)

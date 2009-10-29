@@ -136,6 +136,11 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		table.getColumnModel().addColumnModelListener(new ColumnMarginResizeListenerValidator(this));
 	}
 	
+	public static String getTargetSummaryRowHeaderLabel()
+	{
+		return EAM.text("Summary Target Ratings:");
+	}
+	
 	class ScrollPaneWithSizeConstraints extends ScrollPaneWithHideableScrollBar
 	{
 		public ScrollPaneWithSizeConstraints(Component view)
@@ -221,7 +226,7 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 	{
 		public CornerFillerComponent(MainWindow mainWindow, JComponent matchWidthOfComponent, JComponent matchHeightOfComponent)
 		{
-			super(mainWindow, "<HTML><div class='DataPanel'><b>" + EAM.text("Summary Target Ratings:") + "<br><br><br></html>");
+			super(mainWindow, "<HTML><div class='DataPanel'><b>" + getTargetSummaryRowHeaderLabel() + "<br><br><br></html>");
 			
 			matchWidthOf = matchWidthOfComponent;
 			matchHeightOf = matchHeightOfComponent;
@@ -232,7 +237,7 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 			
 			setBackground(mainWindow.getAppPreferences().getDataPanelBackgroundColor());
 		}
-		
+
 		@Override
 		public int getWidth()
 		{
