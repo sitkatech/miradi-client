@@ -241,8 +241,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		}
 	}
 
-	@Override
-	protected CodeList getLegendSettings(String tag)
+	private CodeList getLegendSettings(String tag)
 	{
 		try
 		{

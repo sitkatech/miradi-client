@@ -88,21 +88,6 @@ abstract public class LegendPanel extends DisposablePanel implements ActionListe
 		}
 	}
 	
-	protected CodeList getLegendSettings(String tag)
-	{
-		try
-		{
-			ViewData data = getProject().getCurrentViewData();
-			return new CodeList(data.getData(tag));
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog("Unable to read project settings:" + e.getMessage());
-			return new CodeList();
-		}
-	}
-	
 	protected Project getProject()
 	{
 		return project;
