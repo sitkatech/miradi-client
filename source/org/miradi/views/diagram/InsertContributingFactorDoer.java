@@ -21,6 +21,7 @@ package org.miradi.views.diagram;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Cause;
 
 public class InsertContributingFactorDoer extends InsertFactorDoer
 {
@@ -44,7 +45,7 @@ public class InsertContributingFactorDoer extends InsertFactorDoer
 
 	public void forceVisibleInLayerManager()
 	{
-		getCurrentLayerManager().setContributingFactorsVisible(true);
-		getCurrentLayerManager().setDirectThreatsVisible(true);
+		getCurrentLayerManager().setVisibility(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, true);
+		getCurrentLayerManager().setVisibility(Cause.OBJECT_NAME_THREAT, true);
 	}
 }
