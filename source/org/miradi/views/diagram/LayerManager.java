@@ -241,11 +241,6 @@ public class LayerManager
 		return isTypeVisible(Strategy.OBJECT_NAME_DRAFT);
 	}
 	
-	public void setDraftStrategiesVisible(boolean newSetting)
-	{
-		draftStrategyVisibleFlag = newSetting;
-	}
-
 	public boolean areIndicatorsVisible()
 	{
 		return isTypeVisible(Indicator.OBJECT_NAME);
