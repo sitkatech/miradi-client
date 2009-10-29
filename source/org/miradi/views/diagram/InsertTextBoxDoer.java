@@ -19,9 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import org.miradi.diagram.cells.DiagramTextBoxCell;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.TextBox;
 
 public class InsertTextBoxDoer extends InsertFactorDoer
 {
@@ -38,7 +38,7 @@ public class InsertTextBoxDoer extends InsertFactorDoer
 	
 	public void forceVisibleInLayerManager()
 	{
-		getCurrentLayerManager().setVisibility(DiagramTextBoxCell.class, true);
+		getCurrentLayerManager().setVisibility(TextBox.OBJECT_NAME, true);
 	}
 
 	public String getInitialText()

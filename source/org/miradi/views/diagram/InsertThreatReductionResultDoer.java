@@ -19,9 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import org.miradi.diagram.cells.DiagramThreatReductionResultCell;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.ThreatReductionResult;
 
 public class InsertThreatReductionResultDoer extends InsertFactorDoer
 {
@@ -45,6 +45,6 @@ public class InsertThreatReductionResultDoer extends InsertFactorDoer
 
 	public void forceVisibleInLayerManager()
 	{
-		getCurrentLayerManager().setVisibility(DiagramThreatReductionResultCell.class, true);
+		getCurrentLayerManager().setVisibility(ThreatReductionResult.OBJECT_NAME, true);
 	}
 }
