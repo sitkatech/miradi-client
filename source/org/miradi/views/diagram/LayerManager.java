@@ -241,11 +241,6 @@ public class LayerManager
 		return isTypeVisible(ScopeBox.OBJECT_NAME);
 	}
 	
-	public void setScopeBoxVisible(boolean newSetting)
-	{
-		scopeBoxVisibleFlag = newSetting;
-	}
-	
 	public boolean areStressesVisible()
 	{
 		return isTypeVisible(Stress.OBJECT_NAME);
