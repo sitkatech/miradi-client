@@ -269,42 +269,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	public void updateCheckBox(LayerManager manager, String property)
 	{
 		JCheckBox checkBox = findCheckBox(property);
-
-		if (property.equals(ScopeBox.OBJECT_NAME))
-			checkBox.setSelected(manager.isScopeBoxVisible());
-	
-		else if (property.equals(Target.OBJECT_NAME))
-			checkBox.setSelected(manager.isTypeVisible(Target.OBJECT_NAME));
-		
-		else if (property.equals(HumanWelfareTarget.OBJECT_NAME))
-			checkBox.setSelected(manager.isTypeVisible(HumanWelfareTarget.OBJECT_NAME));
-		
-		else if (property.equals(Strategy.OBJECT_NAME))
-			checkBox.setSelected(manager.isTypeVisible(Strategy.OBJECT_NAME));
-		
-		else if (property.equals(FactorLink.OBJECT_NAME))
-			checkBox.setSelected(manager.areFactorLinksVisible());
-		
-		else if (property.equals(Goal.OBJECT_NAME))
-			checkBox.setSelected(manager.areGoalsVisible());
-		
-		else if (property.equals(Objective.OBJECT_NAME))
-			checkBox.setSelected(manager.areObjectivesVisible());
-		
-		else if (property.equals(Indicator.OBJECT_NAME))
-			checkBox.setSelected(manager.areIndicatorsVisible());
-		
-		else if (property.equals(TextBox.OBJECT_NAME))
-			checkBox.setSelected(manager.areTextBoxesVisible());
-		
-		else if (property.equals(ScopeBox.OBJECT_NAME))
-			checkBox.setSelected(manager.areTextBoxesVisible());
-		
-		else if (property.equals(GroupBox.OBJECT_NAME))
-			checkBox.setSelected(manager.areGroupBoxesVisible());
-		
-		else if (property.equals(FactorLink.OBJECT_NAME_STRESS))
-			checkBox.setSelected(manager.areStressesVisible());
+		checkBox.setSelected(manager.isTypeVisible(property));
 	}
 	
 	@Override
