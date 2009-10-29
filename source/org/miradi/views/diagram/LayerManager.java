@@ -266,11 +266,6 @@ public class LayerManager
 		return isTypeVisible(IntermediateResult.OBJECT_NAME);
 	}
 	
-	public void setIntermediateResultVisible(boolean newSetting)
-	{
-		intermediateResultFlag = newSetting;
-	}
-	
 	public boolean areThreatReductionResultsVisible()
 	{
 		return isTypeVisible(ThreatReductionResult.OBJECT_NAME);
