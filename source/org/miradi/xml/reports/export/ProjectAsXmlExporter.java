@@ -57,7 +57,7 @@ import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.utils.MiradiMultiCalendar;
 import org.miradi.xml.XmlExporter;
 
-
+//FIXME medium - this class needs to go away
 public class ProjectAsXmlExporter extends XmlExporter
 {
 	public ProjectAsXmlExporter(Project projectToUse) throws Exception
