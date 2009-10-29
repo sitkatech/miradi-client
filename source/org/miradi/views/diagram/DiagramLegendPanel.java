@@ -84,8 +84,6 @@ import org.miradi.views.umbrella.doers.AbstractPopUpEditDoer;
 
 abstract public class DiagramLegendPanel extends LegendPanel implements CommandExecutedListener
 {
-	abstract protected void createCustomLegendPanelSection(Actions actions, JPanel jpanel);
-	
 	public DiagramLegendPanel(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse.getProject());
@@ -402,6 +400,8 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			}
 		}
 	}
+	
+	abstract protected void createCustomLegendPanelSection(Actions actions, JPanel jpanel);
 
 	private MainWindow mainWindow;
 	private ObjectRefListEditorPanel editListPanel;
