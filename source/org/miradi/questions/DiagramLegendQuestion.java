@@ -23,6 +23,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
@@ -49,6 +50,7 @@ public class DiagramLegendQuestion extends StaticChoiceQuestion
 				new ChoiceItem(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, Cause.OBJECT_NAME_CONTRIBUTING_FACTOR),
 				new ChoiceItem(Cause.OBJECT_NAME_THREAT, Cause.OBJECT_NAME_THREAT),
 				new ChoiceItem(Target.OBJECT_NAME, Target.OBJECT_NAME),
+				new ChoiceItem(HumanWelfareTarget.OBJECT_NAME, HumanWelfareTarget.OBJECT_NAME),
 				new ChoiceItem(FactorLink.OBJECT_NAME, FactorLink.OBJECT_NAME),
 				new ChoiceItem(Goal.OBJECT_NAME, Goal.OBJECT_NAME),
 				new ChoiceItem(Objective.OBJECT_NAME, Objective.OBJECT_NAME),
