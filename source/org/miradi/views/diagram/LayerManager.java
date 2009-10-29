@@ -85,10 +85,10 @@ public class LayerManager
 
 	private boolean isResultsChain(DiagramObject diagramObjectToUse)
 	{
-		if (diagramObjectToUse == null)
-			return false;
+		if (isSafeDiagramObject(diagramObjectToUse))
+			return diagramObjectToUse.isResultsChain();
 		
-		return diagramObjectToUse.isResultsChain();
+		return false;
 	}
 
 	public boolean areAllNodesVisible()
