@@ -219,7 +219,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		}
 	}
 	
-	@Override
 	public void actionPerformed(ActionEvent event)
 	{
 		updateVisiblity();
@@ -272,7 +271,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		checkBox.setSelected(manager.isTypeVisible(property));
 	}
 	
-	@Override
 	public CodeList getLegendSettings()
 	{
 		CodeList hiddenTypes = new CodeList();
