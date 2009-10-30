@@ -369,15 +369,20 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 	private void handleCommandDeleteObject(CommandDeleteObject commandDeleteObject) throws Exception
 	{
 		int objectTypeFromCommand = commandDeleteObject.getObjectType();
-		if (getContentType() == objectTypeFromCommand)
+		if (isSameAsContentType(objectTypeFromCommand))
 			reload();
 	}
 
 	private void handleCommandCreateObject(CommandCreateObject commandCreateObject) throws Exception
 	{
 		int objectTypeFromCommand = commandCreateObject.getObjectType();
-		if (getContentType() == objectTypeFromCommand)
+		if (isSameAsContentType(objectTypeFromCommand))
 			reload();
+	}
+	
+	private boolean isSameAsContentType(int objectTypeFromCommand)
+	{
+		return getContentType() == objectTypeFromCommand;
 	}
 
 	private void handleCommandSetObjectData(CommandSetObjectData commandSetObjectData) throws Exception
