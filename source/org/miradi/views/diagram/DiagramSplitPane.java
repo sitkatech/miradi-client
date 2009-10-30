@@ -53,6 +53,7 @@ import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.utils.AbstractTableRightClickHandler;
@@ -371,6 +372,9 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		int objectTypeFromCommand = commandDeleteObject.getObjectType();
 		if (isSameAsContentType(objectTypeFromCommand))
 			reload();
+		
+		if (TaggedObjectSet.is(objectTypeFromCommand))
+			updateLegendScrollPane();
 	}
 
 	private void handleCommandCreateObject(CommandCreateObject commandCreateObject) throws Exception
@@ -378,11 +382,19 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		int objectTypeFromCommand = commandCreateObject.getObjectType();
 		if (isSameAsContentType(objectTypeFromCommand))
 			reload();
+		
+		if (TaggedObjectSet.is(objectTypeFromCommand))
+			updateLegendScrollPane();
 	}
 	
 	private boolean isSameAsContentType(int objectTypeFromCommand)
 	{
 		return getContentType() == objectTypeFromCommand;
+	}
+	
+	private void updateLegendScrollPane()
+	{
+		scrollableLegendPanel.revalidate();
 	}
 
 	private void handleCommandSetObjectData(CommandSetObjectData commandSetObjectData) throws Exception
