@@ -21,6 +21,7 @@ package org.miradi.views.umbrella.doers;
 
 import java.io.File;
 
+import org.martus.util.DirectoryUtils;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
@@ -69,13 +70,29 @@ public class SaveProjectAsDoer extends MainWindowDoer
 	{
 		File projectDirToCopy = getProject().getDatabase().getCurrentLocalProjectDirectory();
 		File homeDir = EAM.getHomeDirectory();
-		File tempZipFile = File.createTempFile("$$$" + newProjectName, ZIPFileFilter.EXTENSION);
-		ProjectZipper.createProjectZipFile(tempZipFile, newProjectName, projectDirToCopy);
-		ProjectUnzipper.unzipToProjectDirectory(tempZipFile, homeDir, newProjectName);
-		tempZipFile.delete();
+		File tempZipFile = null;
+		File newProjectDir = null;
+		try
+		{
+			tempZipFile = File.createTempFile("$$$" + newProjectName, ZIPFileFilter.EXTENSION);
+			newProjectDir = new File(homeDir, newProjectName);
+			ProjectZipper.createProjectZipFile(tempZipFile, newProjectName, projectDirToCopy);
+			ProjectUnzipper.unzipToProjectDirectory(tempZipFile, homeDir, newProjectName);
+		}
+		catch (Exception e)
+		{
+			if (newProjectDir != null)
+				DirectoryUtils.deleteAllFilesOnlyInDirectory(newProjectDir);
+			
+			throw e;
+		}
+		finally
+		{
+			if (tempZipFile != null)
+				tempZipFile.delete();
+		}
 		
 		getMainWindow().closeProject();
-		File newProjectDir = new File(homeDir, newProjectName);
 		ProjectListTreeTable.doProjectOpen(newProjectDir);
 	}
 }
