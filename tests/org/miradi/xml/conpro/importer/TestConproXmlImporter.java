@@ -79,9 +79,9 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		taskRefs.remove(method.getRef());
 		ORef conflictingRef = taskRefs.get(0);
 		
-		String oldMethodId = "<method id='" + method.getId() + "'";
+		String oldMethodId = "<method id=\"" + method.getId() + "\"";
 		assertTrue("Couldn't find old method id in xml", xml.contains(oldMethodId));
-		String newMethodId = "<method id='" + conflictingRef.getObjectId() + "'";
+		String newMethodId = "<method id=\"" + conflictingRef.getObjectId() + "\"";
 		xml = xml.replace(oldMethodId, newMethodId);
 		
 		ProjectForTesting secondTry = new ProjectForTesting(getName());
