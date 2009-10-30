@@ -33,6 +33,31 @@ public class TestDiagramChainObject extends TestCaseWithProject
 		super(name);
 	}
 	
+	//FIXME this test fails and the fix has not been commited.  Waiting for response.
+	//The fix is to remove special handling of Direct Threats in the DCO.
+//	public void testThreatToThreatToTargetChain() throws Exception
+//	{
+//		DiagramFactor threat1 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+//		getProject().enableAsThreat(threat1.getWrappedORef());
+//		
+//		DiagramFactor threat2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+//		getProject().enableAsThreat(threat2.getWrappedORef());
+//		
+//		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+//		
+//		getProject().createDiagramLinkAndAddToDiagram(threat1, threat2);
+//		getProject().createDiagramLinkAndAddToDiagram(threat2, target);
+//		
+//		Vector<DiagramFactor> allDiagramFactors = new Vector();
+//		allDiagramFactors.add(threat1);
+//		allDiagramFactors.add(threat2);
+//		allDiagramFactors.add(target);
+//		
+//		verifyChain(threat1, allDiagramFactors);
+//		verifyChain(threat2, allDiagramFactors);
+//		verifyChain(target, allDiagramFactors);
+//	}
+	
 	public void testBasics() throws Exception
 	{
 		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
