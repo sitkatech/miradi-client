@@ -369,27 +369,21 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 
 	private void handleCommandDeleteObject(CommandDeleteObject commandDeleteObject) throws Exception
 	{
-		int objectTypeFromCommand = commandDeleteObject.getObjectType();
-		if (isSameAsContentType(objectTypeFromCommand))
-			reload();
-		
-		if (TaggedObjectSet.is(objectTypeFromCommand))
-			updateLegendScrollPane();
+		handleObjectExistanceAffectingCommand(commandDeleteObject.getObjectType());
 	}
 
 	private void handleCommandCreateObject(CommandCreateObject commandCreateObject) throws Exception
 	{
-		int objectTypeFromCommand = commandCreateObject.getObjectType();
-		if (isSameAsContentType(objectTypeFromCommand))
+		handleObjectExistanceAffectingCommand(commandCreateObject.getObjectType());
+	}
+	
+	private void handleObjectExistanceAffectingCommand(int objectTypeFromCommand) throws Exception
+	{
+		if (getContentType() == objectTypeFromCommand)
 			reload();
 		
 		if (TaggedObjectSet.is(objectTypeFromCommand))
 			updateLegendScrollPane();
-	}
-	
-	private boolean isSameAsContentType(int objectTypeFromCommand)
-	{
-		return getContentType() == objectTypeFromCommand;
 	}
 	
 	private void updateLegendScrollPane()
