@@ -380,7 +380,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 	private void handleCreateOrDeleteObject(int objectTypeFromCommand) throws Exception
 	{
 		if (getContentType() == objectTypeFromCommand)
-			reload();
+			reloadDiagramCards();
 		
 		if (TaggedObjectSet.is(objectTypeFromCommand))
 			updateLegendScrollPane();
@@ -459,7 +459,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		modelUpdater.commandSetObjectDataWasExecuted(setCommand);
 	}
 	
-	private void reload() throws Exception
+	private void reloadDiagramCards() throws Exception
 	{
 		reloadDiagramCards(getContentType());
 		getDiagramPageList().listChanged();
