@@ -351,13 +351,13 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 	{
 		try
 		{
-			if (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			if (event.isSetDataCommand())
 				handleCommandSetObjectData((CommandSetObjectData) event.getCommand());
 
-			if (event.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
+			if (event.isCreateObjectCommand())
 				handleCommandCreateObject((CommandCreateObject) event.getCommand());
 
-			if (event.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
+			if (event.isDeleteObjectCommand())
 				handleCommandDeleteObject((CommandDeleteObject) event.getCommand());
 		}
 		catch(Exception e)
