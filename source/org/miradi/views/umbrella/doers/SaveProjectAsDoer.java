@@ -50,49 +50,51 @@ public class SaveProjectAsDoer extends MainWindowDoer
 			return;
 
 		File chosen = dlg.getSelectedFile();
+		File newProjectDir = null;
 		try
 		{
-			saveAsAndOpen(getTrimmedFileName(chosen));
+			String newProjectName = getTrimmedFileName(chosen);
+			newProjectDir = new File(EAM.getHomeDirectory(), newProjectName);
+			saveAs(newProjectDir, newProjectName);
+			
+			ProjectListTreeTable.doProjectOpen(newProjectDir);
 		}
 		catch(Exception e)
 		{
+			if (newProjectDir != null)
+				DirectoryUtils.deleteEntireDirectoryTree(newProjectDir);
+			
 			EAM.logException(e);
 			throw new CommandFailedException("Unexpected error during Save As: " + e);
 		}
 	}
 
-	private String getTrimmedFileName(File chosen)
-	{
-		return chosen.getName().trim();
-	}
-
-	private void saveAsAndOpen(String newProjectName) throws Exception
+	private void saveAs(File newProjectDir, String newProjectName) throws Exception
 	{
 		File projectDirToCopy = getProject().getDatabase().getCurrentLocalProjectDirectory();
-		File homeDir = EAM.getHomeDirectory();
-		File tempZipFile = null;
-		File newProjectDir = null;
+		File tempZipFile = createProjectZip(newProjectName, projectDirToCopy);
 		try
-		{
-			tempZipFile = File.createTempFile("$$$" + newProjectName, ZIPFileFilter.EXTENSION);
-			newProjectDir = new File(homeDir, newProjectName);
-			ProjectZipper.createProjectZipFile(tempZipFile, newProjectName, projectDirToCopy);
-			ProjectUnzipper.unzipToProjectDirectory(tempZipFile, homeDir, newProjectName);
-		}
-		catch (Exception e)
-		{
-			if (newProjectDir != null)
-				DirectoryUtils.deleteAllFilesOnlyInDirectory(newProjectDir);
-			
-			throw e;
+		{			
+			ProjectUnzipper.unzipToProjectDirectory(tempZipFile, EAM.getHomeDirectory(), newProjectName);
 		}
 		finally
 		{
-			if (tempZipFile != null)
-				tempZipFile.delete();
+			tempZipFile.delete();
 		}
 		
 		getMainWindow().closeProject();
-		ProjectListTreeTable.doProjectOpen(newProjectDir);
+	}
+
+	private File createProjectZip(String newProjectName, File projectDirToCopy) throws Exception
+	{
+		File tempZipFile = File.createTempFile("$$$" + newProjectName, ZIPFileFilter.EXTENSION);
+		ProjectZipper.createProjectZipFile(tempZipFile, newProjectName, projectDirToCopy);
+		
+		return tempZipFile;
+	}
+	
+	private String getTrimmedFileName(File chosen)
+	{
+		return chosen.getName().trim();
 	}
 }
