@@ -54,7 +54,8 @@ public class SaveProjectAsDoer extends MainWindowDoer
 			String newProjectName = getTrimmedFileName(chosenFile);
 			newProjectDir = new File(EAM.getHomeDirectory(), newProjectName);
 			saveAs(newProjectDir, newProjectName);
-			
+
+			getMainWindow().closeProject();
 			ProjectListTreeTable.doProjectOpen(newProjectDir);
 		}
 		catch(Exception e)
@@ -79,8 +80,6 @@ public class SaveProjectAsDoer extends MainWindowDoer
 		{
 			tempZipFile.delete();
 		}
-		
-		getMainWindow().closeProject();
 	}
 
 	private File createTempProjectZip(String newProjectName, File projectDirToCopy) throws Exception
