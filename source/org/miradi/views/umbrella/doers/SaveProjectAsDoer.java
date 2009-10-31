@@ -47,11 +47,11 @@ public class SaveProjectAsDoer extends MainWindowDoer
 		if(!saveDialog.showSaveAsDialog())
 			return;
 
-		File chosen = saveDialog.getSelectedFile();
+		File chosenFile = saveDialog.getSelectedFile();
 		File newProjectDir = null;
 		try
 		{
-			String newProjectName = getTrimmedFileName(chosen);
+			String newProjectName = getTrimmedFileName(chosenFile);
 			newProjectDir = new File(EAM.getHomeDirectory(), newProjectName);
 			saveAs(newProjectDir, newProjectName);
 			
@@ -91,8 +91,8 @@ public class SaveProjectAsDoer extends MainWindowDoer
 		return tempZipFile;
 	}
 	
-	private String getTrimmedFileName(File chosen)
+	private String getTrimmedFileName(File chosenFile)
 	{
-		return chosen.getName().trim();
+		return chosenFile.getName().trim();
 	}
 }
