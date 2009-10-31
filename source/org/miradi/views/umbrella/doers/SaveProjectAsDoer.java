@@ -48,37 +48,38 @@ public class SaveProjectAsDoer extends MainWindowDoer
 			return;
 
 		File chosenFile = saveDialog.getSelectedFile();
-		File newProjectDir = null;
 		try
 		{
-			String newProjectName = getTrimmedFileName(chosenFile);
-			newProjectDir = new File(EAM.getHomeDirectory(), newProjectName);
-			saveAs(newProjectDir, newProjectName);
-
+			File newProjectDir = saveAs(chosenFile);
 			getMainWindow().closeProject();
 			ProjectListTreeTable.doProjectOpen(newProjectDir);
 		}
 		catch(Exception e)
 		{
-			if (newProjectDir != null)
-				DirectoryUtils.deleteEntireDirectoryTree(newProjectDir);
-			
 			EAM.logException(e);
 			throw new CommandFailedException("Unexpected error during Save As: " + e);
 		}
 	}
 
-	private void saveAs(File newProjectDir, String newProjectName) throws Exception
+	private File saveAs(File chosenFile) throws Exception
 	{
+		String newProjectName = getTrimmedFileName(chosenFile);
+		File newProjectDir = new File(EAM.getHomeDirectory(), newProjectName);
 		File tempZipFile = createTempProjectZip(newProjectName);
 		try
 		{			
 			ProjectUnzipper.unzipToProjectDirectory(tempZipFile, EAM.getHomeDirectory(), newProjectName);
 		}
+		catch (Exception e)
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(newProjectDir);
+		}
 		finally
 		{
 			tempZipFile.delete();
 		}
+		
+		return newProjectDir;
 	}
 
 	private File createTempProjectZip(String newProjectName) throws Exception
