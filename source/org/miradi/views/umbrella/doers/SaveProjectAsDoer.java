@@ -64,8 +64,8 @@ public class SaveProjectAsDoer extends MainWindowDoer
 	private File saveAs(File chosenFile) throws Exception
 	{
 		String newProjectName = getTrimmedFileName(chosenFile);
-		File newProjectDir = new File(EAM.getHomeDirectory(), newProjectName);
 		File tempZipFile = createTempProjectZip(newProjectName);
+		File newProjectDir = new File(EAM.getHomeDirectory(), newProjectName);
 		try
 		{			
 			ProjectUnzipper.unzipToProjectDirectory(tempZipFile, EAM.getHomeDirectory(), newProjectName);
