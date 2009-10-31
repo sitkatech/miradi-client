@@ -69,17 +69,18 @@ public class SaveProjectAsDoer extends MainWindowDoer
 		try
 		{			
 			ProjectUnzipper.unzipToProjectDirectory(tempZipFile, EAM.getHomeDirectory(), newProjectName);
+			
+			return newProjectDir;
 		}
 		catch (Exception e)
 		{
 			DirectoryUtils.deleteEntireDirectoryTree(newProjectDir);
+			throw e;
 		}
 		finally
 		{
 			tempZipFile.delete();
 		}
-		
-		return newProjectDir;
 	}
 
 	private File createTempProjectZip(String newProjectName) throws Exception
