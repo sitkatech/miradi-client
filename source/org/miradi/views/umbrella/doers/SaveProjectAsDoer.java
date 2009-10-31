@@ -24,7 +24,6 @@ import java.io.File;
 import org.martus.util.DirectoryUtils;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
-import org.miradi.project.Project;
 import org.miradi.project.ProjectUnzipper;
 import org.miradi.project.ProjectZipper;
 import org.miradi.utils.ZIPFileFilter;
@@ -36,8 +35,7 @@ public class SaveProjectAsDoer extends MainWindowDoer
 {
 	public boolean isAvailable()
 	{
-		Project project = getProject();
-		return project.isOpen();
+		return getProject().isOpen();
 	}
 
 	public void doIt() throws CommandFailedException
