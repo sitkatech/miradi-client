@@ -87,10 +87,14 @@ public class SaveProjectAsDoer extends MainWindowDoer
 	{
 		File tempZipFile = File.createTempFile("$$$" + newProjectName, ZIPFileFilter.EXTENSION);
 		
-		File projectDirToCopy = getProject().getDatabase().getCurrentLocalProjectDirectory();
-		ProjectZipper.createProjectZipFile(tempZipFile, newProjectName, projectDirToCopy);
+		ProjectZipper.createProjectZipFile(tempZipFile, newProjectName, getProjectDirToCopy());
 		
 		return tempZipFile;
+	}
+
+	private File getProjectDirToCopy()
+	{
+		return getProject().getDatabase().getCurrentLocalProjectDirectory();
 	}
 	
 	private String getTrimmedFileName(File chosenFile)
