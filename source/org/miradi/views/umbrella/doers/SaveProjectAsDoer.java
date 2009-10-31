@@ -85,8 +85,8 @@ public class SaveProjectAsDoer extends MainWindowDoer
 
 	private File createTempProjectZip(String newProjectName) throws Exception
 	{
-		File projectDirToCopy = getProject().getDatabase().getCurrentLocalProjectDirectory();
 		File tempZipFile = File.createTempFile("$$$" + newProjectName, ZIPFileFilter.EXTENSION);
+		File projectDirToCopy = getProject().getDatabase().getCurrentLocalProjectDirectory();
 		ProjectZipper.createProjectZipFile(tempZipFile, newProjectName, projectDirToCopy);
 		
 		return tempZipFile;
