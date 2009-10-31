@@ -70,8 +70,7 @@ public class SaveProjectAsDoer extends MainWindowDoer
 
 	private void saveAs(File newProjectDir, String newProjectName) throws Exception
 	{
-		File projectDirToCopy = getProject().getDatabase().getCurrentLocalProjectDirectory();
-		File tempZipFile = createTempProjectZip(newProjectName, projectDirToCopy);
+		File tempZipFile = createTempProjectZip(newProjectName);
 		try
 		{			
 			ProjectUnzipper.unzipToProjectDirectory(tempZipFile, EAM.getHomeDirectory(), newProjectName);
@@ -82,8 +81,9 @@ public class SaveProjectAsDoer extends MainWindowDoer
 		}
 	}
 
-	private File createTempProjectZip(String newProjectName, File projectDirToCopy) throws Exception
+	private File createTempProjectZip(String newProjectName) throws Exception
 	{
+		File projectDirToCopy = getProject().getDatabase().getCurrentLocalProjectDirectory();
 		File tempZipFile = File.createTempFile("$$$" + newProjectName, ZIPFileFilter.EXTENSION);
 		ProjectZipper.createProjectZipFile(tempZipFile, newProjectName, projectDirToCopy);
 		
