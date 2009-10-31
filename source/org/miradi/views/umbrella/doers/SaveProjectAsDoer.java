@@ -69,7 +69,6 @@ public class SaveProjectAsDoer extends MainWindowDoer
 		try
 		{			
 			ProjectUnzipper.unzipToProjectDirectory(tempZipFile, EAM.getHomeDirectory(), newProjectName);
-			
 			return newProjectDir;
 		}
 		catch (Exception e)
@@ -86,7 +85,6 @@ public class SaveProjectAsDoer extends MainWindowDoer
 	private File createTempProjectZip(String newProjectName) throws Exception
 	{
 		File tempZipFile = File.createTempFile("$$$" + newProjectName, ZIPFileFilter.EXTENSION);
-		
 		ProjectZipper.createProjectZipFile(tempZipFile, newProjectName, getProjectDirToCopy());
 		
 		return tempZipFile;
