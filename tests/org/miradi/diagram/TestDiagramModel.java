@@ -134,7 +134,7 @@ public class TestDiagramModel extends EAMTestCase
 				{ 32,  13, 23, 41 },
 				{ 33,  13, 23, 42, 43 },
 				{ 34,  24, 25, 26, 35, 36, 44 },
-				{ 35,  25, 26, 34, 36, 45 },
+				{ 35,  25, 26, 34, 36, 44, 45 },
 				// 36 is actually an INDIRECT FACTOR!
 		};
 		return expectedNodesInChain;

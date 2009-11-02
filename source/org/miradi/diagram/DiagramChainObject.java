@@ -88,23 +88,10 @@ public class DiagramChainObject
 		return getFactors();
 	}
 	
-	private void buildDirectThreatChain(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
-	{
-		initializeChain(diagramObjectToUse, diagramFactor);
-		if(getStartingFactor().isDirectThreat())
-		{
-			resultingFactors.addAll(getDirectlyLinkedDownstreamFactors());
-			resultingFactors.addAll(getAllUpstreamFactors());
-		}
-	}
-
 	private void buildNormalChain(DiagramObject diagramObjectToUse , DiagramFactor diagramFactor)
 	{
 		initializeChain(diagramObjectToUse, diagramFactor);
-		if (getStartingFactor().isDirectThreat())
-			buildDirectThreatChain(diagramObjectToUse, diagramFactor);
-		else
-			buildUpstreamDownstreamChain(diagramObjectToUse, diagramFactor);
+		buildUpstreamDownstreamChain(diagramObjectToUse, diagramFactor);
 	}
 	
 	private void buildUpstreamDownstreamChain(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
@@ -134,6 +121,17 @@ public class DiagramChainObject
 		resultingFactors.addAll(getDirectlyLinkedUpstreamFactors());
 	}
 	
+	private HashSet<Factor> getDirectlyLinkedFactors(int direction)
+	{
+		HashSet<Factor> results = new HashSet();
+		results.add(getStartingFactor());
+		
+		ORefList allDiagramLinkRefs = getAllDiagramLinkRefs();
+		results.addAll(getFactorsToProcess(direction, allDiagramLinkRefs, getStartingFactor()));
+
+		return results;
+	}
+		
 	private HashSet<Factor> getAllLinkedFactors(int direction)
 	{
 		HashSet<Factor> linkedFactors = new HashSet();
@@ -171,17 +169,6 @@ public class DiagramChainObject
 		return unprocessedFactors;
 	}
 
-	private HashSet<Factor> getDirectlyLinkedFactors(int direction)
-	{
-		HashSet<Factor> results = new HashSet();
-		results.add(getStartingFactor());
-		
-		ORefList allDiagramLinkRefs = getAllDiagramLinkRefs();
-		results.addAll(getFactorsToProcess(direction, allDiagramLinkRefs, getStartingFactor()));
-
-		return results;
-	}
-	
 	private ORefList getAllDiagramLinkRefs()
 	{
 		return diagramObject.getAllDiagramLinkRefs();
@@ -246,11 +233,6 @@ public class DiagramChainObject
  		
 	}
 
-	private HashSet<Factor> getDirectlyLinkedDownstreamFactors()
-	{
-		return getDirectlyLinkedFactors(FactorLink.FROM);
-	}
-	
 	private HashSet<Factor> getDirectlyLinkedUpstreamFactors()
 	{
 		return getDirectlyLinkedFactors(FactorLink.TO);
