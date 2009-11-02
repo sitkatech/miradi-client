@@ -21,9 +21,9 @@ package org.miradi.views.targetviability.doers;
 
 import java.util.Vector;
 
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.Target;
 import org.miradi.views.ObjectsDoer;
 
 abstract public class AbstractKeyEcologicalAttributeDoer extends ObjectsDoer
@@ -41,8 +41,8 @@ abstract public class AbstractKeyEcologicalAttributeDoer extends ObjectsDoer
 	
 	protected static String getIndicatorListTag(BaseObject baseObject)
 	{
-		if (Target.is(baseObject))
-			return Target.TAG_INDICATOR_IDS;
+		if (AbstractTarget.isAbstractTarget(baseObject))
+			return AbstractTarget.TAG_INDICATOR_IDS;
 		
 		if (KeyEcologicalAttribute.is(baseObject))
 			return KeyEcologicalAttribute.TAG_INDICATOR_IDS;
