@@ -35,6 +35,7 @@ public class TeamPoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 				buttons);
 	}
 	
+	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
