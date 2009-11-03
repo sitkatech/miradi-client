@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.NoSuchElementException;
 import java.util.Vector;
 
+import org.miradi.database.migrations.MigrationsForMiradi3;
 import org.miradi.database.migrations.MigrationsOlderThanMiradiVersion2;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
@@ -165,7 +166,7 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		createFile(projectFile, "{\"HighestUsedNodeId\":33}");
 		
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
-		MigrationsOlderThanMiradiVersion2.upgradeToVersion40();
+		MigrationsForMiradi3.upgradeToVersion40();
 
 		final int SCOPE_BOX_TYPE = 50;
 		final String MANIFEST_FILE_NAME = "manifest";

@@ -70,13 +70,6 @@ import org.miradi.utils.PointList;
 
 public class MigrationsOlderThanMiradiVersion2
 {
-	public static void upgradeToVersion40() throws Exception
-	{
-		CreateScopeBoxesSuroundingTargetsMigration migration = new CreateScopeBoxesSuroundingTargetsMigration(DataUpgrader.getTopJsonDir());
-		migration.surroundTargetsWithNewScopeBoxType();		
-		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 40);
-	}
-
 	public static void upgradeToVersion39() throws Exception
 	{
 		enableThreats();
