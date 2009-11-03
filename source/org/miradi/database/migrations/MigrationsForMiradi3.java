@@ -25,6 +25,13 @@ import org.miradi.utils.CodeList;
 
 public class MigrationsForMiradi3
 {
+	public static void upgradeToVersion40() throws Exception
+	{
+		CreateScopeBoxesSuroundingTargetsMigration migration = new CreateScopeBoxesSuroundingTargetsMigration(DataUpgrader.getTopJsonDir());
+		migration.surroundTargetsWithNewScopeBoxType();		
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 40);
+	}
+
 	public static void upgradeToVersion41() throws Exception
 	{
 		//NOTE: Allow saving work units for more types of date units
