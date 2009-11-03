@@ -70,12 +70,6 @@ import org.miradi.utils.PointList;
 
 public class MigrationsOlderThanMiradiVersion2
 {
-	public static void upgradeToVersion38() throws Exception
-	{
-		moveFactorLinkCommentFieldsIntoThreatRatingCommentsData();
-		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 38);
-	}
-
 	public static void upgradeToVersion37() throws Exception
 	{
 		addThreatRefAndRemoveThreatStressRatingRefsFromFactorLinks();

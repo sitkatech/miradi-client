@@ -25,6 +25,12 @@ import org.miradi.utils.CodeList;
 
 public class MigrationsForMiradi3
 {
+	public static void upgradeToVersion38() throws Exception
+	{
+		MigrationsOlderThanMiradiVersion2.moveFactorLinkCommentFieldsIntoThreatRatingCommentsData();
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 38);
+	}
+
 	public static void upgradeToVersion39() throws Exception
 	{
 		MigrationsOlderThanMiradiVersion2.enableThreats();
