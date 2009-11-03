@@ -169,6 +169,9 @@ public class ProjectMetadata extends BaseObject
 		try
 		{
 			String size = projectArea.get();
+			if (size.isEmpty())
+				return new OptionalDouble();
+			
 			return new OptionalDouble(Double.parseDouble(size));
 		}
 		catch (Exception e)
