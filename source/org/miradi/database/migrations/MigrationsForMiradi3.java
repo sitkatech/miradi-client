@@ -25,6 +25,12 @@ import org.miradi.utils.CodeList;
 
 public class MigrationsForMiradi3
 {
+	public static void upgradeToVersion39() throws Exception
+	{
+		MigrationsOlderThanMiradiVersion2.enableThreats();
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 39);
+	}
+
 	public static void upgradeToVersion40() throws Exception
 	{
 		CreateScopeBoxesSuroundingTargetsMigration migration = new CreateScopeBoxesSuroundingTargetsMigration(DataUpgrader.getTopJsonDir());
