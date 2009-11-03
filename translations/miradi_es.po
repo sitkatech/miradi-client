@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-03 16:16-0600\n"
+"POT-Creation-Date: 2009-11-03 16:19-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -53,7 +53,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:103
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:97
 msgid ""
 "<HTML>The TNC ecoregion field has been changed from a single text field to "
 "three picklists. <BR>Miradi has attempted to migrate the ecoregion data, but "
@@ -66,7 +66,7 @@ msgstr ""
 "a la vista Resumen, lengüeta TNC y verifique que las ecorregiones sean las "
 "correctas para este proyecto.</HTML>"
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:113
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:107
 msgid ""
 "<HTML>The TNC Operating Unit field has been changed from a text field to a "
 "picklist. <BR>Miradi has attemped to migrate existing data, but it may not "
@@ -79,7 +79,7 @@ msgstr ""
 "<BR>Vaya a la vista Resumen, lengüeta  TNC y confirme que la unidad "
 "operativa esté establecida correctamente para este proyecto.</HTML>"
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:139
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:133
 msgid ""
 "<html>Miradi now allows you to specify what currency is being used for "
 "budgeting, <br>and to specify Fiscal Years that are different from Calendar "
@@ -104,7 +104,7 @@ msgstr ""
 "presupuesto como estos, comuníquese con <br>el equipo de Miradi para conocer "
 "las opciones para realinearlos de manera que coincidan con el año <br>fiscal."
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:854
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:811
 msgid ""
 "<html>This version of Miradi has changed the Strategy rating options.<br>The "
 "Duration and Cost fields have been removed, and the <br>Impact and "
@@ -116,7 +116,7 @@ msgstr ""
 "<br>Impacto y Factibilidad ahora abarcan esos atributos.<br><br>Revise las "
 "calificaciones de estrategias para asegurarse de que sean las adecuadas."
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1254
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1211
 msgid ""
 "One or more Goals that were associated with KEA Indicators have been "
 "deleted. Please create new Goals as needed, or use the new Future Status "
@@ -126,7 +126,7 @@ msgstr ""
 "eliminaron. Cree nuevos objetivos según sea necesario o use la nueva sección "
 "Estado futuro de la viabilidad del objeto para almacenar los mismos datos."
 
-#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:63
+#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:113
 msgid ""
 "<html>One or more Overrides (High Level Estimates) have been migrated. "
 "<br><br>Any Who overrides have been converted to Resource Assignments, "
@@ -135,7 +135,7 @@ msgid ""
 "case you want to refer to them. You can delete them at any time."
 msgstr ""
 
-#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:103
+#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:153
 msgid ""
 "<html>An Operating Unit for this project has been <br>superseded. Please "
 "select its replacement on the TNC Tab of the Summary Page.</html>"
