@@ -131,31 +131,32 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 
 	private void writeRareProjectDataSchemaElement() throws Exception
 	{
-		writeStartElement(out, RARE_PROJECT_DATA);
+		String rareParentElementName = RARE_PROJECT_DATA;
+		writeStartElement(out, rareParentElementName);
 		 
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_COHORT);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_THREATS_ADDRESSED_NOTES);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_AUDIENCE);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_BIODIVERSITY_HOTSPOTS);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_FLAGSHIP_SPECIES_COMMON_NAME);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_FLAGSHIP_SPECIES_DETAIL);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_CAMPAIGN_THEORY_OF_CHANGE);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_CAMPAIGN_SLOGAN);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_MAIN_ACTIVITIES_NOTES);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_THREAT_REDUCTION_OBJECTIVE_NOTES);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_MONITORING_OBJECTIVE_NOTES);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_COURSE_MANAGER_NOTES);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_REGIONAL_DIRECTOR_NOTES);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_CAMPAIGN_MANAGER_NOTES);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_LOCAL_PARTNER_CONTACT_NOTES);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_BINGO_PARTNER_CONTACT_NOTES);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_THREAT_REDUCTION_PARTNER_CONTACT_NOTES);
-		writeOptionalElementWithSameTag(WCS_PROJECT_DATA, getRareProjectData(), RareProjectData.TAG_MONITORING_PARTNER_CONTACT_NOTES);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_COHORT);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_THREATS_ADDRESSED_NOTES);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_AUDIENCE);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_BIODIVERSITY_HOTSPOTS);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_FLAGSHIP_SPECIES_COMMON_NAME);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_FLAGSHIP_SPECIES_DETAIL);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_CAMPAIGN_THEORY_OF_CHANGE);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_CAMPAIGN_SLOGAN);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_MAIN_ACTIVITIES_NOTES);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_THREAT_REDUCTION_OBJECTIVE_NOTES);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_MONITORING_OBJECTIVE_NOTES);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_COURSE_MANAGER_NOTES);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_REGIONAL_DIRECTOR_NOTES);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_CAMPAIGN_MANAGER_NOTES);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_LOCAL_PARTNER_CONTACT_NOTES);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_BINGO_PARTNER_CONTACT_NOTES);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_THREAT_REDUCTION_PARTNER_CONTACT_NOTES);
+		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_MONITORING_PARTNER_CONTACT_NOTES);
 		
-		writeEndElement(out, RARE_PROJECT_DATA);
+		writeEndElement(out, rareParentElementName);
 	}
 
 	private void writeWcsDataSchemaElement() throws Exception
