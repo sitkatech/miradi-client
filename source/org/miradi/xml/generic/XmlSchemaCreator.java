@@ -71,6 +71,7 @@ import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
 import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
 import org.miradi.questions.TncProjectPlaceTypeQuestion;
+import org.miradi.questions.TncProjectSharingQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
@@ -140,6 +141,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		defineVocabulary(writer, VOCABULARY_TNC_TERRESTRIAL_ECO_REGION, new TncTerrestrialEcoRegionQuestion());
 		defineVocabulary(writer, VOCABULARY_TNC_MARINE_ECO_REGION, new TncMarineEcoRegionQuestion());
 		defineVocabulary(writer, VOCABULARY_TNC_FRESHWATER_ECO_REGION, new TncFreshwaterEcoRegionQuestion());
+		defineVocabulary(writer, VOCABULARY_TNC_SHARING_CODE, new TncProjectSharingQuestion());
 		defineVocabulary(writer, VOCABULARY_WWF_MANAGING_OFFICES, new WwfManagingOfficesQuestion());
 		defineVocabulary(writer, VOCABULARY_WWF_REGIONS, new WwfRegionsQuestion());
 		defineVocabulary(writer, VOCABULARY_WWF_ECOREGIONS, new WwfEcoRegionsQuestion());
@@ -496,6 +498,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 	public static final String VOCABULARY_TNC_TERRESTRIAL_ECO_REGION = "vocabulary_tnc_terrestrial_eco_region";
 	public static final String VOCABULARY_TNC_MARINE_ECO_REGION = "vocabulary_tnc_marine_eco_region";
 	public static final String VOCABULARY_TNC_FRESHWATER_ECO_REGION = "vocabulary_tnc_freshwater_eco_region";
+	public static final String VOCABULARY_TNC_SHARING_CODE = "vocabulary_tnc_sharing";
 	public static final String VOCABULARY_WWF_MANAGING_OFFICES = "vocabulary_wwf_managing_offices";
 	public static final String VOCABULARY_WWF_REGIONS = "vocabulary_wwf_regions";
 	public static final String VOCABULARY_WWF_ECOREGIONS = "vocabulary_wwf_ecoregions";
