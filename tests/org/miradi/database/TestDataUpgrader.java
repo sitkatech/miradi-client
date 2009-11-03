@@ -334,7 +334,7 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		
 		
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
-		MigrationsOlderThanMiradiVersion2.upgradeToVersion38();
+		MigrationsForMiradi3.upgradeToVersion38();
 	
 		
 		final int THREAT_RATING_COMMENTS_DATA_TYPE = 49;
