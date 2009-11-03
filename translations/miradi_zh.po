@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-03 16:14-0600\n"
+"POT-Creation-Date: 2009-11-03 16:16-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -51,7 +51,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:115
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:103
 msgid ""
 "<HTML>The TNC ecoregion field has been changed from a single text field to "
 "three picklists. <BR>Miradi has attempted to migrate the ecoregion data, but "
@@ -62,7 +62,7 @@ msgstr ""
 "生态区数据，但可能仍未成功。<BR>请到概要视图，TNC标签，并确认生态区对于本项目"
 "是正确的。</HTML> \t\t"
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:125
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:113
 msgid ""
 "<HTML>The TNC Operating Unit field has been changed from a text field to a "
 "picklist. <BR>Miradi has attemped to migrate existing data, but it may not "
@@ -73,7 +73,7 @@ msgstr ""
 "的数据，但可能仍未成功。<BR>请到概要视图，TNC标签并确认操作单元针对本项目设置"
 "正确。</HTML> \t\t"
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:151
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:139
 msgid ""
 "<html>Miradi now allows you to specify what currency is being used for "
 "budgeting, <br>and to specify Fiscal Years that are different from Calendar "
@@ -94,7 +94,7 @@ msgstr ""
 "<br>Miradi团队，学习关于能让数据重新排列使之与您的<br>财政年相匹配的功能选"
 "项。 \t\t"
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:866
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:854
 msgid ""
 "<html>This version of Miradi has changed the Strategy rating options.<br>The "
 "Duration and Cost fields have been removed, and the <br>Impact and "
@@ -105,7 +105,7 @@ msgstr ""
 "<br>冲击及可行性字段现在包含了那些属性。<br><br>请检查您的策略评级以确保它们"
 "是否恰当。 \t\t"
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1266
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1254
 msgid ""
 "One or more Goals that were associated with KEA Indicators have been "
 "deleted. Please create new Goals as needed, or use the new Future Status "
@@ -114,7 +114,7 @@ msgstr ""
 "一项或多项与KEA指示物相关联的总目标组已被删除。请根据需要创建新的总目标组，或"
 "使用“对象生存力”选项中“未来状态”这一新选项来储存同样的数据。 \t\t"
 
-#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:51
+#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:63
 msgid ""
 "<html>One or more Overrides (High Level Estimates) have been migrated. "
 "<br><br>Any Who overrides have been converted to Resource Assignments, "
@@ -123,7 +123,7 @@ msgid ""
 "case you want to refer to them. You can delete them at any time."
 msgstr ""
 
-#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:91
+#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:103
 msgid ""
 "<html>An Operating Unit for this project has been <br>superseded. Please "
 "select its replacement on the TNC Tab of the Summary Page.</html>"

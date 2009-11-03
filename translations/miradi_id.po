@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-03 16:14-0600\n"
+"POT-Creation-Date: 2009-11-03 16:16-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -51,7 +51,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:115
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:103
 msgid ""
 "<HTML>The TNC ecoregion field has been changed from a single text field to "
 "three picklists. <BR>Miradi has attempted to migrate the ecoregion data, but "
@@ -64,7 +64,7 @@ msgstr ""
 "Tampilan Ringkasan, tab TNC, dan periksa bahwa wilayah ekologi untuk proyek "
 "ini sudah benar.</HTML> "
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:125
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:113
 msgid ""
 "<HTML>The TNC Operating Unit field has been changed from a text field to a "
 "picklist. <BR>Miradi has attemped to migrate existing data, but it may not "
@@ -77,7 +77,7 @@ msgstr ""
 "dan konfirmasikan bahwa penyetelan Unit Operasi untuk proyek ini sudah benar."
 "</HTML> "
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:151
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:139
 msgid ""
 "<html>Miradi now allows you to specify what currency is being used for "
 "budgeting, <br>and to specify Fiscal Years that are different from Calendar "
@@ -103,7 +103,7 @@ msgstr ""
 "Miradi untuk mempelajari pilihan dalam menyesuaikannya dengan <br>tahun "
 "fiskal. "
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:866
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:854
 msgid ""
 "<html>This version of Miradi has changed the Strategy rating options.<br>The "
 "Duration and Cost fields have been removed, and the <br>Impact and "
@@ -115,7 +115,7 @@ msgstr ""
 "Kelayakan sekarang meliputi atribut-atribut tersebut.<br><br>Silakan "
 "meninjau peringkat Strategi Anda untuk memastikan kelayakannya. "
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1266
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1254
 msgid ""
 "One or more Goals that were associated with KEA Indicators have been "
 "deleted. Please create new Goals as needed, or use the new Future Status "
@@ -125,7 +125,7 @@ msgstr ""
 "Buat Sasaran baru bila diperlukan, atau gunakan bagian Status Masa Depan "
 "yang baru dari Kelangsungan Target untuk menyimpan data yang sama. "
 
-#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:51
+#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:63
 msgid ""
 "<html>One or more Overrides (High Level Estimates) have been migrated. "
 "<br><br>Any Who overrides have been converted to Resource Assignments, "
@@ -134,7 +134,7 @@ msgid ""
 "case you want to refer to them. You can delete them at any time."
 msgstr ""
 
-#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:91
+#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:103
 msgid ""
 "<html>An Operating Unit for this project has been <br>superseded. Please "
 "select its replacement on the TNC Tab of the Summary Page.</html>"
