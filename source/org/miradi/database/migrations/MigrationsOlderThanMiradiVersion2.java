@@ -70,12 +70,6 @@ import org.miradi.utils.PointList;
 
 public class MigrationsOlderThanMiradiVersion2
 {
-	public static void upgradeToVersion37() throws Exception
-	{
-		addThreatRefAndRemoveThreatStressRatingRefsFromFactorLinks();
-		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 37);
-	}
-
 	public static void upgradeToVersion36() throws Exception
 	{
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 36);
@@ -367,43 +361,6 @@ public class MigrationsOlderThanMiradiVersion2
 			return toRef.toString() + fromRef.toString();
 		
 		return fromRef.toString() + toRef.toString();
-	}
-
-	private static void addThreatRefAndRemoveThreatStressRatingRefsFromFactorLinks() throws Exception
-	{
-		File jsonDir = DataUpgrader.getTopJsonDir();
-		final int FACTOR_LINK_TYPE = 6;
-		File factorLinkDir = DataUpgrader.getObjectsDir(jsonDir, FACTOR_LINK_TYPE);
-		if (! factorLinkDir.exists())
-			return;
-		
-		File factorLinkManifestFile = new File(factorLinkDir, "manifest");
-		if (! factorLinkManifestFile.exists())
-			return;
-		
-		final int THREAT_STRESS_RATING_TYPE = 34;
-		File threatStressRatingDir = DataUpgrader.getObjectsDir(jsonDir, THREAT_STRESS_RATING_TYPE);
-		if (!threatStressRatingDir.exists())
-			return;
-		
-		File threatStressRatingManifestFile = new File(factorLinkDir, "manifest");
-		if (! threatStressRatingManifestFile.exists())
-			return;
-		
-		ObjectManifest factorLinkManifestObject = new ObjectManifest(JSONFile.read(factorLinkManifestFile));
-		BaseId[] factorLinkIds = factorLinkManifestObject.getAllKeys();
-		for (int i = 0; i < factorLinkIds.length; ++i)
-		{
-			BaseId thisId = factorLinkIds[i];
-			File factorLinkJsonFile = new File(factorLinkDir, Integer.toString(thisId.asInt()));
-			EnhancedJsonObject factorLinkJson = DataUpgrader.readFile(factorLinkJsonFile);
-			ORef threatRef = getCauseIfDirectlyUpstreamFromTarget(factorLinkJson);
-			if (!threatRef.isInvalid())
-			{
-				addThreatRefToThreatStressRatings(threatStressRatingDir, factorLinkJson, threatRef);
-				removeThreatStressRatingField(factorLinkJsonFile, factorLinkJson);
-			}
-		}
 	}
 
 	public static void addThreatRefToThreatStressRatings(File threatStressRatingDir,EnhancedJsonObject factorLinkJson, ORef threatRef) throws Exception

@@ -405,7 +405,7 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		createObjectFile(threatStressRatingJsonString, threatStressRatingIds[0], threatStressRatingDir);
 		
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
-		MigrationsOlderThanMiradiVersion2.upgradeToVersion37();
+		MigrationsForMiradi3.upgradeToVersion37();
 		
 		File threatStressRatingFile = new File(threatStressRatingDir, Integer.toString(threatStressRatingIds[0]));
 		String threatStressRatingFileContent = readFile(threatStressRatingFile);

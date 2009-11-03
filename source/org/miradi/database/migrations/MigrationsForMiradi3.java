@@ -19,12 +19,62 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.database.migrations;
 
+import java.io.File;
+
 import org.miradi.database.DataUpgrader;
+import org.miradi.database.JSONFile;
+import org.miradi.database.ObjectManifest;
+import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.EnhancedJsonObject;
 
 public class MigrationsForMiradi3
 {
+	public static void upgradeToVersion37() throws Exception
+	{
+		MigrationsForMiradi3.addThreatRefAndRemoveThreatStressRatingRefsFromFactorLinks();
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 37);
+	}
+	
+	private static void addThreatRefAndRemoveThreatStressRatingRefsFromFactorLinks() throws Exception
+	{
+		File jsonDir = DataUpgrader.getTopJsonDir();
+		final int FACTOR_LINK_TYPE = 6;
+		File factorLinkDir = DataUpgrader.getObjectsDir(jsonDir, FACTOR_LINK_TYPE);
+		if (! factorLinkDir.exists())
+			return;
+		
+		File factorLinkManifestFile = new File(factorLinkDir, "manifest");
+		if (! factorLinkManifestFile.exists())
+			return;
+		
+		final int THREAT_STRESS_RATING_TYPE = 34;
+		File threatStressRatingDir = DataUpgrader.getObjectsDir(jsonDir, THREAT_STRESS_RATING_TYPE);
+		if (!threatStressRatingDir.exists())
+			return;
+		
+		File threatStressRatingManifestFile = new File(factorLinkDir, "manifest");
+		if (! threatStressRatingManifestFile.exists())
+			return;
+		
+		ObjectManifest factorLinkManifestObject = new ObjectManifest(JSONFile.read(factorLinkManifestFile));
+		BaseId[] factorLinkIds = factorLinkManifestObject.getAllKeys();
+		for (int i = 0; i < factorLinkIds.length; ++i)
+		{
+			BaseId thisId = factorLinkIds[i];
+			File factorLinkJsonFile = new File(factorLinkDir, Integer.toString(thisId.asInt()));
+			EnhancedJsonObject factorLinkJson = DataUpgrader.readFile(factorLinkJsonFile);
+			ORef threatRef = MigrationsOlderThanMiradiVersion2.getCauseIfDirectlyUpstreamFromTarget(factorLinkJson);
+			if (!threatRef.isInvalid())
+			{
+				MigrationsOlderThanMiradiVersion2.addThreatRefToThreatStressRatings(threatStressRatingDir, factorLinkJson, threatRef);
+				MigrationsOlderThanMiradiVersion2.removeThreatStressRatingField(factorLinkJsonFile, factorLinkJson);
+			}
+		}
+	}
+
 	public static void upgradeToVersion38() throws Exception
 	{
 		MigrationsOlderThanMiradiVersion2.moveFactorLinkCommentFieldsIntoThreatRatingCommentsData();
