@@ -182,7 +182,7 @@ public class DataUpgrader
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion38();
 			
 			if (DataUpgrader.readDataVersion(getTopDirectory()) == 38)
-				MigrationsOlderThanMiradiVersion2.upgradeToVersion39();
+				MigrationsForMiradi3.upgradeToVersion39();
 			
 			if (DataUpgrader.readDataVersion(getTopDirectory()) == 39)
 				MigrationsForMiradi3.upgradeToVersion40();

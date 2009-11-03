@@ -278,7 +278,7 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		createAndPopulateObjectDir(jsonDir, FACTOR_LINK_TYPE, new String[]{threatTargetLinkJsonString, strategyThreatLinkJsonString, targetCauseBidiLinkJsonString, causeStrategyLinkJsonString, targetCauseLinkJsonString, });
 
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
-		MigrationsOlderThanMiradiVersion2.upgradeToVersion39();
+		MigrationsForMiradi3.upgradeToVersion39();
 		
 		verifyAsThreat(getCauseJson(jsonDir, CAUSE_TYPE, causeIds[0]));
 		verifyAsThreat(getCauseJson(jsonDir, CAUSE_TYPE, causeIds[1]));
