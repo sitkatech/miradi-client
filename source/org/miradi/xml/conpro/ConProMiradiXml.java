@@ -128,6 +128,8 @@ public interface ConProMiradiXml
 	public static final String DESIRED_RATING_DATE = "desired_rating_date";
 	public static final String KEA_AND_INDICATOR_COMMENT = "kea_and_indicator_comment";
 	public static final String INDICATOR_RATING_COMMENT = "indicator_rating_comment";
+	public static final String FACTOR_NAME = "factor_name";
+	public static final String FACTOR_TYPE = "factor_type";
 	public static final String DESIRED_RATING_COMMENT = "desired_rating_comment";
 	public static final String THREATS = "threats";
 	public static final String THREAT = "threat";

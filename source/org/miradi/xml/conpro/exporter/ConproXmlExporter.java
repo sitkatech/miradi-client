@@ -129,6 +129,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		Indicator indicator = Indicator.find(getProject(), indicatorRef);
 		writeStartElementWithAttribute(out, INDICATOR, ID, indicator.getId().toString());
 		writeLabelElement(out, NAME, indicator, Indicator.TAG_LABEL);
+		writeParentTypeAndNameElements(out, indicator);
 		writeOptionalRatingCodeElement(out, PRIORITY, indicator, Indicator.TAG_PRIORITY);
 		writeOptionalElement(out, COMMENT, indicator, Indicator.TAG_COMMENTS);
 		writeMeasurements(out, indicator.getMeasurementRefs());		
@@ -136,6 +137,29 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeProgressReports(out, indicator.getProgressReportRefs());
 
 		writeEndElement(out, INDICATOR);
+	}
+
+	private void writeParentTypeAndNameElements(UnicodeWriter out, Indicator indicator) throws Exception
+	{
+		String parentTypeName = "";
+		String parentLabel = "";
+		Factor owningFactor = indicator.getDirectOrIndirectOwningFactor();
+		if (owningFactor != null)
+		{
+			parentTypeName = owningFactor.getTypeName();
+			parentLabel = owningFactor.toString();
+		}
+		else if (indicator.findObjectsThatReferToUs(KeyEcologicalAttribute.getObjectType()).size() > 0)
+		{
+			ORefList keaReferrerRefs = indicator.findObjectsThatReferToUs(KeyEcologicalAttribute.getObjectType());
+			ORef keaRef = keaReferrerRefs.getRefForType(KeyEcologicalAttribute.getObjectType());
+			KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(getProject(), keaRef);
+			parentTypeName = kea.getTypeName();
+			parentLabel = kea.toString();
+		}
+		
+		writeOptionalElement(out, FACTOR_TYPE, parentTypeName);
+		writeOptionalElement(out, FACTOR_NAME, parentLabel);
 	}
 
 	private void writeStrategies(UnicodeWriter out) throws Exception
