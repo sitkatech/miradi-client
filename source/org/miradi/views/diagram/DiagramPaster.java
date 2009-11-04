@@ -343,7 +343,7 @@ abstract public class DiagramPaster
 	
 	private void addDiagramLinkToSelection(ORef diagramLinkRefToSelect) throws Exception
 	{
-		DiagramLink diagramLink = (DiagramLink) project.findObject(diagramLinkRefToSelect);
+		DiagramLink diagramLink = (DiagramLink) getProject().findObject(diagramLinkRefToSelect);
 		LinkCell linkCell = currentModel.getLinkCell(diagramLink);
 		pastedCellsToSelect.add(linkCell);	
 	}
@@ -630,7 +630,7 @@ abstract public class DiagramPaster
 			
 			DiagramFactorId fromDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 			DiagramFactorId toDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
-			LinkCreator linkCreator = new LinkCreator(project);
+			LinkCreator linkCreator = new LinkCreator(getProject());
 			if (linkCreator.linkToBePastedWasRejected(currentModel, fromDiagramFactorId, toDiagramFactorId))
 				continue;
 			
@@ -683,7 +683,7 @@ abstract public class DiagramPaster
 		ORef newFromRef = getFixedupFactorRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_FROM_REF);
 		ORef newToRef = getFixedupFactorRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_TO_REF);	
 		
-		LinkCreator linkCreator = new LinkCreator(project);
+		LinkCreator linkCreator = new LinkCreator(getProject());
 		if (linkCreator.linkWasRejected(currentModel, newFromRef, newToRef))
 			return null;
 					
