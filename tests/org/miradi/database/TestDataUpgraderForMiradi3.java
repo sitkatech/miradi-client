@@ -47,6 +47,40 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		super(name);
 	}
 	
+	public void testRemoveNonExistingRelatedThreatRefFromThreatReductionResult() throws Exception
+	{
+		File jsonDir = createJsonDir();
+		String tRRWithoutRelatedThreat = "{\"ObjectiveIds\":\"\",\"RelatedDirectThreatRef\":\"\",\"Comments\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Type\":\"Threat Reduction Result\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1257363433052\",\"Id\":44,\"Label\":\"TRR without related threat\",\"ProgressReportRefs\":\"\"}";
+		String tRRWithNonExistingRelatedThreat = "{\"ObjectiveIds\":\"\",\"RelatedDirectThreatRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":99999}\",\"Comments\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Type\":\"Threat Reduction Result\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1257363443471\",\"Id\":45,\"Label\":\"TRR with non existing related threat\",\"ProgressReportRefs\":\"\"}";
+		String tRRWithExistingRelatedThreat = "{\"ObjectiveIds\":\"\",\"RelatedDirectThreatRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":35}\",\"Comments\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Type\":\"Threat Reduction Result\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1257363458038\",\"Id\":42,\"Label\":\"TRR with existing related threat\",\"ProgressReportRefs\":\"\"}";
+		
+		String threatRelatedToTRR = "{\"ObjectiveIds\":\"{\\\"Ids\\\":[37]}\",\"Comments\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Factor\",\"ExpenseRefs\":\"\",\"TaxonomyCode\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1257363377280\",\"Id\":35,\"Label\":\"New Factor\",\"ProgressReportRefs\":\"\",\"IsDirectThreat\":\"1\"}";
+		
+		
+		final int THREAT_REDUCTION_RESULT_TYPE = 25;
+		int[] threatReductionResultIds = createAndPopulateObjectDir(jsonDir, THREAT_REDUCTION_RESULT_TYPE, new String[]{tRRWithoutRelatedThreat, tRRWithNonExistingRelatedThreat, tRRWithExistingRelatedThreat, });
+	
+		final int CAUSE_TYPE = 20;
+		createAndPopulateObjectDir(jsonDir, CAUSE_TYPE, new String[]{threatRelatedToTRR, });
+		
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion50();
+		
+		verifyRelatedThreatId(jsonDir, THREAT_REDUCTION_RESULT_TYPE, threatReductionResultIds[0], BaseId.INVALID.asInt());
+		verifyRelatedThreatId(jsonDir, THREAT_REDUCTION_RESULT_TYPE, threatReductionResultIds[1], BaseId.INVALID.asInt());
+		verifyRelatedThreatId(jsonDir, THREAT_REDUCTION_RESULT_TYPE, threatReductionResultIds[2], 35);
+	}
+
+	private void verifyRelatedThreatId(File jsonDir, final int THREAT_REDUCTION_RESULT_TYPE, int threatReductionResultId, int expectedRelatedThreatId) throws Exception
+	{
+		File threatReductionResultDir = DataUpgrader.getObjectsDir(jsonDir, THREAT_REDUCTION_RESULT_TYPE);
+		File threatReductionResultJsonFile = new File(threatReductionResultDir, Integer.toString(threatReductionResultId));		
+
+		EnhancedJsonObject threatReductionResultJson = new EnhancedJsonObject(readFile(threatReductionResultJsonFile));
+		ORef relatedThreatRef = threatReductionResultJson.getRef("RelatedDirectThreatRef");
+		assertEquals("wrong related threat id?", expectedRelatedThreatId, relatedThreatRef.getObjectId().asInt());
+	}
+	
 	public void testShareSameLabeledScopeBoxesAcrossAllDiagramsForEmptyProject() throws Exception
 	{
 		createJsonDir();
