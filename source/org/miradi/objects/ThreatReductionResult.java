@@ -108,6 +108,11 @@ public class ThreatReductionResult extends Factor
 		return ORef.createFromString(relatedDirectThreat.get());
 	}
 	
+	public static boolean is(BaseObject baseObject)
+	{
+		return is(baseObject.getType());
+	}
+	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());

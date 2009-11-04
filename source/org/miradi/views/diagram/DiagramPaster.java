@@ -187,6 +187,12 @@ abstract public class DiagramPaster
 			if (DiagramFactor.TAG_WRAPPED_REF.equals(tag))
 				return getCommandToFixRef(pastedObjectMap, newObject, tag);
 		}
+		
+		if (ThreatReductionResult.is(newObject))
+		{
+			if (ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF.equals(tag))
+				return getCommandToFixRef(pastedObjectMap, newObject, tag);
+		}
 					
 		return new Command[0];
 	}
