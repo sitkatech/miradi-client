@@ -328,9 +328,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return strategy;
 	}
 	
-	public Indicator createAndPopulateIndicatorContainingWhiteSpacePaddedCode() throws Exception
+	public Indicator createIndicatorContainingWhiteSpacePaddedCode() throws Exception
 	{
-		Indicator indicator = createIndicator();
+		Cause threat = createAndPopulateThreat();
+		ORefList indicatorRefs = threat.getDirectOrIndirectIndicatorRefs();
+		ORef indicatorRef = indicatorRefs.getRefForType(Indicator.getObjectType());
+		Indicator indicator = Indicator.find(this, indicatorRef);
+		
 		final String STRING_TO_TRIM = "\n\t  \t";
 		fillObjectUsingCommand(indicator, Indicator.TAG_RATING_SOURCE, STRING_TO_TRIM + RatingSourceQuestion.ONSITE_RESEARCH_CODE + STRING_TO_TRIM);
 		
@@ -688,7 +692,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(indicatorWithoutThreshold, Indicator.TAG_INDICATOR_THRESHOLD, "");
 		indicatorIds.add(indicatorWithoutThreshold.getId());
 		
-		fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds.toString());
+		fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds);
 	}
 	
 	public void populateIndicator(Indicator indicator) throws Exception
@@ -749,9 +753,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(objective, Objective.TAG_FULL_TEXT, "Some objective full text data");
 		fillObjectUsingCommand(objective, Objective.TAG_COMMENTS, "Some Objective comments");
 		
-		ORef relevantIndicatorRef = createAndPopulateIndicator().getRef();
+		Cause threat = createAndPopulateThreat();
+		ORefList relevantIndicatorRefs = threat.getObjectiveRefs();
 		RelevancyOverrideSet relevantIndicators = new RelevancyOverrideSet();
-		relevantIndicators.add(new RelevancyOverride(relevantIndicatorRef, true));
+		for (int index = 0; index < relevantIndicatorRefs.size(); ++index)
+		{
+			relevantIndicators.add(new RelevancyOverride(relevantIndicatorRefs.get(index), true));
+		}
+			
 		fillObjectUsingCommand(objective, Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicators.toString());
 		
 		ProgressPercent populatedProgressPercent = createAndPopulateProgressPercent();
@@ -863,9 +872,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		switchToStressBaseMode();
 		fillGeneralProjectData();
 		createAndPopulateDirectThreatLink();
-		createAndPopulateIndicator();
-		createIndicator();
-		createAndPopulateKea();
 		createAndPopulateMeasurement();
 		createAndPopulateProjectResource();
 		createAndPopulateStress();
@@ -878,7 +884,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateStrategy();
 		createAndPopulateStrategyThreatTargetAssociation();
 		createAndPopulateActivity();
-		createAndPopulateIndicatorContainingWhiteSpacePaddedCode();
+		createIndicatorContainingWhiteSpacePaddedCode();
 		createAndPopulateOrganization();
 		createAndPopulateExpenseAssignment();
 	}
@@ -963,6 +969,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 	}
 	
 	public void fillObjectUsingCommand(BaseObject object, String fieldTag, ORefList data) throws Exception
+	{
+		fillObjectUsingCommand(object, fieldTag, data.toString());
+	}
+	
+	public void fillObjectUsingCommand(BaseObject object, String fieldTag, IdList data) throws Exception
 	{
 		fillObjectUsingCommand(object, fieldTag, data.toString());
 	}
