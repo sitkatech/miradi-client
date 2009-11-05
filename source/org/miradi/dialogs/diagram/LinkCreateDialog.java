@@ -215,7 +215,7 @@ public class LinkCreateDialog extends DialogWithButtonBar implements ActionListe
 		public String toString()
 		{
 			String factorLabel = factor.getLabel();
-			if (factorLabel.isEmpty())
+			if (factorLabel.length() == 0)
 				factorLabel = "[ " + EAM.text("Insert Factor Link dialog|No Label Specified") + " ]";
 			
 			return factorLabel;
