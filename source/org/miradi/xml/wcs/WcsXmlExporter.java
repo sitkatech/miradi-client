@@ -428,7 +428,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 
 	public void writeOptionalCodeElement(String parentElementName, String elementName, ChoiceQuestion question, String code) throws Exception
 	{
-		if (code.isEmpty())
+		if (code.length() == 0)
 			return;
 				
 		if (!doesCodeExist(question, code))
