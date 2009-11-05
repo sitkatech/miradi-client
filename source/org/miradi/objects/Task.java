@@ -315,9 +315,12 @@ public class Task extends Factor
 	public int getTotalShareCount()
 	{
 		int type = getTypeOfParent();
-		ORefList parentRefs = findObjectsThatReferToUs(type); 
+		ORefList parentRefs = findObjectsThatReferToUs(type);
 		if(isTask())
 		{
+			if (parentRefs.isEmpty())
+				return 1;
+			
 			ORef parentRef = parentRefs.get(0);
 			Task parentTask = Task.find(getObjectManager(), parentRef);
 			return parentTask.getTotalShareCount();
