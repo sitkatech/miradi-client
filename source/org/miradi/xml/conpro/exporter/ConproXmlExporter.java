@@ -141,25 +141,16 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeParentTypeAndNameElements(UnicodeWriter out, Indicator indicator) throws Exception
 	{
-		String parentTypeName = "";
-		String parentLabel = "";
 		Factor owningFactor = indicator.getDirectOrIndirectOwningFactor();
 		if (owningFactor != null)
 		{
-			parentTypeName = owningFactor.getTypeName();
-			parentLabel = owningFactor.toString();
+			writeOptionalElement(out, FACTOR_TYPE, owningFactor.getTypeName());
+			writeOptionalElement(out, FACTOR_NAME, owningFactor.toString());
 		}
-		else if (indicator.findObjectsThatReferToUs(KeyEcologicalAttribute.getObjectType()).size() > 0)
+		else
 		{
-			ORefList keaReferrerRefs = indicator.findObjectsThatReferToUs(KeyEcologicalAttribute.getObjectType());
-			ORef keaRef = keaReferrerRefs.getRefForType(KeyEcologicalAttribute.getObjectType());
-			KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(getProject(), keaRef);
-			parentTypeName = kea.getTypeName();
-			parentLabel = kea.toString();
+			EAM.logError(EAM.text("Indicator does not have a direct/indirect factor parent. " + indicator.getRef()));
 		}
-		
-		writeOptionalElement(out, FACTOR_TYPE, parentTypeName);
-		writeOptionalElement(out, FACTOR_NAME, parentLabel);
 	}
 
 	private void writeStrategies(UnicodeWriter out) throws Exception
