@@ -60,11 +60,10 @@ abstract public class AbstractTreeNodeDoer extends ObjectsDoer
 
 	private int getParentIndexInSelectionHierarchy(Task task)
 	{
-		int parentType = task.getTypeOfParent();
 		int taskIndex = getTaskIndexInSelectionHierarchy(task);
 		int possibleParentIndex = taskIndex + 1;
 		ORef possibleParentRef = getSelectionHierarchy().get(possibleParentIndex);
-		ORefList parentReferrerRefs = task.findObjectsThatReferToUs(parentType);
+		ORefList parentReferrerRefs = task.getParentRefs();
 		if (parentReferrerRefs.contains(possibleParentRef))
 			return possibleParentIndex;
 		

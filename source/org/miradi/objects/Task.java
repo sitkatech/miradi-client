@@ -24,6 +24,7 @@ import java.util.Vector;
 
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.exceptions.UnknownTaskParentTypeException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
@@ -314,19 +315,34 @@ public class Task extends Factor
 	@Override
 	public int getTotalShareCount()
 	{
-		int type = getTypeOfParent();
-		ORefList parentRefs = findObjectsThatReferToUs(type);
+		ORefList parentRefs = getParentRefs();
+		if (parentRefs.isEmpty())
+			return 1;
+			
 		if(isTask())
 		{
-			if (parentRefs.isEmpty())
-				return 1;
-			
 			ORef parentRef = parentRefs.get(0);
 			Task parentTask = Task.find(getObjectManager(), parentRef);
 			return parentTask.getTotalShareCount();
 		}
 		
 		return parentRefs.size();
+	}
+
+	public ORefList getParentRefs()
+	{
+		try
+		{
+			int parentType = getTypeOfParent();
+			ORefList parentRefs = findObjectsThatReferToUs(parentType);
+		
+			return parentRefs;
+		}
+		catch (UnknownTaskParentTypeException e)
+		{
+			EAM.logVerbose(getRef() + " " + EAM.text("Task does not have a parent"));
+			return new ORefList();
+		}
 	}
 	
 	@Override
@@ -340,7 +356,7 @@ public class Task extends Factor
 		return timePeriodCostsMap;
 	}
 	
-	public int getTypeOfParent()
+	public int getTypeOfParent() throws UnknownTaskParentTypeException
 	{
 		if(isTask())
 			return Task.getObjectType();
@@ -351,7 +367,7 @@ public class Task extends Factor
 		if(isActivity())
 			return Strategy.getObjectType();
 		
-		throw new RuntimeException("Unknown task type: " + getRef());
+		throw new UnknownTaskParentTypeException();
 	}
 
 	private String getLabelOfTaskParent()
