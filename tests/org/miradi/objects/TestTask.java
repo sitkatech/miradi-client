@@ -54,21 +54,10 @@ public class TestTask extends ObjectTestCase
 		
 		Task taskWithoutParent = getProject().createTask();
 		getProject().fillObjectUsingCommand(task, Task.TAG_SUBTASK_IDS, new ORefList(taskWithoutParent), Task.getObjectType());
-		cacheOwner(taskWithoutParent);
-		dereferenceParent(task);
+		getProject().deleteObject(task);
 		assertEquals("wrong parentless task share count?", 1, taskWithoutParent.getTotalShareCount());
 	}
 
-	private void dereferenceParent(Task parentTask) throws Exception
-	{
-		getProject().fillObjectUsingCommand(parentTask, Task.TAG_SUBTASK_IDS, "");
-	}
-
-	private void cacheOwner(Task taskWithoutParent)
-	{
-		taskWithoutParent.getOwner();
-	}
-	
 	public void testBasics() throws Exception
 	{
 		verifyFields(ObjectType.TASK);
