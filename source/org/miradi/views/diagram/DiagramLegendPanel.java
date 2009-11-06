@@ -292,9 +292,9 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			findCheckBox(keys[i]).setSelected(true);
 		}
 		
-		for (int i=0; i<hiddenTypes.size(); ++i)
+		for (int index=0; index<hiddenTypes.size(); ++index)
 		{
-			String hiddenType = hiddenTypes.get(i);
+			String hiddenType = hiddenTypes.get(index);
 			JCheckBox checkBoxToSetSelectionOn = findCheckBox(hiddenType);
 			if (checkBoxToSetSelectionOn == null)
 			{
