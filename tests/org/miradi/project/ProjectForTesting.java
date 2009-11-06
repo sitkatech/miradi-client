@@ -978,6 +978,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(object, fieldTag, data.toString());
 	}
 	
+	public void fillObjectUsingCommand(BaseObject object, String fieldTag, ORefList refListToBeConvertedToIdList, int type) throws Exception
+	{
+		fillObjectUsingCommand(object, Task.TAG_SUBTASK_IDS, refListToBeConvertedToIdList.convertToIdList(type));
+	}
+	
 	//TODO come up with a better name or eventualy all creates should return ref
 	public ORef createFactorAndReturnRef(int objectType) throws Exception
 	{
