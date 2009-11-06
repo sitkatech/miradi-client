@@ -39,6 +39,36 @@ public class TestTask extends ObjectTestCase
 		super(name);
 	}
 	
+	public void testGetTotalShareCount() throws Exception
+	{
+		Task activity = getProject().createActivity();
+		assertEquals("wrong activity share count?", 1, activity.getTotalShareCount());
+		
+		Strategy strategy = getProject().createStrategy();
+		getProject().appendActivityToStrategy(strategy, activity);
+		assertEquals("wrong activity(Shared) share count?", 2, activity.getTotalShareCount());
+		
+		Task task = getProject().createTask();
+		getProject().fillObjectUsingCommand(activity, Task.TAG_SUBTASK_IDS, new ORefList(task), Task.getObjectType());
+		assertEquals("wrong task share count?", 2, task.getTotalShareCount());
+		
+		Task taskWithoutParent = getProject().createTask();
+		getProject().fillObjectUsingCommand(task, Task.TAG_SUBTASK_IDS, new ORefList(taskWithoutParent), Task.getObjectType());
+		cacheOwner(taskWithoutParent);
+		dereferenceParent(task);
+		assertEquals("wrong parentless task share count?", 1, taskWithoutParent.getTotalShareCount());
+	}
+
+	private void dereferenceParent(Task parentTask) throws Exception
+	{
+		getProject().fillObjectUsingCommand(parentTask, Task.TAG_SUBTASK_IDS, "");
+	}
+
+	private void cacheOwner(Task taskWithoutParent)
+	{
+		taskWithoutParent.getOwner();
+	}
+	
 	public void testBasics() throws Exception
 	{
 		verifyFields(ObjectType.TASK);
