@@ -886,10 +886,10 @@ abstract public class BaseObject
 		int[] objectTypes = getTypesThatCanOwnUs(getType());
 		for (int i=0; i<objectTypes.length; ++i)
 		{
-			ORef oref = findObjectWhoOwnsUs(objectManager, objectTypes[i], getRef());
-			if (oref.isValid())
+			ORef ownerRef = findObjectWhoOwnsUs(objectManager, objectTypes[i], getRef());
+			if (ownerRef.isValid())
 			{
-				return oref;
+				return ownerRef;
 			}
 		}
 		
