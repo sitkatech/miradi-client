@@ -273,10 +273,10 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	{
 		CodeList hiddenTypes = new CodeList();
 		ChoiceItem[] choices = new DiagramLegendQuestion().getChoices();
-		for (int i=0; i<choices.length; ++i)
+		for (int index=0; index<choices.length; ++index)
 		{
-			if (!isSelected(choices[i].getCode()))
-				hiddenTypes.add(choices[i].getCode());
+			if (!isSelected(choices[index].getCode()))
+				hiddenTypes.add(choices[index].getCode());
 		}
 		return hiddenTypes;
 	}
