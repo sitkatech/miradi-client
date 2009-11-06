@@ -287,9 +287,9 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			return;
 		
 		Object[] keys = checkBoxes.keySet().toArray();
-		for (int i=0; i<keys.length; ++i)
+		for (int index=0; index<keys.length; ++index)
 		{
-			findCheckBox(keys[i]).setSelected(true);
+			findCheckBox(keys[index]).setSelected(true);
 		}
 		
 		for (int index=0; index<hiddenTypes.size(); ++index)
