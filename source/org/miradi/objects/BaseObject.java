@@ -896,11 +896,6 @@ abstract public class BaseObject
 		return ORef.INVALID;
 	}
 
-	//FIXME medium - baseObject no longer has a owner cache.  Remove the caller and this method
-	public void invalidateCachedOwner()
-	{
-	}
-	
 	static public ORef findObjectWhoOwnsUs(ObjectManager objectManager, int objectType, ORef oref)
 	{
 		ORefList orefsInPool = objectManager.getPool(objectType).getORefList();
