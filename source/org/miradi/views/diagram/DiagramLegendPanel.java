@@ -211,7 +211,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			return;
 		
 		Object[] keys = checkBoxes.keySet().toArray();
-		for (int index=0; index<keys.length; ++index)
+		for (int index = 0; index < keys.length; ++index)
 		{
 			updateCheckBox(getLayerManager(), ((JCheckBox)checkBoxes.get(keys[index])).getClientProperty(LAYER).toString());
 		}
@@ -273,7 +273,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	{
 		CodeList hiddenTypes = new CodeList();
 		ChoiceItem[] choices = new DiagramLegendQuestion().getChoices();
-		for (int index=0; index<choices.length; ++index)
+		for (int index = 0; index < choices.length; ++index)
 		{
 			if (!isSelected(choices[index].getCode()))
 				hiddenTypes.add(choices[index].getCode());
@@ -287,12 +287,12 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			return;
 		
 		Object[] keys = checkBoxes.keySet().toArray();
-		for (int index=0; index<keys.length; ++index)
+		for (int index = 0; index < keys.length; ++index)
 		{
 			findCheckBox(keys[index]).setSelected(true);
 		}
 		
-		for (int index=0; index<hiddenTypes.size(); ++index)
+		for (int index = 0; index < hiddenTypes.size(); ++index)
 		{
 			String hiddenType = hiddenTypes.get(index);
 			JCheckBox checkBoxToSetSelectionOn = findCheckBox(hiddenType);
