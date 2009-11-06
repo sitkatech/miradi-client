@@ -883,28 +883,22 @@ abstract public class BaseObject
 
 	public ORef getOwnerRef()
 	{
-		if(isCachedOwnerValid)
-			return cachedOwnerRef;
-
-		cachedOwnerRef = ORef.INVALID;
 		int[] objectTypes = getTypesThatCanOwnUs(getType());
 		for (int i=0; i<objectTypes.length; ++i)
 		{
 			ORef oref = findObjectWhoOwnsUs(objectManager, objectTypes[i], getRef());
-			if (oref != null)
+			if (oref.isValid())
 			{
-				cachedOwnerRef = oref;
-				break;
+				return oref;
 			}
 		}
 		
-		isCachedOwnerValid = true;
-		return cachedOwnerRef;
+		return ORef.INVALID;
 	}
 
+	//FIXME medium - baseObject no longer has a owner cache.  Remove the caller and this method
 	public void invalidateCachedOwner()
 	{
-		isCachedOwnerValid = false;
 	}
 	
 	static public ORef findObjectWhoOwnsUs(ObjectManager objectManager, int objectType, ORef oref)
@@ -920,7 +914,7 @@ abstract public class BaseObject
 					return objectInPool.getRef();
 			}
 		}
-		return null;
+		return ORef.INVALID;
 	}
 
 	public ORefList findObjectsThatReferToUs()
@@ -1369,8 +1363,6 @@ abstract public class BaseObject
 	
 	protected PseudoStringData whenTotal;
 
-	private boolean isCachedOwnerValid;
-	private ORef cachedOwnerRef;
 	protected ObjectManager objectManager;
 	private HashMap<String, ObjectData> fields;
 	private HashSet<String> presentationDataFields; 
