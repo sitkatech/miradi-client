@@ -38,7 +38,7 @@ public class ResourceAssignmentEditorComponent extends AbstractAssignmentEditorC
 	protected void createTables() throws Exception
 	{
 		abstractSummaryTableModel = new ResourceAssignmentMainTableModel(getProject());
-		abstractSummaryTable = new ResourceAssignmentMainTable(getMainWindow(), abstractSummaryTableModel);
+		abstractSummaryTable = new ResourceAssignmentDetailsMainTable(getMainWindow(), abstractSummaryTableModel);
 		
 		assignmentDateUnitsTableModel = new PlanningWorkUnitsTableModel(getProject(), abstractSummaryTableModel, WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
 		assignmentDateUnitsTable = new AssignmentWorkUnitsTable(getMainWindow(), assignmentDateUnitsTableModel);		
