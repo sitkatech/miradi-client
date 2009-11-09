@@ -21,9 +21,9 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.main.MainWindow;
 
-public class ExpenseMainTable extends AbstractMainAssignmentTable
+public class ExpenseAssignmentMainTable extends AbstractMainAssignmentTable
 {
-	public ExpenseMainTable(MainWindow mainWindowToUse,	AbstractSummaryTableModel modelToUse) throws Exception
+	public ExpenseAssignmentMainTable(MainWindow mainWindowToUse,	AbstractSummaryTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse, getUniqueIdentifier());
 	}
