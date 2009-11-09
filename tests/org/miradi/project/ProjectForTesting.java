@@ -1207,13 +1207,18 @@ public class ProjectForTesting extends ProjectWithHelpers
 	}
 	
 	public ORef createDiagramLinkAndAddToDiagram(DiagramFactor from, DiagramFactor to) throws Exception
+	{	
+		return createDiagramLinkAndAddToDiagramModel(from, to).getRef();
+	}
+	
+	//TODO - find a better name,  or inline above method
+	public DiagramLink createDiagramLinkAndAddToDiagramModel(DiagramFactor from, DiagramFactor to) throws Exception
 	{
-		ORef linkRef = createDiagramLink(from, to);
-		
-		IdList links = getTestingDiagramObject().getAllDiagramFactorLinkIds();
-		links.add(linkRef.getObjectId());
-		getTestingDiagramObject().setData(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, links.toString());
-		return linkRef;
+		ORef diagramLinkRef = createDiagramLink(from, to);
+		DiagramLink diagramLink = DiagramLink.find(this, diagramLinkRef);
+		addDiagramLinkToModel(diagramLink);
+	
+		return diagramLink;
 	}
 	
 	public BaseId createDiagramFactorLink(DiagramFactor from, DiagramFactor to) throws Exception
