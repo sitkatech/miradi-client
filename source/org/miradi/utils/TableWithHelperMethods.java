@@ -94,11 +94,6 @@ abstract public class TableWithHelperMethods extends TableWithSunBugWorkarounds
 		return getRenderedWidth(table, tableColumn, value);
 	}
 	
-	public int getRenderedWidth(int tableColumn, String value) 
-	{
-		return getRenderedWidth(this, tableColumn, value);
-	}
-	
 	public static int getRenderedWidth(JTable table, int tableColumn, String value)
 	{
 		TableColumn columnToAdjust = table.getColumnModel().getColumn(tableColumn);
