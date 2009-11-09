@@ -146,11 +146,6 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		invalidate();
 	}
 	
-	protected int getSavedColumnWidth(int tableColumn) throws Exception
-	{
-		return columnWidthSaver.getColumnWidth(tableColumn);
-	}
-	
 	public boolean shouldSaveColumnWidth()
 	{
 		return true;
