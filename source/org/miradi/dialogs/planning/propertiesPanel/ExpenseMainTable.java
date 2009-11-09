@@ -21,9 +21,9 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.main.MainWindow;
 
-public class ExpenseSummaryTable extends AbstractSummaryTable
+public class ExpenseMainTable extends AbstractSummaryTable
 {
-	public ExpenseSummaryTable(MainWindow mainWindowToUse,	AbstractSummaryTableModel modelToUse) throws Exception
+	public ExpenseMainTable(MainWindow mainWindowToUse,	AbstractSummaryTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse, getUniqueIdentifier());
 	}
