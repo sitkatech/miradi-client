@@ -553,7 +553,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		ChoiceItem choiceItem = (ChoiceItem) getValueAt(row, modelColumn);
 		String doubleAsString = choiceItem.getLabel();
-		if (doubleAsString.isEmpty())
+		if (doubleAsString.length() == 0)
 			return new OptionalDouble();
 		
 		double value = Double.parseDouble(doubleAsString);
