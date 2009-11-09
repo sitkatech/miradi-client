@@ -36,7 +36,7 @@ public class ExpenseAssignmentEditorComponent extends AbstractAssignmentEditorCo
 	protected void createTables() throws Exception
 	{
 		abstractSummaryTableModel = new ExpenseAssignmentMainTableModel(getProject());
-		abstractSummaryTable = new ExpenseAssignmentMainTable(getMainWindow(), abstractSummaryTableModel);
+		abstractSummaryTable = new ExpenseAssignmentDetailsMainTable(getMainWindow(), abstractSummaryTableModel);
 		
 		assignmentDateUnitsTableModel = new ExpenseAmountsTableModel(getProject(), abstractSummaryTableModel, WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
 		assignmentDateUnitsTable = new AssignmentExpensesTable(getMainWindow(), assignmentDateUnitsTableModel);		
