@@ -32,6 +32,7 @@ abstract public class CreatePoolObjectDoer extends ObjectsDoer
 
 	public void doIt() throws CommandFailedException
 	{
+		getProject().executeBeginTransaction();
 		try
 		{
 			CommandCreateObject cmd = new CommandCreateObject(getTypeToCreate());
@@ -42,6 +43,10 @@ abstract public class CreatePoolObjectDoer extends ObjectsDoer
 		catch (Exception e)
 		{
 			throw new CommandFailedException(e);
+		}
+		finally
+		{
+			getProject().executeEndTransaction();
 		}
 	}
 
