@@ -23,7 +23,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objectpools.ResourcePool;
 import org.miradi.objects.ProjectResource;
 
-public class ResourceAssignmentMainTable extends AbstractMainAssignmentTable
+public class ResourceAssignmentMainTable extends AbstractAssignmentDetailsMainTable
 {
 	public ResourceAssignmentMainTable(MainWindow mainWindowToUse, AbstractSummaryTableModel modelToUse) throws Exception
 	{

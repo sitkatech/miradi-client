@@ -270,7 +270,7 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 	abstract protected void addButtons(OneRowPanel box);
 
 	private ObjectPicker objectPicker;
-	protected AbstractMainAssignmentTable abstractSummaryTable;
+	protected AbstractAssignmentDetailsMainTable abstractSummaryTable;
 	protected AssignmentDateUnitsTable assignmentDateUnitsTable;
 	protected AbstractSummaryTableModel abstractSummaryTableModel;
 	protected AssignmentDateUnitsTableModel assignmentDateUnitsTableModel;
