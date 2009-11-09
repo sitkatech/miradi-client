@@ -48,18 +48,6 @@ abstract public class AbstractComponentTable extends EditableObjectTable
 		return getPreferredSize();
 	}
 	
-	@Override
-	public boolean shouldSaveColumnSequence()
-	{
-		return false;
-	}
-	
-	@Override
-	public boolean shouldSaveColumnWidth()
-	{
-		return false;
-	}
-
 	public Color getColumnBackGroundColor(int tableColumn)
 	{
 		return getBackground();
