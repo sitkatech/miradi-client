@@ -51,7 +51,6 @@ import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.ThreatStressPair;
 import org.miradi.objects.AccountingCode;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -64,6 +63,7 @@ import org.miradi.objects.FundingSource;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
@@ -380,8 +380,8 @@ abstract public class DiagramPaster
 			Command[] commands = threatStressRating.createCommandsToLoadFromJson(json);
 			getProject().executeCommandsWithoutTransaction(commands);
 			
-			fixupRef(threatStressRating, ThreatStressRating.TAG_STRESS_REF);
-			fixupRef(threatStressRating, ThreatStressRating.TAG_THREAT_REF);
+			fixupRef(json, threatStressRating, ThreatStressRating.TAG_STRESS_REF);
+			fixupRef(json, threatStressRating, ThreatStressRating.TAG_THREAT_REF);
 		}
 	}
 	
@@ -425,10 +425,11 @@ abstract public class DiagramPaster
 		fixUpRelevancyOverrideSet();
 	}
 
-	private void fixupRef(ThreatStressRating threatStressRating, String tag) throws Exception
+	private void fixupRef(EnhancedJsonObject json, BaseObject baseObject, String threatRefTag) throws Exception
 	{
-		Command[] commands = getCommandToFixRef(getOldToNewObjectRefMap(), threatStressRating, tag);
-		getProject().executeCommandsWithoutTransaction(commands);
+		ORef fixedRef = getFixedupFactorRef(getOldToNewObjectRefMap(), json, threatRefTag);		
+		Command refFixCommand = new CommandSetObjectData(baseObject.getRef(), threatRefTag, fixedRef.toString());
+		getProject().executeCommand(refFixCommand);
 	}
 
 	public void fixTags(CodeList tagNames, BaseObject newObject) throws Exception

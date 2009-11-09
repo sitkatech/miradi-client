@@ -21,6 +21,7 @@ package org.miradi.views.diagram;
 
 import java.awt.Point;
 import java.util.HashMap;
+import java.util.Vector;
 
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
@@ -35,6 +36,7 @@ import org.miradi.main.EAMTestCase;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -46,8 +48,10 @@ import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Objective;
+import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.Undo;
@@ -72,6 +76,41 @@ public class TestDiagramPaster extends EAMTestCase
 		super.tearDown();
 	}
 	
+	public void testThreatStressRatingPasteIntoDiffererentProject() throws Exception
+	{
+		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		getProject().enableAsThreat(threatDiagramFactor.getWrappedORef());
+		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		ORef diagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(threatDiagramFactor, targetDiagramFactor);
+		
+		Stress stress = getProject().createStress();
+		ORefList stressRefs = new ORefList(stress);
+		getProject().fillObjectUsingCommand(targetDiagramFactor.getWrappedFactor(), Target.TAG_STRESS_REFS, stressRefs);
+		
+		ThreatTargetVirtualLinkHelper helper = new ThreatTargetVirtualLinkHelper(getProject());
+		ORef threatStressRatingRef = helper.findThreatStressRating(threatDiagramFactor.getWrappedORef(), targetDiagramFactor.getWrappedORef(), stress.getRef());
+		assertTrue("threatStressRating was not created?", threatStressRatingRef.isValid());
+		
+		Vector<DiagramFactor> diagramFactorsToPaste = new Vector();
+		diagramFactorsToPaste.add(threatDiagramFactor);
+		diagramFactorsToPaste.add(targetDiagramFactor);
+		
+		Vector<DiagramLink> diagramLinksToPaste = new Vector();
+		diagramLinksToPaste.add(DiagramLink.find(getProject(), diagramLinkRef));
+		
+		ProjectForTesting projectToPasteInto = createNewProject();
+		DiagramPaster paster = paste(projectToPasteInto, diagramFactorsToPaste, diagramLinksToPaste);
+		
+		ORef pastedThreatRef = paster.getOldToNewObjectRefMap().get(threatDiagramFactor.getWrappedORef());
+		ORef pastedTargetRef = paster.getOldToNewObjectRefMap().get(targetDiagramFactor.getWrappedORef());
+		ORef pastedStressRef = paster.getOldToNewObjectRefMap().get(stress.getRef());
+		ThreatTargetVirtualLinkHelper virtualLinkHelperForProjectPastedInto = new ThreatTargetVirtualLinkHelper(projectToPasteInto);
+		ORef pastedThreatStressRatingRef = virtualLinkHelperForProjectPastedInto.findThreatStressRating(pastedThreatRef, pastedTargetRef, pastedStressRef);
+		ThreatStressRating pastedThreatStressRating = ThreatStressRating.find(projectToPasteInto, pastedThreatStressRatingRef);
+		assertEquals("wrong threat ref for pasted threat stress rating?", pastedThreatRef, pastedThreatStressRating.getThreatRef());
+		assertEquals("wrong stress ref for pasted threat stress rating?", pastedStressRef, pastedThreatStressRating.getStressRef());
+	}
+	
 	public void testThreatReductionResultWithNonExistingRelatedThreatRef() throws Exception
 	{
 		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(ThreatReductionResult.getObjectType());
@@ -79,12 +118,17 @@ public class TestDiagramPaster extends EAMTestCase
 		ORef nonExistingThreatRef = new ORef(Cause.getObjectType(), new BaseId(99999));
 		getProject().fillObjectUsingCommand(threatReductionResult, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, nonExistingThreatRef.toString());
 		
-		ProjectForTesting projectToPasteInto = new ProjectForTesting("ProjectToPasteInto");
-		DiagramPaster paster = pasteDiagramFactors(projectToPasteInto, diagramFactor);
+		ProjectForTesting projectToPasteInto = createNewProject();
+		DiagramPaster paster = pasteDiagramFactor(projectToPasteInto, diagramFactor);
 		HashMap<ORef, ORef> oldToNewRefMap = paster.getOldToNewObjectRefMap();
 		ORef newThreatReductionResultRef = oldToNewRefMap.get(threatReductionResult.getRef());
 		ThreatReductionResult newThreatReductionResult = ThreatReductionResult.find(projectToPasteInto, newThreatReductionResultRef);
 		assertEquals("did not blank out related threat ref?", ORef.INVALID, newThreatReductionResult.getRelatedThreatRef());
+	}
+
+	private ProjectForTesting createNewProject() throws Exception
+	{
+		return new ProjectForTesting("ProjectToPasteInto");
 	}
 
 	public void testFixupAllIndicatorRefs() throws Exception
@@ -111,7 +155,7 @@ public class TestDiagramPaster extends EAMTestCase
 		project.executeCommand(setFactorAnnotationIds);
 		
 		Factor factor = (Factor) project.findObject(diagramFactor.getWrappedORef());
-		DiagramPaster paster = pasteDiagramFactors(project, diagramFactor);
+		DiagramPaster paster = pasteDiagramFactor(project, diagramFactor);
 		
 		HashMap oldToNewFactorRefMap = paster.getOldToNewObjectRefMap();
 		ORef newRef = (ORef) oldToNewFactorRefMap.get(factor.getRef());
@@ -195,16 +239,41 @@ public class TestDiagramPaster extends EAMTestCase
 		assertEquals("wrong threat stress ratings count after undo?", 1, getProject().getThreatStressRatingPool().size());
 	}
 	
-	private DiagramPaster pasteDiagramFactors(ProjectForTesting projectToPasteInto, DiagramFactor diagramFactor) throws Exception
+	private DiagramPaster pasteDiagramFactor(ProjectForTesting projectToPasteInto, DiagramFactor diagramFactor) throws Exception
 	{
-		FactorCell factorCell = getDiagramModel().getFactorCellByRef(diagramFactor.getRef());
-		EAMGraphCell[] dataCells = new EAMGraphCell[] {factorCell};
+		Vector<DiagramFactor> diagramFactors = new Vector();
+		diagramFactors.add(diagramFactor);
+		
+		return paste(projectToPasteInto, diagramFactors, new Vector());
+	}
+	
+	private DiagramPaster paste(ProjectForTesting projectToPasteInto, Vector<DiagramFactor> diagramFactors, Vector<DiagramLink> diagramLinks) throws Exception
+	{
+		Vector<EAMGraphCell> cellsToCopy = new Vector();
+		for(DiagramLink diagramLink : diagramLinks)
+		{
+			LinkCell linkCell = getDiagramModel().getLinkCell(diagramLink);
+			cellsToCopy.add(linkCell);
+		}
+	
+		for(DiagramFactor diagramFactor : diagramFactors)
+		{
+			FactorCell factorCell = getDiagramModel().getFactorCellByRef(diagramFactor.getRef());
+			cellsToCopy.add(factorCell);
+		}
+		
+		EAMGraphCell[] cellsToCopyAsArray = cellsToCopy.toArray(new EAMGraphCell[0]);
+		return paste(projectToPasteInto, cellsToCopyAsArray);
+	}
+
+	private DiagramPaster paste(ProjectForTesting projectToPasteInto, EAMGraphCell[] dataCells) throws Exception
+	{
 		ORef diagramObjectRef = getDiagramModel().getDiagramObject().getRef();
 		TransferableMiradiList transferableList = new TransferableMiradiList(getProject(), diagramObjectRef);
 		transferableList.storeData(dataCells);
 		
 		DiagramPaster paster = new DiagramCopyPaster(null, projectToPasteInto.getDiagramModel(), transferableList);
-		paster.pasteFactors(new Point(0, 0));
+		paster.pasteFactorsAndLinks(new Point(0, 0));
 		
 		return paster;
 	}
