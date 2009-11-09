@@ -185,6 +185,18 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		return getWorkUnitsTableModel().areBudgetValuesAllocated(row);
 	}
 	
+	@Override
+	public boolean shouldSaveColumnSequence()
+	{
+		return false;
+	}
+
+	@Override
+	public boolean shouldSaveColumnWidth()
+	{
+		return false;
+	}
+
 	public static final String UNIQUE_IDENTIFIER = "WorkUnitsTable";
 
 	private BasicTableCellRendererFactory numericRendererFactory;

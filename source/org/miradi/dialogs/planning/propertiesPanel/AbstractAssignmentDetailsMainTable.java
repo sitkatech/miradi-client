@@ -78,5 +78,17 @@ public class AbstractAssignmentDetailsMainTable extends AbstractComponentTable
 		return model;
 	}
 	
+	@Override
+	public boolean shouldSaveColumnSequence()
+	{
+		return false;
+	}
+
+	@Override
+	public boolean shouldSaveColumnWidth()
+	{
+		return false;
+	}
+
 	private AbstractSummaryTableModel model;
 }
