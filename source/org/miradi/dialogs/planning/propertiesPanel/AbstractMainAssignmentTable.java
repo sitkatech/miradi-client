@@ -26,9 +26,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.FundingSource;
 
-public class AbstractSummaryTable extends AbstractComponentTable
+public class AbstractMainAssignmentTable extends AbstractComponentTable
 {
-	public AbstractSummaryTable(MainWindow mainWindowToUse, AbstractSummaryTableModel modelToUse, String uniqueIdentifier) throws Exception
+	public AbstractMainAssignmentTable(MainWindow mainWindowToUse, AbstractSummaryTableModel modelToUse, String uniqueIdentifier) throws Exception
 	{
 		super(mainWindowToUse, modelToUse, uniqueIdentifier);
 		model = modelToUse;
