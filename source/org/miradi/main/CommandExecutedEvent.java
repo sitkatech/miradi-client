@@ -23,6 +23,7 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Factor;
 
 public class CommandExecutedEvent
@@ -113,6 +114,14 @@ public class CommandExecutedEvent
 		return (Factor.isFactor(cmd.getObjectType()) && cmd.getFieldTag().equals(tag));
 	}
 	
+	public boolean isSetDataCommandFor(ORef otherRef)
+	{
+		if (!isSetDataCommand())
+			return false;
+		
+		CommandSetObjectData thisCommand = (CommandSetObjectData) getCommand();
+		return thisCommand.getObjectORef().equals(otherRef);
+	}
+	
 	private Command command;
-
 }
