@@ -276,7 +276,7 @@ abstract public class DiagramPaster
 		return ORef.INVALID;
 	}
 
-	private ORef getFixedupFactorRef(HashMap pastedObjectMap, EnhancedJsonObject json, String tag) throws Exception
+	private ORef getFixedupRef(HashMap pastedObjectMap, EnhancedJsonObject json, String tag) throws Exception
 	{
 		ORef oldRef = json.getRef(tag);
 		return fixupSingleRef(pastedObjectMap, oldRef);
@@ -427,7 +427,7 @@ abstract public class DiagramPaster
 
 	private void fixupRef(EnhancedJsonObject json, BaseObject baseObject, String threatRefTag) throws Exception
 	{
-		ORef fixedRef = getFixedupFactorRef(getOldToNewObjectRefMap(), json, threatRefTag);		
+		ORef fixedRef = getFixedupRef(getOldToNewObjectRefMap(), json, threatRefTag);		
 		Command refFixCommand = new CommandSetObjectData(baseObject.getRef(), threatRefTag, fixedRef.toString());
 		getProject().executeCommand(refFixCommand);
 	}
@@ -681,8 +681,8 @@ abstract public class DiagramPaster
 		if (cannotCreateNewFactorLinkFromAnotherProject(json))
 			return null;
 		
-		ORef newFromRef = getFixedupFactorRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_FROM_REF);
-		ORef newToRef = getFixedupFactorRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_TO_REF);	
+		ORef newFromRef = getFixedupRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_FROM_REF);
+		ORef newToRef = getFixedupRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_TO_REF);	
 		
 		LinkCreator linkCreator = new LinkCreator(getProject());
 		if (linkCreator.linkWasRejected(currentModel, newFromRef, newToRef))
