@@ -116,11 +116,10 @@ public class CommandExecutedEvent
 	
 	public boolean isSetDataCommandFor(ORef otherRef)
 	{
-		if (!isSetDataCommand())
-			return false;
+		if (isSetDataCommand())
+			return getCastedSetObjectDataCommand().getObjectORef().equals(otherRef);
 		
-		CommandSetObjectData thisCommand = getCastedSetObjectDataCommand();
-		return thisCommand.getObjectORef().equals(otherRef);
+		return false;
 	}
 
 	private CommandSetObjectData getCastedSetObjectDataCommand()
