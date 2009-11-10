@@ -223,6 +223,7 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 	private void respondToExpandOrCollapseColumnEvent() throws Exception
 	{
 		assignmentDateUnitsTableModel.restoreDateUnits();
+		assignmentDateUnitsTable.updateToReflectNewColumns();
 	}
 
 	protected void dataWasChanged() throws Exception
