@@ -29,6 +29,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
@@ -71,19 +72,32 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 	{
 		try
 		{
-			if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_COLUMN_SEQUENCE_CODES))
-				reloadColumnSequences();
-			
-			if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_COLUMN_WIDTHS))
-				reloadColumnWidths();
-			
-			if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_ROW_HEIGHT))
-				reloadRowHeights();
+			ORef tableSettingRef = getTableSettingsRef();
+			if (event.isSetDataCommandFor(tableSettingRef))
+			{
+				if (event.isSetDataCommandWithThisTag(TableSettings.TAG_COLUMN_SEQUENCE_CODES))
+					reloadColumnSequences();
+
+				if (event.isSetDataCommandWithThisTag(TableSettings.TAG_COLUMN_WIDTHS))
+					reloadColumnWidths();
+
+				if (event.isSetDataCommandWithThisTag(TableSettings.TAG_ROW_HEIGHT))
+					reloadRowHeights();
+			}
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 		}
+	}
+
+	private ORef getTableSettingsRef()
+	{
+		TableSettings tableSettings = TableSettings.find(getProject(), getUniqueTableIdentifier());
+		if (tableSettings == null)
+			return ORef.INVALID;
+		
+		return tableSettings.getRef();
 	}
 	
 	private void addColumnWidthSaver()
