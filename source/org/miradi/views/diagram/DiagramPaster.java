@@ -374,14 +374,14 @@ abstract public class DiagramPaster
 		for (int index = 0; index < threatStressRatings.size(); ++index)
 		{			
 			String jsonAsString = threatStressRatings.get(index);
-			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
+			EnhancedJsonObject tsrJson = new EnhancedJsonObject(jsonAsString);
 
-			ThreatStressRating threatStressRating = findThreatStressRating(json);
-			Command[] commands = threatStressRating.createCommandsToLoadFromJson(json);
+			ThreatStressRating threatStressRating = findThreatStressRating(tsrJson);
+			Command[] commands = threatStressRating.createCommandsToLoadFromJson(tsrJson);
 			getProject().executeCommandsWithoutTransaction(commands);
 			
-			fixupRef(json, threatStressRating, ThreatStressRating.TAG_STRESS_REF);
-			fixupRef(json, threatStressRating, ThreatStressRating.TAG_THREAT_REF);
+			fixupRef(tsrJson, threatStressRating, ThreatStressRating.TAG_STRESS_REF);
+			fixupRef(tsrJson, threatStressRating, ThreatStressRating.TAG_THREAT_REF);
 		}
 	}
 	
