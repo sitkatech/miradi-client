@@ -276,6 +276,13 @@ abstract public class DiagramPaster
 		return ORef.INVALID;
 	}
 
+	private void fixupRefInThreatStressRating(EnhancedJsonObject json, BaseObject baseObject, String threatRefTag) throws Exception
+	{
+		ORef fixedRef = getFixedupRef(getOldToNewObjectRefMap(), json, threatRefTag);		
+		Command refFixCommand = new CommandSetObjectData(baseObject.getRef(), threatRefTag, fixedRef.toString());
+		getProject().executeCommand(refFixCommand);
+	}
+	
 	private ORef getFixedupRef(HashMap pastedObjectMap, EnhancedJsonObject json, String tag) throws Exception
 	{
 		ORef oldRef = json.getRef(tag);
@@ -385,6 +392,16 @@ abstract public class DiagramPaster
 		}
 	}
 	
+	private void fixupStressRefInThreatStressRating(EnhancedJsonObject json, BaseObject baseObject) throws Exception
+	{
+		fixupRefInThreatStressRating(json, baseObject, ThreatStressRating.TAG_STRESS_REF);
+	}
+
+	private void fixupThreatRefInThreatStressRating(EnhancedJsonObject json, BaseObject baseObject) throws Exception
+	{
+		fixupRefInThreatStressRating(json, baseObject, ThreatStressRating.TAG_THREAT_REF);	
+	}
+	
 	private ThreatStressRating findThreatStressRating(EnhancedJsonObject json) throws Exception
 	{
 		ORef oldStressRef = json.getRef(ThreatStressRating.TAG_STRESS_REF);
@@ -425,23 +442,6 @@ abstract public class DiagramPaster
 		fixUpRelevancyOverrideSet();
 	}
 	
-	private void fixupStressRefInThreatStressRating(EnhancedJsonObject json, BaseObject baseObject) throws Exception
-	{
-		fixupRefInThreatStressRating(json, baseObject, ThreatStressRating.TAG_STRESS_REF);
-	}
-
-	private void fixupThreatRefInThreatStressRating(EnhancedJsonObject json, BaseObject baseObject) throws Exception
-	{
-		fixupRefInThreatStressRating(json, baseObject, ThreatStressRating.TAG_THREAT_REF);	
-	}
-	
-	private void fixupRefInThreatStressRating(EnhancedJsonObject json, BaseObject baseObject, String threatRefTag) throws Exception
-	{
-		ORef fixedRef = getFixedupRef(getOldToNewObjectRefMap(), json, threatRefTag);		
-		Command refFixCommand = new CommandSetObjectData(baseObject.getRef(), threatRefTag, fixedRef.toString());
-		getProject().executeCommand(refFixCommand);
-	}
-
 	public void fixTags(CodeList tagNames, BaseObject newObject) throws Exception
 	{
 		ORefList allTags = getProject().getTaggedObjectSetPool().getRefList();
