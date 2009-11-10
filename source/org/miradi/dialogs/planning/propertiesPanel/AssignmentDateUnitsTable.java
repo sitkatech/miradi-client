@@ -146,6 +146,7 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		int modelColumn = convertColumnIndexToModel(tableColumnIndex);
 		getWorkUnitsTableModel().respondToExpandOrCollapseColumnEvent(modelColumn);
 		saveColumnSequence();
+		updateToReflectNewColumns();
 	}
 
 	public Vector<Action> getActionsForRightClickMenu(int row, int tableColumn)
@@ -186,17 +187,11 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 	}
 	
 	@Override
-	public boolean shouldSaveColumnSequence()
+	public int getDefaultColumnWidth(int tableColumn, String columnTag,	int columnHeaderWidth)
 	{
-		return false;
+		return columnHeaderWidth;
 	}
-
-	@Override
-	public boolean shouldSaveColumnWidth()
-	{
-		return false;
-	}
-
+	
 	public static final String UNIQUE_IDENTIFIER = "WorkUnitsTable";
 
 	private BasicTableCellRendererFactory numericRendererFactory;
