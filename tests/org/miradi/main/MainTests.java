@@ -33,6 +33,7 @@ import org.miradi.commands.TestCommandBeginTransaction;
 import org.miradi.commands.TestCommandCreateObject;
 import org.miradi.commands.TestCommandDeleteObject;
 import org.miradi.commands.TestCommandEndTransaction;
+import org.miradi.commands.TestCommandExecutedEvent;
 import org.miradi.commands.TestCommandSetFactorSize;
 import org.miradi.commands.TestCommandSetObjectData;
 import org.miradi.commands.TestCommandSetThreatRating;
@@ -416,6 +417,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestCommandSetThreatRating.class));
 		suite.addTest(new TestSuite(TestCommandBeginTransaction.class));
 		suite.addTest(new TestSuite(TestCommandEndTransaction.class));
+		suite.addTest(new TestSuite(TestCommandExecutedEvent.class));
 		
 		// ratings package
 		suite.addTest(new TestSuite(TestRatingChoice.class));
