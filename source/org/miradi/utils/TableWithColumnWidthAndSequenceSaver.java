@@ -31,6 +31,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
+import org.miradi.project.Project;
 
 abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowHeightSaver implements CommandExecutedListener, TableWithColumnManagement, ColumnWidthProvider
 {
@@ -56,7 +57,7 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 	public void dispose()
 	{
 		FieldSaver.setEditingTable(null);
-		getMainWindow().getProject().removeCommandExecutedListener(this);
+		getProject().removeCommandExecutedListener(this);
 	}
 	
 	@Override
@@ -90,7 +91,7 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		if (! shouldSaveColumnWidth())
 			return; 
 		
-		columnWidthSaver = new ColumnWidthSaver(getMainWindow().getProject(), this, this, getUniqueTableIdentifier());
+		columnWidthSaver = new ColumnWidthSaver(getProject(), this, this, getUniqueTableIdentifier());
 		getTableHeader().addMouseListener(columnWidthSaver);
 		columnWidthSaver.restoreColumnWidths();
 	}
@@ -102,7 +103,7 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		
 		try
 		{
-			columnSequenceSaver = new ColumnSequenceSaver(getMainWindow().getProject(), this, getUniqueTableIdentifier());
+			columnSequenceSaver = new ColumnSequenceSaver(getProject(), this, getUniqueTableIdentifier());
 			getTableHeader().addMouseListener(columnSequenceSaver);
 			columnSequenceSaver.restoreColumnSequences();
 		}
@@ -165,6 +166,11 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 			return ColumnWidthSaver.DEFAULT_NARROW_COLUMN_WIDTH;
 		
 		return columnHeaderWidth;
+	}
+	
+	private Project getProject()
+	{
+		return getMainWindow().getProject();
 	}
 		
 	private ColumnWidthSaver columnWidthSaver;
