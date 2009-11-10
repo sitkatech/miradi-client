@@ -37,13 +37,13 @@ public class TestCommandExecutedEvent extends TestCaseWithProject
 		CommandCreateObject createCommand = new CommandCreateObject(Cause.getObjectType());
 		getProject().executeCommand(createCommand);
 		CommandExecutedEvent event = new CommandExecutedEvent(createCommand);
-		assertFalse("wrong event for command?", event.isSetObjectDataCommandFor(createCommand.getObjectRef()));
+		assertFalse("wrong event for command?", event.isSetDataCommandFor(createCommand.getObjectRef()));
 		
 		Strategy strategy = getProject().createStrategy();
 		CommandSetObjectData setLabel = new CommandSetObjectData(strategy, Strategy.TAG_LABEL, "someLabel");
 		getProject().executeCommand(setLabel);
 		CommandExecutedEvent setLabelEvent = new CommandExecutedEvent(setLabel);
-		assertTrue("event should be for strategy?", setLabelEvent.isSetObjectDataCommandFor(strategy.getRef()));
-		assertFalse("event is for wrong ref?", setLabelEvent.isSetObjectDataCommandFor(createCommand.getObjectRef()));
+		assertTrue("event should be for strategy?", setLabelEvent.isSetDataCommandFor(strategy.getRef()));
+		assertFalse("event is for wrong ref?", setLabelEvent.isSetDataCommandFor(createCommand.getObjectRef()));
 	}
 }
