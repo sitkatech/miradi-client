@@ -92,7 +92,7 @@ public class CommandExecutedEvent
 		if(!isSetDataCommand())
 			return false;
 
-		CommandSetObjectData cmd = (CommandSetObjectData)getCommand();
+		CommandSetObjectData cmd = getCastedSetObjectDataCommand();
 		return (cmd.getFieldTag().equals(tag));
 	}
 	
@@ -101,7 +101,7 @@ public class CommandExecutedEvent
 		if(!isSetDataCommand())
 			return false;
 
-		CommandSetObjectData cmd = (CommandSetObjectData)getCommand();
+		CommandSetObjectData cmd = getCastedSetObjectDataCommand();
 		return (cmd.getObjectType() == objectType);
 	}
 	
@@ -110,7 +110,7 @@ public class CommandExecutedEvent
 		if (!isSetDataCommand())
 			return false;
 		
-		CommandSetObjectData cmd = (CommandSetObjectData) getCommand();
+		CommandSetObjectData cmd = getCastedSetObjectDataCommand();
 		return (Factor.isFactor(cmd.getObjectType()) && cmd.getFieldTag().equals(tag));
 	}
 	
@@ -119,8 +119,13 @@ public class CommandExecutedEvent
 		if (!isSetDataCommand())
 			return false;
 		
-		CommandSetObjectData thisCommand = (CommandSetObjectData) getCommand();
+		CommandSetObjectData thisCommand = getCastedSetObjectDataCommand();
 		return thisCommand.getObjectORef().equals(otherRef);
+	}
+
+	private CommandSetObjectData getCastedSetObjectDataCommand()
+	{
+		return (CommandSetObjectData) getCommand();
 	}
 	
 	private Command command;
