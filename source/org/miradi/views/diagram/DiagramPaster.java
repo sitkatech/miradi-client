@@ -276,10 +276,10 @@ abstract public class DiagramPaster
 		return ORef.INVALID;
 	}
 
-	private void fixupRefInThreatStressRating(EnhancedJsonObject json, BaseObject baseObject, String threatRefTag) throws Exception
+	private void fixupRefInThreatStressRating(EnhancedJsonObject json, BaseObject baseObject, String refTag) throws Exception
 	{
-		ORef fixedRef = getFixedupRef(getOldToNewObjectRefMap(), json, threatRefTag);		
-		Command refFixCommand = new CommandSetObjectData(baseObject.getRef(), threatRefTag, fixedRef.toString());
+		ORef fixedRef = getFixedupRef(getOldToNewObjectRefMap(), json, refTag);		
+		Command refFixCommand = new CommandSetObjectData(baseObject.getRef(), refTag, fixedRef.toString());
 		getProject().executeCommand(refFixCommand);
 	}
 	
