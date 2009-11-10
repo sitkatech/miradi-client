@@ -380,8 +380,8 @@ abstract public class DiagramPaster
 			Command[] commands = threatStressRating.createCommandsToLoadFromJson(tsrJson);
 			getProject().executeCommandsWithoutTransaction(commands);
 			
-			fixupRef(tsrJson, threatStressRating, ThreatStressRating.TAG_STRESS_REF);
-			fixupRef(tsrJson, threatStressRating, ThreatStressRating.TAG_THREAT_REF);
+			fixupRefInThreatStressRating(tsrJson, threatStressRating, ThreatStressRating.TAG_STRESS_REF);
+			fixupRefInThreatStressRating(tsrJson, threatStressRating, ThreatStressRating.TAG_THREAT_REF);
 		}
 	}
 	
@@ -425,7 +425,7 @@ abstract public class DiagramPaster
 		fixUpRelevancyOverrideSet();
 	}
 
-	private void fixupRef(EnhancedJsonObject json, BaseObject baseObject, String threatRefTag) throws Exception
+	private void fixupRefInThreatStressRating(EnhancedJsonObject json, BaseObject baseObject, String threatRefTag) throws Exception
 	{
 		ORef fixedRef = getFixedupRef(getOldToNewObjectRefMap(), json, threatRefTag);		
 		Command refFixCommand = new CommandSetObjectData(baseObject.getRef(), threatRefTag, fixedRef.toString());
