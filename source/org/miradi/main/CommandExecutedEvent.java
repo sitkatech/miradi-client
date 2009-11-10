@@ -114,7 +114,7 @@ public class CommandExecutedEvent
 		return (Factor.isFactor(cmd.getObjectType()) && cmd.getFieldTag().equals(tag));
 	}
 	
-	public boolean isSetDataCommandFor(ORef otherRef)
+	public boolean isSetObjectDataCommandFor(ORef otherRef)
 	{
 		if (isSetDataCommand())
 			return getCastedSetObjectDataCommand().getObjectORef().equals(otherRef);
