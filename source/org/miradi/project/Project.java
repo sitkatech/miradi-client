@@ -1013,7 +1013,7 @@ public class Project
 
 	public void executeCommand(Command command) throws UnexpectedNonSideEffectException, CommandFailedException
 	{
-		if (isDoNothingCommand(command))
+		if (isDoNothingCommand(command) && isDoNothingCommandEnabledOptimization())
 			return;
 		
 		if (isInCommandSideEffectMode())
@@ -1035,10 +1035,7 @@ public class Project
 
 	public boolean isDoNothingCommand(Command command)	throws CommandFailedException
 	{
-		if (isDoNothingCommandEnabledOptimization())
-			return command.isDoNothingCommand(this);
-		
-		return false;
+		return command.isDoNothingCommand(this);
 	}
 
 	private boolean internalExecuteCommand(Command command) throws CommandFailedException
@@ -1181,7 +1178,7 @@ public class Project
 	
 	public void executeAsSideEffect(Command command) throws UnexpectedSideEffectException, CommandFailedException
 	{
-		if (isDoNothingCommand(command))
+		if (isDoNothingCommand(command) && isDoNothingCommandEnabledOptimization())
 			return;
 
 		if (!isInCommandSideEffectMode())
