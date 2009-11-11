@@ -921,7 +921,6 @@ public class TestProject extends EAMTestCase
 		
 		getProject().disableIsDoNothingCommandOptimization();
 		assertFalse("isDoNothingCommandOptimization is not disabled?", getProject().isDoNothingCommandEnabledOptimization());
-		assertFalse("command should be executed regardless of isDoNothing?", getProject().isDoNothingCommand(setToSameLabel));
 	}
 
 	public ProjectForTesting getProject()
