@@ -153,7 +153,7 @@ public class Project
 		projectTotalCalculator = new ProjectTotalCalculator(this);
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
 		enableThreatStressRatingEnsurer();
-		enableIsDoNothingCommand();
+		enableIsDoNothingCommandOptimization();
 
 		clear();
 	}
@@ -1035,7 +1035,7 @@ public class Project
 
 	public boolean isDoNothingCommand(Command command)	throws CommandFailedException
 	{
-		if (isDoNothingCommandEnabled())
+		if (isDoNothingCommandEnabledOptimization())
 			return command.isDoNothingCommand(this);
 		
 		return false;
@@ -1520,25 +1520,25 @@ public class Project
 		inCommandSideEffectMode = false;
 	}
 	
-	public void enableIsDoNothingCommand()
+	public void enableIsDoNothingCommandOptimization()
 	{
-		if (isDoNothingCommandEnabled())
-			throw new RuntimeException("Trying to enable isDoNothingCommand when its already enabled");
+		if (isDoNothingCommandEnabledOptimization())
+			throw new RuntimeException("Trying to enable isDoNothingCommandOptimization when its already enabled");
 		
-		isDoNothingCommandEnabled = true;
+		isDoNothingCommandOptimizationEnabled = true;
 	}
 	
-	public void disableIsDoNothingCommand()
+	public void disableIsDoNothingCommandOptimization()
 	{
-		if (!isDoNothingCommandEnabled())
-			throw new RuntimeException("Trying to disable isDoNothingCommand when its already disabled");
+		if (!isDoNothingCommandEnabledOptimization())
+			throw new RuntimeException("Trying to disable isDoNothingCommandOptimization when its already disabled");
 		
-		isDoNothingCommandEnabled = false;
+		isDoNothingCommandOptimizationEnabled = false;
 	}
 	
-	public boolean isDoNothingCommandEnabled()
+	public boolean isDoNothingCommandEnabledOptimization()
 	{
-		return isDoNothingCommandEnabled;
+		return isDoNothingCommandOptimizationEnabled;
 	}
 
 	public boolean isInCommandSideEffectMode()
@@ -1573,7 +1573,7 @@ public class Project
 	private UndoRedoState undoRedoState;
 	private boolean isExecuting;
 	private boolean inCommandSideEffectMode;
-	private boolean isDoNothingCommandEnabled;
+	private boolean isDoNothingCommandOptimizationEnabled;
 
 	private SimpleThreatRatingFramework simpleThreatFramework;
 	private StressBasedThreatRatingFramework stressBasedThreatFramework;

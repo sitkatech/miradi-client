@@ -371,14 +371,14 @@ abstract public class DiagramPaster
 
 	protected void updateAutoCreatedThreatStressRatings() throws Exception
 	{
-		getProject().disableIsDoNothingCommand();
+		getProject().disableIsDoNothingCommandOptimization();
 		try
 		{
 			updateAutoThreatStressRatingClearableFields();
 		}
 		finally 
 		{
-			getProject().enableIsDoNothingCommand();	
+			getProject().enableIsDoNothingCommandOptimization();	
 		}
 	}
 

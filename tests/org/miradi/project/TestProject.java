@@ -907,7 +907,7 @@ public class TestProject extends EAMTestCase
 		assertEquals("did not move off screen diagram factor on screen?", expectedPoint, alreadyOnScreenDiagramFactor.getLocation());
 	}
 	
-	public void testIsDoNothingCommandEnabled() throws Exception
+	public void testIsDoNothingCommandOptimizationEnabled() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();
 		final String SOME_LABEL = "SomeLabel";
@@ -916,11 +916,11 @@ public class TestProject extends EAMTestCase
 		
 		CommandSetObjectData setToSameLabel = new CommandSetObjectData(strategy, Strategy.TAG_LABEL, SOME_LABEL);
 		assertTrue("Command should be isDoNothingCommand for setting label to what it already is?", setToSameLabel.isDoNothingCommand(getProject()));
-		assertTrue("considering isDoNothingCommand should be enabled by default?", getProject().isDoNothingCommandEnabled());
+		assertTrue("considering isDoNothingCommandOptimization should be enabled by default?", getProject().isDoNothingCommandEnabledOptimization());
 		assertTrue("setting label to same value should not do anything?", getProject().isDoNothingCommand(setToSameLabel));
 		
-		getProject().disableIsDoNothingCommand();
-		assertFalse("isDoNothingCommand is not disabled?", getProject().isDoNothingCommandEnabled());
+		getProject().disableIsDoNothingCommandOptimization();
+		assertFalse("isDoNothingCommandOptimization is not disabled?", getProject().isDoNothingCommandEnabledOptimization());
 		assertFalse("command should be executed regardless of isDoNothing?", getProject().isDoNothingCommand(setToSameLabel));
 	}
 
