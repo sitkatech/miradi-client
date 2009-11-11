@@ -65,6 +65,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.EnhancedJsonObject;
@@ -904,6 +905,23 @@ public class TestProject extends EAMTestCase
 		project.ensureAllDiagramFactorsAreVisible();
 		DiagramFactor alreadyOnScreenDiagramFactor = (DiagramFactor) project.findObject(onScreenDiagramFactor.getRef());
 		assertEquals("did not move off screen diagram factor on screen?", expectedPoint, alreadyOnScreenDiagramFactor.getLocation());
+	}
+	
+	public void testIsDoNothingCommandEnabled() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		final String SOME_LABEL = "SomeLabel";
+		CommandSetObjectData setLabel = new CommandSetObjectData(strategy, Strategy.TAG_LABEL, SOME_LABEL);
+		getProject().executeCommand(setLabel);
+		
+		CommandSetObjectData setToSameLabel = new CommandSetObjectData(strategy, Strategy.TAG_LABEL, SOME_LABEL);
+		assertTrue("Command should be isDoNothingCommand for setting label to what it already is?", setToSameLabel.isDoNothingCommand(getProject()));
+		assertTrue("considering isDoNothingCommand should be enabled by default?", getProject().isDoNothingCommandEnabled());
+		assertTrue("setting label to same value should not do anything?", getProject().isDoNothingCommand(setToSameLabel));
+		
+		getProject().disableIsDoNothingCommand();
+		assertFalse("isDoNothingCommand is not disabled?", getProject().isDoNothingCommandEnabled());
+		assertFalse("command should be executed regardless of isDoNothing?", getProject().isDoNothingCommand(setToSameLabel));
 	}
 
 	public ProjectForTesting getProject()
