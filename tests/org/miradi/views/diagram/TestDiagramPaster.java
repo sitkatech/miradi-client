@@ -32,6 +32,8 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
+import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAMTestCase;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
@@ -74,6 +76,54 @@ public class TestDiagramPaster extends EAMTestCase
 		project.close();
 		project = null;
 		super.tearDown();
+	}
+	
+	public void testThreatStressRatingThreatAndStressIdsBeingChanged() throws Exception
+	{
+		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		getProject().enableAsThreat(threatDiagramFactor.getWrappedORef());
+		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		ORef diagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(threatDiagramFactor, targetDiagramFactor);
+		
+		Stress stress = getProject().createStress();
+		ORefList stressRefs = new ORefList(stress);
+		getProject().fillObjectUsingCommand(targetDiagramFactor.getWrappedFactor(), Target.TAG_STRESS_REFS, stressRefs);
+		
+		ThreatTargetVirtualLinkHelper helper = new ThreatTargetVirtualLinkHelper(getProject());
+		ORef threatStressRatingRef = helper.findThreatStressRating(threatDiagramFactor.getWrappedORef(), targetDiagramFactor.getWrappedORef(), stress.getRef());
+		assertTrue("threatStressRating was not created?", threatStressRatingRef.isValid());
+		
+		Vector<DiagramFactor> diagramFactorsToPaste = new Vector();
+		diagramFactorsToPaste.add(threatDiagramFactor);
+		diagramFactorsToPaste.add(targetDiagramFactor);
+		
+		Vector<DiagramLink> diagramLinksToPaste = new Vector();
+		diagramLinksToPaste.add(DiagramLink.find(getProject(), diagramLinkRef));
+		
+		ProjectForTesting projectToPasteInto = createNewProject();
+		
+		ThreatStressRatingCommandListener listener = new ThreatStressRatingCommandListener();
+		projectToPasteInto.addCommandExecutedListener(listener);
+		try
+		{
+			paste(projectToPasteInto, diagramFactorsToPaste, diagramLinksToPaste);
+		}
+		finally
+		{
+			projectToPasteInto.removeCommandExecutedListener(listener);
+		}
+	}
+	
+	public class ThreatStressRatingCommandListener implements CommandExecutedListener
+	{
+		public void commandExecuted(CommandExecutedEvent event)
+		{
+			if (event.isSetDataCommandWithThisTypeAndTag(ThreatStressRating.getObjectType(), ThreatStressRating.TAG_STRESS_REF))
+				fail("ThreatStressRating's stress ref should not be changed during paste");
+			
+			if (event.isSetDataCommandWithThisTypeAndTag(ThreatStressRating.getObjectType(), ThreatStressRating.TAG_THREAT_REF))
+				fail("ThreatStressRating's threat ref should not be changed during paste");
+		}
 	}
 	
 	public void testThreatStressRatingPasteIntoDiffererentProject() throws Exception
