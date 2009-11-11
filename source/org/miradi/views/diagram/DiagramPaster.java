@@ -371,19 +371,6 @@ abstract public class DiagramPaster
 
 	protected void updateAutoCreatedThreatStressRatings() throws Exception
 	{
-		getProject().disableIsDoNothingCommandOptimization();
-		try
-		{
-			updateAutoThreatStressRatingClearableFields();
-		}
-		finally 
-		{
-			getProject().enableIsDoNothingCommandOptimization();	
-		}
-	}
-
-	private void updateAutoThreatStressRatingClearableFields() throws Exception
-	{
 		for (int index = 0; index < threatStressRatings.size(); ++index)
 		{			
 			String jsonAsString = threatStressRatings.get(index);

@@ -78,7 +78,7 @@ public class TestDiagramPaster extends EAMTestCase
 		super.tearDown();
 	}
 	
-	public void testThreatStressRatingThreatAndStressIdsBeingChanged() throws Exception
+	public void testThreatStressRatingPasteIntoDiffererentProject() throws Exception
 	{
 		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		getProject().enableAsThreat(threatDiagramFactor.getWrappedORef());
@@ -104,14 +104,26 @@ public class TestDiagramPaster extends EAMTestCase
 		
 		ThreatStressRatingCommandListener listener = new ThreatStressRatingCommandListener();
 		projectToPasteInto.addCommandExecutedListener(listener);
+		projectToPasteInto.disableIsDoNothingCommandOptimization();
+		DiagramPaster paster = null;
 		try
 		{
-			paste(projectToPasteInto, diagramFactorsToPaste, diagramLinksToPaste);
+			paster = paste(projectToPasteInto, diagramFactorsToPaste, diagramLinksToPaste);
 		}
 		finally
 		{
 			projectToPasteInto.removeCommandExecutedListener(listener);
+			projectToPasteInto.enableIsDoNothingCommandOptimization();
 		}
+		
+		ORef pastedThreatRef = paster.getOldToNewObjectRefMap().get(threatDiagramFactor.getWrappedORef());
+		ORef pastedTargetRef = paster.getOldToNewObjectRefMap().get(targetDiagramFactor.getWrappedORef());
+		ORef pastedStressRef = paster.getOldToNewObjectRefMap().get(stress.getRef());
+		ThreatTargetVirtualLinkHelper virtualLinkHelperForProjectPastedInto = new ThreatTargetVirtualLinkHelper(projectToPasteInto);
+		ORef pastedThreatStressRatingRef = virtualLinkHelperForProjectPastedInto.findThreatStressRating(pastedThreatRef, pastedTargetRef, pastedStressRef);
+		ThreatStressRating pastedThreatStressRating = ThreatStressRating.find(projectToPasteInto, pastedThreatStressRatingRef);
+		assertEquals("wrong threat ref for pasted threat stress rating?", pastedThreatRef, pastedThreatStressRating.getThreatRef());
+		assertEquals("wrong stress ref for pasted threat stress rating?", pastedStressRef, pastedThreatStressRating.getStressRef());
 	}
 	
 	public class ThreatStressRatingCommandListener implements CommandExecutedListener
@@ -124,41 +136,6 @@ public class TestDiagramPaster extends EAMTestCase
 			if (event.isSetDataCommandWithThisTypeAndTag(ThreatStressRating.getObjectType(), ThreatStressRating.TAG_THREAT_REF))
 				fail("ThreatStressRating's threat ref should not be changed during paste");
 		}
-	}
-	
-	public void testThreatStressRatingPasteIntoDiffererentProject() throws Exception
-	{
-		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		getProject().enableAsThreat(threatDiagramFactor.getWrappedORef());
-		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		ORef diagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(threatDiagramFactor, targetDiagramFactor);
-		
-		Stress stress = getProject().createStress();
-		ORefList stressRefs = new ORefList(stress);
-		getProject().fillObjectUsingCommand(targetDiagramFactor.getWrappedFactor(), Target.TAG_STRESS_REFS, stressRefs);
-		
-		ThreatTargetVirtualLinkHelper helper = new ThreatTargetVirtualLinkHelper(getProject());
-		ORef threatStressRatingRef = helper.findThreatStressRating(threatDiagramFactor.getWrappedORef(), targetDiagramFactor.getWrappedORef(), stress.getRef());
-		assertTrue("threatStressRating was not created?", threatStressRatingRef.isValid());
-		
-		Vector<DiagramFactor> diagramFactorsToPaste = new Vector();
-		diagramFactorsToPaste.add(threatDiagramFactor);
-		diagramFactorsToPaste.add(targetDiagramFactor);
-		
-		Vector<DiagramLink> diagramLinksToPaste = new Vector();
-		diagramLinksToPaste.add(DiagramLink.find(getProject(), diagramLinkRef));
-		
-		ProjectForTesting projectToPasteInto = createNewProject();
-		DiagramPaster paster = paste(projectToPasteInto, diagramFactorsToPaste, diagramLinksToPaste);
-		
-		ORef pastedThreatRef = paster.getOldToNewObjectRefMap().get(threatDiagramFactor.getWrappedORef());
-		ORef pastedTargetRef = paster.getOldToNewObjectRefMap().get(targetDiagramFactor.getWrappedORef());
-		ORef pastedStressRef = paster.getOldToNewObjectRefMap().get(stress.getRef());
-		ThreatTargetVirtualLinkHelper virtualLinkHelperForProjectPastedInto = new ThreatTargetVirtualLinkHelper(projectToPasteInto);
-		ORef pastedThreatStressRatingRef = virtualLinkHelperForProjectPastedInto.findThreatStressRating(pastedThreatRef, pastedTargetRef, pastedStressRef);
-		ThreatStressRating pastedThreatStressRating = ThreatStressRating.find(projectToPasteInto, pastedThreatStressRatingRef);
-		assertEquals("wrong threat ref for pasted threat stress rating?", pastedThreatRef, pastedThreatStressRating.getThreatRef());
-		assertEquals("wrong stress ref for pasted threat stress rating?", pastedStressRef, pastedThreatStressRating.getStressRef());
 	}
 	
 	public void testThreatReductionResultWithNonExistingRelatedThreatRef() throws Exception
