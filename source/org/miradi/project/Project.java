@@ -153,6 +153,7 @@ public class Project
 		projectTotalCalculator = new ProjectTotalCalculator(this);
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
 		enableThreatStressRatingEnsurer();
+		enableIsDoNothingCommand();
 
 		clear();
 	}
@@ -1029,13 +1030,15 @@ public class Project
 		finally 
 		{
 			endCommandSideEffectMode();
-			
 		}
 	}
 
-	private boolean isDoNothingCommand(Command command)	throws CommandFailedException
+	public boolean isDoNothingCommand(Command command)	throws CommandFailedException
 	{
-		return command.isDoNothingCommand(this);
+		if (isDoNothingCommandEnabled())
+			return command.isDoNothingCommand(this);
+		
+		return false;
 	}
 
 	private boolean internalExecuteCommand(Command command) throws CommandFailedException
@@ -1516,6 +1519,27 @@ public class Project
 		
 		inCommandSideEffectMode = false;
 	}
+	
+	public void enableIsDoNothingCommand()
+	{
+		if (isDoNothingCommandEnabled())
+			throw new RuntimeException("Trying to enable isDoNothingCommand when its already enabled");
+		
+		isDoNothingCommandEnabled = true;
+	}
+	
+	public void disableIsDoNothingCommand()
+	{
+		if (!isDoNothingCommandEnabled())
+			throw new RuntimeException("Trying to disable isDoNothingCommand when its already disabled");
+		
+		isDoNothingCommandEnabled = false;
+	}
+	
+	public boolean isDoNothingCommandEnabled()
+	{
+		return isDoNothingCommandEnabled;
+	}
 
 	public boolean isInCommandSideEffectMode()
 	{
@@ -1549,6 +1573,7 @@ public class Project
 	private UndoRedoState undoRedoState;
 	private boolean isExecuting;
 	private boolean inCommandSideEffectMode;
+	private boolean isDoNothingCommandEnabled;
 
 	private SimpleThreatRatingFramework simpleThreatFramework;
 	private StressBasedThreatRatingFramework stressBasedThreatFramework;
