@@ -276,13 +276,6 @@ abstract public class DiagramPaster
 		return ORef.INVALID;
 	}
 
-	private void fixupRefInThreatStressRating(EnhancedJsonObject json, BaseObject baseObject, String refTag) throws Exception
-	{
-		ORef fixedRef = getFixedupRef(getOldToNewObjectRefMap(), json, refTag);		
-		Command refFixCommand = new CommandSetObjectData(baseObject.getRef(), refTag, fixedRef.toString());
-		getProject().executeCommand(refFixCommand);
-	}
-	
 	private ORef getFixedupRef(HashMap pastedObjectMap, EnhancedJsonObject json, String tag) throws Exception
 	{
 		ORef oldRef = json.getRef(tag);
@@ -378,6 +371,19 @@ abstract public class DiagramPaster
 
 	protected void updateAutoCreatedThreatStressRatings() throws Exception
 	{
+		getProject().disableIsDoNothingCommand();
+		try
+		{
+			updateAutoThreatStressRatingClearableFields();
+		}
+		finally 
+		{
+			getProject().enableIsDoNothingCommand();	
+		}
+	}
+
+	private void updateAutoThreatStressRatingClearableFields() throws Exception
+	{
 		for (int index = 0; index < threatStressRatings.size(); ++index)
 		{			
 			String jsonAsString = threatStressRatings.get(index);
@@ -386,20 +392,7 @@ abstract public class DiagramPaster
 			ThreatStressRating threatStressRating = findThreatStressRating(tsrJson);
 			Command[] commands = threatStressRating.createCommandsToLoadFromJson(tsrJson);
 			getProject().executeCommandsWithoutTransaction(commands);
-			
-			fixupStressRefInThreatStressRating(tsrJson, threatStressRating);
-			fixupThreatRefInThreatStressRating(tsrJson, threatStressRating);
 		}
-	}
-	
-	private void fixupStressRefInThreatStressRating(EnhancedJsonObject json, BaseObject baseObject) throws Exception
-	{
-		fixupRefInThreatStressRating(json, baseObject, ThreatStressRating.TAG_STRESS_REF);
-	}
-
-	private void fixupThreatRefInThreatStressRating(EnhancedJsonObject json, BaseObject baseObject) throws Exception
-	{
-		fixupRefInThreatStressRating(json, baseObject, ThreatStressRating.TAG_THREAT_REF);	
 	}
 	
 	private ThreatStressRating findThreatStressRating(EnhancedJsonObject json) throws Exception
