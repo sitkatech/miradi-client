@@ -36,6 +36,7 @@ public class VariableHeightTreeCellRenderer extends DefaultTreeCellRenderer
 	
 	public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocusToUse)
 	{
+		resetPreferredSizeToAvoidTruncatingNextValue();
 		Component rendererComponent = getTreeCellRendererComponentWithPreferredHeight(tree, value, sel, expanded, leaf, row, hasFocusToUse);
 		Dimension size = new Dimension(rendererComponent.getPreferredSize());
 		size.height = treeTable.getRowHeight(row);
@@ -51,6 +52,11 @@ public class VariableHeightTreeCellRenderer extends DefaultTreeCellRenderer
 	public MainWindow getMainWindow()
 	{
 		return treeTable.getMainWindow();
+	}
+	
+	private void resetPreferredSizeToAvoidTruncatingNextValue()
+	{
+		setPreferredSize(null);
 	}
 	
 	private TreeTableWithRowHeightSaver treeTable;
