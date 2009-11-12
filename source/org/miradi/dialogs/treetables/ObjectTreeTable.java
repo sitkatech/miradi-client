@@ -24,6 +24,7 @@ import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
+import java.util.EventObject;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -132,6 +133,41 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		public NonEditableTreeTableCellEditor() 
 		{
 		    super();
+		}
+		
+		public boolean isCellEditable(EventObject e) 
+	    {
+	    	forceDispatchPressReleaseEventsToFixExpandCollapseBugOnMac(e);
+
+	    	return false;
+	    }
+
+		private void forceDispatchPressReleaseEventsToFixExpandCollapseBugOnMac(EventObject eventObject)
+		{
+			if (eventObject instanceof MouseEvent) 
+	    	{
+				MouseEvent mouseEvent = (MouseEvent) eventObject;
+	    		for (int columnIndex = getColumnCount() - 1; columnIndex >= 0; columnIndex--) 
+	    		{
+	    			if (getColumnClass(columnIndex) == TreeTableModel.class) 
+	    			{
+	    				dispatchNewEvent(mouseEvent, columnIndex, MouseEvent.MOUSE_PRESSED);
+	    				dispatchNewEvent(mouseEvent, columnIndex, MouseEvent.MOUSE_RELEASED);
+	    				break;
+	    			}
+	    		}
+	    	}
+		}
+
+		private void dispatchNewEvent(MouseEvent mouseEvent, int counter, int mousePressed)
+		{
+			MouseEvent mousePressedEvent = createMouseEvent(mouseEvent, counter, mousePressed);
+			getTree().dispatchEvent(mousePressedEvent);
+		}
+
+		private MouseEvent createMouseEvent(MouseEvent mouseEvent, int columnIndex, int mouseReleased)
+		{
+			return new MouseEvent(getTree(), mouseReleased, mouseEvent.getWhen(), mouseEvent.getModifiers(), mouseEvent.getX() - getCellRect(0, columnIndex, true).x, mouseEvent.getY(), mouseEvent.getClickCount(), mouseEvent.isPopupTrigger());
 		}
 		
 		public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int r, int c)
