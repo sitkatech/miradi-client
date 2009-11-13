@@ -176,9 +176,10 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 	    }
 
 		//NOTE:  The following patch was found here:
-		//http://forums.java.net/jive/thread.jspa?threadID=8713
-		//This is a bad patch because we are generating events in a method that has nothing do to with 
-		//mouse events. 
+		// http://forums.java.net/jive/thread.jspa?threadID=8713
+		// This method is overriding a method in the JTreeTable code 
+		// that does this same weird trick of generating mouse events 
+		// inside a call to isCellEditable.
 		private void forceDispatchPressReleaseEventsToFixExpandCollapseBugOnMac(EventObject eventObject)
 		{
 			if (eventObject instanceof MouseEvent) 
