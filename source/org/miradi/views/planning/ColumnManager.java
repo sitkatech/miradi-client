@@ -253,23 +253,10 @@ public class ColumnManager
 		CodeList validColumnCodes = question.getAllCodes();
 		CodeList originalCodeList = new CodeList(rawCodes);
 		rawCodes.retainAll(validColumnCodes);
+		
 		boolean wereCodesRemoved = originalCodeList.size() != rawCodes.size();
 		originalCodeList.subtract(validColumnCodes);
 		if (wereCodesRemoved)
-			EAM.logWarning(createErrorMessage(originalCodeList));
-	}
-
-	private static String createErrorMessage(CodeList originalCodeList)
-	{
-		String errorMessage = "Column codes list was filtered and had unknown codes removed from it. Codes removed:<BR>";
-		for (int index = 0; index < originalCodeList.size(); ++index)
-		{
-			if (index != 0)
-				errorMessage += "<BR>";
-
-			errorMessage += originalCodeList.get(index);
-		}
-		
-		return errorMessage;
+			EAM.logWarning(("Column codes list was filtered and had unknown codes removed from it. Codes removed:" + originalCodeList));
 	}
 }
