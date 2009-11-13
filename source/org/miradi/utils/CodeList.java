@@ -111,9 +111,9 @@ public class CodeList
 		}
 	}
 	
-	public boolean retainAll(CodeList other)
+	public void retainAll(CodeList other)
 	{
-		return data.retainAll(other.toVector());
+		data.retainAll(other.toVector());
 	}
 	
 	public Vector<String> toVector()
