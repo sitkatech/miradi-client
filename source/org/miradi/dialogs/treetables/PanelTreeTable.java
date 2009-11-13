@@ -205,7 +205,12 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 
 		private MouseEvent createMouseEvent(MouseEvent mouseEvent, int columnIndex, int mouseReleased)
 		{
-			return new MouseEvent(getTree(), mouseReleased, mouseEvent.getWhen(), mouseEvent.getModifiers(), mouseEvent.getX() - getCellRect(0, columnIndex, true).x, mouseEvent.getY(), mouseEvent.getClickCount(), mouseEvent.isPopupTrigger());
+			int mouseClickXLocation = mouseEvent.getX() - getCellRect(0, columnIndex, true).x;
+			int mouseClickYLocation = mouseEvent.getY();
+			boolean isPopupTrigger = mouseEvent.isPopupTrigger();
+			int clickCount = mouseEvent.getClickCount();
+			
+			return new MouseEvent(getTree(), mouseReleased, mouseEvent.getWhen(), mouseEvent.getModifiers(), mouseClickXLocation, mouseClickYLocation, clickCount, isPopupTrigger);
 		}
 		
 		public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int r, int c)
