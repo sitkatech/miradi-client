@@ -190,7 +190,8 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		int modelColumn = getModelColumnWithinModel(tableColumnIndex);
 		PlanningUpperTableModelInterface model = getModel(convertColumnIndexToModel(tableColumnIndex));
 		model.respondToExpandOrCollapseColumnEvent(modelColumn);
-		saveColumnSequence();
+		saveColumnState();
+		updateToReflectNewColumns();
 	}
 
 	public void clearColumnSelection()

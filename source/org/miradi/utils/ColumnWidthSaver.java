@@ -103,7 +103,7 @@ public class ColumnWidthSaver extends MouseAdapter
 		}
 	}
 	
-	private void saveColumnWidths() throws Exception
+	public void saveColumnWidths() throws Exception
 	{
 		
 		StringMap columnWidthMap = new StringMap();
