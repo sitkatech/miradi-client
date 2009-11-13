@@ -73,7 +73,7 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.DirectThreatQuestion;
+import org.miradi.questions.DirectThreatPoolQuestion;
 import org.miradi.questions.FilteredDiagramFactorsQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
@@ -458,7 +458,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		
 		if (factor.isThreatReductionResult())
 		{
-			grid.addField(grid.createReadOnlyChoiceField(ObjectType.THREAT_REDUCTION_RESULT, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, new DirectThreatQuestion(mainWindow.getProject())));
+			grid.addField(grid.createChoiceField(ObjectType.THREAT_REDUCTION_RESULT, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, new DirectThreatPoolQuestion(getProject())));
 		}
 		
 		grid.setObjectRef(factorORef);
