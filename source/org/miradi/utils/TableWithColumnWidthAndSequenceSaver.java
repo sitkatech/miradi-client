@@ -133,10 +133,12 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		return getColumnName(tableColumn);
 	}
 	
-	protected void saveColumnSequence() throws Exception
+	protected void saveColumnState() throws Exception
 	{
 		if(columnSequenceSaver != null)
 			columnSequenceSaver.saveColumnSequence();
+		if(columnWidthSaver != null)
+			columnWidthSaver.saveColumnWidths();
 	}
 
 	public void updateToReflectNewColumns() throws Exception

@@ -145,7 +145,7 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumnIndex);
 		getWorkUnitsTableModel().respondToExpandOrCollapseColumnEvent(modelColumn);
-		saveColumnSequence();
+		saveColumnState();
 		updateToReflectNewColumns();
 	}
 
