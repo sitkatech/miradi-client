@@ -198,12 +198,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 											CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE,
 		};
 		
-		for (int index = 0; index < codesToOmit.length; ++index)
-		{
-			String codeToOmit = codesToOmit[index];
-			if (columnsToShow.contains(codeToOmit))
-				columnsToShow.removeCode(codeToOmit);
-		}
+		columnsToShow.subtract(new CodeList(codesToOmit));
 	}
 	
 	public int getColumnCount()
