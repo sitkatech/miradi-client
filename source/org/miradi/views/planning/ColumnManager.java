@@ -40,6 +40,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
@@ -231,8 +232,12 @@ public class ColumnManager
 			ORef customizationRef = viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
 			if(customizationRef.isInvalid())
 				return new CodeList();
+			
 			PlanningViewConfiguration customization = (PlanningViewConfiguration)viewData.getProject().findObject(customizationRef);
-			return customization.getColumnConfiguration();
+			CodeList columnCodes = customization.getColumnConfiguration();
+			omitUnknownColumnTagsInPlace(viewData.getProject(), columnCodes);
+			
+			return columnCodes;
 		}
 		catch(Exception e)
 		{
@@ -241,5 +246,13 @@ public class ColumnManager
 			return new CodeList();
 		}
 	}
-
+	
+	private static void omitUnknownColumnTagsInPlace(Project project, CodeList rawCodes)
+	{
+		ChoiceQuestion question = project.getQuestion(CustomPlanningColumnsQuestion.class);
+		CodeList validColumnCodes = question.getAllCodes();
+		boolean whereCodesRemoved = rawCodes.retainAll(validColumnCodes);
+		if (whereCodesRemoved)
+			EAM.logWarning("Column codes list was filtered and had unknown codes removed from it");
+	}
 }
