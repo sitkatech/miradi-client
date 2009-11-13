@@ -177,6 +177,8 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 
 		//NOTE:  The following patch was found here:
 		//http://forums.java.net/jive/thread.jspa?threadID=8713
+		//This is a bad patch because we are generating events in a method that has nothing do to with 
+		//mouse events. 
 		private void forceDispatchPressReleaseEventsToFixExpandCollapseBugOnMac(EventObject eventObject)
 		{
 			if (eventObject instanceof MouseEvent) 
