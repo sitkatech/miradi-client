@@ -63,7 +63,9 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.EAMResourceImageIcon;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.FontFamiliyQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.HtmlFormEventHandler;
 
 
@@ -161,7 +163,9 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	
 	public void addRuleFontFamily(StyleSheet style)
 	{
-		style.addRule(makeSureRuleHasRightPrefix("body {font-family:"+new FontFamiliyQuestion().findChoiceByCode(getFontFamilyCode())+";}"));
+		FontFamiliyQuestion question = (FontFamiliyQuestion)StaticQuestionManager.getQuestion(FontFamiliyQuestion.class);
+		ChoiceItem selectedFontFamily = question.findChoiceByCode(getFontFamilyCode());
+		style.addRule(makeSureRuleHasRightPrefix("body {font-family:" + question.getFontsString(selectedFontFamily) + ";}"));
 	}
 	
 	public String makeSureRuleHasRightPrefix(String rule)

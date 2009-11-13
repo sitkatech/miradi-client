@@ -32,7 +32,17 @@ public class FontFamiliyQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", EAM.text("sans-serif")),
-			new ChoiceItem("serif", EAM.text("serif")),
+			new ChoiceItem(SERIF_CODE, EAM.text("serif")),
 		};
 	}
+
+	public String getFontsString(ChoiceItem fontFamilyChoice)
+	{
+		if(fontFamilyChoice.getCode().equals(SERIF_CODE))
+			return "'Times New Roman', serif";
+		
+		return "'Verdana', sans-serif";
+	}
+	
+	private static final String SERIF_CODE = "serif";
 }
