@@ -175,6 +175,8 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 	    	return false;
 	    }
 
+		//NOTE:  The following patch was found here:
+		//http://forums.java.net/jive/thread.jspa?threadID=8713
 		private void forceDispatchPressReleaseEventsToFixExpandCollapseBugOnMac(EventObject eventObject)
 		{
 			if (eventObject instanceof MouseEvent) 
