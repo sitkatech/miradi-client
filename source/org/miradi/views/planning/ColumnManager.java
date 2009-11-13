@@ -251,7 +251,9 @@ public class ColumnManager
 	{
 		ChoiceQuestion question = project.getQuestion(CustomPlanningColumnsQuestion.class);
 		CodeList validColumnCodes = question.getAllCodes();
-		boolean wereCodesRemoved = rawCodes.retainAll(validColumnCodes);
+		CodeList originalCodeList = new CodeList(rawCodes);
+		rawCodes.retainAll(validColumnCodes);
+		boolean wereCodesRemoved = originalCodeList.size() != rawCodes.size();
 		if (wereCodesRemoved)
 			EAM.logWarning("Column codes list was filtered and had unknown codes removed from it");
 	}
