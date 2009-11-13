@@ -22,11 +22,14 @@ package org.miradi.dialogs.treetables;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.util.EventObject;
 
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.tree.TreePath;
@@ -39,7 +42,6 @@ import com.java.sun.jtreetable.TreeTableModel;
 
 abstract public class PanelTreeTable extends ExportableTreeTable 
 {
-
 	public PanelTreeTable(MainWindow mainWindowToUse, TreeTableModel treeTableModel)
 	{
 		super(treeTableModel);
@@ -47,6 +49,8 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 		setFont(getMainWindow().getUserDataPanelFont());
 		getTableHeader().setFont(getMainWindow().getUserDataPanelFont());
 		getTableHeader().addMouseMotionListener(new MouseMoveTreeColumnPreventerHandler());
+		TableCellEditor ce = new NonEditableTreeTableCellEditor();
+		setDefaultEditor(TreeTableModel.class, ce);
 		
 		// NOTE: Without this, each node's size is fixed based on the initial text,
 		// so if you later change the value to be longer, you'll get ... (ellipsis)
@@ -154,6 +158,56 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 
 		public void mouseDragged(MouseEvent e)
 		{
+		}
+	}
+	
+	class NonEditableTreeTableCellEditor extends TreeTableCellEditor
+	{
+		public NonEditableTreeTableCellEditor() 
+		{
+		    super();
+		}
+		
+		public boolean isCellEditable(EventObject e) 
+	    {
+	    	forceDispatchPressReleaseEventsToFixExpandCollapseBugOnMac(e);
+
+	    	return false;
+	    }
+
+		private void forceDispatchPressReleaseEventsToFixExpandCollapseBugOnMac(EventObject eventObject)
+		{
+			if (eventObject instanceof MouseEvent) 
+	    	{
+				MouseEvent mouseEvent = (MouseEvent) eventObject;
+	    		for (int columnIndex = getColumnCount() - 1; columnIndex >= 0; columnIndex--) 
+	    		{
+	    			if (getColumnClass(columnIndex) == TreeTableModel.class) 
+	    			{
+	    				dispatchNewEvent(mouseEvent, columnIndex, MouseEvent.MOUSE_PRESSED);
+	    				dispatchNewEvent(mouseEvent, columnIndex, MouseEvent.MOUSE_RELEASED);
+	    				break;
+	    			}
+	    		}
+	    	}
+		}
+
+		private void dispatchNewEvent(MouseEvent mouseEvent, int counter, int mousePressed)
+		{
+			MouseEvent mousePressedEvent = createMouseEvent(mouseEvent, counter, mousePressed);
+			getTree().dispatchEvent(mousePressedEvent);
+		}
+
+		private MouseEvent createMouseEvent(MouseEvent mouseEvent, int columnIndex, int mouseReleased)
+		{
+			return new MouseEvent(getTree(), mouseReleased, mouseEvent.getWhen(), mouseEvent.getModifiers(), mouseEvent.getX() - getCellRect(0, columnIndex, true).x, mouseEvent.getY(), mouseEvent.getClickCount(), mouseEvent.isPopupTrigger());
+		}
+		
+		public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int r, int c)
+		{
+			JTextField textField = (JTextField) super.getTableCellEditorComponent(table, value, isSelected, r, c);
+			textField.setEditable(false);
+			return textField;
 		}
 	}
 	
