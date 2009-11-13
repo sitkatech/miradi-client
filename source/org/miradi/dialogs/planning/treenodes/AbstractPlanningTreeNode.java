@@ -269,7 +269,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			
 			String labelA = nodeA.toString();
 			String labelB = nodeB.toString();
-			return labelA.compareTo(labelB);
+			return labelA.compareToIgnoreCase(labelB);
 		}
 		
 		private int getTypeSortLocation(int type)
