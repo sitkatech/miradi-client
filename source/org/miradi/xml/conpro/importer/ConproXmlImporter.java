@@ -700,7 +700,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 			Node projectIdNode = projectIdNodes.item(nodeIndex);
 			
 			String projectId = getSafeNodeContent(projectIdNode);
-			ORef xenodataRef = getProject().createObject(Xenodata.getObjectType());
+			ORef xenodataRef = createOrFindXenodataObject();
 			getProject().setObjectData(xenodataRef, Xenodata.TAG_PROJECT_ID, projectId);
 
 			String contextAttributeValue = getAttributeValue(projectIdNode, CONTEXT_ATTRIBUTE);
@@ -708,6 +708,18 @@ public class ConproXmlImporter implements ConProMiradiXml
 		}
 		
 		getProject().setObjectData(metadataRef, ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, stringRefMap.toString());
+	}
+
+	private ORef createOrFindXenodataObject() throws Exception
+	{
+		ORefList xenodataRefs = getProject().getPool(Xenodata.getObjectType()).getRefList();
+		if (xenodataRefs.isEmpty())
+			return getProject().createObject(Xenodata.getObjectType());
+		
+		if (xenodataRefs.size() > 1)
+			throw new RuntimeException("There is more than one Xenodata object. Count = " + xenodataRefs.size());
+		
+		return xenodataRefs.getRefForType(Xenodata.getObjectType());
 	}
 
 	private void importTeamMembers(Node projectSumaryNode, ORef metadataRef) throws Exception
