@@ -167,4 +167,10 @@ public class MigrationsForMiradi3
 		RemoveNonExistingRelatedThreatFromThreatReductionResultMigration.removeNonExistingRelatedThreatRef();
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 50);
 	}
+	
+	public static void upgradeToVersion51() throws Exception
+	{
+		MoveTncProjectAreaSizeWithinProjectMetadataMigration.moveTncProjectAreaSize();
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 51);
+	}
 }
