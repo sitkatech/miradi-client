@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Vector;
 
+import org.martus.util.DirectoryUtils;
 import org.miradi.database.migrations.ConvertHighLevelEstimatesIntoAssignments;
 import org.miradi.database.migrations.MigrationsForMiradi3;
 import org.miradi.database.migrations.ShareSameLabeledScopeBoxesMigration;
@@ -45,6 +46,43 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 	public TestDataUpgraderForMiradi3(String name)
 	{
 		super(name);
+	}
+	
+	public void testMoveTncProjectAreaSizeToProjectMetadata() throws Exception
+	{
+		String projectMetadataWithBothAreaSizes = "{\"NextSteps\":\"\",\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"SiteMapReference\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"ProtectedAreaCategoryNotes\":\"\",\"BudgetCostMode\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"ProtectedAreaCategories\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"TNC.OperatingUnitList\":\"\",\"WhoOverrideRefs\":\"\",\"CurrencyType\":\"\",\"LocationComments\":\"\",\"RedListSpecies\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"ProjectStatus\":\"\",\"OtherOrgProjectNumber\":\"\",\"SocialContext\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"OtherOrgRelatedProjects\":\"\",\"ProjectScope\":\"\",\"TNC.SizeInHectares\":\"456\",\"TNC.WorkbookVersionNumber\":\"\",\"BudgetCostOverride\":\"\",\"HumanPopulation\":\"\",\"OtherNotableSpecies\":\"\",\"DataEffectiveDate\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"WhenOverride\":\"\",\"ShortProjectScope\":\"\",\"HumanPopulationNotes\":\"\",\"TNC.MarineEcoRegion\":\"\",\"TimeStampModified\":\"1258406972469\",\"ProjectAreaNote\":\"\",\"XenodataRefs\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"945\"}";
+		verifyMigratingProjectAreaSizeData(projectMetadataWithBothAreaSizes, 945);
+		
+		String projectMetadataWithOnlyTncAreaSize = "{\"NextSteps\":\"\",\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"SiteMapReference\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"ProtectedAreaCategoryNotes\":\"\",\"BudgetCostMode\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"ProtectedAreaCategories\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"TNC.OperatingUnitList\":\"\",\"WhoOverrideRefs\":\"\",\"CurrencyType\":\"\",\"LocationComments\":\"\",\"RedListSpecies\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"ProjectStatus\":\"\",\"OtherOrgProjectNumber\":\"\",\"SocialContext\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"OtherOrgRelatedProjects\":\"\",\"ProjectScope\":\"\",\"TNC.SizeInHectares\":\"456\",\"TNC.WorkbookVersionNumber\":\"\",\"BudgetCostOverride\":\"\",\"HumanPopulation\":\"\",\"OtherNotableSpecies\":\"\",\"DataEffectiveDate\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"WhenOverride\":\"\",\"ShortProjectScope\":\"\",\"HumanPopulationNotes\":\"\",\"TNC.MarineEcoRegion\":\"\",\"TimeStampModified\":\"1258406972469\",\"ProjectAreaNote\":\"\",\"XenodataRefs\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\"}";
+		verifyMigratingProjectAreaSizeData(projectMetadataWithOnlyTncAreaSize, 456);
+		
+		String projectMetadataWithNoAreaSizeValues = "{\"NextSteps\":\"\",\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"SiteMapReference\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"ProtectedAreaCategoryNotes\":\"\",\"BudgetCostMode\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"ProtectedAreaCategories\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"TNC.OperatingUnitList\":\"\",\"WhoOverrideRefs\":\"\",\"CurrencyType\":\"\",\"LocationComments\":\"\",\"RedListSpecies\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"ProjectStatus\":\"\",\"OtherOrgProjectNumber\":\"\",\"SocialContext\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"OtherOrgRelatedProjects\":\"\",\"ProjectScope\":\"\",\"TNC.SizeInHectares\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"BudgetCostOverride\":\"\",\"HumanPopulation\":\"\",\"OtherNotableSpecies\":\"\",\"DataEffectiveDate\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"WhenOverride\":\"\",\"ShortProjectScope\":\"\",\"HumanPopulationNotes\":\"\",\"TNC.MarineEcoRegion\":\"\",\"TimeStampModified\":\"1258406972469\",\"ProjectAreaNote\":\"\",\"XenodataRefs\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\"}";
+		verifyMigratingProjectAreaSizeData(projectMetadataWithNoAreaSizeValues, 0);
+		
+		String projectMetadataWithMissingTags = "{\"NextSteps\":\"\",\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"SiteMapReference\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"ProtectedAreaCategoryNotes\":\"\",\"BudgetCostMode\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"ProtectedAreaCategories\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"TNC.OperatingUnitList\":\"\",\"WhoOverrideRefs\":\"\",\"CurrencyType\":\"\",\"LocationComments\":\"\",\"RedListSpecies\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"ProjectStatus\":\"\",\"OtherOrgProjectNumber\":\"\",\"SocialContext\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"OtherOrgRelatedProjects\":\"\",\"ProjectScope\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"BudgetCostOverride\":\"\",\"HumanPopulation\":\"\",\"OtherNotableSpecies\":\"\",\"DataEffectiveDate\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"WhenOverride\":\"\",\"ShortProjectScope\":\"\",\"HumanPopulationNotes\":\"\",\"TNC.MarineEcoRegion\":\"\",\"TimeStampModified\":\"1258406972469\",\"ProjectAreaNote\":\"\",\"XenodataRefs\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\"}";
+		verifyMigratingProjectAreaSizeData(projectMetadataWithMissingTags, 0);
+	}
+
+	private void verifyMigratingProjectAreaSizeData(String projectMetadata, int expectedAreaSize) throws Exception
+	{
+		File jsonDir = createJsonDir();
+		final int PROJECT_METADATA_TYPE = 11;
+		File projectMetadataDir = DataUpgrader.getObjectsDir(jsonDir, PROJECT_METADATA_TYPE);
+		if (projectMetadataDir.exists())
+			DirectoryUtils.deleteEntireDirectoryTree(projectMetadataDir);
+			
+			
+		int[] projectMetadataIds = createAndPopulateObjectDir(jsonDir, PROJECT_METADATA_TYPE, new String[]{projectMetadata});
+		
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion51();
+		
+		int onlyProjectMetadataId = projectMetadataIds[0];
+		File projectMetadataJsonFile = new File(projectMetadataDir, Integer.toString(onlyProjectMetadataId));		
+
+		EnhancedJsonObject projectMetadataJson = new EnhancedJsonObject(readFile(projectMetadataJsonFile));
+		int tncSizeInHectars = projectMetadataJson.optInt("ProjectArea");
+		assertEquals("wrong project area size?", expectedAreaSize, tncSizeInHectars);
 	}
 	
 	public void testRemoveNonExistingRelatedThreatRefFromThreatReductionResult() throws Exception
