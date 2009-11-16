@@ -36,6 +36,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Indicator;
@@ -47,10 +48,12 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
+import org.miradi.objects.Xenodata;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.TncProjectSharingQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.xml.conpro.ConProMiradiXml;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
 public class TestConproXmlImporter extends TestCaseWithProject
@@ -60,20 +63,27 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testDuplicateXenodataObjects() throws Exception
+	{
+		ORef xenodataRef = getProject().createObject(Xenodata.getObjectType());
+		getProject().fillObjectUsingCommand(xenodataRef, Xenodata.TAG_PROJECT_ID, "99999");
+		assertEquals("wrong xenodata count?", 1, getProject().getPool(Xenodata.getObjectType()).size());
+		
+		StringRefMap idRefMap = new StringRefMap();
+		idRefMap.add(ConProMiradiXml.CONPRO_CONTEXT, xenodataRef);
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, idRefMap.toString());
+		
+		exportImportInto(getProject());
+		assertEquals("wrong xenodata count?", 1, getProject().getPool(Xenodata.getObjectType()).size());
+	}
+	
 	public void testAvoidConflictingActivityAndMethodIds() throws Exception
 	{
 		getProject().createActivity();
 		Task method = getProject().createMethod();
 		
-		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-		UnicodeWriter writer = new UnicodeWriter(bytes);
-		new ConproXmlExporter(getProject()).exportProject(writer);
-		writer.flush();
-		bytes.close();
-		String xml = new String(bytes.toByteArray(), "UTF-8");
-		
 		ProjectForTesting firstTry = new ProjectForTesting(getName());
-		importXmlStringIntoProject(xml, firstTry);
+		String xml = exportImportInto(firstTry);
 
 		ORefList taskRefs = firstTry.getPool(Task.getObjectType()).getORefList();
 		taskRefs.remove(method.getRef());
@@ -86,6 +96,20 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		
 		ProjectForTesting secondTry = new ProjectForTesting(getName());
 		importXmlStringIntoProject(xml, secondTry);
+	}
+
+	private String exportImportInto(ProjectForTesting firstTry)
+			throws IOException, Exception, UnsupportedEncodingException
+	{
+		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+		UnicodeWriter writer = new UnicodeWriter(bytes);
+		new ConproXmlExporter(getProject()).exportProject(writer);
+		writer.flush();
+		bytes.close();
+		String xml = new String(bytes.toByteArray(), "UTF-8");
+		
+		importXmlStringIntoProject(xml, firstTry);
+		return xml;
 	}
 
 	private void importXmlStringIntoProject(String xml,
