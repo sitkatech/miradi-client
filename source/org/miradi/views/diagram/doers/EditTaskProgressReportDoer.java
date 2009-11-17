@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram.doers;
 
 import org.miradi.actions.ActionCreateTaskProgressReport;
-import org.miradi.actions.ActionDeleteActivityProgressReport;
+import org.miradi.actions.ActionDeleteTaskProgressReport;
 import org.miradi.objects.Task;
 
 public class EditTaskProgressReportDoer extends AbstractProgressReportPopupEditor
@@ -38,6 +38,6 @@ public class EditTaskProgressReportDoer extends AbstractProgressReportPopupEdito
 
 	static Class[] buttonActionClasses = new Class[] {
 		ActionCreateTaskProgressReport.class,
-		ActionDeleteActivityProgressReport.class,
+		ActionDeleteTaskProgressReport.class,
 	};
 }
