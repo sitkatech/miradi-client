@@ -700,7 +700,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 			Node projectIdNode = projectIdNodes.item(nodeIndex);
 			
 			String projectId = getSafeNodeContent(projectIdNode);
-			ORef xenodataRef = createOrFindXenodataObject();
+			ORef xenodataRef = findOrCreateXenodataObject();
 			getProject().setObjectData(xenodataRef, Xenodata.TAG_PROJECT_ID, projectId);
 
 			String contextAttributeValue = getAttributeValue(projectIdNode, CONTEXT_ATTRIBUTE);
@@ -710,7 +710,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		getProject().setObjectData(metadataRef, ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, stringRefMap.toString());
 	}
 
-	private ORef createOrFindXenodataObject() throws Exception
+	private ORef findOrCreateXenodataObject() throws Exception
 	{
 		ORefList xenodataRefs = getProject().getPool(Xenodata.getObjectType()).getRefList();
 		if (xenodataRefs.isEmpty())
