@@ -21,7 +21,7 @@ package org.miradi.dialogs.task;
 
 import javax.swing.Icon;
 
-import org.miradi.actions.ActionEditActivityProgressReports;
+import org.miradi.actions.ActionEditTaskProgressReports;
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
@@ -51,7 +51,7 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 
 		progressReportsLabel = new PanelTitleLabel(EAM.text("Progress Reports"));
 		readOnlyProgressReportsList = createReadOnlyObjectList(Task.getObjectType(), Task.TAG_PROGRESS_REPORT_REFS);
-		editProgressReportButton = createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditActivityProgressReports.class), getPicker());
+		editProgressReportButton = createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditTaskProgressReports.class), getPicker());
 		addFieldWithEditButton(progressReportsLabel, readOnlyProgressReportsList, editProgressReportButton);
 	}
 

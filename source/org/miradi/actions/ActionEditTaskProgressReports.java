@@ -22,9 +22,9 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionEditActivityProgressReports extends ObjectsAction
+public class ActionEditTaskProgressReports extends ObjectsAction
 {
-	public ActionEditActivityProgressReports(MainWindow mainWindow)
+	public ActionEditTaskProgressReports(MainWindow mainWindow)
 	{
 		super(mainWindow, getLabel());
 	}
