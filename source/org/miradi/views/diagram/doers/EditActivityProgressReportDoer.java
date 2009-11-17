@@ -21,14 +21,13 @@ package org.miradi.views.diagram.doers;
 
 import org.miradi.actions.ActionCreateActivityProgressReport;
 import org.miradi.actions.ActionDeleteActivityProgressReport;
-import org.miradi.main.EAM;
 import org.miradi.objects.Task;
 
 public class EditActivityProgressReportDoer extends AbstractProgressReportPopupEditor
 {
 	public EditActivityProgressReportDoer()
 	{
-		super(Task.getObjectType(), EAM.text("Edit Progress Reports"));
+		super(Task.getObjectType());
 	}
 
 	@Override
