@@ -23,9 +23,9 @@ import org.miradi.actions.ActionCreateActivityProgressReport;
 import org.miradi.actions.ActionDeleteActivityProgressReport;
 import org.miradi.objects.Task;
 
-public class EditActivityProgressReportDoer extends AbstractProgressReportPopupEditor
+public class EditTaskProgressReportDoer extends AbstractProgressReportPopupEditor
 {
-	public EditActivityProgressReportDoer()
+	public EditTaskProgressReportDoer()
 	{
 		super(Task.getObjectType());
 	}
