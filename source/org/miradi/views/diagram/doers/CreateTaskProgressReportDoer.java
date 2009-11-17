@@ -26,7 +26,7 @@ import org.miradi.objects.ProgressReport;
 import org.miradi.objects.Task;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 
-public class CreateActivityProgressReportDoer extends CreateAnnotationDoer
+public class CreateTaskProgressReportDoer extends CreateAnnotationDoer
 {
 	public BaseObject getSelectedParentFactor()
 	{
