@@ -25,7 +25,7 @@ import org.miradi.objects.ProgressReport;
 import org.miradi.objects.Task;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 
-public class DeleteActivityProgressReportDoer extends DeleteAnnotationDoer
+public class DeleteTaskProgressReportDoer extends DeleteAnnotationDoer
 {
 	protected BaseObject getParent(BaseObject annotationToDelete)
 	{
