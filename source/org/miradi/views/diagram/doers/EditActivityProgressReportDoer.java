@@ -36,12 +36,6 @@ public class EditActivityProgressReportDoer extends AbstractProgressReportPopupE
 		return buttonActionClasses;
 	}
 
-	@Override
-	protected String getListTag()
-	{
-		return Task.TAG_PROGRESS_REPORT_REFS;
-	}
-	
 	static Class[] buttonActionClasses = new Class[] {
 		ActionCreateActivityProgressReport.class,
 		ActionDeleteActivityProgressReport.class,
