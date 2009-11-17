@@ -37,13 +37,13 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 	public static TargetViabililtyTreePanel createTargetViabilityPanel(MainWindow mainWindowToUse, Project projectToUse, ORef targetRef) throws Exception
 	{
 		TargetViabilityTreeModel model = new TargetViabilityTreeModel(new TargetViabilityRoot(projectToUse, targetRef));
-		return getTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model);
+		return createTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model);
 	}
 
 	public static TargetViabililtyTreePanel createTargetViabilityPoolPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityRoot(mainWindowToUse.getProject()));
-		return getTargetViabililtyTreePanel(mainWindowToUse, mainWindowToUse.getProject(), model);
+		return createTargetViabililtyTreePanel(mainWindowToUse, mainWindowToUse.getProject(), model);
 	}
 
 	public static TargetViabililtyTreePanel createFactorIndicatorPanel(MainWindow mainWindowToUse, ORef factorRef, Project projectToUse) throws Exception
@@ -52,7 +52,7 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 		return getTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model, buttonActions);
 	}
 	
-	private static TargetViabililtyTreePanel getTargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, GenericViabilityTreeModel model) throws Exception
+	private static TargetViabililtyTreePanel createTargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, GenericViabilityTreeModel model) throws Exception
 	{
 		TargetViabilityTreeTable tree = new TargetViabilityTreeTable(mainWindowToUse, model);
 		return new TargetViabililtyTreePanel(mainWindowToUse, projectToUse, tree, model);
