@@ -54,7 +54,7 @@ import org.miradi.actions.ActionDeleteLegacyTncStrategyRanking;
 import org.miradi.actions.ActionDeleteMethod;
 import org.miradi.actions.ActionDeleteObjectiveProgressPercent;
 import org.miradi.actions.ActionDeleteStrategyProgressReport;
-import org.miradi.actions.ActionEditActivityProgressReports;
+import org.miradi.actions.ActionEditTaskProgressReports;
 import org.miradi.actions.ActionEditEstimatedResource;
 import org.miradi.actions.ActionEditGoalIndicatorRelevancyList;
 import org.miradi.actions.ActionEditGoalProgressPercent;
@@ -419,7 +419,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionCreateStrategyProgressReport.class, new CreateStrategyProgressReportDoer());
 		addDoerToMap(ActionDeleteStrategyProgressReport.class, new DeleteStrategyProgressReportDoer());
 		
-		addDoerToMap(ActionEditActivityProgressReports.class, new EditTaskProgressReportDoer());
+		addDoerToMap(ActionEditTaskProgressReports.class, new EditTaskProgressReportDoer());
 		addDoerToMap(ActionCreateActivityProgressReport.class, new CreateTaskProgressReportDoer());
 		addDoerToMap(ActionDeleteActivityProgressReport.class, new DeleteTaskProgressReportDoer());
 		

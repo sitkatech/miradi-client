@@ -428,7 +428,7 @@ public class Actions
 		registerAction(new ActionDeleteOrganization(mainWindow));
 		registerAction(new ActionCreateOrganization(mainWindow));
 		registerAction(new ActionExportTable(mainWindow));
-		registerAction(new ActionEditActivityProgressReports(mainWindow));
+		registerAction(new ActionEditTaskProgressReports(mainWindow));
 		registerAction(new ActionCreateActivityProgressReport(mainWindow));
 		registerAction(new ActionDeleteActivityProgressReport(mainWindow));
 		registerAction(new ActionEditObjectiveProgressPercent(mainWindow));
