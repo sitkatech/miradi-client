@@ -21,14 +21,13 @@ package org.miradi.views.diagram.doers;
 
 import org.miradi.actions.ActionCreateStrategyProgressReport;
 import org.miradi.actions.ActionDeleteStrategyProgressReport;
-import org.miradi.main.EAM;
 import org.miradi.objects.Strategy;
 
 public class EditStrategyProgressReportDoer extends AbstractProgressReportPopupEditor
 {
 	public EditStrategyProgressReportDoer()
 	{
-		super(Strategy.getObjectType(), EAM.text("Edit Progress Reports"));
+		super(Strategy.getObjectType());
 	}
 
 	@Override
