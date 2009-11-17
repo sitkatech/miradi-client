@@ -23,6 +23,7 @@ import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.progressReport.ProgressReportManagementPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 import org.miradi.views.umbrella.doers.AbstractPopUpEditDoer;
 
 abstract public class AbstractProgressReportPopupEditor extends AbstractPopUpEditDoer
@@ -37,7 +38,7 @@ abstract public class AbstractProgressReportPopupEditor extends AbstractPopUpEdi
 	{
 		ORef parentRef = getSelectedHierarchies()[0].getRefForType(getTypeToFilterOn());
 		
-		return new ProgressReportManagementPanel(getMainWindow(), parentRef, getListTag(), getMainWindow().getActions(), getButtonClasses());
+		return new ProgressReportManagementPanel(getMainWindow(), parentRef, BaseObject.TAG_PROGRESS_REPORT_REFS, getMainWindow().getActions(), getButtonClasses());
 	}
 	
 	abstract protected Class[] getButtonClasses();
