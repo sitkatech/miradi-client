@@ -21,6 +21,7 @@ package org.miradi.views.diagram.doers;
 
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.progressReport.ProgressReportManagementPanel;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.views.umbrella.doers.AbstractPopUpEditDoer;
 
@@ -28,7 +29,7 @@ abstract public class AbstractProgressReportPopupEditor extends AbstractPopUpEdi
 {
 	public AbstractProgressReportPopupEditor(int objectTypeToUse, String dialogTitleToUse)
 	{
-		super(objectTypeToUse, dialogTitleToUse);
+		super(objectTypeToUse, EAM.text("Edit Progress Reports"));
 	}
 
 	@Override
