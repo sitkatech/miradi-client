@@ -36,7 +36,6 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.utils.ObjectsActionButton;
-import org.miradi.views.umbrella.ObjectPicker;
 
 public class TaskDetailsPanel extends ObjectDataInputPanel
 {
@@ -52,26 +51,8 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 
 		progressReportsLabel = new PanelTitleLabel(EAM.text("Progress Reports"));
 		readOnlyProgressReportsList = createReadOnlyObjectList(Task.getObjectType(), Task.TAG_PROGRESS_REPORT_REFS);
-		editProgressReportButton = createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditActivityProgressReports.class), null);
+		editProgressReportButton = createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditActivityProgressReports.class), getPicker());
 		addFieldWithEditButton(progressReportsLabel, readOnlyProgressReportsList, editProgressReportButton);
-	}
-
-	private void hideOrShowProgressSection()
-	{
-		boolean isActivity = false;
-		Task task = getTask();
-		if(task != null)
-			isActivity = task.isActivity();
-		
-		ObjectPicker picker = null;
-		if (isActivity)
-			picker = super.getPicker();
-				
-		editProgressReportButton.setPicker(picker);
-		
-		progressReportsLabel.setVisible(isActivity);
-		readOnlyProgressReportsList.setVisible(isActivity);
-		editProgressReportButton.setVisible(isActivity);
 	}
 
 	private void updateTaskNameLabel()
@@ -90,6 +71,7 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 			return new ActivityIcon();
 		if(task.isMethod())
 			return new MethodIcon();
+		
 		return new TaskIcon();
 	}
 
@@ -102,6 +84,7 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 			return EAM.text("Activity");
 		if(task.isMethod())
 			return EAM.text("Method");
+		
 		return EAM.text("Task");
 	}
 	
@@ -120,7 +103,6 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 	{
 		super.setObjectRefs(orefsToUse);
 		updateTaskNameLabel();
-		hideOrShowProgressSection();
 	}
 
 	@Override

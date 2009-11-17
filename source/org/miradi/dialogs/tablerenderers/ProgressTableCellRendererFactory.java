@@ -73,7 +73,7 @@ public class ProgressTableCellRendererFactory extends ObjectTableCellRendererFac
 		if (Indicator.is(baseObject))
 			return true;
 		
-		if (Task.isActivity(baseObject))
+		if (Task.is(baseObject))
 			return true;
 		
 		return false;
