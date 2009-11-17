@@ -23,9 +23,9 @@ import org.miradi.icons.DeleteIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionDeleteActivityProgressReport extends ObjectsAction
+public class ActionDeleteTaskProgressReport extends ObjectsAction
 {
-	public ActionDeleteActivityProgressReport(MainWindow mainWindowToUse)
+	public ActionDeleteTaskProgressReport(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel(), new DeleteIcon());
 	}
