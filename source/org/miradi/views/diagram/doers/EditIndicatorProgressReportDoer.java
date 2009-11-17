@@ -36,12 +36,6 @@ public class EditIndicatorProgressReportDoer extends AbstractProgressReportPopup
 		return buttonActionClasses;
 	}
 
-	@Override
-	protected String getListTag()
-	{
-		return Indicator.TAG_PROGRESS_REPORT_REFS;
-	}
-	
 	static Class[] buttonActionClasses = new Class[] {
 		ActionCreateIndicatorProgressReport.class,
 		ActionDeleteIndicatorProgressReport.class,

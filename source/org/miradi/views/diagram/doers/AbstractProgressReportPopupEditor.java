@@ -42,6 +42,4 @@ abstract public class AbstractProgressReportPopupEditor extends AbstractPopUpEdi
 	}
 	
 	abstract protected Class[] getButtonClasses();
-	
-	abstract protected String getListTag();
 }

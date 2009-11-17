@@ -36,12 +36,6 @@ public class EditStrategyProgressReportDoer extends AbstractProgressReportPopupE
 		return buttonActionClasses;
 	}
 
-	@Override
-	protected String getListTag()
-	{
-		return Strategy.TAG_PROGRESS_REPORT_REFS;
-	}
-	
 	static Class[] buttonActionClasses = new Class[] {
 		ActionCreateStrategyProgressReport.class,
 		ActionDeleteStrategyProgressReport.class,
