@@ -49,7 +49,7 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 	public static TargetViabililtyTreePanel createFactorIndicatorPanel(MainWindow mainWindowToUse, ORef factorRef, Project projectToUse) throws Exception
 	{
 		IndicatorTreeModel model = new IndicatorTreeModel(new FactorTreeTableNode(projectToUse, factorRef));
-		return getTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model, buttonActions);
+		return createTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model, buttonActions);
 	}
 	
 	private static TargetViabililtyTreePanel createTargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, GenericViabilityTreeModel model) throws Exception
@@ -58,7 +58,7 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 		return new TargetViabililtyTreePanel(mainWindowToUse, projectToUse, tree, model);
 	}
 	
-	private static TargetViabililtyTreePanel getTargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, GenericViabilityTreeModel model, Class[] buttonActionsToUse) throws Exception
+	private static TargetViabililtyTreePanel createTargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, GenericViabilityTreeModel model, Class[] buttonActionsToUse) throws Exception
 	{
 		TargetViabilityTreeTable tree = new TargetViabilityTreeTable(mainWindowToUse, model);
 		return new TargetViabililtyTreePanel(mainWindowToUse, tree, model, buttonActionsToUse);
