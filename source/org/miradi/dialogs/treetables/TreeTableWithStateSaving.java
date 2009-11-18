@@ -171,33 +171,6 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		saveExpanded(new Vector());
 	}
 
-	public void updateTreeExpansionState(ORefList expandedRefs) throws Exception
-	{
-		Vector<ORefList> expandedRowsHierarchies = new Vector();
-		for(int index = 0; index < expandedRefs.size(); ++index)
-		{
-			ORef expandedRef = expandedRefs.get(index);
-			ORefList rowHierachy = findHeirarchyForRef(expandedRefs, expandedRef);
-			expandedRowsHierarchies.add(rowHierachy);
-		}
-				
-		saveExpanded(expandedRowsHierarchies);
-	}
-	
-	//TODO below two methods are sort of duplicate, 
-	private ORefList findHeirarchyForRef(ORefList expandedRefs, ORef nodeRef) throws Exception
-	{
-		for (int index = 0; index < expandedRefs.size(); ++index)
-		{
-			TreePath pathForRow = getTree().getPathForRow(index);
-			ORef refForPath = getObjectRefFromPath(pathForRow);
-			if (refForPath.equals(nodeRef))
-				return getTreeTableModel().convertPath(pathForRow);
-		}			
-		
-		return new ORefList();
-	}
-	
 	private ORefList findHeirarchyForRef(ORef nodeRef) throws Exception
 	{
 		for (int row = 0; row < getRowCount(); ++row)
