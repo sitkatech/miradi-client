@@ -257,7 +257,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		return getNodeForRow(row).getObject();
 	}
 	
-	public void selectObject(ORefList selectedHierarchy, int fallbackRow)
+	private void selectObject(ORefList selectedHierarchy, int fallbackRow)
 	{
 		if (selectedHierarchy.isEmpty())
 			return;
