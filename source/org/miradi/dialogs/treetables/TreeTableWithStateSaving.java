@@ -103,14 +103,14 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 
 	private void addToExpandedList(Vector<ORefList> expandedList, ORef refToAdd) throws Exception
 	{
-		ORefList pathForRef = findHeirarchyForRef(refToAdd);
+		ORefList pathForRef = findHierarchyForRef(refToAdd);
 		if(!expandedList.contains(pathForRef))
 			expandedList.add(pathForRef);
 	}
 	
 	private void removeFromExpandedList(Vector<ORefList> expandedList, ORef refToRemove) throws Exception
 	{
-		ORefList pathForRef = findHeirarchyForRef(refToRemove);
+		ORefList pathForRef = findHierarchyForRef(refToRemove);
 		if(expandedList.contains(pathForRef))
 			expandedList.remove(pathForRef);
 	}
@@ -171,7 +171,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		saveExpanded(new Vector());
 	}
 
-	private ORefList findHeirarchyForRef(ORef nodeRef) throws Exception
+	private ORefList findHierarchyForRef(ORef nodeRef) throws Exception
 	{
 		for (int row = 0; row < getRowCount(); ++row)
 		{
@@ -214,7 +214,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	{
 		TreeTableNode topLevelObject = (TreeTableNode)thisPath.getLastPathComponent();
 		ORef topLevelObjRef = topLevelObject.getObjectReference();
-		ORefList heirarchyForRef = findHeirarchyForRef(topLevelObjRef);
+		ORefList heirarchyForRef = findHierarchyForRef(topLevelObjRef);
 		
 		boolean isInExpandedList = objRefListToUse.contains(heirarchyForRef);
 		boolean isAlwaysExpanded = topLevelObject.isAlwaysExpanded();
