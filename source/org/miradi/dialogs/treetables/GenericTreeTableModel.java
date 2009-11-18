@@ -56,15 +56,6 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		}
 	}
 
-	 //TODO remove this method and anything up the call chain that isn't being used
-	public TreePath getPathOfParent(int objectType, BaseId objectId)
-	{
-		TreePath path = getPathOfNode(objectType, objectId);
-		if(path == null)
-			return null;
-		return path.getParentPath();
-	}
-
 	public TreePath getPathOfNode(ORef ref)
 	{
 		return findObject(getPathToRoot(), ref.getObjectType(), ref.getObjectId());
