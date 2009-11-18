@@ -195,7 +195,7 @@ import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.NullDoer;
 import org.miradi.views.diagram.Print;
 import org.miradi.views.diagram.doers.CreateTaskProgressReportDoer;
-import org.miradi.views.diagram.doers.CreateIndicatortProgressReportDoer;
+import org.miradi.views.diagram.doers.CreateIndicatorProgressReportDoer;
 import org.miradi.views.diagram.doers.CreateObjectiveProgressPercentDoer;
 import org.miradi.views.diagram.doers.CreateStrategyProgressReportDoer;
 import org.miradi.views.diagram.doers.DeleteTaskProgressReportDoer;
@@ -412,7 +412,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionShareMethod.class, new TreeNodeShareMethodDoer());
 		
 		addDoerToMap(ActionEditIndicatorProgressReports.class, new EditIndicatorProgressReportDoer());
-		addDoerToMap(ActionCreateIndicatorProgressReport.class, new CreateIndicatortProgressReportDoer());
+		addDoerToMap(ActionCreateIndicatorProgressReport.class, new CreateIndicatorProgressReportDoer());
 		addDoerToMap(ActionDeleteIndicatorProgressReport.class, new DeleteIndicatorProgressReportDoer());
 		
 		addDoerToMap(ActionEditStrategyProgressReports.class, new EditStrategyProgressReportDoer());

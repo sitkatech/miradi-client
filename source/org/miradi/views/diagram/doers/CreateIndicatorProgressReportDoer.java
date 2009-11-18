@@ -26,7 +26,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.ProgressReport;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 
-public class CreateIndicatortProgressReportDoer extends CreateAnnotationDoer
+public class CreateIndicatorProgressReportDoer extends CreateAnnotationDoer
 {
 	public BaseObject getSelectedParentFactor()
 	{
