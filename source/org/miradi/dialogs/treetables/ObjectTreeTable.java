@@ -257,9 +257,13 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		return getNodeForRow(row).getObject();
 	}
 	
-	public void selectObject(ORef ref, int fallbackRow)
+	public void selectObject(ORefList selectedHierarchy, int fallbackRow)
 	{
-		TreePath path = getTreeTableModel().getPathOfNode(ref.getObjectType(), ref.getObjectId());
+		if (selectedHierarchy.isEmpty())
+			return;
+		
+		ORef leafNodeRef = selectedHierarchy.get(0);
+		TreePath path = getTreeTableModel().getPathOfNode(leafNodeRef);
 		if(path == null)
 		{
 			getSelectionModel().setSelectionInterval(fallbackRow, fallbackRow);
@@ -269,33 +273,33 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		tree.setSelectionPath(path);
 	}
 
-	public void selectObjectAfterSwingClearsItDueToTreeStructureChange(ORef selectedRef, int fallbackRow)
+	public void selectObjectAfterSwingClearsItDueToTreeStructureChange(ORefList selectedHierarchy, int fallbackRow)
 	{
 		clearSelection();
 		tree.clearSelection();
-		if(selectedRef == null || selectedRef.isInvalid())
+		if(selectedHierarchy == null || selectedHierarchy.isEmpty())
 			return;
 		
-		SwingUtilities.invokeLater(new Reselecter(this, selectedRef, fallbackRow));
+		SwingUtilities.invokeLater(new Reselecter(this, selectedHierarchy, fallbackRow));
 	}
 	
 	static class Reselecter implements Runnable
 	{
-		public Reselecter(ObjectTreeTable treeTableToUse, ORef refToSelect, int rowToSelect)
+		public Reselecter(ObjectTreeTable treeTableToUse, ORefList hierarchyToSelect, int rowToSelect)
 		{
 			treeTable = treeTableToUse;
-			ref = refToSelect;
+			selectedHierachy = hierarchyToSelect;
 			row = rowToSelect;
 		}
 		
 		public void run()
 		{
-			treeTable.selectObject(ref, row);
+			treeTable.selectObject(selectedHierachy, row);
 			treeTable.ensureSelectedRowVisible();
 		}
 		
 		private ObjectTreeTable treeTable;
-		private ORef ref;
+		private ORefList selectedHierachy;
 		private int row;
 	}
 

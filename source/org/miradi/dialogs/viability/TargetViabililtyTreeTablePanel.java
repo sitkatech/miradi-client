@@ -36,6 +36,7 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
@@ -99,7 +100,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButton
 			treeTableModel.rebuildEntireTree();
 			restoreTreeExpansionState();
 			
-			tree.selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef, 0);
+			tree.selectObjectAfterSwingClearsItDueToTreeStructureChange(new ORefList(selectedRef), 0);
 		} 
 		else if(isTreeExpansionCommand(event))
 		{
