@@ -26,7 +26,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objectdata.IntegerData;
-import org.miradi.objectdata.ORefListData;
+import org.miradi.objectdata.RefListListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.TagListData;
 import org.miradi.objecthelpers.DateUnit;
@@ -81,6 +81,11 @@ public class TableSettings extends BaseObject
 	public Vector<DateUnit> getDateUnitList()
 	{
 		return dateUnitListList.getDateUnits();
+	}
+	
+	public Vector<ORefList> getExpandedRefListList() throws Exception
+	{
+		return expandedNodesRefListList.convertToRefListList();
 	}
 	
 	public StringMap getTableSettingsMap()
@@ -167,7 +172,7 @@ public class TableSettings extends BaseObject
 		columnSequenceCodes = new TagListData(TAG_COLUMN_SEQUENCE_CODES);
 		columnWidths = new StringMapData(TAG_COLUMN_WIDTHS);
 		rowHeight = new IntegerData(TAG_ROW_HEIGHT);
-		expandedNodesRefList = new ORefListData(TAG_TREE_EXPANSION_LIST);
+		expandedNodesRefListList = new RefListListData(TAG_TREE_EXPANSION_LIST);
 		dateUnitListList = new DateUnitListData(TAG_DATE_UNIT_LIST_DATA);
 		tableSettingsMap = new StringMapData(TAG_TABLE_SETTINGS_MAP);
 		
@@ -175,7 +180,7 @@ public class TableSettings extends BaseObject
 		addPresentationDataField(TAG_COLUMN_SEQUENCE_CODES, columnSequenceCodes);
 		addPresentationDataField(TAG_COLUMN_WIDTHS, columnWidths);
 		addPresentationDataField(TAG_ROW_HEIGHT, rowHeight);
-		addPresentationDataField(TAG_TREE_EXPANSION_LIST, expandedNodesRefList);
+		addPresentationDataField(TAG_TREE_EXPANSION_LIST, expandedNodesRefListList);
 		addPresentationDataField(TAG_DATE_UNIT_LIST_DATA, dateUnitListList);
 		addPresentationDataField(TAG_TABLE_SETTINGS_MAP, tableSettingsMap);
 	}
@@ -197,7 +202,7 @@ public class TableSettings extends BaseObject
 	private TagListData columnSequenceCodes;
 	private StringMapData columnWidths;
 	private IntegerData rowHeight;
-	private ORefListData expandedNodesRefList;
+	private RefListListData expandedNodesRefListList;
 	private DateUnitListData dateUnitListList;
 	private StringMapData tableSettingsMap;
 }

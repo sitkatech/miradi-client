@@ -172,7 +172,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		ORefList[] selectionHierarchies = new ORefList[selectionPaths.length];
 		for (int i = 0; i < selectionPaths.length; ++i)
 		{
-			selectionHierarchies[i] = convertPath(selectionPaths[i]);
+			selectionHierarchies[i] = getTreeTableModel().convertPath(selectionPaths[i]);
 		}
 		
 		return selectionHierarchies;
@@ -208,18 +208,6 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		return getTreeTableModel().getRootNode().getObjectReference();
 	}
 	
-	private ORefList convertPath(TreePath treePath)
-	{
-		ORefList selectionHierarchyNodeRefs = new ORefList();
-		for(int i = treePath.getPathCount() - 1; i >=0 ; --i)
-		{			
-			TreeTableNode node = (TreeTableNode) treePath.getPathComponent(i);
-			selectionHierarchyNodeRefs.add(node.getObjectReference());
-		}
-		
-		return selectionHierarchyNodeRefs;	
-	}
-
 	public void ensureObjectVisible(ORef ref)
 	{
 		// NOTE: This code hasn't been proven to work...we believe it needs to be called

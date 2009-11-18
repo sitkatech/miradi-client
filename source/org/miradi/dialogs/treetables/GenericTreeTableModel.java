@@ -27,7 +27,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
 import org.miradi.utils.ColumnTagProvider;
 
 import com.java.sun.jtreetable.AbstractTreeTableModel;
@@ -179,10 +178,28 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		return fullyExpandedObjectRefs;
 	}
 	
-	public ORefSet getFullyExpandedRefSet() throws Exception
+		public Vector<ORefList> getFullyExpandedHeirarchyRefListList() throws Exception
 	{
-		ORefList fullyExpandedObjectRefs = getFullyExpandedRefList();
-		return new ORefSet(fullyExpandedObjectRefs);
+		Vector<ORefList> fullyExpandedObjectRefs = new Vector();
+		Vector<TreePath> fullExpandedNodeList = getFullyExpandedTreePathList();
+		for(TreePath treePath : fullExpandedNodeList)
+		{
+			fullyExpandedObjectRefs.add(convertPath(treePath));
+		}
+		
+		return fullyExpandedObjectRefs;
+	}
+	
+	public ORefList convertPath(TreePath treePath)
+	{
+		ORefList selectionHierarchyNodeRefs = new ORefList();
+		for(int i = treePath.getPathCount() - 1; i >=0 ; --i)
+		{			
+			TreeTableNode node = (TreeTableNode) treePath.getPathComponent(i);
+			selectionHierarchyNodeRefs.add(node.getObjectReference());
+		}
+		
+		return selectionHierarchyNodeRefs;	
 	}
 	
 	public Vector<TreePath> getFullyExpandedTreePathList() throws Exception
