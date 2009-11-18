@@ -214,9 +214,9 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	{
 		TreeTableNode topLevelObject = (TreeTableNode)thisPath.getLastPathComponent();
 		ORef topLevelObjRef = topLevelObject.getObjectReference();
-		ORefList heirarchyForRef = findHierarchyForRef(topLevelObjRef);
+		ORefList hierarchyForRef = findHierarchyForRef(topLevelObjRef);
 		
-		boolean isInExpandedList = objRefListToUse.contains(heirarchyForRef);
+		boolean isInExpandedList = objRefListToUse.contains(hierarchyForRef);
 		boolean isAlwaysExpanded = topLevelObject.isAlwaysExpanded();
 		boolean shouldBeExpanded = isAlwaysExpanded || isInExpandedList;
 		
