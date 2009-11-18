@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.treetables;
 
+import java.util.Vector;
+
 import javax.swing.event.TreeExpansionEvent;
 import javax.swing.event.TreeExpansionListener;
 import javax.swing.event.TreeWillExpandListener;
@@ -31,10 +33,11 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objectdata.RefListListData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.TableSettings;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.EAMTreeTableModelAdapter;
 
 abstract public class TreeTableWithStateSaving extends ObjectTreeTable implements TreeExpansionListener, CommandExecutedListener
@@ -91,23 +94,25 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		super.updateAutomaticRowHeights();
 	}
 	
-	public void addObjectToExpandedList(ORef ref) throws Exception
+	private void addObjectToExpandedList(ORef ref) throws Exception
 	{
-		ORefList expandedList = getExpandedNodeList();
+		Vector<ORefList> expandedList = getExpandedNodeList();
 		addToExpandedList(expandedList, ref);
-		saveExpandedPath(expandedList);
+		saveExpanded(expandedList);
 	}
 
-	private void addToExpandedList(ORefList expandedList, ORef refToAdd)
+	private void addToExpandedList(Vector<ORefList> expandedList, ORef refToAdd) throws Exception
 	{
-		if(!expandedList.contains(refToAdd))
-			expandedList.add(refToAdd);
+		ORefList pathForRef = findHeirarchyForRef(refToAdd);
+		if(!expandedList.contains(pathForRef))
+			expandedList.add(pathForRef);
 	}
 	
-	private void removeFromExpandedList(ORefList expandedList, ORef refToRemove)
+	private void removeFromExpandedList(Vector<ORefList> expandedList, ORef refToRemove) throws Exception
 	{
-		if(expandedList.contains(refToRemove))
-			expandedList.remove(refToRemove);
+		ORefList pathForRef = findHeirarchyForRef(refToRemove);
+		if(expandedList.contains(pathForRef))
+			expandedList.remove(pathForRef);
 	}
 	
 	public void restoreTreeState() throws Exception
@@ -118,7 +123,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		restoreTreeState(getExpandedNodeList());
 	}
 
-	private void restoreTreeState(ORefList expandedNodeRefs) throws Exception
+	private void restoreTreeState(Vector<ORefList> expandedNodeRefs) throws Exception
 	{
 		ignoreNotifications = true;
 		try
@@ -156,20 +161,63 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	
 	public void expandAll() throws Exception
 	{
-		ORefSet fullExpandedRefs = getTreeTableModel().getFullyExpandedRefSet();
-		updateTreeExpansionState(fullExpandedRefs.toRefList());
+		Vector<ORefList> fullExpandedRefs = getTreeTableModel().getFullyExpandedHeirarchyRefListList();
+		saveExpanded(fullExpandedRefs);
 	}
 	
 	public void collapseAll() throws Exception
 	{
 		clearSelection();
-		updateTreeExpansionState(new ORefList());
+		saveExpanded(new Vector());
 	}
 
 	public void updateTreeExpansionState(ORefList expandedRefs) throws Exception
 	{
+		Vector<ORefList> expandedRowsHierarchies = new Vector();
+		for(int index = 0; index < expandedRefs.size(); ++index)
+		{
+			ORef expandedRef = expandedRefs.get(index);
+			ORefList rowHierachy = findHeirarchyForRef(expandedRefs, expandedRef);
+			expandedRowsHierarchies.add(rowHierachy);
+		}
+				
+		saveExpanded(expandedRowsHierarchies);
+	}
+	
+	//TODO below two methods are sort of duplicate, 
+	private ORefList findHeirarchyForRef(ORefList expandedRefs, ORef nodeRef) throws Exception
+	{
+		for (int index = 0; index < expandedRefs.size(); ++index)
+		{
+			TreePath pathForRow = getTree().getPathForRow(index);
+			ORef refForPath = getObjectRefFromPath(pathForRow);
+			if (refForPath.equals(nodeRef))
+				return getTreeTableModel().convertPath(pathForRow);
+		}			
+		
+		return new ORefList();
+	}
+	
+	private ORefList findHeirarchyForRef(ORef nodeRef) throws Exception
+	{
+		for (int row = 0; row < getRowCount(); ++row)
+		{
+			TreePath pathForRow = getTree().getPathForRow(row);
+			ORef refForPath = getObjectRefFromPath(pathForRow);
+			if (refForPath.equals(nodeRef))
+				return getTreeTableModel().convertPath(pathForRow);
+		}			
+		
+		return new ORefList();
+	}
+	
+	private void saveExpanded(Vector<ORefList> expandedRowsHierarchies) throws Exception
+	{
+		FieldSaver.savePendingEdits();
+		
+		CodeList codeList = RefListListData.convertToCodeList(expandedRowsHierarchies);
 		TableSettings tableSettings = getTableSettingsForTreeTable();
-		CommandSetObjectData cmd = new CommandSetObjectData(tableSettings, TableSettings.TAG_TREE_EXPANSION_LIST, expandedRefs);
+		CommandSetObjectData cmd = new CommandSetObjectData(tableSettings, TableSettings.TAG_TREE_EXPANSION_LIST, codeList.toString());
 		getProject().executeCommand(cmd);
 	}
 	
@@ -189,12 +237,13 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		}
 	}
 	
-	private boolean recursiveChangeNodeExpansionState(ORefList objRefListToUse, TreePath thisPath)
+	private boolean recursiveChangeNodeExpansionState(Vector<ORefList> objRefListToUse, TreePath thisPath) throws Exception
 	{
 		TreeTableNode topLevelObject = (TreeTableNode)thisPath.getLastPathComponent();
 		ORef topLevelObjRef = topLevelObject.getObjectReference();
+		ORefList heirarchyForRef = findHeirarchyForRef(topLevelObjRef);
 		
-		boolean isInExpandedList = objRefListToUse.contains(topLevelObjRef);
+		boolean isInExpandedList = objRefListToUse.contains(heirarchyForRef);
 		boolean isAlwaysExpanded = topLevelObject.isAlwaysExpanded();
 		boolean shouldBeExpanded = isAlwaysExpanded || isInExpandedList;
 		
@@ -241,13 +290,13 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 			ORef ref = getObjectRefFromPath(path);
 			int fallbackRow = tree.getRowForPath(path);
 
-			ORefList newExpansionRefs = getExpandedNodeList();
+			Vector<ORefList> newExpansionRefs = getExpandedNodeList();
 			if(tree.isExpanded(path))
 				addToExpandedList(newExpansionRefs, ref);
 			else
 				removeFromExpandedList(newExpansionRefs, ref);
 
-			saveExpandedPath(newExpansionRefs);
+			saveExpanded(newExpansionRefs);
 			selectObjectAfterSwingClearsItDueToTreeStructureChange(ref, fallbackRow);
 		}
 		catch(Exception e)
@@ -257,19 +306,9 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		}
 	}
 
-	private void saveExpandedPath(ORefList newObjRefList) throws Exception
+	private Vector<ORefList> getExpandedNodeList() throws Exception
 	{
-		FieldSaver.savePendingEdits();
-
-		TableSettings tableSettings = getTableSettingsForTreeTable();
-		CommandSetObjectData cmd = new CommandSetObjectData(tableSettings, TableSettings.TAG_TREE_EXPANSION_LIST, newObjRefList);
-		getProject().executeCommand(cmd);
-	}
-
-	private ORefList getExpandedNodeList() throws Exception
-	{
-		TableSettings tableSettings = getTableSettingsForTreeTable();	
-		return new ORefList(tableSettings.getData(TableSettings.TAG_TREE_EXPANSION_LIST));
+		return getTableSettingsForTreeTable().getExpandedRefListList();
 	}
 	
 	private TableSettings getTableSettingsForTreeTable() throws Exception

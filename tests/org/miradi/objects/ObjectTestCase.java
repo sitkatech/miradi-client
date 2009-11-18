@@ -43,6 +43,7 @@ import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PointListData;
+import org.miradi.objectdata.RefListListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.TagListData;
 import org.miradi.objecthelpers.CreateObjectParameter;
@@ -321,6 +322,15 @@ public class ObjectTestCase extends TestCaseWithProject
 			DateUnit dateUnit = TestDateUnit.month12;
 			list.add(new DateUnitEffort(dateUnit, 5.0));
 			return list.toString();
+		}
+		else if (field instanceof RefListListData)
+		{
+			ORefList refList = new ORefList(new ORef(Cause.getObjectType(), new BaseId(9999)));
+			RefListListData refListListData = new RefListListData("");
+			refListListData.addList(refList);
+			
+			return refListListData.toString();
+			
 		}
 		else
 		{
