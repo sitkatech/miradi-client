@@ -262,8 +262,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		if (selectedHierarchy.isEmpty())
 			return;
 		
-		ORef leafNodeRef = selectedHierarchy.get(0);
-		TreePath path = getTreeTableModel().getPathOfNode(leafNodeRef);
+		TreePath path = convertToTreePath(selectedHierarchy);
 		if(path == null)
 		{
 			getSelectionModel().setSelectionInterval(fallbackRow, fallbackRow);
@@ -271,6 +270,20 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		}
 		
 		tree.setSelectionPath(path);
+	}
+	
+	private TreePath convertToTreePath(ORefList hierarchy)
+	{
+		ORef leafNodeRef = hierarchy.get(0);
+		Vector<TreePath> treePaths = getTreeTableModel().findTreePaths(leafNodeRef);
+		for(TreePath treePath : treePaths)
+		{
+			ORefList selectionHierarchy = getTreeTableModel().convertPath(treePath);
+			if (hierarchy.equals(selectionHierarchy))
+				return treePath;
+		}
+		
+		return null;
 	}
 
 	public void selectObjectAfterSwingClearsItDueToTreeStructureChange(ORefList selectedHierarchy, int fallbackRow)

@@ -125,6 +125,40 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		return null;
 	}
 	
+	//FIXME this is duplicated from above method findObject.  Also this method needs to be diagnosed since
+	// it seems like it can be refactored 
+	public Vector<TreePath> findTreePaths(ORef ref)
+	{
+		TreePath pathToStartSearch = getPathToRoot();
+		TreeTableNode nodeToSearch = (TreeTableNode)pathToStartSearch.getLastPathComponent();
+		
+		Vector<TreePath> treePaths = new Vector();
+		if(nodeToSearch.getType() == ref.getObjectType())
+		{
+			if (nodeToSearch.getObjectReference()==null)
+			{
+				treePaths.add(pathToStartSearch);
+				return treePaths;
+			}
+			if (nodeToSearch.getObjectReference().equals(ref))
+			{
+				treePaths.add(pathToStartSearch);
+				return treePaths;
+			}
+		}
+
+		for(int i = 0; i < nodeToSearch.getChildCount(); ++i)
+		{
+			TreeTableNode thisChild = nodeToSearch.getChild(i);
+			TreePath childPath = pathToStartSearch.pathByAddingChild(thisChild);
+			TreePath found = findObject(childPath, ref);
+			if(found != null)
+				treePaths.add(found);
+		}
+		
+		return treePaths;
+	}
+	
 	public Class getColumnClass(int column)
 	{
 		if(column == PanelTreeTable.TREE_COLUMN_INDEX)

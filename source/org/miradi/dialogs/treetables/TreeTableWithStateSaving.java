@@ -131,13 +131,14 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 			int fallbackRow = getSelectedRow();
 			TreePath selectedPath = tree.getSelectionPath();
 			ORef selectedRef = getObjectRefFromPath(selectedPath);
+			ORefList refHierarchy = findHierarchyForRef(selectedRef);
 			
 			TreeTableNode root = (TreeTableNode)tree.getModel().getRoot();
 			TreePath rootPath = new TreePath(root);
 			if(recursiveChangeNodeExpansionState(expandedNodeRefs, rootPath))
 			{
 				treeTableModelAdapter.fireTableDataChanged();
-				selectObjectAfterSwingClearsItDueToTreeStructureChange(new ORefList(selectedRef), fallbackRow);
+				selectObjectAfterSwingClearsItDueToTreeStructureChange(refHierarchy, fallbackRow);
 			}
 		}
 		finally
@@ -171,7 +172,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		saveExpanded(new Vector());
 	}
 
-	private ORefList findHierarchyForRef(ORef nodeRef) throws Exception
+	public ORefList findHierarchyForRef(ORef nodeRef) throws Exception
 	{
 		for (int row = 0; row < getRowCount(); ++row)
 		{
@@ -200,7 +201,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		{
 			addObjectToExpandedList(ref);
 			super.ensureObjectVisible(ref);
-			selectObjectAfterSwingClearsItDueToTreeStructureChange(new ORefList(ref), 0);
+			selectObjectAfterSwingClearsItDueToTreeStructureChange(findHierarchyForRef(ref), 0);
 			
 		}
 		catch (Exception e)
@@ -261,6 +262,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		try
 		{
 			ORef ref = getObjectRefFromPath(path);
+			ORefList selectionHierarchy = getTreeTableModel().convertPath(path);
 			int fallbackRow = tree.getRowForPath(path);
 
 			Vector<ORefList> newExpansionRefs = getExpandedNodeList();
@@ -270,7 +272,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 				removeFromExpandedList(newExpansionRefs, ref);
 
 			saveExpanded(newExpansionRefs);
-			selectObjectAfterSwingClearsItDueToTreeStructureChange(new ORefList(ref), fallbackRow);
+			selectObjectAfterSwingClearsItDueToTreeStructureChange(selectionHierarchy, fallbackRow);
 		}
 		catch(Exception e)
 		{

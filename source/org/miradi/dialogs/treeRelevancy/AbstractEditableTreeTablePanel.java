@@ -115,6 +115,7 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 		BaseObject[] selected = tree.getSelectedObjects();
 		if(selected.length == 1)
 			selectedRef = selected[0].getRef();
+		ORefList refHierarchy = getTree().findHierarchyForRef(selectedRef);
 		int selectedRow = getTree().getSelectionModel().getMinSelectionIndex();
 		
 		getTree().rebuildTableCompletely();
@@ -125,7 +126,7 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 		restoreTreeExpansionState();
 		updateRightSideTablePanels();
 
-		getTree().selectObjectAfterSwingClearsItDueToTreeStructureChange(new ORefList(selectedRef), selectedRow);
+		getTree().selectObjectAfterSwingClearsItDueToTreeStructureChange(refHierarchy, selectedRow);
 	}
 
 	private EditableObjectTable getEditableTable()
