@@ -19,26 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ProgressReport;
-import org.miradi.views.diagram.CreateAnnotationDoer;
 
-public class CreateIndicatorProgressReportDoer extends CreateAnnotationDoer
+public class CreateIndicatorProgressReportDoer extends CreateAnnotationWithFactorParent
 {
-	public BaseObject getSelectedParentFactor()
-	{
-		if (getPicker() == null)
-			return null;
-		
-		ORefList selectionRefs = getPicker().getSelectedHierarchies()[0];
-		ORef indicatorRef = selectionRefs.getRefForType(Indicator.getObjectType());
-		
-		return Indicator.find(getProject(), indicatorRef);
-	}
-	
 	public String getAnnotationListTag()
 	{
 		return Indicator.TAG_PROGRESS_REPORT_REFS;
@@ -47,5 +32,11 @@ public class CreateIndicatorProgressReportDoer extends CreateAnnotationDoer
 	public int getAnnotationType()
 	{
 		return ProgressReport.getObjectType();
+	}
+
+	@Override
+	protected int getParentType()
+	{
+		return Indicator.getObjectType();
 	}
 }
