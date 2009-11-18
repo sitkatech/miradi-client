@@ -33,6 +33,7 @@ import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.MultiTableRowHeightController;
 import org.miradi.utils.MultiTableSelectionController;
@@ -124,7 +125,7 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 		restoreTreeExpansionState();
 		updateRightSideTablePanels();
 
-		getTree().selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef, selectedRow);
+		getTree().selectObjectAfterSwingClearsItDueToTreeStructureChange(new ORefList(selectedRef), selectedRow);
 	}
 
 	private EditableObjectTable getEditableTable()

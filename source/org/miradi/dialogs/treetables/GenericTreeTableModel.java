@@ -61,11 +61,6 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		return findObject(getPathToRoot(), ref.getObjectType(), ref.getObjectId());
 	}
 	
-	public TreePath getPathOfNode(int objectType, BaseId objectId)
-	{
-		return findObject(getPathToRoot(), objectType, objectId);
-	}
-	
 	protected TreeTableNode getRootNode()
 	{
 		return (TreeTableNode)getRoot();

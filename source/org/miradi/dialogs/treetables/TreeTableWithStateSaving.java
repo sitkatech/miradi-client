@@ -137,7 +137,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 			if(recursiveChangeNodeExpansionState(expandedNodeRefs, rootPath))
 			{
 				treeTableModelAdapter.fireTableDataChanged();
-				selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef, fallbackRow);
+				selectObjectAfterSwingClearsItDueToTreeStructureChange(new ORefList(selectedRef), fallbackRow);
 			}
 		}
 		finally
@@ -200,7 +200,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		{
 			addObjectToExpandedList(ref);
 			super.ensureObjectVisible(ref);
-			selectObjectAfterSwingClearsItDueToTreeStructureChange(ref, 0);
+			selectObjectAfterSwingClearsItDueToTreeStructureChange(new ORefList(ref), 0);
 			
 		}
 		catch (Exception e)
@@ -270,7 +270,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 				removeFromExpandedList(newExpansionRefs, ref);
 
 			saveExpanded(newExpansionRefs);
-			selectObjectAfterSwingClearsItDueToTreeStructureChange(ref, fallbackRow);
+			selectObjectAfterSwingClearsItDueToTreeStructureChange(new ORefList(ref), fallbackRow);
 		}
 		catch(Exception e)
 		{
