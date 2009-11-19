@@ -118,13 +118,11 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 			ORef nodeRef = nodeToSearch.getObjectReference();
 			if (nodeRef == null)
 			{
-				treePaths.add(pathToStartSearch);
-				return treePaths;
+				return createSingleItemVector(pathToStartSearch);
 			}
 			if (nodeRef.equals(ref))
 			{
-				treePaths.add(pathToStartSearch);
-				return treePaths;
+				return createSingleItemVector(pathToStartSearch);
 			}
 		}
 
@@ -135,6 +133,14 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 			Vector<TreePath> foundTreePaths = findTreePaths(childPath, ref);
 			treePaths.addAll(foundTreePaths);
 		}
+		
+		return treePaths;
+	}
+
+	private Vector<TreePath> createSingleItemVector(TreePath pathToStartSearch)
+	{
+		Vector<TreePath> treePaths = new Vector();
+		treePaths.add(pathToStartSearch);
 		
 		return treePaths;
 	}
