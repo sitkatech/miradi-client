@@ -31,6 +31,13 @@ public class RefListListData extends AbstractStringListData
 	{
 		super(tagToUse);
 	}
+	
+	public RefListListData(String tagToUse, Vector<ORefList> refListList)
+	{
+		super(tagToUse);
+		
+		addLists(refListList);
+	}
 
 	public Vector<ORefList> convertToRefListList() throws Exception
 	{
@@ -58,5 +65,13 @@ public class RefListListData extends AbstractStringListData
 	public void addList(ORefList listToAdd)
 	{
 		add(listToAdd.toString());
+	}
+	
+	private void addLists(Vector<ORefList> listsToAdd)
+	{
+		for(ORefList listToAdd : listsToAdd)
+		{
+			addList(listToAdd);
+		}
 	}
 }
