@@ -117,11 +117,11 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 			ORef nodeRef = nodeToSearch.getObjectReference();
 			if (nodeRef == null)
 			{
-				return createSingleItemVector(pathToStartSearch);
+				return createSingleTreePathVector(pathToStartSearch);
 			}
 			if (nodeRef.equals(ref))
 			{
-				return createSingleItemVector(pathToStartSearch);
+				return createSingleTreePathVector(pathToStartSearch);
 			}
 		}
 
@@ -137,7 +137,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		return treePaths;
 	}
 
-	private Vector<TreePath> createSingleItemVector(TreePath pathToStartSearch)
+	private Vector<TreePath> createSingleTreePathVector(TreePath pathToStartSearch)
 	{
 		Vector<TreePath> treePaths = new Vector();
 		treePaths.add(pathToStartSearch);
