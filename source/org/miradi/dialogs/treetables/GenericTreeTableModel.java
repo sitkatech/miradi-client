@@ -57,7 +57,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 
 	public TreePath getPathOfNode(ORef ref)
 	{
-		return findObject(getPathToRoot(), ref);
+		return findTreePath(ref);
 	}
 	
 	protected TreeTableNode getRootNode()
@@ -78,8 +78,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 	
 	public void rebuildObjectRow(ORef ref)
 	{
-		TreePath pathToRoot = getPathToRoot();
-		TreePath pathToRepaint = findObject(pathToRoot, ref);
+		TreePath pathToRepaint = findTreePath(ref);
 		if(pathToRepaint == null)
 			return;
 		
