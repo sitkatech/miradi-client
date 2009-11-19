@@ -128,9 +128,9 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 			}
 		}
 
-		for(int i = 0; i < nodeToSearch.getChildCount(); ++i)
+		for(int index = 0; index < nodeToSearch.getChildCount(); ++index)
 		{
-			TreeTableNode thisChild = nodeToSearch.getChild(i);
+			TreeTableNode thisChild = nodeToSearch.getChild(index);
 			TreePath childPath = pathToStartSearch.pathByAddingChild(thisChild);
 			Vector<TreePath> found = findTreePaths(childPath, ref);
 			treePaths.addAll(found);
