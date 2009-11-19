@@ -24,7 +24,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
-public class CodeList
+public class CodeList extends StringList
 {
 	public CodeList()
 	{
