@@ -172,7 +172,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		ORefList[] selectionHierarchies = new ORefList[selectionPaths.length];
 		for (int i = 0; i < selectionPaths.length; ++i)
 		{
-			selectionHierarchies[i] = getTreeTableModel().convertPath(selectionPaths[i]);
+			selectionHierarchies[i] = getTreeTableModel().convertTreePathToRefList(selectionPaths[i]);
 		}
 		
 		return selectionHierarchies;
@@ -278,7 +278,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		Vector<TreePath> treePaths = getTreeTableModel().findTreePaths(leafNodeRef);
 		for(TreePath treePath : treePaths)
 		{
-			ORefList selectionHierarchy = getTreeTableModel().convertPath(treePath);
+			ORefList selectionHierarchy = getTreeTableModel().convertTreePathToRefList(treePath);
 			if (hierarchy.equals(selectionHierarchy))
 				return treePath;
 		}

@@ -179,7 +179,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 			TreePath pathForRow = getTree().getPathForRow(row);
 			ORef refForPath = getObjectRefFromPath(pathForRow);
 			if (refForPath.equals(nodeRef))
-				return getTreeTableModel().convertPath(pathForRow);
+				return getTreeTableModel().convertTreePathToRefList(pathForRow);
 		}			
 		
 		return new ORefList();
@@ -262,7 +262,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		try
 		{
 			ORef ref = getObjectRefFromPath(path);
-			ORefList selectionHierarchy = getTreeTableModel().convertPath(path);
+			ORefList selectionHierarchy = getTreeTableModel().convertTreePathToRefList(path);
 			int fallbackRow = tree.getRowForPath(path);
 
 			Vector<ORefList> newExpansionRefs = getExpandedNodeList();
