@@ -190,13 +190,13 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		Vector<TreePath> fullExpandedNodeList = getFullyExpandedTreePathList();
 		for(TreePath treePath : fullExpandedNodeList)
 		{
-			fullyExpandedObjectRefs.add(convertPath(treePath));
+			fullyExpandedObjectRefs.add(convertTreePathToRefList(treePath));
 		}
 		
 		return fullyExpandedObjectRefs;
 	}
 	
-	public ORefList convertPath(TreePath treePath)
+	public ORefList convertTreePathToRefList(TreePath treePath)
 	{
 		ORefList selectionHierarchyNodeRefs = new ORefList();
 		for(int i = treePath.getPathCount() - 1; i >=0 ; --i)
