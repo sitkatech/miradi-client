@@ -33,7 +33,7 @@ public class TestRefListListData extends EAMTestCase
 		super(name);
 	}
 	
-	public void testConvertToRefListList() throws Exception
+	public void testConvertToRefListVector() throws Exception
 	{
 		RefListListData refListListData1 = new RefListListData("SomeTag");
 		assertEquals("list should be empty?", 0, refListListData1.size());
