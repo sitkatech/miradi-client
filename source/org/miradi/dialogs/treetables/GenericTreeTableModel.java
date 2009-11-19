@@ -96,6 +96,15 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		fireTreeNodesChanged(nodeToRepaint, pathToParent.getPath(), childIndex, childObject);
 	}
 	
+	public TreePath findTreePath(ORef ref)
+	{
+		Vector<TreePath> treePaths = findTreePaths(ref);
+		if (treePaths.isEmpty())
+			throw null;
+		
+		return treePaths.get(0);
+	}
+	
 	public TreePath findObject(TreePath pathToStartSearch, ORef ref)
 	{
 		TreeTableNode nodeToSearch = (TreeTableNode)pathToStartSearch.getLastPathComponent();
