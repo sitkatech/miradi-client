@@ -37,7 +37,6 @@ import org.miradi.objectdata.RefListListData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.TableSettings;
-import org.miradi.utils.CodeList;
 import org.miradi.utils.EAMTreeTableModelAdapter;
 
 abstract public class TreeTableWithStateSaving extends ObjectTreeTable implements TreeExpansionListener, CommandExecutedListener
@@ -189,9 +188,9 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	{
 		FieldSaver.savePendingEdits();
 		
-		CodeList codeList = RefListListData.convertToCodeList(expandedRowsHierarchies);
+		RefListListData refListListData = new RefListListData(TableSettings.TAG_TREE_EXPANSION_LIST, expandedRowsHierarchies);
 		TableSettings tableSettings = getTableSettingsForTreeTable();
-		CommandSetObjectData cmd = new CommandSetObjectData(tableSettings, TableSettings.TAG_TREE_EXPANSION_LIST, codeList.toString());
+		CommandSetObjectData cmd = new CommandSetObjectData(tableSettings, TableSettings.TAG_TREE_EXPANSION_LIST, refListListData.toString());
 		getProject().executeCommand(cmd);
 	}
 	
