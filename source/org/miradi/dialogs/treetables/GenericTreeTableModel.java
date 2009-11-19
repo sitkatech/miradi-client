@@ -112,16 +112,16 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 	private Vector<TreePath> findTreePaths(TreePath pathToStartSearch, ORef ref)
 	{
 		TreeTableNode nodeToSearch = (TreeTableNode)pathToStartSearch.getLastPathComponent();
-		
 		Vector<TreePath> treePaths = new Vector();
 		if(nodeToSearch.getType() == ref.getObjectType())
 		{
-			if (nodeToSearch.getObjectReference()==null)
+			ORef nodeRef = nodeToSearch.getObjectReference();
+			if (nodeRef == null)
 			{
 				treePaths.add(pathToStartSearch);
 				return treePaths;
 			}
-			if (nodeToSearch.getObjectReference().equals(ref))
+			if (nodeRef.equals(ref))
 			{
 				treePaths.add(pathToStartSearch);
 				return treePaths;
@@ -132,8 +132,8 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		{
 			TreeTableNode thisChild = nodeToSearch.getChild(index);
 			TreePath childPath = pathToStartSearch.pathByAddingChild(thisChild);
-			Vector<TreePath> found = findTreePaths(childPath, ref);
-			treePaths.addAll(found);
+			Vector<TreePath> foundTreePaths = findTreePaths(childPath, ref);
+			treePaths.addAll(foundTreePaths);
 		}
 		
 		return treePaths;
@@ -178,7 +178,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		return fullyExpandedObjectRefs;
 	}
 	
-		public Vector<ORefList> getFullyExpandedHierarchyRefListList() throws Exception
+	public Vector<ORefList> getFullyExpandedHierarchyRefListList() throws Exception
 	{
 		Vector<ORefList> fullyExpandedObjectRefs = new Vector();
 		Vector<TreePath> fullExpandedNodeList = getFullyExpandedTreePathList();
