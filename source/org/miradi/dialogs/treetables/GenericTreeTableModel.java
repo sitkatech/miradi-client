@@ -102,7 +102,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		return findObject(pathToStartSearch, ref.getObjectType(), ref.getObjectId());
 	}
 
-	public TreePath findObject(TreePath pathToStartSearch, int objectType, BaseId objectId)
+	private TreePath findObject(TreePath pathToStartSearch, int objectType, BaseId objectId)
 	{
 		TreeTableNode nodeToSearch = (TreeTableNode)pathToStartSearch.getLastPathComponent();
 
