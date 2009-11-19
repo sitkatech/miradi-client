@@ -104,6 +104,11 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		return treePaths.get(0);
 	}
 	
+	public Vector<TreePath> findTreePaths(ORef ref)
+	{
+		return findTreePaths(getPathToRoot(), ref);
+	}
+	
 	public TreePath findObject(TreePath pathToStartSearch, ORef ref)
 	{
 		TreeTableNode nodeToSearch = (TreeTableNode)pathToStartSearch.getLastPathComponent();
@@ -129,9 +134,8 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 	
 	//FIXME this is duplicated from above method findObject.  Also this method needs to be diagnosed since
 	// it seems like it can be refactored 
-	public Vector<TreePath> findTreePaths(ORef ref)
+	private Vector<TreePath> findTreePaths(TreePath pathToStartSearch, ORef ref)
 	{
-		TreePath pathToStartSearch = getPathToRoot();
 		TreeTableNode nodeToSearch = (TreeTableNode)pathToStartSearch.getLastPathComponent();
 		
 		Vector<TreePath> treePaths = new Vector();
