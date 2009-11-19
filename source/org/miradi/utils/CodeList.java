@@ -45,7 +45,7 @@ public class CodeList extends StringList
 	public CodeList(EnhancedJsonObject json)
 	{
 		this();
-		EnhancedJsonArray array = json.optJsonArray(TAG_IDS);
+		EnhancedJsonArray array = json.optJsonArray(getJsonTag());
 		if(array == null)
 			array = new EnhancedJsonArray();
 		for(int i = 0; i < array.length(); ++i)
@@ -132,7 +132,7 @@ public class CodeList extends StringList
 		EnhancedJsonArray array = new EnhancedJsonArray();
 		for(int i = 0; i < size(); ++i)
 			array.appendString(get(i));
-		json.put(TAG_IDS, array);
+		json.put(getJsonTag(), array);
 		return json;
 	}
 	
@@ -183,6 +183,11 @@ public class CodeList extends StringList
 	public boolean isEmpty()
 	{
 		return size() == 0;
+	}
+	
+	private String getJsonTag()
+	{
+		return TAG_IDS;
 	}
 		
 	private static final String TAG_IDS = "Codes";
