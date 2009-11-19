@@ -23,7 +23,6 @@ import java.util.Vector;
 
 import javax.swing.tree.TreePath;
 
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -58,7 +57,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 
 	public TreePath getPathOfNode(ORef ref)
 	{
-		return findObject(getPathToRoot(), ref.getObjectType(), ref.getObjectId());
+		return findObject(getPathToRoot(), ref);
 	}
 	
 	protected TreeTableNode getRootNode()
@@ -80,7 +79,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 	public void rebuildObjectRow(ORef ref)
 	{
 		TreePath pathToRoot = getPathToRoot();
-		TreePath pathToRepaint = findObject(pathToRoot, ref.getObjectType(), ref.getObjectId());
+		TreePath pathToRepaint = findObject(pathToRoot, ref);
 		if(pathToRepaint == null)
 			return;
 		
@@ -99,18 +98,13 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 	
 	public TreePath findObject(TreePath pathToStartSearch, ORef ref)
 	{
-		return findObject(pathToStartSearch, ref.getObjectType(), ref.getObjectId());
-	}
-
-	private TreePath findObject(TreePath pathToStartSearch, int objectType, BaseId objectId)
-	{
 		TreeTableNode nodeToSearch = (TreeTableNode)pathToStartSearch.getLastPathComponent();
 
-		if(nodeToSearch.getType() == objectType)
+		if(nodeToSearch.getType() == ref.getObjectType())
 		{
 			if (nodeToSearch.getObjectReference()==null)
 				return pathToStartSearch;
-			if (nodeToSearch.getObjectReference().getObjectId().equals(objectId))
+			if (nodeToSearch.getObjectReference().equals(ref))
 				return pathToStartSearch;
 		}
 
@@ -118,7 +112,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		{
 			TreeTableNode thisChild = nodeToSearch.getChild(i);
 			TreePath childPath = pathToStartSearch.pathByAddingChild(thisChild);
-			TreePath found = findObject(childPath, objectType, objectId);
+			TreePath found = findObject(childPath, ref);
 			if(found != null)
 				return found;
 		}
