@@ -38,14 +38,14 @@ public class TestRefListListData extends EAMTestCase
 		RefListListData refListListData1 = new RefListListData("SomeTag");
 		assertEquals("list should be empty?", 0, refListListData1.size());
 		refListListData1.addList(new ORefList());
-		Vector<ORefList> converted1 = refListListData1.convertToRefListList();
+		Vector<ORefList> converted1 = refListListData1.convertToRefListVector();
 		assertTrue("wrong reflist retrieved?", converted1.contains(new ORefList()));
 		assertEquals("wrong reflist retrieved?", new ORefList().toString(), refListListData1.get(0).toString());
 		
 		ORefList refList = new ORefList(ORef.INVALID);
 		RefListListData refListListData2 = new RefListListData("SomeTag");
 		refListListData2.addList(refList);
-		Vector<ORefList> converted2 = refListListData2.convertToRefListList();
+		Vector<ORefList> converted2 = refListListData2.convertToRefListVector();
 		assertTrue("wrong reflist retrieved?", converted2.contains(refList));
 		assertEquals("wrong reflist retrieved?", refList.toString(), refListListData2.get(0).toString());
 	}

@@ -85,7 +85,7 @@ public class TableSettings extends BaseObject
 	
 	public Vector<ORefList> getExpandedRefListList() throws Exception
 	{
-		return expandedNodesRefListList.convertToRefListList();
+		return expandedNodesRefListList.convertToRefListVector();
 	}
 	
 	public StringMap getTableSettingsMap()
