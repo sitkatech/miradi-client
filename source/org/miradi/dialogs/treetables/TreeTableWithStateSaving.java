@@ -97,18 +97,18 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	private void addObjectToExpandedList(ORef ref) throws Exception
 	{
 		Vector<ORefList> expandedList = getExpandedNodeList();
-		addToExpandedList(expandedList, ref);
+		addInPlaceToExpandedList(expandedList, ref);
 		saveExpanded(expandedList);
 	}
 
-	private void addToExpandedList(Vector<ORefList> expandedList, ORef refToAdd) throws Exception
+	private void addInPlaceToExpandedList(Vector<ORefList> expandedList, ORef refToAdd) throws Exception
 	{
 		ORefList pathForRef = findHierarchyForRef(refToAdd);
 		if(!expandedList.contains(pathForRef))
 			expandedList.add(pathForRef);
 	}
 	
-	private void removeFromExpandedList(Vector<ORefList> expandedList, ORef refToRemove) throws Exception
+	private void removeInPlaceFromExpandedList(Vector<ORefList> expandedList, ORef refToRemove) throws Exception
 	{
 		ORefList pathForRef = findHierarchyForRef(refToRemove);
 		if(expandedList.contains(pathForRef))
@@ -267,9 +267,9 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 
 			Vector<ORefList> newExpansionRefs = getExpandedNodeList();
 			if(tree.isExpanded(path))
-				addToExpandedList(newExpansionRefs, ref);
+				addInPlaceToExpandedList(newExpansionRefs, ref);
 			else
-				removeFromExpandedList(newExpansionRefs, ref);
+				removeInPlaceFromExpandedList(newExpansionRefs, ref);
 
 			saveExpanded(newExpansionRefs);
 			selectObjectAfterSwingClearsItDueToTreeStructureChange(selectionHierarchy, fallbackRow);
