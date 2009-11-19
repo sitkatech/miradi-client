@@ -112,7 +112,6 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 	private Vector<TreePath> findTreePaths(TreePath pathToStartSearch, ORef ref)
 	{
 		TreeTableNode nodeToSearch = (TreeTableNode)pathToStartSearch.getLastPathComponent();
-		Vector<TreePath> treePaths = new Vector();
 		if(nodeToSearch.getType() == ref.getObjectType())
 		{
 			ORef nodeRef = nodeToSearch.getObjectReference();
@@ -126,6 +125,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 			}
 		}
 
+		Vector<TreePath> treePaths = new Vector();
 		for(int index = 0; index < nodeToSearch.getChildCount(); ++index)
 		{
 			TreeTableNode thisChild = nodeToSearch.getChild(index);
