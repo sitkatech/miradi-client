@@ -22,7 +22,6 @@ package org.miradi.utils;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -37,7 +36,6 @@ import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 
 import org.martus.util.MultiCalendar;
-import org.miradi.dialogfields.FieldSaver;
 import org.miradi.main.EAM;
 
 import com.toedter.calendar.JDateChooser;
@@ -73,22 +71,18 @@ public class DateEditorComponent extends JDateChooser
 	
 	public void setText(String text)
 	{
+		if (text.length() == 0)
+			return;
+		
 		MultiCalendar date = MultiCalendar.createFromIsoDateString(text);
 		dateEditor.setDate(date.getTime());
 	}
 	
-	private String getDateAsString()
+	public String getDateAsString()
 	{
 		return convertDateToIsoString(getDate());
 	}
 	
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-		FieldSaver.savePendingEdits();
-		super.actionPerformed(e);
-	}
-
 	private static String convertDateToIsoString(Date date)
 	{
 		if (date == null)
