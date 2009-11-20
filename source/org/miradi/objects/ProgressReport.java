@@ -95,6 +95,11 @@ public class ProgressReport extends BaseObject
 		return new ProgressReportLongStatusQuestion().findChoiceByCode(progressStatus.get());
 	}
 	
+	public String getDetails()
+	{
+		return details.get();
+	}
+	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
