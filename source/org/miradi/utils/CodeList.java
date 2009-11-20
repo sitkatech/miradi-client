@@ -67,6 +67,7 @@ public class CodeList extends StringList
 		return withoutDuplicates;
 	}
 	
+	@Override
 	protected String getJsonTag()
 	{
 		return TAG_IDS;
