@@ -173,11 +173,11 @@ public class StringList
 		return size() == 0;
 	}
 	
-	private String getJsonTag()
+	protected String getJsonTag()
 	{
 		return TAG_IDS;
 	}
 		
-	private static final String TAG_IDS = "Codes";
+	private static final String TAG_IDS = "List";
 	private Vector<String> data;
 }
