@@ -71,11 +71,11 @@ public class DateEditorComponent extends JDateChooser
 	
 	public void setText(String text)
 	{
-		MultiCalendar date = new MultiCalendar();
+		Date time = null;
 		if (text.length() > 0)
-			date = MultiCalendar.createFromIsoDateString(text);
+			time = MultiCalendar.createFromIsoDateString(text).getTime();
 		
-		dateEditor.setDate(date.getTime());
+		dateEditor.setDate(time);
 	}
 	
 	public String getDateAsString()
