@@ -47,7 +47,6 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StaticChoiceQuestion;
-import org.miradi.utils.DateEditorComponent;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -90,8 +89,8 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 	protected void createDateColumn(int tableColumn)
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellEditor(new DateTableCellEditorAndRenderer(new DateEditorComponent()));
-		column.setCellRenderer(new DateTableCellEditorAndRenderer(new DateEditorComponent()));
+		column.setCellEditor(new DateTableCellEditorAndRenderer());
+		column.setCellRenderer(new DateTableCellEditorAndRenderer());
 	}
 		
 	protected void createComboColumn(BaseObject[] content, int tableColumn, BaseObject invalidObject)

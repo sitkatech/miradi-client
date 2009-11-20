@@ -32,11 +32,11 @@ import org.miradi.utils.DateEditorComponent;
 
 public class DateTableCellEditorAndRenderer extends AbstractCellEditor implements TableCellEditor, TableCellRenderer
 {
-	public DateTableCellEditorAndRenderer(DateEditorComponent dateEditorComponentToUse) 
+	public DateTableCellEditorAndRenderer() 
 	{
 	    super();
 	    
-	    dateEditorComponent = dateEditorComponentToUse;
+	    dateEditorComponent = new DateEditorComponent();
 	}
 	
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int r, int c)
