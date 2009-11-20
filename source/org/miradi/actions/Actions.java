@@ -119,7 +119,7 @@ import org.miradi.actions.views.ActionViewThreatMatrix;
 import org.miradi.actions.views.ActionViewWorkPlan;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.views.umbrella.ActionCreateIndicatorProgressReport;
+import org.miradi.views.umbrella.ActionCreateProgressReport;
 
 public class Actions
 {
@@ -423,7 +423,7 @@ public class Actions
 		registerAction(new ActionEditEstimatedResource(mainWindow));
 		
 		registerAction(new ActionEditIndicatorProgressReports(mainWindow));
-		registerAction(new ActionCreateIndicatorProgressReport(mainWindow));
+		registerAction(new ActionCreateProgressReport(mainWindow));
 		registerAction(new ActionDeleteProgressReport(mainWindow));
 		registerAction(new ActionDeleteOrganization(mainWindow));
 		registerAction(new ActionCreateOrganization(mainWindow));

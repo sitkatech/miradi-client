@@ -24,9 +24,9 @@ import org.miradi.icons.ProgressReportIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionCreateIndicatorProgressReport extends ObjectsAction
+public class ActionCreateProgressReport extends ObjectsAction
 {
-	public ActionCreateIndicatorProgressReport(MainWindow mainWindowToUse)
+	public ActionCreateProgressReport(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel(), new ProgressReportIcon());
 	}
