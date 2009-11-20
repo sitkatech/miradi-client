@@ -47,6 +47,8 @@ public class DateEditorComponent extends JDateChooser
 {
 	public DateEditorComponent()
 	{
+		super(new DateTextEditor());
+		
 		setDateFormatString(CustomDateChooser.CUSTOM_DATE_FORMAT);
 		setDateChooserPreferredSizeWithPadding();
 		
@@ -64,11 +66,6 @@ public class DateEditorComponent extends JDateChooser
 		dateEditor.removePropertyChangeListener(DATE_PROPERTY_NAME, this);
 	}
 	
-	public void clear()
-	{
-		getDateTextEditor().setDate(null);
-	}
-
 	public String getText()
 	{
 		return getDateAsString();
@@ -78,11 +75,6 @@ public class DateEditorComponent extends JDateChooser
 	{
 		MultiCalendar date = MultiCalendar.createFromIsoDateString(text);
 		dateEditor.setDate(date.getTime());
-	}
-	
-	private DateTextEditor getDateTextEditor()
-	{
-		return ((DateTextEditor) getDateEditor());
 	}
 	
 	private String getDateAsString()
