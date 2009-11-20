@@ -23,6 +23,7 @@ import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.diagram.IndicatorSubPanel;
 import org.miradi.dialogs.expense.ExpensesPropertiesPanel;
+import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.layout.OneColumnGridLayout;
@@ -48,8 +49,7 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanelWithSections
 		viabilityRatingsSubPanel = new IndicatorViabilityRatingsSubPanel(getProject(), getInvalidTargetRef());
 		addSubPanelWithTitledBorder(viabilityRatingsSubPanel);
 		addSubPanelWithTitledBorder(new IndicatorMonitoringPlanSubPanel(getProject(), getInvalidTargetRef()));
-		//FIXME progress report - uncomment this when its done.  
-		//addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow(), picker));
+		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow(), picker));
 		addSubPanelWithTitledBorder(new IndicatorFutureStatusSubPanel(getProject(), getInvalidTargetRef()));
 		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(mainWindow, Task.getObjectType(), picker));
 		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));

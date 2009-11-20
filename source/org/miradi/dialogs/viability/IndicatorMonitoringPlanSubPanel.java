@@ -19,10 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.viability;
 
-import org.miradi.actions.ActionEditIndicatorProgressReports;
 import org.miradi.actions.ActionEditMethods;
 import org.miradi.actions.ObjectsAction;
-import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -44,12 +42,6 @@ public class IndicatorMonitoringPlanSubPanel extends ObjectDataInputPanel
 		addFieldWithEditButton(EAM.text("Label|Methods"), createReadonlyTextField(Indicator.getObjectType(), Indicator.PSEUDO_TAG_METHODS), editMethodsButton);
 
 		addField(createRatingChoiceField(Indicator.getObjectType(), Indicator.TAG_PRIORITY, new PriorityRatingQuestion()));
-	
-		
-		ObjectsAction editProgressAction = getMainWindow().getActions().getObjectsAction(ActionEditIndicatorProgressReports.class);
-		editProgressReportButton = createObjectsActionButton(editProgressAction, getPicker());
-		ObjectDataInputField readOnlyProgressReportsList = createReadOnlyObjectList(Indicator.getObjectType(), Indicator.TAG_PROGRESS_REPORT_REFS);
-		addFieldWithEditButton(EAM.text("Progress Reports"), readOnlyProgressReportsList, editProgressReportButton);
 		
 		updateFieldsFromProject();
 	}
@@ -58,7 +50,6 @@ public class IndicatorMonitoringPlanSubPanel extends ObjectDataInputPanel
 	public void dispose()
 	{
 		editMethodsButton.dispose();
-		editProgressReportButton.dispose();
 		super.dispose();
 	}
 
@@ -68,5 +59,4 @@ public class IndicatorMonitoringPlanSubPanel extends ObjectDataInputPanel
 	}
 	
 	private ObjectsActionButton editMethodsButton;
-	private ObjectsActionButton editProgressReportButton;
 }
