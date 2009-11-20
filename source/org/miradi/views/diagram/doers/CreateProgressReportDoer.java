@@ -30,6 +30,8 @@ import org.miradi.views.diagram.CreateAnnotationDoer;
 
 public class CreateProgressReportDoer extends CreateAnnotationDoer
 {
+	
+	//FIXME urgent - this method needs to be done differently, it is fragile.
 	@Override
 	public BaseObject getSelectedParentFactor()
 	{
@@ -51,7 +53,7 @@ public class CreateProgressReportDoer extends CreateAnnotationDoer
 	
 	private int[] getPossibleParentTypes()
 	{
-		return new int[]{Indicator.getObjectType(), Strategy.getObjectType(), Task.getObjectType(), };
+		return new int[]{Task.getObjectType(), Indicator.getObjectType(), Strategy.getObjectType(), };
 	}
 	
 	@Override
