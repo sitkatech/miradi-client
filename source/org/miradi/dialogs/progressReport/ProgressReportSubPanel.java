@@ -26,6 +26,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressReport;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -72,6 +73,15 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 		
 		if (event.isDeleteCommandForThisType(ProgressReport.getObjectType()) || event.isCreateCommandForThisType(ProgressReport.getObjectType())) 
 			editorTablePanel.refreshModel();
+	}
+	
+	@Override
+	protected boolean doesSectionContainFieldWithTag(String tagToUse)
+	{
+		if (tagToUse.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+			return true;
+		
+		return super.doesSectionContainFieldWithTag(tagToUse);
 	}
 	
 	private ProgressReportTablePanel editorTablePanel;
