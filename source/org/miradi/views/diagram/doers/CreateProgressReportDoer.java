@@ -26,6 +26,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
+import org.miradi.project.Project;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 
 public class CreateProgressReportDoer extends CreateAnnotationDoer
@@ -39,19 +40,24 @@ public class CreateProgressReportDoer extends CreateAnnotationDoer
 			return null;
 		
 		ORefList selectionRefs = getPicker().getSelectedHierarchies()[0];
+		return getProgressReportParent(getProject(), selectionRefs);
+	}
+
+	public static BaseObject getProgressReportParent(Project projectToUse, ORefList selectionRefs)
+	{
 		int[] parentTypes = getPossibleParentTypes();
 		for (int index = 0; index < parentTypes.length; ++index)
 		{
 			int parentType = parentTypes[index];
 			ORef parentRef = selectionRefs.getRefForType(parentType);
 			if (parentRef.isValid())
-				return BaseObject.find(getProject(), parentRef); 
+				return BaseObject.find(projectToUse, parentRef); 
 		}
 		
 		return null;
 	}
 	
-	private int[] getPossibleParentTypes()
+	private static int[] getPossibleParentTypes()
 	{
 		return new int[]{Task.getObjectType(), Indicator.getObjectType(), Strategy.getObjectType(), };
 	}
