@@ -24,7 +24,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ProgressReport;
 
-public class CreateIndicatorProgressReportDoer extends CreateAnnotationWithFactorParent
+public class CreateProgressReportDoer extends CreateAnnotationWithFactorParent
 {
 	@Override
 	public BaseObject getSelectedParentFactor()
