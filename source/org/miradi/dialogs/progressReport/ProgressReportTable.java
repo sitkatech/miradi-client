@@ -58,6 +58,8 @@ public class ProgressReportTable extends EditableObjectTable
 			int modelColumn = convertColumnIndexToModel(tableColumn);
 			if (progressReportTableModel.isProgressStatusColumn(modelColumn))
 				createComboQuestionColumn(new ProgressReportLongStatusQuestion(), tableColumn);
+			if (progressReportTableModel.isDateColumn(modelColumn))
+				createDateColumn(tableColumn);
 		}
 	}
 
