@@ -36,7 +36,7 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 		super(mainWindow.getProject(), ORef.createInvalidWithType(ProgressReport.getObjectType()));
 		
 		setLayout(new OneColumnGridLayout());
-		editorComponent = new ProgressReportEditorComponent(mainWindow, objectPickerToUse);
+		editorComponent = new ProgressReportTablePanel(mainWindow, objectPickerToUse);
 		add(editorComponent);
 		updateFieldsFromProject();
 	}
@@ -74,5 +74,5 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 			editorComponent.refreshModel();
 	}
 	
-	private ProgressReportEditorComponent editorComponent;
+	private ProgressReportTablePanel editorComponent;
 }

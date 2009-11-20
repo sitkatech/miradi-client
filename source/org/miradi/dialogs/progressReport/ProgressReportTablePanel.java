@@ -32,9 +32,9 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class ProgressReportEditorComponent extends DisposablePanel
+public class ProgressReportTablePanel extends DisposablePanel
 {
-	public ProgressReportEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
+	public ProgressReportTablePanel(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
 		mainWindow = mainWindowToUse;
 		objectPicker = objectPickerToUse;
