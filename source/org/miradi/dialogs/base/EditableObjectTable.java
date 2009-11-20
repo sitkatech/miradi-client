@@ -35,7 +35,7 @@ import javax.swing.table.TableColumn;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
-import org.miradi.dialogs.tablerenderers.DateTableCellEditorAndRenderer;
+import org.miradi.dialogs.tablerenderers.DateTableCellEditorAndRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
@@ -89,8 +89,8 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 	protected void createDateColumn(int tableColumn)
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellEditor(new DateTableCellEditorAndRenderer());
-		column.setCellRenderer(new DateTableCellEditorAndRenderer());
+		column.setCellEditor(new DateTableCellEditorAndRendererFactory());
+		column.setCellRenderer(new DateTableCellEditorAndRendererFactory());
 	}
 		
 	protected void createComboColumn(BaseObject[] content, int tableColumn, BaseObject invalidObject)

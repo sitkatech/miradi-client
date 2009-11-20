@@ -30,9 +30,9 @@ import javax.swing.table.TableCellRenderer;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.DateEditorComponent;
 
-public class DateTableCellEditorAndRenderer extends AbstractCellEditor implements TableCellEditor, TableCellRenderer
+public class DateTableCellEditorAndRendererFactory extends AbstractCellEditor implements TableCellEditor, TableCellRenderer
 {
-	public DateTableCellEditorAndRenderer() 
+	public DateTableCellEditorAndRendererFactory() 
 	{
 	    super();
 	    
