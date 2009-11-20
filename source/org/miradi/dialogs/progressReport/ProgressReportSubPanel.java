@@ -70,6 +70,22 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 		progressReportTable = new ProgressReportTable(getMainWindow(), progressReportTableModel);
 	}
 	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		
+		progressReportTable.becomeActive();
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		progressReportTable.becomeInactive();
+
+		super.becomeInactive();
+	}
+	
 	private void addComponents()
 	{
 		DataInputPanel tablesPanel = new DataInputPanel(getProject());
