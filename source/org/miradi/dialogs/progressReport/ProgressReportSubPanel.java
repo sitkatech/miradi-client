@@ -50,6 +50,8 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 		super(mainWindow.getProject(), ORef.createInvalidWithType(ProgressReport.getObjectType()));
 		
 		setLayout(new OneColumnGridLayout());
+		
+		objectPicker = objectPickerToUse;
 		createTable();
 		addComponents();
 		updateFieldsFromProject();
@@ -82,8 +84,8 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 		OneRowPanel box = new OneRowPanel();
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		box.setGaps(3);
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionCreateIndicatorProgressReport.class), getPicker()));
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionDeleteIndicatorProgressReport.class), getPicker()));
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionCreateIndicatorProgressReport.class), objectPicker));
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionDeleteIndicatorProgressReport.class), progressReportTable));
 		
 		return box;
 	}
@@ -147,4 +149,5 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 	
 	private ProgressReportTableModel progressReportTableModel;
 	private ProgressReportTable progressReportTable;
+	private ObjectPicker objectPicker;
 }
