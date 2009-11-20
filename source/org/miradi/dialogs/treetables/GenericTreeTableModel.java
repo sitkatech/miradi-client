@@ -99,7 +99,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 	{
 		Vector<TreePath> treePaths = findTreePaths(ref);
 		if (treePaths.isEmpty())
-			throw null;
+			return null;
 		
 		return treePaths.get(0);
 	}
