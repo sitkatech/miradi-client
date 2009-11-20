@@ -19,12 +19,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ProgressReport;
+import org.miradi.objects.Strategy;
+import org.miradi.objects.Task;
+import org.miradi.views.diagram.CreateAnnotationDoer;
 
-public class CreateProgressReportDoer extends CreateAnnotationWithFactorParent
+public class CreateProgressReportDoer extends CreateAnnotationDoer
 {
 	@Override
 	public BaseObject getSelectedParentFactor()
@@ -33,25 +37,32 @@ public class CreateProgressReportDoer extends CreateAnnotationWithFactorParent
 			return null;
 		
 		ORefList selectionRefs = getPicker().getSelectedHierarchies()[0];
-		if (selectionRefs.isEmpty())
-			return null;
+		int[] parentTypes = getPossibleParentTypes();
+		for (int index = 0; index < parentTypes.length; ++index)
+		{
+			int parentType = parentTypes[index];
+			ORef parentRef = selectionRefs.getRefForType(parentType);
+			if (parentRef.isValid())
+				return BaseObject.find(getProject(), parentRef); 
+		}
 		
-		return BaseObject.find(getProject(), selectionRefs.get(0));
+		return null;
 	}
 	
+	private int[] getPossibleParentTypes()
+	{
+		return new int[]{Indicator.getObjectType(), Strategy.getObjectType(), Task.getObjectType(), };
+	}
+	
+	@Override
 	public String getAnnotationListTag()
 	{
 		return BaseObject.TAG_PROGRESS_REPORT_REFS;
 	}
 
+	@Override
 	public int getAnnotationType()
 	{
 		return ProgressReport.getObjectType();
-	}
-
-	@Override
-	protected int getParentType()
-	{
-		return Indicator.getObjectType();
 	}
 }
