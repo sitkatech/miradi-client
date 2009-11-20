@@ -234,6 +234,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		if(wereAssignmentNodesAddedOrRemoved(event))
 			return true;
 		
+		if(wereProgressReportsAddedOrRemoved(event))
+			return true;
+		
 		if(didAffectTaskInTree(event))
 			return true;
 		
@@ -255,6 +258,11 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return false;
 	}
 	
+	private boolean wereProgressReportsAddedOrRemoved(CommandExecutedEvent event)
+	{
+		return event.isSetDataCommandWithThisTag(BaseObject.TAG_PROGRESS_REPORT_REFS);
+	}
+
 	private  boolean isColumnExpandCollapseCommand(CommandExecutedEvent event)
 	{
 		return event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_DATE_UNIT_LIST_DATA);
