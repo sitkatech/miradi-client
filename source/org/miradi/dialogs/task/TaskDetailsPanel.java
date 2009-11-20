@@ -21,7 +21,6 @@ package org.miradi.dialogs.task;
 
 import javax.swing.Icon;
 
-import org.miradi.actions.ActionEditTaskProgressReports;
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
@@ -35,7 +34,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
-import org.miradi.utils.ObjectsActionButton;
 
 public class TaskDetailsPanel extends ObjectDataInputPanel
 {
@@ -48,11 +46,6 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 		ObjectDataInputField taskIdField = createShortStringField(ObjectType.TASK, Task.TAG_SHORT_LABEL);
 		addFieldsOnOneLine(taskNameLabel, new ObjectDataInputField[] {taskIdField, taskNameField,} );
 		addField(createMultilineField(Task.getObjectType(), Task.TAG_DETAILS));
-
-		progressReportsLabel = new PanelTitleLabel(EAM.text("Progress Reports"));
-		readOnlyProgressReportsList = createReadOnlyObjectList(Task.getObjectType(), Task.TAG_PROGRESS_REPORT_REFS);
-		editProgressReportButton = createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditTaskProgressReports.class), getPicker());
-		addFieldWithEditButton(progressReportsLabel, readOnlyProgressReportsList, editProgressReportButton);
 	}
 
 	private void updateTaskNameLabel()
@@ -112,8 +105,4 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 	}
 	
 	private PanelTitleLabel taskNameLabel;
-	
-	private PanelTitleLabel progressReportsLabel;
-	private ObjectDataInputField readOnlyProgressReportsList;
-	private ObjectsActionButton editProgressReportButton;
 }
