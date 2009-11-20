@@ -108,7 +108,7 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 	
 	public void refreshModel()
 	{
-		ORefList[] selectedHierarchies = getPicker().getSelectedHierarchies();
+		ORefList[] selectedHierarchies = objectPicker.getSelectedHierarchies();
 		if (selectedHierarchies.length > 0)
 			setObjectRefs(selectedHierarchies[0].toArray());
 	}
