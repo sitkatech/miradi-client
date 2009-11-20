@@ -19,9 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.actions.ActionCreateStrategyProgressReport;
-import org.miradi.actions.ActionDeleteStrategyProgressReport;
+import org.miradi.actions.ActionDeleteIndicatorProgressReport;
 import org.miradi.objects.Strategy;
+import org.miradi.views.umbrella.ActionCreateIndicatorProgressReport;
 
 public class EditStrategyProgressReportDoer extends AbstractProgressReportPopupEditor
 {
@@ -37,8 +37,8 @@ public class EditStrategyProgressReportDoer extends AbstractProgressReportPopupE
 	}
 
 	static Class[] buttonActionClasses = new Class[] {
-		ActionCreateStrategyProgressReport.class,
-		ActionDeleteStrategyProgressReport.class,
+		ActionCreateIndicatorProgressReport.class,
+		ActionDeleteIndicatorProgressReport.class,
 	};
 }	
 
