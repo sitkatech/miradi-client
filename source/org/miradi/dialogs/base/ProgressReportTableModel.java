@@ -36,6 +36,11 @@ public class ProgressReportTableModel extends EditableObjectTableModel
 	{
 		super(projectToUse);
 		
+		clearProgressReportRefs();
+	}
+
+	private void clearProgressReportRefs()
+	{
 		progressRefs = new ORefList();
 	}
 	
@@ -54,6 +59,7 @@ public class ProgressReportTableModel extends EditableObjectTableModel
 	@Override
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
+		clearProgressReportRefs();
 		if (hierarchyToSelectedRef.length > 0)
 		{
 			//TODO progressReport - isnt there a better way
