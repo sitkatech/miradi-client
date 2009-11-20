@@ -24,7 +24,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
-import org.miradi.actions.ActionDeleteIndicatorProgressReport;
+import org.miradi.actions.ActionDeleteProgressReport;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.DataInputPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
@@ -101,7 +101,7 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		box.setGaps(3);
 		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionCreateIndicatorProgressReport.class), objectPicker));
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionDeleteIndicatorProgressReport.class), progressReportTable));
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionDeleteProgressReport.class), progressReportTable));
 		
 		return box;
 	}
