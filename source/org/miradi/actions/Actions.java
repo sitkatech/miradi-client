@@ -422,7 +422,6 @@ public class Actions
 		
 		registerAction(new ActionEditEstimatedResource(mainWindow));
 		
-		registerAction(new ActionEditIndicatorProgressReports(mainWindow));
 		registerAction(new ActionCreateProgressReport(mainWindow));
 		registerAction(new ActionDeleteProgressReport(mainWindow));
 		registerAction(new ActionDeleteOrganization(mainWindow));
