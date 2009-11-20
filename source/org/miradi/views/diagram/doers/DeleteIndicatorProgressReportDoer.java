@@ -20,28 +20,36 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram.doers;
 
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.ProgressReport;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 
 public class DeleteIndicatorProgressReportDoer extends DeleteAnnotationDoer
 {
+	@Override
 	protected BaseObject getParent(BaseObject annotationToDelete)
 	{
-		return getSingleSelected(Indicator.getObjectType());  
+		ORefList referrerRefs = annotationToDelete.findObjectsThatReferToUs();
+		if (referrerRefs.isEmpty())
+			return null;
+			
+		return BaseObject.find(getProject(), referrerRefs.get(0));
 	}
 
+	@Override
 	public String getAnnotationIdListTag()
 	{
-		return Indicator.TAG_PROGRESS_REPORT_REFS;
+		return BaseObject.TAG_PROGRESS_REPORT_REFS;
 	}
 
+	@Override
 	public int getAnnotationType()
 	{
 		return ProgressReport.getObjectType();
 	}
 
+	@Override
 	public String[] getDialogText()
 	{
 		return new String[] { EAM.text("Are you sure you want to delete this Progress Report?"),};
