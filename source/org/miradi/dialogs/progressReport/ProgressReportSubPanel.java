@@ -20,14 +20,27 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.progressReport;
 
+import java.awt.BorderLayout;
+
+import javax.swing.JPanel;
+
+import org.miradi.actions.ActionDeleteIndicatorProgressReport;
+import org.miradi.actions.Actions;
+import org.miradi.dialogs.base.DataInputPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.ProgressReportTableModel;
 import org.miradi.layout.OneColumnGridLayout;
+import org.miradi.layout.OneRowPanel;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressReport;
+import org.miradi.utils.MiradiScrollPane;
+import org.miradi.views.umbrella.ActionCreateIndicatorProgressReport;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class ProgressReportSubPanel extends ObjectDataInputPanel
@@ -37,8 +50,8 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 		super(mainWindow.getProject(), ORef.createInvalidWithType(ProgressReport.getObjectType()));
 		
 		setLayout(new OneColumnGridLayout());
-		editorTablePanel = new ProgressReportTablePanel(mainWindow, objectPickerToUse);
-		add(editorTablePanel);
+		createTable();
+		addComponents();
 		updateFieldsFromProject();
 	}
 	
@@ -46,21 +59,69 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 	public void dispose()
 	{
 		super.dispose();
-		editorTablePanel.dispose();
-		editorTablePanel = null;
+		progressReportTable.dispose();
 	}
 	
+	private void createTable() throws Exception
+	{
+		progressReportTableModel = new ProgressReportTableModel(getMainWindow().getProject());
+		progressReportTable = new ProgressReportTable(getMainWindow(), progressReportTableModel);
+	}
+	
+	private void addComponents()
+	{
+		DataInputPanel tablesPanel = new DataInputPanel(getProject());
+		MiradiScrollPane scroller = new MiradiScrollPane(progressReportTable);
+		tablesPanel.add(scroller);
+		add(createButtonBar(), BorderLayout.PAGE_START);
+		add(tablesPanel, BorderLayout.CENTER);
+	}
+	
+	protected JPanel createButtonBar()
+	{
+		OneRowPanel box = new OneRowPanel();
+		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		box.setGaps(3);
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionCreateIndicatorProgressReport.class), getPicker()));
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionDeleteIndicatorProgressReport.class), getPicker()));
+		
+		return box;
+	}
+	
+	public void refreshModel()
+	{
+		ORefList[] selectedHierarchies = getPicker().getSelectedHierarchies();
+		if (selectedHierarchies.length > 0)
+			setObjectRefs(selectedHierarchies[0].toArray());
+	}
+	
+	@Override
+	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	{
+		progressReportTable.stopCellEditing();
+		progressReportTableModel.setObjectRefs(hierarchyToSelectedRef);
+		fireTableDataChanged();
+	}
+	
+	public void fireTableDataChanged()
+	{
+		progressReportTableModel.fireTableDataChanged();
+	}
+	
+	public ORefList[] getSelectedHierarchies()
+	{
+		return new ORefList[0];
+	}
+	
+	private Actions getActions()
+	{
+		return getMainWindow().getActions();
+	}
+		
 	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Progress Report");
-	}
-
-	@Override
-	public void setObjectRefs(ORef[] orefsToUse)
-	{
-		super.setObjectRefs(orefsToUse);
-		editorTablePanel.refreshModel();
 	}
 	
 	@Override
@@ -69,12 +130,12 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 		super.commandExecuted(event);
 		
 		if (event.isSetDataCommandWithThisType(ProgressReport.getObjectType()))
-			editorTablePanel.fireTableDataChanged();
+			progressReportTableModel.fireTableDataChanged();
 		
 		if (event.isDeleteCommandForThisType(ProgressReport.getObjectType()) || event.isCreateCommandForThisType(ProgressReport.getObjectType())) 
-			editorTablePanel.refreshModel();
+			refreshModel();
 	}
-	
+		
 	@Override
 	protected boolean doesSectionContainFieldWithTag(String tagToUse)
 	{
@@ -84,5 +145,6 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 		return super.doesSectionContainFieldWithTag(tagToUse);
 	}
 	
-	private ProgressReportTablePanel editorTablePanel;
+	private ProgressReportTableModel progressReportTableModel;
+	private ProgressReportTable progressReportTable;
 }
