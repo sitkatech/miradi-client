@@ -36,8 +36,8 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 		super(mainWindow.getProject(), ORef.createInvalidWithType(ProgressReport.getObjectType()));
 		
 		setLayout(new OneColumnGridLayout());
-		editorComponent = new ProgressReportTablePanel(mainWindow, objectPickerToUse);
-		add(editorComponent);
+		editorTablePanel = new ProgressReportTablePanel(mainWindow, objectPickerToUse);
+		add(editorTablePanel);
 		updateFieldsFromProject();
 	}
 	
@@ -45,8 +45,8 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 	public void dispose()
 	{
 		super.dispose();
-		editorComponent.dispose();
-		editorComponent = null;
+		editorTablePanel.dispose();
+		editorTablePanel = null;
 	}
 	
 	@Override
@@ -59,7 +59,7 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
-		editorComponent.refreshModel();
+		editorTablePanel.refreshModel();
 	}
 	
 	@Override
@@ -68,11 +68,11 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 		super.commandExecuted(event);
 		
 		if (event.isSetDataCommandWithThisType(ProgressReport.getObjectType()))
-			editorComponent.fireTableDataChanged();
+			editorTablePanel.fireTableDataChanged();
 		
 		if (event.isDeleteCommandForThisType(ProgressReport.getObjectType()) || event.isCreateCommandForThisType(ProgressReport.getObjectType())) 
-			editorComponent.refreshModel();
+			editorTablePanel.refreshModel();
 	}
 	
-	private ProgressReportTablePanel editorComponent;
+	private ProgressReportTablePanel editorTablePanel;
 }
