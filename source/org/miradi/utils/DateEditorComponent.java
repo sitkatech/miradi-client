@@ -66,7 +66,7 @@ public class DateEditorComponent extends JDateChooser
 	
 	public String getText()
 	{
-		return getDateAsString();
+		return convertDateToIsoString(getDate());
 	}
 	
 	public void setText(String text)
@@ -76,11 +76,6 @@ public class DateEditorComponent extends JDateChooser
 			time = MultiCalendar.createFromIsoDateString(text).getTime();
 		
 		dateEditor.setDate(time);
-	}
-	
-	public String getDateAsString()
-	{
-		return convertDateToIsoString(getDate());
 	}
 	
 	private static String convertDateToIsoString(Date date)
