@@ -91,10 +91,9 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 	
 	protected void createDateColumn(int tableColumn)
 	{
-		DateEditorComponent dateEditor = new DateEditorComponent();
 		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellEditor(new DateTableCellEditorAndRenderer(dateEditor));
-		column.setCellRenderer(new DateTableCellEditorAndRenderer(dateEditor));
+		column.setCellEditor(new DateTableCellEditorAndRenderer(new DateEditorComponent()));
+		column.setCellRenderer(new DateTableCellEditorAndRenderer(new DateEditorComponent()));
 	}
 		
 	protected void createComboColumn(BaseObject[] content, int tableColumn, BaseObject invalidObject)
