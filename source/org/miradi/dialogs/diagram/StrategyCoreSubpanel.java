@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.diagram;
 
-import org.miradi.actions.ActionEditStrategyProgressReports;
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
@@ -32,7 +31,6 @@ import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
-import org.miradi.utils.ObjectsActionButton;
 
 
 public class StrategyCoreSubpanel extends ObjectDataInputPanel
@@ -55,10 +53,6 @@ public class StrategyCoreSubpanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(EAM.text("Priority"), new ObjectDataInputField[] {impactField, feasibilityField, prioritySummaryField});
 		
 		addLabeledSubPanelWithoutBorder(new LegacyTncStrategyRankingEditorPropertiesSubPanel(getProject(), getRefForType(Strategy.getObjectType()), actions), EAM.text("Legacy TNC Ratings"));
-		
-		ObjectsActionButton editProgressReportButton = createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyProgressReports.class), getPicker());
-		ObjectDataInputField readOnlyProgressReportsList = createReadOnlyObjectList(Strategy.getObjectType(), Strategy.TAG_PROGRESS_REPORT_REFS);
-		addFieldWithEditButton(EAM.text("Progress"), readOnlyProgressReportsList, editProgressReportButton);
 	}
 
 	@Override

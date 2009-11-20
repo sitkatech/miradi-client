@@ -23,6 +23,7 @@ package org.miradi.dialogs.diagram;
 import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.expense.ExpensesPropertiesPanel;
+import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -38,10 +39,9 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanelWithSections
 		setLayout(new OneColumnGridLayout());
 		
 		addSubPanelWithTitledBorder(new StrategyCoreSubpanel(getProject(), mainWindow.getActions(), Strategy.getObjectType()));
-		
 		addSubPanelWithTitledBorder(new RelatedItemsSubpanel(getProject(), Strategy.getObjectType()));
-		
 		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), mainWindow.getActions(), Strategy.getObjectType()));
+		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow(), getPicker()));
 		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(mainWindow, Task.getObjectType(), picker));
 		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));
 		
