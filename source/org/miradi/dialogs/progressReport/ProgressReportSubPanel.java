@@ -145,7 +145,7 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 		if (event.isSetDataCommandWithThisType(ProgressReport.getObjectType()))
 			progressReportTableModel.fireTableDataChanged();
 		
-		if (event.isDeleteCommandForThisType(ProgressReport.getObjectType()) || event.isCreateCommandForThisType(ProgressReport.getObjectType())) 
+		if (event.isSetDataCommandWithThisTag(BaseObject.TAG_PROGRESS_REPORT_REFS))
 			refreshModel();
 	}
 		
