@@ -25,12 +25,10 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Vector;
 
-import javax.swing.AbstractCellEditor;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
@@ -48,7 +46,6 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StaticChoiceQuestion;
-import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.DateEditorComponent;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -293,39 +290,6 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 		{
 			return getPreferredSize().height;
 		}
-	}
-	
-	class DateTableCellEditorAndRenderer extends AbstractCellEditor implements TableCellEditor, TableCellRenderer
-	{
-		public DateTableCellEditorAndRenderer(DateEditorComponent dateEditorComponentToUse) 
-		{
-		    super();
-		    
-		    dateEditorComponent = dateEditorComponentToUse;
-		}
-		
-		public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int r, int c)
-		{
-			TaglessChoiceItem choiceItem = (TaglessChoiceItem) value;
-			dateEditorComponent.setText(choiceItem.getLabel());
-			
-			return dateEditorComponent;
-		}
-
-		public Object getCellEditorValue()
-		{
-			return dateEditorComponent.getDateAsString();
-		}
-		
-		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
-		{
-			TaglessChoiceItem choiceItem = (TaglessChoiceItem) value;
-			dateEditorComponent.setText(choiceItem.getLabel());
-			
-			return dateEditorComponent;
-		}
-		
-		private DateEditorComponent dateEditorComponent;
 	}
 	
 	private Vector selectionListeners;
