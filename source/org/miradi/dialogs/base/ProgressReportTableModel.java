@@ -29,6 +29,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
+import org.miradi.views.diagram.doers.CreateProgressReportDoer;
 
 public class ProgressReportTableModel extends EditableObjectTableModel
 {
@@ -60,16 +61,9 @@ public class ProgressReportTableModel extends EditableObjectTableModel
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
 		clearProgressReportRefs();
-		if (hierarchyToSelectedRef.length > 0)
-		{
-			//TODO progressReport - isnt there a better way
-			ORef ref = hierarchyToSelectedRef[0];
-			if (ref.isValid())
-			{
-				BaseObject baseObject = BaseObject.find(getProject(), ref);
-				progressRefs = baseObject.getProgressReportRefs();
-			}
-		}
+		BaseObject progressReportParent = CreateProgressReportDoer.getProgressReportParent(getProject(), new ORefList(hierarchyToSelectedRef));
+		if (progressReportParent != null)
+			progressRefs = progressReportParent.getProgressReportRefs();
 	}
 
 	public String getColumnTag(int column)
