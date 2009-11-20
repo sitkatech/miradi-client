@@ -35,6 +35,7 @@ import javax.swing.table.TableColumn;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.DateTableCellEditorAndRenderer;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
