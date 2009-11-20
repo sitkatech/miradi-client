@@ -40,7 +40,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressReport;
 import org.miradi.utils.MiradiScrollPane;
-import org.miradi.views.umbrella.ActionCreateIndicatorProgressReport;
+import org.miradi.views.umbrella.ActionCreateProgressReport;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class ProgressReportSubPanel extends ObjectDataInputPanel
@@ -100,7 +100,7 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 		OneRowPanel box = new OneRowPanel();
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		box.setGaps(3);
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionCreateIndicatorProgressReport.class), objectPicker));
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionCreateProgressReport.class), objectPicker));
 		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionDeleteProgressReport.class), progressReportTable));
 		
 		return box;

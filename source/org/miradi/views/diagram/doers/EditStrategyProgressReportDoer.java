@@ -21,7 +21,7 @@ package org.miradi.views.diagram.doers;
 
 import org.miradi.actions.ActionDeleteProgressReport;
 import org.miradi.objects.Strategy;
-import org.miradi.views.umbrella.ActionCreateIndicatorProgressReport;
+import org.miradi.views.umbrella.ActionCreateProgressReport;
 
 public class EditStrategyProgressReportDoer extends AbstractProgressReportPopupEditor
 {
@@ -37,7 +37,7 @@ public class EditStrategyProgressReportDoer extends AbstractProgressReportPopupE
 	}
 
 	static Class[] buttonActionClasses = new Class[] {
-		ActionCreateIndicatorProgressReport.class,
+		ActionCreateProgressReport.class,
 		ActionDeleteProgressReport.class,
 	};
 }	
