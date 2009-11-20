@@ -126,11 +126,6 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 		progressReportTableModel.fireTableDataChanged();
 	}
 	
-	public ORefList[] getSelectedHierarchies()
-	{
-		return new ORefList[0];
-	}
-	
 	private Actions getActions()
 	{
 		return getMainWindow().getActions();
