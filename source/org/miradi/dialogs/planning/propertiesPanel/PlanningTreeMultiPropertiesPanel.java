@@ -66,11 +66,6 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		createPropertiesPanels();
 	}
 	
-	private boolean isMultiPropertiesPanelActive()
-	{
-		return isActive;
-	}
-	
 	private void createPropertiesPanels() throws Exception
 	{
 		goalPropertiesPanel = new GoalPropertiesPanel(getProject(), getMainWindow().getActions(), objectPicker);
