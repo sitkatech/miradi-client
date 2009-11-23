@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import java.awt.CardLayout;
+import java.awt.Rectangle;
 
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -78,6 +79,29 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 	{
 		return isActive;
 	}
+	
+	public void setObjectRefs(ORef[] orefsToUse)
+	{
+		super.setObjectRefs(orefsToUse);
+
+		deactivateCurrentCard();
+		
+		currentCard = findPanel(orefsToUse);
+		cardLayout.show(this, currentCard.getPanelDescription());
+		if (isMultiPropertiesPanelActive())
+			activateCurrentCard();
+		
+		scrollRectToVisible(new Rectangle(0,0,0,0));
+		
+		// NOTE: The following are an attempt to fix a reported problem 
+		// where the screen was not fully repainted when switching objects
+		// This code is duplicated in PlanningTreePropertiesPanel.java
+		// and in TargetViabilityTreePropertiesPanel.java
+		validate();
+		repaint();
+	}
+
+
 		
 	abstract protected AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse);
 
