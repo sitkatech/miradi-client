@@ -63,14 +63,14 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	
 	private void activateCurrentPanel()
 	{
-		if(currentPanel != null)
-			currentPanel.becomeActive();
+		if(currentCard != null)
+			currentCard.becomeActive();
 	}
 
 	private void deactivateCurrentPanel()
 	{
-		if(currentPanel != null)
-			currentPanel.becomeInactive();
+		if(currentCard != null)
+			currentCard.becomeInactive();
 	}
 	
 	private boolean isMultiPropertiesPanelActive()
@@ -103,8 +103,8 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 
 		deactivateCurrentPanel();
 		
-		currentPanel = findPanel(orefsToUse);
-		cardLayout.show(this, currentPanel.getPanelDescription());
+		currentCard = findPanel(orefsToUse);
+		cardLayout.show(this, currentCard.getPanelDescription());
 		if (isMultiPropertiesPanelActive())
 			activateCurrentPanel();
 		
@@ -121,7 +121,7 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	@Override
 	public void selectSectionForTag(String tag)
 	{
-		currentPanel.selectSectionForTag(tag);
+		currentCard.selectSectionForTag(tag);
 	}
 	
 	private AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse)
@@ -147,13 +147,13 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	@Override
 	public void setFocusOnFirstField()
 	{
-		currentPanel.setFocusOnFirstField();
+		currentCard.setFocusOnFirstField();
 	} 
 	
 	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
 	
 	private CardLayout cardLayout;
-	private AbstractObjectDataInputPanel currentPanel;
+	private AbstractObjectDataInputPanel currentCard;
 	private IndicatorPropertiesPanel indicatorPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 	private MeasurementPropertiesPanel measurementPropertiesPanel;
