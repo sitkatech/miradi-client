@@ -34,9 +34,6 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 		setLayout(cardLayout);
 	}
 
-	@Override
-	abstract public void setFocusOnFirstField();
-
 	protected void addPanel(AbstractObjectDataInputPanel panelToAdd)
 	{
 		addSubPanel(panelToAdd);
@@ -69,6 +66,12 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 		deactivateCurrentCard();
 		isActive = false;
 		super.becomeInactive();
+	}
+
+	@Override
+	public void setFocusOnFirstField()
+	{
+		currentCard.setFocusOnFirstField();
 	}
 
 	protected boolean isActive;

@@ -111,12 +111,6 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 
 		return blankPropertiesPanel;
 	}
-
-	@Override
-	public void setFocusOnFirstField()
-	{
-		currentCard.setFocusOnFirstField();
-	}
 	
 	@Override
 	public void commandExecuted(CommandExecutedEvent event)

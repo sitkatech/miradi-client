@@ -220,12 +220,6 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 			reloadSelectedRefs();
 	}
 
-	@Override
-	public void setFocusOnFirstField()
-	{
-		currentCard.setFocusOnFirstField();
-	}
-	
 	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
 	
 	private static final int DEEPEST_INDEX = 0; 
