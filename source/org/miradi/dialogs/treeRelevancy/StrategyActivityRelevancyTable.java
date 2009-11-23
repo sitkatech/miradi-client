@@ -31,7 +31,6 @@ public class StrategyActivityRelevancyTable extends EditableObjectTable
 	{
 		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 
-		setAutoResizeMode(AUTO_RESIZE_OFF);
 		for(int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
 			setColumnWidthToHeaderWidth(tableColumn);
 	}

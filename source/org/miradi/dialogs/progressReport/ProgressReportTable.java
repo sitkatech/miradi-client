@@ -37,9 +37,6 @@ public class ProgressReportTable extends EditableObjectTable
 		
 		rebuildColumnEditorsAndRenderers();
 		
-		//TODO need to move this to parent class and remove duplicate call from sub classes
-		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		
 		listenForColumnWidthChanges(this);
 		//TODO shouldn't set row height to constant value
 		setRowHeight(26);
