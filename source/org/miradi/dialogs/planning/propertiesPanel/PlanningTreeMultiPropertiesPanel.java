@@ -82,18 +82,6 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		super.becomeInactive();
 	}
 	
-	private void deactivateCurrentCard()
-	{
-		if (currentCard != null)
-			currentCard.becomeInactive();
-	}
-	
-	private void activateCurrentCard()
-	{
-		if (currentCard != null)
-			currentCard.becomeActive();
-	}
-	
 	private boolean isMultiPropertiesPanelActive()
 	{
 		return isActive;

@@ -106,18 +106,6 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		repaint();
 	}
 	
-	private void activateCurrentCard()
-	{
-		if(currentCard != null)
-			currentCard.becomeActive();
-	}
-
-	private void deactivateCurrentCard()
-	{
-		if(currentCard != null)
-			currentCard.becomeInactive();
-	}
-	
 	private AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse)
 	{
 		if(orefsToUse.length == 0)
