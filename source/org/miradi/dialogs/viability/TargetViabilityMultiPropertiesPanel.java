@@ -158,8 +158,6 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 			reloadSelectedRefs();		
 	}
 
-	private CardLayout cardLayout;
-	private AbstractObjectDataInputPanel currentCard;
 	private BlankPropertiesPanel blankPropertiesPanel;
 	private NonDiagramAbstractTargetPropertiesPanel targetPropertiesPanel;
 	private NonDiagramAbstractTargetPropertiesPanel humanWelfareTargetPropertiesPanel;

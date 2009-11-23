@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
+import java.awt.CardLayout;
+
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
@@ -39,4 +41,6 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 	}
 	
 	protected boolean isActive;
+	protected CardLayout cardLayout;
+	protected AbstractObjectDataInputPanel currentCard;
 }

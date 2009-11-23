@@ -152,8 +152,6 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	
 	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
 	
-	private CardLayout cardLayout;
-	private AbstractObjectDataInputPanel currentCard;
 	private IndicatorPropertiesPanel indicatorPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 	private MeasurementPropertiesPanel measurementPropertiesPanel;
