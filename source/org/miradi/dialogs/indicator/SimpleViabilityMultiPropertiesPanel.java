@@ -113,12 +113,6 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		return blankPropertiesPanel;
 	}
 	
-	@Override
-	public void setFocusOnFirstField()
-	{
-		currentCard.setFocusOnFirstField();
-	} 
-	
 	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
 	
 	private IndicatorPropertiesPanel indicatorPropertiesPanel;
