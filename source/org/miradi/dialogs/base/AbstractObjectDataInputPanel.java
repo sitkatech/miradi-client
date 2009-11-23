@@ -248,28 +248,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 	}
 	
-	@Override
-	public void becomeActive()
-	{
-		super.becomeActive();
-		for(AbstractObjectDataInputPanel panel : getSubPanels())
-		{
-			panel.becomeActive();
-		}
-		getPicker().becomeActive();
-	}
-	
-	@Override
-	public void becomeInactive()
-	{
-		getPicker().becomeInactive();
-		for(AbstractObjectDataInputPanel panel : getSubPanels())
-		{
-			panel.becomeInactive();
-		}
-		super.becomeInactive();
-	}
-
 	public void setFocusOnFirstField()
 	{
 		//TODO: should be first non read only field.
@@ -833,7 +811,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		private boolean isActive;
 	}
 
-	private Vector<AbstractObjectDataInputPanel> getSubPanels()
+	protected Vector<AbstractObjectDataInputPanel> getSubPanels()
 	{
 		return subPanels; 
 	}

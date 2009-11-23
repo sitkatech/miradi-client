@@ -41,4 +41,26 @@ abstract public class AbstractObjectDataInputPanelWithActivation extends Abstrac
 	{
 		super(projectToUse, orefsToUse);
 	}
+	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		for(AbstractObjectDataInputPanel panel : getSubPanels())
+		{
+			panel.becomeActive();
+		}
+		getPicker().becomeActive();
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		getPicker().becomeInactive();
+		for(AbstractObjectDataInputPanel panel : getSubPanels())
+		{
+			panel.becomeInactive();
+		}
+		super.becomeInactive();
+	}
 }
