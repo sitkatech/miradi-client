@@ -179,4 +179,25 @@ public class TestORefList extends EAMTestCase
 		assertEquals("wrong second ref after sort?", index12Medium, sortableList.get(1));
 		assertEquals("wrong third ref after sort?", index21Large, sortableList.get(2));
 	}
+	
+	public void testGetFirstElement()
+	{
+		ORefList refList = new ORefList();
+		try
+		{
+			refList.getFirstElement();
+			fail();
+		}
+		catch (Exception ignoreExpectedException)
+		{
+		}
+		
+		ORef firstRef = new ORef(Cause.getObjectType(), new BaseId(999));
+		refList.add(firstRef);
+		
+		ORef secondRef = new ORef(Cause.getObjectType(), new BaseId(888));
+		refList.add(secondRef);
+		
+		assertEquals("wrong first element?", firstRef, refList.getFirstElement());
+	}
 }
