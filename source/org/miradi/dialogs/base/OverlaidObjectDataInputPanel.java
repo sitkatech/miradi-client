@@ -56,6 +56,7 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 	@Override
 	public void becomeActive()
 	{
+		super.becomeActive();
 		isActive = true;
 		activateCurrentCard();
 	}
@@ -65,6 +66,7 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 	{
 		deactivateCurrentCard();
 		isActive = false;
+		super.becomeInactive();
 	}
 
 	@Override
