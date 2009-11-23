@@ -262,8 +262,6 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private static final int DEEPEST_INDEX = 0; 
 	
 	private ObjectPicker objectPicker;
-	private CardLayout cardLayout;
-	private AbstractObjectDataInputPanel currentCard;
 	private GoalPropertiesPanel goalPropertiesPanel;
 	private ObjectivePropertiesPanel objectivePropertiesPanel;
 	private IndicatorPropertiesPanel indicatorPropertiesPanel;
