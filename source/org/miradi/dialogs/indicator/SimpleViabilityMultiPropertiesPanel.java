@@ -42,11 +42,6 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		createPropertiesPanels();
 	}
 		
-	private boolean isMultiPropertiesPanelActive()
-	{
-		return isActive;
-	}
-	
 	private void createPropertiesPanels() throws Exception
 	{
 		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getMainWindow(), getPicker());

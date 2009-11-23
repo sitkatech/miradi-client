@@ -74,6 +74,11 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 		currentCard.setFocusOnFirstField();
 	}
 	
+	protected boolean isMultiPropertiesPanelActive()
+	{
+		return isActive;
+	}
+		
 	abstract protected AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse);
 
 	protected boolean isActive;
