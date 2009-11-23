@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import java.awt.Rectangle;
-
 import org.miradi.dialogs.accountingcode.AccountingCodePropertiesPanel;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
@@ -111,27 +109,6 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	public String getPanelDescription()
 	{
 		return PANEL_DESCRIPTION;
-	}
-
-	public void setObjectRefs(ORef[] orefsToUse)
-	{
-		super.setObjectRefs(orefsToUse);
-		
-		deactivateCurrentCard();
-		
-		currentCard = findPanel(orefsToUse);
-		cardLayout.show(this, currentCard.getPanelDescription());
-		if (isMultiPropertiesPanelActive())
-			activateCurrentCard();
-		
-		scrollRectToVisible(new Rectangle(0,0,0,0));
-		
-		// NOTE: The following are an attempt to fix a reported problem 
-		// where the screen was not fully repainted when switching objects
-		// This code is duplicated in TargetViabilityTreePropertiesPanel.java
-		// and DirectIndicatorPropertiesPanel.java
-		validate();
-		repaint();
 	}
 
 	@Override
