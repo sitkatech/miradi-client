@@ -118,11 +118,6 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 	{
 		progressReportTable.stopCellEditing();
 		progressReportTableModel.setObjectRefs(hierarchyToSelectedRef);
-		fireTableDataChanged();
-	}
-	
-	public void fireTableDataChanged()
-	{
 		progressReportTableModel.fireTableDataChanged();
 	}
 	
