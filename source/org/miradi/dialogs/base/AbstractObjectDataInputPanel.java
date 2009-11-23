@@ -117,6 +117,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 	}
 	
+	@Override
 	public void dispose()
 	{
 		project.removeCommandExecutedListener(this);
@@ -247,6 +248,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 	}
 	
+	@Override
 	public void becomeActive()
 	{
 		super.becomeActive();
@@ -257,6 +259,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		getPicker().becomeActive();
 	}
 	
+	@Override
 	public void becomeInactive()
 	{
 		getPicker().becomeInactive();
@@ -724,6 +727,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return true;
 	}
 
+	@Override
 	public BaseObject getObject()
 	{
 		return null;
