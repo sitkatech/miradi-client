@@ -41,23 +41,7 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		
 		createPropertiesPanels();
 	}
-	
-	@Override
-	public void becomeActive()
-	{
-		super.becomeActive();
-		isActive = true;
-		activateCurrentCard();
-	}
-	
-	@Override
-	public void becomeInactive()
-	{
-		deactivateCurrentCard();
-		isActive = false;
-		super.becomeInactive();
-	}
-	
+		
 	private boolean isMultiPropertiesPanelActive()
 	{
 		return isActive;
