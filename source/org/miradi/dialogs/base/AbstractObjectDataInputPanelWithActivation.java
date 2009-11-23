@@ -45,6 +45,7 @@ abstract public class AbstractObjectDataInputPanelWithActivation extends Abstrac
 	@Override
 	public void becomeActive()
 	{
+		super.becomeActive();
 		for(AbstractObjectDataInputPanel panel : getSubPanels())
 		{
 			panel.becomeActive();
@@ -60,5 +61,7 @@ abstract public class AbstractObjectDataInputPanelWithActivation extends Abstrac
 		{
 			panel.becomeInactive();
 		}
+		
+		super.becomeInactive();
 	}
 }
