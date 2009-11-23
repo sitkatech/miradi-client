@@ -93,7 +93,7 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		currentCard.selectSectionForTag(tag);
 	}
 	
-	private AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse)
+	protected AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse)
 	{
 		if(orefsToUse.length == 0)
 			return blankPropertiesPanel;
