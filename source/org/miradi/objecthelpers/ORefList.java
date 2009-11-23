@@ -320,6 +320,14 @@ public class ORefList
 		return new ORef(objectType, BaseId.INVALID);
 	}
 	
+	public ORef getFirstElement()
+	{
+		if (isEmpty())
+			throw new RuntimeException("List is empty,  cannot retrieve first element.");
+		
+		return get(0);
+	}
+	
 	private Vector<ORef> data;
 	private static final String TAG_REFERENCES = "References";
 }

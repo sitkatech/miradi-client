@@ -22,10 +22,7 @@ package org.miradi.views.diagram.doers;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.ProgressReport;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 
@@ -45,21 +42,16 @@ public class CreateProgressReportDoer extends CreateAnnotationDoer
 
 	public static BaseObject getProgressReportParent(Project projectToUse, ORefList selectionRefs)
 	{
-		int[] parentTypes = getPossibleParentTypes();
-		for (int index = 0; index < parentTypes.length; ++index)
-		{
-			int parentType = parentTypes[index];
-			ORef parentRef = selectionRefs.getRefForType(parentType);
-			if (parentRef.isValid())
-				return BaseObject.find(projectToUse, parentRef); 
-		}
+		ORef progressReportRef = selectionRefs.getRefForType(ProgressReport.getObjectType());
+		selectionRefs.remove(progressReportRef);
+		if (selectionRefs.isEmpty())
+			return null;
 		
-		return null;
-	}
-	
-	private static int[] getPossibleParentTypes()
-	{
-		return new int[]{Task.getObjectType(), Indicator.getObjectType(), Strategy.getObjectType(), };
+		ORef parentOfProgessReportRef = selectionRefs.getFirstElement();
+		if (parentOfProgessReportRef.isInvalid())
+			return null;
+		
+		return BaseObject.find(projectToUse, parentOfProgessReportRef);
 	}
 	
 	@Override
