@@ -47,24 +47,24 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	{
 		super.becomeActive();
 		isActive = true;
-		activateCurrentPanel();
+		activateCurrentCard();
 	}
 	
 	@Override
 	public void becomeInactive()
 	{
-		deactivateCurrentPanel();
+		deactivateCurrentCard();
 		isActive = false;
 		super.becomeInactive();
 	}
 	
-	private void activateCurrentPanel()
+	private void activateCurrentCard()
 	{
 		if(currentCard != null)
 			currentCard.becomeActive();
 	}
 
-	private void deactivateCurrentPanel()
+	private void deactivateCurrentCard()
 	{
 		if(currentCard != null)
 			currentCard.becomeInactive();
@@ -98,12 +98,12 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	{
 		super.setObjectRefs(orefsToUse);
 
-		deactivateCurrentPanel();
+		deactivateCurrentCard();
 		
 		currentCard = findPanel(orefsToUse);
 		cardLayout.show(this, currentCard.getPanelDescription());
 		if (isMultiPropertiesPanelActive())
-			activateCurrentPanel();
+			activateCurrentCard();
 		
 		scrollRectToVisible(new Rectangle(0,0,0,0));
 		
