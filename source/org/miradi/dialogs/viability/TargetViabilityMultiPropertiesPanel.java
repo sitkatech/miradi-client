@@ -69,13 +69,13 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	{
 		super.becomeActive();
 		isActive = true;
-		activateCurrentPanel();
+		activateCurrentCard();
 	}
 	
 	@Override
 	public void becomeInactive()
 	{
-		deactivateCurrentPanel();
+		deactivateCurrentCard();
 		isActive = false;
 		super.becomeInactive();
 	}
@@ -87,14 +87,14 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
-		deactivateCurrentPanel();
+		deactivateCurrentCard();
 		
 		super.setObjectRefs(orefsToUse);
 		currentCard = findPanel(orefsToUse);
 		String panelDescription = currentCard.getPanelDescription();
 		cardLayout.show(this, panelDescription);
 		if(isActive)
-			activateCurrentPanel();
+			activateCurrentCard();
 
 		scrollRectToVisible(new Rectangle(0,0,0,0));
 		
@@ -106,13 +106,13 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		repaint();
 	}
 	
-	private void activateCurrentPanel()
+	private void activateCurrentCard()
 	{
 		if(currentCard != null)
 			currentCard.becomeActive();
 	}
 
-	private void deactivateCurrentPanel()
+	private void deactivateCurrentCard()
 	{
 		if(currentCard != null)
 			currentCard.becomeInactive();
