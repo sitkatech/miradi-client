@@ -32,7 +32,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.utils.ObjectsActionButton;
 
-abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDataInputPanel
+abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDataInputPanelWithActivation
 {
 	public ObjectDataInputPanelWithSections(Project projectToUse, int objectTypeToUse)
 	{
