@@ -38,9 +38,8 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 {
 	public SimpleViabilityMultiPropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), orefToUse);
+		super(mainWindowToUse, orefToUse);
 		
-		mainWindow = mainWindowToUse;
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 		createPropertiesPanels();
@@ -151,17 +150,9 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		currentPanel.setFocusOnFirstField();
 	} 
 	
-	public MainWindow getMainWindow()
-	{
-		return mainWindow;
-	}
-	
 	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
 	
 	private CardLayout cardLayout;
-	private MainWindow mainWindow;
-	private boolean isActive;
-	
 	private AbstractObjectDataInputPanel currentPanel;
 	private IndicatorPropertiesPanel indicatorPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;

@@ -19,14 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
 
 public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInputPanel
 {
-	public OverlaidObjectDataInputPanel(Project project, ORef orefToUse)
+	public OverlaidObjectDataInputPanel(MainWindow mainWindowToUse, ORef orefToUse)
 	{
-		super(project, orefToUse);
+		super(mainWindowToUse.getProject(), orefToUse);
 	}
 
 	@Override
@@ -37,4 +37,6 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 		addSubPanel(panelToAdd);
 		add(panelToAdd, panelToAdd.getPanelDescription());
 	}
+	
+	protected boolean isActive;
 }
