@@ -44,7 +44,7 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 {
 	public TargetViabilityMultiPropertiesPanel(MainWindow mainWindow) throws Exception
 	{
-		super(mainWindow.getProject(), new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt())));		
+		super(mainWindow, new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt())));		
 				
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
@@ -158,7 +158,6 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 			reloadSelectedRefs();		
 	}
 
-	private boolean isActive;
 	private CardLayout cardLayout;
 	private AbstractObjectDataInputPanel currentCard;
 	private BlankPropertiesPanel blankPropertiesPanel;

@@ -61,8 +61,8 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 {
 	public PlanningTreeMultiPropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), orefToUse);
-		mainWindow = mainWindowToUse;
+		super(mainWindowToUse, orefToUse);
+		
 		objectPicker = objectPickerToUse;
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
@@ -257,21 +257,13 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		currentCard.setFocusOnFirstField();
 	}
 	
-	public MainWindow getMainWindow()
-	{
-		return mainWindow;
-	}
-		
 	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
 	
 	private static final int DEEPEST_INDEX = 0; 
 	
-	private MainWindow mainWindow;
 	private ObjectPicker objectPicker;
 	private CardLayout cardLayout;
 	private AbstractObjectDataInputPanel currentCard;
-	private boolean isActive;
-	
 	private GoalPropertiesPanel goalPropertiesPanel;
 	private ObjectivePropertiesPanel objectivePropertiesPanel;
 	private IndicatorPropertiesPanel indicatorPropertiesPanel;
