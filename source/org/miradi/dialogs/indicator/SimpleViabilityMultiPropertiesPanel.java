@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.indicator;
 
-import java.awt.CardLayout;
 import java.awt.Rectangle;
 
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
@@ -40,8 +39,6 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	{
 		super(mainWindowToUse, orefToUse);
 		
-		cardLayout = new CardLayout();
-		setLayout(cardLayout);
 		createPropertiesPanels();
 	}
 	

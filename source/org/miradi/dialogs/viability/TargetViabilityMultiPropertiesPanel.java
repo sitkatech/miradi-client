@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.viability;
 
-import java.awt.CardLayout;
 import java.awt.Rectangle;
 
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
@@ -46,9 +45,6 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	{
 		super(mainWindow, new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt())));		
 				
-		cardLayout = new CardLayout();
-		setLayout(cardLayout);
-		
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
 		targetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), Target.getObjectType());
 		humanWelfareTargetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), HumanWelfareTarget.getObjectType());

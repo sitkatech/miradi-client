@@ -29,6 +29,9 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 	public OverlaidObjectDataInputPanel(MainWindow mainWindowToUse, ORef orefToUse)
 	{
 		super(mainWindowToUse.getProject(), orefToUse);
+		
+		cardLayout = new CardLayout();
+		setLayout(cardLayout);
 	}
 
 	@Override
