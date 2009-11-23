@@ -32,8 +32,8 @@ public class ThreatStressRatingTable extends EditableObjectTable
 	public ThreatStressRatingTable(MainWindow mainWindowToUse, ThreatStressRatingTableModel threatStressRatingTableModel)
 	{
 		super(mainWindowToUse, threatStressRatingTableModel, UNIQUE_IDENTIFIER);
+		
 		rebuildColumnEditorsAndRenderers();
-		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		listenForColumnWidthChanges(this);
 		//TODO shouldn't set row height to constant value
 		setRowHeight(26);

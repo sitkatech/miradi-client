@@ -56,8 +56,11 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 	{
 		super(mainWindowToUse, modelToUse, uniqueTableIdentifierToUse);
 		
+		
 		model = modelToUse;
 		selectionListeners = new Vector();
+		
+		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	}
 	
 	public Project getProject()
