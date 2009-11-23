@@ -55,6 +55,22 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 			currentCard.becomeActive();
 	}
 
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		isActive = true;
+		activateCurrentCard();
+	}
+
+	@Override
+	public void becomeInactive()
+	{
+		deactivateCurrentCard();
+		isActive = false;
+		super.becomeInactive();
+	}
+
 	protected boolean isActive;
 	protected CardLayout cardLayout;
 	protected AbstractObjectDataInputPanel currentCard;

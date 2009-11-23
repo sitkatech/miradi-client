@@ -64,22 +64,6 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		updateFieldsFromProject();
 	}
 	
-	@Override
-	public void becomeActive()
-	{
-		super.becomeActive();
-		isActive = true;
-		activateCurrentCard();
-	}
-	
-	@Override
-	public void becomeInactive()
-	{
-		deactivateCurrentCard();
-		isActive = false;
-		super.becomeInactive();
-	}
-	
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Target Viability Properties");
