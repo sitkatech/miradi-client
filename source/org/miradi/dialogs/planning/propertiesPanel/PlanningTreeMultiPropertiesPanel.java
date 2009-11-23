@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import java.awt.CardLayout;
 import java.awt.Rectangle;
 
 import org.miradi.dialogs.accountingcode.AccountingCodePropertiesPanel;
@@ -64,8 +63,6 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		super(mainWindowToUse, orefToUse);
 		
 		objectPicker = objectPickerToUse;
-		cardLayout = new CardLayout();
-		setLayout(cardLayout);
 		createPropertiesPanels();
 	}
 	
