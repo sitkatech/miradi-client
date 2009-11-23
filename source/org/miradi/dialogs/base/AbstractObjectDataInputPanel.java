@@ -880,6 +880,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		ObjectData objectData = baseObject.getField(tagToUse);
 		return objectData.getDependencyTags();
 	}
+	
+	@Override
+	abstract public void becomeActive();
+	
+	@Override
+	abstract public void becomeInactive();
 
 	public static int STD_SHORT = 5;
 	public static final int DEFAULT_TEXT_COLUM_COUNT = 50;
