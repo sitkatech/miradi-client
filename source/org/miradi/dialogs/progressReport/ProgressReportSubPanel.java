@@ -29,7 +29,7 @@ import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.DataInputPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.base.ProgressReportTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.AssignmentsComponentTableScrollPane;
+import org.miradi.dialogs.planning.propertiesPanel.ComponentTableScrollPane;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.layout.TwoColumnGridLayout;
@@ -91,7 +91,7 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 	{
 		DataInputPanel tablesPanel = new DataInputPanel(getProject());
 		tablesPanel.setLayout(new TwoColumnGridLayout());
-		AssignmentsComponentTableScrollPane scroller = new AssignmentsComponentTableScrollPane(progressReportTable);
+		ComponentTableScrollPane scroller = new ComponentTableScrollPane(progressReportTable);
 		tablesPanel.add(scroller);
 		tablesPanel.add(scroller.getWidthSetterComponent());
 		add(createButtonBar(), BorderLayout.PAGE_START);
