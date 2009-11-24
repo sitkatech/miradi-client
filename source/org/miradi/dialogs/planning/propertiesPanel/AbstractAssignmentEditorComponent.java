@@ -27,6 +27,7 @@ import javax.swing.JPanel;
 import org.martus.swing.UiScrollPane;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.DataInputPanel;
+import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.base.MultiTablePanel;
 import org.miradi.dialogs.treetables.MultiTreeTablePanel.ScrollPaneWithHideableScrollBar;
 import org.miradi.layout.OneRowPanel;
@@ -98,7 +99,7 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 	
 	static class AssignmentsComponentTableScrollPane extends ScrollPaneWithHideableScrollBar
 	{
-		public AssignmentsComponentTableScrollPane(AbstractComponentTable contents)
+		public AssignmentsComponentTableScrollPane(EditableObjectTable contents)
 		{
 			super(contents);
 			setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_ALWAYS);
