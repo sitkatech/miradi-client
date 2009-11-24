@@ -42,8 +42,7 @@ public class CreateProgressReportDoer extends CreateAnnotationDoer
 
 	public static BaseObject getProgressReportParent(Project projectToUse, ORefList selectionRefs)
 	{
-		ORef progressReportRef = selectionRefs.getRefForType(ProgressReport.getObjectType());
-		selectionRefs.remove(progressReportRef);
+		removeFirstProgressReportRefInPlace(selectionRefs);
 		if (selectionRefs.isEmpty())
 			return null;
 		
@@ -52,6 +51,12 @@ public class CreateProgressReportDoer extends CreateAnnotationDoer
 			return null;
 		
 		return BaseObject.find(projectToUse, parentOfProgessReportRef);
+	}
+
+	private static void removeFirstProgressReportRefInPlace(ORefList selectionRefs)
+	{
+		ORef progressReportRef = selectionRefs.getRefForType(ProgressReport.getObjectType());
+		selectionRefs.remove(progressReportRef);
 	}
 	
 	@Override
