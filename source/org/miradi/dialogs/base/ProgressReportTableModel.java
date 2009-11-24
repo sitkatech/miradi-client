@@ -134,7 +134,7 @@ public class ProgressReportTableModel extends EditableObjectTableModel
 		return getColumnTag(columnIndex).equals(ProgressReport.TAG_PROGRESS_DATE);
 	}
 
-	private boolean isDetailsColumn(int columnIndex)
+	public boolean isDetailsColumn(int columnIndex)
 	{
 		return getColumnTag(columnIndex).equals(ProgressReport.TAG_DETAILS);
 	}
