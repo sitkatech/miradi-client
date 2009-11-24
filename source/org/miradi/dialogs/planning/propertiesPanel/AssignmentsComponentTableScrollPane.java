@@ -25,7 +25,7 @@ import java.awt.Dimension;
 import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.treetables.MultiTreeTablePanel.ScrollPaneWithHideableScrollBar;
 
-class AssignmentsComponentTableScrollPane extends ScrollPaneWithHideableScrollBar
+public class AssignmentsComponentTableScrollPane extends ScrollPaneWithHideableScrollBar
 {
 	public AssignmentsComponentTableScrollPane(EditableObjectTable contents)
 	{
