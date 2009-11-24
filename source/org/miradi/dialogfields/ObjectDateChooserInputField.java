@@ -21,28 +21,37 @@ package org.miradi.dialogfields;
 
 import javax.swing.JComponent;
 
-import org.martus.util.MultiCalendar;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
-import org.miradi.utils.CustomDateChooser;
+import org.miradi.utils.DateEditorComponent;
 
 public class ObjectDateChooserInputField extends ObjectDataInputField
 {
 	public ObjectDateChooserInputField(Project projectToUse, int type, BaseId id, String tag)
 	{
 		super(projectToUse, type, id, tag);
-		project = projectToUse;
 		
-		dateChooser = new CustomDateChooser(this);
+		dateEditor = new DateEditorComponent();
+		dateEditor.getDateTextEditor().addFocusListener(this);
 	}
 	
+	@Override
 	public void dispose()
 	{
 		super.dispose();
-		if (dateChooser != null)
-			dateChooser.dispose();
-		dateChooser = null;
+
+		dateEditor.getDateTextEditor().removeFocusListener(this);
+		if (dateEditor != null)
+			dateEditor.dispose();
+		
+		dateEditor = null;
+	}
+	
+	@Override
+	public boolean needsToBeSaved()
+	{
+		return dateEditor.needsToBeSaved();
 	}
 
 	public String getPanelDescription()
@@ -50,36 +59,29 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 		return EAM.text("Date Chooser");
 	}
 
+	@Override
 	public JComponent getComponent()
 	{
-		return dateChooser;
+		return dateEditor;
 	}
 
+	@Override
 	public String getText()
 	{
-		return dateChooser.getDateAsString();
+		return dateEditor.getText();
 	}
 
+	@Override
 	public void setText(String newValue)
 	{
-		if (newValue.length() <= 0 )
-		{   
-			dateChooser.setDate(null);		
-			clearNeedsSave();
-			return;
-		}
-
-		MultiCalendar calendar = MultiCalendar.createFromIsoDateString(newValue);
-		dateChooser.setDate(calendar.getTime());
-		clearNeedsSave();
+		dateEditor.setText(newValue);
 	}
 	
+	@Override
 	public void updateEditableState()
 	{
-		dateChooser.setEnabled(isValidObject());
+		dateEditor.setEnabled(isValidObject());
 	}
-
-	private CustomDateChooser dateChooser;
+		
+	private DateEditorComponent dateEditor;
 }
-
-
