@@ -22,6 +22,7 @@ package org.miradi.utils;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -32,6 +33,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import javax.swing.event.CaretEvent;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 
@@ -47,7 +50,7 @@ public class DateEditorComponent extends JDateChooser
 	{
 		super(new DateTextEditor());
 		
-		setDateFormatString(CustomDateChooser.CUSTOM_DATE_FORMAT);
+		setDateFormatString(CUSTOM_DATE_FORMAT);
 		setDateChooserPreferredSizeWithPadding();
 		
 		calendarButton.addMouseListener(new CustomMouseListener());
@@ -57,6 +60,15 @@ public class DateEditorComponent extends JDateChooser
 		jcalendar.getYearChooser().addPropertyChangeListener(new YearChangeListener());
 		popup.addPopupMenuListener(new PopupMenuHandler());
 		dateEditor.addPropertyChangeListener(DATE_PROPERTY_NAME, this);
+		getDateTextEditor().getDocument().addDocumentListener(new DocumentEventHandler());
+		
+		clearNeedsSaving();
+	}
+	
+	@Override
+	public void addPropertyChangeListener(PropertyChangeListener listener)
+	{
+		super.addPropertyChangeListener(listener);
 	}
 	
 	public void dispose()
@@ -76,6 +88,7 @@ public class DateEditorComponent extends JDateChooser
 			time = MultiCalendar.createFromIsoDateString(text).getTime();
 		
 		dateEditor.setDate(time);
+		clearNeedsSaving();
 	}
 	
 	private static String convertDateToIsoString(Date date)
@@ -100,11 +113,39 @@ public class DateEditorComponent extends JDateChooser
 		setPreferredSize(preferredDimension);
 	}
 	
+	public DateTextEditor getDateTextEditor()
+	{
+		return ((DateTextEditor) getDateEditor());
+	}
+	
 	private void updateTextFromCalendarAndSave()
 	{
 		setDate(jcalendar.getDate());
+		setNeedsSave();
 	}
 
+	private void setNeedsSave()
+	{
+		needsSave = true;
+	}
+
+	private void clearNeedsSaving()
+	{
+		needsSave = false;
+	}
+	
+	public boolean needsToBeSaved()
+	{
+		return needsSave;
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		super.actionPerformed(e);
+		updateTextFromCalendarAndSave();
+	}
+	
 	class MonthChangeListener implements PropertyChangeListener
 	{
 		public void propertyChange(PropertyChangeEvent evt)
@@ -131,13 +172,13 @@ public class DateEditorComponent extends JDateChooser
 
 		public void popupMenuWillBecomeInvisible(PopupMenuEvent e)
 		{
+			getDateTextEditor().requestFocus();
 			updateTextFromCalendarAndSave();
 		}
 
 		public void popupMenuWillBecomeVisible(PopupMenuEvent e)
 		{
 		}
-		
 	}
 	
 	class CustomMouseListener extends MouseAdapter
@@ -150,7 +191,7 @@ public class DateEditorComponent extends JDateChooser
 			{
 				dateSelected = true;
 				popup.setVisible(false);
-				setDate(newCalendar.getTime());
+				updateTextFromCalendarAndSave();
 				isVisibleAndPressed = false;		
 			}
 		}
@@ -169,7 +210,7 @@ public class DateEditorComponent extends JDateChooser
 		boolean isVisibleAndPressed;	
 	}
 	
-	static class DateTextEditor extends JTextFieldDateEditor
+	public static class DateTextEditor extends JTextFieldDateEditor
 	{
 		public DateTextEditor()
 		{
@@ -228,11 +269,30 @@ public class DateEditorComponent extends JDateChooser
 			setForeground(Color.blue);
 		}
 	}
+	
+	public class DocumentEventHandler implements DocumentListener
+	{
+		public void changedUpdate(DocumentEvent arg0)
+		{
+			setNeedsSave();
+		}
+
+		public void insertUpdate(DocumentEvent arg0)
+		{
+			setNeedsSave();
+		}
+
+		public void removeUpdate(DocumentEvent arg0)
+		{
+			setNeedsSave();
+		}
+	}
 		
 	public static final String CUSTOM_DATE_FORMAT = "yyyy-MM-dd";
 	private static final int EXTRA_PADDING = 20;
 	
 	private static final String MONTH_PROPERTY_NAME = "month";
 	private static final String YEAR_PROPERTY_NAME = "year";
-	private static final String DATE_PROPERTY_NAME = "date";
+	private static final String DATE_PROPERTY_NAME = "date";	
+	private boolean needsSave;
 }
