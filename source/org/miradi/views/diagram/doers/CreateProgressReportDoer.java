@@ -28,8 +28,6 @@ import org.miradi.views.diagram.CreateAnnotationDoer;
 
 public class CreateProgressReportDoer extends CreateAnnotationDoer
 {
-	
-	//FIXME urgent - this method needs to be done differently, it is fragile.
 	@Override
 	public BaseObject getSelectedParentFactor()
 	{
