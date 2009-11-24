@@ -20,16 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
 import org.martus.swing.UiScrollPane;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.DataInputPanel;
-import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.base.MultiTablePanel;
-import org.miradi.dialogs.treetables.MultiTreeTablePanel.ScrollPaneWithHideableScrollBar;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
@@ -95,44 +92,6 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 	protected ObjectPicker getPicker()
 	{
 		return objectPicker;
-	}
-	
-	static class AssignmentsComponentTableScrollPane extends ScrollPaneWithHideableScrollBar
-	{
-		public AssignmentsComponentTableScrollPane(EditableObjectTable contents)
-		{
-			super(contents);
-			setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_ALWAYS);
-			setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_NEVER);
-			widthSetter = new PersistentWidthSetterComponent(contents.getMainWindow(), this, contents.getUniqueTableIdentifier(), getPreferredSize().width);
-			widthSetter.setForeground(contents.getTableHeader().getForeground());
-			widthSetter.setBackground(contents.getTableHeader().getBackground());
-		}
-		
-		public PersistentWidthSetterComponent getWidthSetterComponent()
-		{
-			return widthSetter;
-		}
-		
-		@Override
-		public Dimension getPreferredSize()
-		{
-			final Dimension size = super.getPreferredSize();
-			if(widthSetter != null)
-				size.width = widthSetter.getControlledWidth();
-			return size;
-		}
-		
-		@Override
-		public Dimension getSize()
-		{
-			final Dimension size = super.getSize();
-			if(widthSetter != null)
-				size.width = widthSetter.getControlledWidth();
-			return size;
-		}
-		
-		private PersistentWidthSetterComponent widthSetter;
 	}
 	
 	@Override
