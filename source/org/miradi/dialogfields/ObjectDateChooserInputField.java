@@ -33,7 +33,7 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 		super(projectToUse, type, id, tag);
 		
 		dateEditor = new DateEditorComponent();
-		dateEditor.getDateTextEditor().addFocusListener(this);
+		dateEditor.addFocusListener(this);
 	}
 	
 	@Override
@@ -41,7 +41,7 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 	{
 		super.dispose();
 
-		dateEditor.getDateTextEditor().removeFocusListener(this);
+		dateEditor.removeFocusListener(this);
 		if (dateEditor != null)
 			dateEditor.dispose();
 		

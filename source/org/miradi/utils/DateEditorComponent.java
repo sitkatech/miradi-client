@@ -24,6 +24,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
@@ -63,6 +64,18 @@ public class DateEditorComponent extends JDateChooser
 		getDateTextEditor().getDocument().addDocumentListener(new DocumentEventHandler());
 		
 		clearNeedsSaving();
+	}
+	
+	@Override
+	public void addFocusListener(FocusListener focusListener)
+	{
+		getDateTextEditor().addFocusListener(focusListener);
+	}
+	
+	@Override
+	public void removeFocusListener(FocusListener focusListener)
+	{
+		getDateTextEditor().removeFocusListener(focusListener);
 	}
 	
 	@Override
