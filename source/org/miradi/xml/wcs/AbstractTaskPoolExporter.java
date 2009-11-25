@@ -36,6 +36,7 @@ abstract public class AbstractTaskPoolExporter extends FactorPoolExporter
 	{
 		super.exportFields(writer, baseObject);
 		
+		writeProgressReportIds(baseObject);
 		writeExpenseAssignmentIds(baseObject);
 		writeResourceAssignmentIds(baseObject);
 	}
