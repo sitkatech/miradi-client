@@ -26,7 +26,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
 public class DefaultTableCellRendererWithPreferredHeightFactory extends
-		BasicTableCellRendererFactory implements TableCellPreferredHeightProvider
+		BasicTableCellRendererEditorFactory implements TableCellPreferredHeightProvider
 {
 	public DefaultTableCellRendererWithPreferredHeightFactory()
 	{

@@ -32,9 +32,9 @@ import javax.swing.table.TableCellRenderer;
 
 import org.martus.util.xml.XmlUtilities;
 
-abstract public class BasicTableCellRendererFactory extends AbstractCellEditor implements TableCellRenderer, TableCellPreferredHeightProvider, TableCellEditor 
+abstract public class BasicTableCellRendererEditorFactory extends AbstractCellEditor implements TableCellRenderer, TableCellPreferredHeightProvider, TableCellEditor 
 {
-	public BasicTableCellRendererFactory()
+	public BasicTableCellRendererEditorFactory()
 	{
 		backgroundColor = Color.WHITE;
 	}
