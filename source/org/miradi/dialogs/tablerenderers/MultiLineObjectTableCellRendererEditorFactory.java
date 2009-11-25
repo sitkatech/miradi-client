@@ -21,6 +21,7 @@ package org.miradi.dialogs.tablerenderers;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.JComponent;
 import javax.swing.JTable;
@@ -48,6 +49,8 @@ public class MultiLineObjectTableCellRendererEditorFactory extends ObjectTableCe
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
 	{
 		rendererComponent.setText(value.toString());
+		Font font = getCellFont(row, column);
+		rendererComponent.setFont(font);
 		
 		return new MiradiScrollPane(rendererComponent);
 	}
