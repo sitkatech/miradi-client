@@ -26,13 +26,10 @@ import javax.swing.JPanel;
 
 import org.miradi.actions.ActionDeleteProgressReport;
 import org.miradi.actions.Actions;
-import org.miradi.dialogs.base.DataInputPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.base.ProgressReportTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.ComponentTableScrollPane;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.layout.OneRowPanel;
-import org.miradi.layout.TwoColumnGridLayout;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -41,6 +38,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressReport;
+import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.umbrella.ActionCreateProgressReport;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -89,13 +87,9 @@ public class ProgressReportSubPanel extends ObjectDataInputPanel
 	
 	private void addComponents()
 	{
-		DataInputPanel tablesPanel = new DataInputPanel(getProject());
-		tablesPanel.setLayout(new TwoColumnGridLayout());
-		ComponentTableScrollPane scroller = new ComponentTableScrollPane(progressReportTable);
-		tablesPanel.add(scroller);
-		tablesPanel.add(scroller.getWidthSetterComponent());
+		MiradiScrollPane scroller = new MiradiScrollPane(progressReportTable);
 		add(createButtonBar(), BorderLayout.PAGE_START);
-		add(tablesPanel, BorderLayout.CENTER);
+		add(scroller, BorderLayout.CENTER);
 	}
 	
 	protected JPanel createButtonBar()
