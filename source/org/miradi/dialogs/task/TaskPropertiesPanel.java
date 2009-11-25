@@ -41,7 +41,7 @@ public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSectio
 		if(shouldHaveVisibilityPanel())
 			addSubPanelWithTitledBorder(new ActivityFactorVisibilityControlPanel(mainWindow));
 				
-		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow(), objectPickerToUse));
+		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow(), getPicker()));
 		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(mainWindow, Task.getObjectType(), objectPickerToUse));
 		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), objectPickerToUse));
 		
