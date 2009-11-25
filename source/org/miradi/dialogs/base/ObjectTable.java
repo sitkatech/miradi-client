@@ -31,7 +31,7 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.BasicTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.CodeListRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
@@ -304,7 +304,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 	private Vector selectionListeners;
 	private int currentSortColumn;
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
-	private BasicTableCellRendererFactory otherRenderer;
+	private BasicTableCellRendererEditorFactory otherRenderer;
 	private CodeListRendererFactory codeListRenderer;
 	private boolean isActive;
 }

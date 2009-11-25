@@ -33,7 +33,7 @@ import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.planning.RightClickActionProvider;
 import org.miradi.dialogs.planning.TableHeaderWithExpandCollapseIcons;
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
-import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.BasicTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
@@ -80,7 +80,7 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 	public TableCellRenderer getCellRenderer(int row, int tableColumn)
 	{
 		final int modelColumn = convertColumnIndexToModel(tableColumn);
-		BasicTableCellRendererFactory renderer = numericRendererFactory;
+		BasicTableCellRendererEditorFactory renderer = numericRendererFactory;
 		if(getWorkUnitsTableModel().isCurrencyColumn(modelColumn))
 			renderer = currencyRendererFactory;
 
@@ -194,6 +194,6 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 	
 	public static final String UNIQUE_IDENTIFIER = "WorkUnitsTable";
 
-	private BasicTableCellRendererFactory numericRendererFactory;
-	private BasicTableCellRendererFactory currencyRendererFactory;
+	private BasicTableCellRendererEditorFactory numericRendererFactory;
+	private BasicTableCellRendererEditorFactory currencyRendererFactory;
 }
