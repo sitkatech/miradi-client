@@ -172,6 +172,8 @@ public class AppPreferences
 			return humanWelfareTargetColor;
 		if(tag.equals(TAG_COLOR_SCOPE_BOX))
 			return scopeColor;
+		if(tag.equals(TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX))
+			return humanWelfareScopeColor;
 		if(tag.equals(TAG_COLOR_INTERMEDIATE_RESULT))
 			return intermediateResultColor;
 		if(tag.equals(TAG_COLOR_THREAT_REDUCTION_RESULT))
@@ -196,6 +198,8 @@ public class AppPreferences
 			humanWelfareTargetColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_SCOPE_BOX))
 			scopeColor = colorToUse;
+		else if(tag.equals(TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX))
+			humanWelfareScopeColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_INTERMEDIATE_RESULT))
 			intermediateResultColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_THREAT_REDUCTION_RESULT))
@@ -328,6 +332,7 @@ public class AppPreferences
 		json.put(TAG_COLOR_TARGET, targetColor);
 		json.put(TAG_COLOR_HUMAN_WELFARE_TARGET, humanWelfareTargetColor);
 		json.put(TAG_COLOR_SCOPE_BOX, scopeColor);
+		json.put(TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX, humanWelfareScopeColor);
 		json.put(TAG_COLOR_INTERMEDIATE_RESULT, intermediateResultColor);
 		json.put(TAG_COLOR_THREAT_REDUCTION_RESULT, threatReductionResultColor);
 		json.put(TAG_IS_MAXIMIZED, isMaximized);
@@ -391,6 +396,7 @@ public class AppPreferences
 		targetColor = json.optColor(TAG_COLOR_TARGET, DiagramConstants.DEFAULT_TARGET_COLOR);
 		humanWelfareTargetColor = json.optColor(TAG_COLOR_HUMAN_WELFARE_TARGET, DiagramConstants.DEFAULT_HUMAN_WELFARE_TARGET_COLOR);
 		scopeColor = json.optColor(TAG_COLOR_SCOPE_BOX, DiagramConstants.DEFAULT_SCOPE_COLOR);
+		humanWelfareScopeColor = json.optColor(TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX, DiagramConstants.DEFAULT_HUMAN_WELFARE_SCOPE_COLOR);
 		intermediateResultColor = json.optColor(TAG_COLOR_INTERMEDIATE_RESULT, DiagramConstants.DEFAULT_INTERMEDIATE_RESULT_COLOR);
 		threatReductionResultColor = json.optColor(TAG_COLOR_THREAT_REDUCTION_RESULT, DiagramConstants.DEFAULT_THREAT_REDUCTION_RESULT_COLOR);
 		
@@ -588,6 +594,7 @@ public class AppPreferences
 	public static final String TAG_COLOR_TARGET = "ColorTarget";
 	public static final String TAG_COLOR_HUMAN_WELFARE_TARGET = "ColorHumanWelfareTarget";
 	public static final String TAG_COLOR_SCOPE_BOX = "ColorScope";
+	public static final String TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX = "ColorHumanWelfareScope";
 	public static final String TAG_COLOR_INTERMEDIATE_RESULT = "ColorIntermediateResult";
 	public static final String TAG_COLOR_THREAT_REDUCTION_RESULT = "ColorThreatReductionResult";
 	public static final String TAG_IS_MAXIMIZED = "IsMaximized";
@@ -670,6 +677,7 @@ public class AppPreferences
 	public Color targetColor;
 	public Color humanWelfareTargetColor;
 	public Color scopeColor;
+	public Color humanWelfareScopeColor;
 	public Color intermediateResultColor;
 	public Color threatReductionResultColor;
 	
