@@ -49,7 +49,7 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanelWithSections
 		viabilityRatingsSubPanel = new IndicatorViabilityRatingsSubPanel(getProject(), getInvalidTargetRef());
 		addSubPanelWithTitledBorder(viabilityRatingsSubPanel);
 		addSubPanelWithTitledBorder(new IndicatorMonitoringPlanSubPanel(getProject(), getInvalidTargetRef()));
-		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow(), picker));
+		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow(), getPicker()));
 		addSubPanelWithTitledBorder(new IndicatorFutureStatusSubPanel(getProject(), getInvalidTargetRef()));
 		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(mainWindow, Task.getObjectType(), picker));
 		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));
