@@ -168,6 +168,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if(columnTag.equals(Indicator.TAG_PRIORITY))
 			return true;
 		
+		if(columnTag.equals(CustomPlanningColumnsQuestion.META_THREAT_RATING))
+			return true;
+		
 		return false;
 	}
 	
@@ -227,6 +230,8 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			String columnTag = getTagForCell(baseObject.getType(), column);
 			if(columnTag.equals(CustomPlanningColumnsQuestion.META_WHO_TOTAL))
 				return appendedProjectResources(baseObject);
+			if (columnTag.equals(CustomPlanningColumnsQuestion.META_THREAT_RATING))
+				return getThreatRatingChoiceItem(baseObject);
 			
 			if (! baseObject.doesFieldExist(columnTag))
 				return new EmptyChoiceItem();
@@ -264,6 +269,18 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 	}
 	
+	private ChoiceItem getThreatRatingChoiceItem(BaseObject baseObject) throws Exception
+	{
+		if (!Cause.is(baseObject))
+			return new EmptyChoiceItem();
+		
+		Cause threat = (Cause) baseObject;
+		if (threat.isContributingFactor())
+			return new EmptyChoiceItem();
+		
+		return getProject().getThreatRatingFramework().getThreatThreatRatingValue(threat.getRef());
+	}
+
 	private ChoiceItem getFilteredWhen(BaseObject baseObject) throws Exception
 	{
 		TimePeriodCostsMap totalTimePeriodCostsMap = calculateTimePeriodCostsMap(baseObject);
