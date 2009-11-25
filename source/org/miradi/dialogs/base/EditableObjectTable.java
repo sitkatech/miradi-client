@@ -21,6 +21,7 @@ package org.miradi.dialogs.base;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Vector;
@@ -62,6 +63,15 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 		selectionListeners = new Vector();
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+	}
+	
+	@Override
+	public Dimension getPreferredScrollableViewportSize()
+	{
+		Dimension size = new Dimension(getPreferredSize());
+		size.height = Math.max(size.height, MINIMUM_VIEWPORT_HEIGHT);
+		size.height = Math.min(size.height, MAXIMUM_VIEWPORT_HEIGHT);
+		return size;
 	}
 	
 	public Project getProject()
@@ -307,5 +317,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 	private Vector selectionListeners;
 	private EditableObjectTableModel model;
 	private boolean isActive;
+	private static final int MINIMUM_VIEWPORT_HEIGHT = 100;
+	private static final int MAXIMUM_VIEWPORT_HEIGHT = 400;
 }
 

@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.properties;
 
-import java.awt.Dimension;
-
 import javax.swing.JTable;
 
 import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
@@ -43,15 +41,6 @@ public class ThreatStressRatingTable extends EditableObjectTable
 	public boolean allowUserToSetRowHeight()
 	{
 		return false;
-	}
-	
-	@Override
-	public Dimension getPreferredScrollableViewportSize()
-	{
-		Dimension size = new Dimension(getPreferredSize());
-		size.height = Math.max(size.height, MINIMUM_VIEWPORT_HEIGHT);
-		size.height = Math.min(size.height, MAXIMUM_VIEWPORT_HEIGHT);
-		return size;
 	}
 	
 	public ThreatStressRatingTableModel getThreatStressRatingTableModel()
@@ -87,6 +76,4 @@ public class ThreatStressRatingTable extends EditableObjectTable
 	}
 
 	public static final String UNIQUE_IDENTIFIER = "ThreatStressRatingTable";
-	public static final int MINIMUM_VIEWPORT_HEIGHT = 100;
-	public static final int MAXIMUM_VIEWPORT_HEIGHT = 400;
 }
