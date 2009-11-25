@@ -44,7 +44,7 @@ import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
-import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ProgressTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
@@ -66,7 +66,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		setTableHeader(new TableHeaderWithExpandCollapseIcons(this));
 
 		masterTree = masterTreeToUse;
-		defaultRendererFactory = new MultiLineObjectTableCellRendererFactory(this, fontProvider);
+		defaultRendererFactory = new MultiLineObjectTableCellRendererEditorFactory(this, fontProvider);
 		currencyRendererFactory = new BudgetCostTreeTableCellRendererFactory(this, fontProvider);
 		choiceRendererFactory = new ChoiceItemTableCellRendererFactory(this, fontProvider);
 		progressRendererFactory = new ProgressTableCellRendererFactory(this, fontProvider);

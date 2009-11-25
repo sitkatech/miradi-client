@@ -32,7 +32,7 @@ import javax.swing.tree.TreeSelectionModel;
 
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
-import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.tablerenderers.ViabilityViewFontProvider;
 import org.miradi.dialogs.treetables.ObjectTreeCellRenderer;
@@ -62,7 +62,7 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		getTree().setCellRenderer(new ViabilityTreeCellRenderer(this));
 		setColumnHeaderRenderers();
 		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(this, fontProvider);
-		multiLineRenderer = new MultiLineObjectTableCellRendererFactory(this, fontProvider);
+		multiLineRenderer = new MultiLineObjectTableCellRendererEditorFactory(this, fontProvider);
 		rebuildTableCompletely();
 	}
 	
@@ -193,5 +193,5 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 	}
 
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
-	private MultiLineObjectTableCellRendererFactory multiLineRenderer;
+	private MultiLineObjectTableCellRendererEditorFactory multiLineRenderer;
 }

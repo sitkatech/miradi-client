@@ -37,7 +37,7 @@ import org.miradi.dialogs.fieldComponents.PanelComboBox;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DateTableCellEditorAndRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
-import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.MainWindow;
@@ -94,8 +94,8 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
-		column.setCellRenderer(new MultiLineObjectTableCellRendererFactory(model, fontProvider));
-		column.setCellEditor(new MultiLineObjectTableCellRendererFactory(model, fontProvider));
+		column.setCellRenderer(new MultiLineObjectTableCellRendererEditorFactory(model, fontProvider));
+		column.setCellEditor(new MultiLineObjectTableCellRendererEditorFactory(model, fontProvider));
 	}
 	
 	protected void createDateColumn(int tableColumn)

@@ -28,7 +28,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.Translation;
 
-public class CodeListRendererFactory extends MultiLineObjectTableCellRendererFactory
+public class CodeListRendererFactory extends MultiLineObjectTableCellRendererEditorFactory
 {
 	public CodeListRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
