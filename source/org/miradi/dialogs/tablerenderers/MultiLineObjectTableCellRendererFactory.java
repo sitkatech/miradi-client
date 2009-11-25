@@ -23,9 +23,10 @@ import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.JComponent;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+
+import org.miradi.utils.MiradiScrollPane;
 
 
 public class MultiLineObjectTableCellRendererFactory extends ObjectTableCellRendererFactory
@@ -48,7 +49,7 @@ public class MultiLineObjectTableCellRendererFactory extends ObjectTableCellRend
 	{
 		rendererComponent.setText(value.toString());
 		
-		return new JScrollPane(rendererComponent);
+		return new MiradiScrollPane(rendererComponent);
 	}
 	
 	@Override
