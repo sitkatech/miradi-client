@@ -64,6 +64,12 @@ public class DiagramConstants
 		new Color(0, 220, 0), 
 		new Color(0, 180, 0), 
 		new Color(0, 128, 0)};
+	public static final Color[] humanWelfareScopeColorChoices = {
+		new Color(215, 164, 62), 
+		new Color(205, 154, 52), 
+		new Color(195, 144, 42), 
+		new Color(185, 134, 32), 
+		new Color(175, 124, 22)};
 	public static final Color[] intermediateResultChoices = {
 		new Color(100, 222, 255),
 		new Color(80, 200, 220), 
@@ -83,7 +89,7 @@ public class DiagramConstants
 	public static final Color DEFAULT_CONTRIBUTING_FACTOR_COLOR = contributingFactorColorChoices[0];
 	public static final Color DEFAULT_STRATEGY_COLOR = strategyColorChoices[0];
 	public static final Color DEFAULT_SCOPE_COLOR = scopeColorChoices[1];
-	public static final Color DEFAULT_HUMAN_WELFARE_SCOPE_COLOR = new Color(215, 164, 62);
+	public static final Color DEFAULT_HUMAN_WELFARE_SCOPE_COLOR = humanWelfareScopeColorChoices[0];
 	public static final Color DEFAULT_INTERMEDIATE_RESULT_COLOR = intermediateResultChoices[4];
 	public static final Color DEFAULT_THREAT_REDUCTION_RESULT_COLOR = threatReductionResultChoices[4];
 

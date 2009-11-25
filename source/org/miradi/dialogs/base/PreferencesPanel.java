@@ -233,6 +233,12 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		scopeDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX));
 		scopeDropdown.addActionListener(this);
 		diagramSystemPreferencesTab.add(scopeDropdown);
+		
+		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Human Welfare Scope (Dark Brown)")));
+		humanWelfareScopeDropDown = createColorsDropdown(DiagramConstants.humanWelfareScopeColorChoices);
+		humanWelfareScopeDropDown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX));
+		humanWelfareScopeDropDown.addActionListener(this);
+		diagramSystemPreferencesTab.add(humanWelfareScopeDropDown);
 
 		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Intermediate Result (Light Blue)")));
 		intermediateResultDropDown = createColorsDropdown(DiagramConstants.intermediateResultChoices);
@@ -298,6 +304,9 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		Color scopeColor = (Color)scopeDropdown.getSelectedItem();
 		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX, scopeColor);
 
+		Color humanWelfareScopeColor = (Color)humanWelfareScopeDropDown.getSelectedItem();
+		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX, humanWelfareScopeColor);
+		
 		Color intermediateResultColor = (Color) intermediateResultDropDown.getSelectedItem();
 		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT, intermediateResultColor);
 		
@@ -404,6 +413,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private UiComboBox indirectFactorDropdown;
 	private UiComboBox targetDropdown;
 	private UiComboBox scopeDropdown;
+	private UiComboBox humanWelfareScopeDropDown;
 	private UiComboBox intermediateResultDropDown;
 	private UiComboBox threatReductionResultDropDown;
 	private UiCheckBox gridVisibleCheckBox; 
