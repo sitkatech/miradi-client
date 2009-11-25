@@ -95,6 +95,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		column.setCellRenderer(new MultiLineObjectTableCellRendererFactory(model, fontProvider));
+		column.setCellEditor(new MultiLineObjectTableCellRendererFactory(model, fontProvider));
 	}
 	
 	protected void createDateColumn(int tableColumn)

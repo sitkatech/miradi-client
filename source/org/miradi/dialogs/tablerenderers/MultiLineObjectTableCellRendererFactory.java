@@ -19,9 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.tablerenderers;
 
+import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.JComponent;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 
@@ -35,6 +37,21 @@ public class MultiLineObjectTableCellRendererFactory extends ObjectTableCellRend
 		rendererComponent = new TableCellHtmlRendererComponent();
 	}
 	
+	@Override
+	public Object getCellEditorValue()
+	{
+		return rendererComponent.getText();
+	}
+	
+	@Override
+	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
+	{
+		rendererComponent.setText(value.toString());
+		
+		return new JScrollPane(rendererComponent);
+	}
+	
+	@Override
 	public JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, Object value)
 	{
 		if(value == null)
@@ -64,7 +81,7 @@ public class MultiLineObjectTableCellRendererFactory extends ObjectTableCellRend
 		{
 			setLineWrap(true);
 			setWrapStyleWord(true);
-			setEditable(false);
+			setEditable(true);
 		}
 		
 		public int getPreferredHeight(JTable table, int row, int column, Object value)
