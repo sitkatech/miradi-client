@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/12'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/13'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -497,7 +497,8 @@ Activity.element = element miradi:Activity
   element miradi:ActivityText { text }? &
   element miradi:ActivityComments { text }? &
   element miradi:ActivityExpenseIds { ExpenseAssignmentId.element* } &
-  element miradi:ActivityAssignmentIds { ResourceAssignmentId.element* }
+  element miradi:ActivityAssignmentIds { ResourceAssignmentId.element* } &
+  element miradi:ActivityProgressReportIds { ProgressReportId.element* }
 }
 
 MethodPool.element = element miradi:MethodPool { Method.element* }
@@ -509,7 +510,8 @@ Method.element = element miradi:Method
   element miradi:MethodText { text }? &
   element miradi:MethodComments { text }? &
   element miradi:MethodExpenseIds { ExpenseAssignmentId.element* } &
-  element miradi:MethodAssignmentIds { ResourceAssignmentId.element* }
+  element miradi:MethodAssignmentIds { ResourceAssignmentId.element* } &
+  element miradi:MethodProgressReportIds { ProgressReportId.element* }
 }
 
 TaskPool.element = element miradi:TaskPool { Task.element* }
@@ -521,7 +523,8 @@ Task.element = element miradi:Task
   element miradi:TaskText { text }? &
   element miradi:TaskComments { text }? &
   element miradi:TaskExpenseIds { ExpenseAssignmentId.element* } &
-  element miradi:TaskAssignmentIds { ResourceAssignmentId.element* }
+  element miradi:TaskAssignmentIds { ResourceAssignmentId.element* } &
+  element miradi:TaskProgressReportIds { ProgressReportId.element* }
 }
 
 ProgressReportPool.element = element miradi:ProgressReportPool { ProgressReport.element* }
