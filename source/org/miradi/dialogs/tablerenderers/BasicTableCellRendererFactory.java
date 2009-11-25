@@ -22,15 +22,17 @@ package org.miradi.dialogs.tablerenderers;
 import java.awt.Color;
 import java.awt.Component;
 
+import javax.swing.AbstractCellEditor;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.border.Border;
+import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
 import org.martus.util.xml.XmlUtilities;
 
-abstract public class BasicTableCellRendererFactory implements TableCellRenderer, TableCellPreferredHeightProvider
+abstract public class BasicTableCellRendererFactory extends AbstractCellEditor implements TableCellRenderer, TableCellPreferredHeightProvider, TableCellEditor 
 {
 	public BasicTableCellRendererFactory()
 	{
@@ -38,6 +40,16 @@ abstract public class BasicTableCellRendererFactory implements TableCellRenderer
 	}
 	
 	public abstract JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, Object value);
+	
+	public Object getCellEditorValue()
+	{
+		throw new RuntimeException("Editable cell must override getCellEditorValue");
+	}
+	
+	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
+	{
+		throw new RuntimeException("Editable cell must override getTableCEllEditorComponent");
+	}
 
 	public void setCellBackgroundColor(Color backgroundColorToUse)
 	{
