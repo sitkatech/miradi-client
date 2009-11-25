@@ -29,9 +29,9 @@ import javax.swing.JTextArea;
 import org.miradi.utils.MiradiScrollPane;
 
 
-public class MultiLineObjectTableCellRendererFactory extends ObjectTableCellRendererFactory
+public class MultiLineObjectTableCellRendererEditorFactory extends ObjectTableCellRendererFactory
 {
-	public MultiLineObjectTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public MultiLineObjectTableCellRendererEditorFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		
