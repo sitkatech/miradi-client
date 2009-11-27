@@ -26,6 +26,7 @@ import java.util.Vector;
 
 import org.martus.util.DirectoryUtils;
 import org.miradi.database.migrations.ConvertHighLevelEstimatesIntoAssignments;
+import org.miradi.database.migrations.EnsureNoMoreThanOneXenodataMigration;
 import org.miradi.database.migrations.MigrationsForMiradi3;
 import org.miradi.database.migrations.ShareSameLabeledScopeBoxesMigration;
 import org.miradi.database.migrations.UpdateTncOpertingUnitMigration;
@@ -48,6 +49,51 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		super(name);
 	}
 	
+	public void testEnsureNoMoreThanOneXenodataExists() throws Exception
+	{
+		String[] noXenodataObjects = new String[]{};
+		verifyXenodata(noXenodataObjects, "");
+		
+		String xenodataString = "{\"WhenOverride\":\"\",\"TimeStampModified\":\"1251135048078\",\"BudgetCostOverride\":\"\",\"BudgetCostMode\":\"\",\"Label\":\"\",\"Id\":3927,\"WhoOverrideRefs\":\"\",\"ProjectId\":\"1463\"}";
+		verifyXenodata(new String[]{xenodataString, }, "1463");
+		
+		String xenodataWithSameProjectIdString = "{\"WhenOverride\":\"\",\"TimeStampModified\":\"1251139509421\",\"BudgetCostOverride\":\"\",\"BudgetCostMode\":\"\",\"Label\":\"\",\"Id\":3928,\"WhoOverrideRefs\":\"\",\"ProjectId\":\"1463\"}";
+		verifyXenodata(new String[]{xenodataString, xenodataWithSameProjectIdString, }, "1463");
+		
+		String xenodataWithDifferentProjectIdString = "{\"WhenOverride\":\"\",\"TimeStampModified\":\"1251139509421\",\"BudgetCostOverride\":\"\",\"BudgetCostMode\":\"\",\"Label\":\"\",\"Id\":3929,\"WhoOverrideRefs\":\"\",\"ProjectId\":\"9999999\"}";
+		verifyXenodata(new String[]{xenodataString, xenodataWithSameProjectIdString, xenodataWithDifferentProjectIdString}, "");
+	}
+	
+	private void verifyXenodata(String[] xenodataStrings, String expectedProjectId) throws Exception
+	{
+		File jsonDir = createJsonDir();
+		final int XENODATA_TYPE = 44;
+		File xenodataDir = DataUpgrader.getObjectsDir(jsonDir, XENODATA_TYPE);
+		if (xenodataDir.exists())
+			DirectoryUtils.deleteEntireDirectoryTree(xenodataDir);
+		
+		createAndPopulateObjectDir(jsonDir, XENODATA_TYPE, xenodataStrings);
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		Vector<EnhancedJsonObject> leftOverXenodata = EnsureNoMoreThanOneXenodataMigration.enureNoMoreThanOneXenodata();
+	
+		File manifestFile = new File(xenodataDir, "manifest");
+		assertTrue("manifest file could not be found?", manifestFile.exists());
+		ObjectManifest manifestObject = new ObjectManifest(JSONFile.read(manifestFile));
+		assertEquals("manifest has wrong key count?", leftOverXenodata.size(), manifestObject.size());
+		
+		if (leftOverXenodata.size() == 1)
+		{
+			EnhancedJsonObject exnodataJson = leftOverXenodata.iterator().next();
+			String projectId = exnodataJson.getString("ProjectId");
+			assertEquals("wrong project id?", expectedProjectId, projectId);
+		}
+		
+		if (leftOverXenodata.size() > 1)
+		{
+			assertEquals("xenodata was deleted", xenodataStrings.length, leftOverXenodata.size());
+		}
+	}
+
 	public void testMoveTncProjectAreaSizeToProjectMetadata() throws Exception
 	{
 		String projectMetadataWithBothAreaSizes = "{\"NextSteps\":\"\",\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"SiteMapReference\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"ProtectedAreaCategoryNotes\":\"\",\"BudgetCostMode\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"ProtectedAreaCategories\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"TNC.OperatingUnitList\":\"\",\"WhoOverrideRefs\":\"\",\"CurrencyType\":\"\",\"LocationComments\":\"\",\"RedListSpecies\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"ProjectStatus\":\"\",\"OtherOrgProjectNumber\":\"\",\"SocialContext\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"OtherOrgRelatedProjects\":\"\",\"ProjectScope\":\"\",\"TNC.SizeInHectares\":\"456\",\"TNC.WorkbookVersionNumber\":\"\",\"BudgetCostOverride\":\"\",\"HumanPopulation\":\"\",\"OtherNotableSpecies\":\"\",\"DataEffectiveDate\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"WhenOverride\":\"\",\"ShortProjectScope\":\"\",\"HumanPopulationNotes\":\"\",\"TNC.MarineEcoRegion\":\"\",\"TimeStampModified\":\"1258406972469\",\"ProjectAreaNote\":\"\",\"XenodataRefs\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"945\"}";
