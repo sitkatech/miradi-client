@@ -37,6 +37,7 @@ import java.util.List;
 import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
@@ -63,8 +64,8 @@ import org.miradi.objecthelpers.ColorsFileLoader;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TwoLevelEntry;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectRepairer;
 import org.miradi.questions.ChoiceItem;
@@ -140,6 +141,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		
 		File appPreferencesFile = getPreferencesFile();
 		preferences.load(appPreferencesFile);
+		ensureFontSizeIsSet();
+		
 		project.addCommandExecutedListener(this);
 		
 		ToolTipManager.sharedInstance().setInitialDelay(TOOP_TIP_DELAY_MILLIS);
@@ -221,6 +224,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		}
 		
 		savePreferences();
+	}
+
+	private void ensureFontSizeIsSet()
+	{
+		if(preferences.getPanelFontSize() == 0)
+			setDataPanelFontSize(new JLabel().getFont().getSize());
 	}
 	
 	private void setLanguage(String languageCode) throws Exception
