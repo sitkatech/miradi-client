@@ -39,4 +39,9 @@ public class FontSizeQuestion extends StaticChoiceQuestion
 			new ChoiceItem("24", "24"),
 		};
 	}
+	
+	public static String getDefaultSizeCode()
+	{
+		return "12";
+	}
 }

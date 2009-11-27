@@ -124,6 +124,8 @@ import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.FontFamiliyQuestion;
+import org.miradi.questions.FontSizeQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.utils.CodeList;
@@ -816,6 +818,8 @@ public class Project
 		projectInfo.setMetadataId(createdId);
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_CURRENCY_SYMBOL, "$");
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, BudgetTimePeriodQuestion.BUDGET_BY_YEAR_CODE);
+		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY, FontFamiliyQuestion.ARIAL_CODE);
+		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_DIAGRAM_FONT_SIZE, FontSizeQuestion.getDefaultSizeCode());
 
 		getDatabase().writeProjectInfo(projectInfo);
 	}
