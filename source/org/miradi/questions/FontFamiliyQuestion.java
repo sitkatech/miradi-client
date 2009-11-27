@@ -31,18 +31,38 @@ public class FontFamiliyQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getFamilyChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", EAM.text("sans-serif")),
-			new ChoiceItem(SERIF_CODE, EAM.text("serif")),
+			new ChoiceItem("", EAM.text("Cross-platform Sans-serif")),
+			new ChoiceItem(ARIAL_CODE, EAM.text("Arial")),
+			new ChoiceItem(CALIBRI_CODE, EAM.text("Calibri")),
+			new ChoiceItem(TAHOMA_CODE, EAM.text("Tahoma")),
+			new ChoiceItem(VERDANA_CODE, EAM.text("Verdana")),
+			new ChoiceItem(SERIF_CODE, EAM.text("Cross-platform Serif")),
+			new ChoiceItem(TIMES_CODE, EAM.text("Times New Roman")),
 		};
 	}
 
 	public String getFontsString(ChoiceItem fontFamilyChoice)
 	{
 		if(fontFamilyChoice.getCode().equals(SERIF_CODE))
-			return "'Times New Roman', serif";
+			return "'serif'";
+		if(fontFamilyChoice.getCode().equals(ARIAL_CODE))
+			return "'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', 'FreeSans', 'sans-serif'";
+		if(fontFamilyChoice.getCode().equals(VERDANA_CODE))
+			return "'Verdana', 'sans-serif'";
+		if(fontFamilyChoice.getCode().equals(TAHOMA_CODE))
+			return "'Tahoma', 'sans-serif'";
+		if(fontFamilyChoice.getCode().equals(CALIBRI_CODE))
+			return "'Calibri', 'sans-serif'";
+		if(fontFamilyChoice.getCode().equals(TIMES_CODE))
+			return "'Times New Roman', 'Times', 'Nimbus Roman', 'Liberation Serif', 'DejaVu Serif', 'FreeSerif', 'serif'";
 		
-		return "'Verdana', sans-serif";
+		return "'sans-serif'";
 	}
 	
 	private static final String SERIF_CODE = "serif";
+	private static final String ARIAL_CODE = "Arial";
+	private static final String VERDANA_CODE = "Verdana";
+	private static final String TAHOMA_CODE = "Tahoma";
+	private static final String CALIBRI_CODE = "Calibri";
+	private static final String TIMES_CODE = "Times";
 }
