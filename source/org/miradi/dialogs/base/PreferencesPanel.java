@@ -76,27 +76,34 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 
 	public void dispose()
 	{
-		diagramProjectPreferencesPanel.dispose();
+		if(diagramProjectPreferencesPanel != null)
+			diagramProjectPreferencesPanel.dispose();
 		diagramProjectPreferencesPanel = null;
 		
 		if(summaryPlanningPanel != null)
 			summaryPlanningPanel.dispose();
+		summaryPlanningPanel = null;
+		
 		if (projectSettingsPanel != null)
 			projectSettingsPanel.dispose();
+		projectSettingsPanel = null;
+		
 		if(threatRatingPreferencesPanel != null)
 			threatRatingPreferencesPanel.dispose();
 		threatRatingPreferencesPanel = null;
+
 		super.dispose();
 	}
 	
 	JTabbedPane createTabs()
 	{
 		JTabbedPane tabPane = new PanelTabbedPane();
-		tabPane.addTab(EAM.text("Systemwide"), createSystemwideTab());
-		tabPane.addTab(EAM.text("Diagram"), createDiagramTab());
 		
 		if(project.isOpen())
 		{
+			tabPane.addTab(EAM.text("Systemwide"), createSystemwideTab());
+			tabPane.addTab(EAM.text("Diagram"), createDiagramTab());
+
 			summaryPlanningPanel = new SummaryPlanningPanel(mainWindow, project.getMetadata().getRef());
 			tabPane.addTab(EAM.text("Threat Ratings"), createThreatRatingTab());
 			tabPane.addTab(EAM.text("Planning"), summaryPlanningPanel);
@@ -104,22 +111,12 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 			projectSettingsPanel = new ProjectSettingsPanel(project);
 			tabPane.addTab(EAM.text("Project Settings"), projectSettingsPanel);
 		}
-		else
-		{
-			disableProjectSpecificCompoenents();
-		}
 		
 		tabPane.addTab(EAM.text("Data Location"), createDataLocationTab());
 		
 		return tabPane;
 	}
 	
-	private void disableProjectSpecificCompoenents()
-	{
-		panelFontFamilyCombo.setEnabled(false);
-		panelFontSizeCombo.setEnabled(false);
-	}
-
 	private JPanel createDataLocationTab()
 	{
 		return new DataLocationChooserPanel(mainWindow);
