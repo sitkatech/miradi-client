@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.database.migrations;
 
 import java.io.File;
+import java.util.Vector;
 
 import org.miradi.database.DataUpgrader;
 import org.miradi.database.JSONFile;
@@ -172,5 +173,14 @@ public class MigrationsForMiradi3
 	{
 		MoveTncProjectAreaSizeWithinProjectMetadataMigration.moveTncProjectAreaSize();
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 51);
+	}
+	
+	public static void upgradeToVersion52() throws Exception
+	{
+		Vector<EnhancedJsonObject> duplicates = EnsureNoMoreThanOneXenodataMigration.enureNoMoreThanOneXenodata();
+		if (duplicates.size() > 1)
+			EAM.notifyDialog(EAM.text("<html>More than one Tnc Project exists.  Please contact the Miradi Team for further assistance.</html>"));
+		
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 52);
 	}
 }
