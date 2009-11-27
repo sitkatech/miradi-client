@@ -104,11 +104,14 @@ public class FontFamiliyQuestion extends StaticChoiceQuestion
 	private static final String CALIBRI_CODE = "Calibri";
 	private static final String TIMES_CODE = "Times";
 	
-	private static final String SANS_FAMILY_NAME = "SansSerif";
-	private static final String SERIF_FAMILY_NAME = "Serif";
+	private static final String SANS_JAVA_FAMILY_NAME = "SansSerif";
+	private static final String SERIF_JAVA_FAMILY_NAME = "Serif";
+	private static final String SANS_HTML_FAMILY_NAME = "sans-serif";
+	private static final String SERIF_HTML_FAMILY_NAME = "serif";
 
 	private static final String[] sansFamilies = new String[] {
-		SANS_FAMILY_NAME,
+		SANS_HTML_FAMILY_NAME,
+		SANS_JAVA_FAMILY_NAME,
 		};
 	private static final String[] arialFamilies = new String[] {
 		"Arial", 
@@ -116,22 +119,27 @@ public class FontFamiliyQuestion extends StaticChoiceQuestion
 		"Liberation Sans", 
 		"DejaVu Sans", 
 		"FreeSans", 
-		SANS_FAMILY_NAME,
+		SANS_HTML_FAMILY_NAME,
+		SANS_JAVA_FAMILY_NAME,
 		};
 	private static final String[] verdanaFamilies = new String[] {
 		"Verdana", 
-		SANS_FAMILY_NAME,
+		SANS_HTML_FAMILY_NAME,
+		SANS_JAVA_FAMILY_NAME,
 		};
 	private static final String[] tahomaFamilies = new String[] {
 		"Tahoma", 
-		SANS_FAMILY_NAME,
+		SANS_HTML_FAMILY_NAME,
+		SANS_JAVA_FAMILY_NAME,
 		};
 	private static final String[] calibriFamilies = new String[] {
 		"Calibri", 
-		SANS_FAMILY_NAME,
+		SANS_HTML_FAMILY_NAME,
+		SANS_JAVA_FAMILY_NAME,
 		};
 	private static final String[] serifFamilies = new String[] {
-		SERIF_FAMILY_NAME,
+		SERIF_HTML_FAMILY_NAME,
+		SERIF_JAVA_FAMILY_NAME,
 		};
 	private static final String[] timesFamilies = new String[] {
 		"Times New Roman",
@@ -140,6 +148,7 @@ public class FontFamiliyQuestion extends StaticChoiceQuestion
 		"Liberation Serif", 
 		"DejaVu Serif", 
 		"FreeSerif", 
-		SERIF_FAMILY_NAME,
+		SERIF_HTML_FAMILY_NAME,
+		SERIF_JAVA_FAMILY_NAME,
 		};
 }
