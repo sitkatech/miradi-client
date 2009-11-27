@@ -98,7 +98,7 @@ public class FontFamiliyQuestion extends StaticChoiceQuestion
 	}
 	
 	private static final String SERIF_CODE = "serif";
-	private static final String ARIAL_CODE = "Arial";
+	public static final String ARIAL_CODE = "Arial";
 	private static final String VERDANA_CODE = "Verdana";
 	private static final String TAHOMA_CODE = "Tahoma";
 	private static final String CALIBRI_CODE = "Calibri";
