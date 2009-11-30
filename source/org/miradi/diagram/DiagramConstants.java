@@ -58,7 +58,7 @@ public class DiagramConstants
 		new Color(235, 184, 82), 
 		new Color(215, 164, 62), 
 		new Color(195, 124, 42),};
-	public static final Color[] scopeColorChoices = {
+	public static final Color[] biodiversityTargetScopeColorChoices = {
 		new Color(0, 255, 0), 
 		new Color(128, 255, 128), 
 		new Color(0, 220, 0), 
@@ -88,7 +88,7 @@ public class DiagramConstants
 	public static final Color DEFAULT_DIRECT_THREAT_COLOR = directThreatColorChoices[0];
 	public static final Color DEFAULT_CONTRIBUTING_FACTOR_COLOR = contributingFactorColorChoices[0];
 	public static final Color DEFAULT_STRATEGY_COLOR = strategyColorChoices[0];
-	public static final Color DEFAULT_SCOPE_COLOR = scopeColorChoices[1];
+	public static final Color DEFAULT_SCOPE_COLOR = biodiversityTargetScopeColorChoices[1];
 	public static final Color DEFAULT_HUMAN_WELFARE_SCOPE_COLOR = humanWelfareScopeColorChoices[0];
 	public static final Color DEFAULT_INTERMEDIATE_RESULT_COLOR = intermediateResultChoices[4];
 	public static final Color DEFAULT_THREAT_REDUCTION_RESULT_COLOR = threatReductionResultChoices[4];

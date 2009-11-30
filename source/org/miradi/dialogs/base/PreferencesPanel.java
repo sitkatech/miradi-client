@@ -226,7 +226,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		diagramSystemPreferencesTab.add(targetDropdown);
 
 		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Biodiversity Target Scope (Darker green)")));
-		biodiversityTargetScopeDropdown = createColorsDropdown(DiagramConstants.scopeColorChoices);
+		biodiversityTargetScopeDropdown = createColorsDropdown(DiagramConstants.biodiversityTargetScopeColorChoices);
 		biodiversityTargetScopeDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX));
 		biodiversityTargetScopeDropdown.addActionListener(this);
 		diagramSystemPreferencesTab.add(biodiversityTargetScopeDropdown);
