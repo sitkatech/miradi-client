@@ -201,59 +201,15 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		diagramTab.add(new UiLabel(" "));
 		diagramTab.add(new PanelTitleLabel(EAM.text("Choose the colors that look best on your system:")));
 
-		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Strategy (Yellow)")));
-		interventionDropdown = createColorsDropdown(DiagramConstants.strategyColorChoices);
-		interventionDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_STRATEGY));
-		interventionDropdown.addActionListener(this);
-		diagramSystemPreferencesTab.add(interventionDropdown);
-
-		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Direct Threat (Pink)")));
-		directThreatDropdown = createColorsDropdown(DiagramConstants.directThreatColorChoices);
-		directThreatDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT));
-		directThreatDropdown.addActionListener(this);
-		diagramSystemPreferencesTab.add(directThreatDropdown);
-
-		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Contributing Factor (Orange)")));
-		indirectFactorDropdown = createColorsDropdown(DiagramConstants.contributingFactorColorChoices);
-		indirectFactorDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR));
-		indirectFactorDropdown.addActionListener(this);
-		diagramSystemPreferencesTab.add(indirectFactorDropdown);
-
-		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Biodiversity Target (Lighter Green)")));
-		biodiversityTargetDropdown = createColorsDropdown(DiagramConstants.targetColorChoices);
-		biodiversityTargetDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_TARGET));
-		biodiversityTargetDropdown.addActionListener(this);
-		diagramSystemPreferencesTab.add(biodiversityTargetDropdown);
-		
-		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Human Welfare Target (Lighter Brown)")));
-		humanWelfareTargetDropdown = createColorsDropdown(DiagramConstants.humanWelfareTargetColorChoices);
-		humanWelfareTargetDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_HUMAN_WELFARE_TARGET));
-		humanWelfareTargetDropdown.addActionListener(this);
-		diagramSystemPreferencesTab.add(humanWelfareTargetDropdown);
-
-		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Biodiversity Target Scope (Darker Green)")));
-		biodiversityTargetScopeDropdown = createColorsDropdown(DiagramConstants.biodiversityTargetScopeColorChoices);
-		biodiversityTargetScopeDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX));
-		biodiversityTargetScopeDropdown.addActionListener(this);
-		diagramSystemPreferencesTab.add(biodiversityTargetScopeDropdown);
-		
-		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Human Welfare Target Scope (Darker Brown)")));
-		humanWelfareScopeDropDown = createColorsDropdown(DiagramConstants.humanWelfareScopeColorChoices);
-		humanWelfareScopeDropDown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX));
-		humanWelfareScopeDropDown.addActionListener(this);
-		diagramSystemPreferencesTab.add(humanWelfareScopeDropDown);
-
-		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Intermediate Result (Light Blue)")));
-		intermediateResultDropDown = createColorsDropdown(DiagramConstants.intermediateResultChoices);
-		intermediateResultDropDown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT));
-		intermediateResultDropDown.addActionListener(this);
-		diagramSystemPreferencesTab.add(intermediateResultDropDown);
-
-		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Threat Reduction Result (Light Purple)")));
-		threatReductionResultDropDown = createColorsDropdown(DiagramConstants.threatReductionResultChoices);
-		threatReductionResultDropDown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT));
-		threatReductionResultDropDown.addActionListener(this);
-		diagramSystemPreferencesTab.add(threatReductionResultDropDown);
+		interventionDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Strategy (Yellow)"), DiagramConstants.strategyColorChoices, AppPreferences.TAG_COLOR_STRATEGY);
+		directThreatDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Direct Threat (Pink)"), DiagramConstants.directThreatColorChoices, AppPreferences.TAG_COLOR_DIRECT_THREAT);
+		indirectFactorDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Contributing Factor (Orange)"), DiagramConstants.contributingFactorColorChoices, AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR);
+		biodiversityTargetDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Biodiversity Target (Lighter Green)"), DiagramConstants.targetColorChoices, AppPreferences.TAG_COLOR_TARGET);
+		humanWelfareTargetDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Human Welfare Target (Lighter Brown)"), DiagramConstants.humanWelfareTargetColorChoices, AppPreferences.TAG_COLOR_HUMAN_WELFARE_TARGET);
+		biodiversityTargetScopeDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Biodiversity Target Scope (Darker Green)"), DiagramConstants.biodiversityTargetScopeColorChoices, AppPreferences.TAG_COLOR_SCOPE_BOX);
+		humanWelfareScopeDropDown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Human Welfare Target Scope (Darker Brown)"), DiagramConstants.humanWelfareScopeColorChoices, AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX);
+		intermediateResultDropDown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Intermediate Result (Light Blue)"), DiagramConstants.intermediateResultChoices, AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT);
+		threatReductionResultDropDown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Threat Reduction Result (Light Purple)"), DiagramConstants.threatReductionResultChoices, AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT);
 
 		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Show Diagram Grid")));
 		gridVisibleCheckBox = new PanelCheckBox();
@@ -283,10 +239,15 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		return diagramTab;
 	}
 
-	private UiComboBox createColorsDropdown(Color[] colorChoices)
+	private UiComboBox createAndAddColorDropdown(JPanel diagramSystemPreferencesTab, String label, Color[] colorChoices, String colorTag)
 	{
+		diagramSystemPreferencesTab.add(new PanelTitleLabel(label));
 		UiComboBox dropdown = new PanelComboBox(colorChoices);
 		dropdown.setRenderer(new ColorItemRenderer());
+		dropdown.setSelectedItem(mainWindow.getColorPreference(colorTag));
+		dropdown.addActionListener(this);
+		diagramSystemPreferencesTab.add(dropdown);
+		
 		return dropdown;
 	}
 
