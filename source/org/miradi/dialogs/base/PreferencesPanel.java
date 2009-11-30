@@ -220,10 +220,10 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		diagramSystemPreferencesTab.add(indirectFactorDropdown);
 
 		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Biodiversity Target (Lighter green)")));
-		targetDropdown = createColorsDropdown(DiagramConstants.targetColorChoices);
-		targetDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_TARGET));
-		targetDropdown.addActionListener(this);
-		diagramSystemPreferencesTab.add(targetDropdown);
+		biodiversityTargetDropdown = createColorsDropdown(DiagramConstants.targetColorChoices);
+		biodiversityTargetDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_TARGET));
+		biodiversityTargetDropdown.addActionListener(this);
+		diagramSystemPreferencesTab.add(biodiversityTargetDropdown);
 
 		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Biodiversity Target Scope (Darker green)")));
 		biodiversityTargetScopeDropdown = createColorsDropdown(DiagramConstants.biodiversityTargetScopeColorChoices);
@@ -295,7 +295,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		Color directThreatColor = (Color)directThreatDropdown.getSelectedItem();
 		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT, directThreatColor);
 
-		Color targetColor = (Color)targetDropdown.getSelectedItem();
+		Color targetColor = (Color)biodiversityTargetDropdown.getSelectedItem();
 		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_TARGET, targetColor);
 
 		Color scopeColor = (Color)biodiversityTargetScopeDropdown.getSelectedItem();
@@ -408,7 +408,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private UiComboBox interventionDropdown;
 	private UiComboBox directThreatDropdown;
 	private UiComboBox indirectFactorDropdown;
-	private UiComboBox targetDropdown;
+	private UiComboBox biodiversityTargetDropdown;
 	private UiComboBox biodiversityTargetScopeDropdown;
 	private UiComboBox humanWelfareScopeDropDown;
 	private UiComboBox intermediateResultDropDown;
