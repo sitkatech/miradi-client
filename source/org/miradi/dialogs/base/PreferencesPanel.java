@@ -219,13 +219,13 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		indirectFactorDropdown.addActionListener(this);
 		diagramSystemPreferencesTab.add(indirectFactorDropdown);
 
-		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Target (Light Green)")));
+		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Biodiversity Target (Lighter green)")));
 		targetDropdown = createColorsDropdown(DiagramConstants.targetColorChoices);
 		targetDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_TARGET));
 		targetDropdown.addActionListener(this);
 		diagramSystemPreferencesTab.add(targetDropdown);
 
-		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Project Scope (Dark Green)")));
+		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Biodiversity Target Scope (Darker green)")));
 		scopeDropdown = createColorsDropdown(DiagramConstants.scopeColorChoices);
 		scopeDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX));
 		scopeDropdown.addActionListener(this);
