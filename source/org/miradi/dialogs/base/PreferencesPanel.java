@@ -231,7 +231,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		scopeDropdown.addActionListener(this);
 		diagramSystemPreferencesTab.add(scopeDropdown);
 		
-		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Human Welfare Scope (Brown)")));
+		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Human Welfare Target Scope (Darker brown)")));
 		humanWelfareScopeDropDown = createColorsDropdown(DiagramConstants.humanWelfareScopeColorChoices);
 		humanWelfareScopeDropDown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX));
 		humanWelfareScopeDropDown.addActionListener(this);
