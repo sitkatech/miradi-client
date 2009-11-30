@@ -226,10 +226,10 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		diagramSystemPreferencesTab.add(targetDropdown);
 
 		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Biodiversity Target Scope (Darker green)")));
-		scopeDropdown = createColorsDropdown(DiagramConstants.scopeColorChoices);
-		scopeDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX));
-		scopeDropdown.addActionListener(this);
-		diagramSystemPreferencesTab.add(scopeDropdown);
+		biodiversityTargetScopeDropdown = createColorsDropdown(DiagramConstants.scopeColorChoices);
+		biodiversityTargetScopeDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX));
+		biodiversityTargetScopeDropdown.addActionListener(this);
+		diagramSystemPreferencesTab.add(biodiversityTargetScopeDropdown);
 		
 		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Human Welfare Target Scope (Darker brown)")));
 		humanWelfareScopeDropDown = createColorsDropdown(DiagramConstants.humanWelfareScopeColorChoices);
@@ -298,7 +298,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		Color targetColor = (Color)targetDropdown.getSelectedItem();
 		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_TARGET, targetColor);
 
-		Color scopeColor = (Color)scopeDropdown.getSelectedItem();
+		Color scopeColor = (Color)biodiversityTargetScopeDropdown.getSelectedItem();
 		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX, scopeColor);
 
 		Color humanWelfareScopeColor = (Color)humanWelfareScopeDropDown.getSelectedItem();
@@ -409,7 +409,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private UiComboBox directThreatDropdown;
 	private UiComboBox indirectFactorDropdown;
 	private UiComboBox targetDropdown;
-	private UiComboBox scopeDropdown;
+	private UiComboBox biodiversityTargetScopeDropdown;
 	private UiComboBox humanWelfareScopeDropDown;
 	private UiComboBox intermediateResultDropDown;
 	private UiComboBox threatReductionResultDropDown;
