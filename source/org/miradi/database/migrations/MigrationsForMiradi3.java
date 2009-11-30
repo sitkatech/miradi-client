@@ -179,7 +179,8 @@ public class MigrationsForMiradi3
 	{
 		Vector<EnhancedJsonObject> duplicates = EnsureNoMoreThanOneXenodataMigration.enureNoMoreThanOneXenodata();
 		if (duplicates.size() > 1)
-			EAM.notifyDialog(EAM.text("<html>More than one Tnc Project exists.  Please contact the Miradi Team for further assistance.</html>"));
+			EAM.notifyDialog(EAM.text("<html>This project has more than one TNC ConPro project ID. Please contact the <br>" +
+									  "Miradi Team for further assistance.</html>"));
 		
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 52);
 	}
