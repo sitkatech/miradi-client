@@ -26,9 +26,11 @@ public class NumberData extends ObjectData
 	public NumberData(String tagToUse)
 	{
 		super(tagToUse);
+
 		value = Double.NaN;
 	}
 	
+	@Override
 	public void set(String newValue) throws Exception
 	{
 		if(newValue.length() == 0)
@@ -47,13 +49,16 @@ public class NumberData extends ObjectData
 		}
 	}
 
+	@Override
 	public String get()
 	{
 		if(new Double(value).isNaN())
 			return "";
+
 		return Double.toString(value);
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof NumberData))
@@ -63,11 +68,11 @@ public class NumberData extends ObjectData
 		return new Double(value).equals(new Double(other.value));
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return (int)value;
 	}
-
 
 	double value;
 }
