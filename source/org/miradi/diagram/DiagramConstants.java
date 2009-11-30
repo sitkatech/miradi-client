@@ -44,7 +44,6 @@ public class DiagramConstants
 	public static final Color[] contributingFactorColorChoices = {
 		new Color(255, 190, 0), 
 		new Color(255, 128, 0), 
-		new Color(200, 128, 0), 
 		new Color(255, 220, 0), 
 		new Color(255, 190, 64), 
 		new Color(255, 240, 200)};
