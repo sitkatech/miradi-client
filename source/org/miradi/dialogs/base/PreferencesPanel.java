@@ -251,34 +251,17 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		return dropdown;
 	}
 
-	void update()
+	private void update()
 	{
-		Color interventionColor = (Color)interventionDropdown.getSelectedItem();
-		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_STRATEGY, interventionColor);
-
-		Color indirectFactorColor = (Color)indirectFactorDropdown.getSelectedItem();
-		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR, indirectFactorColor);
-
-		Color directThreatColor = (Color)directThreatDropdown.getSelectedItem();
-		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT, directThreatColor);
-
-		Color targetColor = (Color)biodiversityTargetDropdown.getSelectedItem();
-		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_TARGET, targetColor);
-		
-		Color humanWelfareTargetColor = (Color)humanWelfareTargetDropdown.getSelectedItem();
-		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_HUMAN_WELFARE_TARGET, humanWelfareTargetColor);
-
-		Color scopeColor = (Color)biodiversityTargetScopeDropdown.getSelectedItem();
-		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX, scopeColor);
-
-		Color humanWelfareScopeColor = (Color)humanWelfareScopeDropDown.getSelectedItem();
-		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX, humanWelfareScopeColor);
-		
-		Color intermediateResultColor = (Color) intermediateResultDropDown.getSelectedItem();
-		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT, intermediateResultColor);
-		
-		Color threatReductionResultColor = (Color) threatReductionResultDropDown.getSelectedItem();
-		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT, threatReductionResultColor);
+		setColorPreference(interventionDropdown, AppPreferences.TAG_COLOR_STRATEGY);
+		setColorPreference(indirectFactorDropdown, AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR);
+		setColorPreference(directThreatDropdown, AppPreferences.TAG_COLOR_DIRECT_THREAT);
+		setColorPreference(biodiversityTargetDropdown, AppPreferences.TAG_COLOR_TARGET);
+		setColorPreference(humanWelfareTargetDropdown, AppPreferences.TAG_COLOR_HUMAN_WELFARE_TARGET);
+		setColorPreference(biodiversityTargetScopeDropdown, AppPreferences.TAG_COLOR_SCOPE_BOX);
+		setColorPreference(humanWelfareScopeDropDown, AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX);
+		setColorPreference(intermediateResultDropDown, AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT);
+		setColorPreference(threatReductionResultDropDown, AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT);
 		
 		getMainWindow().setBooleanPreference(AppPreferences.TAG_GRID_VISIBLE, gridVisibleCheckBox.isSelected());
 		
@@ -303,6 +286,12 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 			EAM.logException(e);
 			EAM.errorDialog(EAM.text("Unable to save preferences"));
 		}
+	}
+
+	private void setColorPreference(UiComboBox colorDropDown, String tagColorStrategy)
+	{
+		Color interventionColor = (Color)colorDropDown.getSelectedItem();
+		getMainWindow().setColorPreference(tagColorStrategy, interventionColor);
 	}
 	
 	public String getSelectedItemQuestionBox(UiComboBox combo)
