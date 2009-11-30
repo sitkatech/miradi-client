@@ -66,7 +66,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	{
 		super(mainWindowToUse.getProject());
 		mainWindow = mainWindowToUse;
-		project = mainWindow.getProject();
+		project = getMainWindow().getProject();
 		add(createTabs(), BorderLayout.CENTER);
 		
 		setBackground(AppPreferences.getDarkPanelBackgroundColor());
@@ -104,7 +104,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 			tabPane.addTab(EAM.text("Systemwide"), createSystemwideTab());
 			tabPane.addTab(EAM.text("Diagram"), createDiagramTab());
 
-			summaryPlanningPanel = new SummaryPlanningPanel(mainWindow, project.getMetadata().getRef());
+			summaryPlanningPanel = new SummaryPlanningPanel(getMainWindow(), project.getMetadata().getRef());
 			tabPane.addTab(EAM.text("Threat Ratings"), createThreatRatingTab());
 			tabPane.addTab(EAM.text("Planning"), summaryPlanningPanel);
 			
@@ -119,7 +119,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	
 	private JPanel createDataLocationTab()
 	{
-		return new DataLocationChooserPanel(mainWindow);
+		return new DataLocationChooserPanel(getMainWindow());
 	}
 	
 	private JPanel createSystemwideTab()
@@ -127,15 +127,15 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		JPanel htmlTab = new JPanel(new BasicGridLayout(0,2));
 		htmlTab.setBackground(AppPreferences.getDataPanelBackgroundColor());
 
-		int panelFontSize = mainWindow.getDataPanelFontSize();
+		int panelFontSize = getMainWindow().getDataPanelFontSize();
 		String panelSizeAsString = Integer.toString(panelFontSize);
 		panelFontSizeCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Font Size"), new FontSizeQuestion(), panelSizeAsString);
 			
-		String panelFontFamily = mainWindow.getDataPanelFontFamily();
+		String panelFontFamily = getMainWindow().getDataPanelFontFamily();
 		panelFontFamilyCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Font Family"), new FontFamiliyQuestion(), panelFontFamily);
 		
 		createAndAddBlankRow(htmlTab);
-		String rowHeightMode = mainWindow.getRowHeightModeString();
+		String rowHeightMode = getMainWindow().getRowHeightModeString();
 		ChoiceQuestion rowHeightModeQuestion = StaticQuestionManager.getQuestion(TableRowHeightModeQuestion.class);
 		panelRowHeightModeCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Table Row Height Mode"), rowHeightModeQuestion, rowHeightMode);
 		return htmlTab;
@@ -180,7 +180,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		threatTab.add(new PanelTitleLabel(EAM.text("Show Ratings in Cell")));
 		cellRatingsVisibleCheckBox = new PanelCheckBox();
 		cellRatingsVisibleCheckBox.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		cellRatingsVisibleCheckBox.setSelected(mainWindow.getBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE));
+		cellRatingsVisibleCheckBox.setSelected(getMainWindow().getBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE));
 		cellRatingsVisibleCheckBox.addActionListener(this);
 		threatTab.add(cellRatingsVisibleCheckBox);
 		
@@ -213,7 +213,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 
 		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Show Diagram Grid")));
 		gridVisibleCheckBox = new PanelCheckBox();
-		gridVisibleCheckBox.setSelected(mainWindow.getBooleanPreference(AppPreferences.TAG_GRID_VISIBLE));
+		gridVisibleCheckBox.setSelected(getMainWindow().getBooleanPreference(AppPreferences.TAG_GRID_VISIBLE));
 		gridVisibleCheckBox.addActionListener(this);
 		diagramSystemPreferencesTab.add(gridVisibleCheckBox);
 		
@@ -233,7 +233,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		diagramTab.add(diagramSystemPreferencesTab);
 		diagramTab.add(bottomText);
 
-		diagramProjectPreferencesPanel = new DiagramProjectPreferencesPanel(mainWindow, project, project.getProjectInfo());
+		diagramProjectPreferencesPanel = new DiagramProjectPreferencesPanel(getMainWindow(), project, project.getProjectInfo());
 		diagramTab.add(diagramProjectPreferencesPanel);
 		
 		return diagramTab;
@@ -244,7 +244,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		diagramSystemPreferencesTab.add(new PanelTitleLabel(label));
 		UiComboBox dropdown = new PanelComboBox(colorChoices);
 		dropdown.setRenderer(new ColorItemRenderer());
-		dropdown.setSelectedItem(mainWindow.getColorPreference(colorTag));
+		dropdown.setSelectedItem(getMainWindow().getColorPreference(colorTag));
 		dropdown.addActionListener(this);
 		diagramSystemPreferencesTab.add(dropdown);
 		
@@ -254,49 +254,49 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	void update()
 	{
 		Color interventionColor = (Color)interventionDropdown.getSelectedItem();
-		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_STRATEGY, interventionColor);
+		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_STRATEGY, interventionColor);
 
 		Color indirectFactorColor = (Color)indirectFactorDropdown.getSelectedItem();
-		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR, indirectFactorColor);
+		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR, indirectFactorColor);
 
 		Color directThreatColor = (Color)directThreatDropdown.getSelectedItem();
-		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT, directThreatColor);
+		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT, directThreatColor);
 
 		Color targetColor = (Color)biodiversityTargetDropdown.getSelectedItem();
-		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_TARGET, targetColor);
+		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_TARGET, targetColor);
 		
 		Color humanWelfareTargetColor = (Color)humanWelfareTargetDropdown.getSelectedItem();
-		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_HUMAN_WELFARE_TARGET, humanWelfareTargetColor);
+		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_HUMAN_WELFARE_TARGET, humanWelfareTargetColor);
 
 		Color scopeColor = (Color)biodiversityTargetScopeDropdown.getSelectedItem();
-		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX, scopeColor);
+		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX, scopeColor);
 
 		Color humanWelfareScopeColor = (Color)humanWelfareScopeDropDown.getSelectedItem();
-		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX, humanWelfareScopeColor);
+		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX, humanWelfareScopeColor);
 		
 		Color intermediateResultColor = (Color) intermediateResultDropDown.getSelectedItem();
-		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT, intermediateResultColor);
+		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT, intermediateResultColor);
 		
 		Color threatReductionResultColor = (Color) threatReductionResultDropDown.getSelectedItem();
-		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT, threatReductionResultColor);
+		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT, threatReductionResultColor);
 		
-		mainWindow.setBooleanPreference(AppPreferences.TAG_GRID_VISIBLE, gridVisibleCheckBox.isSelected());
+		getMainWindow().setBooleanPreference(AppPreferences.TAG_GRID_VISIBLE, gridVisibleCheckBox.isSelected());
 		
 		if(cellRatingsVisibleCheckBox != null)
-			mainWindow.setBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE, cellRatingsVisibleCheckBox.isSelected());
+			getMainWindow().setBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE, cellRatingsVisibleCheckBox.isSelected());
 
 		String panelFontSizeValue = getSelectedItemQuestionBox(panelFontSizeCombo);
-		mainWindow.setDataPanelFontSize(Integer.parseInt(panelFontSizeValue));
+		getMainWindow().setDataPanelFontSize(Integer.parseInt(panelFontSizeValue));
 		
 		String panelFontFamilyValue = getSelectedItemQuestionBox(panelFontFamilyCombo);
-		mainWindow.setDataPanelFontFamily(panelFontFamilyValue);
+		getMainWindow().setDataPanelFontFamily(panelFontFamilyValue);
 		
 		String rowHeightMode = getSelectedItemQuestionBox(panelRowHeightModeCombo);
-		mainWindow.setRowHeightMode(rowHeightMode);
+		getMainWindow().setRowHeightMode(rowHeightMode);
 
 		try
 		{
-			mainWindow.savePreferences();
+			getMainWindow().savePreferences();
 		}
 		catch (Exception e)
 		{
@@ -366,6 +366,11 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	public void actionPerformed(ActionEvent e)
 	{
 		update();
+	}
+	
+	private MainWindow getMainWindow()
+	{
+		return mainWindow;
 	}
 
 	private Project project;
