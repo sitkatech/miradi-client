@@ -37,7 +37,7 @@ public class ScopeBoxColorQuestion extends DynamicChoiceQuestion
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem("", EAM.text("Green (Biodiversity Target)"), getTargetColor(AppPreferences.TAG_COLOR_SCOPE_BOX)),
-				new ChoiceItem("darkGray", EAM.text("Brown (Human Welfare Target)"), getTargetColor(AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX)),
+				new ChoiceItem("HumanWelfareTargetBrown", EAM.text("Brown (Human Welfare Target)"), getTargetColor(AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX)),
 			};
 	}
 
