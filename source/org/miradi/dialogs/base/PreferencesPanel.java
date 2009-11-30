@@ -219,19 +219,25 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		indirectFactorDropdown.addActionListener(this);
 		diagramSystemPreferencesTab.add(indirectFactorDropdown);
 
-		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Biodiversity Target (Lighter green)")));
+		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Biodiversity Target (Lighter Green)")));
 		biodiversityTargetDropdown = createColorsDropdown(DiagramConstants.targetColorChoices);
 		biodiversityTargetDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_TARGET));
 		biodiversityTargetDropdown.addActionListener(this);
 		diagramSystemPreferencesTab.add(biodiversityTargetDropdown);
+		
+		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Human Welfare Target (Lighter Brown)")));
+		humanWelfareTargetDropdown = createColorsDropdown(DiagramConstants.humanWelfareTargetColorChoices);
+		humanWelfareTargetDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_HUMAN_WELFARE_TARGET));
+		humanWelfareTargetDropdown.addActionListener(this);
+		diagramSystemPreferencesTab.add(humanWelfareTargetDropdown);
 
-		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Biodiversity Target Scope (Darker green)")));
+		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Biodiversity Target Scope (Darker Green)")));
 		biodiversityTargetScopeDropdown = createColorsDropdown(DiagramConstants.biodiversityTargetScopeColorChoices);
 		biodiversityTargetScopeDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX));
 		biodiversityTargetScopeDropdown.addActionListener(this);
 		diagramSystemPreferencesTab.add(biodiversityTargetScopeDropdown);
 		
-		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Human Welfare Target Scope (Darker brown)")));
+		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Human Welfare Target Scope (Darker Brown)")));
 		humanWelfareScopeDropDown = createColorsDropdown(DiagramConstants.humanWelfareScopeColorChoices);
 		humanWelfareScopeDropDown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX));
 		humanWelfareScopeDropDown.addActionListener(this);
@@ -297,6 +303,9 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 
 		Color targetColor = (Color)biodiversityTargetDropdown.getSelectedItem();
 		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_TARGET, targetColor);
+		
+		Color humanWelfareTargetColor = (Color)humanWelfareTargetDropdown.getSelectedItem();
+		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_HUMAN_WELFARE_TARGET, humanWelfareTargetColor);
 
 		Color scopeColor = (Color)biodiversityTargetScopeDropdown.getSelectedItem();
 		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX, scopeColor);
@@ -409,6 +418,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private UiComboBox directThreatDropdown;
 	private UiComboBox indirectFactorDropdown;
 	private UiComboBox biodiversityTargetDropdown;
+	private UiComboBox humanWelfareTargetDropdown;
 	private UiComboBox biodiversityTargetScopeDropdown;
 	private UiComboBox humanWelfareScopeDropDown;
 	private UiComboBox intermediateResultDropDown;
