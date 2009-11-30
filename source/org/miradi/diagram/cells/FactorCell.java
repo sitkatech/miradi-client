@@ -111,7 +111,7 @@ abstract public class FactorCell extends EAMGraphCell
 		else if(factor.getDetails().length() > 0)
 		{
 			tip += "<BR>" + EAM.text("Details:");
-			tip += "<BR>" + factor.getDetails();
+			tip += "<BR>" + HtmlUtilities.plainStringWithNewlinesToHtml(factor.getDetails());
 		}
 		
 		if(bullets.size() == 0)
