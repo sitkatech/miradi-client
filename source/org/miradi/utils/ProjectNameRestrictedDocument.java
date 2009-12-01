@@ -45,12 +45,17 @@ public class ProjectNameRestrictedDocument extends PlainDocument
 		for (int index = 0; index < value.length(); ++index)
 		{
 			char character = value.charAt(index);
-			if (EAM.isValidCharacter(character))
+			if (isValidCharacter(character))
 			{
 				newValue.append(character);
 			}
 		}
 		
 		return newValue.toString();	
+	}
+
+	private boolean isValidCharacter(char character)
+	{
+		return EAM.isValidCharacter(character);
 	}
 }
