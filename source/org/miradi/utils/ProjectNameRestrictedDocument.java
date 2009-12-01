@@ -53,7 +53,7 @@ public class ProjectNameRestrictedDocument extends AbstractRestrictedDocument
 		return newValue.toString();	
 	}
 
-	private boolean isValidCharacter(char character)
+	protected boolean isValidCharacter(char character)
 	{
 		return EAM.isValidCharacter(character);
 	}
