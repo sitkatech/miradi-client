@@ -58,5 +58,5 @@ abstract public class AbstractRestrictedDocument extends PlainDocument
 	
 	abstract protected boolean isValidCharacter(char character);
 	
-	private static final int DEFAULT_MAX_VALUE_LENGTH = Integer.MAX_VALUE;
+	private static final int DEFAULT_MAX_VALUE_LENGTH = 25;
 }
