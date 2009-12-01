@@ -27,17 +27,11 @@ public class ObjectNumericInputField extends ObjectAdjustableStringInputField
 {
 	public ObjectNumericInputField(Project projectToUse, int objectType, BaseId objectId, String tag, int column)
 	{
-		super(projectToUse, objectType, objectId, tag, column);
+		super(projectToUse, objectType, objectId, tag, column, new NumericRestrictedDocument());
 	}
 		
 	public ObjectNumericInputField(Project projectToUse, int objectType, BaseId objectId, String tag)
 	{
 		this(projectToUse, objectType, objectId, tag, 10);
-	}
-	
-	@Override
-	protected void setTextFieldDocument()
-	{
-		getTextField().setDocument(new NumericRestrictedDocument());
 	}
 }

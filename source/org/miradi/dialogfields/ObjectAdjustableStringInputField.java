@@ -29,9 +29,10 @@ import org.miradi.project.Project;
 
 public class ObjectAdjustableStringInputField extends ObjectStringInputField
 {
-	public ObjectAdjustableStringInputField(Project projectToUse, int objectType, BaseId objectId, String tag, int columnsToUse)
+	public ObjectAdjustableStringInputField(Project projectToUse, int objectType, BaseId objectId, String tag, int columnsToUse, Document document)
 	{
-		super(projectToUse, objectType, objectId, tag, columnsToUse);
+		super(projectToUse, objectType, objectId, tag, columnsToUse, document);
+		
 		DocumentEventHandler handler = new DocumentEventHandler();
 		((JTextComponent)getComponent()).getDocument().addUndoableEditListener(handler);
 		columns = columnsToUse;

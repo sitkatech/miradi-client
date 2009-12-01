@@ -37,14 +37,28 @@ public class ObjectStringInputField extends ObjectTextInputField
 {
 	public ObjectStringInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(0, columnsToUse));
+		this(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(0, columnsToUse));		
+	}
+	
+	public ObjectStringInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse, Document document)
+	{
+		this(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(0, columnsToUse), document);
+	}
+	
+	private ObjectStringInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, PanelTextArea componentToUse)
+	{
+		this(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, componentToUse, componentToUse.getDocument());
+	}
+
+	private ObjectStringInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, PanelTextArea componentToUse, Document document)
+	{
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, componentToUse, document);
 		
 		DocumentEventHandler handler = new DocumentEventHandler();
 		((JTextComponent)getComponent()).getDocument().addUndoableEditListener(handler);
 		((UiTextArea)getComponent()).setWrapStyleWord(true);
 		((UiTextArea)getComponent()).setLineWrap(true);
 	}
-
 
 	class DocumentEventHandler implements  UndoableEditListener
 	{
