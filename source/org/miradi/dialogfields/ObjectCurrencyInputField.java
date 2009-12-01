@@ -22,7 +22,7 @@ package org.miradi.dialogfields;
 import org.miradi.ids.BaseId;
 import org.miradi.project.Project;
 
-public class ObjectCurrencyInputField extends ObjectStringInputField
+public class ObjectCurrencyInputField extends ObjectNumericInputField
 {
 	public ObjectCurrencyInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse)
 	{
