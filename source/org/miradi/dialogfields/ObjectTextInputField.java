@@ -24,6 +24,7 @@ import java.awt.Color;
 
 import javax.swing.JComponent;
 import javax.swing.text.DefaultCaret;
+import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
 
 import org.miradi.actions.Actions;
@@ -36,10 +37,15 @@ public class ObjectTextInputField extends ObjectDataInputField
 {
 	public ObjectTextInputField(Project projectToUse, int objectType, BaseId objectId, String tag, PanelTextArea componentToUse)
 	{
+		this(projectToUse, objectType, objectId, tag, componentToUse, componentToUse.getDocument());
+	}
+	
+	public ObjectTextInputField(Project projectToUse, int objectType, BaseId objectId, String tag, PanelTextArea componentToUse, Document document)
+	{
 		super(projectToUse, objectType, objectId, tag);
 		
 		field = componentToUse;
-		setTextFieldDocument();
+		field.setDocument(document);
 		addFocusListener();
 		setEditable(true);
 		field.getDocument().addDocumentListener(new DocumentEventHandler());
@@ -91,10 +97,6 @@ public class ObjectTextInputField extends ObjectDataInputField
 	private Actions getActions()
 	{
 		return EAM.getMainWindow().getActions();
-	}
-	
-	protected void setTextFieldDocument()
-	{
 	}
 	
 	protected JTextComponent getTextField()
