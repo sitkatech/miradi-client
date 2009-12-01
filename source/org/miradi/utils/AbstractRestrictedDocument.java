@@ -24,5 +24,5 @@ import javax.swing.text.PlainDocument;
 
 abstract public class AbstractRestrictedDocument extends PlainDocument
 {
-
+	abstract protected boolean isValidCharacter(char character);
 }
