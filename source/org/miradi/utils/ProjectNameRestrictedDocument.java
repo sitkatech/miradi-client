@@ -25,6 +25,7 @@ import org.miradi.main.EAM;
 
 public class ProjectNameRestrictedDocument extends AbstractRestrictedDocument
 {
+	@Override
 	protected boolean isValidCharacter(char character)
 	{
 		return EAM.isValidCharacter(character);
