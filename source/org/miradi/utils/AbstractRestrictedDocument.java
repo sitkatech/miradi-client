@@ -29,8 +29,7 @@ import org.miradi.project.Project;
 abstract public class AbstractRestrictedDocument extends PlainDocument
 {
 	@Override
-	public void insertString(int offset, String value, AttributeSet as)
-			throws BadLocationException
+	public void insertString(int offset, String value, AttributeSet as) throws BadLocationException
 	{
 		if (offset >= Project.MAX_PROJECT_FILENAME_LENGTH)
 			return;
@@ -39,8 +38,7 @@ abstract public class AbstractRestrictedDocument extends PlainDocument
 		super.insertString(offset, newValue, as);
 	}
 
-	private String removeIllegalCharacters(String value)
-			throws BadLocationException
+	private String removeIllegalCharacters(String value) throws BadLocationException
 	{
 		StringBuffer newValue = new StringBuffer();
 		for (int index = 0; index < value.length(); ++index)
