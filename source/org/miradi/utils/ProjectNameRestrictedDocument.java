@@ -17,29 +17,40 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+
 package org.miradi.utils;
 
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 
-import org.miradi.dialogs.fieldComponents.PanelTextFieldWithSelectAllOnFocusGained;
+import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
-public class ProjectNameRestrictedTextField extends PanelTextFieldWithSelectAllOnFocusGained
+public class ProjectNameRestrictedDocument extends PlainDocument
 {
-	public ProjectNameRestrictedTextField()
+	@Override
+	public void insertString(int offset, String value, AttributeSet as) throws BadLocationException
 	{
-		this("");
-	}
-
-	public ProjectNameRestrictedTextField(String initialValue)
-	{
-		super(Project.MAX_PROJECT_FILENAME_LENGTH);
+		if (offset >= Project.MAX_PROJECT_FILENAME_LENGTH)
+			return;
 		
-		initialize(initialValue);
+		String newValue = removeIllegalCharacters(value);
+		super.insertString(offset, newValue, as);
 	}
 
-	private void initialize(String initialValue)
+	private String removeIllegalCharacters(String value) throws BadLocationException
 	{
-		setDocument(new ProjectNameRestrictedDocument());
-		setText(initialValue);
+		StringBuffer newValue = new StringBuffer();
+		for (int index = 0; index < value.length(); ++index)
+		{
+			char character = value.charAt(index);
+			if (EAM.isValidCharacter(character))
+			{
+				newValue.append(character);
+			}
+		}
+		
+		return newValue.toString();	
 	}
 }
