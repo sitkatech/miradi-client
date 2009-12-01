@@ -32,5 +32,12 @@ public class NumericRestrictedDocument extends AbstractRestrictedDocument
 		return Character.isDigit(character); 
 	}
 	
+	@Override
+	protected int getMaxValueLength()
+	{
+		return REASONABLE_MAX_DIGITS_IN_NUMERIC_FIELD;
+	}
+	
+	private static final int REASONABLE_MAX_DIGITS_IN_NUMERIC_FIELD = 25;
 	private static final String LEGAL_NON_NUMERIC_CHARACTERS = "-+.,";
 }

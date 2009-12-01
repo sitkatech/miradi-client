@@ -51,12 +51,7 @@ abstract public class AbstractRestrictedDocument extends PlainDocument
 		return newValue.toString();	
 	}
 	
-	protected int getMaxValueLength()
-	{
-		return DEFAULT_MAX_VALUE_LENGTH;
-	}
+	abstract protected int getMaxValueLength();
 	
 	abstract protected boolean isValidCharacter(char character);
-	
-	private static final int DEFAULT_MAX_VALUE_LENGTH = 25;
 }
