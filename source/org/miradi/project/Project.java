@@ -1125,7 +1125,7 @@ public class Project
 		}
 	}
 	
-	public Command undo() throws CommandFailedException
+	public Command undo() throws CommandFailedException, RuntimeException
 	{
 		Command cmd = undoRedoState.popCommandToUndo();
 		try
@@ -1141,7 +1141,7 @@ public class Project
 		}
 	}
 	
-	public Command redo() throws CommandFailedException
+	public Command redo() throws CommandFailedException, RuntimeException
 	{
 		Command cmd = undoRedoState.popCommandToRedo();
 		try
