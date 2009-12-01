@@ -31,15 +31,8 @@ public class ObjectCurrencyInputField extends ObjectNumericInputField
 	
 	public void setText(String newValue)
 	{
-		try
-		{
-			double valueToFormat = Double.parseDouble(newValue);
-			newValue = project.getCurrencyFormatterWithoutCommas().format(valueToFormat);
-		}
-		catch (Exception e) 
-		{
-			//Ignore. we dont care if it failed due to parsing a none double value
-		}
+		double valueToFormat = Double.parseDouble(newValue);
+		newValue = project.getCurrencyFormatterWithoutCommas().format(valueToFormat);
 		super.setText(newValue);
 	}
 }
