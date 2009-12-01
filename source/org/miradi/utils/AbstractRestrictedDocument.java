@@ -28,8 +28,6 @@ import org.miradi.project.Project;
 
 abstract public class AbstractRestrictedDocument extends PlainDocument
 {
-	abstract protected boolean isValidCharacter(char character);
-
 	@Override
 	public void insertString(int offset, String value, AttributeSet as)
 			throws BadLocationException
@@ -56,4 +54,6 @@ abstract public class AbstractRestrictedDocument extends PlainDocument
 		
 		return newValue.toString();	
 	}
+	
+	abstract protected boolean isValidCharacter(char character);
 }
