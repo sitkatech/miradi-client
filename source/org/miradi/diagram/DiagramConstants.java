@@ -64,11 +64,11 @@ public class DiagramConstants
 		new Color(0, 180, 0), 
 		new Color(0, 128, 0)};
 	public static final Color[] humanWelfareScopeColorChoices = {
+		new Color(235, 184, 82), 
 		new Color(215, 164, 62), 
-		new Color(205, 154, 52), 
 		new Color(195, 144, 42), 
-		new Color(185, 134, 32), 
-		new Color(175, 124, 22)};
+		new Color(175, 124, 22), 
+		new Color(155, 104, 2)};
 	public static final Color[] intermediateResultChoices = {
 		new Color(100, 222, 255),
 		new Color(80, 200, 220), 
