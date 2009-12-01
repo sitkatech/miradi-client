@@ -43,11 +43,11 @@ public class ProjectNameRestrictedTextField extends PanelTextFieldWithSelectAllO
 
 	private void initialize(String initialValue)
 	{
-		setDocument(new RestrictedDocument());
+		setDocument(new ProjectNameRestrictedDocument());
 		setText(initialValue);
 	}
 
-	public class RestrictedDocument extends PlainDocument
+	public class ProjectNameRestrictedDocument extends PlainDocument
 	{
 		public void insertString(int offset, String value, AttributeSet as) throws BadLocationException
 		{
