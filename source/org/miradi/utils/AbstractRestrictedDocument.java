@@ -24,14 +24,12 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
-import org.miradi.project.Project;
-
 abstract public class AbstractRestrictedDocument extends PlainDocument
 {
 	@Override
 	public void insertString(int offset, String value, AttributeSet as) throws BadLocationException
 	{
-		if (offset >= Project.MAX_PROJECT_FILENAME_LENGTH)
+		if (offset >= getMaxValueLength())
 			return;
 		
 		String newValue = removeIllegalCharacters(value);
@@ -53,5 +51,12 @@ abstract public class AbstractRestrictedDocument extends PlainDocument
 		return newValue.toString();	
 	}
 	
+	protected int getMaxValueLength()
+	{
+		return DEFAULT_MAX_VALUE_LENGTH;
+	}
+	
 	abstract protected boolean isValidCharacter(char character);
+	
+	private static final int DEFAULT_MAX_VALUE_LENGTH = Integer.MAX_VALUE;
 }

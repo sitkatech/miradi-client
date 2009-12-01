@@ -22,6 +22,7 @@ package org.miradi.utils;
 
 
 import org.miradi.main.EAM;
+import org.miradi.project.Project;
 
 public class ProjectNameRestrictedDocument extends AbstractRestrictedDocument
 {
@@ -29,5 +30,11 @@ public class ProjectNameRestrictedDocument extends AbstractRestrictedDocument
 	protected boolean isValidCharacter(char character)
 	{
 		return EAM.isValidProjectNameCharacter(character);
+	}
+	
+	@Override
+	protected int getMaxValueLength()
+	{
+		return Project.MAX_PROJECT_FILENAME_LENGTH;
 	}
 }
