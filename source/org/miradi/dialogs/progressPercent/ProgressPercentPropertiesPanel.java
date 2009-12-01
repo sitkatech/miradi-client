@@ -32,7 +32,7 @@ public class ProgressPercentPropertiesPanel extends ObjectDataInputPanel
 		super(projectToUse, ProgressPercent.getObjectType(), BaseId.INVALID);
 			
 		addField(createDateChooserField(ProgressPercent.TAG_DATE));
-		addField(createNumericField(ProgressPercent.TAG_PERCENT_COMPLETE));
+		addField(createPercentageField(ProgressPercent.TAG_PERCENT_COMPLETE));
 		addField(createMultilineField(ProgressPercent.TAG_PERCENT_COMPLETE_NOTES));
 		
 		updateFieldsFromProject();
