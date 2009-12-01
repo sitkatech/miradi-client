@@ -22,12 +22,11 @@ package org.miradi.utils;
 
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
-import javax.swing.text.PlainDocument;
 
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
-public class ProjectNameRestrictedDocument extends PlainDocument
+public class ProjectNameRestrictedDocument extends AbstractRestrictedDocument
 {
 	@Override
 	public void insertString(int offset, String value, AttributeSet as) throws BadLocationException
