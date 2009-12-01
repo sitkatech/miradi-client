@@ -20,9 +20,40 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
+
+import org.miradi.project.Project;
 
 abstract public class AbstractRestrictedDocument extends PlainDocument
 {
 	abstract protected boolean isValidCharacter(char character);
+
+	@Override
+	public void insertString(int offset, String value, AttributeSet as)
+			throws BadLocationException
+	{
+		if (offset >= Project.MAX_PROJECT_FILENAME_LENGTH)
+			return;
+		
+		String newValue = removeIllegalCharacters(value);
+		super.insertString(offset, newValue, as);
+	}
+
+	private String removeIllegalCharacters(String value)
+			throws BadLocationException
+	{
+		StringBuffer newValue = new StringBuffer();
+		for (int index = 0; index < value.length(); ++index)
+		{
+			char character = value.charAt(index);
+			if (isValidCharacter(character))
+			{
+				newValue.append(character);
+			}
+		}
+		
+		return newValue.toString();	
+	}
 }
