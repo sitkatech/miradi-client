@@ -38,6 +38,7 @@ public class ObjectStringInputField extends ObjectTextInputField
 	public ObjectStringInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(0, columnsToUse));
+		
 		DocumentEventHandler handler = new DocumentEventHandler();
 		((JTextComponent)getComponent()).getDocument().addUndoableEditListener(handler);
 		((UiTextArea)getComponent()).setWrapStyleWord(true);
