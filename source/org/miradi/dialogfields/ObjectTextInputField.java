@@ -25,6 +25,7 @@ import java.awt.Color;
 import javax.swing.JComponent;
 import javax.swing.text.DefaultCaret;
 import javax.swing.text.JTextComponent;
+import javax.swing.text.PlainDocument;
 
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.fieldComponents.PanelTextArea;
@@ -89,6 +90,16 @@ public class ObjectTextInputField extends ObjectDataInputField
 	private Actions getActions()
 	{
 		return EAM.getMainWindow().getActions();
+	}
+	
+	protected void setTextFieldDocument(PlainDocument document)
+	{
+		getTextField().setDocument(document);
+	}
+	
+	private JTextComponent getTextField()
+	{
+		return field;
 	}
 
 	JTextComponent field;
