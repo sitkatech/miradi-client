@@ -19,14 +19,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
+import javax.swing.text.JTextComponent;
+
 import org.miradi.ids.BaseId;
 import org.miradi.project.Project;
+import org.miradi.utils.NumericRestrictedDocument;
 
 public class ObjectNumericInputField extends ObjectAdjustableStringInputField
 {
 	public ObjectNumericInputField(Project projectToUse, int objectType, BaseId objectId, String tag, int column)
 	{
 		super(projectToUse, objectType, objectId, tag, column);
+		
+		((JTextComponent)getComponent()).setDocument(new NumericRestrictedDocument());
 	}
 	 
 	public ObjectNumericInputField(Project projectToUse, int objectType, BaseId objectId, String tag)
