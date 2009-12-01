@@ -28,6 +28,6 @@ public class ProjectNameRestrictedDocument extends AbstractRestrictedDocument
 	@Override
 	protected boolean isValidCharacter(char character)
 	{
-		return EAM.isValidCharacter(character);
+		return EAM.isValidProjectNameCharacter(character);
 	}
 }

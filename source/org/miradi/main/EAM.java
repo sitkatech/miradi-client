@@ -108,7 +108,7 @@ public class EAM
 		displayHtmlWarningDialog("NoWindowsDataLocalDataLocationMessage.html", "@DIRECTORY_NAME@", homeDir);
 	}
 	
-	public static boolean isValidCharacter(char c)
+	public static boolean isValidProjectNameCharacter(char c)
 	{
 		if(LEGAL_NON_ALPHA_NUMERIC_CHARACTERS.indexOf(c) >= 0)
 			return true;
