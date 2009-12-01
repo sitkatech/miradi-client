@@ -995,7 +995,7 @@ public class Project
 		for(int i = 0; i < candidate.length(); ++i)
 		{
 			char c = asArray[i];
-			if (EAM.isValidCharacter(c))
+			if (EAM.isValidProjectNameCharacter(c))
 				continue;
 			
 			asArray[i] = EAM.DASH;
