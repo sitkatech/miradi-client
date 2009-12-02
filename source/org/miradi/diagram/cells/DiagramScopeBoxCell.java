@@ -21,6 +21,7 @@ package org.miradi.diagram.cells;
 
 import java.awt.Color;
 
+import org.miradi.main.EAM;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.ScopeBox;
 import org.miradi.questions.ChoiceItem;
@@ -39,8 +40,11 @@ public class DiagramScopeBoxCell extends FactorCell
 	{
 		ScopeBox scopeBox = (ScopeBox) getWrappedFactor();
 		ChoiceQuestion colorQuestion = scopeBox.getProject().getQuestion(ScopeBoxColorQuestion.class);
-		ChoiceItem currentScopeBoxChoice = colorQuestion.findChoiceByCode(scopeBox.getScopeBoxColorCode());
-		
+		String scopeBoxColorCode = scopeBox.getScopeBoxColorCode();
+		EAM.logDebug("ScopeBox color code: {" + scopeBoxColorCode + "}");
+		ChoiceItem currentScopeBoxChoice = colorQuestion.findChoiceByCode(scopeBoxColorCode);
+		if(currentScopeBoxChoice == null)
+			currentScopeBoxChoice = colorQuestion.findChoiceByCode("");
 		return currentScopeBoxChoice.getColor();
 	}
 	
