@@ -29,6 +29,7 @@ public class ObjectCurrencyInputField extends ObjectNumericInputField
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, columnsToUse);
 	}
 	
+	@Override
 	public void setText(String newValue)
 	{
 		double valueToFormat = Double.parseDouble(newValue);
