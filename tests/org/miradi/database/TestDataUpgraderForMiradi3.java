@@ -49,6 +49,47 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		super(name);
 	}
 	
+	public void testCorrectHumanWelfareTargetScopeBoxColorCode() throws Exception
+	{
+		verifyEmptyProject();
+		String scopeBoxWithBadScopeBoxColorCode = "{\"ObjectiveIds\":\"\",\"Comments\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Type\":\"ScopeBox\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1253735690524\",\"Id\":712,\"Label\":\"New Scope Box\",\"ProgressReportRefs\":\"\",\"ScopeBoxColorCode\":\"darkGray\"}";
+		String scopeBoxWithNoScopeBoxColorCode = "{\"Text\":\"The marine resources of Eastern Bay Village's traditional fishing grounds.\",\"Comments\":\"\",\"Id\":\"713\",\"Label\":\"Project Scope :Our Marine Resources\"}";
+		String scopeBoxWithEmptyScopeBoxColorCode = "{\"ObjectiveIds\":\"\",\"Comments\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Type\":\"ScopeBox\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1253735690524\",\"Id\":714,\"Label\":\"New Scope Box\",\"ProgressReportRefs\":\"\",\"ScopeBoxColorCode\":\"\"}";
+		String scopeBoxWithCorrectScopeBoxColorCode = "{\"ObjectiveIds\":\"\",\"Comments\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Type\":\"ScopeBox\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1253735690524\",\"Id\":715,\"Label\":\"New Scope Box\",\"ProgressReportRefs\":\"\",\"ScopeBoxColorCode\":\"HumanWelfareTargetBrown\"}";
+
+		verifyScopeBoxColorCodeCorrection(scopeBoxWithBadScopeBoxColorCode, "HumanWelfareTargetBrown");	
+		verifyScopeBoxColorCodeCorrection(scopeBoxWithNoScopeBoxColorCode, "");
+		verifyScopeBoxColorCodeCorrection(scopeBoxWithEmptyScopeBoxColorCode, "");
+		verifyScopeBoxColorCodeCorrection(scopeBoxWithCorrectScopeBoxColorCode, "HumanWelfareTargetBrown");
+	}
+	
+	private void verifyEmptyProject() throws Exception
+	{
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion53();
+	}
+
+	private void verifyScopeBoxColorCodeCorrection(String scopeBoxString, String expectedColorCode) throws Exception
+	{
+		File jsonDir = createJsonDir();
+		final int SCOPE_BOX_TYPE = 50;
+		File scopeBoxDir = DataUpgrader.getObjectsDir(jsonDir, SCOPE_BOX_TYPE);
+		if (scopeBoxDir.exists())
+			DirectoryUtils.deleteEntireDirectoryTree(scopeBoxDir);
+		
+		int[] scopeBoxIds = createAndPopulateObjectDir(jsonDir, SCOPE_BOX_TYPE, new String[]{scopeBoxString, });
+		
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion53();
+		
+		int onlyIdAsInt = scopeBoxIds[0];
+		File scopeBoxFile = new File(scopeBoxDir, Integer.toString(onlyIdAsInt));
+		
+		EnhancedJsonObject scopeBoxJson = new EnhancedJsonObject(readFile(scopeBoxFile));
+		String scopeBoxColorCode = scopeBoxJson.optString("ScopeBoxColorCode");
+		assertEquals("Scope Box color code was not changed?", expectedColorCode, scopeBoxColorCode);
+	}
+
 	public void testEnsureNoMoreThanOneXenodataExists() throws Exception
 	{
 		String[] noXenodataObjects = new String[]{};
