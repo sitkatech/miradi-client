@@ -664,9 +664,9 @@
 <!-- M A C   D M G   F I L E                                            -->
 <!-- ================================================================== -->
 <target name="macdmgfile" depends="macappbundle" description="create a mac dmg file">
-	<property name="rawdmgfile" value="../../mac-client-build-dependencies/images/Miradi.dmg" />
+	<property name="rawdmgfile" value="../mac-client-build-dependencies/images/Miradi.dmg" />
 	<property name="dmgsizemegs" value="15" />
-	<property name="dmgmount" value="../../mac-client-build-dependencies/mounts/dmgfile" />
+	<property name="dmgmount" value="../mac-client-build-dependencies/mounts/dmgfile" />
 
 	<exec os="Linux"  executable="umount" failonerror="false">
 		<arg value="-d"/>
