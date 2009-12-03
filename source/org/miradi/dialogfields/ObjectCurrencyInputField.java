@@ -32,8 +32,12 @@ public class ObjectCurrencyInputField extends ObjectNumericInputField
 	@Override
 	public void setText(String newValue)
 	{
-		double valueToFormat = Double.parseDouble(newValue);
-		newValue = project.getCurrencyFormatterWithoutCommas().format(valueToFormat);
+		if (newValue.length() > 0)
+		{
+			double valueToFormat = Double.parseDouble(newValue);
+			newValue = project.getCurrencyFormatterWithoutCommas().format(valueToFormat);
+		}
+		
 		super.setText(newValue);
 	}
 }
