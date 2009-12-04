@@ -144,8 +144,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void fillGeneralProjectData() throws Exception
 	{
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_NAME, "Some Project Name");
-		setProjectDate(new MultiCalendar(), ProjectMetadata.TAG_START_DATE);
-		setProjectDate(new MultiCalendar(), ProjectMetadata.TAG_EXPECTED_END_DATE);
+		setProjectStartDate(MultiCalendar.createFromGregorianYearMonthDay(2008, 1, 1));
+		setProjectEndDate(MultiCalendar.createFromGregorianYearMonthDay(2009, 12, 31));
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, "2006-09-27");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_AREA, "10000");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT, "10");
@@ -185,8 +185,18 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		MultiCalendar projectStartDate = ProjectForTesting.createStartYear(startYear);
 		MultiCalendar projectEndDate = ProjectForTesting.createEndYear(endYear);
-		setProjectDate(projectStartDate, ProjectMetadata.TAG_START_DATE);
-		setProjectDate(projectEndDate, ProjectMetadata.TAG_EXPECTED_END_DATE);
+		setProjectStartDate(projectStartDate);
+		setProjectEndDate(projectEndDate);
+	}
+	
+	public void setProjectStartDate(MultiCalendar startDate) throws Exception
+	{
+		setProjectDate(startDate, ProjectMetadata.TAG_START_DATE);
+	}
+
+	public void setProjectEndDate(MultiCalendar endDate) throws Exception
+	{
+		setProjectDate(endDate, ProjectMetadata.TAG_EXPECTED_END_DATE);
 	}
 	
 	public void setProjectDate(MultiCalendar projectStartDate, String tag) throws Exception
