@@ -620,7 +620,7 @@ abstract public class BaseObject
 	
 	public DateRange getWhenRollup() throws Exception
 	{
-		final DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectStartEndDateRange();
+		final DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
 		return getTotalTimePeriodCostsMap().getRolledUpDateRange(projectStartEndDateRange);
 	}
 

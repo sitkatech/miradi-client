@@ -117,7 +117,7 @@ public class ResourceAssignment extends Assignment
 	
 	public DateRange getCombinedTimePeriodCostsMapDateRange() throws Exception
 	{
-		DateRange projectDateRange = getProject().getProjectCalendar().getProjectStartEndDateRange();
+		DateRange projectDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
 		return convertDateUnitEffortList().getRolledUpDateRange(projectDateRange);
 	}
 	
