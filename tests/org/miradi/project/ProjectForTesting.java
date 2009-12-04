@@ -496,6 +496,17 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return Indicator.find(this, indicatorRef);
 	}
 	
+	public Indicator createIndicatorWithCauseParent() throws Exception
+	{
+		Cause cause = createCause();
+		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		Indicator indicator = createIndicator();
+		indicatorIds.addRef(indicator.getRef());	
+		fillObjectUsingCommand(cause, Cause.TAG_INDICATOR_IDS, indicatorIds.toString());
+		
+		return indicator;
+	}
+	
 	public BaseObject createBaseObject(int objectType) throws Exception
 	{
 		ORef baseObjectRef = createObject(objectType);
@@ -1560,7 +1571,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public Task createMethod() throws Exception
 	{
-		Indicator indicator = createIndicator();
+		Indicator indicator = createIndicatorWithCauseParent();
 		Task method = createTask();
 		appendMethodToIndicator(indicator, method);
 		
