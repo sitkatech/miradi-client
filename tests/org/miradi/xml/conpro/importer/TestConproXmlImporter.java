@@ -314,6 +314,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		projectToFill.populateTarget(target);
 		ORefList keaRefs = target.getKeyEcologicalAttributeRefs();
 		KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(projectToFill, keaRefs.get(0));
+		indicatorIds.addAll(kea.getIndicatorIds());
 		projectToFill.fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds.toString());
 		try
 		{
