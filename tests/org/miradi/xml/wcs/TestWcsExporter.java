@@ -92,9 +92,9 @@ public class TestWcsExporter extends TestCaseWithProject
 		new WcsXmlExporter(getProject()).exportProject(writer);
 		writer.close();
 		String xml = new String(bytes.toByteArray(), "UTF-8");
-		
-		//FIXME this is temp and for develop only
-//		File file = new File("C:\\Users\\Nima\\develop\\rnv\\project.xml");
+
+		// NOTE: Uncomment for debugging only
+//		File file = createTempFile();
 //		file.createNewFile();
 //		UnicodeWriter tempWriter = new UnicodeWriter(file);
 //		tempWriter.writeln(xml);
