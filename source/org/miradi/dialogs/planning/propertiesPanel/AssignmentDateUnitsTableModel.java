@@ -49,7 +49,6 @@ import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.ColumnTagProvider;
-import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.OptionalDouble;
