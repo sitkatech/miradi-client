@@ -74,6 +74,16 @@ public class ProjectCalendar implements CommandExecutedListener
 		return getProject().getMetadata().getFiscalYearFirstMonth();
 	}
 
+	public MultiCalendar getPlanningStartMultiCalendar()
+	{
+		return MultiCalendar.createFromIsoDateString(getPlanningStartDate());
+	}
+	
+	public MultiCalendar getPlanningEndMultiCalendar()
+	{
+		return MultiCalendar.createFromIsoDateString(getPlanningEndDate());
+	}
+	
 	public String getPlanningStartDate()
 	{
 		MultiCalendar now = new MultiCalendar();
@@ -356,8 +366,8 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	public DateRange getProjectPlanningDateRange() throws Exception
 	{
-		MultiCalendar thisStartDate = MultiCalendar.createFromIsoDateString(getPlanningStartDate());
-		MultiCalendar thisEndDate = MultiCalendar.createFromIsoDateString(getPlanningEndDate());
+		MultiCalendar thisStartDate = getPlanningStartMultiCalendar();
+		MultiCalendar thisEndDate = getPlanningEndMultiCalendar();
 		DateRange projectDateRange = new DateRange(thisStartDate, thisEndDate);
 		
 		DateRange dateRange = null;
