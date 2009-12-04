@@ -87,7 +87,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	public String getPlanningStartDate()
 	{
 		MultiCalendar now = new MultiCalendar();
-		MultiCalendar startOfCalendarYear = MultiCalendar.createFromGregorianYearMonthDay(now.getGregorianYear(), 1, 1);
+		MultiCalendar startOfCalendarYear = MultiCalendar.createFromGregorianYearMonthDay(now.getGregorianYear(), getFiscalYearFirstMonth(), 1);
 
 		ProjectMetadata metadata = project.getMetadata();
 		String candidatesBestFirst[] = new String[] {
@@ -102,7 +102,9 @@ public class ProjectCalendar implements CommandExecutedListener
 	public String getPlanningEndDate()
 	{
 		MultiCalendar now = new MultiCalendar();
-		MultiCalendar endOfCalendarYear = MultiCalendar.createFromGregorianYearMonthDay(now.getGregorianYear(), 12, 31);
+		MultiCalendar planningStartMultiCalendar = MultiCalendar.createFromGregorianYearMonthDay(now.getGregorianYear(), getFiscalYearFirstMonth(), 1);
+		MultiCalendar endOfCalendarYear = getOneYearLater(planningStartMultiCalendar);
+		endOfCalendarYear.addDays(-1);
 
 		ProjectMetadata metadata = project.getMetadata();
 		String candidatesBestFirst[] = new String[] {

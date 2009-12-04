@@ -48,6 +48,17 @@ public class TestProjectCalendar extends TestCaseWithProject
 		assertEquals(12, endDate.getGregorianMonth());
 		assertEquals(31, endDate.getGregorianDay());
 	}
+	
+	public void testGettingPlanningStartEndDateWithNoSetDates() throws Exception
+	{
+		setFiscalYearStartMonth(7);
+		getProject().setProjectStartDate(null);
+		getProject().setProjectEndDate(null);
+		MultiCalendar projectStartDate = MultiCalendar.createFromGregorianYearMonthDay(2009, 7, 1);
+		MultiCalendar projectEndDate = MultiCalendar.createFromGregorianYearMonthDay(2010, 6, 30);
+		assertEquals("wrong project start date?", projectStartDate, getProjectCalendar().getPlanningStartMultiCalendar());
+		assertEquals("wrong project end date?", projectEndDate, getProjectCalendar().getPlanningEndMultiCalendar());
+	}
 
 	public void testGetFiscalYearQuarterName() throws Exception
 	{

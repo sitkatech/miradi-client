@@ -199,9 +199,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		setProjectDate(endDate, ProjectMetadata.TAG_EXPECTED_END_DATE);
 	}
 	
-	public void setProjectDate(MultiCalendar projectStartDate, String tag) throws Exception
+	public void setProjectDate(MultiCalendar projectDate, String tag) throws Exception
 	{
-		fillObjectUsingCommand(getMetadata().getRef(), tag, projectStartDate.toString());
+		String dateAsString = "";
+		if (projectDate != null)
+			dateAsString = projectDate.toString();  
+			
+		fillObjectUsingCommand(getMetadata().getRef(), tag, dateAsString);
 	}
 	
 	private String createConproXenodata() throws Exception
