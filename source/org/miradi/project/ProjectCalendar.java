@@ -309,14 +309,6 @@ public class ProjectCalendar implements CommandExecutedListener
 		return dateUnit.asDateRange();
 	}
 
-	private DateRange getProjectStartEndDateRange() throws Exception
-	{
-		MultiCalendar thisStartDate = MultiCalendar.createFromIsoDateString(getPlanningStartDate());
-		MultiCalendar thisEndDate = MultiCalendar.createFromIsoDateString(getPlanningEndDate());
-		
-		return new DateRange(thisStartDate, thisEndDate);
-	}
-	
 	public boolean hasSubDateUnits(DateUnit dateUnit) throws Exception
 	{
 		return getSubDateUnits(dateUnit).size() > 0;
@@ -364,8 +356,12 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	public DateRange getProjectPlanningDateRange() throws Exception
 	{
+		MultiCalendar thisStartDate = MultiCalendar.createFromIsoDateString(getPlanningStartDate());
+		MultiCalendar thisEndDate = MultiCalendar.createFromIsoDateString(getPlanningEndDate());
+		DateRange projectDateRange = new DateRange(thisStartDate, thisEndDate);
+		
 		DateRange dateRange = null;
-		Vector<DateUnit> dateUnits = getProjectYearsDateUnits(getProjectStartEndDateRange());
+		Vector<DateUnit> dateUnits = getProjectYearsDateUnits(projectDateRange);
 		for(DateUnit dateUnit : dateUnits)
 		{
 			DateRange thisDateRange = dateUnit.asDateRange();
