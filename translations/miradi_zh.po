@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-04 14:08-0600\n"
+"POT-Creation-Date: 2009-12-04 15:17-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1994,15 +1994,15 @@ msgstr "[新结果链] \t\t"
 msgid "Results Chain"
 msgstr "结果链 \t\t"
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:174
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:176
 msgid "Total"
 msgstr "总计 \t\t"
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:306
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:308
 msgid "Fiscal Year|FY"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:311
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:313
 msgid "Quarter Prefix|Q"
 msgstr ""
 
