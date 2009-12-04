@@ -496,17 +496,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return new Vector(getDateUnits());
 	}
 	
-	protected DateRange getDateRange(int column) throws Exception
-	{
-		DateUnit dateUnit = getDateUnit(column);
-		return getDateRange(dateUnit);
-	}
-
-	private DateRange getDateRange(DateUnit dateUnit) throws Exception
-	{
-		return getProjectCalendar().convertToDateRange(dateUnit);
-	}
-	
 	public boolean isDateUnitColumnExpanded(int column)
 	{
 		DateUnit dateUnit = getDateUnit(column);
