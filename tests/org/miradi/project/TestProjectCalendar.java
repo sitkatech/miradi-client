@@ -40,10 +40,11 @@ public class TestProjectCalendar extends TestCaseWithProject
 	{
 		ProjectCalendar pc = getProjectCalendar();
 		
-		MultiCalendar startDate = MultiCalendar.createFromIsoDateString(pc.getPlanningStartDate());
+		MultiCalendar startDate = pc.getPlanningStartMultiCalendar();
 		assertEquals(1, startDate.getGregorianMonth());
 		assertEquals(1, startDate.getGregorianDay());
-		MultiCalendar endDate = MultiCalendar.createFromIsoDateString(pc.getPlanningEndDate());
+
+		MultiCalendar endDate = pc.getPlanningEndMultiCalendar();
 		assertEquals(12, endDate.getGregorianMonth());
 		assertEquals(31, endDate.getGregorianDay());
 	}
