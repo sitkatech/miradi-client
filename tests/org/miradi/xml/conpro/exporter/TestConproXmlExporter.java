@@ -144,7 +144,7 @@ public class TestConproXmlExporter extends TestCaseWithProject
 	
 	public void testStatuses() throws Exception
 	{
-		Indicator indicator = getProject().createIndicator();
+		Indicator indicator = getProject().createIndicatorWithCauseParent();
 		verifyExport();
 
 		ProgressReport emptyProgressReport = getProject().createProgressReport();
@@ -159,7 +159,7 @@ public class TestConproXmlExporter extends TestCaseWithProject
 	
 	public void testMeasurements() throws Exception
 	{
-		Indicator indicator = getProject().createIndicator();
+		Indicator indicator = getProject().createIndicatorWithCauseParent();
 		verifyExport();
 
 		Measurement emptyMeasurement = getProject().createMeasurement();
