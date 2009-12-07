@@ -148,6 +148,9 @@ public class TestTask extends ObjectTestCase
 	
 	public void testGetCombinedEffortDates() throws Exception
 	{
+		getProject().setProjectStartDate(2002);
+		getProject().setProjectEndDate(2007);
+		
 		Task activityWithNoSubtasksNoAssignment = getProject().createActivity(); 
 		DateRange combinedDateRange = activityWithNoSubtasksNoAssignment.getWhenRollup();
 		assertEquals("combined date range is not null?", null, combinedDateRange);
@@ -193,6 +196,9 @@ public class TestTask extends ObjectTestCase
 	
 	public void testGetWorkUnitsForTaskWithoutSubTasks() throws Exception
 	{
+		getProject().setProjectStartDate(2009);
+		getProject().setProjectEndDate(2011);
+		
 		Task task = getProject().createActivity();
 		addAssignment(task, 5, 2009, 2009);
 		addAssignment(task, 15, 2010, 2010);

@@ -189,6 +189,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 		setProjectEndDate(projectEndDate);
 	}
 	
+	public void setProjectStartDate(int startYear) throws Exception
+	{
+		setProjectStartDate(MultiCalendar.createFromGregorianYearMonthDay(startYear, 1, 1));
+	}
+	
+	public void setProjectEndDate(int endYear) throws Exception
+	{
+		setProjectEndDate(MultiCalendar.createFromGregorianYearMonthDay(endYear, 1, 1));
+	}
+	
 	public void setProjectStartDate(MultiCalendar startDate) throws Exception
 	{
 		setProjectDate(startDate, ProjectMetadata.TAG_START_DATE);

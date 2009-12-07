@@ -20,11 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.project.TestDateUnit;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
+import org.miradi.utils.OptionalDouble;
 
 public class TestAssignment extends ObjectTestCase
 {
@@ -63,8 +66,58 @@ public class TestAssignment extends ObjectTestCase
 		assertEquals("wrong totals work units", 7.0, ProjectForTesting.calculateTimePeriodCosts(assignment, totalProjectDateUnit));
 	}
 	
+	public void testEffortOutsideOfProjectDateRange() throws Exception
+	{
+		getProject().setProjectStartDate(2008);
+		getProject().setProjectEndDate(2009);
+		ResourceAssignment assignment = getProject().createResourceAssignment();
+		ProjectResource projectResource = getProject().createAndPopulateProjectResource();
+		getProject().fillObjectUsingCommand(assignment, ResourceAssignment.TAG_RESOURCE_ID, projectResource.getId().toString());
+		fillAssignment(assignment, new DateUnit("2007-12"));
+		assertTrue("Value outside of project date range was included", assignment.getTotalBudgetCost().hasNoValue());
+		verifyResourceAssignmentCount(assignment, 0);
+	}
+	
+	public void testEffortsInsideOfProjectDateRange() throws Exception
+	{
+		getProject().setProjectStartDate(2008);
+		getProject().setProjectEndDate(2009);
+		ResourceAssignment assignment = getProject().createResourceAssignment();
+		ProjectResource projectResource = getProject().createAndPopulateProjectResource();
+		getProject().fillObjectUsingCommand(assignment, ResourceAssignment.TAG_RESOURCE_ID, projectResource.getId().toString());
+		fillAssignment(assignment, new DateUnit("2008-12"));
+		OptionalDouble total = assignment.getTotalBudgetCost();
+		assertTrue("Value within project date range was not included", total.hasValue());
+		assertEquals("wrong total for assignment?", (EFFORT_QUANTIGY * projectResource.getCostPerUnit()), total.getValue());
+		verifyResourceAssignmentCount(assignment, 1);
+	}
+	
+	public void testAssignmentWithNoData() throws Exception
+	{
+		ResourceAssignment assignment = getProject().createResourceAssignment();
+		ProjectResource projectResource = getProject().createAndPopulateProjectResource();
+		getProject().fillObjectUsingCommand(assignment, ResourceAssignment.TAG_RESOURCE_ID, projectResource.getId().toString());
+		verifyResourceAssignmentCount(assignment, 1);
+	}
+
+	private void verifyResourceAssignmentCount(ResourceAssignment assignment, int expectedResourcCount) throws Exception
+	{
+		TimePeriodCostsMap totalTimePeriodCostsMap = assignment.getTotalTimePeriodCostsMap();
+		ORefSet resourceRefs = totalTimePeriodCostsMap.getAllProjectResourceRefs();
+		assertEquals("wrong resource refs count?", expectedResourcCount, resourceRefs.size());
+	}
+
+	private void fillAssignment(ResourceAssignment assignment, DateUnit dateUnit) throws Exception
+	{
+		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+		dateUnitEffortList.add(createDateUnitEffort(EFFORT_QUANTIGY, dateUnit));
+		getProject().fillObjectUsingCommand(assignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+	}
+
 	public DateUnitEffort createDateUnitEffort(int unitQuantatiy, DateUnit dateUnit) throws Exception
 	{
 		return new DateUnitEffort(dateUnit, unitQuantatiy);
 	}
+
+	private static final int EFFORT_QUANTIGY = 200;
 }
