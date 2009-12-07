@@ -28,6 +28,8 @@ import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.project.ProjectCalendar;
+import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -100,19 +102,41 @@ abstract public class Assignment extends BaseObject
 	
 	protected TimePeriodCostsMap convertDateUnitEffortList() throws Exception
 	{
-		TimePeriodCostsMap tpcm = new TimePeriodCostsMap();
 		DateUnitEffortList duel = getDateUnitEffortList();
+		TimePeriodCostsMap tpcm = new TimePeriodCostsMap();
+		if (duel.size() == 0)
+			addTimePeriodCostsInPlaceForNoData(duel, tpcm);
+			
 		for (int index = 0; index < duel.size(); ++index)
 		{
 			DateUnitEffort dateUnitEffort = duel.getDateUnitEffort(index);
 			TimePeriodCosts timePeriodCosts = createTimePeriodCosts(new OptionalDouble(dateUnitEffort.getQuantity()));
-			tpcm.add(dateUnitEffort.getDateUnit(), timePeriodCosts);
+			DateUnit dateUnit = dateUnitEffort.getDateUnit();
+			if (isWithinProjectDateRange(dateUnit))
+			{
+				tpcm.add(dateUnit, timePeriodCosts);
+			}
 		}
 		
-		if(tpcm.size() == 0)
-			tpcm.add(new DateUnit(), createTimePeriodCosts(new OptionalDouble()));
-
 		return tpcm;
+	}
+
+	private void addTimePeriodCostsInPlaceForNoData(DateUnitEffortList duel, TimePeriodCostsMap tpcm)
+	{
+			tpcm.add(new DateUnit(), createTimePeriodCosts(new OptionalDouble()));
+	}
+
+	private boolean isWithinProjectDateRange(final DateUnit dateUnit) throws Exception
+	{
+		DateRange projectPlanningDateRange = getProjectCalendar().getProjectPlanningDateRange();
+		DateRange dateRange = getProjectCalendar().convertToDateRange(dateUnit);
+
+		return projectPlanningDateRange.contains(dateRange);
+	}
+
+	private ProjectCalendar getProjectCalendar()
+	{
+		return getProject().getProjectCalendar();
 	}
 	
 	abstract protected TimePeriodCosts createTimePeriodCosts(OptionalDouble quantity);

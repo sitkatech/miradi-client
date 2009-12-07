@@ -84,6 +84,9 @@ public class TestBaseObject extends TestCaseWithProject
 	
 	public void testGetBudgetTotal() throws Exception
 	{
+		getProject().setProjectStartDate(2006);
+		getProject().setProjectEndDate(2007);
+		
 		Indicator indicator = getProject().createIndicator();
 		assertFalse("indicator should not have a total cost?", indicator.getTotalBudgetCost().hasValue());
 		
