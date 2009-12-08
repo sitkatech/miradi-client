@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-04 15:17-0600\n"
+"POT-Creation-Date: 2009-12-08 11:17-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -427,7 +427,7 @@ msgstr "范围及愿景 \t\t"
 msgid "Organization"
 msgstr "组织 \t\t"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:59
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:60
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:109
 msgid "Planning"
 msgstr "计划 \t\t"
