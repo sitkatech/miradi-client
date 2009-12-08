@@ -37,6 +37,7 @@ public class SummaryPlanningPanel extends ObjectDataInputPanelWithSections
 	public SummaryPlanningPanel(MainWindow mainWindowToUse, ORef orefToUse)
 	{
 		super(mainWindowToUse.getProject(), ProjectMetadata.getObjectType());
+		
 		setLayout(new OneColumnGridLayout());
 
 		SummaryPlanningWorkPlanSubPanel workPlanSubPanel = new SummaryPlanningWorkPlanSubPanel(mainWindowToUse.getProject(), orefToUse);
