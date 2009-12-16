@@ -134,10 +134,10 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		try
 		{
 			DateRange allDataDateRange = getRolledUpDateRange();
-			DateRange projectPlanningDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
 			if (allDataDateRange == null)
 				return false;
 			
+			DateRange projectPlanningDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
 			return !projectPlanningDateRange.contains(allDataDateRange);
 		}
 		catch (Exception e)
