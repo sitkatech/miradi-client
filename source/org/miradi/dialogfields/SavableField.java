@@ -30,6 +30,11 @@ public abstract class SavableField implements FocusListener
 	{
 	}
 	
+	public void dispose()
+	{
+		FieldSaver.setSavableField(null);
+	}
+	
 	public void focusGained(FocusEvent e)
 	{
 		EAM.logVerbose("focusGained");
