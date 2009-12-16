@@ -38,7 +38,7 @@ public class DiagramProjectPreferencesPanel extends ObjectDataInputPanel
 {
 	public DiagramProjectPreferencesPanel(MainWindow mainWindowToUse, Project projectToUse, ProjectInfo projectInfo)
 	{
-		super(projectToUse, ProjectMetadata.getObjectType(), projectInfo.getMetadataId());
+		super(mainWindowToUse.getProject(), ProjectMetadata.getObjectType(), projectInfo.getMetadataId());
 		
 		mainWindow = mainWindowToUse;
 		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_DIAGRAM_FONT_SIZE, new FontSizeQuestion()));
