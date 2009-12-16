@@ -53,7 +53,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		ObjectDataInputField workPlanStartDate = createDateChooserField(ProjectMetadata.TAG_WORKPLAN_START_DATE);
 		ObjectDataInputField workPlanEndDate = createDateChooserField(ProjectMetadata.TAG_WORKPLAN_END_DATE);
 		ObjectDataInputField[] workPlanDateFields = new ObjectDataInputField[] {workPlanStartDate, workPlanEndDate, };
-		addFieldsOnOneLine(EAM.text("Label|Work plan Dates"), workPlanDateFields);
+		addFieldsOnOneLine(EAM.text("Label|Work Plan Dates"), workPlanDateFields);
 		
 		addDataDateRangeTextField();
 		addHiddenDataWarningLabel();
