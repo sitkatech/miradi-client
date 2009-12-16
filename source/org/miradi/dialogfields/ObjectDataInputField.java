@@ -54,10 +54,6 @@ abstract public class ObjectDataInputField extends SavableField
 		allowEdits = true;
 	}
 	
-	public void dispose()
-	{
-	}
-	
 	public void forceSave()
 	{
 		setNeedsSave();

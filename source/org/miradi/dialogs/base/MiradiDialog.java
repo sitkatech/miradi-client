@@ -26,6 +26,7 @@ import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 
+import org.miradi.dialogfields.FieldSaver;
 import org.miradi.main.AppPreferences;
 
 
@@ -56,6 +57,7 @@ public class MiradiDialog extends DialogWithEscapeToClose
 
 		public void windowClosing(WindowEvent arg0)
 		{
+			FieldSaver.savePendingEdits();
 			window.dispose();
 		}
 
