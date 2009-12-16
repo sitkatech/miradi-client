@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-16 14:49-0600\n"
+"POT-Creation-Date: 2009-12-16 17:05-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4267,15 +4267,15 @@ msgstr ""
 "请选择特定的类别，而不是种类如：\n"
 "'%s' \t\t"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:225
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:221
 msgid "Text|Dates must be in YYYY-MM-DD format"
 msgstr "日期格式必须是YYYY-MM-DD（年-月-日）"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:237
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:233
 msgid "Text|Unknown error prevented saving this data"
 msgstr "未知错误阻止保存该数据 \t\t"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:243
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:239
 msgid ""
 "This value must be numeric<br><br>Currency symbols and percent signs are not "
 "allowed"
