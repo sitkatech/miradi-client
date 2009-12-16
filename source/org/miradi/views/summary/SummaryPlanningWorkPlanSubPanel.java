@@ -87,7 +87,10 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		warningLabelFillerReplacement = new FillerPanel();
 		add(warningLabelFillerReplacement);
 
-		warningLabel = new UiWrappedTextArea(EAM.text("Some work plan data is currently hidden and not included in calculated totals. The data can be viewed again by setting the work plan dates to <start date> - <end date> (where start and end dates are calculated from the data)."));
+		warningLabel = new UiWrappedTextArea(EAM.text("Some work plan data is currently hidden and not included in " +
+													  "calculated totals. The data can be viewed again by setting " +
+													  "the work plan dates to <start date> - <end date> " +
+													  "(where start and end dates are calculated from the data)."));
 		warningLabel.setBackground(Color.YELLOW);
 		add(warningLabel);
 		
