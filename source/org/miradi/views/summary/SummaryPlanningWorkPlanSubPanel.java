@@ -40,7 +40,7 @@ import org.miradi.utils.DateRange;
 
 public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 {
-	public SummaryPlanningWorkPlanSubPanel(Project projectToUse, ORef orefToUse)
+	public SummaryPlanningWorkPlanSubPanel(Project projectToUse, ORef orefToUse) throws Exception
 	{
 		super(projectToUse, orefToUse);
 		
@@ -64,7 +64,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 	
-	private void addDataDateRangeTextField()
+	private void addDataDateRangeTextField() throws Exception
 	{
 		String startDate = getFirstDateWithData();
 		String endDate = getLastDateWithData();
@@ -151,7 +151,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		}
 	}
 	
-	private String getLastDateWithData()
+	private String getLastDateWithData() throws Exception
 	{
 		DateRange dateRange = getRolledUpDateRange();
 		if (dateRange == null)
@@ -160,7 +160,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		return dateRange.getEndDate().toIsoDateString();
 	}
 	
-	private String getFirstDateWithData()
+	private String getFirstDateWithData() throws Exception
 	{
 		DateRange dateRange = getRolledUpDateRange();
 		if (dateRange == null)
@@ -169,7 +169,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		return dateRange.getStartDate().toIsoDateString();
 	}
 	
-	private DateRange getRolledUpDateRange()
+	private DateRange getRolledUpDateRange() throws Exception
 	{
 		ORefList assignmentRefs = new ORefList();
 		assignmentRefs.addAll(getProject().getAssignmentPool().getORefList());
