@@ -156,7 +156,8 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
 	}
 	
-	class FillerPanel extends JPanel
+	//TODO pull out into own class
+	public static class FillerPanel extends JPanel
 	{
 		public FillerPanel()
 		{

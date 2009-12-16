@@ -133,6 +133,18 @@ public class TimePeriodCostsMap
 		return combinedDateRange;
 	}
 	
+	public DateRange getRolledUpDateRange() throws Exception
+	{
+		DateRange combinedDateRange = null;
+		Set<DateUnit> keys = data.keySet();
+		for(DateUnit dateUnit : keys)
+		{
+			combinedDateRange = DateRange.combine(combinedDateRange, dateUnit.asDateRange());
+		}
+
+		return combinedDateRange;
+	}
+	
 	private DateRange convertToDateRange(DateUnit dateUnit, DateRange projectDateRange) throws Exception
 	{
 		if (dateUnit.isProjectTotal())
