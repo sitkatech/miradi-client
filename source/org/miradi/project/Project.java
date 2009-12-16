@@ -1254,11 +1254,40 @@ public class Project
 	{
 		EAM.logVerbose("fireCommandExecuted: " + command.toString());
 		CommandExecutedEvent event = new CommandExecutedEvent(command);
+		Vector<CommandExecutedListener> copyForComparison = new Vector<CommandExecutedListener>(commandExecutedListeners);
 		for(int i=0; i < getCommandListenerCount(); ++i)
 		{
 			CommandExecutedListener listener = commandExecutedListeners.get(i);
 			listener.commandExecuted(event);
 		}
+		
+		if (shouldLog(command, commandExecutedListeners, copyForComparison))
+			EAM.logError("Command Listener list was changed during fireCommandExecuted");
+	}
+	
+	private boolean shouldLog(final Command command, final Vector originalListenersList, final Vector copyForComparison)
+	{
+		if (viewSwitchCommandToIgnore(command))
+			return false;
+		
+		boolean differentSize = !(copyForComparison.size() == getCommandListenerCount());
+		if (differentSize)
+			return true;
+		
+		boolean differentContent = !commandExecutedListeners.containsAll(copyForComparison);
+		return differentContent;
+	}
+	
+	private boolean viewSwitchCommandToIgnore(Command command)
+	{
+		if (!command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			return false;
+		
+		CommandSetObjectData setCommand = (CommandSetObjectData) command;
+		if (!ProjectMetadata.is(setCommand.getObjectType()))
+			return false;
+		
+		return setCommand.getFieldTag().equals(ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME);
 	}
 	
 	public int getCommandListenerCount()
