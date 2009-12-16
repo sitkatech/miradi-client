@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-16 17:43-0600\n"
+"POT-Creation-Date: 2009-12-16 17:46-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -401,27 +401,27 @@ msgstr ""
 msgid "Project Settings"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:51
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:52
 #: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:34
 msgid "Label|Project Dates"
 msgstr "Tanggal Proyek "
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:56
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:57
 msgid "Label|Work Plan Dates"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:74
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:75
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:90
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:91
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. The data will be visible again if you set the planning start and end "
 "date to include the entire date range of the existing data."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:198
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:199
 msgid "Work Plan Settings"
 msgstr ""
 
