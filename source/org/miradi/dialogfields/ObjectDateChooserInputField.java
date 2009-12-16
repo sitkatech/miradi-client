@@ -41,11 +41,12 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 	{
 		super.dispose();
 
-		dateEditor.removeFocusListener(this);
 		if (dateEditor != null)
+		{
 			dateEditor.dispose();
-		
-		dateEditor = null;
+			dateEditor.removeFocusListener(this);
+			dateEditor = null;
+		}
 	}
 	
 	@Override
