@@ -169,7 +169,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		return dateRange.getStartDate().toIsoDateString();
 	}
 	
-	public DateRange getRolledUpDateRange()
+	private DateRange getRolledUpDateRange()
 	{
 		ORefList assignmentRefs = new ORefList();
 		assignmentRefs.addAll(getProject().getAssignmentPool().getORefList());
