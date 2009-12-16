@@ -62,7 +62,7 @@ public class DiagramProjectPreferencesPanel extends ObjectDataInputPanel
 			CommandSetObjectData changeToDefaultMode = new CommandSetObjectData(getProject().getCurrentViewData().getRef(), ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT);
 			getProject().executeAsSideEffect(changeToDefaultMode);
 			
-			if (ourFieldChanged(command.getFieldTag()))
+			if (isOneOfOurFields(command.getFieldTag()))
 				mainWindow.getCurrentView().refresh();
 		}
 		catch(Exception e)
@@ -71,7 +71,7 @@ public class DiagramProjectPreferencesPanel extends ObjectDataInputPanel
 		}
 	}
 	
-	private boolean ourFieldChanged(String tag)
+	private boolean isOneOfOurFields(String tag)
 	{
 		Vector<ObjectDataInputField> fields = getFields();
 		for(ObjectDataInputField field : fields)
