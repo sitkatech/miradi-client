@@ -156,15 +156,6 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
 	}
 	
-	//TODO pull out into own class
-	public static class FillerPanel extends JPanel
-	{
-		public FillerPanel()
-		{
-			setBackground(AppPreferences.getDataPanelBackgroundColor());
-		}
-	}
-	
 	private UiScrollPane addTableToPanel(JPanel tables, AbstractComponentTable table)
 	{
 		addRowHeightControlledTable(table);

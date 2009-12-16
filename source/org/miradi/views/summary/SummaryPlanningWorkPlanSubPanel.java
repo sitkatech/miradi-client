@@ -24,7 +24,7 @@ import java.awt.Color;
 import org.martus.swing.UiWrappedTextArea;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.planning.propertiesPanel.AbstractAssignmentEditorComponent.FillerPanel;
+import org.miradi.dialogs.planning.propertiesPanel.FillerPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
