@@ -248,6 +248,18 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		addLabel(translatedLabel);
 		add(fieldPanel);
 	}
+	
+	protected boolean isOneOfOurFields(String tag)
+	{
+		Vector<ObjectDataInputField> fields = getFields();
+		for(ObjectDataInputField field : fields)
+		{
+			if (tag.equals(field.getTag()))
+				return true;
+		}
+		
+		return false;
+	}
 
 	static final int HGAP = 6;
 	static final int VGAP = 6;

@@ -19,10 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.dialogs.diagram;
 
-import java.util.Vector;
-
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -71,17 +68,5 @@ public class DiagramProjectPreferencesPanel extends ObjectDataInputPanel
 		}
 	}
 	
-	private boolean isOneOfOurFields(String tag)
-	{
-		Vector<ObjectDataInputField> fields = getFields();
-		for(ObjectDataInputField field : fields)
-		{
-			if (tag.equals(field.getTag()))
-				return true;
-		}
-		
-		return false;
-	}
-
 	private MainWindow mainWindow;
 }
