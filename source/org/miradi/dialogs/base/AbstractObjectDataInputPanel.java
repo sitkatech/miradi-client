@@ -104,7 +104,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public AbstractObjectDataInputPanel(Project projectToUse, ORef[] orefsToUse)
 	{
 		project = projectToUse;
-		fields = new Vector();
+		fields = new Vector<ObjectDataInputField>();
 		picker = new Picker();
 		subPanels = new Vector<AbstractObjectDataInputPanel>();
 
@@ -129,7 +129,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		int fieldSize = getFields().size();
 		for(int i = 0; i < fieldSize; ++i)
 		{
-			ObjectDataInputField field = (ObjectDataInputField) getFields().get(i);
+			ObjectDataInputField field = getFields().get(i);
 			field.dispose();
 		}
 		
@@ -253,8 +253,8 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		//TODO: should be first non read only field.
 		if (getFields().size() > 0)
 		{
-			((ObjectDataInputField)getFields().get(0)).getComponent().requestFocusInWindow();
-			Rectangle rect = ((ObjectDataInputField) getFields().get(0)).getComponent().getBounds();
+			(getFields().get(0)).getComponent().requestFocusInWindow();
+			Rectangle rect = (getFields().get(0)).getComponent().getBounds();
 			scrollRectToVisible(rect);
 		}
 		
@@ -625,7 +625,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		for(int i = 0; i < getFields().size(); ++i)
 		{
-			ObjectDataInputField field = (ObjectDataInputField) getFields().get(i);
+			ObjectDataInputField field = getFields().get(i);
 			field.saveIfNeeded();
 		}
 		for(AbstractObjectDataInputPanel subPanel : subPanels)
@@ -640,7 +640,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		setFieldObjectIds();
 		for(int i = 0; i < getFields().size(); ++i)
 		{
-			ObjectDataInputField field = (ObjectDataInputField) getFields().get(i);
+			ObjectDataInputField field = getFields().get(i);
 			field.updateFromObject();
 		}
 		for(AbstractObjectDataInputPanel subPanel : subPanels)
@@ -650,7 +650,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 	}
 
-	public Vector getFields()
+	public Vector<ObjectDataInputField> getFields()
 	{
 		return fields;
 	}
@@ -659,7 +659,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		for(int i = 0; i < getFields().size(); ++i)
 		{
-			ObjectDataInputField field = (ObjectDataInputField) getFields().get(i);
+			ObjectDataInputField field = getFields().get(i);
 			field.setObjectId(getObjectIdForType(field.getObjectType()));
 		}
 		for(AbstractObjectDataInputPanel subPanel : subPanels)
@@ -887,7 +887,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	private Project project;
 	private Picker picker;
 	private ORef[] selectedRefs;
-	private Vector fields;
+	private Vector<ObjectDataInputField> fields;
 	private Vector<AbstractObjectDataInputPanel> subPanels;
 }
 
