@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.objectdata.DateUnitEffortListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.DateUnit;
@@ -121,6 +122,29 @@ abstract public class Assignment extends BaseObject
 		return tpcm;
 	}
 
+	public TimePeriodCostsMap convertAllDateUnitEffortList()
+	{
+		try
+		{
+			TimePeriodCostsMap tpcm = new TimePeriodCostsMap();
+			DateUnitEffortList duel = getDateUnitEffortList();
+			for (int index = 0; index < duel.size(); ++index)
+			{
+				DateUnitEffort dateUnitEffort = duel.getDateUnitEffort(index);
+				TimePeriodCosts timePeriodCosts = createTimePeriodCosts(new OptionalDouble(dateUnitEffort.getQuantity()));
+				DateUnit dateUnit = dateUnitEffort.getDateUnit();
+				tpcm.add(dateUnit, timePeriodCosts);
+			}
+			
+			return tpcm;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new TimePeriodCostsMap();
+		}
+	}
+	
 	private void addTimePeriodCostsInPlaceForNoData(DateUnitEffortList duel, TimePeriodCostsMap tpcm)
 	{
 			tpcm.add(new DateUnit(), createTimePeriodCosts(new OptionalDouble()));
