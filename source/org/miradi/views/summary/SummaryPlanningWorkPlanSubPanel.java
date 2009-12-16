@@ -53,7 +53,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		ObjectDataInputField workPlanStartDate = createDateChooserField(ProjectMetadata.TAG_WORKPLAN_START_DATE);
 		ObjectDataInputField workPlanEndDate = createDateChooserField(ProjectMetadata.TAG_WORKPLAN_END_DATE);
 		ObjectDataInputField[] workPlanDateFields = new ObjectDataInputField[] {workPlanStartDate, workPlanEndDate, };
-		addFieldsOnOneLine(EAM.text("Label|Workplan Dates"), workPlanDateFields);
+		addFieldsOnOneLine(EAM.text("Label|Work plan Dates"), workPlanDateFields);
 		
 		addDataDateRangeTextField();
 		addHiddenDataWarningLabel();
@@ -87,7 +87,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		warningLabelFillerReplacement = new FillerPanel();
 		add(warningLabelFillerReplacement);
 
-		warningLabel = new UiWrappedTextArea(EAM.text("Some workplan data is currently hidden and not included in calculated totals. The data can be viewed again by setting the workplan dates to <start date> - <end date> (where start and end dates are calculated from the data)."));
+		warningLabel = new UiWrappedTextArea(EAM.text("Some work plan data is currently hidden and not included in calculated totals. The data can be viewed again by setting the work plan dates to <start date> - <end date> (where start and end dates are calculated from the data)."));
 		warningLabel.setBackground(Color.YELLOW);
 		add(warningLabel);
 		
