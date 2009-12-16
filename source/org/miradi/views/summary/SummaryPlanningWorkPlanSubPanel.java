@@ -24,6 +24,7 @@ import java.awt.Color;
 import org.martus.swing.UiWrappedTextArea;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.propertiesPanel.FillerPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
@@ -69,7 +70,12 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		String startDate = getFirstDateWithData();
 		String endDate = getLastDateWithData();
 		add(new FillerPanel());
-		UiWrappedTextArea textArea = new UiWrappedTextArea(EAM.text("Existing Workplan data range:") + startDate + " - " + endDate);
+		
+		String text = EAM.text("Work plan data currently exists for %startDate - %endDate");
+		text = EAM.substitute(text, "%startDate", startDate);
+		text = EAM.substitute(text, "%endDate", endDate);
+		PanelTitleLabel textArea = new PanelTitleLabel(text);
+		
 		textArea.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		add(textArea);
 	}
