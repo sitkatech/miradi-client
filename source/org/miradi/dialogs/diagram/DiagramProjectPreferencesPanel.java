@@ -29,14 +29,13 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ViewData;
-import org.miradi.project.Project;
 import org.miradi.project.ProjectInfo;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.FontSizeQuestion;
 
 public class DiagramProjectPreferencesPanel extends ObjectDataInputPanel
 {
-	public DiagramProjectPreferencesPanel(MainWindow mainWindowToUse, Project projectToUse, ProjectInfo projectInfo)
+	public DiagramProjectPreferencesPanel(MainWindow mainWindowToUse, ProjectInfo projectInfo)
 	{
 		super(mainWindowToUse.getProject(), ProjectMetadata.getObjectType(), projectInfo.getMetadataId());
 		
