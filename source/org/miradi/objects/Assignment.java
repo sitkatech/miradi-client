@@ -123,8 +123,12 @@ abstract public class Assignment extends BaseObject
 
 	public TimePeriodCostsMap convertAllDateUnitEffortList() throws Exception
 	{
+		return createTimePeriodCostsMap(getDateUnitEffortList());
+	}
+
+	private TimePeriodCostsMap createTimePeriodCostsMap(DateUnitEffortList duel)
+	{
 		TimePeriodCostsMap tpcm = new TimePeriodCostsMap();
-		DateUnitEffortList duel = getDateUnitEffortList();
 		for (int index = 0; index < duel.size(); ++index)
 		{
 			DateUnitEffort dateUnitEffort = duel.getDateUnitEffort(index);
