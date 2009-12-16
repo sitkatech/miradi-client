@@ -108,22 +108,9 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		if (warningLabel == null)
 			return;
 		
-		if (hasDataOutsideOfProjectDateRange())
-			swapFillerWithWarningLabel();
-		else
-			swapWarningLabelWithFiller();
-	}
-
-	private void swapWarningLabelWithFiller()
-	{
-		warningLabel.setVisible(false);
-		warningLabelFillerReplacement.setVisible(true);
-	}
-
-	private void swapFillerWithWarningLabel()
-	{
-		warningLabel.setVisible(true);
-		warningLabelFillerReplacement.setVisible(false);
+		boolean showWarning = hasDataOutsideOfProjectDateRange();
+		warningLabel.setVisible(showWarning);
+		warningLabelFillerReplacement.setVisible(!showWarning);
 	}
 
 	@Override
