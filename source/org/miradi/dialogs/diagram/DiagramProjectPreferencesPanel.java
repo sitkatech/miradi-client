@@ -60,12 +60,10 @@ public class DiagramProjectPreferencesPanel extends ObjectDataInputPanel
 			// one of our fields was changed. For now we will roughly 
 			// approximate that by saying if any project metadata field 
 			// was changed, we will refresh the view
-			if(!event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-				return;
-			CommandSetObjectData command = (CommandSetObjectData)event.getCommand();
-			if(!command.getObjectORef().equals(getProject().getMetadata().getRef()))
+			if(!event.isSetDataCommandWithThisType(ProjectMetadata.getObjectType()))
 				return;
 			
+			CommandSetObjectData command = (CommandSetObjectData)event.getCommand();
 			CommandSetObjectData changeToDefaultMode = new CommandSetObjectData(getProject().getCurrentViewData().getRef(), ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT);
 			getProject().executeAsSideEffect(changeToDefaultMode);
 			
