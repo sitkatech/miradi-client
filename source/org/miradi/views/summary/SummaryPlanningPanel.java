@@ -34,7 +34,7 @@ import org.miradi.rtf.RtfWriter;
 
 public class SummaryPlanningPanel extends ObjectDataInputPanelWithSections
 {
-	public SummaryPlanningPanel(MainWindow mainWindowToUse, ORef orefToUse)
+	public SummaryPlanningPanel(MainWindow mainWindowToUse, ORef orefToUse) throws Exception
 	{
 		super(mainWindowToUse.getProject(), ProjectMetadata.getObjectType());
 		

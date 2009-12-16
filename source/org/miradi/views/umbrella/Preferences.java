@@ -34,10 +34,17 @@ public class Preferences extends MainWindowDoer
 
 	public void doIt() throws CommandFailedException
 	{		
-		showPreferencesDialog();
+		try
+		{
+			showPreferencesDialog();
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 	
-	void showPreferencesDialog()
+	void showPreferencesDialog() throws Exception
 	{
 		PreferencesPanel preferencesPanel = new PreferencesPanel(getMainWindow());
 		PreferencesDialog dlg = new PreferencesDialog(getMainWindow(), preferencesPanel, "Miradi Preferences");

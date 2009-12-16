@@ -62,7 +62,7 @@ import com.jhlabs.awt.BasicGridLayout;
 
 public class PreferencesPanel extends DataInputPanel implements ActionListener
 {
-	public PreferencesPanel(MainWindow mainWindowToUse)
+	public PreferencesPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse.getProject());
 		mainWindow = mainWindowToUse;
@@ -95,7 +95,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		super.dispose();
 	}
 	
-	JTabbedPane createTabs()
+	JTabbedPane createTabs() throws Exception
 	{
 		JTabbedPane tabPane = new PanelTabbedPane();
 		
