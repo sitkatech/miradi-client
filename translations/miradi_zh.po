@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-16 17:35-0600\n"
+"POT-Creation-Date: 2009-12-16 17:37-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -389,7 +389,7 @@ msgid "Label|Project Dates"
 msgstr "项目日期 \t\t"
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:56
-msgid "Label|Work plan Dates"
+msgid "Label|Work Plan Dates"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:74
