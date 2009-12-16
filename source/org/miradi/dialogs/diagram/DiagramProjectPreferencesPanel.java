@@ -39,6 +39,7 @@ public class DiagramProjectPreferencesPanel extends ObjectDataInputPanel
 	public DiagramProjectPreferencesPanel(MainWindow mainWindowToUse, Project projectToUse, ProjectInfo projectInfo)
 	{
 		super(projectToUse, ProjectMetadata.getObjectType(), projectInfo.getMetadataId());
+		
 		mainWindow = mainWindowToUse;
 		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_DIAGRAM_FONT_SIZE, new FontSizeQuestion()));
 		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY, new FontFamiliyQuestion()));
@@ -84,5 +85,5 @@ public class DiagramProjectPreferencesPanel extends ObjectDataInputPanel
 		return false;
 	}
 
-	MainWindow mainWindow;
+	private MainWindow mainWindow;
 }
