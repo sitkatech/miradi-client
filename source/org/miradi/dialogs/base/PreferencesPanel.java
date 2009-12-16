@@ -233,7 +233,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		diagramTab.add(diagramSystemPreferencesTab);
 		diagramTab.add(bottomText);
 
-		diagramProjectPreferencesPanel = new DiagramProjectPreferencesPanel(getMainWindow(), project.getProjectInfo());
+		diagramProjectPreferencesPanel = new DiagramProjectPreferencesPanel(getMainWindow());
 		diagramTab.add(diagramProjectPreferencesPanel);
 		
 		return diagramTab;
