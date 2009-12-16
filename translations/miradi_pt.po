@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-16 17:07-0600\n"
+"POT-Creation-Date: 2009-12-16 17:35-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -352,28 +352,28 @@ msgstr ""
 msgid "Project Settings"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:50
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:51
 #: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:34
 msgid "Label|Project Dates"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:55
-#: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
-msgid "Label|Workplan Dates"
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:56
+msgid "Label|Work plan Dates"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:72
-msgid "Existing Workplan data range:"
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:74
+msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:84
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:90
 msgid ""
-"Some workplan data is currently hidden and not included in calculated "
-"totals. The data can be viewed again by setting the workplan dates to <start "
-"date> - <end date> (where start and end dates are calculated from the data)."
+"Some work plan data is currently hidden and not included in calculated "
+"totals. The data can be viewed again by setting the work plan dates to "
+"<start date> - <end date> (where start and end dates are calculated from the "
+"data)."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:203
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:209
 msgid "Work Plan Settings"
 msgstr ""
 
@@ -2333,6 +2333,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:30
 msgid "Workplan"
+msgstr ""
+
+#: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
+msgid "Label|Workplan Dates"
 msgstr ""
 
 #: Miradi/source/org/miradi/forms/PropertiesPanelSpec.java:49
