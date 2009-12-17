@@ -178,20 +178,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 			tpcm.mergeAll(assignment.convertAllDateUnitEffortList());
 		}
 		
-		return getSafeRolledUpdateRange(tpcm);	
-	}
-	
-	private DateRange getSafeRolledUpdateRange(TimePeriodCostsMap tpcm)
-	{
-		try
-		{
-			return tpcm.getRolledUpDateRange();
-		}
-		catch (Exception e) 
-		{
-			EAM.logException(e);
-			return null;
-		}
+		return tpcm.getRolledUpDateRange();	
 	}
 	
 	public String getPanelDescription()
