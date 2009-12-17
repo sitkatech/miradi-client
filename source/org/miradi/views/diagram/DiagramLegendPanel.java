@@ -93,6 +93,8 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		createLegendCheckBoxes();
 		addAllComponents();
 		updateLegendPanel(getLegendSettings(DiagramObject.TAG_HIDDEN_TYPES));
+		
+		editListPanel = new ObjectRefListEditorPanel(getProject(), getDiagramType(), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSet.getObjectType());
 	}
 	
 	@Override
@@ -123,13 +125,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 
 	private void addTaggedObjectSetPanel(DiagramObject diagramObject)
 	{
-		// TODO: Really, we should only construct eLP once in the constructor,
-		// but that would require the subclasses to tell us what type of DO
-		// we are managing so we could pass that to the construtor. 
-		// Then, we would call eLP.setObjectRef() here
-		if(editListPanel != null)
-			editListPanel.dispose();
-		editListPanel = new ObjectRefListEditorPanel(getProject(), diagramObject.getRef(), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSet.getObjectType());
+		editListPanel.setObjectRef(diagramObject.getRef());
 		editListPanel.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		add(editListPanel);
 		
@@ -410,6 +406,8 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	}
 	
 	abstract protected void createCustomLegendPanelSection(Actions actions, JPanel jpanel);
+	
+	abstract protected int getDiagramType();
 
 	private MainWindow mainWindow;
 	private ObjectRefListEditorPanel editListPanel;
