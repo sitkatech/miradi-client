@@ -109,7 +109,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		if (warningLabel == null)
 			return;
 		
-		boolean showWarning = hasDataOutsideOfProjectDateRange();
+		boolean showWarning = hasDataOutsideOfProjectDateRange(getProject());
 		warningLabel.setVisible(showWarning);
 		warningLabelFillerReplacement.setVisible(!showWarning);
 	}
@@ -129,15 +129,15 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		}
 	}
 	
-	private boolean hasDataOutsideOfProjectDateRange()
+	public static boolean hasDataOutsideOfProjectDateRange(Project projectToUse)
 	{
 		try
 		{
-			DateRange allDataDateRange = getProjectDataDateRange();
+			DateRange allDataDateRange = getProjectDataDateRange(projectToUse);
 			if (allDataDateRange == null)
 				return false;
 			
-			DateRange projectPlanningDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
+			DateRange projectPlanningDateRange = projectToUse.getProjectCalendar().getProjectPlanningDateRange();
 			return !projectPlanningDateRange.contains(allDataDateRange);
 		}
 		catch (Exception e)
@@ -149,7 +149,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	
 	private String getLastDateWithData() throws Exception
 	{
-		DateRange dateRange = getProjectDataDateRange();
+		DateRange dateRange = getProjectDataDateRange(getProject());
 		if (dateRange == null)
 			return "";
 		
@@ -158,23 +158,23 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	
 	private String getFirstDateWithData() throws Exception
 	{
-		DateRange dateRange = getProjectDataDateRange();
+		DateRange dateRange = getProjectDataDateRange(getProject());
 		if (dateRange == null)
 			return "";
 		
 		return dateRange.getStartDate().toIsoDateString();
 	}
 	
-	private DateRange getProjectDataDateRange() throws Exception
+	private static DateRange getProjectDataDateRange(Project projectToUse) throws Exception
 	{
 		ORefList assignmentRefs = new ORefList();
-		assignmentRefs.addAll(getProject().getAssignmentPool().getORefList());
-		assignmentRefs.addAll(getProject().getPool(ExpenseAssignment.getObjectType()).getRefList());
+		assignmentRefs.addAll(projectToUse.getAssignmentPool().getORefList());
+		assignmentRefs.addAll(projectToUse.getPool(ExpenseAssignment.getObjectType()).getRefList());
 		
 		TimePeriodCostsMap tpcm = new TimePeriodCostsMap();
 		for (int index = 0; index < assignmentRefs.size(); ++index)
 		{
-			Assignment assignment = Assignment.findAssignment(getProject(), assignmentRefs.get(index));
+			Assignment assignment = Assignment.findAssignment(projectToUse, assignmentRefs.get(index));
 			tpcm.mergeAll(assignment.convertAllDateUnitEffortList());
 		}
 		
