@@ -133,7 +133,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	{
 		try
 		{
-			DateRange allDataDateRange = getRolledUpDateRange();
+			DateRange allDataDateRange = createProjectTimePeriodCostsMap();
 			if (allDataDateRange == null)
 				return false;
 			
@@ -149,7 +149,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	
 	private String getLastDateWithData() throws Exception
 	{
-		DateRange dateRange = getRolledUpDateRange();
+		DateRange dateRange = createProjectTimePeriodCostsMap();
 		if (dateRange == null)
 			return "";
 		
@@ -158,14 +158,14 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	
 	private String getFirstDateWithData() throws Exception
 	{
-		DateRange dateRange = getRolledUpDateRange();
+		DateRange dateRange = createProjectTimePeriodCostsMap();
 		if (dateRange == null)
 			return "";
 		
 		return dateRange.getStartDate().toIsoDateString();
 	}
 	
-	private DateRange getRolledUpDateRange() throws Exception
+	private DateRange createProjectTimePeriodCostsMap() throws Exception
 	{
 		ORefList assignmentRefs = new ORefList();
 		assignmentRefs.addAll(getProject().getAssignmentPool().getORefList());
