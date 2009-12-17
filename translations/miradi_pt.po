@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-17 09:52-0600\n"
+"POT-Creation-Date: 2009-12-17 11:02-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -639,11 +639,11 @@ msgstr ""
 msgid "Are you sure you want to delete this Indicator?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:136
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:132
 msgid "Manage Tags (BETA)..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:403
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:399
 msgid "Manage Tagged Object Sets"
 msgstr ""
 
