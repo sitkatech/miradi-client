@@ -26,9 +26,9 @@ import org.miradi.questions.ObjectPoolChoiceQuestion;
 
 public class ObjectRefListEditorPanel extends ObjectDataInputPanel
 {
-	public ObjectRefListEditorPanel(Project projectToUse, ORef orefToUse, String tagToUse, int type)
+	public ObjectRefListEditorPanel(Project projectToUse, int objectType, String tagToUse, int type)
 	{
-		super(projectToUse, orefToUse);
+		super(projectToUse, ORef.createInvalidWithType(objectType));
 
 		addField(createOverridenObjectListField(tagToUse, new ObjectPoolChoiceQuestion(projectToUse, type)));
 		
