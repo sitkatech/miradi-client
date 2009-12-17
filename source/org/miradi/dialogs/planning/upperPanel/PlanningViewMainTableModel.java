@@ -65,6 +65,7 @@ import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.Translation;
+import org.miradi.views.summary.SummaryPlanningWorkPlanSubPanel;
 
 public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
@@ -226,7 +227,15 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	
 	public String getColumnName(int column)
 	{
-		return EAM.fieldLabel(ObjectType.FAKE, getColumnTag(column));
+		String columnTag = getColumnTag(column);
+		String columnName = EAM.fieldLabel(ObjectType.FAKE, columnTag);
+		if (!SummaryPlanningWorkPlanSubPanel.hasDataOutsideOfProjectDateRange(getProject()))
+			return columnName;
+		
+		if (isWhenColumn(columnTag) || isWhoColumn(columnTag))
+			return columnName + HAS_DATA_OUTSIDE_OF_PROJECT_DATE_ASTERISK;
+		
+		return columnName;
 	}
 	
 	public ChoiceItem getChoiceItemAt(int row, int column)
@@ -480,6 +489,8 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	}
 				
 	private static final String UNIQUE_MODEL_IDENTIFIER = "PlanningViewMainTableModel";
+	
+	private static final String HAS_DATA_OUTSIDE_OF_PROJECT_DATE_ASTERISK = "*";
 
 	private CodeList columnsToShow;
 	private RowColumnProvider rowColumnProvider;
