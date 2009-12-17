@@ -111,10 +111,4 @@ public class StrategyPool extends EAMNormalObjectPool
 		}
 		return (Factor[])nonDraftStrategies.toArray(new Factor[0]);
 	}
-	
-	public Strategy[] getAllStrategies()
-	{
-		return (Strategy[]) getValues().toArray(new Strategy[0]);
-	}
-
 }
