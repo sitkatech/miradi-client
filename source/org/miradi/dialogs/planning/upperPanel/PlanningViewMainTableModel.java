@@ -88,26 +88,36 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{
 		String columnTag = getColumnTag(column);
 		
-		if (columnTag.equals(CustomPlanningColumnsQuestion.META_WHO_TOTAL))
+		if (isWhoColumn(columnTag))
 			return AppPreferences.RESOURCE_TABLE_BACKGROUND;
 		
 		if (columnTag.equals(Indicator.PSEUDO_TAG_METHODS))
 			return AppPreferences.INDICATOR_COLOR;
 		
-		if(columnTag.equals(BaseObject.PSEUDO_TAG_WHEN_TOTAL))
+		if(isWhenColumn(columnTag))
 			return AppPreferences.getWorkUnitsBackgroundColor();
 		
 		return null;
 	}
-	
+
 	@Override
 	public boolean isCellEditable(int row, int modelColumn)
 	{
 		String columnTag = getColumnTag(modelColumn);
-		if (columnTag.equals(CustomPlanningColumnsQuestion.META_WHO_TOTAL))
+		if (isWhoColumn(columnTag))
 			return isWhoCellEditable(row, modelColumn);
 		
 		return super.isCellEditable(row, modelColumn);
+	}
+
+	private boolean isWhoColumn(String columnTag)
+	{
+		return columnTag.equals(CustomPlanningColumnsQuestion.META_WHO_TOTAL);
+	}
+	
+	private boolean isWhenColumn(String columnTag)
+	{
+		return columnTag.equals(BaseObject.PSEUDO_TAG_WHEN_TOTAL);
 	}
 	
 	private boolean isWhoCellEditable(int row, int modelColumn)
@@ -228,7 +238,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		try
 		{	
 			String columnTag = getTagForCell(baseObject.getType(), column);
-			if(columnTag.equals(CustomPlanningColumnsQuestion.META_WHO_TOTAL))
+			if(isWhoColumn(columnTag))
 				return appendedProjectResources(baseObject);
 			if (columnTag.equals(CustomPlanningColumnsQuestion.META_THREAT_RATING))
 				return getThreatRatingChoiceItem(baseObject);
@@ -257,7 +267,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if(columnTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
 				return new StrategyRatingSummaryQuestion().findChoiceByCode(rawValue);
 			
-			if(columnTag.equals(BaseObject.PSEUDO_TAG_WHEN_TOTAL))
+			if(isWhenColumn(columnTag))
 				return getFilteredWhen(baseObject);
 			
 			return new TaglessChoiceItem(rawValue);
@@ -439,7 +449,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		
 		if(ResourceAssignment.is(nodeType))
 		{
-			if (columnTag.equals(CustomPlanningColumnsQuestion.META_WHO_TOTAL))
+			if (isWhoColumn(columnTag))
 				return ResourceAssignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL;
 			if (columnTag.equals(Indicator.PSEUDO_TAG_FACTOR))
 				return ResourceAssignment.PSEUDO_TAG_OWNING_FACTOR_NAME;
