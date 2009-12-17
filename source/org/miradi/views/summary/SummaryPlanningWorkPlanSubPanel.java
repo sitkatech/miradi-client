@@ -178,7 +178,8 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 			tpcm.mergeAll(assignment.convertAllDateUnitEffortList());
 		}
 		
-		return tpcm.getRolledUpDateRange();	
+		final DateRange projectDateRange = projectToUse.getProjectCalendar().getProjectPlanningDateRange();
+		return tpcm.getRolledUpDateRange(projectDateRange);	
 	}
 	
 	public String getPanelDescription()
