@@ -227,7 +227,7 @@ public class TestDateUnit extends TestCaseWithProject
 
 	private void verifyTotalSubDateUnits(DateRange bounds, int expectedYearCount) throws Exception
 	{
-		Vector<DateUnit> totalSubDateUnits = getProject().getProjectCalendar().getSubDateUnitsWithin(bounds, empty);
+		Vector<DateUnit> totalSubDateUnits = getProject().getProjectCalendar().getSubDateUnitsWithin(empty, bounds);
 		assertEquals("wrong sub dateUnits count?", expectedYearCount, totalSubDateUnits.size());
 	}
 	

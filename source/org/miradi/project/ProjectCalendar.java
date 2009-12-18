@@ -328,10 +328,10 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	public Vector<DateUnit> getSubDateUnits(DateUnit dateUnit) throws Exception
 	{
-		return getSubDateUnitsWithin(getProjectPlanningDateRange(), dateUnit);
+		return getSubDateUnitsWithin(dateUnit, getProjectPlanningDateRange());
 	}
 	
-	public Vector<DateUnit> getSubDateUnitsWithin(DateRange projectDateRange, DateUnit dateUnit) throws Exception
+	public Vector<DateUnit> getSubDateUnitsWithin(DateUnit dateUnit, DateRange projectDateRange) throws Exception
 	{
 		if (dateUnit.isProjectTotal())
 			return getProjectYearsDateUnits(projectDateRange);
