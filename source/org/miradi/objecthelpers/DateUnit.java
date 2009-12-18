@@ -277,33 +277,6 @@ public class DateUnit
 		return asDateRange().contains(otherDateUnit.asDateRange());
 	}
 
-	public Vector<DateUnit> getSubDateUnits(DateRange dateRange) throws Exception
-	{
-		Vector<DateUnit> rawSubDateUnits = getSubDateUnits();
-		Vector<DateUnit> boundedSubDateUnits = new Vector<DateUnit>();
-		for(DateUnit thisDateUnit : rawSubDateUnits)
-		{
-			if (thisDateUnit.asDateRange().overlaps(dateRange))
-				boundedSubDateUnits.add(thisDateUnit);
-		}
-		
-		return boundedSubDateUnits;
-	}
-	
-	public Vector<DateUnit> getSubDateUnits() throws Exception
-	{
-		if(isYear())
-			return getYearSubDateUnits();
-		
-		if(isQuarter())
-			return getQuarterSubDateUnits();
-		
-		if(isMonth())
-			return getMonthSubDateUnits();
-		
-		throw new Exception("Can't call getSubDateUnits for DateUnit: " + getDateUnitCode());
-	}
-
 	public DateUnit getSafeSuperDateUnit(int fiscalYearFirstMonth)
 	{
 		if (isProjectTotal())
@@ -359,6 +332,33 @@ public class DateUnit
 		int quarter = (getMonth() - 1) / 3;
 		String quarterString = QUARTER_PREFIX_CODE + (quarter + 1);
 		return new DateUnit(getDateUnitCode().substring(0, 4) + quarterString);
+	}
+	
+	public Vector<DateUnit> getSubDateUnits(DateRange dateRange) throws Exception
+	{
+		Vector<DateUnit> rawSubDateUnits = getSubDateUnits();
+		Vector<DateUnit> boundedSubDateUnits = new Vector<DateUnit>();
+		for(DateUnit thisDateUnit : rawSubDateUnits)
+		{
+			if (thisDateUnit.asDateRange().overlaps(dateRange))
+				boundedSubDateUnits.add(thisDateUnit);
+		}
+		
+		return boundedSubDateUnits;
+	}
+	
+	public Vector<DateUnit> getSubDateUnits() throws Exception
+	{
+		if(isYear())
+			return getYearSubDateUnits();
+		
+		if(isQuarter())
+			return getQuarterSubDateUnits();
+		
+		if(isMonth())
+			return getMonthSubDateUnits();
+		
+		throw new Exception("Can't call getSubDateUnits for DateUnit: " + getDateUnitCode());
 	}
 
 	private Vector<DateUnit> getYearSubDateUnits()
