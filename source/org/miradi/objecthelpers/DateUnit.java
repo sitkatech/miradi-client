@@ -312,6 +312,19 @@ public class DateUnit
 		return getSuperDateUnit(fiscalYearFirstMonth);
 	}
 	
+	public Vector<DateUnit> getSuperDateUnitHierarchy(int fiscalYearFirstMonth)
+	{
+		Vector<DateUnit> superDateUnits = new Vector();
+		DateUnit superDateUnit = getSafeSuperDateUnit(fiscalYearFirstMonth);
+		while(superDateUnit != null)
+		{
+			superDateUnits.add(superDateUnit);
+			superDateUnit = superDateUnit.getSafeSuperDateUnit(fiscalYearFirstMonth);
+		}
+		
+		return superDateUnits;
+	}
+	
 	public DateUnit getSuperDateUnit(int fiscalYearFirstMonth)
 	{
 		if(isDay())
@@ -424,19 +437,6 @@ public class DateUnit
 		return getDateUnitCode().toString();
 	}
 	
-	public Vector<DateUnit> getSuperDateUnitHierarchy(int fiscalYearFirstMonth)
-	{
-		Vector<DateUnit> superDateUnits = new Vector();
-		DateUnit superDateUnit = getSafeSuperDateUnit(fiscalYearFirstMonth);
-		while(superDateUnit != null)
-		{
-			superDateUnits.add(superDateUnit);
-			superDateUnit = superDateUnit.getSafeSuperDateUnit(fiscalYearFirstMonth);
-		}
-		
-		return superDateUnits;
-	}
-
 	private static final String[][] monthsPerQuarter = { 
 		{"01", "02", "03"}, 
 		{"04", "05", "06"}, 
