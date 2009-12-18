@@ -229,13 +229,21 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{
 		String columnTag = getColumnTag(column);
 		String columnName = EAM.fieldLabel(ObjectType.FAKE, columnTag);
-		if (!SummaryPlanningWorkPlanSubPanel.hasDataOutsideOfProjectDateRange(getProject()))
-			return columnName;
-		
-		if (isWhenColumn(columnTag) || isWhoColumn(columnTag))
-			return columnName + HAS_DATA_OUTSIDE_OF_PROJECT_DATE_ASTERISK;
+		if (doesColumnHeaderNeedAsterisk(columnTag))
+			columnName += HAS_DATA_OUTSIDE_OF_PROJECT_DATE_ASTERISK;
 		
 		return columnName;
+	}
+	
+	private boolean doesColumnHeaderNeedAsterisk(String columnTag)
+	{
+		if (!SummaryPlanningWorkPlanSubPanel.hasDataOutsideOfProjectDateRange(getProject()))
+			return false;
+		
+		if (isWhenColumn(columnTag))
+			return true;
+		
+		return isWhoColumn(columnTag);
 	}
 	
 	public ChoiceItem getChoiceItemAt(int row, int column)
