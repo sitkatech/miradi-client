@@ -209,16 +209,7 @@ public class DateRange
 	
 	public boolean overlaps(DateRange other)
 	{
-		if (other.contains(this))
-			return true;
-		
-		if (other.getStartDate().after(getStartDate()) && other.getStartDate().before(getEndDate()))
-			return true;
-
-		if (other.getEndDate().after(getStartDate()) && other.getEndDate().before(getEndDate()))
-			return true;
-		
-		return equals(other);
+		return contains(other) || other.contains(this);
 	}
 	
 	public boolean contains(DateRange other)
