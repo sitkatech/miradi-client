@@ -66,6 +66,7 @@ import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffortList;
+import org.miradi.utils.IgnoreCaseStringComparator;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.Translation;
 import org.miradi.views.summary.SummaryPlanningWorkPlanSubPanel;
@@ -370,7 +371,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			sortedNames.add(getWhoName(resourceRef));
 		}
 		
-		Collections.sort(sortedNames);
+		Collections.sort(sortedNames, new IgnoreCaseStringComparator());
 		return sortedNames;
 	}
 	
