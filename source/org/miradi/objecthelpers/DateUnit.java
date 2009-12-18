@@ -277,6 +277,19 @@ public class DateUnit
 		return asDateRange().contains(otherDateUnit.asDateRange());
 	}
 
+	public Vector<DateUnit> getSubDateUnits(DateRange dateRange) throws Exception
+	{
+		Vector<DateUnit> rawSubDateUnits = getSubDateUnits();
+		Vector<DateUnit> boundedSubDateUnits = new Vector<DateUnit>();
+		for(DateUnit thisDateUnit : rawSubDateUnits)
+		{
+			if (thisDateUnit.asDateRange().overlaps(dateRange))
+				boundedSubDateUnits.add(thisDateUnit);
+		}
+		
+		return boundedSubDateUnits;
+	}
+	
 	public Vector<DateUnit> getSubDateUnits() throws Exception
 	{
 		if(isYear())
