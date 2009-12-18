@@ -56,6 +56,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
@@ -94,7 +95,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		addAllComponents();
 		updateLegendPanel(getLegendSettings(DiagramObject.TAG_HIDDEN_TYPES));
 		
-		editListPanel = new ObjectRefListEditorPanel(getProject(), getDiagramType(), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSet.getObjectType());
+		editListPanel = new ObjectRefListEditorPanel(getProject(), ORef.createInvalidWithType(getDiagramType()), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSet.getObjectType());
 	}
 	
 	@Override
