@@ -334,7 +334,7 @@ public class DateUnit
 		return new DateUnit(getDateUnitCode().substring(0, 4) + quarterString);
 	}
 	
-	public Vector<DateUnit> getSubDateUnits(DateRange dateRange) throws Exception
+	public Vector<DateUnit> getSubDateUnitsWithin(DateRange dateRange) throws Exception
 	{
 		Vector<DateUnit> rawSubDateUnits = getSubDateUnits();
 		Vector<DateUnit> boundedSubDateUnits = new Vector<DateUnit>();

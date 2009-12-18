@@ -337,7 +337,7 @@ public class ProjectCalendar implements CommandExecutedListener
 			return getProjectYearsDateUnits(projectDateRange);
 		
 		if (dateUnit.hasSubDateUnits())
-			return dateUnit.getSubDateUnits(projectDateRange);
+			return dateUnit.getSubDateUnitsWithin(projectDateRange);
 		
 		return new Vector<DateUnit>();
 	}

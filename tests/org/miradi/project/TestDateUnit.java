@@ -234,7 +234,7 @@ public class TestDateUnit extends TestCaseWithProject
 	public void testGetBoundedSubDateUnitsForYear() throws Exception
 	{
 		DateRange bounds = create2006DateRange();
-		Vector<DateUnit> yearSubDateUnits = fiscalYear2006StartJanuary.getSubDateUnits(bounds);
+		Vector<DateUnit> yearSubDateUnits = fiscalYear2006StartJanuary.getSubDateUnitsWithin(bounds);
 		assertEquals("wrong sub dateUnits count?", 4, yearSubDateUnits.size());
 		for(int index = 0; index < yearSubDateUnits.size(); ++index)
 		{
@@ -247,40 +247,40 @@ public class TestDateUnit extends TestCaseWithProject
 	public void testBoundedSubDateUnitsForPartialYear() throws Exception
 	{
 		DateRange bounds = createOneDayDateRange();
-		Vector<DateUnit> yearSubDateUnits = fiscalYear2006StartJanuary.getSubDateUnits(bounds);
+		Vector<DateUnit> yearSubDateUnits = fiscalYear2006StartJanuary.getSubDateUnitsWithin(bounds);
 		assertEquals("wrong sub dateUnits count?", 1, yearSubDateUnits.size());
 		
-		Vector<DateUnit> subDateUnitsOutSideBounds = new DateUnit("YEARFROM:2001-01").getSubDateUnits(bounds);
+		Vector<DateUnit> subDateUnitsOutSideBounds = new DateUnit("YEARFROM:2001-01").getSubDateUnitsWithin(bounds);
 		assertEquals("no sub dateUnits for dateUnit outside of bounds", 0, subDateUnitsOutSideBounds.size());
 	}
 
 	public void testGetBoundedSubDateUnitsForQuarter() throws Exception
 	{
 		DateRange oneYearBound = create2006DateRange();
-		Vector<DateUnit> quarter1SubDateUnits = quarter1In2006.getSubDateUnits(oneYearBound);
+		Vector<DateUnit> quarter1SubDateUnits = quarter1In2006.getSubDateUnitsWithin(oneYearBound);
 		assertEquals("wrong quarter 1 sub dateUnit months count", 3, quarter1SubDateUnits.size());
 		
 		DateRange oneDayBound = createOneDayDateRange();
-		Vector<DateUnit> quarter3SubDateUnits = new DateUnit("2006Q3").getSubDateUnits(oneDayBound);
+		Vector<DateUnit> quarter3SubDateUnits = new DateUnit("2006Q3").getSubDateUnitsWithin(oneDayBound);
 		assertEquals("wrong quarter 3 sub dateUnit months count", 1, quarter3SubDateUnits.size());
 		DateUnit singleMonth = quarter3SubDateUnits.get(0);
 		assertEquals("wrong quarter sub dateUnit month?", singleMonth, new DateUnit("2006-08"));
 		
-		Vector<DateUnit> subDateUnitsOutSideBounds = new DateUnit("2001Q1").getSubDateUnits(oneYearBound);
+		Vector<DateUnit> subDateUnitsOutSideBounds = new DateUnit("2001Q1").getSubDateUnitsWithin(oneYearBound);
 		assertEquals("no sub dateUnits for dateUnit outside of bounds", 0, subDateUnitsOutSideBounds.size());
 	}
 	
 	public void testGetBoundedSubDateUnitsForMonth() throws Exception
 	{
 		DateRange oneYearBound = create2006DateRange();
-		Vector<DateUnit> janSubDateUnits = new DateUnit("2006-01").getSubDateUnits(oneYearBound);
+		Vector<DateUnit> janSubDateUnits = new DateUnit("2006-01").getSubDateUnitsWithin(oneYearBound);
 		assertEquals("wrong jan sub dateUnits days count?", 31, janSubDateUnits.size());
 		
 		DateRange oneDayBound = createOneDayDateRange();
-		Vector<DateUnit> augSubDateUnits = new DateUnit("2006-08").getSubDateUnits(oneDayBound);
+		Vector<DateUnit> augSubDateUnits = new DateUnit("2006-08").getSubDateUnitsWithin(oneDayBound);
 		assertEquals("wrong august sub dateUnits days count", 1, augSubDateUnits.size());
 		
-		Vector<DateUnit> subDateUnitsOutSideBounds = new DateUnit("2002-10").getSubDateUnits(oneDayBound);
+		Vector<DateUnit> subDateUnitsOutSideBounds = new DateUnit("2002-10").getSubDateUnitsWithin(oneDayBound);
 		assertEquals("no sub dateUnits for dateUnit outside of bounds", 0, subDateUnitsOutSideBounds.size());
 	}
 	
