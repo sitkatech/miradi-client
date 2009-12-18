@@ -1513,14 +1513,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return new DateUnitEffort(DateUnit.createFromDateRange(dateRange), 0);
 	}
 
-	public DateRange createDateRange(int startYear, int endYear) throws Exception
+	public static DateRange createDateRange(int startYear, int endYear) throws Exception
 	{
 		MultiCalendar startDate = createStartYear(startYear);
 		MultiCalendar endDate = createEndYear(endYear);
 		return createDateRange(startDate, endDate);
 	}
 	
-	public DateRange createDateRange(MultiCalendar startDate, MultiCalendar endDate) throws Exception
+	public static DateRange createDateRange(MultiCalendar startDate, MultiCalendar endDate) throws Exception
 	{
 		return new DateRange(startDate, endDate);
 	}
