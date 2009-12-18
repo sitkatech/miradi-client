@@ -36,17 +36,22 @@ public class TestDateRange extends EAMTestCase
 	
 	public void testOverlaps() throws Exception
 	{
-		DateRange dateRange2006 = createDateRange("2006-01-01", "2006-12-31");
-		DateRange dateRange2005To2006 = createDateRange("2005-04-01", "2006-01-31");
+		String endDate2006 = "2006-12-31";
+		String startDate2006 = "2006-01-01";
+		DateRange dateRange2006 = createDateRange(startDate2006, endDate2006);
+		DateRange dateRange2005To2006 = createDateRange("2005-04-01", endDate2006);
 		assertTrue("dateRange does not overlap?", dateRange2005To2006.overlaps(dateRange2006));
 		
 		assertTrue("date range does not overlap?", dateRange2006.overlaps(dateRange2006));
 		
-		DateRange dateRange2006To2007 = createDateRange("2006-04-01", "2007-01-31");
+		DateRange dateRange2006To2007 = createDateRange(startDate2006, "2007-01-31");
 		assertTrue("date range does not overlap?", dateRange2006To2007.overlaps(dateRange2006));
 		
 		DateRange dateRange2004 = createDateRange("2004-01-01", "2004-12-31");
 		assertFalse("date range does overlap?", dateRange2006.overlaps(dateRange2004));
+		
+		DateRange dateRangeWithin2006 = createDateRange("2006-07-01", "2006-09-31");
+		assertTrue("date range does not overlap", dateRangeWithin2006.overlaps(dateRange2006));
 	}
 	
 	public void testCreateFromJson() throws Exception

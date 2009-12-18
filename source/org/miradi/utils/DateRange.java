@@ -209,6 +209,9 @@ public class DateRange
 	
 	public boolean overlaps(DateRange other)
 	{
+		if (other.contains(this))
+			return true;
+		
 		if (other.getStartDate().after(getStartDate()) && other.getStartDate().before(getEndDate()))
 			return true;
 
