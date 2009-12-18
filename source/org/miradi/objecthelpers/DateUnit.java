@@ -379,7 +379,7 @@ public class DateUnit
 		return days;
 	}
 
-	private static String asTwoDigitString(int numberToFormat)
+	public static String asTwoDigitString(int numberToFormat)
 	{
 		return new DecimalFormat("00").format(numberToFormat);
 	}

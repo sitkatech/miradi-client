@@ -187,7 +187,34 @@ public class TestDateUnit extends TestCaseWithProject
 		assertEquals(new DateUnit("2009-10"), quarterSubs.get(0));
 		assertEquals(new DateUnit("2009-11"), quarterSubs.get(1));
 		assertEquals(new DateUnit("2009-12"), quarterSubs.get(2));
-		
+	}
+	
+	public void testGetSubDateUnitsForMonth() throws Exception
+	{
+		verifyMonthSubDateUnits(month01, 31);
+		verifyMonthSubDateUnits(month02, 29);
+		verifyMonthSubDateUnits(month03, 31);
+		verifyMonthSubDateUnits(month04, 30);
+		verifyMonthSubDateUnits(month05, 31);
+		verifyMonthSubDateUnits(month06, 30);
+		verifyMonthSubDateUnits(month07, 31);
+		verifyMonthSubDateUnits(month08, 31);
+		verifyMonthSubDateUnits(month09, 30);
+		verifyMonthSubDateUnits(month10, 31);
+		verifyMonthSubDateUnits(month11, 30);
+		verifyMonthSubDateUnits(month12, 31);
+	}
+
+	private void verifyMonthSubDateUnits(DateUnit monthToVerify, final int expectedDayCountInMonth) throws Exception
+	{
+		Vector<DateUnit> monthSubs = monthToVerify.getSubDateUnits();
+		assertEquals("wrong days in month count?", expectedDayCountInMonth, monthSubs.size());
+		for (int index = 0; index < (expectedDayCountInMonth); ++index)
+		{
+			int day = index + 1;
+			String expectedDay = monthToVerify.toString() + "-" + DateUnit.asTwoDigitString(day);
+			assertEquals("wrong day ", monthSubs.get(index).toString(), expectedDay);
+		}
 	}
 	
 	public void testHasSubDateUnits() throws Exception
