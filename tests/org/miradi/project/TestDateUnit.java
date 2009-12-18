@@ -21,6 +21,7 @@ package org.miradi.project;
 
 import java.util.Vector;
 
+import org.martus.util.MultiCalendar;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.utils.DateRange;
@@ -217,6 +218,97 @@ public class TestDateUnit extends TestCaseWithProject
 		}
 	}
 	
+	public void testGetBoundedSubDateUnitsForTotal() throws Exception
+	{
+		verifyTotalSubDateUnits(create2006DateRange(), 1);
+		verifyTotalSubDateUnits(create2005To2006DateRange(), 2);
+		verifyTotalSubDateUnits(createOneDayDateRange(), 1);
+	}
+
+	private void verifyTotalSubDateUnits(DateRange bounds, int expectedYearCount) throws Exception
+	{
+		Vector<DateUnit> totalSubDateUnits = getProject().getProjectCalendar().getSubDateUnits(bounds, empty);
+		assertEquals("wrong sub dateUnits count?", expectedYearCount, totalSubDateUnits.size());
+	}
+	
+	public void testGetBoundedSubDateUnitsForYear() throws Exception
+	{
+		DateRange bounds = create2006DateRange();
+		Vector<DateUnit> yearSubDateUnits = fiscalYear2006StartJanuary.getSubDateUnits(bounds);
+		assertEquals("wrong sub dateUnits count?", 4, yearSubDateUnits.size());
+		for(int index = 0; index < yearSubDateUnits.size(); ++index)
+		{
+			DateUnit quarterDateUnit = yearSubDateUnits.get(index);
+			int quarter = index + 1;
+			assertEquals("wrong sub dateUnit for year?", new DateUnit("2006Q" + quarter), quarterDateUnit);
+		}
+	}
+	
+	public void testBoundedSubDateUnitsForPartialYear() throws Exception
+	{
+		DateRange bounds = createOneDayDateRange();
+		Vector<DateUnit> yearSubDateUnits = fiscalYear2006StartJanuary.getSubDateUnits(bounds);
+		assertEquals("wrong sub dateUnits count?", 1, yearSubDateUnits.size());
+		
+		Vector<DateUnit> subDateUnitsOutSideBounds = new DateUnit("YEARFROM:2001-01").getSubDateUnits(bounds);
+		assertEquals("no sub dateUnits for dateUnit outside of bounds", 0, subDateUnitsOutSideBounds.size());
+	}
+
+	public void testGetBoundedSubDateUnitsForQuarter() throws Exception
+	{
+		DateRange oneYearBound = create2006DateRange();
+		Vector<DateUnit> quarter1SubDateUnits = quarter1In2006.getSubDateUnits(oneYearBound);
+		assertEquals("wrong quarter 1 sub dateUnit months count", 3, quarter1SubDateUnits.size());
+		
+		DateRange oneDayBound = createOneDayDateRange();
+		Vector<DateUnit> quarter3SubDateUnits = new DateUnit("2006Q3").getSubDateUnits(oneDayBound);
+		assertEquals("wrong quarter 3 sub dateUnit months count", 1, quarter3SubDateUnits.size());
+		DateUnit singleMonth = quarter3SubDateUnits.get(0);
+		assertEquals("wrong quarter sub dateUnit month?", singleMonth, new DateUnit("2006-08"));
+		
+		Vector<DateUnit> subDateUnitsOutSideBounds = new DateUnit("2001Q1").getSubDateUnits(oneYearBound);
+		assertEquals("no sub dateUnits for dateUnit outside of bounds", 0, subDateUnitsOutSideBounds.size());
+	}
+	
+	public void testGetBoundedSubDateUnitsForMonth() throws Exception
+	{
+		DateRange oneYearBound = create2006DateRange();
+		Vector<DateUnit> janSubDateUnits = new DateUnit("2006-01").getSubDateUnits(oneYearBound);
+		assertEquals("wrong jan sub dateUnits days count?", 31, janSubDateUnits.size());
+		
+		DateRange oneDayBound = createOneDayDateRange();
+		Vector<DateUnit> augSubDateUnits = new DateUnit("2006-08").getSubDateUnits(oneDayBound);
+		assertEquals("wrong august sub dateUnits days count", 1, augSubDateUnits.size());
+		
+		Vector<DateUnit> subDateUnitsOutSideBounds = new DateUnit("2002-10").getSubDateUnits(oneDayBound);
+		assertEquals("no sub dateUnits for dateUnit outside of bounds", 0, subDateUnitsOutSideBounds.size());
+	}
+	
+
+	private DateRange create2006DateRange() throws Exception
+	{
+		MultiCalendar start = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 1);
+		MultiCalendar end = MultiCalendar.createFromGregorianYearMonthDay(2006, 12, 31);
+		
+		return new DateRange(start, end);
+	}
+	
+	private DateRange create2005To2006DateRange() throws Exception
+	{
+		MultiCalendar start = MultiCalendar.createFromGregorianYearMonthDay(2005, 8, 1);
+		MultiCalendar end = MultiCalendar.createFromGregorianYearMonthDay(2006, 4, 13);
+		
+		return new DateRange(start, end);
+	}
+	
+	private DateRange createOneDayDateRange() throws Exception
+	{
+		MultiCalendar start = MultiCalendar.createFromGregorianYearMonthDay(2006, 8, 5);
+		MultiCalendar end = MultiCalendar.createFromGregorianYearMonthDay(2006, 8, 5);
+		
+		return new DateRange(start, end);
+	}
+	
 	public void testHasSubDateUnits() throws Exception
 	{
 		assertEquals(false, empty.hasSubDateUnits());
@@ -359,7 +451,7 @@ public class TestDateUnit extends TestCaseWithProject
 	private final DateUnit quarter3In2009 = new DateUnit("2009Q3");
 	private final DateUnit quarter4In2009 = new DateUnit("2009Q4");
 	
-	private final DateUnit quarter1In2006 = new DateUnit("2006Q1");;
+	private final DateUnit quarter1In2006 = new DateUnit("2006Q1");
 	
 	public static final DateUnit month01 = new DateUnit("2008-01");
 	private final DateUnit month02 = new DateUnit("2008-02");
