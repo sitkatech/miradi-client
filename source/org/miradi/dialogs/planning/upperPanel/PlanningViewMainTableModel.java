@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.Color;
+import java.util.Collections;
+import java.util.Vector;
 
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTableModel;
@@ -338,18 +340,37 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		timePeriodCosts.filterProjectResources(getResourcesFilter());
 		ORefSet filteredResources = new ORefSet(timePeriodCosts.getResourceRefSet());
 		
+		Vector<String> sortedNames = getSortedResourceNames(filteredResources);		
+		String appendedResources = createAppendedResourceNames(sortedNames);
+		
+		return new TaglessChoiceItem(appendedResources);
+	}
+
+	private String createAppendedResourceNames(Vector<String> sortedNames)
+	{
 		boolean isFirstIteration = true; 
 		String appendedResources = "";
-		for(ORef resourceRef : filteredResources)
+		for(String resourceName : sortedNames)
 		{
 			if (!isFirstIteration)
 				appendedResources += ", ";
 			
-			appendedResources += getWhoName(resourceRef);
+			appendedResources += resourceName;
 			isFirstIteration = false;	
 		}
+		return appendedResources;
+	}
+
+	private Vector<String> getSortedResourceNames(ORefSet filteredResources)
+	{
+		Vector<String> sortedNames = new Vector<String>();
+		for(ORef resourceRef : filteredResources)
+		{
+			sortedNames.add(getWhoName(resourceRef));
+		}
 		
-		return new TaglessChoiceItem(appendedResources);
+		Collections.sort(sortedNames);
+		return sortedNames;
 	}
 	
 	private String getWhoName(ORef resourceRef)
