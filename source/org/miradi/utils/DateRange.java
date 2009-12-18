@@ -207,6 +207,17 @@ public class DateRange
 		return false;
 	}
 	
+	public boolean overlaps(DateRange other)
+	{
+		if (other.getStartDate().after(getStartDate()) && other.getStartDate().before(getEndDate()))
+			return true;
+
+		if (other.getEndDate().after(getStartDate()) && other.getEndDate().before(getEndDate()))
+			return true;
+		
+		return equals(other);
+	}
+	
 	public boolean contains(DateRange other)
 	{
 		if (! containsStart(other.getStartDate()))
