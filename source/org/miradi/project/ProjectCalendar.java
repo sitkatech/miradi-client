@@ -328,14 +328,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	public Vector<DateUnit> getSubDateUnits(DateUnit dateUnit) throws Exception
 	{
-		DateRange dateRange = convertToDateRange(dateUnit);
-		if (dateUnit.isProjectTotal())
-			return getProjectYearsDateUnits(dateRange);
-		
-		if (dateUnit.hasSubDateUnits())
-			return dateUnit.getSubDateUnits();
-		
-		return new Vector<DateUnit>();
+		return getSubDateUnits(getProjectPlanningDateRange(), dateUnit);
 	}
 	
 	public Vector<DateUnit> getSubDateUnits(DateRange projectDateRange, DateUnit dateUnit) throws Exception
@@ -344,7 +337,7 @@ public class ProjectCalendar implements CommandExecutedListener
 			return getProjectYearsDateUnits(projectDateRange);
 		
 		if (dateUnit.hasSubDateUnits())
-			return dateUnit.getSubDateUnits();
+			return dateUnit.getSubDateUnits(projectDateRange);
 		
 		return new Vector<DateUnit>();
 	}
@@ -383,18 +376,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		MultiCalendar thisEndDate = getPlanningEndMultiCalendar();
 		DateRange projectDateRange = new DateRange(thisStartDate, thisEndDate);
 		
-		DateRange dateRange = null;
-		Vector<DateUnit> dateUnits = getProjectYearsDateUnits(projectDateRange);
-		for(DateUnit dateUnit : dateUnits)
-		{
-			DateRange thisDateRange = dateUnit.asDateRange();
-			if(dateRange == null)
-				dateRange = new DateRange(thisDateRange);
-			else
-				dateRange = DateRange.combine(dateRange, thisDateRange);
-		}
-		
-		return dateRange;
+		return projectDateRange;
 	}
 	
 	public DateUnit getProjectPlanningDateUnit() throws Exception

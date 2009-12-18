@@ -120,8 +120,8 @@ public class TestProjectCalendar extends TestCaseWithProject
 		DateUnit blankDateUnit = new DateUnit();
 		DateRange dateRange = getProjectCalendar().convertToDateRange(blankDateUnit);
 		
-		MultiCalendar expectedStartYear = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 1);
-		MultiCalendar expectedEndYear = MultiCalendar.createFromGregorianYearMonthDay(2007, 12, 31);
+		MultiCalendar expectedStartYear = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 2);
+		MultiCalendar expectedEndYear = MultiCalendar.createFromGregorianYearMonthDay(2007, 1, 2);
 		DateRange expectedDateRange = new DateRange(expectedStartYear, expectedEndYear);
 		assertEquals("date ranges do not match?", expectedDateRange, dateRange);
 	}
