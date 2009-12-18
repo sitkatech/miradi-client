@@ -240,13 +240,13 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	
 	private boolean doesColumnHeaderNeedAsterisk(String columnTag)
 	{
-		if (!SummaryPlanningWorkPlanSubPanel.hasDataOutsideOfProjectDateRange(getProject()))
-			return false;
-		
 		if (isWhenColumn(columnTag))
-			return true;
+			return SummaryPlanningWorkPlanSubPanel.hasDataOutsideOfProjectDateRange(getProject());
 		
-		return isWhoColumn(columnTag);
+		if (isWhoColumn(columnTag))
+			return SummaryPlanningWorkPlanSubPanel.hasDataOutsideOfProjectDateRange(getProject());
+		
+		return false;
 	}
 	
 	public ChoiceItem getChoiceItemAt(int row, int column)
