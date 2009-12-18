@@ -46,6 +46,7 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
@@ -391,7 +392,12 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	public String getTagForCell(int nodeType, int column)
 	{
 		String columnTag = getColumnTag(column);
-
+		if (ProjectMetadata.is(nodeType))
+		{
+			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+				return "";
+		}
+		
 		if(ConceptualModelDiagram.is(nodeType))
 		{
 			if(isDetailsColumn(column))
