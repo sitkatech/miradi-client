@@ -21,18 +21,10 @@ package org.miradi.utils;
 
 import java.util.Comparator;
 
-public class IgnoreCaseStringComparator implements  Comparator
+public class IgnoreCaseStringComparator implements Comparator
 {
-
-	public IgnoreCaseStringComparator() 
-	{
-	}
-	
 	public int compare(Object object1, Object object2)
 	{
 		return object1.toString().compareToIgnoreCase(object2.toString());
 	}
-
-	String object;
-
 }
