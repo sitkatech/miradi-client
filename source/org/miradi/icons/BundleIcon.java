@@ -51,12 +51,22 @@ public class BundleIcon extends AbstractMiradiIcon
 		target = targetToUse;
 		threatTargetVirualLink = new ThreatTargetVirtualLinkHelper(getProject());
 	}
-
+	
+	public void setRowHeight(int rowHeightToUse)
+	{
+		rowHeight = rowHeightToUse;
+	}
+	
+	@Override
+	public int getIconHeight()
+	{
+		return rowHeight;
+	}
+	
 	public void paintIcon(Component c, Graphics g, int x, int y)
 	{
 		Graphics2D g2 = (Graphics2D) g;
-		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
+		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
 		int summaryX = 0;
 		if(preferences.getIsCellRatingsVisible())
@@ -98,7 +108,7 @@ public class BundleIcon extends AbstractMiradiIcon
 
 	private int getSummaryX()
 	{
-		return getIconWidth() / 3;
+		return getIconWidth() / 2;
 	}
 
 	private void drawCriterionRectangle(Graphics g, int index, ChoiceItem choice)
@@ -142,4 +152,5 @@ public class BundleIcon extends AbstractMiradiIcon
 	private Target target;
 	private AppPreferences preferences;
 	private ThreatTargetVirtualLinkHelper threatTargetVirualLink;
+	private int rowHeight;
 }
