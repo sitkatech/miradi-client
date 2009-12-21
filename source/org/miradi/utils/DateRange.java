@@ -280,15 +280,6 @@ public class DateRange
 		return  projectToUse.getProjectCalendar().getDateRangeName(combinedDateRange);
 	}
 
-	public static DateRange createFromJson(MultiCalendar date1, MultiCalendar date2) throws Exception
-	{
-		if (date1.after(date2))
-			return new DateRange(date2, date1);
-		
-		return new DateRange(date1, date2);
-	}
-	
-	
 	private static final String TAG_START_DATE = "StartDate";
 	private static final String TAG_END_DATE = "EndDate";
 	
