@@ -326,14 +326,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return baseObject.getResourceAssignmentsTimePeriodCostsMap();
 	}
 	
-	public String convertToSafeString(DateRange combinedDateRange)
-	{
-		if (combinedDateRange == null)
-			return "";
-		
-		return  getProject().getProjectCalendar().getDateRangeName(combinedDateRange);
-	}
-	
 	private ChoiceItem appendedProjectResources(BaseObject baseObject) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, new DateUnit());
