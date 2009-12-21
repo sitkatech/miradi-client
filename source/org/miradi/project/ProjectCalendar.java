@@ -404,5 +404,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	}
 
 	private Project project;
+	
+	//FIXME low - This variable and its methods seem to have no real use.
 	private Vector<DateRange> dateRanges;
 }
