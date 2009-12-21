@@ -171,21 +171,19 @@ public class TestProjectCalendar extends TestCaseWithProject
 	public void testGetStartOfFiscalYearContaining() throws Exception
 	{
 		MultiCalendar feb2008 = MultiCalendar.createFromGregorianYearMonthDay(2008, 2, 1);
-		
 		MultiCalendar jan2008 = MultiCalendar.createFromGregorianYearMonthDay(2008, 1, 1);
-		MultiCalendar april2007 = MultiCalendar.createFromGregorianYearMonthDay(2007, 4, 1);
-		MultiCalendar july2007 = MultiCalendar.createFromGregorianYearMonthDay(2007, 7, 1);
-		MultiCalendar oct2007 = MultiCalendar.createFromGregorianYearMonthDay(2007, 10, 1);
-		
 		assertEquals(jan2008, getProjectCalendar().getStartOfFiscalYearContaining(feb2008));
 
 		setFiscalYearStartMonth(4);
+		MultiCalendar april2007 = MultiCalendar.createFromGregorianYearMonthDay(2007, 4, 1);
 		assertEquals(april2007, getProjectCalendar().getStartOfFiscalYearContaining(feb2008));
 
 		setFiscalYearStartMonth(7);
+		MultiCalendar july2007 = MultiCalendar.createFromGregorianYearMonthDay(2007, 7, 1);
 		assertEquals(july2007, getProjectCalendar().getStartOfFiscalYearContaining(feb2008));
 
 		setFiscalYearStartMonth(10);
+		MultiCalendar oct2007 = MultiCalendar.createFromGregorianYearMonthDay(2007, 10, 1);
 		assertEquals(oct2007, getProjectCalendar().getStartOfFiscalYearContaining(feb2008));
 	}
 
