@@ -283,6 +283,6 @@ public class DateRange
 	private static final String TAG_START_DATE = "StartDate";
 	private static final String TAG_END_DATE = "EndDate";
 	
-	MultiCalendar startDate;
-	MultiCalendar endDate;
+	private MultiCalendar startDate;
+	private MultiCalendar endDate;
 }
