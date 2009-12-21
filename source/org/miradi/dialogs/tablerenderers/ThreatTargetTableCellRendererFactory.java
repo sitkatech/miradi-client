@@ -80,6 +80,8 @@ public class ThreatTargetTableCellRendererFactory extends ChoiceItemTableCellRen
 		if (threat != null && target != null)
 		{
 			simpleIcon.setThreatTarget(threat, target);
+			simpleIcon.setRowHeight(table.getRowHeight(row));
+			
 			return simpleIcon;
 		}
 		
