@@ -140,6 +140,20 @@ abstract public class Assignment extends BaseObject
 		return false;
 	}
 	
+	public boolean hasAnyYearDateUnitWithWrongStartMonth() throws Exception
+	{	
+		DateUnitEffortList duel = getDateUnitEffortList();
+		for (int index = 0; index < duel.size(); ++index)
+		{
+			DateUnitEffort dateUnitEffort = duel.getDateUnitEffort(index);
+			DateUnit dateUnit = dateUnitEffort.getDateUnit();
+			if (matchesCurrentFiscalYearStartMonth(dateUnit))
+				return true;
+		}
+		
+		return false;
+	}
+	
 	public TimePeriodCostsMap convertAllDateUnitEffortList() throws Exception
 	{
 		return createTimePeriodCostsMap(getDateUnitEffortList());
@@ -161,7 +175,7 @@ abstract public class Assignment extends BaseObject
 	
 	private void addTimePeriodCostsInPlaceForNoData(DateUnitEffortList duel, TimePeriodCostsMap tpcm)
 	{
-			tpcm.add(new DateUnit(), createTimePeriodCosts(new OptionalDouble()));
+		tpcm.add(new DateUnit(), createTimePeriodCosts(new OptionalDouble()));
 	}
 
 	private boolean isWithinProjectDateRange(final DateUnit dateUnit) throws Exception

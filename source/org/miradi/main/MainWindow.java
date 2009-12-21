@@ -62,8 +62,11 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.menu.MainMenuBar;
 import org.miradi.objecthelpers.ColorsFileLoader;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TwoLevelEntry;
+import org.miradi.objects.Assignment;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
@@ -642,6 +645,38 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return memoryStatistics;
 	}
 
+	public void setStatusBarIfFiscalYearDataHidden()
+	{
+		try
+		{
+			final String fiscalYearDataExcludedMessage = EAM.text("Non matching fiscal year data has been excluded");
+			if (hasNonMatchingFiscalYearStartMonth(getProject()))
+				mainStatusBar.setStatus(fiscalYearDataExcludedMessage);
+			else
+				clearStatusBar();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			clearStatusBar();
+		}
+	}
+	
+	private static boolean hasNonMatchingFiscalYearStartMonth(Project projectToUse) throws Exception
+	{
+		ORefList assignmentRefs = new ORefList();
+		assignmentRefs.addAll(projectToUse.getAssignmentPool().getORefList());
+		assignmentRefs.addAll(projectToUse.getPool(ExpenseAssignment.getObjectType()).getRefList());
+		for (int index = 0; index < assignmentRefs.size(); ++index)
+		{
+			Assignment assignment = Assignment.findAssignment(projectToUse, assignmentRefs.get(index));
+			if (assignment.hasAnyYearDateUnitWithWrongStartMonth())
+				return true;
+		}
+		
+		return false;
+	}
+	
 	public void setStatusBarIfDataExistsOutOfRange()
 	{
 		try
