@@ -112,7 +112,7 @@ abstract public class Assignment extends BaseObject
 			DateUnitEffort dateUnitEffort = duel.getDateUnitEffort(index);
 			TimePeriodCosts timePeriodCosts = createTimePeriodCosts(new OptionalDouble(dateUnitEffort.getQuantity()));
 			DateUnit dateUnit = dateUnitEffort.getDateUnit();
-			if (isWithinProjectDateRange(dateUnit))
+			if (shouldIncludeEffort(dateUnit))
 			{
 				tpcm.add(dateUnit, timePeriodCosts);
 			}
@@ -121,6 +121,23 @@ abstract public class Assignment extends BaseObject
 		return tpcm;
 	}
 
+	private boolean shouldIncludeEffort(DateUnit dateUnit) throws Exception
+	{
+		if (matchesCurrentFiscalYearStartMonth(dateUnit))
+			return false;
+
+		return isWithinProjectDateRange(dateUnit);
+	}
+
+	private boolean matchesCurrentFiscalYearStartMonth(DateUnit dateUnit)
+	{
+		if (!dateUnit.isYear())
+			return false;
+		
+		int dateUnitStartMonth = dateUnit.getYearStartMonth();
+		return dateUnitStartMonth != getProjectCalendar().getFiscalYearFirstMonth();
+	}
+	
 	public TimePeriodCostsMap convertAllDateUnitEffortList() throws Exception
 	{
 		return createTimePeriodCostsMap(getDateUnitEffortList());
