@@ -131,11 +131,13 @@ abstract public class Assignment extends BaseObject
 
 	private boolean matchesCurrentFiscalYearStartMonth(DateUnit dateUnit)
 	{
-		if (!dateUnit.isYear())
-			return false;
+		if (dateUnit.isYear())
+		{
+			int dateUnitStartMonth = dateUnit.getYearStartMonth();
+			return dateUnitStartMonth != getProjectCalendar().getFiscalYearFirstMonth();
+		}
 		
-		int dateUnitStartMonth = dateUnit.getYearStartMonth();
-		return dateUnitStartMonth != getProjectCalendar().getFiscalYearFirstMonth();
+		return false;
 	}
 	
 	public TimePeriodCostsMap convertAllDateUnitEffortList() throws Exception
