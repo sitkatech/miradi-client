@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-18 17:34-0600\n"
+"POT-Creation-Date: 2009-12-21 16:47-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -403,7 +403,7 @@ msgid ""
 "date to include the entire date range of the existing data."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:187
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:189
 msgid "Work Plan Settings"
 msgstr ""
 
@@ -812,7 +812,7 @@ msgstr "不能创建链接 \t\t"
 msgid "Can't link a group to an item it contains"
 msgstr "不能将组链接到其所包含的条目 \t\t"
 
-#: Miradi/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:58
+#: Miradi/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:59
 msgid "Tab|Work Plan"
 msgstr ""
 
@@ -3906,11 +3906,11 @@ msgstr ""
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr "针对保护项目的适应性管理软件 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:282
+#: Miradi/source/org/miradi/main/MainWindow.java:285
 msgid "Information"
 msgstr "信息 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:496
+#: Miradi/source/org/miradi/main/MainWindow.java:499
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -3919,39 +3919,43 @@ msgstr ""
 "未知的命令\n"
 "您可能正在尝试加载一个旧项目，它包含已不被支持的陈旧命令 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:501
+#: Miradi/source/org/miradi/main/MainWindow.java:504
 msgid "That project is in use by another copy of this application"
 msgstr "此项目正被本应用程序的另一个拷贝所使用 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:505
+#: Miradi/source/org/miradi/main/MainWindow.java:508
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
 msgstr "此项目无法被打开，因为它是由该应用程序的更高版本所创建 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:509
+#: Miradi/source/org/miradi/main/MainWindow.java:512
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr "此项目在被转换成当前数据格式之前无法打开 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:514
+#: Miradi/source/org/miradi/main/MainWindow.java:517
 msgid "Unknown error prevented opening that project"
 msgstr "未知错误阻止打开项目 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:649
+#: Miradi/source/org/miradi/main/MainWindow.java:652
+msgid "Non matching fiscal year data has been excluded"
+msgstr ""
+
+#: Miradi/source/org/miradi/main/MainWindow.java:684
 msgid ""
 "WorkPlan/Financial data outside project begin/end dates will not be shown"
 msgstr "在项目起始/结束日期以外的工作计划/财务数据将不会显示 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:679
+#: Miradi/source/org/miradi/main/MainWindow.java:714
 msgid "WARNING: Project end date before start date."
 msgstr "警告：项目结束日期在起始日期之前 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1026
+#: Miradi/source/org/miradi/main/MainWindow.java:1061
 msgid "Unable to launch external web browser"
 msgstr "无法运行外部网页浏览器 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1042
+#: Miradi/source/org/miradi/main/MainWindow.java:1077
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "

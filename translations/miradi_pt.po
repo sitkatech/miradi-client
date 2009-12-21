@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-18 17:34-0600\n"
+"POT-Creation-Date: 2009-12-21 16:47-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -372,7 +372,7 @@ msgid ""
 "date to include the entire date range of the existing data."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:187
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:189
 msgid "Work Plan Settings"
 msgstr ""
 
@@ -768,7 +768,7 @@ msgstr ""
 msgid "Can't link a group to an item it contains"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:58
+#: Miradi/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:59
 msgid "Tab|Work Plan"
 msgstr ""
 
@@ -3731,50 +3731,54 @@ msgstr ""
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:282
+#: Miradi/source/org/miradi/main/MainWindow.java:285
 msgid "Information"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:496
+#: Miradi/source/org/miradi/main/MainWindow.java:499
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
 "commands that are no longer supported"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:501
+#: Miradi/source/org/miradi/main/MainWindow.java:504
 msgid "That project is in use by another copy of this application"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:505
+#: Miradi/source/org/miradi/main/MainWindow.java:508
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:509
+#: Miradi/source/org/miradi/main/MainWindow.java:512
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:514
+#: Miradi/source/org/miradi/main/MainWindow.java:517
 msgid "Unknown error prevented opening that project"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:649
+#: Miradi/source/org/miradi/main/MainWindow.java:652
+msgid "Non matching fiscal year data has been excluded"
+msgstr ""
+
+#: Miradi/source/org/miradi/main/MainWindow.java:684
 msgid ""
 "WorkPlan/Financial data outside project begin/end dates will not be shown"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:679
+#: Miradi/source/org/miradi/main/MainWindow.java:714
 msgid "WARNING: Project end date before start date."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1026
+#: Miradi/source/org/miradi/main/MainWindow.java:1061
 msgid "Unable to launch external web browser"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1042
+#: Miradi/source/org/miradi/main/MainWindow.java:1077
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
