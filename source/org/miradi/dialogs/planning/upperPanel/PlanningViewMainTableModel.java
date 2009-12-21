@@ -315,7 +315,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		TimePeriodCostsMap totalTimePeriodCostsMap = calculateTimePeriodCostsMap(baseObject);
 		DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
 		DateRange rolledUpResourceAssignmentsDateRange = totalTimePeriodCostsMap.getRolledUpDateRange(projectStartEndDateRange, getResourcesFilter());
-		String rolledUpResourceAssignmentsWhen = convertToSafeString(rolledUpResourceAssignmentsDateRange);
+		String rolledUpResourceAssignmentsWhen = baseObject.convertToSafeString(rolledUpResourceAssignmentsDateRange);
 		
 		return new TaglessChoiceItem(rolledUpResourceAssignmentsWhen);
 	}
