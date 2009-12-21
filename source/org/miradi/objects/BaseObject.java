@@ -609,7 +609,7 @@ abstract public class BaseObject
 	{
 		try
 		{
-			return convertToSafeString(getProject(), getWhenRollup());
+			return DateRange.convertToSafeString(getProject(), getWhenRollup());
 		}
 		catch (Exception e)
 		{
@@ -624,14 +624,6 @@ abstract public class BaseObject
 		return getTotalTimePeriodCostsMap().getRolledUpDateRange(projectStartEndDateRange);
 	}
 
-	public static String convertToSafeString(Project projectToUse, DateRange combinedDateRange)
-	{
-		if (combinedDateRange == null)
-			return "";
-		
-		return  projectToUse.getProjectCalendar().getDateRangeName(combinedDateRange);
-	}
-	
 	void clear()
 	{
 		label = new StringData(TAG_LABEL);
