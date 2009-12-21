@@ -160,6 +160,7 @@ public class DateRange
 		return json;
 	}
 	
+	@Override
 	public String toString()
 	{
 		String isoDateString = endDate.toIsoDateString();
@@ -257,6 +258,7 @@ public class DateRange
 		return date2.getGregorianYear() - date1.getGregorianYear();
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if (! (rawOther instanceof DateRange))
