@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 
-import javax.swing.JCheckBox;
+import javax.swing.JToggleButton;
 import javax.swing.event.ListSelectionListener;
 
 import org.martus.util.xml.XmlUtilities;
@@ -41,9 +41,9 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 	protected CodeList getSelectedCodes()
 	{
 		CodeList codes = new CodeList();
-		for (int checkBoxIndex = 0; checkBoxIndex<checkBoxes.length; ++checkBoxIndex )
+		for (int checkBoxIndex = 0; checkBoxIndex<toggleButtons.length; ++checkBoxIndex )
 		{
-			JCheckBox checkBox = checkBoxes[checkBoxIndex];
+			JToggleButton checkBox = toggleButtons[checkBoxIndex];
 			if (checkBox.isSelected())
 			{
 				ChoiceItem choiceItem = choiceItems[checkBoxIndex];
@@ -61,10 +61,10 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 		{
 			for (int choiceIndex = 0; choiceIndex<choiceItems.length; ++choiceIndex)
 			{
-				checkBoxes[choiceIndex].setSelected(false);
+				toggleButtons[choiceIndex].setSelected(false);
 				ChoiceItem choiceItem = choiceItems[choiceIndex];
 				boolean isChecked  = codes.contains(choiceItem.getCode());
-				checkBoxes[choiceIndex].setSelected(isChecked);
+				toggleButtons[choiceIndex].setSelected(isChecked);
 			}
 			
 			setSameToolTipForAllCheckBoxes();
@@ -82,7 +82,7 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 		for (int choiceIndex = 0; (choiceIndex < choiceItems.length && selectionCount <= MAX_ITEMS_COUNT_IN_TOOLTIP); ++choiceIndex)
 		{
 			ChoiceItem choiceItem = choiceItems[choiceIndex];
-			if (checkBoxes[choiceIndex].isSelected() )
+			if (toggleButtons[choiceIndex].isSelected() )
 			{
 				partialToolTip += XmlUtilities.getXmlEncoded(choiceItem.getLabel()) + "<BR>";
 				++selectionCount;
@@ -96,7 +96,7 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 		String toolTip = "<HTML>" + partialToolTip + moreText + "</HTML>";
 		for (int choiceIndex = 0; choiceIndex < choiceItems.length; ++choiceIndex)
 		{
-			checkBoxes[choiceIndex].setToolTipText(toolTip);
+			toggleButtons[choiceIndex].setToolTipText(toolTip);
 		}
 		
 		return toolTip;
@@ -110,11 +110,11 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 
 	private void disableCheckBoxes()
 	{
-		for (int choiceIndex = 0; choiceIndex<checkBoxes.length; ++choiceIndex)
+		for (int choiceIndex = 0; choiceIndex<toggleButtons.length; ++choiceIndex)
 		{
 			ChoiceItem choiceItem = choiceItems[choiceIndex];
 			if (codesToDisable.contains(choiceItem.getCode()))
-				checkBoxes[choiceIndex].setEnabled(false);
+				toggleButtons[choiceIndex].setEnabled(false);
 		}
 	}
 

@@ -42,7 +42,7 @@ abstract public class AbstractCodeListEditorField extends ObjectDataInputField i
 	public AbstractCodeListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
-		codeListEditor = new CodeListFieldComponent(questionToUse, columnCount, this);
+		codeListEditor = createCodeListEditor(questionToUse, columnCount);
 		component = new MiradiScrollPane(codeListEditor);
 		Dimension preferredSize = component.getPreferredSize();
 		final int ARBITRARY_REASONABLE_MAX_WIDTH = 800;
@@ -50,6 +50,11 @@ abstract public class AbstractCodeListEditorField extends ObjectDataInputField i
 		int width = Math.min(preferredSize.width, ARBITRARY_REASONABLE_MAX_WIDTH);
 		int height = Math.min(preferredSize.height, ARBITRARY_REASONABLE_MAX_HEIGHT);
 		component.getViewport().setPreferredSize(new Dimension(width, height));
+	}
+
+	protected CodeListFieldComponent createCodeListEditor(ChoiceQuestion questionToUse, int columnCount)
+	{
+		return new CodeListFieldComponent(questionToUse, columnCount, this);
 	}
 
 	public JComponent getComponent()
