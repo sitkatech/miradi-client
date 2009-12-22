@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-21 16:47-0600\n"
+"POT-Creation-Date: 2009-12-22 08:50-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -403,7 +403,7 @@ msgid ""
 "date to include the entire date range of the existing data."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:189
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:188
 msgid "Work Plan Settings"
 msgstr ""
 
@@ -812,7 +812,7 @@ msgstr "不能创建链接 \t\t"
 msgid "Can't link a group to an item it contains"
 msgstr "不能将组链接到其所包含的条目 \t\t"
 
-#: Miradi/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:59
+#: Miradi/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:58
 msgid "Tab|Work Plan"
 msgstr ""
 
@@ -3938,24 +3938,19 @@ msgstr "此项目在被转换成当前数据格式之前无法打开 \t\t"
 msgid "Unknown error prevented opening that project"
 msgstr "未知错误阻止打开项目 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:652
+#: Miradi/source/org/miradi/main/MainWindow.java:653
 msgid "Non matching fiscal year data has been excluded"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:684
-msgid ""
-"WorkPlan/Financial data outside project begin/end dates will not be shown"
-msgstr "在项目起始/结束日期以外的工作计划/财务数据将不会显示 \t\t"
-
-#: Miradi/source/org/miradi/main/MainWindow.java:714
+#: Miradi/source/org/miradi/main/MainWindow.java:703
 msgid "WARNING: Project end date before start date."
 msgstr "警告：项目结束日期在起始日期之前 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1061
+#: Miradi/source/org/miradi/main/MainWindow.java:1050
 msgid "Unable to launch external web browser"
 msgstr "无法运行外部网页浏览器 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1077
+#: Miradi/source/org/miradi/main/MainWindow.java:1066
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -27109,6 +27104,10 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid ""
+#~ "WorkPlan/Financial data outside project begin/end dates will not be shown"
+#~ msgstr "在项目起始/结束日期以外的工作计划/财务数据将不会显示 \t\t"
 
 #~ msgid "sans-serif"
 #~ msgstr "无衬线"
