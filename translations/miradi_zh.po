@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-22 08:50-0600\n"
+"POT-Creation-Date: 2009-12-22 09:05-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3906,11 +3906,11 @@ msgstr ""
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr "针对保护项目的适应性管理软件 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:285
+#: Miradi/source/org/miradi/main/MainWindow.java:281
 msgid "Information"
 msgstr "信息 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:499
+#: Miradi/source/org/miradi/main/MainWindow.java:495
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -3919,38 +3919,38 @@ msgstr ""
 "未知的命令\n"
 "您可能正在尝试加载一个旧项目，它包含已不被支持的陈旧命令 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:504
+#: Miradi/source/org/miradi/main/MainWindow.java:500
 msgid "That project is in use by another copy of this application"
 msgstr "此项目正被本应用程序的另一个拷贝所使用 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:508
+#: Miradi/source/org/miradi/main/MainWindow.java:504
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
 msgstr "此项目无法被打开，因为它是由该应用程序的更高版本所创建 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:512
+#: Miradi/source/org/miradi/main/MainWindow.java:508
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr "此项目在被转换成当前数据格式之前无法打开 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:517
+#: Miradi/source/org/miradi/main/MainWindow.java:513
 msgid "Unknown error prevented opening that project"
 msgstr "未知错误阻止打开项目 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:653
+#: Miradi/source/org/miradi/main/MainWindow.java:649
 msgid "Non matching fiscal year data has been excluded"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:703
+#: Miradi/source/org/miradi/main/MainWindow.java:699
 msgid "WARNING: Project end date before start date."
 msgstr "警告：项目结束日期在起始日期之前 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1050
+#: Miradi/source/org/miradi/main/MainWindow.java:1026
 msgid "Unable to launch external web browser"
 msgstr "无法运行外部网页浏览器 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1066
+#: Miradi/source/org/miradi/main/MainWindow.java:1042
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
