@@ -23,11 +23,12 @@ import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.JCheckBox;
+import javax.swing.JToggleButton;
 
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.fieldComponents.PanelCheckBox;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
@@ -46,32 +47,51 @@ abstract public class AbstractListComponent extends DisposablePanel implements I
 	{
 		setLayout(new BasicGridLayout(0,columnCount));
 		question = questionToUse;
-		rebuildCheckBoxes();
+		rebuildToggleButtonsBoxes();
 	}
 
-	protected void rebuildCheckBoxes()
+	protected void rebuildToggleButtonsBoxes()
 	{
 		removeAll();
 		addAdditinalComponent();
 		ChoiceItem[] choices = getQuestion().getChoices();
 		choiceItems = new ChoiceItem[choices.length];
-		checkBoxes = new PanelCheckBox[choices.length];
+		toggleButtons = createToggleButtons(choices);
+		ButtonGroup group = new ButtonGroup();
 		
 		for (int i=0; i<choices.length; ++i)
 		{
-			JCheckBox checkBox = new PanelCheckBox(choices[i].getLabel());
-			checkBox.addItemListener(this);
+			JToggleButton toggleButton = createToggleButton(choices, i);
+			if (isSingleSelection())
+				group.add(toggleButton);
+			
+			toggleButton.addItemListener(this);
 			choiceItems[i] = choices[i];
-			checkBoxes[i] = checkBox;
+			toggleButtons[i] = toggleButton;
 			Icon icon = choiceItems[i].getIcon();
 			if (icon != null)
 				add(new PanelTitleLabel(icon));
 			
-			add(checkBox);
+			add(toggleButton);
 		}
 	
 		revalidate();
 		repaint();
+	}
+
+	protected boolean isSingleSelection()
+	{
+		return false;
+	}
+	
+	protected JToggleButton createToggleButton(ChoiceItem[] choices, int i)
+	{
+		return new JCheckBox(choices[i].getLabel());
+	}
+
+	protected JToggleButton[] createToggleButtons(ChoiceItem[] choices)
+	{
+		return new JCheckBox[choices.length];
 	}
 	
 	protected void addAdditinalComponent()
@@ -82,7 +102,7 @@ abstract public class AbstractListComponent extends DisposablePanel implements I
 	{
 	    if (event.getStateChange() == ItemEvent.SELECTED ||	event.getStateChange() == ItemEvent.DESELECTED)
 	    {
-	    	PanelCheckBox item = (PanelCheckBox) event.getItem();
+	    	JToggleButton item = (JToggleButton) event.getItem();
 	    	ChoiceItem choiceItem = getQuestion().findChoiceByLabel(item.getText());
 	    	try
 	    	{
@@ -96,18 +116,19 @@ abstract public class AbstractListComponent extends DisposablePanel implements I
 	    }
 	}
 
+	@Override
 	public void setEnabled(boolean isValidObject)
 	{
 		super.setEnabled(isValidObject);
-		for (int checkBoxIndex = 0; checkBoxIndex<checkBoxes.length; ++checkBoxIndex)
+		for (int index = 0; index<toggleButtons.length; ++index)
 		{
-			updateEditableState(checkBoxes[checkBoxIndex],isValidObject);
+			updateEditableState(toggleButtons[index],isValidObject);
 		}
 	}
 
-	public void updateEditableState(JCheckBox checkBox, boolean isValidObject)
+	public void updateEditableState(JToggleButton toggleButton, boolean isValidObject)
 	{
-			checkBox.setEnabled(isValidObject);
+			toggleButton.setEnabled(isValidObject);
 			Color fg = EAM.EDITABLE_FOREGROUND_COLOR;
 			Color bg = EAM.EDITABLE_BACKGROUND_COLOR;
 			if(!isValidObject)
@@ -115,8 +136,8 @@ abstract public class AbstractListComponent extends DisposablePanel implements I
 				fg = EAM.READONLY_FOREGROUND_COLOR;
 				bg = EAM.READONLY_BACKGROUND_COLOR;
 			}
-			checkBox.setForeground(fg);
-			checkBox.setBackground(bg);
+			toggleButton.setForeground(fg);
+			toggleButton.setBackground(bg);
 	
 	}
 	
@@ -127,7 +148,7 @@ abstract public class AbstractListComponent extends DisposablePanel implements I
 	
 	abstract protected void valueChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception;
 	
-	protected JCheckBox checkBoxes[];
+	protected JToggleButton toggleButtons[];
 	protected ChoiceItem choiceItems[];
 	private ChoiceQuestion question;
 }

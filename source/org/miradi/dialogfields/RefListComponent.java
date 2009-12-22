@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import javax.swing.JCheckBox;
+import javax.swing.JToggleButton;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.main.EAM;
@@ -38,9 +38,9 @@ public class RefListComponent extends AbstractDataValueListComponent
 	public String getText()
 	{
 		ORefList refList = new ORefList();
-		for (int checkBoxIndex = 0; checkBoxIndex<checkBoxes.length; ++checkBoxIndex )
+		for (int checkBoxIndex = 0; checkBoxIndex<toggleButtons.length; ++checkBoxIndex )
 		{
-			JCheckBox checkBox = checkBoxes[checkBoxIndex];
+			JToggleButton checkBox = toggleButtons[checkBoxIndex];
 			if (checkBox.isSelected())
 			{
 				ChoiceItem choiceItem = choiceItems[checkBoxIndex];
@@ -60,12 +60,12 @@ public class RefListComponent extends AbstractDataValueListComponent
 
 			for (int choiceIndex = 0; choiceIndex<choiceItems.length; ++choiceIndex)
 			{
-				checkBoxes[choiceIndex].setSelected(false);
+				toggleButtons[choiceIndex].setSelected(false);
 				ChoiceItem choiceItem = choiceItems[choiceIndex];
 				String code = choiceItem.getCode();
 				ORef ref = ORef.createFromString(code);
 				boolean isChecked  = refs.contains(ref);
-				checkBoxes[choiceIndex].setSelected(isChecked);
+				toggleButtons[choiceIndex].setSelected(isChecked);
 			}
 		}
 		catch(Exception e)

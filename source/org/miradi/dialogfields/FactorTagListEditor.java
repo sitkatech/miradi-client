@@ -130,15 +130,15 @@ public class FactorTagListEditor extends AbstractListComponent implements Comman
 	public void updateCheckboxesToMatchDatabase()
 	{
 		reloadQuestion();
-		rebuildCheckBoxes();
-		for (int checkBoxIndex = 0; checkBoxIndex < checkBoxes.length; ++checkBoxIndex)
+		rebuildToggleButtonsBoxes();
+		for (int checkBoxIndex = 0; checkBoxIndex < toggleButtons.length; ++checkBoxIndex)
 		{
-			String label = checkBoxes[checkBoxIndex].getText();
+			String label = toggleButtons[checkBoxIndex].getText();
 			ChoiceItem choiceItem = getQuestion().findChoiceByLabel(label);
 			ORef taggedObjectSetRef = ORef.createFromString(choiceItem.getCode());
 			ORefList taggedSet = getTaggedObjectRefs(taggedObjectSetRef);
 			boolean isSelected = taggedSet.contains(getFactorToTag().getRef());
-			checkBoxes[checkBoxIndex].setSelected(isSelected);
+			toggleButtons[checkBoxIndex].setSelected(isSelected);
 		}
 	}
 
