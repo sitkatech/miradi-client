@@ -58,23 +58,18 @@ import org.miradi.exceptions.FutureVersionException;
 import org.miradi.exceptions.InvalidDateRangeException;
 import org.miradi.exceptions.OldVersionException;
 import org.miradi.exceptions.UnknownCommandException;
-import org.miradi.ids.BaseId;
 import org.miradi.main.menu.MainMenuBar;
 import org.miradi.objecthelpers.ColorsFileLoader;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TwoLevelEntry;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectRepairer;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.TableRowHeightModeQuestion;
-import org.miradi.utils.DateRange;
 import org.miradi.utils.DefaultHyperlinkHandler;
 import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.HtmlViewPanelWithMargins;
@@ -88,6 +83,7 @@ import org.miradi.views.noproject.NoProjectView;
 import org.miradi.views.planning.PlanningView;
 import org.miradi.views.reports.ReportsView;
 import org.miradi.views.schedule.ScheduleView;
+import org.miradi.views.summary.SummaryPlanningWorkPlanSubPanel;
 import org.miradi.views.summary.SummaryView;
 import org.miradi.views.targetviability.TargetViabilityView;
 import org.miradi.views.threatmatrix.ThreatMatrixView;
@@ -702,27 +698,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		if (multiStartDate.after(multiEndDate))
 			throw new InvalidDateRangeException(EAM.text("WARNING: Project end date before start date."));
 
-		try
-		{
-			DateRange projectDateRange = new DateRange(multiStartDate, multiEndDate);
-			
-			BaseId[] assignmentIds = getProject().getAssignmentPool().getIds();
-			for (int i = 0; i < assignmentIds.length; i++)
-			{
-				ResourceAssignment assignment = (ResourceAssignment) getProject().findObject(new ORef(ObjectType.RESOURCE_ASSIGNMENT, assignmentIds[i]));
-				DateRange assignmentDateRange = assignment.getCombinedTimePeriodCostsMapDateRange();
-				if (assignmentDateRange != null && !projectDateRange.contains(assignmentDateRange))
-					return true;
-			}
-			
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return false;
-		}
-		
-		return false;
+		return SummaryPlanningWorkPlanSubPanel.hasDataOutsideOfProjectDateRange(getProject());
 	}
 
 	private void updateAfterCommand(CommandExecutedEvent event)
