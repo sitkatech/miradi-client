@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-21 16:47-0600\n"
+"POT-Creation-Date: 2009-12-22 08:50-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -421,7 +421,7 @@ msgid ""
 "date to include the entire date range of the existing data."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:189
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:188
 msgid "Work Plan Settings"
 msgstr ""
 
@@ -841,7 +841,7 @@ msgstr "Tidak bisa Membuat Tautan "
 msgid "Can't link a group to an item it contains"
 msgstr "Tidak bisa menautkan grup ke butir yang dikandungnya "
 
-#: Miradi/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:59
+#: Miradi/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:58
 msgid "Tab|Work Plan"
 msgstr ""
 
@@ -4090,26 +4090,19 @@ msgstr ""
 msgid "Unknown error prevented opening that project"
 msgstr "Kesalahan tak dikenal mencegah dibukanya proyek "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:652
+#: Miradi/source/org/miradi/main/MainWindow.java:653
 msgid "Non matching fiscal year data has been excluded"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:684
-msgid ""
-"WorkPlan/Financial data outside project begin/end dates will not be shown"
-msgstr ""
-"RencanaKerja/Data Keuangan di luar tanggal awal/akhir proyek tidak akan "
-"ditampakkan "
-
-#: Miradi/source/org/miradi/main/MainWindow.java:714
+#: Miradi/source/org/miradi/main/MainWindow.java:703
 msgid "WARNING: Project end date before start date."
 msgstr "PERINGATAN: Tanggal akhir proyek lebih awal daripada tanggal mulai. "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1061
+#: Miradi/source/org/miradi/main/MainWindow.java:1050
 msgid "Unable to launch external web browser"
 msgstr "Tidak bisa meluncurkan perambah web eksternal "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1077
+#: Miradi/source/org/miradi/main/MainWindow.java:1066
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -29752,6 +29745,12 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid ""
+#~ "WorkPlan/Financial data outside project begin/end dates will not be shown"
+#~ msgstr ""
+#~ "RencanaKerja/Data Keuangan di luar tanggal awal/akhir proyek tidak akan "
+#~ "ditampakkan "
 
 #~ msgid "sans-serif"
 #~ msgstr "sans-serif"

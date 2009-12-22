@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-21 16:47-0600\n"
+"POT-Creation-Date: 2009-12-22 08:50-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -420,7 +420,7 @@ msgid ""
 "date to include the entire date range of the existing data."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:189
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:188
 msgid "Work Plan Settings"
 msgstr ""
 
@@ -839,7 +839,7 @@ msgstr "No se puede crear el enlace."
 msgid "Can't link a group to an item it contains"
 msgstr "No se puede enlazar un grupo a un elemento que éste contenga."
 
-#: Miradi/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:59
+#: Miradi/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:58
 msgid "Tab|Work Plan"
 msgstr ""
 
@@ -4114,26 +4114,19 @@ msgstr ""
 msgid "Unknown error prevented opening that project"
 msgstr "Un error desconocido impidió que se abriera ese proyecto."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:652
+#: Miradi/source/org/miradi/main/MainWindow.java:653
 msgid "Non matching fiscal year data has been excluded"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:684
-msgid ""
-"WorkPlan/Financial data outside project begin/end dates will not be shown"
-msgstr ""
-"Los datos financieros/del plan de trabajo fuera de las fechas de inicio/fin "
-"del proyecto no se mostrarán."
-
-#: Miradi/source/org/miradi/main/MainWindow.java:714
+#: Miradi/source/org/miradi/main/MainWindow.java:703
 msgid "WARNING: Project end date before start date."
 msgstr "ADVERTENCIA: Fecha de fin del proyecto anterior a la fecha de inicio"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1061
+#: Miradi/source/org/miradi/main/MainWindow.java:1050
 msgid "Unable to launch external web browser"
 msgstr "No se pudo iniciar el navegador web externo."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1077
+#: Miradi/source/org/miradi/main/MainWindow.java:1066
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -29993,6 +29986,12 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid ""
+#~ "WorkPlan/Financial data outside project begin/end dates will not be shown"
+#~ msgstr ""
+#~ "Los datos financieros/del plan de trabajo fuera de las fechas de inicio/"
+#~ "fin del proyecto no se mostrarán."
 
 #~ msgid "sans-serif"
 #~ msgstr "sans-serif "
