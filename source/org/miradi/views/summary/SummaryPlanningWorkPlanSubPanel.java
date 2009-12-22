@@ -126,8 +126,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		if (isOneOfOurFields(setCommand.getFieldTag()))
 		{
 			updateOutOfRangeDataWarningField();
-			getMainWindow().setStatusBarIfDataExistsOutOfRange();
-			getMainWindow().setStatusBarIfFiscalYearDataHidden();
+			getMainWindow().updatePlanningDateRelatedStatus();
 		}
 	}
 	

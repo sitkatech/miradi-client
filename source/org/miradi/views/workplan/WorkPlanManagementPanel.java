@@ -42,8 +42,7 @@ class WorkPlanManagementPanel extends PlanningTreeManagementPanel
 	public void becomeActive()
 	{
 		super.becomeActive();
-		getMainWindow().setStatusBarIfDataExistsOutOfRange();
-		getMainWindow().setStatusBarIfFiscalYearDataHidden();
+		getMainWindow().updatePlanningDateRelatedStatus();
 	}
 	
 	@Override

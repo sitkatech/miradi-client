@@ -645,15 +645,22 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return memoryStatistics;
 	}
 
-	public void setStatusBarIfFiscalYearDataHidden()
+	public void updatePlanningDateRelatedStatus()
 	{
 		try
 		{
-			final String fiscalYearDataExcludedMessage = EAM.text("Non matching fiscal year data has been excluded");
 			if (hasNonMatchingFiscalYearStartMonth(getProject()))
-				mainStatusBar.setStatus(fiscalYearDataExcludedMessage);
-			else
-				clearStatusBar();
+				mainStatusBar.setStatus(EAM.text("Non matching fiscal year data has been excluded"));
+			
+			if (isDataOutsideOfcurrentProjectDateRange())
+				mainStatusBar.setStatus(("WorkPlan/Financial data outside project begin/end dates will not be shown"));
+			
+			clearStatusBar();
+		}
+		catch (InvalidDateRangeException e)
+		{
+			mainStatusBar.setStatus(e.getMessage());
+			EAM.logException(e);
 		}
 		catch (Exception e)
 		{
@@ -676,24 +683,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		
 		return false;
 	}
-	
-	public void setStatusBarIfDataExistsOutOfRange()
-	{
-		try
-		{
-			final String dataOutOfRange = EAM.text("WorkPlan/Financial data outside project begin/end dates will not be shown");
-			if (isDataOutsideOfcurrentProjectDateRange())
-				mainStatusBar.setStatus(dataOutOfRange);
-			else
-				clearStatusBar();
-		}
-		catch (InvalidDateRangeException e)
-		{
-			mainStatusBar.setStatus(e.getMessage());
-			EAM.logError(e.getMessage());
-		}
-	}
-	
+		
 	public void clearStatusBar()
 	{
 		mainStatusBar.setStatus("");
