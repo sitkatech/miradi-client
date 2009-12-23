@@ -138,7 +138,7 @@ public class BundleIcon extends AbstractMiradiIcon
 	
 	private int getSummaryX()
 	{
-		return getSummaryWidth();
+		return getCriterionWidth();
 	}
 
 	private ThreatRatingBundle getBundle() throws Exception
