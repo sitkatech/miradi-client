@@ -69,13 +69,13 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		rollupField = new ThreatStressRatingValueReadonlyComponent(getProject());
 		add(rollupField);
 
-		scopeEditorComponent = createEditorComponent(getScopeId());
+		scopeEditorComponent = createPopupEditorComponent(getScopeId());
 		addEditComponent(scopeEditorComponent, EAM.text("Scope"));
 		
-		severityEditorComponent = createEditorComponent(getSeverityId());
+		severityEditorComponent = createPopupEditorComponent(getSeverityId());
 		addEditComponent(severityEditorComponent, EAM.text("Severity"));
 		
-		irreversibilityEditorComponent = createEditorComponent(getIrreversibilityId());
+		irreversibilityEditorComponent = createPopupEditorComponent(getIrreversibilityId());
 		addEditComponent(irreversibilityEditorComponent, EAM.text("Irreversibility"));
 		
 		add(createGridCell(rollupLabel, rollupField.getComponent()));
@@ -83,7 +83,7 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
-	private PanelButton createEditorComponent(BaseId baseId)
+	private PanelButton createPopupEditorComponent(BaseId baseId)
 	{
 		PanelButton editorComponent = new PanelButton("");
 		editorComponent.addActionListener(new PopUpEditorHandler(baseId));
