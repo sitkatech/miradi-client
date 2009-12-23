@@ -40,8 +40,8 @@ public class RefListComponent extends AbstractDataValueListComponent
 		ORefList refList = new ORefList();
 		for (int index = 0; index<toggleButtons.length; ++index )
 		{
-			JToggleButton checkBox = toggleButtons[index];
-			if (checkBox.isSelected())
+			JToggleButton toggleButton = toggleButtons[index];
+			if (toggleButton.isSelected())
 			{
 				ChoiceItem choiceItem = choiceItems[index];
 				refList.add(ORef.createFromString(choiceItem.getCode()));
