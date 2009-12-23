@@ -132,12 +132,12 @@ public class BundleIcon extends AbstractMiradiIcon
 
 	private void drawCriterionRectangle(Graphics g, int index, ChoiceItem choice)
 	{
-		int height = getIconHeight() / 3;
-		int top = height * index;
+		int criterionHeight = getIconHeight() / 3;
+		int top = criterionHeight * index;
 		g.setColor(choice.getColor());
-		g.fillRect(0, top, getCriterionWidth(), height);
+		g.fillRect(0, top, getCriterionWidth(), criterionHeight);
 		g.setColor(Color.BLACK);
-		g.drawRect(0, top, getCriterionWidth(), height);
+		g.drawRect(0, top, getCriterionWidth(), criterionHeight);
 	}
 
 	private ThreatRatingBundle getBundle() throws Exception
