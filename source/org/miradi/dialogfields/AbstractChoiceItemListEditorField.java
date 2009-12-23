@@ -32,14 +32,14 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MiradiScrollPane;
 
-abstract public class AbstractCodeListEditorField extends ObjectDataInputField implements ListSelectionListener
+abstract public class AbstractChoiceItemListEditorField extends ObjectDataInputField implements ListSelectionListener
 {
-	public AbstractCodeListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
+	public AbstractChoiceItemListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
 		this(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, 3);
 	}
 	
-	public AbstractCodeListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
+	public AbstractChoiceItemListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
 		codeListEditor = createCodeListEditor(questionToUse, columnCount);
@@ -52,9 +52,9 @@ abstract public class AbstractCodeListEditorField extends ObjectDataInputField i
 		component.getViewport().setPreferredSize(new Dimension(width, height));
 	}
 
-	protected CodeListFieldComponent createCodeListEditor(ChoiceQuestion questionToUse, int columnCount)
+	protected QuestionBasedEditorComponent createCodeListEditor(ChoiceQuestion questionToUse, int columnCount)
 	{
-		return new CodeListFieldComponent(questionToUse, columnCount, this);
+		return new QuestionBasedEditorComponent(questionToUse, columnCount, this);
 	}
 
 	public JComponent getComponent()
@@ -93,11 +93,11 @@ abstract public class AbstractCodeListEditorField extends ObjectDataInputField i
 		codeListEditor.setDisabledCodes(codesToDiable);
 	}
 	
-	public CodeListFieldComponent getCodeListEditor()
+	public QuestionBasedEditorComponent getCodeListEditor()
 	{
 		return codeListEditor;
 	}
 	
-	protected CodeListFieldComponent codeListEditor;
+	protected QuestionBasedEditorComponent codeListEditor;
 	protected MiradiScrollPane component;
 }

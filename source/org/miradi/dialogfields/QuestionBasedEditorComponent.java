@@ -28,9 +28,9 @@ import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
-public class CodeListFieldComponent extends AbstractCodeListComponent
+public class QuestionBasedEditorComponent extends AbstractQuestionBasedComponent
 {
-	public CodeListFieldComponent(ChoiceQuestion questionToUse,	int columnCount, ListSelectionListener listener)
+	public QuestionBasedEditorComponent(ChoiceQuestion questionToUse,	int columnCount, ListSelectionListener listener)
 	{
 		super(questionToUse, columnCount, listener);
 	}
