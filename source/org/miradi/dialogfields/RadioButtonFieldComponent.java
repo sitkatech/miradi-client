@@ -31,7 +31,7 @@ public class RadioButtonFieldComponent extends CodeListFieldComponent
 {
 	public RadioButtonFieldComponent(ChoiceQuestion questionToUse, ListSelectionListener listener)
 	{
-		super(questionToUse, COLUMN_COUNT, listener);
+		super(questionToUse, SINGLE_COLUMN, listener);
 	}
 	
 	@Override
@@ -52,5 +52,5 @@ public class RadioButtonFieldComponent extends CodeListFieldComponent
 		return new JRadioButton[choices.length];
 	}
 	
-	private static final int COLUMN_COUNT = 1;
+	private static final int SINGLE_COLUMN = 1;
 }
