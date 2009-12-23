@@ -38,7 +38,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.TaggedObjectSetQuestion;
 
-public class FactorTagListEditor extends AbstractListComponent implements CommandExecutedListener
+public class FactorTagListEditor extends AbstractQuestionEditorComponent implements CommandExecutedListener
 {
 	public FactorTagListEditor(Project projectToUse, Factor selectedFactorToUse)
 	{
