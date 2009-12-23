@@ -77,7 +77,7 @@ public class BundleIcon extends AbstractMiradiIcon
 		{
 			int value = threatTargetVirualLink.calculateThreatRatingBundleValue(getThreatRef(), getTargetRef());
 			g.setColor(question.findChoiceByNumericValue(value).getColor());
-			g.fillRect(summaryX, 0, summaryX, getIconHeight());
+			g.fillRect(summaryX, 0, getSummaryWidth(), getIconHeight());
 			
 			if(preferences.getIsCellRatingsVisible())
 				drawIndividualRatings(g);
@@ -106,9 +106,19 @@ public class BundleIcon extends AbstractMiradiIcon
 		drawCriterionRectangle(g, 2, irreversibility);
 	}
 
-	private int getSummaryX()
+	private int getSummaryWidth()
 	{
 		return (getIconWidth() / 3) * 2;
+	}
+	
+	private int getCriterionWidth()
+	{
+		return getSummaryWidth();
+	}
+	
+	private int getSummaryX()
+	{
+		return getSummaryWidth();
 	}
 
 	private void drawCriterionRectangle(Graphics g, int index, ChoiceItem choice)
@@ -116,9 +126,9 @@ public class BundleIcon extends AbstractMiradiIcon
 		int height = getIconHeight() / 3;
 		int top = height * index;
 		g.setColor(choice.getColor());
-		g.fillRect(0, top, getSummaryX(), height);
+		g.fillRect(0, top, getCriterionWidth(), height);
 		g.setColor(Color.BLACK);
-		g.drawRect(0, top, getSummaryX(), height);
+		g.drawRect(0, top, getCriterionWidth(), height);
 	}
 
 	private ThreatRatingBundle getBundle() throws Exception
