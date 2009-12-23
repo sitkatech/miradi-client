@@ -36,7 +36,7 @@ import org.miradi.commands.CommandSetThreatRating;
 import org.miradi.dialogfields.SingleItemSelectableCodeListEditorComponent;
 import org.miradi.dialogfields.ThreatStressRatingValueReadonlyComponent;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.base.UndecoratedDialog;
+import org.miradi.dialogs.base.UndecoratedModelessDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.RatingIcon;
@@ -210,7 +210,7 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 			SingleItemSelectableCodeListEditorComponent editorPanel = new SingleItemSelectableCodeListEditorComponent(getRatingQuestion(), new ListSelectionHandler(criterionId));
 			selectRating(editorPanel);
 			
-			editorDialog = new UndecoratedDialog(EAM.getMainWindow(), EAM.text("Select")); 
+			editorDialog = new UndecoratedModelessDialogWithClose(EAM.getMainWindow(), EAM.text("Select")); 
 			editorDialog.add(editorPanel);
 			editorDialog.pack();
 			Utilities.centerFrame(editorDialog);
@@ -291,5 +291,5 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 	private PanelButton scopeEditorComponent;
 	private PanelButton severityEditorComponent;
 	private PanelButton irreversibilityEditorComponent;
-	private UndecoratedDialog editorDialog;
+	private UndecoratedModelessDialogWithClose editorDialog;
 }
