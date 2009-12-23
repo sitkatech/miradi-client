@@ -27,7 +27,6 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JComponent;
-import javax.swing.JWindow;
 import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -37,12 +36,12 @@ import org.miradi.commands.CommandSetThreatRating;
 import org.miradi.dialogfields.SingleItemSelectableCodeListEditorComponent;
 import org.miradi.dialogfields.ThreatStressRatingValueReadonlyComponent;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.UndecoratedDialog;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.RatingIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
-import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.layout.OneRowGridLayout;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
@@ -221,12 +220,8 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 				EAM.logException(e);
 			}
 			
-			editorDialog = new OneColumnWindow();
-			PanelButton closeButton = new PanelButton("Close"); 
-			closeButton.addActionListener(new CloseHandler()); 
-			
+			editorDialog = new UndecoratedDialog(EAM.getMainWindow(), EAM.text("Select")); 
 			editorDialog.add(editorPanel);
-			editorDialog.add(closeButton);
 			editorDialog.pack();
 			Utilities.centerFrame(editorDialog);
 			editorDialog.setVisible(true);	
@@ -288,27 +283,9 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		private BaseId criterionId;
 	}
 	
-	public class OneColumnWindow extends JWindow 
-	{ 
-		public OneColumnWindow() 
-		{ 
-			super(EAM.getMainWindow());
-			
-			setLayout(new OneColumnGridLayout()); 
-		}
-	}
-	
-	private class CloseHandler implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e)
-		{
-			setVisible(false); 
-		}
-	}
-	
 	private ThreatStressRatingValueReadonlyComponent rollupField;
 	private PanelButton scopeEditorComponent;
 	private PanelButton severityEditorComponent;
 	private PanelButton irreversibilityEditorComponent;
-	private OneColumnWindow editorDialog;
+	private UndecoratedDialog editorDialog;
 }
