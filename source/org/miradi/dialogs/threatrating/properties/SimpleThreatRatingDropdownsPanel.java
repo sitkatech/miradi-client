@@ -269,13 +269,12 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 			
 			ValueOption valueOption = getFramework().findValueOptionByNumericValue(selectedValue);
 			BaseId valueId = valueOption.getId();
-			
-			FactorId threatId = (FactorId)threatRef.getObjectId();
-			FactorId targetId = (FactorId)targetRef.getObjectId();
 			ThreatRatingBundle bundle = getBundle(threatRef, targetRef);
 			if(valueId.equals(bundle.getValueId(criterionId)))
 				return;
 			
+			FactorId threatId = (FactorId)threatRef.getObjectId();
+			FactorId targetId = (FactorId)targetRef.getObjectId();
 			CommandSetThreatRating command = new CommandSetThreatRating(threatId, targetId, criterionId, valueId);
 			getProject().executeCommand(command);
 		}
