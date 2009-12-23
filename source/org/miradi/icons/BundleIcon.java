@@ -70,15 +70,7 @@ public class BundleIcon extends AbstractMiradiIcon
 
 		try
 		{
-			int summaryX = 0;
-			if(preferences.getIsCellRatingsVisible())
-				summaryX = getSummaryX();
-			
-			int value = threatTargetVirualLink.calculateThreatRatingBundleValue(getThreatRef(), getTargetRef());
-			ThreatRatingQuestion question = getThreatRatingQuestion();
-			g.setColor(question.findChoiceByNumericValue(value).getColor());
-			g.fillRect(summaryX, 0, getSummaryWidth(), getIconHeight());
-			
+			paintSummaryColoredSection(g);
 			if(preferences.getIsCellRatingsVisible())
 				drawIndividualRatings(g);
 		}
@@ -86,6 +78,18 @@ public class BundleIcon extends AbstractMiradiIcon
 		{
 			EAM.logException(e);
 		}
+	}
+
+	private void paintSummaryColoredSection(Graphics g) throws Exception
+	{
+		int summaryX = 0;
+		if(preferences.getIsCellRatingsVisible())
+			summaryX = getSummaryX();
+		
+		int value = threatTargetVirualLink.calculateThreatRatingBundleValue(getThreatRef(), getTargetRef());
+		ThreatRatingQuestion question = getThreatRatingQuestion();
+		g.setColor(question.findChoiceByNumericValue(value).getColor());
+		g.fillRect(summaryX, 0, getSummaryWidth(), getIconHeight());
 	}
 
 	private ThreatRatingQuestion getThreatRatingQuestion()
