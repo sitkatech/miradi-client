@@ -50,7 +50,7 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		super(questionToUse, LAYOUT_COLUMN_COUNT, null);
 		
 		parentObject = parentObjectToUse;
-		updateCheckBoxesSelection(getWhoTotalCodes(parentObject));
+		updateToggleButtonSelections(getWhoTotalCodes(parentObject));
 	}
 	
 	@Override
