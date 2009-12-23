@@ -110,11 +110,11 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 
 	private void disableCheckBoxes()
 	{
-		for (int choiceIndex = 0; choiceIndex<toggleButtons.length; ++choiceIndex)
+		for (int index = 0; index<toggleButtons.length; ++index)
 		{
-			ChoiceItem choiceItem = choiceItems[choiceIndex];
+			ChoiceItem choiceItem = choiceItems[index];
 			if (codesToDisable.contains(choiceItem.getCode()))
-				toggleButtons[choiceIndex].setEnabled(false);
+				toggleButtons[index].setEnabled(false);
 		}
 	}
 
