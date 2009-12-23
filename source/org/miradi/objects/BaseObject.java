@@ -55,6 +55,7 @@ import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.project.ProjectCalendar;
 import org.miradi.project.ProjectChainObject;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -609,7 +610,7 @@ abstract public class BaseObject
 	{
 		try
 		{
-			return DateRange.convertToSafeString(getProject(), getWhenRollup());
+			return ProjectCalendar.convertToSafeString(getProject(), getWhenRollup());
 		}
 		catch (Exception e)
 		{

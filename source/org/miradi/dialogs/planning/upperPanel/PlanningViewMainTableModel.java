@@ -55,6 +55,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
+import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.EmptyChoiceItem;
@@ -315,7 +316,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		TimePeriodCostsMap totalTimePeriodCostsMap = calculateTimePeriodCostsMap(baseObject);
 		DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
 		DateRange rolledUpResourceAssignmentsDateRange = totalTimePeriodCostsMap.getRolledUpDateRange(projectStartEndDateRange, getResourcesFilter());
-		String rolledUpResourceAssignmentsWhen = DateRange.convertToSafeString(getProject(), rolledUpResourceAssignmentsDateRange);
+		String rolledUpResourceAssignmentsWhen = ProjectCalendar.convertToSafeString(getProject(), rolledUpResourceAssignmentsDateRange);
 		
 		return new TaglessChoiceItem(rolledUpResourceAssignmentsWhen);
 	}

@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import org.martus.util.MultiCalendar;
-import org.miradi.project.Project;
 
 public class DateRange
 {
@@ -274,14 +273,6 @@ public class DateRange
 		return startDate.hashCode() + endDate.hashCode();
 	}
 	
-	public static String convertToSafeString(Project projectToUse, DateRange combinedDateRange)
-	{
-		if (combinedDateRange == null)
-			return "";
-		
-		return  projectToUse.getProjectCalendar().getDateRangeName(combinedDateRange);
-	}
-
 	private static final String TAG_START_DATE = "StartDate";
 	private static final String TAG_END_DATE = "EndDate";
 	
