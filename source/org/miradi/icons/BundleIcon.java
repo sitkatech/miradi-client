@@ -130,12 +130,13 @@ public class BundleIcon extends AbstractMiradiIcon
 		return getSummaryWidth();
 	}
 
-	private void drawCriterionRectangle(Graphics g, int index, ChoiceItem choice)
+	private void drawCriterionRectangle(Graphics g, int criterionIndex, ChoiceItem choice)
 	{
 		int criterionHeight = getIconHeight() / 3;
-		int top = criterionHeight * index;
+		int top = criterionHeight * criterionIndex;
 		g.setColor(choice.getColor());
 		g.fillRect(0, top, getCriterionWidth(), criterionHeight);
+		
 		g.setColor(Color.BLACK);
 		g.drawRect(0, top, getCriterionWidth(), criterionHeight);
 	}
