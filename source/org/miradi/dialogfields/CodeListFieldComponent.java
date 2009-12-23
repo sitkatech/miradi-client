@@ -46,7 +46,7 @@ public class CodeListFieldComponent extends AbstractCodeListComponent
 	public void setText(String codesToUse)
 	{
 		CodeList codes = createCodeListFromString(codesToUse);
-		createCheckBoxes(codes);
+		updateCheckBoxesSelection(codes);
 	}
 
 	protected CodeList createCodeListFromString(String codesToUse)

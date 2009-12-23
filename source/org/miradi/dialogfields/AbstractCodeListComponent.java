@@ -54,7 +54,7 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 		return codes;
 	}
 	
-	protected void createCheckBoxes(CodeList codes)
+	protected void updateCheckBoxesSelection(CodeList codes)
 	{
 		enableSkipNotification();
 		try
