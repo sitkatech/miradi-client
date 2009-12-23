@@ -221,7 +221,7 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 				EAM.logException(e);
 			}
 			
-			editorDialog = new FullscreenWindowApp();
+			editorDialog = new OneColumnWindow();
 			PanelButton closeButton = new PanelButton("Close"); 
 			closeButton.addActionListener(new CloseHandler()); 
 			
@@ -288,9 +288,9 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		private BaseId criterionId;
 	}
 	
-	public class FullscreenWindowApp extends JWindow 
+	public class OneColumnWindow extends JWindow 
 	{ 
-		public FullscreenWindowApp() 
+		public OneColumnWindow() 
 		{ 
 			super(EAM.getMainWindow());
 			
@@ -310,5 +310,5 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 	private PanelButton scopeEditorComponent;
 	private PanelButton severityEditorComponent;
 	private PanelButton irreversibilityEditorComponent;
-	private FullscreenWindowApp editorDialog;
+	private OneColumnWindow editorDialog;
 }
