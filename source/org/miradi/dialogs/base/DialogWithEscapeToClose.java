@@ -35,6 +35,13 @@ public class DialogWithEscapeToClose extends JDialog
 	public DialogWithEscapeToClose(JFrame parent)
 	{
 		super(parent);
+		
+		setUndecorated(shouldBeUndecorated());
+	}
+
+	protected boolean shouldBeUndecorated()
+	{
+		return false;
 	}
 	
 	protected JRootPane createRootPane() 
