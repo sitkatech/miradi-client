@@ -79,10 +79,10 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 	{
 		String partialToolTip = ""; 
 		int selectionCount = 0;
-		for (int choiceIndex = 0; (choiceIndex < choiceItems.length && selectionCount <= MAX_ITEMS_COUNT_IN_TOOLTIP); ++choiceIndex)
+		for (int index = 0; (index < choiceItems.length && selectionCount <= MAX_ITEMS_COUNT_IN_TOOLTIP); ++index)
 		{
-			ChoiceItem choiceItem = choiceItems[choiceIndex];
-			if (toggleButtons[choiceIndex].isSelected() )
+			ChoiceItem choiceItem = choiceItems[index];
+			if (toggleButtons[index].isSelected() )
 			{
 				partialToolTip += XmlUtilities.getXmlEncoded(choiceItem.getLabel()) + "<BR>";
 				++selectionCount;
