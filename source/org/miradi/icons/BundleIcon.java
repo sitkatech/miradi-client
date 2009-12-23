@@ -68,14 +68,14 @@ public class BundleIcon extends AbstractMiradiIcon
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-		int summaryX = 0;
-		if(preferences.getIsCellRatingsVisible())
-			summaryX = getSummaryX();
-		
-		ThreatRatingQuestion question = getThreatRatingQuestion();
 		try
 		{
+			int summaryX = 0;
+			if(preferences.getIsCellRatingsVisible())
+				summaryX = getSummaryX();
+			
 			int value = threatTargetVirualLink.calculateThreatRatingBundleValue(getThreatRef(), getTargetRef());
+			ThreatRatingQuestion question = getThreatRatingQuestion();
 			g.setColor(question.findChoiceByNumericValue(value).getColor());
 			g.fillRect(summaryX, 0, getSummaryWidth(), getIconHeight());
 			
