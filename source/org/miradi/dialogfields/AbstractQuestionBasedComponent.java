@@ -29,9 +29,9 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
-abstract public class AbstractCodeListComponent extends AbstractDataValueListComponent
+abstract public class AbstractQuestionBasedComponent extends AbstractDataValueListComponent
 {
-	public AbstractCodeListComponent(ChoiceQuestion questionToUse, int columnCount, ListSelectionListener listener)
+	public AbstractQuestionBasedComponent(ChoiceQuestion questionToUse, int columnCount, ListSelectionListener listener)
 	{
 		super(questionToUse, columnCount, listener);
 		

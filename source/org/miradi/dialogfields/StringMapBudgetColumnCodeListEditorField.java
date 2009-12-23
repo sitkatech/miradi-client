@@ -30,7 +30,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
-public class StringMapBudgetColumnCodeListEditorField extends AbstractCodeListEditorField
+public class StringMapBudgetColumnCodeListEditorField extends AbstractChoiceItemListEditorField
 {
 	public StringMapBudgetColumnCodeListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{

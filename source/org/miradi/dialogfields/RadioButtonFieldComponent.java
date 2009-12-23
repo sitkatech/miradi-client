@@ -27,7 +27,7 @@ import javax.swing.event.ListSelectionListener;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
-public class RadioButtonFieldComponent extends CodeListFieldComponent
+public class RadioButtonFieldComponent extends QuestionBasedEditorComponent
 {
 	public RadioButtonFieldComponent(ChoiceQuestion questionToUse, ListSelectionListener listener)
 	{

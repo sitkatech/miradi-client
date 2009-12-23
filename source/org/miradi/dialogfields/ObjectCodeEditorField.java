@@ -23,7 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
-public class ObjectCodeEditorField extends AbstractCodeListEditorField
+public class ObjectCodeEditorField extends AbstractChoiceItemListEditorField
 {
 	public ObjectCodeEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
