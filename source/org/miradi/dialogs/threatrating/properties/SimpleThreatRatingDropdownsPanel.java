@@ -33,7 +33,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.martus.swing.Utilities;
 import org.miradi.commands.CommandSetThreatRating;
-import org.miradi.dialogfields.RadioButtonFieldComponent;
+import org.miradi.dialogfields.RadioButtonEditorComponent;
 import org.miradi.dialogfields.ThreatStressRatingValueReadonlyComponent;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.base.UndecoratedModelessDialogWithClose;
@@ -207,7 +207,7 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		
 		public void actionPerformed(ActionEvent event)
 		{
-			RadioButtonFieldComponent editorPanel = new RadioButtonFieldComponent(getRatingQuestion(), new ListSelectionHandler(criterionId));
+			RadioButtonEditorComponent editorPanel = new RadioButtonEditorComponent(getRatingQuestion(), new ListSelectionHandler(criterionId));
 			selectRating(editorPanel);
 			
 			editorDialog = new UndecoratedModelessDialogWithClose(EAM.getMainWindow(), EAM.text("Select")); 
@@ -217,7 +217,7 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 			editorDialog.setVisible(true);	
 		}
 
-		private void selectRating(RadioButtonFieldComponent editorPanel)
+		private void selectRating(RadioButtonEditorComponent editorPanel)
 		{
 			try
 			{
