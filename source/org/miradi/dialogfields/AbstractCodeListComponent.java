@@ -43,8 +43,8 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 		CodeList codes = new CodeList();
 		for (int index = 0; index<toggleButtons.length; ++index )
 		{
-			JToggleButton checkBox = toggleButtons[index];
-			if (checkBox.isSelected())
+			JToggleButton toggleButton = toggleButtons[index];
+			if (toggleButton.isSelected())
 			{
 				ChoiceItem choiceItem = choiceItems[index];
 				codes.add(choiceItem.getCode());
