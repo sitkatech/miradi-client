@@ -134,11 +134,10 @@ public class BundleIcon extends AbstractMiradiIcon
 	
 	private int getSummaryX()
 	{
-		int summaryX = 0;
 		if(preferences.getIsCellRatingsVisible())
-			summaryX = getCriterionWidth();
+			return getCriterionWidth();
 		
-		return summaryX;
+		return 0;
 	}
 
 	private ThreatRatingBundle getBundle() throws Exception
