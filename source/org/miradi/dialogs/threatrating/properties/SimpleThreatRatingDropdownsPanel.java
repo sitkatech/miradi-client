@@ -172,9 +172,7 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 	
 	private ChoiceItem getCurrentRating(BaseId criterionId) throws Exception
 	{
-		ORef threatRef = getThreatRef();
-		ORef targetRef = getTargetRef();
-		ThreatRatingBundle bundle = getBundle(threatRef, targetRef);
+		ThreatRatingBundle bundle = getBundle(getThreatRef(), getTargetRef());
 		ORef valueOptionRef = new ORef(ValueOption.getObjectType(), bundle.getValueId(criterionId));
 		ValueOption valueOption = (ValueOption)getProject().findObject(valueOptionRef);
 		int numeric = valueOption.getNumericValue();
