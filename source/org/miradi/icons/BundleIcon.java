@@ -52,22 +52,6 @@ public class BundleIcon extends AbstractMiradiIcon
 		threatTargetVirualLink = new ThreatTargetVirtualLinkHelper(getProject());
 	}
 	
-	public void setRowHeight(int rowHeightToUse)
-	{
-		rowHeight = rowHeightToUse;
-	}
-	
-	@Override
-	public int getIconHeight()
-	{
-		return rowHeight;
-	}
-	
-	private int getSummaryHeight()
-	{
-		return getIconHeight();
-	}
-	
 	public void paintIcon(Component c, Graphics g, int x, int y)
 	{
 		Graphics2D g2 = (Graphics2D) g;
@@ -115,6 +99,33 @@ public class BundleIcon extends AbstractMiradiIcon
 		drawCriterionRectangle(g, 2, irreversibility);
 	}
 
+	private void drawCriterionRectangle(Graphics g, int criterionIndex, ChoiceItem choice)
+	{
+		int criterionHeight = getIconHeight() / 3;
+		int top = criterionHeight * criterionIndex;
+		g.setColor(choice.getColor());
+		g.fillRect(0, top, getCriterionWidth(), criterionHeight);
+		
+		g.setColor(Color.BLACK);
+		g.drawRect(0, top, getCriterionWidth(), criterionHeight);
+	}
+	
+	public void setRowHeight(int rowHeightToUse)
+	{
+		rowHeight = rowHeightToUse;
+	}
+	
+	@Override
+	public int getIconHeight()
+	{
+		return rowHeight;
+	}
+	
+	private int getSummaryHeight()
+	{
+		return getIconHeight();
+	}
+	
 	private int getSummaryWidth()
 	{
 		return (getIconWidth() / 3) * 2;
@@ -128,17 +139,6 @@ public class BundleIcon extends AbstractMiradiIcon
 	private int getSummaryX()
 	{
 		return getSummaryWidth();
-	}
-
-	private void drawCriterionRectangle(Graphics g, int criterionIndex, ChoiceItem choice)
-	{
-		int criterionHeight = getIconHeight() / 3;
-		int top = criterionHeight * criterionIndex;
-		g.setColor(choice.getColor());
-		g.fillRect(0, top, getCriterionWidth(), criterionHeight);
-		
-		g.setColor(Color.BLACK);
-		g.drawRect(0, top, getCriterionWidth(), criterionHeight);
 	}
 
 	private ThreatRatingBundle getBundle() throws Exception
