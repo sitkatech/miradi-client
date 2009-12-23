@@ -246,33 +246,43 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		{
 			try
 			{
-				ORef threatRef = getThreatRef();
-				ORef targetRef = getTargetRef();
-				if(threatRef.isInvalid() || targetRef.isInvalid())
-					return;
-
-				String selectedCode = (String) event.getSource();
-				int selectedValue = 0;
-				if(selectedCode.length() > 0)
-					selectedValue = Integer.parseInt(selectedCode);
-				
-				ValueOption valueOption = getFramework().findValueOptionByNumericValue(selectedValue);
-				BaseId valueId = valueOption.getId();
-				
-				FactorId threatId = (FactorId)threatRef.getObjectId();
-				FactorId targetId = (FactorId)targetRef.getObjectId();
-				ThreatRatingBundle bundle = getBundle(threatRef, targetRef);
-				if(valueId.equals(bundle.getValueId(criterionId)))
-					return;
-				
-				CommandSetThreatRating command = new CommandSetThreatRating(threatId, targetId, criterionId, valueId);
-				getProject().executeCommand(command);
-				editorDialog.setVisible(false);
+				saveRating(event);
+				closeEditorDialog();
 			}
 			catch(Exception e)
 			{
 				EAM.logException(e);
 			}
+		}
+
+		private void closeEditorDialog()
+		{
+			editorDialog.setVisible(false);
+		}
+
+		private void saveRating(ListSelectionEvent event) throws Exception
+		{
+			ORef threatRef = getThreatRef();
+			ORef targetRef = getTargetRef();
+			if(threatRef.isInvalid() || targetRef.isInvalid())
+				return;
+
+			String selectedCode = (String) event.getSource();
+			int selectedValue = 0;
+			if(selectedCode.length() > 0)
+				selectedValue = Integer.parseInt(selectedCode);
+			
+			ValueOption valueOption = getFramework().findValueOptionByNumericValue(selectedValue);
+			BaseId valueId = valueOption.getId();
+			
+			FactorId threatId = (FactorId)threatRef.getObjectId();
+			FactorId targetId = (FactorId)targetRef.getObjectId();
+			ThreatRatingBundle bundle = getBundle(threatRef, targetRef);
+			if(valueId.equals(bundle.getValueId(criterionId)))
+				return;
+			
+			CommandSetThreatRating command = new CommandSetThreatRating(threatId, targetId, criterionId, valueId);
+			getProject().executeCommand(command);
 		}
 		
 		private BaseId criterionId;
