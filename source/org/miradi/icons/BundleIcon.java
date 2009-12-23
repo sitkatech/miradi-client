@@ -71,14 +71,10 @@ public class BundleIcon extends AbstractMiradiIcon
 
 	private void paintSummaryColoredSection(Graphics g) throws Exception
 	{
-		int summaryX = 0;
-		if(preferences.getIsCellRatingsVisible())
-			summaryX = getSummaryX();
-		
 		int value = threatTargetVirualLink.calculateThreatRatingBundleValue(getThreatRef(), getTargetRef());
 		ThreatRatingQuestion question = getThreatRatingQuestion();
 		g.setColor(question.findChoiceByNumericValue(value).getColor());
-		g.fillRect(summaryX, 0, getSummaryWidth(), getSummaryHeight());
+		g.fillRect(getSummaryX(), 0, getSummaryWidth(), getSummaryHeight());
 	}
 
 	private ThreatRatingQuestion getThreatRatingQuestion()
@@ -138,7 +134,11 @@ public class BundleIcon extends AbstractMiradiIcon
 	
 	private int getSummaryX()
 	{
-		return getCriterionWidth();
+		int summaryX = 0;
+		if(preferences.getIsCellRatingsVisible())
+			summaryX = getCriterionWidth();
+		
+		return summaryX;
 	}
 
 	private ThreatRatingBundle getBundle() throws Exception
