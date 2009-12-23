@@ -94,9 +94,9 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 			moreText = "...more";
 		
 		String toolTip = "<HTML>" + partialToolTip + moreText + "</HTML>";
-		for (int choiceIndex = 0; choiceIndex < choiceItems.length; ++choiceIndex)
+		for (int index = 0; index < choiceItems.length; ++index)
 		{
-			toggleButtons[choiceIndex].setToolTipText(toolTip);
+			toggleButtons[index].setToolTipText(toolTip);
 		}
 		
 		return toolTip;
