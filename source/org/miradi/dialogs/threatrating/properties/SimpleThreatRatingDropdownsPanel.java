@@ -208,6 +208,17 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		public void actionPerformed(ActionEvent event)
 		{
 			SingleItemSelectableCodeListEditorComponent editorPanel = new SingleItemSelectableCodeListEditorComponent(getRatingQuestion(), new ListSelectionHandler(criterionId));
+			selectRating(editorPanel);
+			
+			editorDialog = new UndecoratedDialog(EAM.getMainWindow(), EAM.text("Select")); 
+			editorDialog.add(editorPanel);
+			editorDialog.pack();
+			Utilities.centerFrame(editorDialog);
+			editorDialog.setVisible(true);	
+		}
+
+		private void selectRating(SingleItemSelectableCodeListEditorComponent editorPanel)
+		{
 			try
 			{
 				String code = getCurrentRating(criterionId).getCode();
@@ -219,12 +230,6 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 			{
 				EAM.logException(e);
 			}
-			
-			editorDialog = new UndecoratedDialog(EAM.getMainWindow(), EAM.text("Select")); 
-			editorDialog.add(editorPanel);
-			editorDialog.pack();
-			Utilities.centerFrame(editorDialog);
-			editorDialog.setVisible(true);	
 		}
 		
 		private BaseId criterionId;
