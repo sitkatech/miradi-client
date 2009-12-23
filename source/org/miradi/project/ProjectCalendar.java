@@ -403,7 +403,7 @@ public class ProjectCalendar implements CommandExecutedListener
 				startOfFiscalYear.getGregorianDay());
 	}
 
-	public static String convertToSafeString(Project projectToUse, DateRange combinedDateRange)
+	public String convertToSafeString(Project projectToUse, DateRange combinedDateRange)
 	{
 		if (combinedDateRange == null)
 			return "";
