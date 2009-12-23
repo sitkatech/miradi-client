@@ -59,12 +59,12 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 		enableSkipNotification();
 		try
 		{
-			for (int choiceIndex = 0; choiceIndex<choiceItems.length; ++choiceIndex)
+			for (int index = 0; index<choiceItems.length; ++index)
 			{
-				toggleButtons[choiceIndex].setSelected(false);
-				ChoiceItem choiceItem = choiceItems[choiceIndex];
+				toggleButtons[index].setSelected(false);
+				ChoiceItem choiceItem = choiceItems[index];
 				boolean isChecked  = codes.contains(choiceItem.getCode());
-				toggleButtons[choiceIndex].setSelected(isChecked);
+				toggleButtons[index].setSelected(isChecked);
 			}
 			
 			setSameToolTipForAllCheckBoxes();
