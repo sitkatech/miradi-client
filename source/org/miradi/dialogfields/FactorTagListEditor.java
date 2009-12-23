@@ -131,14 +131,14 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 	{
 		reloadQuestion();
 		rebuildToggleButtonsBoxes();
-		for (int checkBoxIndex = 0; checkBoxIndex < toggleButtons.length; ++checkBoxIndex)
+		for (int index = 0; index < toggleButtons.length; ++index)
 		{
-			String label = toggleButtons[checkBoxIndex].getText();
+			String label = toggleButtons[index].getText();
 			ChoiceItem choiceItem = getQuestion().findChoiceByLabel(label);
 			ORef taggedObjectSetRef = ORef.createFromString(choiceItem.getCode());
 			ORefList taggedSet = getTaggedObjectRefs(taggedObjectSetRef);
 			boolean isSelected = taggedSet.contains(getFactorToTag().getRef());
-			toggleButtons[checkBoxIndex].setSelected(isSelected);
+			toggleButtons[index].setSelected(isSelected);
 		}
 	}
 
