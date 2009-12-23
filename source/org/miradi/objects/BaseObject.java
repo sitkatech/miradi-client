@@ -609,7 +609,7 @@ abstract public class BaseObject
 	{
 		try
 		{
-			return getProject().getProjectCalendar().convertToSafeString(getProject(), getWhenRollup());
+			return getProject().getProjectCalendar().convertToSafeString(getWhenRollup());
 		}
 		catch (Exception e)
 		{
