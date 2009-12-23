@@ -63,6 +63,11 @@ public class BundleIcon extends AbstractMiradiIcon
 		return rowHeight;
 	}
 	
+	private int getSummaryHeight()
+	{
+		return getIconHeight();
+	}
+	
 	public void paintIcon(Component c, Graphics g, int x, int y)
 	{
 		Graphics2D g2 = (Graphics2D) g;
@@ -89,7 +94,7 @@ public class BundleIcon extends AbstractMiradiIcon
 		int value = threatTargetVirualLink.calculateThreatRatingBundleValue(getThreatRef(), getTargetRef());
 		ThreatRatingQuestion question = getThreatRatingQuestion();
 		g.setColor(question.findChoiceByNumericValue(value).getColor());
-		g.fillRect(summaryX, 0, getSummaryWidth(), getIconHeight());
+		g.fillRect(summaryX, 0, getSummaryWidth(), getSummaryHeight());
 	}
 
 	private ThreatRatingQuestion getThreatRatingQuestion()
