@@ -60,7 +60,7 @@ public class BundleIcon extends AbstractMiradiIcon
 		try
 		{
 			paintSummaryColoredSection(g);
-			if(preferences.getIsCellRatingsVisible())
+			if(preferences.areCellRatingsVisible())
 				drawIndividualRatings(g);
 		}
 		catch(Exception e)
@@ -134,7 +134,7 @@ public class BundleIcon extends AbstractMiradiIcon
 	
 	private int getSummaryX()
 	{
-		if(preferences.getIsCellRatingsVisible())
+		if(preferences.areCellRatingsVisible())
 			return getCriterionWidth();
 		
 		return 0;
