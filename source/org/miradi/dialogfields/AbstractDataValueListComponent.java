@@ -27,7 +27,7 @@ import javax.swing.event.ListSelectionListener;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
-abstract public class AbstractDataValueListComponent extends AbstractListComponent
+abstract public class AbstractDataValueListComponent extends AbstractQuestionEditorComponent
 {
 	public AbstractDataValueListComponent(ChoiceQuestion questionToUse,	int columnCount, ListSelectionListener listener)
 	{
