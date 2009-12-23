@@ -67,7 +67,7 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 				toggleButtons[index].setSelected(isChecked);
 			}
 			
-			setSameToolTipForAllCheckBoxes();
+			setSameToolTipForAllToggleButtons();
 		}
 		finally
 		{
@@ -75,7 +75,7 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 		}
 	}
 
-	protected String setSameToolTipForAllCheckBoxes()
+	protected String setSameToolTipForAllToggleButtons()
 	{
 		String partialToolTip = ""; 
 		int selectionCount = 0;

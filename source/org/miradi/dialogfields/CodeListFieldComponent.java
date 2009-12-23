@@ -38,7 +38,7 @@ public class CodeListFieldComponent extends AbstractCodeListComponent
 	public String getText()
 	{
 		CodeList codes = getSelectedCodes();
-		setSameToolTipForAllCheckBoxes();
+		setSameToolTipForAllToggleButtons();
 		
 		return codes.toString();
 	}
