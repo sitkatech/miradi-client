@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-23 12:11-0600\n"
+"POT-Creation-Date: 2009-12-23 15:12-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4249,8 +4249,8 @@ msgstr "粘贴 \t\t"
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListComponent.java:62
 #: Miradi/source/org/miradi/dialogfields/StringMapProjectResourceFilterEditorField.java:48
 #: Miradi/source/org/miradi/dialogfields/StringMapProjectResourceFilterEditorField.java:79
+#: Miradi/source/org/miradi/dialogfields/QuestionBasedEditorComponent.java:60
 #: Miradi/source/org/miradi/dialogfields/RefListComponent.java:73
-#: Miradi/source/org/miradi/dialogfields/CodeListFieldComponent.java:60
 #: Miradi/source/org/miradi/dialogfields/StringMapBudgetColumnCodeListEditorField.java:48
 #: Miradi/source/org/miradi/dialogfields/StringMapBudgetColumnCodeListEditorField.java:79
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyRefListHtmlComponent.java:78
@@ -4269,6 +4269,14 @@ msgstr ""
 "请选择特定的类别，而不是种类如：\n"
 "'%s' \t\t"
 
+#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:129
+msgid "Unexpected call to getText"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:135
+msgid "Unexpected call to setText"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:221
 msgid "Text|Dates must be in YYYY-MM-DD format"
 msgstr "日期格式必须是YYYY-MM-DD（年-月-日）"
@@ -4286,14 +4294,6 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogfields/ObjectDateChooserInputField.java:60
 msgid "Date Chooser"
 msgstr "日期选择器 \t\t"
-
-#: Miradi/source/org/miradi/dialogfields/AbstractCodeListComponent.java:129
-msgid "Unexpected call to getText"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogfields/AbstractCodeListComponent.java:135
-msgid "Unexpected call to setText"
-msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/UndoRedoKeyHandler.java:57
 msgid "An unexpected error prevented that operation"

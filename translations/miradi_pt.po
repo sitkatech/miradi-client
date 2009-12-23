@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-23 12:11-0600\n"
+"POT-Creation-Date: 2009-12-23 15:12-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -4069,8 +4069,8 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListComponent.java:62
 #: Miradi/source/org/miradi/dialogfields/StringMapProjectResourceFilterEditorField.java:48
 #: Miradi/source/org/miradi/dialogfields/StringMapProjectResourceFilterEditorField.java:79
+#: Miradi/source/org/miradi/dialogfields/QuestionBasedEditorComponent.java:60
 #: Miradi/source/org/miradi/dialogfields/RefListComponent.java:73
-#: Miradi/source/org/miradi/dialogfields/CodeListFieldComponent.java:60
 #: Miradi/source/org/miradi/dialogfields/StringMapBudgetColumnCodeListEditorField.java:48
 #: Miradi/source/org/miradi/dialogfields/StringMapBudgetColumnCodeListEditorField.java:79
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyRefListHtmlComponent.java:78
@@ -4085,6 +4085,14 @@ msgstr ""
 msgid ""
 "Please choose a specific classification, instead of a category like:\n"
 "'%s'"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:129
+msgid "Unexpected call to getText"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:135
+msgid "Unexpected call to setText"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:221
@@ -4103,14 +4111,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/ObjectDateChooserInputField.java:60
 msgid "Date Chooser"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogfields/AbstractCodeListComponent.java:129
-msgid "Unexpected call to getText"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogfields/AbstractCodeListComponent.java:135
-msgid "Unexpected call to setText"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/UndoRedoKeyHandler.java:57
