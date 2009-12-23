@@ -22,14 +22,14 @@ package org.miradi.dialogs.base;
 
 import org.miradi.main.MainWindow;
 
-public class UndecoratedDialog extends ModelessDialogWithClose
+public class UndecoratedModelessDialogWithClose extends ModelessDialogWithClose
 {
-	public UndecoratedDialog(MainWindow parent, DisposablePanel panel, String title)
+	public UndecoratedModelessDialogWithClose(MainWindow parent, DisposablePanel panel, String title)
 	{
 		super(parent, panel, title);
 	}
 	
-	public UndecoratedDialog(MainWindow parent, String title)
+	public UndecoratedModelessDialogWithClose(MainWindow parent, String title)
 	{
 		super(parent, title);
 	}
