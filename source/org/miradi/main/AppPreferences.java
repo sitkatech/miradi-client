@@ -151,7 +151,7 @@ public class AppPreferences
 		return new CodeList(installedSampleVersions);
 	}
 	
-	public boolean getIsCellRatingsVisible()
+	public boolean areCellRatingsVisible()
 	{
 		return getBoolean(AppPreferences.TAG_CELL_RATINGS_VISIBLE);
 	}
