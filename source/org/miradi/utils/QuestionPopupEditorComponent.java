@@ -43,7 +43,7 @@ import org.miradi.questions.ChoiceQuestion;
 
 public class QuestionPopupEditorComponent extends OneRowPanel
 {
-	public QuestionPopupEditorComponent(ListSelectionListener selectionHandler, ChoiceQuestion questionToUse, String fieldLabel) throws Exception
+	public QuestionPopupEditorComponent(ListSelectionListener selectionHandler, ChoiceQuestion questionToUse, String translatedPopupButtonText) throws Exception
 	{
 		question = questionToUse;
 		
@@ -51,7 +51,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		editorPanel = new RadioButtonEditorComponent(getQuestion(), selectionHandler);
 		editorPanel.addListSelectionListener(new CloseEditorAfterSelectionHandler());
 		editorComponent.addActionListener(new PopUpEditorHandler());
-		addEditComponent(editorComponent, fieldLabel);
+		addEditComponent(editorComponent, translatedPopupButtonText);
 	}
 	
 	public void setText(String text)
