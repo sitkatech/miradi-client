@@ -39,6 +39,9 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 	protected JToggleButton createToggleButton(String label)
 	{
 		JRadioButton radioButton = new JRadioButton(label);
+		if (group == null)
+			group = new ButtonGroup();
+	
 		group.add(radioButton);
 		
 		return radioButton;
@@ -47,7 +50,6 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 	@Override
 	protected JToggleButton[] createToggleButtons(ChoiceItem[] choices)
 	{
-		group = new ButtonGroup();
 		return new JRadioButton[choices.length];
 	}
 	
