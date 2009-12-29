@@ -130,7 +130,7 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 		return false;
 	}
 
-	public void updateCheckboxesToMatchDatabase()
+	private void updateCheckboxesToMatchDatabase()
 	{
 		reloadQuestion();
 		rebuildToggleButtonsBoxes();
