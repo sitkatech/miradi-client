@@ -51,6 +51,5 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 		group.add(radioButton);
 	}
 
-	private static final int SINGLE_COLUMN = 1;
 	private ButtonGroup group; 
 }

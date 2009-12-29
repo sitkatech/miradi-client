@@ -41,7 +41,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 {	
 	public AbstractQuestionEditorComponent(ChoiceQuestion questionToUse)
 	{
-		this(questionToUse, 1);
+		this(questionToUse, SINGLE_COLUMN);
 	}
 	
 	public AbstractQuestionEditorComponent(ChoiceQuestion questionToUse, int columnCount)
@@ -138,4 +138,5 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 	
 	private ChoiceQuestion question;
 	protected HashMap<ChoiceItem, JToggleButton> choiceItemToToggleButtonMap;
+	protected static final int SINGLE_COLUMN = 1;
 }
