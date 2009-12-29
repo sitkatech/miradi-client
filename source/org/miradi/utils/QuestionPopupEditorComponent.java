@@ -47,11 +47,11 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	{
 		question = questionToUse;
 		
-		editorComponent = new PanelButton("");
+		popupInvokeButton = new PanelButton("");
 		editorPanel = new RadioButtonEditorComponent(getQuestion(), selectionHandler);
 		editorPanel.addListSelectionListener(new CloseEditorAfterSelectionHandler());
-		editorComponent.addActionListener(new PopUpEditorHandler());
-		addEditComponent(editorComponent, translatedPopupButtonText);
+		popupInvokeButton.addActionListener(new PopUpEditorHandler());
+		addEditComponent(popupInvokeButton, translatedPopupButtonText);
 	}
 	
 	public void setText(String text)
@@ -60,8 +60,8 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		codeList.add(text);
 		editorPanel.setText(codeList.toString());
 		ChoiceItem choice = question.findChoiceByCode(text);
-		editorComponent.setText(choice.getLabel());
-		editorComponent.setIcon(new RatingIcon(choice));
+		popupInvokeButton.setText(choice.getLabel());
+		popupInvokeButton.setIcon(new RatingIcon(choice));
 	}
 	
 	public String getText()
@@ -125,7 +125,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		return question;
 	}
 
-	private PanelButton editorComponent;
+	private PanelButton popupInvokeButton;
 	private UndecoratedModelessDialogWithClose editorDialog;
 	private ChoiceQuestion question;
 	private RadioButtonEditorComponent editorPanel;
