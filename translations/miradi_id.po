@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-23 15:12-0600\n"
+"POT-Creation-Date: 2009-12-29 07:41-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -537,7 +537,7 @@ msgstr "Fitur Keanekaragaman Hayati "
 #: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:66
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:73
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:65
 msgid "Scope"
 msgstr "Cakupan "
 
@@ -1734,7 +1734,7 @@ msgstr ""
 "tingkat keparahan, dan ketakterbalikan."
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:223
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:79
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:71
 msgid "Irreversibility"
 msgstr "Ketakterbalikan"
 
@@ -1747,7 +1747,7 @@ msgstr ""
 "target yang dipengaruhi oleh ancaman bisa dipulihkan."
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:76
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:68
 msgid "Severity"
 msgstr "Tingkat Keparahan"
 
@@ -6256,6 +6256,10 @@ msgstr ""
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
+#: Miradi/source/org/miradi/utils/QuestionPopupEditorComponent.java:92
+msgid "Select"
+msgstr ""
+
 # AB: removed <i> (shows up as text in field instead of italics since not html)
 # Should Format be there twice?
 #: Miradi/source/org/miradi/utils/RtfFileFilter.java:40
@@ -6454,12 +6458,8 @@ msgstr "Nama Tekanan "
 msgid "Target-Threat Rating"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:68
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:61
 msgid "<html><b>Summary<br>Target-Threat<br>Rating"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:213
-msgid "Select"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingEditorComponent.java:67
