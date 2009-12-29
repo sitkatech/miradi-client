@@ -21,8 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.threatrating.properties;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -31,15 +29,10 @@ import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.martus.swing.Utilities;
 import org.miradi.commands.CommandSetThreatRating;
-import org.miradi.dialogfields.RadioButtonEditorComponent;
 import org.miradi.dialogfields.ThreatStressRatingValueReadonlyComponent;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.base.UndecoratedModelessDialogWithClose;
-import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.icons.RatingIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.layout.OneRowGridLayout;
@@ -56,7 +49,7 @@ import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
-import org.miradi.utils.CodeList;
+import org.miradi.utils.QuestionPopupEditorComponent;
 
 public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 {
@@ -68,35 +61,26 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		PanelTitleLabel rollupLabel = new PanelTitleLabel(EAM.text("<html><b>Summary<br>Target-Threat<br>Rating"));
 		rollupField = new ThreatStressRatingValueReadonlyComponent(getProject());
 		add(rollupField);
-
-		scopeEditorComponent = createPopupEditorComponent(getScopeId());
-		addEditComponent(scopeEditorComponent, EAM.text("Scope"));
 		
-		severityEditorComponent = createPopupEditorComponent(getSeverityId());
-		addEditComponent(severityEditorComponent, EAM.text("Severity"));
+		scopeEditorComponent = new QuestionPopupEditorComponent(new ListSelectionHandler(getScopeId()), getRatingQuestion(), EAM.text("Scope"));
+		addEditComponent(scopeEditorComponent);
 		
-		irreversibilityEditorComponent = createPopupEditorComponent(getIrreversibilityId());
-		addEditComponent(irreversibilityEditorComponent, EAM.text("Irreversibility"));
+		severityEditorComponent = new QuestionPopupEditorComponent(new ListSelectionHandler(getSeverityId()), getRatingQuestion(), EAM.text("Severity"));
+		addEditComponent(severityEditorComponent);
+		
+		irreversibilityEditorComponent = new QuestionPopupEditorComponent(new ListSelectionHandler(getIrreversibilityId()), getRatingQuestion(), EAM.text("Irreversibility"));
+		addEditComponent(irreversibilityEditorComponent);
 		
 		add(createGridCell(rollupLabel, rollupField.getComponent()));
 		
 		updateFieldsFromProject();
 	}
 
-	private PanelButton createPopupEditorComponent(BaseId baseId)
-	{
-		PanelButton editorComponent = new PanelButton("");
-		editorComponent.addActionListener(new PopUpEditorHandler(baseId));
-		return editorComponent;
-	}
-
-	private void addEditComponent(JComponent component, String translatedText)
+	private void addEditComponent(JComponent component)
 	{
 		TwoColumnPanel panel = new TwoColumnPanel();
 		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		panel.setBorder(BorderFactory.createEtchedBorder());
-		PanelTitleLabel label = new PanelTitleLabel(translatedText);
-		panel.add(label);
 		panel.add(component);
 		add(panel);
 	}
@@ -143,15 +127,14 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 			updateRatingComponent(getScopeId(), scopeEditorComponent);
 			updateRatingComponent(getSeverityId(), severityEditorComponent);
 			updateRatingComponent(getIrreversibilityId(), irreversibilityEditorComponent);
+			rollupField.setObjectRefs(getSelectedRefs());
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 		}
-		
-		rollupField.setObjectRefs(getSelectedRefs());
 	}
-
+	
 	private ORef getTargetRef()
 	{
 		return getRefForType(Target.getObjectType());
@@ -162,11 +145,10 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		return getRefForType(Cause.getObjectType());
 	}
 		
-	private void updateRatingComponent(BaseId criterionId, PanelButton ratingComponent) throws Exception
+	private void updateRatingComponent(BaseId criterionId, QuestionPopupEditorComponent ratingComponent) throws Exception
 	{
 		ChoiceItem choice = getCurrentRating(criterionId);
-		ratingComponent.setIcon(new RatingIcon(choice));
-		ratingComponent.setText(choice.getLabel());
+		ratingComponent.setText(choice.getCode());
 	}
 	
 	private ChoiceItem getCurrentRating(BaseId criterionId) throws Exception
@@ -198,43 +180,6 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		return "SimpleThreatRatingDropdowns";
 	}
 	
-	private class PopUpEditorHandler implements ActionListener
-	{
-		public PopUpEditorHandler(BaseId criterionIdToUse)
-		{
-			criterionId = criterionIdToUse;
-		}
-		
-		public void actionPerformed(ActionEvent event)
-		{
-			RadioButtonEditorComponent editorPanel = new RadioButtonEditorComponent(getRatingQuestion(), new ListSelectionHandler(criterionId));
-			selectRating(editorPanel);
-			
-			editorDialog = new UndecoratedModelessDialogWithClose(EAM.getMainWindow(), EAM.text("Select")); 
-			editorDialog.add(editorPanel);
-			editorDialog.pack();
-			Utilities.centerFrame(editorDialog);
-			editorDialog.setVisible(true);	
-		}
-
-		private void selectRating(RadioButtonEditorComponent editorPanel)
-		{
-			try
-			{
-				String code = getCurrentRating(criterionId).getCode();
-				CodeList codeList = new CodeList();
-				codeList.add(code);
-				editorPanel.setText(codeList.toString());
-			}
-			catch(Exception e)
-			{
-				EAM.logException(e);
-			}
-		}
-		
-		private BaseId criterionId;
-	}
-	
 	private class ListSelectionHandler implements ListSelectionListener
 	{
 		public ListSelectionHandler(BaseId criterionIdToUse)
@@ -247,17 +192,11 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 			try
 			{
 				saveRating(event);
-				closeEditorDialog();
 			}
 			catch(Exception e)
 			{
 				EAM.logException(e);
 			}
-		}
-
-		private void closeEditorDialog()
-		{
-			editorDialog.setVisible(false);
 		}
 
 		private void saveRating(ListSelectionEvent event) throws Exception
@@ -288,8 +227,7 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 	}
 	
 	private ThreatStressRatingValueReadonlyComponent rollupField;
-	private PanelButton scopeEditorComponent;
-	private PanelButton severityEditorComponent;
-	private PanelButton irreversibilityEditorComponent;
-	private UndecoratedModelessDialogWithClose editorDialog;
+	private QuestionPopupEditorComponent scopeEditorComponent;
+	private QuestionPopupEditorComponent severityEditorComponent;
+	private QuestionPopupEditorComponent irreversibilityEditorComponent;
 }
