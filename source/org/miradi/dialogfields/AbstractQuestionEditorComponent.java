@@ -61,7 +61,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 		
 		for (int i=0; i<choices.length; ++i)
 		{
-			JToggleButton toggleButton = createToggleButton(choices, i);
+			JToggleButton toggleButton = createToggleButton(choices[i].getLabel());
 			if (isSingleSelection())
 				group.add(toggleButton);
 			
@@ -84,9 +84,9 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 		return false;
 	}
 	
-	protected JToggleButton createToggleButton(ChoiceItem[] choices, int i)
+	protected JToggleButton createToggleButton(String label)
 	{
-		return new JCheckBox(choices[i].getLabel());
+		return new JCheckBox(label);
 	}
 
 	protected JToggleButton[] createToggleButtons(ChoiceItem[] choices)
