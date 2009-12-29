@@ -23,7 +23,6 @@ import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.JCheckBox;
 import javax.swing.JToggleButton;
@@ -57,14 +56,10 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 		ChoiceItem[] choices = getQuestion().getChoices();
 		choiceItems = new ChoiceItem[choices.length];
 		toggleButtons = createToggleButtons(choices);
-		ButtonGroup group = new ButtonGroup();
 		
 		for (int i=0; i<choices.length; ++i)
 		{
 			JToggleButton toggleButton = createToggleButton(choices[i].getLabel());
-			if (isSingleSelection())
-				group.add(toggleButton);
-			
 			toggleButton.addItemListener(this);
 			choiceItems[i] = choices[i];
 			toggleButtons[i] = toggleButton;
@@ -79,11 +74,6 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 		repaint();
 	}
 
-	protected boolean isSingleSelection()
-	{
-		return false;
-	}
-	
 	protected JToggleButton createToggleButton(String label)
 	{
 		return new JCheckBox(label);
