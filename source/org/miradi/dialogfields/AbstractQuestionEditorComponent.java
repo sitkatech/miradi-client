@@ -80,11 +80,6 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 		return new JCheckBox(label);
 	}
 
-	protected JToggleButton[] createToggleButtons(ChoiceItem[] choices)
-	{
-		return new JCheckBox[choices.length];
-	}
-	
 	protected void addAdditinalComponent()
 	{
 	}
