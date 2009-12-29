@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 
+import java.util.Set;
+
 import javax.swing.JToggleButton;
 import javax.swing.event.ListSelectionListener;
 
@@ -41,12 +43,12 @@ abstract public class AbstractQuestionBasedComponent extends AbstractDataValueLi
 	protected CodeList getSelectedCodes()
 	{
 		CodeList codes = new CodeList();
-		for (int index = 0; index<toggleButtons.length; ++index )
-		{
-			JToggleButton toggleButton = toggleButtons[index];
+		Set<ChoiceItem> choices =  choiceItemToToggleButtonMap.keySet();
+		for(ChoiceItem choiceItem : choices)
+		{	
+			JToggleButton toggleButton = choiceItemToToggleButtonMap.get(choiceItem);
 			if (toggleButton.isSelected())
 			{
-				ChoiceItem choiceItem = choiceItems[index];
 				codes.add(choiceItem.getCode());
 			}
 		}
