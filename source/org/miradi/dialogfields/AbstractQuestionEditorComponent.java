@@ -57,13 +57,13 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 		choiceItems = new ChoiceItem[choices.length];
 		toggleButtons = createToggleButtons(choices);
 		
-		for (int i=0; i<choices.length; ++i)
+		for (int index=0; index<choices.length; ++index)
 		{
-			JToggleButton toggleButton = createToggleButton(choices[i].getLabel());
+			JToggleButton toggleButton = createToggleButton(choices[index].getLabel());
 			toggleButton.addItemListener(this);
-			choiceItems[i] = choices[i];
-			toggleButtons[i] = toggleButton;
-			Icon icon = choiceItems[i].getIcon();
+			choiceItems[index] = choices[index];
+			toggleButtons[index] = toggleButton;
+			Icon icon = choiceItems[index].getIcon();
 			if (icon != null)
 				add(new PanelTitleLabel(icon));
 			
