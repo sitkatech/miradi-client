@@ -47,7 +47,7 @@ public class StandAloneCodeListComponent extends AbstractQuestionBasedComponent
 {
 	public StandAloneCodeListComponent(BaseObject parentObjectToUse, ChoiceQuestion questionToUse)
 	{
-		super(questionToUse, LAYOUT_COLUMN_COUNT, null);
+		super(questionToUse, SINGLE_COLUMN, null);
 		
 		parentObject = parentObjectToUse;
 		updateToggleButtonSelections(getWhoTotalCodes(parentObject));
@@ -252,6 +252,5 @@ public class StandAloneCodeListComponent extends AbstractQuestionBasedComponent
 		return getParentObject().getProject();
 	}
 	
-	private static final int LAYOUT_COLUMN_COUNT = 1;
 	private BaseObject parentObject;
 }
