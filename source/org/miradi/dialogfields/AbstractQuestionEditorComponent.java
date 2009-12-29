@@ -23,6 +23,7 @@ import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.HashMap;
+import java.util.Set;
 
 import javax.swing.Icon;
 import javax.swing.JCheckBox;
@@ -55,8 +56,6 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 		removeAll();
 		addAdditinalComponent();
 		ChoiceItem[] choices = getQuestion().getChoices();
-		choiceItems = new ChoiceItem[choices.length];
-		toggleButtons = createToggleButtons(choices);
 		choiceItemToToggleButtonMap = new HashMap<ChoiceItem, JToggleButton>();
 		
 		for (int index=0; index<choices.length; ++index)
@@ -113,9 +112,11 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 	public void setEnabled(boolean isValidObject)
 	{
 		super.setEnabled(isValidObject);
-		for (int index = 0; index<toggleButtons.length; ++index)
+		Set<ChoiceItem> choices = choiceItemToToggleButtonMap.keySet();
+		for(ChoiceItem choiceItem : choices)
 		{
-			updateEditableState(toggleButtons[index],isValidObject);
+			JToggleButton toggleButton = choiceItemToToggleButtonMap.get(choiceItem);
+			updateEditableState(toggleButton,isValidObject);
 		}
 	}
 
