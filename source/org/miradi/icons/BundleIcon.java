@@ -124,12 +124,12 @@ public class BundleIcon extends AbstractMiradiIcon
 	
 	private int getSummaryWidth()
 	{
-		return (getIconWidth() / 3) * 2;
+		return getCriterionWidth();
 	}
 	
 	private int getCriterionWidth()
 	{
-		return getSummaryWidth();
+		return 10;
 	}
 	
 	private int getSummaryX()
