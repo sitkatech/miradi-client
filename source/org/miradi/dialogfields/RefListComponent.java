@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
+import java.util.Set;
+
 import javax.swing.JToggleButton;
 import javax.swing.event.ListSelectionListener;
 
@@ -38,12 +40,12 @@ public class RefListComponent extends AbstractDataValueListComponent
 	public String getText()
 	{
 		ORefList refList = new ORefList();
-		for (int index = 0; index<toggleButtons.length; ++index )
+		Set<ChoiceItem> choices = choiceItemToToggleButtonMap.keySet();
+		for(ChoiceItem choiceItem : choices)
 		{
-			JToggleButton toggleButton = toggleButtons[index];
+			JToggleButton toggleButton = choiceItemToToggleButtonMap.get(choiceItem);
 			if (toggleButton.isSelected())
 			{
-				ChoiceItem choiceItem = choiceItems[index];
 				refList.add(ORef.createFromString(choiceItem.getCode()));
 			}
 		}
@@ -58,14 +60,15 @@ public class RefListComponent extends AbstractDataValueListComponent
 		{
 			ORefList refs = new ORefList(refListToUse);
 
-			for (int choiceIndex = 0; choiceIndex<choiceItems.length; ++choiceIndex)
+			Set<ChoiceItem> choices = choiceItemToToggleButtonMap.keySet();
+			for(ChoiceItem choiceItem : choices)
 			{
-				toggleButtons[choiceIndex].setSelected(false);
-				ChoiceItem choiceItem = choiceItems[choiceIndex];
+				JToggleButton toggleButton = choiceItemToToggleButtonMap.get(choiceItem);
+				toggleButton.setSelected(false);
 				String code = choiceItem.getCode();
 				ORef ref = ORef.createFromString(code);
 				boolean isChecked  = refs.contains(ref);
-				toggleButtons[choiceIndex].setSelected(isChecked);
+				toggleButton.setSelected(isChecked);
 			}
 		}
 		catch(Exception e)

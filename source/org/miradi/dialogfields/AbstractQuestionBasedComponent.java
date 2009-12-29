@@ -82,10 +82,13 @@ abstract public class AbstractQuestionBasedComponent extends AbstractDataValueLi
 	{
 		String partialToolTip = ""; 
 		int selectionCount = 0;
-		for (int index = 0; (index < choiceItems.length && selectionCount <= MAX_ITEMS_COUNT_IN_TOOLTIP); ++index)
+		Set<ChoiceItem> choices = choiceItemToToggleButtonMap.keySet();
+		ChoiceItem[] choicesAsArray = choices.toArray(new ChoiceItem[0]);
+		for (int index = 0; (index < choicesAsArray.length && selectionCount <= MAX_ITEMS_COUNT_IN_TOOLTIP); ++index)
 		{
-			ChoiceItem choiceItem = choiceItems[index];
-			if (toggleButtons[index].isSelected() )
+			ChoiceItem choiceItem = choicesAsArray[index];
+			JToggleButton toggleButton = choiceItemToToggleButtonMap.get(choiceItem);
+			if (toggleButton.isSelected() )
 			{
 				partialToolTip += XmlUtilities.getXmlEncoded(choiceItem.getLabel()) + "<BR>";
 				++selectionCount;
@@ -97,9 +100,10 @@ abstract public class AbstractQuestionBasedComponent extends AbstractDataValueLi
 			moreText = "...more";
 		
 		String toolTip = "<HTML>" + partialToolTip + moreText + "</HTML>";
-		for (int index = 0; index < choiceItems.length; ++index)
+		for(ChoiceItem choiceItem : choices)
 		{
-			toggleButtons[index].setToolTipText(toolTip);
+			JToggleButton toggleButton = choiceItemToToggleButtonMap.get(choiceItem);
+			toggleButton.setToolTipText(toolTip);
 		}
 		
 		return toolTip;
@@ -113,11 +117,12 @@ abstract public class AbstractQuestionBasedComponent extends AbstractDataValueLi
 
 	private void disableCheckBoxes()
 	{
-		for (int index = 0; index<toggleButtons.length; ++index)
+		Set<ChoiceItem> choices = choiceItemToToggleButtonMap.keySet();
+		for(ChoiceItem choiceItem : choices)
 		{
-			ChoiceItem choiceItem = choiceItems[index];
+			JToggleButton toggleButton = choiceItemToToggleButtonMap.get(choiceItem);
 			if (codesToDisable.contains(choiceItem.getCode()))
-				toggleButtons[index].setEnabled(false);
+				toggleButton.setEnabled(false);
 		}
 	}
 

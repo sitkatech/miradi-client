@@ -19,9 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
+import java.util.Set;
+
 import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JToggleButton;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.factortypes.FactorType;
@@ -131,14 +134,14 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 	{
 		reloadQuestion();
 		rebuildToggleButtonsBoxes();
-		for (int index = 0; index < toggleButtons.length; ++index)
+		Set<ChoiceItem> choices = choiceItemToToggleButtonMap.keySet();
+		for(ChoiceItem choiceItem : choices)
 		{
-			String label = toggleButtons[index].getText();
-			ChoiceItem choiceItem = getQuestion().findChoiceByLabel(label);
+			JToggleButton toggleButton = choiceItemToToggleButtonMap.get(choiceItem);
 			ORef taggedObjectSetRef = ORef.createFromString(choiceItem.getCode());
 			ORefList taggedSet = getTaggedObjectRefs(taggedObjectSetRef);
 			boolean isSelected = taggedSet.contains(getFactorToTag().getRef());
-			toggleButtons[index].setSelected(isSelected);
+			toggleButton.setSelected(isSelected);
 		}
 	}
 
