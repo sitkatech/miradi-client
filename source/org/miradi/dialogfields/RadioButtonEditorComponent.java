@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 import javax.swing.JToggleButton;
 import javax.swing.event.ListSelectionListener;
@@ -35,22 +36,21 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 	}
 	
 	@Override
-	protected boolean isSingleSelection()
-	{
-		return true;
-	}
-	
-	@Override
 	protected JToggleButton createToggleButton(String label)
 	{
-		return new JRadioButton(label);
+		JRadioButton radioButton = new JRadioButton(label);
+		group.add(radioButton);
+		
+		return radioButton;
 	}
 
 	@Override
 	protected JToggleButton[] createToggleButtons(ChoiceItem[] choices)
 	{
+		group = new ButtonGroup();
 		return new JRadioButton[choices.length];
 	}
 	
 	private static final int SINGLE_COLUMN = 1;
+	private ButtonGroup group; 
 }
