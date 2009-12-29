@@ -35,6 +35,7 @@ public class QuestionBasedEditorComponent extends AbstractQuestionBasedComponent
 		super(questionToUse, columnCount, listener);
 	}
 
+	@Override
 	public String getText()
 	{
 		CodeList codes = getSelectedCodes();
@@ -43,6 +44,7 @@ public class QuestionBasedEditorComponent extends AbstractQuestionBasedComponent
 		return codes.toString();
 	}
 
+	@Override
 	public void setText(String codesToUse)
 	{
 		CodeList codes = createCodeListFromString(codesToUse);
