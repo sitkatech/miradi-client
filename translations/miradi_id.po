@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-29 08:47-0600\n"
+"POT-Creation-Date: 2009-12-29 09:20-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -4429,11 +4429,11 @@ msgstr ""
 "Silakan pilih klasifikasi yang spesifik, bukan kategori seperti:\n"
 "'%s' "
 
-#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:131
+#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:132
 msgid "Unexpected call to getText"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:137
+#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:138
 msgid "Unexpected call to setText"
 msgstr ""
 
