@@ -60,8 +60,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	
 	public void setText(String text)
 	{
-		CodeList codeList = new CodeList();
-		codeList.add(text);
+		CodeList codeList = new CodeList(new String[]{text, });
 		editorPanel.setText(codeList.toString());
 		ChoiceItem choice = question.findChoiceByCode(text);
 		currentSelectionLabel.setText(choice.getLabel());
