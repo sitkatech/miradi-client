@@ -46,11 +46,12 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	public QuestionPopupEditorComponent(ListSelectionListener selectionHandler, ChoiceQuestion questionToUse, String translatedPopupButtonText) throws Exception
 	{
 		question = questionToUse;
-		
-		popupInvokeButton = new PanelButton("");
 		editorPanel = new RadioButtonEditorComponent(getQuestion(), selectionHandler);
 		editorPanel.addListSelectionListener(new CloseEditorAfterSelectionHandler());
+		
+		popupInvokeButton = new PanelButton("");
 		popupInvokeButton.addActionListener(new PopUpEditorHandler());
+		
 		addEditComponent(popupInvokeButton, translatedPopupButtonText);
 	}
 	
