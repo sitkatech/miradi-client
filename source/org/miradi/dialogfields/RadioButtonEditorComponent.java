@@ -25,7 +25,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JToggleButton;
 import javax.swing.event.ListSelectionListener;
 
-import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
 public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
@@ -47,12 +46,6 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 		return radioButton;
 	}
 
-	@Override
-	protected JToggleButton[] createToggleButtons(ChoiceItem[] choices)
-	{
-		return new JRadioButton[choices.length];
-	}
-	
 	private static final int SINGLE_COLUMN = 1;
 	private ButtonGroup group; 
 }
