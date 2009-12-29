@@ -41,9 +41,9 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 	}
 	
 	@Override
-	protected JToggleButton createToggleButton(ChoiceItem[] choices, int i)
+	protected JToggleButton createToggleButton(String label)
 	{
-		return new JRadioButton(choices[i].getLabel());
+		return new JRadioButton(label);
 	}
 
 	@Override
