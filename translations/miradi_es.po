@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-29 10:52-0600\n"
+"POT-Creation-Date: 2009-12-29 10:58-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -4432,7 +4432,7 @@ msgstr "Pegar"
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListComponent.java:62
 #: Miradi/source/org/miradi/dialogfields/StringMapProjectResourceFilterEditorField.java:48
 #: Miradi/source/org/miradi/dialogfields/StringMapProjectResourceFilterEditorField.java:79
-#: Miradi/source/org/miradi/dialogfields/QuestionBasedEditorComponent.java:60
+#: Miradi/source/org/miradi/dialogfields/QuestionBasedEditorComponent.java:62
 #: Miradi/source/org/miradi/dialogfields/RefListComponent.java:76
 #: Miradi/source/org/miradi/dialogfields/StringMapBudgetColumnCodeListEditorField.java:48
 #: Miradi/source/org/miradi/dialogfields/StringMapBudgetColumnCodeListEditorField.java:79
@@ -6281,7 +6281,7 @@ msgstr ""
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/QuestionPopupEditorComponent.java:97
+#: Miradi/source/org/miradi/utils/QuestionPopupEditorComponent.java:96
 msgid "Select"
 msgstr ""
 
