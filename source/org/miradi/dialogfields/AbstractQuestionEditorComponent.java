@@ -141,8 +141,8 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 	
 	abstract protected void valueChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception;
 	
-	protected JToggleButton toggleButtons[];
-	protected ChoiceItem choiceItems[];
+	private JToggleButton toggleButtons[];
+	private ChoiceItem choiceItems[];
 	private ChoiceQuestion question;
 	protected HashMap<ChoiceItem, JToggleButton> choiceItemToToggleButtonMap;
 }
