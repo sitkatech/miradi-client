@@ -38,12 +38,17 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 	protected JToggleButton createToggleButton(String label)
 	{
 		JRadioButton radioButton = new JRadioButton(label);
+		groupRadioButton(radioButton);
+		
+		return radioButton;
+	}
+
+	private void groupRadioButton(JRadioButton radioButton)
+	{
 		if (group == null)
 			group = new ButtonGroup();
 	
 		group.add(radioButton);
-		
-		return radioButton;
 	}
 
 	private static final int SINGLE_COLUMN = 1;
