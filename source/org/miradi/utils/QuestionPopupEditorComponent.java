@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -30,12 +31,12 @@ import javax.swing.event.ListSelectionListener;
 
 import org.martus.swing.Utilities;
 import org.miradi.dialogfields.RadioButtonEditorComponent;
+import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.UndecoratedModelessDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.RatingIcon;
 import org.miradi.layout.OneRowPanel;
-import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
@@ -49,10 +50,12 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		editorPanel = new RadioButtonEditorComponent(getQuestion(), selectionHandler);
 		editorPanel.addListSelectionListener(new CloseEditorAfterSelectionHandler());
 		
-		popupInvokeButton = new PanelButton("");
+		popupInvokeButton = new PanelButton("...");
 		popupInvokeButton.addActionListener(new PopUpEditorHandler());
 		
-		addEditComponent(popupInvokeButton, translatedPopupButtonText);
+		currentSelectionLabel = new PanelTitleLabel();
+		
+		addEditComponent(currentSelectionLabel, translatedPopupButtonText);
 	}
 	
 	public void setText(String text)
@@ -61,8 +64,8 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		codeList.add(text);
 		editorPanel.setText(codeList.toString());
 		ChoiceItem choice = question.findChoiceByCode(text);
-		popupInvokeButton.setText(choice.getLabel());
-		popupInvokeButton.setIcon(new RatingIcon(choice));
+		currentSelectionLabel.setText(choice.getLabel());
+		currentSelectionLabel.setIcon(new RatingIcon(choice));
 	}
 	
 	public String getText()
@@ -72,12 +75,13 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 
 	private void addEditComponent(JComponent component, String translatedText)
 	{
-		TwoColumnPanel panel = new TwoColumnPanel();
+		MiradiPanel panel = new MiradiPanel(new GridLayout(1, 3));
 		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		panel.setBorder(BorderFactory.createEtchedBorder());
 		PanelTitleLabel label = new PanelTitleLabel(translatedText);
 		panel.add(label);
 		panel.add(component);
+		panel.add(popupInvokeButton);
 		add(panel);
 	}
 	
@@ -127,6 +131,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	}
 
 	private PanelButton popupInvokeButton;
+	private PanelTitleLabel currentSelectionLabel;
 	private UndecoratedModelessDialogWithClose editorDialog;
 	private ChoiceQuestion question;
 	private RadioButtonEditorComponent editorPanel;
