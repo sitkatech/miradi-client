@@ -61,12 +61,13 @@ abstract public class AbstractQuestionBasedComponent extends AbstractDataValueLi
 		enableSkipNotification();
 		try
 		{
-			for (int index = 0; index<choiceItems.length; ++index)
-			{
-				toggleButtons[index].setSelected(false);
-				ChoiceItem choiceItem = choiceItems[index];
+			Set<ChoiceItem> choices =  choiceItemToToggleButtonMap.keySet();
+			for(ChoiceItem choiceItem : choices)
+			{	
+				JToggleButton toggleButton = choiceItemToToggleButtonMap.get(choiceItem);
+				toggleButton.setSelected(false);
 				boolean isChecked  = codes.contains(choiceItem.getCode());
-				toggleButtons[index].setSelected(isChecked);
+				toggleButton.setSelected(isChecked);
 			}
 			
 			setSameToolTipForAllToggleButtons();
