@@ -20,18 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.martus.swing.Utilities;
 import org.miradi.dialogfields.RadioButtonEditorComponent;
-import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.UndecoratedModelessDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -73,9 +70,8 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 
 	private void addEditComponent(JComponent component, String translatedText)
 	{
-		MiradiPanel panel = new MiradiPanel(new GridLayout(1, 3));
+		OneRowPanel panel = new OneRowPanel();
 		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		panel.setBorder(BorderFactory.createEtchedBorder());
 		PanelTitleLabel label = new PanelTitleLabel(translatedText);
 		panel.add(label);
 		panel.add(component);
