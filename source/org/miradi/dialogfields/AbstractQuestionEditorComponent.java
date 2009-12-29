@@ -63,8 +63,6 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 			ChoiceItem choiceItem = choices[index];
 			JToggleButton toggleButton = createToggleButton(choiceItem.getLabel());
 			toggleButton.addItemListener(this);
-			choiceItems[index] = choiceItem;
-			toggleButtons[index] = toggleButton;
 			choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
 			Icon icon = choiceItem.getIcon();
 			if (icon != null)
@@ -143,8 +141,6 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 	
 	abstract protected void valueChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception;
 	
-	private JToggleButton toggleButtons[];
-	private ChoiceItem choiceItems[];
 	private ChoiceQuestion question;
 	protected HashMap<ChoiceItem, JToggleButton> choiceItemToToggleButtonMap;
 }
