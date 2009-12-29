@@ -26,6 +26,7 @@ import javax.swing.JToggleButton;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.CodeList;
 
 public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 {
@@ -41,6 +42,13 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 		groupRadioButton(radioButton);
 		
 		return radioButton;
+	}
+	
+	@Override
+	public void setText(String codeToUse)
+	{
+		CodeList codeList = new CodeList(new String[]{codeToUse, });
+		updateToggleButtonSelections(codeList);
 	}
 
 	private void groupRadioButton(JRadioButton radioButton)
