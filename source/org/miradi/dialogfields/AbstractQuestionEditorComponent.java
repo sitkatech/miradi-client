@@ -22,6 +22,7 @@ package org.miradi.dialogfields;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.HashMap;
 
 import javax.swing.Icon;
 import javax.swing.JCheckBox;
@@ -56,6 +57,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 		ChoiceItem[] choices = getQuestion().getChoices();
 		choiceItems = new ChoiceItem[choices.length];
 		toggleButtons = createToggleButtons(choices);
+		choiceItemToToggleButtonMap = new HashMap<ChoiceItem, JToggleButton>();
 		
 		for (int index=0; index<choices.length; ++index)
 		{
@@ -63,6 +65,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 			toggleButton.addItemListener(this);
 			choiceItems[index] = choices[index];
 			toggleButtons[index] = toggleButton;
+			choiceItemToToggleButtonMap.put(choices[index], toggleButton);
 			Icon icon = choiceItems[index].getIcon();
 			if (icon != null)
 				add(new PanelTitleLabel(icon));
@@ -141,4 +144,5 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 	protected JToggleButton toggleButtons[];
 	protected ChoiceItem choiceItems[];
 	private ChoiceQuestion question;
+	protected HashMap<ChoiceItem, JToggleButton> choiceItemToToggleButtonMap;
 }
