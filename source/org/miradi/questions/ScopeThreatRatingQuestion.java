@@ -20,28 +20,39 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
-import java.awt.Color;
-
 import org.miradi.main.EAM;
 
 public class ScopeThreatRatingQuestion extends ThreatRatingQuestion
 {
 	public ScopeThreatRatingQuestion()
 	{
-		super(getChoiceItems(), getDescription());
+		super(getDescription());
 	}
 
-	static ChoiceItem[] getChoiceItems()
+	@Override
+	protected String getLowRatingChoiceItemDescription()
 	{
-		return new ChoiceItem[] {
-				new ChoiceItem("", EAM.text("Not Specified"), Color.WHITE, ""),
-				new ChoiceItem("1", EAM.text("Low"), COLOR_GREAT, EAM.text("Low: The threat is likely to be very narrow in its scope, affecting the target across a small proportion (1-10%) of its occurrence/population.")),
-				new ChoiceItem("2", EAM.text("Medium"), COLOR_OK, EAM.text("Medium: The threat is likely to be restricted in its scope, affecting the target across some (11-30%) of its occurrence/population.")),
-				new ChoiceItem(HIGH_RATING_CODE, EAM.text("High"), COLOR_CAUTION, EAM.text("High: The threat is likely to be widespread in its scope, affecting the target across much (31-70%) of its occurrence/population.")),
-				new ChoiceItem(VERY_HIGH_RATING_CODE, EAM.text("Very High"), COLOR_ALERT, EAM.text("Very High: The threat is likely to be pervasive in its scope, affecting the target across all or most (71-100%) of its occurrence/population.")),
-		};
+		return "Low: The threat is likely to be very narrow in its scope, affecting the target across a small proportion (1-10%) of its occurrence/population.";
+	}
+	
+	@Override
+	protected String getMediumRatingChoiceItemDescription()
+	{
+		return "Medium: The threat is likely to be restricted in its scope, affecting the target across some (11-30%) of its occurrence/population.";
 	}
 
+	@Override
+	protected String getHighRatingChoiceItemDescription()
+	{
+		return "High: The threat is likely to be widespread in its scope, affecting the target across much (31-70%) of its occurrence/population.";
+	}
+
+	@Override
+	protected String getVeryHighRatingChoiceItemDescription()
+	{
+		return "Very High: The threat is likely to be pervasive in its scope, affecting the target across all or most (71-100%) of its occurrence/population.";
+	}
+	
 	private static String getDescription()
 	{
 		return EAM.text("Scope - Most commonly defined spatially as the proportion of the target " +
