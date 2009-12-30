@@ -61,7 +61,7 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 		super.dispose();
 	}
 	
-	protected void addAdditinalComponent()
+	protected void addAdditionalComponent()
 	{
 		if (selectedFactor != null)
 			add(createFactorLabelPanelWithIcon());
