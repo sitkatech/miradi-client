@@ -70,7 +70,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 			Icon icon = choiceItem.getIcon();
 			toggleButtonsPanel.add(getSafeIconLabel(icon));
 			toggleButtonsPanel.add(toggleButton);
-			toggleButtonsPanel.add(new PanelTitleLabel(choiceItem.getDescriction()));
+			toggleButtonsPanel.add(new PanelTitleLabel(choiceItem.getDescription()));
 		}
 	
 		add(toggleButtonsPanel);

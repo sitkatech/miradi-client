@@ -74,7 +74,7 @@ public class ChoiceItem implements Comparable
 		return icon;
 	}
 	
-	public String getDescriction()
+	public String getDescription()
 	{
 		return description;
 	}
