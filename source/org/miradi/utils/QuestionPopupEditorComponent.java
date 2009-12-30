@@ -109,6 +109,8 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 			editorDialog.enableCloseWhenFocusLost();
 			editorDialog.add(editorPanel);
 			editorDialog.pack();
+			//NOTE: packing twice due to preferences height not being set correctly.
+			editorDialog.pack();
 			Utilities.centerFrame(editorDialog);
 			editorDialog.setVisible(true);	
 		}
