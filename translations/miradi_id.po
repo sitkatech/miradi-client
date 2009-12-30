@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-30 05:14-0600\n"
+"POT-Creation-Date: 2009-12-30 08:02-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -2726,7 +2726,13 @@ msgid "Intensive Assessment"
 msgstr "Penilaian Intensif"
 
 #: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:54
-msgid "This is a rating set of choices."
+msgid ""
+"Scope - Most commonly defined spatially as the proportion of the target that "
+"can reasonably be expected to be affected by the threat within ten years "
+"given the continuation of current circumstances and trends. For ecosystems "
+"and ecological communities, measured as the proportion of the target's "
+"occurrence. For species, measured as the proportion of the target's "
+"population."
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/TextBoxZOrderQuestion.java:34
