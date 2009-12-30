@@ -41,14 +41,6 @@ public class ThreatRatingQuestion extends StaticChoiceQuestion
 		};
 	}
 
-	public ChoiceItem findChoiceByNumericValue(int value)
-	{
-		String code = "";
-		if(value > 0)
-			code = Integer.toString(value);
-		return findChoiceByCode(code);
-	}
-	
 	private static String getDescription()
 	{
 		return EAM.text("Scope - Most commonly defined spatially as the proportion of the target " +
