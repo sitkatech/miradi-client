@@ -157,14 +157,14 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		ratingComponent.setText(choice.getCode());
 	}
 	
-	private ChoiceItem getCurrentRating(ChoiceQuestion questioToUse, BaseId criterionId) throws Exception
+	private ChoiceItem getCurrentRating(ChoiceQuestion questionToUse, BaseId criterionId) throws Exception
 	{
 		ThreatRatingBundle bundle = getBundle(getThreatRef(), getTargetRef());
 		ORef valueOptionRef = new ORef(ValueOption.getObjectType(), bundle.getValueId(criterionId));
 		ValueOption valueOption = (ValueOption)getProject().findObject(valueOptionRef);
 		int numeric = valueOption.getNumericValue();
 		
-		return questioToUse.findChoiceByNumericValue(numeric);
+		return questionToUse.findChoiceByNumericValue(numeric);
 	}
 
 	private ThreatRatingBundle getBundle(ORef threatRef, ORef targetRef)throws Exception
