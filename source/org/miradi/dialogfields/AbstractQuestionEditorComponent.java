@@ -30,12 +30,14 @@ import javax.swing.JCheckBox;
 import javax.swing.JToggleButton;
 
 import org.miradi.dialogs.base.DisposablePanel;
+import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
 import com.jhlabs.awt.BasicGridLayout;
+import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class AbstractQuestionEditorComponent extends DisposablePanel implements ItemListener
 {	
@@ -57,22 +59,31 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 		addAdditinalComponent();
 		ChoiceItem[] choices = getQuestion().getChoices();
 		choiceItemToToggleButtonMap = new HashMap<ChoiceItem, JToggleButton>();
-		
-		for (int index=0; index<choices.length; ++index)
+		MiradiPanel toggleButtonsPanel = new MiradiPanel(new GridLayoutPlus(0, 3)); 
+		for (int index = 0; index < choices.length; ++index)
 		{
 			ChoiceItem choiceItem = choices[index];
 			JToggleButton toggleButton = createToggleButton(choiceItem.getLabel());
+			toggleButton.setBackground(choiceItem.getColor());
 			toggleButton.addItemListener(this);
 			choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
 			Icon icon = choiceItem.getIcon();
-			if (icon != null)
-				add(new PanelTitleLabel(icon));
-			
-			add(toggleButton);
+			toggleButtonsPanel.add(getSafeIconLabel(icon));
+			toggleButtonsPanel.add(toggleButton);
+			toggleButtonsPanel.add(new PanelTitleLabel(choiceItem.getDescriction()));
 		}
 	
+		add(toggleButtonsPanel);
 		revalidate();
 		repaint();
+	}
+
+	private PanelTitleLabel getSafeIconLabel(Icon icon)
+	{
+		if (icon == null)
+			return new PanelTitleLabel();
+		
+		return new PanelTitleLabel(icon);
 	}
 
 	protected JToggleButton createToggleButton(String label)
