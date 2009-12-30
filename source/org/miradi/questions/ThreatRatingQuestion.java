@@ -27,7 +27,7 @@ public class ThreatRatingQuestion extends StaticChoiceQuestion
 {
 	public ThreatRatingQuestion()
 	{
-		super(getChoiceItems());
+		super(getChoiceItems(), getDescription());
 	}
 
 	static ChoiceItem[] getChoiceItems()
@@ -47,6 +47,11 @@ public class ThreatRatingQuestion extends StaticChoiceQuestion
 		if(value > 0)
 			code = Integer.toString(value);
 		return findChoiceByCode(code);
+	}
+	
+	private static String getDescription()
+	{
+		return EAM.text("This is a rating set of choices.");
 	}
 	
 	public static final String HIGH_RATING_CODE = "3";
