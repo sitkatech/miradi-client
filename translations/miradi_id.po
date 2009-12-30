@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-30 04:11-0600\n"
+"POT-Creation-Date: 2009-12-30 05:14-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -2725,6 +2725,10 @@ msgstr "Penilaian Cepat"
 msgid "Intensive Assessment"
 msgstr "Penilaian Intensif"
 
+#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:54
+msgid "This is a rating set of choices."
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/TextBoxZOrderQuestion.java:34
 msgid "Behind"
 msgstr ""
@@ -3769,7 +3773,7 @@ msgstr ""
 msgid "Human Welfare Target Mode"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ChoiceQuestion.java:100
+#: Miradi/source/org/miradi/questions/ChoiceQuestion.java:110
 msgid "Unknown code: "
 msgstr "Kode tak dikenal: "
 
