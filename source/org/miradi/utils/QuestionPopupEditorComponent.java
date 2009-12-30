@@ -132,6 +132,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	{
 		public void valueChanged(ListSelectionEvent event)
 		{
+			editorDialog.dispose();
 			editorDialog.setVisible(false);
 		}
 	}
