@@ -25,7 +25,13 @@ public class StaticChoiceQuestion extends ChoiceQuestion
 {
 	public StaticChoiceQuestion()
 	{
-		super();
+		this("");
+	}
+	
+	public StaticChoiceQuestion(String questionDescriptionToUse)
+	{
+		super(questionDescriptionToUse);
+		
 		choices = createChoices();
 	}
 	

@@ -25,25 +25,46 @@ import org.miradi.main.EAM;
 
 public class ThreatRatingQuestion extends StaticChoiceQuestion
 {
-	public ThreatRatingQuestion(ChoiceItem[] choicesToUse, String questionDescriptionToUse)
+	public ThreatRatingQuestion(String questionDescriptionToUse)
 	{
-		super(choicesToUse, questionDescriptionToUse);
+		super(questionDescriptionToUse);
 	}
 	
 	public ThreatRatingQuestion()
 	{
-		this(getChoiceItems(), "");
+		this("");
 	}
 
-	static ChoiceItem[] getChoiceItems()
+	@Override
+	protected ChoiceItem[] createChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", EAM.text("Not Specified"), Color.WHITE),
-				new ChoiceItem("1", EAM.text("Low"), COLOR_GREAT),
-				new ChoiceItem("2", EAM.text("Medium"), COLOR_OK),
-				new ChoiceItem(HIGH_RATING_CODE, EAM.text("High"), COLOR_CAUTION),
-				new ChoiceItem(VERY_HIGH_RATING_CODE, EAM.text("Very High"), COLOR_ALERT),
+				new ChoiceItem("", EAM.text("Not Specified"), Color.WHITE, ""),
+				new ChoiceItem("1", EAM.text("Low"), COLOR_GREAT, getLowRatingChoiceItemDescription()),
+				new ChoiceItem("2", EAM.text("Medium"), COLOR_OK, getMediumRatingChoiceItemDescription()),
+				new ChoiceItem(HIGH_RATING_CODE, EAM.text("High"), COLOR_CAUTION, getHighRatingChoiceItemDescription()),
+				new ChoiceItem(VERY_HIGH_RATING_CODE, EAM.text("Very High"), COLOR_ALERT, getVeryHighRatingChoiceItemDescription()),
 		};
+	}
+	
+	protected String getLowRatingChoiceItemDescription()
+	{
+		return "";
+	}
+	
+	protected String getMediumRatingChoiceItemDescription()
+	{
+		return "";
+	}
+
+	protected String getHighRatingChoiceItemDescription()
+	{
+		return "";
+	}
+
+	protected String getVeryHighRatingChoiceItemDescription()
+	{
+		return "";
 	}
 
 	public static final String HIGH_RATING_CODE = "3";
