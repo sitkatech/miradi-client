@@ -57,7 +57,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 	protected void rebuildToggleButtonsBoxes()
 	{
 		removeAll();
-		addAdditinalComponent();
+		addAdditionalComponent();
 		ChoiceItem[] choices = getQuestion().getChoices();
 		choiceItemToToggleButtonMap = new HashMap<ChoiceItem, JToggleButton>();
 		MiradiPanel toggleButtonsPanel = new MiradiPanel(new GridLayoutPlus(0, 3)); 
@@ -92,7 +92,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 		return new JCheckBox(label);
 	}
 
-	protected void addAdditinalComponent()
+	protected void addAdditionalComponent()
 	{
 	}
 

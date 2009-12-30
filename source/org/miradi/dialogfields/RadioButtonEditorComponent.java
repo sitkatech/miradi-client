@@ -43,9 +43,9 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 	}
 	
 	@Override
-	protected void addAdditinalComponent()
+	protected void addAdditionalComponent()
 	{
-		super.addAdditinalComponent();
+		super.addAdditionalComponent();
 		
 		PanelTextArea toggleDescriptionArea = new PanelTextArea(getQuestion().getQuestionDescription());
 		toggleDescriptionArea.setWrapStyleWord(true);
