@@ -22,12 +22,14 @@ package org.miradi.dialogfields;
 
 import java.awt.BorderLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 import javax.swing.JToggleButton;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogs.fieldComponents.PanelTextArea;
+import org.miradi.main.AppPreferences;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
@@ -36,6 +38,8 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 	public RadioButtonEditorComponent(ChoiceQuestion questionToUse, ListSelectionListener listener)
 	{
 		super(questionToUse, SINGLE_COLUMN, listener);
+		
+		setBorder(BorderFactory.createEtchedBorder());
 	}
 	
 	@Override
@@ -46,6 +50,8 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 		PanelTextArea toggleDescriptionArea = new PanelTextArea(getQuestion().getQuestionDescription());
 		toggleDescriptionArea.setWrapStyleWord(true);
 		toggleDescriptionArea.setLineWrap(true);
+		toggleDescriptionArea.setEditable(false);
+		toggleDescriptionArea.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		add(toggleDescriptionArea, BorderLayout.BEFORE_FIRST_LINE);
 	}
 	
