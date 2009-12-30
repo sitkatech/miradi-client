@@ -157,11 +157,8 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		ORef valueOptionRef = new ORef(ValueOption.getObjectType(), bundle.getValueId(criterionId));
 		ValueOption valueOption = (ValueOption)getProject().findObject(valueOptionRef);
 		int numeric = valueOption.getNumericValue();
-		String code = "";
-		if(numeric > 0)
-			code = Integer.toString(numeric);
 		
-		return getRatingQuestion().findChoiceByCode(code);
+		return getRatingQuestion().findChoiceByNumericValue(numeric);
 	}
 
 	private ThreatRatingBundle getBundle(ORef threatRef, ORef targetRef)throws Exception
