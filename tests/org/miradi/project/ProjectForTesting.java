@@ -175,6 +175,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT, "Some Parent Child Value");
 	}
+	
+	public void setFiscalYearStartMonth(int startMonth) throws Exception
+	{
+		getMetadata().setData(ProjectMetadata.TAG_FISCAL_YEAR_START, Integer.toString(startMonth));
+	}
 
 	public void setSingleYearProjectDate(int singleYear) throws Exception
 	{

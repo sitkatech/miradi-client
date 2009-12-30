@@ -51,7 +51,7 @@ public class TestProjectCalendar extends TestCaseWithProject
 	
 	public void testGettingPlanningStartEndDateWithNoSetDates() throws Exception
 	{
-		setFiscalYearStartMonth(7);
+		getProject().setFiscalYearStartMonth(7);
 		getProject().setProjectStartDate(null);
 		getProject().setProjectEndDate(null);
 		MultiCalendar projectStartDate = MultiCalendar.createFromGregorianYearMonthDay(2009, 7, 1);
@@ -174,22 +174,17 @@ public class TestProjectCalendar extends TestCaseWithProject
 		MultiCalendar jan2008 = MultiCalendar.createFromGregorianYearMonthDay(2008, 1, 1);
 		assertEquals(jan2008, getProjectCalendar().getStartOfFiscalYearContaining(feb2008));
 
-		setFiscalYearStartMonth(4);
+		getProject().setFiscalYearStartMonth(4);
 		MultiCalendar april2007 = MultiCalendar.createFromGregorianYearMonthDay(2007, 4, 1);
 		assertEquals(april2007, getProjectCalendar().getStartOfFiscalYearContaining(feb2008));
 
-		setFiscalYearStartMonth(7);
+		getProject().setFiscalYearStartMonth(7);
 		MultiCalendar july2007 = MultiCalendar.createFromGregorianYearMonthDay(2007, 7, 1);
 		assertEquals(july2007, getProjectCalendar().getStartOfFiscalYearContaining(feb2008));
 
-		setFiscalYearStartMonth(10);
+		getProject().setFiscalYearStartMonth(10);
 		MultiCalendar oct2007 = MultiCalendar.createFromGregorianYearMonthDay(2007, 10, 1);
 		assertEquals(oct2007, getProjectCalendar().getStartOfFiscalYearContaining(feb2008));
-	}
-
-	private void setFiscalYearStartMonth(int startMonth) throws Exception
-	{
-		getProject().getMetadata().setData(ProjectMetadata.TAG_FISCAL_YEAR_START, Integer.toString(startMonth));
 	}
 	
 	public void testGetProjectStartEndDateUnits() throws Exception
@@ -202,7 +197,7 @@ public class TestProjectCalendar extends TestCaseWithProject
 		assertEquals(DateUnit.createFiscalYear(2008, 1), twoYears.get(0));
 		assertEquals(DateUnit.createFiscalYear(2009, 1), twoYears.get(1));
 		
-		setFiscalYearStartMonth(7);
+		getProject().setFiscalYearStartMonth(7);
 		MultiCalendar startMid2006 = MultiCalendar.createFromGregorianYearMonthDay(2006, 7, 1);
 		MultiCalendar endMid2009 = MultiCalendar.createFromGregorianYearMonthDay(2009, 6, 30);
 		DateRange threeFiscalYears = new DateRange(startMid2006, endMid2009);
