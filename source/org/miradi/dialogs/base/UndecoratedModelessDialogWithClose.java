@@ -20,23 +20,38 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
+
 import org.miradi.main.MainWindow;
 
 public class UndecoratedModelessDialogWithClose extends ModelessDialogWithClose
 {
-	public UndecoratedModelessDialogWithClose(MainWindow parent, DisposablePanel panel, String title)
-	{
-		super(parent, panel, title);
-	}
-	
 	public UndecoratedModelessDialogWithClose(MainWindow parent, String title)
 	{
 		super(parent, title);
+	}
+
+	public void enableCloseWhenFocusLost()
+	{
+		addWindowFocusListener(new CloseWhenFocusLossHandler());
 	}
 
 	@Override
 	protected boolean shouldBeUndecorated()
 	{
 		return true;
+	}
+	
+	private class CloseWhenFocusLossHandler implements WindowFocusListener
+	{
+		public void windowLostFocus(WindowEvent e)
+		{
+			setVisible(false);
+		}
+	
+		public void windowGainedFocus(WindowEvent e)
+		{
+		}
 	}
 }
