@@ -88,7 +88,8 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 
 		public void actionPerformed(ActionEvent event)
 		{
-			editorDialog = new UndecoratedModelessDialogWithClose(EAM.getMainWindow(), EAM.text("Select")); 
+			editorDialog = new UndecoratedModelessDialogWithClose(EAM.getMainWindow(), EAM.text("Select"));
+			editorDialog.enableCloseWhenFocusLost();
 			editorDialog.add(editorPanel);
 			editorDialog.pack();
 			Utilities.centerFrame(editorDialog);
