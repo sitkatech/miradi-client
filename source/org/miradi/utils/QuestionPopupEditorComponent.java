@@ -46,11 +46,12 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	public QuestionPopupEditorComponent(ListSelectionListener selectionHandler, ChoiceQuestion questionToUse, String translatedPopupButtonText) throws Exception
 	{
 		question = questionToUse;
-		editorPanel = new RadioButtonEditorComponent(getQuestion(), selectionHandler);
-		popupInvokeButton = new PanelButton("...");
-		currentSelectionLabel = new PanelTitleLabel();
 		
+		editorPanel = new RadioButtonEditorComponent(getQuestion(), selectionHandler);
 		PanelTitleLabel staticLabel = new PanelTitleLabel(translatedPopupButtonText);
+		currentSelectionLabel = new PanelTitleLabel();
+		popupInvokeButton = new PanelButton("...");
+		
 		OneRowPanel panel = new OneRowPanel();
 		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		panel.add(staticLabel);
@@ -59,9 +60,9 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		
 		add(panel);
 		
-		addPopupEditorHandler(panel);
-		addPopupEditorHandler(currentSelectionLabel);
 		addPopupEditorHandler(staticLabel);
+		addPopupEditorHandler(currentSelectionLabel);
+		addPopupEditorHandler(panel);
 		popupInvokeButton.addActionListener(new PopUpEditorHandler());
 		editorPanel.addListSelectionListener(new CloseEditorAfterSelectionHandler());
 	}
