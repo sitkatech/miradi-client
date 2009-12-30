@@ -36,9 +36,7 @@ public class ChoiceItem implements Comparable
 	
 	public ChoiceItem(String codeToUse, String labelToUse, Color colorToUse)
 	{
-		code = codeToUse;
-		label = labelToUse;
-		color = colorToUse;
+		this(codeToUse, labelToUse, colorToUse, "");
 	}
 	
 	public ChoiceItem(String codeToUse, String labelToUse, Icon iconToUse)
@@ -48,6 +46,14 @@ public class ChoiceItem implements Comparable
 		icon = iconToUse;
 	}
 	
+	public ChoiceItem(String codeToUse, String labelToUse, Color colorToUse, String descriptionToUse)
+	{
+		code = codeToUse;
+		label = labelToUse;
+		color = colorToUse;
+		description = descriptionToUse;
+	}
+
 	public String getCode()
 	{
 		return code;
@@ -66,6 +72,11 @@ public class ChoiceItem implements Comparable
 	public Icon getIcon()
 	{
 		return icon;
+	}
+	
+	public String getDescriction()
+	{
+		return description;
 	}
 	
 	public void setIcon(Icon iconToUse)
@@ -129,4 +140,5 @@ public class ChoiceItem implements Comparable
 	private String label;
 	private Color color;
 	private Icon icon;
+	private String description;
 }
