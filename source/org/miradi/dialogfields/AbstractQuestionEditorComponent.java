@@ -35,6 +35,7 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.MiradiScrollPane;
 
 import com.jhlabs.awt.BasicGridLayout;
 import com.jhlabs.awt.GridLayoutPlus;
@@ -73,7 +74,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 			toggleButtonsPanel.add(new PanelTitleLabel(choiceItem.getDescription()));
 		}
 	
-		add(toggleButtonsPanel);
+		add(new MiradiScrollPane(toggleButtonsPanel));
 		revalidate();
 		repaint();
 	}
