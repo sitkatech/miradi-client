@@ -20,10 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-import javax.swing.JComponent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -45,14 +47,28 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	{
 		question = questionToUse;
 		editorPanel = new RadioButtonEditorComponent(getQuestion(), selectionHandler);
-		editorPanel.addListSelectionListener(new CloseEditorAfterSelectionHandler());
-		
 		popupInvokeButton = new PanelButton("...");
-		popupInvokeButton.addActionListener(new PopUpEditorHandler());
-		
 		currentSelectionLabel = new PanelTitleLabel();
 		
-		addEditComponent(currentSelectionLabel, translatedPopupButtonText);
+		PanelTitleLabel staticLabel = new PanelTitleLabel(translatedPopupButtonText);
+		OneRowPanel panel = new OneRowPanel();
+		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		panel.add(staticLabel);
+		panel.add(currentSelectionLabel);
+		panel.add(popupInvokeButton);
+		
+		add(panel);
+		
+		addPopupEditorHandler(panel);
+		addPopupEditorHandler(currentSelectionLabel);
+		addPopupEditorHandler(staticLabel);
+		popupInvokeButton.addActionListener(new PopUpEditorHandler());
+		editorPanel.addListSelectionListener(new CloseEditorAfterSelectionHandler());
+	}
+	
+	private void addPopupEditorHandler(Component mouseListener)
+	{
+		mouseListener.addMouseListener(new PopUpEditorHandler());
 	}
 	
 	public void setText(String text)
@@ -68,25 +84,25 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		return editorPanel.getText();
 	}
 
-	private void addEditComponent(JComponent component, String translatedText)
-	{
-		OneRowPanel panel = new OneRowPanel();
-		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		PanelTitleLabel label = new PanelTitleLabel(translatedText);
-		panel.add(label);
-		panel.add(component);
-		panel.add(popupInvokeButton);
-		add(panel);
-	}
-	
-	private class PopUpEditorHandler implements ActionListener
+	private class PopUpEditorHandler extends MouseAdapter implements ActionListener 
 	{
 		public PopUpEditorHandler()
 		{
 			selectRating();
 		}
 
+		@Override
+		public void mouseReleased(MouseEvent e)
+		{
+			popupEditor();
+		}
+		
 		public void actionPerformed(ActionEvent event)
+		{
+			popupEditor();	
+		}
+
+		private void popupEditor()
 		{
 			editorDialog = new UndecoratedModelessDialogWithClose(EAM.getMainWindow(), EAM.text("Select"));
 			editorDialog.enableCloseWhenFocusLost();
