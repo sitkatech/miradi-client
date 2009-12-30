@@ -93,7 +93,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		}
 
 		@Override
-		public void mouseReleased(MouseEvent e)
+		public void mouseClicked(MouseEvent e)
 		{
 			invokePopupEditor();
 		}
