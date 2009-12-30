@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-30 08:23-0600\n"
+"POT-Creation-Date: 2009-12-30 11:20-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -537,7 +537,7 @@ msgstr "Características de biodiversidad"
 #: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:66
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:65
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:66
 msgid "Scope"
 msgstr "Alcance"
 
@@ -1735,7 +1735,7 @@ msgstr ""
 "alcance, gravedad e irreversibilidad. "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:223
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:71
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:72
 msgid "Irreversibility"
 msgstr "Irreversibilidad "
 
@@ -1748,7 +1748,7 @@ msgstr ""
 "revertir y se puede restaurar el objeto afectado por la amenaza. "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:68
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:69
 msgid "Severity"
 msgstr "Gravedad "
 
@@ -2638,7 +2638,7 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/DirectThreatQuestion.java:43
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:37
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:35
-#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:36
+#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:41
 #: Miradi/source/org/miradi/questions/KeyEcologicalAttributeTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/StressIrreversibilityQuestion.java:36
 #: Miradi/source/org/miradi/questions/StressScopeChoiceQuestion.java:36
@@ -2649,6 +2649,7 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/StressRatingChoiceQuestion.java:36
 #: Miradi/source/org/miradi/questions/StressSeverityChoiceQuestion.java:36
 #: Miradi/source/org/miradi/questions/StatusQuestion.java:36
+#: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:37
 #: Miradi/source/org/miradi/questions/PriorityRatingQuestion.java:36
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:37
@@ -2660,52 +2661,56 @@ msgstr "No especificado"
 
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:37
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:38
-#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:37
+#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:42
 #: Miradi/source/org/miradi/questions/StressIrreversibilityQuestion.java:37
 #: Miradi/source/org/miradi/questions/StressScopeChoiceQuestion.java:37
 #: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:38
 #: Miradi/source/org/miradi/questions/StressContributionQuestion.java:37
 #: Miradi/source/org/miradi/questions/StressRatingChoiceQuestion.java:37
 #: Miradi/source/org/miradi/questions/StressSeverityChoiceQuestion.java:37
+#: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:38
 #: Miradi/source/org/miradi/questions/PriorityRatingQuestion.java:37
 msgid "Low"
 msgstr "Bajo "
 
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:38
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:39
-#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:38
+#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:43
 #: Miradi/source/org/miradi/questions/StressIrreversibilityQuestion.java:38
 #: Miradi/source/org/miradi/questions/StressScopeChoiceQuestion.java:38
 #: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:39
 #: Miradi/source/org/miradi/questions/StressContributionQuestion.java:38
 #: Miradi/source/org/miradi/questions/StressRatingChoiceQuestion.java:38
 #: Miradi/source/org/miradi/questions/StressSeverityChoiceQuestion.java:38
+#: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:39
 #: Miradi/source/org/miradi/questions/PriorityRatingQuestion.java:38
 msgid "Medium"
 msgstr "Medio "
 
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:39
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:40
-#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:39
+#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:44
 #: Miradi/source/org/miradi/questions/StressIrreversibilityQuestion.java:39
 #: Miradi/source/org/miradi/questions/StressScopeChoiceQuestion.java:39
 #: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:40
 #: Miradi/source/org/miradi/questions/StressContributionQuestion.java:39
 #: Miradi/source/org/miradi/questions/StressRatingChoiceQuestion.java:39
 #: Miradi/source/org/miradi/questions/StressSeverityChoiceQuestion.java:39
+#: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:40
 #: Miradi/source/org/miradi/questions/PriorityRatingQuestion.java:39
 msgid "High"
 msgstr "Alto "
 
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:40
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:41
-#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:40
+#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:45
 #: Miradi/source/org/miradi/questions/StressIrreversibilityQuestion.java:40
 #: Miradi/source/org/miradi/questions/StressScopeChoiceQuestion.java:40
 #: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:41
 #: Miradi/source/org/miradi/questions/StressContributionQuestion.java:40
 #: Miradi/source/org/miradi/questions/StressRatingChoiceQuestion.java:40
 #: Miradi/source/org/miradi/questions/StressSeverityChoiceQuestion.java:40
+#: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:41
 #: Miradi/source/org/miradi/questions/PriorityRatingQuestion.java:40
 msgid "Very High"
 msgstr "Muy alto"
@@ -2727,16 +2732,6 @@ msgstr "Evaluación rápida "
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:39
 msgid "Intensive Assessment"
 msgstr "Evaluación intensiva "
-
-#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:46
-msgid ""
-"Scope - Most commonly defined spatially as the proportion of the target that "
-"can reasonably be expected to be affected by the threat within ten years "
-"given the continuation of current circumstances and trends. For ecosystems "
-"and ecological communities, measured as the proportion of the target's "
-"occurrence. For species, measured as the proportion of the target's "
-"population."
-msgstr ""
 
 #: Miradi/source/org/miradi/questions/TextBoxZOrderQuestion.java:34
 msgid "Behind"
@@ -3782,6 +3777,40 @@ msgstr "Bueno "
 #: Miradi/source/org/miradi/questions/StatusQuestion.java:40
 msgid "Very Good"
 msgstr "Muy bueno "
+
+#: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:38
+msgid ""
+"Low: The threat is likely to be very narrow in its scope, affecting the "
+"target across a small proportion (1-10%) of its occurrence/population."
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:39
+msgid ""
+"Medium: The threat is likely to be restricted in its scope, affecting the "
+"target across some (11-30%) of its occurrence/population."
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:40
+msgid ""
+"High: The threat is likely to be widespread in its scope, affecting the "
+"target across much (31-70%) of its occurrence/population."
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:41
+msgid ""
+"Very High: The threat is likely to be pervasive in its scope, affecting the "
+"target across all or most (71-100%) of its occurrence/population."
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:47
+msgid ""
+"Scope - Most commonly defined spatially as the proportion of the target that "
+"can reasonably be expected to be affected by the threat within ten years "
+"given the continuation of current circumstances and trends. For ecosystems "
+"and ecological communities, measured as the proportion of the target's "
+"occurrence. For species, measured as the proportion of the target's "
+"population."
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:36
 msgid "Workshop"
@@ -6493,7 +6522,7 @@ msgstr "Nombre de la presión"
 msgid "Target-Threat Rating"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:61
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:62
 msgid "<html><b>Summary<br>Target-Threat<br>Rating"
 msgstr ""
 
