@@ -51,7 +51,11 @@ public class ThreatRatingQuestion extends StaticChoiceQuestion
 	
 	private static String getDescription()
 	{
-		return EAM.text("This is a rating set of choices.");
+		return EAM.text("Scope - Most commonly defined spatially as the proportion of the target " +
+				"that can reasonably be expected to be affected by the threat within ten years given " +
+				"the continuation of current circumstances and trends. For ecosystems and ecological communities, " +
+				"measured as the proportion of the target's occurrence. For species, measured as the proportion " +
+				"of the target's population.");
 	}
 	
 	public static final String HIGH_RATING_CODE = "3";
