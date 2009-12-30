@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-30 12:26-0600\n"
+"POT-Creation-Date: 2009-12-30 12:47-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3601,6 +3601,30 @@ msgstr "好"
 #: Miradi/source/org/miradi/questions/StatusQuestion.java:40
 msgid "Very Good"
 msgstr "非常好"
+
+#: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:35
+msgid ""
+"Low: The threat is likely to be very narrow in its scope, affecting the "
+"target across a small proportion (1-10%) of its occurrence/population."
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:41
+msgid ""
+"Medium: The threat is likely to be restricted in its scope, affecting the "
+"target across some (11-30%) of its occurrence/population."
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:47
+msgid ""
+"High: The threat is likely to be widespread in its scope, affecting the "
+"target across much (31-70%) of its occurrence/population."
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:53
+msgid ""
+"Very High: The threat is likely to be pervasive in its scope, affecting the "
+"target across all or most (71-100%) of its occurrence/population."
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:58
 msgid ""
