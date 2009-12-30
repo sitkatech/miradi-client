@@ -29,6 +29,16 @@ import org.miradi.utils.ColorManager;
 
 public abstract class ChoiceQuestion
 {
+	public ChoiceQuestion()
+	{
+		this("");
+	}
+
+	public ChoiceQuestion(String questionDescriptionToUse)
+	{
+		questionDescription = questionDescriptionToUse;
+	}
+	
 	public int size()
 	{
 		return getChoices().length;
@@ -111,9 +121,16 @@ public abstract class ChoiceQuestion
 		}
 		out.writeln("</Choices>");
 	}
+	
+	public String getQuestionDescription()
+	{
+		return questionDescription;
+	}
 
 	public static final Color COLOR_ALERT = Color.RED;
 	public static final Color COLOR_CAUTION = ColorManager.DARK_YELLOW;
 	public static final Color COLOR_OK = ColorManager.LIGHT_GREEN;
 	public static final Color COLOR_GREAT = ColorManager.DARK_GREEN;
+	
+	private String questionDescription;
 }

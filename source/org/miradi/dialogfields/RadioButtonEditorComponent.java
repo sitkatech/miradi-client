@@ -20,11 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
+import java.awt.BorderLayout;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 import javax.swing.JToggleButton;
 import javax.swing.event.ListSelectionListener;
 
+import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
@@ -33,6 +36,16 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 	public RadioButtonEditorComponent(ChoiceQuestion questionToUse, ListSelectionListener listener)
 	{
 		super(questionToUse, SINGLE_COLUMN, listener);
+	}
+	
+	@Override
+	protected void addAdditinalComponent()
+	{
+		super.addAdditinalComponent();
+		
+		PanelTextArea toggleDescription = new PanelTextArea(getQuestion().getQuestionDescription());
+		toggleDescription.setEditable(false);
+		add(toggleDescription, BorderLayout.BEFORE_FIRST_LINE);
 	}
 	
 	@Override
