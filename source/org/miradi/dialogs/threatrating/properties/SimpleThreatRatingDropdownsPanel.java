@@ -48,6 +48,7 @@ import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.ScopeThreatRatingQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.utils.QuestionPopupEditorComponent;
 
@@ -62,7 +63,7 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		rollupField = new ThreatStressRatingValueReadonlyComponent(getProject());
 		add(rollupField);
 		
-		scopeEditorComponent = new QuestionPopupEditorComponent(new ListSelectionHandler(getScopeId()), getRatingQuestion(), EAM.text("Scope"));
+		scopeEditorComponent = new QuestionPopupEditorComponent(new ListSelectionHandler(getScopeId()), getScopeRatingQuestion(), EAM.text("Scope"));
 		addEditComponent(scopeEditorComponent);
 		
 		severityEditorComponent = new QuestionPopupEditorComponent(new ListSelectionHandler(getSeverityId()), getRatingQuestion(), EAM.text("Severity"));
@@ -117,6 +118,11 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		return getProject().getQuestion(ThreatRatingQuestion.class);
 	}
 	
+	private ChoiceQuestion getScopeRatingQuestion()
+	{
+		return getProject().getQuestion(ScopeThreatRatingQuestion.class);
+	}
+	
 	@Override
 	public void updateFieldsFromProject()
 	{
@@ -124,9 +130,9 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 
 		try
 		{
-			updateRatingComponent(getScopeId(), scopeEditorComponent);
-			updateRatingComponent(getSeverityId(), severityEditorComponent);
-			updateRatingComponent(getIrreversibilityId(), irreversibilityEditorComponent);
+			updateRatingComponent(getScopeRatingQuestion(), getScopeId(), scopeEditorComponent);
+			updateRatingComponent(getRatingQuestion(), getSeverityId(), severityEditorComponent);
+			updateRatingComponent(getRatingQuestion(), getIrreversibilityId(), irreversibilityEditorComponent);
 			rollupField.setObjectRefs(getSelectedRefs());
 		}
 		catch (Exception e)
@@ -145,20 +151,20 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		return getRefForType(Cause.getObjectType());
 	}
 		
-	private void updateRatingComponent(BaseId criterionId, QuestionPopupEditorComponent ratingComponent) throws Exception
+	private void updateRatingComponent(ChoiceQuestion questioToUse, BaseId criterionId, QuestionPopupEditorComponent ratingComponent) throws Exception
 	{
-		ChoiceItem choice = getCurrentRating(criterionId);
+		ChoiceItem choice = getCurrentRating(questioToUse, criterionId);
 		ratingComponent.setText(choice.getCode());
 	}
 	
-	private ChoiceItem getCurrentRating(BaseId criterionId) throws Exception
+	private ChoiceItem getCurrentRating(ChoiceQuestion questioToUse, BaseId criterionId) throws Exception
 	{
 		ThreatRatingBundle bundle = getBundle(getThreatRef(), getTargetRef());
 		ORef valueOptionRef = new ORef(ValueOption.getObjectType(), bundle.getValueId(criterionId));
 		ValueOption valueOption = (ValueOption)getProject().findObject(valueOptionRef);
 		int numeric = valueOption.getNumericValue();
 		
-		return getRatingQuestion().findChoiceByNumericValue(numeric);
+		return questioToUse.findChoiceByNumericValue(numeric);
 	}
 
 	private ThreatRatingBundle getBundle(ORef threatRef, ORef targetRef)throws Exception
