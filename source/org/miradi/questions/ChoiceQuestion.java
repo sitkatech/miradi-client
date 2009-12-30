@@ -127,6 +127,15 @@ public abstract class ChoiceQuestion
 		return questionDescription;
 	}
 
+	public ChoiceItem findChoiceByNumericValue(int value)
+	{
+		String code = "";
+		if(value > 0)
+			code = Integer.toString(value);
+			
+		return findChoiceByCode(code);
+	}
+
 	public static final Color COLOR_ALERT = Color.RED;
 	public static final Color COLOR_CAUTION = ColorManager.DARK_YELLOW;
 	public static final Color COLOR_OK = ColorManager.LIGHT_GREEN;
