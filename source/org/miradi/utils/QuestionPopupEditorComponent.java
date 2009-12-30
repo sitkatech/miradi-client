@@ -95,15 +95,15 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		@Override
 		public void mouseReleased(MouseEvent e)
 		{
-			popupEditor();
+			invokePopupEditor();
 		}
 		
 		public void actionPerformed(ActionEvent event)
 		{
-			popupEditor();	
+			invokePopupEditor();	
 		}
 
-		private void popupEditor()
+		private void invokePopupEditor()
 		{
 			editorDialog = new UndecoratedModelessDialogWithClose(EAM.getMainWindow(), EAM.text("Select"));
 			editorDialog.enableCloseWhenFocusLost();
