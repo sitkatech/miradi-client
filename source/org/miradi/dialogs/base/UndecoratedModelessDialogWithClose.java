@@ -47,8 +47,8 @@ public class UndecoratedModelessDialogWithClose extends ModelessDialogWithClose
 	{
 		public void windowLostFocus(WindowEvent e)
 		{
-			dispose();
 			setVisible(false);
+			dispose();
 		}
 	
 		public void windowGainedFocus(WindowEvent e)
