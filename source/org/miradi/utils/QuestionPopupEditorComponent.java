@@ -112,7 +112,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		{
 			editorDialog = new UndecoratedModelessDialogWithClose(EAM.getMainWindow(), EAM.text("Select"));
 			editorDialog.enableCloseWhenFocusLost();
-			editorDialog.add(editorPanel);
+			editorDialog.setMainPanel(editorPanel);
 			editorDialog.pack();
 			//NOTE: packing twice due to preferences height not being set correctly.
 			editorDialog.pack();
