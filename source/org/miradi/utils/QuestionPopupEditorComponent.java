@@ -29,6 +29,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
 import org.miradi.dialogfields.RadioButtonEditorComponent;
 import org.miradi.dialogs.base.UndecoratedModelessDialogWithClose;
@@ -58,6 +59,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		panel.setMargins(2);
 		panel.setGaps(2);
 		panel.add(staticLabel);
+		panel.add(new UiLabel(" "));
 		panel.add(currentSelectionText);
 		panel.add(popupInvokeButton);
 		
