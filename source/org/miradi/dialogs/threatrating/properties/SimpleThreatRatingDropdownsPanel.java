@@ -48,7 +48,9 @@ import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.IrreversibilityThreatRatingQuestion;
 import org.miradi.questions.ScopeThreatRatingQuestion;
+import org.miradi.questions.SeverityThreatRatingQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.utils.QuestionPopupEditorComponent;
 
@@ -66,10 +68,10 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		scopeEditorComponent = new QuestionPopupEditorComponent(new ListSelectionHandler(getScopeId()), getScopeRatingQuestion(), EAM.text("Scope"));
 		addEditComponent(scopeEditorComponent);
 		
-		severityEditorComponent = new QuestionPopupEditorComponent(new ListSelectionHandler(getSeverityId()), getRatingQuestion(), EAM.text("Severity"));
+		severityEditorComponent = new QuestionPopupEditorComponent(new ListSelectionHandler(getSeverityId()), getSeverityRatingQuestion(), EAM.text("Severity"));
 		addEditComponent(severityEditorComponent);
 		
-		irreversibilityEditorComponent = new QuestionPopupEditorComponent(new ListSelectionHandler(getIrreversibilityId()), getRatingQuestion(), EAM.text("Irreversibility"));
+		irreversibilityEditorComponent = new QuestionPopupEditorComponent(new ListSelectionHandler(getIrreversibilityId()), getIrreversibilityRatingQuestion(), EAM.text("Irreversibility"));
 		addEditComponent(irreversibilityEditorComponent);
 		
 		add(createGridCell(rollupLabel, rollupField.getComponent()));
@@ -121,6 +123,16 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 	private ChoiceQuestion getScopeRatingQuestion()
 	{
 		return getProject().getQuestion(ScopeThreatRatingQuestion.class);
+	}
+	
+	private ChoiceQuestion getSeverityRatingQuestion()
+	{
+		return getProject().getQuestion(SeverityThreatRatingQuestion.class);
+	}
+	
+	private ChoiceQuestion getIrreversibilityRatingQuestion()
+	{
+		return getProject().getQuestion(IrreversibilityThreatRatingQuestion.class);
 	}
 	
 	@Override
