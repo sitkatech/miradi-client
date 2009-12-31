@@ -25,9 +25,9 @@ import javax.swing.text.html.StyleSheet;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 
-public class FlexibleWidthHtmlViewerWithColoredBackground extends FlexibleWidthHtmlViewer
+public class ControlPanelFlexibleWidthHtmlViewer extends FlexibleWidthHtmlViewer
 {
-	public FlexibleWidthHtmlViewerWithColoredBackground(MainWindow mainWindow, String htmlText)
+	public ControlPanelFlexibleWidthHtmlViewer(MainWindow mainWindow, String htmlText)
 	{
 		super(mainWindow, htmlText);
 	}

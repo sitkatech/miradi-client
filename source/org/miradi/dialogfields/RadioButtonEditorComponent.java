@@ -33,7 +33,7 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.FlexibleWidthHtmlViewerWithColoredBackground;
+import org.miradi.utils.ControlPanelFlexibleWidthHtmlViewer;
 
 public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 {
@@ -49,7 +49,7 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 	{
 		super.addAdditionalComponent();
 		
-		FlexibleWidthHtmlViewerWithColoredBackground htmlArea = new FlexibleWidthHtmlViewerWithColoredBackground(EAM.getMainWindow(), getQuestion().getQuestionDescription());
+		ControlPanelFlexibleWidthHtmlViewer htmlArea = new ControlPanelFlexibleWidthHtmlViewer(EAM.getMainWindow(), getQuestion().getQuestionDescription());
 		htmlArea.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		add(htmlArea, BorderLayout.BEFORE_FIRST_LINE);
 	}
