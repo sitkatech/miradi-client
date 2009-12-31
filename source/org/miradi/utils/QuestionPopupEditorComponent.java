@@ -33,8 +33,8 @@ import org.martus.swing.Utilities;
 import org.miradi.dialogfields.RadioButtonEditorComponent;
 import org.miradi.dialogs.base.UndecoratedModelessDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelButton;
+import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.icons.RatingIcon;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -49,19 +49,22 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		
 		editorPanel = new RadioButtonEditorComponent(getQuestion(), selectionHandler);
 		PanelTitleLabel staticLabel = new PanelTitleLabel(translatedPopupButtonText);
-		currentSelectionLabel = new PanelTitleLabel();
+		currentSelectionText = new PanelTextField(10);
+		currentSelectionText.setEditable(false);
 		popupInvokeButton = new PanelButton("...");
 		
 		OneRowPanel panel = new OneRowPanel();
 		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		panel.setMargins(2);
+		panel.setGaps(2);
 		panel.add(staticLabel);
-		panel.add(currentSelectionLabel);
+		panel.add(currentSelectionText);
 		panel.add(popupInvokeButton);
 		
 		add(panel);
 		
 		addPopupEditorHandler(staticLabel);
-		addPopupEditorHandler(currentSelectionLabel);
+		addPopupEditorHandler(currentSelectionText);
 		addPopupEditorHandler(panel);
 		popupInvokeButton.addActionListener(new PopUpEditorHandler());
 		editorPanel.addListSelectionListener(new CloseEditorAfterSelectionHandler());
@@ -76,8 +79,8 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	{
 		editorPanel.setText(text);
 		ChoiceItem choice = question.findChoiceByCode(text);
-		currentSelectionLabel.setText(choice.getLabel());
-		currentSelectionLabel.setIcon(new RatingIcon(choice));
+		currentSelectionText.setText(choice.getLabel());
+		currentSelectionText.setBackground(choice.getColor());
 	}
 	
 	public String getText()
@@ -146,7 +149,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	}
 
 	private PanelButton popupInvokeButton;
-	private PanelTitleLabel currentSelectionLabel;
+	private PanelTextField currentSelectionText;
 	private UndecoratedModelessDialogWithClose editorDialog;
 	private ChoiceQuestion question;
 	private RadioButtonEditorComponent editorPanel;
