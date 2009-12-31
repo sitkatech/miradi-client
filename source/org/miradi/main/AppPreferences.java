@@ -528,6 +528,7 @@ public class AppPreferences
 	{
 		controlPanelBackgroundColorForCss = colorToUse;
 	}
+	
 	public static Color getControlPanelBackgroundColor()
 	{
 		return Color.decode(controlPanelBackgroundColorForCss);
