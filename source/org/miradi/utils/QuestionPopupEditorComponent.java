@@ -31,7 +31,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
-import org.miradi.dialogfields.RadioButtonEditorComponent;
+import org.miradi.dialogfields.ControlPanelRadioButtonEditorComponent;
 import org.miradi.dialogs.base.UndecoratedModelessDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
@@ -48,7 +48,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	{
 		question = questionToUse;
 		
-		editorPanel = new RadioButtonEditorComponent(getQuestion(), selectionHandler);
+		editorPanel = new ControlPanelRadioButtonEditorComponent(getQuestion(), selectionHandler);
 		PanelTitleLabel staticLabel = new PanelTitleLabel(translatedPopupButtonText);
 		currentSelectionText = new PanelTextField(10);
 		currentSelectionText.setEditable(false);
@@ -154,5 +154,5 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	private PanelTextField currentSelectionText;
 	private UndecoratedModelessDialogWithClose editorDialog;
 	private ChoiceQuestion question;
-	private RadioButtonEditorComponent editorPanel;
+	private ControlPanelRadioButtonEditorComponent editorPanel;
 }
