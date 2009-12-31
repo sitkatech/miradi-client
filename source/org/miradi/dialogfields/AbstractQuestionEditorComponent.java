@@ -32,6 +32,7 @@ import javax.swing.JToggleButton;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -61,6 +62,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 		ChoiceItem[] choices = getQuestion().getChoices();
 		choiceItemToToggleButtonMap = new HashMap<ChoiceItem, JToggleButton>();
 		MiradiPanel toggleButtonsPanel = new MiradiPanel(new GridLayoutPlus(0, 3)); 
+		toggleButtonsPanel.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		for (int index = 0; index < choices.length; ++index)
 		{
 			ChoiceItem choiceItem = choices[index];

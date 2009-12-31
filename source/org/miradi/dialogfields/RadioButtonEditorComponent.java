@@ -51,7 +51,7 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 		toggleDescriptionArea.setWrapStyleWord(true);
 		toggleDescriptionArea.setLineWrap(true);
 		toggleDescriptionArea.setEditable(false);
-		toggleDescriptionArea.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		toggleDescriptionArea.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		add(toggleDescriptionArea, BorderLayout.BEFORE_FIRST_LINE);
 	}
 	
