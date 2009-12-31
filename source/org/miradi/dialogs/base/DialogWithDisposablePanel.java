@@ -73,5 +73,4 @@ public class DialogWithDisposablePanel extends DialogWithButtonBar
 	}
 	
 	private DisposablePanel wrappedPanel;
-	
 }
