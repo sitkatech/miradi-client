@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-31 10:37-0600\n"
+"POT-Creation-Date: 2009-12-31 11:26-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -537,7 +537,7 @@ msgstr "Características de biodiversidad"
 #: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:66
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:66
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:68
 msgid "Scope"
 msgstr "Alcance"
 
@@ -1735,7 +1735,7 @@ msgstr ""
 "alcance, gravedad e irreversibilidad. "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:223
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:72
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:74
 msgid "Irreversibility"
 msgstr "Irreversibilidad "
 
@@ -1748,7 +1748,7 @@ msgstr ""
 "revertir y se puede restaurar el objeto afectado por la amenaza. "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:69
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:71
 msgid "Severity"
 msgstr "Gravedad "
 
@@ -2776,6 +2776,44 @@ msgstr ""
 msgid "Scheduled"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/SeverityThreatRatingQuestion.java:35
+msgid ""
+"<html><b>Low:</b> Within the scope, the threat is likely to only slightly "
+"degrade/reduce the target or reduce its population by 1-10% within ten years "
+"or three generations.</html>"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/SeverityThreatRatingQuestion.java:41
+msgid ""
+"<html><b>Medium:</b> Within the scope, the threat is likely to moderately "
+"degrade/reduce the target or reduce its population by 11-30% within ten "
+"years or three generations.</html>"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/SeverityThreatRatingQuestion.java:47
+msgid ""
+"<html><b>High:</b> Within the scope, the threat is likely to seriously "
+"degrade/reduce the target or reduce its population by 31-70% within ten "
+"years or three generations.</html>"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/SeverityThreatRatingQuestion.java:53
+msgid ""
+"<html><b>Very High:</b> Within the scope, the threat is likely to destroy or "
+"eliminate the target, or reduce its population by 71-100% within ten years "
+"or three generations.</html>"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/SeverityThreatRatingQuestion.java:58
+msgid ""
+"<html><strong>Severity - </strong>Within the scope, the level of damage to "
+"the target from the threat that can reasonably be expected given the "
+"continuation of current circumstances and trends. For ecosystems and "
+"ecological communities, typically measured as the degree of destruction or "
+"degradation of the target within the scope. For species, usually measured as "
+"the degree of reduction of the target population within the scope.</html>"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/KeyEcologicalAttributeTypeQuestion.java:36
 msgid "KEA Type|Size"
 msgstr "Tamaño de KEA  "
@@ -3773,38 +3811,79 @@ msgstr "Bueno "
 msgid "Very Good"
 msgstr "Muy bueno "
 
+#: Miradi/source/org/miradi/questions/IrreversibilityThreatRatingQuestion.java:35
+msgid ""
+"<html><b>Low:</b> The effects of the threat are easily reversible and the "
+"target can be easily restored at a relatively low cost and/or within 0-5 "
+"years (e.g., off-road vehicles trespassing in wetland).</html>"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/IrreversibilityThreatRatingQuestion.java:41
+msgid ""
+"<html><b>Medium:</b> The effects of the threat can be reversed and the "
+"target restored with a reasonable commitment of resources and/or within 6-20 "
+"years (e.g., ditching and draining of wetland).</html>"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/IrreversibilityThreatRatingQuestion.java:47
+msgid ""
+"<html><b>High:</b> The effects of the threat can technically be reversed and "
+"the target restored, but it is not practically affordable and/or it would "
+"take 21-100 years to achieve this (e.g., wetland converted to agriculture).</"
+"html>"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/IrreversibilityThreatRatingQuestion.java:53
+msgid ""
+"<html><b>Very High:</b> The effects of the threat cannot be reversed and it "
+"is very unlikely the target can be restored, and/or it would take more than "
+"100 years to achieve this (e.g., wetlands converted to a shopping center).</"
+"html>"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/IrreversibilityThreatRatingQuestion.java:58
+msgid ""
+"<html><strong>Irreversibility (Permanence) - </strong>The degree to which "
+"the effects of a threat can be reversed and the target affected by the "
+"threat restored.</html>"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:35
 msgid ""
-"Low: The threat is likely to be very narrow in its scope, affecting the "
-"target across a small proportion (1-10%) of its occurrence/population."
+"<html><b>Low:</b> The threat is likely to be very narrow in its scope, "
+"affecting the target across a small proportion (1-10%) of its occurrence/"
+"population.</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:41
 msgid ""
-"Medium: The threat is likely to be restricted in its scope, affecting the "
-"target across some (11-30%) of its occurrence/population."
+"<html><b>Medium:</b> The threat is likely to be restricted in its scope, "
+"affecting the target across some (11-30%) of its occurrence/population.</"
+"html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:47
 msgid ""
-"High: The threat is likely to be widespread in its scope, affecting the "
-"target across much (31-70%) of its occurrence/population."
+"<html><b>High:</b> The threat is likely to be widespread in its scope, "
+"affecting the target across much (31-70%) of its occurrence/population.</"
+"html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:53
 msgid ""
-"Very High: The threat is likely to be pervasive in its scope, affecting the "
-"target across all or most (71-100%) of its occurrence/population."
+"<html><b>Very High:</b> The threat is likely to be pervasive in its scope, "
+"affecting the target across all or most (71-100%) of its occurrence/"
+"population.</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:58
 msgid ""
-"Scope - Most commonly defined spatially as the proportion of the target that "
-"can reasonably be expected to be affected by the threat within ten years "
-"given the continuation of current circumstances and trends. For ecosystems "
-"and ecological communities, measured as the proportion of the target's "
-"occurrence. For species, measured as the proportion of the target's "
-"population."
+"<html><strong>Scope - </strong>Most commonly defined spatially as the "
+"proportion of the target that can reasonably be expected to be affected by "
+"the threat within ten years given the continuation of current circumstances "
+"and trends. For ecosystems and ecological communities, measured as the "
+"proportion of the target's occurrence. For species, measured as the "
+"proportion of the target's population.</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:36
@@ -6517,7 +6596,7 @@ msgstr "Nombre de la presión"
 msgid "Target-Threat Rating"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:62
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:64
 msgid "<html><b>Summary<br>Target-Threat<br>Rating"
 msgstr ""
 
