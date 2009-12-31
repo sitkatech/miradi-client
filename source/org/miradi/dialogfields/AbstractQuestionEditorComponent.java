@@ -62,7 +62,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 		ChoiceItem[] choices = getQuestion().getChoices();
 		choiceItemToToggleButtonMap = new HashMap<ChoiceItem, JToggleButton>();
 		MiradiPanel toggleButtonsPanel = new MiradiPanel(new GridLayoutPlus(0, 3)); 
-		toggleButtonsPanel.setBackground(AppPreferences.getControlPanelBackgroundColor());
+		toggleButtonsPanel.setBackground(getTogglePanelBackgroundColor());
 		for (int index = 0; index < choices.length; ++index)
 		{
 			ChoiceItem choiceItem = choices[index];
@@ -79,6 +79,11 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 		add(new MiradiScrollPane(toggleButtonsPanel));
 		revalidate();
 		repaint();
+	}
+
+	protected Color getTogglePanelBackgroundColor()
+	{
+		return AppPreferences.getDataPanelBackgroundColor();
 	}
 
 	private PanelTitleLabel getSafeIconLabel(Icon icon)

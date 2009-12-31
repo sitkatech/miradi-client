@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -60,6 +61,12 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 		groupRadioButton(radioButton);
 		
 		return radioButton;
+	}
+
+	@Override
+	protected Color getTogglePanelBackgroundColor()
+	{
+		return AppPreferences.getControlPanelBackgroundColor();
 	}
 	
 	@Override
