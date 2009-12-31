@@ -28,10 +28,11 @@ import javax.swing.JRadioButton;
 import javax.swing.JToggleButton;
 import javax.swing.event.ListSelectionListener;
 
-import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.FlexibleWidthHtmlViewer;
 
 public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 {
@@ -46,13 +47,10 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 	protected void addAdditionalComponent()
 	{
 		super.addAdditionalComponent();
-		
-		PanelTextArea toggleDescriptionArea = new PanelTextArea(getQuestion().getQuestionDescription());
-		toggleDescriptionArea.setWrapStyleWord(true);
-		toggleDescriptionArea.setLineWrap(true);
-		toggleDescriptionArea.setEditable(false);
-		toggleDescriptionArea.setBackground(AppPreferences.getControlPanelBackgroundColor());
-		add(toggleDescriptionArea, BorderLayout.BEFORE_FIRST_LINE);
+		//FIXME urgent (next commit) - Fix this so background is not white
+		FlexibleWidthHtmlViewer htmlArea = new FlexibleWidthHtmlViewer(EAM.getMainWindow(), getQuestion().getQuestionDescription());
+		htmlArea.setBackground(AppPreferences.getControlPanelBackgroundColor());
+		add(htmlArea, BorderLayout.BEFORE_FIRST_LINE);
 	}
 	
 	@Override

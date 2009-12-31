@@ -65,6 +65,8 @@ public class StaticQuestionManager
 		addQuestion(new ThreatRatingModeChoiceQuestion());
 		addQuestion(new ThreatRatingQuestion());
 		addQuestion(new ScopeThreatRatingQuestion());
+		addQuestion(new SeverityThreatRatingQuestion());
+		addQuestion(new IrreversibilityThreatRatingQuestion());
 		addQuestion(new ThreatStressRatingChoiceQuestion());
 		addQuestion(new TncFreshwaterEcoRegionQuestion());
 		addQuestion(new TncMarineEcoRegionQuestion());
