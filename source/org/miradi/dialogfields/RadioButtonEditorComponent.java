@@ -32,7 +32,7 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.FlexibleWidthHtmlViewer;
+import org.miradi.utils.FlexibleWidthHtmlViewerWithColoredBackground;
 
 public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 {
@@ -47,8 +47,8 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 	protected void addAdditionalComponent()
 	{
 		super.addAdditionalComponent();
-		//FIXME urgent (next commit) - Fix this so background is not white
-		FlexibleWidthHtmlViewer htmlArea = new FlexibleWidthHtmlViewer(EAM.getMainWindow(), getQuestion().getQuestionDescription());
+		
+		FlexibleWidthHtmlViewerWithColoredBackground htmlArea = new FlexibleWidthHtmlViewerWithColoredBackground(EAM.getMainWindow(), getQuestion().getQuestionDescription());
 		htmlArea.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		add(htmlArea, BorderLayout.BEFORE_FIRST_LINE);
 	}
