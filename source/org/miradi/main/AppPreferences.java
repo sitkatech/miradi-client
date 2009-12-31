@@ -526,11 +526,16 @@ public class AppPreferences
 
 	public void setControlPanelBackgroundColor(String colorToUse)
 	{
-		controlPanelBackgroundColor = Color.decode(colorToUse);
+		controlPanelBackgroundColorForCss = colorToUse;
 	}
 	public static Color getControlPanelBackgroundColor()
 	{
-		return controlPanelBackgroundColor;
+		return Color.decode(controlPanelBackgroundColorForCss);
+	}
+	
+	public static String getControlPanelBackgroundColorForCss()
+	{
+		return controlPanelBackgroundColorForCss;
 	}
 	
 	public static Color getWorkUnitsBackgroundColor()
@@ -631,8 +636,8 @@ public class AppPreferences
 	
 	private static Color darkPanelBackgroundColor =  new Color(0x57, 0xAC, 0xD5);
 	private static String dataPanelBackgroundColorForCss = "#DAEDF5";
-	private static Color controlPanelBackgroundColor = new Color(0xE8, 0xDA, 0x97);
-		
+
+	private static String controlPanelBackgroundColorForCss = "#E8DA97";
 
 	private static final Color LIGHT_PURPLE = new Color(204,153,255);
 	public static final Color INDICATOR_COLOR = LIGHT_PURPLE;
