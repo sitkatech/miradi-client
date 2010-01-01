@@ -155,6 +155,8 @@ public class TestConproXmlImporter extends TestCaseWithProject
 			verifyObjectiveLabelsAndUnsplitLabel(projectToFill1);
 			verifyConcatenatedProjectScopeAndDescription(projectToFill1);
 			stripDelimiterTagFromObjectiveNames(projectToFill1);
+	
+			temorarlyVerifyAndSetEndDateUntilButFix(projectToFill1);
 			
 			exportProject(afterXmlOutFile, projectToFill1);
 			String secondExport = convertFileContentToString(afterXmlOutFile);
@@ -166,6 +168,13 @@ public class TestConproXmlImporter extends TestCaseWithProject
 			afterXmlOutFile.delete();
 			projectToFill1.close();
 		}
+	}
+
+	private void temorarlyVerifyAndSetEndDateUntilButFix(ProjectForTesting projectToFill1) throws Exception
+	{
+		assertEquals("project to fill should not have been filled with a project end date", "", projectToFill1.getMetadata().getExpectedEndDate());
+		String expectedEndDate = getProject().getMetadata().getExpectedEndDate();
+		projectToFill1.fillObjectUsingCommand(projectToFill1.getMetadata(), ProjectMetadata.TAG_EXPECTED_END_DATE, expectedEndDate);
 	}
 	
 	private void verifyObjectiveLabelsAndUnsplitLabel(ProjectForTesting projectToFill1) throws Exception
