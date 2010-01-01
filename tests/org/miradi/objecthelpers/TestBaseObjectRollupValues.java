@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objecthelpers;
 
+import org.martus.util.MultiCalendar;
 import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.BaseObject;
@@ -45,6 +46,18 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 	}
 	
 	public void testWorkUnitsRollup() throws Exception
+	{
+		verifyWorkUnitsRollup();
+	}
+	
+	public void testWorkUnitsRollupWithProjectStartEndDateSet() throws Exception
+	{
+		getProject().setProjectStartDate(MultiCalendar.createFromGregorianYearMonthDay(2009, 1, 1));
+		getProject().setProjectEndDate(MultiCalendar.createFromGregorianYearMonthDay(2009, 12, 31));
+		verifyWorkUnitsRollup();
+	}
+
+	private void verifyWorkUnitsRollup() throws Exception
 	{
 		Indicator indicator = getProject().createIndicator();
 		Task methodWith2ResourceAssignments = getProject().createTask();
