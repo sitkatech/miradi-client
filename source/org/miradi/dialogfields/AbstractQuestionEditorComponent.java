@@ -66,7 +66,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 	
 	private void clearChoiceItemToToggleButtonMap()
 	{
-		choiceItemToToggleButtonMap = new HashMap<ChoiceItem, JToggleButton>();
+		choiceItemToToggleButtonMap.clear();
 	}
 	
 	protected void rebuildToggleButtonsBoxes()
