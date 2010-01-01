@@ -49,7 +49,6 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		selectionHandler = selectionHandlerToUse;
 		question = questionToUse;
 		
-		createEditorPanel();
 		PanelTitleLabel staticLabel = new PanelTitleLabel(translatedPopupButtonText);
 		currentSelectionText = new PanelTextField(10);
 		currentSelectionText.setEditable(false);
@@ -75,17 +74,14 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	
 	public void dispose()
 	{
-		editorPanel.removeListSelectionListener(closeDialogAfterSelectionHandler);
-		editorPanel.dispose();
-		editorPanel = null;
+		if (editorPanel != null)
+		{
+			editorPanel.removeListSelectionListener(closeDialogAfterSelectionHandler);
+			editorPanel.dispose();
+			editorPanel = null;
+		}
 	}
 
-	private void createEditorPanel()
-	{
-		editorPanel = new ControlPanelRadioButtonEditorComponent(getQuestion(), selectionHandler);
-		editorPanel.addListSelectionListener(closeDialogAfterSelectionHandler);
-	}
-	
 	private void addPopupEditorHandler(Component mouseListener)
 	{
 		mouseListener.addMouseListener(new PopUpEditorHandler());
@@ -93,7 +89,6 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	
 	public void setText(String text)
 	{
-		editorPanel.setText(text);
 		ChoiceItem choice = question.findChoiceByCode(text);
 		currentSelectionText.setText(choice.getLabel());
 		currentSelectionText.setBackground(choice.getColor());
@@ -101,16 +96,12 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	
 	public String getText()
 	{
-		return editorPanel.getText();
+		String currentLabel = currentSelectionText.getText();
+		return getQuestion().findChoiceByLabel(currentLabel).getCode();
 	}
 
 	private class PopUpEditorHandler extends MouseAdapter implements ActionListener 
 	{
-		public PopUpEditorHandler()
-		{
-			selectRating();
-		}
-
 		@Override
 		public void mouseClicked(MouseEvent e)
 		{
@@ -124,7 +115,9 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 
 		private void invokePopupEditor()
 		{
-			createEditorPanel();
+			editorPanel = new ControlPanelRadioButtonEditorComponent(getQuestion(), selectionHandler);
+			editorPanel.addListSelectionListener(closeDialogAfterSelectionHandler);
+			selectRating();
 			editorDialog = new UndecoratedModelessDialogWithClose(EAM.getMainWindow(), EAM.text("Select"));
 			editorDialog.enableCloseWhenFocusLost();
 			editorDialog.setMainPanel(editorPanel);
@@ -137,17 +130,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		
 		private void selectRating()
 		{
-			try
-			{
-				CodeList codeList = new CodeList();
-				codeList.add(getText());
-				String codeListAsString = codeList.toString();
-				editorPanel.setText(codeListAsString);
-			}
-			catch(Exception e)
-			{
-				EAM.logException(e);
-			}
+			editorPanel.setText(getText());
 		}
 	}
 	
