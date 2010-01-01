@@ -59,24 +59,29 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 	public SimpleThreatRatingDropdownsPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, ORef.INVALID);
+
 		setLayout(new OneRowGridLayout());
-		
-		PanelTitleLabel rollupLabel = new PanelTitleLabel(EAM.text("<html><b>Summary<br>Target-Threat<br>Rating"));
-		rollupField = new ThreatStressRatingValueReadonlyComponent(getProject());
-		add(rollupField);
-		
-		scopeEditorComponent = new QuestionPopupEditorComponent(new ListSelectionHandler(getScopeId()), getScopeRatingQuestion(), EAM.text("Scope"));
-		addEditComponent(scopeEditorComponent);
-		
-		severityEditorComponent = new QuestionPopupEditorComponent(new ListSelectionHandler(getSeverityId()), getSeverityRatingQuestion(), EAM.text("Severity"));
-		addEditComponent(severityEditorComponent);
-		
-		irreversibilityEditorComponent = new QuestionPopupEditorComponent(new ListSelectionHandler(getIrreversibilityId()), getIrreversibilityRatingQuestion(), EAM.text("Irreversibility"));
-		addEditComponent(irreversibilityEditorComponent);
-		
-		add(createGridCell(rollupLabel, rollupField.getComponent()));
-		
+		createComponents();
+		addComponents();
 		updateFieldsFromProject();
+	}
+
+	private void addComponents()
+	{
+		add(rollupField);
+		addEditComponent(scopeEditorComponent);
+		addEditComponent(severityEditorComponent);
+		addEditComponent(irreversibilityEditorComponent);
+		PanelTitleLabel rollupLabel = new PanelTitleLabel(EAM.text("<html><b>Summary<br>Target-Threat<br>Rating"));
+		add(createGridCell(rollupLabel, rollupField.getComponent()));
+	}
+
+	private void createComponents() throws Exception
+	{
+		rollupField = new ThreatStressRatingValueReadonlyComponent(getProject());
+		scopeEditorComponent = new QuestionPopupEditorComponent(new ListSelectionHandler(getScopeId()), getScopeRatingQuestion(), EAM.text("Scope"));
+		severityEditorComponent = new QuestionPopupEditorComponent(new ListSelectionHandler(getSeverityId()), getSeverityRatingQuestion(), EAM.text("Severity"));
+		irreversibilityEditorComponent = new QuestionPopupEditorComponent(new ListSelectionHandler(getIrreversibilityId()), getIrreversibilityRatingQuestion(), EAM.text("Irreversibility"));
 	}
 
 	private void addEditComponent(JComponent component)
