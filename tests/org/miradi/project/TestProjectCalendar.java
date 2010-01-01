@@ -49,14 +49,6 @@ public class TestProjectCalendar extends TestCaseWithProject
 		assertEquals(31, endDate.getGregorianDay());
 	}
 	
-	public void testGettingPlanningStartEndDateWithNoSetDates() throws Exception
-	{
-		getProject().setFiscalYearStartMonth(7);
-		getProject().setProjectStartDate(null);
-		getProject().setProjectEndDate(null);
-		verifyGettingStartEndDates();
-	}
-	
 	public void testGettingPlanningStartEndDateWithSetDates() throws Exception
 	{
 		getProject().setFiscalYearStartMonth(7);
