@@ -54,7 +54,16 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 		question = questionToUse;
 		rebuildToggleButtonsBoxes();
 	}
-
+	
+	@Override
+	public void dispose()
+	{
+		removeAll();
+		choiceItemToToggleButtonMap = null;
+		
+		super.dispose();
+	}
+	
 	protected void rebuildToggleButtonsBoxes()
 	{
 		removeAll();

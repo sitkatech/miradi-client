@@ -65,6 +65,25 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		addComponents();
 		updateFieldsFromProject();
 	}
+	
+	@Override
+	public void dispose()
+	{
+		disposeComponent(scopeEditorComponent);
+		disposeComponent(severityEditorComponent);
+		disposeComponent(irreversibilityEditorComponent);
+		
+		super.dispose();
+	}
+	
+	private void disposeComponent(QuestionPopupEditorComponent componentToDispose)
+	{
+		if (componentToDispose != null)
+		{
+			componentToDispose.dispose();
+			componentToDispose = null;
+		}
+	}
 
 	private void addComponents()
 	{
