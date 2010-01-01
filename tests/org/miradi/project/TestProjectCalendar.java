@@ -54,6 +54,19 @@ public class TestProjectCalendar extends TestCaseWithProject
 		getProject().setFiscalYearStartMonth(7);
 		getProject().setProjectStartDate(null);
 		getProject().setProjectEndDate(null);
+		verifyGettingStartEndDates();
+	}
+	
+	public void testGettingPlanningStartEndDateWithSetDates() throws Exception
+	{
+		getProject().setFiscalYearStartMonth(7);
+		getProject().setProjectStartDate(MultiCalendar.createFromGregorianYearMonthDay(2009, 7, 1));
+		getProject().setProjectEndDate(MultiCalendar.createFromGregorianYearMonthDay(2010, 6, 30));
+		verifyGettingStartEndDates();
+	}
+
+	private void verifyGettingStartEndDates()
+	{
 		MultiCalendar projectStartDate = MultiCalendar.createFromGregorianYearMonthDay(2009, 7, 1);
 		MultiCalendar projectEndDate = MultiCalendar.createFromGregorianYearMonthDay(2010, 6, 30);
 		assertEquals("wrong project start date?", projectStartDate, getProjectCalendar().getPlanningStartMultiCalendar());
