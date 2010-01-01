@@ -45,11 +45,6 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 		year2009 = getProject().createDateUnit(2009);
 	}
 	
-	public void testWorkUnitsRollup() throws Exception
-	{
-		verifyWorkUnitsRollup();
-	}
-	
 	public void testWorkUnitsRollupWithProjectStartEndDateSet() throws Exception
 	{
 		getProject().setProjectStartDate(MultiCalendar.createFromGregorianYearMonthDay(2009, 1, 1));
