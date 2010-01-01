@@ -59,9 +59,14 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 	public void dispose()
 	{
 		removeAll();
-		choiceItemToToggleButtonMap = null;
+		clearChoiceItemToToggleButtonMap();
 		
 		super.dispose();
+	}
+	
+	private void clearChoiceItemToToggleButtonMap()
+	{
+		choiceItemToToggleButtonMap = new HashMap<ChoiceItem, JToggleButton>();
 	}
 	
 	protected void rebuildToggleButtonsBoxes()
@@ -69,7 +74,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 		removeAll();
 		addAdditionalComponent();
 		ChoiceItem[] choices = getQuestion().getChoices();
-		choiceItemToToggleButtonMap = new HashMap<ChoiceItem, JToggleButton>();
+		clearChoiceItemToToggleButtonMap();
 		MiradiPanel toggleButtonsPanel = new MiradiPanel(new GridLayoutPlus(0, 3)); 
 		toggleButtonsPanel.setBackground(getTogglePanelBackgroundColor());
 		for (int index = 0; index < choices.length; ++index)
