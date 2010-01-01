@@ -44,11 +44,12 @@ import org.miradi.questions.ChoiceQuestion;
 
 public class QuestionPopupEditorComponent extends OneRowPanel
 {
-	public QuestionPopupEditorComponent(ListSelectionListener selectionHandler, ChoiceQuestion questionToUse, String translatedPopupButtonText) throws Exception
+	public QuestionPopupEditorComponent(ListSelectionListener selectionHandlerToUse, ChoiceQuestion questionToUse, String translatedPopupButtonText) throws Exception
 	{
+		selectionHandler = selectionHandlerToUse;
 		question = questionToUse;
 		
-		editorPanel = new ControlPanelRadioButtonEditorComponent(getQuestion(), selectionHandler);
+		createEditorPanel();
 		PanelTitleLabel staticLabel = new PanelTitleLabel(translatedPopupButtonText);
 		currentSelectionText = new PanelTextField(10);
 		currentSelectionText.setEditable(false);
@@ -69,7 +70,20 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		addPopupEditorHandler(currentSelectionText);
 		addPopupEditorHandler(panel);
 		popupInvokeButton.addActionListener(new PopUpEditorHandler());
-		editorPanel.addListSelectionListener(new CloseEditorAfterSelectionHandler());
+		closeDialogAfterSelectionHandler = new CloseEditorAfterSelectionHandler();
+	}
+	
+	public void dispose()
+	{
+		editorPanel.removeListSelectionListener(closeDialogAfterSelectionHandler);
+		editorPanel.dispose();
+		editorPanel = null;
+	}
+
+	private void createEditorPanel()
+	{
+		editorPanel = new ControlPanelRadioButtonEditorComponent(getQuestion(), selectionHandler);
+		editorPanel.addListSelectionListener(closeDialogAfterSelectionHandler);
 	}
 	
 	private void addPopupEditorHandler(Component mouseListener)
@@ -110,6 +124,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 
 		private void invokePopupEditor()
 		{
+			createEditorPanel();
 			editorDialog = new UndecoratedModelessDialogWithClose(EAM.getMainWindow(), EAM.text("Select"));
 			editorDialog.enableCloseWhenFocusLost();
 			editorDialog.setMainPanel(editorPanel);
@@ -155,4 +170,6 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	private UndecoratedModelessDialogWithClose editorDialog;
 	private ChoiceQuestion question;
 	private ControlPanelRadioButtonEditorComponent editorPanel;
+	private ListSelectionListener selectionHandler;
+	private CloseEditorAfterSelectionHandler closeDialogAfterSelectionHandler; 
 }
