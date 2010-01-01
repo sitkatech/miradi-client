@@ -28,7 +28,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JToggleButton;
 import javax.swing.event.ListSelectionListener;
 
-import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
@@ -49,7 +48,6 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 		super.addAdditionalComponent();
 		
 		ControlPanelFlexibleWidthHtmlViewer htmlArea = new ControlPanelFlexibleWidthHtmlViewer(EAM.getMainWindow(), getQuestion().getQuestionDescription());
-		htmlArea.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		add(htmlArea, BorderLayout.BEFORE_FIRST_LINE);
 	}
 	
