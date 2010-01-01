@@ -52,6 +52,8 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 	{
 		setLayout(new BasicGridLayout(0,columnCount));
 		question = questionToUse;
+		choiceItemToToggleButtonMap = new HashMap<ChoiceItem, JToggleButton>();
+		
 		rebuildToggleButtonsBoxes();
 	}
 	
