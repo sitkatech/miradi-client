@@ -54,6 +54,7 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.TncProjectSharingQuestion;
 import org.miradi.questions.TrendQuestion;
+import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.conpro.ConProMiradiXml;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
@@ -432,6 +433,34 @@ public class TestConproXmlImporter extends TestCaseWithProject
 			ORef measurementRef = measurementRefs.get(0);
 			Measurement importedMeasurement = Measurement.find(projectToFill, measurementRef);
 			assertEquals("wrong trend?", TrendQuestion.STRONG_DECREASE_CODE, importedMeasurement.getData(Measurement.TAG_TREND));
+		}
+		finally
+		{
+			beforeXmlOutFile.delete();
+			projectToFill.close();
+		}
+	}
+	
+	public void testImportingKeaWithoutIndicators() throws Exception
+	{
+		Target target = getProject().createTarget();
+		getProject().fillObjectUsingCommand(target, Target.TAG_VIABILITY_MODE, ViabilityModeQuestion.TNC_STYLE_CODE);
+		KeyEcologicalAttribute kea = getProject().createKea();
+		getProject().fillObjectUsingCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, new IdList(kea));
+		
+		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
+		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFill");
+		try
+		{
+			exportProject(beforeXmlOutFile, getProject());
+			importProject(beforeXmlOutFile, projectToFill);
+			
+			ORefList targetRefs = projectToFill.getTargetPool().getORefList();
+			assertEquals("Incorrect target count?", 1, targetRefs.size());
+			
+			Target importedTarget = Target.find(projectToFill, targetRefs.get(0));
+			assertTrue("Incorrect viability mode?", importedTarget.isViabilityModeTNC());
+			assertEquals("Incorrect kea children count?", 1, importedTarget.getKeyEcologicalAttributeRefs().size());
 		}
 		finally
 		{

@@ -490,14 +490,6 @@ public class ConproXmlImporter implements ConProMiradiXml
 		for (int nodeIndex = 0; nodeIndex < keaNodeList.getLength(); ++nodeIndex) 
 		{
 			Node viabilityAssessmentNode = keaNodeList.item(nodeIndex);
-			setData(targetRef, Target.TAG_VIABILITY_MODE, ViabilityModeQuestion.TNC_STYLE_CODE);
-			
-			String existingKeaIdsAsString = getProject().getObjectData(targetRef, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
-			IdList keaIds = new IdList(KeyEcologicalAttribute.getObjectType(), existingKeaIdsAsString);
-			if(!keaIds.contains(keaRef))
-				keaIds.add(keaRef.getObjectId());
-			setData(targetRef, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
-			
 			ORef indicatorRef = getNodeAsRef(viabilityAssessmentNode, INDICATOR_ID, Indicator.getObjectType());
 			ORefSet allKeaIndicatorRefsTobeImported = new ORefSet(indicatorRef);
 			KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(getProject(), keaRef);
@@ -541,6 +533,13 @@ public class ConproXmlImporter implements ConProMiradiXml
 			importField(keaNode, NAME, keaRef, KeyEcologicalAttribute.TAG_LABEL);
 			importCodeField(keaNode, CATEGORY, keaRef, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, getCodeMapHelper().getConProToMiradiKeaTypeMap());
 			
+			setData(targetRef, Target.TAG_VIABILITY_MODE, ViabilityModeQuestion.TNC_STYLE_CODE);
+			String existingKeaIdsAsString = getProject().getObjectData(targetRef, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+			IdList keaIds = new IdList(KeyEcologicalAttribute.getObjectType(), existingKeaIdsAsString);
+			if(!keaIds.contains(keaRef))
+				keaIds.add(keaRef.getObjectId());
+			
+			setData(targetRef, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
 			importViability(keaNode, targetRef, keaRef);
 		}
 	}
