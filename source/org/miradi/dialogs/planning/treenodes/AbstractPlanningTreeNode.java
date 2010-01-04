@@ -61,6 +61,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		children = new Vector();
 	}
 	
+	@Override
 	public ORef getObjectReference()
 	{
 		if(getObject() == null)
@@ -78,11 +79,13 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return "";
 	}
 	
+	@Override
 	public TreeTableNode getChild(int index)
 	{
 		return children.get(index);
 	}
 
+	@Override
 	public int getChildCount()
 	{
 		return children.size();
@@ -92,6 +95,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	{
 	}
 
+	@Override
 	public Object getValueAt(int column)
 	{
 		return null;
@@ -109,6 +113,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return false;
 	}
 
+	@Override
 	public void rebuild() throws Exception
 	{
 		throw new Exception("Can't call rebuild on " + getClass().getCanonicalName());
