@@ -23,7 +23,7 @@ import org.miradi.dialogs.planning.treenodes.PlanningTreeObjectiveNode;
 import org.miradi.utils.CodeList;
 
 
-public class TestPlanningTreeObjectiveNode extends TestPlanningTree
+public class TestPlanningTreeObjectiveNode extends TestPlanningTreeNode
 {
 	public TestPlanningTreeObjectiveNode(String name)
 	{

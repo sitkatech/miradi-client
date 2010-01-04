@@ -22,7 +22,7 @@ package org.miradi.views.planning;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeDirectThreatNode;
 import org.miradi.utils.CodeList;
 
-public class TestPlanningTreeDirectThreatNode extends TestPlanningTree
+public class TestPlanningTreeDirectThreatNode extends TestPlanningTreeNode
 {
 	public TestPlanningTreeDirectThreatNode(String name)
 	{

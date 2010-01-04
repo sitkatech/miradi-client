@@ -23,7 +23,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Task;
 
-public class TestPlanningTreeStrategyNode extends TestPlanningTree
+public class TestPlanningTreeStrategyNode extends TestPlanningTreeNode
 {
 	public TestPlanningTreeStrategyNode(String name)
 	{

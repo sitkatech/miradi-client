@@ -27,7 +27,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.Task;
 import org.miradi.utils.CodeList;
 
-public class TestPlanningTreeActivityNode extends TestPlanningTree
+public class TestPlanningTreeActivityNode extends TestPlanningTreeNode
 {
 	public TestPlanningTreeActivityNode(String name)
 	{
