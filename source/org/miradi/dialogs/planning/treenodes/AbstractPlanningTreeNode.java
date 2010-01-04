@@ -246,10 +246,10 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	{
 		for(AbstractPlanningTreeNode parentNode : destination)
 		{
-			if (parentNode.getObjectReference().equals(newChild.getObjectReference()))
+			Vector children = parentNode.getChildren();
+			AbstractPlanningTreeNode foundMatchingChild = findNodeWithRef(children, newChild.getObjectReference());
+			if (foundMatchingChild != null)
 				return true;
-			
-			return isChildOfAnyNodeInList(parentNode.getChildren(), newChild);
 		}
 		
 		return false;
