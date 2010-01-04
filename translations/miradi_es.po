@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-04 06:35-0600\n"
+"POT-Creation-Date: 2010-01-04 06:37-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -537,7 +537,7 @@ msgstr "Características de biodiversidad"
 #: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:66
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:101
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:102
 msgid "Scope"
 msgstr "Alcance"
 
@@ -1735,7 +1735,7 @@ msgstr ""
 "alcance, gravedad e irreversibilidad. "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:223
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:103
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
 msgid "Irreversibility"
 msgstr "Irreversibilidad "
 
@@ -1748,7 +1748,7 @@ msgstr ""
 "revertir y se puede restaurar el objeto afectado por la amenaza. "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:102
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:103
 msgid "Severity"
 msgstr "Gravedad "
 
@@ -6394,7 +6394,7 @@ msgstr ""
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/QuestionPopupEditorComponent.java:121
+#: Miradi/source/org/miradi/utils/QuestionPopupEditorComponent.java:128
 msgid "Select"
 msgstr ""
 
@@ -6596,7 +6596,7 @@ msgstr "Nombre de la presión"
 msgid "Target-Threat Rating"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:94
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:95
 msgid "<html><b>Summary<br>Target-Threat<br>Rating"
 msgstr ""
 

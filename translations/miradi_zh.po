@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-04 06:35-0600\n"
+"POT-Creation-Date: 2010-01-04 06:37-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -519,7 +519,7 @@ msgstr "生物多样性特征 \t\t"
 #: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:66
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:101
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:102
 msgid "Scope"
 msgstr "范围 \t\t"
 
@@ -1653,7 +1653,7 @@ msgstr ""
 "因子评级是按规则进行的，也就是将范围、严重性和不可逆性标准相结合来计算的。"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:223
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:103
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
 msgid "Irreversibility"
 msgstr "不可逆性"
 
@@ -1666,7 +1666,7 @@ msgstr ""
 "度。"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:102
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:103
 msgid "Severity"
 msgstr "严重性"
 
@@ -6208,7 +6208,7 @@ msgstr ""
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/QuestionPopupEditorComponent.java:121
+#: Miradi/source/org/miradi/utils/QuestionPopupEditorComponent.java:128
 msgid "Select"
 msgstr ""
 
@@ -6401,7 +6401,7 @@ msgstr "压力名称 \t\t"
 msgid "Target-Threat Rating"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:94
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:95
 msgid "<html><b>Summary<br>Target-Threat<br>Rating"
 msgstr ""
 
