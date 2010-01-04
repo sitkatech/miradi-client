@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,6 +37,7 @@ import org.miradi.dialogs.base.UndecoratedModelessDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.layout.OneColumnPanel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -44,10 +46,11 @@ import org.miradi.questions.ChoiceQuestion;
 
 public class QuestionPopupEditorComponent extends OneRowPanel
 {
-	public QuestionPopupEditorComponent(ListSelectionListener selectionHandlerToUse, ChoiceQuestion questionToUse, String translatedPopupButtonText) throws Exception
+	public QuestionPopupEditorComponent(ListSelectionListener selectionHandlerToUse, ChoiceQuestion questionToUse, String translatedPopupButtonTextToUse) throws Exception
 	{
 		selectionHandler = selectionHandlerToUse;
 		question = questionToUse;
+		translatedPopupButtonText = translatedPopupButtonTextToUse;
 		
 		PanelTitleLabel staticLabel = new PanelTitleLabel(translatedPopupButtonText);
 		currentSelectionText = new PanelTextField(10);
@@ -99,6 +102,10 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		String currentLabel = currentSelectionText.getText();
 		return getQuestion().findChoiceByLabel(currentLabel).getCode();
 	}
+	
+	protected void addAdditionalDescriptionPanel(OneColumnPanel panel)
+	{
+	}
 
 	private class PopUpEditorHandler extends MouseAdapter implements ActionListener 
 	{
@@ -120,6 +127,9 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 			selectRating();
 			editorDialog = new UndecoratedModelessDialogWithClose(EAM.getMainWindow(), EAM.text("Select"));
 			editorDialog.enableCloseWhenFocusLost();
+			OneColumnPanel panel = new OneColumnPanel();
+			addAdditionalDescriptionPanel(panel);
+			editorDialog.add(panel, BorderLayout.BEFORE_FIRST_LINE);
 			editorDialog.setMainPanel(editorPanel);
 			editorDialog.pack();
 			//NOTE: packing twice due to preferences height not being set correctly.
@@ -147,12 +157,18 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	{
 		return question;
 	}
+	
+	protected String getTranslatedPopupButtonText()
+	{
+		return translatedPopupButtonText;
+	}
 
 	private PanelButton popupInvokeButton;
 	private PanelTextField currentSelectionText;
 	private UndecoratedModelessDialogWithClose editorDialog;
 	private ChoiceQuestion question;
+	private String translatedPopupButtonText;
 	private ControlPanelRadioButtonEditorComponent editorPanel;
 	private ListSelectionListener selectionHandler;
-	private CloseEditorAfterSelectionHandler closeDialogAfterSelectionHandler; 
+	private CloseEditorAfterSelectionHandler closeDialogAfterSelectionHandler;
 }
