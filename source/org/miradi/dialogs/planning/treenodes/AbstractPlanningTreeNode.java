@@ -227,7 +227,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		AbstractPlanningTreeNode existingNode = findNodeWithRef(destination, newChild.getObjectReference());
 		if(existingNode == null)
 		{
-			if (isChildOfAnyOfNodes(destination, newChild))
+			if (isChildOfAnyNodeInList(destination, newChild))
 				return;
 
 			destination.add(newChild);
@@ -242,14 +242,14 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			Collections.sort(destination, existingNode.createNodeSorter());
 	}
 	
-	private static boolean isChildOfAnyOfNodes(Vector<AbstractPlanningTreeNode> destination, AbstractPlanningTreeNode newChild)
+	private static boolean isChildOfAnyNodeInList(Vector<AbstractPlanningTreeNode> destination, AbstractPlanningTreeNode newChild)
 	{
 		for(AbstractPlanningTreeNode parentNode : destination)
 		{
 			if (parentNode.getObjectReference().equals(newChild.getObjectReference()))
 				return true;
 			
-			return isChildOfAnyOfNodes(parentNode.getChildren(), newChild);
+			return isChildOfAnyNodeInList(parentNode.getChildren(), newChild);
 		}
 		
 		return false;
