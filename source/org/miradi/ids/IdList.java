@@ -29,6 +29,7 @@ import org.json.JSONArray;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -37,6 +38,13 @@ public class IdList
 	public IdList(int type)
 	{
 		this(type, new Vector());
+	}
+	
+	public IdList(BaseObject baseObjectToAdd)
+	{
+		this(baseObjectToAdd.getType());
+		
+		add(baseObjectToAdd.getId());
 	}
 	
 	public IdList(IdList copyFrom)
