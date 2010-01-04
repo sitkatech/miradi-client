@@ -50,6 +50,7 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		ratings = new ThreatStressRating[0];
 	}
 	
+	@Override
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
 		ORefList refs = new ORefList(hierarchyToSelectedRef);
@@ -90,7 +91,8 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		ratings = threatStressRatings.toArray(new ThreatStressRating[0]);
 	}
 
-    public Class getColumnClass(int columnIndex) 
+    @Override
+	public Class getColumnClass(int columnIndex) 
     {
     	if (isIsActiveColumn(columnIndex))
     		return Boolean.class;
@@ -98,6 +100,7 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
     	return super.getColumnClass(columnIndex);
     }
 	
+	@Override
 	public boolean isCellEditable(int row, int column)
 	{
 		if (isContributionColumn(column))
@@ -147,6 +150,7 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		return getColumnTag(column).equals(ThreatStressRating.TAG_IS_ACTIVE);
 	}
 		
+	@Override
 	public String getColumnName(int column)
 	{
 		if (isThreatLabelColumn(column))
@@ -223,6 +227,7 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		return stress;
 	}
 		
+	@Override
 	public void setValueAt(Object value, int row, int column)
 	{
 		if (value == null)
