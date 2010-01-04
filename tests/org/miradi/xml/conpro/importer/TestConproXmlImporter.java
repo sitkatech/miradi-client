@@ -156,7 +156,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 			verifyConcatenatedProjectScopeAndDescription(projectToFill1);
 			stripDelimiterTagFromObjectiveNames(projectToFill1);
 	
-			temorarlyVerifyAndSetEndDateUntilButFix(projectToFill1);
+			workAroundCpmzMissingEndDateField(projectToFill1);
 			
 			exportProject(afterXmlOutFile, projectToFill1);
 			String secondExport = convertFileContentToString(afterXmlOutFile);
@@ -170,7 +170,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		}
 	}
 
-	private void temorarlyVerifyAndSetEndDateUntilButFix(ProjectForTesting projectToFill1) throws Exception
+	private void workAroundCpmzMissingEndDateField(ProjectForTesting projectToFill1) throws Exception
 	{
 		assertEquals("Project End Date exists, so might be time to delete this test?", "", projectToFill1.getMetadata().getExpectedEndDate());
 		String expectedEndDate = getProject().getMetadata().getExpectedEndDate();
