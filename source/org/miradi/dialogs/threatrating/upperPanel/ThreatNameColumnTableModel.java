@@ -49,7 +49,6 @@ public class ThreatNameColumnTableModel extends MainThreatTableModel
 		if (isThreatIconColumn(column))
 			return "";
 		
-		final String RIGHT_ARROW = "\u21D2";
 		final String DOWN_ARROW = "\u21D3";
 		return DOWN_ARROW + EAM.text("Threats") + DOWN_ARROW + " / "+ RIGHT_ARROW + EAM.text("Targets") + RIGHT_ARROW;
 	}
@@ -92,4 +91,5 @@ public class ThreatNameColumnTableModel extends MainThreatTableModel
 	public static final int THREAT_ICON_COLUMN_INDEX = 0;
 	public static final int THREAT_NAME_COLUMN_INDEX = 1;
 	public static final int COLUMN_COUNT = 2;
+	public static final String RIGHT_ARROW = "\u21D2";
 }
