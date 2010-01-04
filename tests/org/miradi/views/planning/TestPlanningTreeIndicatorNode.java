@@ -24,7 +24,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Task;
 
-public class TestPlanningTreeIndicatorNode extends TestPlanningTree
+public class TestPlanningTreeIndicatorNode extends TestPlanningTreeNode
 {
 	public TestPlanningTreeIndicatorNode(String name)
 	{

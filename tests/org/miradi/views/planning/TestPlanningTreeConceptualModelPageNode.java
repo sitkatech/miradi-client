@@ -22,7 +22,7 @@ package org.miradi.views.planning;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeConceptualModelPageNode;
 import org.miradi.utils.CodeList;
 
-public class TestPlanningTreeConceptualModelPageNode extends TestPlanningTree
+public class TestPlanningTreeConceptualModelPageNode extends TestPlanningTreeNode
 {
 	public TestPlanningTreeConceptualModelPageNode(String name)
 	{

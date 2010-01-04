@@ -39,9 +39,9 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningRowsQuestion;
 
-abstract public class TestPlanningTree extends EAMTestCase
+abstract public class TestPlanningTreeNode extends EAMTestCase
 {
-	public TestPlanningTree(String name)
+	public TestPlanningTreeNode(String name)
 	{
 		super(name);
 	}
