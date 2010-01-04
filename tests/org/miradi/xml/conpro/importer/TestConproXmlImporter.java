@@ -172,7 +172,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 
 	private void temorarlyVerifyAndSetEndDateUntilButFix(ProjectForTesting projectToFill1) throws Exception
 	{
-		assertEquals("project to fill should not have been filled with a project end date", "", projectToFill1.getMetadata().getExpectedEndDate());
+		assertEquals("Project End Date exists, so might be time to delete this test?", "", projectToFill1.getMetadata().getExpectedEndDate());
 		String expectedEndDate = getProject().getMetadata().getExpectedEndDate();
 		projectToFill1.fillObjectUsingCommand(projectToFill1.getMetadata(), ProjectMetadata.TAG_EXPECTED_END_DATE, expectedEndDate);
 	}
