@@ -100,6 +100,7 @@ import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
 import org.miradi.questions.TncProjectPlaceTypeQuestion;
+import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
@@ -783,6 +784,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(measurement, Measurement.TAG_STATUS, StatusQuestion.GOOD);
 		fillObjectUsingCommand(measurement, Measurement.TAG_DATE, "2007-03-19");
 		fillObjectUsingCommand(measurement, Measurement.TAG_STATUS_CONFIDENCE, StatusConfidenceQuestion.ROUGH_GUESS_CODE);
+		fillObjectUsingCommand(measurement, Measurement.TAG_TREND, TrendQuestion.STRONG_DECREASE_CODE);
 		fillObjectUsingCommand(measurement, Measurement.TAG_COMMENTS, "Some Measurement comment");
 	}
 	

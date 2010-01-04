@@ -101,7 +101,7 @@ public class ConProMiradiCodeMapHelper
 		trendMap.put(TrendQuestion.MILD_INCREASE_CODE, "Mild Increase");
 		trendMap.put(TrendQuestion.FLAT_CODE, "Flat");
 		trendMap.put(TrendQuestion.MILD_DECREASE_CODE, "Mild Decrease");
-		trendMap.put(TrendQuestion.STRONG_DECREASE_CODE, "Strong Increase");
+		trendMap.put(TrendQuestion.STRONG_DECREASE_CODE, "Strong Decrease");
 		
 		teamRolesMap = new HashMap<String, String>();
 		teamRolesMap.put(ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE, "Team Member");

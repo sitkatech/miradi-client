@@ -41,6 +41,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
@@ -52,6 +53,7 @@ import org.miradi.objects.Xenodata;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.TncProjectSharingQuestion;
+import org.miradi.questions.TrendQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.conpro.ConProMiradiXml;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
@@ -98,8 +100,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		importXmlStringIntoProject(xml, secondTry);
 	}
 
-	private String exportImportInto(ProjectForTesting firstTry)
-			throws IOException, Exception, UnsupportedEncodingException
+	private String exportImportInto(ProjectForTesting firstTry)	throws IOException, Exception, UnsupportedEncodingException
 	{
 		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
 		UnicodeWriter writer = new UnicodeWriter(bytes);
@@ -112,9 +113,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		return xml;
 	}
 
-	private void importXmlStringIntoProject(String xml,
-			ProjectForTesting firstTry) throws UnsupportedEncodingException,
-			Exception, IOException
+	private void importXmlStringIntoProject(String xml, ProjectForTesting firstTry) throws UnsupportedEncodingException, Exception, IOException
 	{
 		InputStreamWithSeek in = new StringInputStreamWithSeek(xml);
 		try
@@ -405,6 +404,34 @@ public class TestConproXmlImporter extends TestCaseWithProject
 				assertEquals("wrong sur name?", "[Unspecified]", resource.getSurName());
 				assertEquals("wrong email?", "[Unspecified]", resource.getEmail());
 			}
+		}
+		finally
+		{
+			beforeXmlOutFile.delete();
+			projectToFill.close();
+		}
+	}
+	
+	public void testMeasurementTrendCode() throws Exception
+	{
+		Measurement measurement = getProject().createMeasurement();
+		getProject().fillObjectUsingCommand(measurement, Measurement.TAG_TREND, TrendQuestion.STRONG_DECREASE_CODE);
+		
+		Indicator indicator = getProject().createIndicator();
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, new ORefList(measurement));
+		
+		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
+		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFill");
+		try
+		{
+			exportProject(beforeXmlOutFile, getProject());
+			importProject(beforeXmlOutFile, projectToFill);
+			
+			ORefList measurementRefs = projectToFill.getPool(Measurement.getObjectType()).getORefList();
+			assertEquals("incorrect measurement count?", 1, measurementRefs.size());
+			ORef measurementRef = measurementRefs.get(0);
+			Measurement importedMeasurement = Measurement.find(projectToFill, measurementRef);
+			assertEquals("wrong trend?", TrendQuestion.STRONG_DECREASE_CODE, importedMeasurement.getData(Measurement.TAG_TREND));
 		}
 		finally
 		{
