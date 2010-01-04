@@ -222,11 +222,14 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return new NodeSorter();
 	}
 
-	private static void mergeChildIntoList(Vector<AbstractPlanningTreeNode> destination, AbstractPlanningTreeNode newChild)
+	public static void mergeChildIntoList(Vector<AbstractPlanningTreeNode> destination, AbstractPlanningTreeNode newChild)
 	{
 		AbstractPlanningTreeNode existingNode = findNodeWithRef(destination, newChild.getObjectReference());
 		if(existingNode == null)
 		{
+			if (isChildOfAnyOfNodes(destination, newChild))
+				return;
+
 			destination.add(newChild);
 			return;
 		}
@@ -237,6 +240,19 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 
 		if(existingNode.shouldSortChildren())
 			Collections.sort(destination, existingNode.createNodeSorter());
+	}
+	
+	private static boolean isChildOfAnyOfNodes(Vector<AbstractPlanningTreeNode> destination, AbstractPlanningTreeNode newChild)
+	{
+		for(AbstractPlanningTreeNode parentNode : destination)
+		{
+			if (parentNode.getObjectReference().equals(newChild.getObjectReference()))
+				return true;
+			
+			return isChildOfAnyOfNodes(parentNode.getChildren(), newChild);
+		}
+		
+		return false;
 	}
 	
 	private static void addChildrenOfNodeToList(Vector<AbstractPlanningTreeNode> destination, AbstractPlanningTreeNode otherNode)

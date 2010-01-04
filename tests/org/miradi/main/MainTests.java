@@ -197,6 +197,7 @@ import org.miradi.utils.TestTranslations;
 import org.miradi.views.budget.ImportAccountingCodesDoerTest;
 import org.miradi.views.diagram.TestLinkBendPointsMoveHandler;
 import org.miradi.views.diagram.doers.TestDeleteAnnotationDoer;
+import org.miradi.views.planning.TestAbstractPlanningTreeNode;
 import org.miradi.views.planning.TestFullTimeEmployeeCalculationsInsideModel;
 import org.miradi.views.planning.TestPlanningTreeActivityNode;
 import org.miradi.views.planning.TestPlanningTreeConceptualModelPageNode;
@@ -443,6 +444,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestPlanningTreeActivityNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeIndicatorNode.class));
 		suite.addTest(new TestSuite(TestFullTimeEmployeeCalculationsInsideModel.class));
+		suite.addTest(new TestSuite(TestAbstractPlanningTreeNode.class));
 		
 		// view.strategicplan package
 		suite.addTest(new TestSuite(TestDeleteActivity.class));
