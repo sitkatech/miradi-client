@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-04 11:17-0600\n"
+"POT-Creation-Date: 2010-01-04 13:41-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -6370,27 +6370,27 @@ msgstr ""
 msgid "File to import does not validate."
 msgstr "El archivo para importar no se valida."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:617
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:616
 msgid "Not all classification Codes could imported."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1240
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1239
 msgid "Placeholder - From ConPro"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1244
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1243
 msgid "Objective Holder"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1250
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1249
 msgid "Indicator Holder"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1350
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1349
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1351
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1350
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
