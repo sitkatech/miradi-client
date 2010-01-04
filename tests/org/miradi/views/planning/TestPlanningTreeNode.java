@@ -163,6 +163,11 @@ abstract public class TestPlanningTreeNode extends EAMTestCase
 		return ResourceAssignment.find(project, subtaskResourceAssignmentRef);
 	}
 	
+	public ProjectForTesting getProject()
+	{
+		return project;
+	}
+	
 	ProjectForTesting project;
 	ProjectMetadata projectMetadata;
 	DiagramFactor diagramStrategy1;		
