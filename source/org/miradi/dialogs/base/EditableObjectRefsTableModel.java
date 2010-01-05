@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
@@ -31,6 +32,13 @@ public abstract class EditableObjectRefsTableModel extends EditableObjectTableMo
 		super(projectToUse);
 		
 		clearProgressReportRefs();
+	}
+	
+	@Override
+	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	{
+		clearProgressReportRefs();
+		refs = extractOutEditableRefs(hierarchyToSelectedRef);
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
@@ -65,6 +73,8 @@ public abstract class EditableObjectRefsTableModel extends EditableObjectTableMo
 	}
 	
 	abstract protected String[] getColumnTags();
+	
+	abstract protected ORefList extractOutEditableRefs(ORef[] hierarchyToSelectedRef);
 	
 	protected ORefList refs;
 }
