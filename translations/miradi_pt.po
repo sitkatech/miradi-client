@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 07:43-0600\n"
+"POT-Creation-Date: 2010-01-05 07:46-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6855,14 +6855,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/progressPercent/ProgressPercentSubPanel.java:65
 msgid "Title|Progress Percent"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/progressPercent/ProgressPercentPropertiesPanel.java:43
-msgid "Title|Progress Percent Properties"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/progressPercent/ProgressPercentManagementPanel.java:48
-msgid "Tab|Progress Percents"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:56
