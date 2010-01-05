@@ -113,7 +113,6 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	
 	abstract protected String getTag();
 	
-	
 	abstract protected JPanel createButtonBar();
 	
 	abstract protected void createTable() throws Exception;
