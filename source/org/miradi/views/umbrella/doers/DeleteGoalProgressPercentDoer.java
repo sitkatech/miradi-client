@@ -19,13 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.objects.Goal;
 
-public class DeleteGoalProgressPercentDoer extends AbstractDeleteProgressPercentDoer
+public class DeleteGoalProgressPercentDoer extends DeleteProgressPercentDoer
 {
-	@Override
-	protected int getParentType()
-	{
-		return Goal.getObjectType();
-	}
 }

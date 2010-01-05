@@ -26,7 +26,7 @@ import org.miradi.objects.Desire;
 import org.miradi.objects.ProgressPercent;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 
-abstract public class AbstractDeleteProgressPercentDoer extends DeleteAnnotationDoer
+public class DeleteProgressPercentDoer extends DeleteAnnotationDoer
 {
 	//FIXME urgent pull up and reuse
 	@Override
@@ -53,6 +53,4 @@ abstract public class AbstractDeleteProgressPercentDoer extends DeleteAnnotation
 	{
 		return new String[] { EAM.text("Are you sure you want to delete this Progress Percent?"),};
 	}
-	
-	abstract protected int getParentType();
 }

@@ -19,13 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.objects.Objective;
-import org.miradi.views.umbrella.doers.AbstractDeleteProgressPercentDoer;
+import org.miradi.views.umbrella.doers.DeleteProgressPercentDoer;
 
-public class DeleteObjectiveProgressPercentDoer extends AbstractDeleteProgressPercentDoer
+public class DeleteObjectiveProgressPercentDoer extends DeleteProgressPercentDoer
 {
-	protected int getParentType()
-	{
-		return Objective.getObjectType();
-	}
 }
