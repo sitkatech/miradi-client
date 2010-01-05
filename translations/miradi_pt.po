@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 07:52-0600\n"
+"POT-Creation-Date: 2010-01-05 08:04-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -574,7 +574,7 @@ msgstr ""
 msgid "Project Scope"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/doers/DeleteProgressReportDoer.java:55
+#: Miradi/source/org/miradi/views/diagram/doers/DeleteProgressReportDoer.java:50
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteStrategyProgressReportDoer.java:47
 msgid "Are you sure you want to delete this Progress Report?"
 msgstr ""
@@ -834,7 +834,7 @@ msgstr ""
 msgid "Share Method"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeleteProgressPercentDoer.java:54
+#: Miradi/source/org/miradi/views/umbrella/doers/DeleteProgressPercentDoer.java:48
 msgid "Are you sure you want to delete this Progress Percent?"
 msgstr ""
 
