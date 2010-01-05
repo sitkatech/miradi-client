@@ -22,6 +22,8 @@ package org.miradi.dialogs.progressPercent;
 
 import javax.swing.JPanel;
 
+import org.miradi.actions.ActionCreateGoalProgressPercent;
+import org.miradi.actions.ActionDeleteGoalProgressPercent;
 import org.miradi.dialogs.base.EditableObjectTableSubPanel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
@@ -51,7 +53,8 @@ public class ProgressPercentSubPanel extends EditableObjectTableSubPanel
 		OneRowPanel box = new OneRowPanel();
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		box.setGaps(3);
-		//FIXME URGENT - add create and delete actions here
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionCreateGoalProgressPercent.class), objectPicker));
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionDeleteGoalProgressPercent.class), objectTable));
 		
 		return box;
 	}

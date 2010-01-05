@@ -23,6 +23,7 @@ package org.miradi.views.diagram.doers;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.project.Project;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 
 abstract public class CreateAnnotationWithFactorParent extends CreateAnnotationDoer
@@ -34,10 +35,25 @@ abstract public class CreateAnnotationWithFactorParent extends CreateAnnotationD
 			return null;
 		
 		ORefList selectionRefs = getPicker().getSelectedHierarchies()[0];
-		ORef parentRef = selectionRefs.getRefForType(getParentType());
-		
-		return BaseObject.find(getProject(), parentRef);
+		return getParent(getProject(), selectionRefs, getAnnotationType());
 	}
 
-	abstract protected int getParentType();
+	public static BaseObject getParent(Project projectToUse, ORefList selectionRefs, int objectTypeToRemove)
+	{
+		removeFirstRefInPlace(selectionRefs, objectTypeToRemove);
+		if (selectionRefs.isEmpty())
+			return null;
+		
+		ORef ref = selectionRefs.getFirstElement();
+		if (ref.isInvalid())
+			return null;
+		
+		return BaseObject.find(projectToUse, ref);
+	}
+
+	private static void removeFirstRefInPlace(ORefList selectionRefs, int objectTypeToRemove)
+	{
+		ORef firstInstanceOfTypeToRemove = selectionRefs.getRefForType(objectTypeToRemove);
+		selectionRefs.remove(firstInstanceOfTypeToRemove);
+	}
 }
