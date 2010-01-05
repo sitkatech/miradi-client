@@ -49,7 +49,7 @@ public class ProgressReportTableModel extends EditableObjectRefsTableModel
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
 		clearProgressReportRefs();
-		progressRefs = getRefs(hierarchyToSelectedRef);
+		refs = getRefs(hierarchyToSelectedRef);
 	}
 
 	private ORefList getRefs(ORef[] hierarchyToSelectedRef)
