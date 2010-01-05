@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 07:49-0600\n"
+"POT-Creation-Date: 2010-01-05 07:52-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4415,12 +4415,10 @@ msgid "TT|Delete Organization"
 msgstr "删除组织机构 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionCreateProgressPercent.java:35
-#: Miradi/source/org/miradi/actions/ActionCreateObjectiveProgressPercent.java:35
 msgid "Action|Manage|Create Progress Percent"
 msgstr "创建进展百分比 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionCreateProgressPercent.java:40
-#: Miradi/source/org/miradi/actions/ActionCreateObjectiveProgressPercent.java:40
 msgid "TT|Create a new Progress Percent"
 msgstr "创建新的进展百分比 \t\t"
 
@@ -4575,15 +4573,6 @@ msgstr "创建成员 \t\t"
 msgid "TT|Add member to the team"
 msgstr "添加成员到团队 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionEditObjectiveProgressPercent.java:34
-#: Miradi/source/org/miradi/actions/ActionEditGoalProgressPercent.java:34
-msgid "Action|Edit Progress Percents..."
-msgstr "编辑进程百分比… \t\t"
-
-#: Miradi/source/org/miradi/actions/ActionEditObjectiveProgressPercent.java:39
-msgid "TT|Edit the list of progress percents for this objective."
-msgstr "为本分目标编辑进展报告列表。 \t\t"
-
 #: Miradi/source/org/miradi/actions/ActionCollapseAllRows.java:34
 msgid "Action|Collapse All Rows"
 msgstr ""
@@ -4656,16 +4645,6 @@ msgstr "创建定制 \t\t"
 msgid "TT|Create a new Custom Planning View"
 msgstr "创建一个新的定制计划视图 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteObjectiveProgressPercent.java:35
-#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:35
-msgid "Action|Manage|Delete Progress Percent"
-msgstr "删除进展百分比 \t\t"
-
-#: Miradi/source/org/miradi/actions/ActionDeleteObjectiveProgressPercent.java:40
-#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:40
-msgid "TT|Delete Progress Percent"
-msgstr "删除进展百分比 \t\t"
-
 #: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeMeasurement.java:35
 msgid "Action|Manage|Delete Measurement"
 msgstr "删除测量法 \t\t"
@@ -4693,10 +4672,6 @@ msgstr "插入对象 \t\t"
 #: Miradi/source/org/miradi/actions/ActionInsertTarget.java:42
 msgid "TT|Insert a Target"
 msgstr "插入一个对象 \t\t"
-
-#: Miradi/source/org/miradi/actions/ActionEditGoalProgressPercent.java:39
-msgid "TT|Edit the list of progress percents for this goal."
-msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCloneStress.java:35
 msgid "Action|Manage|Clone Stress..."
@@ -5616,6 +5591,14 @@ msgstr "打印 \t\t"
 #: Miradi/source/org/miradi/actions/ActionPrint.java:39
 msgid "TT|Print the current view to a printer"
 msgstr "将本视图打印到一台打印机 \t\t"
+
+#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:35
+msgid "Action|Manage|Delete Progress Percent"
+msgstr "删除进展百分比 \t\t"
+
+#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:40
+msgid "TT|Delete Progress Percent"
+msgstr "删除进展百分比 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionCreateGoal.java:35
 msgid "Action|Manage|Create Goal"
@@ -27191,6 +27174,12 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Action|Edit Progress Percents..."
+#~ msgstr "编辑进程百分比… \t\t"
+
+#~ msgid "TT|Edit the list of progress percents for this objective."
+#~ msgstr "为本分目标编辑进展报告列表。 \t\t"
 
 #~ msgid "Title|Progress Percent Properties"
 #~ msgstr "进展百分比属性"
