@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram.doers;
 
 import org.miradi.objects.Objective;
-import org.miradi.views.umbrella.doers.AbstractCreateProgressPercent;
+import org.miradi.views.umbrella.doers.CreateProgressPercent;
 
-public class CreateObjectiveProgressPercentDoer extends AbstractCreateProgressPercent
+public class CreateObjectiveProgressPercentDoer extends CreateProgressPercent
 {
 	protected int getParentType()
 	{
