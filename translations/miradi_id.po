@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 04:32-0600\n"
+"POT-Creation-Date: 2010-01-05 06:02-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -2554,8 +2554,8 @@ msgid "Label|Org Contact"
 msgstr "Kontak Org "
 
 #: Miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:40
-#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:59
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:62
+#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:62
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:64
 msgid "Progress Percents"
 msgstr "Persentase Kemajuan "
 
@@ -6700,7 +6700,7 @@ msgstr "Indikator "
 msgid "Strategies And Activities"
 msgstr "Strategi dan Aktivitas"
 
-#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:71
+#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:74
 msgid "Title|Goal Properties"
 msgstr "Sifat-sifat Sasaran "
 
@@ -7321,7 +7321,7 @@ msgstr "Sifat-sifat Tautan Kotak Grup "
 msgid "Tab|Group Box Link"
 msgstr "Tautan Kotak Grup "
 
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:74
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:76
 msgid "Title|Objective Properties"
 msgstr "Sifat-sifat Tujuan Instruksional "
 

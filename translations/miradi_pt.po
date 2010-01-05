@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 04:32-0600\n"
+"POT-Creation-Date: 2010-01-05 06:02-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -2265,8 +2265,8 @@ msgid "Label|Org Contact"
 msgstr ""
 
 #: Miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:40
-#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:59
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:62
+#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:62
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:64
 msgid "Progress Percents"
 msgstr ""
 
@@ -6346,7 +6346,7 @@ msgstr ""
 msgid "Strategies And Activities"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:71
+#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:74
 msgid "Title|Goal Properties"
 msgstr ""
 
@@ -6948,7 +6948,7 @@ msgstr ""
 msgid "Tab|Group Box Link"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:74
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:76
 msgid "Title|Objective Properties"
 msgstr ""
 

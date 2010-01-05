@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 04:32-0600\n"
+"POT-Creation-Date: 2010-01-05 06:02-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2440,8 +2440,8 @@ msgid "Label|Org Contact"
 msgstr "组织联系方式 \t\t"
 
 #: Miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:40
-#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:59
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:62
+#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:62
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:64
 msgid "Progress Percents"
 msgstr "进展百分比 \t\t"
 
@@ -6530,7 +6530,7 @@ msgstr "指示物 \t\t"
 msgid "Strategies And Activities"
 msgstr "策略和活动"
 
-#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:71
+#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:74
 msgid "Title|Goal Properties"
 msgstr "总目标属性 "
 
@@ -7141,7 +7141,7 @@ msgstr "组合框链接属性"
 msgid "Tab|Group Box Link"
 msgstr "组合框链接"
 
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:74
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:76
 msgid "Title|Objective Properties"
 msgstr "分目标属性 \t\t"
 
