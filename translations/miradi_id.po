@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 03:16-0600\n"
+"POT-Creation-Date: 2010-01-05 04:10-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -6874,7 +6874,7 @@ msgstr "Ketampakan Kegiatan "
 msgid "Tab|Activities"
 msgstr "Kegiatan "
 
-#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:128
+#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:124
 msgid "Title|Progress Report"
 msgstr ""
 
