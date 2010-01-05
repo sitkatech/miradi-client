@@ -29,7 +29,7 @@ public class ProgressReportTable extends EditableRefsTable
 {
 	public ProgressReportTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse, modelToUse.getUniqueTableModelIdentifier());		
+		super(mainWindowToUse, modelToUse);		
 	}
 	
 	private ProgressReportTableModel getProgressReportTableModel()

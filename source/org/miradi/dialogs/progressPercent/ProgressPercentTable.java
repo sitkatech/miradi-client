@@ -28,7 +28,7 @@ public class ProgressPercentTable extends EditableRefsTable
 {
 	public ProgressPercentTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse, modelToUse.getUniqueTableModelIdentifier());		
+		super(mainWindowToUse, modelToUse);		
 	}
 	
 	@Override
