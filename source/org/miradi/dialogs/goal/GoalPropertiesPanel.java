@@ -55,6 +55,9 @@ public class GoalPropertiesPanel extends ObjectDataInputPanelWithSections
 		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Goal.getObjectType(), Goal.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalIndicatorRelevancyList.class), picker));
 		addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(Goal.getObjectType(), Goal.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalStrategyActivityRelevancyList.class), picker));
 		
+		//FIXME urgent uncomment
+		//addSubPanelWithTitledBorder(new ProgressPercentSubPanel(getProject(), getPicker()));
+		
 		String[] columnTags = new String[]{ProgressPercent.TAG_DATE, ProgressPercent.TAG_PERCENT_COMPLETE, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES};
 		PanelTitleLabel progressPercentsLabel = new PanelTitleLabel(EAM.text("Progress Percents"));
 		ObjectDataInputField readOnlyProgressPercentsList = createReadOnlyObjectListTableField(Goal.getObjectType(), Goal.TAG_PROGRESS_PERCENT_REFS, ProgressPercent.getObjectType(), columnTags);
