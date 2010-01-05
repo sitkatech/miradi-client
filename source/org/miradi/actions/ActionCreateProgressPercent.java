@@ -23,9 +23,9 @@ import org.miradi.icons.ProgressPercentIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionCreateGoalProgressPercent extends ObjectsAction
+public class ActionCreateProgressPercent extends ObjectsAction
 {
-	public ActionCreateGoalProgressPercent(MainWindow mainWindowToUse)
+	public ActionCreateProgressPercent(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel(), new ProgressPercentIcon());
 	}
