@@ -81,8 +81,8 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
 		progressReportTable.stopCellEditing();
-		progressReportTableModel.setObjectRefs(hierarchyToSelectedRef);
-		progressReportTableModel.fireTableDataChanged();
+		objectTableModel.setObjectRefs(hierarchyToSelectedRef);
+		objectTableModel.fireTableDataChanged();
 	}
 	
 	protected Actions getActions()
@@ -103,7 +103,7 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 		super.commandExecuted(event);
 		
 		if (event.isSetDataCommandWithThisType(getEditableObjectType()))
-			progressReportTableModel.fireTableDataChanged();
+			objectTableModel.fireTableDataChanged();
 		
 		if (event.isSetDataCommandWithThisTag(getTag()))
 			refreshModel();
@@ -119,6 +119,6 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	abstract protected void createTable() throws Exception;
 	
 	protected ObjectPicker objectPicker;
-	protected EditableObjectRefsTableModel progressReportTableModel;
+	protected EditableObjectRefsTableModel objectTableModel;
 	protected EditableRefsTable progressReportTable;
 }

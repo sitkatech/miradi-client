@@ -43,8 +43,8 @@ public class ProgressReportSubPanel extends EditableObjectTableSubPanel
 	@Override
 	protected void createTable() throws Exception
 	{
-		progressReportTableModel = new ProgressReportTableModel(getMainWindow().getProject());
-		progressReportTable = new ProgressReportTable(getMainWindow(), progressReportTableModel);
+		objectTableModel = new ProgressReportTableModel(getMainWindow().getProject());
+		progressReportTable = new ProgressReportTable(getMainWindow(), objectTableModel);
 	}
 	
 	@Override
