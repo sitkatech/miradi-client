@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 07:49-0600\n"
+"POT-Creation-Date: 2010-01-05 07:52-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -4233,12 +4233,10 @@ msgid "TT|Delete Organization"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCreateProgressPercent.java:35
-#: Miradi/source/org/miradi/actions/ActionCreateObjectiveProgressPercent.java:35
 msgid "Action|Manage|Create Progress Percent"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCreateProgressPercent.java:40
-#: Miradi/source/org/miradi/actions/ActionCreateObjectiveProgressPercent.java:40
 msgid "TT|Create a new Progress Percent"
 msgstr ""
 
@@ -4393,15 +4391,6 @@ msgstr ""
 msgid "TT|Add member to the team"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionEditObjectiveProgressPercent.java:34
-#: Miradi/source/org/miradi/actions/ActionEditGoalProgressPercent.java:34
-msgid "Action|Edit Progress Percents..."
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/ActionEditObjectiveProgressPercent.java:39
-msgid "TT|Edit the list of progress percents for this objective."
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionCollapseAllRows.java:34
 msgid "Action|Collapse All Rows"
 msgstr ""
@@ -4474,16 +4463,6 @@ msgstr ""
 msgid "TT|Create a new Custom Planning View"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionDeleteObjectiveProgressPercent.java:35
-#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:35
-msgid "Action|Manage|Delete Progress Percent"
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/ActionDeleteObjectiveProgressPercent.java:40
-#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:40
-msgid "TT|Delete Progress Percent"
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeMeasurement.java:35
 msgid "Action|Manage|Delete Measurement"
 msgstr ""
@@ -4510,10 +4489,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionInsertTarget.java:42
 msgid "TT|Insert a Target"
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/ActionEditGoalProgressPercent.java:39
-msgid "TT|Edit the list of progress percents for this goal."
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCloneStress.java:35
@@ -5433,6 +5408,14 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionPrint.java:39
 msgid "TT|Print the current view to a printer"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:35
+msgid "Action|Manage|Delete Progress Percent"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:40
+msgid "TT|Delete Progress Percent"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCreateGoal.java:35

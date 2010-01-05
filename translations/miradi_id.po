@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 07:49-0600\n"
+"POT-Creation-Date: 2010-01-05 07:52-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -4575,12 +4575,10 @@ msgid "TT|Delete Organization"
 msgstr "Hapus Organisasi "
 
 #: Miradi/source/org/miradi/actions/ActionCreateProgressPercent.java:35
-#: Miradi/source/org/miradi/actions/ActionCreateObjectiveProgressPercent.java:35
 msgid "Action|Manage|Create Progress Percent"
 msgstr "Buat Persentase Kemajuan "
 
 #: Miradi/source/org/miradi/actions/ActionCreateProgressPercent.java:40
-#: Miradi/source/org/miradi/actions/ActionCreateObjectiveProgressPercent.java:40
 msgid "TT|Create a new Progress Percent"
 msgstr "Buat Persentase Kemajuan baru "
 
@@ -4735,15 +4733,6 @@ msgstr "Buat Anggota "
 msgid "TT|Add member to the team"
 msgstr "Tambahkan anggota ke tim "
 
-#: Miradi/source/org/miradi/actions/ActionEditObjectiveProgressPercent.java:34
-#: Miradi/source/org/miradi/actions/ActionEditGoalProgressPercent.java:34
-msgid "Action|Edit Progress Percents..."
-msgstr "Edit Persentase Kemajuan… "
-
-#: Miradi/source/org/miradi/actions/ActionEditObjectiveProgressPercent.java:39
-msgid "TT|Edit the list of progress percents for this objective."
-msgstr "Edit daftar persentase kemajuan untuk tujuan instruksional ini \t"
-
 #: Miradi/source/org/miradi/actions/ActionCollapseAllRows.java:34
 msgid "Action|Collapse All Rows"
 msgstr ""
@@ -4816,16 +4805,6 @@ msgstr "Buat Sesuaian "
 msgid "TT|Create a new Custom Planning View"
 msgstr "Buat satu Tampilan Perencanaan Tersuai baru "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteObjectiveProgressPercent.java:35
-#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:35
-msgid "Action|Manage|Delete Progress Percent"
-msgstr "Hapus Persentase Kemajuan "
-
-#: Miradi/source/org/miradi/actions/ActionDeleteObjectiveProgressPercent.java:40
-#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:40
-msgid "TT|Delete Progress Percent"
-msgstr "Hapus Persentase Kemajuan "
-
 #: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeMeasurement.java:35
 msgid "Action|Manage|Delete Measurement"
 msgstr "Hapus Pengukuran "
@@ -4853,10 +4832,6 @@ msgstr "Sisipkan Target "
 #: Miradi/source/org/miradi/actions/ActionInsertTarget.java:42
 msgid "TT|Insert a Target"
 msgstr "Sisipkan satu Target "
-
-#: Miradi/source/org/miradi/actions/ActionEditGoalProgressPercent.java:39
-msgid "TT|Edit the list of progress percents for this goal."
-msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCloneStress.java:35
 msgid "Action|Manage|Clone Stress..."
@@ -5776,6 +5751,14 @@ msgstr "Cetak "
 #: Miradi/source/org/miradi/actions/ActionPrint.java:39
 msgid "TT|Print the current view to a printer"
 msgstr "Cetak tampilan saat ini ke mesin pencetak "
+
+#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:35
+msgid "Action|Manage|Delete Progress Percent"
+msgstr "Hapus Persentase Kemajuan "
+
+#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:40
+msgid "TT|Delete Progress Percent"
+msgstr "Hapus Persentase Kemajuan "
 
 #: Miradi/source/org/miradi/actions/ActionCreateGoal.java:35
 msgid "Action|Manage|Create Goal"
@@ -29832,6 +29815,12 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Action|Edit Progress Percents..."
+#~ msgstr "Edit Persentase Kemajuan… "
+
+#~ msgid "TT|Edit the list of progress percents for this objective."
+#~ msgstr "Edit daftar persentase kemajuan untuk tujuan instruksional ini \t"
 
 #~ msgid "Title|Progress Percent Properties"
 #~ msgstr "Sifat-sifat Persentase Kemajuan "
