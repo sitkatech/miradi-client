@@ -46,8 +46,10 @@ public class ProgressReportTable extends EditableRefsTable
 			int modelColumn = convertColumnIndexToModel(tableColumn);
 			if (progressReportTableModel.isProgressStatusColumn(modelColumn))
 				createComboQuestionColumn(new ProgressReportLongStatusQuestion(), tableColumn);
+			
 			if (progressReportTableModel.isDateColumn(modelColumn))
 				createDateColumn(tableColumn);
+			
 			if (progressReportTableModel.isDetailsColumn(modelColumn))
 				createWrappableTextFieldColumn(tableColumn);
 		}

@@ -20,21 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.objective;
 
 import org.miradi.actions.ActionEditObjectiveIndicatorRelevancyList;
-import org.miradi.actions.ActionEditObjectiveProgressPercent;
 import org.miradi.actions.ActionEditObjectiveStrategyActivityRelevancyList;
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.dialogs.progressPercent.ProgressPercentSubPanel;
 import org.miradi.icons.ObjectiveIcon;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Objective;
-import org.miradi.objects.ProgressPercent;
 import org.miradi.project.Project;
-import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class ObjectivePropertiesPanel extends ObjectDataInputPanelWithSections
@@ -57,14 +54,7 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanelWithSections
 		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditObjectiveIndicatorRelevancyList.class), picker));
 		addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditObjectiveStrategyActivityRelevancyList.class), picker));
 		
-		//FIXME urgent uncomment
-		//addSubPanelWithTitledBorder(new ProgressPercentSubPanel(getProject(), getPicker()));
-		
-		String[] columnTags = new String[]{ProgressPercent.TAG_DATE, ProgressPercent.TAG_PERCENT_COMPLETE, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES};
-		PanelTitleLabel progressPercentsLabel = new PanelTitleLabel(EAM.text("Progress Percents"));
-		ObjectDataInputField readOnlyProgressPercentsList = createReadOnlyObjectListTableField(Objective.getObjectType(), Objective.TAG_PROGRESS_PERCENT_REFS, ProgressPercent.getObjectType(), columnTags);
-		ObjectsActionButton editProgressPercentButton = createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditObjectiveProgressPercent.class), getPicker());
-		addFieldWithEditButton(progressPercentsLabel, readOnlyProgressPercentsList, editProgressPercentButton);
+		addSubPanelWithTitledBorder(new ProgressPercentSubPanel(getProject(), getPicker()));
 		
 		addField(createMultilineField(Goal.TAG_COMMENTS));
 
