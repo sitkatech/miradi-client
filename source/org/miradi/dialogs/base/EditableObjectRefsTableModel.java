@@ -28,4 +28,16 @@ public abstract class EditableObjectRefsTableModel extends EditableObjectTableMo
 	{
 		super(projectToUse);
 	}
+
+	public String getColumnTag(int column)
+	{
+		return getColumnTags()[column];
+	}
+
+	public int getColumnCount()
+	{
+		return getColumnTags().length;
+	}
+	
+	abstract protected String[] getColumnTags();
 }
