@@ -26,7 +26,6 @@ import org.miradi.actions.ActionDeleteProgressReport;
 import org.miradi.dialogs.base.EditableObjectTableSubPanel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
-import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
@@ -38,7 +37,7 @@ public class ProgressReportSubPanel extends EditableObjectTableSubPanel
 {
 	public ProgressReportSubPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(mainWindow.getProject(), objectPickerToUse, ProgressReport.getObjectType());
+		super(mainWindow.getProject(), objectPickerToUse, getObjectType());
 	}
 	
 	protected void createTable() throws Exception
@@ -64,18 +63,16 @@ public class ProgressReportSubPanel extends EditableObjectTableSubPanel
 		return EAM.text("Title|Progress Report");
 	}
 	
-	@Override
-	public void commandExecuted(CommandExecutedEvent event)
+	protected int getEditableObjectType()
 	{
-		super.commandExecuted(event);
-		
-		if (event.isSetDataCommandWithThisType(ProgressReport.getObjectType()))
-			progressReportTableModel.fireTableDataChanged();
-		
-		if (event.isSetDataCommandWithThisTag(BaseObject.TAG_PROGRESS_REPORT_REFS))
-			refreshModel();
+		return getObjectType();
 	}
-		
+	
+	protected String getTag()
+	{
+		return BaseObject.TAG_PROGRESS_REPORT_REFS;
+	}
+	
 	@Override
 	protected boolean doesSectionContainFieldWithTag(String tagToUse)
 	{
@@ -83,5 +80,10 @@ public class ProgressReportSubPanel extends EditableObjectTableSubPanel
 			return true;
 		
 		return super.doesSectionContainFieldWithTag(tagToUse);
+	}
+	
+	private static int getObjectType()
+	{
+		return ProgressReport.getObjectType();
 	}
 }

@@ -26,6 +26,7 @@ import javax.swing.JPanel;
 
 import org.miradi.actions.Actions;
 import org.miradi.layout.OneColumnGridLayout;
+import org.miradi.main.CommandExecutedEvent;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
@@ -95,6 +96,23 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 		add(createButtonBar(), BorderLayout.PAGE_START);
 		add(scroller, BorderLayout.CENTER);
 	}
+	
+	@Override
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		super.commandExecuted(event);
+		
+		if (event.isSetDataCommandWithThisType(getEditableObjectType()))
+			progressReportTableModel.fireTableDataChanged();
+		
+		if (event.isSetDataCommandWithThisTag(getTag()))
+			refreshModel();
+	}
+	
+	abstract protected int getEditableObjectType();
+	
+	abstract protected String getTag();
+	
 	
 	abstract protected JPanel createButtonBar();
 	
