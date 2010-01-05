@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-04 13:41-0600\n"
+"POT-Creation-Date: 2010-01-05 03:05-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -5967,14 +5967,6 @@ msgstr ""
 #: Miradi/source/org/miradi/actions/ActionExportConProXml.java:39
 msgid "TT|Export a file that can be imported by ConPro"
 msgstr "Ekspor berkas yang bisa diimpor ConPro "
-
-#: Miradi/source/org/miradi/actions/ActionEditStrategyProgressReports.java:34
-msgid "Action|Edit Progress Reports..."
-msgstr "Edit Laporan Kemajuan… "
-
-#: Miradi/source/org/miradi/actions/ActionEditStrategyProgressReports.java:39
-msgid "TT|Edit the list of progress reports for this strategy"
-msgstr "Edit daftar laporan kemajuan untuk strategi ini "
 
 #: Miradi/source/org/miradi/actions/ActionInsertScopeBox.java:35
 msgid "Action|Insert|Insert Scope Box"
@@ -29862,6 +29854,12 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Action|Edit Progress Reports..."
+#~ msgstr "Edit Laporan Kemajuan… "
+
+#~ msgid "TT|Edit the list of progress reports for this strategy"
+#~ msgstr "Edit daftar laporan kemajuan untuk strategi ini "
 
 #~ msgid ""
 #~ "WorkPlan/Financial data outside project begin/end dates will not be shown"
