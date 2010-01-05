@@ -25,7 +25,6 @@ import javax.swing.JTable;
 import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.base.EditableObjectTableModel;
-import org.miradi.dialogs.base.ProgressReportTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
 
