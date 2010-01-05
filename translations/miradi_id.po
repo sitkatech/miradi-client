@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 03:07-0600\n"
+"POT-Creation-Date: 2010-01-05 03:13-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -6873,10 +6873,6 @@ msgstr "Ketampakan Kegiatan "
 #: Miradi/source/org/miradi/dialogs/activity/ActivityListManagementPanel.java:66
 msgid "Tab|Activities"
 msgstr "Kegiatan "
-
-#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportPropertiesPanel.java:45
-msgid "Title|Progress Report Properties"
-msgstr "Sifat-sifat Laporan Kemajuan "
 
 #: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:129
 msgid "Title|Progress Report"
@@ -29846,6 +29842,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Title|Progress Report Properties"
+#~ msgstr "Sifat-sifat Laporan Kemajuan "
 
 #~ msgid "Edit Progress Reports"
 #~ msgstr "Edit Laporan Kemajuan "

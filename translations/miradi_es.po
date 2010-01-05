@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 03:07-0600\n"
+"POT-Creation-Date: 2010-01-05 03:13-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -6898,10 +6898,6 @@ msgstr "Visibilidad de la actividad"
 #: Miradi/source/org/miradi/dialogs/activity/ActivityListManagementPanel.java:66
 msgid "Tab|Activities"
 msgstr "Actividades"
-
-#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportPropertiesPanel.java:45
-msgid "Title|Progress Report Properties"
-msgstr "Propiedades del informe de progreso"
 
 #: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:129
 msgid "Title|Progress Report"
@@ -30087,6 +30083,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Title|Progress Report Properties"
+#~ msgstr "Propiedades del informe de progreso"
 
 #~ msgid "Edit Progress Reports"
 #~ msgstr "Editar informes de progreso"
