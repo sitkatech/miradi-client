@@ -21,6 +21,6 @@ package org.miradi.views.umbrella.doers;
 
 
 
-public class CreateGoalProgressPercentDoer extends AbstractCreateProgressPercent
+public class CreateGoalProgressPercentDoer extends CreateProgressPercent
 {
 }
