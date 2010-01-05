@@ -28,6 +28,7 @@ import org.miradi.objects.Desire;
 import org.miradi.objects.ProgressPercent;
 import org.miradi.project.Project;
 import org.miradi.questions.EmptyChoiceItem;
+import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.views.diagram.doers.CreateAnnotationWithFactorParent;
 
 public class ProgressPercentTableModel extends EditableObjectRefsTableModel
@@ -63,13 +64,33 @@ public class ProgressPercentTableModel extends EditableObjectRefsTableModel
 	}
 
 	public Object getValueAt(int rowIndex, int columnIndex)
-	{		
+	{
+		ProgressPercent progressPercent = getProgressPercentForRow(rowIndex, columnIndex);
+		if (isDateColumn(columnIndex))
+			return new TaglessChoiceItem(progressPercent.getData(ProgressPercent.TAG_DATE));
+		
+		if (isPercentCompleteColumn(columnIndex))
+			return new TaglessChoiceItem(progressPercent.getData(ProgressPercent.TAG_PERCENT_COMPLETE));
+		
+		if (isPercentCompleteNotesColumn(columnIndex))
+			return new TaglessChoiceItem(progressPercent.getData(ProgressPercent.TAG_PERCENT_COMPLETE_NOTES)); 
+			
 		return new EmptyChoiceItem();
 	}
 
 	@Override
 	public void setValueAt(Object value, int row, int column)
 	{
+		if (value == null)
+			return;
+		
+		ORef ref = getBaseObjectForRowColumn(row, column).getRef();
+		setProgressPercentValue(ref, column, value.toString());
+	}
+	
+	private void setProgressPercentValue(ORef ref, int column, String value)
+	{
+		setValueUsingCommand(ref, getColumnTag(column), value);
 	}
 	
 	public boolean isDateColumn(int modelColumn)
@@ -77,9 +98,19 @@ public class ProgressPercentTableModel extends EditableObjectRefsTableModel
 		return isColumnForTag(modelColumn, ProgressPercent.TAG_DATE);
 	}
 	
+	public boolean isPercentCompleteColumn(int modelColumn)
+	{
+		return isColumnForTag(modelColumn, ProgressPercent.TAG_PERCENT_COMPLETE);
+	}
+	
 	public boolean isPercentCompleteNotesColumn(int modelColumn)
 	{
 		return isColumnForTag(modelColumn, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES);
+	}
+	
+	private ProgressPercent getProgressPercentForRow(int rowIndex, int columnIndex)
+	{
+		return (ProgressPercent) getBaseObjectForRowColumn(rowIndex, columnIndex);
 	}
 
 	@Override

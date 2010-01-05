@@ -41,6 +41,9 @@ public class ProgressPercentTable extends EditableRefsTable
 			if (progressPercentTableModel.isDateColumn(modelColumn))
 				createDateColumn(tableColumn);
 				
+			if (progressPercentTableModel.isPercentCompleteColumn(modelColumn))
+				createNumericRestrictedColumn(tableColumn);
+			
 			if (progressPercentTableModel.isPercentCompleteNotesColumn(modelColumn))
 				createWrappableTextFieldColumn(tableColumn);
 		}

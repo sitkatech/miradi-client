@@ -39,6 +39,7 @@ import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DateTableCellEditorAndRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory;
+import org.miradi.dialogs.tablerenderers.NumericRestrictedTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.MainWindow;
@@ -97,6 +98,14 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		return model.getColumnTag(modelColumn);
+	}
+	
+	protected void createNumericRestrictedColumn(int tableColumn)
+	{
+		TableColumn column = getColumnModel().getColumn(tableColumn);
+		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
+		column.setCellRenderer(new NumericRestrictedTableCellRendererEditorFactory(model, fontProvider));
+		column.setCellEditor(new NumericRestrictedTableCellRendererEditorFactory(model, fontProvider));
 	}
 	
 	protected void createWrappableTextFieldColumn(int tableColumn)
