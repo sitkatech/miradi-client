@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 03:05-0600\n"
+"POT-Creation-Date: 2010-01-05 03:07-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -635,10 +635,6 @@ msgstr "¿Está seguro de que desea eliminar este informe de progreso?"
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractManageFactorTagDoer.java:56
 msgid "Choose Tags"
 msgstr ""
-
-#: Miradi/source/org/miradi/views/diagram/doers/AbstractProgressReportPopupEditor.java:33
-msgid "Edit Progress Reports"
-msgstr "Editar informes de progreso"
 
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:37
 #: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:41
@@ -6910,10 +6906,6 @@ msgstr "Propiedades del informe de progreso"
 #: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:129
 msgid "Title|Progress Report"
 msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportManagementPanel.java:48
-msgid "Tab|Progress Reports"
-msgstr "Informes de progreso"
 
 #: Miradi/source/org/miradi/dialogs/treetables/TreeTablePanel.java:103
 msgid "Error restoring tree state"
@@ -30095,6 +30087,12 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Edit Progress Reports"
+#~ msgstr "Editar informes de progreso"
+
+#~ msgid "Tab|Progress Reports"
+#~ msgstr "Informes de progreso"
 
 #~ msgid "Action|Edit Progress Reports..."
 #~ msgstr "Editar informes de progreso…"

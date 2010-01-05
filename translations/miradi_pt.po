@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 03:05-0600\n"
+"POT-Creation-Date: 2010-01-05 03:07-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -581,10 +581,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractManageFactorTagDoer.java:56
 msgid "Choose Tags"
-msgstr ""
-
-#: Miradi/source/org/miradi/views/diagram/doers/AbstractProgressReportPopupEditor.java:33
-msgid "Edit Progress Reports"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:37
@@ -6528,10 +6524,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:129
 msgid "Title|Progress Report"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportManagementPanel.java:48
-msgid "Tab|Progress Reports"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/treetables/TreeTablePanel.java:103
