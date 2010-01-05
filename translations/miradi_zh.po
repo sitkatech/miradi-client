@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-04 13:41-0600\n"
+"POT-Creation-Date: 2010-01-05 03:05-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5807,14 +5807,6 @@ msgstr ""
 #: Miradi/source/org/miradi/actions/ActionExportConProXml.java:39
 msgid "TT|Export a file that can be imported by ConPro"
 msgstr "导出一个能够被导入到ConPro的文件 \t\t"
-
-#: Miradi/source/org/miradi/actions/ActionEditStrategyProgressReports.java:34
-msgid "Action|Edit Progress Reports..."
-msgstr "编辑进展报告… \t\t"
-
-#: Miradi/source/org/miradi/actions/ActionEditStrategyProgressReports.java:39
-msgid "TT|Edit the list of progress reports for this strategy"
-msgstr "为本策略编辑进展报告列表 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionInsertScopeBox.java:35
 msgid "Action|Insert|Insert Scope Box"
@@ -27221,6 +27213,12 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Action|Edit Progress Reports..."
+#~ msgstr "编辑进展报告… \t\t"
+
+#~ msgid "TT|Edit the list of progress reports for this strategy"
+#~ msgstr "为本策略编辑进展报告列表 \t\t"
 
 #~ msgid ""
 #~ "WorkPlan/Financial data outside project begin/end dates will not be shown"
