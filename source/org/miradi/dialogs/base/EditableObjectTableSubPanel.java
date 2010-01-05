@@ -37,4 +37,6 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	}
 	
 	protected ObjectPicker objectPicker;
+	protected EditableObjectRefsTableModel progressReportTableModel;
+	protected EditableRefsTable progressReportTable;
 }
