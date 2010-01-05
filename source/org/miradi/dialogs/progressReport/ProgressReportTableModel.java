@@ -63,7 +63,7 @@ public class ProgressReportTableModel extends EditableObjectRefsTableModel
 
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
-		return ProgressReport.find(getProject(), progressRefs.get(row));
+		return BaseObject.find(getProject(), progressRefs.get(row));
 	}
 
 	public int getRowCount()
