@@ -144,7 +144,4 @@ public class ProgressReportSubPanel extends EditableObjectTableSubPanel
 		
 		return super.doesSectionContainFieldWithTag(tagToUse);
 	}
-	
-	private ProgressReportTableModel progressReportTableModel;
-	private ProgressReportTable progressReportTable;
 }
