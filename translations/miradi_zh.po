@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 08:04-0600\n"
+"POT-Creation-Date: 2010-01-05 10:47-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -516,7 +516,7 @@ msgstr "生物多样性区域（公顷） \t\t"
 msgid "Biodiversity Features"
 msgstr "生物多样性特征 \t\t"
 
-#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:66
+#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:69
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
 #: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:102
@@ -885,6 +885,10 @@ msgstr "您是否确定要删除该进展报告？ \t\t"
 #: Miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareActivityDoer.java:47
 msgid "Share Activity"
 msgstr "共享活动 \t\t"
+
+#: Miradi/source/org/miradi/views/umbrella/doers/DeleteIucnRedlistSpeciesDoer.java:38
+msgid "IUCN Redlist Species"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractStrategyActivityRelevancyListDoer.java:40
 msgid "Relevant Strategies and Activities"
@@ -4446,6 +4450,14 @@ msgstr "插入文本框 \t\t"
 msgid "TT|Insert a Text Box"
 msgstr "插入一个文本框 \t\t"
 
+#: Miradi/source/org/miradi/actions/ActionDeleteIucnRedlistSpecies.java:36
+msgid "Action|Manage|Delete"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionDeleteIucnRedlistSpecies.java:42
+msgid "TT|Delete the IUCN Redlist Species"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionAbout.java:34
 msgid "Action|About Miradi"
 msgstr "关于Miradi \t\t"
@@ -6057,6 +6069,14 @@ msgstr "在本页面隐藏活动 \t\t"
 msgid "TT|Show this Activity so it appears on this Results Chain"
 msgstr "隐藏本活动使之不再出现于该结果链 \t\t"
 
+#: Miradi/source/org/miradi/actions/ActionCreateIucnRedlistSpecies.java:35
+msgid "Action|Manage|Create IUCN Redlist Species"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionCreateIucnRedlistSpecies.java:41
+msgid "TT|Create a IUCN Redlist Species"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionRenameConceptualModel.java:34
 msgid "Action|Rename Conceptual Model Page"
 msgstr "重命名概念模型页 \t\t"
@@ -6408,6 +6428,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/expense/ExpensesPropertiesPanel.java:72
 msgid "Expenses"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/iucnRedlistSpecies/IucnRedlistSpeciesSubPanel.java:64
+msgid "Title|IUCN Redlist Species"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:52
@@ -8575,6 +8599,9 @@ msgid "FieldLabel|52.ViabilityMode|Viability Mode"
 msgstr ""
 
 msgid "FieldLabel|52.TargetViability|Target Viability Status"
+msgstr ""
+
+msgid "FieldLabel|53.Label|Name"
 msgstr ""
 
 msgid ""
