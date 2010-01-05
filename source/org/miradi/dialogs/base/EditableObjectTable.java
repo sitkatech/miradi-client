@@ -225,6 +225,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 		isActive = false;
 	}
 
+	@Override
 	public void valueChanged(ListSelectionEvent e)
 	{
 		super.valueChanged(e);
