@@ -19,23 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressReport;
-import org.miradi.views.diagram.CreateAnnotationDoer;
 
-public class CreateProgressReportDoer extends CreateAnnotationDoer
+public class CreateProgressReportDoer extends CreateAnnotationWithFactorParent
 {
-	@Override
-	public BaseObject getSelectedParentFactor()
-	{
-		if (getPicker() == null)
-			return null;
-		
-		ORefList selectionRefs = getPicker().getSelectedHierarchies()[0];
-		return CreateAnnotationWithFactorParent.getParent(getProject(), selectionRefs, getAnnotationType());
-	}
-	
 	@Override
 	public String getAnnotationListTag()
 	{
