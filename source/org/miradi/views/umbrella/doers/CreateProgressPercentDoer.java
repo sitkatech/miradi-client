@@ -21,9 +21,9 @@ package org.miradi.views.umbrella.doers;
 
 import org.miradi.objects.Desire;
 import org.miradi.objects.ProgressPercent;
-import org.miradi.views.diagram.doers.CreateAnnotationWithFactorParent;
+import org.miradi.views.diagram.doers.AbstractCreateProgressDoer;
 
-public class CreateProgressPercentDoer extends CreateAnnotationWithFactorParent
+public class CreateProgressPercentDoer extends AbstractCreateProgressDoer
 {
 	@Override
 	public String getAnnotationListTag()

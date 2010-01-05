@@ -22,7 +22,7 @@ package org.miradi.views.diagram.doers;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressReport;
 
-public class CreateProgressReportDoer extends CreateAnnotationWithFactorParent
+public class CreateProgressReportDoer extends AbstractCreateProgressDoer
 {
 	@Override
 	public String getAnnotationListTag()
