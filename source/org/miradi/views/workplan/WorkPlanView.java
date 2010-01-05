@@ -147,7 +147,7 @@ public class WorkPlanView extends TabbedView
 		addDoerToMap(ActionImportAccountingCodes.class, new ImportAccountingCodesDoer());
 
 		addDoerToMap(ActionCreateFundingSource.class, new CreateFundingSourceDoer());
-		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());	
+		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());
 		
 		addDoerToMap(ActionPlanningCreationMenu.class, new PlanningTreeNodeCreationMenuDoer());
 		addDoerToMap(ActionWorkPlanBudgetColumnsEditor.class, new WorkPlanColumnsEditorDoer());

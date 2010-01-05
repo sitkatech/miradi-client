@@ -35,7 +35,7 @@ import org.miradi.rtf.RtfWriter;
 
 public class SummaryScopeTabPanel extends ObjectDataInputPanelWithSections
 {
-	public SummaryScopeTabPanel(Project projectToUse, ORef[] orefsToUse)
+	public SummaryScopeTabPanel(Project projectToUse, ORef[] orefsToUse) throws Exception
 	{
 		super(projectToUse, ProjectMetadata.getObjectType());
 		setLayout(new OneColumnGridLayout());
@@ -45,6 +45,9 @@ public class SummaryScopeTabPanel extends ObjectDataInputPanelWithSections
 
 		BiodiversityPanel biodiversity = new BiodiversityPanel(getProject(), getRefForType(ProjectMetadata.getObjectType()));
 		addSubPanelWithTitledBorder(biodiversity);
+		
+		//FIXME urgent IUCN - uncomment and make work
+		//addSubPanelWithTitledBorder(new IucnRedlistSpeciesSubPanel(getProject(), getPicker()));
 		
 		HumanStakeholderPanel humans = new HumanStakeholderPanel(getProject(), getRefForType(ProjectMetadata.getObjectType()));
 		addSubPanelWithTitledBorder(humans);
