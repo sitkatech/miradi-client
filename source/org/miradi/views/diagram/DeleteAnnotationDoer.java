@@ -87,6 +87,15 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	{
 		return annotationToDelete.getOwner();
 	}
+	
+	protected BaseObject getReferrerParent(BaseObject annotationToDelete)
+	{
+		ORefList referrerRefs = annotationToDelete.findObjectsThatReferToUs();
+		if (referrerRefs.isEmpty())
+			return null;
+			
+		return BaseObject.find(getProject(), referrerRefs.get(0));
+	}
 
 	private void deleteAnnotationViaCommands(Project project, BaseObject owner, BaseObject annotationToDelete, String annotationIdListTag) throws Exception
 	{
