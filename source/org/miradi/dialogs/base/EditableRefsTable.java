@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
+import javax.swing.JTable;
+
 import org.miradi.main.MainWindow;
 
 abstract public class EditableRefsTable extends EditableObjectTable
@@ -27,5 +29,17 @@ abstract public class EditableRefsTable extends EditableObjectTable
 	public EditableRefsTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse, String uniqueTableIdentifierToUse)
 	{
 		super(mainWindowToUse, modelToUse, uniqueTableIdentifierToUse);
+		
+		rebuildColumnEditorsAndRenderers();
+		listenForColumnWidthChanges(this);
+		//TODO shouldn't set row height to constant value
+		setRowHeight(26);
 	}
+	
+	private void listenForColumnWidthChanges(JTable table)
+	{
+		table.getColumnModel().addColumnModelListener(new ColumnMarginResizeListenerValidator(this));
+	}
+	
+	abstract public void rebuildColumnEditorsAndRenderers();
 }

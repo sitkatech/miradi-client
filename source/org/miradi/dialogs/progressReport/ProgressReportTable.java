@@ -20,9 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.progressReport;
 
-import javax.swing.JTable;
-
-import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.dialogs.base.EditableRefsTable;
 import org.miradi.main.MainWindow;
@@ -32,12 +29,7 @@ public class ProgressReportTable extends EditableRefsTable
 {
 	public ProgressReportTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse, modelToUse.getUniqueTableModelIdentifier());
-		
-		rebuildColumnEditorsAndRenderers();
-		listenForColumnWidthChanges(this);
-		//TODO shouldn't set row height to constant value
-		setRowHeight(26);
+		super(mainWindowToUse, modelToUse, modelToUse.getUniqueTableModelIdentifier());		
 	}
 	
 	private ProgressReportTableModel getProgressReportTableModel()
@@ -45,6 +37,7 @@ public class ProgressReportTable extends EditableRefsTable
 		return (ProgressReportTableModel) getModel();
 	}
 	
+	@Override
 	public void rebuildColumnEditorsAndRenderers()
 	{
 		ProgressReportTableModel progressReportTableModel = getProgressReportTableModel();
@@ -58,10 +51,5 @@ public class ProgressReportTable extends EditableRefsTable
 			if (progressReportTableModel.isDetailsColumn(modelColumn))
 				createWrappableTextFieldColumn(tableColumn);
 		}
-	}
-
-	protected void listenForColumnWidthChanges(JTable table)
-	{
-		table.getColumnModel().addColumnModelListener(new ColumnMarginResizeListenerValidator(this));
 	}
 }
