@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 06:02-0600\n"
+"POT-Creation-Date: 2010-01-05 06:04-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -954,7 +954,7 @@ msgstr ""
 msgid "Title|View..."
 msgstr "Tampilan… "
 
-#: Miradi/source/org/miradi/views/umbrella/doers/AbstractDeleteProgressPercentDoer.java:47
+#: Miradi/source/org/miradi/views/umbrella/doers/AbstractDeleteProgressPercentDoer.java:54
 msgid "Are you sure you want to delete this Progress Percent?"
 msgstr "Anda yakin ingin menghapus Persentase Kemajuan ini? "
 
@@ -7230,7 +7230,7 @@ msgstr "Ditandai"
 msgid "Title|Tag Properties Panel"
 msgstr "Panel Sifat-sifat Tag"
 
-#: Miradi/source/org/miradi/dialogs/progressPercent/ProgressPercentSubPanel.java:62
+#: Miradi/source/org/miradi/dialogs/progressPercent/ProgressPercentSubPanel.java:65
 msgid "Title|Progress Percent"
 msgstr ""
 
