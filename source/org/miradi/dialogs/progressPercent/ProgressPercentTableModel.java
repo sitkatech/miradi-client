@@ -61,6 +61,16 @@ public class ProgressPercentTableModel extends EditableObjectRefsTableModel
 	public void setValueAt(Object value, int row, int column)
 	{
 	}
+	
+	public boolean isDateColumn(int modelColumn)
+	{
+		return isColumnForTag(modelColumn, ProgressPercent.TAG_DATE);
+	}
+	
+	public boolean isPercentCompleteNotesColumn(int modelColumn)
+	{
+		return isColumnForTag(modelColumn, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES);
+	}
 
 	@Override
 	protected String[] getColumnTags()

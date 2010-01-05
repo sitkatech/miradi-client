@@ -34,5 +34,15 @@ public class ProgressPercentTable extends EditableRefsTable
 	@Override
 	public void rebuildColumnEditorsAndRenderers()
 	{
+		ProgressPercentTableModel progressPercentTableModel = (ProgressPercentTableModel) getModel();
+		for (int tableColumn = 0; tableColumn < progressPercentTableModel.getColumnCount(); ++tableColumn)
+		{
+			int modelColumn = convertColumnIndexToModel(tableColumn);
+			if (progressPercentTableModel.isDateColumn(modelColumn))
+				createDateColumn(tableColumn);
+				
+			if (progressPercentTableModel.isPercentCompleteNotesColumn(modelColumn))
+				createWrappableTextFieldColumn(tableColumn);
+		}
 	}
 }
