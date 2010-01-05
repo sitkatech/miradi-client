@@ -72,7 +72,7 @@ public class ProgressReportSubPanel extends EditableObjectTableSubPanel
 	}
 	
 	@Override
-	protected String getTag()
+	protected String getTagForRefListFieldBeingEdited()
 	{
 		return BaseObject.TAG_PROGRESS_REPORT_REFS;
 	}
