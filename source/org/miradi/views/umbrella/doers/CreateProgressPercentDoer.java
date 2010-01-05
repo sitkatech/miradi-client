@@ -23,7 +23,7 @@ import org.miradi.objects.Desire;
 import org.miradi.objects.ProgressPercent;
 import org.miradi.views.diagram.doers.CreateAnnotationWithFactorParent;
 
-public class CreateProgressPercent extends CreateAnnotationWithFactorParent
+public class CreateProgressPercentDoer extends CreateAnnotationWithFactorParent
 {
 	public String getAnnotationListTag()
 	{
