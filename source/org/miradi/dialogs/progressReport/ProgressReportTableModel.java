@@ -152,13 +152,12 @@ public class ProgressReportTableModel extends EditableObjectRefsTableModel
 	
 	protected String[] getColumnTags()
 	{
-		return columnTags;
+		return new String[]{
+			ProgressReport.TAG_PROGRESS_DATE, 
+			ProgressReport.TAG_PROGRESS_STATUS, 
+			ProgressReport.TAG_DETAILS, 
+			};
 	}
 	
 	private ORefList progressRefs;
-	private static final String[] columnTags = new String[]{
-		ProgressReport.TAG_PROGRESS_DATE, 
-		ProgressReport.TAG_PROGRESS_STATUS, 
-		ProgressReport.TAG_DETAILS, 
-		};
 }
