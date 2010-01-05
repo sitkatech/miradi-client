@@ -35,17 +35,17 @@ public abstract class EditableObjectRefsTableModel extends EditableObjectTableMo
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
-		return BaseObject.find(getProject(), progressRefs.get(row));
+		return BaseObject.find(getProject(), refs.get(row));
 	}
 
 	public int getRowCount()
 	{
-		return progressRefs.size();
+		return refs.size();
 	}
 	
 	protected void clearProgressReportRefs()
 	{
-		progressRefs = new ORefList();
+		refs = new ORefList();
 	}
 	
 	@Override
@@ -66,5 +66,5 @@ public abstract class EditableObjectRefsTableModel extends EditableObjectTableMo
 	
 	abstract protected String[] getColumnTags();
 	
-	protected ORefList progressRefs;
+	protected ORefList refs;
 }
