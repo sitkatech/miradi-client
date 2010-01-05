@@ -428,11 +428,7 @@ public class Actions
 		registerAction(new ActionExportTable(mainWindow));
 		registerAction(new ActionCreateTaskProgressReport(mainWindow));
 		registerAction(new ActionDeleteTaskProgressReport(mainWindow));
-		registerAction(new ActionEditObjectiveProgressPercent(mainWindow));
-		registerAction(new ActionEditGoalProgressPercent(mainWindow));
-		registerAction(new ActionCreateObjectiveProgressPercent(mainWindow));
 		registerAction(new ActionCreateProgressPercent(mainWindow));
-		registerAction(new ActionDeleteObjectiveProgressPercent(mainWindow));
 		registerAction(new ActionDeleteProgressPercent(mainWindow));
 		registerAction(new ActionViewLegacyTncStrategtyRanking(mainWindow));
 		registerAction(new ActionDeleteLegacyTncStrategyRanking(mainWindow));
