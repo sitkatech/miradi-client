@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 07:14-0600\n"
+"POT-Creation-Date: 2010-01-05 07:43-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -808,10 +808,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:64
 msgid "Error occurred while trying to export to a tab delimited file."
-msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/doers/AbstractEditProgressDoer.java:32
-msgid "Edit Progress Percents"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/ImportCpmzDoer.java:79
