@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 07:14-0600\n"
+"POT-Creation-Date: 2010-01-05 07:43-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -853,10 +853,6 @@ msgstr "数据以制表符分隔格式导出 \t\t"
 #: Miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:64
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr "试图导出到制表符分隔格式文件时出错。 \t\t"
-
-#: Miradi/source/org/miradi/views/umbrella/doers/AbstractEditProgressDoer.java:32
-msgid "Edit Progress Percents"
-msgstr "编辑进展百分比 \t\t"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/ImportCpmzDoer.java:79
 msgid " was empty"
@@ -27203,6 +27199,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Edit Progress Percents"
+#~ msgstr "编辑进展百分比 \t\t"
 
 #~ msgid "Title|Progress Report Properties"
 #~ msgstr "进展报告属性 \t\t"
