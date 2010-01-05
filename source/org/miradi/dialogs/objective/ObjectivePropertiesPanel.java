@@ -57,6 +57,8 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanelWithSections
 		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditObjectiveIndicatorRelevancyList.class), picker));
 		addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditObjectiveStrategyActivityRelevancyList.class), picker));
 		
+		//FIXME urgent uncomment
+		//addSubPanelWithTitledBorder(new ProgressPercentSubPanel(getProject(), getPicker()));
 		
 		String[] columnTags = new String[]{ProgressPercent.TAG_DATE, ProgressPercent.TAG_PERCENT_COMPLETE, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES};
 		PanelTitleLabel progressPercentsLabel = new PanelTitleLabel(EAM.text("Progress Percents"));
