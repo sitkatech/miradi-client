@@ -42,7 +42,7 @@ public class ProgressPercentSubPanel extends EditableObjectTableSubPanel
 	protected void createTable() throws Exception
 	{
 		objectTableModel = new ProgressPercentTableModel(getProject());
-		progressReportTable = new ProgressPercentTable(getMainWindow(), objectTableModel);
+		objectTable = new ProgressPercentTable(getMainWindow(), objectTableModel);
 	}
 	
 	@Override

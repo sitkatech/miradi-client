@@ -51,7 +51,7 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	public void dispose()
 	{
 		super.dispose();
-		progressReportTable.dispose();
+		objectTable.dispose();
 	}
 	
 	@Override
@@ -59,13 +59,13 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	{
 		super.becomeActive();
 		
-		progressReportTable.becomeActive();
+		objectTable.becomeActive();
 	}
 	
 	@Override
 	public void becomeInactive()
 	{
-		progressReportTable.becomeInactive();
+		objectTable.becomeInactive();
 
 		super.becomeInactive();
 	}
@@ -80,7 +80,7 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	@Override
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
-		progressReportTable.stopCellEditing();
+		objectTable.stopCellEditing();
 		objectTableModel.setObjectRefs(hierarchyToSelectedRef);
 		objectTableModel.fireTableDataChanged();
 	}
@@ -92,7 +92,7 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	
 	private void addComponents()
 	{
-		MiradiScrollPane scroller = new MiradiScrollPane(progressReportTable);
+		MiradiScrollPane scroller = new MiradiScrollPane(objectTable);
 		add(createButtonBar(), BorderLayout.PAGE_START);
 		add(scroller, BorderLayout.CENTER);
 	}
@@ -120,5 +120,5 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	
 	protected ObjectPicker objectPicker;
 	protected EditableObjectRefsTableModel objectTableModel;
-	protected EditableRefsTable progressReportTable;
+	protected EditableRefsTable objectTable;
 }
