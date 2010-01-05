@@ -36,7 +36,6 @@ public class ProgressReportTable extends EditableObjectTable
 		super(mainWindowToUse, modelToUse, modelToUse.getUniqueTableModelIdentifier());
 		
 		rebuildColumnEditorsAndRenderers();
-		
 		listenForColumnWidthChanges(this);
 		//TODO shouldn't set row height to constant value
 		setRowHeight(26);
