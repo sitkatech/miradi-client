@@ -26,7 +26,7 @@ import javax.swing.JPanel;
 
 import org.miradi.actions.ActionDeleteProgressReport;
 import org.miradi.actions.Actions;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.EditableObjectTableSubPanel;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
@@ -41,11 +41,11 @@ import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.umbrella.ActionCreateProgressReport;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class ProgressReportSubPanel extends ObjectDataInputPanel
+public class ProgressReportSubPanel extends EditableObjectTableSubPanel
 {
 	public ProgressReportSubPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(mainWindow.getProject(), ORef.createInvalidWithType(ProgressReport.getObjectType()));
+		super(mainWindow.getProject(), objectPickerToUse, ProgressReport.getObjectType());
 		
 		setLayout(new OneColumnGridLayout());
 		
