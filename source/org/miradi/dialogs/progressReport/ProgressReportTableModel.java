@@ -67,11 +67,6 @@ public class ProgressReportTableModel extends EditableObjectRefsTableModel
 			progressRefs = progressReportParent.getProgressReportRefs();
 	}
 
-	public String getColumnTag(int column)
-	{
-		return getColumnTags()[column];
-	}
-
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return ProgressReport.find(getProject(), progressRefs.get(row));
@@ -82,11 +77,6 @@ public class ProgressReportTableModel extends EditableObjectRefsTableModel
 		return progressRefs.size();
 	}
 
-	public int getColumnCount()
-	{
-		return getColumnTags().length;
-	}
-	
 	@Override
 	public String getColumnName(int column)
 	{
