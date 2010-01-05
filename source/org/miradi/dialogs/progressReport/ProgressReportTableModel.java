@@ -18,8 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.base;
+package org.miradi.dialogs.progressReport;
 
+import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;

@@ -27,7 +27,6 @@ import javax.swing.JPanel;
 import org.miradi.actions.ActionDeleteProgressReport;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.base.ProgressReportTableModel;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
