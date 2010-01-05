@@ -41,11 +41,6 @@ public class ProgressReportTableModel extends EditableObjectRefsTableModel
 		clearProgressReportRefs();
 	}
 
-	private void clearProgressReportRefs()
-	{
-		progressRefs = new ORefList();
-	}
-	
 	@Override
 	public String getUniqueTableModelIdentifier()
 	{
@@ -59,16 +54,6 @@ public class ProgressReportTableModel extends EditableObjectRefsTableModel
 		BaseObject progressReportParent = CreateProgressReportDoer.getProgressReportParent(getProject(), new ORefList(hierarchyToSelectedRef));
 		if (progressReportParent != null)
 			progressRefs = progressReportParent.getProgressReportRefs();
-	}
-
-	public BaseObject getBaseObjectForRowColumn(int row, int column)
-	{
-		return BaseObject.find(getProject(), progressRefs.get(row));
-	}
-
-	public int getRowCount()
-	{
-		return progressRefs.size();
 	}
 
 	@Override
@@ -142,6 +127,4 @@ public class ProgressReportTableModel extends EditableObjectRefsTableModel
 			ProgressReport.TAG_DETAILS, 
 			};
 	}
-	
-	private ORefList progressRefs;
 }

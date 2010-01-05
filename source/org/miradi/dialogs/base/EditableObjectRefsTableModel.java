@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
 public abstract class EditableObjectRefsTableModel extends EditableObjectTableModel
@@ -27,6 +29,21 @@ public abstract class EditableObjectRefsTableModel extends EditableObjectTableMo
 	public EditableObjectRefsTableModel(Project projectToUse)
 	{
 		super(projectToUse);
+	}
+	
+	public BaseObject getBaseObjectForRowColumn(int row, int column)
+	{
+		return BaseObject.find(getProject(), progressRefs.get(row));
+	}
+
+	public int getRowCount()
+	{
+		return progressRefs.size();
+	}
+	
+	protected void clearProgressReportRefs()
+	{
+		progressRefs = new ORefList();
 	}
 	
 	@Override
@@ -46,4 +63,6 @@ public abstract class EditableObjectRefsTableModel extends EditableObjectTableMo
 	}
 	
 	abstract protected String[] getColumnTags();
+	
+	protected ORefList progressRefs;
 }
