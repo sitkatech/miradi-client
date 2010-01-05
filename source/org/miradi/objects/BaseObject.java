@@ -342,6 +342,9 @@ abstract public class BaseObject
 			case ObjectType.HUMAN_WELFARE_TARGET:
 				return new HumanWelfareTarget(objectManager, new FactorId(idAsInt), json);
 				
+			case ObjectType.IUCN_REDLIST_SPECIES:
+				return new IucnRedlistSpecies(objectManager, idAsInt, json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}
