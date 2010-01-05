@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 03:07-0600\n"
+"POT-Creation-Date: 2010-01-05 03:13-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -6701,10 +6701,6 @@ msgstr "行动可见度 \t\t"
 #: Miradi/source/org/miradi/dialogs/activity/ActivityListManagementPanel.java:66
 msgid "Tab|Activities"
 msgstr "行动"
-
-#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportPropertiesPanel.java:45
-msgid "Title|Progress Report Properties"
-msgstr "进展报告属性 \t\t"
 
 #: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:129
 msgid "Title|Progress Report"
@@ -27205,6 +27201,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Title|Progress Report Properties"
+#~ msgstr "进展报告属性 \t\t"
 
 #~ msgid "Edit Progress Reports"
 #~ msgstr "编辑进展报告 \t\t"
