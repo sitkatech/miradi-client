@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 07:46-0600\n"
+"POT-Creation-Date: 2010-01-05 07:49-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4414,6 +4414,16 @@ msgstr "删除组织机构 \t\t"
 msgid "TT|Delete Organization"
 msgstr "删除组织机构 \t\t"
 
+#: Miradi/source/org/miradi/actions/ActionCreateProgressPercent.java:35
+#: Miradi/source/org/miradi/actions/ActionCreateObjectiveProgressPercent.java:35
+msgid "Action|Manage|Create Progress Percent"
+msgstr "创建进展百分比 \t\t"
+
+#: Miradi/source/org/miradi/actions/ActionCreateProgressPercent.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateObjectiveProgressPercent.java:40
+msgid "TT|Create a new Progress Percent"
+msgstr "创建新的进展百分比 \t\t"
+
 #: Miradi/source/org/miradi/actions/ActionShowSelectedChainMode.java:39
 msgid "Action|Brainstorm Mode"
 msgstr "集思广益模式 \t\t"
@@ -4647,12 +4657,12 @@ msgid "TT|Create a new Custom Planning View"
 msgstr "创建一个新的定制计划视图 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionDeleteObjectiveProgressPercent.java:35
-#: Miradi/source/org/miradi/actions/ActionDeleteGoalProgressPercent.java:35
+#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:35
 msgid "Action|Manage|Delete Progress Percent"
 msgstr "删除进展百分比 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionDeleteObjectiveProgressPercent.java:40
-#: Miradi/source/org/miradi/actions/ActionDeleteGoalProgressPercent.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:40
 msgid "TT|Delete Progress Percent"
 msgstr "删除进展百分比 \t\t"
 
@@ -5500,16 +5510,6 @@ msgstr "管理压力… \t\t"
 #: Miradi/source/org/miradi/actions/ActionManageStresses.java:40
 msgid "TT|Create, Delete, or Edit Stresses"
 msgstr "创建、删除、或编辑压力 \t\t"
-
-#: Miradi/source/org/miradi/actions/ActionCreateGoalProgressPercent.java:35
-#: Miradi/source/org/miradi/actions/ActionCreateObjectiveProgressPercent.java:35
-msgid "Action|Manage|Create Progress Percent"
-msgstr "创建进展百分比 \t\t"
-
-#: Miradi/source/org/miradi/actions/ActionCreateGoalProgressPercent.java:40
-#: Miradi/source/org/miradi/actions/ActionCreateObjectiveProgressPercent.java:40
-msgid "TT|Create a new Progress Percent"
-msgstr "创建新的进展百分比 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:34
 msgid "Action|Rename Custom"

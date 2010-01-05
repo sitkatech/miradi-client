@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 07:46-0600\n"
+"POT-Creation-Date: 2010-01-05 07:49-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -4597,6 +4597,16 @@ msgstr "Eliminar organización"
 msgid "TT|Delete Organization"
 msgstr "Eliminar organización"
 
+#: Miradi/source/org/miradi/actions/ActionCreateProgressPercent.java:35
+#: Miradi/source/org/miradi/actions/ActionCreateObjectiveProgressPercent.java:35
+msgid "Action|Manage|Create Progress Percent"
+msgstr "Crear porcentaje de progreso"
+
+#: Miradi/source/org/miradi/actions/ActionCreateProgressPercent.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateObjectiveProgressPercent.java:40
+msgid "TT|Create a new Progress Percent"
+msgstr "Crear un nuevo porcentaje de progreso"
+
 #: Miradi/source/org/miradi/actions/ActionShowSelectedChainMode.java:39
 msgid "Action|Brainstorm Mode"
 msgstr "Modo Tormenta de ideas"
@@ -4831,12 +4841,12 @@ msgid "TT|Create a new Custom Planning View"
 msgstr "Crear una nueva vista Planificación personalizada"
 
 #: Miradi/source/org/miradi/actions/ActionDeleteObjectiveProgressPercent.java:35
-#: Miradi/source/org/miradi/actions/ActionDeleteGoalProgressPercent.java:35
+#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:35
 msgid "Action|Manage|Delete Progress Percent"
 msgstr "Eliminar porcentaje de progreso"
 
 #: Miradi/source/org/miradi/actions/ActionDeleteObjectiveProgressPercent.java:40
-#: Miradi/source/org/miradi/actions/ActionDeleteGoalProgressPercent.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:40
 msgid "TT|Delete Progress Percent"
 msgstr "Eliminar porcentaje de progreso"
 
@@ -5685,16 +5695,6 @@ msgstr "Manejar presiones…"
 #: Miradi/source/org/miradi/actions/ActionManageStresses.java:40
 msgid "TT|Create, Delete, or Edit Stresses"
 msgstr "Crear, eliminar o editar presiones"
-
-#: Miradi/source/org/miradi/actions/ActionCreateGoalProgressPercent.java:35
-#: Miradi/source/org/miradi/actions/ActionCreateObjectiveProgressPercent.java:35
-msgid "Action|Manage|Create Progress Percent"
-msgstr "Crear porcentaje de progreso"
-
-#: Miradi/source/org/miradi/actions/ActionCreateGoalProgressPercent.java:40
-#: Miradi/source/org/miradi/actions/ActionCreateObjectiveProgressPercent.java:40
-msgid "TT|Create a new Progress Percent"
-msgstr "Crear un nuevo porcentaje de progreso"
 
 #: Miradi/source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:34
 msgid "Action|Rename Custom"
