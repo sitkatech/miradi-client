@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella.doers;
 
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
 import org.miradi.objects.ProgressPercent;
@@ -28,15 +27,10 @@ import org.miradi.views.diagram.DeleteAnnotationDoer;
 
 public class DeleteProgressPercentDoer extends DeleteAnnotationDoer
 {
-	//FIXME urgent pull up and reuse
 	@Override
 	protected BaseObject getParent(BaseObject annotationToDelete)
 	{
-		ORefList referrerRefs = annotationToDelete.findObjectsThatReferToUs();
-		if (referrerRefs.isEmpty())
-			return null;
-			
-		return BaseObject.find(getProject(), referrerRefs.get(0));
+		return getReferrerParent(annotationToDelete);
 	}
 
 	public String getAnnotationIdListTag()
