@@ -40,12 +40,14 @@ public class ProgressReportSubPanel extends EditableObjectTableSubPanel
 		super(mainWindow.getProject(), objectPickerToUse, getObjectType());
 	}
 	
+	@Override
 	protected void createTable() throws Exception
 	{
 		progressReportTableModel = new ProgressReportTableModel(getMainWindow().getProject());
 		progressReportTable = new ProgressReportTable(getMainWindow(), progressReportTableModel);
 	}
 	
+	@Override
 	protected JPanel createButtonBar()
 	{
 		OneRowPanel box = new OneRowPanel();
@@ -63,11 +65,13 @@ public class ProgressReportSubPanel extends EditableObjectTableSubPanel
 		return EAM.text("Title|Progress Report");
 	}
 	
+	@Override
 	protected int getEditableObjectType()
 	{
 		return getObjectType();
 	}
 	
+	@Override
 	protected String getTag()
 	{
 		return BaseObject.TAG_PROGRESS_REPORT_REFS;
