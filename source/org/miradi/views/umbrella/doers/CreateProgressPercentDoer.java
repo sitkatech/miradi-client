@@ -25,11 +25,13 @@ import org.miradi.views.diagram.doers.CreateAnnotationWithFactorParent;
 
 public class CreateProgressPercentDoer extends CreateAnnotationWithFactorParent
 {
+	@Override
 	public String getAnnotationListTag()
 	{
 		return Desire.TAG_PROGRESS_PERCENT_REFS;
 	}
 
+	@Override
 	public int getAnnotationType()
 	{
 		return ProgressPercent.getObjectType();
