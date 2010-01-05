@@ -47,12 +47,6 @@ public class ProgressReportTableModel extends EditableObjectRefsTableModel
 	}
 	
 	@Override
-	public boolean isCellEditable(int row, int column)
-	{
-		return true;
-	}
-
-	@Override
 	public String getUniqueTableModelIdentifier()
 	{
 		return "ProgressReportTableModel";
