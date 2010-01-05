@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 
-abstract public class CreateAnnotationWithFactorParent extends CreateAnnotationDoer
+abstract public class AbstractCreateProgressDoer extends CreateAnnotationDoer
 {	
 	@Override
 	public BaseObject getSelectedParentFactor()

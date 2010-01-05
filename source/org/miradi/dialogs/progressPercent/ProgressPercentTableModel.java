@@ -29,7 +29,7 @@ import org.miradi.objects.ProgressPercent;
 import org.miradi.project.Project;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
-import org.miradi.views.diagram.doers.CreateAnnotationWithFactorParent;
+import org.miradi.views.diagram.doers.AbstractCreateProgressDoer;
 
 public class ProgressPercentTableModel extends EditableObjectRefsTableModel
 {
@@ -47,7 +47,7 @@ public class ProgressPercentTableModel extends EditableObjectRefsTableModel
 	@Override
 	protected ORefList extractOutEditableRefs(ORef[] hierarchyToSelectedRef)
 	{
-		BaseObject parent = CreateAnnotationWithFactorParent.getParent(getProject(), new ORefList(hierarchyToSelectedRef), getObjectType());
+		BaseObject parent = AbstractCreateProgressDoer.getParent(getProject(), new ORefList(hierarchyToSelectedRef), getObjectType());
 		if (parent == null)
 			return new ORefList();
 		
