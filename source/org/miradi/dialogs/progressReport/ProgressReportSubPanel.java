@@ -27,7 +27,6 @@ import javax.swing.JPanel;
 import org.miradi.actions.ActionDeleteProgressReport;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.EditableObjectTableSubPanel;
-import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
@@ -47,9 +46,6 @@ public class ProgressReportSubPanel extends EditableObjectTableSubPanel
 	{
 		super(mainWindow.getProject(), objectPickerToUse, ProgressReport.getObjectType());
 		
-		setLayout(new OneColumnGridLayout());
-		
-		objectPicker = objectPickerToUse;
 		createTable();
 		addComponents();
 		updateFieldsFromProject();
@@ -151,5 +147,4 @@ public class ProgressReportSubPanel extends EditableObjectTableSubPanel
 	
 	private ProgressReportTableModel progressReportTableModel;
 	private ProgressReportTable progressReportTable;
-	private ObjectPicker objectPicker;
 }
