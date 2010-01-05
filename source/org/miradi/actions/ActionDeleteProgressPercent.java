@@ -23,9 +23,9 @@ import org.miradi.icons.DeleteIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionDeleteGoalProgressPercent extends ObjectsAction
+public class ActionDeleteProgressPercent extends ObjectsAction
 {
-	public ActionDeleteGoalProgressPercent(MainWindow mainWindowToUse)
+	public ActionDeleteProgressPercent(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel(), new DeleteIcon());
 	}
