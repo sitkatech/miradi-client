@@ -77,7 +77,7 @@ public class ProgressPercentSubPanel extends EditableObjectTableSubPanel
 	}
 
 	@Override
-	protected String getTag()
+	protected String getTagForRefListFieldBeingEdited()
 	{
 		return Objective.TAG_PROGRESS_PERCENT_REFS;
 	}

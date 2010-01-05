@@ -105,13 +105,13 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 		if (event.isSetDataCommandWithThisType(getEditableObjectType()))
 			objectTableModel.fireTableDataChanged();
 		
-		if (event.isSetDataCommandWithThisTag(getTag()))
+		if (event.isSetDataCommandWithThisTag(getTagForRefListFieldBeingEdited()))
 			refreshModel();
 	}
 	
 	abstract protected int getEditableObjectType();
 	
-	abstract protected String getTag();
+	abstract protected String getTagForRefListFieldBeingEdited();
 	
 	abstract protected JPanel createButtonBar();
 	
