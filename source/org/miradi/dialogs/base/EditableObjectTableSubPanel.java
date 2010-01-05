@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
+import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -29,5 +30,11 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	public EditableObjectTableSubPanel(Project projectToUse, ObjectPicker objectPickerToUse, int ObjectType) throws Exception
 	{
 		super(projectToUse, ORef.createInvalidWithType(ObjectType));
+		
+		setLayout(new OneColumnGridLayout());
+		
+		objectPicker = objectPickerToUse;
 	}
+	
+	protected ObjectPicker objectPicker;
 }
