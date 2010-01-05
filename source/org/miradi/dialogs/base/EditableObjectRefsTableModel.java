@@ -29,6 +29,8 @@ public abstract class EditableObjectRefsTableModel extends EditableObjectTableMo
 	public EditableObjectRefsTableModel(Project projectToUse)
 	{
 		super(projectToUse);
+		
+		clearProgressReportRefs();
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)

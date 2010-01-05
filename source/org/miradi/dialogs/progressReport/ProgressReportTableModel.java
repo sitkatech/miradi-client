@@ -37,8 +37,6 @@ public class ProgressReportTableModel extends EditableObjectRefsTableModel
 	public ProgressReportTableModel(Project projectToUse)
 	{
 		super(projectToUse);
-		
-		clearProgressReportRefs();
 	}
 
 	@Override
