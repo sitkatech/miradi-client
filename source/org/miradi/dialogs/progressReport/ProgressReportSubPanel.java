@@ -20,23 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.progressReport;
 
-import java.awt.BorderLayout;
-
 import javax.swing.JPanel;
 
 import org.miradi.actions.ActionDeleteProgressReport;
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.EditableObjectTableSubPanel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressReport;
-import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.umbrella.ActionCreateProgressReport;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -45,46 +39,12 @@ public class ProgressReportSubPanel extends EditableObjectTableSubPanel
 	public ProgressReportSubPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(mainWindow.getProject(), objectPickerToUse, ProgressReport.getObjectType());
-		
-		createTable();
-		addComponents();
-		updateFieldsFromProject();
 	}
 	
-	@Override
-	public void dispose()
-	{
-		super.dispose();
-		progressReportTable.dispose();
-	}
-	
-	private void createTable() throws Exception
+	protected void createTable() throws Exception
 	{
 		progressReportTableModel = new ProgressReportTableModel(getMainWindow().getProject());
 		progressReportTable = new ProgressReportTable(getMainWindow(), progressReportTableModel);
-	}
-	
-	@Override
-	public void becomeActive()
-	{
-		super.becomeActive();
-		
-		progressReportTable.becomeActive();
-	}
-	
-	@Override
-	public void becomeInactive()
-	{
-		progressReportTable.becomeInactive();
-
-		super.becomeInactive();
-	}
-	
-	private void addComponents()
-	{
-		MiradiScrollPane scroller = new MiradiScrollPane(progressReportTable);
-		add(createButtonBar(), BorderLayout.PAGE_START);
-		add(scroller, BorderLayout.CENTER);
 	}
 	
 	protected JPanel createButtonBar()
@@ -98,26 +58,6 @@ public class ProgressReportSubPanel extends EditableObjectTableSubPanel
 		return box;
 	}
 	
-	public void refreshModel()
-	{
-		ORefList[] selectedHierarchies = objectPicker.getSelectedHierarchies();
-		if (selectedHierarchies.length > 0)
-			setObjectRefs(selectedHierarchies[0].toArray());
-	}
-	
-	@Override
-	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
-	{
-		progressReportTable.stopCellEditing();
-		progressReportTableModel.setObjectRefs(hierarchyToSelectedRef);
-		progressReportTableModel.fireTableDataChanged();
-	}
-	
-	private Actions getActions()
-	{
-		return getMainWindow().getActions();
-	}
-		
 	@Override
 	public String getPanelDescription()
 	{

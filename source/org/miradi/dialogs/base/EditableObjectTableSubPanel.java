@@ -20,9 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
+import java.awt.BorderLayout;
+
+import javax.swing.JPanel;
+
+import org.miradi.actions.Actions;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
+import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
@@ -34,7 +41,64 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 		setLayout(new OneColumnGridLayout());
 		
 		objectPicker = objectPickerToUse;
+		createTable();
+		addComponents();
+		updateFieldsFromProject();
 	}
+	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		progressReportTable.dispose();
+	}
+	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		
+		progressReportTable.becomeActive();
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		progressReportTable.becomeInactive();
+
+		super.becomeInactive();
+	}
+	
+	public void refreshModel()
+	{
+		ORefList[] selectedHierarchies = objectPicker.getSelectedHierarchies();
+		if (selectedHierarchies.length > 0)
+			setObjectRefs(selectedHierarchies[0].toArray());
+	}
+	
+	@Override
+	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	{
+		progressReportTable.stopCellEditing();
+		progressReportTableModel.setObjectRefs(hierarchyToSelectedRef);
+		progressReportTableModel.fireTableDataChanged();
+	}
+	
+	protected Actions getActions()
+	{
+		return getMainWindow().getActions();
+	}
+	
+	private void addComponents()
+	{
+		MiradiScrollPane scroller = new MiradiScrollPane(progressReportTable);
+		add(createButtonBar(), BorderLayout.PAGE_START);
+		add(scroller, BorderLayout.CENTER);
+	}
+	
+	abstract protected JPanel createButtonBar();
+	
+	abstract protected void createTable() throws Exception;
 	
 	protected ObjectPicker objectPicker;
 	protected EditableObjectRefsTableModel progressReportTableModel;
