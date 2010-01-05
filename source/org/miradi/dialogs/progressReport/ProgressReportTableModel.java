@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.progressReport;
 
 import org.miradi.dialogs.base.EditableObjectRefsTableModel;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -56,9 +55,9 @@ public class ProgressReportTableModel extends EditableObjectRefsTableModel
 	}
 
 	@Override
-	public String getColumnName(int column)
+	protected int getObjectType()
 	{
-		return EAM.fieldLabel(ProgressReport.getObjectType(), getColumnTag(column));
+		return ProgressReport.getObjectType();
 	}
 
 	public Object getValueAt(int rowIndex, int columnIndex)
@@ -100,17 +99,17 @@ public class ProgressReportTableModel extends EditableObjectRefsTableModel
 
 	public boolean isDateColumn(int columnIndex)
 	{
-		return getColumnTag(columnIndex).equals(ProgressReport.TAG_PROGRESS_DATE);
+		return isColumnForTag(columnIndex, ProgressReport.TAG_PROGRESS_DATE);
 	}
 
 	public boolean isDetailsColumn(int columnIndex)
 	{
-		return getColumnTag(columnIndex).equals(ProgressReport.TAG_DETAILS);
+		return isColumnForTag(columnIndex, ProgressReport.TAG_DETAILS);
 	}
 
 	public boolean isProgressStatusColumn(int columnIndex)
 	{
-		return getColumnTag(columnIndex).equals(ProgressReport.TAG_PROGRESS_STATUS);
+		return isColumnForTag(columnIndex, ProgressReport.TAG_PROGRESS_STATUS);
 	}
 	
 	private ProgressReport getProgressReportForRow(int rowIndex, int columnIndex)
