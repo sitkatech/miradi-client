@@ -31,13 +31,13 @@ public abstract class EditableObjectRefsTableModel extends EditableObjectTableMo
 	{
 		super(projectToUse);
 		
-		clearProgressReportRefs();
+		clearRefs();
 	}
 	
 	@Override
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
-		clearProgressReportRefs();
+		clearRefs();
 		refs = extractOutEditableRefs(hierarchyToSelectedRef);
 	}
 	
@@ -51,7 +51,7 @@ public abstract class EditableObjectRefsTableModel extends EditableObjectTableMo
 		return refs.size();
 	}
 	
-	protected void clearProgressReportRefs()
+	private void clearRefs()
 	{
 		refs = new ORefList();
 	}
