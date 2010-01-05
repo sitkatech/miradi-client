@@ -23,12 +23,12 @@ package org.miradi.dialogs.progressReport;
 import javax.swing.JTable;
 
 import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
-import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.base.EditableObjectTableModel;
+import org.miradi.dialogs.base.EditableRefsTable;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
 
-public class ProgressReportTable extends EditableObjectTable
+public class ProgressReportTable extends EditableRefsTable
 {
 	public ProgressReportTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
 	{
