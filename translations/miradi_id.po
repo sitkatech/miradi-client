@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 03:05-0600\n"
+"POT-Creation-Date: 2010-01-05 03:07-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -635,10 +635,6 @@ msgstr "Anda yakin ingin menghapus Laporan Kemajuan ini?"
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractManageFactorTagDoer.java:56
 msgid "Choose Tags"
 msgstr ""
-
-#: Miradi/source/org/miradi/views/diagram/doers/AbstractProgressReportPopupEditor.java:33
-msgid "Edit Progress Reports"
-msgstr "Edit Laporan Kemajuan "
 
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:37
 #: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:41
@@ -6885,10 +6881,6 @@ msgstr "Sifat-sifat Laporan Kemajuan "
 #: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:129
 msgid "Title|Progress Report"
 msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportManagementPanel.java:48
-msgid "Tab|Progress Reports"
-msgstr "Laporan Kemajuan "
 
 #: Miradi/source/org/miradi/dialogs/treetables/TreeTablePanel.java:103
 msgid "Error restoring tree state"
@@ -29854,6 +29846,12 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Edit Progress Reports"
+#~ msgstr "Edit Laporan Kemajuan "
+
+#~ msgid "Tab|Progress Reports"
+#~ msgstr "Laporan Kemajuan "
 
 #~ msgid "Action|Edit Progress Reports..."
 #~ msgstr "Edit Laporan Kemajuan… "
