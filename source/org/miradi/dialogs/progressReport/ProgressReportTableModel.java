@@ -46,13 +46,7 @@ public class ProgressReportTableModel extends EditableObjectRefsTableModel
 	}
 
 	@Override
-	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
-	{
-		clearProgressReportRefs();
-		refs = getRefs(hierarchyToSelectedRef);
-	}
-
-	private ORefList getRefs(ORef[] hierarchyToSelectedRef)
+	protected ORefList extractOutEditableRefs(ORef[] hierarchyToSelectedRef)
 	{
 		BaseObject progressReportParent = CreateProgressReportDoer.getProgressReportParent(getProject(), new ORefList(hierarchyToSelectedRef));
 		if (progressReportParent == null)
@@ -124,6 +118,7 @@ public class ProgressReportTableModel extends EditableObjectRefsTableModel
 		return (ProgressReport) getBaseObjectForRowColumn(rowIndex, columnIndex);
 	}
 	
+	@Override
 	protected String[] getColumnTags()
 	{
 		return new String[]{
