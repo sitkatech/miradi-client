@@ -44,7 +44,7 @@ public class ProgressReportSubPanel extends EditableObjectTableSubPanel
 	protected void createTable() throws Exception
 	{
 		objectTableModel = new ProgressReportTableModel(getMainWindow().getProject());
-		progressReportTable = new ProgressReportTable(getMainWindow(), objectTableModel);
+		objectTable = new ProgressReportTable(getMainWindow(), objectTableModel);
 	}
 	
 	@Override
@@ -54,7 +54,7 @@ public class ProgressReportSubPanel extends EditableObjectTableSubPanel
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		box.setGaps(3);
 		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionCreateProgressReport.class), objectPicker));
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionDeleteProgressReport.class), progressReportTable));
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionDeleteProgressReport.class), objectTable));
 		
 		return box;
 	}
