@@ -26,9 +26,9 @@ import org.miradi.main.MainWindow;
 
 abstract public class EditableRefsTable extends EditableObjectTable
 {
-	public EditableRefsTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse, String uniqueTableIdentifierToUse)
+	public EditableRefsTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse, uniqueTableIdentifierToUse);
+		super(mainWindowToUse, modelToUse, modelToUse.getUniqueTableModelIdentifier());
 		
 		rebuildColumnEditorsAndRenderers();
 		listenForColumnWidthChanges(this);
