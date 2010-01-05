@@ -105,6 +105,7 @@ import org.miradi.objects.TestGoal;
 import org.miradi.objects.TestHumanWelfareTarget;
 import org.miradi.objects.TestIndicator;
 import org.miradi.objects.TestIntermediateResult;
+import org.miradi.objects.TestIucnRedlistSpecies;
 import org.miradi.objects.TestKeyEcologicalAttribute;
 import org.miradi.objects.TestMeasurement;
 import org.miradi.objects.TestObjectFindOwnerAndFindReferrer;
@@ -410,6 +411,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestThreatRatingCommentsData.class));
 		suite.addTest(new TestSuite(TestExpense.class));
 		suite.addTest(new TestSuite(TestHumanWelfareTarget.class));
+		suite.addTest(new TestSuite(TestIucnRedlistSpecies.class));
 			
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

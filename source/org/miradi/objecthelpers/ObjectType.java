@@ -76,7 +76,8 @@ public class ObjectType
 	public static final int SCOPE_BOX = 50;
 	public static final int EXPENSE_ASSIGNMENT = 51;
 	public static final int HUMAN_WELFARE_TARGET = 52;
+	public static final int IUCN_REDLIST_SPECIES = 53;
 	
-	public static final int OBJECT_TYPE_COUNT = 53;
+	public static final int OBJECT_TYPE_COUNT = 54;
 }
 
