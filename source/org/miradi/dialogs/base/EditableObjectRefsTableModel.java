@@ -28,6 +28,12 @@ public abstract class EditableObjectRefsTableModel extends EditableObjectTableMo
 	{
 		super(projectToUse);
 	}
+	
+	@Override
+	public boolean isCellEditable(int row, int column)
+	{
+		return true;
+	}
 
 	public String getColumnTag(int column)
 	{
