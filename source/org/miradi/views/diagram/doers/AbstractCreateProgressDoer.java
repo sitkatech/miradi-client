@@ -35,10 +35,10 @@ abstract public class AbstractCreateProgressDoer extends CreateAnnotationDoer
 			return null;
 		
 		ORefList selectionRefs = getPicker().getSelectedHierarchies()[0];
-		return extractCandidateProgressParent(getProject(), selectionRefs, getAnnotationType());
+		return extractProgressParentCandidate(getProject(), selectionRefs, getAnnotationType());
 	}
 
-	public static BaseObject extractCandidateProgressParent(Project projectToUse, ORefList selectionRefs, int objectTypeToRemove)
+	public static BaseObject extractProgressParentCandidate(Project projectToUse, ORefList selectionRefs, int objectTypeToRemove)
 	{
 		removeFirstRefInPlace(selectionRefs, objectTypeToRemove);
 		if (selectionRefs.isEmpty())
