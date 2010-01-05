@@ -187,16 +187,15 @@ import org.miradi.views.Doer;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.NullDoer;
 import org.miradi.views.diagram.Print;
-import org.miradi.views.diagram.doers.CreateObjectiveProgressPercentDoer;
 import org.miradi.views.diagram.doers.CreateProgressReportDoer;
 import org.miradi.views.diagram.doers.DeleteObjectiveProgressPercentDoer;
 import org.miradi.views.diagram.doers.DeleteProgressReportDoer;
 import org.miradi.views.diagram.doers.EditEstimatedResourceDoer;
 import org.miradi.views.diagram.doers.EditObjectiveProgressPercentDoer;
+import org.miradi.views.umbrella.doers.AbstractCreateProgressPercent;
 import org.miradi.views.umbrella.doers.CollapseAllRowsDoer;
 import org.miradi.views.umbrella.doers.CreateAssignmentDoer;
 import org.miradi.views.umbrella.doers.CreateExpenseDoer;
-import org.miradi.views.umbrella.doers.CreateGoalProgressPercentDoer;
 import org.miradi.views.umbrella.doers.CreateMethodDoer;
 import org.miradi.views.umbrella.doers.DeleteExpenseDoer;
 import org.miradi.views.umbrella.doers.DeleteGoalProgressPercentDoer;
@@ -401,11 +400,11 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionDeleteProgressReport.class, new DeleteProgressReportDoer());
 		
 		addDoerToMap(ActionEditGoalProgressPercent.class, new EditGoalProgressPercentDoer());
-		addDoerToMap(ActionCreateGoalProgressPercent.class, new CreateGoalProgressPercentDoer());
+		addDoerToMap(ActionCreateGoalProgressPercent.class, new AbstractCreateProgressPercent());
 		addDoerToMap(ActionDeleteGoalProgressPercent.class, new DeleteGoalProgressPercentDoer());
 		
 		addDoerToMap(ActionEditObjectiveProgressPercent.class, new EditObjectiveProgressPercentDoer());
-		addDoerToMap(ActionCreateObjectiveProgressPercent.class, new CreateObjectiveProgressPercentDoer());
+		addDoerToMap(ActionCreateObjectiveProgressPercent.class, new AbstractCreateProgressPercent());
 		addDoerToMap(ActionDeleteObjectiveProgressPercent.class, new DeleteObjectiveProgressPercentDoer());
 		
 		addDoerToMap(ActionEditEstimatedResource.class, new EditEstimatedResourceDoer());

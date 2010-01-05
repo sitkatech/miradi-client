@@ -19,11 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressReport;
-import org.miradi.project.Project;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 
 public class CreateProgressReportDoer extends CreateAnnotationDoer
@@ -35,26 +33,7 @@ public class CreateProgressReportDoer extends CreateAnnotationDoer
 			return null;
 		
 		ORefList selectionRefs = getPicker().getSelectedHierarchies()[0];
-		return getProgressReportParent(getProject(), selectionRefs);
-	}
-
-	public static BaseObject getProgressReportParent(Project projectToUse, ORefList selectionRefs)
-	{
-		removeFirstProgressReportRefInPlace(selectionRefs);
-		if (selectionRefs.isEmpty())
-			return null;
-		
-		ORef parentOfProgessReportRef = selectionRefs.getFirstElement();
-		if (parentOfProgessReportRef.isInvalid())
-			return null;
-		
-		return BaseObject.find(projectToUse, parentOfProgessReportRef);
-	}
-
-	private static void removeFirstProgressReportRefInPlace(ORefList selectionRefs)
-	{
-		ORef progressReportRef = selectionRefs.getRefForType(ProgressReport.getObjectType());
-		selectionRefs.remove(progressReportRef);
+		return CreateAnnotationWithFactorParent.getParent(getProject(), selectionRefs, getAnnotationType());
 	}
 	
 	@Override

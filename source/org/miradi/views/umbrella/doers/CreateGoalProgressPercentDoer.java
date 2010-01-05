@@ -19,14 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.objects.Goal;
 
 
 public class CreateGoalProgressPercentDoer extends AbstractCreateProgressPercent
 {
-	@Override
-	protected int getParentType()
-	{
-		return Goal.getObjectType();
-	}
 }
