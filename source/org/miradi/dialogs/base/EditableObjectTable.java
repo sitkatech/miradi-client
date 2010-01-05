@@ -58,7 +58,6 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 	{
 		super(mainWindowToUse, modelToUse, uniqueTableIdentifierToUse);
 		
-		
 		model = modelToUse;
 		selectionListeners = new Vector();
 		
