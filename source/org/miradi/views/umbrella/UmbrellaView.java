@@ -40,10 +40,12 @@ import org.miradi.actions.ActionClose;
 import org.miradi.actions.ActionCollapseAllRows;
 import org.miradi.actions.ActionConfigureExport;
 import org.miradi.actions.ActionCreateExpense;
+import org.miradi.actions.ActionCreateIucnRedlistSpecies;
 import org.miradi.actions.ActionCreateProgressPercent;
 import org.miradi.actions.ActionCreateMethod;
 import org.miradi.actions.ActionDatabasesDemo;
 import org.miradi.actions.ActionDeleteExpense;
+import org.miradi.actions.ActionDeleteIucnRedlistSpecies;
 import org.miradi.actions.ActionDeleteProgressPercent;
 import org.miradi.actions.ActionDeleteLegacyTncStrategyRanking;
 import org.miradi.actions.ActionDeleteMethod;
@@ -189,9 +191,11 @@ import org.miradi.views.diagram.doers.EditEstimatedResourceDoer;
 import org.miradi.views.umbrella.doers.CollapseAllRowsDoer;
 import org.miradi.views.umbrella.doers.CreateAssignmentDoer;
 import org.miradi.views.umbrella.doers.CreateExpenseDoer;
+import org.miradi.views.umbrella.doers.CreateIucnRedlistSpeciesDoer;
 import org.miradi.views.umbrella.doers.CreateMethodDoer;
 import org.miradi.views.umbrella.doers.CreateProgressPercentDoer;
 import org.miradi.views.umbrella.doers.DeleteExpenseDoer;
+import org.miradi.views.umbrella.doers.DeleteIucnRedlistSpeciesDoer;
 import org.miradi.views.umbrella.doers.DeleteLegacyTncStrategyRankingDoer;
 import org.miradi.views.umbrella.doers.DeleteMethodDoer;
 import org.miradi.views.umbrella.doers.DeleteProgressPercentDoer;
@@ -426,6 +430,10 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionRemoveAssignment.class, new RemoveResourceAssignmentDoer());
 		addDoerToMap(ActionCreateExpense.class, new CreateExpenseDoer());
 		addDoerToMap(ActionDeleteExpense.class, new DeleteExpenseDoer());
+		
+		addDoerToMap(ActionCreateIucnRedlistSpecies.class, new CreateIucnRedlistSpeciesDoer());
+		addDoerToMap(ActionDeleteIucnRedlistSpecies.class, new DeleteIucnRedlistSpeciesDoer());
+		
 				
 		addDoerToMap(ActionPrint.class, new Print());
 		addDoerToMap(ActionShowCurrentWizardFileName.class, new ShowCurrentWizardFileNameDoer());
