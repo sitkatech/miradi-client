@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.otherNotableSpecies;
 
-import org.miradi.dialogs.base.EditableObjectRefsTableModel;
+import org.miradi.dialogs.base.EditableObjectPoolRefsTableModel;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -29,7 +29,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
 
-public class OtherNotableSpeciesEditablePoolTableModel extends EditableObjectRefsTableModel
+public class OtherNotableSpeciesEditablePoolTableModel extends EditableObjectPoolRefsTableModel
 {
 	public OtherNotableSpeciesEditablePoolTableModel(Project projectToUse)
 	{
