@@ -23,14 +23,14 @@ import org.miradi.ids.BaseId;
 import org.miradi.project.Project;
 import org.miradi.utils.FloatingPointRestrictedDocument;
 
-public class ObjectNumericInputField extends ObjectAdjustableStringInputField
+public class ObjectFloatingPointRestrictedInputField extends ObjectAdjustableStringInputField
 {
-	public ObjectNumericInputField(Project projectToUse, int objectType, BaseId objectId, String tag, int column)
+	public ObjectFloatingPointRestrictedInputField(Project projectToUse, int objectType, BaseId objectId, String tag, int column)
 	{
 		super(projectToUse, objectType, objectId, tag, column, new FloatingPointRestrictedDocument());
 	}
 		
-	public ObjectNumericInputField(Project projectToUse, int objectType, BaseId objectId, String tag)
+	public ObjectFloatingPointRestrictedInputField(Project projectToUse, int objectType, BaseId objectId, String tag)
 	{
 		this(projectToUse, objectType, objectId, tag, 10);
 	}

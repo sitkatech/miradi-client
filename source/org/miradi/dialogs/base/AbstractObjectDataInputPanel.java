@@ -51,7 +51,7 @@ import org.miradi.dialogfields.ObjectDateChooserInputField;
 import org.miradi.dialogfields.ObjectExpandingMultilineInputField;
 import org.miradi.dialogfields.ObjectIconChoiceField;
 import org.miradi.dialogfields.ObjectMultilineDisplayField;
-import org.miradi.dialogfields.ObjectNumericInputField;
+import org.miradi.dialogfields.ObjectFloatingPointRestrictedInputField;
 import org.miradi.dialogfields.ObjectOverridenListField;
 import org.miradi.dialogfields.ObjectPercentageInputField;
 import org.miradi.dialogfields.ObjectRadioButtonGroupField;
@@ -398,12 +398,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createNumericField(String tag, int column)
 	{
-		return new ObjectNumericInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, column);
+		return new ObjectFloatingPointRestrictedInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, column);
 	}
 	
 	public ObjectDataInputField createNumericField(int objectType, String tag, int column)
 	{
-		return new ObjectNumericInputField(project, objectType, getObjectIdForType(objectType), tag, column);
+		return new ObjectFloatingPointRestrictedInputField(project, objectType, getObjectIdForType(objectType), tag, column);
 	}
 
 	public ObjectDataInputField createCurrencyField(int objectType, String tag)
@@ -425,12 +425,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 	public ObjectDataInputField createNumericField(String tag)
 	{
-		return new ObjectNumericInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag);
+		return new ObjectFloatingPointRestrictedInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag);
 	}
 	
 	public ObjectDataInputField createNumericField(int objectType, String tag)
 	{
-		return new ObjectNumericInputField(project, objectType, getObjectIdForType(objectType), tag);
+		return new ObjectFloatingPointRestrictedInputField(project, objectType, getObjectIdForType(objectType), tag);
 	}
 
 	public ObjectDataInputField createPercentageField(String tag)
