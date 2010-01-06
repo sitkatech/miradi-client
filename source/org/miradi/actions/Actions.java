@@ -268,6 +268,8 @@ public class Actions
 		registerAction(new ActionDeleteExpense(mainWindow));
 		registerAction(new ActionCreateIucnRedlistSpecies(mainWindow));
 		registerAction(new ActionDeleteIucnRedlistSpecies(mainWindow));
+		registerAction(new ActionCreateOtherNotableSpecies(mainWindow));
+		registerAction(new ActionDeleteOtherNotableSpecies(mainWindow));
 		
 		registerAction(new ActionDeleteWorkPlanNode(mainWindow));
 		registerAction(new ActionPreferences(mainWindow));
