@@ -42,7 +42,7 @@ public class ProgressPercentTable extends EditableRefsTable
 				createDateColumn(tableColumn);
 				
 			if (progressPercentTableModel.isPercentCompleteColumn(modelColumn))
-				createNumericRestrictedColumn(tableColumn);
+				createFloatingPointRestrictedColumn(tableColumn);
 			
 			if (progressPercentTableModel.isPercentCompleteNotesColumn(modelColumn))
 				createWrappableTextFieldColumn(tableColumn);

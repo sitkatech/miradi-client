@@ -101,7 +101,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 		return model.getColumnTag(modelColumn);
 	}
 	
-	protected void createNumericRestrictedColumn(int tableColumn)
+	protected void createFloatingPointRestrictedColumn(int tableColumn)
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
