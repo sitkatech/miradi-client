@@ -19,16 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.summary;
 
+import org.miradi.dialogs.audience.AudienceSubPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.forms.summary.RareTabCampaignSubPanelForm;
 import org.miradi.main.EAM;
+import org.miradi.objects.Audience;
 import org.miradi.objects.RareProjectData;
 import org.miradi.project.Project;
 
 public class RareCampaignSummarySubPanel extends ObjectDataInputPanel
 {
-	public RareCampaignSummarySubPanel(Project projectToUse)
+	public RareCampaignSummarySubPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()));
 		
@@ -37,6 +39,9 @@ public class RareCampaignSummarySubPanel extends ObjectDataInputPanel
 		
 		addField(createNumericField(RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA));
 		addField(createStringField(RareProjectData.TAG_AUDIENCE));
+		
+		addLabel(Audience.getObjectType(), Audience.TAG_LABEL);
+		addSubPanelWithTitledBorder(new AudienceSubPanel(getProject(), getPicker()));
 		
 		addLabelsOnSingleRow(RareTabCampaignSubPanelForm.HUMAN_STAKEHOLDER_POP_SIZE_CONSTANT, RareTabCampaignSubPanelForm.SEE_SCOPE_TAB_CONSTANT);
 		addLabelsOnSingleRow(RareTabCampaignSubPanelForm.BIODIVERSITY_AREA_HA_CONSTANT, RareTabCampaignSubPanelForm.SEE_SCOPE_TAB_CONSTANT);

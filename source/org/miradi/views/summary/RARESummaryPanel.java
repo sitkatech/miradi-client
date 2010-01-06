@@ -32,7 +32,7 @@ import org.miradi.rtf.RtfWriter;
 
 public class RARESummaryPanel extends ObjectDataInputPanelWithSections
 {
-	public RARESummaryPanel(Project projectToUse)
+	public RARESummaryPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, RareProjectData.getObjectType());
 		
