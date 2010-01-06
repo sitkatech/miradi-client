@@ -129,14 +129,9 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 			refreshModel();
 	}
 
-	protected boolean shouldRefreshModel(CommandExecutedEvent event)
-	{
-		return event.isSetDataCommandWithThisTag(getTagForRefListFieldBeingEdited());
-	}
+	abstract protected boolean shouldRefreshModel(CommandExecutedEvent event);
 	
 	abstract protected int getEditableObjectType();
-	
-	abstract protected String getTagForRefListFieldBeingEdited();
 	
 	abstract protected HashMap<Class, ObjectPicker> getButtonsActionsPickerMap();
 	
