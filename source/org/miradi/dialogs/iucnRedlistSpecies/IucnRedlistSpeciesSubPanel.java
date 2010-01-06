@@ -27,6 +27,7 @@ import org.miradi.actions.ActionDeleteIucnRedlistSpecies;
 import org.miradi.dialogs.base.EditableObjectTableSubPanel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
+import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.project.Project;
@@ -78,7 +79,17 @@ public class IucnRedlistSpeciesSubPanel extends EditableObjectTableSubPanel
 	@Override
 	protected String getTagForRefListFieldBeingEdited()
 	{
-		//FIXME urgent IUCN related - either fix this method or the caller
 		return "";
+	}
+	
+	protected boolean shouldRefreshModel(CommandExecutedEvent event)
+	{
+		if (event.isCreateCommandForThisType(IucnRedlistSpecies.getObjectType()))
+			return true;
+		
+		if (event.isDeleteCommandForThisType(IucnRedlistSpecies.getObjectType()))
+			return true;
+		
+		return super.shouldRefreshModel(event);
 	}
 }

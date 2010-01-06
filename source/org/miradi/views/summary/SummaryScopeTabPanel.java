@@ -23,6 +23,7 @@ import javax.swing.Icon;
 
 import org.miradi.actions.jump.ActionJumpSummaryWizardDefineProjecScope;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
+import org.miradi.dialogs.iucnRedlistSpecies.IucnRedlistSpeciesSubPanel;
 import org.miradi.forms.summary.ScopeTabForm;
 import org.miradi.icons.ProjectScopeIcon;
 import org.miradi.layout.OneColumnGridLayout;
@@ -46,8 +47,7 @@ public class SummaryScopeTabPanel extends ObjectDataInputPanelWithSections
 		BiodiversityPanel biodiversity = new BiodiversityPanel(getProject(), getRefForType(ProjectMetadata.getObjectType()));
 		addSubPanelWithTitledBorder(biodiversity);
 		
-		//FIXME urgent IUCN - uncomment and make work
-		//addSubPanelWithTitledBorder(new IucnRedlistSpeciesSubPanel(getProject(), getPicker()));
+		addSubPanelWithTitledBorder(new IucnRedlistSpeciesSubPanel(getProject(), getPicker()));
 		
 		HumanStakeholderPanel humans = new HumanStakeholderPanel(getProject(), getRefForType(ProjectMetadata.getObjectType()));
 		addSubPanelWithTitledBorder(humans);
