@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-06 05:46-0600\n"
+"POT-Creation-Date: 2010-01-06 08:40-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -503,7 +503,7 @@ msgstr ""
 msgid "Label|Team Information"
 msgstr "团队信息 \t\t"
 
-#: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:63
+#: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:68
 msgid "Label|Campaign"
 msgstr "运动 \t\t"
 
@@ -931,6 +931,10 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/doers/ViewLegacyTncStrategyRankingDoer.java:38
 msgid "Title|View..."
 msgstr "视图… \t\t"
+
+#: Miradi/source/org/miradi/views/umbrella/doers/DeleteAudienceDoer.java:38
+msgid "Audience"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/ExportRtfDoer.java:55
 msgid "Current page was exported as RTF."
@@ -4455,6 +4459,7 @@ msgid "TT|Insert a Text Box"
 msgstr "插入一个文本框 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionDeleteIucnRedlistSpecies.java:36
+#: Miradi/source/org/miradi/actions/ActionDeleteAudience.java:36
 #: Miradi/source/org/miradi/actions/ActionDeleteOtherNotableSpecies.java:36
 msgid "Action|Manage|Delete"
 msgstr ""
@@ -5625,6 +5630,10 @@ msgstr "删除进展百分比 \t\t"
 msgid "TT|Delete Progress Percent"
 msgstr "删除进展百分比 \t\t"
 
+#: Miradi/source/org/miradi/actions/ActionDeleteAudience.java:42
+msgid "TT|Delete the Audience"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionCreateGoal.java:35
 msgid "Action|Manage|Create Goal"
 msgstr "创建目标 \t\t"
@@ -6017,6 +6026,14 @@ msgstr "添加（多个）因素到组合框 \t\t"
 #: Miradi/source/org/miradi/actions/ActionCreateObjective.java:40
 msgid "TT|Create an Objective"
 msgstr "创建一个分目标 \t\t"
+
+#: Miradi/source/org/miradi/actions/ActionCreateAudience.java:35
+msgid "Action|Manage|Create Audience"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionCreateAudience.java:41
+msgid "TT|Create a Audience"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeleteReportTemplate.java:40
 msgid "TT|Delete a Report Template"
@@ -7099,6 +7116,10 @@ msgid ""
 msgstr ""
 "您正从本项目团队中去除本资源，因此他/她将不会在摘要视图里的团队成员列表中出"
 "现。 \t\t"
+
+#: Miradi/source/org/miradi/dialogs/audience/AudienceSubPanel.java:60
+msgid "Title|Audience"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/treeRelevancy/StrategyActivityRelevancyTableModel.java:41
 msgid "Is Relevant"
@@ -8626,6 +8647,15 @@ msgid "FieldLabel|53.Label|Name"
 msgstr ""
 
 msgid "FieldLabel|54.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|55.Label|Audience"
+msgstr ""
+
+msgid "FieldLabel|55.PeopleCount|# of People in Audience"
+msgstr ""
+
+msgid "FieldLabel|55.Summary|Audience Summary"
 msgstr ""
 
 msgid ""
