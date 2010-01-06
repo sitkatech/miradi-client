@@ -40,6 +40,7 @@ import org.miradi.dialogs.tablerenderers.DateTableCellEditorAndRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.NumericRestrictedTableCellRendererEditorFactory;
+import org.miradi.dialogs.tablerenderers.PositiveIntegerRestrictedTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.MainWindow;
@@ -106,6 +107,14 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		column.setCellRenderer(new NumericRestrictedTableCellRendererEditorFactory(model, fontProvider));
 		column.setCellEditor(new NumericRestrictedTableCellRendererEditorFactory(model, fontProvider));
+	}
+	
+	protected void createPositiveIntegerRestrictedColumn(int tableColumn)
+	{
+		TableColumn column = getColumnModel().getColumn(tableColumn);
+		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
+		column.setCellRenderer(new PositiveIntegerRestrictedTableCellRendererEditorFactory(model, fontProvider));
+		column.setCellEditor(new PositiveIntegerRestrictedTableCellRendererEditorFactory(model, fontProvider));
 	}
 	
 	protected void createWrappableTextFieldColumn(int tableColumn)
