@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-06 05:46-0600\n"
+"POT-Creation-Date: 2010-01-06 08:40-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -472,7 +472,7 @@ msgstr ""
 msgid "Label|Team Information"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:63
+#: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:68
 msgid "Label|Campaign"
 msgstr ""
 
@@ -884,6 +884,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/ViewLegacyTncStrategyRankingDoer.java:38
 msgid "Title|View..."
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/doers/DeleteAudienceDoer.java:38
+msgid "Audience"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/ExportRtfDoer.java:55
@@ -4273,6 +4277,7 @@ msgid "TT|Insert a Text Box"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeleteIucnRedlistSpecies.java:36
+#: Miradi/source/org/miradi/actions/ActionDeleteAudience.java:36
 #: Miradi/source/org/miradi/actions/ActionDeleteOtherNotableSpecies.java:36
 msgid "Action|Manage|Delete"
 msgstr ""
@@ -5443,6 +5448,10 @@ msgstr ""
 msgid "TT|Delete Progress Percent"
 msgstr ""
 
+#: Miradi/source/org/miradi/actions/ActionDeleteAudience.java:42
+msgid "TT|Delete the Audience"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionCreateGoal.java:35
 msgid "Action|Manage|Create Goal"
 msgstr ""
@@ -5834,6 +5843,14 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCreateObjective.java:40
 msgid "TT|Create an Objective"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionCreateAudience.java:35
+msgid "Action|Manage|Create Audience"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionCreateAudience.java:41
+msgid "TT|Create a Audience"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeleteReportTemplate.java:40
@@ -6905,6 +6922,10 @@ msgstr ""
 msgid ""
 "You are removing this resource from the project team, so he/she will no "
 "longer appear in the list of Team Members in the Summary View. "
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/audience/AudienceSubPanel.java:60
+msgid "Title|Audience"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/treeRelevancy/StrategyActivityRelevancyTableModel.java:41
@@ -8432,6 +8453,15 @@ msgid "FieldLabel|53.Label|Name"
 msgstr ""
 
 msgid "FieldLabel|54.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|55.Label|Audience"
+msgstr ""
+
+msgid "FieldLabel|55.PeopleCount|# of People in Audience"
+msgstr ""
+
+msgid "FieldLabel|55.Summary|Audience Summary"
 msgstr ""
 
 msgid ""
