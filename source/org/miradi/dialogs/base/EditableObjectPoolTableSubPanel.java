@@ -32,11 +32,6 @@ abstract public class EditableObjectPoolTableSubPanel extends EditableObjectTabl
 	}
 	
 	@Override
-	protected String getTagForRefListFieldBeingEdited()
-	{
-		return "";
-	}
-	
 	protected boolean shouldRefreshModel(CommandExecutedEvent event)
 	{
 		if (event.isCreateCommandForThisType(getEditableObjectType()))
@@ -45,6 +40,6 @@ abstract public class EditableObjectPoolTableSubPanel extends EditableObjectTabl
 		if (event.isDeleteCommandForThisType(getEditableObjectType()))
 			return true;
 		
-		return super.shouldRefreshModel(event);
+		return false;
 	}
 }
