@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.progressReport;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import org.miradi.actions.ActionDeleteProgressReport;
 import org.miradi.dialogs.base.EditableObjectListTableSubPanel;
@@ -45,9 +45,9 @@ public class ProgressReportSubPanel extends EditableObjectListTableSubPanel
 		objectTable = new ProgressReportTable(getMainWindow(), objectTableModel);
 	}
 	
-	protected HashMap<Class, ObjectPicker> getButtonsActionsPickerMap()
+	protected LinkedHashMap<Class, ObjectPicker> getButtonsActionsPickerMap()
 	{
-		HashMap<Class, ObjectPicker> buttonsMap = new HashMap<Class, ObjectPicker>();
+		LinkedHashMap<Class, ObjectPicker> buttonsMap = new LinkedHashMap<Class, ObjectPicker>();
 		buttonsMap.put(ActionCreateProgressReport.class, objectPicker);
 		buttonsMap.put(ActionDeleteProgressReport.class, objectTable);
 		

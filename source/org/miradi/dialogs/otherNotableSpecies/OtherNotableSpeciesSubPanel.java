@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.otherNotableSpecies;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import org.miradi.actions.ActionCreateOtherNotableSpecies;
 import org.miradi.actions.ActionDeleteOtherNotableSpecies;
@@ -45,9 +45,9 @@ public class OtherNotableSpeciesSubPanel extends EditableObjectPoolTableSubPanel
 	}
 		
 	@Override
-	protected HashMap<Class, ObjectPicker> getButtonsActionsPickerMap()
+	protected LinkedHashMap<Class, ObjectPicker> getButtonsActionsPickerMap()
 	{
-		HashMap<Class, ObjectPicker> buttonsMap = new HashMap<Class, ObjectPicker>();
+		LinkedHashMap<Class, ObjectPicker> buttonsMap = new LinkedHashMap<Class, ObjectPicker>();
 		buttonsMap.put(ActionCreateOtherNotableSpecies.class, objectPicker);
 		buttonsMap.put(ActionDeleteOtherNotableSpecies.class, objectTable);
 		

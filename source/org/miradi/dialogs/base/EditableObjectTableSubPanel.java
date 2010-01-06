@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import java.awt.BorderLayout;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Set;
 
 import javax.swing.JPanel;
@@ -99,8 +99,7 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 		OneRowPanel box = new OneRowPanel();
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		box.setGaps(3);
-		
-		HashMap<Class, ObjectPicker> buttonsMap = getButtonsActionsPickerMap();
+		LinkedHashMap<Class, ObjectPicker> buttonsMap = getButtonsActionsPickerMap();
 		Set<Class> buttonClasses = buttonsMap.keySet();
 		for(Class buttonClass : buttonClasses)
 		{
@@ -133,7 +132,7 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	
 	abstract protected int getEditableObjectType();
 	
-	abstract protected HashMap<Class, ObjectPicker> getButtonsActionsPickerMap();
+	abstract protected LinkedHashMap<Class, ObjectPicker> getButtonsActionsPickerMap();
 	
 	abstract protected void createTable() throws Exception;
 	
