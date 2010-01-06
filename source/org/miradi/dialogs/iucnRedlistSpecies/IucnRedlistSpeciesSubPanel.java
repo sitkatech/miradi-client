@@ -27,7 +27,6 @@ import org.miradi.actions.ActionDeleteIucnRedlistSpecies;
 import org.miradi.dialogs.base.EditableObjectPoolTableSubPanel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
-import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.project.Project;
@@ -74,22 +73,5 @@ public class IucnRedlistSpeciesSubPanel extends EditableObjectPoolTableSubPanel
 	private static int getObjectType()
 	{
 		return IucnRedlistSpecies.getObjectType();
-	}
-
-	@Override
-	protected String getTagForRefListFieldBeingEdited()
-	{
-		return "";
-	}
-	
-	protected boolean shouldRefreshModel(CommandExecutedEvent event)
-	{
-		if (event.isCreateCommandForThisType(getEditableObjectType()))
-			return true;
-		
-		if (event.isDeleteCommandForThisType(getEditableObjectType()))
-			return true;
-		
-		return super.shouldRefreshModel(event);
 	}
 }

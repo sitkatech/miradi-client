@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
+import org.miradi.main.CommandExecutedEvent;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -28,5 +29,22 @@ abstract public class EditableObjectPoolTableSubPanel extends EditableObjectTabl
 	public EditableObjectPoolTableSubPanel(Project projectToUse, ObjectPicker objectPickerToUse, int ObjectType) throws Exception
 	{
 		super(projectToUse, objectPickerToUse, ObjectType);
+	}
+	
+	@Override
+	protected String getTagForRefListFieldBeingEdited()
+	{
+		return "";
+	}
+	
+	protected boolean shouldRefreshModel(CommandExecutedEvent event)
+	{
+		if (event.isCreateCommandForThisType(getEditableObjectType()))
+			return true;
+		
+		if (event.isDeleteCommandForThisType(getEditableObjectType()))
+			return true;
+		
+		return super.shouldRefreshModel(event);
 	}
 }
