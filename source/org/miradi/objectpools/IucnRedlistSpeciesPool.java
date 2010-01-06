@@ -45,6 +45,7 @@ public class IucnRedlistSpeciesPool extends EAMNormalObjectPool
 		return (IucnRedlistSpecies) getRawObject(id);
 	}
 	
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new IucnRedlistSpecies(objectManager, actualId);
