@@ -78,7 +78,8 @@ public class ObjectType
 	public static final int HUMAN_WELFARE_TARGET = 52;
 	public static final int IUCN_REDLIST_SPECIES = 53;
 	public static final int OTHER_NOTABLE_SPECIES = 54;
+	public static final int AUDIENCE = 55;
 	
-	public static final int OBJECT_TYPE_COUNT = 55;
+	public static final int OBJECT_TYPE_COUNT = 56;
 }
 

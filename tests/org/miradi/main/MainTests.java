@@ -87,6 +87,7 @@ import org.miradi.objecthelpers.TestTimePeriodCosts;
 import org.miradi.objecthelpers.TestTimePeriodCostsMap;
 import org.miradi.objects.TestAccountingCode;
 import org.miradi.objects.TestAssignment;
+import org.miradi.objects.TestAudience;
 import org.miradi.objects.TestBaseObject;
 import org.miradi.objects.TestCause;
 import org.miradi.objects.TestConceptualModelDiagram;
@@ -414,6 +415,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestHumanWelfareTarget.class));
 		suite.addTest(new TestSuite(TestIucnRedlistSpecies.class));
 		suite.addTest(new TestSuite(TestOtherNotableSpecies.class));
+		suite.addTest(new TestSuite(TestAudience.class));
 			
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

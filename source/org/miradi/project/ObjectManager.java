@@ -40,6 +40,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.AccountingCodePool;
 import org.miradi.objectpools.AssignmentPool;
+import org.miradi.objectpools.AudiencePool;
 import org.miradi.objectpools.CausePool;
 import org.miradi.objectpools.ConceptualModelDiagramPool;
 import org.miradi.objectpools.CostAllocationRulePool;
@@ -161,6 +162,7 @@ public class ObjectManager
 		addNormalPool(new HumanWelfareTargetPool(ida));
 		addNormalPool(new IucnRedlistSpeciesPool(ida));
 		addNormalPool(new OtherNotableSpeciesPool(ida));
+		addNormalPool(new AudiencePool(ida));
 	}
 	
 	public ProjectChainObject getProjectChainBuilder()
@@ -424,6 +426,7 @@ public class ObjectManager
 			ObjectType.HUMAN_WELFARE_TARGET,
 			ObjectType.IUCN_REDLIST_SPECIES,
 			ObjectType.OTHER_NOTABLE_SPECIES,
+			ObjectType.AUDIENCE,
 		};
 		for(int type : types)
 			loadPool(type, extractManifest(manifests, type));
