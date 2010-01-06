@@ -42,7 +42,7 @@ public class AudienceEditablePoolTable extends EditableRefsTable
 				createWrappableTextFieldColumn(tableColumn);
 			
 			if (model.isPeopleCountColumn(modelColumn))
-				createPositiveIntegerRestrictedColumn(tableColumn);
+				createNonNegativeIntegerRestrictedColumn(tableColumn);
 			
 			if (model.isSummaryColumn(modelColumn))
 				createWrappableTextFieldColumn(tableColumn);
