@@ -24,7 +24,7 @@ import javax.swing.JPanel;
 
 import org.miradi.actions.ActionCreateOtherNotableSpecies;
 import org.miradi.actions.ActionDeleteOtherNotableSpecies;
-import org.miradi.dialogs.base.EditableObjectTableSubPanel;
+import org.miradi.dialogs.base.EditableObjectPoolTableSubPanel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
@@ -33,7 +33,7 @@ import org.miradi.objects.OtherNotableSpecies;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class OtherNotableSpeciesSubPanel extends EditableObjectTableSubPanel
+public class OtherNotableSpeciesSubPanel extends EditableObjectPoolTableSubPanel
 {
 	public OtherNotableSpeciesSubPanel(Project projectToUse, ObjectPicker objectPickerToUse) throws Exception
 	{

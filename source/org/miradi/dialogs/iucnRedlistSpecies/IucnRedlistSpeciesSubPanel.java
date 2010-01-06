@@ -24,7 +24,7 @@ import javax.swing.JPanel;
 
 import org.miradi.actions.ActionCreateIucnRedlistSpecies;
 import org.miradi.actions.ActionDeleteIucnRedlistSpecies;
-import org.miradi.dialogs.base.EditableObjectTableSubPanel;
+import org.miradi.dialogs.base.EditableObjectPoolTableSubPanel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
@@ -33,7 +33,7 @@ import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class IucnRedlistSpeciesSubPanel extends EditableObjectTableSubPanel
+public class IucnRedlistSpeciesSubPanel extends EditableObjectPoolTableSubPanel
 {
 	public IucnRedlistSpeciesSubPanel(Project projectToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
