@@ -22,7 +22,7 @@ package org.miradi.dialogfields;
 import org.miradi.ids.BaseId;
 import org.miradi.project.Project;
 
-public class ObjectPercentageInputField extends ObjectNumericInputField
+public class ObjectPercentageInputField extends ObjectFloatingPointRestrictedInputField
 {
 	public ObjectPercentageInputField(Project project, int objectType, BaseId objectIdForType, String tag)
 	{
