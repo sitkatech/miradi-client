@@ -20,12 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.progressReport;
 
-import javax.swing.JPanel;
+import java.util.HashMap;
 
 import org.miradi.actions.ActionDeleteProgressReport;
 import org.miradi.dialogs.base.EditableObjectTableSubPanel;
-import org.miradi.layout.OneRowPanel;
-import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
@@ -47,16 +45,13 @@ public class ProgressReportSubPanel extends EditableObjectTableSubPanel
 		objectTable = new ProgressReportTable(getMainWindow(), objectTableModel);
 	}
 	
-	@Override
-	protected JPanel createButtonBar()
+	protected HashMap<Class, ObjectPicker> getButtonsActionsPickerMap()
 	{
-		OneRowPanel box = new OneRowPanel();
-		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		box.setGaps(3);
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionCreateProgressReport.class), objectPicker));
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionDeleteProgressReport.class), objectTable));
+		HashMap<Class, ObjectPicker> buttonsMap = new HashMap<Class, ObjectPicker>();
+		buttonsMap.put(ActionCreateProgressReport.class, objectPicker);
+		buttonsMap.put(ActionDeleteProgressReport.class, objectTable);
 		
-		return box;
+		return buttonsMap;
 	}
 	
 	@Override

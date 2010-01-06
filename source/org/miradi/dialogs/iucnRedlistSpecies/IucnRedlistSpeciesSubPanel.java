@@ -20,13 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.iucnRedlistSpecies;
 
-import javax.swing.JPanel;
+import java.util.HashMap;
 
 import org.miradi.actions.ActionCreateIucnRedlistSpecies;
 import org.miradi.actions.ActionDeleteIucnRedlistSpecies;
 import org.miradi.dialogs.base.EditableObjectPoolTableSubPanel;
-import org.miradi.layout.OneRowPanel;
-import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.project.Project;
@@ -47,15 +45,13 @@ public class IucnRedlistSpeciesSubPanel extends EditableObjectPoolTableSubPanel
 	}
 	
 	@Override
-	protected JPanel createButtonBar()
+	protected HashMap<Class, ObjectPicker> getButtonsActionsPickerMap()
 	{
-		OneRowPanel box = new OneRowPanel();
-		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		box.setGaps(3);
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionCreateIucnRedlistSpecies.class), objectPicker));
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionDeleteIucnRedlistSpecies.class), objectTable));
+		HashMap<Class, ObjectPicker> buttonsMap = new HashMap<Class, ObjectPicker>();
+		buttonsMap.put(ActionCreateIucnRedlistSpecies.class, objectPicker);
+		buttonsMap.put(ActionDeleteIucnRedlistSpecies.class, objectTable);
 		
-		return box;
+		return buttonsMap;
 	}
 	
 	@Override
