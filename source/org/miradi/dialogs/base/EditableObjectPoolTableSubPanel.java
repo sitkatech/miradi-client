@@ -34,7 +34,7 @@ abstract public class EditableObjectPoolTableSubPanel extends EditableObjectTabl
 	@Override
 	protected String getTagForRefListFieldBeingEdited()
 	{
-		return "";
+		throw new RuntimeException("Should not use this method, instead this class should override shouldRefreshModel");
 	}
 	
 	protected boolean shouldRefreshModel(CommandExecutedEvent event)
