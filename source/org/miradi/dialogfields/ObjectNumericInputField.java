@@ -21,13 +21,13 @@ package org.miradi.dialogfields;
 
 import org.miradi.ids.BaseId;
 import org.miradi.project.Project;
-import org.miradi.utils.NumericRestrictedDocument;
+import org.miradi.utils.FloatingPointRestrictedDocument;
 
 public class ObjectNumericInputField extends ObjectAdjustableStringInputField
 {
 	public ObjectNumericInputField(Project projectToUse, int objectType, BaseId objectId, String tag, int column)
 	{
-		super(projectToUse, objectType, objectId, tag, column, new NumericRestrictedDocument());
+		super(projectToUse, objectType, objectId, tag, column, new FloatingPointRestrictedDocument());
 	}
 		
 	public ObjectNumericInputField(Project projectToUse, int objectType, BaseId objectId, String tag)

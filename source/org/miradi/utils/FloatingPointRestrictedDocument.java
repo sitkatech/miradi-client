@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 
-public class NumericRestrictedDocument extends AbstractRestrictedDocument
+public class FloatingPointRestrictedDocument extends AbstractRestrictedDocument
 {	
 	@Override
 	protected boolean isValidCharacter(char character)

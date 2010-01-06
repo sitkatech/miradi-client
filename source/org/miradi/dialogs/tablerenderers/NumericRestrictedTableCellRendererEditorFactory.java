@@ -24,7 +24,7 @@ package org.miradi.dialogs.tablerenderers;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import org.miradi.dialogs.fieldComponents.PanelTextField;
-import org.miradi.utils.NumericRestrictedDocument;
+import org.miradi.utils.FloatingPointRestrictedDocument;
 
 public class NumericRestrictedTableCellRendererEditorFactory extends AbstractNumericRestrictedTableCellRendererEditorFactory
 {
@@ -43,7 +43,7 @@ public class NumericRestrictedTableCellRendererEditorFactory extends AbstractNum
 	{
 		public NumbericRestrictedTextField()
 		{
-			setDocument(new NumericRestrictedDocument());
+			setDocument(new FloatingPointRestrictedDocument());
 			setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);
 		}
 	}
