@@ -35,12 +35,12 @@ public class NonNegativeIntegerRestrictedTableCellRendererEditorFactory extends 
 	@Override
 	protected PanelTextField createRestrictedNumericTextField()
 	{	
-		return new PositiveIntegerRestrictedTextField();
+		return new NonNegativeIntegerRestrictedTextField();
 	}
 	
-	class PositiveIntegerRestrictedTextField extends PanelTextField
+	class NonNegativeIntegerRestrictedTextField extends PanelTextField
 	{
-		public PositiveIntegerRestrictedTextField()
+		public NonNegativeIntegerRestrictedTextField()
 		{
 			setDocument(new NonNegativeIntegerRestrictedDocument());
 			setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);
