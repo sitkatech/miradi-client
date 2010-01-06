@@ -45,7 +45,7 @@ public class IucnRedlistSpeciesEditablePoolTableModel extends EditableObjectRefs
 	@Override
 	protected ORefList extractOutEditableRefs(ORef[] hierarchyToSelectedRef)
 	{	
-		return getProject().getPool(IucnRedlistSpecies.getObjectType()).getRefList();
+		return getProject().getPool(getObjectType()).getRefList();
 	}
 
 	@Override
