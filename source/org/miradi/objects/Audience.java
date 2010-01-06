@@ -21,6 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
+import org.miradi.objectdata.NumberData;
+import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -80,5 +82,23 @@ public class Audience extends BaseObject
 		return find(project.getObjectManager(), ref);
 	}
 	
+	@Override
+	void clear()
+	{
+		super.clear();
+	
+		peopleCount = new NumberData(TAG_PEOPLE_COUNT);
+		summary = new StringData(TAG_SUMMARY);
+		
+		addField(TAG_PEOPLE_COUNT, peopleCount);
+		addField(TAG_SUMMARY, summary);
+	}
+	
 	public static final String OBJECT_NAME = "Audience";
+	
+	public static final String TAG_PEOPLE_COUNT = "PeopleCount";
+	public static final String TAG_SUMMARY = "Summary";
+	
+	private NumberData peopleCount;
+	private StringData summary;
 }
