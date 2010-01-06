@@ -109,7 +109,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 		column.setCellEditor(new NumericRestrictedTableCellRendererEditorFactory(model, fontProvider));
 	}
 	
-	protected void createPositiveIntegerRestrictedColumn(int tableColumn)
+	protected void createNonNegativeIntegerRestrictedColumn(int tableColumn)
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
