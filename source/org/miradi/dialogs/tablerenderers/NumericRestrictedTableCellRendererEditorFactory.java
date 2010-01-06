@@ -29,7 +29,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.utils.NumericRestrictedDocument;
 
-public class NumericRestrictedTableCellRendererEditorFactory extends NumericTableCellRendererFactory
+public class NumericRestrictedTableCellRendererEditorFactory extends AbstractNumericRestrictedTableCellRendererEditorFactory
 {
 	public NumericRestrictedTableCellRendererEditorFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
