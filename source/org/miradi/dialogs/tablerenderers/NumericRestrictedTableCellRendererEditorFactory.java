@@ -20,10 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.tablerenderers;
 
-import java.awt.Component;
-import java.awt.Font;
 
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import org.miradi.dialogs.fieldComponents.PanelTextField;
@@ -34,31 +31,14 @@ public class NumericRestrictedTableCellRendererEditorFactory extends AbstractNum
 	public NumericRestrictedTableCellRendererEditorFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
-		
-		numericRestrictedTextField = createRestrictedNumericTextField();
 	}
-
-	protected NumbericRestrictedTextField createRestrictedNumericTextField()
+	
+	@Override
+	protected PanelTextField createRestrictedNumericTextField()
 	{
 		return new NumbericRestrictedTextField();
 	}
 
-	@Override
-	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
-	{
-		numericRestrictedTextField.setText(value.toString());
-		Font font = getCellFont(row, column);
-		numericRestrictedTextField.setFont(font);
-		
-		return numericRestrictedTextField;
-	}
-	
-	@Override
-	public Object getCellEditorValue()
-	{
-		return numericRestrictedTextField.getText();
-	}
-	
 	class NumbericRestrictedTextField extends PanelTextField
 	{
 		public NumbericRestrictedTextField()
@@ -67,6 +47,4 @@ public class NumericRestrictedTableCellRendererEditorFactory extends AbstractNum
 			setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);
 		}
 	}
-	
-	private PanelTextField numericRestrictedTextField;
 }
