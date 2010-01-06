@@ -84,10 +84,10 @@ public class IucnRedlistSpeciesSubPanel extends EditableObjectTableSubPanel
 	
 	protected boolean shouldRefreshModel(CommandExecutedEvent event)
 	{
-		if (event.isCreateCommandForThisType(IucnRedlistSpecies.getObjectType()))
+		if (event.isCreateCommandForThisType(getEditableObjectType()))
 			return true;
 		
-		if (event.isDeleteCommandForThisType(IucnRedlistSpecies.getObjectType()))
+		if (event.isDeleteCommandForThisType(getEditableObjectType()))
 			return true;
 		
 		return super.shouldRefreshModel(event);
