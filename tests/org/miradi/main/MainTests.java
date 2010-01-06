@@ -113,6 +113,7 @@ import org.miradi.objects.TestObjectGetTypesThatCanOwnUs;
 import org.miradi.objects.TestObjectManager;
 import org.miradi.objects.TestObjective;
 import org.miradi.objects.TestOrganization;
+import org.miradi.objects.TestOtherNotableSpecies;
 import org.miradi.objects.TestPlanningViewConfiguration;
 import org.miradi.objects.TestProgressPercent;
 import org.miradi.objects.TestProgressReport;
@@ -412,6 +413,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestExpense.class));
 		suite.addTest(new TestSuite(TestHumanWelfareTarget.class));
 		suite.addTest(new TestSuite(TestIucnRedlistSpecies.class));
+		suite.addTest(new TestSuite(TestOtherNotableSpecies.class));
 			
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));
