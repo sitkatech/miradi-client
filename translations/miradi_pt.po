@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-06 05:13-0600\n"
+"POT-Creation-Date: 2010-01-06 05:32-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6263,7 +6263,7 @@ msgstr ""
 msgid "Expenses"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/iucnRedlistSpecies/IucnRedlistSpeciesSubPanel.java:64
+#: Miradi/source/org/miradi/dialogs/iucnRedlistSpecies/IucnRedlistSpeciesSubPanel.java:60
 msgid "Title|IUCN Redlist Species"
 msgstr ""
 
@@ -6350,7 +6350,7 @@ msgstr ""
 msgid "Details"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/otherNotableSpecies/OtherNotableSpeciesSubPanel.java:64
+#: Miradi/source/org/miradi/dialogs/otherNotableSpecies/OtherNotableSpeciesSubPanel.java:60
 msgid "Title|Other Notable Species"
 msgstr ""
 
@@ -6540,7 +6540,7 @@ msgstr ""
 msgid "Tab|Activities"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:65
+#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:60
 msgid "Title|Progress Report"
 msgstr ""
 
@@ -6881,7 +6881,7 @@ msgstr ""
 msgid "Title|Tag Properties Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/progressPercent/ProgressPercentSubPanel.java:65
+#: Miradi/source/org/miradi/dialogs/progressPercent/ProgressPercentSubPanel.java:61
 msgid "Title|Progress Percent"
 msgstr ""
 
