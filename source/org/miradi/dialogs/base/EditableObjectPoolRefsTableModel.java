@@ -24,7 +24,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
 
 abstract public class EditableObjectPoolRefsTableModel extends EditableObjectRefsTableModel
@@ -42,11 +41,8 @@ abstract public class EditableObjectPoolRefsTableModel extends EditableObjectRef
 	
 	public Object getValueAt(int rowIndex, int columnIndex)
 	{
-		BaseObject iucnRedlistSpecies = getBaseObjectForRowColumn(rowIndex, columnIndex);
-		if (isLabelColumn(columnIndex))
-			return new TaglessChoiceItem(iucnRedlistSpecies.getData(getColumnTags()[columnIndex]));
-		
-		return new EmptyChoiceItem();
+		BaseObject baseObject = getBaseObjectForRowColumn(rowIndex, columnIndex);
+		return new TaglessChoiceItem(baseObject.getData(getColumnTags()[columnIndex]));
 	}
 	
 	@Override
@@ -66,6 +62,6 @@ abstract public class EditableObjectPoolRefsTableModel extends EditableObjectRef
 	
 	public boolean isLabelColumn(int modelColumn)
 	{
-		return isColumnForTag(modelColumn, getColumnTags()[modelColumn]);
+		return isColumnForTag(modelColumn, BaseObject.TAG_LABEL);
 	}
 }
