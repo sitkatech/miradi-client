@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.progressPercent;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import org.miradi.actions.ActionCreateProgressPercent;
 import org.miradi.actions.ActionDeleteProgressPercent;
@@ -46,9 +46,9 @@ public class ProgressPercentSubPanel extends EditableObjectListTableSubPanel
 	}
 	
 	@Override
-	protected HashMap<Class, ObjectPicker> getButtonsActionsPickerMap()
+	protected LinkedHashMap<Class, ObjectPicker> getButtonsActionsPickerMap()
 	{
-		HashMap<Class, ObjectPicker> buttonsMap = new HashMap<Class, ObjectPicker>();
+		LinkedHashMap<Class, ObjectPicker> buttonsMap = new LinkedHashMap<Class, ObjectPicker>();
 		buttonsMap.put(ActionCreateProgressPercent.class, objectPicker);
 		buttonsMap.put(ActionDeleteProgressPercent.class, objectTable);
 		

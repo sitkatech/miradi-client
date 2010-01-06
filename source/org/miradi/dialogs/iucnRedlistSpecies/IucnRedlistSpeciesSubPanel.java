@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.iucnRedlistSpecies;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import org.miradi.actions.ActionCreateIucnRedlistSpecies;
 import org.miradi.actions.ActionDeleteIucnRedlistSpecies;
@@ -45,9 +45,9 @@ public class IucnRedlistSpeciesSubPanel extends EditableObjectPoolTableSubPanel
 	}
 	
 	@Override
-	protected HashMap<Class, ObjectPicker> getButtonsActionsPickerMap()
+	protected LinkedHashMap<Class, ObjectPicker> getButtonsActionsPickerMap()
 	{
-		HashMap<Class, ObjectPicker> buttonsMap = new HashMap<Class, ObjectPicker>();
+		LinkedHashMap<Class, ObjectPicker> buttonsMap = new LinkedHashMap<Class, ObjectPicker>();
 		buttonsMap.put(ActionCreateIucnRedlistSpecies.class, objectPicker);
 		buttonsMap.put(ActionDeleteIucnRedlistSpecies.class, objectTable);
 		
