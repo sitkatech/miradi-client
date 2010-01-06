@@ -345,6 +345,9 @@ abstract public class BaseObject
 			case ObjectType.IUCN_REDLIST_SPECIES:
 				return new IucnRedlistSpecies(objectManager, idAsInt, json);
 				
+			case ObjectType.OTHER_NOTABLE_SPECIES:
+				return new OtherNotableSpecies(objectManager, idAsInt, json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}
