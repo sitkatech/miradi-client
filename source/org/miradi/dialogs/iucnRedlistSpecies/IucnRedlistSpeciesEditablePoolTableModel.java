@@ -56,9 +56,9 @@ public class IucnRedlistSpeciesEditablePoolTableModel extends EditableObjectRefs
 
 	public Object getValueAt(int rowIndex, int columnIndex)
 	{
-		BaseObject iucnRedlistSpecies = getIucnRedlistSpeciesForRow(rowIndex, columnIndex);
+		BaseObject iucnRedlistSpecies = getBaseObjectForRowColumn(rowIndex, columnIndex);
 		if (isLabelColumn(columnIndex))
-			return new TaglessChoiceItem(iucnRedlistSpecies.getData(IucnRedlistSpecies.TAG_LABEL));
+			return new TaglessChoiceItem(iucnRedlistSpecies.getData(getColumnTags()[columnIndex]));
 		
 		return new EmptyChoiceItem();
 	}
@@ -80,14 +80,9 @@ public class IucnRedlistSpeciesEditablePoolTableModel extends EditableObjectRefs
 	
 	public boolean isLabelColumn(int modelColumn)
 	{
-		return isColumnForTag(modelColumn, IucnRedlistSpecies.TAG_LABEL);
+		return isColumnForTag(modelColumn, getColumnTags()[modelColumn]);
 	}
 	
-	private BaseObject getIucnRedlistSpeciesForRow(int rowIndex, int columnIndex)
-	{
-		return getBaseObjectForRowColumn(rowIndex, columnIndex);
-	}
-
 	@Override
 	protected String[] getColumnTags()
 	{
