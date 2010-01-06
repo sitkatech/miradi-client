@@ -35,7 +35,12 @@ public class NumericRestrictedTableCellRendererEditorFactory extends AbstractNum
 	{
 		super(providerToUse, fontProviderToUse);
 		
-		numericRestrictedTextField = new NumbericRestrictedTextField();
+		numericRestrictedTextField = createRestrictedNumericTextField();
+	}
+
+	protected NumbericRestrictedTextField createRestrictedNumericTextField()
+	{
+		return new NumbericRestrictedTextField();
 	}
 
 	@Override
@@ -63,5 +68,5 @@ public class NumericRestrictedTableCellRendererEditorFactory extends AbstractNum
 		}
 	}
 	
-	private NumbericRestrictedTextField numericRestrictedTextField;
+	private PanelTextField numericRestrictedTextField;
 }
