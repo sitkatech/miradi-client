@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-06 05:02-0600\n"
+"POT-Creation-Date: 2010-01-06 05:13-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6263,7 +6263,7 @@ msgstr ""
 msgid "Expenses"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/iucnRedlistSpecies/IucnRedlistSpeciesSubPanel.java:65
+#: Miradi/source/org/miradi/dialogs/iucnRedlistSpecies/IucnRedlistSpeciesSubPanel.java:64
 msgid "Title|IUCN Redlist Species"
 msgstr ""
 
@@ -6350,7 +6350,7 @@ msgstr ""
 msgid "Details"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/otherNotableSpecies/OtherNotableSpeciesSubPanel.java:65
+#: Miradi/source/org/miradi/dialogs/otherNotableSpecies/OtherNotableSpeciesSubPanel.java:64
 msgid "Title|Other Notable Species"
 msgstr ""
 
