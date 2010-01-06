@@ -23,7 +23,7 @@ package org.miradi.dialogs.progressReport;
 import java.util.HashMap;
 
 import org.miradi.actions.ActionDeleteProgressReport;
-import org.miradi.dialogs.base.EditableObjectTableSubPanel;
+import org.miradi.dialogs.base.EditableObjectListTableSubPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
@@ -31,7 +31,7 @@ import org.miradi.objects.ProgressReport;
 import org.miradi.views.umbrella.ActionCreateProgressReport;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class ProgressReportSubPanel extends EditableObjectTableSubPanel
+public class ProgressReportSubPanel extends EditableObjectListTableSubPanel
 {
 	public ProgressReportSubPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
 	{

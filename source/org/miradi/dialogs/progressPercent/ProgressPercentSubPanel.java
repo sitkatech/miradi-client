@@ -24,14 +24,14 @@ import java.util.HashMap;
 
 import org.miradi.actions.ActionCreateProgressPercent;
 import org.miradi.actions.ActionDeleteProgressPercent;
-import org.miradi.dialogs.base.EditableObjectTableSubPanel;
+import org.miradi.dialogs.base.EditableObjectListTableSubPanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProgressPercent;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class ProgressPercentSubPanel extends EditableObjectTableSubPanel
+public class ProgressPercentSubPanel extends EditableObjectListTableSubPanel
 {
 	public ProgressPercentSubPanel(Project projectToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
