@@ -24,6 +24,7 @@ import javax.swing.Icon;
 import org.miradi.actions.jump.ActionJumpSummaryWizardDefineProjecScope;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.iucnRedlistSpecies.IucnRedlistSpeciesSubPanel;
+import org.miradi.dialogs.otherNotableSpecies.OtherNotableSpeciesSubPanel;
 import org.miradi.forms.summary.ScopeTabForm;
 import org.miradi.icons.ProjectScopeIcon;
 import org.miradi.layout.OneColumnGridLayout;
@@ -48,6 +49,7 @@ public class SummaryScopeTabPanel extends ObjectDataInputPanelWithSections
 		addSubPanelWithTitledBorder(biodiversity);
 		
 		addSubPanelWithTitledBorder(new IucnRedlistSpeciesSubPanel(getProject(), getPicker()));
+		addSubPanelWithTitledBorder(new OtherNotableSpeciesSubPanel(getProject(), getPicker()));
 		
 		HumanStakeholderPanel humans = new HumanStakeholderPanel(getProject(), getRefForType(ProjectMetadata.getObjectType()));
 		addSubPanelWithTitledBorder(humans);
