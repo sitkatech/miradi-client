@@ -39,7 +39,7 @@ import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DateTableCellEditorAndRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory;
-import org.miradi.dialogs.tablerenderers.NumericRestrictedTableCellRendererEditorFactory;
+import org.miradi.dialogs.tablerenderers.FloatingPointRestrictedTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.NonNegativeIntegerRestrictedTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
@@ -105,8 +105,8 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
-		column.setCellRenderer(new NumericRestrictedTableCellRendererEditorFactory(model, fontProvider));
-		column.setCellEditor(new NumericRestrictedTableCellRendererEditorFactory(model, fontProvider));
+		column.setCellRenderer(new FloatingPointRestrictedTableCellRendererEditorFactory(model, fontProvider));
+		column.setCellEditor(new FloatingPointRestrictedTableCellRendererEditorFactory(model, fontProvider));
 	}
 	
 	protected void createNonNegativeIntegerRestrictedColumn(int tableColumn)

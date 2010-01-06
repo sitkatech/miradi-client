@@ -26,9 +26,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.utils.FloatingPointRestrictedDocument;
 
-public class NumericRestrictedTableCellRendererEditorFactory extends AbstractNumericRestrictedTableCellRendererEditorFactory
+public class FloatingPointRestrictedTableCellRendererEditorFactory extends AbstractNumericRestrictedTableCellRendererEditorFactory
 {
-	public NumericRestrictedTableCellRendererEditorFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public FloatingPointRestrictedTableCellRendererEditorFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 	}
