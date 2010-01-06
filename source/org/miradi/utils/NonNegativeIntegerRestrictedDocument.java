@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-public class PositiveIntegerRestrictedDocument extends NumericRestrictedDocument
+public class NonNegativeIntegerRestrictedDocument extends NumericRestrictedDocument
 {
 	@Override
 	protected boolean isValidCharacter(char character)

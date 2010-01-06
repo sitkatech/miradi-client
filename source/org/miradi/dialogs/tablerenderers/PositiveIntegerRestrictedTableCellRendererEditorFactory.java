@@ -23,7 +23,7 @@ package org.miradi.dialogs.tablerenderers;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import org.miradi.dialogs.fieldComponents.PanelTextField;
-import org.miradi.utils.PositiveIntegerRestrictedDocument;
+import org.miradi.utils.NonNegativeIntegerRestrictedDocument;
 
 public class PositiveIntegerRestrictedTableCellRendererEditorFactory extends AbstractNumericRestrictedTableCellRendererEditorFactory
 {
@@ -42,7 +42,7 @@ public class PositiveIntegerRestrictedTableCellRendererEditorFactory extends Abs
 	{
 		public PositiveIntegerRestrictedTextField()
 		{
-			setDocument(new PositiveIntegerRestrictedDocument());
+			setDocument(new NonNegativeIntegerRestrictedDocument());
 			setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);
 		}
 	}
