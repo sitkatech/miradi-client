@@ -36,12 +36,12 @@ public class NumericRestrictedTableCellRendererEditorFactory extends AbstractNum
 	@Override
 	protected PanelTextField createRestrictedNumericTextField()
 	{
-		return new NumbericRestrictedTextField();
+		return new FloatingPointRestrictedTextField();
 	}
 
-	class NumbericRestrictedTextField extends PanelTextField
+	class FloatingPointRestrictedTextField extends PanelTextField
 	{
-		public NumbericRestrictedTextField()
+		public FloatingPointRestrictedTextField()
 		{
 			setDocument(new FloatingPointRestrictedDocument());
 			setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);
