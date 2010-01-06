@@ -20,13 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.otherNotableSpecies;
 
-import javax.swing.JPanel;
+import java.util.HashMap;
 
 import org.miradi.actions.ActionCreateOtherNotableSpecies;
 import org.miradi.actions.ActionDeleteOtherNotableSpecies;
 import org.miradi.dialogs.base.EditableObjectPoolTableSubPanel;
-import org.miradi.layout.OneRowPanel;
-import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objects.OtherNotableSpecies;
 import org.miradi.project.Project;
@@ -45,17 +43,15 @@ public class OtherNotableSpeciesSubPanel extends EditableObjectPoolTableSubPanel
 		objectTableModel = new OtherNotableSpeciesEditablePoolTableModel(getProject());
 		objectTable = new OtherNotableSpeciesEditablePoolTable(getMainWindow(), objectTableModel);
 	}
-	
-	@Override
-	protected JPanel createButtonBar()
-	{
-		OneRowPanel box = new OneRowPanel();
-		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		box.setGaps(3);
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionCreateOtherNotableSpecies.class), objectPicker));
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionDeleteOtherNotableSpecies.class), objectTable));
 		
-		return box;
+	@Override
+	protected HashMap<Class, ObjectPicker> getButtonsActionsPickerMap()
+	{
+		HashMap<Class, ObjectPicker> buttonsMap = new HashMap<Class, ObjectPicker>();
+		buttonsMap.put(ActionCreateOtherNotableSpecies.class, objectPicker);
+		buttonsMap.put(ActionDeleteOtherNotableSpecies.class, objectTable);
+		
+		return buttonsMap;
 	}
 	
 	@Override

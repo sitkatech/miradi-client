@@ -20,13 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.progressPercent;
 
-import javax.swing.JPanel;
+import java.util.HashMap;
 
 import org.miradi.actions.ActionCreateProgressPercent;
 import org.miradi.actions.ActionDeleteProgressPercent;
 import org.miradi.dialogs.base.EditableObjectTableSubPanel;
-import org.miradi.layout.OneRowPanel;
-import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProgressPercent;
@@ -48,15 +46,13 @@ public class ProgressPercentSubPanel extends EditableObjectTableSubPanel
 	}
 	
 	@Override
-	protected JPanel createButtonBar()
+	protected HashMap<Class, ObjectPicker> getButtonsActionsPickerMap()
 	{
-		OneRowPanel box = new OneRowPanel();
-		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		box.setGaps(3);
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionCreateProgressPercent.class), objectPicker));
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionDeleteProgressPercent.class), objectTable));
+		HashMap<Class, ObjectPicker> buttonsMap = new HashMap<Class, ObjectPicker>();
+		buttonsMap.put(ActionCreateProgressPercent.class, objectPicker);
+		buttonsMap.put(ActionDeleteProgressPercent.class, objectTable);
 		
-		return box;
+		return buttonsMap;
 	}
 	
 	@Override

@@ -21,11 +21,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import java.awt.BorderLayout;
+import java.util.HashMap;
+import java.util.Set;
 
 import javax.swing.JPanel;
 
 import org.miradi.actions.Actions;
 import org.miradi.layout.OneColumnGridLayout;
+import org.miradi.layout.OneRowPanel;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -90,6 +94,22 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 		return getMainWindow().getActions();
 	}
 	
+	private JPanel createButtonBar()
+	{
+		OneRowPanel box = new OneRowPanel();
+		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		box.setGaps(3);
+		
+		HashMap<Class, ObjectPicker> buttonsMap = getButtonsActionsPickerMap();
+		Set<Class> buttonClasses = buttonsMap.keySet();
+		for(Class buttonClass : buttonClasses)
+		{
+			box.add(createObjectsActionButton(getActions().getObjectsAction(buttonClass), buttonsMap.get(buttonClass)));
+		}
+		
+		return box;
+	}
+
 	private void addComponents()
 	{
 		MiradiScrollPane scroller = new MiradiScrollPane(objectTable);
@@ -118,7 +138,7 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	
 	abstract protected String getTagForRefListFieldBeingEdited();
 	
-	abstract protected JPanel createButtonBar();
+	abstract protected HashMap<Class, ObjectPicker> getButtonsActionsPickerMap();
 	
 	abstract protected void createTable() throws Exception;
 	
