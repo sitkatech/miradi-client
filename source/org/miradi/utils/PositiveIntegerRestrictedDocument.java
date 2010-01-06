@@ -20,19 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-public class PositiveIntegerRestrictedDocument extends AbstractRestrictedDocument
+public class PositiveIntegerRestrictedDocument extends NumericRestrictedDocument
 {
 	@Override
 	protected boolean isValidCharacter(char character)
 	{
 		return Character.isDigit(character); 
-	}
-	
-	@Override
-	protected int getMaxValueLength()
-	{
-		return REASONABLE_MAX_DIGITS_IN_NUMERIC_FIELD;
-	}
-	
-	private static final int REASONABLE_MAX_DIGITS_IN_NUMERIC_FIELD = 25;
+	}	
 }

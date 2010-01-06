@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 
-public class NumericRestrictedDocument extends PositiveIntegerRestrictedDocument
+public class NumericRestrictedDocument extends AbstractRestrictedDocument
 {	
 	@Override
 	protected boolean isValidCharacter(char character)
@@ -29,8 +29,15 @@ public class NumericRestrictedDocument extends PositiveIntegerRestrictedDocument
 		if(LEGAL_NON_NUMERIC_CHARACTERS.indexOf(character) >= 0)
 			return true;
 		
-		return super.isValidCharacter(character); 
+		return Character.isDigit(character); 
 	}
 	
+	@Override
+	protected int getMaxValueLength()
+	{
+		return REASONABLE_MAX_DIGITS_IN_NUMERIC_FIELD;
+	}
+	
+	private static final int REASONABLE_MAX_DIGITS_IN_NUMERIC_FIELD = 25;	
 	private static final String LEGAL_NON_NUMERIC_CHARACTERS = "-+.,";
 }
