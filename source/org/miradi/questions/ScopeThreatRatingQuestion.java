@@ -32,25 +32,25 @@ public class ScopeThreatRatingQuestion extends ThreatRatingQuestion
 	@Override
 	protected String getLowRatingChoiceItemDescription()
 	{
-		return EAM.text("<html><b>Low:</b> The threat is likely to be very narrow in its scope, affecting the target across a small proportion (1-10%) of its occurrence/population.</html>");
+		return EAM.text("<html><b>Low:</b> The threat is likely to be <b>very narrow</b> in its scope, affecting the target across a <b>small proportion (1-10%)</b> of its occurrence/population.</html>");
 	}
 	
 	@Override
 	protected String getMediumRatingChoiceItemDescription()
 	{
-		return EAM.text("<html><b>Medium:</b> The threat is likely to be restricted in its scope, affecting the target across some (11-30%) of its occurrence/population.</html>");
+		return EAM.text("<html><b>Medium:</b> The threat is likely to be <b>restricted</b> in its scope, affecting the target across <b>some (11-30%)</b> of its occurrence/population.</html>");
 	}
 
 	@Override
 	protected String getHighRatingChoiceItemDescription()
 	{
-		return EAM.text("<html><b>High:</b> The threat is likely to be widespread in its scope, affecting the target across much (31-70%) of its occurrence/population.</html>");
+		return EAM.text("<html><b>High:</b> The threat is likely to be <b>widespread</b> in its scope, affecting the target across <b>much (31-70%)</b> of its occurrence/population.</html>");
 	}
 
 	@Override
 	protected String getVeryHighRatingChoiceItemDescription()
 	{
-		return EAM.text("<html><b>Very High:</b> The threat is likely to be pervasive in its scope, affecting the target across all or most (71-100%) of its occurrence/population.</html>");
+		return EAM.text("<html><b>Very High:</b> The threat is likely to be <b>pervasive</b> in its scope, affecting the target across <b>all or most (71-100%)</b> of its occurrence/population.</html>");
 	}
 	
 	private static String getDescription()
