@@ -32,25 +32,25 @@ public class IrreversibilityThreatRatingQuestion extends ThreatRatingQuestion
 	@Override
 	protected String getLowRatingChoiceItemDescription()
 	{
-		return EAM.text("<html><b>Low:</b> The effects of the threat are easily reversible and the target can be easily restored at a relatively low cost and/or within 0-5 years (e.g., off-road vehicles trespassing in wetland).</html>");
+		return EAM.text("<html><b>Low:</b> The effects of the threat <b>are easily reversible</b> and the target can be <b>easily</b> restored at a relatively <b>low cost and/or within 0-5 years</b> (e.g., off-road vehicles trespassing in wetland).</html>");
 	}
 	
 	@Override
 	protected String getMediumRatingChoiceItemDescription()
 	{
-		return EAM.text("<html><b>Medium:</b> The effects of the threat can be reversed and the target restored with a reasonable commitment of resources and/or within 6-20 years (e.g., ditching and draining of wetland).</html>");
+		return EAM.text("<html><b>Medium:</b> The effects of the threat <b>can be reversed</b> and the target restored with a <b>reasonable commitment</b> of resources and/or within <b>6-20 years</b> (e.g., ditching and draining of wetland).</html>");
 	}
 
 	@Override
 	protected String getHighRatingChoiceItemDescription()
 	{
-		return EAM.text("<html><b>High:</b> The effects of the threat can technically be reversed and the target restored, but it is not practically affordable and/or it would take 21-100 years to achieve this (e.g., wetland converted to agriculture).</html>");
+		return EAM.text("<html><b>High:</b> The effects of the threat <b>can technically be reversed</b> and the target restored, but it is <b>not practically affordable</b> and/or it would take <b>21-100 years</b> to achieve this (e.g., wetland converted to agriculture).</html>");
 	}
 
 	@Override
 	protected String getVeryHighRatingChoiceItemDescription()
 	{
-		return EAM.text("<html><b>Very High:</b> The effects of the threat cannot be reversed and it is very unlikely the target can be restored, and/or it would take more than 100 years to achieve this (e.g., wetlands converted to a shopping center).</html>");
+		return EAM.text("<html><b>Very High:</b> The effects of the threat <b>cannot be reversed</b> and it is <b>very unlikely</b> the target can be restored, and/or it would take <b>more than 100 years</b> to achieve this (e.g., wetlands converted to a shopping center).</html>");
 	}
 	
 	private static String getDescription()

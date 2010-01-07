@@ -32,25 +32,25 @@ public class SeverityThreatRatingQuestion extends ThreatRatingQuestion
 	@Override
 	protected String getLowRatingChoiceItemDescription()
 	{
-		return EAM.text("<html><b>Low:</b> Within the scope, the threat is likely to only slightly degrade/reduce the target or reduce its population by 1-10% within ten years or three generations.</html>");
+		return EAM.text("<html><b>Low:</b> Within the scope, the threat is likely to only <b>slightly degrade/reduce</b> the target or reduce its population by <b>1-10%</b> within ten years or three generations.</html>");
 	}
 	
 	@Override
 	protected String getMediumRatingChoiceItemDescription()
 	{
-		return EAM.text("<html><b>Medium:</b> Within the scope, the threat is likely to moderately degrade/reduce the target or reduce its population by 11-30% within ten years or three generations.</html>");
+		return EAM.text("<html><b>Medium:</b> Within the scope, the threat is likely to <b>moderately degrade/reduce</b> the target or reduce its population by <b>11-30%</b> within ten years or three generations.</html>");
 	}
 
 	@Override
 	protected String getHighRatingChoiceItemDescription()
 	{
-		return EAM.text("<html><b>High:</b> Within the scope, the threat is likely to seriously degrade/reduce the target or reduce its population by 31-70% within ten years or three generations.</html>");
+		return EAM.text("<html><b>High:</b> Within the scope, the threat is likely to <b>seriously degrade/reduce</b> the target or reduce its population by <b>31-70%</b> within ten years or three generations.</html>");
 	}
 
 	@Override
 	protected String getVeryHighRatingChoiceItemDescription()
 	{
-		return EAM.text("<html><b>Very High:</b> Within the scope, the threat is likely to destroy or eliminate the target, or reduce its population by 71-100% within ten years or three generations.</html>");
+		return EAM.text("<html><b>Very High:</b> Within the scope, the threat is likely to <b>destroy or eliminate</b> the target, or reduce its population by <b>71-100%</b> within ten years or three generations.</html>");
 	}
 	
 	private static String getDescription()
