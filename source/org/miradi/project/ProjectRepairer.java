@@ -21,6 +21,7 @@ package org.miradi.project;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.LinkedHashSet;
 
 import org.miradi.database.ProjectServer;
 import org.miradi.ids.BaseId;
@@ -164,6 +165,7 @@ public class ProjectRepairer
 		if (missingObjectRefs.size() == 0 )
 			return;
 		
+		LinkedHashSet<String> orderedErrorMesseges = new LinkedHashSet<String>();
 		for (int i = 0; i < missingObjectRefs.size(); ++i)
 		{
 			ORef missingRef = missingObjectRefs.get(i);
@@ -171,7 +173,13 @@ public class ProjectRepairer
 			if (hasOnlyTableSettingReferrers(referrers))
 				continue;
 			
-			EAM.logError("Missing object: " + missingRef + " referred to by: " + referrers);
+			String errorMessage = "Missing object: " + missingRef + " referred to by: " + referrers;
+			orderedErrorMesseges.add(errorMessage);
+		}
+		
+		for(String errorMessage : orderedErrorMesseges)
+		{
+			EAM.logError(errorMessage);
 		}
 		
 		detectAndReportOrphans(FactorLink.getObjectType(), DiagramLink.getObjectType());
