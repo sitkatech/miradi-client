@@ -127,7 +127,7 @@ public class FactorMoveHandler
 		for(LinkCell linkCell : factorRelatedLinks)
 		{
 			PointList bendPoints = new PointList(linkCell.getDiagramLink().getBendPoints());
-			if (bendPoints.size() < 1)
+			if (bendPoints.size() <= 1)
 				continue;
 			
 			if (areBothFactorsLinked(idsBeingMovedAsSet, linkCell, factorCell))
