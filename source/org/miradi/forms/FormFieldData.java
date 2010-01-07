@@ -26,6 +26,7 @@ public class FormFieldData extends FieldRelatedFormItem
 		super(objectTypeToUse, objectTagToUse);
 	}
 	
+	@Override
 	public boolean isFormFieldData()
 	{
 		return true;
