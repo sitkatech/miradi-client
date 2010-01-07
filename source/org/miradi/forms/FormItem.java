@@ -45,4 +45,9 @@ abstract public class FormItem
 	{
 		return false;
 	}
+	
+	public boolean isFormCurrencyFieldData()
+	{
+		return false;
+	}
 }

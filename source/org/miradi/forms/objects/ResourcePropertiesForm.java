@@ -37,7 +37,7 @@ public class ResourcePropertiesForm extends FieldPanelSpec
 		addLabelAndField(type, ProjectResource.TAG_ALTERNATIVE_EMAIL);
 		addLabelAndFieldsWithLabels(EAM.text("Label|IM Address"), type, new String[]{ProjectResource.TAG_IM_ADDRESS, ProjectResource.TAG_IM_SERVICE, });
 		addLabelAndField(type, ProjectResource.TAG_DATE_UPDATED);
-		addLabelAndField(type, ProjectResource.TAG_COST_PER_UNIT);
+		addCurrencyField(type, ProjectResource.TAG_COST_PER_UNIT);
 		addLabelAndField(type, ProjectResource.TAG_COMMENTS);
 		addLabelAndField(type, ProjectResource.TAG_CUSTOM_FIELD_1);
 		addLabelAndField(type, ProjectResource.TAG_CUSTOM_FIELD_2);
