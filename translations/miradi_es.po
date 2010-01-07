@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-06 08:40-0600\n"
+"POT-Creation-Date: 2010-01-07 09:53-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -2780,30 +2780,30 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/SeverityThreatRatingQuestion.java:35
 msgid ""
-"<html><b>Low:</b> Within the scope, the threat is likely to only slightly "
-"degrade/reduce the target or reduce its population by 1-10% within ten years "
-"or three generations.</html>"
+"<html><b>Low:</b> Within the scope, the threat is likely to only <b>slightly "
+"degrade/reduce</b> the target or reduce its population by <b>1-10%</b> "
+"within ten years or three generations.</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/SeverityThreatRatingQuestion.java:41
 msgid ""
-"<html><b>Medium:</b> Within the scope, the threat is likely to moderately "
-"degrade/reduce the target or reduce its population by 11-30% within ten "
-"years or three generations.</html>"
+"<html><b>Medium:</b> Within the scope, the threat is likely to <b>moderately "
+"degrade/reduce</b> the target or reduce its population by <b>11-30%</b> "
+"within ten years or three generations.</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/SeverityThreatRatingQuestion.java:47
 msgid ""
-"<html><b>High:</b> Within the scope, the threat is likely to seriously "
-"degrade/reduce the target or reduce its population by 31-70% within ten "
-"years or three generations.</html>"
+"<html><b>High:</b> Within the scope, the threat is likely to <b>seriously "
+"degrade/reduce</b> the target or reduce its population by <b>31-70%</b> "
+"within ten years or three generations.</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/SeverityThreatRatingQuestion.java:53
 msgid ""
-"<html><b>Very High:</b> Within the scope, the threat is likely to destroy or "
-"eliminate the target, or reduce its population by 71-100% within ten years "
-"or three generations.</html>"
+"<html><b>Very High:</b> Within the scope, the threat is likely to <b>destroy "
+"or eliminate</b> the target, or reduce its population by <b>71-100%</b> "
+"within ten years or three generations.</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/SeverityThreatRatingQuestion.java:58
@@ -3815,32 +3815,32 @@ msgstr "Muy bueno "
 
 #: Miradi/source/org/miradi/questions/IrreversibilityThreatRatingQuestion.java:35
 msgid ""
-"<html><b>Low:</b> The effects of the threat are easily reversible and the "
-"target can be easily restored at a relatively low cost and/or within 0-5 "
-"years (e.g., off-road vehicles trespassing in wetland).</html>"
+"<html><b>Low:</b> The effects of the threat <b>are easily reversible</b> and "
+"the target can be <b>easily</b> restored at a relatively <b>low cost and/or "
+"within 0-5 years</b> (e.g., off-road vehicles trespassing in wetland).</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/IrreversibilityThreatRatingQuestion.java:41
 msgid ""
-"<html><b>Medium:</b> The effects of the threat can be reversed and the "
-"target restored with a reasonable commitment of resources and/or within 6-20 "
-"years (e.g., ditching and draining of wetland).</html>"
+"<html><b>Medium:</b> The effects of the threat <b>can be reversed</b> and "
+"the target restored with a <b>reasonable commitment</b> of resources and/or "
+"within <b>6-20 years</b> (e.g., ditching and draining of wetland).</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/IrreversibilityThreatRatingQuestion.java:47
 msgid ""
-"<html><b>High:</b> The effects of the threat can technically be reversed and "
-"the target restored, but it is not practically affordable and/or it would "
-"take 21-100 years to achieve this (e.g., wetland converted to agriculture).</"
-"html>"
+"<html><b>High:</b> The effects of the threat <b>can technically be reversed</"
+"b> and the target restored, but it is <b>not practically affordable</b> and/"
+"or it would take <b>21-100 years</b> to achieve this (e.g., wetland "
+"converted to agriculture).</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/IrreversibilityThreatRatingQuestion.java:53
 msgid ""
-"<html><b>Very High:</b> The effects of the threat cannot be reversed and it "
-"is very unlikely the target can be restored, and/or it would take more than "
-"100 years to achieve this (e.g., wetlands converted to a shopping center).</"
-"html>"
+"<html><b>Very High:</b> The effects of the threat <b>cannot be reversed</b> "
+"and it is <b>very unlikely</b> the target can be restored, and/or it would "
+"take <b>more than 100 years</b> to achieve this (e.g., wetlands converted to "
+"a shopping center).</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/IrreversibilityThreatRatingQuestion.java:58
@@ -3852,30 +3852,30 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:35
 msgid ""
-"<html><b>Low:</b> The threat is likely to be very narrow in its scope, "
-"affecting the target across a small proportion (1-10%) of its occurrence/"
-"population.</html>"
+"<html><b>Low:</b> The threat is likely to be <b>very narrow</b> in its "
+"scope, affecting the target across a <b>small proportion (1-10%)</b> of its "
+"occurrence/population.</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:41
 msgid ""
-"<html><b>Medium:</b> The threat is likely to be restricted in its scope, "
-"affecting the target across some (11-30%) of its occurrence/population.</"
-"html>"
+"<html><b>Medium:</b> The threat is likely to be <b>restricted</b> in its "
+"scope, affecting the target across <b>some (11-30%)</b> of its occurrence/"
+"population.</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:47
 msgid ""
-"<html><b>High:</b> The threat is likely to be widespread in its scope, "
-"affecting the target across much (31-70%) of its occurrence/population.</"
-"html>"
+"<html><b>High:</b> The threat is likely to be <b>widespread</b> in its "
+"scope, affecting the target across <b>much (31-70%)</b> of its occurrence/"
+"population.</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:53
 msgid ""
-"<html><b>Very High:</b> The threat is likely to be pervasive in its scope, "
-"affecting the target across all or most (71-100%) of its occurrence/"
-"population.</html>"
+"<html><b>Very High:</b> The threat is likely to be <b>pervasive</b> in its "
+"scope, affecting the target across <b>all or most (71-100%)</b> of its "
+"occurrence/population.</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:58
