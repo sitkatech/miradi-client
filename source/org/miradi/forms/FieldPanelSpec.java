@@ -76,6 +76,11 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 		addFormRow(new FormRow());
 	}
 
+	protected void addCurrencyField(int type, String fieldTag)
+	{
+		addField(type, fieldTag, new FormCurrencyFieldData(type, fieldTag));
+	}
+	
 	protected void addChoiceField(int type, String fieldTag, ChoiceQuestion question)
 	{
 		addField(type, fieldTag, new FormFieldQuestionData(type, fieldTag, question));
@@ -86,7 +91,7 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 		addField(type, fieldTag, new FormFieldData(type, fieldTag));
 	}
 	
-	private void addField(int type, String fieldTag, FormFieldData formFieldData)
+	private void addField(int type, String fieldTag, FieldRelatedFormItem formFieldData)
 	{
 		FormFieldLabel label = new FormFieldLabel(type, fieldTag);
 		addFormRow(new FormRow(label, formFieldData));

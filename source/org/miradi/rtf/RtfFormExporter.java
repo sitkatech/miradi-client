@@ -22,11 +22,13 @@ package org.miradi.rtf;
 import java.awt.image.BufferedImage;
 
 import org.miradi.forms.FieldPanelSpec;
+import org.miradi.forms.FieldRelatedFormItem;
 import org.miradi.forms.FormConstant;
+import org.miradi.forms.FormCurrencyFieldData;
 import org.miradi.forms.FormFieldData;
+import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormFieldQuestionData;
 import org.miradi.forms.FormImage;
-import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormItem;
 import org.miradi.forms.FormRow;
 import org.miradi.forms.PropertiesPanelSpec;
@@ -37,6 +39,7 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -170,11 +173,17 @@ public class RtfFormExporter
 			if (choiceItem != null)
 				return writer.encode(choiceItem.toString());
 		}
+		else if (formItem.isFormCurrencyFieldData())
+		{
+			CurrencyFormat formatter = getProject().getCurrencyFormatterWithoutCommas();
+			String value = getFieldData((FormCurrencyFieldData) formItem, formRow);
+			return formatter.format(Double.parseDouble(value));
+		}
 		
 		return "";
 	}
 
-	private String getFieldData(FormFieldData formFieldData, FormRow formRow)
+	private String getFieldData(FieldRelatedFormItem formFieldData, FormRow formRow)
 	{
 		ORef ref = getRefs().getRefForType(formFieldData.getObjectType());
 		if (ref.isInvalid())

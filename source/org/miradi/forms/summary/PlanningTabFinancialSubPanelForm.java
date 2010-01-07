@@ -35,7 +35,7 @@ public class PlanningTabFinancialSubPanelForm extends FieldPanelSpec
 				new String[] {ProjectMetadata.TAG_CURRENCY_TYPE, ProjectMetadata.TAG_CURRENCY_SYMBOL});
 		
 		addLabelAndField(type, ProjectMetadata.TAG_CURRENCY_DECIMAL_PLACES);
-		addLabelAndField(type, ProjectMetadata.TAG_TOTAL_BUDGET_FOR_FUNDING);
+		addCurrencyField(type, ProjectMetadata.TAG_TOTAL_BUDGET_FOR_FUNDING);
 		addLabelAndField(type, ProjectMetadata.TAG_BUDGET_SECURED_PERCENT);
 		addLabelAndField(type, ProjectMetadata.TAG_KEY_FUNDING_SOURCES);
 		addLabelAndField(type, ProjectMetadata.TAG_FINANCIAL_COMMENTS);
