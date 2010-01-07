@@ -406,11 +406,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectFloatingPointRestrictedInputField(project, objectType, getObjectIdForType(objectType), tag, column);
 	}
 
-	public ObjectDataInputField createCurrencyField(int objectType, String tag)
-	{
-		return new ObjectCurrencyInputField(project, objectType, getObjectIdForType(objectType), tag, 10);
-	}
-	
 	public ObjectDataInputField createCurrencyField(String tag)
 	{
 		return new ObjectCurrencyInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, 10);
