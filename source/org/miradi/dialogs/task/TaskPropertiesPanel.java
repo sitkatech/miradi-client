@@ -48,6 +48,7 @@ public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSectio
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
