@@ -20,9 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.forms;
 
+import org.miradi.forms.objects.AbstractTargetPropertiesForm;
 import org.miradi.objects.HumanWelfareTarget;
 
-public class HumanWelfareTargetPropertiesForm extends FieldPanelSpec
+public class HumanWelfareTargetPropertiesForm extends AbstractTargetPropertiesForm
 {
 	public HumanWelfareTargetPropertiesForm()
 	{
