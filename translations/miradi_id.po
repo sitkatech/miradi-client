@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-08 06:19-0600\n"
+"POT-Creation-Date: 2010-01-08 06:59-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -2540,7 +2540,7 @@ msgstr "Alamat IM "
 msgid "Current Status"
 msgstr "Status Saat Ini "
 
-#: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
+#: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
 #: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:347
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
