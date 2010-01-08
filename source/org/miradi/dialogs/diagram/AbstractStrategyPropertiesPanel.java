@@ -21,6 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.diagram;
 
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
+import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
+import org.miradi.layout.OneColumnGridLayout;
+import org.miradi.main.EAM;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -30,5 +33,25 @@ abstract public class AbstractStrategyPropertiesPanel extends ObjectDataInputPan
 	public AbstractStrategyPropertiesPanel(Project projectToUse, ObjectPicker picker) throws Exception
 	{
 		super(projectToUse, Strategy.getObjectType());
+		
+		setLayout(new OneColumnGridLayout());
+		
+		addSubPanelWithTitledBorder(new StrategyCoreSubpanel(getProject(), getMainWindow().getActions(), Strategy.getObjectType()));
+		addSubPanelWithTitledBorder(new RelatedItemsSubpanel(getProject(), Strategy.getObjectType()));
+		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getMainWindow().getActions(), Strategy.getObjectType()));
+		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow(), getPicker()));
+		addBudgetSubPanels(picker);
+		
+		updateFieldsFromProject();
+	}
+	
+	protected void addBudgetSubPanels(ObjectPicker picker) throws Exception
+	{
+	}
+	
+	@Override
+	public String getPanelDescription()
+	{
+		return EAM.text("Title|Strategy Properties");
 	}
 }
