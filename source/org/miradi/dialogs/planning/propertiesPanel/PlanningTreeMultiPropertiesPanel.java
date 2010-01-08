@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import org.miradi.dialogs.accountingcode.AccountingCodePropertiesPanel;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
+import org.miradi.dialogs.diagram.AbstractStrategyPropertiesPanel;
 import org.miradi.dialogs.diagram.ConceptualModelPropertiesPanel;
 import org.miradi.dialogs.diagram.ResultsChainPropertiesPanel;
 import org.miradi.dialogs.diagram.StrategyPropertiesPanel;
@@ -70,7 +71,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		goalPropertiesPanel = new GoalPropertiesPanel(getProject(), getMainWindow().getActions(), objectPicker);
 		objectivePropertiesPanel = new ObjectivePropertiesPanel(getProject(), getMainWindow().getActions(), objectPicker);
 		indicatorPropertiesPanel = createIndicatorPropertiesPanel(objectPicker);
-		strategyPropertiesPanel = new StrategyPropertiesPanel(getMainWindow(), objectPicker);
+		strategyPropertiesPanel = createStrategyPropertiesPanel(objectPicker);
 		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(getMainWindow(), objectPicker);
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		targetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), Target.getObjectType());
@@ -105,6 +106,11 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		addPanel(fundingSourcePropertiesPanel);
 		addPanel(accountingCodePropertiesPanel);
 		addPanel(blankPropertiesPanel);
+	}
+
+	protected AbstractStrategyPropertiesPanel createStrategyPropertiesPanel(ObjectPicker objectPickerToUse) throws Exception
+	{
+		return new StrategyPropertiesPanel(getMainWindow(), objectPickerToUse);
 	}
 
 	protected AbstractIndicatorPropertiesPanel createIndicatorPropertiesPanel(ObjectPicker objectPickerToUse) throws Exception
@@ -206,7 +212,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private GoalPropertiesPanel goalPropertiesPanel;
 	private ObjectivePropertiesPanel objectivePropertiesPanel;
 	private AbstractIndicatorPropertiesPanel indicatorPropertiesPanel;
-	private StrategyPropertiesPanel strategyPropertiesPanel;
+	private AbstractStrategyPropertiesPanel strategyPropertiesPanel;
 	private PlanningViewTaskPropertiesPanel taskPropertiesInputPanel;
 	private NonDiagramAbstractTargetPropertiesPanel targetPropertiesPanel;
 	private NonDiagramAbstractTargetPropertiesPanel humanWelfareTargetPropertiesPanel; 
