@@ -19,14 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.forms.objects;
 
-import org.miradi.forms.FieldPanelSpec;
 import org.miradi.icons.TargetIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.Target;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 
-public class TargetPropertiesForm extends FieldPanelSpec
+public class TargetPropertiesForm extends AbstractTargetPropertiesForm
 {
 	public TargetPropertiesForm()
 	{
