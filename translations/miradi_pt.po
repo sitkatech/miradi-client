@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-08 05:46-0600\n"
+"POT-Creation-Date: 2010-01-08 05:49-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6822,6 +6822,10 @@ msgstr ""
 msgid "Legacy TNC Ratings"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/diagram/AbstractStrategyPropertiesPanel.java:55
+msgid "Title|Strategy Properties"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/diagram/BrainstormModePanel.java:34
 msgid ""
 "Currently in brainstorm mode, so some factors are hidden. To return to "
@@ -6870,10 +6874,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:41
 msgid "Related Items"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyPropertiesPanel.java:59
-msgid "Title|Strategy Properties"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/diagram/DiagramLinkColorSubPanel.java:43

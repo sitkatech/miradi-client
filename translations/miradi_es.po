@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-08 05:46-0600\n"
+"POT-Creation-Date: 2010-01-08 05:49-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -7215,6 +7215,10 @@ msgstr "Propiedades del enlace"
 msgid "Legacy TNC Ratings"
 msgstr "Calificaciones de TNC heredadas"
 
+#: Miradi/source/org/miradi/dialogs/diagram/AbstractStrategyPropertiesPanel.java:55
+msgid "Title|Strategy Properties"
+msgstr "Propiedades de la estrategia"
+
 #: Miradi/source/org/miradi/dialogs/diagram/BrainstormModePanel.java:34
 msgid ""
 "Currently in brainstorm mode, so some factors are hidden. To return to "
@@ -7266,10 +7270,6 @@ msgstr "Propiedades del factor"
 #: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:41
 msgid "Related Items"
 msgstr "Elementos relacionados"
-
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyPropertiesPanel.java:59
-msgid "Title|Strategy Properties"
-msgstr "Propiedades de la estrategia"
 
 #: Miradi/source/org/miradi/dialogs/diagram/DiagramLinkColorSubPanel.java:43
 msgid "Diagram Link Color Panel"
