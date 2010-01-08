@@ -34,6 +34,5 @@ public class StrategicPlanTaskPropertiesPanel extends PlanningViewTaskProperties
 	@Override
 	protected void addBudgetSubPanels(ObjectPicker objectPickerToUse) throws Exception
 	{
-		super.addBudgetSubPanels(objectPickerToUse);
 	}
 }
