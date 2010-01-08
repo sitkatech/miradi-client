@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.strategicPlan;
 
+import org.miradi.dialogs.diagram.AbstractStrategyPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.viability.AbstractIndicatorPropertiesPanel;
 import org.miradi.main.MainWindow;
@@ -37,5 +38,11 @@ public class MonitoringPlanMultiPropertiesPanel extends	PlanningTreeMultiPropert
 	protected AbstractIndicatorPropertiesPanel createIndicatorPropertiesPanel(ObjectPicker objectPickerToUse) throws Exception
 	{
 		return new StrategicPlanIndicatorPropertiesPanel(getProject(), objectPickerToUse);
+	}
+	
+	@Override
+	protected AbstractStrategyPropertiesPanel createStrategyPropertiesPanel(ObjectPicker objectPickerToUse) throws Exception
+	{
+		return new StrategicPlanStrategyPropertiesPanel(getProject(), objectPickerToUse);
 	}
 }
