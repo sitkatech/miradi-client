@@ -28,9 +28,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class MonitoringPlanMultiPropertiesPanel extends	PlanningTreeMultiPropertiesPanel
+public class StrategicPlanMultiPropertiesPanel extends	PlanningTreeMultiPropertiesPanel
 {
-	public MonitoringPlanMultiPropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse, ObjectPicker objectPickerToUse) throws Exception
+	public StrategicPlanMultiPropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(mainWindowToUse, orefToUse, objectPickerToUse);
 	}
