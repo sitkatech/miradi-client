@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-08 04:35-0600\n"
+"POT-Creation-Date: 2010-01-08 05:40-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -269,7 +269,7 @@ msgstr ""
 msgid "Lists"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/MonitoringPlanManagementPanel.java:47
+#: Miradi/source/org/miradi/views/planning/MonitoringPlanManagementPanel.java:48
 msgid "Tab|Monitoring Plan"
 msgstr ""
 
