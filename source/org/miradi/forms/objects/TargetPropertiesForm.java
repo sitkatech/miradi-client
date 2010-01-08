@@ -34,9 +34,14 @@ public class TargetPropertiesForm extends AbstractTargetPropertiesForm
 		addChoiceField(type, Target.TAG_VIABILITY_MODE, new ViabilityModeQuestion());
 		addChoiceField(type, Target.TAG_TARGET_STATUS, new StatusQuestion());
 		addLabelAndField(type, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
-		addLabelAndField(Target.getObjectType(), Target.TAG_SPECIES_LATIN_NAME);
-		addLabelAndField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION);
+		addCustomFields();
 		addLabelAndField(Target.getObjectType(), Target.TAG_TEXT);
 		addLabelAndField(Target.getObjectType(), Target.TAG_COMMENTS);
+	}
+
+	private void addCustomFields()
+	{
+		addLabelAndField(Target.getObjectType(), Target.TAG_SPECIES_LATIN_NAME);
+		addLabelAndField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION);
 	}
 }
