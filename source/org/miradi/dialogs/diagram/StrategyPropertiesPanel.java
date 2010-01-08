@@ -22,11 +22,7 @@ package org.miradi.dialogs.diagram;
 
 import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
 import org.miradi.dialogs.expense.ExpensesPropertiesPanel;
-import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
-import org.miradi.layout.OneColumnGridLayout;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -35,27 +31,12 @@ public class StrategyPropertiesPanel extends AbstractStrategyPropertiesPanel
 	public StrategyPropertiesPanel(MainWindow mainWindow, ObjectPicker picker) throws Exception
 	{
 		super(mainWindow.getProject(), picker);
-
-		setLayout(new OneColumnGridLayout());
-		
-		addSubPanelWithTitledBorder(new StrategyCoreSubpanel(getProject(), mainWindow.getActions(), Strategy.getObjectType()));
-		addSubPanelWithTitledBorder(new RelatedItemsSubpanel(getProject(), Strategy.getObjectType()));
-		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), mainWindow.getActions(), Strategy.getObjectType()));
-		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow(), getPicker()));
-		addBudgetSubPanels(picker);
-		
-		updateFieldsFromProject();
 	}
 
+	@Override
 	protected void addBudgetSubPanels(ObjectPicker picker) throws Exception
 	{
 		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));
 		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));
-	}
-	
-	@Override
-	public String getPanelDescription()
-	{
-		return EAM.text("Title|Strategy Properties");
 	}
 }
