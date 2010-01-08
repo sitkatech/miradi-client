@@ -20,10 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.viability;
 
-import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.diagram.IndicatorSubPanel;
-import org.miradi.dialogs.expense.ExpensesPropertiesPanel;
 import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
@@ -34,7 +32,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -59,8 +56,6 @@ abstract public class AbstractIndicatorPropertiesPanel extends ObjectDataInputPa
 
 	protected void addBudgetSubPanels(ObjectPicker picker) throws Exception
 	{
-		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));
-		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));
 	}
 
 	@Override

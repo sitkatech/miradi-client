@@ -17,25 +17,17 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.viability;
 
-import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
-import org.miradi.dialogs.expense.ExpensesPropertiesPanel;
-import org.miradi.main.MainWindow;
-import org.miradi.objects.Task;
+package org.miradi.dialogs.workPlan;
+
+import org.miradi.dialogs.viability.AbstractIndicatorPropertiesPanel;
+import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class IndicatorPropertiesPanel extends AbstractIndicatorPropertiesPanel
+public class StrategicPlanIndicatorPropertiesPanel extends AbstractIndicatorPropertiesPanel
 {
-	public IndicatorPropertiesPanel(MainWindow mainWindow, ObjectPicker picker) throws Exception
+	public StrategicPlanIndicatorPropertiesPanel(Project projectToUse, ObjectPicker picker) throws Exception
 	{
-		super(mainWindow.getProject(), picker);
-	}
-	
-	@Override
-	protected void addBudgetSubPanels(ObjectPicker picker) throws Exception
-	{
-		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));
-		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));
+		super(projectToUse, picker);
 	}
 }
