@@ -42,10 +42,15 @@ public class StrategyPropertiesPanel extends AbstractStrategyPropertiesPanel
 		addSubPanelWithTitledBorder(new RelatedItemsSubpanel(getProject(), Strategy.getObjectType()));
 		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), mainWindow.getActions(), Strategy.getObjectType()));
 		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow(), getPicker()));
-		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(mainWindow, Task.getObjectType(), picker));
-		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));
+		addBudgetSubPanels(picker);
 		
 		updateFieldsFromProject();
+	}
+
+	protected void addBudgetSubPanels(ObjectPicker picker) throws Exception
+	{
+		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));
+		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));
 	}
 	
 	@Override
