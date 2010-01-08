@@ -21,7 +21,6 @@ package org.miradi.dialogs.diagram;
 
 
 import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
-import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.expense.ExpensesPropertiesPanel;
 import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
 import org.miradi.layout.OneColumnGridLayout;
@@ -31,11 +30,12 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class StrategyPropertiesPanel extends ObjectDataInputPanelWithSections
+public class StrategyPropertiesPanel extends AbstractStrategyPropertiesPanel
 {
 	public StrategyPropertiesPanel(MainWindow mainWindow, ObjectPicker picker) throws Exception
 	{
-		super(mainWindow.getProject(), Strategy.getObjectType());
+		super(mainWindow.getProject(), picker);
+
 		setLayout(new OneColumnGridLayout());
 		
 		addSubPanelWithTitledBorder(new StrategyCoreSubpanel(getProject(), mainWindow.getActions(), Strategy.getObjectType()));
