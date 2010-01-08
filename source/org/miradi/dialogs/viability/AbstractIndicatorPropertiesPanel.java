@@ -63,6 +63,7 @@ abstract public class AbstractIndicatorPropertiesPanel extends ObjectDataInputPa
 		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));
 	}
 
+	@Override
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
@@ -76,6 +77,7 @@ abstract public class AbstractIndicatorPropertiesPanel extends ObjectDataInputPa
 		return new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt()));
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Indicator Properties");
