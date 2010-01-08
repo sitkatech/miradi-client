@@ -50,10 +50,15 @@ public class IndicatorPropertiesPanel extends AbstractIndicatorPropertiesPanel
 		addSubPanelWithTitledBorder(new IndicatorMonitoringPlanSubPanel(getProject(), getInvalidTargetRef()));
 		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow(), getPicker()));
 		addSubPanelWithTitledBorder(new IndicatorFutureStatusSubPanel(getProject(), getInvalidTargetRef()));
-		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(mainWindow, Task.getObjectType(), picker));
-		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));
+		addBudgetSubPanels(picker);
 		
 		updateFieldsFromProject();
+	}
+
+	private void addBudgetSubPanels(ObjectPicker picker) throws Exception
+	{
+		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));
+		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));
 	}
 
 	public void setObjectRefs(ORef[] orefsToUse)
