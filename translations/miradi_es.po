@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-08 06:59-0600\n"
+"POT-Creation-Date: 2010-01-08 07:22-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -2543,7 +2543,7 @@ msgstr "Dirección de IM"
 msgid "Current Status"
 msgstr "Estadodo actual"
 
-#: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:33
+#: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:32
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
 #: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:347
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
@@ -2631,6 +2631,11 @@ msgstr "Plan de trabajo"
 #: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
 msgid "Label|Workplan Dates"
 msgstr "Fechas de planes de trabajo"
+
+#: Miradi/source/org/miradi/forms/HumanWelfareTargetPropertiesForm.java:34
+#: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:51
+msgid "Human Welfare Target"
+msgstr ""
 
 #: Miradi/source/org/miradi/forms/PropertiesPanelSpec.java:49
 msgid "Sub classes need to override this method."
@@ -6689,10 +6694,6 @@ msgstr "Indicadores"
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:42
 msgid "Label|Methods"
 msgstr "Métodos"
-
-#: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:51
-msgid "Human Welfare Target"
-msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:37
