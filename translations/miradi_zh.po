@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-08 04:35-0600\n"
+"POT-Creation-Date: 2010-01-08 05:40-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -294,7 +294,7 @@ msgstr "会计编码"
 msgid "Lists"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/MonitoringPlanManagementPanel.java:47
+#: Miradi/source/org/miradi/views/planning/MonitoringPlanManagementPanel.java:48
 msgid "Tab|Monitoring Plan"
 msgstr ""
 
