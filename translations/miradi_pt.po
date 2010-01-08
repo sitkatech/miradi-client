@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-08 06:10-0600\n"
+"POT-Creation-Date: 2010-01-08 06:19-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -217,7 +217,7 @@ msgstr ""
 msgid "Project Resources"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/ConfigurablePlanningTreeManagementPanel.java:45
+#: Miradi/source/org/miradi/views/planning/ConfigurablePlanningTreeManagementPanel.java:46
 msgid "Tab|Custom"
 msgstr ""
 
@@ -256,7 +256,7 @@ msgstr ""
 msgid "Accounting Code"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/ActionPlanManagementPanel.java:47
+#: Miradi/source/org/miradi/views/planning/ActionPlanManagementPanel.java:48
 msgid "Tab|Action Plan"
 msgstr ""
 
@@ -265,7 +265,7 @@ msgstr ""
 msgid "Accounting Codes"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:46
+#: Miradi/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:47
 msgid "Lists"
 msgstr ""
 
