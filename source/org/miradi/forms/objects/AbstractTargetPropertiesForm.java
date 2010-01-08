@@ -21,8 +21,30 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
+import org.miradi.icons.AbstractMiradiIcon;
+import org.miradi.objects.AbstractTarget;
+import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.ViabilityModeQuestion;
 
-public class AbstractTargetPropertiesForm extends FieldPanelSpec
+abstract public class AbstractTargetPropertiesForm extends FieldPanelSpec
 {
+	public AbstractTargetPropertiesForm()
+	{
+		int targetType = getTargetType();
+		addStandardNameRow(createTargetIcon(), getTargetLabel(), targetType, new String[]{AbstractTarget.TAG_SHORT_LABEL, AbstractTarget.TAG_LABEL});
+		addChoiceField(targetType, AbstractTarget.TAG_VIABILITY_MODE, new ViabilityModeQuestion());
+		addChoiceField(targetType, AbstractTarget.TAG_TARGET_STATUS, new StatusQuestion());
+		addLabelAndField(targetType, AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION);
+		addCustomFields();
+		addLabelAndField(getTargetType(), AbstractTarget.TAG_TEXT);
+		addLabelAndField(getTargetType(), AbstractTarget.TAG_COMMENTS);
+	}
 
+	abstract protected  void addCustomFields();
+	
+	abstract protected String getTargetLabel();
+
+	abstract protected AbstractMiradiIcon createTargetIcon();
+
+	abstract protected int getTargetType();
 }

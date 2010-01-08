@@ -19,27 +19,33 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.forms.objects;
 
+import org.miradi.icons.AbstractMiradiIcon;
 import org.miradi.icons.TargetIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.Target;
-import org.miradi.questions.StatusQuestion;
-import org.miradi.questions.ViabilityModeQuestion;
 
 public class TargetPropertiesForm extends AbstractTargetPropertiesForm
 {
-	public TargetPropertiesForm()
+	@Override
+	protected String getTargetLabel()
 	{
-		int type = Target.getObjectType();
-		addStandardNameRow(new TargetIcon(), EAM.text("Target"), type, new String[]{Target.TAG_SHORT_LABEL, Target.TAG_LABEL});
-		addChoiceField(type, Target.TAG_VIABILITY_MODE, new ViabilityModeQuestion());
-		addChoiceField(type, Target.TAG_TARGET_STATUS, new StatusQuestion());
-		addLabelAndField(type, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
-		addCustomFields();
-		addLabelAndField(Target.getObjectType(), Target.TAG_TEXT);
-		addLabelAndField(Target.getObjectType(), Target.TAG_COMMENTS);
+		return EAM.text("Target");
 	}
-
-	private void addCustomFields()
+	
+	@Override
+	protected AbstractMiradiIcon createTargetIcon()
+	{
+		return new TargetIcon();
+	}
+	
+	@Override
+	protected int getTargetType()
+	{
+		return Target.getObjectType();
+	}
+	
+	@Override
+	protected void addCustomFields()
 	{
 		addLabelAndField(Target.getObjectType(), Target.TAG_SPECIES_LATIN_NAME);
 		addLabelAndField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION);

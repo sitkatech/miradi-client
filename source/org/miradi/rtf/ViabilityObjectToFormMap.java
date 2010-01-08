@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf;
 
+import org.miradi.forms.HumanWelfareTargetPropertiesForm;
 import org.miradi.forms.PanelHolderSpec;
 import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.forms.objects.AccountingCodePropertiesForm;
@@ -46,6 +47,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.Goal;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -68,6 +70,9 @@ public class ViabilityObjectToFormMap
 		if (Target.is(objectType))
 			return new TargetPropertiesForm();
 
+		if (HumanWelfareTarget.is(objectType))
+			return new HumanWelfareTargetPropertiesForm();
+		
 		if (Goal.is(objectType))
 			return new GoalPropertiesForm();
 		

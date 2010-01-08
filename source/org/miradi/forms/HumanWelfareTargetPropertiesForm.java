@@ -21,14 +21,33 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms;
 
 import org.miradi.forms.objects.AbstractTargetPropertiesForm;
+import org.miradi.icons.AbstractMiradiIcon;
+import org.miradi.icons.HumanWelfareTargetIcon;
+import org.miradi.main.EAM;
 import org.miradi.objects.HumanWelfareTarget;
 
 public class HumanWelfareTargetPropertiesForm extends AbstractTargetPropertiesForm
 {
-	public HumanWelfareTargetPropertiesForm()
+	@Override
+	protected String getTargetLabel()
 	{
-		int type = HumanWelfareTarget.getObjectType();
-		addLabelAndField(type, HumanWelfareTarget.TAG_TEXT);
-		addLabelAndField(type, HumanWelfareTarget.TAG_COMMENTS);
+		return EAM.text("Human Welfare Target");
+	}
+	
+	@Override
+	protected AbstractMiradiIcon createTargetIcon()
+	{
+		return new HumanWelfareTargetIcon();
+	}
+	
+	@Override
+	protected int getTargetType()
+	{
+		return HumanWelfareTarget.getObjectType();
+	}
+
+	@Override
+	protected  void addCustomFields()
+	{
 	}
 }
