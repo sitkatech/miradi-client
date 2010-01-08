@@ -17,29 +17,23 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.dialogs.task.TaskPropertiesPanel;
-import org.miradi.main.EAM;
+package org.miradi.dialogs.strategicPlan;
+
+import org.miradi.dialogs.planning.propertiesPanel.PlanningViewTaskPropertiesPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class PlanningViewTaskPropertiesPanel extends TaskPropertiesPanel
+public class StrategicPlanTaskPropertiesPanel extends PlanningViewTaskPropertiesPanel
 {
-	public PlanningViewTaskPropertiesPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
+	public StrategicPlanTaskPropertiesPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(mainWindow, objectPickerToUse);
 	}
 	
 	@Override
-	protected boolean shouldHaveVisibilityPanel()
+	protected void addBudgetSubPanels(ObjectPicker objectPickerToUse) throws Exception
 	{
-		return false;
-	}
-
-	@Override
-	public String getPanelDescription()
-	{
-		return EAM.text("Title|Task Properties");
+		super.addBudgetSubPanels(objectPickerToUse);
 	}
 }
