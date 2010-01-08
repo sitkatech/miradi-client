@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-08 05:40-0600\n"
+"POT-Creation-Date: 2010-01-08 05:46-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -7241,7 +7241,7 @@ msgstr "Sifat-sifat Faktor "
 msgid "Related Items"
 msgstr "Butir-butir Terkait "
 
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyPropertiesPanel.java:53
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyPropertiesPanel.java:59
 msgid "Title|Strategy Properties"
 msgstr "Sifat-sifat Strategi "
 

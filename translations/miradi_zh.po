@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-08 05:40-0600\n"
+"POT-Creation-Date: 2010-01-08 05:46-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7063,7 +7063,7 @@ msgstr "因素属性 \t\t"
 msgid "Related Items"
 msgstr "相关条目 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyPropertiesPanel.java:53
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyPropertiesPanel.java:59
 msgid "Title|Strategy Properties"
 msgstr "策略属性 \t\t"
 
