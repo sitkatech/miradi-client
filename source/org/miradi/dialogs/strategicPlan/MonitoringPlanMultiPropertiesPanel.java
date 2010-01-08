@@ -22,6 +22,7 @@ package org.miradi.dialogs.strategicPlan;
 
 import org.miradi.dialogs.diagram.AbstractStrategyPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
+import org.miradi.dialogs.planning.propertiesPanel.PlanningViewTaskPropertiesPanel;
 import org.miradi.dialogs.viability.AbstractIndicatorPropertiesPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -44,5 +45,11 @@ public class MonitoringPlanMultiPropertiesPanel extends	PlanningTreeMultiPropert
 	protected AbstractStrategyPropertiesPanel createStrategyPropertiesPanel(ObjectPicker objectPickerToUse) throws Exception
 	{
 		return new StrategicPlanStrategyPropertiesPanel(getProject(), objectPickerToUse);
+	}
+	
+	@Override
+	protected PlanningViewTaskPropertiesPanel createTaskPropertiesPanel(ObjectPicker objectPickerToUse) throws Exception
+	{
+		return new StrategicPlanTaskPropertiesPanel(getMainWindow(), objectPickerToUse);
 	}
 }
