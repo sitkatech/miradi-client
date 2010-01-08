@@ -48,9 +48,9 @@ public class StrategyPropertiesPanel extends AbstractStrategyPropertiesPanel
 		updateFieldsFromProject();
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Strategy Properties");
 	}
-
 }
