@@ -45,6 +45,11 @@ abstract public class MainThreatTableModel extends AbstractThreatTargetTableMode
 		return threatRows.length;
 	}
 	
+	public String getColumnGroupCode(int column)
+	{
+		return targetColumns[column].getRef().toString();
+	}
+	
 	public int getProportionShares(int row)
 	{
 		return 1;

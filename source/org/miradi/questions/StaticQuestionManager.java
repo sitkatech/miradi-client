@@ -92,6 +92,7 @@ public class StaticQuestionManager
 		addQuestion(new WorkPlanColumnConfigurationQuestion());
 		addQuestion(new MonthAbbreviationsQuestion());
 		addQuestion(new TncOrganizationalPrioritiesQuestion());
+		addQuestion(new SortDirectionQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
