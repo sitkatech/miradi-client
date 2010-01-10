@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-08 07:22-0600\n"
+"POT-Creation-Date: 2010-01-10 06:28-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -2466,7 +2466,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:55
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:78
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:81
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:103
@@ -4039,6 +4039,10 @@ msgstr "Penurunan Kecil"
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:43
 msgid "Strong Decrease"
 msgstr "Penurunan Besar"
+
+#: Miradi/source/org/miradi/questions/SortDirectionQuestion.java:35
+msgid "Ascending"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/ScopeBoxColorQuestion.java:39
 msgid "Green (Biodiversity Target)"
@@ -6542,6 +6546,10 @@ msgstr "Buat "
 #: Miradi/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:55
 msgid "All on One Page"
 msgstr "Semua dalam Satu Halaman"
+
+#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:164
+msgid "Error Occurred During Sorting"
+msgstr ""
 
 #: Miradi/source/org/miradi/utils/XMLFileFilter.java:40
 msgid "FileFilter|XML (*.xml)"
