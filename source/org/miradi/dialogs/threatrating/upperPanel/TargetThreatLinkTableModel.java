@@ -46,11 +46,6 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 		return targetColumns.length;
 	}
 	
-	public String getColumnGroupCode(int column)
-	{
-		return targetColumns[column].getRef().toString();
-	}
-
 	public String getColumnName(int column)
 	{
 		return targetColumns[column].toString();

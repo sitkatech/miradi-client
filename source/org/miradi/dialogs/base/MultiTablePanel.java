@@ -51,7 +51,7 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		verticalController = new MultiTableVerticalScrollController();
 		horizontalController = new MultiTableHorizontalScrollController();
 		rowHeightController = new MultiTableRowHeightController(getMainWindow());
-		rowSortController = new MultiTableRowSortController();
+		rowSortController = new MultiTableRowSortController(getProject());
 		
 		setBackground(mainWindowToUse.getAppPreferences().getDataPanelBackgroundColor());
 	}
@@ -66,7 +66,7 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		return getMainWindow().getProject();
 	}
 	
-	protected void addRowSortControlledTable(TableWithRowHeightSaver tableToSort)
+	protected void addRowSortControlledTable(TableWithRowHeightSaver tableToSort) throws Exception
 	{
 		rowSortController.addTableToSort(tableToSort);
 	}

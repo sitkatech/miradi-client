@@ -24,6 +24,7 @@ import java.util.Vector;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
+import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.RefListListData;
@@ -36,6 +37,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.SortDirectionQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.StringMapData;
@@ -175,6 +177,8 @@ public class TableSettings extends BaseObject
 		expandedNodesRefListList = new RefListListData(TAG_TREE_EXPANSION_LIST);
 		dateUnitListList = new DateUnitListData(TAG_DATE_UNIT_LIST_DATA);
 		tableSettingsMap = new StringMapData(TAG_TABLE_SETTINGS_MAP);
+		columnSortTag = new StringData(TAG_COLUMN_SORT_TAG);
+		columnSortDirection = new ChoiceData(TAG_COLUMN_SORT_DIRECTION, getQuestion(SortDirectionQuestion.class));
 		
 		addPresentationDataField(TAG_TABLE_IDENTIFIER, tableIdentifier);
 		addPresentationDataField(TAG_COLUMN_SEQUENCE_CODES, columnSequenceCodes);
@@ -183,6 +187,8 @@ public class TableSettings extends BaseObject
 		addPresentationDataField(TAG_TREE_EXPANSION_LIST, expandedNodesRefListList);
 		addPresentationDataField(TAG_DATE_UNIT_LIST_DATA, dateUnitListList);
 		addPresentationDataField(TAG_TABLE_SETTINGS_MAP, tableSettingsMap);
+		addPresentationDataField(TAG_COLUMN_SORT_TAG, columnSortTag);
+		addPresentationDataField(TAG_COLUMN_SORT_DIRECTION, columnSortDirection);
 	}
 	
 	public static final String OBJECT_NAME = "TableSettings";
@@ -197,6 +203,8 @@ public class TableSettings extends BaseObject
 	public static final String TAG_TREE_EXPANSION_LIST  = "TreeExpansionList";
 	public static final String TAG_DATE_UNIT_LIST_DATA = "DateUnitListData";
 	public static final String TAG_TABLE_SETTINGS_MAP = "TagTableSettingsMap";
+	public static final String TAG_COLUMN_SORT_TAG = "ColumnSortTag";
+	public static final String TAG_COLUMN_SORT_DIRECTION = "ColumnSortDirection";
 	
 	private StringData tableIdentifier;
 	private TagListData columnSequenceCodes;
@@ -205,4 +213,6 @@ public class TableSettings extends BaseObject
 	private RefListListData expandedNodesRefListList;
 	private DateUnitListData dateUnitListList;
 	private StringMapData tableSettingsMap;
+	private StringData columnSortTag;
+	private ChoiceData columnSortDirection;
 }
