@@ -27,8 +27,8 @@ import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
 import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatPerRowTableModel;
+import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
@@ -118,42 +118,34 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		return TableSettings.findOrCreate(getProject(), uniqueTableIdentifier);
 	}	
 	
-	private void saveColumnSortTag(TableSettings tableSettings, String columnSortTag) throws Exception
+	private void storeSameDataForAllTables(String columnSortTag, String columnSortDirection) throws Exception
 	{
-		saveUsingCommand(tableSettings, TableSettings.TAG_COLUMN_SORT_TAG, columnSortTag);
-	}
-	
-	private void saveColumnSortDirection(TableSettings tableSettings, String columnSortDirection) throws Exception
-	{
-		saveUsingCommand(tableSettings, TableSettings.TAG_COLUMN_SORT_DIRECTION, columnSortDirection);	
-	}
-
-	private void saveUsingCommand(TableSettings tableSettings, String tag, String value) throws Exception
-	{
-		CommandSetObjectData setColumnWidths = new CommandSetObjectData(tableSettings.getRef(), tag, value);
-		getProject().executeCommand(setColumnWidths);
-	}
-	
-	private void clearAllTableSettings() throws Exception
-	{
-		for(TableWithRowHeightSaver table : tablesToSort)
+		for (TableWithRowHeightSaver table : tablesToSort)
 		{
 			AbstractThreatPerRowTableModel model = getCastedModel(table);
 			TableSettings tableSettings = findOrCreateTableSettings(model);
-			saveColumnSortTag(tableSettings, "");
-			saveColumnSortDirection(tableSettings, "");
+			
+			saveUsingCommand(tableSettings, TableSettings.TAG_COLUMN_SORT_TAG, columnSortTag);
+			saveUsingCommand(tableSettings, TableSettings.TAG_COLUMN_SORT_DIRECTION, columnSortDirection);
 		}
+	}
+	
+	private void saveUsingCommand(TableSettings tableSettings, String tag, String value) throws Exception
+	{
+		CommandSetObjectData setColumnData = new CommandSetObjectData(tableSettings.getRef(), tag, value);
+		getProject().executeCommand(setColumnData);
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		try
 		{
-			if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_COLUMN_SORT_TAG))
+			if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_COLUMN_SORT_TAG) ||
+				event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_COLUMN_SORT_DIRECTION))
 			{
-				JTable table = findTableWithCurrentSortTag();
-				if (table != null)
-					sortNewlyAddedTable(table);
+				CommandSetObjectData setCommand = event.getSetCommand();
+				TableSettings tableSettings = TableSettings.find(getProject(), setCommand.getObjectORef());
+				findAndSortTableForTableSettings(tableSettings);
 			}
 		}
 		catch (Exception e)
@@ -163,13 +155,23 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		}
 	}
 
-	private JTable findTableWithCurrentSortTag() throws Exception
+	private void findAndSortTableForTableSettings(TableSettings tableSettingsToUse) throws Exception
+	{
+		JTable table = findTableWithTableSettings(tableSettingsToUse);
+		if (table == null)
+			return;
+		
+		AbstractThreatPerRowTableModel model = getCastedModel(table);
+		int columnToSortByForTable = findColumnToSortBy(model);
+		if (columnToSortByForTable >= 0)
+			sortTable(table, columnToSortByForTable);
+	}
+	
+	private JTable findTableWithTableSettings(TableSettings tableSettingsToUse)
 	{
 		for(JTable table : tablesToSort)
 		{
-			AbstractThreatPerRowTableModel model = getCastedModel(table);
-			int columnToSortByForTable = findColumnToSortBy(model);
-			if (columnToSortByForTable >= 0)
+			if (getCastedModel(table).getUniqueTableModelIdentifier().equals(tableSettingsToUse.getUniqueIdentifier()))
 				return table;
 		}
 		
@@ -212,11 +214,20 @@ public class MultiTableRowSortController implements CommandExecutedListener
 			String columnSortTag = model.getColumnGroupCode(sortByTableColumn);
 			String currentSortDirection = getSortDirectionCode(tableSettings, columnSortTag);
 			
-			clearAllTableSettings();
-			
-			saveColumnSortTag(tableSettings, columnSortTag);
-			saveColumnSortDirection(tableSettings, currentSortDirection);
-			sortTable(tableClickedOn, sortByTableColumn);
+			saveColumnSortDataAsTransaction(columnSortTag, currentSortDirection);
+		}
+
+		private void saveColumnSortDataAsTransaction(String columnSortTag,	String currentSortDirection) throws Exception
+		{
+			getProject().executeBeginTransaction();
+			try
+			{
+				storeSameDataForAllTables(columnSortTag, currentSortDirection);
+			}
+			finally 
+			{
+				getProject().executeEndTransaction();
+			}
 		}
 
 		private String getSortDirectionCode(TableSettings tableSettings, String columnSortTag)

@@ -114,6 +114,11 @@ public class TableSettings extends BaseObject
 		return ObjectType.TABLE_SETTINGS;
 	}
 	
+	public String getUniqueIdentifier()
+	{
+		return tableIdentifier.get();
+	}
+	
 	public static boolean exists(Project projectToUse, String uniqueTableIdentifier)
 	{
 		TableSettings foundTableSettings = find(projectToUse, uniqueTableIdentifier);

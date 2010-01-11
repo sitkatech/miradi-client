@@ -38,6 +38,11 @@ public class CommandExecutedEvent
 		return command;
 	}
 	
+	public CommandSetObjectData getSetCommand()
+	{
+		return (CommandSetObjectData) getCommand();
+	}
+	
 	public String getCommandName()
 	{
 		return getCommand().getCommandName();
