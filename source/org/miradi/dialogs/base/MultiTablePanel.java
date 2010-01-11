@@ -122,11 +122,13 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		return isActive;
 	}
 	
+	@Override
 	public void becomeActive()
 	{
 		isActive = true;
 	}
 
+	@Override
 	public void becomeInactive()
 	{
 		isActive = false;
