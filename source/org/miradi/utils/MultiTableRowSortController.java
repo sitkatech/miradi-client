@@ -79,7 +79,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		TableSettings tableSettings = findOrCreateTableSettings(model);
 		String columnSortDirectionCode = tableSettings.getData(TableSettings.TAG_COLUMN_SORT_DIRECTION);
 		
-		return columnSortDirectionCode.equals(SortDirectionQuestion.DESCENDING_SORT_CODE);
+		return columnSortDirectionCode.equals(SortDirectionQuestion.REVERSED_SORT_ORDER_CODE);
 	}
 
 	private int findColumnToSortBy(AbstractThreatPerRowTableModel model) throws Exception
