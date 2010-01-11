@@ -53,6 +53,7 @@ public class StressBasedThreatRatingPropertiesPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 	
+	@Override
 	public void dispose()
 	{
 		super.dispose();
@@ -60,11 +61,13 @@ public class StressBasedThreatRatingPropertiesPanel extends ObjectDataInputPanel
 		editorComponent = null;
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Stress-Based Threat Rating");
 	}
 
+	@Override
 	public void addFieldComponent(Component component)
 	{
 		add(component);
@@ -77,6 +80,7 @@ public class StressBasedThreatRatingPropertiesPanel extends ObjectDataInputPanel
 		editorComponent.refreshModel();
 	}
 	
+	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
