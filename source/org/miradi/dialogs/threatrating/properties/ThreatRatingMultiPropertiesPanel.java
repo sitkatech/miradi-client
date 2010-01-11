@@ -47,6 +47,7 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 		createPropertiesPanels();
 	}
 	
+	@Override
 	public void dispose()
 	{
 		super.dispose();
@@ -79,11 +80,13 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 		add(panelToAdd, panelToAdd.getPanelDescription());
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return PANEL_DESCRIPTION;
 	}
 
+	@Override
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
@@ -131,6 +134,7 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 		return simplePropertiesPanel;
 	}
 	
+	@Override
 	public MainWindow getMainWindow()
 	{
 		return mainWindow;
