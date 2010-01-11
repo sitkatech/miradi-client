@@ -25,6 +25,7 @@ import java.util.Vector;
 
 import javax.swing.table.AbstractTableModel;
 
+import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -36,8 +37,9 @@ import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.ThreatRatingQuestion;
+import org.miradi.utils.ColumnTagProvider;
 
-abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
+abstract public class AbstractThreatTargetTableModel extends AbstractTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
 {
 	public AbstractThreatTargetTableModel(Project projectToUse)
 	{

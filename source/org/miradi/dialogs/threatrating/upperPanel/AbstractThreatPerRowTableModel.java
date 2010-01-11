@@ -19,12 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.upperPanel;
 
-import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
-import org.miradi.utils.ColumnTagProvider;
 
-abstract public class AbstractThreatPerRowTableModel extends AbstractThreatTargetTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
+abstract public class AbstractThreatPerRowTableModel extends AbstractThreatTargetTableModel
 {
 	public AbstractThreatPerRowTableModel(Project projectToUse)
 	{
