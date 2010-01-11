@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-11 13:53-0600\n"
+"POT-Creation-Date: 2010-01-11 15:11-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6197,11 +6197,11 @@ msgstr ""
 msgid "All on One Page"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:154
+#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:155
 msgid "An Error Occurred During Sorting."
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:206
+#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:204
 msgid "Error Occurred During Sorting"
 msgstr ""
 
