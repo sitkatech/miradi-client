@@ -22,7 +22,6 @@ package org.miradi.utils;
 import java.util.Vector;
 
 import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
-import org.miradi.dialogs.threatrating.upperPanel.MainThreatTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -33,7 +32,7 @@ import org.miradi.questions.ThreatRatingQuestion;
 
 public class MainThreatTableModelExporter extends AbstractSingleTableExporter
 {
-	public MainThreatTableModelExporter(MainThreatTableModel mainThreatTableModelToUse)
+	public MainThreatTableModelExporter(AbstractThreatTargetTableModel mainThreatTableModelToUse)
 	{
 		super(mainThreatTableModelToUse.getProject(), mainThreatTableModelToUse.getUniqueTableModelIdentifier());
 		

@@ -24,7 +24,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.project.Project;
 
-public class TargetSummaryRowTableModel extends MainThreatTableModel
+public class TargetSummaryRowTableModel extends AbstractThreatTargetTableModel
 {
 	public TargetSummaryRowTableModel(Project projectToUse)
 	{
