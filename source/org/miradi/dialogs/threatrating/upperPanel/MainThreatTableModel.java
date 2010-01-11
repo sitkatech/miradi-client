@@ -20,13 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.threatrating.upperPanel;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Factor;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.EmptyChoiceItem;
-import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.utils.ColumnTagProvider;
 
 abstract public class MainThreatTableModel extends AbstractThreatTargetTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
@@ -38,55 +33,8 @@ abstract public class MainThreatTableModel extends AbstractThreatTargetTableMode
 		frameWork = new StressBasedThreatRatingFramework(getProject());
 	}
 	
-	abstract public String getUniqueTableModelIdentifier();
-
 	public int getRowCount()
 	{
 		return threatRows.length;
 	}
-	
-	public String getColumnGroupCode(int column)
-	{
-		return targetColumns[column].getRef().toString();
-	}
-	
-	public int getProportionShares(int row)
-	{
-		return 1;
-	}
-
-	public boolean areBudgetValuesAllocated(int row)
-	{
-		return false;
-	}
-
-	public ORef getLinkRef(Factor from, Factor to)
-	{
-		return getProject().getFactorLinkPool().getLinkedRef(from, to);
-	}
-	
-	protected static String convertIntToString(int calculatedValue)
-	{
-		if (calculatedValue == 0)
-			return "";
-		
-		return Integer.toString(calculatedValue);
-	}
-	
-	public static ChoiceItem convertThreatRatingCodeToChoiceItem(int rawThreatRatingCode)
-	{
-		String safeThreatRatingCodeAsString = convertIntToString(rawThreatRatingCode);
-		return convertThreatRatingCodeToChoiceItem(safeThreatRatingCodeAsString);
-	}
-	
-	public static ChoiceItem convertThreatRatingCodeToChoiceItem(String valueToConvert)
-	{
-		ChoiceItem foundChoiceItem = new ThreatRatingQuestion().findChoiceByCode(valueToConvert);
-		if (foundChoiceItem == null)
-			return new EmptyChoiceItem();
-		
-		return foundChoiceItem;
-	}
-	
-	protected StressBasedThreatRatingFramework frameWork;
 }

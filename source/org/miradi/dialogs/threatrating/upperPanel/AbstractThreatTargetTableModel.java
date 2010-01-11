@@ -32,6 +32,10 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.EmptyChoiceItem;
+import org.miradi.questions.ThreatRatingQuestion;
 
 abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 {
@@ -63,6 +67,29 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 		return targetsInConceptualModelDiagrams;
 	}
 	
+	protected static String convertIntToString(int calculatedValue)
+	{
+		if (calculatedValue == 0)
+			return "";
+		
+		return Integer.toString(calculatedValue);
+	}
+
+	public static ChoiceItem convertThreatRatingCodeToChoiceItem(int rawThreatRatingCode)
+	{
+		String safeThreatRatingCodeAsString = convertIntToString(rawThreatRatingCode);
+		return convertThreatRatingCodeToChoiceItem(safeThreatRatingCodeAsString);
+	}
+
+	public static ChoiceItem convertThreatRatingCodeToChoiceItem(String valueToConvert)
+	{
+		ChoiceItem foundChoiceItem = new ThreatRatingQuestion().findChoiceByCode(valueToConvert);
+		if (foundChoiceItem == null)
+			return new EmptyChoiceItem();
+		
+		return foundChoiceItem;
+	}
+
 	public Factor[] getThreatsSortedBy(int sortByTableColumn)
 	{	
 		Vector<Integer> rows = new Vector();
@@ -158,6 +185,26 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 		return getThreat(threatIndex).getRef();
 	}
 
+	public String getColumnGroupCode(int column)
+	{
+		return targetColumns[column].getRef().toString();
+	}
+
+	public int getProportionShares(int row)
+	{
+		return 1;
+	}
+
+	public boolean areBudgetValuesAllocated(int row)
+	{
+		return false;
+	}
+
+	public ORef getLinkRef(Factor from, Factor to)
+	{
+		return getProject().getFactorLinkPool().getLinkedRef(from, to);
+	}
+
 	public Factor getThreat(int row)
 	{
 		return getDirectThreats()[row];
@@ -173,7 +220,10 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 		return new TableModelStringComparator(this, columnToSortOn);
 	}
 	
+	public abstract String getUniqueTableModelIdentifier();
+	
 	private Project project;
 	protected Factor[] threatRows;
 	protected Target[] targetColumns;
+	protected StressBasedThreatRatingFramework frameWork;
 }
