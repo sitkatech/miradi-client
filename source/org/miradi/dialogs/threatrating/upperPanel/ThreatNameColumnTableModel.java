@@ -44,6 +44,13 @@ public class ThreatNameColumnTableModel extends MainThreatTableModel
 		return COLUMN_COUNT;
 	}
 	
+	@Override
+	public String getColumnGroupCode(int column)
+	{
+		return getColumnName(column);
+	}
+	
+	@Override
 	public String getColumnName(int column)
 	{
 		if (isThreatIconColumn(column))
