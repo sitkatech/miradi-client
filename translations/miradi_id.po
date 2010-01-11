@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-11 04:51-0600\n"
+"POT-Creation-Date: 2010-01-11 09:14-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -4044,6 +4044,10 @@ msgstr "Penurunan Besar"
 msgid "Ascending"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/SortDirectionQuestion.java:36
+msgid "Descending"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/ScopeBoxColorQuestion.java:39
 msgid "Green (Biodiversity Target)"
 msgstr ""
@@ -6615,7 +6619,7 @@ msgstr "(Membuat, mengelola, dan menilai tekanan-tekanan untuk target ini) "
 msgid "Title|Simple Threat Rating"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:65
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:67
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Peringkat Ancaman Berdasarkan Tekanan "
 
@@ -7385,7 +7389,7 @@ msgstr "Sifat-sifat Tekanan "
 msgid "Manage Stresses for "
 msgstr "Mengelola Tekanan untuk "
 
-#: Miradi/source/org/miradi/dialogs/stress/StressListManagementPanel.java:60
+#: Miradi/source/org/miradi/dialogs/stress/StressListManagementPanel.java:64
 msgid "Tab|Stresses"
 msgstr "Tekanan"
 
