@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-11 04:51-0600\n"
+"POT-Creation-Date: 2010-01-11 09:14-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -3722,6 +3722,10 @@ msgstr ""
 msgid "Ascending"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/SortDirectionQuestion.java:36
+msgid "Descending"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/ScopeBoxColorQuestion.java:39
 msgid "Green (Biodiversity Target)"
 msgstr ""
@@ -6261,7 +6265,7 @@ msgstr ""
 msgid "Title|Simple Threat Rating"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:65
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:67
 msgid "Title|Stress-Based Threat Rating"
 msgstr ""
 
@@ -7012,7 +7016,7 @@ msgstr ""
 msgid "Manage Stresses for "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/stress/StressListManagementPanel.java:60
+#: Miradi/source/org/miradi/dialogs/stress/StressListManagementPanel.java:64
 msgid "Tab|Stresses"
 msgstr ""
 
