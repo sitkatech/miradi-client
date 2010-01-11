@@ -67,19 +67,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		AbstractThreatPerRowTableModel model = getCastedModel(tableToSort);
 		int columnToSort = findColumnToSortBy(model);
 		if (columnToSort >= 0)
-		{
 			sortTable(tableToSort, columnToSort);
-			if (shouldReverseSort(model))
-				sortTable(tableToSort, columnToSort);
-		}
-	}
-
-	private boolean shouldReverseSort(AbstractThreatPerRowTableModel model) throws Exception
-	{
-		TableSettings tableSettings = findOrCreateTableSettings(model);
-		String columnSortDirectionCode = tableSettings.getData(TableSettings.TAG_COLUMN_SORT_DIRECTION);
-		
-		return columnSortDirectionCode.equals(SortDirectionQuestion.REVERSED_SORT_ORDER_CODE);
 	}
 
 	private int findColumnToSortBy(AbstractThreatPerRowTableModel model) throws Exception
@@ -96,11 +84,13 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		return -1;
 	}
 
-	private void sortTable(JTable tableToSort, final int sortByTableColumn)
+	private void sortTable(JTable tableToSort, final int sortByTableColumn) throws Exception
 	{
 		AbstractThreatPerRowTableModel model = getCastedModel(tableToSort);
+		TableSettings tableSettings = findOrCreateTableSettings(model);
 		int modelColumn = tableToSort.convertColumnIndexToModel(sortByTableColumn);
-		Factor[] sortedThreats = model.getThreatsSortedBy(modelColumn);
+		String sortDirectionCode = tableSettings.getData(TableSettings.TAG_COLUMN_SORT_DIRECTION);
+		Factor[] sortedThreats = model.getThreatsSortedBy(modelColumn, sortDirectionCode);
 		for (int index = 0; index < tablesToSort.size(); ++index)
 		{
 			TableWithRowHeightSaver table = tablesToSort.get(index);
