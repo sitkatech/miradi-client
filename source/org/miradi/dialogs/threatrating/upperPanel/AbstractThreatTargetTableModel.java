@@ -45,6 +45,7 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel 
 	{
 		project = projectToUse;
 		
+		frameWork = new StressBasedThreatRatingFramework(getProject());
 		resetTargetAndThreats();
 	}
 	

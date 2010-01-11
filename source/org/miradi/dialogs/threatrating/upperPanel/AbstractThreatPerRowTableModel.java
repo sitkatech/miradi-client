@@ -20,15 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.threatrating.upperPanel;
 
 import org.miradi.project.Project;
-import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
 
 abstract public class AbstractThreatPerRowTableModel extends AbstractThreatTargetTableModel
 {
 	public AbstractThreatPerRowTableModel(Project projectToUse)
 	{
 		super(projectToUse);
-		
-		frameWork = new StressBasedThreatRatingFramework(getProject());
 	}
 	
 	public int getRowCount()
