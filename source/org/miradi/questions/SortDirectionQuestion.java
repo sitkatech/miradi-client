@@ -46,5 +46,5 @@ public class SortDirectionQuestion extends StaticChoiceQuestion
 	}
 
 	public static final String DEFAULT_SORT_ORDER_CODE = "";
-	public static final String REVERSED_SORT_ORDER_CODE = "Descending";
+	public static final String REVERSED_SORT_ORDER_CODE = "ReversedSortOrderCode";
 }
