@@ -37,7 +37,7 @@ abstract public class AbstractTableWithChoiceItemRenderer extends TableWithColum
 
 	protected void setColumnRenderers()
 	{
-		AbstractThreatPerRowTableModel model = (AbstractThreatPerRowTableModel) getModel();
+		AbstractThreatTargetTableModel model = (AbstractThreatTargetTableModel) getModel();
 		ChoiceItemTableCellRendererFactory renderer = new ChoiceItemTableCellRendererFactory(model, new DefaultFontProvider(getMainWindow()));
 		for (int i = 0; i < getColumnCount(); ++i)
 		{
