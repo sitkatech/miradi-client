@@ -59,15 +59,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		columnHeader.addMouseListener(sortListener);
 		tablesToSort.add(tableToSort);
 		
-		sortNewlyAddedTable(tableToSort);
-	}
-
-	private void sortNewlyAddedTable(JTable tableToSort) throws Exception
-	{
-		AbstractThreatPerRowTableModel model = getCastedModel(tableToSort);
-		int columnToSort = findColumnToSortBy(model);
-		if (columnToSort >= 0)
-			sortTable(tableToSort, columnToSort);
+		sortTable(tableToSort);
 	}
 
 	private int findColumnToSortBy(AbstractThreatPerRowTableModel model) throws Exception
@@ -84,11 +76,15 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		return -1;
 	}
 
-	private void sortTable(JTable tableToSort, final int sortByTableColumn) throws Exception
+	private void sortTable(JTable tableToSort) throws Exception
 	{
 		AbstractThreatPerRowTableModel model = getCastedModel(tableToSort);
+		final int columnToSort = findColumnToSortBy(model);
+		if (columnToSort < 0)
+			return;
+		
 		TableSettings tableSettings = findOrCreateTableSettings(model);
-		int modelColumn = tableToSort.convertColumnIndexToModel(sortByTableColumn);
+		int modelColumn = tableToSort.convertColumnIndexToModel(columnToSort);
 		String sortDirectionCode = tableSettings.getData(TableSettings.TAG_COLUMN_SORT_DIRECTION);
 		Factor[] sortedThreats = model.getThreatsSortedBy(modelColumn, sortDirectionCode);
 		for (int index = 0; index < tablesToSort.size(); ++index)
@@ -156,14 +152,6 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		}
 		
 		throw new RuntimeException("Could not find a table for tableSettings. Ref:" + tableSettingsToUse.getRef());
-	}
-	
-	private void sortTable(JTable table) throws Exception
-	{
-		AbstractThreatPerRowTableModel model = getCastedModel(table);
-		int columnToSortByForTable = findColumnToSortBy(model);
-		if (columnToSortByForTable >= 0)
-			sortTable(table, columnToSortByForTable);
 	}
 	
 	private AbstractThreatPerRowTableModel getCastedModel(JTable tableToUse)
