@@ -29,18 +29,27 @@ import javax.swing.table.JTableHeader;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
 import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatPerRowTableModel;
+import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.objects.Factor;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.SortDirectionQuestion;
 
-public class MultiTableRowSortController
+public class MultiTableRowSortController implements CommandExecutedListener
 {
 	public MultiTableRowSortController(Project projectToUse)
 	{
 		project = projectToUse;
 		tablesToSort = new Vector();
+		
+		project.addCommandExecutedListener(this);
+	}
+	
+	public void dispose()
+	{
+		project.removeCommandExecutedListener(this);
 	}
 	
 	public void addTableToSort(TableWithRowHeightSaver tableToSort) throws Exception
@@ -53,7 +62,7 @@ public class MultiTableRowSortController
 		sortNewlyAddedTable(tableToSort);
 	}
 
-	private void sortNewlyAddedTable(TableWithRowHeightSaver tableToSort) throws Exception
+	private void sortNewlyAddedTable(JTable tableToSort) throws Exception
 	{
 		AbstractThreatPerRowTableModel model = getCastedModel(tableToSort);
 		int columnToSort = findColumnToSortBy(model);
@@ -134,6 +143,37 @@ public class MultiTableRowSortController
 			saveColumnSortTag(tableSettings, "");
 			saveColumnSortDirection(tableSettings, "");
 		}
+	}
+	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		try
+		{
+			if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_COLUMN_SORT_TAG))
+			{
+				JTable table = findTableWithCurrentSortTag();
+				if (table != null)
+					sortNewlyAddedTable(table);
+			}
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("An Error Occurred During Sorting."));
+		}
+	}
+
+	private JTable findTableWithCurrentSortTag() throws Exception
+	{
+		for(JTable table : tablesToSort)
+		{
+			AbstractThreatPerRowTableModel model = getCastedModel(table);
+			int columnToSortByForTable = findColumnToSortBy(model);
+			if (columnToSortByForTable >= 0)
+				return table;
+		}
+		
+		return null;
 	}
 	
 	private AbstractThreatPerRowTableModel getCastedModel(JTable tableToUse)

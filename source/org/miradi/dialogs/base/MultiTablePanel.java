@@ -56,6 +56,14 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		setBackground(mainWindowToUse.getAppPreferences().getDataPanelBackgroundColor());
 	}
 	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		
+		rowSortController.dispose();
+	}
+	
 	public MainWindow getMainWindow()
 	{
 		return mainWindow;
