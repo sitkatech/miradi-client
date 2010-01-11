@@ -151,7 +151,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 				return table;
 		}
 		
-		throw new RuntimeException("Could not find a table for tableSettings. Ref:" + tableSettingsToUse.getRef());
+		throw new RuntimeException("Could not find a table for TableSettings. Ref:" + tableSettingsToUse.getRef() + ".  Unique Identifier:" + tableSettingsToUse.getUniqueIdentifier());
 	}
 	
 	private AbstractThreatPerRowTableModel getCastedModel(JTable tableToUse)
