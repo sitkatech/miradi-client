@@ -237,7 +237,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 			if (existingSortTag.equals(columnSortTag))
 				return SortDirectionQuestion.getReversedSortDirectionCode(existingSortDirection);
 			
-			return SortDirectionQuestion.ASCENDING_SORT_CODE;
+			return SortDirectionQuestion.DEFAULT_SORT_ORDER_CODE;
 		}
 	}
 	

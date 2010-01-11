@@ -32,19 +32,19 @@ public class SortDirectionQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getStaticChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem(ASCENDING_SORT_CODE, EAM.text("Ascending")),	
+			new ChoiceItem(DEFAULT_SORT_ORDER_CODE, EAM.text("Ascending")),	
 			new ChoiceItem(DESCENDING_SORT_CODE, EAM.text("Descending")),	
 		};
 	}
 	
 	public static final String getReversedSortDirectionCode(String sortCode)
 	{
-		if (sortCode.equals(ASCENDING_SORT_CODE))
+		if (sortCode.equals(DEFAULT_SORT_ORDER_CODE))
 			return DESCENDING_SORT_CODE;
 		
-		return ASCENDING_SORT_CODE;
+		return DEFAULT_SORT_ORDER_CODE;
 	}
 
-	public static final String ASCENDING_SORT_CODE = "";
+	public static final String DEFAULT_SORT_ORDER_CODE = "";
 	public static final String DESCENDING_SORT_CODE = "Descending";
 }
