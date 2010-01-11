@@ -37,21 +37,25 @@ public class StressListManagementPanel extends ObjectListManagementPanel
 				StressPropertiesPanel.createWithVisibilityPanel(mainWindowToUse));
 	}
 
+	@Override
 	public String getSplitterDescription()
 	{
 		return getPanelDescription() + SPLITTER_TAG;
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return PANEL_DESCRIPTION;
 	}
 	
+	@Override
 	public Icon getIcon()
 	{
 		return new StressIcon();
 	}
 	
+	@Override
 	public Class getJumpActionClass()
 	{
 		return ActionJumpTargetStressesStep.class;
