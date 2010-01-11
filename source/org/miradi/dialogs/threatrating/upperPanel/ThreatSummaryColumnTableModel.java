@@ -39,6 +39,13 @@ public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 		return UNIQUE_IDENTIFIER;
 	}
 
+	@Override
+	public String getColumnGroupCode(int column)
+	{
+		return getColumnName(column);
+	}
+	
+	@Override
 	public String getColumnName(int column)
 	{
 		return getThreatSummartRatingLabel();
@@ -89,6 +96,7 @@ public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 		return getDirectThreat(row);
 	}
 	
+	@Override
 	public Comparator getComparator(int columnToSortOn)
 	{
 		return new TableModelChoiceItemComparator(this, columnToSortOn);
