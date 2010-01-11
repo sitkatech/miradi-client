@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-10 06:28-0600\n"
+"POT-Creation-Date: 2010-01-11 04:51-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2352,7 +2352,7 @@ msgid "No date range for date Unit = "
 msgstr ""
 
 #: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:55
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:78
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:85
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
@@ -6453,7 +6453,7 @@ msgstr "基于压力的威胁因子分级 \t\t"
 msgid "Label|Comments"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:49
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:56
 msgid "Summary Threat Rating"
 msgstr "威胁因子分级摘要 \t\t"
 
@@ -6465,11 +6465,11 @@ msgstr ""
 msgid "<html><b>Overall<br>Project<br>Rating</b></html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:53
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:60
 msgid "Threats"
 msgstr "威胁因子 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:53
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:60
 msgid "Targets"
 msgstr ""
 
