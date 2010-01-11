@@ -145,7 +145,8 @@ public class MultiTableRowSortController implements CommandExecutedListener
 			{
 				CommandSetObjectData setCommand = event.getSetCommand();
 				TableSettings tableSettings = TableSettings.find(getProject(), setCommand.getObjectORef());
-				findAndSortTableForTableSettings(tableSettings);
+				JTable tableToSort = findTableForTableSettings(tableSettings);
+				sortTable(tableToSort);
 			}
 		}
 		catch (Exception e)
@@ -154,28 +155,25 @@ public class MultiTableRowSortController implements CommandExecutedListener
 			EAM.errorDialog(EAM.text("An Error Occurred During Sorting."));
 		}
 	}
-
-	private void findAndSortTableForTableSettings(TableSettings tableSettingsToUse) throws Exception
+	
+	private JTable findTableForTableSettings(TableSettings tableSettingsToUse)
 	{
-		JTable table = findTableWithTableSettings(tableSettingsToUse);
-		if (table == null)
-			return;
+		for(JTable table : tablesToSort)
+		{
+			String thisUniqueTableModelIdentifier = getCastedModel(table).getUniqueTableModelIdentifier();
+			if (thisUniqueTableModelIdentifier.equals(tableSettingsToUse.getUniqueIdentifier()))
+				return table;
+		}
 		
+		throw new RuntimeException("Could not find a table for tableSettings. Ref:" + tableSettingsToUse.getRef());
+	}
+	
+	private void sortTable(JTable table) throws Exception
+	{
 		AbstractThreatPerRowTableModel model = getCastedModel(table);
 		int columnToSortByForTable = findColumnToSortBy(model);
 		if (columnToSortByForTable >= 0)
 			sortTable(table, columnToSortByForTable);
-	}
-	
-	private JTable findTableWithTableSettings(TableSettings tableSettingsToUse)
-	{
-		for(JTable table : tablesToSort)
-		{
-			if (getCastedModel(table).getUniqueTableModelIdentifier().equals(tableSettingsToUse.getUniqueIdentifier()))
-				return table;
-		}
-		
-		return null;
 	}
 	
 	private AbstractThreatPerRowTableModel getCastedModel(JTable tableToUse)
