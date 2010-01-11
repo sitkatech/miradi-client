@@ -125,7 +125,7 @@ public class MultiTableRowSortController
 		getProject().executeCommand(setColumnWidths);
 	}
 	
-	private void clearAllTableSortColumn() throws Exception
+	private void clearAllTableSettings() throws Exception
 	{
 		for(TableWithRowHeightSaver table : tablesToSort)
 		{
@@ -172,7 +172,7 @@ public class MultiTableRowSortController
 			String columnSortTag = model.getColumnGroupCode(sortByTableColumn);
 			String currentSortDirection = getSortDirectionCode(tableSettings, columnSortTag);
 			
-			clearAllTableSortColumn();
+			clearAllTableSettings();
 			
 			saveColumnSortTag(tableSettings, columnSortTag);
 			saveColumnSortDirection(tableSettings, currentSortDirection);
