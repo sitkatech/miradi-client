@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import org.miradi.dialogs.threatrating.upperPanel.MainThreatTableModel;
+import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatPerRowTableModel;
 import org.miradi.objecthelpers.ORef;
 
 public class ThreatTargetTableModelExporter extends MainThreatTableModelExporter
 {
-	public ThreatTargetTableModelExporter(MainThreatTableModel mainThreatTableModelToUse)
+	public ThreatTargetTableModelExporter(AbstractThreatPerRowTableModel mainThreatTableModelToUse)
 	{
 		super(mainThreatTableModelToUse);
 	}

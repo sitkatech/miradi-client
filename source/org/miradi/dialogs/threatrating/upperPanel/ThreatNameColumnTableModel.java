@@ -26,7 +26,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
 
-public class ThreatNameColumnTableModel extends MainThreatTableModel
+public class ThreatNameColumnTableModel extends AbstractThreatPerRowTableModel
 {
 	public ThreatNameColumnTableModel(Project projectToUse)
 	{

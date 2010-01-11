@@ -28,7 +28,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.project.Project;
 
-public class TargetThreatLinkTableModel extends MainThreatTableModel
+public class TargetThreatLinkTableModel extends AbstractThreatPerRowTableModel
 {
 	public TargetThreatLinkTableModel(Project projectToUse)
 	{
