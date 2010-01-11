@@ -33,18 +33,18 @@ public class SortDirectionQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem(DEFAULT_SORT_ORDER_CODE, EAM.text("Ascending")),	
-			new ChoiceItem(DESCENDING_SORT_CODE, EAM.text("Descending")),	
+			new ChoiceItem(REVERSED_SORT_ORDER_CODE, EAM.text("Descending")),	
 		};
 	}
 	
 	public static final String getReversedSortDirectionCode(String sortCode)
 	{
 		if (sortCode.equals(DEFAULT_SORT_ORDER_CODE))
-			return DESCENDING_SORT_CODE;
+			return REVERSED_SORT_ORDER_CODE;
 		
 		return DEFAULT_SORT_ORDER_CODE;
 	}
 
 	public static final String DEFAULT_SORT_ORDER_CODE = "";
-	public static final String DESCENDING_SORT_CODE = "Descending";
+	public static final String REVERSED_SORT_ORDER_CODE = "Descending";
 }
