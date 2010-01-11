@@ -33,7 +33,7 @@ public class SortDirectionQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem(ASCENDING_SORT_CODE, EAM.text("Ascending")),	
-			new ChoiceItem(DESCENDING_SORT_CODE, EAM.text(DESCENDING_SORT_CODE)),	
+			new ChoiceItem(DESCENDING_SORT_CODE, EAM.text("Descending")),	
 		};
 	}
 	
