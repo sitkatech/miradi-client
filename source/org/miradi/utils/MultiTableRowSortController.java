@@ -28,7 +28,7 @@ import javax.swing.table.JTableHeader;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
-import org.miradi.dialogs.threatrating.upperPanel.MainThreatTableModel;
+import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatPerRowTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objects.Factor;
 import org.miradi.objects.TableSettings;
@@ -55,7 +55,7 @@ public class MultiTableRowSortController
 
 	private void sortNewlyAddedTable(TableWithRowHeightSaver tableToSort) throws Exception
 	{
-		MainThreatTableModel model = getCastedModel(tableToSort);
+		AbstractThreatPerRowTableModel model = getCastedModel(tableToSort);
 		int columnToSort = findColumnToSortBy(model);
 		if (columnToSort >= 0)
 		{
@@ -65,7 +65,7 @@ public class MultiTableRowSortController
 		}
 	}
 
-	private boolean shouldReverseSort(MainThreatTableModel model) throws Exception
+	private boolean shouldReverseSort(AbstractThreatPerRowTableModel model) throws Exception
 	{
 		TableSettings tableSettings = findOrCreateTableSettings(model);
 		String columnSortDirectionCode = tableSettings.getData(TableSettings.TAG_COLUMN_SORT_DIRECTION);
@@ -73,7 +73,7 @@ public class MultiTableRowSortController
 		return columnSortDirectionCode.equals(SortDirectionQuestion.DESCENDING_SORT_CODE);
 	}
 
-	private int findColumnToSortBy(MainThreatTableModel model) throws Exception
+	private int findColumnToSortBy(AbstractThreatPerRowTableModel model) throws Exception
 	{
 		TableSettings tableSettings = findOrCreateTableSettings(model);
 		String columnSortTag = tableSettings.getData(TableSettings.TAG_COLUMN_SORT_TAG);
@@ -89,7 +89,7 @@ public class MultiTableRowSortController
 
 	private void sortTable(JTable tableToSort, final int sortByTableColumn)
 	{
-		MainThreatTableModel model = getCastedModel(tableToSort);
+		AbstractThreatPerRowTableModel model = getCastedModel(tableToSort);
 		int modelColumn = tableToSort.convertColumnIndexToModel(sortByTableColumn);
 		Factor[] sortedThreats = model.getThreatsSortedBy(modelColumn);
 		for (int index = 0; index < tablesToSort.size(); ++index)
@@ -103,7 +103,7 @@ public class MultiTableRowSortController
 		}
 	}
 	
-	private TableSettings findOrCreateTableSettings(MainThreatTableModel model)	throws Exception
+	private TableSettings findOrCreateTableSettings(AbstractThreatPerRowTableModel model)	throws Exception
 	{
 		String uniqueTableIdentifier = model.getUniqueTableModelIdentifier();
 		return TableSettings.findOrCreate(getProject(), uniqueTableIdentifier);
@@ -129,16 +129,16 @@ public class MultiTableRowSortController
 	{
 		for(TableWithRowHeightSaver table : tablesToSort)
 		{
-			MainThreatTableModel model = getCastedModel(table);
+			AbstractThreatPerRowTableModel model = getCastedModel(table);
 			TableSettings tableSettings = findOrCreateTableSettings(model);
 			saveColumnSortTag(tableSettings, "");
 			saveColumnSortDirection(tableSettings, "");
 		}
 	}
 	
-	private MainThreatTableModel getCastedModel(JTable tableToUse)
+	private AbstractThreatPerRowTableModel getCastedModel(JTable tableToUse)
 	{
-		return (MainThreatTableModel)tableToUse.getModel();
+		return (AbstractThreatPerRowTableModel)tableToUse.getModel();
 	}
 
 	private Project getProject()
@@ -167,7 +167,7 @@ public class MultiTableRowSortController
 
 		private void sortByTableColumn(JTable tableClickedOn, int sortByTableColumn) throws Exception
 		{
-			MainThreatTableModel model = getCastedModel(tableClickedOn);
+			AbstractThreatPerRowTableModel model = getCastedModel(tableClickedOn);
 			TableSettings tableSettings = findOrCreateTableSettings(model);
 			String columnSortTag = model.getColumnGroupCode(sortByTableColumn);
 			String currentSortDirection = getSortDirectionCode(tableSettings, columnSortTag);

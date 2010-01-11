@@ -48,7 +48,7 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 	@Override
 	protected void setColumnRenderers()
 	{
-		MainThreatTableModel model = (MainThreatTableModel) getModel();
+		AbstractThreatPerRowTableModel model = (AbstractThreatPerRowTableModel) getModel();
 		ThreatTargetTableCellRendererFactory renderer = new ThreatTargetTableCellRendererFactory(getMainWindow().getAppPreferences(), model, new DefaultFontProvider(getMainWindow()));
 		for (int i = 0; i < getColumnCount(); ++i)
 		{

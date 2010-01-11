@@ -24,9 +24,9 @@ import org.miradi.project.Project;
 import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
 import org.miradi.utils.ColumnTagProvider;
 
-abstract public class MainThreatTableModel extends AbstractThreatTargetTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
+abstract public class AbstractThreatPerRowTableModel extends AbstractThreatTargetTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
 {
-	public MainThreatTableModel(Project projectToUse)
+	public AbstractThreatPerRowTableModel(Project projectToUse)
 	{
 		super(projectToUse);
 		

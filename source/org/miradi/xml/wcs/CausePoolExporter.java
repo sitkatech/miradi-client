@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.wcs;
 
 import org.martus.util.UnicodeWriter;
-import org.miradi.dialogs.threatrating.upperPanel.MainThreatTableModel;
+import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatPerRowTableModel;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -66,7 +66,7 @@ public class CausePoolExporter extends FactorPoolExporter
 	private void exportStressBasedThreatRatingThreatThreatRating(Cause threat) throws Exception
 	{
 		int rawThreatRatingValue = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(threat);
-		ChoiceItem threatThreatRating = MainThreatTableModel.convertThreatRatingCodeToChoiceItem(rawThreatRatingValue);
+		ChoiceItem threatThreatRating = AbstractThreatPerRowTableModel.convertThreatRatingCodeToChoiceItem(rawThreatRatingValue);
 		writeOptionalCodeElement(THREAT_RATING, new ThreatRatingQuestion(), threatThreatRating.getCode());
 	}
 }

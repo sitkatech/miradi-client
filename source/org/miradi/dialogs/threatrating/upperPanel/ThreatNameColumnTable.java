@@ -36,7 +36,7 @@ import org.miradi.main.MainWindow;
 
 public class ThreatNameColumnTable extends TableWhoseScrollPaneAlwaysExactlyFits
 {
-	public ThreatNameColumnTable(MainWindow mainWindowToUse, MainThreatTableModel tableModel)
+	public ThreatNameColumnTable(MainWindow mainWindowToUse, AbstractThreatPerRowTableModel tableModel)
 	{
 		super(mainWindowToUse, tableModel, tableModel.getUniqueTableModelIdentifier());
 		
