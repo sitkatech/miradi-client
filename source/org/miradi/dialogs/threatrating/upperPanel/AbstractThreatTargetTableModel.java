@@ -36,6 +36,7 @@ import org.miradi.project.Project;
 import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
+import org.miradi.questions.SortDirectionQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.utils.ColumnTagProvider;
 
@@ -93,7 +94,7 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel 
 		return foundChoiceItem;
 	}
 
-	public Factor[] getThreatsSortedBy(int sortByTableColumn)
+	public Factor[] getThreatsSortedBy(int sortByTableColumn, String sortDirectionCode)
 	{	
 		Vector<Integer> rows = new Vector();
 		for(int index = 0; index < getRowCount(); ++index)
@@ -101,10 +102,8 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel 
 			rows.add(new Integer(index));
 		}
 		
-		Vector unsortedRows = (Vector)rows.clone();
 		Collections.sort(rows, getComparator(sortByTableColumn));
-		
-		if (rows.equals(unsortedRows))
+		if (sortDirectionCode.equals(SortDirectionQuestion.REVERSED_SORT_ORDER_CODE))
 			Collections.reverse(rows);
 		
 		Vector<Factor> newSortedThreatList = new Vector();
