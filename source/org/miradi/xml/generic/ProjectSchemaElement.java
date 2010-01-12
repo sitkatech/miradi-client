@@ -76,6 +76,8 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new ObjectPoolSchemaElement(new ResourceAssignmentObjectSchemaElement()));
 		objectTypes.add(new ObjectPoolSchemaElement(new ThreatTargetThreatRatingElement()));
 		objectTypes.add(new ObjectPoolSchemaElement(new IucnRedListSpeciesObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new OtherNotableSpeciesObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new AudienceObjectSchemaElement()));
 	}
 	
 	public void output(SchemaWriter writer) throws IOException
