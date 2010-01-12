@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-12 12:14-0600\n"
+"POT-Creation-Date: 2010-01-12 12:31-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3901,12 +3901,16 @@ msgstr ""
 msgid "Descending"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ScopeBoxColorQuestion.java:37
+#: Miradi/source/org/miradi/questions/ScopeBoxColorQuestion.java:40
 msgid "Green (Biodiversity Target)"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ScopeBoxColorQuestion.java:38
+#: Miradi/source/org/miradi/questions/ScopeBoxColorQuestion.java:41
 msgid "Brown (Human Welfare Target)"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/ScopeBoxColorQuestion.java:57
+msgid "An Error Occurred While Loading AppPreferences"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:38
