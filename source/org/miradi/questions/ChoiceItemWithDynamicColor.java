@@ -20,27 +20,26 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import java.awt.Color;
+
 import org.miradi.main.AppPreferences;
-import org.miradi.main.EAM;
 
-public class ScopeBoxColorQuestion extends DynamicChoiceQuestion
+public class ChoiceItemWithDynamicColor extends ChoiceItem
 {
-	public ScopeBoxColorQuestion()
+	public ChoiceItemWithDynamicColor(AppPreferences appPreferencesToUse, String codeToUse, String labelToUse, String colorTagToUse)
 	{
-		super();
+		super(codeToUse, labelToUse);
+		
+		appPreferences = appPreferencesToUse;
+		colorTag = colorTagToUse;
 	}
-
+	
 	@Override
-	public ChoiceItem[] getChoices()
+	public Color getColor()
 	{
-		return new ChoiceItem[] {
-				new ChoiceItemWithDynamicColor(getAppPreferences(), "", EAM.text("Green (Biodiversity Target)"), AppPreferences.TAG_COLOR_SCOPE_BOX),
-				new ChoiceItemWithDynamicColor(getAppPreferences(), "HumanWelfareTargetBrown", EAM.text("Brown (Human Welfare Target)"), AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX),
-			};
+		return appPreferences.getColor(colorTag);
 	}
-
-	private AppPreferences getAppPreferences()
-	{
-		return EAM.getMainWindow().getAppPreferences();
-	}
+	
+	private AppPreferences appPreferences;
+	private String colorTag;
 }
