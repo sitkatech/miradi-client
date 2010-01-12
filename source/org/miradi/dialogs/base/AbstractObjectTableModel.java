@@ -23,8 +23,9 @@ package org.miradi.dialogs.base;
 import javax.swing.table.AbstractTableModel;
 
 import org.miradi.project.Project;
+import org.miradi.utils.ColumnTagProvider;
 
-abstract public class AbstractObjectTableModel extends AbstractTableModel
+abstract public class AbstractObjectTableModel extends AbstractTableModel  implements ColumnTagProvider
 {
 	public AbstractObjectTableModel(Project projectToUse)
 	{

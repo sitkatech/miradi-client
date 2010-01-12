@@ -31,9 +31,8 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.ColumnTagProvider;
 
-abstract public class ObjectTableModel extends AbstractObjectTableModel implements ColumnTagProvider
+abstract public class ObjectTableModel extends AbstractObjectTableModel
 {
 	public ObjectTableModel(Project projectToUse, int listedItemType, String[] tableColumnTags)
 	{

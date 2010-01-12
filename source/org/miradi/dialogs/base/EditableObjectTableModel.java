@@ -29,9 +29,8 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.utils.ColumnTagProvider;
 
-abstract public class EditableObjectTableModel extends AbstractObjectTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
+abstract public class EditableObjectTableModel extends AbstractObjectTableModel implements RowColumnBaseObjectProvider
 {
 	public EditableObjectTableModel(Project projectToUse)
 	{
