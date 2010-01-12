@@ -37,8 +37,9 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel implemen
 {
 	public ObjectTableModel(Project projectToUse, int listedItemType, String[] tableColumnTags)
 	{
+		super(projectToUse);
+		
 		columnTags = tableColumnTags;
-		project = projectToUse;
 		rowObjectType = listedItemType;
 	}
 	
@@ -68,7 +69,7 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel implemen
 		try
 		{
 			ORef rowObjectRef = getRowObjectRefs().get(row);
-			BaseObject rowObject = project.findObject(rowObjectRef);
+			BaseObject rowObject = getProject().findObject(rowObjectRef);
 			if(rowObject == null)
 			{
 				EAM.logWarning("ObjectTableModel.getObjectFromRow: Missing object: " + rowObjectRef);
@@ -122,7 +123,7 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel implemen
 
 	public String getValueToDisplay(ORef rowObjectRef, String tag)
 	{
-		return project.getObjectData(rowObjectRef, tag);
+		return getProject().getObjectData(rowObjectRef, tag);
 	}
 
 	public void rowsWereAddedOrRemoved()
@@ -173,11 +174,6 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel implemen
 		return EAM.fieldLabel(rowObjectType, getColumnTag(column));
 	}
 	
-	public Project getProject()
-	{
-		return project;
-	}
-
 	public void setRowObjectRefs(ORefList rowObjectRefsToUse)
 	{
 		rowObjectRefs = rowObjectRefsToUse;
@@ -220,7 +216,6 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel implemen
 	
 	abstract public String getUniqueModelIdentifier();
 	
-	protected Project project;
 	private int rowObjectType;
 	private ORefList rowObjectRefs;
 	private String[] columnTags;
