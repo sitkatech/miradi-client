@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-11 15:29-0600\n"
+"POT-Creation-Date: 2010-01-12 08:56-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -521,7 +521,7 @@ msgstr ""
 msgid "Label|Team Information"
 msgstr "Información del equipo"
 
-#: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:68
+#: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:67
 msgid "Label|Campaign"
 msgstr "Campaña"
 
