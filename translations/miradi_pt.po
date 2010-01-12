@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-12 12:40-0600\n"
+"POT-Creation-Date: 2010-01-12 12:43-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -3726,11 +3726,11 @@ msgstr ""
 msgid "Descending"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ScopeBoxColorQuestion.java:44
+#: Miradi/source/org/miradi/questions/ScopeBoxColorQuestion.java:45
 msgid "Green (Biodiversity Target)"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ScopeBoxColorQuestion.java:45
+#: Miradi/source/org/miradi/questions/ScopeBoxColorQuestion.java:46
 msgid "Brown (Human Welfare Target)"
 msgstr ""
 
