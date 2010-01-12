@@ -97,9 +97,7 @@ public class CreateObjectFromSingleLegacyTextField
 		File idFile = new File(newTypeDir, Integer.toString(highestId));
 		DataUpgrader.createFile(idFile, newTypeJson.toString());
 
-		File newTypeManifestFile = DataUpgrader.createManifestFile(newTypeDir, newTypeSingleItemArray);
-		if (! newTypeManifestFile.exists())
-			throw new RuntimeException("New manifest was not created");
+		DataUpgrader.createManifestFile(newTypeDir, newTypeSingleItemArray);
 		
 		DataUpgrader.writeHighestIdToProjectFile(getJsonDir(), highestId);
 	}
