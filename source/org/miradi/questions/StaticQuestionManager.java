@@ -87,7 +87,6 @@ public class StaticQuestionManager
 		addQuestion(new TextBoxZOrderQuestion());
 		addQuestion(new CustomPlanningColumnsQuestion());
 		addQuestion(new TncProjectPlaceTypeQuestion());
-		addQuestion(new ScopeBoxColorQuestion());
 		addQuestion(new TargetModeQuestion());
 		addQuestion(new WorkPlanColumnConfigurationQuestion());
 		addQuestion(new MonthAbbreviationsQuestion());
