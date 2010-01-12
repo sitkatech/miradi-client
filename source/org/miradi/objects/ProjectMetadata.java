@@ -356,7 +356,6 @@ public class ProjectMetadata extends BaseObject
 		workPlanTimeUnit = new ChoiceData(TAG_WORKPLAN_TIME_UNIT, getQuestion(BudgetTimePeriodQuestion.class));
 		planningComments = new StringData(TAG_PLANNING_COMMENTS);
 		
-		otherNotableSpecies = new StringData(LEGACY_TAG_OTHER_NOTABLE_SPECIES);
 		humanPopulation = new IntegerData(TAG_HUMAN_POPULATION);
 		humanPopulationNotes = new StringData(TAG_HUMAN_POPULATION_NOTES);
 		socialContext = new StringData(TAG_SOCIAL_CONTEXT);
@@ -404,7 +403,6 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_WORKPLAN_END_DATE, workPlanEndDate);
 		addField(TAG_WORKPLAN_TIME_UNIT, workPlanTimeUnit);
 		addField(TAG_PLANNING_COMMENTS, planningComments);
-		addField(LEGACY_TAG_OTHER_NOTABLE_SPECIES, otherNotableSpecies);
 		addField(TAG_HUMAN_POPULATION, humanPopulation);
 		addField(TAG_HUMAN_POPULATION_NOTES, humanPopulationNotes);
 		addField(TAG_SOCIAL_CONTEXT, socialContext);
@@ -489,7 +487,6 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_WORKPLAN_END_DATE = "WorkPlanEndDate";
 	public static final String TAG_WORKPLAN_TIME_UNIT = "WorkPlanTimeUnit";
 	public static final String TAG_PLANNING_COMMENTS = "PlanningComments";
-	public static final String LEGACY_TAG_OTHER_NOTABLE_SPECIES = "OtherNotableSpecies";
 	public static final String TAG_HUMAN_POPULATION = "HumanPopulation";
 	public static final String TAG_HUMAN_POPULATION_NOTES = "HumanPopulationNotes";
 	public static final String TAG_SOCIAL_CONTEXT = "SocialContext";
@@ -558,7 +555,6 @@ public class ProjectMetadata extends BaseObject
 	private DateData workPlanEndDate;
 	private ChoiceData workPlanTimeUnit;
 	private StringData planningComments;
-	private StringData otherNotableSpecies;
 	private IntegerData humanPopulation;
 	private StringData humanPopulationNotes;
 	private StringData socialContext;
