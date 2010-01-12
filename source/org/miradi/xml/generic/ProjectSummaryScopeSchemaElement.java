@@ -38,7 +38,7 @@ public class ProjectSummaryScopeSchemaElement extends ObjectSchemaElement
 		createOptionalTextField(ProjectMetadata.TAG_PROJECT_AREA);
 		createOptionalTextField(ProjectMetadata.TAG_PROJECT_AREA_NOTES);
 		createOptionalTextField(ProjectMetadata.LEGACY_TAG_RED_LIST_SPECIES);
-		createOptionalTextField(ProjectMetadata.TAG_OTHER_NOTABLE_SPECIES);
+		createOptionalTextField(ProjectMetadata.LEGACY_TAG_OTHER_NOTABLE_SPECIES);
 
 		createOptionalNumericField(ProjectMetadata.TAG_HUMAN_POPULATION);
 		createOptionalTextField(ProjectMetadata.TAG_HUMAN_POPULATION_NOTES);
