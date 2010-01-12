@@ -42,9 +42,5 @@ public class ScopeTabBiodiversitySubPanelForm extends FieldPanelSpec
 		areaRow.addRightFormItem(new FormFieldLabel(type, ProjectMetadata.TAG_PROJECT_AREA_NOTES));
 		areaRow.addRightFormItem(new FormFieldData(type, ProjectMetadata.TAG_PROJECT_AREA_NOTES));
 		addFormRow(areaRow);
-
-		addLabelAndField(type, ProjectMetadata.LEGACY_TAG_RED_LIST_SPECIES);
-		addLabelAndField(type, ProjectMetadata.LEGACY_TAG_OTHER_NOTABLE_SPECIES);
-
 	}
 }
