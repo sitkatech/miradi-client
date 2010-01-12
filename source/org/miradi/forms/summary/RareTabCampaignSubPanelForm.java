@@ -33,7 +33,6 @@ public class RareTabCampaignSubPanelForm extends FieldPanelSpec
 		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_THREATS_ADDRESSED_NOTES);
 		addLeftRightConstants(THREATS_AT_SITE_CONSTANT, SEE_DIAGRAM_CONSTANT);
 		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
-		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_AUDIENCE);
 		addLeftRightConstants(HUMAN_STAKEHOLDER_POP_SIZE_CONSTANT, SEE_SCOPE_TAB_CONSTANT);
 		addLeftRightConstants(BIODIVERSITY_AREA_HA_CONSTANT, SEE_SCOPE_TAB_CONSTANT);
 		addLeftRightConstants(HABITAT_CONSTANT, SEE_TNC_TAB_FOR_ECOREGIONS_CONSTANT);
