@@ -89,7 +89,6 @@ public class RareProjectData extends BaseObject
 		biodiversityHotspots = new StringData(TAG_BIODIVERSITY_HOTSPOTS);
 		cohort = new StringData(TAG_COHORT);
 		numberOfCommunitiesInCampaignArea = new IntegerData(TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
-		audience = new StringData(TAG_AUDIENCE);
 		threatsAddressedNotes = new StringData(TAG_THREATS_ADDRESSED_NOTES);
 		mainActivitiesNotes = new StringData(TAG_MAIN_ACTIVITIES_NOTES);
 		threatReductionObjectiveNotes = new StringData(TAG_THREAT_REDUCTION_OBJECTIVE_NOTES);
@@ -111,7 +110,6 @@ public class RareProjectData extends BaseObject
 		addField(TAG_BIODIVERSITY_HOTSPOTS, biodiversityHotspots);
 		addField(TAG_COHORT, cohort);
 		addField(TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA, numberOfCommunitiesInCampaignArea);
-		addField(TAG_AUDIENCE, audience);
 		addField(threatsAddressedNotes);
 		addField(mainActivitiesNotes);
 		addField(threatReductionObjectiveNotes);
@@ -137,7 +135,6 @@ public class RareProjectData extends BaseObject
 	public static final String TAG_BIODIVERSITY_HOTSPOTS = "BiodiversityHotspots";
 	public static final String TAG_COHORT = "Cohort";
 	public static final String TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA = "NumberOfCommunitiesInCampaignArea";
-	public static final String TAG_AUDIENCE = "Audience";
 	public static final String TAG_THREATS_ADDRESSED_NOTES = "ThreatsAddressedNotes";
 	public static final String TAG_MAIN_ACTIVITIES_NOTES = "MainActivitiesNotes";
 	public static final String TAG_THREAT_REDUCTION_OBJECTIVE_NOTES = "ThreatReductionObjectiveNotes";
@@ -159,7 +156,6 @@ public class RareProjectData extends BaseObject
 	private StringData biodiversityHotspots;
 	private StringData cohort;
 	private IntegerData numberOfCommunitiesInCampaignArea;
-	private StringData audience;
 	private StringData threatsAddressedNotes;
 	private StringData mainActivitiesNotes;
 	private StringData threatReductionObjectiveNotes;
