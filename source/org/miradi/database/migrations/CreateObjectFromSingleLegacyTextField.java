@@ -26,6 +26,7 @@ import org.miradi.database.DataUpgrader;
 import org.miradi.database.JSONFile;
 import org.miradi.database.ObjectManifest;
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class CreateObjectFromSingleLegacyTextField
@@ -65,6 +66,12 @@ public class CreateObjectFromSingleLegacyTextField
 		
 		ObjectManifest legacyFieldContainerObjectManifest = new ObjectManifest(JSONFile.read(getTypeManifestFile(legacyFieldContainerType)));
 		BaseId[] legacyFieldContainerIds = legacyFieldContainerObjectManifest.getAllKeys();
+		if (legacyFieldContainerIds.length == 0)
+			return;
+		
+		if (legacyFieldContainerIds.length > 1)
+			EAM.logWarning("An expected singleton object tpye of: " + legacyFieldContainerType + " has more than one object.");
+		
 		BaseId legacyFieldContainerId = legacyFieldContainerIds[0];
 		File legacyFieldContainerFile = new File(getObjectDir(legacyFieldContainerType), Integer.toString(legacyFieldContainerId.asInt()));
 		EnhancedJsonObject legacyFieldContainerJson = DataUpgrader.readFile(legacyFieldContainerFile);
