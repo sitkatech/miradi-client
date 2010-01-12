@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-12 08:56-0600\n"
+"POT-Creation-Date: 2010-01-12 08:58-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -530,7 +530,7 @@ msgstr "Kampanye "
 msgid "Label|Biodiversity Area (hectares)"
 msgstr "Daerah Keanekaragaman Hayati (hektar) "
 
-#: Miradi/source/org/miradi/views/summary/BiodiversityPanel.java:50
+#: Miradi/source/org/miradi/views/summary/BiodiversityPanel.java:46
 msgid "Biodiversity Features"
 msgstr "Fitur Keanekaragaman Hayati "
 
