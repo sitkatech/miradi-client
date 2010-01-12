@@ -69,7 +69,7 @@ abstract public class ObjectListTableModel extends ObjectTableModel
 
 	public BaseObject getContainingObject()
 	{
-		return project.findObject(getContainingRef());
+		return getProject().findObject(getContainingRef());
 	}
 
 	public ORefList getLatestRefListFromProject()
