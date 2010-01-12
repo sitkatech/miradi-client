@@ -20,8 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import java.io.File;
+
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
 public class ScopeBoxColorQuestion extends DynamicChoiceQuestion
 {
@@ -41,6 +44,18 @@ public class ScopeBoxColorQuestion extends DynamicChoiceQuestion
 
 	private AppPreferences getAppPreferences()
 	{
-		return EAM.getMainWindow().getAppPreferences();
+		try
+		{
+			AppPreferences appPreferences = new AppPreferences();
+			File appPreferencesFile = new File(EAM.getHomeDirectory(), MainWindow.APP_PREFERENCES_FILENAME);
+			appPreferences.load(appPreferencesFile);
+			return appPreferences;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("An Error Occurred While Loading AppPreferences"));
+			return null;
+		}
 	}
 }
