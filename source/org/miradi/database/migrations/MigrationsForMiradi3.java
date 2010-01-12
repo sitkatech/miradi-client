@@ -191,4 +191,10 @@ public class MigrationsForMiradi3
 		ScopeBoxLegacyColorCodeUpdateMigration.updateLegacyScopeBoxColorCode();
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 53);
 	}
+
+	public static void upgradeToVersion54() throws Exception
+	{
+		CreateObjectFromSingleLegacyTextField.createNewTypesFromLegacyFields();
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 54);
+	}
 }

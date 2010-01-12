@@ -49,6 +49,122 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		super(name);
 	}
 	
+	public void testNewTpyesAgainstEmptyProject() throws Exception
+	{
+		createBlankProjectMetadata();		
+		createBlankRareProjectData();
+	
+		File jsonDir = createJsonDir();
+		File projectFile = new File(jsonDir, "project");
+		createFile(projectFile, "{\"HighestUsedNodeId\":10}");
+		
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion54();
+		
+		final int IUCN_REDLIST_SPECIES_TYPE = 53;
+		assertFalse("IUCN RedList Species dir should not have been created", DataUpgrader.getObjectsDir(jsonDir, IUCN_REDLIST_SPECIES_TYPE).exists());
+		
+		final int OTHER_NOTABLE_SPECIES = 54;
+		assertFalse("Other Notable Species dir should not have been created", DataUpgrader.getObjectsDir(jsonDir, OTHER_NOTABLE_SPECIES).exists());
+		
+		final int AUDIENCE_TYPE = 55;
+		assertFalse("Audience dir should not have been created", DataUpgrader.getObjectsDir(jsonDir, AUDIENCE_TYPE).exists());
+	}
+	
+	public void testIucnRedlistSpeciesList() throws Exception
+	{
+		EnhancedJsonObject projectMetadataJson = createProjectMetadata();		
+		createRareProjectData();
+		
+		final int IUCN_REDLIST_SPECIES_TYPE = 53;
+		String expectedValue = projectMetadataJson.optString("RedListSpecies");
+		verifyNewType(IUCN_REDLIST_SPECIES_TYPE, expectedValue);
+	}
+	
+	public void testOtherNotableSpeciesList() throws Exception
+	{
+		EnhancedJsonObject projectMetadataJson = createProjectMetadata();		
+		createRareProjectData();
+		
+		final int OTHER_NOTABLE_SPECIES = 54;
+		String expectedValue = projectMetadataJson.optString("OtherNotableSpecies");
+		verifyNewType(OTHER_NOTABLE_SPECIES, expectedValue);
+	}
+	
+	public void testAudienceList() throws Exception
+	{
+		createProjectMetadata();		
+		EnhancedJsonObject rareProjectDataJson = createRareProjectData();
+		
+		final int AUDIENCE_TYPE = 55;
+		String expectedValue = rareProjectDataJson.optString("Audience");
+		verifyNewType(AUDIENCE_TYPE, expectedValue);
+	}
+	
+	private void verifyNewType(int newListType, String expectedValue) throws Exception
+	{
+		File jsonDir = createJsonDir();
+		File projectFile = new File(jsonDir, "project");
+		createFile(projectFile, "{\"HighestUsedNodeId\":10}");
+		
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion54();
+		
+		File newTypeDir = DataUpgrader.getObjectsDir(jsonDir, newListType);
+		assertTrue("new object type dir was not created?", newTypeDir.exists());
+		File manifestFile = new File(newTypeDir, "manifest");
+		assertTrue("manifest file could not be found?", manifestFile.exists());
+		ObjectManifest manifestObject = new ObjectManifest(JSONFile.read(manifestFile));
+		assertEquals("manifest has wrong key count?", 1, manifestObject.size());
+		
+		BaseId[] newlyCreatedObjectIds = manifestObject.getAllKeys();
+		File newTypeFile = new File(newTypeDir, newlyCreatedObjectIds[0].toString());
+		assertTrue("IUCN RedList Species file was not created?", newTypeFile.exists());
+		EnhancedJsonObject newTypeJson = new EnhancedJsonObject(readFile(newTypeFile));
+		String label = newTypeJson.optString("Label");
+		assertEquals("wrong lanel?", expectedValue, label);
+	}
+	
+	private EnhancedJsonObject createRareProjectData() throws Exception
+	{
+		final int RARE_PROJECT_DATA_TYPE = 38;
+		String rareProjectDataWithAudience = "{\"CampaignTheoryOfChange\":\"\",\"BiodiversityHotspots\":\"\",\"SummaryOfKeyMessages\":\"\",\"ExpenseRefs\":\"\",\"FlagshipSpeciesDetail\":\"\",\"ThreatsAddressedNotes\":\"\",\"MainActivitiesNotes\":\"\",\"NumberOfCommunitiesInCampaignArea\":\"\",\"RegionalDirectorNotes\":\"\",\"MonitoringPartnerContactNotes\":\"\",\"BingoPartnerContactNotes\":\"\",\"Audience\":\"Village folks on the east side\",\"ProgressReportRefs\":\"\",\"FlagshipSpeciesCommonName\":\"\",\"FlagshipSpeciesScientificName\":\"\",\"CourseManagerNotes\":\"\",\"CampaignManagerNotes\":\"\",\"AssignmentIds\":\"\",\"ThreatReductionObjectiveNotes\":\"\",\"ThreatReductionPartnerContactNotes\":\"\",\"LocalPartnerContactNotes\":\"\",\"Cohort\":\"\",\"CampaignSlogan\":\"\",\"TimeStampModified\":\"1263290478834\",\"MonitoringObjectiveNotes\":\"\",\"Label\":\"\",\"Id\":13}";
+		
+		return createSingletonContainer(RARE_PROJECT_DATA_TYPE, rareProjectDataWithAudience);
+	}
+	
+	private void createBlankRareProjectData() throws Exception
+	{
+		final int RARE_PROJECT_DATA_TYPE = 38;
+		String rareProjectDataWithAudience = "{\"CampaignTheoryOfChange\":\"\",\"BiodiversityHotspots\":\"\",\"SummaryOfKeyMessages\":\"\",\"ExpenseRefs\":\"\",\"FlagshipSpeciesDetail\":\"\",\"ThreatsAddressedNotes\":\"\",\"MainActivitiesNotes\":\"\",\"NumberOfCommunitiesInCampaignArea\":\"\",\"RegionalDirectorNotes\":\"\",\"MonitoringPartnerContactNotes\":\"\",\"BingoPartnerContactNotes\":\"\",\"Audience\":\"\",\"ProgressReportRefs\":\"\",\"FlagshipSpeciesCommonName\":\"\",\"FlagshipSpeciesScientificName\":\"\",\"CourseManagerNotes\":\"\",\"CampaignManagerNotes\":\"\",\"AssignmentIds\":\"\",\"ThreatReductionObjectiveNotes\":\"\",\"ThreatReductionPartnerContactNotes\":\"\",\"LocalPartnerContactNotes\":\"\",\"Cohort\":\"\",\"CampaignSlogan\":\"\",\"TimeStampModified\":\"1263290478834\",\"MonitoringObjectiveNotes\":\"\",\"Label\":\"\",\"Id\":13}";
+		createSingletonContainer(RARE_PROJECT_DATA_TYPE, rareProjectDataWithAudience);
+	}
+
+	private EnhancedJsonObject createProjectMetadata() throws Exception
+	{
+		final int PROJECT_METADATA_TYPE = 11;
+		String projectMetadataJsonString = "{\"FullTimeEmployeeDaysPerYear\":\"\",\"NextSteps\":\"\",\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"SiteMapReference\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"ProtectedAreaCategoryNotes\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"Arial\",\"ProtectedAreaCategories\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"\",\"AssignmentIds\":\"\",\"DiagramFontSize\":\"12\",\"ProjectLatitude\":\"0.0\",\"TNC.OperatingUnitList\":\"\",\"CurrencyType\":\"\",\"LocationComments\":\"\",\"RedListSpecies\":\"Some RedList species like wild salmon\",\"TargetMode\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"ProjectStatus\":\"\",\"OtherOrgProjectNumber\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"SocialContext\":\"\",\"ExpenseRefs\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"ProgressReportRefs\":\"\",\"ProjectScope\":\"\",\"OtherOrgRelatedProjects\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"HumanPopulation\":\"\",\"OtherNotableSpecies\":\"Some Other Notable species like white tigers\",\"DataEffectiveDate\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"HumanPopulationNotes\":\"\",\"ShortProjectScope\":\"\",\"TNC.MarineEcoRegion\":\"\",\"TimeStampModified\":\"1263290457814\",\"ProjectAreaNote\":\"\",\"XenodataRefs\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\"}";
+		
+		return createSingletonContainer(PROJECT_METADATA_TYPE, projectMetadataJsonString);
+	}
+	
+	private void createBlankProjectMetadata() throws Exception
+	{
+		final int PROJECT_METADATA_TYPE = 11;
+		String projectMetadataJsonString = "{\"FullTimeEmployeeDaysPerYear\":\"\",\"NextSteps\":\"\",\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"SiteMapReference\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"ProtectedAreaCategoryNotes\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"Arial\",\"ProtectedAreaCategories\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"\",\"AssignmentIds\":\"\",\"DiagramFontSize\":\"12\",\"ProjectLatitude\":\"0.0\",\"TNC.OperatingUnitList\":\"\",\"CurrencyType\":\"\",\"LocationComments\":\"\",\"RedListSpecies\":\"\",\"TargetMode\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"\",\"StateAndProvinces\":\"\",\"ProjectStatus\":\"\",\"OtherOrgProjectNumber\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"SocialContext\":\"\",\"ExpenseRefs\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"\",\"ProgressReportRefs\":\"\",\"ProjectScope\":\"\",\"OtherOrgRelatedProjects\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"HumanPopulation\":\"\",\"OtherNotableSpecies\":\"\",\"DataEffectiveDate\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"HumanPopulationNotes\":\"\",\"ShortProjectScope\":\"\",\"TNC.MarineEcoRegion\":\"\",\"TimeStampModified\":\"1263290457814\",\"ProjectAreaNote\":\"\",\"XenodataRefs\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\"}";
+		createSingletonContainer(PROJECT_METADATA_TYPE, projectMetadataJsonString);
+	}
+	
+	private EnhancedJsonObject createSingletonContainer(int singletonObjectType, String jsonString) throws Exception
+	{
+		File jsonDir = createJsonDir();
+		File legacyFieldContainerDir = DataUpgrader.getObjectsDir(jsonDir, singletonObjectType);
+		int[] legacyFieldContainerIds = createAndPopulateObjectDir(jsonDir, singletonObjectType, new String[]{jsonString, });
+		File legacyFieldContainerFile = new File(legacyFieldContainerDir, Integer.toString(legacyFieldContainerIds[0]));
+		
+		return new EnhancedJsonObject(readFile(legacyFieldContainerFile));
+	}
+	
 	public void testCorrectHumanWelfareTargetScopeBoxColorCode() throws Exception
 	{
 		verifyEmptyProject();
