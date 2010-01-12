@@ -150,4 +150,5 @@ public interface WcsXmlConstants
 	public static final String THREAT_TARGET_RATING = "ThreatTargetRating";
 	public static final String TARGET_RATING = "TargetRating";
 	public static final String OVERALL_PROJECT_THREAT_RATING = "OverallProjectThreatRating";
+	public static final String IUCN_REDLIST_SPECIES = "IucnRedListSpecies";
 }
