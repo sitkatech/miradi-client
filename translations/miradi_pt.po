@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-12 08:56-0600\n"
+"POT-Creation-Date: 2010-01-12 08:58-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -481,7 +481,7 @@ msgstr ""
 msgid "Label|Biodiversity Area (hectares)"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/BiodiversityPanel.java:50
+#: Miradi/source/org/miradi/views/summary/BiodiversityPanel.java:46
 msgid "Biodiversity Features"
 msgstr ""
 
