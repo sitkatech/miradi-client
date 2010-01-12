@@ -38,7 +38,6 @@ public class RareCampaignSummarySubPanel extends ObjectDataInputPanel
 		addLabelsOnSingleRow(RareTabCampaignSubPanelForm.THREATS_AT_SITE_CONSTANT, RareTabCampaignSubPanelForm.SEE_DIAGRAM_CONSTANT);
 		
 		addField(createNumericField(RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA));
-		addField(createStringField(RareProjectData.TAG_AUDIENCE));
 		
 		addLabel(Audience.getObjectType(), Audience.TAG_LABEL);
 		addSubPanelWithTitledBorder(new AudienceSubPanel(getProject(), getPicker()));
