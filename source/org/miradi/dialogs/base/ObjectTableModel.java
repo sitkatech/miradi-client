@@ -229,8 +229,6 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel
 	
 	abstract public ORefList getLatestRefListFromProject();
 	
-	abstract public String getUniqueTableModelIdentifier();
-	
 	private int rowObjectType;
 	private ORefList rowObjectRefs;
 	private String[] columnTags;

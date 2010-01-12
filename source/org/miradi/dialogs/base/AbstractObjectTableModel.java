@@ -37,6 +37,8 @@ abstract public class AbstractObjectTableModel extends AbstractTableModel  imple
 	{
 		return project;
 	}
+	
+	abstract public String getUniqueTableModelIdentifier();
 
 	private Project project;
 }

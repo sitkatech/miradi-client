@@ -80,6 +80,4 @@ abstract public class EditableObjectTableModel extends AbstractObjectTableModel
 	}
 	
 	abstract public void setObjectRefs(ORef[] hierarchyToSelectedRef);
-	
-	abstract public String getUniqueTableModelIdentifier();
 }
