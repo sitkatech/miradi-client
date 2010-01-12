@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-12 08:58-0600\n"
+"POT-Creation-Date: 2010-01-12 09:10-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -2300,31 +2300,31 @@ msgstr ""
 msgid "(see Project tab)"
 msgstr ""
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:46
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:45
 msgid "Threats at Site"
 msgstr ""
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:47
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:46
 msgid "(see Diagram)"
 msgstr ""
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:48
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:47
 msgid "Human Stakeholder Pop Size"
 msgstr ""
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:49
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:48
 msgid "(see Scope tab)"
 msgstr ""
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:50
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:49
 msgid "Biodiversity Area (ha)"
 msgstr ""
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:51
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:50
 msgid "Habitat"
 msgstr ""
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:52
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:51
 msgid "(see TNC tab for Ecoregions)"
 msgstr ""
 
