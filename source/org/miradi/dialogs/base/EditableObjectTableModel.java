@@ -35,12 +35,7 @@ abstract public class EditableObjectTableModel extends AbstractObjectTableModel 
 {
 	public EditableObjectTableModel(Project projectToUse)
 	{
-		project = projectToUse;
-	}
-	
-	public Project getProject()
-	{
-		return project;
+		super(projectToUse);
 	}
 	
 	protected ObjectManager getObjectManager()
@@ -89,6 +84,4 @@ abstract public class EditableObjectTableModel extends AbstractObjectTableModel 
 	abstract public void setObjectRefs(ORef[] hierarchyToSelectedRef);
 	
 	abstract public String getUniqueTableModelIdentifier();
-	
-	private Project project;
 }

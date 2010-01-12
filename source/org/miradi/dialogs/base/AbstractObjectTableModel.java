@@ -22,6 +22,19 @@ package org.miradi.dialogs.base;
 
 import javax.swing.table.AbstractTableModel;
 
+import org.miradi.project.Project;
+
 abstract public class AbstractObjectTableModel extends AbstractTableModel
 {
+	public AbstractObjectTableModel(Project projectToUse)
+	{
+		project = projectToUse;
+	}
+	
+	public Project getProject()
+	{
+		return project;
+	}
+
+	private Project project;
 }
