@@ -26,7 +26,7 @@ import org.miradi.main.AppPreferences;
 
 public class ChoiceItemWithDynamicColor extends ChoiceItem
 {
-	public ChoiceItemWithDynamicColor(AppPreferences appPreferencesToUse, String codeToUse, String labelToUse, String colorTagToUse)
+	public ChoiceItemWithDynamicColor(String codeToUse, String labelToUse, AppPreferences appPreferencesToUse, String colorTagToUse)
 	{
 		super(codeToUse, labelToUse);
 		
