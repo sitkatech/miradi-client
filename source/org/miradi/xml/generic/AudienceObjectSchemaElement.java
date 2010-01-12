@@ -20,10 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-public class AudienceObjectSchemaElement extends ObjectSchemaElement
+import org.miradi.objects.Audience;
+
+public class AudienceObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public AudienceObjectSchemaElement()
 	{
 		super(AUDIENCE);
+		
+		createOptionalTextField(Audience.TAG_PEOPLE_COUNT);
+		createOptionalTextField(Audience.TAG_SUMMARY);
 	}
 }

@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/13'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/14'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -42,7 +42,10 @@ ConservationProject.element = element miradi:ConservationProject
   FundingSourcePool.element ?  &
   ExpenseAssignmentPool.element ?  &
   ResourceAssignmentPool.element ?  &
-  ThreatRatingPool.element ? 
+  ThreatRatingPool.element ?  &
+  IucnRedListSpeciesPool.element ?  &
+  OtherNotableSpeciesPool.element ?  &
+  AudiencePool.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -108,8 +111,6 @@ ProjectSummaryScope.element = element miradi:ProjectSummaryScope
   element miradi:ProjectSummaryScopeScopeComments { text }? &
   element miradi:ProjectSummaryScopeProjectArea { text }? &
   element miradi:ProjectSummaryScopeProjectAreaNote { text }? &
-  element miradi:ProjectSummaryScopeRedListSpecies { text }? &
-  element miradi:ProjectSummaryScopeOtherNotableSpecies { text }? &
   element miradi:ProjectSummaryScopeHumanPopulation { xsd:decimal }? &
   element miradi:ProjectSummaryScopeHumanPopulationNotes { text }? &
   element miradi:ProjectSummaryScopeSocialContext { text }? &
@@ -197,7 +198,6 @@ RareProjectData.element = element miradi:RareProjectData
   element miradi:RareProjectDataCohort { text }? &
   element miradi:RareProjectDataThreatsAddressedNotes { text }? &
   element miradi:RareProjectDataNumberOfCommunitiesInCampaignArea { text }? &
-  element miradi:RareProjectDataAudience { text }? &
   element miradi:RareProjectDataBiodiversityHotspots { text }? &
   element miradi:RareProjectDataFlagshipSpeciesCommonName { text }? &
   element miradi:RareProjectDataFlagshipSpeciesScientificName { text }? &
@@ -604,6 +604,29 @@ ThreatRating.element = element miradi:ThreatRating
   element miradi:ThreatRatingThreatTargetRating { vocabulary_threat_rating  }? &
   element miradi:ThreatRatingComments { text }? &
   element miradi:ThreatRatingRatings{ SimpleThreatRating.element | StressBasedThreatRating.element* }
+}
+
+IucnRedListSpeciesPool.element = element miradi:IucnRedListSpeciesPool { IucnRedListSpecies.element* }
+IucnRedListSpecies.element = element miradi:IucnRedListSpecies
+{
+  attribute Id {xsd:integer}  &
+  element miradi:IucnRedListSpeciesLabel { text }?
+}
+
+OtherNotableSpeciesPool.element = element miradi:OtherNotableSpeciesPool { OtherNotableSpecies.element* }
+OtherNotableSpecies.element = element miradi:OtherNotableSpecies
+{
+  attribute Id {xsd:integer}  &
+  element miradi:OtherNotableSpeciesLabel { text }?
+}
+
+AudiencePool.element = element miradi:AudiencePool { Audience.element* }
+Audience.element = element miradi:Audience
+{
+  attribute Id {xsd:integer}  &
+  element miradi:AudienceLabel { text }? &
+  element miradi:AudiencePeopleCount { text }? &
+  element miradi:AudienceSummary { text }?
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
