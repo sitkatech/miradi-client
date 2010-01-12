@@ -21,8 +21,6 @@ package org.miradi.dialogs.base;
 
 import java.util.Comparator;
 
-import javax.swing.table.AbstractTableModel;
-
 import org.miradi.dialogs.threatrating.upperPanel.TableModelStringComparator;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
@@ -35,7 +33,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.ColumnTagProvider;
 
-abstract public class ObjectTableModel extends AbstractTableModel implements ColumnTagProvider
+abstract public class ObjectTableModel extends AbstractObjectTableModel implements ColumnTagProvider
 {
 	public ObjectTableModel(Project projectToUse, int listedItemType, String[] tableColumnTags)
 	{
