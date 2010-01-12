@@ -32,8 +32,23 @@ public class CreateObjectFromSingleLegacyTextField
 {
 	public static void createNewTypesFromLegacyFields() throws Exception
 	{
+		createIucnRedListSpeciesObjectFromLegacyField();
+		createOtherNotableSpeciesObjectFromLegacyField();
+		createAudienceObjectFromLegacyField();
+	}
+	
+	private static void createIucnRedListSpeciesObjectFromLegacyField() throws Exception
+	{
 		createObjectsFromLegacyFields(PROJECT_METADATA_TYPE, REDLIST_SPECIES_LEGACY_FIELD_TAG, IUCN_REDLIST_SPECIES_TYPE);
+	}
+
+	private static void createOtherNotableSpeciesObjectFromLegacyField() throws Exception
+	{
 		createObjectsFromLegacyFields(PROJECT_METADATA_TYPE, OTHER_NOTABLE_SPECIES_LEGACY_FIELD_TAG, OTHER_NOTABLE_SPECIES_TYPE);
+	}
+
+	private static void createAudienceObjectFromLegacyField() throws Exception
+	{
 		createObjectsFromLegacyFields(RARE_PROJECT_DATA_TYPE, AUDIENCE_LEGACY_FIELD_TAG, AUDIENCE_TYPE);
 	}
 	
