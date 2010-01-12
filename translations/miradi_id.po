@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-12 08:58-0600\n"
+"POT-Creation-Date: 2010-01-12 09:10-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -2589,31 +2589,31 @@ msgstr "Proyek Terkait "
 msgid "(see Project tab)"
 msgstr "(Lihat tab Proyek) "
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:46
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:45
 msgid "Threats at Site"
 msgstr "Ancaman di Lokasi "
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:47
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:46
 msgid "(see Diagram)"
 msgstr "(lihat Diagram) "
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:48
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:47
 msgid "Human Stakeholder Pop Size"
 msgstr "Ukuran Populasi Manusia Pemilik Kepentingan "
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:49
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:48
 msgid "(see Scope tab)"
 msgstr "(lihat tab Cakupan) "
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:50
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:49
 msgid "Biodiversity Area (ha)"
 msgstr "Daerah Keanekaragaman Hayati (ha) "
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:51
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:50
 msgid "Habitat"
 msgstr "Habitat "
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:52
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:51
 msgid "(see TNC tab for Ecoregions)"
 msgstr "(lihat tab TNC untuk Wilayah Ekologi) "
 
