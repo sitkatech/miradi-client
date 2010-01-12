@@ -56,10 +56,10 @@ public class CreateObjectFromSingleLegacyTextField
 	private static void createObjectsFromLegacyFields(int legacyFieldContainerType, String legacyFieldTagInContainer, int newListType) throws Exception
 	{
 		if (!getObjectDir(legacyFieldContainerType).exists())
-			throw new RuntimeException("Project has no dir for type:" + legacyFieldContainerType);
+			return;
 		
 		if (!getTypeManifestFile(legacyFieldContainerType).exists())
-			throw new RuntimeException("No manifest file for tpye:" + legacyFieldContainerType);
+			return;
 		
 		if (getObjectDir(newListType).exists())
 			throw new RuntimeException("Project already has new list type:" + newListType);
