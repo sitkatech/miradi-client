@@ -24,6 +24,7 @@ import javax.swing.table.AbstractTableModel;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.ColumnTagProvider;
 
 abstract public class AbstractObjectTableModel extends AbstractTableModel  implements ColumnTagProvider, RowColumnBaseObjectProvider
@@ -31,6 +32,16 @@ abstract public class AbstractObjectTableModel extends AbstractTableModel  imple
 	public AbstractObjectTableModel(Project projectToUse)
 	{
 		project = projectToUse;
+	}
+	
+	public ChoiceQuestion getColumnQuestion(int column)
+	{
+		return null;
+	}
+	
+	public boolean isCodeListColumn(int column)
+	{
+		return false;
 	}
 	
 	public Project getProject()
