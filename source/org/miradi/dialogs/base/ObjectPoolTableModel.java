@@ -42,7 +42,7 @@ abstract public class ObjectPoolTableModel extends ObjectTableModel
 	
 	private IdList getLatestIdListFromProject()
 	{
-		IdList idList = project.getPool(getRowObjectType()).getIdList();
+		IdList idList = getProject().getPool(getRowObjectType()).getIdList();
 		idList.sort();
 		return idList;
 	}
