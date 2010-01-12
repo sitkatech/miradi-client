@@ -53,7 +53,7 @@ public class ShareableActivityPoolTableModel extends ObjectPoolTableModel
 		ORefList taskRefs = super.getLatestRefListFromProject();
 		for (int i = 0; i < taskRefs.size(); ++i)
 		{
-			Task task = (Task) project.findObject(taskRefs.get(i));
+			Task task = (Task) getProject().findObject(taskRefs.get(i));
 			if (! task.isActivity())
 				continue;
 			
