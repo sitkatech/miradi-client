@@ -35,10 +35,6 @@ public class BiodiversityPanel extends ObjectDataInputPanel
 		ObjectDataInputField projectAreaField = createNumericField(ProjectMetadata.TAG_PROJECT_AREA);
 		ObjectDataInputField projectAreaNotesField = createMultilineField(ProjectMetadata.TAG_PROJECT_AREA_NOTES);
 		addFieldsOnOneLine(EAM.text("Label|Biodiversity Area (hectares)"), new ObjectDataInputField[]{projectAreaField, projectAreaNotesField});
-
-		addField(createStringField(ProjectMetadata.TAG_RED_LIST_SPECIES));
-		addField(createStringField(ProjectMetadata.TAG_OTHER_NOTABLE_SPECIES));
-		
 	}
 
 	@Override
