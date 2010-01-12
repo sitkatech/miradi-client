@@ -29,7 +29,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
 abstract public class ObjectTableModel extends AbstractObjectTableModel
@@ -190,16 +189,6 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel
 	public boolean isChoiceItemColumn(int column)
 	{
 		return getColumnQuestion(column) != null;
-	}
-	
-	public ChoiceQuestion getColumnQuestion(int column)
-	{
-		return null;
-	}
-	
-	public boolean isCodeListColumn(int column)
-	{
-		return false;
 	}
 	
 	public ChoiceItem getChoiceItem(int column, String dataToDisplay)
