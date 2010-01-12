@@ -168,6 +168,7 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel
 		return columnTags.length;
 	}
 
+	@Override
 	public String getColumnName(int column)
 	{
 		return EAM.fieldLabel(rowObjectType, getColumnTag(column));
@@ -209,6 +210,21 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel
 	protected Comparator createComparator(int sortColumn)
 	{
 		return new TableModelStringComparator(this, sortColumn);
+	}
+	
+	public BaseObject getBaseObjectForRowColumn(int row, int column)
+	{
+		return getObjectFromRow(row);
+	}
+	
+	public int getProportionShares(int row)
+	{
+		throw new RuntimeException("getProportionShares has not been implemented by ObjectTableModel");
+	}
+	
+	public boolean areBudgetValuesAllocated(int row)
+	{
+		throw new RuntimeException("areBudgetValuesAllocated has not been implemented by ObjectTableModel");
 	}
 	
 	abstract public ORefList getLatestRefListFromProject();

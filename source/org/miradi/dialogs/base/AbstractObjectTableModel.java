@@ -22,10 +22,11 @@ package org.miradi.dialogs.base;
 
 import javax.swing.table.AbstractTableModel;
 
+import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.project.Project;
 import org.miradi.utils.ColumnTagProvider;
 
-abstract public class AbstractObjectTableModel extends AbstractTableModel  implements ColumnTagProvider
+abstract public class AbstractObjectTableModel extends AbstractTableModel  implements ColumnTagProvider, RowColumnBaseObjectProvider
 {
 	public AbstractObjectTableModel(Project projectToUse)
 	{

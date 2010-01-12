@@ -21,7 +21,6 @@ package org.miradi.dialogs.base;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
@@ -30,7 +29,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 
-abstract public class EditableObjectTableModel extends AbstractObjectTableModel implements RowColumnBaseObjectProvider
+abstract public class EditableObjectTableModel extends AbstractObjectTableModel
 {
 	public EditableObjectTableModel(Project projectToUse)
 	{
