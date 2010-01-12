@@ -121,7 +121,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		defineVocabulary(writer, VOCABULARY_TARGET_STATUS, new StatusQuestion());
 		defineVocabulary(writer, VOCABULARY_TARGET_VIABILITY_MODE, new ViabilityModeQuestion());
 		defineVocabulary(writer, VOCABULARY_THREAT_TAXONOMY_CODE, new ThreatClassificationQuestion());
-		defineVocabulary(writer, VOCABULARY_SCOPE_BOX_COLOR, new ScopeBoxColorQuestion());
+		defineVocabulary(writer, VOCABULARY_SCOPE_BOX_COLOR, new ScopeBoxColorQuestion(null));
 		defineVocabulary(writer, VOCABULARY_STRESS_SEVERITY, new StressSeverityChoiceQuestion());
 		defineVocabulary(writer, VOCABULARY_STRESS_SCOPE, new StressScopeChoiceQuestion());
 		defineVocabulary(writer, VOCABULARY_STRATEGY_TAXONOMY_CODE, new StrategyTaxonomyQuestion());
