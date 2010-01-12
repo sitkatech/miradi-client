@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
-import javax.swing.table.AbstractTableModel;
-
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
@@ -33,7 +31,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.ColumnTagProvider;
 
-abstract public class EditableObjectTableModel extends AbstractTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
+abstract public class EditableObjectTableModel extends AbstractObjectTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
 {
 	public EditableObjectTableModel(Project projectToUse)
 	{
