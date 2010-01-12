@@ -41,7 +41,7 @@ public class ActivityListTableModel extends ObjectListTableModel
 //		Task.PSEUDO_TAG_BUDGET_TOTAL,
 	};
 	
-	public String getUniqueModelIdentifier()
+	public String getUniqueTableModelIdentifier()
 	{
 		return UNIQUE_MODEL_IDENTIFIER;
 	}

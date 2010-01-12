@@ -61,7 +61,7 @@ public class TeamPoolTableModel extends ObjectPoolTableModel
 	}
 	
 	@Override
-	public String getUniqueModelIdentifier()
+	public String getUniqueTableModelIdentifier()
 	{
 		return UNIQUE_MODEL_IDENTIFIER;
 	}

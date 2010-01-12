@@ -44,7 +44,7 @@ public class GroupBoxLinkTableModel extends ObjectListTableModel
 	}
 
 	@Override
-	public String getUniqueModelIdentifier()
+	public String getUniqueTableModelIdentifier()
 	{
 		return UNIQUE_MODEL_IDENTIFIER;
 	}

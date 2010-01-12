@@ -53,7 +53,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 {
 	public ObjectTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse, modelToUse.getUniqueModelIdentifier());
+		super(mainWindowToUse, modelToUse, modelToUse.getUniqueTableModelIdentifier());
 		selectionListeners = new Vector();
 		currentSortColumn = -1;
 		

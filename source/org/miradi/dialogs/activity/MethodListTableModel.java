@@ -34,7 +34,7 @@ public class MethodListTableModel extends ObjectListTableModel
 	}
 	
 	@Override
-	public String getUniqueModelIdentifier()
+	public String getUniqueTableModelIdentifier()
 	{
 		return UNIQUE_MODEL_IDENTIFIER;
 	}
