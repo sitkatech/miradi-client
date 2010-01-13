@@ -22,7 +22,7 @@ package org.miradi.xml.wcs;
 
 import org.miradi.objects.OtherNotableSpecies;
 
-public class OtherNotableSpeciesPoolExporter extends ObjectPoolExporter
+public class OtherNotableSpeciesPoolExporter extends BaseObjectPoolExporter
 {
 	public OtherNotableSpeciesPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
