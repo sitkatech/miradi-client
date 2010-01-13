@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf.viewExporters;
 
-import org.miradi.dialogs.base.ObjectTableModel;
+import org.miradi.dialogs.base.AbstractObjectTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.rtf.RtfManagementExporter;
@@ -35,7 +35,7 @@ abstract public class RtfViewExporter
 		mainWindow = mainWindowToUse;
 	}
 	
-	protected void exportObjectTableModel(RtfWriter writer, ObjectTableModel objectTableModel, String translatedTableName) throws Exception
+	protected void exportObjectTableModel(RtfWriter writer, AbstractObjectTableModel objectTableModel, String translatedTableName) throws Exception
 	{
 		exportTableWithPageBreak(writer, new ObjectTableModelExporter(objectTableModel), translatedTableName);
 	}
