@@ -39,7 +39,7 @@ public class ScopeBoxPropertiesPanel extends ObjectDataInputPanel
 
 		addField(createStringField(ScopeBox.TAG_LABEL));
 		addField(createMultilineField(ScopeBox.TAG_TEXT));
-		addField(createChoiceField(ScopeBox.getObjectType(), ScopeBox.TAG_SCOPE_BOX_COLOR_CODE, new ScopeBoxColorQuestion()));
+		addField(createChoiceField(ScopeBox.getObjectType(), ScopeBox.TAG_SCOPE_BOX_COLOR_CODE, ScopeBoxColorQuestion.createScopeBoxColorQuestion()));
 		
 		updateFieldsFromProject();
 	}

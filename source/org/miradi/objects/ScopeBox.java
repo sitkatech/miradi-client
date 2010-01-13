@@ -108,7 +108,7 @@ public class ScopeBox extends Factor
 	{
 		super.clear();
 		
-		scopeBoxColorCode = new ChoiceData(TAG_SCOPE_BOX_COLOR_CODE, new ScopeBoxColorQuestion());
+		scopeBoxColorCode = new ChoiceData(TAG_SCOPE_BOX_COLOR_CODE, ScopeBoxColorQuestion.createScopeBoxColorQuestion());
 		
 		addPresentationDataField(TAG_SCOPE_BOX_COLOR_CODE, scopeBoxColorCode);
 	}

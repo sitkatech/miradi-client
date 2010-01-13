@@ -26,7 +26,15 @@ import org.miradi.main.EAM;
 //TODO: Superclass really should not have color data members
 public class ScopeBoxColorQuestion extends DynamicChoiceQuestion
 {
-	public ScopeBoxColorQuestion()
+	public static ScopeBoxColorQuestion createScopeBoxColorQuestion()
+	{
+		if (EAM.getMainWindow() == null)
+			return new ScopeBoxColorQuestion(null);
+		
+		return new ScopeBoxColorQuestion();
+	}
+	
+	private ScopeBoxColorQuestion()
 	{
 		this(EAM.getMainWindow().getAppPreferences());
 	}
