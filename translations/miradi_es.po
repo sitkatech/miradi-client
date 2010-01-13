@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-12 12:43-0600\n"
+"POT-Creation-Date: 2010-01-13 06:08-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -495,7 +495,7 @@ msgstr "STEP"
 msgid "Label|WCS"
 msgstr "WCS"
 
-#: Miradi/source/org/miradi/views/summary/RARESummaryPanel.java:50
+#: Miradi/source/org/miradi/views/summary/RARESummaryPanel.java:51
 msgid "Label|RARE"
 msgstr "RARE"
 
@@ -534,7 +534,7 @@ msgstr "Área de biodiversidad (hectáreas)"
 msgid "Biodiversity Features"
 msgstr "Características de biodiversidad"
 
-#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:71
+#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:72
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
 #: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:102
@@ -912,6 +912,7 @@ msgid "Are you sure you want to delete this Progress Percent?"
 msgstr "¿Está seguro de que desea eliminar este porcentaje de progreso?"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteOtherNotableSpeciesDoer.java:38
+#: Miradi/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:118
 msgid "Other Notable Species"
 msgstr ""
 
@@ -920,6 +921,7 @@ msgid "Share Activity"
 msgstr "Compartir actividad"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteIucnRedlistSpeciesDoer.java:38
+#: Miradi/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:117
 msgid "IUCN Redlist Species"
 msgstr ""
 
@@ -962,6 +964,7 @@ msgid "Title|View..."
 msgstr "Ver…"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteAudienceDoer.java:38
+#: Miradi/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:150
 msgid "Audience"
 msgstr ""
 
