@@ -23,7 +23,7 @@ import java.util.Vector;
 
 import javax.swing.Icon;
 
-import org.miradi.dialogs.base.ObjectTableModel;
+import org.miradi.dialogs.base.AbstractObjectTableModel;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
@@ -32,7 +32,7 @@ import org.miradi.questions.TaglessChoiceItem;
 
 public class ObjectTableModelExporter extends AbstractSingleTableExporter
 {
-	public ObjectTableModelExporter(ObjectTableModel objectTableModelToUse)
+	public ObjectTableModelExporter(AbstractObjectTableModel objectTableModelToUse)
 	{
 		super(objectTableModelToUse.getProject(), objectTableModelToUse.getUniqueTableModelIdentifier());
 		
@@ -103,7 +103,7 @@ public class ObjectTableModelExporter extends AbstractSingleTableExporter
 	@Override
 	public BaseObject getBaseObjectForRow(int row)
 	{
-		return getObjectTableModel().getObjectFromRow(row);
+		return getObjectTableModel().getBaseObjectForRowColumn(row, 0);
 	}
 	
 	@Override
@@ -147,10 +147,10 @@ public class ObjectTableModelExporter extends AbstractSingleTableExporter
 		return rowTypes;
 	}
 	
-	private ObjectTableModel getObjectTableModel()
+	private AbstractObjectTableModel getObjectTableModel()
 	{
 		return objectTableModel;
 	}
 		
-	private ObjectTableModel objectTableModel;
+	private AbstractObjectTableModel objectTableModel;
 }
