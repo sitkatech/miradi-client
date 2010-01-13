@@ -24,7 +24,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.Audience;
 import org.miradi.objects.BaseObject;
 
-public class AudiencePoolExporter extends ObjectPoolExporter
+public class AudiencePoolExporter extends BaseObjectPoolExporter
 {
 	public AudiencePoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
