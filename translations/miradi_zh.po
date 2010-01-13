@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-13 07:46-0600\n"
+"POT-Creation-Date: 2010-01-13 07:52-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -741,7 +741,7 @@ msgstr "作为拷贝 \t\t"
 msgid "Button|Shared"
 msgstr "共享的 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/InsertDirectThreatDoer.java:48
+#: Miradi/source/org/miradi/views/diagram/InsertDirectThreatDoer.java:50
 #: Miradi/source/org/miradi/views/diagram/InsertContributingFactorDoer.java:43
 msgid "Label|New Factor"
 msgstr "新因素 \t\t"

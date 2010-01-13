@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-13 07:46-0600\n"
+"POT-Creation-Date: 2010-01-13 07:52-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -768,7 +768,7 @@ msgstr "Como copia"
 msgid "Button|Shared"
 msgstr "Compartido"
 
-#: Miradi/source/org/miradi/views/diagram/InsertDirectThreatDoer.java:48
+#: Miradi/source/org/miradi/views/diagram/InsertDirectThreatDoer.java:50
 #: Miradi/source/org/miradi/views/diagram/InsertContributingFactorDoer.java:43
 msgid "Label|New Factor"
 msgstr "Factor nuevo"
