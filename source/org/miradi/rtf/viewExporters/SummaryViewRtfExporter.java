@@ -19,7 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf.viewExporters;
 
+import org.miradi.dialogs.audience.AudienceEditablePoolTableModel;
+import org.miradi.dialogs.base.EditableObjectPoolRefsTableModel;
+import org.miradi.dialogs.iucnRedlistSpecies.IucnRedlistSpeciesEditablePoolTableModel;
 import org.miradi.dialogs.organization.OrganizationPoolTableModel;
+import org.miradi.dialogs.otherNotableSpecies.OtherNotableSpeciesEditablePoolTableModel;
 import org.miradi.dialogs.summary.TeamPoolTableModel;
 import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.forms.summary.FosTabForm;
@@ -31,6 +35,7 @@ import org.miradi.forms.summary.ScopeTabForm;
 import org.miradi.forms.summary.TncTabForm;
 import org.miradi.forms.summary.WcsTabForm;
 import org.miradi.forms.summary.WwfTabForm;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -109,7 +114,8 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 	private void exportScopeTab(RtfWriter writer) throws Exception
 	{
 		exportForm(writer, new ScopeTabForm(), WcpaProjectData.getObjectType());
-		
+		exportModel(writer, new IucnRedlistSpeciesEditablePoolTableModel(getProject()), EAM.text("IUCN Redlist Species"));
+		exportModel(writer, new OtherNotableSpeciesEditablePoolTableModel(getProject()), EAM.text("Other Notable Species"));
 	}
 
 	private void exportLocationTab(RtfWriter writer) throws Exception
@@ -141,6 +147,15 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 	private void exportRareTab(RtfWriter writer) throws Exception
 	{
 		exportForm(writer, new RareTabForm(), RareProjectData.getObjectType());
+		exportModel(writer, new AudienceEditablePoolTableModel(getProject()), EAM.text("Audience"));
+	}
+
+	private void exportModel(RtfWriter writer, EditableObjectPoolRefsTableModel model, String reportLabel) throws Exception
+	{
+		//TODO  this call to setObjectRefs(empty List) causes extractOutEditableRefs to be called which loads the refs from the pool.  
+		// Need to come up with a sort of a loadModel() that doesnt require an empty arg
+		model.setObjectRefs(new ORef[0]);
+		exportObjectTableModel(writer, model, reportLabel);
 	}
 
 	private void exportFosTab(RtfWriter writer) throws Exception
