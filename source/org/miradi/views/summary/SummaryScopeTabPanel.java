@@ -25,15 +25,16 @@ import org.miradi.actions.jump.ActionJumpSummaryWizardDefineProjecScope;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.iucnRedlistSpecies.IucnRedlistSpeciesSubPanel;
 import org.miradi.dialogs.otherNotableSpecies.OtherNotableSpeciesSubPanel;
-import org.miradi.forms.summary.ScopeTabForm;
 import org.miradi.icons.ProjectScopeIcon;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
-import org.miradi.rtf.RtfFormExporter;
+import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.rtf.viewExporters.SummaryViewRtfExporter;
+import org.miradi.utils.CodeList;
 
 public class SummaryScopeTabPanel extends ObjectDataInputPanelWithSections
 {
@@ -92,7 +93,9 @@ public class SummaryScopeTabPanel extends ObjectDataInputPanelWithSections
 	@Override
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
-		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getSelectedRefs());
-		rtfFormExporter.exportForm(new ScopeTabForm());
+		SummaryViewRtfExporter viewExporter = new SummaryViewRtfExporter(getMainWindow());
+		CodeList summaryCodes = new CodeList();
+		summaryCodes.add(ReportTemplateContentQuestion.SUMMARY_VIEW_SCOPE_TAB_CODE);
+		viewExporter.exportView(writer, summaryCodes);
 	}
 }

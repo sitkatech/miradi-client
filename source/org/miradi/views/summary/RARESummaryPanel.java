@@ -22,13 +22,14 @@ package org.miradi.views.summary;
 import javax.swing.Icon;
 
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
-import org.miradi.forms.summary.RareTabForm;
 import org.miradi.icons.RareIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.RareProjectData;
 import org.miradi.project.Project;
-import org.miradi.rtf.RtfFormExporter;
+import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.rtf.viewExporters.SummaryViewRtfExporter;
+import org.miradi.utils.CodeList;
 
 public class RARESummaryPanel extends ObjectDataInputPanelWithSections
 {
@@ -64,7 +65,9 @@ public class RARESummaryPanel extends ObjectDataInputPanelWithSections
 	@Override
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
-		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getSelectedRefs());
-		rtfFormExporter.exportForm(new RareTabForm());
+		SummaryViewRtfExporter viewExporter = new SummaryViewRtfExporter(getMainWindow());
+		CodeList summaryCodes = new CodeList();
+		summaryCodes.add(ReportTemplateContentQuestion.SUMMARY_VIEW_RARE_TAB_CODE);
+		viewExporter.exportView(writer, summaryCodes);
 	}
 }
