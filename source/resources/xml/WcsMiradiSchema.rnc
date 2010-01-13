@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/15'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/16'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -43,7 +43,7 @@ ConservationProject.element = element miradi:ConservationProject
   ExpenseAssignmentPool.element ?  &
   ResourceAssignmentPool.element ?  &
   ThreatRatingPool.element ?  &
-  IucnRedListSpeciesPool.element ?  &
+  IUCNRedListSpeciesPool.element ?  &
   OtherNotableSpeciesPool.element ?  &
   AudiencePool.element ? 
 }
@@ -606,11 +606,11 @@ ThreatRating.element = element miradi:ThreatRating
   element miradi:ThreatRatingRatings{ SimpleThreatRating.element | StressBasedThreatRating.element* }
 }
 
-IucnRedListSpeciesPool.element = element miradi:IucnRedListSpeciesPool { IucnRedListSpecies.element* }
-IucnRedListSpecies.element = element miradi:IucnRedListSpecies
+IUCNRedListSpeciesPool.element = element miradi:IUCNRedListSpeciesPool { IUCNRedListSpecies.element* }
+IUCNRedListSpecies.element = element miradi:IUCNRedListSpecies
 {
   attribute Id {xsd:integer}  &
-  element miradi:IucnRedListSpeciesLabel { text }?
+  element miradi:IUCNRedListSpeciesLabel { text }?
 }
 
 OtherNotableSpeciesPool.element = element miradi:OtherNotableSpeciesPool { OtherNotableSpecies.element* }
