@@ -27,6 +27,7 @@ import java.util.Set;
 import javax.swing.JPanel;
 
 import org.miradi.actions.Actions;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
@@ -46,6 +47,7 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 		setLayout(new OneColumnGridLayout());
 		
 		objectPicker = objectPickerToUse;
+		rowCountLanel = new PanelTitleLabel();
 		createTable();
 		addComponents();
 		updateFieldsFromProject();
@@ -86,7 +88,8 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	{
 		objectTable.stopCellEditing();
 		objectTableModel.setObjectRefs(hierarchyToSelectedRef);
-		objectTableModel.fireTableDataChanged();
+		objectTableModel.fireTableDataChanged();		
+		rowCountLanel.setText(getPanelDescription() + ": " + objectTableModel.getRowCount());
 	}
 	
 	protected Actions getActions()
@@ -113,6 +116,7 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	{
 		MiradiScrollPane scroller = new MiradiScrollPane(objectTable);
 		add(createButtonBar(), BorderLayout.PAGE_START);
+		add(rowCountLanel);
 		add(scroller, BorderLayout.CENTER);
 	}
 	
@@ -136,6 +140,7 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	
 	abstract protected void createTable() throws Exception;
 	
+	private PanelTitleLabel rowCountLanel;
 	protected ObjectPicker objectPicker;
 	protected EditableObjectRefsTableModel objectTableModel;
 	protected EditableRefsTable objectTable;
