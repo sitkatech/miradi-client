@@ -37,6 +37,6 @@ public class ScopeBoxPoolExporter extends FactorPoolExporter
 	{
 		super.exportFields(writer, baseObject);
 		
-		writeCodeElementSameAsTag(baseObject, ScopeBox.TAG_SCOPE_BOX_COLOR_CODE, new ScopeBoxColorQuestion());
+		writeCodeElementSameAsTag(baseObject, ScopeBox.TAG_SCOPE_BOX_COLOR_CODE, ScopeBoxColorQuestion.createScopeBoxColorQuestion());
 	}
 }
