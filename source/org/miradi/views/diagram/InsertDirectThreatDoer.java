@@ -38,22 +38,26 @@ public class InsertDirectThreatDoer extends InsertFactorDoer
 		return !getDiagramView().isResultsChainTab();
 	}
 	
+	@Override
 	public int getTypeToInsert()
 	{
 		return ObjectType.CAUSE;
 	}
 
+	@Override
 	public String getInitialText()
 	{
 		return EAM.text("Label|New Factor");
 	}
 
+	@Override
 	public void forceVisibleInLayerManager()
 	{
 		getCurrentLayerManager().setVisibility(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, true);
 		getCurrentLayerManager().setVisibility(Cause.OBJECT_NAME_THREAT, true);
 	}
 	
+	@Override
 	protected void doExtraSetup(DiagramFactor newlyInsertedDiagramFactor, FactorCell[] selectedFactorCells) throws Exception
 	{
 		CommandSetObjectData enableThreat = new CommandSetObjectData(newlyInsertedDiagramFactor.getWrappedORef(), Cause.TAG_IS_DIRECT_THREAT, BooleanData.BOOLEAN_TRUE);
