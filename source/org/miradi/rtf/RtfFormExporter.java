@@ -177,6 +177,9 @@ public class RtfFormExporter
 		{
 			CurrencyFormat formatter = getProject().getCurrencyFormatterWithoutCommas();
 			String value = getFieldData((FormCurrencyFieldData) formItem, formRow);
+			if (value.length() == 0)
+				return "";
+			
 			return formatter.format(Double.parseDouble(value));
 		}
 		
