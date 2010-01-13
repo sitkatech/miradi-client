@@ -28,10 +28,15 @@ public class ScopeBoxColorQuestion extends DynamicChoiceQuestion
 {
 	public static ScopeBoxColorQuestion createScopeBoxColorQuestion()
 	{
-		if (EAM.getMainWindow() == null)
+		if (isMainWindowNullDueToTest())
 			return new ScopeBoxColorQuestion(null);
 		
 		return new ScopeBoxColorQuestion();
+	}
+
+	private static boolean isMainWindowNullDueToTest()
+	{
+		return EAM.getMainWindow() == null;
 	}
 	
 	private ScopeBoxColorQuestion()
