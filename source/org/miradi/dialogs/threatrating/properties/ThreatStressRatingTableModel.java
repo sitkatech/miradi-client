@@ -33,7 +33,6 @@ import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
 import org.miradi.questions.StressRatingChoiceQuestion;
@@ -236,7 +235,7 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		if (isContributionColumn(column) || isIrreversibilityColumn(column))
 		{
 			ORef ref = getBaseObjectForRowColumn(row, column).getRef();
-			setValueUsingCommand(ref, getColumnTag(column), ((ChoiceItem) value));
+			setValueUsingCommand(ref, getColumnTag(column), value.toString());
 		}
 		
 		if (isIsActiveColumn(column))

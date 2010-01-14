@@ -33,6 +33,7 @@ import javax.swing.event.ListSelectionListener;
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
 import org.miradi.dialogfields.ControlPanelRadioButtonEditorComponent;
+import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogs.base.UndecoratedModelessDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
@@ -148,6 +149,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	{
 		public void valueChanged(ListSelectionEvent event)
 		{
+			FieldSaver.savePendingEdits();
 			editorDialog.setVisible(false);
 			editorDialog.dispose();
 		}
