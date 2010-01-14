@@ -84,8 +84,7 @@ public class ThreatStressRatingTable extends EditableObjectTable
 			int selectedRow = getSelectedRow();
 			
 			int modelColumn = convertColumnIndexToModel(selectedColumn);
-			int modelRow = convertRowIndexToModel(selectedRow);
-			BaseObject baseObject = getThreatStressRatingTableModel().getBaseObjectForRowColumn(modelRow, modelColumn);
+			BaseObject baseObject = getThreatStressRatingTableModel().getBaseObjectForRowColumn(selectedRow, modelColumn);
 			String columnTag = getThreatStressRatingTableModel().getColumnTag(selectedColumn);
 			String threatRatingCode = event.getSource().toString();
 			getThreatStressRatingTableModel().setValueUsingCommand(baseObject.getRef(), columnTag, threatRatingCode);
