@@ -19,26 +19,45 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
-import java.awt.Color;
-
 import org.miradi.main.EAM;
 
-public class StressContributionQuestion extends StaticChoiceQuestion
+public class StressContributionQuestion extends ThreatRatingQuestion
 {
 	public StressContributionQuestion()
 	{
-		super(getChoiceItems());
+		super(getDescription());
 	}
 
-	static ChoiceItem[] getChoiceItems()
+	@Override
+	protected String getLowRatingChoiceItemDescription()
 	{
-		return new ChoiceItem[] {
-				new ChoiceItem("", EAM.text("Not Specified"), Color.WHITE),
-				new ChoiceItem(LOW_CODE, EAM.text("Low"), COLOR_GREAT),
-				new ChoiceItem(MEDIUM_CODE, EAM.text("Medium"), COLOR_OK),
-				new ChoiceItem(HIGH_CODE, EAM.text("High"), COLOR_CAUTION),
-				new ChoiceItem(VERY_HIGH_CODE, EAM.text("Very High"), COLOR_ALERT),
-		};
+		return EAM.text("<html><b>Low:</b> The source is a <b>low contributor</b> of the particular stress.</html>");
+	}
+	
+	@Override
+	protected String getMediumRatingChoiceItemDescription()
+	{
+		return EAM.text("<html><b>Medium:</b> The source is a <b>moderate contributor</b> of the particular stress.</html>");
+	}
+
+	@Override
+	protected String getHighRatingChoiceItemDescription()
+	{
+		return EAM.text("<html><b>High:</b> The source is a <b>large contributor</b> of the particular stress.</html>");
+	}
+
+	@Override
+	protected String getVeryHighRatingChoiceItemDescription()
+	{
+		return EAM.text("<html><b>Very High:</b> The source is a <b>very large contributor</b> of the particular stress.</html>");
+	}
+	
+	private static String getDescription()
+	{
+		return EAM.text("<html><strong>Contribution - </strong>The expected contribution of " +
+						"the source, acting alone, to the full expression of a stress (as determined " +
+						"in the stress assessment) under current circumstances (i.e., given the " +
+						"continuation of the existing management/conservation situation).</html>");
 	}
 	
 	public static final String LOW_CODE = "1";

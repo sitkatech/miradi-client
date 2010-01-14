@@ -41,6 +41,7 @@ import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.FloatingPointRestrictedTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.NonNegativeIntegerRestrictedTableCellRendererEditorFactory;
+import org.miradi.dialogs.tablerenderers.QuestionPopupCellEditorAndRendererFactory;
 import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.MainWindow;
@@ -50,6 +51,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticChoiceQuestion;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -148,6 +150,13 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		column.setCellEditor(new DefaultCellEditor(comboBox));
 		column.setCellRenderer(new ChoiceItemComboBoxRenderer(choices));
+	}
+	
+	protected void createInvokePopupColumn(ListSelectionListener selectionHandlerToUse, ChoiceQuestion question, int tableColumn) throws Exception
+	{
+		TableColumn column = getColumnModel().getColumn(tableColumn);
+		column.setCellEditor(new QuestionPopupCellEditorAndRendererFactory(selectionHandlerToUse, question));
+		column.setCellRenderer(new QuestionPopupCellEditorAndRendererFactory(selectionHandlerToUse, question));
 	}
 	
 	protected void createReadonlyChoiceItemColumn(ChoiceItem[] choices, int tableColumn)
