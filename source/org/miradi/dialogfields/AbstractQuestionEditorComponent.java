@@ -20,8 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import java.awt.Color;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -41,7 +41,7 @@ import org.miradi.utils.MiradiScrollPane;
 import com.jhlabs.awt.BasicGridLayout;
 import com.jhlabs.awt.GridLayoutPlus;
 
-abstract public class AbstractQuestionEditorComponent extends DisposablePanel implements ItemListener
+abstract public class AbstractQuestionEditorComponent extends DisposablePanel implements ActionListener
 {	
 	public AbstractQuestionEditorComponent(ChoiceQuestion questionToUse)
 	{
@@ -84,7 +84,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 			ChoiceItem choiceItem = choices[index];
 			JToggleButton toggleButton = createToggleButton(choiceItem.getLabel());
 			toggleButton.setBackground(choiceItem.getColor());
-			toggleButton.addItemListener(this);
+			toggleButton.addActionListener(this);
 			choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
 			Icon icon = choiceItem.getIcon();
 			toggleButtonsPanel.add(getSafeIconLabel(icon));
@@ -119,22 +119,19 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 	{
 	}
 
-	public void itemStateChanged(ItemEvent event)
+	public void actionPerformed(ActionEvent event)
 	{
-	    if (event.getStateChange() == ItemEvent.SELECTED ||	event.getStateChange() == ItemEvent.DESELECTED)
-	    {
-	    	JToggleButton item = (JToggleButton) event.getItem();
-	    	ChoiceItem choiceItem = getQuestion().findChoiceByLabel(item.getText());
-	    	try
-	    	{
-	    		valueChanged(choiceItem, item.isSelected());
-	    	}
-	    	catch (Exception e)
-	    	{
-	    		EAM.logException(e);
-	    		//TODO does this need to notify user with error dialog?
-	    	}
-	    }
+		try
+		{
+			JToggleButton item = (JToggleButton) event.getSource();
+			ChoiceItem choiceItem = getQuestion().findChoiceByLabel(item.getText());
+			valueChanged(choiceItem, item.isSelected());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			//TODO does this need to notify user with error dialog?
+		}
 	}
 
 	@Override
