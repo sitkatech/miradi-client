@@ -91,9 +91,9 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		mouseListener.addMouseListener(new PopUpEditorHandler());
 	}
 	
-	public void setText(String text)
+	public void setText(String code)
 	{
-		ChoiceItem choice = question.findChoiceByCode(text);
+		ChoiceItem choice = question.findChoiceByCode(code);
 		currentSelectionText.setText(choice.getLabel());
 		currentSelectionText.setBackground(choice.getColor());
 	}
@@ -141,7 +141,9 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		
 		private void selectRating()
 		{
-			editorPanel.setText(getText());
+			ChoiceItem codeToSelect = question.findChoiceByLabel(currentSelectionText.getText());
+			String currentCode = codeToSelect.getCode();
+			editorPanel.setText(currentCode);
 		}
 	}
 	
@@ -149,6 +151,9 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	{
 		public void valueChanged(ListSelectionEvent event)
 		{
+			String sourceAscode = event.getSource().toString();
+			setText(sourceAscode);
+	
 			FieldSaver.savePendingEdits();
 			editorDialog.setVisible(false);
 			editorDialog.dispose();

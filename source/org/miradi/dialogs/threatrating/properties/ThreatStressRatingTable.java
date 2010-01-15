@@ -26,7 +26,6 @@ import javax.swing.event.ListSelectionListener;
 import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.BaseObject;
 
 public class ThreatStressRatingTable extends EditableObjectTable
 {
@@ -61,10 +60,10 @@ public class ThreatStressRatingTable extends EditableObjectTable
 				createReadonlyComboQuestionColumn(threatStressRatingTableModel.createStressRatingQuestion(modelColumn), tableColumn);
 			
 			if (threatStressRatingTableModel.isContributionColumn(modelColumn))
-				createInvokePopupColumn(new ListSelectionHandler(), threatStressRatingTableModel.createContributionQuestion(modelColumn), tableColumn);
+				createInvokePopupColumn(new DoNothingListSelectionHandler(), threatStressRatingTableModel.createContributionQuestion(modelColumn), tableColumn);
 			
 			if (threatStressRatingTableModel.isIrreversibilityColumn(modelColumn))
-				createInvokePopupColumn(new ListSelectionHandler(), threatStressRatingTableModel.createIrreversibilityQuestion(modelColumn), tableColumn);
+				createInvokePopupColumn(new DoNothingListSelectionHandler(), threatStressRatingTableModel.createIrreversibilityQuestion(modelColumn), tableColumn);
 			
 			if (threatStressRatingTableModel.isThreatRatingColumn(modelColumn))
 				createReadonlyComboQuestionColumn(threatStressRatingTableModel.createThreatStressRatingQuestion(modelColumn), tableColumn);
@@ -76,18 +75,12 @@ public class ThreatStressRatingTable extends EditableObjectTable
 		table.getColumnModel().addColumnModelListener(new ColumnMarginResizeListenerValidator(this));
 	}
 	
-	private class ListSelectionHandler implements ListSelectionListener
+	//TODO instead of passing a do nothing handler, the class accepting a handler should deal 
+	// with nulls
+	private class DoNothingListSelectionHandler implements ListSelectionListener
 	{
 		public void valueChanged(ListSelectionEvent event)
 		{
-			int selectedColumn = getSelectedColumn();
-			int selectedRow = getSelectedRow();
-			
-			int modelColumn = convertColumnIndexToModel(selectedColumn);
-			BaseObject baseObject = getThreatStressRatingTableModel().getBaseObjectForRowColumn(selectedRow, modelColumn);
-			String columnTag = getThreatStressRatingTableModel().getColumnTag(selectedColumn);
-			String threatRatingCode = event.getSource().toString();
-			getThreatStressRatingTableModel().setValueUsingCommand(baseObject.getRef(), columnTag, threatRatingCode);
 		}
 	}
 
