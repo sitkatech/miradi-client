@@ -32,9 +32,9 @@ import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
-public class ThreatRatingQuestionPopupEditorComponent extends QuestionPopupEditorComponent
+public class SimpleThreatRatingQuestionPopupEditorComponent extends QuestionPopupEditorComponent
 {
-	public ThreatRatingQuestionPopupEditorComponent(Project projectToUse, ListSelectionListener selectionHandlerToUse, ChoiceQuestion questionToUse, String translatedPopupButtonText, ORef threatRefToUse, ORef targetRefToUse) throws Exception
+	public SimpleThreatRatingQuestionPopupEditorComponent(Project projectToUse, ListSelectionListener selectionHandlerToUse, ChoiceQuestion questionToUse, String translatedPopupButtonText, ORef threatRefToUse, ORef targetRefToUse) throws Exception
 	{
 		super(selectionHandlerToUse, questionToUse, translatedPopupButtonText);
 		
