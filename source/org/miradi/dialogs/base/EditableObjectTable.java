@@ -155,8 +155,8 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 	protected void createInvokePopupColumn(ChoiceQuestion question, int tableColumn) throws Exception
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellEditor(new QuestionPopupCellEditorAndRendererFactory(question));
-		column.setCellRenderer(new QuestionPopupCellEditorAndRendererFactory(question));
+		column.setCellEditor(new QuestionPopupCellEditorAndRendererFactory(getProject(), question));
+		column.setCellRenderer(new QuestionPopupCellEditorAndRendererFactory(getProject(), question));
 	}
 	
 	protected void createReadonlyChoiceItemColumn(ChoiceItem[] choices, int tableColumn)
