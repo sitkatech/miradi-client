@@ -49,7 +49,6 @@ import org.martus.util.DirectoryLock;
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeReader;
 import org.miradi.actions.Actions;
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.database.ProjectServer;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
@@ -705,13 +704,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		try
 		{
-			if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME))
 			{
-				CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-				boolean isMetadataCommand = cmd.getObjectORef().equals(getProject().getMetadata().getRef());
-				boolean isCurrentWizardScreenChange = cmd.getFieldTag().equals(ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME);
-				if(isMetadataCommand && isCurrentWizardScreenChange)
-					refreshWizard();
+				refreshWizard();
 			}
 		}
 		catch (Exception e)
