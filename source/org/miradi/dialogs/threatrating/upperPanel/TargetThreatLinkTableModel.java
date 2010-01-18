@@ -46,6 +46,7 @@ public class TargetThreatLinkTableModel extends AbstractThreatPerRowTableModel
 		return targetColumns.length;
 	}
 	
+	@Override
 	public String getColumnName(int column)
 	{
 		return targetColumns[column].toString();
@@ -87,6 +88,7 @@ public class TargetThreatLinkTableModel extends AbstractThreatPerRowTableModel
 		return null;
 	}
 	
+	@Override
 	public Comparator getComparator(int columnToSortOn)
 	{
 		return new TableModelChoiceItemComparator(this, columnToSortOn);
