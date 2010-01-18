@@ -41,7 +41,7 @@ import org.miradi.utils.MiradiScrollPane;
 import com.jhlabs.awt.BasicGridLayout;
 import com.jhlabs.awt.GridLayoutPlus;
 
-abstract public class AbstractQuestionEditorComponent extends DisposablePanel implements ActionListener
+abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 {	
 	public AbstractQuestionEditorComponent(ChoiceQuestion questionToUse)
 	{
@@ -84,7 +84,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 			ChoiceItem choiceItem = choices[index];
 			JToggleButton toggleButton = createToggleButton(choiceItem.getLabel());
 			toggleButton.setBackground(choiceItem.getColor());
-			toggleButton.addActionListener(this);
+			toggleButton.addActionListener(new ToggleButtonHandler());
 			choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
 			Icon icon = choiceItem.getIcon();
 			toggleButtonsPanel.add(getSafeIconLabel(icon));
@@ -117,21 +117,6 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 
 	protected void addAdditionalComponent()
 	{
-	}
-
-	public void actionPerformed(ActionEvent event)
-	{
-		try
-		{
-			JToggleButton item = (JToggleButton) event.getSource();
-			ChoiceItem choiceItem = getQuestion().findChoiceByLabel(item.getText());
-			valueChanged(choiceItem, item.isSelected());
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			//TODO does this need to notify user with error dialog?
-		}
 	}
 
 	@Override
@@ -167,6 +152,24 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel im
 	}
 	
 	abstract protected void valueChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception;
+	
+	class ToggleButtonHandler implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			try
+			{
+				JToggleButton item = (JToggleButton) event.getSource();
+				ChoiceItem choiceItem = getQuestion().findChoiceByLabel(item.getText());
+				valueChanged(choiceItem, item.isSelected());
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+				//TODO does this need to notify user with error dialog?
+			}			
+		}
+	}
 	
 	private ChoiceQuestion question;
 	protected HashMap<ChoiceItem, JToggleButton> choiceItemToToggleButtonMap;
