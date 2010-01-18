@@ -51,11 +51,13 @@ public class ObjectReadonlyObjectListTableField extends ObjectDataInputField
 		table.dispose();
 	}
 
+	@Override
 	public String getText()
 	{
 		return null;
 	}
 
+	@Override
 	public void setText(String newValue)
 	{
 		try
@@ -71,11 +73,13 @@ public class ObjectReadonlyObjectListTableField extends ObjectDataInputField
 		}
 	}
 	
+	@Override
 	public boolean allowEdits()
 	{
 		return false;
 	}
 
+	@Override
 	public JComponent getComponent()
 	{
 		return table;
