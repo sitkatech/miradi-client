@@ -36,7 +36,7 @@ public class SimpleThreatRatingQuestionPopupEditorComponent extends QuestionPopu
 {
 	public SimpleThreatRatingQuestionPopupEditorComponent(Project projectToUse, ListSelectionListener selectionHandlerToUse, ChoiceQuestion questionToUse, String translatedPopupButtonText, ORef threatRefToUse, ORef targetRefToUse) throws Exception
 	{
-		super(selectionHandlerToUse, questionToUse, translatedPopupButtonText);
+		super(questionToUse, translatedPopupButtonText);
 		
 		selectionHandler = selectionHandlerToUse;
 		project = projectToUse;
