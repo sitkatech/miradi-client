@@ -30,6 +30,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.commands.CommandSetThreatRating;
+import org.miradi.dialogfields.ChoiceItemListSelectionEvent;
 import org.miradi.dialogfields.ThreatStressRatingValueReadonlyComponent;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -248,7 +249,7 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 			if(threatRef.isInvalid() || targetRef.isInvalid())
 				return;
 
-			String selectedCode = (String) event.getSource();
+			String selectedCode = ((ChoiceItemListSelectionEvent)event).getCode();
 			int selectedValue = 0;
 			if(selectedCode.length() > 0)
 				selectedValue = Integer.parseInt(selectedCode);

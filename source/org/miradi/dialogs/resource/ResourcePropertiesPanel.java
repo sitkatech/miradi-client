@@ -22,6 +22,7 @@ package org.miradi.dialogs.resource;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.miradi.dialogfields.ChoiceItemListSelectionEvent;
 import org.miradi.dialogfields.ObjectCodeEditorField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
@@ -149,7 +150,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 		{
 			try
 			{
-				String code = event.getSource().toString();
+				String code = ((ChoiceItemListSelectionEvent)event).getCode();
 				if (!code.equals(ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE))
 					return;
 
@@ -157,7 +158,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 				if(newRoleCodes.contains(ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE))
 					return;
 
-					notifyUserThatResourceIsNoLongerPartOfTeam();
+				notifyUserThatResourceIsNoLongerPartOfTeam();
 			}
 			catch(Exception e)
 			{
