@@ -34,6 +34,9 @@ public class TableModelStringComparator extends AbstractTableModelComparator
 		Integer row2 = (Integer)object2;
 		Object value1 = getValue(row1.intValue());
 		Object value2 = getValue(row2.intValue());
+		
+		if (value1.toString().equals(value2.toString()))
+			return compareUsingRef(row1.intValue(), row2.intValue());
 
 		return compareStrings(value1, value2);
 	}
