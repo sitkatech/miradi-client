@@ -23,6 +23,9 @@ import java.util.Comparator;
 
 import javax.swing.table.TableModel;
 
+import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.objects.BaseObject;
+
 public abstract class AbstractTableModelComparator implements Comparator
 {
 	public AbstractTableModelComparator(TableModel modelToUse, int columnToSort)
@@ -41,6 +44,17 @@ public abstract class AbstractTableModelComparator implements Comparator
 		return value1.toString().compareToIgnoreCase(value2.toString());
 	}
 	
+	protected int compareUsingRef(int row1, int row2)
+	{
+		RowColumnBaseObjectProvider provider = ((RowColumnBaseObjectProvider)model);
+		BaseObject baseObject1 = provider.getBaseObjectForRowColumn(row1, 0);
+		BaseObject baseObject2 = provider.getBaseObjectForRowColumn(row2, 0);
+		if (baseObject1 == null || baseObject2 == null)
+			return 0;
+	
+		return baseObject1.getRef().compareTo(baseObject2.getRef());
+	}
+
 	abstract public int compare(Object o1, Object o2);
 
 	protected TableModel model;
