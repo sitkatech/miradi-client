@@ -100,9 +100,9 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 	private void createComponents() throws Exception
 	{
 		rollupField = new ThreatStressRatingValueReadonlyComponent(getProject());
-		scopeEditorComponent = new SimpleThreatRatingQuestionPopupEditorComponent(getProject(), new ListSelectionHandler(getScopeId()), getScopeRatingQuestion(), EAM.text("Scope"), getThreatRef(), getTargetRef());
-		severityEditorComponent = new SimpleThreatRatingQuestionPopupEditorComponent(getProject(), new ListSelectionHandler(getSeverityId()), getSeverityRatingQuestion(), EAM.text("Severity"), getThreatRef(), getTargetRef());
-		irreversibilityEditorComponent = new SimpleThreatRatingQuestionPopupEditorComponent(getProject(), new ListSelectionHandler(getIrreversibilityId()), getIrreversibilityRatingQuestion(), EAM.text("Irreversibility"), getThreatRef(), getTargetRef());
+		scopeEditorComponent = new SimpleThreatRatingQuestionPopupEditorComponent(getProject(), new ListSelectionHandler(getScopeId()), getScopeRatingQuestion(), EAM.text("Scope"));
+		severityEditorComponent = new SimpleThreatRatingQuestionPopupEditorComponent(getProject(), new ListSelectionHandler(getSeverityId()), getSeverityRatingQuestion(), EAM.text("Severity"));
+		irreversibilityEditorComponent = new SimpleThreatRatingQuestionPopupEditorComponent(getProject(), new ListSelectionHandler(getIrreversibilityId()), getIrreversibilityRatingQuestion(), EAM.text("Irreversibility"));
 	}
 
 	private void addEditComponent(JComponent component)
