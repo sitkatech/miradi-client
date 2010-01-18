@@ -24,7 +24,6 @@ import java.awt.Component;
 
 import javax.swing.AbstractCellEditor;
 import javax.swing.JTable;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
@@ -34,7 +33,7 @@ import org.miradi.utils.QuestionPopupEditorComponent;
 
 public class QuestionPopupCellEditorAndRendererFactory extends AbstractCellEditor implements TableCellEditor, TableCellRenderer
 {
-	public QuestionPopupCellEditorAndRendererFactory(ListSelectionListener selectionHandlerToUse, ChoiceQuestion questionToUse) throws Exception 
+	public QuestionPopupCellEditorAndRendererFactory(ChoiceQuestion questionToUse) throws Exception 
 	{
 	    super();
 	    
