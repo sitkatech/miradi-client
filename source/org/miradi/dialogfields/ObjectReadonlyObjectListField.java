@@ -47,11 +47,13 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 		table.setBackground(EAM.READONLY_BACKGROUND_COLOR);
 	}
 	
+	@Override
 	public String getText()
 	{
 		return null;
 	}
 
+	@Override
 	public void setText(String newValue)
 	{
 		try
@@ -92,11 +94,13 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 		}
 	}
 	
+	@Override
 	public boolean allowEdits()
 	{
 		return false;
 	}
 
+	@Override
 	public JComponent getComponent()
 	{
 		return table;
