@@ -54,7 +54,7 @@ public class StandAloneCodeListComponent extends AbstractQuestionBasedComponent
 	}
 	
 	@Override
-	public void valueChanged(ChoiceItem choiceItem, boolean isSelected)	throws Exception
+	public void toggleButtonStateChanged(ChoiceItem choiceItem, boolean isSelected)	throws Exception
 	{
 		CodeList currentCodes = getWhoTotalCodes(getParentObject());
 		boolean doesAssignmentExist = currentCodes.contains(choiceItem.getCode());

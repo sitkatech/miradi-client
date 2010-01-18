@@ -91,7 +91,7 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 		labelPanelWithIcon.add(new JLabel(" "));
 	}
 	
-	protected void valueChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception
+	protected void toggleButtonStateChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception
 	{
 		String refAsCode = choiceItem.getCode();
 		ORef taggedObjectSetRef = ORef.createFromString(refAsCode);

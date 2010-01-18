@@ -151,7 +151,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 		return question;
 	}
 	
-	abstract protected void valueChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception;
+	abstract protected void toggleButtonStateChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception;
 	
 	class ToggleButtonHandler implements ActionListener
 	{
@@ -161,7 +161,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 			{
 				JToggleButton item = (JToggleButton) event.getSource();
 				ChoiceItem choiceItem = getQuestion().findChoiceByLabel(item.getText());
-				valueChanged(choiceItem, item.isSelected());
+				toggleButtonStateChanged(choiceItem, item.isSelected());
 			}
 			catch (Exception e)
 			{
