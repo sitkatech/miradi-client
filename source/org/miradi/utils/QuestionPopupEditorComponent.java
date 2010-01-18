@@ -47,6 +47,11 @@ import org.miradi.questions.ChoiceQuestion;
 
 public class QuestionPopupEditorComponent extends OneRowPanel
 {
+	public QuestionPopupEditorComponent(ChoiceQuestion questionToUse) throws Exception
+	{
+		this(questionToUse, "");
+	}
+	
 	public QuestionPopupEditorComponent(ChoiceQuestion questionToUse, String translatedPopupButtonTextToUse) throws Exception
 	{
 		question = questionToUse;
