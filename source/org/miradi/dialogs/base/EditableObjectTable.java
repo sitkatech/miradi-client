@@ -41,7 +41,7 @@ import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.FloatingPointRestrictedTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.NonNegativeIntegerRestrictedTableCellRendererEditorFactory;
-import org.miradi.dialogs.tablerenderers.QuestionPopupCellEditorAndRendererFactory;
+import org.miradi.dialogs.tablerenderers.StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory;
 import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.MainWindow;
@@ -155,8 +155,8 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 	protected void createInvokePopupColumn(ChoiceQuestion question, int tableColumn) throws Exception
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellEditor(new QuestionPopupCellEditorAndRendererFactory(getProject(), question));
-		column.setCellRenderer(new QuestionPopupCellEditorAndRendererFactory(getProject(), question));
+		column.setCellEditor(new StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory(getProject(), question));
+		column.setCellRenderer(new StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory(getProject(), question));
 	}
 	
 	protected void createReadonlyChoiceItemColumn(ChoiceItem[] choices, int tableColumn)
