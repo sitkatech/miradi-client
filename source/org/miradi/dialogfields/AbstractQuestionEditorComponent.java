@@ -166,7 +166,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 			catch (Exception e)
 			{
 				EAM.logException(e);
-				//TODO does this need to notify user with error dialog?
+				EAM.errorDialog(EAM.text("An Error Has Occurred."));
 			}			
 		}
 	}
