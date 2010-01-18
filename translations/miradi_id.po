@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-18 03:07-0600\n"
+"POT-Creation-Date: 2010-01-18 03:16-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -4596,6 +4596,10 @@ msgstr "Tempel "
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyRefListHtmlComponent.java:78
 msgid "Internal Error"
 msgstr "Kesalahan Internal "
+
+#: Miradi/source/org/miradi/dialogfields/AbstractQuestionEditorComponent.java:169
+msgid "An Error Has Occurred."
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:50
 msgid "Select..."
