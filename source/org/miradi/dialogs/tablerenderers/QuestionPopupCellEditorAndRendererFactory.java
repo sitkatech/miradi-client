@@ -40,7 +40,7 @@ public class QuestionPopupCellEditorAndRendererFactory extends AbstractCellEdito
 	    questionEditor = new QuestionPopupEditorComponent(questionToUse);
 	}
 	
-	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int r, int c)
+	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
 	{
 		ChoiceItem choiceItem = (ChoiceItem) value;
 		questionEditor.setText(choiceItem.getCode());
