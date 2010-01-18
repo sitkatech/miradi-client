@@ -42,6 +42,7 @@ abstract public class AbstractDataValueListComponent extends AbstractQuestionEdi
 		addListSelectionListener(listener);
 	}
 	
+	@Override
 	public void toggleButtonStateChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception
 	{
 		if (!shouldSkipNotification())
