@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-18 03:16-0600\n"
+"POT-Creation-Date: 2010-01-18 03:49-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -3911,49 +3911,49 @@ msgstr ""
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:281
+#: Miradi/source/org/miradi/main/MainWindow.java:280
 msgid "Information"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:495
+#: Miradi/source/org/miradi/main/MainWindow.java:494
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
 "commands that are no longer supported"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:500
+#: Miradi/source/org/miradi/main/MainWindow.java:499
 msgid "That project is in use by another copy of this application"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:504
+#: Miradi/source/org/miradi/main/MainWindow.java:503
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:508
+#: Miradi/source/org/miradi/main/MainWindow.java:507
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:513
+#: Miradi/source/org/miradi/main/MainWindow.java:512
 msgid "Unknown error prevented opening that project"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:649
+#: Miradi/source/org/miradi/main/MainWindow.java:648
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:699
+#: Miradi/source/org/miradi/main/MainWindow.java:698
 msgid "WARNING: Project end date before start date."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1026
+#: Miradi/source/org/miradi/main/MainWindow.java:1021
 msgid "Unable to launch external web browser"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1042
+#: Miradi/source/org/miradi/main/MainWindow.java:1037
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
