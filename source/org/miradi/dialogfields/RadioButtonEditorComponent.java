@@ -35,10 +35,22 @@ import org.miradi.utils.ControlPanelFlexibleWidthHtmlViewer;
 
 public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 {
+	public RadioButtonEditorComponent(ChoiceQuestion questionToUse)
+	{
+		super(questionToUse, SINGLE_COLUMN);
+		
+		setEtchedBorder();
+	}
+	
 	public RadioButtonEditorComponent(ChoiceQuestion questionToUse, ListSelectionListener listener)
 	{
 		super(questionToUse, SINGLE_COLUMN, listener);
 		
+		setEtchedBorder();
+	}
+
+	private void setEtchedBorder()
+	{
 		setBorder(BorderFactory.createEtchedBorder());
 	}
 	
