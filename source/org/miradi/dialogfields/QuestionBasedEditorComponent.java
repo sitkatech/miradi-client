@@ -30,6 +30,11 @@ import org.miradi.utils.CodeList;
 
 public class QuestionBasedEditorComponent extends AbstractQuestionBasedComponent
 {
+	public QuestionBasedEditorComponent(ChoiceQuestion questionToUse,	int columnCount)
+	{
+		super(questionToUse, columnCount);
+	}
+	
 	public QuestionBasedEditorComponent(ChoiceQuestion questionToUse,	int columnCount, ListSelectionListener listener)
 	{
 		super(questionToUse, columnCount, listener);
