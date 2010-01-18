@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-18 12:05-0600\n"
+"POT-Creation-Date: 2010-01-18 12:46-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -2180,8 +2180,8 @@ msgid "No date range for date Unit = "
 msgstr ""
 
 #: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:55
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:85
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:77
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:84
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:103
@@ -6333,7 +6333,7 @@ msgstr ""
 msgid "Label|Comments"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:56
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:55
 msgid "Summary Threat Rating"
 msgstr ""
 
@@ -6345,11 +6345,11 @@ msgstr ""
 msgid "<html><b>Overall<br>Project<br>Rating</b></html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:60
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:59
 msgid "Threats"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:60
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:59
 msgid "Targets"
 msgstr ""
 
