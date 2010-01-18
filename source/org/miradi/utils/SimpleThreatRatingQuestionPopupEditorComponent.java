@@ -38,8 +38,8 @@ public class SimpleThreatRatingQuestionPopupEditorComponent extends QuestionPopu
 	{
 		super(questionToUse, translatedPopupButtonText);
 		
-		selectionHandler = selectionHandlerToUse;
 		project = projectToUse;
+		selectionHandler = selectionHandlerToUse;
 		threatRef = threatRefToUse;
 		targetRef = targetRefToUse;
 	}
