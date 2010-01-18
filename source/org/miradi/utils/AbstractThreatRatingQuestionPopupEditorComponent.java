@@ -33,16 +33,16 @@ public class AbstractThreatRatingQuestionPopupEditorComponent extends QuestionPo
 {
 	public AbstractThreatRatingQuestionPopupEditorComponent(Project projectToUse, ChoiceQuestion questionToUse) throws Exception
 	{
-		this(projectToUse, questionToUse, "", ORef.INVALID, ORef.INVALID);
+		this(projectToUse, questionToUse, "");
 	}
 	
-	public AbstractThreatRatingQuestionPopupEditorComponent(Project projectToUse, ChoiceQuestion questionToUse, String translatedPopupButtonText, ORef threatRefToUse, ORef targetRefToUse) throws Exception
+	public AbstractThreatRatingQuestionPopupEditorComponent(Project projectToUse, ChoiceQuestion questionToUse, String translatedPopupButtonText) throws Exception
 	{
 		super(questionToUse, translatedPopupButtonText);
 		
 		project = projectToUse;
-		threatRef = threatRefToUse;
-		targetRef = targetRefToUse;
+		threatRef = ORef.INVALID;
+		targetRef = ORef.INVALID;
 	}
 	
 	@Override

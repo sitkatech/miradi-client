@@ -23,15 +23,14 @@ package org.miradi.utils;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogfields.ControlPanelRadioButtonEditorComponent;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
 public class SimpleThreatRatingQuestionPopupEditorComponent extends AbstractThreatRatingQuestionPopupEditorComponent
 {
-	public SimpleThreatRatingQuestionPopupEditorComponent(Project projectToUse, ListSelectionListener selectionHandlerToUse, ChoiceQuestion questionToUse, String translatedPopupButtonText, ORef threatRefToUse, ORef targetRefToUse) throws Exception
+	public SimpleThreatRatingQuestionPopupEditorComponent(Project projectToUse, ListSelectionListener selectionHandlerToUse, ChoiceQuestion questionToUse, String translatedPopupButtonText) throws Exception
 	{
-		super(projectToUse, questionToUse, translatedPopupButtonText, threatRefToUse, targetRefToUse);
+		super(projectToUse, questionToUse, translatedPopupButtonText);
 		
 		selectionHandler = selectionHandlerToUse;
 	}
