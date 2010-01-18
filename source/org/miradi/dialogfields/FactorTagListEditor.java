@@ -61,6 +61,7 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 		super.dispose();
 	}
 	
+	@Override
 	protected void addAdditionalComponent()
 	{
 		if (selectedFactor != null)
@@ -91,6 +92,7 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 		labelPanelWithIcon.add(new JLabel(" "));
 	}
 	
+	@Override
 	protected void toggleButtonStateChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception
 	{
 		String refAsCode = choiceItem.getCode();
