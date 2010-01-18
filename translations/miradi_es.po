@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-18 02:40-0600\n"
+"POT-Creation-Date: 2010-01-18 03:07-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -537,7 +537,7 @@ msgstr "Características de biodiversidad"
 #: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:72
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:102
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:103
 msgid "Scope"
 msgstr "Alcance"
 
@@ -1742,7 +1742,7 @@ msgstr ""
 "alcance, gravedad e irreversibilidad. "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:223
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:105
 msgid "Irreversibility"
 msgstr "Irreversibilidad "
 
@@ -1755,7 +1755,7 @@ msgstr ""
 "revertir y se puede restaurar el objeto afectado por la amenaza. "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:103
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
 msgid "Severity"
 msgstr "Gravedad "
 
@@ -2520,24 +2520,24 @@ msgid "Progress"
 msgstr "Progreso"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:32
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:54
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:55
 msgid "Label|Resource"
 msgstr "Recurso"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:33
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:57
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:58
 msgid "Label|Roles (people only)"
 msgstr "Funciones (personas solamente)"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:34
 #: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:61
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:64
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:65
 msgid "Label|Phone Numbers"
 msgstr "Números de teléfono"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:38
 #: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:72
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:75
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:76
 msgid "Label|IM Address"
 msgstr "Dirección de IM"
 
@@ -6478,7 +6478,7 @@ msgstr ""
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/QuestionPopupEditorComponent.java:138
+#: Miradi/source/org/miradi/utils/QuestionPopupEditorComponent.java:139
 msgid "Select"
 msgstr ""
 
@@ -6688,7 +6688,7 @@ msgstr "Nombre de la presión"
 msgid "Target-Threat Rating"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:95
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:96
 msgid "<html><b>Summary<br>Target-Threat<br>Rating"
 msgstr ""
 
@@ -7376,15 +7376,15 @@ msgstr "Propiedades de la organización"
 msgid "Title|Other Orgs"
 msgstr "Otras organizaciones"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:91
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:92
 msgid "Title|Resource Properties"
 msgstr "Propiedades del recurso"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:140
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:141
 msgid "Remove Team Member"
 msgstr "Eliminar integrante del equipo"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:141
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:142
 msgid ""
 "You are removing this resource from the project team, so he/she will no "
 "longer appear in the list of Team Members in the Summary View. "
