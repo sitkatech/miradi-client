@@ -150,9 +150,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		
 		private void selectRating()
 		{
-			ChoiceItem codeToSelect = question.findChoiceByLabel(currentSelectionText.getText());
-			String currentCode = codeToSelect.getCode();
-			editorPanel.setText(currentCode);
+			editorPanel.setText(getText());
 		}
 	}
 	
