@@ -59,7 +59,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		columnHeader.addMouseListener(sortListener);
 		tablesToSort.add(tableToSort);
 		
-		sortTable(tableToSort);
+		sortAllTables();
 	}
 
 	private int findColumnToSortBy(AbstractThreatPerRowTableModel model) throws Exception
@@ -74,6 +74,14 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		}
 		
 		return -1;
+	}
+	
+	private void sortAllTables() throws Exception
+	{
+		for(JTable tableToSort : tablesToSort)
+		{
+			sortTable(tableToSort);
+		}
 	}
 
 	private void sortTable(JTable tableToSort) throws Exception
