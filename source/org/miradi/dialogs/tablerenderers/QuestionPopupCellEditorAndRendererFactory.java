@@ -37,8 +37,7 @@ public class QuestionPopupCellEditorAndRendererFactory extends AbstractCellEdito
 	{
 	    super();
 	    
-	    //TODO add some sort of text.  Text will appear to the left of the choice item popup section
-	    questionEditor = new QuestionPopupEditorComponent(questionToUse, "");
+	    questionEditor = new QuestionPopupEditorComponent(questionToUse);
 	}
 	
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int r, int c)
