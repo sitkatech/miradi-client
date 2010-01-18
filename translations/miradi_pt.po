@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-18 02:35-0600\n"
+"POT-Creation-Date: 2010-01-18 02:40-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6110,7 +6110,7 @@ msgstr ""
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/QuestionPopupEditorComponent.java:133
+#: Miradi/source/org/miradi/utils/QuestionPopupEditorComponent.java:138
 msgid "Select"
 msgstr ""
 
