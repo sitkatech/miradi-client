@@ -30,6 +30,7 @@ public class TableModelChoiceItemComparator extends AbstractTableModelComparator
 			super(modelToUse, columnToSort);
 		}
 		
+		@Override
 		public int compare(Object object1, Object object2)
 		{
 			Integer row1 = (Integer)object1;
