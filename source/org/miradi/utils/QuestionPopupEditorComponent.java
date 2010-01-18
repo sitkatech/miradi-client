@@ -32,6 +32,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
+import org.miradi.dialogfields.ChoiceItemListSelectionEvent;
 import org.miradi.dialogfields.ControlPanelRadioButtonEditorComponent;
 import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogs.base.UndecoratedModelessDialogWithClose;
@@ -158,8 +159,8 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	{
 		public void valueChanged(ListSelectionEvent event)
 		{
-			String sourceAscode = event.getSource().toString();
-			setText(sourceAscode);
+			String code = ((ChoiceItemListSelectionEvent)event).getCode();
+			setText(code);
 	
 			FieldSaver.savePendingEdits();
 			editorDialog.setVisible(false);

@@ -21,7 +21,6 @@ package org.miradi.dialogfields;
 
 import java.util.Vector;
 
-import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.questions.ChoiceItem;
@@ -49,7 +48,7 @@ abstract public class AbstractDataValueListComponent extends AbstractQuestionEdi
 		{
 			for(ListSelectionListener listSelectionListener : listSelectionListeners)
 			{
-				ListSelectionEvent event = new ListSelectionEvent(choiceItem.getCode(),0,0, false);
+				ChoiceItemListSelectionEvent event = new ChoiceItemListSelectionEvent(choiceItem.getCode(),0,0, false, choiceItem);
 				listSelectionListener.valueChanged(event);
 			}
 		}
