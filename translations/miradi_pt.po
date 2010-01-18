@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-14 16:41-0600\n"
+"POT-Creation-Date: 2010-01-18 02:23-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -4267,11 +4267,11 @@ msgid ""
 "'%s'"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:137
+#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:149
 msgid "Unexpected call to getText"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:143
+#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:155
 msgid "Unexpected call to setText"
 msgstr ""
 
