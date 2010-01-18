@@ -49,7 +49,6 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 {
 	public QuestionPopupEditorComponent(ListSelectionListener selectionHandlerToUse, ChoiceQuestion questionToUse, String translatedPopupButtonTextToUse) throws Exception
 	{
-		selectionHandler = selectionHandlerToUse;
 		question = questionToUse;
 		translatedPopupButtonText = translatedPopupButtonTextToUse;
 		
@@ -107,6 +106,11 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	protected void addAdditionalDescriptionPanel(OneColumnPanel panel)
 	{
 	}
+	
+	protected ControlPanelRadioButtonEditorComponent createPopupEditorPanel()
+	{
+		return new ControlPanelRadioButtonEditorComponent(getQuestion());
+	}
 
 	private class PopUpEditorHandler extends MouseAdapter implements ActionListener 
 	{
@@ -123,7 +127,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 
 		private void invokePopupEditor()
 		{
-			editorPanel = new ControlPanelRadioButtonEditorComponent(getQuestion(), selectionHandler);
+			editorPanel = createPopupEditorPanel();
 			editorPanel.addListSelectionListener(closeDialogAfterSelectionHandler);
 			selectRating();
 			editorDialog = new UndecoratedModelessDialogWithClose(EAM.getMainWindow(), EAM.text("Select"));
@@ -160,7 +164,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		}
 	}
 	
-	private ChoiceQuestion getQuestion()
+	protected ChoiceQuestion getQuestion()
 	{
 		return question;
 	}
@@ -176,6 +180,5 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	private ChoiceQuestion question;
 	private String translatedPopupButtonText;
 	private ControlPanelRadioButtonEditorComponent editorPanel;
-	private ListSelectionListener selectionHandler;
 	private CloseEditorAfterSelectionHandler closeDialogAfterSelectionHandler;
 }

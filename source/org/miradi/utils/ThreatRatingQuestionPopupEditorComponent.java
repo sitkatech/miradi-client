@@ -22,6 +22,7 @@ package org.miradi.utils;
 
 import javax.swing.event.ListSelectionListener;
 
+import org.miradi.dialogfields.ControlPanelRadioButtonEditorComponent;
 import org.miradi.dialogs.threatrating.upperPanel.ThreatNameColumnTableModel;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.EAM;
@@ -37,6 +38,7 @@ public class ThreatRatingQuestionPopupEditorComponent extends QuestionPopupEdito
 	{
 		super(selectionHandlerToUse, questionToUse, translatedPopupButtonText);
 		
+		selectionHandler = selectionHandlerToUse;
 		project = projectToUse;
 		threatRef = threatRefToUse;
 		targetRef = targetRefToUse;
@@ -47,6 +49,12 @@ public class ThreatRatingQuestionPopupEditorComponent extends QuestionPopupEdito
 	{
 		ControlPanelFlexibleWidthHtmlViewer htmlArea = new ControlPanelFlexibleWidthHtmlViewer(EAM.getMainWindow(), getThreatTargetTitle());
 		panel.add(htmlArea);
+	}
+	
+	@Override
+	protected ControlPanelRadioButtonEditorComponent createPopupEditorPanel()
+	{
+		return new ControlPanelRadioButtonEditorComponent(getQuestion(), selectionHandler);
 	}
 	
 	private String getThreatTargetTitle()
@@ -78,4 +86,5 @@ public class ThreatRatingQuestionPopupEditorComponent extends QuestionPopupEdito
 	private Project project;
 	private ORef threatRef;
 	private ORef targetRef;
+	private ListSelectionListener selectionHandler;
 }
