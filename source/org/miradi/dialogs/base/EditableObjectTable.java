@@ -152,7 +152,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 		column.setCellRenderer(new ChoiceItemComboBoxRenderer(choices));
 	}
 	
-	protected void createInvokePopupColumn(ListSelectionListener selectionHandlerToUse, ChoiceQuestion question, int tableColumn) throws Exception
+	protected void createInvokePopupColumn(ChoiceQuestion question, int tableColumn) throws Exception
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		column.setCellEditor(new QuestionPopupCellEditorAndRendererFactory(question));

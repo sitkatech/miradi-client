@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.threatrating.properties;
 
 import javax.swing.JTable;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.base.EditableObjectTable;
@@ -60,10 +58,10 @@ public class ThreatStressRatingTable extends EditableObjectTable
 				createReadonlyComboQuestionColumn(threatStressRatingTableModel.createStressRatingQuestion(modelColumn), tableColumn);
 			
 			if (threatStressRatingTableModel.isContributionColumn(modelColumn))
-				createInvokePopupColumn(new DoNothingListSelectionHandler(), threatStressRatingTableModel.createContributionQuestion(modelColumn), tableColumn);
+				createInvokePopupColumn(threatStressRatingTableModel.createContributionQuestion(modelColumn), tableColumn);
 			
 			if (threatStressRatingTableModel.isIrreversibilityColumn(modelColumn))
-				createInvokePopupColumn(new DoNothingListSelectionHandler(), threatStressRatingTableModel.createIrreversibilityQuestion(modelColumn), tableColumn);
+				createInvokePopupColumn(threatStressRatingTableModel.createIrreversibilityQuestion(modelColumn), tableColumn);
 			
 			if (threatStressRatingTableModel.isThreatRatingColumn(modelColumn))
 				createReadonlyComboQuestionColumn(threatStressRatingTableModel.createThreatStressRatingQuestion(modelColumn), tableColumn);
@@ -75,14 +73,5 @@ public class ThreatStressRatingTable extends EditableObjectTable
 		table.getColumnModel().addColumnModelListener(new ColumnMarginResizeListenerValidator(this));
 	}
 	
-	//TODO instead of passing a do nothing handler, the class accepting a handler should deal 
-	// with nulls
-	private class DoNothingListSelectionHandler implements ListSelectionListener
-	{
-		public void valueChanged(ListSelectionEvent event)
-		{
-		}
-	}
-
 	public static final String UNIQUE_IDENTIFIER = "ThreatStressRatingTable";
 }
