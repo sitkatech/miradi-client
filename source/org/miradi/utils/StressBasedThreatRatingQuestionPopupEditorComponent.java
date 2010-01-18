@@ -20,27 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import javax.swing.event.ListSelectionListener;
-
-import org.miradi.dialogfields.ControlPanelRadioButtonEditorComponent;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
-public class SimpleThreatRatingQuestionPopupEditorComponent extends AbstractThreatRatingQuestionPopupEditorComponent
+public class StressBasedThreatRatingQuestionPopupEditorComponent extends AbstractThreatRatingQuestionPopupEditorComponent
 {
-	public SimpleThreatRatingQuestionPopupEditorComponent(Project projectToUse, ListSelectionListener selectionHandlerToUse, ChoiceQuestion questionToUse, String translatedPopupButtonText, ORef threatRefToUse, ORef targetRefToUse) throws Exception
+	public StressBasedThreatRatingQuestionPopupEditorComponent(Project projectToUse, ChoiceQuestion questionToUse) throws Exception
 	{
-		super(projectToUse, questionToUse, translatedPopupButtonText, threatRefToUse, targetRefToUse);
-		
-		selectionHandler = selectionHandlerToUse;
+		super(projectToUse, questionToUse);
 	}
-	
-	@Override
-	protected ControlPanelRadioButtonEditorComponent createPopupEditorPanel()
-	{
-		return new ControlPanelRadioButtonEditorComponent(getQuestion(), selectionHandler);
-	}
-	
-	private ListSelectionListener selectionHandler;
 }

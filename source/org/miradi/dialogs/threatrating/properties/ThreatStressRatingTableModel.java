@@ -80,8 +80,8 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	private void rebuild(ORefList hierarchyToSelectedRef) throws Exception
 	{
 		ratings = new ThreatStressRating[0];
-		ORef threatRef = hierarchyToSelectedRef.getRefForType(Cause.getObjectType());
-		ORef targetRef = hierarchyToSelectedRef.getRefForType(Target.getObjectType());
+		threatRef = hierarchyToSelectedRef.getRefForType(Cause.getObjectType());
+		targetRef = hierarchyToSelectedRef.getRefForType(Target.getObjectType());
 		if (threatRef.isInvalid() || targetRef.isInvalid())
 			return;
 		
@@ -294,10 +294,22 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	{
 		return UNIQUE_MODEL_IDENTIFIER;
 	}
+	
+	public ORef getThreatRef()
+	{
+		return threatRef;
+	}
+	
+	public ORef getTargetRef()
+	{
+		return targetRef;
+	}
 				
 	private static final String UNIQUE_MODEL_IDENTIFIER = "ThreatStressRatingTableModel";
 	private static final String THREAT_NAME_COLUMN_TAG = "Fake Tag: Threat Name";
 	private static final String STRESS_NAME_COLUMN_TAG = "Fake Tag: Stress Name";
 	private ThreatStressRating[] ratings;
 	private Factor threatBeingEdited;
+	private ORef threatRef;
+	private ORef targetRef; 
 }

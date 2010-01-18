@@ -27,23 +27,28 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
+import org.miradi.dialogs.threatrating.properties.ThreatStressRatingTable;
+import org.miradi.dialogs.threatrating.properties.ThreatStressRatingTableModel;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.utils.QuestionPopupEditorComponent;
+import org.miradi.utils.StressBasedThreatRatingQuestionPopupEditorComponent;
 
 public class QuestionPopupCellEditorAndRendererFactory extends AbstractCellEditor implements TableCellEditor, TableCellRenderer
 {
-	public QuestionPopupCellEditorAndRendererFactory(ChoiceQuestion questionToUse) throws Exception 
+	public QuestionPopupCellEditorAndRendererFactory(Project projectToUse, ChoiceQuestion questionToUse) throws Exception 
 	{
 	    super();
 	    
-	    questionEditor = new QuestionPopupEditorComponent(questionToUse);
+	    questionEditor = new StressBasedThreatRatingQuestionPopupEditorComponent(projectToUse, questionToUse);
 	}
 	
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
 	{
 		ChoiceItem choiceItem = (ChoiceItem) value;
 		questionEditor.setText(choiceItem.getCode());
+		updateQuestionEditorThreatTargetRefs((ThreatStressRatingTable) table);
 		
 		return questionEditor;
 	}
@@ -57,9 +62,19 @@ public class QuestionPopupCellEditorAndRendererFactory extends AbstractCellEdito
 	{
 		ChoiceItem choiceItem = (ChoiceItem) value;
 		questionEditor.setText(choiceItem.getCode());
-		
+		updateQuestionEditorThreatTargetRefs((ThreatStressRatingTable) table);
+
 		return questionEditor;
 	}
+
+	private void updateQuestionEditorThreatTargetRefs(ThreatStressRatingTable threatStressRatingTable)
+	{		
+		ThreatStressRatingTableModel model = threatStressRatingTable.getThreatStressRatingTableModel();
+		ORef threatRef = model.getThreatRef();
+		ORef targetRef = model.getTargetRef();
+		questionEditor.setThreatRef(threatRef);
+		questionEditor.setTargetRef(targetRef);
+	}
 	
-	private QuestionPopupEditorComponent questionEditor;
+	private StressBasedThreatRatingQuestionPopupEditorComponent questionEditor;
 }
