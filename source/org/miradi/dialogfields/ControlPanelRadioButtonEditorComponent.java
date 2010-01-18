@@ -29,6 +29,11 @@ import org.miradi.questions.ChoiceQuestion;
 
 public class ControlPanelRadioButtonEditorComponent extends RadioButtonEditorComponent
 {
+	public ControlPanelRadioButtonEditorComponent(ChoiceQuestion questionToUse)
+	{
+		super(questionToUse);
+	}
+	
 	public ControlPanelRadioButtonEditorComponent(ChoiceQuestion questionToUse, ListSelectionListener listener)
 	{
 		super(questionToUse, listener);
