@@ -46,9 +46,7 @@ public class QuestionPopupCellEditorAndRendererFactory extends AbstractCellEdito
 	
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
 	{
-		ChoiceItem choiceItem = (ChoiceItem) value;
-		questionEditor.setText(choiceItem.getCode());
-		updateQuestionEditorThreatTargetRefs((ThreatStressRatingTable) table);
+		updateEditor(table, value);
 		
 		return questionEditor;
 	}
@@ -60,21 +58,22 @@ public class QuestionPopupCellEditorAndRendererFactory extends AbstractCellEdito
 	
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 	{
-		ChoiceItem choiceItem = (ChoiceItem) value;
-		questionEditor.setText(choiceItem.getCode());
-		updateQuestionEditorThreatTargetRefs((ThreatStressRatingTable) table);
+		updateEditor(table, value);
 
 		return questionEditor;
 	}
-
-	private void updateQuestionEditorThreatTargetRefs(ThreatStressRatingTable threatStressRatingTable)
-	{		
-		ThreatStressRatingTableModel model = threatStressRatingTable.getThreatStressRatingTableModel();
+	
+	private void updateEditor(JTable table, Object value)
+	{
+		ChoiceItem choiceItem = (ChoiceItem) value;
+		questionEditor.setText(choiceItem.getCode());
+		
+		ThreatStressRatingTableModel model = ((ThreatStressRatingTable) table).getThreatStressRatingTableModel();
 		ORef threatRef = model.getThreatRef();
 		ORef targetRef = model.getTargetRef();
 		questionEditor.setThreatRef(threatRef);
 		questionEditor.setTargetRef(targetRef);
 	}
-	
+
 	private StressBasedThreatRatingQuestionPopupEditorComponent questionEditor;
 }
