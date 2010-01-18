@@ -47,7 +47,7 @@ public class StandAloneCodeListComponent extends AbstractQuestionBasedComponent
 {
 	public StandAloneCodeListComponent(BaseObject parentObjectToUse, ChoiceQuestion questionToUse)
 	{
-		super(questionToUse, SINGLE_COLUMN, null);
+		super(questionToUse, SINGLE_COLUMN);
 		
 		parentObject = parentObjectToUse;
 		updateToggleButtonSelections(getWhoTotalCodes(parentObject));
