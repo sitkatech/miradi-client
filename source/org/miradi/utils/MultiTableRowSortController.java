@@ -137,10 +137,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 			if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_COLUMN_SORT_TAG) ||
 				event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_COLUMN_SORT_DIRECTION))
 			{
-				CommandSetObjectData setCommand = event.getSetCommand();
-				TableSettings tableSettings = TableSettings.find(getProject(), setCommand.getObjectORef());
-				JTable tableToSort = findTableForTableSettings(tableSettings);
-				sortTable(tableToSort);
+				sortAllTables();
 			}
 		}
 		catch (Exception e)
@@ -148,18 +145,6 @@ public class MultiTableRowSortController implements CommandExecutedListener
 			EAM.logException(e);
 			EAM.errorDialog(EAM.text("An Error Occurred During Sorting."));
 		}
-	}
-	
-	private JTable findTableForTableSettings(TableSettings tableSettingsToUse)
-	{
-		for(JTable table : tablesToSort)
-		{
-			String thisUniqueTableModelIdentifier = getCastedModel(table).getUniqueTableModelIdentifier();
-			if (thisUniqueTableModelIdentifier.equals(tableSettingsToUse.getUniqueIdentifier()))
-				return table;
-		}
-		
-		throw new RuntimeException("Could not find a table for TableSettings. Ref:" + tableSettingsToUse.getRef() + ".  Unique Identifier:" + tableSettingsToUse.getUniqueIdentifier());
 	}
 	
 	private AbstractThreatPerRowTableModel getCastedModel(JTable tableToUse)
