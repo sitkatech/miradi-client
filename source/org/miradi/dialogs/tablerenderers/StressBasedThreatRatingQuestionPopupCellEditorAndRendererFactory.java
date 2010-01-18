@@ -35,9 +35,9 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.StressBasedThreatRatingQuestionPopupEditorComponent;
 
-public class QuestionPopupCellEditorAndRendererFactory extends AbstractCellEditor implements TableCellEditor, TableCellRenderer
+public class StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory extends AbstractCellEditor implements TableCellEditor, TableCellRenderer
 {
-	public QuestionPopupCellEditorAndRendererFactory(Project projectToUse, ChoiceQuestion questionToUse) throws Exception 
+	public StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory(Project projectToUse, ChoiceQuestion questionToUse) throws Exception 
 	{
 	    super();
 	    

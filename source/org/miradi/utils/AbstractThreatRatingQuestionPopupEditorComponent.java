@@ -60,7 +60,7 @@ public class AbstractThreatRatingQuestionPopupEditorComponent extends QuestionPo
 		if (threat == null || target== null)
 			return "";
 		
-		return "<html><B>" + getTranslatedPopupButtonText() + "</B><BR>" + threat.toString() + " <B>" +  ThreatNameColumnTableModel.RIGHT_ARROW + "</B> " + target.toString();
+		return "<html><B>" + threat.toString() + " " +  ThreatNameColumnTableModel.RIGHT_ARROW + " " + target.toString() + "</B></html>";
 	}
 	
 	private Project getProject()
