@@ -21,7 +21,6 @@ package org.miradi.dialogs.threatrating.upperPanel;
 
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.main.EAM;
-import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
@@ -88,11 +87,6 @@ public class ThreatNameColumnTableModel extends AbstractThreatPerRowTableModel
 		return column == THREAT_ICON_COLUMN_INDEX;
 	}
 	
-	public BaseObject getBaseObjectForRowColumn(int row, int column)
-	{
-		return getDirectThreat(row);
-	}
-
 	private static final String UNIQUE_IDENTIFIER = "ThreatNameColumnTableModel";
 	
 	public static final int THREAT_ICON_COLUMN_INDEX = 0;

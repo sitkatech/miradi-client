@@ -24,7 +24,6 @@ import java.util.Comparator;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.project.Project;
 
@@ -83,11 +82,6 @@ public class TargetThreatLinkTableModel extends AbstractThreatPerRowTableModel
 		return "";
 	}
 
-	public BaseObject getBaseObjectForRowColumn(int row, int column)
-	{
-		return null;
-	}
-	
 	@Override
 	public Comparator getComparator(int columnToSortOn)
 	{

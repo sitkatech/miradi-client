@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.upperPanel;
 
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
 abstract public class AbstractThreatPerRowTableModel extends AbstractThreatTargetTableModel
@@ -31,5 +32,10 @@ abstract public class AbstractThreatPerRowTableModel extends AbstractThreatTarge
 	public int getRowCount()
 	{
 		return threatRows.length;
+	}
+	
+	public BaseObject getBaseObjectForRowColumn(int row, int column)
+	{
+		return getDirectThreat(row);
 	}
 }

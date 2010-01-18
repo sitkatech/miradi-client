@@ -22,7 +22,6 @@ package org.miradi.dialogs.threatrating.upperPanel;
 import java.util.Comparator;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.project.Project;
 
@@ -89,11 +88,6 @@ public class ThreatSummaryColumnTableModel extends AbstractThreatPerRowTableMode
 	public int calculateThreatSummaryRatingValue(Factor directThreat) throws Exception
 	{
 		return frameWork.get2PrimeSummaryRatingValue(directThreat);
-	}
-	
-	public BaseObject getBaseObjectForRowColumn(int row, int column)
-	{
-		return getDirectThreat(row);
 	}
 	
 	@Override
