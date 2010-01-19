@@ -54,7 +54,10 @@ abstract public class AbstractChoiceItemListEditorField extends ObjectDataInputF
 
 	protected QuestionBasedEditorComponent createCodeListEditor(ChoiceQuestion questionToUse, int columnCount)
 	{
-		return new QuestionBasedEditorComponent(questionToUse, columnCount, this);
+		QuestionBasedEditorComponent editorComponent = new QuestionBasedEditorComponent(questionToUse, columnCount);
+		editorComponent.addListSelectionListener(this);
+		
+		return editorComponent;
 	}
 
 	public JComponent getComponent()
