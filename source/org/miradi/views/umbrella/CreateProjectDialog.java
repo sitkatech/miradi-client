@@ -254,7 +254,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 		}
 		catch(Exception e)
 		{
-			EAM.errorDialog(EAM.text("An unexpected error has occurred"));
+			EAM.unexpectedErrorDialog();
 			result = false;
 			dispose();
 		}
