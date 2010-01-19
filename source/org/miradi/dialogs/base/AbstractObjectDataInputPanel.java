@@ -64,6 +64,7 @@ import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogfields.ObjectStringInputField;
 import org.miradi.dialogfields.ObjectStringMapInputField;
 import org.miradi.dialogfields.RadioButtonsField;
+import org.miradi.dialogfields.ReadOnlyCodeListField;
 import org.miradi.dialogfields.StringMapBudgetColumnCodeListEditorField;
 import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
@@ -487,6 +488,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public ObjectDataInputField createCodeListField(String tagToUse, ChoiceQuestion question, int columnCount)
 	{
 		return new ObjectCodeListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tagToUse, question, columnCount);
+	}
+	
+	public ObjectDataInputField createReadOnlyCodeListField(int objctType, String tagToUse, ChoiceQuestion question)
+	{
+		return new ReadOnlyCodeListField(getProject(), getRefForType(objctType), tagToUse, question);
 	}
 	
 	public ObjectCodeEditorField createMultiCodeField(String tagToUse, ChoiceQuestion question, int columnCount)
