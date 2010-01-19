@@ -26,9 +26,9 @@ import org.miradi.questions.ChoiceItem;
 
 public class ChoiceItemListSelectionEvent extends ListSelectionEvent
 {
-	public ChoiceItemListSelectionEvent(Object source, int firstIndex, int lastIndex, boolean isAdjusting, ChoiceItem choiceItemToUse)
+	public ChoiceItemListSelectionEvent(ChoiceItem choiceItemToUse, int firstIndex, int lastIndex, boolean isAdjusting)
 	{
-		super(source, firstIndex, lastIndex, isAdjusting);
+		super(choiceItemToUse, firstIndex, lastIndex, isAdjusting);
 		
 		choiceItem = choiceItemToUse;
 	}
