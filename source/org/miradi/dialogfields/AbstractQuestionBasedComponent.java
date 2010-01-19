@@ -36,11 +36,6 @@ abstract public class AbstractQuestionBasedComponent extends AbstractDataValueLi
 	{
 		super(questionToUse, columnCount);
 		
-		clearCodeToDisable();
-	}
-	
-	private void clearCodeToDisable()
-	{
 		codesToDisable = new CodeList();
 	}
 	
