@@ -25,8 +25,10 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.forms.summary.RareTabCampaignSubPanelForm;
 import org.miradi.main.EAM;
 import org.miradi.objects.Audience;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.RareProjectData;
 import org.miradi.project.Project;
+import org.miradi.questions.ThreatClassificationQuestion;
 
 public class RareCampaignSummarySubPanel extends ObjectDataInputPanel
 {
@@ -35,6 +37,7 @@ public class RareCampaignSummarySubPanel extends ObjectDataInputPanel
 		super(projectToUse, projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()));
 		
 		addField(createStringField(RareProjectData.TAG_THREATS_ADDRESSED_NOTES));
+		addField(createReadOnlyCodeListField(ProjectMetadata.getObjectType(), ProjectMetadata.PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS, new ThreatClassificationQuestion()));
 		addLabelsOnSingleRow(RareTabCampaignSubPanelForm.THREATS_AT_SITE_CONSTANT, RareTabCampaignSubPanelForm.SEE_DIAGRAM_CONSTANT);
 		
 		addField(createNumericField(RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA));
@@ -49,8 +52,6 @@ public class RareCampaignSummarySubPanel extends ObjectDataInputPanel
 		addField(createStringField(RareProjectData.TAG_FLAGSHIP_SPECIES_COMMON_NAME));
 		addField(createStringField(RareProjectData.TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME));
 		addField(createMultilineField(RareProjectData.TAG_FLAGSHIP_SPECIES_DETAIL));
-		
-		updateFieldsFromProject();
 	}
 
 	private void addLabelsOnSingleRow(String string, String string2)

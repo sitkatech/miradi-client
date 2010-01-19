@@ -24,6 +24,8 @@ import javax.swing.Icon;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.icons.RareIcon;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.RareProjectData;
 import org.miradi.project.Project;
 import org.miradi.questions.ReportTemplateContentQuestion;
@@ -42,15 +44,16 @@ public class RARESummaryPanel extends ObjectDataInputPanelWithSections
 		addSubPanelWithTitledBorder(new RareCampaignPlanningSummarySubPanel(projectToUse));
 		addSubPanelWithTitledBorder(new RareTeamInformationSummarySubPanel(projectToUse));
 
-		setObjectRef(projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()));
-		updateFieldsFromProject();
+		setObjectRefs(new ORef[] {projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()), projectToUse.getSingletonObjectRef(ProjectMetadata.getObjectType()),});
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Label|RARE");
 	}
 	
+	@Override
 	public Icon getIcon()
 	{
 		return new RareIcon();

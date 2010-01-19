@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import java.util.Vector;
+
 import org.martus.util.MultiCalendar;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
@@ -65,11 +67,13 @@ public class ProjectMetadata extends BaseObject
 		super(objectManager, new BaseId(idAsInt), json);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -86,14 +90,32 @@ public class ProjectMetadata extends BaseObject
 		return false;
 	}
 	
+	@Override
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_PROJECT_FILENAME))
 			return objectManager.getFileName();
 		
+		if(fieldTag.equals(PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS))
+			return getStandardClassifications();
+		
 		return super.getPseudoData(fieldTag);
 	}
 	
+	private String getStandardClassifications()
+	{
+		Vector<Cause> allThreats = getProject().getCausePool().getDirectThreatsAsVector();
+		CodeList threatClassificationCodes = new CodeList();
+		for(Cause threat : allThreats)
+		{
+			String code = threat.getData(Cause.TAG_TAXONOMY_CODE);
+			if (code.length() > 0)
+				threatClassificationCodes.add(code);
+		}
+		
+		return threatClassificationCodes.withoutDuplicates().toString();
+	}
+
 	public ORefList getAllDiagramObjectRefs()
 	{
 		return objectManager.getAllDiagramObjectRefs(); 
@@ -313,6 +335,7 @@ public class ProjectMetadata extends BaseObject
 		return getProjectName();
 	}
 	
+	@Override
 	void clear()
 	{
 		super.clear();
@@ -450,7 +473,10 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_HUMAN_WELFARE_TARGET_MODE, targetMode);
 		
 		projectFileName = new PseudoStringData(PSEUDO_TAG_PROJECT_FILENAME);
+		allThreatClassifications = new PseudoStringData(PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS);
+		
 		addField(PSEUDO_TAG_PROJECT_FILENAME, projectFileName);
+		addField(PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS, allThreatClassifications);
 	}
 
 	public static final String TAG_CURRENT_WIZARD_SCREEN_NAME = "CurrentWizardScreenName";
@@ -497,6 +523,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_NEXT_STEPS = "NextSteps";
 	
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
+	public static final String PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS = "AllThreatClassifications";
 	
 	public static final String TAG_TNC_LESSONS_LEARNED = "TNC.LessonsLearned";
 	public static final String TAG_TNC_WORKBOOK_VERSION_NUMBER = "TNC.WorkbookVersionNumber";
@@ -584,4 +611,5 @@ public class ProjectMetadata extends BaseObject
 	
 	private StringRefMapData xenodataRefs;
 	private PseudoStringData projectFileName;
+	private PseudoStringData allThreatClassifications;
 }
