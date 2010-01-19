@@ -22,7 +22,6 @@ package org.miradi.dialogfields;
 import java.util.Set;
 
 import javax.swing.JToggleButton;
-import javax.swing.event.ListSelectionListener;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -32,9 +31,9 @@ import org.miradi.questions.ChoiceQuestion;
 
 public class RefListComponent extends AbstractDataValueListComponent
 {
-	public RefListComponent(ChoiceQuestion questionToUse, int columnCount, ListSelectionListener listener)
+	public RefListComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
-		super(questionToUse, columnCount, listener);
+		super(questionToUse, columnCount);
 	}
 
 	public String getText()
