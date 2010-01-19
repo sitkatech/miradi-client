@@ -33,6 +33,7 @@ public class ObjectOverridenListField extends RefListEditorField
 		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse, tagToUse);
 	}
 	
+	@Override
 	public String getText()
 	{
 		try
@@ -46,6 +47,7 @@ public class ObjectOverridenListField extends RefListEditorField
 		}
 	}
 
+	@Override
 	public void setText(String codes)
 	{
 		try
