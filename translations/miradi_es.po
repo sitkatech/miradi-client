@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-19 07:34-0600\n"
+"POT-Creation-Date: 2010-01-19 07:58-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -290,7 +290,7 @@ msgid "Unable to process file: verify file format"
 msgstr "No se pudo procesar el archivo: verifique el formato del archivo."
 
 #: Miradi/source/org/miradi/views/planning/doers/AbstractPlanningViewConfigurationCodeListEditorDoer.java:53
-#: Miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:92
+#: Miradi/source/org/miradi/dialogfields/EditableCodeListField.java:92
 msgid "Selection Dialog"
 msgstr "Cuadro de diálogo de selección"
 
@@ -4608,7 +4608,7 @@ msgstr "Copiar"
 msgid "Paste"
 msgstr "Pegar"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:50
+#: Miradi/source/org/miradi/dialogfields/EditableCodeListField.java:50
 msgid "Select..."
 msgstr "Seleccionar…"
 
