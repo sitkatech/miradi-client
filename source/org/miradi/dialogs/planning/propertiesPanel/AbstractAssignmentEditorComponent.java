@@ -80,7 +80,7 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog(EAM.text("An unexpected error has occurred"));
+			EAM.unexpectedErrorDialog();
 		}		
 	}
 	

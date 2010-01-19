@@ -362,6 +362,11 @@ public class EAM
 		System.exit(0);
 	}
 	
+	public static void unexpectedErrorDialog()
+	{
+		EAM.errorDialog(EAM.text("An unexpected error has occurred."));
+	}
+	
 	public static void errorDialog(String errorMessage)
 	{
 		JOptionPane.showMessageDialog(getMainWindow(), errorMessage, EAM.text("Title|Error"), JOptionPane.ERROR_MESSAGE);
