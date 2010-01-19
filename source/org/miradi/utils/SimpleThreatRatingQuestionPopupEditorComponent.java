@@ -38,7 +38,10 @@ public class SimpleThreatRatingQuestionPopupEditorComponent extends AbstractThre
 	@Override
 	protected ControlPanelRadioButtonEditorComponent createPopupEditorPanel()
 	{
-		return new ControlPanelRadioButtonEditorComponent(getQuestion(), selectionHandler);
+		ControlPanelRadioButtonEditorComponent editorComponent = new ControlPanelRadioButtonEditorComponent(getQuestion());
+		editorComponent.addListSelectionListener(selectionHandler);
+		
+		return editorComponent;
 	}
 	
 	private ListSelectionListener selectionHandler;
