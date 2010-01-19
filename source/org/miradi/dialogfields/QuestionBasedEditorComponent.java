@@ -57,7 +57,7 @@ public class QuestionBasedEditorComponent extends AbstractQuestionBasedComponent
 		}
 		catch(ParseException e)
 		{
-			EAM.errorDialog(EAM.text("Internal Error"));
+			EAM.unexpectedErrorDialog();
 			EAM.logException(e);
 			return new CodeList();
 		}
