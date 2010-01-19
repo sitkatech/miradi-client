@@ -281,6 +281,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.WWF_PROJECT_DATA, VOCABULARY_WWF_REGIONS, WWF_REGIONS);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.WWF_PROJECT_DATA, VOCABULARY_WWF_ECOREGIONS, WWF_ECOREGIONS);
 		defineVocabularyDefinedAlias(writer, WcsXmlConstants.PROJECT_SUMMARY_LOCATION, VOCABULARY_COUNTRIES, COUNTRIES);
+		defineVocabularyDefinedAlias(writer, WcsXmlConstants.RARE_PROJECT_DATA, VOCABULARY_THREAT_TAXONOMY_CODE, ProjectMetadata.PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS);
 		
 		writer.flush();
 	}	
