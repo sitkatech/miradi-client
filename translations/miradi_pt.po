@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-19 04:01-0600\n"
+"POT-Creation-Date: 2010-01-19 04:53-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -4243,17 +4243,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:96
 msgid "Paste"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListComponent.java:62
-#: Miradi/source/org/miradi/dialogfields/StringMapProjectResourceFilterEditorField.java:48
-#: Miradi/source/org/miradi/dialogfields/StringMapProjectResourceFilterEditorField.java:79
-#: Miradi/source/org/miradi/dialogfields/QuestionBasedEditorComponent.java:60
-#: Miradi/source/org/miradi/dialogfields/RefListComponent.java:75
-#: Miradi/source/org/miradi/dialogfields/StringMapBudgetColumnCodeListEditorField.java:48
-#: Miradi/source/org/miradi/dialogfields/StringMapBudgetColumnCodeListEditorField.java:79
-#: Miradi/source/org/miradi/dialogfields/ReadOnlyRefListHtmlComponent.java:78
-msgid "Internal Error"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:50
