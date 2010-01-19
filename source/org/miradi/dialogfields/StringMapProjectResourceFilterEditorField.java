@@ -45,7 +45,7 @@ public class StringMapProjectResourceFilterEditorField extends RefListEditorFiel
 		}
 		catch (Exception e)
 		{
-			EAM.errorDialog(EAM.text("Internal Error"));
+			EAM.unexpectedErrorDialog();
 			EAM.logException(e);
 			return "";
 		}
@@ -76,7 +76,7 @@ public class StringMapProjectResourceFilterEditorField extends RefListEditorFiel
 		}
 		catch(ParseException e)
 		{
-			EAM.errorDialog(EAM.text("Internal Error"));
+			EAM.unexpectedErrorDialog();
 			EAM.logException(e);
 			return new ORefList();
 		}

@@ -72,7 +72,7 @@ public class RefListComponent extends AbstractDataValueListComponent
 		}
 		catch(Exception e)
 		{
-			EAM.errorDialog(EAM.text("Internal Error"));
+			EAM.unexpectedErrorDialog();
 			EAM.logException(e);
 		}
 		finally
