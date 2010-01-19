@@ -22,8 +22,6 @@ package org.miradi.dialogfields;
 
 import java.awt.Color;
 
-import javax.swing.event.ListSelectionListener;
-
 import org.miradi.main.AppPreferences;
 import org.miradi.questions.ChoiceQuestion;
 
@@ -32,11 +30,6 @@ public class ControlPanelRadioButtonEditorComponent extends RadioButtonEditorCom
 	public ControlPanelRadioButtonEditorComponent(ChoiceQuestion questionToUse)
 	{
 		super(questionToUse);
-	}
-	
-	public ControlPanelRadioButtonEditorComponent(ChoiceQuestion questionToUse, ListSelectionListener listener)
-	{
-		super(questionToUse, listener);
 	}
 	
 	@Override
