@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.RareProjectData;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
@@ -32,6 +33,7 @@ public class RareProjectDataSchemaElement extends ObjectSchemaElement
 		createOptionalTextField(RareProjectData.TAG_COHORT);
 		
 		createOptionalTextField(RareProjectData.TAG_THREATS_ADDRESSED_NOTES);
+		createCodeListField(ProjectMetadata.PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS);
 		createOptionalTextField(RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
 		createOptionalTextField(RareProjectData.TAG_BIODIVERSITY_HOTSPOTS);
 		createOptionalTextField(RareProjectData.TAG_FLAGSHIP_SPECIES_COMMON_NAME);
