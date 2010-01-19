@@ -26,7 +26,6 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 import javax.swing.JToggleButton;
-import javax.swing.event.ListSelectionListener;
 
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceQuestion;
@@ -42,13 +41,6 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 		setEtchedBorder();
 	}
 	
-	public RadioButtonEditorComponent(ChoiceQuestion questionToUse, ListSelectionListener listener)
-	{
-		super(questionToUse, SINGLE_COLUMN, listener);
-		
-		setEtchedBorder();
-	}
-
 	private void setEtchedBorder()
 	{
 		setBorder(BorderFactory.createEtchedBorder());
