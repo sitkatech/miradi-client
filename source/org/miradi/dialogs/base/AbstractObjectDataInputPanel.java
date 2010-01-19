@@ -44,7 +44,7 @@ import org.miradi.dialogfields.ObjectCheckBoxField;
 import org.miradi.dialogfields.ObjectChoiceField;
 import org.miradi.dialogfields.ObjectClassificationChoiceField;
 import org.miradi.dialogfields.ObjectCodeEditorField;
-import org.miradi.dialogfields.ObjectCodeListField;
+import org.miradi.dialogfields.EditableCodeListField;
 import org.miradi.dialogfields.ObjectCurrencyInputField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogfields.ObjectDateChooserInputField;
@@ -482,12 +482,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createCodeListField(int objectType, String tagToUse, ChoiceQuestion question, int columnCount)
 	{
-		return new ObjectCodeListField(project, getRefForType(objectType), tagToUse, question, columnCount);
+		return new EditableCodeListField(project, getRefForType(objectType), tagToUse, question, columnCount);
 	}
 	
 	public ObjectDataInputField createCodeListField(String tagToUse, ChoiceQuestion question, int columnCount)
 	{
-		return new ObjectCodeListField(project, getORef(0), tagToUse, question, columnCount);
+		return new EditableCodeListField(project, getORef(0), tagToUse, question, columnCount);
 	}
 	
 	public ObjectDataInputField createReadOnlyCodeListField(int objctType, String tagToUse, ChoiceQuestion question)
