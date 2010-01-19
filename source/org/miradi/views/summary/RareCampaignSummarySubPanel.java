@@ -36,7 +36,7 @@ public class RareCampaignSummarySubPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()));
 		
-		addField(createStringField(RareProjectData.TAG_THREATS_ADDRESSED_NOTES));
+		addField(createReadonlyTextField(RareProjectData.TAG_THREATS_ADDRESSED_NOTES));
 		addField(createReadOnlyCodeListField(ProjectMetadata.getObjectType(), ProjectMetadata.PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS, new ThreatClassificationQuestion()));
 		addLabelsOnSingleRow(RareTabCampaignSubPanelForm.THREATS_AT_SITE_CONSTANT, RareTabCampaignSubPanelForm.SEE_DIAGRAM_CONSTANT);
 		
