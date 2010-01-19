@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-19 04:01-0600\n"
+"POT-Creation-Date: 2010-01-19 04:53-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4424,17 +4424,6 @@ msgstr "复制 \t\t"
 #: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:96
 msgid "Paste"
 msgstr "粘贴 \t\t"
-
-#: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListComponent.java:62
-#: Miradi/source/org/miradi/dialogfields/StringMapProjectResourceFilterEditorField.java:48
-#: Miradi/source/org/miradi/dialogfields/StringMapProjectResourceFilterEditorField.java:79
-#: Miradi/source/org/miradi/dialogfields/QuestionBasedEditorComponent.java:60
-#: Miradi/source/org/miradi/dialogfields/RefListComponent.java:75
-#: Miradi/source/org/miradi/dialogfields/StringMapBudgetColumnCodeListEditorField.java:48
-#: Miradi/source/org/miradi/dialogfields/StringMapBudgetColumnCodeListEditorField.java:79
-#: Miradi/source/org/miradi/dialogfields/ReadOnlyRefListHtmlComponent.java:78
-msgid "Internal Error"
-msgstr "内部错误 \t\t"
 
 #: Miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:50
 msgid "Select..."
@@ -27326,6 +27315,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Internal Error"
+#~ msgstr "内部错误 \t\t"
 
 #~ msgid "Unexpected Error Occurred"
 #~ msgstr "出现意外错误 \t\t"
