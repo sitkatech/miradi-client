@@ -74,7 +74,7 @@ public class PlanningViewObjectsOnlyDropDownPanel extends PlanningViewCustomButt
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog(EAM.text("Unexpected Error Occurred"));
+			EAM.unexpectedErrorDialog();
 		}
 	}
 	
