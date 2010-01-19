@@ -56,6 +56,7 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 		return new WorkPlanTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider, filterStatusPanel);
 	}
 	
+	@Override
 	protected void updateResourceFilter() throws Exception
 	{
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getTabSpecificModelIdentifier());
