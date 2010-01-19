@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-18 12:46-0600\n"
+"POT-Creation-Date: 2010-01-19 03:01-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -306,8 +306,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:66
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:68
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
-#: Miradi/source/org/miradi/main/EAM.java:413
-#: Miradi/source/org/miradi/main/EAM.java:414
+#: Miradi/source/org/miradi/main/EAM.java:418
+#: Miradi/source/org/miradi/main/EAM.java:419
 msgid "Delete"
 msgstr ""
 
@@ -731,7 +731,7 @@ msgid "Choose Indicator to Clone"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:66
-#: Miradi/source/org/miradi/main/EAM.java:413
+#: Miradi/source/org/miradi/main/EAM.java:418
 msgid "Retain"
 msgstr ""
 
@@ -967,12 +967,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:114
 msgid "Button|Save"
-msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:257
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractAssignmentEditorComponent.java:83
-#: Miradi/source/org/miradi/dialogs/planning/TableHeaderWithExpandCollapseIcons.java:181
-msgid "An unexpected error has occurred"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:269
@@ -4227,10 +4221,15 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/main/EAM.java:367
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:105
+msgid "An unexpected error has occurred."
+msgstr ""
+
+#: Miradi/source/org/miradi/main/EAM.java:372
 msgid "Title|Error"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:569
+#: Miradi/source/org/miradi/main/EAM.java:574
 msgid "Wintitle|Information"
 msgstr ""
 
@@ -4255,10 +4254,6 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogfields/StringMapBudgetColumnCodeListEditorField.java:79
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyRefListHtmlComponent.java:78
 msgid "Internal Error"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogfields/AbstractQuestionEditorComponent.java:169
-msgid "An Error Has Occurred."
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:50
@@ -5964,10 +5959,6 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:105
-msgid "An unexpected error has occurred."
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/MainWindowAction.java:106
 msgid ""
 "<br> The operation completed successfully, but Undo/Redo may not work "
@@ -6518,11 +6509,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/AbstractCollapseColumnAction.java:29
 msgid "Collapse Selected Column"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/planning/PlanningViewConfigurableControlPanel.java:87
-#: Miradi/source/org/miradi/dialogs/planning/PlanningViewObjectsOnlyDropDownPanel.java:77
-msgid "Unexpected Error Occurred"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceFilterStatusPanel.java:53

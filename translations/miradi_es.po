@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-18 12:46-0600\n"
+"POT-Creation-Date: 2010-01-19 03:01-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -352,8 +352,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:66
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:68
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
-#: Miradi/source/org/miradi/main/EAM.java:413
-#: Miradi/source/org/miradi/main/EAM.java:414
+#: Miradi/source/org/miradi/main/EAM.java:418
+#: Miradi/source/org/miradi/main/EAM.java:419
 msgid "Delete"
 msgstr "Eliminar"
 
@@ -802,7 +802,7 @@ msgid "Choose Indicator to Clone"
 msgstr "Seleccione el indicador para clonar."
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:66
-#: Miradi/source/org/miradi/main/EAM.java:413
+#: Miradi/source/org/miradi/main/EAM.java:418
 msgid "Retain"
 msgstr "Retener"
 
@@ -1045,12 +1045,6 @@ msgstr "Proyectos existentes:"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:114
 msgid "Button|Save"
-msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:257
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractAssignmentEditorComponent.java:83
-#: Miradi/source/org/miradi/dialogs/planning/TableHeaderWithExpandCollapseIcons.java:181
-msgid "An unexpected error has occurred"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:269
@@ -4590,10 +4584,15 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/main/EAM.java:367
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:105
+msgid "An unexpected error has occurred."
+msgstr ""
+
+#: Miradi/source/org/miradi/main/EAM.java:372
 msgid "Title|Error"
 msgstr "|Error "
 
-#: Miradi/source/org/miradi/main/EAM.java:569
+#: Miradi/source/org/miradi/main/EAM.java:574
 msgid "Wintitle|Information"
 msgstr "Información"
 
@@ -4619,10 +4618,6 @@ msgstr "Pegar"
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyRefListHtmlComponent.java:78
 msgid "Internal Error"
 msgstr "Error interno"
-
-#: Miradi/source/org/miradi/dialogfields/AbstractQuestionEditorComponent.java:169
-msgid "An Error Has Occurred."
-msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:50
 msgid "Select..."
@@ -6331,10 +6326,6 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "Un error interno impidió esta operación."
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:105
-msgid "An unexpected error has occurred."
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/MainWindowAction.java:106
 msgid ""
 "<br> The operation completed successfully, but Undo/Redo may not work "
@@ -6900,11 +6891,6 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/planning/AbstractCollapseColumnAction.java:29
 msgid "Collapse Selected Column"
 msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/planning/PlanningViewConfigurableControlPanel.java:87
-#: Miradi/source/org/miradi/dialogs/planning/PlanningViewObjectsOnlyDropDownPanel.java:77
-msgid "Unexpected Error Occurred"
-msgstr "Se produjo un error inesperado."
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceFilterStatusPanel.java:53
 msgid "Project Resource Filter Is On"
@@ -30210,6 +30196,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Unexpected Error Occurred"
+#~ msgstr "Se produjo un error inesperado."
 
 #~ msgid "Action|Edit Progress Percents..."
 #~ msgstr "Editar porcentajes de progreso..."
