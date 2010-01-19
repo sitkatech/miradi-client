@@ -43,6 +43,7 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 		planningTreeTablePanel = planningTreeTablePanelToUse;
 	}
 
+	@Override
 	abstract public String getPanelDescription();
 	
 	@Override
@@ -71,6 +72,7 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 		return true;
 	}
 	
+	@Override
 	public TableExporter getTableExporter() throws Exception
 	{
 		String uniqueTreeTableModelIdentifier = getPlanningTreeTablePanel().getTree().getTreeTableModel().getUniqueTreeTableModelIdentifier();
