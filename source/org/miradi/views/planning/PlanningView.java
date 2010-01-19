@@ -84,6 +84,7 @@ public class PlanningView extends TabbedView
 		addPlanningViewDoersToMap();
 	}
 	
+	@Override
 	public void createTabs() throws Exception
 	{
 		planningManagementPanel = ConfigurablePlanningTreeManagementPanel.createConfigurablePlanningPanel(getMainWindow());
@@ -118,6 +119,7 @@ public class PlanningView extends TabbedView
 		return new EmptyRowColumnProvider();
 	}
 	
+	@Override
 	public void deleteTabs() throws Exception
 	{
 		planningManagementPanel.dispose();
@@ -138,6 +140,7 @@ public class PlanningView extends TabbedView
 		super.deleteTabs();
 	}
 
+	@Override
 	public String cardName()
 	{
 		return getViewName();
@@ -148,6 +151,7 @@ public class PlanningView extends TabbedView
 		return Project.PLANNING_VIEW_NAME;
 	}
 
+	@Override
 	public JToolBar createToolBar()
 	{
 		return new PlanningToolBar(getActions());
