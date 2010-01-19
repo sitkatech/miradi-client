@@ -20,7 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import org.miradi.dialogs.threatrating.upperPanel.ThreatNameColumnTableModel;
+import java.util.Vector;
+
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -60,9 +61,34 @@ public class AbstractThreatRatingQuestionPopupEditorComponent extends QuestionPo
 		if (threat == null || target== null)
 			return "";
 		
-		return "<html><B>" + threat.toString() + " " +  ThreatNameColumnTableModel.RIGHT_ARROW + " " + target.toString() + "</B></html>";
+		String threatLabel = EAM.substitute(EAM.text("Threat: %s"), threat.toString());
+		String targetLabel = EAM.substitute(EAM.text("Target: %s"), target.toString());
+		Vector<String> labels = new Vector();
+		labels.add(threatLabel);
+		labels.add(targetLabel);
+		String additionalLabel = getAdditionalLabel();
+		if (additionalLabel.length() > 0)
+			labels.add(additionalLabel);
+		
+		String mainLabel = "<html><B>";
+		for (int index = 0; index < labels.size(); ++index)
+		{
+			if (index > 0)
+				mainLabel += "<BR>";
+			
+			mainLabel += labels.get(index);
+		}
+		
+		mainLabel += "</B></html>";
+		
+		return mainLabel;
 	}
 	
+	protected String getAdditionalLabel()
+	{
+		return "";
+	}
+
 	private Project getProject()
 	{
 		return project;

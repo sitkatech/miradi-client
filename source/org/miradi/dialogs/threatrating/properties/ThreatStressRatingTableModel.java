@@ -219,7 +219,7 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		return null;
 	}
 
-	private Stress getStress(int row, int column)
+	public Stress getStress(int row, int column)
 	{
 		ORef stressRef = getThreatStressRating(row, column).getStressRef();
 		Stress stress = (Stress) getProject().findObject(stressRef);
