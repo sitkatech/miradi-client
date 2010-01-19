@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-19 03:22-0600\n"
+"POT-Creation-Date: 2010-01-19 03:43-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -6639,6 +6639,10 @@ msgstr "XML (*.xml)"
 msgid "FileFilter|PNG (*.png)"
 msgstr "PNG (*.png)"
 
+#: Miradi/source/org/miradi/utils/StressBasedThreatRatingQuestionPopupEditorComponent.java:43
+msgid "Stress: %s"
+msgstr ""
+
 #: Miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
 msgid "Could not find tableColumn in map. tableColumn = "
 msgstr ""
@@ -6654,6 +6658,14 @@ msgstr ""
 #: Miradi/source/org/miradi/utils/TabDelimitedFileFilter.java:40
 msgid "FileFilter|Tab Delimited (*.txt)"
 msgstr "Separado por tabulaciones (*.txt)"
+
+#: Miradi/source/org/miradi/utils/AbstractThreatRatingQuestionPopupEditorComponent.java:64
+msgid "Threat: %s"
+msgstr ""
+
+#: Miradi/source/org/miradi/utils/AbstractThreatRatingQuestionPopupEditorComponent.java:65
+msgid "Target: %s"
+msgstr ""
 
 #: Miradi/source/org/miradi/utils/LanguagePackFileChooser.java:43
 msgid "Install"
