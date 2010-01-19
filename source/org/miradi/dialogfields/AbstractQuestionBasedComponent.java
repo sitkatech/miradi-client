@@ -23,7 +23,6 @@ package org.miradi.dialogfields;
 import java.util.Set;
 
 import javax.swing.JToggleButton;
-import javax.swing.event.ListSelectionListener;
 
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.main.EAM;
@@ -40,13 +39,6 @@ abstract public class AbstractQuestionBasedComponent extends AbstractDataValueLi
 		clearCodeToDisable();
 	}
 	
-	public AbstractQuestionBasedComponent(ChoiceQuestion questionToUse, int columnCount, ListSelectionListener listener)
-	{
-		super(questionToUse, columnCount, listener);
-		
-		clearCodeToDisable();
-	}
-
 	private void clearCodeToDisable()
 	{
 		codesToDisable = new CodeList();
