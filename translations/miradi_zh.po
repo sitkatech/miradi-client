@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-19 04:53-0600\n"
+"POT-Creation-Date: 2010-01-19 07:34-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -477,7 +477,7 @@ msgstr "可持续科技教育计划（STEP） \t\t"
 msgid "Label|WCS"
 msgstr "野生动物保护协会（WCS） \t\t"
 
-#: Miradi/source/org/miradi/views/summary/RARESummaryPanel.java:51
+#: Miradi/source/org/miradi/views/summary/RARESummaryPanel.java:53
 msgid "Label|RARE"
 msgstr "RARE"
 
@@ -503,7 +503,7 @@ msgstr ""
 msgid "Label|Team Information"
 msgstr "团队信息 \t\t"
 
-#: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:67
+#: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:68
 msgid "Label|Campaign"
 msgstr "运动 \t\t"
 
@@ -7811,6 +7811,9 @@ msgid "FieldLabel|11.XenodataRefs|ConPro Project Number"
 msgstr "ConPro项目编号 \t\t"
 
 msgid "FieldLabel|11.TargetMode|Target Mode"
+msgstr ""
+
+msgid "FieldLabel|11.AllThreatClassifications|Threat Classifications"
 msgstr ""
 
 msgid "FieldLabel|12.ShortLabel|ID"
