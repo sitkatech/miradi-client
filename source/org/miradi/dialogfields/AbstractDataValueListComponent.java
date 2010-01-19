@@ -49,7 +49,7 @@ abstract public class AbstractDataValueListComponent extends AbstractQuestionEdi
 		{
 			for(ListSelectionListener listSelectionListener : listSelectionListeners)
 			{
-				ChoiceItemListSelectionEvent event = new ChoiceItemListSelectionEvent(choiceItem.getCode(),0,0, false, choiceItem);
+				ChoiceItemListSelectionEvent event = new ChoiceItemListSelectionEvent(choiceItem,0,0, false);
 				listSelectionListener.valueChanged(event);
 			}
 		}
