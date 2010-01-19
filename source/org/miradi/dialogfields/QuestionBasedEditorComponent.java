@@ -22,8 +22,6 @@ package org.miradi.dialogfields;
 
 import java.text.ParseException;
 
-import javax.swing.event.ListSelectionListener;
-
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
@@ -35,11 +33,6 @@ public class QuestionBasedEditorComponent extends AbstractQuestionBasedComponent
 		super(questionToUse, columnCount);
 	}
 	
-	public QuestionBasedEditorComponent(ChoiceQuestion questionToUse,	int columnCount, ListSelectionListener listener)
-	{
-		super(questionToUse, columnCount, listener);
-	}
-
 	@Override
 	public String getText()
 	{
