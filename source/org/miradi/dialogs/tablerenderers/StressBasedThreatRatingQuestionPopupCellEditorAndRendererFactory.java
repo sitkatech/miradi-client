@@ -30,6 +30,7 @@ import javax.swing.table.TableCellRenderer;
 import org.miradi.dialogs.threatrating.properties.ThreatStressRatingTable;
 import org.miradi.dialogs.threatrating.properties.ThreatStressRatingTableModel;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Stress;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -46,7 +47,7 @@ public class StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory ex
 	
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
 	{
-		updateEditor(table, value);
+		updateEditor(table, value, row, column);
 		
 		return questionEditor;
 	}
@@ -58,12 +59,12 @@ public class StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory ex
 	
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 	{
-		updateEditor(table, value);
+		updateEditor(table, value, row, column);
 
 		return questionEditor;
 	}
 	
-	private void updateEditor(JTable table, Object value)
+	private void updateEditor(JTable table, Object value, int row, int column)
 	{
 		ChoiceItem choiceItem = (ChoiceItem) value;
 		questionEditor.setText(choiceItem.getCode());
@@ -73,6 +74,8 @@ public class StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory ex
 		ORef targetRef = model.getTargetRef();
 		questionEditor.setThreatRef(threatRef);
 		questionEditor.setTargetRef(targetRef);
+		Stress stressRef = model.getStress(row, column);
+		questionEditor.setStressRef(stressRef);
 	}
 
 	private StressBasedThreatRatingQuestionPopupEditorComponent questionEditor;

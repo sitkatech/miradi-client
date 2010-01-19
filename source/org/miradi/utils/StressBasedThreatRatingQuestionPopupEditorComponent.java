@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import org.miradi.main.EAM;
+import org.miradi.objects.Stress;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
@@ -29,4 +31,17 @@ public class StressBasedThreatRatingQuestionPopupEditorComponent extends Abstrac
 	{
 		super(projectToUse, questionToUse);
 	}
+
+	public void setStressRef(Stress stressToUse)
+	{
+		stress = stressToUse;
+	}
+	
+	@Override
+	protected String getAdditionalLabel()
+	{
+		return EAM.substitute(EAM.text("Stress: %s"), stress.toString());
+	}
+	
+	private Stress stress;
 }
