@@ -37,7 +37,7 @@ public class ModelessTargetSubPanel extends ObjectDataInputPanel
 		if (Target.is(targetType))
 		{
 			addField(createStringField(Target.getObjectType(), Target.TAG_SPECIES_LATIN_NAME));
-			addField(createCodeListField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, getProject().getQuestion(HabitatAssociationQuestion.class), 1));
+			addField(createEditableCodeListField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, getProject().getQuestion(HabitatAssociationQuestion.class), 1));
 		}
 		
 		addField(createReadOnlyObjectList(targetType, AbstractTarget.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS));

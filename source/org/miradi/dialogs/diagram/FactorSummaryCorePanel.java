@@ -90,7 +90,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		if(factorToEdit.isTarget())
 		{
 			addField(createStringField(Target.TAG_SPECIES_LATIN_NAME));
-			addField(createCodeListField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, new HabitatAssociationQuestion(), 1));
+			addField(createEditableCodeListField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, new HabitatAssociationQuestion(), 1));
 		}
 		
 		addField(createReadOnlyObjectList(factorToEdit.getType(), Factor.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS));
