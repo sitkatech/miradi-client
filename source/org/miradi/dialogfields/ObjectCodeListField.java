@@ -30,17 +30,17 @@ import org.miradi.dialogs.base.CodeListEditorPanel;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.ids.BaseId;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
 public class ObjectCodeListField extends ObjectDataInputField
 {
-	public ObjectCodeListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
+	public ObjectCodeListField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
+		super(projectToUse, refToUse, tagToUse);
 		
 		question = questionToUse;
 		component = new MiradiPanel(new BorderLayout());
