@@ -58,6 +58,7 @@ public class Cause extends Factor
 		}
 	}
 	
+	@Override
 	public ORefList getOwnedObjects(int objectType)
 	{
 		ORefList list = super.getOwnedObjects(objectType);
@@ -71,31 +72,37 @@ public class Cause extends Factor
 		return list;
 	}
 
+	@Override
 	public boolean isCause()
 	{
 		return true;
 	}
 	
+	@Override
 	public boolean isContributingFactor()
 	{
 		return !isDirectThreat();
 	}
 		
+	@Override
 	public boolean isDirectThreat()
 	{
 		return isDirectThreat.asBoolean();
 	}
 
+	@Override
 	public boolean canHaveObjectives()
 	{
 		return true;
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		if(isDirectThreat())
@@ -104,6 +111,7 @@ public class Cause extends Factor
 		return OBJECT_NAME_CONTRIBUTING_FACTOR;
 	}
 
+	@Override
 	public String getPseudoData(String fieldTag)
 	{
 		if (fieldTag.equals(PSEUDO_TAG_TAXONOMY_CODE_VALUE))
@@ -151,9 +159,11 @@ public class Cause extends Factor
 		return find(project.getObjectManager(), causeRef);
 	}
 	
+	@Override
 	void clear()
 	{
 		super.clear();
+		
 		taxonomyCode = new ChoiceData(TAG_TAXONOMY_CODE, new ThreatClassificationQuestion());
 		isDirectThreat = new BooleanData(TAG_IS_DIRECT_THREAT);
 		taxonomyCodeLabel = new PseudoQuestionData(PSEUDO_TAG_TAXONOMY_CODE_VALUE, new ThreatClassificationQuestion());
