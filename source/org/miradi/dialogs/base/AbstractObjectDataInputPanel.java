@@ -482,12 +482,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createCodeListField(int objectType, String tagToUse, ChoiceQuestion question, int columnCount)
 	{
-		return new ObjectCodeListField(project, objectType, getObjectIdForType(objectType), tagToUse, question, columnCount);
+		return new ObjectCodeListField(project, getRefForType(objectType), tagToUse, question, columnCount);
 	}
 	
 	public ObjectDataInputField createCodeListField(String tagToUse, ChoiceQuestion question, int columnCount)
 	{
-		return new ObjectCodeListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tagToUse, question, columnCount);
+		return new ObjectCodeListField(project, getORef(0), tagToUse, question, columnCount);
 	}
 	
 	public ObjectDataInputField createReadOnlyCodeListField(int objctType, String tagToUse, ChoiceQuestion question)
