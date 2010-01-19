@@ -91,11 +91,10 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		
 		mainWindow = mainWindowToUse;
 		getProject().addCommandExecutedListener(this);
+		editListPanel = new ObjectRefListEditorPanel(getProject(), ORef.createInvalidWithType(getDiagramType()), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSet.getObjectType());
 		createLegendCheckBoxes();
 		addAllComponents();
-		updateLegendPanel(getLegendSettings(DiagramObject.TAG_HIDDEN_TYPES));
-		
-		editListPanel = new ObjectRefListEditorPanel(getProject(), ORef.createInvalidWithType(getDiagramType()), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSet.getObjectType());
+		updateLegendPanel(getLegendSettings(DiagramObject.TAG_HIDDEN_TYPES));	
 	}
 	
 	@Override
