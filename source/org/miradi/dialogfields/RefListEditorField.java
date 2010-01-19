@@ -41,11 +41,13 @@ public class RefListEditorField extends ObjectDataInputField implements ListSele
 		refListScroller = new MiradiScrollPane(refListEditor);
 	}
 	
+	@Override
 	public JComponent getComponent()
 	{
 		return refListScroller;
 	}
 
+	@Override
 	public String getText()
 	{
 		return getComponentText();
@@ -56,11 +58,13 @@ public class RefListEditorField extends ObjectDataInputField implements ListSele
 		return refListEditor.getText();
 	}
 
+	@Override
 	public void setText(String codes)
 	{	
 		refListEditor.setText(codes);
 	}
 	
+	@Override
 	public void updateEditableState()
 	{
 		refListEditor.setEnabled(isValidObject());
