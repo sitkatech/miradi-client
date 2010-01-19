@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-19 04:53-0600\n"
+"POT-Creation-Date: 2010-01-19 07:34-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -495,7 +495,7 @@ msgstr "STEP"
 msgid "Label|WCS"
 msgstr "WCS"
 
-#: Miradi/source/org/miradi/views/summary/RARESummaryPanel.java:51
+#: Miradi/source/org/miradi/views/summary/RARESummaryPanel.java:53
 msgid "Label|RARE"
 msgstr "RARE"
 
@@ -521,7 +521,7 @@ msgstr ""
 msgid "Label|Team Information"
 msgstr "Información del equipo"
 
-#: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:67
+#: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:68
 msgid "Label|Campaign"
 msgstr "Campaña"
 
@@ -8019,6 +8019,9 @@ msgid "FieldLabel|11.XenodataRefs|ConPro Project Number"
 msgstr "Número de proyecto de ConPro"
 
 msgid "FieldLabel|11.TargetMode|Target Mode"
+msgstr ""
+
+msgid "FieldLabel|11.AllThreatClassifications|Threat Classifications"
 msgstr ""
 
 msgid "FieldLabel|12.ShortLabel|ID"
