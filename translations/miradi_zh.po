@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-19 03:01-0600\n"
+"POT-Creation-Date: 2010-01-19 03:08-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4429,7 +4429,7 @@ msgstr "粘贴 \t\t"
 #: Miradi/source/org/miradi/dialogfields/StringMapProjectResourceFilterEditorField.java:48
 #: Miradi/source/org/miradi/dialogfields/StringMapProjectResourceFilterEditorField.java:79
 #: Miradi/source/org/miradi/dialogfields/QuestionBasedEditorComponent.java:67
-#: Miradi/source/org/miradi/dialogfields/RefListComponent.java:76
+#: Miradi/source/org/miradi/dialogfields/RefListComponent.java:75
 #: Miradi/source/org/miradi/dialogfields/StringMapBudgetColumnCodeListEditorField.java:48
 #: Miradi/source/org/miradi/dialogfields/StringMapBudgetColumnCodeListEditorField.java:79
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyRefListHtmlComponent.java:78
