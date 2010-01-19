@@ -35,13 +35,6 @@ abstract public class AbstractDataValueListComponent extends AbstractQuestionEdi
 		listSelectionListeners = new Vector();
 	}
 	
-	public AbstractDataValueListComponent(ChoiceQuestion questionToUse,	int columnCount, ListSelectionListener listener)
-	{
-		this(questionToUse, columnCount);
-		
-		addListSelectionListener(listener);
-	}
-	
 	@Override
 	public void toggleButtonStateChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception
 	{
