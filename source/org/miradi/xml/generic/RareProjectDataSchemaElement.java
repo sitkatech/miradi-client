@@ -31,7 +31,7 @@ public class RareProjectDataSchemaElement extends ObjectSchemaElement
 		
 		createOptionalTextField(RareProjectData.TAG_COHORT);
 		
-		createOptionalTextField(RareProjectData.TAG_THREATS_ADDRESSED_NOTES);
+		createOptionalTextField(RareProjectData.LEGACY_TAG_THREATS_ADDRESSED_NOTES);
 		createOptionalTextField(RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
 		createOptionalTextField(RareProjectData.TAG_BIODIVERSITY_HOTSPOTS);
 		createOptionalTextField(RareProjectData.TAG_FLAGSHIP_SPECIES_COMMON_NAME);
