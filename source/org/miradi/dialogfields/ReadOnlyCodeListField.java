@@ -22,9 +22,14 @@ package org.miradi.dialogfields;
 
 import javax.swing.JComponent;
 
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.layout.OneColumnPanel;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.CodeList;
+import org.miradi.utils.Translation;
 
 public class ReadOnlyCodeListField extends ObjectDataInputField
 {
@@ -32,7 +37,11 @@ public class ReadOnlyCodeListField extends ObjectDataInputField
 	{
 		super(projectToUse, projectToUse.getMetadata().getRef(), tagToUse);
 		
+		componentPanel = new OneColumnPanel();		
 		codeListComponent = new ReadOnlyCodeListComponent(questionToUse.getChoices(), 1);
+		countLabel = new PanelTitleLabel();
+		componentPanel.add(countLabel);
+		componentPanel.add(codeListComponent);
 		
 		setDefaultFieldBorder();
 	}
@@ -40,7 +49,7 @@ public class ReadOnlyCodeListField extends ObjectDataInputField
 	@Override
 	public JComponent getComponent()
 	{
-		return codeListComponent;
+		return componentPanel;
 	}
 
 	@Override
@@ -52,8 +61,21 @@ public class ReadOnlyCodeListField extends ObjectDataInputField
 	@Override
 	public void setText(String newValue)
 	{
-		codeListComponent.setText(newValue);
+		try
+		{
+			codeListComponent.setText(newValue);
+			CodeList codeList = new CodeList(codeListComponent.getText());
+			String fieldLabel = Translation.fieldLabel(getObjectType(), getTag());
+			countLabel.setText(fieldLabel + ": " + codeList.size());
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
+		}
 	}
 	
 	private ReadOnlyCodeListComponent codeListComponent;
+	private OneColumnPanel componentPanel;
+	private PanelTitleLabel countLabel;
 }
