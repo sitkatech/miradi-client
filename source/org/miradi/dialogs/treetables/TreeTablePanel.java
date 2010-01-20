@@ -104,12 +104,14 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		}
 	}
 
+	@Override
 	public void dispose()
 	{
 		tree.dispose();
 		super.dispose();
 	}
 	
+	@Override
 	public BaseObject getSelectedObject()
 	{
 		TreeTableNode selectedTreeNode = getSelectedTreeNode();
