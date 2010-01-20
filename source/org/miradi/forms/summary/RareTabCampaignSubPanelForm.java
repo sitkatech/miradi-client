@@ -30,7 +30,7 @@ public class RareTabCampaignSubPanelForm extends FieldPanelSpec
 	{		
 		setTranslatedTitle(RareCampaignSummarySubPanel.PANEL_DESCRIPTION);
 	
-		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_THREATS_ADDRESSED_NOTES);
+		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.LEGACY_TAG_THREATS_ADDRESSED_NOTES);
 		addLeftRightConstants(THREATS_AT_SITE_CONSTANT, SEE_DIAGRAM_CONSTANT);
 		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
 		addLeftRightConstants(HUMAN_STAKEHOLDER_POP_SIZE_CONSTANT, SEE_SCOPE_TAB_CONSTANT);
