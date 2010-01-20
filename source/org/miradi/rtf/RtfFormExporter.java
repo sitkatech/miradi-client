@@ -32,6 +32,7 @@ import org.miradi.forms.FormImage;
 import org.miradi.forms.FormItem;
 import org.miradi.forms.FormRow;
 import org.miradi.forms.PropertiesPanelSpec;
+import org.miradi.forms.objects.FormFieldCodeListData;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.CodeListData;
@@ -182,8 +183,31 @@ public class RtfFormExporter
 			
 			return formatter.format(Double.parseDouble(value));
 		}
+		else if (formItem.isCodeListFormFieldData())
+		{
+			return formatFormFieldCodeListFieldData(formRow, formItem);
+		}
 		
 		return "";
+	}
+
+	private String formatFormFieldCodeListFieldData(FormRow formRow, FormItem formItem) throws Exception
+	{
+		FormFieldCodeListData formFieldCodeListData = (FormFieldCodeListData) formItem;
+		String codeListAsString = getFieldData(formFieldCodeListData, formRow);
+		ChoiceQuestion question = formFieldCodeListData.getQuestion();
+		CodeList codeList = new CodeList(codeListAsString);
+		String appendedLabels = "";
+		for (int index = 0; index < codeList.size(); ++index)
+		{
+			ChoiceItem choiceItem = question.findChoiceByCode(codeList.get(index));
+			if (index > 0)
+				appendedLabels += "\n";
+			
+			appendedLabels += choiceItem.getLabel();
+		}
+		
+		return writer.encode(appendedLabels);
 	}
 
 	private String getFieldData(FieldRelatedFormItem formFieldData, FormRow formRow)

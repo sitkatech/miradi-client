@@ -50,4 +50,9 @@ abstract public class FormItem
 	{
 		return false;
 	}
+	
+	public boolean isCodeListFormFieldData()
+	{
+		return false;
+	}
 }

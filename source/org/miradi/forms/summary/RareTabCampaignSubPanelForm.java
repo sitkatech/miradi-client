@@ -21,7 +21,9 @@ package org.miradi.forms.summary;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.main.EAM;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.RareProjectData;
+import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.views.summary.RareCampaignSummarySubPanel;
 
 public class RareTabCampaignSubPanelForm extends FieldPanelSpec
@@ -31,6 +33,7 @@ public class RareTabCampaignSubPanelForm extends FieldPanelSpec
 		setTranslatedTitle(RareCampaignSummarySubPanel.PANEL_DESCRIPTION);
 	
 		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.LEGACY_TAG_THREATS_ADDRESSED_NOTES);
+		addCodeListField(ProjectMetadata.getObjectType(), ProjectMetadata.PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS, new ThreatClassificationQuestion());
 		addLeftRightConstants(THREATS_AT_SITE_CONSTANT, SEE_DIAGRAM_CONSTANT);
 		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
 		addLeftRightConstants(HUMAN_STAKEHOLDER_POP_SIZE_CONSTANT, SEE_SCOPE_TAB_CONSTANT);
