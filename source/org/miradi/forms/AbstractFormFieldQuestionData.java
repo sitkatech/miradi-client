@@ -18,21 +18,23 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.forms.objects;
+package org.miradi.forms;
 
-import org.miradi.forms.AbstractFormFieldQuestionData;
 import org.miradi.questions.ChoiceQuestion;
 
-public class FormFieldCodeListData extends AbstractFormFieldQuestionData
+public class AbstractFormFieldQuestionData extends FieldRelatedFormItem
 {
-	public FormFieldCodeListData(int objectTypeToUse, String objectTagToUse, ChoiceQuestion questionToUse)
+	public AbstractFormFieldQuestionData(int objectTypeToUse, String objectTagToUse, ChoiceQuestion questionToUse)
 	{
-		super(objectTypeToUse, objectTagToUse, questionToUse);
+		super(objectTypeToUse, objectTagToUse);
+		
+		question = questionToUse;
 	}
 	
-	@Override
-	public boolean isCodeListFormFieldData()
+	public ChoiceQuestion getQuestion()
 	{
-		return true;
+		return question;
 	}
+	
+	private ChoiceQuestion question;
 }
