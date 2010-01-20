@@ -364,7 +364,11 @@ public class EAM
 	
 	public static void unexpectedErrorDialog(Exception e)
 	{
-		EAM.errorDialog(EAM.text("An unexpected error has occurred."));
+		String errorMessage = EAM.text("An unexpected error has occurred");
+		if(e.getMessage() != null && e.getMessage().length() > 0)
+			errorMessage += "\n" + (e.getMessage());
+
+		EAM.errorDialog(errorMessage);
 	}
 	
 	public static void errorDialog(String errorMessage)
