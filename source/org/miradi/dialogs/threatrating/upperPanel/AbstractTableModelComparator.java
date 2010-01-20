@@ -24,6 +24,8 @@ import java.util.Comparator;
 import javax.swing.table.TableModel;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 
 public abstract class AbstractTableModelComparator implements Comparator
@@ -39,31 +41,32 @@ public abstract class AbstractTableModelComparator implements Comparator
 		return model.getValueAt(row, columnToSortBy);
 	}
 	
-	protected int compareDetails(Integer row1, Integer row2, Object value1, Object value2)
+	protected int compareDetails(Object[] sortValues1, Object[] sortValues2)
 	{
-		int compareValue = compareStrings(value1, value2);
-		if (compareValue != 0)
-			return compareValue;
+		if (sortValues1.length != sortValues2.length)
+			throw new RuntimeException("Arrays being compared have different lengths");
 		
-		return compareUsingRef(row1.intValue(), row2.intValue());
-	}
-
-	private int compareStrings(Object value1, Object value2)
-	{
-		return value1.toString().compareToIgnoreCase(value2.toString());
+		for (int index = 0; index < sortValues1.length; ++index)
+		{
+			Comparable element1 = (Comparable) sortValues1[index];
+			Comparable element2 = (Comparable) sortValues2[index];
+			int compareToValue = element1.compareTo(element2);
+			if (compareToValue != 0)
+				return compareToValue;
+		}
+		
+		EAM.logWarning("Arrays had identical elements");
+		return 0;
 	}
 	
-	private int compareUsingRef(int row1, int row2)
+	protected ORef getRefForRow(int row)
 	{
 		RowColumnBaseObjectProvider provider = ((RowColumnBaseObjectProvider)model);
-		BaseObject baseObject1 = provider.getBaseObjectForRowColumn(row1, 0);
-		BaseObject baseObject2 = provider.getBaseObjectForRowColumn(row2, 0);
-		if (baseObject1 == null || baseObject2 == null)
-			return 0;
-	
-		return baseObject1.getRef().compareTo(baseObject2.getRef());
+		BaseObject baseObject = provider.getBaseObjectForRowColumn(row, 0);
+		
+		return baseObject.getRef();
 	}
-
+	
 	abstract public int compare(Object o1, Object o2);
 
 	protected TableModel model;
