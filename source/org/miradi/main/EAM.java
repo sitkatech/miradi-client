@@ -362,7 +362,7 @@ public class EAM
 		System.exit(0);
 	}
 	
-	public static void unexpectedErrorDialog()
+	public static void unexpectedErrorDialog(Exception e)
 	{
 		EAM.errorDialog(EAM.text("An unexpected error has occurred."));
 	}

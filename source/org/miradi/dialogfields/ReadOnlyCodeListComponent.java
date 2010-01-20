@@ -59,7 +59,7 @@ public class ReadOnlyCodeListComponent extends MiradiPanel
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorDialog();
+			EAM.unexpectedErrorDialog(e);
 			EAM.logException(e);
 		}
 		

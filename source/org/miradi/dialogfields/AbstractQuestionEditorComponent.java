@@ -166,7 +166,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 			catch (Exception e)
 			{
 				EAM.logException(e);
-				EAM.unexpectedErrorDialog();
+				EAM.unexpectedErrorDialog(e);
 			}			
 		}
 	}

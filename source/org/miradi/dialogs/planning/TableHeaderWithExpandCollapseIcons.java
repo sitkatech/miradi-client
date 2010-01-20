@@ -178,7 +178,7 @@ public class TableHeaderWithExpandCollapseIcons extends JTableHeader
 			catch(Exception e)
 			{
 				EAM.logException(e);
-				EAM.unexpectedErrorDialog();
+				EAM.unexpectedErrorDialog(e);
 			}
 		}
 	}
