@@ -84,6 +84,7 @@ public class ChoiceItem implements Comparable
 		icon = iconToUse;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getLabel();
@@ -108,6 +109,7 @@ public class ChoiceItem implements Comparable
 				"</Value></Choice>");
 	}
 
+	@Override
 	public boolean equals(Object other)
 	{
 		if (! (other instanceof ChoiceItem))
@@ -123,6 +125,7 @@ public class ChoiceItem implements Comparable
 		return true;
 	}
 	
+	@Override
 	public int hashCode()
 	{
 		return code.hashCode();
