@@ -75,7 +75,7 @@ public class ReadOnlyRefListHtmlComponent extends MiradiPanel
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorDialog();
+			EAM.unexpectedErrorDialog(e);
 			EAM.logException(e);
 		}
 		
