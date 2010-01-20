@@ -89,7 +89,7 @@ public class RareProjectData extends BaseObject
 		biodiversityHotspots = new StringData(TAG_BIODIVERSITY_HOTSPOTS);
 		cohort = new StringData(TAG_COHORT);
 		numberOfCommunitiesInCampaignArea = new IntegerData(TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
-		threatsAddressedNotes = new StringData(LEGACY_TAG_THREATS_ADDRESSED_NOTES);
+		legacyThreatsAddressedNotes = new StringData(LEGACY_TAG_THREATS_ADDRESSED_NOTES);
 		mainActivitiesNotes = new StringData(TAG_MAIN_ACTIVITIES_NOTES);
 		threatReductionObjectiveNotes = new StringData(TAG_THREAT_REDUCTION_OBJECTIVE_NOTES);
 		monitoringObjectiveNotes = new StringData(TAG_MONITORING_OBJECTIVE_NOTES);
@@ -110,7 +110,7 @@ public class RareProjectData extends BaseObject
 		addField(TAG_BIODIVERSITY_HOTSPOTS, biodiversityHotspots);
 		addField(TAG_COHORT, cohort);
 		addField(TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA, numberOfCommunitiesInCampaignArea);
-		addField(threatsAddressedNotes);
+		addField(legacyThreatsAddressedNotes);
 		addField(mainActivitiesNotes);
 		addField(threatReductionObjectiveNotes);
 		addField(monitoringObjectiveNotes);
@@ -156,7 +156,7 @@ public class RareProjectData extends BaseObject
 	private StringData biodiversityHotspots;
 	private StringData cohort;
 	private IntegerData numberOfCommunitiesInCampaignArea;
-	private StringData threatsAddressedNotes;
+	private StringData legacyThreatsAddressedNotes;
 	private StringData mainActivitiesNotes;
 	private StringData threatReductionObjectiveNotes;
 	private StringData monitoringObjectiveNotes;
