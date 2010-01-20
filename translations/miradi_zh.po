@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-20 02:37-0600\n"
+"POT-Creation-Date: 2010-01-20 06:35-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2472,31 +2472,31 @@ msgstr "相关的项目 \t\t"
 msgid "(see Project tab)"
 msgstr "（参见项目标签） \t\t"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:45
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:48
 msgid "Threats at Site"
 msgstr "现场威胁因子 \t\t"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:46
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:49
 msgid "(see Diagram)"
 msgstr "（参见图表） \t\t"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:47
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:50
 msgid "Human Stakeholder Pop Size"
 msgstr "人力利益相关者的群体规模 \t\t"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:48
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:51
 msgid "(see Scope tab)"
 msgstr "（参见范围标签） \t\t"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:49
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:52
 msgid "Biodiversity Area (ha)"
 msgstr "生物多样性区域（公顷） \t\t"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:50
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:53
 msgid "Habitat"
 msgstr "生境 \t\t"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:51
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:54
 msgid "(see TNC tab for Ecoregions)"
 msgstr "（有关生态区参见TNC标签） \t\t"
 
