@@ -32,14 +32,6 @@ import org.miradi.utils.CodeList;
 
 public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel implements RowColumnBaseObjectProvider
 {
-	public ExportablePlanningTreeTableModel(Project projectToUse, CodeList visibleRowCodes, CodeList visibleColumnCodes, String uniqueTreeTableModelIdentifierToUse) throws Exception
-	{
-		super(projectToUse, visibleRowCodes, visibleColumnCodes);
-		
-		uniqueTreeTableModelIdentifier = uniqueTreeTableModelIdentifierToUse;
-		setRowObjectRefs();
-	}
-
 	public ExportablePlanningTreeTableModel(Project projectToUse, TreeTableNode rootNode, CodeList visibleRowCodes, CodeList visibleColumnCodes, String uniqueTreeTableModelIdentifierToUse) throws Exception
 	{
 		super(projectToUse, rootNode, visibleRowCodes, visibleColumnCodes);
@@ -48,6 +40,14 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 		setRowObjectRefs();
 	}
 	
+	public ExportablePlanningTreeTableModel(Project projectToUse, CodeList visibleRowCodes, CodeList visibleColumnCodes, String uniqueTreeTableModelIdentifierToUse) throws Exception
+	{
+		super(projectToUse, visibleRowCodes, visibleColumnCodes);
+		
+		uniqueTreeTableModelIdentifier = uniqueTreeTableModelIdentifierToUse;
+		setRowObjectRefs();
+	}
+
 	public ExportablePlanningTreeTableModel(Project projectToUse, RowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
 	{
 		this(projectToUse, rowColumnProvider.getRowListToShow(), rowColumnProvider.getColumnListToShow(), uniqueTreeTableModelIdentifierToUse);
