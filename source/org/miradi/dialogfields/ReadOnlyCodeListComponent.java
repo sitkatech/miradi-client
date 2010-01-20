@@ -29,6 +29,11 @@ import com.jhlabs.awt.BasicGridLayout;
 
 public class ReadOnlyCodeListComponent extends MiradiPanel
 {
+	public ReadOnlyCodeListComponent(ChoiceItem[] choiceItemsToUse)
+	{
+		this(choiceItemsToUse, 1);
+	}
+	
 	public ReadOnlyCodeListComponent(ChoiceItem[] choiceItemsToUse, int columnCount)
 	{
 		setLayout(new BasicGridLayout(0, columnCount));

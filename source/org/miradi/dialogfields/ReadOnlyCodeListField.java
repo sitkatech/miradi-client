@@ -38,7 +38,7 @@ public class ReadOnlyCodeListField extends ObjectDataInputField
 		super(projectToUse, projectToUse.getMetadata().getRef(), tagToUse);
 		
 		componentPanel = new OneColumnPanel();		
-		codeListComponent = new ReadOnlyCodeListComponent(questionToUse.getChoices(), 1);
+		codeListComponent = new ReadOnlyCodeListComponent(questionToUse.getChoices());
 		countLabel = new PanelTitleLabel();
 		componentPanel.add(countLabel);
 		componentPanel.add(codeListComponent);
