@@ -50,10 +50,7 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 	
 	public ExportablePlanningTreeTableModel(Project projectToUse, RowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
 	{
-		super(projectToUse, rowColumnProvider.getRowListToShow(), rowColumnProvider.getColumnListToShow());
-		
-		uniqueTreeTableModelIdentifier = uniqueTreeTableModelIdentifierToUse;
-		setRowObjectRefs();
+		this(projectToUse, rowColumnProvider.getRowListToShow(), rowColumnProvider.getColumnListToShow(), uniqueTreeTableModelIdentifierToUse);
 	}
 
 	private void setRowObjectRefs() throws Exception
