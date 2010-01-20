@@ -41,11 +41,9 @@ public class TableModelChoiceItemComparator extends AbstractTableModelComparator
 			if (value1 == null || value2 == null)
 				return -1;
 			
-			ChoiceItem choice1 = (ChoiceItem) value1;
-			ChoiceItem choice2 = (ChoiceItem) value2;
+			String code1 = ((ChoiceItem) value1).getCode();
+			String code2 = ((ChoiceItem) value2).getCode();
 			
-			String code1 = choice1.getCode();
-			String code2 = choice2.getCode();
 			return compareDetails(row1, row2, code1, code2);
 		}
 
