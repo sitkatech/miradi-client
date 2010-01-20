@@ -40,7 +40,7 @@ public class StressBasedThreatRatingQuestionPopupEditorComponent extends Abstrac
 	@Override
 	protected String getAdditionalLabel()
 	{
-		return EAM.substitute(EAM.text("Stress: %s"), stress.toString());
+		return EAM.substitute(EAM.text("Stress: %s"), stress.getFullName());
 	}
 	
 	private Stress stress;
