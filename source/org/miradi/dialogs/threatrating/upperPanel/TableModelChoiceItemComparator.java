@@ -44,7 +44,9 @@ public class TableModelChoiceItemComparator extends AbstractTableModelComparator
 			ChoiceItem choice1 = (ChoiceItem) value1;
 			ChoiceItem choice2 = (ChoiceItem) value2;
 			
-			int compareValue = compareStrings(choice1.getCode(), choice2.getCode());
+			String code1 = choice1.getCode();
+			String code2 = choice2.getCode();
+			int compareValue = compareStrings(code1, code2);
 			if (compareValue != 0)
 				return compareValue;
 			
