@@ -198,6 +198,7 @@ public class RtfFormExporter
 		ChoiceQuestion question = formFieldCodeListData.getQuestion();
 		CodeList codeList = new CodeList(codeListAsString);
 		String appendedLabels = "";
+		appendedLabels += "Count:" + codeList.size() + "\n";
 		for (int index = 0; index < codeList.size(); ++index)
 		{
 			ChoiceItem choiceItem = question.findChoiceByCode(codeList.get(index));
