@@ -36,6 +36,9 @@ public class TableModelStringComparator extends AbstractTableModelComparator
 		Object value1 = getValue(row1.intValue());
 		Object value2 = getValue(row2.intValue());
 		
-		return compareDetails(row1, row2, value1, value2);
+		Object[] sortValues1 = new Object[]{value1, getRefForRow(row1)};
+		Object[] sortValues2 = new Object[]{value2, getRefForRow(row2)};
+		
+		return compareDetails(sortValues1, sortValues2);
 	}
 }
