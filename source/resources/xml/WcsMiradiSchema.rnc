@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/17'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/16'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -197,7 +197,6 @@ RareProjectData.element = element miradi:RareProjectData
 {
   element miradi:RareProjectDataCohort { text }? &
   element miradi:RareProjectDataThreatsAddressedNotes { text }? &
-  RareProjectDataAllThreatClassificationsContainer.element &
   element miradi:RareProjectDataNumberOfCommunitiesInCampaignArea { text }? &
   element miradi:RareProjectDataBiodiversityHotspots { text }? &
   element miradi:RareProjectDataFlagshipSpeciesCommonName { text }? &
@@ -959,10 +958,5 @@ WwfProjectDataEcoRegionsContainer.element = element miradi:WwfProjectDataEcoRegi
 ProjectSummaryLocationCountriesContainer.element = element miradi:ProjectSummaryLocationCountriesContainer
 {
   element miradi:code { vocabulary_countries } * 
-}
-
-RareProjectDataAllThreatClassificationsContainer.element = element miradi:RareProjectDataAllThreatClassificationsContainer
-{
-  element miradi:code { vocabulary_cause_taxonomy_code } * 
 }
 
