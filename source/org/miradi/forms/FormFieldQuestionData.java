@@ -21,13 +21,11 @@ package org.miradi.forms;
 
 import org.miradi.questions.ChoiceQuestion;
 
-public class FormFieldQuestionData extends FormFieldData
+public class FormFieldQuestionData extends AbstractFormFieldQuestionData
 {
 	public FormFieldQuestionData(int objectTypeToUse, String objectTagToUse, ChoiceQuestion questionToUse)
 	{
-		super(objectTypeToUse, objectTagToUse);
-		
-		question = questionToUse;
+		super(objectTypeToUse, objectTagToUse, questionToUse);
 	}
 	
 	@Override
@@ -35,11 +33,4 @@ public class FormFieldQuestionData extends FormFieldData
 	{
 		return true;
 	}
-
-	public ChoiceQuestion getQuestion()
-	{
-		return question;
-	}
-	
-	private ChoiceQuestion question;
 }
