@@ -46,6 +46,7 @@ public class WorkPlanProjectNode extends AbstractPlanningTreeNode
 		return ProjectMetadata.getObjectType();
 	}
 
+	@Override
 	public BaseObject getObject()
 	{
 		return project.getMetadata();
