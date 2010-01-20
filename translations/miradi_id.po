@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-19 07:58-0600\n"
+"POT-Creation-Date: 2010-01-20 02:01-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -352,8 +352,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:66
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:68
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
-#: Miradi/source/org/miradi/main/EAM.java:418
-#: Miradi/source/org/miradi/main/EAM.java:419
+#: Miradi/source/org/miradi/main/EAM.java:422
+#: Miradi/source/org/miradi/main/EAM.java:423
 msgid "Delete"
 msgstr "Hapus "
 
@@ -804,7 +804,7 @@ msgid "Choose Indicator to Clone"
 msgstr "Pilih Indikator yang ingin Diklon "
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:66
-#: Miradi/source/org/miradi/main/EAM.java:418
+#: Miradi/source/org/miradi/main/EAM.java:422
 msgid "Retain"
 msgstr "Pertahankan "
 
@@ -4561,15 +4561,14 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/main/EAM.java:367
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:105
-msgid "An unexpected error has occurred."
+msgid "An unexpected error has occurred"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:372
+#: Miradi/source/org/miradi/main/EAM.java:376
 msgid "Title|Error"
 msgstr "Kesalahan"
 
-#: Miradi/source/org/miradi/main/EAM.java:574
+#: Miradi/source/org/miradi/main/EAM.java:578
 msgid "Wintitle|Information"
 msgstr "Informasi "
 
@@ -6289,6 +6288,10 @@ msgstr ""
 #: Miradi/source/org/miradi/actions/MainWindowAction.java:97
 msgid "An internal error prevented this operation"
 msgstr "Kesalahan internal mencegah operasi ini "
+
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:105
+msgid "An unexpected error has occurred."
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/MainWindowAction.java:106
 msgid ""
