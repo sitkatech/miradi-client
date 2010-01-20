@@ -23,6 +23,7 @@ import java.util.Vector;
 
 import javax.swing.Icon;
 
+import org.miradi.forms.objects.FormFieldCodeListData;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.BufferedImageFactory;
 
@@ -74,6 +75,11 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 	protected void addBlankHorizontalLine()
 	{
 		addFormRow(new FormRow());
+	}
+	
+	protected void addCodeListField(int type, String fieldTag, ChoiceQuestion question)
+	{
+		addField(type, fieldTag, new FormFieldCodeListData(type, fieldTag, question));
 	}
 
 	protected void addCurrencyField(int type, String fieldTag)
