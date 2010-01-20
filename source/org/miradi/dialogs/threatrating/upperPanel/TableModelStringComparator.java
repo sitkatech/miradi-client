@@ -35,6 +35,11 @@ public class TableModelStringComparator extends AbstractTableModelComparator
 		Object value1 = getValue(row1.intValue());
 		Object value2 = getValue(row2.intValue());
 		
+		return compareDetails(row1, row2, value1, value2);
+	}
+
+	private int compareDetails(Integer row1, Integer row2, Object value1, Object value2)
+	{
 		int compareValue = compareStrings(value1, value2);
 		if (compareValue != 0)
 			return compareValue;
