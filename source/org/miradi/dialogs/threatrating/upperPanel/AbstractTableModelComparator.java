@@ -48,12 +48,12 @@ public abstract class AbstractTableModelComparator implements Comparator
 		return compareUsingRef(row1.intValue(), row2.intValue());
 	}
 
-	protected int compareStrings(Object value1, Object value2)
+	private int compareStrings(Object value1, Object value2)
 	{
 		return value1.toString().compareToIgnoreCase(value2.toString());
 	}
 	
-	protected int compareUsingRef(int row1, int row2)
+	private int compareUsingRef(int row1, int row2)
 	{
 		RowColumnBaseObjectProvider provider = ((RowColumnBaseObjectProvider)model);
 		BaseObject baseObject1 = provider.getBaseObjectForRowColumn(row1, 0);
