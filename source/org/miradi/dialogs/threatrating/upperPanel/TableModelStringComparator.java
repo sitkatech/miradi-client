@@ -28,6 +28,7 @@ public class TableModelStringComparator extends AbstractTableModelComparator
 		super(modelToUse, columnToSort);
 	}
 
+	@Override
 	public int compare(Object object1, Object object2)
 	{
 		Integer row1 = (Integer)object1;
@@ -36,14 +37,5 @@ public class TableModelStringComparator extends AbstractTableModelComparator
 		Object value2 = getValue(row2.intValue());
 		
 		return compareDetails(row1, row2, value1, value2);
-	}
-
-	private int compareDetails(Integer row1, Integer row2, Object value1, Object value2)
-	{
-		int compareValue = compareStrings(value1, value2);
-		if (compareValue != 0)
-			return compareValue;
-		
-		return compareUsingRef(row1.intValue(), row2.intValue());
 	}
 }

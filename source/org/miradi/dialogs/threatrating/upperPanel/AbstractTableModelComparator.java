@@ -39,9 +39,9 @@ public abstract class AbstractTableModelComparator implements Comparator
 		return model.getValueAt(row, columnToSortBy);
 	}
 	
-	protected int compareDetails(Integer row1, Integer row2, String code1, String code2)
+	protected int compareDetails(Integer row1, Integer row2, Object value1, Object value2)
 	{
-		int compareValue = compareStrings(code1, code2);
+		int compareValue = compareStrings(value1, value2);
 		if (compareValue != 0)
 			return compareValue;
 		
