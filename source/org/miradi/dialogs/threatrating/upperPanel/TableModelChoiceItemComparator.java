@@ -46,6 +46,11 @@ public class TableModelChoiceItemComparator extends AbstractTableModelComparator
 			
 			String code1 = choice1.getCode();
 			String code2 = choice2.getCode();
+			return compareDetails(row1, row2, code1, code2);
+		}
+
+		private int compareDetails(Integer row1, Integer row2, String code1, String code2)
+		{
 			int compareValue = compareStrings(code1, code2);
 			if (compareValue != 0)
 				return compareValue;
