@@ -41,15 +41,15 @@ public abstract class AbstractTableModelComparator implements Comparator
 		return model.getValueAt(row, columnToSortBy);
 	}
 	
-	protected int compareDetails(Object[] sortValues1, Object[] sortValues2)
+	protected int compareDetails(Comparable[] sortValues1, Comparable[] sortValues2)
 	{
 		if (sortValues1.length != sortValues2.length)
 			throw new RuntimeException("Arrays being compared have different lengths");
 		
 		for (int index = 0; index < sortValues1.length; ++index)
 		{
-			Comparable element1 = (Comparable) sortValues1[index];
-			Comparable element2 = (Comparable) sortValues2[index];
+			Comparable element1 = sortValues1[index];
+			Comparable element2 = sortValues2[index];
 			int compareToValue = element1.compareTo(element2);
 			if (compareToValue != 0)
 				return compareToValue;
