@@ -22,9 +22,13 @@ package org.miradi.views.workplan;
 import javax.swing.Icon;
 
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
+import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
+import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
+import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
+import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
@@ -62,6 +66,13 @@ class WorkPlanManagementPanel extends PlanningTreeManagementPanel
 	public Icon getIcon()
 	{
 		return IconManager.getWorkPlanIcon();
+	}
+	
+	@Override
+	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, RowColumnProvider rowColumnProvider) throws Exception
+	{
+		PlanningTreeTableModel model = new WorkPlanTreeTableModel(getProject());
+		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(getMainWindow(), rowColumnProvider, model);
 	}
 	
 	public static WorkPlanManagementPanel createWorkPlanPanel(MainWindow mainWindowToUse) throws Exception
