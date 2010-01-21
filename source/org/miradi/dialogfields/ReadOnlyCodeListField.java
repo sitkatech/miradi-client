@@ -61,17 +61,25 @@ public class ReadOnlyCodeListField extends ObjectDataInputField
 	@Override
 	public void setText(String newValue)
 	{
+		codeListComponent.setText(newValue);
+		countLabel.setText(getCounterLabel());
+	}
+
+	private String getCounterLabel()
+	{
 		try
 		{
-			codeListComponent.setText(newValue);
 			CodeList codeList = new CodeList(codeListComponent.getText());
 			String fieldLabel = Translation.fieldLabel(getObjectType(), getTag());
-			countLabel.setText(fieldLabel + ": " + codeList.size());
+			String counterLabel = EAM.substitute(EAM.text("%s: "), fieldLabel);
+			counterLabel += codeList.size();
+			return counterLabel;
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
+			return EAM.text("Error");
 		}
 	}
 	
