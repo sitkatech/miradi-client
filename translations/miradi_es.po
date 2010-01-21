@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-20 10:02-0600\n"
+"POT-Creation-Date: 2010-01-21 07:19-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -835,7 +835,7 @@ msgstr "No se puede crear el enlace."
 msgid "Can't link a group to an item it contains"
 msgstr "No se puede enlazar un grupo a un elemento que éste contenga."
 
-#: Miradi/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:58
+#: Miradi/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:62
 msgid "Tab|Work Plan"
 msgstr ""
 
@@ -2466,6 +2466,7 @@ msgid "No date range for date Unit = "
 msgstr ""
 
 #: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:55
+#: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:82
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:84
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
@@ -4606,6 +4607,10 @@ msgstr "Copiar"
 #: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:96
 msgid "Paste"
 msgstr "Pegar"
+
+#: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:74
+msgid "%s: "
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/EditableCodeListField.java:50
 msgid "Select..."
