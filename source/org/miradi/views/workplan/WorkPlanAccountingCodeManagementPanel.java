@@ -44,6 +44,7 @@ public class WorkPlanAccountingCodeManagementPanel extends AbstractAccountingCod
 		super(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
 	}
 
+	@Override
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, RowColumnProvider rowColumnProvider) throws Exception
 	{
 		PlanningTreeTableModel model = AccountingCodeTreeTableModel.createOperationalPlanAccountingCodeTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow());
