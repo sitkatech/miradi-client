@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 
-import java.awt.Component;
+import java.awt.Container;
 
 import javax.swing.JSplitPane;
 
@@ -28,9 +28,9 @@ import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 abstract public class PersistentSplitPane extends JSplitPane
 {
-	public PersistentSplitPane(Component containerToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse,  String splitterNameToUse) 
+	public PersistentSplitPane(Container futureParentToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse,  String splitterNameToUse) 
 	{
-		container = containerToUse;
+		futureParent = futureParentToUse;
 		splitPositionSaver = splitPositionSaverToUse;
 		splitterName = splitterNameToUse;
 		
@@ -114,12 +114,16 @@ abstract public class PersistentSplitPane extends JSplitPane
 		setDividerLocation(location);
 	}
 	
-	Component getContainer()
+	public Container getParent()
 	{
-		return container;
+		Container parent = super.getParent();
+		if(parent == null)
+			return futureParent;
+		futureParent = null;
+		return parent;
 	}
 	
-	private Component container;
+	private Container futureParent;
 	private String splitterName;
 	private SplitterPositionSaverAndGetter splitPositionSaver;
 	

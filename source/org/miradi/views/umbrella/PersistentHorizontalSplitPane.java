@@ -19,21 +19,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import java.awt.Component;
+import java.awt.Container;
 
 import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 public class PersistentHorizontalSplitPane extends PersistentSplitPane
 {
-	public PersistentHorizontalSplitPane(Component containerToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, String splitterNameToUse)
+	public PersistentHorizontalSplitPane(Container futureParent, SplitterPositionSaverAndGetter splitPositionSaverToUse, String splitterNameToUse)
 	{
-		super(containerToUse, splitPositionSaverToUse, splitterNameToUse);
+		super(futureParent, splitPositionSaverToUse, splitterNameToUse);
 		setOrientation(HORIZONTAL_SPLIT);
 	}
 
 	protected int getContainerHeightOrWidth()
 	{
-		return getContainer().getWidth();
+		return getParent().getWidth();
 	}
 
 }
