@@ -108,12 +108,12 @@ public class ThreatTargetChainObject
 				continue;
 			}
 			
-			if (thisFactorToProcess.isDirectThreat())
+			if (thisFactorToProcess.isCause())
 			{
-				resultingThreats.add(thisFactorToProcess);
+				if (thisFactorToProcess.isDirectThreat())
+					resultingThreats.add(thisFactorToProcess);
 				
-				if(FactorLink.isFrom(direction))
-					unprocessedFactors.add(thisFactorToProcess);
+				unprocessedFactors.add(thisFactorToProcess);
 			}
 			else if (thisFactorToProcess.isTarget())
 			{
