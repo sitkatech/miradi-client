@@ -57,7 +57,7 @@ public class AudienceSubPanel extends EditableObjectPoolTableSubPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Audience");
+		return EAM.text("Title|Audiences");
 	}
 	
 	@Override
