@@ -20,14 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import java.awt.Component;
+import java.awt.Container;
 
 import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 public class ManagementPanelSplitPane extends PersistentVerticalSplitPane
 {
-	public ManagementPanelSplitPane(Component componentSplitted, SplitterPositionSaverAndGetter splitPositionSaverToUse,  String splitterNameToUse, Component topPanel, Component bottomPanel)
+	public ManagementPanelSplitPane(Container futureParent, SplitterPositionSaverAndGetter splitPositionSaverToUse,  String splitterNameToUse, Component topPanel, Component bottomPanel)
 	{
-		super(componentSplitted, splitPositionSaverToUse, splitterNameToUse);
+		super(futureParent, splitPositionSaverToUse, splitterNameToUse);
 
 		setTopComponent(topPanel);
 		setBottomComponent(bottomPanel);
