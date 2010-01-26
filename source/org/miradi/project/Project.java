@@ -1265,7 +1265,7 @@ public class Project
 			EAM.logError("Command Listener list was changed during fireCommandExecuted");
 	}
 	
-	private boolean shouldLog(final Command command, final Vector originalListenersList, final Vector copyForComparison)
+	private boolean shouldLog(final Command command, final Vector currentListenersList, final Vector copyForComparison)
 	{
 		if (viewSwitchCommandToIgnore(command))
 			return false;
