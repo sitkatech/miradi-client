@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-26 14:02-0600\n"
+"POT-Creation-Date: 2010-01-26 14:53-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -7366,7 +7366,7 @@ msgstr ""
 "muncul di daftar Anggota Tim dalam Tampilan Ringkasan"
 
 #: Miradi/source/org/miradi/dialogs/audience/AudienceSubPanel.java:60
-msgid "Title|Audience"
+msgid "Title|Audiences"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/treeRelevancy/StrategyActivityRelevancyTableModel.java:41
@@ -8899,7 +8899,7 @@ msgstr ""
 msgid "FieldLabel|54.Label|Name"
 msgstr ""
 
-msgid "FieldLabel|55.Label|Audience"
+msgid "FieldLabel|55.Label|Audiences"
 msgstr ""
 
 msgid "FieldLabel|55.PeopleCount|# of People in Audience"
