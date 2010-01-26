@@ -23,7 +23,6 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.util.LinkedHashSet;
 
-import org.miradi.database.ProjectServer;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -65,12 +64,7 @@ public class ProjectRepairer
 	void repair() throws Exception
 	{
 		repairUnsnappedNodes();
-		deleteOrphanAnnotations();
-		if (ProjectServer.DATA_VERSION <= DATA_VERSION_NON_EXISTANT_TAG_REFS_IN_DIAGRAM_OBJECT_FIXED)
-			repairDiagramObjectsReferringToNonExistantTags();
-		
-		if (ProjectServer.DATA_VERSION <= DATA_VERSION_NON_EXISTANT_TAG_REFS_IN_DIAGRAM_OBJECT_FIXED)
-			repairAssignmentsReferringToNonExistantData();	
+		deleteOrphanAnnotations();	
 	}
 	 
 	private void repairUnsnappedNodes()
@@ -324,6 +318,4 @@ public class ProjectRepairer
 	}
 
 	private Project project;
-	
-	private static final int DATA_VERSION_NON_EXISTANT_TAG_REFS_IN_DIAGRAM_OBJECT_FIXED = 36;
 }
