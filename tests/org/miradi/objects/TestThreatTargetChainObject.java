@@ -34,14 +34,14 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 	
 	public void testBasics() throws Exception
 	{
-		verifyThreatThreatTarget();
+		verifyThreatThreatStrategyTarget();
 		verifyThreatTargetTarget();
 		verifyThreatCauseTarget();
 		veriftThreat1TargetThreat2Target();
 		verifyThreatTarget1ThreatTarget2();		
 	}
 
-	private void verifyThreatThreatTarget() throws Exception
+	private void verifyThreatThreatStrategyTarget() throws Exception
 	{
 		DiagramFactor threat1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
 		getProject().enableAsThreat(threat1.getWrappedORef());
@@ -50,15 +50,19 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		getProject().enableAsThreat(threat2.getWrappedORef());
 		
 		DiagramFactor target = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
+		DiagramFactor strategy = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Strategy.getObjectType());
 		
-		//threat1 -> threat2 -> target
+		//threat1 -> threat2 -> strategy -> target
 		getProject().createDiagramLinkAndAddToDiagram(threat1, threat2); 
-		getProject().createDiagramLinkAndAddToDiagram(threat2, target);			
+		getProject().createDiagramLinkAndAddToDiagram(threat2, strategy);			
+		getProject().createDiagramLinkAndAddToDiagram(strategy, target);
 		
 		ThreatTargetChainObject chainObject = new ThreatTargetChainObject(getProject());
+		verifySingleUpstreamThreat(chainObject, threat1.getWrappedFactor(), target.getWrappedFactor());
 		verifySingleUpstreamThreat(chainObject, threat2.getWrappedFactor(), target.getWrappedFactor());
 		verifySingleDownstreamTarget(chainObject, threat1.getWrappedFactor(), target.getWrappedFactor());
 		verifySingleDownstreamTarget(chainObject, threat2.getWrappedFactor(), target.getWrappedFactor());
+		verifyDoubleUpstreamThreats(chainObject, threat1.getWrappedFactor(), threat2.getWrappedFactor(), target.getWrappedFactor());
 	}
 	
 	private void verifyThreatTargetTarget() throws Exception
@@ -161,7 +165,7 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 	private void verifySingleUpstreamThreat(ThreatTargetChainObject chainObject, Factor threat, Factor target)
 	{
 		HashSet<Factor> upstreamThreats = chainObject.getUpstreamThreatsFromTarget(target);
-		assertEquals("wrong threat count?", 1, upstreamThreats.size());
+		assertTrue("threat is not in chain?", upstreamThreats.contains(threat));
 		assertTrue("wrong threat in list?", upstreamThreats.contains(threat));
 	}
 	
