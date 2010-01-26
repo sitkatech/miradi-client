@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-26 14:53-0600\n"
+"POT-Creation-Date: 2010-01-26 14:57-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -8706,9 +8706,6 @@ msgstr "Contacto con el asociado de monitoreo"
 
 msgid "FieldLabel|38.Cohort|Cohort"
 msgstr "Cohorte"
-
-msgid "FieldLabel|38.Audience|Audience"
-msgstr "Público"
 
 msgid "FieldLabel|39.OrganizationalFocus|Organizational Focus"
 msgstr "Centro organizativo"
@@ -30208,6 +30205,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "FieldLabel|38.Audience|Audience"
+#~ msgstr "Público"
 
 #~ msgid "FieldLabel|38.ThreatsAddressedNotes|Threats Addressed"
 #~ msgstr "Amenazas abordadas"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-26 14:53-0600\n"
+"POT-Creation-Date: 2010-01-26 14:57-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -8678,9 +8678,6 @@ msgstr "Kontak Mitra Pemantauan "
 
 msgid "FieldLabel|38.Cohort|Cohort"
 msgstr "Kohor"
-
-msgid "FieldLabel|38.Audience|Audience"
-msgstr "Khalayak"
 
 msgid "FieldLabel|39.OrganizationalFocus|Organizational Focus"
 msgstr "Fokus Organisasi "
@@ -29967,6 +29964,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "FieldLabel|38.Audience|Audience"
+#~ msgstr "Khalayak"
 
 #~ msgid "FieldLabel|38.ThreatsAddressedNotes|Threats Addressed"
 #~ msgstr "Ancaman Ditanggapi "
