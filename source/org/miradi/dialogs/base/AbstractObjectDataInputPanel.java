@@ -32,26 +32,28 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.border.AbstractBorder;
 import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.martus.swing.UiLabel;
 import org.miradi.commands.CommandDeleteObject;
+import org.miradi.dialogfields.EditableCodeListField;
 import org.miradi.dialogfields.IndicatorRelevancyOverrideListField;
 import org.miradi.dialogfields.ObjectCheckBoxField;
 import org.miradi.dialogfields.ObjectChoiceField;
 import org.miradi.dialogfields.ObjectClassificationChoiceField;
 import org.miradi.dialogfields.ObjectCodeEditorField;
-import org.miradi.dialogfields.EditableCodeListField;
 import org.miradi.dialogfields.ObjectCurrencyInputField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogfields.ObjectDateChooserInputField;
 import org.miradi.dialogfields.ObjectExpandingMultilineInputField;
+import org.miradi.dialogfields.ObjectFloatingPointRestrictedInputField;
 import org.miradi.dialogfields.ObjectIconChoiceField;
 import org.miradi.dialogfields.ObjectMultilineDisplayField;
-import org.miradi.dialogfields.ObjectFloatingPointRestrictedInputField;
 import org.miradi.dialogfields.ObjectOverridenListField;
 import org.miradi.dialogfields.ObjectPercentageInputField;
 import org.miradi.dialogfields.ObjectRadioButtonGroupField;
@@ -301,13 +303,31 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 	public void addSubPanelWithTitledBorder(AbstractObjectDataInputPanel subPanel)
 	{
-		PanelTitledBorder titledBorder = new PanelTitledBorder(subPanel.getPanelDescription());
+		CompoundBorder border = createTitledBorder(subPanel.getPanelDescription());
+		addSubPanelWithBorder(subPanel, border);
+	}
+	
+	public void addSubPanelWithLineBorder(AbstractObjectDataInputPanel subPanel)
+	{
+		CompoundBorder border = createTitledBorder("");
+		addSubPanelWithBorder(subPanel, border);
+	}
+
+	private CompoundBorder createTitledBorder(String borderTitle)
+	{
+		PanelTitledBorder titledBorder = new PanelTitledBorder(borderTitle);
 		final int TOP = 0;
 		final int LEFT = 0;
 		final int BOTTOM = 10;
 		final int RIGHT = 0;
 		Border cushion = BorderFactory.createEmptyBorder(TOP, LEFT, BOTTOM, RIGHT);
-		subPanel.setBorder(BorderFactory.createCompoundBorder(cushion, titledBorder));
+		
+		return BorderFactory.createCompoundBorder(cushion, titledBorder);
+	}
+	
+	private void addSubPanelWithBorder(AbstractObjectDataInputPanel subPanel, AbstractBorder border)
+	{
+		subPanel.setBorder(border);
 		addSubPanelWithoutTitledBorder(subPanel);
 	}
 
