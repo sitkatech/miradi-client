@@ -154,7 +154,20 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		ORefList groupBoxChildren = getDiagramFactor().getGroupBoxChildrenRefs();
 		for (int childIndex = 0; childIndex < groupBoxChildren.size(); ++childIndex)
 		{
+			ORef diagramFactorRef = groupBoxChildren.get(childIndex);
+			if(diagramFactorRef.isInvalid())
+			{
+				EAM.logError("Group box child invalid in: " + getDiagramFactor().getRef());
+				continue;
+			}
+			
 			DiagramFactor groupBoxChild = DiagramFactor.find(getProject(), groupBoxChildren.get(childIndex));
+			if(groupBoxChild == null || groupBoxChild.getWrappedORef().isInvalid())
+			{
+				EAM.logError("Wrapped factor invalid in: " + groupBoxChild.getRef());
+				continue;
+			}
+
 			if (shouldIgnoreDrafts && groupBoxChild.getWrappedFactor().isStatusDraft())
 				continue;
 			
