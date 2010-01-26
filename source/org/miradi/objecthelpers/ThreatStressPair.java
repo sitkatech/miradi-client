@@ -57,14 +57,12 @@ public class ThreatStressPair
 
 	private static ORefList getTsrReferrerRefsToStress(Project projectToUse, ORef stressRefToUse)
 	{
-		Stress stress = Stress.find(projectToUse, stressRefToUse);
-		return stress.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+		return new ORefList(projectToUse.getObjectManager().getReferringObjects(stressRefToUse));
 	}
-	
+
 	private static ORefList getTsrReferrerRefsToThreat(Project projectToUse, ORef threatRefToUse)
 	{
-		Cause threat = Cause.find(projectToUse, threatRefToUse);
-		return threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+		return new ORefList(projectToUse.getObjectManager().getReferringObjects(threatRefToUse));
 	}
 	
 	public ORef getThreatRef()

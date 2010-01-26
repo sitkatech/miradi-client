@@ -118,6 +118,12 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		for(ORef threatStressRatingRef : allThreatStressRatingRefs)
 		{
 			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRef);
+			if (threatStressRating.getStressRef().isInvalid() || threatStressRating.getThreatRef().isInvalid())
+			{
+				EAM.logError("ThreatStressRating: " + threatStressRatingRef + " has an invalid stress or threat ref");
+				continue;
+			}
+			
 			threatStressPairs.add(new ThreatStressPair(getProject(), threatStressRating));
 		}
 		
