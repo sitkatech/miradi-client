@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-21 07:19-0600\n"
+"POT-Creation-Date: 2010-01-26 14:02-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -279,7 +279,7 @@ msgid "Import Accounting Codes"
 msgstr "Impor Kode Akuntansi "
 
 #: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:71
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:105
+#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:111
 msgid "Import Completed"
 msgstr "Impor Selesai "
 
@@ -1128,21 +1128,21 @@ msgstr "Hapus Sumber Daya"
 msgid "Choose Relevant Indicator(s)"
 msgstr "Pilih Indikator(-indikator) yang Relevan "
 
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:59
+#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:60
 msgid "Import Project"
 msgstr "Impor Proyek "
 
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:88
+#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:89
 msgid ""
 "This CPMZ file cannot be imported because it is an \n"
 "older version that is no longer supported."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:119
+#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:125
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Impor gagal: <br><p> %s </p></html> "
 
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:140
+#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:146
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
