@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-26 14:53-0600\n"
+"POT-Creation-Date: 2010-01-26 14:57-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -8498,9 +8498,6 @@ msgstr "监控伙伴联系方式 \t\t"
 
 msgid "FieldLabel|38.Cohort|Cohort"
 msgstr "合伙人 \t\t"
-
-msgid "FieldLabel|38.Audience|Audience"
-msgstr "观众 \t\t"
 
 msgid "FieldLabel|39.OrganizationalFocus|Organizational Focus"
 msgstr "组织机构关注焦点 \t\t"
@@ -27326,6 +27323,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "FieldLabel|38.Audience|Audience"
+#~ msgstr "观众 \t\t"
 
 #~ msgid "FieldLabel|38.ThreatsAddressedNotes|Threats Addressed"
 #~ msgstr "威胁因子得以解决 \t\t"

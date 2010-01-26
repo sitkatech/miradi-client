@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-26 14:53-0600\n"
+"POT-Creation-Date: 2010-01-26 14:57-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -8304,9 +8304,6 @@ msgid "FieldLabel|38.MonitoringPartnerContactNotes|Monitoring Partner Contact"
 msgstr ""
 
 msgid "FieldLabel|38.Cohort|Cohort"
-msgstr ""
-
-msgid "FieldLabel|38.Audience|Audience"
 msgstr ""
 
 msgid "FieldLabel|39.OrganizationalFocus|Organizational Focus"
