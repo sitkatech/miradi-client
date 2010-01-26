@@ -25,6 +25,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.Collections;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
@@ -1270,14 +1271,26 @@ public class Project
 		if (viewSwitchCommandToIgnore(command))
 			return false;
 		
-		boolean differentSize = !(copyForComparison.size() == getCommandListenerCount());
-		if (differentSize)
-			return true;
+		Vector<String> originalList = extractClassNames(currentListenersList);
+		Collections.sort(originalList);
 		
-		boolean differentContent = !commandExecutedListeners.containsAll(copyForComparison);
-		return differentContent;
+		Vector<String> copy = extractClassNames(copyForComparison);
+		Collections.sort(copy);
+		
+		return !copy.equals(originalList);
 	}
 	
+	private Vector<String> extractClassNames(Vector<CommandExecutedListener> listToGetClassNamesFrom)
+	{
+		Vector<String> classNames = new Vector<String>();
+		for(CommandExecutedListener listener : listToGetClassNamesFrom)
+		{
+			classNames.add(listener.getClass().getName());
+		}
+		
+		return classNames;
+	}
+
 	private boolean viewSwitchCommandToIgnore(Command command)
 	{
 		if (!command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
