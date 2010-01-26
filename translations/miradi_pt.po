@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-26 14:57-0600\n"
+"POT-Creation-Date: 2010-01-26 15:56-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -1818,15 +1818,15 @@ msgstr ""
 msgid "Custom Reports"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:182
+#: Miradi/source/org/miradi/project/Project.java:183
 msgid " A project by this name already exists: "
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:188
+#: Miradi/source/org/miradi/project/Project.java:189
 msgid "A file or folder exist by the same name:"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:946
+#: Miradi/source/org/miradi/project/Project.java:947
 msgid "[No Project]"
 msgstr ""
 
