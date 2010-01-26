@@ -35,7 +35,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Task;
 import org.miradi.utils.EnhancedJsonObject;
@@ -172,18 +171,5 @@ public class TestProjectRepairer extends TestCaseWithProject
 		ORefList selectedTagRefs = diagramObject.getSelectedTaggedObjectSetRefs();
 		assertEquals("wrong selected tag count after project repair?", 1, selectedTagRefs.size());
 		assertTrue("did not contain tag?", selectedTagRefs.contains(taggedObjectSet.getRef()));
-	}
-	
-	public void testRepairAssignmentsReferringToNonExistantData() throws Exception
-	{
-		ResourceAssignment assignment = getProject().createResourceAssignment();
-		assignment.setData(ResourceAssignment.TAG_ACCOUNTING_CODE, new BaseId(40000).toString());
-		assignment.setData(ResourceAssignment.TAG_FUNDING_SOURCE, new BaseId(50000).toString());
-		
-		ProjectRepairer repairer = new ProjectRepairer(getProject());
-		repairer.repairAssignmentsReferringToNonExistantData();
-		
-		assertTrue("assignment refers to valid accounting code?", assignment.getAccountingCodeRef().isInvalid());
-		assertTrue("assignment refers to valid funding source?", assignment.getFundingSourceRef().isInvalid());
 	}	
 }
