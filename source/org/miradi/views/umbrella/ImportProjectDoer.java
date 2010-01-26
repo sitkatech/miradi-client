@@ -27,6 +27,7 @@ import javax.swing.filechooser.FileFilter;
 import org.martus.swing.UiFileChooser;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.CpmzVersionTooOldException;
+import org.miradi.exceptions.FutureVersionException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
@@ -92,6 +93,11 @@ public abstract class ImportProjectDoer extends ViewDoer
 		{
 			EAM.logException(e);
 			showImportFailedErrorDialog(e.getMessage());
+		}
+		catch (FutureVersionException e)
+		{
+			EAM.logException(e);
+			showImportFailedErrorDialog("Project cannot be imported because it was created by a newer version of Miradi");
 		}
 		catch(Exception e)
 		{
