@@ -84,12 +84,14 @@ public class ObjectStringInputField extends ObjectTextInputField
 		}
 	}
 
+	@Override
 	public void setText(String newValue)
 	{
 		newValue.replaceAll("\n", " ");
 		super.setText(newValue);
 	}
 
+	@Override
 	public void focusGained(FocusEvent e)
 	{
 		super.focusGained(e);
