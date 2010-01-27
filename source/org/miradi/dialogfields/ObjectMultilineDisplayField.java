@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import org.miradi.ids.BaseId;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 
 public class ObjectMultilineDisplayField extends ObjectMultilineInputField
 {
-	public ObjectMultilineDisplayField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
+	public ObjectMultilineDisplayField(MainWindow mainWindow, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, 1, 50);
+		super(mainWindow, objectTypeToUse, objectIdToUse, tagToUse, 1, 50);
 		setEditable(false);
 		getComponent().setFocusable(false);
 	}
