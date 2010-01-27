@@ -341,7 +341,7 @@ public class EAM
 		for(String token : tokens)
 		{
 			String replacement = tokenReplacementMap.get(token);
-			text = text.replaceAll(token, replacement);
+			text = substitute(text, token, replacement);
 		}
 		
 		return text;
@@ -354,10 +354,7 @@ public class EAM
 	
 	public static String substitute(String text, String token, String replacement)
 	{
-		HashMap<String, String> tokeReplacementMap = new HashMap<String, String>();
-		tokeReplacementMap.put(token, replacement);
-		
-		return substitute(text, tokeReplacementMap);
+		return text.replaceAll(token, replacement);
 	}
 
 	public static String fieldLabel(int objectType, String fieldTag)
