@@ -59,11 +59,13 @@ public class ObjectRadioButtonGroupField extends ObjectDataInputField
 		setText("");
 	}
 
+	@Override
 	public JComponent getComponent()
 	{
 		return panel;
 	}
 
+	@Override
 	public String getText()
 	{
 		for(String code: buttonsByCode.keySet())
@@ -77,6 +79,7 @@ public class ObjectRadioButtonGroupField extends ObjectDataInputField
 		return "";
 	}
 
+	@Override
 	public void setText(String newValue)
 	{
 		JRadioButton button = buttonsByCode.get(newValue);
@@ -88,6 +91,7 @@ public class ObjectRadioButtonGroupField extends ObjectDataInputField
 		saveSelection();
 	}
 	
+	@Override
 	public void updateEditableState()
 	{
 		for(JRadioButton button : buttonsByCode.values())
