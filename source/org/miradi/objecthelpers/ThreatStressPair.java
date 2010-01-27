@@ -57,17 +57,18 @@ public class ThreatStressPair
 
 	private static ORefList getTsrReferrerRefsToStress(Project projectToUse, ORef stressRefToUse)
 	{
-		return getReferringObjectRefs(projectToUse, stressRefToUse);
+		return getReferringThreatStressRatingRefs(projectToUse, stressRefToUse);
 	}
 
 	private static ORefList getTsrReferrerRefsToThreat(Project projectToUse, ORef threatRefToUse)
 	{
-		return getReferringObjectRefs(projectToUse, threatRefToUse);
+		return getReferringThreatStressRatingRefs(projectToUse, threatRefToUse);
 	}
 	
-	private static ORefList getReferringObjectRefs(Project projectToUse, ORef refToUse)
+	private static ORefList getReferringThreatStressRatingRefs(Project projectToUse, ORef refToUse)
 	{
-		return new ORefList(projectToUse.getObjectManager().getReferringObjects(refToUse));
+		ORefList rawRefList = new ORefList(projectToUse.getObjectManager().getReferringObjects(refToUse));
+		return rawRefList.getFilteredBy(ThreatStressRating.getObjectType());
 	}
 	
 	public ORef getThreatRef()
