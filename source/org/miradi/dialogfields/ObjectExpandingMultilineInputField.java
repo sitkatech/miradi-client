@@ -21,7 +21,6 @@ package org.miradi.dialogfields;
 
 import java.awt.event.FocusEvent;
 
-import org.martus.swing.UiTextArea;
 import org.miradi.ids.BaseId;
 import org.miradi.project.Project;
 
@@ -30,12 +29,6 @@ public class ObjectExpandingMultilineInputField extends ObjectMultilineInputFiel
 	public ObjectExpandingMultilineInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, 1, columnsToUse);
-	}
-
-	@Override
-	UiTextArea getTextComponent()
-	{
-		return (UiTextArea)getComponent();
 	}
 
 	public void focusGained(FocusEvent e)
