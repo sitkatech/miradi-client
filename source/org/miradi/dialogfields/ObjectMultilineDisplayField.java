@@ -19,12 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import org.martus.swing.UiTextArea;
-import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.ids.BaseId;
 import org.miradi.project.Project;
 
-public class ObjectMultilineDisplayField extends ObjectTextInputField
+public class ObjectMultilineDisplayField extends ObjectMultilineInputField
 {
 	public ObjectMultilineDisplayField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
 	{
@@ -33,9 +31,7 @@ public class ObjectMultilineDisplayField extends ObjectTextInputField
 	
 	private ObjectMultilineDisplayField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnCount)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(1, columnCount));
-		((UiTextArea)getComponent()).setWrapStyleWord(true);
-		((UiTextArea)getComponent()).setLineWrap(true);
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, 1, columnCount);
 		setEditable(false);
 		getComponent().setFocusable(false);
 	}
