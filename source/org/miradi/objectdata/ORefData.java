@@ -32,11 +32,13 @@ public class ORefData extends ObjectData
 		ref = ORef.INVALID;
 	}
 	
+	@Override
 	public ORef getRef()
 	{
 		return ref;
 	}
 	
+	@Override
 	public ORefList getRefList()
 	{
 		return new ORefList(new ORef[] {ref});
@@ -47,6 +49,7 @@ public class ORefData extends ObjectData
 		return !ref.equals(ORef.INVALID);
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof ORefData))
@@ -61,11 +64,13 @@ public class ORefData extends ObjectData
 		return ref.toJson();
 	}
 	
+	@Override
 	public String get()
 	{
 		return ref.toString();
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return ref.hashCode();
@@ -76,6 +81,7 @@ public class ORefData extends ObjectData
 		ref = refToUse;
 	}
 	 
+	@Override
 	public void set(String newValue) throws Exception
 	{
 		if(newValue.length() == 0)
@@ -84,6 +90,7 @@ public class ORefData extends ObjectData
 			ref = new ORef(new EnhancedJsonObject(newValue));
 	}
 
+	@Override
 	public void toXml(UnicodeWriter out) throws Exception
 	{
 		startTagToXml(out);
