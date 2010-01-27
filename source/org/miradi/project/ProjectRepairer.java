@@ -30,6 +30,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objectpools.PoolWithIdAssigner;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -60,6 +61,7 @@ public class ProjectRepairer
 	
 	void repair() throws Exception
 	{
+		deleteCorruptedThreatStressRatings();
 		repairUnsnappedNodes();
 		deleteOrphanAnnotations();	
 	}
@@ -150,6 +152,20 @@ public class ProjectRepairer
 		EAM.logException(e);
 	}
 	
+	private void deleteCorruptedThreatStressRatings() throws Exception
+	{
+		getProject().beginCommandSideEffectMode();
+		try
+		{
+			ThreatStressRatingEnsurer ensurer = new ThreatStressRatingEnsurer(getProject());
+			ensurer.createOrDeleteThreatStressRatingsAsNeeded();
+		}
+		finally
+		{
+			getProject().endCommandSideEffectMode();
+		}
+	}
+
 	private void possiblyShowMissingObjectsWarningDialog() throws Exception
 	{
 		ORefList missingObjectRefs = findAllMissingObjects();
