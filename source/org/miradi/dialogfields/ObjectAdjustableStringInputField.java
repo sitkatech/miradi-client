@@ -22,7 +22,6 @@ package org.miradi.dialogfields;
 import javax.swing.event.UndoableEditEvent;
 import javax.swing.event.UndoableEditListener;
 import javax.swing.text.Document;
-import javax.swing.text.JTextComponent;
 
 import org.miradi.ids.BaseId;
 import org.miradi.project.Project;
@@ -34,7 +33,7 @@ public class ObjectAdjustableStringInputField extends ObjectStringInputField
 		super(projectToUse, objectType, objectId, tag, columnsToUse, document);
 		
 		DocumentEventHandler handler = new DocumentEventHandler();
-		((JTextComponent)getComponent()).getDocument().addUndoableEditListener(handler);
+		getTextField().getDocument().addUndoableEditListener(handler);
 		columns = columnsToUse;
 	}
 
