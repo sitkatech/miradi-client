@@ -26,12 +26,7 @@ public class ObjectMultilineDisplayField extends ObjectMultilineInputField
 {
 	public ObjectMultilineDisplayField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
 	{
-		this(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, 50);
-	}
-	
-	private ObjectMultilineDisplayField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnCount)
-	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, 1, columnCount);
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, 1, 50);
 		setEditable(false);
 		getComponent().setFocusable(false);
 	}
