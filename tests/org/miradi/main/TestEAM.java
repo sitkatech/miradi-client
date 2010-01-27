@@ -28,7 +28,7 @@ public class TestEAM extends EAMTestCase
 		super(name);
 	}
 
-	public void testSubstitude()
+	public void testSubstitute()
 	{
 		String beforeSubstitute = "some text with %s";
 		String substituteString = "some more text";
