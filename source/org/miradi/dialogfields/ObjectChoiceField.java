@@ -47,11 +47,13 @@ public class ObjectChoiceField extends ObjectDataInputField
 		return new ComboChangeHandler();
 	}
 	
+	@Override
 	public JComponent getComponent()
 	{
 		return combo;
 	}
 
+	@Override
 	public String getText()
 	{
 		ChoiceItem selected = (ChoiceItem)combo.getSelectedItem();
@@ -60,6 +62,7 @@ public class ObjectChoiceField extends ObjectDataInputField
 		return selected.getCode();
 	}
 
+	@Override
 	public void setText(String code)
 	{
 		for(int i = 0; i < combo.getItemCount(); ++i)
@@ -74,6 +77,7 @@ public class ObjectChoiceField extends ObjectDataInputField
 		combo.setSelectedIndex(-1);
 	}
 
+	@Override
 	public void updateEditableState()
 	{
 		combo.setEnabled(isValidObject());
