@@ -55,6 +55,7 @@ public class ObjectReadonlyChoiceField extends ObjectDataInputField
 
 	}
 	
+	@Override
 	public void setText(String code)
 	{
 		ChoiceItem choice = getRatingChoice(code);
@@ -76,16 +77,19 @@ public class ObjectReadonlyChoiceField extends ObjectDataInputField
 		return question.findChoiceByCode(text);
 	}
 
+	@Override
 	public JComponent getComponent()
 	{
 		return component;
 	}
 
+	@Override
 	public String getText()
 	{
 		return currentCode;
 	}
 
+	@Override
 	public void updateEditableState()
 	{
 	}
