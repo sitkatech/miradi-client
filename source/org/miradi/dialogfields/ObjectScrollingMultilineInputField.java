@@ -21,7 +21,6 @@ package org.miradi.dialogfields;
 
 import javax.swing.JComponent;
 
-import org.martus.swing.UiTextArea;
 import org.miradi.ids.BaseId;
 import org.miradi.project.Project;
 import org.miradi.utils.MiradiScrollPane;
@@ -40,12 +39,6 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 		return scrollPane;
 	}
 
-	@Override
-	UiTextArea getTextComponent()
-	{
-		return (UiTextArea)super.getComponent();
-	}
-	
 	@Override
 	protected void addFocusListener()
 	{

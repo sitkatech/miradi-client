@@ -39,5 +39,8 @@ public abstract class ObjectMultilineInputField extends ObjectTextInputField
 		return new PanelTextArea(initialVisibleRows, columnsToUse);
 	}
 
-	abstract UiTextArea getTextComponent();
+	UiTextArea getTextComponent()
+	{
+		return (UiTextArea)getTextField();
+	}
 }
