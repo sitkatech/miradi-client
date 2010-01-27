@@ -459,7 +459,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createMultilineField(int objectType, String tag, int columns)
 	{
-		return new ObjectScrollingMultilineInputField(project, objectType, getObjectIdForType(objectType), tag, columns);
+		return new ObjectScrollingMultilineInputField(getMainWindow(), objectType, getObjectIdForType(objectType), tag, columns);
 	}
 	
 	
@@ -475,7 +475,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createExpandableField(int objectType, String tag, int columns)
 	{
-		return new ObjectExpandingMultilineInputField(project, objectType, getObjectIdForType(objectType), tag, columns);
+		return new ObjectExpandingMultilineInputField(getMainWindow(), objectType, getObjectIdForType(objectType), tag, columns);
 	}
 
 	public ObjectDataInputField createOverridenObjectListField(String tag, ChoiceQuestion question)
@@ -538,12 +538,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createReadonlyTextField(String tag)
 	{
-		return new ObjectMultilineDisplayField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag);
+		return new ObjectMultilineDisplayField(getMainWindow(), getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag);
 	}
 	
 	public ObjectDataInputField createReadonlyTextField(int objectType, String tag)
 	{
-		return new ObjectMultilineDisplayField(project, objectType, getObjectIdForType(objectType), tag);
+		return new ObjectMultilineDisplayField(getMainWindow(), objectType, getObjectIdForType(objectType), tag);
 	}
 	
 	public ObjectDataInputField createChoiceField(int objectType, String tagToUse, ChoiceQuestion question)

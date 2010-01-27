@@ -22,20 +22,23 @@ package org.miradi.dialogfields;
 import javax.swing.JComponent;
 
 import org.miradi.ids.BaseId;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiScrollPane;
 
 public class ObjectScrollingMultilineInputField extends ObjectMultilineInputField
 {
-	public ObjectScrollingMultilineInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse)
+	public ObjectScrollingMultilineInputField(MainWindow mainWindow, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT, columnsToUse);
+		super(mainWindow, objectTypeToUse, objectIdToUse, tagToUse, INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT, columnsToUse);
 	}
 
 	public JComponent getComponent()
 	{
 		if(scrollPane == null)
-			scrollPane = new MiradiScrollPane(getTextComponent());
+		{
+			scrollPane = new MiradiScrollPane(getTextField());
+			scrollPane.setVerticalScrollBarPolicy(scrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		}
 		return scrollPane;
 	}
 
@@ -43,7 +46,7 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 	protected void addFocusListener()
 	{
 		super.addFocusListener();
-		getTextComponent().addFocusListener(this);
+		getTextField().addFocusListener(this);
 	}
 
 	private MiradiScrollPane scrollPane;
