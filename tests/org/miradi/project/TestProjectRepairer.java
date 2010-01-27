@@ -27,12 +27,14 @@ import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -41,6 +43,32 @@ public class TestProjectRepairer extends TestCaseWithProject
 	public TestProjectRepairer(String name)
 	{
 		super(name);
+	}
+	
+	public void testDeleteDefectiveThreatStressRatings() throws Exception
+	{
+		getProject().disableThreatStressRatingEnsurer();		
+		createThreatThreatTargetLinkedFactors();
+		
+		assertEquals("Incorrect threat stress rating count?", 0, getProject().getThreatStressRatingPool().size());
+		ProjectRepairer.repairAnyProblems(getProject());
+		assertEquals("Incorrect threat stress rating count?", 2, getProject().getThreatStressRatingPool().size());
+	}
+
+	private void createThreatThreatTargetLinkedFactors() throws Exception
+	{
+		DiagramFactor threat1 = getProject().createAndAddFactorToDiagram(Cause.getObjectType());
+		getProject().enableAsThreat((Cause) threat1.getWrappedFactor());
+		
+		DiagramFactor threat2 = getProject().createAndAddFactorToDiagram(Cause.getObjectType());
+		getProject().enableAsThreat((Cause) threat2.getWrappedFactor());
+		
+		DiagramFactor target = getProject().createAndAddFactorToDiagram(Target.getObjectType());
+		ORefList stressRefs = new ORefList(getProject().createAndPopulateStress().getRef());
+		getProject().fillObjectUsingCommand(target.getWrappedORef(), Target.TAG_STRESS_REFS, stressRefs.toString());
+		
+		getProject().createDiagramFactorLink(threat2, threat1);
+		getProject().createDiagramFactorLink(threat1, target);
 	}
 	
 	public void testDeleteOrphanObjectives() throws Exception
