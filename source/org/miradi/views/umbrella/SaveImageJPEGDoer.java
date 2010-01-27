@@ -32,11 +32,13 @@ import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 public class SaveImageJPEGDoer extends AbstractImageSaverDoer
 {
+	@Override
 	protected EAMFileSaveChooser createFileChooser()
 	{
 		return new EAMJPGFileChooser(getMainWindow());
 	}
 	
+	@Override
 	public void saveImage(OutputStream out, BufferedImage image) throws IOException
 	{
 		saveJpeg(out, image);
