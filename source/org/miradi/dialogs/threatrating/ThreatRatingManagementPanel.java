@@ -39,8 +39,7 @@ public class ThreatRatingManagementPanel extends ObjectManagementPanel
 		ThreatRatingMultiTablePanel multiTablePanel = new ThreatRatingMultiTablePanel(mainWindowToUse);
 		AbstractObjectDataInputPanel propertiesPanel = new ThreatRatingMultiPropertiesPanel(mainWindowToUse, multiTablePanel);
 		
-		ThreatRatingUpperPanel tablePanel =  ThreatRatingUpperPanel.createThreatStressRatingListTablePanel(
-				mainWindowToUse, multiTablePanel, propertiesPanel);
+		ThreatRatingUpperPanel tablePanel =  ThreatRatingUpperPanel.createThreatStressRatingListTablePanel(mainWindowToUse, multiTablePanel, propertiesPanel);
 		
 		return new ThreatRatingManagementPanel(mainWindowToUse, tablePanel, propertiesPanel);
 	}
@@ -52,36 +51,43 @@ public class ThreatRatingManagementPanel extends ObjectManagementPanel
 		threatRatingUpperPanel = listTablePanel;
 	}
 
+	@Override
 	public String getSplitterDescription()
 	{
 		return getPanelDescription() + SPLITTER_TAG;
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return PANEL_DESCRIPTION;
 	}
 	
+	@Override
 	public Icon getIcon()
 	{
 		return new StressIcon();
 	}
 	
+	@Override
 	public Class getJumpActionClass()
 	{
 		return null;
 	}
 	
+	@Override
 	public TableExporter getTableExporter() throws Exception
 	{
 		return threatRatingUpperPanel.getMultiTablePanel().createTableForExporting();
 	}
 	
+	@Override
 	public boolean isRtfExportable()
 	{
 		return true;
 	}		
 
+	@Override
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
 		new RtfManagementExporter(getProject()).writeManagement(getTableExporter(), writer);
