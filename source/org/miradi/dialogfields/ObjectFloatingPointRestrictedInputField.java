@@ -23,7 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.project.Project;
 import org.miradi.utils.FloatingPointRestrictedDocument;
 
-public class ObjectFloatingPointRestrictedInputField extends ObjectAdjustableStringInputField
+public class ObjectFloatingPointRestrictedInputField extends ObjectStringInputFieldWithLengthLimit
 {
 	public ObjectFloatingPointRestrictedInputField(Project projectToUse, int objectType, BaseId objectId, String tag, int columnCount)
 	{
