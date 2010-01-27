@@ -55,16 +55,19 @@ public class ObjectTextInputField extends ObjectDataInputField
 		setDefaultFieldBorder();
 	}	
 
+	@Override
 	public JComponent getComponent()
 	{
 		return field;
 	}
 
+	@Override
 	public String getText()
 	{
 		return field.getText();
 	}
 
+	@Override
 	public void setText(String newValue)
 	{
 		setTextWithoutScrollingToMakeFieldVisible(newValue);
@@ -79,6 +82,7 @@ public class ObjectTextInputField extends ObjectDataInputField
 		caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 	}
 
+	@Override
 	public void updateEditableState()
 	{
 		boolean editable = allowEdits() && isValidObject();
