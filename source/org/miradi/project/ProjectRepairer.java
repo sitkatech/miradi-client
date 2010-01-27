@@ -154,16 +154,8 @@ public class ProjectRepairer
 	
 	private void fixAnyProblemsWithThreatStressRatings() throws Exception
 	{
-		getProject().beginCommandSideEffectMode();
-		try
-		{
-			ThreatStressRatingEnsurer ensurer = new ThreatStressRatingEnsurer(getProject());
-			ensurer.createOrDeleteThreatStressRatingsAsNeeded();
-		}
-		finally
-		{
-			getProject().endCommandSideEffectMode();
-		}
+		ThreatStressRatingEnsurer ensurer = new ThreatStressRatingEnsurer(getProject());
+		ensurer.createOrDeleteThreatStressRatingsAsNeeded();
 	}
 
 	private void possiblyShowMissingObjectsWarningDialog() throws Exception
