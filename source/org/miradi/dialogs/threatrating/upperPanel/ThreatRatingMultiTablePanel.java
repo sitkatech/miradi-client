@@ -44,6 +44,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MainThreatTableModelExporter;
 import org.miradi.utils.TableExporter;
+import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 import org.miradi.utils.ThreatNameTableModelExporter;
 import org.miradi.utils.ThreatTargetTableModelExporter;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -73,13 +74,19 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		overallProjectSummaryCellTable.dispose();	
 	}
 	
-	public void updateAllTableAutomaticRowHeights()
+	public void updateAllTableAutomaticRowHeights() throws Exception
 	{
-		threatNameTable.updateAutomaticRowHeights();
-		targetThreatLinkTable.updateAutomaticRowHeights();
-		threatSummaryColumnTable.updateAutomaticRowHeights();
-		targetSummaryRowTable.updateAutomaticRowHeights();
-		overallProjectSummaryCellTable.updateAutomaticRowHeights();
+		updateTable(threatNameTable);
+		updateTable(targetThreatLinkTable);
+		updateTable(threatSummaryColumnTable);
+		updateTable(targetSummaryRowTable);
+		updateTable(overallProjectSummaryCellTable);
+	}
+	
+	private void updateTable(TableWithColumnWidthAndSequenceSaver tableToUpdate) throws Exception
+	{
+		tableToUpdate.updateAutomaticRowHeights();
+		tableToUpdate.updateToReflectNewColumns();
 	}
 	
 	private void addTablesToSelectionController()
