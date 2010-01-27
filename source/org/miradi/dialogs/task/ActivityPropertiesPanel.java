@@ -36,6 +36,11 @@ public class ActivityPropertiesPanel extends TaskPropertiesPanel
 	{
 		return true;
 	}
+	
+	@Override
+	protected void addBudgetSubPanels(ObjectPicker objectPickerToUse) throws Exception
+	{
+	}	
 
 	@Override
 	public String getPanelDescription()
