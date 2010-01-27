@@ -354,7 +354,10 @@ public class EAM
 	
 	public static String substitute(String text, String token, String replacement)
 	{
-		return text.replaceAll(token, replacement);
+		HashMap<String, String> tokeReplacementMap = new HashMap<String, String>();
+		tokeReplacementMap.put(token, replacement);
+		
+		return substitute(text, tokeReplacementMap);
 	}
 
 	public static String fieldLabel(int objectType, String fieldTag)
