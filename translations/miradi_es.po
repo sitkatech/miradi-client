@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-27 17:10-0600\n"
+"POT-Creation-Date: 2010-01-27 17:19-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -6712,11 +6712,11 @@ msgstr ""
 msgid "Summary Threat Rating"
 msgstr "Calificación de amenazas inmediatas"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:141
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:148
 msgid "Summary Target Ratings:"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:415
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:422
 msgid "<html><b>Overall<br>Project<br>Rating</b></html>"
 msgstr ""
 
