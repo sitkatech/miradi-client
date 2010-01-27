@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-27 12:31-0600\n"
+"POT-Creation-Date: 2010-01-27 12:49-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -352,8 +352,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:66
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:68
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
-#: Miradi/source/org/miradi/main/EAM.java:422
-#: Miradi/source/org/miradi/main/EAM.java:423
+#: Miradi/source/org/miradi/main/EAM.java:436
+#: Miradi/source/org/miradi/main/EAM.java:437
 msgid "Delete"
 msgstr "Eliminar"
 
@@ -802,7 +802,7 @@ msgid "Choose Indicator to Clone"
 msgstr "Seleccione el indicador para clonar."
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:66
-#: Miradi/source/org/miradi/main/EAM.java:422
+#: Miradi/source/org/miradi/main/EAM.java:436
 msgid "Retain"
 msgstr "Retener"
 
@@ -2466,7 +2466,7 @@ msgid "No date range for date Unit = "
 msgstr ""
 
 #: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:55
-#: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:82
+#: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:87
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:84
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
@@ -4559,15 +4559,15 @@ msgstr ""
 msgid "Unexpected error prevented installing that language pack"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:138
+#: Miradi/source/org/miradi/main/EAM.java:140
 msgid "Warning"
 msgstr "Advertencia"
 
-#: Miradi/source/org/miradi/main/EAM.java:357
+#: Miradi/source/org/miradi/main/EAM.java:371
 msgid "An unexpected error occurred: "
 msgstr "Se produjo un error inesperado"
 
-#: Miradi/source/org/miradi/main/EAM.java:358
+#: Miradi/source/org/miradi/main/EAM.java:372
 msgid ""
 "\n"
 "\n"
@@ -4577,22 +4577,22 @@ msgid ""
 "   "
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:361
+#: Miradi/source/org/miradi/main/EAM.java:375
 msgid ""
 "\n"
 "\n"
 "Miradi has attempted to save your latest changes, and will now exit."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:367
+#: Miradi/source/org/miradi/main/EAM.java:381
 msgid "An unexpected error has occurred"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:376
+#: Miradi/source/org/miradi/main/EAM.java:390
 msgid "Title|Error"
 msgstr "|Error "
 
-#: Miradi/source/org/miradi/main/EAM.java:578
+#: Miradi/source/org/miradi/main/EAM.java:592
 msgid "Wintitle|Information"
 msgstr "Información"
 
@@ -4608,8 +4608,8 @@ msgstr "Copiar"
 msgid "Paste"
 msgstr "Pegar"
 
-#: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:74
-msgid "%s: "
+#: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:81
+msgid "%countLabel: %itemCount"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/EditableCodeListField.java:50
