@@ -86,6 +86,7 @@ abstract public class TabbedView extends UmbrellaView
 		return null;
 	}
 	
+	@Override
 	public void setTabForStep(SkeletonWizardStep step)
 	{
 		String tabIdentifier = step.getTabIdentifier();
@@ -100,6 +101,7 @@ abstract public class TabbedView extends UmbrellaView
 		}
 	}
 	
+	@Override
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
@@ -131,6 +133,7 @@ abstract public class TabbedView extends UmbrellaView
 
 	}
 
+	@Override
 	public void becomeInactive() throws Exception
 	{
 		ignoreTabChanges = true;
@@ -348,6 +351,7 @@ abstract public class TabbedView extends UmbrellaView
 		return panel.getTableExporter();
 	}
 	
+	@Override
 	public JComponent getPrintableComponent() throws Exception
 	{
 		MiradiTabContentsPanelInterface panel = getSelectedTabPanel();
@@ -381,6 +385,7 @@ abstract public class TabbedView extends UmbrellaView
 		return panel.isRtfExportable();
 	}
 	
+	@Override
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
 		exportTabAsRtf(writer, getSelectedTabPanel());
@@ -393,6 +398,7 @@ abstract public class TabbedView extends UmbrellaView
 	}
 	
 
+	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
@@ -497,12 +503,14 @@ abstract public class TabbedView extends UmbrellaView
 	
 	public class MouseHandler extends MouseAdapter
 	{
+		@Override
 		public void mousePressed(MouseEvent event)
 		{
 			if(event.isPopupTrigger())
 				doRightClickMenu(event);
 		}
 
+		@Override
 		public void mouseReleased(MouseEvent event)
 		{
 			if(event.isPopupTrigger())
