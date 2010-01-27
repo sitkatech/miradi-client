@@ -51,7 +51,16 @@ public class TestProjectRepairer extends TestCaseWithProject
 		createThreatThreatTargetLinkedFactors();
 		
 		assertEquals("Incorrect threat stress rating count?", 0, getProject().getThreatStressRatingPool().size());
-		ProjectRepairer.repairAnyProblems(getProject());
+		getProject().beginCommandSideEffectMode();
+		try
+		{
+			ProjectRepairer.repairAnyProblems(getProject());
+		}
+		finally
+		{
+			getProject().endCommandSideEffectMode();
+		}
+
 		assertEquals("Incorrect threat stress rating count?", 2, getProject().getThreatStressRatingPool().size());
 	}
 
