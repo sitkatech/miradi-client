@@ -25,9 +25,9 @@ import org.miradi.utils.FloatingPointRestrictedDocument;
 
 public class ObjectFloatingPointRestrictedInputField extends ObjectAdjustableStringInputField
 {
-	public ObjectFloatingPointRestrictedInputField(Project projectToUse, int objectType, BaseId objectId, String tag, int column)
+	public ObjectFloatingPointRestrictedInputField(Project projectToUse, int objectType, BaseId objectId, String tag, int columnCount)
 	{
-		super(projectToUse, objectType, objectId, tag, column, new FloatingPointRestrictedDocument());
+		super(projectToUse, objectType, objectId, tag, columnCount, new FloatingPointRestrictedDocument());
 	}
 		
 	public ObjectFloatingPointRestrictedInputField(Project projectToUse, int objectType, BaseId objectId, String tag)
