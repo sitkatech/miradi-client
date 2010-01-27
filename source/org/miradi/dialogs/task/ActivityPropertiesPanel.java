@@ -37,9 +37,9 @@ public class ActivityPropertiesPanel extends TaskPropertiesPanel
 		return true;
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Activity Properties");
 	}
-
 }
