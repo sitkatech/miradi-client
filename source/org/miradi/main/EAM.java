@@ -29,6 +29,8 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Set;
 import java.util.prefs.Preferences;
 
 import javax.swing.JOptionPane;
@@ -331,6 +333,18 @@ public class EAM
 	public static String text(String key)
 	{
 		return Translation.text(key);
+	}
+	
+	public static String substitute(String text, HashMap<String, String> tokenReplacementMap)
+	{
+		Set<String> tokens = tokenReplacementMap.keySet();
+		for(String token : tokens)
+		{
+			String replacement = tokenReplacementMap.get(token);
+			text = text.replaceAll(token, replacement);
+		}
+		
+		return text;
 	}
 	
 	public static String substitute(String text, String replacement)
