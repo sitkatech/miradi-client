@@ -61,7 +61,7 @@ public class ProjectRepairer
 	
 	void repair() throws Exception
 	{
-		deleteCorruptedThreatStressRatings();
+		fixAnyProblemsWithThreatStressRatings();
 		repairUnsnappedNodes();
 		deleteOrphanAnnotations();	
 	}
@@ -152,7 +152,7 @@ public class ProjectRepairer
 		EAM.logException(e);
 	}
 	
-	private void deleteCorruptedThreatStressRatings() throws Exception
+	private void fixAnyProblemsWithThreatStressRatings() throws Exception
 	{
 		getProject().beginCommandSideEffectMode();
 		try
