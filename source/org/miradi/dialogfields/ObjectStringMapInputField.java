@@ -52,6 +52,7 @@ public class ObjectStringMapInputField extends ObjectStringInputField
 		catch(ParseException e)
 		{
 			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
 			return "";
 		}
 	}
@@ -67,7 +68,7 @@ public class ObjectStringMapInputField extends ObjectStringInputField
 		}
 		catch (Exception e)
 		{
-			//FIXME medium: when fixing other setText fixmes, fix this as well
+			EAM.unexpectedErrorDialog(e);
 			EAM.logException(e);
 		}
 	}
