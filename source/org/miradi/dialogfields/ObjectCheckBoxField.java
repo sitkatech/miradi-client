@@ -42,11 +42,13 @@ public class ObjectCheckBoxField extends ObjectDataInputField
 		uncheckedValue = valueWhenUnchecked;
 	}
 
+	@Override
 	public JComponent getComponent()
 	{
 		return checkBox;
 	}
 
+	@Override
 	public String getText()
 	{
 		if (checkBox.isSelected())
@@ -54,11 +56,13 @@ public class ObjectCheckBoxField extends ObjectDataInputField
 		return uncheckedValue;
 	}
 
+	@Override
 	public void setText(String code)
 	{
 		checkBox.setSelected(code.equals(checkedValue));
 	}
 
+	@Override
 	public void updateEditableState()
 	{
 		checkBox.setEnabled(isValidObject());
