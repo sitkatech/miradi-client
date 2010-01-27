@@ -26,9 +26,9 @@ import javax.swing.text.Document;
 import org.miradi.ids.BaseId;
 import org.miradi.project.Project;
 
-public class ObjectAdjustableStringInputField extends ObjectStringInputField
+public class ObjectStringInputFieldWithLengthLimit extends ObjectStringInputField
 {
-	public ObjectAdjustableStringInputField(Project projectToUse, int objectType, BaseId objectId, String tag, int columnsToUse, Document document)
+	public ObjectStringInputFieldWithLengthLimit(Project projectToUse, int objectType, BaseId objectId, String tag, int columnsToUse, Document document)
 	{
 		super(projectToUse, objectType, objectId, tag, columnsToUse, document);
 		
