@@ -61,7 +61,6 @@ import org.miradi.dialogfields.ObjectRaitingChoiceField;
 import org.miradi.dialogfields.ObjectReadonlyChoiceField;
 import org.miradi.dialogfields.ObjectReadonlyObjectListField;
 import org.miradi.dialogfields.ObjectReadonlyObjectListTableField;
-import org.miradi.dialogfields.ObjectReadonlyTimestampField;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogfields.ObjectStringInputField;
 import org.miradi.dialogfields.ObjectStringMapInputField;
@@ -410,12 +409,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		return new ObjectDateChooserInputField(project, objectType, getObjectIdForType(objectType), tag);
 	}
-	
-	public ObjectDataInputField createReadonlyTimestampField(String tag)
-	{
-		return new ObjectReadonlyTimestampField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag);
-	}
-	
 	
 	public ObjectDataInputField createNumericField(String tag, int column)
 	{
