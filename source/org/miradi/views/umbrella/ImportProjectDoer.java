@@ -88,8 +88,8 @@ public abstract class ImportProjectDoer extends ViewDoer
 		catch (CpmzVersionTooOldException e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog(EAM.text("This CPMZ file cannot be imported because it is an \n" +
-									 "older version that is no longer supported."));
+			EAM.errorDialog(EAM.text("This project cannot be imported by this version of Miradi because it \n" +
+									 "is in a newer data format. Please upgrade to the latest version of Miradi."));
 		}
 		catch (ValidationException e)
 		{
@@ -99,7 +99,8 @@ public abstract class ImportProjectDoer extends ViewDoer
 		catch (FutureVersionException e)
 		{
 			EAM.logException(e);
-			showImportFailedErrorDialog("Project cannot be imported because it was created by a newer version of Miradi");
+			showImportFailedErrorDialog("This project cannot be imported by this version of Miradi because it \n" +
+										"is in a newer data format. Please upgrade to the latest version of Miradi.");
 		}
 		catch(Exception e)
 		{
