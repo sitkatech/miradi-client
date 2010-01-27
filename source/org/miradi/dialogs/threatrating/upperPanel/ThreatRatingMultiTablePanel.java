@@ -470,12 +470,14 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		return targetThreatLinkTable.getSelectedHierarchies();
 	}
 	
+	@Override
 	public void addSelectionChangeListener(ListSelectionListener listener)
 	{
 		targetThreatLinkTable.getSelectionModel().addListSelectionListener(listener);
 		targetThreatLinkTable.getColumnModel().getSelectionModel().addListSelectionListener(listener);
 	}
 
+	@Override
 	public void removeSelectionChangeListener(ListSelectionListener listener)
 	{
 		targetThreatLinkTable.getSelectionModel().removeListSelectionListener(listener);
