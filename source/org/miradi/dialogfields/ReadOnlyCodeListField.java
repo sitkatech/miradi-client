@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
+import java.util.HashMap;
+
 import javax.swing.JComponent;
 
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -70,10 +72,13 @@ public class ReadOnlyCodeListField extends ObjectDataInputField
 		try
 		{
 			CodeList codeList = new CodeList(codeListComponent.getText());
+			
+			HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 			String fieldLabel = Translation.fieldLabel(getObjectType(), getTag());
-			String counterLabel = EAM.substitute(EAM.text("%s: "), fieldLabel);
-			counterLabel += codeList.size();
-			return counterLabel;
+			tokenReplacementMap.put("%countLabel", fieldLabel);
+			tokenReplacementMap.put("%itemCount", Integer.toString(codeList.size()));
+			
+			return EAM.substitute(EAM.text("%countLabel: %itemCount"), tokenReplacementMap);
 		}
 		catch(Exception e)
 		{
