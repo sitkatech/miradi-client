@@ -37,6 +37,7 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractChoiceItem
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, 1);
 	}
 
+	@Override
 	public String getText()
 	{
 		try
@@ -59,6 +60,7 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractChoiceItem
 		return existingMap.toString();
 	}
 
+	@Override
 	public void setText(String stringMapAsString)
 	{
 		CodeList codes = createCodeListFromString(stringMapAsString);
