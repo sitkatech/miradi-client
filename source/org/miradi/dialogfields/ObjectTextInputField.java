@@ -28,19 +28,18 @@ import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
 
 import org.miradi.actions.Actions;
-import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
 public class ObjectTextInputField extends ObjectDataInputField
 {
-	public ObjectTextInputField(Project projectToUse, int objectType, BaseId objectId, String tag, PanelTextArea componentToUse)
+	public ObjectTextInputField(Project projectToUse, int objectType, BaseId objectId, String tag, JTextComponent componentToUse)
 	{
 		this(projectToUse, objectType, objectId, tag, componentToUse, componentToUse.getDocument());
 	}
 	
-	public ObjectTextInputField(Project projectToUse, int objectType, BaseId objectId, String tag, PanelTextArea componentToUse, Document document)
+	public ObjectTextInputField(Project projectToUse, int objectType, BaseId objectId, String tag, JTextComponent componentToUse, Document document)
 	{
 		super(projectToUse, objectType, objectId, tag);
 		
