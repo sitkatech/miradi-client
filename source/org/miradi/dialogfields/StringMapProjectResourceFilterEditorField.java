@@ -37,6 +37,7 @@ public class StringMapProjectResourceFilterEditorField extends RefListEditorFiel
 		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse, tagToUse);
 	}
 
+	@Override
 	public String getText()
 	{
 		try
@@ -59,6 +60,7 @@ public class StringMapProjectResourceFilterEditorField extends RefListEditorFiel
 		return existingMap.toString();
 	}
 
+	@Override
 	public void setText(String stringMapAsString)
 	{
 		ORefList codes = createCodeListFromString(stringMapAsString);
