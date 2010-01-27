@@ -32,6 +32,7 @@ public class ObjectReadonlyTimestampField extends ObjectStringInputField
 		setEditable(false);
 	}
 	
+	@Override
 	public void setText(String newValue)
 	{
 		try
