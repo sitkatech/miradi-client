@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-27 09:25-0600\n"
+"POT-Creation-Date: 2010-01-27 12:31-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -4630,10 +4630,6 @@ msgstr "Pemilih Tanggal "
 #: Miradi/source/org/miradi/dialogfields/UndoRedoKeyHandler.java:57
 msgid "An unexpected error prevented that operation"
 msgstr ""
-
-#: Miradi/source/org/miradi/dialogfields/ObjectReadonlyTimestampField.java:55
-msgid "(Unknown)"
-msgstr "(Tidak Dikenal) "
 
 #: Miradi/source/org/miradi/actions/ActionDeleteOrganization.java:35
 msgid "Action|Delete Organization"
@@ -29964,6 +29960,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "(Unknown)"
+#~ msgstr "(Tidak Dikenal) "
 
 #~ msgid "FieldLabel|38.Audience|Audience"
 #~ msgstr "Khalayak"
