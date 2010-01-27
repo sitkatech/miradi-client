@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-27 16:58-0600\n"
+"POT-Creation-Date: 2010-01-27 17:04-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6388,7 +6388,7 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:37
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:104
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:147
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:142
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:61
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:122
 msgid "Summary"
