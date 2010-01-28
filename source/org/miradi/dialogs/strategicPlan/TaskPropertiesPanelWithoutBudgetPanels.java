@@ -24,9 +24,9 @@ import org.miradi.dialogs.planning.propertiesPanel.PlanningViewTaskPropertiesPan
 import org.miradi.main.MainWindow;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class StrategicPlanTaskPropertiesPanel extends PlanningViewTaskPropertiesPanel
+public class TaskPropertiesPanelWithoutBudgetPanels extends PlanningViewTaskPropertiesPanel
 {
-	public StrategicPlanTaskPropertiesPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
+	public TaskPropertiesPanelWithoutBudgetPanels(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(mainWindow, objectPickerToUse);
 	}
