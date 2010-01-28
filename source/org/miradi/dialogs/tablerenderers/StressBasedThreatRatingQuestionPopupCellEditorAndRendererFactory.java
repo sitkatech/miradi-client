@@ -48,6 +48,7 @@ public class StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory ex
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
 	{
 		updateEditor(table, value, row, column);
+		questionEditor.forceInvokePopupButtonClick();
 		
 		return questionEditor;
 	}
