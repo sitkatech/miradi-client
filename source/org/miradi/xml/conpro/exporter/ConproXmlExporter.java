@@ -83,7 +83,6 @@ import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXml;
 
 
-//FIXME urgent: This class is under construction
 public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 {
 	public ConproXmlExporter(Project project) throws Exception
