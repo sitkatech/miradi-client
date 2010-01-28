@@ -27,7 +27,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Vector;
 
-import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
@@ -1329,14 +1328,6 @@ abstract public class BaseObject
 			return getPseudoData(getTag());
 		}
 		
-		@Override
-		public void toXml(UnicodeWriter out) throws Exception
-		{
-			startTagToXml(out);
-			new ORefList(get()).toXml(out);
-			endTagToXml(out);
-		}
-
 		@Override
 		public boolean equals(Object rawOther)
 		{
