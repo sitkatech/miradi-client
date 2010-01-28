@@ -320,18 +320,4 @@ public class ProjectAsXmlExporter extends XmlExporter
 		out.write("</" + criterion.getLabel() + ">");
 		out.writeln();
 	}
-
-	public static void main(String[] commandLineArguments) throws Exception
-	{	
-		Project newProject = getOpenedProject(commandLineArguments);
-		try
-		{
-			new ProjectAsXmlExporter(newProject).export(getXmlDestination(commandLineArguments));
-			System.out.println("Export report xml complete");
-		}
-		finally
-		{
-			newProject.close();
-		}
-	}
 }
