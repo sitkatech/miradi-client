@@ -32,7 +32,7 @@ import org.miradi.dialogs.objective.ObjectivePropertiesPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.resource.ResourcePropertiesPanel;
 import org.miradi.dialogs.viability.AbstractIndicatorPropertiesPanel;
-import org.miradi.dialogs.viability.IndicatorPropertiesPanel;
+import org.miradi.dialogs.viability.IndicatorPropertiesPanelWithBudgetPanels;
 import org.miradi.dialogs.viability.NonDiagramAbstractTargetPropertiesPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.CommandExecutedEvent;
@@ -120,7 +120,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 
 	protected AbstractIndicatorPropertiesPanel createIndicatorPropertiesPanel(ObjectPicker objectPickerToUse) throws Exception
 	{
-		return new IndicatorPropertiesPanel(getMainWindow(), objectPickerToUse);
+		return new IndicatorPropertiesPanelWithBudgetPanels(getMainWindow(), objectPickerToUse);
 	}
 	
 	public String getPanelDescription()
