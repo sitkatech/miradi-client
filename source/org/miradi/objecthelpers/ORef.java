@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
-import java.io.IOException;
-
-import org.martus.util.UnicodeWriter;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.utils.EnhancedJsonObject;
@@ -118,11 +115,6 @@ public class ORef implements Comparable<ORef>
 		return toJson().toString();
 	}
 	
-	public void toXml(UnicodeWriter out) throws IOException
-	{
-		out.write(toXmlString());
-	}
-
 	public String toXmlString()
 	{
 		return getObjectType() + "." + getObjectId();
