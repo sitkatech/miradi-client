@@ -33,6 +33,7 @@ public class BaseIdData extends ObjectData
 		id = BaseId.INVALID;
 	}
 	
+	@Override
 	public String get()
 	{
 		if(id.isInvalid())
@@ -59,6 +60,7 @@ public class BaseIdData extends ObjectData
 		return id;
 	}
 	
+	@Override
 	public void set(String newValue) throws Exception
 	{
 		if(newValue.length() == 0)
@@ -75,6 +77,7 @@ public class BaseIdData extends ObjectData
 		endTagToXml(out);
 	}
 
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof BaseIdData))
@@ -84,6 +87,7 @@ public class BaseIdData extends ObjectData
 		return id.equals(other.id);
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return id.hashCode();
