@@ -19,15 +19,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.upperPanel;
 
+import java.util.Comparator;
+
 import javax.swing.table.TableModel;
 
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 
 public class TableModelChoiceItemComparator extends AbstractTableModelComparator
 {
-		public TableModelChoiceItemComparator(TableModel modelToUse, int columnToSort)
+		public TableModelChoiceItemComparator(TableModel modelToUse, int columnToSort, ChoiceQuestion questionToUse)
 		{	
 			super(modelToUse, columnToSort);
+			
+			question = questionToUse;
 		}
 		
 		@Override
@@ -46,4 +51,19 @@ public class TableModelChoiceItemComparator extends AbstractTableModelComparator
 			
 			return compareDetails(sortValues1, sortValues2);
 		}
+		
+		@Override
+		protected int compareValues(Comparable element1, Comparable element2)
+		{
+			if (!(element1 instanceof ChoiceItem) || !(element2 instanceof ChoiceItem))
+				return super.compareValues(element1, element2);
+				
+			ChoiceItem choiceItem1 = (ChoiceItem) element1;
+			ChoiceItem choiceItem2 = (ChoiceItem) element2;
+			Comparator<ChoiceItem> comparator = question.getComparator();
+			
+			return comparator.compare(choiceItem1, choiceItem2);
+		}
+		
+		private ChoiceQuestion question;
 }

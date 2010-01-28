@@ -21,6 +21,7 @@ package org.miradi.dialogs.base;
 
 import java.util.Comparator;
 
+import org.miradi.dialogs.threatrating.upperPanel.TableModelChoiceItemComparator;
 import org.miradi.dialogs.threatrating.upperPanel.TableModelStringComparator;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
@@ -198,6 +199,9 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel
 		
 	protected Comparator createComparator(int sortColumn)
 	{
+		if (isChoiceItemColumn(sortColumn))
+			return new TableModelChoiceItemComparator(this, sortColumn, getColumnQuestion(sortColumn));
+		
 		return new TableModelStringComparator(this, sortColumn);
 	}
 	
