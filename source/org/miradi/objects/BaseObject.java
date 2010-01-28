@@ -376,6 +376,7 @@ abstract public class BaseObject
 	abstract public int getType();
 	abstract public String getTypeName();
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof BaseObject))
@@ -1215,15 +1216,18 @@ abstract public class BaseObject
 			question = questionToUse;
 		}
 		
+		@Override
 		public boolean isPseudoField()
 		{
 			return true;
 		}
 		
+		@Override
 		public void set(String newValue) throws Exception
 		{
 		}
 
+		@Override
 		public String get()
 		{
 			return getPseudoData(getTag());
@@ -1235,6 +1239,7 @@ abstract public class BaseObject
 			return question.findChoiceByCode(getPseudoData(getTag()));
 		}
 
+		@Override
 		public boolean equals(Object rawOther)
 		{
 			if(!(rawOther instanceof PseudoQuestionData))
@@ -1244,6 +1249,7 @@ abstract public class BaseObject
 			return get().equals(other.get());
 		}
 
+		@Override
 		public int hashCode()
 		{
 			return get().hashCode();
@@ -1261,22 +1267,26 @@ abstract public class BaseObject
 			super(tag);
 		}
 
+		@Override
 		public boolean isPseudoField()
 		{
 			return true;
 		}
 		
+		@Override
 		public void set(String newValue) throws Exception
 		{
 			if (newValue.length()!=0)
 				throw new RuntimeException("Set not allowed in a pseuod field");
 		}
 
+		@Override
 		public String get()
 		{
 			return getPseudoData(getTag());
 		}
 		
+		@Override
 		public boolean equals(Object rawOther)
 		{
 			if(!(rawOther instanceof StringData))
@@ -1286,6 +1296,7 @@ abstract public class BaseObject
 			return get().equals(other.get());
 		}
 
+		@Override
 		public int hashCode()
 		{
 			return get().hashCode();
@@ -1299,22 +1310,26 @@ abstract public class BaseObject
 			super(tag);
 		}
 
+		@Override
 		public boolean isPseudoField()
 		{
 			return true;
 		}
 
+		@Override
 		public void set(String newValue) throws Exception
 		{
 			if (newValue.length()!=0)
 				throw new RuntimeException("Set not allowed in a pseuod field");
 		}
 
+		@Override
 		public String get()
 		{
 			return getPseudoData(getTag());
 		}
 		
+		@Override
 		public void toXml(UnicodeWriter out) throws Exception
 		{
 			startTagToXml(out);
@@ -1322,6 +1337,7 @@ abstract public class BaseObject
 			endTagToXml(out);
 		}
 
+		@Override
 		public boolean equals(Object rawOther)
 		{
 			if(!(rawOther instanceof StringData))
@@ -1331,6 +1347,7 @@ abstract public class BaseObject
 			return get().equals(other.get());
 		}
 
+		@Override
 		public int hashCode()
 		{
 			return get().hashCode();
