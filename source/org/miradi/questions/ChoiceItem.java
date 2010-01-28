@@ -20,12 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.questions;
 
 import java.awt.Color;
-import java.io.IOException;
 
 import javax.swing.Icon;
-
-import org.martus.util.UnicodeWriter;
-import org.martus.util.xml.XmlUtilities;
 
 public class ChoiceItem implements Comparable
 {
