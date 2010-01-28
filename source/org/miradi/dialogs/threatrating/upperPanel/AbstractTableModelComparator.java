@@ -50,13 +50,18 @@ public abstract class AbstractTableModelComparator implements Comparator
 		{
 			Comparable element1 = sortValues1[index];
 			Comparable element2 = sortValues2[index];
-			int compareToValue = element1.compareTo(element2);
+			int compareToValue = compareValues(element1, element2);
 			if (compareToValue != 0)
 				return compareToValue;
 		}
 		
 		EAM.logWarning("Arrays had identical elements");
 		return 0;
+	}
+
+	protected int compareValues(Comparable element1, Comparable element2)
+	{
+		return element1.compareTo(element2);
 	}
 	
 	protected ORef getRefForRow(int row)
