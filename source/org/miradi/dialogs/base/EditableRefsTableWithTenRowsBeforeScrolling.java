@@ -30,7 +30,7 @@ abstract public class EditableRefsTableWithTenRowsBeforeScrolling extends Editab
 	}
 	
 	@Override
-	protected int getMaximumHeightBeforeScroll()
+	protected int getMaximumTableHeightBeforeScroll()
 	{
 		return getRowHeight() * TEN_ROWS_BEFORE_SCROLLING;
 	}
