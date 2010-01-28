@@ -72,6 +72,7 @@ abstract public class ObjectListTableModel extends ObjectTableModel
 		return getProject().findObject(getContainingRef());
 	}
 
+	@Override
 	public ORefList getLatestRefListFromProject()
 	{
 		try
