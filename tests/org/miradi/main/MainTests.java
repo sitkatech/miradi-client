@@ -58,7 +58,6 @@ import org.miradi.diagram.TestUndoAndRedo;
 import org.miradi.diagram.arranger.TestMeglerArranger;
 import org.miradi.diagram.cells.TestDiagramFactor;
 import org.miradi.diagram.cells.TestLinkCell;
-import org.miradi.export.TestReportXmlExporter;
 import org.miradi.forms.TestFieldPanelSpec;
 import org.miradi.forms.TestFormConstant;
 import org.miradi.forms.TestFormFieldData;
@@ -472,7 +471,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestMultiCalendar.class));
 		
 		//xml.export
-		suite.addTest(new TestSuite(TestReportXmlExporter.class));
 		suite.addTest(new TestSuite(TestWcsExporter.class));
 		
 		//xml.conpro
