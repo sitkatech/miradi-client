@@ -91,6 +91,7 @@ public class ORef implements Comparable<ORef>
 		return !isInvalid();
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if (! (rawOther instanceof ORef))
@@ -103,11 +104,13 @@ public class ORef implements Comparable<ORef>
 		return false;
 	}
 	
+	@Override
 	public int hashCode()
 	{
 		return objectId.hashCode();
 	}
 	
+	@Override
 	public String toString()
 	{
 		if (isInvalid())
