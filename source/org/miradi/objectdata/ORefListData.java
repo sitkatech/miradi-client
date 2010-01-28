@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
-import org.martus.util.UnicodeWriter;
 import org.miradi.objecthelpers.ORefList;
 
 public class ORefListData extends ObjectData
@@ -66,14 +65,6 @@ public class ORefListData extends ObjectData
 	public void set(String newValue) throws Exception
 	{
 		set(new ORefList(newValue));	
-	}
-	
-	@Override
-	public void toXml(UnicodeWriter out) throws Exception
-	{
-		startTagToXml(out);
-		objectReferenceList.toXml(out);
-		endTagToXml(out);
 	}
 
 	private void set(ORefList objectReferenceToUse)
