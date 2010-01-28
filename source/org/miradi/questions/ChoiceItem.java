@@ -100,15 +100,6 @@ public class ChoiceItem implements Comparable
 		selectable = selectableToUse;
 	}
 	
-	public void toXml(UnicodeWriter out) throws IOException
-	{
-		out.write("<Choice code='" + 
-				XmlUtilities.getXmlEncoded(getCode()) + 
-				"'><Value>" + 
-				XmlUtilities.getXmlEncoded(getLabel()) + 
-				"</Value></Choice>");
-	}
-
 	@Override
 	public boolean equals(Object other)
 	{
