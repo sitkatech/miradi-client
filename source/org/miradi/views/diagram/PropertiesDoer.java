@@ -38,7 +38,7 @@ import org.miradi.dialogs.diagram.GroupBoxPropertiesPanel;
 import org.miradi.dialogs.diagram.ScopeBoxPropertiesPanel;
 import org.miradi.dialogs.diagram.TextBoxPropertiesPanel;
 import org.miradi.dialogs.stress.StressPropertiesPanel;
-import org.miradi.dialogs.task.ActivityPropertiesPanel;
+import org.miradi.dialogs.task.ActivityPropertiesPanelWithoutBudgetPanels;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -252,7 +252,7 @@ public class PropertiesDoer extends LocationDoer
 		selectionHierarchy.add(diagramFactor.getRef());
 		StaticPicker picker = new StaticPicker(selectionHierarchy);
 		picker.becomeActive();
-		ActivityPropertiesPanel panel = new ActivityPropertiesPanel(getMainWindow(), picker);
+		ActivityPropertiesPanelWithoutBudgetPanels panel = new ActivityPropertiesPanelWithoutBudgetPanels(getMainWindow(), picker);
 		addDiagramWrappedRefToHierarchyAndShowPanel(diagramFactor, panel);
 	}
 
