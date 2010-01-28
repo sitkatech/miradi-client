@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-28 14:58-0600\n"
+"POT-Creation-Date: 2010-01-28 16:05-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -349,8 +349,8 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:44
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:45
-#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:66
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:68
+#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:70
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
 #: Miradi/source/org/miradi/main/EAM.java:436
 #: Miradi/source/org/miradi/main/EAM.java:437
@@ -801,7 +801,7 @@ msgstr "[Página %s]"
 msgid "Choose Indicator to Clone"
 msgstr "Seleccione el indicador para clonar."
 
-#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:66
+#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:68
 #: Miradi/source/org/miradi/main/EAM.java:436
 msgid "Retain"
 msgstr "Retener"
@@ -1006,27 +1006,6 @@ msgstr "Crear un nuevo informe de progreso"
 msgid "Error during redo"
 msgstr "Error al rehacer la acción."
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivity.java:78
-msgid "This item is shared, so will be deleted from multiple places."
-msgstr ""
-"Este elemento está compartido, por lo que se eliminará de varios lugares."
-
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivity.java:80
-msgid "All subtasks within this item will be removed as well."
-msgstr "Todas las subtareas de este elemento también se quitarán "
-
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivity.java:81
-msgid "Button|Delete"
-msgstr "Eliminar"
-
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivity.java:81
-msgid "Button|Retain"
-msgstr "Retener"
-
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivity.java:82
-msgid "Title|Delete"
-msgstr "Eliminar"
-
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:89
 msgid "Current project name:"
 msgstr ""
@@ -1123,6 +1102,27 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DeleteResource.java:69
 msgid "Delete Resource"
 msgstr "Eliminar recurso "
+
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
+msgid "This item is shared, so will be deleted from multiple places."
+msgstr ""
+"Este elemento está compartido, por lo que se eliminará de varios lugares."
+
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
+msgid "All subtasks within this item will be removed as well."
+msgstr "Todas las subtareas de este elemento también se quitarán "
+
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:83
+msgid "Button|Delete"
+msgstr "Eliminar"
+
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:83
+msgid "Button|Retain"
+msgstr "Retener"
+
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:84
+msgid "Title|Delete"
+msgstr "Eliminar"
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractRelevancyEditListDoer.java:51
 msgid "Choose Relevant Indicator(s)"
