@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
-import org.martus.util.UnicodeWriter;
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.questions.ChoiceQuestion;
 
 
@@ -32,22 +30,6 @@ public class ChoiceData extends StringData
 		question = questionToUse;
 	}
 	
-	@Override
-	public void toXml(UnicodeWriter out) throws Exception
-	{
-		String code = get();
-		String value = question.getValue(code);
-
-		startTagToXml(out);
-		out.write("<code>");
-		out.write(XmlUtilities.getXmlEncoded(code));
-		out.writeln("</code>");
-		out.write("<value>");
-		out.write(XmlUtilities.getXmlEncoded(value));
-		out.writeln("</value>");
-		endTagToXml(out);
-	}
-
 	@Override
 	public boolean isChoiceItemData()
 	{
