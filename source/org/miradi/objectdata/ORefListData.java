@@ -30,6 +30,7 @@ public class ORefListData extends ObjectData
 		objectReferenceList = new ORefList();
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if (! (rawOther instanceof ORefListData))
@@ -38,11 +39,13 @@ public class ORefListData extends ObjectData
 		return rawOther.toString().equals(toString());
 	}
 
+	@Override
 	public String get()
 	{
 		return objectReferenceList.toString();
 	}
 
+	@Override
 	public ORefList getRefList()
 	{
 		return new ORefList(objectReferenceList);
@@ -53,16 +56,19 @@ public class ORefListData extends ObjectData
 		return objectReferenceList.getFilteredBy(objectTypeToFilterOn);
 	}
 	
+	@Override
 	public int hashCode()
 	{
 		return toString().hashCode();
 	}
 
+	@Override
 	public void set(String newValue) throws Exception
 	{
 		set(new ORefList(newValue));	
 	}
 	
+	@Override
 	public void toXml(UnicodeWriter out) throws Exception
 	{
 		startTagToXml(out);
