@@ -36,11 +36,13 @@ public class StrategyActivityRelevancyTableModel extends SingleBooleanColumnEdit
 		desireAsParent = desireAsParentToUse;
 	}
 
+	@Override
 	public String getColumnName(int column)
 	{
 		return EAM.text("Is Relevant");
 	}	
 	
+	@Override
 	public void setValueAt(Object value, int row, int column)
 	{
 		if (value == null)
@@ -63,6 +65,7 @@ public class StrategyActivityRelevancyTableModel extends SingleBooleanColumnEdit
 		return new ORefList(desireAsParent.getRelevantStrategyAndActivityRefs());
 	}
 	
+	@Override
 	protected ORefList getCheckedRefsAccordingToTheDatabase() throws Exception
 	{
 		return getRelevantStrategyActivityRefs();
