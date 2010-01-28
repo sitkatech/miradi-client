@@ -84,7 +84,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 	
 	public Project getProject()
 	{
-		return model.getProject();
+		return getMainWindow().getProject();
 	}
 	
 	protected ObjectManager getObjectManager()
