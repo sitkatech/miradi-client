@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.util.Collections;
 import java.util.Comparator;
@@ -27,7 +26,6 @@ import java.util.List;
 import java.util.Vector;
 
 import org.json.JSONArray;
-import org.martus.util.UnicodeWriter;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.objects.BaseObject;
@@ -242,18 +240,6 @@ public class ORefList
 	public void sort()
 	{
 		Collections.sort(data);
-	}
-	
-	public void toXml(UnicodeWriter out) throws IOException
-	{
-		out.writeln("<RefList>");
-		for(int i = 0; i < size(); ++i)
-		{
-			out.write("<Ref>");
-			get(i).toXml(out);
-			out.writeln("</Ref>");
-		}
-		out.writeln("</RefList>");
 	}
 	
 	public IdList convertToIdList(int objectType)
