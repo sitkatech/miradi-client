@@ -77,6 +77,11 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		closeDialogAfterSelectionHandler = new CloseEditorAfterSelectionHandler();
 	}
 	
+	public void forceInvokePopupButtonClick()
+	{
+		popupInvokeButton.doClick();
+	}
+	
 	public void dispose()
 	{
 		if (editorPanel != null)
