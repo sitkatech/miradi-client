@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.*/
 package org.miradi.questions;
 
 import java.awt.Color;
+import java.util.Comparator;
 
 import org.miradi.main.EAM;
 import org.miradi.utils.CodeList;
@@ -121,6 +122,11 @@ public abstract class ChoiceQuestion
 			code = Integer.toString(value);
 			
 		return findChoiceByCode(code);
+	}
+	
+	public Comparator getComparator()
+	{
+		return new ChoiceItemLabelComparator();
 	}
 
 	public static final Color COLOR_ALERT = Color.RED;
