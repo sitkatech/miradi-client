@@ -23,7 +23,7 @@ import javax.swing.Icon;
 
 import org.miradi.actions.jump.ActionJumpEditAllStrategiesStep;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
-import org.miradi.dialogs.task.ActivityPropertiesPanel;
+import org.miradi.dialogs.task.ActivityPropertiesPanelWithoutBudgetPanels;
 import org.miradi.icons.ActivityIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -34,11 +34,11 @@ public class ActivityListManagementPanel extends ObjectListManagementPanel
 	public static ActivityListManagementPanel create(MainWindow mainWindow, ORefList selectedStrategyHierarchy) throws Exception
 	{
 		ActivityListTablePanel tablePanel = new ActivityListTablePanel(mainWindow, selectedStrategyHierarchy);
-		ActivityPropertiesPanel properties = new ActivityPropertiesPanel(mainWindow, tablePanel.getTable());
+		ActivityPropertiesPanelWithoutBudgetPanels properties = new ActivityPropertiesPanelWithoutBudgetPanels(mainWindow, tablePanel.getTable());
 		return new ActivityListManagementPanel(mainWindow, tablePanel, properties);
 	}
 	
-	private ActivityListManagementPanel(MainWindow mainWindow, ActivityListTablePanel tablePanel, ActivityPropertiesPanel properties) throws Exception
+	private ActivityListManagementPanel(MainWindow mainWindow, ActivityListTablePanel tablePanel, ActivityPropertiesPanelWithoutBudgetPanels properties) throws Exception
 	{
 		super(mainWindow, tablePanel, properties);
 	}

@@ -24,9 +24,9 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class ActivityPropertiesPanel extends TaskPropertiesPanel
+public class ActivityPropertiesPanelWithoutBudgetPanels extends TaskPropertiesPanel
 {
-	public ActivityPropertiesPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
+	public ActivityPropertiesPanelWithoutBudgetPanels(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(mainWindow, objectPickerToUse);
 	}
