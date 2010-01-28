@@ -34,11 +34,13 @@ public class IdListData extends ObjectData
 		ids = new IdList(objectTypeToStore);
 	}
 	
+	@Override
 	public void set(String newValue) throws ParseException
 	{
 		set(new IdList(ids.getObjectType(), newValue));
 	}
 	
+	@Override
 	public String get()
 	{
 		return ids.toString();
@@ -54,6 +56,7 @@ public class IdListData extends ObjectData
 		return ids;
 	}
 	
+	@Override
 	public ORefList getRefList()
 	{
 		return new ORefList(ids.getObjectType(), ids);
@@ -84,6 +87,7 @@ public class IdListData extends ObjectData
 		ids.removeId(id);
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof IdListData))
@@ -93,11 +97,13 @@ public class IdListData extends ObjectData
 		return ids.equals(other.ids);
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return ids.hashCode();
 	}
 	
+	@Override
 	public void toXml(UnicodeWriter out) throws Exception
 	{
 		startTagToXml(out);
@@ -105,6 +111,7 @@ public class IdListData extends ObjectData
 		endTagToXml(out);
 	}
 	
+	@Override
 	public boolean isIdListData()
 	{
 		return true;
