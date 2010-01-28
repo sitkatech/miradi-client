@@ -33,6 +33,7 @@ public class StressListTableModel extends ObjectListTableModel
 		super(projectToUse, nodeRef, Target.TAG_STRESS_REFS, Stress.getObjectType(), getColumnTags(projectToUse));
 	}
 
+	@Override
 	public ChoiceQuestion getColumnQuestion(int column)
 	{
 		return StressPoolTableModel.createQuestionForTag(getColumnTag(column));
