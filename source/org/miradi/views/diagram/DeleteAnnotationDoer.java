@@ -53,11 +53,13 @@ import org.miradi.views.diagram.doers.HideStressBubbleDoer;
 
 public abstract class DeleteAnnotationDoer extends ObjectsDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		return (getSingleSelected(getAnnotationType()) != null);
 	}
 
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if(!isAvailable())
