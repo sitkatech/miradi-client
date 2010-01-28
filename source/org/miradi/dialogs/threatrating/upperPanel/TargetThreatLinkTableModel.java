@@ -85,7 +85,7 @@ public class TargetThreatLinkTableModel extends AbstractThreatPerRowTableModel
 	@Override
 	public Comparator getComparator(int columnToSortOn)
 	{
-		return new TableModelChoiceItemComparator(this, columnToSortOn);
+		return new TableModelChoiceItemComparator(this, columnToSortOn, getThreatRatingQuestion());
 	}
 
 	private static final String UNIQUE_IDENTIFIER = "TargetThreatLinkTableModel";

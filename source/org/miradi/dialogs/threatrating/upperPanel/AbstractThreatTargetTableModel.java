@@ -35,6 +35,7 @@ import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.SortDirectionQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
@@ -220,6 +221,11 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel 
 	public Comparator getComparator(int columnToSortOn)
 	{
 		return new TableModelStringComparator(this, columnToSortOn);
+	}
+	
+	protected ChoiceQuestion getThreatRatingQuestion()
+	{
+		return getProject().getQuestion(ThreatRatingQuestion.class);
 	}
 	
 	public abstract String getUniqueTableModelIdentifier();
