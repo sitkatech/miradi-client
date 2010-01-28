@@ -73,11 +73,11 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 	{
 		Dimension size = new Dimension(getPreferredSize());
 		size.height = Math.max(size.height, MINIMUM_VIEWPORT_HEIGHT);
-		size.height = Math.min(size.height, getMaximumHeightBeforeScroll());
+		size.height = Math.min(size.height, getMaximumTableHeightBeforeScroll());
 		return size;
 	}
 
-	protected int getMaximumHeightBeforeScroll()
+	protected int getMaximumTableHeightBeforeScroll()
 	{
 		return MAXIMUM_VIEWPORT_HEIGHT;
 	}
