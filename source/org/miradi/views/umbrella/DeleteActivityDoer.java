@@ -47,6 +47,7 @@ import org.miradi.views.ObjectsDoer;
 
 public class DeleteActivityDoer extends ObjectsDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (getObjects() == null)
@@ -61,6 +62,7 @@ public class DeleteActivityDoer extends ObjectsDoer
 		return true;
 	}
 
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if(!isAvailable())
