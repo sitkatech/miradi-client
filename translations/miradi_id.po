@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-28 08:52-0600\n"
+"POT-Creation-Date: 2010-01-28 08:58-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -3936,7 +3936,7 @@ msgstr ""
 msgid "Human Welfare Target Mode"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ChoiceQuestion.java:110
+#: Miradi/source/org/miradi/questions/ChoiceQuestion.java:108
 msgid "Unknown code: "
 msgstr "Kode tak dikenal: "
 
