@@ -19,16 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.ids;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
 import org.json.JSONArray;
-import org.martus.util.UnicodeWriter;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
@@ -231,11 +228,6 @@ public class IdList
 	public Vector<BaseId> asVector()
 	{
 		return data;
-	}
-
-	public void toXml(UnicodeWriter out) throws IOException
-	{
-		new ORefList(getObjectType(), this).toXml(out);
 	}
 
 	private static final String TAG_IDS = "Ids";
