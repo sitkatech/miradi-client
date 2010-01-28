@@ -49,11 +49,13 @@ public class TaggedObjectSetEditableTableModel extends SingleBooleanColumnEditab
 		return Factor.isFactor(objectForRow.getRef());
 	}
 	
+	@Override
 	public String getColumnName(int column)
 	{
 		return SINGLE_COLUMN_NAME;
 	}	
 	
+	@Override
 	public void setValueAt(Object value, int row, int column)
 	{
 		if (value == null)
@@ -70,6 +72,7 @@ public class TaggedObjectSetEditableTableModel extends SingleBooleanColumnEditab
 		}
 	}
 
+	@Override
 	protected ORefList getCheckedRefsAccordingToTheDatabase() throws Exception
 	{
 		return new ORefList(taggedObjectSet.getTaggedObjectRefs());
