@@ -37,6 +37,11 @@ public class PanelButton extends UiButton
 		setFont(getMainWindow().getUserDataPanelFont());
 	}
 	
+	public PanelButton(Icon icon)
+	{
+		super(icon);
+	}
+	
 	public PanelButton(String text, Icon icon)
 	{
 		this(text);

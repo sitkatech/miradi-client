@@ -39,6 +39,7 @@ import org.miradi.dialogs.base.UndecoratedModelessDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.icons.PopupEditorIcon;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
@@ -56,7 +57,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		PanelTitleLabel staticLabel = new PanelTitleLabel(translatedPopupButtonText);
 		currentSelectionText = new PanelTextField(10);
 		currentSelectionText.setEditable(false);
-		popupInvokeButton = new PanelButton("...");
+		popupInvokeButton = new PanelButton(new PopupEditorIcon());
 		
 		OneRowPanel panel = new OneRowPanel();
 		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
