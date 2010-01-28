@@ -24,9 +24,9 @@ import org.miradi.dialogs.viability.AbstractIndicatorPropertiesPanel;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class StrategicPlanIndicatorPropertiesPanel extends AbstractIndicatorPropertiesPanel
+public class IndicatorPropertiesPanelWithoutBudgetPanels extends AbstractIndicatorPropertiesPanel
 {
-	public StrategicPlanIndicatorPropertiesPanel(Project projectToUse, ObjectPicker picker) throws Exception
+	public IndicatorPropertiesPanelWithoutBudgetPanels(Project projectToUse, ObjectPicker picker) throws Exception
 	{
 		super(projectToUse, picker);
 	}

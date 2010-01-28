@@ -23,7 +23,7 @@ import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
-import org.miradi.dialogs.strategicPlan.StrategicPlanIndicatorPropertiesPanel;
+import org.miradi.dialogs.strategicPlan.IndicatorPropertiesPanelWithoutBudgetPanels;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.main.CommandExecutedEvent;
@@ -48,7 +48,7 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		targetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), Target.getObjectType());
 		humanWelfareTargetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), HumanWelfareTarget.getObjectType());
 		targetViabilityKeaPropertiesPanel = new TargetViabilityKeaPropertiesPanel(getProject(), mainWindow.getActions());
-		targetViabilityIndicatorPropertiesPanel = new StrategicPlanIndicatorPropertiesPanel(getProject(), getPicker());
+		targetViabilityIndicatorPropertiesPanel = new IndicatorPropertiesPanelWithoutBudgetPanels(getProject(), getPicker());
 		targetViabilityMeasurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		futureStatusPropertiesPanel = new IndicatorFutureStatusSubPanel(getProject());
 		

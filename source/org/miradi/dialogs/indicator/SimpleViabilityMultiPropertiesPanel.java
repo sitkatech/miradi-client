@@ -23,7 +23,7 @@ import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
-import org.miradi.dialogs.strategicPlan.StrategicPlanIndicatorPropertiesPanel;
+import org.miradi.dialogs.strategicPlan.IndicatorPropertiesPanelWithoutBudgetPanels;
 import org.miradi.dialogs.viability.AbstractIndicatorPropertiesPanel;
 import org.miradi.dialogs.viability.IndicatorFutureStatusSubPanel;
 import org.miradi.main.MainWindow;
@@ -43,7 +43,7 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		
 	private void createPropertiesPanels() throws Exception
 	{
-		indicatorPropertiesPanel = new StrategicPlanIndicatorPropertiesPanel(getProject(), getPicker());
+		indicatorPropertiesPanel = new IndicatorPropertiesPanelWithoutBudgetPanels(getProject(), getPicker());
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		futureStatusPropertiesPanel = new IndicatorFutureStatusSubPanel(getProject());
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
