@@ -23,7 +23,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Task;
 import org.miradi.views.ObjectsDoer;
-import org.miradi.views.umbrella.DeleteActivity;
+import org.miradi.views.umbrella.DeleteActivityDoer;
 
 public class DeleteMethodDoer extends ObjectsDoer
 {
@@ -40,7 +40,7 @@ public class DeleteMethodDoer extends ObjectsDoer
 		if(!isAvailable())
 			return;
 		
-		DeleteActivity.deleteTaskWithUserConfirmation(getProject(), getSelectionHierarchy(), getSelectedMethod());
+		DeleteActivityDoer.deleteTaskWithUserConfirmation(getProject(), getSelectionHierarchy(), getSelectedMethod());
 
 	}
 

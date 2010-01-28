@@ -45,7 +45,7 @@ import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.views.ObjectsDoer;
 
-public class DeleteActivity extends ObjectsDoer
+public class DeleteActivityDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{

@@ -38,7 +38,7 @@ import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
-import org.miradi.views.umbrella.DeleteActivity;
+import org.miradi.views.umbrella.DeleteActivityDoer;
 import org.miradi.views.umbrella.doers.AbstractDeleteDoer;
 
 public class TreeNodeDeleteDoer extends AbstractDeleteDoer
@@ -156,9 +156,9 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 	{		
 		Task selectedTaskToDelete = (Task) selected;
 		if (shouldDeleteFromParentOnly(selectedTaskToDelete))
-			DeleteActivity.deleteTaskWithUserConfirmation(getProject(), getSelectionHierarchy(), selectedTaskToDelete);
+			DeleteActivityDoer.deleteTaskWithUserConfirmation(getProject(), getSelectionHierarchy(), selectedTaskToDelete);
 		else
-			DeleteActivity.deleteTaskWithUserConfirmation(getProject(), selectedTaskToDelete.findObjectsThatReferToUs(), selectedTaskToDelete);
+			DeleteActivityDoer.deleteTaskWithUserConfirmation(getProject(), selectedTaskToDelete.findObjectsThatReferToUs(), selectedTaskToDelete);
 	}
 	
 	private boolean shouldDeleteFromParentOnly(Task selectedTaskToDelete)
