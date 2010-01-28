@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.questions;
 
 import java.awt.Color;
+import java.util.Comparator;
 
 import org.miradi.main.EAM;
 
@@ -65,6 +66,12 @@ public class ThreatRatingQuestion extends StaticChoiceQuestion
 	protected String getVeryHighRatingChoiceItemDescription()
 	{
 		return "";
+	}
+	
+	@Override
+	public Comparator getComparator()
+	{
+		return new ChoiceItemCodeComparator();
 	}
 
 	public static final String HIGH_RATING_CODE = "3";
