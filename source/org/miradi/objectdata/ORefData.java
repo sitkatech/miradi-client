@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
-import org.martus.util.UnicodeWriter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -88,14 +87,6 @@ public class ORefData extends ObjectData
 			ref = ORef.INVALID;
 		else
 			ref = new ORef(new EnhancedJsonObject(newValue));
-	}
-
-	@Override
-	public void toXml(UnicodeWriter out) throws Exception
-	{
-		startTagToXml(out);
-		ref.toXml(out);
-		endTagToXml(out);
 	}
 
 	ORef ref;
