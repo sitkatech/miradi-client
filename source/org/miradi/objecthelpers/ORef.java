@@ -115,11 +115,6 @@ public class ORef implements Comparable<ORef>
 		return toJson().toString();
 	}
 	
-	public String toXmlString()
-	{
-		return getObjectType() + "." + getObjectId();
-	}
-	
 	public int compareTo(ORef otherRef)
 	{
 		return toString().compareTo(otherRef.toString());
