@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.utils;
 
-import org.martus.util.UnicodeWriter;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.StringMap;
 
@@ -39,14 +38,6 @@ public class StringMapData extends ObjectData
 	public StringMap getStringMap()
 	{
 		return data;
-	}
-
-	@Override
-	public void toXml(UnicodeWriter out) throws Exception
-	{
-		startTagToXml(out);
-		data.toXml(out);
-		endTagToXml(out);
 	}
 
 	public void set(String newValue) throws Exception
