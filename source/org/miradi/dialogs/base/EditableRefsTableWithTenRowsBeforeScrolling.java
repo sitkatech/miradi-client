@@ -18,28 +18,22 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.iucnRedlistSpecies;
+package org.miradi.dialogs.base;
 
-import org.miradi.dialogs.base.EditableObjectTableModel;
-import org.miradi.dialogs.base.EditableRefsTableWithTenRowsBeforeScrolling;
 import org.miradi.main.MainWindow;
 
-public class IucnRedlistSpeciesEditablePoolTable extends EditableRefsTableWithTenRowsBeforeScrolling
+abstract public class EditableRefsTableWithTenRowsBeforeScrolling extends EditableRefsTable
 {
-	public IucnRedlistSpeciesEditablePoolTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
+	public EditableRefsTableWithTenRowsBeforeScrolling(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse);		
+		super(mainWindowToUse, modelToUse);
 	}
 	
 	@Override
-	public void rebuildColumnEditorsAndRenderers()
+	protected int getMaximumHeightBeforeScroll()
 	{
-		IucnRedlistSpeciesEditablePoolTableModel model = (IucnRedlistSpeciesEditablePoolTableModel) getModel();
-		for (int tableColumn = 0; tableColumn < model.getColumnCount(); ++tableColumn)
-		{
-			int modelColumn = convertColumnIndexToModel(tableColumn);
-			if (model.isLabelColumn(modelColumn))
-				createWrappableTextFieldColumn(tableColumn);
-		}
+		return getRowHeight() * TEN_ROWS_BEFORE_SCROLLING;
 	}
+	
+	private static final int TEN_ROWS_BEFORE_SCROLLING = 10;
 }

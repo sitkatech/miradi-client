@@ -21,10 +21,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.otherNotableSpecies;
 
 import org.miradi.dialogs.base.EditableObjectTableModel;
-import org.miradi.dialogs.base.EditableRefsTable;
+import org.miradi.dialogs.base.EditableRefsTableWithTenRowsBeforeScrolling;
 import org.miradi.main.MainWindow;
 
-public class OtherNotableSpeciesEditablePoolTable extends EditableRefsTable
+public class OtherNotableSpeciesEditablePoolTable extends EditableRefsTableWithTenRowsBeforeScrolling
 {
 	public OtherNotableSpeciesEditablePoolTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
 	{
