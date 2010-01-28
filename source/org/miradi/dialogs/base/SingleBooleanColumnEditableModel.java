@@ -36,11 +36,13 @@ abstract public class SingleBooleanColumnEditableModel extends EditableObjectTab
 		rowColumnBaseObjectProvider = providerToUse;
 	}
 	
-    public Class getColumnClass(int columnIndex) 
+    @Override
+	public Class getColumnClass(int columnIndex) 
     {
     	return Boolean.class;
     }
 	
+	@Override
 	public boolean isCellEditable(int row, int column)
 	{
 		return true;
