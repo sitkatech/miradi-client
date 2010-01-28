@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-28 08:49-0600\n"
+"POT-Creation-Date: 2010-01-28 08:52-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -2251,7 +2251,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:32
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:347
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:346
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 msgid "Target"
 msgstr ""
@@ -6052,21 +6052,21 @@ msgid ""
 "TT|Choose which strategies and activities are relevant to this objective."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:152
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:151
 msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:372
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:371
 #: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:59
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:898
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:897
 msgid "Project Description:"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:903
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:902
 msgid "Site/Scope Description:"
 msgstr ""
 
