@@ -49,6 +49,7 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 	public AssignmentDateUnitsTable(MainWindow mainWindowToUse, AssignmentDateUnitsTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
+		
 		setBackground(getColumnBackGroundColor(0));	
 		setAllColumnsToUseDoubleClickEditors();
 		setColumnSelectionAllowed(true);
@@ -112,6 +113,7 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		return getColumnModel().getColumn(column).getWidth();
 	}
 	
+	@Override
 	abstract public String getColumnGroupCode(int tableColumn);
 	
 	public int getColumnAlignment()
