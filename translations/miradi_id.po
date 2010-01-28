@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-28 08:40-0600\n"
+"POT-Creation-Date: 2010-01-28 08:49-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -7325,7 +7325,7 @@ msgstr ""
 "Silakan pilih butir mana yang harus dibagi dengan faktor ini, lalu tekan "
 "tombol Bagi "
 
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetEditableTableModel.java:87
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetEditableTableModel.java:90
 msgid "Is Tagged"
 msgstr "Ditandai"
 
