@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
-import org.martus.util.UnicodeWriter;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -69,14 +68,6 @@ public class BaseIdData extends ObjectData
 			id = new BaseId(Integer.parseInt(newValue));
 	}
 	
-	@Override
-	public void toXml(UnicodeWriter out) throws Exception
-	{
-		startTagToXml(out);
-		new ORef(objectType, id).toXml(out);
-		endTagToXml(out);
-	}
-
 	@Override
 	public boolean equals(Object rawOther)
 	{
