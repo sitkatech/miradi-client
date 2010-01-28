@@ -21,7 +21,6 @@ package org.miradi.objectdata;
 
 import java.util.HashSet;
 
-import org.martus.util.UnicodeWriter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.questions.ChoiceQuestion;
@@ -53,16 +52,6 @@ abstract public class ObjectData
 	final public boolean isEmpty()
 	{
 		return toString().length() == 0;
-	}
-	
-	protected void startTagToXml(UnicodeWriter out) throws Exception
-	{
-		out.write("<" + getTag() + ">");
-	}
-	
-	protected void endTagToXml(UnicodeWriter out) throws Exception
-	{
-		out.writeln("</" + getTag() + ">");
 	}
 	
 	public boolean isPseudoField()
