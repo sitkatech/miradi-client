@@ -191,7 +191,7 @@ import org.miradi.views.diagram.doers.ZoomToFitDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.threatmatrix.doers.ManageStressesDoer;
-import org.miradi.views.umbrella.DeleteActivity;
+import org.miradi.views.umbrella.DeleteActivityDoer;
 import org.miradi.views.umbrella.UmbrellaView;
 import org.miradi.views.umbrella.doers.TaskMoveDownDoer;
 import org.miradi.views.umbrella.doers.TaskMoveUpDoer;
@@ -298,7 +298,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionNudgeRight.class, new NudgeDoer(KeyEvent.VK_RIGHT));
 		
 		addDoerToMap(ActionCreateActivity.class, new CreateActivityDoer());
-		addDoerToMap(ActionDeleteActivity.class, new DeleteActivity());
+		addDoerToMap(ActionDeleteActivity.class, new DeleteActivityDoer());
 		addDoerToMap(ActionShareActivity.class, new TreeNodeShareActivityDoer());
 
 		addDoerToMap(ActionCreateObjective.class, new CreateObjectiveDoer());

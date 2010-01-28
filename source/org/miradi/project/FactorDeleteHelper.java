@@ -46,7 +46,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
-import org.miradi.views.umbrella.DeleteActivity;
+import org.miradi.views.umbrella.DeleteActivityDoer;
 
 public class FactorDeleteHelper
 {
@@ -218,7 +218,7 @@ public class FactorDeleteHelper
 	
 	private void removeFromRelevancyOverrideSets(Factor factorToDelete) throws Exception
 	{
-		getProject().executeCommandsWithoutTransaction(DeleteActivity.buildRemoveFromRelevancyListCommands(getProject(), factorToDelete.getRef()));
+		getProject().executeCommandsWithoutTransaction(DeleteActivityDoer.buildRemoveFromRelevancyListCommands(getProject(), factorToDelete.getRef()));
 	}
 
 	private void deleteUnderlyingNode(Factor factorToDelete) throws CommandFailedException
@@ -277,7 +277,7 @@ public class FactorDeleteHelper
 		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
 		{
 			Task childTask = (Task)getProject().findObject(ObjectType.TASK, ids.get(annotationIndex));
-			DeleteActivity.deleteTaskTree(getProject(), hierarchyWithParent, childTask);
+			DeleteActivityDoer.deleteTaskTree(getProject(), hierarchyWithParent, childTask);
 		}
 	}
 	

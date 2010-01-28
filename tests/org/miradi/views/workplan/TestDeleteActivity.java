@@ -36,7 +36,7 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
-import org.miradi.views.umbrella.DeleteActivity;
+import org.miradi.views.umbrella.DeleteActivityDoer;
 import org.miradi.views.umbrella.Undo;
 
 public class TestDeleteActivity extends TestCaseWithProject
@@ -98,7 +98,7 @@ public class TestDeleteActivity extends TestCaseWithProject
 		{
 			ORefList parentChildHierarchy = new ORefList();
 			parentChildHierarchy.add(parentRef);
-			DeleteActivity.deleteTaskTree(project, parentChildHierarchy, leafChild);
+			DeleteActivityDoer.deleteTaskTree(project, parentChildHierarchy, leafChild);
 		}
 		finally
 		{
@@ -124,7 +124,7 @@ public class TestDeleteActivity extends TestCaseWithProject
 		
 		assertEquals("relevancy override was not set?", 1, objective.getRelevantStrategyAndActivityRefs().size());
 																	   
-		Vector<Command> commandsToUpdateRelevancyList = DeleteActivity.buildRemoveObjectFromRelevancyListCommands(getProject(), Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, strategy.getRef());
+		Vector<Command> commandsToUpdateRelevancyList = DeleteActivityDoer.buildRemoveObjectFromRelevancyListCommands(getProject(), Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, strategy.getRef());
 		getProject().executeCommandsWithoutTransaction(commandsToUpdateRelevancyList);
 		
 		assertEquals("relevancy override was not updated after delete?", 0, objective.getRelevantStrategyAndActivityRefs().size());
