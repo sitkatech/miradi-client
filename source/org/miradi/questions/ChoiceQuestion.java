@@ -19,9 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.*/
 package org.miradi.questions;
 
 import java.awt.Color;
-import java.io.IOException;
 
-import org.martus.util.UnicodeWriter;
 import org.miradi.main.EAM;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.ColorManager;
@@ -109,17 +107,6 @@ public abstract class ChoiceQuestion
 		if(choice == null)
 			return "[" + EAM.text("Unknown code: ") + code + "]";
 		return choice.getLabel();
-	}
-	
-	public void toXml(UnicodeWriter out) throws IOException
-	{
-		out.writeln("<Choices question='" + getClass().getSimpleName() + "'>");
-		ChoiceItem[] choices = getChoices();
-		for(int i = 0; i < choices.length; ++i)
-		{
-			choices[i].toXml(out);
-		}
-		out.writeln("</Choices>");
 	}
 	
 	public String getQuestionDescription()
