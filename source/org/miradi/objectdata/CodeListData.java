@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
-import org.martus.util.UnicodeWriter;
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.questions.ChoiceQuestion;
 
 public class CodeListData extends AbstractStringListData
@@ -42,26 +40,6 @@ public class CodeListData extends AbstractStringListData
 	public ChoiceQuestion getChoiceQuestion()
 	{
 		return question;
-	}
-	
-	@Override
-	public void toXml(UnicodeWriter out) throws Exception
-	{
-		startTagToXml(out);
-		out.writeln("<CodeList>");
-		for(int i = 0; i < getCodeList().size(); ++i)
-		{
-			String code = getCodeList().get(i);
-			String value = question.getValue(code);
-			
-			out.writeln("<Entry>");
-			out.writeln("<Code>" + XmlUtilities.getXmlEncoded(code) + "</Code>");
-			out.writeln("<Value>" + XmlUtilities.getXmlEncoded(value) + "</Value>");
-			out.writeln("</Entry>");
-		}
-		out.writeln();
-		out.writeln("</CodeList>");
-		endTagToXml(out);
 	}
 	
 	private ChoiceQuestion question;
