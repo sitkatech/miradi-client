@@ -25,9 +25,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.Task;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class IndicatorPropertiesPanel extends AbstractIndicatorPropertiesPanel
+public class IndicatorPropertiesPanelWithBudgetPanels extends AbstractIndicatorPropertiesPanel
 {
-	public IndicatorPropertiesPanel(MainWindow mainWindow, ObjectPicker picker) throws Exception
+	public IndicatorPropertiesPanelWithBudgetPanels(MainWindow mainWindow, ObjectPicker picker) throws Exception
 	{
 		super(mainWindow.getProject(), picker);
 	}
