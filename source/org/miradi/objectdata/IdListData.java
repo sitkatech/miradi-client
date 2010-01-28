@@ -21,7 +21,6 @@ package org.miradi.objectdata;
 
 import java.text.ParseException;
 
-import org.martus.util.UnicodeWriter;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORefList;
@@ -101,14 +100,6 @@ public class IdListData extends ObjectData
 	public int hashCode()
 	{
 		return ids.hashCode();
-	}
-	
-	@Override
-	public void toXml(UnicodeWriter out) throws Exception
-	{
-		startTagToXml(out);
-		ids.toXml(out);
-		endTagToXml(out);
 	}
 	
 	@Override
