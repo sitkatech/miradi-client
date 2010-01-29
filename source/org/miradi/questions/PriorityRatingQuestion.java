@@ -23,7 +23,7 @@ import org.miradi.main.EAM;
 
 
 
-public class PriorityRatingQuestion extends StaticChoiceQuestion
+public class PriorityRatingQuestion extends StaticChoiceQuestionSortableByCode
 {
 	public PriorityRatingQuestion()
 	{

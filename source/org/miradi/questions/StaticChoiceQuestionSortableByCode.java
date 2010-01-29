@@ -29,6 +29,11 @@ public class StaticChoiceQuestionSortableByCode extends StaticChoiceQuestion
 		super(questionDescriptionToUse);
 	}
 
+	public StaticChoiceQuestionSortableByCode(ChoiceItem[] choices)
+	{
+		super(choices);
+	}
+
 	@Override
 	public Comparator getComparator()
 	{

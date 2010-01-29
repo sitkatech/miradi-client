@@ -24,7 +24,7 @@ import java.awt.Color;
 import org.miradi.main.EAM;
 
 
-public class StrategyFeasibilityQuestion extends StaticChoiceQuestion
+public class StrategyFeasibilityQuestion extends StaticChoiceQuestionSortableByCode
 {
 	public StrategyFeasibilityQuestion()
 	{

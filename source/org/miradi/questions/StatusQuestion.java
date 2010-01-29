@@ -23,7 +23,7 @@ import java.awt.Color;
 
 import org.miradi.main.EAM;
 
-public class StatusQuestion extends StaticChoiceQuestion
+public class StatusQuestion extends StaticChoiceQuestionSortableByCode
 {
 	public StatusQuestion()
 	{
