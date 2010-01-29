@@ -41,11 +41,28 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		super(mainWindowToUse, model, uniqueTableIdentifierToUse);
 	
 		mainWindowToUse.getProject().addCommandExecutedListener(this);
-		
+		safelyHandleAddingRenderersAndEditors();
 		addColumnWidthSaver();
 		addColumnSequenceSaver();
 	}
+
+	private void safelyHandleAddingRenderersAndEditors()
+	{
+		try
+		{
+			rebuildColumnEditorsAndRenderers();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
+		}
+	}
 	
+	protected void rebuildColumnEditorsAndRenderers() throws Exception
+	{
+	}
+
 	@Override
 	public void setTableHeader(JTableHeader tableHeader)
 	{
