@@ -64,6 +64,7 @@ public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implemen
 
 	class LeftClickHandler extends MouseAdapter
 	{
+		@Override
 		public void mouseClicked(MouseEvent e)
 		{
 			table.stopCellEditing();
