@@ -24,7 +24,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class ActivityPropertiesPanelWithoutBudgetPanels extends TaskPropertiesPanel
+public class ActivityPropertiesPanelWithoutBudgetPanels extends TaskPropertiesPanelWithoutBudgetPanels
 {
 	public ActivityPropertiesPanelWithoutBudgetPanels(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
 	{
@@ -37,11 +37,6 @@ public class ActivityPropertiesPanelWithoutBudgetPanels extends TaskPropertiesPa
 		return true;
 	}
 	
-	@Override
-	protected void addBudgetSubPanels(ObjectPicker objectPickerToUse) throws Exception
-	{
-	}	
-
 	@Override
 	public String getPanelDescription()
 	{
