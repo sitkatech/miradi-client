@@ -23,7 +23,7 @@ import javax.swing.Icon;
 
 import org.miradi.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
-import org.miradi.dialogs.task.MethodPropertiesPanel;
+import org.miradi.dialogs.task.MethodPropertiesPanelWithoutBudgetPanels;
 import org.miradi.icons.MethodIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -34,11 +34,11 @@ public class MethodListManagementPanel extends ObjectListManagementPanel
 	public static MethodListManagementPanel create(MainWindow mainWindow, ORefList selectedIndicatorHierarchy) throws Exception
 	{
 		MethodListTablePanel tablePanel = new MethodListTablePanel(mainWindow, selectedIndicatorHierarchy);
-		MethodPropertiesPanel properties = new MethodPropertiesPanel(mainWindow, tablePanel.getTable());
+		MethodPropertiesPanelWithoutBudgetPanels properties = new MethodPropertiesPanelWithoutBudgetPanels(mainWindow, tablePanel.getTable());
 		return new MethodListManagementPanel(mainWindow, tablePanel, properties);
 	}
 	
-	private MethodListManagementPanel(MainWindow mainWindow, MethodListTablePanel tablePanel, MethodPropertiesPanel properties) throws Exception
+	private MethodListManagementPanel(MainWindow mainWindow, MethodListTablePanel tablePanel, MethodPropertiesPanelWithoutBudgetPanels properties) throws Exception
 	{
 		super(mainWindow, tablePanel, properties);
 	}
