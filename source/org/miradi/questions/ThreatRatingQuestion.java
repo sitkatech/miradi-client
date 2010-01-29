@@ -24,7 +24,7 @@ import java.util.Comparator;
 
 import org.miradi.main.EAM;
 
-public class ThreatRatingQuestion extends StaticChoiceQuestion
+public class ThreatRatingQuestion extends StaticChoiceQuestionSortableByCode
 {
 	public ThreatRatingQuestion(String questionDescriptionToUse)
 	{
