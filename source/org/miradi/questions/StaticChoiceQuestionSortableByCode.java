@@ -20,10 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import java.util.Comparator;
+
 public class StaticChoiceQuestionSortableByCode extends StaticChoiceQuestion
 {
 	public StaticChoiceQuestionSortableByCode(String questionDescriptionToUse)
 	{
 		super(questionDescriptionToUse);
+	}
+
+	@Override
+	public Comparator getComparator()
+	{
+		return new ChoiceItemCodeComparator();
 	}
 }
