@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-28 17:52-0600\n"
+"POT-Creation-Date: 2010-01-29 08:31-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -2643,7 +2643,7 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/DirectThreatQuestion.java:43
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:37
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:35
-#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:43
+#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:42
 #: Miradi/source/org/miradi/questions/KeyEcologicalAttributeTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/StressScopeChoiceQuestion.java:36
 #: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:37
@@ -2663,7 +2663,7 @@ msgstr "No especificado"
 
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:37
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:38
-#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:44
+#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:43
 #: Miradi/source/org/miradi/questions/StressScopeChoiceQuestion.java:37
 #: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:38
 #: Miradi/source/org/miradi/questions/StressRatingChoiceQuestion.java:37
@@ -2674,7 +2674,7 @@ msgstr "Bajo "
 
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:38
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:39
-#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:45
+#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:44
 #: Miradi/source/org/miradi/questions/StressScopeChoiceQuestion.java:38
 #: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:39
 #: Miradi/source/org/miradi/questions/StressRatingChoiceQuestion.java:38
@@ -2685,7 +2685,7 @@ msgstr "Medio "
 
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:39
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:40
-#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:46
+#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:45
 #: Miradi/source/org/miradi/questions/StressScopeChoiceQuestion.java:39
 #: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:40
 #: Miradi/source/org/miradi/questions/StressRatingChoiceQuestion.java:39
@@ -2696,7 +2696,7 @@ msgstr "Alto "
 
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:40
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:41
-#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:47
+#: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:46
 #: Miradi/source/org/miradi/questions/StressScopeChoiceQuestion.java:40
 #: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:41
 #: Miradi/source/org/miradi/questions/StressRatingChoiceQuestion.java:40
