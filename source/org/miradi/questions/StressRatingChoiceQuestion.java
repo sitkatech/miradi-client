@@ -23,7 +23,7 @@ import java.awt.Color;
 
 import org.miradi.main.EAM;
 
-public class StressRatingChoiceQuestion extends StaticChoiceQuestion
+public class StressRatingChoiceQuestion extends StaticChoiceQuestionSortableByCode
 {
 	public StressRatingChoiceQuestion()
 	{
