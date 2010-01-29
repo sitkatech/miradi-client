@@ -31,11 +31,13 @@ public class MethodPropertiesPanel extends TaskPropertiesPanel
 		super(mainWindow, objectPickerToUse);
 	}
 
+	@Override
 	protected boolean shouldHaveVisibilityPanel()
 	{
 		return false;
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Method Properties");
