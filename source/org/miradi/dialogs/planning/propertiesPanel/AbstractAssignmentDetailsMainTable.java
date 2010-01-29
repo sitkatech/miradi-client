@@ -31,7 +31,6 @@ public class AbstractAssignmentDetailsMainTable extends AbstractComponentTable
 	public AbstractAssignmentDetailsMainTable(MainWindow mainWindowToUse, AbstractSummaryTableModel modelToUse, String uniqueIdentifier) throws Exception
 	{
 		super(mainWindowToUse, modelToUse, uniqueIdentifier);
-		model = modelToUse;
 		
 		setBackground(getColumnBackGroundColor(0));
 		rebuildColumnEditorsAndRenderers();
@@ -75,7 +74,7 @@ public class AbstractAssignmentDetailsMainTable extends AbstractComponentTable
 	
 	protected AbstractSummaryTableModel getAbstractSummaryTableModel()
 	{
-		return model;
+		return (AbstractSummaryTableModel) getModel();
 	}
 	
 	@Override
@@ -89,6 +88,4 @@ public class AbstractAssignmentDetailsMainTable extends AbstractComponentTable
 	{
 		return false;
 	}
-
-	private AbstractSummaryTableModel model;
 }
