@@ -31,6 +31,7 @@ public class EditMethodsDoer extends AbstractPopUpEditDoer
 		super(Indicator.getObjectType(), EAM.text("Edit Methods"));
 	}
 
+	@Override
 	protected ObjectListManagementPanel createManagementPanel() throws Exception
 	{
 		return MethodListManagementPanel.create(getMainWindow(), getPicker().getSelectionHierarchy());
