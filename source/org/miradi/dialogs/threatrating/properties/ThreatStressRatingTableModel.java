@@ -308,6 +308,9 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		if (isStressRatingColumn(column))
 			return new StressRatingChoiceQuestion();
 		
+		if (isThreatRatingColumn(column))
+			return new ThreatStressRatingChoiceQuestion(); 
+		
 		return super.getColumnQuestion(column);
 	}
 				
