@@ -33,6 +33,8 @@ import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.IrreversibilityThreatRatingQuestion;
 import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
 import org.miradi.questions.StressRatingChoiceQuestion;
@@ -303,6 +305,21 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	public ORef getTargetRef()
 	{
 		return targetRef;
+	}
+	
+	@Override
+	public ChoiceQuestion getColumnQuestion(int column)
+	{
+		if (isContributionColumn(column))
+			return new StressContributionQuestion();
+		
+		if (isIrreversibilityColumn(column))
+			return new IrreversibilityThreatRatingQuestion();
+		
+		if (isStressRatingColumn(column))
+			return new StressRatingChoiceQuestion();
+		
+		return super.getColumnQuestion(column);
 	}
 				
 	private static final String UNIQUE_MODEL_IDENTIFIER = "ThreatStressRatingTableModel";

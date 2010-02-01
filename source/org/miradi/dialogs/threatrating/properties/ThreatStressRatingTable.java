@@ -25,6 +25,7 @@ import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.StressBasedThreatRatingQuestionPopupEditorComponent;
 
 public class ThreatStressRatingTable extends EditableObjectTable
@@ -78,23 +79,30 @@ public class ThreatStressRatingTable extends EditableObjectTable
 	@Override
 	public int getDefaultColumnWidth(int tableColumn, String columnTag,	int columnHeaderWidth)
 	{
-		int modelColumn = convertColumnIndexToModel(tableColumn);
-		if (getThreatStressRatingTableModel().isContributionColumn(modelColumn) || getThreatStressRatingTableModel().isIrreversibilityColumn(modelColumn))
+		try
 		{
-			try
-			{
-				StressBasedThreatRatingQuestionPopupEditorComponent component = new StressBasedThreatRatingQuestionPopupEditorComponent(getProject(), getThreatStressRatingTableModel().createIrreversibilityQuestion(modelColumn));
-				return component.getPreferredSize().width;
-			}
-			catch(Exception e)
-			{
-				EAM.logException(e);
-				EAM.unexpectedErrorDialog(e);
-			}
-		}			
+			int modelColumn = convertColumnIndexToModel(tableColumn);
+			if (getThreatStressRatingTableModel().isContributionColumn(modelColumn))
+				return getPreferredEditorComponentWidth(modelColumn);
+
+			if (getThreatStressRatingTableModel().isIrreversibilityColumn(modelColumn))
+				return getPreferredEditorComponentWidth(modelColumn);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
+		}	
 		
 		return super.getDefaultColumnWidth(tableColumn, columnTag, columnHeaderWidth);
 	}
-	
+
+	private int getPreferredEditorComponentWidth(int modelColumn) throws Exception
+	{
+		ChoiceQuestion question = getThreatStressRatingTableModel().getColumnQuestion(modelColumn);
+		StressBasedThreatRatingQuestionPopupEditorComponent component = new StressBasedThreatRatingQuestionPopupEditorComponent(getProject(), question);
+		return component.getPreferredSize().width;
+	}
+
 	public static final String UNIQUE_IDENTIFIER = "ThreatStressRatingTable";
 }
