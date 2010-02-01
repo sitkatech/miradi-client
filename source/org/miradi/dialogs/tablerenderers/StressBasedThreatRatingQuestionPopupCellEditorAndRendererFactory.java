@@ -42,12 +42,13 @@ public class StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory ex
 	{
 	    super();
 	    
-	    questionEditor = new StressBasedThreatRatingQuestionPopupEditorComponent(projectToUse, questionToUse);
+	    questionEditor = createComponent(projectToUse, questionToUse);
+	    questionRenderer = createComponent(projectToUse, questionToUse);
 	}
 	
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
 	{
-		updateEditor(table, value, row, column);
+		updateEditor(table, value, row, column, questionEditor);
 		
 		return questionEditor;
 	}
@@ -59,24 +60,30 @@ public class StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory ex
 	
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 	{
-		updateEditor(table, value, row, column);
+		updateEditor(table, value, row, column, questionRenderer);
 
-		return questionEditor;
+		return questionRenderer;
 	}
 	
-	private void updateEditor(JTable table, Object value, int row, int column)
+	private void updateEditor(JTable table, Object value, int row, int column, StressBasedThreatRatingQuestionPopupEditorComponent component)
 	{
 		ChoiceItem choiceItem = (ChoiceItem) value;
-		questionEditor.setText(choiceItem.getCode());
+		component.setText(choiceItem.getCode());
 		
 		ThreatStressRatingTableModel model = ((ThreatStressRatingTable) table).getThreatStressRatingTableModel();
 		ORef threatRef = model.getThreatRef();
 		ORef targetRef = model.getTargetRef();
-		questionEditor.setThreatRef(threatRef);
-		questionEditor.setTargetRef(targetRef);
+		component.setThreatRef(threatRef);
+		component.setTargetRef(targetRef);
 		Stress stressRef = model.getStress(row, column);
-		questionEditor.setStressRef(stressRef);
+		component.setStressRef(stressRef);
 	}
-
+	
+	private StressBasedThreatRatingQuestionPopupEditorComponent createComponent(Project project, ChoiceQuestion question)	throws Exception
+	{
+		return new StressBasedThreatRatingQuestionPopupEditorComponent(project, question);
+	}
+	
 	private StressBasedThreatRatingQuestionPopupEditorComponent questionEditor;
+	private StressBasedThreatRatingQuestionPopupEditorComponent questionRenderer;
 }
