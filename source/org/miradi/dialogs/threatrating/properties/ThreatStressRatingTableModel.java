@@ -193,7 +193,7 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		if (isStressRatingColumn(column))
 		{
 			String code = getStress(row, column).getPseudoData(getColumnTag(column));
-			return createStressRatingQuestion(column).findChoiceByCode(code);
+			return getColumnQuestion(column).findChoiceByCode(code);
 		}
 		
 		if (isContributionColumn(column))
@@ -209,7 +209,7 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		if (isThreatRatingColumn(column))
 		{
 			String code = getThreatStressRating(row, column).getPseudoData(getColumnTag(column));
-			return createThreatStressRatingQuestion(column).findChoiceByCode(code);
+			return getColumnQuestion(column).findChoiceByCode(code);
 		}
 		
 		if (isIsActiveColumn(column))
@@ -255,16 +255,6 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	public ThreatStressRating getThreatStressRating(int row, int column)
 	{
 		return (ThreatStressRating) getBaseObjectForRowColumn(row, column);
-	}
-	
-	private StressRatingChoiceQuestion createStressRatingQuestion(int column)
-	{
-		return new StressRatingChoiceQuestion();
-	}
-	
-	private ThreatStressRatingChoiceQuestion createThreatStressRatingQuestion(int column)
-	{
-		return new ThreatStressRatingChoiceQuestion();
 	}
 	
 	public static String[] getColumnTags()
