@@ -257,12 +257,12 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		return (ThreatStressRating) getBaseObjectForRowColumn(row, column);
 	}
 	
-	public StressRatingChoiceQuestion createStressRatingQuestion(int column)
+	private StressRatingChoiceQuestion createStressRatingQuestion(int column)
 	{
 		return new StressRatingChoiceQuestion();
 	}
 	
-	public ThreatStressRatingChoiceQuestion createThreatStressRatingQuestion(int column)
+	private ThreatStressRatingChoiceQuestion createThreatStressRatingQuestion(int column)
 	{
 		return new ThreatStressRatingChoiceQuestion();
 	}
