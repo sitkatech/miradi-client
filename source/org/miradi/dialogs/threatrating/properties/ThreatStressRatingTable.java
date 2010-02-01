@@ -23,7 +23,9 @@ import javax.swing.JTable;
 
 import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.base.EditableObjectTable;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.StressBasedThreatRatingQuestionPopupEditorComponent;
 
 public class ThreatStressRatingTable extends EditableObjectTable
 {
@@ -71,6 +73,27 @@ public class ThreatStressRatingTable extends EditableObjectTable
 	protected void listenForColumnWidthChanges(JTable table)
 	{
 		table.getColumnModel().addColumnModelListener(new ColumnMarginResizeListenerValidator(this));
+	}
+	
+	@Override
+	public int getDefaultColumnWidth(int tableColumn, String columnTag,	int columnHeaderWidth)
+	{
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		if (getThreatStressRatingTableModel().isContributionColumn(modelColumn) || getThreatStressRatingTableModel().isIrreversibilityColumn(modelColumn))
+		{
+			try
+			{
+				StressBasedThreatRatingQuestionPopupEditorComponent component = new StressBasedThreatRatingQuestionPopupEditorComponent(getProject(), getThreatStressRatingTableModel().createIrreversibilityQuestion(modelColumn));
+				return component.getPreferredSize().width;
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+				EAM.unexpectedErrorDialog(e);
+			}
+		}			
+		
+		return super.getDefaultColumnWidth(tableColumn, columnTag, columnHeaderWidth);
 	}
 	
 	public static final String UNIQUE_IDENTIFIER = "ThreatStressRatingTable";
