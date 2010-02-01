@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.stress;
 
 import org.miradi.dialogs.base.ObjectPoolTableModel;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Stress;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -73,7 +72,7 @@ public class StressPoolTableModel extends ObjectPoolTableModel
 	
 	private static final String[] STRESS_BASED_COLUMN_TAGS = new String[] {
 		Stress.TAG_SHORT_LABEL, 
-		BaseObject.TAG_LABEL,
+		Stress.TAG_LABEL,
 		Stress.TAG_SCOPE, 
 		Stress.TAG_SEVERITY, 
 		Stress.PSEUDO_STRESS_RATING,
@@ -82,7 +81,7 @@ public class StressPoolTableModel extends ObjectPoolTableModel
 	
 	private static final String[] SIMPLE_MODE_COLUMN_TAGS = new String[] {
 			Stress.TAG_SHORT_LABEL, 
-			BaseObject.TAG_LABEL,
+			Stress.TAG_LABEL,
 			Stress.TAG_DETAIL,
 		};
 }
