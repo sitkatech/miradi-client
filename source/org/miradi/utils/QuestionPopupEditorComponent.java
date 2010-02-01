@@ -136,6 +136,16 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	{
 		editorPanel.setText(getText());
 	}
+	
+	protected ChoiceQuestion getQuestion()
+	{
+		return question;
+	}
+	
+	protected String getTranslatedPopupButtonText()
+	{
+		return translatedPopupButtonText;
+	}
 
 	private class PopUpEditorHandler extends MouseAdapter implements ActionListener 
 	{
@@ -164,16 +174,6 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		}
 	}
 	
-	protected ChoiceQuestion getQuestion()
-	{
-		return question;
-	}
-	
-	protected String getTranslatedPopupButtonText()
-	{
-		return translatedPopupButtonText;
-	}
-
 	private PanelButton popupInvokeButton;
 	private PanelTextField currentSelectionText;
 	private UndecoratedModelessDialogWithClose editorDialog;
