@@ -70,10 +70,11 @@ public class ObjectTableModelExporter extends AbstractSingleTableExporter
 
 	private Icon getIcon(int row, int column)
 	{
-		//FIXME medium: is there a better way to get the choice item rather than instanceof
-		Object value = getObjectTableModel().getValueAt(row, column);
-		if (value instanceof ChoiceItem)
-			return ((ChoiceItem)value).getIcon();
+		Object valueAt = getObjectTableModel().getValueAt(row, column);
+		if (getObjectTableModel().isChoiceItemColumn(column) && !getObjectTableModel().isCodeListColumn(column))
+		{
+			return ((ChoiceItem)valueAt).getIcon();
+		}
 			
 		return null;
 	}
