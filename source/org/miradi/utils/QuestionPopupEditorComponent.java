@@ -113,6 +113,29 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	{
 		return new ControlPanelRadioButtonEditorComponent(getQuestion());
 	}
+	
+	private void invokePopupEditor()
+	{
+		editorPanel = createPopupEditorPanel();
+		editorPanel.addListSelectionListener(closeDialogAfterSelectionHandler);
+		selectRating();
+		editorDialog = new UndecoratedModelessDialogWithClose(EAM.getMainWindow(), EAM.text("Select"));
+		editorDialog.enableCloseWhenFocusLost();
+		OneColumnPanel panel = new OneColumnPanel();
+		addAdditionalDescriptionPanel(panel);
+		editorDialog.add(panel, BorderLayout.BEFORE_FIRST_LINE);
+		editorDialog.setMainPanel(editorPanel);
+		editorDialog.pack();
+		//NOTE: packing twice due to preferences height not being set correctly.
+		editorDialog.pack();
+		Utilities.centerFrame(editorDialog);
+		editorDialog.setVisible(true);	
+	}
+	
+	private void selectRating()
+	{
+		editorPanel.setText(getText());
+	}
 
 	private class PopUpEditorHandler extends MouseAdapter implements ActionListener 
 	{
@@ -125,29 +148,6 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		public void actionPerformed(ActionEvent event)
 		{
 			invokePopupEditor();	
-		}
-
-		private void invokePopupEditor()
-		{
-			editorPanel = createPopupEditorPanel();
-			editorPanel.addListSelectionListener(closeDialogAfterSelectionHandler);
-			selectRating();
-			editorDialog = new UndecoratedModelessDialogWithClose(EAM.getMainWindow(), EAM.text("Select"));
-			editorDialog.enableCloseWhenFocusLost();
-			OneColumnPanel panel = new OneColumnPanel();
-			addAdditionalDescriptionPanel(panel);
-			editorDialog.add(panel, BorderLayout.BEFORE_FIRST_LINE);
-			editorDialog.setMainPanel(editorPanel);
-			editorDialog.pack();
-			//NOTE: packing twice due to preferences height not being set correctly.
-			editorDialog.pack();
-			Utilities.centerFrame(editorDialog);
-			editorDialog.setVisible(true);	
-		}
-		
-		private void selectRating()
-		{
-			editorPanel.setText(getText());
 		}
 	}
 	
