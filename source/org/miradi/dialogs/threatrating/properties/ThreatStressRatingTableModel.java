@@ -36,7 +36,6 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.IrreversibilityThreatRatingQuestion;
 import org.miradi.questions.StressContributionQuestion;
-import org.miradi.questions.StressIrreversibilityQuestion;
 import org.miradi.questions.StressRatingChoiceQuestion;
 import org.miradi.questions.ThreatStressRatingChoiceQuestion;
 import org.miradi.utils.ColumnTagProvider;
@@ -256,11 +255,6 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	public ThreatStressRating getThreatStressRating(int row, int column)
 	{
 		return (ThreatStressRating) getBaseObjectForRowColumn(row, column);
-	}
-	
-	public StressIrreversibilityQuestion createIrreversibilityQuestion(int column)
-	{
-		return new StressIrreversibilityQuestion();
 	}
 	
 	public StressRatingChoiceQuestion createStressRatingQuestion(int column)
