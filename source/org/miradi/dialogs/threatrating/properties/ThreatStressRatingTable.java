@@ -58,7 +58,7 @@ public class ThreatStressRatingTable extends EditableObjectTable
 		{
 			int modelColumn = convertColumnIndexToModel(tableColumn);
 			if (threatStressRatingTableModel.isStressRatingColumn(modelColumn))
-				createReadonlyComboQuestionColumn(threatStressRatingTableModel.createStressRatingQuestion(modelColumn), tableColumn);
+				createReadonlyComboQuestionColumn(threatStressRatingTableModel.getColumnQuestion(modelColumn), tableColumn);
 			
 			if (threatStressRatingTableModel.isContributionColumn(modelColumn))
 				createInvokePopupColumn(threatStressRatingTableModel.getColumnQuestion(modelColumn), tableColumn);
