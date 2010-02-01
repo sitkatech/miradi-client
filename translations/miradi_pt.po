@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-01 12:14-0600\n"
+"POT-Creation-Date: 2010-02-01 12:18-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6297,11 +6297,11 @@ msgstr ""
 msgid "Threat Rating Preferences Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:158
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:157
 msgid "Threat Name"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:160
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:159
 msgid "Stress Name"
 msgstr ""
 
