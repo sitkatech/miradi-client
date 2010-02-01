@@ -76,9 +76,8 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 		if (Target.is(wrappedFactor))
 			return WcsXmlConstants.BIODIVERSITY_TARGET;
 		
-		//FIXME urgent - wcs  need to use object schema name
 		if (Cause.is(wrappedFactor))
-			return "Cause";
+			return WcsXmlConstants.CAUSE;
 		
 		return wrappedFactor.getTypeName();
 	}
