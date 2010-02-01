@@ -126,12 +126,6 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 	}
 	
 	@Override
-	public boolean isChoiceItemColumn(int column)
-	{
-		return (getColumnQuestion(column) != null);
-	}
-	
-	@Override
 	public ChoiceQuestion getColumnQuestion(int column)
 	{
 		String columnTag = getColumnTag(column);

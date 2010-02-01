@@ -39,6 +39,11 @@ abstract public class AbstractObjectTableModel extends AbstractTableModel  imple
 		return null;
 	}
 	
+	public boolean isChoiceItemColumn(int column)
+	{
+		return getColumnQuestion(column) != null;
+	}
+	
 	public boolean isCodeListColumn(int column)
 	{
 		return false;

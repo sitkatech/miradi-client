@@ -187,11 +187,6 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel
 		return rowObjectRefs;
 	}
 
-	public boolean isChoiceItemColumn(int column)
-	{
-		return getColumnQuestion(column) != null;
-	}
-	
 	public ChoiceItem getChoiceItem(int column, String dataToDisplay)
 	{
 		return getColumnQuestion(column).findChoiceByCode(dataToDisplay);
