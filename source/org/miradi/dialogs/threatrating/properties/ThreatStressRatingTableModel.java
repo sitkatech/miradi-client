@@ -258,11 +258,6 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		return (ThreatStressRating) getBaseObjectForRowColumn(row, column);
 	}
 	
-	public StressContributionQuestion createContributionQuestion(int column)
-	{
-		return new StressContributionQuestion();
-	}
-	
 	public StressIrreversibilityQuestion createIrreversibilityQuestion(int column)
 	{
 		return new StressIrreversibilityQuestion();
