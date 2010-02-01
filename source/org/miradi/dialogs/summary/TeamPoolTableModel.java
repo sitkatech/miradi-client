@@ -58,6 +58,15 @@ public class TeamPoolTableModel extends ObjectPoolTableModel
 		return false;
 	}
 	
+	@Override
+	public boolean isChoiceItemColumn(int column)
+	{
+		if (isRolesColumn(column))
+			return false;
+		
+		return super.isChoiceItemColumn(column);
+	}
+	
 	private boolean isRolesColumn(int column)
 	{
 		return getColumnTag(column).equals(ProjectResource.TAG_ROLE_CODES);
