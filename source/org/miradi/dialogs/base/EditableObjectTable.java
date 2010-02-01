@@ -275,7 +275,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 		createComboColumn(question.getChoices(), tableColumn);
 	}
 	
-	protected void createReadonlyComboQuestionColumn(StaticChoiceQuestion question, int tableColumn)
+	protected void createReadonlyComboQuestionColumn(ChoiceQuestion question, int tableColumn)
 	{
 		createReadonlyChoiceItemColumn(question.getChoices(), tableColumn);
 	}
