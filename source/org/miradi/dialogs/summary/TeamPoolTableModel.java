@@ -34,11 +34,13 @@ public class TeamPoolTableModel extends ObjectPoolTableModel
 		super(project, ObjectType.PROJECT_RESOURCE, COLUMN_TAGS);
 	}
 
+	@Override
 	public ORefList getLatestRefListFromProject()
 	{
 		return getProject().getResourcePool().getTeamMemberRefs();
 	}
 	
+	@Override
 	public ChoiceQuestion getColumnQuestion(int column)
 	{
 		if (isRolesColumn(column))
@@ -47,6 +49,7 @@ public class TeamPoolTableModel extends ObjectPoolTableModel
 		return super.getColumnQuestion(column);
 	}
 
+	@Override
 	public boolean isCodeListColumn(int column)
 	{
 		if (isRolesColumn(column))
