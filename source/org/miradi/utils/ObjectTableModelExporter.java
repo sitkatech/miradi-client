@@ -71,7 +71,7 @@ public class ObjectTableModelExporter extends AbstractSingleTableExporter
 	private Icon getIcon(int row, int column)
 	{
 		Object valueAt = getObjectTableModel().getValueAt(row, column);
-		if (getObjectTableModel().isChoiceItemColumn(column) && !getObjectTableModel().isCodeListColumn(column))
+		if (getObjectTableModel().isChoiceItemColumn(column))
 		{
 			return ((ChoiceItem)valueAt).getIcon();
 		}
