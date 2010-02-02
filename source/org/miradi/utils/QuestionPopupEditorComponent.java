@@ -55,13 +55,50 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		question = questionToUse;
 		translatedPopupButtonText = translatedPopupButtonTextToUse;
 		
-		popuplauncherComponent = new PopupLauncherTableCellComponent();
-		add(popuplauncherComponent);
-		addListeners(popuplauncherComponent);
+		setBackground(AppPreferences.getDataPanelBackgroundColor());
+		setMargins(2);
+		setGaps(2);
+		
+		createComponents();
+		addComponents();
+		addListeners();
 	}
 	
-	protected void addListeners(PopupLauncherTableCellComponent holder)
+	protected void addListeners()
 	{
+		addPopupEditorHandler(staticLabel);
+		addPopupEditorHandler(currentSelectionText);
+		addPopupEditorHandler(this);
+		popupInvokeButton.addActionListener(new PopUpEditorHandler());
+		closeDialogAfterSelectionHandler = new CloseEditorAfterSelectionHandler();
+	}
+	
+	private void addComponents()
+	{
+		add(staticLabel);
+		add(new UiLabel(" "));
+		add(currentSelectionText);
+		add(popupInvokeButton);
+	}
+
+	private void createComponents()
+	{
+		staticLabel = new PanelTitleLabel(translatedPopupButtonText);
+		currentSelectionText = new PanelTextField(10);
+		currentSelectionText.setEditable(false);
+		popupInvokeButton = new PanelButton(new PopupEditorIcon());
+	}
+
+	private void addPopupEditorHandler(Component mouseListener)
+	{
+		mouseListener.addMouseListener(new PopUpEditorHandler());
+	}
+
+	public void addAncestorListenersToEverything(AncestorListener ancestorListener)
+	{
+		addAncestorListener(ancestorListener);
+		popupInvokeButton.addAncestorListener(ancestorListener);
+		currentSelectionText.addAncestorListener(ancestorListener);
 	}
 	
 	public void dispose()
@@ -76,12 +113,14 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 
 	public void setText(String code)
 	{
-		popuplauncherComponent.setCurrentSelectionText(code);
+		ChoiceItem choice = question.findChoiceByCode(code);
+		currentSelectionText.setText(choice.getLabel());
+		currentSelectionText.setBackground(choice.getColor());
 	}
 	
 	public String getText()
 	{
-		String currentLabel = popuplauncherComponent.getCurrentSelectionText();
+		String currentLabel = currentSelectionText.getText();
 		return getQuestion().findChoiceByLabel(currentLabel).getCode();
 	}
 	
@@ -153,61 +192,11 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 			editorDialog.dispose();
 		}
 	}
-	
-	protected class PopupLauncherTableCellComponent extends OneRowPanel
-	{
-		public PopupLauncherTableCellComponent()
-		{
-			currentSelectionText = new PanelTextField(10);
-			currentSelectionText.setEditable(false);
-			popupInvokeButton = new PanelButton(new PopupEditorIcon());
-			
-			setBackground(AppPreferences.getDataPanelBackgroundColor());
-			setMargins(2);
-			setGaps(2);
 
-			PanelTitleLabel staticLabel = new PanelTitleLabel(translatedPopupButtonText);
-			add(staticLabel);
-			add(new UiLabel(" "));
-			add(currentSelectionText);
-			add(popupInvokeButton);
-			
-			addPopupEditorHandler(staticLabel);
-			addPopupEditorHandler(currentSelectionText);
-			addPopupEditorHandler(this);
-			popupInvokeButton.addActionListener(new PopUpEditorHandler());
-			closeDialogAfterSelectionHandler = new CloseEditorAfterSelectionHandler();
-		}
-		
-		private void addPopupEditorHandler(Component mouseListener)
-		{
-			mouseListener.addMouseListener(new PopUpEditorHandler());
-		}
-		
-		public void addAncestorListenersToEverything(AncestorListener ancestorListener)
-		{
-			addAncestorListener(ancestorListener);
-			popupInvokeButton.addAncestorListener(ancestorListener);
-			currentSelectionText.addAncestorListener(ancestorListener);
-		}
-		
-		public String getCurrentSelectionText()
-		{
-			return currentSelectionText.getText();
-		}
-		
-		public void setCurrentSelectionText(String code)
-		{
-			ChoiceItem choice = question.findChoiceByCode(code);
-			currentSelectionText.setText(choice.getLabel());
-			currentSelectionText.setBackground(choice.getColor());
-		}
-		
-		private PanelButton popupInvokeButton;
-		private PanelTextField currentSelectionText;
-	}
+	private PanelButton popupInvokeButton;
+	private PanelTextField currentSelectionText;
+	private PanelTitleLabel staticLabel; 
 
-	private PopupLauncherTableCellComponent popuplauncherComponent;
 	private UndecoratedModelessDialogWithClose editorDialog;
 	private ChoiceQuestion question;
 	private String translatedPopupButtonText;
