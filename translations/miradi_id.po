@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-02 16:47-0600\n"
+"POT-Creation-Date: 2010-02-02 16:52-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -6627,11 +6627,11 @@ msgstr ""
 msgid "FileFilter|Tab Delimited (*.txt)"
 msgstr "Berbatas Tab (*.txt) "
 
-#: Miradi/source/org/miradi/utils/AbstractThreatRatingQuestionPopupEditorComponent.java:64
+#: Miradi/source/org/miradi/utils/AbstractThreatRatingQuestionPopupEditorComponent.java:63
 msgid "Threat: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/AbstractThreatRatingQuestionPopupEditorComponent.java:65
+#: Miradi/source/org/miradi/utils/AbstractThreatRatingQuestionPopupEditorComponent.java:64
 msgid "Target: %s"
 msgstr ""
 
