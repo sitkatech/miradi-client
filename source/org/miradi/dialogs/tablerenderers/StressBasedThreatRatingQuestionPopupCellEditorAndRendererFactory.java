@@ -48,7 +48,7 @@ public class StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory ex
 	
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
 	{
-		updateEditor(table, value, row, column, questionEditor);
+		configureComponent(table, value, row, column, questionEditor);
 		
 		return questionEditor;
 	}
@@ -60,12 +60,12 @@ public class StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory ex
 	
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 	{
-		updateEditor(table, value, row, column, questionRenderer);
+		configureComponent(table, value, row, column, questionRenderer);
 
 		return questionRenderer;
 	}
 	
-	private void updateEditor(JTable table, Object value, int row, int column, StressBasedThreatRatingQuestionPopupEditorComponent component)
+	private void configureComponent(JTable table, Object value, int row, int column, StressBasedThreatRatingQuestionPopupEditorComponent component)
 	{
 		ChoiceItem choiceItem = (ChoiceItem) value;
 		component.setText(choiceItem.getCode());
