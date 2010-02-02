@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.awt.BorderLayout;
 import java.util.Vector;
 
 import org.miradi.main.EAM;
@@ -46,10 +47,10 @@ public class AbstractThreatRatingQuestionPopupEditorComponent extends QuestionPo
 	}
 	
 	@Override
-	protected void addAdditionalDescriptionPanel()
+	protected void addAdditionalDescriptionPanel(DialogWithCloseAfterSelectionHandler editorDialogToUse)
 	{
 		ControlPanelFlexibleWidthHtmlViewer htmlArea = new ControlPanelFlexibleWidthHtmlViewer(EAM.getMainWindow(), getThreatTargetTitle());
-		add(htmlArea);
+		editorDialogToUse.add(htmlArea, BorderLayout.BEFORE_FIRST_LINE);
 	}
 	
 	private String getThreatTargetTitle()
