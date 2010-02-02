@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-02 15:01-0600\n"
+"POT-Creation-Date: 2010-02-02 15:28-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6098,10 +6098,6 @@ msgstr ""
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/QuestionPopupEditorComponent.java:133
-msgid "Select"
-msgstr ""
-
 #: Miradi/source/org/miradi/utils/RtfFileFilter.java:40
 msgid "FileFilter|Rich Text Format (*.rtf)"
 msgstr ""
@@ -6243,6 +6239,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:175
 msgid "Error Occurred During Sorting"
+msgstr ""
+
+#: Miradi/source/org/miradi/utils/DialogWithCloseAfterSelectionHandler.java:33
+msgid "Select"
 msgstr ""
 
 #: Miradi/source/org/miradi/utils/XMLFileFilter.java:40
