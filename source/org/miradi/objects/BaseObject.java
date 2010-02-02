@@ -752,11 +752,11 @@ abstract public class BaseObject
 	{
 		Vector<Command> commandsToDeleteChildren = new Vector<Command>();
 		ORefList refs = getRefList(tag);
+		commandsToDeleteChildren.add(new CommandSetObjectData(this, tag, ""));
 		for (int index = 0; index < refs.size(); ++index)
 		{
 			BaseObject childObject = BaseObject.find(getProject(), refs.get(index));
 			commandsToDeleteChildren.addAll(childObject.createCommandsToClearAsList());
-			commandsToDeleteChildren.add(new CommandSetObjectData(this, tag, ""));
 			commandsToDeleteChildren.add(new CommandDeleteObject(childObject));
 		}
 		
