@@ -82,11 +82,13 @@ public class ThreatStressRatingTable extends EditableObjectTable
 		try
 		{
 			int modelColumn = convertColumnIndexToModel(tableColumn);
-			if (getThreatStressRatingTableModel().isContributionColumn(modelColumn))
-				return getPreferredEditorComponentWidth(modelColumn);
+			ThreatStressRatingTableModel model = getThreatStressRatingTableModel();
+			int preferredEditorComponentWidth = getPreferredEditorComponentWidth(modelColumn);
+			if (model.isContributionColumn(modelColumn))
+				return preferredEditorComponentWidth;
 
-			if (getThreatStressRatingTableModel().isIrreversibilityColumn(modelColumn))
-				return getPreferredEditorComponentWidth(modelColumn);
+			if (model.isIrreversibilityColumn(modelColumn))
+				return preferredEditorComponentWidth;
 		}
 		catch(Exception e)
 		{
