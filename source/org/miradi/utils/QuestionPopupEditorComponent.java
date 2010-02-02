@@ -36,7 +36,6 @@ import org.martus.swing.Utilities;
 import org.miradi.dialogfields.ChoiceItemListSelectionEvent;
 import org.miradi.dialogfields.ControlPanelRadioButtonEditorComponent;
 import org.miradi.dialogfields.FieldSaver;
-import org.miradi.dialogs.base.UndecoratedModelessDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -90,7 +89,6 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		currentSelectionText = new PanelTextField(10);
 		currentSelectionText.setEditable(false);
 		popupInvokeButton = new PanelButton(new PopupEditorIcon());
-		closeDialogAfterSelectionHandler = new CloseEditorAfterSelectionHandler();
 		saveAfterSelectionHandler = new SaveAfterSelectionHandler();
 	}
 	
@@ -98,7 +96,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	{
 		if (editorPanel != null)
 		{
-			editorPanel.removeListSelectionListener(closeDialogAfterSelectionHandler);
+			editorPanel.removeListSelectionListener(editorDialog);
 			editorPanel.removeListSelectionListener(saveAfterSelectionHandler);
 			editorPanel.dispose();
 			editorPanel = null;
@@ -130,10 +128,11 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	protected void invokePopupEditor()
 	{
 		editorPanel = createPopupEditorPanel();
-		editorPanel.addListSelectionListener(saveAfterSelectionHandler);
-		editorPanel.addListSelectionListener(closeDialogAfterSelectionHandler);
 		selectRating();
-		editorDialog = new UndecoratedModelessDialogWithClose(EAM.getMainWindow(), EAM.text("Select"));
+
+		editorDialog = new DialogWithCloseAfterSelectionHandler(EAM.getMainWindow(), EAM.text("Select"));
+		editorPanel.addListSelectionListener(saveAfterSelectionHandler);
+		editorPanel.addListSelectionListener(editorDialog);
 		editorDialog.enableCloseWhenFocusLost();
 		OneColumnPanel panel = new OneColumnPanel();
 		addAdditionalDescriptionPanel(panel);
@@ -185,15 +184,6 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		}
 	}
 	
-	private class CloseEditorAfterSelectionHandler implements ListSelectionListener
-	{
-		public void valueChanged(ListSelectionEvent event)
-		{
-			editorDialog.setVisible(false);
-			editorDialog.dispose();
-		}
-	}
-	
 	private class SaveAfterSelectionHandler implements ListSelectionListener
 	{
 		public void valueChanged(ListSelectionEvent event)
@@ -209,10 +199,9 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	private PanelTextField currentSelectionText;
 	private PanelTitleLabel staticLabel; 
 
-	private UndecoratedModelessDialogWithClose editorDialog;
+	private DialogWithCloseAfterSelectionHandler editorDialog;
 	private ChoiceQuestion question;
 	private String translatedPopupButtonText;
 	private ControlPanelRadioButtonEditorComponent editorPanel;
-	private CloseEditorAfterSelectionHandler closeDialogAfterSelectionHandler;
 	private SaveAfterSelectionHandler saveAfterSelectionHandler;
 }
