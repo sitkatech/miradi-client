@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import java.awt.BorderLayout;
-
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
@@ -52,7 +50,7 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 		super.addAdditionalComponent();
 		
 		ControlPanelFlexibleWidthHtmlViewer htmlArea = new ControlPanelFlexibleWidthHtmlViewer(EAM.getMainWindow(), getQuestion().getQuestionDescription());
-		add(htmlArea, BorderLayout.BEFORE_FIRST_LINE);
+		add(htmlArea);
 	}
 	
 	@Override
