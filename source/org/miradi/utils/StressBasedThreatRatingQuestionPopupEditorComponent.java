@@ -20,6 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
+
 import org.miradi.main.EAM;
 import org.miradi.objects.Stress;
 import org.miradi.project.Project;
@@ -35,7 +38,7 @@ public class StressBasedThreatRatingQuestionPopupEditorComponent extends Abstrac
 	@Override
 	protected void addAncestorListerToEverything(PopupLauncherTableCellComponent holder)
 	{
-		holder.addListenersToEverything();
+		holder.addAncestorListenersToEverything(new AncestorHandler());
 	}
 
 	public void setStressRef(Stress stressToUse)
@@ -47,6 +50,22 @@ public class StressBasedThreatRatingQuestionPopupEditorComponent extends Abstrac
 	protected String getAdditionalLabel()
 	{
 		return EAM.substitute(EAM.text("Stress: %s"), stress.getFullName());
+	}
+	
+	private class AncestorHandler implements AncestorListener
+	{
+		public void ancestorAdded(AncestorEvent event)
+		{
+			invokePopupEditor();
+		}
+
+		public void ancestorMoved(AncestorEvent event)
+		{
+		}
+
+		public void ancestorRemoved(AncestorEvent event)
+		{
+		}
 	}
 	
 	private Stress stress;

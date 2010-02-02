@@ -27,7 +27,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -95,7 +94,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		return new ControlPanelRadioButtonEditorComponent(getQuestion());
 	}
 	
-	private void invokePopupEditor()
+	protected void invokePopupEditor()
 	{
 		editorPanel = createPopupEditorPanel();
 		editorPanel.addListSelectionListener(closeDialogAfterSelectionHandler);
@@ -155,22 +154,6 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		}
 	}
 	
-	private class AncestorHandler implements AncestorListener
-	{
-		public void ancestorAdded(AncestorEvent event)
-		{
-			invokePopupEditor();
-		}
-
-		public void ancestorMoved(AncestorEvent event)
-		{
-		}
-
-		public void ancestorRemoved(AncestorEvent event)
-		{
-		}
-	}
-	
 	protected class PopupLauncherTableCellComponent extends OneRowPanel
 	{
 		public PopupLauncherTableCellComponent()
@@ -201,11 +184,11 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 			mouseListener.addMouseListener(new PopUpEditorHandler());
 		}
 		
-		public void addListenersToEverything()
+		public void addAncestorListenersToEverything(AncestorListener ancestorListener)
 		{
-			addAncestorListener(new AncestorHandler());
-			popupInvokeButton.addAncestorListener(new AncestorHandler());
-			currentSelectionText.addAncestorListener(new AncestorHandler());
+			addAncestorListener(ancestorListener);
+			popupInvokeButton.addAncestorListener(ancestorListener);
+			currentSelectionText.addAncestorListener(ancestorListener);
 		}
 		
 		public String getCurrentSelectionText()
