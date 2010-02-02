@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-02 12:11-0600\n"
+"POT-Creation-Date: 2010-02-02 15:01-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "Label|(Undefined Funding Source)"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/Task.java:340
+#: Miradi/source/org/miradi/objects/Task.java:347
 msgid "Task does not have a parent"
 msgstr ""
 
