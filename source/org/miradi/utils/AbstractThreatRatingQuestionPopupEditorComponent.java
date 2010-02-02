@@ -22,7 +22,6 @@ package org.miradi.utils;
 
 import java.util.Vector;
 
-import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
@@ -47,10 +46,10 @@ public class AbstractThreatRatingQuestionPopupEditorComponent extends QuestionPo
 	}
 	
 	@Override
-	protected void addAdditionalDescriptionPanel(OneColumnPanel panel)
+	protected void addAdditionalDescriptionPanel()
 	{
 		ControlPanelFlexibleWidthHtmlViewer htmlArea = new ControlPanelFlexibleWidthHtmlViewer(EAM.getMainWindow(), getThreatTargetTitle());
-		panel.add(htmlArea);
+		add(htmlArea);
 	}
 	
 	private String getThreatTargetTitle()

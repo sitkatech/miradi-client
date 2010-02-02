@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -40,7 +39,6 @@ import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.PopupEditorIcon;
-import org.miradi.layout.OneColumnPanel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.questions.ChoiceItem;
@@ -115,7 +113,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		return getQuestion().findChoiceByLabel(currentLabel).getCode();
 	}
 	
-	protected void addAdditionalDescriptionPanel(OneColumnPanel panel)
+	protected void addAdditionalDescriptionPanel()
 	{
 	}
 	
@@ -133,9 +131,8 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		editorPanel.addListSelectionListener(saveAfterSelectionHandler);
 		editorPanel.addListSelectionListener(editorDialog);
 
-		OneColumnPanel panel = new OneColumnPanel();
-		addAdditionalDescriptionPanel(panel);
-		editorDialog.add(panel, BorderLayout.BEFORE_FIRST_LINE);
+		addAdditionalDescriptionPanel();
+		
 		editorDialog.setMainPanel(editorPanel);
 		editorDialog.pack();
 		//NOTE: packing twice due to preferences height not being set correctly.
