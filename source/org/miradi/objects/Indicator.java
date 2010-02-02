@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import java.util.Vector;
 
+import org.miradi.commands.Command;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.IndicatorId;
@@ -71,6 +72,12 @@ public class Indicator extends BaseObject
 		return indicatorThreshold;
 	}
 	
+	@Override
+	public Vector<Command> createCommandsToDeleteChildren() throws Exception
+	{
+		return createCommandsToDeleteBudgetChildren();
+	}
+
 	//TODO: several pseudo fields are shared between Indicator and Desires; this may indicate a need for a common super class
 	public String getPseudoData(String fieldTag)
 	{

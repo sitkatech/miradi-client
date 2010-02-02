@@ -27,18 +27,23 @@ import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 
-public class TestTask extends ObjectTestCase
+public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 {
 	public TestTask(String name)
 	{
 		super(name);
 	}
 	
+	@Override
+	protected int getType()
+	{
+		return Task.getObjectType();
+	}
+
 	public void testGetTotalShareCount() throws Exception
 	{
 		Task activity = getProject().createActivity();
@@ -60,7 +65,7 @@ public class TestTask extends ObjectTestCase
 
 	public void testBasics() throws Exception
 	{
-		verifyFields(ObjectType.TASK);
+		verifyFields(getType());
 		BaseId id = new BaseId(5);
 		
 		Task task = new Task(getObjectManager(), new FactorId(id.asInt()));

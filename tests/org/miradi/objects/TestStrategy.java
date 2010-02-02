@@ -23,31 +23,29 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.project.ProjectForTesting;
 
-public class TestStrategy extends ObjectTestCase
+public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 {
 	public TestStrategy(String name)
 	{
 		super(name);
 	}
-	
-	public void setUp() throws Exception
+		
+	@Override
+	protected int getType()
 	{
-		super.setUp();
-		project = new ProjectForTesting(getName());
+		return ObjectType.STRATEGY;
 	}
-
-	public void tearDown() throws Exception
+	
+	@Override
+	protected BaseObject createParentObject() throws Exception
 	{
-		project.close();
-		project = null;
-		super.tearDown();
+		return getProject().createStrategy();
 	}
 	
 	public void testFields() throws Exception
 	{
-		verifyFields(ObjectType.STRATEGY);
+		verifyFields(getType());
 	}
 	
 	public void testBasics()
@@ -119,7 +117,7 @@ public class TestStrategy extends ObjectTestCase
 		intervention.insertActivityId(new BaseId(23), 0);
 		intervention.insertActivityId(new BaseId(37), 1);
 		
-		Strategy got = (Strategy)BaseObject.createFromJson(project.getObjectManager(), intervention.getType(), intervention.toJson());
+		Strategy got = (Strategy)BaseObject.createFromJson(getProject().getObjectManager(), intervention.getType(), intervention.toJson());
 		assertTrue("Didn't restore status?", got.isStatusDraft());
 		assertEquals("Didn't read activities?", intervention.getActivityIds(), got.getActivityIds());
 	}
@@ -135,6 +133,4 @@ public class TestStrategy extends ObjectTestCase
 	static final BaseId valueId1 = new BaseId(85);
 	static final BaseId valueId2 = new BaseId(2398);
 	static final BaseId defaultValueId = new BaseId(7272);
-	
-	ProjectForTesting project;
 }
