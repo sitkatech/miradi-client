@@ -91,6 +91,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		currentSelectionText.setEditable(false);
 		popupInvokeButton = new PanelButton(new PopupEditorIcon());
 		closeDialogAfterSelectionHandler = new CloseEditorAfterSelectionHandler();
+		saveAfterSelectionHandler = new SaveAfterSelectionHandler();
 	}
 	
 	public void dispose()
@@ -98,6 +99,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		if (editorPanel != null)
 		{
 			editorPanel.removeListSelectionListener(closeDialogAfterSelectionHandler);
+			editorPanel.removeListSelectionListener(saveAfterSelectionHandler);
 			editorPanel.dispose();
 			editorPanel = null;
 		}
@@ -128,6 +130,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	protected void invokePopupEditor()
 	{
 		editorPanel = createPopupEditorPanel();
+		editorPanel.addListSelectionListener(saveAfterSelectionHandler);
 		editorPanel.addListSelectionListener(closeDialogAfterSelectionHandler);
 		selectRating();
 		editorDialog = new UndecoratedModelessDialogWithClose(EAM.getMainWindow(), EAM.text("Select"));
@@ -186,12 +189,19 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	{
 		public void valueChanged(ListSelectionEvent event)
 		{
+			editorDialog.setVisible(false);
+			editorDialog.dispose();
+		}
+	}
+	
+	private class SaveAfterSelectionHandler implements ListSelectionListener
+	{
+		public void valueChanged(ListSelectionEvent event)
+		{
 			String code = ((ChoiceItemListSelectionEvent)event).getCode();
 			setText(code);
 	
 			FieldSaver.savePendingEdits();
-			editorDialog.setVisible(false);
-			editorDialog.dispose();
 		}
 	}
 
@@ -204,4 +214,5 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	private String translatedPopupButtonText;
 	private ControlPanelRadioButtonEditorComponent editorPanel;
 	private CloseEditorAfterSelectionHandler closeDialogAfterSelectionHandler;
+	private SaveAfterSelectionHandler saveAfterSelectionHandler;
 }
