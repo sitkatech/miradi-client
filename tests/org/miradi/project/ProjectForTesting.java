@@ -774,7 +774,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		fillObjectUsingCommand(task, Task.TAG_LABEL, customLabel);
 		fillObjectUsingCommand(task, Task.TAG_DETAILS, "Some Task details");
-		addResourceAssignment(task, createAndPopulateProjectResource(), 10.0, new DateUnit());
+		addResourceAssignment(task);
 
 		addExpenseWithValue(task);
 	}
@@ -1458,6 +1458,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return addResourceAssignment(parentObject, projectResource, dateUnitEffort);
 	}
 	
+	public void addResourceAssignment(BaseObject object) throws Exception
+	{
+		addResourceAssignment(object, createAndPopulateProjectResource(), 10.0, new DateUnit());
+	}
+
 	private ResourceAssignment addResourceAssignment(BaseObject parentObject, ProjectResource projectResource, double units, DateUnit dateUnit) throws Exception
 	{
 		ResourceAssignment resourceAssignment = addResourceAssignment(parentObject, units, dateUnit);
