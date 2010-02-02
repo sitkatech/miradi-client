@@ -43,7 +43,6 @@ import org.miradi.icons.PopupEditorIcon;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
-import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
@@ -130,10 +129,10 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		editorPanel = createPopupEditorPanel();
 		selectRating();
 
-		editorDialog = new DialogWithCloseAfterSelectionHandler(EAM.getMainWindow(), EAM.text("Select"));
+		editorDialog = new DialogWithCloseAfterSelectionHandler();
 		editorPanel.addListSelectionListener(saveAfterSelectionHandler);
 		editorPanel.addListSelectionListener(editorDialog);
-		editorDialog.enableCloseWhenFocusLost();
+
 		OneColumnPanel panel = new OneColumnPanel();
 		addAdditionalDescriptionPanel(panel);
 		editorDialog.add(panel, BorderLayout.BEFORE_FIRST_LINE);
