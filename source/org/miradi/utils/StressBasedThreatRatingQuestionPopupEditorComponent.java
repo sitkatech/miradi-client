@@ -20,6 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.util.HashSet;
+
+import javax.swing.JComponent;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 
@@ -40,7 +43,11 @@ public class StressBasedThreatRatingQuestionPopupEditorComponent extends Abstrac
 	{
 		super.addListeners();
 		
-		addAncestorListenersToEverything(new AncestorHandler());
+		HashSet<JComponent> components = getPopupEditorComponents();
+		for(JComponent component : components)
+		{
+			component.addAncestorListener(new AncestorHandler());	
+		}
 	}
 
 	public void setStressRef(Stress stressToUse)
