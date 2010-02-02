@@ -91,11 +91,13 @@ public class Strategy extends Factor
 	}
 
 	
+	@Override
 	public boolean isStrategy()
 	{
 		return true;
 	}
 	
+	@Override
 	public boolean canHaveObjectives()
 	{
 		return true;
@@ -106,6 +108,7 @@ public class Strategy extends Factor
 		return !isStatusDraft();
 	}
 	
+	@Override
 	public boolean isStatusDraft()
 	{
 		return STATUS_DRAFT.equals(status.get());
@@ -149,6 +152,7 @@ public class Strategy extends Factor
 		return activities;
 	}
 	
+	@Override
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_RATING_SUMMARY))
@@ -184,11 +188,13 @@ public class Strategy extends Factor
 		return result;
 	}
 
+	@Override
 	public String toString()
 	{
 		return combineShortLabelAndLabel(getShortLabel().toString(), label.toString());
 	}
 	
+	@Override
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
@@ -197,6 +203,7 @@ public class Strategy extends Factor
 		return deepObjectRefsToCopy;
 	}
 	
+	@Override
 	public ORefList getOwnedObjects(int objectType)
 	{
 		ORefList list = super.getOwnedObjects(objectType);
@@ -210,6 +217,7 @@ public class Strategy extends Factor
 		return list;
 	}
 	
+	@Override
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_ACTIVITY_IDS))
@@ -218,6 +226,7 @@ public class Strategy extends Factor
 		return super.getAnnotationType(tag);
 	}
 
+	@Override
 	public boolean isIdListTag(String tag)
 	{
 		if (tag.equals(TAG_ACTIVITY_IDS))
@@ -226,11 +235,13 @@ public class Strategy extends Factor
 		return super.isIdListTag(tag);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -272,6 +283,7 @@ public class Strategy extends Factor
 		return objectType == getObjectType();
 	}
 	
+	@Override
 	void clear()
 	{
 		super.clear();
