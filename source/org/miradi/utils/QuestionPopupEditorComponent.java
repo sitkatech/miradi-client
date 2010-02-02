@@ -113,7 +113,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		return getQuestion().findChoiceByLabel(currentLabel).getCode();
 	}
 	
-	protected void addAdditionalDescriptionPanel()
+	protected void addAdditionalDescriptionPanel(DialogWithCloseAfterSelectionHandler editorDialogToUse)
 	{
 	}
 	
@@ -131,7 +131,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		editorPanel.addListSelectionListener(saveAfterSelectionHandler);
 		editorPanel.addListSelectionListener(editorDialog);
 
-		addAdditionalDescriptionPanel();
+		addAdditionalDescriptionPanel(editorDialog);
 		
 		editorDialog.setMainPanel(editorPanel);
 		editorDialog.pack();
