@@ -25,8 +25,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashSet;
 
-import javax.swing.event.AncestorListener;
+import javax.swing.JComponent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -66,12 +67,13 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	protected void addListeners()
 	{
 		PopUpEditorHandler mouseHandler = new PopUpEditorHandler();
-		staticLabel.addMouseListener(mouseHandler);
-		currentSelectionText.addMouseListener(mouseHandler);
-		addMouseListener(mouseHandler);
+		HashSet<JComponent> components = getPopupEditorComponents();
+		for(JComponent component : components)
+		{
+			component.addMouseListener(mouseHandler);
+		}
 		
 		popupInvokeButton.addActionListener(new PopUpEditorHandler());
-		closeDialogAfterSelectionHandler = new CloseEditorAfterSelectionHandler();
 	}
 	
 	private void addComponents()
@@ -88,13 +90,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		currentSelectionText = new PanelTextField(10);
 		currentSelectionText.setEditable(false);
 		popupInvokeButton = new PanelButton(new PopupEditorIcon());
-	}
-
-	public void addAncestorListenersToEverything(AncestorListener ancestorListener)
-	{
-		addAncestorListener(ancestorListener);
-		popupInvokeButton.addAncestorListener(ancestorListener);
-		currentSelectionText.addAncestorListener(ancestorListener);
+		closeDialogAfterSelectionHandler = new CloseEditorAfterSelectionHandler();
 	}
 	
 	public void dispose()
@@ -160,6 +156,16 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	protected String getTranslatedPopupButtonText()
 	{
 		return translatedPopupButtonText;
+	}
+	
+	protected HashSet<JComponent> getPopupEditorComponents()
+	{
+		HashSet components = new HashSet<JComponent>();
+		components.add(this);
+		components.add(staticLabel);
+		components.add(currentSelectionText);
+		
+		return components;
 	}
 
 	private class PopUpEditorHandler extends MouseAdapter implements ActionListener 
