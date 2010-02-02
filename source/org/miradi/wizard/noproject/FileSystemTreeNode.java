@@ -71,10 +71,10 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 			}
 			if(column == 1)
 			{
-				if(!isProjectDirectory())
-					return null;
+				if(isProjectDirectory())
+					return getLastModifiedDate();
 				
-				return getLastModifiedDate();
+				return null;
 			}
 		}
 		catch(Exception e)
