@@ -27,7 +27,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JPanel;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 import javax.swing.event.ListSelectionEvent;
@@ -57,33 +56,12 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		question = questionToUse;
 		translatedPopupButtonText = translatedPopupButtonTextToUse;
 		
-		PanelTitleLabel staticLabel = new PanelTitleLabel(translatedPopupButtonText);
-		currentSelectionText = new PanelTextField(10);
-		currentSelectionText.setEditable(false);
-		popupInvokeButton = new PanelButton(new PopupEditorIcon());
-		
-		OneRowPanel panel = new OneRowPanel();
-		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		panel.setMargins(2);
-		panel.setGaps(2);
-		panel.add(staticLabel);
-		panel.add(new UiLabel(" "));
-		panel.add(currentSelectionText);
-		panel.add(popupInvokeButton);
-		
-		add(panel);
-		
-		addPopupEditorHandler(staticLabel);
-		addPopupEditorHandler(currentSelectionText);
-		addPopupEditorHandler(panel);
-		popupInvokeButton.addActionListener(new PopUpEditorHandler());
-		closeDialogAfterSelectionHandler = new CloseEditorAfterSelectionHandler();
-		
-		PopupEditorAncestorListeners holder = new PopupEditorAncestorListeners(panel, popupInvokeButton, currentSelectionText);
-		addAncestorListerToEverything(holder);
+		popuplauncherComponent = new PopupLauncherTableCellComponent();
+		add(popuplauncherComponent);
+		addAncestorListerToEverything(popuplauncherComponent);
 	}
 	
-	protected void addAncestorListerToEverything(PopupEditorAncestorListeners holder)
+	protected void addAncestorListerToEverything(PopupLauncherTableCellComponent holder)
 	{
 	}
 	
@@ -97,21 +75,14 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		}
 	}
 
-	private void addPopupEditorHandler(Component mouseListener)
-	{
-		mouseListener.addMouseListener(new PopUpEditorHandler());
-	}
-	
 	public void setText(String code)
 	{
-		ChoiceItem choice = question.findChoiceByCode(code);
-		currentSelectionText.setText(choice.getLabel());
-		currentSelectionText.setBackground(choice.getColor());
+		popuplauncherComponent.setCurrentSelectionText(code);
 	}
 	
 	public String getText()
 	{
-		String currentLabel = currentSelectionText.getText();
+		String currentLabel = popuplauncherComponent.getCurrentSelectionText();
 		return getQuestion().findChoiceByLabel(currentLabel).getCode();
 	}
 	
@@ -200,29 +171,60 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		}
 	}
 	
-	protected class PopupEditorAncestorListeners
+	protected class PopupLauncherTableCellComponent extends OneRowPanel
 	{
-		public PopupEditorAncestorListeners(JPanel mainPanelToUse, PanelButton popupInvokeButtonToUse, PanelTextField currentSelectionTextToUse)
+		public PopupLauncherTableCellComponent()
 		{
-			mainPanel = mainPanelToUse;
-			popupInvokeButton = popupInvokeButtonToUse;
-			currentSelectionText = currentSelectionTextToUse;
+			currentSelectionText = new PanelTextField(10);
+			currentSelectionText.setEditable(false);
+			popupInvokeButton = new PanelButton(new PopupEditorIcon());
+			
+			setBackground(AppPreferences.getDataPanelBackgroundColor());
+			setMargins(2);
+			setGaps(2);
+
+			PanelTitleLabel staticLabel = new PanelTitleLabel(translatedPopupButtonText);
+			add(staticLabel);
+			add(new UiLabel(" "));
+			add(currentSelectionText);
+			add(popupInvokeButton);
+			
+			addPopupEditorHandler(staticLabel);
+			addPopupEditorHandler(currentSelectionText);
+			addPopupEditorHandler(this);
+			popupInvokeButton.addActionListener(new PopUpEditorHandler());
+			closeDialogAfterSelectionHandler = new CloseEditorAfterSelectionHandler();
+		}
+		
+		private void addPopupEditorHandler(Component mouseListener)
+		{
+			mouseListener.addMouseListener(new PopUpEditorHandler());
 		}
 		
 		public void addListenersToEverything()
 		{
-			mainPanel.addAncestorListener(new AncestorHandler());
+			addAncestorListener(new AncestorHandler());
 			popupInvokeButton.addAncestorListener(new AncestorHandler());
 			currentSelectionText.addAncestorListener(new AncestorHandler());
 		}
 		
+		public String getCurrentSelectionText()
+		{
+			return currentSelectionText.getText();
+		}
+		
+		public void setCurrentSelectionText(String code)
+		{
+			ChoiceItem choice = question.findChoiceByCode(code);
+			currentSelectionText.setText(choice.getLabel());
+			currentSelectionText.setBackground(choice.getColor());
+		}
+		
 		private PanelButton popupInvokeButton;
 		private PanelTextField currentSelectionText;
-		private JPanel mainPanel;
 	}
-	
-	private PanelButton popupInvokeButton;
-	private PanelTextField currentSelectionText;
+
+	private PopupLauncherTableCellComponent popuplauncherComponent;
 	private UndecoratedModelessDialogWithClose editorDialog;
 	private ChoiceQuestion question;
 	private String translatedPopupButtonText;
