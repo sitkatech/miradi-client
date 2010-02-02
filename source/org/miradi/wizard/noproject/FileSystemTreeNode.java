@@ -80,11 +80,11 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			return "";
 		}
 		
-		// FIXME low: Should probably log and return "" for this case
-		throw new RuntimeException("Unknown column: " + column);
+		EAM.logError("FileSystemTreeNode has no value for column: " + column);
+		
+		return "";
 	}
 
 	public String getLastModifiedDate() throws Exception
