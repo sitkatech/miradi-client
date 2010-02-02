@@ -57,10 +57,10 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		
 		popuplauncherComponent = new PopupLauncherTableCellComponent();
 		add(popuplauncherComponent);
-		addAncestorListerToEverything(popuplauncherComponent);
+		addListeners(popuplauncherComponent);
 	}
 	
-	protected void addAncestorListerToEverything(PopupLauncherTableCellComponent holder)
+	protected void addListeners(PopupLauncherTableCellComponent holder)
 	{
 	}
 	

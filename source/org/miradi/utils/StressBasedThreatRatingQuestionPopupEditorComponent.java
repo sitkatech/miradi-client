@@ -36,7 +36,7 @@ public class StressBasedThreatRatingQuestionPopupEditorComponent extends Abstrac
 	}
 	
 	@Override
-	protected void addAncestorListerToEverything(PopupLauncherTableCellComponent holder)
+	protected void addListeners(PopupLauncherTableCellComponent holder)
 	{
 		holder.addAncestorListenersToEverything(new AncestorHandler());
 	}
