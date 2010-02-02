@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-02 08:44-0600\n"
+"POT-Creation-Date: 2010-02-02 09:20-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -6280,7 +6280,7 @@ msgstr ""
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/QuestionPopupEditorComponent.java:103
+#: Miradi/source/org/miradi/utils/QuestionPopupEditorComponent.java:102
 msgid "Select"
 msgstr ""
 
@@ -6437,7 +6437,7 @@ msgstr "XML (*.xml)"
 msgid "FileFilter|PNG (*.png)"
 msgstr "PNG (*.png) \t\t"
 
-#: Miradi/source/org/miradi/utils/StressBasedThreatRatingQuestionPopupEditorComponent.java:49
+#: Miradi/source/org/miradi/utils/StressBasedThreatRatingQuestionPopupEditorComponent.java:52
 msgid "Stress: %s"
 msgstr ""
 
