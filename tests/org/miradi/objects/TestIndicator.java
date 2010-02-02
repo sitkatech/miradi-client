@@ -25,33 +25,40 @@ import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ProjectForTesting;
 
 
-public class TestIndicator extends ObjectTestCase
+public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 {
 	public TestIndicator(String name)
 	{
 		super(name);
 	}
 
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
 		project = new ProjectForTesting(getName());
 	}
 
+	@Override
 	public void tearDown() throws Exception
 	{
 		super.tearDown();
 		project.close();
 		project = null;
 	}
+	
+	@Override
+	protected int getType()
+	{
+		return Indicator.getObjectType();
+	}
 
 	public void testFields() throws Exception
 	{
-		verifyFields(ObjectType.INDICATOR);
+		verifyFields(getType());
 	}
 	
 	public void testGetLatestMeasurementRef() throws Exception

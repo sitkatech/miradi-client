@@ -22,6 +22,7 @@ package org.miradi.objects;
 import java.util.Arrays;
 import java.util.Vector;
 
+import org.miradi.commands.Command;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.UnknownTaskParentTypeException;
@@ -72,6 +73,12 @@ public class Task extends Factor
 		deleteIds.add(new CommandDeleteObject(getType(), getId()));
 		
 		return deleteIds;
+	}
+	
+	@Override
+	public Vector<Command> createCommandsToDeleteChildren() throws Exception
+	{
+		return createCommandsToDeleteBudgetChildren();
 	}
 	
 	@Override

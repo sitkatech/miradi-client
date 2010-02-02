@@ -29,6 +29,7 @@ import java.util.Vector;
 
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.commands.Command;
+import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramChainObject;
 import org.miradi.diagram.factortypes.FactorTypeCause;
@@ -731,6 +732,35 @@ abstract public class BaseObject
 	public Collection<CommandSetObjectData> createCommandsToClearAsList()
 	{
 		return Arrays.asList(createCommandsToClear());
+	}
+	
+	public Vector<Command> createCommandsToDeleteChildren() throws Exception
+	{
+		return new Vector<Command>();
+	}
+	
+	protected Vector<Command> createCommandsToDeleteBudgetChildren() throws Exception
+	{
+		Vector<Command> commandToDeleteChildren = new Vector<Command>();
+		commandToDeleteChildren.addAll(createCommandsToDeleteBudget(TAG_EXPENSE_ASSIGNMENT_REFS));
+		commandToDeleteChildren.addAll(createCommandsToDeleteBudget(TAG_RESOURCE_ASSIGNMENT_IDS));
+		
+		return commandToDeleteChildren;
+	}
+
+	private Vector<Command> createCommandsToDeleteBudget(String tag) throws Exception
+	{
+		Vector<Command> commandsToDeleteChildren = new Vector<Command>();
+		ORefList refs = getRefList(tag);
+		for (int index = 0; index < refs.size(); ++index)
+		{
+			BaseObject childObject = BaseObject.find(getProject(), refs.get(index));
+			commandsToDeleteChildren.addAll(childObject.createCommandsToClearAsList());
+			commandsToDeleteChildren.add(new CommandSetObjectData(this, tag, ""));
+			commandsToDeleteChildren.add(new CommandDeleteObject(childObject));
+		}
+		
+		return commandsToDeleteChildren;
 	}
 	
 	public CommandSetObjectData[] createCommandsToClear()
