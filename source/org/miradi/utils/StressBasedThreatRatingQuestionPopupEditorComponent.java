@@ -31,6 +31,11 @@ public class StressBasedThreatRatingQuestionPopupEditorComponent extends Abstrac
 	{
 		super(projectToUse, questionToUse);
 	}
+	
+	protected void addAncestorListerToEverything(PopupEditorAncestorListeners holder)
+	{
+		holder.addListenersToEverything();
+	}
 
 	public void setStressRef(Stress stressToUse)
 	{

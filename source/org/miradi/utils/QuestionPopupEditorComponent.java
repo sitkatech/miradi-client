@@ -27,6 +27,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JPanel;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -75,6 +78,13 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		addPopupEditorHandler(panel);
 		popupInvokeButton.addActionListener(new PopUpEditorHandler());
 		closeDialogAfterSelectionHandler = new CloseEditorAfterSelectionHandler();
+		
+		PopupEditorAncestorListeners holder = new PopupEditorAncestorListeners(panel, popupInvokeButton, currentSelectionText);
+		addAncestorListerToEverything(holder);
+	}
+	
+	protected void addAncestorListerToEverything(PopupEditorAncestorListeners holder)
+	{
 	}
 	
 	public void dispose()
@@ -150,7 +160,7 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	private class PopUpEditorHandler extends MouseAdapter implements ActionListener 
 	{
 		@Override
-		public void mouseClicked(MouseEvent e)
+		public void mouseReleased(MouseEvent e)
 		{
 			invokePopupEditor();
 		}
@@ -172,6 +182,43 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 			editorDialog.setVisible(false);
 			editorDialog.dispose();
 		}
+	}
+	
+	private class AncestorHandler implements AncestorListener
+	{
+		public void ancestorAdded(AncestorEvent event)
+		{
+			invokePopupEditor();
+		}
+
+		public void ancestorMoved(AncestorEvent event)
+		{
+		}
+
+		public void ancestorRemoved(AncestorEvent event)
+		{
+		}
+	}
+	
+	protected class PopupEditorAncestorListeners
+	{
+		public PopupEditorAncestorListeners(JPanel mainPanelToUse, PanelButton popupInvokeButtonToUse, PanelTextField currentSelectionTextToUse)
+		{
+			mainPanel = mainPanelToUse;
+			popupInvokeButton = popupInvokeButtonToUse;
+			currentSelectionText = currentSelectionTextToUse;
+		}
+		
+		public void addListenersToEverything()
+		{
+			mainPanel.addAncestorListener(new AncestorHandler());
+			popupInvokeButton.addAncestorListener(new AncestorHandler());
+			currentSelectionText.addAncestorListener(new AncestorHandler());
+		}
+		
+		private PanelButton popupInvokeButton;
+		private PanelTextField currentSelectionText;
+		private JPanel mainPanel;
 	}
 	
 	private PanelButton popupInvokeButton;
