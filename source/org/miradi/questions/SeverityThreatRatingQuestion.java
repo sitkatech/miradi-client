@@ -55,10 +55,13 @@ public class SeverityThreatRatingQuestion extends ThreatRatingQuestion
 	
 	private static String getDescription()
 	{
-		return EAM.text("<html><strong>Severity - </strong>Within the scope, the level of damage to the target from " +
+		String description = EAM.text("<strong>Severity - </strong>Within the scope, the level of damage to the target from " +
 						"the threat that can reasonably be expected given the continuation of current circumstances " +
 						"and trends. For ecosystems and ecological communities, typically measured as the degree " +
 						"of destruction or degradation of the target within the scope. For species, usually measured " +
-						"as the degree of reduction of the target population within the scope.</html>");
+						"as the degree of reduction of the target population within the scope.");
+		
+		//NOTE: The thml table tag exists to ensure max width of 750.  Text was getting cut off.
+		return EAM.substitute("<html><table><tr><td width='750'> %s </td></tr></table></html>", description);
 	}
 }
