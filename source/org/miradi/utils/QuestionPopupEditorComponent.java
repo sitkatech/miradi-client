@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -66,9 +65,11 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	
 	protected void addListeners()
 	{
-		addPopupEditorHandler(staticLabel);
-		addPopupEditorHandler(currentSelectionText);
-		addPopupEditorHandler(this);
+		PopUpEditorHandler mouseHandler = new PopUpEditorHandler();
+		staticLabel.addMouseListener(mouseHandler);
+		currentSelectionText.addMouseListener(mouseHandler);
+		addMouseListener(mouseHandler);
+		
 		popupInvokeButton.addActionListener(new PopUpEditorHandler());
 		closeDialogAfterSelectionHandler = new CloseEditorAfterSelectionHandler();
 	}
@@ -87,11 +88,6 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 		currentSelectionText = new PanelTextField(10);
 		currentSelectionText.setEditable(false);
 		popupInvokeButton = new PanelButton(new PopupEditorIcon());
-	}
-
-	private void addPopupEditorHandler(Component mouseListener)
-	{
-		mouseListener.addMouseListener(new PopUpEditorHandler());
 	}
 
 	public void addAncestorListenersToEverything(AncestorListener ancestorListener)
