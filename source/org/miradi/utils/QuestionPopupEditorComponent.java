@@ -65,14 +65,14 @@ public class QuestionPopupEditorComponent extends OneRowPanel
 	
 	protected void addListeners()
 	{
-		PopUpEditorHandler mouseHandler = new PopUpEditorHandler();
+		PopUpEditorHandler popupEditHandler = new PopUpEditorHandler();
 		HashSet<JComponent> components = getPopupEditorComponents();
 		for(JComponent component : components)
 		{
-			component.addMouseListener(mouseHandler);
+			component.addMouseListener(popupEditHandler);
 		}
 		
-		popupInvokeButton.addActionListener(new PopUpEditorHandler());
+		popupInvokeButton.addActionListener(popupEditHandler);
 	}
 	
 	private void addComponents()
