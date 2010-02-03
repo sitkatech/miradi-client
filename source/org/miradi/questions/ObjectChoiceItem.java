@@ -32,6 +32,7 @@ public class ObjectChoiceItem extends ChoiceItem
 		wrappedRef = wrappedRefToUse;
 	}
 	
+	@Override
 	public String getLabel()
 	{
 		BaseObject foundObject = project.findObject(wrappedRef);
