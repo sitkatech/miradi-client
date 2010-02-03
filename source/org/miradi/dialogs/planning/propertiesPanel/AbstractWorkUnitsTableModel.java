@@ -58,6 +58,8 @@ abstract public class AbstractWorkUnitsTableModel extends AssignmentDateUnitsTab
 		return ResourceAssignment.getObjectType();
 	}
 
+	//FIXME urgent - Is this overring method needed.  Does it make sense to rename this method
+	// to isDateUnitColumn or isAssignment column, somethign more generic.
 	@Override
 	public boolean isWorkUnitColumn(int column)
 	{
