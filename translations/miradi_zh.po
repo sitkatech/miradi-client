@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-03 09:13-0600\n"
+"POT-Creation-Date: 2010-02-03 09:16-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5412,7 +5412,7 @@ msgstr "创建一个曲点 \t\t"
 msgid "Action|Create Projected Expense"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreateExpense.java:39
+#: Miradi/source/org/miradi/actions/ActionCreateExpense.java:40
 msgid "TT|Create a projected expense"
 msgstr ""
 
@@ -5432,7 +5432,7 @@ msgstr "从剪贴板中粘贴单一因素的内容 \t\t"
 msgid "Action|Delete Projected Expense"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionDeleteExpense.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteExpense.java:41
 msgid "TT|Delete projected expense from list"
 msgstr ""
 
