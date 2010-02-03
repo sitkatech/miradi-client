@@ -31,11 +31,13 @@ public class TargetViabilityTreeModel extends GenericViabilityTreeModel
 		super(root);
 	}
 
+	@Override
 	public String[] getColumnTags()
 	{
 		return columnTags;
 	}
 	
+	@Override
 	public Object getValueAt(Object rawNode, int column)
 	{
 		return super.getValueAt(rawNode, getAdjustedColumn(column));
