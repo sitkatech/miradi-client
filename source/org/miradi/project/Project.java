@@ -1105,6 +1105,13 @@ public class Project
 		executeCommandsWithoutTransaction(commands.toArray(new Command[0]));
 	}
 	
+	public void executeCommandAsTransaction(Command command) throws CommandFailedException
+	{
+		Vector<Command> singleItemList = new Vector<Command>();
+		singleItemList.add(command);
+		executeCommandsAsTransaction(singleItemList);
+	}
+	
 	public void executeCommandsAsTransaction(Vector<Command> commands) throws CommandFailedException
 	{
 		executeCommandsAsTransaction(commands.toArray(new Command[0]));
