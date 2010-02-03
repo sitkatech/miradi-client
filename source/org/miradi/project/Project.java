@@ -1027,6 +1027,8 @@ public class Project
 		beginCommandSideEffectMode();
 		try
 		{
+			//FIXME urgent: Record command needs to happen before fireCommandExecuted inside internalExecuteCommand
+			//The undo/redo stack need to be updated since listenrs rely on that.
 			internalExecuteCommand(command);
 			recordCommand(command);
 		}
