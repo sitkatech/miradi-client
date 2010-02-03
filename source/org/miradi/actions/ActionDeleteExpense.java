@@ -32,11 +32,11 @@ public class ActionDeleteExpense extends ObjectsAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Delete Expense");
+		return EAM.text("Action|Delete Projected Expense");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Delete expense from list");
+		return EAM.text("TT|Delete projected expense from list");
 	}
 }

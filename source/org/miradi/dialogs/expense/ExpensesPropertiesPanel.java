@@ -69,7 +69,7 @@ public class ExpensesPropertiesPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Expenses");
+		return EAM.text("Projected Expenses");
 	}
 	
 	@Override
