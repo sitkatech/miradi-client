@@ -67,9 +67,9 @@ public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeT
 		g.setColor(getBackground());
 		g.fillRect(getX(), getY(), getWidth(), getHeight());
 		DateUnit forever = new DateUnit();
-		drawColumnGroupHeader(g, findColumnGroupBounds(AssignmentDateUnitsTable.getAllPossibleWorkUnitsColumnGroups()), getWorkUnitsAboveColumnLabel(), AppPreferences.getWorkUnitsBackgroundColor(forever));
-		drawColumnGroupHeader(g, findColumnGroupBounds(AssignmentDateUnitsTable.getAllPossibleExpensesColumnGroups()), getExpensesAboveColumnLabel(), AppPreferences.getExpenseAmountBackgroundColor(forever));
-		drawColumnGroupHeader(g, findColumnGroupBounds(AssignmentDateUnitsTable.getAllPossibleBudgetTotalsColumnGroups()), getBudgetTotalsAboveColumnLabel(), AppPreferences.getBudgetDetailsBackgroundColor(forever));
+		drawColumnGroupHeader(g, findColumnGroupBounds(WorkPlanColumnConfigurationQuestion.getAllPossibleWorkUnitsColumnGroups()), getWorkUnitsAboveColumnLabel(), AppPreferences.getWorkUnitsBackgroundColor(forever));
+		drawColumnGroupHeader(g, findColumnGroupBounds(WorkPlanColumnConfigurationQuestion.getAllPossibleExpensesColumnGroups()), getExpensesAboveColumnLabel(), AppPreferences.getExpenseAmountBackgroundColor(forever));
+		drawColumnGroupHeader(g, findColumnGroupBounds(WorkPlanColumnConfigurationQuestion.getAllPossibleBudgetTotalsColumnGroups()), getBudgetTotalsAboveColumnLabel(), AppPreferences.getBudgetDetailsBackgroundColor(forever));
 	}
 
 	public static String getWorkUnitsAboveColumnLabel()

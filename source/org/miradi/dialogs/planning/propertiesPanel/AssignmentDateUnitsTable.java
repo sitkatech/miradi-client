@@ -45,8 +45,6 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.DoubleClickAutoSelectCellEditor;
 
@@ -213,56 +211,14 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 	
 	private static int getDefaultColumnWidth(String budgetColumnGroupCode)
 	{
-		ChoiceQuestion question = new WorkPlanColumnConfigurationQuestion();
-		ChoiceItem choiceItem = question.findChoiceByCode(getNormalizedBudgetGroupColumnCode(budgetColumnGroupCode));
+		WorkPlanColumnConfigurationQuestion question = new WorkPlanColumnConfigurationQuestion();
+		String normalizedBudgetGroupColumnCode = question.getNormalizedBudgetGroupColumnCode(budgetColumnGroupCode);
+		ChoiceItem choiceItem = question.findChoiceByCode(normalizedBudgetGroupColumnCode);
 		PanelTitleLabel label = new PanelTitleLabel(choiceItem.getLabel());
 		
 		return label.getPreferredSize().width;
 	}
-	
-	private static String getNormalizedBudgetGroupColumnCode(String budgetColumnGroupCode)
-	{
-		if (getAllPossibleWorkUnitsColumnGroups().contains(budgetColumnGroupCode))
-			return CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
 		
-		if (getAllPossibleExpensesColumnGroups().contains(budgetColumnGroupCode))
-			return CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE;
-		
-		if (getAllPossibleBudgetTotalsColumnGroups().contains(budgetColumnGroupCode))
-			return CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE;
-		
-		throw new RuntimeException("Column code is not a budet column. Code: " + budgetColumnGroupCode);
-	}
-	
-	public static Vector<String> getAllPossibleWorkUnitsColumnGroups()
-	{
-		Vector<String> columnGroups = new Vector();
-		columnGroups.add(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
-		
-		return columnGroups;
-	}
-
-	public static Vector<String> getAllPossibleExpensesColumnGroups()
-	{
-		Vector<String> columnGroups = new Vector();
-		columnGroups.add(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE);
-		
-		return columnGroups;
-	}
-
-	public static Vector<String> getAllPossibleBudgetTotalsColumnGroups()
-	{
-		Vector<String> columnGroups = new Vector();
-		columnGroups.add(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE);
-		
-		return columnGroups;
-	}
-	
 	public static final String UNIQUE_IDENTIFIER = "WorkUnitsTable";
 
 	private BasicTableCellRendererEditorFactory numericRendererFactory;
