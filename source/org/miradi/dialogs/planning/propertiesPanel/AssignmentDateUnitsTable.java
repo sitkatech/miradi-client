@@ -212,27 +212,27 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		return defaultColumnWidth;
 	}
 	
-	private static int getDefaultWidth(String columnGroupTag)
+	private static int getDefaultWidth(String budgetColumnGroupCode)
 	{
 		ChoiceQuestion question = new WorkPlanColumnConfigurationQuestion();
-		ChoiceItem choiceItem = question.findChoiceByCode(getBudgetGroupColumnCode(columnGroupTag));
+		ChoiceItem choiceItem = question.findChoiceByCode(getBudgetGroupColumnCode(budgetColumnGroupCode));
 		PanelTitleLabel label = new PanelTitleLabel(choiceItem.getLabel());
 		
 		return label.getPreferredSize().width;
 	}
 	
-	private static String getBudgetGroupColumnCode(String code)
+	private static String getBudgetGroupColumnCode(String budgetColumnGroupCode)
 	{
-		if (getAllPossibleWorkUnitsColumnGroups().contains(code))
+		if (getAllPossibleWorkUnitsColumnGroups().contains(budgetColumnGroupCode))
 			return CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
 		
-		if (getAllPossibleExpensesColumnGroups().contains(code))
+		if (getAllPossibleExpensesColumnGroups().contains(budgetColumnGroupCode))
 			return CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE;
 		
-		if (getAllPossibleBudgetTotalsColumnGroups().contains(code))
+		if (getAllPossibleBudgetTotalsColumnGroups().contains(budgetColumnGroupCode))
 			return CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE;
 		
-		throw new RuntimeException("Column code is not a budet column. Code: " + code);
+		throw new RuntimeException("Column code is not a budet column. Code: " + budgetColumnGroupCode);
 	}
 	
 	public static Vector<String> getAllPossibleWorkUnitsColumnGroups()
