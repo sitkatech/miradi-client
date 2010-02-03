@@ -34,6 +34,7 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 		super(projectToUse);
 	}
 	
+	@Override
 	public String getColumnName(int column)
 	{
 		if (isExpenseNameColumn(column))
@@ -42,16 +43,19 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 		return super.getColumnName(column);
 	}
 	
+	@Override
 	public int getColumnCount()
 	{
 		return COLUMN_COUNT;
 	}
 
+	@Override
 	public Object getValueAt(int row, int column)
 	{
 		return getCellValue(row, column);
 	}
 	
+	@Override
 	protected Object getCellValue(int row, int column)
 	{
 		if (isExpenseNameColumn(column))
@@ -60,6 +64,7 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 		return super.getCellValue(row, column);
 	}
 
+	@Override
 	public void setValueAt(Object value, int row, int column)
 	{
 		if (value == null)
@@ -87,6 +92,7 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 		setValueUsingCommand(refForRow, ExpenseAssignment.TAG_LABEL, expenseName);
 	}
 	
+	@Override
 	public boolean isResourceColumn(int column)
 	{
 		return false;
@@ -97,11 +103,13 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 		return getExpenseNameColumn() == column;
 	}
 
+	@Override
 	public boolean isFundingSourceColumn(int column)
 	{
 		return getFundingSourceColumn() == column;
 	}
 
+	@Override
 	public boolean isAccountingCodeColumn(int column)
 	{
 		return getAccountingCodeColumn() == column;
