@@ -145,6 +145,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		return treePaths;
 	}
 	
+	@Override
 	public Class getColumnClass(int column)
 	{
 		if(column == PanelTreeTable.TREE_COLUMN_INDEX)
