@@ -35,6 +35,7 @@ public class ActionDeleteExpense extends ObjectsAction
 		return EAM.text("Action|Delete Projected Expense");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete projected expense from list");
