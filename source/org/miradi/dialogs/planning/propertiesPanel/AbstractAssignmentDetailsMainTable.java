@@ -36,11 +36,13 @@ public class AbstractAssignmentDetailsMainTable extends AbstractComponentTable
 		rebuildColumnEditorsAndRenderers();
 	}
 	
+	@Override
 	public Color getColumnBackGroundColor(int column)
 	{
 		return AppPreferences.RESOURCE_TABLE_BACKGROUND;
 	}
 
+	@Override
 	public void rebuildColumnEditorsAndRenderers() throws Exception
 	{
 		for (int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
