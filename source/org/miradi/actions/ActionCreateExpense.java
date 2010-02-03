@@ -31,11 +31,11 @@ public class ActionCreateExpense extends ObjectsAction
 	
 	public static String getLabel()
 	{
-		return EAM.text("Action|Create Expense");
+		return EAM.text("Action|Create Projected Expense");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Create an expense");
+		return EAM.text("TT|Create a projected expense");
 	}
 }
