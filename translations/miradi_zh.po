@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-03 08:38-0600\n"
+"POT-Creation-Date: 2010-02-03 09:13-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5409,11 +5409,11 @@ msgid "TT|Create a Bend Point"
 msgstr "创建一个曲点 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionCreateExpense.java:34
-msgid "Action|Create Expense"
+msgid "Action|Create Projected Expense"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCreateExpense.java:39
-msgid "TT|Create an expense"
+msgid "TT|Create a projected expense"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCreateIndicator.java:40
@@ -5429,11 +5429,11 @@ msgid "TT|Paste the Single Factor's content from the clipboard"
 msgstr "从剪贴板中粘贴单一因素的内容 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionDeleteExpense.java:35
-msgid "Action|Delete Expense"
+msgid "Action|Delete Projected Expense"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeleteExpense.java:40
-msgid "TT|Delete expense from list"
+msgid "TT|Delete projected expense from list"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeleteTaggedObjectSet.java:40
@@ -6534,7 +6534,7 @@ msgid "Targets"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/expense/ExpensesPropertiesPanel.java:72
-msgid "Expenses"
+msgid "Projected Expenses"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/iucnRedlistSpecies/IucnRedlistSpeciesSubPanel.java:60
@@ -7924,7 +7924,7 @@ msgstr ""
 msgid "FieldLabel|12.MetaWorkUnitColumnCode|Work Units"
 msgstr ""
 
-msgid "FieldLabel|12.MetaExpenseAmountColumnCode|Expenses"
+msgid "FieldLabel|12.MetaExpenseAmountColumnCode|Projected Expenses"
 msgstr ""
 
 msgid "FieldLabel|12.MetaBudgetDetailColumnCode|Budget Totals"
