@@ -99,7 +99,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		{
 			PlanningViewAbstractTreeTableSyncedTableModel castedModel = getCastedModel().getCastedModel(modelColumn);
 			int subModelColumn = getCastedModel().findColumnWithinSubTable(modelColumn);
-			return AssignmentDateUnitsTable.getDefaultWidth(castedModel, subModelColumn, getColumnGroupCode(tableColumn), columnHeaderWidth);
+			return AssignmentDateUnitsTable.getDefaultColumnWidth(castedModel, subModelColumn, getColumnGroupCode(tableColumn), columnHeaderWidth);
 		}
 		
 		return super.getDefaultColumnWidth(tableColumn, columnTag, columnHeaderWidth);

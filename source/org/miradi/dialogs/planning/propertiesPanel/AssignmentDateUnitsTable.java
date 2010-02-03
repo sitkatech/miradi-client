@@ -197,19 +197,19 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		
-		return getDefaultWidth(getWorkUnitsTableModel(), modelColumn, getColumnGroupCode(tableColumn), columnHeaderWidth);
+		return getDefaultColumnWidth(getWorkUnitsTableModel(), modelColumn, getColumnGroupCode(tableColumn), columnHeaderWidth);
 	}
 	
-	public static int getDefaultWidth(PlanningViewAbstractTreeTableSyncedTableModel model, int modelColumn, String columnGroupTag, int defaultColumnWidth)
+	public static int getDefaultColumnWidth(PlanningViewAbstractTreeTableSyncedTableModel model, int modelColumn, String columnGroupTag, int defaultColumnWidth)
 	{
 		DateUnit dateUnitForColumn = model.getDateUnit(modelColumn);
 		if (model.isColumnExpandable(modelColumn) && dateUnitForColumn.isProjectTotal())
-			return getDefaultColumnWidth(model.getColumnGroupCode(modelColumn));
+			return getLabelWidthForCode(model.getColumnGroupCode(modelColumn));
 		
 		return defaultColumnWidth;
 	}
 	
-	private static int getDefaultColumnWidth(String budgetColumnGroupCode)
+	private static int getLabelWidthForCode(String budgetColumnGroupCode)
 	{
 		WorkPlanColumnConfigurationQuestion question = new WorkPlanColumnConfigurationQuestion();
 		String normalizedBudgetGroupColumnCode = question.getNormalizedBudgetGroupColumnCode(budgetColumnGroupCode);
