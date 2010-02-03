@@ -36,6 +36,7 @@ public abstract class TreeTableNode implements Comparable
 	public abstract BaseObject getObject();
 	abstract public void rebuild() throws Exception;
 
+	@Override
 	public String toString()
 	{
 		String value = toRawString();
