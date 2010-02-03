@@ -207,12 +207,12 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 	{
 		DateUnit dateUnitForColumn = model.getDateUnit(modelColumn);
 		if (model.isColumnExpandable(modelColumn) && dateUnitForColumn.isProjectTotal())
-			return getDefaultWidth(model.getColumnGroupCode(modelColumn));
+			return getDefaultColumnWidth(model.getColumnGroupCode(modelColumn));
 		
 		return defaultColumnWidth;
 	}
 	
-	private static int getDefaultWidth(String budgetColumnGroupCode)
+	private static int getDefaultColumnWidth(String budgetColumnGroupCode)
 	{
 		ChoiceQuestion question = new WorkPlanColumnConfigurationQuestion();
 		ChoiceItem choiceItem = question.findChoiceByCode(getBudgetGroupColumnCode(budgetColumnGroupCode));
