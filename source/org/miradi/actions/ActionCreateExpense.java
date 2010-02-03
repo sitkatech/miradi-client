@@ -34,6 +34,7 @@ public class ActionCreateExpense extends ObjectsAction
 		return EAM.text("Action|Create Projected Expense");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a projected expense");
