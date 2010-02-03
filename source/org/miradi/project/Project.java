@@ -1024,13 +1024,11 @@ public class Project
 		if (isInCommandSideEffectMode())
 			throw new UnexpectedNonSideEffectException(); 
 
-		boolean commandWasExecuted = false;
 		beginCommandSideEffectMode();
 		try
 		{
-			commandWasExecuted = internalExecuteCommand(command);
-			if (commandWasExecuted)
-				recordCommand(command);
+			internalExecuteCommand(command);
+			recordCommand(command);
 		}
 		finally 
 		{
@@ -1043,7 +1041,7 @@ public class Project
 		return command.isDoNothingCommand(this);
 	}
 
-	private boolean internalExecuteCommand(Command command) throws CommandFailedException
+	private void internalExecuteCommand(Command command) throws CommandFailedException
 	{
 		isExecuting = true;
 		try
@@ -1053,7 +1051,6 @@ public class Project
 			
 			executeWithoutRecording(command);
 			fireCommandExecuted(command);
-			return true;
 		}
 		catch (Exception e)
 		{
