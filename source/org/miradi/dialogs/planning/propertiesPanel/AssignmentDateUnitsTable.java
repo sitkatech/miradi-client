@@ -214,13 +214,13 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 	private static int getDefaultColumnWidth(String budgetColumnGroupCode)
 	{
 		ChoiceQuestion question = new WorkPlanColumnConfigurationQuestion();
-		ChoiceItem choiceItem = question.findChoiceByCode(getBudgetGroupColumnCode(budgetColumnGroupCode));
+		ChoiceItem choiceItem = question.findChoiceByCode(getNormalizedBudgetGroupColumnCode(budgetColumnGroupCode));
 		PanelTitleLabel label = new PanelTitleLabel(choiceItem.getLabel());
 		
 		return label.getPreferredSize().width;
 	}
 	
-	private static String getBudgetGroupColumnCode(String budgetColumnGroupCode)
+	private static String getNormalizedBudgetGroupColumnCode(String budgetColumnGroupCode)
 	{
 		if (getAllPossibleWorkUnitsColumnGroups().contains(budgetColumnGroupCode))
 			return CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
