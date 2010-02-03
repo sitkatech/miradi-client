@@ -19,9 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
+import java.awt.Color;
+
 import org.miradi.dialogs.base.ChoiceItemTableModel;
 import org.miradi.dialogs.base.EditableObjectTableModel;
-import org.miradi.dialogs.planning.upperPanel.PlanningUpperTableModelInterface;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
@@ -33,7 +34,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.utils.OptionalDouble;
 
-abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends EditableObjectTableModel implements PlanningUpperTableModelInterface, ChoiceItemTableModel
+abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends EditableObjectTableModel implements ChoiceItemTableModel
 {
 	public PlanningViewAbstractTreeTableSyncedTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse) throws Exception
 	{
@@ -168,6 +169,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return baseObject.getTotalTimePeriodCostsMap();
 	}
 	
+	abstract public Color getCellBackgroundColor(int column);
 
 	protected Project project;
 	private RowColumnBaseObjectProvider objectProvider;

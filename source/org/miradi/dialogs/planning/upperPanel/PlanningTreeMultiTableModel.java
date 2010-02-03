@@ -23,6 +23,7 @@ package org.miradi.dialogs.planning.upperPanel;
 import java.awt.Color;
 
 import org.miradi.dialogs.base.ChoiceItemTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.utils.ColumnTagProvider;
 
 public class PlanningTreeMultiTableModel extends MultiTableModel implements ColumnTagProvider
@@ -38,7 +39,7 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Colu
 		throw new RuntimeException(getClass().getName() + ".addModel: Model must be a ColumnTagProvider");
 	}
 	
-	public void addModel(PlanningUpperTableModelInterface modelToAdd)
+	public void addModel(PlanningViewAbstractTreeTableSyncedTableModel modelToAdd)
 	{
 		// NOTE: We are calling a DIFFERENT variant in super!
 		// This is NOT a do-nothing method!!
@@ -75,9 +76,9 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Colu
 		return getCastedModel(modelColumn).isWorkUnitColumn(findColumnWithinSubTable(modelColumn));
 	}
 
-	public PlanningUpperTableModelInterface getCastedModel(int column)
+	public PlanningViewAbstractTreeTableSyncedTableModel getCastedModel(int column)
 	{
-		return (PlanningUpperTableModelInterface) findModel(column);
+		return (PlanningViewAbstractTreeTableSyncedTableModel) findModel(column);
 	}
 
 	public String getColumnGroupCode(int modelColumn)

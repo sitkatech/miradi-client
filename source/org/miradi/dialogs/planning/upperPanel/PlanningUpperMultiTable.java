@@ -41,6 +41,7 @@ import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
 import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTable;
 import org.miradi.dialogs.planning.propertiesPanel.MultiTableExpandColumnAction;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningRightClickHandler;
+import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
@@ -96,7 +97,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		final int modelColumn = convertColumnIndexToModel(tableColumn);
 		if (getCastedModel().isWorkUnitColumn(modelColumn))
 		{
-			PlanningUpperTableModelInterface castedModel = getCastedModel().getCastedModel(modelColumn);
+			PlanningViewAbstractTreeTableSyncedTableModel castedModel = getCastedModel().getCastedModel(modelColumn);
 			int subModelColumn = getCastedModel().findColumnWithinSubTable(modelColumn);
 			return AssignmentDateUnitsTable.getDefaultWidth(castedModel, subModelColumn, getColumnGroupCode(tableColumn), columnHeaderWidth);
 		}
@@ -155,7 +156,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	{
 		int multiModelColumn = convertColumnIndexToModel(tableColumn);
 		int modelColumn = getCastedModel().findColumnWithinSubTable(multiModelColumn);
-		PlanningUpperTableModelInterface model = getCastedModel().getCastedModel(multiModelColumn);
+		PlanningViewAbstractTreeTableSyncedTableModel model = getCastedModel().getCastedModel(multiModelColumn);
 
 		Vector<Action> actions = new Vector();
 		actions.add(getActions().get(ActionDeletePlanningViewTreeNode.class));
@@ -180,21 +181,21 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	public boolean isColumnCollapsable(int tableColumnIndex)
 	{
 		int modelColumn = getModelColumnWithinModel(tableColumnIndex);
-		PlanningUpperTableModelInterface model = getModel(convertColumnIndexToModel(tableColumnIndex));
+		PlanningViewAbstractTreeTableSyncedTableModel model = getModel(convertColumnIndexToModel(tableColumnIndex));
 		return model.isColumnCollapsable(modelColumn);
 	}
 
 	public boolean isColumnExpandable(int tableColumnIndex)
 	{
 		int modelColumn = getModelColumnWithinModel(tableColumnIndex);
-		PlanningUpperTableModelInterface model = getModel(convertColumnIndexToModel(tableColumnIndex));
+		PlanningViewAbstractTreeTableSyncedTableModel model = getModel(convertColumnIndexToModel(tableColumnIndex));
 		return model.isColumnExpandable(modelColumn);
 	}
 
 	public void respondToExpandOrCollapseColumnEvent(int tableColumnIndex) throws Exception
 	{
 		int modelColumn = getModelColumnWithinModel(tableColumnIndex);
-		PlanningUpperTableModelInterface model = getModel(convertColumnIndexToModel(tableColumnIndex));
+		PlanningViewAbstractTreeTableSyncedTableModel model = getModel(convertColumnIndexToModel(tableColumnIndex));
 		model.respondToExpandOrCollapseColumnEvent(modelColumn);
 		saveColumnState();
 		updateToReflectNewColumns();
@@ -205,10 +206,9 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		getColumnModel().getSelectionModel().clearSelection();
 	}
 
-	private PlanningUpperTableModelInterface getModel(int modelColumnIndex)
+	private PlanningViewAbstractTreeTableSyncedTableModel getModel(int modelColumnIndex)
 	{
-		PlanningUpperTableModelInterface model = getCastedModel().getCastedModel(modelColumnIndex);
-		return model;
+		return getCastedModel().getCastedModel(modelColumnIndex);
 	}
 
 	private int getModelColumnWithinModel(int tableColumnIndex)
