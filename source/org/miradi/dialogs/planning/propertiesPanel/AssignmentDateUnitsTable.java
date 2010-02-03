@@ -223,19 +223,19 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 	
 	private static String getBudgetGroupColumnCode(String code)
 	{
-		if (getWorkUnitsColumnGroups().contains(code))
+		if (getAllPossibleWorkUnitsColumnGroups().contains(code))
 			return CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
 		
-		if (getExpensesColumnGroups().contains(code))
+		if (getAllPossibleExpensesColumnGroups().contains(code))
 			return CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE;
 		
-		if (getBudgetTotalsColumnGroups().contains(code))
+		if (getAllPossibleBudgetTotalsColumnGroups().contains(code))
 			return CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE;
 		
 		throw new RuntimeException("Column code is not a budet column. Code: " + code);
 	}
 	
-	public static Vector<String> getWorkUnitsColumnGroups()
+	public static Vector<String> getAllPossibleWorkUnitsColumnGroups()
 	{
 		Vector<String> columnGroups = new Vector();
 		columnGroups.add(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
@@ -244,7 +244,7 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		return columnGroups;
 	}
 
-	public static Vector<String> getExpensesColumnGroups()
+	public static Vector<String> getAllPossibleExpensesColumnGroups()
 	{
 		Vector<String> columnGroups = new Vector();
 		columnGroups.add(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
@@ -254,7 +254,7 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		return columnGroups;
 	}
 
-	public static Vector<String> getBudgetTotalsColumnGroups()
+	public static Vector<String> getAllPossibleBudgetTotalsColumnGroups()
 	{
 		Vector<String> columnGroups = new Vector();
 		columnGroups.add(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
