@@ -742,25 +742,32 @@ abstract public class BaseObject
 	protected Vector<Command> createCommandsToDeleteBudgetChildren() throws Exception
 	{
 		Vector<Command> commandToDeleteChildren = new Vector<Command>();
-		commandToDeleteChildren.addAll(createCommandsToDeleteBudget(TAG_EXPENSE_ASSIGNMENT_REFS));
-		commandToDeleteChildren.addAll(createCommandsToDeleteBudget(TAG_RESOURCE_ASSIGNMENT_IDS));
+		commandToDeleteChildren.addAll(creatCommandsToDeleteRefs(TAG_EXPENSE_ASSIGNMENT_REFS));
+		commandToDeleteChildren.addAll(creatCommandsToDeleteRefs(TAG_RESOURCE_ASSIGNMENT_IDS));
 		
 		return commandToDeleteChildren;
 	}
 
-	private Vector<Command> createCommandsToDeleteBudget(String tag) throws Exception
+	private Vector<Command> creatCommandsToDeleteRefs(String tag) throws Exception
 	{
-		Vector<Command> commandsToDeleteChildren = new Vector<Command>();
-		ORefList refs = getRefList(tag);
-		commandsToDeleteChildren.add(new CommandSetObjectData(this, tag, ""));
+		ORefList refsToDelete = getRefList(tag);
+		Vector<Command> commandsToDeleteRefList = createDeleteCommands(refsToDelete);
+		commandsToDeleteRefList.add(new CommandSetObjectData(this, tag, ""));
+		
+		return commandsToDeleteRefList;
+	}
+
+	private Vector<Command> createDeleteCommands(ORefList refs)
+	{
+		Vector<Command> deleteCommands = new Vector<Command>();
 		for (int index = 0; index < refs.size(); ++index)
 		{
-			BaseObject childObject = BaseObject.find(getProject(), refs.get(index));
-			commandsToDeleteChildren.addAll(childObject.createCommandsToClearAsList());
-			commandsToDeleteChildren.add(new CommandDeleteObject(childObject));
+			BaseObject objectToDelete = BaseObject.find(getProject(), refs.get(index));
+			deleteCommands.addAll(objectToDelete.createCommandsToClearAsList());
+			deleteCommands.add(new CommandDeleteObject(objectToDelete));
 		}
 		
-		return commandsToDeleteChildren;
+		return deleteCommands;
 	}
 	
 	public CommandSetObjectData[] createCommandsToClear()
