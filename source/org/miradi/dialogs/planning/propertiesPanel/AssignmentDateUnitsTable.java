@@ -34,7 +34,6 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.RightClickActionProvider;
 import org.miradi.dialogs.planning.TableHeaderWithExpandCollapseIcons;
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
-import org.miradi.dialogs.planning.upperPanel.PlanningUpperTableModelInterface;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
@@ -203,7 +202,7 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		return getDefaultWidth(getWorkUnitsTableModel(), modelColumn, getColumnGroupCode(tableColumn), columnHeaderWidth);
 	}
 	
-	public static int getDefaultWidth(PlanningUpperTableModelInterface model, int modelColumn, String columnGroupTag, int defaultColumnWidth)
+	public static int getDefaultWidth(PlanningViewAbstractTreeTableSyncedTableModel model, int modelColumn, String columnGroupTag, int defaultColumnWidth)
 	{
 		DateUnit dateUnitForColumn = model.getDateUnit(modelColumn);
 		if (model.isColumnExpandable(modelColumn) && dateUnitForColumn.isProjectTotal())

@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import java.awt.Color;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
@@ -726,8 +725,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		return currencyFormatter;
 	}
-
-	abstract public Color getCellBackgroundColor(int column);
 	
 	abstract protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts);
 	

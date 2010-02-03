@@ -39,9 +39,9 @@ import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeMultiTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
-import org.miradi.dialogs.planning.upperPanel.PlanningUpperTableModelInterface;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
@@ -135,7 +135,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 
 	private String getPrePopulatedValue()
 	{
-		PlanningUpperTableModelInterface model = getCastedModel().getCastedModel(getSelectedColumn());
+		PlanningViewAbstractTreeTableSyncedTableModel model = getCastedModel().getCastedModel(getSelectedColumn());
 		int columnWithinMultiTableModel = getSelectedColumnWithinMultiTableModel();
 		OptionalDouble value = model.getCellFraction(getSelectedRow(), columnWithinMultiTableModel);
 		if (value.hasValue())
@@ -224,7 +224,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 			String doubleAsString = fractionField.getText();
 			double parsedDouble = Double.parseDouble(doubleAsString);
 			
-			PlanningUpperTableModelInterface model = getCastedModel().getCastedModel(getSelectedColumn());
+			PlanningViewAbstractTreeTableSyncedTableModel model = getCastedModel().getCastedModel(getSelectedColumn());
 			int columnWithinMultiTableModel = getSelectedColumnWithinMultiTableModel();
 			model.updateFullTimeEmployeeDaysPerYearFraction(getSelectedRow(), columnWithinMultiTableModel, parsedDouble);
 			
