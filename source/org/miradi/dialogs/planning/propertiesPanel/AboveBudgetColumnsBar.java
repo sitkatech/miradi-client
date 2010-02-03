@@ -67,9 +67,9 @@ public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeT
 		g.setColor(getBackground());
 		g.fillRect(getX(), getY(), getWidth(), getHeight());
 		DateUnit forever = new DateUnit();
-		drawColumnGroupHeader(g, findColumnGroupBounds(getWorkUnitsColumnGroups()), getWorkUnitsAboveColumnLabel(), AppPreferences.getWorkUnitsBackgroundColor(forever));
-		drawColumnGroupHeader(g, findColumnGroupBounds(getExpensesColumnGroups()), getExpensesAboveColumnLabel(), AppPreferences.getExpenseAmountBackgroundColor(forever));
-		drawColumnGroupHeader(g, findColumnGroupBounds(getBudgetTotalsColumnGroups()), getBudgetTotalsAboveColumnLabel(), AppPreferences.getBudgetDetailsBackgroundColor(forever));
+		drawColumnGroupHeader(g, findColumnGroupBounds(AssignmentDateUnitsTable.getWorkUnitsColumnGroups()), getWorkUnitsAboveColumnLabel(), AppPreferences.getWorkUnitsBackgroundColor(forever));
+		drawColumnGroupHeader(g, findColumnGroupBounds(AssignmentDateUnitsTable.getExpensesColumnGroups()), getExpensesAboveColumnLabel(), AppPreferences.getExpenseAmountBackgroundColor(forever));
+		drawColumnGroupHeader(g, findColumnGroupBounds(AssignmentDateUnitsTable.getBudgetTotalsColumnGroups()), getBudgetTotalsAboveColumnLabel(), AppPreferences.getBudgetDetailsBackgroundColor(forever));
 	}
 
 	public static String getWorkUnitsAboveColumnLabel()
@@ -148,35 +148,6 @@ public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeT
 		
 		rect.x -= tableScrollPane.getHorizontalScrollBar().getValue();
 		return rect;
-	}
-
-	private Vector<String> getWorkUnitsColumnGroups()
-	{
-		Vector<String> columnGroups = new Vector();
-		columnGroups.add(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
-		
-		return columnGroups;
-	}
-
-	private Vector<String> getExpensesColumnGroups()
-	{
-		Vector<String> columnGroups = new Vector();
-		columnGroups.add(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE);
-		
-		return columnGroups;
-	}
-
-	private Vector<String> getBudgetTotalsColumnGroups()
-	{
-		Vector<String> columnGroups = new Vector();
-		columnGroups.add(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE);
-		
-		return columnGroups;
 	}
 
 	private TableWithExpandableColumnsInterface table;

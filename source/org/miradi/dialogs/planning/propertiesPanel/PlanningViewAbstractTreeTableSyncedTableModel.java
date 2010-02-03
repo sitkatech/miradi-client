@@ -54,6 +54,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return objectProvider.getBaseObjectForRowColumn(row, column);
 	}
 	
+	@Override
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
 	}
@@ -80,6 +81,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return false;
 	}
 	
+	@Override
 	public boolean isChoiceItemColumn(int column)
 	{
 		return false;
@@ -113,6 +115,11 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	public boolean isColumnExpandable(int modelColumn)
 	{
 		return false;
+	}
+	
+	public DateUnit getDateUnit(int modelColumn)
+	{
+		throw new RuntimeException("This method should be overriden by subclass.");
 	}
 
 	public void respondToExpandOrCollapseColumnEvent(int modelColumnIndex) throws Exception

@@ -38,6 +38,7 @@ import org.miradi.dialogs.planning.MultiTableCollapseColumnAction;
 import org.miradi.dialogs.planning.RightClickActionProvider;
 import org.miradi.dialogs.planning.TableHeaderWithExpandCollapseIcons;
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
+import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTable;
 import org.miradi.dialogs.planning.propertiesPanel.MultiTableExpandColumnAction;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningRightClickHandler;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererEditorFactory;
@@ -60,6 +61,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	public PlanningUpperMultiTable(PlanningTreeTable masterTreeToUse, PlanningTreeMultiTableModel model, FontForObjectTypeProvider fontProvider)
 	{
 		super(masterTreeToUse.getMainWindow(), model, model.getUniqueTableModelIdentifier());
+		
 		setAutoResizeMode(AUTO_RESIZE_OFF);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setCellSelectionEnabled(true);
@@ -93,7 +95,11 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	{
 		final int modelColumn = convertColumnIndexToModel(tableColumn);
 		if (getCastedModel().isWorkUnitColumn(modelColumn))
-			return columnHeaderWidth;
+		{
+			PlanningUpperTableModelInterface castedModel = getCastedModel().getCastedModel(modelColumn);
+			int subModelColumn = getCastedModel().findColumnWithinSubTable(modelColumn);
+			return AssignmentDateUnitsTable.getDefaultWidth(castedModel, subModelColumn, getColumnGroupCode(tableColumn), columnHeaderWidth);
+		}
 		
 		return super.getDefaultColumnWidth(tableColumn, columnTag, columnHeaderWidth);
 	}
