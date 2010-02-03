@@ -30,9 +30,11 @@ import javax.swing.table.TableColumn;
 
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.RightClickActionProvider;
 import org.miradi.dialogs.planning.TableHeaderWithExpandCollapseIcons;
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
+import org.miradi.dialogs.planning.upperPanel.PlanningUpperTableModelInterface;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
@@ -41,7 +43,12 @@ import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objects.BaseObject;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.DoubleClickAutoSelectCellEditor;
 
 abstract public class AssignmentDateUnitsTable extends AbstractComponentTable implements RightClickActionProvider, TableWithExpandableColumnsInterface, RowColumnBaseObjectProvider
@@ -191,7 +198,70 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 	@Override
 	public int getDefaultColumnWidth(int tableColumn, String columnTag,	int columnHeaderWidth)
 	{
-		return columnHeaderWidth;
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		
+		return getDefaultWidth(getWorkUnitsTableModel(), modelColumn, getColumnGroupCode(tableColumn), columnHeaderWidth);
+	}
+	
+	public static int getDefaultWidth(PlanningUpperTableModelInterface model, int modelColumn, String columnGroupTag, int defaultColumnWidth)
+	{
+		DateUnit dateUnitForColumn = model.getDateUnit(modelColumn);
+		if (model.isColumnExpandable(modelColumn) && dateUnitForColumn.isProjectTotal())
+			return getDefaultWidth(model.getColumnGroupCode(modelColumn));
+		
+		return defaultColumnWidth;
+	}
+	
+	private static int getDefaultWidth(String columnGroupTag)
+	{
+		ChoiceQuestion question = new WorkPlanColumnConfigurationQuestion();
+		ChoiceItem choiceItem = question.findChoiceByCode(getBudgetGroupColumnCode(columnGroupTag));
+		PanelTitleLabel label = new PanelTitleLabel(choiceItem.getLabel());
+		
+		return label.getPreferredSize().width;
+	}
+	
+	private static String getBudgetGroupColumnCode(String code)
+	{
+		if (getWorkUnitsColumnGroups().contains(code))
+			return CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
+		
+		if (getExpensesColumnGroups().contains(code))
+			return CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE;
+		
+		if (getBudgetTotalsColumnGroups().contains(code))
+			return CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE;
+		
+		throw new RuntimeException("Column code is not a budet column. Code: " + code);
+	}
+	
+	public static Vector<String> getWorkUnitsColumnGroups()
+	{
+		Vector<String> columnGroups = new Vector();
+		columnGroups.add(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
+		columnGroups.add(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
+		
+		return columnGroups;
+	}
+
+	public static Vector<String> getExpensesColumnGroups()
+	{
+		Vector<String> columnGroups = new Vector();
+		columnGroups.add(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
+		columnGroups.add(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE);
+		columnGroups.add(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE);
+		
+		return columnGroups;
+	}
+
+	public static Vector<String> getBudgetTotalsColumnGroups()
+	{
+		Vector<String> columnGroups = new Vector();
+		columnGroups.add(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
+		columnGroups.add(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE);
+		columnGroups.add(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE);
+		
+		return columnGroups;
 	}
 	
 	public static final String UNIQUE_IDENTIFIER = "WorkUnitsTable";

@@ -23,6 +23,7 @@ package org.miradi.dialogs.planning.upperPanel;
 import java.awt.Color;
 
 import org.miradi.dialogs.base.ChoiceItemTableModel;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.utils.ColumnTagProvider;
 import org.miradi.utils.OptionalDouble;
 
@@ -37,6 +38,7 @@ public interface PlanningUpperTableModelInterface extends ChoiceItemTableModel, 
 	public String getTagForCell(int objectType, int modelColumn);
 	public boolean isColumnExpandable(int modelColumn);
 	public boolean isColumnCollapsable(int modelColumn);
+	public DateUnit getDateUnit(int modelColumn);
 	public void respondToExpandOrCollapseColumnEvent(int modelColumnIndex) throws Exception;
 	public boolean isFullTimeEmployeeFractionAvailable(int row, int modelColumn);
 	public void updateFullTimeEmployeeDaysPerYearFraction(int row, int modelColumn, double percent);
