@@ -27,10 +27,10 @@ import org.miradi.main.MainWindow;
 
 public class FactorPropertiesDialog extends ModelessDialogWithDirections
 {
-
 	public FactorPropertiesDialog(MainWindow parent, FactorPropertiesPanel panel, String headingText)
 	{
 		super(parent, panel, headingText);
+		
 		factorPanel = panel;
 	}
 	
@@ -39,6 +39,7 @@ public class FactorPropertiesDialog extends ModelessDialogWithDirections
 		return getWrappedPanel();
 	}
 
+	@Override
 	protected Class getJumpAction()
 	{
 		if(factorPanel == null)
