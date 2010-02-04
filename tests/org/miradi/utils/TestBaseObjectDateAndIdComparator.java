@@ -50,6 +50,6 @@ public class TestBaseObjectDateAndIdComparator extends TestCaseWithProject
 		
 		Measurement measurementWithDate2008 = getProject().createMeasurement();
 		measurementWithDate2008.setData(Measurement.TAG_DATE, MultiCalendar.createFromGregorianYearMonthDay(2008, 9, 9).toString());
-		assertTrue("2008 not after 1979?", BaseObjectDateAndIdComparator.compare(measurement1979, measurementWithDate2008, Measurement.TAG_DATE) < 0);
+		assertTrue("2008 not after 1979?", BaseObjectDateAndIdComparator.compare(measurement1979, measurementWithDate2008, Measurement.TAG_DATE) > 0);
 	}
 }

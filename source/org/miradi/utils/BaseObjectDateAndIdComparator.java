@@ -39,6 +39,6 @@ public class BaseObjectDateAndIdComparator
 		if (safeDate2.length() == 0)
 			return -1;
 		
-		return  safeDate1.compareTo(safeDate2);
+		return  safeDate2.compareTo(safeDate1);
 	}
 }
