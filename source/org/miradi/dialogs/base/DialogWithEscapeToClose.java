@@ -44,6 +44,7 @@ public class DialogWithEscapeToClose extends JDialog
 		return false;
 	}
 	
+	@Override
 	protected JRootPane createRootPane() 
 	{
 		rootPane = new JRootPane();
