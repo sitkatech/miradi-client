@@ -695,7 +695,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	}
 	
 	@Override
-	public boolean isWorkUnitColumn(int column)
+	public boolean isDateUnitColumn(int column)
 	{
 		return getDateUnit(column) != null;
 	}

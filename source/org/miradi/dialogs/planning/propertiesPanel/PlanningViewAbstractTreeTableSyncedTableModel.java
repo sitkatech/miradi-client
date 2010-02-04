@@ -93,7 +93,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return false;
 	}
 	
-	public boolean isWorkUnitColumn(int column)
+	public boolean isDateUnitColumn(int column)
 	{
 		return false;
 	}

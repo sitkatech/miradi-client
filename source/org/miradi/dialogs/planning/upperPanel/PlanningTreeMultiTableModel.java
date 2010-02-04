@@ -73,7 +73,7 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Colu
 	
 	public boolean isWorkUnitColumn(int modelColumn)
 	{
-		return getCastedModel(modelColumn).isWorkUnitColumn(findColumnWithinSubTable(modelColumn));
+		return getCastedModel(modelColumn).isDateUnitColumn(findColumnWithinSubTable(modelColumn));
 	}
 
 	public PlanningViewAbstractTreeTableSyncedTableModel getCastedModel(int column)
