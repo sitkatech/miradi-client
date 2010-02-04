@@ -46,6 +46,7 @@ public class DialogWithDisposablePanel extends DialogWithButtonBar
 		getContentPane().add(new MiradiScrollPane(wrappedPanel), BorderLayout.CENTER);
 	}
 
+	@Override
 	public void dispose()
 	{
 		if(wrappedPanel == null)
