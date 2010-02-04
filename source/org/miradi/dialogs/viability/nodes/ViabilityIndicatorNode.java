@@ -47,16 +47,19 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		rebuild();
 	}
 	
+	@Override
 	public BaseObject getObject()
 	{
 		return indicator;
 	}
 
+	@Override
 	public ORef getObjectReference()
 	{
 		return indicator.getRef();
 	}
 	
+	@Override
 	public int getType()
 	{
 		return indicator.getType();
@@ -68,21 +71,25 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		return indicator.toString();
 	}
 
+	@Override
 	public int getChildCount()
 	{
 		return measurements.length;
 	}
 
+	@Override
 	public TreeTableNode getChild(int index)
 	{
 		return measurements[index];
 	}
 	
+	@Override
 	public TreeTableNode getParentNode()
 	{
 		return keyEcologicalAttributesNode;
 	}
 
+	@Override
 	public Object getValueAt(int column)
 	{
 		String tag = COLUMN_TAGS[column];
@@ -122,6 +129,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		throw new RuntimeException("Could not find Threshold in array.");
 	}
 
+	@Override
 	public void rebuild() throws Exception
 	{
 		ORefList measurementRefs = indicator.getMeasurementRefs();
