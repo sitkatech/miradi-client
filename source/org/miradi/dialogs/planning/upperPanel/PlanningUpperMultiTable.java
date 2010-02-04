@@ -95,7 +95,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	public int getDefaultColumnWidth(int tableColumn, String columnTag, int columnHeaderWidth)
 	{
 		final int modelColumn = convertColumnIndexToModel(tableColumn);
-		if (getCastedModel().isWorkUnitColumn(modelColumn))
+		if (getCastedModel().isDateUnitColumn(modelColumn))
 		{
 			PlanningViewAbstractTreeTableSyncedTableModel castedModel = getCastedModel().getCastedModel(modelColumn);
 			int subModelColumn = getCastedModel().findColumnWithinSubTable(modelColumn);
@@ -117,7 +117,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			factory = choiceRendererFactory;
 		else if(getCastedModel().isProgressColumn(modelColumn))
 			factory = progressRendererFactory;
-		else if(getCastedModel().isWorkUnitColumn(modelColumn))
+		else if(getCastedModel().isDateUnitColumn(modelColumn))
 			factory = doubleRendererFactory;
 		
 		Color background = getCastedModel().getCellBackgroundColor(row, modelColumn);
