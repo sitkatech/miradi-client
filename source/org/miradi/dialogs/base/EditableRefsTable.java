@@ -40,6 +40,4 @@ abstract public class EditableRefsTable extends EditableObjectTable
 	{
 		table.getColumnModel().addColumnModelListener(new ColumnMarginResizeListenerValidator(this));
 	}
-	
-	abstract public void rebuildColumnEditorsAndRenderers() throws Exception;
 }
