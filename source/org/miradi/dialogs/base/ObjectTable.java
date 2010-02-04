@@ -72,6 +72,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		codeListRenderer = new CodeListRendererFactory(this, fontProvider);
 	}
 	
+	@Override
 	public TableCellRenderer getCellRenderer(int row, int tableColumn)
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
@@ -288,6 +289,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		
 	}
 	
+	@Override
 	public void valueChanged(ListSelectionEvent e)
 	{
 		super.valueChanged(e);
