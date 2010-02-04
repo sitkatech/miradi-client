@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-03 14:08-0600\n"
+"POT-Creation-Date: 2010-02-04 10:25-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -602,15 +602,15 @@ msgstr "Pilih Sasaran yang ingin Diklon "
 msgid "Are you sure you want to delete this Objective?"
 msgstr "Anda yakin ingin menghapus Tujuan ini?"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:387
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:391
 msgid "Unknown error displaying diagram"
 msgstr "Kesalahan tak dikenal saat menampilkan diagram "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:457
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:464
 msgid "Found Corrupted Data:"
 msgstr "Data yang Rusak Ditemukan: "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:953
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:964
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Sifat-sifat Faktor "
