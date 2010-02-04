@@ -972,7 +972,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		int height = Math.min(newPropertiesDialog.getHeight(), screenRect.height * 9 / 10);
 		Dimension size = new Dimension(width, height);
 		newPropertiesDialog.setSize(size);
-		newPropertiesDialog.setLocation(Utilities.center(size, screenRect));
+		Utilities.centerDlg(newPropertiesDialog);
 		
 		getCurrentDiagramComponent().selectFactor(node.getWrappedORef());
 		nodePropertiesPanel = newPropertiesPanel;
