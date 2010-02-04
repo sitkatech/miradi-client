@@ -962,21 +962,21 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		FactorPropertiesPanel newPropertiesPanel = new FactorPropertiesPanel(getMainWindow(), getCurrentDiagramComponent());
 		String title = EAM.text("Title|Factor Properties");
-		FactorPropertiesDialog newDialog = new FactorPropertiesDialog(getMainWindow(), newPropertiesPanel, title);
+		FactorPropertiesDialog newPropertiesDialog = new FactorPropertiesDialog(getMainWindow(), newPropertiesPanel, title);
 		newPropertiesPanel.setCurrentDiagramFactor(getCurrentDiagramComponent(), node);
 		newPropertiesPanel.selectTab(startingTabIdentifier);
-		newDialog.pack();
+		newPropertiesDialog.pack();
 		Rectangle screenRect = Utilities.getViewableRectangle();
-		int tenPercentWiderDiaglogWidth = newDialog.getWidth() * 11 / 10;
+		int tenPercentWiderDiaglogWidth = newPropertiesDialog.getWidth() * 11 / 10;
 		int width = Math.min(tenPercentWiderDiaglogWidth, screenRect.width * 9 / 10);
-		int height = Math.min(newDialog.getHeight(), screenRect.height * 9 / 10);
+		int height = Math.min(newPropertiesDialog.getHeight(), screenRect.height * 9 / 10);
 		Dimension size = new Dimension(width, height);
-		newDialog.setSize(size);
-		newDialog.setLocation(Utilities.center(size, screenRect));
+		newPropertiesDialog.setSize(size);
+		newPropertiesDialog.setLocation(Utilities.center(size, screenRect));
 		
 		getCurrentDiagramComponent().selectFactor(node.getWrappedORef());
 		nodePropertiesPanel = newPropertiesPanel;
-		nodePropertiesDlg = newDialog;
+		nodePropertiesDlg = newPropertiesDialog;
 
 		nodePropertiesPanel.becomeActive();
 		nodePropertiesDlg.setVisible(true);
