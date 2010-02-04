@@ -19,8 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.dialogs.diagram;
 
+import java.awt.Dimension;
+import java.awt.Rectangle;
+
 import javax.swing.JComponent;
 
+import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.ModelessDialogPanel;
 import org.miradi.dialogs.base.ModelessDialogWithDirections;
 import org.miradi.main.MainWindow;
@@ -38,7 +42,18 @@ public class FactorPropertiesDialog extends ModelessDialogWithDirections
 	{
 		return getWrappedPanel();
 	}
-
+	
+	public void updatePreferredSize()
+	{
+		Rectangle screenRect = Utilities.getViewableRectangle();
+		int tenPercentWiderDiaglogWidth = getWidth() * 11 / 10;
+		int width = Math.min(tenPercentWiderDiaglogWidth, screenRect.width * 9 / 10);
+		int height = Math.min(getHeight(), screenRect.height * 9 / 10);
+		Dimension size = new Dimension(width, height);
+		
+		setPreferredSize(size);
+	}
+	
 	@Override
 	protected Class getJumpAction()
 	{

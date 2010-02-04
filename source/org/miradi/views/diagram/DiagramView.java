@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -966,12 +964,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		newPropertiesPanel.setCurrentDiagramFactor(getCurrentDiagramComponent(), node);
 		newPropertiesPanel.selectTab(startingTabIdentifier);
 		newPropertiesDialog.pack();
-		Rectangle screenRect = Utilities.getViewableRectangle();
-		int tenPercentWiderDiaglogWidth = newPropertiesDialog.getWidth() * 11 / 10;
-		int width = Math.min(tenPercentWiderDiaglogWidth, screenRect.width * 9 / 10);
-		int height = Math.min(newPropertiesDialog.getHeight(), screenRect.height * 9 / 10);
-		Dimension size = new Dimension(width, height);
-		newPropertiesDialog.setSize(size);
+		newPropertiesDialog.updatePreferredSize();
 		Utilities.centerDlg(newPropertiesDialog);
 		
 		getCurrentDiagramComponent().selectFactor(node.getWrappedORef());
