@@ -27,7 +27,7 @@ import org.miradi.questions.ProgressReportLongStatusQuestion;
 
 public class ProgressReportTable extends EditableRefsTable
 {
-	public ProgressReportTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
+	public ProgressReportTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse);		
 	}

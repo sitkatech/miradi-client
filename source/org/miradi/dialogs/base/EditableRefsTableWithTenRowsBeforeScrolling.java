@@ -24,7 +24,7 @@ import org.miradi.main.MainWindow;
 
 abstract public class EditableRefsTableWithTenRowsBeforeScrolling extends EditableRefsTable
 {
-	public EditableRefsTableWithTenRowsBeforeScrolling(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
+	public EditableRefsTableWithTenRowsBeforeScrolling(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse);
 	}
