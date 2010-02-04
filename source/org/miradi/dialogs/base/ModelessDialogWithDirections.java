@@ -77,6 +77,7 @@ public class ModelessDialogWithDirections extends ModelessDialogWithClose
 			super(mainWindowToUse, EAM.text("Instructions"), "icons/directions.png");
 		}
 		
+		@Override
 		public void doAction() throws CommandFailedException
 		{
 			EAMAction action = getRealJumpAction();
@@ -86,6 +87,7 @@ public class ModelessDialogWithDirections extends ModelessDialogWithClose
 			action.doAction();
 		}
 		
+		@Override
 		public void actionPerformed(ActionEvent e)
 		{
 			try
