@@ -121,11 +121,11 @@ public class ModelessDialogWithDirections extends ModelessDialogWithClose
 	}
 
 	@Override
-	public void setVisible(boolean b)
+	public void setVisible(boolean isVisible)
 	{
-		if(b)
+		if(isVisible)
 			updateDirectionsEnabledState();
-		super.setVisible(b);
+		super.setVisible(isVisible);
 	}
 
 	private ActionDirections actionDirections;
