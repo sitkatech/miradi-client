@@ -26,7 +26,7 @@ import org.miradi.main.MainWindow;
 
 public class AudienceEditablePoolTable extends EditableRefsTableWithTenRowsBeforeScrolling
 {
-	public AudienceEditablePoolTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
+	public AudienceEditablePoolTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse);		
 	}

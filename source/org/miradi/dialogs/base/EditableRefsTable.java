@@ -26,7 +26,7 @@ import org.miradi.main.MainWindow;
 
 abstract public class EditableRefsTable extends EditableObjectTable
 {
-	public EditableRefsTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
+	public EditableRefsTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse, modelToUse.getUniqueTableModelIdentifier());
 		
@@ -41,5 +41,5 @@ abstract public class EditableRefsTable extends EditableObjectTable
 		table.getColumnModel().addColumnModelListener(new ColumnMarginResizeListenerValidator(this));
 	}
 	
-	abstract public void rebuildColumnEditorsAndRenderers();
+	abstract public void rebuildColumnEditorsAndRenderers() throws Exception;
 }

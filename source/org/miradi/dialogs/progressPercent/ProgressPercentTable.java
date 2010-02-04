@@ -26,7 +26,7 @@ import org.miradi.main.MainWindow;
 
 public class ProgressPercentTable extends EditableRefsTable
 {
-	public ProgressPercentTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
+	public ProgressPercentTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse);		
 	}
