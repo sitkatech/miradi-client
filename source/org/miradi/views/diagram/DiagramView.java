@@ -230,6 +230,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return getCurrentDiagramComponent().getDiagramModel().getDiagramObject();
 	}
 
+	@Override
 	public String cardName()
 	{
 		return getViewName();
@@ -240,11 +241,13 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return Project.DIAGRAM_VIEW_NAME;
 	}
 	
+	@Override
 	public JToolBar createToolBar()
 	{
 		return new DiagramToolBar(getActions(), this);
 	}
 	
+	@Override
 	public BaseObject getSelectedObject()
 	{
 		FactorCell node = getCurrentDiagramComponent().getSingleSelectedFactor();
@@ -368,6 +371,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCreateNamedTaggedObjectSet.class, new CreateNamedTaggedObjectSetDoer());
 	}
 	
+	@Override
 	public void tabWasSelected()
 	{
 		getMainWindow().preventActionUpdates();
@@ -402,6 +406,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		actionShowFullModelMode.doAction();
 	}
 
+	@Override
 	public void prepareForTabSwitch()
 	{
 		super.prepareForTabSwitch();
@@ -415,6 +420,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		}
 	}
 
+	@Override
 	public void createTabs() throws Exception
 	{
 		getMainWindow().preventActionUpdates();
@@ -437,6 +443,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		}
 	}
 	
+	@Override
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
@@ -566,6 +573,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return diagramComponent.getDiagramModel();
 	}
 
+	@Override
 	public void deleteTabs() throws Exception
 	{
 		// TODO: This should completely tear down the view
@@ -701,12 +709,14 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return draftsToAdd;
 	}
 	
+	@Override
 	public JPopupMenu getTabPopupMenu()
 	{
 		DiagramTabMouseMenuHandler handler = new DiagramTabMouseMenuHandler(this);
 		return handler.getPopupMenu();
 	}
 
+	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
@@ -935,6 +945,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		diagramComponent.repaint(diagramComponent.getBounds());
 	}
 	
+	@Override
 	public void showFloatingPropertiesDialog(ModelessDialogWithClose newDialog)
 	{
 		if(nodePropertiesDlg != null)
