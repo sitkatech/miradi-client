@@ -64,6 +64,7 @@ import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.InvalidNumberException;
 import org.miradi.utils.OptionalDouble;
+import org.miradi.utils.Utility;
 
 abstract public class BaseObject
 {
@@ -1059,85 +1060,83 @@ abstract public class BaseObject
 	//FIXME medium: This method is not contain all objects and is not reliable
 	static public int[] getTypesThatCanOwnUs(int type)
 	{
-		// TODO: get rid of static number
-		int[] objectTypes = new int[300];
-		int i = 0;
-
+		Vector<Integer> objectTypes = new Vector<Integer>();
 		if (RatingCriterion.canOwnThisType(type))
-			objectTypes[i++] = RatingCriterion.getObjectType();
+			objectTypes.add(RatingCriterion.getObjectType());
 
 		if (ValueOption.canOwnThisType(type))
-			objectTypes[i++] = ValueOption.getObjectType();
+			objectTypes.add(ValueOption.getObjectType());
 
 		if (Cause.canOwnThisType(type))
-			objectTypes[i++] = Cause.getObjectType();
+			objectTypes.add(Cause.getObjectType());
 		
 		if (Strategy.canOwnThisType(type))
-			objectTypes[i++] = Strategy.getObjectType();
+			objectTypes.add(Strategy.getObjectType());
 		
 		if (Target.canOwnThisType(type))
-			objectTypes[i++] = Target.getObjectType();
+			objectTypes.add(Target.getObjectType());
 		
 		if (HumanWelfareTarget.canOwnThisType(type))
-			objectTypes[i++] = HumanWelfareTarget.getObjectType();
+			objectTypes.add(HumanWelfareTarget.getObjectType());
 		
 		if (ViewData.canOwnThisType(type))
-			objectTypes[i++] = ViewData.getObjectType();
+			objectTypes.add(ViewData.getObjectType());
 
 		if (FactorLink.canOwnThisType(type))
-			objectTypes[i++] = FactorLink.getObjectType();
+			objectTypes.add(FactorLink.getObjectType());
 
 		if (ProjectResource.canOwnThisType(type))
-			objectTypes[i++] = ProjectResource.getObjectType();
+			objectTypes.add(ProjectResource.getObjectType());
 
 		if (Indicator.canOwnThisType(type))
-			objectTypes[i++] = Indicator.getObjectType();
+			objectTypes.add(Indicator.getObjectType());
 
 		if (Objective.canOwnThisType(type))
-			objectTypes[i++] = Objective.getObjectType();
+			objectTypes.add(Objective.getObjectType());
 
 		if (Goal.canOwnThisType(type))
-			objectTypes[i++] = Goal.getObjectType();
+			objectTypes.add(Goal.getObjectType());
 
 		if (ProjectMetadata.canOwnThisType(type))
-			objectTypes[i++] = ProjectMetadata.getObjectType();
+			objectTypes.add(ProjectMetadata.getObjectType());
 		
 		if (DiagramLink.canOwnThisType(type))
-			objectTypes[i++] = DiagramLink.getObjectType();
+			objectTypes.add(DiagramLink.getObjectType());
 
 		if (ResourceAssignment.canOwnThisType(type))
-			objectTypes[i++] = ResourceAssignment.getObjectType();
+			objectTypes.add(ResourceAssignment.getObjectType());
 
 		if (AccountingCode.canOwnThisType(type))
-			objectTypes[i++] = AccountingCode.getObjectType();
+			objectTypes.add(AccountingCode.getObjectType());
 		
 		if (FundingSource.canOwnThisType(type))
-			objectTypes[i++] = FundingSource.getObjectType();
+			objectTypes.add(FundingSource.getObjectType());
 
 		if (KeyEcologicalAttribute.canOwnThisType(type))
-			objectTypes[i++] = KeyEcologicalAttribute.getObjectType();
+			objectTypes.add(KeyEcologicalAttribute.getObjectType());
 
 		if (DiagramFactor.canOwnThisType(type))
-			objectTypes[i++] = DiagramFactor.getObjectType();
+			objectTypes.add(DiagramFactor.getObjectType());
 
 		if (ConceptualModelDiagram.canOwnThisType(type))
-			objectTypes[i++] = ConceptualModelDiagram.getObjectType();
+			objectTypes.add(ConceptualModelDiagram.getObjectType());
 		
 		if (ResultsChainDiagram.canOwnThisType(type))
-			objectTypes[i++] = ResultsChainDiagram.getObjectType();
+			objectTypes.add(ResultsChainDiagram.getObjectType());
 
 		if (IntermediateResult.canOwnThisType(type))
-			objectTypes[i++] = IntermediateResult.getObjectType();
+			objectTypes.add(IntermediateResult.getObjectType());
 		
 		if (ThreatReductionResult.canOwnThisType(type))
-			objectTypes[i++] = ThreatReductionResult.getObjectType();
+			objectTypes.add(ThreatReductionResult.getObjectType());
 		
 		if (Task.canOwnThisType(type))
-			objectTypes[i++] = Task.getObjectType();
+			objectTypes.add(Task.getObjectType());
 		
-		int[] outArray = new int[i];
-		System.arraycopy(objectTypes, 0, outArray, 0, i);
-		return outArray;
+		if (objectTypes.isEmpty())
+			EAM.logError("Object type:" + type + " can not be owned by anyone.");
+		
+		return Utility.convertToIntArray(objectTypes);
 	}
 
 	public String getPseudoData(String fieldTag)
