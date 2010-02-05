@@ -23,7 +23,7 @@ import org.miradi.objects.BaseObject;
 
 //NOTE: This class places blank strings at the end of the list.
 // if two object's dates are equal,  then the object id is used
-public class BaseObjectDateAndIdComparator
+public class BaseObjectDateDescendingAndIdComparator
 {
 	public static int compare(BaseObject rawObject1, BaseObject rawObject2, String dateTag)
 	{
