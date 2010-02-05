@@ -180,7 +180,7 @@ abstract public class ObjectDataInputField extends SavableField
 		CommandSetObjectData cmd = new CommandSetObjectData(objectType, objectId, tag, newValue);
 		try
 		{
-			project.executeCommandAsTransaction(cmd);
+			project.executeCommand(cmd);
 			updateFromObject();
 		}
 		catch(CommandFailedException e)
