@@ -1060,7 +1060,7 @@ public class Project
 		}
 		finally
 		{
-			isExecuting = false;
+			disableIsExecuting();
 		}
 	}
 
@@ -1144,7 +1144,7 @@ public class Project
 		}
 		finally
 		{
-			isExecuting = false;
+			disableIsExecuting();
 		}
 	}
 	
@@ -1161,7 +1161,7 @@ public class Project
 		}
 		finally
 		{
-			isExecuting = false;
+			disableIsExecuting();
 		}
 	}
 
@@ -1231,6 +1231,11 @@ public class Project
 	private void enableIsExecuting()
 	{
 		isExecuting = true;
+	}
+	
+	private void disableIsExecuting()
+	{
+		isExecuting = false;
 	}
 
 	public void addCommandExecutedListener(CommandExecutedListener listener)
