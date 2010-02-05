@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import org.martus.util.MultiCalendar;
+import org.miradi.exceptions.InvalidDateRangeException;
 
 public class DateRange
 {
@@ -67,7 +68,7 @@ public class DateRange
 	private void validateDate() throws Exception
 	{
 		if (startDate.after(endDate))
-			throw new Exception("Start " + startDate + " date is after end date " + endDate);
+			throw new InvalidDateRangeException("Start " + startDate + " date is after end date " + endDate);
 	}
 
 	public MultiCalendar getStartDate()
