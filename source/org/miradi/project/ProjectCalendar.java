@@ -374,9 +374,10 @@ public class ProjectCalendar implements CommandExecutedListener
 	{
 		MultiCalendar thisStartDate = getPlanningStartMultiCalendar();
 		MultiCalendar thisEndDate = getPlanningEndMultiCalendar();
-		DateRange projectDateRange = new DateRange(thisStartDate, thisEndDate);
+		if (thisStartDate.after(thisEndDate))
+			thisEndDate = thisStartDate;
 		
-		return projectDateRange;
+		return new DateRange(thisStartDate, thisEndDate);
 	}
 	
 	public DateUnit getProjectPlanningDateUnit() throws Exception
