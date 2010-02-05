@@ -1045,7 +1045,7 @@ public class Project
 
 	private void internalExecuteCommand(Command command) throws CommandFailedException
 	{
-		isExecuting = true;
+		enableIsExecuting();
 		try
 		{
 			if (shouldUpdateLastModfiedTime(command))
@@ -1137,7 +1137,7 @@ public class Project
 		Command cmd = undoRedoState.popCommandToUndo();
 		try
 		{
-			isExecuting = true;
+			enableIsExecuting();
 			executeWithoutRecording(cmd.getReverseCommand());
 			enterSideEffectModeAndFireCommandExecuted(cmd.getReverseCommand());
 			return cmd;
@@ -1154,7 +1154,7 @@ public class Project
 		try
 		{
 			EAM.logVerbose("Redoing: " + cmd.toString());
-			isExecuting = true;
+			enableIsExecuting();
 			executeWithoutRecording(cmd);
 			enterSideEffectModeAndFireCommandExecuted(cmd);
 			return cmd;
@@ -1226,6 +1226,11 @@ public class Project
 	public boolean isExecutingACommand()
 	{
 		return isExecuting;
+	}
+	
+	private void enableIsExecuting()
+	{
+		isExecuting = true;
 	}
 
 	public void addCommandExecutedListener(CommandExecutedListener listener)
