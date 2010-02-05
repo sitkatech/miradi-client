@@ -35,7 +35,7 @@ import org.miradi.questions.ProgressReportShortStatusQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TaglessChoiceItem;
-import org.miradi.utils.BaseObjectDateAndIdComparator;
+import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
 
 public class ViabilityIndicatorNode extends TreeTableNode
 {
@@ -149,7 +149,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 	{
 		public int compare(TreeTableNode rawNode1, TreeTableNode rawNode2)
 		{
-			return BaseObjectDateAndIdComparator.compare(rawNode1.getObject(), rawNode2.getObject(), Measurement.TAG_DATE);
+			return BaseObjectDateDescendingAndIdComparator.compare(rawNode1.getObject(), rawNode2.getObject(), Measurement.TAG_DATE);
 		}	
 	}
 	
