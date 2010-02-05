@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-04 10:56-0600\n"
+"POT-Creation-Date: 2010-02-05 17:23-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -2116,15 +2116,15 @@ msgstr "[Nueva cadena de resultados]"
 msgid "Results Chain"
 msgstr "Cadena de resultados"
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:176
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:177
 msgid "Total"
 msgstr "Total"
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:308
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:309
 msgid "Fiscal Year|FY"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:313
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:314
 msgid "Quarter Prefix|Q"
 msgstr ""
 
