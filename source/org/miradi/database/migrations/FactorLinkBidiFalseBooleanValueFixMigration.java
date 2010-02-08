@@ -46,9 +46,9 @@ public class FactorLinkBidiFalseBooleanValueFixMigration
 			File factorLinkFile = new File(getFactorLinkDir(), Integer.toString(factorLinkId.asInt()));
 			EnhancedJsonObject factorLinkJson = DataUpgrader.readFile(factorLinkFile);
 			String bidiValue = factorLinkJson.optString(BI_DIRECTIONAL_TAG);
-			if (bidiValue.equals(NONE_USED_FALSE_VALUE))
+			if (bidiValue.equals(NO_LONGER_USED_FALSE_VALUE))
 			{
-				factorLinkJson.put(BI_DIRECTIONAL_TAG, USED_FALSE_VALUE);
+				factorLinkJson.put(BI_DIRECTIONAL_TAG, CORRECT_USED_FALSE_VALUE);
 				DataUpgrader.writeJson(factorLinkFile, factorLinkJson);
 			}
 		}
@@ -72,6 +72,6 @@ public class FactorLinkBidiFalseBooleanValueFixMigration
 	private static final int FACTOR_LINK_TYPE = 6;
 	private static final String MANIFEST_FILE_NAME = "manifest";
 	private static final String BI_DIRECTIONAL_TAG = "BidirectionalLink";
-	private static final String NONE_USED_FALSE_VALUE = "0";
-	private static final String USED_FALSE_VALUE = "";
+	private static final String NO_LONGER_USED_FALSE_VALUE = "0";
+	private static final String CORRECT_USED_FALSE_VALUE = "";
 }
