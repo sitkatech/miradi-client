@@ -49,6 +49,40 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		super(name);
 	}
 	
+	public void testFixFactorLinkBidiFalseValues() throws Exception
+	{
+		String factorLinkWithCorrectBidiFalseValue = "{\"FromRef\":\"{\\\"ObjectType\\\":21,\\\"ObjectId\\\":31}\",\"TimeStampModified\":\"1250886880018\",\"ToRef\":\"{\\\"ObjectType\\\":21,\\\"ObjectId\\\":25}\",\"Label\":\"\",\"Id\":42,\"BidirectionalLink\":\"\"}";
+		String factorLinkWithIncorrectBidiFalseValue = "{\"FromRef\":\"{\\\"ObjectType\\\":21,\\\"ObjectId\\\":25}\",\"TimeStampModified\":\"1250886897871\",\"ToRef\":\"{\\\"ObjectType\\\":26,\\\"ObjectId\\\":39}\",\"Label\":\"\",\"Id\":43,\"BidirectionalLink\":\"0\"}";
+		String factorLinkWithBidiTrueValue = "{\"FromRef\":\"{\\\"ObjectType\\\":21,\\\"ObjectId\\\":23}\",\"TimeStampModified\":\"1250886897871\",\"ToRef\":\"{\\\"ObjectType\\\":26,\\\"ObjectId\\\":39}\",\"Label\":\"\",\"Id\":44,\"BidirectionalLink\":\"1\"}";
+		
+		File jsonDir = createJsonDir();
+		
+		final int FACTOR_LINK_TYPE = 6;
+		File factorLinkDir = DataUpgrader.getObjectsDir(jsonDir, FACTOR_LINK_TYPE);
+		final String[] factorLinkStrings = new String[]{factorLinkWithCorrectBidiFalseValue, factorLinkWithIncorrectBidiFalseValue, factorLinkWithBidiTrueValue, };
+		int[] factorLinkIds = createAndPopulateObjectDir(jsonDir, FACTOR_LINK_TYPE, factorLinkStrings);
+		
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion55();
+	
+		File manifestFile = new File(factorLinkDir, "manifest");
+		assertTrue("manifest file could not be found?", manifestFile.exists());
+		
+		ObjectManifest manifestObject = new ObjectManifest(JSONFile.read(manifestFile));
+		assertEquals("manifest has wrong key count?", factorLinkStrings.length, manifestObject.size());
+		
+		verifyBidirectionality(factorLinkDir, factorLinkIds[0], "");
+		verifyBidirectionality(factorLinkDir, factorLinkIds[1], "");
+		verifyBidirectionality(factorLinkDir, factorLinkIds[2], "1");
+	}
+
+	private void verifyBidirectionality(File factorLinkDir, int factorLinkId, String expectedBidiValue) throws Exception
+	{
+		File factorLinkFile = new File(factorLinkDir, Integer.toString(factorLinkId));
+		EnhancedJsonObject factorLinkJson = new EnhancedJsonObject(readFile(factorLinkFile));
+		assertEquals("Wrong bidi value?", expectedBidiValue, factorLinkJson.getString("BidirectionalLink"));
+	}
+	
 	public void testNewTpyesAgainstEmptyProject() throws Exception
 	{
 		createBlankProjectMetadata();		

@@ -197,4 +197,10 @@ public class MigrationsForMiradi3
 		CreateObjectFromSingleLegacyTextField.createNewTypesFromLegacyFields();
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 54);
 	}
+	
+	public static void upgradeToVersion55() throws Exception
+	{
+		FactorLinkBidiFalseBooleanValueFixMigration.fixFactorLinkBidiFalseValues();
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 55);
+	}
 }
