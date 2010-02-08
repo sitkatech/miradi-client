@@ -377,7 +377,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		
 		if (thisStartDate.after(thisEndDate))
 		{
-			EAM.logError("Project planning DateRange end date: " + thisEndDate + " was before start date: " + thisEndDate);
+			EAM.logWarning("Project planning DateRange end date: " + thisEndDate + " was before start date: " + thisEndDate);
 			return new DateRange(thisStartDate, thisStartDate);
 		}
 			
