@@ -56,6 +56,24 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		super(name);
 	}
 	
+	public void testAsBooleanHelperMethod()
+	{
+		String[] falseValues = new String[]{BooleanData.BOOLEAN_FALSE, "0", };
+		verifyBooleanValue(falseValues, false);
+		
+		String[] trueValues = new String[]{BooleanData.BOOLEAN_TRUE, "1", };
+		verifyBooleanValue(trueValues, true);
+	}
+		
+	public void verifyBooleanValue(String[] booleanValues, boolean expectedBooleanValue)
+	{
+		for (int index = 0; index < booleanValues.length; ++index)
+		{
+			boolean thisBoolean = MigrationsOlderThanMiradiVersion2.asBoolean(booleanValues[index]);
+			assertEquals("Incorrect boolean value?", expectedBooleanValue, thisBoolean);
+		}		
+	}
+
 	public void testMigrateTooOldProject() throws Exception
 	{
 		File jsonDirectory = new File(tempDirectory, "json");
