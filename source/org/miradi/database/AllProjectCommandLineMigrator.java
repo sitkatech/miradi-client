@@ -34,6 +34,7 @@ public class AllProjectCommandLineMigrator
 		try
 		{
 			migrateAllProjects();
+			System.out.println("All Projects Migrated");
 		}
 		catch(Exception e)
 		{
