@@ -23,7 +23,6 @@ import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.exceptions.InvalidDateRangeException;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
@@ -375,15 +374,14 @@ public class ProjectCalendar implements CommandExecutedListener
 	{
 		MultiCalendar thisStartDate = getPlanningStartMultiCalendar();
 		MultiCalendar thisEndDate = getPlanningEndMultiCalendar();
-		try
-		{
-			return new DateRange(thisStartDate, thisEndDate);
-		}
-		catch (InvalidDateRangeException e)
+		
+		if (thisStartDate.after(thisEndDate))
 		{
 			EAM.logError("Project planning DateRange end date: " + thisEndDate + " was before start date: " + thisEndDate);
 			return new DateRange(thisStartDate, thisStartDate);
 		}
+			
+		return new DateRange(thisStartDate, thisEndDate);
 	}
 	
 	public DateUnit getProjectPlanningDateUnit() throws Exception
