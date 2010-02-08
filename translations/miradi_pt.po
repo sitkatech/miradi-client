@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-05 17:23-0600\n"
+"POT-Creation-Date: 2010-02-08 11:17-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -86,7 +86,7 @@ msgid ""
 "about options for realigning it to match your <br>fiscal year."
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:811
+#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:815
 msgid ""
 "<html>This version of Miradi has changed the Strategy rating options.<br>The "
 "Duration and Cost fields have been removed, and the <br>Impact and "
@@ -94,7 +94,7 @@ msgid ""
 "Strategy ratings to ensure they are appropriate."
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1211
+#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1215
 msgid ""
 "One or more Goals that were associated with KEA Indicators have been "
 "deleted. Please create new Goals as needed, or use the new Future Status "
