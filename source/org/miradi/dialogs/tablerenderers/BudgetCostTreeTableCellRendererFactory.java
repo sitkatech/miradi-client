@@ -34,6 +34,7 @@ public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRend
 		super(providerToUse, fontProviderToUse);
 	}
 
+	@Override
 	public Component getTableCellRendererComponent(JTable table, Object rawValue, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		ChoiceItem choice = (ChoiceItem)rawValue;
