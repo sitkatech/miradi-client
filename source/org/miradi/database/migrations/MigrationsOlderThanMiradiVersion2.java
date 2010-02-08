@@ -401,6 +401,10 @@ public class MigrationsOlderThanMiradiVersion2
 		if (booleanAsString.length() == 0)
 			return false;
 		
+		final String FALSE = "0";
+		if (booleanAsString.equals(FALSE))
+			return false;
+		
 		if (booleanAsString.equals(BooleanData.BOOLEAN_FALSE))
 			return false;
 		
