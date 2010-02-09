@@ -108,7 +108,7 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 		getProject().executeCommandsAsTransaction(buildCommandsToDeleteAnnotation(getProject(), selected, annotationListTag));
 	}
 	
-	public static Vector<Command> buildCommandsToDeleteAnnotation(Project project, BaseObject objectToRemove, String annotationListTag) throws ParseException
+	public static Vector<Command> buildCommandsToDeleteAnnotation(Project project, BaseObject objectToRemove, String annotationListTag) throws Exception
 	{
 		Vector commands = new Vector();
 		ORefList ownerRefs = objectToRemove.findObjectsThatReferToUs();
@@ -126,6 +126,7 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 			}
 		}
 		
+		commands.addAll(objectToRemove.createCommandsToDeleteChildren());
 		commands.addAll(Arrays.asList(objectToRemove.createCommandsToClear()));
 		commands.add(new CommandDeleteObject(objectToRemove.getRef()));
 	

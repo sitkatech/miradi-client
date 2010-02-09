@@ -221,8 +221,11 @@ public class FactorDeleteHelper
 		getProject().executeCommandsWithoutTransaction(DeleteActivityDoer.buildRemoveFromRelevancyListCommands(getProject(), factorToDelete.getRef()));
 	}
 
-	private void deleteUnderlyingNode(Factor factorToDelete) throws CommandFailedException
+	private void deleteUnderlyingNode(Factor factorToDelete) throws Exception
 	{
+		Vector<Command> commandsToDeleteChildren = factorToDelete.createCommandsToDeleteChildren();
+		getProject().executeCommandsWithoutTransaction(commandsToDeleteChildren);
+
 		Command[] commandsToClear = factorToDelete.createCommandsToClear();
 		getProject().executeCommandsWithoutTransaction(commandsToClear);
 		getProject().executeCommand(new CommandDeleteObject(factorToDelete.getType(), factorToDelete.getFactorId()));
