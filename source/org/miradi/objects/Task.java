@@ -69,6 +69,7 @@ public class Task extends Factor
 			
 		}
 		
+		deleteIds.addAll(createCommandsToDeleteChildren());
 		deleteIds.addAll(Arrays.asList(createCommandsToClear()));
 		deleteIds.add(new CommandDeleteObject(getType(), getId()));
 		
