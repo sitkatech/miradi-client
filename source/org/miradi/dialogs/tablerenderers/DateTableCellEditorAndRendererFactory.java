@@ -36,6 +36,7 @@ public class DateTableCellEditorAndRendererFactory extends AbstractCellEditor im
 	{
 	    super();
 	    
+	    dateRendererComponent = new DateEditorComponent();
 	    dateEditorComponent = new DateEditorComponent();
 	}
 	
@@ -55,10 +56,11 @@ public class DateTableCellEditorAndRendererFactory extends AbstractCellEditor im
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 	{
 		TaglessChoiceItem choiceItem = (TaglessChoiceItem) value;
-		dateEditorComponent.setText(choiceItem.getLabel());
+		dateRendererComponent.setText(choiceItem.getLabel());
 		
-		return dateEditorComponent;
+		return dateRendererComponent;
 	}
 	
+	private DateEditorComponent dateRendererComponent;
 	private DateEditorComponent dateEditorComponent;
 }
