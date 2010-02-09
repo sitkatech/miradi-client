@@ -1019,7 +1019,10 @@ public class Project
 	public void executeCommand(Command command) throws UnexpectedNonSideEffectException, CommandFailedException
 	{
 		if (isDoNothingCommandEnabledOptimization() && isDoNothingCommand(command))
+		{
+			EAM.logVerbose("Do-nothing command: " + command.toString());
 			return;
+		}
 		
 		if (isInCommandSideEffectMode())
 			throw new UnexpectedNonSideEffectException(); 
