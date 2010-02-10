@@ -25,16 +25,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.Collections;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
-import org.miradi.commands.CommandBeginTransaction;
-import org.miradi.commands.CommandCreateObject;
-import org.miradi.commands.CommandDeleteObject;
-import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.commands.CommandSetThreatRating;
 import org.miradi.database.DataUpgrader;
 import org.miradi.database.ProjectServer;
 import org.miradi.diagram.cells.DiagramGroupBoxCell;
@@ -50,7 +44,6 @@ import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
-import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
@@ -151,7 +144,7 @@ public class Project
 	public Project(ProjectServer databaseToUse) throws Exception
 	{
 		database = databaseToUse;
-		commandExecutedListeners = new Vector<CommandExecutedListener>();
+		commandExecutor = new CommandExecutor(this);
 		projectCalendar = new ProjectCalendar(this);
 		projectTotalCalculator = new ProjectTotalCalculator(this);
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
@@ -165,7 +158,7 @@ public class Project
 	{
 		projectInfo = new ProjectInfo();
 		objectManager = new ObjectManager(this);
-		undoRedoState = new UndoRedoState();
+		commandExecutor.clear();
 		
 		diagramClipboard = new DiagramClipboard(this);
 		simpleThreatFramework = new SimpleThreatRatingFramework(this);
@@ -1018,373 +1011,137 @@ public class Project
 
 	public void executeCommand(Command command) throws UnexpectedNonSideEffectException, CommandFailedException
 	{
-		if (isDoNothingCommandEnabledOptimization() && isDoNothingCommand(command))
-		{
-			EAM.logVerbose("Do-nothing command: " + command.toString());
-			return;
-		}
-		
-		if (isInCommandSideEffectMode())
-			throw new UnexpectedNonSideEffectException(); 
-
-		beginCommandSideEffectMode();
-		try
-		{
-			//FIXME urgent: Record command needs to happen before fireCommandExecuted inside internalExecuteCommand
-			//The undo/redo stack need to be updated since listenrs rely on that.
-			internalExecuteCommand(command);
-			recordCommand(command);
-		}
-		finally 
-		{
-			endCommandSideEffectMode();
-		}
+		getCommandExecutor().executeCommand(command);
 	}
 
 	public boolean isDoNothingCommand(Command command)	throws CommandFailedException
 	{
-		return command.isDoNothingCommand(this);
+		return getCommandExecutor().isDoNothingCommand(command);
 	}
 
-	private void internalExecuteCommand(Command command) throws CommandFailedException
-	{
-		enableIsExecuting();
-		try
-		{
-			if (shouldUpdateLastModfiedTime(command))
-				getDatabase().updateLastModifiedTime();
-			
-			executeWithoutRecording(command);
-			fireCommandExecuted(command);
-		}
-		catch (Exception e)
-		{
-			throw new CommandFailedException(e);
-		}
-		finally
-		{
-			disableIsExecuting();
-		}
-	}
-
-	private boolean shouldUpdateLastModfiedTime(Command command)
-	{
-		if (command.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
-			return true;
-		
-		if (command.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
-			return true;
-		
-		if (command.getCommandName().equals(CommandSetThreatRating.COMMAND_NAME))
-			return true;
-		
-		if (!command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			return false;
-
-		CommandSetObjectData setCommand = ((CommandSetObjectData) command);
-		BaseObject baseObject = BaseObject.find(this, setCommand.getObjectORef());
-		
-		return !baseObject.isPresentationDataField(setCommand.getFieldTag());
-	}
-	
 	public void executeEndTransaction() throws CommandFailedException
 	{
-		executeCommand(new CommandEndTransaction());
+		getCommandExecutor().executeEndTransaction();
 	}
 	
 	public void executeBeginTransaction() throws CommandFailedException
 	{
-		executeCommand(new CommandBeginTransaction());
+		getCommandExecutor().executeBeginTransaction();
 	}
 	
 	public void executeCommandsWithoutTransaction(Command[] commands) throws CommandFailedException
 	{
-		for(int i = 0; i < commands.length; ++i)
-		{
-			executeCommand(commands[i]);
-		}
+		getCommandExecutor().executeCommandsWithoutTransaction(commands);
 	}
 
 	public void executeCommandsWithoutTransaction(Vector<Command> commands) throws CommandFailedException
 	{
-		executeCommandsWithoutTransaction(commands.toArray(new Command[0]));
+		getCommandExecutor().executeCommandsWithoutTransaction(commands);
 	}
 	
 	public void executeCommandAsTransaction(Command command) throws CommandFailedException
 	{
-		Vector<Command> singleItemList = new Vector<Command>();
-		singleItemList.add(command);
-		executeCommandsAsTransaction(singleItemList);
+		getCommandExecutor().executeCommandAsTransaction(command);
 	}
 	
 	public void executeCommandsAsTransaction(Vector<Command> commands) throws CommandFailedException
 	{
-		executeCommandsAsTransaction(commands.toArray(new Command[0]));
+		getCommandExecutor().executeCommandsAsTransaction(commands);
 	}
 	
 	public void executeCommandsAsTransaction(Command[] commands) throws CommandFailedException
 	{
-		executeCommand(new CommandBeginTransaction());
-		try
-		{
-			executeCommandsWithoutTransaction(commands);
-		}
-		finally
-		{
-			executeCommand(new CommandEndTransaction());
-		}
+		getCommandExecutor().executeCommandsAsTransaction(commands);
 	}
 	
 	public Command undo() throws CommandFailedException, RuntimeException
 	{
-		Command cmd = undoRedoState.popCommandToUndo();
-		try
-		{
-			enableIsExecuting();
-			executeWithoutRecording(cmd.getReverseCommand());
-			enterSideEffectModeAndFireCommandExecuted(cmd.getReverseCommand());
-			return cmd;
-		}
-		finally
-		{
-			disableIsExecuting();
-		}
+		return getCommandExecutor().undo();
 	}
 	
 	public Command redo() throws CommandFailedException, RuntimeException
 	{
-		Command cmd = undoRedoState.popCommandToRedo();
-		try
-		{
-			EAM.logVerbose("Redoing: " + cmd.toString());
-			enableIsExecuting();
-			executeWithoutRecording(cmd);
-			enterSideEffectModeAndFireCommandExecuted(cmd);
-			return cmd;
-		}
-		finally
-		{
-			disableIsExecuting();
-		}
+		return getCommandExecutor().redo();
 	}
 
 	private void executeWithoutRecording(Command command) throws CommandFailedException
 	{
-		try 
-		{
-			EAM.logVerbose("Executing: " + command.toString());
-			command.executeAndLog(this);
-			EAM.logVerbose("Finished : " + command.toString());
-		} 
-		catch (CommandFailedException e) 
-		{
-			throw(e);
-		}
+		getCommandExecutor().executeWithoutRecording(command);
 	}
 	
 	public void executeAsSideEffect(Vector<Command> commands) throws CommandFailedException
 	{
-		for (int index = 0; index < commands.size(); ++index)
-		{
-			executeAsSideEffect(commands.get(index));
-		}
+		getCommandExecutor().executeAsSideEffect(commands);
 	}
 	
 	public void executeAsSideEffect(Command command) throws UnexpectedSideEffectException, CommandFailedException
 	{
-		if (isDoNothingCommandEnabledOptimization() && isDoNothingCommand(command))
-			return;
-
-		if (!isInCommandSideEffectMode())
-			throw new UnexpectedSideEffectException(command);
-		
-		internalExecuteCommand(command);
+		getCommandExecutor().executeAsSideEffect(command);	
 	}
 	
 	public void recordCommand(Command command)
 	{
-		Command lastCommand = getLastExecutedCommand();		
-		try
-		{
-			if(command.isEndTransaction() && lastCommand != null && lastCommand.isBeginTransaction())
-			{
-				undoRedoState.discardLastUndoableCommand();
-			}
-			else
-			{
-				undoRedoState.pushUndoableCommand(command);
-			}
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
+		getCommandExecutor().recordCommand(command);
 	}
 
 	public Command getLastExecutedCommand()
 	{
-		return undoRedoState.getLastRecordedCommand();
+		return getCommandExecutor().getLastExecutedCommand();
 	}
 	
 	public boolean isExecutingACommand()
 	{
-		return isExecuting;
+		return getCommandExecutor().isExecutingACommand();
 	}
 	
-	private void enableIsExecuting()
-	{
-		isExecuting = true;
-	}
-	
-	private void disableIsExecuting()
-	{
-		isExecuting = false;
-	}
-
 	public void addCommandExecutedListener(CommandExecutedListener listener)
 	{
-		if(commandExecutedListeners.contains(listener))
-			throw new RuntimeException("Attempted to add listener twice: " + listener.getClass());
-		EAM.logVerbose("addCommandExecutedListener: " + listener.getClass());
-		commandExecutedListeners.add(listener);
+		getCommandExecutor().addCommandExecutedListener(listener);
 	}
 	
 	public void removeCommandExecutedListener(CommandExecutedListener listener)
 	{
-		EAM.logVerbose("removeCommandExecutedListener: " + listener.getClass());
-		if(!commandExecutedListeners.contains(listener))
-			EAM.logWarning("removeCommandExecutedListener not in list: " + listener.getClass());
-		commandExecutedListeners.remove(listener);
-	}
-
-	private void enterSideEffectModeAndFireCommandExecuted(Command command)
-	{
-		beginCommandSideEffectMode();
-		try
-		{
-			fireCommandExecuted(command);
-		}
-		finally
-		{
-			endCommandSideEffectMode();
-		}
+		getCommandExecutor().removeCommandExecutedListener(listener);
 	}
 
 	public void fireCommandExecuted(Command command)
 	{
-		EAM.logVerbose("fireCommandExecuted: " + command.toString());
-		CommandExecutedEvent event = new CommandExecutedEvent(command);
-		Vector<CommandExecutedListener> copyForComparison = new Vector<CommandExecutedListener>(commandExecutedListeners);
-		for(int i=0; i < getCommandListenerCount(); ++i)
-		{
-			CommandExecutedListener listener = commandExecutedListeners.get(i);
-			listener.commandExecuted(event);
-		}
-		
-		if (shouldLog(command, commandExecutedListeners, copyForComparison))
-			EAM.logError("Command Listener list was changed during fireCommandExecuted");
-	}
-	
-	private boolean shouldLog(final Command command, final Vector currentListenersList, final Vector copyForComparison)
-	{
-		if (viewSwitchCommandToIgnore(command))
-			return false;
-		
-		Vector<String> originalList = extractClassNames(currentListenersList);
-		Collections.sort(originalList);
-		
-		Vector<String> copy = extractClassNames(copyForComparison);
-		Collections.sort(copy);
-		
-		return !copy.equals(originalList);
-	}
-	
-	private Vector<String> extractClassNames(Vector<CommandExecutedListener> listToGetClassNamesFrom)
-	{
-		Vector<String> classNames = new Vector<String>();
-		for(CommandExecutedListener listener : listToGetClassNamesFrom)
-		{
-			classNames.add(listener.getClass().getName());
-		}
-		
-		return classNames;
-	}
-
-	private boolean viewSwitchCommandToIgnore(Command command)
-	{
-		if (!command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			return false;
-		
-		CommandSetObjectData setCommand = (CommandSetObjectData) command;
-		if (!ProjectMetadata.is(setCommand.getObjectType()))
-			return false;
-		
-		return setCommand.getFieldTag().equals(ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME);
+		getCommandExecutor().fireCommandExecuted(command);
 	}
 	
 	public int getCommandListenerCount()
 	{
-		return commandExecutedListeners.size();
+		return getCommandExecutor().getCommandListenerCount();
 	}
 	
 	public void logCommandListeners(PrintStream out)
 	{
-		for(int i=0; i < getCommandListenerCount(); ++i)
-		{
-			CommandExecutedListener listener = commandExecutedListeners.get(i);
-			out.println(listener.getClass());
-		}
+		getCommandExecutor().logCommandListeners(out);
 	}
 
 	public boolean canUndo()
 	{
-		if(!isOpen())
-			return false;
-		
-		return undoRedoState.canUndo();
+		return getCommandExecutor().canUndo();
 	}
 	
 	public boolean canRedo()
 	{
-		if(!isOpen())
-			return false;
-		
-		return undoRedoState.canRedo();
+		return getCommandExecutor().canRedo();
 	}
 	
 	public void beginTransaction() throws CommandFailedException
 	{
-		if(inTransaction)
-			throw new CommandFailedException("Attempted to nest transactions");
-		try
-		{
-			getDatabase().beginTransaction();
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			throw new CommandFailedException("Unable to initiate transaction");
-		}
-		inTransaction = true;
+		getCommandExecutor().beginTransaction();
 	}
 	
 	public void endTransaction() throws CommandFailedException
 	{
-		inTransaction = false;
-		try
-		{
-			getDatabase().endTransaction();
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			throw new CommandFailedException("Unable to complete transaction");
-		}
+		getCommandExecutor().endTransaction();
 	}
 	
 	public boolean isInTransaction()
 	{
-		return inTransaction;
+		return getCommandExecutor().isInTransaction();
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////
@@ -1564,44 +1321,37 @@ public class Project
 
 	public void beginCommandSideEffectMode()
 	{
-		if (isInCommandSideEffectMode())
-			throw new RuntimeException("trying to begin side effect mode when inside side effect mode");
-		
-		inCommandSideEffectMode = true;
+		getCommandExecutor().beginCommandSideEffectMode();
 	}
 
 	public void endCommandSideEffectMode()
 	{
-		if (!isInCommandSideEffectMode())
-			throw new RuntimeException("trying to end side effect mode when outside side effect mode");
-		
-		inCommandSideEffectMode = false;
+		getCommandExecutor().endCommandSideEffectMode();
 	}
 	
 	public void enableIsDoNothingCommandOptimization()
 	{
-		if (isDoNothingCommandEnabledOptimization())
-			throw new RuntimeException("Trying to enable isDoNothingCommandOptimization when its already enabled");
-		
-		isDoNothingCommandOptimizationEnabled = true;
+		getCommandExecutor().enableIsDoNothingCommandOptimization();
 	}
 	
 	public void disableIsDoNothingCommandOptimization()
 	{
-		if (!isDoNothingCommandEnabledOptimization())
-			throw new RuntimeException("Trying to disable isDoNothingCommandOptimization when its already disabled");
-		
-		isDoNothingCommandOptimizationEnabled = false;
+		getCommandExecutor().disableIsDoNothingCommandOptimization();
 	}
 	
 	public boolean isDoNothingCommandEnabledOptimization()
 	{
-		return isDoNothingCommandOptimizationEnabled;
+		return getCommandExecutor().isDoNothingCommandEnabledOptimization();
 	}
 
 	public boolean isInCommandSideEffectMode()
 	{
-		return inCommandSideEffectMode;
+		return getCommandExecutor().isInCommandSideEffectMode();
+	}
+	
+	public CommandExecutor getCommandExecutor()
+	{
+		return commandExecutor;
 	}
 
 	public static final String LIBRARY_VIEW_NAME = "Library";
@@ -1628,10 +1378,6 @@ public class Project
 	
 	private ProjectInfo projectInfo;
 	private ObjectManager objectManager;
-	private UndoRedoState undoRedoState;
-	private boolean isExecuting;
-	private boolean inCommandSideEffectMode;
-	private boolean isDoNothingCommandOptimizationEnabled;
 
 	private SimpleThreatRatingFramework simpleThreatFramework;
 	private StressBasedThreatRatingFramework stressBasedThreatFramework;
@@ -1642,14 +1388,10 @@ public class Project
 	private ThreatStressRatingEnsurer threatStressRatingEnsurer;
 	private ProjectTotalCalculator projectTotalCalculator;
 
-	private Vector<CommandExecutedListener> commandExecutedListeners;
-	
-	private boolean inTransaction;
-	
 	// FIXME low: This should go away, but it's difficult
 	private String currentViewName;
 	
 	public static final int PROJECT_WAS_CREATED = 100;
 	public static final int PROJECT_WAS_OPENED = 200;
+	public CommandExecutor commandExecutor;
 }
-
