@@ -735,6 +735,16 @@ abstract public class BaseObject
 		return Arrays.asList(createCommandsToClear());
 	}
 	
+	public Vector<Command> createCommandsToDeleteChildrenAndObject() throws Exception
+	{
+		Vector<Command> commandsToDeleteChildrenAndObject = new Vector<Command>();
+		commandsToDeleteChildrenAndObject.addAll(createCommandsToDeleteChildren());
+		commandsToDeleteChildrenAndObject.addAll(createCommandsToClearAsList());
+		commandsToDeleteChildrenAndObject.add(new CommandDeleteObject(this));
+		
+		return commandsToDeleteChildrenAndObject;
+	}
+	
 	public Vector<Command> createCommandsToDeleteChildren() throws Exception
 	{
 		return new Vector<Command>();
