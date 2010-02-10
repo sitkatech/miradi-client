@@ -176,7 +176,7 @@ public class CommandExecutor
 	
 	public Command undo() throws CommandFailedException, RuntimeException
 	{
-		Command cmd = undoRedoState.popCommandToUndo();
+		Command cmd = getUndoRedoState().popCommandToUndo();
 		try
 		{
 			enableIsExecuting();
@@ -189,10 +189,10 @@ public class CommandExecutor
 			disableIsExecuting();
 		}
 	}
-	
+
 	public Command redo() throws CommandFailedException, RuntimeException
 	{
-		Command cmd = undoRedoState.popCommandToRedo();
+		Command cmd = getUndoRedoState().popCommandToRedo();
 		try
 		{
 			EAM.logVerbose("Redoing: " + cmd.toString());
@@ -247,11 +247,11 @@ public class CommandExecutor
 		{
 			if(command.isEndTransaction() && lastCommand != null && lastCommand.isBeginTransaction())
 			{
-				undoRedoState.discardLastUndoableCommand();
+				getUndoRedoState().discardLastUndoableCommand();
 			}
 			else
 			{
-				undoRedoState.pushUndoableCommand(command);
+				getUndoRedoState().pushUndoableCommand(command);
 			}
 		}
 		catch (Exception e)
@@ -262,7 +262,7 @@ public class CommandExecutor
 
 	public Command getLastExecutedCommand()
 	{
-		return undoRedoState.getLastRecordedCommand();
+		return getUndoRedoState().getLastRecordedCommand();
 	}
 	
 	public boolean isExecutingACommand()
@@ -380,7 +380,7 @@ public class CommandExecutor
 		if(!getProject().isOpen())
 			return false;
 		
-		return undoRedoState.canUndo();
+		return getUndoRedoState().canUndo();
 	}
 	
 	public boolean canRedo()
@@ -388,7 +388,7 @@ public class CommandExecutor
 		if(!getProject().isOpen())
 			return false;
 		
-		return undoRedoState.canRedo();
+		return getUndoRedoState().canRedo();
 	}
 	
 	public void beginTransaction() throws CommandFailedException
@@ -466,6 +466,11 @@ public class CommandExecutor
 	public boolean isInCommandSideEffectMode()
 	{
 		return inCommandSideEffectMode;
+	}
+	
+	private UndoRedoState getUndoRedoState()
+	{
+		return undoRedoState;
 	}
 	
 	private Project getProject()
