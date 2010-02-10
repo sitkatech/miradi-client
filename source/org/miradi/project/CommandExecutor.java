@@ -443,7 +443,9 @@ public class CommandExecutor
 				if (shouldUpdateLastModfiedTime(command))
 					getProject().getDatabase().updateLastModifiedTime();
 				
-				rawExecute(command);
+				executeWithoutRecording(command);
+				doPostExecutionProcessing(command);
+				fireCommandExecuted(command);
 			}
 			catch (Exception e)
 			{
@@ -455,10 +457,8 @@ public class CommandExecutor
 			}
 		}
 
-		protected void rawExecute(Command command) throws CommandFailedException
+		protected void doPostExecutionProcessing(Command command) throws CommandFailedException
 		{
-			executeWithoutRecording(command);
-			fireCommandExecuted(command);
 		}		
 	}
 	
@@ -487,11 +487,9 @@ public class CommandExecutor
 		}
 		
 		@Override
-		protected void rawExecute(Command command) throws CommandFailedException
+		protected void doPostExecutionProcessing(Command command) throws CommandFailedException
 		{
-			executeWithoutRecording(command);
 			recordCommand(command);
-			fireCommandExecuted(command);
 		}
 	}
 	
