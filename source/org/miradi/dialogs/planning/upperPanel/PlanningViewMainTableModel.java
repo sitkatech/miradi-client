@@ -56,11 +56,13 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportShortStatusQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
+import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.CodeList;
@@ -303,6 +305,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if (Cause.is(baseObject))
 			return getThreatRatingChoiceItem((Cause) baseObject);
 		
+		if (Target.is(baseObject))
+			return getTargetViabilityRating((AbstractTarget) baseObject);
+		
 		return new EmptyChoiceItem();
 	}
 
@@ -312,6 +317,13 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			return new EmptyChoiceItem();
 		
 		return getProject().getThreatRatingFramework().getThreatThreatRatingValue(threat.getRef());
+	}
+	
+	private ChoiceItem getTargetViabilityRating(AbstractTarget abstractTarget)
+	{
+		ChoiceQuestion question = getProject().getQuestion(StatusQuestion.class);
+		
+		return question.findChoiceByCode(abstractTarget.getTargetViability());
 	}
 
 	private ChoiceItem getFilteredWhen(BaseObject baseObject) throws Exception
