@@ -475,8 +475,8 @@ public class CommandExecutor
 	
 	private Project project;
 	private Vector<CommandExecutedListener> commandExecutedListeners;
-	private boolean inTransaction;
 	private UndoRedoState undoRedoState;
+	private boolean inTransaction;
 	private boolean isExecuting;
 	private boolean inCommandSideEffectMode;
 	private boolean isDoNothingCommandOptimizationEnabled;	
