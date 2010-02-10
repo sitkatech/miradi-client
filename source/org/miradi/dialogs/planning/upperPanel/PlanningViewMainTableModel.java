@@ -300,10 +300,14 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	
 	private ChoiceItem getRatingChoiceItem(BaseObject baseObject) throws Exception
 	{
-		if (!Cause.is(baseObject))
-			return new EmptyChoiceItem();
+		if (Cause.is(baseObject))
+			return getThreatRatingChoiceItem((Cause) baseObject);
 		
-		Cause threat = (Cause) baseObject;
+		return new EmptyChoiceItem();
+	}
+
+	private ChoiceItem getThreatRatingChoiceItem(Cause threat) throws Exception
+	{
 		if (threat.isContributingFactor())
 			return new EmptyChoiceItem();
 		
