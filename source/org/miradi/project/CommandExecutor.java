@@ -80,11 +80,6 @@ public class CommandExecutor
 		}
 	}
 
-	public boolean isDoNothingCommand(Command command)	throws CommandFailedException
-	{
-		return command.isDoNothingCommand(getProject());
-	}
-
 	public void internalExecuteCommand(Command command) throws CommandFailedException
 	{
 		enableIsExecuting();
@@ -456,6 +451,11 @@ public class CommandExecutor
 			throw new RuntimeException("Trying to disable isDoNothingCommandOptimization when its already disabled");
 		
 		isDoNothingCommandOptimizationEnabled = false;
+	}
+	
+	public boolean isDoNothingCommand(Command command)	throws CommandFailedException
+	{
+		return command.isDoNothingCommand(getProject());
 	}
 	
 	public boolean isDoNothingCommandEnabledOptimization()
