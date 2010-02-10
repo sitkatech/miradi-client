@@ -59,12 +59,14 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 		return diagramModel;
 	}
 
+	@Override
 	protected void finishOpening() throws Exception
 	{
 		super.finishOpening();
 		loadDiagram();
 	}
 
+	@Override
 	public void close() throws Exception
 	{
 		super.close();
@@ -82,13 +84,6 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 		String projectName = getDatabase().getCurrentProjectName();
 		getTestDatabase().closeAndDontDelete();
 		createOrOpen(projectName);
-	}
-
-	public void fireCommandExecuted(Command command)
-	{
-		super.fireCommandExecuted(command);
-		if(commandStack != null)
-			commandStack.add(command);
 	}
 
 	protected Command getLastCommand()
@@ -127,6 +122,9 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		if(commandStack != null)
+			commandStack.add(event.getCommand());
+		
 		if (! event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
 			return;
 	
