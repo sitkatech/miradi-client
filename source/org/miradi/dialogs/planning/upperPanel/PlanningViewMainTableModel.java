@@ -260,7 +260,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if(isWhoColumn(columnTag))
 				return appendedProjectResources(baseObject);
 			if (columnTag.equals(CustomPlanningColumnsQuestion.META_THREAT_RATING))
-				return getThreatRatingChoiceItem(baseObject);
+				return getRatingChoiceItem(baseObject);
 			
 			if (! baseObject.doesFieldExist(columnTag))
 				return new EmptyChoiceItem();
@@ -298,7 +298,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 	}
 	
-	private ChoiceItem getThreatRatingChoiceItem(BaseObject baseObject) throws Exception
+	private ChoiceItem getRatingChoiceItem(BaseObject baseObject) throws Exception
 	{
 		if (!Cause.is(baseObject))
 			return new EmptyChoiceItem();
