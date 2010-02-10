@@ -223,12 +223,7 @@ public class FactorDeleteHelper
 
 	private void deleteUnderlyingNode(Factor factorToDelete) throws Exception
 	{
-		Vector<Command> commandsToDeleteChildren = factorToDelete.createCommandsToDeleteChildren();
-		getProject().executeCommandsWithoutTransaction(commandsToDeleteChildren);
-
-		Command[] commandsToClear = factorToDelete.createCommandsToClear();
-		getProject().executeCommandsWithoutTransaction(commandsToClear);
-		getProject().executeCommand(new CommandDeleteObject(factorToDelete.getType(), factorToDelete.getFactorId()));
+		getProject().executeCommandsWithoutTransaction(factorToDelete.createCommandsToDeleteChildrenAndObject());
 	}
 	
 	public void deleteAnnotations(Factor factorToDelete) throws Exception
