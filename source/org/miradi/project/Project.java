@@ -1104,11 +1104,6 @@ public class Project
 		getCommandExecutor().removeCommandExecutedListener(listener);
 	}
 
-	public void fireCommandExecuted(Command command)
-	{
-		getCommandExecutor().fireCommandExecuted(command);
-	}
-	
 	public int getCommandListenerCount()
 	{
 		return getCommandExecutor().getCommandListenerCount();
