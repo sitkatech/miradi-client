@@ -393,7 +393,7 @@ public class CommandExecutor
 	
 	public void beginTransaction() throws CommandFailedException
 	{
-		if(inTransaction)
+		if(isInTransaction())
 			throw new CommandFailedException("Attempted to nest transactions");
 		try
 		{
