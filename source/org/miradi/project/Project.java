@@ -1139,6 +1139,41 @@ public class Project
 		return getCommandExecutor().isInTransaction();
 	}
 	
+	public void beginCommandSideEffectMode()
+	{
+		getCommandExecutor().beginCommandSideEffectMode();
+	}
+
+	public void endCommandSideEffectMode()
+	{
+		getCommandExecutor().endCommandSideEffectMode();
+	}
+	
+	public void enableIsDoNothingCommandOptimization()
+	{
+		getCommandExecutor().enableIsDoNothingCommandOptimization();
+	}
+	
+	public void disableIsDoNothingCommandOptimization()
+	{
+		getCommandExecutor().disableIsDoNothingCommandOptimization();
+	}
+	
+	public boolean isDoNothingCommandEnabledOptimization()
+	{
+		return getCommandExecutor().isDoNothingCommandEnabledOptimization();
+	}
+
+	public boolean isInCommandSideEffectMode()
+	{
+		return getCommandExecutor().isInCommandSideEffectMode();
+	}
+	
+	public CommandExecutor getCommandExecutor()
+	{
+		return commandExecutor;
+	}
+	
 	/////////////////////////////////////////////////////////////////////////////////
 	// views
 	
@@ -1312,41 +1347,6 @@ public class Project
 		
 		return size;
 
-	}
-
-	public void beginCommandSideEffectMode()
-	{
-		getCommandExecutor().beginCommandSideEffectMode();
-	}
-
-	public void endCommandSideEffectMode()
-	{
-		getCommandExecutor().endCommandSideEffectMode();
-	}
-	
-	public void enableIsDoNothingCommandOptimization()
-	{
-		getCommandExecutor().enableIsDoNothingCommandOptimization();
-	}
-	
-	public void disableIsDoNothingCommandOptimization()
-	{
-		getCommandExecutor().disableIsDoNothingCommandOptimization();
-	}
-	
-	public boolean isDoNothingCommandEnabledOptimization()
-	{
-		return getCommandExecutor().isDoNothingCommandEnabledOptimization();
-	}
-
-	public boolean isInCommandSideEffectMode()
-	{
-		return getCommandExecutor().isInCommandSideEffectMode();
-	}
-	
-	public CommandExecutor getCommandExecutor()
-	{
-		return commandExecutor;
 	}
 
 	public static final String LIBRARY_VIEW_NAME = "Library";
