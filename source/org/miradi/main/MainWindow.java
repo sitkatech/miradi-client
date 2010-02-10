@@ -213,7 +213,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		getWizardManager().setOverViewStep(NoProjectView.getViewName());
 		updateActionStates();
 
-		setSize(preferences.getMainWindowWidth(), preferences.getMainWindowHeight());
+		setSize(getSizeFromPreferences());
 		setLocation(preferences.getMainWindowXPosition(), preferences.getMainWindowYPosition());
 		setExtendedState(NORMAL);
 		if(preferences.getIsMaximized())
@@ -222,6 +222,15 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		}
 		
 		savePreferences();
+	}
+
+	private Dimension getSizeFromPreferences()
+	{
+		int MINIMUM_WIDTH = 200;
+		int MINIMUM_HEIGHT = 100;
+		int width = Math.max(MINIMUM_WIDTH, preferences.getMainWindowWidth());
+		int height = Math.max(MINIMUM_HEIGHT, preferences.getMainWindowHeight());
+		return new Dimension(width, height);
 	}
 
 	private void ensureFontSizeIsSet()
