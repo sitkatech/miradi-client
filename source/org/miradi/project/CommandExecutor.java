@@ -46,6 +46,8 @@ public class CommandExecutor
 	{
 		project = projectToUse;
 		commandExecutedListeners = new Vector<CommandExecutedListener>();
+		sideEffectExecutor = new SideEffectExecutor();
+		normalExecutor = new NormalExecutor();
 		
 		clear();
 	}
@@ -57,48 +59,7 @@ public class CommandExecutor
 	
 	public void executeCommand(Command command) throws UnexpectedNonSideEffectException, CommandFailedException
 	{
-		if (isDoNothingCommandEnabledOptimization() && isDoNothingCommand(command))
-		{
-			EAM.logVerbose("Do-nothing command: " + command.toString());
-			return;
-		}
-		
-		if (isInCommandSideEffectMode())
-			throw new UnexpectedNonSideEffectException(); 
-
-		beginCommandSideEffectMode();
-		try
-		{
-			//FIXME urgent: Record command needs to happen before fireCommandExecuted inside internalExecuteCommand
-			//The undo/redo stack need to be updated since listenrs rely on that.
-			internalExecuteCommand(command);
-			recordCommand(command);
-		}
-		finally 
-		{
-			endCommandSideEffectMode();
-		}
-	}
-
-	public void internalExecuteCommand(Command command) throws CommandFailedException
-	{
-		enableIsExecuting();
-		try
-		{
-			if (shouldUpdateLastModfiedTime(command))
-				getProject().getDatabase().updateLastModifiedTime();
-			
-			executeWithoutRecording(command);
-			fireCommandExecuted(command);
-		}
-		catch (Exception e)
-		{
-			throw new CommandFailedException(e);
-		}
-		finally
-		{
-			disableIsExecuting();
-		}
+		normalExecutor.executeCommand(command);
 	}
 
 	private boolean shouldUpdateLastModfiedTime(Command command)
@@ -226,13 +187,7 @@ public class CommandExecutor
 	
 	public void executeAsSideEffect(Command command) throws UnexpectedSideEffectException, CommandFailedException
 	{
-		if (isDoNothingCommandEnabledOptimization() && isDoNothingCommand(command))
-			return;
-
-		if (!isInCommandSideEffectMode())
-			throw new UnexpectedSideEffectException(command);
-		
-		internalExecuteCommand(command);
+		sideEffectExecutor.executeAsSideEffect(command);
 	}
 	
 	public void recordCommand(Command command)
@@ -478,7 +433,75 @@ public class CommandExecutor
 		return project;
 	}
 	
+	private class Executor
+	{
+		protected void internalExecuteCommand(Command command) throws CommandFailedException
+		{
+			enableIsExecuting();
+			try
+			{
+				if (shouldUpdateLastModfiedTime(command))
+					getProject().getDatabase().updateLastModifiedTime();
+				
+				executeWithoutRecording(command);
+				fireCommandExecuted(command);
+			}
+			catch (Exception e)
+			{
+				throw new CommandFailedException(e);
+			}
+			finally
+			{
+				disableIsExecuting();
+			}
+		}		
+	}
+	
+	private class NormalExecutor extends Executor
+	{
+		public void executeCommand(Command command) throws UnexpectedNonSideEffectException, CommandFailedException
+		{
+			if (isDoNothingCommandEnabledOptimization() && isDoNothingCommand(command))
+			{
+				EAM.logVerbose("Do-nothing command: " + command.toString());
+				return;
+			}
+			
+			if (isInCommandSideEffectMode())
+				throw new UnexpectedNonSideEffectException(); 
+
+			beginCommandSideEffectMode();
+			try
+			{
+				//FIXME urgent: Record command needs to happen before fireCommandExecuted inside internalExecuteCommand
+				//The undo/redo stack need to be updated since listenrs rely on that.
+				internalExecuteCommand(command);
+				recordCommand(command);
+			}
+			finally 
+			{
+				endCommandSideEffectMode();
+			}
+		}
+	}
+	
+	private class SideEffectExecutor extends Executor
+	{
+		protected void executeAsSideEffect(Command command) throws UnexpectedSideEffectException, CommandFailedException
+		{
+			if (isDoNothingCommandEnabledOptimization() && isDoNothingCommand(command))
+				return;
+
+			if (!isInCommandSideEffectMode())
+				throw new UnexpectedSideEffectException(command);
+			
+			internalExecuteCommand(command);
+		}
+	}
+	
 	private Project project;
+	private NormalExecutor normalExecutor;
+	private SideEffectExecutor sideEffectExecutor;
 	private Vector<CommandExecutedListener> commandExecutedListeners;
 	private UndoRedoState undoRedoState;
 	private boolean inTransaction;
