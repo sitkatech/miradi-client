@@ -443,8 +443,7 @@ public class CommandExecutor
 				if (shouldUpdateLastModfiedTime(command))
 					getProject().getDatabase().updateLastModifiedTime();
 				
-				executeWithoutRecording(command);
-				fireCommandExecuted(command);
+				rawExecute(command);
 			}
 			catch (Exception e)
 			{
@@ -454,6 +453,12 @@ public class CommandExecutor
 			{
 				disableIsExecuting();
 			}
+		}
+
+		protected void rawExecute(Command command) throws CommandFailedException
+		{
+			executeWithoutRecording(command);
+			fireCommandExecuted(command);
 		}		
 	}
 	
@@ -473,15 +478,20 @@ public class CommandExecutor
 			beginCommandSideEffectMode();
 			try
 			{
-				//FIXME urgent: Record command needs to happen before fireCommandExecuted inside internalExecuteCommand
-				//The undo/redo stack need to be updated since listenrs rely on that.
 				internalExecuteCommand(command);
-				recordCommand(command);
 			}
 			finally 
 			{
 				endCommandSideEffectMode();
 			}
+		}
+		
+		@Override
+		protected void rawExecute(Command command) throws CommandFailedException
+		{
+			executeWithoutRecording(command);
+			recordCommand(command);
+			fireCommandExecuted(command);
 		}
 	}
 	
