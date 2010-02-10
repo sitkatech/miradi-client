@@ -19,11 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.util.Arrays;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
-import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.UnknownTaskParentTypeException;
 import org.miradi.ids.BaseId;
@@ -69,9 +67,7 @@ public class Task extends Factor
 			
 		}
 		
-		deleteIds.addAll(createCommandsToDeleteChildren());
-		deleteIds.addAll(Arrays.asList(createCommandsToClear()));
-		deleteIds.add(new CommandDeleteObject(getType(), getId()));
+		deleteIds.addAll(createCommandsToDeleteChildrenAndObject());
 		
 		return deleteIds;
 	}

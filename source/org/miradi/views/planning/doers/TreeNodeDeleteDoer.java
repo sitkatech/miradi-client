@@ -20,22 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning.doers;
 
 import java.text.ParseException;
-import java.util.Arrays;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
-import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.DeleteActivityDoer;
@@ -126,9 +124,7 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 			}
 		}
 		
-		commands.addAll(objectToRemove.createCommandsToDeleteChildren());
-		commands.addAll(Arrays.asList(objectToRemove.createCommandsToClear()));
-		commands.add(new CommandDeleteObject(objectToRemove.getRef()));
+		commands.addAll(objectToRemove.createCommandsToDeleteChildrenAndObject());
 	
 		return commands;
 	}
