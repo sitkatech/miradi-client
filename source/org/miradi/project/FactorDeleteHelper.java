@@ -96,6 +96,8 @@ public class FactorDeleteHelper
 
 	public Vector<Command> buildCommandsToDeleteDiagramFactor(DiagramFactor diagramFactor) throws Exception
 	{
+		//TODO This looks very odd here. either rename method or do something with this. Also check other callers
+		//to clearSelection.
 		clearSelection();
 		
 		return diagramFactor.createCommandsToDeleteChildrenAndObject();
