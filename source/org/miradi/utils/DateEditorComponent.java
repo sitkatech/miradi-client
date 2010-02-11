@@ -39,7 +39,9 @@ import javax.swing.event.DocumentListener;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 
+import org.martus.swing.Utilities;
 import org.martus.util.MultiCalendar;
+import org.miradi.dialogs.base.UndecoratedModelessDialogWithClose;
 import org.miradi.main.EAM;
 
 import com.toedter.calendar.JDateChooser;
@@ -155,8 +157,36 @@ public class DateEditorComponent extends JDateChooser
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		super.actionPerformed(e);
+		calendarDialog = new UndecoratedModelessDialogWithClose(EAM.getMainWindow(), "");
+		calendarDialog.enableCloseWhenFocusLost();
+
+		updateCalenderDate();
+		calendarDialog.add(jcalendar);
+		calendarDialog.pack();
+		Utilities.centerDlg(calendarDialog);
+		calendarDialog.setVisible(true);
+		
 		updateTextFromCalendarAndSave();
+	}
+
+	private void updateCalenderDate()
+	{
+		Calendar calendar = Calendar.getInstance();
+		Date date = getDate();
+		if (date != null) 
+			calendar.setTime(date);
+		
+		jcalendar.setCalendar(calendar);
+	}
+	
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) 
+	{
+		if (evt.getPropertyName().equals("day")) 
+		{
+			setDate(jcalendar.getCalendar().getTime());
+			calendarDialog.setVisible(false);
+		}
 	}
 	
 	class MonthChangeListener implements PropertyChangeListener
@@ -308,4 +338,5 @@ public class DateEditorComponent extends JDateChooser
 	private static final String YEAR_PROPERTY_NAME = "year";
 	private static final String DATE_PROPERTY_NAME = "date";	
 	private boolean needsSave;
+	private UndecoratedModelessDialogWithClose calendarDialog;
 }
