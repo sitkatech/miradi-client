@@ -19,16 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
+import java.util.Vector;
+
+import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
-import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.views.ObjectsDoer;
 
 abstract public class DeletePoolObjectDoer extends ObjectsDoer
@@ -63,8 +65,8 @@ abstract public class DeletePoolObjectDoer extends ObjectsDoer
 			{
 				BaseObject objectToDelete = getObjects()[0];
 				doWork(objectToDelete);
-				getProject().executeCommandsWithoutTransaction(objectToDelete.createCommandsToClear());
-				getProject().executeCommand(new CommandDeleteObject(objectToDelete.getRef()));
+				Vector<Command> commandsToDeleteChildrenAndObject = objectToDelete.createCommandsToDeleteChildrenAndObject();
+				getProject().executeCommandsWithoutTransaction(commandsToDeleteChildrenAndObject);
 			}
 			finally
 			{
