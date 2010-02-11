@@ -24,6 +24,7 @@ import org.miradi.project.Project;
 
 abstract public class MainWindowDoer extends Doer
 {
+	@Override
 	public void setMainWindow(MainWindow mainWindowToUse)
 	{
 		mainWindow = mainWindowToUse;
