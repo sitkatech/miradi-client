@@ -30,6 +30,7 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class ObjectsDoer extends ViewDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if(!super.isAvailable())
@@ -38,6 +39,7 @@ abstract public class ObjectsDoer extends ViewDoer
 		return (getPicker() != null);
 	}
 	
+	@Override
 	public void setPicker(ObjectPicker pickerToUse)
 	{
 		picker = pickerToUse;
