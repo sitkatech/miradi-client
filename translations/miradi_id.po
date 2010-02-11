@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-11 11:40-0600\n"
+"POT-Creation-Date: 2010-02-11 11:43-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -939,13 +939,13 @@ msgstr ""
 " %s "
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:53
-#: Miradi/source/org/miradi/views/umbrella/DeleteResource.java:70
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 #: Miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:35
 msgid "Yes"
 msgstr "Ya"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:53
-#: Miradi/source/org/miradi/views/umbrella/DeleteResource.java:70
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 #: Miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:34
 msgid "No"
 msgstr "Tidak"
@@ -1006,6 +1006,25 @@ msgstr "Buat Laporan Kemajuan baru "
 #: Miradi/source/org/miradi/views/umbrella/Redo.java:60
 msgid "Error during redo"
 msgstr "Kesalahan selama pengulangan "
+
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:66
+msgid ""
+"This project resource is being used in the Work Plan and Financial Budget."
+msgstr ""
+"Sumber daya proyek ini sedang digunakan dalam Rencana Kerja dan Anggaran "
+"Keuangan"
+
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:68
+msgid ""
+"\n"
+"Are you sure you want to delete this resource?"
+msgstr ""
+"\n"
+"Apakah Anda yakin ingin menghapus sumber daya ini?"
+
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
+msgid "Delete Resource"
+msgstr "Hapus Sumber Daya"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:89
 msgid "Current project name:"
@@ -1083,25 +1102,6 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:86
 msgid "Exported file does not validate."
 msgstr "Berkas yang diekspor tidak bisa divalidasi. "
-
-#: Miradi/source/org/miradi/views/umbrella/DeleteResource.java:67
-msgid ""
-"This project resource is being used in the Work Plan and Financial Budget."
-msgstr ""
-"Sumber daya proyek ini sedang digunakan dalam Rencana Kerja dan Anggaran "
-"Keuangan"
-
-#: Miradi/source/org/miradi/views/umbrella/DeleteResource.java:69
-msgid ""
-"\n"
-"Are you sure you want to delete this resource?"
-msgstr ""
-"\n"
-"Apakah Anda yakin ingin menghapus sumber daya ini?"
-
-#: Miradi/source/org/miradi/views/umbrella/DeleteResource.java:71
-msgid "Delete Resource"
-msgstr "Hapus Sumber Daya"
 
 #: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
 msgid "This item is shared, so will be deleted from multiple places."
