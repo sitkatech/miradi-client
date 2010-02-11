@@ -35,6 +35,7 @@ import org.miradi.views.ObjectsDoer;
 
 abstract public class DeletePoolObjectDoer extends ObjectsDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if(!super.isAvailable())
@@ -47,6 +48,7 @@ abstract public class DeletePoolObjectDoer extends ObjectsDoer
 		return canDelete(singleSelectedObject);
 	}
 
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if(!isAvailable())
