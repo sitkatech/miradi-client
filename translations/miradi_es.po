@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-11 10:18-0600\n"
+"POT-Creation-Date: 2010-02-11 11:34-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -661,11 +661,11 @@ msgstr "¿Está seguro de que desea eliminar esta presión? "
 msgid "Enter Tag Name"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:103
+#: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:102
 msgid "Paste Content..."
 msgstr "Pegar contenido…"
 
-#: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:104
+#: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:103
 msgid ""
 "This will replace all the selected factor's contents with the contents of "
 "the factor that was cut/copied earlier. Are you sure you want to do this?"
@@ -673,7 +673,7 @@ msgstr ""
 "Esto reemplazará todo el contenido del factor seleccionado con el contenido "
 "del factor que se cortó/copió antes. ¿Está seguro de que desea hacer esto?"
 
-#: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:198
+#: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:194
 msgid "Button|Paste Contents"
 msgstr "Pegar contenido"
 
