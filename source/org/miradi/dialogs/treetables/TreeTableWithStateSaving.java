@@ -215,6 +215,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		getProject().executeCommand(cmd);
 	}
 	
+	@Override
 	public void ensureObjectVisible(ORef ref)
 	{
 		try
