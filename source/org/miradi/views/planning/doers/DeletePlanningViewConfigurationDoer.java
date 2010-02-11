@@ -19,8 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
+import java.util.Vector;
+
+import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
-import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
@@ -66,10 +68,8 @@ public class DeletePlanningViewConfigurationDoer extends AbstractPlanningViewCon
 			selectOtherConfiguration(configurationRef);
 			
 			PlanningViewConfiguration configuration = (PlanningViewConfiguration) getProject().findObject(configurationRef);
-			getProject().executeCommandsWithoutTransaction(configuration.createCommandsToClear());
-			
-			CommandDeleteObject deleteConfiguration = new CommandDeleteObject(configurationRef);
-			getProject().executeCommand(deleteConfiguration);
+			Vector<Command> commandsToDeleteChildrenAndConfiguration = configuration.createCommandsToDeleteChildrenAndObject();
+			getProject().executeCommandsWithoutTransaction(commandsToDeleteChildrenAndConfiguration);
 		}
 		catch(Exception e)
 		{
