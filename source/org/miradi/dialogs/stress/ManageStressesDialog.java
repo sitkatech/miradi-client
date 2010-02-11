@@ -19,19 +19,23 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.stress;
 
-import org.miradi.dialogs.base.AbstractDialogWithClose;
+import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Target;
 
-public class ManageStressesDialog extends AbstractDialogWithClose
+public class ManageStressesDialog extends ModalDialogWithClose
 {
 	public ManageStressesDialog(MainWindow parent, Target target, StressListManagementPanel stressListManagementPanel)
 	{
-		super(parent, stressListManagementPanel);
-		setTitle(EAM.text("Manage Stresses for ") + target.combineShortLabelAndLabel());
+		super(parent, stressListManagementPanel, createTitle(target));
 
 		setModal(true);
+	}
+
+	private static String createTitle(Target target)
+	{
+		return EAM.text("Manage Stresses for ") + target.combineShortLabelAndLabel();
 	}
 	
 }
