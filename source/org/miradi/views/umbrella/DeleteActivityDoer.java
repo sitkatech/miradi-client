@@ -24,7 +24,6 @@ import java.util.Vector;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
-import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
@@ -185,8 +184,7 @@ public class DeleteActivityDoer extends ObjectsDoer
 				if (strategyRefs.contains(strategyRef))
 				{
 					commands.add(CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, activityDiagramFactorRef.getObjectId()));
-					commands.addAll(activityDiagramFactor.createCommandsToClearAsList());
-					commands.add(new CommandDeleteObject(activityDiagramFactor));
+					commands.addAll(activityDiagramFactor.createCommandsToDeleteChildrenAndObject());
 				}
 			}
 		}
