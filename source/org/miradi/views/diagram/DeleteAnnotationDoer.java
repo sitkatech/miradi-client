@@ -251,8 +251,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 			ORefList referrers = measurementToDelete.findObjectsThatReferToUs(Indicator.getObjectType());
 			if (referrers.size() == 1)
 			{
-				commands.addAll(Arrays.asList(measurementToDelete.createCommandsToClear()));
-				commands.add(new CommandDeleteObject(measurementRef));
+				commands.addAll(measurementToDelete.createCommandsToDeleteChildrenAndObject());
 			}
 		}
 		
