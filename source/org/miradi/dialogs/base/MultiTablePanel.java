@@ -116,6 +116,10 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 	public void addSelectionChangeListener(ListSelectionListener listener)
 	{
 	}
+
+	public void expandTo(int typeToExpandTo) throws Exception
+	{
+	}
 	
 	public void expandAll() throws Exception
 	{

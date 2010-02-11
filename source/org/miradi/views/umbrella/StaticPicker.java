@@ -70,6 +70,10 @@ public class StaticPicker implements ObjectPicker
 	{
 	}
 
+	public void expandTo(int typeToExpandTo) throws Exception
+	{
+	}
+	
 	public void expandAll() throws Exception
 	{
 	}

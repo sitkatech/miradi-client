@@ -22,6 +22,8 @@ package org.miradi.dialogs.viability;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -30,6 +32,11 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.tree.TreeSelectionModel;
 
+import org.miradi.actions.ActionExpandToIndicator;
+import org.miradi.actions.ActionExpandToKeyEcologicalAttribute;
+import org.miradi.actions.ActionExpandToMeasurement;
+import org.miradi.actions.ActionExpandToMenu;
+import org.miradi.actions.ActionExpandToTarget;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory;
@@ -147,6 +154,20 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		{
 			getTableHeader().setDefaultRenderer(headerRenderer);
 		}
+	}
+	
+	@Override
+	protected Set<Class> getRelevantActions()
+	{
+		HashSet<Class> relevantActions = new HashSet<Class>();
+		relevantActions.addAll(super.getRelevantActions());
+		relevantActions.add(ActionExpandToMenu.class);
+		relevantActions.add(ActionExpandToTarget.class);
+		relevantActions.add(ActionExpandToKeyEcologicalAttribute.class);
+		relevantActions.add(ActionExpandToIndicator.class);
+		relevantActions.add(ActionExpandToMeasurement.class);
+		
+		return relevantActions;
 	}
 
 	public static class ColumnHeaderRenderer extends DefaultTableCellRenderer

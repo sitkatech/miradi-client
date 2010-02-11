@@ -159,6 +159,27 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		return node.getObjectReference();
 	}
 	
+	public void expandTo(int typeToExpandTo) throws Exception
+	{
+		Vector<ORefList> expandedToRefs = new Vector();
+		Vector<ORefList> fullExpandedRefs = getTreeTableModel().getFullyExpandedHierarchyRefListList();
+		for(ORefList expandedHierarchy : fullExpandedRefs)
+		{
+			ORefList expandedTo = new ORefList();
+			for (int index = 0; index < expandedHierarchy.size(); ++index)
+			{
+				ORef expandedNodeRef = expandedHierarchy.get(index);
+				expandedTo.add(expandedNodeRef);
+				if (expandedNodeRef.getObjectType() == typeToExpandTo)
+					break;
+			}
+			
+			expandedToRefs.add(expandedTo);
+		}
+		
+		saveExpanded(expandedToRefs);
+	}
+	
 	public void expandAll() throws Exception
 	{
 		Vector<ORefList> fullExpandedRefs = getTreeTableModel().getFullyExpandedHierarchyRefListList();

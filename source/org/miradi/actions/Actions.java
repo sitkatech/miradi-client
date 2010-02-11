@@ -221,6 +221,11 @@ public class Actions
 		registerAction(new ActionPlanningColumnsEditor(mainWindow));
 		registerAction(new ActionWorkPlanBudgetColumnsEditor(mainWindow));
 		registerAction(new ActionFilterWorkPlanByProjectResource(mainWindow));
+		registerAction(new ActionExpandToMenu(mainWindow));
+		registerAction(new ActionExpandToTarget(mainWindow));
+		registerAction(new ActionExpandToKeyEcologicalAttribute(mainWindow));
+		registerAction(new ActionExpandToIndicator(mainWindow));
+		registerAction(new ActionExpandToMeasurement(mainWindow));
 		
 		registerAction(new ActionCreateIndicator(mainWindow));
 		registerAction(new ActionCloneIndicator(mainWindow));
