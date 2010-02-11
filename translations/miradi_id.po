@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-11 11:43-0600\n"
+"POT-Creation-Date: 2010-02-11 11:47-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -938,23 +938,23 @@ msgstr ""
 "Nama Langkah Wizard Saat Ini:\n"
 " %s "
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:53
+#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
 #: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 #: Miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:35
 msgid "Yes"
 msgstr "Ya"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:53
+#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
 #: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 #: Miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:34
 msgid "No"
 msgstr "Tidak"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:54
+#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:58
 msgid "Delete %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:55
+#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
 msgid ""
 "\n"
 "Are you sure you want to delete the selected %s?"
