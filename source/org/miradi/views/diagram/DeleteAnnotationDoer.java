@@ -109,13 +109,13 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	{
 		Vector commands = new Vector();
 		commands.addAll(buildCommandsToUntag(project, annotationToDelete.getRef()));
-		commands.addAll(annotationToDelete.createCommandsToDeleteChildren());
-		commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
 		commands.addAll(buildCommandsToDeleteReferredObjects(project, owner, annotationIdListTag, annotationToDelete));
 		commands.addAll(buildCommandsToDeleteReferringObjects(project, owner, annotationIdListTag, annotationToDelete));
 		if (Indicator.is(annotationToDelete))
 			commands.addAll(createCommandsToRemoveFromRelevancyList(project, annotationToDelete));
 		
+		commands.addAll(annotationToDelete.createCommandsToDeleteChildren());
+		commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
 		commands.add(new CommandDeleteObject(annotationToDelete.getRef()));
 		
 		return (Command[])commands.toArray(new Command[0]);
