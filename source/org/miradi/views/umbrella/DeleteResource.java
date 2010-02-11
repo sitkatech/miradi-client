@@ -39,6 +39,7 @@ import org.miradi.views.ObjectsDoer;
 
 public class DeleteResource extends ObjectsDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if(!super.isAvailable())
@@ -51,6 +52,7 @@ public class DeleteResource extends ObjectsDoer
 		return (ProjectResource.is(singleSelectedObject));
 	}
 
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if(!isAvailable())
