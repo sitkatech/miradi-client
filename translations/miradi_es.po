@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-11 10:13-0600\n"
+"POT-Creation-Date: 2010-02-11 10:18-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -4381,11 +4381,11 @@ msgstr "Acciones"
 msgid "MenuBar|View"
 msgstr "Ver"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:432
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:440
 msgid "MenuBar|Step-by-Step"
 msgstr "Paso a paso"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:450
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:458
 msgid "MenuBar|Help"
 msgstr "Ayuda"
 
@@ -4686,6 +4686,14 @@ msgstr "Mover elemento hacia arriba"
 msgid "TT|Move the selected item up"
 msgstr "Mover el elemento seleccionado hacia arriba"
 
+#: Miradi/source/org/miradi/actions/ActionExpandToTarget.java:36
+msgid "Action|Table|Expand To Target"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionExpandToTarget.java:42
+msgid "TT|Expand To Target"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionInsertTextBox.java:35
 msgid "Action|Insert|Insert Text Box"
 msgstr "Insertar cuadro de texto"
@@ -4923,6 +4931,14 @@ msgstr "Crear fuente de financiamiento"
 #: Miradi/source/org/miradi/actions/ActionCreateFundingSource.java:40
 msgid "TT|Create a Funding Source"
 msgstr "Crear una fuente de financiamiento"
+
+#: Miradi/source/org/miradi/actions/ActionExpandToIndicator.java:36
+msgid "Action|Table|Expand To Indicator"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionExpandToIndicator.java:42
+msgid "TT|Expand To Indicator"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionInsertTarget.java:37
 msgid "Action|Insert|Insert Target"
@@ -6105,6 +6121,22 @@ msgstr "Crear presión de KEA"
 msgid "TT|Create a Stress from a Key Ecological Attribute"
 msgstr "Crear una presión de un atributo ecológico clave"
 
+#: Miradi/source/org/miradi/actions/ActionExpandToMenu.java:35
+msgid "Action|Table|Expand To..."
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionExpandToMenu.java:41
+msgid "TT|Expand To Type"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionExpandToMeasurement.java:36
+msgid "Action|Table|Expand To Measurement"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionExpandToMeasurement.java:42
+msgid "TT|Expand To Measurement"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionEditTaggedObjectSet.java:34
 msgid "Action|Edit..."
 msgstr "Editar... "
@@ -6340,6 +6372,14 @@ msgstr "Mostrar actividad en esta página"
 #: Miradi/source/org/miradi/actions/ActionShowActivityBubble.java:39
 msgid "TT|Show this Activity so it appears on this Results Chain"
 msgstr "Mostrar esta actividad para que aparezca en esta cadena de resultados"
+
+#: Miradi/source/org/miradi/actions/ActionExpandToKeyEcologicalAttribute.java:36
+msgid "Action|Table|Expand To Key Ecological Attribute"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionExpandToKeyEcologicalAttribute.java:42
+msgid "TT|Expand To Key Ecological Attribute"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCreateIucnRedlistSpecies.java:35
 msgid "Action|Manage|Create IUCN Redlist Species"
