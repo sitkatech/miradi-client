@@ -25,7 +25,6 @@ import java.util.Collection;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
-import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.IdList;
@@ -114,9 +113,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		if (Indicator.is(annotationToDelete))
 			commands.addAll(createCommandsToRemoveFromRelevancyList(project, annotationToDelete));
 		
-		commands.addAll(annotationToDelete.createCommandsToDeleteChildren());
-		commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
-		commands.add(new CommandDeleteObject(annotationToDelete.getRef()));
+		commands.addAll(annotationToDelete.createCommandsToDeleteChildrenAndObject());
 		
 		return (Command[])commands.toArray(new Command[0]);
 	}
