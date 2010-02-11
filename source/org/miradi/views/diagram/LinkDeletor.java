@@ -22,9 +22,7 @@ package org.miradi.views.diagram;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
-import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -127,11 +125,8 @@ public class LinkDeletor
 		CommandSetObjectData removeDiagramFactorLink = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLink.getDiagramLinkId());
 		project.executeCommand(removeDiagramFactorLink);
 
-		Command[] commandsToClearDiagramLink = diagramLink.createCommandsToClear();
-		project.executeCommandsWithoutTransaction(commandsToClearDiagramLink);
-
-		CommandDeleteObject deleteDiagramLinkCommand = new CommandDeleteObject(diagramLink.getRef());
-		project.executeCommand(deleteDiagramLinkCommand);
+		Vector<Command> commandsToDeleteChildrenAndDiagramLink = diagramLink.createCommandsToDeleteChildrenAndObject();
+		getProject().executeCommandsWithoutTransaction(commandsToDeleteChildrenAndDiagramLink);
 	}
 
 	private void removeFromGroupBoxDiagramLinkChildren(DiagramLink diagramLink) throws Exception
@@ -145,7 +140,7 @@ public class LinkDeletor
 		}
 	}
 	
-	private void deleteFactorLinkIfOrphaned(FactorLink factorLink) throws CommandFailedException
+	private void deleteFactorLinkIfOrphaned(FactorLink factorLink) throws Exception
 	{
 		ObjectManager objectManager = project.getObjectManager();
 		ORefList diagramLinkReferrers = factorLink.findObjectsThatReferToUs(objectManager, DiagramLink.getObjectType(), factorLink.getRef());
@@ -153,11 +148,8 @@ public class LinkDeletor
 		if (diagramLinkReferrers.size() != 0)
 			return;
 		
-		Command[] commandsToClear = project.findObject(ObjectType.FACTOR_LINK, factorLink.getId()).createCommandsToClear();
-		project.executeCommandsWithoutTransaction(commandsToClear);
-		
-		CommandDeleteObject deleteLinkage = new CommandDeleteObject(ObjectType.FACTOR_LINK, factorLink.getId());
-		project.executeCommand(deleteLinkage);
+		Vector<Command> commandsToDeleteChildrenAndFactorLink = factorLink.createCommandsToDeleteChildrenAndObject();
+		getProject().executeCommandsWithoutTransaction(commandsToDeleteChildrenAndFactorLink);		
 	}
 
 	private Project getProject()
