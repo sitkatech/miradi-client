@@ -48,12 +48,13 @@ public class DiagramObjectDeleteHelper
 		deleteAllDiagramFactorLinks();
 		deleteAllDiagramFactors();
 		removeAsCurrentDiagram();
-		clearObject(diagramObject);
 		deleteDiagramObject(diagramObject);
 	}
 
 	private void deleteDiagramObject(DiagramObject diagramObject) throws CommandFailedException
 	{
+		clearObject(diagramObject);
+		
 		CommandDeleteObject deleteDiagramObject = new CommandDeleteObject(diagramObject.getRef());
 		project.executeCommand(deleteDiagramObject);
 	}
