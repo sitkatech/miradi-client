@@ -22,7 +22,6 @@ package org.miradi.views.targetviability.doers;
 
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.views.ObjectsDoer;
-import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class AbstractExpandToDoer extends ObjectsDoer
 {
@@ -30,12 +29,6 @@ abstract public class AbstractExpandToDoer extends ObjectsDoer
 	public boolean isAvailable()
 	{
 		return getProject().isOpen();
-	}
-	
-	@Override
-	public void setPicker(ObjectPicker pickerToUse)
-	{
-		super.setPicker(pickerToUse);
 	}
 	
 	@Override
