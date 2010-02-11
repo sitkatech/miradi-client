@@ -233,6 +233,10 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 		selectionListeners.remove(listener);
 	}
 	
+	public void expandTo(int typeToExpandTo) throws Exception
+	{
+	}
+	
 	public void expandAll() throws Exception
 	{
 	}

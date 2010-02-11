@@ -27,6 +27,11 @@ import org.miradi.actions.ActionCreateKeyEcologicalAttributeMeasurement;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttribute;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeIndicator;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
+import org.miradi.actions.ActionExpandToIndicator;
+import org.miradi.actions.ActionExpandToKeyEcologicalAttribute;
+import org.miradi.actions.ActionExpandToMeasurement;
+import org.miradi.actions.ActionExpandToMenu;
+import org.miradi.actions.ActionExpandToTarget;
 import org.miradi.dialogs.viability.TargetViabilityManagementPanel;
 import org.miradi.dialogs.viability.ViabilityViewTreeManagementPanel;
 import org.miradi.main.MainWindow;
@@ -39,6 +44,11 @@ import org.miradi.views.diagram.DeleteKeyEcologicalAttributeDoer;
 import org.miradi.views.diagram.DeleteViabilityIndicatorDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
+import org.miradi.views.targetviability.doers.ExpandToIndicatorDoer;
+import org.miradi.views.targetviability.doers.ExpandToKeyEcologicalAttributeDoer;
+import org.miradi.views.targetviability.doers.ExpandToMeasurementDoer;
+import org.miradi.views.targetviability.doers.ExpandToMenuDoer;
+import org.miradi.views.targetviability.doers.ExpandToTargetDoer;
 import org.miradi.views.umbrella.UmbrellaView;
 
 public class TargetViabilityView extends TabbedView
@@ -87,6 +97,11 @@ public class TargetViabilityView extends TabbedView
 		addDoerToMap(ActionDeleteKeyEcologicalAttributeIndicator.class, new DeleteViabilityIndicatorDoer());
 		addDoerToMap(ActionCreateKeyEcologicalAttributeMeasurement.class, new CreateKeyEcologicalAttributeMeasurementDoer());
 		addDoerToMap(ActionDeleteKeyEcologicalAttributeMeasurement.class, new DeleteKeyEcologicalAttributeMeasurementDoer());
+		addDoerToMap(ActionExpandToMenu.class, new ExpandToMenuDoer());
+		addDoerToMap(ActionExpandToTarget.class, new ExpandToTargetDoer());
+		addDoerToMap(ActionExpandToKeyEcologicalAttribute.class, new ExpandToKeyEcologicalAttributeDoer());
+		addDoerToMap(ActionExpandToIndicator.class, new ExpandToIndicatorDoer());
+		addDoerToMap(ActionExpandToMeasurement.class, new ExpandToMeasurementDoer());
 	}
 	
 	

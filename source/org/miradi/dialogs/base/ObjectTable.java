@@ -193,6 +193,10 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		selectionListeners.remove(listener);
 	}
 	
+	public void expandTo(int typeToExpandTo) throws Exception
+	{
+	}
+	
 	public void expandAll() throws Exception
 	{
 	}
