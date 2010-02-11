@@ -58,7 +58,7 @@ import org.miradi.views.planning.doers.TreeNodeCreateTaskDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 import org.miradi.views.planning.doers.WorkPlanColumnsEditorDoer;
 import org.miradi.views.umbrella.CreateResource;
-import org.miradi.views.umbrella.DeleteResource;
+import org.miradi.views.umbrella.DeleteResourceDoer;
 import org.miradi.views.umbrella.UmbrellaView;
 import org.miradi.views.umbrella.doers.TaskMoveDownDoer;
 import org.miradi.views.umbrella.doers.TaskMoveUpDoer;
@@ -140,7 +140,7 @@ public class WorkPlanView extends TabbedView
 		addDoerToMap(ActionTreeShareMethod.class, new TreeNodeShareMethodDoer());
 
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
-		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
+		addDoerToMap(ActionDeleteResource.class, new DeleteResourceDoer());
 
 		addDoerToMap(ActionCreateAccountingCode.class, new CreateAccountingCodeDoer());
 		addDoerToMap(ActionDeleteAccountingCode.class, new DeleteAccountingCodeDoer());

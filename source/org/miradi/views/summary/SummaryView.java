@@ -49,7 +49,7 @@ import org.miradi.views.TabbedView;
 import org.miradi.views.summary.doers.CreateOranizationDoer;
 import org.miradi.views.summary.doers.DeleteOranizationDoer;
 import org.miradi.views.summary.doers.TeamCreateMemberDoer;
-import org.miradi.views.umbrella.DeleteResource;
+import org.miradi.views.umbrella.DeleteResourceDoer;
 
 public class SummaryView extends TabbedView
 {
@@ -135,7 +135,7 @@ public class SummaryView extends TabbedView
 	private void addSummaryDoersToMap()
 	{
 		addDoerToMap(ActionTeamCreateMember.class, new TeamCreateMemberDoer());
-		addDoerToMap(ActionDeleteTeamMember.class, new DeleteResource());
+		addDoerToMap(ActionDeleteTeamMember.class, new DeleteResourceDoer());
 		
 		addDoerToMap(ActionCreateOrganization.class, new CreateOranizationDoer());
 		addDoerToMap(ActionDeleteOrganization.class, new DeleteOranizationDoer());

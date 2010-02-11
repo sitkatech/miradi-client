@@ -37,7 +37,7 @@ import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
 import org.miradi.views.ObjectsDoer;
 
-public class DeleteResource extends ObjectsDoer
+public class DeleteResourceDoer extends ObjectsDoer
 {
 	@Override
 	public boolean isAvailable()
