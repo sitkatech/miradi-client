@@ -24,7 +24,6 @@ import java.util.Vector;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
-import org.miradi.commands.CommandDeleteObject;
 import org.miradi.diagram.ThreatTargetChainObject;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
@@ -105,8 +104,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 	private void deleteThreatStressRating(ThreatStressRating threatStressRating) throws Exception
 	{
 		Vector<Command> commandsToDeleteThreatStressRating = new Vector();
-		commandsToDeleteThreatStressRating.addAll(threatStressRating.createCommandsToClearAsList());
-		commandsToDeleteThreatStressRating.add(new CommandDeleteObject(threatStressRating));
+		commandsToDeleteThreatStressRating.addAll(threatStressRating.createCommandsToDeleteChildrenAndObject());
 		
 		getProject().executeAsSideEffect(commandsToDeleteThreatStressRating);
 	}
