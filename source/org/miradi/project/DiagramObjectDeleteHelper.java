@@ -21,7 +21,7 @@ package org.miradi.project;
 
 import java.util.Vector;
 
-import org.miradi.commands.CommandDeleteObject;
+import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
@@ -51,13 +51,10 @@ public class DiagramObjectDeleteHelper
 		deleteDiagramObject(diagramObject);
 	}
 
-	private void deleteDiagramObject(DiagramObject diagramObject) throws CommandFailedException
+	private void deleteDiagramObject(DiagramObject diagramObject) throws Exception
 	{
-		CommandSetObjectData[] commands = diagramObject.createCommandsToClear();
-		project.executeCommandsWithoutTransaction(commands);
-		
-		CommandDeleteObject deleteDiagramObject = new CommandDeleteObject(diagramObject.getRef());
-		project.executeCommand(deleteDiagramObject);
+		Vector<Command> commandsToDeleteChildrenAndDiagramObject = diagramObject.createCommandsToDeleteChildrenAndObject();
+		project.executeCommandsWithoutTransaction(commandsToDeleteChildrenAndDiagramObject);
 	}
 
 	private void removeAsCurrentDiagram() throws Exception, CommandFailedException
