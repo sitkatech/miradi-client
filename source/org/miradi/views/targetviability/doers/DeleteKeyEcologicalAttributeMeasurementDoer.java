@@ -23,7 +23,6 @@ import java.util.Vector;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
-import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.viability.nodes.ViabilityIndicatorNode;
@@ -75,11 +74,8 @@ public class DeleteKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcol
 			if (referrerRefs.size() > 0)
 				return;
 			
-			Command[] commandsToClear = measurement.createCommandsToClear();
-			getProject().executeCommandsWithoutTransaction(commandsToClear);
-			
-			CommandDeleteObject deleteMeasurement = new CommandDeleteObject(measurementNode.getObjectReference());
-			getProject().executeCommand(deleteMeasurement);
+			Vector<Command> commandsToDeleteChildrenAndMeasurement = measurement.createCommandsToDeleteChildrenAndObject();
+			getProject().executeCommandsWithoutTransaction(commandsToDeleteChildrenAndMeasurement);
 		}
 		catch(Exception e)
 		{
