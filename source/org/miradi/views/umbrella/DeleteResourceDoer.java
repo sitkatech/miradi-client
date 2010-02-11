@@ -23,7 +23,6 @@ import java.util.Vector;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
-import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
@@ -78,8 +77,7 @@ public class DeleteResourceDoer extends ObjectsDoer
 			try
 			{
 				project.executeCommandsWithoutTransaction(createCommandsToRemoveFromReferrers(allThatUseThisResource, resource.getRef()));
-				project.executeCommandsWithoutTransaction(resource.createCommandsToClear());
-				project.executeCommand(new CommandDeleteObject(resource.getRef()));
+				project.executeCommandsWithoutTransaction(resource.createCommandsToDeleteChildrenAndObject());
 			}
 			finally
 			{
