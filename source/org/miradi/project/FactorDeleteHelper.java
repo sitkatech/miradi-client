@@ -24,7 +24,6 @@ import java.util.Vector;
 
 import org.jgraph.graph.GraphSelectionModel;
 import org.miradi.commands.Command;
-import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.exceptions.CommandFailedException;
@@ -99,11 +98,7 @@ public class FactorDeleteHelper
 	{
 		clearSelection();
 		
-		Vector<Command> deleteDiagramFactorCommands = new Vector();
-		deleteDiagramFactorCommands.addAll(diagramFactor.createCommandsToClearAsList());
-		deleteDiagramFactorCommands.add(new CommandDeleteObject(ObjectType.DIAGRAM_FACTOR, diagramFactor.getDiagramFactorId()));
-		
-		return deleteDiagramFactorCommands;
+		return diagramFactor.createCommandsToDeleteChildrenAndObject();
 	}
 
 	public void removeNodeFromDiagram(DiagramObject diagramObjectToUse, DiagramFactorId idToDelete) throws CommandFailedException, ParseException
