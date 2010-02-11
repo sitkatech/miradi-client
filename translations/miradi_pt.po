@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-11 11:47-0600\n"
+"POT-Creation-Date: 2010-02-11 11:58-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -1017,23 +1017,23 @@ msgstr ""
 msgid "Exported file does not validate."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:81
 msgid "All subtasks within this item will be removed as well."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:83
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
 msgid "Button|Delete"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:83
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
 msgid "Button|Retain"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:84
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:83
 msgid "Title|Delete"
 msgstr ""
 
