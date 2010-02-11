@@ -47,8 +47,8 @@ public class DiagramObjectDeleteHelper
 		DiagramObject diagramObject = diagramPanel.getDiagramObject();
 		deleteAllDiagramFactorLinks();
 		deleteAllDiagramFactors();
-		clearObject(diagramObject);
 		removeAsCurrentDiagram();
+		clearObject(diagramObject);
 		deleteDiagramObject(diagramObject);
 	}
 
