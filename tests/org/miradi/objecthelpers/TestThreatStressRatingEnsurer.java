@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
-import java.text.ParseException;
-
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
@@ -145,13 +143,12 @@ public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 		assertEquals("wrong target stress count?", 1, stressRefs.size());
 	}
 	
-	private void deleteStress() throws ParseException, CommandFailedException
+	private void deleteStress() throws Exception
 	{
 		CommandSetObjectData removeStressCommand = CommandSetObjectData.createRemoveORefCommand(target, Target.TAG_STRESS_REFS, stress.getRef());
 		getProject().executeCommand(removeStressCommand);
 		
-		getProject().executeCommandsWithoutTransaction(stress.createCommandsToClear());
-		deleteObject(stress);
+		getProject().executeCommandsWithoutTransaction(stress.createCommandsToDeleteChildrenAndObject());
 	}
 	
 	private Cause threat;
