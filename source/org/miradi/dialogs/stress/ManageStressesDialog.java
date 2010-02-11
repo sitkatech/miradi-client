@@ -29,8 +29,6 @@ public class ManageStressesDialog extends ModalDialogWithClose
 	public ManageStressesDialog(MainWindow parent, Target target, StressListManagementPanel stressListManagementPanel)
 	{
 		super(parent, stressListManagementPanel, createTitle(target));
-
-		setModal(true);
 	}
 
 	private static String createTitle(Target target)
