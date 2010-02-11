@@ -53,7 +53,8 @@ public class DiagramObjectDeleteHelper
 
 	private void deleteDiagramObject(DiagramObject diagramObject) throws CommandFailedException
 	{
-		clearObject(diagramObject);
+		CommandSetObjectData[] commands = diagramObject.createCommandsToClear();
+		project.executeCommandsWithoutTransaction(commands);
 		
 		CommandDeleteObject deleteDiagramObject = new CommandDeleteObject(diagramObject.getRef());
 		project.executeCommand(deleteDiagramObject);
@@ -67,13 +68,6 @@ public class DiagramObjectDeleteHelper
 		project.executeCommand(setCurrentDiagramCommand);
 	}
 
-	private void clearObject(DiagramObject diagramObject) throws CommandFailedException
-	{
-		CommandSetObjectData[] commands = diagramObject.createCommandsToClear();
-		project.executeCommandsWithoutTransaction(commands);
-	}
-	
-	
 	private void deleteAllDiagramFactors() throws Exception
 	{
 		DiagramModel model = diagramPanel.getDiagramModel();
