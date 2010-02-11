@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-11 11:47-0600\n"
+"POT-Creation-Date: 2010-02-11 11:58-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1070,23 +1070,23 @@ msgstr ""
 msgid "Exported file does not validate."
 msgstr "导出的文件不正确。 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr "本条目是共享的，因此将会从多个地方删除。 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:81
 msgid "All subtasks within this item will be removed as well."
 msgstr "在本条目之内的所有子任务也将会被删除。 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:83
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
 msgid "Button|Delete"
 msgstr "删除 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:83
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
 msgid "Button|Retain"
 msgstr "保留 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:84
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:83
 msgid "Title|Delete"
 msgstr "删除 \t\t"
 
