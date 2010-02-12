@@ -123,6 +123,7 @@ public class ProjectRepairer
 		warnOfOrphanAnnotations(ObjectType.OBJECTIVE);
 		warnOfOrphanAnnotations(ObjectType.GOAL);
 		warnOfOrphanAnnotations(ObjectType.INDICATOR);
+		warnOfOrphanAnnotations(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
 	}
 
 	private void warnOfOrphanAnnotations(int annotationType)
