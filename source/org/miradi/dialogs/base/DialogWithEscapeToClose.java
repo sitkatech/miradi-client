@@ -42,6 +42,8 @@ public class DialogWithEscapeToClose extends JDialog
 	public DialogWithEscapeToClose(JDialog owner)
 	{
 		super(owner);
+		
+		setUndecorated(shouldBeUndecorated());
 	}
 
 	protected boolean shouldBeUndecorated()
