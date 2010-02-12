@@ -187,18 +187,21 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		{
 			if (fullyExpandedHierarchy.getFirstElement().getObjectType() == typeToExpandTo)
 			{
-				trimOutTypeInPlace(fullyExpandedHierarchy, typeToExpandTo);
-				filteredExpansionHierarchies.add(fullyExpandedHierarchy);
+				ORefList hiearchyWithExpandToLeafRemoved = trimLeafType(fullyExpandedHierarchy, typeToExpandTo);
+				filteredExpansionHierarchies.add(hiearchyWithExpandToLeafRemoved);
 			}
 		}
 		return filteredExpansionHierarchies;
 	}
 
-	private void trimOutTypeInPlace(ORefList fullyExpandedHierarchy, int typeToExpandTo)
+	private ORefList trimLeafType(final ORefList fullyExpandedHierarchy, int typeToExpandTo)
 	{
-		ORef refForType = fullyExpandedHierarchy.getRefForType(typeToExpandTo);
+		ORefList listToTrim = new ORefList(fullyExpandedHierarchy);
+		ORef refForType = listToTrim.getRefForType(typeToExpandTo);
 		if (refForType.isValid())
-			fullyExpandedHierarchy.remove(refForType);
+			listToTrim.remove(refForType);
+		
+		return listToTrim;
 	}
 	
 	private boolean isHierarchyWithinHierarchiesToExpand(Vector<ORefList> filteredExpansionHierarchies,	ORefList fullyExpandedHierarchy)
