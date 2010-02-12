@@ -19,21 +19,38 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base; 
 
+import javax.swing.JDialog;
+
 import org.miradi.main.MainWindow;
 
 public class ModelessDialogWithClose extends AbstractDialogWithClose
 {
+	public ModelessDialogWithClose(JDialog owner, MainWindow mainWindow, String title)
+	{
+		super(owner, mainWindow);
+		
+		setTitle(title);
+		disableAsModalDialog();
+	}
+	
 	public ModelessDialogWithClose(MainWindow parent, String title)
 	{
 		super(parent);
+		
 		setTitle(title);
-		setModal(false);
+		disableAsModalDialog();
 	}
 	
 	public ModelessDialogWithClose(MainWindow parent, DisposablePanel panel, String title)
 	{
 		super(parent, panel);
+		
 		setTitle(title);
+		disableAsModalDialog();
+	}
+
+	private void disableAsModalDialog()
+	{
 		setModal(false);
 	}
 	

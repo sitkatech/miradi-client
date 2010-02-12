@@ -22,6 +22,7 @@ package org.miradi.dialogs.base;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -29,6 +30,11 @@ import org.miradi.utils.MiradiScrollPane;
 
 public class DialogWithDisposablePanel extends DialogWithButtonBar
 {
+	public DialogWithDisposablePanel(JDialog owner)
+	{
+		super(owner);
+	}
+	
 	public DialogWithDisposablePanel(JFrame parent)
 	{
 		super(parent);

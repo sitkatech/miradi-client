@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
@@ -33,6 +34,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import javax.swing.JDialog;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -43,6 +45,7 @@ import org.martus.swing.Utilities;
 import org.martus.util.MultiCalendar;
 import org.miradi.dialogs.base.UndecoratedModelessDialogWithClose;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
@@ -57,7 +60,7 @@ public class DateEditorComponent extends JDateChooser
 		setDateChooserPreferredSizeWithPadding();
 		
 		calendarButton.addMouseListener(new CustomMouseListener());
-		setFont(EAM.getMainWindow().getUserDataPanelFont());
+		setFont(getMainWindow().getUserDataPanelFont());
 		
 		jcalendar.getMonthChooser().addPropertyChangeListener(new MonthChangeListener());
 		jcalendar.getYearChooser().addPropertyChangeListener(new YearChangeListener());
@@ -157,7 +160,7 @@ public class DateEditorComponent extends JDateChooser
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		calendarDialog = new UndecoratedModelessDialogWithClose(EAM.getMainWindow(), "");
+		calendarDialog = createCalendarDialogWithCorrectOwner();
 		calendarDialog.enableCloseWhenFocusLost();
 
 		updateCalenderDate();
@@ -167,6 +170,20 @@ public class DateEditorComponent extends JDateChooser
 		calendarDialog.setVisible(true);
 		
 		updateTextFromCalendarAndSave();
+	}
+
+	private UndecoratedModelessDialogWithClose createCalendarDialogWithCorrectOwner()
+	{
+		Container rawOwner = calendarButton.getTopLevelAncestor();
+		if (rawOwner instanceof JDialog)
+			return new UndecoratedModelessDialogWithClose((JDialog) rawOwner, getMainWindow(), "");	
+		
+		return new UndecoratedModelessDialogWithClose(getMainWindow(), "");
+	}
+
+	private MainWindow getMainWindow()
+	{
+		return EAM.getMainWindow();
 	}
 
 	private void updateCalenderDate()

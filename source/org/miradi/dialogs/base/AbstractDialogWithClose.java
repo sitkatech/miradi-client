@@ -23,6 +23,7 @@ import java.awt.Component;
 import java.util.Vector;
 
 import javax.swing.Box;
+import javax.swing.JDialog;
 
 import org.martus.swing.UiButton;
 import org.miradi.dialogs.fieldComponents.PanelButton;
@@ -31,6 +32,11 @@ import org.miradi.main.MainWindow;
 
 abstract public class AbstractDialogWithClose extends DialogWithDisposablePanelAndMainWindowUpdating
 {
+	public AbstractDialogWithClose(JDialog owner, MainWindow mainWindow)
+	{
+		super(owner, mainWindow);
+	}
+	
 	protected AbstractDialogWithClose(MainWindow parent)
 	{
 		super(parent);

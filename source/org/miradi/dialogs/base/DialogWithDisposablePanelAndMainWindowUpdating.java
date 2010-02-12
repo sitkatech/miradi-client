@@ -23,16 +23,26 @@ package org.miradi.dialogs.base;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import javax.swing.JDialog;
+
 import org.miradi.main.MainWindow;
 
 public class DialogWithDisposablePanelAndMainWindowUpdating extends	DialogWithDisposablePanel
 {
+	public DialogWithDisposablePanelAndMainWindowUpdating(JDialog owner, MainWindow mainWindowToUse)
+	{
+		super(owner);
+		
+		setMainWindow(mainWindowToUse);
+		addWindowListener();
+	}
+
 	public DialogWithDisposablePanelAndMainWindowUpdating(MainWindow parent)
 	{
 		super(parent);
 		
-		mainWindow = parent;
-		addWindowListener(new WindowEventHandler(mainWindow));
+		setMainWindow(parent);
+		addWindowListener();
 	}
 	
 	public DialogWithDisposablePanelAndMainWindowUpdating(MainWindow parent, DisposablePanel panelToUse)
@@ -40,6 +50,16 @@ public class DialogWithDisposablePanelAndMainWindowUpdating extends	DialogWithDi
 		this(parent);
 		
 		setMainPanel(panelToUse);
+	}
+	
+	private void setMainWindow(MainWindow mainWindowToUse)
+	{
+		mainWindow = mainWindowToUse;
+	}
+	
+	private void addWindowListener()
+	{
+		addWindowListener(new WindowEventHandler(mainWindow));
 	}
 
 	public MainWindow getMainWindow()

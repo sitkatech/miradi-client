@@ -24,6 +24,7 @@ import java.awt.Window;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 
 import org.miradi.dialogfields.FieldSaver;
@@ -36,6 +37,18 @@ public class MiradiDialog extends DialogWithEscapeToClose
 	{
 		super(parent);
 		
+		intializeDialog();
+	}
+
+	public MiradiDialog(JDialog owner)
+	{
+		super(owner);
+		
+		intializeDialog();
+	}
+	
+	private void intializeDialog()
+	{
 		getContentPane().setBackground(AppPreferences.getDarkPanelBackgroundColor());
 		addWindowListener(new WindowEventHandler(this));
 	}

@@ -30,6 +30,7 @@ import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 
 import org.martus.swing.Utilities;
@@ -51,6 +52,11 @@ public class DialogWithButtonBar extends MiradiDialog
 		contents.setLayout(new BorderLayout());
 	}
 	
+	public DialogWithButtonBar(JDialog owner)
+	{
+		super(owner);
+	}
+
 	public void setButtons(Vector<Component> buttons)
 	{
 		Container contents = getContentPane();

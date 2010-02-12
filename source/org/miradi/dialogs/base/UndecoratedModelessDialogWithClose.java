@@ -23,16 +23,20 @@ package org.miradi.dialogs.base;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
 
-import org.miradi.main.AppPreferences;
+import javax.swing.JDialog;
+
 import org.miradi.main.MainWindow;
 
 public class UndecoratedModelessDialogWithClose extends ModelessDialogWithClose
 {
-	public UndecoratedModelessDialogWithClose(MainWindow parent, String title)
+	public UndecoratedModelessDialogWithClose(JDialog owner, MainWindow mainWindow, String title)
 	{
-		super(parent, title);
-		
-		getContentPane().setBackground(AppPreferences.getControlPanelBackgroundColor());
+		super(owner, mainWindow, title);
+	}
+	
+	public UndecoratedModelessDialogWithClose(MainWindow mainWindow, String title)
+	{
+		super(mainWindow, title);
 	}
 
 	public void enableCloseWhenFocusLost()
