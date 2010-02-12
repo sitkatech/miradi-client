@@ -175,10 +175,10 @@ public class DateEditorComponent extends JDateChooser
 	private UndecoratedModelessDialogWithClose createCalendarDialogWithCorrectOwner()
 	{
 		Container rawOwner = calendarButton.getTopLevelAncestor();
-		if (rawOwner instanceof JDialog)
-			return new UndecoratedModelessDialogWithClose((JDialog) rawOwner, getMainWindow(), "");	
+		if (rawOwner.equals(getMainWindow()))
+			return new UndecoratedModelessDialogWithClose(getMainWindow(), "");
 		
-		return new UndecoratedModelessDialogWithClose(getMainWindow(), "");
+		return new UndecoratedModelessDialogWithClose((JDialog) rawOwner, getMainWindow(), "");	
 	}
 
 	private MainWindow getMainWindow()
