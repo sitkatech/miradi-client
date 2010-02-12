@@ -235,12 +235,21 @@ public class FactorDeleteHelper
 		if (factorToDelete.isStrategy())
 			removeAndDeleteTasksInList(factorToDelete, Strategy.TAG_ACTIVITY_IDS);
 		
-		if (factorToDelete.isTarget())
+		deteletTargetAnnotations(factorToDelete);
+	}
+
+	private void deteletTargetAnnotations(Factor factorToDelete) throws Exception
+	{
+		if (AbstractTarget.isAbstractTarget(factorToDelete))
 		{
 			deleteAnnotationIds(factorToDelete, ObjectType.GOAL, AbstractTarget.TAG_GOAL_IDS);
-			deleteAnnotationRefs(factorToDelete, Stress.getObjectType(), Target.TAG_STRESS_REFS);
 			deleteAnnotationIds(factorToDelete, KeyEcologicalAttribute.getObjectType(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 			deleteAnnotationRefs(factorToDelete, SubTarget.getObjectType(), Target.TAG_SUB_TARGET_REFS);
+		}
+		
+		if (Target.is(factorToDelete))
+		{
+			deleteAnnotationRefs(factorToDelete, Stress.getObjectType(), Target.TAG_STRESS_REFS);
 		}
 	}
 
