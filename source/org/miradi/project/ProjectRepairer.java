@@ -120,12 +120,12 @@ public class ProjectRepairer
 	
 	public void deleteOrphanAnnotations()
 	{
-		deleteOrphanAnnotations(ObjectType.OBJECTIVE);
-		deleteOrphanAnnotations(ObjectType.GOAL);
-		deleteOrphanAnnotations(ObjectType.INDICATOR);
+		warnOfOrphanAnnotations(ObjectType.OBJECTIVE);
+		warnOfOrphanAnnotations(ObjectType.GOAL);
+		warnOfOrphanAnnotations(ObjectType.INDICATOR);
 	}
 
-	private void deleteOrphanAnnotations(int annotationType)
+	private void warnOfOrphanAnnotations(int annotationType)
 	{
 		IdList allIds = project.getPool(annotationType).getIdList();
 		for(int i = 0; i < allIds.size(); ++i)
