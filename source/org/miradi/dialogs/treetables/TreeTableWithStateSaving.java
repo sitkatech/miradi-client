@@ -162,9 +162,8 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	public void expandTo(int typeToExpandTo) throws Exception
 	{
 		Vector<ORefList> fullyExpandedRefs = getTreeTableModel().getFullyExpandedHierarchyRefListList();
-		Vector<ORefList> rawExpandedToHierarchies = getAllHierachyRefsWithSpecificLeafType(fullyExpandedRefs, typeToExpandTo);
-		Vector<ORefList> expandedToHierarchiesWithoutExpandToType = createHierarchiesWithSpecificTypesRemoved(rawExpandedToHierarchies, typeToExpandTo);		
-		Vector<ORefList> expandToRefs = createExpandToHiearchy(fullyExpandedRefs, expandedToHierarchiesWithoutExpandToType);
+		Vector<ORefList> rawExpandedToHierarchies = getAllHierachyRefsWithSpecificLeafType(fullyExpandedRefs, typeToExpandTo);		
+		Vector<ORefList> expandToRefs = createExpandToHiearchy(fullyExpandedRefs, rawExpandedToHierarchies);
 		
 		saveExpanded(expandToRefs);
 	}
@@ -187,27 +186,21 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		for(ORefList fullyExpandedHierarchy : fullyExpandedRefs)
 		{
 			if (fullyExpandedHierarchy.getFirstElement().getObjectType() == typeToExpandTo)
+			{
+				trimOutTypeInPlace(fullyExpandedHierarchy, typeToExpandTo);
 				filteredExpansionHierarchies.add(fullyExpandedHierarchy);
+			}
 		}
 		return filteredExpansionHierarchies;
 	}
-	
-	private Vector<ORefList> createHierarchiesWithSpecificTypesRemoved(Vector<ORefList> refListsToTrim, int typeToTrimeBy)
-	{
-		Vector<ORefList> allTrimmedRefLists = new Vector();
-		for(ORefList refsToTrim : refListsToTrim)
-		{
-			ORefList trimmedRefs = new ORefList(refsToTrim);
-			ORef refForType = refsToTrim.getRefForType(typeToTrimeBy);
-			if (refForType.isValid())
-				trimmedRefs.remove(refForType);
-			
-			allTrimmedRefLists.add(trimmedRefs);
-		}
-		
-		return allTrimmedRefLists;
-	}
 
+	private void trimOutTypeInPlace(ORefList fullyExpandedHierarchy, int typeToExpandTo)
+	{
+		ORef refForType = fullyExpandedHierarchy.getRefForType(typeToExpandTo);
+		if (refForType.isValid())
+			fullyExpandedHierarchy.remove(refForType);
+	}
+	
 	private boolean isHierarchyWithinHierarchiesToExpand(Vector<ORefList> filteredExpansionHierarchies,	ORefList fullyExpandedHierarchy)
 	{
 		for(ORefList filteredExpansion : filteredExpansionHierarchies)
