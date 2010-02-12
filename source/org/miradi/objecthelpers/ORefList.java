@@ -314,6 +314,11 @@ public class ORefList
 		return get(0);
 	}
 	
+	public boolean containsAll(ORefList containedRefs)
+	{
+		return data.containsAll(containedRefs.data);
+	}
+		
 	private Vector<ORef> data;
 	private static final String TAG_REFERENCES = "References";
 }

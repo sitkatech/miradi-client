@@ -161,23 +161,62 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	
 	public void expandTo(int typeToExpandTo) throws Exception
 	{
-		Vector<ORefList> expandedToRefs = new Vector();
-		Vector<ORefList> fullExpandedRefs = getTreeTableModel().getFullyExpandedHierarchyRefListList();
-		for(ORefList expandedHierarchy : fullExpandedRefs)
+		Vector<ORefList> fullyExpandedRefs = getTreeTableModel().getFullyExpandedHierarchyRefListList();
+		Vector<ORefList> rawExpandedToHierarchies = getAllHierachyRefsExpandedTo(fullyExpandedRefs, typeToExpandTo);
+		Vector<ORefList> expandedToHierarchiesWithoutExpandToType = createTrimedHierachy(rawExpandedToHierarchies, typeToExpandTo);		
+		Vector<ORefList> expandToRefs = createExpandToHiearchy(fullyExpandedRefs, expandedToHierarchiesWithoutExpandToType);
+		
+		saveExpanded(expandToRefs);
+	}
+
+	private Vector<ORefList> createExpandToHiearchy(Vector<ORefList> fullyExpandedRefs,	Vector<ORefList> expandedToHierarchiesWithoutExpandToType)
+	{
+		Vector<ORefList> expandToRefs = new Vector<ORefList>();
+		for(ORefList fullyExpandedHierarchy : fullyExpandedRefs)
 		{
-			ORefList expandedTo = new ORefList();
-			for (int index = 0; index < expandedHierarchy.size(); ++index)
-			{
-				ORef expandedNodeRef = expandedHierarchy.get(index);
-				expandedTo.add(expandedNodeRef);
-				if (expandedNodeRef.getObjectType() == typeToExpandTo)
-					break;
-			}
-			
-			expandedToRefs.add(expandedTo);
+			if (isHierarchyWithinHierarchiesToExpand(expandedToHierarchiesWithoutExpandToType, fullyExpandedHierarchy))
+				expandToRefs.add(fullyExpandedHierarchy);
 		}
 		
-		saveExpanded(expandedToRefs);
+		return expandToRefs;
+	}
+
+	private Vector<ORefList> getAllHierachyRefsExpandedTo(Vector<ORefList> fullyExpandedRefs, int typeToExpandTo)
+	{
+		Vector<ORefList> filteredExpansionHierarchies = new Vector();
+		for(ORefList fullyExpandedHierarchy : fullyExpandedRefs)
+		{
+			if (fullyExpandedHierarchy.getFirstElement().getObjectType() == typeToExpandTo)
+				filteredExpansionHierarchies.add(fullyExpandedHierarchy);
+		}
+		return filteredExpansionHierarchies;
+	}
+	
+	private Vector<ORefList> createTrimedHierachy(Vector<ORefList> refListsToTrim, int typeToTrimeBy)
+	{
+		Vector<ORefList> allTrimedRefLists = new Vector();
+		for(ORefList refsToTrim : refListsToTrim)
+		{
+			ORefList trimedRefs = new ORefList(refsToTrim);
+			ORef refForType = refsToTrim.getRefForType(typeToTrimeBy);
+			if (refForType.isValid())
+				trimedRefs.remove(refForType);
+			
+			allTrimedRefLists.add(trimedRefs);
+		}
+		
+		return allTrimedRefLists;
+	}
+
+	private boolean isHierarchyWithinHierarchiesToExpand(Vector<ORefList> filteredExpansionHierarchies,	ORefList fullyExpandedHierarchy)
+	{
+		for(ORefList filteredExpansion : filteredExpansionHierarchies)
+		{
+			if (filteredExpansion.containsAll(fullyExpandedHierarchy))
+				return true;
+		}
+		
+		return false;
 	}
 	
 	public void expandAll() throws Exception
