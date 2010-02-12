@@ -41,6 +41,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
+import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
@@ -239,6 +240,7 @@ public class FactorDeleteHelper
 			deleteAnnotationIds(factorToDelete, ObjectType.GOAL, AbstractTarget.TAG_GOAL_IDS);
 			deleteAnnotationRefs(factorToDelete, Stress.getObjectType(), Target.TAG_STRESS_REFS);
 			deleteAnnotationIds(factorToDelete, KeyEcologicalAttribute.getObjectType(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+			deleteAnnotationRefs(factorToDelete, SubTarget.getObjectType(), Target.TAG_SUB_TARGET_REFS);
 		}
 	}
 
