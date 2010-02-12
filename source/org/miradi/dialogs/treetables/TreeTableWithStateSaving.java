@@ -163,7 +163,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	{
 		Vector<ORefList> fullyExpandedRefs = getTreeTableModel().getFullyExpandedHierarchyRefListList();
 		Vector<ORefList> rawExpandedToHierarchies = getAllHierachyRefsExpandedTo(fullyExpandedRefs, typeToExpandTo);
-		Vector<ORefList> expandedToHierarchiesWithoutExpandToType = createTrimedHierachy(rawExpandedToHierarchies, typeToExpandTo);		
+		Vector<ORefList> expandedToHierarchiesWithoutExpandToType = createTrimmedHierachy(rawExpandedToHierarchies, typeToExpandTo);		
 		Vector<ORefList> expandToRefs = createExpandToHiearchy(fullyExpandedRefs, expandedToHierarchiesWithoutExpandToType);
 		
 		saveExpanded(expandToRefs);
@@ -192,20 +192,20 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		return filteredExpansionHierarchies;
 	}
 	
-	private Vector<ORefList> createTrimedHierachy(Vector<ORefList> refListsToTrim, int typeToTrimeBy)
+	private Vector<ORefList> createTrimmedHierachy(Vector<ORefList> refListsToTrim, int typeToTrimeBy)
 	{
-		Vector<ORefList> allTrimedRefLists = new Vector();
+		Vector<ORefList> allTrimmedRefLists = new Vector();
 		for(ORefList refsToTrim : refListsToTrim)
 		{
-			ORefList trimedRefs = new ORefList(refsToTrim);
+			ORefList trimmedRefs = new ORefList(refsToTrim);
 			ORef refForType = refsToTrim.getRefForType(typeToTrimeBy);
 			if (refForType.isValid())
-				trimedRefs.remove(refForType);
+				trimmedRefs.remove(refForType);
 			
-			allTrimedRefLists.add(trimedRefs);
+			allTrimmedRefLists.add(trimmedRefs);
 		}
 		
-		return allTrimedRefLists;
+		return allTrimmedRefLists;
 	}
 
 	private boolean isHierarchyWithinHierarchiesToExpand(Vector<ORefList> filteredExpansionHierarchies,	ORefList fullyExpandedHierarchy)
