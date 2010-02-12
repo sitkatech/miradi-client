@@ -35,17 +35,26 @@ abstract public class AbstractDialogWithClose extends DialogWithDisposablePanelA
 	public AbstractDialogWithClose(JDialog owner, MainWindow mainWindow)
 	{
 		super(owner, mainWindow);
+		
+		setButtons();
 	}
 	
 	protected AbstractDialogWithClose(MainWindow parent)
 	{
 		super(parent);
-		setButtons(getButtonBarComponents());
+		
+		setButtons();
 	}
 	
 	protected AbstractDialogWithClose(MainWindow parent, DisposablePanel panel)
 	{
 		super(parent, panel);
+		
+		setButtons();
+	}
+
+	private void setButtons()
+	{
 		setButtons(getButtonBarComponents());
 	}
 	
