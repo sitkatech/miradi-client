@@ -42,31 +42,37 @@ public class ViabilityProjectNode extends TreeTableNode
 		rebuild();
 	}
 	
+	@Override
 	public BaseObject getObject()
 	{
 		return getProject().getMetadata();
 	}
 
+	@Override
 	public TreeTableNode getChild(int index)
 	{
 		return (TreeTableNode)children.get(index);
 	}
 
+	@Override
 	public int getChildCount()
 	{
 		return children.size();
 	}
 
+	@Override
 	public ORef getObjectReference()
 	{
 		return getProject().getMetadata().getRef();
 	}
 	
+	@Override
 	public int getType()
 	{
 		return ProjectMetadata.getObjectType();
 	}
 
+	@Override
 	public Object getValueAt(int column)
 	{
 		if (ViabilityTreeModel.columnTags[column].equals(ViabilityTreeModel.VIRTUAL_TAG_STATUS))
@@ -89,6 +95,7 @@ public class ViabilityProjectNode extends TreeTableNode
 		return getObjectReference().getObjectId();
 	}
 	
+	@Override
 	public void rebuild() throws Exception
 	{
 		Vector vector = new Vector();
