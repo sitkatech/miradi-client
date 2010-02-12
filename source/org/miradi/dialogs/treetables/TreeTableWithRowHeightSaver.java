@@ -64,6 +64,7 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 		return true;
 	}
 	
+	@Override
 	public void rebuildTableCompletely() throws Exception
 	{
 		super.rebuildTableCompletely();
