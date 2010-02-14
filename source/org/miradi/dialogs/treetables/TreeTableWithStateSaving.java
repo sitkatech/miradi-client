@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.treetables;
 
+import java.util.HashSet;
 import java.util.Vector;
 
 import javax.swing.event.TreeExpansionEvent;
@@ -161,7 +162,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	
 	public void expandTo(int typeToExpandTo) throws Exception
 	{
-		Vector<ORefList> hierarchiesToExpand = new Vector<ORefList>();
+		HashSet<ORefList> hierarchiesToExpand = new HashSet<ORefList>();
 		Vector<ORefList> fullyExpandedRefs = getTreeTableModel().getFullyExpandedHierarchyRefListList();
 		for(ORefList hierarchy : fullyExpandedRefs)
 		{
@@ -175,7 +176,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		    }
 		}
 
-		saveExpanded(hierarchiesToExpand);
+		saveExpanded(new Vector(hierarchiesToExpand));
 
 	}
 
