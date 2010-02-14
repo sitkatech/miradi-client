@@ -235,10 +235,10 @@ public class FactorDeleteHelper
 		if (factorToDelete.isStrategy())
 			removeAndDeleteTasksInList(factorToDelete, Strategy.TAG_ACTIVITY_IDS);
 		
-		deteletTargetAnnotations(factorToDelete);
+		deleteTargetAnnotations(factorToDelete);
 	}
 
-	private void deteletTargetAnnotations(Factor factorToDelete) throws Exception
+	private void deleteTargetAnnotations(Factor factorToDelete) throws Exception
 	{
 		if (AbstractTarget.isAbstractTarget(factorToDelete))
 		{
