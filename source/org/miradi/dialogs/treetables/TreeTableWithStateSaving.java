@@ -161,60 +161,24 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	
 	public void expandTo(int typeToExpandTo) throws Exception
 	{
+		Vector<ORefList> hierarchiesToExpand = new Vector<ORefList>();
 		Vector<ORefList> fullyExpandedRefs = getTreeTableModel().getFullyExpandedHierarchyRefListList();
-		Vector<ORefList> rawExpandedToHierarchies = getAllHierachyRefsWithSpecificLeafType(fullyExpandedRefs, typeToExpandTo);		
-		Vector<ORefList> expandToRefs = createExpandToHiearchy(fullyExpandedRefs, rawExpandedToHierarchies);
-		
-		saveExpanded(expandToRefs);
+		for(ORefList hierarchy : fullyExpandedRefs)
+		{
+		    if (hierarchy.getFirstElement().getObjectType() == typeToExpandTo)
+		    {
+		        while(hierarchy.size() > 1)
+		        {
+		            hierarchy.remove(0);
+		            hierarchiesToExpand.add(new ORefList(hierarchy));
+		        }
+		    }
+		}
+
+		saveExpanded(hierarchiesToExpand);
+
 	}
 
-	private Vector<ORefList> createExpandToHiearchy(Vector<ORefList> fullyExpandedRefs,	Vector<ORefList> expandedToHierarchiesWithoutExpandToType)
-	{
-		Vector<ORefList> expandToRefs = new Vector<ORefList>();
-		for(ORefList fullyExpandedHierarchy : fullyExpandedRefs)
-		{
-			if (isHierarchyWithinHierarchiesToExpand(expandedToHierarchiesWithoutExpandToType, fullyExpandedHierarchy))
-				expandToRefs.add(fullyExpandedHierarchy);
-		}
-		
-		return expandToRefs;
-	}
-
-	private Vector<ORefList> getAllHierachyRefsWithSpecificLeafType(Vector<ORefList> fullyExpandedRefs, int typeToExpandTo)
-	{
-		Vector<ORefList> filteredExpansionHierarchies = new Vector();
-		for(ORefList fullyExpandedHierarchy : fullyExpandedRefs)
-		{
-			if (fullyExpandedHierarchy.getFirstElement().getObjectType() == typeToExpandTo)
-			{
-				ORefList hiearchyWithExpandToLeafRemoved = trimLeafsWithType(fullyExpandedHierarchy, typeToExpandTo);
-				filteredExpansionHierarchies.add(hiearchyWithExpandToLeafRemoved);
-			}
-		}
-		return filteredExpansionHierarchies;
-	}
-
-	private ORefList trimLeafsWithType(final ORefList fullyExpandedHierarchy, int typeToExpandTo)
-	{
-		ORefList listToTrim = new ORefList(fullyExpandedHierarchy);
-		ORef refForType = listToTrim.getRefForType(typeToExpandTo);
-		if (refForType.isValid())
-			listToTrim.remove(refForType);
-		
-		return listToTrim;
-	}
-	
-	private boolean isHierarchyWithinHierarchiesToExpand(Vector<ORefList> filteredExpansionHierarchies,	ORefList fullyExpandedHierarchy)
-	{
-		for(ORefList filteredExpansion : filteredExpansionHierarchies)
-		{
-			if (filteredExpansion.containsAll(fullyExpandedHierarchy))
-				return true;
-		}
-		
-		return false;
-	}
-	
 	public void expandAll() throws Exception
 	{
 		Vector<ORefList> fullExpandedRefs = getTreeTableModel().getFullyExpandedHierarchyRefListList();
