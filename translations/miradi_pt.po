@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-11 19:01-0600\n"
+"POT-Creation-Date: 2010-02-14 10:01-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -4022,11 +4022,11 @@ msgstr ""
 msgid "MenuBar|View"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:440
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:441
 msgid "MenuBar|Step-by-Step"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:458
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:459
 msgid "MenuBar|Help"
 msgstr ""
 
@@ -5475,6 +5475,14 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionActivityMoveUp.java:40
 msgid "TT|Move the selected Activity up"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:36
+msgid "Action|Table|Expand To Goal"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:42
+msgid "TT|Expand To Goal"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionInsertIntermediateResult.java:35

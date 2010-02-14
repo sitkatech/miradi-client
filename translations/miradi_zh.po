@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-11 19:01-0600\n"
+"POT-Creation-Date: 2010-02-14 10:01-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4202,11 +4202,11 @@ msgstr "动作 \t\t"
 msgid "MenuBar|View"
 msgstr "视图 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:440
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:441
 msgid "MenuBar|Step-by-Step"
 msgstr "一步一步 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:458
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:459
 msgid "MenuBar|Help"
 msgstr "帮助 \t\t"
 
@@ -5658,6 +5658,14 @@ msgstr "上移活动 \t\t"
 #: Miradi/source/org/miradi/actions/ActionActivityMoveUp.java:40
 msgid "TT|Move the selected Activity up"
 msgstr "上移选定的活动 \t\t"
+
+#: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:36
+msgid "Action|Table|Expand To Goal"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:42
+msgid "TT|Expand To Goal"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionInsertIntermediateResult.java:35
 msgid "Action|Insert|Insert Intermediate Result"
