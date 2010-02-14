@@ -308,10 +308,20 @@ public class ORefList
 	
 	public ORef getFirstElement()
 	{
-		if (isEmpty())
-			throw new RuntimeException("List is empty,  cannot retrieve first element.");
-		
+		verifyNonEmptyList();		
 		return get(0);
+	}
+	
+	public void removeFirstElement()
+	{
+		verifyNonEmptyList();
+		remove(0);
+	}
+
+	private void verifyNonEmptyList()
+	{
+		if (isEmpty())
+			throw new RuntimeException("List is empty,  cannot handle first element.");
 	}
 	
 	public boolean containsAll(ORefList containedRefs)
