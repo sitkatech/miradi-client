@@ -18,26 +18,27 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.views.targetviability.doers;
+package org.miradi.actions;
 
-import org.miradi.actions.ActionExpandToGoal;
-import org.miradi.actions.ActionExpandToIndicator;
-import org.miradi.actions.ActionExpandToKeyEcologicalAttribute;
-import org.miradi.actions.ActionExpandToMeasurement;
-import org.miradi.actions.ActionExpandToTarget;
-import org.miradi.views.umbrella.doers.AbstractPopDownMenuDoer;
+import org.miradi.icons.GoalIcon;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-public class ExpandToMenuDoer extends AbstractPopDownMenuDoer
+public class ActionExpandToGoal extends ObjectsAction
 {
-	@Override
-	protected Class[] getAllPossibleActionClasses()
+	public ActionExpandToGoal(MainWindow mainWindowToUse)
 	{
-		return new Class[] {
-				ActionExpandToTarget.class,
-				ActionExpandToKeyEcologicalAttribute.class,
-				ActionExpandToIndicator.class,
-				ActionExpandToGoal.class,
-				ActionExpandToMeasurement.class,
-			};
+		super(mainWindowToUse, getLabel(), new GoalIcon());
+	}
+
+	private static String getLabel()
+	{
+		return EAM.text("Action|Table|Expand To Goal");
+	}
+
+	@Override
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Expand To Goal");
 	}
 }

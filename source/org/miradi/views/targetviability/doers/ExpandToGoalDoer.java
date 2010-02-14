@@ -20,24 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.targetviability.doers;
 
-import org.miradi.actions.ActionExpandToGoal;
-import org.miradi.actions.ActionExpandToIndicator;
-import org.miradi.actions.ActionExpandToKeyEcologicalAttribute;
-import org.miradi.actions.ActionExpandToMeasurement;
-import org.miradi.actions.ActionExpandToTarget;
-import org.miradi.views.umbrella.doers.AbstractPopDownMenuDoer;
+import org.miradi.objects.Goal;
 
-public class ExpandToMenuDoer extends AbstractPopDownMenuDoer
+public class ExpandToGoalDoer extends AbstractExpandToDoer
 {
 	@Override
-	protected Class[] getAllPossibleActionClasses()
+	protected int getTypeToExpandTo()
 	{
-		return new Class[] {
-				ActionExpandToTarget.class,
-				ActionExpandToKeyEcologicalAttribute.class,
-				ActionExpandToIndicator.class,
-				ActionExpandToGoal.class,
-				ActionExpandToMeasurement.class,
-			};
+		return Goal.getObjectType();
 	}
 }
