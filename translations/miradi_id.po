@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-11 19:01-0600\n"
+"POT-Creation-Date: 2010-02-14 10:01-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -4357,11 +4357,11 @@ msgstr "Tindakan "
 msgid "MenuBar|View"
 msgstr "Tampilan "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:440
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:441
 msgid "MenuBar|Step-by-Step"
 msgstr "Langkah demi Langkah "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:458
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:459
 msgid "MenuBar|Help"
 msgstr "Bantuan "
 
@@ -5818,6 +5818,14 @@ msgstr "Pindahkan Kegiatan ke Atas "
 #: Miradi/source/org/miradi/actions/ActionActivityMoveUp.java:40
 msgid "TT|Move the selected Activity up"
 msgstr "Pindahkan Kegiatan terpilih ke atas "
+
+#: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:36
+msgid "Action|Table|Expand To Goal"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:42
+msgid "TT|Expand To Goal"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionInsertIntermediateResult.java:35
 msgid "Action|Insert|Insert Intermediate Result"
