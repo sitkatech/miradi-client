@@ -38,16 +38,19 @@ public class ViabilityFutureStatusNode extends TreeTableNode
 		rebuild();
 	}
 	
+	@Override
 	public BaseObject getObject()
 	{
 		return null;
 	}
 
+	@Override
 	public ORef getObjectReference()
 	{
 		return new ORef(Goal.getObjectType(), BaseId.INVALID);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return Goal.getObjectType();
@@ -59,21 +62,25 @@ public class ViabilityFutureStatusNode extends TreeTableNode
 		return parentNode.getObject().getData(Indicator.TAG_FUTURE_STATUS_DATE);
 	}
 
+	@Override
 	public int getChildCount()
 	{
 		return 0;
 	}
 
+	@Override
 	public TreeTableNode getChild(int index)
 	{
 		return null;
 	}
 	
+	@Override
 	public TreeTableNode getParentNode()
 	{
 		return parentNode;
 	}
 
+	@Override
 	public Object getValueAt(int column)
 	{
 		String tag = COLUMN_TAGS[column];
@@ -95,6 +102,7 @@ public class ViabilityFutureStatusNode extends TreeTableNode
 		return new EmptyChoiceItem();
 	}
 
+	@Override
 	public void rebuild() throws Exception
 	{
 	}
