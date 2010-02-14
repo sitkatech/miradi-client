@@ -423,6 +423,7 @@ public class MainMenuBar extends JMenuBar
 			addMenuItem(actions, menu, ActionExpandToTarget.class);
 			addMenuItem(actions, menu, ActionExpandToKeyEcologicalAttribute.class);
 			addMenuItem(actions, menu, ActionExpandToIndicator.class);
+			addMenuItem(actions, menu, ActionExpandToGoal.class);
 			addMenuItem(actions, menu, ActionExpandToMeasurement.class);
 		}
 		

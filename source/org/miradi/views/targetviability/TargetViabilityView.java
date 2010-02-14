@@ -27,6 +27,7 @@ import org.miradi.actions.ActionCreateKeyEcologicalAttributeMeasurement;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttribute;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeIndicator;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
+import org.miradi.actions.ActionExpandToGoal;
 import org.miradi.actions.ActionExpandToIndicator;
 import org.miradi.actions.ActionExpandToKeyEcologicalAttribute;
 import org.miradi.actions.ActionExpandToMeasurement;
@@ -44,6 +45,7 @@ import org.miradi.views.diagram.DeleteKeyEcologicalAttributeDoer;
 import org.miradi.views.diagram.DeleteViabilityIndicatorDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
+import org.miradi.views.targetviability.doers.ExpandToGoalDoer;
 import org.miradi.views.targetviability.doers.ExpandToIndicatorDoer;
 import org.miradi.views.targetviability.doers.ExpandToKeyEcologicalAttributeDoer;
 import org.miradi.views.targetviability.doers.ExpandToMeasurementDoer;
@@ -101,6 +103,7 @@ public class TargetViabilityView extends TabbedView
 		addDoerToMap(ActionExpandToTarget.class, new ExpandToTargetDoer());
 		addDoerToMap(ActionExpandToKeyEcologicalAttribute.class, new ExpandToKeyEcologicalAttributeDoer());
 		addDoerToMap(ActionExpandToIndicator.class, new ExpandToIndicatorDoer());
+		addDoerToMap(ActionExpandToGoal.class, new ExpandToGoalDoer());
 		addDoerToMap(ActionExpandToMeasurement.class, new ExpandToMeasurementDoer());
 	}
 	

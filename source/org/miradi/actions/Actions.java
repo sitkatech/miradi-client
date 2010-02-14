@@ -226,6 +226,7 @@ public class Actions
 		registerAction(new ActionExpandToKeyEcologicalAttribute(mainWindow));
 		registerAction(new ActionExpandToIndicator(mainWindow));
 		registerAction(new ActionExpandToMeasurement(mainWindow));
+		registerAction(new ActionExpandToGoal(mainWindow));
 		
 		registerAction(new ActionCreateIndicator(mainWindow));
 		registerAction(new ActionCloneIndicator(mainWindow));
