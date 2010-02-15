@@ -42,7 +42,7 @@ public abstract class AbstractProjectImporter
 		mainWindow = mainWindowToUse;
 	}
 	
-	protected void importProject() throws Exception 
+	public void importProject() throws Exception 
 	{
 		try
 		{
@@ -56,17 +56,9 @@ public abstract class AbstractProjectImporter
 				return;
 			
 			File fileToImport = fileChooser.getSelectedFile();
-			String projectName = RenameProjectDoer.getValidatedUserProjectName(getMainWindow(), fileToImport);
-			if (projectName == null)
-				return;
-			
 			fileToImport = EAMFileSaveChooser.getFileWithExtension(fileChooser, fileToImport);
 			
-			createProject(fileToImport, EAM.getHomeDirectory(), projectName);
-			
-			refreshNoProjectPanel();
-			currentDirectory = fileToImport.getParent();
-			userConfirmOpenImportedProject(projectName);
+			importProject(fileToImport);
 		}
 		catch (UnsupportedNewVersionSchemaException e)
 		{
@@ -95,6 +87,18 @@ public abstract class AbstractProjectImporter
 			EAM.logException(e);
 			showImportFailedErrorDialog(e.getMessage());
 		}
+	}
+
+	public void importProject(File fileToImport) throws Exception
+	{
+		String projectName = RenameProjectDoer.getValidatedUserProjectName(getMainWindow(), fileToImport);
+		if (projectName == null)
+			return;
+		
+		createProject(fileToImport, EAM.getHomeDirectory(), projectName);
+		refreshNoProjectPanel();
+		currentDirectory = fileToImport.getParent();
+		userConfirmOpenImportedProject(projectName);
 	}
 
 	protected void userConfirmOpenImportedProject(String projectName) throws Exception
