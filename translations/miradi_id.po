@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-15 15:37-0600\n"
+"POT-Creation-Date: 2010-02-15 15:43-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -351,8 +351,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:67
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:69
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
-#: Miradi/source/org/miradi/main/EAM.java:448
-#: Miradi/source/org/miradi/main/EAM.java:449
+#: Miradi/source/org/miradi/main/EAM.java:442
+#: Miradi/source/org/miradi/main/EAM.java:443
 msgid "Delete"
 msgstr "Hapus "
 
@@ -803,7 +803,7 @@ msgid "Choose Indicator to Clone"
 msgstr "Pilih Indikator yang ingin Diklon "
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:67
-#: Miradi/source/org/miradi/main/EAM.java:448
+#: Miradi/source/org/miradi/main/EAM.java:442
 msgid "Retain"
 msgstr "Pertahankan "
 
@@ -4576,7 +4576,7 @@ msgstr ""
 msgid "Title|Error"
 msgstr "Kesalahan"
 
-#: Miradi/source/org/miradi/main/EAM.java:604
+#: Miradi/source/org/miradi/main/EAM.java:598
 msgid "Wintitle|Information"
 msgstr "Informasi "
 
