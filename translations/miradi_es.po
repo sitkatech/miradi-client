@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-15 15:43-0600\n"
+"POT-Creation-Date: 2010-02-15 16:07-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -882,14 +882,6 @@ msgstr ""
 "Se produjo un error al intentar exportar a un archivo separado por "
 "tabuladores."
 
-#: Miradi/source/org/miradi/views/umbrella/doers/ImportCpmzDoer.java:79
-msgid " was empty"
-msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/doers/ImportCpmzDoer.java:249
-msgid "Import"
-msgstr "Importar"
-
 #: Miradi/source/org/miradi/views/umbrella/doers/HowToSaveDoer.java:45
 msgid "Help"
 msgstr "Ayuda"
@@ -981,6 +973,48 @@ msgstr ""
 msgid "Edit Methods"
 msgstr "Editar métodos"
 
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:45
+#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:62
+msgid "Import Project"
+msgstr "Importar proyecto"
+
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:74
+#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:91
+msgid ""
+"This project cannot be imported by this version of Miradi because it \n"
+"is in a newer data format. Please upgrade to the latest version of Miradi."
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:97
+#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:114
+msgid "Open Project"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:97
+#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:114
+msgid "Import Completed.  Would you like to open the imported project?"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:116
+#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:133
+msgid "<html>Import failed: <br><p> %s </p></html>"
+msgstr "<html>Falló la importación: <br><p> %s </p></html> "
+
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:142
+#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:154
+msgid ""
+"This file cannot be imported because it is a newer format than this version "
+"of Miradi supports. <br>Please make sure you are running the latest version "
+"of Miradi. If you are already <br>running the latest Miradi, either wait for "
+"a newer version that supports this format, <br>or re-export the project to "
+"an older (supported) format."
+msgstr ""
+"Este archivo no puede importarse porque es un formato más nuevo que el que "
+"admite esta versión de Miradi. <br>Asegúrese de ejecutar la version más "
+"reciente de Miradi. Si ya <br>ejecuta la version más reciente de Miradi, "
+"espere una nueva versión que admita este formato <br>o vuelva a exportar el "
+"proyecto a un formato (admitido) anterior."
+
 #: Miradi/source/org/miradi/views/umbrella/Undo.java:63
 msgid "Error during undo"
 msgstr "Error al revertir la acción."
@@ -988,6 +1022,14 @@ msgstr "Error al revertir la acción."
 #: Miradi/source/org/miradi/views/umbrella/Definition.java:58
 msgid "(Definition Not Available)"
 msgstr "(Definición no disponible)"
+
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:83
+msgid " was empty"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:253
+msgid "Import"
+msgstr "Importar"
 
 #: Miradi/source/org/miradi/views/umbrella/ActionCreateProgressReport.java:36
 #: Miradi/source/org/miradi/actions/ActionCreateTaskProgressReport.java:35
@@ -1126,42 +1168,6 @@ msgstr "Eliminar"
 #: Miradi/source/org/miradi/views/umbrella/AbstractRelevancyEditListDoer.java:51
 msgid "Choose Relevant Indicator(s)"
 msgstr "Seleccione Indicador(es) relevante(s)."
-
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:62
-msgid "Import Project"
-msgstr "Importar proyecto"
-
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:91
-msgid ""
-"This project cannot be imported by this version of Miradi because it \n"
-"is in a newer data format. Please upgrade to the latest version of Miradi."
-msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:114
-msgid "Open Project"
-msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:114
-msgid "Import Completed.  Would you like to open the imported project?"
-msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:133
-msgid "<html>Import failed: <br><p> %s </p></html>"
-msgstr "<html>Falló la importación: <br><p> %s </p></html> "
-
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:154
-msgid ""
-"This file cannot be imported because it is a newer format than this version "
-"of Miradi supports. <br>Please make sure you are running the latest version "
-"of Miradi. If you are already <br>running the latest Miradi, either wait for "
-"a newer version that supports this format, <br>or re-export the project to "
-"an older (supported) format."
-msgstr ""
-"Este archivo no puede importarse porque es un formato más nuevo que el que "
-"admite esta versión de Miradi. <br>Asegúrese de ejecutar la version más "
-"reciente de Miradi. Si ya <br>ejecuta la version más reciente de Miradi, "
-"espere una nueva versión que admita este formato <br>o vuelva a exportar el "
-"proyecto a un formato (admitido) anterior."
 
 #: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:59
 msgid "<strong>Version: %s</strong>"
