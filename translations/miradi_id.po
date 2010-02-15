@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 10:01-0600\n"
+"POT-Creation-Date: 2010-02-15 15:00-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -279,7 +279,6 @@ msgid "Import Accounting Codes"
 msgstr "Impor Kode Akuntansi "
 
 #: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:71
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:114
 msgid "Import Completed"
 msgstr "Impor Selesai "
 
@@ -352,8 +351,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:67
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:69
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
-#: Miradi/source/org/miradi/main/EAM.java:436
-#: Miradi/source/org/miradi/main/EAM.java:437
+#: Miradi/source/org/miradi/main/EAM.java:442
+#: Miradi/source/org/miradi/main/EAM.java:443
 msgid "Delete"
 msgstr "Hapus "
 
@@ -804,7 +803,7 @@ msgid "Choose Indicator to Clone"
 msgstr "Pilih Indikator yang ingin Diklon "
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:67
-#: Miradi/source/org/miradi/main/EAM.java:436
+#: Miradi/source/org/miradi/main/EAM.java:442
 msgid "Retain"
 msgstr "Pertahankan "
 
@@ -1138,11 +1137,19 @@ msgid ""
 "is in a newer data format. Please upgrade to the latest version of Miradi."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:128
+#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:114
+msgid "Open Project"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:114
+msgid "Import Completed.  Would you like to open the imported project?"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:133
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Impor gagal: <br><p> %s </p></html> "
 
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:149
+#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:154
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -4569,7 +4576,7 @@ msgstr ""
 msgid "Title|Error"
 msgstr "Kesalahan"
 
-#: Miradi/source/org/miradi/main/EAM.java:592
+#: Miradi/source/org/miradi/main/EAM.java:598
 msgid "Wintitle|Information"
 msgstr "Informasi "
 
