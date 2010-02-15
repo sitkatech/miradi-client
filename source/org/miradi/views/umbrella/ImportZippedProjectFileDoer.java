@@ -38,7 +38,7 @@ public class ImportZippedProjectFileDoer  extends ViewDoer
 		
 		try
 		{
-			ZippedProjectImporter.doImport();
+			ZippedProjectImporter.doImport(getMainWindow());
 		}
 		catch(Exception e)
 		{

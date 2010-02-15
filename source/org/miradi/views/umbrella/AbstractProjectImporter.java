@@ -37,6 +37,11 @@ import org.miradi.views.noproject.RenameProjectDoer;
 
 public abstract class AbstractProjectImporter
 {	
+	public AbstractProjectImporter(MainWindow mainWindowToUse)
+	{
+		mainWindow = mainWindowToUse;
+	}
+	
 	protected void importProject() throws Exception 
 	{
 		try
@@ -135,7 +140,7 @@ public abstract class AbstractProjectImporter
 	
 	protected MainWindow getMainWindow()
 	{
-		return EAM.getMainWindow();
+		return mainWindow;
 	}
 	
 	private static String currentDirectory = UiFileChooser.getHomeDirectoryFile().getPath();
@@ -147,4 +152,6 @@ public abstract class AbstractProjectImporter
 	protected abstract void createProject(File importFile, File homeDirectory, String newProjectFilename)  throws Exception;
 	
 	protected abstract FileFilter[] getFileFilters();
+	
+	private MainWindow mainWindow;
 }
