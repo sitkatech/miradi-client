@@ -412,12 +412,6 @@ public class EAM
 		return confirmDialog(title, new String[]{body, }, buttons);
 	}
 	
-	public static boolean confirmDialog(String title, String body)
-	{
-		String[] buttons = { text("Button|Overwrite"), getCancelButtonText() };
-		return confirmDialog(title, new String[]{body, }, buttons);
-	}
-
 	public static boolean confirmDialog(String title, String[] body)
 	{
 		String[] buttons = { text("Button|Overwrite"), getCancelButtonText() };
