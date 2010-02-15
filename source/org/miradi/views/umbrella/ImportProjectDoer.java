@@ -111,7 +111,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 
 	protected void userConfirmOpenImportedProject(String projectName) throws Exception
 	{
-		boolean shouldOpenProjectAfterImport = EAM.confirmDialog(EAM.text("Open Project"), EAM.text("Import Completed.  Would you like to open the imported project?"));
+		boolean shouldOpenProjectAfterImport = EAM.confirmOpenDialog(EAM.text("Open Project"), EAM.text("Import Completed.  Would you like to open the imported project?"));
 		if (shouldOpenProjectAfterImport)
 		{
 			getMainWindow().setLocalDataLocation(EAM.getHomeDirectory());
