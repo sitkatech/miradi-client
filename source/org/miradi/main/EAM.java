@@ -406,6 +406,12 @@ public class EAM
 		new UiNotifyDlg(getMainWindow(), title, body, new String[] {getOkButtonText()});
 	}
 	
+	public static boolean confirmOpenDialog(String title, String body)
+	{
+		String[] buttons = { text("Button|Open"), getCancelButtonText() };
+		return confirmDialog(title, new String[]{body, }, buttons);
+	}
+	
 	public static boolean confirmDialog(String title, String body)
 	{
 		String[] buttons = { text("Button|Overwrite"), getCancelButtonText() };
