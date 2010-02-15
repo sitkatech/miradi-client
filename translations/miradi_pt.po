@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-15 16:07-0600\n"
+"POT-Creation-Date: 2010-02-15 16:10-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -897,34 +897,28 @@ msgid "Edit Methods"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:45
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:62
 msgid "Import Project"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:74
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:91
 msgid ""
 "This project cannot be imported by this version of Miradi because it \n"
 "is in a newer data format. Please upgrade to the latest version of Miradi."
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:97
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:114
 msgid "Open Project"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:97
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:114
 msgid "Import Completed.  Would you like to open the imported project?"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:116
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:133
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:142
-#: Miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:154
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
