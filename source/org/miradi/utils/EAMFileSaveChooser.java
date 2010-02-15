@@ -63,7 +63,7 @@ public abstract class EAMFileSaveChooser
 		{
 			String title = getDialogOverwriteTitleText();
 			String[] body = { getDialogOverwriteBodyText() };
-			if (!EAM.confirmDialog(title, body))
+			if (!EAM.confirmOverwriteDialog(title, body))
 				return null;
 			chosen.delete();
 		}
