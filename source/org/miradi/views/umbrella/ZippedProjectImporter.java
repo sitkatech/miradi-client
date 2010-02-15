@@ -24,15 +24,21 @@ import java.io.File;
 
 import javax.swing.filechooser.FileFilter;
 
+import org.miradi.main.MainWindow;
 import org.miradi.project.ProjectUnzipper;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
 import org.miradi.utils.ZIPFileFilter;
 
 public class ZippedProjectImporter extends AbstractProjectImporter
 {
-	public static void doImport() throws Exception
+	public ZippedProjectImporter(MainWindow mainWindowToUse)
 	{
-		new ZippedProjectImporter().importProject();
+		super(mainWindowToUse);
+	}
+
+	public static void doImport(MainWindow mainWindow) throws Exception
+	{
+		new ZippedProjectImporter(mainWindow).importProject();
 	}
 	
 	protected void createProject(File importFile, File homeDirectory, String newProjectFilename) throws Exception

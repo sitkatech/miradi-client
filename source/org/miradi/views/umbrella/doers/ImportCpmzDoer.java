@@ -39,7 +39,7 @@ public class ImportCpmzDoer extends ViewDoer
 		
 		try
 		{
-			new CpmzProjectImporter().doImport();
+			CpmzProjectImporter.doImport(getMainWindow());
 		}
 		catch(Exception e)
 		{

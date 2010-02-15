@@ -36,6 +36,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.arranger.MeglerArranger;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -50,10 +51,15 @@ import org.miradi.views.diagram.DiagramView;
 import org.miradi.xml.conpro.importer.ConproXmlImporter;
 
 public class CpmzProjectImporter extends AbstractProjectImporter
-{
-	public static void doImport() throws Exception
+{	
+	public CpmzProjectImporter(MainWindow mainWindowToUse)
 	{
-		new CpmzProjectImporter().importProject();
+		super(mainWindowToUse);
+	}
+
+	public static void doImport(MainWindow mainWindow) throws Exception
+	{
+		new CpmzProjectImporter(mainWindow).importProject();
 	}
 	
 	@Override
