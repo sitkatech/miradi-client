@@ -78,7 +78,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 			
 			refreshNoProjectPanel();
 			currentDirectory = fileToImport.getParent();
-			showImportCompletedDialog();
+			userConfirmOpenImportedProject(projectName);
 		}
 		catch (UnsupportedNewVersionSchemaException e)
 		{
@@ -109,9 +109,14 @@ public abstract class ImportProjectDoer extends ViewDoer
 		}
 	}
 
-	protected void showImportCompletedDialog() throws Exception
+	protected void userConfirmOpenImportedProject(String projectName) throws Exception
 	{
-		EAM.notifyDialog(EAM.text("Import Completed"));
+		boolean shouldOpenProjectAfterImport = EAM.confirmDialog(EAM.text("Open Project"), EAM.text("Import Completed.  Would you like to open the imported project"));
+		if (shouldOpenProjectAfterImport)
+		{
+			getMainWindow().setLocalDataLocation(EAM.getHomeDirectory());
+			getMainWindow().createOrOpenProject(projectName);
+		}
 	}
 
 	private void addFileFilters(JFileChooser fileChooser)
