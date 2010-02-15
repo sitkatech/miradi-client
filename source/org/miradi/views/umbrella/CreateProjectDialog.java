@@ -296,7 +296,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 			
 			String title = EAM.text("Title|Overwrite existing file?");
 			String[] body = { EAM.text("This will replace the existing file.") };
-			if(!EAM.confirmDialog(title, body))
+			if(!EAM.confirmOverwriteDialog(title, body))
 				return;
 			DirectoryUtils.deleteEntireDirectoryTree(getSelectedFile());
 		}
