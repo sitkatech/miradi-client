@@ -35,7 +35,11 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.LanguageQuestion;
 import org.miradi.questions.StaticQuestionManager;
+import org.miradi.utils.CpmzFileFilterForChooserDialog;
+import org.miradi.utils.MpzFileFilter;
 import org.miradi.utils.Translation;
+import org.miradi.views.umbrella.CpmzProjectImporter;
+import org.miradi.views.umbrella.ZippedProjectImporter;
 
 
 public class Miradi
@@ -257,6 +261,9 @@ public class Miradi
 			{
 				EAM.setMainWindow(MainWindow.create());
 				EAM.getMainWindow().start(args);
+				
+				File projectToImport = createFileToImportFromCommandLineArgs(args);
+				importProjectFromCommandLine(projectToImport);
 			}
 			catch(Exception e)
 			{
@@ -265,7 +272,49 @@ public class Miradi
 				System.exit(1);
 			}
 		}
+
+		private void importProjectFromCommandLine(File projectToImport) throws Exception
+		{
+			if (projectToImport == null)
+				return;
+			
+			if (!projectToImport.exists())
+				return;
+			
+			if (projectToImport.isDirectory())
+				return;
+			
+			final String projectName = projectToImport.getName();
+			if (projectName.endsWith(CpmzFileFilterForChooserDialog.EXTENSION))
+				new CpmzProjectImporter(EAM.getMainWindow()).importProject(projectToImport);
+
+			else if (projectName.endsWith(MpzFileFilter.EXTENSION))
+				new ZippedProjectImporter(EAM.getMainWindow()).importProject(projectToImport);
+		}
 		
+		private File createFileToImportFromCommandLineArgs(String[] commandLineArgs) throws Exception
+		{
+			for (int index = 0; index < commandLineArgs.length; ++index)
+			{
+				String commandLineArg = commandLineArgs[index];
+				if (isImportableExtension(commandLineArg))
+					return new File(commandLineArg);
+			}
+			
+			return null;
+		}
+
+		private boolean isImportableExtension(String commandLineArg)
+		{
+			if (commandLineArg.endsWith(MpzFileFilter.EXTENSION))
+				return true;
+			
+			if (commandLineArg.endsWith(CpmzFileFilterForChooserDialog.EXTENSION))
+				return true;
+			
+			return false;
+		}
+
 		String[] args;
 	}
 
