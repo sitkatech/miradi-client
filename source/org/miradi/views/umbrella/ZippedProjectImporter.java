@@ -17,33 +17,31 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.umbrella.doers;
 
-import org.miradi.exceptions.CommandFailedException;
-import org.miradi.views.ViewDoer;
-import org.miradi.views.umbrella.CpmzProjectImporter;
+package org.miradi.views.umbrella;
 
-public class ImportCpmzDoer extends ViewDoer
+import java.io.File;
+
+import javax.swing.filechooser.FileFilter;
+
+import org.miradi.project.ProjectUnzipper;
+import org.miradi.utils.MpzFileFilterForChooserDialog;
+import org.miradi.utils.ZIPFileFilter;
+
+public class ZippedProjectImporter extends AbstractProjectImporter
 {
-	@Override
-	public boolean isAvailable() 
+	public static void doImport() throws Exception
 	{
-		return !getProject().isOpen();
+		new ZippedProjectImporter().importProject();
 	}
 	
-	@Override
-	public void doIt() throws CommandFailedException
+	protected void createProject(File importFile, File homeDirectory, String newProjectFilename) throws Exception
 	{
-		if (!isAvailable())
-			return;
-		
-		try
-		{
-			new CpmzProjectImporter().doImport();
-		}
-		catch(Exception e)
-		{
-			throw new CommandFailedException(e);
-		}
+		ProjectUnzipper.unzipToProjectDirectory(importFile, homeDirectory, newProjectFilename);
+	}
+
+	protected FileFilter[] getFileFilters()
+	{
+		return new FileFilter[] {new ZIPFileFilter(), new MpzFileFilterForChooserDialog()};
 	}
 }

@@ -19,23 +19,30 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import java.io.File;
+import org.miradi.exceptions.CommandFailedException;
+import org.miradi.views.ViewDoer;
 
-import javax.swing.filechooser.FileFilter;
-
-import org.miradi.project.ProjectUnzipper;
-import org.miradi.utils.MpzFileFilterForChooserDialog;
-import org.miradi.utils.ZIPFileFilter;
-
-public class ImportZippedProjectFileDoer  extends ImportProjectDoer
+public class ImportZippedProjectFileDoer  extends ViewDoer
 {
-	public void createProject(File importFile, File homeDirectory, String newProjectFilename) throws Exception
+	@Override
+	public boolean isAvailable() 
 	{
-		ProjectUnzipper.unzipToProjectDirectory(importFile, homeDirectory, newProjectFilename);
+		return !getProject().isOpen();
 	}
-
-	public FileFilter[] getFileFilters()
+	
+	@Override
+	public void doIt() throws CommandFailedException
 	{
-		return new FileFilter[] {new ZIPFileFilter(), new MpzFileFilterForChooserDialog()};
+		if (!isAvailable())
+			return;
+		
+		try
+		{
+			ZippedProjectImporter.doImport();
+		}
+		catch(Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 }
