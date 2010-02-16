@@ -306,10 +306,7 @@ public class Miradi
 		
 		private boolean isImportTagArgument(String commandLineArg, String commandlineImportTag)
 		{
-			final boolean startsWithImportTag = commandLineArg.toLowerCase().startsWith(commandlineImportTag);
-			final boolean endsWithEndTag = commandLineArg.endsWith(CommandLineProjectFileImporterHelper.COMMANDLINE_TAG_END_FILE_NAME);
-			
-			return startsWithImportTag && endsWithEndTag;
+			return commandLineArg.toLowerCase().startsWith(commandlineImportTag);
 		}
 		
 		public static int confirmImportDialog(String title, String body)
