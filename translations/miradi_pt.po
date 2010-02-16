@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-16 11:19-0600\n"
+"POT-Creation-Date: 2010-02-16 11:22-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -801,14 +801,6 @@ msgstr ""
 msgid "Button|Ok"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:59
-msgid "Data was exported as tab delimited."
-msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:64
-msgid "Error occurred while trying to export to a tab delimited file."
-msgstr ""
-
 #: Miradi/source/org/miradi/views/umbrella/doers/HowToSaveDoer.java:45
 msgid "Help"
 msgstr ""
@@ -873,6 +865,14 @@ msgstr ""
 msgid ""
 "\n"
 "Are you sure you want to delete the selected %s?"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:59
+msgid "Data was exported as tab delimited."
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:64
+msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/ViewLegacyTncStrategyRankingDoer.java:38

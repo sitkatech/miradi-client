@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-16 11:19-0600\n"
+"POT-Creation-Date: 2010-02-16 11:22-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -845,14 +845,6 @@ msgstr "您确定? \t\t"
 msgid "Button|Ok"
 msgstr "确定 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:59
-msgid "Data was exported as tab delimited."
-msgstr "数据以制表符分隔格式导出 \t\t"
-
-#: Miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:64
-msgid "Error occurred while trying to export to a tab delimited file."
-msgstr "试图导出到制表符分隔格式文件时出错。 \t\t"
-
 #: Miradi/source/org/miradi/views/umbrella/doers/HowToSaveDoer.java:45
 msgid "Help"
 msgstr "帮助 \t\t"
@@ -920,6 +912,14 @@ msgid ""
 "\n"
 "Are you sure you want to delete the selected %s?"
 msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:59
+msgid "Data was exported as tab delimited."
+msgstr "数据以制表符分隔格式导出 \t\t"
+
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:64
+msgid "Error occurred while trying to export to a tab delimited file."
+msgstr "试图导出到制表符分隔格式文件时出错。 \t\t"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/ViewLegacyTncStrategyRankingDoer.java:38
 msgid "Title|View..."
