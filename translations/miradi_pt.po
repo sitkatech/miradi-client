@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-16 12:50-0600\n"
+"POT-Creation-Date: 2010-02-16 13:01-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -4170,6 +4170,14 @@ msgstr ""
 
 #: Miradi/source/org/miradi/main/menu/ProcessMenu3.java:31
 msgid "Menu|3. Implement Actions &  Monitoring"
+msgstr ""
+
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:53
+msgid "Importing File (%s) from command line does not exist"
+msgstr ""
+
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:60
+msgid "Importing File (%s) from command line is a directory"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:64
