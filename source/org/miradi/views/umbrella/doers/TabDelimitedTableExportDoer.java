@@ -28,7 +28,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.rtf.AboveColumnHeaderLabelProvider;
 import org.miradi.rtf.ColumnHeaderLabelProvider;
-import org.miradi.rtf.RtfTableHeaderColumnLabelProvider;
+import org.miradi.rtf.TableHeaderColumnLabelProvider;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.MiradiTabDelimitedFileChooser;
 import org.miradi.utils.TableExporter;
@@ -115,7 +115,7 @@ public class TabDelimitedTableExportDoer extends ViewDoer
 		return label;
 	}
 
-	private void putHeaders(UnicodeWriter out, TableExporter table, int maxDepeth, RtfTableHeaderColumnLabelProvider columnHeaderLabelProvider) throws Exception
+	private void putHeaders(UnicodeWriter out, TableExporter table, int maxDepeth, TableHeaderColumnLabelProvider columnHeaderLabelProvider) throws Exception
 	{
 		int columnCount = table.getColumnCount();
 		for (int column = 0; column < columnCount; ++column)
