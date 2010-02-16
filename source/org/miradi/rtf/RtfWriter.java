@@ -262,7 +262,7 @@ public class RtfWriter
 		return BACKGROUND_COLOR_COMMAND + colorIndex + " ";
 	}
 
-	private void writeTableHeader(TableExporter exportableTable, RtfTableHeaderColumnLabelProvider headerLabelProvider) throws Exception
+	private void writeTableHeader(TableExporter exportableTable, TableHeaderColumnLabelProvider headerLabelProvider) throws Exception
 	{
 		writelnRaw(TABLE_ROW_HEADER);
 		writeCellCommandsWithoutBackground(exportableTable);

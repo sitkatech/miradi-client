@@ -22,7 +22,7 @@ package org.miradi.rtf;
 
 import org.miradi.utils.TableExporter;
 
-public interface RtfTableHeaderColumnLabelProvider
+public interface TableHeaderColumnLabelProvider
 {
 	public String getColumnHeaderLabel(TableExporter exportableTable, int tableColumn);
 }
