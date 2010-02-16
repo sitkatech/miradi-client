@@ -53,11 +53,13 @@ public class PlanningViewConfiguration extends BaseObject
 		return colConfigurationList.getCodeList();
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -68,6 +70,7 @@ public class PlanningViewConfiguration extends BaseObject
 		return ObjectType.PLANNING_VIEW_CONFIGURATION;
 	}	
 	
+	@Override
 	public String toString()
 	{
 		return getLabel();
@@ -93,6 +96,7 @@ public class PlanningViewConfiguration extends BaseObject
 		return find(project.getObjectManager(), planningViewConfigurationRef);
 	}
 	
+	@Override
 	void clear()
 	{
 		super.clear();
