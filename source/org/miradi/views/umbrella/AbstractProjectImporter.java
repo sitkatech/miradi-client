@@ -103,7 +103,8 @@ public abstract class AbstractProjectImporter
 
 	protected void userConfirmOpenImportedProject(String projectName) throws Exception
 	{
-		boolean shouldOpenProjectAfterImport = EAM.confirmOpenDialog(EAM.text("Open Project"), EAM.text("Import Completed.  Would you like to open the imported project?"));
+		String openProjectMessage = EAM.substitute(EAM.text("Import Completed.  Would you like to open %s?"), projectName);
+		boolean shouldOpenProjectAfterImport = EAM.confirmOpenDialog(EAM.text("Open Project"), openProjectMessage);
 		if (shouldOpenProjectAfterImport)
 		{
 			getMainWindow().setLocalDataLocation(EAM.getHomeDirectory());
