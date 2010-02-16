@@ -260,9 +260,10 @@ public class Miradi
 				EAM.setMainWindow(MainWindow.create());
 				getMainWindow().start(commandLineArgs);
 				
+				
 				CommandLineProjectFileImporterHelper importHelper = createImportHelper(commandLineArgs);
 				if (importHelper != null && importHelper.isImportableProjectFile())
-					importHelper.importProjectFromCommandLine();
+					userComfirmImport(importHelper);
 			}
 			catch(Exception e)
 			{
@@ -270,6 +271,16 @@ public class Miradi
 				EAM.errorDialog("Unexpected error: " + e.getMessage());
 				System.exit(1);
 			}
+		}
+
+		private void userComfirmImport(CommandLineProjectFileImporterHelper importHelper) throws Exception
+		{
+			int userComfirmationChoice = confirmImportDialog("Import", "Should import Selected file?");
+			if (userComfirmationChoice == IMPORT_CHOICE)
+				importHelper.importProjectFromCommandLine();
+			
+			if (userComfirmationChoice == EXIT_CHOICE)
+				getMainWindow().exitNormally();
 		}
 		
 		private CommandLineProjectFileImporterHelper createImportHelper(String[] commandLineArgsToUse) throws Exception
@@ -300,7 +311,20 @@ public class Miradi
 			return startsWithImportTag && endsWithEndTag;
 		}
 		
+		public static int confirmImportDialog(String title, String body)
+		{
+			String[] buttons = new String[3];
+			buttons[IMPORT_CHOICE] = EAM.text("Button|Import");
+			buttons[DO_NOT_IMPORT_CHOICE] = EAM.text("Button|Don't Import");
+			buttons[EXIT_CHOICE] = EAM.text("Button|Exit");
+			
+			return EAM.confirmDialog(title, body, buttons);
+		}
+
 		private String[] commandLineArgs;
+		private static final int IMPORT_CHOICE = 0;
+		private static final int DO_NOT_IMPORT_CHOICE = 1;
+		private static final int EXIT_CHOICE = 2;
 	}
 
 	public static final String MAIN_VERSION = "3.0";
