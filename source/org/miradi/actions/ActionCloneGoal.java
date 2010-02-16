@@ -38,6 +38,6 @@ public class ActionCloneGoal extends ObjectsAction
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Clone a Goal");
+		return EAM.text("TT|Create from an Existing Goal");
 	}
 }

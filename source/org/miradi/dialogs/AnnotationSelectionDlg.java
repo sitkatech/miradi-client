@@ -33,11 +33,11 @@ public class AnnotationSelectionDlg extends AbstractSelectionDialog
 
 	protected String createCustomButtonLabel()
 	{
-		return  EAM.text("Clone");
+		return  EAM.text("Create from Existing");
 	}
 	
 	protected String getPanelTitleInstructions()
 	{
-		return EAM.text("Please select which item should be cloned into this factor, then press the Clone button");
+		return EAM.text("Please select which item should be created into this factor, then press the Create from Existing  button");
 	}
 }

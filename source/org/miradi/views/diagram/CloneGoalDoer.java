@@ -30,7 +30,7 @@ public class CloneGoalDoer extends CreateGoal
 		if (!isAvailable())
 			return;
 	
-		if (validUserChoiceForObjectToClone(new GoalPoolTablePanel(getMainWindow()), EAM.text("Choose Goal to Clone")))
+		if (validUserChoiceForObjectToClone(new GoalPoolTablePanel(getMainWindow()), EAM.text("Choose Goal to Create from")))
 			super.doIt();
 	}
 }
