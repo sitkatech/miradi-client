@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-16 11:38-0600\n"
+"POT-Creation-Date: 2010-02-16 11:56-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -4968,10 +4968,13 @@ msgid "TT|Insert a Target"
 msgstr "Insertar un objeto"
 
 #: Miradi/source/org/miradi/actions/ActionCloneStress.java:35
-msgid "Action|Manage|Clone Stress..."
-msgstr "Clonar presión…"
+#: Miradi/source/org/miradi/actions/ActionCloneGoal.java:35
+#: Miradi/source/org/miradi/actions/ActionCloneObjective.java:35
+#: Miradi/source/org/miradi/actions/ActionCloneIndicator.java:35
+msgid "Action|Manage|Create from Existing"
+msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCloneStress.java:40
+#: Miradi/source/org/miradi/actions/ActionCloneStress.java:41
 msgid "TT|Clone a Stress"
 msgstr "Clonar una presión"
 
@@ -5984,11 +5987,7 @@ msgstr "Eliminar personalización"
 msgid "TT|Delete the selected Custom Planning View"
 msgstr "Eliminar la vista Planificación personalizada seleccionada"
 
-#: Miradi/source/org/miradi/actions/ActionCloneGoal.java:35
-msgid "Action|Manage|Clone Goal..."
-msgstr "Clonar objetivo…"
-
-#: Miradi/source/org/miradi/actions/ActionCloneGoal.java:40
+#: Miradi/source/org/miradi/actions/ActionCloneGoal.java:41
 msgid "TT|Clone a Goal"
 msgstr "Clonar un objetivo"
 
@@ -6172,19 +6171,11 @@ msgstr "Editar... "
 msgid "TT|Choose which factors are tagged."
 msgstr "Seleccionar los factores etiquetados. "
 
-#: Miradi/source/org/miradi/actions/ActionCloneObjective.java:35
-msgid "Action|Manage|Clone Objective..."
-msgstr "Clonar meta…"
-
-#: Miradi/source/org/miradi/actions/ActionCloneObjective.java:40
+#: Miradi/source/org/miradi/actions/ActionCloneObjective.java:41
 msgid "TT|Clone an Objective"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCloneIndicator.java:35
-msgid "Action|Manage|Clone Indicator..."
-msgstr "Clonar indicador..."
-
-#: Miradi/source/org/miradi/actions/ActionCloneIndicator.java:40
+#: Miradi/source/org/miradi/actions/ActionCloneIndicator.java:41
 msgid "TT|Clone a Indicator"
 msgstr "Clonar un indicador"
 
@@ -14117,7 +14108,7 @@ msgid ""
 "class='definition'>stresses</a> that affect your conservation targets. If "
 "you want to use stresses, double click on a target, and click on the <code "
 "class='toolbarbutton'>&lt;Stresses&gt;</code> tab in the target properties "
-"window. Click on the buttons to create a new stress, clone an existing "
+"window. Click on the buttons to create a new stress, create from existing "
 "stress, or create a stress from one of your KEAs. For each stress, you can "
 "then fill in the <strong>ID</strong>, <strong>name</strong>, and "
 "<strong>details</strong> fields. You can also click the <code "
@@ -30268,6 +30259,18 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Action|Manage|Clone Stress..."
+#~ msgstr "Clonar presión…"
+
+#~ msgid "Action|Manage|Clone Goal..."
+#~ msgstr "Clonar objetivo…"
+
+#~ msgid "Action|Manage|Clone Objective..."
+#~ msgstr "Clonar meta…"
+
+#~ msgid "Action|Manage|Clone Indicator..."
+#~ msgstr "Clonar indicador..."
 
 #~ msgid "(Unknown)"
 #~ msgstr "(Desconocido)"
