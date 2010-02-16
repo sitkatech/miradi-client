@@ -292,7 +292,7 @@ public class Miradi
 			return commandLineArg.toLowerCase().startsWith(commandlineImportTag) && commandLineArg.endsWith(CommandLineProjectFileImporterHelper.COMMANDLINE_TAG_END_FILE_NAME);
 		}
 		
-		String[] args;
+		private String[] args;
 	}
 
 	public static final String MAIN_VERSION = "3.0";
