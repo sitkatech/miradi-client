@@ -34,10 +34,10 @@ public class CommandLineProjectFileImporterHelper
 	
 	private String extractProjectFileName(final String commandLineArg)
 	{
-		int indexOfLessThan = commandLineArg.indexOf(COMMANDLINE_TAG_START_FILE_NAME);
-		int indexOfGreaterThan = commandLineArg.indexOf(COMMANDLINE_TAG_END_FILE_NAME);
+		int endDelimiter = commandLineArg.indexOf(TAG_END_DELIMITER);
+		int endOfString = commandLineArg.length();
 		
-		final String projectFileName = commandLineArg.substring(indexOfLessThan + 1, indexOfGreaterThan);
+		final String projectFileName = commandLineArg.substring(endDelimiter + 1, endOfString);
 		return projectFileName;
 	}
 	
@@ -82,8 +82,7 @@ public class CommandLineProjectFileImporterHelper
 	
 	private AbstractProjectImporter importer;
 	private File projectFileToImport;
-	private static final String COMMANDLINE_TAG_START_FILE_NAME = "<";
-	static final String COMMANDLINE_TAG_END_FILE_NAME = ">";
-	public static final String COMMANDLINE_TAG_IMPORT_MPZ = "--importmpz=" + COMMANDLINE_TAG_START_FILE_NAME;
-	public static final String COMMANDLINE_TAG_IMPORT_CPMZ = "--importcpmz=" + COMMANDLINE_TAG_START_FILE_NAME;
+	private static final String TAG_END_DELIMITER = "=";
+	public static final String COMMANDLINE_TAG_IMPORT_MPZ = "--importmpz" + TAG_END_DELIMITER;
+	public static final String COMMANDLINE_TAG_IMPORT_CPMZ = "--importcpmz" + TAG_END_DELIMITER;
 }
