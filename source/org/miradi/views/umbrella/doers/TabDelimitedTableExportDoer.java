@@ -90,7 +90,7 @@ public class TabDelimitedTableExportDoer extends ViewDoer
 				{
 					pad(out, table.getDepth(row, column), column);
 					String safeValue = getSafeValue(table, row, column);
-					out.write(withoutTabsAndNewlines(safeValue) + "\t");
+					out.write(withoutTabsAndNewlines(safeValue) + TAB);
 					
 					int postPadCount = maxDepth - table.getDepth(row, column);
 					pad(out, postPadCount, column);
@@ -121,7 +121,7 @@ public class TabDelimitedTableExportDoer extends ViewDoer
 		for (int column = 0; column < columnCount; ++column)
 		{
 			String headerName = columnHeaderLabelProvider.getColumnHeaderLabel(table, column);
-			out.write(withoutTabsAndNewlines(headerName) + "\t");
+			out.write(withoutTabsAndNewlines(headerName) + TAB);
 			pad(out, maxDepeth, column);
 		}
 		
@@ -140,17 +140,18 @@ public class TabDelimitedTableExportDoer extends ViewDoer
 		
 		for (int i = 0; i < padCount; ++i)
 		{
-			out.write("\t");
+			out.write(TAB);
 		}
 	}
 	
 	private String withoutTabsAndNewlines(String string)
 	{
 		final String BLANK_SPACE = " ";
-		final String TAB = "\t";
 		final String NEW_LINE = "\n";
 		
 		String tabLessString = string.replaceAll(TAB, BLANK_SPACE);
 		return tabLessString.replaceAll(NEW_LINE, BLANK_SPACE);
 	}
+	
+	private static final String TAB = "\t";
 }
