@@ -294,7 +294,10 @@ public class Miradi
 		
 		private boolean isImportTagArgument(String commandLineArg, String commandlineImportTag)
 		{
-			return commandLineArg.toLowerCase().startsWith(commandlineImportTag) && commandLineArg.endsWith(CommandLineProjectFileImporterHelper.COMMANDLINE_TAG_END_FILE_NAME);
+			final boolean startsWithImportTag = commandLineArg.toLowerCase().startsWith(commandlineImportTag);
+			final boolean endsWithEndTag = commandLineArg.endsWith(CommandLineProjectFileImporterHelper.COMMANDLINE_TAG_END_FILE_NAME);
+			
+			return startsWithImportTag && endsWithEndTag;
 		}
 		
 		private String[] commandLineArgs;
