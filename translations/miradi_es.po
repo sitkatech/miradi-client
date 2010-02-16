@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-16 11:11-0600\n"
+"POT-Creation-Date: 2010-02-16 11:19-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -6715,7 +6715,7 @@ msgstr ""
 msgid "UniqueModelIdentifier="
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/TabDelimitedFileFilter.java:40
+#: Miradi/source/org/miradi/utils/TabDelimitedFileFilter.java:42
 msgid "FileFilter|Tab Delimited (*.txt)"
 msgstr "Separado por tabulaciones (*.txt)"
 
