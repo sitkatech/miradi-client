@@ -111,11 +111,13 @@ public class ViewData extends BaseObject
 		return currentMode.get();
 	}
 
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -142,6 +144,7 @@ public class ViewData extends BaseObject
 		return find(project.getObjectManager(), viewDataRef);
 	}
 	
+	@Override
 	void clear()
 	{
 		super.clear();
