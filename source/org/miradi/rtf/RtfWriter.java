@@ -167,7 +167,7 @@ public class RtfWriter
 		writeTableBody(exportableTable);
 	}
 
-	private boolean hasAnyAboveColumnHeaderLabels(TableExporter exportableTable)
+	public static boolean hasAnyAboveColumnHeaderLabels(TableExporter exportableTable)
 	{
 		for (int columnIndex = 0; columnIndex < exportableTable.getColumnCount(); ++columnIndex)
 		{

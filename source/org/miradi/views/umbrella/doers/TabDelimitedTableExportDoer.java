@@ -26,6 +26,10 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.rtf.AboveColumnHeaderLabelProvider;
+import org.miradi.rtf.ColumnHeaderLabelProvider;
+import org.miradi.rtf.RtfTableHeaderColumnLabelProvider;
+import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.MiradiTabDelimitedFileChooser;
 import org.miradi.utils.TableExporter;
 import org.miradi.views.ViewDoer;
@@ -76,7 +80,10 @@ public class TabDelimitedTableExportDoer extends ViewDoer
 			int rowCount = table.getRowCount();
 			
 			out.writeBOM();
-			putHeaders(out, table, maxDepth);
+			if (RtfWriter.hasAnyAboveColumnHeaderLabels(table))
+				putHeaders(out, table, maxDepth, new AboveColumnHeaderLabelProvider());
+				
+			putHeaders(out, table, maxDepth, new ColumnHeaderLabelProvider());
 			for (int row = 0; row < rowCount; ++row)
 			{
 				for (int column = 0; column < columnCount; ++column)
@@ -108,12 +115,13 @@ public class TabDelimitedTableExportDoer extends ViewDoer
 		return label;
 	}
 
-	private void putHeaders(UnicodeWriter out, TableExporter table, int maxDepeth) throws Exception
+	private void putHeaders(UnicodeWriter out, TableExporter table, int maxDepeth, RtfTableHeaderColumnLabelProvider columnHeaderLabelProvider) throws Exception
 	{
 		int columnCount = table.getColumnCount();
 		for (int column = 0; column < columnCount; ++column)
 		{
-			out.write(withoutTabsAndNewlines(table.getColumnName(column)) + "\t");
+			String headerName = columnHeaderLabelProvider.getColumnHeaderLabel(table, column);
+			out.write(withoutTabsAndNewlines(headerName) + "\t");
 			pad(out, maxDepeth, column);
 		}
 		
