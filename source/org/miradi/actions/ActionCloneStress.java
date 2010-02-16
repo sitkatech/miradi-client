@@ -32,9 +32,10 @@ public class ActionCloneStress extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Clone Stress...");
+		return EAM.text("Action|Manage|Create from Existing");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Clone a Stress");
