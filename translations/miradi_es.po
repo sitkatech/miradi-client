@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-16 11:19-0600\n"
+"POT-Creation-Date: 2010-02-16 11:22-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -872,16 +872,6 @@ msgstr "¿Está seguro?"
 msgid "Button|Ok"
 msgstr "Ok"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:59
-msgid "Data was exported as tab delimited."
-msgstr "Los datos se exportaron separados por tabuladores."
-
-#: Miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:64
-msgid "Error occurred while trying to export to a tab delimited file."
-msgstr ""
-"Se produjo un error al intentar exportar a un archivo separado por "
-"tabuladores."
-
 #: Miradi/source/org/miradi/views/umbrella/doers/HowToSaveDoer.java:45
 msgid "Help"
 msgstr "Ayuda"
@@ -949,6 +939,16 @@ msgid ""
 "\n"
 "Are you sure you want to delete the selected %s?"
 msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:59
+msgid "Data was exported as tab delimited."
+msgstr "Los datos se exportaron separados por tabuladores."
+
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:64
+msgid "Error occurred while trying to export to a tab delimited file."
+msgstr ""
+"Se produjo un error al intentar exportar a un archivo separado por "
+"tabuladores."
 
 #: Miradi/source/org/miradi/views/umbrella/doers/ViewLegacyTncStrategyRankingDoer.java:38
 msgid "Title|View..."
