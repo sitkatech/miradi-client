@@ -32,7 +32,7 @@ public class ActionCloneGoal extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Create from Existing");
+		return EAM.text("Action|Manage|Create from Existing...");
 	}
 
 	@Override
