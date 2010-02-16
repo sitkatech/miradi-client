@@ -30,7 +30,7 @@ public class CloneStressDoer extends CreateStressDoer
 		if (!isAvailable())
 			return;
 
-		if (validUserChoiceForObjectToClone(new StressPoolTablePanel(getMainWindow()), EAM.text("Choose Stress to Clone")))
+		if (validUserChoiceForObjectToClone(new StressPoolTablePanel(getMainWindow()), EAM.text("Choose Stress to Create from")))
 			super.doIt();
 	}
 }

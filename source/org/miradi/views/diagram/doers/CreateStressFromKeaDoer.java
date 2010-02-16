@@ -54,7 +54,7 @@ public class CreateStressFromKeaDoer extends CreateAnnotationDoer
 			return;
 		
 		KeyEcologicalAttributeListTableModel keyEcologicalAttributeListTableModel = new KeyEcologicalAttributeListTableModel(getProject(), ((Factor)getSelectedParentFactor()).getFactorId());
-		if (validUserChoiceForObjectToClone(new KeyEcologicalAttributeListTablePanelWithoutButtons(getMainWindow(), keyEcologicalAttributeListTableModel), EAM.text("Choose Key Ecological Attribute to Clone")))
+		if (validUserChoiceForObjectToClone(new KeyEcologicalAttributeListTablePanelWithoutButtons(getMainWindow(), keyEcologicalAttributeListTableModel), EAM.text("Choose Key Ecological Attribute to Create from")))
 			super.doIt();
 	}
 	

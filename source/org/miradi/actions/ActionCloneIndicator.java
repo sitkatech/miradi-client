@@ -38,6 +38,6 @@ public class ActionCloneIndicator extends ObjectsAction
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Clone a Indicator");
+		return EAM.text("TT|Create from an Existing Indicator");
 	}
 }

@@ -38,6 +38,6 @@ public class ActionCloneStress extends ObjectsAction
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Clone a Stress");
+		return EAM.text("TT|Create from an Existing Stress");
 	}
 }
