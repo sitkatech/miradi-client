@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-16 11:56-0600\n"
+"POT-Creation-Date: 2010-02-16 12:23-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -594,8 +594,8 @@ msgstr ""
 "que el problema se haya resuelto."
 
 #: Miradi/source/org/miradi/views/diagram/CloneGoalDoer.java:33
-msgid "Choose Goal to Clone"
-msgstr "Seleccione un objetivo para clonar."
+msgid "Choose Goal to Create from"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteObjective.java:30
 msgid "Are you sure you want to delete this Objective?"
@@ -615,8 +615,8 @@ msgid "Title|Factor Properties"
 msgstr "Propiedades del factor"
 
 #: Miradi/source/org/miradi/views/diagram/doers/CloneStressDoer.java:33
-msgid "Choose Stress to Clone"
-msgstr "Seleccionar presión para clonar"
+msgid "Choose Stress to Create from"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:41
 msgid "Label|New Scope Box"
@@ -645,8 +645,8 @@ msgid "Label|New Group Box"
 msgstr "Nuevo cuadro de grupo"
 
 #: Miradi/source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:57
-msgid "Choose Key Ecological Attribute to Clone"
-msgstr "Seleccione el atributo ecológico clave para clonar"
+msgid "Choose Key Ecological Attribute to Create from"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:71
 msgid "[NOT SPECIFIED]"
@@ -702,8 +702,8 @@ msgid "Label|New Draft Strategy"
 msgstr "Nueva estrategia en borrador"
 
 #: Miradi/source/org/miradi/views/diagram/CloneObjectiveDoer.java:33
-msgid "Choose Objective to Clone"
-msgstr "Seleccione la meta a clonar."
+msgid "Choose Objective to Create from"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/PasteDoer.java:57
 msgid "<html>This paste cannot be performed for unexpected reasons"
@@ -797,8 +797,8 @@ msgid "[Page %s]"
 msgstr "[Página %s]"
 
 #: Miradi/source/org/miradi/views/diagram/CloneIndicatorDoer.java:33
-msgid "Choose Indicator to Clone"
-msgstr "Seleccione el indicador para clonar."
+msgid "Choose Indicator to Create from"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:67
 #: Miradi/source/org/miradi/main/EAM.java:442
@@ -4975,8 +4975,8 @@ msgid "Action|Manage|Create from Existing"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCloneStress.java:41
-msgid "TT|Clone a Stress"
-msgstr "Clonar una presión"
+msgid "TT|Create from an Existing Stress"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionNudgeUp.java:34
 msgid "Action|Nudge Item Up"
@@ -5988,8 +5988,8 @@ msgid "TT|Delete the selected Custom Planning View"
 msgstr "Eliminar la vista Planificación personalizada seleccionada"
 
 #: Miradi/source/org/miradi/actions/ActionCloneGoal.java:41
-msgid "TT|Clone a Goal"
-msgstr "Clonar un objetivo"
+msgid "TT|Create from an Existing Goal"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeleteResultsChain.java:35
 msgid "Action|Delete Results Chain"
@@ -6172,12 +6172,12 @@ msgid "TT|Choose which factors are tagged."
 msgstr "Seleccionar los factores etiquetados. "
 
 #: Miradi/source/org/miradi/actions/ActionCloneObjective.java:41
-msgid "TT|Clone an Objective"
+msgid "TT|Create from an Existing Objective"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCloneIndicator.java:41
-msgid "TT|Clone a Indicator"
-msgstr "Clonar un indicador"
+msgid "TT|Create from an Existing Indicator"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionTreeCreateObjective.java:40
 #: Miradi/source/org/miradi/actions/ActionCreateObjective.java:35
@@ -6912,16 +6912,14 @@ msgid "Title|Nested Target Properties"
 msgstr "Propiedades del objeto anidado"
 
 #: Miradi/source/org/miradi/dialogs/AnnotationSelectionDlg.java:36
-msgid "Clone"
-msgstr "Clonar"
+msgid "Create from Existing"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/AnnotationSelectionDlg.java:41
 msgid ""
-"Please select which item should be cloned into this factor, then press the "
-"Clone button"
+"Please select which item should be created into this factor, then press the "
+"Create from Existing  button"
 msgstr ""
-"Seleccione el elemento que se debe clonar con este factor y oprima el botón "
-"Clonar."
 
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:58
 msgid "Fraction of FTE..."
@@ -30259,6 +30257,40 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Choose Goal to Clone"
+#~ msgstr "Seleccione un objetivo para clonar."
+
+#~ msgid "Choose Stress to Clone"
+#~ msgstr "Seleccionar presión para clonar"
+
+#~ msgid "Choose Key Ecological Attribute to Clone"
+#~ msgstr "Seleccione el atributo ecológico clave para clonar"
+
+#~ msgid "Choose Objective to Clone"
+#~ msgstr "Seleccione la meta a clonar."
+
+#~ msgid "Choose Indicator to Clone"
+#~ msgstr "Seleccione el indicador para clonar."
+
+#~ msgid "TT|Clone a Stress"
+#~ msgstr "Clonar una presión"
+
+#~ msgid "TT|Clone a Goal"
+#~ msgstr "Clonar un objetivo"
+
+#~ msgid "TT|Clone a Indicator"
+#~ msgstr "Clonar un indicador"
+
+#~ msgid "Clone"
+#~ msgstr "Clonar"
+
+#~ msgid ""
+#~ "Please select which item should be cloned into this factor, then press "
+#~ "the Clone button"
+#~ msgstr ""
+#~ "Seleccione el elemento que se debe clonar con este factor y oprima el "
+#~ "botón Clonar."
 
 #~ msgid "Action|Manage|Clone Stress..."
 #~ msgstr "Clonar presión…"

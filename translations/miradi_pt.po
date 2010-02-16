@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-16 11:56-0600\n"
+"POT-Creation-Date: 2010-02-16 12:23-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -541,7 +541,7 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/CloneGoalDoer.java:33
-msgid "Choose Goal to Clone"
+msgid "Choose Goal to Create from"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteObjective.java:30
@@ -562,7 +562,7 @@ msgid "Title|Factor Properties"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/CloneStressDoer.java:33
-msgid "Choose Stress to Clone"
+msgid "Choose Stress to Create from"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:41
@@ -592,7 +592,7 @@ msgid "Label|New Group Box"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:57
-msgid "Choose Key Ecological Attribute to Clone"
+msgid "Choose Key Ecological Attribute to Create from"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:71
@@ -647,7 +647,7 @@ msgid "Label|New Draft Strategy"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/CloneObjectiveDoer.java:33
-msgid "Choose Objective to Clone"
+msgid "Choose Objective to Create from"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/PasteDoer.java:57
@@ -726,7 +726,7 @@ msgid "[Page %s]"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/CloneIndicatorDoer.java:33
-msgid "Choose Indicator to Clone"
+msgid "Choose Indicator to Create from"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:67
@@ -4609,7 +4609,7 @@ msgid "Action|Manage|Create from Existing"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCloneStress.java:41
-msgid "TT|Clone a Stress"
+msgid "TT|Create from an Existing Stress"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionNudgeUp.java:34
@@ -5621,7 +5621,7 @@ msgid "TT|Delete the selected Custom Planning View"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCloneGoal.java:41
-msgid "TT|Clone a Goal"
+msgid "TT|Create from an Existing Goal"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeleteResultsChain.java:35
@@ -5805,11 +5805,11 @@ msgid "TT|Choose which factors are tagged."
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCloneObjective.java:41
-msgid "TT|Clone an Objective"
+msgid "TT|Create from an Existing Objective"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCloneIndicator.java:41
-msgid "TT|Clone a Indicator"
+msgid "TT|Create from an Existing Indicator"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionTreeCreateObjective.java:40
@@ -6533,13 +6533,13 @@ msgid "Title|Nested Target Properties"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/AnnotationSelectionDlg.java:36
-msgid "Clone"
+msgid "Create from Existing"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/AnnotationSelectionDlg.java:41
 msgid ""
-"Please select which item should be cloned into this factor, then press the "
-"Clone button"
+"Please select which item should be created into this factor, then press the "
+"Create from Existing  button"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:58
