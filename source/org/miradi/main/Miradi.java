@@ -263,7 +263,8 @@ public class Miradi
 				EAM.getMainWindow().start(args);
 				
 				File projectToImport = createFileToImportFromCommandLineArgs(args);
-				importProjectFromCommandLine(projectToImport);
+				if (isImportableProjectFile(projectToImport))
+					importProjectFromCommandLine(projectToImport);
 			}
 			catch(Exception e)
 			{
@@ -272,18 +273,31 @@ public class Miradi
 				System.exit(1);
 			}
 		}
+		
+		private boolean isImportableProjectFile(File projectToImport)
+		{
+			if (projectToImport == null)
+			{
+				return false;
+			}
+			
+			if (!projectToImport.exists())
+			{
+				EAM.logError("Importing File (" + projectToImport + ") from command line does not exist");
+				return false;
+			}
+			
+			if (projectToImport.isDirectory())
+			{
+				EAM.logError("Importing File (" + projectToImport + ") from command line is a directory");
+				return false;
+			}
+			
+			return true;
+		}
 
 		private void importProjectFromCommandLine(File projectToImport) throws Exception
 		{
-			if (projectToImport == null)
-				return;
-			
-			if (!projectToImport.exists())
-				return;
-			
-			if (projectToImport.isDirectory())
-				return;
-			
 			final String projectName = projectToImport.getName();
 			if (projectName.endsWith(CpmzFileFilterForChooserDialog.EXTENSION))
 				new CpmzProjectImporter(EAM.getMainWindow()).importProject(projectToImport);
