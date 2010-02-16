@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-16 12:23-0600\n"
+"POT-Creation-Date: 2010-02-16 12:50-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -991,6 +991,7 @@ msgid " was empty"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:259
+#: Miradi/source/org/miradi/main/Miradi.java:279
 msgid "Import"
 msgstr "导入 \t\t"
 
@@ -4064,15 +4065,19 @@ msgstr "直接威胁因子 \t\t"
 msgid "Status|Ready"
 msgstr "就绪 \t\t"
 
-#: Miradi/source/org/miradi/main/Miradi.java:317
-msgid "Button|Import"
+#: Miradi/source/org/miradi/main/Miradi.java:278
+msgid "Do you want to attempt to import %s into Miradi?"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/Miradi.java:318
-msgid "Button|Don't Import"
+msgid "Button|Import"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/Miradi.java:319
+msgid "Button|Don't Import"
+msgstr ""
+
+#: Miradi/source/org/miradi/main/Miradi.java:320
 msgid "Button|Exit"
 msgstr ""
 
