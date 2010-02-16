@@ -71,7 +71,12 @@ public class CommandLineProjectFileImporterHelper
 	private File getProjectFileToImport()
 	{
 		return projectFileToImport;
-	}			
+	}
+
+	public String getFileName()
+	{
+		return getProjectFileToImport().getName();
+	}
 	
 	private AbstractProjectImporter importer;
 	private File projectFileToImport;

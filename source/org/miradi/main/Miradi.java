@@ -275,7 +275,8 @@ public class Miradi
 
 		private void userComfirmImport(CommandLineProjectFileImporterHelper importHelper) throws Exception
 		{
-			int userComfirmationChoice = confirmImportDialog("Import", "Should import Selected file?");
+			String message = EAM.substitute(EAM.text("Do you want to attempt to import %s into Miradi?"), importHelper.getFileName());
+			int userComfirmationChoice = confirmImportDialog(EAM.text("Import"), message);
 			if (userComfirmationChoice == IMPORT_CHOICE)
 				importHelper.importProjectFromCommandLine();
 			
