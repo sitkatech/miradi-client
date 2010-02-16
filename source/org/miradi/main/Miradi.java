@@ -35,8 +35,6 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.LanguageQuestion;
 import org.miradi.questions.StaticQuestionManager;
-import org.miradi.utils.CpmzFileFilterForChooserDialog;
-import org.miradi.utils.MpzFileFilter;
 import org.miradi.utils.Translation;
 import org.miradi.views.umbrella.CpmzProjectImporter;
 import org.miradi.views.umbrella.ZippedProjectImporter;
@@ -262,9 +260,9 @@ public class Miradi
 				EAM.setMainWindow(MainWindow.create());
 				EAM.getMainWindow().start(args);
 				
-				File projectToImport = createFileToImportFromCommandLineArgs(args);
-				if (isImportableProjectFile(projectToImport))
-					importProjectFromCommandLine(projectToImport);
+				CommandLineProjectFileImporterHelper importHelper = createFileToImportFromCommandLineArgs(args);
+				if (importHelper != null && importHelper.isImportableProjectFile())
+					importHelper.importProjectFromCommandLine();
 			}
 			catch(Exception e)
 			{
@@ -274,61 +272,26 @@ public class Miradi
 			}
 		}
 		
-		private boolean isImportableProjectFile(File projectToImport)
-		{
-			if (projectToImport == null)
-			{
-				return false;
-			}
-			
-			if (!projectToImport.exists())
-			{
-				EAM.logError("Importing File (" + projectToImport + ") from command line does not exist");
-				return false;
-			}
-			
-			if (projectToImport.isDirectory())
-			{
-				EAM.logError("Importing File (" + projectToImport + ") from command line is a directory");
-				return false;
-			}
-			
-			return true;
-		}
-
-		private void importProjectFromCommandLine(File projectToImport) throws Exception
-		{
-			final String projectName = projectToImport.getName();
-			if (projectName.endsWith(CpmzFileFilterForChooserDialog.EXTENSION))
-				new CpmzProjectImporter(EAM.getMainWindow()).importProject(projectToImport);
-
-			else if (projectName.endsWith(MpzFileFilter.EXTENSION))
-				new ZippedProjectImporter(EAM.getMainWindow()).importProject(projectToImport);
-		}
-		
-		private File createFileToImportFromCommandLineArgs(String[] commandLineArgs) throws Exception
+		private CommandLineProjectFileImporterHelper createFileToImportFromCommandLineArgs(String[] commandLineArgs) throws Exception
 		{
 			for (int index = 0; index < commandLineArgs.length; ++index)
 			{
 				String commandLineArg = commandLineArgs[index];
-				if (isImportableExtension(commandLineArg))
-					return new File(commandLineArg);
+				if (isImportTagArgument(commandLineArg, CommandLineProjectFileImporterHelper.COMMANDLINE_TAG_IMPORT_MPZ))
+					return new CommandLineProjectFileImporterHelper(new ZippedProjectImporter(EAM.getMainWindow()), commandLineArg);
+				
+				if (isImportTagArgument(commandLineArg, CommandLineProjectFileImporterHelper.COMMANDLINE_TAG_IMPORT_CPMZ))
+					return new CommandLineProjectFileImporterHelper(new CpmzProjectImporter(EAM.getMainWindow()), commandLineArg);
 			}
 			
 			return null;
 		}
-
-		private boolean isImportableExtension(String commandLineArg)
+		
+		private boolean isImportTagArgument(String commandLineArg, String commandlineImportTag)
 		{
-			if (commandLineArg.endsWith(MpzFileFilter.EXTENSION))
-				return true;
-			
-			if (commandLineArg.endsWith(CpmzFileFilterForChooserDialog.EXTENSION))
-				return true;
-			
-			return false;
+			return commandLineArg.toLowerCase().startsWith(commandlineImportTag) && commandLineArg.endsWith(CommandLineProjectFileImporterHelper.COMMANDLINE_TAG_END_FILE_NAME);
 		}
-
+		
 		String[] args;
 	}
 
