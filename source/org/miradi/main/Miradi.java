@@ -250,7 +250,7 @@ public class Miradi
 	{
 		MainWindowRunner(String[] argsToUse)
 		{
-			args = argsToUse;
+			commandLineArgs = argsToUse;
 		}
 		
 		public void run()
@@ -258,9 +258,9 @@ public class Miradi
 			try
 			{
 				EAM.setMainWindow(MainWindow.create());
-				EAM.getMainWindow().start(args);
+				EAM.getMainWindow().start(commandLineArgs);
 				
-				CommandLineProjectFileImporterHelper importHelper = createFileToImportFromCommandLineArgs(args);
+				CommandLineProjectFileImporterHelper importHelper = createFileToImportFromCommandLineArgs(commandLineArgs);
 				if (importHelper != null && importHelper.isImportableProjectFile())
 					importHelper.importProjectFromCommandLine();
 			}
@@ -272,11 +272,11 @@ public class Miradi
 			}
 		}
 		
-		private CommandLineProjectFileImporterHelper createFileToImportFromCommandLineArgs(String[] commandLineArgs) throws Exception
+		private CommandLineProjectFileImporterHelper createFileToImportFromCommandLineArgs(String[] commandLineArgsToUse) throws Exception
 		{
-			for (int index = 0; index < commandLineArgs.length; ++index)
+			for (int index = 0; index < commandLineArgsToUse.length; ++index)
 			{
-				String commandLineArg = commandLineArgs[index];
+				String commandLineArg = commandLineArgsToUse[index];
 				if (isImportTagArgument(commandLineArg, CommandLineProjectFileImporterHelper.COMMANDLINE_TAG_IMPORT_MPZ))
 					return new CommandLineProjectFileImporterHelper(new ZippedProjectImporter(EAM.getMainWindow()), commandLineArg);
 				
@@ -292,7 +292,7 @@ public class Miradi
 			return commandLineArg.toLowerCase().startsWith(commandlineImportTag) && commandLineArg.endsWith(CommandLineProjectFileImporterHelper.COMMANDLINE_TAG_END_FILE_NAME);
 		}
 		
-		private String[] args;
+		private String[] commandLineArgs;
 	}
 
 	public static final String MAIN_VERSION = "3.0";
