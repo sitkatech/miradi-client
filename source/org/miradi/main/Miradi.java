@@ -260,7 +260,7 @@ public class Miradi
 				EAM.setMainWindow(MainWindow.create());
 				getMainWindow().start(commandLineArgs);
 				
-				CommandLineProjectFileImporterHelper importHelper = createFileToImportFromCommandLineArgs(commandLineArgs);
+				CommandLineProjectFileImporterHelper importHelper = createImportHelper(commandLineArgs);
 				if (importHelper != null && importHelper.isImportableProjectFile())
 					importHelper.importProjectFromCommandLine();
 			}
@@ -272,7 +272,7 @@ public class Miradi
 			}
 		}
 		
-		private CommandLineProjectFileImporterHelper createFileToImportFromCommandLineArgs(String[] commandLineArgsToUse) throws Exception
+		private CommandLineProjectFileImporterHelper createImportHelper(String[] commandLineArgsToUse) throws Exception
 		{
 			for (int index = 0; index < commandLineArgsToUse.length; ++index)
 			{
