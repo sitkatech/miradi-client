@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-16 11:38-0600\n"
+"POT-Creation-Date: 2010-02-16 11:56-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4784,10 +4784,13 @@ msgid "TT|Insert a Target"
 msgstr "插入一个对象 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionCloneStress.java:35
-msgid "Action|Manage|Clone Stress..."
-msgstr "克隆压力… \t\t"
+#: Miradi/source/org/miradi/actions/ActionCloneGoal.java:35
+#: Miradi/source/org/miradi/actions/ActionCloneObjective.java:35
+#: Miradi/source/org/miradi/actions/ActionCloneIndicator.java:35
+msgid "Action|Manage|Create from Existing"
+msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCloneStress.java:40
+#: Miradi/source/org/miradi/actions/ActionCloneStress.java:41
 msgid "TT|Clone a Stress"
 msgstr "克隆一项压力 \t\t"
 
@@ -5799,11 +5802,7 @@ msgstr "删除定制 \t\t"
 msgid "TT|Delete the selected Custom Planning View"
 msgstr "删除选定的定制计划视图 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionCloneGoal.java:35
-msgid "Action|Manage|Clone Goal..."
-msgstr "克隆总目标… \t\t"
-
-#: Miradi/source/org/miradi/actions/ActionCloneGoal.java:40
+#: Miradi/source/org/miradi/actions/ActionCloneGoal.java:41
 msgid "TT|Clone a Goal"
 msgstr "克隆一个总目标 \t\t"
 
@@ -5987,19 +5986,11 @@ msgstr "|编辑..."
 msgid "TT|Choose which factors are tagged."
 msgstr "选择将哪个因素加上标签。 "
 
-#: Miradi/source/org/miradi/actions/ActionCloneObjective.java:35
-msgid "Action|Manage|Clone Objective..."
-msgstr "克隆分目标… \t\t"
-
-#: Miradi/source/org/miradi/actions/ActionCloneObjective.java:40
+#: Miradi/source/org/miradi/actions/ActionCloneObjective.java:41
 msgid "TT|Clone an Objective"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCloneIndicator.java:35
-msgid "Action|Manage|Clone Indicator..."
-msgstr "克隆编辑器… \t\t"
-
-#: Miradi/source/org/miradi/actions/ActionCloneIndicator.java:40
+#: Miradi/source/org/miradi/actions/ActionCloneIndicator.java:41
 msgid "TT|Clone a Indicator"
 msgstr "克隆一个编辑器 \t\t"
 
@@ -13306,7 +13297,7 @@ msgid ""
 "class='definition'>stresses</a> that affect your conservation targets. If "
 "you want to use stresses, double click on a target, and click on the <code "
 "class='toolbarbutton'>&lt;Stresses&gt;</code> tab in the target properties "
-"window. Click on the buttons to create a new stress, clone an existing "
+"window. Click on the buttons to create a new stress, create from existing "
 "stress, or create a stress from one of your KEAs. For each stress, you can "
 "then fill in the <strong>ID</strong>, <strong>name</strong>, and "
 "<strong>details</strong> fields. You can also click the <code "
@@ -27386,6 +27377,18 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Action|Manage|Clone Stress..."
+#~ msgstr "克隆压力… \t\t"
+
+#~ msgid "Action|Manage|Clone Goal..."
+#~ msgstr "克隆总目标… \t\t"
+
+#~ msgid "Action|Manage|Clone Objective..."
+#~ msgstr "克隆分目标… \t\t"
+
+#~ msgid "Action|Manage|Clone Indicator..."
+#~ msgstr "克隆编辑器… \t\t"
 
 #~ msgid "(Unknown)"
 #~ msgstr "（未知） \t\t"
