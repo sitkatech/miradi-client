@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-16 11:22-0600\n"
+"POT-Creation-Date: 2010-02-16 11:38-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -913,11 +913,11 @@ msgid ""
 "Are you sure you want to delete the selected %s?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:59
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:63
 msgid "Data was exported as tab delimited."
 msgstr "数据以制表符分隔格式导出 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:64
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:68
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr "试图导出到制表符分隔格式文件时出错。 \t\t"
 
