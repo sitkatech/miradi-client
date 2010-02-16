@@ -258,7 +258,7 @@ public class Miradi
 			try
 			{
 				EAM.setMainWindow(MainWindow.create());
-				EAM.getMainWindow().start(commandLineArgs);
+				getMainWindow().start(commandLineArgs);
 				
 				CommandLineProjectFileImporterHelper importHelper = createFileToImportFromCommandLineArgs(commandLineArgs);
 				if (importHelper != null && importHelper.isImportableProjectFile())
@@ -278,13 +278,18 @@ public class Miradi
 			{
 				String commandLineArg = commandLineArgsToUse[index];
 				if (isImportTagArgument(commandLineArg, CommandLineProjectFileImporterHelper.COMMANDLINE_TAG_IMPORT_MPZ))
-					return new CommandLineProjectFileImporterHelper(new ZippedProjectImporter(EAM.getMainWindow()), commandLineArg);
+					return new CommandLineProjectFileImporterHelper(new ZippedProjectImporter(getMainWindow()), commandLineArg);
 				
 				if (isImportTagArgument(commandLineArg, CommandLineProjectFileImporterHelper.COMMANDLINE_TAG_IMPORT_CPMZ))
-					return new CommandLineProjectFileImporterHelper(new CpmzProjectImporter(EAM.getMainWindow()), commandLineArg);
+					return new CommandLineProjectFileImporterHelper(new CpmzProjectImporter(getMainWindow()), commandLineArg);
 			}
 			
 			return null;
+		}
+
+		private MainWindow getMainWindow()
+		{
+			return EAM.getMainWindow();
 		}
 		
 		private boolean isImportTagArgument(String commandLineArg, String commandlineImportTag)
