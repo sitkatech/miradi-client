@@ -30,7 +30,7 @@ import org.miradi.utils.MiradiTabDelimitedFileChooser;
 import org.miradi.utils.TableExporter;
 import org.miradi.views.ViewDoer;
 
-public class ExportTableDoer extends ViewDoer
+public class TabDelimitedTableExportDoer extends ViewDoer
 {
 	@Override
 	public boolean isAvailable()

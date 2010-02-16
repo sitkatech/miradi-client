@@ -214,7 +214,7 @@ import org.miradi.views.umbrella.doers.EditObjectiveStrategyActivityRelevacyList
 import org.miradi.views.umbrella.doers.ExpandAllRowsDoer;
 import org.miradi.views.umbrella.doers.ExportProjectXmlDoer;
 import org.miradi.views.umbrella.doers.ExportRtfDoer;
-import org.miradi.views.umbrella.doers.ExportTableDoer;
+import org.miradi.views.umbrella.doers.TabDelimitedTableExportDoer;
 import org.miradi.views.umbrella.doers.HowToSaveDoer;
 import org.miradi.views.umbrella.doers.ImportCpmzDoer;
 import org.miradi.views.umbrella.doers.RemoveResourceAssignmentDoer;
@@ -389,7 +389,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionExportWcsProjectZip.class, new WcsXmlExportDoer());
 		addDoerToMap(ActionExportConProXml.class, new ExportCpmzDoer());
 		addDoerToMap(ActionExportRtf.class, new ExportRtfDoer());
-		addDoerToMap(ActionExportTable.class, new ExportTableDoer());
+		addDoerToMap(ActionExportTable.class, new TabDelimitedTableExportDoer());
 		addDoerToMap(ActionSaveImageJPEG.class, new SaveImageJPEGDoer());
 		addDoerToMap(ActionSaveImagePng.class, new SaveImagePngDoer());
 		addDoerToMap(ActionConfigureExport.class, new HelpButtonDoer());
