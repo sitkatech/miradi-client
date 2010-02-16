@@ -42,6 +42,7 @@ public class ConfigurablePlanningTreeTableModel extends ExportablePlanningTreeTa
 		return RowManager.getVisibleRowsForCustomization(projectToUse.getCurrentViewData());
 	}
 
+	@Override
 	public void updateColumnsToShow() throws Exception
 	{
 		CodeList visibleColumnCodes = getVisibleColumnCodes(getProject());
