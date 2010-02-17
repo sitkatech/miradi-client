@@ -59,11 +59,6 @@ abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 			return new PlanningTreeErrorNode(projectToUse); 
 		}
 	}
-
-	// TODO: Should make rows and columns work the same way
-	// probably have no rows or columns in the constructor and
-	// always then update/refresh both rows and columns
-	abstract public void updateColumnsToShow() throws Exception;
 	
 	protected void updateColumnsToShow(CodeList visibleColumnCodes)
 	{
