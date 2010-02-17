@@ -45,6 +45,7 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 		listComponent.setPropertiesPanel(propertiesPanel);
 	}
 	
+	@Override
 	public void dispose()
 	{
 		becomeInactive();
@@ -57,6 +58,7 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 		super.dispose();
 	}
 	
+	@Override
 	public void becomeActive()
 	{
 		getListPanel().becomeActive();
@@ -64,6 +66,7 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 		updateSplitterLocation();
 	}
 	
+	@Override
 	public void becomeInactive()
 	{
 		ObjectCollectionPanel listPanel = getListPanel();
@@ -93,6 +96,7 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 		return listComponent;
 	}
 	
+	@Override
 	public BaseObject getObject()
 	{
 		if(listComponent == null)
