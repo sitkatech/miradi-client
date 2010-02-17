@@ -156,6 +156,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		mainTable.dispose();
 	}
 	
+	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		try
@@ -525,11 +526,13 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return mainModel;
 	}
 	
+	@Override
 	public void beginSelectionChangingProcess()
 	{
 		disableSectionSwitchDuringFullRebuild();
 	}
 	
+	@Override
 	public void endSelectionChangingProcess()
 	{
 		enableSectionSwitch();
