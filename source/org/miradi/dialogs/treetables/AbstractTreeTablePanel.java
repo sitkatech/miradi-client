@@ -45,6 +45,19 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		super(mainWindowToUse, treeToUse, buttonActionClasses);
 	}
 	
+	protected void rebuildEntireTreeAndTable() throws Exception
+	{
+		disableSectionSwitchDuringFullRebuild();
+		try
+		{
+			rebuildEntireTreeTable();
+		}
+		finally
+		{
+			enableSectionSwitch();
+		}
+	}
+	
 	public GenericTreeTableModel getTreeTableModel()
 	{
 		return getModel();
