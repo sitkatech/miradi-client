@@ -584,11 +584,6 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		getPropertiesPanel().setObjectRefs(getPicker().getSelectionHierarchy().toArray(), selectedColumnTag);
 	}
 	
-	public GenericTreeTableModel getTreeTableModel()
-	{
-		return getModel();
-	}
-	
 	class TreeTableRowSelectionHandler implements ListSelectionListener
 	{
 		public void valueChanged(ListSelectionEvent e)
