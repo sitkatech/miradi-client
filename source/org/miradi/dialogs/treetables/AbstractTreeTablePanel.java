@@ -27,4 +27,9 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	{
 		super(mainWindowToUse, treeToUse, buttonActionClasses);
 	}
+	
+	public GenericTreeTableModel getTreeTableModel()
+	{
+		return getModel();
+	}
 }
