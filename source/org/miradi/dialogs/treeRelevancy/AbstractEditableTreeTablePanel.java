@@ -39,6 +39,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.utils.MultiTableRowHeightController;
 import org.miradi.utils.MultiTableSelectionController;
 import org.miradi.utils.MultiTableVerticalScrollController;
+import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
@@ -157,6 +158,12 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 	protected EditableObjectTableModel getMainModel()
 	{
 		return editableTableModel;
+	}
+	
+	@Override
+	protected TableWithColumnWidthAndSequenceSaver getMainTable()
+	{
+		return editableTable; 
 	}
 	
 	abstract protected SingleBooleanColumnEditableModel createEditableTableModel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeTable, BaseObject baseObject);
