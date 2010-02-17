@@ -45,6 +45,48 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		super(mainWindowToUse, treeToUse, buttonActionClasses);
 	}
 	
+	@Override
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		try
+		{		
+			if (isColumnExpandCollapseCommand(event))
+			{
+				getMainTable().clearColumnSelection();
+				rebuildEntireTreeAndTable();
+			}
+			
+			
+			if (doesCommandForceRebuild(event))
+			{
+				rebuildEntireTreeAndTable();
+			}
+			else if(doesAffectTableRowHeight(event))
+			{
+				getTree().updateAutomaticRowHeights();
+				getMainTable().updateAutomaticRowHeights();
+			}
+			else if(event.isSetDataCommand())
+			{
+				validate();
+			}
+		
+			
+			if(isTreeExpansionCommand(event))
+			{
+				restoreTreeExpansionState();
+			}
+			
+			repaintToGrowIfTreeIsTaller();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog("Error occurred: " + e.getMessage());
+		}
+		
+	}
+	
 	protected void rebuildEntireTreeAndTable() throws Exception
 	{
 		disableSectionSwitchDuringFullRebuild();
