@@ -48,6 +48,11 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		return getModel();
 	}
 	
+	protected boolean isColumnExpandCollapseCommand(CommandExecutedEvent event)
+	{
+		return event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_DATE_UNIT_LIST_DATA);
+	}
+	
 	protected boolean doesCommandForceRebuild(CommandExecutedEvent event)
 	{
 		if(wereAssignmentNodesAddedOrRemoved(event))
