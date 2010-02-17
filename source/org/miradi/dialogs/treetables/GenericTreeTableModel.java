@@ -230,6 +230,13 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		}
 	}
 	
+	// TODO: Should make rows and columns work the same way
+	// probably have no rows or columns in the constructor and
+	// always then update/refresh both rows and columns
+	public void updateColumnsToShow() throws Exception
+	{
+	}
+	
 	abstract public String getUniqueTreeTableModelIdentifier();
 
 	public static final String DEFAULT_COLUMN = "Item";
