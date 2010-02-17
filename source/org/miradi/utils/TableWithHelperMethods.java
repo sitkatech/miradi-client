@@ -52,6 +52,11 @@ abstract public class TableWithHelperMethods extends TableWithSunBugWorkarounds
 
 		return c;
 	}
+	
+	public void clearColumnSelection()
+	{
+		getColumnModel().getSelectionModel().clearSelection();
+	}
 
 	public void setForcedPreferredScrollableViewportHeight(int viewportheight)
 	{

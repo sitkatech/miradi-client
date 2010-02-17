@@ -201,11 +201,6 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		updateToReflectNewColumns();
 	}
 
-	public void clearColumnSelection()
-	{
-		getColumnModel().getSelectionModel().clearSelection();
-	}
-
 	private PlanningViewAbstractTreeTableSyncedTableModel getModel(int modelColumnIndex)
 	{
 		return getCastedModel().getCastedModel(modelColumnIndex);
