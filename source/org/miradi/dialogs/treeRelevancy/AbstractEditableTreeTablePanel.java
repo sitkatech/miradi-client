@@ -114,6 +114,7 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 		treePlusTablesPanel.setOneTouchExpandable(false);
 	}
 
+	@Override
 	protected void rebuildEntireTreeTable() throws Exception
 	{
 		ORef selectedRef = ORef.INVALID;
@@ -156,6 +157,7 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 			editableTable.repaint();
 	}
 	
+	@Override
 	protected EditableObjectTableModel getMainModel()
 	{
 		return editableTableModel;
