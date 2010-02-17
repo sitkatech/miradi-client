@@ -399,9 +399,9 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	private void rebuildEntireTreeTable() throws Exception
 	{
 		int selectedRow = tree.getSelectionModel().getMinSelectionIndex();
-		int selectedColumn = mainTable.getColumnModel().getSelectionModel().getMinSelectionIndex();
-		mainTable.clearSelection();
-		mainTable.getColumnModel().getSelectionModel().clearSelection();
+		int selectedColumn = getMainTable().getColumnModel().getSelectionModel().getMinSelectionIndex();
+		getMainTable().clearSelection();
+		getMainTable().getColumnModel().getSelectionModel().clearSelection();
 
 		// TODO: Perhaps possibly detect exactly what changed and 
 		// only rebuild the columns or the rows rather than always doing both
