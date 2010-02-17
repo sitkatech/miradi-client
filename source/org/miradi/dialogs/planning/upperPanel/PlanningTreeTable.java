@@ -33,15 +33,17 @@ import org.miradi.actions.ActionTreeCreateTask;
 import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 
 public class PlanningTreeTable extends TreeTableWithStateSaving implements RowColumnBaseObjectProvider
 {
-	public PlanningTreeTable(MainWindow mainWindowToUse, PlanningTreeTableModel planningTreeModelToUse)
+	public PlanningTreeTable(MainWindow mainWindowToUse, GenericTreeTableModel planningTreeModelToUse)
 	{
 		super(mainWindowToUse, planningTreeModelToUse);
+		
 		setAutoResizeMode(AUTO_RESIZE_OFF);
 	}
 	

@@ -49,6 +49,7 @@ import org.miradi.dialogs.planning.propertiesPanel.PlanningWorkUnitsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceWorkUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
+import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTablePanelWithSixButtonColumns;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.CommandExecutedEvent;
@@ -79,12 +80,12 @@ import org.miradi.utils.TreeTableExporter;
 
 abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 {
-	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, PlanningTreeTableModel modelToUse, Class[] buttonActions, RowColumnProvider rowColumnProviderToUse) throws Exception
+	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActions, RowColumnProvider rowColumnProviderToUse) throws Exception
 	{
 		this(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProviderToUse, new AbstractFixedHeightDirectlyAboveTreeTablePanel());
 	}
 	
-	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, PlanningTreeTableModel modelToUse, Class[] buttonActions, RowColumnProvider rowColumnProviderToUse, JComponent filterStatusPanel) throws Exception
+	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActions, RowColumnProvider rowColumnProviderToUse, JComponent filterStatusPanel) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, buttonActions);
 		
@@ -588,9 +589,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		getPropertiesPanel().setObjectRefs(getPicker().getSelectionHierarchy().toArray(), selectedColumnTag);
 	}
 	
-	public PlanningTreeTableModel getPlanningTreeTableModel()
+	public GenericTreeTableModel getPlanningTreeTableModel()
 	{
-		return (PlanningTreeTableModel) getModel();
+		return getModel();
 	}
 	
 	class TreeTableRowSelectionHandler implements ListSelectionListener
