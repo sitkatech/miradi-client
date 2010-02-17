@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="4.1.5" transformSequenceNumber="2">
-  <directoryPresets config="./installer/BuildFiles/install4j_messages_en.utf8" />
-  <application name="Miradi" distributionSourceDir="" applicationId="9257-7778-0919-8416" 
-  mediaDir="../dist" 
-  mediaFilePattern="${compiler:sys.shortName}Setup" 
-  compression="9" lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" 
-  keepModificationTimes="false" shortName="Miradi" publisher="Miradi" publisherWeb="http://miradi.org" 
-  version="3.0" allPathsRelative="true" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" 
-  macSignature="????" installerName="" javaMinVersion="1.6" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
+  <directoryPresets config="./installer/BuildFiles" />
+  <application name="Miradi" distributionSourceDir="" applicationId="9257-7778-0919-8416" mediaDir="../dist" mediaFilePattern="${compiler:sys.shortName}Setup" compression="9" lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" keepModificationTimes="false" shortName="Miradi" publisher="Miradi" publisherWeb="http://miradi.org" version="3.0" allPathsRelative="true" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" installerName="" javaMinVersion="1.6" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
     <languages skipLanguageSelection="false">
       <principalLanguage id="en" customLocalizationFile="./installer/BuildFiles/install4j_messages_en.utf8" />
       <additionalLanguages>
@@ -192,6 +186,19 @@ return true;
             <actions />
             <formComponents />
           </screen>
+          <screen name="" id="222" beanClass="com.install4j.runtime.beans.screens.FileAssociationsScreen" enabled="true" commentSet="false" comment="" rollbackBarrier="false" backButton="2" finishScreen="false">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.screens.FileAssociationsScreen" />
+              </java>
+            </serializedBean>
+            <condition />
+            <validation />
+            <preActivation />
+            <postActivation />
+            <actions />
+            <formComponents />
+          </screen>
           <screen name="" id="6" beanClass="com.install4j.runtime.beans.screens.InstallationScreen" enabled="true" commentSet="false" comment="" rollbackBarrier="true" backButton="2" finishScreen="false">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
@@ -277,6 +284,52 @@ return true;
                       <void property="winIconFile">
                         <object class="com.install4j.api.beans.ExternalFile">
                           <string>../source/resources/images/app.ico</string>
+                        </object>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <condition />
+              </action>
+              <action name="" id="221" beanClass="com.install4j.runtime.beans.actions.desktop.CreateFileAssociationAction" enabled="true" commentSet="false" comment="" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.actions.desktop.CreateFileAssociationAction">
+                      <void property="description">
+                        <string>Miradi Project Zip</string>
+                      </void>
+                      <void property="extension">
+                        <string>mpz</string>
+                      </void>
+                      <void property="launcherId">
+                        <string>18</string>
+                      </void>
+                      <void property="windowsIconFile">
+                        <object class="com.install4j.api.beans.ExternalFile">
+                          <string>./installer/BuildFiles/miradi.ico</string>
+                        </object>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <condition />
+              </action>
+              <action name="" id="223" beanClass="com.install4j.runtime.beans.actions.desktop.CreateFileAssociationAction" enabled="true" commentSet="false" comment="" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.actions.desktop.CreateFileAssociationAction">
+                      <void property="description">
+                        <string>ConPro/Miradi Zip</string>
+                      </void>
+                      <void property="extension">
+                        <string>cpmz</string>
+                      </void>
+                      <void property="launcherId">
+                        <string>18</string>
+                      </void>
+                      <void property="windowsIconFile">
+                        <object class="com.install4j.api.beans.ExternalFile">
+                          <string>./installer/BuildFiles/miradi.ico</string>
                         </object>
                       </void>
                     </object>
