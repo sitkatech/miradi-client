@@ -60,11 +60,6 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	{
 	}
 	
-	public BaseObject getBaseObjectForRow(int row)
-	{
-		return getBaseObjectForRowColumn(row, 0);
-	}
-	
 	@Override
 	public int getProportionShares(int row)
 	{
