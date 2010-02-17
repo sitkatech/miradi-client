@@ -141,12 +141,7 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 	{
 		return editableTableModel;
 	}
-	
-	public GenericTreeTableModel getTreeTableModel()
-	{
-		return getModel();
-	}
-	
+
 	private void updateRightSideTablePanels() throws Exception
 	{
 		tablesPanel.removeAll();
