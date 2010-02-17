@@ -43,11 +43,6 @@ public class ObjectsOnlyPlanningTreeTableModel extends ExportablePlanningTreeTab
 	}
 
 	@Override
-	public void updateColumnsToShow() throws Exception
-	{
-	}
-	
-	@Override
 	public CodeList getRowCodesToShow()
 	{
 		try

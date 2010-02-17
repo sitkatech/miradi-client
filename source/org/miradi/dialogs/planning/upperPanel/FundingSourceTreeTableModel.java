@@ -75,11 +75,6 @@ public class FundingSourceTreeTableModel extends ExportablePlanningTreeTableMode
 	}
 
 	@Override
-	public void updateColumnsToShow() throws Exception
-	{
-	}
-	
-	@Override
 	public String getUniqueTreeTableModelIdentifier()
 	{
 		return UNIQUE_TREE_TABLE_IDENTIFIER;
