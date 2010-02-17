@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-17 11:05-0600\n"
+"POT-Creation-Date: 2010-02-17 11:08-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7174,7 +7174,7 @@ msgstr "字体 \t\t"
 msgid "Tags"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/DiagramPanel.java:156
+#: Miradi/source/org/miradi/dialogs/diagram/DiagramPanel.java:158
 msgid "Title|Diagram Panel"
 msgstr "图表面板 \t\t"
 
