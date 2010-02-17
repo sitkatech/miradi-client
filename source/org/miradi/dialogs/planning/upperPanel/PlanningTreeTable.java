@@ -45,27 +45,32 @@ public class PlanningTreeTable extends TreeTableWithStateSaving implements RowCo
 		setAutoResizeMode(AUTO_RESIZE_OFF);
 	}
 	
+	@Override
 	public Dimension getPreferredScrollableViewportSize()
 	{
 		return getPreferredSize();
 	}
 
+	@Override
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return getNodeForRow(row).getObject();
 	}
 
+	@Override
 	public void ensureSelectedRowVisible()
 	{
 		Rectangle rect = getCellRect(getSelectedRow(), 0, true);
 		scrollRectToVisible(rect);
 	}
 	
+	@Override
 	public int getProportionShares(int row)
 	{
 		return getNodeForRow(row).getProportionShares();
 	}
 	
+	@Override
 	public boolean areBudgetValuesAllocated(int row)
 	{
 		return getNodeForRow(row).areBudgetValuesAllocated();
