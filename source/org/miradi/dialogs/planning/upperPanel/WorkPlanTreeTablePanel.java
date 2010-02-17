@@ -66,7 +66,7 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 		
 		getWorkUnitsTableModel().setResourcesFilter(projectResourceRefsToRetain);
 		getBudgetDetailsTableModel().setResourcesFilter(projectResourceRefsToRetain);
-		getMainModel().setResourcesFilter(projectResourceRefsToRetain);
+		getPlanningViewMainTableModel().setResourcesFilter(projectResourceRefsToRetain);
 
 		if(filterStatusPanel != null)
 			filterStatusPanel.updateStatusLabel();
