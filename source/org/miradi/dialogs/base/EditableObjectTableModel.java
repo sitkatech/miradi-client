@@ -25,6 +25,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -34,6 +35,11 @@ abstract public class EditableObjectTableModel extends AbstractObjectTableModel
 	public EditableObjectTableModel(Project projectToUse)
 	{
 		super(projectToUse);
+	}
+	
+	public BaseObject getBaseObjectForRow(int row)
+	{
+		return getBaseObjectForRowColumn(row, 0);
 	}
 	
 	protected ObjectManager getObjectManager()
