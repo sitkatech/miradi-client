@@ -28,12 +28,8 @@ import org.miradi.objects.Desire;
 
 public class StrategyActivityRelevancyTreeTablePanel extends AbstractEditableTreeTablePanel
 {
-	public static StrategyActivityRelevancyTreeTablePanel createStrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, Desire desire) throws Exception
+	public static StrategyActivityRelevancyTreeTablePanel createTreeTablePanel(MainWindow mainWindowToUse, Desire desire, StrategyActivityRelevancyTreeTableModel treeTableModel, StrategyActivityRelevancyTreeTable treeTable) throws Exception
 	{
-		RootRelevancyTreeTableNode rootNode = new RootRelevancyTreeTableNode(mainWindowToUse.getProject());
-		StrategyActivityRelevancyTreeTableModel treeTableModel = new StrategyActivityRelevancyTreeTableModel(rootNode); 
-		StrategyActivityRelevancyTreeTable treeTable = new StrategyActivityRelevancyTreeTable(mainWindowToUse, treeTableModel);
-		
 		return new StrategyActivityRelevancyTreeTablePanel(mainWindowToUse, treeTableModel, treeTable, desire);
 	}
 	
@@ -42,16 +38,19 @@ public class StrategyActivityRelevancyTreeTablePanel extends AbstractEditableTre
 		super(mainWindowToUse, modelToUse, treeTable, desire);		
 	}
 	
+	@Override
 	protected SingleBooleanColumnEditableModel createEditableTableModel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeTable, BaseObject baseObject)
 	{
 		return new StrategyActivityRelevancyTableModel(mainWindowToUse.getProject(), treeTable,  (Desire)baseObject);
 	}
 	
+	@Override
 	protected EditableObjectTable createEditableTable(MainWindow mainWindowToUse)
 	{
 		return new StrategyActivityRelevancyTable(mainWindowToUse, getEditableSingleBooleanColumnTableModel());
 	}
 	
+	@Override
 	protected String getDividerName()
 	{
 		return "StrategyActivityRelevancyTreeTablePanel";

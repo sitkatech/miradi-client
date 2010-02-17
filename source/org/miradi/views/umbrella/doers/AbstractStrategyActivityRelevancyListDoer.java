@@ -22,7 +22,7 @@ package org.miradi.views.umbrella.doers;
 import java.awt.Dimension;
 
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.treeRelevancy.StrategyActivityRelevancyTreeTablePanel;
+import org.miradi.dialogs.treeRelevancy.StrategyActivityRelevancyManagementPanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.Desire;
 
@@ -44,6 +44,6 @@ abstract public class AbstractStrategyActivityRelevancyListDoer extends Abstract
 	protected DisposablePanel createEditPanel() throws Exception
 	{
 		Desire desire = (Desire) getSelectedObject();
-		return StrategyActivityRelevancyTreeTablePanel.createStrategyActivityRelevancyTreeTablePanel(getMainWindow(), desire);
+		return StrategyActivityRelevancyManagementPanel.createManagementPanel(getMainWindow(), desire);
 	}
 }
