@@ -167,7 +167,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 			}
 			else if(doesAffectTableRowHeight(event))
 			{
-				tree.updateAutomaticRowHeights();
+				getTree().updateAutomaticRowHeights();
 				getMainTable().updateAutomaticRowHeights();
 			}
 			else if(event.isSetDataCommand())
