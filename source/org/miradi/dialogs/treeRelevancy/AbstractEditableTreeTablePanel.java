@@ -28,7 +28,7 @@ import javax.swing.JScrollPane;
 import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.base.SingleBooleanColumnEditableModel;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
-import org.miradi.dialogs.treetables.MultiTreeTablePanel;
+import org.miradi.dialogs.treetables.TreeTablePanelWithSixButtonColumns;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
@@ -41,14 +41,17 @@ import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
-import com.jhlabs.awt.GridLayoutPlus;
-
-abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
+abstract public class AbstractEditableTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 {
 	public AbstractEditableTreeTablePanel(MainWindow mainWindowToUse, GenericTreeTableModel modelToUse, TreeTableWithStateSaving treeTable, BaseObject baseObject) throws Exception
 	{
+		this(mainWindowToUse, modelToUse, treeTable, baseObject, new Class[0]);
+	}
+	
+	public AbstractEditableTreeTablePanel(MainWindow mainWindowToUse, GenericTreeTableModel modelToUse, TreeTableWithStateSaving treeTable, BaseObject baseObject, Class[] buttonActionClasses) throws Exception
+	{
 		// FIXME medium: Much duplicated code with PlanningTreeTablePanel
-		super(mainWindowToUse, treeTable);
+		super(mainWindowToUse, treeTable, buttonActionClasses);
 
 		model = modelToUse;
 
@@ -163,12 +166,6 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 		repaint();
 	}
 	
-	@Override
-	protected GridLayoutPlus createButtonLayout()
-	{
-		return null;
-	}
-
 	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{

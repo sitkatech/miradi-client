@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.treeRelevancy;
 
+import org.miradi.actions.ActionTreeCreateActivity;
 import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.base.SingleBooleanColumnEditableModel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
@@ -35,7 +36,7 @@ public class StrategyActivityRelevancyTreeTablePanel extends AbstractEditableTre
 	
 	private StrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, StrategyActivityRelevancyTreeTableModel modelToUse, TreeTableWithStateSaving treeTable, Desire desire) throws Exception
 	{
-		super(mainWindowToUse, modelToUse, treeTable, desire);		
+		super(mainWindowToUse, modelToUse, treeTable, desire, getButtonActionClasses());		
 	}
 	
 	@Override
@@ -48,6 +49,13 @@ public class StrategyActivityRelevancyTreeTablePanel extends AbstractEditableTre
 	protected EditableObjectTable createEditableTable(MainWindow mainWindowToUse)
 	{
 		return new StrategyActivityRelevancyTable(mainWindowToUse, getEditableSingleBooleanColumnTableModel());
+	}
+	
+	private static Class[] getButtonActionClasses()
+	{
+		return new Class[] {
+				ActionTreeCreateActivity.class,
+		};
 	}
 	
 	@Override
