@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.treetables;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -169,4 +170,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	{
 		return event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP);
 	}
+	
+	abstract protected EditableObjectTableModel getMainModel();
+
 }

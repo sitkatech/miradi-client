@@ -33,6 +33,7 @@ import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableColumnModelListener;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.planning.AccountingCodeBudgetDetailsTableModel;
 import org.miradi.dialogs.planning.FundingSourceBudgetDetailsTableModel;
@@ -392,6 +393,11 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	}
 	
 	protected PlanningViewMainTableModel getPlanningViewMainTableModel()
+	{
+		return (PlanningViewMainTableModel) getMainModel();
+	}
+	
+	protected EditableObjectTableModel getMainModel()
 	{
 		return mainModel;
 	}

@@ -26,9 +26,10 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
 import org.miradi.dialogs.base.EditableObjectTable;
+import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.dialogs.base.SingleBooleanColumnEditableModel;
-import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.AbstractTreeTablePanel;
+import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
@@ -151,6 +152,11 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 	{
 		if(event.isSetDataCommand())
 			editableTable.repaint();
+	}
+	
+	protected EditableObjectTableModel getMainModel()
+	{
+		return editableTableModel;
 	}
 	
 	abstract protected SingleBooleanColumnEditableModel createEditableTableModel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeTable, BaseObject baseObject);
