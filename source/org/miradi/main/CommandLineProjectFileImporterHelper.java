@@ -35,9 +35,8 @@ public class CommandLineProjectFileImporterHelper
 	private String extractProjectFileName(final String commandLineArg)
 	{
 		int endDelimiter = commandLineArg.indexOf(TAG_END_DELIMITER);
-		int endOfString = commandLineArg.length();
 		
-		final String projectFileName = commandLineArg.substring(endDelimiter + 1, endOfString);
+		final String projectFileName = commandLineArg.substring(endDelimiter + 1);
 		return projectFileName;
 	}
 	
