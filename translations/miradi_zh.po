@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-16 15:35-0600\n"
+"POT-Creation-Date: 2010-02-17 08:53-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4352,11 +4352,11 @@ msgstr "文档讨论及决定 \t\t"
 msgid "Menu|3. Implement Actions &  Monitoring"
 msgstr "3. 实施行动及监控 \t\t"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:53
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:52
 msgid "Importing File (%s) from command line does not exist"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:60
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:59
 msgid "Importing File (%s) from command line is a directory"
 msgstr ""
 
