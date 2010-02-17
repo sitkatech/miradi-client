@@ -71,7 +71,7 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 
 		editableTableModel = createEditableTableModel(mainWindowToUse, treeTable, baseObject);
 		editableTable = createEditableTable(mainWindowToUse);
-		mainTableScrollPane = integrateTable(masterVerticalScrollBar, scrollController, rowHeightController, selectionController, treeTable, getEditableTable());
+		mainTableScrollPane = integrateTable(masterVerticalScrollBar, scrollController, rowHeightController, selectionController, treeTable, editableTable);
 
 		treesPanel = new ShrinkToFitVerticallyHorizontalBox();
 		treesPanel.add(treeTableScrollPane);
@@ -132,11 +132,6 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 		getTree().selectObjectAfterSwingClearsItDueToTreeStructureChange(refHierarchy, selectedRow);
 	}
 
-	private EditableObjectTable getEditableTable()
-	{
-		return editableTable;
-	}
-	
 	protected SingleBooleanColumnEditableModel getEditableSingleBooleanColumnTableModel()
 	{
 		return editableTableModel;
