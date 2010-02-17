@@ -91,6 +91,7 @@ public class DisposablePanel extends JPanel
 			dialog.setPreferredSize(preferredSize);
 		
 		Utilities.centerDlg(dialog);
+		dialog.becomeActive();
 		dialog.setVisible(true);
 	}
 	
