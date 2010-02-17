@@ -25,13 +25,14 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import org.miradi.dialogs.planning.RowColumnProvider;
+import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.MainWindow;
 
 public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 {
 	protected ExportablePlanningTreeTablePanel(MainWindow mainWindowToUse,
 											   PlanningTreeTable treeToUse, 
-											   PlanningTreeTableModel modelToUse,
+											   GenericTreeTableModel modelToUse,
 											   Class[] buttonActions,
 											   RowColumnProvider rowColumnProvider) throws Exception
 	{
@@ -44,14 +45,14 @@ public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 		return createPlanningTreeTablePanelWithoutButtons(mainWindowToUse, rowColumnProvider, model);
 	}
 
-	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse, RowColumnProvider rowColumnProvider, PlanningTreeTableModel model) throws Exception
+	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse, RowColumnProvider rowColumnProvider, GenericTreeTableModel model) throws Exception
 	{
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 			
 		return new ExportablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, new Class[0], rowColumnProvider);
 	}
 	
-	public static JComponent createPrintablePlanningTreeTablePanel(MainWindow mainWindow, RowColumnProvider rowColumnProvider, PlanningTreeTableModel modelToUse) throws Exception
+	public static JComponent createPrintablePlanningTreeTablePanel(MainWindow mainWindow, RowColumnProvider rowColumnProvider, GenericTreeTableModel modelToUse) throws Exception
 	{
 		PlanningTreeTablePanel wholePanel = createPlanningTreeTablePanelWithoutButtons(mainWindow, rowColumnProvider, modelToUse);
 
