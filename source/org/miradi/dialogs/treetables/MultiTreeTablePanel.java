@@ -47,6 +47,8 @@ import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.MultiTableSelectionController;
 import org.miradi.utils.TableWithRowHeightSaver;
 
+import com.jhlabs.awt.GridLayoutPlus;
+
 abstract public class MultiTreeTablePanel extends TreeTablePanel implements MultiTableSelectionChangingListener
 {
 	public MultiTreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse) throws Exception
@@ -91,6 +93,11 @@ abstract public class MultiTreeTablePanel extends TreeTablePanel implements Mult
 	
 	public void endSelectionChangingProcess()
 	{
+	}
+	
+	protected GridLayoutPlus createButtonLayout()
+	{
+		return new GridLayoutPlus(2, 6, 3, 3);
 	}
 	
 	public static class MouseWheelHandler implements MouseWheelListener

@@ -21,17 +21,10 @@ package org.miradi.dialogs.treetables;
 
 import org.miradi.main.MainWindow;
 
-import com.jhlabs.awt.GridLayoutPlus;
-
 abstract public class TreeTablePanelWithSixButtonColumns extends MultiTreeTablePanel
 {
 	public TreeTablePanelWithSixButtonColumns(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, buttonActionClasses);
-	}
-
-	protected GridLayoutPlus createButtonLayout()
-	{
-		return new GridLayoutPlus(2, 6, 3, 3);
 	}
 }
