@@ -142,12 +142,12 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 		return editableTableModel;
 	}
 	
-	protected void setEditableSingleBooleanColumnTableModel(SingleBooleanColumnEditableModel tableModel)
+	private void setEditableSingleBooleanColumnTableModel(SingleBooleanColumnEditableModel tableModel)
 	{
 		editableTableModel = tableModel;
 	}
 	
-	protected void setEditableObjectTable(EditableObjectTable table)
+	private void setEditableObjectTable(EditableObjectTable table)
 	{
 		editableTable = table;
 	}
