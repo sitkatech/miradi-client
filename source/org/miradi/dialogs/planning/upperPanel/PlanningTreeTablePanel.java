@@ -407,14 +407,14 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		// only rebuild the columns or the rows rather than always doing both
 	
 		// NOTE: The following rebuild the columns but don't touch the tree
-		getPlanningTreeTableModel().updateColumnsToShow();
+		getTreeTableModel().updateColumnsToShow();
 		tree.rebuildTableCompletely();
 
 		updateResourceFilter();
 		multiModel.updateColumnsToShow();
 		
 		// NOTE: The following rebuild the tree but don't touch the columns
-		getPlanningTreeTableModel().rebuildEntireTree();
+		getTreeTableModel().rebuildEntireTree();
 		measurementModel.fireTableDataChanged();
 		futureStatusModel.fireTableDataChanged();
 		workUnitsTableModel.fireTableDataChanged();
@@ -584,7 +584,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		getPropertiesPanel().setObjectRefs(getPicker().getSelectionHierarchy().toArray(), selectedColumnTag);
 	}
 	
-	public GenericTreeTableModel getPlanningTreeTableModel()
+	public GenericTreeTableModel getTreeTableModel()
 	{
 		return getModel();
 	}
