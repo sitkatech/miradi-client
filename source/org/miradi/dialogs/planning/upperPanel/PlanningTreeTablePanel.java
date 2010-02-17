@@ -32,7 +32,6 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableColumnModelListener;
 
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.planning.AccountingCodeBudgetDetailsTableModel;
@@ -56,7 +55,6 @@ import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
@@ -192,38 +190,6 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 			EAM.errorDialog("Error occurred: " + e.getMessage());
 		}
 		
-	}
-
-	private boolean doesAffectTableRowHeight(CommandExecutedEvent event)
-	{
-		if (!event.isSetDataCommand())
-			return false;
-		
-		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
-		ORef affectedObjectRef = setCommand.getObjectORef();
-		
-		if(isAffectedRefFoundInMainTableModel(affectedObjectRef))
-			return true;
-		
-		if(ResourceAssignment.is(affectedObjectRef))
-			return true;
-		
-		if(ExpenseAssignment.is(affectedObjectRef))
-			return true;
-		
-		return false;
-	}
-
-	private boolean isAffectedRefFoundInMainTableModel(ORef affectedObjectRef)
-	{
-		for (int row = 0; row < getMainModel().getRowCount(); ++row)
-		{
-			BaseObject baseObjectForRow = getMainModel().getBaseObjectForRow(row);
-			if (baseObjectForRow != null && baseObjectForRow.getRef().equals(affectedObjectRef))
-				return true;
-		}
-		
-		return false;
 	}
 
 	private  boolean isColumnExpandCollapseCommand(CommandExecutedEvent event)

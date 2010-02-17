@@ -25,10 +25,12 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.Target;
@@ -169,6 +171,38 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	private boolean didAffectTableSettingsMapForBudgetColumns(CommandExecutedEvent event)
 	{
 		return event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP);
+	}
+	
+	protected boolean doesAffectTableRowHeight(CommandExecutedEvent event)
+	{
+		if (!event.isSetDataCommand())
+			return false;
+		
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+		ORef affectedObjectRef = setCommand.getObjectORef();
+		
+		if(isAffectedRefFoundInMainTableModel(affectedObjectRef))
+			return true;
+		
+		if(ResourceAssignment.is(affectedObjectRef))
+			return true;
+		
+		if(ExpenseAssignment.is(affectedObjectRef))
+			return true;
+		
+		return false;
+	}
+
+	private boolean isAffectedRefFoundInMainTableModel(ORef affectedObjectRef)
+	{
+		for (int row = 0; row < getMainModel().getRowCount(); ++row)
+		{
+			BaseObject baseObjectForRow = getMainModel().getBaseObjectForRow(row);
+			if (baseObjectForRow != null && baseObjectForRow.getRef().equals(affectedObjectRef))
+				return true;
+		}
+		
+		return false;
 	}
 	
 	abstract protected EditableObjectTableModel getMainModel();
