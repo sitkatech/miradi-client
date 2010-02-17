@@ -104,11 +104,6 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 	}
 	
 	@Override
-	public void updateColumnsToShow() throws Exception
-	{
-	}
-	
-	@Override
 	public String getUniqueTreeTableModelIdentifier()
 	{
 		return uniqueTreeTableModelIdentifier;
