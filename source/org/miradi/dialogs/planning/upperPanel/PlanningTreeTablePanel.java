@@ -156,7 +156,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		{		
 			if (isColumnExpandCollapseCommand(event))
 			{
-				mainTable.clearColumnSelection();
+				getMainTable().clearColumnSelection();
 				rebuildEntireTreeAndTable();
 			}
 			
@@ -168,7 +168,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 			else if(doesAffectTableRowHeight(event))
 			{
 				tree.updateAutomaticRowHeights();
-				mainTable.updateAutomaticRowHeights();
+				getMainTable().updateAutomaticRowHeights();
 			}
 			else if(event.isSetDataCommand())
 			{
