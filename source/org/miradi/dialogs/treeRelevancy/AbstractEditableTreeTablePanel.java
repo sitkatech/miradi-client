@@ -28,7 +28,7 @@ import javax.swing.JScrollPane;
 import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.base.SingleBooleanColumnEditableModel;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
-import org.miradi.dialogs.treetables.TreeTablePanelWithSixButtonColumns;
+import org.miradi.dialogs.treetables.AbstractTreeTablePanel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
@@ -41,7 +41,7 @@ import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
-abstract public class AbstractEditableTreeTablePanel extends TreeTablePanelWithSixButtonColumns
+abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePanel
 {
 	public AbstractEditableTreeTablePanel(MainWindow mainWindowToUse, GenericTreeTableModel modelToUse, TreeTableWithStateSaving treeTable, BaseObject baseObject) throws Exception
 	{

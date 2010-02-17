@@ -21,9 +21,9 @@ package org.miradi.dialogs.treetables;
 
 import org.miradi.main.MainWindow;
 
-abstract public class TreeTablePanelWithSixButtonColumns extends MultiTreeTablePanel
+abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 {
-	public TreeTablePanelWithSixButtonColumns(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses) throws Exception
+	public AbstractTreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, buttonActionClasses);
 	}
