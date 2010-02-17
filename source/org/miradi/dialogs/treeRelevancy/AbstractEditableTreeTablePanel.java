@@ -142,7 +142,7 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 		return editableTableModel;
 	}
 	
-	protected GenericTreeTableModel getTreeTableModel()
+	public GenericTreeTableModel getTreeTableModel()
 	{
 		return getModel();
 	}
