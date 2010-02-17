@@ -214,4 +214,6 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	abstract protected EditableObjectTableModel getMainModel();
 
 	abstract protected TableWithColumnWidthAndSequenceSaver getMainTable();
+	
+	abstract protected void rebuildEntireTreeTable() throws Exception;
 }
