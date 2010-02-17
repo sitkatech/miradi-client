@@ -55,6 +55,7 @@ abstract public class DiagramPanel extends DisposablePanelWithDescription implem
 		add(diagramSplitter);
 	}
 
+	@Override
 	public void dispose()
 	{
 		super.dispose();
@@ -151,6 +152,7 @@ abstract public class DiagramPanel extends DisposablePanelWithDescription implem
 		return diagramComponent;
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Diagram Panel");
@@ -221,11 +223,13 @@ abstract public class DiagramPanel extends DisposablePanelWithDescription implem
 	{
 	}
 
+	@Override
 	public void becomeActive()
 	{
 		// TODO: When diagramSplitter has becomeActive, call it from here
 	}
 	
+	@Override
 	public void becomeInactive()
 	{
 		// TODO: When diagramSplitter has becomeInactive, call it from here
