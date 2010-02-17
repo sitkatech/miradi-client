@@ -61,7 +61,6 @@ import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.TableSettings;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
@@ -192,11 +191,6 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		
 	}
 
-	private  boolean isColumnExpandCollapseCommand(CommandExecutedEvent event)
-	{
-		return event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_DATE_UNIT_LIST_DATA);
-	}
-	
 	protected boolean wasTypeCreatedOrDeleted(CommandExecutedEvent event, int objectType)
 	{
 		if (event.isCreateCommandForThisType(objectType))
