@@ -114,7 +114,7 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 		treePlusTablesPanel.setOneTouchExpandable(false);
 	}
 
-	private void rebuildEntireTreeTable() throws Exception
+	protected void rebuildEntireTreeTable() throws Exception
 	{
 		ORef selectedRef = ORef.INVALID;
 		BaseObject[] selected = tree.getSelectedObjects();

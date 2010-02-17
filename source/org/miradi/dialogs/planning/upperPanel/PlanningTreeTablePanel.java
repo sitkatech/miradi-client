@@ -233,7 +233,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		}
 	}
 
-	private void rebuildEntireTreeTable() throws Exception
+	protected void rebuildEntireTreeTable() throws Exception
 	{
 		int selectedRow = tree.getSelectionModel().getMinSelectionIndex();
 		int selectedColumn = getMainTable().getColumnModel().getSelectionModel().getMinSelectionIndex();
