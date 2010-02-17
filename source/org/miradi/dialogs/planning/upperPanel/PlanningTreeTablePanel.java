@@ -205,6 +205,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		return event.isDeleteCommandForThisType(objectType);
 	}
 
+	@Override
 	protected boolean wereAssignmentNodesAddedOrRemoved(CommandExecutedEvent event)
 	{
 		try
@@ -363,6 +364,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		return (PlanningViewMainTableModel) getMainModel();
 	}
 	
+	@Override
 	protected EditableObjectTableModel getMainModel()
 	{
 		return mainModel;
