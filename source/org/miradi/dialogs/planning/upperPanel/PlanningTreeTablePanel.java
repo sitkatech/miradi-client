@@ -50,7 +50,7 @@ import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceWorkUnitsTable
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
-import org.miradi.dialogs.treetables.TreeTablePanelWithSixButtonColumns;
+import org.miradi.dialogs.treetables.AbstractTreeTablePanel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -78,7 +78,7 @@ import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.TableExporter;
 import org.miradi.utils.TreeTableExporter;
 
-abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
+abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 {
 	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActions, RowColumnProvider rowColumnProviderToUse) throws Exception
 	{
