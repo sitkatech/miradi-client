@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-17 11:08-0600\n"
+"POT-Creation-Date: 2010-02-17 11:41-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -660,7 +660,7 @@ msgstr "粘贴内容 \t\t"
 msgid "Label|New Human Welfare Target"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/doers/EditTaggedObjectSetDoer.java:45
+#: Miradi/source/org/miradi/views/diagram/doers/EditTaggedObjectSetDoer.java:48
 #: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:43
 msgid "Tagged Items"
 msgstr "加标签的条目"
