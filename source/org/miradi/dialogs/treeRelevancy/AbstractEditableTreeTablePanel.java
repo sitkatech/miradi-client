@@ -69,7 +69,7 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 
 		listenForColumnWidthChanges(getTree());
 
-		setEditableSingleBooleanColumnTableModel(createEditableTableModel(mainWindowToUse, treeTable, baseObject));
+		editableTableModel = createEditableTableModel(mainWindowToUse, treeTable, baseObject);
 		setEditableObjectTable(createEditableTable(mainWindowToUse));
 		mainTableScrollPane = integrateTable(masterVerticalScrollBar, scrollController, rowHeightController, selectionController, treeTable, getEditableTable());
 
@@ -140,11 +140,6 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 	protected SingleBooleanColumnEditableModel getEditableSingleBooleanColumnTableModel()
 	{
 		return editableTableModel;
-	}
-	
-	private void setEditableSingleBooleanColumnTableModel(SingleBooleanColumnEditableModel tableModel)
-	{
-		editableTableModel = tableModel;
 	}
 	
 	private void setEditableObjectTable(EditableObjectTable table)
