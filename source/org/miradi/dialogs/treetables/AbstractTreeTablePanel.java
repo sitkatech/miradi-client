@@ -35,6 +35,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
 abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 {
@@ -212,4 +213,5 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	
 	abstract protected EditableObjectTableModel getMainModel();
 
+	abstract protected TableWithColumnWidthAndSequenceSaver getMainTable();
 }
