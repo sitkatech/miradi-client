@@ -68,6 +68,7 @@ import org.miradi.utils.MultiTableRowHeightController;
 import org.miradi.utils.MultiTableSelectionController;
 import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.TableExporter;
+import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 import org.miradi.utils.TreeTableExporter;
 
 abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
@@ -333,7 +334,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		return multiTableExporter;
 	}
 	
-	protected PlanningUpperMultiTable getMainTable()
+	protected TableWithColumnWidthAndSequenceSaver getMainTable()
 	{
 		return mainTable;
 	}
