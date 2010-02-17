@@ -178,6 +178,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		return false;
 	}
 
+	@Override
 	protected void rebuildEntireTreeTable() throws Exception
 	{
 		int selectedRow = tree.getSelectionModel().getMinSelectionIndex();
@@ -279,6 +280,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		return multiTableExporter;
 	}
 	
+	@Override
 	protected TableWithColumnWidthAndSequenceSaver getMainTable()
 	{
 		return mainTable;
