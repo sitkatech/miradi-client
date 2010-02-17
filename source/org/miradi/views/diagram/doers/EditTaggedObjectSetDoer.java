@@ -29,17 +29,20 @@ import org.miradi.views.umbrella.doers.AbstractEditListDoer;
 
 public class EditTaggedObjectSetDoer extends AbstractEditListDoer
 {
+	@Override
 	protected DisposablePanel createEditPanel() throws Exception
 	{
 		TaggedObjectSet taggedObjectSet = (TaggedObjectSet) getSelectedObject();
 		return TaggedObjectSetTreeTablePanel.createTaggedItemTreeTablePanel(getMainWindow(), taggedObjectSet);
 	}
 
+	@Override
 	protected int getObjectType()
 	{
 		return TaggedObjectSet.getObjectType();
 	}
 	
+	@Override
 	protected String getDialogTitle()
 	{
 		return EAM.text("Tagged Items");
