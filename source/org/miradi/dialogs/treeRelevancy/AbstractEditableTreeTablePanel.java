@@ -151,6 +151,7 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		super.commandExecuted(event);
 		if(event.isSetDataCommand())
 			editableTable.repaint();
 	}
