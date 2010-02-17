@@ -377,28 +377,6 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		enableSectionSwitch();
 	}
 	
-	private boolean isSideTabSwitchingDisabled()
-	{
-		return (disableSideTabSwitchingCount > 0);
-	}
-	
-	private void disableSectionSwitchDuringFullRebuild()
-	{
-		++disableSideTabSwitchingCount;
-	}
-	
-	private void enableSectionSwitch()
-	{
-		if(disableSideTabSwitchingCount == 0)
-		{
-			EAM.logError("PlanningTreeTablePanel.enableSelectionSwitch called too many times");
-			EAM.logStackTrace();
-			return;
-		}
-		
-		--disableSideTabSwitchingCount;
-	}
-	
 	private void enableSelectionListeners()
 	{
 		listenForColumnSelectionChanges(getMainTable());
@@ -546,5 +524,4 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	
 	private MainTableSelectionHandler mainTableColumnSelectionListener;
 	private TreeTableRowSelectionHandler treeTableRowSelectionListener;
-	private int disableSideTabSwitchingCount;
 }

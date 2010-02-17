@@ -22,6 +22,7 @@ package org.miradi.dialogs.treetables;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
@@ -211,9 +212,33 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		return false;
 	}
 	
+	protected boolean isSideTabSwitchingDisabled()
+	{
+		return (disableSideTabSwitchingCount > 0);
+	}
+	
+	protected void disableSectionSwitchDuringFullRebuild()
+	{
+		++disableSideTabSwitchingCount;
+	}
+	
+	protected void enableSectionSwitch()
+	{
+		if(disableSideTabSwitchingCount == 0)
+		{
+			EAM.logError("PlanningTreeTablePanel.enableSelectionSwitch called too many times");
+			EAM.logStackTrace();
+			return;
+		}
+		
+		--disableSideTabSwitchingCount;
+	}
+	
 	abstract protected EditableObjectTableModel getMainModel();
 
 	abstract protected TableWithColumnWidthAndSequenceSaver getMainTable();
 	
 	abstract protected void rebuildEntireTreeTable() throws Exception;
+	
+	private int disableSideTabSwitchingCount;
 }
