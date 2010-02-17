@@ -215,9 +215,9 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 
 	private boolean isAffectedRefFoundInMainTableModel(ORef affectedObjectRef)
 	{
-		for (int row = 0; row < mainModel.getRowCount(); ++row)
+		for (int row = 0; row < getMainModel().getRowCount(); ++row)
 		{
-			BaseObject baseObjectForRow = mainModel.getBaseObjectForRow(row);
+			BaseObject baseObjectForRow = getMainModel().getBaseObjectForRow(row);
 			if (baseObjectForRow != null && baseObjectForRow.getRef().equals(affectedObjectRef))
 				return true;
 		}
