@@ -215,9 +215,9 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 
 	private boolean isAffectedRefFoundInMainTableModel(ORef affectedObjectRef)
 	{
-		for (int row = 0; row < getMainModel().getRowCount(); ++row)
+		for (int row = 0; row < getPlanningViewMainTableModel().getRowCount(); ++row)
 		{
-			BaseObject baseObjectForRow = getMainModel().getBaseObjectForRow(row);
+			BaseObject baseObjectForRow = getPlanningViewMainTableModel().getBaseObjectForRow(row);
 			if (baseObjectForRow != null && baseObjectForRow.getRef().equals(affectedObjectRef))
 				return true;
 		}
@@ -391,7 +391,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		return budgetDetailsTableModel;
 	}
 	
-	protected PlanningViewMainTableModel getMainModel()
+	protected PlanningViewMainTableModel getPlanningViewMainTableModel()
 	{
 		return mainModel;
 	}
