@@ -407,14 +407,14 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		// only rebuild the columns or the rows rather than always doing both
 	
 		// NOTE: The following rebuild the columns but don't touch the tree
-		getPlanningModel().updateColumnsToShow();
+		getPlanningTreeTableModel().updateColumnsToShow();
 		tree.rebuildTableCompletely();
 
 		updateResourceFilter();
 		multiModel.updateColumnsToShow();
 		
 		// NOTE: The following rebuild the tree but don't touch the columns
-		getPlanningModel().rebuildEntireTree();
+		getPlanningTreeTableModel().rebuildEntireTree();
 		measurementModel.fireTableDataChanged();
 		futureStatusModel.fireTableDataChanged();
 		workUnitsTableModel.fireTableDataChanged();
@@ -488,11 +488,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return getRowColumnProvider().getColumnListToShow();
 	}
 
-	private PlanningTreeTableModel getPlanningModel()
-	{
-		return (PlanningTreeTableModel)getModel();
-	}
-	
 	public TableExporter getTableForExporting() throws Exception
 	{
 		MultiTableCombinedAsOneExporter multiTableExporter = new MultiTableCombinedAsOneExporter(getProject());
