@@ -30,11 +30,13 @@ abstract public class ObjectListManagementPanel extends ObjectManagementPanel
 		super(mainWindowToUse, tablePanelToUse, propertiesPanelToUse);
 	}
 	
+	@Override
 	public boolean isRtfExportable()
 	{
 		return true;
 	}
 		
+	@Override
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
 		new RtfManagementExporter(getProject()).writeManagement(getTableExporter(), writer);
