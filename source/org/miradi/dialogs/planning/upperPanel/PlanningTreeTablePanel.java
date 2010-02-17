@@ -220,19 +220,6 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		return false;
 	}
 
-	private void rebuildEntireTreeAndTable() throws Exception
-	{
-		disableSectionSwitchDuringFullRebuild();
-		try
-		{
-			rebuildEntireTreeTable();
-		}
-		finally
-		{
-			enableSectionSwitch();
-		}
-	}
-
 	protected void rebuildEntireTreeTable() throws Exception
 	{
 		int selectedRow = tree.getSelectionModel().getMinSelectionIndex();
