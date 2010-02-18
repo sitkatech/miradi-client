@@ -127,7 +127,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 
 	public GenericTreeTableModel getModel()
 	{
-		return model;
+		return treeTableModel;
 	}
 	
 	public void addButtonsToBox(Class[] classes, JPanel box, Actions actions)
@@ -239,6 +239,6 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	private MainWindow mainWindow;
 	protected TreeTableWithStateSaving tree;
 	protected JPanel buttonBox;
-	protected GenericTreeTableModel model;
+	protected GenericTreeTableModel treeTableModel;
 	protected FastScrollPane treeTableScrollPane;
 }

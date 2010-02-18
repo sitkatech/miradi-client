@@ -67,13 +67,13 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 	private TargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, TargetViabilityTreeTable treeToUse, GenericTreeTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, projectToUse, treeToUse);
-		model = modelToUse;
+		treeTableModel = modelToUse;
 	}
 	
 	private TargetViabililtyTreePanel(MainWindow mainWindowToUse, TargetViabilityTreeTable treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActionsToUse) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, buttonActionsToUse);
-		model = modelToUse;
+		treeTableModel = modelToUse;
 	}
 	
 	static final Class[] buttonActions = new Class[] {
