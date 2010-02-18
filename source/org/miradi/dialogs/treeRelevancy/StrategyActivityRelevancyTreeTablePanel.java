@@ -57,10 +57,4 @@ public class StrategyActivityRelevancyTreeTablePanel extends AbstractEditableTre
 				ActionTreeCreateActivity.class,
 		};
 	}
-	
-	@Override
-	protected String getDividerName()
-	{
-		return "StrategyActivityRelevancyTreeTablePanel";
-	}	
 }
