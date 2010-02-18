@@ -57,7 +57,6 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		
 		mainWindow = mainWindowToUse;
 		tree = treeToUse;
-		treeTableModel = tree.getTreeTableModel();
 		
 		buttonBox = createButtonBox(buttonActionClasses);
 		add(buttonBox, BorderLayout.BEFORE_FIRST_LINE);
@@ -129,7 +128,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 
 	public GenericTreeTableModel getModel()
 	{
-		return treeTableModel;
+		return getTree().getTreeTableModel();
 	}
 	
 	public void addButtonsToBox(Class[] classes, JPanel box, Actions actions)
@@ -241,6 +240,5 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	private MainWindow mainWindow;
 	protected TreeTableWithStateSaving tree;
 	protected JPanel buttonBox;
-	private GenericTreeTableModel treeTableModel;
 	protected FastScrollPane treeTableScrollPane;
 }
