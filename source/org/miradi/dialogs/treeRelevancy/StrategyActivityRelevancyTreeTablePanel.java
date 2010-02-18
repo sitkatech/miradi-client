@@ -46,7 +46,7 @@ public class StrategyActivityRelevancyTreeTablePanel extends AbstractEditableTre
 	}
 	
 	@Override
-	protected EditableObjectTable createEditableTable(MainWindow mainWindowToUse)
+	protected EditableObjectTable createEditableTable()
 	{
 		return new StrategyActivityRelevancyTable(getMainWindow(), getEditableSingleBooleanColumnTableModel());
 	}

@@ -54,7 +54,7 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 		scrollController.addScrollPane(getTreeTableScrollPane());
 
 		editableTableModel = createEditableTableModel(mainWindowToUse, treeTable, baseObject);
-		editableTable = createEditableTable(mainWindowToUse);
+		editableTable = createEditableTable();
 		mainTableScrollPane = integrateTable(masterVerticalScrollBar, scrollController, editableTable);
 
 		scrollController.addScrollBar(masterVerticalScrollBar);
@@ -117,7 +117,7 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 	
 	abstract protected SingleBooleanColumnEditableModel createEditableTableModel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeTable, BaseObject baseObject);
 	
-	abstract protected EditableObjectTable createEditableTable(MainWindow mainWindowToUse);
+	abstract protected EditableObjectTable createEditableTable();
 	
 	abstract protected String getDividerName();
 	
