@@ -239,9 +239,14 @@ public class CpmzProjectImporter extends AbstractProjectImporter
 		return byteOut.toByteArray(); 
 	}
 	
-	private boolean zipContainsMpzProject(ZipFile zipFile)
+	public static boolean zipContainsMpzProject(ZipFile zipFile)
 	{
-		ZipEntry zipEntry = zipFile.getEntry(ExportCpmzDoer.PROJECT_ZIP_FILE_NAME);
+		return containsEntry(zipFile, ExportCpmzDoer.PROJECT_ZIP_FILE_NAME);
+	}
+
+	public static boolean containsEntry(ZipFile zipFile, final String entry)
+	{
+		ZipEntry zipEntry = zipFile.getEntry(entry);
 		if (zipEntry == null)
 			return false;
 
