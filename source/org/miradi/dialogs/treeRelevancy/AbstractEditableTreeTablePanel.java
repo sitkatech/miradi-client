@@ -119,8 +119,6 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 	
 	abstract protected EditableObjectTable createEditableTable();
 	
-	abstract protected String getDividerName();
-	
 	private SingleBooleanColumnEditableModel editableTableModel;
 	private EditableObjectTable editableTable;
 }

@@ -51,10 +51,5 @@ public class TaggedObjectSetTreeTablePanel extends AbstractEditableTreeTablePane
 	protected EditableObjectTable createEditableTable()
 	{
 		return new TaggedObjectSetEditableTable(getMainWindow(), getEditableSingleBooleanColumnTableModel());
-	}
-	
-	protected String getDividerName()
-	{
-		return "TaggedObjectSetTreeTablePanel";
-	}
+	}	
 }
