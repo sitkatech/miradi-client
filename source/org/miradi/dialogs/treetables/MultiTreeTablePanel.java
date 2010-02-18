@@ -71,7 +71,7 @@ abstract public class MultiTreeTablePanel extends TreeTablePanel implements Mult
 	protected ScrollPaneWithHideableScrollBar integrateTable(JScrollBar masterScrollBar, MultiTableVerticalScrollController scrollController, MultiTableRowHeightController rowHeightController, MultiTableSelectionController selectionController, TreeTableWithStateSaving treeToUse, TableWithRowHeightSaver table)
 	{
 		ModelUpdater modelUpdater = new ModelUpdater((AbstractTableModel)table.getModel());
-		treeToUse.getTreeTableAdapter().addTableModelListener(modelUpdater);
+		getTree().getTreeTableAdapter().addTableModelListener(modelUpdater);
 		
 		selectionController.addTable(table);
 		rowHeightController.addTable(table);
