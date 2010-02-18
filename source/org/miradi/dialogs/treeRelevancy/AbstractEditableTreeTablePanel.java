@@ -43,7 +43,6 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 	
 	public AbstractEditableTreeTablePanel(MainWindow mainWindowToUse, GenericTreeTableModel modelToUse, TreeTableWithStateSaving treeTable, BaseObject baseObjectToUse, Class[] buttonActionClasses) throws Exception
 	{
-		// FIXME medium: Much duplicated code with PlanningTreeTablePanel
 		super(mainWindowToUse, treeTable, buttonActionClasses);
 
 		baseObjectForPanel = baseObjectToUse;
@@ -55,7 +54,6 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 		mainTableScrollPane = integrateTable(masterVerticalScrollBar, editableTable);
 
 		getScrollController().addScrollBar(masterVerticalScrollBar);
-
 		createTreeAndTablePanel();
 		rebuildEntireTreeTable();
 	}
