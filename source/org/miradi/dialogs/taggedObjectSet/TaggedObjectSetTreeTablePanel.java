@@ -24,7 +24,6 @@ import org.miradi.dialogs.base.SingleBooleanColumnEditableModel;
 import org.miradi.dialogs.treeRelevancy.AbstractEditableTreeTablePanel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.TaggedObjectSet;
 
 public class TaggedObjectSetTreeTablePanel extends AbstractEditableTreeTablePanel
@@ -43,7 +42,7 @@ public class TaggedObjectSetTreeTablePanel extends AbstractEditableTreeTablePane
 		super(mainWindowToUse, modelToUse, treeTable, taggedObjectSet);		
 	}
 	
-	protected SingleBooleanColumnEditableModel createEditableTableModel(BaseObject baseObject)
+	protected SingleBooleanColumnEditableModel createEditableTableModel()
 	{
 		return new TaggedObjectSetEditableTableModel(getProject(), getTree(),  (TaggedObjectSet)getBaseObjectForPanel());
 	}
