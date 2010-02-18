@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.treetables;
 
+import java.awt.Dimension;
+
 import org.miradi.main.MainWindow;
 
 public class TreeTableWithPreferredScrollableViewportSize extends TreeTableWithStateSaving
@@ -27,5 +29,13 @@ public class TreeTableWithPreferredScrollableViewportSize extends TreeTableWithS
 	public TreeTableWithPreferredScrollableViewportSize(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
 	{
 		super(mainWindowToUse, treeTableModel);
+		
+		setAutoResizeMode(AUTO_RESIZE_OFF);
+	}
+	
+	@Override
+	public Dimension getPreferredScrollableViewportSize()
+	{
+		return getPreferredSize();
 	}
 }
