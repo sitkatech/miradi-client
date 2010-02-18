@@ -89,6 +89,11 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	{
 		return tree;
 	}
+	
+	protected FastScrollPane getTreeTableScrollPane()
+	{
+		return treeTableScrollPane;
+	}
 
 	protected void restoreTreeExpansionState() 
 	{
