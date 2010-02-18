@@ -99,13 +99,11 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		add(buttonBox, BorderLayout.BEFORE_FIRST_LINE);
 		
 		JPanel leftPanel = new MiradiPanel(new BorderLayout());
-		leftPanel.add(filterStatusPanel, BorderLayout.BEFORE_FIRST_LINE);
+		addAboveTreeStatusPanel(leftPanel, filterStatusPanel);
 		leftPanel.add(getTreeTableScrollPane(), BorderLayout.CENTER);
 		
 		JPanel rightPanel = new MiradiPanel(new BorderLayout());
-		AboveBudgetColumnsBar aboveMainTableBar = new AboveBudgetColumnsBar(mainTable);
-		aboveMainTableBar.setTableScrollPane(mainTableScrollPane);
-		rightPanel.add(aboveMainTableBar, BorderLayout.BEFORE_FIRST_LINE);
+		addAboveColumnBar(rightPanel);
 		rightPanel.add(getMainTableScrollPane(), BorderLayout.CENTER);
 		
 		add(leftPanel, BorderLayout.BEFORE_LINE_BEGINS);
@@ -117,6 +115,18 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		treeTableRowSelectionListener = new TreeTableRowSelectionHandler();
 		
 		enableSelectionListeners();
+	}
+
+	protected void addAboveTreeStatusPanel(JPanel panel, JComponent statusPanel)
+	{
+		panel.add(statusPanel, BorderLayout.BEFORE_FIRST_LINE);
+	}
+
+	protected void addAboveColumnBar(JPanel rightPanel)
+	{
+		AboveBudgetColumnsBar aboveMainTableBar = new AboveBudgetColumnsBar(mainTable);
+		aboveMainTableBar.setTableScrollPane(mainTableScrollPane);
+		rightPanel.add(aboveMainTableBar, BorderLayout.BEFORE_FIRST_LINE);
 	}
 
 	private void createModels() throws Exception
