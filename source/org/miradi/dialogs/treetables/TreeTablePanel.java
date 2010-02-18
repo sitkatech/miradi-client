@@ -54,8 +54,10 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	public TreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses) throws Exception
 	{
 		super(mainWindowToUse, treeToUse);
+		
 		mainWindow = mainWindowToUse;
 		tree = treeToUse;
+		treeTableModel = tree.getTreeTableModel();
 		
 		buttonBox = createButtonBox(buttonActionClasses);
 		add(buttonBox, BorderLayout.BEFORE_FIRST_LINE);
@@ -239,6 +241,6 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	private MainWindow mainWindow;
 	protected TreeTableWithStateSaving tree;
 	protected JPanel buttonBox;
-	protected GenericTreeTableModel treeTableModel;
+	private GenericTreeTableModel treeTableModel;
 	protected FastScrollPane treeTableScrollPane;
 }
