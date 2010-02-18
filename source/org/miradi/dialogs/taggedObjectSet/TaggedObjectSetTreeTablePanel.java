@@ -45,7 +45,7 @@ public class TaggedObjectSetTreeTablePanel extends AbstractEditableTreeTablePane
 	
 	protected SingleBooleanColumnEditableModel createEditableTableModel(TreeTableWithStateSaving treeTable, BaseObject baseObject)
 	{
-		return new TaggedObjectSetEditableTableModel(getProject(), treeTable,  (TaggedObjectSet)baseObject);
+		return new TaggedObjectSetEditableTableModel(getProject(), getTree(),  (TaggedObjectSet)baseObject);
 	}
 	
 	protected EditableObjectTable createEditableTable()
