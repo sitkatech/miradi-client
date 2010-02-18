@@ -73,7 +73,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButton
 	// CommandExecuted methods with very similar structures
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		GenericTreeTableModel treeTableModel = getModel();
+		GenericTreeTableModel treeTableModel = getTreeTableModel();
 		final boolean wereTargetKEANodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 		final boolean wereHumanWelfareTargetKEANodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(HumanWelfareTarget.getObjectType(), AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 		

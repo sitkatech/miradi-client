@@ -124,7 +124,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		return (TreeTableNode)tree.getTree().getLastSelectedPathComponent();
 	}
 
-	public GenericTreeTableModel getModel()
+	public GenericTreeTableModel getTreeTableModel()
 	{
 		return getTree().getTreeTableModel();
 	}
