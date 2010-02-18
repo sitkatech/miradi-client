@@ -48,6 +48,7 @@ import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.tablerenderers.ProgressTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.tablerenderers.WhoColumnTableCellEditorFactory;
@@ -59,7 +60,7 @@ import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
 public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSaver implements RowColumnBaseObjectProvider, RightClickActionProvider, TableWithExpandableColumnsInterface
 {
-	public PlanningUpperMultiTable(PlanningTreeTable masterTreeToUse, PlanningTreeMultiTableModel model, FontForObjectTypeProvider fontProvider)
+	public PlanningUpperMultiTable(PlanningTreeTable masterTreeToUse, PlanningTreeMultiTableModel model)
 	{
 		super(masterTreeToUse.getMainWindow(), model, model.getUniqueTableModelIdentifier());
 		
@@ -69,6 +70,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		setTableHeader(new TableHeaderWithExpandCollapseIcons(this));
 
 		masterTree = masterTreeToUse;
+		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
 		defaultRendererFactory = new MultiLineObjectTableCellRendererEditorFactory(this, fontProvider);
 		currencyRendererFactory = new BudgetCostTreeTableCellRendererFactory(this, fontProvider);
 		choiceRendererFactory = new ChoiceItemTableCellRendererFactory(this, fontProvider);
