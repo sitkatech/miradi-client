@@ -53,7 +53,7 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 		// FIXME medium: Much duplicated code with PlanningTreeTablePanel
 		super(mainWindowToUse, treeTable, buttonActionClasses);
 
-		masterVerticalScrollBar = new MasterVerticalScrollBar(treeTableScrollPane);
+		JScrollBar masterVerticalScrollBar = new MasterVerticalScrollBar(treeTableScrollPane);
 		treeTableScrollPane.addMouseWheelListener(new MouseWheelHandler(masterVerticalScrollBar));
 
 		MultiTableVerticalScrollController scrollController = new MultiTableVerticalScrollController();
@@ -158,7 +158,6 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 	
 	private SingleBooleanColumnEditableModel editableTableModel;
 	private EditableObjectTable editableTable;
-	private JScrollBar masterVerticalScrollBar;
 	private PersistentHorizontalSplitPane treePlusTablesPanel;
 	private JPanel tablesPanel;
 	
