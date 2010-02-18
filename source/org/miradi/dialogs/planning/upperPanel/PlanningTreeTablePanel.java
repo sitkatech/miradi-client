@@ -81,9 +81,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		treeTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		
 		createModels();
-		
 		mainTable = new PlanningUpperMultiTable(getMainWindow(), treeToUse, multiModel);
-		
 		mainTableScrollPane = integrateTable(getTreeTableScrollPane().getVerticalScrollBar(), mainTable);
 		mainTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
