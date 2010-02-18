@@ -86,18 +86,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		MultiTableVerticalScrollController scrollController = new MultiTableVerticalScrollController();
 		scrollController.addScrollPane(getTreeTableScrollPane());
 		
-		mainModel = new PlanningViewMainTableModel(getProject(), getTree(), rowColumnProvider);
-		multiModel = new PlanningTreeMultiTableModel(getTree().getUniqueTableIdentifier());
-		measurementModel = new PlanningViewMeasurementTableModel(getProject(), getTree());
-		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), getTree());
-		workUnitsTableModel = new PlanningWorkUnitsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
-		resourceWorkUnitsTableModel = new ProjectResourceWorkUnitsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
-		expenseAmountsTableModel = new ExpenseAmountsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
-		budgetDetailsTableModel = new BudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
-		fundingSourceBudgetDetailsTableModel = new FundingSourceBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
-		accoundingCodeBudgetDetailsTableModel = new AccountingCodeBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
-		fundingSourceExpenseTableModel = new FundingSourceExpenseTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
-		accountingCodeExpenseTableModel = new AccountingCodeExpenseTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		createModels();
 		
 		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
 		mainTable = new PlanningUpperMultiTable(treeToUse, multiModel, fontProvider);
@@ -111,7 +100,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		
 		JPanel leftPanel = new MiradiPanel(new BorderLayout());
 		leftPanel.add(filterStatusPanel, BorderLayout.BEFORE_FIRST_LINE);
-		leftPanel.add(treeTableScrollPane, BorderLayout.CENTER);
+		leftPanel.add(getTreeTableScrollPane(), BorderLayout.CENTER);
 		
 		JPanel rightPanel = new MiradiPanel(new BorderLayout());
 		AboveBudgetColumnsBar aboveMainTableBar = new AboveBudgetColumnsBar(mainTable);
@@ -128,6 +117,22 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		treeTableRowSelectionListener = new TreeTableRowSelectionHandler();
 		
 		enableSelectionListeners();
+	}
+
+	private void createModels() throws Exception
+	{
+		mainModel = new PlanningViewMainTableModel(getProject(), getTree(), rowColumnProvider);
+		multiModel = new PlanningTreeMultiTableModel(getTree().getUniqueTableIdentifier());
+		measurementModel = new PlanningViewMeasurementTableModel(getProject(), getTree());
+		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), getTree());
+		workUnitsTableModel = new PlanningWorkUnitsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		resourceWorkUnitsTableModel = new ProjectResourceWorkUnitsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		expenseAmountsTableModel = new ExpenseAmountsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		budgetDetailsTableModel = new BudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		fundingSourceBudgetDetailsTableModel = new FundingSourceBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		accoundingCodeBudgetDetailsTableModel = new AccountingCodeBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		fundingSourceExpenseTableModel = new FundingSourceExpenseTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		accountingCodeExpenseTableModel = new AccountingCodeExpenseTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 	}
 
 	protected boolean wasTypeCreatedOrDeleted(CommandExecutedEvent event, int objectType)
