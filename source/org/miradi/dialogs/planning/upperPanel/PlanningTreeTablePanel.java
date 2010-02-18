@@ -61,7 +61,6 @@ import org.miradi.objects.ResourceAssignment;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
-import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.TableExporter;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 import org.miradi.utils.TreeTableExporter;
@@ -80,15 +79,12 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		rowColumnProvider = rowColumnProviderToUse;
 		filterStatusPanel = filterStatusPanelToUse;
 		treeTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-
-		MultiTableVerticalScrollController scrollController = new MultiTableVerticalScrollController();
-		scrollController.addScrollPane(getTreeTableScrollPane());
 		
 		createModels();
 		
 		mainTable = new PlanningUpperMultiTable(getMainWindow(), treeToUse, multiModel);
 		
-		mainTableScrollPane = integrateTable(getTreeTableScrollPane().getVerticalScrollBar(), scrollController, mainTable);
+		mainTableScrollPane = integrateTable(getTreeTableScrollPane().getVerticalScrollBar(), mainTable);
 		mainTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
 		createTreeAndTablePanel();

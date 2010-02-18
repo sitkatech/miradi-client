@@ -43,8 +43,8 @@ import org.miradi.utils.HideableScrollBar;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.MultiTableRowHeightController;
 import org.miradi.utils.MultiTableSelectionChangingListener;
-import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.MultiTableSelectionController;
+import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.TableWithRowHeightSaver;
 
 import com.jhlabs.awt.GridLayoutPlus;
@@ -68,13 +68,16 @@ abstract public class MultiTreeTablePanel extends TreeTablePanel implements Mult
 		treeTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	}
 	
-	protected ScrollPaneWithHideableScrollBar integrateTable(JScrollBar masterScrollBar, MultiTableVerticalScrollController scrollController, TableWithRowHeightSaver table)
+	protected ScrollPaneWithHideableScrollBar integrateTable(JScrollBar masterScrollBar, TableWithRowHeightSaver table)
 	{
 		MultiTableRowHeightController rowHeightController = new MultiTableRowHeightController(getMainWindow());
 		rowHeightController.addTable(getTree());
 
 		MultiTableSelectionController selectionController = new MultiTableSelectionController(this);
 		selectionController.addTable(getTree());
+		
+		scrollController = new MultiTableVerticalScrollController();
+		scrollController.addScrollPane(getTreeTableScrollPane());
 
 		ModelUpdater modelUpdater = new ModelUpdater((AbstractTableModel)table.getModel());
 		getTree().getTreeTableAdapter().addTableModelListener(modelUpdater);
@@ -92,6 +95,11 @@ abstract public class MultiTreeTablePanel extends TreeTablePanel implements Mult
 		scrollController.addScrollPane(scrollPane);
 		
 		return scrollPane;
+	}
+	
+	protected MultiTableVerticalScrollController getScrollController()
+	{
+		return scrollController;
 	}
 	
 	public void beginSelectionChangingProcess()
@@ -243,4 +251,6 @@ abstract public class MultiTreeTablePanel extends TreeTablePanel implements Mult
 
 		private HideableScrollBar hideableScrollBar;
 	}
+	
+	private MultiTableVerticalScrollController scrollController;
 }
