@@ -33,7 +33,6 @@ import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableColumnModelListener;
 
 import org.miradi.dialogs.base.EditableObjectTableModel;
-import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.planning.AccountingCodeBudgetDetailsTableModel;
 import org.miradi.dialogs.planning.FundingSourceBudgetDetailsTableModel;
 import org.miradi.dialogs.planning.RowColumnProvider;
@@ -104,29 +103,13 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		enableSelectionListeners();
 	}
 
-	private void createTreeAndTablePanel() throws Exception
-	{
-		// NOTE: Replace treeScrollPane that super constructor added
-		removeAll();
-		add(getButtonBox(), BorderLayout.BEFORE_FIRST_LINE);
-		
-		JPanel leftPanel = new MiradiPanel(new BorderLayout());
-		addAboveTreeStatusPanel(leftPanel);
-		leftPanel.add(getTreeTableScrollPane(), BorderLayout.CENTER);
-		
-		JPanel rightPanel = new MiradiPanel(new BorderLayout());
-		addAboveColumnBar(rightPanel);
-		rightPanel.add(getMainTableScrollPane(), BorderLayout.CENTER);
-		
-		add(leftPanel, BorderLayout.BEFORE_LINE_BEGINS);
-		add(rightPanel, BorderLayout.CENTER);
-	}
-
+	@Override
 	protected void addAboveTreeStatusPanel(JPanel leftPanel)
 	{
 		leftPanel.add(filterStatusPanel, BorderLayout.BEFORE_FIRST_LINE);
 	}
 
+	@Override
 	protected void addAboveColumnBar(JPanel rightPanel)
 	{
 		AboveBudgetColumnsBar aboveMainTableBar = new AboveBudgetColumnsBar(mainTable);
