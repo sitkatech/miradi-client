@@ -110,7 +110,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
 		mainTable = new PlanningUpperMultiTable(treeToUse, multiModel, fontProvider);
 		
-		mainTableScrollPane = integrateTable(treeTableScrollPane.getVerticalScrollBar(), scrollController, rowHeightController, selectionController, treeToUse, mainTable);
+		mainTableScrollPane = integrateTable(getTreeTableScrollPane().getVerticalScrollBar(), scrollController, rowHeightController, selectionController, treeToUse, mainTable);
 		mainTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
 		// NOTE: Replace treeScrollPane that super constructor added
