@@ -46,6 +46,14 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	}
 	
 	@Override
+	public void dispose()
+	{
+		getMainTable().dispose();
+		
+		super.dispose();
+	}
+	
+	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		try

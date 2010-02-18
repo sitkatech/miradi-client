@@ -83,7 +83,6 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		super(mainWindowToUse, treeToUse, buttonActions);
 		
 		rowColumnProvider = rowColumnProviderToUse;
-		
 		treeTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
 		MultiTableRowHeightController rowHeightController = new MultiTableRowHeightController(getMainWindow());
@@ -141,14 +140,6 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		enableSelectionListeners();
 	}
 
-	@Override
-	public void dispose()
-	{
-		super.dispose();
-		
-		mainTable.dispose();
-	}
-	
 	protected boolean wasTypeCreatedOrDeleted(CommandExecutedEvent event, int objectType)
 	{
 		if (event.isCreateCommandForThisType(objectType))
