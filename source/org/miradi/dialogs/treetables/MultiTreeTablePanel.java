@@ -75,6 +75,7 @@ abstract public class MultiTreeTablePanel extends TreeTablePanel implements Mult
 		
 		selectionController.addTable(table);
 		rowHeightController.addTable(table);
+		listenForColumnWidthChanges(getTree());
 		listenForColumnWidthChanges(table);
 
 		ScrollPaneWithHideableScrollBar scrollPane = new ScrollPaneNoExtraWidth(table);

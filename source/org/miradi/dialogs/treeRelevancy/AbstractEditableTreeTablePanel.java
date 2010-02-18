@@ -67,8 +67,6 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 		MultiTableVerticalScrollController scrollController = new MultiTableVerticalScrollController();
 		scrollController.addScrollPane(getTreeTableScrollPane());
 
-		listenForColumnWidthChanges(getTree());
-
 		editableTableModel = createEditableTableModel(mainWindowToUse, treeTable, baseObject);
 		editableTable = createEditableTable(mainWindowToUse);
 		mainTableScrollPane = integrateTable(masterVerticalScrollBar, scrollController, rowHeightController, selectionController, treeTable, editableTable);
