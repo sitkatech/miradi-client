@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-18 10:35-0600\n"
+"POT-Creation-Date: 2010-02-18 12:56-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -991,7 +991,7 @@ msgid " was empty"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:259
-#: Miradi/source/org/miradi/main/Miradi.java:279
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:79
 msgid "Import"
 msgstr "导入 \t\t"
 
@@ -4065,22 +4065,6 @@ msgstr "直接威胁因子 \t\t"
 msgid "Status|Ready"
 msgstr "就绪 \t\t"
 
-#: Miradi/source/org/miradi/main/Miradi.java:278
-msgid "Do you want to attempt to import %s into Miradi?"
-msgstr ""
-
-#: Miradi/source/org/miradi/main/Miradi.java:315
-msgid "Button|Import"
-msgstr ""
-
-#: Miradi/source/org/miradi/main/Miradi.java:316
-msgid "Button|Don't Import"
-msgstr ""
-
-#: Miradi/source/org/miradi/main/Miradi.java:317
-msgid "Button|Exit"
-msgstr ""
-
 #: Miradi/source/org/miradi/main/SampleInstaller.java:48
 msgid "Sample Project Installed"
 msgstr ""
@@ -4352,12 +4336,28 @@ msgstr "文档讨论及决定 \t\t"
 msgid "Menu|3. Implement Actions &  Monitoring"
 msgstr "3. 实施行动及监控 \t\t"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:52
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:61
 msgid "Importing File (%s) from command line does not exist"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:59
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:68
 msgid "Importing File (%s) from command line is a directory"
+msgstr ""
+
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:78
+msgid "Do you want to attempt to import %s into Miradi?"
+msgstr ""
+
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:110
+msgid "Button|Import"
+msgstr ""
+
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:111
+msgid "Button|Don't Import"
+msgstr ""
+
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:112
+msgid "Button|Exit"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:64
