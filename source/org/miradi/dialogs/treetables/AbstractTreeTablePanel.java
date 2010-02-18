@@ -19,8 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.treetables;
 
+import java.awt.BorderLayout;
+
+import javax.swing.JPanel;
+
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.EditableObjectTableModel;
+import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -51,6 +56,32 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		getMainTable().dispose();
 		
 		super.dispose();
+	}
+	
+	protected void createTreeAndTablePanel() throws Exception
+	{
+		// NOTE: Replace treeScrollPane that super constructor added
+		removeAll();
+		add(getButtonBox(), BorderLayout.BEFORE_FIRST_LINE);
+		
+		JPanel leftPanel = new MiradiPanel(new BorderLayout());
+		addAboveTreeStatusPanel(leftPanel);
+		leftPanel.add(getTreeTableScrollPane(), BorderLayout.CENTER);
+		
+		JPanel rightPanel = new MiradiPanel(new BorderLayout());
+		addAboveColumnBar(rightPanel);
+		rightPanel.add(getMainTableScrollPane(), BorderLayout.CENTER);
+		
+		add(leftPanel, BorderLayout.BEFORE_LINE_BEGINS);
+		add(rightPanel, BorderLayout.CENTER);
+	}
+	
+	protected void addAboveTreeStatusPanel(JPanel leftPanel)
+	{
+	}
+
+	protected void addAboveColumnBar(JPanel rightPanel)
+	{
 	}
 	
 	@Override
