@@ -292,6 +292,11 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		--disableSideTabSwitchingCount;
 	}
 	
+	public ScrollPaneWithHideableScrollBar getMainTableScrollPane()
+	{
+		return mainTableScrollPane;
+	}
+	
 	abstract protected EditableObjectTableModel getMainModel();
 
 	abstract protected TableWithColumnWidthAndSequenceSaver getMainTable();

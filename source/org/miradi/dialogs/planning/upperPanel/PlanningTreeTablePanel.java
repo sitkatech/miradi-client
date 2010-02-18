@@ -106,7 +106,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		AboveBudgetColumnsBar aboveMainTableBar = new AboveBudgetColumnsBar(mainTable);
 		aboveMainTableBar.setTableScrollPane(mainTableScrollPane);
 		rightPanel.add(aboveMainTableBar, BorderLayout.BEFORE_FIRST_LINE);
-		rightPanel.add(mainTableScrollPane, BorderLayout.CENTER);
+		rightPanel.add(getMainTableScrollPane(), BorderLayout.CENTER);
 		
 		add(leftPanel, BorderLayout.BEFORE_LINE_BEGINS);
 		add(rightPanel, BorderLayout.CENTER);
