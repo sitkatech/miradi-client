@@ -95,6 +95,17 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		mainTableScrollPane = integrateTable(getTreeTableScrollPane().getVerticalScrollBar(), scrollController, mainTable);
 		mainTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
+		createTreeAndTablePanel();
+		rebuildEntireTreeAndTable();
+	
+		mainTableColumnSelectionListener = new MainTableSelectionHandler();
+		treeTableRowSelectionListener = new TreeTableRowSelectionHandler();
+		
+		enableSelectionListeners();
+	}
+
+	private void createTreeAndTablePanel() throws Exception
+	{
 		// NOTE: Replace treeScrollPane that super constructor added
 		removeAll();
 		add(getButtonBox(), BorderLayout.BEFORE_FIRST_LINE);
@@ -109,13 +120,6 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		
 		add(leftPanel, BorderLayout.BEFORE_LINE_BEGINS);
 		add(rightPanel, BorderLayout.CENTER);
-		
-		rebuildEntireTreeAndTable();
-	
-		mainTableColumnSelectionListener = new MainTableSelectionHandler();
-		treeTableRowSelectionListener = new TreeTableRowSelectionHandler();
-		
-		enableSelectionListeners();
 	}
 
 	protected void addAboveTreeStatusPanel(JPanel leftPanel)
