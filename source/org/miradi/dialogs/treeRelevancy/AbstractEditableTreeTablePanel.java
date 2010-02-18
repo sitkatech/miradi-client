@@ -60,13 +60,13 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 		masterVerticalScrollBar = new MasterVerticalScrollBar(treeTableScrollPane);
 		treeTableScrollPane.addMouseWheelListener(new MouseWheelHandler(masterVerticalScrollBar));
 
-		rowHeightController = new MultiTableRowHeightController(getMainWindow());
+		MultiTableRowHeightController rowHeightController = new MultiTableRowHeightController(getMainWindow());
 		rowHeightController.addTable(treeTable);
 
-		selectionController = new MultiTableSelectionController(this);
+		MultiTableSelectionController selectionController = new MultiTableSelectionController(this);
 		selectionController.addTable(treeTable);
 
-		scrollController = new MultiTableVerticalScrollController();
+		MultiTableVerticalScrollController scrollController = new MultiTableVerticalScrollController();
 		scrollController.addScrollPane(treeTableScrollPane);
 
 		listenForColumnWidthChanges(getTree());
@@ -184,8 +184,4 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 	
 	private ScrollPaneWithHideableScrollBar treesScrollPane;
 	private ScrollPaneWithHideableScrollBar mainTableScrollPane;
-	
-	private MultiTableSelectionController selectionController;
-	private MultiTableRowHeightController rowHeightController;
-	private MultiTableVerticalScrollController scrollController;
 }
