@@ -46,8 +46,6 @@ import org.miradi.dialogs.planning.propertiesPanel.FundingSourceExpenseTableMode
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningWorkUnitsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceWorkUnitsTableModel;
-import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
-import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.treetables.AbstractTreeTablePanel;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
@@ -88,8 +86,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		
 		createModels();
 		
-		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
-		mainTable = new PlanningUpperMultiTable(treeToUse, multiModel, fontProvider);
+		mainTable = new PlanningUpperMultiTable(treeToUse, multiModel);
 		
 		mainTableScrollPane = integrateTable(getTreeTableScrollPane().getVerticalScrollBar(), scrollController, mainTable);
 		mainTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
