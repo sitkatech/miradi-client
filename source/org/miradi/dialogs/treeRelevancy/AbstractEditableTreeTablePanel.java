@@ -69,7 +69,7 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 
 		editableTableModel = createEditableTableModel(mainWindowToUse, treeTable, baseObject);
 		editableTable = createEditableTable(mainWindowToUse);
-		mainTableScrollPane = integrateTable(masterVerticalScrollBar, scrollController, rowHeightController, selectionController, getTree(), editableTable);
+		mainTableScrollPane = integrateTable(masterVerticalScrollBar, scrollController, rowHeightController, selectionController, editableTable);
 
 		treesPanel = new ShrinkToFitVerticallyHorizontalBox();
 		treesPanel.add(treeTableScrollPane);
