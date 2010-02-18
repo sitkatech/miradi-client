@@ -456,7 +456,7 @@ public class ProjectServer
 	private static final String JSON_DIRECTORY = "json";
 
 	private static String MANIFEST_FILE = "manifest";
-	private static String PROJECTINFO_FILE = "project";
+	public static String PROJECTINFO_FILE = "project";
 	private static String THREATFRAMEWORK_FILE = "threatframework";
 	private static String THREATRATINGS_DIRECTORY = "threatratings";
 	private static String VERSION_FILE = "version";

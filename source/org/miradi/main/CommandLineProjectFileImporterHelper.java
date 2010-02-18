@@ -21,51 +21,79 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.main;
 
 import java.io.File;
+import java.util.Enumeration;
+import java.util.Vector;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
+import org.miradi.database.ProjectServer;
 import org.miradi.views.umbrella.AbstractProjectImporter;
 import org.miradi.views.umbrella.CpmzProjectImporter;
+import org.miradi.views.umbrella.ExportCpmzDoer;
 import org.miradi.views.umbrella.ZippedProjectImporter;
 
 public class CommandLineProjectFileImporterHelper
 {
-	public CommandLineProjectFileImporterHelper(AbstractProjectImporter importerToUse, String commandLineArg)
-	{
-		importer = importerToUse;
-		projectFileToImport = new File(extractProjectFileName(commandLineArg));
-	}
-	
 	public static void importIfRequested(MainWindow mainWindowToUse, String[] commandLineArgs) throws Exception
 	{
-		CommandLineProjectFileImporterHelper importHelper = createImportHelper(mainWindowToUse, commandLineArgs);
-		if (importHelper != null && importHelper.isImportableProjectFile())
-			importHelper.userComfirmImport();
+		CommandLineProjectFileImporterHelper helper = new CommandLineProjectFileImporterHelper(mainWindowToUse);
+		helper.importIfRequested(commandLineArgs);
 	}
 	
-	private String extractProjectFileName(final String commandLineArg)
+	private CommandLineProjectFileImporterHelper(MainWindow mainWindowToUse)
 	{
-		int endDelimiter = commandLineArg.indexOf(TAG_END_DELIMITER);
+		mainWindow = mainWindowToUse;
+	}
+	
+	private void importIfRequested(String[] commandLineArgs) throws Exception
+	{
+		Vector<File> filesToImport = extractProjectFileToImport(commandLineArgs);
+		if (filesToImport.isEmpty())
+			return;
 		
-		final String projectFileName = commandLineArg.substring(endDelimiter + 1);
-		return projectFileName;
+		if (filesToImport.size() > 1)
+			EAM.okDialog(EAM.text("Import"), new String[]{EAM.text("Miradi currently supports importing only a single file from command line.")});
+		
+		final int FIRST_INDEX = 0;
+		File projectFileToImport = filesToImport.get(FIRST_INDEX);
+		if (!isImportableProjectFile(projectFileToImport))
+			return;
+
+		AbstractProjectImporter importer = createImporter(projectFileToImport);
+		if (importer!= null && userComfirmImport(projectFileToImport.getName()))
+			importer.importProject(projectFileToImport);
 	}
 	
-	private boolean isImportableProjectFile()
+	private Vector<File> extractProjectFileToImport(String[] commandLineArgs)
 	{
-		if (getProjectFileToImport() == null)
+		Vector<File> filesToImport = new Vector<File>();
+		for (int index = 0; index < commandLineArgs.length; ++index)
+		{
+			String commandLineArg = commandLineArgs[index];
+			if (!commandLineArg.startsWith("--"))
+				filesToImport.add(new File(commandLineArg));
+		}
+		
+		return filesToImport;
+	}
+	
+	private boolean isImportableProjectFile(File projectFileToImport)
+	{
+		if (projectFileToImport == null)
 		{
 			return false;
 		}
 		
-		if (!getProjectFileToImport().exists())
+		if (!projectFileToImport.exists())
 		{
-			String message = EAM.substitute(EAM.text("Importing File (%s) from command line does not exist"), getFileName());
+			String message = EAM.substitute(EAM.text("Importing File (%s) from command line does not exist"), projectFileToImport.getName());
 			EAM.errorDialog(message);
 			return false;
 		}
 		
-		if (getProjectFileToImport().isDirectory())
+		if (projectFileToImport.isDirectory())
 		{
-			String message = EAM.substitute(EAM.text("Importing File (%s) from command line is a directory"), getFileName());
+			String message = EAM.substitute(EAM.text("Importing File (%s) from command line is a directory"), projectFileToImport.getName());
 			EAM.errorDialog(message);
 			return false;
 		}
@@ -73,35 +101,17 @@ public class CommandLineProjectFileImporterHelper
 		return true;
 	}	
 	
-	private void userComfirmImport() throws Exception
+	private boolean userComfirmImport(String fileNameToImport) throws Exception
 	{
-		String message = EAM.substitute(EAM.text("Do you want to attempt to import %s into Miradi?"), getFileName());
+		String message = EAM.substitute(EAM.text("Do you want to attempt to import %s into Miradi?"), fileNameToImport);
 		int userComfirmationChoice = confirmImportDialog(EAM.text("Import"), message);
 		if (userComfirmationChoice == IMPORT_CHOICE)
-			importProjectFromCommandLine();
+			return true;
 		
 		if (userComfirmationChoice == EXIT_CHOICE)
 			getMainWindow().exitNormally();
-	}
-	
-	private static CommandLineProjectFileImporterHelper createImportHelper(MainWindow mainWindowToUse, String[] commandLineArgsToUse) throws Exception
-	{
-		for (int index = 0; index < commandLineArgsToUse.length; ++index)
-		{
-			String commandLineArg = commandLineArgsToUse[index];
-			if (isImportTagArgument(commandLineArg, CommandLineProjectFileImporterHelper.COMMANDLINE_TAG_IMPORT_MPZ))
-				return new CommandLineProjectFileImporterHelper(new ZippedProjectImporter(mainWindowToUse), commandLineArg);
-			
-			if (isImportTagArgument(commandLineArg, CommandLineProjectFileImporterHelper.COMMANDLINE_TAG_IMPORT_CPMZ))
-				return new CommandLineProjectFileImporterHelper(new CpmzProjectImporter(mainWindowToUse), commandLineArg);
-		}
 		
-		return null;
-	}
-
-	private MainWindow getMainWindow()
-	{
-		return EAM.getMainWindow();
+		return false;
 	}
 	
 	private static int confirmImportDialog(String title, String body)
@@ -114,28 +124,41 @@ public class CommandLineProjectFileImporterHelper
 		return EAM.confirmDialog(title, body, buttons);
 	}
 	
-	private static boolean isImportTagArgument(String commandLineArg, String commandlineImportTag)
+	private AbstractProjectImporter createImporter(File projectFile) throws Exception
 	{
-		return commandLineArg.toLowerCase().startsWith(commandlineImportTag);
-	}
-
-	private void importProjectFromCommandLine() throws Exception
-	{
-		importer.importProject(getProjectFileToImport());
-	}
-
-	private File getProjectFileToImport()
-	{
-		return projectFileToImport;
-	}
-
-	private String getFileName()
-	{
-		return getProjectFileToImport().getName();
+		ZipFile zipFile = new ZipFile(projectFile);
+		if (CpmzProjectImporter.zipContainsMpzProject(zipFile) || CpmzProjectImporter.containsEntry(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME))
+			return new CpmzProjectImporter(getMainWindow());
+		
+		if (isMpz(zipFile))
+			return new ZippedProjectImporter(getMainWindow());
+		
+		EAM.errorDialog(EAM.substitute(EAM.text("Miradi did not recognize the file: %s as importable."), projectFile.getName()));
+		return null;
 	}
 	
-	private AbstractProjectImporter importer;
-	private File projectFileToImport;
+	private boolean isMpz(ZipFile zipFile)
+	{
+		Enumeration<ZipEntry> entries = (Enumeration<ZipEntry>) zipFile.entries();
+		while (entries.hasMoreElements())
+		{
+			ZipEntry entry = entries.nextElement();
+			if (entry.isDirectory())
+				continue;
+			
+			if (entry.getName().toLowerCase().endsWith(ProjectServer.PROJECTINFO_FILE))
+				return true;
+		}
+		
+		return false;
+	}
+	
+	private MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
+	
+	private MainWindow mainWindow;
 	private static final String TAG_END_DELIMITER = "=";
 	public static final String COMMANDLINE_TAG_IMPORT_MPZ = "--importmpz" + TAG_END_DELIMITER;
 	public static final String COMMANDLINE_TAG_IMPORT_CPMZ = "--importcpmz" + TAG_END_DELIMITER;
