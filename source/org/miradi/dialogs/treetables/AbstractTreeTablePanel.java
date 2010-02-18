@@ -100,11 +100,6 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		}
 	}
 	
-	public GenericTreeTableModel getTreeTableModel()
-	{
-		return super.getTreeTableModel();
-	}
-	
 	protected boolean isColumnExpandCollapseCommand(CommandExecutedEvent event)
 	{
 		return event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_DATE_UNIT_LIST_DATA);
