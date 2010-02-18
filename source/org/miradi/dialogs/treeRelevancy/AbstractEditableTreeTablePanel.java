@@ -19,11 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
  */ 
 package org.miradi.dialogs.treeRelevancy;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JPanel;
 import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
 
 import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.base.EditableObjectTableModel;
@@ -38,8 +34,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
-import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
-import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
 abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePanel
 {
@@ -63,38 +57,12 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 		editableTable = createEditableTable(mainWindowToUse);
 		mainTableScrollPane = integrateTable(masterVerticalScrollBar, scrollController, editableTable);
 
-		JPanel treesPanel = new ShrinkToFitVerticallyHorizontalBox();
-		treesPanel.add(treeTableScrollPane);
-		treesScrollPane = new ScrollPaneWithHideableScrollBar(treesPanel);
-		treesScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		treesScrollPane.hideVerticalScrollBar();
-
-		tablesPanel = new ShrinkToFitVerticallyHorizontalBox();
-		ScrollPaneWithHideableScrollBar tablesScrollPane = new ScrollPaneWithHideableScrollBar(tablesPanel);
-		tablesScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		tablesScrollPane.hideVerticalScrollBar();
-
 		scrollController.addScrollBar(masterVerticalScrollBar);
 
-		treePlusTablesPanel = new PersistentNonPercentageHorizontalSplitPane(this, mainWindowToUse, getDividerName());
-		treePlusTablesPanel.setDividerSize(5);
-		// FIXME medium: Remove this when persistence actually works!
-		configureSplitter(tablesScrollPane);
-
-		// NOTE: Replace treeScrollPane that super constructor put in CENTER
-		add(treePlusTablesPanel, BorderLayout.CENTER);
-		add(masterVerticalScrollBar, BorderLayout.AFTER_LINE_ENDS);
-
+		createTreeAndTablePanel();
 		rebuildEntireTreeTable();
 	}
 	
-	private void configureSplitter(ScrollPaneWithHideableScrollBar tablesScrollPane)
-	{
-		treePlusTablesPanel.setTopComponent(treesScrollPane);
-		treePlusTablesPanel.setBottomComponent(tablesScrollPane);
-		treePlusTablesPanel.setOneTouchExpandable(false);
-	}
-
 	@Override
 	protected void rebuildEntireTreeTable() throws Exception
 	{
@@ -123,9 +91,6 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 
 	private void updateRightSideTablePanels() throws Exception
 	{
-		tablesPanel.removeAll();
-		tablesPanel.add(mainTableScrollPane);
-		
 		validate();
 		repaint();
 	}
@@ -158,8 +123,4 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 	
 	private SingleBooleanColumnEditableModel editableTableModel;
 	private EditableObjectTable editableTable;
-	private PersistentHorizontalSplitPane treePlusTablesPanel;
-	private JPanel tablesPanel;
-	
-	private ScrollPaneWithHideableScrollBar treesScrollPane;
 }

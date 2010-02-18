@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.treeRelevancy;
 
+import java.awt.Dimension;
+
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.MainWindow;
@@ -28,5 +30,13 @@ public class StrategyActivityRelevancyTreeTable extends TreeTableWithStateSaving
 	public StrategyActivityRelevancyTreeTable(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
 	{
 		super(mainWindowToUse, treeTableModel);
+		
+		setAutoResizeMode(AUTO_RESIZE_OFF);
+	}
+	
+	@Override
+	public Dimension getPreferredScrollableViewportSize()
+	{
+		return getPreferredSize();
 	}
 }
