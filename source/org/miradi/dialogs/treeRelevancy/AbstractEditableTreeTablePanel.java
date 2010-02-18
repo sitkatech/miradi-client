@@ -63,7 +63,7 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 		editableTable = createEditableTable(mainWindowToUse);
 		mainTableScrollPane = integrateTable(masterVerticalScrollBar, scrollController, editableTable);
 
-		treesPanel = new ShrinkToFitVerticallyHorizontalBox();
+		JPanel treesPanel = new ShrinkToFitVerticallyHorizontalBox();
 		treesPanel.add(treeTableScrollPane);
 		treesScrollPane = new ScrollPaneWithHideableScrollBar(treesPanel);
 		treesScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -160,7 +160,6 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 	private EditableObjectTable editableTable;
 	private JScrollBar masterVerticalScrollBar;
 	private PersistentHorizontalSplitPane treePlusTablesPanel;
-	private JPanel treesPanel;
 	private JPanel tablesPanel;
 	
 	private ScrollPaneWithHideableScrollBar treesScrollPane;
