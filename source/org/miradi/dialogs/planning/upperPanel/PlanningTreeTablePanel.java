@@ -97,7 +97,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 
 		// NOTE: Replace treeScrollPane that super constructor added
 		removeAll();
-		add(buttonBox, BorderLayout.BEFORE_FIRST_LINE);
+		add(getButtonBox(), BorderLayout.BEFORE_FIRST_LINE);
 		
 		JPanel leftPanel = new MiradiPanel(new BorderLayout());
 		addAboveTreeStatusPanel(leftPanel);

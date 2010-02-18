@@ -94,6 +94,11 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	{
 		return treeTableScrollPane;
 	}
+	
+	public JPanel getButtonBox()
+	{
+		return buttonBox;
+	}
 
 	protected void restoreTreeExpansionState() 
 	{
