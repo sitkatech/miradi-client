@@ -83,7 +83,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		super(mainWindowToUse, treeToUse, buttonActions);
 		
 		rowColumnProvider = rowColumnProviderToUse;
-		model = modelToUse;
+		treeTableModel = modelToUse;
 		
 		treeTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 

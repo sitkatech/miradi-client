@@ -55,7 +55,7 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 		// FIXME medium: Much duplicated code with PlanningTreeTablePanel
 		super(mainWindowToUse, treeTable, buttonActionClasses);
 
-		model = modelToUse;
+		treeTableModel = modelToUse;
 
 		masterVerticalScrollBar = new MasterVerticalScrollBar(treeTableScrollPane);
 		treeTableScrollPane.addMouseWheelListener(new MouseWheelHandler(masterVerticalScrollBar));
