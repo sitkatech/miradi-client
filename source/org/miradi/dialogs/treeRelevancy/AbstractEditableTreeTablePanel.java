@@ -32,7 +32,6 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
 abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePanel
@@ -51,14 +50,11 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 		JScrollBar masterVerticalScrollBar = new MasterVerticalScrollBar(treeTableScrollPane);
 		treeTableScrollPane.addMouseWheelListener(new MouseWheelHandler(masterVerticalScrollBar));
 
-		MultiTableVerticalScrollController scrollController = new MultiTableVerticalScrollController();
-		scrollController.addScrollPane(getTreeTableScrollPane());
-
 		editableTableModel = createEditableTableModel();
 		editableTable = createEditableTable();
-		mainTableScrollPane = integrateTable(masterVerticalScrollBar, scrollController, editableTable);
+		mainTableScrollPane = integrateTable(masterVerticalScrollBar, editableTable);
 
-		scrollController.addScrollBar(masterVerticalScrollBar);
+		getScrollController().addScrollBar(masterVerticalScrollBar);
 
 		createTreeAndTablePanel();
 		rebuildEntireTreeTable();
