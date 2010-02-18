@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
-import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.util.HashSet;
 import java.util.Set;
@@ -43,16 +42,8 @@ public class PlanningTreeTable extends TreeTableWithPreferredScrollableViewportS
 	public PlanningTreeTable(MainWindow mainWindowToUse, GenericTreeTableModel planningTreeModelToUse)
 	{
 		super(mainWindowToUse, planningTreeModelToUse);
-		
-		setAutoResizeMode(AUTO_RESIZE_OFF);
 	}
 	
-	@Override
-	public Dimension getPreferredScrollableViewportSize()
-	{
-		return getPreferredSize();
-	}
-
 	@Override
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
