@@ -299,4 +299,5 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	abstract protected void rebuildEntireTreeTable() throws Exception;
 	
 	private int disableSideTabSwitchingCount;
+	protected ScrollPaneWithHideableScrollBar mainTableScrollPane;
 }

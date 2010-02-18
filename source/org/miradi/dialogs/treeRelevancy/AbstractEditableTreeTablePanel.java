@@ -162,5 +162,4 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 	private JPanel tablesPanel;
 	
 	private ScrollPaneWithHideableScrollBar treesScrollPane;
-	private ScrollPaneWithHideableScrollBar mainTableScrollPane;
 }

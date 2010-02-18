@@ -451,8 +451,6 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	private ProjectResourceWorkUnitsTableModel resourceWorkUnitsTableModel;
 	private FundingSourceExpenseTableModel fundingSourceExpenseTableModel;
 	private AccountingCodeExpenseTableModel accountingCodeExpenseTableModel;
-
-	private ScrollPaneWithHideableScrollBar mainTableScrollPane;
 	
 	private MainTableSelectionHandler mainTableColumnSelectionListener;
 	private TreeTableRowSelectionHandler treeTableRowSelectionListener;
