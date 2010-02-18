@@ -86,13 +86,13 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		treeTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
 		MultiTableRowHeightController rowHeightController = new MultiTableRowHeightController(getMainWindow());
-		rowHeightController.addTable(treeToUse);
+		rowHeightController.addTable(getTree());
 		
 		MultiTableSelectionController selectionController = new MultiTableSelectionController(this);
-		selectionController.addTable(treeToUse);
+		selectionController.addTable(getTree());
 		
 		MultiTableVerticalScrollController scrollController = new MultiTableVerticalScrollController();
-		scrollController.addScrollPane(treeTableScrollPane);
+		scrollController.addScrollPane(getTreeTableScrollPane());
 		
 		listenForColumnWidthChanges(getTree());
 		
