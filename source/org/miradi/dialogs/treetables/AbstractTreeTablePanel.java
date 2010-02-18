@@ -102,7 +102,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	
 	public GenericTreeTableModel getTreeTableModel()
 	{
-		return super.getModel();
+		return super.getTreeTableModel();
 	}
 	
 	protected boolean isColumnExpandCollapseCommand(CommandExecutedEvent event)
