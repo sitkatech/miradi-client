@@ -48,7 +48,7 @@ public class TaggedObjectSetTreeTablePanel extends AbstractEditableTreeTablePane
 		return new TaggedObjectSetEditableTableModel(mainWindowToUse.getProject(), treeTable,  (TaggedObjectSet)baseObject);
 	}
 	
-	protected EditableObjectTable createEditableTable(MainWindow mainWindowToUse)
+	protected EditableObjectTable createEditableTable()
 	{
 		return new TaggedObjectSetEditableTable(getMainWindow(), getEditableSingleBooleanColumnTableModel());
 	}
