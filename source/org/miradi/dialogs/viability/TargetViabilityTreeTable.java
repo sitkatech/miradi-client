@@ -74,21 +74,25 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		rebuildTableCompletely();
 	}
 	
+	@Override
 	public int getProportionShares(int row)
 	{
 		return getNodeForRow(row).getProportionShares();
 	}
 	
+	@Override
 	public boolean areBudgetValuesAllocated(int row)
 	{
 		return getNodeForRow(row).areBudgetValuesAllocated();
 	}
 
+	@Override
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return getNodeForRow(row).getObject();
 	}
 
+	@Override
 	public TableCellRenderer getCellRenderer(int row, int tableColumn)
 	{
 		if(tableColumn == 0)
@@ -179,7 +183,8 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 			statusQuestion = new StatusQuestion();
 		}
 
-		 public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) 
+		 @Override
+		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) 
 		 {
 			 JLabel renderer = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 			 renderer.setBorder(UIManager.getBorder("TableHeader.cellBorder"));
