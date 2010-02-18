@@ -42,18 +42,19 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 		this(mainWindowToUse, modelToUse, treeTable, baseObject, new Class[0]);
 	}
 	
-	public AbstractEditableTreeTablePanel(MainWindow mainWindowToUse, GenericTreeTableModel modelToUse, TreeTableWithStateSaving treeTable, BaseObject baseObject, Class[] buttonActionClasses) throws Exception
+	public AbstractEditableTreeTablePanel(MainWindow mainWindowToUse, GenericTreeTableModel modelToUse, TreeTableWithStateSaving treeTable, BaseObject baseObjectToUse, Class[] buttonActionClasses) throws Exception
 	{
 		// FIXME medium: Much duplicated code with PlanningTreeTablePanel
 		super(mainWindowToUse, treeTable, buttonActionClasses);
 
+		baseObjectForPanel = baseObjectToUse;
 		JScrollBar masterVerticalScrollBar = new MasterVerticalScrollBar(treeTableScrollPane);
 		treeTableScrollPane.addMouseWheelListener(new MouseWheelHandler(masterVerticalScrollBar));
 
 		MultiTableVerticalScrollController scrollController = new MultiTableVerticalScrollController();
 		scrollController.addScrollPane(getTreeTableScrollPane());
 
-		editableTableModel = createEditableTableModel(baseObject);
+		editableTableModel = createEditableTableModel(baseObjectForPanel);
 		editableTable = createEditableTable();
 		mainTableScrollPane = integrateTable(masterVerticalScrollBar, scrollController, editableTable);
 
@@ -121,4 +122,5 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 	
 	private SingleBooleanColumnEditableModel editableTableModel;
 	private EditableObjectTable editableTable;
+	private BaseObject baseObjectForPanel;
 }
