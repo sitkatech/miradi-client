@@ -36,8 +36,6 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.LanguageQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.Translation;
-import org.miradi.views.umbrella.CpmzProjectImporter;
-import org.miradi.views.umbrella.ZippedProjectImporter;
 
 
 public class Miradi
@@ -260,10 +258,7 @@ public class Miradi
 				EAM.setMainWindow(MainWindow.create());
 				getMainWindow().start(commandLineArgs);
 				
-				
-				CommandLineProjectFileImporterHelper importHelper = createImportHelper(commandLineArgs);
-				if (importHelper != null && importHelper.isImportableProjectFile())
-					userComfirmImport(importHelper);
+				CommandLineProjectFileImporterHelper.importIfRequested(getMainWindow(), commandLineArgs);
 			}
 			catch(Exception e)
 			{
@@ -273,56 +268,12 @@ public class Miradi
 			}
 		}
 
-		private void userComfirmImport(CommandLineProjectFileImporterHelper importHelper) throws Exception
-		{
-			String message = EAM.substitute(EAM.text("Do you want to attempt to import %s into Miradi?"), importHelper.getFileName());
-			int userComfirmationChoice = confirmImportDialog(EAM.text("Import"), message);
-			if (userComfirmationChoice == IMPORT_CHOICE)
-				importHelper.importProjectFromCommandLine();
-			
-			if (userComfirmationChoice == EXIT_CHOICE)
-				getMainWindow().exitNormally();
-		}
-		
-		private CommandLineProjectFileImporterHelper createImportHelper(String[] commandLineArgsToUse) throws Exception
-		{
-			for (int index = 0; index < commandLineArgsToUse.length; ++index)
-			{
-				String commandLineArg = commandLineArgsToUse[index];
-				if (isImportTagArgument(commandLineArg, CommandLineProjectFileImporterHelper.COMMANDLINE_TAG_IMPORT_MPZ))
-					return new CommandLineProjectFileImporterHelper(new ZippedProjectImporter(getMainWindow()), commandLineArg);
-				
-				if (isImportTagArgument(commandLineArg, CommandLineProjectFileImporterHelper.COMMANDLINE_TAG_IMPORT_CPMZ))
-					return new CommandLineProjectFileImporterHelper(new CpmzProjectImporter(getMainWindow()), commandLineArg);
-			}
-			
-			return null;
-		}
-
 		private MainWindow getMainWindow()
 		{
 			return EAM.getMainWindow();
 		}
 		
-		private boolean isImportTagArgument(String commandLineArg, String commandlineImportTag)
-		{
-			return commandLineArg.toLowerCase().startsWith(commandlineImportTag);
-		}
-		
-		public static int confirmImportDialog(String title, String body)
-		{
-			String[] buttons = new String[3];
-			buttons[IMPORT_CHOICE] = EAM.text("Button|Import");
-			buttons[DO_NOT_IMPORT_CHOICE] = EAM.text("Button|Don't Import");
-			buttons[EXIT_CHOICE] = EAM.text("Button|Exit");
-			
-			return EAM.confirmDialog(title, body, buttons);
-		}
-
 		private String[] commandLineArgs;
-		private static final int IMPORT_CHOICE = 0;
-		private static final int DO_NOT_IMPORT_CHOICE = 1;
-		private static final int EXIT_CHOICE = 2;
 	}
 
 	public static final String MAIN_VERSION = "3.0";
