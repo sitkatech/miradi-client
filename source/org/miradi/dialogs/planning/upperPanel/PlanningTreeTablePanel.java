@@ -94,8 +94,6 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		MultiTableVerticalScrollController scrollController = new MultiTableVerticalScrollController();
 		scrollController.addScrollPane(getTreeTableScrollPane());
 		
-		listenForColumnWidthChanges(getTree());
-		
 		mainModel = new PlanningViewMainTableModel(getProject(), treeToUse, rowColumnProvider);
 		multiModel = new PlanningTreeMultiTableModel(treeToUse.getUniqueTableIdentifier());
 		measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeToUse);
