@@ -98,13 +98,6 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 		rebuildEntireTreeTable();
 	}
 	
-	@Override
-	public void dispose()
-	{
-		super.dispose();
-		editableTable.dispose();
-	}
-
 	private void configureSplitter(ScrollPaneWithHideableScrollBar tablesScrollPane)
 	{
 		treePlusTablesPanel.setTopComponent(treesScrollPane);
