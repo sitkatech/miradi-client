@@ -34,11 +34,11 @@ import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
-import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
+import org.miradi.dialogs.treetables.TreeTableWithPreferredScrollableViewportSize;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 
-public class PlanningTreeTable extends TreeTableWithStateSaving implements RowColumnBaseObjectProvider
+public class PlanningTreeTable extends TreeTableWithPreferredScrollableViewportSize implements RowColumnBaseObjectProvider
 {
 	public PlanningTreeTable(MainWindow mainWindowToUse, GenericTreeTableModel planningTreeModelToUse)
 	{

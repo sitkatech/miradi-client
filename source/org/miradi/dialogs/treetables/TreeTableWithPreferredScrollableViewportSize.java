@@ -17,26 +17,15 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.treeRelevancy;
 
-import java.awt.Dimension;
+package org.miradi.dialogs.treetables;
 
-import org.miradi.dialogs.treetables.GenericTreeTableModel;
-import org.miradi.dialogs.treetables.TreeTableWithPreferredScrollableViewportSize;
 import org.miradi.main.MainWindow;
 
-public class StrategyActivityRelevancyTreeTable extends TreeTableWithPreferredScrollableViewportSize
+public class TreeTableWithPreferredScrollableViewportSize extends TreeTableWithStateSaving
 {
-	public StrategyActivityRelevancyTreeTable(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
+	public TreeTableWithPreferredScrollableViewportSize(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
 	{
 		super(mainWindowToUse, treeTableModel);
-		
-		setAutoResizeMode(AUTO_RESIZE_OFF);
-	}
-	
-	@Override
-	public Dimension getPreferredScrollableViewportSize()
-	{
-		return getPreferredSize();
 	}
 }
