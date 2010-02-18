@@ -68,8 +68,14 @@ abstract public class MultiTreeTablePanel extends TreeTablePanel implements Mult
 		treeTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	}
 	
-	protected ScrollPaneWithHideableScrollBar integrateTable(JScrollBar masterScrollBar, MultiTableVerticalScrollController scrollController, MultiTableRowHeightController rowHeightController, MultiTableSelectionController selectionController, TableWithRowHeightSaver table)
+	protected ScrollPaneWithHideableScrollBar integrateTable(JScrollBar masterScrollBar, MultiTableVerticalScrollController scrollController, TableWithRowHeightSaver table)
 	{
+		MultiTableRowHeightController rowHeightController = new MultiTableRowHeightController(getMainWindow());
+		rowHeightController.addTable(getTree());
+
+		MultiTableSelectionController selectionController = new MultiTableSelectionController(this);
+		selectionController.addTable(getTree());
+
 		ModelUpdater modelUpdater = new ModelUpdater((AbstractTableModel)table.getModel());
 		getTree().getTreeTableAdapter().addTableModelListener(modelUpdater);
 		

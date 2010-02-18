@@ -36,8 +36,6 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.utils.MultiTableRowHeightController;
-import org.miradi.utils.MultiTableSelectionController;
 import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
@@ -58,18 +56,12 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 		masterVerticalScrollBar = new MasterVerticalScrollBar(treeTableScrollPane);
 		treeTableScrollPane.addMouseWheelListener(new MouseWheelHandler(masterVerticalScrollBar));
 
-		MultiTableRowHeightController rowHeightController = new MultiTableRowHeightController(getMainWindow());
-		rowHeightController.addTable(getTree());
-
-		MultiTableSelectionController selectionController = new MultiTableSelectionController(this);
-		selectionController.addTable(getTree());
-
 		MultiTableVerticalScrollController scrollController = new MultiTableVerticalScrollController();
 		scrollController.addScrollPane(getTreeTableScrollPane());
 
 		editableTableModel = createEditableTableModel(mainWindowToUse, treeTable, baseObject);
 		editableTable = createEditableTable(mainWindowToUse);
-		mainTableScrollPane = integrateTable(masterVerticalScrollBar, scrollController, rowHeightController, selectionController, editableTable);
+		mainTableScrollPane = integrateTable(masterVerticalScrollBar, scrollController, editableTable);
 
 		treesPanel = new ShrinkToFitVerticallyHorizontalBox();
 		treesPanel.add(treeTableScrollPane);
