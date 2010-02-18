@@ -76,11 +76,12 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		this(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProviderToUse, new AbstractFixedHeightDirectlyAboveTreeTablePanel());
 	}
 	
-	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActions, RowColumnProvider rowColumnProviderToUse, JComponent filterStatusPanel) throws Exception
+	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActions, RowColumnProvider rowColumnProviderToUse, JComponent filterStatusPanelToUse) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, buttonActions);
 		
 		rowColumnProvider = rowColumnProviderToUse;
+		filterStatusPanel = filterStatusPanelToUse;
 		treeTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
 		MultiTableVerticalScrollController scrollController = new MultiTableVerticalScrollController();
@@ -99,7 +100,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		add(buttonBox, BorderLayout.BEFORE_FIRST_LINE);
 		
 		JPanel leftPanel = new MiradiPanel(new BorderLayout());
-		addAboveTreeStatusPanel(leftPanel, filterStatusPanel);
+		addAboveTreeStatusPanel(leftPanel);
 		leftPanel.add(getTreeTableScrollPane(), BorderLayout.CENTER);
 		
 		JPanel rightPanel = new MiradiPanel(new BorderLayout());
@@ -117,9 +118,9 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		enableSelectionListeners();
 	}
 
-	protected void addAboveTreeStatusPanel(JPanel panel, JComponent statusPanel)
+	protected void addAboveTreeStatusPanel(JPanel leftPanel)
 	{
-		panel.add(statusPanel, BorderLayout.BEFORE_FIRST_LINE);
+		leftPanel.add(filterStatusPanel, BorderLayout.BEFORE_FIRST_LINE);
 	}
 
 	protected void addAboveColumnBar(JPanel rightPanel)
@@ -464,4 +465,5 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	
 	private MainTableSelectionHandler mainTableColumnSelectionListener;
 	private TreeTableRowSelectionHandler treeTableRowSelectionListener;
+	private JComponent filterStatusPanel;
 }
