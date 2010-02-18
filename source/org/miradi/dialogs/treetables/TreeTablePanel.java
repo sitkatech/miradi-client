@@ -85,8 +85,6 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		return box;
 	}
 
-	abstract protected GridLayoutPlus createButtonLayout();
-	
 	public TreeTableWithStateSaving getTree()
 	{
 		return tree;
@@ -144,7 +142,6 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		UiButton button = createObjectsActionButton(actions.getObjectsAction(actionClass), tree);
 		box.add(button);
 	}
-	
 
 	public void valueChanged(TreeSelectionEvent e)
 	{	
@@ -167,7 +164,6 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		getPropertiesPanel().setObjectRefs((ORef[])objects.toArray(new ORef[0]));
 		mainWindow.updateActionStates();
 	}
-	
 	
 	//TODO:Is this needed? Is it the right place/mechanism? 
 	public void setSelectedObject(ORef ref)
@@ -220,7 +216,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	{
 		return event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_TREE_EXPANSION_LIST);
 	}
-
+	
 	public static class ScrollPaneNoExtraWidth extends ScrollPaneWithHideableScrollBar
 	{
 		public ScrollPaneNoExtraWidth(Component component)
@@ -236,6 +232,8 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 			return max;
 		}
 	}
+	
+	abstract protected GridLayoutPlus createButtonLayout();
 	
 	private MainWindow mainWindow;
 	protected TreeTableWithStateSaving tree;
