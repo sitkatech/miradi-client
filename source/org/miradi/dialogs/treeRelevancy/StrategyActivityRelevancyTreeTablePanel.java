@@ -24,7 +24,6 @@ import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.base.SingleBooleanColumnEditableModel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
 
 public class StrategyActivityRelevancyTreeTablePanel extends AbstractEditableTreeTablePanel
@@ -40,7 +39,7 @@ public class StrategyActivityRelevancyTreeTablePanel extends AbstractEditableTre
 	}
 	
 	@Override
-	protected SingleBooleanColumnEditableModel createEditableTableModel(BaseObject baseObject)
+	protected SingleBooleanColumnEditableModel createEditableTableModel()
 	{
 		return new StrategyActivityRelevancyTableModel(getProject(), getTree(),  (Desire)getBaseObjectForPanel());
 	}
