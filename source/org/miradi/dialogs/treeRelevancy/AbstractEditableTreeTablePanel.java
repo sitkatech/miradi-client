@@ -110,6 +110,11 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 		return editableTableModel;
 	}
 	
+	protected BaseObject getBaseObjectForPanel()
+	{
+		return baseObjectForPanel;
+	}
+	
 	@Override
 	protected TableWithColumnWidthAndSequenceSaver getMainTable()
 	{
