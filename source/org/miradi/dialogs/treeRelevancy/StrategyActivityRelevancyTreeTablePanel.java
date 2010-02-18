@@ -42,7 +42,7 @@ public class StrategyActivityRelevancyTreeTablePanel extends AbstractEditableTre
 	@Override
 	protected SingleBooleanColumnEditableModel createEditableTableModel(BaseObject baseObject)
 	{
-		return new StrategyActivityRelevancyTableModel(getProject(), getTree(),  (Desire)baseObject);
+		return new StrategyActivityRelevancyTableModel(getProject(), getTree(),  (Desire)getBaseObjectForPanel());
 	}
 	
 	@Override
