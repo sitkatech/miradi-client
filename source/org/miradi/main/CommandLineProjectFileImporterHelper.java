@@ -28,6 +28,7 @@ import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import org.miradi.database.ProjectServer;
+import org.miradi.exceptions.UnrecognizedFileToImportException;
 import org.miradi.views.umbrella.AbstractProjectImporter;
 import org.miradi.views.umbrella.CpmzProjectImporter;
 import org.miradi.views.umbrella.ExportCpmzDoer;
@@ -43,6 +44,11 @@ public class CommandLineProjectFileImporterHelper
 			helper.importIfRequested(commandLineArgs);
 		}
 		catch (ZipException e)
+		{
+			EAM.errorDialog(e.getMessage());
+			EAM.logException(e);
+		}
+		catch (UnrecognizedFileToImportException e)
 		{
 			EAM.errorDialog(e.getMessage());
 			EAM.logException(e);
@@ -71,12 +77,6 @@ public class CommandLineProjectFileImporterHelper
 		}
 
 		AbstractProjectImporter importer = createImporter(projectFileToImport);
-		if (importer == null)
-		{
-			EAM.errorDialog(EAM.substitute(EAM.text("Miradi did not recognize the file: %s as importable."), projectFileToImport.getName()));
-			return;
-		}
-		
 		if (getUserConfirmation(projectFileToImport.getName()))
 			importer.importProject(projectFileToImport);
 	}
@@ -156,7 +156,7 @@ public class CommandLineProjectFileImporterHelper
 			throw e;
 		}
 		
-		return null;
+		throw new UnrecognizedFileToImportException(EAM.substitute(EAM.text("Miradi did not recognize the file: %s as importable."), projectFile.getName()));
 	}
 	
 	private boolean isMpz(ZipFile zipFile)
