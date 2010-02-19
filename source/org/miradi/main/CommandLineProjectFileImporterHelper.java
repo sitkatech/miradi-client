@@ -78,7 +78,7 @@ public class CommandLineProjectFileImporterHelper
 		for (int index = 0; index < commandLineArgs.length; ++index)
 		{
 			String commandLineArg = commandLineArgs[index];
-			if (!commandLineArg.startsWith("--"))
+			if (!commandLineArg.startsWith("-"))
 				filesToImport.add(new File(commandLineArg));
 		}
 		
