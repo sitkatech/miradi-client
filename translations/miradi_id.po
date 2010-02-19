@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-18 16:11-0600\n"
+"POT-Creation-Date: 2010-02-19 08:14-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -4498,8 +4498,7 @@ msgid "Menu|3. Implement Actions &  Monitoring"
 msgstr "3. Laksanakan Tindakan & Pemantauan "
 
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:55
-msgid ""
-"Miradi currently supports importing only a single file from command line."
+msgid "Currently, Miradi can only import one project file at a time"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:89
