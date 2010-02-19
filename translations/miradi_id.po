@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-19 15:34-0600\n"
+"POT-Creation-Date: 2010-02-19 16:04-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -266,7 +266,7 @@ msgid "Title|Edit Columns"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:33
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:46
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:48
 msgid "Funding Source"
 msgstr "Sumber Dana "
 
@@ -2662,7 +2662,7 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: Miradi/source/org/miradi/utils/Translation.java:306
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:249
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:258
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/BaseObjectNotSpecifiedNode.java:81
 msgid "Not Specified"
 msgstr "Tidak Terspesifikasi "
@@ -6966,7 +6966,7 @@ msgstr ""
 msgid "Title|Intermediate Result Properties"
 msgstr "Sifat-sifat Hasil Antara"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:43
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:45
 msgid "Acct Code"
 msgstr "Kode Akuntansi "
 
@@ -6979,7 +6979,7 @@ msgid "Name"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:75
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:101
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:107
 msgid "An error has occured while writing assignment data."
 msgstr "Terjadi kesalahan saat menulis data alokasi. "
 
@@ -7011,11 +7011,11 @@ msgstr "(Kesalahan) "
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:51
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:53
 msgid "Resource (Who)"
 msgstr "Sumber Daya (Siapa) "
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:54
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:56
 msgid "Daily Rate"
 msgstr ""
 
