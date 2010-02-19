@@ -151,10 +151,6 @@ public class CommandLineProjectFileImporterHelper
 		{
 			throw new ZipException(EAM.substitute(EAM.text("Error reading %s. Perhaps it is not a valid zip file."), projectFile.getName()));
 		}
-		catch(Exception e)
-		{
-			throw e;
-		}
 		
 		throw new UnrecognizedFileToImportException(EAM.substitute(EAM.text("Miradi did not recognize the file: %s as importable."), projectFile.getName()));
 	}
