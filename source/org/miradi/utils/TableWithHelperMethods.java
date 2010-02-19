@@ -68,6 +68,7 @@ abstract public class TableWithHelperMethods extends TableWithSunBugWorkarounds
 		forcedPreferredScrollableViewportWidth = viewportWidth;
 	}
 	
+	@Override
 	public Dimension getPreferredScrollableViewportSize()
 	{
 		int preferredHeight = super.getPreferredScrollableViewportSize().height;
