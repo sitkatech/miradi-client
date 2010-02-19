@@ -32,11 +32,13 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 		super(projectToUse);
 	}
 	
+	@Override
 	public boolean isCellEditable(int row, int column)
 	{
 		return true;
 	}
 	
+	@Override
 	public String getColumnName(int column)
 	{
 		if (isAccountingCodeColumn(column))
@@ -66,6 +68,7 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 		return null;
 	}
 
+	@Override
 	public void setValueAt(Object value, int row, int column)
 	{
 		ORef refForRow = getRefForRow(row);
