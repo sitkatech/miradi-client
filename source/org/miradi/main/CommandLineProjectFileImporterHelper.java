@@ -81,11 +81,6 @@ public class CommandLineProjectFileImporterHelper
 	
 	private boolean isImportableProjectFile(File projectFileToImport)
 	{
-		if (projectFileToImport == null)
-		{
-			return false;
-		}
-		
 		if (!projectFileToImport.exists())
 		{
 			String message = EAM.substitute(EAM.text("Importing File (%s) from command line does not exist"), projectFileToImport.getName());
