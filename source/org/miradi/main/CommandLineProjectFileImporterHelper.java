@@ -89,14 +89,14 @@ public class CommandLineProjectFileImporterHelper
 	{
 		if (!projectFileToImport.exists())
 		{
-			String message = EAM.substitute(EAM.text("Importing File (%s) from command line does not exist"), projectFileToImport.getName());
+			String message = EAM.substitute(EAM.text("Cannot import project file %s because it does not exist"), projectFileToImport.getName());
 			EAM.errorDialog(message);
 			return false;
 		}
 		
 		if (projectFileToImport.isDirectory())
 		{
-			String message = EAM.substitute(EAM.text("Importing File (%s) from command line is a directory"), projectFileToImport.getName());
+			String message = EAM.substitute(EAM.text("Cannot import project file %s because it is a directory, not a file"), projectFileToImport.getName());
 			EAM.errorDialog(message);
 			return false;
 		}
