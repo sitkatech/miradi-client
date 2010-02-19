@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-19 08:31-0600\n"
+"POT-Creation-Date: 2010-02-19 08:34-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -4510,11 +4510,11 @@ msgid "Miradi did not recognize the file: %s as importable."
 msgstr ""
 
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:92
-msgid "Importing File (%s) from command line does not exist"
+msgid "Cannot import project file %s because it does not exist"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:99
-msgid "Importing File (%s) from command line is a directory"
+msgid "Cannot import project file %s because it is a directory, not a file"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:109
