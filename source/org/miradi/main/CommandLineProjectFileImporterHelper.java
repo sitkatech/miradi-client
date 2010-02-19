@@ -56,7 +56,10 @@ public class CommandLineProjectFileImporterHelper
 		
 		File projectFileToImport = filesToImport.firstElement();
 		if (!isImportableProjectFile(projectFileToImport))
+		{
+			EAM.errorDialog(EAM.substitute(EAM.text("Miradi does not recognize %s as a project file"), projectFileToImport.getName()));
 			return;
+		}
 
 		AbstractProjectImporter importer = createImporter(projectFileToImport);
 		if (importer!= null && userComfirmImport(projectFileToImport.getName()))
