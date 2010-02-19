@@ -24,6 +24,7 @@ import java.io.File;
 import java.util.Enumeration;
 import java.util.Vector;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import org.miradi.database.ProjectServer;
@@ -36,8 +37,16 @@ public class CommandLineProjectFileImporterHelper
 {
 	public static void importIfRequested(MainWindow mainWindowToUse, String[] commandLineArgs) throws Exception
 	{
-		CommandLineProjectFileImporterHelper helper = new CommandLineProjectFileImporterHelper(mainWindowToUse);
-		helper.importIfRequested(commandLineArgs);
+		try
+		{
+			CommandLineProjectFileImporterHelper helper = new CommandLineProjectFileImporterHelper(mainWindowToUse);
+			helper.importIfRequested(commandLineArgs);
+		}
+		catch (ZipException e)
+		{
+			EAM.errorDialog(e.getMessage());
+			EAM.logException(e);
+		}
 	}
 	
 	private CommandLineProjectFileImporterHelper(MainWindow mainWindowToUse)
@@ -127,14 +136,25 @@ public class CommandLineProjectFileImporterHelper
 		return EAM.confirmDialog(title, body, buttons);
 	}
 	
-	private AbstractProjectImporter createImporter(File projectFile) throws Exception
+	private AbstractProjectImporter createImporter(File projectFile) throws ZipException, Exception
 	{
-		ZipFile zipFile = new ZipFile(projectFile);
-		if (CpmzProjectImporter.zipContainsMpzProject(zipFile) || CpmzProjectImporter.containsEntry(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME))
-			return new CpmzProjectImporter(getMainWindow());
-		
-		if (isMpz(zipFile))
-			return new ZippedProjectImporter(getMainWindow());
+		try
+		{
+			ZipFile zipFile = new ZipFile(projectFile);
+			if (CpmzProjectImporter.zipContainsMpzProject(zipFile) || CpmzProjectImporter.containsEntry(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME))
+				return new CpmzProjectImporter(getMainWindow());
+			
+			if (isMpz(zipFile))
+				return new ZippedProjectImporter(getMainWindow());
+		}
+		catch(ZipException e)
+		{
+			throw new ZipException(EAM.substitute(EAM.text("%s is not recognized as a zip file"), projectFile.getName()));
+		}
+		catch(Exception e)
+		{
+			throw e;
+		}
 		
 		return null;
 	}
