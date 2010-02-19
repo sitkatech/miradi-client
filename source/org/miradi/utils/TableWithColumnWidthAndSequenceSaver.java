@@ -20,17 +20,24 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.util.EventObject;
+import java.util.HashMap;
 
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
 import org.miradi.dialogfields.FieldSaver;
+import org.miradi.dialogs.treetables.MiradiTableColumn;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
+import org.miradi.objects.Goal;
+import org.miradi.objects.ProgressPercent;
+import org.miradi.objects.ProgressReport;
+import org.miradi.objects.SubTarget;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 
@@ -40,6 +47,7 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 	{
 		super(mainWindowToUse, model, uniqueTableIdentifierToUse);
 	
+		createDefaultColumnTagToWidthMap();
 		mainWindowToUse.getProject().addCommandExecutedListener(this);
 		safelyHandleAddingRenderersAndEditors();
 		addColumnWidthSaver();
@@ -192,20 +200,76 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 	
 	public int getDefaultColumnWidth(int tableColumn, String columnTag, int columnHeaderWidth)
 	{
-		if (columnTag.equals(BaseObject.TAG_LABEL))
-			return ColumnWidthSaver.DEFAULT_WIDE_COLUMN_WIDTH;
-		
-		else if (columnHeaderWidth < ColumnWidthSaver.DEFAULT_NARROW_COLUMN_WIDTH)
-			return ColumnWidthSaver.DEFAULT_NARROW_COLUMN_WIDTH;
-		
-		return columnHeaderWidth;
+		int defaultWidth = getColumnModel().getColumn(tableColumn).getWidth();
+		return Math.max(columnHeaderWidth, defaultWidth);
 	}
 	
 	private Project getProject()
 	{
 		return getMainWindow().getProject();
 	}
+	
+	//NOTE: This method is duplicated from JTable.  
+	//We want to create our own custom TableColumn
+	@Override
+	public void createDefaultColumnsFromModel() 
+	{
+        TableModel m = getModel();
+        if (m != null) 
+        {
+            // Remove any current columns
+            TableColumnModel cm = getColumnModel();
+            while (cm.getColumnCount() > 0) 
+            {
+                cm.removeColumn(cm.getColumn(0));
+            }
+
+            // Create new columns from the data model info
+            ColumnTagProvider provider = (ColumnTagProvider) getModel();
+            for (int column = 0; column < m.getColumnCount(); column++) 
+            {
+            	
+                final String columnTag = provider.getColumnTag(column);
+				TableColumn newColumn = new MiradiTableColumn(column, getColumnTagToDefaultWidthMap(), columnTag);
+                addColumn(newColumn);
+            }
+        }
+    }
+	
+	public HashMap<String, Integer> getColumnTagToDefaultWidthMap()
+	{
+		if (columnTagToDefaultWidthMap == null)
+			columnTagToDefaultWidthMap = createDefaultColumnTagToWidthMap();
 		
+		return columnTagToDefaultWidthMap;
+	}
+	
+	private HashMap<String, Integer> createDefaultColumnTagToWidthMap()
+	{
+		columnTagToDefaultWidthMap = new HashMap<String, Integer>();
+		
+		columnTagToDefaultWidthMap.put(SubTarget.TAG_SHORT_LABEL, NARROW_WIDTH);
+		columnTagToDefaultWidthMap.put(SubTarget.TAG_DETAIL, ULTRA_WIDE_WIDTH);
+
+		columnTagToDefaultWidthMap.put(ProgressReport.TAG_DETAILS, ULTRA_WIDE_WIDTH);
+		columnTagToDefaultWidthMap.put(ProgressReport.TAG_PROGRESS_STATUS, WIDE_WIDTH);
+		columnTagToDefaultWidthMap.put(ProgressReport.TAG_PROGRESS_DATE, NORLMAL_WIDTH);
+		
+		columnTagToDefaultWidthMap.put(ProgressPercent.TAG_PERCENT_COMPLETE_NOTES, ULTRA_WIDE_WIDTH);
+		columnTagToDefaultWidthMap.put(ProgressPercent.TAG_PERCENT_COMPLETE, NARROW_WIDTH);
+		columnTagToDefaultWidthMap.put(ProgressPercent.TAG_DATE, NORLMAL_WIDTH);
+		
+		columnTagToDefaultWidthMap.put(Goal.TAG_FULL_TEXT, ULTRA_WIDE_WIDTH);
+		
+		return columnTagToDefaultWidthMap;
+	}
+		
+	private static final int NARROW_WIDTH = 50;
+	public static final int DEFAULT_WIDTH = 75;
+	public static final int NORLMAL_WIDTH = 100;
+	private static final int WIDE_WIDTH = 200;
+	private static final int ULTRA_WIDE_WIDTH = 400;
+	private HashMap<String, Integer> columnTagToDefaultWidthMap;
 	private ColumnWidthSaver columnWidthSaver;
 	private ColumnSequenceSaver columnSequenceSaver;
 }
