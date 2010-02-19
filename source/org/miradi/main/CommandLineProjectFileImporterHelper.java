@@ -149,7 +149,7 @@ public class CommandLineProjectFileImporterHelper
 		}
 		catch(ZipException e)
 		{
-			throw new ZipException(EAM.substitute(EAM.text("%s is not recognized as a zip file"), projectFile.getName()));
+			throw new ZipException(EAM.substitute(EAM.text("Error reading %s. Perhaps it is not a valid zip file."), projectFile.getName()));
 		}
 		catch(Exception e)
 		{
