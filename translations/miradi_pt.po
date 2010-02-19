@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-19 08:49-0600\n"
+"POT-Creation-Date: 2010-02-19 08:58-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -940,7 +940,7 @@ msgid " was empty"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:264
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:64
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:119
 msgid "Import"
 msgstr ""
@@ -4157,16 +4157,12 @@ msgstr ""
 msgid "Menu|3. Implement Actions &  Monitoring"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:64
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 msgid "Currently, Miradi can only import one project file at a time"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:69
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:75
 msgid "Miradi does not recognize %s as a project file"
-msgstr ""
-
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:76
-msgid "Miradi did not recognize the file: %s as importable."
 msgstr ""
 
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:101
@@ -4195,6 +4191,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:152
 msgid "%s is not recognized as a zip file"
+msgstr ""
+
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:159
+msgid "Miradi did not recognize the file: %s as importable."
 msgstr ""
 
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:64
