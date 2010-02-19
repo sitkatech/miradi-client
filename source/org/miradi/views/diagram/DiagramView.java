@@ -71,6 +71,7 @@ import org.miradi.actions.ActionDeleteKeyEcologicalAttribute;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeIndicator;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
 import org.miradi.actions.ActionDeleteObjective;
+import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionDeleteResultsChain;
 import org.miradi.actions.ActionDeleteStress;
 import org.miradi.actions.ActionDeleteSubTarget;
@@ -188,6 +189,7 @@ import org.miradi.views.diagram.doers.ShowActityBubbleDoer;
 import org.miradi.views.diagram.doers.ShowStressBubbleDoer;
 import org.miradi.views.diagram.doers.ZoomToFitDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateActivityDoer;
+import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.threatmatrix.doers.ManageStressesDoer;
@@ -304,6 +306,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionDeleteActivity.class, new DeleteActivityDoer());
 		addDoerToMap(ActionShareActivity.class, new TreeNodeShareActivityDoer());
 		addDoerToMap(ActionTreeCreateActivity.class, new TreeNodeCreateActivityDoer());
+		addDoerToMap(ActionDeletePlanningViewTreeNode.class, new TreeNodeDeleteDoer());
 
 		addDoerToMap(ActionCreateObjective.class, new CreateObjectiveDoer());
 		addDoerToMap(ActionCloneObjective.class, new CloneObjectiveDoer());
