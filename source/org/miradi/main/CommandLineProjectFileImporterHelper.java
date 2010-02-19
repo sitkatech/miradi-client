@@ -68,7 +68,7 @@ public class CommandLineProjectFileImporterHelper
 			return;
 		}
 		
-		if (userComfirmImport(projectFileToImport.getName()))
+		if (userConfirmImport(projectFileToImport.getName()))
 			importer.importProject(projectFileToImport);
 	}
 	
@@ -104,7 +104,7 @@ public class CommandLineProjectFileImporterHelper
 		return true;
 	}	
 	
-	private boolean userComfirmImport(String fileNameToImport) throws Exception
+	private boolean userConfirmImport(String fileNameToImport) throws Exception
 	{
 		String message = EAM.substitute(EAM.text("Do you want to attempt to import %s into Miradi?"), fileNameToImport);
 		int userComfirmationChoice = confirmImportDialog(EAM.text("Import"), message);
