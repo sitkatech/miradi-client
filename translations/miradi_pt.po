@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-19 08:14-0600\n"
+"POT-Creation-Date: 2010-02-19 08:16-0600\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -941,7 +941,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:264
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:55
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:107
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:106
 msgid "Import"
 msgstr ""
 
@@ -4161,31 +4161,31 @@ msgstr ""
 msgid "Currently, Miradi can only import one project file at a time"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:89
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:88
 msgid "Importing File (%s) from command line does not exist"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:96
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:95
 msgid "Importing File (%s) from command line is a directory"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:106
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:105
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:120
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:119
 msgid "Button|Import"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:121
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:120
 msgid "Button|Don't Import"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:122
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:121
 msgid "Button|Exit"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:136
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:135
 msgid "Miradi did not recognize the file: %s as importable."
 msgstr ""
 
