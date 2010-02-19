@@ -309,7 +309,7 @@ public class ORefList
 	public ORef getFirstElement()
 	{
 		verifyNonEmptyList();		
-		return get(0);
+		return data.firstElement();
 	}
 	
 	public void removeFirstElement()
