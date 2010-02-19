@@ -62,7 +62,13 @@ public class CommandLineProjectFileImporterHelper
 		}
 
 		AbstractProjectImporter importer = createImporter(projectFileToImport);
-		if (importer!= null && userComfirmImport(projectFileToImport.getName()))
+		if (importer == null)
+		{
+			EAM.errorDialog(EAM.substitute(EAM.text("Miradi did not recognize the file: %s as importable."), projectFileToImport.getName()));
+			return;
+		}
+		
+		if (userComfirmImport(projectFileToImport.getName()))
 			importer.importProject(projectFileToImport);
 	}
 	
@@ -130,7 +136,6 @@ public class CommandLineProjectFileImporterHelper
 		if (isMpz(zipFile))
 			return new ZippedProjectImporter(getMainWindow());
 		
-		EAM.errorDialog(EAM.substitute(EAM.text("Miradi did not recognize the file: %s as importable."), projectFile.getName()));
 		return null;
 	}
 	
