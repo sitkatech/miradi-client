@@ -41,6 +41,7 @@ import org.miradi.views.umbrella.doers.AbstractDeleteDoer;
 
 public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		BaseObject selected = getSingleSelectedObject();
@@ -67,6 +68,7 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 		return Task.is(selected.getType());
 	}
 
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if (!isAvailable())
