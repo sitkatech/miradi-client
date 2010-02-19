@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-19 08:34-0600\n"
+"POT-Creation-Date: 2010-02-19 08:49-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -1022,8 +1022,8 @@ msgid " was empty"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:264
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:55
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:110
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:64
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:119
 msgid "Import"
 msgstr "Importar"
 
@@ -4520,40 +4520,44 @@ msgstr "Documentar discusiones y decisiones"
 msgid "Menu|3. Implement Actions &  Monitoring"
 msgstr "3. Implementar acciones y monitoreo"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:55
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:64
 msgid "Currently, Miradi can only import one project file at a time"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:60
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:69
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:67
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:76
 msgid "Miradi did not recognize the file: %s as importable."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:92
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:101
 msgid "Cannot import project file %s because it does not exist"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:99
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:108
 msgid "Cannot import project file %s because it is a directory, not a file"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:109
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:118
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:123
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:132
 msgid "Button|Import"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:124
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:133
 msgid "Button|Don't Import"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:125
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:134
 msgid "Button|Exit"
+msgstr ""
+
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:152
+msgid "%s is not recognized as a zip file"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:64
