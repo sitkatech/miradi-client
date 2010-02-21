@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-21 10:01-0600\n"
+"POT-Creation-Date: 2010-02-21 10:29-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -4672,7 +4672,7 @@ msgid ""
 "allowed"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDateChooserInputField.java:60
+#: Miradi/source/org/miradi/dialogfields/ObjectDateChooserInputField.java:66
 msgid "Date Chooser"
 msgstr "Pemilih Tanggal "
 
