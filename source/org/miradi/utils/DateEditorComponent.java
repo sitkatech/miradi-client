@@ -28,6 +28,8 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Calendar;
@@ -38,8 +40,6 @@ import javax.swing.JDialog;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.event.PopupMenuEvent;
-import javax.swing.event.PopupMenuListener;
 
 import org.martus.swing.Utilities;
 import org.martus.util.MultiCalendar;
@@ -64,7 +64,6 @@ public class DateEditorComponent extends JDateChooser
 		
 		jcalendar.getMonthChooser().addPropertyChangeListener(new MonthChangeListener());
 		jcalendar.getYearChooser().addPropertyChangeListener(new YearChangeListener());
-		popup.addPopupMenuListener(new PopupMenuHandler());
 		dateEditor.addPropertyChangeListener(DATE_PROPERTY_NAME, this);
 		getDateTextEditor().getDocument().addDocumentListener(new DocumentEventHandler());
 		
@@ -161,6 +160,7 @@ public class DateEditorComponent extends JDateChooser
 	public void actionPerformed(ActionEvent e)
 	{
 		calendarDialog = createCalendarDialogWithCorrectOwner();
+		calendarDialog.addWindowListener(new DateFieldRequestFocusAfterDiactivatedHandler());
 		calendarDialog.enableCloseWhenFocusLost();
 
 		updateCalenderDate();
@@ -227,20 +227,13 @@ public class DateEditorComponent extends JDateChooser
 		}
 	}
 	
-	class PopupMenuHandler implements PopupMenuListener
+	class DateFieldRequestFocusAfterDiactivatedHandler extends WindowAdapter
 	{
-		public void popupMenuCanceled(PopupMenuEvent e)
-		{
-		}
-
-		public void popupMenuWillBecomeInvisible(PopupMenuEvent e)
+		@Override
+		public void windowDeactivated(WindowEvent e)
 		{
 			getDateTextEditor().requestFocus();
 			updateTextFromCalendarAndSave();
-		}
-
-		public void popupMenuWillBecomeVisible(PopupMenuEvent e)
-		{
 		}
 	}
 	
