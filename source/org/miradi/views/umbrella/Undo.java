@@ -28,11 +28,13 @@ import org.miradi.views.ProjectDoer;
 
 public class Undo extends ProjectDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		return (getProject().canUndo());
 	}
 
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if(!isAvailable())
