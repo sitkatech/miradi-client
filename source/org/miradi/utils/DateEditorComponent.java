@@ -143,7 +143,7 @@ public class DateEditorComponent extends JDateChooser
 		needsSave = true;
 	}
 
-	private void clearNeedsSaving()
+	public void clearNeedsSaving()
 	{
 		needsSave = false;
 	}

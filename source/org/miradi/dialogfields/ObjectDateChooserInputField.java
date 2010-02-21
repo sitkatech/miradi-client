@@ -54,6 +54,12 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 	{
 		return dateEditor.needsToBeSaved();
 	}
+	
+	@Override
+	void clearNeedsSave()
+	{
+		dateEditor.clearNeedsSaving();
+	}
 
 	public String getPanelDescription()
 	{
