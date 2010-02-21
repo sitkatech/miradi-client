@@ -26,8 +26,6 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
@@ -59,7 +57,6 @@ public class DateEditorComponent extends JDateChooser
 		setDateFormatString(CUSTOM_DATE_FORMAT);
 		setDateChooserPreferredSizeWithPadding();
 		
-		calendarButton.addMouseListener(new CustomMouseListener());
 		setFont(getMainWindow().getUserDataPanelFont());
 		
 		jcalendar.getMonthChooser().addPropertyChangeListener(new MonthChangeListener());
@@ -236,36 +233,7 @@ public class DateEditorComponent extends JDateChooser
 			updateTextFromCalendarAndSave();
 		}
 	}
-	
-	class CustomMouseListener extends MouseAdapter
-	{
-		@Override
-		public void mouseReleased(MouseEvent e)
-		{
-			super.mouseReleased(e);
-			if (isVisibleAndPressed)
-			{
-				dateSelected = true;
-				popup.setVisible(false);
-				updateTextFromCalendarAndSave();
-				isVisibleAndPressed = false;		
-			}
-		}
 		
-		@Override
-		public void mousePressed(MouseEvent e)
-		{
-			super.mousePressed(e);
-			if (popup.isVisible())
-			{
-				newCalendar = jcalendar.getCalendar();
-				isVisibleAndPressed = true;
-			}
-		}
-		Calendar newCalendar;
-		boolean isVisibleAndPressed;	
-	}
-	
 	public static class DateTextEditor extends JTextFieldDateEditor
 	{
 		public DateTextEditor()
