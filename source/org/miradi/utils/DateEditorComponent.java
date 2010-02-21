@@ -197,15 +197,12 @@ public class DateEditorComponent extends JDateChooser
 	public void propertyChange(PropertyChangeEvent evt) 
 	{
 		if (evt.getPropertyName().equals("day"))
-			setDateAndCloseDialog();
+		{
+			setDate(jcalendar.getCalendar().getTime());
+			calendarDialog.setVisible(false);
+		}
 	}
 
-	private void setDateAndCloseDialog()
-	{
-		setDate(jcalendar.getCalendar().getTime());
-		calendarDialog.setVisible(false);
-	}
-	
 	class MonthChangeListener implements PropertyChangeListener
 	{
 		public void propertyChange(PropertyChangeEvent evt)
