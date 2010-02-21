@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-19 16:04-0600\n"
+"POT-Creation-Date: 2010-02-21 10:01-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -1009,7 +1009,7 @@ msgstr ""
 "espere una nueva versión que admita este formato <br>o vuelva a exportar el "
 "proyecto a un formato (admitido) anterior."
 
-#: Miradi/source/org/miradi/views/umbrella/Undo.java:63
+#: Miradi/source/org/miradi/views/umbrella/Undo.java:65
 msgid "Error during undo"
 msgstr "Error al revertir la acción."
 

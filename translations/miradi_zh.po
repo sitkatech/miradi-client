@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-19 16:04-0600\n"
+"POT-Creation-Date: 2010-02-21 10:01-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -978,7 +978,7 @@ msgstr ""
 "是最新版本的Miradi。如果您 <br>正在运行的已经是最新版本的Miradi，您可以等待能"
 "够支持本格式的更新版本，<br>或者重新将该项目导出为旧版（可被支持）格式。 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/Undo.java:63
+#: Miradi/source/org/miradi/views/umbrella/Undo.java:65
 msgid "Error during undo"
 msgstr "撤销时出错 \t\t"
 
