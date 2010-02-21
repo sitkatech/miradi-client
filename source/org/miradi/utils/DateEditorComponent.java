@@ -132,7 +132,7 @@ public class DateEditorComponent extends JDateChooser
 		return ((DateTextEditor) getDateEditor());
 	}
 	
-	private void updateTextFromCalendarAndSave()
+	private void updateTextFromCalendarAndSetNeedsSave()
 	{
 		setDate(jcalendar.getDate());
 		setNeedsSave();
@@ -166,7 +166,7 @@ public class DateEditorComponent extends JDateChooser
 		Utilities.centerDlg(calendarDialog);
 		calendarDialog.setVisible(true);
 		
-		updateTextFromCalendarAndSave();
+		updateTextFromCalendarAndSetNeedsSave();
 	}
 
 	private UndecoratedModelessDialogWithClose createCalendarDialogWithCorrectOwner()
@@ -208,7 +208,7 @@ public class DateEditorComponent extends JDateChooser
 		public void propertyChange(PropertyChangeEvent evt)
 		{
 			if (evt.getPropertyName().equals(MONTH_PROPERTY_NAME)) 
-				updateTextFromCalendarAndSave();
+				updateTextFromCalendarAndSetNeedsSave();
 		}
 	}
 	
@@ -217,7 +217,7 @@ public class DateEditorComponent extends JDateChooser
 		public void propertyChange(PropertyChangeEvent evt)
 		{
 			if (evt.getPropertyName().equals(YEAR_PROPERTY_NAME)) 
-				updateTextFromCalendarAndSave();
+				updateTextFromCalendarAndSetNeedsSave();
 		}
 	}
 	
@@ -227,7 +227,7 @@ public class DateEditorComponent extends JDateChooser
 		public void windowDeactivated(WindowEvent e)
 		{
 			getDateTextEditor().requestFocus();
-			updateTextFromCalendarAndSave();
+			updateTextFromCalendarAndSetNeedsSave();
 		}
 	}
 		
