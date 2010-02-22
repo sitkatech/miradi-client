@@ -118,7 +118,7 @@ public class ProjectRepairer
 		}
 	}
 	
-	public void warnOfOrphanAnnotations()
+	private void warnOfOrphanAnnotations()
 	{
 		warnOfOrphanAnnotations(ObjectType.OBJECTIVE);
 		warnOfOrphanAnnotations(ObjectType.GOAL);
