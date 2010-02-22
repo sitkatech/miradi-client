@@ -63,7 +63,7 @@ public class ProjectRepairer
 	{
 		fixAnyProblemsWithThreatStressRatings();
 		repairUnsnappedNodes();
-		deleteOrphanAnnotations();	
+		warnOfOrphanAnnotations();	
 	}
 	 
 	private void repairUnsnappedNodes()
@@ -118,7 +118,7 @@ public class ProjectRepairer
 		}
 	}
 	
-	public void deleteOrphanAnnotations()
+	public void warnOfOrphanAnnotations()
 	{
 		warnOfOrphanAnnotations(ObjectType.OBJECTIVE);
 		warnOfOrphanAnnotations(ObjectType.GOAL);
