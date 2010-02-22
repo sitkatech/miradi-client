@@ -38,7 +38,6 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Stress;
-import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.FactorCommandHelper;
@@ -120,13 +119,8 @@ public class TestTransferableEamList extends EAMTestCase
 		ORefList stressRefs = new ORefList(stress);
 		project.fillObjectUsingCommand(diagramFactor2.getWrappedFactor(), Target.TAG_STRESS_REFS, stressRefs.toString());
 		
-		TaggedObjectSet taggedObjectSet = project.createTaggedObjectSet();
-		taggedObjectSet.setData(TaggedObjectSet.TAG_LABEL, "SomeTag");
-		ORefList taggedFactorRefs = new ORefList(diagramFactor1.getWrappedORef());
-		taggedObjectSet.setData(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, taggedFactorRefs.toString());
-		DiagramObject testingDiagramObject = project.getTestingDiagramObject();
-		ORefList taggedObjectSetRefs = new ORefList(taggedObjectSet.getRef());
-		testingDiagramObject.setData(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, taggedObjectSetRefs.toString());
+		
+		project.tagDiagramFactor(diagramFactor1.getWrappedORef());
 		
 		LinkCreator linkCreator = new LinkCreator(project);
 		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
@@ -138,7 +132,7 @@ public class TestTransferableEamList extends EAMTestCase
 		FactorCell factorCell2 = model.getFactorCellByRef(diagramFactorRef2);
 		EAMGraphCell dataCells[] = {factorCell1, factorCell2, model.findLinkCell(diagramLink)};
 		
-		
+		DiagramObject testingDiagramObject = project.getTestingDiagramObject();
 		ORef diagramObjectRef = testingDiagramObject.getRef();
 		TransferableMiradiList miradiList = new TransferableMiradiList(project, diagramObjectRef);
 		miradiList.storeData(dataCells);
