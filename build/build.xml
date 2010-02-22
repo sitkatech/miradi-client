@@ -580,11 +580,12 @@
 <target name="ukrainian" depends="pot" description="Update Ukrainian Content">
 	<echo message="updating Ukrainian po file"/>
 	<available file="${miradi.po.uk}" property="po.exists"/>
-	<exec executable="msginit" failonerror="true" if="po.exists">
+	<exec executable="msginit" failonerror="true" unless="po.exists">
 		<arg value="--input=${miradi.pot}"/>
 		<arg value="--output-file=${miradi.po.uk}"/>
 		<arg value="--locale=UK"/>
 	</exec>
+	<echo message="Updating PO to UTF-8"/>
 	<exec executable="sed" failonerror="true">
 		<arg value='s/^"Content-Type:.*$/^"Content-Type: text/plain; charset=UTF-8"$/'/>
 	</exec>
@@ -608,8 +609,7 @@
 <!-- ================================================================== -->
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
-<!-- Temporarily disable Ukranian because we need to create the initial po file first -->
-<target name="translations" depends="pot, spanish, indonesian, chinese" description="Create Translatable Content jars/zips">
+<target name="translations" depends="pot, spanish, indonesian, chinese, ukrainian" description="Create Translatable Content jars/zips">
 	
 </target>
 	
