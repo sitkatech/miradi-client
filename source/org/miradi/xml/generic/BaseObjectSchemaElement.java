@@ -23,13 +23,12 @@ package org.miradi.xml.generic;
 import org.miradi.objects.BaseObject;
 
 
-abstract public class BaseObjectSchemaElement extends ObjectSchemaElement
+abstract public class BaseObjectSchemaElement extends AbstractBaseObjectSchemaElement
 {
 	public BaseObjectSchemaElement(String objectTypeNameToUse)
 	{
 		super(objectTypeNameToUse);
 		
-		createIdAttribute(objectTypeNameToUse);
 		createOptionalTextField(BaseObject.TAG_LABEL);
 	}
 }
