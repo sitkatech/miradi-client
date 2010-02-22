@@ -579,6 +579,15 @@
 <!-- ================================================================== -->
 <target name="ukrainian" depends="pot" description="Update Ukrainian Content">
 	<echo message="updating Ukrainian po file"/>
+	<available file="${miradi.po.uk}" property="po.exists"/>
+	<exec executable="msginit" failonerror="true" if="po.exists">
+		<arg value="--input=${miradi.pot}"/>
+		<arg value="--output-file=${miradi.po.uk}"/>
+		<arg value="--locale=UK"/>
+	</exec>
+	<exec executable="sed" failonerror="true">
+		<arg value='s/^"Content-Type:.*$/^"Content-Type: text/plain; charset=UTF-8"$/'/>
+	</exec>
 	<exec executable="msgmerge" failonerror="true">
 		<arg value="--update"/>
 		<arg value="--backup=none"/>
