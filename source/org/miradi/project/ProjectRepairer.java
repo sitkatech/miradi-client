@@ -203,8 +203,7 @@ public class ProjectRepairer
 		return true;
 	}
 
-	private void detectAndReportOrphans(int possibleOrphanType,
-			final int custodianType)
+	private void detectAndReportOrphans(int possibleOrphanType,	final int custodianType)
 	{
 		ORefList possibleOrphanRefs = getProject().getObjectManager().getPool(possibleOrphanType).getORefList();
 		for(int i = 0; i < possibleOrphanRefs.size(); ++i)
