@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.wcs;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.questions.PriorityRatingQuestion;
@@ -51,5 +52,11 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 		writeProgressReportIds(indicator);
 		writeExpenseAssignmentIds(indicator);
 		writeResourceAssignmentIds(indicator);
+		writeMeasurementIds(indicator.getMeasurementRefs());
+	}
+	
+	private void writeMeasurementIds(ORefList measurementRefs) throws Exception
+	{
+		writeIds(WcsXmlConstants.MEASUREMENT_IDS, WcsXmlConstants.MEASUREMENT, measurementRefs);
 	}
 }
