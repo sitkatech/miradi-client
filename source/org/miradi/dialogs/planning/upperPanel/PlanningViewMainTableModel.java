@@ -210,6 +210,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 											Indicator.META_COLUMN_TAG,
 											CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE,
 											CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE,
+											CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE,
 											CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE,
 											CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE,
 											CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE,

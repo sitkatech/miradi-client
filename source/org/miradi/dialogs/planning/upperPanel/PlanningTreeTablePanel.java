@@ -45,6 +45,7 @@ import org.miradi.dialogs.planning.propertiesPanel.ExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.FundingSourceExpenseTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningWorkUnitsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceBudgetDetailsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceWorkUnitsTableModel;
 import org.miradi.dialogs.treetables.AbstractTreeTablePanel;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
@@ -116,6 +117,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), getTree());
 		workUnitsTableModel = new PlanningWorkUnitsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		resourceWorkUnitsTableModel = new ProjectResourceWorkUnitsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		resourceBudgetDetailsTableModel = new ProjectResourceBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		expenseAmountsTableModel = new ExpenseAmountsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		budgetDetailsTableModel = new BudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		fundingSourceBudgetDetailsTableModel = new FundingSourceBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
@@ -176,6 +178,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		futureStatusModel.fireTableDataChanged();
 		workUnitsTableModel.fireTableDataChanged();
 		resourceWorkUnitsTableModel.fireTableDataChanged();
+		resourceBudgetDetailsTableModel.fireTableDataChanged();
 		fundingSourceExpenseTableModel.fireTableDataChanged();
 		accountingCodeExpenseTableModel.fireTableDataChanged();
 		expenseAmountsTableModel.fireTableDataChanged();
@@ -211,6 +214,9 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		
 		if (shouldShow(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE))
 			multiModel.addModel(resourceWorkUnitsTableModel);
+		
+		if (shouldShow(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE))
+			multiModel.addModel(resourceBudgetDetailsTableModel);
 		
 		if (shouldShow(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(expenseAmountsTableModel);
@@ -438,6 +444,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	private FundingSourceBudgetDetailsTableModel fundingSourceBudgetDetailsTableModel;
 	private AccountingCodeBudgetDetailsTableModel accoundingCodeBudgetDetailsTableModel;
 	private ProjectResourceWorkUnitsTableModel resourceWorkUnitsTableModel;
+	private ProjectResourceBudgetDetailsTableModel resourceBudgetDetailsTableModel;
 	private FundingSourceExpenseTableModel fundingSourceExpenseTableModel;
 	private AccountingCodeExpenseTableModel accountingCodeExpenseTableModel;
 	
