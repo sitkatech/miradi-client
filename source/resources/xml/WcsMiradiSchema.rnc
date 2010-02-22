@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/16'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/17'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -530,6 +530,7 @@ Task.element = element miradi:Task
 ProgressReportPool.element = element miradi:ProgressReportPool { ProgressReport.element* }
 ProgressReport.element = element miradi:ProgressReport
 {
+  attribute Id {xsd:integer}  &
   element miradi:ProgressReportProgressDate { vocabulary_date }? &
   element miradi:ProgressReportDetails { text }? &
   element miradi:ProgressReportProgressStatus { vocabulary_progress_report_status  }
@@ -538,6 +539,7 @@ ProgressReport.element = element miradi:ProgressReport
 ProgressPercentPool.element = element miradi:ProgressPercentPool { ProgressPercent.element* }
 ProgressPercent.element = element miradi:ProgressPercent
 {
+  attribute Id {xsd:integer}  &
   element miradi:ProgressPercentPercentDate { vocabulary_date }? &
   element miradi:ProgressPercentPercentComplete { xsd:decimal }? &
   element miradi:ProgressPercentDetails { text }?

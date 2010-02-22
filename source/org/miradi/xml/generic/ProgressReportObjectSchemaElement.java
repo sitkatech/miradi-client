@@ -23,7 +23,7 @@ package org.miradi.xml.generic;
 import org.miradi.objects.ProgressReport;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class ProgressReportObjectSchemaElement extends ObjectSchemaElement
+public class ProgressReportObjectSchemaElement extends AbstractBaseObjectSchemaElement
 {
 	public ProgressReportObjectSchemaElement()
 	{
