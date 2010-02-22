@@ -587,7 +587,7 @@
 	</exec>
 	<echo message="Updating PO to UTF-8"/>
 	<exec executable="sed" failonerror="true">
-		<arg value='s/^"Content-Type:.*$/^"Content-Type: text/plain; charset=UTF-8"$/'/>
+		<arg value='s/^"Content-Type:.*$/^"Content-Type: text\\/plain; charset=UTF-8"$/'/>
 	</exec>
 </target>
 <target name="ukrainian" depends="pot, ukrainian-empty-po" description="Update Ukrainian Content">
