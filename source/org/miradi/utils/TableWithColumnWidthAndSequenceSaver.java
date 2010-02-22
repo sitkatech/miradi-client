@@ -47,7 +47,6 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 	{
 		super(mainWindowToUse, model, uniqueTableIdentifierToUse);
 	
-		createDefaultColumnTagToWidthMap();
 		mainWindowToUse.getProject().addCommandExecutedListener(this);
 		safelyHandleAddingRenderersAndEditors();
 		addColumnWidthSaver();
