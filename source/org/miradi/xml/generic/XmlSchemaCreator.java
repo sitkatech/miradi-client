@@ -187,6 +187,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		defineIdElement(writer, RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
 		defineIdElement(writer, RESOURCE_ID_ELEMENT_NAME);
 		defineIdElement(writer, ACTIVITY_ID_ELEMENT_NAME);
+		defineIdElement(writer, MEASUREMENT_ID_ELEMENT_NAME);
 		
 		writer.defineAlias(WcsXmlConstants.WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME + ".element", "element " + WcsXmlConstants.PREFIX + WcsXmlConstants.WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
 		writer.startBlock();
@@ -531,7 +532,8 @@ public class XmlSchemaCreator implements WcsXmlConstants
 	public static final String RESOURCE_ID_ELEMENT_NAME = "Resource";
 	public static final String INDICATOR_ID_ELEMENT_NAME = "Indicator";
 	public static final String BIODIVERSITY_TARGET_ID_ELEMENT_NAME = "BiodiversityTarget";
-	public static final String ACTIVITY_ID_ELEMENT_NAME = "Acitivity"; 
+	public static final String ACTIVITY_ID_ELEMENT_NAME = "Acitivity";
+	public static final String MEASUREMENT_ID_ELEMENT_NAME = "Measurement";
 	public static final String DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME = DiagramFactor.TAG_FONT_SIZE;
 	public static final String DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME = DiagramFactor.TAG_FONT_STYLE;
 	public static final String DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME = DiagramFactor.TAG_BACKGROUND_COLOR;
