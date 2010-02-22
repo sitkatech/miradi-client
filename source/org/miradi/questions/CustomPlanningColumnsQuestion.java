@@ -72,6 +72,8 @@ public class CustomPlanningColumnsQuestion extends StaticChoiceQuestion
 	
 	public static final String META_BUDGET_DETAIL_COLUMN_CODE = "MetaBudgetDetailColumnCode";
 	public static final String META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE = "MetaProjectResourceWorkUnitsColumnCode";
+	public static final String META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE = "MetaProjectResourceBudgetDetailsColumnCode";
+	
 	public final static String META_WHO_TOTAL = "MetaWhoTotal";
 	public final static String META_THREAT_RATING = "ThreatRating";
 }

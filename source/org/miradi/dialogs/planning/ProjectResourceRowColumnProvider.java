@@ -31,6 +31,7 @@ public class ProjectResourceRowColumnProvider implements RowColumnProvider
 		return new CodeList(new String[] {
 				ProjectResource.TAG_RESOURCE_TYPE,
 				CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE,
+				CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE,
 		});
 		
 	}
