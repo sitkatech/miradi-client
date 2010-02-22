@@ -599,7 +599,8 @@
 <!-- ================================================================== -->
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
-<target name="translations" depends="pot, spanish, indonesian, chinese, ukrainian" description="Create Translatable Content jars/zips">
+<!-- Temporarily disable Ukranian because we need to create the initial po file first -->
+<target name="translations" depends="pot, spanish, indonesian, chinese" description="Create Translatable Content jars/zips">
 	
 </target>
 	
