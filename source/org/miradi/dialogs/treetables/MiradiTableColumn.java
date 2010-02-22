@@ -38,7 +38,7 @@ public class MiradiTableColumn extends TableColumn
 		if (defaultColumnTagToWidthMap.containsKey(columnTag))
 			return defaultColumnTagToWidthMap.get(columnTag).intValue();
 		
-		return TableWithColumnWidthAndSequenceSaver.NORLMAL_WIDTH;
+		return TableWithColumnWidthAndSequenceSaver.NORMAL_WIDTH;
 	}
 	
 	@Override

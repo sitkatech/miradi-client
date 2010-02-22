@@ -253,11 +253,11 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 
 		columnTagToDefaultWidthMap.put(ProgressReport.TAG_DETAILS, ULTRA_WIDE_WIDTH);
 		columnTagToDefaultWidthMap.put(ProgressReport.TAG_PROGRESS_STATUS, WIDE_WIDTH);
-		columnTagToDefaultWidthMap.put(ProgressReport.TAG_PROGRESS_DATE, NORLMAL_WIDTH);
+		columnTagToDefaultWidthMap.put(ProgressReport.TAG_PROGRESS_DATE, NORMAL_WIDTH);
 		
 		columnTagToDefaultWidthMap.put(ProgressPercent.TAG_PERCENT_COMPLETE_NOTES, ULTRA_WIDE_WIDTH);
 		columnTagToDefaultWidthMap.put(ProgressPercent.TAG_PERCENT_COMPLETE, NARROW_WIDTH);
-		columnTagToDefaultWidthMap.put(ProgressPercent.TAG_DATE, NORLMAL_WIDTH);
+		columnTagToDefaultWidthMap.put(ProgressPercent.TAG_DATE, NORMAL_WIDTH);
 		
 		columnTagToDefaultWidthMap.put(Goal.TAG_FULL_TEXT, ULTRA_WIDE_WIDTH);
 		
@@ -266,7 +266,7 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		
 	private static final int NARROW_WIDTH = 50;
 	public static final int DEFAULT_WIDTH = 75;
-	public static final int NORLMAL_WIDTH = 100;
+	public static final int NORMAL_WIDTH = 100;
 	private static final int WIDE_WIDTH = 200;
 	private static final int ULTRA_WIDE_WIDTH = 400;
 	private HashMap<String, Integer> columnTagToDefaultWidthMap;
