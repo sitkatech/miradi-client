@@ -87,8 +87,8 @@
 	<property name="miradi.pot" value="${dist.temp}/miradi.pot" />
 	<property name="miradi.po.es.dir" value="${translations.dir}" />
     <property name="miradi.po.es" value="${miradi.po.es.dir}/miradi_es.po" />
-	<property name="miradi.po.pt.dir" value="${translations.dir}" />
-    <property name="miradi.po.pt" value="${miradi.po.pt.dir}/miradi_pt.po" />
+	<property name="miradi.po.uk.dir" value="${translations.dir}" />
+    <property name="miradi.po.uk" value="${miradi.po.uk.dir}/miradi_uk.po" />
 	<property name="miradi.po.id.dir" value="${translations.dir}" />
     <property name="miradi.po.id" value="${miradi.po.id.dir}/miradi_id.po" />
 	<property name="miradi.po.zh.dir" value="${translations.dir}" />
@@ -575,31 +575,31 @@
 </target>
 	
 <!-- ================================================================== -->
-<!-- P O R T U G U E S E                   -->
+<!-- UKRAINIAN                   -->
 <!-- ================================================================== -->
-<target name="portuguese" depends="pot" description="Update Portuguese Content">
-	<echo message="updating Portuguese po file"/>
+<target name="ukrainian" depends="pot" description="Update Ukrainian Content">
+	<echo message="updating Ukrainian po file"/>
 	<exec executable="msgmerge" failonerror="true">
 		<arg value="--update"/>
 		<arg value="--backup=none"/>
 		<arg value="--no-fuzzy-matching"/>
-		<arg value="${miradi.po.pt}"/>
+		<arg value="${miradi.po.uk}"/>
 		<arg value="${miradi.pot}"/>
 	</exec>
-	<echo message="building Portuguese content jar"/>
-	<zip destfile="${dist.dir}/MiradiContent-${version.langpack}-pt.jar">
+	<echo message="building Ukrainian content jar"/>
+	<zip destfile="${dist.dir}/MiradiContent-${version.langpack}-uk.jar">
         <fileset dir="${eam.src.root}" includes="resources/**/*.txt" />
         <fileset dir="${eam.src.root}" includes="**/*.jpg"/>
         <fileset dir="${eam.src.root}" includes="**/*.png"/>
         <fileset dir="${eam.src.root}" includes="**/*.gif"/>
-		<fileset dir="${miradi.po.pt.dir}" includes="miradi_pt.po"/>
+		<fileset dir="${miradi.po.uk.dir}" includes="miradi_uk.po"/>
 	</zip>
 </target>
 	
 <!-- ================================================================== -->
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
-<target name="translations" depends="pot, spanish, indonesian, chinese, portuguese" description="Create Translatable Content jars/zips">
+<target name="translations" depends="pot, spanish, indonesian, chinese, ukrainian" description="Create Translatable Content jars/zips">
 	
 </target>
 	
