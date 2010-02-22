@@ -23,7 +23,7 @@ package org.miradi.xml.generic;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class DiagramFactorSchemaElement extends BaseObjectSchemaElement
+public class DiagramFactorSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public DiagramFactorSchemaElement()
 	{

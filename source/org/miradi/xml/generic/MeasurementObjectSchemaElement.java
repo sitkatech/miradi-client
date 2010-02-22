@@ -23,7 +23,7 @@ package org.miradi.xml.generic;
 import org.miradi.objects.Measurement;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class MeasurementObjectSchemaElement extends BaseObjectSchemaElement
+public class MeasurementObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public MeasurementObjectSchemaElement()
 	{

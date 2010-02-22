@@ -22,7 +22,7 @@ package org.miradi.xml.generic;
 
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class IucnRedListSpeciesObjectSchemaElement extends BaseObjectSchemaElement
+public class IucnRedListSpeciesObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public IucnRedListSpeciesObjectSchemaElement()
 	{

@@ -23,7 +23,7 @@ package org.miradi.xml.generic;
 import org.miradi.objects.Organization;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class OrganizationObjectSchemaElement extends BaseObjectSchemaElement
+public class OrganizationObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public OrganizationObjectSchemaElement()
 	{

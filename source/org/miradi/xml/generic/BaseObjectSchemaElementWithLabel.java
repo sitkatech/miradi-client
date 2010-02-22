@@ -23,9 +23,9 @@ package org.miradi.xml.generic;
 import org.miradi.objects.BaseObject;
 
 
-abstract public class BaseObjectSchemaElement extends AbstractBaseObjectSchemaElement
+abstract public class BaseObjectSchemaElementWithLabel extends AbstractBaseObjectSchemaElement
 {
-	public BaseObjectSchemaElement(String objectTypeNameToUse)
+	public BaseObjectSchemaElementWithLabel(String objectTypeNameToUse)
 	{
 		super(objectTypeNameToUse);
 		

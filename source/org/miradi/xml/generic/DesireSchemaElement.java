@@ -23,7 +23,7 @@ package org.miradi.xml.generic;
 import org.miradi.objects.Desire;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class DesireSchemaElement extends BaseObjectSchemaElement
+public class DesireSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public DesireSchemaElement(String objectTypeNameToUse)
 	{

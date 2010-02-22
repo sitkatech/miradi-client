@@ -23,7 +23,7 @@ package org.miradi.xml.generic;
 import org.miradi.objects.FundingSource;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class FundingSourceObjectSchemaElement extends BaseObjectSchemaElement
+public class FundingSourceObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public FundingSourceObjectSchemaElement()
 	{

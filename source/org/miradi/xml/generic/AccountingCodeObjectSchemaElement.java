@@ -23,7 +23,7 @@ package org.miradi.xml.generic;
 import org.miradi.objects.AccountingCode;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class AccountingCodeObjectSchemaElement extends BaseObjectSchemaElement
+public class AccountingCodeObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public AccountingCodeObjectSchemaElement()
 	{

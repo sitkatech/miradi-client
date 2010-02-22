@@ -23,7 +23,7 @@ package org.miradi.xml.generic;
 import org.miradi.objects.Factor;
 
 
-public class FactorObjectSchemaElement extends BaseObjectSchemaElement
+public class FactorObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public FactorObjectSchemaElement(String objectTypeName)
 	{
