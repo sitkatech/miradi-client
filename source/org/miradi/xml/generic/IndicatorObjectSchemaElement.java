@@ -23,7 +23,7 @@ package org.miradi.xml.generic;
 import org.miradi.objects.Indicator;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class IndicatorObjectSchemaElement extends BaseObjectSchemaElement
+public class IndicatorObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public IndicatorObjectSchemaElement()
 	{

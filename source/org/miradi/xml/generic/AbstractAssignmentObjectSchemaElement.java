@@ -22,7 +22,7 @@ package org.miradi.xml.generic;
 
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-abstract public class AbstractAssignmentObjectSchemaElement extends BaseObjectSchemaElement
+abstract public class AbstractAssignmentObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public AbstractAssignmentObjectSchemaElement(String objectTypeNameToUse)
 	{

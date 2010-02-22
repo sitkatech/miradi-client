@@ -24,7 +24,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class KeyEcologicalAttributeObjectSchemaElement extends BaseObjectSchemaElement
+public class KeyEcologicalAttributeObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public KeyEcologicalAttributeObjectSchemaElement()
 	{

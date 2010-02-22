@@ -23,7 +23,7 @@ package org.miradi.xml.generic;
 import org.miradi.objects.DiagramObject;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-abstract public class DiagramSchemaElement extends BaseObjectSchemaElement
+abstract public class DiagramSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public DiagramSchemaElement(String objectTypeNameToUse)
 	{

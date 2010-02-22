@@ -23,7 +23,7 @@ package org.miradi.xml.generic;
 import org.miradi.objects.SubTarget;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class SubTargetObjectSchemaElement extends BaseObjectSchemaElement
+public class SubTargetObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public SubTargetObjectSchemaElement()
 	{

@@ -24,7 +24,7 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class DiagramLinkSchemaElement extends BaseObjectSchemaElement
+public class DiagramLinkSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public DiagramLinkSchemaElement()
 	{

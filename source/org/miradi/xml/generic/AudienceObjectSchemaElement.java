@@ -22,7 +22,7 @@ package org.miradi.xml.generic;
 
 import org.miradi.objects.Audience;
 
-public class AudienceObjectSchemaElement extends BaseObjectSchemaElement
+public class AudienceObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public AudienceObjectSchemaElement()
 	{

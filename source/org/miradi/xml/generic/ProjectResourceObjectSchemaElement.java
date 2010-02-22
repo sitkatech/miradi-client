@@ -23,7 +23,7 @@ package org.miradi.xml.generic;
 import org.miradi.objects.ProjectResource;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class ProjectResourceObjectSchemaElement extends BaseObjectSchemaElement
+public class ProjectResourceObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public ProjectResourceObjectSchemaElement()
 	{

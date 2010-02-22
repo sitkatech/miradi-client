@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-public class OtherNotableSpeciesObjectSchemaElement extends BaseObjectSchemaElement
+public class OtherNotableSpeciesObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public OtherNotableSpeciesObjectSchemaElement()
 	{
