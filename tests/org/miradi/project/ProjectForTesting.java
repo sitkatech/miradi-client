@@ -589,6 +589,17 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return taggedObjectSet;
 	}
 	
+	public void tagDiagramFactor(ORef refToTag) throws Exception
+	{
+		TaggedObjectSet taggedObjectSet = createTaggedObjectSet();
+		taggedObjectSet.setData(TaggedObjectSet.TAG_LABEL, "SomeTag");
+		ORefList taggedFactorRefs = new ORefList(refToTag);
+		taggedObjectSet.setData(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, taggedFactorRefs.toString());
+		
+		ORefList taggedObjectSetRefs = new ORefList(taggedObjectSet.getRef());
+		getTestingDiagramObject().setData(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, taggedObjectSetRefs.toString());
+	}
+	
 	public ResourceAssignment createResourceAssignment() throws Exception
 	{
 		ORef assignmentRef = createObject(ResourceAssignment.getObjectType());
