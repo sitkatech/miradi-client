@@ -22,7 +22,6 @@ package org.miradi.utils;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-//FIXME medium: this class is not dealing with column changes, but row changes.  needs to be renamed
 public class AutomaticRowHeightUpdateAfterColumnChangeHandler extends MouseAdapter
 {
 	public AutomaticRowHeightUpdateAfterColumnChangeHandler(TableWithRowHeightManagement tableToManage)
