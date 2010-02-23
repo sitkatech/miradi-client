@@ -214,24 +214,21 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 	public void createDefaultColumnsFromModel() 
 	{
         TableModel m = getModel();
-        if (m != null) 
-        {
-            // Remove any current columns
-            TableColumnModel cm = getColumnModel();
-            while (cm.getColumnCount() > 0) 
-            {
-                cm.removeColumn(cm.getColumn(0));
-            }
+        if (m == null)
+        	return;
 
-            // Create new columns from the data model info
-            ColumnTagProvider provider = (ColumnTagProvider) getModel();
-            for (int column = 0; column < m.getColumnCount(); column++) 
-            {
-            	
-                final String columnTag = provider.getColumnTag(column);
-				TableColumn newColumn = new MiradiTableColumn(column, getColumnTagToDefaultWidthMap(), columnTag);
-                addColumn(newColumn);
-            }
+        TableColumnModel cm = getColumnModel();
+        while (cm.getColumnCount() > 0) 
+        {
+        	cm.removeColumn(cm.getColumn(0));
+        }
+
+        ColumnTagProvider provider = (ColumnTagProvider) getModel();
+        for (int column = 0; column < m.getColumnCount(); column++) 
+        {
+        	final String columnTag = provider.getColumnTag(column);
+        	TableColumn newColumn = new MiradiTableColumn(column, getColumnTagToDefaultWidthMap(), columnTag);
+        	addColumn(newColumn);
         }
     }
 	
