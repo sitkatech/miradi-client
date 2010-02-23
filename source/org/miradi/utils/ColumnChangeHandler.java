@@ -37,5 +37,5 @@ public class ColumnChangeHandler extends MouseAdapter
 		table.updateAutomaticRowHeights();
 	}
 	
-	TableWithRowHeightManagement table;
+	private TableWithRowHeightManagement table;
 }
