@@ -47,7 +47,7 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		
 		rowHeightController = new SingleTableRowHeightController(getMainWindow(), this);
 		
-		getTableHeader().addMouseListener(new AutomaticRowHeightUpdateAfterColumnChangeHandler(this));
+		getTableHeader().addMouseListener(new AutomaticRowHeightUpdateAfterMouseReleasedOnColumnHeaderHandler(this));
 	}
 
 	private void verifyUniqueTableIdentifier()

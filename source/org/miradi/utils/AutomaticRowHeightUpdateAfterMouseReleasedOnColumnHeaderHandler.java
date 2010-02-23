@@ -22,9 +22,9 @@ package org.miradi.utils;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class AutomaticRowHeightUpdateAfterColumnChangeHandler extends MouseAdapter
+public class AutomaticRowHeightUpdateAfterMouseReleasedOnColumnHeaderHandler extends MouseAdapter
 {
-	public AutomaticRowHeightUpdateAfterColumnChangeHandler(TableWithRowHeightManagement tableToManage)
+	public AutomaticRowHeightUpdateAfterMouseReleasedOnColumnHeaderHandler(TableWithRowHeightManagement tableToManage)
 	{
 		table = tableToManage;
 	}
