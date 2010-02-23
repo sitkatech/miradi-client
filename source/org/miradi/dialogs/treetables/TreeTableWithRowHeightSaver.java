@@ -27,7 +27,7 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.tree.TreePath;
 
 import org.miradi.main.MainWindow;
-import org.miradi.utils.ColumnChangeHandler;
+import org.miradi.utils.AutomaticRowHeightUpdateAfterColumnChangeHandler;
 import org.miradi.utils.MultiTableRowHeightController;
 import org.miradi.utils.SingleTableRowHeightController;
 import org.miradi.utils.TableRowHeightManager;
@@ -46,7 +46,7 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 		
 		rowHeightController = new SingleTableRowHeightController(getMainWindow(), this);
 		
-		getTableHeader().addMouseListener(new ColumnChangeHandler(this));
+		getTableHeader().addMouseListener(new AutomaticRowHeightUpdateAfterColumnChangeHandler(this));
 	}
 
 	public GenericTreeTableModel getTreeTableModel()

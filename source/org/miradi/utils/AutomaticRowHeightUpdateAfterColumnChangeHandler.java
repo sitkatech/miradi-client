@@ -23,9 +23,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 //FIXME medium: this class is not dealing with column changes, but row changes.  needs to be renamed
-public class ColumnChangeHandler extends MouseAdapter
+public class AutomaticRowHeightUpdateAfterColumnChangeHandler extends MouseAdapter
 {
-	public ColumnChangeHandler(TableWithRowHeightManagement tableToManage)
+	public AutomaticRowHeightUpdateAfterColumnChangeHandler(TableWithRowHeightManagement tableToManage)
 	{
 		table = tableToManage;
 	}
