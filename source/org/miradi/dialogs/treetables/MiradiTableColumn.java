@@ -40,10 +40,4 @@ public class MiradiTableColumn extends TableColumn
 		
 		return TableWithColumnWidthAndSequenceSaver.NORMAL_WIDTH;
 	}
-	
-	@Override
-	public int getWidth()
-	{
-		return super.getWidth();
-	}
 }
