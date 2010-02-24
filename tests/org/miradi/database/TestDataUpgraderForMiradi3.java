@@ -22,6 +22,7 @@ package org.miradi.database;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.Vector;
 
 import org.martus.util.DirectoryUtils;
@@ -35,6 +36,7 @@ import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateUnitEffort;
@@ -123,6 +125,66 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 //		
 //		assertTrue("empty task was deleted?", manifestObject.has(new BaseId(28)));
 //	}
+	
+	public void testEnsureProjectMetadataRefersToCorrectXenodaForEmptyProject() throws Exception
+	{
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion56();
+	}
+	
+	public void testEnsureProjectMetadataWithCorrectXenodataReferenceRefersToCorrectXenoda() throws Exception
+	{
+		String xenodataIdMatchesIdInProjectMetadata = "{\"AssignmentIds\":\"\",\"TimeStampModified\":\"1266952560931\",\"ExpenseRefs\":\"\",\"Label\":\"\",\"Id\":19,\"ProgressReportRefs\":\"\",\"ProjectId\":\"726\"}";
+		verifyProjectMetadataRefersToExistingXenodata(xenodataIdMatchesIdInProjectMetadata);
+	}
+	
+	public void testEnsureProjectMetadataWithIncorrectXenodataReferenceRefersToCorrectXenoda() throws Exception
+	{
+		String xenodataIdDoesNotMatchIdInProjectMetadata = "{\"AssignmentIds\":\"\",\"TimeStampModified\":\"1266952560931\",\"ExpenseRefs\":\"\",\"Label\":\"\",\"Id\":200,\"ProgressReportRefs\":\"\",\"ProjectId\":\"726\"}";
+		verifyProjectMetadataRefersToExistingXenodata(xenodataIdDoesNotMatchIdInProjectMetadata);
+	}
+	
+	public void testEnsureProjecMetadataWithoutXenodataTagRefersToCorrectXenodata() throws Exception
+	{
+		String projectMetadataStringWithoutXenodataTag = "{\"FullTimeEmployeeDaysPerYear\":\"\",\"NextSteps\":\"\",\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"2010-02-23\",\"SiteMapReference\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"ProtectedAreaCategoryNotes\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"Arial\",\"ProtectedAreaCategories\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"1\",\"AssignmentIds\":\"\",\"DiagramFontSize\":\"12\",\"ProjectLatitude\":\"0.0\",\"TNC.OperatingUnitList\":\"\",\"CurrencyType\":\"\",\"LocationComments\":\"\",\"TargetMode\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"ProjectStatus\":\"\",\"OtherOrgProjectNumber\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"SocialContext\":\"\",\"ExpenseRefs\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"ProgressReportRefs\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"ProjectScope\":\"\",\"OtherOrgRelatedProjects\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"HumanPopulation\":\"\",\"DataEffectiveDate\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"HumanPopulationNotes\":\"\",\"ShortProjectScope\":\"\",\"TNC.MarineEcoRegion\":\"\",\"TimeStampModified\":\"1266952560987\",\"ProjectAreaNote\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\"}";
+		String xenodataIdDoesNotMatchIdInProjectMetadata = "{\"AssignmentIds\":\"\",\"TimeStampModified\":\"1266952560931\",\"ExpenseRefs\":\"\",\"Label\":\"\",\"Id\":200,\"ProgressReportRefs\":\"\",\"ProjectId\":\"726\"}";
+		
+		verifyProjectMetadataRefersToExistingXenodata(projectMetadataStringWithoutXenodataTag, xenodataIdDoesNotMatchIdInProjectMetadata);
+	}
+
+	private void verifyProjectMetadataRefersToExistingXenodata(String xenoDataStringWithProjectId) throws Exception
+	{
+		String projectMetadataStringWithXenodataId19 = "{\"FullTimeEmployeeDaysPerYear\":\"\",\"NextSteps\":\"\",\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"2010-02-23\",\"SiteMapReference\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"ProtectedAreaCategoryNotes\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"Arial\",\"ProtectedAreaCategories\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"1\",\"AssignmentIds\":\"\",\"DiagramFontSize\":\"12\",\"ProjectLatitude\":\"0.0\",\"TNC.OperatingUnitList\":\"\",\"CurrencyType\":\"\",\"LocationComments\":\"\",\"TargetMode\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"ProjectStatus\":\"\",\"OtherOrgProjectNumber\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"SocialContext\":\"\",\"ExpenseRefs\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"ProgressReportRefs\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"ProjectScope\":\"\",\"OtherOrgRelatedProjects\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"HumanPopulation\":\"\",\"DataEffectiveDate\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"HumanPopulationNotes\":\"\",\"ShortProjectScope\":\"\",\"TNC.MarineEcoRegion\":\"\",\"TimeStampModified\":\"1266952560987\",\"ProjectAreaNote\":\"\",\"XenodataRefs\":\"{\\\"StringRefMap\\\":{\\\"ConPro\\\":\\\"{\\\\\\\"ObjectType\\\\\\\":44,\\\\\\\"ObjectId\\\\\\\":19}\\\"}}\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\"}";
+		verifyProjectMetadataRefersToExistingXenodata(projectMetadataStringWithXenodataId19, xenoDataStringWithProjectId);
+	}
+	
+	private void verifyProjectMetadataRefersToExistingXenodata(String projectMetadataString, String xenoDataStringWithProjectId) throws Exception
+	{
+		File jsonDir = createJsonDir();
+		final int PROJECT_METADATA_TYPE = 11;
+		int[] projectMetadataRawIds = createAndPopulateObjectDir(jsonDir, PROJECT_METADATA_TYPE, projectMetadataString);
+
+		final int XENODATA_TYPE = 44;
+		createAndPopulateObjectDir(jsonDir, XENODATA_TYPE, xenoDataStringWithProjectId);
+		
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion56();
+		
+		EnhancedJsonObject projectMetadataJson = getObjectFileAsJson(jsonDir, PROJECT_METADATA_TYPE, projectMetadataRawIds[0]);
+		String xenodataStringRefMapAsString = projectMetadataJson.getString("XenodataRefs");
+		StringRefMap map = new StringRefMap(xenodataStringRefMapAsString);
+		ORef xenodataRef = map.getValue("ConPro");
+		
+		File xenodataDir = DataUpgrader.getObjectsDir(jsonDir, XENODATA_TYPE);
+		File xenodataManifestFile = new File(xenodataDir, "manifest");
+		assertTrue("xenodata manifest file could not be found?", xenodataManifestFile.exists());
+		
+		ObjectManifest xenodataManifestObject = new ObjectManifest(JSONFile.read(xenodataManifestFile));
+		BaseId[] xenodataIdsArray = xenodataManifestObject.getAllKeys();
+		Vector<BaseId> xenodataIds = new Vector(Arrays.asList(xenodataIdsArray));
+		if (!xenodataIds.isEmpty())
+			assertTrue("Xenodata ref in project metadata is incorrect?", xenodataIds.contains(xenodataRef.getObjectId()));
+	}
 	
 	public void testFixFactorLinkBidiFalseValues() throws Exception
 	{

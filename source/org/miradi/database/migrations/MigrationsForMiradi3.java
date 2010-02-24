@@ -203,4 +203,10 @@ public class MigrationsForMiradi3
 		FactorLinkBidiFalseBooleanValueFixMigration.fixFactorLinkBidiFalseValues();
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 55);
 	}
+	
+	public static void upgradeToVersion56() throws Exception
+	{
+		EnsureProjectMetadataRefersToCorrectXenodataObject.ensureCorrectXenodataReferrer();
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 56);
+	}
 }
