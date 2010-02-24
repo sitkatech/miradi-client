@@ -209,4 +209,10 @@ public class MigrationsForMiradi3
 		EnsureProjectMetadataRefersToCorrectXenodataObject.ensureCorrectXenodataReferrer();
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 56);
 	}
+	
+	public static void upgradeToVersion57() throws Exception
+	{
+		RemoveEmptyMethodsCreatedWhenImportingContproProjectMigration.removeEmptyMethodsInProjectsWithConproId();
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 57);
+	}
 }
