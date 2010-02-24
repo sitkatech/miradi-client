@@ -61,10 +61,15 @@ abstract public class AbstractMigrationTestCase extends EAMTestCase
 		return objectsDir;
 	}
 
+	protected int[] createAndPopulateObjectDir(File jsonDir, final int objectType, String jsonString) throws Exception
+	{
+		return createAndPopulateObjectDir(jsonDir, objectType, new String[]{jsonString, });
+	}
+	
 	protected int[] createAndPopulateObjectDir(File jsonDir, final int objectType, String[] jsonStrings) throws Exception
 	{
 		if (DataUpgrader.getObjectsDir(jsonDir, objectType).exists())
-			throw new RuntimeException("Attempting to create and populate an existing object dir");
+			throw new RuntimeException("Attempting to create and populate an existing object dir. Type:" + objectType);
 		
 		File objectsDir = DataUpgrader.createObjectsDir(jsonDir, objectType);
 		Vector<Integer> objectIds = new Vector();
