@@ -51,80 +51,77 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		super(name);
 	}
 
-	//FIXME urgent - these tests for migration are commented out and waiting to be activated 
-	//after the xenodata (referred to by metadata) migration is comleted
-	//Uncomment
-//	public void testRemoveEmptyMethodsForEmptyProject() throws Exception
-//	{
-//		DataUpgrader.initializeStaticDirectory(tempDirectory);
-//		MigrationsForMiradi3.upgradeToVersion5X();
-//	}
-//	
-//	public void testRemoveEmptyMethodsForProjectWithoutConProId() throws Exception
-//	{
-//		File jsonDir = createJsonDir();
-//		final int EXPECTED_NUMBER_OF_METHODS_DELETED = 0;
-//		verifyDeleteEmptyMethods(jsonDir, EXPECTED_NUMBER_OF_METHODS_DELETED);
-//	}
-//	
-//	public void testRemoveEmptyMethodsForProjectWithConProId() throws Exception
-//	{
-//		File jsonDir = createJsonDir();
-//		
-//		String xenoDataStringWithProjectId = "{\"AssignmentIds\":\"\",\"TimeStampModified\":\"1266952560931\",\"ExpenseRefs\":\"\",\"Label\":\"\",\"Id\":200,\"ProgressReportRefs\":\"\",\"ProjectId\":\"726\"}";
-//		final int XENODATA_TYPE = 44;
-//		createAndPopulateObjectDir(jsonDir, XENODATA_TYPE, xenoDataStringWithProjectId);
-//		
-//		String projectMetadataStringWithXenodata = "{\"FullTimeEmployeeDaysPerYear\":\"\",\"NextSteps\":\"\",\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"2010-02-23\",\"SiteMapReference\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"ProtectedAreaCategoryNotes\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"Arial\",\"ProtectedAreaCategories\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"1\",\"AssignmentIds\":\"\",\"DiagramFontSize\":\"12\",\"ProjectLatitude\":\"0.0\",\"TNC.OperatingUnitList\":\"\",\"CurrencyType\":\"\",\"LocationComments\":\"\",\"TargetMode\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"ProjectStatus\":\"\",\"OtherOrgProjectNumber\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"SocialContext\":\"\",\"ExpenseRefs\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"ProgressReportRefs\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"ProjectScope\":\"\",\"OtherOrgRelatedProjects\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"HumanPopulation\":\"\",\"DataEffectiveDate\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"HumanPopulationNotes\":\"\",\"ShortProjectScope\":\"\",\"TNC.MarineEcoRegion\":\"\",\"TimeStampModified\":\"1266952560987\",\"ProjectAreaNote\":\"\",\"XenodataRefs\":\"{\\\"StringRefMap\\\":{\\\"ConPro\\\":\\\"{\\\\\\\"ObjectType\\\\\\\":44,\\\\\\\"ObjectId\\\\\\\":200}\\\"}}\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\"}";
-//		final int PROJECT_METADATA_TYPE = 11;
-//		createAndPopulateObjectDir(jsonDir, PROJECT_METADATA_TYPE, projectMetadataStringWithXenodata);
-//		
-//		final int EXPECTED_NUMBER_OF_METHODS_DELETED = 1;
-//		verifyDeleteEmptyMethods(jsonDir, EXPECTED_NUMBER_OF_METHODS_DELETED);
-//	}
-//	
-//	private void verifyDeleteEmptyMethods(File jsonDir, final int EXPECTED_NUMBER_OF_METHODS_DELETED) throws Exception
-//	{
-//		String indictorWithMethods = "{\"ThresholdDetails\":\"\",\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"FutureStatusSummary\":\"\",\"ExpenseRefs\":\"\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"\",\"Priority\":\"\",\"Detail\":\"\",\"FutureStatusRating\":\"\",\"TaskIds\":\"{\\\"Ids\\\":[29,30,31,32,33,34,35,36]}\",\"TimeStampModified\":\"1266951177581\",\"FutureStatusDate\":\"\",\"Label\":\"\",\"Id\":118,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
-//		
-//		String emptyTask = "{\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":28,\"Label\":\"\",\"ProgressReportRefs\":\"\"}";
-//		
-//		String emptyMethod = "{\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":29,\"Label\":\"\",\"ProgressReportRefs\":\"\"}";
-//		String methodWithDetails = "{\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"Some Details\",\"ExpenseRefs\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":30,\"Label\":\"\",\"ProgressReportRefs\":\"\"}";
-//		String methodWithShortLabel = "{\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"Some Short Label\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":31,\"Label\":\"\",\"ProgressReportRefs\":\"\"}";
-//		String methodWithLabel = "{\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":32,\"Label\":\"SomeLabel\",\"ProgressReportRefs\":\"\"}";
-//		String methodWithProgressReport = "{\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":33,\"Label\":\"\",\"ProgressReportRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":37,\\\"ObjectId\\\":29}]}\"}";
-//		String methodWithResourceAssignment = "{\"AssignmentIds\":\"{\\\"Ids\\\":[115]}\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":34,\"Label\":\"\",\"ProgressReportRefs\":\"\"}";
-//		String methodWithExpenseAssignment = "{\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":51,\\\"ObjectId\\\":116}]}\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":35,\"Label\":\"\",\"ProgressReportRefs\":\"\"}";
-//		String methodWithSubTask = "{\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"SubtaskIds\":\"{\\\"Ids\\\":[117]}\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":36,\"Label\":\"\",\"ProgressReportRefs\":\"\"}";
-//		
-//		final int INDICATOR_TYPE = 8;
-//		createAndPopulateObjectDir(jsonDir, INDICATOR_TYPE, indictorWithMethods);
-//		
-//		final int TASK_TYPE = 3;
-//		final String[] methodStrings = new String[]{emptyMethod, methodWithDetails, methodWithShortLabel, methodWithLabel, methodWithProgressReport, methodWithResourceAssignment, methodWithExpenseAssignment, methodWithSubTask, };
-//		final String[] taskStrings = new String[]{emptyTask, };
-//		Vector<String> allTasks = new Vector<String>();
-//		allTasks.addAll(Arrays.asList(methodStrings));
-//		allTasks.addAll(Arrays.asList(taskStrings));
-//		
-//		int[] taskIds = createAndPopulateObjectDir(jsonDir, TASK_TYPE, allTasks.toArray(new String[0]));
-//		
-//		DataUpgrader.initializeStaticDirectory(tempDirectory);
-//		MigrationsForMiradi3.upgradeToVersion5X();
-//	
-//		File taskDir = DataUpgrader.getObjectsDir(jsonDir, TASK_TYPE);
-//		File manifestFile = new File(taskDir, "manifest");
-//		assertTrue("manifest file could not be found?", manifestFile.exists());
-//	
-//		int expectedTaskCountAfterMigration = taskStrings.length + methodStrings.length - EXPECTED_NUMBER_OF_METHODS_DELETED;
-//		ObjectManifest manifestObject = new ObjectManifest(JSONFile.read(manifestFile));
-//		assertEquals("manifest has wrong key count?", expectedTaskCountAfterMigration, manifestObject.size());
-//		if (EXPECTED_NUMBER_OF_METHODS_DELETED > 1)
-//			assertFalse("empty method was not deleted?", manifestObject.has(new BaseId(29)));
-//		
-//		assertTrue("empty task was deleted?", manifestObject.has(new BaseId(28)));
-//	}
+	public void testRemoveEmptyMethodsForEmptyProject() throws Exception
+	{
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion57();
+	}
+	
+	public void testRemoveEmptyMethodsForProjectWithoutConProId() throws Exception
+	{
+		File jsonDir = createJsonDir();
+		final int EXPECTED_NUMBER_OF_METHODS_DELETED = 0;
+		verifyDeleteEmptyMethods(jsonDir, EXPECTED_NUMBER_OF_METHODS_DELETED);
+	}
+	
+	public void testRemoveEmptyMethodsForProjectWithConProId() throws Exception
+	{
+		File jsonDir = createJsonDir();
+		
+		String xenoDataStringWithProjectId = "{\"AssignmentIds\":\"\",\"TimeStampModified\":\"1266952560931\",\"ExpenseRefs\":\"\",\"Label\":\"\",\"Id\":200,\"ProgressReportRefs\":\"\",\"ProjectId\":\"726\"}";
+		final int XENODATA_TYPE = 44;
+		createAndPopulateObjectDir(jsonDir, XENODATA_TYPE, xenoDataStringWithProjectId);
+		
+		String projectMetadataStringWithXenodata = "{\"FullTimeEmployeeDaysPerYear\":\"\",\"NextSteps\":\"\",\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"2010-02-23\",\"SiteMapReference\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"ProtectedAreaCategoryNotes\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"Arial\",\"ProtectedAreaCategories\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"1\",\"AssignmentIds\":\"\",\"DiagramFontSize\":\"12\",\"ProjectLatitude\":\"0.0\",\"TNC.OperatingUnitList\":\"\",\"CurrencyType\":\"\",\"LocationComments\":\"\",\"TargetMode\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"ProjectStatus\":\"\",\"OtherOrgProjectNumber\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"SocialContext\":\"\",\"ExpenseRefs\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"ProgressReportRefs\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"ProjectScope\":\"\",\"OtherOrgRelatedProjects\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"HumanPopulation\":\"\",\"DataEffectiveDate\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"HumanPopulationNotes\":\"\",\"ShortProjectScope\":\"\",\"TNC.MarineEcoRegion\":\"\",\"TimeStampModified\":\"1266952560987\",\"ProjectAreaNote\":\"\",\"XenodataRefs\":\"{\\\"StringRefMap\\\":{\\\"ConPro\\\":\\\"{\\\\\\\"ObjectType\\\\\\\":44,\\\\\\\"ObjectId\\\\\\\":200}\\\"}}\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\"}";
+		final int PROJECT_METADATA_TYPE = 11;
+		createAndPopulateObjectDir(jsonDir, PROJECT_METADATA_TYPE, projectMetadataStringWithXenodata);
+		
+		final int EXPECTED_NUMBER_OF_METHODS_DELETED = 1;
+		verifyDeleteEmptyMethods(jsonDir, EXPECTED_NUMBER_OF_METHODS_DELETED);
+	}
+	
+	private void verifyDeleteEmptyMethods(File jsonDir, final int EXPECTED_NUMBER_OF_METHODS_DELETED) throws Exception
+	{
+		String indictorWithMethods = "{\"ThresholdDetails\":\"\",\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"FutureStatusSummary\":\"\",\"ExpenseRefs\":\"\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"\",\"Priority\":\"\",\"Detail\":\"\",\"FutureStatusRating\":\"\",\"TaskIds\":\"{\\\"Ids\\\":[29,30,31,32,33,34,35,36]}\",\"TimeStampModified\":\"1266951177581\",\"FutureStatusDate\":\"\",\"Label\":\"\",\"Id\":118,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
+		
+		String emptyTask = "{\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":28,\"Label\":\"\",\"ProgressReportRefs\":\"\"}";
+		
+		String emptyMethod = "{\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":29,\"Label\":\"\",\"ProgressReportRefs\":\"\"}";
+		String methodWithDetails = "{\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"Some Details\",\"ExpenseRefs\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":30,\"Label\":\"\",\"ProgressReportRefs\":\"\"}";
+		String methodWithShortLabel = "{\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"Some Short Label\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":31,\"Label\":\"\",\"ProgressReportRefs\":\"\"}";
+		String methodWithLabel = "{\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":32,\"Label\":\"SomeLabel\",\"ProgressReportRefs\":\"\"}";
+		String methodWithProgressReport = "{\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":33,\"Label\":\"\",\"ProgressReportRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":37,\\\"ObjectId\\\":29}]}\"}";
+		String methodWithResourceAssignment = "{\"AssignmentIds\":\"{\\\"Ids\\\":[115]}\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":34,\"Label\":\"\",\"ProgressReportRefs\":\"\"}";
+		String methodWithExpenseAssignment = "{\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":51,\\\"ObjectId\\\":116}]}\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":35,\"Label\":\"\",\"ProgressReportRefs\":\"\"}";
+		String methodWithSubTask = "{\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"SubtaskIds\":\"{\\\"Ids\\\":[117]}\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":36,\"Label\":\"\",\"ProgressReportRefs\":\"\"}";
+		
+		final int INDICATOR_TYPE = 8;
+		createAndPopulateObjectDir(jsonDir, INDICATOR_TYPE, indictorWithMethods);
+		
+		final int TASK_TYPE = 3;
+		final String[] methodStrings = new String[]{emptyMethod, methodWithDetails, methodWithShortLabel, methodWithLabel, methodWithProgressReport, methodWithResourceAssignment, methodWithExpenseAssignment, methodWithSubTask, };
+		final String[] taskStrings = new String[]{emptyTask, };
+		Vector<String> allTasks = new Vector<String>();
+		allTasks.addAll(Arrays.asList(methodStrings));
+		allTasks.addAll(Arrays.asList(taskStrings));
+		
+		createAndPopulateObjectDir(jsonDir, TASK_TYPE, allTasks.toArray(new String[0]));
+		
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion57();
+	
+		File taskDir = DataUpgrader.getObjectsDir(jsonDir, TASK_TYPE);
+		File manifestFile = new File(taskDir, "manifest");
+		assertTrue("manifest file could not be found?", manifestFile.exists());
+	
+		int expectedTaskCountAfterMigration = taskStrings.length + methodStrings.length - EXPECTED_NUMBER_OF_METHODS_DELETED;
+		ObjectManifest manifestObject = new ObjectManifest(JSONFile.read(manifestFile));
+		assertEquals("manifest has wrong key count?", expectedTaskCountAfterMigration, manifestObject.size());
+		if (EXPECTED_NUMBER_OF_METHODS_DELETED > 1)
+			assertFalse("empty method was not deleted?", manifestObject.has(new BaseId(29)));
+		
+		assertTrue("empty task was deleted?", manifestObject.has(new BaseId(28)));
+	}
 	
 	public void testEnsureProjectMetadataRefersToCorrectXenodaForEmptyProject() throws Exception
 	{
