@@ -30,9 +30,10 @@ public class TeamPoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 {
 	public TeamPoolTablePanel(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, new TeamPoolTable(mainWindowToUse, new TeamPoolTableModel(mainWindowToUse.getProject())), 
-				mainWindowToUse.getActions(),
-				buttons);
+		super(mainWindowToUse, new TeamPoolTable(mainWindowToUse, new TeamPoolTableModel(mainWindowToUse.getProject())));
+		
+		addButton(mainWindowToUse.getActions(), ActionTeamCreateMember.class);
+		addButton(mainWindowToUse.getActions(), ActionDeleteTeamMember.class);
 	}
 	
 	@Override
@@ -42,9 +43,4 @@ public class TeamPoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 		if (event.isSetDataCommandWithThisTypeAndTag(ProjectResource.getObjectType(), ProjectResource.TAG_ROLE_CODES))
 			getTable().getObjectTableModel().rowsWereAddedOrRemoved();
 	}
-	
-	static Class[] buttons = new Class[] {
-		ActionTeamCreateMember.class,
-		ActionDeleteTeamMember.class,
-	};
 }
