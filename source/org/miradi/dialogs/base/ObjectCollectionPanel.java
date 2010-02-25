@@ -110,7 +110,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		addButton(createObjectsActionButton(action, pickerToUse));
 	}
 	
-	public void addButton(UiButton button)
+	private void addButton(UiButton button)
 	{
 		buttons.add(button);
 	}
