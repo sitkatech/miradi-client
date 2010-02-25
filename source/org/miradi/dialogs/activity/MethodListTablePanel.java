@@ -25,12 +25,13 @@ import org.miradi.actions.ActionShareMethod;
 import org.miradi.dialogs.base.ObjectListTablePanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.views.umbrella.StaticPicker;
 
 public class MethodListTablePanel extends ObjectListTablePanel
 {
 	public MethodListTablePanel(MainWindow mainWindowToUse, ORefList selectedHierarchy)
 	{
-		super(mainWindowToUse, new MethodListTableModel(mainWindowToUse.getProject(), selectedHierarchy));
+		super(mainWindowToUse, new MethodListTableModel(mainWindowToUse.getProject(), selectedHierarchy), new StaticPicker(selectedHierarchy));
 		
 		addButton(mainWindowToUse.getActions(), ActionCreateMethod.class);
 		addButton(mainWindowToUse.getActions(), ActionDeleteMethod.class);

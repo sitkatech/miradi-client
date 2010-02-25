@@ -24,12 +24,13 @@ import org.miradi.actions.ActionDeleteSubTarget;
 import org.miradi.dialogs.base.ObjectListTablePanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.views.umbrella.StaticPicker;
 
 public class SubTargetListTablePanel extends ObjectListTablePanel
 {
 	public SubTargetListTablePanel(MainWindow mainWindowToUse, ORef nodeRef)
 	{
-		super(mainWindowToUse, new SubTargetListTableModel(mainWindowToUse.getProject(), nodeRef));
+		super(mainWindowToUse, new SubTargetListTableModel(mainWindowToUse.getProject(), nodeRef), new StaticPicker(nodeRef));
 		
 		addButton(mainWindowToUse.getActions(), ActionCreateSubTarget.class);
 		addButton(mainWindowToUse.getActions(), ActionDeleteSubTarget.class);

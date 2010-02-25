@@ -25,12 +25,13 @@ import org.miradi.actions.ActionDeleteGoal;
 import org.miradi.dialogs.base.ObjectListTablePanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.views.umbrella.StaticPicker;
 
 public class GoalListTablePanel extends ObjectListTablePanel
 {
 	public GoalListTablePanel(MainWindow mainWindowToUse, ORef nodeRef)
 	{
-		super(mainWindowToUse, new GoalListTableModel(mainWindowToUse.getProject(), nodeRef));
+		super(mainWindowToUse, new GoalListTableModel(mainWindowToUse.getProject(), nodeRef), new StaticPicker(nodeRef));
 		
 		addButton(mainWindowToUse.getActions(), ActionCreateGoal.class);
 		addButton(mainWindowToUse.getActions(), ActionDeleteGoal.class);

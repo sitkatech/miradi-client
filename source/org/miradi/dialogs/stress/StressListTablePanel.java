@@ -26,12 +26,13 @@ import org.miradi.actions.ActionDeleteStress;
 import org.miradi.dialogs.base.ObjectListTablePanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.views.umbrella.StaticPicker;
 
 public class StressListTablePanel extends ObjectListTablePanel
 {
 	public StressListTablePanel(MainWindow mainWindowToUse, ORef nodeRef)
 	{
-		super(mainWindowToUse, new StressListTableModel(mainWindowToUse.getProject(), nodeRef));
+		super(mainWindowToUse, new StressListTableModel(mainWindowToUse.getProject(), nodeRef), new StaticPicker(nodeRef));
 		
 		addButton(mainWindowToUse.getActions(), ActionCreateStress.class);
 		addButton(mainWindowToUse.getActions(), ActionCloneStress.class);
