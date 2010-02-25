@@ -33,7 +33,7 @@ public class GoalListTablePanel extends ObjectListTablePanel
 	{
 		super(mainWindowToUse, new GoalListTableModel(mainWindowToUse.getProject(), nodeRef), new StaticPicker(nodeRef));
 		
-		addUnknownTypeOfButton(ActionCreateGoal.class, getParentPicker());
+		addButton(ActionCreateGoal.class, getParentPicker());
 		addButton(ActionDeleteGoal.class);
 		addButton(ActionCloneGoal.class);
 	}
