@@ -33,6 +33,7 @@ import org.miradi.views.diagram.CreateAnnotationDoer;
 
 public class CreateStressFromKeaDoer extends CreateAnnotationDoer
 {
+	@Override
 	public boolean isAvailable() 
 	{
 		if (!super.isAvailable())
@@ -48,6 +49,7 @@ public class CreateStressFromKeaDoer extends CreateAnnotationDoer
 		return true;
 	}
 	
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if (!isAvailable())
@@ -58,6 +60,7 @@ public class CreateStressFromKeaDoer extends CreateAnnotationDoer
 			super.doIt();
 	}
 	
+	@Override
 	protected void doExtraWork(ORef newlyCreatedObjectRef) throws Exception
 	{
 		String labelFromKea = getLabelForStress();
@@ -73,6 +76,7 @@ public class CreateStressFromKeaDoer extends CreateAnnotationDoer
 		return "[" + getAnnotationToClone().getLabel() + "]";
 	}
 	
+	@Override
 	protected ORef createObject() throws CommandFailedException
 	{
 		CommandCreateObject create = new CommandCreateObject(getAnnotationType());
@@ -80,11 +84,13 @@ public class CreateStressFromKeaDoer extends CreateAnnotationDoer
 		return create.getObjectRef();
 	}
 
+	@Override
 	public String getAnnotationListTag()
 	{
 		return Target.TAG_STRESS_REFS;
 	}
 
+	@Override
 	public int getAnnotationType()
 	{
 		return Stress.getObjectType();
