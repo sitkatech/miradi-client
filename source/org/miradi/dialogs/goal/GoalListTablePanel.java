@@ -30,13 +30,10 @@ public class GoalListTablePanel extends ObjectListTablePanel
 {
 	public GoalListTablePanel(MainWindow mainWindowToUse, ORef nodeRef)
 	{
-		super(mainWindowToUse, new GoalListTableModel(mainWindowToUse.getProject(), nodeRef), 
-				buttonActionClasses);
+		super(mainWindowToUse, new GoalListTableModel(mainWindowToUse.getProject(), nodeRef));
+		
+		addButton(mainWindowToUse.getActions(), ActionCreateGoal.class);
+		addButton(mainWindowToUse.getActions(), ActionDeleteGoal.class);
+		addButton(mainWindowToUse.getActions(), ActionCloneGoal.class);
 	}
-	
-	static Class[] buttonActionClasses = new Class[] {
-		ActionCreateGoal.class,
-		ActionDeleteGoal.class,
-		ActionCloneGoal.class
-	};
 }
