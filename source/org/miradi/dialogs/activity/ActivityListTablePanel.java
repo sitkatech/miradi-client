@@ -30,12 +30,13 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Strategy;
+import org.miradi.views.umbrella.StaticPicker;
 
 public class ActivityListTablePanel extends ObjectListTablePanel
 {
 	public ActivityListTablePanel(MainWindow mainWindowToUse, ORefList selectedHierarchy)
 	{
-		super(mainWindowToUse, new ActivityListTableModel(mainWindowToUse.getProject(), selectedHierarchy));
+		super(mainWindowToUse, new ActivityListTableModel(mainWindowToUse.getProject(), selectedHierarchy), new StaticPicker(selectedHierarchy));
 		
 		addButton(mainWindowToUse.getActions(), ActionCreateActivity.class);
 		addButton(mainWindowToUse.getActions(), ActionDeleteActivity.class);

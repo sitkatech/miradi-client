@@ -25,12 +25,13 @@ import org.miradi.actions.ActionDeleteObjective;
 import org.miradi.dialogs.base.ObjectListTablePanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.views.umbrella.StaticPicker;
 
 public class ObjectiveListTablePanel extends ObjectListTablePanel
 {
 	public ObjectiveListTablePanel(MainWindow mainWindowToUse, ORef nodeRef)
 	{
-		super(mainWindowToUse, new ObjectiveListTableModel(mainWindowToUse.getProject(), nodeRef), DEFAULT_SORT_COLUMN);
+		super(mainWindowToUse, new ObjectiveListTableModel(mainWindowToUse.getProject(), nodeRef), new StaticPicker(nodeRef), DEFAULT_SORT_COLUMN);
 		
 		addButton(mainWindowToUse.getActions(), ActionCreateObjective.class);
 		addButton(mainWindowToUse.getActions(), ActionDeleteObjective.class);

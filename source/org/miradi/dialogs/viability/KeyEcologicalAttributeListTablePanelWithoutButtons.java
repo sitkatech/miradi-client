@@ -23,11 +23,13 @@ import org.miradi.dialogs.base.ObjectListTable;
 import org.miradi.dialogs.base.ObjectListTablePanel;
 import org.miradi.dialogs.base.ObjectTableModel;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.views.umbrella.StaticPicker;
 
 public class KeyEcologicalAttributeListTablePanelWithoutButtons extends	ObjectListTablePanel
 {
-	public KeyEcologicalAttributeListTablePanelWithoutButtons(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
+	public KeyEcologicalAttributeListTablePanelWithoutButtons(MainWindow mainWindowToUse, ObjectTableModel modelToUse, ORef nodeRef)
 	{
-		super(mainWindowToUse, new ObjectListTable(mainWindowToUse, modelToUse));
+		super(mainWindowToUse, new ObjectListTable(mainWindowToUse, modelToUse), new StaticPicker(nodeRef));
 	}
 }
