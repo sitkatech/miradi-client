@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-25 16:53-0600\n"
+"POT-Creation-Date: 2010-02-25 16:57-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -624,11 +624,11 @@ msgstr "标签"
 msgid "Label|New Group Box"
 msgstr "新的组合框 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:57
+#: Miradi/source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:59
 msgid "Choose Key Ecological Attribute to Create from"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:71
+#: Miradi/source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:74
 msgid "[NOT SPECIFIED]"
 msgstr "[未指定的] \t\t"
 
