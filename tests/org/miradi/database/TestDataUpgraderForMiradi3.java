@@ -67,20 +67,37 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 	public void testRemoveEmptyMethodsForProjectWithConProId() throws Exception
 	{
 		File jsonDir = createJsonDir();
-		
-		String xenoDataStringWithProjectId = "{\"AssignmentIds\":\"\",\"TimeStampModified\":\"1266952560931\",\"ExpenseRefs\":\"\",\"Label\":\"\",\"Id\":200,\"ProgressReportRefs\":\"\",\"ProjectId\":\"726\"}";
-		final int XENODATA_TYPE = 44;
-		createAndPopulateObjectDir(jsonDir, XENODATA_TYPE, xenoDataStringWithProjectId);
-		
-		String projectMetadataStringWithXenodata = "{\"FullTimeEmployeeDaysPerYear\":\"\",\"NextSteps\":\"\",\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"2010-02-23\",\"SiteMapReference\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"ProtectedAreaCategoryNotes\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"Arial\",\"ProtectedAreaCategories\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"1\",\"AssignmentIds\":\"\",\"DiagramFontSize\":\"12\",\"ProjectLatitude\":\"0.0\",\"TNC.OperatingUnitList\":\"\",\"CurrencyType\":\"\",\"LocationComments\":\"\",\"TargetMode\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"ProjectStatus\":\"\",\"OtherOrgProjectNumber\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"SocialContext\":\"\",\"ExpenseRefs\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"ProgressReportRefs\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"ProjectScope\":\"\",\"OtherOrgRelatedProjects\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"HumanPopulation\":\"\",\"DataEffectiveDate\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"HumanPopulationNotes\":\"\",\"ShortProjectScope\":\"\",\"TNC.MarineEcoRegion\":\"\",\"TimeStampModified\":\"1266952560987\",\"ProjectAreaNote\":\"\",\"XenodataRefs\":\"{\\\"StringRefMap\\\":{\\\"ConPro\\\":\\\"{\\\\\\\"ObjectType\\\\\\\":44,\\\\\\\"ObjectId\\\\\\\":200}\\\"}}\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\"}";
-		final int PROJECT_METADATA_TYPE = 11;
-		createAndPopulateObjectDir(jsonDir, PROJECT_METADATA_TYPE, projectMetadataStringWithXenodata);
+		addConProId(jsonDir);
 		
 		final int EXPECTED_NUMBER_OF_METHODS_DELETED = 1;
 		verifyDeleteEmptyMethods(jsonDir, EXPECTED_NUMBER_OF_METHODS_DELETED);
 	}
+
+	public void testDeleteEmptySharedMethods() throws Exception
+	{
+		String sharedMethod = "{\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":40,\"Label\":\"\",\"ProgressReportRefs\":\"\"}";
+		Vector<String> singleItemListWithSharedMethod = new Vector<String>();
+		singleItemListWithSharedMethod.add(sharedMethod);
+		
+		String indictor1SharingEmtyMethod = "{\"ThresholdDetails\":\"\",\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"FutureStatusSummary\":\"\",\"ExpenseRefs\":\"\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"\",\"Priority\":\"\",\"Detail\":\"\",\"FutureStatusRating\":\"\",\"TaskIds\":\"{\\\"Ids\\\":[40]}\",\"TimeStampModified\":\"1266951177581\",\"FutureStatusDate\":\"\",\"Label\":\"\",\"Id\":140,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
+		String indictor2SharingEmtyMethod = "{\"ThresholdDetails\":\"\",\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"FutureStatusSummary\":\"\",\"ExpenseRefs\":\"\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"\",\"Priority\":\"\",\"Detail\":\"\",\"FutureStatusRating\":\"\",\"TaskIds\":\"{\\\"Ids\\\":[40]}\",\"TimeStampModified\":\"1266951177581\",\"FutureStatusDate\":\"\",\"Label\":\"\",\"Id\":141,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
+		Vector<String> indicatorSharingMethod = new Vector<String>();
+		indicatorSharingMethod.add(indictor1SharingEmtyMethod);
+		indicatorSharingMethod.add(indictor2SharingEmtyMethod);
+	
+		File jsonDir = createJsonDir();
+		addConProId(jsonDir);
+		
+		final int EXPECTED_NUMBER_OF_METHODS_DELETED = 1;
+		verifyDeleteEmptyMethods(jsonDir, EXPECTED_NUMBER_OF_METHODS_DELETED, indicatorSharingMethod, singleItemListWithSharedMethod);
+	}
 	
 	private void verifyDeleteEmptyMethods(File jsonDir, final int EXPECTED_NUMBER_OF_METHODS_DELETED) throws Exception
+	{
+		verifyDeleteEmptyMethods(jsonDir, EXPECTED_NUMBER_OF_METHODS_DELETED, new Vector(), new Vector());
+	}
+	
+	private void verifyDeleteEmptyMethods(File jsonDir, final int EXPECTED_NUMBER_OF_METHODS_DELETED, Vector<String> indicatorsSharingMethod, Vector<String> sharedMethods) throws Exception
 	{
 		String indictorWithMethods = "{\"ThresholdDetails\":\"\",\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"FutureStatusSummary\":\"\",\"ExpenseRefs\":\"\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"\",\"Priority\":\"\",\"Detail\":\"\",\"FutureStatusRating\":\"\",\"TaskIds\":\"{\\\"Ids\\\":[29,30,31,32,33,34,35,36]}\",\"TimeStampModified\":\"1266951177581\",\"FutureStatusDate\":\"\",\"Label\":\"\",\"Id\":118,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
 		
@@ -96,13 +113,17 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		String methodWithSubTask = "{\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"SubtaskIds\":\"{\\\"Ids\\\":[117]}\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1266947025641\",\"Id\":36,\"Label\":\"\",\"ProgressReportRefs\":\"\"}";
 		
 		final int INDICATOR_TYPE = 8;
-		createAndPopulateObjectDir(jsonDir, INDICATOR_TYPE, indictorWithMethods);
+		Vector<String> indicatorStrings = new Vector<String>();
+		indicatorStrings.add(indictorWithMethods);
+		indicatorStrings.addAll(indicatorsSharingMethod);
+		createAndPopulateObjectDir(jsonDir, INDICATOR_TYPE, indicatorStrings.toArray(new String[0]));
 		
 		final int TASK_TYPE = 3;
 		final String[] methodStrings = new String[]{emptyMethod, methodWithDetails, methodWithShortLabel, methodWithLabel, methodWithProgressReport, methodWithResourceAssignment, methodWithExpenseAssignment, methodWithSubTask, };
 		final String[] taskStrings = new String[]{emptyTask, };
 		Vector<String> allTasks = new Vector<String>();
 		allTasks.addAll(Arrays.asList(methodStrings));
+		allTasks.addAll(sharedMethods);
 		allTasks.addAll(Arrays.asList(taskStrings));
 		
 		createAndPopulateObjectDir(jsonDir, TASK_TYPE, allTasks.toArray(new String[0]));
@@ -114,13 +135,24 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		File manifestFile = new File(taskDir, "manifest");
 		assertTrue("manifest file could not be found?", manifestFile.exists());
 	
-		int expectedTaskCountAfterMigration = taskStrings.length + methodStrings.length - EXPECTED_NUMBER_OF_METHODS_DELETED;
+		int expectedTaskCountAfterMigration = (taskStrings.length + methodStrings.length + sharedMethods.size())- EXPECTED_NUMBER_OF_METHODS_DELETED;
 		ObjectManifest manifestObject = new ObjectManifest(JSONFile.read(manifestFile));
 		assertEquals("manifest has wrong key count?", expectedTaskCountAfterMigration, manifestObject.size());
 		if (EXPECTED_NUMBER_OF_METHODS_DELETED > 1)
 			assertFalse("empty method was not deleted?", manifestObject.has(new BaseId(29)));
 		
 		assertTrue("empty task was deleted?", manifestObject.has(new BaseId(28)));
+	}
+	
+	private void addConProId(File jsonDir) throws Exception
+	{
+		String xenoDataStringWithProjectId = "{\"AssignmentIds\":\"\",\"TimeStampModified\":\"1266952560931\",\"ExpenseRefs\":\"\",\"Label\":\"\",\"Id\":200,\"ProgressReportRefs\":\"\",\"ProjectId\":\"726\"}";
+		final int XENODATA_TYPE = 44;
+		createAndPopulateObjectDir(jsonDir, XENODATA_TYPE, xenoDataStringWithProjectId);
+		
+		String projectMetadataStringWithXenodata = "{\"FullTimeEmployeeDaysPerYear\":\"\",\"NextSteps\":\"\",\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"2010-02-23\",\"SiteMapReference\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"ProtectedAreaCategoryNotes\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"Arial\",\"ProtectedAreaCategories\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"1\",\"AssignmentIds\":\"\",\"DiagramFontSize\":\"12\",\"ProjectLatitude\":\"0.0\",\"TNC.OperatingUnitList\":\"\",\"CurrencyType\":\"\",\"LocationComments\":\"\",\"TargetMode\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"ProjectStatus\":\"\",\"OtherOrgProjectNumber\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"SocialContext\":\"\",\"ExpenseRefs\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"ProgressReportRefs\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"ProjectScope\":\"\",\"OtherOrgRelatedProjects\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"HumanPopulation\":\"\",\"DataEffectiveDate\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"HumanPopulationNotes\":\"\",\"ShortProjectScope\":\"\",\"TNC.MarineEcoRegion\":\"\",\"TimeStampModified\":\"1266952560987\",\"ProjectAreaNote\":\"\",\"XenodataRefs\":\"{\\\"StringRefMap\\\":{\\\"ConPro\\\":\\\"{\\\\\\\"ObjectType\\\\\\\":44,\\\\\\\"ObjectId\\\\\\\":200}\\\"}}\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\"}";
+		final int PROJECT_METADATA_TYPE = 11;
+		createAndPopulateObjectDir(jsonDir, PROJECT_METADATA_TYPE, projectMetadataStringWithXenodata);
 	}
 	
 	public void testEnsureProjectMetadataRefersToCorrectXenodaForEmptyProject() throws Exception
