@@ -28,11 +28,9 @@ public class TaggedObjectSetPoolTablePanel extends ObjectTablePanelWithCreateAnd
 {
 	public TaggedObjectSetPoolTablePanel(MainWindow mainWindowToUse, TaggedObjectSetPoolTable poolTable)
 	{
-		super(mainWindowToUse, poolTable, mainWindowToUse.getActions(), buttons);
+		super(mainWindowToUse, poolTable);
+		
+		addButton(mainWindowToUse.getActions(), ActionCreateTaggedObjectSet.class);
+		addButton(mainWindowToUse.getActions(), ActionDeleteTaggedObjectSet.class);
 	}
-	
-	private static final Class[] buttons = new Class[]{
-		ActionCreateTaggedObjectSet.class,
-		ActionDeleteTaggedObjectSet.class,
-	};
 }
