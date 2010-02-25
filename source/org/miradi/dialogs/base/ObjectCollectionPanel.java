@@ -61,6 +61,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 	}
 	
 	
+	@Override
 	public void dispose()
 	{
 		getProject().removeCommandExecutedListener(this);
@@ -107,11 +108,13 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		return component;
 	}
 	
+	@Override
 	public void becomeActive()
 	{
 		getPicker().becomeActive();
 	}
 
+	@Override
 	public void becomeInactive()
 	{
 		getPicker().becomeInactive();
