@@ -36,7 +36,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.StressBasedThreatRatingQuestionPopupEditorComponent;
 
-public class StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory extends AbstractCellEditor implements TableCellEditor, TableCellRenderer
+public class StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory extends AbstractCellEditor implements TableCellEditor, TableCellRenderer, TableCellPreferredHeightProvider
 {
 	public StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory(Project projectToUse, ChoiceQuestion questionToUse) throws Exception 
 	{
@@ -82,6 +82,11 @@ public class StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory ex
 	private StressBasedThreatRatingQuestionPopupEditorComponent createComponent(Project project, ChoiceQuestion question)	throws Exception
 	{
 		return new StressBasedThreatRatingQuestionPopupEditorComponent(project, question);
+	}
+	
+	public int getPreferredHeight(JTable table, int row, int column, Object value)
+	{
+		return getTableCellRendererComponent(table, value, false, false, row, column).getPreferredSize().height;
 	}
 	
 	private StressBasedThreatRatingQuestionPopupEditorComponent questionEditor;
