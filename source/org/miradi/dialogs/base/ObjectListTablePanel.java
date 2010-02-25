@@ -37,9 +37,4 @@ abstract public class ObjectListTablePanel extends ObjectTablePanelWithCreateAnd
 	{
 		super(mainWindowToUse, table);
 	}
-	
-	public ObjectListTablePanel(MainWindow mainWindowToUse, ObjectListTable table, Class[] buttonActionClasses)
-	{
-		super(mainWindowToUse, table, mainWindowToUse.getActions(), buttonActionClasses);
-	}
 }
