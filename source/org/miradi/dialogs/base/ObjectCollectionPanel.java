@@ -86,6 +86,12 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		return propertiesPanel;
 	}
 	
+	protected void addObjectActionButton(Class objectActionClass, ObjectPicker pickerToUse)
+	{
+		ObjectsAction action = getActions().getObjectsAction(objectActionClass);
+		addObjectsActionButton(action, pickerToUse);
+	}
+	
 	//TODO need to remove this class,  Make sure all arguments into this method are of type objectsAction.
 	protected void addUnknownTypeOfButton(Class actionClass)
 	{
@@ -94,12 +100,6 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 			addObjectsActionButton((ObjectsAction) action, component);
 		else
 			addButton(new PanelButton(action));
-	}
-	
-	protected void addObjectActionButton(Class objectActionClass, ObjectPicker pickerToUse)
-	{
-		ObjectsAction action = getActions().getObjectsAction(objectActionClass);
-		addObjectsActionButton(action, pickerToUse);
 	}
 	
 	private void addObjectsActionButton(ObjectsAction action, ObjectPicker pickerToUse)
