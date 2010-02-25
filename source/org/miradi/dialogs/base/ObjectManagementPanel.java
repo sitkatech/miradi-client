@@ -24,7 +24,6 @@ import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
-import org.miradi.actions.ObjectsAction;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
@@ -76,11 +75,6 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 			propertiesPanel.becomeInactive();
 	}
 
-	public void addTablePanelButton(ObjectsAction action)
-	{
-		listComponent.addButton(action);
-	}
-	
 	public MainWindow getMainWindow()
 	{
 		return mainWindow;
