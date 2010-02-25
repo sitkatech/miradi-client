@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-22 11:53-0600\n"
+"POT-Creation-Date: 2010-02-25 16:53-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7323,10 +7323,6 @@ msgstr "标题|报告模板属性"
 #: Miradi/source/org/miradi/dialogs/groupboxLink/GroupBoxLinkPropertiesPanel.java:62
 msgid "Group Box Link Properties"
 msgstr "组合框链接属性"
-
-#: Miradi/source/org/miradi/dialogs/groupboxLink/GroupBoxLinkManagementPanel.java:49
-msgid "Tab|Group Box Link"
-msgstr "组合框链接"
 
 #: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:66
 msgid "Title|Objective Properties"
@@ -27407,6 +27403,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Tab|Group Box Link"
+#~ msgstr "组合框链接"
 
 #~ msgid "Choose Goal to Clone"
 #~ msgstr "选择要克隆的总目标 \t\t"
