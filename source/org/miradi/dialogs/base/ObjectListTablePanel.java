@@ -28,6 +28,11 @@ abstract public class ObjectListTablePanel extends ObjectTablePanelWithCreateAnd
 		this(mainWindowToUse, new ObjectListTable(mainWindowToUse, model), buttonActionClasses);
 	}
 	
+	public ObjectListTablePanel(MainWindow mainWindowToUse, ObjectTableModel model)
+	{
+		this(mainWindowToUse, new ObjectListTable(mainWindowToUse, model));
+	}
+	
 	public ObjectListTablePanel(MainWindow mainWindowToUse, ObjectTableModel model, Class[] buttonActionClasses, int sortColumn)
 	{
 		this(mainWindowToUse, new ObjectListTable(mainWindowToUse, model, sortColumn), buttonActionClasses);
