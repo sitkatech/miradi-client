@@ -31,14 +31,11 @@ public class StressListTablePanel extends ObjectListTablePanel
 {
 	public StressListTablePanel(MainWindow mainWindowToUse, ORef nodeRef)
 	{
-		super(mainWindowToUse, new StressListTableModel(mainWindowToUse.getProject(), nodeRef), 
-				buttonActionClasses);
+		super(mainWindowToUse, new StressListTableModel(mainWindowToUse.getProject(), nodeRef));
+		
+		addButton(mainWindowToUse.getActions(), ActionCreateStress.class);
+		addButton(mainWindowToUse.getActions(), ActionCloneStress.class);
+		addButton(mainWindowToUse.getActions(), ActionCreateStressFromKea.class);
+		addButton(mainWindowToUse.getActions(), ActionDeleteStress.class);
 	}
-	
-	static Class[] buttonActionClasses = new Class[] {
-		ActionCreateStress.class,
-		ActionCloneStress.class,
-		ActionCreateStressFromKea.class,
-		ActionDeleteStress.class,
-	};
 }
