@@ -19,10 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
-import org.miradi.actions.Actions;
-import org.miradi.actions.EAMAction;
-import org.miradi.actions.ObjectsAction;
-import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.main.MainWindow;
 
 public class ObjectTablePanelWithCreateAndDelete extends ObjectTablePanel
@@ -31,19 +27,4 @@ public class ObjectTablePanelWithCreateAndDelete extends ObjectTablePanel
 	{
 		super(mainWindowToUse, tableToUse);
 	}
-	
-	public ObjectTablePanelWithCreateAndDelete(MainWindow mainWindowToUse, ObjectTable tableToUse, Actions actions, Class[] buttonActionClasses)
-	{
-		this(mainWindowToUse, tableToUse);
-
-		for (int i=0; i<buttonActionClasses.length; ++i)
-		{
-			EAMAction action = actions.get(buttonActionClasses[i]);
-			if (action.isObjectAction())
-				addButton((ObjectsAction) action);
-			else
-				addButton(new PanelButton(action));
-		}
-	}
-	
 }
