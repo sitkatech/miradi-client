@@ -29,6 +29,11 @@ import org.miradi.objects.BaseObject;
 
 public class StaticPicker implements ObjectPicker
 {
+	public StaticPicker(ORef selectedRef)
+	{
+		this(new ORefList(selectedRef));
+	}
+	
 	public StaticPicker(ORefList selectedRefsToUse)
 	{
 		selectedRefs = selectedRefsToUse;
