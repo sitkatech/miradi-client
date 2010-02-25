@@ -21,7 +21,7 @@ package org.miradi.dialogs.base;
 
 import org.miradi.main.MainWindow;
 
-abstract public class ObjectListTablePanel extends ObjectTablePanelWithCreateAndDelete
+abstract public class ObjectListTablePanel extends ObjectTablePanel
 {
 	public ObjectListTablePanel(MainWindow mainWindowToUse, ObjectTableModel model)
 	{
