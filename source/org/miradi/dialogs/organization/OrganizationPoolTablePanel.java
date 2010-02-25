@@ -21,10 +21,10 @@ package org.miradi.dialogs.organization;
 
 import org.miradi.actions.ActionCreateOrganization;
 import org.miradi.actions.ActionDeleteOrganization;
-import org.miradi.dialogs.base.ObjectTablePanel;
+import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.main.MainWindow;
 
-public class OrganizationPoolTablePanel extends ObjectTablePanel
+public class OrganizationPoolTablePanel extends ObjectPoolTablePanel
 {
 	public OrganizationPoolTablePanel(MainWindow mainWindowToUse) throws Exception
 	{
