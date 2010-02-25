@@ -100,6 +100,12 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 			addButton(new PanelButton(action));
 	}
 	
+	protected void addButton(Class objectActionClass, ObjectPicker pickerToUse)
+	{
+		EAMAction action = getActions().get(objectActionClass);
+		addButton((ObjectsAction) action, pickerToUse);
+	}
+	
 	private void addButton(ObjectsAction action, ObjectPicker pickerToUse)
 	{
 		addButton(createObjectsActionButton(action, pickerToUse));
