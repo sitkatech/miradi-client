@@ -25,7 +25,10 @@ import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 
 import org.martus.swing.UiButton;
+import org.miradi.actions.Actions;
+import org.miradi.actions.EAMAction;
 import org.miradi.actions.ObjectsAction;
+import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
@@ -82,10 +85,29 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 	{
 		return propertiesPanel;
 	}
-
+	
+	protected void addButton(Actions actions, Class actionClass)
+	{
+		addButton(actions, actionClass, component);
+	}
+	
+	protected void addButton(Actions actions, Class actionClass, ObjectPicker pickerToUse)
+	{
+		EAMAction action = actions.get(actionClass);
+		if (action.isObjectAction())
+			addButton((ObjectsAction) action);
+		else
+			addButton(new PanelButton(action));
+	}
+	
 	public void addButton(ObjectsAction action)
 	{
-		addButton(createObjectsActionButton(action, component));
+		addButton(action, component);
+	}
+	
+	public void addButton(ObjectsAction action, ObjectPicker pickerToUse)
+	{
+		addButton(createObjectsActionButton(action, pickerToUse));
 	}
 	
 	public void addButton(UiButton button)
