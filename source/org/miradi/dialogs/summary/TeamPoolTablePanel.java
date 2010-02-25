@@ -21,12 +21,12 @@ package org.miradi.dialogs.summary;
 
 import org.miradi.actions.ActionDeleteTeamMember;
 import org.miradi.actions.ActionTeamCreateMember;
-import org.miradi.dialogs.base.ObjectTablePanelWithCreateAndDelete;
+import org.miradi.dialogs.base.ObjectTablePanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.ProjectResource;
 
-public class TeamPoolTablePanel extends ObjectTablePanelWithCreateAndDelete
+public class TeamPoolTablePanel extends ObjectTablePanel
 {
 	public TeamPoolTablePanel(MainWindow mainWindowToUse)
 	{

@@ -22,10 +22,10 @@ package org.miradi.dialogs.reportTemplate;
 import org.miradi.actions.ActionCreateReportTemplate;
 import org.miradi.actions.ActionDeleteReportTemplate;
 import org.miradi.actions.ActionRunReportTemplate;
-import org.miradi.dialogs.base.ObjectTablePanelWithCreateAndDelete;
+import org.miradi.dialogs.base.ObjectTablePanel;
 import org.miradi.main.MainWindow;
 
-public class ReportTemplatePoolTablePanel extends ObjectTablePanelWithCreateAndDelete
+public class ReportTemplatePoolTablePanel extends ObjectTablePanel
 {
 	public ReportTemplatePoolTablePanel(MainWindow mainWindowToUse)
 	{
