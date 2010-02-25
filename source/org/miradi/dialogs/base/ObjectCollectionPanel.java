@@ -86,6 +86,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		return propertiesPanel;
 	}
 	
+	//TODO need to remove this class,  Make sure all arguments into this method are of type objectsAction.
 	protected void addUnknownTypeOfButton(Class actionClass)
 	{
 		EAMAction action = getActions().get(actionClass);
