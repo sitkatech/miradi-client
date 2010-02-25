@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-25 16:57-0600\n"
+"POT-Creation-Date: 2010-02-25 17:00-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -644,11 +644,11 @@ msgstr "Tag"
 msgid "Label|New Group Box"
 msgstr "Kotak Grup Baru "
 
-#: Miradi/source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:59
+#: Miradi/source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:60
 msgid "Choose Key Ecological Attribute to Create from"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:74
+#: Miradi/source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:75
 msgid "[NOT SPECIFIED]"
 msgstr "[TIDAK TERSPESIFIKASI] "
 
