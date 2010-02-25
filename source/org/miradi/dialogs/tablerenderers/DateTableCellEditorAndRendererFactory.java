@@ -30,7 +30,7 @@ import javax.swing.table.TableCellRenderer;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.DateEditorComponent;
 
-public class DateTableCellEditorAndRendererFactory extends AbstractCellEditor implements TableCellEditor, TableCellRenderer
+public class DateTableCellEditorAndRendererFactory extends AbstractCellEditor implements TableCellEditor, TableCellRenderer, TableCellPreferredHeightProvider 
 {
 	public DateTableCellEditorAndRendererFactory() 
 	{
@@ -60,6 +60,12 @@ public class DateTableCellEditorAndRendererFactory extends AbstractCellEditor im
 		
 		return dateRendererComponent;
 	}
+	
+	public int getPreferredHeight(JTable table, int row, int column, Object value)
+	{
+		return dateRendererComponent.getPreferredSize().height;
+	}
+
 	
 	private DateEditorComponent dateRendererComponent;
 	private DateEditorComponent dateEditorComponent;
