@@ -88,14 +88,9 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 	
 	protected void addUnknownTypeOfButton(Class actionClass)
 	{
-		addUnknownTypeOfButton(actionClass, component);
-	}
-	
-	protected void addUnknownTypeOfButton(Class actionClass, ObjectPicker pickerToUse)
-	{
 		EAMAction action = getActions().get(actionClass);
 		if (action.isObjectAction())
-			addButton((ObjectsAction) action, pickerToUse);
+			addButton((ObjectsAction) action, component);
 		else
 			addButton(new PanelButton(action));
 	}
