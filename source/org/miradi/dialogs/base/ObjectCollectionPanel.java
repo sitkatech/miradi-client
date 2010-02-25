@@ -102,8 +102,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 			addNonObjectActionButton(action);
 	}
 
-
-	private void addNonObjectActionButton(EAMAction action)
+	protected void addNonObjectActionButton(EAMAction action)
 	{
 		addButton(new PanelButton(action));
 	}
