@@ -21,10 +21,10 @@ package org.miradi.dialogs.taggedObjectSet;
 
 import org.miradi.actions.ActionCreateTaggedObjectSet;
 import org.miradi.actions.ActionDeleteTaggedObjectSet;
-import org.miradi.dialogs.base.ObjectTablePanel;
+import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.main.MainWindow;
 
-public class TaggedObjectSetPoolTablePanel extends ObjectTablePanel
+public class TaggedObjectSetPoolTablePanel extends ObjectPoolTablePanel
 {
 	public TaggedObjectSetPoolTablePanel(MainWindow mainWindowToUse, TaggedObjectSetPoolTable poolTable)
 	{
