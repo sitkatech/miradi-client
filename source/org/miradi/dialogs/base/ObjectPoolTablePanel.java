@@ -30,8 +30,13 @@ abstract public class ObjectPoolTablePanel extends ObjectTablePanel
 	
 	public ObjectPoolTablePanel(MainWindow mainWindowToUse, int objectTypeToUse, ObjectPoolTableModel model, int sortColumnIndex)
 	{
-		super(mainWindowToUse, new ObjectPoolTable(mainWindowToUse, model, sortColumnIndex));
-	}	
+		this(mainWindowToUse, new ObjectPoolTable(mainWindowToUse, model, sortColumnIndex));
+	}
+	
+	public ObjectPoolTablePanel(MainWindow mainWindowToUse, ObjectPoolTable poolTable)
+	{
+		super(mainWindowToUse, poolTable);
+	}
 
 	private static final int DEFAULT_SORT_COLUMN = 0;
 }
