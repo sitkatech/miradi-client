@@ -35,8 +35,8 @@ public class StressListTablePanel extends ObjectListTablePanel
 		super(mainWindowToUse, new StressListTableModel(mainWindowToUse.getProject(), nodeRef), new StaticPicker(nodeRef));
 		
 		addButton(ActionCreateStress.class, getParentPicker());
-		addButton(ActionCloneStress.class);
-		addButton(ActionCreateStressFromKea.class);
-		addButton(ActionDeleteStress.class);
+		addUnknownTypeOfButton(ActionCloneStress.class);
+		addUnknownTypeOfButton(ActionCreateStressFromKea.class);
+		addUnknownTypeOfButton(ActionDeleteStress.class);
 	}
 }

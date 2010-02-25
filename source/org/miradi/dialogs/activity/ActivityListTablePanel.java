@@ -39,10 +39,10 @@ public class ActivityListTablePanel extends ObjectListTablePanel
 		super(mainWindowToUse, new ActivityListTableModel(mainWindowToUse.getProject(), selectedHierarchy), new StaticPicker(selectedHierarchy));
 		
 		addButton(ActionCreateActivity.class, getParentPicker());
-		addButton(ActionDeleteActivity.class);
-		addButton(ActionShareActivity.class);
-		addButton(ActionActivityMoveUp.class);
-		addButton(ActionActivityMoveDown.class);
+		addUnknownTypeOfButton(ActionDeleteActivity.class);
+		addUnknownTypeOfButton(ActionShareActivity.class);
+		addUnknownTypeOfButton(ActionActivityMoveUp.class);
+		addUnknownTypeOfButton(ActionActivityMoveDown.class);
 	}
 	
 	@Override
