@@ -92,7 +92,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		addObjectsActionButton(action, pickerToUse);
 	}
 	
-	//TODO need to remove this class,  Make sure all arguments into this method are of type objectsAction.
+	//TODO Should call specific methods to add OA or NonOA buttons
 	protected void addUnknownTypeOfButton(Class actionClass)
 	{
 		EAMAction action = getActions().get(actionClass);
