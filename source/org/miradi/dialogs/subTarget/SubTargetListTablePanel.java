@@ -29,12 +29,9 @@ public class SubTargetListTablePanel extends ObjectListTablePanel
 {
 	public SubTargetListTablePanel(MainWindow mainWindowToUse, ORef nodeRef)
 	{
-		super(mainWindowToUse, new SubTargetListTableModel(mainWindowToUse.getProject(), nodeRef),  
-				buttonActionClasses);
+		super(mainWindowToUse, new SubTargetListTableModel(mainWindowToUse.getProject(), nodeRef));
+		
+		addButton(mainWindowToUse.getActions(), ActionCreateSubTarget.class);
+		addButton(mainWindowToUse.getActions(), ActionDeleteSubTarget.class);
 	}
-	
-	static Class[] buttonActionClasses = new Class[] {
-		ActionCreateSubTarget.class,
-		ActionDeleteSubTarget.class,
-	};
 }
