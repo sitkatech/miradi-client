@@ -30,6 +30,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -52,8 +53,7 @@ public class RemoveEmptyMethodsCreatedWhenImportingContproProjectMigration
 		if (!hasConproProjectId())
 			return;
 		
-		ObjectManifest indicatorManifestObject = new ObjectManifest(JSONFile.read(getIndicatorManifestFile()));
-		BaseId[] indicatorIds = indicatorManifestObject.getAllKeys();
+		BaseId[] indicatorIds = getAllIndicatorIds();
 		for (int index = 0; index < indicatorIds.length; ++index)
 		{
 			BaseId indicatorId = indicatorIds[index];
@@ -103,11 +103,34 @@ public class RemoveEmptyMethodsCreatedWhenImportingContproProjectMigration
 			ORef methodRef = methodRefs.get(index);
 			File methodJsonFile = new File(getTaskDir(), methodRef.getObjectId().toString());
 			EnhancedJsonObject methodJson = DataUpgrader.readFile(methodJsonFile);
-			if (isMethodEmpty(methodJson))
+			if (isMethodEmpty(methodJson) && !isMethodShared(methodRef))
 				emptyMethodRefs.add(methodRef);
 		}
 		
 		return emptyMethodRefs;
+	}
+
+	private static boolean isMethodShared(ORef methodRef) throws Exception
+	{
+		ORefSet indicatorReferrerRefs = new ORefSet();
+		BaseId[] indicatorIds = getAllIndicatorIds();
+		for (int index = 0; index < indicatorIds.length; ++index)
+		{
+			BaseId indicatorId = indicatorIds[index];
+			File indicatorJsonFile = new File(getIndicatorDir(), Integer.toString(indicatorId.asInt()));
+			EnhancedJsonObject indicatorJson = DataUpgrader.readFile(indicatorJsonFile);
+			ORefList methodRefs = getMethodRefs(indicatorJson);
+			if (methodRefs.contains(methodRef))
+				indicatorReferrerRefs.add(new ORef(INDICATOR_TYPE, indicatorId));
+		}
+		
+		return indicatorReferrerRefs.size() > 1;
+	}
+
+	private static BaseId[] getAllIndicatorIds() throws Exception
+	{
+		ObjectManifest indicatorManifestObject = new ObjectManifest(JSONFile.read(getIndicatorManifestFile()));
+		return indicatorManifestObject.getAllKeys();
 	}
 
 	private static boolean isMethodEmpty(EnhancedJsonObject methodJson)
