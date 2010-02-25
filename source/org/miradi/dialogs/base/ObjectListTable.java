@@ -51,6 +51,7 @@ public class ObjectListTable extends ObjectTable
 		return (ObjectListTableModel)getModel();
 	}
 	
+	@Override
 	public ORefList[] getSelectedHierarchies()
 	{
 		ORefList[] superHierarchies = super.getSelectedHierarchies();
@@ -66,6 +67,7 @@ public class ObjectListTable extends ObjectTable
 		return superHierarchies;
 	}
 	
+	@Override
 	public void updateTableAfterCommand(CommandSetObjectData cmd)
 	{
 		super.updateTableAfterCommand(cmd);
@@ -75,6 +77,7 @@ public class ObjectListTable extends ObjectTable
 		updateTableIfRowWasAddedOrDeleted(cmd.getObjectType(), cmd.getObjectId(), cmd.getFieldTag(), oldData, newData);
 	}
 	
+	@Override
 	void updateTableAfterUndo(CommandSetObjectData cmd)
 	{
 		super.updateTableAfterUndo(cmd);
