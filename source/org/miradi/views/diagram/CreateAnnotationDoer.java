@@ -36,11 +36,13 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 public abstract class CreateAnnotationDoer extends ObjectsDoer
 {	
+	@Override
 	public boolean isAvailable()
 	{
 		return (getSelectedParentFactor() != null);
 	}
 
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if(!isAvailable())
