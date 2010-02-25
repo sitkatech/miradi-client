@@ -51,6 +51,7 @@ public class ThreatStressRatingTable extends EditableObjectTable
 		return (ThreatStressRatingTableModel) getModel();
 	}
 	
+	@Override
 	public void rebuildColumnEditorsAndRenderers() throws Exception
 	{
 		ThreatStressRatingTableModel threatStressRatingTableModel = getThreatStressRatingTableModel();
