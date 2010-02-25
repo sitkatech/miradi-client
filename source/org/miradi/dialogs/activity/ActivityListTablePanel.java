@@ -24,19 +24,18 @@ import org.miradi.actions.ActionActivityMoveUp;
 import org.miradi.actions.ActionCreateActivity;
 import org.miradi.actions.ActionDeleteActivity;
 import org.miradi.actions.ActionShareActivity;
-import org.miradi.dialogs.base.ObjectListTablePanelWithParent;
+import org.miradi.dialogs.base.ObjectListTablePanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Strategy;
 
-public class ActivityListTablePanel extends ObjectListTablePanelWithParent
+public class ActivityListTablePanel extends ObjectListTablePanel
 {
 	public ActivityListTablePanel(MainWindow mainWindowToUse, ORefList selectedHierarchy)
 	{
-		super(mainWindowToUse, ObjectType.TASK, new ActivityListTableModel(mainWindowToUse.getProject(), selectedHierarchy));
+		super(mainWindowToUse, new ActivityListTableModel(mainWindowToUse.getProject(), selectedHierarchy));
 		
 		addButton(mainWindowToUse.getActions(), ActionCreateActivity.class);
 		addButton(mainWindowToUse.getActions(), ActionDeleteActivity.class);
