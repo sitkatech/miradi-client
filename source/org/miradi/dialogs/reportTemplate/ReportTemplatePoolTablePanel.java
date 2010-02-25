@@ -29,12 +29,10 @@ public class ReportTemplatePoolTablePanel extends ObjectTablePanelWithCreateAndD
 {
 	public ReportTemplatePoolTablePanel(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, new ReportTemplatePoolTable(mainWindowToUse, new ReportTemplatePoolTableModel(mainWindowToUse.getProject())), mainWindowToUse.getActions(), buttons);
+		super(mainWindowToUse, new ReportTemplatePoolTable(mainWindowToUse, new ReportTemplatePoolTableModel(mainWindowToUse.getProject())));
+		
+		addButton(mainWindowToUse.getActions(), ActionCreateReportTemplate.class);
+		addButton(mainWindowToUse.getActions(), ActionDeleteReportTemplate.class);
+		addButton(mainWindowToUse.getActions(), ActionRunReportTemplate.class);
 	}
-	
-	private static final Class[] buttons = new Class[]{
-		ActionCreateReportTemplate.class,
-		ActionDeleteReportTemplate.class,
-		ActionRunReportTemplate.class,
-	};
 }
