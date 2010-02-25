@@ -86,7 +86,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		return propertiesPanel;
 	}
 	
-	protected void addButton(Class actionClass)
+	protected void addUnknownTypeOfButton(Class actionClass)
 	{
 		addUnknownTypeOfButton(actionClass, component);
 	}

@@ -30,7 +30,7 @@ public class OrganizationPoolTablePanel extends ObjectPoolTablePanel
 	{
 		super(mainWindowToUse, new OrganizationPoolTable(mainWindowToUse, new OrganizationPoolTableModel(mainWindowToUse.getProject())));
 		
-		addButton(ActionCreateOrganization.class);
-		addButton(ActionDeleteOrganization.class);
+		addUnknownTypeOfButton(ActionCreateOrganization.class);
+		addUnknownTypeOfButton(ActionDeleteOrganization.class);
 	}
 }

@@ -31,8 +31,8 @@ public class ReportTemplatePoolTablePanel extends ObjectPoolTablePanel
 	{
 		super(mainWindowToUse, new ReportTemplatePoolTable(mainWindowToUse, new ReportTemplatePoolTableModel(mainWindowToUse.getProject())));
 		
-		addButton(ActionCreateReportTemplate.class);
-		addButton(ActionDeleteReportTemplate.class);
-		addButton(ActionRunReportTemplate.class);
+		addUnknownTypeOfButton(ActionCreateReportTemplate.class);
+		addUnknownTypeOfButton(ActionDeleteReportTemplate.class);
+		addUnknownTypeOfButton(ActionRunReportTemplate.class);
 	}
 }

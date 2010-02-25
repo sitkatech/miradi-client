@@ -30,7 +30,7 @@ public class TaggedObjectSetPoolTablePanel extends ObjectPoolTablePanel
 	{
 		super(mainWindowToUse, poolTable);
 		
-		addButton(ActionCreateTaggedObjectSet.class);
-		addButton(ActionDeleteTaggedObjectSet.class);
+		addUnknownTypeOfButton(ActionCreateTaggedObjectSet.class);
+		addUnknownTypeOfButton(ActionDeleteTaggedObjectSet.class);
 	}
 }

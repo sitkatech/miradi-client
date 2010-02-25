@@ -34,7 +34,7 @@ public class MethodListTablePanel extends ObjectListTablePanel
 		super(mainWindowToUse, new MethodListTableModel(mainWindowToUse.getProject(), selectedHierarchy), new StaticPicker(selectedHierarchy));
 		
 		addButton(ActionCreateMethod.class, getParentPicker());
-		addButton(ActionDeleteMethod.class);
-		addButton(ActionShareMethod.class);
+		addUnknownTypeOfButton(ActionDeleteMethod.class);
+		addUnknownTypeOfButton(ActionShareMethod.class);
 	}
 }

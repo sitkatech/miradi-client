@@ -34,8 +34,8 @@ public class ObjectiveListTablePanel extends ObjectListTablePanel
 		super(mainWindowToUse, new ObjectiveListTableModel(mainWindowToUse.getProject(), nodeRef), new StaticPicker(nodeRef), DEFAULT_SORT_COLUMN);
 		
 		addButton(ActionCreateObjective.class, getParentPicker());
-		addButton(ActionDeleteObjective.class);
-		addButton(ActionCloneObjective.class);
+		addUnknownTypeOfButton(ActionDeleteObjective.class);
+		addUnknownTypeOfButton(ActionCloneObjective.class);
 	}
 	
 	private static final int DEFAULT_SORT_COLUMN = 0;
