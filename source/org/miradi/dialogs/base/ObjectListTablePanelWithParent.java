@@ -27,9 +27,4 @@ public class ObjectListTablePanelWithParent extends ObjectTablePanelWithCreateAn
 	{
 		super(mainWindowToUse, new ObjectTableWithParent(mainWindowToUse, model));
 	}
-	
-	public ObjectListTablePanelWithParent(MainWindow mainWindowToUse, int objectTypeToUse, ObjectListTableModel model, Class[] buttonActionClasses)
-	{
-		super(mainWindowToUse, new ObjectTableWithParent(mainWindowToUse, model), mainWindowToUse.getActions(), buttonActionClasses);
-	}
 }
