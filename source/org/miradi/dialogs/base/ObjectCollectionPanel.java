@@ -92,6 +92,11 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		addObjectsActionButton(action, pickerToUse);
 	}
 	
+	protected void addNonObjectActionButton(EAMAction action)
+	{
+		addButton(new PanelButton(action));
+	}
+	
 	//TODO need to remove this class,  Make sure all arguments into this method are of type objectsAction.
 	protected void addUnknownTypeOfButton(Class actionClass)
 	{
@@ -102,11 +107,6 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 			addNonObjectActionButton(action);
 	}
 
-	protected void addNonObjectActionButton(EAMAction action)
-	{
-		addButton(new PanelButton(action));
-	}
-	
 	private void addObjectsActionButton(ObjectsAction action, ObjectPicker pickerToUse)
 	{
 		addButton(createObjectsActionButton(action, pickerToUse));
