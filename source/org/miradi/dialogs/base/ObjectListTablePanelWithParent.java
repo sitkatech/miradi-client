@@ -25,6 +25,6 @@ public class ObjectListTablePanelWithParent extends ObjectTablePanel
 {
 	public ObjectListTablePanelWithParent(MainWindow mainWindowToUse, int objectTypeToUse, ObjectListTableModel model)
 	{
-		super(mainWindowToUse, new ObjectTableWithParent(mainWindowToUse, model));
+		super(mainWindowToUse, new ObjectListTable(mainWindowToUse, model));
 	}
 }
