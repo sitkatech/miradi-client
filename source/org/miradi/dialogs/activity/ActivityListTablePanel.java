@@ -36,16 +36,14 @@ public class ActivityListTablePanel extends ObjectListTablePanelWithParent
 {
 	public ActivityListTablePanel(MainWindow mainWindowToUse, ORefList selectedHierarchy)
 	{
-		super(mainWindowToUse, ObjectType.TASK, new ActivityListTableModel(mainWindowToUse.getProject(), selectedHierarchy), buttonActionClasses);
+		super(mainWindowToUse, ObjectType.TASK, new ActivityListTableModel(mainWindowToUse.getProject(), selectedHierarchy));
+		
+		addButton(mainWindowToUse.getActions(), ActionCreateActivity.class);
+		addButton(mainWindowToUse.getActions(), ActionDeleteActivity.class);
+		addButton(mainWindowToUse.getActions(), ActionShareActivity.class);
+		addButton(mainWindowToUse.getActions(), ActionActivityMoveUp.class);
+		addButton(mainWindowToUse.getActions(), ActionActivityMoveDown.class);
 	}
-	
-	static Class[] buttonActionClasses = new Class[] {
-		ActionCreateActivity.class,
-		ActionDeleteActivity.class,
-		ActionShareActivity.class,
-		ActionActivityMoveUp.class,
-		ActionActivityMoveDown.class,
-	};
 	
 	@Override
 	public void commandExecuted(CommandExecutedEvent event)
