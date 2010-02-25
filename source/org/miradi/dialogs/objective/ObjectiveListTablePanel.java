@@ -30,15 +30,12 @@ public class ObjectiveListTablePanel extends ObjectListTablePanel
 {
 	public ObjectiveListTablePanel(MainWindow mainWindowToUse, ORef nodeRef)
 	{
-		super(mainWindowToUse, new ObjectiveListTableModel(mainWindowToUse.getProject(), nodeRef), 
-				buttonActionClasses, DEFAULT_SORT_COLUMN);
+		super(mainWindowToUse, new ObjectiveListTableModel(mainWindowToUse.getProject(), nodeRef), DEFAULT_SORT_COLUMN);
+		
+		addButton(mainWindowToUse.getActions(), ActionCreateObjective.class);
+		addButton(mainWindowToUse.getActions(), ActionDeleteObjective.class);
+		addButton(mainWindowToUse.getActions(), ActionCloneObjective.class);
 	}
 	
-	static Class[] buttonActionClasses = new Class[] {
-		ActionCreateObjective.class,
-		ActionDeleteObjective.class,
-		ActionCloneObjective.class
-	};
-
 	private static final int DEFAULT_SORT_COLUMN = 0;
 }
