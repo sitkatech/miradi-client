@@ -32,7 +32,7 @@ public class SubTargetListTablePanel extends ObjectListTablePanel
 	{
 		super(mainWindowToUse, new SubTargetListTableModel(mainWindowToUse.getProject(), nodeRef), new StaticPicker(nodeRef));
 		
-		addButton(ActionCreateSubTarget.class, getParentPicker());
+		addUnknownTypeOfButton(ActionCreateSubTarget.class, getParentPicker());
 		addButton(ActionDeleteSubTarget.class);
 	}
 }
