@@ -23,6 +23,11 @@ import org.miradi.main.MainWindow;
 
 public class ObjectListTablePanelWithParent extends ObjectTablePanelWithCreateAndDelete
 {
+	public ObjectListTablePanelWithParent(MainWindow mainWindowToUse, int objectTypeToUse, ObjectListTableModel model)
+	{
+		super(mainWindowToUse, new ObjectTableWithParent(mainWindowToUse, model));
+	}
+	
 	public ObjectListTablePanelWithParent(MainWindow mainWindowToUse, int objectTypeToUse, ObjectListTableModel model, Class[] buttonActionClasses)
 	{
 		super(mainWindowToUse, new ObjectTableWithParent(mainWindowToUse, model), mainWindowToUse.getActions(), buttonActionClasses);

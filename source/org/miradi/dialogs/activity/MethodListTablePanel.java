@@ -31,13 +31,10 @@ public class MethodListTablePanel extends ObjectListTablePanelWithParent
 {
 	public MethodListTablePanel(MainWindow mainWindowToUse, ORefList selectedHierarchy)
 	{
-		super(mainWindowToUse, ObjectType.TASK, new MethodListTableModel(mainWindowToUse.getProject(), selectedHierarchy), buttonActionClasses);
+		super(mainWindowToUse, ObjectType.TASK, new MethodListTableModel(mainWindowToUse.getProject(), selectedHierarchy));
+		
+		addButton(mainWindowToUse.getActions(), ActionCreateMethod.class);
+		addButton(mainWindowToUse.getActions(), ActionDeleteMethod.class);
+		addButton(mainWindowToUse.getActions(), ActionShareMethod.class);
 	}
-	
-	static Class[] buttonActionClasses = new Class[] {
-		ActionCreateMethod.class,
-		ActionDeleteMethod.class,
-		ActionShareMethod.class,
-	};
-
 }
