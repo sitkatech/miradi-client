@@ -20,11 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.viability;
 
 import org.miradi.dialogs.base.ObjectListTable;
+import org.miradi.dialogs.base.ObjectListTablePanel;
 import org.miradi.dialogs.base.ObjectTableModel;
-import org.miradi.dialogs.base.ObjectTablePanel;
 import org.miradi.main.MainWindow;
 
-public class KeyEcologicalAttributeListTablePanelWithoutButtons extends	ObjectTablePanel
+public class KeyEcologicalAttributeListTablePanelWithoutButtons extends	ObjectListTablePanel
 {
 	public KeyEcologicalAttributeListTablePanelWithoutButtons(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
 	{
