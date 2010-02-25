@@ -32,8 +32,8 @@ public class TeamPoolTablePanel extends ObjectPoolTablePanel
 	{
 		super(mainWindowToUse, new TeamPoolTable(mainWindowToUse, new TeamPoolTableModel(mainWindowToUse.getProject())));
 		
-		addButton(mainWindowToUse.getActions(), ActionTeamCreateMember.class);
-		addButton(mainWindowToUse.getActions(), ActionDeleteTeamMember.class);
+		addButton(ActionTeamCreateMember.class);
+		addButton(ActionDeleteTeamMember.class);
 	}
 	
 	@Override
