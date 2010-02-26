@@ -26,26 +26,27 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
 
-public class TargetPropertiesKeaViabilityTreeManagementPanel extends
-		TargetViabilityManagementPanel
+public class TargetPropertiesKeaViabilityTreeManagementPanel extends TargetViabilityManagementPanel
 {
 	public TargetPropertiesKeaViabilityTreeManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef factorRef) throws Exception
 	{
 		super(mainWindow, splitPositionSaverToUse, factorRef);
+		
 		panelDescription = PANEL_DESCRIPTION_VIABILITY;
 		icon = new KeyEcologicalAttributeIcon();
 	}
 	
+	@Override
 	public String getSplitterDescription()
 	{
 		return PANEL_DESCRIPTION_VIABILITY + SPLITTER_TAG;
 	}
 
+	@Override
 	public Class getJumpActionClass()
 	{
 		return ActionJumpTargetViability3Step.class;
 	}
 	
 	private static String PANEL_DESCRIPTION_VIABILITY = EAM.text("Tab|Viability"); 
-
 }
