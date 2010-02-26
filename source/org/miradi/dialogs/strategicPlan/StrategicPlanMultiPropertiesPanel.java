@@ -36,7 +36,7 @@ public class StrategicPlanMultiPropertiesPanel extends	PlanningTreeMultiProperti
 	}
 	
 	@Override
-	protected AbstractIndicatorPropertiesPanel createIndicatorPropertiesPanel(ObjectPicker objectPickerToUse) throws Exception
+	protected AbstractIndicatorPropertiesPanel createIndicatorPropertiesPanel() throws Exception
 	{
 		return new IndicatorPropertiesPanelWithoutBudgetPanels(getProject());
 	}
