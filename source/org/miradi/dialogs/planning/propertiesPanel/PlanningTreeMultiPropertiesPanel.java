@@ -115,7 +115,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 
 	protected AbstractStrategyPropertiesPanel createStrategyPropertiesPanel(ObjectPicker objectPickerToUse) throws Exception
 	{
-		return new StrategyPropertiesPanel(getMainWindow(), objectPickerToUse);
+		return new StrategyPropertiesPanel(getMainWindow());
 	}
 
 	protected AbstractIndicatorPropertiesPanel createIndicatorPropertiesPanel() throws Exception
