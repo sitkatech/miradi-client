@@ -22,7 +22,6 @@ package org.miradi.views.planning;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.ConfigurablePlanningTreeTablePanel;
-import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.strategicPlan.StrategicPlanMultiPropertiesPanel;
 import org.miradi.main.EAM;
@@ -49,8 +48,7 @@ class ConfigurablePlanningTreeManagementPanel extends PlanningTreeManagementPane
 	public static PlanningTreeManagementPanel createConfigurablePlanningPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		PlanningTreeTablePanel planningTreeTablePanel = ConfigurablePlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
-		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)planningTreeTablePanel.getTree();
-		PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
+		PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, planningTreeTablePanel.getTree());
 		return new ConfigurablePlanningTreeManagementPanel(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
 	}
 

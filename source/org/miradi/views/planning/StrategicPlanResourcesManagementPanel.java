@@ -25,7 +25,6 @@ import org.miradi.dialogs.planning.ProjectResourceCoreRowColumnProvider;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
-import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.ProjectResourceTreeTableModel;
@@ -55,8 +54,7 @@ public class StrategicPlanResourcesManagementPanel extends ProjectResourceManage
 		RowColumnProvider rowColumnProvider = new ProjectResourceCoreRowColumnProvider();
 		PlanningTreeTableModel treeTableModel = ProjectResourceTreeTableModel.createProjectResourceTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider.getColumnListToShow());
 		PlanningTreeTablePanel treeTablePanel = ProjectResourceTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider);
-		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)treeTablePanel.getTree();
-		PlanningTreeMultiPropertiesPanel propertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
+		PlanningTreeMultiPropertiesPanel propertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeTablePanel.getTree());
 		
 		return new StrategicPlanResourcesManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
 	}	

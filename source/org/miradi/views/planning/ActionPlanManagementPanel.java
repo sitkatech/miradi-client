@@ -23,7 +23,6 @@ import javax.swing.Icon;
 
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
-import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.StrategicPlanningTreeTablePanel;
 import org.miradi.dialogs.strategicPlan.StrategicPlanMultiPropertiesPanel;
@@ -57,8 +56,7 @@ class ActionPlanManagementPanel extends PlanningTreeManagementPanel
 	public static ActionPlanManagementPanel createStrategicPlanPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		PlanningTreeTablePanel strategicPlanTreeTablePanel = StrategicPlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
-		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)strategicPlanTreeTablePanel.getTree();
-		PlanningTreeMultiPropertiesPanel strategicPlanPropertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
+		PlanningTreeMultiPropertiesPanel strategicPlanPropertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, strategicPlanTreeTablePanel.getTree());
 		
 		return new ActionPlanManagementPanel(mainWindowToUse, strategicPlanTreeTablePanel, strategicPlanPropertiesPanel);
 	}
