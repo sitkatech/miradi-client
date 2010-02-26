@@ -50,6 +50,6 @@ public class StrategicPlanMultiPropertiesPanel extends	PlanningTreeMultiProperti
 	@Override
 	protected PlanningViewTaskPropertiesPanel createTaskPropertiesPanel(ObjectPicker objectPickerToUse) throws Exception
 	{
-		return new TaskPropertiesPanelWithoutBudgetPanels(getMainWindow(), objectPickerToUse);
+		return new TaskPropertiesPanelWithoutBudgetPanels(getMainWindow());
 	}
 }
