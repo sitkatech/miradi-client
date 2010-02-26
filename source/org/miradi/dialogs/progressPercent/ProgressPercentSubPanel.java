@@ -35,7 +35,7 @@ public class ProgressPercentSubPanel extends EditableObjectListTableSubPanel
 {
 	public ProgressPercentSubPanel(Project projectToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(projectToUse, objectPickerToUse, getObjectType());
+		super(projectToUse, getObjectType());
 	}
 	
 	@Override

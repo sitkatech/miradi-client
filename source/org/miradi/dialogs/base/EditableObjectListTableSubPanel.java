@@ -22,11 +22,10 @@ package org.miradi.dialogs.base;
 
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.project.Project;
-import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class EditableObjectListTableSubPanel extends EditableObjectTableSubPanel
 {
-	public EditableObjectListTableSubPanel(Project projectToUse, ObjectPicker objectPickerToUse, int ObjectType) throws Exception
+	public EditableObjectListTableSubPanel(Project projectToUse, int ObjectType) throws Exception
 	{
 		super(projectToUse, ObjectType);
 	}
