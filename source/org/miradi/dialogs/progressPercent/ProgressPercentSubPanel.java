@@ -33,7 +33,7 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 public class ProgressPercentSubPanel extends EditableObjectListTableSubPanel
 {
-	public ProgressPercentSubPanel(Project projectToUse, ObjectPicker objectPickerToUse) throws Exception
+	public ProgressPercentSubPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, getObjectType());
 	}
