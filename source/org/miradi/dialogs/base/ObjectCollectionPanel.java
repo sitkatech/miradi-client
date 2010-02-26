@@ -50,6 +50,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		component = componentToUse;
 		
 		//FIXME low: Need to pass in a picker and a component to avoid this cast.
+		//Another option to review is to not pass in component.
 		MiradiScrollPane tableScrollPane = new MiradiScrollPane((JComponent)component);
 		tableScrollPane.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		tableScrollPane.getViewport().setBackground(AppPreferences.getDataPanelBackgroundColor());
