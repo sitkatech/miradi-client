@@ -34,7 +34,7 @@ public class StrategyPropertiesPanel extends AbstractStrategyPropertiesPanel
 	}
 
 	@Override
-	protected void addBudgetSubPanels(ObjectPicker picker) throws Exception
+	protected void addBudgetSubPanels() throws Exception
 	{
 		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), Task.getObjectType(), getPicker()));
 		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), getPicker()));
