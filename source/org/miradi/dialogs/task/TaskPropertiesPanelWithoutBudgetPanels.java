@@ -31,7 +31,7 @@ abstract public class TaskPropertiesPanelWithoutBudgetPanels extends TaskPropert
 	}
 
 	@Override
-	protected void addBudgetSubPanels(ObjectPicker objectPickerToUse) throws Exception
+	protected void addBudgetSubPanels() throws Exception
 	{
 	}
 }

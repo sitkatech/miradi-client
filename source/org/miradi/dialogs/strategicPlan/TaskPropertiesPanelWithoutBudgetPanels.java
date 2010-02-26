@@ -32,7 +32,7 @@ public class TaskPropertiesPanelWithoutBudgetPanels extends PlanningViewTaskProp
 	}
 	
 	@Override
-	protected void addBudgetSubPanels(ObjectPicker objectPickerToUse) throws Exception
+	protected void addBudgetSubPanels() throws Exception
 	{
 	}
 }

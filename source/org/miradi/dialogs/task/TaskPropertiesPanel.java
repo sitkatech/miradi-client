@@ -42,12 +42,12 @@ public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSectio
 			addSubPanelWithTitledBorder(new ActivityFactorVisibilityControlPanel(mainWindow));
 				
 		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow(), getPicker()));
-		addBudgetSubPanels(objectPickerToUse);
+		addBudgetSubPanels();
 		
 		updateFieldsFromProject();
 	}
 
-	protected void addBudgetSubPanels(ObjectPicker objectPickerToUse) throws Exception
+	protected void addBudgetSubPanels() throws Exception
 	{
 		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), Task.getObjectType(), getPicker()));
 		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), getPicker()));
