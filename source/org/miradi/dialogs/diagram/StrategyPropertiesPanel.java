@@ -30,7 +30,7 @@ public class StrategyPropertiesPanel extends AbstractStrategyPropertiesPanel
 {
 	public StrategyPropertiesPanel(MainWindow mainWindow, ObjectPicker picker) throws Exception
 	{
-		super(mainWindow.getProject(), picker);
+		super(mainWindow.getProject());
 	}
 
 	@Override

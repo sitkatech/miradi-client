@@ -26,11 +26,10 @@ import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
-import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class AbstractStrategyPropertiesPanel extends ObjectDataInputPanelWithSections
 {
-	public AbstractStrategyPropertiesPanel(Project projectToUse, ObjectPicker picker) throws Exception
+	public AbstractStrategyPropertiesPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, Strategy.getObjectType());
 		
