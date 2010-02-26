@@ -45,6 +45,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 	public ObjectCollectionPanel(MainWindow mainWindowToUse, ObjectPicker componentToUse)
 	{
 		super(new BorderLayout());
+		
 		mainWindow = mainWindowToUse;
 		component = componentToUse;
 		MiradiScrollPane tableScrollPane = new MiradiScrollPane((JComponent)component);
