@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-26 11:50-0600\n"
+"POT-Creation-Date: 2010-02-26 11:55-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -1592,8 +1592,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:169
 #: Miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:79
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:43
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:47
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:42
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:46
 msgid "Objective"
 msgstr "Meta"
 
@@ -6912,12 +6912,12 @@ msgid "Title|Accounting Code Properties"
 msgstr "Propiedades del código contable"
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:48
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:55
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:54
 msgid "Indicators"
 msgstr "Indicadores"
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:49
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:56
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:55
 msgid "Strategies And Activities"
 msgstr "Estrategias y actividades "
 
@@ -7528,7 +7528,7 @@ msgstr "Propiedades de la plantilla de informes "
 msgid "Group Box Link Properties"
 msgstr "Propiedades del enlace del cuadro de grupo"
 
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:68
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:67
 msgid "Title|Objective Properties"
 msgstr "Propiedades de la meta"
 
