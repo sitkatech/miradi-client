@@ -56,7 +56,7 @@ public class WorkPlanResourcesManagementPanel extends ProjectResourceManagementP
 		PlanningTreeTableModel treeTableModel = ProjectResourceTreeTableModel.createOperationalPlanResourceTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider.getColumnListToShow());
 		PlanningTreeTablePanel treeTablePanel = ProjectResourceTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider);
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)treeTablePanel.getTree();
-		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
+		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
 		return new WorkPlanResourcesManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
 	}	

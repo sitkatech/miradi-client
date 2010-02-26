@@ -56,7 +56,7 @@ public class WorkPlanFundingSourceManagementPanel extends AbstractFundingSourceM
 		PlanningTreeTableModel treeTableModel = FundingSourceTreeTableModel.createOperationalPlanFundingSourceTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider.getColumnListToShow());
 		PlanningTreeTablePanel treeTablePanel = FundingSourceTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider);
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)treeTablePanel.getTree();
-		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
+		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
 		return new WorkPlanFundingSourceManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
 	}
