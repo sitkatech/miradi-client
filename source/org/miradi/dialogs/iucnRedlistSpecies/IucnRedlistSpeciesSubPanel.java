@@ -32,7 +32,7 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 public class IucnRedlistSpeciesSubPanel extends EditableObjectPoolTableSubPanel
 {
-	public IucnRedlistSpeciesSubPanel(Project projectToUse, ObjectPicker objectPickerToUse) throws Exception
+	public IucnRedlistSpeciesSubPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, getObjectType());
 	}

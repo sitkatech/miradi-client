@@ -49,8 +49,8 @@ public class SummaryScopeTabPanel extends ObjectDataInputPanelWithSections
 		BiodiversityPanel biodiversity = new BiodiversityPanel(getProject(), getRefForType(ProjectMetadata.getObjectType()));
 		addSubPanelWithTitledBorder(biodiversity);
 		
-		addSubPanelWithTitledBorder(new IucnRedlistSpeciesSubPanel(getProject(), getPicker()));
-		addSubPanelWithTitledBorder(new OtherNotableSpeciesSubPanel(getProject(), getPicker()));
+		addSubPanelWithTitledBorder(new IucnRedlistSpeciesSubPanel(getProject()));
+		addSubPanelWithTitledBorder(new OtherNotableSpeciesSubPanel(getProject()));
 		
 		HumanStakeholderPanel humans = new HumanStakeholderPanel(getProject(), getRefForType(ProjectMetadata.getObjectType()));
 		addSubPanelWithTitledBorder(humans);
