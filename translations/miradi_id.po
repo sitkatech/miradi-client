@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-26 09:03-0600\n"
+"POT-Creation-Date: 2010-02-26 09:06-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -6844,7 +6844,7 @@ msgstr "Peringkat Kelangsungan "
 msgid "Title|Indicator Properties"
 msgstr "Sifat-sifat Indikator "
 
-#: Miradi/source/org/miradi/dialogs/viability/TargetPropertiesKeaViabilityTreeManagementPanel.java:49
+#: Miradi/source/org/miradi/dialogs/viability/TargetPropertiesKeaViabilityTreeManagementPanel.java:51
 #: Miradi/source/org/miradi/dialogs/viability/ViabilityViewTreeManagementPanel.java:43
 #: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityManagementPanel.java:37
 msgid "Tab|Viability"
