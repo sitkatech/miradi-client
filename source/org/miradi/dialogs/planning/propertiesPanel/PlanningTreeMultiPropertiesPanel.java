@@ -110,7 +110,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 
 	protected PlanningViewTaskPropertiesPanel createTaskPropertiesPanel(ObjectPicker objectPickerToUse) throws Exception
 	{
-		return new PlanningViewTaskPropertiesPanel(getMainWindow(), objectPickerToUse);
+		return new PlanningViewTaskPropertiesPanel(getMainWindow());
 	}
 
 	protected AbstractStrategyPropertiesPanel createStrategyPropertiesPanel(ObjectPicker objectPickerToUse) throws Exception

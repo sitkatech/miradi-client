@@ -22,11 +22,10 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import org.miradi.dialogs.task.TaskPropertiesPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.views.umbrella.ObjectPicker;
 
 public class PlanningViewTaskPropertiesPanel extends TaskPropertiesPanel
 {
-	public PlanningViewTaskPropertiesPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
+	public PlanningViewTaskPropertiesPanel(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow);
 	}
