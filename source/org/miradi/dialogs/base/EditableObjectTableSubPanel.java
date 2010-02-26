@@ -86,6 +86,8 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	@Override
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
+		super.setObjectRefs(hierarchyToSelectedRef);
+		
 		objectTable.stopCellEditing();
 		objectTableModel.setObjectRefs(hierarchyToSelectedRef);
 		objectTableModel.fireTableDataChanged();		
