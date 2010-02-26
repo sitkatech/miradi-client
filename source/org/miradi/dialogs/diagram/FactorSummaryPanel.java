@@ -59,7 +59,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 		addSubPanelWithTitledBorder(corePanel);
 		if(getFactor().isStrategy())
 		{
-			addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow(), getPicker()));
+			addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
 		}
 		
 		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getActions(), diagramFactorToEdit.getWrappedType()));

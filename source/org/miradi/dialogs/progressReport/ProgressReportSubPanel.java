@@ -33,7 +33,7 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 public class ProgressReportSubPanel extends EditableObjectListTableSubPanel
 {
-	public ProgressReportSubPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
+	public ProgressReportSubPanel(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow.getProject(), getObjectType());
 	}
