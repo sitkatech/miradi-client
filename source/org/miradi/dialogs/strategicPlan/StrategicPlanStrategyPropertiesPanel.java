@@ -28,6 +28,6 @@ public class StrategicPlanStrategyPropertiesPanel extends AbstractStrategyProper
 {
 	public StrategicPlanStrategyPropertiesPanel(Project projectToUse, ObjectPicker picker) throws Exception
 	{
-		super(projectToUse, picker);
+		super(projectToUse);
 	}
 }
