@@ -23,7 +23,6 @@ import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.ObjectsOnlyPlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.ObjectsOnlyPlanningTreeTablePanel;
-import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.strategicPlan.StrategicPlanMultiPropertiesPanel;
@@ -51,8 +50,7 @@ public class ObjectsOnlyManagementPanel extends PlanningTreeManagementPanel
 	{
 		PlanningTreeTableModel objectsOnlyTreeTableModel = new ObjectsOnlyPlanningTreeTableModel(mainWindowToUse.getProject());
 		PlanningTreeTablePanel objectsOnlyPlanTreeTablePanel = ObjectsOnlyPlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, objectsOnlyTreeTableModel);
-		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)objectsOnlyPlanTreeTablePanel.getTree();
-		StrategicPlanMultiPropertiesPanel objectsOnlyPlanPropertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
+		StrategicPlanMultiPropertiesPanel objectsOnlyPlanPropertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, objectsOnlyPlanTreeTablePanel.getTree());
 		return new ObjectsOnlyManagementPanel(mainWindowToUse, objectsOnlyPlanTreeTablePanel, objectsOnlyPlanPropertiesPanel);
 	}
 }
