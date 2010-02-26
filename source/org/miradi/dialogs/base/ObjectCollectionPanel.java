@@ -89,7 +89,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 	protected void addObjectActionButton(Class objectActionClass, ObjectPicker pickerToUse)
 	{
 		ObjectsAction action = getActions().getObjectsAction(objectActionClass);
-		addObjectsActionButton(action, pickerToUse);
+		addButton(createObjectsActionButton(action, pickerToUse));
 	}
 	
 	protected void addNonObjectActionButton(Class nonObjectsActionClass)
@@ -106,11 +106,6 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 			addObjectActionButton(actionClass, component);
 		else
 			addNonObjectActionButton(actionClass);
-	}
-	
-	private void addObjectsActionButton(ObjectsAction action, ObjectPicker pickerToUse)
-	{
-		addButton(createObjectsActionButton(action, pickerToUse));
 	}
 	
 	private void addButton(UiButton button)
