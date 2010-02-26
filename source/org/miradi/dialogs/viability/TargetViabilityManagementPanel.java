@@ -79,6 +79,7 @@ abstract public class TargetViabilityManagementPanel extends ObjectListManagemen
 		targetViabilityTreeTableExporter.dispose();
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return panelDescription;
@@ -128,11 +129,13 @@ abstract public class TargetViabilityManagementPanel extends ObjectListManagemen
 		return targetViabilityTreeTableExporter;
 	}
 	
+	@Override
 	public boolean isRtfExportable()
 	{
 		return true;
 	}
 		
+	@Override
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
 		new RtfManagementExporter(getProject()).writeManagement(getTableExporter(), writer);
