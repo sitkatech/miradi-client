@@ -33,6 +33,7 @@ public class BlankPropertiesPanel extends ObjectDataInputPanel
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return "";
