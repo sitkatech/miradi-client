@@ -33,11 +33,10 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.project.Project;
-import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class AbstractIndicatorPropertiesPanel extends ObjectDataInputPanelWithSections
 {
-	public AbstractIndicatorPropertiesPanel(Project projectToUse, ObjectPicker picker) throws Exception
+	public AbstractIndicatorPropertiesPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, Indicator.getObjectType());
 		
