@@ -43,6 +43,7 @@ public class WorkPlanFundingSourceManagementPanel extends AbstractFundingSourceM
 		super(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
 	}
 
+	@Override
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, RowColumnProvider rowColumnProvider) throws Exception
 	{
 		PlanningTreeTableModel model = FundingSourceTreeTableModel.createOperationalPlanFundingSourceTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow());
