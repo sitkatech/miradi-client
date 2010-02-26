@@ -31,11 +31,13 @@ public class DiagramTabsLabelPropertiesPanel extends ObjectDataInputPanel
 	public DiagramTabsLabelPropertiesPanel(Project projectToUse, ORef diagramObjectRefToUse)
 	{
 		super(projectToUse, diagramObjectRefToUse);
+		
 		ref = diagramObjectRefToUse;
 		addField(createMediumStringField(DiagramObject.TAG_LABEL));
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		if (ref.getObjectType() == ObjectType.RESULTS_CHAIN_DIAGRAM)
