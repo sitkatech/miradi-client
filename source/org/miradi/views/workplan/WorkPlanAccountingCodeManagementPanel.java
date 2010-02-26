@@ -57,7 +57,7 @@ public class WorkPlanAccountingCodeManagementPanel extends AbstractAccountingCod
 		PlanningTreeTableModel treeTableModel = AccountingCodeTreeTableModel.createOperationalPlanAccountingCodeTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider.getColumnListToShow());
 		PlanningTreeTablePanel treeTablePanel = AccountingCodeTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider);
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)treeTablePanel.getTree();
-		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
+		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
 		return new WorkPlanAccountingCodeManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
 	}

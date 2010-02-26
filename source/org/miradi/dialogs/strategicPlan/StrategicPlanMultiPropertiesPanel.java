@@ -32,7 +32,7 @@ public class StrategicPlanMultiPropertiesPanel extends	PlanningTreeMultiProperti
 {
 	public StrategicPlanMultiPropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(mainWindowToUse, orefToUse, objectPickerToUse);
+		super(mainWindowToUse, orefToUse);
 	}
 	
 	@Override
