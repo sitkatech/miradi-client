@@ -32,7 +32,7 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 public class AudienceSubPanel extends EditableObjectPoolTableSubPanel
 {
-	public AudienceSubPanel(Project projectToUse, ObjectPicker objectPickerToUse) throws Exception
+	public AudienceSubPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, getObjectType());
 	}
