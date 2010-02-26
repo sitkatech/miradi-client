@@ -95,7 +95,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 	protected void addNonObjectActionButton(Class nonObjectsActionClass)
 	{
 		EAMAction action = getActions().get(nonObjectsActionClass);
-		addNonObjectActionButton(action);
+		addButton(new PanelButton(action));
 	}
 	
 	//TODO Should call specific methods to add OA or NonOA buttons
@@ -106,11 +106,6 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 			addObjectActionButton(actionClass, component);
 		else
 			addNonObjectActionButton(actionClass);
-	}
-	
-	private void addNonObjectActionButton(EAMAction action)
-	{
-		addButton(new PanelButton(action));
 	}
 	
 	private void addObjectsActionButton(ObjectsAction action, ObjectPicker pickerToUse)
