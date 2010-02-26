@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-26 12:26-0600\n"
+"POT-Creation-Date: 2010-02-26 12:32-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -6712,7 +6712,7 @@ msgstr ""
 msgid "Title|Other Notable Species"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/accountingcode/AccountingCodePropertiesPanel.java:44
+#: Miradi/source/org/miradi/dialogs/accountingcode/AccountingCodePropertiesPanel.java:45
 msgid "Title|Accounting Code Properties"
 msgstr "会计代码属性"
 
@@ -6885,7 +6885,7 @@ msgstr ""
 msgid "Tab|Methods"
 msgstr "方法"
 
-#: Miradi/source/org/miradi/dialogs/activity/ActivityFactorVisibilityControlPanel.java:48
+#: Miradi/source/org/miradi/dialogs/activity/ActivityFactorVisibilityControlPanel.java:49
 msgid "Title|Activity Visibility"
 msgstr "行动可见度 \t\t"
 
