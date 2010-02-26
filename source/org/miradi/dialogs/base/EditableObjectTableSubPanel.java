@@ -46,7 +46,6 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 		
 		setLayout(new OneColumnGridLayout());
 		
-		objectPicker = objectPickerToUse;
 		rowCountLanel = new PanelTitleLabel();
 		createTable();
 		addComponents();
@@ -143,7 +142,6 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	abstract protected void createTable() throws Exception;
 	
 	private PanelTitleLabel rowCountLanel;
-	protected ObjectPicker objectPicker;
 	protected EditableObjectRefsTableModel objectTableModel;
 	protected EditableRefsTable objectTable;
 }
