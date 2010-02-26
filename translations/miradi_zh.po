@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-26 12:32-0600\n"
+"POT-Creation-Date: 2010-02-26 12:34-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7175,11 +7175,11 @@ msgid ""
 msgstr ""
 "当前处于集思广益模式，因此有些因素被隐藏了。要返回正常模式，点击本按钮： "
 
-#: Miradi/source/org/miradi/dialogs/diagram/DiagramTabsLabelPropertiesPanel.java:42
+#: Miradi/source/org/miradi/dialogs/diagram/DiagramTabsLabelPropertiesPanel.java:44
 msgid "Results Chain Properties"
 msgstr "结果链属性 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/diagram/DiagramTabsLabelPropertiesPanel.java:44
+#: Miradi/source/org/miradi/dialogs/diagram/DiagramTabsLabelPropertiesPanel.java:46
 msgid "Conceptual Model Page Properties"
 msgstr "概念模型页面属性 \t\t"
 

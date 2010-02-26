@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-26 12:32-0600\n"
+"POT-Creation-Date: 2010-02-26 12:34-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -7377,11 +7377,11 @@ msgstr ""
 "Actualmente en modo de tormenta de ideas para que algunos factores queden "
 "ocultos. Para volver al modo normal, oprima este botón."
 
-#: Miradi/source/org/miradi/dialogs/diagram/DiagramTabsLabelPropertiesPanel.java:42
+#: Miradi/source/org/miradi/dialogs/diagram/DiagramTabsLabelPropertiesPanel.java:44
 msgid "Results Chain Properties"
 msgstr "Propiedades de la cadena de resultados"
 
-#: Miradi/source/org/miradi/dialogs/diagram/DiagramTabsLabelPropertiesPanel.java:44
+#: Miradi/source/org/miradi/dialogs/diagram/DiagramTabsLabelPropertiesPanel.java:46
 msgid "Conceptual Model Page Properties"
 msgstr "Propiedades de la página Modelo conceptual"
 
