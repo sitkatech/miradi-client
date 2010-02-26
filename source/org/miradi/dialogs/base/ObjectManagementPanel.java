@@ -36,10 +36,10 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 	public ObjectManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
 		super(mainWindowToUse, tablePanelToUse, propertiesPanelToUse);
+		
 		mainWindow = mainWindowToUse;
 		setDividerThick();
 		listComponent = tablePanelToUse;
-		
 		propertiesPanel = propertiesPanelToUse;
 		listComponent.setPropertiesPanel(propertiesPanel);
 	}
