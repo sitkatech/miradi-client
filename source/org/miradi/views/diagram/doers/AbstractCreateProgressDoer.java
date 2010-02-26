@@ -34,7 +34,11 @@ abstract public class AbstractCreateProgressDoer extends CreateAnnotationDoer
 		if (getPicker() == null)
 			return null;
 		
-		ORefList selectionRefs = getPicker().getSelectedHierarchies()[0];
+		ORefList[] selectedHierarchies = getPicker().getSelectedHierarchies();
+		if (selectedHierarchies.length == 0)
+			return null;
+		
+		ORefList selectionRefs = selectedHierarchies[0];
 		return extractProgressParentCandidate(getProject(), selectionRefs, getAnnotationType());
 	}
 
