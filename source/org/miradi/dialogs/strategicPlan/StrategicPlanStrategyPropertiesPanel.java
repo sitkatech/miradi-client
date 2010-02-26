@@ -22,11 +22,10 @@ package org.miradi.dialogs.strategicPlan;
 
 import org.miradi.dialogs.diagram.AbstractStrategyPropertiesPanel;
 import org.miradi.project.Project;
-import org.miradi.views.umbrella.ObjectPicker;
 
 public class StrategicPlanStrategyPropertiesPanel extends AbstractStrategyPropertiesPanel
 {
-	public StrategicPlanStrategyPropertiesPanel(Project projectToUse, ObjectPicker picker) throws Exception
+	public StrategicPlanStrategyPropertiesPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse);
 	}
