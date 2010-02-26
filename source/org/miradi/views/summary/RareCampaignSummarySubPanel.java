@@ -43,7 +43,7 @@ public class RareCampaignSummarySubPanel extends ObjectDataInputPanel
 		addField(createNumericField(RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA));
 		
 		addLabel(Audience.getObjectType(), Audience.TAG_LABEL);
-		addSubPanelWithLineBorder(new AudienceSubPanel(getProject(), getPicker()));
+		addSubPanelWithLineBorder(new AudienceSubPanel(getProject()));
 		
 		addLabelsOnSingleRow(RareTabCampaignSubPanelForm.HUMAN_STAKEHOLDER_POP_SIZE_CONSTANT, RareTabCampaignSubPanelForm.SEE_SCOPE_TAB_CONSTANT);
 		addLabelsOnSingleRow(RareTabCampaignSubPanelForm.BIODIVERSITY_AREA_HA_CONSTANT, RareTabCampaignSubPanelForm.SEE_SCOPE_TAB_CONSTANT);
