@@ -49,12 +49,12 @@ abstract public class AbstractIndicatorPropertiesPanel extends ObjectDataInputPa
 		addSubPanelWithTitledBorder(new IndicatorMonitoringPlanSubPanel(getProject(), getInvalidTargetRef()));
 		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow(), getPicker()));
 		addSubPanelWithTitledBorder(new IndicatorFutureStatusSubPanel(getProject(), getInvalidTargetRef()));
-		addBudgetSubPanels(picker);
+		addBudgetSubPanels();
 		
 		updateFieldsFromProject();
 	}
 
-	protected void addBudgetSubPanels(ObjectPicker picker) throws Exception
+	protected void addBudgetSubPanels() throws Exception
 	{
 	}
 
