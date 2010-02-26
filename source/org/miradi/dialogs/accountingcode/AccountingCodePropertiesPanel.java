@@ -39,6 +39,7 @@ public class AccountingCodePropertiesPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Accounting Code Properties");
