@@ -56,7 +56,7 @@ class MonitoringPlanManagementPanel extends PlanningTreeManagementPanel
 	public static MonitoringPlanManagementPanel createMonitoringPlanPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		PlanningTreeTablePanel monitoringPlanTreeTablePanel = MonitoringPlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
-		PlanningTreeMultiPropertiesPanel monitoringPlanPropertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, monitoringPlanTreeTablePanel.getTree());
+		PlanningTreeMultiPropertiesPanel monitoringPlanPropertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
 		return new MonitoringPlanManagementPanel(mainWindowToUse, monitoringPlanTreeTablePanel, monitoringPlanPropertiesPanel);
 	}

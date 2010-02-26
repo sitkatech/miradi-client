@@ -50,7 +50,7 @@ public class ObjectsOnlyManagementPanel extends PlanningTreeManagementPanel
 	{
 		PlanningTreeTableModel objectsOnlyTreeTableModel = new ObjectsOnlyPlanningTreeTableModel(mainWindowToUse.getProject());
 		PlanningTreeTablePanel objectsOnlyPlanTreeTablePanel = ObjectsOnlyPlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, objectsOnlyTreeTableModel);
-		StrategicPlanMultiPropertiesPanel objectsOnlyPlanPropertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, objectsOnlyPlanTreeTablePanel.getTree());
+		StrategicPlanMultiPropertiesPanel objectsOnlyPlanPropertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		return new ObjectsOnlyManagementPanel(mainWindowToUse, objectsOnlyPlanTreeTablePanel, objectsOnlyPlanPropertiesPanel);
 	}
 }
