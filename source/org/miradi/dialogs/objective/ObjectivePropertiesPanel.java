@@ -39,6 +39,7 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanelWithSections
 	public ObjectivePropertiesPanel(Project projectToUse, Actions actionsToUse, ObjectPicker picker) throws Exception
 	{
 		super(projectToUse, ObjectType.OBJECTIVE);
+		
 		createSingleSection(EAM.text("Objective"));
 		
 		ObjectDataInputField shortLabelField = createShortStringField(Objective.getObjectType(), Objective.TAG_SHORT_LABEL);
@@ -61,6 +62,7 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanelWithSections
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Objective Properties");
