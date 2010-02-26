@@ -48,7 +48,7 @@ public class ProgressReportSubPanel extends EditableObjectListTableSubPanel
 	protected LinkedHashMap<Class, ObjectPicker> getButtonsActionsPickerMap()
 	{
 		LinkedHashMap<Class, ObjectPicker> buttonsMap = new LinkedHashMap<Class, ObjectPicker>();
-		buttonsMap.put(ActionCreateProgressReport.class, objectPicker);
+		buttonsMap.put(ActionCreateProgressReport.class, getPicker());
 		buttonsMap.put(ActionDeleteProgressReport.class, objectTable);
 		
 		return buttonsMap;
