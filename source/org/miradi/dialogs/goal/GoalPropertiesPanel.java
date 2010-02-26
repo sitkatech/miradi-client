@@ -40,21 +40,15 @@ public class GoalPropertiesPanel extends ObjectDataInputPanelWithSections
 		super(projectToUse, ObjectType.GOAL);
 		
 		createSingleSection(EAM.text("Goal"));
-		
 		ObjectDataInputField shortLabelField = createShortStringField(Goal.getObjectType(), Goal.TAG_SHORT_LABEL);
 		ObjectDataInputField labelField = createExpandableField(Goal.getObjectType(), Goal.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Goal"), new GoalIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
-
 		addField(createMultilineField(Goal.getObjectType(), Desire.TAG_FULL_TEXT));
-		
 		addField(createReadonlyTextField(Goal.PSEUDO_TAG_FACTOR));
 		addField(createReadonlyTextField(Goal.PSEUDO_TAG_DIRECT_THREATS));
-		
 		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Goal.getObjectType(), Goal.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalIndicatorRelevancyList.class), picker));
 		addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(Goal.getObjectType(), Goal.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalStrategyActivityRelevancyList.class), picker));
-		
 		addSubPanelWithTitledBorder(new ProgressPercentSubPanel(getProject(), getPicker()));
-		
 		addField(createMultilineField(Goal.TAG_COMMENTS));
 		
 		updateFieldsFromProject();
@@ -65,5 +59,4 @@ public class GoalPropertiesPanel extends ObjectDataInputPanelWithSections
 	{
 		return EAM.text("Title|Goal Properties");
 	}
-
 }
