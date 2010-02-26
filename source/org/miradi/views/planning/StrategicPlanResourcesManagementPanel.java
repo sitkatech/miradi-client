@@ -54,7 +54,7 @@ public class StrategicPlanResourcesManagementPanel extends ProjectResourceManage
 		RowColumnProvider rowColumnProvider = new ProjectResourceCoreRowColumnProvider();
 		PlanningTreeTableModel treeTableModel = ProjectResourceTreeTableModel.createProjectResourceTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider.getColumnListToShow());
 		PlanningTreeTablePanel treeTablePanel = ProjectResourceTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider);
-		PlanningTreeMultiPropertiesPanel propertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeTablePanel.getTree());
+		PlanningTreeMultiPropertiesPanel propertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
 		return new StrategicPlanResourcesManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
 	}	

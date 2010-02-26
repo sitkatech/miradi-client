@@ -26,11 +26,10 @@ import org.miradi.dialogs.planning.propertiesPanel.PlanningViewTaskPropertiesPan
 import org.miradi.dialogs.viability.AbstractIndicatorPropertiesPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.views.umbrella.ObjectPicker;
 
 public class StrategicPlanMultiPropertiesPanel extends	PlanningTreeMultiPropertiesPanel
 {
-	public StrategicPlanMultiPropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse, ObjectPicker objectPickerToUse) throws Exception
+	public StrategicPlanMultiPropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse) throws Exception
 	{
 		super(mainWindowToUse, orefToUse);
 	}

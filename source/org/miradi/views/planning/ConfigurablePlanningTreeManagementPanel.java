@@ -48,7 +48,7 @@ class ConfigurablePlanningTreeManagementPanel extends PlanningTreeManagementPane
 	public static PlanningTreeManagementPanel createConfigurablePlanningPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		PlanningTreeTablePanel planningTreeTablePanel = ConfigurablePlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
-		PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, planningTreeTablePanel.getTree());
+		PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		return new ConfigurablePlanningTreeManagementPanel(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
 	}
 
