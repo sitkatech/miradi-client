@@ -35,7 +35,7 @@ public class ProgressReportSubPanel extends EditableObjectListTableSubPanel
 {
 	public ProgressReportSubPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(mainWindow.getProject(), objectPickerToUse, getObjectType());
+		super(mainWindow.getProject(), getObjectType());
 	}
 	
 	@Override
