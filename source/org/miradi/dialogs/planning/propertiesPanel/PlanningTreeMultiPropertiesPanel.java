@@ -72,7 +72,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		objectivePropertiesPanel = new ObjectivePropertiesPanel(getProject(), getMainWindow().getActions());
 		indicatorPropertiesPanel = createIndicatorPropertiesPanel();
 		strategyPropertiesPanel = createStrategyPropertiesPanel(objectPicker);
-		taskPropertiesInputPanel = createTaskPropertiesPanel(objectPicker);
+		taskPropertiesInputPanel = createTaskPropertiesPanel();
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		targetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), Target.getObjectType());
 		humanWelfareTargetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), HumanWelfareTarget.getObjectType());
@@ -108,7 +108,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		addPanel(blankPropertiesPanel);
 	}
 
-	protected PlanningViewTaskPropertiesPanel createTaskPropertiesPanel(ObjectPicker objectPickerToUse) throws Exception
+	protected PlanningViewTaskPropertiesPanel createTaskPropertiesPanel() throws Exception
 	{
 		return new PlanningViewTaskPropertiesPanel(getMainWindow());
 	}
