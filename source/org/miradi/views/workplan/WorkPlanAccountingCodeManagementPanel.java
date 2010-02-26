@@ -27,7 +27,6 @@ import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPa
 import org.miradi.dialogs.planning.upperPanel.AccountingCodeTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.AccountingCodeTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
-import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.main.MainWindow;
@@ -56,7 +55,6 @@ public class WorkPlanAccountingCodeManagementPanel extends AbstractAccountingCod
 		RowColumnProvider rowColumnProvider = new AccountingCodeRowColumnProvider();
 		PlanningTreeTableModel treeTableModel = AccountingCodeTreeTableModel.createOperationalPlanAccountingCodeTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider.getColumnListToShow());
 		PlanningTreeTablePanel treeTablePanel = AccountingCodeTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider);
-		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)treeTablePanel.getTree();
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
 		return new WorkPlanAccountingCodeManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
