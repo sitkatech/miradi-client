@@ -69,7 +69,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private void createPropertiesPanels() throws Exception
 	{
 		goalPropertiesPanel = new GoalPropertiesPanel(getProject(), getMainWindow().getActions());
-		objectivePropertiesPanel = new ObjectivePropertiesPanel(getProject(), getMainWindow().getActions(), objectPicker);
+		objectivePropertiesPanel = new ObjectivePropertiesPanel(getProject(), getMainWindow().getActions());
 		indicatorPropertiesPanel = createIndicatorPropertiesPanel(objectPicker);
 		strategyPropertiesPanel = createStrategyPropertiesPanel(objectPicker);
 		taskPropertiesInputPanel = createTaskPropertiesPanel(objectPicker);

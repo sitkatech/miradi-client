@@ -33,7 +33,7 @@ public class ObjectiveListManagementPanel extends ObjectListManagementPanel
 {
 	public ObjectiveListManagementPanel(MainWindow mainWindowToUse, ORef nodeRef, Actions actions, ObjectiveListTablePanel objectListPanel) throws Exception
 	{
-		super(mainWindowToUse, objectListPanel, new ObjectivePropertiesPanel(mainWindowToUse.getProject(), actions, objectListPanel.getPicker()));
+		super(mainWindowToUse, objectListPanel, new ObjectivePropertiesPanel(mainWindowToUse.getProject(), actions));
 	}
 	
 	public String getSplitterDescription()

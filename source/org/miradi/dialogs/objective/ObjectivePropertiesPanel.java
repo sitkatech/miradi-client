@@ -32,11 +32,10 @@ import org.miradi.objects.Desire;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Objective;
 import org.miradi.project.Project;
-import org.miradi.views.umbrella.ObjectPicker;
 
 public class ObjectivePropertiesPanel extends ObjectDataInputPanelWithSections
 {
-	public ObjectivePropertiesPanel(Project projectToUse, Actions actionsToUse, ObjectPicker picker) throws Exception
+	public ObjectivePropertiesPanel(Project projectToUse, Actions actionsToUse) throws Exception
 	{
 		super(projectToUse, ObjectType.OBJECTIVE);
 		
