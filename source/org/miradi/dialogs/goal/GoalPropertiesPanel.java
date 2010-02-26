@@ -38,6 +38,7 @@ public class GoalPropertiesPanel extends ObjectDataInputPanelWithSections
 	public GoalPropertiesPanel(Project projectToUse, Actions actionsToUse, ObjectPicker picker) throws Exception
 	{
 		super(projectToUse, ObjectType.GOAL);
+		
 		createSingleSection(EAM.text("Goal"));
 		
 		ObjectDataInputField shortLabelField = createShortStringField(Goal.getObjectType(), Goal.TAG_SHORT_LABEL);
@@ -59,6 +60,7 @@ public class GoalPropertiesPanel extends ObjectDataInputPanelWithSections
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Goal Properties");
