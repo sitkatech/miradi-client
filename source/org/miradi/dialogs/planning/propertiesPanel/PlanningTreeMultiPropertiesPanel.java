@@ -120,7 +120,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 
 	protected AbstractIndicatorPropertiesPanel createIndicatorPropertiesPanel(ObjectPicker objectPickerToUse) throws Exception
 	{
-		return new IndicatorPropertiesPanelWithBudgetPanels(getMainWindow(), objectPickerToUse);
+		return new IndicatorPropertiesPanelWithBudgetPanels(getMainWindow());
 	}
 	
 	public String getPanelDescription()

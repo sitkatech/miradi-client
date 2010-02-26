@@ -23,11 +23,10 @@ import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
 import org.miradi.dialogs.expense.ExpensesPropertiesPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Task;
-import org.miradi.views.umbrella.ObjectPicker;
 
 public class IndicatorPropertiesPanelWithBudgetPanels extends AbstractIndicatorPropertiesPanel
 {
-	public IndicatorPropertiesPanelWithBudgetPanels(MainWindow mainWindow, ObjectPicker picker) throws Exception
+	public IndicatorPropertiesPanelWithBudgetPanels(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow.getProject());
 	}
