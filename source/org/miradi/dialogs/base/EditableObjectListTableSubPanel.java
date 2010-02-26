@@ -28,7 +28,7 @@ abstract public class EditableObjectListTableSubPanel extends EditableObjectTabl
 {
 	public EditableObjectListTableSubPanel(Project projectToUse, ObjectPicker objectPickerToUse, int ObjectType) throws Exception
 	{
-		super(projectToUse, objectPickerToUse, ObjectType);
+		super(projectToUse, ObjectType);
 	}
 	
 	@Override
