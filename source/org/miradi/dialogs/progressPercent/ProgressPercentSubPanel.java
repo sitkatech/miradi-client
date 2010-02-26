@@ -49,7 +49,7 @@ public class ProgressPercentSubPanel extends EditableObjectListTableSubPanel
 	protected LinkedHashMap<Class, ObjectPicker> getButtonsActionsPickerMap()
 	{
 		LinkedHashMap<Class, ObjectPicker> buttonsMap = new LinkedHashMap<Class, ObjectPicker>();
-		buttonsMap.put(ActionCreateProgressPercent.class, objectPicker);
+		buttonsMap.put(ActionCreateProgressPercent.class, getPicker());
 		buttonsMap.put(ActionDeleteProgressPercent.class, objectTable);
 		
 		return buttonsMap;
