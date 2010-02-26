@@ -24,11 +24,10 @@ import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
 import org.miradi.dialogs.expense.ExpensesPropertiesPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Task;
-import org.miradi.views.umbrella.ObjectPicker;
 
 public class StrategyPropertiesPanel extends AbstractStrategyPropertiesPanel
 {
-	public StrategyPropertiesPanel(MainWindow mainWindow, ObjectPicker picker) throws Exception
+	public StrategyPropertiesPanel(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow.getProject());
 	}
