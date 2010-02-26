@@ -48,7 +48,7 @@ public class OtherNotableSpeciesSubPanel extends EditableObjectPoolTableSubPanel
 	protected LinkedHashMap<Class, ObjectPicker> getButtonsActionsPickerMap()
 	{
 		LinkedHashMap<Class, ObjectPicker> buttonsMap = new LinkedHashMap<Class, ObjectPicker>();
-		buttonsMap.put(ActionCreateOtherNotableSpecies.class, objectPicker);
+		buttonsMap.put(ActionCreateOtherNotableSpecies.class, getPicker());
 		buttonsMap.put(ActionDeleteOtherNotableSpecies.class, objectTable);
 		
 		return buttonsMap;

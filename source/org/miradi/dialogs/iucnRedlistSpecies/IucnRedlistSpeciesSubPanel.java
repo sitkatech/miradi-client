@@ -48,7 +48,7 @@ public class IucnRedlistSpeciesSubPanel extends EditableObjectPoolTableSubPanel
 	protected LinkedHashMap<Class, ObjectPicker> getButtonsActionsPickerMap()
 	{
 		LinkedHashMap<Class, ObjectPicker> buttonsMap = new LinkedHashMap<Class, ObjectPicker>();
-		buttonsMap.put(ActionCreateIucnRedlistSpecies.class, objectPicker);
+		buttonsMap.put(ActionCreateIucnRedlistSpecies.class, getPicker());
 		buttonsMap.put(ActionDeleteIucnRedlistSpecies.class, objectTable);
 		
 		return buttonsMap;

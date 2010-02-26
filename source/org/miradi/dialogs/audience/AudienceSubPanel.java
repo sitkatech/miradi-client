@@ -48,7 +48,7 @@ public class AudienceSubPanel extends EditableObjectPoolTableSubPanel
 	protected LinkedHashMap<Class, ObjectPicker> getButtonsActionsPickerMap()
 	{
 		LinkedHashMap<Class, ObjectPicker> buttonsMap = new LinkedHashMap<Class, ObjectPicker>();
-		buttonsMap.put(ActionCreateAudience.class, objectPicker);
+		buttonsMap.put(ActionCreateAudience.class, getPicker());
 		buttonsMap.put(ActionDeleteAudience.class, objectTable);
 		
 		return buttonsMap;
