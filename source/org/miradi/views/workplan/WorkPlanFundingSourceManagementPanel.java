@@ -27,7 +27,6 @@ import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPa
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.FundingSourceTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.FundingSourceTreeTablePanel;
-import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.main.MainWindow;
@@ -55,7 +54,6 @@ public class WorkPlanFundingSourceManagementPanel extends AbstractFundingSourceM
 		RowColumnProvider rowColumnProvider = new FundingSourceRowColumnProvider();
 		PlanningTreeTableModel treeTableModel = FundingSourceTreeTableModel.createOperationalPlanFundingSourceTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider.getColumnListToShow());
 		PlanningTreeTablePanel treeTablePanel = FundingSourceTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider);
-		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)treeTablePanel.getTree();
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
 		return new WorkPlanFundingSourceManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
