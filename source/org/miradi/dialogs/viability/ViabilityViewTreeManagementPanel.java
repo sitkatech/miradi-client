@@ -29,16 +29,16 @@ public class ViabilityViewTreeManagementPanel extends TargetViabilityManagementP
 	public ViabilityViewTreeManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse) throws Exception
 	{
 		super(mainWindow, splitPositionSaverToUse);
+		
 		panelDescription = PANEL_DESCRIPTION_VIABILITY;
 		icon = new KeyEcologicalAttributeIcon();
-
 	}
 	
+	@Override
 	public String getSplitterDescription()
 	{
 		return PANEL_DESCRIPTION_VIABILITY + SPLITTER_TAG;
 	}
 
 	private static String PANEL_DESCRIPTION_VIABILITY = EAM.text("Tab|Viability"); 
-
 }
