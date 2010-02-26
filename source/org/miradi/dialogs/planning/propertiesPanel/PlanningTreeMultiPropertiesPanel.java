@@ -62,7 +62,6 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	{
 		super(mainWindowToUse, orefToUse);
 		
-		objectPicker = objectPickerToUse;
 		createPropertiesPanels();
 	}
 	
@@ -213,7 +212,6 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	
 	private static final int DEEPEST_INDEX = 0; 
 	
-	private ObjectPicker objectPicker;
 	private GoalPropertiesPanel goalPropertiesPanel;
 	private ObjectivePropertiesPanel objectivePropertiesPanel;
 	private AbstractIndicatorPropertiesPanel indicatorPropertiesPanel;
