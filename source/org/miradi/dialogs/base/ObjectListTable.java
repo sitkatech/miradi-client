@@ -57,7 +57,7 @@ public class ObjectListTable extends ObjectTable
 		ORefList[] superHierarchies = super.getSelectedHierarchies();
 		ORefList containingRefs = getObjectListTableModel().getSelectedHierarchy();
 		if (superHierarchies.length == 0)
-			return new ORefList[]{containingRefs};
+			return new ORefList[0];
 
 		for (int i = 0; i < superHierarchies.length; ++i)
 		{
