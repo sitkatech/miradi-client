@@ -40,7 +40,7 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 {
-	public EditableObjectTableSubPanel(Project projectToUse, ObjectPicker objectPickerToUse, int ObjectType) throws Exception
+	public EditableObjectTableSubPanel(Project projectToUse, int ObjectType) throws Exception
 	{
 		super(projectToUse, ORef.createInvalidWithType(ObjectType));
 		
