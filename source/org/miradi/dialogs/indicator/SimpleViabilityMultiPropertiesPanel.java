@@ -43,7 +43,7 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		
 	private void createPropertiesPanels() throws Exception
 	{
-		indicatorPropertiesPanel = new IndicatorPropertiesPanelWithoutBudgetPanels(getProject(), getPicker());
+		indicatorPropertiesPanel = new IndicatorPropertiesPanelWithoutBudgetPanels(getProject());
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		futureStatusPropertiesPanel = new IndicatorFutureStatusSubPanel(getProject());
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
