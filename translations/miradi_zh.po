@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-26 12:14-0600\n"
+"POT-Creation-Date: 2010-02-26 12:26-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -242,7 +242,7 @@ msgstr ""
 msgid "Project Resources"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/ConfigurablePlanningTreeManagementPanel.java:46
+#: Miradi/source/org/miradi/views/planning/ConfigurablePlanningTreeManagementPanel.java:45
 msgid "Tab|Custom"
 msgstr ""
 
@@ -280,7 +280,7 @@ msgstr "选项对话框 \t\t"
 msgid "Accounting Code"
 msgstr "会计编码 \t\t"
 
-#: Miradi/source/org/miradi/views/planning/ActionPlanManagementPanel.java:48
+#: Miradi/source/org/miradi/views/planning/ActionPlanManagementPanel.java:47
 msgid "Tab|Action Plan"
 msgstr ""
 
@@ -289,11 +289,11 @@ msgstr ""
 msgid "Accounting Codes"
 msgstr "会计编码"
 
-#: Miradi/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:47
+#: Miradi/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:46
 msgid "Lists"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/MonitoringPlanManagementPanel.java:48
+#: Miradi/source/org/miradi/views/planning/MonitoringPlanManagementPanel.java:47
 msgid "Tab|Monitoring Plan"
 msgstr ""
 
@@ -807,7 +807,7 @@ msgstr "不能创建链接 \t\t"
 msgid "Can't link a group to an item it contains"
 msgstr "不能将组链接到其所包含的条目 \t\t"
 
-#: Miradi/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:62
+#: Miradi/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:61
 msgid "Tab|Work Plan"
 msgstr ""
 
