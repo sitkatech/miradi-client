@@ -28,11 +28,10 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
-import org.miradi.views.umbrella.ObjectPicker;
 
 public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSections
 {
-	protected TaskPropertiesPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
+	protected TaskPropertiesPanel(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow.getProject(), Task.getObjectType());
 		

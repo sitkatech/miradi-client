@@ -28,7 +28,7 @@ public class PlanningViewTaskPropertiesPanel extends TaskPropertiesPanel
 {
 	public PlanningViewTaskPropertiesPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(mainWindow, objectPickerToUse);
+		super(mainWindow);
 	}
 	
 	@Override
