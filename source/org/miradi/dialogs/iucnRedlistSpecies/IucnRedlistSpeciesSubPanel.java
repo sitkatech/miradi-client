@@ -34,7 +34,7 @@ public class IucnRedlistSpeciesSubPanel extends EditableObjectPoolTableSubPanel
 {
 	public IucnRedlistSpeciesSubPanel(Project projectToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(projectToUse, objectPickerToUse, getObjectType());
+		super(projectToUse, getObjectType());
 	}
 	
 	@Override

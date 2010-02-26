@@ -34,7 +34,7 @@ public class OtherNotableSpeciesSubPanel extends EditableObjectPoolTableSubPanel
 {
 	public OtherNotableSpeciesSubPanel(Project projectToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(projectToUse, objectPickerToUse, getObjectType());
+		super(projectToUse, getObjectType());
 	}
 	
 	@Override
