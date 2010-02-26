@@ -44,7 +44,7 @@ public class StrategicPlanMultiPropertiesPanel extends	PlanningTreeMultiProperti
 	@Override
 	protected AbstractStrategyPropertiesPanel createStrategyPropertiesPanel(ObjectPicker objectPickerToUse) throws Exception
 	{
-		return new StrategicPlanStrategyPropertiesPanel(getProject(), objectPickerToUse);
+		return new StrategicPlanStrategyPropertiesPanel(getProject());
 	}
 	
 	@Override
