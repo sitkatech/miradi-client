@@ -28,6 +28,6 @@ public class IndicatorPropertiesPanelWithoutBudgetPanels extends AbstractIndicat
 {
 	public IndicatorPropertiesPanelWithoutBudgetPanels(Project projectToUse, ObjectPicker picker) throws Exception
 	{
-		super(projectToUse, picker);
+		super(projectToUse);
 	}
 }

@@ -29,7 +29,7 @@ public class IndicatorPropertiesPanelWithBudgetPanels extends AbstractIndicatorP
 {
 	public IndicatorPropertiesPanelWithBudgetPanels(MainWindow mainWindow, ObjectPicker picker) throws Exception
 	{
-		super(mainWindow.getProject(), picker);
+		super(mainWindow.getProject());
 	}
 	
 	@Override
