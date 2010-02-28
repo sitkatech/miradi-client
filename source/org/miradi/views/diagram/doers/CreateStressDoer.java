@@ -25,10 +25,12 @@ import org.miradi.views.diagram.CreateAnnotationDoer;
 
 public class CreateStressDoer extends CreateAnnotationDoer
 {
+	@Override
 	public int getAnnotationType()
 	{
 		return Stress.getObjectType();
 	}
+	@Override
 	public String getAnnotationListTag()
 	{
 		return Target.TAG_STRESS_REFS;
