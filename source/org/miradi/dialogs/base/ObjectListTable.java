@@ -28,6 +28,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 
 public class ObjectListTable extends ObjectTable
@@ -79,10 +80,7 @@ public class ObjectListTable extends ObjectTable
 	
 	private void updateTableIfRowWasAddedOrDeleted(int type, BaseId id, String tag, String oldData, String newData)
 	{
-		if(type != getObjectListTableModel().getContainingObjectType())
-			return;
-		
-		if(!id.equals(getObjectListTableModel().getContainingObjectId()))
+		if (!getObjectListTableModel().getContainingRef().equals(new ORef(type, id)))
 			return;
 		
 		if(!tag.equals(getObjectListTableModel().getFieldTag()))
