@@ -24,7 +24,6 @@ import java.text.ParseException;
 import javax.swing.ListSelectionModel;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -75,12 +74,12 @@ public class ObjectListTable extends ObjectTable
 		
 		String oldData = cmd.getPreviousDataValue();
 		String newData = cmd.getDataValue();
-		updateTableIfRowWasAddedOrDeleted(cmd.getObjectType(), cmd.getObjectId(), cmd.getFieldTag(), oldData, newData);
+		updateTableIfRowWasAddedOrDeleted(cmd.getObjectORef(), cmd.getFieldTag(), oldData, newData);
 	}
 	
-	private void updateTableIfRowWasAddedOrDeleted(int type, BaseId id, String tag, String oldData, String newData)
+	private void updateTableIfRowWasAddedOrDeleted(ORef ref, String tag, String oldData, String newData)
 	{
-		if (!getObjectListTableModel().getContainingRef().equals(new ORef(type, id)))
+		if (!getObjectListTableModel().getContainingRef().equals(ref))
 			return;
 		
 		if(!tag.equals(getObjectListTableModel().getFieldTag()))
