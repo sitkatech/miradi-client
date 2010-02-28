@@ -29,6 +29,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
 
 public class ObjectListTable extends ObjectTable
 {
@@ -88,8 +89,9 @@ public class ObjectListTable extends ObjectTable
 		int desiredSelectionRow = getSelectedRow();
 		try
 		{
-			IdList oldList = new IdList(getObjectTableModel().getRowObjectType(), oldData);
-			IdList newList = new IdList(getObjectTableModel().getRowObjectType(), newData);
+			BaseObject baseObject = BaseObject.find(getProject(), ref);
+			ORefList oldList = createRefList(baseObject, oldData);
+			ORefList newList = createRefList(baseObject, newData);
 			if(newList.size() > oldList.size())
 				desiredSelectionRow = newList.size() - 1;
 		}
@@ -102,5 +104,23 @@ public class ObjectListTable extends ObjectTable
 		desiredSelectionRow = Math.min(desiredSelectionRow, getRowCount() - 1);
 		if(desiredSelectionRow >= 0)
 			setRowSelectionInterval(desiredSelectionRow, desiredSelectionRow);
+	}
+
+	private ORefList createRefList(BaseObject baseObject, String unknonwListTypeAsString) throws ParseException
+	{
+		if (baseObject.isRefList(getObjectListTableModel().getFieldTag()))
+		{
+			return new ORefList(unknonwListTypeAsString);
+		}
+		
+		if (baseObject.isIdListTag(getObjectListTableModel().getFieldTag()))
+		{
+			final int containingType = getObjectListTableModel().getContainingObjectType();
+			IdList idList = new IdList(containingType, unknonwListTypeAsString);
+
+			return new ORefList(containingType, idList);
+		}
+		
+		throw new RuntimeException("List as string is not a known list type: " + unknonwListTypeAsString + " for ref:" + baseObject.getRef());
 	}
 }
