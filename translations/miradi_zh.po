@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-26 12:34-0600\n"
+"POT-Creation-Date: 2010-02-28 09:42-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7336,7 +7336,7 @@ msgstr "分目标组 \t\t"
 msgid "Title|Stress Visibility"
 msgstr "压力可见度"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressPropertiesPanel.java:58
+#: Miradi/source/org/miradi/dialogs/stress/StressPropertiesPanel.java:59
 msgid "Title|Stress Properties"
 msgstr "压力属性"
 
