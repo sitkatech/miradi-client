@@ -98,6 +98,7 @@ public class ObjectListTable extends ObjectTable
 		catch(ParseException nothingWeCanDoAboutIt)
 		{
 			EAM.logException(nothingWeCanDoAboutIt);
+			EAM.unexpectedErrorDialog(nothingWeCanDoAboutIt);
 		}
 
 		getObjectListTableModel().rowsWereAddedOrRemoved();
@@ -106,7 +107,7 @@ public class ObjectListTable extends ObjectTable
 			setRowSelectionInterval(desiredSelectionRow, desiredSelectionRow);
 	}
 
-	private ORefList createRefList(BaseObject baseObject, String unknonwListTypeAsString) throws ParseException
+	private ORefList createRefList(BaseObject baseObject, String unknonwListTypeAsString) throws ParseException 
 	{
 		if (baseObject.isRefList(getObjectListTableModel().getFieldTag()))
 		{
