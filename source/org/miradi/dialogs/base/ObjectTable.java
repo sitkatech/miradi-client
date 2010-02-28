@@ -268,11 +268,6 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		updateIfRowObjectWasModified(cmd.getObjectType(), cmd.getObjectId());
 	}
 	
-	void updateTableAfterUndo(CommandSetObjectData cmd)
-	{
-		updateIfRowObjectWasModified(cmd.getObjectType(), cmd.getObjectId());
-	}
-	
 	void updateIfRowObjectWasModified(int type, BaseId id)
 	{
 		if(type != getObjectTableModel().getRowObjectType())
