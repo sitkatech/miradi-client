@@ -87,7 +87,7 @@ public class ObjectListTable extends ObjectTable
 		updateTableIfRowWasAddedOrDeleted(cmd.getObjectType(), cmd.getObjectId(), cmd.getFieldTag(), oldData, newData);
 	}
 	
-	void updateTableIfRowWasAddedOrDeleted(int type, BaseId id, String tag, String oldData, String newData)
+	private void updateTableIfRowWasAddedOrDeleted(int type, BaseId id, String tag, String oldData, String newData)
 	{
 		if(type != getObjectListTableModel().getContainingObjectType())
 			return;
