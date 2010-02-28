@@ -52,7 +52,7 @@ public class ActivityListTablePanel extends ObjectListTablePanel
 		
 		if (event.isSetDataCommandWithThisTypeAndTag(Strategy.getObjectType(), Strategy.TAG_ACTIVITY_IDS))
 		{
-			ORef selectedObjectRef = getSelectedObject().getRef();
+			ORef selectedObjectRef = getSelectedObjectRef();
 			getTable().getObjectTableModel().resetRows();
 			getTable().setSelectedRow(selectedObjectRef);
 		}

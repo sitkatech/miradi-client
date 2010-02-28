@@ -49,6 +49,15 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 		getTable().dispose();
 	}
 	
+	public ORef getSelectedObjectRef()
+	{
+		BaseObject selectedObject = getSelectedObject();
+		if (selectedObject == null)
+			return ORef.INVALID;
+		
+		return getSelectedObject().getRef();
+	}
+	
 	public BaseObject getSelectedObject()
 	{
 		BaseObject[] selected = table.getSelectedObjects();
