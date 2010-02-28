@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-28 09:42-0600\n"
+"POT-Creation-Date: 2010-02-28 09:49-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -7523,10 +7523,6 @@ msgstr "Plantillas para informes"
 #: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:48
 msgid "Title|Report Template Properties"
 msgstr "Propiedades de la plantilla de informes "
-
-#: Miradi/source/org/miradi/dialogs/groupboxLink/GroupBoxLinkPropertiesPanel.java:62
-msgid "Group Box Link Properties"
-msgstr "Propiedades del enlace del cuadro de grupo"
 
 #: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:67
 msgid "Title|Objective Properties"
@@ -30283,6 +30279,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Group Box Link Properties"
+#~ msgstr "Propiedades del enlace del cuadro de grupo"
 
 #~ msgid "Tab|Group Box Link"
 #~ msgstr "Enlace del cuadro de grupo"
