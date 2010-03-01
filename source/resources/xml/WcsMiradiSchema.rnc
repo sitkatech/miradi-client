@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/18'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/19'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -65,7 +65,6 @@ ProjectResourcePool.element = element miradi:ProjectResourcePool { ProjectResour
 ProjectResource.element = element miradi:ProjectResource
 {
   attribute Id {xsd:integer}  &
-  element miradi:ProjectResourceName { text }? &
   element miradi:ProjectResourceResourceType { vocabulary_resource_type  } &
   element miradi:ProjectResourceGivenName { text }? &
   element miradi:ProjectResourceSurname { text }? &

@@ -35,8 +35,6 @@ public class ProjectResourcePoolExporter extends BaseObjectPoolExporter
 	@Override
 	protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception
 	{
-		super.exportFields(writer, baseObject);
-		
 		writeCodeElementSameAsTag(baseObject, ProjectResource.TAG_RESOURCE_TYPE, new ResourceTypeQuestion());
 		writeOptionalElementWithSameTag(baseObject, ProjectResource.TAG_GIVEN_NAME);
 		writeOptionalElementWithSameTag(baseObject, ProjectResource.TAG_SUR_NAME);
