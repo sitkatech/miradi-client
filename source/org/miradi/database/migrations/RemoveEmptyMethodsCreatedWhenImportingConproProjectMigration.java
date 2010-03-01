@@ -60,7 +60,7 @@ public class RemoveEmptyMethodsCreatedWhenImportingConproProjectMigration
 			File indicatorJsonFile = new File(getIndicatorDir(), Integer.toString(indicatorId.asInt()));
 			EnhancedJsonObject indicatorJson = DataUpgrader.readFile(indicatorJsonFile);
 			ORefList methodRefs = getMethodRefs(indicatorJson);
-			ORefList emptyMethodsToDelete = extractEmtyMethods(methodRefs);
+			ORefList emptyMethodsToDelete = extractEmptyMethods(methodRefs);
 			ORefList methodsToRemain = new ORefList(methodRefs);
 			methodsToRemain.removeAll(emptyMethodsToDelete);
 			updateIndicatorMethods(indicatorJsonFile, indicatorJson, methodsToRemain);
@@ -95,7 +95,7 @@ public class RemoveEmptyMethodsCreatedWhenImportingConproProjectMigration
 		DataUpgrader.writeJson(getMethodManifestFile(), methodManifestObject.toJson());
 	}
 	
-	private static ORefList extractEmtyMethods(ORefList methodRefs) throws Exception
+	private static ORefList extractEmptyMethods(ORefList methodRefs) throws Exception
 	{
 		ORefList emptyMethodRefs = new ORefList();
 		for (int index = 0; index < methodRefs.size(); ++index)
