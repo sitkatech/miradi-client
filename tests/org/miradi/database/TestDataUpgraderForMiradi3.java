@@ -50,6 +50,154 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 	{
 		super(name);
 	}
+	
+	public void testRemoveBudgetPlaceHoldersForEmptyProject() throws Exception
+	{
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion58();
+	}
+
+	public void testRemoveBudgetPlaceHoldersWithValueFromStrategyDetails() throws Exception
+	{
+		String strategyWithBudgetPlaceHolderWithData = "{\"ObjectiveIds\":\"\",\"Comments\":\"\",\"IndicatorIds\":\"{\\\"Ids\\\":[28]}\",\"ExpenseRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":51,\\\"ObjectId\\\":39}]}\",\"Type\":\"Intervention\",\"BudgetCostOverride\":\"12.0\",\"TaxonomyCode\":\"\",\"LegacyTncStrategyRanking\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"ImpactRating\":\"\",\"Text\":\"Migrated High Level Estimate:\\nBudget Override was: 12.0\\nWhen Override was: \\nWho Override was: \\n---------------------------------------------------\\n\",\"Status\":\"\",\"WhenOverride\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1267466939439\",\"ActivityIds\":\"{\\\"Ids\\\":[29]}\",\"FeasibilityRating\":\"\",\"BudgetCostMode\":\"BudgetOverrideMode\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"with override data\",\"Id\":22,\"ProgressReportRefs\":\"\"}";
+		String expectedUnchangedDetailsFieldValue = "Migrated High Level Estimate:\nBudget Override was: 12.0\nWhen Override was: \nWho Override was: \n---------------------------------------------------\n";
+		verifyRemoveStrategyBudgetPlaceHolderInDetailsField(strategyWithBudgetPlaceHolderWithData, expectedUnchangedDetailsFieldValue);
+	}
+	
+	public void testRemoveBudgetPlaceHoldersWithoutValueFromStrategyDetails() throws Exception
+	{
+		String strategyWithBudgetPlaceHolderWithNoData = "{\"ObjectiveIds\":\"\",\"Comments\":\"\",\"IndicatorIds\":\"{\\\"Ids\\\":[26]}\",\"Type\":\"Intervention\",\"BudgetCostOverride\":\"\",\"TaxonomyCode\":\"\",\"LegacyTncStrategyRanking\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"ImpactRating\":\"\",\"Text\":\"Migrated High Level Estimate:\\nBudget Override was: \\nWhen Override was: \\nWho Override was: \\n---------------------------------------------------\\n\",\"Status\":\"\",\"WhenOverride\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1267466915318\",\"ActivityIds\":\"{\\\"Ids\\\":[27]}\",\"FeasibilityRating\":\"\",\"BudgetCostMode\":\"BudgetOverrideMode\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"New Strategy\",\"Id\":24,\"ProgressReportRefs\":\"\"}";
+		String expectedBlankDetailsFieldValue = "";
+		verifyRemoveStrategyBudgetPlaceHolderInDetailsField(strategyWithBudgetPlaceHolderWithNoData, expectedBlankDetailsFieldValue);
+	}
+	
+	public void testRemoveBudgetPlaceHoldersWithUserCommentsBeforePlaceHoldersInStrategy() throws Exception
+	{
+		String strategyWithBudgetPlaceHolderWithUserEnteredDataBefore = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"{\\\"Ids\\\":[124]}\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Intervention\",\"ExpenseRefs\":\"\",\"LegacyTncStrategyRanking\":\"\",\"TaxonomyCode\":\"\",\"ShortLabel\":\"\",\"ImpactRating\":\"\",\"Status\":\"\",\"Text\":\"SOME USER DETAILS ENTERED BEFORE\\nMigrated High Level Estimate:\\nBudget Override was: \\nWhen Override was: \\nWho Override was: \\n---------------------------------------------------\\n\",\"TimeStampModified\":\"1267470059681\",\"ActivityIds\":\"{\\\"Ids\\\":[123]}\",\"FeasibilityRating\":\"\",\"Label\":\"New Strategy\",\"Id\":125,\"ProgressReportRefs\":\"\"}";
+		String expectedUnchangedDetailsFieldValue = "SOME USER DETAILS ENTERED BEFORE\nMigrated High Level Estimate:\nBudget Override was: \nWhen Override was: \nWho Override was: \n---------------------------------------------------\n";
+		verifyRemoveStrategyBudgetPlaceHolderInDetailsField(strategyWithBudgetPlaceHolderWithUserEnteredDataBefore, expectedUnchangedDetailsFieldValue);
+	}
+	
+	public void testRemoveStrategyBudgetPlaceHoldersWithUserCommentsAfterPlaceHolders() throws Exception
+	{
+		String strategyWithBudgetOverrideWithUserCommentsAfter = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"{\\\"Ids\\\":[130]}\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Intervention\",\"ExpenseRefs\":\"\",\"LegacyTncStrategyRanking\":\"\",\"TaxonomyCode\":\"\",\"ShortLabel\":\"\",\"ImpactRating\":\"\",\"Status\":\"\",\"Text\":\"Migrated High Level Estimate:\\nBudget Override was: \\nWhen Override was: \\nWho Override was: \\n---------------------------------------------------\\nSOME USER DATA ENTERED AFTER\",\"TimeStampModified\":\"1267470159017\",\"ActivityIds\":\"{\\\"Ids\\\":[129]}\",\"FeasibilityRating\":\"\",\"Label\":\"New AFTER\",\"Id\":131,\"ProgressReportRefs\":\"\"}";
+		String expectedUnchangedDetailsFieldValue = "SOME USER DATA ENTERED AFTER";
+		verifyRemoveStrategyBudgetPlaceHolderInDetailsField(strategyWithBudgetOverrideWithUserCommentsAfter, expectedUnchangedDetailsFieldValue);
+	}
+	
+	public void testRemoveStrategyBudgetPlaceHoldersWithNoDetails() throws Exception
+	{
+		String strategyWithoutBlankDetailsFieldValue = "{\"ObjectiveIds\":\"\",\"Comments\":\"\",\"IndicatorIds\":\"{\\\"Ids\\\":[35]}\",\"Type\":\"Intervention\",\"BudgetCostOverride\":\"\",\"TaxonomyCode\":\"\",\"LegacyTncStrategyRanking\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"ImpactRating\":\"\",\"Text\":\"\",\"Status\":\"\",\"GoalIds\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1267466955686\",\"ActivityIds\":\"{\\\"Ids\\\":[34]}\",\"BudgetCostMode\":\"\",\"FeasibilityRating\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Id\":30,\"Label\":\"New Strategy\",\"ProgressReportRefs\":\"\"}";
+		String expectedUnchangedBlankDetailsFieldValue = "";
+		verifyRemoveStrategyBudgetPlaceHolderInDetailsField(strategyWithoutBlankDetailsFieldValue, expectedUnchangedBlankDetailsFieldValue);
+	}
+	
+	public void verifyRemoveStrategyBudgetPlaceHolderInDetailsField(String taskString, String expectedDetailsFieldValue) throws Exception
+	{
+		final int STRATEGY_TYPE = 21;
+		verifyRemoveBudgetPlaceHoldersFromObject(STRATEGY_TYPE, taskString, "Text", expectedDetailsFieldValue);
+	}
+	
+	public void testRemoveBudgetPlaceHoldersWithValueFromIndicatorDetails() throws Exception
+	{
+		String indicatorWithBudgetPlaceHolderWithBudgetData = "{\"FutureStatusDetail\":\"\",\"RatingSource\":\"\",\"ExpenseRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":51,\\\"ObjectId\\\":38}]}\",\"MeasurementRefs\":\"\",\"Detail\":\"Migrated High Level Estimate:\\nBudget Override was: 12.0\\nWhen Override was: \\nWho Override was: \\n---------------------------------------------------\\n\",\"FutureStatusRating\":\"\",\"BudgetCostMode\":\"BudgetOverrideMode\",\"FutureStatusDate\":\"\",\"FutureStatusComment\":\"\",\"ViabilityRatingsComment\":\"\",\"ProgressReportRefs\":\"\",\"ThresholdDetails\":\"\",\"IndicatorThresholds\":\"\",\"Comments\":\"\",\"FutureStatusSummary\":\"\",\"BudgetCostOverride\":\"12.0\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Priority\":\"\",\"Status\":\"\",\"WhenOverride\":\"\",\"TaskIds\":\"\",\"TimeStampModified\":\"1267466937079\",\"Label\":\"\",\"Id\":28}";
+		String expectedUnchangedDetailsFieldValue = "Migrated High Level Estimate:\nBudget Override was: 12.0\nWhen Override was: \nWho Override was: \n---------------------------------------------------\n";
+		verifyRemoveIndicatorBudgetPlaceHolderInDetailsField(indicatorWithBudgetPlaceHolderWithBudgetData, expectedUnchangedDetailsFieldValue);
+	}
+	
+	public void testRemoveBudgetPlaceHoldersWithoutValueFromIndicatorDetails() throws Exception
+	{
+		String indicatorWithBudgetPlaceHolderWithNoData = "{\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"MeasurementRefs\":\"\",\"Detail\":\"Migrated High Level Estimate:\\nBudget Override was: \\nWhen Override was: \\nWho Override was: \\n---------------------------------------------------\\n\",\"FutureStatusRating\":\"\",\"BudgetCostMode\":\"BudgetOverrideMode\",\"FutureStatusDate\":\"\",\"FutureStatusComment\":\"\",\"ViabilityRatingsComment\":\"\",\"ProgressReportRefs\":\"\",\"IndicatorThresholds\":\"\",\"ThresholdDetails\":\"\",\"Comments\":\"\",\"FutureStatusSummary\":\"\",\"BudgetCostOverride\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Priority\":\"\",\"Status\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1267466905852\",\"TaskIds\":\"\",\"Id\":26,\"Label\":\"is override with no data\"}";
+		String expectedBlankDetailsFieldValue = "";
+		verifyRemoveIndicatorBudgetPlaceHolderInDetailsField(indicatorWithBudgetPlaceHolderWithNoData, expectedBlankDetailsFieldValue);
+	}
+	
+	public void testRemoveBudgetPlaceHoldersWithUserCommentsBeforePlaceHoldersInIndicator() throws Exception
+	{
+		String indicatorWithBudgetPlaceHolderWithUserCommentsBefore = "{\"ThresholdDetails\":\"\",\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"FutureStatusSummary\":\"\",\"ExpenseRefs\":\"\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"\",\"Priority\":\"\",\"Detail\":\"SOME USER DETAILS ENTERED BEFORE\\nMigrated High Level Estimate:\\nBudget Override was: \\nWhen Override was: \\nWho Override was: \\n---------------------------------------------------\\n\",\"FutureStatusRating\":\"\",\"TaskIds\":\"\",\"TimeStampModified\":\"1267470865278\",\"FutureStatusDate\":\"\",\"Label\":\"is override with no data\",\"Id\":124,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
+		String expectedUnchangedDetailsFieldValue = "SOME USER DETAILS ENTERED BEFORE\nMigrated High Level Estimate:\nBudget Override was: \nWhen Override was: \nWho Override was: \n---------------------------------------------------\n";
+		verifyRemoveIndicatorBudgetPlaceHolderInDetailsField(indicatorWithBudgetPlaceHolderWithUserCommentsBefore, expectedUnchangedDetailsFieldValue);
+	}
+	
+	public void testRemoveIndicatorBudgetPlaceHoldersWithUserCommentsAfterPlaceHolders() throws Exception
+	{
+		String indicatorWithBudgetPlaceHolderWithUserCommentsAfter = "{\"ThresholdDetails\":\"\",\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"FutureStatusSummary\":\"\",\"ExpenseRefs\":\"\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"\",\"Priority\":\"\",\"Detail\":\"Migrated High Level Estimate:\\nBudget Override was: \\nWhen Override was: \\nWho Override was: \\n---------------------------------------------------\\nSOME USER DATA ENTERED AFTER\",\"FutureStatusRating\":\"\",\"TaskIds\":\"\",\"TimeStampModified\":\"1267470851517\",\"FutureStatusDate\":\"\",\"Label\":\"is override with no data\",\"Id\":130,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
+		String expectedUnchangedDetailsFieldValue = "SOME USER DATA ENTERED AFTER";
+		verifyRemoveIndicatorBudgetPlaceHolderInDetailsField(indicatorWithBudgetPlaceHolderWithUserCommentsAfter, expectedUnchangedDetailsFieldValue);
+	}
+	
+	public void testRemoveIndicatorBudgetPlaceHoldersWithNoDetails() throws Exception
+	{
+		String indicatorWithoutBlankDetailsFieldValue = "{\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"MeasurementRefs\":\"\",\"Detail\":\"\",\"FutureStatusRating\":\"\",\"FutureStatusDate\":\"\",\"BudgetCostMode\":\"\",\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\",\"IndicatorThresholds\":\"\",\"ThresholdDetails\":\"\",\"Comments\":\"\",\"FutureStatusSummary\":\"\",\"BudgetCostOverride\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Priority\":\"\",\"Status\":\"\",\"WhenOverride\":\"\",\"TaskIds\":\"\",\"TimeStampModified\":\"1267466955676\",\"Label\":\"\",\"Id\":35}";
+		String expectedUnchangedBlankDetailsFieldValue = "";
+		verifyRemoveIndicatorBudgetPlaceHolderInDetailsField(indicatorWithoutBlankDetailsFieldValue, expectedUnchangedBlankDetailsFieldValue);
+	}
+	
+	public void verifyRemoveIndicatorBudgetPlaceHolderInDetailsField(String taskString, String expectedDetailsFieldValue) throws Exception
+	{
+		final int INDICATOR_TYPE = 8;
+		verifyRemoveBudgetPlaceHoldersFromObject(INDICATOR_TYPE, taskString, "Detail", expectedDetailsFieldValue);
+	}
+	
+	public void testRemoveBudgetPlaceHoldersWithValueFromTaskDetails() throws Exception
+	{
+		String taskWithBudgetPlaceHolderWithBudgetData = "{\"ObjectiveIds\":\"\",\"Comments\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":51,\\\"ObjectId\\\":37}]}\",\"Type\":\"Activity\",\"Details\":\"Migrated High Level Estimate:\\nBudget Override was: 12.0\\nWhen Override was: \\nWho Override was: \\n---------------------------------------------------\\n\",\"BudgetCostOverride\":\"12.0\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1267466944611\",\"BudgetCostMode\":\"BudgetOverrideMode\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"\",\"Id\":29,\"ProgressReportRefs\":\"\"}";
+		String expectedUnchangedDetailsFieldValue = "Migrated High Level Estimate:\nBudget Override was: 12.0\nWhen Override was: \nWho Override was: \n---------------------------------------------------\n";
+		verifyRemoveTaskBudgetPlaceHolderInDetailsField(taskWithBudgetPlaceHolderWithBudgetData, expectedUnchangedDetailsFieldValue);
+	}
+	
+	public void testRemoveBudgetPlaceHoldersWithoutValueFromTaskDetails() throws Exception
+	{
+		String taskWithBudgetPlaceHolderWithNoData = "{\"ObjectiveIds\":\"\",\"Comments\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"Migrated High Level Estimate:\\nBudget Override was: \\nWhen Override was: \\nWho Override was: \\n---------------------------------------------------\\n\",\"BudgetCostOverride\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Text\":\"\",\"WhenOverride\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1267466916531\",\"BudgetCostMode\":\"BudgetOverrideMode\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"\",\"Id\":27,\"ProgressReportRefs\":\"\"}";
+		String expectedBlankDetailsFieldValue = "";
+		verifyRemoveTaskBudgetPlaceHolderInDetailsField(taskWithBudgetPlaceHolderWithNoData, expectedBlankDetailsFieldValue);
+	}
+	
+	public void testRemoveBudgetPlaceHoldersWithUserCommentsBeforePlaceHolders() throws Exception
+	{
+		String taskWithBudgetPlaceHolderWithUserCommentsBefore = "{\"ObjectiveIds\":\"\",\"Comments\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"SOME USER COMMENTS BEFORE\\n Migrated High Level Estimate:\\nBudget Override was: \\nWhen Override was: \\nWho Override was: \\n---------------------------------------------------\\n\",\"BudgetCostOverride\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Text\":\"\",\"WhenOverride\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1267466916531\",\"BudgetCostMode\":\"BudgetOverrideMode\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"\",\"Id\":30,\"ProgressReportRefs\":\"\"}";
+		String expectedUnchangedDetailsFieldValue = "SOME USER COMMENTS BEFORE\n Migrated High Level Estimate:\nBudget Override was: \nWhen Override was: \nWho Override was: \n---------------------------------------------------\n";
+		verifyRemoveTaskBudgetPlaceHolderInDetailsField(taskWithBudgetPlaceHolderWithUserCommentsBefore, expectedUnchangedDetailsFieldValue);
+	}
+	
+	public void testRemoveBudgetPlaceHoldersWithUserCommentsAfterPlaceHolders() throws Exception
+	{
+		String taskWithBudgetPlaceHolderWithUserCommentsAfter = "{\"ObjectiveIds\":\"\",\"Comments\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"Migrated High Level Estimate:\\nBudget Override was: \\nWhen Override was: \\nWho Override was: \\n---------------------------------------------------\\nSOME USER COMMENTS AFTER\",\"BudgetCostOverride\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Text\":\"\",\"WhenOverride\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1267466916531\",\"BudgetCostMode\":\"BudgetOverrideMode\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"\",\"Id\":30,\"ProgressReportRefs\":\"\"}";
+		String expectedUnchangedDetailsFieldValue = "SOME USER COMMENTS AFTER";
+		verifyRemoveTaskBudgetPlaceHolderInDetailsField(taskWithBudgetPlaceHolderWithUserCommentsAfter, expectedUnchangedDetailsFieldValue);
+	}
+	
+	public void testRemoveBudgetPlaceHoldersWithNoDetails() throws Exception
+	{
+		String taskWithoutBlankDetailsFieldValue = "{\"ObjectiveIds\":\"\",\"Comments\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"\",\"BudgetCostOverride\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Text\":\"\",\"WhenOverride\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1267466953783\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Id\":34,\"Label\":\"\",\"ProgressReportRefs\":\"\"}";
+		String expectedUnchangedBlankDetailsFieldValue = "";
+		verifyRemoveTaskBudgetPlaceHolderInDetailsField(taskWithoutBlankDetailsFieldValue, expectedUnchangedBlankDetailsFieldValue);
+	}
+	
+	public void verifyRemoveTaskBudgetPlaceHolderInDetailsField(String taskString, String expectedDetailsFieldValue) throws Exception
+	{
+		final int TASK_TYPE = 3;
+		verifyRemoveBudgetPlaceHoldersFromObject(TASK_TYPE, taskString, "Details", expectedDetailsFieldValue);
+	}
+	
+	public void verifyRemoveBudgetPlaceHoldersFromObject(final int objectType, String singleObjectString, String detailsTag, String expectedDetailsFieldValue) throws Exception
+	{
+		File jsonDir = createJsonDir();
+		int[] singleObjectIdArray = createAndPopulateObjectDir(jsonDir, objectType, singleObjectString);
+		
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion58();
+	
+		File objectDir = DataUpgrader.getObjectsDir(jsonDir, objectType);
+		File manifestFile = new File(objectDir, "manifest");
+		assertTrue("manifest file could not be found?", manifestFile.exists());
+		
+		File objectFile = new File(objectDir, Integer.toString(singleObjectIdArray[0]));
+		assertTrue("Object file was not created?", objectFile.exists());
+		EnhancedJsonObject objectJson = new EnhancedJsonObject(readFile(objectFile));
+		String details = objectJson.optString(detailsTag);
+		assertEquals("wrong lanel?", expectedDetailsFieldValue, details);
+	}
 
 	public void testRemoveEmptyMethodsForEmptyProject() throws Exception
 	{
