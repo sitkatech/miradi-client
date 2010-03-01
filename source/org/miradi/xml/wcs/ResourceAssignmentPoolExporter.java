@@ -42,36 +42,43 @@ public class ResourceAssignmentPoolExporter extends AbstractAssignmentPoolExport
 		exportDateUnitEfforList(resourceAssignment.getDateUnitEffortList(), WcsXmlConstants.DATE_UNIT_WORK_UNITS);
 	}
 	
+	@Override
 	protected String getDateUnitElementName()
 	{
 		return WcsXmlConstants.WORK_UNITS_DATE_UNIT;
 	}
 	
+	@Override
 	protected String getDayElementName()
 	{
 		return WORK_UNITS_DAY;
 	}
 	
+	@Override
 	protected String getMonthElementName()
 	{
 		return WORK_UNITS_MONTH;
 	}
 	
+	@Override
 	protected String getQuarterElementName()
 	{
 		return WORK_UNITS_QUARTER;
 	}
 	
+	@Override
 	protected String getYearElementName()
 	{
 		return WORK_UNITS_YEAR;
 	}
 	
+	@Override
 	protected String getFullProjectTimespanElementName()
 	{
 		return WORK_UNITS_FULL_PROJECT_TIMESPAN;
 	}
 	
+	@Override
 	protected String getQuantatityElementName()
 	{
 		return WcsXmlConstants.WORK_UNITS;
