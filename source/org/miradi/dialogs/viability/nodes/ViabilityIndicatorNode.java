@@ -50,6 +50,11 @@ public class ViabilityIndicatorNode extends TreeTableNode
 	@Override
 	public BaseObject getObject()
 	{
+		return getIndicator();
+	}
+
+	private Indicator getIndicator()
+	{
 		return indicator;
 	}
 
@@ -104,7 +109,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		
 		String data = getObject().getData(tag);
 		
-		if(tag.equals(Indicator.TAG_RATING_SOURCE))
+		if(tag.equals(Indicator.TAG_RATING_SOURCE) && getIndicator().isViabilityIndicator())
 			return new RatingSourceQuestion().findChoiceByCode(data);
 		
 		if (tag.equals(Indicator.TAG_INDICATOR_THRESHOLD))
