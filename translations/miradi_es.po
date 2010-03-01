@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-01 14:46-0600\n"
+"POT-Creation-Date: 2010-03-01 16:28-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -41,20 +41,20 @@ msgstr ""
 msgid "Task does not have a parent"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:81
+#: Miradi/source/org/miradi/database/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:76
 #: Miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:131
 msgid "Migrated High Level Estimate:"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:84
+#: Miradi/source/org/miradi/database/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:79
 msgid "Budget Override was: "
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:86
+#: Miradi/source/org/miradi/database/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:81
 msgid "When Override was: "
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:88
+#: Miradi/source/org/miradi/database/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:83
 msgid "Who Override was: "
 msgstr ""
 
