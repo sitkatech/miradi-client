@@ -34,7 +34,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class RemoveEmptyMethodsCreatedWhenImportingContproProjectMigration
+public class RemoveEmptyMethodsCreatedWhenImportingConproProjectMigration
 {
 	public static void removeEmptyMethodsInProjectsWithConproId() throws Exception
 	{
