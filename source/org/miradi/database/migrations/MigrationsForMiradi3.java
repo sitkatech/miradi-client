@@ -215,4 +215,10 @@ public class MigrationsForMiradi3
 		RemoveEmptyMethodsCreatedWhenImportingConproProjectMigration.removeEmptyMethodsInProjectsWithConproId();
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 57);
 	}
+		
+	public static void upgradeToVersion58() throws Exception
+	{
+		RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.removeBlankBudgetPlaceHoldersFromDetailsField();
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 58);
+	}
 }
