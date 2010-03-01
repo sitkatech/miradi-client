@@ -212,7 +212,7 @@ public class MigrationsForMiradi3
 	
 	public static void upgradeToVersion57() throws Exception
 	{
-		RemoveEmptyMethodsCreatedWhenImportingContproProjectMigration.removeEmptyMethodsInProjectsWithConproId();
+		RemoveEmptyMethodsCreatedWhenImportingConproProjectMigration.removeEmptyMethodsInProjectsWithConproId();
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 57);
 	}
 }
