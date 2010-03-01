@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
@@ -1014,6 +1015,24 @@ abstract public class BaseObject
 	{
 		ORefList refList = field.getRefList();
 		return refList;
+	}
+	
+	public ORefList createRefList(String tag, String unknonwListTypeAsString) throws ParseException 
+	{
+		if (isRefList(tag))
+		{
+			return new ORefList(unknonwListTypeAsString);
+		}
+		
+		if (isIdListTag(tag))
+		{
+			final int type = getType();
+			IdList idList = new IdList(type, unknonwListTypeAsString);
+
+			return new ORefList(type, idList);
+		}
+		
+		throw new RuntimeException("List as string is not a known list type: " + unknonwListTypeAsString + " for ref:" + getRef());
 	}
 	
 	public ORefList getOwnedObjects(int objectType)
