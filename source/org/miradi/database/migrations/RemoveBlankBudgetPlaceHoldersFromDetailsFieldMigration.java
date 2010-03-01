@@ -54,26 +54,21 @@ public class RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration
 			File objectFile = new File(getObjectsDir(objectType), id.toString());
 			EnhancedJsonObject objectJson = DataUpgrader.readFile(objectFile);
 			String detailsString = objectJson.optString(detailsTag);
-			if (shouldStringOutBlankBudgetOverride(detailsString))
+			String withoutBlankBudgetOverride = extractDetailsWithoutBlankBudgetOverride(detailsString);
+			if (!withoutBlankBudgetOverride.equals(detailsString))
 			{
-				String withoutBlankBudgetOverride = getDetailsWithoutBlankBudgetOverride(detailsString);
 				objectJson.put(detailsTag, withoutBlankBudgetOverride);
 				DataUpgrader.writeJson(objectFile, objectJson);
 			}
 		}
 	}
 
-	private static boolean shouldStringOutBlankBudgetOverride(String detailsString)
+	private static String extractDetailsWithoutBlankBudgetOverride(String detailsString)
 	{
 		if (detailsString.startsWith(getBlankBudgetOverrideValue()))
-			return true;
+			return detailsString.replaceFirst(getBlankBudgetOverrideValue(), "");
 		
-		return false;
-	}
-
-	private static String getDetailsWithoutBlankBudgetOverride(String detailsString)
-	{
-		return detailsString.replaceFirst(getBlankBudgetOverrideValue(), "");
+		return detailsString;
 	}
 
 	private static String getBlankBudgetOverrideValue()
