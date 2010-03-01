@@ -64,7 +64,7 @@ public class RemoveEmptyMethodsCreatedWhenImportingConproProjectMigration
 			ORefList methodsToRemain = new ORefList(methodRefs);
 			methodsToRemain.removeAll(emptyMethodsToDelete);
 			updateIndicatorMethods(indicatorJsonFile, indicatorJson, methodsToRemain);
-			removeMethods(emptyMethodsToDelete);
+			deleteMethodObjects(emptyMethodsToDelete);
 		}
 	}
 
@@ -81,7 +81,7 @@ public class RemoveEmptyMethodsCreatedWhenImportingConproProjectMigration
 		DataUpgrader.writeJson(indicatorJsonFile, indicatorJson);
 	}
 	
-	private static void removeMethods(ORefList idsToRemove) throws Exception
+	private static void deleteMethodObjects(ORefList idsToRemove) throws Exception
 	{
 		ObjectManifest methodManifestObject = new ObjectManifest(JSONFile.read(getMethodManifestFile()));
 		for (int index = 0; index < idsToRemove.size(); ++index)
