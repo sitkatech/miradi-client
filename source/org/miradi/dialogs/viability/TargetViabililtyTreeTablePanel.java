@@ -62,6 +62,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButton
 		treeTableScrollPane.getViewport().setBackground(AppPreferences.getDataPanelBackgroundColor());
 	}
 	
+	@Override
 	public Dimension getPreferredSize()
 	{
 		return new Dimension(super.getPreferredSize().width, 100);
@@ -71,6 +72,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButton
 	// to see if it really needs to rebuld its tree under all these conditions
 	// Also, taskTreeTablePanel and TargetViabilityTreeTablePanel should have very similar 
 	// CommandExecuted methods with very similar structures
+	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		GenericTreeTableModel treeTableModel = getTreeTableModel();
