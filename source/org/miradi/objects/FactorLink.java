@@ -19,9 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import org.miradi.exceptions.FactorLinkPointingToMissingEndException;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
-import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ORefData;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
@@ -68,11 +68,11 @@ public class FactorLink extends BaseObject
 		return false;
 	}
 			
-	public Factor getFromFactor()
+	public Factor getFromFactor() throws Exception
 	{
 		Factor fromFactor = Factor.findFactor(getProject(), getFromFactorRef());
 		if (fromFactor == null)
-			EAM.logError("From Factor (ref = " + getFromFactorRef() + ")for link (ref = " + getRef() + ") was null.");
+			throw new FactorLinkPointingToMissingEndException("From Factor (ref = " + getFromFactorRef() + ")for link (ref = " + getRef() + ") was null.");
 		
 		return fromFactor;
 	}
@@ -83,11 +83,11 @@ public class FactorLink extends BaseObject
 		return new ORef(rawRef.getObjectType(), new FactorId(rawRef.getObjectId().asInt()));
 	}
 	
-	public Factor getToFactor()
+	public Factor getToFactor() throws Exception
 	{
 		Factor toFactor = Factor.findFactor(getProject(), getToFactorRef());
 		if (toFactor == null)
-			EAM.logError("To Factor (ref = " + getToFactorRef() + ")for link (ref = " + getRef() + ") was null.");
+			throw new FactorLinkPointingToMissingEndException("To Factor (ref = " + getToFactorRef() + ")for link (ref = " + getRef() + ") was null.");
 		
 		return toFactor;
 	}
