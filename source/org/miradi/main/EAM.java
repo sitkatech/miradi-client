@@ -238,7 +238,9 @@ public class EAM
 	
 	public static void logException(Exception e)
 	{
-		Toolkit.getDefaultToolkit().beep();
+		if (Miradi.isAlphaTesterMode())
+			Toolkit.getDefaultToolkit().beep();
+		
 		logger.logException(e);
 	}
 	
