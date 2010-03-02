@@ -42,6 +42,7 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 		return baseObjectRefs.size();
 	}
 	
+	@Override
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
 		if(hierarchyToSelectedRef.length == 0)
