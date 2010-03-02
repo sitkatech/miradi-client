@@ -43,7 +43,6 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.Project;
 import org.miradi.utils.ColumnSortListener;
 import org.miradi.utils.SortableTable;
 import org.miradi.utils.UiTableWithAlternatingRows;
@@ -163,11 +162,6 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		return selectedHierarchies;
 	}
 
-	public Project getProject()
-	{
-		return getObjectTableModel().getProject();
-	}
-	
 	public int getProportionShares(int row)
 	{
 		return 1;
