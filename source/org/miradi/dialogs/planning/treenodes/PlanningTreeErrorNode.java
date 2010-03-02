@@ -19,27 +19,43 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.treenodes;
 
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
 public class PlanningTreeErrorNode extends AbstractPlanningTreeNode
 {
-	public PlanningTreeErrorNode(Project projectToUse)
+	public PlanningTreeErrorNode(Project project, ORef refToAdd)
 	{
-		super(projectToUse, new CodeList());
+		super(project, new CodeList(new String[]{Integer.toString(refToAdd.getObjectType()), }));
+		
+		ref = refToAdd;
 	}
 
 	@Override
 	public BaseObject getObject()
 	{
-		return null;
+		return BaseObject.find(getProject(), getObjectReference());
+	}
+	
+	@Override
+	public ORef getObjectReference()
+	{
+		return ref;
+	}
+	
+	@Override
+	public int getType()
+	{
+		return getObjectReference().getObjectType();
 	}
 	
 	@Override
 	public String toRawString()
 	{
-		return "Error initializing subview";
+		return EAM.substitute(EAM.text("Error Creating: %s"), getObject().getLabel()) ;
 	}
 	
 	@Override
@@ -47,4 +63,12 @@ public class PlanningTreeErrorNode extends AbstractPlanningTreeNode
 	{
 		// NOTE: Avoid a call to super rebuild because it always throws
 	}
+	
+	@Override
+	public String getObjectTypeName()
+	{
+		return getObject().getTypeName();
+	}
+	
+	private ORef ref;
 }

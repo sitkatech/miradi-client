@@ -24,6 +24,7 @@ import java.util.Comparator;
 import java.util.Vector;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.exceptions.FactorLinkPointingToMissingEndException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -397,35 +398,42 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	protected AbstractPlanningTreeNode createChildNode(ORef refToAdd, DiagramObject diagram) throws Exception
 	{
 		int type = refToAdd.getObjectType();
-		if(type == ConceptualModelDiagram.getObjectType())
-			return new PlanningTreeConceptualModelPageNode(project, refToAdd, visibleRows);
-		if(type == ResultsChainDiagram.getObjectType())
-			return new PlanningTreeResultsChainNode(project, refToAdd, visibleRows);
-		if(AbstractTarget.isAbstractTarget(type))
-			return new PlanningTreeTargetNode(project, diagram, refToAdd, visibleRows);
-		if(type == Goal.getObjectType())
-			return new PlanningTreeGoalNode(project, diagram, refToAdd, visibleRows);
-		if(type == Objective.getObjectType())
-			return new PlanningTreeObjectiveNode(project, diagram, refToAdd, visibleRows);
-		if(type == Cause.getObjectType())
-			return new PlanningTreeDirectThreatNode(project, diagram, refToAdd, visibleRows);
-		if(type == ThreatReductionResult.getObjectType())
-			return new PlanningTreeThreatReductionResultNode(project, diagram, refToAdd, visibleRows);
-		if(type == IntermediateResult.getObjectType())
-			return new PlanningTreeIntermediateResultsNode(project, diagram, refToAdd, visibleRows);
-		if(type == Strategy.getObjectType())
-			return new PlanningTreeStrategyNode(project, refToAdd, visibleRows);
-		if(type == Indicator.getObjectType())
-			return new PlanningTreeIndicatorNode(project, refToAdd, visibleRows);
-		if (type == Measurement.getObjectType())
-			return new PlanningTreeMeasurementNode(project, refToAdd, visibleRows);
-		if (type == Task.getObjectType())
-			throw new RuntimeException(EAM.text("This method is not responsible for creating task nodes."));
-		if (type == ResourceAssignment.getObjectType())
-			return new PlanningTreeResourceAssignmentNode(project, refToAdd, visibleRows);
-		if (type == ExpenseAssignment.getObjectType())
-			return new PlanningTreeExpenseAssignmentNode(project, refToAdd, visibleRows);
-		
+		try
+		{
+			if(type == ConceptualModelDiagram.getObjectType())
+				return new PlanningTreeConceptualModelPageNode(project, refToAdd, visibleRows);
+			if(type == ResultsChainDiagram.getObjectType())
+				return new PlanningTreeResultsChainNode(project, refToAdd, visibleRows);
+			if(AbstractTarget.isAbstractTarget(type))
+				return new PlanningTreeTargetNode(project, diagram, refToAdd, visibleRows);
+			if(type == Goal.getObjectType())
+				return new PlanningTreeGoalNode(project, diagram, refToAdd, visibleRows);
+			if(type == Objective.getObjectType())
+				return new PlanningTreeObjectiveNode(project, diagram, refToAdd, visibleRows);
+			if(type == Cause.getObjectType())
+				return new PlanningTreeDirectThreatNode(project, diagram, refToAdd, visibleRows);
+			if(type == ThreatReductionResult.getObjectType())
+				return new PlanningTreeThreatReductionResultNode(project, diagram, refToAdd, visibleRows);
+			if(type == IntermediateResult.getObjectType())
+				return new PlanningTreeIntermediateResultsNode(project, diagram, refToAdd, visibleRows);
+			if(type == Strategy.getObjectType())
+				return new PlanningTreeStrategyNode(project, refToAdd, visibleRows);
+			if(type == Indicator.getObjectType())
+				return new PlanningTreeIndicatorNode(project, refToAdd, visibleRows);
+			if (type == Measurement.getObjectType())
+				return new PlanningTreeMeasurementNode(project, refToAdd, visibleRows);
+			if (type == Task.getObjectType())
+				throw new RuntimeException(EAM.text("This method is not responsible for creating task nodes."));
+			if (type == ResourceAssignment.getObjectType())
+				return new PlanningTreeResourceAssignmentNode(project, refToAdd, visibleRows);
+			if (type == ExpenseAssignment.getObjectType())
+				return new PlanningTreeExpenseAssignmentNode(project, refToAdd, visibleRows);
+		}
+		catch (FactorLinkPointingToMissingEndException e)
+		{
+			EAM.logException(e);
+			return new PlanningTreeErrorNode(getProject(), refToAdd);
+		}
 				
 		throw new Exception("Attempted to create node of unknown type: " + refToAdd);
 	}

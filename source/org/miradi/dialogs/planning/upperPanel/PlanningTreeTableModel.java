@@ -20,8 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
-import org.miradi.dialogs.planning.treenodes.PlanningTreeErrorNode;
 import org.miradi.dialogs.planning.treenodes.HiddenProjectRootNode;
+import org.miradi.dialogs.planning.treenodes.PlanningTreeErrorNode;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
@@ -56,7 +56,7 @@ abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 		{
 			EAM.logException(e);
 			EAM.errorDialog(EAM.text("<HTML>A severe error has prevented this Planning Subview from being shown.<BR>Please contact Miradi Support (<a href=\"mailto:support@miradi.org\">support@miradi.org<a>) for assistance</HTML>"));
-			return new PlanningTreeErrorNode(projectToUse); 
+			return new PlanningTreeErrorNode(projectToUse, projectToUse.getMetadata().getRef()); 
 		}
 	}
 	

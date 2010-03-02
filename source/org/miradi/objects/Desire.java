@@ -210,7 +210,7 @@ abstract public class Desire extends BaseObject
 		}
 	}
 
-	private ORefList getDirectlyUpstreamNonDraftStrategies()
+	private ORefList getDirectlyUpstreamNonDraftStrategies() throws Exception
 	{
 		Factor owningFactor = getDirectOrIndirectOwningFactor();
 		if(owningFactor == null)
