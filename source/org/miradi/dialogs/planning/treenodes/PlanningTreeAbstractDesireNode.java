@@ -44,6 +44,7 @@ abstract public class PlanningTreeAbstractDesireNode extends AbstractPlanningTre
 		diagramObject = diagramObjectToUse;
 	}
 	
+	@Override
 	public void rebuild() throws Exception
 	{
 		ORefList relevantStrategyAndActivityRefs = desire.getRelevantStrategyAndActivityRefs();
