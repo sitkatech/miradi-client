@@ -38,8 +38,8 @@ import org.miradi.dialogs.fieldComponents.PanelComboBox;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DateTableCellEditorAndRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
-import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.FloatingPointRestrictedTableCellRendererEditorFactory;
+import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.NonNegativeIntegerRestrictedTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory;
 import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
@@ -49,7 +49,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
-import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticChoiceQuestion;
@@ -80,11 +79,6 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 	protected int getMaximumTableHeightBeforeScroll()
 	{
 		return MAXIMUM_VIEWPORT_HEIGHT;
-	}
-	
-	public Project getProject()
-	{
-		return getMainWindow().getProject();
 	}
 	
 	protected ObjectManager getObjectManager()

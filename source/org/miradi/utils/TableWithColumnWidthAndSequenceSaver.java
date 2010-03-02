@@ -39,7 +39,6 @@ import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.TableSettings;
-import org.miradi.project.Project;
 
 abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowHeightSaver implements CommandExecutedListener, TableWithColumnManagement, ColumnWidthProvider
 {
@@ -201,11 +200,6 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 	{
 		int defaultWidth = getColumnModel().getColumn(tableColumn).getWidth();
 		return Math.max(columnHeaderWidth, defaultWidth);
-	}
-	
-	private Project getProject()
-	{
-		return getMainWindow().getProject();
 	}
 	
 	//NOTE: This method is duplicated from JTable.  

@@ -23,6 +23,7 @@ import javax.swing.table.TableModel;
 
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererEditorFactory;
 import org.miradi.main.MainWindow;
+import org.miradi.project.Project;
 import org.miradi.utils.TableRowHeightManager;
 import org.miradi.utils.TableWithHelperMethods;
 
@@ -45,6 +46,11 @@ public class PanelTable extends TableWithHelperMethods
 	public MainWindow getMainWindow()
 	{
 		return mainWindow;
+	}
+	
+	public Project getProject()
+	{
+		return getMainWindow().getProject();
 	}
 	
 	private static final int INTERCELL_LINE_SIZE = 3;

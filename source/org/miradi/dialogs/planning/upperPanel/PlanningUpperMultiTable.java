@@ -54,7 +54,6 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.tablerenderers.WhoColumnTableCellEditorFactory;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.DoubleClickAutoSelectCellEditor;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
@@ -213,11 +212,6 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	{
 		int modelColumn = getCastedModel().findColumnWithinSubTable(convertColumnIndexToModel(tableColumnIndex));
 		return modelColumn;
-	}
-	
-	public Project getProject()
-	{
-		return getMainWindow().getProject();
 	}
 	
 	private Actions getActions()
