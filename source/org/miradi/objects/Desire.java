@@ -52,6 +52,7 @@ abstract public class Desire extends BaseObject
 		super(objectManager, idToUse, json);
 	}
 
+	@Override
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_PROGRESS_PERCENT_REFS))
@@ -60,6 +61,7 @@ abstract public class Desire extends BaseObject
 		return super.getAnnotationType(tag);
 	}
 	
+	@Override
 	public boolean isRefList(String tag)
 	{
 		if (tag.equals(TAG_PROGRESS_PERCENT_REFS))
@@ -82,8 +84,10 @@ abstract public class Desire extends BaseObject
 		return progressPercentRefs.getRefList();
 	}
 	
+	@Override
 	abstract public int getType();
 
+	@Override
 	public String getShortLabel()
 	{
 		return shortLabel.get();
@@ -94,6 +98,7 @@ abstract public class Desire extends BaseObject
 		return fullText.get();
 	}
 
+	@Override
 	public String toString()
 	{
 		if(getId().isInvalid())
@@ -101,6 +106,7 @@ abstract public class Desire extends BaseObject
 		return combineShortLabelAndLabel(shortLabel.toString(), getLabel());
 	}
 
+	@Override
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_TARGETS))
@@ -162,6 +168,7 @@ abstract public class Desire extends BaseObject
 		
 	}
 
+	@Override
 	public boolean isRelevancyOverrideSet(String tag)
 	{
 		if (tag.equals(TAG_RELEVANT_INDICATOR_SET))
@@ -358,6 +365,7 @@ abstract public class Desire extends BaseObject
 		return Goal.is(objectType);
 	}
 
+	@Override
 	void clear()
 	{
 		super.clear();
