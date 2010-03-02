@@ -99,7 +99,7 @@ public class ThreatStressRatingEditorComponent extends DisposablePanel
 	private void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
 		threatStressRatingTable.stopCellEditing();
-		threatStressRatingTableModel.setObjectRefs(hierarchyToSelectedRef);
+		threatStressRatingTableModel.setObjectRefs(new ORefList(hierarchyToSelectedRef));
 		fireTableDataChanged();
 	}
 	

@@ -123,8 +123,8 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 			setRef(baseObjectRef);
 		}
 	
-		abstractSummaryTableModel.setObjectRefs(hierarchyToSelectedRef);
-		assignmentDateUnitsTableModel.setObjectRefs(hierarchyToSelectedRef);
+		abstractSummaryTableModel.setObjectRefs(new ORefList(hierarchyToSelectedRef));
+		assignmentDateUnitsTableModel.setObjectRefs(new ORefList(hierarchyToSelectedRef));
 		
 		abstractSummaryTableModel.fireTableDataChanged();
 		assignmentDateUnitsTableModel.fireTableDataChanged();

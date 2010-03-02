@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
@@ -36,7 +35,7 @@ public abstract class EditableObjectRefsTableModel extends EditableObjectTableMo
 	}
 	
 	@Override
-	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	public void setObjectRefs(ORefList hierarchyToSelectedRef)
 	{
 		clearRefs();
 		refs = extractOutEditableRefs(new ORefList(hierarchyToSelectedRef));

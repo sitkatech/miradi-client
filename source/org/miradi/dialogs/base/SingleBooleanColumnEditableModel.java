@@ -96,7 +96,7 @@ abstract public class SingleBooleanColumnEditableModel extends EditableObjectTab
 	}
 
 	@Override
-	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	public void setObjectRefs(ORefList hierarchyToSelectedRef)
 	{
 		//FIXME urgent: should this do something
 	}

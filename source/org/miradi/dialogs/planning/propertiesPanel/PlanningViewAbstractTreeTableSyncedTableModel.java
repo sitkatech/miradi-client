@@ -25,7 +25,7 @@ import org.miradi.dialogs.base.ChoiceItemTableModel;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
@@ -56,7 +56,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	}
 	
 	@Override
-	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	public void setObjectRefs(ORefList hierarchyToSelectedRef)
 	{
 	}
 	
