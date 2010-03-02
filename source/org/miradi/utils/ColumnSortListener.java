@@ -31,6 +31,7 @@ public class ColumnSortListener extends MouseAdapter
 		tableToSort = tableToManage;
 	}
 	
+	@Override
 	public void mouseClicked(MouseEvent e) 
 	{
 		int clickedTableColumn = ((JTableHeader)e.getSource()).columnAtPoint(e.getPoint());
