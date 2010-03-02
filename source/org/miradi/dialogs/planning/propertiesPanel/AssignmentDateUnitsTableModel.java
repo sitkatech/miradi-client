@@ -409,11 +409,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	}
 
 	@Override
-	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
-	{
-	}
-
-	@Override
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return getProvider().getBaseObjectForRowColumn(row, column);
