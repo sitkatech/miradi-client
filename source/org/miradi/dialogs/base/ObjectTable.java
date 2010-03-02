@@ -25,7 +25,6 @@ import java.util.Vector;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 
 import org.miradi.commands.CommandSetObjectData;
@@ -41,7 +40,6 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.utils.ColumnSortListener;
 import org.miradi.utils.SortableRowTable;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -54,10 +52,6 @@ abstract public class ObjectTable extends SortableRowTable implements ObjectPick
 		selectionListeners = new Vector();
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
-		JTableHeader columnHeader = getTableHeader();
-		columnHeader.setReorderingAllowed(true);
-		ColumnSortListener sortListener = new ColumnSortListener(this);
-		columnHeader.addMouseListener(sortListener);
 		resizeTable(4);
 		setAutoResizeMode(AUTO_RESIZE_OFF);
 		
