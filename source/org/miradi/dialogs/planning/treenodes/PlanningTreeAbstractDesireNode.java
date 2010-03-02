@@ -35,7 +35,6 @@ import org.miradi.utils.CodeList;
 
 abstract public class PlanningTreeAbstractDesireNode extends AbstractPlanningTreeNode
 {
-
 	public PlanningTreeAbstractDesireNode(Project projectToUse, DiagramObject diagramObjectToUse, CodeList visibleRowsToUse, ORef desireRef)
 	{
 		super(projectToUse, visibleRowsToUse);
