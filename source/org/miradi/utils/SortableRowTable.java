@@ -53,8 +53,10 @@ abstract public class SortableRowTable extends TableWithColumnWidthAndSequenceSa
 	{
 		Comparator comparator = getComparator(sortByTableColumn);
 		Vector rows = new Vector();
-		for(int i = 0; i < getRowCount(); ++i)
-			rows.add(new Integer(i));
+		for(int row = 0; row < getRowCount(); ++row)
+		{
+			rows.add(new Integer(row));
+		}
 
 		Vector unsortedRows = (Vector)rows.clone();
 		Collections.sort(rows, comparator);
