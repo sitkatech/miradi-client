@@ -39,7 +39,7 @@ public abstract class EditableObjectRefsTableModel extends EditableObjectTableMo
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
 		clearRefs();
-		refs = extractOutEditableRefs(hierarchyToSelectedRef);
+		refs = extractOutEditableRefs(new ORefList(hierarchyToSelectedRef));
 	}
 	
 	@Override
@@ -86,7 +86,7 @@ public abstract class EditableObjectRefsTableModel extends EditableObjectTableMo
 	
 	abstract protected String[] getColumnTags();
 	
-	abstract protected ORefList extractOutEditableRefs(ORef[] hierarchyToSelectedRef);
+	abstract protected ORefList extractOutEditableRefs(ORefList hierarchyToSelectedRef);
 	
 	abstract protected int getObjectType();
 	
