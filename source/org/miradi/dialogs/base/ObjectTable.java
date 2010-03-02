@@ -43,10 +43,9 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.ColumnSortListener;
 import org.miradi.utils.SortableRowTable;
-import org.miradi.utils.SortableTable;
 import org.miradi.views.umbrella.ObjectPicker;
 
-abstract public class ObjectTable extends SortableRowTable implements ObjectPicker, RowColumnBaseObjectProvider, SortableTable
+abstract public class ObjectTable extends SortableRowTable implements ObjectPicker, RowColumnBaseObjectProvider
 {
 	public ObjectTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
 	{
