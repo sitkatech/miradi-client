@@ -86,5 +86,16 @@ abstract public class EditableObjectTableModel extends AbstractObjectTableModel
 		return false;
 	}
 	
+	@Override
+	public void setRowObjectRefs(ORefList objectRowRefs)
+	{
+	}
+	
+	@Override
+	protected ORefList getRowObjectRefs()
+	{
+		return new ORefList();
+	}
+	
 	abstract public void setObjectRefs(ORefList hierarchyToSelectedRef);
 }

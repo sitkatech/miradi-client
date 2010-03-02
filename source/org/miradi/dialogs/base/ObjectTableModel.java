@@ -19,10 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
-import java.util.Comparator;
-
-import org.miradi.dialogs.threatrating.upperPanel.TableModelChoiceItemComparator;
-import org.miradi.dialogs.threatrating.upperPanel.TableModelStringComparator;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -47,17 +43,6 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel
 		return getRowObjectRefs().size();
 	}
 	
-	void setNewRowOrder(Integer[] existingRowIndexesInNewOrder)
-	{
-		ORefList newList = new ORefList();
-		for(int i = 0; i < existingRowIndexesInNewOrder.length; ++i)
-		{
-			int nextExistingRowIndex = existingRowIndexesInNewOrder[i].intValue();
-			newList.add(getRowObjectRefs().get(nextExistingRowIndex));
-		}
-		setRowObjectRefs(newList);
-	}
-
 	public void resetRows()
 	{
 		setRowObjectRefs(getLatestRefListFromProject());
@@ -179,7 +164,7 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel
 		rowObjectRefs = rowObjectRefsToUse;
 	}
 
-	private ORefList getRowObjectRefs()
+	protected ORefList getRowObjectRefs()
 	{
 		if (rowObjectRefs == null)
 			resetRows();
@@ -192,14 +177,6 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel
 		return getColumnQuestion(column).findChoiceByCode(dataToDisplay);
 	}
 		
-	protected Comparator createComparator(int sortColumn)
-	{
-		if (isChoiceItemColumn(sortColumn))
-			return new TableModelChoiceItemComparator(this, sortColumn, getColumnQuestion(sortColumn));
-		
-		return new TableModelStringComparator(this, sortColumn);
-	}
-	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return getObjectFromRow(row);

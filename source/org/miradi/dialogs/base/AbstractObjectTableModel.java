@@ -20,9 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
+import java.util.Comparator;
+
 import javax.swing.table.AbstractTableModel;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.dialogs.threatrating.upperPanel.TableModelChoiceItemComparator;
+import org.miradi.dialogs.threatrating.upperPanel.TableModelStringComparator;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.ColumnTagProvider;
@@ -54,7 +59,30 @@ abstract public class AbstractObjectTableModel extends AbstractTableModel  imple
 		return project;
 	}
 	
+	void setNewRowOrder(Integer[] existingRowIndexesInNewOrder)
+	{
+		ORefList newList = new ORefList();
+		for(int i = 0; i < existingRowIndexesInNewOrder.length; ++i)
+		{
+			int nextExistingRowIndex = existingRowIndexesInNewOrder[i].intValue();
+			newList.add(getRowObjectRefs().get(nextExistingRowIndex));
+		}
+		setRowObjectRefs(newList);
+	}
+	
+	protected Comparator createComparator(int sortColumn)
+	{
+		if (isChoiceItemColumn(sortColumn))
+			return new TableModelChoiceItemComparator(this, sortColumn, getColumnQuestion(sortColumn));
+		
+		return new TableModelStringComparator(this, sortColumn);
+	}
+
 	abstract public String getUniqueTableModelIdentifier();
+	
+	abstract public void setRowObjectRefs(ORefList objectRowRefs);
+	
+	abstract protected ORefList getRowObjectRefs();
 
 	private Project project;
 }
