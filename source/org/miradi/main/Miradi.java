@@ -263,7 +263,7 @@ public class Miradi
 			catch(Exception e)
 			{
 				EAM.logException(e);
-				EAM.errorDialog("Unexpected error: " + e.getMessage());
+				EAM.unexpectedErrorDialog(e);
 				System.exit(1);
 			}
 		}
