@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import java.awt.Rectangle;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Vector;
 
 import javax.swing.ListSelectionModel;
@@ -44,18 +42,17 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.ColumnSortListener;
+import org.miradi.utils.SortableRowTable;
 import org.miradi.utils.SortableTable;
-import org.miradi.utils.UiTableWithAlternatingRows;
 import org.miradi.views.umbrella.ObjectPicker;
 
-abstract public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPicker, RowColumnBaseObjectProvider, SortableTable
+abstract public class ObjectTable extends SortableRowTable implements ObjectPicker, RowColumnBaseObjectProvider, SortableTable
 {
 	public ObjectTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
 	{
 		super(mainWindowToUse, modelToUse, modelToUse.getUniqueTableModelIdentifier());
 		
 		selectionListeners = new Vector();
-		currentSortColumn = -1;
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		JTableHeader columnHeader = getTableHeader();
@@ -224,34 +221,6 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		return getObjectTableModel().findRowObject(id);
 	}
 	
-	public void sort(int sortByTableColumn) 
-	{
-		Comparator comparator = getComparator(sortByTableColumn);
-		Vector rows = new Vector();
-		for(int i = 0; i < getRowCount(); ++i)
-			rows.add(new Integer(i));
-
-		Vector unsortedRows = (Vector)rows.clone();
-		Collections.sort(rows, comparator);
-		
-		if (sortByTableColumn == currentSortColumn && rows.equals(unsortedRows))
-			Collections.reverse(rows);
-
-		getObjectTableModel().setNewRowOrder(((Integer[])rows.toArray(new Integer[0])));
-		
-		// TODO: Should memorize sort order for each table
-		currentSortColumn = sortByTableColumn;
-		
-		revalidate();
-		repaint();
-	}
-
-	protected Comparator getComparator(int sortByTableColumn)
-	{
-		int sortByModelColumn = convertColumnIndexToModel(sortByTableColumn);
-		return getObjectTableModel().createComparator(sortByModelColumn);
-	}
-	
 	public void addListSelectionListener(ListSelectionListener listener)
 	{
 		getSelectionModel().addListSelectionListener(listener);
@@ -297,7 +266,6 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 	}
 
 	private Vector selectionListeners;
-	private int currentSortColumn;
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
 	private BasicTableCellRendererEditorFactory otherRenderer;
 	private CodeListRendererFactory codeListRenderer;
