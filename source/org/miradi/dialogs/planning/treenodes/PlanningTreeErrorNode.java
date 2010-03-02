@@ -45,5 +45,6 @@ public class PlanningTreeErrorNode extends AbstractPlanningTreeNode
 	@Override
 	public void rebuild() throws Exception
 	{
+		// NOTE: Avoid a call to super rebuild because it always throws
 	}
 }
