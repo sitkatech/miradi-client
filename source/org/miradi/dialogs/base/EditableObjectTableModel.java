@@ -25,6 +25,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -85,5 +86,5 @@ abstract public class EditableObjectTableModel extends AbstractObjectTableModel
 		return false;
 	}
 	
-	abstract public void setObjectRefs(ORef[] hierarchyToSelectedRef);
+	abstract public void setObjectRefs(ORefList hierarchyToSelectedRef);
 }

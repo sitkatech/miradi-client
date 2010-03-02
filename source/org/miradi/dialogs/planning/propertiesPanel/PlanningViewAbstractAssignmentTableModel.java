@@ -43,12 +43,12 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 	}
 	
 	@Override
-	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	public void setObjectRefs(ORefList hierarchyToSelectedRef)
 	{
-		if(hierarchyToSelectedRef.length == 0)
+		if(hierarchyToSelectedRef.size() == 0)
 			return;
 		
-		ORef selectedRef = hierarchyToSelectedRef[0];
+		ORef selectedRef = hierarchyToSelectedRef.getFirstElement();
 		
 		baseObject = BaseObject.find(getProject(), selectedRef);
 		baseObjectRefs = getRefsForBaseObject(baseObject);

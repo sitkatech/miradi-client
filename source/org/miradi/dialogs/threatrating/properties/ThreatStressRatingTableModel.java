@@ -51,7 +51,7 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	}
 	
 	@Override
-	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	public void setObjectRefs(ORefList hierarchyToSelectedRef)
 	{
 		ORefList refs = new ORefList(hierarchyToSelectedRef);
 		try

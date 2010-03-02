@@ -154,7 +154,7 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 	{
 		//TODO  this call to setObjectRefs(empty List) causes extractOutEditableRefs to be called which loads the refs from the pool.  
 		// Need to come up with a sort of a loadModel() that doesnt require an empty arg
-		model.setObjectRefs(new ORef[0]);
+		model.setObjectRefs(new ORefList());
 		exportObjectTableModel(writer, model, reportLabel);
 	}
 
