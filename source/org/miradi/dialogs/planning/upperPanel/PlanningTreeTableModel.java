@@ -86,6 +86,7 @@ abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 		return getColumnTag(column);
 	}
 
+	@Override
 	protected void rebuildNode()
 	{
 		try
@@ -100,6 +101,7 @@ abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 	}
 	
 	//TODO the nodes need to implement the content of this method
+	@Override
 	public Object getValueAt(Object rawNode, int col)
 	{
 		AbstractPlanningTreeNode treeNode = (AbstractPlanningTreeNode) rawNode;
