@@ -59,7 +59,7 @@ abstract public class AbstractObjectTableModel extends AbstractTableModel  imple
 		return project;
 	}
 	
-	void setNewRowOrder(Integer[] existingRowIndexesInNewOrder)
+	public void setNewRowOrder(Integer[] existingRowIndexesInNewOrder)
 	{
 		ORefList newList = new ORefList();
 		for(int i = 0; i < existingRowIndexesInNewOrder.length; ++i)
@@ -70,7 +70,7 @@ abstract public class AbstractObjectTableModel extends AbstractTableModel  imple
 		setRowObjectRefs(newList);
 	}
 	
-	protected Comparator createComparator(int sortColumn)
+	public Comparator createComparator(int sortColumn)
 	{
 		if (isChoiceItemColumn(sortColumn))
 			return new TableModelChoiceItemComparator(this, sortColumn, getColumnQuestion(sortColumn));
