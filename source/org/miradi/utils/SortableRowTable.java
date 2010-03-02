@@ -24,6 +24,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Vector;
 
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
 import org.miradi.dialogs.base.AbstractObjectTableModel;
@@ -36,6 +37,11 @@ abstract public class SortableRowTable extends TableWithColumnWidthAndSequenceSa
 		super(mainWindowToUse, model, uniqueTableIdentifierToUse);
 		
 		currentSortColumn = -1;
+		
+		JTableHeader columnHeader = getTableHeader();
+		columnHeader.setReorderingAllowed(true);
+		ColumnSortListener sortListener = new ColumnSortListener(this);
+		columnHeader.addMouseListener(sortListener);
 	}
 	
 	public void sort(int sortByTableColumn) 
