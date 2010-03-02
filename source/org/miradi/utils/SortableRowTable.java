@@ -38,6 +38,11 @@ abstract public class SortableRowTable extends TableWithColumnWidthAndSequenceSa
 		
 		currentSortColumn = -1;
 		
+		enableClickToSortColumnHeaders();
+	}
+
+	private void enableClickToSortColumnHeaders()
+	{
 		JTableHeader columnHeader = getTableHeader();
 		columnHeader.setReorderingAllowed(true);
 		ColumnSortListener sortListener = new ColumnSortListener(this);
