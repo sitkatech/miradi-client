@@ -42,6 +42,18 @@ public abstract class EditableObjectRefsTableModel extends EditableObjectTableMo
 	}
 	
 	@Override
+	protected ORefList getRowObjectRefs()
+	{
+		return refs;
+	}
+	
+	@Override
+	public void setRowObjectRefs(ORefList objectRowRefs)
+	{
+		refs = objectRowRefs;
+	}
+	
+	@Override
 	public String getColumnName(int column)
 	{
 		return EAM.fieldLabel(getObjectType(), getColumnTag(column));

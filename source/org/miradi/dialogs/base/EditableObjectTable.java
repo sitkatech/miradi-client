@@ -52,10 +52,10 @@ import org.miradi.project.ObjectManager;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticChoiceQuestion;
-import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
+import org.miradi.utils.SortableRowTable;
 import org.miradi.views.umbrella.ObjectPicker;
 
-abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenceSaver  implements ObjectPicker
+abstract public class EditableObjectTable extends SortableRowTable  implements ObjectPicker
 {
 	public EditableObjectTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse, String uniqueTableIdentifierToUse)
 	{
