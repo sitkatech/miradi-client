@@ -63,7 +63,7 @@ public abstract class TreeTableNode implements Comparable
 	public TreeTableNode getParentNode() throws Exception 
 	{
 		throw new Exception("getParent not implemented yet for nodes of type " + getType() + " in node:" + getClass());
-	};
+	}
 	
 	public int getIndex(TreeTableNode child)
 	{
