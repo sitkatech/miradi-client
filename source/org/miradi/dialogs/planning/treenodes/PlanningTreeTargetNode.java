@@ -51,6 +51,7 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 		rebuild();
 	}
 	
+	@Override
 	public void rebuild() throws Exception
 	{
 		DiagramObject diagram = diagramObject;
@@ -77,6 +78,7 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 		return strategyRefs;
 	}
 
+	@Override
 	protected int[] getNodeSortOrder()
 	{
 		return new int[] {
@@ -93,6 +95,7 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 			};
 	}
 
+	@Override
 	public BaseObject getObject()
 	{
 		return target;
