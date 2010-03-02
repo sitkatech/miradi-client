@@ -41,4 +41,9 @@ public class PlanningTreeErrorNode extends AbstractPlanningTreeNode
 	{
 		return "Error initializing subview";
 	}
+	
+	@Override
+	public void rebuild() throws Exception
+	{
+	}
 }
