@@ -34,7 +34,7 @@ abstract public class EditableObjectPoolRefsTableModel extends EditableObjectRef
 	}
 	
 	@Override
-	protected ORefList extractOutEditableRefs(ORef[] hierarchyToSelectedRef)
+	protected ORefList extractOutEditableRefs(ORefList hierarchyToSelectedRef)
 	{	
 		return getProject().getPool(getObjectType()).getRefList();
 	}
