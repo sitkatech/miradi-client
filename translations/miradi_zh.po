@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-01 16:28-0600\n"
+"POT-Creation-Date: 2010-03-02 11:03-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -347,8 +347,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:67
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:69
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
-#: Miradi/source/org/miradi/main/EAM.java:442
-#: Miradi/source/org/miradi/main/EAM.java:443
+#: Miradi/source/org/miradi/main/EAM.java:444
+#: Miradi/source/org/miradi/main/EAM.java:445
 msgid "Delete"
 msgstr "删除 \t\t"
 
@@ -787,7 +787,7 @@ msgid "Choose Indicator to Create from"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:67
-#: Miradi/source/org/miradi/main/EAM.java:442
+#: Miradi/source/org/miradi/main/EAM.java:444
 msgid "Retain"
 msgstr "保留 \t\t"
 
@@ -4442,11 +4442,11 @@ msgstr ""
 msgid "Warning"
 msgstr "警告 \t\t"
 
-#: Miradi/source/org/miradi/main/EAM.java:371
+#: Miradi/source/org/miradi/main/EAM.java:373
 msgid "An unexpected error occurred: "
 msgstr "出现意外错误： \t\t"
 
-#: Miradi/source/org/miradi/main/EAM.java:372
+#: Miradi/source/org/miradi/main/EAM.java:374
 msgid ""
 "\n"
 "\n"
@@ -4456,22 +4456,22 @@ msgid ""
 "   "
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:375
+#: Miradi/source/org/miradi/main/EAM.java:377
 msgid ""
 "\n"
 "\n"
 "Miradi has attempted to save your latest changes, and will now exit."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:381
+#: Miradi/source/org/miradi/main/EAM.java:383
 msgid "An unexpected error has occurred"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:390
+#: Miradi/source/org/miradi/main/EAM.java:392
 msgid "Title|Error"
 msgstr "错误 "
 
-#: Miradi/source/org/miradi/main/EAM.java:598
+#: Miradi/source/org/miradi/main/EAM.java:600
 msgid "Wintitle|Information"
 msgstr "信息 \t\t"
 
