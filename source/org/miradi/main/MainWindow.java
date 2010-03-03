@@ -810,13 +810,13 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		}
 	}
 	
-	public void safleySavePreferences()
+	public void safleySavePreferences() throws Exception
 	{
 		try
 		{
 			savePreferences();
 		}
-		catch (Exception e)
+		catch (IOException e)
 		{
 			EAM.logException(e);
 			EAM.errorDialog(EAM.text("Unable to save preferences"));
