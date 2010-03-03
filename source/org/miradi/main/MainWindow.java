@@ -221,7 +221,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
 		}
 		
-		savePreferences();
+		safleySavePreferences();
 	}
 
 	private Dimension getSizeFromPreferences()
