@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-03 11:24-0600\n"
+"POT-Creation-Date: 2010-03-03 11:27-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -6854,7 +6854,7 @@ msgstr "标题|直接威胁因子属性"
 msgid "(Error)"
 msgstr "（错误） \t\t"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:574
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:575
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr ""
 
