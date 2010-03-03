@@ -33,6 +33,7 @@ public class SingleTableRowHeightController extends TableRowHeightController
 		listenForTableSizeChanges(table);
 	}
 	
+	@Override
 	public void updateAutomaticRowHeights()
 	{
 		if(controller != null)
