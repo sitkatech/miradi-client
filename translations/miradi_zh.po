@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-02 12:50-0600\n"
+"POT-Creation-Date: 2010-03-02 22:00-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7083,11 +7083,11 @@ msgstr ""
 "我们试图创建一个标准符号集，能够在全球获得认可。就像全世界的人都能认出红色八"
 "角形是停车标志，我们希望人们能够认出绿色椭圆形代表目标或者黄色六边形代表策略 "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:287
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:292
 msgid "Unable to save preferences"
 msgstr "无法保存优先选项 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:352
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:357
 msgid "Preferences"
 msgstr "优先选项 \t\t"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-02 12:50-0600\n"
+"POT-Creation-Date: 2010-03-02 22:00-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -7257,11 +7257,11 @@ msgstr ""
 "berharap orang-orang akan mengenal bentuk oval warna hijau sebagai target, "
 "atau bentuk segi enam warna kuning sebagai strategi"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:287
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:292
 msgid "Unable to save preferences"
 msgstr "Tidak bisa menyimpan preferensi "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:352
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:357
 msgid "Preferences"
 msgstr "Preferensi "
 
