@@ -147,6 +147,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 	}
 
+	@Override
 	public DateUnit getDateUnit(int column)
 	{
 		return getDateUnits().get(column);
