@@ -617,7 +617,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		{
 			visibleDateUnits.addAll(getSubDateUnits(dateUnit));
 			visibleDateUnits.add(dateUnit);
-			visibleDateUnits.addAll(dateUnit.getSuperDateUnitHierarchy(getFiscalYearFirstMonth()));
+			visibleDateUnits.addAll(getSuperDateUnitsHierarchy(dateUnit));
 		}
 		
 		saveColumnDateUnits(visibleDateUnits);
@@ -637,6 +637,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getUniqueTableModelIdentifier());
 		CommandSetObjectData setDateUnitsCommand = tableSettings.createCommandToUpdateDateUnitList(thisDateUnits);
 		getProject().executeCommand(setDateUnitsCommand);
+	}
+	
+	private Vector<DateUnit> getSuperDateUnitsHierarchy(DateUnit dateUnit) throws Exception
+	{
+		return getProjectCalendar().getSuperDateUnitsHierarchy(dateUnit);
 	}
 
 	private Vector<DateUnit> getSubDateUnits(DateUnit dateUnit)	throws Exception
