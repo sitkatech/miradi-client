@@ -81,6 +81,7 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Colu
 		return (PlanningViewAbstractTreeTableSyncedTableModel) findModel(column);
 	}
 
+	@Override
 	public String getColumnGroupCode(int modelColumn)
 	{
 		return getCastedModel(modelColumn).getColumnGroupCode(findColumnWithinSubTable(modelColumn));
