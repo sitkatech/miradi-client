@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-03 11:27-0600\n"
+"POT-Creation-Date: 2010-03-03 14:36-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -4166,6 +4166,14 @@ msgstr "Efectivo "
 msgid "Very Effective"
 msgstr "Muy efectivo "
 
+#: Miradi/source/org/miradi/questions/QuarterColumnsVisibilityQuestion.java:35
+msgid "Show Quearter Columns"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/QuarterColumnsVisibilityQuestion.java:36
+msgid "Hide Quarter Columns"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/ResourceRoleQuestion.java:46
 msgid "Team Member"
 msgstr "Miembro del equipo "
@@ -8121,6 +8129,9 @@ msgid "FieldLabel|11.TargetMode|Target Mode"
 msgstr ""
 
 msgid "FieldLabel|11.AllThreatClassifications|Threats Addressed"
+msgstr ""
+
+msgid "FieldLabel|11.QuarterColumnsVisibility|Quarter Column Visibility"
 msgstr ""
 
 msgid "FieldLabel|12.ShortLabel|ID"
