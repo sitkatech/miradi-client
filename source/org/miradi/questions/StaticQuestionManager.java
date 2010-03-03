@@ -92,6 +92,7 @@ public class StaticQuestionManager
 		addQuestion(new MonthAbbreviationsQuestion());
 		addQuestion(new TncOrganizationalPrioritiesQuestion());
 		addQuestion(new SortDirectionQuestion());
+		addQuestion(new QuarterColumnsVisibilityQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
