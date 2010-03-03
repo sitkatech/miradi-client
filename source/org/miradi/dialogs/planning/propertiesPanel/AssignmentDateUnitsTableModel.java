@@ -500,7 +500,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		{
 			Vector<DateUnit> currentDateUnits = getCopyOfDateUnits();
 			if (hasSubDateUnits(dateUnit))
-				return currentDateUnits.containsAll(getSubDateUnits(dateUnit));
+				return currentDateUnits.containsAll(getSubDateUnitsHierarchy(dateUnit));
 			
 			return currentDateUnits.contains(dateUnit);
 		}
@@ -615,7 +615,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		Vector<DateUnit> visibleDateUnits = new Vector();
 		if (dateUnit != null)
 		{
-			visibleDateUnits.addAll(getSubDateUnits(dateUnit));
+			visibleDateUnits.addAll(getSubDateUnitsHierarchy(dateUnit));
 			visibleDateUnits.add(dateUnit);
 			visibleDateUnits.addAll(getSuperDateUnitsHierarchy(dateUnit));
 		}
@@ -626,7 +626,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	private boolean isExpanded(int column) throws Exception
 	{
 		Vector<DateUnit> visibleDateUnits = getCopyOfDateUnits();
-		visibleDateUnits.retainAll(getSubDateUnits(getDateUnit(column)));
+		visibleDateUnits.retainAll(getSubDateUnitsHierarchy(getDateUnit(column)));
 		
 		return visibleDateUnits.size() > 0;
 	}
@@ -644,7 +644,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return getProjectCalendar().getSuperDateUnitsHierarchy(dateUnit);
 	}
 
-	private Vector<DateUnit> getSubDateUnits(DateUnit dateUnit)	throws Exception
+	private Vector<DateUnit> getSubDateUnitsHierarchy(DateUnit dateUnit)	throws Exception
 	{
 		return getProjectCalendar().getSubDateUnits(dateUnit);
 	}
