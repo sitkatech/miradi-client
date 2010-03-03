@@ -277,6 +277,11 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		String rowHeightMode = getSelectedItemQuestionBox(panelRowHeightModeCombo);
 		getMainWindow().setRowHeightMode(rowHeightMode);
 
+		safleySavePreferences();
+	}
+
+	private void safleySavePreferences()
+	{
 		try
 		{
 			getMainWindow().savePreferences();
