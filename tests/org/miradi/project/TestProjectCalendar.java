@@ -153,7 +153,7 @@ public class TestProjectCalendar extends TestCaseWithProject
 		getProject().getMetadata().setData(ProjectMetadata.TAG_EXPECTED_END_DATE, endDate.toIsoDateString());
 		
 		DateUnit blankDateUnit = new DateUnit();
-		Vector<DateUnit> subDateUnits = getProjectCalendar().getSubDateUnits(blankDateUnit);
+		Vector<DateUnit> subDateUnits = getProjectCalendar().getSubDateUnitsHierarchy(blankDateUnit);
 		assertEquals("wrong sub date units count?", 2, subDateUnits.size());
 		assertTrue("does not contain date?", subDateUnits.contains(DateUnit.createFiscalYear(2006, 1)));
 		assertTrue("does not contain date?", subDateUnits.contains(DateUnit.createFiscalYear(2007, 1)));

@@ -646,7 +646,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 
 	private Vector<DateUnit> getSubDateUnitsHierarchy(DateUnit dateUnit)	throws Exception
 	{
-		return getProjectCalendar().getSubDateUnits(dateUnit);
+		return getProjectCalendar().getSubDateUnitsHierarchy(dateUnit);
 	}
 	
 	private boolean hasSubDateUnits(DateUnit dateUnit) throws Exception
