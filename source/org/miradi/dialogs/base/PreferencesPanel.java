@@ -277,20 +277,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		String rowHeightMode = getSelectedItemQuestionBox(panelRowHeightModeCombo);
 		getMainWindow().setRowHeightMode(rowHeightMode);
 
-		safleySavePreferences();
-	}
-
-	private void safleySavePreferences()
-	{
-		try
-		{
-			getMainWindow().savePreferences();
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog(EAM.text("Unable to save preferences"));
-		}
+		getMainWindow().safleySavePreferences();
 	}
 
 	private void setColorPreference(UiComboBox colorDropDown, String tagColorStrategy)
