@@ -333,10 +333,10 @@ public class ProjectCalendar implements CommandExecutedListener
 
 	public boolean hasSubDateUnits(DateUnit dateUnit) throws Exception
 	{
-		return getSubDateUnits(dateUnit).size() > 0;
+		return getSubDateUnitsHierarchy(dateUnit).size() > 0;
 	}
 	
-	public Vector<DateUnit> getSubDateUnits(DateUnit dateUnit) throws Exception
+	public Vector<DateUnit> getSubDateUnitsHierarchy(DateUnit dateUnit) throws Exception
 	{
 		return getSubDateUnitsWithin(dateUnit, getProjectPlanningDateRange());
 	}
