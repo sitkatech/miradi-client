@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-02 22:00-0600\n"
+"POT-Creation-Date: 2010-03-02 22:11-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4143,11 +4143,15 @@ msgstr ""
 msgid "WARNING: Project end date before start date."
 msgstr "警告：项目结束日期在起始日期之前 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1030
+#: Miradi/source/org/miradi/main/MainWindow.java:822
+msgid "Unable to save preferences"
+msgstr "无法保存优先选项 \t\t"
+
+#: Miradi/source/org/miradi/main/MainWindow.java:1043
 msgid "Unable to launch external web browser"
 msgstr "无法运行外部网页浏览器 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1046
+#: Miradi/source/org/miradi/main/MainWindow.java:1059
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -7083,11 +7087,7 @@ msgstr ""
 "我们试图创建一个标准符号集，能够在全球获得认可。就像全世界的人都能认出红色八"
 "角形是停车标志，我们希望人们能够认出绿色椭圆形代表目标或者黄色六边形代表策略 "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:292
-msgid "Unable to save preferences"
-msgstr "无法保存优先选项 \t\t"
-
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:357
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:344
 msgid "Preferences"
 msgstr "优先选项 \t\t"
 

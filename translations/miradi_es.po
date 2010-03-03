@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-02 22:00-0600\n"
+"POT-Creation-Date: 2010-03-02 22:11-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -4319,11 +4319,15 @@ msgstr ""
 msgid "WARNING: Project end date before start date."
 msgstr "ADVERTENCIA: Fecha de fin del proyecto anterior a la fecha de inicio"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1030
+#: Miradi/source/org/miradi/main/MainWindow.java:822
+msgid "Unable to save preferences"
+msgstr "No se pudieron grabar las preferencias."
+
+#: Miradi/source/org/miradi/main/MainWindow.java:1043
 msgid "Unable to launch external web browser"
 msgstr "No se pudo iniciar el navegador web externo."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1046
+#: Miradi/source/org/miradi/main/MainWindow.java:1059
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -7281,11 +7285,7 @@ msgstr ""
 "reconocen un octógono rojo como una señal de pare, esperamos que reconozcan "
 "un óvalo verde como un objeto o un hexágono amarillo como una estrategia."
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:292
-msgid "Unable to save preferences"
-msgstr "No se pudieron grabar las preferencias."
-
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:357
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:344
 msgid "Preferences"
 msgstr "Preferencias"
 
