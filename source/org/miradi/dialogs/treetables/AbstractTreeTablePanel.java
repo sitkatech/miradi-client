@@ -36,11 +36,13 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Objective;
+import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.objects.ViewData;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
 abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
@@ -170,6 +172,9 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		if(didAffectTableSettingsMapForBudgetColumns(event))
 			return true;
 		
+		if (isCustomConfigurationCommand(event))
+			return true;
+		
 		return false;
 	}
 	
@@ -267,6 +272,23 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	private boolean didAffectTableSettingsMapForBudgetColumns(CommandExecutedEvent event)
 	{
 		return event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP);
+	}
+	
+	private boolean isCustomConfigurationCommand(CommandExecutedEvent event)
+	{
+		if(event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF))
+			return true;
+		
+		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_COL_CONFIGURATION))
+			return true;
+		
+		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_ROW_CONFIGURATION))
+			return true;
+		
+		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_DIAGRAM_DATA_INCLUSION))
+			return true;
+				
+		return false;
 	}
 	
 	protected boolean doesAffectTableRowHeight(CommandExecutedEvent event)
