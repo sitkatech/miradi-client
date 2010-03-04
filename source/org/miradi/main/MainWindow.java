@@ -221,7 +221,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
 		}
 		
-		safleySavePreferences();
+		safelySavePreferences();
 	}
 
 	private Dimension getSizeFromPreferences()
@@ -810,7 +810,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		}
 	}
 	
-	public void safleySavePreferences()
+	public void safelySavePreferences()
 	{
 		try
 		{
