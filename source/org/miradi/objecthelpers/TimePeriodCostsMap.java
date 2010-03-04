@@ -173,6 +173,18 @@ public class TimePeriodCostsMap
 	{
 		return data.size();
 	}
+	
+	public boolean containsQuarterDateUnit()
+	{
+		Set<DateUnit> allDateUnits = data.keySet();
+		for(DateUnit dateUnit : allDateUnits)
+		{
+			if (dateUnit.isQuarter())
+				return true;
+		}
+		
+		return false;
+	}
 
 	private HashMap<DateUnit, TimePeriodCosts> getDateUnitTimePeriodCostsMap()
 	{
