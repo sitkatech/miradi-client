@@ -335,6 +335,24 @@ public class ProjectCalendar implements CommandExecutedListener
 		
 		return safeSuperDateUnit;
 	}
+	
+	public Vector<DateUnit> getSuperDateUnitsHierarchy(DateUnit dateUnit)
+	{
+		Vector<DateUnit> superDateUnits = dateUnit.getSuperDateUnitHierarchy(getFiscalYearFirstMonth());
+		if (shouldHideQuarterColumns())
+			return removeQuarterDateUnits(superDateUnits);
+		
+		return superDateUnits;
+	}
+	
+	public Vector<DateUnit> getSubDateUnits(DateUnit dateUnit) throws Exception
+	{
+		Vector<DateUnit> subDateUnits = getSubDateUnitsWithinProjectPlanningDates(dateUnit);
+		if (shouldGetMonthAsSubUnitsOfYear(dateUnit))
+			return getMonthAsSubDateUnitsOfYear(subDateUnits);
+		
+		return subDateUnits;
+	}
 
 	private DateUnit getYearAsSuperDateUnitOfMonth(DateUnit safeSuperDateUnit)
 	{
@@ -352,15 +370,6 @@ public class ProjectCalendar implements CommandExecutedListener
 		return shouldHideQuarterColumns();
 	}
 	
-	public Vector<DateUnit> getSuperDateUnitsHierarchy(DateUnit dateUnit)
-	{
-		Vector<DateUnit> superDateUnits = dateUnit.getSuperDateUnitHierarchy(getFiscalYearFirstMonth());
-		if (shouldHideQuarterColumns())
-			return removeQuarterDateUnits(superDateUnits);
-		
-		return superDateUnits;
-	}
-
 	private Vector<DateUnit> removeQuarterDateUnits(Vector<DateUnit> superDateUnits)
 	{
 		Vector<DateUnit> withoutQuarters = new Vector<DateUnit>();
@@ -371,15 +380,6 @@ public class ProjectCalendar implements CommandExecutedListener
 		}
 		
 		return withoutQuarters;
-	}
-
-	public Vector<DateUnit> getSubDateUnits(DateUnit dateUnit) throws Exception
-	{
-		Vector<DateUnit> subDateUnits = getSubDateUnitsWithinProjectPlanningDates(dateUnit);
-		if (shouldGetMonthAsSubUnitsOfYear(dateUnit))
-			return getMonthAsSubDateUnitsOfYear(subDateUnits);
-		
-		return subDateUnits;
 	}
 
 	private boolean shouldGetMonthAsSubUnitsOfYear(DateUnit dateUnit)
