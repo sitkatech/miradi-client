@@ -597,7 +597,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	private void respondToCollapseColumnEvent(DateUnit dateUnit) throws Exception
 	{
-		setDeepestExpandedColumn(getProjectCalendar().getSafeSuperDateUnit(dateUnit));
+		setDeepestExpandedColumn(getProjectCalendar().getSuperDateUnitsHierarchy(dateUnit));
 	}
 
 	private int getFiscalYearFirstMonth() throws Exception
@@ -607,14 +607,17 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	private void respondToExpandColumnEvent(DateUnit dateUnit) throws Exception
 	{
-		setDeepestExpandedColumn(dateUnit);
+		Vector<DateUnit> singleDateUnitList = new Vector<DateUnit>();
+		singleDateUnitList.add(dateUnit);
+		setDeepestExpandedColumn(singleDateUnitList);
 	}
 	
-	private void setDeepestExpandedColumn(DateUnit dateUnit) throws Exception
+	private void setDeepestExpandedColumn(Vector<DateUnit> dateUnits) throws Exception
 	{
 		Vector<DateUnit> visibleDateUnits = new Vector();
-		if (dateUnit != null)
+		if (!dateUnits.isEmpty())
 		{
+			DateUnit dateUnit = dateUnits.firstElement();
 			visibleDateUnits.addAll(getSubDateUnits(dateUnit));
 			visibleDateUnits.add(dateUnit);
 			visibleDateUnits.addAll(getSuperDateUnitsHierarchy(dateUnit));
