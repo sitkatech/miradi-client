@@ -35,6 +35,7 @@ public class ActionActivityMoveUp extends ObjectsAction
 		return EAM.text("Action|Table|Move Activity Up");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Move the selected Activity up");
