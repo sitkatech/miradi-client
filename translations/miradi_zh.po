@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-04 15:29-0600\n"
+"POT-Creation-Date: 2010-03-04 15:32-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4591,7 +4591,7 @@ msgstr "在集思广益模式中分离选定的因素链 \t\t"
 msgid "Action|Tree|Move Item Up"
 msgstr "上移条目 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionTreeNodeUp.java:40
+#: Miradi/source/org/miradi/actions/ActionTreeNodeUp.java:41
 msgid "TT|Move the selected item up"
 msgstr "上移选定的条目 \t\t"
 

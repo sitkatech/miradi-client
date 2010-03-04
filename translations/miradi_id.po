@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-04 15:29-0600\n"
+"POT-Creation-Date: 2010-03-04 15:32-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -4751,7 +4751,7 @@ msgstr "Asingkan rangkaian faktor terpilih dalam Mode Sumbang Saran "
 msgid "Action|Tree|Move Item Up"
 msgstr "Pindahkan Butir ke Atas "
 
-#: Miradi/source/org/miradi/actions/ActionTreeNodeUp.java:40
+#: Miradi/source/org/miradi/actions/ActionTreeNodeUp.java:41
 msgid "TT|Move the selected item up"
 msgstr "Pindahkan butir terpilih ke atas "
 
