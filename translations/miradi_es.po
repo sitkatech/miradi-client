@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-04 09:26-0600\n"
+"POT-Creation-Date: 2010-03-04 09:59-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -4203,6 +4203,18 @@ msgstr "Asesor del proyecto "
 #: Miradi/source/org/miradi/questions/ResourceRoleQuestion.java:56
 msgid "Stakeholder"
 msgstr "Parte interesada "
+
+#: Miradi/source/org/miradi/questions/DiagramObjectDataInclusionQuestion.java:38
+msgid "Result Chain Data"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/DiagramObjectDataInclusionQuestion.java:39
+msgid "Conceptual Model Data"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/DiagramObjectDataInclusionQuestion.java:40
+msgid "Both"
+msgstr ""
 
 #: Miradi/source/org/miradi/diagram/cells/FactorCell.java:95
 msgid "Indicators:"
