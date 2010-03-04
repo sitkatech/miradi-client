@@ -348,7 +348,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	public Vector<DateUnit> getSubDateUnits(DateUnit dateUnit) throws Exception
 	{
 		Vector<DateUnit> subDateUnits = getSubDateUnitsWithinProjectPlanningDates(dateUnit);
-		if (shouldGetMonthAsSubUnitsOfYear(dateUnit))
+		if (shouldSkipQuarterLevel(dateUnit))
 			return getMonthAsSubDateUnitsOfYear(subDateUnits);
 		
 		return subDateUnits;
@@ -377,7 +377,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		return withoutQuarters;
 	}
 
-	private boolean shouldGetMonthAsSubUnitsOfYear(DateUnit dateUnit)
+	private boolean shouldSkipQuarterLevel(DateUnit dateUnit)
 	{
 		return dateUnit.isYear() && shouldHideQuarterColumns();
 	}
