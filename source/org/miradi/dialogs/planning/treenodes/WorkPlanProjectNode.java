@@ -71,7 +71,7 @@ public class WorkPlanProjectNode extends AbstractPlanningTreeNode
 	{
 		children = new Vector();
 
-		ORef planningViewCustomizationRef = getProject().getCurrentViewData().getPlanningCustomRef();
+		ORef planningViewCustomizationRef = getProject().getCurrentViewData().getTreeConfigurationRef();
 		PlanningViewConfiguration configuration = PlanningViewConfiguration.find(getProject(), planningViewCustomizationRef);
 		String diagramDataInclusionCode = configuration.getData(PlanningViewConfiguration.TAG_DIAGRAM_DATA_INCLUSION);
 		if (DiagramObjectDataInclusionQuestion.isIncludeBoth(diagramDataInclusionCode))

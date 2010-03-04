@@ -78,7 +78,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		
 		updateQuarterColumnVisibilityEnableStatus();
 		
-		ORef workPlanConfigurationRef = getProject().getViewData(WorkPlanView.getViewName()).getPlanningCustomRef();
+		ORef workPlanConfigurationRef = getProject().getViewData(WorkPlanView.getViewName()).getTreeConfigurationRef();
 		setObjectRefs(new ORef[] {orefToUse, projectToUse.getSingletonObjectRef(ProjectMetadata.getObjectType()), workPlanConfigurationRef, });
 		updateFieldsFromProject();
 	}
