@@ -35,6 +35,7 @@ public class ActionTreeNodeUp extends ObjectsAction
 		return EAM.text("Action|Tree|Move Item Up");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Move the selected item up");
