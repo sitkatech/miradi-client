@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-03 21:01-0600\n"
+"POT-Creation-Date: 2010-03-03 21:10-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -391,7 +391,7 @@ msgid "Enter New Name"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/ProjectSettingsPanel.java:46
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:113
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:114
 msgid "Project Settings"
 msgstr ""
 
@@ -456,7 +456,7 @@ msgid "Organization"
 msgstr "组织 \t\t"
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:60
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:110
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:111
 msgid "Planning"
 msgstr "计划 \t\t"
 
@@ -7008,39 +7008,39 @@ msgstr ""
 msgid "Project Resource Filter Editor"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:105
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:106
 msgid "Systemwide"
 msgstr "系统范围"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:106
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:107
 msgid "Diagram"
 msgstr "图表"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:109
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:110
 msgid "Threat Ratings"
 msgstr "威胁因子评级"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:116
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:117
 msgid "Data Location"
 msgstr "数据位置"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:133
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:134
 msgid "Font Size"
 msgstr "字体大小 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:136
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:137
 msgid "Font Family"
 msgstr "字体集 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:141
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:142
 msgid "Table Row Height Mode"
 msgstr "表格行高模式"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:181
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:182
 msgid "Show Ratings in Cell"
 msgstr "在单元格中显示分级 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:203
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:204
 msgid "Choose the colors that look best on your system:"
 msgstr "选择在您的系统中显示最好的颜色： \t\t"
 
@@ -7080,18 +7080,14 @@ msgstr "中途结果（淡蓝） \t\t"
 msgid "Threat Reduction Result (Light Purple)"
 msgstr "减少威胁因子的结果（淡紫） \t\t"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:215
-msgid "Show Diagram Grid"
-msgstr "显示图标栅格 \t\t"
-
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:227
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:222
 msgid ""
 "<div class='DataPanel'><p>Why are my choices limited to one color family for "
 "each type of factor?</p>"
 msgstr ""
 "<div class='DataPanel'><p>为何我对每种类型因素的选择被限定为一种颜色族?</p> "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:228
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:223
 msgid ""
 "We are trying to create a standard set of symbols that can be recognized "
 "globally. Just like people the world over recognize a red octagon as a stop "
@@ -7101,7 +7097,11 @@ msgstr ""
 "我们试图创建一个标准符号集，能够在全球获得认可。就像全世界的人都能认出红色八"
 "角形是停车标志，我们希望人们能够认出绿色椭圆形代表目标或者黄色六边形代表策略 "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:350
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:237
+msgid "Show Diagram Grid"
+msgstr "显示图标栅格 \t\t"
+
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:354
 msgid "Preferences"
 msgstr "优先选项 \t\t"
 

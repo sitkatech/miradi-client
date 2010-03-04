@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-03 21:01-0600\n"
+"POT-Creation-Date: 2010-03-03 21:10-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -408,7 +408,7 @@ msgid "Enter New Name"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/ProjectSettingsPanel.java:46
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:113
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:114
 msgid "Project Settings"
 msgstr ""
 
@@ -473,7 +473,7 @@ msgid "Organization"
 msgstr "Organización"
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:60
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:110
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:111
 msgid "Planning"
 msgstr "Planificación"
 
@@ -7203,39 +7203,39 @@ msgstr ""
 msgid "Project Resource Filter Editor"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:105
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:106
 msgid "Systemwide"
 msgstr "En todo el sistema"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:106
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:107
 msgid "Diagram"
 msgstr "Diagrama"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:109
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:110
 msgid "Threat Ratings"
 msgstr "Calificaciones de amenazas"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:116
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:117
 msgid "Data Location"
 msgstr "Localización de los datos"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:133
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:134
 msgid "Font Size"
 msgstr "Tamaño de la fuente"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:136
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:137
 msgid "Font Family"
 msgstr "Familia de fuentes"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:141
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:142
 msgid "Table Row Height Mode"
 msgstr "Modo de altura de las filas de la tabla"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:181
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:182
 msgid "Show Ratings in Cell"
 msgstr "Mostrar calificaciones en celdas"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:203
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:204
 msgid "Choose the colors that look best on your system:"
 msgstr "Seleccione los colores que mejor luzcan en su sistema."
 
@@ -7275,11 +7275,7 @@ msgstr "Resultado intermedio (celeste)"
 msgid "Threat Reduction Result (Light Purple)"
 msgstr "Resultado de reducción de amenazas (lila)"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:215
-msgid "Show Diagram Grid"
-msgstr "Mostrar cuadrícula del diagrama"
-
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:227
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:222
 msgid ""
 "<div class='DataPanel'><p>Why are my choices limited to one color family for "
 "each type of factor?</p>"
@@ -7287,7 +7283,7 @@ msgstr ""
 "<div class='DataPanel'><p>¿Por qué mis elecciones se limitan a una familia "
 "de color para cada tipo de factor?</p>"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:228
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:223
 msgid ""
 "We are trying to create a standard set of symbols that can be recognized "
 "globally. Just like people the world over recognize a red octagon as a stop "
@@ -7299,7 +7295,11 @@ msgstr ""
 "reconocen un octógono rojo como una señal de pare, esperamos que reconozcan "
 "un óvalo verde como un objeto o un hexágono amarillo como una estrategia."
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:350
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:237
+msgid "Show Diagram Grid"
+msgstr "Mostrar cuadrícula del diagrama"
+
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:354
 msgid "Preferences"
 msgstr "Preferencias"
 

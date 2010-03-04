@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-03 21:01-0600\n"
+"POT-Creation-Date: 2010-03-03 21:10-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -409,7 +409,7 @@ msgid "Enter New Name"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/ProjectSettingsPanel.java:46
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:113
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:114
 msgid "Project Settings"
 msgstr ""
 
@@ -474,7 +474,7 @@ msgid "Organization"
 msgstr "Organisasi "
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:60
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:110
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:111
 msgid "Planning"
 msgstr "Perencanaan "
 
@@ -7178,39 +7178,39 @@ msgstr ""
 msgid "Project Resource Filter Editor"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:105
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:106
 msgid "Systemwide"
 msgstr "Di seluruh bagian sistem"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:106
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:107
 msgid "Diagram"
 msgstr "Diagram"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:109
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:110
 msgid "Threat Ratings"
 msgstr "Peringkat Ancaman"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:116
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:117
 msgid "Data Location"
 msgstr "Lokasi Data"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:133
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:134
 msgid "Font Size"
 msgstr "Ukuran Fon "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:136
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:137
 msgid "Font Family"
 msgstr "Keluarga Fon "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:141
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:142
 msgid "Table Row Height Mode"
 msgstr "Mode Tinggi Baris Tabel"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:181
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:182
 msgid "Show Ratings in Cell"
 msgstr "Tampakkan Peringkat dalam Sel "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:203
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:204
 msgid "Choose the colors that look best on your system:"
 msgstr "Pilih warna yang tampak paling baik dalam sistem Anda: "
 
@@ -7250,11 +7250,7 @@ msgstr "Hasil Antara (Biru Muda) "
 msgid "Threat Reduction Result (Light Purple)"
 msgstr "Hasil Pengurangan Ancaman (Ungu Muda) "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:215
-msgid "Show Diagram Grid"
-msgstr "Tampakkan Kisi-kisi Diagram "
-
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:227
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:222
 msgid ""
 "<div class='DataPanel'><p>Why are my choices limited to one color family for "
 "each type of factor?</p>"
@@ -7262,7 +7258,7 @@ msgstr ""
 "<div class='DataPanel'><p>Kenapa pilihan saya hanya terbatas pada satu "
 "kelompok warna untuk setiap jenis faktor?</p>"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:228
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:223
 msgid ""
 "We are trying to create a standard set of symbols that can be recognized "
 "globally. Just like people the world over recognize a red octagon as a stop "
@@ -7275,7 +7271,11 @@ msgstr ""
 "berharap orang-orang akan mengenal bentuk oval warna hijau sebagai target, "
 "atau bentuk segi enam warna kuning sebagai strategi"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:350
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:237
+msgid "Show Diagram Grid"
+msgstr "Tampakkan Kisi-kisi Diagram "
+
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:354
 msgid "Preferences"
 msgstr "Preferensi "
 
