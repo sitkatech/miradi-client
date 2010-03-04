@@ -187,6 +187,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		return tpcm.getRolledUpDateRange(projectDateRange);	
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Work Plan Settings");
