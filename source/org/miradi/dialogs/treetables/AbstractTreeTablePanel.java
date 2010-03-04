@@ -276,7 +276,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	
 	private boolean isCustomConfigurationCommand(CommandExecutedEvent event)
 	{
-		if(event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF))
+		if(event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_TREE_CONFIGURATION_REF))
 			return true;
 		
 		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_COL_CONFIGURATION))

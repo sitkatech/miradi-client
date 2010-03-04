@@ -48,7 +48,7 @@ abstract public class AbstractPlanningViewConfigurationDoer extends ViewDoer
 		try
 		{
 			ViewData viewData = getProject().getCurrentViewData();
-			ORef planningViewConfigurationRef = ORef.createFromString(viewData.getData(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF));
+			ORef planningViewConfigurationRef = ORef.createFromString(viewData.getData(ViewData.TAG_TREE_CONFIGURATION_REF));
 			return planningViewConfigurationRef.isInvalid();
 		}
 		catch (Exception e)

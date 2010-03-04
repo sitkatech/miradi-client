@@ -78,7 +78,7 @@ abstract public class AbstractCreatePlanningViewConfigurationDoer extends ViewDo
 		getProject().executeCommand(setVisibleColsCommand);
 	
 		ViewData viewData = getProject().getCurrentViewData();
-		CommandSetObjectData selectCurrentConfiguration = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, newConfigurationRef);
+		CommandSetObjectData selectCurrentConfiguration = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_TREE_CONFIGURATION_REF, newConfigurationRef);
 		getProject().executeCommand(selectCurrentConfiguration);
 		
 		CommandSetObjectData setConfigurationLabel = new CommandSetObjectData(newConfigurationRef, PlanningViewConfiguration.TAG_LABEL, getConfigurationDefaultLabel(getProject()));
