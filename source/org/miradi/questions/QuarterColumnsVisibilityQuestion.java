@@ -32,7 +32,7 @@ public class QuarterColumnsVisibilityQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] getChoiceItems()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem(SHOW_QUARTER_COLUMNS_CODE, EAM.text("Show Quearter Columns")),
+				new ChoiceItem(SHOW_QUARTER_COLUMNS_CODE, EAM.text("Show Quarter Columns")),
 				new ChoiceItem(HIDE_QUARTER_COLUMNS_CODE, EAM.text("Hide Quarter Columns")),
 		};
 	}
