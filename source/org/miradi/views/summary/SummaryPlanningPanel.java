@@ -46,7 +46,6 @@ public class SummaryPlanningPanel extends ObjectDataInputPanelWithSections
 		SummaryPlanningFinancialSubPanel financialSubPanel = new SummaryPlanningFinancialSubPanel(mainWindowToUse);
 		addSubPanelWithTitledBorder(financialSubPanel);
 		
-		setObjectRef(orefToUse);
 		updateFieldsFromProject();
 	}
 
