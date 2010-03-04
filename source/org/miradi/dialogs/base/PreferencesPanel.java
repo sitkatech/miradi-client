@@ -74,6 +74,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		
 	}
 
+	@Override
 	public void dispose()
 	{
 		if(diagramProjectPreferencesPanel != null)
@@ -304,6 +305,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 			return this;
 		}
 
+		@Override
 		public void paint(Graphics g)
 		{
 			super.paint(g);
@@ -315,21 +317,25 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 				g.drawRect(1, 1, getWidth()-2, getHeight()-2);
 		}
 
+		@Override
 		public Dimension getSize()
 		{
 			return new Dimension(48, 16);
 		}
 
+		@Override
 		public Dimension getPreferredSize()
 		{
 			return getSize();
 		}
 
+		@Override
 		public Dimension getMinimumSize()
 		{
 			return getSize();
 		}
 
+		@Override
 		public Dimension getMaximumSize()
 		{
 			return getSize();
