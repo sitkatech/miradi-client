@@ -25,11 +25,13 @@ import org.miradi.views.ObjectsDoer;
 
 abstract public class CreatePoolObjectDoer extends ObjectsDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		return true;
 	}
 
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		getProject().executeBeginTransaction();
