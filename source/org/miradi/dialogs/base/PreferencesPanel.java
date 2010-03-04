@@ -282,7 +282,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		String rowHeightMode = getSelectedItemQuestionBox(panelRowHeightModeCombo);
 		getMainWindow().setRowHeightMode(rowHeightMode);
 
-		getMainWindow().safleySavePreferences();
+		getMainWindow().safelySavePreferences();
 	}
 
 	private void setColorPreference(UiComboBox colorDropDown, String tagColorStrategy)
