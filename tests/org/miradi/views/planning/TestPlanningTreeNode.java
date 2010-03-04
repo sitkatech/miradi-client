@@ -38,6 +38,7 @@ import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningRowsQuestion;
+import org.miradi.views.summary.SummaryView;
 
 abstract public class TestPlanningTreeNode extends EAMTestCase
 {
@@ -46,18 +47,26 @@ abstract public class TestPlanningTreeNode extends EAMTestCase
 		super(name);
 	}
 
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
 		project = new ProjectForTesting(getName());
+		createDefaultSummaryViewConfigurationForTesting();
 		setupFactors();
 	}
 
+	@Override
 	public void tearDown() throws Exception
 	{
 		super.tearDown();
 		project.close();
 		project = null;
+	}
+	
+	private void createDefaultSummaryViewConfigurationForTesting() throws Exception
+	{
+		project.createConfigurationForViewWithoutConfiguration(SummaryView.getViewName());
 	}
 	
 	private void setupFactors() throws Exception

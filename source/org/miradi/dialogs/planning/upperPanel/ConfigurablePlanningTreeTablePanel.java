@@ -79,6 +79,9 @@ public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 		
 		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_ROW_CONFIGURATION))
 			return true;
+		
+		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_DIAGRAM_DATA_INCLUSION))
+			return true;
 				
 		return false;
 	}

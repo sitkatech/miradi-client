@@ -35,13 +35,28 @@ public class DiagramObjectDataInclusionQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] createChoiceItems()
 	{
 		return new ChoiceItem[]{
+				new ChoiceItem(INCLUDE_BOTH_DIAGRAM_DATA_CODE, EAM.text("Both")),
 				new ChoiceItem(INCLUDE_RESULTS_CHAIN_DATA_CODE, EAM.text("Result Chain Data"), new ConceptualModelIcon()),
 				new ChoiceItem(INCLUDE_CONCEPTUAL_MODEL_DATA_CODE, EAM.text("Conceptual Model Data"), new ResultsChainIcon()),
-				new ChoiceItem(INCLUDE_BOTH_DIAGRAM_DATA_CODE, EAM.text("Both")),
 		};
 	}
 	
-	public static final String INCLUDE_RESULTS_CHAIN_DATA_CODE = "IncludeResultsChainData";
-	public static final String INCLUDE_CONCEPTUAL_MODEL_DATA_CODE = "IncludeConceptualModelData";
-	public static final String INCLUDE_BOTH_DIAGRAM_DATA_CODE = "IncludeBothDiagramData";
+	public static boolean isIncludeBoth(String code)
+	{
+		return code.equals(INCLUDE_BOTH_DIAGRAM_DATA_CODE);
+	}
+	
+	public static boolean isIncludeConceptualModelOnly(String code)
+	{
+		return code.equals(INCLUDE_CONCEPTUAL_MODEL_DATA_CODE);
+	}
+	
+	public static boolean isIncludeResultsChainOnly(String code)
+	{
+		return code.equals(INCLUDE_RESULTS_CHAIN_DATA_CODE);
+	}
+	
+	private static final String INCLUDE_BOTH_DIAGRAM_DATA_CODE = "";
+	private static final String INCLUDE_RESULTS_CHAIN_DATA_CODE = "IncludeResultsChainData";
+	private static final String INCLUDE_CONCEPTUAL_MODEL_DATA_CODE = "IncludeConceptualModelData";
 }

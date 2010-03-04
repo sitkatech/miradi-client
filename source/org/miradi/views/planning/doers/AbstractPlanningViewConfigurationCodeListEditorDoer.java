@@ -21,6 +21,7 @@ package org.miradi.views.planning.doers;
 
 import org.miradi.dialogs.base.CodeListEditorPanel;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -49,7 +50,7 @@ abstract public class AbstractPlanningViewConfigurationCodeListEditorDoer extend
 			ORef planningConfigurationRef = viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
 
 			ChoiceQuestion configurationQuestion = getConfigurationQuestion();
-			CodeListEditorPanel codeListPanel = new CodeListEditorPanel(getProject(), planningConfigurationRef, getConfigurationTag(), configurationQuestion, getGridColumnCount());
+			ObjectDataInputPanel codeListPanel = createCodeListPanel(planningConfigurationRef, configurationQuestion);
 			ModelessDialogWithClose dialog = new ModelessDialogWithClose(EAM.getMainWindow(), EAM.text("Selection Dialog"));
 			dialog.setScrollableMainPanel(codeListPanel);
 			getView().showFloatingPropertiesDialog(dialog);
@@ -58,6 +59,11 @@ abstract public class AbstractPlanningViewConfigurationCodeListEditorDoer extend
 		{
 			throw new CommandFailedException(e);
 		}
+	}
+
+	protected CodeListEditorPanel createCodeListPanel(ORef planningConfigurationRef, ChoiceQuestion configurationQuestion)
+	{
+		return new CodeListEditorPanel(getProject(), planningConfigurationRef, getConfigurationTag(), configurationQuestion, getGridColumnCount());
 	}
 
 	abstract protected int getGridColumnCount();

@@ -17,38 +17,32 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.planning.doers;
 
-import org.miradi.dialogs.base.CodeListEditorPanel;
-import org.miradi.dialogs.base.CodeListPanelWithDiagramObjectDataInclusionDropDown;
+package org.miradi.dialogs.base;
+
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.CustomPlanningRowsQuestion;
+import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 
-public class PlanningRowsEditorDoer extends AbstractPlanningViewConfigurationCodeListEditorDoer
+public class CodeListPanelWithDiagramObjectDataInclusionDropDown extends CodeListEditorPanel
 {
-	@Override
-	protected int getGridColumnCount()
+	public CodeListPanelWithDiagramObjectDataInclusionDropDown(Project projectToUse, ORef orefToUse, String tagToUse, ChoiceQuestion question, int columnCount)
 	{
-		return 2;
-	}
-
-	@Override
-	protected String getConfigurationTag()
-	{
-		return PlanningViewConfiguration.TAG_ROW_CONFIGURATION;
-	}
-
-	@Override
-	protected ChoiceQuestion getConfigurationQuestion()
-	{
-		return new CustomPlanningRowsQuestion(getProject());
+		super(projectToUse, orefToUse, tagToUse, question, columnCount);
 	}
 	
 	@Override
-	protected CodeListEditorPanel createCodeListPanel(ORef planningConfigurationRef, ChoiceQuestion configurationQuestion)
+	protected void addExtraField()
 	{
-		return new CodeListPanelWithDiagramObjectDataInclusionDropDown(getProject(), planningConfigurationRef, getConfigurationTag(), configurationQuestion, getGridColumnCount());
+		addField(createChoiceField(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_DIAGRAM_DATA_INCLUSION, getProject().getQuestion(DiagramObjectDataInclusionQuestion.class)));
+	}
+	
+	@Override
+	public String getPanelDescription()
+	{
+		return EAM.text("Diagram Data Inclusio Chooser");
 	}
 }
