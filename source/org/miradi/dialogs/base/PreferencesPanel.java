@@ -44,6 +44,7 @@ import org.miradi.dialogs.fieldComponents.PanelComboBox;
 import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.threatrating.ThreatRatingPreferencesPanel;
+import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -201,7 +202,6 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		
 		diagramTab.add(new UiLabel(" "));
 		diagramTab.add(new PanelTitleLabel(EAM.text("Choose the colors that look best on your system:")));
-
 		interventionDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Strategy (Yellow)"), DiagramConstants.strategyColorChoices, AppPreferences.TAG_COLOR_STRATEGY);
 		directThreatDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Direct Threat (Pink)"), DiagramConstants.directThreatColorChoices, AppPreferences.TAG_COLOR_DIRECT_THREAT);
 		indirectFactorDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Contributing Factor (Orange)"), DiagramConstants.contributingFactorColorChoices, AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR);
@@ -212,11 +212,6 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		intermediateResultDropDown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Intermediate Result (Light Blue)"), DiagramConstants.intermediateResultChoices, AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT);
 		threatReductionResultDropDown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Threat Reduction Result (Light Purple)"), DiagramConstants.threatReductionResultChoices, AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT);
 
-		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Show Diagram Grid")));
-		gridVisibleCheckBox = new PanelCheckBox();
-		gridVisibleCheckBox.setSelected(getMainWindow().getBooleanPreference(AppPreferences.TAG_GRID_VISIBLE));
-		gridVisibleCheckBox.addActionListener(this);
-		diagramSystemPreferencesTab.add(gridVisibleCheckBox);
 		
 		diagramTab.add(new UiLabel(" "));
 		diagramTab.add(new UiLabel(" "));
@@ -233,6 +228,15 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		
 		diagramTab.add(diagramSystemPreferencesTab);
 		diagramTab.add(bottomText);
+		
+		TwoColumnPanel gridChoicePanel = new TwoColumnPanel();
+		gridChoicePanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		gridVisibleCheckBox = new PanelCheckBox();
+		gridVisibleCheckBox.setSelected(getMainWindow().getBooleanPreference(AppPreferences.TAG_GRID_VISIBLE));
+		gridVisibleCheckBox.addActionListener(this);
+		gridChoicePanel.add(new PanelTitleLabel(EAM.text("Show Diagram Grid")));
+		gridChoicePanel.add(gridVisibleCheckBox);
+		diagramTab.add(gridChoicePanel);
 
 		diagramProjectPreferencesPanel = new DiagramProjectPreferencesPanel(getMainWindow());
 		diagramTab.add(diagramProjectPreferencesPanel);
