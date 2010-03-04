@@ -33,10 +33,7 @@ import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.dialogs.planning.ConfigurableRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningViewConfigurableControlPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
-import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.PlanningViewConfiguration;
-import org.miradi.objects.ViewData;
 
 public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -58,32 +55,6 @@ public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 		RowColumnProvider rowColumnProvider = new ConfigurableRowColumnProvider(mainWindowToUse.getProject());
 		return new ConfigurablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
-	}
-	
-	@Override
-	protected boolean doesCommandForceRebuild(CommandExecutedEvent event)
-	{
-		if (super.doesCommandForceRebuild(event))
-			return true;
-			
-		return isCustomConfigurationCommand(event);
-	}
-	
-	private boolean isCustomConfigurationCommand(CommandExecutedEvent event)
-	{
-		if(event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF))
-			return true;
-		
-		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_COL_CONFIGURATION))
-			return true;
-		
-		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_ROW_CONFIGURATION))
-			return true;
-		
-		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_DIAGRAM_DATA_INCLUSION))
-			return true;
-				
-		return false;
 	}
 		
 	private static Class[] getButtonActions()
