@@ -303,6 +303,11 @@ public class ProjectMetadata extends BaseObject
 		return month;
 	}
 
+	public boolean areQuarterColumnsVisible()
+	{
+		return getData(TAG_QUARTER_COLUMNS_VISIBILITY).equals(QuarterColumnsVisibilityQuestion.SHOW_QUARTER_COLUMNS_CODE);
+	}
+	
 	public boolean isBudgetTimePeriodQuarterly()
 	{
 		return getData(TAG_WORKPLAN_TIME_UNIT).equals(BudgetTimePeriodQuestion.BUDGET_BY_QUARTER_CODE);

@@ -117,11 +117,7 @@ public class TestProjectCalendar extends TestCaseWithProject
 
 	public void testBlankDateUnit() throws Exception
 	{
-		MultiCalendar startDate = getProject().parseIsoDate("2006-01-02");
-		MultiCalendar endDate = getProject().parseIsoDate("2007-01-02");
-		
-		getProject().getMetadata().setData(ProjectMetadata.TAG_START_DATE, startDate.toIsoDateString());
-		getProject().getMetadata().setData(ProjectMetadata.TAG_EXPECTED_END_DATE, endDate.toIsoDateString());
+		setProjectStartEndDate();
 		DateUnit blankDateUnit = new DateUnit();
 		DateRange dateRange = getProjectCalendar().convertToDateRange(blankDateUnit);
 		
@@ -146,11 +142,7 @@ public class TestProjectCalendar extends TestCaseWithProject
 	
 	public void testGetSubDateUnits() throws Exception
 	{
-		MultiCalendar startDate = getProject().parseIsoDate("2006-01-02");
-		MultiCalendar endDate = getProject().parseIsoDate("2007-01-02");
-		
-		getProject().getMetadata().setData(ProjectMetadata.TAG_START_DATE, startDate.toIsoDateString());
-		getProject().getMetadata().setData(ProjectMetadata.TAG_EXPECTED_END_DATE, endDate.toIsoDateString());
+		setProjectStartEndDate();
 		
 		DateUnit blankDateUnit = new DateUnit();
 		Vector<DateUnit> subDateUnits = getProjectCalendar().getSubDateUnitsHierarchy(blankDateUnit);
@@ -158,7 +150,70 @@ public class TestProjectCalendar extends TestCaseWithProject
 		assertTrue("does not contain date?", subDateUnits.contains(DateUnit.createFiscalYear(2006, 1)));
 		assertTrue("does not contain date?", subDateUnits.contains(DateUnit.createFiscalYear(2007, 1)));
 	}
+
+	public void testDateUnitsHierarchyWithoutQuarters() throws Exception
+	{
+		getProject().turnOffVisibleQuarterColumns();
+		setProjectStartEndDate();
+		DateUnit projectDateUnit = new DateUnit();
+		Vector<DateUnit> yearDateUnits = getProjectCalendar().getSubDateUnitsHierarchy(projectDateUnit);
+		assertTrue("project total should have year sub dateUnits?", !yearDateUnits.isEmpty());
+		
+		for(DateUnit yearDateUnit : yearDateUnits)
+		{
+			assertTrue("is not year dateUnit", yearDateUnit.isYear());
+			verifyProjectTotalSuperDateUnit(yearDateUnit);
+			verifyYearSubDateUnits(yearDateUnit);
+		}
+	}
+
+	private void verifyProjectTotalSuperDateUnit(DateUnit yearDateUnit)
+	{
+		Vector<DateUnit> superDateUnits = getProjectCalendar().getSuperDateUnitsHierarchy(yearDateUnit);
+		assertEquals("should only have one project total dateUnit?", 1, superDateUnits.size());
+		DateUnit projectTotalDateUnit = superDateUnits.get(0);
+		assertTrue("year super date unit should be project total?", projectTotalDateUnit.isProjectTotal());
+	}
+
+	private void verifyYearSubDateUnits(DateUnit yearDateUnit)	throws Exception
+	{
+		Vector<DateUnit> monthDateUnits = getProjectCalendar().getSubDateUnitsHierarchy(yearDateUnit);
+		for(DateUnit monthDateUnit : monthDateUnits)
+		{
+			assertTrue("is not month dateUnit", monthDateUnit.isMonth());
+			verifyMonthSuperHierachyDateUnits(monthDateUnit);
+			verifyDaySubDateUnits(monthDateUnit);
+		}
+	}
 	
+	private void verifyMonthSuperHierachyDateUnits(DateUnit monthDateUnit)
+	{
+		Vector<DateUnit> monthSuperDateUnits = getProjectCalendar().getSuperDateUnitsHierarchy(monthDateUnit);
+		assertEquals("Incorrect super dateunit count?", 2, monthSuperDateUnits.size());
+		assertTrue("should be year?", monthSuperDateUnits.get(0).isYear());
+		assertTrue("should be project total?", monthSuperDateUnits.get(1).isProjectTotal());		
+	}
+
+	private void verifyDaySubDateUnits(DateUnit monthDateUnit) throws Exception
+	{
+		Vector<DateUnit> dayDateUnits = getProjectCalendar().getSubDateUnitsHierarchy(monthDateUnit);
+		for(DateUnit dayDateUnit : dayDateUnits)
+		{
+			verifyDaySuperHierarchyDateUnits(dayDateUnit);
+			assertTrue("is not day dateUnit", dayDateUnit.isDay());
+			assertFalse("Day does not have sub dateUnits?", dayDateUnit.hasSubDateUnits());
+		}
+	}
+
+	private void verifyDaySuperHierarchyDateUnits(DateUnit dayDateUnit)
+	{
+		Vector<DateUnit> daySuperHiearchyDateunits = getProjectCalendar().getSuperDateUnitsHierarchy(dayDateUnit);
+		assertEquals("Incorrect super dateunit count?", 3, daySuperHiearchyDateunits.size());
+		assertTrue("should be month?", daySuperHiearchyDateunits.get(0).isMonth());
+		assertTrue("should be year?", daySuperHiearchyDateunits.get(1).isYear());
+		assertTrue("should be project total?", daySuperHiearchyDateunits.get(2).isProjectTotal());
+	}
+
 	public void testMultiCalendarBefore1970() throws Exception
 	{
 		MultiCalendar ancient = MultiCalendar.createFromGregorianYearMonthDay(1919, 1, 9);
@@ -297,6 +352,15 @@ public class TestProjectCalendar extends TestCaseWithProject
 		assertEquals("Wrong Fiscal year", "FY06", getProjectCalendar().getShortDateUnit(new DateUnit("YEARFROM:2005-04"), FISCAL_YEAR_START_APR));
 		assertEquals("Wrong Fiscal year", "FY06", getProjectCalendar().getShortDateUnit(new DateUnit("YEARFROM:2005-07"), FISCAL_YEAR_START_JUL));
 		assertEquals("Wrong Fiscal year", "FY06", getProjectCalendar().getShortDateUnit(new DateUnit("YEARFROM:2005-10"), FISCAL_YEAR_START_OCT));
+	}
+	
+	private void setProjectStartEndDate() throws Exception
+	{
+		MultiCalendar startDate = getProject().parseIsoDate("2006-01-02");
+		MultiCalendar endDate = getProject().parseIsoDate("2007-01-02");
+		
+		getProject().getMetadata().setData(ProjectMetadata.TAG_START_DATE, startDate.toIsoDateString());
+		getProject().getMetadata().setData(ProjectMetadata.TAG_EXPECTED_END_DATE, endDate.toIsoDateString());
 	}
 
 	private ProjectCalendar getProjectCalendar()

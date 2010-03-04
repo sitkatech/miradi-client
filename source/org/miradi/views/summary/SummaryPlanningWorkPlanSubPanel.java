@@ -37,7 +37,9 @@ import org.miradi.objects.Assignment;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
+import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.utils.DateRange;
 
 public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
@@ -61,6 +63,8 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		
 		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_FISCAL_YEAR_START, new FiscalYearStartQuestion()));
 		addField(createNumericField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR));
+		ChoiceQuestion quarterColumnsVisibilityQuestion = getProject().getQuestion(QuarterColumnsVisibilityQuestion.class);
+		addRadioButtonFieldWithCustomLabel(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, quarterColumnsVisibilityQuestion, "");
 		addField(createMultilineField(ProjectMetadata.TAG_PLANNING_COMMENTS));
 		
 		updateFieldsFromProject();
