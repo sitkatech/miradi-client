@@ -427,14 +427,14 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 				return new PlanningTreeResourceAssignmentNode(project, refToAdd, visibleRows);
 			if (type == ExpenseAssignment.getObjectType())
 				return new PlanningTreeExpenseAssignmentNode(project, refToAdd, visibleRows);
+			
+			throw new Exception("Attempted to create node of unknown type: " + refToAdd);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			return new PlanningTreeErrorNode(getProject(), refToAdd);
 		}
-				
-		throw new Exception("Attempted to create node of unknown type: " + refToAdd);
 	}
 
 	protected ORefSet extractNonDraftStrategyRefs(Factor[] factors)
