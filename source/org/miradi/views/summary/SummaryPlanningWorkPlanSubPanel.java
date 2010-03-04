@@ -21,12 +21,16 @@ package org.miradi.views.summary;
 
 import java.awt.Color;
 
+import javax.swing.JLabel;
+
 import org.martus.swing.UiWrappedTextArea;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.propertiesPanel.FillerPanel;
+import org.miradi.icons.WarningIcon;
+import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -109,9 +113,13 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		quarterVisibilityExplanationFillerReplacement = new FillerPanel();
 		add(quarterVisibilityExplanationFillerReplacement);
 
-		quarterVisibilityExplanationLabel = new UiWrappedTextArea(EAM.text("Quarter columns cannot be hidden because this project already has data for some quarters."));
-		quarterVisibilityExplanationLabel.setBackground(Color.YELLOW);
-		add(quarterVisibilityExplanationLabel);
+		UiWrappedTextArea quarterVisibilityExplanationLabel = new UiWrappedTextArea(EAM.text("Quarter columns cannot be hidden because this project already has data for some quarters."));
+		explanationPanel = new TwoColumnPanel();
+		explanationPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		quarterVisibilityExplanationLabel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		explanationPanel.add(new JLabel(new WarningIcon()));
+		explanationPanel.add(quarterVisibilityExplanationLabel);
+		add(explanationPanel);
 		
 		updateQuarterColumnVisibilityEnableStatus();
 	}
@@ -155,7 +163,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		final boolean enableQuarterVisibilityOption = hasQuarterData() && getProject().getMetadata().areQuarterColumnsVisible();
 		
 		quarterColumnVisibilityComponent.setEditable(!enableQuarterVisibilityOption);
-		quarterVisibilityExplanationLabel.setVisible(enableQuarterVisibilityOption);
+		explanationPanel.setVisible(enableQuarterVisibilityOption);
 		quarterVisibilityExplanationFillerReplacement.setVisible(!enableQuarterVisibilityOption);
 	}
 
@@ -243,6 +251,6 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	private UiWrappedTextArea warningLabel;
 	private FillerPanel warningLabelFillerReplacement;
 	private FillerPanel quarterVisibilityExplanationFillerReplacement;
-	private UiWrappedTextArea quarterVisibilityExplanationLabel;
+	private TwoColumnPanel explanationPanel;
 	private ObjectDataInputField quarterColumnVisibilityComponent;
 }
