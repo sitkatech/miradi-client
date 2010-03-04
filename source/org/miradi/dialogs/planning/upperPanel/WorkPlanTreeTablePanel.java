@@ -24,6 +24,8 @@ import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.ActionFilterWorkPlanByProjectResource;
 import org.miradi.actions.ActionPlanningCreationMenu;
+import org.miradi.actions.ActionTreeNodeDown;
+import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.actions.ActionWorkPlanBudgetColumnsEditor;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
@@ -82,11 +84,14 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 	{
 		return new Class[] {
 				ActionExpandAllRows.class, 
-				ActionCollapseAllRows.class, 
+				ActionTreeNodeUp.class,
 				ActionPlanningCreationMenu.class,	
 				ActionDeletePlanningViewTreeNode.class,
 				ActionFilterWorkPlanByProjectResource.class,
 				ActionWorkPlanBudgetColumnsEditor.class,
+				
+				ActionCollapseAllRows.class,
+				ActionTreeNodeDown.class,
 		};
 	}
 	
