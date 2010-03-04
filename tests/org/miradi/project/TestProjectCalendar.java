@@ -145,7 +145,7 @@ public class TestProjectCalendar extends TestCaseWithProject
 		setProjectStartEndDate();
 		
 		DateUnit blankDateUnit = new DateUnit();
-		Vector<DateUnit> subDateUnits = getProjectCalendar().getSubDateUnitsHierarchy(blankDateUnit);
+		Vector<DateUnit> subDateUnits = getProjectCalendar().getSubDateUnits(blankDateUnit);
 		assertEquals("wrong sub date units count?", 2, subDateUnits.size());
 		assertTrue("does not contain date?", subDateUnits.contains(DateUnit.createFiscalYear(2006, 1)));
 		assertTrue("does not contain date?", subDateUnits.contains(DateUnit.createFiscalYear(2007, 1)));
@@ -156,7 +156,7 @@ public class TestProjectCalendar extends TestCaseWithProject
 		getProject().turnOffVisibleQuarterColumns();
 		setProjectStartEndDate();
 		DateUnit projectDateUnit = new DateUnit();
-		Vector<DateUnit> yearDateUnits = getProjectCalendar().getSubDateUnitsHierarchy(projectDateUnit);
+		Vector<DateUnit> yearDateUnits = getProjectCalendar().getSubDateUnits(projectDateUnit);
 		assertTrue("project total should have year sub dateUnits?", !yearDateUnits.isEmpty());
 		
 		for(DateUnit yearDateUnit : yearDateUnits)
@@ -177,7 +177,7 @@ public class TestProjectCalendar extends TestCaseWithProject
 
 	private void verifyYearSubDateUnits(DateUnit yearDateUnit)	throws Exception
 	{
-		Vector<DateUnit> monthDateUnits = getProjectCalendar().getSubDateUnitsHierarchy(yearDateUnit);
+		Vector<DateUnit> monthDateUnits = getProjectCalendar().getSubDateUnits(yearDateUnit);
 		for(DateUnit monthDateUnit : monthDateUnits)
 		{
 			assertTrue("is not month dateUnit", monthDateUnit.isMonth());
@@ -196,7 +196,7 @@ public class TestProjectCalendar extends TestCaseWithProject
 
 	private void verifyDaySubDateUnits(DateUnit monthDateUnit) throws Exception
 	{
-		Vector<DateUnit> dayDateUnits = getProjectCalendar().getSubDateUnitsHierarchy(monthDateUnit);
+		Vector<DateUnit> dayDateUnits = getProjectCalendar().getSubDateUnits(monthDateUnit);
 		for(DateUnit dayDateUnit : dayDateUnits)
 		{
 			verifyDaySuperHierarchyDateUnits(dayDateUnit);
