@@ -52,11 +52,21 @@ public class IndicatorMonitoringPlanSubPanel extends ObjectDataInputPanel
 		editMethodsButton.dispose();
 		super.dispose();
 	}
+	
+	@Override
+	protected boolean doesSectionContainFieldWithTag(String tag)
+	{
+		if (tag.equals(Indicator.PSEUDO_TAG_METHODS))
+			return true;
+		
+		return super.doesSectionContainFieldWithTag(tag);
+	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Monitoring Plan");
 	}
-	
+		
 	private ObjectsActionButton editMethodsButton;
 }
