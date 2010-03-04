@@ -277,7 +277,7 @@ public class DateUnit
 		return asDateRange().contains(otherDateUnit.asDateRange());
 	}
 
-	public DateUnit getSafeSuperDateUnit(int fiscalYearFirstMonth)
+	private DateUnit getSafeSuperDateUnit(int fiscalYearFirstMonth)
 	{
 		if (isProjectTotal())
 			return null;
