@@ -44,6 +44,7 @@ import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.questions.DiagramLinkColorQuestion;
+import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
@@ -152,6 +153,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		defineVocabulary(writer, VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE, new StatusConfidenceQuestion());
 		defineVocabulary(writer, VOCABULARY_COUNTRIES, new CountriesQuestion());
 		defineVocabulary(writer, VOCABULARY_THREAT_RATING, new ThreatRatingQuestion());
+		defineVocabulary(writer, VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION, new DiagramObjectDataInclusionQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -511,6 +513,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 	public static final String VOCABULARY_COUNTRIES = "vocabulary_countries";
 	public static final String VOCABULARY_TEXT_BOX_Z_ORDER = "vocabulary_text_box_z_order";
 	public static final String VOCABULARY_THREAT_RATING = "vocabulary_threat_rating";
+	public static final String VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION = "vocabulary_diagram_object_data_inclusion";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;

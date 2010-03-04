@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/19'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/20'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -45,7 +45,8 @@ ConservationProject.element = element miradi:ConservationProject
   ThreatRatingPool.element ?  &
   IUCNRedListSpeciesPool.element ?  &
   OtherNotableSpeciesPool.element ?  &
-  AudiencePool.element ? 
+  AudiencePool.element ?  &
+  PlanningViewConfigurationPool.element ? 
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -631,6 +632,14 @@ Audience.element = element miradi:Audience
   element miradi:AudienceSummary { text }?
 }
 
+PlanningViewConfigurationPool.element = element miradi:PlanningViewConfigurationPool { PlanningViewConfiguration.element* }
+PlanningViewConfiguration.element = element miradi:PlanningViewConfiguration
+{
+  attribute Id {xsd:integer}  &
+  element miradi:PlanningViewConfigurationLabel { text }? &
+  element miradi:PlanningViewConfigurationDiagramDataInclusion { vocabulary_diagram_object_data_inclusion  }?
+}
+
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
 vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } 
 vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } 
@@ -681,6 +690,7 @@ vocabulary_measurement_status = ''|'1'|'2'|'3'|'4'
 vocabulary_measurement_status_confidence = ''|'RoughGuess'|'ExpertKnowledge'|'RapidAssessment'|'IntensiveAssessment'
 vocabulary_countries = 'ZZZ'|'XXX'|'AFG'|'ALA'|'ALB'|'DZA'|'ASM'|'AND'|'AGO'|'AIA'|'ATA'|'ATG'|'ARG'|'ARM'|'ABW'|'AUS'|'AUT'|'AZE'|'BHS'|'BHR'|'BGD'|'BRB'|'BLR'|'BEL'|'BLZ'|'BEN'|'BMU'|'BTN'|'BOL'|'BIH'|'BWA'|'BVT'|'BRA'|'IOT'|'VGB'|'BRN'|'BGR'|'BFA'|'BDI'|'KHM'|'CMR'|'CAN'|'CPV'|'CYM'|'CAF'|'TCD'|'CHL'|'CHN'|'CXR'|'CCK'|'COL'|'COM'|'COG'|'COK'|'CRI'|'CIV'|'HRV'|'CUB'|'CYP'|'CZE'|'PRK'|'COD'|'DNK'|'DJI'|'DMA'|'DOM'|'ECU'|'EGY'|'SLV'|'GNQ'|'ERI'|'EST'|'ETH'|'FRO'|'FLK'|'FJI'|'FIN'|'FRA'|'FXX'|'GUF'|'PYF'|'ATF'|'GAB'|'GMB'|'GEO'|'DEU'|'GHA'|'GIB'|'GRC'|'GRL'|'GRD'|'GLP'|'GUM'|'GTM'|'GIN'|'GNB'|'GUY'|'HTI'|'HMD'|'VAT'|'HND'|'HKG'|'HUN'|'ISL'|'IND'|'IDN'|'IRN'|'IRQ'|'IRL'|'IMN'|'ISR'|'ITA'|'JAM'|'JPN'|'JOR'|'KAZ'|'KEN'|'KIR'|'KWT'|'KGZ'|'LAO'|'LVA'|'LBN'|'LSO'|'LBR'|'LBY'|'LIE'|'LTU'|'LUX'|'MAC'|'MKD'|'MDG'|'MWI'|'MYS'|'MDV'|'MLI'|'MLT'|'MHL'|'MTQ'|'MRT'|'MUS'|'MYT'|'MEX'|'FSM'|'MCO'|'MNG'|'MSR'|'MAR'|'MOZ'|'MMR'|'NAM'|'NRU'|'NPL'|'NLD'|'ANT'|'NCL'|'NZL'|'NIC'|'NER'|'NGA'|'NIU'|'NFK'|'MNP'|'NOR'|'PSE'|'OMN'|'PAK'|'PLW'|'PAN'|'PNG'|'PRY'|'PER'|'PHL'|'PCN'|'POL'|'PRT'|'PRI'|'QAT'|'KOR'|'MDA'|'REU'|'ROU'|'RUS'|'RWA'|'SHN'|'KNA'|'LCA'|'SPM'|'VCT'|'WSM'|'SMR'|'STP'|'SAU'|'SEN'|'SCG'|'SYC'|'SLE'|'SGP'|'SVK'|'SVN'|'SLB'|'SOM'|'ZAF'|'SGS'|'ESP'|'LKA'|'SDN'|'SUR'|'SJM'|'SWZ'|'SWE'|'CHE'|'SYR'|'TWN'|'TJK'|'THA'|'TLS'|'TGO'|'TKL'|'TON'|'TTO'|'TUN'|'TUR'|'TKM'|'TCA'|'TUV'|'UGA'|'UKR'|'ARE'|'GBR'|'TZA'|'UMI'|'USA'|'VIR'|'URY'|'UZB'|'VUT'|'VEN'|'VNM'|'WLF'|'PSE'|'ESH'|'YEM'|'ZMB'|'ZWE'
 vocabulary_threat_rating = ''|'1'|'2'|'3'|'4'
+vocabulary_diagram_object_data_inclusion = ''|'IncludeResultsChainData'|'IncludeConceptualModelData'
 ConceptualModelId.element = element miradi:ConceptualModelId { xsd:integer }
 ResultsChainId.element = element miradi:ResultsChainId { xsd:integer }
 DiagramFactorId.element = element miradi:DiagramFactorId { xsd:integer }

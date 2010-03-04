@@ -105,6 +105,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		new IucnRedListspeciesPoolExporter(this).exportXml();
 		new OtherNotableSpeciesPoolExporter(this).exportXml();
 		new AudiencePoolExporter(this).exportXml();
+		new PlanningViewConfigurationPoolExporter(this).exportXml();
 		
 		writeEndElement(out, CONSERVATION_PROJECT);
 	}

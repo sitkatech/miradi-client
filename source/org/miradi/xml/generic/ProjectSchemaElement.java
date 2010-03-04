@@ -78,6 +78,7 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new ObjectPoolSchemaElement(new IucnRedListSpeciesObjectSchemaElement()));
 		objectTypes.add(new ObjectPoolSchemaElement(new OtherNotableSpeciesObjectSchemaElement()));
 		objectTypes.add(new ObjectPoolSchemaElement(new AudienceObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new PlanningViewConfigurationSchemaElement()));
 	}
 	
 	public void output(SchemaWriter writer) throws IOException
