@@ -93,7 +93,7 @@ public class ViewData extends BaseObject
 	
 	public ORef getTreeConfigurationRef()
 	{
-		return planningCustomChoiceRef.getRef();
+		return treeConfigurationRef.getRef();
 	}
 	
 	public void setCurrentTab(int newTab) throws Exception
@@ -155,7 +155,7 @@ public class ViewData extends BaseObject
 		currentConceptualModelRef = new ORefData(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
 		diagramHiddenTypes = new CodeListData(TAG_DIAGRAM_HIDDEN_TYPES, getQuestion(InternalQuestionWithoutValues.class));
 		planningSingleLevelChoice = new StringData(TAG_PLANNING_SINGLE_LEVEL_CHOICE);
-		planningCustomChoiceRef = new ORefData(TAG_PLANNING_CUSTOM_PLAN_REF);
+		treeConfigurationRef = new ORefData(TAG_PLANNING_CUSTOM_PLAN_REF);
 		currentWizardStep = new StringData(TAG_CURRENT_WIZARD_STEP);
 		
 		addPresentationDataField(TAG_CURRENT_CONCEPTUAL_MODEL_REF, currentConceptualModelRef);
@@ -166,7 +166,7 @@ public class ViewData extends BaseObject
 		addPresentationDataField(TAG_DIAGRAM_HIDDEN_TYPES, diagramHiddenTypes);
 		
 		addPresentationDataField(TAG_PLANNING_SINGLE_LEVEL_CHOICE, planningSingleLevelChoice);
-		addPresentationDataField(TAG_PLANNING_CUSTOM_PLAN_REF, planningCustomChoiceRef);
+		addPresentationDataField(TAG_PLANNING_CUSTOM_PLAN_REF, treeConfigurationRef);
 		addPresentationDataField(TAG_CURRENT_WIZARD_STEP, currentWizardStep);
 	}
 
@@ -193,6 +193,6 @@ public class ViewData extends BaseObject
 	private ORefData currentConceptualModelRef;
 	private CodeListData diagramHiddenTypes;
 	private StringData planningSingleLevelChoice;
-	private ORefData planningCustomChoiceRef;
+	private ORefData treeConfigurationRef;
 	private StringData currentWizardStep;
 }
