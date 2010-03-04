@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-04 13:02-0600\n"
+"POT-Creation-Date: 2010-03-04 13:26-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -473,7 +473,7 @@ msgstr "Cakupan dan Visi "
 msgid "Organization"
 msgstr "Organisasi "
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:60
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:59
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:111
 msgid "Planning"
 msgstr "Perencanaan "
