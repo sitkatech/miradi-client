@@ -597,7 +597,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	private void respondToCollapseColumnEvent(DateUnit dateUnit) throws Exception
 	{
-		setDeepestExpandedColumn(getProjectCalendar().getSafeSuperDateUnitHierarchy(dateUnit));
+		setDeepestExpandedColumn(getProjectCalendar().getSafeSuperDateUnit(dateUnit));
 	}
 
 	private int getFiscalYearFirstMonth() throws Exception

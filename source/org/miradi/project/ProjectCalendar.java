@@ -327,7 +327,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		return getSubDateUnitsHierarchy(dateUnit).size() > 0;
 	}
 	
-	public DateUnit getSafeSuperDateUnitHierarchy(DateUnit dateUnit) throws Exception
+	public DateUnit getSafeSuperDateUnit(DateUnit dateUnit) throws Exception
 	{
 		DateUnit safeSuperDateUnit = getYearAsSuperDateUnitOfMonth(dateUnit);
 		if (shouldGetYearAsSuperUnitOfMonth(safeSuperDateUnit))
