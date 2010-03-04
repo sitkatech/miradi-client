@@ -327,15 +327,6 @@ public class ProjectCalendar implements CommandExecutedListener
 		return getSubDateUnits(dateUnit).size() > 0;
 	}
 	
-	public DateUnit getSafeSuperDateUnit(DateUnit dateUnit) throws Exception
-	{
-		Vector<DateUnit> superDateUnitsHierarchy = getSuperDateUnitsHierarchy(dateUnit);
-		if (superDateUnitsHierarchy.isEmpty())
-			return null;
-		
-		return superDateUnitsHierarchy.firstElement();
-	}
-	
 	public Vector<DateUnit> getSuperDateUnitsHierarchy(DateUnit dateUnit)
 	{
 		Vector<DateUnit> superDateUnits = dateUnit.getSuperDateUnitHierarchy(getFiscalYearFirstMonth());
