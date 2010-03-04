@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-03 18:42-0600\n"
+"POT-Creation-Date: 2010-03-03 19:08-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -413,27 +413,27 @@ msgstr ""
 msgid "Project Settings"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:52
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:54
 #: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:34
 msgid "Label|Project Dates"
 msgstr "Tanggal Proyek "
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:57
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:59
 msgid "Label|Work Plan Dates"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:75
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:79
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:91
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:95
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. The data will be visible again if you set the planning start and end "
 "date to include the entire date range of the existing data."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:188
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:192
 msgid "Work Plan Settings"
 msgstr ""
 
@@ -2136,15 +2136,15 @@ msgstr "[Rangkaian Hasil Baru] "
 msgid "Results Chain"
 msgstr "Rangkaian Hasil "
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:176
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:177
 msgid "Total"
 msgstr "Total "
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:308
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:309
 msgid "Fiscal Year|FY"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:313
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:314
 msgid "Quarter Prefix|Q"
 msgstr ""
 
