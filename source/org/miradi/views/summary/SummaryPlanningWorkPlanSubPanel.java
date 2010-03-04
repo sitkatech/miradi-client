@@ -109,7 +109,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		quarterVisibilityExplanationFillerReplacement = new FillerPanel();
 		add(quarterVisibilityExplanationFillerReplacement);
 
-		quarterVisibilityExplanationLabel = new UiWrappedTextArea(EAM.text("Cannot Remove quarter columns when there is data inside the quearter column."));
+		quarterVisibilityExplanationLabel = new UiWrappedTextArea(EAM.text("Quarter columns cannot be hidden because this project already has data for some quarters."));
 		quarterVisibilityExplanationLabel.setBackground(Color.YELLOW);
 		add(quarterVisibilityExplanationLabel);
 		
