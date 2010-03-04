@@ -64,9 +64,11 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_FISCAL_YEAR_START, new FiscalYearStartQuestion()));
 		addField(createNumericField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR));
 		ChoiceQuestion quarterColumnsVisibilityQuestion = getProject().getQuestion(QuarterColumnsVisibilityQuestion.class);
-		addRadioButtonFieldWithCustomLabel(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, quarterColumnsVisibilityQuestion, "");
+		quarterColumnVisibilityComponent = addRadioButtonFieldWithCustomLabel(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, quarterColumnsVisibilityQuestion, "");
+		addQuarterColumnVisibilityExplanationLabel();
 		addField(createMultilineField(ProjectMetadata.TAG_PLANNING_COMMENTS));
 		
+		updateQuarterColumnVisibilityEnableStatus();
 		updateFieldsFromProject();
 	}
 	
@@ -101,6 +103,19 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		updateOutOfRangeDataWarningField();
 	}
 	
+	private void addQuarterColumnVisibilityExplanationLabel()
+	{	
+		add(new FillerPanel());
+		quarterVisibilityExplanationFillerReplacement = new FillerPanel();
+		add(quarterVisibilityExplanationFillerReplacement);
+
+		quarterVisibilityExplanationLabel = new UiWrappedTextArea(EAM.text("Cannot Remove quarter columns when there is data inside the quearter column."));
+		quarterVisibilityExplanationLabel.setBackground(Color.YELLOW);
+		add(quarterVisibilityExplanationLabel);
+		
+		updateQuarterColumnVisibilityEnableStatus();
+	}
+	
 	@Override
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
@@ -129,11 +144,21 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
 		if (isOneOfOurFields(setCommand.getFieldTag()))
 		{
+			updateQuarterColumnVisibilityEnableStatus();
 			updateOutOfRangeDataWarningField();
 			getMainWindow().updatePlanningDateRelatedStatus();
 		}
 	}
 	
+	private void updateQuarterColumnVisibilityEnableStatus()
+	{
+		final boolean enableQuarterVisibilityOption = hasQuarterData() && getProject().getMetadata().areQuarterColumnsVisible();
+		
+		quarterColumnVisibilityComponent.setEditable(!enableQuarterVisibilityOption);
+		quarterVisibilityExplanationLabel.setVisible(enableQuarterVisibilityOption);
+		quarterVisibilityExplanationFillerReplacement.setVisible(!enableQuarterVisibilityOption);
+	}
+
 	public static boolean hasDataOutsideOfProjectDateRange(Project projectToUse)
 	{
 		try
@@ -172,6 +197,14 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	
 	private static DateRange getProjectDataDateRange(Project projectToUse) throws Exception
 	{
+		DateRange projectDateRange = projectToUse.getProjectCalendar().getProjectPlanningDateRange();
+		TimePeriodCostsMap tpcm = getTimePeriodCostsMapForAllAssignments(projectToUse);
+		
+		return tpcm.getRolledUpDateRange(projectDateRange);	
+	}
+
+	private static TimePeriodCostsMap getTimePeriodCostsMapForAllAssignments(Project projectToUse) throws Exception
+	{
 		ORefList assignmentRefs = new ORefList();
 		assignmentRefs.addAll(projectToUse.getAssignmentPool().getORefList());
 		assignmentRefs.addAll(projectToUse.getPool(ExpenseAssignment.getObjectType()).getRefList());
@@ -183,8 +216,22 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 			tpcm.mergeAll(assignment.convertAllDateUnitEffortList());
 		}
 		
-		final DateRange projectDateRange = projectToUse.getProjectCalendar().getProjectPlanningDateRange();
-		return tpcm.getRolledUpDateRange(projectDateRange);	
+		return tpcm;
+	}
+	
+	private boolean hasQuarterData()
+	{
+		try
+		{
+			TimePeriodCostsMap tpcm = getTimePeriodCostsMapForAllAssignments(getProject());
+			return tpcm.containsQuarterDateUnit();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
+			return false;
+		}
 	}
 	
 	@Override
@@ -195,4 +242,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	
 	private UiWrappedTextArea warningLabel;
 	private FillerPanel warningLabelFillerReplacement;
+	private FillerPanel quarterVisibilityExplanationFillerReplacement;
+	private UiWrappedTextArea quarterVisibilityExplanationLabel;
+	private ObjectDataInputField quarterColumnVisibilityComponent;
 }
