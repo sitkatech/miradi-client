@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-03 20:11-0600\n"
+"POT-Creation-Date: 2010-03-03 20:16-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -434,7 +434,8 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:112
 msgid ""
-"Cannot Remove quarter columns when there is data inside the quearter column."
+"Quarter columns cannot be hidden because this project already has data for "
+"some quarters."
 msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:240
