@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-04 13:26-0600\n"
+"POT-Creation-Date: 2010-03-04 15:29-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5750,7 +5750,7 @@ msgstr "将条目往左移 \t\t"
 msgid "Action|Table|Move Activity Up"
 msgstr "上移活动 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionActivityMoveUp.java:40
+#: Miradi/source/org/miradi/actions/ActionActivityMoveUp.java:41
 msgid "TT|Move the selected Activity up"
 msgstr "上移选定的活动 \t\t"
 
