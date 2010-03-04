@@ -51,7 +51,7 @@ public class RenamePlanningViewConfigurationDoer extends AbstractPlanningViewCon
 		try
 		{
 			ViewData viewData = getProject().getCurrentViewData();
-			String oRefAsString = viewData.getData(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
+			String oRefAsString = viewData.getData(ViewData.TAG_TREE_CONFIGURATION_REF);
 			ORef configurationRef = ORef.createFromString(oRefAsString);
 
 			PlanningViewCustomLabelPropertiesPanel labelPropertiesPanel = new PlanningViewCustomLabelPropertiesPanel(getProject(), configurationRef);

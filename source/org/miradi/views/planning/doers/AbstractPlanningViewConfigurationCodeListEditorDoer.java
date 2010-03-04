@@ -47,7 +47,7 @@ abstract public class AbstractPlanningViewConfigurationCodeListEditorDoer extend
 		{
 			ORef currentViewDataRef = getProject().getCurrentViewData().getRef();
 			ViewData viewData = ViewData.find(getProject(), currentViewDataRef);
-			ORef planningConfigurationRef = viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
+			ORef planningConfigurationRef = viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
 
 			ChoiceQuestion configurationQuestion = getConfigurationQuestion();
 			ObjectDataInputPanel codeListPanel = createCodeListPanel(planningConfigurationRef, configurationQuestion);

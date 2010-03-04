@@ -62,7 +62,7 @@ public class RowManager
 	{
 		try
 		{
-			ORef customizationRef = viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
+			ORef customizationRef = viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
 			if(customizationRef.isInvalid())
 				return new CodeList();
 			PlanningViewConfiguration customization = (PlanningViewConfiguration)viewData.getProject().findObject(customizationRef);

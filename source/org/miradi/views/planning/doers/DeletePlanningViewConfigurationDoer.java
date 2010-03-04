@@ -63,7 +63,7 @@ public class DeletePlanningViewConfigurationDoer extends AbstractPlanningViewCon
 		try
 		{
 			ViewData viewData = getProject().getCurrentViewData();
-			ORef configurationRef = viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
+			ORef configurationRef = viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
 			
 			selectOtherConfiguration(configurationRef);
 			
@@ -83,7 +83,7 @@ public class DeletePlanningViewConfigurationDoer extends AbstractPlanningViewCon
 		ORefList existing = getProject().getPlanningViewConfigurationPool().getORefList();
 		int next = (existing.find(itemNotToSelect) + 1) % existing.size();
 		ORef refAsSelection = existing.get(next);
-		CommandSetObjectData setCurrentCustomPlanRef = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, refAsSelection.toString());
+		CommandSetObjectData setCurrentCustomPlanRef = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_TREE_CONFIGURATION_REF, refAsSelection.toString());
 		getProject().executeCommand(setCurrentCustomPlanRef);
 	}
 }

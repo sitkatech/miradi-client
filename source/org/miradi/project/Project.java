@@ -756,19 +756,19 @@ public class Project
 		{
 			ORef createPlanningConfiguration = createObject(PlanningViewConfiguration.getObjectType());
 			setObjectData(createPlanningConfiguration, PlanningViewConfiguration.TAG_LABEL, CreatePlanningViewEmptyConfigurationDoer.getConfigurationDefaultLabel(this));
-			setObjectData(planningViewData.getRef(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, createPlanningConfiguration.toString());
+			setObjectData(planningViewData.getRef(), ViewData.TAG_TREE_CONFIGURATION_REF, createPlanningConfiguration.toString());
 		}
 	}
 	
 	private void selectDefaultPlanningCustomization() throws Exception
 	{
-		ORef currentCustomizationRef = getViewData(PlanningView.getViewName()).getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
+		ORef currentCustomizationRef = getViewData(PlanningView.getViewName()).getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
 		if (! currentCustomizationRef.isInvalid())
 			return;
 		
 		ORefList contomizationRefs = getPlanningViewConfigurationPool().getORefList();
 		ViewData planningViewData = getViewData(PlanningView.getViewName());
-		setObjectData(planningViewData.getRef(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, contomizationRefs.get(0).toString());
+		setObjectData(planningViewData.getRef(), ViewData.TAG_TREE_CONFIGURATION_REF, contomizationRefs.get(0).toString());
 	}
 
 	private void createDefaultConceptualModel() throws Exception

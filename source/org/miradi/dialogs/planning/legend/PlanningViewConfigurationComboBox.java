@@ -100,12 +100,12 @@ public class PlanningViewConfigurationComboBox extends PlanningViewComboBox
 	private ORef getCurrentConfigurationRef() throws Exception
 	{
 		ViewData viewData = getProject().getCurrentViewData();
-		return viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
+		return viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
 	}
 	
 	public String getChoiceTag()
 	{
-		return ViewData.TAG_PLANNING_CUSTOM_PLAN_REF;
+		return ViewData.TAG_TREE_CONFIGURATION_REF;
 	}
 	
 	boolean comboBoxNeedsSave() throws Exception 
