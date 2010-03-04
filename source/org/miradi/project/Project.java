@@ -132,6 +132,7 @@ import org.miradi.views.planning.PlanningView;
 import org.miradi.views.planning.doers.CreatePlanningViewEmptyConfigurationDoer;
 import org.miradi.views.summary.SummaryView;
 import org.miradi.views.umbrella.CreateProjectDialog;
+import org.miradi.views.workplan.WorkPlanView;
 
 
 public class Project
@@ -743,14 +744,20 @@ public class Project
 
 	private void createDefaultPlanningCustomization() throws Exception
 	{
-		if(getPlanningViewConfigurationPool().getORefList().size() > 0)
-			return;
-		
-		ORef createPlanningConfiguration = createObject(PlanningViewConfiguration.getObjectType());
-		setObjectData(createPlanningConfiguration, PlanningViewConfiguration.TAG_LABEL, CreatePlanningViewEmptyConfigurationDoer.getConfigurationDefaultLabel(this));
-		
-		ViewData planningViewData = getViewData(PlanningView.getViewName());
-		setObjectData(planningViewData.getRef(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, createPlanningConfiguration.toString());
+		createConfigurationForViewWithoutConfiguration(PlanningView.getViewName());
+		createConfigurationForViewWithoutConfiguration(WorkPlanView.getViewName());
+	}
+
+	public void createConfigurationForViewWithoutConfiguration(String viewName) throws Exception
+	{
+		ViewData planningViewData = getViewData(viewName);
+		ORef cofigurationRefForView = planningViewData.getPlanningCustomRef();
+		if (cofigurationRefForView.isInvalid())
+		{
+			ORef createPlanningConfiguration = createObject(PlanningViewConfiguration.getObjectType());
+			setObjectData(createPlanningConfiguration, PlanningViewConfiguration.TAG_LABEL, CreatePlanningViewEmptyConfigurationDoer.getConfigurationDefaultLabel(this));
+			setObjectData(planningViewData.getRef(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, createPlanningConfiguration.toString());
+		}
 	}
 	
 	private void selectDefaultPlanningCustomization() throws Exception

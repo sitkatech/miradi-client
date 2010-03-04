@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
+import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -27,6 +28,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.CustomPlanningRowsQuestion;
+import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -102,16 +104,20 @@ public class PlanningViewConfiguration extends BaseObject
 		super.clear();
 		rowConfigurationList = new CodeListData(TAG_ROW_CONFIGURATION, new CustomPlanningRowsQuestion(getProject()));
 		colConfigurationList = new CodeListData(TAG_COL_CONFIGURATION, getQuestion(CustomPlanningColumnsQuestion.class));
+		diagramDataInclusionChoice = new ChoiceData(TAG_DIAGRAM_DATA_INCLUSION, getQuestion(DiagramObjectDataInclusionQuestion.class));
 		
 		addField(TAG_ROW_CONFIGURATION, rowConfigurationList);
 		addField(TAG_COL_CONFIGURATION, colConfigurationList);
+		addField(TAG_DIAGRAM_DATA_INCLUSION, diagramDataInclusionChoice);
 	}
 
 	public static final String TAG_ROW_CONFIGURATION = "TagRowConfiguration";
-	public static final String TAG_COL_CONFIGURATION = "TagColConfiguration"; 
+	public static final String TAG_COL_CONFIGURATION = "TagColConfiguration";
+	public static final String TAG_DIAGRAM_DATA_INCLUSION = "DiagramDataInclusion";
 	
 	public static final String OBJECT_NAME = "PlanningViewConfiguration";
 	
 	private CodeListData rowConfigurationList;
 	private CodeListData colConfigurationList;
+	private ChoiceData diagramDataInclusionChoice;
 }

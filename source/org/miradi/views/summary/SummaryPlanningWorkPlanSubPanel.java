@@ -39,12 +39,15 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.utils.DateRange;
+import org.miradi.views.workplan.WorkPlanView;
 
 public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 {
@@ -66,6 +69,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		addHiddenDataWarningLabel();
 		
 		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_FISCAL_YEAR_START, new FiscalYearStartQuestion()));
+		addField(createChoiceField(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_DIAGRAM_DATA_INCLUSION, getProject().getQuestion(DiagramObjectDataInclusionQuestion.class)));
 		addField(createNumericField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR));
 		ChoiceQuestion quarterColumnsVisibilityQuestion = getProject().getQuestion(QuarterColumnsVisibilityQuestion.class);
 		quarterColumnVisibilityComponent = addRadioButtonFieldWithCustomLabel(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, quarterColumnsVisibilityQuestion, "");
@@ -73,6 +77,9 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		addField(createMultilineField(ProjectMetadata.TAG_PLANNING_COMMENTS));
 		
 		updateQuarterColumnVisibilityEnableStatus();
+		
+		ORef workPlanConfigurationRef = getProject().getViewData(WorkPlanView.getViewName()).getPlanningCustomRef();
+		setObjectRefs(new ORef[] {orefToUse, projectToUse.getSingletonObjectRef(ProjectMetadata.getObjectType()), workPlanConfigurationRef, });
 		updateFieldsFromProject();
 	}
 	

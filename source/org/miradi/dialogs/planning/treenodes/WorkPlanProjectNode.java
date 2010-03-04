@@ -25,11 +25,11 @@ import org.miradi.icons.MiradiApplicationIcon;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.utils.CodeList;
 
 public class WorkPlanProjectNode extends AbstractPlanningTreeNode
@@ -71,16 +71,22 @@ public class WorkPlanProjectNode extends AbstractPlanningTreeNode
 	{
 		children = new Vector();
 
-		boolean isResultsChainVisible = visibleRows.contains(ResultsChainDiagram.OBJECT_NAME);
-		boolean isConceptualModelVisible = visibleRows.contains(ConceptualModelDiagram.OBJECT_NAME);
-		
-		boolean includeResultsChainItems = isResultsChainVisible || !isConceptualModelVisible;
-		boolean includeConceptualModelItems = isConceptualModelVisible || !isResultsChainVisible;
-		
-		if(includeResultsChainItems)
+		ORef planningViewCustomizationRef = getProject().getCurrentViewData().getPlanningCustomRef();
+		PlanningViewConfiguration configuration = PlanningViewConfiguration.find(getProject(), planningViewCustomizationRef);
+		String diagramDataInclusionCode = configuration.getData(PlanningViewConfiguration.TAG_DIAGRAM_DATA_INCLUSION);
+		if (DiagramObjectDataInclusionQuestion.isIncludeBoth(diagramDataInclusionCode))
+		{
 			addResultsChainDiagrams();
-		if(includeConceptualModelItems)
 			addConceptualModel();
+		}
+		if (DiagramObjectDataInclusionQuestion.isIncludeConceptualModelOnly(diagramDataInclusionCode))
+		{
+			addConceptualModel();
+		}
+		if (DiagramObjectDataInclusionQuestion.isIncludeResultsChainOnly(diagramDataInclusionCode))
+		{
+			addResultsChainDiagrams();
+		}
 		
 		pruneUnwantedLayers(visibleRows);
 	}

@@ -30,9 +30,14 @@ public class CodeListEditorPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 		
+		addExtraField();
 		addField(createMultiCodeEditorField(orefToUse.getObjectType(), tagToUse, question, columnCount));
 		
 		updateFieldsFromProject();
+	}
+
+	protected void addExtraField()
+	{
 	}
 
 	@Override
