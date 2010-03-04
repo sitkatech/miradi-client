@@ -93,6 +93,7 @@ public class StaticQuestionManager
 		addQuestion(new TncOrganizationalPrioritiesQuestion());
 		addQuestion(new SortDirectionQuestion());
 		addQuestion(new QuarterColumnsVisibilityQuestion());
+		addQuestion(new DiagramObjectDataInclusionQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
