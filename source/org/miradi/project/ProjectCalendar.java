@@ -329,9 +329,9 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	public DateUnit getSafeSuperDateUnit(DateUnit dateUnit) throws Exception
 	{
-		DateUnit safeSuperDateUnit = getYearAsSuperDateUnitOfMonth(dateUnit);
+		DateUnit safeSuperDateUnit = dateUnit.getSafeSuperDateUnit(getFiscalYearFirstMonth());
 		if (shouldSkipThisLevel(safeSuperDateUnit))
-			return getYearAsSuperDateUnitOfMonth(safeSuperDateUnit);
+			return safeSuperDateUnit.getSafeSuperDateUnit(getFiscalYearFirstMonth());
 		
 		return safeSuperDateUnit;
 	}
@@ -352,11 +352,6 @@ public class ProjectCalendar implements CommandExecutedListener
 			return getMonthAsSubDateUnitsOfYear(subDateUnits);
 		
 		return subDateUnits;
-	}
-
-	private DateUnit getYearAsSuperDateUnitOfMonth(DateUnit safeSuperDateUnit)
-	{
-		return safeSuperDateUnit.getSafeSuperDateUnit(getFiscalYearFirstMonth());
 	}
 
 	private boolean shouldSkipThisLevel(DateUnit safeSuperDateUnit)
