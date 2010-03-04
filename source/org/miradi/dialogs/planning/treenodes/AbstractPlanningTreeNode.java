@@ -24,7 +24,6 @@ import java.util.Comparator;
 import java.util.Vector;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
-import org.miradi.exceptions.FactorLinkPointingToMissingEndException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -429,7 +428,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			if (type == ExpenseAssignment.getObjectType())
 				return new PlanningTreeExpenseAssignmentNode(project, refToAdd, visibleRows);
 		}
-		catch (FactorLinkPointingToMissingEndException e)
+		catch (Exception e)
 		{
 			EAM.logException(e);
 			return new PlanningTreeErrorNode(getProject(), refToAdd);
