@@ -42,7 +42,7 @@ public class CreatePlanningViewPrefilledConfigurationDoer extends AbstractCreate
 	private PlanningViewConfiguration getCurrentConfiguration() throws Exception
 	{
 		ViewData currentViewData = getProject().getCurrentViewData();
-		ORef planningViewConfigurationRef = currentViewData.getPlanningCustomRef();
+		ORef planningViewConfigurationRef = currentViewData.getTreeConfigurationRef();
 		return PlanningViewConfiguration.find(getProject(), planningViewConfigurationRef);
 	}
 }

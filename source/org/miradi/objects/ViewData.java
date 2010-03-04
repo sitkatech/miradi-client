@@ -91,7 +91,7 @@ public class ViewData extends BaseObject
 		return currentResultsChainRef.getRef();
 	}
 	
-	public ORef getPlanningCustomRef()
+	public ORef getTreeConfigurationRef()
 	{
 		return planningCustomChoiceRef.getRef();
 	}

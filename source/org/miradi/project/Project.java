@@ -751,7 +751,7 @@ public class Project
 	public void createConfigurationForViewWithoutConfiguration(String viewName) throws Exception
 	{
 		ViewData planningViewData = getViewData(viewName);
-		ORef cofigurationRefForView = planningViewData.getPlanningCustomRef();
+		ORef cofigurationRefForView = planningViewData.getTreeConfigurationRef();
 		if (cofigurationRefForView.isInvalid())
 		{
 			ORef createPlanningConfiguration = createObject(PlanningViewConfiguration.getObjectType());
