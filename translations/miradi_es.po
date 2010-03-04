@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-03 14:36-0600\n"
+"POT-Creation-Date: 2010-03-03 18:42-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -4167,7 +4167,7 @@ msgid "Very Effective"
 msgstr "Muy efectivo "
 
 #: Miradi/source/org/miradi/questions/QuarterColumnsVisibilityQuestion.java:35
-msgid "Show Quearter Columns"
+msgid "Show Quarter Columns"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/QuarterColumnsVisibilityQuestion.java:36
