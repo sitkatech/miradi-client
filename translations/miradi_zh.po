@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-04 09:59-0600\n"
+"POT-Creation-Date: 2010-03-04 13:02-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -284,7 +284,7 @@ msgstr "导入完成 \t\t"
 msgid "Unable to process file: verify file format"
 msgstr "无法处理文件：确认文件格式 \t\t"
 
-#: Miradi/source/org/miradi/views/planning/doers/AbstractPlanningViewConfigurationCodeListEditorDoer.java:53
+#: Miradi/source/org/miradi/views/planning/doers/AbstractPlanningViewConfigurationCodeListEditorDoer.java:54
 #: Miradi/source/org/miradi/dialogfields/EditableCodeListField.java:92
 msgid "Selection Dialog"
 msgstr "选项对话框 \t\t"
@@ -395,33 +395,33 @@ msgstr ""
 msgid "Project Settings"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:58
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:61
 #: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:34
 msgid "Label|Project Dates"
 msgstr "项目日期 \t\t"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:63
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:66
 msgid "Label|Work Plan Dates"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:85
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:92
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:101
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:108
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. The data will be visible again if you set the planning start and end "
 "date to include the entire date range of the existing data."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:116
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:123
 msgid ""
 "Quarter columns cannot be hidden because this project already has data for "
 "some quarters."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:248
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:255
 msgid "Work Plan Settings"
 msgstr ""
 
@@ -2011,15 +2011,15 @@ msgstr "标准报告 \t\t"
 msgid "Custom Reports"
 msgstr "定制报告 \t\t"
 
-#: Miradi/source/org/miradi/project/Project.java:176
+#: Miradi/source/org/miradi/project/Project.java:177
 msgid " A project by this name already exists: "
 msgstr "已存在使用相同名称的项目: \t\t"
 
-#: Miradi/source/org/miradi/project/Project.java:182
+#: Miradi/source/org/miradi/project/Project.java:183
 msgid "A file or folder exist by the same name:"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:940
+#: Miradi/source/org/miradi/project/Project.java:947
 msgid "[No Project]"
 msgstr "[无项目] \t\t"
 
@@ -4033,15 +4033,15 @@ msgid "Stakeholder"
 msgstr "利益相关者"
 
 #: Miradi/source/org/miradi/questions/DiagramObjectDataInclusionQuestion.java:38
-msgid "Result Chain Data"
+msgid "Both"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/DiagramObjectDataInclusionQuestion.java:39
-msgid "Conceptual Model Data"
+msgid "Result Chain Data"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/DiagramObjectDataInclusionQuestion.java:40
-msgid "Both"
+msgid "Conceptual Model Data"
 msgstr ""
 
 #: Miradi/source/org/miradi/diagram/cells/FactorCell.java:95
@@ -7020,6 +7020,10 @@ msgstr ""
 msgid "Project Resource Filter Editor"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/base/CodeListPanelWithDiagramObjectDataInclusionDropDown.java:46
+msgid "Diagram Data Inclusio Chooser"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:106
 msgid "Systemwide"
 msgstr "系统范围"
@@ -7130,7 +7134,7 @@ msgid "Folder Chooser"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:41
-#: Miradi/source/org/miradi/dialogs/base/CodeListEditorPanel.java:41
+#: Miradi/source/org/miradi/dialogs/base/CodeListEditorPanel.java:46
 msgid "Editor"
 msgstr "编辑器 \t\t"
 
@@ -8438,6 +8442,9 @@ msgid "FieldLabel|29.TagRowConfiguration|Rows"
 msgstr ""
 
 msgid "FieldLabel|29.TagColConfiguration|Columns"
+msgstr ""
+
+msgid "FieldLabel|29.DiagramDataInclusion|Data Inclusion Diagram"
 msgstr ""
 
 msgid "FieldLabel|30.RelatedProjects|Related Projects"
