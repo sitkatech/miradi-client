@@ -324,7 +324,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	public boolean hasSubDateUnits(DateUnit dateUnit) throws Exception
 	{
-		return getSubDateUnitsHierarchy(dateUnit).size() > 0;
+		return getSubDateUnits(dateUnit).size() > 0;
 	}
 	
 	public DateUnit getSafeSuperDateUnit(DateUnit dateUnit) throws Exception
@@ -373,7 +373,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		return withoutQuarters;
 	}
 
-	public Vector<DateUnit> getSubDateUnitsHierarchy(DateUnit dateUnit) throws Exception
+	public Vector<DateUnit> getSubDateUnits(DateUnit dateUnit) throws Exception
 	{
 		Vector<DateUnit> subDateUnits = getSubDateUnitsWithinProjectPlanningDates(dateUnit);
 		if (shouldGetMonthAsSubUnitsOfYear(dateUnit))
