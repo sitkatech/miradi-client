@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.project;
 
+import java.util.LinkedHashSet;
 import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
@@ -328,19 +329,81 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	public DateUnit getSafeSuperDateUnitHierarchy(DateUnit dateUnit) throws Exception
 	{
-		return dateUnit.getSafeSuperDateUnit(getFiscalYearFirstMonth());
+		DateUnit safeSuperDateUnit = getYearAsSuperDateUnitOfMonth(dateUnit);
+		if (shouldGetYearAsSuperUnitOfMonth(safeSuperDateUnit))
+			return getYearAsSuperDateUnitOfMonth(safeSuperDateUnit);
+		
+		return safeSuperDateUnit;
+	}
+
+	private DateUnit getYearAsSuperDateUnitOfMonth(DateUnit safeSuperDateUnit)
+	{
+		return safeSuperDateUnit.getSafeSuperDateUnit(getFiscalYearFirstMonth());
+	}
+
+	private boolean shouldGetYearAsSuperUnitOfMonth(DateUnit safeSuperDateUnit)
+	{
+		if (safeSuperDateUnit == null)
+			return false;
+		
+		if (!safeSuperDateUnit.isQuarter())
+			return false;
+		
+		return shouldHideQuarterColumns();
 	}
 	
 	public Vector<DateUnit> getSuperDateUnitsHierarchy(DateUnit dateUnit)
 	{
-		return dateUnit.getSuperDateUnitHierarchy(getFiscalYearFirstMonth());
+		Vector<DateUnit> superDateUnits = dateUnit.getSuperDateUnitHierarchy(getFiscalYearFirstMonth());
+		if (shouldHideQuarterColumns())
+			return removeQuarterDateUnits(superDateUnits);
+		
+		return superDateUnits;
+	}
+
+	private Vector<DateUnit> removeQuarterDateUnits(Vector<DateUnit> superDateUnits)
+	{
+		Vector<DateUnit> withoutQuarters = new Vector<DateUnit>();
+		for(DateUnit superDateUnit : superDateUnits)
+		{
+			if (!superDateUnit.isQuarter())
+				withoutQuarters.add(superDateUnit);
+		}
+		
+		return withoutQuarters;
 	}
 
 	public Vector<DateUnit> getSubDateUnitsHierarchy(DateUnit dateUnit) throws Exception
 	{
+		Vector<DateUnit> subDateUnits = getSubDateUnitsWithinProjectPlanningDates(dateUnit);
+		if (shouldGetMonthAsSubUnitsOfYear(dateUnit))
+			return getMonthAsSubDateUnitsOfYear(subDateUnits);
+		
+		return subDateUnits;
+	}
+
+	private boolean shouldGetMonthAsSubUnitsOfYear(DateUnit dateUnit)
+	{
+		return dateUnit.isYear() && shouldHideQuarterColumns();
+	}
+
+	private Vector<DateUnit> getMonthAsSubDateUnitsOfYear(Vector<DateUnit> quarterDateUnits) throws Exception
+	{
+		LinkedHashSet<DateUnit> monthDateUnits = new LinkedHashSet<DateUnit>();
+		for(DateUnit quarterDateUnit : quarterDateUnits)
+		{
+			Vector<DateUnit> subMonthDateUnitsOfQuarterDateUnit = getSubDateUnitsWithinProjectPlanningDates(quarterDateUnit);
+			monthDateUnits.addAll(subMonthDateUnitsOfQuarterDateUnit);
+		}
+		
+		return new Vector<DateUnit>(monthDateUnits);
+	}
+
+	private Vector<DateUnit> getSubDateUnitsWithinProjectPlanningDates(DateUnit dateUnit) throws Exception
+	{
 		return getSubDateUnitsWithin(dateUnit, getProjectPlanningDateRange());
 	}
-	
+
 	public Vector<DateUnit> getSubDateUnitsWithin(DateUnit dateUnit, DateRange projectDateRange) throws Exception
 	{
 		if (dateUnit.isProjectTotal())
@@ -350,6 +413,11 @@ public class ProjectCalendar implements CommandExecutedListener
 			return dateUnit.getSubDateUnitsWithin(projectDateRange);
 		
 		return new Vector<DateUnit>();
+	}
+	
+	private boolean shouldHideQuarterColumns()
+	{
+		return !getProject().getMetadata().areQuarterColumnsVisible();
 	}
 
 	public Vector<DateUnit> getProjectYearsDateUnits(DateRange dateRange)

@@ -85,6 +85,7 @@ import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
+import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
@@ -668,6 +669,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void turnOnTncMode(Target target) throws Exception
 	{
 		fillObjectUsingCommand(target, Target.TAG_VIABILITY_MODE, ViabilityModeQuestion.TNC_STYLE_CODE);
+	}
+	
+	public void turnOffVisibleQuarterColumns() throws Exception
+	{
+		fillObjectUsingCommand(getMetadata(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, QuarterColumnsVisibilityQuestion.HIDE_QUARTER_COLUMNS_CODE);
 	}
 	
 	public void populateCause(Cause cause) throws Exception

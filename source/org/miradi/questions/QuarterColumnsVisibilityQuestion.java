@@ -37,7 +37,7 @@ public class QuarterColumnsVisibilityQuestion extends StaticChoiceQuestion
 		};
 	}
 	
-	private static final String SHOW_QUARTER_COLUMNS_CODE = "";
-	private static final String HIDE_QUARTER_COLUMNS_CODE = "HideQuarterColumns";
+	public static final String SHOW_QUARTER_COLUMNS_CODE = "";
+	public static final String HIDE_QUARTER_COLUMNS_CODE = "HideQuarterColumns";
 
 }
