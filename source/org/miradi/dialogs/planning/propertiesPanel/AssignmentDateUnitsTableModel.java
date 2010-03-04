@@ -383,12 +383,9 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 
 	private void clearSuperDateUnitColumns(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
-		// TODO: The following loop is very similar to getSuperDateUnits(),
-		// so possibly should call that one and then loop through the results
-		DateUnit superDateUnit = new DateUnit(dateUnit.getDateUnitCode());
-		while(!superDateUnit.isProjectTotal())
+		Vector<DateUnit> superHierarchy = getSuperDateUnitsHierarchy(dateUnit);
+		for(DateUnit superDateUnit : superHierarchy)
 		{
-			superDateUnit = superDateUnit.getSuperDateUnit(getFiscalYearFirstMonth());
 			DateUnitEffort dateUnitEffort = getDateUnitEffort(assignment, superDateUnit);
 			if(dateUnitEffort == null)
 				continue;
@@ -600,11 +597,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		setDeepestExpandedColumn(getProjectCalendar().getSuperDateUnitsHierarchy(dateUnit));
 	}
 
-	private int getFiscalYearFirstMonth() throws Exception
-	{
-		return getProjectCalendar().getFiscalYearFirstMonth();
-	}
-	
 	private void respondToExpandColumnEvent(DateUnit dateUnit) throws Exception
 	{
 		Vector<DateUnit> singleDateUnitList = new Vector<DateUnit>();
