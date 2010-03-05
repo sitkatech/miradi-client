@@ -594,22 +594,24 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	private void respondToCollapseColumnEvent(DateUnit dateUnit) throws Exception
 	{
-		setDeepestExpandedColumn(getProjectCalendar().getSuperDateUnitsHierarchy(dateUnit));
+		Vector<DateUnit> superDateUnitsHierarchy = getProjectCalendar().getSuperDateUnitsHierarchy(dateUnit);
+		DateUnit superDateUnit = null;
+		if (!superDateUnitsHierarchy.isEmpty())
+			superDateUnit = superDateUnitsHierarchy.firstElement();
+		
+		setDeepestExpandedColumn(superDateUnit);
 	}
 
 	private void respondToExpandColumnEvent(DateUnit dateUnit) throws Exception
 	{
-		Vector<DateUnit> singleDateUnitList = new Vector<DateUnit>();
-		singleDateUnitList.add(dateUnit);
-		setDeepestExpandedColumn(singleDateUnitList);
+		setDeepestExpandedColumn(dateUnit);
 	}
 	
-	private void setDeepestExpandedColumn(Vector<DateUnit> dateUnits) throws Exception
+	private void setDeepestExpandedColumn(DateUnit dateUnit) throws Exception
 	{
 		Vector<DateUnit> visibleDateUnits = new Vector();
-		if (!dateUnits.isEmpty())
+		if (dateUnit != null)
 		{
-			DateUnit dateUnit = dateUnits.firstElement();
 			visibleDateUnits.addAll(getSubDateUnits(dateUnit));
 			visibleDateUnits.add(dateUnit);
 			visibleDateUnits.addAll(getSuperDateUnitsHierarchy(dateUnit));
