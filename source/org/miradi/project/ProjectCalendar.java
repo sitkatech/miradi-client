@@ -204,8 +204,11 @@ public class ProjectCalendar implements CommandExecutedListener
 		int quarter = dateUnit.getQuarter();
 		int startFiscalQuarter = (fiscalYearFirstMonth - 1 ) / 3 + 1;
 		int fiscalYearQuarter = ((quarter - startFiscalQuarter) + 4) % 4 + 1;
+		String quarterlyPrefixString = getQuarterlyPrefixString(); 
+		if (fiscalYearFirstMonth > 1)
+			quarterlyPrefixString = getFiscalQuarterlyPrefixString();
 		
-		return getQuarterlyPrefixString() + fiscalYearQuarter;
+		return quarterlyPrefixString + fiscalYearQuarter;
 	}
 
 	private static String getYearString(DateUnit dateUnit, int fiscalYearFirstMonth)
@@ -312,6 +315,11 @@ public class ProjectCalendar implements CommandExecutedListener
 	private static String getQuarterlyPrefixString()
 	{
 		return EAM.text("Quarter Prefix|Q");
+	}
+	
+	private static String getFiscalQuarterlyPrefixString()
+	{
+		return EAM.text("Fiscal Quarter Prefix|FQ");
 	}
 	
 	public DateRange convertToDateRange(DateUnit dateUnit) throws Exception
