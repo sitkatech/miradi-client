@@ -751,8 +751,8 @@ public class Project
 	public void createViewConfigurationIfNotPresent(String viewName) throws Exception
 	{
 		ViewData planningViewData = getViewData(viewName);
-		ORef cofigurationRefForView = planningViewData.getTreeConfigurationRef();
-		if (cofigurationRefForView.isInvalid())
+		ORef configurationRefForView = planningViewData.getTreeConfigurationRef();
+		if (configurationRefForView.isInvalid())
 		{
 			ORef createPlanningConfiguration = createObject(PlanningViewConfiguration.getObjectType());
 			setObjectData(createPlanningConfiguration, PlanningViewConfiguration.TAG_LABEL, CreatePlanningViewEmptyConfigurationDoer.getConfigurationDefaultLabel(this));
