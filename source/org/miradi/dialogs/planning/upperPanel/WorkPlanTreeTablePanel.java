@@ -35,6 +35,8 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.TableSettings;
 
+import com.jhlabs.awt.GridLayoutPlus;
+
 public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 {
 	protected WorkPlanTreeTablePanel(MainWindow mainWindowToUse,
@@ -79,19 +81,25 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 		final String TAB_TAG = "Tab_Tag";
 		return WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER + TAB_TAG;
 	}
+	
+	@Override
+	protected GridLayoutPlus createButtonLayout()
+	{
+		return new GridLayoutPlus(2, 4, 1, 1);
+	}
 
 	private static Class[] getButtonActions()
 	{
 		return new Class[] {
 				ActionExpandAllRows.class, 
 				ActionTreeNodeUp.class,
-				ActionPlanningCreationMenu.class,	
-				ActionDeletePlanningViewTreeNode.class,
-				ActionFilterWorkPlanByProjectResource.class,
+				ActionPlanningCreationMenu.class,
 				ActionWorkPlanBudgetColumnsEditor.class,
 				
 				ActionCollapseAllRows.class,
 				ActionTreeNodeDown.class,
+				ActionDeletePlanningViewTreeNode.class,
+				ActionFilterWorkPlanByProjectResource.class,
 		};
 	}
 	
