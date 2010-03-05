@@ -77,27 +77,21 @@ public class TestDateRange extends EAMTestCase
 	public void testIsWithinBounds() throws Exception
 	{
 		DateRange boundsDateRange = getSampleDateRange();
-		
-		MultiCalendar innerStartDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 5);
-		MultiCalendar innerEndDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 10);
-		DateRange innerDateRange = new DateRange(innerStartDate, innerEndDate);
-		
-		MultiCalendar partialInnerStartDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 15);
-		MultiCalendar partialInnerEndDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 25);
-		DateRange  partialyInDateRange = new DateRange(partialInnerStartDate, partialInnerEndDate);
+		DateRange innerDateRange = createInnerOfSampleDateRange();	
+		DateRange partialyInDateRange = createPartialOfSampleDateRange();
 		
 		assertEquals("is within bounds?", true, boundsDateRange.contains(innerDateRange));
 		assertEquals("is within bounds?", false, boundsDateRange.contains(partialyInDateRange));
-		assertEquals("contains itself?", true, boundsDateRange.contains(boundsDateRange));
+		assertEquals("contains itself?", true, boundsDateRange.contains(boundsDateRange));		
 	}
 
-	private DateRange getSampleDateRange() throws Exception
+	public void testContainsAtleastSome() throws Exception
 	{
-		MultiCalendar boundsStartDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 1);
-		MultiCalendar boundsEndDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 20);
-		
-		DateRange boundsDateRange = new DateRange(boundsStartDate, boundsEndDate);
-		return boundsDateRange;
+		DateRange boundsDateRange = getSampleDateRange();
+		assertEquals("is partially within?", true, boundsDateRange.containsAtleastSome(createPartialOfSampleDateRange()));
+		assertEquals("is inner partially within?", true, boundsDateRange.containsAtleastSome(createInnerOfSampleDateRange()));
+		assertEquals("is partially within itself?", true, boundsDateRange.containsAtleastSome(boundsDateRange));
+		assertEquals("is partially within itself?", false, boundsDateRange.containsAtleastSome(createCompletlyOutsideOfSampleDateRange()));
 	}
 	
 	public void testCombine() throws Exception
@@ -172,4 +166,36 @@ public class TestDateRange extends EAMTestCase
 		return new DateRange(start, end);
 	}
 	
+	private DateRange createPartialOfSampleDateRange() throws Exception
+	{
+		MultiCalendar partialInnerStartDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 15);
+		MultiCalendar partialInnerEndDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 25);
+		DateRange  partialyInDateRange = new DateRange(partialInnerStartDate, partialInnerEndDate);
+		return partialyInDateRange;
+	}
+
+	private DateRange createInnerOfSampleDateRange() throws Exception
+	{
+		MultiCalendar innerStartDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 5);
+		MultiCalendar innerEndDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 10);
+		DateRange innerDateRange = new DateRange(innerStartDate, innerEndDate);
+		return innerDateRange;
+	}
+	
+	private DateRange createCompletlyOutsideOfSampleDateRange() throws Exception
+	{
+		MultiCalendar completelyOutsideStartDate = MultiCalendar.createFromGregorianYearMonthDay(2005, 1, 10);
+		MultiCalendar completelyOutsideEndDate = MultiCalendar.createFromGregorianYearMonthDay(2005, 1, 20);
+		DateRange  completelyOutsideDateRange = new DateRange(completelyOutsideStartDate, completelyOutsideEndDate);
+		return completelyOutsideDateRange;
+	}
+	
+	private DateRange getSampleDateRange() throws Exception
+	{
+		MultiCalendar boundsStartDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 1);
+		MultiCalendar boundsEndDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 20);
+		
+		DateRange boundsDateRange = new DateRange(boundsStartDate, boundsEndDate);
+		return boundsDateRange;
+	}
 }
