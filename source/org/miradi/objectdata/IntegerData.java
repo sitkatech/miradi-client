@@ -83,5 +83,5 @@ public class IntegerData extends ObjectData
 		return value;
 	}
 
-	int value;
+	private int value;
 }
