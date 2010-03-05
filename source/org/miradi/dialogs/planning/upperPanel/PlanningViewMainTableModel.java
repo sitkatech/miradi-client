@@ -44,6 +44,7 @@ import org.miradi.objects.Desire;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
@@ -400,12 +401,11 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	public String getTagForCell(int nodeType, int column)
 	{
 		String columnTag = getColumnTag(column);
-		if (ProjectMetadata.is(nodeType))
+		if(ProjectMetadata.is(nodeType))
 		{
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return "";
 		}
-		
 		if(ConceptualModelDiagram.is(nodeType))
 		{
 			if(isDetailsColumn(column))
@@ -413,7 +413,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return "";
 		}
-				
 		if(ResultsChainDiagram.is(nodeType))
 		{
 			if(isDetailsColumn(column))
@@ -421,7 +420,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return "";
 		}
-		if (AbstractTarget.isAbstractTarget(nodeType))
+		if(AbstractTarget.isAbstractTarget(nodeType))
 		{
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return "";
@@ -438,7 +437,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (columnTag.equals(Factor.TAG_COMMENTS))
 				return Desire.TAG_COMMENTS;
 		}
-		
 		if(Goal.is(nodeType))
 		{
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
@@ -446,7 +444,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS))
 				return Goal.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS;
 		}
-
 		if(Cause.is(nodeType))
 		{
 			if(isDetailsColumn(column))
@@ -454,7 +451,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return "";
 		}
-
 		if(ThreatReductionResult.is(nodeType))
 		{
 			if(isDetailsColumn(column))
@@ -462,7 +458,11 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return "";
 		}
-
+		if(IntermediateResult.is(nodeType))
+		{
+			if(isDetailsColumn(column))
+				return IntermediateResult.TAG_TEXT;
+		}
 		if(Objective.is(nodeType))
 		{
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
@@ -470,7 +470,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS))
 				return Objective.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS;
 		}
-
 		if(Strategy.is(nodeType))
 		{
 			if (isDetailsColumn(column))
@@ -478,19 +477,16 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if(columnTag.equals(Indicator.TAG_PRIORITY))
 				return Strategy.PSEUDO_TAG_RATING_SUMMARY;
 		}
-		
 		if(Task.is(nodeType))
 		{
 			if(isDetailsColumn(column))
 				return Task.TAG_DETAILS;
 		}
-
 		if(Indicator.is(nodeType))
 		{
 			if (isDetailsColumn(column))
 				return Indicator.TAG_DETAIL;
 		}
-		
 		if(Measurement.is(nodeType))
 		{
 			if (isDetailsColumn(column))
@@ -498,7 +494,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return "";
 		}
-		
 		if(ResourceAssignment.is(nodeType))
 		{
 			if (isWhoColumn(columnTag))
