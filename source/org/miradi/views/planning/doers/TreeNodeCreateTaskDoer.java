@@ -62,7 +62,6 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 		}
 	}
 	
-	//TODO refactor this method
 	private boolean isTask(BaseObject selectedObject)
 	{
 		int selectedType = selectedObject.getType();
