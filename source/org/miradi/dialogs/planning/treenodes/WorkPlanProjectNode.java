@@ -25,11 +25,9 @@ import org.miradi.icons.MiradiApplicationIcon;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.utils.CodeList;
 
 public class WorkPlanProjectNode extends AbstractPlanningTreeNode
@@ -70,35 +68,15 @@ public class WorkPlanProjectNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		children = new Vector();
-
-		ORef planningViewCustomizationRef = getProject().getCurrentViewData().getTreeConfigurationRef();
-		PlanningViewConfiguration configuration = PlanningViewConfiguration.find(getProject(), planningViewCustomizationRef);
-		String diagramDataInclusionCode = configuration.getData(PlanningViewConfiguration.TAG_DIAGRAM_DATA_INCLUSION);
-		if (shouldIncludeConceptualModelPage(diagramDataInclusionCode))
+		if (getProject().getCurrentViewData().shouldIncludeConceptualModelPage())
 			addConceptualModel();
 
-		if (shouldIncludeResultsChain(diagramDataInclusionCode))
+		if (getProject().getCurrentViewData().shouldIncludeResultsChain())
 			addResultsChainDiagrams();
 		
 		pruneUnwantedLayers(visibleRows);
 	}
 
-	private boolean shouldIncludeResultsChain(String diagramDataInclusionCode)
-	{
-		if (DiagramObjectDataInclusionQuestion.isIncludeResultsChainOnly(diagramDataInclusionCode))
-			return true;
-		
-		return DiagramObjectDataInclusionQuestion.isIncludeBoth(diagramDataInclusionCode);
-	}
-
-	private boolean shouldIncludeConceptualModelPage(String diagramDataInclusionCode)
-	{
-		if (DiagramObjectDataInclusionQuestion.isIncludeConceptualModelOnly(diagramDataInclusionCode))
-			return true;
-		
-		return DiagramObjectDataInclusionQuestion.isIncludeBoth(diagramDataInclusionCode);
-	}
-	
 	@Override
 	public String toRawString()
 	{
