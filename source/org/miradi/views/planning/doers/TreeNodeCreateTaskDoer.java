@@ -50,7 +50,7 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 		try
 		{
 			BaseObject selectedObject = getSingleSelectedObject();
-			if (! userConfirmsCreateTask(selectedObject))
+			if (! isTask(selectedObject))
 				return;
 			
 			createTask(getProject(), selectedObject, getPicker());
@@ -63,7 +63,7 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 	}
 	
 	//TODO refactor this method
-	private boolean userConfirmsCreateTask(BaseObject selectedObject)
+	private boolean isTask(BaseObject selectedObject)
 	{
 		int selectedType = selectedObject.getType();
 		if (Indicator.is(selectedType))
