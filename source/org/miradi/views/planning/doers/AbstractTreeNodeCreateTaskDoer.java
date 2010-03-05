@@ -26,6 +26,7 @@ import org.miradi.objects.Task;
 
 abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if(!super.isAvailable())
