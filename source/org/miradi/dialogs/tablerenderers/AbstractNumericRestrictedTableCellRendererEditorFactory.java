@@ -33,26 +33,39 @@ abstract public class AbstractNumericRestrictedTableCellRendererEditorFactory ex
 	{
 		super(providerToUse, fontProviderToUse);
 		
-		numericRestrictedTextField = createRestrictedNumericTextField();
+		numericRestrictedTextRenderer = createRestrictedNumericTextField();
+		numericRestrictedTextEditor = createRestrictedNumericTextField();
 	}
 
 	@Override
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
 	{
-		numericRestrictedTextField.setText(value.toString());
+		updateTextField(numericRestrictedTextEditor, value.toString(), row, column);
+		return numericRestrictedTextEditor;
+	}
+	
+	@Override
+	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
+	{
+		updateTextField(numericRestrictedTextRenderer, value.toString(), row, tableColumn);
+		return numericRestrictedTextRenderer;
+	}
+	
+	private void updateTextField(PanelTextField textField, String value, int row, int column)
+	{
+		textField.setText(value);
 		Font font = getCellFont(row, column);
-		numericRestrictedTextField.setFont(font);
-		
-		return numericRestrictedTextField;
+		textField.setFont(font);
 	}
 
 	@Override
 	public Object getCellEditorValue()
 	{
-		return numericRestrictedTextField.getText();
+		return numericRestrictedTextEditor.getText();
 	}
 	
 	abstract protected PanelTextField createRestrictedNumericTextField();
 
-	private PanelTextField numericRestrictedTextField;
+	private PanelTextField numericRestrictedTextRenderer;
+	private PanelTextField numericRestrictedTextEditor;
 }
