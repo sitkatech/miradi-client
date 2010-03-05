@@ -65,13 +65,14 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 	//TODO refactor this method
 	private boolean userConfirmsCreateTask(BaseObject selectedObject)
 	{
-		if (Indicator.is(selectedObject.getType()))
+		int selectedType = selectedObject.getType();
+		if (Indicator.is(selectedType))
 			return true;
 		
-		if (Strategy.is(selectedObject.getType()))
+		if (Strategy.is(selectedType))
 			return true;
 		
-		return Task.is(selectedObject.getType());
+		return Task.is(selectedType);
 	}
 	
 	public void createTask(Project project, BaseObject parent, ObjectPicker picker) throws CommandFailedException, ParseException, Exception
