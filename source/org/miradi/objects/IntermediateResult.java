@@ -41,16 +41,19 @@ public class IntermediateResult extends Factor
 		super(objectManager, idToUse, Factor.TYPE_INTERMEDIATE_RESULT, json);
 	}
 	
+	@Override
 	public boolean isIntermediateResult()
 	{
 		return true;
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -76,11 +79,13 @@ public class IntermediateResult extends Factor
 		}
 	}
 	
+	@Override
 	public boolean canHaveObjectives()
 	{
 		return true;
 	}
 	
+	@Override
 	public ORefList getOwnedObjects(int objectType)
 	{
 		ORefList list = super.getOwnedObjects(objectType);
