@@ -32,7 +32,6 @@ import org.miradi.actions.ActionFilterWorkPlanByProjectResource;
 import org.miradi.actions.ActionImportAccountingCodes;
 import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.actions.ActionTreeCreateActivity;
-import org.miradi.actions.ActionTreeCreateActivityIconOnly;
 import org.miradi.actions.ActionTreeCreateMethod;
 import org.miradi.actions.ActionTreeCreateMethodIconOnly;
 import org.miradi.actions.ActionTreeCreateTask;
@@ -129,7 +128,6 @@ public class WorkPlanView extends TabbedView
 		addDoerToMap(ActionTreeNodeDown.class, new TaskMoveDownDoer());
 		
 		addDoerToMap(ActionDeletePlanningViewTreeNode.class, new TreeNodeDeleteDoer());
-		addDoerToMap(ActionTreeCreateActivityIconOnly.class, new TreeNodeCreateActivityDoer());
 		addDoerToMap(ActionTreeCreateMethodIconOnly.class, new TreeNodeCreateMethodDoer());
 		addDoerToMap(ActionTreeCreateTaskIconOnly.class, new TreeNodeCreateTaskDoer());
 		addDoerToMap(ActionTreeCreateActivity.class, new TreeNodeCreateActivityDoer());
