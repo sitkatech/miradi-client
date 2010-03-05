@@ -56,7 +56,7 @@ public class DiagramObjectDataInclusionQuestion extends StaticChoiceQuestion
 		return code.equals(INCLUDE_RESULTS_CHAIN_DATA_CODE);
 	}
 	
-	private static final String INCLUDE_BOTH_DIAGRAM_DATA_CODE = "";
-	private static final String INCLUDE_RESULTS_CHAIN_DATA_CODE = "IncludeResultsChainData";
-	private static final String INCLUDE_CONCEPTUAL_MODEL_DATA_CODE = "IncludeConceptualModelData";
+	public static final String INCLUDE_BOTH_DIAGRAM_DATA_CODE = "";
+	public static final String INCLUDE_RESULTS_CHAIN_DATA_CODE = "IncludeResultsChainData";
+	public static final String INCLUDE_CONCEPTUAL_MODEL_DATA_CODE = "IncludeConceptualModelData";
 }
