@@ -66,7 +66,7 @@ abstract public class TestPlanningTreeNode extends EAMTestCase
 	
 	private void createDefaultSummaryViewConfigurationForTesting() throws Exception
 	{
-		project.createConfigurationForViewWithoutConfiguration(SummaryView.getViewName());
+		project.createViewConfigurationIfNotPresent(SummaryView.getViewName());
 	}
 	
 	private void setupFactors() throws Exception

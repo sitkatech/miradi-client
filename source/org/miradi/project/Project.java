@@ -744,11 +744,11 @@ public class Project
 
 	private void createDefaultPlanningCustomization() throws Exception
 	{
-		createConfigurationForViewWithoutConfiguration(PlanningView.getViewName());
-		createConfigurationForViewWithoutConfiguration(WorkPlanView.getViewName());
+		createViewConfigurationIfNotPresent(PlanningView.getViewName());
+		createViewConfigurationIfNotPresent(WorkPlanView.getViewName());
 	}
 
-	public void createConfigurationForViewWithoutConfiguration(String viewName) throws Exception
+	public void createViewConfigurationIfNotPresent(String viewName) throws Exception
 	{
 		ViewData planningViewData = getViewData(viewName);
 		ORef cofigurationRefForView = planningViewData.getTreeConfigurationRef();
