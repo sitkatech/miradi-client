@@ -74,21 +74,29 @@ public class WorkPlanProjectNode extends AbstractPlanningTreeNode
 		ORef planningViewCustomizationRef = getProject().getCurrentViewData().getTreeConfigurationRef();
 		PlanningViewConfiguration configuration = PlanningViewConfiguration.find(getProject(), planningViewCustomizationRef);
 		String diagramDataInclusionCode = configuration.getData(PlanningViewConfiguration.TAG_DIAGRAM_DATA_INCLUSION);
-		if (DiagramObjectDataInclusionQuestion.isIncludeBoth(diagramDataInclusionCode))
-		{
-			addResultsChainDiagrams();
+		if (shouldIncludeConceptualModelPage(diagramDataInclusionCode))
 			addConceptualModel();
-		}
-		if (DiagramObjectDataInclusionQuestion.isIncludeConceptualModelOnly(diagramDataInclusionCode))
-		{
-			addConceptualModel();
-		}
-		if (DiagramObjectDataInclusionQuestion.isIncludeResultsChainOnly(diagramDataInclusionCode))
-		{
+
+		if (shouldIncludeResultsChain(diagramDataInclusionCode))
 			addResultsChainDiagrams();
-		}
 		
 		pruneUnwantedLayers(visibleRows);
+	}
+
+	private boolean shouldIncludeResultsChain(String diagramDataInclusionCode)
+	{
+		if (DiagramObjectDataInclusionQuestion.isIncludeResultsChainOnly(diagramDataInclusionCode))
+			return true;
+		
+		return DiagramObjectDataInclusionQuestion.isIncludeBoth(diagramDataInclusionCode);
+	}
+
+	private boolean shouldIncludeConceptualModelPage(String diagramDataInclusionCode)
+	{
+		if (DiagramObjectDataInclusionQuestion.isIncludeConceptualModelOnly(diagramDataInclusionCode))
+			return true;
+		
+		return DiagramObjectDataInclusionQuestion.isIncludeBoth(diagramDataInclusionCode);
 	}
 	
 	@Override
