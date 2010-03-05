@@ -44,7 +44,6 @@ import org.miradi.objects.Desire;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
@@ -424,8 +423,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		{
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return "";
-			if(isDetailsColumn(column))
-				return AbstractTarget.TAG_TEXT;	
 		}
 		if(Target.is(nodeType))
 		{
@@ -446,22 +443,13 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 		if(Cause.is(nodeType))
 		{
-			if(isDetailsColumn(column))
-				return Cause.TAG_TEXT;
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return "";
 		}
 		if(ThreatReductionResult.is(nodeType))
 		{
-			if(isDetailsColumn(column))
-				return ThreatReductionResult.TAG_TEXT;
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return "";
-		}
-		if(IntermediateResult.is(nodeType))
-		{
-			if(isDetailsColumn(column))
-				return IntermediateResult.TAG_TEXT;
 		}
 		if(Objective.is(nodeType))
 		{
@@ -472,8 +460,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 		if(Strategy.is(nodeType))
 		{
-			if (isDetailsColumn(column))
-				return Strategy.TAG_TEXT;
 			if(columnTag.equals(Indicator.TAG_PRIORITY))
 				return Strategy.PSEUDO_TAG_RATING_SUMMARY;
 		}
@@ -500,6 +486,11 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 				return ResourceAssignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL;
 			if (columnTag.equals(Indicator.PSEUDO_TAG_FACTOR))
 				return ResourceAssignment.PSEUDO_TAG_OWNING_FACTOR_NAME;
+		}
+		if(Factor.isFactor(nodeType))
+		{
+			if (isDetailsColumn(column))
+				return Factor.TAG_TEXT;
 		}
 		
 		return columnTag;
