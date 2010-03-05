@@ -43,6 +43,6 @@ public class CodeListPanelWithDiagramObjectDataInclusionDropDown extends CodeLis
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Diagram Data Inclusio Chooser");
+		return EAM.text("Diagram Data Inclusion Chooser");
 	}
 }
