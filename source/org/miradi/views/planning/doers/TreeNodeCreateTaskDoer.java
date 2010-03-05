@@ -115,7 +115,7 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 			picker.ensureObjectVisible(ref);
 		}
 		
-		ObjectPicker picker;
-		ORef ref;
+		private ObjectPicker picker;
+		private ORef ref;
 	}
 }
