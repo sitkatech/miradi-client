@@ -415,6 +415,11 @@ public class Project
 		return getViewData(DiagramView.getViewName());
 	}
 	
+	public ViewData getWorkPlanViewData() throws Exception
+	{
+		return getViewData(WorkPlanView.getViewName());
+	}
+	
 	public ViewData getCurrentViewData() throws Exception
 	{
 		return getViewData(getCurrentView());

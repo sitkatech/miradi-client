@@ -28,9 +28,9 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 
 public class ProjectTotalCalculator
@@ -42,36 +42,36 @@ public class ProjectTotalCalculator
 	
 	public TimePeriodCostsMap calculateProjectTotals() throws Exception
 	{
-		Set allIndicators = getResultsChainIndicators();
-		Set nonDraftStrategiesInResultsChains = getAllResultsChainNonDraftStrategies();
+		Set allIndicators = getIncludedDiagramIndicators();
+		Set nonDraftStrategies = getIncludedNonDraftStrategies();
 		
 		TimePeriodCostsMap totalTimePeriodCostsMap = new TimePeriodCostsMap();
 		totalTimePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(allIndicators));
-		totalTimePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(nonDraftStrategiesInResultsChains));
+		totalTimePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(nonDraftStrategies));
 		
 		return totalTimePeriodCostsMap;
 	}
 
-	private HashSet<Indicator> getResultsChainIndicators()
+	private HashSet<Indicator> getIncludedDiagramIndicators() throws Exception
 	{
-		HashSet<Indicator> resultsChainIndicators = new HashSet();
-		ORefList resultsChainRefs = getProject().getResultsChainDiagramPool().getRefList();
-		for (int index = 0; index < resultsChainRefs.size(); ++index)
+		HashSet<Indicator> indicators = new HashSet();
+		ORefList diagramRefsToExtractIndicatorsFrom = getIncludedDiagramRefs();
+		for (int index = 0; index < diagramRefsToExtractIndicatorsFrom.size(); ++index)
 		{
-			ResultsChainDiagram resultsChain = ResultsChainDiagram.find(getProject(), resultsChainRefs.get(index));
-			Factor[] allResultsChainFactors = resultsChain.getAllWrappedFactors();
-			resultsChainIndicators.addAll(getAllIndicators(allResultsChainFactors));
+			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramRefsToExtractIndicatorsFrom.get(index));
+			Factor[] allDiagramFactors = diagramObject.getAllWrappedFactors();
+			indicators.addAll(getAllIndicators(allDiagramFactors));
 		}
 		
-		return resultsChainIndicators;
+		return indicators;
 	}
 	
-	private Set<Indicator> getAllIndicators(Factor[] allResultsChainFactors)
+	private Set<Indicator> getAllIndicators(Factor[] allDiagramFactors)
 	{
 		ORefSet indicatorRefs = new ORefSet();
-		for (int index = 0; index < allResultsChainFactors.length; ++index)
+		for (int index = 0; index < allDiagramFactors.length; ++index)
 		{
-			indicatorRefs.addAll(allResultsChainFactors[index].getDirectOrIndirectIndicatorRefSet());
+			indicatorRefs.addAll(allDiagramFactors[index].getDirectOrIndirectIndicatorRefSet());
 		}
 		
 		HashSet<Indicator> indicators = new HashSet();
@@ -96,23 +96,35 @@ public class ProjectTotalCalculator
 		return totalTimePeriodCostsMap;
 	}
 
-	private Set<Strategy> getAllResultsChainNonDraftStrategies()
+	private Set<Strategy> getIncludedNonDraftStrategies() throws Exception
 	{
 		Set<Strategy> nonDraftStrategies = new HashSet();
-		ORefList resultsChainRefs = getProject().getResultsChainDiagramPool().getRefList();
-		for (int index = 0; index < resultsChainRefs.size(); ++index)
+		ORefList diagramRefsToExtractIndicatorsFrom = getIncludedDiagramRefs();
+		for (int index = 0; index < diagramRefsToExtractIndicatorsFrom.size(); ++index)
 		{
-			ResultsChainDiagram resultsChain = ResultsChainDiagram.find(getProject(), resultsChainRefs.get(index));
-			nonDraftStrategies.addAll(getNonDraftStrategies(resultsChain));
+			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramRefsToExtractIndicatorsFrom.get(index));
+			nonDraftStrategies.addAll(getNonDraftStrategies(diagramObject));
 		}
 		
 		return nonDraftStrategies; 
 	}
 
-	private Set<Strategy> getNonDraftStrategies(ResultsChainDiagram resultsChain)
+	private ORefList getIncludedDiagramRefs() throws Exception
+	{
+		ORefList diagramRefsToExtractIndicatorsFrom = new ORefList();
+		if (getProject().getWorkPlanViewData().shouldIncludeConceptualModelPage())
+			diagramRefsToExtractIndicatorsFrom.addAll(getProject().getConceptualModelDiagramPool().getRefList());
+		
+		if (getProject().getWorkPlanViewData().shouldIncludeResultsChain())
+			diagramRefsToExtractIndicatorsFrom.addAll(getProject().getResultsChainDiagramPool().getRefList());
+		
+		return diagramRefsToExtractIndicatorsFrom;
+	}
+
+	private Set<Strategy> getNonDraftStrategies(DiagramObject diagramObject)
 	{
 		Set<Strategy> nonDraftStrategies = new HashSet();
-		Set<Factor> strategies = resultsChain.getFactors(Strategy.getObjectType());
+		Set<Factor> strategies = diagramObject.getFactors(Strategy.getObjectType());
 		for(Factor factor : strategies)
 		{
 			Strategy strategy = (Strategy) factor;

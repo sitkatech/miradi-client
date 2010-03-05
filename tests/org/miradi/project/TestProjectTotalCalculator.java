@@ -31,12 +31,17 @@ import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
+import org.miradi.questions.DiagramObjectDataInclusionQuestion;
+import org.miradi.utils.OptionalDouble;
+import org.miradi.views.workplan.WorkPlanView;
 
 public class TestProjectTotalCalculator extends TestCaseWithProject
 {
@@ -58,11 +63,12 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		fred = getProject().createAndPopulateProjectResource();
 		calculator = new ProjectTotalCalculator(getProject());
 		dateUnit = getProject().createDateUnit(YEAR_2008, YEAR_2009);
+		getProject().createViewConfigurationIfNotPresent(WorkPlanView.getViewName());
 	}
 	
 	public void testKeaIndicatorInResultsChain() throws Exception
 	{
-		DiagramFactor target = getProject().createAndAddFactorToDiagram(resultsChainDiagramModel.getDiagramObject(), Target.getObjectType());
+		DiagramFactor target = getProject().createAndAddFactorToDiagram(getResultsChainDiagramObject(), Target.getObjectType());
 		getProject().turnOnTncMode((Target) target.getWrappedFactor());
 		KeyEcologicalAttribute kea = getProject().createKea();
 		ORefList keaRefs = new ORefList(kea);
@@ -74,75 +80,115 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		indicatorIds.add(indicatorWithResourceAssignment.getId());
 		getProject().fillObjectUsingCommand(kea.getRef(), KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds.toString());
 		
-		TimePeriodCostsMap totalsWithIndicator = calculator.calculateProjectTotals();
-		TimePeriodCosts indictorTimePeriodCosts = totalsWithIndicator.getTimePeriodCostsForSpecificDateUnit(dateUnit);
-		assertEquals("did not include kea indicators in totals", 10.0, indictorTimePeriodCosts.getTotalWorkUnits().getValue());
+		turnOnDataFromResultsChainOnly();
+		verifyCalculatedValues();
+		
+		turnOnDataFromBothDiagramTypes();
+		verifyCalculatedValues();
+		
+		turnOnDataFromConceptualDiagramOnly();
+		verifyEmptyProjectTotalTimePeriodCostsMap();
 	}
-	
+
 	public void testResultsChainDraftStrategyProjectTotal() throws Exception
 	{
-		DiagramFactor resultsChainDraftStrategy = getProject().createAndAddFactorToDiagram(resultsChainDiagramModel.getDiagramObject(), Strategy.getObjectType());
-		addResourceAssignment(resultsChainDraftStrategy.getWrappedFactor());
-		getProject().turnOnDraft((Strategy)resultsChainDraftStrategy.getWrappedFactor());
-		TimePeriodCostsMap totalsWithDraftStrategy = calculator.calculateProjectTotals();
+		createDraftStrategyWithAssignment(getResultsChainDiagramObject());
 		
-		assertEquals("Results chain Draft Strategy included in project totals?", 0, totalsWithDraftStrategy.size());
+		turnOnDataFromResultsChainOnly();
+		verifyEmptyProjectTotalTimePeriodCostsMap();
+		
+		turnOnDataFromConceptualDiagramOnly();
+		verifyEmptyProjectTotalTimePeriodCostsMap();
+		
+		turnOnDataFromBothDiagramTypes();
+		verifyEmptyProjectTotalTimePeriodCostsMap();
 	}
 
 	public void testResultsChainStrategyProjectTotal() throws Exception
 	{
-		DiagramFactor resultsChainNonDraftStrategy = getProject().createAndAddFactorToDiagram(resultsChainDiagramModel.getDiagramObject(), Strategy.getObjectType());
-		addResourceAssignment(resultsChainNonDraftStrategy.getWrappedFactor());
-		TimePeriodCostsMap totalsWithNonDraftStrategy = calculator.calculateProjectTotals();
-		TimePeriodCosts strategyTimePeriodCosts = totalsWithNonDraftStrategy.getTimePeriodCostsForSpecificDateUnit(dateUnit);
+		createNonDraftStrategyWithAssignment(getResultsChainDiagramObject());
 		
-		assertEquals("did not include strategy inside results chain?", 10.0, strategyTimePeriodCosts.getTotalWorkUnits().getValue());
+		turnOnDataFromResultsChainOnly();
+		verifyCalculatedValues();
+		
+		turnOnDataFromBothDiagramTypes();
+		verifyCalculatedValues();
+		
+		turnOnDataFromConceptualDiagramOnly();
+		verifyEmptyProjectTotalTimePeriodCostsMap();
 	}
 
 	public void testConceptualModelIndicatorProjectTotal() throws Exception
 	{
-		Indicator indicatorWithResourceAssignment = getProject().createAndPopulateIndicator();
-		addResourceAssignment(indicatorWithResourceAssignment);
-		IdList indicatorIds = new IdList(Indicator.getObjectType());
-		indicatorIds.add(indicatorWithResourceAssignment.getId());
-		
-		DiagramFactor diagramFactor = getProject().createAndAddFactorToDiagram(Cause.getObjectType());
-		getProject().fillObjectUsingCommand(diagramFactor.getWrappedORef(), Cause.TAG_INDICATOR_IDS, indicatorIds.toString());
-		
-		assertEquals("did not include indicator in totals?", 0, calculator.calculateProjectTotals().size());
-	}
+		createCauseWithIndicatorWithAssignment(getConceptualModelDiagramObject());
 	
+		turnOnDataFromConceptualDiagramOnly();
+		verifyCalculatedValues();
+		
+		turnOnDataFromBothDiagramTypes();
+		verifyCalculatedValues();
+		
+		turnOnDataFromResultsChainOnly();
+		verifyEmptyBudgetTotalCost();
+	}
+
 	public void testResultsChainIndicatorProjectTotal() throws Exception
 	{
-		Indicator indicatorWithResourceAssignment = getProject().createAndPopulateIndicator();
-		addResourceAssignment(indicatorWithResourceAssignment);
-		IdList indicatorIds = new IdList(Indicator.getObjectType());
-		indicatorIds.add(indicatorWithResourceAssignment.getId());
+		createCauseWithIndicatorWithAssignment(getResultsChainDiagramObject());
+
+		turnOnDataFromResultsChainOnly();
+		verifyCalculatedValues();
 		
-		DiagramFactor diagramFactor = getProject().createAndAddFactorToDiagram(resultsChainDiagramModel.getDiagramObject(), Cause.getObjectType());
-		getProject().fillObjectUsingCommand(diagramFactor.getWrappedORef(), Cause.TAG_INDICATOR_IDS, indicatorIds.toString());
+		turnOnDataFromBothDiagramTypes();
+		verifyCalculatedValues();
 		
-		TimePeriodCostsMap totalsWithIndicator = calculator.calculateProjectTotals();
-		assertEquals("did not include results chain indicator in totals?", 1, totalsWithIndicator.size());
-		TimePeriodCosts indictorTimePeriodCosts = totalsWithIndicator.getTimePeriodCostsForSpecificDateUnit(dateUnit);
-		
-		assertEquals("wrong resources total units calculation with indicator?", 10.0, indictorTimePeriodCosts.getTotalWorkUnits().getValue());
+		turnOnDataFromConceptualDiagramOnly();
+		verifyEmptyBudgetTotalCost();
 	}
 
 	public void testConceptualModelDraftStrategyProjectTotal() throws Exception
 	{
-		DiagramFactor conceptualModelDraftStrategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
-		getProject().turnOnDraft((Strategy)conceptualModelDraftStrategy.getWrappedFactor());
-		addResourceAssignment(conceptualModelDraftStrategy.getWrappedFactor());
+		createDraftStrategyWithAssignment(getConceptualModelDiagramObject());
+	
+		turnOnDataFromConceptualDiagramOnly();
+		verifyEmptyProjectTotalTimePeriodCostsMap();
 		
-		assertEquals("ConceptualModel Draft Strategy included in project totals?", 0, calculator.calculateProjectTotals().size());
+		turnOnDataFromResultsChainOnly();
+		verifyEmptyProjectTotalTimePeriodCostsMap();
+		
+		turnOnDataFromBothDiagramTypes();
+		verifyEmptyProjectTotalTimePeriodCostsMap();
 	}
 
 	public void testConceptualModelStrategyProjectTotal() throws Exception
 	{
-		DiagramFactor conceptualModelStrategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
-		addResourceAssignment(conceptualModelStrategy.getWrappedFactor());
-		assertEquals("ConceptualModel Strategy included in project totals?", 0, calculator.calculateProjectTotals().size());
+		createNonDraftStrategyWithAssignment(getConceptualModelDiagramObject());
+		
+		turnOnDataFromConceptualDiagramOnly();
+		verifyCalculatedValues();
+		
+		turnOnDataFromBothDiagramTypes();
+		verifyCalculatedValues();
+		
+		turnOnDataFromResultsChainOnly();
+		verifyEmptyBudgetTotalCost();
+	}
+	
+	public void testStrategyOnEachDiagramProjectTotal() throws Exception
+	{
+		createNonDraftStrategyWithAssignment(getConceptualModelDiagramObject());
+		createNonDraftStrategyWithAssignment(getResultsChainDiagramObject());
+		createCauseWithIndicatorWithAssignment(getConceptualModelDiagramObject());
+		createCauseWithIndicatorWithAssignment(getResultsChainDiagramObject());
+		
+		turnOnDataFromConceptualDiagramOnly();
+		verifyCalculatedValues(TEN_WORK_UNITS * 2, 200.00);
+		
+		turnOnDataFromBothDiagramTypes();
+		verifyCalculatedValues(TEN_WORK_UNITS * 4, 400.0);
+		
+		turnOnDataFromResultsChainOnly();
+		verifyCalculatedValues(TEN_WORK_UNITS * 2, 200.0);
 	}
 
 	public void testEmptyProjectTotal() throws Exception
@@ -150,12 +196,97 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		assertEquals("no results chains created?", 1, getProject().getResultsChainDiagramPool().size());
 		assertEquals("Empty project had non-zero totals data?", 0, calculator.calculateProjectTotals().size());
 	}
-
-	private void addResourceAssignment(BaseObject wrappedFactor) throws Exception
+	
+	private void verifyEmptyBudgetTotalCost() throws Exception
 	{
-		getProject().addResourceAssignment(wrappedFactor, fred, 10, YEAR_2008, YEAR_2009);
+		OptionalDouble totalBudgetCost = calculator.calculateProjectTotals().calculateTotalBudgetCost(getProject());
+		assertFalse("ConceptualModel Strategy is included in project totals?", totalBudgetCost.hasValue());
 	}
 	
+	private void verifyEmptyProjectTotalTimePeriodCostsMap() throws Exception
+	{
+		assertEquals("Should have empty project total time perdiod costs map?", 0, calculator.calculateProjectTotals().size());
+	}
+	
+	private void verifyCalculatedValues() throws Exception
+	{
+		verifyCalculatedValues(TEN_WORK_UNITS, 100.0);
+	}
+
+	private void verifyCalculatedValues(final double expectedWorkUnits,	final double expectedTotalBudgetCost) throws Exception
+	{
+		TimePeriodCostsMap projectTotals = calculator.calculateProjectTotals();
+		assertEquals("Project totals time period costs map should not be empty?", 1, projectTotals.size());
+
+		TimePeriodCosts timePeriodCosts = projectTotals.getTimePeriodCostsForSpecificDateUnit(dateUnit);
+		assertEquals("Incorrect total work units?", expectedWorkUnits, timePeriodCosts.getTotalWorkUnits().getValue());
+		
+		OptionalDouble calculateTotalBudgetCost = projectTotals.calculateTotalBudgetCost(getProject());		
+		assertEquals("Incorrect project total", expectedTotalBudgetCost, calculateTotalBudgetCost.getValue());
+	}
+	
+	private void turnOnDataFromResultsChainOnly() throws Exception
+	{
+		turnOnDiagramObjectDataFromCode(DiagramObjectDataInclusionQuestion.INCLUDE_RESULTS_CHAIN_DATA_CODE);
+	}
+	
+	private void turnOnDataFromConceptualDiagramOnly() throws Exception
+	{
+		turnOnDiagramObjectDataFromCode(DiagramObjectDataInclusionQuestion.INCLUDE_CONCEPTUAL_MODEL_DATA_CODE);
+	}
+	
+	private void turnOnDataFromBothDiagramTypes() throws Exception
+	{
+		turnOnDiagramObjectDataFromCode(DiagramObjectDataInclusionQuestion.INCLUDE_BOTH_DIAGRAM_DATA_CODE);
+	}
+	
+	private void turnOnDiagramObjectDataFromCode(String code) throws Exception
+	{
+		ORef configurationRef = getProject().getViewData(WorkPlanView.getViewName()).getTreeConfigurationRef();
+		getProject().fillObjectUsingCommand(configurationRef, PlanningViewConfiguration.TAG_DIAGRAM_DATA_INCLUSION, code);	
+	}
+	
+	private void createDraftStrategyWithAssignment(DiagramObject diagramModel) throws Exception
+	{
+		DiagramFactor draftStrategy = createNonDraftStrategyWithAssignment(diagramModel);
+		getProject().turnOnDraft((Strategy)draftStrategy.getWrappedFactor());
+	}
+	
+	private DiagramFactor createNonDraftStrategyWithAssignment(DiagramObject diagramObject) throws Exception
+	{
+		DiagramFactor nonDraftStrategy = getProject().createAndAddFactorToDiagram(diagramObject, Strategy.getObjectType());
+		addResourceAssignment(nonDraftStrategy.getWrappedFactor());
+		
+		return nonDraftStrategy;
+	}
+	
+	private void createCauseWithIndicatorWithAssignment(DiagramObject diagramObject) throws Exception
+	{
+		Indicator indicator = getProject().createIndicator();
+		addResourceAssignment(indicator);
+		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		indicatorIds.add(indicator.getId());
+		
+		DiagramFactor diagramFactor = getProject().createAndAddFactorToDiagram(diagramObject, Cause.getObjectType());
+		getProject().fillObjectUsingCommand(diagramFactor.getWrappedORef(), Cause.TAG_INDICATOR_IDS, indicatorIds.toString());
+	}
+	
+	private DiagramObject getConceptualModelDiagramObject()
+	{
+		return getProject().getDiagramModel().getDiagramObject();
+	}
+	
+	private DiagramObject getResultsChainDiagramObject()
+	{
+		return resultsChainDiagramModel.getDiagramObject();
+	}
+	
+	private void addResourceAssignment(BaseObject wrappedFactor) throws Exception
+	{
+		getProject().addResourceAssignment(wrappedFactor, fred, TEN_WORK_UNITS, YEAR_2008, YEAR_2009);
+	}
+	
+	private static final int TEN_WORK_UNITS = 10;
 	private static final int YEAR_2008 = 2008;
 	private static final int YEAR_2009 = 2009;
 	
