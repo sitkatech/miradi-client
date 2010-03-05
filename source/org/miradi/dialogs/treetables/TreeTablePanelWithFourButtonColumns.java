@@ -30,6 +30,7 @@ abstract public class TreeTablePanelWithFourButtonColumns extends TreeTablePanel
 		super(mainWindowToUse, treeToUse, buttonActionClasses);
 	}
 
+	@Override
 	protected GridLayoutPlus createButtonLayout()
 	{
 		return new GridLayoutPlus(2, 4, 3, 3);
