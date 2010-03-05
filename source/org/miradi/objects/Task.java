@@ -370,6 +370,17 @@ public class Task extends Factor
 		
 		throw new UnknownTaskParentTypeException();
 	}
+	
+	public static boolean canOwnTask(int selectedType)
+	{
+		if (Indicator.is(selectedType))
+			return true;
+		
+		if (Strategy.is(selectedType))
+			return true;
+		
+		return Task.is(selectedType);
+	}
 
 	private String getLabelOfTaskParent()
 	{
