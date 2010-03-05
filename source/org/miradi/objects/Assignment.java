@@ -183,7 +183,7 @@ abstract public class Assignment extends BaseObject
 		DateRange projectPlanningDateRange = getProjectCalendar().getProjectPlanningDateRange();
 		DateRange dateRange = getProjectCalendar().convertToDateRange(dateUnit);
 
-		return projectPlanningDateRange.contains(dateRange);
+		return projectPlanningDateRange.containsAtleastSome(dateRange);
 	}
 
 	private ProjectCalendar getProjectCalendar()

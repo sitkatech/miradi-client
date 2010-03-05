@@ -220,6 +220,34 @@ public class DateRange
 		 return true;
 	}
 	
+	public boolean containsAtleastSome(DateRange other)
+	{
+		if (contains(other))
+			return true;
+		
+		if (containsOrEquals(other.getStartDate()))
+			return true;
+		
+		if (containsOrEquals(other.getEndDate()))
+			return true;
+		
+		return false;
+	}
+	
+	private boolean containsOrEquals(MultiCalendar calendar)
+	{
+		if (getStartDate().equals(calendar))
+			return true;
+		
+		if (getEndDate().equals(calendar))
+			return true;
+		
+		if (calendar.after(getStartDate()) && calendar.before(getEndDate()))
+			return true;
+		
+		return false;
+	}
+	
 	public boolean contains(DateRange other)
 	{
 		if (! containsStart(other.getStartDate()))
