@@ -32,6 +32,7 @@ public class NumericTableCellRendererFactory extends SingleLineObjectTableCellRe
 		super(providerToUse, fontProviderToUse);
 	}
 
+	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
