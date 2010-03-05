@@ -36,6 +36,7 @@ import org.miradi.views.ObjectsDoer;
 
 public class CreateActivityDoer extends ObjectsDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		BaseObject selectedParent = getSelectedParentFactor();
@@ -45,6 +46,7 @@ public class CreateActivityDoer extends ObjectsDoer
 		return Strategy.is(selectedParent);
 	}
 
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		doInsertActivity();
