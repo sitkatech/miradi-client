@@ -113,7 +113,7 @@ public class PlanningViewConfiguration extends BaseObject
 
 	public static final String TAG_ROW_CONFIGURATION = "TagRowConfiguration";
 	public static final String TAG_COL_CONFIGURATION = "TagColConfiguration";
-	public static final String TAG_DIAGRAM_DATA_INCLUSION = "DiagramDataInclusion";
+	public static final String TAG_DIAGRAM_DATA_INCLUSION = "TagDiagramDataInclusion";
 	
 	public static final String OBJECT_NAME = "PlanningViewConfiguration";
 	
