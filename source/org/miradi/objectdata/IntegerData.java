@@ -27,9 +27,11 @@ public class IntegerData extends ObjectData
 	public IntegerData(String tagToUse)
 	{
 		super(tagToUse);
+		
 		value = 0;
 	}
 	
+	@Override
 	public void set(String newValue) throws Exception
 	{
 		if(newValue.length() == 0)
@@ -52,6 +54,7 @@ public class IntegerData extends ObjectData
 		}
 	}
 	
+	@Override
 	public String get()
 	{
 		if(value == 0)
@@ -64,6 +67,7 @@ public class IntegerData extends ObjectData
 		return value;
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof IntegerData))
@@ -73,11 +77,11 @@ public class IntegerData extends ObjectData
 		return new Integer(value).equals(new Integer(other.value));
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return value;
 	}
-
 
 	int value;
 }
