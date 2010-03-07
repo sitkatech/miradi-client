@@ -19,17 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
-import org.miradi.objects.BaseObject;
+import java.util.Vector;
+
 import org.miradi.objects.Indicator;
 
 public class TreeNodeCreateMethodDoer extends TreeNodeCreateTaskDoer
 {
-	protected boolean canBeParentOfTask(BaseObject selectedObject) throws Exception
+	@Override
+	protected Vector<String> getParentObjectName()
 	{
-		if(Indicator.is(selectedObject))
-			return true;
+		Vector<String> parentTypeNames = new Vector<String>();
+		parentTypeNames.add(Indicator.OBJECT_NAME);
 		
-		return false;
+		return parentTypeNames;
 	}
-
 }

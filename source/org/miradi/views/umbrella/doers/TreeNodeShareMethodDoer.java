@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
+import java.util.Vector;
+
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.dialogs.task.ShareableMethodPoolTablePanel;
 import org.miradi.main.EAM;
@@ -29,6 +31,15 @@ import org.miradi.views.planning.doers.AbstractShareDoer;
 
 public class TreeNodeShareMethodDoer extends AbstractShareDoer
 {
+	@Override
+	protected Vector<String> getParentObjectName()
+	{
+		Vector<String> parentTypeNames = new Vector<String>();
+		parentTypeNames.add(Indicator.OBJECT_NAME);
+		
+		return parentTypeNames;
+	}	
+
 	@Override
 	protected String getTaskTypeName()
 	{

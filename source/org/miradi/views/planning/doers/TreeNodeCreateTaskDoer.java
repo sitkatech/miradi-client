@@ -31,6 +31,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
@@ -47,9 +48,14 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 		
 		try
 		{
+			//TODO: is this test necessary.  
 			BaseObject selectedObject = getSingleSelectedObject();
 			if (! Task.canOwnTask(selectedObject.getType()))
 				return;
+			
+			ORefList[] selectedHierarchies = getSelectedHierarchies();
+			ORefList selectionHierarchy = selectedHierarchies[0];
+			selectedObject = findParentOfTask(selectionHierarchy);
 			
 			createTask(getProject(), selectedObject, getPicker());
 		}
