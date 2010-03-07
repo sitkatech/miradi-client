@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-05 15:23-0600\n"
+"POT-Creation-Date: 2010-03-07 11:51-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -876,7 +876,7 @@ msgid ""
 "'%s'"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:53
+#: Miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:64
 msgid "Share Method"
 msgstr "共享方法 \t\t"
 
@@ -889,7 +889,7 @@ msgstr "您是否确定要删除该进展报告？ \t\t"
 msgid "Other Notable Species"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareActivityDoer.java:47
+#: Miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareActivityDoer.java:58
 msgid "Share Activity"
 msgstr "共享活动 \t\t"
 
