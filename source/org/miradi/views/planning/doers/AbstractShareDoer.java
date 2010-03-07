@@ -36,6 +36,7 @@ import org.miradi.objects.Task;
 
 abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if(!super.isAvailable())
@@ -47,6 +48,7 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 		return hasSharables();
 	}
 	
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if (!isAvailable())
