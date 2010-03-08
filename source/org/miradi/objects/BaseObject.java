@@ -408,7 +408,7 @@ abstract public class BaseObject
 	
 	public String getFullName()
 	{
-		return combineShortLabelAndLabel(getShortLabel(), getLabel());
+		return combineShortLabelAndLabel();
 	}
 	
 	protected String toFullNameWithCode(String codeToUse)
@@ -417,14 +417,14 @@ abstract public class BaseObject
 		if(codeToUse.length() > 0)
 			result += codeToUse + ": ";
 		
-		result += toString();
+		result += combineShortLabelAndLabel();
 		
 		return result;
 	}
 	
 	protected String toString(String defaultValue)
 	{
-		String result = getLabel();
+		String result = getFullName();
 		if(result.length() > 0)
 			return result;
 		
