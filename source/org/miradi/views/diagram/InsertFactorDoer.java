@@ -55,6 +55,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	abstract public String getInitialText();
 	abstract public void forceVisibleInLayerManager();
 
+	@Override
 	public boolean isAvailable()
 	{
 		if (! getProject().isOpen())
@@ -69,6 +70,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return true;
 	}
 
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if (!isAvailable())
