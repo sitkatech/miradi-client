@@ -225,18 +225,12 @@ public class DateRange
 		if (contains(other))
 			return true;
 		
-		if (containsOrEquals(other.getStartDate()))
+		MultiCalendar otherStartDate = other.getStartDate();
+		if (!otherStartDate.before(getStartDate()) &&  !otherStartDate.after(getEndDate()))
 			return true;
 		
-		if (containsOrEquals(other.getEndDate()))
-			return true;
-		
-		return false;
-	}
-	
-	private boolean containsOrEquals(MultiCalendar calendar)
-	{
-		if (!calendar.before(getStartDate()) &&  !calendar.after(getEndDate()))
+		MultiCalendar otherEndDate = other.getEndDate();	
+		if (!otherEndDate.before(getStartDate()) &&  !otherEndDate.after(getEndDate()))
 			return true;
 		
 		return false;
