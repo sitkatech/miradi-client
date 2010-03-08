@@ -238,7 +238,13 @@ public class DateRange
 
 	private boolean contains(MultiCalendar otherDate)
 	{
-		return !otherDate.before(getStartDate()) &&  !otherDate.after(getEndDate());
+		if (otherDate.before(getStartDate()))
+				return false;
+		
+		if (otherDate.after(getEndDate()))
+			return false;
+		
+		return true;
 	}
 	
 	public boolean contains(DateRange other)
