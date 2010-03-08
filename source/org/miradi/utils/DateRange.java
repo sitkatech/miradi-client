@@ -236,13 +236,7 @@ public class DateRange
 	
 	private boolean containsOrEquals(MultiCalendar calendar)
 	{
-		if (getStartDate().equals(calendar))
-			return true;
-		
-		if (getEndDate().equals(calendar))
-			return true;
-		
-		if (calendar.after(getStartDate()) && calendar.before(getEndDate()))
+		if (!calendar.before(getStartDate()) &&  !calendar.after(getEndDate()))
 			return true;
 		
 		return false;
