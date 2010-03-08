@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-07 11:51-0600\n"
+"POT-Creation-Date: 2010-03-08 09:57-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -27,7 +27,7 @@ msgstr "[未命名] \t\t"
 msgid "Label|(Undefined Resource)"
 msgstr "（未定义的资源） \t\t"
 
-#: Miradi/source/org/miradi/objects/AccountingCode.java:71
+#: Miradi/source/org/miradi/objects/AccountingCode.java:74
 msgid "Label|(Undefined Accounting Code)"
 msgstr "（未定义的会计代码） \t\t"
 
