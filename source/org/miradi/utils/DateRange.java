@@ -226,14 +226,19 @@ public class DateRange
 			return true;
 		
 		MultiCalendar otherStartDate = other.getStartDate();
-		if (!otherStartDate.before(getStartDate()) &&  !otherStartDate.after(getEndDate()))
+		if (contains(otherStartDate))
 			return true;
 		
 		MultiCalendar otherEndDate = other.getEndDate();	
-		if (!otherEndDate.before(getStartDate()) &&  !otherEndDate.after(getEndDate()))
+		if (contains(otherEndDate))
 			return true;
 		
 		return false;
+	}
+
+	private boolean contains(MultiCalendar otherDate)
+	{
+		return !otherDate.before(getStartDate()) &&  !otherDate.after(getEndDate());
 	}
 	
 	public boolean contains(DateRange other)
