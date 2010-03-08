@@ -35,6 +35,7 @@ public class AccountingCode extends BaseObject
 	public AccountingCode(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse);
+
 		clear();
 	}
 	
@@ -42,13 +43,14 @@ public class AccountingCode extends BaseObject
 	{
 		super(objectManager, new AccountingCodeId(idAsInt), json);
 	}
-
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -66,6 +68,7 @@ public class AccountingCode extends BaseObject
 	}
 	
 	
+	@Override
 	public String toString()
 	{
 		return toString(EAM.text("Label|(Undefined Accounting Code)"));
@@ -102,6 +105,7 @@ public class AccountingCode extends BaseObject
 		return find(project.getObjectManager(), accountingCodeRef);
 	}
 		
+	@Override
 	public void clear()
 	{
 		super.clear();
