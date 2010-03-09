@@ -38,7 +38,7 @@ public class DiagramScopeBoxCell extends FactorCell
 	public Color getColor()
 	{
 		ScopeBox scopeBox = (ScopeBox) getWrappedFactor();
-		ChoiceQuestion scopeBoxTypeQuestion = ScopeBoxTypeQuestion.createScopeBoxColorQuestion();
+		ChoiceQuestion scopeBoxTypeQuestion = ScopeBoxTypeQuestion.createScopeBoxTypeQuestion();
 		String scopeBoxTypeCode = scopeBox.getScopeBoxTypeCode();
 		ChoiceItem currentScopeBoxTypeChoice = scopeBoxTypeQuestion.findChoiceByCode(scopeBoxTypeCode);
 		
