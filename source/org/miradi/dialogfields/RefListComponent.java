@@ -36,6 +36,7 @@ public class RefListComponent extends AbstractDataValueListComponent
 		super(questionToUse, columnCount);
 	}
 
+	@Override
 	public String getText()
 	{
 		ORefList refList = new ORefList();
@@ -52,6 +53,7 @@ public class RefListComponent extends AbstractDataValueListComponent
 		return refList.toString();
 	}
 	
+	@Override
 	public void setText(String refListToUse)
 	{
 		enableSkipNotification();
