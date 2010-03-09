@@ -38,6 +38,6 @@ public class ScopeBoxPoolExporter extends FactorPoolExporter
 	{
 		super.exportFields(writer, baseObject);
 		
-		writeCodeElementSameAsTag(baseObject, XmlSchemaCreator.SCOPE_BOX_COLOR_ELEMENT_NAME, ScopeBoxTypeQuestion.createScopeBoxTypeQuestion());
+		writeCodeElement(XmlSchemaCreator.SCOPE_BOX_COLOR_ELEMENT_NAME, baseObject, ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxTypeQuestion());
 	}
 }
