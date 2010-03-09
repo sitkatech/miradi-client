@@ -24,6 +24,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ScopeBox;
 import org.miradi.questions.ScopeBoxTypeQuestion;
+import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class ScopeBoxPoolExporter extends FactorPoolExporter
 {
@@ -37,6 +38,6 @@ public class ScopeBoxPoolExporter extends FactorPoolExporter
 	{
 		super.exportFields(writer, baseObject);
 		
-		writeCodeElementSameAsTag(baseObject, ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxTypeQuestion());
+		writeCodeElementSameAsTag(baseObject, XmlSchemaCreator.SCOPE_BOX_COLOR_ELEMENT_NAME, ScopeBoxTypeQuestion.createScopeBoxTypeQuestion());
 	}
 }
