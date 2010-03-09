@@ -25,7 +25,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.ScopeBox;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.ScopeBoxColorQuestion;
+import org.miradi.questions.ScopeBoxTypeQuestion;
 
 public class DiagramScopeBoxCell extends FactorCell
 {
@@ -38,7 +38,7 @@ public class DiagramScopeBoxCell extends FactorCell
 	public Color getColor()
 	{
 		ScopeBox scopeBox = (ScopeBox) getWrappedFactor();
-		ChoiceQuestion colorQuestion = ScopeBoxColorQuestion.createScopeBoxColorQuestion();
+		ChoiceQuestion colorQuestion = ScopeBoxTypeQuestion.createScopeBoxColorQuestion();
 		String scopeBoxColorCode = scopeBox.getScopeBoxColorCode();
 		ChoiceItem currentScopeBoxChoice = colorQuestion.findChoiceByCode(scopeBoxColorCode);
 		
