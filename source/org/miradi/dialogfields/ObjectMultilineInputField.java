@@ -40,8 +40,7 @@ public abstract class ObjectMultilineInputField extends ObjectTextInputField
 
 	private static JTextComponent createTextComponent(MainWindow mainWindow, int initialVisibleRows, int columnsToUse)
 	{
-		JTextPane editor = new MiradiTextPane(mainWindow, columnsToUse, initialVisibleRows);
-		return editor;
+		return new MiradiTextPane(mainWindow, columnsToUse, initialVisibleRows);
 	}
 	
 	static class MiradiTextPane extends JTextPane
@@ -84,6 +83,7 @@ public abstract class ObjectMultilineInputField extends ObjectTextInputField
 		 * focus traversal keys later, so TAB would not exit the UiTextArea.
 		 * Instead, we will just always return our TAB preferences.
 		 */
+		@Override
 		public Set getFocusTraversalKeys(int category)
 		{
 			int UNSHIFTED = 0;
