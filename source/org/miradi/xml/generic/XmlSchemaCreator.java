@@ -122,7 +122,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		defineVocabulary(writer, VOCABULARY_TARGET_STATUS, new StatusQuestion());
 		defineVocabulary(writer, VOCABULARY_TARGET_VIABILITY_MODE, new ViabilityModeQuestion());
 		defineVocabulary(writer, VOCABULARY_THREAT_TAXONOMY_CODE, new ThreatClassificationQuestion());
-		defineVocabulary(writer, VOCABULARY_SCOPE_BOX_COLOR, new ScopeBoxTypeQuestion(null));
+		defineVocabulary(writer, VOCABULARY_SCOPE_BOX_TYPE, new ScopeBoxTypeQuestion(null));
 		defineVocabulary(writer, VOCABULARY_STRESS_SEVERITY, new StressSeverityChoiceQuestion());
 		defineVocabulary(writer, VOCABULARY_STRESS_SCOPE, new StressScopeChoiceQuestion());
 		defineVocabulary(writer, VOCABULARY_STRATEGY_TAXONOMY_CODE, new StrategyTaxonomyQuestion());
@@ -478,7 +478,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 	static final String VOCABULARY_TARGET_VIABILITY_MODE = "vocabulary_target_viability_mode";
 	public static final String VOCABULARY_THREAT_TAXONOMY_CODE = "vocabulary_cause_taxonomy_code";
 	public static final String VOCABULARY_STRATEGY_TAXONOMY_CODE = "vocabulary_strategy_taxonomy_code";
-	public static final String VOCABULARY_SCOPE_BOX_COLOR = "vocabulary_scope_box_color";
+	public static final String VOCABULARY_SCOPE_BOX_TYPE = "vocabulary_scope_box_type";
 	public static final String VOCABULARY_STRESS_SEVERITY = "vocabulary_stress_severity";
 	public static final String VOCABULARY_STRESS_SCOPE = "vocabulary_stress_scope";
 	public static final String VOCABULARY_STRATEGY_IMAPACT_RATING_CODE = "vocabulary_strategy_impact_rating_code";
