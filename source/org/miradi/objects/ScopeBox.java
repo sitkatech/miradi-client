@@ -78,7 +78,7 @@ public class ScopeBox extends Factor
 		return new ORefList();
 	}
 	
-	public String getScopeBoxColorCode()
+	public String getScopeBoxTypeCode()
 	{
 		return scopeBoxTypeCode.get();
 	}
