@@ -28,6 +28,6 @@ public class ScopeBoxObjectSchemaElement extends FactorObjectSchemaElement
 	{
 		super(WcsXmlConstants.SCOPE_BOX);
 		
-		createCodeField(XmlSchemaCreator.SCOPE_BOX_COLOR_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_SCOPE_BOX_COLOR);
+		createCodeField(XmlSchemaCreator.SCOPE_BOX_COLOR_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_SCOPE_BOX_TYPE);
 	}
 }
