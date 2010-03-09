@@ -54,11 +54,13 @@ public class TncProjectData extends BaseObject
 		return projectPlaceTypes.getCodeList();
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -89,6 +91,7 @@ public class TncProjectData extends BaseObject
 		return find(project.getObjectManager(), tncProjectDataRef);
 	}
 		
+	@Override
 	void clear()
 	{
 		super.clear();
