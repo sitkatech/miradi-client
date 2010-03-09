@@ -55,6 +55,18 @@ public class DiagramFactorBackgroundQuestion extends StaticChoiceQuestion
 			new ChoiceItem("Brown", EAM.text("Brown"), new Color(200, 90, 23)),
 		};
 	}
+	
+	@Override
+	public boolean hasReadableAlternativeDefaultCode()
+	{
+		return true;
+	}
+	
+	@Override
+	public String getReadableAlternativeDefaultCode()
+	{
+		return "LightGray";
+	}
 
 	public static final String ORANGE_COLOR_CODE = "Orange";
 }

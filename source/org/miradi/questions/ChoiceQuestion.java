@@ -128,7 +128,25 @@ public abstract class ChoiceQuestion
 	{
 		return new ChoiceItemLabelComparator();
 	}
-
+	
+	public String convertToReadableCode(String code)
+	{
+		if (code.length() == 0 && hasReadableAlternativeDefaultCode())
+			return getReadableAlternativeDefaultCode();
+		
+		return code;
+	}
+	
+	protected boolean hasReadableAlternativeDefaultCode()
+	{
+		return false;
+	}
+	
+	protected String getReadableAlternativeDefaultCode()
+	{
+		throw new RuntimeException("Question should override this method if it provides an alternative to a blank default code.");
+	}
+	
 	public static final Color COLOR_ALERT = Color.RED;
 	public static final Color COLOR_CAUTION = ColorManager.DARK_YELLOW;
 	public static final Color COLOR_OK = ColorManager.LIGHT_GREEN;

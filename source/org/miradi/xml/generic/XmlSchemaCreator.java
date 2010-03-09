@@ -453,7 +453,9 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		CodeList codes = question.getAllCodes();
 		for(int index = 0; index < codes.size(); ++index)
 		{
-			writer.write("'" + codes.get(index)+ "'");
+			String code = codes.get(index);
+			code = question.convertToReadableCode(code);
+			writer.write("'" + code + "'");
 			if (index < codes.size() - 1)
 				writer.print("|");
 		}

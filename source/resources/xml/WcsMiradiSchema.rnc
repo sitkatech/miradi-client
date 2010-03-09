@@ -647,19 +647,19 @@ vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }
 vocabulary_text_box_z_order = 'Back' | 'Front'
 vocabulary_fiscal_year_start_month = ''|'10'|'7'|'4'
 vocabulary_protected_area_categories = 'Ia'|'Ib'|'II'|'III'|'IV'|'V'|'VI'
-vocabulary_resource_type = ''|'Group'
+vocabulary_resource_type = 'Person'|'Group'
 vocabulary_resource_role_codes = 'TeamMember'|'Contact'|'Leader'|'Facilitator'|'Advisor'|'Stakeholder'
 vocabulary_hidden_types = 'Strategy'|'DraftStrategy'|'ContributingFactor'|'DirectThreat'|'Target'|'HumanWelfareTarget'|'Link'|'Goal'|'Objective'|'Indicator'|'TextBox'|'ScopeBox'|'Stress'|'Activity'|'IntermediateResult'|'ThreatReductionResult'|'GroupBox'
-vocabulary_diagram_factor_font_size = ''|'0.5'|'0.75'|'0.9'|'1.25'|'1.75'|'2.5'
+vocabulary_diagram_factor_font_size = '11'|'0.5'|'0.75'|'0.9'|'1.25'|'1.75'|'2.5'
 vocabulary_diagram_factor_font_style = ''|'<B>'|'<U>'|'<S>'
-vocabulary_diagram_factor_background_color = ''|'White'|'Pink'|'Orange'|'LightYellow'|'LightGreen'|'LightBlue'|'LightPurple'|'Tan'|'Black'|'DarkGray'|'Red'|'DarkOrange'|'DarkYellow'|'DarkGreen'|'DarkBlue'|'DarkPurple'|'Brown'
-vocabulary_diagram_factor_foreground_color = ''|'#4E4848'|'#FF0000'|'#FF6600'|'#FFCC00'|'#007F00'|'#0000CC'|'#9900FF'|'#C85A17'|'#6D7B8D'|'#FFFFFF'|'#FF00FF'|'#FF8040'|'#FFFFCC'|'#5FFB17'|'#00CCFF'|'#CC99FF'|'#EDE275'
-vocabulary_diagram_link_color = ''|'darkGray'|'red'|'DarkOrange'|'DarkYellow'|'darkGreen'|'darkBlue'|'DarkPurple'|'brown'|'lightGray'|'White'|'pink'|'orange'|'yellow'|'lightGreen'|'lightBlue'|'LightPurple'|'tan'
+vocabulary_diagram_factor_background_color = 'LightGray'|'White'|'Pink'|'Orange'|'LightYellow'|'LightGreen'|'LightBlue'|'LightPurple'|'Tan'|'Black'|'DarkGray'|'Red'|'DarkOrange'|'DarkYellow'|'DarkGreen'|'DarkBlue'|'DarkPurple'|'Brown'
+vocabulary_diagram_factor_foreground_color = 'Black'|'#4E4848'|'#FF0000'|'#FF6600'|'#FFCC00'|'#007F00'|'#0000CC'|'#9900FF'|'#C85A17'|'#6D7B8D'|'#FFFFFF'|'#FF00FF'|'#FF8040'|'#FFFFCC'|'#5FFB17'|'#00CCFF'|'#CC99FF'|'#EDE275'
+vocabulary_diagram_link_color = 'Black'|'darkGray'|'red'|'DarkOrange'|'DarkYellow'|'darkGreen'|'darkBlue'|'DarkPurple'|'brown'|'lightGray'|'White'|'pink'|'orange'|'yellow'|'lightGreen'|'lightBlue'|'LightPurple'|'tan'
 vocabulary_biodiversity_target_habitat_association = '1'|'1.1'|'1.2'|'1.3'|'1.4'|'1.5'|'1.6'|'1.7'|'1.8'|'1.9'|'2'|'2.1'|'2.2'|'3'|'3.1'|'3.2'|'3.3'|'3.4'|'3.5'|'3.6'|'3.7'|'3.8'|'4'|'4.1'|'4.2'|'4.3'|'4.4'|'4.5'|'4.6'|'4.7'|'5'|'5.1'|'5.2'|'5.3'|'5.4'|'5.5'|'5.6'|'5.7'|'5.8'|'5.9'|'5.10'|'5.11'|'5.12'|'5.13'|'5.14'|'5.15'|'5.16'|'5.17'|'5.18'|'6'|'7'|'7.1'|'7.2'|'8'|'8.1'|'8.2'|'8.3'|'9'|'9.1'|'9.2'|'9.3'|'9.5'|'9.6'|'9.7'|'9.8'|'9.8.1'|'9.8.2'|'9.8.3'|'9.8.4'|'9.8.5'|'9.8.6'|'9.9'|'9.10'|'10'|'10.1'|'10.2'|'10.3'|'10.4'|'11'|'11.1'|'11.1.1'|'11.1.2'|'11.2'|'11.3'|'11.4'|'11.5'|'11.6'|'12'|'12.1'|'12.2'|'12.3'|'12.4'|'12.5'|'12.6'|'12.7'|'13'|'13.1'|'13.2'|'13.3'|'13.4'|'13.5'|'14'|'14.1'|'14.2'|'14.3'|'14.4'|'14.5'|'14.6'|'15'|'15.1'|'15.2'|'15.3'|'15.4'|'15.5'|'15.6'|'15.7'|'15.8'|'15.9'|'15.10'|'15.11'|'15.12'|'15.13'|'16'|'TNC1'|'TNC2'|'TNC3'|'17'|'18'
 vocabulary_target_status = ''|'1'|'2'|'3'|'4'
 vocabulary_target_viability_mode = ''|'TNC'
 vocabulary_cause_taxonomy_code = ''|'T10'|'T10.10'|'T10.20'|'T10.30'|'T20'|'T20.10'|'T20.30'|'T20.40'|'T20.50'|'T30'|'T30.10'|'T30.20'|'T30.30'|'T40'|'T40.10'|'T40.20'|'T40.30'|'T40.40'|'T50'|'T50.10'|'T50.20'|'T50.30'|'T50.40'|'T60'|'T60.10'|'T60.20'|'T60.30'|'T70'|'T70.10'|'T70.20'|'T70.30'|'T80'|'T80.10'|'T80.20'|'T80.30'|'T91'|'T91.10'|'T91.20'|'T91.30'|'T91.40'|'T91.50'|'T91.60'|'T100'|'T100.10'|'T100.20'|'T100.30'|'T110'|'T110.10'|'T110.20'|'T110.30'|'T110.40'
-vocabulary_scope_box_type = ''|'HumanWelfareTargetBrown'
+vocabulary_scope_box_type = 'Biodiversity'|'HumanWelfareTargetBrown'
 vocabulary_stress_severity = ''|'1'|'2'|'3'|'4'
 vocabulary_stress_scope = ''|'1'|'2'|'3'|'4'
 vocabulary_strategy_taxonomy_code = ''|'A10'|'A10.10'|'A10.30'|'A20'|'A20.10'|'A20.20'|'A20.30'|'A30'|'A30.10'|'A30.20'|'A30.30'|'A30.40'|'A40'|'A40.10'|'A40.20'|'A40.30'|'A50'|'A50.10'|'A50.20'|'A50.30'|'A50.40'|'A60'|'A60.10'|'A60.20'|'A60.30'|'A60.40'|'A60.50'|'A70'|'A70.10'|'A70.20'|'A70.30'
@@ -689,7 +689,7 @@ vocabulary_measurement_status = ''|'1'|'2'|'3'|'4'
 vocabulary_measurement_status_confidence = ''|'RoughGuess'|'ExpertKnowledge'|'RapidAssessment'|'IntensiveAssessment'
 vocabulary_countries = 'ZZZ'|'XXX'|'AFG'|'ALA'|'ALB'|'DZA'|'ASM'|'AND'|'AGO'|'AIA'|'ATA'|'ATG'|'ARG'|'ARM'|'ABW'|'AUS'|'AUT'|'AZE'|'BHS'|'BHR'|'BGD'|'BRB'|'BLR'|'BEL'|'BLZ'|'BEN'|'BMU'|'BTN'|'BOL'|'BIH'|'BWA'|'BVT'|'BRA'|'IOT'|'VGB'|'BRN'|'BGR'|'BFA'|'BDI'|'KHM'|'CMR'|'CAN'|'CPV'|'CYM'|'CAF'|'TCD'|'CHL'|'CHN'|'CXR'|'CCK'|'COL'|'COM'|'COG'|'COK'|'CRI'|'CIV'|'HRV'|'CUB'|'CYP'|'CZE'|'PRK'|'COD'|'DNK'|'DJI'|'DMA'|'DOM'|'ECU'|'EGY'|'SLV'|'GNQ'|'ERI'|'EST'|'ETH'|'FRO'|'FLK'|'FJI'|'FIN'|'FRA'|'FXX'|'GUF'|'PYF'|'ATF'|'GAB'|'GMB'|'GEO'|'DEU'|'GHA'|'GIB'|'GRC'|'GRL'|'GRD'|'GLP'|'GUM'|'GTM'|'GIN'|'GNB'|'GUY'|'HTI'|'HMD'|'VAT'|'HND'|'HKG'|'HUN'|'ISL'|'IND'|'IDN'|'IRN'|'IRQ'|'IRL'|'IMN'|'ISR'|'ITA'|'JAM'|'JPN'|'JOR'|'KAZ'|'KEN'|'KIR'|'KWT'|'KGZ'|'LAO'|'LVA'|'LBN'|'LSO'|'LBR'|'LBY'|'LIE'|'LTU'|'LUX'|'MAC'|'MKD'|'MDG'|'MWI'|'MYS'|'MDV'|'MLI'|'MLT'|'MHL'|'MTQ'|'MRT'|'MUS'|'MYT'|'MEX'|'FSM'|'MCO'|'MNG'|'MSR'|'MAR'|'MOZ'|'MMR'|'NAM'|'NRU'|'NPL'|'NLD'|'ANT'|'NCL'|'NZL'|'NIC'|'NER'|'NGA'|'NIU'|'NFK'|'MNP'|'NOR'|'PSE'|'OMN'|'PAK'|'PLW'|'PAN'|'PNG'|'PRY'|'PER'|'PHL'|'PCN'|'POL'|'PRT'|'PRI'|'QAT'|'KOR'|'MDA'|'REU'|'ROU'|'RUS'|'RWA'|'SHN'|'KNA'|'LCA'|'SPM'|'VCT'|'WSM'|'SMR'|'STP'|'SAU'|'SEN'|'SCG'|'SYC'|'SLE'|'SGP'|'SVK'|'SVN'|'SLB'|'SOM'|'ZAF'|'SGS'|'ESP'|'LKA'|'SDN'|'SUR'|'SJM'|'SWZ'|'SWE'|'CHE'|'SYR'|'TWN'|'TJK'|'THA'|'TLS'|'TGO'|'TKL'|'TON'|'TTO'|'TUN'|'TUR'|'TKM'|'TCA'|'TUV'|'UGA'|'UKR'|'ARE'|'GBR'|'TZA'|'UMI'|'USA'|'VIR'|'URY'|'UZB'|'VUT'|'VEN'|'VNM'|'WLF'|'PSE'|'ESH'|'YEM'|'ZMB'|'ZWE'
 vocabulary_threat_rating = ''|'1'|'2'|'3'|'4'
-vocabulary_included_diagram_types = ''|'IncludeResultsChainData'|'IncludeConceptualModelData'
+vocabulary_included_diagram_types = 'AllTypes'|'IncludeResultsChainData'|'IncludeConceptualModelData'
 ConceptualModelId.element = element miradi:ConceptualModelId { xsd:integer }
 ResultsChainId.element = element miradi:ResultsChainId { xsd:integer }
 DiagramFactorId.element = element miradi:DiagramFactorId { xsd:integer }
@@ -971,4 +971,3 @@ ProjectSummaryLocationCountriesContainer.element = element miradi:ProjectSummary
 {
   element miradi:code { vocabulary_countries } * 
 }
-

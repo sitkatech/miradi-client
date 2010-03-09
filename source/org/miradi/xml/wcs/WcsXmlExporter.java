@@ -430,7 +430,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeStartElement(getWriter(), parentElementName + convertedElementName);
 		
 		if (doesCodeExist(question, code))
-			writeXmlEncodedData(getWriter(), code);
+			writeXmlEncodedData(getWriter(), question.convertToReadableCode(code));
 		else
 			logMissingCode(question, code);
 		
@@ -439,9 +439,6 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 
 	public void writeOptionalCodeElement(String parentElementName, String elementName, ChoiceQuestion question, String code) throws Exception
 	{
-		if (code.length() == 0)
-			return;
-				
 		if (!doesCodeExist(question, code))
 		{
 			logMissingCode(question, code);

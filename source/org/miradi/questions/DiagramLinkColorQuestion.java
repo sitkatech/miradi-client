@@ -53,4 +53,16 @@ public class DiagramLinkColorQuestion extends StaticChoiceQuestion
 				new ChoiceItem("tan", EAM.text("Tan"), DiagramFactorFontColorQuestion.TAN_FROM_HEX),
 		};
 	}
+	
+	@Override
+	public boolean hasReadableAlternativeDefaultCode()
+	{
+		return true;
+	}
+	
+	@Override
+	public String getReadableAlternativeDefaultCode()
+	{
+		return "Black";
+	}
 }

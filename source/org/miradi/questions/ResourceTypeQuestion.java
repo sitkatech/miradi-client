@@ -37,6 +37,18 @@ public class ResourceTypeQuestion extends StaticChoiceQuestion
 		};
 	}
 	
+	@Override
+	public boolean hasReadableAlternativeDefaultCode()
+	{
+		return true;
+	}
+	
+	@Override
+	public String getReadableAlternativeDefaultCode()
+	{
+		return "Person";
+	}
+	
 	public static final String GROUP_CODE = "Group";
 	public static final String PERSON_CODE = "";
 }
