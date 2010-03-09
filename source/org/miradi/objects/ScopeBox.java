@@ -108,14 +108,14 @@ public class ScopeBox extends Factor
 	{
 		super.clear();
 		
-		scopeBoxColorCode = new ChoiceData(TAG_SCOPE_BOX_COLOR_CODE, ScopeBoxTypeQuestion.createScopeBoxColorQuestion());
+		scopeBoxColorCode = new ChoiceData(TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxColorQuestion());
 		
-		addPresentationDataField(TAG_SCOPE_BOX_COLOR_CODE, scopeBoxColorCode);
+		addPresentationDataField(TAG_SCOPE_BOX_TYPE_CODE, scopeBoxColorCode);
 	}
 	
 	public static final String OBJECT_NAME = "ScopeBox";
 	
-	public static final String TAG_SCOPE_BOX_COLOR_CODE = "ScopeBoxColorCode";
+	public static final String TAG_SCOPE_BOX_TYPE_CODE = "ScopeBoxColorCode";
 	
 	private ChoiceData scopeBoxColorCode;
 }
