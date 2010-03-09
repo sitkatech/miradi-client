@@ -38,6 +38,7 @@ abstract public class ObjectPoolExporter extends AbstractXmlExporter
 		objectType = objectTypeToUse;
 	}
 
+	@Override
 	public void exportXml() throws Exception
 	{
 		getWcsXmlExporter().writeStartPoolElement(poolName);
