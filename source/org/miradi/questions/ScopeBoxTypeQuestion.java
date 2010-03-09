@@ -24,14 +24,14 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 
 //TODO: Superclass really should not have color data members
-public class ScopeBoxColorQuestion extends DynamicChoiceQuestion
+public class ScopeBoxTypeQuestion extends DynamicChoiceQuestion
 {
-	public static ScopeBoxColorQuestion createScopeBoxColorQuestion()
+	public static ScopeBoxTypeQuestion createScopeBoxColorQuestion()
 	{
 		if (isMainWindowNullDueToTest())
-			return new ScopeBoxColorQuestion(null);
+			return new ScopeBoxTypeQuestion(null);
 		
-		return new ScopeBoxColorQuestion();
+		return new ScopeBoxTypeQuestion();
 	}
 
 	private static boolean isMainWindowNullDueToTest()
@@ -39,12 +39,12 @@ public class ScopeBoxColorQuestion extends DynamicChoiceQuestion
 		return EAM.getMainWindow() == null;
 	}
 	
-	private ScopeBoxColorQuestion()
+	private ScopeBoxTypeQuestion()
 	{
 		this(EAM.getMainWindow().getAppPreferences());
 	}
 	
-	public ScopeBoxColorQuestion(AppPreferences appPreferencesToUse)
+	public ScopeBoxTypeQuestion(AppPreferences appPreferencesToUse)
 	{
 		super();
 		

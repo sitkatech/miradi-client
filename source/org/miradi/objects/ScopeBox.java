@@ -27,7 +27,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.ScopeBoxColorQuestion;
+import org.miradi.questions.ScopeBoxTypeQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ScopeBox extends Factor
@@ -108,7 +108,7 @@ public class ScopeBox extends Factor
 	{
 		super.clear();
 		
-		scopeBoxColorCode = new ChoiceData(TAG_SCOPE_BOX_COLOR_CODE, ScopeBoxColorQuestion.createScopeBoxColorQuestion());
+		scopeBoxColorCode = new ChoiceData(TAG_SCOPE_BOX_COLOR_CODE, ScopeBoxTypeQuestion.createScopeBoxColorQuestion());
 		
 		addPresentationDataField(TAG_SCOPE_BOX_COLOR_CODE, scopeBoxColorCode);
 	}

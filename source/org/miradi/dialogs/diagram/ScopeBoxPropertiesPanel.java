@@ -27,7 +27,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.ScopeBox;
 import org.miradi.project.Project;
-import org.miradi.questions.ScopeBoxColorQuestion;
+import org.miradi.questions.ScopeBoxTypeQuestion;
 
 public class ScopeBoxPropertiesPanel extends ObjectDataInputPanel
 {
@@ -39,7 +39,7 @@ public class ScopeBoxPropertiesPanel extends ObjectDataInputPanel
 
 		addField(createStringField(ScopeBox.TAG_LABEL));
 		addField(createMultilineField(ScopeBox.TAG_TEXT));
-		addField(createChoiceField(ScopeBox.getObjectType(), ScopeBox.TAG_SCOPE_BOX_COLOR_CODE, ScopeBoxColorQuestion.createScopeBoxColorQuestion()));
+		addField(createChoiceField(ScopeBox.getObjectType(), ScopeBox.TAG_SCOPE_BOX_COLOR_CODE, ScopeBoxTypeQuestion.createScopeBoxColorQuestion()));
 		
 		updateFieldsFromProject();
 	}
