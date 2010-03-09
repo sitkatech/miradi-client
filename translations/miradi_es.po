@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-08 20:14-0600\n"
+"POT-Creation-Date: 2010-03-08 20:24-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -2663,6 +2663,7 @@ msgid "Label|Workplan Dates"
 msgstr "Fechas de planes de trabajo"
 
 #: Miradi/source/org/miradi/forms/HumanWelfareTargetPropertiesForm.java:34
+#: Miradi/source/org/miradi/questions/ScopeBoxTypeQuestion.java:59
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:51
 msgid "Human Welfare Target"
 msgstr ""
@@ -2738,11 +2739,7 @@ msgid "Very High"
 msgstr "Muy alto"
 
 #: Miradi/source/org/miradi/questions/ScopeBoxTypeQuestion.java:58
-msgid "Green (Biodiversity Target)"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/ScopeBoxTypeQuestion.java:59
-msgid "Brown (Human Welfare Target)"
+msgid "Biodiversity Target"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:36
@@ -9010,7 +9007,7 @@ msgstr ""
 msgid "FieldLabel|50.ScopeBox|Project Scope Box"
 msgstr ""
 
-msgid "FieldLabel|50.ScopeBoxColorCode|Scope Box Color"
+msgid "FieldLabel|50.ScopeBoxColorCode|Scope Box Type"
 msgstr ""
 
 msgid "FieldLabel|51.ExpenseAssignment|Expense"
