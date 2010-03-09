@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/22'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/23'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -405,7 +405,7 @@ ScopeBox.element = element miradi:ScopeBox
   element miradi:ScopeBoxId { text }? &
   element miradi:ScopeBoxDetails { text }? &
   element miradi:ScopeBoxComments { text }? &
-  element miradi:ScopeBoxScopeBoxColorCode { vocabulary_scope_box_type  }
+  element miradi:ScopeBoxScopeBoxTypeCode { vocabulary_scope_box_type  }
 }
 
 KeyEcologicalAttributePool.element = element miradi:KeyEcologicalAttributePool { KeyEcologicalAttribute.element* }

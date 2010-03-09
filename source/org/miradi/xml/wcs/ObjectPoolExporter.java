@@ -88,7 +88,11 @@ abstract public class ObjectPoolExporter extends AbstractXmlExporter
 	
 	protected void writeCodeElementSameAsTag(BaseObject baseObject, String tag, ChoiceQuestion question) throws Exception
 	{
-		writeCodeElement(tag, question, baseObject.getData(tag));
+		writeCodeElement(tag, baseObject, tag, question);
+	}
+	protected void writeCodeElement(String codeListElementName, BaseObject baseObject, String tag, ChoiceQuestion question) throws Exception
+	{
+		writeCodeElement(codeListElementName, question, baseObject.getData(tag));
 	}
 	
 	protected void writeOptionalCodeElementSameAsTag(BaseObject baseObject, String tag, ChoiceQuestion question) throws Exception
