@@ -102,8 +102,5 @@ public abstract class ObjectMultilineInputField extends ObjectTextInputField
 			set.add(KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_TAB, shiftMask));
 			return set;
 		}
-
-
 	}
-
 }
