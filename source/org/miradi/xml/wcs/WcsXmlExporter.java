@@ -24,6 +24,7 @@ import java.util.Set;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringRefMap;
@@ -193,7 +194,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		
 		writeOptionalElementWithSameTag(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		writeProjectId();
-		writeOptionalElementWithSameTag(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_PROJECT_SHARING_CODE);
+		writeShareOutsideOfTncElement();
 		writeOptionalElementWithSameTag(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_PROJECT_PLACE_TYPES, getTncProjectData(), TncProjectData.TAG_PROJECT_PLACE_TYPES);
 		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_ORGANIZATIONAL_PRIORITIES, getTncProjectData(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);
@@ -206,6 +207,15 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeOptionalElementWithSameTag(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		
 		writeEndElement(out, TNC_PROJECT_DATA);
+	}
+
+	private void writeShareOutsideOfTncElement() throws Exception
+	{
+		String shareOutSideOfTnc = "0";
+		if (getTncProjectData().canShareOutsideOfTnc())
+			shareOutSideOfTnc = BooleanData.BOOLEAN_TRUE;
+		
+		writeOptionalElement(getWriter(), TNC_PROJECT_DATA + TncProjectData.TAG_PROJECT_SHARING_CODE, shareOutSideOfTnc);
 	}
 	
 	private void writeProjectId() throws Exception
