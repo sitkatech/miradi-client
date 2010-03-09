@@ -108,7 +108,7 @@ public class ScopeBox extends Factor
 	{
 		super.clear();
 		
-		scopeBoxTypeCode = new ChoiceData(TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxColorQuestion());
+		scopeBoxTypeCode = new ChoiceData(TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxTypeQuestion());
 		
 		addPresentationDataField(TAG_SCOPE_BOX_TYPE_CODE, scopeBoxTypeCode);
 	}
