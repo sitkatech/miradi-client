@@ -28,6 +28,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
 import org.miradi.questions.TncProjectPlaceTypeQuestion;
+import org.miradi.questions.TncProjectSharingQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -69,6 +70,11 @@ public class TncProjectData extends BaseObject
 	public static int getObjectType()
 	{
 		return ObjectType.TNC_PROJECT_DATA;
+	}
+	
+	public boolean canShareOutsideOfTnc()
+	{
+		return projectSharingCode.equals(TncProjectSharingQuestion.SHARE_WITH_ANYONE);
 	}
 	
 	public static boolean canOwnThisType(int type)
