@@ -32,6 +32,7 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 		super(mainWindow, objectTypeToUse, objectIdToUse, tagToUse, INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT, columnsToUse);
 	}
 
+	@Override
 	public JComponent getComponent()
 	{
 		if(scrollPane == null)
