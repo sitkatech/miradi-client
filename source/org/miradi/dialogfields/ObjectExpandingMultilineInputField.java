@@ -31,11 +31,12 @@ public class ObjectExpandingMultilineInputField extends ObjectMultilineInputFiel
 		super(mainWindow, objectTypeToUse, objectIdToUse, tagToUse, 1, columnsToUse);
 	}
 
+	@Override
 	public void focusGained(FocusEvent e)
 	{
 		super.focusGained(e);
+		
 		field.setSelectionStart(0);
 		field.setSelectionEnd(field.getSize().width);
 	}
-	
 }
