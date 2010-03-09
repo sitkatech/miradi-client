@@ -548,7 +548,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 	public static final String STRATEGY_TAXONOMY_ELEMENT_NAME = Strategy.TAG_TAXONOMY_CODE;
 	public static final String STRATEGY_IMPACT_RATING_ELEMENT_NAME = Strategy.TAG_IMPACT_RATING;
 	public static final String STRATEGY_FEASIBILITY_RATING_ELEMENT_NAME = Strategy.TAG_FEASIBILITY_RATING;
-	public static final String SCOPE_BOX_COLOR_ELEMENT_NAME = ScopeBox.TAG_SCOPE_BOX_COLOR_CODE;
+	public static final String SCOPE_BOX_COLOR_ELEMENT_NAME = ScopeBox.TAG_SCOPE_BOX_TYPE_CODE;
 	public static final String STRESS_SEVERITY_ELEMENT_NAME = Stress.TAG_SEVERITY;
 	public static final String STRESS_SCOPE_ELEMENT_NAME = Stress.TAG_SCOPE;
 	public static final String STRESS_ID_ELEMENT_NAME = "Stress";
