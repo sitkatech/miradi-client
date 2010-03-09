@@ -41,4 +41,16 @@ public class DiagramFactorFontSizeQuestion extends StaticChoiceQuestion
 				new ChoiceItem("2.5", EAM.text("Largest")),
 		};
 	}
+
+	@Override
+	public boolean hasReadableAlternativeDefaultCode()
+	{
+		return true;
+	}
+	
+	@Override
+	public String getReadableAlternativeDefaultCode()
+	{
+		return "11";
+	}
 }

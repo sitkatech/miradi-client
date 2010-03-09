@@ -55,6 +55,18 @@ public class DiagramFactorFontColorQuestion extends StaticChoiceQuestion
 		};
 	}
 	
+	@Override
+	public boolean hasReadableAlternativeDefaultCode()
+	{
+		return true;
+	}
+	
+	@Override
+	public String getReadableAlternativeDefaultCode()
+	{
+		return "Black";
+	}
+	
 	public static final String DARK_GRAY_HEX = "#4E4848";
 	public static final String LIGHT_GRAY_HEX = "#6D7B8D";
 	public static final String DARK_ORANGE_HEX = "#FF6600";

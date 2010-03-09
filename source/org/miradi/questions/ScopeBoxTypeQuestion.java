@@ -65,5 +65,17 @@ public class ScopeBoxTypeQuestion extends DynamicChoiceQuestion
 		return appPreferences;
 	}
 	
+	@Override
+	public boolean hasReadableAlternativeDefaultCode()
+	{
+		return true;
+	}
+	
+	@Override
+	public String getReadableAlternativeDefaultCode()
+	{
+		return "Biodiversity";
+	}
+	
 	private AppPreferences appPreferences;
 }
