@@ -80,7 +80,7 @@ public class ScopeBox extends Factor
 	
 	public String getScopeBoxColorCode()
 	{
-		return scopeBoxColorCode.get();
+		return scopeBoxTypeCode.get();
 	}
 	
 	public static boolean is(ORef ref)
@@ -108,14 +108,14 @@ public class ScopeBox extends Factor
 	{
 		super.clear();
 		
-		scopeBoxColorCode = new ChoiceData(TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxColorQuestion());
+		scopeBoxTypeCode = new ChoiceData(TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxColorQuestion());
 		
-		addPresentationDataField(TAG_SCOPE_BOX_TYPE_CODE, scopeBoxColorCode);
+		addPresentationDataField(TAG_SCOPE_BOX_TYPE_CODE, scopeBoxTypeCode);
 	}
 	
 	public static final String OBJECT_NAME = "ScopeBox";
 	
 	public static final String TAG_SCOPE_BOX_TYPE_CODE = "ScopeBoxColorCode";
 	
-	private ChoiceData scopeBoxColorCode;
+	private ChoiceData scopeBoxTypeCode;
 }
