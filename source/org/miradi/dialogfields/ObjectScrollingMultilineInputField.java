@@ -35,9 +35,9 @@ import org.miradi.icons.PopupEditorIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.AppPreferences;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiScrollPane;
+import org.miradi.utils.Translation;
 
 public class ObjectScrollingMultilineInputField extends ObjectMultilineInputField
 {
@@ -84,7 +84,8 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 	{
 		public void actionPerformed(ActionEvent e)
 		{
-			ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), EAM.text("Edit..."));
+			String fieldLabel = Translation.fieldLabel(getObjectType(), getTag());
+			ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), fieldLabel);
 			dialog.addWindowListener(new WindowCloseSaveHandler());
 			popupTextField = new MiradiTextPane(getMainWindow(), 100, 20);
 			new TextAreaRightClickMouseHandler(getMainWindow().getActions(), popupTextField);
