@@ -51,7 +51,7 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 		try
 		{
 			BaseObject selectedObject = getSingleSelectedObject();
-			if (! userConfirmsCreateTask(selectedObject))
+			if (! canOwnTask(selectedObject))
 				return;
 			
 			BaseObject parent = extractParentOfTask(getSelectedHierarchies());
@@ -66,7 +66,7 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 	}
 	
 	//TODO refactor this method
-	private boolean userConfirmsCreateTask(BaseObject selectedObject)
+	private boolean canOwnTask(BaseObject selectedObject)
 	{
 		if (Indicator.is(selectedObject))
 			return true;
