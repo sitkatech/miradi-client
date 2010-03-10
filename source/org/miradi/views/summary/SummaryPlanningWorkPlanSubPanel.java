@@ -105,9 +105,10 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		warningLabelFillerReplacement = new FillerPanel();
 		add(warningLabelFillerReplacement);
 
+		final int MAX_COL_CHAR_COUNT = 30;
 		warningLabel = new UiWrappedTextArea(EAM.text("Some work plan data is currently hidden and not included in " +
 													  "calculated totals. The data will be visible again if you set the " +
-													  "planning start and end date to include the entire date range of the existing data."));
+													  "planning start and end date to include the entire date range of the existing data."), MAX_COL_CHAR_COUNT);
 		warningLabel.setBackground(Color.YELLOW);
 		add(warningLabel);
 		
