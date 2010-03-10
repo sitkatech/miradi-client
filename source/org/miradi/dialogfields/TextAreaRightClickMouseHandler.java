@@ -49,12 +49,14 @@ public class TextAreaRightClickMouseHandler extends MouseAdapter
 		textField = textFieldToUse;
 	}
 	
+	@Override
 	public void mousePressed(MouseEvent e)
 	{
 		if(e.isPopupTrigger())
 			fireRightClick(e);
 	}
 
+	@Override
 	public void mouseReleased(MouseEvent e)
 	{
 		if(e.isPopupTrigger())
