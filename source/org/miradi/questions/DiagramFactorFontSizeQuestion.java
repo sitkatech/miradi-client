@@ -51,6 +51,6 @@ public class DiagramFactorFontSizeQuestion extends StaticChoiceQuestion
 	@Override
 	public String getReadableAlternativeDefaultCode()
 	{
-		return "11";
+		return "1.0";
 	}
 }

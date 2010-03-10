@@ -63,6 +63,6 @@ public class DiagramLinkColorQuestion extends StaticChoiceQuestion
 	@Override
 	public String getReadableAlternativeDefaultCode()
 	{
-		return "Black";
+		return "black";
 	}
 }
