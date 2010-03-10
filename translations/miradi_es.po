@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-08 20:24-0600\n"
+"POT-Creation-Date: 2010-03-09 19:40-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -4689,15 +4689,15 @@ msgstr "|Error "
 msgid "Wintitle|Information"
 msgstr "Información"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:86
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:88
 msgid "Cut"
 msgstr "Cortar"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:91
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:93
 msgid "Copy"
 msgstr "Copiar"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:96
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:98
 msgid "Paste"
 msgstr "Pegar"
 
