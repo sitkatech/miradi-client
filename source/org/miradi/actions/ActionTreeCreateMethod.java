@@ -40,6 +40,7 @@ public class ActionTreeCreateMethod extends ObjectsAction
 		return EAM.text("Action|Manage|Create Method");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a Method for the selected Indicator");
