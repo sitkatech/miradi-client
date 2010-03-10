@@ -67,6 +67,7 @@ public class DiagramFactor extends BaseObject
 		underlyingObjectRef.set(wrappedRef);
 	}
 	
+	@Override
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject jsonObject = super.toJson();
@@ -88,11 +89,13 @@ public class DiagramFactor extends BaseObject
 		return new Dimension(120, 60);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -103,6 +106,7 @@ public class DiagramFactor extends BaseObject
 		return ObjectType.DIAGRAM_FACTOR;
 	}
 	
+	@Override
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
@@ -230,6 +234,7 @@ public class DiagramFactor extends BaseObject
 		return false;
 	}
 	
+	@Override
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_GROUP_BOX_CHILDREN_REFS))
@@ -238,6 +243,7 @@ public class DiagramFactor extends BaseObject
 		return super.getAnnotationType(tag);
 	}
 	
+	@Override
 	public boolean isRefList(String tag)
 	{
 		if (tag.equals(TAG_GROUP_BOX_CHILDREN_REFS))
@@ -309,11 +315,13 @@ public class DiagramFactor extends BaseObject
 		return find(project.getObjectManager(), diagramFactorRef);
 	}
 	
+	@Override
 	public CreateObjectParameter getCreationExtraInfo()
 	{
 		return new CreateDiagramFactorParameter(getWrappedORef());
 	}
 	
+	@Override
 	void clear()
 	{
 		super.clear();
