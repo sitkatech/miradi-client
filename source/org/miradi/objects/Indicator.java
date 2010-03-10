@@ -75,7 +75,26 @@ public class Indicator extends BaseObject
 	@Override
 	public Vector<Command> createCommandsToDeleteChildren() throws Exception
 	{
-		return createCommandsToDeleteBudgetChildren();
+		Vector<Command> commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
+		commandsToDeleteChildren.addAll(createCommandsToDeleteBudgetChildren());
+		commandsToDeleteChildren.addAll(createCommandsToDeleteMethods());
+		
+		return commandsToDeleteChildren;
+	}
+
+	private Vector<Command> createCommandsToDeleteMethods() throws Exception
+	{
+		Vector<Command> commandsToDeleteMethods = new Vector<Command>();
+		ORefList methodRefs = getMethodRefs();
+		for (int index = 0; index < methodRefs.size(); ++index)
+		{
+			Task methodToDelete = Task.find(getProject(), methodRefs.get(index));
+			ORefList indicatorReferrers = methodToDelete.findObjectsThatReferToUs(getObjectType());
+			if (indicatorReferrers.size() == 1)
+				commandsToDeleteMethods.addAll(methodToDelete.createCommandsToDeleteChildrenAndObject());
+		}
+		
+		return commandsToDeleteMethods;
 	}
 
 	//TODO: several pseudo fields are shared between Indicator and Desires; this may indicate a need for a common super class

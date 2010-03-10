@@ -45,7 +45,6 @@ import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Stress;
 import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.diagram.doers.HideStressBubbleDoer;
@@ -140,7 +139,6 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		if (Indicator.is(annotationToDelete))
 		{
 			commands.addAll(buildCommandsToDeleteMeasurements(project, (Indicator)annotationToDelete));
-			commands.addAll(buildCommandsToDeleteMethods(project, (Indicator) annotationToDelete));
 		}
 		if (KeyEcologicalAttribute.is(annotationToDelete.getType()))
 		{
@@ -255,23 +253,6 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return commands;
 	}
 	
-	private static Vector buildCommandsToDeleteMethods(Project project, Indicator indicator) throws Exception
-	{
-		Vector commands = new Vector();
-		IdList subtaskList = indicator.getMethodIds();
-		for (int i  = 0; i < subtaskList.size(); i++)
-		{
-			Task methodToDelete = (Task)project.findObject(ObjectType.TASK, subtaskList.get(i));
-			ORefList referrers = methodToDelete.findObjectsThatReferToUs(Indicator.getObjectType());
-			if (referrers.size() == 1)
-			{
-				Vector returnedDeleteCommands = methodToDelete.getDeleteSelfAndSubtasksCommands(project);		
-				commands.addAll(returnedDeleteCommands);
-			}
-		}
-		
-		return commands;
-	}
 
 	abstract public String[] getDialogText();
 	abstract public String getAnnotationIdListTag();
