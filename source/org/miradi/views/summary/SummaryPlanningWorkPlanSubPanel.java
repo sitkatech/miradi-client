@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.summary;
 
-import java.awt.Color;
-
 import javax.swing.JLabel;
 
 import org.martus.swing.UiWrappedTextArea;
@@ -100,36 +98,44 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 
 	private void addHiddenDataWarningLabel()
 	{
-		add(new FillerPanel());
-		
-		warningLabelFillerReplacement = new FillerPanel();
-		add(warningLabelFillerReplacement);
-
-		final int MAX_COL_CHAR_COUNT = 30;
-		warningLabel = new UiWrappedTextArea(EAM.text("Some work plan data is currently hidden and not included in " +
+		warningLabelFillerReplacement =createAndAddFillerPanel();
+		String warningMessage = EAM.text("Some work plan data is currently hidden and not included in " +
 													  "calculated totals. The data will be visible again if you set the " +
-													  "planning start and end date to include the entire date range of the existing data."), MAX_COL_CHAR_COUNT);
-		warningLabel.setBackground(Color.YELLOW);
-		add(warningLabel);
-		
+													  "planning start and end date to include the entire date range of the existing data.");
+		warningPanel = createAndAddWarningPanel(warningMessage);
 		updateOutOfRangeDataWarningField();
 	}
 	
 	private void addQuarterColumnVisibilityExplanationLabel()
 	{	
-		add(new FillerPanel());
-		quarterVisibilityExplanationFillerReplacement = new FillerPanel();
-		add(quarterVisibilityExplanationFillerReplacement);
-
-		UiWrappedTextArea quarterVisibilityExplanationLabel = new UiWrappedTextArea(EAM.text("Quarter columns cannot be hidden because this project already has data for some quarters."));
-		explanationPanel = new TwoColumnPanel();
-		explanationPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		quarterVisibilityExplanationLabel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		explanationPanel.add(new JLabel(new WarningIcon()));
-		explanationPanel.add(quarterVisibilityExplanationLabel);
-		add(explanationPanel);
-		
+		quarterVisibilityExplanationFillerReplacement = createAndAddFillerPanel();
+		String message = EAM.text("Quarter columns cannot be hidden because this project already has data for some quarters.");
+		explanationPanel = createAndAddWarningPanel(message);	
 		updateQuarterColumnVisibilityEnableStatus();
+	}
+	
+	private FillerPanel createAndAddFillerPanel()
+	{
+		add(new FillerPanel());
+		FillerPanel warningPanelEmptyReplacementPanel = new FillerPanel();
+		add(warningPanelEmptyReplacementPanel);
+		
+		return warningPanelEmptyReplacementPanel;
+	}
+	
+	private TwoColumnPanel createAndAddWarningPanel(String message)
+	{
+		final int MAX_COL_CHAR_COUNT = 30;
+		UiWrappedTextArea label = new UiWrappedTextArea(message, MAX_COL_CHAR_COUNT);
+		TwoColumnPanel panel = new TwoColumnPanel();
+		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		label.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		panel.add(new JLabel(new WarningIcon()));
+		panel.add(label);
+		
+		add(panel);
+		
+		return panel;
 	}
 	
 	@Override
@@ -141,11 +147,11 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	
 	private void updateOutOfRangeDataWarningField()
 	{
-		if (warningLabel == null)
+		if (warningPanel == null)
 			return;
 		
 		boolean showWarning = hasDataOutsideOfProjectDateRange(getProject());
-		warningLabel.setVisible(showWarning);
+		warningPanel.setVisible(showWarning);
 		warningLabelFillerReplacement.setVisible(!showWarning);
 	}
 
@@ -256,7 +262,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		return EAM.text("Work Plan Settings");
 	}
 	
-	private UiWrappedTextArea warningLabel;
+	private TwoColumnPanel warningPanel;
 	private FillerPanel warningLabelFillerReplacement;
 	private FillerPanel quarterVisibilityExplanationFillerReplacement;
 	private TwoColumnPanel explanationPanel;
