@@ -34,8 +34,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -50,10 +48,6 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 		
 		try
 		{
-			BaseObject selectedObject = getSingleSelectedObject();
-			if (! canOwnTask(selectedObject))
-				return;
-			
 			BaseObject parent = extractParentOfTask(getSelectedHierarchies());
 			if (parent != null)
 				createTask(getProject(), parent, getPicker());
@@ -63,18 +57,6 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 			EAM.logException(e);
 			EAM.errorDialog("Error: " + e.getMessage());
 		}
-	}
-	
-	//TODO refactor this method
-	private boolean canOwnTask(BaseObject selectedObject)
-	{
-		if (Indicator.is(selectedObject))
-			return true;
-		
-		if (Strategy.is(selectedObject))
-			return true;
-		
-		return Task.is(selectedObject);
 	}
 	
 	public void createTask(Project project, BaseObject parent, ObjectPicker picker) throws CommandFailedException, ParseException, Exception
