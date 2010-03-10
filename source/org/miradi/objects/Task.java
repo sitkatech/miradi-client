@@ -102,11 +102,13 @@ public class Task extends Factor
 		return super.isRefList(tag);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 
+	@Override
 	public String getTypeName()
 	{
 		ensureCachedTypeStringIsValid();
