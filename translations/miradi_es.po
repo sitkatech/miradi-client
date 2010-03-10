@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 19:40-0600\n"
+"POT-Creation-Date: 2010-03-09 19:47-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -4700,6 +4700,10 @@ msgstr "Copiar"
 #: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:98
 msgid "Paste"
 msgstr "Pegar"
+
+#: Miradi/source/org/miradi/dialogfields/ObjectScrollingMultilineInputField.java:87
+msgid "Edit..."
+msgstr "Editar…"
 
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:81
 msgid "%countLabel: %itemCount"
@@ -36678,9 +36682,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Lan Cang superior (Mekong)___9___ríos de montaña tropicales y "
 #~ "subtropicales "
-
-#~ msgid "Edit..."
-#~ msgstr "Editar…"
 
 #~ msgid "Action|Develop Work Plan"
 #~ msgstr "Desarrollar plan de trabajo"
