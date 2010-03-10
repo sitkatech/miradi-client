@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.targetviability.doers;
 
+import org.miradi.actions.ActionCollapseAllRows;
+import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.ActionExpandToGoal;
 import org.miradi.actions.ActionExpandToIndicator;
 import org.miradi.actions.ActionExpandToKeyEcologicalAttribute;
@@ -33,6 +35,8 @@ public class ExpandToMenuDoer extends AbstractPopDownMenuDoer
 	protected Class[] getAllPossibleActionClasses()
 	{
 		return new Class[] {
+				ActionExpandAllRows.class,
+				ActionCollapseAllRows.class,
 				ActionExpandToTarget.class,
 				ActionExpandToKeyEcologicalAttribute.class,
 				ActionExpandToIndicator.class,
