@@ -51,16 +51,16 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 		editButton = new PanelButton(new PopupEditorIcon());
 		editButton.addActionListener(new PopupButtonHandler());
 
-		OneColumnPanel buttonPanel = new OneColumnPanel();
-		buttonPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		buttonPanel.add(editButton);
+		OneColumnPanel panelToPreventVerticalStretching = new OneColumnPanel();
+		panelToPreventVerticalStretching.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		panelToPreventVerticalStretching.add(editButton);
 
 		scrollPane = new MiradiScrollPane(getTextField());
 		scrollPane.setVerticalScrollBarPolicy(scrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
 		mainPanel = new MiradiPanel(new BorderLayout());
 		mainPanel.add(scrollPane, BorderLayout.CENTER);
-		mainPanel.add(buttonPanel, BorderLayout.AFTER_LINE_ENDS);
+		mainPanel.add(panelToPreventVerticalStretching, BorderLayout.AFTER_LINE_ENDS);
 		setDefaultFieldBorder();
 	}
 
