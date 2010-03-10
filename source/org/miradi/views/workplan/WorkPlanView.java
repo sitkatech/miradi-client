@@ -22,7 +22,9 @@ package org.miradi.views.workplan;
 import javax.swing.JToolBar;
 
 import org.miradi.actions.ActionCreateAccountingCode;
+import org.miradi.actions.ActionCreateActivitySibling;
 import org.miradi.actions.ActionCreateFundingSource;
+import org.miradi.actions.ActionCreateMethodSibling;
 import org.miradi.actions.ActionCreateResource;
 import org.miradi.actions.ActionDeleteAccountingCode;
 import org.miradi.actions.ActionDeleteFundingSource;
@@ -52,7 +54,9 @@ import org.miradi.views.planning.doers.DeleteFundingSourceDoer;
 import org.miradi.views.planning.doers.ImportAccountingCodesDoer;
 import org.miradi.views.planning.doers.PlanningTreeNodeCreationMenuDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateActivityDoer;
+import org.miradi.views.planning.doers.TreeNodeCreateActivitySiblingDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateMethodDoer;
+import org.miradi.views.planning.doers.TreeNodeCreateMethodSiblingDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateTaskDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 import org.miradi.views.planning.doers.WorkPlanColumnsEditorDoer;
@@ -131,7 +135,9 @@ public class WorkPlanView extends TabbedView
 		addDoerToMap(ActionTreeCreateMethodIconOnly.class, new TreeNodeCreateMethodDoer());
 		addDoerToMap(ActionTreeCreateTaskIconOnly.class, new TreeNodeCreateTaskDoer());
 		addDoerToMap(ActionTreeCreateActivity.class, new TreeNodeCreateActivityDoer());
-		addDoerToMap(ActionTreeCreateMethod.class, new TreeNodeCreateMethodDoer());	
+		addDoerToMap(ActionCreateActivitySibling.class, new TreeNodeCreateActivitySiblingDoer());
+		addDoerToMap(ActionTreeCreateMethod.class, new TreeNodeCreateMethodDoer());
+		addDoerToMap(ActionCreateMethodSibling.class, new TreeNodeCreateMethodSiblingDoer());
 		addDoerToMap(ActionTreeCreateTask.class, new TreeNodeCreateTaskDoer());
 
 		addDoerToMap(ActionTreeShareActivity.class, new TreeNodeShareActivityDoer());

@@ -24,6 +24,7 @@ import org.miradi.objects.Indicator;
 
 public class TreeNodeCreateMethodDoer extends TreeNodeCreateTaskDoer
 {
+	@Override
 	protected boolean canBeParentOfTask(BaseObject selectedObject) throws Exception
 	{
 		if(Indicator.is(selectedObject))
@@ -31,5 +32,10 @@ public class TreeNodeCreateMethodDoer extends TreeNodeCreateTaskDoer
 		
 		return false;
 	}
-
+	
+	@Override
+	protected int getParentType()
+	{
+		return Indicator.getObjectType();
+	}
 }

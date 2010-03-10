@@ -32,5 +32,10 @@ public class TreeNodeCreateActivityDoer extends TreeNodeCreateTaskDoer
 		
 		return false;
 	}
-
+	
+	@Override
+	protected int getParentType()
+	{
+		return Strategy.getObjectType();
+	}
 }
