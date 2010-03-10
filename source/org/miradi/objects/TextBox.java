@@ -41,11 +41,13 @@ public class TextBox extends Factor
 		super(objectManager, idToUse, Factor.TYPE_TEXT_BOX, json);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -56,6 +58,7 @@ public class TextBox extends Factor
 		return ObjectType.TEXT_BOX;
 	}
 	
+	@Override
 	public boolean isTextBox()
 	{
 		return true;
@@ -66,11 +69,13 @@ public class TextBox extends Factor
 		return false;
 	}
 	
+	@Override
 	public boolean canHaveIndicators()
 	{
 		return false;
 	}
 
+	@Override
 	public ORefList getOwnedObjects(int objectType)
 	{
 		return new ORefList();
