@@ -40,6 +40,7 @@ public class ActionTreeCreateActivity extends ObjectsAction
 		return EAM.text("Action|Manage|Create Activity");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create an Activity for the selected Strategy");
