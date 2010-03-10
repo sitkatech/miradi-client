@@ -62,12 +62,8 @@ public class Task extends Factor
 		{
 			BaseId subTaskId = getSubtaskId(index);
 			Task  subTask = (Task)project.findObject(ObjectType.TASK, subTaskId);
-			Vector returnedDeleteCommands = subTask.getDeleteSelfAndSubtasksCommands(project);
-			deleteIds.addAll(returnedDeleteCommands);
-			
+			deleteIds.addAll(subTask.createCommandsToDeleteChildrenAndObject());
 		}
-		
-		deleteIds.addAll(createCommandsToDeleteChildrenAndObject());
 		
 		return deleteIds;
 	}
@@ -75,7 +71,10 @@ public class Task extends Factor
 	@Override
 	public Vector<Command> createCommandsToDeleteChildren() throws Exception
 	{
-		return createCommandsToDeleteBudgetChildren();
+		Vector<Command> commandsToDeleteChildren = createCommandsToDeleteBudgetChildren();
+		commandsToDeleteChildren.addAll(getDeleteSelfAndSubtasksCommands(getProject()));
+		
+		return commandsToDeleteChildren;
 	}
 	
 	@Override

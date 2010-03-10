@@ -112,7 +112,7 @@ public class DeleteActivityDoer extends ObjectsDoer
 		if (! selectedTask.isOrphandTask())
 			return;
 		
-		Vector commandsToDeletTask = selectedTask.getDeleteSelfAndSubtasksCommands(project);
+		Vector commandsToDeletTask = selectedTask.createCommandsToDeleteChildrenAndObject();
 		project.executeCommandsWithoutTransaction(commandsToDeletTask);
 	}
 	
