@@ -31,9 +31,10 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Indicator;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -48,14 +49,9 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 		
 		try
 		{
-			//TODO: is this test necessary.  
 			BaseObject selectedObject = getSingleSelectedObject();
-			if (! Task.canOwnTask(selectedObject.getType()))
+			if (! userConfirmsCreateTask(selectedObject))
 				return;
-			
-			ORefList[] selectedHierarchies = getSelectedHierarchies();
-			ORefList selectionHierarchy = selectedHierarchies[0];
-			selectedObject = findParentOfTask(selectionHierarchy);
 			
 			createTask(getProject(), selectedObject, getPicker());
 		}
@@ -64,6 +60,18 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 			EAM.logException(e);
 			EAM.errorDialog("Error: " + e.getMessage());
 		}
+	}
+	
+	//TODO refactor this method
+	private boolean userConfirmsCreateTask(BaseObject selectedObject)
+	{
+		if (Indicator.is(selectedObject.getType()))
+			return true;
+		
+		if (Strategy.is(selectedObject.getType()))
+			return true;
+		
+		return Task.is(selectedObject.getType());
 	}
 	
 	public void createTask(Project project, BaseObject parent, ObjectPicker picker) throws CommandFailedException, ParseException, Exception
@@ -107,7 +115,7 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 			picker.ensureObjectVisible(ref);
 		}
 		
-		private ObjectPicker picker;
-		private ORef ref;
+		ObjectPicker picker;
+		ORef ref;
 	}
 }
