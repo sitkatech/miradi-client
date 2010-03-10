@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
+import org.miradi.actions.ActionCreateActivitySibling;
+import org.miradi.actions.ActionCreateMethodSibling;
 import org.miradi.actions.ActionTreeCreateActivity;
 import org.miradi.actions.ActionTreeCreateIndicator;
 import org.miradi.actions.ActionTreeCreateMethod;
@@ -38,9 +40,11 @@ public class PlanningTreeNodeCreationMenuDoer extends AbstractPopDownMenuDoer
 				ActionTreeCreateIndicator.class,
 				null,
 				ActionTreeCreateActivity.class,
+				ActionCreateActivitySibling.class,
 				ActionTreeShareActivity.class,
 				null,
 				ActionTreeCreateMethod.class,
+				ActionCreateMethodSibling.class,
 				ActionTreeShareMethod.class,
 				null,
 				ActionTreeCreateTask.class,			
