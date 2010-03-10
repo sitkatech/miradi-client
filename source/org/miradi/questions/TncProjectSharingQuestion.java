@@ -32,10 +32,10 @@ public class TncProjectSharingQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem(SHARE_TNC_ONLY, EAM.text("No")),
-				new ChoiceItem(SHARE_WITH_ANYONE, EAM.text("Yes")),
+				new ChoiceItem(SHARE_OUTSIDE_TNC, EAM.text("Yes")),
 		};
 	}
 	
 	public static final String SHARE_TNC_ONLY = "";
-	public static final String SHARE_WITH_ANYONE = "ShareWithAnyone";
+	public static final String SHARE_OUTSIDE_TNC = "ShareWithAnyone";
 }

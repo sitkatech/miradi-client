@@ -74,7 +74,7 @@ public class TncProjectData extends BaseObject
 	
 	public boolean canShareOutsideOfTnc()
 	{
-		return projectSharingCode.get().equals(TncProjectSharingQuestion.SHARE_WITH_ANYONE);
+		return projectSharingCode.get().equals(TncProjectSharingQuestion.SHARE_OUTSIDE_TNC);
 	}
 	
 	public static boolean canOwnThisType(int type)
