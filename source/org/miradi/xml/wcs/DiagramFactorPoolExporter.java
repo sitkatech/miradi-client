@@ -70,7 +70,11 @@ public class DiagramFactorPoolExporter extends BaseObjectPoolExporter
 		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
 		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
 		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
-		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion());
+		
+		Factor wrappedFactor = diagramFactor.getWrappedFactor();
+		if (wrappedFactor.isGroupBox() || wrappedFactor.isTextBox())
+			writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion());
+		
 		getWcsXmlExporter().writeEndElement(STYLING);
 		
 		getWcsXmlExporter().writeEndElement(STYLING_ELEMENT_NAME);
