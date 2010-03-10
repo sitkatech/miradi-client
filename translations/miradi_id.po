@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 20:14-0600\n"
+"POT-Creation-Date: 2010-03-09 21:08-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -6104,7 +6104,7 @@ msgstr "Edit Perkiraan Sumber Daya… "
 msgid "TT|Edit the list of estimated resources."
 msgstr "Edit daftar perkiraan sumber daya. "
 
-#: Miradi/source/org/miradi/actions/ActionTreeCreateMethod.java:45
+#: Miradi/source/org/miradi/actions/ActionTreeCreateMethod.java:46
 msgid "TT|Create a Method for the selected Indicator"
 msgstr "Buat Metode untuk Indikator terpilih "
 
