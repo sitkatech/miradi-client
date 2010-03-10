@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-10 13:12-0600\n"
+"POT-Creation-Date: 2010-03-10 15:54-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -35,7 +35,7 @@ msgstr "（未定义的会计代码） \t\t"
 msgid "Label|(Undefined Funding Source)"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/Task.java:346
+#: Miradi/source/org/miradi/objects/Task.java:345
 msgid "Task does not have a parent"
 msgstr ""
 
@@ -344,8 +344,8 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:44
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:45
-#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:67
-#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:69
+#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:66
+#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:68
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
 #: Miradi/source/org/miradi/main/EAM.java:444
 #: Miradi/source/org/miradi/main/EAM.java:445
@@ -792,7 +792,7 @@ msgstr "[页 %s] \t\t"
 msgid "Choose Indicator to Create from"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:67
+#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:66
 #: Miradi/source/org/miradi/main/EAM.java:444
 msgid "Retain"
 msgstr "保留 \t\t"
