@@ -33,14 +33,21 @@ import org.miradi.main.MainWindow;
 
 public abstract class ObjectMultilineInputField extends ObjectTextInputField
 {
-	protected ObjectMultilineInputField(MainWindow mainWindow, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int initialVisibleRows, int columnsToUse)
+	protected ObjectMultilineInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int initialVisibleRows, int columnsToUse)
 	{
-		super(mainWindow.getProject(), objectTypeToUse, objectIdToUse, tagToUse, createTextComponent(mainWindow, initialVisibleRows, columnsToUse));
+		super(mainWindowToUse.getProject(), objectTypeToUse, objectIdToUse, tagToUse, createTextComponent(mainWindowToUse, initialVisibleRows, columnsToUse));
+		
+		mainWindow = mainWindowToUse;
 	}
 
 	private static JTextComponent createTextComponent(MainWindow mainWindow, int initialVisibleRows, int columnsToUse)
 	{
 		return new MiradiTextPane(mainWindow, columnsToUse, initialVisibleRows);
+	}
+	
+	protected MainWindow getMainWindow()
+	{
+		return mainWindow;
 	}
 	
 	static class MiradiTextPane extends JTextPane
@@ -103,4 +110,6 @@ public abstract class ObjectMultilineInputField extends ObjectTextInputField
 			return set;
 		}
 	}
+	
+	private MainWindow mainWindow;
 }
