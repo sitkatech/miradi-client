@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 21:13-0600\n"
+"POT-Creation-Date: 2010-03-10 09:15-0600\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -4677,10 +4677,6 @@ msgstr "Salin "
 #: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:98
 msgid "Paste"
 msgstr "Tempel "
-
-#: Miradi/source/org/miradi/dialogfields/ObjectScrollingMultilineInputField.java:87
-msgid "Edit..."
-msgstr "Edit… "
 
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:81
 msgid "%countLabel: %itemCount"
@@ -30109,6 +30105,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Edit..."
+#~ msgstr "Edit… "
 
 #~ msgid "FieldLabel|9.FullText|Text"
 #~ msgstr "Teks "
