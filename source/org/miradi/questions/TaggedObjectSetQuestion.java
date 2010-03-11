@@ -39,6 +39,7 @@ public class TaggedObjectSetQuestion extends ObjectQuestion
 		return allTaggedObjectSets.toArray(new TaggedObjectSet[0]);
 	}
 	
+	@Override
 	public void reloadQuestion()
 	{
 		setObjects(getAllTaggedObjectSet(project));

@@ -41,6 +41,12 @@ public class RefListEditorField extends ObjectDataInputField implements ListSele
 		refListScroller = new MiradiScrollPane(refListEditor);
 	}
 	
+	public void reloadQuestion()
+	{
+		refListEditor.getQuestion().reloadQuestion();
+		refListEditor.rebuildToggleButtonsBoxes();
+	}
+	
 	@Override
 	public JComponent getComponent()
 	{
