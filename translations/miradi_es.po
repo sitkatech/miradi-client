@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-10 15:54-0600\n"
+"POT-Creation-Date: 2010-03-10 20:24-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -7345,7 +7345,7 @@ msgstr ""
 msgid "Folder Chooser"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:41
+#: Miradi/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:51
 #: Miradi/source/org/miradi/dialogs/base/CodeListEditorPanel.java:46
 msgid "Editor"
 msgstr "Editor"
