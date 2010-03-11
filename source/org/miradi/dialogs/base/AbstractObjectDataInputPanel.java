@@ -478,7 +478,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectExpandingMultilineInputField(getMainWindow(), objectType, getObjectIdForType(objectType), tag, columns);
 	}
 
-	public ObjectDataInputField createOverridenObjectListField(String tag, ChoiceQuestion question)
+	public ObjectOverridenListField createOverridenObjectListField(String tag, ChoiceQuestion question)
 	{
 		return new ObjectOverridenListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, question);
 	}

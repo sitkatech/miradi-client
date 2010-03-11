@@ -147,6 +147,10 @@ public abstract class ChoiceQuestion
 		throw new RuntimeException("Question should override this method if it provides an alternative to a blank default code.");
 	}
 	
+	public void reloadQuestion()
+	{
+	}
+	
 	public static final Color COLOR_ALERT = Color.RED;
 	public static final Color COLOR_CAUTION = ColorManager.DARK_YELLOW;
 	public static final Color COLOR_OK = ColorManager.LIGHT_GREEN;

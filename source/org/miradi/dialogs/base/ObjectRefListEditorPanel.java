@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
+import org.miradi.dialogfields.ObjectOverridenListField;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
@@ -30,9 +31,18 @@ public class ObjectRefListEditorPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ref);
 
-		addField(createOverridenObjectListField(tagToUse, new ObjectPoolChoiceQuestion(projectToUse, type)));
+		createOverridenObjectListField = createOverridenObjectListField(tagToUse, new ObjectPoolChoiceQuestion(projectToUse, type));
+		addField(createOverridenObjectListField);
 		
 		updateFieldsFromProject();
+	}
+	
+	@Override
+	public void setObjectRefs(ORef[] orefsToUse)
+	{
+		createOverridenObjectListField.reloadQuestion();
+		
+		super.setObjectRefs(orefsToUse);
 	}
 
 	@Override
@@ -40,4 +50,6 @@ public class ObjectRefListEditorPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Editor");
 	}
+	
+	private ObjectOverridenListField createOverridenObjectListField;
 }

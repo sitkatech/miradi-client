@@ -25,9 +25,12 @@ import org.miradi.project.Project;
 
 public class ObjectPoolChoiceQuestion extends ObjectQuestion
 {
-	public ObjectPoolChoiceQuestion(Project project, int type)
+	public ObjectPoolChoiceQuestion(Project projectToUse, int typeToUse)
 	{
-		super(getAllObjects(project, type));
+		super(getAllObjects(projectToUse, typeToUse));
+		
+		project = projectToUse;
+		type = typeToUse;
 	}
 	
 	private static BaseObject[] getAllObjects(Project project, int type)
@@ -41,4 +44,15 @@ public class ObjectPoolChoiceQuestion extends ObjectQuestion
 		
 		return objectList;
 	}
+	
+	@Override
+	public void reloadQuestion()
+	{
+		super.reloadQuestion();
+		
+		setObjects(getAllObjects(project, type));
+	}
+	
+	private Project project;
+	private int type;
 }
