@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning.doers;
 
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 
 public class TreeNodeCreateActivitySiblingDoer extends TreeNodeCreateTaskDoer
@@ -35,11 +34,5 @@ public class TreeNodeCreateActivitySiblingDoer extends TreeNodeCreateTaskDoer
 		Task task = (Task) selectedObject;
 		
 		return task.isActivity();
-	}
-	
-	@Override
-	protected int getParentType()
-	{
-		return Strategy.getObjectType();
 	}
 }

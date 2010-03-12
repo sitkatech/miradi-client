@@ -32,10 +32,4 @@ public class TreeNodeCreateMethodDoer extends TreeNodeCreateTaskDoer
 		
 		return false;
 	}
-	
-	@Override
-	protected int getParentType()
-	{
-		return Indicator.getObjectType();
-	}
 }
