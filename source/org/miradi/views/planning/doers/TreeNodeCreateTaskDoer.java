@@ -38,7 +38,7 @@ import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
+public class TreeNodeCreateTaskDoer extends AbstractTreeNodeTaskDoer
 {
 	@Override
 	public void doIt() throws CommandFailedException
