@@ -65,8 +65,8 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeTas
 		{
 			CommandCreateObject create = new CommandCreateObject(ObjectType.TASK);
 			project.executeCommand(create);
+			
 			ORef newTaskRef = create.getObjectRef();
-
 			String containerTag = Task.getTaskIdsTag(parent);
 			CommandSetObjectData addChildCommand = CommandSetObjectData.createAppendIdCommand(parent, containerTag, newTaskRef.getObjectId());
 			project.executeCommand(addChildCommand);
@@ -98,7 +98,7 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeTas
 			picker.ensureObjectVisible(ref);
 		}
 		
-		ObjectPicker picker;
-		ORef ref;
+		private ObjectPicker picker;
+		private ORef ref;
 	}
 }
