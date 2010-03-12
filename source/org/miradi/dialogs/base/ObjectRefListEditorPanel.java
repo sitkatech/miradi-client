@@ -31,8 +31,8 @@ public class ObjectRefListEditorPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ref);
 
-		createOverridenObjectListField = createOverridenObjectListField(tagToUse, new ObjectPoolChoiceQuestion(projectToUse, type));
-		addField(createOverridenObjectListField);
+		overriddenObjectListField = createOverridenObjectListField(tagToUse, new ObjectPoolChoiceQuestion(projectToUse, type));
+		addField(overriddenObjectListField);
 		
 		updateFieldsFromProject();
 	}
@@ -40,7 +40,7 @@ public class ObjectRefListEditorPanel extends ObjectDataInputPanel
 	@Override
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
-		createOverridenObjectListField.refreshRefs();
+		overriddenObjectListField.refreshRefs();
 		
 		super.setObjectRefs(orefsToUse);
 	}
@@ -51,5 +51,5 @@ public class ObjectRefListEditorPanel extends ObjectDataInputPanel
 		return EAM.text("Editor");
 	}
 	
-	private ObjectOverridenListField createOverridenObjectListField;
+	private ObjectOverridenListField overriddenObjectListField;
 }
