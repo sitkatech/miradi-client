@@ -74,10 +74,7 @@ abstract public class AbstractTreeNodeTaskDoer extends AbstractTreeNodeDoer
 	
 	protected boolean canBeParentOfTask(BaseObject selectedObject) throws Exception
 	{
-		if(selectedObject.getType() == Task.getObjectType())
-			return true;
-		
-		return false;
+		return selectedObject.isType(getParentType());
 	}
 	
 	abstract protected int getParentType();

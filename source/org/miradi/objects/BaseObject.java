@@ -1265,6 +1265,11 @@ abstract public class BaseObject
 		return find(project.getObjectManager(), objectRef);
 	}
 	
+	public boolean isType(int typeToUse)
+	{
+		return getType() == typeToUse;
+	}
+	
 	//FIXME medium: move these classes into their own class in order to avoid dup code and inner classes
 	public class PseudoQuestionData  extends ObjectData
 	{

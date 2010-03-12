@@ -19,20 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 
 public class TreeNodeCreateActivityDoer extends AbstractTreeNodeCreateTaskDoer
 {
-	@Override
-	protected boolean canBeParentOfTask(BaseObject selectedObject) throws Exception
-	{
-		if(Strategy.is(selectedObject))
-			return true;
-		
-		return false;
-	}
-	
 	@Override
 	protected int getParentType()
 	{
