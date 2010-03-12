@@ -34,4 +34,10 @@ public class TreeNodeCreateSubTaskDoer extends AbstractTreeNodeCreateTaskDoer
 		Task task = (Task) selectedObject;
 		return task.isTask();
 	}
+	
+	@Override
+	protected int getParentType()
+	{
+		return Task.getObjectType();
+	}
 }

@@ -72,11 +72,6 @@ abstract public class AbstractTreeNodeTaskDoer extends AbstractTreeNodeDoer
 		return null;
 	}
 	
-	protected int getParentType()
-	{
-		return Task.getObjectType();
-	}
-	
 	protected boolean canBeParentOfTask(BaseObject selectedObject) throws Exception
 	{
 		if(selectedObject.getType() == Task.getObjectType())
@@ -84,4 +79,6 @@ abstract public class AbstractTreeNodeTaskDoer extends AbstractTreeNodeDoer
 		
 		return false;
 	}
+	
+	abstract protected int getParentType();
 }
