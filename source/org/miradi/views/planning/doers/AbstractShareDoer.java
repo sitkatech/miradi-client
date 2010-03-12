@@ -99,7 +99,7 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeTaskDoer
 	@Override
 	protected boolean canBeParentOfTask(BaseObject selectedObject) throws Exception
 	{
-		if(getParentType() == selectedObject.getType())
+		if(super.canBeParentOfTask(selectedObject))
 			return true;
 		
 		if (Task.is(selectedObject))
