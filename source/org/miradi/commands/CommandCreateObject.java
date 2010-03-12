@@ -105,8 +105,7 @@ public class CommandCreateObject extends Command
 	
 	public static final String COMMAND_NAME = "CreateObject";
 
-	int type;
-	CreateObjectParameter parameter;
-	BaseId createdId;
-
+	private int type;
+	private CreateObjectParameter parameter;
+	private BaseId createdId;
 }
