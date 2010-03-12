@@ -204,6 +204,7 @@ public class Actions
 		registerAction(new ActionTreeCreateMethod(mainWindow));
 		registerAction(new ActionTreeCreateMethodIconOnly(mainWindow));
 		registerAction(new ActionTreeCreateTask(mainWindow));
+		registerAction(new ActionTreeCreateSubTask(mainWindow));
 		registerAction(new ActionTreeCreateTaskIconOnly(mainWindow));
 		registerAction(new ActionTreeCreateIndicator(mainWindow));
 		registerAction(new ActionTreeCreateObjective(mainWindow));

@@ -31,6 +31,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
@@ -47,8 +48,9 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 		
 		try
 		{
-			BaseObject selectedObject = getSingleSelectedObject();
-			createTask(getProject(), selectedObject, getPicker());
+			ORefList selecionHiearchy = getSelectionHierarchy();
+			BaseObject parent = extractParentFromSelectionHiearchy(selecionHiearchy);
+			createTask(getProject(), parent, getPicker());
 		}
 		catch(Exception e)
 		{
@@ -77,6 +79,19 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 		{
 			project.executeCommand(new CommandEndTransaction());
 		}
+	}
+	
+	@Override
+	protected boolean canBeParentOfTask(BaseObject selectedObject) throws Exception
+	{
+		if (!Task.is(selectedObject))
+			return false;
+		
+		Task task = (Task) selectedObject;
+		if (task.isActivity())
+			return true;
+		
+		return task.isMethod();
 	}
 	
 	//TODO this shoul be done more cleanly inside the Planning view Tree table

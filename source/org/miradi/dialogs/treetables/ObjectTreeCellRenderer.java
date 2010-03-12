@@ -51,6 +51,7 @@ import org.miradi.icons.ResultsChainIcon;
 import org.miradi.icons.ScopeBoxIcon;
 import org.miradi.icons.StrategyIcon;
 import org.miradi.icons.StressIcon;
+import org.miradi.icons.SubTaskIcon;
 import org.miradi.icons.TargetIcon;
 import org.miradi.icons.TaskIcon;
 import org.miradi.icons.TextBoxIcon;
@@ -122,6 +123,9 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 
 		taskRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(taskRenderer, new TaskIcon(), getPlainFont());
+		
+		subTaskRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(subTaskRenderer, new SubTaskIcon(), getPlainFont());
 		
 		conceptualModelRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(conceptualModelRenderer, new ConceptualModelIcon(), getBoldFont());
@@ -253,6 +257,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			return getRendererWithSetSharedTaskItalicFont(activityRenderer, task, proportionShares);
 		if(task.isMethod())
 			return getRendererWithSetSharedTaskItalicFont(methodRenderer, task, proportionShares);
+		if(task.isSubTask())
+			return subTaskRenderer;
 		
 		return taskRenderer;
 	}
@@ -296,6 +302,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	private VariableHeightTreeCellRenderer stressRenderer;
 	private VariableHeightTreeCellRenderer methodRenderer;
 	private VariableHeightTreeCellRenderer taskRenderer;
+	private VariableHeightTreeCellRenderer subTaskRenderer;
 	private VariableHeightTreeCellRenderer conceptualModelRenderer;
 	private VariableHeightTreeCellRenderer resultsChainRenderer;
 	private VariableHeightTreeCellRenderer defaultRenderer;
