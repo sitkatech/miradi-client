@@ -48,7 +48,7 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeTas
 		{
 			ORefList selecionHiearchy = getSelectionHierarchy();
 			BaseObject parent = extractParentFromSelectionHiearchy(selecionHiearchy);
-			createTask(parent, getPicker());
+			createTask(parent);
 		}
 		catch(Exception e)
 		{
@@ -57,7 +57,7 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeTas
 		}
 	}
 	
-	private void createTask(BaseObject parent, ObjectPicker picker) throws CommandFailedException, ParseException, Exception
+	private void createTask(BaseObject parent) throws CommandFailedException, ParseException, Exception
 	{
 		getProject().executeBeginTransaction();
 		try
@@ -70,7 +70,7 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeTas
 			CommandSetObjectData addChildCommand = CommandSetObjectData.createAppendIdCommand(parent, containerTag, newTaskRef.getObjectId());
 			getProject().executeCommand(addChildCommand);
 			
-			selectObjectAfterSwingClearsItDueToCreateTask(picker, newTaskRef);		
+			selectObjectAfterSwingClearsItDueToCreateTask(getPicker(), newTaskRef);		
 		}
 		finally
 		{
