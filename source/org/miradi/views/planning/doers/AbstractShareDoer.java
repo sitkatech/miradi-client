@@ -34,7 +34,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 
 
-abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
+abstract public class AbstractShareDoer extends AbstractTreeNodeTaskDoer
 {
 	@Override
 	public boolean isAvailable()
