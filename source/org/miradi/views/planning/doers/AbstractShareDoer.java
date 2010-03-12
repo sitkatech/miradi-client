@@ -42,9 +42,6 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeTaskDoer
 		if(!super.isAvailable())
 			return false;
 		
-		if (getSingleSelected(getParentType()) == null)
-			return false;
-		
 		return hasSharables();
 	}
 	
