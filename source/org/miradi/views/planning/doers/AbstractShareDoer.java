@@ -143,8 +143,6 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeTaskDoer
 	
 	abstract protected ObjectPoolTablePanel createShareableObjectPoolTablePanel(ORef parentOfSharedObjectRefs);
 	
-	abstract protected int getParentType();
-	
 	abstract protected String getParentTaskIdsTag();
 	
 	abstract protected String getTaskTypeName();

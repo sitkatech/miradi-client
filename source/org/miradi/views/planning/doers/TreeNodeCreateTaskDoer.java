@@ -36,4 +36,10 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 		
 		return task.isMethod();
 	}
+	
+	@Override
+	protected int getParentType()
+	{
+		return Task.getObjectType();
+	}
 }
