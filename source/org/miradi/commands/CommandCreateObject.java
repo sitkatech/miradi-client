@@ -67,11 +67,13 @@ public class CommandCreateObject extends Command
 		return createdId;
 	}
 	
+	@Override
 	public String getCommandName()
 	{
 		return COMMAND_NAME;
 	}
 
+	@Override
 	public void execute(Project target) throws CommandFailedException
 	{
 		try
@@ -85,11 +87,13 @@ public class CommandCreateObject extends Command
 		}
 	}
 	
+	@Override
 	public Command getReverseCommand() throws CommandFailedException
 	{
 		return new CommandDeleteObject(type, createdId);
 	}
 
+	@Override
 	public HashMap getLogData()
 	{
 		HashMap dataPairs = new HashMap();
