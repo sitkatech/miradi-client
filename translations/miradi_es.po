@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-10 20:24-0600\n"
+"POT-Creation-Date: 2010-03-12 09:27-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -620,15 +620,15 @@ msgstr ""
 msgid "Are you sure you want to delete this Objective?"
 msgstr "¿Está seguro de que desea eliminar esta meta? "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:398
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:395
 msgid "Unknown error displaying diagram"
 msgstr "Error desconocido al mostrar el diagrama"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:471
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:468
 msgid "Found Corrupted Data:"
 msgstr "Se encontraron datos dañados."
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:971
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:968
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Propiedades del factor"
@@ -4258,7 +4258,7 @@ msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr ""
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:279
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:372
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:370
 msgid "Menu|Group Box"
 msgstr "Cuadro de grupo"
 
@@ -4430,15 +4430,15 @@ msgstr "Editar"
 msgid "MenuBar|Actions"
 msgstr "Acciones"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:384
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:382
 msgid "MenuBar|View"
 msgstr "Ver"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:443
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:441
 msgid "MenuBar|Step-by-Step"
 msgstr "Paso a paso"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:461
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:459
 msgid "MenuBar|Help"
 msgstr "Ayuda"
 
@@ -5071,15 +5071,6 @@ msgstr "Agregar recurso"
 #: Miradi/source/org/miradi/actions/ActionResourceListAdd.java:39
 msgid "TT|Add"
 msgstr "Agregar"
-
-#: Miradi/source/org/miradi/actions/ActionCreateMethodSibling.java:41
-msgid "Action|Manage|Create Method Sibling"
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/ActionCreateMethodSibling.java:47
-#: Miradi/source/org/miradi/actions/ActionTreeCreateMethod.java:46
-msgid "TT|Create a Method for the selected Indicator"
-msgstr "Crear un método para el indicador seleccionado"
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpRefinePlans.java:35
 msgid "4C. Refine Work Plans on Ongoing Basis"
@@ -6134,6 +6125,10 @@ msgstr "Editar recursos estimados…"
 msgid "TT|Edit the list of estimated resources."
 msgstr "Editar la lista de recursos estimados"
 
+#: Miradi/source/org/miradi/actions/ActionTreeCreateMethod.java:46
+msgid "TT|Create a Method for the selected Indicator"
+msgstr "Crear un método para el indicador seleccionado"
+
 #: Miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:34
 msgid "Action|Import Accounting Codes"
 msgstr "Importar códigos contables"
@@ -6328,14 +6323,6 @@ msgstr "Desplazar elemento hacia abajo"
 #: Miradi/source/org/miradi/actions/ActionShowResultsChain.java:41
 msgid "Action|Show Results Chain"
 msgstr "Mostrar cadena de resultados"
-
-#: Miradi/source/org/miradi/actions/ActionCreateActivitySibling.java:41
-msgid "Action|Manage|Create Activity Sibling"
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/ActionCreateActivitySibling.java:47
-msgid "TT|Create an Activity sibling for the selected Strategy"
-msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionHideCellRatings.java:34
 msgid "Action|Hide Ratings in Cell"
