@@ -268,9 +268,9 @@ public class CommandSetObjectData extends Command
 	
 	public static final String COMMAND_NAME = "SetObjectData";
 
-	int type;
-	BaseId id;
-	String tag;
-	String newValue;
-	String oldValue;
+	private int type;
+	private BaseId id;
+	private String tag;
+	private String newValue;
+	private String oldValue;
 }
