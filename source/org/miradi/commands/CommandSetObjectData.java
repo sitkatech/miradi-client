@@ -185,11 +185,13 @@ public class CommandSetObjectData extends Command
 		oldValue = forcedOldValue;
 	}
 
+	@Override
 	public String getCommandName()
 	{
 		return COMMAND_NAME;
 	}
 	
+	@Override
 	public boolean isDoNothingCommand(Project project) throws CommandFailedException
 	{
 		try
@@ -204,11 +206,13 @@ public class CommandSetObjectData extends Command
 		}
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getCommandName() + ": " + getObjectType() + ", " + getObjectId() + ", [" + getFieldTag() + "] = [" + getDataValue() + "]";
 	}
 
+	@Override
 	public void execute(Project target) throws CommandFailedException
 	{
 		try
@@ -228,6 +232,7 @@ public class CommandSetObjectData extends Command
 		return target.getObjectData(type, id, tag);
 	}
 
+	@Override
 	public Command getReverseCommand() throws CommandFailedException
 	{
 		CommandSetObjectData commandSetObjectData = new CommandSetObjectData(type, id, tag, oldValue);
@@ -236,6 +241,7 @@ public class CommandSetObjectData extends Command
 		return commandSetObjectData;
 	}
 
+	@Override
 	public HashMap getLogData()
 	{
 		HashMap dataPairs = new HashMap();
