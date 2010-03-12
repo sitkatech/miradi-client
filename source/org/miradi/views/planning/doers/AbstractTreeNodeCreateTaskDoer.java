@@ -58,7 +58,7 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeTas
 		}
 	}
 	
-	public void createTask(Project project, BaseObject parent, ObjectPicker picker) throws CommandFailedException, ParseException, Exception
+	private void createTask(Project project, BaseObject parent, ObjectPicker picker) throws CommandFailedException, ParseException, Exception
 	{
 		project.executeBeginTransaction();
 		try
