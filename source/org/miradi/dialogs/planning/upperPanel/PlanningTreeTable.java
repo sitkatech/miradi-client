@@ -23,8 +23,6 @@ import java.awt.Rectangle;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.miradi.actions.ActionCreateActivitySibling;
-import org.miradi.actions.ActionCreateMethodSibling;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionTreeCreateActivity;
 import org.miradi.actions.ActionTreeCreateIndicator;
@@ -79,10 +77,8 @@ public class PlanningTreeTable extends TreeTableWithPreferredScrollableViewportS
 		actions.add(ActionTreeCreateObjective.class);
 		actions.add(ActionTreeCreateIndicator.class);
 		actions.add(ActionTreeCreateActivity.class);
-		actions.add(ActionCreateActivitySibling.class);
 		actions.add(ActionTreeShareActivity.class);
 		actions.add(ActionTreeCreateMethod.class);
-		actions.add(ActionCreateMethodSibling.class);
 		actions.add(ActionTreeShareMethod.class);
 		actions.add(ActionTreeCreateTask.class);			
 		actions.add(ActionDeletePlanningViewTreeNode.class);
