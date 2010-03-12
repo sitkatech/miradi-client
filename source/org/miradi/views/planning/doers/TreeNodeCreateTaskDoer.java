@@ -31,9 +31,10 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Indicator;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -48,15 +49,29 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 		
 		try
 		{
-			BaseObject parent = extractParentOfTask(getSelectedHierarchies());
-			if (parent != null)
-				createTask(getProject(), parent, getPicker());
+			BaseObject selectedObject = getSingleSelectedObject();
+			if (! isTask(selectedObject))
+				return;
+			
+			createTask(getProject(), selectedObject, getPicker());
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 			EAM.errorDialog("Error: " + e.getMessage());
 		}
+	}
+	
+	private boolean isTask(BaseObject selectedObject)
+	{
+		int selectedType = selectedObject.getType();
+		if (Indicator.is(selectedType))
+			return true;
+		
+		if (Strategy.is(selectedType))
+			return true;
+		
+		return Task.is(selectedType);
 	}
 	
 	public void createTask(Project project, BaseObject parent, ObjectPicker picker) throws CommandFailedException, ParseException, Exception
@@ -81,21 +96,6 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 		}
 	}
 	
-	protected BaseObject extractParentOfTask(ORefList[] selectedHiearchies) throws Exception
-	{
-		if (selectedHiearchies.length != 1)
-			return null;
-		
-		ORefList selectionHierarchy = selectedHiearchies[0];
-		ORef parentRef = selectionHierarchy.getRefForType(getParentType());
-		return BaseObject.find(getProject(), parentRef);
-	}
-	
-	protected int getParentType()
-	{
-		return Task.getObjectType();
-	}
-	
 	//TODO this shoul be done more cleanly inside the Planning view Tree table
 	private void selectObjectAfterSwingClearsItDueToCreateTask(ObjectPicker picker, ORef selectedRef)
 	{
@@ -115,7 +115,7 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 			picker.ensureObjectVisible(ref);
 		}
 		
-		ObjectPicker picker;
-		ORef ref;
+		private ObjectPicker picker;
+		private ORef ref;
 	}
 }
