@@ -50,7 +50,7 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 		try
 		{
 			BaseObject selectedObject = getSingleSelectedObject();
-			if (! isTask(selectedObject))
+			if (! userConfirmsCreateTask(selectedObject))
 				return;
 			
 			createTask(getProject(), selectedObject, getPicker());
@@ -62,16 +62,16 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 		}
 	}
 	
-	private boolean isTask(BaseObject selectedObject)
+	//TODO refactor this method
+	private boolean userConfirmsCreateTask(BaseObject selectedObject)
 	{
-		int selectedType = selectedObject.getType();
-		if (Indicator.is(selectedType))
+		if (Indicator.is(selectedObject.getType()))
 			return true;
 		
-		if (Strategy.is(selectedType))
+		if (Strategy.is(selectedObject.getType()))
 			return true;
 		
-		return Task.is(selectedType);
+		return Task.is(selectedObject.getType());
 	}
 	
 	public void createTask(Project project, BaseObject parent, ObjectPicker picker) throws CommandFailedException, ParseException, Exception
@@ -115,7 +115,7 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 			picker.ensureObjectVisible(ref);
 		}
 		
-		private ObjectPicker picker;
-		private ORef ref;
+		ObjectPicker picker;
+		ORef ref;
 	}
 }
