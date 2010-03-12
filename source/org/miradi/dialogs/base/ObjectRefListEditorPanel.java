@@ -40,7 +40,7 @@ public class ObjectRefListEditorPanel extends ObjectDataInputPanel
 	@Override
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
-		createOverridenObjectListField.reloadQuestion();
+		createOverridenObjectListField.refreshRefs();
 		
 		super.setObjectRefs(orefsToUse);
 	}
