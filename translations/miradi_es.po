@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-12 13:31-0600\n"
+"POT-Creation-Date: 2010-03-12 13:40-0600\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -4908,7 +4908,7 @@ msgstr ""
 msgid "Action|Manage|Create Task"
 msgstr "Crear tarea"
 
-#: Miradi/source/org/miradi/actions/ActionTreeCreateTask.java:45
+#: Miradi/source/org/miradi/actions/ActionTreeCreateTask.java:46
 msgid "TT|Create a Task or Subtask for the selected Item"
 msgstr "Crear una tarea o subtarea para el elemento seleccionado"
 
