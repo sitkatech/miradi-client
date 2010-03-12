@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning.doers;
 
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 
@@ -34,12 +36,15 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeDoe
 		
 		try
 		{
-			BaseObject selectedObject = getSingleSelectedObject();
-			if(selectedObject == null)
+			ORefList selecionHiearchy = getSelectionHierarchy();
+			BaseObject parent = extractParentFromSelectionHiearchy(selecionHiearchy);
+			if (parent == null)
 				return false;
-			if(!canBeParentOfTask(selectedObject))
+
+			if(!canBeParentOfTask(parent))
 				return false;
-			if(!childWouldBeVisible(Task.getChildTaskTypeCode(selectedObject.getType())))
+
+			if(!childWouldBeVisible(Task.getChildTaskTypeCode(parent.getType())))
 				return false;
 			
 			return true;
@@ -49,6 +54,27 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeDoe
 			EAM.logException(e);
 			return false;
 		}
+	}
+	
+	protected BaseObject extractParentFromSelectionHiearchy(ORefList selecionHiearchy)
+	{
+		for (int index = 0; index < selecionHiearchy.size(); ++index)
+		{
+			ORef objectRef = selecionHiearchy.get(index);
+			if (objectRef.isInvalid())
+				continue;
+			
+			BaseObject objectInHieararchy = BaseObject.find(getProject(), objectRef);
+			if (objectInHieararchy.getType() == getParentType())
+				return objectInHieararchy;
+		}
+		
+		return null;
+	}
+	
+	protected int getParentType()
+	{
+		return Task.getObjectType();
 	}
 	
 	protected boolean canBeParentOfTask(BaseObject selectedObject) throws Exception
