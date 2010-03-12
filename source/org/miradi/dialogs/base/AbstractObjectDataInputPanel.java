@@ -739,7 +739,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 		public ORefList[] getSelectedHierarchies()
 		{
-			return new ORefList[] {new ORefList(selectedRefs)};
+			return new ORefList[] {getSelectionHierarchy()};
 		}
 
 		public BaseObject[] getSelectedObjects()
