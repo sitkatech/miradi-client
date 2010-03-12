@@ -23,7 +23,7 @@ package org.miradi.views.planning.doers;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 
-public class TreeNodeCreateSubTaskDoer extends TreeNodeCreateTaskDoer
+public class TreeNodeCreateSubTaskDoer extends AbstractTreeNodeCreateTaskDoer
 {
 	@Override
 	protected boolean canBeParentOfTask(BaseObject selectedObject) throws Exception

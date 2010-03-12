@@ -22,7 +22,7 @@ package org.miradi.views.planning.doers;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 
-public class TreeNodeCreateMethodDoer extends TreeNodeCreateTaskDoer
+public class TreeNodeCreateMethodDoer extends AbstractTreeNodeCreateTaskDoer
 {
 	@Override
 	protected boolean canBeParentOfTask(BaseObject selectedObject) throws Exception
