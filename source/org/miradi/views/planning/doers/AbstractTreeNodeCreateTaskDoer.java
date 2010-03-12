@@ -27,7 +27,6 @@ import javax.swing.SwingUtilities;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -66,14 +65,13 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeTas
 		{
 			CommandCreateObject create = new CommandCreateObject(ObjectType.TASK);
 			project.executeCommand(create);
-			BaseId createdId = create.getCreatedId();
+			ORef newTaskRef = create.getObjectRef();
 
 			String containerTag = Task.getTaskIdsTag(parent);
-			CommandSetObjectData addChildCommand = CommandSetObjectData.createAppendIdCommand(parent, containerTag, createdId);
+			CommandSetObjectData addChildCommand = CommandSetObjectData.createAppendIdCommand(parent, containerTag, newTaskRef.getObjectId());
 			project.executeCommand(addChildCommand);
 			
-			ORef createdRef = new ORef(ObjectType.TASK, createdId);
-			selectObjectAfterSwingClearsItDueToCreateTask(picker, createdRef);		
+			selectObjectAfterSwingClearsItDueToCreateTask(picker, newTaskRef);		
 		}
 		finally
 		{
