@@ -27,7 +27,6 @@ import javax.swing.SwingUtilities;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -52,8 +51,7 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeTas
 		}
 		catch(Exception e)
 		{
-			EAM.logException(e);
-			EAM.errorDialog("Error: " + e.getMessage());
+			throw new CommandFailedException(e);
 		}
 	}
 	
