@@ -24,9 +24,7 @@ import java.text.ParseException;
 
 import javax.swing.SwingUtilities;
 
-import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
-import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
@@ -63,7 +61,7 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeTas
 	
 	public void createTask(Project project, BaseObject parent, ObjectPicker picker) throws CommandFailedException, ParseException, Exception
 	{
-		project.executeCommand(new CommandBeginTransaction());
+		project.executeBeginTransaction();
 		try
 		{
 			CommandCreateObject create = new CommandCreateObject(ObjectType.TASK);
@@ -79,7 +77,7 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeTas
 		}
 		finally
 		{
-			project.executeCommand(new CommandEndTransaction());
+			project.executeEndTransaction();
 		}
 	}
 	
