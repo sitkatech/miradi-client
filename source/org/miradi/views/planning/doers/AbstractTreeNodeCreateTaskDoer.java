@@ -33,7 +33,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
-import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
 
 
@@ -49,7 +48,7 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeTas
 		{
 			ORefList selecionHiearchy = getSelectionHierarchy();
 			BaseObject parent = extractParentFromSelectionHiearchy(selecionHiearchy);
-			createTask(getProject(), parent, getPicker());
+			createTask(parent, getPicker());
 		}
 		catch(Exception e)
 		{
@@ -58,24 +57,24 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeTas
 		}
 	}
 	
-	private void createTask(Project project, BaseObject parent, ObjectPicker picker) throws CommandFailedException, ParseException, Exception
+	private void createTask(BaseObject parent, ObjectPicker picker) throws CommandFailedException, ParseException, Exception
 	{
-		project.executeBeginTransaction();
+		getProject().executeBeginTransaction();
 		try
 		{
 			CommandCreateObject create = new CommandCreateObject(ObjectType.TASK);
-			project.executeCommand(create);
+			getProject().executeCommand(create);
 			
 			ORef newTaskRef = create.getObjectRef();
 			String containerTag = Task.getTaskIdsTag(parent);
 			CommandSetObjectData addChildCommand = CommandSetObjectData.createAppendIdCommand(parent, containerTag, newTaskRef.getObjectId());
-			project.executeCommand(addChildCommand);
+			getProject().executeCommand(addChildCommand);
 			
 			selectObjectAfterSwingClearsItDueToCreateTask(picker, newTaskRef);		
 		}
 		finally
 		{
-			project.executeEndTransaction();
+			getProject().executeEndTransaction();
 		}
 	}
 	
