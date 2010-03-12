@@ -57,7 +57,7 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeTas
 		}
 	}
 	
-	private void createTask(BaseObject parent) throws CommandFailedException, ParseException, Exception
+	private void createTask(BaseObject parentOfTask) throws CommandFailedException, ParseException, Exception
 	{
 		getProject().executeBeginTransaction();
 		try
@@ -66,8 +66,8 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeTas
 			getProject().executeCommand(create);
 			
 			ORef newTaskRef = create.getObjectRef();
-			String containerTag = Task.getTaskIdsTag(parent);
-			CommandSetObjectData addChildCommand = CommandSetObjectData.createAppendIdCommand(parent, containerTag, newTaskRef.getObjectId());
+			String containerTag = Task.getTaskIdsTag(parentOfTask);
+			CommandSetObjectData addChildCommand = CommandSetObjectData.createAppendIdCommand(parentOfTask, containerTag, newTaskRef.getObjectId());
 			getProject().executeCommand(addChildCommand);
 			
 			selectObjectAfterSwingClearsItDueToCreateTask(getPicker(), newTaskRef);		
