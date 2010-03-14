@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.actions;
 
-import org.miradi.icons.SubTaskIcon;
+import org.miradi.icons.TaskIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -28,7 +28,7 @@ public class ActionTreeCreateSubTask extends ObjectsAction
 {
 	public ActionTreeCreateSubTask(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), new SubTaskIcon());
+		super(mainWindowToUse, getLabel(), new TaskIcon());
 	}
 
 	private static String getLabel()
