@@ -308,11 +308,6 @@ public class Task extends Factor
 		return OBJECT_NAME;
 	}
 	
-	public boolean isSubTask()
-	{
-		return getParentTypeCode().equals(OBJECT_NAME);
-	}
-	
 	@Override
 	public ORefList getSubTaskRefs()
 	{
