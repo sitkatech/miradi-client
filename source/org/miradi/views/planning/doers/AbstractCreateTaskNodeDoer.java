@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.planning.doers;
 
-import javax.swing.SwingUtilities;
-
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
@@ -30,7 +28,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
-import org.miradi.views.umbrella.ObjectPicker;
+import org.miradi.views.diagram.CreateAnnotationDoer;
 
 
 abstract public class AbstractCreateTaskNodeDoer extends AbstractTreeNodeDoer
@@ -66,7 +64,7 @@ abstract public class AbstractCreateTaskNodeDoer extends AbstractTreeNodeDoer
 		try
 		{
 			ORef newTaskRef = createTask();
-			selectObjectAfterSwingClearsItDueToCreateTask(getPicker(), newTaskRef);
+			CreateAnnotationDoer.ensureObjectVisible(newTaskRef, getPicker());
 		}
 		catch (Exception e)
 		{
@@ -96,29 +94,6 @@ abstract public class AbstractCreateTaskNodeDoer extends AbstractTreeNodeDoer
 		{
 			getProject().executeEndTransaction();
 		}
-	}
-
-	//TODO this shoul be done more cleanly inside the Planning view Tree table
-	private void selectObjectAfterSwingClearsItDueToCreateTask(ObjectPicker picker, ORef selectedRef)
-	{
-		SwingUtilities.invokeLater(new Reselecter(picker, selectedRef));
-	}
-	
-	private class Reselecter implements Runnable
-	{
-		private Reselecter(ObjectPicker pickerToUse, ORef refToSelect)
-		{
-			picker = pickerToUse;
-			ref = refToSelect;
-		}
-		
-		public void run()
-		{
-			picker.ensureObjectVisible(ref);
-		}
-		
-		private ObjectPicker picker;
-		private ORef ref;
 	}
 	
 	abstract protected ORef getParentRef();
