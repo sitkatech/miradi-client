@@ -41,7 +41,7 @@ public class CreateActivityNodeDoer extends AbstractTreeNodeDoer
 	{
 		try
 		{
-			ORef actvityParentRef = getActvityParent();
+			ORef actvityParentRef = getActivityParent();
 			if (actvityParentRef.isInvalid())
 				return false;
 
@@ -76,7 +76,7 @@ public class CreateActivityNodeDoer extends AbstractTreeNodeDoer
 	
 	private void createTask() throws Exception
 	{
-		ORef parentRef = getActvityParent();
+		ORef parentRef = getActivityParent();
 		BaseObject parentOfTask = BaseObject.find(getProject(), parentRef);
 		
 		getProject().executeBeginTransaction();
@@ -98,7 +98,7 @@ public class CreateActivityNodeDoer extends AbstractTreeNodeDoer
 		}
 	}
 	
-	private ORef getActvityParent()
+	private ORef getActivityParent()
 	{
 		ORefList selectionHierarchy = getSelectionHierarchy();
 		if (selectionHierarchy.isEmpty())
