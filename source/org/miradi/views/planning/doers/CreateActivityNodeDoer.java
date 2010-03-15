@@ -112,16 +112,9 @@ public class CreateActivityNodeDoer extends AbstractTreeNodeDoer
 			return selectedRef;
 		
 		if (Task.isActivity(getProject(), selectedRef))
-			return extractActivityParent(selectionHierarchy);
+			return selectionHierarchy.getRefForType(Strategy.getObjectType());
 		
 		return ORef.INVALID;
-	}
-
-	private ORef extractActivityParent(ORefList selectionHierarchy)
-	{
-		selectionHierarchy.removeFirstElement();
-		
-		return selectionHierarchy.getFirstElement();
 	}
 
 	//TODO this shoul be done more cleanly inside the Planning view Tree table
