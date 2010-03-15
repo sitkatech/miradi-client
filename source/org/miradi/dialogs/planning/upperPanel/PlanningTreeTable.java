@@ -29,7 +29,7 @@ import org.miradi.actions.ActionTreeCreateIndicator;
 import org.miradi.actions.ActionTreeCreateMethod;
 import org.miradi.actions.ActionTreeCreateObjective;
 import org.miradi.actions.ActionCreateSameLevelTask;
-import org.miradi.actions.ActionTreeCreateTask;
+import org.miradi.actions.ActionCreateChildTask;
 import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
@@ -81,7 +81,7 @@ public class PlanningTreeTable extends TreeTableWithPreferredScrollableViewportS
 		actions.add(ActionTreeShareActivity.class);
 		actions.add(ActionTreeCreateMethod.class);
 		actions.add(ActionTreeShareMethod.class);
-		actions.add(ActionTreeCreateTask.class);			
+		actions.add(ActionCreateChildTask.class);			
 		actions.add(ActionCreateSameLevelTask.class);
 		actions.add(ActionDeletePlanningViewTreeNode.class);
 		return actions;
