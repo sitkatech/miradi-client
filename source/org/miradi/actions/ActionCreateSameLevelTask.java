@@ -24,9 +24,9 @@ import org.miradi.icons.TaskIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionTreeCreateSubTask extends ObjectsAction
+public class ActionCreateSameLevelTask extends ObjectsAction
 {
-	public ActionTreeCreateSubTask(MainWindow mainWindowToUse)
+	public ActionCreateSameLevelTask(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel(), new TaskIcon());
 	}
