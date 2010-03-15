@@ -163,21 +163,24 @@ public class Task extends Factor
 	//but if it is a user level task as opposed to a method or an activity
 	public boolean isTask()
 	{
-		ensureCachedTypeStringIsValid();
-		return (OBJECT_NAME.equals(cachedObjectTypeName));
+		return is(OBJECT_NAME);
 	}
 
 	@Override
 	public boolean isActivity()
 	{
-		ensureCachedTypeStringIsValid();
-		return (ACTIVITY_NAME.equals(cachedObjectTypeName));
+		return is(ACTIVITY_NAME);
 	}
 
 	public boolean isMethod()
 	{
+		return is(METHOD_NAME);
+	}
+	
+	private boolean is(final String taskObjectTypeName)
+	{
 		ensureCachedTypeStringIsValid();
-		return (METHOD_NAME.equals(cachedObjectTypeName));
+		return (taskObjectTypeName.equals(cachedObjectTypeName));
 	}
 	
 	@Override
