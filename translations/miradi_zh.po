@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-15 14:42-0500\n"
+"POT-Creation-Date: 2010-03-15 14:51-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5929,11 +5929,11 @@ msgid "TT|Choose which indicators are relevant to this goal"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionTreeCreateSubTask.java:36
-msgid "Action|Manage|Create Subtask"
+msgid "Action|Manage|Create Task at Same Level"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionTreeCreateSubTask.java:42
-msgid "TT|Create a Subtask"
+msgid "TT|Create a Create Task at Same Level"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionShowCurrentWizardFileName.java:34
