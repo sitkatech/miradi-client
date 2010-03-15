@@ -65,7 +65,8 @@ abstract public class AbstractCreateTaskNodeDoer extends AbstractTreeNodeDoer
 		
 		try
 		{
-			createTask();
+			ORef newTaskRef = createTask();
+			selectObjectAfterSwingClearsItDueToCreateTask(getPicker(), newTaskRef);
 		}
 		catch (Exception e)
 		{
@@ -73,7 +74,7 @@ abstract public class AbstractCreateTaskNodeDoer extends AbstractTreeNodeDoer
 		}
 	}
 	
-	private void createTask() throws Exception
+	private ORef createTask() throws Exception
 	{
 		ORef parentRef = getParentRef();
 		BaseObject parentOfTask = BaseObject.find(getProject(), parentRef);
@@ -89,7 +90,7 @@ abstract public class AbstractCreateTaskNodeDoer extends AbstractTreeNodeDoer
 			CommandSetObjectData appendCommand = CommandSetObjectData.createAppendIdCommand(parentOfTask, containerTag, newTaskRef.getObjectId());
 			getProject().executeCommand(appendCommand);
 			
-			selectObjectAfterSwingClearsItDueToCreateTask(getPicker(), newTaskRef);		
+			return newTaskRef;
 		}
 		finally
 		{
