@@ -41,9 +41,6 @@ public class CreateActivityNodeDoer extends AbstractTreeNodeDoer
 	{
 		try
 		{
-			if (getSelectionHierarchy().isEmpty())
-				return false;
-
 			ORef actvityParentRef = getActvityParent();
 			if (actvityParentRef.isInvalid())
 				return false;
@@ -104,6 +101,9 @@ public class CreateActivityNodeDoer extends AbstractTreeNodeDoer
 	private ORef getActvityParent()
 	{
 		ORefList selectionHierarchy = getSelectionHierarchy();
+		if (selectionHierarchy.isEmpty())
+			return ORef.INVALID;
+
 		ORef selectedRef = selectionHierarchy.getFirstElement();
 		if (selectedRef.isInvalid())
 			return selectedRef;
