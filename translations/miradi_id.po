@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-15 11:26-0500\n"
+"POT-Creation-Date: 2010-03-15 14:42-0500\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -4882,12 +4882,12 @@ msgid "TT|Create a new tag"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionTreeCreateTask.java:40
-msgid "Action|Manage|Create Task"
-msgstr "Buat Tugas "
+msgid "Action|Manage|Create Child Task"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionTreeCreateTask.java:46
-msgid "TT|Create a Task or Subtask for the selected Item"
-msgstr "Buat Tugas atau Subtugas untuk Butir terpilih "
+msgid "TT|Create a child Task for the selected item"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:34
 #: Miradi/source/org/miradi/actions/ActionManageFactorTags.java:35
@@ -30100,6 +30100,12 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Action|Manage|Create Task"
+#~ msgstr "Buat Tugas "
+
+#~ msgid "TT|Create a Task or Subtask for the selected Item"
+#~ msgstr "Buat Tugas atau Subtugas untuk Butir terpilih "
 
 #~ msgid "Edit..."
 #~ msgstr "Edit… "
