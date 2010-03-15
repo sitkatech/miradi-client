@@ -61,6 +61,7 @@ abstract public class AbstractCreateTaskNodeDoer extends AbstractTreeNodeDoer
 		if (!isAvailable())
 			return;
 		
+		getProject().executeBeginTransaction();
 		try
 		{
 			ORef newTaskRef = createTask();
@@ -70,30 +71,26 @@ abstract public class AbstractCreateTaskNodeDoer extends AbstractTreeNodeDoer
 		{
 			throw new CommandFailedException(e);
 		}
+		finally
+		{
+			getProject().executeEndTransaction();			
+		}
 	}
 	
 	private ORef createTask() throws Exception
 	{
 		ORef parentRef = getParentRef();
 		BaseObject parentOfTask = BaseObject.find(getProject(), parentRef);
-		
-		getProject().executeBeginTransaction();
-		try
-		{
-			CommandCreateObject create = new CommandCreateObject(ObjectType.TASK);
-			getProject().executeCommand(create);
-			
-			ORef newTaskRef = create.getObjectRef();
-			String containerTag = Task.getTaskIdsTag(parentOfTask);
-			CommandSetObjectData appendCommand = CommandSetObjectData.createAppendIdCommand(parentOfTask, containerTag, newTaskRef.getObjectId());
-			getProject().executeCommand(appendCommand);
-			
-			return newTaskRef;
-		}
-		finally
-		{
-			getProject().executeEndTransaction();
-		}
+
+		CommandCreateObject create = new CommandCreateObject(ObjectType.TASK);
+		getProject().executeCommand(create);
+
+		ORef newTaskRef = create.getObjectRef();
+		String containerTag = Task.getTaskIdsTag(parentOfTask);
+		CommandSetObjectData appendCommand = CommandSetObjectData.createAppendIdCommand(parentOfTask, containerTag, newTaskRef.getObjectId());
+		getProject().executeCommand(appendCommand);
+
+		return newTaskRef;
 	}
 	
 	abstract protected ORef getParentRef();
