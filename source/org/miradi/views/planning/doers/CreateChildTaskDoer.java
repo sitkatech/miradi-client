@@ -37,30 +37,9 @@ public class CreateChildTaskDoer extends AbstractCreateTaskNodeDoer
 		if (selectedRef.isInvalid())
 			return ORef.INVALID;
 		
-		if (!Task.is(selectedRef))
-			return ORef.INVALID;
-		
-		Task task = Task.find(getProject(), selectedRef);
-		if (isParentOfTask(task))
+		if (Task.is(selectedRef))
 			return selectedRef;
 		
-		selectionHierarchy.removeFirstElement();
-		ORef parentRefOfSelection = selectionHierarchy.getFirstElement();
-		if (!Task.is(parentRefOfSelection))
-			return ORef.INVALID;
-		
-		Task parentOfTask = Task.find(getProject(), parentRefOfSelection);
-		if (isParentOfTask(parentOfTask))
-			return parentRefOfSelection;
-		
 		return ORef.INVALID;
-	}
-
-	private boolean isParentOfTask(Task task)
-	{
-		if (task.isActivity() || task.isMethod())
-			return true;
-		
-		return false;
 	}
 }
