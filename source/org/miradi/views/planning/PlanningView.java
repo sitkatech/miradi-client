@@ -55,6 +55,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
 import org.miradi.views.planning.doers.CreateActivityNodeDoer;
+import org.miradi.views.planning.doers.CreateMethodNodeDoer;
 import org.miradi.views.planning.doers.CreatePlanningViewConfigurationMenuDoer;
 import org.miradi.views.planning.doers.CreatePlanningViewEmptyConfigurationDoer;
 import org.miradi.views.planning.doers.CreatePlanningViewPrefilledConfigurationDoer;
@@ -167,7 +168,7 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionTreeCreateMethodIconOnly.class, new TreeNodeCreateMethodDoer());
 		addDoerToMap(ActionTreeCreateTaskIconOnly.class, new TreeNodeCreateTaskDoer());
 		addDoerToMap(ActionTreeCreateActivity.class, new CreateActivityNodeDoer());
-		addDoerToMap(ActionTreeCreateMethod.class, new TreeNodeCreateMethodDoer());	
+		addDoerToMap(ActionTreeCreateMethod.class, new CreateMethodNodeDoer());	
 		addDoerToMap(ActionTreeCreateTask.class, new TreeNodeCreateTaskDoer());
 		addDoerToMap(ActionTreeCreateSubTask.class, new TreeNodeCreateSubTaskDoer());
 				
