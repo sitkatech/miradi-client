@@ -37,12 +37,12 @@ public class ActionTreeCreateTask extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Create Task");
+		return EAM.text("Action|Manage|Create Child Task");
 	}
 
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Create a Task or Subtask for the selected Item");
+		return EAM.text("TT|Create a child Task for the selected item");
 	}
 }
