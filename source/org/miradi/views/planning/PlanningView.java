@@ -42,7 +42,6 @@ import org.miradi.actions.ActionTreeCreateMethodIconOnly;
 import org.miradi.actions.ActionTreeCreateObjective;
 import org.miradi.actions.ActionTreeCreateSubTask;
 import org.miradi.actions.ActionTreeCreateTask;
-import org.miradi.actions.ActionTreeCreateTaskIconOnly;
 import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.actions.ActionTreeShareActivity;
@@ -69,7 +68,6 @@ import org.miradi.views.planning.doers.RenamePlanningViewConfigurationDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateIndicatorDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateMethodDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateObjectiveDoer;
-import org.miradi.views.planning.doers.TreeNodeCreateTaskDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 import org.miradi.views.umbrella.CreateResource;
 import org.miradi.views.umbrella.DeleteResourceDoer;
@@ -167,7 +165,6 @@ public class PlanningView extends TabbedView
 		
 		addDoerToMap(ActionDeletePlanningViewTreeNode.class, new TreeNodeDeleteDoer());
 		addDoerToMap(ActionTreeCreateMethodIconOnly.class, new TreeNodeCreateMethodDoer());
-		addDoerToMap(ActionTreeCreateTaskIconOnly.class, new TreeNodeCreateTaskDoer());
 		addDoerToMap(ActionTreeCreateActivity.class, new CreateActivityNodeDoer());
 		addDoerToMap(ActionTreeCreateMethod.class, new CreateMethodNodeDoer());	
 		addDoerToMap(ActionTreeCreateTask.class, new CreateChildTaskDoer());
