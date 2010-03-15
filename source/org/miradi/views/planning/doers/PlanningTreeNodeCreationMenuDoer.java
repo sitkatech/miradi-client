@@ -23,7 +23,7 @@ import org.miradi.actions.ActionTreeCreateActivity;
 import org.miradi.actions.ActionTreeCreateIndicator;
 import org.miradi.actions.ActionTreeCreateMethod;
 import org.miradi.actions.ActionTreeCreateObjective;
-import org.miradi.actions.ActionTreeCreateSubTask;
+import org.miradi.actions.ActionCreateSameLevelTask;
 import org.miradi.actions.ActionTreeCreateTask;
 import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
@@ -45,7 +45,7 @@ public class PlanningTreeNodeCreationMenuDoer extends AbstractPopDownMenuDoer
 				ActionTreeShareMethod.class,
 				null,
 				ActionTreeCreateTask.class,			
-				ActionTreeCreateSubTask.class,
+				ActionCreateSameLevelTask.class,
 			};
 	}
 }
