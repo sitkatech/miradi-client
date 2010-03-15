@@ -423,6 +423,15 @@ public class Task extends Factor
 		
 		throw new Exception("getTaskIdsTag called for non-task container type " + type);
 	}
+	
+	public static boolean isActivity(Project projectToUse, ORef ref)
+	{
+		if (!is(ref))
+			return false;
+		
+		Task task = Task.find(projectToUse, ref);
+		return task.isActivity();
+	}
 
 	public static boolean isActivity(BaseObject baseObject)
 	{

@@ -189,7 +189,7 @@ import org.miradi.views.diagram.doers.SelectChainDoer;
 import org.miradi.views.diagram.doers.ShowActityBubbleDoer;
 import org.miradi.views.diagram.doers.ShowStressBubbleDoer;
 import org.miradi.views.diagram.doers.ZoomToFitDoer;
-import org.miradi.views.planning.doers.TreeNodeCreateActivityDoer;
+import org.miradi.views.planning.doers.CreateActivityNodeDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateSubTaskDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
@@ -307,7 +307,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCreateActivity.class, new CreateActivityDoer());
 		addDoerToMap(ActionDeleteActivity.class, new DeleteActivityDoer());
 		addDoerToMap(ActionShareActivity.class, new TreeNodeShareActivityDoer());
-		addDoerToMap(ActionTreeCreateActivity.class, new TreeNodeCreateActivityDoer());
+		addDoerToMap(ActionTreeCreateActivity.class, new CreateActivityNodeDoer());
 		addDoerToMap(ActionDeletePlanningViewTreeNode.class, new TreeNodeDeleteDoer());
 		addDoerToMap(ActionTreeCreateSubTask.class, new TreeNodeCreateSubTaskDoer());
 
