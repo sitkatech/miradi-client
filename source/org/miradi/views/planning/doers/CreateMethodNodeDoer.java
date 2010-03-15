@@ -20,85 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.planning.doers;
 
-import javax.swing.SwingUtilities;
-
-import org.miradi.commands.CommandCreateObject;
-import org.miradi.commands.CommandSetObjectData;
-import org.miradi.exceptions.CommandFailedException;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Task;
-import org.miradi.views.umbrella.ObjectPicker;
 
-public class CreateMethodNodeDoer extends AbstractTreeNodeDoer
+public class CreateMethodNodeDoer extends AbstractCreateTaskNodeDoer
 {
 	@Override
-	public boolean isAvailable()
-	{
-		try
-		{
-			ORef actvityParentRef = getMethodParent();
-			if (actvityParentRef.isInvalid())
-				return false;
-
-			if(!childWouldBeVisible(Task.getChildTaskTypeCode(actvityParentRef.getObjectType())))
-				return false;
-
-			return true;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			EAM.unexpectedErrorDialog(e);
-			return false;
-		}
-	}
-	
-	@Override
-	public void doIt() throws CommandFailedException
-	{
-		if (!isAvailable())
-			return;
-		
-		try
-		{
-			createMethod();
-		}
-		catch (Exception e)
-		{
-			throw new CommandFailedException(e);
-		}
-	}
-	
-	private void createMethod() throws Exception
-	{
-		ORef parentRef = getMethodParent();
-		BaseObject parentOfTask = BaseObject.find(getProject(), parentRef);
-		
-		getProject().executeBeginTransaction();
-		try
-		{
-			CommandCreateObject create = new CommandCreateObject(ObjectType.TASK);
-			getProject().executeCommand(create);
-			
-			ORef newTaskRef = create.getObjectRef();
-			String containerTag = Task.getTaskIdsTag(parentOfTask);
-			CommandSetObjectData appendCommand = CommandSetObjectData.createAppendIdCommand(parentOfTask, containerTag, newTaskRef.getObjectId());
-			getProject().executeCommand(appendCommand);
-			
-			selectObjectAfterSwingClearsItDueToCreateTask(getPicker(), newTaskRef);		
-		}
-		finally
-		{
-			getProject().executeEndTransaction();
-		}
-	}
-	
-	private ORef getMethodParent()
+	protected ORef getParentRef()
 	{
 		ORefList selectionHierarchy = getSelectionHierarchy();
 		if (selectionHierarchy.isEmpty())
@@ -115,28 +45,5 @@ public class CreateMethodNodeDoer extends AbstractTreeNodeDoer
 			return selectionHierarchy.getRefForType(Indicator.getObjectType());
 		
 		return ORef.INVALID;
-	}
-
-	//TODO this shoul be done more cleanly inside the Planning view Tree table
-	private void selectObjectAfterSwingClearsItDueToCreateTask(ObjectPicker picker, ORef selectedRef)
-	{
-		SwingUtilities.invokeLater(new Reselecter(picker, selectedRef));
-	}
-	
-	private class Reselecter implements Runnable
-	{
-		private Reselecter(ObjectPicker pickerToUse, ORef refToSelect)
-		{
-			picker = pickerToUse;
-			ref = refToSelect;
-		}
-		
-		public void run()
-		{
-			picker.ensureObjectVisible(ref);
-		}
-		
-		private ObjectPicker picker;
-		private ORef ref;
 	}
 }
