@@ -106,7 +106,7 @@ public class CreateActivityNodeDoer extends AbstractTreeNodeDoer
 
 		ORef selectedRef = selectionHierarchy.getFirstElement();
 		if (selectedRef.isInvalid())
-			return selectedRef;
+			return ORef.INVALID;
 		
 		if (Strategy.is(selectedRef))
 			return selectedRef;
