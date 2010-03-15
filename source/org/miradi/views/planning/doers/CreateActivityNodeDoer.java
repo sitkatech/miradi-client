@@ -66,7 +66,7 @@ public class CreateActivityNodeDoer extends AbstractTreeNodeDoer
 		
 		try
 		{
-			createTask();
+			createActivity();
 		}
 		catch (Exception e)
 		{
@@ -74,7 +74,7 @@ public class CreateActivityNodeDoer extends AbstractTreeNodeDoer
 		}
 	}
 	
-	private void createTask() throws Exception
+	private void createActivity() throws Exception
 	{
 		ORef parentRef = getActivityParent();
 		BaseObject parentOfTask = BaseObject.find(getProject(), parentRef);
