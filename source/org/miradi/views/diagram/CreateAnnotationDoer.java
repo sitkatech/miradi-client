@@ -58,7 +58,7 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 			getProject().executeCommand(appendCommand);
 			doExtraWork(createRef);
 		
-			ensureObjectVisible(createRef, getPicker());
+			ensureObjectVisible(getPicker(), createRef);
 		}
 		catch(Exception e)
 		{
@@ -71,7 +71,7 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		}
 	}
 
-	public static void ensureObjectVisible(ORef createRef, ObjectPicker picker)
+	public static void ensureObjectVisible(ObjectPicker picker, ORef createRef)
 	{
 		if(picker != null)
 			picker.ensureObjectVisible(createRef);

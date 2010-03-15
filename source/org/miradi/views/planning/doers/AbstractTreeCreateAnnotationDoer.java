@@ -71,7 +71,7 @@ abstract public class AbstractTreeCreateAnnotationDoer extends AbstractTreeNodeD
 			CommandSetObjectData appendCommand = CreateAnnotationDoer.createAppendCommand(selectedObjectAsParent, createAnnotationCommand.getObjectRef(), getAnnotationTag());
 			getProject().executeCommand(appendCommand);
 			
-			CreateAnnotationDoer.ensureObjectVisible(createAnnotationCommand.getObjectRef(), getPicker());
+			CreateAnnotationDoer.ensureObjectVisible(getPicker(), createAnnotationCommand.getObjectRef());
 		}
 		catch (Exception e)
 		{

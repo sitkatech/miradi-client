@@ -64,7 +64,7 @@ abstract public class AbstractCreateTaskNodeDoer extends AbstractTreeNodeDoer
 		try
 		{
 			ORef newTaskRef = createTask();
-			CreateAnnotationDoer.ensureObjectVisible(newTaskRef, getPicker());
+			CreateAnnotationDoer.ensureObjectVisible(getPicker(), newTaskRef);
 		}
 		catch (Exception e)
 		{
