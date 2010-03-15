@@ -24,7 +24,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Task;
 
-public class CreateTaskNodeDoer extends AbstractCreateTaskNodeDoer
+public class CreateChildTaskDoer extends AbstractCreateTaskNodeDoer
 {
 	@Override
 	protected ORef getParentRef()
