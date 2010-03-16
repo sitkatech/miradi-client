@@ -23,4 +23,5 @@ package org.miradi.utils;
 public interface ColumnWidthProvider
 {
 	public int getDefaultColumnWidth(int tableColumn, String columnTag, int columnHeaderWidth);
+	public String getColumnGroupCode(int tableColumn);
 }
