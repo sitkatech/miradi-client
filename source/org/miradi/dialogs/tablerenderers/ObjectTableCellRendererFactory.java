@@ -35,6 +35,7 @@ abstract public class ObjectTableCellRendererFactory extends BasicTableCellRende
 		fontProvider = fontProviderToUse;
 	}
 
+	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		JComponent renderer = (JComponent)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
