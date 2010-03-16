@@ -32,6 +32,7 @@ public class ViabilityViewFontProvider extends FontForObjectTypeProvider
 		super(mainWindowToUse);
 	}
 
+	@Override
 	public Font getFont(BaseObject baseObject)
 	{
 		Font font = super.getFont(baseObject);
