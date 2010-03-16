@@ -34,11 +34,11 @@ import org.miradi.project.Project;
 
 public class ColumnWidthSaver extends MouseAdapter
 {
-	public ColumnWidthSaver(Project projectToUse, JTable tableToUse, ColumnWidthProvider columnWithProviderToUse, String uniqueTableIdentifierToUse)
+	public ColumnWidthSaver(Project projectToUse, JTable tableToUse, ColumnWidthProvider columnWidthProviderToUse, String uniqueTableIdentifierToUse)
 	{
 		project = projectToUse;
 		table = tableToUse;
-		columnWidthProvider = columnWithProviderToUse;
+		columnWidthProvider = columnWidthProviderToUse;
 		uniqueTableIdentifier = uniqueTableIdentifierToUse;
 	}
 	
