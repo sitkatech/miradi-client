@@ -130,7 +130,7 @@ public class ColumnWidthSaver extends MouseAdapter
 		if (columnName.equals(columnGroupCode))
 			return columnName;
 		
-		return columnName + columnGroupCode;
+		return columnName + "." + columnGroupCode;
 	}
 	
 	private String getUniqueTableIdentifier()
