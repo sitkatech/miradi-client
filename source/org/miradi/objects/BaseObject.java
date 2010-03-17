@@ -514,15 +514,15 @@ abstract public class BaseObject
 	
 	protected boolean hasSupersededResourceData(DateUnit dateUnit) throws Exception
 	{
-		return hasAssignmentSupersededData(dateUnit, TAG_RESOURCE_ASSIGNMENT_IDS);
+		return hasSupersededAssignmentData(dateUnit, TAG_RESOURCE_ASSIGNMENT_IDS);
 	}
 	
 	protected boolean hasSupersededExpenseData(DateUnit dateUnit) throws Exception
 	{	
-		return hasAssignmentSupersededData(dateUnit, TAG_EXPENSE_ASSIGNMENT_REFS);
+		return hasSupersededAssignmentData(dateUnit, TAG_EXPENSE_ASSIGNMENT_REFS);
 	}
 
-	private boolean hasAssignmentSupersededData(DateUnit dateUnit, String assignmentRefsTag) throws Exception
+	private boolean hasSupersededAssignmentData(DateUnit dateUnit, String assignmentRefsTag) throws Exception
 	{
 		TimePeriodCostsMap subTaskTimePeriodCostsMap = getTotalTimePeriodCostsMapForSubTasks(getSubTaskRefs(), assignmentRefsTag);
 		TimePeriodCosts timePeriodCosts = subTaskTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit);
