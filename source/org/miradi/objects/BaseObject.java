@@ -512,7 +512,7 @@ abstract public class BaseObject
 		return false;
 	}
 	
-	protected boolean isResourceAssignmentSuperseded(DateUnit dateUnit) throws Exception
+	protected boolean hasSupersededResourceData(DateUnit dateUnit) throws Exception
 	{
 		return hasAssignmentSupersededData(dateUnit, TAG_RESOURCE_ASSIGNMENT_IDS);
 	}
