@@ -50,8 +50,14 @@ abstract public class ObjectTableCellRendererFactory extends BasicTableCellRende
 		if(object == null)
 			return getFontProvider().getPlainFont();
 		
-		return getFontProvider().getFont(object);
+		Font font = getFontProvider().getFont(object);
+		return getAdjustedFont(font, row, column);
 	}
+
+	protected Font getAdjustedFont(Font font, int row, int column)
+	{
+		return font;
+	}		
 
 	protected BaseObject getBaseObjectForRow(int row, int column)
 	{
