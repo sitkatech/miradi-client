@@ -314,7 +314,7 @@ public class Task extends Factor
 	@Override
 	public ORefList getSubTaskRefs()
 	{
-		return getSubtaskRefs();
+		return new ORefList(Task.getObjectType(), getSubtaskIdList());
 	}
 	
 	@Override
