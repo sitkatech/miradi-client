@@ -36,11 +36,11 @@ import org.miradi.dialogs.planning.TableHeaderWithExpandCollapseIcons;
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
-import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.dialogs.tablerenderers.SupersededFontProvider;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objects.BaseObject;
@@ -60,7 +60,6 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
 		currencyRendererFactory = new BudgetCostTreeTableCellRendererFactory(this, fontProvider);
-		numericRendererFactory = new NumericTableCellRendererFactory(modelToUse, new DefaultFontProvider(getMainWindow()));
 		setTableHeader(new TableHeaderWithExpandCollapseIcons(this));
 
 		addRightClickHandler();
@@ -85,7 +84,8 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 	public TableCellRenderer getCellRenderer(int row, int tableColumn)
 	{
 		final int modelColumn = convertColumnIndexToModel(tableColumn);
-		BasicTableCellRendererEditorFactory renderer = numericRendererFactory;
+		DateUnit dateUnit = getWorkUnitsTableModel().getDateUnit(modelColumn);
+		BasicTableCellRendererEditorFactory renderer = new NumericTableCellRendererFactory(getWorkUnitsTableModel(), new SupersededFontProvider(getMainWindow(), dateUnit));
 		if(getWorkUnitsTableModel().isCurrencyColumn(modelColumn))
 			renderer = currencyRendererFactory;
 
@@ -225,6 +225,5 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		
 	public static final String UNIQUE_IDENTIFIER = "WorkUnitsTable";
 
-	private BasicTableCellRendererEditorFactory numericRendererFactory;
 	private BasicTableCellRendererEditorFactory currencyRendererFactory;
 }

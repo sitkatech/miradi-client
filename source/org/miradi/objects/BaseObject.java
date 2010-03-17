@@ -507,6 +507,24 @@ abstract public class BaseObject
 		id = newId;
 	}
 	
+	public boolean isSuperseded(DateUnit dateUnit) throws Exception
+	{	
+		ORefList subTaskRefs = getSubTaskRefs();
+		for (int index = 0; index < subTaskRefs.size(); ++index)
+		{
+			Task subTask = Task.find(getProject(), subTaskRefs.get(index));
+			TimePeriodCostsMap subTaskTimePeriodCostsMap = subTask.getTotalTimePeriodCostsMap();
+			TimePeriodCosts subTaskTimePeriodCosts = subTaskTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit);
+			if (subTaskTimePeriodCosts == null)
+				continue;
+			
+			OptionalDouble totalCost = subTaskTimePeriodCosts.calculateTotalCost(getProject());
+			if (totalCost.hasValue())
+				return true;
+		}
+		
+		return false;
+	}
 	
 	public OptionalDouble getTotalBudgetCost() throws Exception
 	{

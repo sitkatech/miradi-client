@@ -43,6 +43,32 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 	{
 		return Task.getObjectType();
 	}
+	
+	public void testIsSuperseded() throws Exception
+	{
+		Task activity = getProject().createActivity();
+		verifyIsSuperseded(getProject(), activity, Task.TAG_SUBTASK_IDS);
+	}
+
+	public static void verifyIsSuperseded(ProjectForTesting projectToUse, BaseObject parentOfTask, String tagSubtaskIdsTag) throws Exception
+	{
+		projectToUse.setProjectStartDate(2005);
+		projectToUse.setProjectEndDate(2006);
+		
+		assertFalse("parent without subtasks is superseded?", parentOfTask.isSuperseded(dateUnit2006));
+		projectToUse.addResourceAssignment(parentOfTask, 1.0, 2006, 2006);	
+		assertFalse("parent with assignment is superseded?", parentOfTask.isSuperseded(dateUnit2006));
+		
+		Task subTask = addSubtask(projectToUse, parentOfTask, tagSubtaskIdsTag);
+		projectToUse.addResourceAssignment(subTask, 10.0, 2005, 2005);
+		assertFalse("parent with assignment is superseded?", parentOfTask.isSuperseded(dateUnit2006));
+		
+		Task supersedingSubTask = addSubtask(projectToUse, parentOfTask, tagSubtaskIdsTag);
+		projectToUse.addResourceAssignment(supersedingSubTask, 10.0, 2006, 2006);
+		projectToUse.addResourceAssignment(supersedingSubTask, 10.0, 2005, 2005);
+		assertTrue("parent is not superseded by subtask for 2006?", parentOfTask.isSuperseded(dateUnit2006));
+		assertTrue("parent is not superseded by subtask for 2005?", parentOfTask.isSuperseded(dateUnit2005));
+	}
 
 	public void testGetTotalShareCount() throws Exception
 	{
@@ -172,10 +198,7 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		assertEquals("wrong combined date range?", "2003", activityWithoutUnits.getWhenRollup().toString());
 		
 		Task taskWithSubtasks = getProject().createActivity();
-		Task subTask = getProject().createTask();
-		IdList subTaskIds = new IdList(Task.getObjectType());
-		subTaskIds.add(subTask.getId());
-		taskWithSubtasks.setData(Task.TAG_SUBTASK_IDS, subTaskIds.toString());
+		Task subTask = addSubTask(taskWithSubtasks);
 		assertEquals("sub task combined date range was not null?", null, taskWithSubtasks.getWhenRollup());
 		
 		
@@ -188,10 +211,25 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		addAssignment(subTask, 0, 2011, 2013);
 		assertEquals("wrong sub task combined date range?", getProject().createDateRange(projectStartDate, projectEndDate), taskWithSubtasks.getWhenRollup());
 	}
-	
-	private void addAssignment(Task task, double units, int startYear, int endYear) throws Exception
+
+	private Task addSubTask(BaseObject parentOfTask) throws Exception
 	{
-		getProject().addResourceAssignment(task, units, startYear, endYear);
+		return addSubtask(getProject(), parentOfTask, Task.TAG_SUBTASK_IDS);
+	}
+
+	private static Task addSubtask(ProjectForTesting projectToUse, BaseObject parentOfTask, String tagSubtaskIds) throws Exception
+	{
+		Task subtask = projectToUse.createTask();
+		IdList subtaskIds = new IdList(Task.getObjectType());
+		subtaskIds.add(subtask.getId());
+		parentOfTask.setData(tagSubtaskIds, subtaskIds.toString());
+		
+		return subtask;
+	}
+	
+	private void addAssignment(BaseObject parentOfAssignment, double units, int startYear, int endYear) throws Exception
+	{
+		getProject().addResourceAssignment(parentOfAssignment, units, startYear, endYear);
 	}
 	
 	public DateUnitEffort createDateUnitEffort(int startYear, int endYear) throws Exception
@@ -221,10 +259,7 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		assertFalse("Empty task has work unit values?", task.calculateTimePeriodCosts(projectDateUnit).getTotalWorkUnits().hasValue());
 		addAssignment(task, 99, 2000, 2010);
 		
-		Task subTask = getProject().createTask();
-		IdList subTaskIds = new IdList(Task.getObjectType());
-		subTaskIds.add(subTask.getId());
-		task.setData(Task.TAG_SUBTASK_IDS, subTaskIds.toString());
+		Task subTask = addSubTask(task);
 		addAssignment(subTask, 5, 2010, 2010);
 		addAssignment(subTask, 15, 2005, 2005);
 
@@ -272,5 +307,8 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 	{
 		return getProject().createMultiCalendar(year);
 	}
+	
+	private final static DateUnit dateUnit2006 = new DateUnit("YEARFROM:2006-01");
+	private final static DateUnit dateUnit2005 = new DateUnit("YEARFROM:2005-01");
 }
 
