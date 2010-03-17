@@ -60,7 +60,7 @@ public class NumericTableCellRendererFactory extends SingleLineObjectTableCellRe
 	{
 		try
 		{
-			return baseObject.isSuperseded(dateUnit);
+			return baseObject.isAssignmentSuperseded(dateUnit);
 		}
 		catch(Exception e)
 		{

@@ -103,7 +103,7 @@ abstract public class Assignment extends BaseObject
 	}
 	
 	@Override
-	public boolean isSuperseded(DateUnit dateUnit) throws Exception
+	public boolean isAssignmentSuperseded(DateUnit dateUnit) throws Exception
 	{
 		ORefList referrerRefs = findObjectsThatReferToUs();
 		if (referrerRefs.isEmpty())
@@ -115,7 +115,7 @@ abstract public class Assignment extends BaseObject
 		ORef referrerRef = referrerRefs.getFirstElement();
 		BaseObject referrer = BaseObject.find(getProject(), referrerRef);
 		
-		return referrer.isSuperseded(dateUnit);
+		return referrer.isAssignmentSuperseded(dateUnit);
 	}
 	
 	protected TimePeriodCostsMap convertDateUnitEffortList() throws Exception

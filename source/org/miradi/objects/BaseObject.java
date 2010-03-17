@@ -507,7 +507,7 @@ abstract public class BaseObject
 		id = newId;
 	}
 	
-	public boolean isSuperseded(DateUnit dateUnit) throws Exception
+	public boolean isAssignmentSuperseded(DateUnit dateUnit) throws Exception
 	{	
 		ORefList subTaskRefs = getSubTaskRefs();
 		for (int index = 0; index < subTaskRefs.size(); ++index)

@@ -55,19 +55,19 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		projectToUse.setProjectStartDate(2005);
 		projectToUse.setProjectEndDate(2006);
 		
-		assertFalse("parent without subtasks is superseded?", parentOfTask.isSuperseded(dateUnit2006));
+		assertFalse("parent without subtasks is superseded?", parentOfTask.isAssignmentSuperseded(dateUnit2006));
 		projectToUse.addResourceAssignment(parentOfTask, 1.0, 2006, 2006);	
-		assertFalse("parent with assignment is superseded?", parentOfTask.isSuperseded(dateUnit2006));
+		assertFalse("parent with assignment is superseded?", parentOfTask.isAssignmentSuperseded(dateUnit2006));
 		
 		Task subTask = addSubtask(projectToUse, parentOfTask, tagSubtaskIdsTag);
 		projectToUse.addResourceAssignment(subTask, 10.0, 2005, 2005);
-		assertFalse("parent with assignment is superseded?", parentOfTask.isSuperseded(dateUnit2006));
+		assertFalse("parent with assignment is superseded?", parentOfTask.isAssignmentSuperseded(dateUnit2006));
 		
 		Task supersedingSubTask = addSubtask(projectToUse, parentOfTask, tagSubtaskIdsTag);
 		projectToUse.addResourceAssignment(supersedingSubTask, 10.0, 2006, 2006);
 		projectToUse.addResourceAssignment(supersedingSubTask, 10.0, 2005, 2005);
-		assertTrue("parent is not superseded by subtask for 2006?", parentOfTask.isSuperseded(dateUnit2006));
-		assertTrue("parent is not superseded by subtask for 2005?", parentOfTask.isSuperseded(dateUnit2005));
+		assertTrue("parent is not superseded by subtask for 2006?", parentOfTask.isAssignmentSuperseded(dateUnit2006));
+		assertTrue("parent is not superseded by subtask for 2005?", parentOfTask.isAssignmentSuperseded(dateUnit2005));
 	}
 
 	public void testGetTotalShareCount() throws Exception
