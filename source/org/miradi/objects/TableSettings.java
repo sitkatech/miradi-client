@@ -55,11 +55,13 @@ public class TableSettings extends BaseObject
 		super(objectManager, new BaseId(idAsInt), json);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -171,6 +173,7 @@ public class TableSettings extends BaseObject
 		return find(project.getObjectManager(), tableSettingsRef);
 	}
 	
+	@Override
 	void clear()
 	{
 		super.clear();
