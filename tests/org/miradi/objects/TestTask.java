@@ -44,13 +44,13 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		return Task.getObjectType();
 	}
 	
-	public void testIsSuperseded() throws Exception
+	public void testIsAssignmentSuperseded() throws Exception
 	{
 		Task activity = getProject().createActivity();
-		verifyIsSuperseded(getProject(), activity, Task.TAG_SUBTASK_IDS);
+		verifyIsAssignmentSuperseded(getProject(), activity, Task.TAG_SUBTASK_IDS);
 	}
 
-	public static void verifyIsSuperseded(ProjectForTesting projectToUse, BaseObject parentOfTask, String tagSubtaskIdsTag) throws Exception
+	public static void verifyIsAssignmentSuperseded(ProjectForTesting projectToUse, BaseObject parentOfTask, String tagSubtaskIdsTag) throws Exception
 	{
 		projectToUse.setProjectStartDate(2005);
 		projectToUse.setProjectEndDate(2006);
