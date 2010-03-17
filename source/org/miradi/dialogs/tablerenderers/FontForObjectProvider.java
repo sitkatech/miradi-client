@@ -24,9 +24,9 @@ import java.awt.Font;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 
-abstract public class FontForObjectTypeProvider
+abstract public class FontForObjectProvider
 {
-	public FontForObjectTypeProvider(MainWindow mainWindowToUse)
+	public FontForObjectProvider(MainWindow mainWindowToUse)
 	{
 		plainFont = mainWindowToUse.getUserDataPanelFont();
 	}

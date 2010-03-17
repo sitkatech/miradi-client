@@ -37,7 +37,7 @@ import org.miradi.questions.ChoiceItem;
 
 public class ThreatTargetTableCellRendererFactory extends ChoiceItemTableCellRendererFactory
 {
-	public ThreatTargetTableCellRendererFactory(AppPreferences preferences,	RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public ThreatTargetTableCellRendererFactory(AppPreferences preferences,	RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		

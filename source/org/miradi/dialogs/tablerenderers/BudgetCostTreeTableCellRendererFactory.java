@@ -29,7 +29,7 @@ import org.miradi.questions.ChoiceItem;
 
 public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRendererFactory
 {
-	public BudgetCostTreeTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public BudgetCostTreeTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 	}

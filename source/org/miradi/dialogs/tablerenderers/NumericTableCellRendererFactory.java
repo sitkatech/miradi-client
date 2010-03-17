@@ -34,7 +34,7 @@ import org.miradi.objects.BaseObject;
 
 public class NumericTableCellRendererFactory extends SingleLineObjectTableCellRendererFactory
 {
-	public NumericTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public NumericTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 	}

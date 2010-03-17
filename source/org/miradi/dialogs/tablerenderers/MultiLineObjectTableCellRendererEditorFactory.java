@@ -32,7 +32,7 @@ import org.miradi.utils.MiradiScrollPane;
 
 public class MultiLineObjectTableCellRendererEditorFactory extends ObjectTableCellRendererFactory
 {
-	public MultiLineObjectTableCellRendererEditorFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public MultiLineObjectTableCellRendererEditorFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		

@@ -30,7 +30,7 @@ import org.miradi.utils.Translation;
 
 public class CodeListRendererFactory extends MultiLineObjectTableCellRendererEditorFactory
 {
-	public CodeListRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public CodeListRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 	}

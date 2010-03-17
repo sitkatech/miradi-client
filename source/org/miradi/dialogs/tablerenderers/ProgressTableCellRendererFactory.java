@@ -31,7 +31,7 @@ import org.miradi.objects.Task;
 
 public class ProgressTableCellRendererFactory extends ObjectTableCellRendererFactory
 {
-	public ProgressTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public ProgressTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		
