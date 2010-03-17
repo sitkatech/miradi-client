@@ -127,6 +127,12 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 		TestIndicator.verifyGetWorkUnits(getProject(), Strategy.getObjectType(), Strategy.TAG_ACTIVITY_IDS);
 	}
 	
+	public void testIsSuperseded() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		TestTask.verifyIsSuperseded(getProject(), strategy, Strategy.TAG_ACTIVITY_IDS);
+	}
+	
 	static final BaseId criterionId1 = new BaseId(17);
 	static final BaseId criterionId2 = new BaseId(952);
 	static final BaseId criterionId3 = new BaseId(2833);
