@@ -47,7 +47,7 @@ public class NumericTableCellRendererFactory extends SingleLineObjectTableCellRe
 		return renderer;
 	}
 	
-	protected Font possiblyCreateStrikeThroughFont(Font font, DateUnit dateUnit, int row, int column)
+	protected Font getStrikeThroughFontIfSuperseded(Font font, DateUnit dateUnit, int row, int column)
 	{
 		BaseObject baseObject = getObjectProvider().getBaseObjectForRowColumn(row, column);
 		if (isSuperseded(baseObject, dateUnit))

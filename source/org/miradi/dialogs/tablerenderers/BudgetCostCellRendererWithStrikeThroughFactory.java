@@ -36,6 +36,6 @@ public class BudgetCostCellRendererWithStrikeThroughFactory extends BudgetCostTr
 	protected Font getAdjustedFont(Font font, int row, int column)
 	{
 		DateUnit dateUnit = ((AssignmentDateUnitsTableModel)getObjectProvider()).getDateUnit(column);
-		return possiblyCreateStrikeThroughFont(font, dateUnit, row, column);
+		return getStrikeThroughFontIfSuperseded(font, dateUnit, row, column);
 	}
 }
