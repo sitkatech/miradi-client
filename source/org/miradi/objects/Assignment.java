@@ -20,12 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.main.EAM;
 import org.miradi.objectdata.DateUnitEffortListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
@@ -105,17 +103,7 @@ abstract public class Assignment extends BaseObject
 	@Override
 	public boolean isAssignmentSuperseded(DateUnit dateUnit) throws Exception
 	{
-		ORefList referrerRefs = findObjectsThatReferToUs();
-		if (referrerRefs.isEmpty())
-		{
-			EAM.logError("Assignment has no referrer. ref: " + getRef());
-			return false;
-		}
-		
-		ORef referrerRef = referrerRefs.getFirstElement();
-		BaseObject referrer = BaseObject.find(getProject(), referrerRef);
-		
-		return referrer.isAssignmentSuperseded(dateUnit);
+		return getOwner().isAssignmentSuperseded(dateUnit);
 	}
 	
 	protected TimePeriodCostsMap convertDateUnitEffortList() throws Exception

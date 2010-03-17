@@ -240,7 +240,17 @@ public class Indicator extends BaseObject
 	
 	public static boolean canOwnThisType(int type)
 	{
-		return false;
+		switch(type)
+		{
+			case ObjectType.RESOURCE_ASSIGNMENT: 
+				return true;
+			
+			case ObjectType.EXPENSE_ASSIGNMENT:
+				return true;
+				
+			default:
+				return false;
+		}
 	}
 	
 	public String getFutureStatusRating()
