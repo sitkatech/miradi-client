@@ -289,11 +289,6 @@ public class Task extends Factor
 		return resourceRefs;
 	}
 	
-	public ORefList getSubtaskRefs()
-	{
-		return new ORefList(Task.getObjectType(), getSubtaskIdList());
-	}
-	
 	public String getParentTypeCode()
 	{
 		if(isActivity())
