@@ -20,10 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.tablerenderers;
 
 import java.awt.Component;
+import java.awt.Font;
+import java.awt.font.TextAttribute;
+import java.util.Map;
 
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objects.BaseObject;
 
 public class NumericTableCellRendererFactory extends SingleLineObjectTableCellRendererFactory
 {
@@ -38,5 +45,35 @@ public class NumericTableCellRendererFactory extends SingleLineObjectTableCellRe
 		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
 		renderer.setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);
 		return renderer;
+	}
+	
+	protected Font possiblyCreateStrikeThroughFont(Font font, DateUnit dateUnit, int row, int column)
+	{
+		BaseObject baseObject = getObjectProvider().getBaseObjectForRowColumn(row, column);
+		if (isSuperseded(baseObject, dateUnit))
+			font = createStrikethroughFont(font);
+		
+		return font;
+	}
+	
+	private boolean isSuperseded(BaseObject baseObject, DateUnit dateUnit)
+	{
+		try
+		{
+			return baseObject.isSuperseded(dateUnit);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
+	}
+
+	private Font createStrikethroughFont(Font defaultFontToUse)
+	{
+		Map attributesMap = defaultFontToUse.getAttributes();
+		attributesMap.put(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON);
+
+		return new Font(attributesMap);
 	}
 }
