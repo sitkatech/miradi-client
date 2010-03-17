@@ -59,7 +59,7 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 
 		// NOTE: IF is for Speed optimization
 		if(visibleRows.contains(Task.OBJECT_NAME))
-			addChildren(buildTaskNodes(task.getSubtaskRefs()));
+			addChildren(buildTaskNodes(task.getSubTaskRefs()));
 	}
 
 	private Vector<AbstractPlanningTreeNode> buildTaskNodes(ORefList subtaskRefs) throws Exception
