@@ -29,7 +29,7 @@ import org.miradi.dialogs.fieldComponents.PanelTextField;
 
 abstract public class AbstractNumericRestrictedTableCellRendererEditorFactory extends NumericTableCellRendererFactory
 {
-	public AbstractNumericRestrictedTableCellRendererEditorFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public AbstractNumericRestrictedTableCellRendererEditorFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		

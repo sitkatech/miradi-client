@@ -45,7 +45,7 @@ import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTable
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
-import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
+import org.miradi.dialogs.tablerenderers.FontForObjectProvider;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
@@ -70,7 +70,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		setTableHeader(new TableHeaderWithExpandCollapseIcons(this));
 
 		masterTree = masterTreeToUse;
-		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
+		FontForObjectProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
 		defaultRendererFactory = new MultiLineObjectTableCellRendererEditorFactory(this, fontProvider);
 		currencyRendererFactory = new BudgetCostTreeTableCellRendererFactory(this, fontProvider);
 		choiceRendererFactory = new ChoiceItemTableCellRendererFactory(this, fontProvider);

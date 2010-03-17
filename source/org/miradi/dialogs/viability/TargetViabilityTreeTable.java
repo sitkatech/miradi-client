@@ -39,7 +39,7 @@ import org.miradi.actions.ActionExpandToMeasurement;
 import org.miradi.actions.ActionExpandToMenu;
 import org.miradi.actions.ActionExpandToTarget;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
-import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
+import org.miradi.dialogs.tablerenderers.FontForObjectProvider;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.tablerenderers.ViabilityViewFontProvider;
@@ -63,7 +63,7 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 	public TargetViabilityTreeTable(MainWindow mainWindowToUse, GenericViabilityTreeModel targetViabilityModelToUse) throws Exception
 	{
 		super(mainWindowToUse, targetViabilityModelToUse);
-		FontForObjectTypeProvider fontProvider = new ViabilityViewFontProvider(getMainWindow());
+		FontForObjectProvider fontProvider = new ViabilityViewFontProvider(getMainWindow());
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);

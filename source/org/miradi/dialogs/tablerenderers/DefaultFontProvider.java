@@ -21,7 +21,7 @@ package org.miradi.dialogs.tablerenderers;
 
 import org.miradi.main.MainWindow;
 
-public class DefaultFontProvider extends FontForObjectTypeProvider
+public class DefaultFontProvider extends FontForObjectProvider
 {
 	public DefaultFontProvider(MainWindow mainWindowToUse)
 	{

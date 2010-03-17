@@ -29,7 +29,7 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 
-public class PlanningViewFontProvider extends FontForObjectTypeProvider
+public class PlanningViewFontProvider extends FontForObjectProvider
 {
 	public PlanningViewFontProvider(MainWindow mainWindowToUse)
 	{

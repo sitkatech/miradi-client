@@ -25,7 +25,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Target;
 
-public class ViabilityViewFontProvider extends FontForObjectTypeProvider
+public class ViabilityViewFontProvider extends FontForObjectProvider
 {
 	public ViabilityViewFontProvider(MainWindow mainWindowToUse)
 	{

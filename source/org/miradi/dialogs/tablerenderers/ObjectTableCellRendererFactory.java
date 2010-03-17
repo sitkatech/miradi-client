@@ -29,7 +29,7 @@ import org.miradi.objects.BaseObject;
 
 abstract public class ObjectTableCellRendererFactory extends BasicTableCellRendererEditorFactory  implements TableCellPreferredHeightProvider
 {
-	public ObjectTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public ObjectTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{
 		objectProvider = providerToUse;
 		fontProvider = fontProviderToUse;
@@ -69,11 +69,11 @@ abstract public class ObjectTableCellRendererFactory extends BasicTableCellRende
 		return objectProvider;
 	}
 	
-	private FontForObjectTypeProvider getFontProvider()
+	private FontForObjectProvider getFontProvider()
 	{
 		return fontProvider;
 	}
 	
 	private RowColumnBaseObjectProvider objectProvider;
-	private FontForObjectTypeProvider fontProvider;
+	private FontForObjectProvider fontProvider;
 }

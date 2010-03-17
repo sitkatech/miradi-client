@@ -27,7 +27,7 @@ import org.miradi.objecthelpers.DateUnit;
 
 public class BudgetCostCellRendererWithStrikeThroughFactory extends BudgetCostTreeTableCellRendererFactory
 {
-	public BudgetCostCellRendererWithStrikeThroughFactory(AssignmentDateUnitsTableModel providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public BudgetCostCellRendererWithStrikeThroughFactory(AssignmentDateUnitsTableModel providerToUse, FontForObjectProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 	}

@@ -27,7 +27,7 @@ import org.miradi.objecthelpers.DateUnit;
 
 public class NumericTableCellRendererWithStrikeThroughFactory extends NumericTableCellRendererFactory
 {
-	public NumericTableCellRendererWithStrikeThroughFactory(AssignmentDateUnitsTableModel providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public NumericTableCellRendererWithStrikeThroughFactory(AssignmentDateUnitsTableModel providerToUse, FontForObjectProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 	}

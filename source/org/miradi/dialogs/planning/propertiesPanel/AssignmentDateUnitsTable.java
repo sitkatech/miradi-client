@@ -37,7 +37,7 @@ import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.BudgetCostCellRendererWithStrikeThroughFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
-import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
+import org.miradi.dialogs.tablerenderers.FontForObjectProvider;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRendererWithStrikeThroughFactory;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
@@ -58,7 +58,7 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		setAllColumnsToUseDoubleClickEditors();
 		setColumnSelectionAllowed(true);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
+		FontForObjectProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
 		currencyRendererFactory = new BudgetCostCellRendererWithStrikeThroughFactory(getWorkUnitsTableModel(), fontProvider);
 		numericRendererFactory = new NumericTableCellRendererWithStrikeThroughFactory(getWorkUnitsTableModel(), new DefaultFontProvider(getMainWindow()));
 		setTableHeader(new TableHeaderWithExpandCollapseIcons(this));

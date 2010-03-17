@@ -31,12 +31,12 @@ import org.miradi.questions.ChoiceItem;
 
 public class ChoiceItemTableCellRendererFactory extends SingleLineObjectTableCellRendererFactory
 {
-	public ChoiceItemTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public ChoiceItemTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{
 		this(providerToUse, fontProviderToUse, Color.WHITE);
 	}
 	
-	public ChoiceItemTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse, Color defaultBackgroundColorToUse)
+	public ChoiceItemTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse, Color defaultBackgroundColorToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		icon = new ColoredIcon();

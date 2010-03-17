@@ -29,7 +29,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 public class SingleLineObjectTableCellRendererFactory extends ObjectTableCellRendererFactory
 {
-	public SingleLineObjectTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public SingleLineObjectTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		
