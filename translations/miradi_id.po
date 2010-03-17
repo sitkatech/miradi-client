@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-17 14:26-0500\n"
+"POT-Creation-Date: 2010-03-17 16:05-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -35,7 +35,7 @@ msgstr " (Kode Akuntansi Tak Terdefinisi) "
 msgid "Label|(Undefined Funding Source)"
 msgstr "(Sumber Dana Tidak Jelas) "
 
-#: Miradi/source/org/miradi/objects/Task.java:351
+#: Miradi/source/org/miradi/objects/Task.java:348
 msgid "Task does not have a parent"
 msgstr ""
 
