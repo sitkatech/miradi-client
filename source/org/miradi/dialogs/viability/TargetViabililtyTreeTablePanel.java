@@ -137,10 +137,10 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButton
 			ActionCreateKeyEcologicalAttribute.class, 
 			ActionCreateKeyEcologicalAttributeIndicator.class,
 			ActionCreateKeyEcologicalAttributeMeasurement.class,
+			ActionExpandToMenu.class,
 			
 			ActionDeleteKeyEcologicalAttribute.class,
 			ActionDeleteKeyEcologicalAttributeIndicator.class,
 			ActionDeleteKeyEcologicalAttributeMeasurement.class,
-			ActionExpandToMenu.class,
 			};
 }
