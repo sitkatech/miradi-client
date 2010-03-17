@@ -81,6 +81,7 @@ abstract public class Factor extends BaseObject
 		}
 	}
 	
+	@Override
 	public ORefList getOwnedObjects(int objectType)
 	{
 		ORefList list = super.getOwnedObjects(objectType);
@@ -161,6 +162,7 @@ abstract public class Factor extends BaseObject
 		return objectives.getIdList();
 	}
 
+	@Override
 	public String getShortLabel()
 	{
 		return shortLabel.toString();
@@ -325,6 +327,7 @@ abstract public class Factor extends BaseObject
 		return referrers.size() > 0;
 	}
 	
+	@Override
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject superJson = super.toJson();
@@ -333,6 +336,7 @@ abstract public class Factor extends BaseObject
 		return superJson;
 	}
 
+	@Override
 	public String toString()
 	{
 		return getLabel();
@@ -382,6 +386,7 @@ abstract public class Factor extends BaseObject
 		throw new RuntimeException("Tried to create unknown node type: " + objectType);
 	}
 	
+	@Override
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_INDICATOR_IDS))
@@ -393,6 +398,7 @@ abstract public class Factor extends BaseObject
 		return super.getAnnotationType(tag);
 	}
 
+	@Override
 	public boolean isIdListTag(String tag)
 	{
 		if (tag.equals(TAG_INDICATOR_IDS))
@@ -404,6 +410,7 @@ abstract public class Factor extends BaseObject
 		return super.isIdListTag(tag);
 	}
 
+	@Override
 	public String getPseudoData(String fieldTag)
 	{
 		try
@@ -493,6 +500,7 @@ abstract public class Factor extends BaseObject
 		return findFactor(project.getObjectManager(), factorRef);
 	}
 	
+	@Override
 	void clear()
 	{
 		super.clear();
