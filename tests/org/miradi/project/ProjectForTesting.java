@@ -1442,13 +1442,18 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void addExpenseWithValue(BaseObject baseObject) throws Exception
 	{
-		DateUnitEffort dateUnitEffort = new DateUnitEffort(new DateUnit(), 12.0);
+		addExpenseAssignment(baseObject, new DateUnit(), 12.0);
+	}
+
+	public ExpenseAssignment addExpenseAssignment(BaseObject baseObject,	DateUnit dateUnitToUse, double unitQuantityToUse) throws Exception
+	{
+		DateUnitEffort dateUnitEffort = new DateUnitEffort(dateUnitToUse, unitQuantityToUse);
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(dateUnitEffort);
-		addExpenseAssignment(baseObject, dateUnitEffortList);
+		return addExpenseAssignment(baseObject, dateUnitEffortList);
 	}
 	
-	public void addExpenseAssignment(BaseObject baseObject, DateUnitEffortList dateUnitEffortList) throws Exception
+	public ExpenseAssignment addExpenseAssignment(BaseObject baseObject, DateUnitEffortList dateUnitEffortList) throws Exception
 	{
 		ORef expenseRef = createObject(ExpenseAssignment.getObjectType());
 		ExpenseAssignment assignment = ExpenseAssignment.find(this, expenseRef);
@@ -1457,6 +1462,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORefList currentAssignmentRefList = baseObject.getExpenseAssignmentRefs();
 		currentAssignmentRefList.add(assignment.getRef());
 		baseObject.setData(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, currentAssignmentRefList.toString());
+		
+		return assignment;
 	}
 	
 	public ResourceAssignment addResourceAssignment(BaseObject baseObject, double units, int startYear, int endYear) throws Exception

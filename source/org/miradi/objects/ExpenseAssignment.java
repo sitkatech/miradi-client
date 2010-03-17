@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ObjectData;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TimePeriodCosts;
@@ -72,6 +73,12 @@ public class ExpenseAssignment extends Assignment
 	public TimePeriodCostsMap getTotalTimePeriodCostsMap() throws Exception
 	{
 		return getTimePeriodCostsMap(TAG_EXPENSE_ASSIGNMENT_REFS);
+	}
+	
+	@Override
+	public boolean isAssignmentSuperseded(DateUnit dateUnit) throws Exception
+	{
+		return getOwner().isExpenseAssignmentSuperseded(dateUnit);
 	}
 	
 	@Override

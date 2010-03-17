@@ -508,22 +508,29 @@ abstract public class BaseObject
 	}
 	
 	public boolean isAssignmentSuperseded(DateUnit dateUnit) throws Exception
-	{	
-		ORefList subTaskRefs = getSubTaskRefs();
-		for (int index = 0; index < subTaskRefs.size(); ++index)
-		{
-			Task subTask = Task.find(getProject(), subTaskRefs.get(index));
-			TimePeriodCostsMap subTaskTimePeriodCostsMap = subTask.getTotalTimePeriodCostsMap();
-			TimePeriodCosts subTaskTimePeriodCosts = subTaskTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit);
-			if (subTaskTimePeriodCosts == null)
-				continue;
-			
-			OptionalDouble totalCost = subTaskTimePeriodCosts.calculateTotalCost(getProject());
-			if (totalCost.hasValue())
-				return true;
-		}
-		
+	{		
 		return false;
+	}
+	
+	protected boolean isResourceAssignmentSuperseded(DateUnit dateUnit) throws Exception
+	{
+		return isAssignmentSuperseded(dateUnit, TAG_RESOURCE_ASSIGNMENT_IDS);
+	}
+	
+	protected boolean isExpenseAssignmentSuperseded(DateUnit dateUnit) throws Exception
+	{	
+		return isAssignmentSuperseded(dateUnit, TAG_EXPENSE_ASSIGNMENT_REFS);
+	}
+
+	private boolean isAssignmentSuperseded(DateUnit dateUnit, String assignmentRefsTag) throws Exception
+	{
+		TimePeriodCostsMap subTaskTimePeriodCostsMap = getTotalTimePeriodCostsMapForSubTasks(getSubTaskRefs(), assignmentRefsTag);
+		TimePeriodCosts timePeriodCosts = subTaskTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit);
+		if (timePeriodCosts == null)
+			return false;
+
+		OptionalDouble totalCost = timePeriodCosts.calculateTotalCost(getProject());
+		return totalCost.hasValue();
 	}
 	
 	public OptionalDouble getTotalBudgetCost() throws Exception

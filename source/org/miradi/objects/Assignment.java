@@ -100,12 +100,6 @@ abstract public class Assignment extends BaseObject
 		addField(TAG_DATEUNIT_EFFORTS, detailListData);
 	}
 	
-	@Override
-	public boolean isAssignmentSuperseded(DateUnit dateUnit) throws Exception
-	{
-		return getOwner().isAssignmentSuperseded(dateUnit);
-	}
-	
 	protected TimePeriodCostsMap convertDateUnitEffortList() throws Exception
 	{
 		DateUnitEffortList duel = getDateUnitEffortList();
