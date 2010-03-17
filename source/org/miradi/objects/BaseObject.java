@@ -517,7 +517,7 @@ abstract public class BaseObject
 		return hasAssignmentSupersededData(dateUnit, TAG_RESOURCE_ASSIGNMENT_IDS);
 	}
 	
-	protected boolean isExpenseAssignmentSuperseded(DateUnit dateUnit) throws Exception
+	protected boolean hasSupersededExpenseData(DateUnit dateUnit) throws Exception
 	{	
 		return hasAssignmentSupersededData(dateUnit, TAG_EXPENSE_ASSIGNMENT_REFS);
 	}
