@@ -133,9 +133,6 @@ public class Task extends Factor
 	
 	public static boolean canOwnThisType(int type)
 	{
-		if (Factor.canOwnThisType(type))
-			return true;
-		
 		switch(type)
 		{
 			case ObjectType.TASK: 
