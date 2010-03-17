@@ -36,7 +36,7 @@ public class TestPlanningTreeActivityNode extends TestPlanningTreeNode
 	
 	public void testPlanningTreeActivityNode() throws Exception
 	{
-		ORefList taskRefs = getTask().getSubtaskRefs();
+		ORefList taskRefs = getTask().getSubTaskRefs();
 		assertEquals("wrong subtask count?", 1, taskRefs.size());
 		assertEquals("wrong type returned?", Task.getObjectType(), taskRefs.get(0).getObjectType());
 	}
