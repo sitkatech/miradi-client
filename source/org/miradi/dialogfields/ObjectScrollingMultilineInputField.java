@@ -104,7 +104,7 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 		public void windowDeactivated(WindowEvent e)
 		{
 			setText(popupTextField.getText());
-			saveIfNeeded();
+			forceSave();
 		}
 	}
 
