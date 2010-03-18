@@ -110,7 +110,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		BaseId indicatorId = project.addItemToFactorList(strategyRef, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
 		BaseId objectiveId = project.addItemToFactorList(strategyRef, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
 		
-		BaseId taskId = project.createTaskAndReturnId();
+		BaseId taskId = project.createTask(Strategy.find(project, strategyRef)).getId();
 		IdList taskList = new IdList(Task.getObjectType(), new BaseId[] {taskId});
 		project.setObjectData(strategyRef, Strategy.TAG_ACTIVITY_IDS, taskList.toString());
 		
@@ -137,25 +137,18 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	
 	public void testTaskOwn() throws Exception
 	{
-		BaseId factorId = project.createFactorAndReturnId(ObjectType.STRATEGY);
-		BaseId taskId = project.createTaskAndReturnId();
-		BaseId subTaskId = project.createTaskAndReturnId();
+		Strategy strategy = project.createStrategy();
+		Task activity = project.createTask(strategy);
+		Task task = project.createTask(activity);
 		ORef assignmentRef = project.createResourceAssignment().getRef();
 		
-		IdList taskList = new IdList(Task.getObjectType(), new BaseId[] {taskId});
-		project.setObjectData(ObjectType.STRATEGY, factorId, Strategy.TAG_ACTIVITY_IDS, taskList.toString());
-		
-		IdList subTaskList = new IdList(Task.getObjectType(), new BaseId[] {subTaskId});
-		project.setObjectData(ObjectType.TASK, taskId, Task.TAG_SUBTASK_IDS, subTaskList.toString());
-
 		IdList assignmentList = new IdList(ResourceAssignment.getObjectType(), new BaseId[] {assignmentRef.getObjectId()});
-		project.setObjectData(ObjectType.TASK, taskId, Task.TAG_RESOURCE_ASSIGNMENT_IDS, assignmentList.toString());
+		project.setObjectData(ObjectType.TASK, task.getId(), Task.TAG_RESOURCE_ASSIGNMENT_IDS, assignmentList.toString());
 
 		//----------- start test -----------
 		
-	   	ORef owner = new ORef(ObjectType.TASK, taskId);
-		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.TASK, subTaskId));
-		verifyOwnershipFunctions(1,owner, assignmentRef);
+		verifyOwnershipFunctions(1,activity.getRef(), task.getRef());
+		verifyOwnershipFunctions(1,task.getRef(), assignmentRef);
 	}
 	
 	

@@ -87,7 +87,7 @@ public class TestBaseObject extends TestCaseWithProject
 		getProject().setProjectStartDate(2006);
 		getProject().setProjectEndDate(2007);
 		
-		Indicator indicator = getProject().createIndicator();
+		Indicator indicator = getProject().createIndicatorWithCauseParent();
 		assertFalse("indicator should not have a total cost?", indicator.getTotalBudgetCost().hasValue());
 		
 		getProject().addResourceAssignment(indicator, 20.0, 2006, 2006);

@@ -54,12 +54,9 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 
 	private void verifyWorkUnitsRollup() throws Exception
 	{
-		Indicator indicator = getProject().createIndicator();
-		Task methodWith2ResourceAssignments = getProject().createTask();
+		Indicator indicator = getProject().createIndicatorWithCauseParent();
+		Task methodWith2ResourceAssignments = getProject().createTask(indicator);
 				
-		ORefList methodRefs = new ORefList(methodWith2ResourceAssignments);
-		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_METHOD_IDS, methodRefs.convertToIdList(Task.getObjectType()).toString());
-		
 		getProject().addResourceAssignment(methodWith2ResourceAssignments, 13.0, year2009Q1);
 		getProject().addResourceAssignment(methodWith2ResourceAssignments, 2.0, year2009);
 		

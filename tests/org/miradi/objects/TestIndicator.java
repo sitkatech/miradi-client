@@ -116,13 +116,10 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 	{
 		project.setProjectDates(1999, 2012);
 
-		Task task = project.createTask();
+		BaseObject baseObject = project.createBaseObject(objectType);
+		Task task = project.createTask(baseObject);
 		project.addResourceAssignment(task, 14, 2007, 2007);
 		project.addResourceAssignment(task, 15, 2006, 2006);
-		BaseObject baseObject = project.createBaseObject(objectType);
-		IdList taskIds = new IdList(Task.getObjectType());
-		taskIds.addRef(task.getRef());
-		project.setObjectData(baseObject.getRef(), taskTag, taskIds.toString());
 		
 		IdList taskIdsFromObject = new IdList(Task.getObjectType(), baseObject.getData(taskTag));
 		assertEquals("wrong method count?", 1, taskIdsFromObject.size());
@@ -137,7 +134,7 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 	
 	public void testIsAssignmentDataSuperseded() throws Exception
 	{
-		Indicator indicator = getProject().createIndicator();
+		Indicator indicator = getProject().createIndicatorWithCauseParent();
 		TestTask.verifyIsAssignmentDataSuperseded(getProject(), indicator, Indicator.TAG_METHOD_IDS);
 	}
 

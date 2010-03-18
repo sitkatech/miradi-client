@@ -32,6 +32,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 
@@ -48,8 +49,9 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 		DiagramObject diagramObject = getProject().getTestingDiagramObject();
 		assertFalse("detected corrupted diagram factors?", DiagramCorruptionDetector.getCorruptedDiagramFactorErrorMessages(getProject(), diagramObject).size() > 0);
 		
-		Task task = getProject().createTask();
-		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(task.getRef());
+		Indicator indicator = getProject().createIndicatorWithCauseParent();
+		Task method = getProject().createTask(indicator);
+		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(method.getRef());
 		ORef diagramFactorRef = getProject().createObject(DiagramFactor.getObjectType(), extraDiagramFactorInfo);
 		IdList diagramFactorIds = new IdList(DiagramFactor.getObjectType());
 		diagramFactorIds.addRef(diagramFactorRef);
@@ -57,7 +59,7 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 		
 		assertTrue("did't detect task diagram factor that is not activity?", DiagramCorruptionDetector.getCorruptedDiagramFactorErrorMessages(getProject(), diagramObject).size() > 0);
 		
-		getProject().deleteObject(task);
+		getProject().deleteObject(method);
 		
 		assertTrue("didn't detect diagram factor that has no wrapped ref?", DiagramCorruptionDetector.getCorruptedDiagramFactorErrorMessages(getProject(), diagramObject).size() > 0);
 		

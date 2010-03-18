@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import org.miradi.diagram.PersistentDiagramModel;
-import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
@@ -74,11 +73,8 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		ORefList keaRefs = new ORefList(kea);
 		getProject().fillObjectUsingCommand(target.getWrappedORef(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaRefs.convertToIdList(KeyEcologicalAttribute.getObjectType()).toString());
 		
-		Indicator indicatorWithResourceAssignment = getProject().createIndicator();
+		Indicator indicatorWithResourceAssignment = getProject().createIndicator(kea);
 		addResourceAssignment(indicatorWithResourceAssignment);
-		IdList indicatorIds = new IdList(Indicator.getObjectType());
-		indicatorIds.add(indicatorWithResourceAssignment.getId());
-		getProject().fillObjectUsingCommand(kea.getRef(), KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds.toString());
 		
 		turnOnDataFromResultsChainOnly();
 		verifyCalculatedValues();
@@ -262,13 +258,9 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 	
 	private void createCauseWithIndicatorWithAssignment(DiagramObject diagramObject) throws Exception
 	{
-		Indicator indicator = getProject().createIndicator();
-		addResourceAssignment(indicator);
-		IdList indicatorIds = new IdList(Indicator.getObjectType());
-		indicatorIds.add(indicator.getId());
-		
 		DiagramFactor diagramFactor = getProject().createAndAddFactorToDiagram(diagramObject, Cause.getObjectType());
-		getProject().fillObjectUsingCommand(diagramFactor.getWrappedORef(), Cause.TAG_INDICATOR_IDS, indicatorIds.toString());
+		Indicator indicator = getProject().createIndicator(diagramFactor.getWrappedFactor());
+		addResourceAssignment(indicator);
 	}
 	
 	private DiagramObject getConceptualModelDiagramObject()

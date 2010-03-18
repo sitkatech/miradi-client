@@ -176,7 +176,8 @@ public class TestConproXmlExporter extends TestCaseWithProject
 	
 	public void testProgressPercent() throws Exception
 	{
-		Objective objective = getProject().createObjective();
+		Strategy strategy = getProject().createStrategy();
+		Objective objective = getProject().createObjective(strategy);
 		verifyExport();
 		
 		ProgressPercent emptyProgressPercent = getProject().createProgressPercent();
@@ -200,8 +201,8 @@ public class TestConproXmlExporter extends TestCaseWithProject
 	
 	public void testExportingThreatReductionResultReferringToInvalidThreat() throws Exception
 	{
-		Objective objective = getProject().createAndPopulateObjective();
 		ThreatReductionResult threatReductionResult = getProject().createThreatReductionResult();
+		Objective objective = getProject().createAndPopulateObjective(threatReductionResult);
 		
 		BaseId SOME_BOGUS_NON_EXISTING_ID = new BaseId(99999);
 		ORef someNonExistingThreatRef = new ORef(Cause.getObjectType(), SOME_BOGUS_NON_EXISTING_ID);

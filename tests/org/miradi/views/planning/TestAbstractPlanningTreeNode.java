@@ -29,6 +29,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
+import org.miradi.objects.Cause;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
@@ -44,8 +45,7 @@ public class TestAbstractPlanningTreeNode extends TestCaseWithProject
 	public void testMergeChildIntoList() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();
-		Task activity = getProject().createTask();
-		getProject().appendActivityToStrategy(strategy, activity);
+		Task activity = getProject().createTask(strategy);
 		ORefList relevantActivityRefs = new ORefList(activity);
 		RelevancyOverrideSet relevantActivities = new RelevancyOverrideSet();
 		for (int index = 0; index < relevantActivityRefs.size(); ++index)
@@ -53,7 +53,8 @@ public class TestAbstractPlanningTreeNode extends TestCaseWithProject
 			relevantActivities.add(new RelevancyOverride(relevantActivityRefs.get(index), true));
 		}
 		
-		Objective objective = getProject().createObjective();
+		Cause factor = getProject().createCause();
+		Objective objective = getProject().createObjective(factor);
 		getProject().fillObjectUsingCommand(objective, Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantActivities.toString());
 		
 		PlanningTreeObjectiveNode objectiveNode = new PlanningTreeObjectiveNode(getProject(), getProject().getTestingDiagramObject(), objective.getRef(), new CodeList());	

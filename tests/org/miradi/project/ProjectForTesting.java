@@ -53,6 +53,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.GroupBox;
@@ -319,17 +320,17 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return kea;
 	}
 	
-	public Indicator createAndPopulateIndicator() throws Exception
+	public Indicator createAndPopulateIndicator(BaseObject owner) throws Exception
 	{
-		Indicator indicator = createIndicator();
+		Indicator indicator = createIndicator(owner);
 		populateIndicator(indicator);
 		
 		return indicator;
 	}
 	
-	public Task createAndPopulateTask(String customTaskLabel) throws Exception
+	public Task createAndPopulateTask(BaseObject owner, String customTaskLabel) throws Exception
 	{
-		Task task  = createTask();
+		Task task  = createTask(owner);
 		populateTask(task, customTaskLabel);
 		
 		return task;
@@ -343,11 +344,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return measurement;
 	}
 	
-	public Objective createAndPopulateObjective() throws Exception
+	public Objective createAndPopulateObjective(Factor factor) throws Exception
 	{
-		Objective objective = createObjective();
+		Objective objective = createObjective(factor);
 		populateObjective(objective);
-		
 		return objective;
 	}
 	
@@ -511,21 +511,19 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return KeyEcologicalAttribute.find(this, keaRef);
 	}
 	
-	public Indicator createIndicator() throws Exception
+	public Indicator createIndicator(BaseObject owner) throws Exception
 	{
 		ORef indicatorRef = createObject(Indicator.getObjectType());
+		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		indicatorIds.addRef(indicatorRef);	
+		fillObjectUsingCommand(owner, Factor.TAG_INDICATOR_IDS, indicatorIds.toString());
 		return Indicator.find(this, indicatorRef);
 	}
 	
 	public Indicator createIndicatorWithCauseParent() throws Exception
 	{
 		Cause cause = createCause();
-		IdList indicatorIds = new IdList(Indicator.getObjectType());
-		Indicator indicator = createIndicator();
-		indicatorIds.addRef(indicator.getRef());	
-		fillObjectUsingCommand(cause, Cause.TAG_INDICATOR_IDS, indicatorIds.toString());
-		
-		return indicator;
+		return createIndicator(cause);
 	}
 	
 	public BaseObject createBaseObject(int objectType) throws Exception
@@ -534,9 +532,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return BaseObject.find(this, baseObjectRef);
 	}
 	
-	public Task createTask() throws Exception
+	public Task createTask(BaseObject owner) throws Exception
 	{
 		ORef taskRef = createObject(Task.getObjectType());
+		Task task = Task.find(this, taskRef);
+		String tag = Task.getTaskIdsTag(owner);
+		appendTaskToParentIdList(owner, task, tag);
 		return Task.find(this, taskRef);
 	}
 	
@@ -546,10 +547,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return Measurement.find(this, measurementRef);
 	}
 	
-	public Objective createObjective() throws Exception
+	public Objective createObjective(Factor owner) throws Exception
 	{
 		ORef objectiveRef = createObject(Objective.getObjectType());
-		return Objective.find(this, objectiveRef);
+		CommandSetObjectData append = CommandSetObjectData.createAppendIdCommand(owner, Factor.TAG_OBJECTIVE_IDS, objectiveRef.getObjectId());
+		executeCommand(append);
+		Objective objective = Objective.find(this, objectiveRef);
+		return objective;
 	}
 	
 	public Strategy createStrategy() throws Exception
@@ -685,7 +689,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(cause.getRef(), Cause.TAG_TAXONOMY_CODE, question.getCode(FIRST_CODE));
 		
 		IdList indicatorIds = new IdList(Indicator.getObjectType());
-		indicatorIds.addRef(createAndPopulateIndicator().getRef());	
+		indicatorIds.addRef(createAndPopulateIndicator(cause).getRef());	
 		fillObjectUsingCommand(cause, Cause.TAG_INDICATOR_IDS, indicatorIds.toString());
 	}
 	
@@ -744,9 +748,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_DESCRIPTION, "Some kea description text");
 		
 		IdList indicatorIds = new IdList(Indicator.getObjectType());
-		indicatorIds.add(createAndPopulateIndicator().getId());
-		indicatorIds.add(createAndPopulateIndicator().getId());
-		Indicator indicatorWithoutThreshold = createAndPopulateIndicator();
+		indicatorIds.add(createAndPopulateIndicator(kea).getId());
+		indicatorIds.add(createAndPopulateIndicator(kea).getId());
+		Indicator indicatorWithoutThreshold = createAndPopulateIndicator(kea);
 		fillObjectUsingCommand(indicatorWithoutThreshold, Indicator.TAG_INDICATOR_THRESHOLD, "");
 		indicatorIds.add(indicatorWithoutThreshold.getId());
 		
@@ -761,7 +765,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT, "Some Indicator viability ratings comment");
 		fillObjectUsingCommand(indicator, Indicator.TAG_RATING_SOURCE, RatingSourceQuestion.ONSITE_RESEARCH_CODE);
 		
-		Task task = createAndPopulateTask("Some Method Name");
+		Task task = createAndPopulateTask(indicator, "Some Method Name");
 		IdList taskIds = new IdList(Task.getObjectType());
 		taskIds.addRef(task.getRef());
 		fillObjectUsingCommand(indicator, Indicator.TAG_METHOD_IDS, taskIds.toString());
@@ -842,12 +846,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(strategy, Strategy.TAG_FEASIBILITY_RATING, StrategyFeasibilityQuestion.LOW_CODE);
 		
 		IdList activityIds = new IdList(Task.getObjectType());
-		activityIds.addRef(createAndPopulateTask("Some activity Label").getRef());
+		activityIds.addRef(createAndPopulateTask(strategy, "Some activity Label").getRef());
 		fillObjectUsingCommand(strategy, Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
 		
 		IdList objectiveIds = new IdList(Objective.getObjectType());
-		objectiveIds.addRef(createAndPopulateObjective().getRef());
-		objectiveIds.addRef(createAndPopulateObjective().getRef());
+		objectiveIds.addRef(createAndPopulateObjective(strategy).getRef());
+		objectiveIds.addRef(createAndPopulateObjective(strategy).getRef());
 		fillObjectUsingCommand(strategy, Strategy.TAG_OBJECTIVE_IDS, objectiveIds.toString());
 		
 		fillObjectUsingCommand(strategy, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING, "good, tnc legacy strategy rating");
@@ -936,16 +940,28 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateStress();
 		createAndPopulateSubTarget();
 		createAndPopulateTarget();
-		createAndPopulateTask("Some Task Label");
 		createAndPopulateThreat();
-		createAndPopulateObjective();
 		createAndPopulateDraftStrategy();
-		createAndPopulateStrategy();
+		Strategy strategy = createAndPopulateStrategy();
 		createAndPopulateStrategyThreatTargetAssociation();
-		createAndPopulateActivity();
+		createAndPopulateObjective(strategy);
+		Task activity = createAndPopulateActivity();
+		createAndPopulateTask(activity, "Some Task Label");
 		createIndicatorContainingWhiteSpacePaddedCode();
 		createAndPopulateOrganization();
 		createAndPopulateExpenseAssignment();
+		
+	}
+
+	public void validateObjectOwners(int type)
+	{
+		ORefList refs = getPool(type).getRefList();
+		for(int i = 0; i < refs.size(); ++i)
+		{
+			BaseObject object = BaseObject.find(this, refs.get(i));
+			if(object.getOwnerRef().isInvalid())
+				throw new RuntimeException("Object without owner! " + object.getRef());
+		}
 	}
 
 	public void switchToStressBaseMode() throws Exception
@@ -1608,8 +1624,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public Task createActivity() throws Exception
 	{
 		Strategy strategy = createStrategy();
-		Task activity = createTask();
-		appendActivityToStrategy(strategy, activity);
+		Task activity = createTask(strategy);
 		
 		return activity;
 	}
@@ -1622,8 +1637,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public Task createMethod() throws Exception
 	{
 		Indicator indicator = createIndicatorWithCauseParent();
-		Task method = createTask();
-		appendMethodToIndicator(indicator, method);
+		Task method = createTask(indicator);
 		
 		return method;
 	}
@@ -1631,11 +1645,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void appendMethodToIndicator(Indicator indicator, Task method) throws Exception
 	{
 		appendTaskToParentIdList(indicator, method, Indicator.TAG_METHOD_IDS);
-	}
-	
-	public void appendTaskToTask(Task parentTask, Task childTask) throws Exception
-	{
-		appendTaskToParentIdList(parentTask, childTask, Task.TAG_SUBTASK_IDS);
 	}
 	
 	private void appendTaskToParentIdList(BaseObject parent, BaseObject child, String childListTag) throws Exception
