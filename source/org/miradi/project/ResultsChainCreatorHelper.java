@@ -62,9 +62,14 @@ public class ResultsChainCreatorHelper
 {
 	public ResultsChainCreatorHelper(Project projectToUse, DiagramPanel diagramPanelToUse)
 	{
+		this(projectToUse, diagramPanelToUse, diagramPanelToUse.getDiagramModel());
+	}
+	
+	public ResultsChainCreatorHelper(Project projectToUse, DiagramPanel diagramPanelToUse, DiagramModel modelToUse)
+	{
 		project = projectToUse;
 		diagramPanel = diagramPanelToUse;
-		model = diagramPanel.getDiagramModel();
+		model = modelToUse;
 	}
 		
 	public ORef createResultsChain() throws Exception
@@ -327,6 +332,9 @@ public class ResultsChainCreatorHelper
 		project.executeCommand(createCommand);
 		
 		ORef newlyCreatedRef = createCommand.getObjectRef();
+		transferAnnotationsToNewFactor(factor, newlyCreatedRef, Factor.TAG_INDICATOR_IDS);
+		transferAnnotationsToNewFactor(factor, newlyCreatedRef, Factor.TAG_OBJECTIVE_IDS);
+		
 		String clonedLabel = new String("[ " + factor.getLabel() + " ]");
 		CommandSetObjectData setLabelCommand = new CommandSetObjectData(newlyCreatedRef, Factor.TAG_LABEL, clonedLabel);
 		project.executeCommand(setLabelCommand);
@@ -334,6 +342,17 @@ public class ResultsChainCreatorHelper
 		possiblySetThreatReductionResultsDirectThreat(factor, newlyCreatedRef);
 		
 		return newlyCreatedRef;
+	}
+
+	public void transferAnnotationsToNewFactor(Factor factor, ORef newlyCreatedRef, String tag) throws Exception
+	{
+		String idsToMoveToTransfer = factor.getData(tag);
+		
+		CommandSetObjectData setNewlyCreatedToPointToIds = new CommandSetObjectData(newlyCreatedRef, tag, idsToMoveToTransfer);
+		getProject().executeCommand(setNewlyCreatedToPointToIds);
+		
+		CommandSetObjectData clearOriginalIds = new CommandSetObjectData(factor, tag, "");
+		getProject().executeCommand(clearOriginalIds);
 	}
 
 	private void possiblySetThreatReductionResultsDirectThreat(Factor factor, ORef newlyCreatedRef) throws CommandFailedException
@@ -571,6 +590,11 @@ public class ResultsChainCreatorHelper
 		}
 		
 		return vector;
+	}
+	
+	private Project getProject()
+	{
+		return project;
 	}
 
 	private DiagramModel model;
