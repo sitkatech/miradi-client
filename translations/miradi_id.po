@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-17 16:05-0500\n"
+"POT-Creation-Date: 2010-03-17 20:51-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -15,27 +15,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:78
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:84
 msgid "[Main Diagram]"
 msgstr "[Diagram Utama] "
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:79
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:85
 msgid "[Not Named]"
 msgstr "[Tidak Diberi Nama] "
 
-#: Miradi/source/org/miradi/objects/ProjectResource.java:126
+#: Miradi/source/org/miradi/objects/ProjectResource.java:125
 msgid "Label|(Undefined Resource)"
 msgstr " (Sumber Daya Tak Terdefinisi) "
 
-#: Miradi/source/org/miradi/objects/AccountingCode.java:74
+#: Miradi/source/org/miradi/objects/AccountingCode.java:73
 msgid "Label|(Undefined Accounting Code)"
 msgstr " (Kode Akuntansi Tak Terdefinisi) "
 
-#: Miradi/source/org/miradi/objects/FundingSource.java:70
+#: Miradi/source/org/miradi/objects/FundingSource.java:69
 msgid "Label|(Undefined Funding Source)"
 msgstr "(Sumber Dana Tidak Jelas) "
 
-#: Miradi/source/org/miradi/objects/Task.java:348
+#: Miradi/source/org/miradi/objects/Task.java:339
 msgid "Task does not have a parent"
 msgstr ""
 
