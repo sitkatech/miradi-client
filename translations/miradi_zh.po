@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-17 20:51-0500\n"
+"POT-Creation-Date: 2010-03-18 15:50-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2023,11 +2023,11 @@ msgstr ""
 msgid "[No Project]"
 msgstr "[无项目] \t\t"
 
-#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:172
+#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:177
 msgid "[New Results Chain]"
 msgstr "[新结果链] \t\t"
 
-#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:194
+#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:199
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:71
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:35
 msgid "Results Chain"
