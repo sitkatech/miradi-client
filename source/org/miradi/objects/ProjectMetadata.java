@@ -80,15 +80,15 @@ public class ProjectMetadata extends BaseObject
 		return OBJECT_NAME;
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.PROJECT_METADATA;
-	}
-	
-	
-	public static boolean canOwnThisType(int type)
-	{
-		return false;
 	}
 	
 	@Override

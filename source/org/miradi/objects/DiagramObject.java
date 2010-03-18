@@ -384,19 +384,6 @@ abstract public class DiagramObject extends BaseObject
 		return allDiagramFactorIds.getIdList().contains(diagramFactorId);
 	}
 	
-	public static boolean canOwnThisType(int type)
-	{
-		switch(type)
-		{
-			case ObjectType.DIAGRAM_FACTOR:
-			case ObjectType.DIAGRAM_LINK:
-				return true;
-		}
-		
-		return false;
-	}
-	
-
 	public ORefList getOwnedObjects(int objectType)
 	{
 		ORefList list = super.getOwnedObjects(objectType);

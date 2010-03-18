@@ -53,17 +53,16 @@ public class FundingSource extends BaseObject
 		return OBJECT_NAME;
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.FUNDING_SOURCE;
 	}
-	
-	
-	public static boolean canOwnThisType(int type)
-	{
-		return false;
-	}
-	
 	
 	public String toString()
 	{

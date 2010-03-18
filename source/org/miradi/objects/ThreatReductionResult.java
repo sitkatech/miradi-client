@@ -62,21 +62,6 @@ public class ThreatReductionResult extends Factor
 		return true;
 	}
 	
-	public static boolean canOwnThisType(int type)
-	{
-		if (Factor.canOwnThisType(type))
-			return true;
-		
-		switch(type)
-		{
-			case ObjectType.OBJECTIVE:
-				return true;
-				
-			default:
-				return false;
-		}
-	}
-	
 	public boolean canHaveObjectives()
 	{
 		return true;

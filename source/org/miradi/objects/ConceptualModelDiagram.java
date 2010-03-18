@@ -49,6 +49,12 @@ public class ConceptualModelDiagram extends DiagramObject
 		return OBJECT_NAME;
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.CONCEPTUAL_MODEL_DIAGRAM;

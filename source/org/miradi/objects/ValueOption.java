@@ -63,15 +63,15 @@ public class ValueOption extends BaseObject
 		return OBJECT_NAME;
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.VALUE_OPTION;
-	}
-	
-	
-	public static boolean canOwnThisType(int type)
-	{
-		return false;
 	}
 	
 	

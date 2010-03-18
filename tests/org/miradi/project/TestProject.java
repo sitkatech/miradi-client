@@ -699,7 +699,10 @@ public class TestProject extends EAMTestCase
 		IdList objectiveId = new IdList(Objective.getObjectType());
 		objectiveId.add(objectiveId1);
 
-		nodeContributingFactor.getWrappedFactor().setObjectives(objectiveId);
+		Factor cf = nodeContributingFactor.getWrappedFactor();
+		CommandSetObjectData addObjective = new CommandSetObjectData(cf, Cause.TAG_OBJECTIVE_IDS, objectiveId.toString());
+		getProject().executeCommand(addObjective);
+		
 		
 		createLinkage(BaseId.INVALID, nodeContributingFactor.getWrappedFactorRef(), nodeDirectThreat.getWrappedFactorRef());
 		
@@ -707,7 +710,7 @@ public class TestProject extends EAMTestCase
 		
 		assertEquals("didn't find anything?", 2, foundNodes.size());
 		assertContains("missing direct threat?", nodeDirectThreat.getWrappedFactor(), foundNodes);
-		assertContains("missing contributing factor?", nodeContributingFactor.getWrappedFactor(), foundNodes);
+		assertContains("missing contributing factor?", cf, foundNodes);
 		
 		
 	}
@@ -720,7 +723,10 @@ public class TestProject extends EAMTestCase
 		IndicatorId indicatorId1 = (IndicatorId)project.createObjectAndReturnId(ObjectType.INDICATOR);
 		IdList indicators1 = new IdList(Indicator.getObjectType());
 		indicators1.add(indicatorId1);
-		nodeContributingFactor.getWrappedFactor().setIndicators(indicators1);
+
+		Factor cf = nodeContributingFactor.getWrappedFactor();
+		CommandSetObjectData addIndicator = new CommandSetObjectData(cf, Cause.TAG_INDICATOR_IDS, indicators1.toString());
+		getProject().executeCommand(addIndicator);
 		
 		createLinkage(BaseId.INVALID, nodeContributingFactor.getWrappedFactorRef(), nodeDirectThreat.getWrappedFactorRef());
 		

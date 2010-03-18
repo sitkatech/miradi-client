@@ -67,6 +67,12 @@ public class TncProjectData extends BaseObject
 		return OBJECT_NAME;
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.TNC_PROJECT_DATA;
@@ -75,11 +81,6 @@ public class TncProjectData extends BaseObject
 	public boolean canShareOutsideOfTnc()
 	{
 		return projectSharingCode.get().equals(TncProjectSharingQuestion.SHARE_OUTSIDE_TNC);
-	}
-	
-	public static boolean canOwnThisType(int type)
-	{
-		return false;
 	}
 	
 	public static boolean canReferToThisType(int type)

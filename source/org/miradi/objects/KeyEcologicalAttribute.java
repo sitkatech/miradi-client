@@ -74,23 +74,16 @@ public class KeyEcologicalAttribute extends BaseObject
 		return OBJECT_NAME;
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {Target.getObjectType()};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
 	}
-	
-	
-	public static boolean canOwnThisType(int type)
-	{
-		switch(type)
-		{
-			case ObjectType.INDICATOR: 
-				return true;
-			default:
-				return false;
-		}
-	}
-	
 	
 	public ORefList getOwnedObjects(int objectType)
 	{

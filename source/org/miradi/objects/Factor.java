@@ -70,15 +70,10 @@ abstract public class Factor extends BaseObject
 		return new FactorId(getId().asInt());
 	}
 	
-	public static boolean canOwnThisType(int type)
+	@Override
+	public int[] getTypesThatCanOwnUs()
 	{
-		switch(type)
-		{
-			case ObjectType.INDICATOR: 
-				return true;
-			default:
-				return false;
-		}
+		return new int[] {};
 	}
 	
 	@Override

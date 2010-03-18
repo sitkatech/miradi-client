@@ -64,11 +64,6 @@ public class ResourceAssignment extends Assignment
 		return ObjectType.RESOURCE_ASSIGNMENT;
 	}
 	
-	public static boolean canOwnThisType(int type)
-	{
-		return false;
-	}
-	
 	@Override
 	public String getPseudoData(String fieldTag)
 	{

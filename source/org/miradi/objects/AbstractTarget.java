@@ -57,22 +57,6 @@ abstract public class AbstractTarget extends Factor
 		super(objectManager, idToUse, factorType, json);
 	}
 
-	public static boolean canOwnThisType(int type)
-	{
-		if (Factor.canOwnThisType(type))
-			return true;
-		
-		switch(type)
-		{
-			case ObjectType.GOAL: 
-				return true;
-			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE: 
-				return true;
-			default:
-				return false;
-		}
-	}
-
 	@Override
 	public ORefList getOwnedObjects(int objectType)
 	{

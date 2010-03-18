@@ -49,17 +49,16 @@ public class Goal extends Desire
 		return OBJECT_NAME;
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {Target.getObjectType()};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.GOAL;
 	}
-	
-	
-	public static boolean canOwnThisType(int type)
-	{
-		return false;
-	}
-	
 	
 	public static boolean is(ORef ref)
 	{

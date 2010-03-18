@@ -50,6 +50,12 @@ public class IucnRedlistSpecies extends BaseObject
 		return OBJECT_NAME;
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.IUCN_REDLIST_SPECIES;

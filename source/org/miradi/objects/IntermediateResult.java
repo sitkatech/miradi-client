@@ -64,21 +64,6 @@ public class IntermediateResult extends Factor
 		return ObjectType.INTERMEDIATE_RESULT;
 	}
 	
-	public static boolean canOwnThisType(int type)
-	{
-		if (Factor.canOwnThisType(type))
-			return true;
-		
-		switch(type)
-		{
-			case ObjectType.OBJECTIVE:
-				return true;
-				
-			default:
-				return false;
-		}
-	}
-	
 	@Override
 	public boolean canHaveObjectives()
 	{

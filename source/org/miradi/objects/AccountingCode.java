@@ -61,12 +61,11 @@ public class AccountingCode extends BaseObject
 		return ObjectType.ACCOUNTING_CODE;
 	}
 	
-	
-	public static boolean canOwnThisType(int type)
+	@Override
+	public int[] getTypesThatCanOwnUs()
 	{
-		return false;
+		return new int[] {};
 	}
-	
 	
 	@Override
 	public String toString()

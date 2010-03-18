@@ -89,6 +89,15 @@ public class DiagramLink extends BaseObject
 		return ObjectType.DIAGRAM_LINK;
 	}
 	
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {
+			ConceptualModelDiagram.getObjectType(), 
+			ResultsChainDiagram.getObjectType()
+			};
+	}
+	
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
@@ -96,12 +105,6 @@ public class DiagramLink extends BaseObject
 		
 		return deepObjectRefsToCopy;
 	}
-	
-	public static boolean canOwnThisType(int type)
-	{
-		return false;
-	}
-	
 	
 	public ORef getDiagramFactorRef(int direction)
 	{

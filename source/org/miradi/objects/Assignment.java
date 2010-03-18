@@ -53,6 +53,16 @@ abstract public class Assignment extends BaseObject
 	}
 	
 	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {
+			Strategy.getObjectType(), 
+			Indicator.getObjectType(),
+			Task.getObjectType(),
+			};
+	}
+	
+	@Override
 	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag) throws Exception
 	{
 		return convertDateUnitEffortList();

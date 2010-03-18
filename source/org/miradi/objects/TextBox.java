@@ -64,11 +64,6 @@ public class TextBox extends Factor
 		return true;
 	}
 	
-	public static boolean canOwnThisType(int type)
-	{
-		return false;
-	}
-	
 	@Override
 	public boolean canHaveIndicators()
 	{
