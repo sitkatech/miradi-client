@@ -80,6 +80,7 @@ import org.miradi.objecthelpers.TestORefSet;
 import org.miradi.objecthelpers.TestObjectDeepCopier;
 import org.miradi.objecthelpers.TestRelevancyOverride;
 import org.miradi.objecthelpers.TestRelevancyOverrideSet;
+import org.miradi.objecthelpers.TestResultsChainCreatorHelper;
 import org.miradi.objecthelpers.TestStringRefMap;
 import org.miradi.objecthelpers.TestThreatStressRatingEnsurer;
 import org.miradi.objecthelpers.TestTimePeriodCosts;
@@ -343,6 +344,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestDateUnitEffort.class));
 		suite.addTest(new TestSuite(TestDateUnitEffortList.class));
 		suite.addTest(new TestSuite(TestBaseObjectRollupValues.class));
+		suite.addTest(new TestSuite(TestResultsChainCreatorHelper.class));
 		
 		// objects package
 		suite.addTest(new TestSuite(TestStrategy.class));
