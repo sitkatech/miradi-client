@@ -59,6 +59,12 @@ public class IntermediateResult extends Factor
 		return OBJECT_NAME;
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.INTERMEDIATE_RESULT;

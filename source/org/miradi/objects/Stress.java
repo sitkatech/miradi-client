@@ -58,6 +58,14 @@ public class Stress extends Factor
 	}
 	
 	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {
+			Target.getObjectType(),
+			};
+	}
+	
+	@Override
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
 		ORefList objectRefsToDeepCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);

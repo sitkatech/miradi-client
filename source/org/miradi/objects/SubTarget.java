@@ -54,7 +54,10 @@ public class SubTarget extends BaseObject
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
-		return new int[] {Target.getObjectType()};
+		return new int[] {
+			Target.getObjectType(),
+			HumanWelfareTarget.getObjectType(),
+			};
 	}
 	
 	public static int getObjectType()
