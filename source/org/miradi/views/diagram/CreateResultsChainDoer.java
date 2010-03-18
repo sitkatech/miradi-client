@@ -31,6 +31,7 @@ import org.miradi.views.ViewDoer;
 
 public class CreateResultsChainDoer extends ViewDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (!getProject().isOpen())
@@ -45,6 +46,7 @@ public class CreateResultsChainDoer extends ViewDoer
 		return true;
 	}
 
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if (! isAvailable())
