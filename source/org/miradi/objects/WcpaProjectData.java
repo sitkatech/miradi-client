@@ -50,14 +50,15 @@ public class WcpaProjectData extends BaseObject
 		return OBJECT_NAME;
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.WCPA_PROJECT_DATA;
-	}
-	
-	public static boolean canOwnThisType(int type)
-	{
-		return false;
 	}
 	
 	public static boolean canReferToThisType(int type)

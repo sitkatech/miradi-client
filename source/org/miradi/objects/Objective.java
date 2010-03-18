@@ -51,15 +51,20 @@ public class Objective extends Desire
 		return OBJECT_NAME;
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {
+			Strategy.getObjectType(),
+			Cause.getObjectType(),
+			IntermediateResult.getObjectType(),
+			ThreatReductionResult.getObjectType(),
+			};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.OBJECTIVE;
-	}
-	
-	
-	public static boolean canOwnThisType(int type)
-	{
-		return false;
 	}
 	
 	public static Objective find(ObjectManager objectManager, ORef objectiveRef)

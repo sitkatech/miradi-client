@@ -67,6 +67,12 @@ public class ThreatStressRating extends BaseObject
 		return getObjectType();
 	}
 	
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.THREAT_STRESS_RATING;

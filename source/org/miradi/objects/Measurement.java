@@ -57,14 +57,15 @@ public class Measurement extends BaseObject
 		return OBJECT_NAME;
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {Indicator.getObjectType()};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.MEASUREMENT;
-	}
-	
-	public static boolean canOwnThisType(int type)
-	{
-		return false;
 	}
 	
 	public static boolean canReferToThisType(int type)

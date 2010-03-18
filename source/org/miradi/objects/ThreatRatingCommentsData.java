@@ -51,6 +51,12 @@ public class ThreatRatingCommentsData extends BaseObject
 		return OBJECT_NAME;
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.THREAT_RATING_COMMENTS_DATA;

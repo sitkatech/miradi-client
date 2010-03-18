@@ -51,14 +51,15 @@ public class SubTarget extends BaseObject
 		return OBJECT_NAME;
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {Target.getObjectType()};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.SUB_TARGET;
-	}
-	
-	public static boolean canOwnThisType(int type)
-	{
-		return false;
 	}
 	
 	public boolean canHaveIndicators()

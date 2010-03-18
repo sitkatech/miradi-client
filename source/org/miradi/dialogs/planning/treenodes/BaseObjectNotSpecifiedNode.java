@@ -81,6 +81,12 @@ public class BaseObjectNotSpecifiedNode extends AbstractPlanningTreeNode
 			return EAM.text("Not Specified");
 		}
 		
+		@Override
+		public int[] getTypesThatCanOwnUs()
+		{
+			return new int[] {};
+		}
+		
 		private int objectType;
 		private String objectName;
 	}

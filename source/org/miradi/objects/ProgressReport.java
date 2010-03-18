@@ -55,14 +55,19 @@ public class ProgressReport extends BaseObject
 		return OBJECT_NAME;
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {
+			Strategy.getObjectType(),
+			Indicator.getObjectType(),
+			Task.getObjectType(),
+		};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.PROGRESS_REPORT;
-	}
-	
-	public static boolean canOwnThisType(int type)
-	{
-		return false;
 	}
 	
 	public boolean canHaveIndicators()

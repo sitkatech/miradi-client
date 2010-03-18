@@ -63,11 +63,6 @@ public class ScopeBox extends Factor
 		return true;
 	}
 
-	public static boolean canOwnThisType(int type)
-	{
-		return false;
-	}
-	
 	public boolean canHaveIndicators()
 	{
 		return false;

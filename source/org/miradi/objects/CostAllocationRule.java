@@ -45,6 +45,12 @@ public class CostAllocationRule extends BaseObject
 		return getObjectType();
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {};
+	}
+	
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -53,11 +59,6 @@ public class CostAllocationRule extends BaseObject
 	public static int getObjectType()
 	{
 		return ObjectType.COST_ALLOCATION_RULE;
-	}
-	
-	public static boolean canOwnThisType(int type)
-	{
-		return false;
 	}
 	
 	public static boolean canReferToThisType(int type)

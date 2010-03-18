@@ -54,6 +54,15 @@ public class ProgressPercent extends BaseObject
 		return OBJECT_NAME;
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {
+			Goal.getObjectType(), 
+			Objective.getObjectType(),
+			};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.PROGRESS_PERCENT;

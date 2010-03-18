@@ -52,6 +52,12 @@ public class ReportTemplate extends BaseObject
 		return OBJECT_NAME;
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.REPORT_TEMPLATE;

@@ -62,12 +62,15 @@ public class FactorLink extends BaseObject
 		return ObjectType.FACTOR_LINK;
 	}
 	
-	
-	public static boolean canOwnThisType(int type)
+	@Override
+	public int[] getTypesThatCanOwnUs()
 	{
-		return false;
+		return new int[] {
+			ConceptualModelDiagram.getObjectType(), 
+			ResultsChainDiagram.getObjectType()
+			};
 	}
-			
+	
 	public Factor getFromFactor() throws Exception
 	{
 		Factor fromFactor = Factor.findFactor(getProject(), getFromFactorRef());

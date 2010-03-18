@@ -115,6 +115,16 @@ public class Task extends Factor
 	}
 	
 	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {
+			Strategy.getObjectType(),
+			Indicator.getObjectType(),
+			Task.getObjectType(),
+		};
+	}
+	
+	@Override
 	public String getDetails()
 	{
 		return details.get();
@@ -130,25 +140,6 @@ public class Task extends Factor
 	{
 		return false;
 	}
-	
-	public static boolean canOwnThisType(int type)
-	{
-		switch(type)
-		{
-			case ObjectType.TASK: 
-				return true;
-			
-			case ObjectType.RESOURCE_ASSIGNMENT: 
-				return true;
-			
-			case ObjectType.EXPENSE_ASSIGNMENT:
-				return true;
-				
-			default:
-				return false;
-		}
-	}
-	
 	
 	@Override
 	public ORefList getOwnedObjects(int objectType)

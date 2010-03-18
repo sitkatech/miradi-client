@@ -232,26 +232,24 @@ public class Indicator extends BaseObject
 		return OBJECT_NAME;
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {
+			Strategy.getObjectType(),
+			Cause.getObjectType(),
+			IntermediateResult.getObjectType(),
+			ThreatReductionResult.getObjectType(),
+			Target.getObjectType(),
+			KeyEcologicalAttribute.getObjectType(),
+		};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.INDICATOR;
 	}
 	
-	
-	public static boolean canOwnThisType(int type)
-	{
-		switch(type)
-		{
-			case ObjectType.RESOURCE_ASSIGNMENT: 
-				return true;
-			
-			case ObjectType.EXPENSE_ASSIGNMENT:
-				return true;
-				
-			default:
-				return false;
-		}
-	}
 	
 	public String getFutureStatusRating()
 	{

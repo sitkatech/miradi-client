@@ -65,7 +65,6 @@ import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.InvalidNumberException;
 import org.miradi.utils.OptionalDouble;
-import org.miradi.utils.Utility;
 
 abstract public class BaseObject
 {
@@ -958,34 +957,19 @@ abstract public class BaseObject
 
 	public ORef getOwnerRef()
 	{
-		int[] objectTypes = getTypesThatCanOwnUs(getType());
-		for (int i=0; i<objectTypes.length; ++i)
-		{
-			ORef ownerRef = findObjectWhoOwnsUs(objectManager, objectTypes[i], getRef());
-			if (ownerRef.isValid())
-			{
-				return ownerRef;
-			}
-		}
+		int[] possibleOwningTypes = getTypesThatCanOwnUs();
+		if(possibleOwningTypes.length == 0)
+			return ORef.INVALID;
 		
-		return ORef.INVALID;
+		ORefList possibleOwners = findObjectsThatReferToUs();
+		ORef ownerRef = possibleOwners.getRefForTypes(possibleOwningTypes);
+		if(ownerRef.isInvalid())
+			EAM.logError("getOwnerRef didn't find owner for: " + getRef());
+		
+		return ownerRef;
 	}
-
-	static public ORef findObjectWhoOwnsUs(ObjectManager objectManager, int objectType, ORef oref)
-	{
-		ORefList orefsInPool = objectManager.getPool(objectType).getORefList();
-		for (int i=0; i<orefsInPool.size(); ++i)
-		{
-			BaseObject objectInPool = objectManager.findObject(orefsInPool.get(i));
-			ORefList children = objectInPool.getOwnedObjects(oref.getObjectType());
-			for (int childIdx=0; childIdx<children.size(); ++childIdx)
-			{
-				if (children.get(childIdx).getObjectId().equals(oref.getObjectId()))
-					return objectInPool.getRef();
-			}
-		}
-		return ORef.INVALID;
-	}
+	
+	abstract public int[] getTypesThatCanOwnUs();
 
 	public ORefList findObjectsThatReferToUs()
 	{
@@ -1111,88 +1095,6 @@ abstract public class BaseObject
 		return allOwnedObjects;
 	}
 	
-	//FIXME medium: This method is not contain all objects and is not reliable
-	static public int[] getTypesThatCanOwnUs(int type)
-	{
-		Vector<Integer> objectTypes = new Vector<Integer>();
-		if (RatingCriterion.canOwnThisType(type))
-			objectTypes.add(RatingCriterion.getObjectType());
-
-		if (ValueOption.canOwnThisType(type))
-			objectTypes.add(ValueOption.getObjectType());
-
-		if (Cause.canOwnThisType(type))
-			objectTypes.add(Cause.getObjectType());
-		
-		if (Strategy.canOwnThisType(type))
-			objectTypes.add(Strategy.getObjectType());
-		
-		if (Target.canOwnThisType(type))
-			objectTypes.add(Target.getObjectType());
-		
-		if (HumanWelfareTarget.canOwnThisType(type))
-			objectTypes.add(HumanWelfareTarget.getObjectType());
-		
-		if (ViewData.canOwnThisType(type))
-			objectTypes.add(ViewData.getObjectType());
-
-		if (FactorLink.canOwnThisType(type))
-			objectTypes.add(FactorLink.getObjectType());
-
-		if (ProjectResource.canOwnThisType(type))
-			objectTypes.add(ProjectResource.getObjectType());
-
-		if (Indicator.canOwnThisType(type))
-			objectTypes.add(Indicator.getObjectType());
-
-		if (Objective.canOwnThisType(type))
-			objectTypes.add(Objective.getObjectType());
-
-		if (Goal.canOwnThisType(type))
-			objectTypes.add(Goal.getObjectType());
-
-		if (ProjectMetadata.canOwnThisType(type))
-			objectTypes.add(ProjectMetadata.getObjectType());
-		
-		if (DiagramLink.canOwnThisType(type))
-			objectTypes.add(DiagramLink.getObjectType());
-
-		if (ResourceAssignment.canOwnThisType(type))
-			objectTypes.add(ResourceAssignment.getObjectType());
-
-		if (AccountingCode.canOwnThisType(type))
-			objectTypes.add(AccountingCode.getObjectType());
-		
-		if (FundingSource.canOwnThisType(type))
-			objectTypes.add(FundingSource.getObjectType());
-
-		if (KeyEcologicalAttribute.canOwnThisType(type))
-			objectTypes.add(KeyEcologicalAttribute.getObjectType());
-
-		if (DiagramFactor.canOwnThisType(type))
-			objectTypes.add(DiagramFactor.getObjectType());
-
-		if (ConceptualModelDiagram.canOwnThisType(type))
-			objectTypes.add(ConceptualModelDiagram.getObjectType());
-		
-		if (ResultsChainDiagram.canOwnThisType(type))
-			objectTypes.add(ResultsChainDiagram.getObjectType());
-
-		if (IntermediateResult.canOwnThisType(type))
-			objectTypes.add(IntermediateResult.getObjectType());
-		
-		if (ThreatReductionResult.canOwnThisType(type))
-			objectTypes.add(ThreatReductionResult.getObjectType());
-		
-		if (Task.canOwnThisType(type))
-			objectTypes.add(Task.getObjectType());
-		
-		if (objectTypes.isEmpty())
-			EAM.logError("Object type:" + type + " can not be owned by anyone.");
-		
-		return Utility.convertToIntArray(objectTypes);
-	}
-
 	public String getPseudoData(String fieldTag)
 	{
 		if (fieldTag.equals(PSEUDO_TAG_WHEN_TOTAL))

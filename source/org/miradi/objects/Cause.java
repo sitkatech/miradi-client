@@ -44,20 +44,6 @@ public class Cause extends Factor
 		super(objectManager, idToUse, Factor.TYPE_CAUSE, json);
 	}
 	
-	public static boolean canOwnThisType(int type)
-	{
-		if (Factor.canOwnThisType(type))
-			return true;
-		
-		switch(type)
-		{
-			case ObjectType.OBJECTIVE: 
-				return true;
-			default:
-				return false;
-		}
-	}
-	
 	@Override
 	public ORefList getOwnedObjects(int objectType)
 	{

@@ -101,6 +101,15 @@ public class DiagramFactor extends BaseObject
 		return OBJECT_NAME;
 	}
 
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {
+			ConceptualModelDiagram.getObjectType(), 
+			ResultsChainDiagram.getObjectType()
+			};
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.DIAGRAM_FACTOR;
@@ -114,12 +123,6 @@ public class DiagramFactor extends BaseObject
 		
 		return deepObjectRefsToCopy;
 	}
-	
-	public static boolean canOwnThisType(int type)
-	{
-		return false;
-	}
-	
 	
 	public DiagramFactorId getDiagramFactorId()
 	{
