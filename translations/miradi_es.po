@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-17 16:05-0500\n"
+"POT-Creation-Date: 2010-03-17 20:51-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -17,27 +17,27 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Bookmarks: 874,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:78
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:84
 msgid "[Main Diagram]"
 msgstr "[Diagrama principal]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:79
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:85
 msgid "[Not Named]"
 msgstr "[Sin nombre]"
 
-#: Miradi/source/org/miradi/objects/ProjectResource.java:126
+#: Miradi/source/org/miradi/objects/ProjectResource.java:125
 msgid "Label|(Undefined Resource)"
 msgstr "(Recurso sin definir)"
 
-#: Miradi/source/org/miradi/objects/AccountingCode.java:74
+#: Miradi/source/org/miradi/objects/AccountingCode.java:73
 msgid "Label|(Undefined Accounting Code)"
 msgstr "(Código contable sin definir)"
 
-#: Miradi/source/org/miradi/objects/FundingSource.java:70
+#: Miradi/source/org/miradi/objects/FundingSource.java:69
 msgid "Label|(Undefined Funding Source)"
 msgstr "(Fuente de financiamiento sin definir)"
 
-#: Miradi/source/org/miradi/objects/Task.java:348
+#: Miradi/source/org/miradi/objects/Task.java:339
 msgid "Task does not have a parent"
 msgstr ""
 
