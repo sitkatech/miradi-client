@@ -138,7 +138,7 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 	public void testIsAssignmentSuperseded() throws Exception
 	{
 		Indicator indicator = getProject().createIndicator();
-		TestTask.verifyIsAssignmentSuperseded(getProject(), indicator, Indicator.TAG_METHOD_IDS);
+		TestTask.verifyIsAssignmentDataSuperseded(getProject(), indicator, Indicator.TAG_METHOD_IDS);
 	}
 
 	private ProjectForTesting project;

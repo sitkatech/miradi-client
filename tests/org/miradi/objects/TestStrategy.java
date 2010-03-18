@@ -130,7 +130,7 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 	public void testIsAssignmentSuperseded() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();
-		TestTask.verifyIsAssignmentSuperseded(getProject(), strategy, Strategy.TAG_ACTIVITY_IDS);
+		TestTask.verifyIsAssignmentDataSuperseded(getProject(), strategy, Strategy.TAG_ACTIVITY_IDS);
 	}
 	
 	static final BaseId criterionId1 = new BaseId(17);

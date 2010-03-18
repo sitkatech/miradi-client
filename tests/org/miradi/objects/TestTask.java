@@ -47,10 +47,10 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 	public void testIsAssignmentSuperseded() throws Exception
 	{
 		Task activity = getProject().createActivity();
-		verifyIsAssignmentSuperseded(getProject(), activity, Task.TAG_SUBTASK_IDS);
+		verifyIsAssignmentDataSuperseded(getProject(), activity, Task.TAG_SUBTASK_IDS);
 	}
 
-	public static void verifyIsAssignmentSuperseded(ProjectForTesting projectToUse, BaseObject parentOfTask, String tagSubtaskIdsTag) throws Exception
+	public static void verifyIsAssignmentDataSuperseded(ProjectForTesting projectToUse, BaseObject parentOfTask, String tagSubtaskIdsTag) throws Exception
 	{
 		projectToUse.setProjectStartDate(2005);
 		projectToUse.setProjectEndDate(2006);
