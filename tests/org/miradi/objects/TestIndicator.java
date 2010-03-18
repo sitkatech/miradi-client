@@ -135,7 +135,7 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 		assertEquals("wrong work units for methods", 45.0, ProjectForTesting.calculateTimePeriodCosts(objectWithNoTasks, dateUnit));
 	}
 	
-	public void testIsAssignmentSuperseded() throws Exception
+	public void testIsAssignmentDataSuperseded() throws Exception
 	{
 		Indicator indicator = getProject().createIndicator();
 		TestTask.verifyIsAssignmentDataSuperseded(getProject(), indicator, Indicator.TAG_METHOD_IDS);
