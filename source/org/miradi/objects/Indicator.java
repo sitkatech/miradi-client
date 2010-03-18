@@ -241,6 +241,7 @@ public class Indicator extends BaseObject
 			IntermediateResult.getObjectType(),
 			ThreatReductionResult.getObjectType(),
 			Target.getObjectType(),
+			HumanWelfareTarget.getObjectType(),
 			KeyEcologicalAttribute.getObjectType(),
 		};
 	}

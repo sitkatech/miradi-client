@@ -52,7 +52,10 @@ public class Goal extends Desire
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
-		return new int[] {Target.getObjectType()};
+		return new int[] {
+			Target.getObjectType(),
+			HumanWelfareTarget.getObjectType(),
+		};
 	}
 	
 	public static int getObjectType()

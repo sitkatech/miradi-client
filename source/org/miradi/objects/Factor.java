@@ -71,12 +71,6 @@ abstract public class Factor extends BaseObject
 	}
 	
 	@Override
-	public int[] getTypesThatCanOwnUs()
-	{
-		return new int[] {};
-	}
-	
-	@Override
 	public ORefList getOwnedObjects(int objectType)
 	{
 		ORefList list = super.getOwnedObjects(objectType);

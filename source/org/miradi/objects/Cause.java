@@ -98,6 +98,12 @@ public class Cause extends Factor
 	}
 
 	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return new int[] {};
+	}
+	
+	@Override
 	public String getPseudoData(String fieldTag)
 	{
 		if (fieldTag.equals(PSEUDO_TAG_TAXONOMY_CODE_VALUE))
