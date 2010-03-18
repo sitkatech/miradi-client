@@ -127,7 +127,7 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 		TestIndicator.verifyGetWorkUnits(getProject(), Strategy.getObjectType(), Strategy.TAG_ACTIVITY_IDS);
 	}
 	
-	public void testIsAssignmentSuperseded() throws Exception
+	public void testIsAssignmentDataSuperseded() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();
 		TestTask.verifyIsAssignmentDataSuperseded(getProject(), strategy, Strategy.TAG_ACTIVITY_IDS);

@@ -44,7 +44,7 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		return Task.getObjectType();
 	}
 	
-	public void testIsAssignmentSuperseded() throws Exception
+	public void testIsAssignmentDataSuperseded() throws Exception
 	{
 		Task activity = getProject().createActivity();
 		verifyIsAssignmentDataSuperseded(getProject(), activity, Task.TAG_SUBTASK_IDS);
