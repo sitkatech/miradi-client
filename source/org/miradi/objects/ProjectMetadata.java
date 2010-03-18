@@ -83,7 +83,7 @@ public class ProjectMetadata extends BaseObject
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
-		return new int[] {};
+		return NO_OWNERS;
 	}
 	
 	public static int getObjectType()

@@ -100,7 +100,7 @@ public class Cause extends Factor
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
-		return new int[] {};
+		return NO_OWNERS;
 	}
 	
 	@Override

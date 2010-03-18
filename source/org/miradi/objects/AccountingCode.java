@@ -64,7 +64,7 @@ public class AccountingCode extends BaseObject
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
-		return new int[] {};
+		return NO_OWNERS;
 	}
 	
 	@Override
