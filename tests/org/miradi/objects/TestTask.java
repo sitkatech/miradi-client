@@ -55,28 +55,28 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		projectToUse.setProjectStartDate(2005);
 		projectToUse.setProjectEndDate(2006);
 		
-		assertFalse("parent without subtasks is superseded?", parentOfTask.isAssignmentSuperseded(dateUnit2006));
+		assertFalse("parent without subtasks is superseded?", parentOfTask.isAssignmentDataSuperseded(dateUnit2006));
 		
 		ResourceAssignment parentOfTaskResourceAssignment2005 = projectToUse.addResourceAssignment(parentOfTask, 1.0, 2005, 2005);
 		ExpenseAssignment parentOfTaskExpenseAssignment2005 = projectToUse.addExpenseAssignment(parentOfTask, dateUnit2005, 2.0);
 		ResourceAssignment parentOfTaskResourceAssignment2006 = projectToUse.addResourceAssignment(parentOfTask, 1.0, 2006, 2006);
 		ExpenseAssignment parentOfTaskExpenseAssignment2006 = projectToUse.addExpenseAssignment(parentOfTask, dateUnit2006, 2.0);
-		assertFalse("resource assignment is superseded?", parentOfTaskResourceAssignment2006.isAssignmentSuperseded(dateUnit2006));
-		assertFalse("expense assignment is superseded?", parentOfTaskExpenseAssignment2006.isAssignmentSuperseded(dateUnit2006));		
+		assertFalse("resource assignment is superseded?", parentOfTaskResourceAssignment2006.isAssignmentDataSuperseded(dateUnit2006));
+		assertFalse("expense assignment is superseded?", parentOfTaskExpenseAssignment2006.isAssignmentDataSuperseded(dateUnit2006));		
 		
 		Task subTask = addSubtask(projectToUse, parentOfTask, tagSubtaskIdsTag);
 		ResourceAssignment subTaskResourceAssignment = projectToUse.addResourceAssignment(subTask, 10.0, 2005, 2005);
 		ExpenseAssignment subTaskExpenseAssignment = projectToUse.addExpenseAssignment(subTask, dateUnit2005, 1.0);
-		assertFalse("subtask's resource assignment is superseded?", subTaskResourceAssignment.isAssignmentSuperseded(dateUnit2005));
-		assertFalse("subtask's expense assignment is superseded?", subTaskExpenseAssignment.isAssignmentSuperseded(dateUnit2005));		
-		assertTrue("parent of task resource assignment is not superseded?", parentOfTaskResourceAssignment2005.isAssignmentSuperseded(dateUnit2005));
-		assertTrue("parent of task expense assignment is not superseded?", parentOfTaskExpenseAssignment2005.isAssignmentSuperseded(dateUnit2005));
+		assertFalse("subtask's resource assignment is superseded?", subTaskResourceAssignment.isAssignmentDataSuperseded(dateUnit2005));
+		assertFalse("subtask's expense assignment is superseded?", subTaskExpenseAssignment.isAssignmentDataSuperseded(dateUnit2005));		
+		assertTrue("parent of task resource assignment is not superseded?", parentOfTaskResourceAssignment2005.isAssignmentDataSuperseded(dateUnit2005));
+		assertTrue("parent of task expense assignment is not superseded?", parentOfTaskExpenseAssignment2005.isAssignmentDataSuperseded(dateUnit2005));
 		
 		Task supersedingSubTask = addSubtask(projectToUse, parentOfTask, tagSubtaskIdsTag);
 		projectToUse.addResourceAssignment(supersedingSubTask, 10.0, 2006, 2006);
 		projectToUse.addExpenseAssignment(supersedingSubTask, dateUnit2006, 1.0);
-		assertTrue("resource assignment is not superseded?", parentOfTaskResourceAssignment2006.isAssignmentSuperseded(dateUnit2006));
-		assertTrue("expense assignment is not superseded?", parentOfTaskExpenseAssignment2006.isAssignmentSuperseded(dateUnit2006));		
+		assertTrue("resource assignment is not superseded?", parentOfTaskResourceAssignment2006.isAssignmentDataSuperseded(dateUnit2006));
+		assertTrue("expense assignment is not superseded?", parentOfTaskExpenseAssignment2006.isAssignmentDataSuperseded(dateUnit2006));		
 	}
 
 	public void testGetTotalShareCount() throws Exception

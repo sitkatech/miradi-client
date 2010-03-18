@@ -76,7 +76,7 @@ public class ExpenseAssignment extends Assignment
 	}
 	
 	@Override
-	public boolean isAssignmentSuperseded(DateUnit dateUnit) throws Exception
+	public boolean isAssignmentDataSuperseded(DateUnit dateUnit) throws Exception
 	{
 		return getOwner().hasAnySubtaskExpenseData(dateUnit);
 	}

@@ -506,7 +506,7 @@ abstract public class BaseObject
 		id = newId;
 	}
 	
-	public boolean isAssignmentSuperseded(DateUnit dateUnit) throws Exception
+	public boolean isAssignmentDataSuperseded(DateUnit dateUnit) throws Exception
 	{		
 		return false;
 	}
