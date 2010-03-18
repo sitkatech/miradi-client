@@ -306,13 +306,9 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		File xmlFile = createTempFileFromName("$$$$conproVersion2BeforeImport.xml");
 		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFill");
 		
-		Indicator indicatorToBeShared = projectToFill.createIndicator();
-		IdList indicatorIds = new IdList(Indicator.getObjectType());
-		indicatorIds.add(indicatorToBeShared.getId());
-		
 		DiagramFactor diagramFactorThreat = projectToFill.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		Cause threat = (Cause) diagramFactorThreat.getWrappedFactor();
-		projectToFill.fillObjectUsingCommand(threat, Cause.TAG_INDICATOR_IDS, indicatorIds.toString());
+		Indicator indicatorToBeShared = projectToFill.createIndicator(threat);
 		projectToFill.enableAsThreat(threat);
 		
 		DiagramFactor diagramFactorTarget = projectToFill.createDiagramFactorAndAddToDiagram(Target.getObjectType());
@@ -323,7 +319,8 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		projectToFill.populateTarget(target);
 		ORefList keaRefs = target.getKeyEcologicalAttributeRefs();
 		KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(projectToFill, keaRefs.get(0));
-		indicatorIds.addAll(kea.getIndicatorIds());
+		IdList indicatorIds = (kea.getIndicatorIds());
+		indicatorIds.add(indicatorToBeShared.getId());
 		projectToFill.fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds.toString());
 		try
 		{
@@ -418,7 +415,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		Measurement measurement = getProject().createMeasurement();
 		getProject().fillObjectUsingCommand(measurement, Measurement.TAG_TREND, TrendQuestion.STRONG_DECREASE_CODE);
 		
-		Indicator indicator = getProject().createIndicator();
+		Indicator indicator = getProject().createIndicatorWithCauseParent();
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, new ORefList(measurement));
 		
 		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");

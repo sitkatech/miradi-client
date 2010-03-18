@@ -24,6 +24,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -88,14 +89,20 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		getProject().appendActivityToStrategy(strategy, activity);
 		assertEquals("wrong activity(Shared) share count?", 2, activity.getTotalShareCount());
 		
-		Task task = getProject().createTask();
-		getProject().fillObjectUsingCommand(activity, Task.TAG_SUBTASK_IDS, new ORefList(task), Task.getObjectType());
+		Task task = getProject().createTask(activity);
 		assertEquals("wrong task share count?", 2, task.getTotalShareCount());
 		
-		Task taskWithoutParent = getProject().createTask();
-		getProject().fillObjectUsingCommand(task, Task.TAG_SUBTASK_IDS, new ORefList(taskWithoutParent), Task.getObjectType());
+		Task taskWithDeletedParent = getProject().createTask(task);
 		getProject().deleteObject(task);
-		assertEquals("wrong parentless task share count?", 1, taskWithoutParent.getTotalShareCount());
+		EAM.setLogToString();
+		try
+		{
+			assertEquals("wrong parentless task share count?", 1, taskWithDeletedParent.getTotalShareCount());
+		}
+		finally
+		{
+			EAM.setLogToConsole();
+		}
 	}
 
 	public void testBasics() throws Exception
@@ -228,10 +235,7 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 
 	private static Task addSubtask(ProjectForTesting projectToUse, BaseObject parentOfTask, String tagSubtaskIds) throws Exception
 	{
-		Task subtask = projectToUse.createTask();
-		IdList subtaskIds = new IdList(Task.getObjectType(), parentOfTask.getData(tagSubtaskIds));
-		subtaskIds.add(subtask.getId());
-		parentOfTask.setData(tagSubtaskIds, subtaskIds.toString());
+		Task subtask = projectToUse.createTask(parentOfTask);
 		
 		return subtask;
 	}
@@ -282,8 +286,7 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 	public void testIsPartOfASharedTaskTree() throws Exception
 	{
 		Strategy strategy1 = getProject().createStrategy();
-		Task activity = getProject().createTask();
-		getProject().appendActivityToStrategy(strategy1, activity);		
+		Task activity = getProject().createTask(strategy1);
 		assertFalse("activity should not be shared?", activity.isPartOfASharedTaskTree());
 		
 		ORef tableSettingsRef = getProject().createObject(TableSettings.getObjectType());
@@ -294,21 +297,18 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		getProject().appendActivityToStrategy(strategy2, activity);
 		assertTrue("activity should be shared?", activity.isPartOfASharedTaskTree());
 		
-		Task method = getProject().createTask();
-		Indicator indicator1 = getProject().createIndicator();
-		getProject().appendMethodToIndicator(indicator1, method);
+		Indicator indicator1 = getProject().createIndicatorWithCauseParent();
+		Task method = getProject().createTask(indicator1);
 		assertFalse("method should not be shared?", method.isPartOfASharedTaskTree());
 		
-		Indicator indicator2 = getProject().createIndicator();
+		Indicator indicator2 = getProject().createIndicatorWithCauseParent();
 		getProject().appendMethodToIndicator(indicator2, method);
 		assertTrue("method should be shared?", method.isPartOfASharedTaskTree());
 		
-		Task task = getProject().createTask();
-		getProject().appendTaskToTask(method, task);
+		Task task = getProject().createTask(method);
 		assertTrue("task should be shared, since parent method is shared?", task.isPartOfASharedTaskTree());
 		
-		Task subTask = getProject().createTask();
-		getProject().appendTaskToTask(task, subTask);
+		Task subTask = getProject().createTask(task);
 		assertTrue("subtask should be shared, since parent task is shared?", subTask.isPartOfASharedTaskTree());
 	}
 	
