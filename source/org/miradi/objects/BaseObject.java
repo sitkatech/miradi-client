@@ -516,7 +516,7 @@ abstract public class BaseObject
 		return hasAnySubtaskAssignmentData(dateUnit, TAG_RESOURCE_ASSIGNMENT_IDS);
 	}
 	
-	protected boolean hasSupersededExpenseData(DateUnit dateUnit) throws Exception
+	protected boolean hasAnySubtaskExpenseData(DateUnit dateUnit) throws Exception
 	{	
 		return hasAnySubtaskAssignmentData(dateUnit, TAG_EXPENSE_ASSIGNMENT_REFS);
 	}
