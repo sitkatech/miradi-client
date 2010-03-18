@@ -243,7 +243,7 @@ public class Strategy extends Factor
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
-		return new int[] {};
+		return NO_OWNERS;
 	}
 	
 	public static int getObjectType()

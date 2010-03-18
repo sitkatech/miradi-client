@@ -84,7 +84,7 @@ public class BaseObjectNotSpecifiedNode extends AbstractPlanningTreeNode
 		@Override
 		public int[] getTypesThatCanOwnUs()
 		{
-			return new int[] {};
+			return NO_OWNERS;
 		}
 		
 		private int objectType;

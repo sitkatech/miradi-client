@@ -70,7 +70,7 @@ public class TableSettings extends BaseObject
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
-		return new int[] {};
+		return NO_OWNERS;
 	}
 	
 	public StringMap getColumnWidthMap()
