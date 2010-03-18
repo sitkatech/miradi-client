@@ -137,7 +137,7 @@ public class ResourceAssignment extends Assignment
 	@Override
 	public boolean isAssignmentSuperseded(DateUnit dateUnit) throws Exception
 	{
-		return getOwner().hasSupersededResourceData(dateUnit);
+		return getOwner().hasAnySubtaskResourceData(dateUnit);
 	}
 	
 	@Override

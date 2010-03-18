@@ -511,7 +511,7 @@ abstract public class BaseObject
 		return false;
 	}
 	
-	protected boolean hasSupersededResourceData(DateUnit dateUnit) throws Exception
+	protected boolean hasAnySubtaskResourceData(DateUnit dateUnit) throws Exception
 	{
 		return hasAnySubtaskAssignmentData(dateUnit, TAG_RESOURCE_ASSIGNMENT_IDS);
 	}
