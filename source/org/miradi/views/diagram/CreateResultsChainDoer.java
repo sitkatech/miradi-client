@@ -22,6 +22,8 @@ package org.miradi.views.diagram;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ViewData;
@@ -69,7 +71,12 @@ public class CreateResultsChainDoer extends ViewDoer
 
 	public static void createResultsChain(Project project, DiagramView diagramView) throws Exception
 	{
-		ResultsChainCreatorHelper creatorHelper = new ResultsChainCreatorHelper(project, diagramView.getDiagramPanel());
+		DiagramModel diagramModel = diagramView.getDiagramModel();
+		FactorCell[] selectedCells = new FactorCell[0];
+		if (diagramView.getDiagramPanel().getCurrentDiagramComponent() != null)
+			selectedCells = diagramView.getDiagramPanel().getOnlySelectedFactorCells();
+		
+		ResultsChainCreatorHelper creatorHelper = new ResultsChainCreatorHelper(project, diagramModel, selectedCells);
 
 		ORef newResultsChainRef = creatorHelper.createResultsChain();
 		selectResultsChain(project, diagramView, newResultsChainRef);

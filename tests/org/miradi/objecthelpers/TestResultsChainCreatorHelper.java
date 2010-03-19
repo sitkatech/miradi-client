@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objecthelpers;
 
+import org.miradi.diagram.cells.FactorCell;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
@@ -39,7 +40,7 @@ public class TestResultsChainCreatorHelper extends TestCaseWithProject
 		ORef intermediateResultRef = getProject().createObject(IntermediateResult.getObjectType());
 		IntermediateResult intermediateResult = IntermediateResult.find(getProject(), intermediateResultRef);
 		
-		ResultsChainCreatorHelper helper = new ResultsChainCreatorHelper(getProject(), null, null);
+		ResultsChainCreatorHelper helper = new ResultsChainCreatorHelper(getProject(), getDiagramModel(), new FactorCell[0]);
 		helper.transferAnnotationsToNewFactor(cause, intermediateResultRef, Factor.TAG_INDICATOR_IDS);
 		assertEquals("no indicators should have been transferred?", 0, intermediateResult.getOnlyDirectIndicatorRefs().size());
 		
