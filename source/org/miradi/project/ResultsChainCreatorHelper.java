@@ -77,16 +77,16 @@ public class ResultsChainCreatorHelper
 			HashSet<DiagramFactor> diagramFactors = getSelectedAndRelatedDiagramFactors();
 			DiagramLink[] diagramLinks = getDiagramLinksInChain();
 			CommandCreateObject createResultsChain = new CommandCreateObject(ObjectType.RESULTS_CHAIN_DIAGRAM);
-			project.executeCommand(createResultsChain);
+			getProject().executeCommand(createResultsChain);
 			
 			ORef newResultsChainRef = createResultsChain.getObjectRef();
-			ResultsChainDiagram resultsChain = (ResultsChainDiagram) project.findObject(newResultsChainRef);
+			ResultsChainDiagram resultsChain = (ResultsChainDiagram) getProject().findObject(newResultsChainRef);
 			
 			HashMap clonedDiagramFactors = cloneDiagramFactors(diagramFactors);
 			ORefList clonedDiagramFactorRefs = extractClonedObjectRefs(clonedDiagramFactors);
 			IdList idList = clonedDiagramFactorRefs.convertToIdList(DiagramFactor.getObjectType());
 			CommandSetObjectData addFactorsToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList);
-			project.executeCommand(addFactorsToChain);
+			getProject().executeCommand(addFactorsToChain);
 			
 			updateAllGroupBoxChildren(clonedDiagramFactors);
 			
@@ -94,13 +94,13 @@ public class ResultsChainCreatorHelper
 			ORefList clonedDiagramLinkRefs = extractClonedObjectRefs(clonedDiagramLinks);
 			IdList diagramLinkList = clonedDiagramLinkRefs.convertToIdList(DiagramLink.getObjectType());
 			CommandSetObjectData addLinksToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkList);
-			project.executeCommand(addLinksToChain);
+			getProject().executeCommand(addLinksToChain);
 			
 			updateAllGroupBoxLinkChildren(clonedDiagramLinks);
 			
 			String label = getFirstStrategyShortLabel(diagramFactors); 
 			CommandSetObjectData setLabelCommand = new CommandSetObjectData(newResultsChainRef, DiagramObject.TAG_LABEL, label);
-			project.executeCommand(setLabelCommand);
+			getProject().executeCommand(setLabelCommand);
 			
 			return newResultsChainRef;
 	}
@@ -125,13 +125,13 @@ public class ResultsChainCreatorHelper
 		for (int childIndex = 0; childIndex < groupBoxChildrenRefs.size(); ++childIndex)
 		{
 			ORef childRef = groupBoxChildrenRefs.get(childIndex);
-			DiagramLink child = DiagramLink.find(project, childRef);
+			DiagramLink child = DiagramLink.find(getProject(), childRef);
 			DiagramLink clonedDiagramLink = clonedDiagramLinks.get(child);
 			newlyClonedChildren.add(clonedDiagramLink.getRef());
 		}
 		
 		CommandSetObjectData setGroupBoxChildren = new CommandSetObjectData(clonedGroupBoxDiagramLink.getRef(), DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, newlyClonedChildren.toString());
-		project.executeCommand(setGroupBoxChildren);
+		getProject().executeCommand(setGroupBoxChildren);
 	}
 	
 	private void updateAllGroupBoxChildren(HashMap<DiagramFactor, DiagramFactor> clonedDiagramFactors) throws Exception
@@ -154,13 +154,13 @@ public class ResultsChainCreatorHelper
 		for (int childIndex = 0; childIndex < groupBoxRefs.size(); ++childIndex)
 		{
 			ORef childRef = groupBoxRefs.get(childIndex);
-			DiagramFactor child = DiagramFactor.find(project, childRef);
+			DiagramFactor child = DiagramFactor.find(getProject(), childRef);
 			DiagramFactor clonedDiagramFactor = clonedDiagramFactors.get(child);
 			newlyClonedChildren.add(clonedDiagramFactor.getRef());
 		}
 		
 		CommandSetObjectData setGroupBoxChildren = new CommandSetObjectData(clonedGroupBoxDiagramFactor.getRef(), DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, newlyClonedChildren.toString());
-		project.executeCommand(setGroupBoxChildren);
+		getProject().executeCommand(setGroupBoxChildren);
 	}
 
 	private String getFirstStrategyShortLabel(HashSet<DiagramFactor> diagramFactors) throws Exception
@@ -169,7 +169,7 @@ public class ResultsChainCreatorHelper
 		{
 			if (isNonDraftStrategy(diagramFactor))
 			{
-				Strategy strategy = (Strategy) project.findObject(diagramFactor.getWrappedORef());
+				Strategy strategy = (Strategy) getProject().findObject(diagramFactor.getWrappedORef());
 				return getLabel(strategy);
 			}
 		}
@@ -183,7 +183,7 @@ public class ResultsChainCreatorHelper
 		if (diagramFactor.getWrappedType() != ObjectType.STRATEGY)
 			return false;
 		
-		Strategy strategy = (Strategy) project.findObject(diagramFactor.getWrappedORef());
+		Strategy strategy = (Strategy) getProject().findObject(diagramFactor.getWrappedORef());
 		if (strategy.isStatusDraft())
 			return false;
 		
@@ -232,7 +232,7 @@ public class ResultsChainCreatorHelper
 		ORefList childrenRefs = groupBox.getGroupBoxChildrenRefs();
 		for (int childIndex = 0; childIndex < childrenRefs.size(); ++childIndex)
 		{
-			DiagramFactor child = DiagramFactor.find(project, childrenRefs.get(childIndex));
+			DiagramFactor child = DiagramFactor.find(getProject(), childrenRefs.get(childIndex));
 			originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(diagramFactors, child));
 		}
 		
@@ -252,13 +252,13 @@ public class ResultsChainCreatorHelper
 		
 		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorRef);
 		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
-		project.executeCommand(createDiagramFactor);
+		getProject().executeCommand(createDiagramFactor);
 		
 		DiagramFactorId newlyCreatedId = (DiagramFactorId) createDiagramFactor.getCreatedId();
 		Command[] commandsToClone = diagramFactorToBeCloned.createCommandsToMirror(newlyCreatedId);
-		project.executeCommandsWithoutTransaction(commandsToClone);
+		getProject().executeCommandsWithoutTransaction(commandsToClone);
 		
-		DiagramFactor clonedDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, newlyCreatedId));
+		DiagramFactor clonedDiagramFactor = (DiagramFactor) getProject().findObject(new ORef(ObjectType.DIAGRAM_FACTOR, newlyCreatedId));
 		originalAndClonedDiagramFactors.put(diagramFactorToBeCloned, clonedDiagramFactor);
 		
 		return originalAndClonedDiagramFactors;
@@ -327,9 +327,9 @@ public class ResultsChainCreatorHelper
 
 	private ORef createNewFactorAndSetLabel(DiagramFactor diagramFactor) throws Exception, CommandFailedException
 	{
-		Factor factor = (Factor) project.findObject(diagramFactor.getWrappedORef());
+		Factor factor = (Factor) getProject().findObject(diagramFactor.getWrappedORef());
 		CommandCreateObject createCommand = createNewFactorCommand(factor);
-		project.executeCommand(createCommand);
+		getProject().executeCommand(createCommand);
 		
 		ORef newlyCreatedRef = createCommand.getObjectRef();
 		transferAnnotationsToNewFactor(factor, newlyCreatedRef, Factor.TAG_INDICATOR_IDS);
@@ -337,7 +337,7 @@ public class ResultsChainCreatorHelper
 		
 		String clonedLabel = new String("[ " + factor.getLabel() + " ]");
 		CommandSetObjectData setLabelCommand = new CommandSetObjectData(newlyCreatedRef, Factor.TAG_LABEL, clonedLabel);
-		project.executeCommand(setLabelCommand);
+		getProject().executeCommand(setLabelCommand);
 		
 		possiblySetThreatReductionResultsDirectThreat(factor, newlyCreatedRef);
 		
@@ -361,7 +361,7 @@ public class ResultsChainCreatorHelper
 			return;
 		
 		CommandSetObjectData setDirectThreat = new CommandSetObjectData(newlyCreatedRef, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, factor.getRef().toString());
-		project.executeCommand(setDirectThreat);
+		getProject().executeCommand(setDirectThreat);
 	}
 
 	private CommandCreateObject createNewFactorCommand(Factor factor) throws Exception
@@ -534,8 +534,8 @@ public class ResultsChainCreatorHelper
 	
 	private boolean canAddLinkToResultsChain(DiagramLink link)
 	{
-		DiagramFactor fromDiagramFactor = DiagramFactor.find(project, link.getFromDiagramFactorRef());
-		DiagramFactor toDiagramFactor = DiagramFactor.find(project, link.getToDiagramFactorRef());
+		DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), link.getFromDiagramFactorRef());
+		DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), link.getToDiagramFactorRef());
 		
 		return (canAddTypeToResultsChain(fromDiagramFactor) && canAddTypeToResultsChain(toDiagramFactor));
 	}
@@ -550,12 +550,12 @@ public class ResultsChainCreatorHelper
 		
 		CreateObjectParameter extraInfo = createDiagramLinkExtraInfo(diagramLink, fromDiagramFactor, fromClonedDiagramFactor, toDiagramFactor, toClonedDiagramFactor);
 		CommandCreateObject createDiagramLink = new CommandCreateObject(ObjectType.DIAGRAM_LINK, extraInfo);
-		project.executeCommand(createDiagramLink);
+		getProject().executeCommand(createDiagramLink);
 
-		DiagramLink newlyCreated = (DiagramLink) project.findObject(createDiagramLink.getObjectRef());
+		DiagramLink newlyCreated = (DiagramLink) getProject().findObject(createDiagramLink.getObjectRef());
 		PointList bendPoints = diagramLink.getBendPoints();
 		CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(newlyCreated, DiagramLink.TAG_BEND_POINTS, bendPoints);
-		project.executeCommand(setBendPoints);
+		getProject().executeCommand(setBendPoints);
 
 		return newlyCreated;
 	}
@@ -568,7 +568,7 @@ public class ResultsChainCreatorHelper
 
 		ORef factorLinkRef = new ORef(FactorLink.getObjectType(), new FactorLinkId(FactorLinkId.INVALID.asInt()));
 		if(!diagramLink.isGroupBoxLink())
-			factorLinkRef = new LinkCreator(project).createFactorLink(fromCloned, toCloned);
+			factorLinkRef = new LinkCreator(getProject()).createFactorLink(fromCloned, toCloned);
 
 		return new CreateDiagramFactorLinkParameter(factorLinkRef, fromCloned.getRef(), toCloned.getRef());
 	}
