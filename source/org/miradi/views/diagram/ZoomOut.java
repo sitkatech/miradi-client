@@ -19,19 +19,36 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
+import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.DiagramComponent;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.objects.DiagramObject;
 import org.miradi.views.ViewDoer;
 
+//TODO extract out a parent class for zoom in and zoom out, maybe zoomtofit
 public class ZoomOut extends ViewDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		return true;
 	}
 
+	@Override
 	public void doIt() throws CommandFailedException
 	{
-		DiagramView view = (DiagramView)getView();
-		view.getCurrentDiagramComponent().zoom(1.0/ZoomIn.ZOOM_FACTOR);
+		try
+		{
+			DiagramView view = getDiagramView();
+			DiagramComponent currentDiagramComponent = view.getCurrentDiagramComponent();
+			double newScale = currentDiagramComponent.getScale() * (1.0/ZoomIn.ZOOM_FACTOR);
+			DiagramObject diagramObject = currentDiagramComponent.getDiagramObject();
+			CommandSetObjectData setZoom = new CommandSetObjectData(diagramObject, DiagramObject.TAG_ZOOM_SCALE, Double.toString(newScale));
+			getProject().executeCommand(setZoom);
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 }

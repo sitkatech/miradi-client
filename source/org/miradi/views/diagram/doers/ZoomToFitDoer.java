@@ -22,8 +22,10 @@ package org.miradi.views.diagram.doers;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.objects.DiagramObject;
 import org.miradi.views.ViewDoer;
 import org.miradi.views.diagram.DiagramView;
 
@@ -44,18 +46,27 @@ public class ZoomToFitDoer extends ViewDoer
 		if (!isAvailable())
 			return;
 		
-		DiagramComponent diagram = getDiagramComponent();
-		Rectangle2D totalBounds = diagram.getTotalBoundsUsed();		
-		Rectangle originalBounds = diagram.getVisibleRect();
-		
-		double verticalRatio = originalBounds.getHeight() / totalBounds.getHeight() ;
-		double horizontalRatio =  originalBounds.getWidth() / totalBounds.getWidth();
-		
-		double scaleRatio = Math.min(verticalRatio, horizontalRatio);
-		diagram.setZoomScale(scaleRatio);
-		
-		diagram.toScreen(totalBounds);
-		diagram.scrollRectToVisible(totalBounds.getBounds());
+		try
+		{
+			DiagramComponent diagram = getDiagramComponent();
+			Rectangle2D totalBounds = diagram.getTotalBoundsUsed();		
+			Rectangle originalBounds = diagram.getVisibleRect();
+
+			double verticalRatio = originalBounds.getHeight() / totalBounds.getHeight() ;
+			double horizontalRatio =  originalBounds.getWidth() / totalBounds.getWidth();
+
+			double scaleRatio = Math.min(verticalRatio, horizontalRatio);
+			
+			CommandSetObjectData setZoom = new CommandSetObjectData(diagram.getDiagramObject(), DiagramObject.TAG_ZOOM_SCALE, Double.toString(scaleRatio));
+			getProject().executeCommand(setZoom);
+
+			diagram.toScreen(totalBounds);
+			diagram.scrollRectToVisible(totalBounds.getBounds());
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 	
 	private DiagramComponent getDiagramComponent()

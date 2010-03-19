@@ -36,7 +36,6 @@ import javax.swing.JTable;
 import org.martus.swing.UiScrollPane;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.dialogs.treetables.TreeTableWithRowHeightSaver;
-import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.DiagramObject;
 import org.miradi.views.diagram.DiagramSplitPane;
@@ -198,7 +197,7 @@ public  class BufferedImageFactory
 	public static DiagramComponent createDiagramComponentWithCurrentSettings(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
 	{
 		DiagramComponent diagram = createDiagramComponent(mainWindow, diagramObject);
-		double currentZoomSetting = mainWindow.getDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM);
+		double currentZoomSetting = diagram.getDiagramObject().getZoomScale();
 		diagram.setScale(currentZoomSetting);
 		
 		return diagram;

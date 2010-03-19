@@ -31,6 +31,7 @@ import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.IdListData;
+import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
@@ -384,6 +385,7 @@ abstract public class DiagramObject extends BaseObject
 		return allDiagramFactorIds.getIdList().contains(diagramFactorId);
 	}
 	
+	@Override
 	public ORefList getOwnedObjects(int objectType)
 	{
 		ORefList list = super.getOwnedObjects(objectType);
@@ -460,6 +462,12 @@ abstract public class DiagramObject extends BaseObject
 		return referrerRefs;	
 	}
 	
+	public double getZoomScale()
+	{
+		return zoomScale.getSafeValue();
+	}
+	
+	@Override
 	public String getPseudoData(String fieldTag)
 	{
 		if (fieldTag.equals(PSEUDO_COMBINED_LABEL))
@@ -468,11 +476,13 @@ abstract public class DiagramObject extends BaseObject
 		return super.getPseudoData(fieldTag);
 	}
 	
+	@Override
 	public String getShortLabel()
 	{
 		return shortLabel.get();
 	}
 	
+	@Override
 	public String toString()
 	{
 		return combineShortLabelAndLabel();
@@ -504,6 +514,7 @@ abstract public class DiagramObject extends BaseObject
 		return false;
 	}
 	
+	@Override
 	public void clear()
 	{
 		super.clear();
@@ -514,7 +525,9 @@ abstract public class DiagramObject extends BaseObject
 		details = new StringData(TAG_DETAIL);
 		hiddenTypes = new CodeListData(TAG_HIDDEN_TYPES, getQuestion(DiagramLegendQuestion.class));
 		selectedTaggedObjectSetRefs = new ORefListData(TAG_SELECTED_TAGGED_OBJECT_SET_REFS);
-		combinedLabel = new PseudoStringData(PSEUDO_COMBINED_LABEL);	
+		zoomScale = new NumberData(TAG_ZOOM_SCALE);
+		
+		combinedLabel = new PseudoStringData(PSEUDO_COMBINED_LABEL);
 		
 		addField(TAG_DIAGRAM_FACTOR_IDS, allDiagramFactorIds);
 		addField(TAG_DIAGRAM_FACTOR_LINK_IDS, allDiagramFactorLinkIds);
@@ -522,6 +535,8 @@ abstract public class DiagramObject extends BaseObject
 		addField(TAG_DETAIL, details);
 		addPresentationDataField(TAG_HIDDEN_TYPES, hiddenTypes);
 		addPresentationDataField(TAG_SELECTED_TAGGED_OBJECT_SET_REFS, selectedTaggedObjectSetRefs);
+		addPresentationDataField(TAG_ZOOM_SCALE, zoomScale);
+		
 		addField(PSEUDO_COMBINED_LABEL, combinedLabel);
 	}
 	
@@ -531,6 +546,8 @@ abstract public class DiagramObject extends BaseObject
 	public static final String TAG_DETAIL = "Detail";
 	public static final String TAG_HIDDEN_TYPES = "HiddenTypes";
 	public static final String TAG_SELECTED_TAGGED_OBJECT_SET_REFS = "SelectedTaggedObjectSetRefs";
+	public static final String TAG_ZOOM_SCALE = "ZoomScale";
+	
 	public static final String PSEUDO_COMBINED_LABEL = "PseudoCombinedLabel";
  	
 	private IdListData allDiagramFactorIds;
@@ -539,5 +556,7 @@ abstract public class DiagramObject extends BaseObject
 	private StringData details;
 	private CodeListData hiddenTypes;
 	private ORefListData selectedTaggedObjectSetRefs;
+	private NumberData zoomScale;
+	
 	private PseudoStringData combinedLabel;
 }

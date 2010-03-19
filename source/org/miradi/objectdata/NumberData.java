@@ -73,6 +73,14 @@ public class NumberData extends ObjectData
 	{
 		return (int)value;
 	}
+	
+	public double getSafeValue()
+	{
+		if (new Double(value).isNaN())
+			return 0;
+
+		return value;
+	}
 
 	double value;
 }
