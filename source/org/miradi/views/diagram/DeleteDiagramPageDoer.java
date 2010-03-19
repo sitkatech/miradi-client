@@ -33,6 +33,7 @@ import org.miradi.project.Project;
 
 abstract public class DeleteDiagramPageDoer extends DiagramPageDoer
 {
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if (! isAvailable())
