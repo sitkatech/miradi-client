@@ -326,8 +326,8 @@ public class ResultsChainCreatorHelper
 		getProject().executeCommand(createCommand);
 		
 		ORef newlyCreatedRef = createCommand.getObjectRef();
-		transferAnnotationsToNewFactor(factor, newlyCreatedRef, Factor.TAG_INDICATOR_IDS);
-		transferAnnotationsToNewFactor(factor, newlyCreatedRef, Factor.TAG_OBJECTIVE_IDS);
+		transferAnnotationsToNewFactor(factor.getRef(), newlyCreatedRef, Factor.TAG_INDICATOR_IDS);
+		transferAnnotationsToNewFactor(factor.getRef(), newlyCreatedRef, Factor.TAG_OBJECTIVE_IDS);
 		
 		String clonedLabel = new String("[ " + factor.getLabel() + " ]");
 		CommandSetObjectData setLabelCommand = new CommandSetObjectData(newlyCreatedRef, Factor.TAG_LABEL, clonedLabel);
@@ -338,14 +338,13 @@ public class ResultsChainCreatorHelper
 		return newlyCreatedRef;
 	}
 
-	public void transferAnnotationsToNewFactor(Factor factor, ORef newlyCreatedRef, String tag) throws Exception
+	public void transferAnnotationsToNewFactor(ORef tranferringFromFactorRef, ORef transferringToFactorRef, String tag) throws Exception
 	{
-		String idsToMoveToTransfer = factor.getData(tag);
-		
-		CommandSetObjectData setNewlyCreatedToPointToIds = new CommandSetObjectData(newlyCreatedRef, tag, idsToMoveToTransfer);
+		String idsToMoveToTransfer = getProject().getObjectData(tranferringFromFactorRef, tag);
+		CommandSetObjectData setNewlyCreatedToPointToIds = new CommandSetObjectData(transferringToFactorRef, tag, idsToMoveToTransfer);
 		getProject().executeCommand(setNewlyCreatedToPointToIds);
 		
-		CommandSetObjectData clearOriginalIds = new CommandSetObjectData(factor, tag, "");
+		CommandSetObjectData clearOriginalIds = new CommandSetObjectData(tranferringFromFactorRef, tag, "");
 		getProject().executeCommand(clearOriginalIds);
 	}
 
