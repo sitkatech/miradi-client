@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-19 09:35-0500\n"
+"POT-Creation-Date: 2010-03-19 15:56-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4174,11 +4174,11 @@ msgstr "警告：项目结束日期在起始日期之前 \t\t"
 msgid "Unable to save preferences"
 msgstr "无法保存优先选项 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1043
+#: Miradi/source/org/miradi/main/MainWindow.java:1033
 msgid "Unable to launch external web browser"
 msgstr "无法运行外部网页浏览器 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1059
+#: Miradi/source/org/miradi/main/MainWindow.java:1049
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
