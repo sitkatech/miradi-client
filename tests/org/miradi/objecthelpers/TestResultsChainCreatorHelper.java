@@ -37,22 +37,23 @@ public class TestResultsChainCreatorHelper extends TestCaseWithProject
 	public void testTransferAnnotationsToNewlyCreatedFactor() throws Exception
 	{
 		Cause cause = getProject().createCause();
+		ORef causeRef = cause.getRef();
 		ORef intermediateResultRef = getProject().createObject(IntermediateResult.getObjectType());
 		IntermediateResult intermediateResult = IntermediateResult.find(getProject(), intermediateResultRef);
 		
 		ResultsChainCreatorHelper helper = new ResultsChainCreatorHelper(getProject(), getDiagramModel(), new FactorCell[0]);
-		helper.transferAnnotationsToNewFactor(cause, intermediateResultRef, Factor.TAG_INDICATOR_IDS);
+		helper.transferAnnotationsToNewFactor(causeRef, intermediateResultRef, Factor.TAG_INDICATOR_IDS);
 		assertEquals("no indicators should have been transferred?", 0, intermediateResult.getOnlyDirectIndicatorRefs().size());
 		
-		helper.transferAnnotationsToNewFactor(cause, intermediateResultRef, Factor.TAG_OBJECTIVE_IDS);
+		helper.transferAnnotationsToNewFactor(causeRef, intermediateResultRef, Factor.TAG_OBJECTIVE_IDS);
 		assertEquals("no objectives should have been transferred?", 0, intermediateResult.getObjectiveRefs().size());
 		
 		getProject().createIndicator(cause);
 		getProject().createObjective(cause);
-		helper.transferAnnotationsToNewFactor(cause, intermediateResultRef, Factor.TAG_INDICATOR_IDS);
+		helper.transferAnnotationsToNewFactor(causeRef, intermediateResultRef, Factor.TAG_INDICATOR_IDS);
 		assertEquals("indicator was not transferred", 1, intermediateResult.getOnlyDirectIndicatorRefs().size());
 		
-		helper.transferAnnotationsToNewFactor(cause, intermediateResultRef, Factor.TAG_OBJECTIVE_IDS);
+		helper.transferAnnotationsToNewFactor(causeRef, intermediateResultRef, Factor.TAG_OBJECTIVE_IDS);
 		assertEquals("objective was not transferred", 1, intermediateResult.getObjectiveRefs().size());
 	}
 }
