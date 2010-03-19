@@ -23,11 +23,10 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.DiagramObject;
-import org.miradi.views.ViewDoer;
 import org.miradi.views.diagram.DiagramView;
 
 //TODO extract out a parent class for zoom in and zoom out, maybe zoomtofit
-public class ZoomOut extends ViewDoer
+public class ZoomOut extends AbstractZoomDoer
 {
 	@Override
 	public boolean isAvailable()
