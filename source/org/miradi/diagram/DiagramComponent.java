@@ -152,7 +152,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
     
     public void updateDiagramZoomSetting()
     {
-    	setScale(mainWindow.getDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM));
+    	setScale(getDiagramObject().getZoomScale());
     }
     
     public void forceRepaint()
@@ -561,7 +561,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	public void setZoomScale(double scale)
 	{
 		setScale(scale);
-		getMainWindow().saveDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM, scale);
 	}
 		
 	public boolean hasLocation()

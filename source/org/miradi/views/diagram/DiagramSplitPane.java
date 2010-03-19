@@ -401,9 +401,25 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		
 		if (commandSetObjectData.getObjectType() == DiagramLink.getObjectType())
 			handleDiagramLinkContentsChange(commandSetObjectData);
-		
+
 		handleGroupBoxTypes(commandSetObjectData);
+		handleDiagramZooming(commandSetObjectData);
+	}
+
+	private void handleDiagramZooming(CommandSetObjectData commandSetObjectData)
+	{
+		int objectType = commandSetObjectData.getObjectType();
+		if (!DiagramObject.isDiagramObject(objectType))
+			return;
 		
+		if (!commandSetObjectData.getFieldTag().equals(DiagramObject.TAG_ZOOM_SCALE))
+			return;
+		
+		DiagramComponent currentDiagramComponent = getCurrentDiagramComponent();
+		if (currentDiagramComponent == null)
+			return;
+
+			currentDiagramComponent.updateDiagramZoomSetting();
 	}
 
 	private void handleDiagramLinkContentsChange(CommandSetObjectData commandSetObjectData) throws Exception
