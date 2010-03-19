@@ -27,7 +27,6 @@ import org.miradi.diagram.DiagramComponent;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.DiagramObject;
 import org.miradi.views.ViewDoer;
-import org.miradi.views.diagram.DiagramView;
 
 public class ZoomToFitDoer extends ViewDoer
 {
@@ -37,7 +36,7 @@ public class ZoomToFitDoer extends ViewDoer
 		if (!isInDiagram())
 			return false;
 		
-		return getDiagramComponent().getDiagramModel().getAllFactorCells().size() > 0;
+		return getDiagramView().getCurrentDiagramComponent().getDiagramModel().getAllFactorCells().size() > 0;
 	}
 
 	@Override
@@ -48,7 +47,7 @@ public class ZoomToFitDoer extends ViewDoer
 		
 		try
 		{
-			DiagramComponent diagram = getDiagramComponent();
+			DiagramComponent diagram = getDiagramView().getCurrentDiagramComponent();
 			Rectangle2D totalBounds = diagram.getTotalBoundsUsed();		
 			Rectangle originalBounds = diagram.getVisibleRect();
 
@@ -67,11 +66,5 @@ public class ZoomToFitDoer extends ViewDoer
 		{
 			throw new CommandFailedException(e);
 		}
-	}
-	
-	private DiagramComponent getDiagramComponent()
-	{
-		DiagramView view = (DiagramView)getView();
-		return view.getCurrentDiagramComponent();
 	}	
 }
