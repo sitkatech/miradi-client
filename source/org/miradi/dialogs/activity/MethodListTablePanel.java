@@ -35,6 +35,6 @@ public class MethodListTablePanel extends ObjectListTablePanel
 		
 		addObjectActionButton(ActionCreateMethod.class, getParentPicker());
 		addUnknownTypeOfButton(ActionDeleteMethod.class);
-		addUnknownTypeOfButton(ActionShareMethod.class);
+		addObjectActionButton(ActionShareMethod.class, getParentPicker());
 	}
 }

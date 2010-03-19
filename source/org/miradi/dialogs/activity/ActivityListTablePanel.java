@@ -40,7 +40,7 @@ public class ActivityListTablePanel extends ObjectListTablePanel
 		
 		addObjectActionButton(ActionCreateActivity.class, getParentPicker());
 		addUnknownTypeOfButton(ActionDeleteActivity.class);
-		addUnknownTypeOfButton(ActionShareActivity.class);
+		addObjectActionButton(ActionShareActivity.class, getParentPicker());
 		addUnknownTypeOfButton(ActionActivityMoveUp.class);
 		addUnknownTypeOfButton(ActionActivityMoveDown.class);
 	}
