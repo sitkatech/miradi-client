@@ -51,9 +51,11 @@ public class TestResultsChainCreatorHelper extends TestCaseWithProject
 		getProject().createIndicator(cause);
 		getProject().createObjective(cause);
 		helper.transferAnnotationsToNewFactor(causeRef, intermediateResultRef, Factor.TAG_INDICATOR_IDS);
-		assertEquals("indicator was not transferred", 1, intermediateResult.getOnlyDirectIndicatorRefs().size());
+		assertEquals("indicators was not transferred", 1, intermediateResult.getOnlyDirectIndicatorRefs().size());
+		assertEquals("indicators were not removed from cause", 0, cause.getOnlyDirectIndicatorRefs().size());
 		
 		helper.transferAnnotationsToNewFactor(causeRef, intermediateResultRef, Factor.TAG_OBJECTIVE_IDS);
 		assertEquals("objective was not transferred", 1, intermediateResult.getObjectiveRefs().size());
+		assertEquals("objectives were not removed from cause", 0, cause.getObjectiveRefs().size());
 	}
 }
