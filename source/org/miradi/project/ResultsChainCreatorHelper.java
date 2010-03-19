@@ -30,7 +30,6 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramChainObject;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
-import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorLinkId;
@@ -60,16 +59,11 @@ import org.miradi.views.diagram.LinkCreator;
 
 public class ResultsChainCreatorHelper
 {
-	public ResultsChainCreatorHelper(Project projectToUse, DiagramPanel diagramPanelToUse)
-	{
-		this(projectToUse, diagramPanelToUse, diagramPanelToUse.getDiagramModel());
-	}
-	
-	public ResultsChainCreatorHelper(Project projectToUse, DiagramPanel diagramPanelToUse, DiagramModel modelToUse)
+	public ResultsChainCreatorHelper(Project projectToUse, DiagramModel diagramModelToUse, FactorCell[] selectedCellsToUse)
 	{
 		project = projectToUse;
-		diagramPanel = diagramPanelToUse;
-		model = modelToUse;
+		model = diagramModelToUse;
+		selectedCells = selectedCellsToUse;
 	}
 		
 	public ORef createResultsChain() throws Exception
@@ -383,9 +377,6 @@ public class ResultsChainCreatorHelper
 
 	private HashSet<DiagramFactor> getSelectedAndRelatedDiagramFactors()
 	{
-		if (diagramPanel.getCurrentDiagramComponent() == null)
-			return new HashSet<DiagramFactor>();
-		
 		FactorCell[] selectedFactorCells = getSelectedCells();
 		if (containsOnlyStrategies(selectedFactorCells))
 			return getRelatedDiagramFactors(selectedFactorCells);
@@ -442,10 +433,7 @@ public class ResultsChainCreatorHelper
 
 	private FactorCell[] getSelectedCells()
 	{
-		if (diagramPanel.getCurrentDiagramComponent() == null)
-			return new FactorCell[0];
-		
-		return diagramPanel.getOnlySelectedFactorCells();
+		return selectedCells;
 	}
 	
 	private DiagramLink[] getDiagramLinksAndChildrenInSelection()
@@ -598,7 +586,7 @@ public class ResultsChainCreatorHelper
 	}
 
 	private DiagramModel model;
-	private DiagramPanel diagramPanel;
+	private FactorCell[] selectedCells;
 	private Project project;
 }
  
