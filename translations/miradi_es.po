@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-19 15:56-0500\n"
+"POT-Creation-Date: 2010-03-19 16:07-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -631,15 +631,15 @@ msgstr ""
 msgid "Are you sure you want to delete this Objective?"
 msgstr "¿Está seguro de que desea eliminar este Objetivo? "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:395
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:397
 msgid "Unknown error displaying diagram"
 msgstr "Error desconocido al mostrar el diagrama"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:468
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:470
 msgid "Found Corrupted Data:"
 msgstr "Se encontraron datos dañados."
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:968
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:970
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Propiedades del factor"
