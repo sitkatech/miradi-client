@@ -17,14 +17,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.diagram;
+package org.miradi.views.diagram.doers;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.DiagramObject;
 import org.miradi.views.ViewDoer;
-import org.miradi.views.diagram.doers.ZoomIn;
+import org.miradi.views.diagram.DiagramView;
 
 //TODO extract out a parent class for zoom in and zoom out, maybe zoomtofit
 public class ZoomOut extends ViewDoer
