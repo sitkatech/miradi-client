@@ -114,6 +114,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		PortView.allowPortMagic = false;
 	}
 
+	@Override
 	public String getToolTipText(MouseEvent event)
 	{
 		Object cell = getFirstCellForLocation(event.getX(), event.getY());
@@ -596,6 +597,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		KeyBinder.bindKey(this, KeyEvent.VK_A, KeyEvent.CTRL_DOWN_MASK, selectAll);
 	}
 	
+	@Override
 	public CellView getNextSelectableViewAt(CellView current, double x, double y)
 	{
 		CellView candidateView = super.getNextSelectableViewAt(current, x, y);
