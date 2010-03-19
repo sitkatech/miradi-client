@@ -23,10 +23,9 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.DiagramObject;
-import org.miradi.views.ViewDoer;
 import org.miradi.views.diagram.DiagramView;
 
-public class ZoomIn extends ViewDoer
+public class ZoomIn extends AbstractZoomDoer
 {
 	@Override
 	public boolean isAvailable()
