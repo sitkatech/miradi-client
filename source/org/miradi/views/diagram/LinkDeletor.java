@@ -94,6 +94,8 @@ public class LinkDeletor
 		deleteFactorLinkIfOrphaned(factorLink);
 	}
 
+	//TODO this method is called from a few places that share the same if GB else code,   those if elses can be
+	//combined into a common methed in this class, removing duplication
 	public void deleteFactorLinksAndGroupBoxDiagramLinks(Vector<DiagramFactor> diagramFactorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
 	{
 		ORefList groupBoxLinkChildRefs = diagramLink.getGroupedDiagramLinkRefs();
