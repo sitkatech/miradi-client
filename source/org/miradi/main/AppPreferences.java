@@ -306,15 +306,6 @@ public class AppPreferences
 		return rowHeightModeCode;
 	}
 
-	public double getTaggedDouble(String tag)
-	{
-		return diagramZoomSetting;
-//		Double value = (Double)taggedValueMap.get(tag);
-//		if(value == null)
-//			return 0;
-//		return value.doubleValue();
-	}
-
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
@@ -691,8 +682,6 @@ public class AppPreferences
 	private String newsText;
 	private String newsDate;
 	private CodeList installedSampleVersions;
-	
-	private double diagramZoomSetting;
 	
 	private String wizardFontFamily;
 	private int wizardFontSize;
