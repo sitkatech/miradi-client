@@ -38,6 +38,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.TableSettings;
+import org.miradi.objects.Task;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectRepairer
@@ -64,8 +65,21 @@ public class ProjectRepairer
 		fixAnyProblemsWithThreatStressRatings();
 		repairUnsnappedNodes();
 		warnOfOrphanAnnotations();	
+		warnOfOrphanTasks();
 	}
 	 
+	private void warnOfOrphanTasks()
+	{
+		int type = Task.getObjectType();
+		ORefList refs = getProject().getPool(type).getRefList();
+		for(int i = 0; i < refs.size(); ++i)
+		{
+			BaseObject object = BaseObject.find(getProject(), refs.get(i));
+			if(object.getOwnerRef().isInvalid())
+				EAM.logWarning("Object without owner! " + object.getRef());
+		}
+	}
+
 	private void repairUnsnappedNodes()
 	{
 		DiagramFactor[] diagramFactors = project.getAllDiagramFactors();
