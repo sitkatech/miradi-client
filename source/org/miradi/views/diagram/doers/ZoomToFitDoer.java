@@ -45,26 +45,18 @@ public class ZoomToFitDoer extends ViewDoer
 		if (!isAvailable())
 			return;
 		
-		try
-		{
-			DiagramComponent diagram = getDiagramView().getCurrentDiagramComponent();
-			Rectangle2D totalBounds = diagram.getTotalBoundsUsed();		
-			Rectangle originalBounds = diagram.getVisibleRect();
+		DiagramComponent diagram = getDiagramView().getCurrentDiagramComponent();
+		Rectangle2D totalBounds = diagram.getTotalBoundsUsed();		
+		Rectangle originalBounds = diagram.getVisibleRect();
 
-			double verticalRatio = originalBounds.getHeight() / totalBounds.getHeight() ;
-			double horizontalRatio =  originalBounds.getWidth() / totalBounds.getWidth();
+		double verticalRatio = originalBounds.getHeight() / totalBounds.getHeight() ;
+		double horizontalRatio =  originalBounds.getWidth() / totalBounds.getWidth();
+		double scaleRatio = Math.min(verticalRatio, horizontalRatio);
 
-			double scaleRatio = Math.min(verticalRatio, horizontalRatio);
-			
-			CommandSetObjectData setZoom = new CommandSetObjectData(diagram.getDiagramObject(), DiagramObject.TAG_ZOOM_SCALE, Double.toString(scaleRatio));
-			getProject().executeCommand(setZoom);
+		CommandSetObjectData setZoom = new CommandSetObjectData(diagram.getDiagramObject(), DiagramObject.TAG_ZOOM_SCALE, Double.toString(scaleRatio));
+		getProject().executeCommand(setZoom);
 
-			diagram.toScreen(totalBounds);
-			diagram.scrollRectToVisible(totalBounds.getBounds());
-		}
-		catch (Exception e)
-		{
-			throw new CommandFailedException(e);
-		}
+		diagram.toScreen(totalBounds);
+		diagram.scrollRectToVisible(totalBounds.getBounds());
 	}	
 }
