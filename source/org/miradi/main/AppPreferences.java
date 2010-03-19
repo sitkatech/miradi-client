@@ -306,13 +306,6 @@ public class AppPreferences
 		return rowHeightModeCode;
 	}
 
-	//TODO: once we are able to save the zoom setting in app pref.
-	public void setTaggedDouble(String tag, double value)
-	{
-		diagramZoomSetting = value;
-	//	taggedValueMap.put(tag, new Double(value));
-	}
-	
 	public double getTaggedDouble(String tag)
 	{
 		return diagramZoomSetting;
