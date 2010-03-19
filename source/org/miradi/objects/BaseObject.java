@@ -524,6 +524,9 @@ abstract public class BaseObject
 	private boolean hasAnySubtaskAssignmentData(DateUnit dateUnit, String assignmentRefsTag) throws Exception
 	{
 		TimePeriodCostsMap subTaskTimePeriodCostsMap = getTotalTimePeriodCostsMapForSubTasks(getSubTaskRefs(), assignmentRefsTag);
+		if (subTaskTimePeriodCostsMap.hasDateUnitsContained(dateUnit))
+			return true;
+
 		TimePeriodCosts timePeriodCosts = subTaskTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		if (timePeriodCosts == null)
 			return false;

@@ -185,6 +185,18 @@ public class TimePeriodCostsMap
 		
 		return false;
 	}
+	
+	public boolean hasDateUnitsContained(DateUnit dateUnitToUse) throws Exception
+	{
+		Set<DateUnit> allDateUnits = data.keySet();
+		for(DateUnit dateUnit : allDateUnits)
+		{
+			if (dateUnitToUse.contains(dateUnit))
+				return true;
+		}
+		
+		return false;
+	}
 
 	private HashMap<DateUnit, TimePeriodCosts> getDateUnitTimePeriodCostsMap()
 	{
