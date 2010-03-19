@@ -19,37 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.DiagramComponent;
-import org.miradi.exceptions.CommandFailedException;
-import org.miradi.objects.DiagramObject;
-import org.miradi.views.diagram.DiagramView;
 
 public class ZoomIn extends AbstractZoomDoer
 {
 	@Override
-	public boolean isAvailable()
+	protected double getScale(double currentScale)
 	{
-		return true;
+		return currentScale * ZOOM_FACTOR;
 	}
-
-	@Override
-	public void doIt() throws CommandFailedException
-	{
-		try
-		{
-			DiagramView view = getDiagramView();
-			DiagramComponent currentDiagramComponent = view.getCurrentDiagramComponent();
-			double newScale = currentDiagramComponent.getScale() * ZOOM_FACTOR;
-			DiagramObject diagramObject = currentDiagramComponent.getDiagramObject();
-			CommandSetObjectData setZoom = new CommandSetObjectData(diagramObject, DiagramObject.TAG_ZOOM_SCALE, Double.toString(newScale));
-			getProject().executeCommand(setZoom);
-		}
-		catch (Exception e)
-		{
-			throw new CommandFailedException(e);
-		}
-	}
-	
-	public static double ZOOM_FACTOR = 1.2;
 }
