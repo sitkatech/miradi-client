@@ -555,8 +555,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	public void zoom(double proportion)
 	{
-		setScale(getScale() * proportion);
-		getMainWindow().saveDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM, getScale());
+		setZoomScale(getScale() * proportion);
 	}
 	
 	public void setZoomScale(double scale)
