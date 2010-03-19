@@ -36,6 +36,7 @@ import org.miradi.views.diagram.LocationDoer;
 
 public class DeleteGroupBoxDoer extends LocationDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (!isInDiagram())
@@ -47,6 +48,7 @@ public class DeleteGroupBoxDoer extends LocationDoer
 		return false;
 	}
 	
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if (!isAvailable())
