@@ -41,6 +41,7 @@ import org.miradi.views.diagram.DiagramView;
 
 public class SelectChainDoer extends ViewDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (! isInDiagram())
@@ -56,6 +57,7 @@ public class SelectChainDoer extends ViewDoer
 		return true;
 	}
 	
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if(!isAvailable())
