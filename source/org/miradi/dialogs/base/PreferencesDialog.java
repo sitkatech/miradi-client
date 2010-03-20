@@ -29,6 +29,7 @@ public class PreferencesDialog extends ModelessDialogWithClose
 		setScrollableMainPanel(disposablePanelToUse);
 	}
 	
+	@Override
 	public void dispose()
 	{
 		super.dispose();
