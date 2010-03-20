@@ -72,14 +72,19 @@ public class CreateResultsChainDoer extends ViewDoer
 	public static void createResultsChain(Project project, DiagramView diagramView) throws Exception
 	{
 		DiagramModel diagramModel = diagramView.getDiagramModel();
-		FactorCell[] selectedCells = new FactorCell[0];
-		if (diagramView.getDiagramPanel().getCurrentDiagramComponent() != null)
-			selectedCells = diagramView.getDiagramPanel().getOnlySelectedFactorCells();
-		
+		FactorCell[] selectedCells = getSelectedFactorCells(diagramView);
 		ResultsChainCreatorHelper creatorHelper = new ResultsChainCreatorHelper(project, diagramModel, selectedCells);
 
 		ORef newResultsChainRef = creatorHelper.createResultsChain();
 		selectResultsChain(project, diagramView, newResultsChainRef);
+	}
+
+	private static FactorCell[] getSelectedFactorCells(DiagramView diagramView)
+	{
+		if (diagramView.getDiagramPanel().getCurrentDiagramComponent() == null)
+			return new FactorCell[0];
+		
+		return diagramView.getDiagramPanel().getOnlySelectedFactorCells();
 	}
 
 	public static void selectResultsChain(Project project, DiagramView diagramView, ORef newResultsChainRef) throws Exception
