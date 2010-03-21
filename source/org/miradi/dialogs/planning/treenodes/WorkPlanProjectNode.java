@@ -30,7 +30,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.CodeList;
 
-public class WorkPlanProjectNode extends AbstractPlanningTreeNode
+public class WorkPlanProjectNode extends AbstractProjectNode
 {
 	public WorkPlanProjectNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
 	{
