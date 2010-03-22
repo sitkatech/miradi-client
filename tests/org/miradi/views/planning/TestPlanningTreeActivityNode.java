@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning;
 
-import org.miradi.dialogs.planning.treenodes.WorkPlanProjectNode;
+import org.miradi.dialogs.planning.treenodes.AbstractProjectNode;
 import org.miradi.dialogs.planning.treenodes.HiddenProjectRootNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORefList;
@@ -43,7 +43,7 @@ public class TestPlanningTreeActivityNode extends TestPlanningTreeNode
 
 	public void testSubtasks() throws Exception
 	{
-		WorkPlanProjectNode root = createCompleteTree();
+		AbstractProjectNode root = createCompleteTree();
 		ORefSet refsInTree = root.getAllRefsInTree();
 		assertTrue("Didn't add subtask to tree?", refsInTree.contains(getSubtask().getRef()));
 	}
