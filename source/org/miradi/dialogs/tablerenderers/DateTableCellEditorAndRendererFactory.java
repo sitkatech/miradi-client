@@ -33,7 +33,6 @@ public class DateTableCellEditorAndRendererFactory extends PopupEditableCellEdit
 	{
 	    super(objectProvider, fontProvider);
 
-	    dateRendererComponent = new DateEditorComponent();
 	    dateEditorComponent = new DateEditorComponent();
 	}
 
@@ -46,7 +45,7 @@ public class DateTableCellEditorAndRendererFactory extends PopupEditableCellEdit
 	@Override
 	protected Component getRendererComponent()
 	{
-		return dateRendererComponent;
+		return getEditorComponent();
 	}
 
 	@Override
@@ -62,6 +61,5 @@ public class DateTableCellEditorAndRendererFactory extends PopupEditableCellEdit
 		return dateEditorComponent.getText();
 	}
 
-	private DateEditorComponent dateRendererComponent;
 	private DateEditorComponent dateEditorComponent;
 }

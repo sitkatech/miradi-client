@@ -40,7 +40,6 @@ public class StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory ex
 	    super(objectProvider, fontProvider);
 	    
 	    questionEditor = new StressBasedThreatRatingQuestionPopupEditorComponent(projectToUse, questionToUse);
-	    questionRenderer = new StressBasedThreatRatingQuestionPopupEditorComponent(projectToUse, questionToUse);
 	}
 	
 	public Object getCellEditorValue()
@@ -57,7 +56,7 @@ public class StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory ex
 	@Override
 	protected Component getRendererComponent()
 	{
-		return questionRenderer;
+		return getEditorComponent();
 	}
 
 	@Override
@@ -77,5 +76,4 @@ public class StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory ex
 	}
 	
 	private StressBasedThreatRatingQuestionPopupEditorComponent questionEditor;
-	private StressBasedThreatRatingQuestionPopupEditorComponent questionRenderer;
 }
