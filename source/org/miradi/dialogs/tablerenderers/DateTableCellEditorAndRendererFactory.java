@@ -27,7 +27,7 @@ import javax.swing.JTable;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.DateEditorComponent;
 
-public class DateTableCellEditorAndRendererFactory extends PopupEditableCellEditorAndRendererFactory
+public class DateTableCellEditorAndRendererFactory extends PopupEditableCellEditorOrRendererFactory
 {
 	public DateTableCellEditorAndRendererFactory(RowColumnBaseObjectProvider objectProvider, FontForObjectProvider fontProvider)
 	{
