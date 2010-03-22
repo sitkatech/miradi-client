@@ -33,21 +33,21 @@ public class DateTableCellEditorOrRendererFactory extends PopupEditableCellEdito
 	{
 	    super(objectProvider, fontProvider);
 
-	    dateEditorComponent = new DateEditorComponent();
+	    dateComponent = new DateEditorComponent();
 	}
 
 	@Override
 	protected Component getConfiguredComponent(JTable table, Object value, int row, int column)
 	{
 		TaglessChoiceItem choiceItem = (TaglessChoiceItem) value;
-		dateEditorComponent.setText(choiceItem.getLabel());
-		return dateEditorComponent;
+		dateComponent.setText(choiceItem.getLabel());
+		return dateComponent;
 	}
 
 	public Object getCellEditorValue()
 	{
-		return dateEditorComponent.getText();
+		return dateComponent.getText();
 	}
 
-	private DateEditorComponent dateEditorComponent;
+	private DateEditorComponent dateComponent;
 }
