@@ -29,7 +29,7 @@ import org.miradi.utils.DateEditorComponent;
 
 public class DateTableCellEditorAndRendererFactory extends PopupEditableCellEditorAndRendererFactory
 {
-	public DateTableCellEditorAndRendererFactory()
+	public DateTableCellEditorAndRendererFactory(RowColumnBaseObjectProvider objectProvider, FontForObjectProvider fontProvider)
 	{
 	    super();
 
