@@ -62,10 +62,10 @@ public class ThreatStressRatingTable extends EditableObjectTable
 				createReadonlyComboQuestionColumn(threatStressRatingTableModel.getColumnQuestion(modelColumn), tableColumn);
 			
 			if (threatStressRatingTableModel.isContributionColumn(modelColumn))
-				createInvokePopupColumn(threatStressRatingTableModel.getColumnQuestion(modelColumn), tableColumn);
+				createThreatStressRatingPopupColumn(threatStressRatingTableModel.getColumnQuestion(modelColumn), tableColumn);
 			
 			if (threatStressRatingTableModel.isIrreversibilityColumn(modelColumn))
-				createInvokePopupColumn(threatStressRatingTableModel.getColumnQuestion(modelColumn), tableColumn);
+				createThreatStressRatingPopupColumn(threatStressRatingTableModel.getColumnQuestion(modelColumn), tableColumn);
 			
 			if (threatStressRatingTableModel.isThreatRatingColumn(modelColumn))
 				createReadonlyComboQuestionColumn(threatStressRatingTableModel.getColumnQuestion(modelColumn), tableColumn);

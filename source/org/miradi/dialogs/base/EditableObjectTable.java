@@ -152,7 +152,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		column.setCellRenderer(new ChoiceItemComboBoxRenderer(choices));
 	}
 	
-	protected void createInvokePopupColumn(ChoiceQuestion question, int tableColumn) throws Exception
+	protected void createThreatStressRatingPopupColumn(ChoiceQuestion question, int tableColumn) throws Exception
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
