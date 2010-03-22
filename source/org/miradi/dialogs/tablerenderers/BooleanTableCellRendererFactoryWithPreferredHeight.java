@@ -28,7 +28,7 @@ import javax.swing.JTable;
 import org.martus.swing.UiCheckBox;
 
 public class BooleanTableCellRendererFactoryWithPreferredHeight extends
-		BasicTableCellRendererEditorFactory
+		BasicTableCellEditorOrRendererFactory
 {
 	public BooleanTableCellRendererFactoryWithPreferredHeight()
 	{

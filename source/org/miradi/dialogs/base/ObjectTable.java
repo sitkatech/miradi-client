@@ -28,7 +28,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableCellRenderer;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.tablerenderers.BasicTableCellRendererEditorFactory;
+import org.miradi.dialogs.tablerenderers.BasicTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.CodeListRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
@@ -260,7 +260,7 @@ abstract public class ObjectTable extends SortableRowTable implements ObjectPick
 
 	private Vector selectionListeners;
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
-	private BasicTableCellRendererEditorFactory otherRenderer;
+	private BasicTableCellEditorOrRendererFactory otherRenderer;
 	private CodeListRendererFactory codeListRenderer;
 	private boolean isActive;
 }
