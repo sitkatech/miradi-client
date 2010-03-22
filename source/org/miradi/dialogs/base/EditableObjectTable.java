@@ -41,7 +41,7 @@ import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.FloatingPointRestrictedTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.NonNegativeIntegerRestrictedTableCellRendererEditorFactory;
-import org.miradi.dialogs.tablerenderers.StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory;
+import org.miradi.dialogs.tablerenderers.StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.MainWindow;
@@ -156,8 +156,8 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
-		column.setCellEditor(new StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory(getProject(), question, model, fontProvider));
-		column.setCellRenderer(new StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory(getProject(), question, model, fontProvider));
+		column.setCellEditor(new StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory(getProject(), question, model, fontProvider));
+		column.setCellRenderer(new StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory(getProject(), question, model, fontProvider));
 	}
 	
 	protected void createReadonlyChoiceItemColumn(ChoiceItem[] choices, int tableColumn)
