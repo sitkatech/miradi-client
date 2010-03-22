@@ -23,7 +23,7 @@ package org.miradi.dialogs.planning.treenodes;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-public class HiddenProjectRootNode extends WorkPlanProjectNode
+public class HiddenProjectRootNode extends AbstractProjectNode
 {
 	public HiddenProjectRootNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
 	{
