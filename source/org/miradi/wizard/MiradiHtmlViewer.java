@@ -35,6 +35,7 @@ public class MiradiHtmlViewer extends HtmlFormViewer
 	}
 
 
+	@Override
 	public void customizeStyleSheet(StyleSheet style)
 	{
 		super.customizeStyleSheet(style);
