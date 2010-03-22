@@ -27,6 +27,8 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
+import org.miradi.main.EAM;
+
 abstract public class PopupEditableCellEditorAndRendererFactory extends AbstractCellEditor implements TableCellEditor, TableCellRenderer, TableCellPreferredHeightProvider
 {
 	public PopupEditableCellEditorAndRendererFactory(RowColumnBaseObjectProvider objectProvider, FontForObjectProvider fontProvider)
@@ -40,6 +42,9 @@ abstract public class PopupEditableCellEditorAndRendererFactory extends Abstract
 	
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
 	{
+		if(isRenderer)
+			EAM.logError("Factory used for both editor and renderer: " + getClass().getName());
+		isEditor = true;
 		Component editorComponent = getEditorComponent();
 		configureComponent(table, value, row, column, editorComponent);
 		return editorComponent;
@@ -47,6 +52,9 @@ abstract public class PopupEditableCellEditorAndRendererFactory extends Abstract
 	
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 	{
+		if(isEditor)
+			EAM.logError("Factory used for both editor and renderer: " + getClass().getName());
+		isRenderer = true;
 		Component rendererComponent = getRendererComponent();
 		configureComponent(table, value, row, column, rendererComponent);
 		return rendererComponent;
@@ -55,4 +63,7 @@ abstract public class PopupEditableCellEditorAndRendererFactory extends Abstract
 	abstract protected Component getEditorComponent();
 	abstract protected Component getRendererComponent();
 	abstract protected void configureComponent(JTable table, Object value, int row, int column, Component component);
+
+	private boolean isEditor;
+	private boolean isRenderer;
 }
