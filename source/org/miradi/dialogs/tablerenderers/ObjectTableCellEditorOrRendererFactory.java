@@ -43,6 +43,15 @@ abstract public class ObjectTableCellEditorOrRendererFactory extends BasicTableC
 		renderer.setFont(font);
 		return renderer;
 	}
+
+	@Override
+	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int tableColumn)
+	{
+		JComponent editor = (JComponent)super.getTableCellRendererComponent(table, value, isSelected, false, row, tableColumn);
+		Font font = getCellFont(row, tableColumn);
+		editor.setFont(font);
+		return editor;
+	}
 	
 	protected Font getCellFont(int row, int column)
 	{
