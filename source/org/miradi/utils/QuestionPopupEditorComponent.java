@@ -39,12 +39,11 @@ import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.PopupEditorIcon;
-import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
-public class QuestionPopupEditorComponent extends OneRowPanel
+public class QuestionPopupEditorComponent extends PopupEditorComponent
 {
 	public QuestionPopupEditorComponent(ChoiceQuestion questionToUse, String translatedPopupButtonTextToUse) throws Exception
 	{
