@@ -29,9 +29,9 @@ import javax.swing.table.TableCellRenderer;
 
 import org.miradi.main.EAM;
 
-abstract public class PopupEditableCellEditorAndRendererFactory extends AbstractCellEditor implements TableCellEditor, TableCellRenderer, TableCellPreferredHeightProvider
+abstract public class PopupEditableCellEditorOrRendererFactory extends AbstractCellEditor implements TableCellEditor, TableCellRenderer, TableCellPreferredHeightProvider
 {
-	public PopupEditableCellEditorAndRendererFactory(RowColumnBaseObjectProvider objectProvider, FontForObjectProvider fontProvider)
+	public PopupEditableCellEditorOrRendererFactory(RowColumnBaseObjectProvider objectProvider, FontForObjectProvider fontProvider)
 	{
 	}
 
