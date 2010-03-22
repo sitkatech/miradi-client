@@ -129,8 +129,9 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 	protected void createDateColumn(int tableColumn)
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellEditor(new DateTableCellEditorAndRendererFactory());
-		column.setCellRenderer(new DateTableCellEditorAndRendererFactory());
+		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
+		column.setCellEditor(new DateTableCellEditorAndRendererFactory(model, fontProvider));
+		column.setCellRenderer(new DateTableCellEditorAndRendererFactory(model, fontProvider));
 	}
 		
 	protected void createComboColumn(BaseObject[] content, int tableColumn, BaseObject invalidObject)
@@ -154,8 +155,9 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 	protected void createInvokePopupColumn(ChoiceQuestion question, int tableColumn) throws Exception
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellEditor(new StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory(getProject(), question));
-		column.setCellRenderer(new StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory(getProject(), question));
+		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
+		column.setCellEditor(new StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory(getProject(), question, model, fontProvider));
+		column.setCellRenderer(new StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory(getProject(), question, model, fontProvider));
 	}
 	
 	protected void createReadonlyChoiceItemColumn(ChoiceItem[] choices, int tableColumn)
