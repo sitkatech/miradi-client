@@ -31,7 +31,7 @@ public class DateTableCellEditorAndRendererFactory extends PopupEditableCellEdit
 {
 	public DateTableCellEditorAndRendererFactory(RowColumnBaseObjectProvider objectProvider, FontForObjectProvider fontProvider)
 	{
-	    super();
+	    super(objectProvider, fontProvider);
 
 	    dateRendererComponent = new DateEditorComponent();
 	    dateEditorComponent = new DateEditorComponent();
