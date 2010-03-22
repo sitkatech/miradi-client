@@ -22,10 +22,7 @@ package org.miradi.dialogs.tablerenderers;
 
 import java.awt.Component;
 
-import javax.swing.AbstractCellEditor;
 import javax.swing.JTable;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableCellRenderer;
 
 import org.miradi.dialogs.threatrating.properties.ThreatStressRatingTable;
 import org.miradi.dialogs.threatrating.properties.ThreatStressRatingTableModel;
@@ -36,37 +33,37 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.StressBasedThreatRatingQuestionPopupEditorComponent;
 
-public class StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory extends AbstractCellEditor implements TableCellEditor, TableCellRenderer, TableCellPreferredHeightProvider
+public class StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory extends PopupEditableCellEditorAndRendererFactory
 {
 	public StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory(Project projectToUse, ChoiceQuestion questionToUse) throws Exception 
 	{
 	    super();
 	    
-	    questionEditor = createComponent(projectToUse, questionToUse);
-	    questionRenderer = createComponent(projectToUse, questionToUse);
+	    questionEditor = new StressBasedThreatRatingQuestionPopupEditorComponent(projectToUse, questionToUse);
+	    questionRenderer = new StressBasedThreatRatingQuestionPopupEditorComponent(projectToUse, questionToUse);
 	}
 	
-	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
-	{
-		configureComponent(table, value, row, column, questionEditor);
-		
-		return questionEditor;
-	}
-
 	public Object getCellEditorValue()
 	{
 		return questionEditor.getText();
 	}
 	
-	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
+	@Override
+	protected Component getEditorComponent()
 	{
-		configureComponent(table, value, row, column, questionRenderer);
+		return questionEditor;
+	}
 
+	@Override
+	protected Component getRendererComponent()
+	{
 		return questionRenderer;
 	}
-	
-	private void configureComponent(JTable table, Object value, int row, int column, StressBasedThreatRatingQuestionPopupEditorComponent component)
+
+	@Override
+	protected void configureComponent(JTable table, Object value, int row, int column, Component rawComponent)
 	{
+		StressBasedThreatRatingQuestionPopupEditorComponent component = (StressBasedThreatRatingQuestionPopupEditorComponent) rawComponent;
 		ChoiceItem choiceItem = (ChoiceItem) value;
 		component.setText(choiceItem.getCode());
 		
@@ -77,16 +74,6 @@ public class StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory ex
 		component.setTargetRef(targetRef);
 		Stress stressRef = model.getStress(row, column);
 		component.setStressRef(stressRef);
-	}
-	
-	private StressBasedThreatRatingQuestionPopupEditorComponent createComponent(Project project, ChoiceQuestion question)	throws Exception
-	{
-		return new StressBasedThreatRatingQuestionPopupEditorComponent(project, question);
-	}
-	
-	public int getPreferredHeight(JTable table, int row, int column, Object value)
-	{
-		return getTableCellRendererComponent(table, value, false, false, row, column).getPreferredSize().height;
 	}
 	
 	private StressBasedThreatRatingQuestionPopupEditorComponent questionEditor;
