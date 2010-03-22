@@ -25,6 +25,7 @@ import java.awt.Font;
 import javax.swing.JComponent;
 import javax.swing.JTable;
 
+import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 
 abstract public class ObjectTableCellEditorOrRendererFactory extends BasicTableCellEditorOrRendererFactory  implements TableCellPreferredHeightProvider
@@ -38,6 +39,9 @@ abstract public class ObjectTableCellEditorOrRendererFactory extends BasicTableC
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
+		if(isEditor)
+			EAM.logError("Factory used for both editor and renderer: " + getClass().getName());
+		isRenderer = true;
 		JComponent renderer = (JComponent)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
 		Font font = getCellFont(row, tableColumn);
 		renderer.setFont(font);
@@ -47,6 +51,9 @@ abstract public class ObjectTableCellEditorOrRendererFactory extends BasicTableC
 	@Override
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int tableColumn)
 	{
+		if(isRenderer)
+			EAM.logError("Factory used for both editor and renderer: " + getClass().getName());
+		isEditor = true;
 		JComponent editor = (JComponent)super.getTableCellRendererComponent(table, value, isSelected, false, row, tableColumn);
 		Font font = getCellFont(row, tableColumn);
 		editor.setFont(font);
@@ -85,4 +92,7 @@ abstract public class ObjectTableCellEditorOrRendererFactory extends BasicTableC
 	
 	private RowColumnBaseObjectProvider objectProvider;
 	private FontForObjectProvider fontProvider;
+
+	private boolean isEditor;
+	private boolean isRenderer;
 }
