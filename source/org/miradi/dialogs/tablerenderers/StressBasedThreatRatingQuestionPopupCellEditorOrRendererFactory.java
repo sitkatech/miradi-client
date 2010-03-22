@@ -48,31 +48,20 @@ public class StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory ext
 	}
 	
 	@Override
-	protected Component getEditorComponent()
+	protected Component getConfiguredComponent(JTable table, Object value, int row, int column)
 	{
-		return questionEditor;
-	}
-
-	@Override
-	protected Component getRendererComponent()
-	{
-		return getEditorComponent();
-	}
-
-	@Override
-	protected void configureComponent(JTable table, Object value, int row, int column, Component rawComponent)
-	{
-		StressBasedThreatRatingQuestionPopupEditorComponent component = (StressBasedThreatRatingQuestionPopupEditorComponent) rawComponent;
 		ChoiceItem choiceItem = (ChoiceItem) value;
-		component.setText(choiceItem.getCode());
+		questionEditor.setText(choiceItem.getCode());
 		
 		ThreatStressRatingTableModel model = ((ThreatStressRatingTable) table).getThreatStressRatingTableModel();
 		ORef threatRef = model.getThreatRef();
 		ORef targetRef = model.getTargetRef();
-		component.setThreatRef(threatRef);
-		component.setTargetRef(targetRef);
+		questionEditor.setThreatRef(threatRef);
+		questionEditor.setTargetRef(targetRef);
 		Stress stressRef = model.getStress(row, column);
-		component.setStressRef(stressRef);
+		questionEditor.setStressRef(stressRef);
+		
+		return questionEditor;
 	}
 	
 	private StressBasedThreatRatingQuestionPopupEditorComponent questionEditor;

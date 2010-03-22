@@ -45,9 +45,7 @@ abstract public class PopupEditableCellEditorOrRendererFactory extends AbstractC
 		if(isRenderer)
 			EAM.logError("Factory used for both editor and renderer: " + getClass().getName());
 		isEditor = true;
-		Component editorComponent = getEditorComponent();
-		configureComponent(table, value, row, column, editorComponent);
-		return editorComponent;
+		return getConfiguredComponent(table, value, row, column);
 	}
 	
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
@@ -55,14 +53,10 @@ abstract public class PopupEditableCellEditorOrRendererFactory extends AbstractC
 		if(isEditor)
 			EAM.logError("Factory used for both editor and renderer: " + getClass().getName());
 		isRenderer = true;
-		Component rendererComponent = getRendererComponent();
-		configureComponent(table, value, row, column, rendererComponent);
-		return rendererComponent;
+		return getConfiguredComponent(table, value, row, column);
 	}
 
-	abstract protected Component getEditorComponent();
-	abstract protected Component getRendererComponent();
-	abstract protected void configureComponent(JTable table, Object value, int row, int column, Component component);
+	abstract protected Component getConfiguredComponent(JTable table, Object value, int row, int column);
 
 	private boolean isEditor;
 	private boolean isRenderer;
