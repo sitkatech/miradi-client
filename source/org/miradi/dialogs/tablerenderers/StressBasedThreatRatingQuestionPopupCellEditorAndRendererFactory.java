@@ -37,7 +37,7 @@ public class StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory ex
 {
 	public StressBasedThreatRatingQuestionPopupCellEditorAndRendererFactory(Project projectToUse, ChoiceQuestion questionToUse, RowColumnBaseObjectProvider objectProvider, FontForObjectProvider fontProvider) throws Exception 
 	{
-	    super();
+	    super(objectProvider, fontProvider);
 	    
 	    questionEditor = new StressBasedThreatRatingQuestionPopupEditorComponent(projectToUse, questionToUse);
 	    questionRenderer = new StressBasedThreatRatingQuestionPopupEditorComponent(projectToUse, questionToUse);

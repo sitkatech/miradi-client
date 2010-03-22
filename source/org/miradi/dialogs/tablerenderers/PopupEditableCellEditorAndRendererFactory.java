@@ -29,6 +29,10 @@ import javax.swing.table.TableCellRenderer;
 
 abstract public class PopupEditableCellEditorAndRendererFactory extends AbstractCellEditor implements TableCellEditor, TableCellRenderer, TableCellPreferredHeightProvider
 {
+	public PopupEditableCellEditorAndRendererFactory(RowColumnBaseObjectProvider objectProvider, FontForObjectProvider fontProvider)
+	{
+	}
+
 	public int getPreferredHeight(JTable table, int row, int column, Object value)
 	{
 		return getTableCellRendererComponent(table, value, false, false, row, column).getPreferredSize().height;
