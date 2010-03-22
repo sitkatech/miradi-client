@@ -39,6 +39,13 @@ abstract public class BasicTableCellEditorOrRendererFactory extends AbstractCell
 		backgroundColor = Color.WHITE;
 	}
 	
+	/**
+	 * TODO: Currently, about half of the subclasses override this method, 
+	 * and the other half override getTableCellRendererComponent directly.
+	 * At some point we should unify them, although that will require 
+	 * resolving issues about the sequence of when different font changes 
+	 * are applied.
+	 */
 	public abstract JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, Object value);
 	
 	public Object getCellEditorValue()
@@ -56,6 +63,13 @@ abstract public class BasicTableCellEditorOrRendererFactory extends AbstractCell
 		backgroundColor = backgroundColorToUse;
 	}
 
+	/**
+	 * TODO: Currently, about half of the subclasses override this method, 
+	 * and the other half override getRendererComponent.
+	 * At some point we should unify them, although that will require 
+	 * resolving issues about the sequence of when different font changes 
+	 * are applied.
+	 */
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		JComponent renderer = getRendererComponent(table, isSelected, hasFocus, row, tableColumn, value);
