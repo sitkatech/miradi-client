@@ -22,17 +22,14 @@ package org.miradi.dialogs.tablerenderers;
 
 import java.awt.Component;
 
-import javax.swing.AbstractCellEditor;
+import javax.swing.JComponent;
 import javax.swing.JTable;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableCellRenderer;
 
-import org.miradi.main.EAM;
-
-abstract public class PopupEditableCellEditorOrRendererFactory extends AbstractCellEditor implements TableCellEditor, TableCellRenderer, TableCellPreferredHeightProvider
+abstract public class PopupEditableCellEditorOrRendererFactory extends ObjectTableCellEditorOrRendererFactory
 {
 	public PopupEditableCellEditorOrRendererFactory(RowColumnBaseObjectProvider objectProvider, FontForObjectProvider fontProvider)
 	{
+		super(objectProvider, fontProvider);
 	}
 
 	public int getPreferredHeight(JTable table, int row, int column, Object value)
@@ -40,24 +37,26 @@ abstract public class PopupEditableCellEditorOrRendererFactory extends AbstractC
 		return getTableCellRendererComponent(table, value, false, false, row, column).getPreferredSize().height;
 	}
 	
-	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
+	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int tableColumn)
 	{
-		if(isRenderer)
-			EAM.logError("Factory used for both editor and renderer: " + getClass().getName());
-		isEditor = true;
-		return getConfiguredComponent(table, value, row, column);
+		return super.getTableCellEditorComponent(table, value, isSelected, row, tableColumn);
 	}
 	
-	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
+	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
-		if(isEditor)
-			EAM.logError("Factory used for both editor and renderer: " + getClass().getName());
-		isRenderer = true;
-		return getConfiguredComponent(table, value, row, column);
+		return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
+	}
+	
+	@Override
+	public JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, Object value)
+	{
+		return (JComponent)getConfiguredComponent(table, value, row, tableColumn);
 	}
 
+	/**
+	 * TODO: At some point, this should be unified with getRendererComponent,
+	 * but that would require resolving the issues about when different font 
+	 * modifications are applied.
+	 */
 	abstract protected Component getConfiguredComponent(JTable table, Object value, int row, int column);
-
-	private boolean isEditor;
-	private boolean isRenderer;
 }
