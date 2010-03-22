@@ -36,7 +36,7 @@ import javax.swing.table.TableColumn;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
-import org.miradi.dialogs.tablerenderers.DateTableCellEditorAndRendererFactory;
+import org.miradi.dialogs.tablerenderers.DateTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.FloatingPointRestrictedTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory;
@@ -130,8 +130,8 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
-		column.setCellEditor(new DateTableCellEditorAndRendererFactory(model, fontProvider));
-		column.setCellRenderer(new DateTableCellEditorAndRendererFactory(model, fontProvider));
+		column.setCellEditor(new DateTableCellEditorOrRendererFactory(model, fontProvider));
+		column.setCellRenderer(new DateTableCellEditorOrRendererFactory(model, fontProvider));
 	}
 		
 	protected void createComboColumn(BaseObject[] content, int tableColumn, BaseObject invalidObject)
