@@ -29,7 +29,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 
-public class ProgressTableCellRendererFactory extends ObjectTableCellRendererFactory
+public class ProgressTableCellRendererFactory extends ObjectTableCellEditorOrRendererFactory
 {
 	public ProgressTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{
@@ -56,7 +56,7 @@ public class ProgressTableCellRendererFactory extends ObjectTableCellRendererFac
 		return getRendererFactory(row, tableColumn).getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
 	}
 	
-	private ObjectTableCellRendererFactory getRendererFactory(int row, int column)
+	private ObjectTableCellEditorOrRendererFactory getRendererFactory(int row, int column)
 	{
 		BaseObject baseObject = getBaseObjectForRow(row, column);
 		if (baseObject != null && isChoiceItemRow(baseObject))

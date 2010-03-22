@@ -27,7 +27,7 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
-public class SingleLineObjectTableCellRendererFactory extends ObjectTableCellRendererFactory
+public class SingleLineObjectTableCellRendererFactory extends ObjectTableCellEditorOrRendererFactory
 {
 	public SingleLineObjectTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{

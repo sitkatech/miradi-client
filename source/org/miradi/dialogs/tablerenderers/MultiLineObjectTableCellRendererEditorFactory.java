@@ -30,7 +30,7 @@ import javax.swing.JTextArea;
 import org.miradi.utils.MiradiScrollPane;
 
 
-public class MultiLineObjectTableCellRendererEditorFactory extends ObjectTableCellRendererFactory
+public class MultiLineObjectTableCellRendererEditorFactory extends ObjectTableCellEditorOrRendererFactory
 {
 	public MultiLineObjectTableCellRendererEditorFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{
