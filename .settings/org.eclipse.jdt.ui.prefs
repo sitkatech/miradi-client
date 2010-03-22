@@ -1,4 +1,4 @@
-#Mon Mar 22 10:41:46 EDT 2010
+#Mon Mar 22 10:49:33 EDT 2010
 cleanup.add_default_serial_version_id=true
 cleanup.add_generated_serial_version_id=false
 cleanup.add_missing_annotations=true
@@ -29,7 +29,7 @@ cleanup.qualify_static_member_accesses_through_subtypes_with_declaring_class=tru
 cleanup.qualify_static_member_accesses_with_declaring_class=false
 cleanup.qualify_static_method_accesses_with_declaring_class=false
 cleanup.remove_private_constructors=true
-cleanup.remove_trailing_whitespaces=true
+cleanup.remove_trailing_whitespaces=false
 cleanup.remove_trailing_whitespaces_all=true
 cleanup.remove_trailing_whitespaces_ignore_empty=false
 cleanup.remove_unnecessary_casts=true
