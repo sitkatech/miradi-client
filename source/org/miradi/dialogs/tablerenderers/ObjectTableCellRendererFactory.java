@@ -27,7 +27,7 @@ import javax.swing.JTable;
 
 import org.miradi.objects.BaseObject;
 
-abstract public class ObjectTableCellRendererFactory extends BasicTableCellRendererEditorFactory  implements TableCellPreferredHeightProvider
+abstract public class ObjectTableCellRendererFactory extends BasicTableCellEditorOrRendererFactory  implements TableCellPreferredHeightProvider
 {
 	public ObjectTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{

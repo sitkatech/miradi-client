@@ -25,7 +25,7 @@ import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
-public class AlwaysEmptyCellRendererFactory extends BasicTableCellRendererEditorFactory
+public class AlwaysEmptyCellRendererFactory extends BasicTableCellEditorOrRendererFactory
 {
 	public AlwaysEmptyCellRendererFactory()
 	{

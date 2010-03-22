@@ -42,7 +42,7 @@ import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTable;
 import org.miradi.dialogs.planning.propertiesPanel.MultiTableExpandColumnAction;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningRightClickHandler;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
-import org.miradi.dialogs.tablerenderers.BasicTableCellRendererEditorFactory;
+import org.miradi.dialogs.tablerenderers.BasicTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.FontForObjectProvider;
@@ -112,7 +112,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	{
 		final int modelColumn = convertColumnIndexToModel(tableColumn);
 
-		BasicTableCellRendererEditorFactory factory = defaultRendererFactory;
+		BasicTableCellEditorOrRendererFactory factory = defaultRendererFactory;
 		if(getCastedModel().isCurrencyColumn(modelColumn))
 			factory = currencyRendererFactory;
 		else if(getCastedModel().isChoiceColumn(modelColumn))
@@ -220,11 +220,11 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	}
 	
 	private PlanningTreeTable masterTree;
-	private BasicTableCellRendererEditorFactory defaultRendererFactory;
-	private BasicTableCellRendererEditorFactory currencyRendererFactory;
-	private BasicTableCellRendererEditorFactory choiceRendererFactory;
-	private BasicTableCellRendererEditorFactory progressRendererFactory;
-	private BasicTableCellRendererEditorFactory doubleRendererFactory;
+	private BasicTableCellEditorOrRendererFactory defaultRendererFactory;
+	private BasicTableCellEditorOrRendererFactory currencyRendererFactory;
+	private BasicTableCellEditorOrRendererFactory choiceRendererFactory;
+	private BasicTableCellEditorOrRendererFactory progressRendererFactory;
+	private BasicTableCellEditorOrRendererFactory doubleRendererFactory;
 	private WhoColumnTableCellEditorFactory whoColumnTableCellEditorFactory;
 	private DoubleClickAutoSelectCellEditor doubleClickAutoSelectCellEditor;
 }
