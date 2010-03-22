@@ -22,51 +22,46 @@ package org.miradi.dialogs.tablerenderers;
 
 import java.awt.Component;
 
-import javax.swing.AbstractCellEditor;
 import javax.swing.JTable;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableCellRenderer;
 
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.DateEditorComponent;
 
-public class DateTableCellEditorAndRendererFactory extends AbstractCellEditor implements TableCellEditor, TableCellRenderer, TableCellPreferredHeightProvider 
+public class DateTableCellEditorAndRendererFactory extends PopupEditableCellEditorAndRendererFactory
 {
-	public DateTableCellEditorAndRendererFactory() 
+	public DateTableCellEditorAndRendererFactory()
 	{
 	    super();
-	    
+
 	    dateRendererComponent = new DateEditorComponent();
 	    dateEditorComponent = new DateEditorComponent();
 	}
-	
-	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int r, int c)
+
+	@Override
+	protected Component getEditorComponent()
+	{
+		return dateEditorComponent;
+	}
+
+	@Override
+	protected Component getRendererComponent()
+	{
+		return dateRendererComponent;
+	}
+
+	@Override
+	protected void configureComponent(JTable table, Object value, int row, int column, Component rawComponent)
 	{
 		TaglessChoiceItem choiceItem = (TaglessChoiceItem) value;
-		dateEditorComponent.setText(choiceItem.getLabel());
-		
-		return dateEditorComponent;
+		DateEditorComponent dateComponent = (DateEditorComponent)rawComponent;
+		dateComponent.setText(choiceItem.getLabel());
 	}
 
 	public Object getCellEditorValue()
 	{
 		return dateEditorComponent.getText();
 	}
-	
-	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
-	{
-		TaglessChoiceItem choiceItem = (TaglessChoiceItem) value;
-		dateRendererComponent.setText(choiceItem.getLabel());
-		
-		return dateRendererComponent;
-	}
-	
-	public int getPreferredHeight(JTable table, int row, int column, Object value)
-	{
-		return dateRendererComponent.getPreferredSize().height;
-	}
 
-	
 	private DateEditorComponent dateRendererComponent;
 	private DateEditorComponent dateEditorComponent;
 }
