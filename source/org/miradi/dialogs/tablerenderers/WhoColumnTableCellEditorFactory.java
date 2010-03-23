@@ -26,6 +26,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.AbstractCellEditor;
+import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 
@@ -33,7 +34,6 @@ import org.miradi.dialogfields.StandAloneCodeListComponent;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
-import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellEditorOrRendererFactory.TableCellHtmlRendererComponent;
 import org.miradi.dialogs.treetables.ObjectTreeTable;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -53,7 +53,7 @@ public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implemen
 		rendererFactory = new MultiLineObjectTableCellEditorOrRendererFactory(tableToUse, new DefaultFontProvider(mainWindowToUse));
 		rendererFactory.setCellBackgroundColor(AppPreferences.RESOURCE_TABLE_BACKGROUND);
 
-		TableCellHtmlRendererComponent rendererComponent = rendererFactory.getRendererComponent();
+		JComponent rendererComponent = rendererFactory.getRendererComponent();
 		rendererComponent.addMouseListener(new LeftClickHandler());
 	}
 	
