@@ -31,7 +31,7 @@ import org.miradi.dialogfields.FieldSaver;
 import org.miradi.main.AppPreferences;
 
 
-public class MiradiDialog extends DialogWithEscapeToClose
+public class MiradiDialog extends JDialog
 {
 	public MiradiDialog(JFrame parent)
 	{
