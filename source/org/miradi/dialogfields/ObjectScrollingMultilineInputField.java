@@ -104,15 +104,15 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 			Utilities.centerDlg(dialog);
 			dialog.setVisible(true);
 		}
-	}
-	
-	private class WindowCloseSaveHandler extends WindowAdapter
-	{
-		@Override
-		public void windowDeactivated(WindowEvent e)
+
+		private class WindowCloseSaveHandler extends WindowAdapter
 		{
-			setText(popupTextField.getText());
-			forceSave();
+			@Override
+			public void windowDeactivated(WindowEvent e)
+			{
+				setText(popupTextField.getText());
+				forceSave();
+			}
 		}
 	}
 
