@@ -82,10 +82,18 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 
 	private class PopupButtonHandler implements ActionListener
 	{
+		class PopupTextEditorDialog extends ModalDialogWithClose
+		{
+			public PopupTextEditorDialog(MainWindow mainWindow, String title)
+			{
+				super(mainWindow, title);
+			}
+		}
+		
 		public void actionPerformed(ActionEvent e)
 		{
 			String fieldLabel = Translation.fieldLabel(getObjectType(), getTag());
-			ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), fieldLabel);
+			PopupTextEditorDialog dialog = new PopupTextEditorDialog(getMainWindow(), fieldLabel);
 			dialog.addWindowListener(new WindowCloseSaveHandler());
 			final int COLUMN_COUNT = 60;
 			final int ROW_COUNT = 10;
