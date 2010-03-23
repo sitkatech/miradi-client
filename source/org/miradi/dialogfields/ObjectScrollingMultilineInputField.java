@@ -82,14 +82,14 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 
 	class PopupTextEditorDialog extends ModalDialogWithClose
 	{
-		public PopupTextEditorDialog(MainWindow mainWindow, String title)
+		public PopupTextEditorDialog(MainWindow mainWindow, String title, String initialText)
 		{
 			super(mainWindow, title);
 			final int COLUMN_COUNT = 60;
 			final int ROW_COUNT = 10;
 			popupTextField = new MiradiTextPane(getMainWindow(), COLUMN_COUNT, ROW_COUNT);
 			new TextAreaRightClickMouseHandler(getMainWindow().getActions(), popupTextField);
-			popupTextField.setText(getTextField().getText());
+			popupTextField.setText(initialText);
 			add(new MiradiScrollPane(popupTextField));
 		}
 	}
@@ -99,7 +99,7 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 		public void actionPerformed(ActionEvent e)
 		{
 			String fieldLabel = Translation.fieldLabel(getObjectType(), getTag());
-			PopupTextEditorDialog dialog = new PopupTextEditorDialog(getMainWindow(), fieldLabel);
+			PopupTextEditorDialog dialog = new PopupTextEditorDialog(getMainWindow(), fieldLabel, getTextField().getText());
 			dialog.addWindowListener(new WindowCloseSaveHandler());
 			Utilities.centerDlg(dialog);
 			dialog.setVisible(true);
