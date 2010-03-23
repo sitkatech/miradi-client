@@ -101,6 +101,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 		return mainWindow;
 	}
 	
+	@Override
 	public void setText(String text)
 	{
 		updateStyleSheet();
@@ -261,6 +262,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 			super(mainWindow);
 		}
 		
+		@Override
 		public void doAction(EventObject event) throws CommandFailedException
 		{
 			copy();
@@ -277,16 +279,19 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 			ourStyleSheet.addStyleSheet(super.getStyleSheet());
 		}
 		
+		@Override
 		public ViewFactory getViewFactory()
 		{
 			return factory;
 		}
 
+		@Override
 		public StyleSheet getStyleSheet()
 		{
 			return ourStyleSheet;
 		}
 
+		@Override
 		public void setStyleSheet(StyleSheet s)
 		{
 			ourStyleSheet = s;
@@ -303,6 +308,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 			handler = handlerToUse;
 		}
 		
+		@Override
 		public View create(Element elem)
 		{
 			if(elem.getName().equals("select"))
@@ -348,6 +354,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 			handler = handlerToUse;
 		}
 
+		@Override
 		protected Component createComponent()
 		{
 			JButton buttonName = ((JButton)super.createComponent());
@@ -355,6 +362,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 			return buttonName;
 		}
 		
+		@Override
 		protected void submitData(String data)
 		{
 			String buttonName = (String)getElement().getAttributes().getAttribute(HTML.Attribute.NAME);
@@ -372,6 +380,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 			handler = handlerToUse;
 		}
 
+		@Override
 		protected Component createComponent()
 		{
 			comboBox = new PanelComboBox();
@@ -400,6 +409,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 			handler = handlerToUse;
 		}
 
+		@Override
 		protected Component createComponent()
 		{
 			String fieldName = (String)getElement().getAttributes().getAttribute(HTML.Attribute.NAME);
@@ -432,6 +442,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 			handler.valueChanged(name, textField.getText());
 		}
 		
+		@Override
 		protected void submitData(String data)
 		{
 		}
@@ -450,6 +461,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 			handler = handlerToUse;
 		}
 
+		@Override
 		protected Component createComponent()
 		{
 			String fieldName = (String)getElement().getAttributes().getAttribute(HTML.Attribute.NAME);
@@ -472,6 +484,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 				EAM.logError("Image without name at " + elem.getStartOffset());
 		}
 
+		@Override
 		public Image getImage()
 		{
 			if(image == null)
