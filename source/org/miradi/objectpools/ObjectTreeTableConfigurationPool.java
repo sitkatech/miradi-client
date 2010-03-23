@@ -39,6 +39,7 @@ public class ObjectTreeTableConfigurationPool extends EAMNormalObjectPool
 		return (ObjectTreeTableConfiguration) findObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new ObjectTreeTableConfiguration(objectManager, actualId);
