@@ -30,7 +30,7 @@ import javax.swing.JFrame;
 import javax.swing.JRootPane;
 import javax.swing.KeyStroke;
 
-public class DialogWithEscapeToClose extends JDialog
+public class DialogWithEscapeToClose extends MiradiDialog
 {
 	public DialogWithEscapeToClose(JFrame parent)
 	{

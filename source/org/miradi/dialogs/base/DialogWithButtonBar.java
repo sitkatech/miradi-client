@@ -33,7 +33,7 @@ import javax.swing.JFrame;
 
 import org.martus.swing.Utilities;
 
-public class DialogWithButtonBar extends MiradiDialog
+public class DialogWithButtonBar extends DialogWithEscapeToClose
 {
 	public DialogWithButtonBar(JFrame parent, String title)
 	{
