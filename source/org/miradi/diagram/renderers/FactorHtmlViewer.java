@@ -37,6 +37,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 		super(mainWindow,"", null);
 	}
 
+	@Override
 	public void customizeStyleSheet(StyleSheet style)
 	{
 		if (graphCell==null)
@@ -66,6 +67,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 		return getProject().getMetadata().getData(ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY);
 	}
 
+	@Override
 	public int getFontSize()
 	{
 		int systemFontSize = getSystemFontSize();
