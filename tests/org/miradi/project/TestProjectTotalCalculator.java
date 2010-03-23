@@ -40,7 +40,6 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.utils.OptionalDouble;
-import org.miradi.views.workplan.WorkPlanView;
 
 public class TestProjectTotalCalculator extends TestCaseWithProject
 {
@@ -62,7 +61,6 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		fred = getProject().createAndPopulateProjectResource();
 		calculator = new ProjectTotalCalculator(getProject());
 		dateUnit = getProject().createDateUnit(YEAR_2008, YEAR_2009);
-		getProject().createViewConfigurationIfNotPresent(WorkPlanView.getViewName());
 	}
 	
 	public void testKeaIndicatorInResultsChain() throws Exception
@@ -238,7 +236,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 	
 	private void turnOnDiagramObjectDataFromCode(String code) throws Exception
 	{
-		ORef configurationRef = getProject().getViewData(WorkPlanView.getViewName()).getTreeConfigurationRef();
+		ORef configurationRef = getProject().getMetadata().getTreeConfigurationRef();
 		getProject().fillObjectUsingCommand(configurationRef, PlanningViewConfiguration.TAG_DIAGRAM_DATA_INCLUSION, code);	
 	}
 	

@@ -70,14 +70,18 @@ abstract public class AbstractProjectNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		children = new Vector();
-		if (getProject().getCurrentViewData().shouldIncludeConceptualModelPage())
+		if (shouldIncludeConceptualModelPage())
 			addConceptualModel();
 
-		if (getProject().getCurrentViewData().shouldIncludeResultsChain())
+		if (shouldIncludeResultsChain())
 			addResultsChainDiagrams();
 		
 		pruneUnwantedLayers(visibleRows);
 	}
+
+	abstract protected boolean shouldIncludeResultsChain() throws Exception;
+
+	abstract protected boolean shouldIncludeConceptualModelPage() throws Exception;
 
 	@Override
 	public String toRawString()

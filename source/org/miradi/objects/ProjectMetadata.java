@@ -30,6 +30,7 @@ import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.FloatData;
 import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.NumberData;
+import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.PercentageData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
@@ -40,6 +41,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.CountriesQuestion;
 import org.miradi.questions.CurrencyTypeQuestion;
+import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.FontSizeQuestion;
@@ -207,6 +209,38 @@ public class ProjectMetadata extends BaseObject
 	public String getProjectNumber()
 	{
 		return otherOrgProjectNumber.get();
+	}
+	
+	//TODO these are exact duplicates from ViewData
+	public boolean shouldIncludeResultsChain()
+	{
+		String diagramDataInclusionCode = getDiagramInclusionCode();
+		if (DiagramObjectDataInclusionQuestion.isIncludeResultsChainOnly(diagramDataInclusionCode))
+			return true;
+		
+		return DiagramObjectDataInclusionQuestion.isIncludeBoth(diagramDataInclusionCode);
+	}
+
+	public boolean shouldIncludeConceptualModelPage()
+	{
+		String diagramDataInclusionCode = getDiagramInclusionCode();
+		if (DiagramObjectDataInclusionQuestion.isIncludeConceptualModelOnly(diagramDataInclusionCode))
+			return true;
+		
+		return DiagramObjectDataInclusionQuestion.isIncludeBoth(diagramDataInclusionCode);
+	}
+
+	private String getDiagramInclusionCode()
+	{
+		ORef planningViewCustomizationRef = getTreeConfigurationRef();
+		PlanningViewConfiguration configuration = PlanningViewConfiguration.find(getProject(), planningViewCustomizationRef);
+		
+		return configuration.getData(PlanningViewConfiguration.TAG_DIAGRAM_DATA_INCLUSION);
+	}
+	
+	public ORef getTreeConfigurationRef()
+	{
+		return workPlanConfigurationRef.getRef();
 	}
 	
 	public float getLongitudeAsFloat()
@@ -473,12 +507,14 @@ public class ProjectMetadata extends BaseObject
 		threatRatingMode = new ChoiceData(TAG_THREAT_RATING_MODE, getQuestion(ThreatRatingModeChoiceQuestion.class));
 		xenodataRefs = new StringRefMapData(TAG_XENODATA_STRING_REF_MAP);
 		targetMode = new ChoiceData(TAG_HUMAN_WELFARE_TARGET_MODE, getQuestion(TargetModeQuestion.class));
+		workPlanConfigurationRef = new ORefData(TAG_WORK_PLAN_CONFIGURATION_REF);
 		
 		addField(TAG_DIAGRAM_FONT_SIZE, diagramFontSize);
 		addField(TAG_DIAGRAM_FONT_FAMILY, diagramFontFamily);
 		addField(TAG_THREAT_RATING_MODE, threatRatingMode);
 		addField(TAG_XENODATA_STRING_REF_MAP, xenodataRefs);
 		addField(TAG_HUMAN_WELFARE_TARGET_MODE, targetMode);
+		addField(TAG_WORK_PLAN_CONFIGURATION_REF, workPlanConfigurationRef);
 		
 		projectFileName = new PseudoStringData(PSEUDO_TAG_PROJECT_FILENAME);
 		allThreatClassifications = new PseudoStringData(PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS);
@@ -550,6 +586,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_DIAGRAM_FONT_FAMILY = "DiagramFontFamily";
 	public static final String TAG_DIAGRAM_FONT_SIZE = "DiagramFontSize";
 	public static final String TAG_THREAT_RATING_MODE = "ThreatRatingMode";
+	public static final String TAG_WORK_PLAN_CONFIGURATION_REF = "WorkPlanConfiguratingRef";
 	
 	public static final String TAG_XENODATA_STRING_REF_MAP = "XenodataRefs";
 	public static final String TAG_HUMAN_WELFARE_TARGET_MODE = "TargetMode";
@@ -618,6 +655,7 @@ public class ProjectMetadata extends BaseObject
 	private ChoiceData diagramFontSize;
 	private ChoiceData threatRatingMode;
 	private ChoiceData targetMode;
+	private ORefData workPlanConfigurationRef;
 	
 	private StringRefMapData xenodataRefs;
 	private PseudoStringData projectFileName;
