@@ -33,7 +33,7 @@ import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
-import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -233,7 +233,7 @@ public class ColumnManager
 			if(customizationRef.isInvalid())
 				return new CodeList();
 			
-			PlanningViewConfiguration customization = (PlanningViewConfiguration)viewData.getProject().findObject(customizationRef);
+			ObjectTreeTableConfiguration customization = (ObjectTreeTableConfiguration)viewData.getProject().findObject(customizationRef);
 			CodeList columnCodes = customization.getColumnConfiguration();
 			omitUnknownColumnTagsInPlace(viewData.getProject(), columnCodes);
 			

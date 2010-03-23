@@ -33,7 +33,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
@@ -237,7 +237,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 	private void turnOnDiagramObjectDataFromCode(String code) throws Exception
 	{
 		ORef configurationRef = getProject().getMetadata().getTreeConfigurationRef();
-		getProject().fillObjectUsingCommand(configurationRef, PlanningViewConfiguration.TAG_DIAGRAM_DATA_INCLUSION, code);	
+		getProject().fillObjectUsingCommand(configurationRef, ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, code);	
 	}
 	
 	private void createDraftStrategyWithAssignment(DiagramObject diagramModel) throws Exception

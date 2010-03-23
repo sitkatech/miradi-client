@@ -95,7 +95,7 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FosProjectData;
-import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RareProjectData;
@@ -764,8 +764,8 @@ public class Project
 		ORef configurationRef = ORef.createFromString(baseObject.getData(configurationTag));
 		if (configurationRef.isInvalid())
 		{
-			ORef createPlanningConfiguration = createObject(PlanningViewConfiguration.getObjectType());
-			setObjectData(createPlanningConfiguration, PlanningViewConfiguration.TAG_LABEL, CreatePlanningViewEmptyConfigurationDoer.getConfigurationDefaultLabel(this));
+			ORef createPlanningConfiguration = createObject(ObjectTreeTableConfiguration.getObjectType());
+			setObjectData(createPlanningConfiguration, ObjectTreeTableConfiguration.TAG_LABEL, CreatePlanningViewEmptyConfigurationDoer.getConfigurationDefaultLabel(this));
 			setObjectData(baseObject.getRef(), configurationTag, createPlanningConfiguration.toString());
 		}
 	}

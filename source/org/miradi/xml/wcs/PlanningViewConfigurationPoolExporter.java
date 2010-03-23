@@ -22,14 +22,14 @@ package org.miradi.xml.wcs;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 
 public class PlanningViewConfigurationPoolExporter extends	BaseObjectPoolExporter
 {
 	public PlanningViewConfigurationPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, PLANNING_VIEW_CONFIGURATION, PlanningViewConfiguration.getObjectType());
+		super(wcsXmlExporterToUse, PLANNING_VIEW_CONFIGURATION, ObjectTreeTableConfiguration.getObjectType());
 	}
 	
 	@Override
@@ -37,6 +37,6 @@ public class PlanningViewConfigurationPoolExporter extends	BaseObjectPoolExporte
 	{
 		super.exportFields(writer, baseObject);
 		
-		writeCodeElementSameAsTag(baseObject, PlanningViewConfiguration.TAG_DIAGRAM_DATA_INCLUSION, new DiagramObjectDataInclusionQuestion());
+		writeCodeElementSameAsTag(baseObject, ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, new DiagramObjectDataInclusionQuestion());
 	}
 }

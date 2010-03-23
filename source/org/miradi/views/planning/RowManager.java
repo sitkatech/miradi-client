@@ -25,7 +25,7 @@ import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Goal;
-import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
@@ -65,7 +65,7 @@ public class RowManager
 			ORef customizationRef = viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
 			if(customizationRef.isInvalid())
 				return new CodeList();
-			PlanningViewConfiguration customization = (PlanningViewConfiguration)viewData.getProject().findObject(customizationRef);
+			ObjectTreeTableConfiguration customization = (ObjectTreeTableConfiguration)viewData.getProject().findObject(customizationRef);
 			return customization.getRowConfiguration();
 		}
 		catch(Exception e)

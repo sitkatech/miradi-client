@@ -22,7 +22,7 @@ package org.miradi.views.planning.doers;
 import org.miradi.dialogs.base.CodeListEditorPanel;
 import org.miradi.dialogs.base.CodeListPanelWithDiagramObjectDataInclusionDropDown;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningRowsQuestion;
 
@@ -37,7 +37,7 @@ public class PlanningRowsEditorDoer extends AbstractPlanningViewConfigurationCod
 	@Override
 	protected String getConfigurationTag()
 	{
-		return PlanningViewConfiguration.TAG_ROW_CONFIGURATION;
+		return ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION;
 	}
 
 	@Override

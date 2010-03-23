@@ -22,7 +22,7 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.project.Project;
 
 public class PlanningViewCustomLabelPropertiesPanel extends ObjectDataInputPanel
@@ -30,7 +30,7 @@ public class PlanningViewCustomLabelPropertiesPanel extends ObjectDataInputPanel
 	public PlanningViewCustomLabelPropertiesPanel(Project projectToUse, ORef planningViewConfigurationRefToUse)
 	{
 		super(projectToUse, planningViewConfigurationRefToUse);
-		addField(createStringField(PlanningViewConfiguration.TAG_LABEL));
+		addField(createStringField(ObjectTreeTableConfiguration.TAG_LABEL));
 		updateFieldsFromProject();
 	}
 

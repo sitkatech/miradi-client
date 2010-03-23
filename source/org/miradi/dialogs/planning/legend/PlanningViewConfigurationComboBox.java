@@ -24,7 +24,7 @@ import java.util.HashSet;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -41,12 +41,12 @@ public class PlanningViewConfigurationComboBox extends PlanningViewComboBox
 	
 	public CodeList getColumnListToShow() throws Exception
 	{
-		return getList(PlanningViewConfiguration.TAG_COL_CONFIGURATION);
+		return getList(ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION);
 	}
 
 	public CodeList getRowListToShow() throws Exception
 	{
-		return getList(PlanningViewConfiguration.TAG_ROW_CONFIGURATION);
+		return getList(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION);
 	}
 	
 	public void syncContentsWithProject()
@@ -92,9 +92,9 @@ public class PlanningViewConfigurationComboBox extends PlanningViewComboBox
 		return new CodeList(findConfiguration().getData(tag)); 
 	}
 	
-	private PlanningViewConfiguration findConfiguration() throws Exception
+	private ObjectTreeTableConfiguration findConfiguration() throws Exception
 	{
-		return (PlanningViewConfiguration) getProject().findObject(getCurrentConfigurationRef());
+		return (ObjectTreeTableConfiguration) getProject().findObject(getCurrentConfigurationRef());
 	}
 	
 	private ORef getCurrentConfigurationRef() throws Exception

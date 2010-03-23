@@ -22,7 +22,7 @@ package org.miradi.dialogs.base;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
@@ -37,7 +37,7 @@ public class CodeListPanelWithDiagramObjectDataInclusionDropDown extends CodeLis
 	@Override
 	protected void addExtraField()
 	{
-		addField(createChoiceField(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_DIAGRAM_DATA_INCLUSION, getProject().getQuestion(DiagramObjectDataInclusionQuestion.class)));
+		addField(createChoiceField(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, getProject().getQuestion(DiagramObjectDataInclusionQuestion.class)));
 	}
 	
 	@Override

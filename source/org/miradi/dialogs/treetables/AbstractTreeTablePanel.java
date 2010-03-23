@@ -36,7 +36,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Objective;
-import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
@@ -283,13 +283,13 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_WORK_PLAN_CONFIGURATION_REF))
 			return true;
 		
-		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_COL_CONFIGURATION))
+		if(event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION))
 			return true;
 		
-		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_ROW_CONFIGURATION))
+		if(event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION))
 			return true;
 		
-		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_DIAGRAM_DATA_INCLUSION))
+		if(event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION))
 			return true;
 				
 		return false;
