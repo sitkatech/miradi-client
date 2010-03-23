@@ -80,7 +80,7 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 		getTextField().addFocusListener(this);
 	}
 
-	class PopupTextEditorDialog extends ModalDialogWithClose
+	static class PopupTextEditorDialog extends ModalDialogWithClose
 	{
 		public PopupTextEditorDialog(MainWindow mainWindow, String title, String initialText)
 		{
