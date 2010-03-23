@@ -464,7 +464,11 @@ abstract public class DiagramObject extends BaseObject
 	
 	public double getZoomScale()
 	{
-		return zoomScale.getSafeValue();
+		double scale = zoomScale.getSafeValue();
+		if (scale ==  0)
+			return 1.0;
+		
+		return scale;
 	}
 	
 	@Override
