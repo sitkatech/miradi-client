@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -37,6 +38,7 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.FillerLabel;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MiradiScrollPane;
 
@@ -91,14 +93,23 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 			Icon icon = choiceItem.getIcon();
 			toggleButtonsPanel.add(getSafeIconLabel(icon));
 			toggleButtonsPanel.add(toggleButton);
-			ControlPanelHtmlFormViewer descriptionHtmlPanel = new ControlPanelHtmlFormViewer(EAM.getMainWindow(), choiceItem.getDescription());
-			FlexibleWidthHtmlViewer.setFixedWidth(descriptionHtmlPanel, 600);
-			toggleButtonsPanel.add(descriptionHtmlPanel);
+			toggleButtonsPanel.add(createDescriptionComponent(choiceItem));
 		}
 	
 		add(new MiradiScrollPane(toggleButtonsPanel));
 		revalidate();
 		repaint();
+	}
+	
+	private Component createDescriptionComponent(ChoiceItem choiceItem)
+	{
+		String description = choiceItem.getDescription();
+		if (description.length() == 0)
+			return new FillerLabel();
+
+		ControlPanelHtmlFormViewer descriptionHtmlPanel = new ControlPanelHtmlFormViewer(EAM.getMainWindow(), description);
+		FlexibleWidthHtmlViewer.setFixedWidth(descriptionHtmlPanel, 600);
+		return descriptionHtmlPanel;
 	}
 
 	protected Color getTogglePanelBackgroundColor()
