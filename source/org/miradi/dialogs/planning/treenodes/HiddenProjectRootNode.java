@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning.treenodes;
 
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
+import org.miradi.views.planning.PlanningView;
 
 public class HiddenProjectRootNode extends AbstractProjectNode
 {
@@ -34,5 +35,17 @@ public class HiddenProjectRootNode extends AbstractProjectNode
 	public boolean isAlwaysExpanded()
 	{
 		return true;
+	}
+	
+	@Override
+	protected boolean shouldIncludeResultsChain() throws Exception
+	{
+		return getProject().getViewData(PlanningView.getViewName()).shouldIncludeResultsChain();
+	}
+
+	@Override
+	protected boolean shouldIncludeConceptualModelPage() throws Exception
+	{
+		return getProject().getViewData(PlanningView.getViewName()).shouldIncludeConceptualModelPage();
 	}
 }

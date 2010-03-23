@@ -28,4 +28,16 @@ public class WorkPlanProjectNode extends AbstractProjectNode
 	{
 		super(projectToUse, visibleRowsToUse);
 	}	
+	
+	@Override
+	protected boolean shouldIncludeResultsChain() throws Exception
+	{
+		return getProject().getMetadata().shouldIncludeResultsChain();
+	}
+
+	@Override
+	protected boolean shouldIncludeConceptualModelPage() throws Exception
+	{
+		return getProject().getMetadata().shouldIncludeConceptualModelPage();
+	}
 }

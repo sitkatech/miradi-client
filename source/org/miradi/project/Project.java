@@ -689,6 +689,7 @@ public class Project
 		simpleThreatFramework.createDefaultObjectsIfNeeded();
 		createDefaultConceptualModel();
 		createDefaultPlanningCustomization();
+		createDefaultWorkPlanConfigurationObject();
 		selectDefaultPlanningCustomization();
 		createDefaultProjectDataObject(WwfProjectData.getObjectType());
 		createDefaultProjectDataObject(RareProjectData.getObjectType());
@@ -749,19 +750,23 @@ public class Project
 
 	private void createDefaultPlanningCustomization() throws Exception
 	{
-		createViewConfigurationIfNotPresent(PlanningView.getViewName());
-		createViewConfigurationIfNotPresent(WorkPlanView.getViewName());
+		ViewData planningViewData = getViewData(PlanningView.getViewName());
+		createDefaultConfigurationObject(planningViewData, ViewData.TAG_TREE_CONFIGURATION_REF);
 	}
 
-	public void createViewConfigurationIfNotPresent(String viewName) throws Exception
+	private void createDefaultWorkPlanConfigurationObject() throws Exception
 	{
-		ViewData planningViewData = getViewData(viewName);
-		ORef configurationRefForView = planningViewData.getTreeConfigurationRef();
-		if (configurationRefForView.isInvalid())
+		createDefaultConfigurationObject(getMetadata(), ProjectMetadata.TAG_WORK_PLAN_CONFIGURATION_REF);
+	}
+	
+	private void createDefaultConfigurationObject(BaseObject baseObject, String configurationTag) throws Exception
+	{
+		ORef configurationRef = ORef.createFromString(baseObject.getData(configurationTag));
+		if (configurationRef.isInvalid())
 		{
 			ORef createPlanningConfiguration = createObject(PlanningViewConfiguration.getObjectType());
 			setObjectData(createPlanningConfiguration, PlanningViewConfiguration.TAG_LABEL, CreatePlanningViewEmptyConfigurationDoer.getConfigurationDefaultLabel(this));
-			setObjectData(planningViewData.getRef(), ViewData.TAG_TREE_CONFIGURATION_REF, createPlanningConfiguration.toString());
+			setObjectData(baseObject.getRef(), configurationTag, createPlanningConfiguration.toString());
 		}
 	}
 	

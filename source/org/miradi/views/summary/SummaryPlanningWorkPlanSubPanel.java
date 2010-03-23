@@ -45,7 +45,6 @@ import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.utils.DateRange;
-import org.miradi.views.workplan.WorkPlanView;
 
 public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 {
@@ -76,7 +75,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		
 		updateQuarterColumnVisibilityEnableStatus();
 		
-		ORef workPlanConfigurationRef = getProject().getViewData(WorkPlanView.getViewName()).getTreeConfigurationRef();
+		ORef workPlanConfigurationRef = getProject().getMetadata().getTreeConfigurationRef();
 		setObjectRefs(new ORef[] {orefToUse, projectToUse.getSingletonObjectRef(ProjectMetadata.getObjectType()), workPlanConfigurationRef, });
 		updateFieldsFromProject();
 	}

@@ -112,10 +112,10 @@ public class ProjectTotalCalculator
 	private ORefList getIncludedDiagramRefs() throws Exception
 	{
 		ORefList diagramRefsToExtractIndicatorsFrom = new ORefList();
-		if (getProject().getWorkPlanViewData().shouldIncludeConceptualModelPage())
+		if (getProject().getMetadata().shouldIncludeConceptualModelPage())
 			diagramRefsToExtractIndicatorsFrom.addAll(getProject().getConceptualModelDiagramPool().getRefList());
 		
-		if (getProject().getWorkPlanViewData().shouldIncludeResultsChain())
+		if (getProject().getMetadata().shouldIncludeResultsChain())
 			diagramRefsToExtractIndicatorsFrom.addAll(getProject().getResultsChainDiagramPool().getRefList());
 		
 		return diagramRefsToExtractIndicatorsFrom;
