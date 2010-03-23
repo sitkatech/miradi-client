@@ -27,9 +27,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.project.ObjectManager;
 
-public class PlanningViewConfigurationPool extends EAMNormalObjectPool
+public class ObjectTreeTableConfigurationPool extends EAMNormalObjectPool
 {
-	public PlanningViewConfigurationPool(IdAssigner idAssignerToUse)
+	public ObjectTreeTableConfigurationPool(IdAssigner idAssignerToUse)
 	{
 		super(idAssignerToUse, ObjectType.OBJECT_TREE_TABLE_CONFIGURATION);
 	}

@@ -70,7 +70,7 @@ import org.miradi.objectpools.IndicatorPool;
 import org.miradi.objectpools.IntermediateResultPool;
 import org.miradi.objectpools.KeyEcologicalAttributePool;
 import org.miradi.objectpools.ObjectivePool;
-import org.miradi.objectpools.PlanningViewConfigurationPool;
+import org.miradi.objectpools.ObjectTreeTableConfigurationPool;
 import org.miradi.objectpools.RareProjectDataPool;
 import org.miradi.objectpools.ResourcePool;
 import org.miradi.objectpools.ResultsChainDiagramPool;
@@ -363,7 +363,7 @@ public class Project
 		return objectManager.getAssignmentPool();
 	}
 	
-	public PlanningViewConfigurationPool getPlanningViewConfigurationPool()
+	public ObjectTreeTableConfigurationPool getPlanningViewConfigurationPool()
 	{
 		return objectManager.getPlanningConfigurationPool();
 	}
