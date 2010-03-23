@@ -22,9 +22,9 @@ package org.miradi.xml.generic;
 
 import org.miradi.objects.ObjectTreeTableConfiguration;
 
-public class PlanningViewConfigurationSchemaElement extends	BaseObjectSchemaElementWithLabel
+public class ObjectTreeTableConfigurationSchemaElement extends	BaseObjectSchemaElementWithLabel
 {
-	public PlanningViewConfigurationSchemaElement()
+	public ObjectTreeTableConfigurationSchemaElement()
 	{
 		super(PLANNING_VIEW_CONFIGURATION);
 		
