@@ -31,11 +31,13 @@ import javax.swing.JToggleButton;
 
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.MiradiPanel;
+import org.miradi.dialogs.fieldComponents.ControlPanelHtmlFormViewer;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MiradiScrollPane;
 
 import com.jhlabs.awt.BasicGridLayout;
@@ -89,7 +91,9 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 			Icon icon = choiceItem.getIcon();
 			toggleButtonsPanel.add(getSafeIconLabel(icon));
 			toggleButtonsPanel.add(toggleButton);
-			toggleButtonsPanel.add(new PanelTitleLabel(choiceItem.getDescription()));
+			ControlPanelHtmlFormViewer descriptionHtmlPanel = new ControlPanelHtmlFormViewer(EAM.getMainWindow(), choiceItem.getDescription());
+			FlexibleWidthHtmlViewer.setFixedWidth(descriptionHtmlPanel, 600);
+			toggleButtonsPanel.add(descriptionHtmlPanel);
 		}
 	
 		add(new MiradiScrollPane(toggleButtonsPanel));
