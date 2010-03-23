@@ -40,7 +40,7 @@ import org.miradi.actions.ActionExpandToMenu;
 import org.miradi.actions.ActionExpandToTarget;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.FontForObjectProvider;
-import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory;
+import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.tablerenderers.ViabilityViewFontProvider;
 import org.miradi.dialogs.treetables.ObjectTreeCellRenderer;
@@ -70,7 +70,7 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		getTree().setCellRenderer(new ViabilityTreeCellRenderer(this));
 		setColumnHeaderRenderers();
 		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(this, fontProvider);
-		multiLineRenderer = new MultiLineObjectTableCellRendererEditorFactory(this, fontProvider);
+		multiLineRenderer = new MultiLineObjectTableCellEditorOrRendererFactory(this, fontProvider);
 		rebuildTableCompletely();
 	}
 	
@@ -221,5 +221,5 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 	}
 
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
-	private MultiLineObjectTableCellRendererEditorFactory multiLineRenderer;
+	private MultiLineObjectTableCellEditorOrRendererFactory multiLineRenderer;
 }
