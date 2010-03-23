@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-22 19:32-0500\n"
+"POT-Creation-Date: 2010-03-23 13:24-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -4334,12 +4334,12 @@ msgstr "Agregar etiqueta a los elementos seleccionados de %n"
 msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Quitar etiqueta de los elementos seleccionados de %n"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:279
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:281
 #: Miradi/source/org/miradi/main/menu/MainMenuBar.java:371
 msgid "Menu|Group Box"
 msgstr "Cuadro de grupo"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:290
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:292
 msgid "Menu|Insert"
 msgstr "Insertar"
 
