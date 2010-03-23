@@ -154,5 +154,5 @@ public interface WcsXmlConstants
 	public static final String IUCN_REDLIST_SPECIES = "IUCNRedListSpecies";
 	public static final String OTHER_NOTABLE_SPECIES = "OtherNotableSpecies";
 	public static final String AUDIENCE = "Audience";
-	public static final String PLANNING_VIEW_CONFIGURATION = "PlanningViewConfiguration";
+	public static final String OBJECT_TREE_TABLE_CONFIGURATION = "PlanningViewConfiguration";
 }

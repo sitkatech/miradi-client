@@ -29,7 +29,7 @@ public class PlanningViewConfigurationPoolExporter extends	BaseObjectPoolExporte
 {
 	public PlanningViewConfigurationPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, PLANNING_VIEW_CONFIGURATION, ObjectTreeTableConfiguration.getObjectType());
+		super(wcsXmlExporterToUse, OBJECT_TREE_TABLE_CONFIGURATION, ObjectTreeTableConfiguration.getObjectType());
 	}
 	
 	@Override

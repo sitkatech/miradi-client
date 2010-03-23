@@ -26,7 +26,7 @@ public class ObjectTreeTableConfigurationSchemaElement extends	BaseObjectSchemaE
 {
 	public ObjectTreeTableConfigurationSchemaElement()
 	{
-		super(PLANNING_VIEW_CONFIGURATION);
+		super(OBJECT_TREE_TABLE_CONFIGURATION);
 		
 		createOptionalCodeField(ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, XmlSchemaCreator.VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION);
 	}
