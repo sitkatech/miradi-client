@@ -400,7 +400,7 @@ public class ObjectManager
 			ObjectType.INTERMEDIATE_RESULT,
 			ObjectType.THREAT_REDUCTION_RESULT,
 			ObjectType.TEXT_BOX,
-			ObjectType.PLANNING_VIEW_CONFIGURATION,
+			ObjectType.OBJECT_TREE_TABLE_CONFIGURATION,
 			ObjectType.WWF_PROJECT_DATA,
 			ObjectType.COST_ALLOCATION_RULE,
 			ObjectType.MEASUREMENT,

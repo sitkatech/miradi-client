@@ -31,7 +31,7 @@ public class PlanningViewConfigurationPool extends EAMNormalObjectPool
 {
 	public PlanningViewConfigurationPool(IdAssigner idAssignerToUse)
 	{
-		super(idAssignerToUse, ObjectType.PLANNING_VIEW_CONFIGURATION);
+		super(idAssignerToUse, ObjectType.OBJECT_TREE_TABLE_CONFIGURATION);
 	}
 	
 	public ObjectTreeTableConfiguration find(BaseId id)
