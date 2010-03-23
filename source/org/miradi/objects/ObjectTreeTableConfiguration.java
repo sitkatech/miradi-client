@@ -75,7 +75,7 @@ public class ObjectTreeTableConfiguration extends BaseObject
 	
 	public static int getObjectType()
 	{
-		return ObjectType.PLANNING_VIEW_CONFIGURATION;
+		return ObjectType.OBJECT_TREE_TABLE_CONFIGURATION;
 	}	
 	
 	public boolean shouldIncludeResultsChain()
