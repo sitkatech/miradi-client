@@ -32,9 +32,9 @@ import org.miradi.questions.PlanningViewConfigurationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.views.planning.PlanningView;
 
-public class PlanningViewConfigurationComboBox extends PlanningViewComboBox
+public class ObjectTreeTableConfigurationComboBox extends PlanningViewComboBox
 {
-	public PlanningViewConfigurationComboBox(Project projectToUse) throws Exception
+	public ObjectTreeTableConfigurationComboBox(Project projectToUse) throws Exception
 	{
 		super(projectToUse, new PlanningViewConfigurationQuestion(projectToUse).getChoices());
 	}
