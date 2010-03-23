@@ -87,6 +87,12 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 			public PopupTextEditorDialog(MainWindow mainWindow, String title)
 			{
 				super(mainWindow, title);
+				final int COLUMN_COUNT = 60;
+				final int ROW_COUNT = 10;
+				popupTextField = new MiradiTextPane(getMainWindow(), COLUMN_COUNT, ROW_COUNT);
+				new TextAreaRightClickMouseHandler(getMainWindow().getActions(), popupTextField);
+				popupTextField.setText(getTextField().getText());
+				add(new MiradiScrollPane(popupTextField));
 			}
 		}
 		
@@ -95,12 +101,6 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 			String fieldLabel = Translation.fieldLabel(getObjectType(), getTag());
 			PopupTextEditorDialog dialog = new PopupTextEditorDialog(getMainWindow(), fieldLabel);
 			dialog.addWindowListener(new WindowCloseSaveHandler());
-			final int COLUMN_COUNT = 60;
-			final int ROW_COUNT = 10;
-			popupTextField = new MiradiTextPane(getMainWindow(), COLUMN_COUNT, ROW_COUNT);
-			new TextAreaRightClickMouseHandler(getMainWindow().getActions(), popupTextField);
-			popupTextField.setText(getTextField().getText());
-			dialog.add(new MiradiScrollPane(popupTextField));
 			Utilities.centerDlg(dialog);
 			dialog.setVisible(true);
 		}
