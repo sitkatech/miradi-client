@@ -24,7 +24,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -57,7 +57,7 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 			return;
 		}
 		
-		PlanningViewConfiguration configuration = PlanningViewConfiguration.find(getProject(), refToSelect);
+		ObjectTreeTableConfiguration configuration = ObjectTreeTableConfiguration.find(getProject(), refToSelect);
 		ChoiceQuestion question = new PlanningViewConfigurationQuestion(getProject());
 		ChoiceItem choiceToSelect = question.findChoiceByCode(configuration.getRef().toString());
 		configurationComboBox.setSelectedItemWithoutFiring(choiceToSelect);
@@ -96,7 +96,7 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 			selectAppropriateConfiguredComboBoxItem();
 		}
 		
-		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), BaseObject.TAG_LABEL))
+		if(event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfiguration.getObjectType(), BaseObject.TAG_LABEL))
 		{
 			configurationComboBox.repaint();
 		}

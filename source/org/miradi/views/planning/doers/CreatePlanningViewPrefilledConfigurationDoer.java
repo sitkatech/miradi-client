@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning.doers;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.CodeList;
 
@@ -39,10 +39,10 @@ public class CreatePlanningViewPrefilledConfigurationDoer extends AbstractCreate
 		return getCurrentConfiguration().getRowConfiguration();
 	}
 	
-	private PlanningViewConfiguration getCurrentConfiguration() throws Exception
+	private ObjectTreeTableConfiguration getCurrentConfiguration() throws Exception
 	{
 		ViewData currentViewData = getProject().getCurrentViewData();
 		ORef planningViewConfigurationRef = currentViewData.getTreeConfigurationRef();
-		return PlanningViewConfiguration.find(getProject(), planningViewConfigurationRef);
+		return ObjectTreeTableConfiguration.find(getProject(), planningViewConfigurationRef);
 	}
 }

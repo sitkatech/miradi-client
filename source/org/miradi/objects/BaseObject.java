@@ -278,7 +278,7 @@ abstract public class BaseObject
 				return new ResultsChainDiagram(objectManager, idAsInt, json);
 				
 			case ObjectType.PLANNING_VIEW_CONFIGURATION:
-				return new PlanningViewConfiguration(objectManager, idAsInt, json);
+				return new ObjectTreeTableConfiguration(objectManager, idAsInt, json);
 				
 			case ObjectType.WWF_PROJECT_DATA:
 				return new WwfProjectData(objectManager, idAsInt, json);

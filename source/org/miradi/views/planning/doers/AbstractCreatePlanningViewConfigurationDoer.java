@@ -26,7 +26,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
@@ -67,21 +67,21 @@ abstract public class AbstractCreatePlanningViewConfigurationDoer extends ViewDo
 		String visibleRowsAsString = getVisibleRowCodes().toString();
 		String visibleColsAsString = getVisibleColumnCodes().toString();
 		
-		CommandCreateObject createConfiguration = new CommandCreateObject(PlanningViewConfiguration.getObjectType());
+		CommandCreateObject createConfiguration = new CommandCreateObject(ObjectTreeTableConfiguration.getObjectType());
 		getProject().executeCommand(createConfiguration);
 		
 		ORef newConfigurationRef = createConfiguration.getObjectRef();
-		CommandSetObjectData setVisibleRowsCommand = new CommandSetObjectData(newConfigurationRef, PlanningViewConfiguration.TAG_ROW_CONFIGURATION, visibleRowsAsString);
+		CommandSetObjectData setVisibleRowsCommand = new CommandSetObjectData(newConfigurationRef, ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION, visibleRowsAsString);
 		getProject().executeCommand(setVisibleRowsCommand);
 		
-		CommandSetObjectData setVisibleColsCommand = new CommandSetObjectData(newConfigurationRef, PlanningViewConfiguration.TAG_COL_CONFIGURATION, visibleColsAsString);
+		CommandSetObjectData setVisibleColsCommand = new CommandSetObjectData(newConfigurationRef, ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION, visibleColsAsString);
 		getProject().executeCommand(setVisibleColsCommand);
 	
 		ViewData viewData = getProject().getCurrentViewData();
 		CommandSetObjectData selectCurrentConfiguration = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_TREE_CONFIGURATION_REF, newConfigurationRef);
 		getProject().executeCommand(selectCurrentConfiguration);
 		
-		CommandSetObjectData setConfigurationLabel = new CommandSetObjectData(newConfigurationRef, PlanningViewConfiguration.TAG_LABEL, getConfigurationDefaultLabel(getProject()));
+		CommandSetObjectData setConfigurationLabel = new CommandSetObjectData(newConfigurationRef, ObjectTreeTableConfiguration.TAG_LABEL, getConfigurationDefaultLabel(getProject()));
 		getProject().executeCommand(setConfigurationLabel);
 	}
 

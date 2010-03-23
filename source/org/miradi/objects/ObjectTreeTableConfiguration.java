@@ -32,15 +32,15 @@ import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class PlanningViewConfiguration extends BaseObject
+public class ObjectTreeTableConfiguration extends BaseObject
 {
-	public PlanningViewConfiguration(ObjectManager objectManager, BaseId id)
+	public ObjectTreeTableConfiguration(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id);
 		clear();
 	}
 	
-	public PlanningViewConfiguration(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
+	public ObjectTreeTableConfiguration(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
 	{
 		super(objectManager, new BaseId(idAsInt), jsonObject);
 	}
@@ -115,12 +115,12 @@ public class PlanningViewConfiguration extends BaseObject
 		return objectType == getObjectType();
 	}
 	
-	public static PlanningViewConfiguration find(ObjectManager objectManager, ORef planningViewConfigurationRef)
+	public static ObjectTreeTableConfiguration find(ObjectManager objectManager, ORef planningViewConfigurationRef)
 	{
-		return (PlanningViewConfiguration) objectManager.findObject(planningViewConfigurationRef);
+		return (ObjectTreeTableConfiguration) objectManager.findObject(planningViewConfigurationRef);
 	}
 	
-	public static PlanningViewConfiguration find(Project project, ORef planningViewConfigurationRef)
+	public static ObjectTreeTableConfiguration find(Project project, ORef planningViewConfigurationRef)
 	{
 		return find(project.getObjectManager(), planningViewConfigurationRef);
 	}

@@ -94,7 +94,7 @@ import org.miradi.objectpools.WwfProjectDataPool;
 import org.miradi.objectpools.XenodataPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FactorLink;
-import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.SubTarget;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.utils.EnhancedJsonObject;
@@ -273,7 +273,7 @@ public class ObjectManager
 	
 	public PlanningViewConfigurationPool getPlanningConfigurationPool()
 	{
-		return (PlanningViewConfigurationPool) getPool(PlanningViewConfiguration.getObjectType());
+		return (PlanningViewConfigurationPool) getPool(ObjectTreeTableConfiguration.getObjectType());
 	}
 
 	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception

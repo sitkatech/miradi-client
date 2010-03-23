@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
-import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 
@@ -34,7 +34,7 @@ public class PlanningColumnsEditorDoer extends AbstractPlanningViewConfiguration
 	@Override
 	protected String getConfigurationTag()
 	{
-		return PlanningViewConfiguration.TAG_COL_CONFIGURATION;
+		return ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION;
 	}
 
 	@Override

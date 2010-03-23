@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 
 public class PlanningViewConfigurationSchemaElement extends	BaseObjectSchemaElementWithLabel
 {
@@ -28,6 +28,6 @@ public class PlanningViewConfigurationSchemaElement extends	BaseObjectSchemaElem
 	{
 		super(PLANNING_VIEW_CONFIGURATION);
 		
-		createOptionalCodeField(PlanningViewConfiguration.TAG_DIAGRAM_DATA_INCLUSION, XmlSchemaCreator.VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION);
+		createOptionalCodeField(ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, XmlSchemaCreator.VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION);
 	}
 }

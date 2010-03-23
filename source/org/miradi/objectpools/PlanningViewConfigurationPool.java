@@ -24,7 +24,7 @@ import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.project.ObjectManager;
 
 public class PlanningViewConfigurationPool extends EAMNormalObjectPool
@@ -34,20 +34,20 @@ public class PlanningViewConfigurationPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.PLANNING_VIEW_CONFIGURATION);
 	}
 	
-	public PlanningViewConfiguration find(BaseId id)
+	public ObjectTreeTableConfiguration find(BaseId id)
 	{
-		return (PlanningViewConfiguration) findObject(id);
+		return (ObjectTreeTableConfiguration) findObject(id);
 	}
 
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
-		return new PlanningViewConfiguration(objectManager, actualId);
+		return new ObjectTreeTableConfiguration(objectManager, actualId);
 	}
 	
-	public PlanningViewConfiguration[] getAllConfigurations()
+	public ObjectTreeTableConfiguration[] getAllConfigurations()
 	{
 		BaseId[] allConfigurationIds = getIds();
-		PlanningViewConfiguration[] allPlanningViewConfigurations = new PlanningViewConfiguration[allConfigurationIds.length];
+		ObjectTreeTableConfiguration[] allPlanningViewConfigurations = new ObjectTreeTableConfiguration[allConfigurationIds.length];
 		for (int i = 0; i < allPlanningViewConfigurations.length; ++i)
 		{
 			allPlanningViewConfigurations[i] = find(allConfigurationIds[i]);

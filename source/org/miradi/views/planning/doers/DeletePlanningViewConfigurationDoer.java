@@ -29,7 +29,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ViewData;
 
 public class DeletePlanningViewConfigurationDoer extends AbstractPlanningViewConfigurationDoer
@@ -67,7 +67,7 @@ public class DeletePlanningViewConfigurationDoer extends AbstractPlanningViewCon
 			
 			selectOtherConfiguration(configurationRef);
 			
-			PlanningViewConfiguration configuration = (PlanningViewConfiguration) getProject().findObject(configurationRef);
+			ObjectTreeTableConfiguration configuration = (ObjectTreeTableConfiguration) getProject().findObject(configurationRef);
 			Vector<Command> commandsToDeleteChildrenAndConfiguration = configuration.createCommandsToDeleteChildrenAndObject();
 			getProject().executeCommandsWithoutTransaction(commandsToDeleteChildrenAndConfiguration);
 		}
