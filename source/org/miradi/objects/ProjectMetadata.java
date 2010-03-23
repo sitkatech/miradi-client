@@ -41,7 +41,6 @@ import org.miradi.project.ObjectManager;
 import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.CountriesQuestion;
 import org.miradi.questions.CurrencyTypeQuestion;
-import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.FontSizeQuestion;
@@ -211,36 +210,24 @@ public class ProjectMetadata extends BaseObject
 		return otherOrgProjectNumber.get();
 	}
 	
-	//TODO these are exact duplicates from ViewData
+	public ORef getTreeConfigurationRef()
+	{
+		return workPlanConfigurationRef.getRef();
+	}
+	
+	private PlanningViewConfiguration getTreeConfiguration()
+	{
+		return PlanningViewConfiguration.find(getProject(), getTreeConfigurationRef());
+	}
+	
 	public boolean shouldIncludeResultsChain()
 	{
-		String diagramDataInclusionCode = getDiagramInclusionCode();
-		if (DiagramObjectDataInclusionQuestion.isIncludeResultsChainOnly(diagramDataInclusionCode))
-			return true;
-		
-		return DiagramObjectDataInclusionQuestion.isIncludeBoth(diagramDataInclusionCode);
+		return getTreeConfiguration().shouldIncludeResultsChain();
 	}
 
 	public boolean shouldIncludeConceptualModelPage()
 	{
-		String diagramDataInclusionCode = getDiagramInclusionCode();
-		if (DiagramObjectDataInclusionQuestion.isIncludeConceptualModelOnly(diagramDataInclusionCode))
-			return true;
-		
-		return DiagramObjectDataInclusionQuestion.isIncludeBoth(diagramDataInclusionCode);
-	}
-
-	private String getDiagramInclusionCode()
-	{
-		ORef planningViewCustomizationRef = getTreeConfigurationRef();
-		PlanningViewConfiguration configuration = PlanningViewConfiguration.find(getProject(), planningViewCustomizationRef);
-		
-		return configuration.getData(PlanningViewConfiguration.TAG_DIAGRAM_DATA_INCLUSION);
-	}
-	
-	public ORef getTreeConfigurationRef()
-	{
-		return workPlanConfigurationRef.getRef();
+		return getTreeConfiguration().shouldIncludeConceptualModelPage();
 	}
 	
 	public float getLongitudeAsFloat()

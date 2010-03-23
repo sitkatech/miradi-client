@@ -34,7 +34,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -97,30 +96,19 @@ public class ViewData extends BaseObject
 		return treeConfigurationRef.getRef();
 	}
 	
+	private PlanningViewConfiguration getTreeConfiguration()
+	{
+		return PlanningViewConfiguration.find(getProject(), getTreeConfigurationRef());
+	}
+	
 	public boolean shouldIncludeResultsChain()
 	{
-		String diagramDataInclusionCode = getDiagramInclusionCode();
-		if (DiagramObjectDataInclusionQuestion.isIncludeResultsChainOnly(diagramDataInclusionCode))
-			return true;
-		
-		return DiagramObjectDataInclusionQuestion.isIncludeBoth(diagramDataInclusionCode);
+		return getTreeConfiguration().shouldIncludeResultsChain();
 	}
 
 	public boolean shouldIncludeConceptualModelPage()
 	{
-		String diagramDataInclusionCode = getDiagramInclusionCode();
-		if (DiagramObjectDataInclusionQuestion.isIncludeConceptualModelOnly(diagramDataInclusionCode))
-			return true;
-		
-		return DiagramObjectDataInclusionQuestion.isIncludeBoth(diagramDataInclusionCode);
-	}
-
-	private String getDiagramInclusionCode()
-	{
-		ORef planningViewCustomizationRef = getTreeConfigurationRef();
-		PlanningViewConfiguration configuration = PlanningViewConfiguration.find(getProject(), planningViewCustomizationRef);
-		
-		return configuration.getData(PlanningViewConfiguration.TAG_DIAGRAM_DATA_INCLUSION);
+		return getTreeConfiguration().shouldIncludeConceptualModelPage();
 	}
 	
 	public void setCurrentTab(int newTab) throws Exception

@@ -78,6 +78,27 @@ public class PlanningViewConfiguration extends BaseObject
 		return ObjectType.PLANNING_VIEW_CONFIGURATION;
 	}	
 	
+	public boolean shouldIncludeResultsChain()
+	{
+		if (DiagramObjectDataInclusionQuestion.isIncludeResultsChainOnly(getDiagramInclusionCode()))
+			return true;
+		
+		return DiagramObjectDataInclusionQuestion.isIncludeBoth(getDiagramInclusionCode());
+	}
+
+	public boolean shouldIncludeConceptualModelPage()
+	{
+		if (DiagramObjectDataInclusionQuestion.isIncludeConceptualModelOnly(getDiagramInclusionCode()))
+			return true;
+		
+		return DiagramObjectDataInclusionQuestion.isIncludeBoth(getDiagramInclusionCode());
+	}
+	
+	private String getDiagramInclusionCode()
+	{
+		return diagramDataInclusionChoice.get();
+	}
+	
 	@Override
 	public String toString()
 	{
