@@ -39,7 +39,7 @@ import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DateTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.FloatingPointRestrictedTableCellRendererEditorFactory;
-import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory;
+import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.NonNegativeIntegerRestrictedTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
@@ -122,8 +122,8 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
-		column.setCellRenderer(new MultiLineObjectTableCellRendererEditorFactory(model, fontProvider));
-		column.setCellEditor(new MultiLineObjectTableCellRendererEditorFactory(model, fontProvider));
+		column.setCellRenderer(new MultiLineObjectTableCellEditorOrRendererFactory(model, fontProvider));
+		column.setCellEditor(new MultiLineObjectTableCellEditorOrRendererFactory(model, fontProvider));
 	}
 	
 	protected void createDateColumn(int tableColumn)

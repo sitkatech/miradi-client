@@ -33,7 +33,7 @@ import org.miradi.dialogfields.StandAloneCodeListComponent;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
-import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory.TableCellHtmlRendererComponent;
+import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellEditorOrRendererFactory.TableCellHtmlRendererComponent;
 import org.miradi.dialogs.treetables.ObjectTreeTable;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -50,7 +50,7 @@ public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implemen
 		mainWindow = mainWindowToUse;
 		table = tableToUse;
 
-		rendererFactory = new MultiLineObjectTableCellRendererEditorFactory(tableToUse, new DefaultFontProvider(mainWindowToUse));
+		rendererFactory = new MultiLineObjectTableCellEditorOrRendererFactory(tableToUse, new DefaultFontProvider(mainWindowToUse));
 		rendererFactory.setCellBackgroundColor(AppPreferences.RESOURCE_TABLE_BACKGROUND);
 
 		TableCellHtmlRendererComponent rendererComponent = rendererFactory.getRendererComponent();
@@ -98,5 +98,5 @@ public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implemen
 	
 	private PlanningUpperMultiTable table;
 	private MainWindow mainWindow;
-	private MultiLineObjectTableCellRendererEditorFactory rendererFactory;
+	private MultiLineObjectTableCellEditorOrRendererFactory rendererFactory;
 }

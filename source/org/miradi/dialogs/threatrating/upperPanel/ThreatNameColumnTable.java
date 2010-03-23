@@ -28,7 +28,7 @@ import javax.swing.JTable;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.FontForObjectProvider;
-import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererEditorFactory;
+import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.main.MainWindow;
@@ -82,7 +82,7 @@ class BorderlessChoiceItemCellRendererFactory extends ChoiceItemTableCellRendere
 	}
 }
 
-class BorderlessMultilineCellRendererFactory extends MultiLineObjectTableCellRendererEditorFactory
+class BorderlessMultilineCellRendererFactory extends MultiLineObjectTableCellEditorOrRendererFactory
 {
 	public BorderlessMultilineCellRendererFactory(
 			RowColumnBaseObjectProvider providerToUse,
