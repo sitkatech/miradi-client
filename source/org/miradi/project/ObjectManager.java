@@ -63,7 +63,7 @@ import org.miradi.objectpools.MeasurementPool;
 import org.miradi.objectpools.ObjectivePool;
 import org.miradi.objectpools.OrganizationPool;
 import org.miradi.objectpools.OtherNotableSpeciesPool;
-import org.miradi.objectpools.PlanningViewConfigurationPool;
+import org.miradi.objectpools.ObjectTreeTableConfigurationPool;
 import org.miradi.objectpools.PoolWithIdAssigner;
 import org.miradi.objectpools.ProgressPercentPool;
 import org.miradi.objectpools.ProgressReportPool;
@@ -136,7 +136,7 @@ public class ObjectManager
 		addNormalPool(new ConceptualModelDiagramPool(ida));
 		addNormalPool(new ThreatReductionResultPool(ida));
 		addNormalPool(new TextBoxPool(ida));
-		addNormalPool(new PlanningViewConfigurationPool(ida));
+		addNormalPool(new ObjectTreeTableConfigurationPool(ida));
 		addNormalPool(new WwfProjectDataPool(ida));
 		addNormalPool(new CostAllocationRulePool(ida));
 		addNormalPool(new MeasurementPool(ida));
@@ -271,9 +271,9 @@ public class ObjectManager
 		return (ResultsChainDiagramPool) getPool(ObjectType.RESULTS_CHAIN_DIAGRAM);
 	}
 	
-	public PlanningViewConfigurationPool getPlanningConfigurationPool()
+	public ObjectTreeTableConfigurationPool getPlanningConfigurationPool()
 	{
-		return (PlanningViewConfigurationPool) getPool(ObjectTreeTableConfiguration.getObjectType());
+		return (ObjectTreeTableConfigurationPool) getPool(ObjectTreeTableConfiguration.getObjectType());
 	}
 
 	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
