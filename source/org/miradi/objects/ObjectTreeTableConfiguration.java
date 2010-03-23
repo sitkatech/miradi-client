@@ -37,6 +37,7 @@ public class ObjectTreeTableConfiguration extends BaseObject
 	public ObjectTreeTableConfiguration(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id);
+		
 		clear();
 	}
 	
