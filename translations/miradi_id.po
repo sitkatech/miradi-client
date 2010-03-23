@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-23 13:24-0500\n"
+"POT-Creation-Date: 2010-03-23 14:05-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7581,7 +7581,7 @@ msgstr "Ditandai"
 msgid "Title|Tag Properties Panel"
 msgstr "Panel Sifat-sifat Tag"
 
-#: Miradi/source/org/miradi/dialogs/progressPercent/ProgressPercentSubPanel.java:61
+#: Miradi/source/org/miradi/dialogs/progressPercent/ProgressPercentSubPanel.java:62
 msgid "Title|Progress Percent"
 msgstr ""
 

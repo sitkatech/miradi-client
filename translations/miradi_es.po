@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-23 13:24-0500\n"
+"POT-Creation-Date: 2010-03-23 14:05-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -7616,7 +7616,7 @@ msgstr "Está etiquetado"
 msgid "Title|Tag Properties Panel"
 msgstr "Panel de propiedades de etiqueta "
 
-#: Miradi/source/org/miradi/dialogs/progressPercent/ProgressPercentSubPanel.java:61
+#: Miradi/source/org/miradi/dialogs/progressPercent/ProgressPercentSubPanel.java:62
 msgid "Title|Progress Percent"
 msgstr ""
 
