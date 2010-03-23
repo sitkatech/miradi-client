@@ -97,6 +97,8 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 		{
 			return popupTextField.getText();
 		}
+
+		private MiradiTextPane popupTextField; 
 	}
 	
 	private class PopupButtonHandler implements ActionListener
@@ -123,7 +125,6 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 		private PopupTextEditorDialog dialog;
 	}
 
-	private MiradiTextPane popupTextField; 
 	private PanelButton editButton;
 	private MiradiPanel mainPanel;
 	private MiradiScrollPane scrollPane;
