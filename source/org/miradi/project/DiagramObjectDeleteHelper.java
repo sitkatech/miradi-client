@@ -54,15 +54,15 @@ public class DiagramObjectDeleteHelper
 	private void deleteDiagramObject(DiagramObject diagramObject) throws Exception
 	{
 		Vector<Command> commandsToDeleteChildrenAndDiagramObject = diagramObject.createCommandsToDeleteChildrenAndObject();
-		project.executeCommandsWithoutTransaction(commandsToDeleteChildrenAndDiagramObject);
+		getProject().executeCommandsWithoutTransaction(commandsToDeleteChildrenAndDiagramObject);
 	}
 
 	private void removeAsCurrentDiagram() throws Exception, CommandFailedException
 	{
-		ViewData viewData = project.getCurrentViewData();
+		ViewData viewData = getProject().getCurrentViewData();
 		String currentDiagramViewDataTag = diagramPanel.getDiagramSplitPane().getDiagramPageList().getCurrentDiagramViewDataTag();
 		CommandSetObjectData setCurrentDiagramCommand = new CommandSetObjectData(viewData.getRef(), currentDiagramViewDataTag, ORef.INVALID);
-		project.executeCommand(setCurrentDiagramCommand);
+		getProject().executeCommand(setCurrentDiagramCommand);
 	}
 
 	private void deleteAllDiagramFactors() throws Exception
@@ -95,7 +95,7 @@ public class DiagramObjectDeleteHelper
 	{
 		DiagramModel model = diagramPanel.getDiagramModel();
 		DiagramLink[] allDiagramLinks = model.getAllDiagramLinksAsArray();
-		LinkDeletor linkDeletor = new LinkDeletor(project);
+		LinkDeletor linkDeletor = new LinkDeletor(getProject());
 		
 		Vector<DiagramFactor> allDiagramFactors = model.getAllDiagramFactors();
 		for (int i = 0; i < allDiagramLinks.length; i++)	
@@ -106,7 +106,7 @@ public class DiagramObjectDeleteHelper
 
 	private void deletDiagramLink(LinkDeletor linkDeletor, Vector<DiagramFactor> allDiagramFactors, DiagramLink diagramLink) throws Exception
 	{
-		DiagramLink found = DiagramLink.find(project, diagramLink.getRef());
+		DiagramLink found = DiagramLink.find(getProject(), diagramLink.getRef());
 		if (found == null)
 			return;
 		
@@ -114,6 +114,11 @@ public class DiagramObjectDeleteHelper
 			linkDeletor.deleteFactorLinksAndGroupBoxDiagramLinks(allDiagramFactors, diagramLink);
 		else
 			linkDeletor.deleteDiagramLinkAndOrphandFactorLink(allDiagramFactors, diagramLink);
+	}
+
+	private Project getProject()
+	{
+		return project;
 	}
 	
 	private Project project;
