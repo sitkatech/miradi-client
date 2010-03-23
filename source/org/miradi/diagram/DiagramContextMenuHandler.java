@@ -266,6 +266,8 @@ public class DiagramContextMenuHandler
 			menu.add(new MenuItemWithoutLocation(action));
 		}
 		
+		menu.setEnabled(!tags.isEmpty());
+		
 		return menu;
 	}
 
