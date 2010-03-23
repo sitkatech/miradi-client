@@ -28,7 +28,7 @@ import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.PlanningViewConfigurationQuestion;
+import org.miradi.questions.ObjectTreeTableConfigurationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.views.planning.PlanningView;
 
@@ -36,7 +36,7 @@ public class ObjectTreeTableConfigurationComboBox extends PlanningViewComboBox
 {
 	public ObjectTreeTableConfigurationComboBox(Project projectToUse) throws Exception
 	{
-		super(projectToUse, new PlanningViewConfigurationQuestion(projectToUse).getChoices());
+		super(projectToUse, new ObjectTreeTableConfigurationQuestion(projectToUse).getChoices());
 	}
 	
 	public CodeList getColumnListToShow() throws Exception
@@ -57,7 +57,7 @@ public class ObjectTreeTableConfigurationComboBox extends PlanningViewComboBox
 
 	private void addCreatedItems()
 	{
-		ChoiceItem[] choicesInProject = new PlanningViewConfigurationQuestion(getProject()).getChoices();
+		ChoiceItem[] choicesInProject = new ObjectTreeTableConfigurationQuestion(getProject()).getChoices();
 		HashSet choicesInList = getCurrentChoicesInList();
 		for(int i = 0; i < choicesInProject.length; ++i)
 		{
@@ -69,7 +69,7 @@ public class ObjectTreeTableConfigurationComboBox extends PlanningViewComboBox
 	
 	private void removeDeletedItems()
 	{
-		ChoiceItem[] choicesInProjectAsArray = new PlanningViewConfigurationQuestion(getProject()).getChoices();
+		ChoiceItem[] choicesInProjectAsArray = new ObjectTreeTableConfigurationQuestion(getProject()).getChoices();
 		HashSet choicesInProject = new HashSet(Arrays.asList(choicesInProjectAsArray));
 		for(int i = getItemCount() - 1; i >= 0; --i)
 		{

@@ -27,9 +27,9 @@ import org.miradi.objectpools.ObjectTreeTableConfigurationPool;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.project.Project;
 
-public class PlanningViewConfigurationQuestion extends DynamicChoiceQuestion
+public class ObjectTreeTableConfigurationQuestion extends DynamicChoiceQuestion
 {
-	public PlanningViewConfigurationQuestion(Project projectToUse)
+	public ObjectTreeTableConfigurationQuestion(Project projectToUse)
 	{
 		super();
 		
