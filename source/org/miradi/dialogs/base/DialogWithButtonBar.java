@@ -23,8 +23,6 @@ package org.miradi.dialogs.base;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -82,14 +80,4 @@ public class DialogWithButtonBar extends MiradiDialog
 		
 		return buttonBar;
 	}
-	
-	private final class DialogCloseListener implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e)
-		{
-			setVisible(false);
-			dispose();
-		}
-	}
-
 }
