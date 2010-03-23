@@ -36,6 +36,8 @@ public class PopupTextEditorDialog extends ModalDialogWithClose
 		new TextAreaRightClickMouseHandler(getMainWindow().getActions(), popupTextField);
 		popupTextField.setText(initialText);
 		add(new MiradiScrollPane(popupTextField));
+		
+		pack();
 	}
 	
 	public String getText()
