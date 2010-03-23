@@ -80,22 +80,22 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 		getTextField().addFocusListener(this);
 	}
 
+	class PopupTextEditorDialog extends ModalDialogWithClose
+	{
+		public PopupTextEditorDialog(MainWindow mainWindow, String title)
+		{
+			super(mainWindow, title);
+			final int COLUMN_COUNT = 60;
+			final int ROW_COUNT = 10;
+			popupTextField = new MiradiTextPane(getMainWindow(), COLUMN_COUNT, ROW_COUNT);
+			new TextAreaRightClickMouseHandler(getMainWindow().getActions(), popupTextField);
+			popupTextField.setText(getTextField().getText());
+			add(new MiradiScrollPane(popupTextField));
+		}
+	}
+	
 	private class PopupButtonHandler implements ActionListener
 	{
-		class PopupTextEditorDialog extends ModalDialogWithClose
-		{
-			public PopupTextEditorDialog(MainWindow mainWindow, String title)
-			{
-				super(mainWindow, title);
-				final int COLUMN_COUNT = 60;
-				final int ROW_COUNT = 10;
-				popupTextField = new MiradiTextPane(getMainWindow(), COLUMN_COUNT, ROW_COUNT);
-				new TextAreaRightClickMouseHandler(getMainWindow().getActions(), popupTextField);
-				popupTextField.setText(getTextField().getText());
-				add(new MiradiScrollPane(popupTextField));
-			}
-		}
-		
 		public void actionPerformed(ActionEvent e)
 		{
 			String fieldLabel = Translation.fieldLabel(getObjectType(), getTag());
