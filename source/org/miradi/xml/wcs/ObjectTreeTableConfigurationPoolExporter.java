@@ -25,9 +25,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 
-public class PlanningViewConfigurationPoolExporter extends	BaseObjectPoolExporter
+public class ObjectTreeTableConfigurationPoolExporter extends	BaseObjectPoolExporter
 {
-	public PlanningViewConfigurationPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public ObjectTreeTableConfigurationPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, OBJECT_TREE_TABLE_CONFIGURATION, ObjectTreeTableConfiguration.getObjectType());
 	}
