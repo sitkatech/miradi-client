@@ -26,6 +26,7 @@ import org.miradi.actions.ActionCreateProgressPercent;
 import org.miradi.actions.ActionDeleteProgressPercent;
 import org.miradi.dialogs.base.EditableObjectListTableSubPanel;
 import org.miradi.main.EAM;
+import org.miradi.objects.Desire;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProgressPercent;
 import org.miradi.project.Project;
@@ -76,5 +77,14 @@ public class ProgressPercentSubPanel extends EditableObjectListTableSubPanel
 	protected String getTagForRefListFieldBeingEdited()
 	{
 		return Objective.TAG_PROGRESS_PERCENT_REFS;
+	}
+	
+	@Override
+	protected boolean doesSectionContainFieldWithTag(String tagToUse)
+	{
+		if (tagToUse.equals(Desire.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE))
+			return true;
+		
+		return super.doesSectionContainFieldWithTag(tagToUse);
 	}
 }
