@@ -29,7 +29,6 @@ import javax.swing.JComponent;
 
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.MiradiPanel;
-import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.icons.PopupEditorIcon;
 import org.miradi.ids.BaseId;
@@ -80,27 +79,6 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 		getTextField().addFocusListener(this);
 	}
 
-	static class PopupTextEditorDialog extends ModalDialogWithClose
-	{
-		public PopupTextEditorDialog(MainWindow mainWindow, String title, String initialText)
-		{
-			super(mainWindow, title);
-			final int COLUMN_COUNT = 60;
-			final int ROW_COUNT = 10;
-			popupTextField = new MiradiTextPane(getMainWindow(), COLUMN_COUNT, ROW_COUNT);
-			new TextAreaRightClickMouseHandler(getMainWindow().getActions(), popupTextField);
-			popupTextField.setText(initialText);
-			add(new MiradiScrollPane(popupTextField));
-		}
-		
-		public String getText()
-		{
-			return popupTextField.getText();
-		}
-
-		private MiradiTextPane popupTextField; 
-	}
-	
 	private class PopupButtonHandler implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e)
