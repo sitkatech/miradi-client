@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
@@ -56,18 +56,19 @@ public class DialogWithEscapeToClose extends JDialog
 	{
 		rootPane = new JRootPane();
 		KeyStroke stroke = KeyStroke.getKeyStroke("ESCAPE");
-		Action actionListener = new AbstractAction() 
-		{
-			public void actionPerformed(ActionEvent actionEvent) 
-			{
-				dispose();
-			} 
-		};
-		
 		InputMap inputMap = rootPane.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
 		inputMap.put(stroke, "ESCAPE");
-		rootPane.getActionMap().put("ESCAPE", actionListener);
+		rootPane.getActionMap().put("ESCAPE", new DialogCloseListener());
 
 		return rootPane;
 	} 
+	
+	public class DialogCloseListener extends AbstractAction implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			setVisible(false);
+			dispose();
+		}
+	}
 }
