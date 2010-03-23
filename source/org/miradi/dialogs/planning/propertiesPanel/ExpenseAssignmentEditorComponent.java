@@ -33,6 +33,7 @@ public class ExpenseAssignmentEditorComponent extends AbstractAssignmentEditorCo
 		super(mainWindowToUse, objectPickerToUse);
 	}
 	
+	@Override
 	protected void createTables() throws Exception
 	{
 		abstractSummaryTableModel = new ExpenseAssignmentMainTableModel(getProject());
@@ -42,6 +43,7 @@ public class ExpenseAssignmentEditorComponent extends AbstractAssignmentEditorCo
 		assignmentDateUnitsTable = new AssignmentExpensesTable(getMainWindow(), assignmentDateUnitsTableModel);		
 	}
 	
+	@Override
 	protected void addButtons(OneRowPanel box)
 	{
 		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionCreateExpense.class), getPicker()));
