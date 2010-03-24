@@ -98,6 +98,7 @@ public class Indicator extends BaseObject
 	}
 
 	//TODO: several pseudo fields are shared between Indicator and Desires; this may indicate a need for a common super class
+	@Override
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE))
@@ -195,6 +196,7 @@ public class Indicator extends BaseObject
 		return measurementRefs.getRefList();
 	}
 	
+	@Override
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_METHOD_IDS))
@@ -206,6 +208,7 @@ public class Indicator extends BaseObject
 		return super.getAnnotationType(tag);
 	}
 
+	@Override
 	public boolean isIdListTag(String tag)
 	{
 		if (tag.equals(TAG_METHOD_IDS))
@@ -214,6 +217,7 @@ public class Indicator extends BaseObject
 		return super.isIdListTag(tag);
 	}
 	
+	@Override
 	public boolean isRefList(String tag)
 	{
 		if (tag.equals(TAG_MEASUREMENT_REFS))
@@ -222,11 +226,13 @@ public class Indicator extends BaseObject
 		return super.isRefList(tag);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -262,6 +268,7 @@ public class Indicator extends BaseObject
 		return futureStatusSummary.get();
 	}
 		
+	@Override
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
@@ -271,11 +278,13 @@ public class Indicator extends BaseObject
 		return deepObjectRefsToCopy;
 	}
 
+	@Override
 	public String getShortLabel()
 	{
 		return getData(TAG_SHORT_LABEL);
 	}
 	
+	@Override
 	public String toString()
 	{
 		if(getId().isInvalid())
@@ -316,6 +325,7 @@ public class Indicator extends BaseObject
 		return find(project.getObjectManager(), indicatorRef);
 	}
 	
+	@Override
 	void clear()
 	{
 		super.clear();
