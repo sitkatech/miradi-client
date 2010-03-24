@@ -107,6 +107,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	{
 		Vector commands = new Vector();
 		commands.addAll(buildCommandsToUntag(project, annotationToDelete.getRef()));
+		// TODO: buildCommandsToDeleteReferredObjects also removes this object from owner right now, but shouldn't
 		commands.addAll(buildCommandsToDeleteReferredObjects(project, owner, annotationIdListTag, annotationToDelete));
 		commands.addAll(buildCommandsToDeleteReferringObjects(project, owner, annotationIdListTag, annotationToDelete));
 		if (Indicator.is(annotationToDelete))
