@@ -111,11 +111,4 @@ public class Utility
 		
 		return convertedValuesList;
 	}
-	
-	public static int getTwoThirdsOfTheScreenWidth()
-	{
-		int screenWidth = Utilities.getViewableScreenSize().width;
-		
-		return (screenWidth * 2) / 3;
-	}
 }
