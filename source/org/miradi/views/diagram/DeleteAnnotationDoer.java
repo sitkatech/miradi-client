@@ -134,6 +134,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	private static Vector buildCommandsToDeleteReferredObjects(Project project, BaseObject owner, String annotationIdListTag,	BaseObject annotationToDelete) throws Exception
 	{
 		Vector commands = new Vector<Command>();
+		//TODO removing annotation from parent needs to be pulled up into the caller.  
 		commands.add(buildCommandToRemoveAnnotationFromObject(owner, annotationIdListTag, annotationToDelete.getRef()));
 		
 		if (Indicator.is(annotationToDelete))
