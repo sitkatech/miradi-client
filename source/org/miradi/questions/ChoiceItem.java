@@ -37,8 +37,8 @@ public class ChoiceItem implements Comparable
 	
 	public ChoiceItem(String codeToUse, String labelToUse, Icon iconToUse)
 	{
-		code = codeToUse;
-		label = labelToUse;
+		this(codeToUse, labelToUse, (Color)null, "");
+		
 		icon = iconToUse;
 	}
 	
