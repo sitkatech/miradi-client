@@ -49,6 +49,7 @@ public class Indicator extends BaseObject
 	public Indicator(ObjectManager objectManager, IndicatorId idToUse)
 	{
 		super(objectManager, idToUse);
+		
 		clear();
 	}
 
@@ -329,6 +330,7 @@ public class Indicator extends BaseObject
 	void clear()
 	{
 		super.clear();
+		
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 		priority = new ChoiceData(TAG_PRIORITY, getQuestion(PriorityRatingQuestion.class));
 		methodIds = new IdListData(TAG_METHOD_IDS, Task.getObjectType());
