@@ -41,21 +41,6 @@ public class DiagramObjectDataInclusionQuestion extends StaticChoiceQuestion
 		};
 	}
 	
-	public static boolean isIncludeBoth(String code)
-	{
-		return code.equals(INCLUDE_BOTH_DIAGRAM_DATA_CODE);
-	}
-	
-	public static boolean isIncludeConceptualModelOnly(String code)
-	{
-		return code.equals(INCLUDE_CONCEPTUAL_MODEL_DATA_CODE);
-	}
-	
-	public static boolean isIncludeResultsChainOnly(String code)
-	{
-		return code.equals(INCLUDE_RESULTS_CHAIN_DATA_CODE);
-	}
-	
 	@Override
 	public boolean hasReadableAlternativeDefaultCode()
 	{
@@ -66,6 +51,37 @@ public class DiagramObjectDataInclusionQuestion extends StaticChoiceQuestion
 	public String getReadableAlternativeDefaultCode()
 	{
 		return "AllTypes";
+	}
+	
+	public static boolean shouldIncludeResultsChain(String diagramInclusionCode)
+	{
+		if (isIncludeResultsChainOnly(diagramInclusionCode))
+			return true;
+		
+		return isIncludeBoth(diagramInclusionCode);
+	}
+	
+	public static boolean shouldIncludeConceptualModelPage(String diagramInclusionCode)
+	{
+		if (isIncludeConceptualModelOnly(diagramInclusionCode))
+			return true;
+		
+		return isIncludeBoth(diagramInclusionCode);
+	}
+	
+	private static boolean isIncludeBoth(String code)
+	{
+		return code.equals(INCLUDE_BOTH_DIAGRAM_DATA_CODE);
+	}
+	
+	private static boolean isIncludeConceptualModelOnly(String code)
+	{
+		return code.equals(INCLUDE_CONCEPTUAL_MODEL_DATA_CODE);
+	}
+	
+	private static boolean isIncludeResultsChainOnly(String code)
+	{
+		return code.equals(INCLUDE_RESULTS_CHAIN_DATA_CODE);
 	}
 	
 	public static final String INCLUDE_BOTH_DIAGRAM_DATA_CODE = "";

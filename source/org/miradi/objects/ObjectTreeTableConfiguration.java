@@ -81,18 +81,12 @@ public class ObjectTreeTableConfiguration extends BaseObject
 	
 	public boolean shouldIncludeResultsChain()
 	{
-		if (DiagramObjectDataInclusionQuestion.isIncludeResultsChainOnly(getDiagramInclusionCode()))
-			return true;
-		
-		return DiagramObjectDataInclusionQuestion.isIncludeBoth(getDiagramInclusionCode());
+		return DiagramObjectDataInclusionQuestion.shouldIncludeResultsChain(getDiagramInclusionCode());
 	}
 
 	public boolean shouldIncludeConceptualModelPage()
 	{
-		if (DiagramObjectDataInclusionQuestion.isIncludeConceptualModelOnly(getDiagramInclusionCode()))
-			return true;
-		
-		return DiagramObjectDataInclusionQuestion.isIncludeBoth(getDiagramInclusionCode());
+		return DiagramObjectDataInclusionQuestion.shouldIncludeConceptualModelPage(getDiagramInclusionCode());
 	}
 	
 	private String getDiagramInclusionCode()
