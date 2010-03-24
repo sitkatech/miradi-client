@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-23 14:05-0500\n"
+"POT-Creation-Date: 2010-03-24 16:19-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -395,33 +395,33 @@ msgstr ""
 msgid "Project Settings"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:58
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:57
 #: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:34
 msgid "Label|Project Dates"
 msgstr "项目日期 \t\t"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:63
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:62
 msgid "Label|Work Plan Dates"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:89
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:87
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:101
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:99
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. The data will be visible again if you set the planning start and end "
 "date to include the entire date range of the existing data."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:111
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:109
 msgid ""
 "Quarter columns cannot be hidden because this project already has data for "
 "some quarters."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:261
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:259
 msgid "Work Plan Settings"
 msgstr ""
 
@@ -2019,7 +2019,7 @@ msgstr "已存在使用相同名称的项目: \t\t"
 msgid "A file or folder exist by the same name:"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:957
+#: Miradi/source/org/miradi/project/Project.java:951
 msgid "[No Project]"
 msgstr "[无项目] \t\t"
 
@@ -7957,6 +7957,9 @@ msgid "FieldLabel|11.AllThreatClassifications|Threats Addressed"
 msgstr ""
 
 msgid "FieldLabel|11.QuarterColumnsVisibility|Quarter Column Visibility"
+msgstr ""
+
+msgid "FieldLabel|11.WorkPlanDiagramDataInclusion|Include Work Plan Data From"
 msgstr ""
 
 msgid "FieldLabel|12.ShortLabel|ID"
