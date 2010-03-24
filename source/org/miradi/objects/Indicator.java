@@ -148,21 +148,6 @@ public class Indicator extends BaseObject
 		return getBaseObjectLabelsOnASingleLine(getMethodRefs());
 	}
 
-	protected String getBaseObjectLabelsOnASingleLine(ORefList refs)
-	{
-		StringBuffer result = new StringBuffer();
-		for(int index = 0; index < refs.size(); ++index)
-		{
-			if(index > 0)
-				result.append("; ");
-			
-			BaseObject baseObject = BaseObject.find(getProject(), refs.get(index));
-			result.append(baseObject.getData(BaseObject.TAG_LABEL));
-		}
-		
-		return result.toString();
-	}
-	
 	@Override
 	public ORefList getSubTaskRefs()
 	{

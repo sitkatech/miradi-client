@@ -1193,6 +1193,21 @@ abstract public class BaseObject
 		return getType() == typeToUse;
 	}
 	
+	protected String getBaseObjectLabelsOnASingleLine(ORefList refs)
+	{
+		StringBuffer result = new StringBuffer();
+		for(int index = 0; index < refs.size(); ++index)
+		{
+			if(index > 0)
+				result.append("; ");
+			
+			BaseObject baseObject = BaseObject.find(getProject(), refs.get(index));
+			result.append(baseObject.getData(BaseObject.TAG_LABEL));
+		}
+		
+		return result.toString();
+	}
+
 	//FIXME medium: move these classes into their own class in order to avoid dup code and inner classes
 	public class PseudoQuestionData  extends ObjectData
 	{
