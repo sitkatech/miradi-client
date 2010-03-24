@@ -46,7 +46,7 @@ public class DiagramObjectDeleteHelper
 	{
 		DiagramObject diagramObject = diagramPanel.getDiagramObject();
 		deleteAllDiagramFactorLinks();
-		deleteAllDiagramFactors();
+		removeAndDeleteAllDiagramFactors();
 		removeAsCurrentDiagram();
 		deleteDiagramObject(diagramObject);
 	}
@@ -65,7 +65,7 @@ public class DiagramObjectDeleteHelper
 		getProject().executeCommand(setCurrentDiagramCommand);
 	}
 
-	private void deleteAllDiagramFactors() throws Exception
+	private void removeAndDeleteAllDiagramFactors() throws Exception
 	{
 		DiagramModel model = diagramPanel.getDiagramModel();
 		DiagramFactor[] allDiagramFactors = model.getAllDiagramFactorsAsArray();
