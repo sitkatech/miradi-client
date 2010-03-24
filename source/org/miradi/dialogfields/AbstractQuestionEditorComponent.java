@@ -41,6 +41,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.FillerLabel;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MiradiScrollPane;
+import org.miradi.utils.Utility;
 
 import com.jhlabs.awt.BasicGridLayout;
 import com.jhlabs.awt.GridLayoutPlus;
@@ -108,7 +109,8 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 			return new FillerLabel();
 
 		ControlPanelHtmlFormViewer descriptionHtmlPanel = new ControlPanelHtmlFormViewer(EAM.getMainWindow(), description);
-		FlexibleWidthHtmlViewer.setFixedWidth(descriptionHtmlPanel, 600);
+		FlexibleWidthHtmlViewer.setFixedWidth(descriptionHtmlPanel, Utility.getTwoThirdsOfTheScreenWidth());
+		
 		return descriptionHtmlPanel;
 	}
 
