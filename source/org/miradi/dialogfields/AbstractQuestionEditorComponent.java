@@ -30,6 +30,7 @@ import javax.swing.Icon;
 import javax.swing.JCheckBox;
 import javax.swing.JToggleButton;
 
+import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.ControlPanelHtmlFormViewer;
@@ -41,7 +42,6 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.FillerLabel;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MiradiScrollPane;
-import org.miradi.utils.Utility;
 
 import com.jhlabs.awt.BasicGridLayout;
 import com.jhlabs.awt.GridLayoutPlus;
@@ -109,9 +109,16 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 			return new FillerLabel();
 
 		ControlPanelHtmlFormViewer descriptionHtmlPanel = new ControlPanelHtmlFormViewer(EAM.getMainWindow(), description);
-		FlexibleWidthHtmlViewer.setFixedWidth(descriptionHtmlPanel, Utility.getTwoThirdsOfTheScreenWidth());
+		FlexibleWidthHtmlViewer.setFixedWidth(descriptionHtmlPanel, getTwoThirdsOfTheScreenWidth());
 		
 		return descriptionHtmlPanel;
+	}
+	
+	private int getTwoThirdsOfTheScreenWidth()
+	{
+		int screenWidth = Utilities.getViewableScreenSize().width;
+		
+		return (screenWidth * 2) / 3;
 	}
 
 	protected Color getTogglePanelBackgroundColor()
