@@ -689,7 +689,6 @@ public class Project
 		simpleThreatFramework.createDefaultObjectsIfNeeded();
 		createDefaultConceptualModel();
 		createDefaultPlanningCustomization();
-		createDefaultWorkPlanConfigurationObject();
 		selectDefaultPlanningCustomization();
 		createDefaultProjectDataObject(WwfProjectData.getObjectType());
 		createDefaultProjectDataObject(RareProjectData.getObjectType());
@@ -754,11 +753,6 @@ public class Project
 		createDefaultConfigurationObject(planningViewData, ViewData.TAG_TREE_CONFIGURATION_REF);
 	}
 
-	private void createDefaultWorkPlanConfigurationObject() throws Exception
-	{
-		createDefaultConfigurationObject(getMetadata(), ProjectMetadata.TAG_WORK_PLAN_CONFIGURATION_REF);
-	}
-	
 	private void createDefaultConfigurationObject(BaseObject baseObject, String configurationTag) throws Exception
 	{
 		ORef configurationRef = ORef.createFromString(baseObject.getData(configurationTag));
