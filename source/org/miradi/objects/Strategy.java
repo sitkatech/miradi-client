@@ -148,6 +148,9 @@ public class Strategy extends Factor
 		if (fieldTag.equals(PSEUDO_TAG_TAXONOMY_CODE_VALUE))
 			return new StrategyClassificationQuestion().findChoiceByCode(getTaxonomyCode()).getLabel();
 		
+		if (fieldTag.equals(PSEUDO_TAG_ACTIVITIES))
+			return getBaseObjectLabelsOnASingleLine(getActivityRefs());
+		
 		return super.getPseudoData(fieldTag);
 	}
 
@@ -299,6 +302,7 @@ public class Strategy extends Factor
 		feasibilityRatingLabel = new PseudoQuestionData(PSEUDO_TAG_FEASIBILITY_RATING_VALUE, new StrategyFeasibilityQuestion());
 		tagRatingSummaryLabel = new PseudoQuestionData(PSEUDO_TAG_RATING_SUMMARY_VALUE, new StrategyRatingSummaryQuestion());
 		taxonomyCodeLabel = new PseudoQuestionData(PSEUDO_TAG_TAXONOMY_CODE_VALUE, new StrategyClassificationQuestion());
+		multiLineActivities = new PseudoStringData(PSEUDO_TAG_ACTIVITIES);
 		
 		addField(TAG_STATUS, status);
 		addField(TAG_ACTIVITY_IDS, activityIds);
@@ -313,6 +317,7 @@ public class Strategy extends Factor
 		addField(PSEUDO_TAG_FEASIBILITY_RATING_VALUE, feasibilityRatingLabel);
 		addField(PSEUDO_TAG_RATING_SUMMARY_VALUE, tagRatingSummaryLabel);
 		addField(PSEUDO_TAG_TAXONOMY_CODE_VALUE, taxonomyCodeLabel);
+		addField(PSEUDO_TAG_ACTIVITIES, multiLineActivities);
 	}
 
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
@@ -329,6 +334,7 @@ public class Strategy extends Factor
 	public static final String PSEUDO_TAG_IMPACT_RATING_VALUE = "ImpactRatingValue";
 	public static final String PSEUDO_TAG_FEASIBILITY_RATING_VALUE = "FeasibilityRatingValue";
 	public static final String PSEUDO_TAG_RATING_SUMMARY_VALUE = "RatingSummaryValue";
+	public static final String PSEUDO_TAG_ACTIVITIES = "PseudoTagActivities";
 	
 	public static final String OBJECT_NAME = "Strategy";
 	public static final String OBJECT_NAME_DRAFT = "Draft" + Strategy.OBJECT_NAME;
@@ -346,4 +352,5 @@ public class Strategy extends Factor
 	private PseudoQuestionData feasibilityRatingLabel;
 	private PseudoQuestionData tagRatingSummaryLabel;
 	private PseudoQuestionData taxonomyCodeLabel;
+	private PseudoStringData multiLineActivities;
 }

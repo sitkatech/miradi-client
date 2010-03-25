@@ -26,6 +26,7 @@ import org.miradi.objects.Desire;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 
 public class CustomPlanningColumnsQuestion extends StaticChoiceQuestion
@@ -41,7 +42,9 @@ public class CustomPlanningColumnsQuestion extends StaticChoiceQuestion
 		{
 				createChoiceItem(Target.TAG_SPECIES_LATIN_NAME),
 				createChoiceItem(META_THREAT_RATING),
-				createChoiceItem(Indicator.PSEUDO_TAG_METHODS), 
+				createChoiceItem(Indicator.PSEUDO_TAG_METHODS),
+				createChoiceItem(Strategy.PSEUDO_TAG_ACTIVITIES),
+				createChoiceItem(Factor.PSEUDO_TAG_INDICATORS),
 				createChoiceItem(Indicator.PSEUDO_TAG_FACTOR),
 				createChoiceItem(Indicator.TAG_PRIORITY),
 				createChoiceItem(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE),
