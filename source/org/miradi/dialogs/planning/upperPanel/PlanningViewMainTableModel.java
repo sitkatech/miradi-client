@@ -91,6 +91,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		fireTableStructureChanged();
 	}
 
+	@Override
 	public Color getCellBackgroundColor(int column)
 	{
 		String columnTag = getColumnTag(column);
@@ -232,6 +233,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return columnsToShow.get(column);
 	}
 	
+	@Override
 	public String getColumnName(int column)
 	{
 		String columnTag = getColumnTag(column);
