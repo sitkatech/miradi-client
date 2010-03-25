@@ -71,6 +71,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		return (String)getUserObject();
 	}
 	
+	@Override
 	public Color getColor()
 	{
 		ChoiceItem choiceItem = diagramFactorBackgroundQuestion.findChoiceByCode(getDiagramFactor().getBackgroundColor());
@@ -85,6 +86,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		return model.getProject();
 	}
 	
+	@Override
 	public Rectangle2D getBounds()
 	{
 		return GraphConstants.getBounds(getAttributes());
