@@ -357,6 +357,11 @@ abstract public class Desire extends BaseObject
 		return findDesire(project.getObjectManager(), desireRef);
 	}
 	
+	public static boolean isDesire(ORef ref)
+	{
+		return isDesire(ref.getObjectType());
+	}
+	
 	public static boolean isDesire(int objectType)
 	{
 		if (Objective.is(objectType))

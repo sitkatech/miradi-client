@@ -22,17 +22,18 @@ package org.miradi.dialogs.treeRelevancy;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Desire;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
 
 public class RootRelevancyTreeTableNode extends AbstractRelevancyNode
 {
-	public RootRelevancyTreeTableNode(Project project) throws Exception
+	public RootRelevancyTreeTableNode(Project project, Desire desireToUse) throws Exception
 	{
 		super(project);
 		
+		desire = desireToUse;
 		strategyRefs = project.getStrategyPool().getNonDraftStrategyRefs();
 		rebuild();
 	}
@@ -52,19 +53,19 @@ public class RootRelevancyTreeTableNode extends AbstractRelevancyNode
 	@Override
 	public BaseObject getObject()
 	{
-		return null;
+		return desire;
 	}
 
 	@Override
 	public ORef getObjectReference()
 	{
-		return ORef.INVALID;
+		return getObject().getRef();
 	}
 	
 	@Override
 	public int getType()
 	{
-		return ObjectType.FAKE;
+		return getObjectReference().getObjectType();
 	}
 	
 	@Override
@@ -87,6 +88,7 @@ public class RootRelevancyTreeTableNode extends AbstractRelevancyNode
 		sortChildren(strategyChildren);
 	}
 
+	private Desire desire;
 	private ORefList strategyRefs;
 	private StrategyRelevancyNode[] strategyChildren;
 }

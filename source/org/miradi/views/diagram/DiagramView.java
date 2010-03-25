@@ -116,7 +116,7 @@ import org.miradi.actions.ActionShowFullModelMode;
 import org.miradi.actions.ActionShowResultsChain;
 import org.miradi.actions.ActionShowSelectedChainMode;
 import org.miradi.actions.ActionShowStressBubble;
-import org.miradi.actions.ActionTreeCreateActivity;
+import org.miradi.actions.ActionTreeCreateRelevancyActivity;
 import org.miradi.actions.ActionZoomIn;
 import org.miradi.actions.ActionZoomOut;
 import org.miradi.actions.ActionZoomToFit;
@@ -190,7 +190,7 @@ import org.miradi.views.diagram.doers.ShowStressBubbleDoer;
 import org.miradi.views.diagram.doers.ZoomIn;
 import org.miradi.views.diagram.doers.ZoomOut;
 import org.miradi.views.diagram.doers.ZoomToFitDoer;
-import org.miradi.views.planning.doers.CreateActivityNodeDoer;
+import org.miradi.views.planning.doers.CreateRelevancyActivityDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
@@ -307,7 +307,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCreateActivity.class, new CreateActivityDoer());
 		addDoerToMap(ActionDeleteActivity.class, new DeleteActivityDoer());
 		addDoerToMap(ActionShareActivity.class, new TreeNodeShareActivityDoer());
-		addDoerToMap(ActionTreeCreateActivity.class, new CreateActivityNodeDoer());
+		addDoerToMap(ActionTreeCreateRelevancyActivity.class, new CreateRelevancyActivityDoer());
 		addDoerToMap(ActionDeletePlanningViewTreeNode.class, new TreeNodeDeleteDoer());
 
 		addDoerToMap(ActionCreateObjective.class, new CreateObjectiveDoer());
