@@ -36,22 +36,26 @@ public class ObjectiveListManagementPanel extends ObjectListManagementPanel
 		super(mainWindowToUse, objectListPanel, new ObjectivePropertiesPanel(mainWindowToUse.getProject(), actions));
 	}
 	
+	@Override
 	public String getSplitterDescription()
 	{
 		return getPanelDescription() + SPLITTER_TAG;
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return PANEL_DESCRIPTION;
 	}
 	
+	@Override
 	public Icon getIcon()
 	{
 		return new ObjectiveIcon();
 	}
 	
 	
+	@Override
 	public Class getJumpActionClass()
 	{
 		return ActionJumpStrategicPlanDevelopObjectivesStep.class;
