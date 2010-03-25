@@ -24,11 +24,13 @@ import org.miradi.objects.Factor;
 
 public class CreateObjectiveDoer extends CreateAnnotationDoer
 {
+	@Override
 	public int getAnnotationType()
 	{
 		return ObjectType.OBJECTIVE;
 	}
 	
+	@Override
 	public String getAnnotationListTag()
 	{
 		return Factor.TAG_OBJECTIVE_IDS;
