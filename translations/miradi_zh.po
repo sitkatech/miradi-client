@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-25 13:40-0500\n"
+"POT-Creation-Date: 2010-03-25 14:23-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5495,6 +5495,17 @@ msgstr "导出金融树 \t\t"
 msgid "TT|Export finance tree"
 msgstr "导出金融树 \t\t"
 
+#: Miradi/source/org/miradi/actions/ActionTreeCreateRelevancyActivity.java:41
+#: Miradi/source/org/miradi/actions/ActionCreateActivity.java:35
+#: Miradi/source/org/miradi/actions/ActionTreeCreateActivity.java:40
+msgid "Action|Manage|Create Activity"
+msgstr "创建活动 \t\t"
+
+#: Miradi/source/org/miradi/actions/ActionTreeCreateRelevancyActivity.java:47
+#: Miradi/source/org/miradi/actions/ActionTreeCreateActivity.java:46
+msgid "TT|Create an Activity for the selected Strategy"
+msgstr "为选定的策略创建一项活动 \t\t"
+
 #: Miradi/source/org/miradi/actions/ActionCreateReportTemplate.java:35
 #: Miradi/source/org/miradi/actions/ActionCreateTaggedObjectSet.java:35
 msgid "Action|Create"
@@ -6191,11 +6202,6 @@ msgstr "删除（多个）组合框 \t\t"
 msgid "TT|Delete Group Box(s) but not children"
 msgstr "删除（多个）组合框，除了儿童 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionCreateActivity.java:35
-#: Miradi/source/org/miradi/actions/ActionTreeCreateActivity.java:40
-msgid "Action|Manage|Create Activity"
-msgstr "创建活动 \t\t"
-
 #: Miradi/source/org/miradi/actions/ActionCreateActivity.java:40
 msgid "TT|Create a new Activity"
 msgstr "创建一项新的活动 \t\t"
@@ -6347,10 +6353,6 @@ msgstr "创建会计编码 \t\t"
 #: Miradi/source/org/miradi/actions/ActionCreateAccountingCode.java:40
 msgid "TT|Create an Accounting Code"
 msgstr "创建一个会计编码 \t\t"
-
-#: Miradi/source/org/miradi/actions/ActionTreeCreateActivity.java:46
-msgid "TT|Create an Activity for the selected Strategy"
-msgstr "为选定的策略创建一项活动 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:39
 msgid "TT|Choose which strategies and activities are relevant to this goal"
