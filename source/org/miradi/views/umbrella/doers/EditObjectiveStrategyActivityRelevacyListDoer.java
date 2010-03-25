@@ -23,6 +23,7 @@ import org.miradi.objects.Objective;
 
 public class EditObjectiveStrategyActivityRelevacyListDoer extends AbstractStrategyActivityRelevancyListDoer
 {
+	@Override
 	protected int getObjectType()
 	{
 		return Objective.getObjectType();
