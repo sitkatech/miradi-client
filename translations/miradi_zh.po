@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-25 08:39-0500\n"
+"POT-Creation-Date: 2010-03-25 08:56-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -8112,6 +8112,12 @@ msgid "FieldLabel|12.SpeciesLatinName|Species Latin Name"
 msgstr ""
 
 msgid "FieldLabel|12.ThreatRating|Rating"
+msgstr ""
+
+msgid "FieldLabel|12.PseudoTagIndicators|Indicators"
+msgstr ""
+
+msgid "FieldLabel|12.PseudoTagActivities|Activities"
 msgstr ""
 
 msgid "FieldLabel|13.FromDiagramFactorId|From"
