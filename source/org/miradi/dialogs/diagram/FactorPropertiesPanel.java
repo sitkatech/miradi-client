@@ -95,6 +95,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	}
 	
 	//TODO: can put a loop of disposable panels and move the code to DIsposablePanel passing in list
+	@Override
 	public void dispose()
 	{
 		disposeTabs();
@@ -485,6 +486,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			super(projectToUse, oRefToUse);
 		}
 
+		@Override
 		public String getPanelDescription()
 		{
 			return "";
@@ -506,11 +508,13 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		return getDiagram().getDiagramObject();
 	}
 
+	@Override
 	public BaseObject getObject()
 	{
 		return currentDiagramFactor;
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Factor Properties");
