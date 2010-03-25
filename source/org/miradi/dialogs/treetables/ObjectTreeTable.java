@@ -228,6 +228,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		selectionListeners.remove(listener);
 	}
 	
+	@Override
 	public void valueChanged(ListSelectionEvent e)
 	{
 		super.valueChanged(e);
@@ -247,6 +248,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		return (TreeTableModelAdapter)getModel();
 	}
 	
+	@Override
 	public TreeTableNode getNodeForRow(int row)
 	{
 		return (TreeTableNode)getTreeTableAdapter().nodeForRow(row);
