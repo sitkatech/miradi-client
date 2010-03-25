@@ -25,6 +25,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
@@ -64,7 +65,9 @@ abstract public class AbstractCreateTaskNodeDoer extends AbstractTreeNodeDoer
 		getProject().executeBeginTransaction();
 		try
 		{
+			ORefList selectionBeforeCreate = getSelectionHierarchy();
 			ORef newTaskRef = createTask();
+			doWork(selectionBeforeCreate, newTaskRef);
 			CreateAnnotationDoer.ensureObjectVisible(getPicker(), newTaskRef);
 		}
 		catch (Exception e)
@@ -77,6 +80,10 @@ abstract public class AbstractCreateTaskNodeDoer extends AbstractTreeNodeDoer
 		}
 	}
 	
+	protected void doWork(ORefList selectionBeforeCreate, ORef newTaskRef) throws Exception
+	{
+	}
+
 	private ORef createTask() throws Exception
 	{
 		ORef parentRef = getParentRef();

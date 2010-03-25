@@ -38,7 +38,7 @@ public class StrategyActivityRelevancyManagementPanel extends ObjectManagementPa
 	
 	public static StrategyActivityRelevancyManagementPanel createManagementPanel(MainWindow mainWindow, Desire desire) throws Exception
 	{
-		RootRelevancyTreeTableNode rootNode = new RootRelevancyTreeTableNode(mainWindow.getProject());
+		RootRelevancyTreeTableNode rootNode = new RootRelevancyTreeTableNode(mainWindow.getProject(), desire);
 		StrategyActivityRelevancyTreeTableModel treeTableModel = new StrategyActivityRelevancyTreeTableModel(rootNode); 
 		StrategyActivityRelevancyTreeTable treeTable = new StrategyActivityRelevancyTreeTable(mainWindow, treeTableModel);
 		StrategyActivityRelevancyTreeTablePanel treeTablePanel = StrategyActivityRelevancyTreeTablePanel.createTreeTablePanel(mainWindow, desire, treeTableModel, treeTable);

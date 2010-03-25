@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.treeRelevancy;
 
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
-import org.miradi.actions.ActionTreeCreateActivity;
+import org.miradi.actions.ActionTreeCreateRelevancyActivity;
 import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.base.SingleBooleanColumnEditableModel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
@@ -54,7 +54,7 @@ public class StrategyActivityRelevancyTreeTablePanel extends AbstractEditableTre
 	private static Class[] getButtonActionClasses()
 	{
 		return new Class[] {
-				ActionTreeCreateActivity.class,
+				ActionTreeCreateRelevancyActivity.class,
 				ActionDeletePlanningViewTreeNode.class,
 		};
 	}
