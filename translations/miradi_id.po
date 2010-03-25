@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-25 13:40-0500\n"
+"POT-Creation-Date: 2010-03-25 14:23-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -5743,6 +5743,17 @@ msgstr "Ekspor diagram keuangan "
 msgid "TT|Export finance tree"
 msgstr "Ekspor diagram keuangan "
 
+#: Miradi/source/org/miradi/actions/ActionTreeCreateRelevancyActivity.java:41
+#: Miradi/source/org/miradi/actions/ActionCreateActivity.java:35
+#: Miradi/source/org/miradi/actions/ActionTreeCreateActivity.java:40
+msgid "Action|Manage|Create Activity"
+msgstr "Buat Kegiatan "
+
+#: Miradi/source/org/miradi/actions/ActionTreeCreateRelevancyActivity.java:47
+#: Miradi/source/org/miradi/actions/ActionTreeCreateActivity.java:46
+msgid "TT|Create an Activity for the selected Strategy"
+msgstr "Buat Kegiatan untuk Strategi terpilih "
+
 #: Miradi/source/org/miradi/actions/ActionCreateReportTemplate.java:35
 #: Miradi/source/org/miradi/actions/ActionCreateTaggedObjectSet.java:35
 msgid "Action|Create"
@@ -6440,11 +6451,6 @@ msgstr "Hapus Kotak(-kotak) Grup "
 msgid "TT|Delete Group Box(s) but not children"
 msgstr "Hapus Kotak(-kotak) Grup selain turunannya "
 
-#: Miradi/source/org/miradi/actions/ActionCreateActivity.java:35
-#: Miradi/source/org/miradi/actions/ActionTreeCreateActivity.java:40
-msgid "Action|Manage|Create Activity"
-msgstr "Buat Kegiatan "
-
 #: Miradi/source/org/miradi/actions/ActionCreateActivity.java:40
 msgid "TT|Create a new Activity"
 msgstr "Buat satu Kegiatan baru "
@@ -6604,10 +6610,6 @@ msgstr "Buat Kode Akuntansi "
 #: Miradi/source/org/miradi/actions/ActionCreateAccountingCode.java:40
 msgid "TT|Create an Accounting Code"
 msgstr "Buat satu Kode Akuntansi "
-
-#: Miradi/source/org/miradi/actions/ActionTreeCreateActivity.java:46
-msgid "TT|Create an Activity for the selected Strategy"
-msgstr "Buat Kegiatan untuk Strategi terpilih "
 
 #: Miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:39
 msgid "TT|Choose which strategies and activities are relevant to this goal"
