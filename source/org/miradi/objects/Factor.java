@@ -413,6 +413,9 @@ abstract public class Factor extends BaseObject
 			if(fieldTag.equals(PSEUDO_TAG_TARGETS))
 				return getFactorRelatedTargets();
 			
+			if(fieldTag.equals(PSEUDO_TAG_INDICATORS))
+				return getBaseObjectLabelsOnASingleLine(getOnlyDirectIndicatorRefs());
+			
 			if(fieldTag.equals(PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS))
 				return DiagramObject.getDiagramRefsContainingFactor(getProject(), ConceptualModelDiagram.getObjectType(), getRef()).toString();
 			
@@ -501,6 +504,7 @@ abstract public class Factor extends BaseObject
 		multiLineObjectives = new PseudoStringData(PSEUDO_TAG_OBJECTIVES);
 		multiLineDeirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
 		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
+		multiLineIndicators = new PseudoStringData(PSEUDO_TAG_INDICATORS);
 		pseudoDiagramRefs = new PseudoORefListData(PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS);
 		pseudoResultsChainRefs = new PseudoORefListData(PSEUDO_TAG_RESULTS_CHAIN_REFS);
 		pseudoTagReferringTagRefs = new PseudoORefListData(PSEUDO_TAG_REFERRING_TAG_REFS);
@@ -513,6 +517,7 @@ abstract public class Factor extends BaseObject
 		addField(PSEUDO_TAG_OBJECTIVES, multiLineObjectives);
 		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDeirectThreats);
 		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
+		addField(PSEUDO_TAG_INDICATORS, multiLineIndicators);
 		addField(PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS, pseudoDiagramRefs);
 		addField(PSEUDO_TAG_RESULTS_CHAIN_REFS, pseudoResultsChainRefs);
 		addField(PSEUDO_TAG_REFERRING_TAG_REFS, pseudoTagReferringTagRefs);
@@ -543,6 +548,7 @@ abstract public class Factor extends BaseObject
 	public static final String PSEUDO_TAG_RESULTS_CHAIN_REFS = "PseudoTagResultsChainDiagramRefs";
 	public static final String PSEUDO_TAG_REFERRING_TAG_REFS = "PseudoTagReferringTagRefs";
 	public static final String PSEUDO_TAG_TAXONOMY_CODE_VALUE = "TaxonomyCodeValue";
+	public static final String PSEUDO_TAG_INDICATORS = "PseudoTagIndicators";
 	
 	private FactorType type;
 	private StringData comment;
@@ -555,6 +561,7 @@ abstract public class Factor extends BaseObject
 	PseudoStringData multiLineObjectives;
 	PseudoStringData multiLineDeirectThreats;
 	PseudoStringData multiLineTargets;
+	private PseudoStringData multiLineIndicators;
 	private PseudoORefListData pseudoDiagramRefs;
 	private PseudoORefListData pseudoResultsChainRefs;
 	private PseudoORefListData pseudoTagReferringTagRefs;
