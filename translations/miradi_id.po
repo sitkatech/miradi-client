@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-25 08:56-0500\n"
+"POT-Creation-Date: 2010-03-25 13:35-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7545,11 +7545,11 @@ msgstr "Sifat-sifat Diagram "
 msgid "Comments"
 msgstr "Komentar "
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:454
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:455
 msgid "Viability Analysis Mode"
 msgstr "Mode Analisis Kelangsungan "
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:516
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:520
 msgid "Factor Properties"
 msgstr "Sifat-sifat Faktor "
 
