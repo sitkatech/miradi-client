@@ -164,6 +164,7 @@ public class ORefList
 		return data.toArray(new ORef[0]);
 	}
 	
+	@Override
 	public String toString()
 	{
 		if(size() == 0)
@@ -171,6 +172,7 @@ public class ORefList
 		return toJson().toString();
 	}
 	
+	@Override
 	public boolean equals(Object other)
 	{	
 		if (! (other instanceof ORefList))
@@ -212,6 +214,7 @@ public class ORefList
 	  return -1;
 	}
 	
+	@Override
 	public int hashCode()
 	{
 		return data.hashCode();
