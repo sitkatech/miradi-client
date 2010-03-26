@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.actions;
 
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
 public class ActionTreeCreateRelevancyActivity extends AbstractActionCreateActivity
@@ -28,11 +27,5 @@ public class ActionTreeCreateRelevancyActivity extends AbstractActionCreateActiv
 	public ActionTreeCreateRelevancyActivity(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
-	}
-
-	@Override
-	public String getToolTipText()
-	{
-		return EAM.text("TT|Create an Activity for the selected Strategy");
 	}
 }
