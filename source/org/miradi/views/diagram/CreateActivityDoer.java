@@ -33,6 +33,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
 import org.miradi.views.ObjectsDoer;
+import org.miradi.views.diagram.doers.CloneStressDoer;
 
 public class CreateActivityDoer extends ObjectsDoer
 {
@@ -82,6 +83,8 @@ public class CreateActivityDoer extends ObjectsDoer
 			CommandSetObjectData addChild = CommandSetObjectData.createInsertIdCommand(strategy, 
 					Strategy.TAG_ACTIVITY_IDS, createdId, childIndex);
 			project.executeCommand(addChild);
+			
+			CloneStressDoer.includeInAllItsOwnersTag(getProject(), create.getObjectRef());
 		}
 		finally
 		{
