@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-26 10:40-0500\n"
+"POT-Creation-Date: 2010-03-26 10:46-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -5774,16 +5774,6 @@ msgstr "Exportar árbol financiero"
 msgid "TT|Export finance tree"
 msgstr "Exportar árbol financiero"
 
-#: Miradi/source/org/miradi/actions/ActionTreeCreateRelevancyActivity.java:41
-#: Miradi/source/org/miradi/actions/AbstractActionCreateActivity.java:36
-msgid "Action|Manage|Create Activity"
-msgstr "Crear actividad"
-
-#: Miradi/source/org/miradi/actions/ActionTreeCreateRelevancyActivity.java:47
-#: Miradi/source/org/miradi/actions/ActionTreeCreateActivity.java:35
-msgid "TT|Create an Activity for the selected Strategy"
-msgstr "Crear una actividad para la estrategia seleccionada"
-
 #: Miradi/source/org/miradi/actions/ActionCreateReportTemplate.java:35
 #: Miradi/source/org/miradi/actions/ActionCreateTaggedObjectSet.java:35
 msgid "Action|Create"
@@ -6396,6 +6386,14 @@ msgstr "Modificar recurso"
 msgid "TT|Modify resource from list"
 msgstr "Modificar recurso de la lista"
 
+#: Miradi/source/org/miradi/actions/AbstractActionCreateActivity.java:36
+msgid "Action|Manage|Create Activity"
+msgstr "Crear actividad"
+
+#: Miradi/source/org/miradi/actions/AbstractActionCreateActivity.java:43
+msgid "TT|Create an Activity for the selected Strategy"
+msgstr "Crear una actividad para la estrategia seleccionada"
+
 #: Miradi/source/org/miradi/actions/ActionShowConceptualModel.java:35
 #: Miradi/source/org/miradi/actions/ActionShowConceptualModel.java:40
 msgid "Action|Show Conceptual Model"
@@ -6481,10 +6479,6 @@ msgstr "Eliminar cuadros de grupo"
 #: Miradi/source/org/miradi/actions/ActionDeleteGroupBox.java:40
 msgid "TT|Delete Group Box(s) but not children"
 msgstr "Eliminar cuadros de grupo pero no sus elementos secundarios"
-
-#: Miradi/source/org/miradi/actions/ActionCreateActivity.java:35
-msgid "TT|Create a new Activity"
-msgstr "Crear una nueva actividad"
 
 #: Miradi/source/org/miradi/actions/ActionGroupBoxAddFactor.java:35
 msgid "Action|Insert|Add Factor(s) to Group Box"
@@ -32121,6 +32115,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "TT|Create a new Activity"
+#~ msgstr "Crear una nueva actividad"
 
 #~ msgid ""
 #~ "WorkPlan/Financial data outside project begin/end dates will not be shown"
