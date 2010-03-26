@@ -414,7 +414,7 @@ abstract public class Factor extends BaseObject
 				return getFactorRelatedTargets();
 			
 			if(fieldTag.equals(PSEUDO_TAG_INDICATORS))
-				return getBaseObjectLabelsOnASingleLine(getOnlyDirectIndicatorRefs());
+				return getBaseObjectLabelsOnASingleLine(getDirectOrIndirectIndicatorRefs());
 			
 			if(fieldTag.equals(PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS))
 				return DiagramObject.getDiagramRefsContainingFactor(getProject(), ConceptualModelDiagram.getObjectType(), getRef()).toString();
