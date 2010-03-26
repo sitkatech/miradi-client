@@ -19,20 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions;
 
-import org.miradi.icons.ActivityIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionTreeCreateActivity extends ObjectsAction
+public class ActionTreeCreateActivity extends AbstractActionCreateActivity
 {
 	public ActionTreeCreateActivity(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), new ActivityIcon());
-	}
-
-	private static String getLabel()
-	{
-		return EAM.text("Action|Manage|Create Activity");
+		super(mainWindowToUse);
 	}
 
 	@Override
@@ -40,5 +34,4 @@ public class ActionTreeCreateActivity extends ObjectsAction
 	{
 		return EAM.text("TT|Create an Activity for the selected Strategy");
 	}
-	
 }
