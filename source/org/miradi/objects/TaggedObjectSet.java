@@ -43,11 +43,13 @@ public class TaggedObjectSet extends BaseObject
 		super(objectManager, new BaseId(idAsInt), json);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -64,6 +66,7 @@ public class TaggedObjectSet extends BaseObject
 		return ObjectType.TAGGED_OBJECT_SET;
 	}
 	
+	@Override
 	public String getShortLabel()
 	{
 		return shortLabel.get();
