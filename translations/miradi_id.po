@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-26 10:37-0500\n"
+"POT-Creation-Date: 2010-03-26 10:40-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -5745,12 +5745,11 @@ msgstr "Ekspor diagram keuangan "
 
 #: Miradi/source/org/miradi/actions/ActionTreeCreateRelevancyActivity.java:41
 #: Miradi/source/org/miradi/actions/AbstractActionCreateActivity.java:36
-#: Miradi/source/org/miradi/actions/ActionTreeCreateActivity.java:35
 msgid "Action|Manage|Create Activity"
 msgstr "Buat Kegiatan "
 
 #: Miradi/source/org/miradi/actions/ActionTreeCreateRelevancyActivity.java:47
-#: Miradi/source/org/miradi/actions/ActionTreeCreateActivity.java:41
+#: Miradi/source/org/miradi/actions/ActionTreeCreateActivity.java:35
 msgid "TT|Create an Activity for the selected Strategy"
 msgstr "Buat Kegiatan untuk Strategi terpilih "
 
