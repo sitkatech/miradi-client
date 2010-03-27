@@ -50,7 +50,7 @@ public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implemen
 		mainWindow = mainWindowToUse;
 		table = tableToUse;
 
-		rendererFactory = new MultiLineObjectTableCellEditorOrRendererFactory(tableToUse, new DefaultFontProvider(mainWindowToUse));
+		rendererFactory = new MultiLineObjectTableCellRendererOnlyFactory(tableToUse, new DefaultFontProvider(mainWindowToUse));
 		rendererFactory.setCellBackgroundColor(AppPreferences.RESOURCE_TABLE_BACKGROUND);
 
 		JComponent rendererComponent = rendererFactory.getRendererComponent();
@@ -98,5 +98,5 @@ public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implemen
 	
 	private PlanningUpperMultiTable table;
 	private MainWindow mainWindow;
-	private MultiLineObjectTableCellEditorOrRendererFactory rendererFactory;
+	private MultiLineObjectTableCellRendererOnlyFactory rendererFactory;
 }
