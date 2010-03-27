@@ -52,6 +52,7 @@ public class ThreatStressRating extends BaseObject
 		super(objectManager, new BaseId(idAsInt), json);
 	}
 
+	@Override
 	public CreateObjectParameter getCreationExtraInfo()
 	{
 		return new CreateThreatStressRatingParameter(getStressRef(), getThreatRef());
@@ -62,6 +63,7 @@ public class ThreatStressRating extends BaseObject
 		return isActive.asBoolean();
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
@@ -78,6 +80,7 @@ public class ThreatStressRating extends BaseObject
 		return ObjectType.THREAT_STRESS_RATING;
 	}
 	
+	@Override
 	public String getPseudoData(String fieldTag)
 	{
 		if (fieldTag.equals(PSEUDO_TAG_THREAT_RATING))
@@ -137,11 +140,13 @@ public class ThreatStressRating extends BaseObject
 		return new StressIrreversibilityQuestion().findChoiceByCode(irreversibility.toString());
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getLabel();
@@ -167,6 +172,7 @@ public class ThreatStressRating extends BaseObject
 		return find(project.getObjectManager(), threatStressRatingRef);
 	}
 		
+	@Override
 	public void clear()
 	{
 		super.clear();
