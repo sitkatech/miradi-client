@@ -27,8 +27,6 @@ import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 
-import org.miradi.utils.MiradiScrollPane;
-
 
 public class MultiLineObjectTableCellRendererOnlyFactory extends ObjectTableCellEditorOrRendererFactory
 {
