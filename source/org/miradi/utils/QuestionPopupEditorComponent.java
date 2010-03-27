@@ -44,6 +44,11 @@ import org.miradi.main.AppPreferences;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
+/**
+ * TODO: This class should be reworked to not have the category prompt.
+ * It should be a border layout, with selected text plus the button
+ * (like TextFieldPopupEditorComponent)
+ */
 public class QuestionPopupEditorComponent extends PopupEditorComponent
 {
 	public QuestionPopupEditorComponent(ChoiceQuestion questionToUse, String translatedPopupButtonTextToUse) throws Exception
