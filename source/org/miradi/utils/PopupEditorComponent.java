@@ -20,9 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import org.miradi.layout.OneRowPanel;
+import java.awt.BorderLayout;
 
-public class PopupEditorComponent extends OneRowPanel
+import org.miradi.dialogs.base.MiradiPanel;
+
+public class PopupEditorComponent extends MiradiPanel
 {
-
+	public PopupEditorComponent()
+	{
+		super(new BorderLayout());
+	}
 }
