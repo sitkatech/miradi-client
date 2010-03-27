@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-26 10:46-0500\n"
+"POT-Creation-Date: 2010-03-27 10:05-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -6874,6 +6874,10 @@ msgstr "PNG (*.png)"
 
 #: Miradi/source/org/miradi/utils/StressBasedThreatRatingQuestionPopupEditorComponent.java:61
 msgid "Stress: %s"
+msgstr ""
+
+#: Miradi/source/org/miradi/utils/TextFieldPopupEditorComponent.java:94
+msgid "Edit Text"
 msgstr ""
 
 #: Miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
