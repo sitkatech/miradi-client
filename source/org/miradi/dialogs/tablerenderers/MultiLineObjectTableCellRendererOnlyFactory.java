@@ -51,8 +51,8 @@ public class MultiLineObjectTableCellRendererOnlyFactory extends ObjectTableCell
 		rendererComponent.setText(value.toString());
 		Font font = getCellFont(row, column);
 		rendererComponent.setFont(font);
-		
-		return new MiradiScrollPane(rendererComponent);
+		rendererComponent.setEditable(false);
+		return rendererComponent;
 	}
 	
 	@Override

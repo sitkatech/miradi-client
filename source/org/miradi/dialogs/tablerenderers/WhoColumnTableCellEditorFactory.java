@@ -59,7 +59,7 @@ public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implemen
 	
 	public Component getTableCellEditorComponent(JTable tableToUse, Object value, boolean isSelected, int row, int column) 
 	{
-		return rendererFactory.getTableCellRendererComponent(tableToUse, value, true, false, row, column);
+		return rendererFactory.getTableCellEditorComponent(tableToUse, value, true, row, column);
 	}
 
 	class LeftClickHandler extends MouseAdapter
