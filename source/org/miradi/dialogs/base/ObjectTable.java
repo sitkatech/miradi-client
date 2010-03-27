@@ -32,7 +32,7 @@ import org.miradi.dialogs.tablerenderers.BasicTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.CodeListRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
-import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellEditorOrRendererFactory;
+import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererOnlyFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.ids.BaseId;
@@ -57,7 +57,7 @@ abstract public class ObjectTable extends SortableRowTable implements ObjectPick
 		
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(this, fontProvider);
-		otherRenderer = new MultiLineObjectTableCellEditorOrRendererFactory(this, fontProvider);
+		otherRenderer = new MultiLineObjectTableCellRendererOnlyFactory(this, fontProvider);
 		codeListRenderer = new CodeListRendererFactory(this, fontProvider);
 	}
 	
