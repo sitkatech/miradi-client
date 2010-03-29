@@ -960,7 +960,10 @@ abstract public class BaseObject
 		ORefList possibleOwners = findObjectsThatReferToUs();
 		ORef ownerRef = possibleOwners.getRefForTypes(possibleOwningTypes);
 		if(ownerRef.isInvalid())
+		{
 			EAM.logError("getOwnerRef didn't find owner for: " + getRef());
+			EAM.logStackTrace();
+		}
 		
 		return ownerRef;
 	}
