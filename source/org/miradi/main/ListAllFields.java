@@ -68,7 +68,13 @@ public class ListAllFields
 			if(project.getPool(type) == null)
 				continue;
 			BaseObject object = createObject(project, type);
-			showObjectName(object);
+			
+			// NOTE: We create a task with no owner, so it doesn't have a type
+			if(type == Task.getObjectType())
+				System.out.println("Task/Activity/Method");
+			else
+				showObjectName(object);
+			
 			Vector<String> fieldTags = object.getStoredFieldTags();
 			for(int field = 0; field < fieldTags.size(); ++field)
 			{
