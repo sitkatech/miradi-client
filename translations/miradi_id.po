@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-27 10:05-0500\n"
+"POT-Creation-Date: 2010-03-29 11:23-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -773,16 +773,13 @@ msgstr "Tempel Sebagai... "
 
 #: Miradi/source/org/miradi/views/diagram/PasteDoer.java:115
 msgid ""
-"Do you want to paste full new copies of the factors, or share the existing "
-"factors? If you paste new copies, any changes will not affect the originals. "
-"If you share, any changes will automatically affect all the diagrams."
+"Select \"Shared\" to show the original factors again in this diagram. Edits "
+"to the pasted, shared factors will also affect the originals. Select \"As "
+"Copy\" if you want to create brand new, duplicate copies with no "
+"relationship to the originals."
 msgstr ""
-"Apakah Anda ingin menempelkan seluruh salinan baru faktor, atau berbagi "
-"faktor yang ada? Jika Anda membuat salinan baru, semua perubahan tidak akan "
-"memengaruhi aslinya. Jika Anda berbagi bersama, semua perubahan secara "
-"otomatis akan memengaruhi semua diagram. "
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:149
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:150
 msgid ""
 "Some of the data could not be moved to this project because it refers to "
 "other data that only exists in the old project"
@@ -790,11 +787,11 @@ msgstr ""
 "Beberapa data tidak bisa dipindahkan ke proyek ini karena merujuk ke data "
 "lain yang hanya ada dalam proyek lama"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:196
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:197
 msgid "Button|As Copy"
 msgstr "Sebagai Salinan"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:197
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:198
 msgid "Button|Shared"
 msgstr "Dipakai Bersama "
 
@@ -31861,6 +31858,17 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid ""
+#~ "Do you want to paste full new copies of the factors, or share the "
+#~ "existing factors? If you paste new copies, any changes will not affect "
+#~ "the originals. If you share, any changes will automatically affect all "
+#~ "the diagrams."
+#~ msgstr ""
+#~ "Apakah Anda ingin menempelkan seluruh salinan baru faktor, atau berbagi "
+#~ "faktor yang ada? Jika Anda membuat salinan baru, semua perubahan tidak "
+#~ "akan memengaruhi aslinya. Jika Anda berbagi bersama, semua perubahan "
+#~ "secara otomatis akan memengaruhi semua diagram. "
 
 #~ msgid "TT|Create a new Activity"
 #~ msgstr "Buat satu Kegiatan baru "
