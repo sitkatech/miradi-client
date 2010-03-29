@@ -51,6 +51,7 @@ public class ViabilityViewRtfExporter extends RtfViewExporter
 	
 	private void exportFormsForRows(RtfWriter writer, ViabilityTreeTableModelExporter treeTableModelExporter) throws Exception
 	{
+		writeHeader(writer, ReportTemplateContentQuestion.getTargetViabilityDetailsLabel());
 		int FIRST_COLUMN_INDEX = 0;
 		for (int row = FIRST_COLUMN_INDEX; row < treeTableModelExporter.getRowCount(); ++row)
 		{

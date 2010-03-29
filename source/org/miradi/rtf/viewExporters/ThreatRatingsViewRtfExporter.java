@@ -55,23 +55,13 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 	
 	private void exportThreatRatingDetails(RtfWriter writer) throws Exception
 	{
-		writeThreatRatingDetailHeader(writer);
+		writeHeader(writer, EAM.text("Threat Rating Details"));
 		if (getProject().isStressBaseMode())
 			exportStressBasedThreatRatingDetails(writer);
 		else
 			exportSimpleThreatRatingDetails(writer);
 	}
 
-	private void writeThreatRatingDetailHeader(RtfWriter writer) throws Exception
-	{
-		writer.startBlock();
-		writer.writeHeading1Style();
-		writer.writeEncoded(EAM.text("Threat Rating Details"));
-		writer.writeParCommand();
-		writer.endBlock();
-		writer.newParagraph();
-	}
-	
 	private void exportStressBasedThreatRatingDetails(RtfWriter writer) throws Exception
 	{
 		Vector<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
