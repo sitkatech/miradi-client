@@ -40,8 +40,8 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 	public MeasurementPropertiesPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, Measurement.getObjectType());
+		
 		createSingleSection(EAM.text("Measurement"));
-
 		PanelTitleLabel measurementLabel = new PanelTitleLabel(EAM.text("Measurement"), new MeasurementIcon());
 		PanelTitleLabel dateLabel = new PanelTitleLabel(EAM.text("Date"));
 		ObjectDataInputField dateField = createDateChooserField(ObjectType.MEASUREMENT, Measurement.TAG_DATE);
@@ -64,6 +64,7 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 		updateFieldsFromProject();
 	}
 	
+	@Override
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
@@ -82,6 +83,7 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 		statusField.setVisible(isVisible);
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Measurement Properties");
