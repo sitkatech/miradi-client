@@ -52,6 +52,16 @@ abstract public class RtfViewExporter
 		createRtfManagementRtfExporter().writeManagement(tableExporter, writer);
 		writer.newParagraph();
 	}
+	
+	protected void writeHeader(RtfWriter writer, String headerText) throws Exception
+	{
+		writer.startBlock();
+		writer.writeHeading1Style();
+		writer.writeEncoded(headerText);
+		writer.writeParCommand();
+		writer.endBlock();
+		writer.newParagraph();
+	}
 
 	protected void exportTableWithPageBreak(RtfWriter writer, TableExporter tableExporter, String translatedTableName) throws Exception
 	{
