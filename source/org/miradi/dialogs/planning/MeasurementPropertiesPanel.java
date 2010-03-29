@@ -46,7 +46,7 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 		PanelTitleLabel dateLabel = new PanelTitleLabel(EAM.text("Date"));
 		ObjectDataInputField dateField = createDateChooserField(ObjectType.MEASUREMENT, Measurement.TAG_DATE);
 		PanelTitleLabel valueLabel = new PanelTitleLabel(EAM.text("Value"));
-		ObjectDataInputField summaryField = createMediumStringField(Measurement.TAG_SUMMARY);
+		ObjectDataInputField summaryField = createExpandableField(Measurement.TAG_SUMMARY);
 		addFieldsOnOneLine(measurementLabel, new Object[]{dateLabel, dateField, valueLabel, summaryField,});
 
 		addField(createMultilineField(Measurement.TAG_DETAIL));		
