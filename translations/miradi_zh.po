@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-27 10:05-0500\n"
+"POT-Creation-Date: 2010-03-29 11:23-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -736,26 +736,24 @@ msgstr "粘贴为… \t\t"
 
 #: Miradi/source/org/miradi/views/diagram/PasteDoer.java:115
 msgid ""
-"Do you want to paste full new copies of the factors, or share the existing "
-"factors? If you paste new copies, any changes will not affect the originals. "
-"If you share, any changes will automatically affect all the diagrams."
+"Select \"Shared\" to show the original factors again in this diagram. Edits "
+"to the pasted, shared factors will also affect the originals. Select \"As "
+"Copy\" if you want to create brand new, duplicate copies with no "
+"relationship to the originals."
 msgstr ""
-"您想要粘贴这些因素的全新拷贝，还是共享现有的因素呢？如果您粘贴新的拷贝，任何"
-"更改将不会改变原始版本。如果您共享，所有的更改将会自动地影响到所有的图表。 \t"
-"\t"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:149
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:150
 msgid ""
 "Some of the data could not be moved to this project because it refers to "
 "other data that only exists in the old project"
 msgstr ""
 "有些数据不能被转移到本项目中，因为其指向那些仅存在于旧项目中的其它数据。 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:196
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:197
 msgid "Button|As Copy"
 msgstr "作为拷贝 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:197
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:198
 msgid "Button|Shared"
 msgstr "共享的 \t\t"
 
@@ -27469,6 +27467,16 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid ""
+#~ "Do you want to paste full new copies of the factors, or share the "
+#~ "existing factors? If you paste new copies, any changes will not affect "
+#~ "the originals. If you share, any changes will automatically affect all "
+#~ "the diagrams."
+#~ msgstr ""
+#~ "您想要粘贴这些因素的全新拷贝，还是共享现有的因素呢？如果您粘贴新的拷贝，任"
+#~ "何更改将不会改变原始版本。如果您共享，所有的更改将会自动地影响到所有的图"
+#~ "表。 \t\t"
 
 #~ msgid "TT|Create a new Activity"
 #~ msgstr "创建一项新的活动 \t\t"
