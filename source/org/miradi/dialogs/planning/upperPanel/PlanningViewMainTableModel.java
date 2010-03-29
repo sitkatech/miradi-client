@@ -99,9 +99,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if (isWhoColumn(columnTag))
 			return AppPreferences.RESOURCE_TABLE_BACKGROUND;
 		
-		if (columnTag.equals(Indicator.PSEUDO_TAG_METHODS))
-			return AppPreferences.INDICATOR_COLOR;
-		
 		if(isWhenColumn(columnTag))
 			return AppPreferences.getWorkUnitsBackgroundColor();
 		
