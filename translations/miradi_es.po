@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-29 17:35-0500\n"
+"POT-Creation-Date: 2010-03-29 17:49-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -2096,7 +2096,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:323
 #: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:32
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:87
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:43
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:44
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:45
 msgid "Measurement"
 msgstr "Medición"
@@ -7198,7 +7198,7 @@ msgstr "Recurso (quién)"
 msgid "Daily Rate"
 msgstr "la calificación diaria."
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:87
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:89
 msgid "Title|Measurement Properties"
 msgstr "Propiedades de la medición"
 
