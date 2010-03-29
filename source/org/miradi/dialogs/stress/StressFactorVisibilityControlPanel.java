@@ -26,6 +26,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.utils.FillerLabel;
 import org.miradi.utils.ObjectsActionButton;
 
 public class StressFactorVisibilityControlPanel extends ObjectDataInputPanel
@@ -33,6 +34,9 @@ public class StressFactorVisibilityControlPanel extends ObjectDataInputPanel
 	public StressFactorVisibilityControlPanel(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow.getProject(), ObjectType.STRESS, BaseId.INVALID);
+		
+		addLabel(EAM.text("Stress bubble visibility can only be changed in Conceptual Diagrams"));
+		addLabel(new FillerLabel());
 		
 		ObjectsActionButton showStressBubble = createObjectsActionButton(mainWindow.getActions().getObjectsAction(ActionShowStressBubble.class), getPicker());
 		add(showStressBubble);
