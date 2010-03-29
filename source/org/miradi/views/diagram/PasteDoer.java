@@ -112,9 +112,10 @@ public class PasteDoer extends AbstractPasteDoer
 		
 		String[] buttons = {AS_COPY_BUTTON, AS_ALIAS_BUTTON, CANCEL_BUTTON};
 		String title = EAM.text("Paste As...");
-		String[] body = {EAM.text("Do you want to paste full new copies of the factors, or share the existing factors? " +
-								"If you paste new copies, any changes will not affect the originals. " +
-								"If you share, any changes will automatically affect all the diagrams.")};
+		String[] body = {EAM.text("Select \"Shared\" to show the original factors again in this diagram. " +
+				"Edits to the pasted, shared factors will also affect the originals. " +
+				"Select \"As Copy\" if you want to create brand new, duplicate copies with " +
+				"no relationship to the originals.")};
 	
 		return EAM.choiceDialog(title, body, buttons);
 	}
