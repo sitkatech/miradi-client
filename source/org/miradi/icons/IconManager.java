@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.icons;
 
+import java.util.HashMap;
+
 import javax.swing.Icon;
 
 import org.miradi.objects.AccountingCode;
@@ -41,6 +43,31 @@ import org.miradi.utils.MiradiResourceImageIcon;
  
 public class IconManager
 {
+	public static void initialize()
+	{
+		iconMap = new HashMap();
+		
+		addIcon(new WarningIcon());		
+	}
+	
+	private static void addIcon(Icon icon)
+	{
+		iconMap.put(icon.getClass().getSimpleName(), icon);
+	}
+	
+	private static Icon getIcon(Class iconClass)
+	{
+		String iconName = iconClass.getSimpleName();
+		if(iconMap == null)
+			initialize();
+		
+		Icon icon = iconMap.get(iconName);
+		if(icon == null)
+			throw new RuntimeException("Unknown icon: " + iconName);
+		
+		return icon;
+	}
+		
 	//TODO: not all Icons are AbstractMiradiIcon.  But all icons should be.
 	public static Icon getImage(BaseObject baseObject)
 	{
@@ -280,10 +307,7 @@ public class IconManager
 	
 	public static Icon getWarningIcon()
 	{
-		if (warningIcon == null)
-			warningIcon = new WarningIcon();
-		
-		return warningIcon;
+		return getIcon(WarningIcon.class);
 	}
 
 	public static Icon getCancelIcon()
@@ -299,5 +323,5 @@ public class IconManager
 	private static Icon deleteIcon;
 	private static Icon strategicPlanIcon;
 	private static Icon cancelIcon;
-	private static Icon warningIcon;
+	private static HashMap<String, Icon> iconMap;
 }
