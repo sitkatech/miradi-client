@@ -42,7 +42,7 @@ public class StressFactorVisibilityControlPanel extends AbstractFactorBubbleVisi
 	@Override
 	protected String getExplanationMessage()
 	{
-		return EAM.text("Stress bubble visibility can only be changed in Conceptual Diagrams");
+		return EAM.text("Stresses can only be shown on Conceptual Model pages, not Results Chains");
 	}
 
 	@Override
