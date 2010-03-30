@@ -650,10 +650,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return memoryStatistics;
 	}
 
-	public void updateDiagramRelatedStatus(ORefList taggedObjectSetRefs)
+	public void updateDiagramRelatedStatus(ORefList activeTaggedObjectSetRefs)
 	{
-		if (taggedObjectSetRefs.hasData())
-			mainStatusBar.setWarningStatus(EAM.substitute(EAM.text("Active Diagram Layers: %s"),getTurnedOnTaggedObjectSet(taggedObjectSetRefs)));
+		if (activeTaggedObjectSetRefs.hasData())
+			mainStatusBar.setWarningStatus(EAM.substitute(EAM.text("Active Diagram Layers: %s"),getTurnedOnTaggedObjectSet(activeTaggedObjectSetRefs)));
 		else
 			clearStatusBar();
 	}
