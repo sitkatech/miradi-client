@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-29 21:46-0500\n"
+"POT-Creation-Date: 2010-03-29 21:52-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7233,12 +7233,12 @@ msgstr ""
 msgid "Tab|Methods"
 msgstr "Metode "
 
-#: Miradi/source/org/miradi/dialogs/activity/ActivityFactorVisibilityControlPanel.java:38
+#: Miradi/source/org/miradi/dialogs/activity/ActivityFactorVisibilityControlPanel.java:51
 msgid ""
 "Activity bubble visibility can only be changed in Results Chain Diagrams"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/activity/ActivityFactorVisibilityControlPanel.java:53
+#: Miradi/source/org/miradi/dialogs/activity/ActivityFactorVisibilityControlPanel.java:63
 msgid "Title|Activity Visibility"
 msgstr "Ketampakan Kegiatan "
 
@@ -7718,13 +7718,13 @@ msgstr "Sifat-sifat Tujuan Instruksional "
 msgid "Tab|Objectives"
 msgstr "Tujuan-tujuan Instruksional"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressFactorVisibilityControlPanel.java:38
-msgid "Stress bubble visibility can only be changed in Conceptual Diagrams"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/stress/StressFactorVisibilityControlPanel.java:53
+#: Miradi/source/org/miradi/dialogs/stress/StressFactorVisibilityControlPanel.java:39
 msgid "Title|Stress Visibility"
 msgstr "Ketampakan Tekanan "
+
+#: Miradi/source/org/miradi/dialogs/stress/StressFactorVisibilityControlPanel.java:45
+msgid "Stress bubble visibility can only be changed in Conceptual Diagrams"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/stress/StressPropertiesPanel.java:59
 msgid "Title|Stress Properties"
