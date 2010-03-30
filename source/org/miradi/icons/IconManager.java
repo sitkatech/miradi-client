@@ -54,6 +54,23 @@ public class IconManager
 		addIcon(new ProjectResourceIcon());
 		addIcon(new DirectThreatIcon());
 		addIcon(new ReportTemplateIcon());
+		addIcon(new WorkPlanIcon());
+		addIcon(new PlanningIcon());
+		addIcon(new AllocatedCostIcon());
+		addIcon(new ResultsChainIcon());
+		addIcon(new ConceptualModelIcon());
+		addIcon(new ActivityIcon());
+		addIcon(new MethodIcon());
+		addIcon(new TaskIcon());
+		addIcon(new DraftStrategyIcon());
+		addIcon(new StrategyIcon());
+		addIcon(new TargetIcon());
+		addIcon(new MiradiApplicationIcon());
+		addIcon(new IndicatorIcon());
+		addIcon(new ObjectiveIcon());
+		addIcon(new GoalIcon());
+		addIcon(new MeasurementIcon());
+		addIcon(new KeyEcologicalAttributeIcon());
 	}
 	
 	private static void addIcon(Icon icon)
@@ -183,87 +200,87 @@ public class IconManager
 	
 	public static Icon getKeyEcologicalAttributeIcon()
 	{
-		return new KeyEcologicalAttributeIcon();
+		return getIcon(KeyEcologicalAttributeIcon.class);
 	}
 	
 	public static Icon getMeasurementIcon()
 	{
-		return new MeasurementIcon();
+		return getIcon(MeasurementIcon.class);
 	}
 	
 	public static Icon getGoalIcon()
 	{
-		return new GoalIcon();
+		return getIcon(GoalIcon.class);
 	}
 	
 	public static Icon getObjectiveIcon()
 	{
-		return new ObjectiveIcon();
+		return getIcon(ObjectiveIcon.class);
 	}
 	
 	public static Icon getIndicatorIcon()
 	{
-		return new IndicatorIcon();
+		return getIcon(IndicatorIcon.class);
 	}
 	
 	public static Icon getMiradiApplicationIcon()
 	{
-		return new MiradiApplicationIcon();
+		return getIcon(MiradiApplicationIcon.class);
 	}
 	
 	public static Icon getTargetIcon()
 	{
-		return new TargetIcon();
+		return getIcon(TargetIcon.class);
 	}
 
 	public static Icon getStrategyIcon()
 	{
-		return new StrategyIcon();
+		return getIcon(StrategyIcon.class);
 	}
 	
 	public static Icon getDraftStrategyIcon()
 	{
-		return new DraftStrategyIcon();
+		return getIcon(DraftStrategyIcon.class);
 	}
 
 	public static Icon getTaskIcon()
 	{
-		return new TaskIcon();
+		return getIcon(TaskIcon.class);
 	}
 
 	public static Icon getMethodIcon()
 	{
-		return new MethodIcon();
+		return getIcon(MethodIcon.class);
 	}
 
 	public static Icon getActivityIcon()
 	{
-		return new ActivityIcon();
+		return getIcon(ActivityIcon.class);
 	}
 	
 	public static Icon getConceptualModelIcon()
 	{
-		return new ConceptualModelIcon();
+		return getIcon(ConceptualModelIcon.class);
 	}
 	
 	public static Icon getResultsChainIcon()
 	{
-		return new ResultsChainIcon();
+		return getIcon(ResultsChainIcon.class);
 	}
 
 	public static Icon getAllocatedCostIcon()
 	{
-		return new AllocatedCostIcon();
+		return getIcon(AllocatedCostIcon.class);
 	}
 	
 	public static Icon getPlanningIcon()
 	{
-		return new PlanningIcon();
+		return getIcon(PlanningIcon.class);
 	}
 	
 	public static Icon getWorkPlanIcon()
 	{
-		return new WorkPlanIcon();
+		return getIcon(WorkPlanIcon.class);
 	}
 
 	public static Icon getReportIcon()
