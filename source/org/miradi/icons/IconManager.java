@@ -52,6 +52,7 @@ public class IconManager
 		addIcon(new StrategicPlanIcon());
 		addIcon(new DeleteIcon());
 		addIcon(new ProjectResourceIcon());
+		addIcon(new DirectThreatIcon());
 	}
 	
 	private static void addIcon(Icon icon)
@@ -271,7 +272,7 @@ public class IconManager
 
 	public static Icon getThreatIcon()
 	{
-		return new DirectThreatIcon();
+		return getIcon(DirectThreatIcon.class);
 	}
 
 	public static Icon getExpandIcon()
