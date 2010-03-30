@@ -49,6 +49,7 @@ public class IconManager
 		
 		addIcon(new WarningIcon());
 		addIcon(new CancelIcon());
+		addIcon(new StrategicPlanIcon());
 	}
 	
 	private static void addIcon(Icon icon)
@@ -301,9 +302,7 @@ public class IconManager
 
 	public static Icon getStrategicPlanIcon()
 	{
-		if(strategicPlanIcon == null)
-			strategicPlanIcon = new StrategicPlanIcon();
-		return strategicPlanIcon;
+		return getIcon(StrategicPlanIcon.class);
 	}
 	
 	public static Icon getWarningIcon()
@@ -320,6 +319,5 @@ public class IconManager
 	private static Icon collapseIcon;
 	private static Icon resourceIcon;
 	private static Icon deleteIcon;
-	private static Icon strategicPlanIcon;
 	private static HashMap<String, Icon> iconMap;
 }
