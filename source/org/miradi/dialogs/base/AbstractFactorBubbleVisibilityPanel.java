@@ -26,9 +26,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.utils.ObjectsActionButton;
 
-abstract public class AbstratFactorBubbleVisibilityPanel extends ObjectDataInputPanel
+abstract public class AbstractFactorBubbleVisibilityPanel extends ObjectDataInputPanel
 {
-	public AbstratFactorBubbleVisibilityPanel(MainWindow mainWindow, int objectType)
+	public AbstractFactorBubbleVisibilityPanel(MainWindow mainWindow, int objectType)
 	{
 		super(mainWindow.getProject(), objectType);
 		
