@@ -280,7 +280,10 @@ public class IconManager
 	
 	public static Icon getWarningIcon()
 	{
-		return new WarningIcon();
+		if (warningIcon == null)
+			warningIcon = new WarningIcon();
+		
+		return warningIcon;
 	}
 
 	public static Icon getCancelIcon()
@@ -296,4 +299,5 @@ public class IconManager
 	private static Icon deleteIcon;
 	private static Icon strategicPlanIcon;
 	private static Icon cancelIcon;
+	private static Icon warningIcon;
 }
