@@ -53,6 +53,7 @@ public class IconManager
 		addIcon(new DeleteIcon());
 		addIcon(new ProjectResourceIcon());
 		addIcon(new DirectThreatIcon());
+		addIcon(new ReportTemplateIcon());
 	}
 	
 	private static void addIcon(Icon icon)
@@ -267,7 +268,7 @@ public class IconManager
 
 	public static Icon getReportIcon()
 	{
-		return new ReportTemplateIcon();
+		return getIcon(ReportTemplateIcon.class);
 	}
 
 	public static Icon getThreatIcon()
