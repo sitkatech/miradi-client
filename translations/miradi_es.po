@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-30 09:07-0500\n"
+"POT-Creation-Date: 2010-03-30 09:35-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -4371,10 +4371,6 @@ msgstr "Factor influyente"
 #: Miradi/source/org/miradi/diagram/factortypes/FactorTypeDirectThreat.java:35
 msgid "Type|Direct Threat"
 msgstr "Amenaza directa"
-
-#: Miradi/source/org/miradi/main/MainStatusBar.java:65
-msgid "Status|Ready"
-msgstr "Listo"
 
 #: Miradi/source/org/miradi/main/SampleInstaller.java:48
 msgid "Sample Project Installed"
@@ -32162,6 +32158,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Status|Ready"
+#~ msgstr "Listo"
 
 #~ msgid ""
 #~ "Do you want to paste full new copies of the factors, or share the "
