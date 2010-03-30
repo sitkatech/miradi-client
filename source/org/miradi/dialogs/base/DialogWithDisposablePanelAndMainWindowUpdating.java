@@ -101,7 +101,6 @@ public class DialogWithDisposablePanelAndMainWindowUpdating extends	DialogWithDi
 	
 		public void windowOpened(WindowEvent arg0)
 		{
-			mainWindow.updateActionStates();
 		}
 		
 		private MainWindow mainWindow;
