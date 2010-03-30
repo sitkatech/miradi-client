@@ -24,7 +24,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.icons.WarningIcon;
+import org.miradi.icons.IconManager;
 
 public class MainStatusBar extends JPanel
 {
@@ -53,7 +53,7 @@ public class MainStatusBar extends JPanel
 	public void setWarningStatus(String warningMessage)
 	{
 		statusSummary.setText(warningMessage);
-		statusSummary.setIcon(new WarningIcon());
+		statusSummary.setIcon(IconManager.getWarningIcon());
 	}
 	
 	public void clear()

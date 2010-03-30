@@ -27,7 +27,7 @@ import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.propertiesPanel.FillerPanel;
-import org.miradi.icons.WarningIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
@@ -127,7 +127,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		TwoColumnPanel panel = new TwoColumnPanel();
 		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		label.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		panel.add(new JLabel(new WarningIcon()));
+		panel.add(new JLabel(IconManager.getWarningIcon()));
 		panel.add(label);
 		
 		add(panel);
