@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-30 09:01-0500\n"
+"POT-Creation-Date: 2010-03-30 09:07-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -6964,7 +6964,7 @@ msgstr "方法"
 
 #: Miradi/source/org/miradi/dialogs/activity/ActivityFactorVisibilityControlPanel.java:51
 msgid ""
-"Activity bubble visibility can only be changed in Results Chain Diagrams"
+"Activities can only be shown on Results Chains, not Conceptual Model pages"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/activity/ActivityFactorVisibilityControlPanel.java:63
@@ -7427,7 +7427,8 @@ msgid "Title|Stress Visibility"
 msgstr "压力可见度"
 
 #: Miradi/source/org/miradi/dialogs/stress/StressFactorVisibilityControlPanel.java:45
-msgid "Stress bubble visibility can only be changed in Conceptual Diagrams"
+msgid ""
+"Stresses can only be shown on Conceptual Model pages, not Results Chains"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/stress/StressPropertiesPanel.java:59
