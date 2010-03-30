@@ -22,6 +22,7 @@ package org.miradi.diagram;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Vector;
 
@@ -135,7 +136,8 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		if(dragStartedAt == null)
 			return;
 		
-		moveHasHappened();
+		if(!dragStartedAt.equals(new Point(event.getX(), event.getY())))
+			moveHasHappened();
 	}
 
 	private void moveHasHappened()
@@ -272,7 +274,6 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 
 	public void selectionChanged(GraphSelectionEvent event) throws Exception
 	{
-		mainWindow.updateActionStates();
 		UmbrellaView currentView = mainWindow.getCurrentView();
 		if(currentView == null)
 			return;
@@ -280,9 +281,16 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		{
 			getDiagram().selectAllLinksAndThierBendPointsInsideGroupBox(getDiagram().getOnlySelectedFactorAndGroupChildCells());
 			selectedCells = getDiagram().getSelectionCells();
+
+			if(Arrays.equals(previouslySelected, selectedCells))
+				return;
+
 			DiagramView view = (DiagramView)mainWindow.getCurrentView();
 			view.selectionWasChanged();
 			updateBendPointSelection(event);
+			previouslySelected = getDiagram().getSelectionCells();
+
+			mainWindow.updateActionStates();
 			final DiagramComponent diagram = view.getCurrentDiagramComponent();
 			diagram.forceRepaint();
 		}
@@ -327,4 +335,5 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 	private Point dragStartedAt;
 	private Object[] selectedCells;
 	private HashSet<LinkCell> selectedAndGroupBoxCoveredLinkCells;
+	private Object[] previouslySelected;
 }
