@@ -22,8 +22,9 @@ package org.miradi.utils;
 
 public interface ProgressInterface
 {
-	public void setStatusMessage(String translatedMessage);
-	public abstract void updateProgressMeter(int currentValue, int maxValue);
+	public void setStatusMessage(String translatedMessage, int stepCount);
+	public void incrementProgress();
+	public void updateProgressMeter(int currentValue);
 	public void finished();
 	public abstract boolean shouldExit();
 }
