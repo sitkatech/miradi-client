@@ -293,30 +293,36 @@ public class MeglerArranger
 
 	private void setLocations() throws Exception
 	{
-		progressMeter.setStatusMessage(EAM.text("Updating locations..."));
+		progressMeter.setStatusMessage(EAM.text("Preparing groups..."));
 
-		final int steps = 8;
-		int step = 0;
+		final int buildSteps = 3;
+		int buildStep = 0;
 
-		progressMeter.updateProgressMeter(step++, steps);
+		progressMeter.updateProgressMeter(buildStep++, buildSteps);
 		Vector<DiagramFactorClump> strategyClumps = buildClumps(strategies);
-		progressMeter.updateProgressMeter(step++, steps);
+		progressMeter.updateProgressMeter(buildStep++, buildSteps);
 		Vector<DiagramFactorClump> threatClumps = buildClumps(threats);
-		progressMeter.updateProgressMeter(step++, steps);
+		progressMeter.updateProgressMeter(buildStep++, buildSteps);
 		Vector<DiagramFactorClump> targetClumps = buildClumps(targets);
+		progressMeter.updateProgressMeter(buildStep++, buildSteps);
 
-		progressMeter.updateProgressMeter(step++, steps);
+		progressMeter.updateProgressMeter(buildStep++, buildSteps);
 		rearrangeClumps(strategyClumps, threatClumps, targetClumps);
 		
-		progressMeter.updateProgressMeter(step++, steps);
+		progressMeter.setStatusMessage(EAM.text("Updating locations..."));
+
+		final int moveSteps = 4;
+		int moveStep = 0;
+
+		progressMeter.updateProgressMeter(moveStep++, moveSteps);
 		moveFactorsToFinalLocations(unlinked, UNLINKED_COLUMN_X, TOP_Y);
-		progressMeter.updateProgressMeter(step++, steps);
+		progressMeter.updateProgressMeter(moveStep++, moveSteps);
 		moveFactorClumpsToFinalLocations(targetClumps, TARGET_COLUMN_X, TOP_Y);
-		progressMeter.updateProgressMeter(step++, steps);
+		progressMeter.updateProgressMeter(moveStep++, moveSteps);
 		moveFactorClumpsToFinalLocations(threatClumps, THREAT_COLUMN_X, TOP_Y);
-		progressMeter.updateProgressMeter(step++, steps);
+		progressMeter.updateProgressMeter(moveStep++, moveSteps);
 		moveFactorClumpsToFinalLocations(strategyClumps, STRATEGY_COLUMN_X, TOP_Y);
-		progressMeter.updateProgressMeter(step++, steps);
+		progressMeter.updateProgressMeter(moveStep++, moveSteps);
 	}
 
 	private Vector<DiagramFactorClump> buildClumps(Vector<DiagramFactor> diagramFactors)
@@ -377,12 +383,16 @@ public class MeglerArranger
 	
 	private void rearrangeClumps(Vector<DiagramFactorClump> strategyClumps, Vector<DiagramFactorClump> threatClumps, Vector<DiagramFactorClump> targetClumps)
 	{
+		progressMeter.setStatusMessage(EAM.text("Optimizing locations..."));
+
 		Vector<DiagramFactorClump> arrangedStrategyClumps = new Vector<DiagramFactorClump>();
 		Vector<DiagramFactorClump> arrangedThreatClumps = new Vector<DiagramFactorClump>();
 		Vector<DiagramFactorClump> arrangedTargetClumps = new Vector<DiagramFactorClump>();
 		
+		int originalSize = threatClumps.size();
 		while(threatClumps.size() > 0)
 		{
+			progressMeter.updateProgressMeter(originalSize-threatClumps.size(), originalSize);
 			DiagramFactorClump mostActiveThreatClump = findMostActiveClump(threatClumps);
 			
 			arrangedThreatClumps.add(mostActiveThreatClump);
@@ -401,6 +411,8 @@ public class MeglerArranger
 		threatClumps.addAll(arrangedThreatClumps);
 		targetClumps.clear();
 		targetClumps.addAll(arrangedTargetClumps);
+		
+		progressMeter.updateProgressMeter(originalSize, originalSize);
 	}
 	
 	private void addRelatedToArrangedList(Vector<DiagramFactorClump> arranged, Vector<DiagramFactorClump> candidatesToInsert, DiagramFactorClump relatedTo, int direction)
