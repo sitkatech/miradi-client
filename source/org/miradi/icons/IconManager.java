@@ -130,7 +130,7 @@ public class IconManager
 		throw new RuntimeException("Could not find icon for type:" + type);
 	}
 
-	private static AbstractMiradiIcon getFactorIcon(Factor factor)
+	private static Icon getFactorIcon(Factor factor)
 	{
 		if (factor.isDirectThreat())
 			return getThreatIcon();
