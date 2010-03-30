@@ -179,72 +179,72 @@ public class IconManager
 		return getTaskIcon();
 	}
 	
-	public static KeyEcologicalAttributeIcon getKeyEcologicalAttributeIcon()
+	public static Icon getKeyEcologicalAttributeIcon()
 	{
 		return new KeyEcologicalAttributeIcon();
 	}
 	
-	public static MeasurementIcon getMeasurementIcon()
+	public static Icon getMeasurementIcon()
 	{
 		return new MeasurementIcon();
 	}
 	
-	public static GoalIcon getGoalIcon()
+	public static Icon getGoalIcon()
 	{
 		return new GoalIcon();
 	}
 	
-	public static ObjectiveIcon getObjectiveIcon()
+	public static Icon getObjectiveIcon()
 	{
 		return new ObjectiveIcon();
 	}
 	
-	public static IndicatorIcon getIndicatorIcon()
+	public static Icon getIndicatorIcon()
 	{
 		return new IndicatorIcon();
 	}
 	
-	public static MiradiApplicationIcon getMiradiApplicationIcon()
+	public static Icon getMiradiApplicationIcon()
 	{
 		return new MiradiApplicationIcon();
 	}
 	
-	public static TargetIcon getTargetIcon()
+	public static Icon getTargetIcon()
 	{
 		return new TargetIcon();
 	}
 
-	public static StrategyIcon getStrategyIcon()
+	public static Icon getStrategyIcon()
 	{
 		return new StrategyIcon();
 	}
 	
-	public static DraftStrategyIcon getDraftStrategyIcon()
+	public static Icon getDraftStrategyIcon()
 	{
 		return new DraftStrategyIcon();
 	}
 
-	public static TaskIcon getTaskIcon()
+	public static Icon getTaskIcon()
 	{
 		return new TaskIcon();
 	}
 
-	public static MethodIcon getMethodIcon()
+	public static Icon getMethodIcon()
 	{
 		return new MethodIcon();
 	}
 
-	public static ActivityIcon getActivityIcon()
+	public static Icon getActivityIcon()
 	{
 		return new ActivityIcon();
 	}
 	
-	public static ConceptualModelIcon getConceptualModelIcon()
+	public static Icon getConceptualModelIcon()
 	{
 		return new ConceptualModelIcon();
 	}
 	
-	public static ResultsChainIcon getResultsChainIcon()
+	public static Icon getResultsChainIcon()
 	{
 		return new ResultsChainIcon();
 	}
@@ -269,7 +269,7 @@ public class IconManager
 		return new ReportTemplateIcon();
 	}
 
-	public static AbstractMiradiIcon getThreatIcon()
+	public static Icon getThreatIcon()
 	{
 		return new DirectThreatIcon();
 	}
