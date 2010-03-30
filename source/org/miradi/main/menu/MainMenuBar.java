@@ -45,6 +45,7 @@ import org.miradi.views.targetviability.TargetViabilityView;
 import org.miradi.views.threatmatrix.ThreatMatrixView;
 import org.miradi.views.umbrella.HelpButtonData;
 import org.miradi.views.umbrella.ViewSpecificHelpButtonData;
+import org.miradi.views.workplan.WorkPlanView;
 
 public class MainMenuBar extends JMenuBar
 {
@@ -219,6 +220,9 @@ public class MainMenuBar extends JMenuBar
 		if(isViabilityView())
 			return createViabilityActionsMenu(actions);
 		
+		if (isWorkPlanView())
+			return createWorkPlanActionsMenu(actions);
+		
 		return null;
 	}
 
@@ -314,6 +318,37 @@ public class MainMenuBar extends JMenuBar
 
 		return menu;
 	}
+	
+	private JMenu createWorkPlanActionsMenu(Actions actions)
+	{
+		JMenu menu = createEmptyActionsMenu();
+		
+		addMenuItem(actions, menu, ActionWorkPlanBudgetColumnsEditor.class);
+		addMenuItem(actions, menu, ActionFilterWorkPlanByProjectResource.class);
+		
+		menu.addSeparator();
+		addMenuItem(actions, menu, ActionTreeCreateActivity.class);
+		addMenuItem(actions, menu, ActionTreeShareActivity.class);
+
+		menu.addSeparator();
+		addMenuItem(actions, menu, ActionTreeCreateMethod.class);
+		addMenuItem(actions, menu, ActionTreeShareMethod.class);
+
+		menu.addSeparator();
+		addMenuItem(actions, menu, ActionCreateChildTask.class);
+		addMenuItem(actions, menu, ActionCreateSameLevelTask.class);
+		
+		menu.addSeparator();
+		addMenuItem(actions, menu, ActionExpandAllRows.class);
+		addMenuItem(actions, menu, ActionCollapseAllRows.class);
+		
+		menu.addSeparator();
+		addMenuItem(actions, menu, ActionTreeNodeUp.class);
+		addMenuItem(actions, menu, ActionTreeNodeDown.class);
+		addMenuItem(actions, menu, ActionDeletePlanningViewTreeNode.class);
+
+		return menu;
+	}
 
 	private JMenu createViabilityActionsMenu(Actions actions)
 	{
@@ -340,6 +375,14 @@ public class MainMenuBar extends JMenuBar
 			return false;
 		
 		return PlanningView.is(mainWindow.getCurrentView());
+	}
+	
+	private boolean isWorkPlanView()
+	{
+		if(mainWindow == null)
+			return false;
+		
+		return WorkPlanView.is(mainWindow.getCurrentView());
 	}
 
 	private boolean isDiagramView()
