@@ -50,6 +50,8 @@ public class IconManager
 		addIcon(new WarningIcon());
 		addIcon(new CancelIcon());
 		addIcon(new StrategicPlanIcon());
+		addIcon(new DeleteIcon());
+		addIcon(new ProjectResourceIcon());
 	}
 	
 	private static void addIcon(Icon icon)
@@ -288,16 +290,12 @@ public class IconManager
 	
 	public static Icon getResourceIcon()
 	{
-		if(resourceIcon == null)
-			resourceIcon = new ProjectResourceIcon();
-		return resourceIcon;
+		return getIcon(ProjectResourceIcon.class);
 	}
 
 	public static Icon getDeleteIcon()
 	{
-		if(deleteIcon == null)
-			deleteIcon = new DeleteIcon();
-		return deleteIcon;
+		return getIcon(DeleteIcon.class);
 	}
 
 	public static Icon getStrategicPlanIcon()
@@ -317,7 +315,5 @@ public class IconManager
 
 	private static Icon expandIcon;
 	private static Icon collapseIcon;
-	private static Icon resourceIcon;
-	private static Icon deleteIcon;
 	private static HashMap<String, Icon> iconMap;
 }
