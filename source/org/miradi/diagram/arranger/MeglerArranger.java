@@ -31,6 +31,7 @@ import java.util.Vector;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UnexpectedNonSideEffectException;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -45,38 +46,73 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.Project;
+import org.miradi.utils.NullProgressMeter;
+import org.miradi.utils.ProgressInterface;
 import org.miradi.views.diagram.LinkCreator;
 
 public class MeglerArranger
 {
 	public MeglerArranger(DiagramObject diagramToArrange)
 	{
+		this(diagramToArrange, new NullProgressMeter());
+	}
+	
+	public MeglerArranger(DiagramObject diagramToArrange, ProgressInterface progressMeterToUse)
+	{
 		diagram = diagramToArrange;
+		progressMeter = progressMeterToUse;
 	}
 
-	public void arrange() throws Exception
+	public boolean arrange() throws Exception
 	{
+		if(hasUserRequestedStop())
+			return false;
 		extractFactorsOfInterest();
+		if(hasUserRequestedStop())
+			return false;
 		segregateUnlinkedFactors();
+		if(hasUserRequestedStop())
+			return false;
 		createGroupBoxes();
+		if(hasUserRequestedStop())
+			return false;
 		setLocations();
+		return true;
+	}
+
+	private boolean hasUserRequestedStop()
+	{
+		return progressMeter.shouldExit();
 	}
 
 	private void segregateUnlinkedFactors()
 	{
+		progressMeter.setStatusMessage(EAM.text("Ignoring unlinked factors..."));
+
 		unlinked = new Vector<DiagramFactor>();
-		
+
+		progressMeter.updateProgressMeter(0, 3);
 		unlinked.addAll(extractUnlinkedDiagramFactors(strategies));
+		progressMeter.updateProgressMeter(1, 3);
 		unlinked.addAll(extractUnlinkedDiagramFactors(threats));
+		progressMeter.updateProgressMeter(2, 3);
 		unlinked.addAll(extractUnlinkedDiagramFactors(targets));
+		progressMeter.updateProgressMeter(3, 3);
 	}
 	
 	private void createGroupBoxes() throws Exception
 	{
+		progressMeter.setStatusMessage(EAM.text("Creating group boxes..."));
+
+		progressMeter.updateProgressMeter(0, 4);
 		createGroupBoxes(targets, FactorLink.FROM, Cause.getObjectType());
+		progressMeter.updateProgressMeter(1, 4);
 		createGroupBoxes(threats, FactorLink.TO, Target.getObjectType());
+		progressMeter.updateProgressMeter(2, 4);
 		createGroupBoxes(threats, FactorLink.FROM, Strategy.getObjectType());
+		progressMeter.updateProgressMeter(3, 4);
 		createGroupBoxes(strategies, FactorLink.TO, Cause.getObjectType());
+		progressMeter.updateProgressMeter(4, 4);
 	}
 
 	private void createGroupBoxes(Vector<DiagramFactor> diagramFactorsToGroup, int direction, int objectTypeInThatDirection) throws Exception
@@ -253,16 +289,24 @@ public class MeglerArranger
 
 	private void setLocations() throws Exception
 	{
+		progressMeter.setStatusMessage(EAM.text("Updating locations..."));
+
 		Vector<DiagramFactorClump> strategyClumps = buildClumps(strategies);
 		Vector<DiagramFactorClump> threatClumps = buildClumps(threats);
 		Vector<DiagramFactorClump> targetClumps = buildClumps(targets);
 		
+		progressMeter.updateProgressMeter(0, 5);
 		rearrangeClumps(strategyClumps, threatClumps, targetClumps);
 		
+		progressMeter.updateProgressMeter(1, 5);
 		moveFactorsToFinalLocations(unlinked, UNLINKED_COLUMN_X, TOP_Y);
-		moveFactorClumpsToFinalLocations(strategyClumps, STRATEGY_COLUMN_X, TOP_Y);
-		moveFactorClumpsToFinalLocations(threatClumps, THREAT_COLUMN_X, TOP_Y);
+		progressMeter.updateProgressMeter(2, 5);
 		moveFactorClumpsToFinalLocations(targetClumps, TARGET_COLUMN_X, TOP_Y);
+		progressMeter.updateProgressMeter(3, 5);
+		moveFactorClumpsToFinalLocations(threatClumps, THREAT_COLUMN_X, TOP_Y);
+		progressMeter.updateProgressMeter(4, 5);
+		moveFactorClumpsToFinalLocations(strategyClumps, STRATEGY_COLUMN_X, TOP_Y);
+		progressMeter.updateProgressMeter(5, 5);
 	}
 
 	private Vector<DiagramFactorClump> buildClumps(Vector<DiagramFactor> diagramFactors)
@@ -405,6 +449,7 @@ public class MeglerArranger
 
 	private void extractFactorsOfInterest()
 	{
+		progressMeter.setStatusMessage(EAM.text("Extracting factors..."));
 		strategies = new Vector<DiagramFactor>();
 		threats = new Vector<DiagramFactor>();
 		targets = new Vector<DiagramFactor>();
@@ -413,6 +458,8 @@ public class MeglerArranger
 		ORefList diagramFactorRefs = diagram.getAllDiagramFactorRefs();
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
+			progressMeter.updateProgressMeter(i, diagramFactorRefs.size());
+			
 			DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(i));
 			if(isAlreadyInGroup(diagramFactor))
 				continue;
@@ -449,6 +496,7 @@ public class MeglerArranger
 	private static final int TOP_Y = VERTICAL_CUSHION * 2;
 	private static final int DELTA_Y = 60 + VERTICAL_CUSHION;
 
+	private ProgressInterface progressMeter;
 	private DiagramObject diagram;
 	private Vector<DiagramFactor> strategies;
 	private Vector<DiagramFactor> threats;
