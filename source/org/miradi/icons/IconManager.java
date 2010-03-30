@@ -71,6 +71,17 @@ public class IconManager
 		addIcon(new GoalIcon());
 		addIcon(new MeasurementIcon());
 		addIcon(new KeyEcologicalAttributeIcon());
+		addIcon(new ContributingFactorIcon());
+		addIcon(new HumanWelfareTargetIcon());
+		addIcon(new StressIcon());
+		addIcon(new GroupBoxIcon());
+		addIcon(new TextBoxIcon());
+		addIcon(new ThreatReductionResultIcon());
+		addIcon(new IntermediateResultIcon());
+		addIcon(new AccountingCodeIcon());
+		addIcon(new FundingSourceIcon());
+		addIcon(new ExpenseAssignmentIcon());
+		addIcon(new AssignmentIcon());
 	}
 	
 	private static void addIcon(Icon icon)
@@ -200,57 +211,57 @@ public class IconManager
 	
 	private static Icon getContributingFactorIcon()
 	{
-		return new ContributingFactorIcon();
+		return getIcon(ContributingFactorIcon.class);
 	}
 	
 	private static Icon getHumanWelfareTargetIcon()
 	{
-		return new HumanWelfareTargetIcon();
+		return getIcon(HumanWelfareTargetIcon.class);
 	}
 
 	private static Icon getStressIcon()
 	{
-		return new StressIcon();
+		return getIcon(StressIcon.class);
 	}
 
 	private static Icon getGroupBoxIcon()
 	{
-		return new GroupBoxIcon();
+		return getIcon(GroupBoxIcon.class);
 	}
 
 	private static Icon getTextBoxIcon()
 	{
-		return new TextBoxIcon();
+		return getIcon(TextBoxIcon.class);
 	}
 
 	private static Icon getThreatReductionResultIcon()
 	{
-		return new ThreatReductionResultIcon();
+		return getIcon(ThreatReductionResultIcon.class);
 	}
 
 	private static Icon getIntermediateResultIcon()
 	{
-		return new IntermediateResultIcon();
+		return getIcon(IntermediateResultIcon.class);
 	}
 	
 	private static Icon getAccountingCodeIcon()
 	{
-		return new AccountingCodeIcon();
+		return getIcon(AccountingCodeIcon.class);
 	}
 
 	private static Icon getFundingSourceIcon()
 	{
-		return new FundingSourceIcon();
+		return getIcon(FundingSourceIcon.class);
 	}
 
 	private static Icon getExpenseIcon()
 	{
-		return new ExpenseAssignmentIcon();
+		return getIcon(ExpenseAssignmentIcon.class);
 	}
 
 	private static Icon getAssignmentIcon()
 	{
-		return new AssignmentIcon();
+		return getIcon(AssignmentIcon.class);
 	}
 	
 	public static Icon getKeyEcologicalAttributeIcon()
