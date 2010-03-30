@@ -44,8 +44,7 @@ public class ProgressDialog extends DialogWithDisposablePanel implements Progres
 		setModal(true);
 
 		progressPanel = new ProgressPanel(mainWindow);
-		setStatusMessage(EAM.text("Initializing,,,"));
-		updateProgressMeter(0, 1);
+		setStatusMessage(EAM.text("Initializing..."), 1);
 
 		cancelButton = new PanelButton(new CancelAction());
 		
@@ -54,9 +53,9 @@ public class ProgressDialog extends DialogWithDisposablePanel implements Progres
 		getContentPane().add(cancelButton, BorderLayout.AFTER_LAST_LINE);
 	}
 	
-	public void setStatusMessage(String translatedMessage)
+	public void setStatusMessage(String translatedMessage, int stepCount)
 	{
-		progressPanel.setStatusMessage(translatedMessage);
+		progressPanel.setStatusMessage(translatedMessage, stepCount);
 		pack();
 		repaint();
 	}
@@ -73,9 +72,14 @@ public class ProgressDialog extends DialogWithDisposablePanel implements Progres
 		return progressPanel.shouldExit();
 	}
 	
-	public void updateProgressMeter(int currentValue, int maxValue)
+	public void updateProgressMeter(int currentValue)
 	{
-		progressPanel.updateProgressMeter(currentValue, maxValue);
+		progressPanel.updateProgressMeter(currentValue);
+	}
+
+	public void incrementProgress()
+	{
+		progressPanel.incrementProgress();
 	}
 
 	class CancelAction extends AbstractAction
@@ -109,9 +113,11 @@ public class ProgressDialog extends DialogWithDisposablePanel implements Progres
 			shouldExit = true;
 		}
 		
-		public void setStatusMessage(String translatedMessage)
+		public void setStatusMessage(String translatedMessage, int stepCount)
 		{
 			message.setText(translatedMessage);
+			progressBar.setMaximum(stepCount);
+			progressBar.setValue(0);
 		}
 		
 		public void finished()
@@ -125,11 +131,15 @@ public class ProgressDialog extends DialogWithDisposablePanel implements Progres
 			return shouldExit;
 		}
 
-		public void updateProgressMeter(int currentValue, int maxValue)
+		public void updateProgressMeter(int currentValue)
 		{
 			progressBar.setValue(currentValue);
-			progressBar.setMaximum(maxValue);
 			progressBar.repaint();
+		}
+
+		public void incrementProgress()
+		{
+			updateProgressMeter(progressBar.getValue() + 1);
 		}
 
 		private boolean shouldExit;

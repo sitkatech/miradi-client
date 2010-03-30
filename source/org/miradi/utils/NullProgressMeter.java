@@ -26,7 +26,7 @@ public class NullProgressMeter implements ProgressInterface
 	{
 	}
 
-	public void setStatusMessage(String translatedMessage)
+	public void setStatusMessage(String translatedMessage, int stepCount)
 	{
 	}
 
@@ -35,7 +35,11 @@ public class NullProgressMeter implements ProgressInterface
 		return false;
 	}
 
-	public void updateProgressMeter(int currentValue, int maxValue)
+	public void updateProgressMeter(int currentValue)
+	{
+	}
+
+	public void incrementProgress()
 	{
 	}
 

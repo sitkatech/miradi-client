@@ -87,36 +87,32 @@ public class MeglerArranger
 
 	private void segregateUnlinkedFactors()
 	{
-		progressMeter.setStatusMessage(EAM.text("Ignoring unlinked factors..."));
+		final int steps = 3;
+		progressMeter.setStatusMessage(EAM.text("Ignoring unlinked factors..."), steps);
 
 		unlinked = new Vector<DiagramFactor>();
 
-		final int steps = 3;
-		int step = 0;
-		progressMeter.updateProgressMeter(step++, steps);
 		unlinked.addAll(extractUnlinkedDiagramFactors(strategies));
-		progressMeter.updateProgressMeter(step++, steps);
+		progressMeter.incrementProgress();
 		unlinked.addAll(extractUnlinkedDiagramFactors(threats));
-		progressMeter.updateProgressMeter(step++, steps);
+		progressMeter.incrementProgress();
 		unlinked.addAll(extractUnlinkedDiagramFactors(targets));
-		progressMeter.updateProgressMeter(step++, steps);
+		progressMeter.incrementProgress();
 	}
 	
 	private void createGroupBoxes() throws Exception
 	{
-		progressMeter.setStatusMessage(EAM.text("Creating group boxes..."));
-
 		final int steps = 4;
-		int step = 0;
-		progressMeter.updateProgressMeter(step++, steps);
+		progressMeter.setStatusMessage(EAM.text("Creating group boxes..."), steps);
+
 		createGroupBoxes(targets, FactorLink.FROM, Cause.getObjectType());
-		progressMeter.updateProgressMeter(step++, steps);
+		progressMeter.incrementProgress();
 		createGroupBoxes(threats, FactorLink.TO, Target.getObjectType());
-		progressMeter.updateProgressMeter(step++, steps);
+		progressMeter.incrementProgress();
 		createGroupBoxes(threats, FactorLink.FROM, Strategy.getObjectType());
-		progressMeter.updateProgressMeter(step++, steps);
+		progressMeter.incrementProgress();
 		createGroupBoxes(strategies, FactorLink.TO, Cause.getObjectType());
-		progressMeter.updateProgressMeter(step++, steps);
+		progressMeter.incrementProgress();
 	}
 
 	private void createGroupBoxes(Vector<DiagramFactor> diagramFactorsToGroup, int direction, int objectTypeInThatDirection) throws Exception
@@ -293,36 +289,29 @@ public class MeglerArranger
 
 	private void setLocations() throws Exception
 	{
-		progressMeter.setStatusMessage(EAM.text("Preparing groups..."));
-
 		final int buildSteps = 3;
-		int buildStep = 0;
+		progressMeter.setStatusMessage(EAM.text("Preparing groups..."), buildSteps);
 
-		progressMeter.updateProgressMeter(buildStep++, buildSteps);
 		Vector<DiagramFactorClump> strategyClumps = buildClumps(strategies);
-		progressMeter.updateProgressMeter(buildStep++, buildSteps);
+		progressMeter.incrementProgress();
 		Vector<DiagramFactorClump> threatClumps = buildClumps(threats);
-		progressMeter.updateProgressMeter(buildStep++, buildSteps);
+		progressMeter.incrementProgress();
 		Vector<DiagramFactorClump> targetClumps = buildClumps(targets);
-		progressMeter.updateProgressMeter(buildStep++, buildSteps);
+		progressMeter.incrementProgress();
 
-		progressMeter.updateProgressMeter(buildStep++, buildSteps);
 		rearrangeClumps(strategyClumps, threatClumps, targetClumps);
 		
-		progressMeter.setStatusMessage(EAM.text("Updating locations..."));
-
 		final int moveSteps = 4;
-		int moveStep = 0;
+		progressMeter.setStatusMessage(EAM.text("Updating locations..."), moveSteps);
 
-		progressMeter.updateProgressMeter(moveStep++, moveSteps);
 		moveFactorsToFinalLocations(unlinked, UNLINKED_COLUMN_X, TOP_Y);
-		progressMeter.updateProgressMeter(moveStep++, moveSteps);
+		progressMeter.incrementProgress();
 		moveFactorClumpsToFinalLocations(targetClumps, TARGET_COLUMN_X, TOP_Y);
-		progressMeter.updateProgressMeter(moveStep++, moveSteps);
+		progressMeter.incrementProgress();
 		moveFactorClumpsToFinalLocations(threatClumps, THREAT_COLUMN_X, TOP_Y);
-		progressMeter.updateProgressMeter(moveStep++, moveSteps);
+		progressMeter.incrementProgress();
 		moveFactorClumpsToFinalLocations(strategyClumps, STRATEGY_COLUMN_X, TOP_Y);
-		progressMeter.updateProgressMeter(moveStep++, moveSteps);
+		progressMeter.incrementProgress();
 	}
 
 	private Vector<DiagramFactorClump> buildClumps(Vector<DiagramFactor> diagramFactors)
@@ -383,16 +372,14 @@ public class MeglerArranger
 	
 	private void rearrangeClumps(Vector<DiagramFactorClump> strategyClumps, Vector<DiagramFactorClump> threatClumps, Vector<DiagramFactorClump> targetClumps)
 	{
-		progressMeter.setStatusMessage(EAM.text("Optimizing locations..."));
+		progressMeter.setStatusMessage(EAM.text("Optimizing locations..."), threatClumps.size());
 
 		Vector<DiagramFactorClump> arrangedStrategyClumps = new Vector<DiagramFactorClump>();
 		Vector<DiagramFactorClump> arrangedThreatClumps = new Vector<DiagramFactorClump>();
 		Vector<DiagramFactorClump> arrangedTargetClumps = new Vector<DiagramFactorClump>();
 		
-		int originalSize = threatClumps.size();
 		while(threatClumps.size() > 0)
 		{
-			progressMeter.updateProgressMeter(originalSize-threatClumps.size(), originalSize);
 			DiagramFactorClump mostActiveThreatClump = findMostActiveClump(threatClumps);
 			
 			arrangedThreatClumps.add(mostActiveThreatClump);
@@ -400,6 +387,7 @@ public class MeglerArranger
 
 			addRelatedToArrangedList(arrangedStrategyClumps, strategyClumps, mostActiveThreatClump, FactorLink.FROM);
 			addRelatedToArrangedList(arrangedTargetClumps, targetClumps, mostActiveThreatClump, FactorLink.TO);
+			progressMeter.incrementProgress();
 		}
 		
 		arrangedStrategyClumps.addAll(strategyClumps);
@@ -411,8 +399,6 @@ public class MeglerArranger
 		threatClumps.addAll(arrangedThreatClumps);
 		targetClumps.clear();
 		targetClumps.addAll(arrangedTargetClumps);
-		
-		progressMeter.updateProgressMeter(originalSize, originalSize);
 	}
 	
 	private void addRelatedToArrangedList(Vector<DiagramFactorClump> arranged, Vector<DiagramFactorClump> candidatesToInsert, DiagramFactorClump relatedTo, int direction)
@@ -471,16 +457,17 @@ public class MeglerArranger
 
 	private void extractFactorsOfInterest()
 	{
-		progressMeter.setStatusMessage(EAM.text("Extracting factors..."));
 		strategies = new Vector<DiagramFactor>();
 		threats = new Vector<DiagramFactor>();
 		targets = new Vector<DiagramFactor>();
 		
 		Project project = diagram.getProject();
 		ORefList diagramFactorRefs = diagram.getAllDiagramFactorRefs();
+
+		progressMeter.setStatusMessage(EAM.text("Extracting factors..."), diagramFactorRefs.size());
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
-			progressMeter.updateProgressMeter(i, diagramFactorRefs.size());
+			progressMeter.incrementProgress();
 			
 			DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(i));
 			if(isAlreadyInGroup(diagramFactor))
