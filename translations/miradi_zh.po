@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-30 10:07-0500\n"
+"POT-Creation-Date: 2010-03-30 10:28-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4051,27 +4051,27 @@ msgstr ""
 msgid "Conceptual Model Data"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:90
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:91
 msgid "Ignoring unlinked factors..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:107
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:106
 msgid "Creating group boxes..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:296
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:293
 msgid "Preparing groups..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:312
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:305
 msgid "Updating locations..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:386
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:375
 msgid "Optimizing locations..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:474
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:467
 msgid "Extracting factors..."
 msgstr ""
 
@@ -7024,10 +7024,10 @@ msgid "Title|Activity Properties"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:47
-msgid "Initializing,,,"
+msgid "Initializing..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:85
+#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:89
 msgid "Stop"
 msgstr ""
 
