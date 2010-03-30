@@ -21,32 +21,42 @@ package org.miradi.dialogs.activity;
 
 import org.miradi.actions.ActionHideActivityBubble;
 import org.miradi.actions.ActionShowActivityBubble;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.ids.BaseId;
+import org.miradi.dialogs.base.AbstratFactorBubbleVisibilityPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.utils.FillerLabel;
-import org.miradi.utils.ObjectsActionButton;
 
-public class ActivityFactorVisibilityControlPanel extends ObjectDataInputPanel
+public class ActivityFactorVisibilityControlPanel extends AbstratFactorBubbleVisibilityPanel
 {
 	public ActivityFactorVisibilityControlPanel(MainWindow mainWindow) throws Exception
 	{
-		super(mainWindow.getProject(), ObjectType.TASK, BaseId.INVALID);
-
-		addLabel(EAM.text("Activity bubble visibility can only be changed in Results Chain Diagrams"));
-		addLabel(new FillerLabel());
-		
-		ObjectsActionButton showActivityBubble = createObjectsActionButton(mainWindow.getActions().getObjectsAction(ActionShowActivityBubble.class), getPicker());
-		add(showActivityBubble);
-		
-		ObjectsActionButton hideActivityBubble = createObjectsActionButton(mainWindow.getActions().getObjectsAction(ActionHideActivityBubble.class), getPicker());
-		add(hideActivityBubble);
-		
-		updateFieldsFromProject();
+		super(mainWindow, ObjectType.TASK);
 	}
 
+	@Override
+	protected Class getHideButtonClass()
+	{
+		return ActionHideActivityBubble.class;
+	}
+
+	@Override
+	protected Class getShowButtonClass()
+	{
+		return ActionShowActivityBubble.class;
+	}
+
+	@Override
+	protected String getExplanationMessage()
+	{
+		return EAM.text("Activity bubble visibility can only be changed in Results Chain Diagrams");
+	}
+	
+	@Override
+	protected boolean shouldShowButtonPanel()
+	{
+		return getMainWindow().getCurrentDiagramComponent().getDiagramObject().isResultsChain();
+	}	
+	
 	@Override
 	public String getPanelDescription()
 	{

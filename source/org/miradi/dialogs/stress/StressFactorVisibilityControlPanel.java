@@ -21,30 +21,16 @@ package org.miradi.dialogs.stress;
 
 import org.miradi.actions.ActionHideStressBubble;
 import org.miradi.actions.ActionShowStressBubble;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.ids.BaseId;
+import org.miradi.dialogs.base.AbstratFactorBubbleVisibilityPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.utils.FillerLabel;
-import org.miradi.utils.ObjectsActionButton;
 
-public class StressFactorVisibilityControlPanel extends ObjectDataInputPanel
+public class StressFactorVisibilityControlPanel extends AbstratFactorBubbleVisibilityPanel
 {
 	public StressFactorVisibilityControlPanel(MainWindow mainWindow) throws Exception
 	{
-		super(mainWindow.getProject(), ObjectType.STRESS, BaseId.INVALID);
-		
-		addLabel(EAM.text("Stress bubble visibility can only be changed in Conceptual Diagrams"));
-		addLabel(new FillerLabel());
-		
-		ObjectsActionButton showStressBubble = createObjectsActionButton(mainWindow.getActions().getObjectsAction(ActionShowStressBubble.class), getPicker());
-		add(showStressBubble);
-		
-		ObjectsActionButton hideStressBubble = createObjectsActionButton(mainWindow.getActions().getObjectsAction(ActionHideStressBubble.class), getPicker());
-		add(hideStressBubble);
-		
-		updateFieldsFromProject();
+		super(mainWindow, ObjectType.STRESS);		
 	}
 
 	@Override
@@ -52,4 +38,28 @@ public class StressFactorVisibilityControlPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Title|Stress Visibility");
 	}
+
+	@Override
+	protected String getExplanationMessage()
+	{
+		return EAM.text("Stress bubble visibility can only be changed in Conceptual Diagrams");
+	}
+
+	@Override
+	protected Class getHideButtonClass()
+	{
+		return ActionHideStressBubble.class;
+	}
+
+	@Override
+	protected Class getShowButtonClass()
+	{
+		return ActionShowStressBubble.class;
+	}
+	
+	@Override
+	protected boolean shouldShowButtonPanel()
+	{
+		return getMainWindow().getCurrentDiagramComponent().getDiagramObject().isConceptualModelDiagram();
+	}	
 }

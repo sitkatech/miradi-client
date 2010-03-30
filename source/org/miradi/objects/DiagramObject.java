@@ -208,6 +208,11 @@ abstract public class DiagramObject extends BaseObject
 		return (getType() == ObjectType.RESULTS_CHAIN_DIAGRAM);
 	}
 	
+	public boolean isConceptualModelDiagram()
+	{
+		return ConceptualModelDiagram.is(getType());
+	}
+	
 	public boolean areDiagramFactorsLinkedFromToNonBidirectional(ORef fromDiagramFactorRef, ORef toDiagramFactorRef)
 	{
 		return areDiagramFactorsLinkedFromToNonBidirectional(fromDiagramFactorRef, toDiagramFactorRef, FactorLink.FROM);
