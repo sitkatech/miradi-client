@@ -168,7 +168,7 @@ public class IconManager
 		throw new RuntimeException("type is factor but there is no icon for it was found:"  + factor.getType());
 	}
 
-	private static AbstractMiradiIcon getTaskIcon(Task task)
+	private static Icon getTaskIcon(Task task)
 	{
 		if (task.isMethod())
 			return getMethodIcon();
