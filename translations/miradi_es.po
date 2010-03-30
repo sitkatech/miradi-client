@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-30 08:55-0500\n"
+"POT-Creation-Date: 2010-03-30 09:01-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -622,6 +622,10 @@ msgstr ""
 "proyecto se haya dañado. Comuníquese con el equipo de Miradi para obtener "
 "ayuda y orientación. Se recomienda no realizar cambios en el proyecto hasta "
 "que el problema se haya resuelto."
+
+#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:424
+msgid "Active Diagram Layers Count: %s"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/CloneGoalDoer.java:33
 msgid "Choose Goal to Create from"
@@ -4432,27 +4436,23 @@ msgstr ""
 msgid "Unknown error prevented opening that project"
 msgstr "Un error desconocido impidió que se abriera ese proyecto."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:655
-msgid "Active Diagram Layers Count: %s"
-msgstr ""
-
-#: Miradi/source/org/miradi/main/MainWindow.java:665
+#: Miradi/source/org/miradi/main/MainWindow.java:662
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:715
+#: Miradi/source/org/miradi/main/MainWindow.java:712
 msgid "WARNING: Project end date before start date."
 msgstr "ADVERTENCIA: Fecha de fin del proyecto anterior a la fecha de inicio"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:830
+#: Miradi/source/org/miradi/main/MainWindow.java:827
 msgid "Unable to save preferences"
 msgstr "No se pudieron grabar las preferencias."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1041
+#: Miradi/source/org/miradi/main/MainWindow.java:1038
 msgid "Unable to launch external web browser"
 msgstr "No se pudo iniciar el navegador web externo."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1057
+#: Miradi/source/org/miradi/main/MainWindow.java:1054
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
