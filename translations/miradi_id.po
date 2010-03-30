@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-30 11:06-0500\n"
+"POT-Creation-Date: 2010-03-30 12:17-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -4340,7 +4340,7 @@ msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Hapus Tag dari %n Item yang Dipilih "
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:281
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:371
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:414
 msgid "Menu|Group Box"
 msgstr "Kotak Grup"
 
@@ -4485,39 +4485,39 @@ msgstr "Gunakan produk komunikasi pihak lain "
 msgid "Document key results and lessons"
 msgstr "Dokumentasikan pelajaran dan hasil utama "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:86
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:87
 msgid "MenuBar|File"
 msgstr "Berkas "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:109
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:110
 msgid "Menu|Export Current Project as..."
 msgstr "Ekspor Proyek Saat Ini sebagai…"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:130
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:131
 msgid "Menu|Export Current Page as..."
 msgstr "Ekspor Halaman Saat Ini sebagai…"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:143
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:144
 msgid "Menu|Import"
 msgstr "Impor "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:160
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:161
 msgid "MenuBar|Edit"
 msgstr "Edit "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:227
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:231
 msgid "MenuBar|Actions"
 msgstr "Tindakan "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:383
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
 msgid "MenuBar|View"
 msgstr "Tampilan "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:442
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:485
 msgid "MenuBar|Step-by-Step"
 msgstr "Langkah demi Langkah "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:460
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:503
 msgid "MenuBar|Help"
 msgstr "Bantuan "
 
