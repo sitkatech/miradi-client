@@ -138,7 +138,7 @@ public class IconManager
 			return new ExpenseAssignmentIcon();
 		
 		if (ProjectResource.is(type))
-			return new ProjectResourceIcon();
+			return getResourceIcon();
 		
 		if (FundingSource.is(type))
 			return new FundingSourceIcon();
