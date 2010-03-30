@@ -23,7 +23,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.icons.IconManager;
 
 public class MainStatusBar extends JPanel
@@ -34,17 +33,7 @@ public class MainStatusBar extends JPanel
 		statusSummary = new JLabel();
 		add(statusSummary);
 	}
-	
-	public void setStatusReady()
-	{
-		setStatus(STATUS_READY);
-	}
-	
-	public void setStatusError(CommandFailedException e)
-	{
-		setStatus(e.getMessage());
-	}
-	
+		
 	public void setStatus(String text)
 	{
 		statusSummary.setText(text);
@@ -62,6 +51,5 @@ public class MainStatusBar extends JPanel
 		statusSummary.setIcon(null);
 	}
 
-	private final String STATUS_READY = EAM.text("Status|Ready");
 	private JLabel statusSummary;
 }
