@@ -31,9 +31,14 @@ import org.miradi.wizard.MiradiHtmlViewer;
 
 public class FlexibleWidthHtmlViewer extends MiradiHtmlViewer
 {
+	public FlexibleWidthHtmlViewer(MainWindow mainWindow)
+	{
+		this(mainWindow, mainWindow.getHyperlinkHandler());
+	}
+	
 	public FlexibleWidthHtmlViewer(MainWindow mainWindow, String htmlText)
 	{
-		this(mainWindow, null, htmlText);
+		this(mainWindow, mainWindow.getHyperlinkHandler(), htmlText);
 	}
 	
 	public FlexibleWidthHtmlViewer(MainWindow mainWindow, HyperlinkHandler hyperLinkHandler, String htmlText)
