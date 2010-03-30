@@ -649,12 +649,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return memoryStatistics;
 	}
 
-	public void updateDiagramRelatedStatus(ORefList activeTaggedObjectSetRefs)
+	public void setStatusBarWarningMessage(String warningMessage)
 	{
-		if (activeTaggedObjectSetRefs.hasData())
-			mainStatusBar.setWarningStatus(EAM.substitute(EAM.text("Active Diagram Layers Count: %s"), Integer.toString(activeTaggedObjectSetRefs.size())));
-		else
-			clearStatusBar();
+		mainStatusBar.setWarningStatus(warningMessage);
 	}
 	
 	public void updatePlanningDateRelatedStatus()
