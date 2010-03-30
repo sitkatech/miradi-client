@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-29 19:41-0500\n"
+"POT-Creation-Date: 2010-03-29 21:46-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -668,6 +668,10 @@ msgstr "Pilih Tag "
 #: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:41
 msgid "Tag"
 msgstr "Tag"
+
+#: Miradi/source/org/miradi/views/diagram/doers/ArrangeConceptualModelDoer.java:52
+msgid "Arranging Diagram"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:104
 msgid "Label|New Group Box"
@@ -4259,6 +4263,22 @@ msgstr ""
 msgid "Conceptual Model Data"
 msgstr ""
 
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:90
+msgid "Ignoring unlinked factors..."
+msgstr ""
+
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:105
+msgid "Creating group boxes..."
+msgstr ""
+
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:292
+msgid "Updating locations..."
+msgstr ""
+
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:452
+msgid "Extracting factors..."
+msgstr ""
+
 #: Miradi/source/org/miradi/diagram/cells/FactorCell.java:95
 msgid "Indicators:"
 msgstr "Indikator: "
@@ -7270,6 +7290,14 @@ msgstr "Properti Metode "
 msgid "Title|Activity Properties"
 msgstr "Properti Aktivitas "
 
+#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:47
+msgid "Initializing,,,"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:85
+msgid "Stop"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/base/DataLocationChooserPanel.java:55
 msgid "Select Location..."
 msgstr "Pilih Lokasi… "
@@ -7277,6 +7305,10 @@ msgstr "Pilih Lokasi… "
 #: Miradi/source/org/miradi/dialogs/base/DataLocationChooserPanel.java:102
 msgid "Error occured while saving data location"
 msgstr "Terjadi kesalahan saat menyimpan lokasi data "
+
+#: Miradi/source/org/miradi/dialogs/base/ConfirmDialog.java:36
+msgid "Confirmation"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:36
 msgid "<html>Select which column groups to display."

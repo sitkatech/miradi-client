@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-29 19:41-0500\n"
+"POT-Creation-Date: 2010-03-29 21:46-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -638,6 +638,10 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:41
 msgid "Tag"
 msgstr "标签"
+
+#: Miradi/source/org/miradi/views/diagram/doers/ArrangeConceptualModelDoer.java:52
+msgid "Arranging Diagram"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:104
 msgid "Label|New Group Box"
@@ -4043,6 +4047,22 @@ msgstr ""
 msgid "Conceptual Model Data"
 msgstr ""
 
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:90
+msgid "Ignoring unlinked factors..."
+msgstr ""
+
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:105
+msgid "Creating group boxes..."
+msgstr ""
+
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:292
+msgid "Updating locations..."
+msgstr ""
+
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:452
+msgid "Extracting factors..."
+msgstr ""
+
 #: Miradi/source/org/miradi/diagram/cells/FactorCell.java:95
 msgid "Indicators:"
 msgstr "指示物: \t\t"
@@ -6999,6 +7019,14 @@ msgstr ""
 msgid "Title|Activity Properties"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:47
+msgid "Initializing,,,"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:85
+msgid "Stop"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/base/DataLocationChooserPanel.java:55
 msgid "Select Location..."
 msgstr "选择位置... \t\t"
@@ -7006,6 +7034,10 @@ msgstr "选择位置... \t\t"
 #: Miradi/source/org/miradi/dialogs/base/DataLocationChooserPanel.java:102
 msgid "Error occured while saving data location"
 msgstr "保存数据位置时出错 \t\t"
+
+#: Miradi/source/org/miradi/dialogs/base/ConfirmDialog.java:36
+msgid "Confirmation"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:36
 msgid "<html>Select which column groups to display."
