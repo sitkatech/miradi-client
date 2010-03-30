@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-29 18:49-0500\n"
+"POT-Creation-Date: 2010-03-29 19:41-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -581,7 +581,7 @@ msgstr "您是否确定要删除该嵌套对象？ \t\t"
 msgid "Control Bar"
 msgstr "控制栏 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:334
+#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:335
 #: Miradi/source/org/miradi/diagram/DiagramModel.java:801
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
@@ -4100,7 +4100,7 @@ msgstr "影响因素 \t\t"
 msgid "Type|Direct Threat"
 msgstr "直接威胁因子 \t\t"
 
-#: Miradi/source/org/miradi/main/MainStatusBar.java:52
+#: Miradi/source/org/miradi/main/MainStatusBar.java:65
 msgid "Status|Ready"
 msgstr "就绪 \t\t"
 
@@ -4128,11 +4128,11 @@ msgstr ""
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr "针对保护项目的适应性管理软件 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:289
+#: Miradi/source/org/miradi/main/MainWindow.java:290
 msgid "Information"
 msgstr "信息 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:503
+#: Miradi/source/org/miradi/main/MainWindow.java:504
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -4141,42 +4141,46 @@ msgstr ""
 "未知的命令\n"
 "您可能正在尝试加载一个旧项目，它包含已不被支持的陈旧命令 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:508
+#: Miradi/source/org/miradi/main/MainWindow.java:509
 msgid "That project is in use by another copy of this application"
 msgstr "此项目正被本应用程序的另一个拷贝所使用 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:512
+#: Miradi/source/org/miradi/main/MainWindow.java:513
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
 msgstr "此项目无法被打开，因为它是由该应用程序的更高版本所创建 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:516
+#: Miradi/source/org/miradi/main/MainWindow.java:517
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr "此项目在被转换成当前数据格式之前无法打开 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:521
+#: Miradi/source/org/miradi/main/MainWindow.java:522
 msgid "Unknown error prevented opening that project"
 msgstr "未知错误阻止打开项目 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:657
+#: Miradi/source/org/miradi/main/MainWindow.java:656
+msgid "Active Diagram Layers: %s"
+msgstr ""
+
+#: Miradi/source/org/miradi/main/MainWindow.java:681
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:707
+#: Miradi/source/org/miradi/main/MainWindow.java:731
 msgid "WARNING: Project end date before start date."
 msgstr "警告：项目结束日期在起始日期之前 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:822
+#: Miradi/source/org/miradi/main/MainWindow.java:846
 msgid "Unable to save preferences"
 msgstr "无法保存优先选项 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1033
+#: Miradi/source/org/miradi/main/MainWindow.java:1057
 msgid "Unable to launch external web browser"
 msgstr "无法运行外部网页浏览器 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1049
+#: Miradi/source/org/miradi/main/MainWindow.java:1073
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
