@@ -82,8 +82,8 @@ public class IconManager
 		addIcon(new FundingSourceIcon());
 		addIcon(new ExpenseAssignmentIcon());
 		addIcon(new AssignmentIcon());
-		addResourceIcon(COLLAPSE_ICON_FILE_NAME);
-		addResourceIcon(EXPAND_ICON_FILE_NAME);
+		addResourceImageIcon(COLLAPSE_ICON_FILE_NAME);
+		addResourceImageIcon(EXPAND_ICON_FILE_NAME);
 	}
 	
 	private static void addIcon(Icon icon)
@@ -91,7 +91,7 @@ public class IconManager
 		iconMap.put(icon.getClass().getSimpleName(), icon);
 	}
 	
-	private static void addResourceIcon(String iconFileName)
+	private static void addResourceImageIcon(String iconFileName)
 	{
 		iconMap.put(iconFileName, new MiradiResourceImageIcon(iconFileName));
 	}
