@@ -319,7 +319,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 		getContentPane().add(toolBarBox, BorderLayout.BEFORE_FIRST_LINE);
 		getContentPane().add(spliterPane, BorderLayout.CENTER);
-		getContentPane().add(mainStatusBar, BorderLayout.AFTER_LAST_LINE);
+		getContentPane().add(getMainStatusBar(), BorderLayout.AFTER_LAST_LINE);
 	}
 	
 	public void forceViewSplitterToMiddle()
@@ -560,7 +560,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		getWizardManager().setOverViewStep(NoProjectView.getViewName());
 
 		updateTitle();
-		mainStatusBar.clear();
+		getMainStatusBar().clear();
 	}
 	
 	public void refreshWizard() throws Exception
@@ -651,7 +651,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	public void setStatusBarWarningMessage(String warningMessage)
 	{
-		mainStatusBar.setWarningStatus(warningMessage);
+		getMainStatusBar().setWarningStatus(warningMessage);
 	}
 	
 	public void updatePlanningDateRelatedStatus()
@@ -659,15 +659,15 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		try
 		{
 			if (hasNonMatchingFiscalYearStartMonth(getProject()))
-				mainStatusBar.setStatus(EAM.text("Existing data for a different fiscal year is being excluded"));
+				getMainStatusBar().setStatus(EAM.text("Existing data for a different fiscal year is being excluded"));
 			else if (isDataOutsideOfcurrentProjectDateRange())
-				mainStatusBar.setStatus(("WorkPlan/Financial data outside project begin/end dates will not be shown"));
+				getMainStatusBar().setStatus(("WorkPlan/Financial data outside project begin/end dates will not be shown"));
 			else
 				clearStatusBar();
 		}
 		catch (InvalidDateRangeException e)
 		{
-			mainStatusBar.setStatus(e.getMessage());
+			getMainStatusBar().setStatus(e.getMessage());
 			EAM.logException(e);
 		}
 		catch (Exception e)
@@ -694,7 +694,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		
 	public void clearStatusBar()
 	{
-		mainStatusBar.clear();
+		getMainStatusBar().clear();
+	}
+	
+	private MainStatusBar getMainStatusBar()
+	{
+		return mainStatusBar;
 	}
 
 	private boolean isDataOutsideOfcurrentProjectDateRange() throws InvalidDateRangeException
