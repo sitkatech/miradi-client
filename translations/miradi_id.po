@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-30 09:58-0500\n"
+"POT-Creation-Date: 2010-03-30 10:07-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -4276,10 +4276,18 @@ msgid "Creating group boxes..."
 msgstr ""
 
 #: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:296
+msgid "Preparing groups..."
+msgstr ""
+
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:312
 msgid "Updating locations..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:462
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:386
+msgid "Optimizing locations..."
+msgstr ""
+
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:474
 msgid "Extracting factors..."
 msgstr ""
 
