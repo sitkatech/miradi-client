@@ -560,7 +560,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		getWizardManager().setOverViewStep(NoProjectView.getViewName());
 
 		updateTitle();
-		mainStatusBar.setStatus("");
+		mainStatusBar.clear();
 	}
 	
 	public void refreshWizard() throws Exception
