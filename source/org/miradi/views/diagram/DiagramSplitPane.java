@@ -419,7 +419,11 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 	
 	private void updateStatusBar()
 	{
-		getMainWindow().updateDiagramRelatedStatus(getCurrentDiagramComponent().getDiagramObject().getSelectedTaggedObjectSetRefs());
+		ORefList activeTaggedObjectSetRefs = getCurrentDiagramComponent().getDiagramObject().getSelectedTaggedObjectSetRefs();
+		if (activeTaggedObjectSetRefs.hasData())
+			getMainWindow().setStatusBarWarningMessage(EAM.substitute(EAM.text("Active Diagram Layers Count: %s"), Integer.toString(activeTaggedObjectSetRefs.size())));
+		else
+			getMainWindow().clearStatusBar();
 	}
 
 	private void handleDiagramZooming(CommandSetObjectData commandSetObjectData)
