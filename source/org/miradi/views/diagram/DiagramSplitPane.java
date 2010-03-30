@@ -327,7 +327,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 			// Cleaner fixes ran into strange problems where Windows and Linux systems
 			// behaved differently. SEE ALSO DiagramView.getPrintableComponent()
 			diagramComponent.clearSelection();
-			udpateStatusBar();
+			updateStatusBar();
 		}
 		catch (Exception e)
 		{
@@ -414,10 +414,10 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 			return;
 		
 		if (commandSetObjectData.isTag(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS))
-			udpateStatusBar();
+			updateStatusBar();
 	}
 	
-	private void udpateStatusBar()
+	private void updateStatusBar()
 	{
 		getMainWindow().updateDiagramRelatedStatus(getCurrentDiagramComponent().getDiagramObject().getSelectedTaggedObjectSetRefs());
 	}
