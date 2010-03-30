@@ -47,7 +47,8 @@ public class IconManager
 	{
 		iconMap = new HashMap();
 		
-		addIcon(new WarningIcon());		
+		addIcon(new WarningIcon());
+		addIcon(new CancelIcon());
 	}
 	
 	private static void addIcon(Icon icon)
@@ -312,9 +313,7 @@ public class IconManager
 
 	public static Icon getCancelIcon()
 	{
-		if(cancelIcon == null)
-			cancelIcon = new CancelIcon();
-		return new CancelIcon();
+		return getIcon(CancelIcon.class);
 	}
 
 	private static Icon expandIcon;
@@ -322,6 +321,5 @@ public class IconManager
 	private static Icon resourceIcon;
 	private static Icon deleteIcon;
 	private static Icon strategicPlanIcon;
-	private static Icon cancelIcon;
 	private static HashMap<String, Icon> iconMap;
 }
