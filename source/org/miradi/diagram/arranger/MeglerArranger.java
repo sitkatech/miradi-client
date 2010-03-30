@@ -295,12 +295,16 @@ public class MeglerArranger
 	{
 		progressMeter.setStatusMessage(EAM.text("Updating locations..."));
 
+		final int steps = 8;
+		int step = 0;
+
+		progressMeter.updateProgressMeter(step++, steps);
 		Vector<DiagramFactorClump> strategyClumps = buildClumps(strategies);
+		progressMeter.updateProgressMeter(step++, steps);
 		Vector<DiagramFactorClump> threatClumps = buildClumps(threats);
+		progressMeter.updateProgressMeter(step++, steps);
 		Vector<DiagramFactorClump> targetClumps = buildClumps(targets);
 
-		final int steps = 5;
-		int step = 0;
 		progressMeter.updateProgressMeter(step++, steps);
 		rearrangeClumps(strategyClumps, threatClumps, targetClumps);
 		
