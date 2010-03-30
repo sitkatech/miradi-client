@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -32,6 +33,7 @@ abstract public class AbstractFactorBubbleVisibilityPanel extends ObjectDataInpu
 	{
 		super(mainWindow.getProject(), objectType);
 		
+		setLayout(new OneColumnGridLayout());
 		explanationLabel = new PanelTitleLabel(getExplanationMessage());
 		bubbleButtonPanel = new TwoColumnPanel();
 		
