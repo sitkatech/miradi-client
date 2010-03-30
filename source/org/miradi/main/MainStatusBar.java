@@ -24,6 +24,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.icons.WarningIcon;
 
 public class MainStatusBar extends JPanel
 {
@@ -47,6 +48,18 @@ public class MainStatusBar extends JPanel
 	public void setStatus(String text)
 	{
 		statusSummary.setText(text);
+	}
+	
+	public void setWarningStatus(String warningMessage)
+	{
+		statusSummary.setText(warningMessage);
+		statusSummary.setIcon(new WarningIcon());
+	}
+	
+	public void clear()
+	{
+		statusSummary.setText("");
+		statusSummary.setIcon(null);
 	}
 
 	private final String STATUS_READY = EAM.text("Status|Ready");

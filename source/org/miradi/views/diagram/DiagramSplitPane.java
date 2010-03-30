@@ -327,6 +327,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 			// Cleaner fixes ran into strange problems where Windows and Linux systems
 			// behaved differently. SEE ALSO DiagramView.getPrintableComponent()
 			diagramComponent.clearSelection();
+			udpateStatusBar();
 		}
 		catch (Exception e)
 		{
@@ -337,7 +338,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 									 "make any changes to this project until this problem has been resolved."));
 		}		
 	}
-		
+
 	public void setCurrentDiagramObjectRef(ORef currentDiagramObjectRef)
 	{
 		currentRef = currentDiagramObjectRef;
@@ -404,6 +405,21 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 
 		handleGroupBoxTypes(commandSetObjectData);
 		handleDiagramZooming(commandSetObjectData);
+		handleTaggedObjectSets(commandSetObjectData);
+	}
+
+	private void handleTaggedObjectSets(CommandSetObjectData commandSetObjectData)
+	{
+		if (getCurrentDiagramComponent() == null)
+			return;
+		
+		if (commandSetObjectData.isTag(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS))
+			udpateStatusBar();
+	}
+	
+	private void udpateStatusBar()
+	{
+		getMainWindow().updateDiagramRelatedStatus(getCurrentDiagramComponent().getDiagramObject().getSelectedTaggedObjectSetRefs());
 	}
 
 	private void handleDiagramZooming(CommandSetObjectData commandSetObjectData)
