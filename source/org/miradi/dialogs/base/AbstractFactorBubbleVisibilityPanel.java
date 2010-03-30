@@ -43,7 +43,6 @@ abstract public class AbstractFactorBubbleVisibilityPanel extends ObjectDataInpu
 		add(explanationLabel);
 		add(bubbleButtonPanel);
 		
-		updateButtonsPanel();
 		updateFieldsFromProject();
 	}
 	
