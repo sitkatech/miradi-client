@@ -91,28 +91,32 @@ public class MeglerArranger
 
 		unlinked = new Vector<DiagramFactor>();
 
-		progressMeter.updateProgressMeter(0, 3);
+		final int steps = 3;
+		int step = 0;
+		progressMeter.updateProgressMeter(step++, steps);
 		unlinked.addAll(extractUnlinkedDiagramFactors(strategies));
-		progressMeter.updateProgressMeter(1, 3);
+		progressMeter.updateProgressMeter(step++, steps);
 		unlinked.addAll(extractUnlinkedDiagramFactors(threats));
-		progressMeter.updateProgressMeter(2, 3);
+		progressMeter.updateProgressMeter(step++, steps);
 		unlinked.addAll(extractUnlinkedDiagramFactors(targets));
-		progressMeter.updateProgressMeter(3, 3);
+		progressMeter.updateProgressMeter(step++, steps);
 	}
 	
 	private void createGroupBoxes() throws Exception
 	{
 		progressMeter.setStatusMessage(EAM.text("Creating group boxes..."));
 
-		progressMeter.updateProgressMeter(0, 4);
+		final int steps = 4;
+		int step = 0;
+		progressMeter.updateProgressMeter(step++, steps);
 		createGroupBoxes(targets, FactorLink.FROM, Cause.getObjectType());
-		progressMeter.updateProgressMeter(1, 4);
+		progressMeter.updateProgressMeter(step++, steps);
 		createGroupBoxes(threats, FactorLink.TO, Target.getObjectType());
-		progressMeter.updateProgressMeter(2, 4);
+		progressMeter.updateProgressMeter(step++, steps);
 		createGroupBoxes(threats, FactorLink.FROM, Strategy.getObjectType());
-		progressMeter.updateProgressMeter(3, 4);
+		progressMeter.updateProgressMeter(step++, steps);
 		createGroupBoxes(strategies, FactorLink.TO, Cause.getObjectType());
-		progressMeter.updateProgressMeter(4, 4);
+		progressMeter.updateProgressMeter(step++, steps);
 	}
 
 	private void createGroupBoxes(Vector<DiagramFactor> diagramFactorsToGroup, int direction, int objectTypeInThatDirection) throws Exception
@@ -294,19 +298,21 @@ public class MeglerArranger
 		Vector<DiagramFactorClump> strategyClumps = buildClumps(strategies);
 		Vector<DiagramFactorClump> threatClumps = buildClumps(threats);
 		Vector<DiagramFactorClump> targetClumps = buildClumps(targets);
-		
-		progressMeter.updateProgressMeter(0, 5);
+
+		final int steps = 5;
+		int step = 0;
+		progressMeter.updateProgressMeter(step++, steps);
 		rearrangeClumps(strategyClumps, threatClumps, targetClumps);
 		
-		progressMeter.updateProgressMeter(1, 5);
+		progressMeter.updateProgressMeter(step++, steps);
 		moveFactorsToFinalLocations(unlinked, UNLINKED_COLUMN_X, TOP_Y);
-		progressMeter.updateProgressMeter(2, 5);
+		progressMeter.updateProgressMeter(step++, steps);
 		moveFactorClumpsToFinalLocations(targetClumps, TARGET_COLUMN_X, TOP_Y);
-		progressMeter.updateProgressMeter(3, 5);
+		progressMeter.updateProgressMeter(step++, steps);
 		moveFactorClumpsToFinalLocations(threatClumps, THREAT_COLUMN_X, TOP_Y);
-		progressMeter.updateProgressMeter(4, 5);
+		progressMeter.updateProgressMeter(step++, steps);
 		moveFactorClumpsToFinalLocations(strategyClumps, STRATEGY_COLUMN_X, TOP_Y);
-		progressMeter.updateProgressMeter(5, 5);
+		progressMeter.updateProgressMeter(step++, steps);
 	}
 
 	private Vector<DiagramFactorClump> buildClumps(Vector<DiagramFactor> diagramFactors)
