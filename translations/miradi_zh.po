@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-30 09:40-0500\n"
+"POT-Creation-Date: 2010-03-30 09:55-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4055,15 +4055,15 @@ msgstr ""
 msgid "Ignoring unlinked factors..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:105
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:107
 msgid "Creating group boxes..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:292
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:296
 msgid "Updating locations..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:452
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:458
 msgid "Extracting factors..."
 msgstr ""
 
