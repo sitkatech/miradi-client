@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-30 09:35-0500\n"
+"POT-Creation-Date: 2010-03-30 09:40-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -4436,19 +4436,19 @@ msgstr "Un error desconocido impidió que se abriera ese proyecto."
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:712
+#: Miradi/source/org/miradi/main/MainWindow.java:717
 msgid "WARNING: Project end date before start date."
 msgstr "ADVERTENCIA: Fecha de fin del proyecto anterior a la fecha de inicio"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:827
+#: Miradi/source/org/miradi/main/MainWindow.java:832
 msgid "Unable to save preferences"
 msgstr "No se pudieron grabar las preferencias."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1038
+#: Miradi/source/org/miradi/main/MainWindow.java:1043
 msgid "Unable to launch external web browser"
 msgstr "No se pudo iniciar el navegador web externo."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1054
+#: Miradi/source/org/miradi/main/MainWindow.java:1059
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
