@@ -198,57 +198,57 @@ public class IconManager
 		return getTaskIcon();
 	}
 	
-	private static ContributingFactorIcon getContributingFactorIcon()
+	private static Icon getContributingFactorIcon()
 	{
 		return new ContributingFactorIcon();
 	}
 	
-	private static HumanWelfareTargetIcon getHumanWelfareTargetIcon()
+	private static Icon getHumanWelfareTargetIcon()
 	{
 		return new HumanWelfareTargetIcon();
 	}
 
-	private static StressIcon getStressIcon()
+	private static Icon getStressIcon()
 	{
 		return new StressIcon();
 	}
 
-	private static GroupBoxIcon getGroupBoxIcon()
+	private static Icon getGroupBoxIcon()
 	{
 		return new GroupBoxIcon();
 	}
 
-	private static TextBoxIcon getTextBoxIcon()
+	private static Icon getTextBoxIcon()
 	{
 		return new TextBoxIcon();
 	}
 
-	private static ThreatReductionResultIcon getThreatReductionResultIcon()
+	private static Icon getThreatReductionResultIcon()
 	{
 		return new ThreatReductionResultIcon();
 	}
 
-	private static IntermediateResultIcon getIntermediateResultIcon()
+	private static Icon getIntermediateResultIcon()
 	{
 		return new IntermediateResultIcon();
 	}
 	
-	private static AccountingCodeIcon getAccountingCodeIcon()
+	private static Icon getAccountingCodeIcon()
 	{
 		return new AccountingCodeIcon();
 	}
 
-	private static FundingSourceIcon getFundingSourceIcon()
+	private static Icon getFundingSourceIcon()
 	{
 		return new FundingSourceIcon();
 	}
 
-	private static ExpenseAssignmentIcon getExpenseIcon()
+	private static Icon getExpenseIcon()
 	{
 		return new ExpenseAssignmentIcon();
 	}
 
-	private static AssignmentIcon getAssignmentIcon()
+	private static Icon getAssignmentIcon()
 	{
 		return new AssignmentIcon();
 	}
