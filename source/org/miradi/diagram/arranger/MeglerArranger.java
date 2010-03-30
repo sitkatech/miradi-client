@@ -372,12 +372,12 @@ public class MeglerArranger
 	
 	private void rearrangeClumps(Vector<DiagramFactorClump> strategyClumps, Vector<DiagramFactorClump> threatClumps, Vector<DiagramFactorClump> targetClumps)
 	{
-		progressMeter.setStatusMessage(EAM.text("Optimizing locations..."), threatClumps.size());
 
 		Vector<DiagramFactorClump> arrangedStrategyClumps = new Vector<DiagramFactorClump>();
 		Vector<DiagramFactorClump> arrangedThreatClumps = new Vector<DiagramFactorClump>();
 		Vector<DiagramFactorClump> arrangedTargetClumps = new Vector<DiagramFactorClump>();
 		
+		progressMeter.setStatusMessage(EAM.text("Arranging Threats..."), threatClumps.size());
 		while(threatClumps.size() > 0)
 		{
 			DiagramFactorClump mostActiveThreatClump = findMostActiveClump(threatClumps);
@@ -385,8 +385,20 @@ public class MeglerArranger
 			arrangedThreatClumps.add(mostActiveThreatClump);
 			threatClumps.remove(mostActiveThreatClump);
 
-			addRelatedToArrangedList(arrangedStrategyClumps, strategyClumps, mostActiveThreatClump, FactorLink.FROM);
-			addRelatedToArrangedList(arrangedTargetClumps, targetClumps, mostActiveThreatClump, FactorLink.TO);
+			progressMeter.incrementProgress();
+		}
+		
+		progressMeter.setStatusMessage(EAM.text("Arranging Targets..."), threatClumps.size());
+		for(DiagramFactorClump diagramFactorClump : arrangedThreatClumps)
+		{
+			addRelatedToArrangedList(arrangedTargetClumps, targetClumps, diagramFactorClump, FactorLink.TO);
+			progressMeter.incrementProgress();
+		}
+		
+		progressMeter.setStatusMessage(EAM.text("Arranging Strategies..."), threatClumps.size());
+		for(DiagramFactorClump diagramFactorClump : arrangedThreatClumps)
+		{
+			addRelatedToArrangedList(arrangedStrategyClumps, strategyClumps, diagramFactorClump, FactorLink.FROM);
 			progressMeter.incrementProgress();
 		}
 		
