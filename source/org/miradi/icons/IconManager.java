@@ -277,6 +277,11 @@ public class IconManager
 			strategicPlanIcon = new StrategicPlanIcon();
 		return strategicPlanIcon;
 	}
+	
+	public static Icon getWarningIcon()
+	{
+		return new WarningIcon();
+	}
 
 	public static Icon getCancelIcon()
 	{
