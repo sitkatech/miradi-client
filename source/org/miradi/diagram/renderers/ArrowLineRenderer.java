@@ -67,6 +67,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 	{
 		//NOTE: This does not care about the actual shape but just the bounds.
 		Shape shape = createShapeWithRoundedCorners();
+		// TODO: Should handle null return here (saw it in one odd case)
 		Rectangle2D shapeBounds = shape.getBounds2D();
 		clearViewShape();
 		
