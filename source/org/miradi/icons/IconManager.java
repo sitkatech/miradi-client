@@ -82,6 +82,8 @@ public class IconManager
 		addIcon(new FundingSourceIcon());
 		addIcon(new ExpenseAssignmentIcon());
 		addIcon(new AssignmentIcon());
+		addResourceIcon(COLLAPSE_ICON_FILE_NAME);
+		addResourceIcon(EXPAND_ICON_FILE_NAME);
 	}
 	
 	private static void addIcon(Icon icon)
@@ -89,9 +91,18 @@ public class IconManager
 		iconMap.put(icon.getClass().getSimpleName(), icon);
 	}
 	
+	private static void addResourceIcon(String iconFileName)
+	{
+		iconMap.put(iconFileName, new MiradiResourceImageIcon(iconFileName));
+	}
+	
 	private static Icon getIcon(Class iconClass)
 	{
-		String iconName = iconClass.getSimpleName();
+		return getIcon(iconClass.getSimpleName());
+	}
+
+	private static Icon getIcon(String iconName)
+	{
 		if(iconMap == null)
 			initialize();
 		
@@ -361,16 +372,12 @@ public class IconManager
 
 	public static Icon getExpandIcon()
 	{
-		if(expandIcon == null)
-			expandIcon = new MiradiResourceImageIcon(EXPAND_ICON_FILE_NAME);
-		return expandIcon;
+		return getIcon(EXPAND_ICON_FILE_NAME);
 	}
 
 	public static Icon getCollapseIcon()
 	{
-		if(collapseIcon == null)
-			collapseIcon = new MiradiResourceImageIcon(COLLAPSE_ICON_FILE_NAME);
-		return collapseIcon;
+		return getIcon(COLLAPSE_ICON_FILE_NAME);
 	}
 	
 	public static Icon getResourceIcon()
@@ -398,8 +405,6 @@ public class IconManager
 		return getIcon(CancelIcon.class);
 	}
 
-	private static Icon expandIcon;
-	private static Icon collapseIcon;
 	private static HashMap<String, Icon> iconMap;
 	private static final String EXPAND_ICON_FILE_NAME = "icons/expand.png";
 	private static final String COLLAPSE_ICON_FILE_NAME = "icons/collapse.png";
