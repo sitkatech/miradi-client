@@ -132,19 +132,19 @@ public class IconManager
 			return getResultsChainIcon();
 		
 		if (ResourceAssignment.is(type))
-			return new AssignmentIcon();
+			return getAssignmentIcon();
 		
 		if (ExpenseAssignment.is(type))
-			return new ExpenseAssignmentIcon();
+			return getExpenseIcon();
 		
 		if (ProjectResource.is(type))
 			return getResourceIcon();
 		
 		if (FundingSource.is(type))
-			return new FundingSourceIcon();
+			return getFundingSourceIcon();
 		
 		if (AccountingCode.is(type))
-			return new AccountingCodeIcon();
+			return getAccountingCodeIcon();
 		
 		throw new RuntimeException("Could not find icon for type:" + type);
 	}
@@ -164,25 +164,25 @@ public class IconManager
 			return getTargetIcon();
 		
 		if (factor.isStress())
-			return new StressIcon();
+			return getStressIcon();
 		
 		if (factor.isActivity())
 			return getActivityIcon();
 		
 		if (factor.isIntermediateResult())
-			return new IntermediateResultIcon();
+			return getIntermediateResultIcon();
 		
 		if (factor.isThreatReductionResult())
-			return new ThreatReductionResultIcon();
+			return getThreatReductionResultIcon();
 		
 		if (factor.isTextBox())
-			return new TextBoxIcon();
+			return getTextBoxIcon();
 		
 		if (factor.isGroupBox())
-			return new GroupBoxIcon();
+			return getGroupBoxIcon();
 		
 		if (factor.isHumanWelfareTarget())
-			return new HumanWelfareTargetIcon();	
+			return getHumanWelfareTargetIcon();	
 
 		throw new RuntimeException("type is factor but there is no icon for it was found:"  + factor.getType());
 	}
@@ -196,6 +196,56 @@ public class IconManager
 			return getActivityIcon();
 		
 		return getTaskIcon();
+	}
+	
+	private static HumanWelfareTargetIcon getHumanWelfareTargetIcon()
+	{
+		return new HumanWelfareTargetIcon();
+	}
+
+	private static StressIcon getStressIcon()
+	{
+		return new StressIcon();
+	}
+
+	private static GroupBoxIcon getGroupBoxIcon()
+	{
+		return new GroupBoxIcon();
+	}
+
+	private static TextBoxIcon getTextBoxIcon()
+	{
+		return new TextBoxIcon();
+	}
+
+	private static ThreatReductionResultIcon getThreatReductionResultIcon()
+	{
+		return new ThreatReductionResultIcon();
+	}
+
+	private static IntermediateResultIcon getIntermediateResultIcon()
+	{
+		return new IntermediateResultIcon();
+	}
+	
+	private static AccountingCodeIcon getAccountingCodeIcon()
+	{
+		return new AccountingCodeIcon();
+	}
+
+	private static FundingSourceIcon getFundingSourceIcon()
+	{
+		return new FundingSourceIcon();
+	}
+
+	private static ExpenseAssignmentIcon getExpenseIcon()
+	{
+		return new ExpenseAssignmentIcon();
+	}
+
+	private static AssignmentIcon getAssignmentIcon()
+	{
+		return new AssignmentIcon();
 	}
 	
 	public static Icon getKeyEcologicalAttributeIcon()
