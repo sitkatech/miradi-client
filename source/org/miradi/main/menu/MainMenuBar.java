@@ -323,10 +323,6 @@ public class MainMenuBar extends JMenuBar
 	{
 		JMenu menu = createEmptyActionsMenu();
 		
-		addMenuItem(actions, menu, ActionWorkPlanBudgetColumnsEditor.class);
-		addMenuItem(actions, menu, ActionFilterWorkPlanByProjectResource.class);
-		
-		menu.addSeparator();
 		addMenuItem(actions, menu, ActionTreeCreateActivity.class);
 		addMenuItem(actions, menu, ActionTreeShareActivity.class);
 
@@ -337,10 +333,6 @@ public class MainMenuBar extends JMenuBar
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionCreateChildTask.class);
 		addMenuItem(actions, menu, ActionCreateSameLevelTask.class);
-		
-		menu.addSeparator();
-		addMenuItem(actions, menu, ActionExpandAllRows.class);
-		addMenuItem(actions, menu, ActionCollapseAllRows.class);
 		
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionTreeNodeUp.class);
@@ -456,12 +448,16 @@ public class MainMenuBar extends JMenuBar
 			addMenuItem(actions, menu, ActionShowFullModelMode.class, KeyEvent.VK_F);
 		}
 		
-		if(isPlanningView() || isViabilityView())
+		if(isPlanningView() || isViabilityView() || isWorkPlanView())
 		{
 			addMenuItem(actions, menu, ActionExpandAllRows.class);
 			addMenuItem(actions, menu, ActionCollapseAllRows.class);
 		}
-		
+		if(isWorkPlanView())
+		{
+			addMenuItem(actions, menu, ActionWorkPlanBudgetColumnsEditor.class);
+			addMenuItem(actions, menu, ActionFilterWorkPlanByProjectResource.class);
+		}
 		if (isViabilityView())
 		{
 			addMenuItem(actions, menu, ActionExpandToTarget.class);
