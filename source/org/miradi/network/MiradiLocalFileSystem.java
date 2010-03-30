@@ -161,7 +161,7 @@ public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 			return;
 		
 		if(!doesProjectDirectoryExist(projectName))
-			throw new FileNotFoundException();
+			throw new FileNotFoundException("No project directory: " + projectPath(projectName));
 		
 		File path = filePath(projectName, file);
 		path.getParentFile().mkdirs();
