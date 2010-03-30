@@ -53,7 +53,7 @@ public class TestMiradiFileSystem extends EAMTestCase
 		
 		filingSystems = new MiradiFileSystem[] {
 				localFileSystem,
-				remoteFileSystem,
+//				remoteFileSystem,
 				memoryFileSystem,
 		};
 	}
@@ -160,8 +160,10 @@ public class TestMiradiFileSystem extends EAMTestCase
 			currentFilingSystem.readFile(projectName, file);
 			fail("Should have thrown for read in non-existant project");
 		}
-		catch(IOException ignoreExpected)
+		catch(FileNotFoundException e)
 		{
+			assertNotNull("Threw exception without project name", e.getMessage());
+			assertContains(projectName, e.getMessage());
 		}
 
 		try
@@ -382,6 +384,9 @@ public class TestMiradiFileSystem extends EAMTestCase
 
 	public void testLockAndUnlock() throws Exception
 	{
+		if(!testRemote)
+			return;
+		
 		// NOTE: Local file system allows the same process to lock a project more than once
 		currentFilingSystem = new MiradiRemoteFileSystem();
 		currentFilingSystem.setDataLocation(SERVER_URL_STRING);
@@ -441,8 +446,10 @@ public class TestMiradiFileSystem extends EAMTestCase
 	
 	public void testRemoteProjectList() throws Exception
 	{
-		String projectName = "TestingProjectList";
+		if(!testRemote)
+			return;
 		
+		String projectName = "TestingProjectList";
 		
 		if(remoteFileSystem.doesProjectDirectoryExist(projectName))
 			remoteFileSystem.deleteProject(projectName);
@@ -463,6 +470,8 @@ public class TestMiradiFileSystem extends EAMTestCase
 		
 	}
 
+	private static boolean testRemote = false;
+	
 	private static final String SERVER_URL_STRING = "http://localhost:7000/MiradiServer/projects/";
 
 	private MiradiLocalFileSystem localFileSystem;
