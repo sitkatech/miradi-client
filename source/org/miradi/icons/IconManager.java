@@ -155,7 +155,7 @@ public class IconManager
 			return getThreatIcon();
 		
 		if (factor.isContributingFactor())
-			return new ContributingFactorIcon();
+			return getContributingFactorIcon();
 		
 		if (factor.isStrategy())
 			return getStrategyIcon();
@@ -196,6 +196,11 @@ public class IconManager
 			return getActivityIcon();
 		
 		return getTaskIcon();
+	}
+	
+	private static ContributingFactorIcon getContributingFactorIcon()
+	{
+		return new ContributingFactorIcon();
 	}
 	
 	private static HumanWelfareTargetIcon getHumanWelfareTargetIcon()
