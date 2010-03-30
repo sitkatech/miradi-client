@@ -277,14 +277,14 @@ public class IconManager
 	public static Icon getExpandIcon()
 	{
 		if(expandIcon == null)
-			expandIcon = new MiradiResourceImageIcon("icons/expand.png");
+			expandIcon = new MiradiResourceImageIcon(EXPAND_ICON_FILE_NAME);
 		return expandIcon;
 	}
 
 	public static Icon getCollapseIcon()
 	{
 		if(collapseIcon == null)
-			collapseIcon = new MiradiResourceImageIcon("icons/collapse.png");
+			collapseIcon = new MiradiResourceImageIcon(COLLAPSE_ICON_FILE_NAME);
 		return collapseIcon;
 	}
 	
@@ -316,4 +316,6 @@ public class IconManager
 	private static Icon expandIcon;
 	private static Icon collapseIcon;
 	private static HashMap<String, Icon> iconMap;
+	private static final String EXPAND_ICON_FILE_NAME = "icons/expand.png";
+	private static final String COLLAPSE_ICON_FILE_NAME = "icons/collapse.png";
 }
