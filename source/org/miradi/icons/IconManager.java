@@ -158,16 +158,16 @@ public class IconManager
 			return new ContributingFactorIcon();
 		
 		if (factor.isStrategy())
-			return new StrategyIcon();
+			return getStrategyIcon();
 		
 		if (factor.isTarget())
-			return new TargetIcon();
+			return getTargetIcon();
 		
 		if (factor.isStress())
 			return new StressIcon();
 		
 		if (factor.isActivity())
-			return new ActivityIcon();
+			return getActivityIcon();
 		
 		if (factor.isIntermediateResult())
 			return new IntermediateResultIcon();
