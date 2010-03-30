@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-30 11:06-0500\n"
+"POT-Creation-Date: 2010-03-30 12:17-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4124,7 +4124,7 @@ msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr ""
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:281
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:371
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:414
 msgid "Menu|Group Box"
 msgstr "组合框 \t\t"
 
@@ -4261,39 +4261,39 @@ msgstr "使用其它通信产品 \t\t"
 msgid "Document key results and lessons"
 msgstr "文档关键结果及教训 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:86
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:87
 msgid "MenuBar|File"
 msgstr "文件 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:109
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:110
 msgid "Menu|Export Current Project as..."
 msgstr "导出当前项目为... "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:130
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:131
 msgid "Menu|Export Current Page as..."
 msgstr "导出当前页面为... "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:143
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:144
 msgid "Menu|Import"
 msgstr "导入 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:160
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:161
 msgid "MenuBar|Edit"
 msgstr "编辑 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:227
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:231
 msgid "MenuBar|Actions"
 msgstr "动作 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:383
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
 msgid "MenuBar|View"
 msgstr "视图 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:442
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:485
 msgid "MenuBar|Step-by-Step"
 msgstr "一步一步 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:460
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:503
 msgid "MenuBar|Help"
 msgstr "帮助 \t\t"
 
