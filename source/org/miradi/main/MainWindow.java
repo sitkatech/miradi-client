@@ -64,6 +64,7 @@ import org.miradi.objecthelpers.TwoLevelEntry;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectRepairer;
 import org.miradi.questions.ChoiceItem;
@@ -649,6 +650,29 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return memoryStatistics;
 	}
 
+	public void updateDiagramRelatedStatus(ORefList taggedObjectSetRefs)
+	{
+		if (taggedObjectSetRefs.hasData())
+			mainStatusBar.setWarningStatus(EAM.substitute(EAM.text("Active Diagram Layers: %s"),getTurnedOnTaggedObjectSet(taggedObjectSetRefs)));
+		else
+			clearStatusBar();
+	}
+	
+	private String getTurnedOnTaggedObjectSet(ORefList taggedObjectSetRefs)
+	{
+		String turnedOnLayers = "";
+		for (int index = 0; index < taggedObjectSetRefs.size(); ++index)
+		{
+			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), taggedObjectSetRefs.get(index));
+			if (index > 0)
+				turnedOnLayers += "; ";
+			
+			turnedOnLayers += taggedObjectSet.combineShortLabelAndLabel();
+		}
+		
+		return turnedOnLayers;
+	}
+
 	public void updatePlanningDateRelatedStatus()
 	{
 		try
@@ -689,7 +713,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		
 	public void clearStatusBar()
 	{
-		mainStatusBar.setStatus("");
+		mainStatusBar.clear();
 	}
 
 	private boolean isDataOutsideOfcurrentProjectDateRange() throws InvalidDateRangeException

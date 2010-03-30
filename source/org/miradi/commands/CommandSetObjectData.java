@@ -211,6 +211,11 @@ public class CommandSetObjectData extends Command
 		if (!getObjectORef().equals(refToUse))
 			return false;
 		
+		return isTag(tagToUse);
+	}
+
+	public boolean isTag(String tagToUse)
+	{
 		return getFieldTag().equals(tagToUse);
 	}
 	
