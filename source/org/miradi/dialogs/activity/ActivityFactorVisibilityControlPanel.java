@@ -21,12 +21,12 @@ package org.miradi.dialogs.activity;
 
 import org.miradi.actions.ActionHideActivityBubble;
 import org.miradi.actions.ActionShowActivityBubble;
-import org.miradi.dialogs.base.AbstratFactorBubbleVisibilityPanel;
+import org.miradi.dialogs.base.AbstractFactorBubbleVisibilityPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
 
-public class ActivityFactorVisibilityControlPanel extends AbstratFactorBubbleVisibilityPanel
+public class ActivityFactorVisibilityControlPanel extends AbstractFactorBubbleVisibilityPanel
 {
 	public ActivityFactorVisibilityControlPanel(MainWindow mainWindow) throws Exception
 	{

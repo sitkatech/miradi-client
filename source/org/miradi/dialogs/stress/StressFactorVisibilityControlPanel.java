@@ -21,12 +21,12 @@ package org.miradi.dialogs.stress;
 
 import org.miradi.actions.ActionHideStressBubble;
 import org.miradi.actions.ActionShowStressBubble;
-import org.miradi.dialogs.base.AbstratFactorBubbleVisibilityPanel;
+import org.miradi.dialogs.base.AbstractFactorBubbleVisibilityPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
 
-public class StressFactorVisibilityControlPanel extends AbstratFactorBubbleVisibilityPanel
+public class StressFactorVisibilityControlPanel extends AbstractFactorBubbleVisibilityPanel
 {
 	public StressFactorVisibilityControlPanel(MainWindow mainWindow) throws Exception
 	{
