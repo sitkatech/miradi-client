@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-30 10:46-0500\n"
+"POT-Creation-Date: 2010-03-30 11:06-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -593,7 +593,7 @@ msgstr ""
 "和建议。我们建议您不要对该该项目做任何改动直到此问题解决为止。 \t\t"
 
 #: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:424
-msgid "Active Diagram Layers Count: %s"
+msgid "Not all factors are being shown because %s tag(s) are checked"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/CloneGoalDoer.java:33
