@@ -63,7 +63,7 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 
 	private boolean shouldAddFactorChild(Factor factor)
 	{
-		if (shouldIncludeAbstractTargetNode(factor))
+		if (AbstractTarget.isAbstractTarget(factor) && !shouldTargetsBeOnDiagramLevel())
 			return true;
 		
 		if (factor.isDirectThreat())
@@ -79,14 +79,6 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 			return true;
 		
 		return false;
-	}
-
-	private boolean shouldIncludeAbstractTargetNode(Factor factor)
-	{
-		if (!AbstractTarget.isAbstractTarget(factor))
-			return false;
-		
-		return !shouldTargetsBeOnDiagramLevel();
 	}
 
 	@Override
