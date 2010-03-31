@@ -37,7 +37,7 @@ public class TargetGoalNodeTreePositionQuestion extends StaticChoiceQuestion
 		};
 	}
 	
-	public static boolean shouldTargetsBeOnDiagramLevel(String code)
+	public static boolean putTargetsAtTopLevelOfTree(String code)
 	{
 		return code.equals(SAME_LEVEL_AS_DIAGRAM_OBJECTS_CODE);
 	}
