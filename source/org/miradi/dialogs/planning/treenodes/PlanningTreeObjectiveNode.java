@@ -35,6 +35,7 @@ public class PlanningTreeObjectiveNode extends PlanningTreeAbstractDesireNode
 		rebuild();
 	}
 
+	@Override
 	public BaseObject getObject()
 	{
 		return objective;
