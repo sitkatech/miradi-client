@@ -24,7 +24,6 @@ import org.miradi.main.MainWindow;
 
 public class ActionPreferences extends MainWindowAction
 {
-
 	public ActionPreferences(MainWindow mainWindow)
 	{
 		super(mainWindow, getLabel());
@@ -34,5 +33,4 @@ public class ActionPreferences extends MainWindowAction
 	{
 		return EAM.text("Action|Preferences");
 	}
-
 }
