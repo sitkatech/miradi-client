@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-31 15:32-0500\n"
+"POT-Creation-Date: 2010-03-31 15:35-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -3083,11 +3083,11 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/PlanningTreeTargetPositionQuestion.java:35
-msgid "Targets and Goals should appear under Results Chains"
+msgid "Targets within Diagrams"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/PlanningTreeTargetPositionQuestion.java:36
-msgid "Targets and Goals should not appear under Results Chains"
+msgid "Targets at top level"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/BudgetTimePeriodQuestion.java:34
@@ -8362,7 +8362,7 @@ msgstr ""
 msgid "FieldLabel|11.WorkPlanDiagramDataInclusion|Include Work Plan Data From"
 msgstr ""
 
-msgid "FieldLabel|11.PlanningTreeTargetNodePosition|Target Node Position"
+msgid "FieldLabel|11.PlanningTreeTargetNodePosition|Target Position in Trees"
 msgstr ""
 
 msgid "FieldLabel|12.ShortLabel|ID"
