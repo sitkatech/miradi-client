@@ -221,7 +221,7 @@ public class ProjectMetadata extends BaseObject
 		return DiagramObjectDataInclusionQuestion.shouldIncludeConceptualModelPage(workPlanDiagramDataInclusionCode.get());
 	}
 	
-	public boolean shouldTargetsBeOnDiagramLevel()
+	public boolean putTargetsAtTopLevelOfTree()
 	{
 		return TargetGoalNodeTreePositionQuestion.shouldTargetsBeOnDiagramLevel(targetAndGoalNodesPosition.get());
 	}
