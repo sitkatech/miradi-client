@@ -46,7 +46,7 @@ import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.FontSizeQuestion;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
-import org.miradi.questions.TargetGoalNodeTreePositionQuestion;
+import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.TargetModeQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
@@ -223,7 +223,7 @@ public class ProjectMetadata extends BaseObject
 	
 	public boolean putTargetsAtTopLevelOfTree()
 	{
-		return TargetGoalNodeTreePositionQuestion.putTargetsAtTopLevelOfTree(targetAndGoalNodesPosition.get());
+		return PlanningTreeTargetPositionQuestion.putTargetsAtTopLevelOfTree(targetAndGoalNodesPosition.get());
 	}
 	
 	public float getLongitudeAsFloat()
@@ -383,7 +383,7 @@ public class ProjectMetadata extends BaseObject
 		fiscalYearStart = new ChoiceData(TAG_FISCAL_YEAR_START, getQuestion(FiscalYearStartQuestion.class));
 		fullTimeEmployeeDaysPerYear = new NumberData(TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR);
 		quarterColumnsVisibility = new ChoiceData(TAG_QUARTER_COLUMNS_VISIBILITY, getQuestion(QuarterColumnsVisibilityQuestion.class));
-		targetAndGoalNodesPosition = new ChoiceData(TAG_TARGET_GOAL_NODES_POSITION, getQuestion(TargetGoalNodeTreePositionQuestion.class));
+		targetAndGoalNodesPosition = new ChoiceData(TAG_TARGET_GOAL_NODES_POSITION, getQuestion(PlanningTreeTargetPositionQuestion.class));
 		
 		latitude = new FloatData(TAG_PROJECT_LATITUDE);
 		longitude = new FloatData(TAG_PROJECT_LONGITUDE);

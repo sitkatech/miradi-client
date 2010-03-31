@@ -24,7 +24,7 @@ import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.questions.TargetGoalNodeTreePositionQuestion;
+import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 
 public class SummaryPlanningStrategicSubPanel extends ObjectDataInputPanel
 {
@@ -32,7 +32,7 @@ public class SummaryPlanningStrategicSubPanel extends ObjectDataInputPanel
 	{
 		super(mainWindowToUse.getProject(), mainWindowToUse.getProject().getMetadata().getRef());
 		
-		addRadioButtonFieldWithCustomLabel(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TARGET_GOAL_NODES_POSITION, getProject().getQuestion(TargetGoalNodeTreePositionQuestion.class), "");
+		addRadioButtonFieldWithCustomLabel(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TARGET_GOAL_NODES_POSITION, getProject().getQuestion(PlanningTreeTargetPositionQuestion.class), "");
 		
 		updateFieldsFromProject();
 	}
