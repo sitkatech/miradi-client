@@ -32,7 +32,7 @@ public class SummaryPlanningStrategicSubPanel extends ObjectDataInputPanel
 	{
 		super(mainWindowToUse.getProject(), mainWindowToUse.getProject().getMetadata().getRef());
 		
-		addRadioButtonFieldWithCustomLabel(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TARGET_GOAL_NODES_POSITION, getProject().getQuestion(PlanningTreeTargetPositionQuestion.class), "");
+		addRadioButtonFieldWithCustomLabel(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_PLANNING_TREE_TARGET_NODE_POSITION, getProject().getQuestion(PlanningTreeTargetPositionQuestion.class), "");
 		
 		updateFieldsFromProject();
 	}

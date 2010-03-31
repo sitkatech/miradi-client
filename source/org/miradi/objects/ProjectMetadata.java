@@ -383,7 +383,7 @@ public class ProjectMetadata extends BaseObject
 		fiscalYearStart = new ChoiceData(TAG_FISCAL_YEAR_START, getQuestion(FiscalYearStartQuestion.class));
 		fullTimeEmployeeDaysPerYear = new NumberData(TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR);
 		quarterColumnsVisibility = new ChoiceData(TAG_QUARTER_COLUMNS_VISIBILITY, getQuestion(QuarterColumnsVisibilityQuestion.class));
-		planningTreeTargetPosition = new ChoiceData(TAG_TARGET_GOAL_NODES_POSITION, getQuestion(PlanningTreeTargetPositionQuestion.class));
+		planningTreeTargetPosition = new ChoiceData(TAG_PLANNING_TREE_TARGET_NODE_POSITION, getQuestion(PlanningTreeTargetPositionQuestion.class));
 		
 		latitude = new FloatData(TAG_PROJECT_LATITUDE);
 		longitude = new FloatData(TAG_PROJECT_LONGITUDE);
@@ -435,7 +435,7 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_FISCAL_YEAR_START, fiscalYearStart);
 		addField(TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR, fullTimeEmployeeDaysPerYear);
 		addField(TAG_QUARTER_COLUMNS_VISIBILITY, quarterColumnsVisibility);
-		addField(TAG_TARGET_GOAL_NODES_POSITION, planningTreeTargetPosition);
+		addField(TAG_PLANNING_TREE_TARGET_NODE_POSITION, planningTreeTargetPosition);
 		addField(TAG_PROJECT_DESCRIPTION, projectDescription);
 		addField(TAG_PROJECT_URL, projectURL);
 		addField(TAG_PROJECT_AREA, projectArea);
@@ -525,7 +525,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_CURRENCY_SYMBOL = "CurrencySymbol";
 	public static final String TAG_FISCAL_YEAR_START = "FiscalYearStart";
 	public static final String TAG_QUARTER_COLUMNS_VISIBILITY = "QuarterColumnsVisibility";
-	public static final String TAG_TARGET_GOAL_NODES_POSITION = "TargetGoalNodesPosition";
+	public static final String TAG_PLANNING_TREE_TARGET_NODE_POSITION = "TargetGoalNodesPosition";
 	public static final String TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR = "FullTimeEmployeeDaysPerYear";
 	public static final String TAG_PROJECT_DESCRIPTION = "ProjectDescription";
 	public static final String TAG_PROJECT_URL = "ProjectURL";
