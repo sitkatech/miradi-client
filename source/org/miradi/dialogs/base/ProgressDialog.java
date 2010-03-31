@@ -56,8 +56,7 @@ public class ProgressDialog extends DialogWithDisposablePanel implements Progres
 	public void setStatusMessage(String translatedMessage, int stepCount)
 	{
 		progressPanel.setStatusMessage(translatedMessage, stepCount);
-		pack();
-		repaint();
+		invalidate();
 	}
 	
 	public void finished()
