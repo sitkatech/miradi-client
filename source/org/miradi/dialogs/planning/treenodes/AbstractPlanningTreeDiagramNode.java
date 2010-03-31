@@ -63,9 +63,22 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 
 	private boolean shouldFactorChild(Factor factor)
 	{
-		return shouldIncludeAbstractTargetNode(factor) || factor.isDirectThreat() || factor.isContributingFactor() ||  
-				factor.isThreatReductionResult() || 
-				factor.isIntermediateResult();
+		if (shouldIncludeAbstractTargetNode(factor))
+			return true;
+		
+		if (factor.isDirectThreat())
+			return true;
+		
+		if (factor.isContributingFactor())
+			return true;
+		
+		if (factor.isThreatReductionResult())
+			return true;
+		
+		if (factor.isIntermediateResult())
+			return true;
+		
+		return false;
 	}
 
 	private boolean shouldIncludeAbstractTargetNode(Factor factor)
