@@ -272,6 +272,11 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return null;
 	}
 	
+	protected boolean shouldTargetsBeOnDiagramLevel()
+	{
+		return getProject().getMetadata().shouldTargetsBeOnDiagramLevel();
+	}
+	
 	boolean shouldSortChildren()
 	{
 		return true;

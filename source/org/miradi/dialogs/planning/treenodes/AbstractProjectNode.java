@@ -20,12 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.treenodes;
 
+import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.icons.MiradiApplicationIcon;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -76,7 +78,51 @@ abstract public class AbstractProjectNode extends AbstractPlanningTreeNode
 		if (shouldIncludeResultsChain())
 			addResultsChainDiagrams();
 		
+		if (shouldTargetsBeOnDiagramLevel())
+			addTargetNodes();
+		
 		pruneUnwantedLayers(visibleRows);
+	}
+
+	private void addTargetNodes() throws Exception
+	{
+		ORefList targetRefs = getProject().getTargetPool().getORefList();
+		targetRefs.addAll(getProject().getHumanWelfareTargetPool().getORefList());
+		Vector<AbstractPlanningTreeNode> targetChildren = new Vector<AbstractPlanningTreeNode>();
+		for (int index = 0; index < targetRefs.size(); ++index)
+		{
+			ORef abstractTargetRef = targetRefs.get(index);
+			targetChildren.addAll(createTargetNodes(abstractTargetRef));
+		}
+		
+		addChildren(targetChildren);
+	}
+
+	private Vector<AbstractPlanningTreeNode> createTargetNodes(ORef abstractTargetRef) throws Exception
+	{
+		Vector<AbstractPlanningTreeNode> targetChildren = new Vector<AbstractPlanningTreeNode>();
+		HashSet<DiagramObject> containingDiagramObjects = getContainingDiagramObject(abstractTargetRef);
+		for(DiagramObject containingDiagramObject : containingDiagramObjects)
+		{
+			targetChildren.add(new PlanningTreeTargetNode(getProject(), containingDiagramObject, abstractTargetRef, getVisibleRows()));	
+		}
+		
+		return targetChildren;
+	}
+
+	private HashSet<DiagramObject> getContainingDiagramObject(ORef abstractTargetRef)
+	{
+		HashSet<DiagramObject> diagramObjects = new HashSet<DiagramObject>();
+		ORefList diagramObjectRefs = getProject().getConceptualModelDiagramPool().getORefList();
+		diagramObjectRefs.addAll(getProject().getResultsChainDiagramPool().getORefList());
+		for (int index = 0; index < diagramObjectRefs.size(); ++index)
+		{
+			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectRefs.get(index));
+			if (diagramObject.containsWrappedFactorRef(abstractTargetRef))
+				diagramObjects.add(diagramObject);
+		}
+		
+		return diagramObjects;
 	}
 
 	abstract protected boolean shouldIncludeResultsChain() throws Exception;
