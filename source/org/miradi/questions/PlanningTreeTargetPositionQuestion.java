@@ -32,7 +32,7 @@ public class PlanningTreeTargetPositionQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] getChoiceItems()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem(UNDER_DIAGRAM_OBJECTS_CODE, EAM.text("Targets and Goals should appear under Results Chains")),
+				new ChoiceItem(TARGET_NODE_CHILD_OF_DIAGRAM_OBJECT_CODE, EAM.text("Targets and Goals should appear under Results Chains")),
 				new ChoiceItem(TARGET_NODE_TOP_OF_PLANNING_TREE_CODE, EAM.text("Targets and Goals should not appear under Results Chains")),
 		};
 	}
@@ -42,6 +42,6 @@ public class PlanningTreeTargetPositionQuestion extends StaticChoiceQuestion
 		return code.equals(TARGET_NODE_TOP_OF_PLANNING_TREE_CODE);
 	}
 	
-	private static final String UNDER_DIAGRAM_OBJECTS_CODE = "";
+	private static final String TARGET_NODE_CHILD_OF_DIAGRAM_OBJECT_CODE = "";
 	private static final String TARGET_NODE_TOP_OF_PLANNING_TREE_CODE = "TargetNodeTopOfPlanningTree";
 }
