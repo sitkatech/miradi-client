@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-31 11:29-0500\n"
+"POT-Creation-Date: 2010-03-31 14:20-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -488,10 +488,14 @@ msgstr "Alcance y visión"
 msgid "Organization"
 msgstr "Organización"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:59
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:62
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:111
 msgid "Planning"
 msgstr "Planificación"
+
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningStrategicSubPanel.java:43
+msgid "SummaryPlanningStrategicSubPanel"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/SummaryView.java:160
 msgid "Work plan start date is before project start date"
@@ -3399,6 +3403,14 @@ msgstr "Otra "
 #: Miradi/source/org/miradi/questions/ResourceTypeQuestion.java:35
 msgid "Person"
 msgstr "Persona "
+
+#: Miradi/source/org/miradi/questions/TargetGoalNodeTreePositionQuestion.java:35
+msgid "Targets and Goals should appear under Results Chains"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/TargetGoalNodeTreePositionQuestion.java:36
+msgid "Targets and Goals should not appear under Results Chains"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:34
 msgid "Forest"
@@ -7239,7 +7251,7 @@ msgstr "la calificación diaria."
 msgid "Title|Measurement Properties"
 msgstr "Propiedades de la medición"
 
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:425
+#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:430
 msgid "This method is not responsible for creating task nodes."
 msgstr "Este método no es responsable de la creación de nodos de tarea. "
 
@@ -8348,6 +8360,9 @@ msgid "FieldLabel|11.QuarterColumnsVisibility|Quarter Column Visibility"
 msgstr ""
 
 msgid "FieldLabel|11.WorkPlanDiagramDataInclusion|Include Work Plan Data From"
+msgstr ""
+
+msgid "FieldLabel|11.TargetGoalNodesPosition|Target & Goal Level"
 msgstr ""
 
 msgid "FieldLabel|12.ShortLabel|ID"
