@@ -53,6 +53,7 @@ import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.PlanningPreferencesChangeHandler;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objectpools.AssignmentPool;
@@ -151,6 +152,9 @@ public class Project
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
 		enableThreatStressRatingEnsurer();
 		enableIsDoNothingCommandOptimization();
+		
+		planningPreferencesChangeHandler = new PlanningPreferencesChangeHandler(this);
+		planningPreferencesChangeHandler.enable();		
 
 		clear();
 	}
@@ -1393,6 +1397,7 @@ public class Project
 	private ProjectCalendar projectCalendar;
 	private ThreatStressRatingEnsurer threatStressRatingEnsurer;
 	private ProjectTotalCalculator projectTotalCalculator;
+	private PlanningPreferencesChangeHandler planningPreferencesChangeHandler;
 
 	// FIXME low: This should go away, but it's difficult
 	private String currentViewName;
