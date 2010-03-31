@@ -274,7 +274,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	
 	protected boolean shouldTargetsBeOnDiagramLevel()
 	{
-		return getProject().getMetadata().shouldTargetsBeOnDiagramLevel();
+		return getProject().getMetadata().putTargetsAtTopLevelOfTree();
 	}
 	
 	boolean shouldSortChildren()
