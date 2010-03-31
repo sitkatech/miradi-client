@@ -110,7 +110,7 @@ public class PasteDoer extends AbstractPasteDoer
 			return buttons[result];
 		}
 		
-		String[] buttons = {AS_COPY_BUTTON, AS_ALIAS_BUTTON, CANCEL_BUTTON};
+		String[] buttons = {AS_ALIAS_BUTTON, AS_COPY_BUTTON, CANCEL_BUTTON};
 		String title = EAM.text("Paste As...");
 		String[] body = {EAM.text("Select \"Shared\" to show the original factors again in this diagram. " +
 				"Edits to the pasted, shared factors will also affect the originals. " +
