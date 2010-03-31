@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-31 14:45-0500\n"
+"POT-Creation-Date: 2010-03-31 15:28-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -3082,6 +3082,14 @@ msgid ""
 "a threat can be restored.</html>"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/PlanningTreeTargetPositionQuestion.java:35
+msgid "Targets and Goals should appear under Results Chains"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/PlanningTreeTargetPositionQuestion.java:36
+msgid "Targets and Goals should not appear under Results Chains"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/BudgetTimePeriodQuestion.java:34
 msgid "By Quarter"
 msgstr "Por trimestre"
@@ -3403,14 +3411,6 @@ msgstr "Otra "
 #: Miradi/source/org/miradi/questions/ResourceTypeQuestion.java:35
 msgid "Person"
 msgstr "Persona "
-
-#: Miradi/source/org/miradi/questions/TargetGoalNodeTreePositionQuestion.java:35
-msgid "Targets and Goals should appear under Results Chains"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/TargetGoalNodeTreePositionQuestion.java:36
-msgid "Targets and Goals should not appear under Results Chains"
-msgstr ""
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:34
 msgid "Forest"
