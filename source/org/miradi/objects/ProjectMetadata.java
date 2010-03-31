@@ -46,6 +46,7 @@ import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.FontSizeQuestion;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
+import org.miradi.questions.TargetGoalNodeTreePositionQuestion;
 import org.miradi.questions.TargetModeQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
@@ -220,6 +221,11 @@ public class ProjectMetadata extends BaseObject
 		return DiagramObjectDataInclusionQuestion.shouldIncludeConceptualModelPage(workPlanDiagramDataInclusionCode.get());
 	}
 	
+	public boolean shouldTargetsBeOnDiagramLevel()
+	{
+		return TargetGoalNodeTreePositionQuestion.shouldTargetsBeOnDiagramLevel(targetAndGoalNodesPosition.get());
+	}
+	
 	public float getLongitudeAsFloat()
 	{
 		return longitude.asFloat();
@@ -377,6 +383,7 @@ public class ProjectMetadata extends BaseObject
 		fiscalYearStart = new ChoiceData(TAG_FISCAL_YEAR_START, getQuestion(FiscalYearStartQuestion.class));
 		fullTimeEmployeeDaysPerYear = new NumberData(TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR);
 		quarterColumnsVisibility = new ChoiceData(TAG_QUARTER_COLUMNS_VISIBILITY, getQuestion(QuarterColumnsVisibilityQuestion.class));
+		targetAndGoalNodesPosition = new ChoiceData(TAG_TARGET_GOAL_NODES_POSITION, getQuestion(TargetGoalNodeTreePositionQuestion.class));
 		
 		latitude = new FloatData(TAG_PROJECT_LATITUDE);
 		longitude = new FloatData(TAG_PROJECT_LONGITUDE);
@@ -428,6 +435,7 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_FISCAL_YEAR_START, fiscalYearStart);
 		addField(TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR, fullTimeEmployeeDaysPerYear);
 		addField(TAG_QUARTER_COLUMNS_VISIBILITY, quarterColumnsVisibility);
+		addField(TAG_TARGET_GOAL_NODES_POSITION, targetAndGoalNodesPosition);
 		addField(TAG_PROJECT_DESCRIPTION, projectDescription);
 		addField(TAG_PROJECT_URL, projectURL);
 		addField(TAG_PROJECT_AREA, projectArea);
@@ -517,6 +525,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_CURRENCY_SYMBOL = "CurrencySymbol";
 	public static final String TAG_FISCAL_YEAR_START = "FiscalYearStart";
 	public static final String TAG_QUARTER_COLUMNS_VISIBILITY = "QuarterColumnsVisibility";
+	public static final String TAG_TARGET_GOAL_NODES_POSITION = "TargetGoalNodesPosition";
 	public static final String TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR = "FullTimeEmployeeDaysPerYear";
 	public static final String TAG_PROJECT_DESCRIPTION = "ProjectDescription";
 	public static final String TAG_PROJECT_URL = "ProjectURL";
@@ -589,6 +598,7 @@ public class ProjectMetadata extends BaseObject
 	private ChoiceData fiscalYearStart;
 	private NumberData fullTimeEmployeeDaysPerYear;
 	private ChoiceData quarterColumnsVisibility;
+	private ChoiceData targetAndGoalNodesPosition;
 	private StringData projectDescription;
 	private StringData projectURL;
 	private StringData projectArea;

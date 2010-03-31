@@ -46,6 +46,9 @@ public class SummaryPlanningPanel extends ObjectDataInputPanelWithSections
 		SummaryPlanningFinancialSubPanel financialSubPanel = new SummaryPlanningFinancialSubPanel(mainWindowToUse);
 		addSubPanelWithTitledBorder(financialSubPanel);
 		
+		SummaryPlanningStrategicSubPanel strategicSubPanel = new SummaryPlanningStrategicSubPanel(getMainWindow());
+		addSubPanelWithoutTitledBorder(strategicSubPanel);
+		
 		updateFieldsFromProject();
 	}
 

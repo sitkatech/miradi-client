@@ -94,6 +94,7 @@ public class StaticQuestionManager
 		addQuestion(new SortDirectionQuestion());
 		addQuestion(new QuarterColumnsVisibilityQuestion());
 		addQuestion(new DiagramObjectDataInclusionQuestion());
+		addQuestion(new TargetGoalNodeTreePositionQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
