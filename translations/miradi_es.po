@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-31 09:40-0500\n"
+"POT-Creation-Date: 2010-03-31 11:29-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -7341,7 +7341,7 @@ msgstr "Propiedades de la actividad"
 msgid "Initializing..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:89
+#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:88
 msgid "Stop"
 msgstr ""
 
