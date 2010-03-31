@@ -46,7 +46,7 @@ public class PreferencesPopupDoer extends MainWindowDoer
 		}
 	}
 	
-	void showPreferencesDialog() throws Exception
+	private void showPreferencesDialog() throws Exception
 	{
 		PreferencesPanel preferencesPanel = new PreferencesPanel(getMainWindow());
 		PreferencesDialog dlg = new PreferencesDialog(getMainWindow(), preferencesPanel, "Miradi Preferences");
