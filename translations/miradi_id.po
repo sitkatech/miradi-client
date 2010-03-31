@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-31 08:26-0500\n"
+"POT-Creation-Date: 2010-03-31 09:34-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -651,11 +651,11 @@ msgstr "Sifat-sifat Faktor "
 msgid "Choose Stress to Create from"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:41
+#: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:46
 msgid "Label|New Scope Box"
 msgstr "Kotak Cakupan Baru "
 
-#: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:77
+#: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:82
 msgid "Project Scope"
 msgstr "Cakupan Proyek "
 
