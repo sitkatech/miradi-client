@@ -26,6 +26,7 @@ public class PreferencesDialog extends ModelessDialogWithClose
 	public PreferencesDialog(MainWindow mainWindowToUse, DisposablePanel disposablePanelToUse, String headingText)
 	{
 		super(mainWindowToUse, headingText);
+		
 		setScrollableMainPanel(disposablePanelToUse);
 	}
 	
@@ -33,6 +34,7 @@ public class PreferencesDialog extends ModelessDialogWithClose
 	public void dispose()
 	{
 		super.dispose();
+		
 		disposablePanel = null;
 	}
 	
