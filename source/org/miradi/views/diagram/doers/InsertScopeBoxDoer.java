@@ -67,7 +67,7 @@ public class InsertScopeBoxDoer extends InsertFactorDoer
 	{
 		String label = getProject().getMetadata().getShortProjectScope();
 		if (label.length() == 0)
-			return "";
+			return getInitialText();
 		
 		return EAM.text("Project Scope") + " :" + label;
 	}
