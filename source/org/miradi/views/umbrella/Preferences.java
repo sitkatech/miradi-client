@@ -27,11 +27,13 @@ import org.miradi.views.MainWindowDoer;
 
 public class Preferences extends MainWindowDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		return true;
 	}
 
+	@Override
 	public void doIt() throws CommandFailedException
 	{		
 		try
