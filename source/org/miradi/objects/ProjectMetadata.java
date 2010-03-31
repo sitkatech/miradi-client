@@ -525,7 +525,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_CURRENCY_SYMBOL = "CurrencySymbol";
 	public static final String TAG_FISCAL_YEAR_START = "FiscalYearStart";
 	public static final String TAG_QUARTER_COLUMNS_VISIBILITY = "QuarterColumnsVisibility";
-	public static final String TAG_PLANNING_TREE_TARGET_NODE_POSITION = "TargetGoalNodesPosition";
+	public static final String TAG_PLANNING_TREE_TARGET_NODE_POSITION = "PlanningTreeTargetNodePosition";
 	public static final String TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR = "FullTimeEmployeeDaysPerYear";
 	public static final String TAG_PROJECT_DESCRIPTION = "ProjectDescription";
 	public static final String TAG_PROJECT_URL = "ProjectURL";
