@@ -19,13 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.PreferencesDialog;
 import org.miradi.dialogs.base.PreferencesPanel;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.views.MainWindowDoer;
+import org.miradi.views.ViewDoer;
 
-public class PreferencesPopupDoer extends MainWindowDoer
+public class PreferencesPopupDoer extends ViewDoer
 {
 	@Override
 	public boolean isAvailable()
@@ -50,8 +49,6 @@ public class PreferencesPopupDoer extends MainWindowDoer
 	{
 		PreferencesPanel preferencesPanel = new PreferencesPanel(getMainWindow());
 		PreferencesDialog dlg = new PreferencesDialog(getMainWindow(), preferencesPanel, "Miradi Preferences");
-		dlg.pack();
-		Utilities.centerDlg(dlg);
-		dlg.setVisible(true);	
+		getView().showFloatingPropertiesDialog(dlg);
 	}
 }
