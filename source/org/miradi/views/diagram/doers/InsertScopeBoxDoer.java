@@ -38,11 +38,6 @@ public class InsertScopeBoxDoer extends InsertFactorDoer
 	@Override
 	public String getInitialText()
 	{
-		return getDefaultScopeName();
-	}
-
-	private static String getDefaultScopeName()
-	{
 		return EAM.text("Label|New Scope Box");
 	}
 
@@ -77,7 +72,7 @@ public class InsertScopeBoxDoer extends InsertFactorDoer
 	public static String getFormattedScopeBoxLabel(String label)
 	{
 		if (label.length() == 0)
-			return getDefaultScopeName();
+			return "";
 		
 		return EAM.text("Project Scope") + " :" + label;
 	}
