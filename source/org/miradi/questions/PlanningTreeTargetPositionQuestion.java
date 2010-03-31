@@ -22,9 +22,9 @@ package org.miradi.questions;
 
 import org.miradi.main.EAM;
 
-public class TargetGoalNodeTreePositionQuestion extends StaticChoiceQuestion
+public class PlanningTreeTargetPositionQuestion extends StaticChoiceQuestion
 {
-	public TargetGoalNodeTreePositionQuestion()
+	public PlanningTreeTargetPositionQuestion()
 	{
 		super(getChoiceItems());
 	}
