@@ -30,7 +30,6 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
@@ -45,7 +44,6 @@ import org.miradi.objects.TableSettings;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
-import org.miradi.utils.CodeList;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
 abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
@@ -121,11 +119,6 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 				restoreTreeExpansionState();
 			}
 			
-			if (shouldCollapseAllBudgetColumns(event))
-			{
-				collapseAllBudgetColumns();
-			}
-			
 			repaintToGrowIfTreeIsTaller();
 		}
 		catch(Exception e)
@@ -135,40 +128,6 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		}
 	}
 	
-	private boolean shouldCollapseAllBudgetColumns(CommandExecutedEvent event)
-	{
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY))
-			return true;
-		
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_WORKPLAN_END_DATE))
-			return true;
-		
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_WORKPLAN_START_DATE))
-			return true;
-		
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_START_DATE))
-			return true;
-		
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_EXPECTED_END_DATE))
-			return true;
-		
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_FISCAL_YEAR_START))
-			return true;
-
-		return false;
-	}
-	
-	private void collapseAllBudgetColumns() throws Exception
-	{
-		ORefList tableSettingsRefs = getProject().getTableSettingsPool().getORefList();
-		for (int index = 0; index < tableSettingsRefs.size(); ++index)
-		{
-			ORef tableSettingsRef = tableSettingsRefs.get(index);
-			CommandSetObjectData clearExpandedColumns = new CommandSetObjectData(tableSettingsRef, TableSettings.TAG_DATE_UNIT_LIST_DATA, new CodeList().toString());
-			getProject().executeAsSideEffect(clearExpandedColumns);
-		}
-	}
-
 	protected void rebuildEntireTreeAndTable() throws Exception
 	{
 		disableSectionSwitchDuringFullRebuild();
