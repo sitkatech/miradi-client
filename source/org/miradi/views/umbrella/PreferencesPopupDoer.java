@@ -25,7 +25,7 @@ import org.miradi.dialogs.base.PreferencesPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.views.MainWindowDoer;
 
-public class Preferences extends MainWindowDoer
+public class PreferencesPopupDoer extends MainWindowDoer
 {
 	@Override
 	public boolean isAvailable()
