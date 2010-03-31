@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-31 09:34-0500\n"
+"POT-Creation-Date: 2010-03-31 09:40-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -152,6 +152,11 @@ msgid ""
 "view and make <BR>changes to this project, but the ConPro ID will not be "
 "displayed until this problem <BR>is resolved.  Please contact the Miradi "
 "Team for further assistance.  </html>"
+msgstr ""
+
+#: Miradi/source/org/miradi/database/migrations/CreateScopeBoxesSuroundingTargetsMigration.java:309
+#: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:72
+msgid "Project Scope"
 msgstr ""
 
 #: Miradi/source/org/miradi/database/migrations/ShareSameLabeledScopeBoxesMigration.java:52
@@ -621,12 +626,8 @@ msgstr "因素属性 \t\t"
 msgid "Choose Stress to Create from"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:46
+#: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:41
 msgid "Label|New Scope Box"
-msgstr ""
-
-#: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:82
-msgid "Project Scope"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteProgressReportDoer.java:50

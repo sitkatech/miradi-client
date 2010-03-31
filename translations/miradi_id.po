@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-31 09:34-0500\n"
+"POT-Creation-Date: 2010-03-31 09:40-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -166,6 +166,11 @@ msgid ""
 "displayed until this problem <BR>is resolved.  Please contact the Miradi "
 "Team for further assistance.  </html>"
 msgstr ""
+
+#: Miradi/source/org/miradi/database/migrations/CreateScopeBoxesSuroundingTargetsMigration.java:309
+#: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:72
+msgid "Project Scope"
+msgstr "Cakupan Proyek "
 
 #: Miradi/source/org/miradi/database/migrations/ShareSameLabeledScopeBoxesMigration.java:52
 msgid "Project is missing Conceptual Model Diagram Directory."
@@ -651,13 +656,9 @@ msgstr "Sifat-sifat Faktor "
 msgid "Choose Stress to Create from"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:46
+#: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:41
 msgid "Label|New Scope Box"
 msgstr "Kotak Cakupan Baru "
-
-#: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:82
-msgid "Project Scope"
-msgstr "Cakupan Proyek "
 
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteProgressReportDoer.java:50
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteStrategyProgressReportDoer.java:47
