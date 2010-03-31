@@ -27,9 +27,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
-import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
-import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
@@ -49,10 +47,9 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 		{
 			DiagramFactor diagramFactor = (DiagramFactor)project.findObject(diagramFactorRefs.get(i));
 			Factor factor = diagramFactor.getWrappedFactor();
-			int type = factor.getType();
 			if(shouldIncludeAbstractTargetNode(factor) || factor.isDirectThreat() || factor.isContributingFactor() ||  
-					type == ThreatReductionResult.getObjectType() || 
-					type == IntermediateResult.getObjectType())
+					factor.isThreatReductionResult() || 
+					factor.isIntermediateResult())
 			{
 				createAndAddChild(diagramFactor.getWrappedORef(), diagramObject);
 			}
