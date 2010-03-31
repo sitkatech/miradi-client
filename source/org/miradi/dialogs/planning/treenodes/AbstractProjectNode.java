@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.Factor;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -79,50 +80,31 @@ abstract public class AbstractProjectNode extends AbstractPlanningTreeNode
 			addResultsChainDiagrams();
 		
 		if (shouldTargetsBeOnDiagramLevel())
-			addTargetNodes();
+			createAndAddTargetNodes();
 		
 		pruneUnwantedLayers(visibleRows);
 	}
 
-	private void addTargetNodes() throws Exception
+	private void createAndAddTargetNodes() throws Exception
 	{
-		ORefList targetRefs = getProject().getTargetPool().getORefList();
-		targetRefs.addAll(getProject().getHumanWelfareTargetPool().getORefList());
-		Vector<AbstractPlanningTreeNode> targetChildren = new Vector<AbstractPlanningTreeNode>();
-		for (int index = 0; index < targetRefs.size(); ++index)
-		{
-			ORef abstractTargetRef = targetRefs.get(index);
-			targetChildren.addAll(createTargetNodes(abstractTargetRef));
-		}
-		
-		addChildren(targetChildren);
+		addChildren(createTargetNodes());
 	}
 
-	private Vector<AbstractPlanningTreeNode> createTargetNodes(ORef abstractTargetRef) throws Exception
+	private Vector<AbstractPlanningTreeNode> createTargetNodes() throws Exception
 	{
 		Vector<AbstractPlanningTreeNode> targetChildren = new Vector<AbstractPlanningTreeNode>();
-		HashSet<DiagramObject> containingDiagramObjects = getContainingDiagramObject(abstractTargetRef);
-		for(DiagramObject containingDiagramObject : containingDiagramObjects)
+		ORefList allDiagramObjectRefs = getProject().getAllDiagramObjectRefs();
+		for (int index = 0; index < allDiagramObjectRefs.size(); ++index)
 		{
-			targetChildren.add(new PlanningTreeTargetNode(getProject(), containingDiagramObject, abstractTargetRef, getVisibleRows()));	
+			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), allDiagramObjectRefs.get(index));
+			HashSet<Factor> abstractTargets = diagramObject.getAbstractTargets();
+			for(Factor abstractTarget : abstractTargets)
+			{
+				targetChildren.add(new PlanningTreeTargetNode(getProject(), diagramObject, abstractTarget.getRef(), getVisibleRows()));	
+			}
 		}
 		
 		return targetChildren;
-	}
-
-	private HashSet<DiagramObject> getContainingDiagramObject(ORef abstractTargetRef)
-	{
-		HashSet<DiagramObject> diagramObjects = new HashSet<DiagramObject>();
-		ORefList diagramObjectRefs = getProject().getConceptualModelDiagramPool().getORefList();
-		diagramObjectRefs.addAll(getProject().getResultsChainDiagramPool().getORefList());
-		for (int index = 0; index < diagramObjectRefs.size(); ++index)
-		{
-			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectRefs.get(index));
-			if (diagramObject.containsWrappedFactorRef(abstractTargetRef))
-				diagramObjects.add(diagramObject);
-		}
-		
-		return diagramObjects;
 	}
 
 	abstract protected boolean shouldIncludeResultsChain() throws Exception;
