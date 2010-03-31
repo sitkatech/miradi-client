@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-31 11:29-0500\n"
+"POT-Creation-Date: 2010-03-31 14:20-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -460,10 +460,14 @@ msgstr "范围及愿景 \t\t"
 msgid "Organization"
 msgstr "组织 \t\t"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:59
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:62
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:111
 msgid "Planning"
 msgstr "计划 \t\t"
+
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningStrategicSubPanel.java:43
+msgid "SummaryPlanningStrategicSubPanel"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/SummaryView.java:160
 msgid "Work plan start date is before project start date"
@@ -3205,6 +3209,14 @@ msgstr "其它"
 #: Miradi/source/org/miradi/questions/ResourceTypeQuestion.java:35
 msgid "Person"
 msgstr "人员 "
+
+#: Miradi/source/org/miradi/questions/TargetGoalNodeTreePositionQuestion.java:35
+msgid "Targets and Goals should appear under Results Chains"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/TargetGoalNodeTreePositionQuestion.java:36
+msgid "Targets and Goals should not appear under Results Chains"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:34
 msgid "Forest"
@@ -6939,7 +6951,7 @@ msgstr ""
 msgid "Title|Measurement Properties"
 msgstr "测量属性 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:425
+#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:430
 msgid "This method is not responsible for creating task nodes."
 msgstr ""
 
@@ -8016,6 +8028,9 @@ msgid "FieldLabel|11.QuarterColumnsVisibility|Quarter Column Visibility"
 msgstr ""
 
 msgid "FieldLabel|11.WorkPlanDiagramDataInclusion|Include Work Plan Data From"
+msgstr ""
+
+msgid "FieldLabel|11.TargetGoalNodesPosition|Target & Goal Level"
 msgstr ""
 
 msgid "FieldLabel|12.ShortLabel|ID"
