@@ -54,6 +54,7 @@ public class TriangleRenderer extends FactorRenderer {
 		triangle.addPoint(horizontalMiddle , top);
 		triangle.addPoint(left, bottom);
 		triangle.addPoint(right, bottom);
+		triangle.addPoint(horizontalMiddle+1, top);
 		return triangle;
 	}
 
