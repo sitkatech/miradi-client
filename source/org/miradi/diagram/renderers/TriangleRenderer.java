@@ -28,6 +28,7 @@ import javax.swing.JLabel;
 
 public class TriangleRenderer extends FactorRenderer {
 
+	@Override
 	Dimension getInsetDimension() 
 	{
 		return new Dimension(0, 0);
@@ -56,6 +57,7 @@ public class TriangleRenderer extends FactorRenderer {
 		return triangle;
 	}
 
+	@Override
 	int getVerticalAlignmentOfText()
 	{
 		return JLabel.BOTTOM;
