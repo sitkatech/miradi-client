@@ -23,7 +23,7 @@ package org.miradi.icons;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.Rectangle;
 
 public class WarningIcon extends AbstractTriangleIcon
 {
@@ -32,11 +32,16 @@ public class WarningIcon extends AbstractTriangleIcon
 	{
 		super.paintIcon(c, g, x, y);
 		
-		Graphics2D g2 = (Graphics2D) g;
-		float exclamationMarkX = (float) (x + 6.5);
-		float exclamationMarkY = y + 14;
+		Rectangle rect = createRectangle(x, y);
+		int exclamationMarkX = (rect.width / 2) + rect.x;
+		int exclamationMarkY = rect.height + rect.y;
 		
-		g2.drawString(EXCLAMATION_MARK, exclamationMarkX, exclamationMarkY);
+		final int EXCLAMATION_MAIN_BODY_START_Y = exclamationMarkY - 4;
+		final int EXCLAMATION_MAIN_BODY_END_Y = exclamationMarkY - 9;
+		g.drawLine(exclamationMarkX, EXCLAMATION_MAIN_BODY_START_Y, exclamationMarkX, EXCLAMATION_MAIN_BODY_END_Y);
+		
+		final int EXCLAMATION_POINT_START_Y = exclamationMarkY - 2;
+		g.drawLine(exclamationMarkX, EXCLAMATION_POINT_START_Y, exclamationMarkX, EXCLAMATION_POINT_START_Y);
 	}
 	
 	@Override
@@ -44,6 +49,4 @@ public class WarningIcon extends AbstractTriangleIcon
 	{
 		return Color.YELLOW;
 	}
-	
-	private static final String EXCLAMATION_MARK = "!";
 }
