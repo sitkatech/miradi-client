@@ -40,6 +40,6 @@ public class SummaryPlanningStrategicSubPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("SummaryPlanningStrategicSubPanel");
+		return EAM.text("Strategic Planning");
 	}
 }
