@@ -46,7 +46,7 @@ public class PlanningTreeTargetPositionQuestion extends StaticChoiceQuestion
 	@Override
 	protected String getReadableAlternativeDefaultCode()
 	{
-		return "TargetNodeChildOfDiagramObject";
+		return "TargetNodesChildOfDiagramObjects";
 	}
 	
 	public static boolean shouldPutTargetsAtTopLevelOfTree(String code)
@@ -55,5 +55,5 @@ public class PlanningTreeTargetPositionQuestion extends StaticChoiceQuestion
 	}
 	
 	private static final String TARGET_NODES_CHILD_OF_DIAGRAM_OBJECTS_CODE = "";
-	public static final String TARGET_NODES_TOP_OF_PLANNING_TREE_CODE = "TargetNodeTopOfPlanningTree";
+	public static final String TARGET_NODES_TOP_OF_PLANNING_TREE_CODE = "TargetNodesTopOfPlanningTree";
 }
