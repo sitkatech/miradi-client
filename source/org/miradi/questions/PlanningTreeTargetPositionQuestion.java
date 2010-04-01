@@ -37,7 +37,7 @@ public class PlanningTreeTargetPositionQuestion extends StaticChoiceQuestion
 		};
 	}
 	
-	public static boolean putTargetsAtTopLevelOfTree(String code)
+	public static boolean shouldPutTargetsAtTopLevelOfTree(String code)
 	{
 		return code.equals(TARGET_NODE_TOP_OF_PLANNING_TREE_CODE);
 	}
