@@ -105,14 +105,34 @@ public class MeglerArranger
 		final int steps = 4;
 		progressMeter.setStatusMessage(EAM.text("Creating group boxes..."), steps);
 
-		createGroupBoxes(targets, FactorLink.FROM, Cause.getObjectType());
+		createTargetGroups();
 		progressMeter.incrementProgress();
-		createGroupBoxes(threats, FactorLink.TO, Target.getObjectType());
+		createThreatGroupsBasedOnTargets();
 		progressMeter.incrementProgress();
+		createThreatGroupsBasedOnStrategies();
+		progressMeter.incrementProgress();
+		ceateStrategyGroups();
+		progressMeter.incrementProgress();
+	}
+
+	private void createThreatGroupsBasedOnStrategies() throws Exception
+	{
 		createGroupBoxes(threats, FactorLink.FROM, Strategy.getObjectType());
-		progressMeter.incrementProgress();
+	}
+
+	private void createThreatGroupsBasedOnTargets() throws Exception
+	{
+		createGroupBoxes(threats, FactorLink.TO, Target.getObjectType());
+	}
+
+	private void ceateStrategyGroups() throws Exception
+	{
 		createGroupBoxes(strategies, FactorLink.TO, Cause.getObjectType());
-		progressMeter.incrementProgress();
+	}
+
+	private void createTargetGroups() throws Exception
+	{
+		createGroupBoxes(targets, FactorLink.FROM, Cause.getObjectType());
 	}
 
 	private void createGroupBoxes(Vector<DiagramFactor> diagramFactorsToGroup, int direction, int objectTypeInThatDirection) throws Exception
