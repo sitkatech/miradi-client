@@ -149,11 +149,15 @@ public class MeglerArranger
 
 	private void createGroupBoxes(Vector<DiagramFactor> diagramFactorsToGroup, int direction, int objectTypeInThatDirection) throws Exception
 	{
-		Vector<Vector<DiagramFactor>> groupsToCreate = findBestGroups(diagramFactorsToGroup, direction, objectTypeInThatDirection);
-		
-		for(Vector<DiagramFactor> toGroup : groupsToCreate)
+		final int ITERATIONS = 3;
+		for(int i = 0; i < ITERATIONS; ++i)
 		{
-			createAndLinkToGroupBox(toGroup, direction);
+			Vector<Vector<DiagramFactor>> groupsToCreate = findBestGroups(diagramFactorsToGroup, direction, objectTypeInThatDirection);
+			
+			for(Vector<DiagramFactor> toGroup : groupsToCreate)
+			{
+				createAndLinkToGroupBox(toGroup, direction);
+			}
 		}
 	}
 
