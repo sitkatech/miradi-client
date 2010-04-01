@@ -126,10 +126,10 @@ public class MeglerArranger
 
 		while(groupCandidates.size() > 1)
 		{
-			Vector<DiagramFactor> groupedTargets = createBiggestPossibleGroup(new Vector<DiagramFactor>(groupCandidates), direction, objectTypeInThatDirection);
-			if(groupedTargets.size() == 0)
+			Vector<DiagramFactor> grouped = createBiggestPossibleGroup(new Vector<DiagramFactor>(groupCandidates), direction, objectTypeInThatDirection);
+			if(grouped.size() == 0)
 				break;
-			groupCandidates.removeAll(groupedTargets);
+			groupCandidates.removeAll(grouped);
 		}
 	}
 	
