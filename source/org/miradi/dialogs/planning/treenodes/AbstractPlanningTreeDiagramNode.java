@@ -47,7 +47,7 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 		{
 			DiagramFactor diagramFactor = (DiagramFactor)project.findObject(diagramFactorRefs.get(i));
 			Factor factor = diagramFactor.getWrappedFactor();
-			if(shouldCreateAndAddFactorChild(factor))
+			if(shouldCreateAndAddChild(factor))
 			{
 				createAndAddChild(diagramFactor.getWrappedORef(), diagramObject);
 			}
@@ -61,7 +61,7 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 		addMissingChildren(extractIndicatorRefs(allWrappedFactors), diagramObject);
 	}
 
-	private boolean shouldCreateAndAddFactorChild(Factor factor)
+	private boolean shouldCreateAndAddChild(Factor factor)
 	{
 		if (AbstractTarget.isAbstractTarget(factor) && !shouldTargetsBeOnDiagramLevel())
 			return true;
