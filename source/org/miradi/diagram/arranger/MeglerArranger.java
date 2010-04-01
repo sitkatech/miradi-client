@@ -240,9 +240,9 @@ public class MeglerArranger
 		return groupCandidates;
 	}
 
-	private void createAndLinkToGroupBox(ORefSet nonGroupedDiagramFactorRefs, Vector<DiagramFactor> groupCandidates, int direction) throws Exception, UnexpectedNonSideEffectException, CommandFailedException
+	private void createAndLinkToGroupBox(ORefSet nonGroupedDiagramFactorRefs, Vector<DiagramFactor> toBeGrouped, int direction) throws Exception, UnexpectedNonSideEffectException, CommandFailedException
 	{
-		ORefList childRefs = new ORefList(groupCandidates.toArray(new DiagramFactor[0]));
+		ORefList childRefs = new ORefList(toBeGrouped.toArray(new DiagramFactor[0]));
 		FactorCommandHelper helper = new FactorCommandHelper(getProject(), diagram);
 		ORef newGroupDiagramFactorRef = new ORef(DiagramFactor.getObjectType(), helper.createFactorAndDiagramFactor(GroupBox.getObjectType()).getCreatedId());
 		CommandSetObjectData addChildren = new CommandSetObjectData(newGroupDiagramFactorRef, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, childRefs.toString());
