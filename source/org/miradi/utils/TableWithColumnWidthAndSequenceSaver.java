@@ -34,6 +34,7 @@ import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Goal;
 import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProgressReport;
@@ -248,6 +249,8 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		columnTagToDefaultWidthMap.put(ProgressPercent.TAG_PERCENT_COMPLETE_NOTES, ULTRA_WIDE_WIDTH);
 		columnTagToDefaultWidthMap.put(ProgressPercent.TAG_PERCENT_COMPLETE, NARROW_WIDTH);
 		columnTagToDefaultWidthMap.put(ProgressPercent.TAG_DATE, NORMAL_WIDTH);
+		
+		columnTagToDefaultWidthMap.put(BaseObject.TAG_LABEL, WIDE_WIDTH);
 		
 		columnTagToDefaultWidthMap.put(Goal.TAG_FULL_TEXT, ULTRA_WIDE_WIDTH);
 		
