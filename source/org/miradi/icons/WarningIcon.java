@@ -35,7 +35,7 @@ public class WarningIcon extends AbstractTriangleIcon
 		
 		int exclamationMainBodyStartY = y + 6;
 		int exclamationMainBodyHeight = 5;
-		int THICKNESS = 1;
+		final int THICKNESS = 1;
 		g.fillRect(exclamationMarkX, exclamationMainBodyStartY, THICKNESS, exclamationMainBodyHeight);
 		
 		int exclamantionPointY = y + 12;
