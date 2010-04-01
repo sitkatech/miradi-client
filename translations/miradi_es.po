@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-01 11:59-0500\n"
+"POT-Creation-Date: 2010-04-01 15:59-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -494,7 +494,7 @@ msgid "Planning"
 msgstr "Planificación"
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningStrategicSubPanel.java:43
-msgid "SummaryPlanningStrategicSubPanel"
+msgid "Strategic Planning"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/SummaryView.java:160
