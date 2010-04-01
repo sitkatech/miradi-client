@@ -122,7 +122,7 @@ public class MeglerArranger
 		groupCandidates.removeAll(findAllThatAreLinkedToAGroup(groupCandidates, direction));
 		groupCandidates.removeAll(findAllThatAreAlreadyGrouped(groupCandidates));
 		
-		sortGroupCandidatesByLinkCount(groupCandidates);
+		sortGroupCandidatesByLinkCount(groupCandidates, direction);
 
 		while(groupCandidates.size() > 1)
 		{
@@ -146,6 +146,11 @@ public class MeglerArranger
 
 	class LinkCountComparator implements Comparator
 	{
+		public LinkCountComparator(int directionToUse)
+		{
+			direction = directionToUse;
+		}
+		
 		public int compare(Object arg1, Object arg2)
 		{
 			if(!(arg1 instanceof DiagramFactor))
@@ -156,22 +161,37 @@ public class MeglerArranger
 			DiagramFactor diagramFactor1 = (DiagramFactor)arg1;
 			DiagramFactor diagramFactor2 = (DiagramFactor)arg2;
 			
-			int linkCount1 = getRefsOfFactorsThatLink(diagramFactor1).size();
-			int linkCount2 = getRefsOfFactorsThatLink(diagramFactor2).size();
+			int linkCount1 = getRefsOfRelevantDiagramLinks(diagramFactor1).size();
+			int linkCount2 = getRefsOfRelevantDiagramLinks(diagramFactor2).size();
 
-			return Math.abs(linkCount2 - linkCount1);
+			int diff = Math.abs(linkCount2 - linkCount1);
+			if(diff > 0)
+				return diff;
+			
+			return diagramFactor1.getRef().compareTo(diagramFactor2.getRef());
 		}
 
-		private ORefSet getRefsOfFactorsThatLink(DiagramFactor diagramFactor)
+		private ORefSet getRefsOfRelevantDiagramLinks(DiagramFactor diagramFactor)
 		{
-			return new ORefSet(diagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType()));
+			ORefSet matchingDiagramLinkRefs = new ORefSet();
+			ORef thisRef = diagramFactor.getRef();
+			ORefList diagramLinkRefs = diagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
+			for(int i = 0; i < diagramLinkRefs.size(); ++i)
+			{
+				ORef diagramLinkRef = diagramLinkRefs.get(i);
+				DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);
+				if(diagramLink.getOppositeDiagramFactorRef(direction).equals(thisRef))
+					matchingDiagramLinkRefs.add(diagramLinkRef);
+			}
+			return matchingDiagramLinkRefs;
 		}
 		
+		private int direction;
 	}
 
-	private void sortGroupCandidatesByLinkCount(Vector<DiagramFactor> groupCandidates)
+	private void sortGroupCandidatesByLinkCount(Vector<DiagramFactor> groupCandidates, int direction)
 	{
-		Collections.sort(groupCandidates, new LinkCountComparator());
+		Collections.sort(groupCandidates, new LinkCountComparator(direction));
 	}
 
 	private Set<DiagramFactor> findAllThatAreLinkedToAGroup(Vector<DiagramFactor> groupCandidates, int direction)
