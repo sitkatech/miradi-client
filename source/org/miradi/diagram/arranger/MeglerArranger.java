@@ -129,6 +129,8 @@ public class MeglerArranger
 			Vector<DiagramFactor> grouped = createBiggestPossibleGroup(groupCandidates, direction, objectTypeInThatDirection);
 			if(grouped.size() == 0)
 				break;
+			if(grouped.size() > 1)
+				createAndLinkToGroupBox(grouped, direction);
 			groupCandidates.removeAll(grouped);
 		}
 	}
@@ -228,7 +230,6 @@ public class MeglerArranger
 			
 			if(wouldRemoveLinkCount > 1)
 			{
-				createAndLinkToGroupBox(groupCandidates, direction);
 				break;
 			}
 			
