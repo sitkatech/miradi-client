@@ -32,7 +32,7 @@ public class PlanningTreeTargetPositionQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] getChoiceItems()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem(TARGET_NODE_CHILD_OF_DIAGRAM_OBJECT_CODE, EAM.text("Targets within Diagrams")),
+				new ChoiceItem(TARGET_NODES_CHILD_OF_DIAGRAM_OBJECTS_CODE, EAM.text("Targets within Diagrams")),
 				new ChoiceItem(TARGET_NODE_TOP_OF_PLANNING_TREE_CODE, EAM.text("Targets at top level")),
 		};
 	}
@@ -54,6 +54,6 @@ public class PlanningTreeTargetPositionQuestion extends StaticChoiceQuestion
 		return code.equals(TARGET_NODE_TOP_OF_PLANNING_TREE_CODE);
 	}
 	
-	private static final String TARGET_NODE_CHILD_OF_DIAGRAM_OBJECT_CODE = "";
+	private static final String TARGET_NODES_CHILD_OF_DIAGRAM_OBJECTS_CODE = "";
 	public static final String TARGET_NODE_TOP_OF_PLANNING_TREE_CODE = "TargetNodeTopOfPlanningTree";
 }
