@@ -35,6 +35,7 @@ public class ProjectSummaryPlanningSchemaElement extends ObjectSchemaElement
 		createOptionalDateField(ProjectMetadata.TAG_WORKPLAN_END_DATE);
 		createOptionalFiscalYearStartField(ProjectMetadata.TAG_FISCAL_YEAR_START);
 		createOptionalNumericField(ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR);
+		createOptionalCodeField(ProjectMetadata.TAG_PLANNING_TREE_TARGET_NODE_POSITION, XmlSchemaCreator.VOCABULARY_PLANNING_TREE_TARGET_NODE_POSITION);
 		createOptionalTextField(ProjectMetadata.TAG_PLANNING_COMMENTS);
 		
 		createOptionalTextField(ProjectMetadata.TAG_CURRENCY_TYPE);

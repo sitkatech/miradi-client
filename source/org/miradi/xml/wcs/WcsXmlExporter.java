@@ -41,6 +41,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.FosTrainingTypeQuestion;
+import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.generic.XmlSchemaCreator;
@@ -266,6 +267,8 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeOptionalElementWithSameTag(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_BUDGET_SECURED_PERCENT);
 		writeOptionalElementWithSameTag(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_KEY_FUNDING_SOURCES);
 		writeOptionalElementWithSameTag(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_FINANCIAL_COMMENTS);
+		
+		writeCodeElement(PROJECT_SUMMARY_PLANNING, ProjectMetadata.TAG_PLANNING_TREE_TARGET_NODE_POSITION, new PlanningTreeTargetPositionQuestion(), getMetadata().getData(ProjectMetadata.TAG_PLANNING_TREE_TARGET_NODE_POSITION));
 		
 		writeEndElement(out, PROJECT_SUMMARY_PLANNING);
 	}
