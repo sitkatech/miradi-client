@@ -48,6 +48,7 @@ import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
+import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
@@ -151,6 +152,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		defineVocabulary(writer, VOCABULARY_COUNTRIES, new CountriesQuestion());
 		defineVocabulary(writer, VOCABULARY_THREAT_RATING, new ThreatRatingQuestion());
 		defineVocabulary(writer, VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION, new DiagramObjectDataInclusionQuestion());
+		defineVocabulary(writer, VOCABULARY_PLANNING_TREE_TARGET_NODE_POSITION, new PlanningTreeTargetPositionQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -513,6 +515,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 	public static final String VOCABULARY_TEXT_BOX_Z_ORDER = "vocabulary_text_box_z_order";
 	public static final String VOCABULARY_THREAT_RATING = "vocabulary_threat_rating";
 	public static final String VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION = "vocabulary_included_diagram_types";
+	public static final String VOCABULARY_PLANNING_TREE_TARGET_NODE_POSITION = "vocabulary_planning_tree_target_node_position";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;

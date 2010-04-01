@@ -37,11 +37,23 @@ public class PlanningTreeTargetPositionQuestion extends StaticChoiceQuestion
 		};
 	}
 	
+	@Override
+	protected boolean hasReadableAlternativeDefaultCode()
+	{
+		return true;
+	}
+	
+	@Override
+	protected String getReadableAlternativeDefaultCode()
+	{
+		return "TargetNodeChildOfDiagramObject";
+	}
+	
 	public static boolean shouldPutTargetsAtTopLevelOfTree(String code)
 	{
 		return code.equals(TARGET_NODE_TOP_OF_PLANNING_TREE_CODE);
 	}
 	
 	private static final String TARGET_NODE_CHILD_OF_DIAGRAM_OBJECT_CODE = "";
-	private static final String TARGET_NODE_TOP_OF_PLANNING_TREE_CODE = "TargetNodeTopOfPlanningTree";
+	public static final String TARGET_NODE_TOP_OF_PLANNING_TREE_CODE = "TargetNodeTopOfPlanningTree";
 }
