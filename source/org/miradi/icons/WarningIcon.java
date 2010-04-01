@@ -23,7 +23,6 @@ package org.miradi.icons;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
-import java.awt.Rectangle;
 
 public class WarningIcon extends AbstractTriangleIcon
 {
@@ -32,9 +31,8 @@ public class WarningIcon extends AbstractTriangleIcon
 	{
 		super.paintIcon(c, g, x, y);
 		
-		Rectangle rect = createRectangle(x, y);
-		int exclamationMarkX = (rect.width / 2) + rect.x;
-		int exclamationMarkY = rect.height + rect.y;
+		int exclamationMarkX = (getIconWidth() / 2) + x;
+		int exclamationMarkY = getIconHeight() + y;
 		
 		final int EXCLAMATION_MAIN_BODY_START_Y = exclamationMarkY - 4;
 		final int EXCLAMATION_MAIN_BODY_END_Y = exclamationMarkY - 9;

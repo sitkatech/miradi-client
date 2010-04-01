@@ -44,17 +44,12 @@ public abstract class AbstractTriangleIcon implements Icon
 
 	public void paintIcon(Component c, Graphics g, int x, int y)
 	{
-		Rectangle rect = createRectangle(x, y);
+		Rectangle rect = new Rectangle(x+1, y+1, WIDTH-2, HEIGHT-2);
 		Polygon triangle = TriangleRenderer.buildTriangle(rect);
 		g.setColor(getFillColor());
 		g.fillPolygon(triangle);
 		g.setColor(Color.BLACK);
 		g.drawPolygon(triangle);
-	}
-
-	protected Rectangle createRectangle(int x, int y)
-	{
-		return new Rectangle(x+1, y+1, WIDTH-2, HEIGHT-2);
 	}
 
 	abstract protected Color getFillColor();
