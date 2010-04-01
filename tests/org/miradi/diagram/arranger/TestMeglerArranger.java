@@ -493,6 +493,64 @@ public class TestMeglerArranger extends TestCaseWithProject
 		assertTrue("strategy 2 not first?", yStrategy2 < yStrategy1 && yStrategy2 < yStrategy3);
 	}
 	
+	public void testSortColumnByRelevantLinks() throws Exception
+	{
+		DiagramFactor strategyDiagramFactor1 = createStrategy();
+		DiagramFactor strategyDiagramFactor2 = createStrategy();
+		DiagramFactor strategyDiagramFactor3 = createStrategy();
+
+		DiagramFactor threatDiagramFactor1 = createThreat();
+		DiagramFactor threatDiagramFactor2 = createThreat();
+		DiagramFactor threatDiagramFactor3 = createThreat();
+		DiagramFactor threatDiagramFactor4 = createThreat();
+		DiagramFactor threatDiagramFactor5 = createThreat();
+
+		DiagramFactor targetDiagramFactor1 = createTarget();
+		
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, threatDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, threatDiagramFactor2);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor2, threatDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor2, threatDiagramFactor2);
+
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor3, threatDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor3, threatDiagramFactor2);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor3, threatDiagramFactor3);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor3, threatDiagramFactor4);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor3, threatDiagramFactor5);
+
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor3, targetDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor4, targetDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor5, targetDiagramFactor1);
+		
+		DiagramObject diagram = getProject().getMainDiagramObject();
+		MeglerArranger arranger = new MeglerArranger(diagram);
+		arranger.arrange();
+		
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		assertEquals("Didn't create two threat groups?", 2, groupBoxDiagramFactors.size());
+		
+		DiagramFactor groupBoxDiagramFactor1 = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[0];
+		DiagramFactor groupBoxDiagramFactor2 = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[1];
+		ORefSet children1 = new ORefSet(groupBoxDiagramFactor1.getGroupBoxChildrenRefs());
+		ORefSet children2 = new ORefSet(groupBoxDiagramFactor2.getGroupBoxChildrenRefs());
+
+		if(children1.size() != 3)
+		{
+			ORefSet temp = children1;
+			children1 = children2;
+			children2 = temp;
+		}
+		
+		assertEquals("First group doesn't contain three threats?", 3, children1.size());
+		assertContains("First group doesn't contain threat 3?", threatDiagramFactor3.getRef(), children1);
+		assertContains("First group doesn't contain threat 4?", threatDiagramFactor4.getRef(), children1);
+		assertContains("First group doesn't contain threat 5?", threatDiagramFactor5.getRef(), children1);
+		assertEquals("Second group doesn't contain two threats?", 2, children2.size());
+		assertContains("Second group doesn't contain threat 1?", threatDiagramFactor1.getRef(), children2);
+		assertContains("Second group doesn't contain threat 2?", threatDiagramFactor2.getRef(), children2);
+		
+	}
+	
 	private DiagramFactor createStrategy() throws Exception
 	{
 		return getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
