@@ -506,6 +506,9 @@ public class TestMeglerArranger extends TestCaseWithProject
 		DiagramFactor threatDiagramFactor5 = createThreat();
 
 		DiagramFactor targetDiagramFactor1 = createTarget();
+		DiagramFactor targetDiagramFactor2 = createTarget();
+		DiagramFactor targetDiagramFactor3 = createTarget();
+		DiagramFactor targetDiagramFactor4 = createTarget();
 		
 		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, threatDiagramFactor1);
 		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, threatDiagramFactor2);
@@ -522,6 +525,10 @@ public class TestMeglerArranger extends TestCaseWithProject
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor4, targetDiagramFactor1);
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor5, targetDiagramFactor1);
 		
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, targetDiagramFactor2);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, targetDiagramFactor3);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, targetDiagramFactor4);
+
 		DiagramObject diagram = getProject().getMainDiagramObject();
 		MeglerArranger arranger = new MeglerArranger(diagram);
 		arranger.arrange();
@@ -548,6 +555,66 @@ public class TestMeglerArranger extends TestCaseWithProject
 		assertEquals("Second group doesn't contain two threats?", 2, children2.size());
 		assertContains("Second group doesn't contain threat 1?", threatDiagramFactor1.getRef(), children2);
 		assertContains("Second group doesn't contain threat 2?", threatDiagramFactor2.getRef(), children2);
+		
+	}
+	
+	public void testCreateStrategyThreatGroupsFirst() throws Exception
+	{
+		DiagramFactor strategyDiagramFactor1 = createStrategy();
+		DiagramFactor strategyDiagramFactor2 = createStrategy();
+		DiagramFactor strategyDiagramFactor3 = createStrategy();
+
+		DiagramFactor threatDiagramFactor1 = createThreat();
+		DiagramFactor threatDiagramFactor2 = createThreat();
+		DiagramFactor threatDiagramFactor3 = createThreat();
+		DiagramFactor threatDiagramFactor4 = createThreat();
+		DiagramFactor threatDiagramFactor5 = createThreat();
+
+		DiagramFactor targetDiagramFactor1 = createTarget();
+		
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, threatDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, threatDiagramFactor2);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor2, threatDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor2, threatDiagramFactor2);
+
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor3, threatDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor3, threatDiagramFactor2);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor3, threatDiagramFactor3);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor3, threatDiagramFactor4);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor3, threatDiagramFactor5);
+
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor3, targetDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor4, targetDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor5, targetDiagramFactor1);
+		
+		DiagramObject diagram = getProject().getMainDiagramObject();
+		MeglerArranger arranger = new MeglerArranger(diagram);
+		arranger.arrange();
+		
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		assertEquals("Didn't create one threat group and one strategy group?", 2, groupBoxDiagramFactors.size());
+		
+		DiagramFactor groupBoxDiagramFactor1 = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[0];
+		DiagramFactor groupBoxDiagramFactor2 = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[1];
+		ORefSet children1 = new ORefSet(groupBoxDiagramFactor1.getGroupBoxChildrenRefs());
+		ORefSet children2 = new ORefSet(groupBoxDiagramFactor2.getGroupBoxChildrenRefs());
+
+		if(children1.size() != 5)
+		{
+			ORefSet temp = children1;
+			children1 = children2;
+			children2 = temp;
+		}
+		
+		assertEquals("First group doesn't contain five threats?", 5, children1.size());
+		assertContains("First group doesn't contain threat 1?", threatDiagramFactor1.getRef(), children1);
+		assertContains("First group doesn't contain threat 2?", threatDiagramFactor2.getRef(), children1);
+		assertContains("First group doesn't contain threat 3?", threatDiagramFactor3.getRef(), children1);
+		assertContains("First group doesn't contain threat 4?", threatDiagramFactor4.getRef(), children1);
+		assertContains("First group doesn't contain threat 5?", threatDiagramFactor5.getRef(), children1);
+		assertEquals("Second group doesn't contain two strategies?", 2, children2.size());
+		assertContains("Second group doesn't contain strat 1?", strategyDiagramFactor1.getRef(), children2);
+		assertContains("Second group doesn't contain strat 2?", strategyDiagramFactor2.getRef(), children2);
 		
 	}
 	

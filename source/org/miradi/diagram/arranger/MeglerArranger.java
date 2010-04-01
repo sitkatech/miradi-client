@@ -107,10 +107,22 @@ public class MeglerArranger
 
 		createTargetGroups();
 		progressMeter.incrementProgress();
-		createThreatGroupsBasedOnTargets();
-		progressMeter.incrementProgress();
-		createThreatGroupsBasedOnStrategies();
-		progressMeter.incrementProgress();
+
+		if(targets.size() > strategies.size())
+		{
+			createThreatGroupsBasedOnTargets();
+			progressMeter.incrementProgress();
+			createThreatGroupsBasedOnStrategies();
+			progressMeter.incrementProgress();
+		}
+		else
+		{
+			createThreatGroupsBasedOnStrategies();
+			progressMeter.incrementProgress();
+			createThreatGroupsBasedOnTargets();
+			progressMeter.incrementProgress();
+		}
+		
 		ceateStrategyGroups();
 		progressMeter.incrementProgress();
 	}
