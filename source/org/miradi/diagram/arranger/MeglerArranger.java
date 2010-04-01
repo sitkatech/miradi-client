@@ -117,6 +117,19 @@ public class MeglerArranger
 
 	private void createGroupBoxes(Vector<DiagramFactor> diagramFactorsToGroup, int direction, int objectTypeInThatDirection) throws Exception
 	{
+		Vector<Vector<DiagramFactor>> groupsToCreate = findBestGroups(diagramFactorsToGroup, direction, objectTypeInThatDirection);
+		
+		for(Vector<DiagramFactor> toGroup : groupsToCreate)
+		{
+			createAndLinkToGroupBox(toGroup, direction);
+		}
+	}
+
+	private Vector<Vector<DiagramFactor>> findBestGroups(
+			Vector<DiagramFactor> diagramFactorsToGroup, int direction,
+			int objectTypeInThatDirection) throws Exception,
+			UnexpectedNonSideEffectException, CommandFailedException
+	{
 		Vector<DiagramFactor> groupCandidates = new Vector<DiagramFactor>();
 		groupCandidates.addAll(diagramFactorsToGroup);
 		groupCandidates.removeAll(findAllThatAreLinkedToAGroup(groupCandidates, direction));
@@ -135,11 +148,7 @@ public class MeglerArranger
 				groupsToCreate.add(new Vector(grouped));
 			groupCandidates.removeAll(grouped);
 		}
-		
-		for(Vector<DiagramFactor> toGroup : groupsToCreate)
-		{
-			createAndLinkToGroupBox(toGroup, direction);
-		}
+		return groupsToCreate;
 	}
 	
 	private HashSet<DiagramFactor> findAllThatAreAlreadyGrouped(Vector<DiagramFactor> groupCandidates)
