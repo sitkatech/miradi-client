@@ -43,9 +43,9 @@ import org.miradi.utils.DateUnitEffortList;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 
-public class StandAloneCodeListComponent extends AbstractQuestionBasedComponent
+public class WhoCodeListEditorComponent extends AbstractQuestionBasedComponent
 {
-	public StandAloneCodeListComponent(BaseObject parentObjectToUse, ChoiceQuestion questionToUse)
+	public WhoCodeListEditorComponent(BaseObject parentObjectToUse, ChoiceQuestion questionToUse)
 	{
 		super(questionToUse, SINGLE_COLUMN);
 		
