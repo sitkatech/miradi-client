@@ -314,10 +314,10 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	protected int[] getNodeSortOrder()
 	{
 		return new int[] {
-			ResultsChainDiagram.getObjectType(),
-			ConceptualModelDiagram.getObjectType(),
 			Target.getObjectType(),
 			HumanWelfareTarget.getObjectType(),
+			ResultsChainDiagram.getObjectType(),
+			ConceptualModelDiagram.getObjectType(),
 			Goal.getObjectType(),
 			Cause.getObjectType(),
 			ThreatReductionResult.getObjectType(),
