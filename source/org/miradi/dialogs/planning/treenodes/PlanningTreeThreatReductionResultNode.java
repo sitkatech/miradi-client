@@ -43,6 +43,7 @@ public class PlanningTreeThreatReductionResultNode extends AbstractPlanningTreeN
 		rebuild();
 	}
 	
+	@Override
 	public void rebuild() throws Exception
 	{
 		DiagramObject diagram = diagramObject;
@@ -51,6 +52,7 @@ public class PlanningTreeThreatReductionResultNode extends AbstractPlanningTreeN
 		addMissingChildren(threatReductionResult.getOnlyDirectIndicatorRefs(), diagram);
 	}
 
+	@Override
 	protected int[] getNodeSortOrder()
 	{
 		return new int[] {
@@ -64,6 +66,7 @@ public class PlanningTreeThreatReductionResultNode extends AbstractPlanningTreeN
 			};
 	}
 
+	@Override
 	public BaseObject getObject()
 	{
 		return threatReductionResult;
