@@ -80,6 +80,7 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 		return isActive;
 	}
 	
+	@Override
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
