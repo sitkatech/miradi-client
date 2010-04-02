@@ -106,7 +106,7 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 		
 	abstract protected AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse);
 
-	protected boolean isActive;
-	protected CardLayout cardLayout;
+	private boolean isActive;
+	private CardLayout cardLayout;
 	protected AbstractObjectDataInputPanel currentCard;
 }
