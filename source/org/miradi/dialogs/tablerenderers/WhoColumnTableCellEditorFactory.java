@@ -30,7 +30,7 @@ import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 
-import org.miradi.dialogfields.StandAloneCodeListComponent;
+import org.miradi.dialogfields.WhoCodeListEditorComponent;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
@@ -70,7 +70,7 @@ public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implemen
 			table.stopCellEditing();
 
 			final BaseObject baseObjectForRow = table.getBaseObjectForRowColumn(table.getSelectedRow(), table.getSelectedColumn());
-			StandAloneCodeListComponent codeListEditor = new StandAloneCodeListComponent(baseObjectForRow, new ProjectResourceQuestion(getProject()));
+			WhoCodeListEditorComponent codeListEditor = new WhoCodeListEditorComponent(baseObjectForRow, new ProjectResourceQuestion(getProject()));
 			MiradiScrollPane codeListEditorScrollPane = new MiradiScrollPane(codeListEditor);
 			ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), EAM.text("Project Resource"));
 			String dialogObjectDescription = ObjectTreeTable.getToolTipString(baseObjectForRow);
