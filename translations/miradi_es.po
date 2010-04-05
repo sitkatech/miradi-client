@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-01 15:59-0500\n"
+"POT-Creation-Date: 2010-04-05 09:45-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -7794,7 +7794,7 @@ msgstr "Propiedades de la presión"
 msgid "Manage Stresses for "
 msgstr "Manejar presiones para"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressListManagementPanel.java:64
+#: Miradi/source/org/miradi/dialogs/stress/StressListManagementPanel.java:69
 msgid "Tab|Stresses"
 msgstr "Presiones"
 
