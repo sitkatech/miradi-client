@@ -37,6 +37,13 @@ public class StressListManagementPanel extends ObjectListManagementPanel
 		return new StressListManagementPanel(mainWindowToUse, nodeRef, stressPropertiesPanel);
 	}
 	
+	public static StressListManagementPanel createStressManagementPanelWithoutVisibilityPanel(MainWindow mainWindowToUse, ORef nodeRef) throws Exception
+	{
+		StressPropertiesPanel stressPropertiesPanel = StressPropertiesPanel.createWithoutVisibilityPanel(mainWindowToUse);
+
+		return new StressListManagementPanel(mainWindowToUse, nodeRef, stressPropertiesPanel);
+	}
+	
 	private StressListManagementPanel(MainWindow mainWindowToUse, ORef nodeRef, StressPropertiesPanel stressPropertiesPanel) throws Exception
 	{
 		super(mainWindowToUse, new StressListTablePanel(mainWindowToUse, nodeRef), stressPropertiesPanel);

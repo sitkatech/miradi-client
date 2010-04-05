@@ -46,7 +46,7 @@ public class ManageStressesDoer extends ObjectsDoer
 		{
 			BaseObject selectedTarget = getSingleSelected(Target.getObjectType());
 			// NOTE: Should create Stress panel without visibility panel
-			StressListManagementPanel stressListManagementPanel = StressListManagementPanel.createStressManagementPanelWithVisibilityPanel(getMainWindow(), selectedTarget.getRef());
+			StressListManagementPanel stressListManagementPanel = StressListManagementPanel.createStressManagementPanelWithoutVisibilityPanel(getMainWindow(), selectedTarget.getRef());
 			ManageStressesDialog manageStressesDialog = new ManageStressesDialog(getMainWindow(), (Target)selectedTarget, stressListManagementPanel);
 			stressListManagementPanel.becomeActive();
 			Utilities.centerDlg(manageStressesDialog);
