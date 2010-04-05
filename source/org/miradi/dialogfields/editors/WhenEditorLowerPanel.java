@@ -62,7 +62,7 @@ public class WhenEditorLowerPanel extends JPanel
 		cardLayout.show(this, currentCard.getPanelDescription());
 	}
 	
-	private DateRangePanel findPanel(String cardName)
+	private DateUnitStartAndEndCard findPanel(String cardName)
 	{
 		if (cardName.equals(projectTotalCard.getPanelDescription()))
 			return projectTotalCard;
@@ -83,7 +83,7 @@ public class WhenEditorLowerPanel extends JPanel
 	}
 	
 	private CardLayout cardLayout;
-	private DateRangePanel currentCard;
+	private DateUnitStartAndEndCard currentCard;
 	
 	private ProjectTotalDateUnitStartAndEndCard projectTotalCard;
 	private CalendarYearDateUnitStartAndEndCard yearCard;
