@@ -18,21 +18,24 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogfields.editors;
+package org.miradi.questions;
 
-import org.miradi.dialogs.fieldComponents.PanelComboBox;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.QuarterChoiceQuestion;
+import org.miradi.main.EAM;
 
-public class QuarterChooser extends PanelComboBox
+public class QuarterChoiceQuestion extends StaticChoiceQuestion
 {
-	public QuarterChooser()
+	public QuarterChoiceQuestion()
 	{
-		super(createChoices());
+		super(createQuarterChoices());
 	}
-
-	private static ChoiceItem[] createChoices()
+	
+	private static ChoiceItem[] createQuarterChoices()
 	{
-		return new QuarterChoiceQuestion().getChoices();
+		return new ChoiceItem[]{
+				new ChoiceItem("1", EAM.text("Quarter 1")),
+				new ChoiceItem("2", EAM.text("Quarter 2")),
+				new ChoiceItem("3", EAM.text("Quarter 3")),
+				new ChoiceItem("4", EAM.text("Quarter 4")),
+		};
 	}
 }
