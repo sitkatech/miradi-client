@@ -27,7 +27,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 
-public class WhenColumnTableCellEditorFactory extends AbstractTableCellEditorFactory
+public class WhenColumnTableCellEditorFactory extends AbstractPopupTableCellEditorFactory
 {
 	public WhenColumnTableCellEditorFactory(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse)
 	{

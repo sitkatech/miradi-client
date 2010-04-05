@@ -41,9 +41,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.MiradiScrollPane;
 
-abstract public class AbstractTableCellEditorFactory extends AbstractCellEditor implements TableCellEditor
+abstract public class AbstractPopupTableCellEditorFactory extends AbstractCellEditor implements TableCellEditor
 {
-	public AbstractTableCellEditorFactory(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse)
+	public AbstractPopupTableCellEditorFactory(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse)
 	{
 		mainWindow = mainWindowToUse;
 		table = tableToUse;
