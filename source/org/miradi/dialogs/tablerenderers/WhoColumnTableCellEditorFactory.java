@@ -28,7 +28,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ProjectResourceQuestion;
 
-public class WhoColumnTableCellEditorFactory extends AbstractTableCellEditorFactory
+public class WhoColumnTableCellEditorFactory extends AbstractPopupTableCellEditorFactory
 {
 	public WhoColumnTableCellEditorFactory(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse)
 	{
