@@ -269,7 +269,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 
 		if (factor.isTarget())
 		{
-			stressTab = new StressListManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+			stressTab = StressListManagementPanel.createStressManagementPanelWithVisibilityPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef());
 			addTab(stressTab);
 		}
 			
