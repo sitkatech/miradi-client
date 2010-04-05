@@ -26,7 +26,7 @@ import java.awt.event.ItemListener;
 import org.martus.swing.UiComboBox;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.layout.OneColumnGridLayout;
-import org.miradi.utils.DateRange;
+import org.miradi.objecthelpers.DateUnit;
 
 public class WhenEditorComponent extends DisposablePanel
 {
@@ -43,9 +43,14 @@ public class WhenEditorComponent extends DisposablePanel
 		add(lowerPanel);
 	}
 	
-	public DateRange getDateunit() throws Exception
+	public DateUnit getStartDateUnit() throws Exception
 	{
-		return lowerPanel.getDateRange();
+		return lowerPanel.getStartDateUnit();
+	}
+	
+	public DateUnit getEndDateUnit() throws Exception
+	{
+		return lowerPanel.getEndDateUnit();
 	}
 	
 	private class ChangeHandler implements ItemListener

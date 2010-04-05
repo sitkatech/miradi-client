@@ -24,7 +24,7 @@ import java.awt.CardLayout;
 
 import javax.swing.JPanel;
 
-import org.miradi.utils.DateRange;
+import org.miradi.objecthelpers.DateUnit;
 
 public class WhenEditorLowerPanel extends JPanel
 {
@@ -46,9 +46,14 @@ public class WhenEditorLowerPanel extends JPanel
 		add(dayCard, dayCard.getPanelDescription());
 	}
 	
-	public DateRange getDateRange() throws Exception
+	public DateUnit getStartDateUnit()
 	{
-		return currentCard.getDateRange();
+		return currentCard.getStartDate();
+	}
+	
+	public DateUnit getEndDateUnit()
+	{
+		return currentCard.getEndDate();
 	}
 	
 	public void showCard(String cardName)

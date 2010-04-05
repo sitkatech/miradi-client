@@ -20,18 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import org.martus.util.MultiCalendar;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
-import org.miradi.utils.DateRange;
+import org.miradi.objecthelpers.DateUnit;
 
 abstract public class DateRangePanel extends TwoColumnPanel
 {
-	public DateRange getDateRange() throws Exception
-	{
-		return new DateRange(getStartDate(), getEndDate());
-	}
-	
 	protected static String getStartText()
 	{
 		return EAM.text("Start:");
@@ -42,9 +36,9 @@ abstract public class DateRangePanel extends TwoColumnPanel
 		return EAM.text("End:");
 	}
 	
-	abstract protected MultiCalendar getStartDate();
+	abstract protected DateUnit getStartDate();
 
-	abstract protected MultiCalendar getEndDate();
+	abstract protected DateUnit getEndDate();
 
 	abstract public String getPanelDescription();
 }
