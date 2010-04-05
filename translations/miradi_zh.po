@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-05 09:50-0500\n"
+"POT-Creation-Date: 2010-04-05 13:14-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4589,6 +4589,14 @@ msgstr ""
 msgid "Unexpected call to setText"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogfields/editors/DateRangePanel.java:37
+msgid "Start:"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogfields/editors/DateRangePanel.java:42
+msgid "End:"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:222
 msgid "Text|Dates must be in YYYY-MM-DD format"
 msgstr "日期格式必须是YYYY-MM-DD（年-月-日）"
@@ -7034,6 +7042,10 @@ msgstr "简单生存力 \t\t"
 
 #: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:75
 msgid "Project Resource"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/tablerenderers/WhenColumnTableCellEditorFactory.java:77
+msgid "When Editor..."
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/task/MethodPropertiesPanelWithoutBudgetPanels.java:43
