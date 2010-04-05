@@ -93,11 +93,16 @@ public class DateUnit
 		return new DateUnit();
 	}
 
-	public static DateUnit createQuarterDateUnit(String yearString, int startingMonth)
+	private static DateUnit createQuarterDateUnit(String yearString, int startingMonth)
 	{
 		int startingQuarter = (startingMonth - 1) / 3 + 1;
 	
-		return new DateUnit(yearString + QUARTER_PREFIX_CODE + startingQuarter);
+		return createQuarterDateUnit(startingQuarter, Integer.parseInt(yearString));
+	}
+
+	public static DateUnit createQuarterDateUnit(int year, int startingQuarter)
+	{
+		return new DateUnit(year + QUARTER_PREFIX_CODE + startingQuarter);
 	}
 
 	public static DateUnit createMonthDateUnit(String isoDateString)
