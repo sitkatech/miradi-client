@@ -97,7 +97,7 @@ public class DateUnit
 	{
 		int startingQuarter = (startingMonth - 1) / 3 + 1;
 	
-		return createQuarterDateUnit(startingQuarter, Integer.parseInt(yearString));
+		return createQuarterDateUnit(Integer.parseInt(yearString), startingQuarter);
 	}
 
 	public static DateUnit createQuarterDateUnit(int year, int startingQuarter)
