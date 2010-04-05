@@ -22,35 +22,23 @@ package org.miradi.dialogfields.editors;
 
 import org.miradi.objecthelpers.DateUnit;
 
-public class MonthRangeCard extends DateRangePanel
+public class ProjectTotalDateUnitStartAndEndCard extends DateRangePanel
 {
-	public MonthRangeCard()
-	{
-		startMonthPanel = new MonthPanel(getStartText());
-		endMonthPanel = new MonthPanel(getEndText());
-		
-		add(startMonthPanel);
-		add(endMonthPanel);
-	}
-	
 	@Override
 	protected DateUnit getStartDate()
 	{
-		return startMonthPanel.getDate();
+		return null;
 	}
-	
+
 	@Override
 	protected DateUnit getEndDate()
 	{
-		return endMonthPanel.getDate();
+		return null;
 	}
 
 	@Override
 	public String getPanelDescription()
 	{
-		return WhenEditorComponent.MONTH_ITEM;
+		return WhenEditorComponent.PROJECT_TOTAL_ITEM;
 	}
-	
-	private MonthPanel startMonthPanel;
-	private MonthPanel endMonthPanel;
 }
