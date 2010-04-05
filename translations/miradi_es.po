@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-05 09:50-0500\n"
+"POT-Creation-Date: 2010-04-05 13:14-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -4860,6 +4860,14 @@ msgstr "Llamada inesperada a getText"
 msgid "Unexpected call to setText"
 msgstr "Llamada inesperada a setText"
 
+#: Miradi/source/org/miradi/dialogfields/editors/DateRangePanel.java:37
+msgid "Start:"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogfields/editors/DateRangePanel.java:42
+msgid "End:"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:222
 msgid "Text|Dates must be in YYYY-MM-DD format"
 msgstr "Las fechas deben tener el formato AAAA-MM-DD"
@@ -7340,6 +7348,10 @@ msgstr "Viabilidad simple"
 #: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:75
 msgid "Project Resource"
 msgstr "Recurso del proyecto"
+
+#: Miradi/source/org/miradi/dialogs/tablerenderers/WhenColumnTableCellEditorFactory.java:77
+msgid "When Editor..."
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/task/MethodPropertiesPanelWithoutBudgetPanels.java:43
 msgid "Title|Method Properties"
