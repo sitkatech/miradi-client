@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-05 14:56-0500\n"
+"POT-Creation-Date: 2010-04-05 15:05-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -2870,6 +2870,22 @@ msgstr "2"
 #: Miradi/source/org/miradi/questions/CurrencyDecimalQuestion.java:37
 msgid "3"
 msgstr "3"
+
+#: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:35
+msgid "Quarter 1"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:36
+msgid "Quarter 2"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:37
+msgid "Quarter 3"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:38
+msgid "Quarter 4"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:29
 msgid "Abandoned"
