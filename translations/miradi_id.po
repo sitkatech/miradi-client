@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-05 13:25-0500\n"
+"POT-Creation-Date: 2010-04-05 14:05-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2567,7 +2567,7 @@ msgstr "1) Kenali daftar awal target "
 msgid "Place scope on diagram"
 msgstr "Tempatkan cakupan pada diagram "
 
-#: Miradi/source/org/miradi/objecthelpers/DateUnit.java:158
+#: Miradi/source/org/miradi/objecthelpers/DateUnit.java:170
 msgid "No date range for date Unit = "
 msgstr "Tidak ada rangkaian tanggal untuk Unit tanggal = "
 
