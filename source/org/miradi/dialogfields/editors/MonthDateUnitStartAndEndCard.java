@@ -22,7 +22,7 @@ package org.miradi.dialogfields.editors;
 
 import org.miradi.objecthelpers.DateUnit;
 
-public class MonthDateUnitStartAndEndCard extends DateRangePanel
+public class MonthDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 {
 	public MonthDateUnitStartAndEndCard()
 	{

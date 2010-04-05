@@ -22,7 +22,7 @@ package org.miradi.dialogfields.editors;
 
 import org.miradi.objecthelpers.DateUnit;
 
-public class ProjectTotalDateUnitStartAndEndCard extends DateRangePanel
+public class ProjectTotalDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 {
 	@Override
 	protected DateUnit getStartDate()

@@ -24,7 +24,7 @@ import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 
-abstract public class DateRangePanel extends TwoColumnPanel
+abstract public class DateUnitStartAndEndCard extends TwoColumnPanel
 {
 	protected static String getStartText()
 	{
