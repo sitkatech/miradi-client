@@ -25,10 +25,8 @@ import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.AbstractCellEditor;
 import javax.swing.JComponent;
 import javax.swing.JTable;
-import javax.swing.table.TableCellEditor;
 
 import org.miradi.dialogfields.editors.WhenEditorComponent;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
@@ -37,7 +35,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiScrollPane;
 //FIXME this class has been duplicated from WhoColumnTableCellEditorF.  Need to pull up a common class
-public class WhenColumnTableCellEditorFactory extends AbstractCellEditor implements TableCellEditor
+public class WhenColumnTableCellEditorFactory extends AbstractTableCellEditorFactory
 {
 	public WhenColumnTableCellEditorFactory(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse)
 	{

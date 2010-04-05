@@ -25,10 +25,8 @@ import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.AbstractCellEditor;
 import javax.swing.JComponent;
 import javax.swing.JTable;
-import javax.swing.table.TableCellEditor;
 
 import org.miradi.dialogfields.WhoCodeListEditorComponent;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
@@ -43,7 +41,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ProjectResourceQuestion;
 import org.miradi.utils.MiradiScrollPane;
 
-public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implements TableCellEditor
+public class WhoColumnTableCellEditorFactory extends AbstractTableCellEditorFactory
 {
 	public WhoColumnTableCellEditorFactory(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse)
 	{
