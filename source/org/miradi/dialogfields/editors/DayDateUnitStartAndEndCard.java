@@ -22,9 +22,9 @@ package org.miradi.dialogfields.editors;
 
 import org.miradi.objecthelpers.DateUnit;
 
-public class DayRangeCard extends DateRangePanel
+public class DayDateUnitStartAndEndCard extends DateRangePanel
 {
-	public DayRangeCard()
+	public DayDateUnitStartAndEndCard()
 	{
 		startDayPanel = new DayPanel(getStartText());
 		endDayPanel = new DayPanel(getEndText());
