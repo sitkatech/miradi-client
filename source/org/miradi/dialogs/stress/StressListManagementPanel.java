@@ -32,13 +32,14 @@ public class StressListManagementPanel extends ObjectListManagementPanel
 {
 	public static StressListManagementPanel createStressManagementPanelWithVisibilityPanel(MainWindow mainWindowToUse, ORef nodeRef) throws Exception
 	{
-		return new StressListManagementPanel(mainWindowToUse, nodeRef);
+		StressPropertiesPanel stressPropertiesPanel = StressPropertiesPanel.createWithVisibilityPanel(mainWindowToUse);
+
+		return new StressListManagementPanel(mainWindowToUse, nodeRef, stressPropertiesPanel);
 	}
 	
-	private StressListManagementPanel(MainWindow mainWindowToUse, ORef nodeRef) throws Exception
+	private StressListManagementPanel(MainWindow mainWindowToUse, ORef nodeRef, StressPropertiesPanel stressPropertiesPanel) throws Exception
 	{
-		super(mainWindowToUse, new StressListTablePanel(mainWindowToUse, nodeRef),
-				StressPropertiesPanel.createWithVisibilityPanel(mainWindowToUse));
+		super(mainWindowToUse, new StressListTablePanel(mainWindowToUse, nodeRef), stressPropertiesPanel);
 	}
 
 	@Override
