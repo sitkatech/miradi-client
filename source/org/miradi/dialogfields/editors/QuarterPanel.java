@@ -20,19 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import javax.swing.JPanel;
-
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.layout.OneRowPanel;
 
-import com.jhlabs.awt.BasicGridLayout;
 import com.toedter.calendar.JYearChooser;
 
-public class QuarterPanel extends JPanel
+public class QuarterPanel extends OneRowPanel
 {
 	public QuarterPanel(String title)
-	{
-		super(new BasicGridLayout(1, 3));
-		
+	{		
 		add(new PanelTitleLabel(title));
 		add(new JYearChooser());
 		add(new QuarterChooser());

@@ -20,22 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import javax.swing.JPanel;
-
 import org.martus.util.MultiCalendar;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.layout.OneRowPanel;
 import org.miradi.objecthelpers.DateUnit;
 
-import com.jhlabs.awt.BasicGridLayout;
 import com.toedter.calendar.JMonthChooser;
 import com.toedter.calendar.JYearChooser;
 
-public class MonthPanel extends JPanel
+public class MonthPanel extends OneRowPanel
 {
 	public MonthPanel(String title)
 	{
-		super(new BasicGridLayout(1, 3));
-		
 		yearChooser = new JYearChooser();
 		monthChooser = new JMonthChooser();
 
