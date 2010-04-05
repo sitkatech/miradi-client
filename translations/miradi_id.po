@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-05 09:45-0500\n"
+"POT-Creation-Date: 2010-04-05 09:50-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7760,7 +7760,7 @@ msgstr "Sifat-sifat Tekanan "
 msgid "Manage Stresses for "
 msgstr "Mengelola Tekanan untuk "
 
-#: Miradi/source/org/miradi/dialogs/stress/StressListManagementPanel.java:69
+#: Miradi/source/org/miradi/dialogs/stress/StressListManagementPanel.java:76
 msgid "Tab|Stresses"
 msgstr "Tekanan"
 
