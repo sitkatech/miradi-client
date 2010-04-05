@@ -22,9 +22,9 @@ package org.miradi.dialogfields.editors;
 
 import org.miradi.objecthelpers.DateUnit;
 
-public class YearRangeCard extends DateRangePanel
+public class CalendarYearDateUnitStartAndEndCard extends DateRangePanel
 {
-	public YearRangeCard()
+	public CalendarYearDateUnitStartAndEndCard()
 	{
 		startYearPanel = new YearPanel(getStartText());
 		endYearPanel = new YearPanel(getEndText());
