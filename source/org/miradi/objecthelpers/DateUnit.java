@@ -79,23 +79,35 @@ public class DateUnit
 		int startingMonth = startDate.getGregorianMonth();
 
 		if(dateRange.isDay())
-			return new DateUnit(startIso);
+			return createDayDateUnit(startIso);
 		
 		if(dateRange.isMonth())
-			return new DateUnit(startIso.substring(0, 7));
+			return createMonthDateUnit(startIso);
 		
 		if(dateRange.isQuarter())
-		{
-			int startingQuarter = (startingMonth - 1) / 3 + 1;
-			return new DateUnit(yearString + QUARTER_PREFIX_CODE + startingQuarter);
-		}
+			return createQuarterDateUnit(yearString, startingMonth);
 		
 		if(dateRange.isYear())
-		{
 			return createFiscalYear(startingYear, startingMonth);
-		}
 		
 		return new DateUnit();
+	}
+
+	public static DateUnit createQuarterDateUnit(String yearString, int startingMonth)
+	{
+		int startingQuarter = (startingMonth - 1) / 3 + 1;
+	
+		return new DateUnit(yearString + QUARTER_PREFIX_CODE + startingQuarter);
+	}
+
+	public static DateUnit createMonthDateUnit(String isoDateString)
+	{
+		return new DateUnit(isoDateString.substring(0, 7));
+	}
+
+	public static DateUnit createDayDateUnit(String isoDateString)
+	{
+		return new DateUnit(isoDateString);
 	}
 
 	public static DateUnit createFiscalYear(Integer startingYear, int startingMonth)
