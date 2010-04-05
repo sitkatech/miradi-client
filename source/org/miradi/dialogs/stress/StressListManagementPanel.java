@@ -31,7 +31,12 @@ import org.miradi.objecthelpers.ORef;
 
 public class StressListManagementPanel extends ObjectListManagementPanel
 {
-	public StressListManagementPanel(MainWindow mainWindowToUse, ORef nodeRef, Actions actions) throws Exception
+	public static StressListManagementPanel createStressManagementPanelWithVisibilityPanel(MainWindow mainWindowToUse, ORef nodeRef) throws Exception
+	{
+		return new StressListManagementPanel(mainWindowToUse, nodeRef, mainWindowToUse.getActions());
+	}
+	
+	private StressListManagementPanel(MainWindow mainWindowToUse, ORef nodeRef, Actions actions) throws Exception
 	{
 		super(mainWindowToUse, new StressListTablePanel(mainWindowToUse, nodeRef),
 				StressPropertiesPanel.createWithVisibilityPanel(mainWindowToUse));
