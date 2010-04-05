@@ -21,7 +21,6 @@ package org.miradi.dialogs.stress;
 
 import javax.swing.Icon;
 
-import org.miradi.actions.Actions;
 import org.miradi.actions.jump.ActionJumpTargetStressesStep;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.icons.StressIcon;
@@ -33,10 +32,10 @@ public class StressListManagementPanel extends ObjectListManagementPanel
 {
 	public static StressListManagementPanel createStressManagementPanelWithVisibilityPanel(MainWindow mainWindowToUse, ORef nodeRef) throws Exception
 	{
-		return new StressListManagementPanel(mainWindowToUse, nodeRef, mainWindowToUse.getActions());
+		return new StressListManagementPanel(mainWindowToUse, nodeRef);
 	}
 	
-	private StressListManagementPanel(MainWindow mainWindowToUse, ORef nodeRef, Actions actions) throws Exception
+	private StressListManagementPanel(MainWindow mainWindowToUse, ORef nodeRef) throws Exception
 	{
 		super(mainWindowToUse, new StressListTablePanel(mainWindowToUse, nodeRef),
 				StressPropertiesPanel.createWithVisibilityPanel(mainWindowToUse));
