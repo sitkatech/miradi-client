@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-05 14:38-0500\n"
+"POT-Creation-Date: 2010-04-05 14:56-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -2580,7 +2580,7 @@ msgstr "1) Identificar lista inicial de objetos"
 msgid "Place scope on diagram"
 msgstr "Ubicar el alcance en el diagrama"
 
-#: Miradi/source/org/miradi/objecthelpers/DateUnit.java:170
+#: Miradi/source/org/miradi/objecthelpers/DateUnit.java:175
 msgid "No date range for date Unit = "
 msgstr "No se encontró ningún rango de fechas para la Unidad de fechas ="
 
