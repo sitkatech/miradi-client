@@ -22,6 +22,8 @@ package org.miradi.dialogfields.editors;
 
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.OneRowPanel;
+import org.miradi.objecthelpers.DateUnit;
+import org.miradi.questions.ChoiceItem;
 
 import com.toedter.calendar.JYearChooser;
 
@@ -29,8 +31,20 @@ public class QuarterPanel extends OneRowPanel
 {
 	public QuarterPanel(String title)
 	{		
+		yearChooser = new JYearChooser();
+		quarterChooser = new QuarterChooser();
+
 		add(new PanelTitleLabel(title));
-		add(new JYearChooser());
-		add(new QuarterChooser());
+		add(yearChooser);
+		add(quarterChooser);
 	}
+	
+	public DateUnit getDateUnit()
+	{
+		ChoiceItem choiceItem = (ChoiceItem) quarterChooser.getSelectedItem();
+		return DateUnit.createQuarterDateUnit(Integer.parseInt(choiceItem.getCode()), yearChooser.getYear());
+	}
+	
+	private QuarterChooser quarterChooser;
+	private JYearChooser yearChooser;
 }
