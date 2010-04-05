@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-05 13:17-0500\n"
+"POT-Creation-Date: 2010-04-05 13:25-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7040,12 +7040,12 @@ msgstr "资金来源属性 \t\t"
 msgid "Title|Simple Viability"
 msgstr "简单生存力 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:73
+#: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:47
 msgid "Project Resource"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/tablerenderers/WhenColumnTableCellEditorFactory.java:75
-msgid "When Editor..."
+#: Miradi/source/org/miradi/dialogs/tablerenderers/WhenColumnTableCellEditorFactory.java:46
+msgid "When"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/task/MethodPropertiesPanelWithoutBudgetPanels.java:43
