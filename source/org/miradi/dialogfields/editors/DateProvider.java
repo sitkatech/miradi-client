@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import org.martus.util.MultiCalendar;
+import org.miradi.objecthelpers.DateUnit;
 
 public interface DateProvider
 {
-	public MultiCalendar getDate();
+	public DateUnit getDate();
 }

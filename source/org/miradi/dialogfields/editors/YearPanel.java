@@ -23,6 +23,7 @@ package org.miradi.dialogfields.editors;
 import org.martus.util.MultiCalendar;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.TwoColumnPanel;
+import org.miradi.objecthelpers.DateUnit;
 
 import com.toedter.calendar.JYearChooser;
 
@@ -35,9 +36,10 @@ public class YearPanel extends TwoColumnPanel implements DateProvider
 		add(yearChooser);
 	}
 	
-	public MultiCalendar getDate()
+	public DateUnit getDate()
 	{
-		return MultiCalendar.createFromGregorianYearMonthDay(yearChooser.getYear(), 1, 1);
+		MultiCalendar year = MultiCalendar.createFromGregorianYearMonthDay(yearChooser.getYear(), 1, 1);
+		return DateUnit.createFiscalYear(year.getGregorianYear(), year.getGregorianMonth());
 	}
 	
 	private JYearChooser yearChooser; 

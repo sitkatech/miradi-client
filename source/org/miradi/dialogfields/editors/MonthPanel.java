@@ -24,6 +24,7 @@ import javax.swing.JPanel;
 
 import org.martus.util.MultiCalendar;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.objecthelpers.DateUnit;
 
 import com.jhlabs.awt.BasicGridLayout;
 import com.toedter.calendar.JMonthChooser;
@@ -43,9 +44,10 @@ public class MonthPanel extends JPanel
 		add(monthChooser);
 	}
 	
-	public MultiCalendar getDate()
+	public DateUnit getDate()
 	{
-		return MultiCalendar.createFromGregorianYearMonthDay(yearChooser.getYear(), monthChooser.getMonth(), 1); 
+		MultiCalendar month = MultiCalendar.createFromGregorianYearMonthDay(yearChooser.getYear(), monthChooser.getMonth(), 1);
+		return DateUnit.createMonthDateUnit(month.toIsoDateString()); 
 	}
 	
 	private JMonthChooser monthChooser;

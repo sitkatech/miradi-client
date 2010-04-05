@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import org.martus.util.MultiCalendar;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.TwoColumnPanel;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.utils.DateEditorComponent;
 
 public class DayPanel extends TwoColumnPanel
@@ -34,9 +34,9 @@ public class DayPanel extends TwoColumnPanel
 		add(dateEditor);
 	}
 
-	public MultiCalendar getDate()
+	public DateUnit getDateUnit()
 	{
-		return MultiCalendar.createFromIsoDateString(dateEditor.getText());
+		return DateUnit.createDayDateUnit(dateEditor.getText()); 
 	}
 	
 	private DateEditorComponent dateEditor;

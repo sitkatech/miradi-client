@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import org.martus.util.MultiCalendar;
+import org.miradi.objecthelpers.DateUnit;
 
 public class MonthRangeCard extends DateRangePanel
 {
@@ -34,13 +34,13 @@ public class MonthRangeCard extends DateRangePanel
 	}
 	
 	@Override
-	protected MultiCalendar getStartDate()
+	protected DateUnit getStartDate()
 	{
 		return startMonthPanel.getDate();
 	}
 	
 	@Override
-	protected MultiCalendar getEndDate()
+	protected DateUnit getEndDate()
 	{
 		return endMonthPanel.getDate();
 	}
