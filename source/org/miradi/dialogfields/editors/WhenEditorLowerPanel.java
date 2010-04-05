@@ -33,10 +33,10 @@ public class WhenEditorLowerPanel extends JPanel
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 		
-		projectTotalCard = new ProjectTotalCard();
+		projectTotalCard = new ProjectTotalDateUnitStartAndEndCard();
 		yearCard = new CalendarYearDateUnitStartAndEndCard();
 		quarterCard = new QuarterRangeCard();
-		monthCard = new MonthRangeCard();
+		monthCard = new MonthDateUnitStartAndEndCard();
 		dayCard = new DayDateUnitStartAndEndCard();
 		
 		add(projectTotalCard, projectTotalCard.getPanelDescription());
@@ -85,9 +85,9 @@ public class WhenEditorLowerPanel extends JPanel
 	private CardLayout cardLayout;
 	private DateRangePanel currentCard;
 	
-	private ProjectTotalCard projectTotalCard;
+	private ProjectTotalDateUnitStartAndEndCard projectTotalCard;
 	private CalendarYearDateUnitStartAndEndCard yearCard;
 	private QuarterRangeCard quarterCard;
-	private MonthRangeCard monthCard;
+	private MonthDateUnitStartAndEndCard monthCard;
 	private DayDateUnitStartAndEndCard dayCard;
 }
