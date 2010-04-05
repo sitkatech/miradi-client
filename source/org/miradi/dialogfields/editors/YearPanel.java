@@ -27,7 +27,7 @@ import org.miradi.objecthelpers.DateUnit;
 
 import com.toedter.calendar.JYearChooser;
 
-public class YearPanel extends TwoColumnPanel implements DateProvider
+public class YearPanel extends TwoColumnPanel
 {
 	public YearPanel(String panelTitle)
 	{
