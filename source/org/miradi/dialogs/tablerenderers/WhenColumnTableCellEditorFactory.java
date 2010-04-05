@@ -20,66 +20,29 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.tablerenderers;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.JComponent;
-import javax.swing.JTable;
-
 import org.miradi.dialogfields.editors.WhenEditorComponent;
-import org.miradi.dialogs.base.ModelessDialogWithClose;
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.MiradiScrollPane;
-//FIXME this class has been duplicated from WhoColumnTableCellEditorF.  Need to pull up a common class
+import org.miradi.objects.BaseObject;
+
 public class WhenColumnTableCellEditorFactory extends AbstractTableCellEditorFactory
 {
 	public WhenColumnTableCellEditorFactory(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse)
 	{
-		mainWindow = mainWindowToUse;
-		table = tableToUse;
-
-		rendererFactory = new MultiLineObjectTableCellRendererOnlyFactory(tableToUse, new DefaultFontProvider(mainWindowToUse));
-
-		JComponent rendererComponent = rendererFactory.getRendererComponent();
-		rendererComponent.addMouseListener(new LeftClickHandler());
+		super(mainWindowToUse, tableToUse);
 	}
 	
-	public Component getTableCellEditorComponent(JTable tableToUse, Object value, boolean isSelected, int row, int column) 
+	@Override
+	protected DisposablePanel createEditorComponenet(BaseObject baseObjectForRow)
 	{
-		return rendererFactory.getTableCellEditorComponent(tableToUse, value, true, row, column);
-	}
-
-	public Object getCellEditorValue()
-	{
-		return null;
-	}
-
-	public MainWindow getMainWindow()
-	{
-		return mainWindow;
+		return new WhenEditorComponent();
 	}
 	
-	private class LeftClickHandler extends MouseAdapter
+	@Override
+	protected String getDialogTitle()
 	{
-		@Override
-		public void mouseClicked(MouseEvent e)
-		{
-			table.stopCellEditing();
-
-			WhenEditorComponent codeListEditor = new WhenEditorComponent();
-			MiradiScrollPane codeListEditorScrollPane = new MiradiScrollPane(codeListEditor);
-			ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), EAM.text("When Editor..."));
-			dialog.add(codeListEditorScrollPane, BorderLayout.CENTER);
-			dialog.pack();
-			getMainWindow().getCurrentView().showFloatingPropertiesDialog(dialog);
-		}
+		return EAM.text("When");
 	}
-	
-	private PlanningUpperMultiTable table;
-	private MainWindow mainWindow;
-	private MultiLineObjectTableCellRendererOnlyFactory rendererFactory;
 }

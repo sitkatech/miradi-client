@@ -24,13 +24,16 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import org.martus.swing.UiComboBox;
-import org.miradi.layout.OneColumnPanel;
+import org.miradi.dialogs.base.DisposablePanel;
+import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.utils.DateRange;
 
-public class WhenEditorComponent extends OneColumnPanel
+public class WhenEditorComponent extends DisposablePanel
 {
 	public WhenEditorComponent()
 	{
+		setLayout(new OneColumnGridLayout());
+		
 		String[] choices = new String[]{PROJECT_TOTAL_ITEM, YEAR_ITEM, QUARTER_ITEM, MONTH_ITEM, DAY_ITEM,};
 		dateUnitTypeCombo = new UiComboBox(choices);
 		dateUnitTypeCombo.addItemListener(new ChangeHandler());

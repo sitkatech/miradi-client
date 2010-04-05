@@ -20,81 +20,30 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.tablerenderers;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.JComponent;
-import javax.swing.JTable;
-
 import org.miradi.dialogfields.WhoCodeListEditorComponent;
-import org.miradi.dialogs.base.ModelessDialogWithClose;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
-import org.miradi.dialogs.treetables.ObjectTreeTable;
-import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.Project;
 import org.miradi.questions.ProjectResourceQuestion;
-import org.miradi.utils.MiradiScrollPane;
 
 public class WhoColumnTableCellEditorFactory extends AbstractTableCellEditorFactory
 {
 	public WhoColumnTableCellEditorFactory(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse)
 	{
-		mainWindow = mainWindowToUse;
-		table = tableToUse;
-
-		rendererFactory = new MultiLineObjectTableCellRendererOnlyFactory(tableToUse, new DefaultFontProvider(mainWindowToUse));
-		rendererFactory.setCellBackgroundColor(AppPreferences.RESOURCE_TABLE_BACKGROUND);
-
-		JComponent rendererComponent = rendererFactory.getRendererComponent();
-		rendererComponent.addMouseListener(new LeftClickHandler());
+		super(mainWindowToUse, tableToUse);
+	}	
+	
+	@Override
+	protected DisposablePanel createEditorComponenet(BaseObject baseObjectForRow)
+	{
+		return new WhoCodeListEditorComponent(baseObjectForRow, new ProjectResourceQuestion(getProject()));
 	}
 	
-	public Component getTableCellEditorComponent(JTable tableToUse, Object value, boolean isSelected, int row, int column) 
+	@Override
+	protected String getDialogTitle()
 	{
-		return rendererFactory.getTableCellEditorComponent(tableToUse, value, true, row, column);
+		return EAM.text("Project Resource");
 	}
-
-	class LeftClickHandler extends MouseAdapter
-	{
-		@Override
-		public void mouseClicked(MouseEvent e)
-		{
-			table.stopCellEditing();
-
-			final BaseObject baseObjectForRow = table.getBaseObjectForRowColumn(table.getSelectedRow(), table.getSelectedColumn());
-			WhoCodeListEditorComponent codeListEditor = new WhoCodeListEditorComponent(baseObjectForRow, new ProjectResourceQuestion(getProject()));
-			MiradiScrollPane codeListEditorScrollPane = new MiradiScrollPane(codeListEditor);
-			ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), EAM.text("Project Resource"));
-			String dialogObjectDescription = ObjectTreeTable.getToolTipString(baseObjectForRow);
-			dialog.add(new PanelTitleLabel(dialogObjectDescription), BorderLayout.BEFORE_FIRST_LINE);
-			dialog.add(codeListEditorScrollPane, BorderLayout.CENTER);
-			dialog.pack();
-			getMainWindow().getCurrentView().showFloatingPropertiesDialog(dialog);
-		}
-	}
-
-	public Object getCellEditorValue()
-	{
-		return null;
-	}
-
-	public Project getProject()
-	{
-		return getMainWindow().getProject();
-	}
-	
-	public MainWindow getMainWindow()
-	{
-		return mainWindow;
-	}
-	
-	private PlanningUpperMultiTable table;
-	private MainWindow mainWindow;
-	private MultiLineObjectTableCellRendererOnlyFactory rendererFactory;
 }
