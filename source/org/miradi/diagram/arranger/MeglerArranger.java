@@ -288,6 +288,9 @@ public class MeglerArranger
 
 	private void createAndLinkToGroupBox(Vector<DiagramFactor> toBeGrouped, int direction) throws Exception, UnexpectedNonSideEffectException, CommandFailedException
 	{
+		if(toBeGrouped.size() == 0)
+			throw new RuntimeException("Attempted to group zero factors");
+		
 		ORef newGroupDiagramFactorRef = createAndPopulateGroupBox(toBeGrouped);
 
 		LinkCreator linkCreator = new LinkCreator(getProject());
