@@ -81,6 +81,7 @@ public class MeglerArranger
 			createGroupBoxes();
 			progressMeter.incrementProgress();
 		}
+		createGroupLinks();
 		
 		if(hasUserRequestedStop())
 			return false;
@@ -352,6 +353,16 @@ public class MeglerArranger
 				froms.add(link.getDiagramFactor(direction).getRef());
 		}
 		return froms;
+	}
+	
+	private void createGroupLinks() throws Exception
+	{
+		LinkCreator linkCreator = new LinkCreator(getProject());
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		for(DiagramFactor groupBoxDiagramFactor : groupBoxDiagramFactors)
+		{
+			linkCreator.createAllPossibleGroupLinks(diagram, groupBoxDiagramFactor);
+		}
 	}
 
 	private Vector<DiagramFactor> extractUnlinkedDiagramFactors(Vector<DiagramFactor> candidates)

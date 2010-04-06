@@ -583,6 +583,9 @@ public class LinkCreator
 			linkedFactorsForEachGroupedFactor.add(diagramFactorsThatLinkToThis);
 		}
 		
+		if(linkedFactorsForEachGroupedFactor.size() == 0)
+			return new ORefSet();
+		
 		ORefSet result = linkedFactorsForEachGroupedFactor.firstElement();
 		for(ORefSet set : linkedFactorsForEachGroupedFactor)
 			result.retainAll(set);
