@@ -1144,7 +1144,7 @@ public class Project
 		getCommandExecutor().beginTransaction();
 	}
 	
-	public void endTransaction() throws CommandFailedException
+	public void internalEndTransaction() throws CommandFailedException
 	{
 		getCommandExecutor().endTransaction();
 	}
