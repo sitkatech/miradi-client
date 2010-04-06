@@ -20,14 +20,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import org.miradi.icons.PopupEditorIcon;
+import javax.swing.Icon;
 
-public class PopupEditorButton extends MinimumSizeButton
+import org.miradi.actions.EAMAction;
+import org.miradi.dialogs.fieldComponents.PanelButton;
+
+public class MinimumSizeButton extends PanelButton
 {
-	public PopupEditorButton()
+	public MinimumSizeButton(EAMAction action)
 	{
-		super(new PopupEditorIcon());
+		super(action);
 	}
 
-	
+	public MinimumSizeButton(Icon icon)
+	{
+		super(icon);
+	}
+
 }
