@@ -36,8 +36,8 @@ public class DiagramObjectDataInclusionQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[]{
 				new ChoiceItem(INCLUDE_BOTH_DIAGRAM_DATA_CODE, EAM.text("Both")),
-				new ChoiceItem(INCLUDE_RESULTS_CHAIN_DATA_CODE, EAM.text("Result Chain Data"), new ConceptualModelIcon()),
-				new ChoiceItem(INCLUDE_CONCEPTUAL_MODEL_DATA_CODE, EAM.text("Conceptual Model Data"), new ResultsChainIcon()),
+				new ChoiceItem(INCLUDE_RESULTS_CHAIN_DATA_CODE, EAM.text("Result Chain Data"), new ResultsChainIcon()),
+				new ChoiceItem(INCLUDE_CONCEPTUAL_MODEL_DATA_CODE, EAM.text("Conceptual Model Data"), new ConceptualModelIcon()),
 		};
 	}
 	
