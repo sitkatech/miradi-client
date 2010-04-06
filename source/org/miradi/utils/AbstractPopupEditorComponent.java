@@ -50,7 +50,7 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 		stopEditingListener = listener;
 	}
 
-	protected void addListeners()
+	private void addListeners()
 	{
 		PopUpEditorHandler popupEditHandler = new PopUpEditorHandler();
 		popupInvokeButton.addActionListener(popupEditHandler);
