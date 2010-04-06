@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-06 11:52-0500\n"
+"POT-Creation-Date: 2010-04-06 12:11-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -4332,31 +4332,31 @@ msgstr ""
 msgid "Creating group boxes..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:99
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:100
 msgid "Ignoring unlinked factors..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:373
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:384
 msgid "Preparing groups..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:385
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:396
 msgid "Updating locations..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:460
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:471
 msgid "Arranging Threats..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:471
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:482
 msgid "Arranging Targets..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:478
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:489
 msgid "Arranging Strategies..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:559
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:570
 msgid "Extracting factors..."
 msgstr ""
 
