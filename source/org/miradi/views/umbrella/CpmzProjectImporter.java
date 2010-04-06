@@ -184,13 +184,14 @@ public class CpmzProjectImporter extends AbstractProjectImporter
 		ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(filledProject, conceptualModelRef);
 		new ConceptualModelByTargetSplitter(filledProject).splitByTarget(conceptualModel, highOrAboveRankedThreatsTag);
 		
-		invokeMeglerArranger(filledProject, conceptualModelRefs);
+		invokeMeglerArrangerOnAllConceptualModelPages(filledProject);
 		selectFirstDiagramInAlphabeticallySortedList(filledProject);
 		new GroupBoxHelper(filledProject).setGroupBoxTagsToMatchChildren();
 	}
 
-	private void invokeMeglerArranger(Project filledProject, ORefList conceptualModelRefs) throws Exception
+	private void invokeMeglerArrangerOnAllConceptualModelPages(Project filledProject) throws Exception
 	{
+		ORefList conceptualModelRefs = filledProject.getConceptualModelDiagramPool().getRefList();
 		for(int index = 0; index < conceptualModelRefs.size(); ++index)
 		{
 			ConceptualModelDiagram diagramToArrange = ConceptualModelDiagram.find(filledProject, conceptualModelRefs.get(index));
