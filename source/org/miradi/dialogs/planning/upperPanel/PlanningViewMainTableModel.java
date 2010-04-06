@@ -232,8 +232,8 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
 		{			
 			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRefs.get(index));
-			Vector<Command> commands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
-			getProject().executeCommandsWithoutTransaction(commands);
+			Vector<Command> removeAssignmentCommands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
+			getProject().executeCommandsWithoutTransaction(removeAssignmentCommands);
 		}
 	}
 
