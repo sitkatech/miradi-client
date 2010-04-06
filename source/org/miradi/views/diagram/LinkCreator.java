@@ -526,22 +526,33 @@ public class LinkCreator
 	{
 		ORef groupBoxDiagramFactorRef = groupBoxDiagramFactor.getRef();
 
-		ORefSet fromDiagramFactorRefs = getRefsOfDiagramFactorsThatLinkToAllChildren(groupBoxDiagramFactorRef, FactorLink.FROM);
-		for(ORef fromDiagramFactorRef : fromDiagramFactorRefs)
 		{
-			DiagramFactor from = DiagramFactor.find(getProject(), fromDiagramFactorRef);
-			if(diagramObject.areLinkedEitherDirection(from.getWrappedORef(), groupBoxDiagramFactor.getWrappedORef()))
-				continue;
-			createGroupDiagramLink(diagramObject, fromDiagramFactorRef, groupBoxDiagramFactorRef);
+			ORefSet fromDiagramFactorRefs = getRefsOfDiagramFactorsThatLinkToAllChildren(groupBoxDiagramFactorRef, FactorLink.FROM);
+			ORefSet toDiagramFactorRefs = new ORefSet(groupBoxDiagramFactorRef);
+			createAllPossibleGroupLinks(diagramObject, fromDiagramFactorRefs, toDiagramFactorRefs);
 		}
 
-		ORefSet toDiagramFactorRefs = getRefsOfDiagramFactorsThatLinkToAllChildren(groupBoxDiagramFactorRef, FactorLink.TO);
-		for(ORef toDiagramFactorRef : toDiagramFactorRefs)
 		{
-			DiagramFactor to = DiagramFactor.find(getProject(), toDiagramFactorRef);
-			if(diagramObject.areLinkedEitherDirection(groupBoxDiagramFactor.getWrappedORef(),to.getWrappedORef()))
-				continue;
-			createGroupDiagramLink(diagramObject, groupBoxDiagramFactorRef, toDiagramFactorRef);
+			ORefSet fromDiagramFactorRefs = new ORefSet(groupBoxDiagramFactorRef);
+			ORefSet toDiagramFactorRefs = getRefsOfDiagramFactorsThatLinkToAllChildren(groupBoxDiagramFactorRef, FactorLink.TO);
+			createAllPossibleGroupLinks(diagramObject, fromDiagramFactorRefs, toDiagramFactorRefs);
+		}
+	}
+
+	private void createAllPossibleGroupLinks(DiagramObject diagramObject,
+			ORefSet fromDiagramFactorRefs, ORefSet toDiagramFactorRefs)
+			throws CommandFailedException, ParseException
+	{
+		for(ORef fromDiagramFactorRef : fromDiagramFactorRefs)
+		{
+			for(ORef toDiagramFactorRef : toDiagramFactorRefs)
+			{
+				DiagramFactor from = DiagramFactor.find(getProject(), fromDiagramFactorRef);
+				DiagramFactor to = DiagramFactor.find(getProject(), toDiagramFactorRef);
+				boolean areAlreadyLinked = diagramObject.areLinkedEitherDirection(from.getWrappedORef(), to.getWrappedORef());
+				if(!areAlreadyLinked)
+					createGroupDiagramLink(diagramObject, fromDiagramFactorRef, toDiagramFactorRef);
+			}
 		}
 	}
 
