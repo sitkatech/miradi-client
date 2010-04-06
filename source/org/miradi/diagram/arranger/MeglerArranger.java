@@ -113,15 +113,15 @@ public class MeglerArranger
 	{
 		createTargetGroups();
 
-		if(targets.size() > strategies.size())
+		if(targets.size() <= 1)
 		{
-			createThreatGroupsBasedOnTargets();
 			createThreatGroupsBasedOnStrategies();
+			createThreatGroupsBasedOnTargets();
 		}
 		else
 		{
-			createThreatGroupsBasedOnStrategies();
 			createThreatGroupsBasedOnTargets();
+			createThreatGroupsBasedOnStrategies();
 		}
 		
 		ceateStrategyGroups();
