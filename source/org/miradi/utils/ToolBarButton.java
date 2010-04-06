@@ -23,9 +23,8 @@ import java.awt.Dimension;
 
 import org.miradi.actions.Actions;
 import org.miradi.actions.EAMAction;
-import org.miradi.dialogs.fieldComponents.PanelButton;
 
-public class ToolBarButton extends PanelButton implements LocationHolder
+public class ToolBarButton extends MinimumSizeButton implements LocationHolder
 {
 	public ToolBarButton(Actions actions, Class actionClass)
 	{
