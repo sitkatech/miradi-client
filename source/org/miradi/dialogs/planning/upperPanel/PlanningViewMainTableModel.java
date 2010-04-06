@@ -113,7 +113,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			return isWhoCellEditable(row, modelColumn);
 		
 		if (isWhenColumn(columnTag))
-			return false;
+			return isWhenCellEditable(row, modelColumn);
 		
 		return super.isCellEditable(row, modelColumn);
 	}
@@ -134,6 +134,56 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return isWhenColumn(getColumnTag(modelColumn));
 	}
 	
+	private boolean isWhenCellEditable(int row, int modelColumn)
+	{
+		BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, modelColumn);
+		return isWhenEditable(baseObjectForRow);
+	}
+	
+	public static boolean isWhenEditable(BaseObject baseObject)
+	{
+		try
+		{
+			if (!AssignmentDateUnitsTableModel.canReferToAssignments(baseObject.getRef()))
+				return false;
+			
+			if (baseObject.getSubTaskRefs().hasData())
+				return false;
+			
+			if (baseObject.getResourceAssignmentRefs().isEmpty())
+				return true;
+			
+			if (baseObject.getResourceAssignmentRefs().size() > 1)
+				return false;
+
+			if (hasMoreThanOneDateUnitEfforts(baseObject))
+				return false;
+			
+			OptionalDouble totalBudgetCost = baseObject.getTotalBudgetCost();
+			if (totalBudgetCost.hasNoValue())
+				return true;
+			
+			if (totalBudgetCost.getValue() > 0)
+				return false;
+			
+			return true;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
+	}
+	
+	private static boolean hasMoreThanOneDateUnitEfforts(BaseObject baseObject) throws Exception
+	{
+		ORefList assignmentRefs = baseObject.getResourceAssignmentRefs();
+		ResourceAssignment assignment = ResourceAssignment.find(baseObject.getProject(), assignmentRefs.getFirstElement());
+		DateUnitEffortList effortList = assignment.getDateUnitEffortList();
+		
+		return effortList.size() > 1;
+	}
+
 	private boolean isWhoCellEditable(int row, int modelColumn)
 	{
 		try
