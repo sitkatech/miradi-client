@@ -522,13 +522,7 @@ public class LinkCreator
 		return convertToFactorLinks(groupBoxChildrenDiagramFactorRefs);
 	}
 	
-	public static ORefSet getDiagramFactorsThatLinkToAll(Project project, Vector<DiagramFactor> toBeGrouped, int direction)
-	{
-		ORefSet childRefs = new ORefSet(toBeGrouped.toArray(new DiagramFactor[0]));
-		return getDiagramFactorsThatLinkToAll(project, childRefs, direction);
-	}
-
-	private static ORefSet getDiagramFactorsThatLinkToAll(Project project,
+	public static ORefSet getDiagramFactorsThatLinkToAll(Project project,
 			ORefSet childRefs, int direction)
 	{
 		if(childRefs.size() == 0)
