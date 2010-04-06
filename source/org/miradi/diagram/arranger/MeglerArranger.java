@@ -290,7 +290,7 @@ public class MeglerArranger
 	{
 		ORef newGroupDiagramFactorRef = createAndPopulateGroupBox(toBeGrouped);
 
-		ORefSet refsOfDiagramFactorsThatLinkToEntireGroup = getDiagramFactorsThatLinkToAll(toBeGrouped, direction);
+		ORefSet refsOfDiagramFactorsThatLinkToEntireGroup = LinkCreator.getDiagramFactorsThatLinkToAll(toBeGrouped, direction);
 		LinkCreator linkCreator = new LinkCreator(getProject());
 		for(ORef nonGroupedRef : refsOfDiagramFactorsThatLinkToEntireGroup)
 		{
@@ -304,39 +304,6 @@ public class MeglerArranger
 			}
 			linkCreator.createFactorLinkAndDiagramLink(diagram, fromDiagramFactor, toDiagramFactor);
 		}
-	}
-
-	private static ORefSet getDiagramFactorsThatLinkToAll(Vector<DiagramFactor> toBeGrouped, int direction)
-	{
-		if(toBeGrouped.size() == 0)
-			throw new RuntimeException("Attempted to group zero factors");
-		
-		ORefSet[] linkedFactorsForEachGroupedFactor = new ORefSet[toBeGrouped.size()];
-		for(int diagramFactorIndex = 0; diagramFactorIndex < toBeGrouped.size(); ++diagramFactorIndex)
-		{
-			ORefSet diagramFactorsThatLinkToThis = new ORefSet();
-			
-			DiagramFactor df = toBeGrouped.get(diagramFactorIndex);
-			ORef thisDiagramFactorRef = df.getRef();
-
-			ORefList diagramLinkRefs = df.findObjectsThatReferToUs(DiagramLink.getObjectType());
-			for(int diagramLinkIndex = 0; diagramLinkIndex < diagramLinkRefs.size(); ++diagramLinkIndex)
-			{
-				DiagramLink diagramLink = DiagramLink.find(df.getProject(), diagramLinkRefs.get(diagramLinkIndex));
-				ORef maybeThisDiagramFactorRef = diagramLink.getOppositeDiagramFactorRef(direction);
-				ORef otherDiagramFactorRef = diagramLink.getDiagramFactorRef(direction);
-				if(maybeThisDiagramFactorRef.equals(thisDiagramFactorRef))
-					diagramFactorsThatLinkToThis.add(otherDiagramFactorRef);
-			}
-			
-			linkedFactorsForEachGroupedFactor[diagramFactorIndex] = diagramFactorsThatLinkToThis;
-		}
-		
-		ORefSet result = linkedFactorsForEachGroupedFactor[0];
-		for(int i = 0; i < linkedFactorsForEachGroupedFactor.length; ++i)
-			result.retainAll(linkedFactorsForEachGroupedFactor[i]);
-
-		return result;
 	}
 
 	private ORef createAndPopulateGroupBox(Vector<DiagramFactor> toBeGrouped)
