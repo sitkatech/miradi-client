@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-05 21:10-0500\n"
+"POT-Creation-Date: 2010-04-05 21:29-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -7368,10 +7368,6 @@ msgstr "Viabilidad simple"
 #: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:47
 msgid "Project Resource"
 msgstr "Recurso del proyecto"
-
-#: Miradi/source/org/miradi/dialogs/tablerenderers/WhenColumnTableCellEditorFactory.java:46
-msgid "When"
-msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/task/MethodPropertiesPanelWithoutBudgetPanels.java:43
 msgid "Title|Method Properties"
