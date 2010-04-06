@@ -48,10 +48,10 @@ public class WhenEditorComponent extends DisposablePanel
 	{
 		CodeList startEndCodes = new CodeList();
 		if (getStartDateUnit() != null)
-			startEndCodes.add(getStartDateUnit().toString());
+			startEndCodes.add(getStartDateUnit().getDateUnitCode());
 		
 		if (getEndDateUnit() != null)
-			startEndCodes.add(getEndDateUnit().toString());
+			startEndCodes.add(getEndDateUnit().getDateUnitCode());
 		
 		return startEndCodes;
 	}
