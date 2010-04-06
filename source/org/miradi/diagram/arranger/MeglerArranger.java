@@ -243,7 +243,7 @@ public class MeglerArranger
 		Collections.sort(groupCandidates, new LinkCountComparator(direction));
 	}
 
-	private Set<DiagramFactor> findAllThatAreLinkedToAGroup(Vector<DiagramFactor> groupCandidates, int direction)
+	private static Set<DiagramFactor> findAllThatAreLinkedToAGroup(Vector<DiagramFactor> groupCandidates, int direction)
 	{
 		HashSet<DiagramFactor> linkedToGroup = new HashSet<DiagramFactor>();
 		for(DiagramFactor diagramFactor : groupCandidates)
@@ -251,7 +251,7 @@ public class MeglerArranger
 			ORefList ourLinks = diagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
 			for(int i = 0; i < ourLinks.size(); ++i)
 			{
-				DiagramLink diagramLink = DiagramLink.find(getProject(), ourLinks.get(i));
+				DiagramLink diagramLink = DiagramLink.find(diagramFactor.getProject(), ourLinks.get(i));
 				if(diagramLink.getDiagramFactor(direction).getWrappedType() == GroupBox.getObjectType())
 					linkedToGroup.add(diagramFactor);
 			}
