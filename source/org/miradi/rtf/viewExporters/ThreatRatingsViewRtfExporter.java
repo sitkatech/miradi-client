@@ -68,7 +68,7 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 		Cause[] threats =  getProject().getCausePool().getDirectThreats();
 		for(Target target : targets)
 		{
-			if (target.getStressRefs().hasData())
+			if (target.getStressRefs().hasRefs())
 				exportStressBasedThreatRatingDetailsRow(writer, target, threats);
 		}
 	}

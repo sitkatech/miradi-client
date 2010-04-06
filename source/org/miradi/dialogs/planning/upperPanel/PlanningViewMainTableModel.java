@@ -152,7 +152,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (!AssignmentDateUnitsTableModel.canOwnAssignments(baseObject.getRef()))
 				return false;
 			
-			if (baseObject.getSubTaskRefs().hasData())
+			if (baseObject.getSubTaskRefs().hasRefs())
 				return false;
 			
 			if (baseObject.getResourceAssignmentRefs().isEmpty())

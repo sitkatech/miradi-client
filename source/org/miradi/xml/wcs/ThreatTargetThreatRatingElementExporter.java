@@ -104,7 +104,7 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 		Vector<Target> targets = AbstractThreatTargetTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
 		for(Target target : targets)
 		{
-			if (target.getStressRefs().hasData())
+			if (target.getStressRefs().hasRefs())
 				exportStressBasedThreatRatingDetailsRow(target, threats);
 		}
 	}
