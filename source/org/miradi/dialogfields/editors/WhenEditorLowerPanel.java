@@ -33,6 +33,7 @@ public class WhenEditorLowerPanel extends JPanel
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 		
+		noneCard = new NoneCard();
 		projectTotalCard = new ProjectTotalDateUnitStartAndEndCard();
 		yearCard = new CalendarYearDateUnitStartAndEndCard();
 		quarterCard = new QuarterDateUnitStartAndEndCard();
@@ -44,6 +45,8 @@ public class WhenEditorLowerPanel extends JPanel
 		add(quarterCard, quarterCard.getPanelDescription());
 		add(monthCard, monthCard.getPanelDescription());
 		add(dayCard, dayCard.getPanelDescription());
+		
+		currentCard = projectTotalCard;
 	}
 	
 	public DateUnit getStartDateUnit()
@@ -64,6 +67,9 @@ public class WhenEditorLowerPanel extends JPanel
 	
 	private DateUnitStartAndEndCard findPanel(String cardName)
 	{
+		if (cardName.equals(noneCard.getPanelDescription()))
+			return noneCard;
+		
 		if (cardName.equals(projectTotalCard.getPanelDescription()))
 			return projectTotalCard;
 		
@@ -85,6 +91,7 @@ public class WhenEditorLowerPanel extends JPanel
 	private CardLayout cardLayout;
 	private DateUnitStartAndEndCard currentCard;
 	
+	private NoneCard noneCard;
 	private ProjectTotalDateUnitStartAndEndCard projectTotalCard;
 	private CalendarYearDateUnitStartAndEndCard yearCard;
 	private QuarterDateUnitStartAndEndCard quarterCard;
