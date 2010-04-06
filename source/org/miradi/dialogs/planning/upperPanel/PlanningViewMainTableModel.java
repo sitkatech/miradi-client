@@ -219,7 +219,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 	private void setWhenValue(BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception
 	{
-		getProject().beginTransaction();
+		getProject().executeBeginTransaction();
 		try
 		{
 			if (datesAsCodeList.size() == 2)
@@ -230,7 +230,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 		finally
 		{
-			getProject().endTransaction();
+			getProject().executeEndTransaction();
 		}
 	}
 
