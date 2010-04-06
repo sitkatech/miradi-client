@@ -21,6 +21,7 @@ package org.miradi.views.diagram;
 
 import java.text.ParseException;
 import java.util.HashSet;
+import java.util.Vector;
 
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
@@ -36,6 +37,7 @@ import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -520,6 +522,39 @@ public class LinkCreator
 		return convertToFactorLinks(groupBoxChildrenDiagramFactorRefs);
 	}
 	
+	public static ORefSet getDiagramFactorsThatLinkToAll(Vector<DiagramFactor> toBeGrouped, int direction)
+	{
+		if(toBeGrouped.size() == 0)
+			throw new RuntimeException("Attempted to group zero factors");
+		
+		ORefSet[] linkedFactorsForEachGroupedFactor = new ORefSet[toBeGrouped.size()];
+		for(int diagramFactorIndex = 0; diagramFactorIndex < toBeGrouped.size(); ++diagramFactorIndex)
+		{
+			ORefSet diagramFactorsThatLinkToThis = new ORefSet();
+			
+			DiagramFactor df = toBeGrouped.get(diagramFactorIndex);
+			ORef thisDiagramFactorRef = df.getRef();
+	
+			ORefList diagramLinkRefs = df.findObjectsThatReferToUs(DiagramLink.getObjectType());
+			for(int diagramLinkIndex = 0; diagramLinkIndex < diagramLinkRefs.size(); ++diagramLinkIndex)
+			{
+				DiagramLink diagramLink = DiagramLink.find(df.getProject(), diagramLinkRefs.get(diagramLinkIndex));
+				ORef maybeThisDiagramFactorRef = diagramLink.getOppositeDiagramFactorRef(direction);
+				ORef otherDiagramFactorRef = diagramLink.getDiagramFactorRef(direction);
+				if(maybeThisDiagramFactorRef.equals(thisDiagramFactorRef))
+					diagramFactorsThatLinkToThis.add(otherDiagramFactorRef);
+			}
+			
+			linkedFactorsForEachGroupedFactor[diagramFactorIndex] = diagramFactorsThatLinkToThis;
+		}
+		
+		ORefSet result = linkedFactorsForEachGroupedFactor[0];
+		for(int i = 0; i < linkedFactorsForEachGroupedFactor.length; ++i)
+			result.retainAll(linkedFactorsForEachGroupedFactor[i]);
+	
+		return result;
+	}
+
 	private Project getProject()
 	{
 		return project;
