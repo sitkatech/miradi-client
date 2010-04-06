@@ -35,8 +35,7 @@ public class WhenEditorComponent extends DisposablePanel
 	{
 		setLayout(new OneColumnGridLayout());
 
-		//FIXME urgen - temporarly disabled
-		String[] choices = new String[]{NONE_ITEM, PROJECT_TOTAL_ITEM, };//YEAR_ITEM, QUARTER_ITEM, MONTH_ITEM, DAY_ITEM,};
+		String[] choices = new String[]{NONE_ITEM, PROJECT_TOTAL_ITEM, YEAR_ITEM, QUARTER_ITEM, MONTH_ITEM, DAY_ITEM,};
 		dateUnitTypeCombo = new UiComboBox(choices);
 		dateUnitTypeCombo.addItemListener(new ChangeHandler());
 
