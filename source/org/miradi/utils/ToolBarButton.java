@@ -21,12 +21,11 @@ package org.miradi.utils;
 
 import java.awt.Dimension;
 
-import javax.swing.JButton;
-
 import org.miradi.actions.Actions;
 import org.miradi.actions.EAMAction;
+import org.miradi.dialogs.fieldComponents.PanelButton;
 
-public class ToolBarButton extends JButton implements LocationHolder
+public class ToolBarButton extends PanelButton implements LocationHolder
 {
 	public ToolBarButton(Actions actions, Class actionClass)
 	{
