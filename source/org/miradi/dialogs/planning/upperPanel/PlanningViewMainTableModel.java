@@ -148,7 +148,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{
 		try
 		{
-			if (!AssignmentDateUnitsTableModel.canReferToAssignments(baseObject.getRef()))
+			if (!AssignmentDateUnitsTableModel.canOwnAssignments(baseObject.getRef()))
 				return false;
 			
 			if (baseObject.getSubTaskRefs().hasData())
@@ -272,7 +272,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		try
 		{
 			BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, modelColumn);
-			if (!AssignmentDateUnitsTableModel.canReferToAssignments(baseObjectForRow.getRef()))
+			if (!AssignmentDateUnitsTableModel.canOwnAssignments(baseObjectForRow.getRef()))
 				return false;
 
 			if (doAnySubtasksHaveAnyWorkUnitData(baseObjectForRow))

@@ -74,19 +74,19 @@ public class TestPlanningViewMainTableModel extends TestCaseWithProject
 		return PlanningViewMainTableModel.isWhenEditable(baseObject);
 	}
 	
-	public void testCanReferToAssignments()
+	public void testCanOwnAssignments()
 	{
 		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
 			if (Indicator.is(type) || Strategy.is(type) || Task.is(type))
-				assertTrue("type " + type + "cannot refer to assignments?", canReferToAssignments(type));
+				assertTrue("type " + type + "cannot refer to assignments?", canOwnAssignments(type));
 			else
-				assertFalse("Type" + type + " can refer to assignments?", canReferToAssignments(type));
+				assertFalse("Type" + type + " can refer to assignments?", canOwnAssignments(type));
 		}
 	}
 
-	private boolean canReferToAssignments(int objectType)
+	private boolean canOwnAssignments(int objectType)
 	{
-		return AssignmentDateUnitsTableModel.canReferToAssignments(ORef.createInvalidWithType(objectType));
+		return AssignmentDateUnitsTableModel.canOwnAssignments(ORef.createInvalidWithType(objectType));
 	}
 }
