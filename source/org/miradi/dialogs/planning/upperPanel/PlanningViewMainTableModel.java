@@ -219,11 +219,19 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 	private void setWhenValue(BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception
 	{
-		if (datesAsCodeList.size() == 2)
-			createResourceAssignment(baseObjectForRow, datesAsCodeList);
+		getProject().beginTransaction();
+		try
+		{
+			if (datesAsCodeList.size() == 2)
+				createResourceAssignment(baseObjectForRow, datesAsCodeList);
 
-		if (datesAsCodeList.isEmpty())
-			deleteResourceAssignment(baseObjectForRow);
+			if (datesAsCodeList.isEmpty())
+				deleteResourceAssignment(baseObjectForRow);
+		}
+		finally
+		{
+			getProject().endTransaction();
+		}
 	}
 
 	private void deleteResourceAssignment(BaseObject baseObjectForRow) throws Exception
