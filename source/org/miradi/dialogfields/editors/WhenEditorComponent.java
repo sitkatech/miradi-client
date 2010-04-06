@@ -35,7 +35,7 @@ public class WhenEditorComponent extends DisposablePanel
 	{
 		setLayout(new OneColumnGridLayout());
 		
-		String[] choices = new String[]{PROJECT_TOTAL_ITEM, YEAR_ITEM, QUARTER_ITEM, MONTH_ITEM, DAY_ITEM,};
+		String[] choices = new String[]{NONE_ITEM, PROJECT_TOTAL_ITEM, YEAR_ITEM, QUARTER_ITEM, MONTH_ITEM, DAY_ITEM,};
 		dateUnitTypeCombo = new UiComboBox(choices);
 		dateUnitTypeCombo.addItemListener(new ChangeHandler());
 
@@ -74,6 +74,7 @@ public class WhenEditorComponent extends DisposablePanel
 	private WhenEditorLowerPanel lowerPanel;
 	private UiComboBox dateUnitTypeCombo;
 	
+	public static final String NONE_ITEM = "None";
 	public static final String PROJECT_TOTAL_ITEM = "Project Total";
 	public static final String YEAR_ITEM = "Year";
 	public static final String QUARTER_ITEM = "Quarter";

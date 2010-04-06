@@ -25,6 +25,7 @@ import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.AbstractPopupEditorComponent;
+import org.miradi.utils.CodeList;
 
 public class WhenPopupEditorComponent extends AbstractPopupEditorComponent
 {
@@ -34,9 +35,30 @@ public class WhenPopupEditorComponent extends AbstractPopupEditorComponent
 		MainWindow mainWindow = EAM.getMainWindow();
 		String title = EAM.text("Edit When");
 		ModalDialogWithClose dialog = new ModalDialogWithClose(mainWindow, title);
-		dialog.setMainPanel(new WhenEditorComponent());
+		whenEditorPanel = new WhenEditorComponent();
+		dialog.setMainPanel(whenEditorPanel);
 		Utilities.centerFrame(dialog);
 		dialog.pack();
 		dialog.setVisible(true);
 	}
+	
+	@Override
+	public String getText()
+	{
+		try
+		{
+			if (whenEditorPanel != null)
+				return whenEditorPanel.getStartEndCodes().toString();
+			
+			return new CodeList().toString();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
+			return new CodeList().toString();
+		}
+	}
+	
+	private WhenEditorComponent whenEditorPanel;
 }
