@@ -36,13 +36,13 @@ public class QuarterDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	@Override
 	protected DateUnit getEndDate()
 	{
-		return startQuarterPanel.getDateUnit();
+		return endQuarterPanel.getDateUnit();
 	}
 
 	@Override
 	protected DateUnit getStartDate()
 	{
-		return endQuarterPanel.getDateUnit();
+		return startQuarterPanel.getDateUnit();
 	}
 	
 	@Override

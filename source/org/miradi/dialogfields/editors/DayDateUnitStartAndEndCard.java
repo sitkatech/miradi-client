@@ -36,13 +36,13 @@ public class DayDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	@Override
 	protected DateUnit getEndDate()
 	{
-		return startDayPanel.getDateUnit();
+		return endDayPanel.getDateUnit();
 	}
 
 	@Override
 	protected DateUnit getStartDate()
 	{
-		return endDayPanel.getDateUnit();
+		return startDayPanel.getDateUnit();
 	}
 	
 	@Override
