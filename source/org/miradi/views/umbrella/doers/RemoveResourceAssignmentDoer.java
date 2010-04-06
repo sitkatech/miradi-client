@@ -24,6 +24,7 @@ import org.miradi.objects.BaseObject;
 
 public class RemoveResourceAssignmentDoer extends DeleteListedObjectDoer
 {
+	@Override
 	protected String getListTag()
 	{
 		return BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS;
