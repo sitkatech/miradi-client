@@ -42,6 +42,7 @@ public class StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory ext
 	    questionComponent = new StressBasedThreatRatingQuestionPopupEditorComponent(projectToUse, questionToUse);
 	}
 	
+	@Override
 	public Object getCellEditorValue()
 	{
 		return questionComponent.getText();
