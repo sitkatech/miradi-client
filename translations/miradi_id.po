@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-06 16:19-0500\n"
+"POT-Creation-Date: 2010-04-06 16:29-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7005,11 +7005,11 @@ msgstr "Ringkasan Ancaman-Target: "
 msgid "<html><b>Overall<br>Project<br>Rating</b></html>"
 msgstr "<html><b>Peringkat<br>Keseluruhan<br>Proyek</b></html> "
 
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:59
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:58
 msgid "Threats"
 msgstr "Ancaman "
 
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:59
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:58
 msgid "Targets"
 msgstr "Target "
 
