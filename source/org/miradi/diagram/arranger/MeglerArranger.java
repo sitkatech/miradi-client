@@ -290,10 +290,10 @@ public class MeglerArranger
 	{
 		ORef newGroupDiagramFactorRef = createAndPopulateGroupBox(toBeGrouped);
 		
-		ORefSet childRefs = new ORefSet(toBeGrouped.toArray(new DiagramFactor[0]));
-		ORefSet refsOfDiagramFactorsThatLinkToEntireGroup = LinkCreator.getDiagramFactorsThatLinkToAll(getProject(), childRefs, direction);
-
 		LinkCreator linkCreator = new LinkCreator(getProject());
+		ORefSet childRefs = new ORefSet(toBeGrouped.toArray(new DiagramFactor[0]));
+		ORefSet refsOfDiagramFactorsThatLinkToEntireGroup = linkCreator.getDiagramFactorsThatLinkToAll(getProject(), childRefs, direction);
+
 		for(ORef nonGroupedRef : refsOfDiagramFactorsThatLinkToEntireGroup)
 		{
 			DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), nonGroupedRef);
