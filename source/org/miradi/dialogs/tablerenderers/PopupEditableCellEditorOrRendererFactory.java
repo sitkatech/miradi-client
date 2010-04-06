@@ -37,11 +37,13 @@ abstract public class PopupEditableCellEditorOrRendererFactory extends ObjectTab
 		return getTableCellRendererComponent(table, value, false, false, row, column).getPreferredSize().height;
 	}
 	
+	@Override
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int tableColumn)
 	{
 		return super.getTableCellEditorComponent(table, value, isSelected, row, tableColumn);
 	}
 	
+	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
