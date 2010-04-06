@@ -209,6 +209,7 @@ import org.miradi.views.planning.TestPlanningTreeIndicatorNode;
 import org.miradi.views.planning.TestPlanningTreeObjectiveNode;
 import org.miradi.views.planning.TestPlanningTreeStrategyNode;
 import org.miradi.views.planning.TestPlanningTreeTargetNode;
+import org.miradi.views.planning.TestPlanningViewMainTableModel;
 import org.miradi.views.umbrella.TestUndoRedo;
 import org.miradi.views.workplan.TestDeleteActivity;
 import org.miradi.xml.conpro.TestConProCodeMapHelper;
@@ -450,6 +451,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestPlanningTreeIndicatorNode.class));
 		suite.addTest(new TestSuite(TestFullTimeEmployeeCalculationsInsideModel.class));
 		suite.addTest(new TestSuite(TestAbstractPlanningTreeNode.class));
+		suite.addTest(new TestSuite(TestPlanningViewMainTableModel.class));
 		
 		// view.strategicplan package
 		suite.addTest(new TestSuite(TestDeleteActivity.class));

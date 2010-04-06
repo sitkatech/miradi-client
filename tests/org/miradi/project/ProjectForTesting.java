@@ -1517,6 +1517,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		DateUnitEffort dateUnitEffort = new DateUnitEffort(dateUnit, units);
 		ResourceAssignment assignment = createResourceAssignment();
+		ProjectResource projectResource = createAndPopulateProjectResource();
+		fillObjectUsingCommand(assignment, ResourceAssignment.TAG_RESOURCE_ID, projectResource.getId().toString());
+		
 		return addResourceAssignment(parentObject, assignment, dateUnitEffort);
 	}
 
@@ -1532,6 +1535,20 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(dateUnitEffort);
+		return addResourceAssignment(parentObject, assignment, dateUnitEffortList);
+	}
+	
+	public ResourceAssignment addResourceAssignment(BaseObject parentObject, DateUnitEffortList dateUnitEffortList) throws Exception
+	{
+		ResourceAssignment resourceAssignment = createResourceAssignment();
+		ProjectResource projectResource = createAndPopulateProjectResource();
+		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_RESOURCE_ID, projectResource.getId().toString());
+		
+		return addResourceAssignment(parentObject, resourceAssignment, dateUnitEffortList);
+	}
+
+	private ResourceAssignment addResourceAssignment(BaseObject parentObject, ResourceAssignment assignment, DateUnitEffortList dateUnitEffortList) throws Exception
+	{
 		assignment.setData(ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
 		IdList currentAssignmentIdList = parentObject.getResourceAssignmentIdList();
 		currentAssignmentIdList.add(assignment.getId());
