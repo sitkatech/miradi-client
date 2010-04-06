@@ -289,9 +289,10 @@ public class MeglerArranger
 	private void createAndLinkToGroupBox(Vector<DiagramFactor> toBeGrouped, int direction) throws Exception, UnexpectedNonSideEffectException, CommandFailedException
 	{
 		ORef newGroupDiagramFactorRef = createAndPopulateGroupBox(toBeGrouped);
-		
+
 		LinkCreator linkCreator = new LinkCreator(getProject());
-		ORefSet childRefs = new ORefSet(toBeGrouped.toArray(new DiagramFactor[0]));
+		DiagramFactor groupBoxDiagramFactor = DiagramFactor.find(getProject(), newGroupDiagramFactorRef);
+		ORefSet childRefs = groupBoxDiagramFactor.getGroupBoxChildrenSet();
 		ORefSet refsOfDiagramFactorsThatLinkToEntireGroup = linkCreator.getDiagramFactorsThatLinkToAll(childRefs, direction);
 
 		for(ORef nonGroupedRef : refsOfDiagramFactorsThatLinkToEntireGroup)
