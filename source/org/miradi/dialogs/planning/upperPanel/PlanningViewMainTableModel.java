@@ -199,7 +199,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	public void setValueAt(Object value, int row, int column)
 	{
 		if (isWhenColumn(column))
-			handleWhen(getBaseObjectForRow(row), createCodeList(value));
+			setWhenValue(getBaseObjectForRow(row), createCodeList(value));
 		
  		super.setValueAt(value, row, column);	
 	}
@@ -217,7 +217,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 	}
 
-	private void handleWhen(BaseObject baseObjectForRow, CodeList datesAsCodeList)
+	private void setWhenValue(BaseObject baseObjectForRow, CodeList datesAsCodeList)
 	{
 		try
 		{
