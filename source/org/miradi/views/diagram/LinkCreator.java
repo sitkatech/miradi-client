@@ -522,7 +522,7 @@ public class LinkCreator
 		return convertToFactorLinks(groupBoxChildrenDiagramFactorRefs);
 	}
 	
-	public ORefSet getDiagramFactorsThatLinkToAll(ORef groupBoxDiagramfactorRef, int direction)
+	public ORefSet getRefsOfDiagramFactorsThatLinkToAllChildren(ORef groupBoxDiagramfactorRef, int direction)
 	{
 		DiagramFactor groupBoxDiagramFactor = DiagramFactor.find(getProject(), groupBoxDiagramfactorRef);
 		ORefSet childRefs = groupBoxDiagramFactor.getGroupBoxChildrenSet();
