@@ -27,13 +27,13 @@ public class ProjectTotalDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	@Override
 	protected DateUnit getStartDate()
 	{
-		return null;
+		return new DateUnit();
 	}
 
 	@Override
 	protected DateUnit getEndDate()
 	{
-		return null;
+		return new DateUnit();
 	}
 
 	@Override
