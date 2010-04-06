@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-06 12:11-0500\n"
+"POT-Creation-Date: 2010-04-06 12:41-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1020,7 +1020,7 @@ msgstr "（无可用定义） \t\t"
 msgid " was empty"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:264
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:265
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:119
 msgid "Import"
