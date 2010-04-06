@@ -525,6 +525,12 @@ public class LinkCreator
 	public static ORefSet getDiagramFactorsThatLinkToAll(Project project, Vector<DiagramFactor> toBeGrouped, int direction)
 	{
 		ORefSet childRefs = new ORefSet(toBeGrouped.toArray(new DiagramFactor[0]));
+		return getDiagramFactorsThatLinkToAll(project, childRefs, direction);
+	}
+
+	private static ORefSet getDiagramFactorsThatLinkToAll(Project project,
+			ORefSet childRefs, int direction)
+	{
 		if(childRefs.size() == 0)
 			throw new RuntimeException("Attempted to group zero factors");
 		
