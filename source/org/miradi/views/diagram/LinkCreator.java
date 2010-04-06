@@ -524,16 +524,17 @@ public class LinkCreator
 	
 	public static ORefSet getDiagramFactorsThatLinkToAll(Project project, Vector<DiagramFactor> toBeGrouped, int direction)
 	{
-		if(toBeGrouped.size() == 0)
+		ORefSet childRefs = new ORefSet(toBeGrouped.toArray(new DiagramFactor[0]));
+		if(childRefs.size() == 0)
 			throw new RuntimeException("Attempted to group zero factors");
 		
-		ORefSet[] linkedFactorsForEachGroupedFactor = new ORefSet[toBeGrouped.size()];
-		for(int diagramFactorIndex = 0; diagramFactorIndex < toBeGrouped.size(); ++diagramFactorIndex)
+		Vector<ORefSet> linkedFactorsForEachGroupedFactor = new Vector();
+		for(ORef childRef : childRefs)
 		{
 			ORefSet diagramFactorsThatLinkToThis = new ORefSet();
 			
-			DiagramFactor df = toBeGrouped.get(diagramFactorIndex);
-			ORef thisDiagramFactorRef = df.getRef();
+			ORef thisDiagramFactorRef = childRef;
+			DiagramFactor df = DiagramFactor.find(project, childRef);
 	
 			ORefList diagramLinkRefs = df.findObjectsThatReferToUs(DiagramLink.getObjectType());
 			for(int diagramLinkIndex = 0; diagramLinkIndex < diagramLinkRefs.size(); ++diagramLinkIndex)
@@ -545,12 +546,12 @@ public class LinkCreator
 					diagramFactorsThatLinkToThis.add(otherDiagramFactorRef);
 			}
 			
-			linkedFactorsForEachGroupedFactor[diagramFactorIndex] = diagramFactorsThatLinkToThis;
+			linkedFactorsForEachGroupedFactor.add(diagramFactorsThatLinkToThis);
 		}
 		
-		ORefSet result = linkedFactorsForEachGroupedFactor[0];
-		for(int i = 0; i < linkedFactorsForEachGroupedFactor.length; ++i)
-			result.retainAll(linkedFactorsForEachGroupedFactor[i]);
+		ORefSet result = linkedFactorsForEachGroupedFactor.firstElement();
+		for(ORefSet set : linkedFactorsForEachGroupedFactor)
+			result.retainAll(set);
 	
 		return result;
 	}
