@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-05 15:05-0500\n"
+"POT-Creation-Date: 2010-04-05 21:10-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4605,6 +4605,10 @@ msgstr ""
 msgid "Unexpected call to setText"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:35
+msgid "Edit When"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:31
 msgid "Start:"
 msgstr ""
@@ -6647,7 +6651,7 @@ msgstr "PNG (*.png) \t\t"
 msgid "Stress: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/TextFieldPopupEditorComponent.java:94
+#: Miradi/source/org/miradi/utils/TextFieldPopupEditorComponent.java:37
 msgid "Edit Text"
 msgstr ""
 
@@ -6996,7 +7000,7 @@ msgstr ""
 msgid "Show: "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:299
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:308
 msgid "[Error]"
 msgstr ""
 
