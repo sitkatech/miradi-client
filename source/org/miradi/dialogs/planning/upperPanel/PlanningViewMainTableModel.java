@@ -239,12 +239,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 	private void createResourceAssignment(BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception
 	{
-		DateUnit start = new DateUnit(datesAsCodeList.get(0));
-		DateUnit end = new DateUnit(datesAsCodeList.get(1));
-		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
-		final int NO_VALUE = 0;
-		dateUnitEffortList.add(new DateUnitEffort(start, NO_VALUE));
-		dateUnitEffortList.add(new DateUnitEffort(end, NO_VALUE));
+		DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(datesAsCodeList);
 
 		CommandCreateObject createResourceAssignment = new CommandCreateObject(ResourceAssignment.getObjectType());
 		getProject().executeCommand(createResourceAssignment);
@@ -255,6 +250,19 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 		CommandSetObjectData appendResourceAssignment = CommandSetObjectData.createAppendIdCommand(baseObjectForRow, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentRef);
 		getProject().executeCommand(appendResourceAssignment);
+	}
+
+	private DateUnitEffortList createDateUnitEffortList(CodeList datesAsCodeList)
+	{
+		DateUnit start = new DateUnit(datesAsCodeList.get(0));
+		DateUnit end = new DateUnit(datesAsCodeList.get(1));
+		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+		final int NO_VALUE = 0;
+		dateUnitEffortList.add(new DateUnitEffort(start, NO_VALUE));
+		if (!start.equals(end))
+			dateUnitEffortList.add(new DateUnitEffort(end, NO_VALUE));
+		
+		return dateUnitEffortList;
 	}
 
 	private boolean isWhoCellEditable(int row, int modelColumn)
