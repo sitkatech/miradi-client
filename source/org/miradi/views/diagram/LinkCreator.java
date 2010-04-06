@@ -522,6 +522,29 @@ public class LinkCreator
 		return convertToFactorLinks(groupBoxChildrenDiagramFactorRefs);
 	}
 	
+	public void createAllPossibleGroupLinks(DiagramObject diagramObject, DiagramFactor groupBoxDiagramFactor) throws Exception
+	{
+		ORef groupBoxDiagramFactorRef = groupBoxDiagramFactor.getRef();
+
+		ORefSet fromDiagramFactorRefs = getRefsOfDiagramFactorsThatLinkToAllChildren(groupBoxDiagramFactorRef, FactorLink.FROM);
+		for(ORef fromDiagramFactorRef : fromDiagramFactorRefs)
+		{
+			DiagramFactor from = DiagramFactor.find(getProject(), fromDiagramFactorRef);
+			if(diagramObject.areLinkedEitherDirection(from.getWrappedORef(), groupBoxDiagramFactor.getWrappedORef()))
+				continue;
+			createGroupDiagramLink(diagramObject, fromDiagramFactorRef, groupBoxDiagramFactorRef);
+		}
+
+		ORefSet toDiagramFactorRefs = getRefsOfDiagramFactorsThatLinkToAllChildren(groupBoxDiagramFactorRef, FactorLink.TO);
+		for(ORef toDiagramFactorRef : toDiagramFactorRefs)
+		{
+			DiagramFactor to = DiagramFactor.find(getProject(), toDiagramFactorRef);
+			if(diagramObject.areLinkedEitherDirection(groupBoxDiagramFactor.getWrappedORef(),to.getWrappedORef()))
+				continue;
+			createGroupDiagramLink(diagramObject, groupBoxDiagramFactorRef, toDiagramFactorRef);
+		}
+	}
+
 	public ORefSet getRefsOfDiagramFactorsThatLinkToAllChildren(ORef groupBoxDiagramfactorRef, int direction)
 	{
 		DiagramFactor groupBoxDiagramFactor = DiagramFactor.find(getProject(), groupBoxDiagramfactorRef);
