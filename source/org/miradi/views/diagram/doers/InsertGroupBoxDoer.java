@@ -19,10 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
+import java.text.ParseException;
 import java.util.HashSet;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.FactorCell;
+import org.miradi.exceptions.CommandFailedException;
+import org.miradi.exceptions.UnexpectedNonSideEffectException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
@@ -55,6 +58,13 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 		if (GroupBoxAddDiagramFactorDoer.hasOwnedSelectedDiagramFactors(getProject(), selectedDiagramFactorRefs))
 			return;
 		
+		addChildrenToGroup(groupBoxDiagramFactor, selectedDiagramFactorRefs);
+	}
+
+	private void addChildrenToGroup(DiagramFactor groupBoxDiagramFactor,
+			ORefList selectedDiagramFactorRefs) throws ParseException,
+			UnexpectedNonSideEffectException, CommandFailedException
+	{
 		CommandSetObjectData appendCommand = CommandSetObjectData.createAppendORefListCommand(groupBoxDiagramFactor, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, selectedDiagramFactorRefs);
 		getProject().executeCommand(appendCommand);
 	}
