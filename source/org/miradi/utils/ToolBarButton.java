@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import java.awt.Dimension;
 
 import org.miradi.actions.Actions;
 import org.miradi.actions.EAMAction;
@@ -56,23 +55,6 @@ public class ToolBarButton extends MinimumSizeButton implements LocationHolder
 	public boolean hasLocation()
 	{
 		return false;
-	}
-	
-	public Dimension getPreferredSize()
-	{
-		return getMinimumSize();
-	}
-
-	public Dimension getMaximumSize()
-	{
-		return getMinimumSize();
-	}
-	
-	public Dimension getMinimumSize()
-	{
-		Dimension originalMinimumSize = super.getMinimumSize();
-		int realMinimum = originalMinimumSize.height;
-		return new Dimension(realMinimum, realMinimum);
 	}
 	
 }

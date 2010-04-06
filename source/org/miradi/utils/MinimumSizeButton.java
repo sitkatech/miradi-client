@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.awt.Dimension;
+
 import javax.swing.Icon;
 
 import org.miradi.actions.EAMAction;
@@ -35,6 +37,26 @@ public class MinimumSizeButton extends PanelButton
 	public MinimumSizeButton(Icon icon)
 	{
 		super(icon);
+	}
+
+	@Override
+	public Dimension getPreferredSize()
+	{
+		return getMinimumSize();
+	}
+
+	@Override
+	public Dimension getMaximumSize()
+	{
+		return getMinimumSize();
+	}
+
+	@Override
+	public Dimension getMinimumSize()
+	{
+		Dimension originalMinimumSize = super.getMinimumSize();
+		int realMinimum = originalMinimumSize.height;
+		return new Dimension(realMinimum, realMinimum);
 	}
 
 }
