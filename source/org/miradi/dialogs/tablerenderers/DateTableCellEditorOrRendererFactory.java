@@ -44,6 +44,7 @@ public class DateTableCellEditorOrRendererFactory extends PopupEditableCellEdito
 		return dateComponent;
 	}
 
+	@Override
 	public Object getCellEditorValue()
 	{
 		return dateComponent.getText();
