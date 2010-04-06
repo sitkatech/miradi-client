@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-05 21:58-0500\n"
+"POT-Creation-Date: 2010-04-05 22:01-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -652,7 +652,7 @@ msgstr "标签"
 msgid "Arranging Diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:104
+#: Miradi/source/org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:114
 msgid "Label|New Group Box"
 msgstr "新的组合框 \t\t"
 
