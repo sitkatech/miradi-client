@@ -51,7 +51,7 @@ public class CustomPlanningColumnsQuestion extends StaticChoiceQuestion
 				createChoiceItem(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS),
 				createChoiceItem(Factor.PSEUDO_TAG_TAXONOMY_CODE_VALUE),
 				createChoiceItem(META_WHO_TOTAL),
-				createChoiceItem(BaseObject.PSEUDO_TAG_WHEN_TOTAL),
+				createChoiceItem(META_WHEN_TOTAL),
 				createChoiceItem(Measurement.META_COLUMN_TAG),
 				createChoiceItem(Indicator.META_COLUMN_TAG),
 				createChoiceItem(Factor.TAG_COMMENTS),
@@ -78,5 +78,6 @@ public class CustomPlanningColumnsQuestion extends StaticChoiceQuestion
 	public static final String META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE = "MetaProjectResourceBudgetDetailsColumnCode";
 	
 	public final static String META_WHO_TOTAL = "MetaWhoTotal";
+	public final static String META_WHEN_TOTAL = BaseObject.PSEUDO_TAG_WHEN_TOTAL;
 	public final static String META_THREAT_RATING = "ThreatRating";
 }
