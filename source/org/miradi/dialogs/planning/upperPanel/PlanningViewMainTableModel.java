@@ -23,6 +23,9 @@ import java.awt.Color;
 import java.util.Collections;
 import java.util.Vector;
 
+import org.miradi.commands.CommandCreateObject;
+import org.miradi.commands.CommandDeleteObject;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
@@ -67,6 +70,7 @@ import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
+import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.IgnoreCaseStringComparator;
 import org.miradi.utils.OptionalDouble;
@@ -182,6 +186,78 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		DateUnitEffortList effortList = assignment.getDateUnitEffortList();
 		
 		return effortList.size() > 1;
+	}
+	
+	@Override
+	public void setValueAt(Object value, int row, int column)
+	{
+		if (isWhenColumn(column))
+			handleWhen(getBaseObjectForRow(row), createCodeList(value));
+		
+ 		super.setValueAt(value, row, column);	
+	}
+
+	private CodeList createCodeList(Object rawValue)
+	{
+		try
+		{
+			return new CodeList(rawValue.toString());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new CodeList();
+		}
+	}
+
+	private void handleWhen(BaseObject baseObjectForRow, CodeList datesAsCodeList)
+	{
+		try
+		{
+			if (datesAsCodeList.size() == 2)
+				createResourceAssignment(baseObjectForRow, datesAsCodeList);
+
+			if (datesAsCodeList.isEmpty())
+				deleteResourceAssignment(baseObjectForRow);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+
+	private void deleteResourceAssignment(BaseObject baseObjectForRow) throws Exception
+	{	
+		ORefList resourceAssignmentRefs = baseObjectForRow.getResourceAssignmentRefs();
+		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
+		{
+			ORef resourceAssignmentRef = resourceAssignmentRefs.get(index);
+			CommandSetObjectData appendResourceAssignment = CommandSetObjectData.createRemoveIdCommand(baseObjectForRow, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentRef);
+			getProject().executeCommand(appendResourceAssignment);
+			
+			CommandDeleteObject deleteResourceAssignment = new CommandDeleteObject(resourceAssignmentRef); 
+			getProject().executeCommand(deleteResourceAssignment);
+		}
+	}
+
+	private void createResourceAssignment(BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception
+	{
+		DateUnit start = new DateUnit(datesAsCodeList.get(0));
+		DateUnit end = new DateUnit(datesAsCodeList.get(1));
+		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+		final int NO_VALUE = 0;
+		dateUnitEffortList.add(new DateUnitEffort(start, NO_VALUE));
+		dateUnitEffortList.add(new DateUnitEffort(end, NO_VALUE));
+
+		CommandCreateObject createResourceAssignment = new CommandCreateObject(ResourceAssignment.getObjectType());
+		getProject().executeCommand(createResourceAssignment);
+
+		ORef resourceAssignmentRef = createResourceAssignment.getObjectRef();
+		CommandSetObjectData addEffortList = new CommandSetObjectData(resourceAssignmentRef, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		getProject().executeCommand(addEffortList);
+
+		CommandSetObjectData appendResourceAssignment = CommandSetObjectData.createAppendIdCommand(baseObjectForRow, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentRef);
+		getProject().executeCommand(appendResourceAssignment);
 	}
 
 	private boolean isWhoCellEditable(int row, int modelColumn)
