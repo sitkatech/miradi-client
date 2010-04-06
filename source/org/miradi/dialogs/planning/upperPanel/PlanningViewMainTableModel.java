@@ -23,8 +23,8 @@ import java.awt.Color;
 import java.util.Collections;
 import java.util.Vector;
 
+import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
-import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTableModel;
@@ -75,6 +75,7 @@ import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.IgnoreCaseStringComparator;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.Translation;
+import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 import org.miradi.views.summary.SummaryPlanningWorkPlanSubPanel;
 
 public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
@@ -229,13 +230,10 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{	
 		ORefList resourceAssignmentRefs = baseObjectForRow.getResourceAssignmentRefs();
 		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
-		{
-			ORef resourceAssignmentRef = resourceAssignmentRefs.get(index);
-			CommandSetObjectData appendResourceAssignment = CommandSetObjectData.createRemoveIdCommand(baseObjectForRow, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentRef);
-			getProject().executeCommand(appendResourceAssignment);
-			
-			CommandDeleteObject deleteResourceAssignment = new CommandDeleteObject(resourceAssignmentRef); 
-			getProject().executeCommand(deleteResourceAssignment);
+		{			
+			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRefs.get(index));
+			Vector<Command> commands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
+			project.executeCommandsWithoutTransaction(commands);
 		}
 	}
 
