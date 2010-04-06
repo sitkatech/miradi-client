@@ -198,39 +198,31 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	@Override
 	public void setValueAt(Object value, int row, int column)
 	{
-		if (isWhenColumn(column))
-			setWhenValue(getBaseObjectForRow(row), createCodeList(value));
+		try
+		{
+			if (isWhenColumn(column))
+				setWhenValue(getBaseObjectForRow(row), createCodeList(value));
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
 		
  		super.setValueAt(value, row, column);	
 	}
 
-	private CodeList createCodeList(Object rawValue)
+	private CodeList createCodeList(Object rawValue) throws Exception
 	{
-		try
-		{
-			return new CodeList(rawValue.toString());
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return new CodeList();
-		}
+		return new CodeList(rawValue.toString());
 	}
 
-	private void setWhenValue(BaseObject baseObjectForRow, CodeList datesAsCodeList)
+	private void setWhenValue(BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception
 	{
-		try
-		{
-			if (datesAsCodeList.size() == 2)
-				createResourceAssignment(baseObjectForRow, datesAsCodeList);
+		if (datesAsCodeList.size() == 2)
+			createResourceAssignment(baseObjectForRow, datesAsCodeList);
 
-			if (datesAsCodeList.isEmpty())
-				deleteResourceAssignment(baseObjectForRow);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
+		if (datesAsCodeList.isEmpty())
+			deleteResourceAssignment(baseObjectForRow);
 	}
 
 	private void deleteResourceAssignment(BaseObject baseObjectForRow) throws Exception
