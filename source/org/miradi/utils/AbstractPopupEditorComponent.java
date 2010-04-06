@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -54,6 +55,14 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 	{
 		PopUpEditorHandler popupEditHandler = new PopUpEditorHandler();
 		popupInvokeButton.addActionListener(popupEditHandler);
+	}
+	
+	@Override
+	public void setBackground(Color bg)
+	{
+		super.setBackground(bg);
+		if (currentSelectionText != null)
+			currentSelectionText.setBackground(bg);
 	}
 	
 	private void createComponents()
