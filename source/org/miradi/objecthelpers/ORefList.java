@@ -225,7 +225,7 @@ public class ORefList
 		return data.size();
 	}
 	
-	public boolean hasData()
+	public boolean hasRefs()
 	{
 		return !isEmpty();
 	}
