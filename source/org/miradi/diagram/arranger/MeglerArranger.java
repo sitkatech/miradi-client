@@ -73,7 +73,15 @@ public class MeglerArranger
 		segregateUnlinkedFactors();
 		if(hasUserRequestedStop())
 			return false;
-		createGroupBoxes();
+		
+		final int ITERATIONS = 3;
+		progressMeter.setStatusMessage(EAM.text("Creating group boxes..."), ITERATIONS);
+		for(int i = 0; i < ITERATIONS; ++i)
+		{
+			createGroupBoxes();
+			progressMeter.incrementProgress();
+		}
+		
 		if(hasUserRequestedStop())
 			return false;
 		setLocations();
@@ -102,29 +110,20 @@ public class MeglerArranger
 	
 	private void createGroupBoxes() throws Exception
 	{
-		final int steps = 4;
-		progressMeter.setStatusMessage(EAM.text("Creating group boxes..."), steps);
-
 		createTargetGroups();
-		progressMeter.incrementProgress();
 
 		if(targets.size() > strategies.size())
 		{
 			createThreatGroupsBasedOnTargets();
-			progressMeter.incrementProgress();
 			createThreatGroupsBasedOnStrategies();
-			progressMeter.incrementProgress();
 		}
 		else
 		{
 			createThreatGroupsBasedOnStrategies();
-			progressMeter.incrementProgress();
 			createThreatGroupsBasedOnTargets();
-			progressMeter.incrementProgress();
 		}
 		
 		ceateStrategyGroups();
-		progressMeter.incrementProgress();
 	}
 
 	private void createThreatGroupsBasedOnStrategies() throws Exception
@@ -149,15 +148,11 @@ public class MeglerArranger
 
 	private void createGroupBoxes(Vector<DiagramFactor> diagramFactorsToGroup, int direction, int objectTypeInThatDirection) throws Exception
 	{
-		final int ITERATIONS = 3;
-		for(int i = 0; i < ITERATIONS; ++i)
+		Vector<Vector<DiagramFactor>> groupsToCreate = findBestGroups(diagramFactorsToGroup, direction, objectTypeInThatDirection);
+		
+		for(Vector<DiagramFactor> toGroup : groupsToCreate)
 		{
-			Vector<Vector<DiagramFactor>> groupsToCreate = findBestGroups(diagramFactorsToGroup, direction, objectTypeInThatDirection);
-			
-			for(Vector<DiagramFactor> toGroup : groupsToCreate)
-			{
-				createAndLinkToGroupBox(toGroup, direction);
-			}
+			createAndLinkToGroupBox(toGroup, direction);
 		}
 	}
 
