@@ -262,14 +262,15 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 	private DateUnitEffortList createDateUnitEffortList(CodeList datesAsCodeList)
 	{
-		DateUnit start = new DateUnit(datesAsCodeList.get(0));
-		DateUnit end = new DateUnit(datesAsCodeList.get(1));
-		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		final int NO_VALUE = 0;
-		dateUnitEffortList.add(new DateUnitEffort(start, NO_VALUE));
-		if (!start.equals(end))
-			dateUnitEffortList.add(new DateUnitEffort(end, NO_VALUE));
-		
+		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+		for (int index = 0; index < datesAsCodeList.size(); ++index)
+		{
+			DateUnit dateUnit = new DateUnit(datesAsCodeList.get(index));
+			if (dateUnitEffortList.getDateUnitEffortForSpecificDateUnit(dateUnit) == null)
+				dateUnitEffortList.add(new DateUnitEffort(dateUnit, NO_VALUE));
+		}
+
 		return dateUnitEffortList;
 	}
 
