@@ -94,8 +94,7 @@ public class TestLinkCreator extends TestCaseWithProject
 		assertFalse("diagram factors are not linked?", linkCreator.areGroupBoxOwnedFactorsLinked(getDiagramModel(), fromDiagramFactor, toDiagramFactor));
 		
 		DiagramFactor groupBoxDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
-		ORefList groupBoxChildrenRefs = new ORefList(fromDiagramFactor.getRef());
-		getProject().setObjectData(groupBoxDiagramFactor.getRef(), DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, groupBoxChildrenRefs.toString());
+		addToGroup(groupBoxDiagramFactor, fromDiagramFactor);
 		assertTrue("diagramFactor is not groupBox?", groupBoxDiagramFactor.isGroupBoxFactor());
 		
 		getProject().createDiagramLinkAndAddToDiagram(groupBoxDiagramFactor, toDiagramFactor);
@@ -107,11 +106,73 @@ public class TestLinkCreator extends TestCaseWithProject
 		assertTrue("child of groupBox covered cause is not linked to target diagramFactor?", linkCreator.areGroupBoxOwnedFactorsLinked(getDiagramModel(), toDiagramFactor, groupBoxDiagramFactor));
 		assertTrue("from is not linked to to diagramFactor?", linkCreator.areGroupBoxOwnedFactorsLinked(getDiagramModel(), fromDiagramFactor, toDiagramFactor));
 	}
+
+	private void addToGroup(DiagramFactor groupBoxDiagramFactor,
+			DiagramFactor newChildDiagramFactor) throws Exception
+	{
+		ORefList groupBoxChildrenRefs = new ORefList(newChildDiagramFactor.getRef());
+		getProject().setObjectData(groupBoxDiagramFactor.getRef(), DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, groupBoxChildrenRefs.toString());
+	}
 	
 	public void testSplitSelectedLinkToIncludeFactor() throws Exception
 	{
 		verifyNonGroupBoxLinkedDiagramFactors();
 		verifyGroupBoxLinkedDiagramFactors();
+	}
+	
+	public void testCreateAllPossibleGroupLinksWithNoLinks() throws Exception
+	{
+		getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		
+		DiagramFactor groupBoxDiagramFactor = getProject().createAndPopulateDiagramFactorGroupBox(cause1);
+		addToGroup(groupBoxDiagramFactor, cause2);
+		
+		LinkCreator linkCreator = new LinkCreator(getProject());
+		linkCreator.createAllPossibleGroupLinks(getDiagramModel().getDiagramObject(), groupBoxDiagramFactor);
+		assertEquals("Created links for no reason?", 0, groupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType()).size());
+	}
+
+	public void testCreateAllPossibleGroupLinksWithPartialLinks() throws Exception
+	{
+		DiagramFactor strategy1 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor target1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		
+		getProject().createDiagramLinkAndAddToDiagram(strategy1, cause1);
+		getProject().createDiagramLinkAndAddToDiagram(cause1, target1);
+
+		DiagramFactor groupBoxDiagramFactor = getProject().createAndPopulateDiagramFactorGroupBox(cause1);
+		addToGroup(groupBoxDiagramFactor, cause2);
+		
+		LinkCreator linkCreator = new LinkCreator(getProject());
+		linkCreator.createAllPossibleGroupLinks(getDiagramModel().getDiagramObject(), groupBoxDiagramFactor);
+		assertEquals("Created links to factors that don't link to all children?", 0, groupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType()).size());
+	}
+
+	public void testCreateAllPossibleGroupLinksWithSomeFullLinks() throws Exception
+	{
+		DiagramFactor strategy1 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor target1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		
+		getProject().createDiagramLinkAndAddToDiagram(strategy1, cause1);
+		getProject().createDiagramLinkAndAddToDiagram(strategy1, cause2);
+		getProject().createDiagramLinkAndAddToDiagram(cause1, target1);
+		getProject().createDiagramLinkAndAddToDiagram(cause2, target1);
+
+		DiagramFactor groupBoxDiagramFactor = getProject().createAndPopulateDiagramFactorGroupBox(cause1);
+		addToGroup(groupBoxDiagramFactor, cause2);
+
+		LinkCreator linkCreator = new LinkCreator(getProject());
+		linkCreator.createAllPossibleGroupLinks(getDiagramModel().getDiagramObject(), groupBoxDiagramFactor);
+		assertEquals("Didn't create one link in each direction?", 2, groupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType()).size());
 	}
 
 	private void verifyGroupBoxLinkedDiagramFactors() throws Exception
