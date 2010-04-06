@@ -527,9 +527,6 @@ public class LinkCreator
 		DiagramFactor groupBoxDiagramFactor = DiagramFactor.find(getProject(), groupBoxDiagramfactorRef);
 		ORefSet childRefs = groupBoxDiagramFactor.getGroupBoxChildrenSet();
 
-		if(childRefs.size() == 0)
-			throw new RuntimeException("Attempted to group zero factors");
-		
 		Vector<ORefSet> linkedFactorsForEachGroupedFactor = new Vector();
 		for(ORef childRef : childRefs)
 		{
