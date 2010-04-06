@@ -119,8 +119,14 @@ abstract public class InsertFactorDoer extends LocationDoer
 		{
 			getProject().executeEndTransaction();
 		}
+
+		doPostTransactionWork(getDiagramModel().getDiagramObject(), diagramFactor);
 	}
 	
+	protected void doPostTransactionWork(DiagramObject diagramObject, DiagramFactor newDiagramFactor) throws CommandFailedException
+	{
+	}
+
 	private boolean isLinkToSelfType()
 	{
 		if (Target.is(getTypeToInsert()))

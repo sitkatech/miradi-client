@@ -29,8 +29,10 @@ import org.miradi.exceptions.UnexpectedNonSideEffectException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.GroupBox;
 import org.miradi.views.diagram.InsertFactorDoer;
+import org.miradi.views.diagram.LinkCreator;
 
 public class InsertGroupBoxDoer extends InsertFactorDoer
 {
@@ -59,6 +61,30 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 			return;
 		
 		addChildrenToGroup(groupBoxDiagramFactor, selectedDiagramFactorRefs);
+	}
+	
+	@Override
+	protected void doPostTransactionWork(DiagramObject diagramObject, DiagramFactor newDiagramFactor) throws CommandFailedException
+	{
+		super.doPostTransactionWork(diagramObject, newDiagramFactor);
+		
+		// NOTE: Set up a new transaction, so the group link creation is independently undoable
+		getProject().executeBeginTransaction();
+		try
+		{
+			LinkCreator linkCreator = new LinkCreator(getProject());
+			linkCreator.createAllPossibleGroupLinks(diagramObject, newDiagramFactor);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			throw new CommandFailedException(e);
+		}
+		finally
+		{
+			getProject().executeEndTransaction();
+		}
+
 	}
 
 	private void addChildrenToGroup(DiagramFactor groupBoxDiagramFactor,

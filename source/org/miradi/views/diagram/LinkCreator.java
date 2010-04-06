@@ -539,9 +539,7 @@ public class LinkCreator
 		}
 	}
 
-	private void createAllPossibleGroupLinks(DiagramObject diagramObject,
-			ORefSet fromDiagramFactorRefs, ORefSet toDiagramFactorRefs)
-			throws CommandFailedException, ParseException
+	private void createAllPossibleGroupLinks(DiagramObject diagramObject, ORefSet fromDiagramFactorRefs, ORefSet toDiagramFactorRefs) throws Exception
 	{
 		if(fromDiagramFactorRefs.size() > 1 && toDiagramFactorRefs.size() > 1)
 			EAM.logError("createAllPossibleGroupLinks was expecting one-to-many or many-to-one");
@@ -554,7 +552,7 @@ public class LinkCreator
 				DiagramFactor to = DiagramFactor.find(getProject(), toDiagramFactorRef);
 				boolean areAlreadyLinked = diagramObject.areLinkedEitherDirection(from.getWrappedORef(), to.getWrappedORef());
 				if(!areAlreadyLinked)
-					createGroupDiagramLink(diagramObject, fromDiagramFactorRef, toDiagramFactorRef);
+					createGroupBoxChildrenDiagramLinks(diagramObject, from, to);
 			}
 		}
 	}
