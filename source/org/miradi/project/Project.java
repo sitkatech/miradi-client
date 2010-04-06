@@ -1139,7 +1139,7 @@ public class Project
 		return getCommandExecutor().canRedo();
 	}
 	
-	public void beginTransaction() throws CommandFailedException
+	public void internalBeginTransaction() throws CommandFailedException
 	{
 		getCommandExecutor().beginTransaction();
 	}

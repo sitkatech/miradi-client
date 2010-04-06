@@ -33,7 +33,7 @@ public class CommandBeginTransaction extends Command
 	
 	public void execute(Project target) throws CommandFailedException 
 	{
-		target.beginTransaction();
+		target.internalBeginTransaction();
 	}
 
 	public Command getReverseCommand() throws CommandFailedException
