@@ -34,7 +34,7 @@ public class CommandEndTransaction extends Command
 	
 	public void execute(Project target) throws CommandFailedException 
 	{
-		target.endTransaction();
+		target.internalEndTransaction();
 	}
 	
 	public Command getReverseCommand() throws CommandFailedException
