@@ -30,12 +30,12 @@ import javax.swing.JComponent;
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.icons.PopupEditorIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiScrollPane;
+import org.miradi.utils.PopupEditorButton;
 import org.miradi.utils.Translation;
 
 public class ObjectScrollingMultilineInputField extends ObjectMultilineInputField
@@ -47,7 +47,7 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 
 	private void createTextFieldWithPopupButtonPanel()
 	{
-		editButton = new PanelButton(new PopupEditorIcon());
+		editButton = new PopupEditorButton();
 		editButton.addActionListener(new PopupButtonHandler());
 
 		OneColumnPanel panelToPreventVerticalStretching = new OneColumnPanel();
