@@ -247,10 +247,10 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		if (Assignment.isAssignment(ref))
 			return true;
 		
-		return canReferToAssignments(ref);
+		return canOwnAssignments(ref);
 	}
 
-	public static boolean canReferToAssignments(ORef ref)
+	public static boolean canOwnAssignments(ORef ref)
 	{
 		if (Indicator.is(ref))
 			return true;
