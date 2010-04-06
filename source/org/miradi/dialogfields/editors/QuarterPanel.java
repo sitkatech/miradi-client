@@ -42,7 +42,7 @@ public class QuarterPanel extends OneRowPanel
 	public DateUnit getDateUnit()
 	{
 		ChoiceItem choiceItem = (ChoiceItem) quarterChooser.getSelectedItem();
-		return DateUnit.createQuarterDateUnit(Integer.parseInt(choiceItem.getCode()), yearChooser.getYear());
+		return DateUnit.createQuarterDateUnit(yearChooser.getYear(), Integer.parseInt(choiceItem.getCode()));
 	}
 	
 	private QuarterChooser quarterChooser;
