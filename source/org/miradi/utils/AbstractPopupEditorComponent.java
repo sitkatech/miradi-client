@@ -31,7 +31,6 @@ import javax.swing.JTextArea;
 
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.tablerenderers.MultiLineEditableObjectTableCellEditorOrRendererFactory;
-import org.miradi.icons.PopupEditorIcon;
 import org.miradi.main.AppPreferences;
 
 abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
@@ -72,7 +71,7 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 		currentSelectionText.setLineWrap(true);
 		currentSelectionText.setWrapStyleWord(true);
 
-		popupInvokeButton = new PanelButton(new PopupEditorIcon());
+		popupInvokeButton = new PopupEditorButton();
 	}
 	
 	public void dispose()

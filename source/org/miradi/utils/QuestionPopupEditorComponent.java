@@ -38,7 +38,6 @@ import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.icons.PopupEditorIcon;
 import org.miradi.layout.OneRowGridLayout;
 import org.miradi.main.AppPreferences;
 import org.miradi.questions.ChoiceItem;
@@ -93,7 +92,7 @@ public class QuestionPopupEditorComponent extends PopupEditorComponent
 		staticLabel = new PanelTitleLabel(translatedPopupButtonText);
 		currentSelectionText = new PanelTextField(10);
 		currentSelectionText.setEditable(false);
-		popupInvokeButton = new PanelButton(new PopupEditorIcon());
+		popupInvokeButton = new PopupEditorButton();
 		saveAfterSelectionHandler = new SaveAfterSelectionHandler();
 	}
 	
