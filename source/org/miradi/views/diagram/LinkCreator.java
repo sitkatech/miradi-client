@@ -522,8 +522,7 @@ public class LinkCreator
 		return convertToFactorLinks(groupBoxChildrenDiagramFactorRefs);
 	}
 	
-	public static ORefSet getDiagramFactorsThatLinkToAll(Project project,
-			ORefSet childRefs, int direction)
+	public ORefSet getDiagramFactorsThatLinkToAll(ORefSet childRefs, int direction)
 	{
 		if(childRefs.size() == 0)
 			throw new RuntimeException("Attempted to group zero factors");

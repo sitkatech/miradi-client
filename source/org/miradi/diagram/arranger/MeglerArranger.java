@@ -292,7 +292,7 @@ public class MeglerArranger
 		
 		LinkCreator linkCreator = new LinkCreator(getProject());
 		ORefSet childRefs = new ORefSet(toBeGrouped.toArray(new DiagramFactor[0]));
-		ORefSet refsOfDiagramFactorsThatLinkToEntireGroup = linkCreator.getDiagramFactorsThatLinkToAll(getProject(), childRefs, direction);
+		ORefSet refsOfDiagramFactorsThatLinkToEntireGroup = linkCreator.getDiagramFactorsThatLinkToAll(childRefs, direction);
 
 		for(ORef nonGroupedRef : refsOfDiagramFactorsThatLinkToEntireGroup)
 		{
