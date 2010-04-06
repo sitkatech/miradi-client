@@ -125,7 +125,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	
 	private boolean isWhenColumn(String columnTag)
 	{
-		return columnTag.equals(BaseObject.PSEUDO_TAG_WHEN_TOTAL);
+		return columnTag.equals(CustomPlanningColumnsQuestion.META_WHEN_TOTAL);
 	}
 	
 	@Override
