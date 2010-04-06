@@ -112,6 +112,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if (isWhoColumn(columnTag))
 			return isWhoCellEditable(row, modelColumn);
 		
+		if (isWhenColumn(columnTag))
+			return false;
+		
 		return super.isCellEditable(row, modelColumn);
 	}
 
@@ -123,6 +126,12 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	private boolean isWhenColumn(String columnTag)
 	{
 		return columnTag.equals(BaseObject.PSEUDO_TAG_WHEN_TOTAL);
+	}
+	
+	@Override
+	public boolean isWhenColumn(int modelColumn)
+	{
+		return isWhenColumn(getColumnTag(modelColumn));
 	}
 	
 	private boolean isWhoCellEditable(int row, int modelColumn)

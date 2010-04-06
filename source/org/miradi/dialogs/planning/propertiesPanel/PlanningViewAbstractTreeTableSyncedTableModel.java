@@ -93,6 +93,11 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return false;
 	}
 	
+	public boolean isWhenColumn(int modelColumn)
+	{
+		return false;
+	}
+	
 	public String getColumnGroupCode(int modelColumn)
 	{
 		return getColumnTag(modelColumn);
