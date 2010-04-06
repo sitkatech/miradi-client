@@ -51,6 +51,7 @@ import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.tablerenderers.ProgressTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.dialogs.tablerenderers.WhenTableCellPopupEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.WhoColumnTableCellEditorFactory;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
@@ -77,6 +78,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		progressRendererFactory = new ProgressTableCellRendererFactory(this, fontProvider);
 		doubleRendererFactory = new NumericTableCellRendererFactory(this, fontProvider);
 		whoColumnTableCellEditorFactory = new WhoColumnTableCellEditorFactory(getMainWindow(), this);
+		whenColumnTableCellEditorFactory = new WhenTableCellPopupEditorOrRendererFactory(this, fontProvider);
 		doubleClickAutoSelectCellEditor = new DoubleClickAutoSelectCellEditor(new PanelTextField());
 		
 		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, this));
@@ -89,6 +91,9 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		String columnTag = getCastedModel().getColumnTag(modelColumn);
 		if (columnTag.equals(CustomPlanningColumnsQuestion.META_WHO_TOTAL))
 			return whoColumnTableCellEditorFactory;
+		
+		if (getCastedModel().isWhenColumn(modelColumn))
+			return new WhenTableCellPopupEditorOrRendererFactory(this, new PlanningViewFontProvider(getMainWindow()));
 		
 		return doubleClickAutoSelectCellEditor;
 	}
@@ -121,6 +126,8 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			factory = progressRendererFactory;
 		else if(getCastedModel().isDateUnitColumn(modelColumn))
 			factory = doubleRendererFactory;
+		else if (getCastedModel().isWhenColumn(modelColumn))
+			factory = whenColumnTableCellEditorFactory;
 		
 		Color background = getCastedModel().getCellBackgroundColor(row, modelColumn);
 		factory.setCellBackgroundColor(background);
@@ -226,5 +233,6 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private BasicTableCellEditorOrRendererFactory progressRendererFactory;
 	private BasicTableCellEditorOrRendererFactory doubleRendererFactory;
 	private WhoColumnTableCellEditorFactory whoColumnTableCellEditorFactory;
+	private WhenTableCellPopupEditorOrRendererFactory whenColumnTableCellEditorFactory;
 	private DoubleClickAutoSelectCellEditor doubleClickAutoSelectCellEditor;
 }

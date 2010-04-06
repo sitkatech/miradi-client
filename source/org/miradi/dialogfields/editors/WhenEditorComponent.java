@@ -27,6 +27,7 @@ import org.martus.swing.UiComboBox;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.utils.CodeList;
 
 public class WhenEditorComponent extends DisposablePanel
 {
@@ -43,12 +44,21 @@ public class WhenEditorComponent extends DisposablePanel
 		add(lowerPanel);
 	}
 	
-	public DateUnit getStartDateUnit() throws Exception
+	public CodeList getStartEndCodes() throws Exception
+	{
+		CodeList startEndCodes = new CodeList();
+		startEndCodes.add(getStartDateUnit().toString());
+		startEndCodes.add(getEndDateUnit().toString());
+		
+		return startEndCodes;
+	}
+	
+	private DateUnit getStartDateUnit() throws Exception
 	{
 		return lowerPanel.getStartDateUnit();
 	}
 	
-	public DateUnit getEndDateUnit() throws Exception
+	private DateUnit getEndDateUnit() throws Exception
 	{
 		return lowerPanel.getEndDateUnit();
 	}
