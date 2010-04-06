@@ -522,7 +522,7 @@ public class LinkCreator
 		return convertToFactorLinks(groupBoxChildrenDiagramFactorRefs);
 	}
 	
-	public static ORefSet getDiagramFactorsThatLinkToAll(Vector<DiagramFactor> toBeGrouped, int direction)
+	public static ORefSet getDiagramFactorsThatLinkToAll(Project project, Vector<DiagramFactor> toBeGrouped, int direction)
 	{
 		if(toBeGrouped.size() == 0)
 			throw new RuntimeException("Attempted to group zero factors");
@@ -538,7 +538,7 @@ public class LinkCreator
 			ORefList diagramLinkRefs = df.findObjectsThatReferToUs(DiagramLink.getObjectType());
 			for(int diagramLinkIndex = 0; diagramLinkIndex < diagramLinkRefs.size(); ++diagramLinkIndex)
 			{
-				DiagramLink diagramLink = DiagramLink.find(df.getProject(), diagramLinkRefs.get(diagramLinkIndex));
+				DiagramLink diagramLink = DiagramLink.find(project, diagramLinkRefs.get(diagramLinkIndex));
 				ORef maybeThisDiagramFactorRef = diagramLink.getOppositeDiagramFactorRef(direction);
 				ORef otherDiagramFactorRef = diagramLink.getDiagramFactorRef(direction);
 				if(maybeThisDiagramFactorRef.equals(thisDiagramFactorRef))
