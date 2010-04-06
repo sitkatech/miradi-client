@@ -40,13 +40,14 @@ public class WhenEditorLowerPanel extends JPanel
 		monthCard = new MonthDateUnitStartAndEndCard();
 		dayCard = new DayDateUnitStartAndEndCard();
 		
+		add(noneCard, noneCard.getPanelDescription());
 		add(projectTotalCard, projectTotalCard.getPanelDescription());
 		add(yearCard, yearCard.getPanelDescription());
 		add(quarterCard, quarterCard.getPanelDescription());
 		add(monthCard, monthCard.getPanelDescription());
 		add(dayCard, dayCard.getPanelDescription());
 		
-		currentCard = projectTotalCard;
+		currentCard = noneCard;
 	}
 	
 	public DateUnit getStartDateUnit()
