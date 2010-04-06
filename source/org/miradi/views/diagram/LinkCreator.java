@@ -543,6 +543,9 @@ public class LinkCreator
 			ORefSet fromDiagramFactorRefs, ORefSet toDiagramFactorRefs)
 			throws CommandFailedException, ParseException
 	{
+		if(fromDiagramFactorRefs.size() > 1 && toDiagramFactorRefs.size() > 1)
+			EAM.logError("createAllPossibleGroupLinks was expecting one-to-many or many-to-one");
+		
 		for(ORef fromDiagramFactorRef : fromDiagramFactorRefs)
 		{
 			for(ORef toDiagramFactorRef : toDiagramFactorRefs)
