@@ -157,20 +157,26 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (baseObject.getResourceAssignmentRefs().isEmpty())
 				return true;
 			
-			if (baseObject.getResourceAssignmentRefs().size() > 1)
-				return false;
-
-			if (hasMoreThanOneDateUnitEfforts(baseObject))
-				return false;
+			return false;
 			
-			OptionalDouble totalBudgetCost = baseObject.getTotalBudgetCost();
-			if (totalBudgetCost.hasNoValue())
-				return true;
-			
-			if (totalBudgetCost.getValue() > 0)
-				return false;
-			
-			return true;
+//FIXME we are temporarly restricting to objects that have no assignments
+//Later we will descide to either remove this code or enable it.  This code was commented out since
+//who editor can create resource assignments and we dont want to when editor to delete it.
+//NOTE the commented method below as well.
+//			if (baseObject.getResourceAssignmentRefs().size() > 1)
+//				return false;
+//
+//			if (hasMoreThanOneDateUnitEfforts(baseObject))
+//				return false;
+//			
+//			OptionalDouble totalBudgetCost = baseObject.getTotalBudgetCost();
+//			if (totalBudgetCost.hasNoValue())
+//				return true;
+//			
+//			if (totalBudgetCost.getValue() > 0)
+//				return false;
+//			
+//			return true;
 		}
 		catch (Exception e)
 		{
@@ -179,14 +185,15 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 	}
 	
-	private static boolean hasMoreThanOneDateUnitEfforts(BaseObject baseObject) throws Exception
-	{
-		ORefList assignmentRefs = baseObject.getResourceAssignmentRefs();
-		ResourceAssignment assignment = ResourceAssignment.find(baseObject.getProject(), assignmentRefs.getFirstElement());
-		DateUnitEffortList effortList = assignment.getDateUnitEffortList();
-		
-		return effortList.size() > 1;
-	}
+//FIXME see above	
+//	private static boolean hasMoreThanOneDateUnitEfforts(BaseObject baseObject) throws Exception
+//	{
+//		ORefList assignmentRefs = baseObject.getResourceAssignmentRefs();
+//		ResourceAssignment assignment = ResourceAssignment.find(baseObject.getProject(), assignmentRefs.getFirstElement());
+//		DateUnitEffortList effortList = assignment.getDateUnitEffortList();
+//		
+//		return effortList.size() > 1;
+//	}
 	
 	@Override
 	public void setValueAt(Object value, int row, int column)
