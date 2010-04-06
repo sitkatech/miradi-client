@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-05 21:40-0500\n"
+"POT-Creation-Date: 2010-04-05 21:58-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -824,16 +824,16 @@ msgstr "视图层 \t\t"
 msgid "Layers"
 msgstr "层 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:112
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:114
 msgid "Can't link an item to itself"
 msgstr "不能将条目链接到其本身 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:113
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:122
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:115
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:124
 msgid "Can't Create Link"
 msgstr "不能创建链接 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:121
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:123
 msgid "Can't link a group to an item it contains"
 msgstr "不能将组链接到其所包含的条目 \t\t"
 
@@ -4088,27 +4088,27 @@ msgstr ""
 msgid "Ignoring unlinked factors..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:402
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:369
 msgid "Preparing groups..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:414
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:381
 msgid "Updating locations..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:489
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:456
 msgid "Arranging Threats..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:500
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:467
 msgid "Arranging Targets..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:507
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:474
 msgid "Arranging Strategies..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:588
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:555
 msgid "Extracting factors..."
 msgstr ""
 
