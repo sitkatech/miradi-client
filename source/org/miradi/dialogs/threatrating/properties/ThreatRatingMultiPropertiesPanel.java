@@ -45,6 +45,7 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 		createPropertiesPanels();
+		addPropertiesPanels();
 	}
 	
 	@Override
@@ -69,8 +70,6 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 		simplePropertiesPanel = new SimpleThreatRatingPropertiesPanel(getMainWindow(), objectPicker);
 		stressBasedPropertiesPanel = new StressBasedThreatRatingPropertiesPanel(getMainWindow(), objectPicker);
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
-		
-		addPropertiesPanels();
 	}
 
 	private void addPropertiesPanels()
