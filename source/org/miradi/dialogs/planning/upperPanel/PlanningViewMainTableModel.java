@@ -195,10 +195,13 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		ORefList assignmentRefs = baseObject.getResourceAssignmentRefs();
 		ResourceAssignment assignment = ResourceAssignment.find(baseObject.getProject(), assignmentRefs.getFirstElement());
 		DateUnitEffortList effortList = assignment.getDateUnitEffortList();
+		if (effortList.hasEffortsWithQuantity())
+			return false;
+		
 		if (effortList.size() > 2)
 			return false;
 		
-		return effortList.hasNoEffortsWithQuantity();
+		return true;
 	}
 	
 	@Override

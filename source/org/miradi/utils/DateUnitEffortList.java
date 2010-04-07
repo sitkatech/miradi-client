@@ -136,16 +136,16 @@ public class DateUnitEffortList
 		}
 	}
 	
-	public boolean hasNoEffortsWithQuantity()
+	public boolean hasEffortsWithQuantity()
 	{
 		for (int index = 0; index < size(); ++index)
 		{
 			DateUnitEffort dateUnitEffort = getDateUnitEffort(index);
 			if (dateUnitEffort.getQuantity() > 0)
-				return false;
+				return true;
 		}
 		
-		return true;
+		return false;
 	}
 
 	
