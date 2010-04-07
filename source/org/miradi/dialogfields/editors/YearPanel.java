@@ -28,6 +28,11 @@ import org.miradi.project.ProjectCalendar;
 
 public class YearPanel extends OneRowPanel
 {
+	public YearPanel(ProjectCalendar projectCalendar)
+	{
+		this(projectCalendar, "");
+	}
+	
 	public YearPanel(ProjectCalendar projectCalendar, String panelTitle)
 	{
 		fiscalYearStartMonth = projectCalendar.getFiscalYearFirstMonth();

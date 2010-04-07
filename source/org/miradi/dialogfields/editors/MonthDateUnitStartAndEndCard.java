@@ -23,14 +23,15 @@ package org.miradi.dialogfields.editors;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.project.ProjectCalendar;
 import org.miradi.utils.FillerLabel;
 
 public class MonthDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 {
-	public MonthDateUnitStartAndEndCard()
+	public MonthDateUnitStartAndEndCard(ProjectCalendar projectCalendar)
 	{
-		startMonthPanel = new MonthPanel(getStartText());
-		endMonthPanel = new MonthPanel(getEndText());
+		startMonthPanel = new MonthPanel(projectCalendar, getStartText());
+		endMonthPanel = new MonthPanel(projectCalendar, getEndText());
 		
 		add(new PanelTitleLabel(EAM.text("Month Selection: ")));
 		add(new FillerLabel());
