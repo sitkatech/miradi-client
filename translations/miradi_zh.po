@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-07 13:43-0500\n"
+"POT-Creation-Date: 2010-04-07 13:47-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2679,19 +2679,19 @@ msgid "3"
 msgstr "3"
 
 #: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:31
-msgid "Q1"
-msgstr ""
+msgid "First Quarter"
+msgstr "第一季度 \t\t"
 
 #: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:32
-msgid "Q2"
+msgid "Second Quarter"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:33
-msgid "Q3"
+msgid "Third Quarter"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:34
-msgid "Q4"
+msgid "Fourth Quarter"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:29
@@ -3755,19 +3755,19 @@ msgid "Other"
 msgstr "其它"
 
 #: Miradi/source/org/miradi/questions/FiscalYearQuarterQuestion.java:31
-msgid "FY Q1"
+msgid "First Fiscal Quarter"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/FiscalYearQuarterQuestion.java:32
-msgid "FY Q2"
+msgid "Second Fiscal Quarter"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/FiscalYearQuarterQuestion.java:33
-msgid "FY Q3"
+msgid "Third Fiscal Quarter"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/FiscalYearQuarterQuestion.java:34
-msgid "FY Q4"
+msgid "Fourth Fiscal Quarter"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/StatusQuestion.java:37
@@ -34080,9 +34080,6 @@ msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
 
 #~ msgid "Combine"
 #~ msgstr "合并 \t\t"
-
-#~ msgid "First Quarter"
-#~ msgstr "第一季度 \t\t"
 
 #~ msgid ""
 #~ "Resources cannot be added to this task because it already has subtasks."
