@@ -52,7 +52,7 @@ public class PopupQuestionEditorField extends ObjectDataInputField
 	@Override
 	public void setText(String code)
 	{
-		editorComponent.setText(code);
+		editorComponent.setCode(code);
 	}
 	
 	@Override
