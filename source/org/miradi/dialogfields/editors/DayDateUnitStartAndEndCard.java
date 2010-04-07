@@ -20,7 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.utils.FillerLabel;
 
 public class DayDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 {
@@ -29,6 +32,8 @@ public class DayDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 		startDayPanel = new DayPanel(getStartText());
 		endDayPanel = new DayPanel(getEndText());
 
+		add(new PanelTitleLabel(EAM.text("Day Selection: ")));
+		add(new FillerLabel());
 		add(startDayPanel);
 		add(endDayPanel);
 	}
