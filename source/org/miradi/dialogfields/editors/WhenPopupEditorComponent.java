@@ -33,7 +33,7 @@ public class WhenPopupEditorComponent extends AbstractPopupEditorComponent
 	protected void invokePopupEditor()
 	{
 		MainWindow mainWindow = EAM.getMainWindow();
-		String title = EAM.text("Edit When");
+		String title = EAM.substitute(EAM.text("When - %s"), getBaseObjectForRowLabel());
 		ModalDialogWithClose dialog = new ModalDialogWithClose(mainWindow, title);
 		whenEditorPanel = new WhenEditorComponent(mainWindow.getProject().getMetadata().getFiscalYearFirstMonth());
 		dialog.setMainPanel(whenEditorPanel);
@@ -60,5 +60,16 @@ public class WhenPopupEditorComponent extends AbstractPopupEditorComponent
 		}
 	}
 	
+	private String getBaseObjectForRowLabel()
+	{
+		return baseObjectForRowLabel;
+	}
+	
+	public void setBaseObjectForRowLabel(String baseObjectForRowLabelToUse)
+	{
+		baseObjectForRowLabel = baseObjectForRowLabelToUse;
+	}
+	
 	private WhenEditorComponent whenEditorPanel;
+	private String baseObjectForRowLabel;
 }
