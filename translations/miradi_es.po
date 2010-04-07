@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-07 13:10-0500\n"
+"POT-Creation-Date: 2010-04-07 13:15-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -2872,23 +2872,19 @@ msgid "3"
 msgstr "3"
 
 #: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:35
-msgid "Quarter 1"
+msgid "Q1"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:36
-msgid "Quarter 2"
+msgid "Q2"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:37
-msgid "Quarter 3"
+msgid "Q3"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:38
-msgid "Quarter 4"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:53
-msgid "FY"
+msgid "Q4"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:29
@@ -4004,6 +4000,22 @@ msgstr "Lagos de agua dulce"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:160
 msgid "Other"
 msgstr "Otro "
+
+#: Miradi/source/org/miradi/questions/FiscalYearQuarterQuestion.java:31
+msgid "FY Q1"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/FiscalYearQuarterQuestion.java:32
+msgid "FY Q2"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/FiscalYearQuarterQuestion.java:33
+msgid "FY Q3"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/FiscalYearQuarterQuestion.java:34
+msgid "FY Q4"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/StatusQuestion.java:37
 msgid "Poor"
