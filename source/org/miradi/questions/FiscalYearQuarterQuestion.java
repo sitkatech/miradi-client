@@ -18,31 +18,20 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogfields.editors;
+package org.miradi.questions;
 
-import org.miradi.dialogs.fieldComponents.PanelComboBox;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.FiscalYearQuarterQuestion;
-import org.miradi.questions.QuarterChoiceQuestion;
+import org.miradi.main.EAM;
 
-public class QuarterChooser extends PanelComboBox
+public class FiscalYearQuarterQuestion extends DynamicChoiceQuestion
 {
-	public QuarterChooser(int fiscalYearStartMonth)
+	@Override
+	public ChoiceItem[] getChoices()
 	{
-		super(createChoices(fiscalYearStartMonth));
-	}
-
-	private static ChoiceItem[] createChoices(int fiscalYearStartMonth)
-	{
-		return createQuestion(fiscalYearStartMonth).getChoices();
-	}
-	
-	private static ChoiceQuestion createQuestion(int fiscalYearStartMonth)
-	{
-		if (fiscalYearStartMonth == 1)
-			return new QuarterChoiceQuestion();
-		
-		return new FiscalYearQuarterQuestion();
+		return new ChoiceItem[]{
+				new ChoiceItem("1", EAM.text("FY Q1")),
+				new ChoiceItem("2", EAM.text("FY Q2")),
+				new ChoiceItem("3", EAM.text("FY Q3")),
+				new ChoiceItem("4", EAM.text("FY Q4")),
+		};
 	}
 }

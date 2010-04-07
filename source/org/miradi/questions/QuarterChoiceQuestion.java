@@ -24,32 +24,18 @@ import org.miradi.main.EAM;
 
 public class QuarterChoiceQuestion extends StaticChoiceQuestion
 {
-	public QuarterChoiceQuestion(int fiscalYearStartMonth)
+	public QuarterChoiceQuestion()
 	{
-		super(createQuarterChoices(fiscalYearStartMonth));
+		super(createQuarterChoices());
 	}
 	
-	private static ChoiceItem[] createQuarterChoices(int fiscalYearStartMonth)
+	private static ChoiceItem[] createQuarterChoices()
 	{
 		return new ChoiceItem[]{
-				new ChoiceItem("1", createQuarterLabel(fiscalYearStartMonth, EAM.text("Quarter 1"))),
-				new ChoiceItem("2", createQuarterLabel(fiscalYearStartMonth, EAM.text("Quarter 2"))),
-				new ChoiceItem("3", createQuarterLabel(fiscalYearStartMonth, EAM.text("Quarter 3"))),
-				new ChoiceItem("4", createQuarterLabel(fiscalYearStartMonth, EAM.text("Quarter 4"))),
+				new ChoiceItem("1", EAM.text("Q1")),
+				new ChoiceItem("2", EAM.text("Q2")),
+				new ChoiceItem("3", EAM.text("Q3")),
+				new ChoiceItem("4", EAM.text("Q4")),
 		};
-	}
-
-	private static String createQuarterLabel(int fiscalYearStartMonth, String quarterLabel)
-	{
-		return getFiscalYearLabel(fiscalYearStartMonth) + quarterLabel;
-	}
-
-	public static String getFiscalYearLabel(int fiscalYearStartMonth)
-	{
-		if (fiscalYearStartMonth == 1)
-			return "";
-			
-		final String SINGLE_SPACE = " ";
-		return EAM.text("FY") + SINGLE_SPACE;
 	}
 }
