@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-06 21:34-0500\n"
+"POT-Creation-Date: 2010-04-07 13:10-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -3118,6 +3118,10 @@ msgstr "Por trimestre"
 msgid "By Year"
 msgstr "Por año"
 
+#: Miradi/source/org/miradi/questions/FiscalYearChoiceQuestion.java:36
+msgid "FY %s"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/DiagramFactorFontSizeQuestion.java:35
 msgid "Medium (Default)"
 msgstr "Medio (Predeterminado) "
@@ -4888,15 +4892,15 @@ msgstr ""
 msgid "When - %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:35
+#: Miradi/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:36
 msgid "Year Selection: "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/editors/QuarterDateUnitStartAndEndCard.java:35
+#: Miradi/source/org/miradi/dialogfields/editors/QuarterDateUnitStartAndEndCard.java:36
 msgid "Quarter Selection: "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:50
+#: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:51
 msgid "Enter As: "
 msgstr ""
 
