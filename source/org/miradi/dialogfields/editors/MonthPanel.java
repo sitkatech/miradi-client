@@ -24,15 +24,15 @@ import org.martus.util.MultiCalendar;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.project.ProjectCalendar;
 
 import com.toedter.calendar.JMonthChooser;
-import com.toedter.calendar.JYearChooser;
 
 public class MonthPanel extends OneRowPanel
 {
-	public MonthPanel(String title)
+	public MonthPanel(ProjectCalendar projectCalendar, String title)
 	{
-		yearChooser = new JYearChooser();
+		yearChooser = new YearPanel(projectCalendar);
 		monthChooser = new JMonthChooser();
 
 		add(new PanelTitleLabel(title));
@@ -47,5 +47,5 @@ public class MonthPanel extends OneRowPanel
 	}
 	
 	private JMonthChooser monthChooser;
-	private JYearChooser yearChooser;
+	private YearPanel yearChooser;
 }
