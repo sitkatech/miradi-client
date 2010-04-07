@@ -22,7 +22,7 @@ package org.miradi.questions;
 
 import org.miradi.main.EAM;
 
-public class FiscalYearQuarterQuestion extends DynamicChoiceQuestion
+public class FiscalYearQuarterQuestion extends StaticChoiceQuestion
 {
 	@Override
 	public ChoiceItem[] getChoices()
