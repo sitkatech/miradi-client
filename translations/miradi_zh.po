@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-07 13:15-0500\n"
+"POT-Creation-Date: 2010-04-07 13:43-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2678,19 +2678,19 @@ msgstr "2"
 msgid "3"
 msgstr "3"
 
-#: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:35
+#: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:31
 msgid "Q1"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:36
+#: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:32
 msgid "Q2"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:37
+#: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:33
 msgid "Q3"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:38
+#: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:34
 msgid "Q4"
 msgstr ""
 
