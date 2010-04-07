@@ -25,6 +25,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.FiscalYearQuarterQuestion;
 import org.miradi.questions.QuarterChoiceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 
 public class QuarterChooser extends PanelComboBox
 {
@@ -41,8 +42,8 @@ public class QuarterChooser extends PanelComboBox
 	private static ChoiceQuestion createQuestion(int fiscalYearStartMonth)
 	{
 		if (fiscalYearStartMonth == 1)
-			return new QuarterChoiceQuestion();
+			return StaticQuestionManager.getQuestion(QuarterChoiceQuestion.class);
 		
-		return new FiscalYearQuarterQuestion();
+		return StaticQuestionManager.getQuestion(FiscalYearQuarterQuestion.class);
 	}
 }
