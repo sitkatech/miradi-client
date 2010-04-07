@@ -89,6 +89,11 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 		return currentLabel;
 	}
 	
+	public void setInvokeButtonEnabled(boolean isEnabled)
+	{
+		popupInvokeButton.setEnabled(isEnabled);
+	}
+	
 	abstract protected void invokePopupEditor();
 
 	private class PopUpEditorHandler extends MouseAdapter implements ActionListener 
