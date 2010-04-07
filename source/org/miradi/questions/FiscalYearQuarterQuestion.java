@@ -25,7 +25,7 @@ import org.miradi.main.EAM;
 public class FiscalYearQuarterQuestion extends StaticChoiceQuestion
 {
 	@Override
-	public ChoiceItem[] getChoices()
+	public ChoiceItem[] createChoices()
 	{
 		return new ChoiceItem[]{
 				new ChoiceItem("1", EAM.text("First Fiscal Quarter")),
