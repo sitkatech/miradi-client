@@ -28,18 +28,18 @@ public class MonthQuestion extends StaticChoiceQuestion
 	protected ChoiceItem[] createChoices()
 	{
 		return new ChoiceItem[]{
-				new ChoiceItem("1", EAM.text("January")),
-				new ChoiceItem("2", EAM.text("February")),
-				new ChoiceItem("3", EAM.text("March")),
-				new ChoiceItem("4", EAM.text("April")),
-				new ChoiceItem("5", EAM.text("May")),
-				new ChoiceItem("6", EAM.text("June")),
-				new ChoiceItem("7", EAM.text("July")),
-				new ChoiceItem("8", EAM.text("August")),
-				new ChoiceItem("9", EAM.text("September")),
-				new ChoiceItem("10", EAM.text("October")),
-				new ChoiceItem("11", EAM.text("November")),
-				new ChoiceItem("12", EAM.text("December")),
+				new ChoiceItem("1", EAM.text("Month|January")),
+				new ChoiceItem("2", EAM.text("Month|February")),
+				new ChoiceItem("3", EAM.text("Month|March")),
+				new ChoiceItem("4", EAM.text("Month|April")),
+				new ChoiceItem("5", EAM.text("Month|May")),
+				new ChoiceItem("6", EAM.text("Month|June")),
+				new ChoiceItem("7", EAM.text("Month|July")),
+				new ChoiceItem("8", EAM.text("Month|August")),
+				new ChoiceItem("9", EAM.text("Month|September")),
+				new ChoiceItem("10", EAM.text("Month|October")),
+				new ChoiceItem("11", EAM.text("Month|November")),
+				new ChoiceItem("12", EAM.text("Month|December")),
 		};
 	}
 }
