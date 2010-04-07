@@ -44,7 +44,10 @@ public class WhenTableCellPopupEditorOrRendererFactory extends PopupEditableCell
 	@Override
 	protected Component getConfiguredComponent(JTable table, Object value, int row, int column)
 	{
-		whenPopupEditorComponent.setText(value.toString()); 
+		whenPopupEditorComponent.setText(value.toString());
+
+		String baseObjectForRowLabel = getBaseObjectForRow(row, column).combineShortLabelAndLabel();
+		whenPopupEditorComponent.setBaseObjectForRowLabel(baseObjectForRowLabel);
 		return whenPopupEditorComponent;
 	}
 	
