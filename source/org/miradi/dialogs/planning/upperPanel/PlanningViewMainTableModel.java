@@ -161,7 +161,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (baseObject.getResourceAssignmentRefs().size() > 1)
 				return false;
 
-			if (isCorrectDateUnitEffortsSize(baseObject))
+			if (hasUsableNumberOfDateUnitEfforts(baseObject))
 				return true;
 				
 			return false;
@@ -190,7 +190,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 	}
 	
-	private static boolean isCorrectDateUnitEffortsSize(BaseObject baseObject) throws Exception
+	private static boolean hasUsableNumberOfDateUnitEfforts(BaseObject baseObject) throws Exception
 	{
 		ORefList assignmentRefs = baseObject.getResourceAssignmentRefs();
 		ResourceAssignment assignment = ResourceAssignment.find(baseObject.getProject(), assignmentRefs.getFirstElement());
