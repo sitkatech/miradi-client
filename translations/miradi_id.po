@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-06 20:50-0500\n"
+"POT-Creation-Date: 2010-04-06 21:04-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2877,6 +2877,10 @@ msgstr ""
 msgid "Quarter 4"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:53
+msgid "FY"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:29
 msgid "Abandoned"
 msgstr "Ditinggalkan "
@@ -4858,10 +4862,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:36
 msgid "End:"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogfields/editors/YearPanel.java:47
-msgid "FY"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:222
