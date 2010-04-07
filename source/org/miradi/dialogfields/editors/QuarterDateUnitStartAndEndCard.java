@@ -23,14 +23,15 @@ package org.miradi.dialogfields.editors;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.project.ProjectCalendar;
 import org.miradi.utils.FillerLabel;
 
 public class QuarterDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 {
-	public QuarterDateUnitStartAndEndCard(int fiscalYearStartMonth)
+	public QuarterDateUnitStartAndEndCard(ProjectCalendar projectCalendar)
 	{
-		startQuarterPanel = new QuarterPanel(fiscalYearStartMonth, getStartText());
-		endQuarterPanel = new QuarterPanel(fiscalYearStartMonth, getEndText());
+		startQuarterPanel = new QuarterPanel(projectCalendar, getStartText());
+		endQuarterPanel = new QuarterPanel(projectCalendar, getEndText());
 
 		add(new PanelTitleLabel(EAM.text("Quarter Selection: ")));
 		add(new FillerLabel());

@@ -18,30 +18,21 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogfields.editors;
+package org.miradi.questions;
 
-import org.miradi.layout.OneRowPanel;
-import org.miradi.objecthelpers.DateUnit;
-import org.miradi.project.ProjectCalendar;
-import org.miradi.questions.ChoiceItem;
+import org.miradi.main.EAM;
 
-public class QuarterPanel extends OneRowPanel
+
+public class FiscalYearChoiceQuestion extends AbstractYearChoiceQuestion
 {
-	public QuarterPanel(ProjectCalendar projectCalendar, String title)
-	{		
-		quarterChooser = new QuarterChooser(projectCalendar.getFiscalYearFirstMonth());
-
-		yearPanel = new YearPanel(projectCalendar, title);
-		add(yearPanel);
-		add(quarterChooser);
-	}
-	
-	public DateUnit getDateUnit()
+	public FiscalYearChoiceQuestion(int startYearToUse, int endYearToUse)
 	{
-		ChoiceItem choiceItem = (ChoiceItem) quarterChooser.getSelectedItem();
-		return DateUnit.createQuarterDateUnit(yearPanel.getYear(), Integer.parseInt(choiceItem.getCode()));
+		super(startYearToUse, endYearToUse);
 	}
-	
-	private QuarterChooser quarterChooser;
-	private YearPanel yearPanel;
+
+	@Override
+	protected String createYearLabel(int year)
+	{
+		return EAM.substitute(EAM.text("FY %s"), Integer.toString(year));
+	}
 }

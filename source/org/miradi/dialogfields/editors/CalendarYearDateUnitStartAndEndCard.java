@@ -23,14 +23,15 @@ package org.miradi.dialogfields.editors;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.project.ProjectCalendar;
 import org.miradi.utils.FillerLabel;
 
 public class CalendarYearDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 {
-	public CalendarYearDateUnitStartAndEndCard(int fiscalYearStartMonth)
+	public CalendarYearDateUnitStartAndEndCard(ProjectCalendar projectCalendar)
 	{
-		startYearPanel = new YearPanel(fiscalYearStartMonth, getStartText());
-		endYearPanel = new YearPanel(fiscalYearStartMonth, getEndText());
+		startYearPanel = new YearPanel(projectCalendar, getStartText());
+		endYearPanel = new YearPanel(projectCalendar, getEndText());
 		
 		add(new PanelTitleLabel(EAM.text("Year Selection: ")));
 		add(new FillerLabel());

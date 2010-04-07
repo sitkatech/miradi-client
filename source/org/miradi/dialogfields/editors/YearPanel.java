@@ -24,17 +24,15 @@ import org.martus.util.MultiCalendar;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.objecthelpers.DateUnit;
-import org.miradi.questions.QuarterChoiceQuestion;
-
-import com.toedter.calendar.JYearChooser;
+import org.miradi.project.ProjectCalendar;
 
 public class YearPanel extends OneRowPanel
 {
-	public YearPanel(int fiscalYearStartMonthToUse, String panelTitle)
+	public YearPanel(ProjectCalendar projectCalendar, String panelTitle)
 	{
-		fiscalYearStartMonth = fiscalYearStartMonthToUse;
-		yearChooser = new JYearChooser();
-		add(new PanelTitleLabel(panelTitle + QuarterChoiceQuestion.getFiscalYearLabel(fiscalYearStartMonth)));
+		fiscalYearStartMonth = projectCalendar.getFiscalYearFirstMonth();
+		yearChooser = new YearComboBox(projectCalendar);
+		add(new PanelTitleLabel(panelTitle));
 		add(yearChooser);
 	}
 	
@@ -48,7 +46,7 @@ public class YearPanel extends OneRowPanel
 		MultiCalendar year = MultiCalendar.createFromGregorianYearMonthDay(yearChooser.getYear(), fiscalYearStartMonth, 1);
 		return DateUnit.createFiscalYear(year.getGregorianYear(), fiscalYearStartMonth);
 	}
-		
-	private JYearChooser yearChooser;
+	
+	private YearComboBox yearChooser;
 	private int fiscalYearStartMonth;
 }
