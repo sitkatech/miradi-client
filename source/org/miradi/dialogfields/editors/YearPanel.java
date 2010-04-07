@@ -23,6 +23,7 @@ package org.miradi.dialogfields.editors;
 import org.martus.util.MultiCalendar;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.OneRowPanel;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 
 import com.toedter.calendar.JYearChooser;
@@ -43,7 +44,7 @@ public class YearPanel extends OneRowPanel
 		if (fiscalYearStartMonth == 1)
 			return "";
 		
-		return "FY";
+		return EAM.text("FY");
 	}
 	
 	public DateUnit getDate()
