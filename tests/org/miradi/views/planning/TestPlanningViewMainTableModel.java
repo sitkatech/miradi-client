@@ -64,24 +64,24 @@ public class TestPlanningViewMainTableModel extends TestCaseWithProject
 	public void testIsWhenEditableWithThreeDateUnitEfforts() throws Exception
 	{
 		DateUnitEffortList list = createSampleDateUnitEffortList(3, 2002, 0.0);
-		Task activityWithAssignmentWithTwoDateUnitEfforts = getProject().createActivity();
-		getProject().addResourceAssignment(activityWithAssignmentWithTwoDateUnitEfforts, list);
+		Task activityWithAssignmentWithTwoDateUnitEfforts = createActivityWithResourceAssignment(list);
 		assertFalse("can edit activity with assignment with three dateUnitEfforts?", isWhenEditable(activityWithAssignmentWithTwoDateUnitEfforts));		
 	}
 
 	public void testIsWhenEditableWithTwoDateUnitEfforts() throws Exception
 	{
 		DateUnitEffortList list = createSampleDateUnitEffortList(2, 2002, 0.0);
-		Task activityWithAssignmentWithTwoDateUnitEfforts = getProject().createActivity();
-		getProject().addResourceAssignment(activityWithAssignmentWithTwoDateUnitEfforts, list);
+		Task activityWithAssignmentWithTwoDateUnitEfforts = createActivityWithResourceAssignment(list);
 		assertTrue("cannot edit activity with assignment with two dateUnitEfforts?", isWhenEditable(activityWithAssignmentWithTwoDateUnitEfforts));
 	}
-
-	private boolean isWhenEditable(BaseObject baseObject)
-	{
-		return PlanningViewMainTableModel.isWhenEditable(baseObject);
-	}
 	
+	public void testIsWhenEdtaibleWithNonBlankDateUnitEfforts() throws Exception
+	{
+		DateUnitEffortList list = createSampleDateUnitEffortList(1, 2002, 10.0);
+		Task activityWithAssignmentWithNonBlankDateUnitEfforts = createActivityWithResourceAssignment(list);
+		assertFalse("cannot edit object with dateUnitEfforts that have data?", isWhenEditable(activityWithAssignmentWithNonBlankDateUnitEfforts));
+	}
+
 	public void testCanOwnAssignments()
 	{
 		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
@@ -91,6 +91,19 @@ public class TestPlanningViewMainTableModel extends TestCaseWithProject
 			else
 				assertFalse("Type" + type + " can refer to assignments?", canOwnAssignments(type));
 		}
+	}
+	
+	private Task createActivityWithResourceAssignment(DateUnitEffortList list) throws Exception
+	{
+		Task activityWithAssignmentWithTwoDateUnitEfforts = getProject().createActivity();
+		getProject().addResourceAssignment(activityWithAssignmentWithTwoDateUnitEfforts, list);
+		
+		return activityWithAssignmentWithTwoDateUnitEfforts;
+	}
+
+	private boolean isWhenEditable(BaseObject baseObject)
+	{
+		return PlanningViewMainTableModel.isWhenEditable(baseObject);
 	}
 	
 	private DateUnitEffortList createSampleDateUnitEffortList(int listSize, int startYear, double effort) throws Exception
