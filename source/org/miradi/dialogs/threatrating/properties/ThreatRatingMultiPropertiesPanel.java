@@ -70,6 +70,11 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 		stressBasedPropertiesPanel = new StressBasedThreatRatingPropertiesPanel(getMainWindow(), objectPicker);
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
 		
+		addPropertiesPanels();
+	}
+
+	private void addPropertiesPanels()
+	{
 		add(simplePropertiesPanel);
 		add(stressBasedPropertiesPanel);
 		add(blankPropertiesPanel);
