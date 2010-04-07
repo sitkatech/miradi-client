@@ -23,8 +23,8 @@ package org.miradi.dialogfields.editors;
 import org.martus.util.MultiCalendar;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.OneRowPanel;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.questions.QuarterChoiceQuestion;
 
 import com.toedter.calendar.JYearChooser;
 
@@ -35,16 +35,13 @@ public class YearPanel extends OneRowPanel
 		fiscalYearStartMonth = fiscalYearStartMonthToUse;
 		yearChooser = new JYearChooser();
 		add(new PanelTitleLabel(panelTitle));
-		add(new PanelTitleLabel(getFiscalYearLabel()));
+		add(new PanelTitleLabel(QuarterChoiceQuestion.getFiscalYearLabel(fiscalYearStartMonth)));
 		add(yearChooser);
 	}
-
-	private String getFiscalYearLabel()
+	
+	public int getYear()
 	{
-		if (fiscalYearStartMonth == 1)
-			return "";
-		
-		return EAM.text("FY");
+		return yearChooser.getYear();
 	}
 	
 	public DateUnit getDate()

@@ -26,13 +26,13 @@ import org.miradi.questions.QuarterChoiceQuestion;
 
 public class QuarterChooser extends PanelComboBox
 {
-	public QuarterChooser()
+	public QuarterChooser(int fiscalYearStartMonth)
 	{
-		super(createChoices());
+		super(createChoices(fiscalYearStartMonth));
 	}
 
-	private static ChoiceItem[] createChoices()
+	private static ChoiceItem[] createChoices(int fiscalYearStartMonth)
 	{
-		return new QuarterChoiceQuestion().getChoices();
+		return new QuarterChoiceQuestion(fiscalYearStartMonth).getChoices();
 	}
 }
