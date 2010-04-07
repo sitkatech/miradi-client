@@ -20,12 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
+import java.awt.BorderLayout;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+import javax.swing.BorderFactory;
+
 import org.martus.swing.UiComboBox;
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.layout.OneColumnGridLayout;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.layout.TwoColumnPanel;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.utils.CodeList;
 
@@ -33,15 +38,20 @@ public class WhenEditorComponent extends DisposablePanel
 {
 	public WhenEditorComponent(int fiscalYearStartMonth)
 	{
-		setLayout(new OneColumnGridLayout());
+		setLayout(new BorderLayout());
 
 		String[] choices = new String[]{NONE_ITEM, PROJECT_TOTAL_ITEM, YEAR_ITEM, QUARTER_ITEM, MONTH_ITEM, DAY_ITEM,};
 		dateUnitTypeCombo = new UiComboBox(choices);
 		dateUnitTypeCombo.addItemListener(new ChangeHandler());
-
+		
 		lowerPanel = new WhenEditorLowerPanel(fiscalYearStartMonth);
-		add(dateUnitTypeCombo);
-		add(lowerPanel);
+		TwoColumnPanel upperPanel = new TwoColumnPanel();
+		upperPanel.setBorder(BorderFactory.createEtchedBorder());
+		upperPanel.add(new PanelTitleLabel(EAM.text("Enter As: ")));
+		upperPanel.add(dateUnitTypeCombo);
+		
+		add(upperPanel, BorderLayout.PAGE_START);
+		add(lowerPanel, BorderLayout.PAGE_END);
 	}
 	
 	public CodeList getStartEndCodes() throws Exception
