@@ -20,30 +20,26 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import org.martus.util.MultiCalendar;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.layout.OneRowPanel;
-import org.miradi.objecthelpers.DateUnit;
-import org.miradi.project.ProjectCalendar;
+import org.miradi.dialogs.fieldComponents.PanelComboBox;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.MonthQuestion;
+import org.miradi.questions.StaticQuestionManager;
 
-public class MonthPanel extends OneRowPanel
+public class MonthComboBox extends PanelComboBox
 {
-	public MonthPanel(ProjectCalendar projectCalendar, String title)
+	public MonthComboBox()
 	{
-		yearChooser = new YearPanel(projectCalendar);
-		monthChooser = new MonthComboBox();
+		super(createChoices());
+	}
+	
+	public int getMonth()
+	{
+		ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
+		return Integer.parseInt(selectedItem.getCode());
+	}
 
-		add(new PanelTitleLabel(title));
-		add(yearChooser);
-		add(monthChooser);
-	}
-	
-	public DateUnit getDate()
+	private static ChoiceItem[] createChoices()
 	{
-		MultiCalendar month = MultiCalendar.createFromGregorianYearMonthDay(yearChooser.getYear(), monthChooser.getMonth(), 1);
-		return DateUnit.createMonthDateUnit(month.toIsoDateString()); 
+		return StaticQuestionManager.getQuestion(MonthQuestion.class).getChoices();
 	}
-	
-	private MonthComboBox monthChooser;
-	private YearPanel yearChooser;
 }
