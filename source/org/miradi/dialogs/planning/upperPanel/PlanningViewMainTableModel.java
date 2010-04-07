@@ -228,13 +228,18 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (datesAsCodeList.size() == 2)
 				createResourceAssignment(baseObjectForRow, datesAsCodeList);
 
-			if (datesAsCodeList.isEmpty())
+			if (canDeleteResourceAssignment(datesAsCodeList))
 				deleteResourceAssignment(baseObjectForRow);
 		}
 		finally
 		{
 			getProject().executeEndTransaction();
 		}
+	}
+
+	private boolean canDeleteResourceAssignment(CodeList datesAsCodeList)
+	{
+		return datesAsCodeList.isEmpty();
 	}
 
 	private void deleteResourceAssignment(BaseObject baseObjectForRow) throws Exception
