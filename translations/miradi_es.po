@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-07 14:56-0500\n"
+"POT-Creation-Date: 2010-04-07 15:08-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -2830,52 +2830,51 @@ msgid "Biodiversity Target"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/MonthQuestion.java:31
-msgid "January"
+msgid "Month|January"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/MonthQuestion.java:32
-msgid "February"
+msgid "Month|February"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/MonthQuestion.java:33
-msgid "March"
+msgid "Month|March"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/MonthQuestion.java:34
-msgid "April"
+msgid "Month|April"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/MonthQuestion.java:35
-#: Miradi/source/org/miradi/questions/MonthAbbreviationsQuestion.java:39
-msgid "May"
+msgid "Month|May"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/MonthQuestion.java:36
-msgid "June"
+msgid "Month|June"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/MonthQuestion.java:37
-msgid "July"
+msgid "Month|July"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/MonthQuestion.java:38
-msgid "August"
+msgid "Month|August"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/MonthQuestion.java:39
-msgid "September"
+msgid "Month|September"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/MonthQuestion.java:40
-msgid "October"
+msgid "Month|October"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/MonthQuestion.java:41
-msgid "November"
+msgid "Month|November"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/MonthQuestion.java:42
-msgid "December"
+msgid "Month|December"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:36
@@ -3024,6 +3023,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/MonthAbbreviationsQuestion.java:38
 msgid "Apr"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/MonthAbbreviationsQuestion.java:39
+msgid "May"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/MonthAbbreviationsQuestion.java:40
@@ -7387,7 +7390,7 @@ msgstr ""
 msgid "Show: "
 msgstr "Mostrar: "
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:456
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:479
 msgid "[Error]"
 msgstr "[Error]"
 
