@@ -24,12 +24,8 @@ import org.miradi.main.EAM;
 
 public class QuarterChoiceQuestion extends StaticChoiceQuestion
 {
-	public QuarterChoiceQuestion()
-	{
-		super(createQuarterChoices());
-	}
-	
-	private static ChoiceItem[] createQuarterChoices()
+	@Override
+	public ChoiceItem[] createChoices()
 	{
 		return new ChoiceItem[]{
 				new ChoiceItem("1", EAM.text("Q1")),
