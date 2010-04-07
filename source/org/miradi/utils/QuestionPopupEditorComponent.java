@@ -127,7 +127,7 @@ public class QuestionPopupEditorComponent extends PopupEditorComponent
 		super.removeFocusListener(listener);
 	}
 
-	public void setText(String code)
+	public void setCode(String code)
 	{
 		currentSelectionCode = code;
 		ChoiceItem choice = question.findChoiceByCode(code);
@@ -228,7 +228,7 @@ public class QuestionPopupEditorComponent extends PopupEditorComponent
 		{
 			currentSelectionText.requestFocus();
 			String code = ((ChoiceItemListSelectionEvent)event).getCode();
-			setText(code);
+			setCode(code);
 	
 			setNeedsSave();
 			FieldSaver.savePendingEdits();

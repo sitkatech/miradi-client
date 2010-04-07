@@ -192,7 +192,7 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 	private void updateRatingComponent(ChoiceQuestion questionToUse, BaseId criterionId, SimpleThreatRatingQuestionPopupEditorComponent ratingComponent) throws Exception
 	{
 		ChoiceItem choice = getCurrentRating(questionToUse, criterionId);
-		ratingComponent.setText(choice.getCode());
+		ratingComponent.setCode(choice.getCode());
 		ratingComponent.setThreatRef(getThreatRef());
 		ratingComponent.setTargetRef(getTargetRef());
 	}
