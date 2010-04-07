@@ -34,8 +34,7 @@ public class YearPanel extends OneRowPanel
 	{
 		fiscalYearStartMonth = fiscalYearStartMonthToUse;
 		yearChooser = new JYearChooser();
-		add(new PanelTitleLabel(panelTitle));
-		add(new PanelTitleLabel(QuarterChoiceQuestion.getFiscalYearLabel(fiscalYearStartMonth)));
+		add(new PanelTitleLabel(panelTitle + QuarterChoiceQuestion.getFiscalYearLabel(fiscalYearStartMonth)));
 		add(yearChooser);
 	}
 	
