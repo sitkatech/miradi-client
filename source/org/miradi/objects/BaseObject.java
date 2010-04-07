@@ -156,6 +156,11 @@ abstract public class BaseObject
 		return getRefListForField(getField(tag));
 	}
 	
+	public ORef getRef(String tag)
+	{
+		return (getField(tag).getRef());
+	}
+	
 	public boolean isRelevancyOverrideSet(String tag)
 	{
 		return false;

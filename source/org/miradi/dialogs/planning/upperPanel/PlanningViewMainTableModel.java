@@ -228,7 +228,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (datesAsCodeList.size() == 2)
 				createResourceAssignment(baseObjectForRow, datesAsCodeList);
 
-			if (canDeleteResourceAssignment(datesAsCodeList))
+			if (canDeleteResourceAssignment(baseObjectForRow, datesAsCodeList))
 				deleteResourceAssignment(baseObjectForRow);
 		}
 		finally
@@ -237,9 +237,32 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 	}
 
-	private boolean canDeleteResourceAssignment(CodeList datesAsCodeList)
+	private boolean canDeleteResourceAssignment(BaseObject baseObjectForRow, CodeList datesAsCodeList)
 	{
-		return datesAsCodeList.isEmpty();
+		if (!datesAsCodeList.isEmpty())
+			return false;
+		
+		ORefList resourceAssignmentRefs = baseObjectForRow.getResourceAssignmentRefs();
+		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
+		{
+			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRefs.get(index));
+			if (hasPreExistingData(resourceAssignment))
+				return false;
+		}
+		
+		return true;
+	}
+
+	private boolean hasPreExistingData(ResourceAssignment resourceAssignment)
+	{
+		String[] tags = new String[]{ResourceAssignment.TAG_RESOURCE_ID, ResourceAssignment.TAG_ACCOUNTING_CODE, ResourceAssignment.TAG_FUNDING_SOURCE, };
+		for (int index = 0; index < tags.length; ++index)
+		{
+			if (resourceAssignment.getRef(tags[index]).isValid())
+				return true;
+		}
+		
+		return false;
 	}
 
 	private void deleteResourceAssignment(BaseObject baseObjectForRow) throws Exception
