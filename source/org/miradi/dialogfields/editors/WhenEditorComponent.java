@@ -31,7 +31,7 @@ import org.miradi.utils.CodeList;
 
 public class WhenEditorComponent extends DisposablePanel
 {
-	public WhenEditorComponent()
+	public WhenEditorComponent(int fiscalYearStartMonth)
 	{
 		setLayout(new OneColumnGridLayout());
 
@@ -39,7 +39,7 @@ public class WhenEditorComponent extends DisposablePanel
 		dateUnitTypeCombo = new UiComboBox(choices);
 		dateUnitTypeCombo.addItemListener(new ChangeHandler());
 
-		lowerPanel = new WhenEditorLowerPanel();
+		lowerPanel = new WhenEditorLowerPanel(fiscalYearStartMonth);
 		add(dateUnitTypeCombo);
 		add(lowerPanel);
 	}

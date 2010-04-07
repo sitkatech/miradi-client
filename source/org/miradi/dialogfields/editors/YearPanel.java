@@ -22,25 +22,36 @@ package org.miradi.dialogfields.editors;
 
 import org.martus.util.MultiCalendar;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.layout.TwoColumnPanel;
+import org.miradi.layout.OneRowPanel;
 import org.miradi.objecthelpers.DateUnit;
 
 import com.toedter.calendar.JYearChooser;
 
-public class YearPanel extends TwoColumnPanel
+public class YearPanel extends OneRowPanel
 {
-	public YearPanel(String panelTitle)
+	public YearPanel(int fiscalYearStartMonthToUse, String panelTitle)
 	{
+		fiscalYearStartMonth = fiscalYearStartMonthToUse;
 		yearChooser = new JYearChooser();
 		add(new PanelTitleLabel(panelTitle));
+		add(new PanelTitleLabel(getFiscalYearLabel()));
 		add(yearChooser);
+	}
+
+	private String getFiscalYearLabel()
+	{
+		if (fiscalYearStartMonth == 1)
+			return "";
+		
+		return "FY";
 	}
 	
 	public DateUnit getDate()
 	{
-		MultiCalendar year = MultiCalendar.createFromGregorianYearMonthDay(yearChooser.getYear(), 1, 1);
-		return DateUnit.createFiscalYear(year.getGregorianYear(), year.getGregorianMonth());
+		MultiCalendar year = MultiCalendar.createFromGregorianYearMonthDay(yearChooser.getYear(), fiscalYearStartMonth, 1);
+		return DateUnit.createFiscalYear(year.getGregorianYear(), fiscalYearStartMonth);
 	}
-	
-	private JYearChooser yearChooser; 
+		
+	private JYearChooser yearChooser;
+	private int fiscalYearStartMonth;
 }

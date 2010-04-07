@@ -24,10 +24,10 @@ import org.miradi.objecthelpers.DateUnit;
 
 public class CalendarYearDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 {
-	public CalendarYearDateUnitStartAndEndCard()
+	public CalendarYearDateUnitStartAndEndCard(int fiscalYearStartMonth)
 	{
-		startYearPanel = new YearPanel(getStartText());
-		endYearPanel = new YearPanel(getEndText());
+		startYearPanel = new YearPanel(fiscalYearStartMonth, getStartText());
+		endYearPanel = new YearPanel(fiscalYearStartMonth, getEndText());
 		
 		add(startYearPanel);
 		add(endYearPanel);
