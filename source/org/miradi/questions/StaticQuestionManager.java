@@ -97,6 +97,7 @@ public class StaticQuestionManager
 		addQuestion(new PlanningTreeTargetPositionQuestion());
 		addQuestion(new QuarterChoiceQuestion());
 		addQuestion(new FiscalYearQuarterQuestion());
+		addQuestion(new MonthQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
