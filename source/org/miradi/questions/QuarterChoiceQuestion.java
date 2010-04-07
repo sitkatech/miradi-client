@@ -28,10 +28,10 @@ public class QuarterChoiceQuestion extends StaticChoiceQuestion
 	public ChoiceItem[] createChoices()
 	{
 		return new ChoiceItem[]{
-				new ChoiceItem("1", EAM.text("Q1")),
-				new ChoiceItem("2", EAM.text("Q2")),
-				new ChoiceItem("3", EAM.text("Q3")),
-				new ChoiceItem("4", EAM.text("Q4")),
+				new ChoiceItem("1", EAM.text("First Quarter")),
+				new ChoiceItem("2", EAM.text("Second Quarter")),
+				new ChoiceItem("3", EAM.text("Third Quarter")),
+				new ChoiceItem("4", EAM.text("Fourth Quarter")),
 		};
 	}
 }
