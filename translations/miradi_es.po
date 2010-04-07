@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-06 21:20-0500\n"
+"POT-Creation-Date: 2010-04-06 21:28-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -4880,8 +4880,20 @@ msgstr "Llamada inesperada a getText"
 msgid "Unexpected call to setText"
 msgstr "Llamada inesperada a setText"
 
+#: Miradi/source/org/miradi/dialogfields/editors/DayDateUnitStartAndEndCard.java:35
+msgid "Day Selection: "
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:36
 msgid "Edit When"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:35
+msgid "Year Selection: "
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogfields/editors/QuarterDateUnitStartAndEndCard.java:35
+msgid "Quarter Selection: "
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:50
@@ -4894,6 +4906,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:36
 msgid "End:"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogfields/editors/MonthDateUnitStartAndEndCard.java:35
+msgid "Month Selection: "
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:222
