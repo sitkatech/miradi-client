@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-06 21:28-0500\n"
+"POT-Creation-Date: 2010-04-06 21:34-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -4857,7 +4857,7 @@ msgid "Day Selection: "
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:36
-msgid "Edit When"
+msgid "When - %s"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:35
