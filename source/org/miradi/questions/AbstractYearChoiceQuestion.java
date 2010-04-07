@@ -18,30 +18,33 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogfields.editors;
+package org.miradi.questions;
 
-import org.miradi.layout.OneRowPanel;
-import org.miradi.objecthelpers.DateUnit;
-import org.miradi.project.ProjectCalendar;
-import org.miradi.questions.ChoiceItem;
+import java.util.Vector;
 
-public class QuarterPanel extends OneRowPanel
+abstract public class AbstractYearChoiceQuestion extends DynamicChoiceQuestion
 {
-	public QuarterPanel(ProjectCalendar projectCalendar, String title)
-	{		
-		quarterChooser = new QuarterChooser(projectCalendar.getFiscalYearFirstMonth());
-
-		yearPanel = new YearPanel(projectCalendar, title);
-		add(yearPanel);
-		add(quarterChooser);
-	}
-	
-	public DateUnit getDateUnit()
+	public AbstractYearChoiceQuestion(int startYearToUse, int endYearToUse)
 	{
-		ChoiceItem choiceItem = (ChoiceItem) quarterChooser.getSelectedItem();
-		return DateUnit.createQuarterDateUnit(yearPanel.getYear(), Integer.parseInt(choiceItem.getCode()));
+		startYear = startYearToUse;
+		endYear = endYearToUse;
 	}
 	
-	private QuarterChooser quarterChooser;
-	private YearPanel yearPanel;
+	@Override
+	public ChoiceItem[] getChoices()
+	{
+		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
+		for (int year = startYear; year <= endYear; ++year)
+		{
+			ChoiceItem yearChoiceItem = new ChoiceItem(Integer.toString(year), createYearLabel(year));
+			choices.add(yearChoiceItem);
+		}
+		
+		return choices.toArray(new ChoiceItem[0]);
+	}
+	
+	abstract protected String createYearLabel(int year);
+	
+	private int startYear;
+	private int endYear;
 }

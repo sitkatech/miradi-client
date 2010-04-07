@@ -25,18 +25,19 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.project.ProjectCalendar;
 
 public class WhenEditorLowerPanel extends JPanel
 {
-	public WhenEditorLowerPanel(int fiscalYearStartMonth)
+	public WhenEditorLowerPanel(ProjectCalendar projectCalendar)
 	{
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 		
 		noneCard = new NoneCard();
 		projectTotalCard = new ProjectTotalDateUnitStartAndEndCard();
-		yearCard = new CalendarYearDateUnitStartAndEndCard(fiscalYearStartMonth);
-		quarterCard = new QuarterDateUnitStartAndEndCard(fiscalYearStartMonth);
+		yearCard = new CalendarYearDateUnitStartAndEndCard(projectCalendar);
+		quarterCard = new QuarterDateUnitStartAndEndCard(projectCalendar);
 		monthCard = new MonthDateUnitStartAndEndCard();
 		dayCard = new DayDateUnitStartAndEndCard();
 		

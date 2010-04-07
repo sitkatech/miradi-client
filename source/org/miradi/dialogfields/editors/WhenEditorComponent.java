@@ -32,11 +32,12 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.project.ProjectCalendar;
 import org.miradi.utils.CodeList;
 
 public class WhenEditorComponent extends DisposablePanel
 {
-	public WhenEditorComponent(int fiscalYearStartMonth)
+	public WhenEditorComponent(ProjectCalendar projectCalendar)
 	{
 		setLayout(new BorderLayout());
 
@@ -44,7 +45,7 @@ public class WhenEditorComponent extends DisposablePanel
 		dateUnitTypeCombo = new UiComboBox(choices);
 		dateUnitTypeCombo.addItemListener(new ChangeHandler());
 		
-		lowerPanel = new WhenEditorLowerPanel(fiscalYearStartMonth);
+		lowerPanel = new WhenEditorLowerPanel(projectCalendar);
 		TwoColumnPanel upperPanel = new TwoColumnPanel();
 		upperPanel.setBorder(BorderFactory.createEtchedBorder());
 		upperPanel.add(new PanelTitleLabel(EAM.text("Enter As: ")));
