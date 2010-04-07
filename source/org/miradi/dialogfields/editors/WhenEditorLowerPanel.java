@@ -36,7 +36,7 @@ public class WhenEditorLowerPanel extends JPanel
 		noneCard = new NoneCard();
 		projectTotalCard = new ProjectTotalDateUnitStartAndEndCard();
 		yearCard = new CalendarYearDateUnitStartAndEndCard(fiscalYearStartMonth);
-		quarterCard = new QuarterDateUnitStartAndEndCard();
+		quarterCard = new QuarterDateUnitStartAndEndCard(fiscalYearStartMonth);
 		monthCard = new MonthDateUnitStartAndEndCard();
 		dayCard = new DayDateUnitStartAndEndCard();
 		

@@ -20,31 +20,27 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.questions.ChoiceItem;
 
-import com.toedter.calendar.JYearChooser;
-
 public class QuarterPanel extends OneRowPanel
 {
-	public QuarterPanel(String title)
+	public QuarterPanel(int fiscalYearStartMonth, String title)
 	{		
-		yearChooser = new JYearChooser();
-		quarterChooser = new QuarterChooser();
+		quarterChooser = new QuarterChooser(fiscalYearStartMonth);
 
-		add(new PanelTitleLabel(title));
-		add(yearChooser);
+		yearPanel = new YearPanel(fiscalYearStartMonth, title);
+		add(yearPanel);
 		add(quarterChooser);
 	}
 	
 	public DateUnit getDateUnit()
 	{
 		ChoiceItem choiceItem = (ChoiceItem) quarterChooser.getSelectedItem();
-		return DateUnit.createQuarterDateUnit(yearChooser.getYear(), Integer.parseInt(choiceItem.getCode()));
+		return DateUnit.createQuarterDateUnit(yearPanel.getYear(), Integer.parseInt(choiceItem.getCode()));
 	}
 	
 	private QuarterChooser quarterChooser;
-	private JYearChooser yearChooser;
+	private YearPanel yearPanel;
 }

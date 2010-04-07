@@ -24,10 +24,10 @@ import org.miradi.objecthelpers.DateUnit;
 
 public class QuarterDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 {
-	public QuarterDateUnitStartAndEndCard()
+	public QuarterDateUnitStartAndEndCard(int fiscalYearStartMonth)
 	{
-		startQuarterPanel = new QuarterPanel(getStartText());
-		endQuarterPanel = new QuarterPanel(getEndText());
+		startQuarterPanel = new QuarterPanel(fiscalYearStartMonth, getStartText());
+		endQuarterPanel = new QuarterPanel(fiscalYearStartMonth, getEndText());
 
 		add(startQuarterPanel);
 		add(endQuarterPanel);
