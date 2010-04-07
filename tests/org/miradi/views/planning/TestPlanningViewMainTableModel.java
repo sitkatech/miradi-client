@@ -29,6 +29,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
+import org.miradi.utils.DateUnitEffortList;
 
 public class TestPlanningViewMainTableModel extends TestCaseWithProject
 {
@@ -50,16 +51,10 @@ public class TestPlanningViewMainTableModel extends TestCaseWithProject
 		getProject().addResourceAssignment(indicatorWithTwoAssignments);
 		assertFalse("can edit indicator with multiple assignments?", isWhenEditable(indicatorWithTwoAssignments));
 
-//FIXME see the FIXME in the PVMTM.isWhenEditable.
-//		Task activityWithAssignmentWithTwoDateUnitEfforts = getProject().createActivity();
-//		DateUnitEffort dateUnitEffort2002 = getProject().createDateUnitEffort(2002, 2002, 20.0);
-//		DateUnitEffort dateUnitEffort2003 = getProject().createDateUnitEffort(2003, 2003, 30.0);
-//		DateUnitEffortList list = new DateUnitEffortList();
-//		list.add(dateUnitEffort2002);
-//		list.add(dateUnitEffort2003);
-//		getProject().addResourceAssignment(activityWithAssignmentWithTwoDateUnitEfforts, list);
-//		assertFalse("can edit activity with assignment with multiple dateUnitEfforts?", isWhenEditable(activityWithAssignmentWithTwoDateUnitEfforts));
-//		
+		verifyWithThreeDateUnitEfforts();
+		verifyWithTwoDateUnitEfforts();
+		
+//FIXME see the FIXME in the PVMTM.isWhenEditable.		
 //		Task activityWithAssignmentWithValue = getProject().createActivity();
 //		getProject().addResourceAssignment(activityWithAssignmentWithValue, 10.0, new DateUnit());
 //		assertFalse("can edit activity with assignment that has values", isWhenEditable(activityWithAssignmentWithValue));
@@ -67,6 +62,29 @@ public class TestPlanningViewMainTableModel extends TestCaseWithProject
 //		Task activityWithBlankAssignment = getProject().createActivity();
 //		getProject().addResourceAssignment(activityWithBlankAssignment, 0.0, new DateUnit());
 //		assertTrue("can't edit activity with assignment with no values?", isWhenEditable(activityWithBlankAssignment));	
+	}
+
+	private void verifyWithThreeDateUnitEfforts() throws Exception
+	{
+		DateUnitEffortList list = new DateUnitEffortList();
+		list.add(getProject().createDateUnitEffort(2002, 2002, 20.0));
+		list.add(getProject().createDateUnitEffort(2003, 2003, 30.0));
+		list.add(getProject().createDateUnitEffort(2004, 2004, 40.0));
+		
+		Task activityWithAssignmentWithTwoDateUnitEfforts = getProject().createActivity();
+		getProject().addResourceAssignment(activityWithAssignmentWithTwoDateUnitEfforts, list);
+		assertFalse("can edit activity with assignment with three dateUnitEfforts?", isWhenEditable(activityWithAssignmentWithTwoDateUnitEfforts));		
+	}
+
+	private void verifyWithTwoDateUnitEfforts() throws Exception
+	{
+		DateUnitEffortList list = new DateUnitEffortList();
+		list.add(getProject().createDateUnitEffort(2002, 2002, 20.0));
+		list.add(getProject().createDateUnitEffort(2003, 2003, 30.0));
+		
+		Task activityWithAssignmentWithTwoDateUnitEfforts = getProject().createActivity();
+		getProject().addResourceAssignment(activityWithAssignmentWithTwoDateUnitEfforts, list);
+		assertTrue("cannot edit activity with assignment with two dateUnitEfforts?", isWhenEditable(activityWithAssignmentWithTwoDateUnitEfforts));
 	}
 
 	private boolean isWhenEditable(BaseObject baseObject)
