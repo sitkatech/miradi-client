@@ -51,9 +51,6 @@ public class TestPlanningViewMainTableModel extends TestCaseWithProject
 		getProject().addResourceAssignment(indicatorWithTwoAssignments);
 		assertFalse("can edit indicator with multiple assignments?", isWhenEditable(indicatorWithTwoAssignments));
 
-		verifyWithThreeDateUnitEfforts();
-		verifyWithTwoDateUnitEfforts();
-		
 //FIXME see the FIXME in the PVMTM.isWhenEditable.		
 //		Task activityWithAssignmentWithValue = getProject().createActivity();
 //		getProject().addResourceAssignment(activityWithAssignmentWithValue, 10.0, new DateUnit());
@@ -64,24 +61,17 @@ public class TestPlanningViewMainTableModel extends TestCaseWithProject
 //		assertTrue("can't edit activity with assignment with no values?", isWhenEditable(activityWithBlankAssignment));	
 	}
 
-	private void verifyWithThreeDateUnitEfforts() throws Exception
+	public void testIsWhenEditableWithThreeDateUnitEfforts() throws Exception
 	{
-		DateUnitEffortList list = new DateUnitEffortList();
-		list.add(getProject().createDateUnitEffort(2002, 2002, 20.0));
-		list.add(getProject().createDateUnitEffort(2003, 2003, 30.0));
-		list.add(getProject().createDateUnitEffort(2004, 2004, 40.0));
-		
+		DateUnitEffortList list = createSampleDateUnitEffortList(3, 2002, 0.0);
 		Task activityWithAssignmentWithTwoDateUnitEfforts = getProject().createActivity();
 		getProject().addResourceAssignment(activityWithAssignmentWithTwoDateUnitEfforts, list);
 		assertFalse("can edit activity with assignment with three dateUnitEfforts?", isWhenEditable(activityWithAssignmentWithTwoDateUnitEfforts));		
 	}
 
-	private void verifyWithTwoDateUnitEfforts() throws Exception
+	public void testIsWhenEditableWithTwoDateUnitEfforts() throws Exception
 	{
-		DateUnitEffortList list = new DateUnitEffortList();
-		list.add(getProject().createDateUnitEffort(2002, 2002, 20.0));
-		list.add(getProject().createDateUnitEffort(2003, 2003, 30.0));
-		
+		DateUnitEffortList list = createSampleDateUnitEffortList(2, 2002, 0.0);
 		Task activityWithAssignmentWithTwoDateUnitEfforts = getProject().createActivity();
 		getProject().addResourceAssignment(activityWithAssignmentWithTwoDateUnitEfforts, list);
 		assertTrue("cannot edit activity with assignment with two dateUnitEfforts?", isWhenEditable(activityWithAssignmentWithTwoDateUnitEfforts));
@@ -101,6 +91,18 @@ public class TestPlanningViewMainTableModel extends TestCaseWithProject
 			else
 				assertFalse("Type" + type + " can refer to assignments?", canOwnAssignments(type));
 		}
+	}
+	
+	private DateUnitEffortList createSampleDateUnitEffortList(int listSize, int startYear, double effort) throws Exception
+	{
+		DateUnitEffortList list = new DateUnitEffortList();
+		for (int index = 0; index < listSize; ++index)
+		{
+			int incrementedYear = startYear + index;
+			list.add(getProject().createDateUnitEffort(incrementedYear, incrementedYear, effort));
+		}
+		
+		return list;
 	}
 
 	private boolean canOwnAssignments(int objectType)
