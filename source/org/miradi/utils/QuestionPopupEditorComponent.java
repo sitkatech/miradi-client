@@ -22,6 +22,7 @@ package org.miradi.utils;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashSet;
@@ -50,6 +51,11 @@ import org.miradi.questions.ChoiceQuestion;
  */
 public class QuestionPopupEditorComponent extends PopupEditorComponent
 {
+	public QuestionPopupEditorComponent(ChoiceQuestion questionToUse) throws Exception
+	{
+		this(questionToUse, "");
+	}
+	
 	public QuestionPopupEditorComponent(ChoiceQuestion questionToUse, String translatedPopupButtonTextToUse) throws Exception
 	{
 		question = questionToUse;
@@ -106,9 +112,24 @@ public class QuestionPopupEditorComponent extends PopupEditorComponent
 			editorPanel = null;
 		}
 	}
+	
+	@Override
+	public void addFocusListener(FocusListener listener)
+	{
+		super.addFocusListener(listener);
+		currentSelectionText.addFocusListener(listener);
+	}
+	
+	@Override
+	public void removeFocusListener(FocusListener listener)
+	{	
+		currentSelectionText.removeFocusListener(listener);
+		super.removeFocusListener(listener);
+	}
 
 	public void setText(String code)
 	{
+		currentSelectionCode = code;
 		ChoiceItem choice = question.findChoiceByCode(code);
 		currentSelectionText.setText(choice.getLabel());
 		currentSelectionText.setBackground(choice.getColor());
@@ -116,8 +137,22 @@ public class QuestionPopupEditorComponent extends PopupEditorComponent
 	
 	public String getText()
 	{
-		String currentLabel = currentSelectionText.getText();
-		return getQuestion().findChoiceByLabel(currentLabel).getCode();
+		return currentSelectionCode;
+	}
+	
+	private void setNeedsSave()
+	{
+		needsSave = true;
+	}
+
+	public void clearNeedsSaving()
+	{
+		needsSave = false;
+	}
+	
+	public boolean needsToBeSaved()
+	{
+		return needsSave;
 	}
 	
 	protected void addAdditionalDescriptionPanel(DialogWithCloseAfterSelectionHandler editorDialogToUse)
@@ -191,16 +226,20 @@ public class QuestionPopupEditorComponent extends PopupEditorComponent
 	{
 		public void valueChanged(ListSelectionEvent event)
 		{
+			currentSelectionText.requestFocus();
 			String code = ((ChoiceItemListSelectionEvent)event).getCode();
 			setText(code);
 	
+			setNeedsSave();
 			FieldSaver.savePendingEdits();
 		}
 	}
 
 	private PanelButton popupInvokeButton;
 	private PanelTextField currentSelectionText;
+	private String currentSelectionCode;
 	private PanelTitleLabel staticLabel; 
+	private boolean needsSave;
 
 	private DialogWithCloseAfterSelectionHandler editorDialog;
 	private ChoiceQuestion question;
