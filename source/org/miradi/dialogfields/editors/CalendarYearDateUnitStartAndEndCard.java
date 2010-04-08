@@ -28,10 +28,10 @@ import org.miradi.utils.FillerLabel;
 
 public class CalendarYearDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 {
-	public CalendarYearDateUnitStartAndEndCard(ProjectCalendar projectCalendar)
+	public CalendarYearDateUnitStartAndEndCard(ProjectCalendar projectCalendar, DateUnitRange dateUnitRange)
 	{
-		startYearPanel = new YearPanel(projectCalendar, getStartText());
-		endYearPanel = new YearPanel(projectCalendar, getEndText());
+		startYearPanel = new YearPanel(projectCalendar, dateUnitRange.getStartDateUnit(), getStartText());
+		endYearPanel = new YearPanel(projectCalendar, dateUnitRange.getEndDateUnit(), getEndText());
 		
 		add(new PanelTitleLabel(EAM.text("Year Selection: ")));
 		add(new FillerLabel());

@@ -211,7 +211,7 @@ public class DateUnit
 		return new DateRange(startDate, endDate);
 	}
 
-	private int getYearYear()
+	public int getYearYear()
 	{
 		return Integer.parseInt(getYearYearString());
 	}

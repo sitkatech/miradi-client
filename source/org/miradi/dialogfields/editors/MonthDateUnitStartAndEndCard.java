@@ -28,10 +28,10 @@ import org.miradi.utils.FillerLabel;
 
 public class MonthDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 {
-	public MonthDateUnitStartAndEndCard(ProjectCalendar projectCalendar)
+	public MonthDateUnitStartAndEndCard(ProjectCalendar projectCalendar, DateUnitRange dateUnitRange)
 	{
-		startMonthPanel = new MonthPanel(projectCalendar, getStartText());
-		endMonthPanel = new MonthPanel(projectCalendar, getEndText());
+		startMonthPanel = new MonthPanel(projectCalendar, dateUnitRange.getStartDateUnit(), getStartText());
+		endMonthPanel = new MonthPanel(projectCalendar, dateUnitRange.getEndDateUnit(), getEndText());
 		
 		add(new PanelTitleLabel(EAM.text("Month Selection: ")));
 		add(new FillerLabel());

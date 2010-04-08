@@ -21,15 +21,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields.editors;
 
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.MonthQuestion;
 import org.miradi.questions.StaticQuestionManager;
 
 public class MonthComboBox extends PanelComboBox
 {
-	public MonthComboBox()
+	public MonthComboBox(DateUnit dateUnit)
 	{
 		super(createChoices());
+		
+		setSelectedMonth(dateUnit);
 	}
 	
 	public int getMonth()
@@ -40,6 +44,21 @@ public class MonthComboBox extends PanelComboBox
 
 	private static ChoiceItem[] createChoices()
 	{
-		return StaticQuestionManager.getQuestion(MonthQuestion.class).getChoices();
+		return getMonthQuestion().getChoices();
+	}
+
+	private static ChoiceQuestion getMonthQuestion()
+	{
+		return StaticQuestionManager.getQuestion(MonthQuestion.class);
+	}
+	
+	private void setSelectedMonth(DateUnit dateUnit)
+	{
+		if (dateUnit != null && dateUnit.isMonth())
+		{
+			int monthToSelect = dateUnit.getMonth();
+			ChoiceItem choiceItemToSelect = getMonthQuestion().findChoiceByCode(monthToSelect);
+			setSelectedItem(choiceItemToSelect);
+		}
 	}
 }

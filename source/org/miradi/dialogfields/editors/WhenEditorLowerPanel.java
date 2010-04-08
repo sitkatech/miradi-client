@@ -29,16 +29,16 @@ import org.miradi.project.ProjectCalendar;
 
 public class WhenEditorLowerPanel extends JPanel
 {
-	public WhenEditorLowerPanel(ProjectCalendar projectCalendar)
+	public WhenEditorLowerPanel(ProjectCalendar projectCalendar, DateUnitRange dateUnitRange)
 	{
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 		
 		noneCard = new NoneCard();
 		projectTotalCard = new ProjectTotalDateUnitStartAndEndCard();
-		yearCard = new CalendarYearDateUnitStartAndEndCard(projectCalendar);
-		quarterCard = new QuarterDateUnitStartAndEndCard(projectCalendar);
-		monthCard = new MonthDateUnitStartAndEndCard(projectCalendar);
+		yearCard = new CalendarYearDateUnitStartAndEndCard(projectCalendar, dateUnitRange);
+		quarterCard = new QuarterDateUnitStartAndEndCard(projectCalendar, dateUnitRange);
+		monthCard = new MonthDateUnitStartAndEndCard(projectCalendar, dateUnitRange);
 		dayCard = new DayDateUnitStartAndEndCard();
 		
 		add(noneCard, noneCard.getPanelDescription());

@@ -28,14 +28,22 @@ import org.miradi.project.ProjectCalendar;
 
 public class MonthPanel extends OneRowPanel
 {
-	public MonthPanel(ProjectCalendar projectCalendar, String title)
+	public MonthPanel(ProjectCalendar projectCalendar, DateUnit dateUnit, String title)
 	{
-		yearChooser = new YearPanel(projectCalendar);
-		monthChooser = new MonthComboBox();
+		yearChooser = new YearPanel(projectCalendar, getSuperYear(projectCalendar.getFiscalYearFirstMonth(), dateUnit));
+		monthChooser = new MonthComboBox(dateUnit);
 
 		add(new PanelTitleLabel(title));
 		add(yearChooser);
 		add(monthChooser);
+	}
+
+	private DateUnit getSuperYear(int fiscalYearFirstMonth, DateUnit dateUnit)
+	{
+		if (dateUnit != null && dateUnit.isMonth())
+			return DateUnit.createFiscalYear(dateUnit.getYear(), fiscalYearFirstMonth);
+		
+		return dateUnit;
 	}
 	
 	public DateUnit getDate()
