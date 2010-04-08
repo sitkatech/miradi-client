@@ -77,6 +77,8 @@ public class TestPlanningViewMainTableModel extends TestCaseWithProject
 	
 	public void testIsWhenEdtaibleWithNonBlankDateUnitEfforts() throws Exception
 	{
+		getProject().setProjectStartDate(2002);
+		getProject().setProjectEndDate(2002);
 		DateUnitEffortList list = createSampleDateUnitEffortList(1, 2002, 10.0);
 		Task activityWithAssignmentWithNonBlankDateUnitEfforts = createActivityWithResourceAssignment(list);
 		assertFalse("cannot edit object with dateUnitEfforts that have data?", isWhenEditable(activityWithAssignmentWithNonBlankDateUnitEfforts));
