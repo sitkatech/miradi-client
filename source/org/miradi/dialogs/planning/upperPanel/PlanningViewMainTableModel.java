@@ -237,7 +237,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (datesAsCodeList.size() == 2)
 				createResourceAssignment(baseObjectForRow, datesAsCodeList);
 
-			if (shouldDeleteResourceAssignment(baseObjectForRow, datesAsCodeList))
+			if (datesAsCodeList.isEmpty() && shouldDeleteResourceAssignment(baseObjectForRow))
 				deleteResourceAssignment(baseObjectForRow);
 		}
 		finally
@@ -257,11 +257,8 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 	}
 
-	private boolean shouldDeleteResourceAssignment(BaseObject baseObjectForRow, CodeList datesAsCodeList)
+	private boolean shouldDeleteResourceAssignment(BaseObject baseObjectForRow)
 	{
-		if (!datesAsCodeList.isEmpty())
-			return false;
-		
 		ORefList resourceAssignmentRefs = baseObjectForRow.getResourceAssignmentRefs();
 		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
 		{
