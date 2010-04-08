@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-08 09:56-0500\n"
+"POT-Creation-Date: 2010-04-08 10:08-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -4948,7 +4948,7 @@ msgstr "Llamada inesperada a setText"
 msgid "Day Selection: "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:36
+#: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:37
 msgid "When - %s"
 msgstr ""
 
