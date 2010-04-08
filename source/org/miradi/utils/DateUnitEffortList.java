@@ -136,19 +136,6 @@ public class DateUnitEffortList
 		}
 	}
 	
-	public boolean hasEffortsWithQuantity()
-	{
-		for (int index = 0; index < size(); ++index)
-		{
-			DateUnitEffort dateUnitEffort = getDateUnitEffort(index);
-			if (dateUnitEffort.getQuantity() > 0)
-				return true;
-		}
-		
-		return false;
-	}
-
-	
 	private Vector<DateUnitEffort> data;
 	private static final String TAG_DATEUNIT_EFFORTS = "DateUnitEfforts";
 }
