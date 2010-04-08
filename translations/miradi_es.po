@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-08 10:08-0500\n"
+"POT-Creation-Date: 2010-04-08 16:00-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -4180,7 +4180,7 @@ msgstr "Modo predeterminado"
 msgid "Human Welfare Target Mode"
 msgstr "Modo de objetivo de bienestar humano"
 
-#: Miradi/source/org/miradi/questions/ChoiceQuestion.java:109
+#: Miradi/source/org/miradi/questions/ChoiceQuestion.java:114
 msgid "Unknown code: "
 msgstr "Código desconocido:"
 
@@ -4948,7 +4948,7 @@ msgstr "Llamada inesperada a setText"
 msgid "Day Selection: "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:37
+#: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:39
 msgid "When - %s"
 msgstr ""
 
@@ -4960,7 +4960,7 @@ msgstr ""
 msgid "Quarter Selection: "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:51
+#: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:80
 msgid "Enter As: "
 msgstr ""
 
