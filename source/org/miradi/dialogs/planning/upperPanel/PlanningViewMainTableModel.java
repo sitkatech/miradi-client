@@ -237,8 +237,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (datesAsCodeList.size() == 2)
 				createResourceAssignment(baseObjectForRow, datesAsCodeList);
 
-			if (datesAsCodeList.isEmpty() && areAllAssignmentsForObjectEmpty(baseObjectForRow))
-				deleteResourceAssignment(baseObjectForRow);
+			ORefList resourceAssignmentRefs = baseObjectForRow.getResourceAssignmentRefs();
+			if (datesAsCodeList.isEmpty() && resourceAssignmentRefs.size() == 1)
+				deleteResourceAssignment(resourceAssignmentRefs.getFirstElement());
 		}
 		finally
 		{
@@ -257,29 +258,11 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 	}
 
-	private boolean areAllAssignmentsForObjectEmpty(BaseObject baseObjectForRow)
-	{
-		ORefList emptyAssignmentRefs = new ORefList();
-		ORefList resourceAssignmentRefs = baseObjectForRow.getResourceAssignmentRefs();
-		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
-		{
-			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRefs.get(index));
-			if (resourceAssignment.isEmpty())
-				emptyAssignmentRefs.add(resourceAssignmentRefs.get(index));
-		}
-		
-		return resourceAssignmentRefs.size() == emptyAssignmentRefs.size();
-	}
-
-	private void deleteResourceAssignment(BaseObject baseObjectForRow) throws Exception
+	private void deleteResourceAssignment(ORef resourceAssignmentRef) throws Exception
 	{	
-		ORefList resourceAssignmentRefs = baseObjectForRow.getResourceAssignmentRefs();
-		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
-		{			
-			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRefs.get(index));
-			Vector<Command> removeAssignmentCommands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
-			getProject().executeCommandsWithoutTransaction(removeAssignmentCommands);
-		}
+		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRef);
+		Vector<Command> removeAssignmentCommands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
+		getProject().executeCommandsWithoutTransaction(removeAssignmentCommands);
 	}
 
 	private void createResourceAssignment(BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception
