@@ -195,7 +195,10 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		ORefList assignmentRefs = baseObject.getResourceAssignmentRefs();
 		ResourceAssignment assignment = ResourceAssignment.find(baseObject.getProject(), assignmentRefs.getFirstElement());
 		DateUnitEffortList effortList = assignment.getDateUnitEffortList();
-		if (effortList.hasEffortsWithQuantity())
+		
+		TimePeriodCostsMap timePeriodCostsMap = assignment.getResourceAssignmentsTimePeriodCostsMap();
+		OptionalDouble totalWorkUnits = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit()).getTotalWorkUnits();
+		if (totalWorkUnits.hasValue() && totalWorkUnits.getValue() > 0.0)
 			return false;
 		
 		if (effortList.size() > 2)
