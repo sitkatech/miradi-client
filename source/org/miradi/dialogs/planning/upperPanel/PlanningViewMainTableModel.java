@@ -239,7 +239,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 			ORefList resourceAssignmentRefs = baseObjectForRow.getResourceAssignmentRefs();
 			if (datesAsCodeList.isEmpty() && resourceAssignmentRefs.size() == 1)
-				deleteResourceAssignment(resourceAssignmentRefs.getFirstElement());
+				deleteEmptyResourceAssignment(resourceAssignmentRefs.getFirstElement());
 		}
 		finally
 		{
@@ -258,7 +258,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 	}
 
-	private void deleteResourceAssignment(ORef resourceAssignmentRef) throws Exception
+	private void deleteEmptyResourceAssignment(ORef resourceAssignmentRef) throws Exception
 	{	
 		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRef);
 		if (resourceAssignment.isEmpty())
