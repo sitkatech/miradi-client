@@ -230,6 +230,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		getProject().executeBeginTransaction();
 		try
 		{
+			clearDateUnitEfforts(baseObjectForRow);
 			if (datesAsCodeList.size() == 2)
 				createResourceAssignment(baseObjectForRow, datesAsCodeList);
 
@@ -242,6 +243,17 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 	}
 
+	private void clearDateUnitEfforts(BaseObject baseObjectForRow) throws Exception
+	{
+		ORefList resourceAssignmentRefs = baseObjectForRow.getResourceAssignmentRefs();
+		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
+		{			
+			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRefs.get(index));
+			Command clearDateUnitEffortList = new CommandSetObjectData(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, new DateUnitEffortList().toString());
+			getProject().executeCommand(clearDateUnitEffortList);
+		}
+	}
+
 	private boolean shouldDeleteResourceAssignment(BaseObject baseObjectForRow, CodeList datesAsCodeList)
 	{
 		if (!datesAsCodeList.isEmpty())
@@ -251,23 +263,11 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
 		{
 			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRefs.get(index));
-			if (hasPreExistingData(resourceAssignment))
+			if (!resourceAssignment.isEmpty())
 				return false;
 		}
 		
 		return true;
-	}
-
-	private boolean hasPreExistingData(ResourceAssignment resourceAssignment)
-	{
-		String[] tags = new String[]{ResourceAssignment.TAG_RESOURCE_ID, ResourceAssignment.TAG_ACCOUNTING_CODE, ResourceAssignment.TAG_FUNDING_SOURCE, };
-		for (int index = 0; index < tags.length; ++index)
-		{
-			if (resourceAssignment.getRef(tags[index]).isValid())
-				return true;
-		}
-		
-		return false;
 	}
 
 	private void deleteResourceAssignment(BaseObject baseObjectForRow) throws Exception
