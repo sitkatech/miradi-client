@@ -198,13 +198,18 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		
 		TimePeriodCostsMap timePeriodCostsMap = assignment.getResourceAssignmentsTimePeriodCostsMap();
 		OptionalDouble totalWorkUnits = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit()).getTotalWorkUnits();
-		if (totalWorkUnits.hasValue() && totalWorkUnits.getValue() > 0.0)
+		if (isGreaterThanZero(totalWorkUnits))
 			return false;
 		
 		if (effortList.size() > 2)
 			return false;
 		
 		return true;
+	}
+
+	private static boolean isGreaterThanZero(OptionalDouble totalWorkUnits)
+	{
+		return totalWorkUnits.hasValue() && totalWorkUnits.getValue() > 0.0;
 	}
 	
 	@Override
