@@ -36,8 +36,15 @@ public class TestOptionalDouble extends EAMTestCase
 		assertFalse("ten hasNoValue returned true?", ten.hasNoValue());
 		
 		assertEquals("different hashcodes for empties?", empty.hashCode(), anotherEmpty.hashCode());
-		assertEquals("different hashcodes for tens?", ten.hashCode(), anotherTen.hashCode());
-		
+		assertEquals("different hashcodes for tens?", ten.hashCode(), anotherTen.hashCode());		
+	}
+	
+	public void testHasNonZeroValue()
+	{
+		assertFalse("empty OptionalDouble should not have value?", new OptionalDouble().hasNonZeroValue());
+		assertTrue("OptionalDouble with 1 has zero value?", new OptionalDouble(1.0).hasNonZeroValue());
+		assertFalse("OptionalDouble with 0 should has non zero value?", new OptionalDouble(0.0).hasNonZeroValue());
+		assertTrue("OptionalDouble with -1 has zero value?", new OptionalDouble(-1.0).hasNonZeroValue());
 	}
 	
 	public void testEquals()

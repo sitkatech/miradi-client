@@ -171,7 +171,10 @@ public class OptionalDouble
 	
 	public boolean hasNonZeroValue()
 	{
-		return hasValue() && getValue() > 0.0;
+		if (hasNoValue())
+			return false;
+		
+		return getRawValue() != 0.0;
 	}
 	
 	private boolean hasValue;
