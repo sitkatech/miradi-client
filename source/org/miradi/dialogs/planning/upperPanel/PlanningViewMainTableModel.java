@@ -237,7 +237,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (datesAsCodeList.size() == 2)
 				createResourceAssignment(baseObjectForRow, datesAsCodeList);
 
-			if (datesAsCodeList.isEmpty() && shouldDeleteResourceAssignment(baseObjectForRow))
+			if (datesAsCodeList.isEmpty() && areAllAssignmentsForObjectEmpty(baseObjectForRow))
 				deleteResourceAssignment(baseObjectForRow);
 		}
 		finally
@@ -257,17 +257,18 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 	}
 
-	private boolean shouldDeleteResourceAssignment(BaseObject baseObjectForRow)
+	private boolean areAllAssignmentsForObjectEmpty(BaseObject baseObjectForRow)
 	{
+		ORefList emptyAssignmentRefs = new ORefList();
 		ORefList resourceAssignmentRefs = baseObjectForRow.getResourceAssignmentRefs();
 		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
 		{
 			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRefs.get(index));
-			if (!resourceAssignment.isEmpty())
-				return false;
+			if (resourceAssignment.isEmpty())
+				emptyAssignmentRefs.add(resourceAssignmentRefs.get(index));
 		}
 		
-		return true;
+		return resourceAssignmentRefs.size() == emptyAssignmentRefs.size();
 	}
 
 	private void deleteResourceAssignment(BaseObject baseObjectForRow) throws Exception
