@@ -169,6 +169,11 @@ public class OptionalDouble
 		return getRawValue().toString();
 	}
 	
+	public boolean isGreaterThanZero()
+	{
+		return hasValue() && getValue() > 0.0;
+	}
+	
 	private boolean hasValue;
 	private Double optionalDouble;
 }

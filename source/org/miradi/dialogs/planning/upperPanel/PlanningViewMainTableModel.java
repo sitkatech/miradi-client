@@ -198,7 +198,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		
 		TimePeriodCostsMap timePeriodCostsMap = assignment.getResourceAssignmentsTimePeriodCostsMap();
 		OptionalDouble totalWorkUnits = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit()).getTotalWorkUnits();
-		if (isGreaterThanZero(totalWorkUnits))
+		if (totalWorkUnits.isGreaterThanZero())
 			return false;
 		
 		if (effortList.size() > 2)
@@ -207,11 +207,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return true;
 	}
 
-	private static boolean isGreaterThanZero(OptionalDouble totalWorkUnits)
-	{
-		return totalWorkUnits.hasValue() && totalWorkUnits.getValue() > 0.0;
-	}
-	
 	@Override
 	public void setValueAt(Object value, int row, int column)
 	{
