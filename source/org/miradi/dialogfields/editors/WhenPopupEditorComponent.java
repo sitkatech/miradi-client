@@ -24,6 +24,7 @@ import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.BaseObject;
 import org.miradi.utils.AbstractPopupEditorComponent;
 import org.miradi.utils.CodeList;
 
@@ -62,14 +63,14 @@ public class WhenPopupEditorComponent extends AbstractPopupEditorComponent
 	
 	private String getBaseObjectForRowLabel()
 	{
-		return baseObjectForRowLabel;
+		return baseObjectForRow.combineShortLabelAndLabel();
 	}
 	
-	public void setBaseObjectForRowLabel(String baseObjectForRowLabelToUse)
+	public void setBaseObjectForRowLabel(BaseObject baseObjectForRowToUse)
 	{
-		baseObjectForRowLabel = baseObjectForRowLabelToUse;
+		baseObjectForRow = baseObjectForRowToUse;
 	}
 	
 	private WhenEditorComponent whenEditorPanel;
-	private String baseObjectForRowLabel;
+	private BaseObject baseObjectForRow;
 }

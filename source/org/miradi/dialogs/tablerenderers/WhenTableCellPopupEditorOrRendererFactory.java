@@ -25,6 +25,7 @@ import java.awt.Component;
 import javax.swing.JTable;
 
 import org.miradi.dialogfields.editors.WhenPopupEditorComponent;
+import org.miradi.objects.BaseObject;
 
 public class WhenTableCellPopupEditorOrRendererFactory extends PopupEditableCellEditorOrRendererFactory
 {
@@ -46,8 +47,8 @@ public class WhenTableCellPopupEditorOrRendererFactory extends PopupEditableCell
 	{
 		whenPopupEditorComponent.setText(value.toString());
 		whenPopupEditorComponent.setInvokeButtonEnabled(table.isCellEditable(row, column));
-		String baseObjectForRowLabel = getBaseObjectForRow(row, column).combineShortLabelAndLabel();
-		whenPopupEditorComponent.setBaseObjectForRowLabel(baseObjectForRowLabel);
+		BaseObject baseObjectForRow = getBaseObjectForRow(row, column);
+		whenPopupEditorComponent.setBaseObjectForRowLabel(baseObjectForRow);
 		return whenPopupEditorComponent;
 	}
 	
