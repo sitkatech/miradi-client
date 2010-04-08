@@ -27,11 +27,19 @@ import org.miradi.utils.DateEditorComponent;
 
 public class DayPanel extends TwoColumnPanel
 {
-	public DayPanel(String title)
+	public DayPanel(DateUnit dateUnit, String title)
 	{
 		add(new PanelTitleLabel(title));
 		dateEditor = new DateEditorComponent();
 		add(dateEditor);
+		
+		setSelectedDateUnit(dateUnit);
+	}
+
+	private void setSelectedDateUnit(DateUnit dateUnit)
+	{
+		if (dateUnit != null && dateUnit.isDay())
+			dateEditor.setText(dateUnit.getDateUnitCode());
 	}
 
 	public DateUnit getDateUnit()
