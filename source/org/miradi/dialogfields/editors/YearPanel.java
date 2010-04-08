@@ -28,15 +28,16 @@ import org.miradi.project.ProjectCalendar;
 
 public class YearPanel extends OneRowPanel
 {
-	public YearPanel(ProjectCalendar projectCalendar)
+	public YearPanel(ProjectCalendar projectCalendar, DateUnit dateUnit)
 	{
-		this(projectCalendar, "");
+		this(projectCalendar, dateUnit, "");
 	}
 	
-	public YearPanel(ProjectCalendar projectCalendar, String panelTitle)
+	public YearPanel(ProjectCalendar projectCalendar, DateUnit dateUnit, String panelTitle)
 	{
 		fiscalYearStartMonth = projectCalendar.getFiscalYearFirstMonth();
-		yearChooser = new YearComboBox(projectCalendar);
+		yearChooser = new YearComboBox(projectCalendar, dateUnit);
+		
 		add(new PanelTitleLabel(panelTitle));
 		add(yearChooser);
 	}

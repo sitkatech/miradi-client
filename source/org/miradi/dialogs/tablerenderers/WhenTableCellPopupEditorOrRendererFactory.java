@@ -49,6 +49,7 @@ public class WhenTableCellPopupEditorOrRendererFactory extends PopupEditableCell
 		whenPopupEditorComponent.setInvokeButtonEnabled(table.isCellEditable(row, column));
 		BaseObject baseObjectForRow = getBaseObjectForRow(row, column);
 		whenPopupEditorComponent.setBaseObjectForRowLabel(baseObjectForRow);
+		
 		return whenPopupEditorComponent;
 	}
 	

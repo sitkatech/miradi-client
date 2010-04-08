@@ -32,20 +32,49 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.ResourceAssignment;
+import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.DateUnitEffort;
+import org.miradi.utils.DateUnitEffortList;
 
 public class WhenEditorComponent extends DisposablePanel
 {
-	public WhenEditorComponent(ProjectCalendar projectCalendar)
+	public WhenEditorComponent(ProjectCalendar projectCalendar, BaseObject baseObjectToUse) throws Exception
 	{
 		setLayout(new BorderLayout());
 
 		String[] choices = new String[]{NONE_ITEM, PROJECT_TOTAL_ITEM, YEAR_ITEM, QUARTER_ITEM, MONTH_ITEM, DAY_ITEM,};
 		dateUnitTypeCombo = new UiComboBox(choices);
-		dateUnitTypeCombo.addItemListener(new ChangeHandler());
 		
-		lowerPanel = new WhenEditorLowerPanel(projectCalendar);
+		ORefList resourceAssignmentRefs = baseObjectToUse.getResourceAssignmentRefs();
+		String defaultDateUnitType = getDefaultDateUnitType(baseObjectToUse.getProject(), resourceAssignmentRefs);
+		
+		DateUnit dateUnit1 = null;
+		DateUnit dateUnit2 = null;
+		if (!defaultDateUnitType.equals(NONE_ITEM) && resourceAssignmentRefs.hasRefs())
+		{
+			ORef resourceAssignmentRef = resourceAssignmentRefs.getFirstElement();
+			ResourceAssignment resourceAssignment = ResourceAssignment.find(baseObjectToUse.getProject(), resourceAssignmentRef);
+			DateUnitEffortList dateUnitEffortList = resourceAssignment.getDateUnitEffortList();
+			if (dateUnitEffortList.size() == 1)
+			{
+				dateUnit1 = dateUnitEffortList.getDateUnitEffort(0).getDateUnit();
+				dateUnit2 = dateUnitEffortList.getDateUnitEffort(0).getDateUnit();
+			}
+			if (dateUnitEffortList.size() == 2)
+			{
+				dateUnit1 = dateUnitEffortList.getDateUnitEffort(0).getDateUnit();
+				dateUnit2 = dateUnitEffortList.getDateUnitEffort(1).getDateUnit();
+			}
+		}
+		
+		DateUnitRange dateUnitRange = new DateUnitRange(projectCalendar, dateUnit1, dateUnit2);
+		lowerPanel = new WhenEditorLowerPanel(projectCalendar, dateUnitRange);
 		TwoColumnPanel upperPanel = new TwoColumnPanel();
 		upperPanel.setBorder(BorderFactory.createEtchedBorder());
 		upperPanel.add(new PanelTitleLabel(EAM.text("Enter As: ")));
@@ -53,8 +82,45 @@ public class WhenEditorComponent extends DisposablePanel
 		
 		add(upperPanel, BorderLayout.PAGE_START);
 		add(lowerPanel, BorderLayout.PAGE_END);
+		
+		dateUnitTypeCombo.addItemListener(new ChangeHandler());
+		dateUnitTypeCombo.setSelectedItem(defaultDateUnitType);
 	}
 	
+	private String getDefaultDateUnitType(Project projectToUse, ORefList resourceAssignmentRefs) throws Exception
+	{
+		if (resourceAssignmentRefs.isEmpty())
+			return NONE_ITEM;
+		
+		ORef resourceAssignmentRef = resourceAssignmentRefs.getFirstElement();
+		ResourceAssignment resourceAssignment = ResourceAssignment.find(projectToUse, resourceAssignmentRef);
+		DateUnitEffortList dateUnitEffortList = resourceAssignment.getDateUnitEffortList();
+		if (dateUnitEffortList.size() == 0)
+			return NONE_ITEM;
+		
+		for (int index = 0; index < dateUnitEffortList.size(); ++index)
+		{
+			DateUnitEffort dateUnitEffort = dateUnitEffortList.getDateUnitEffort(index);
+			DateUnit dateUnit = dateUnitEffort.getDateUnit(); 
+			if (dateUnit.isDay())
+				return DAY_ITEM;
+			
+			if (dateUnit.isMonth())
+				return MONTH_ITEM;
+			
+			if (dateUnit.isQuarter())
+				return QUARTER_ITEM;
+			
+			if (dateUnit.isYear())
+				return YEAR_ITEM;
+			
+			if (dateUnit.isProjectTotal())
+				return PROJECT_TOTAL_ITEM;
+		}
+		
+		return null;
+	}
+
 	public CodeList getStartEndCodes() throws Exception
 	{
 		CodeList startEndCodes = new CodeList();

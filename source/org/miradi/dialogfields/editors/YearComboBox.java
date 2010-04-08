@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields.editors;
 
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.CalendarYearChoiceQuestion;
 import org.miradi.questions.ChoiceItem;
@@ -29,9 +30,22 @@ import org.miradi.questions.FiscalYearChoiceQuestion;
 
 public class YearComboBox extends PanelComboBox
 {
-	public YearComboBox(ProjectCalendar projectCalendar)
+	public YearComboBox(ProjectCalendar projectCalendarToUse, DateUnit dateUnit)
 	{
-		super(createChoices(projectCalendar));
+		super(createChoices(projectCalendarToUse));
+		
+		projectCalendar = projectCalendarToUse;
+		setSelectedYear(dateUnit);
+	}
+	
+	public void setSelectedYear(DateUnit dateUnit)
+	{
+		if (dateUnit != null && dateUnit.isYear())
+		{
+			ChoiceQuestion question = createYearQuestion(projectCalendar);
+			ChoiceItem choiceItem = question.findChoiceByCode(dateUnit.getYearYearString());
+			setSelectedItem(choiceItem);
+		}
 	}
 	
 	public int getYear()
@@ -55,4 +69,6 @@ public class YearComboBox extends PanelComboBox
 		
 		return new FiscalYearChoiceQuestion(startYear, endYear);
 	}
+	
+	private ProjectCalendar projectCalendar;
 }

@@ -28,10 +28,10 @@ import org.miradi.utils.FillerLabel;
 
 public class QuarterDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 {
-	public QuarterDateUnitStartAndEndCard(ProjectCalendar projectCalendar)
+	public QuarterDateUnitStartAndEndCard(ProjectCalendar projectCalendar, DateUnitRange dateUnitRange)
 	{
-		startQuarterPanel = new QuarterPanel(projectCalendar, getStartText());
-		endQuarterPanel = new QuarterPanel(projectCalendar, getEndText());
+		startQuarterPanel = new QuarterPanel(projectCalendar, dateUnitRange.getStartDateUnit(), getStartText());
+		endQuarterPanel = new QuarterPanel(projectCalendar, dateUnitRange.getEndDateUnit(), getEndText());
 
 		add(new PanelTitleLabel(EAM.text("Quarter Selection: ")));
 		add(new FillerLabel());

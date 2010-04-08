@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields.editors;
 
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.FiscalYearQuarterQuestion;
@@ -29,9 +30,12 @@ import org.miradi.questions.StaticQuestionManager;
 
 public class QuarterChooser extends PanelComboBox
 {
-	public QuarterChooser(int fiscalYearStartMonth)
+	public QuarterChooser(int fiscalYearStartMonthToUse, DateUnit dateUnit)
 	{
-		super(createChoices(fiscalYearStartMonth));
+		super(createChoices(fiscalYearStartMonthToUse));
+		
+		fiscalYearStartMonth = fiscalYearStartMonthToUse;
+		setSelectedQuarter(dateUnit);
 	}
 
 	private static ChoiceItem[] createChoices(int fiscalYearStartMonth)
@@ -46,4 +50,16 @@ public class QuarterChooser extends PanelComboBox
 		
 		return StaticQuestionManager.getQuestion(FiscalYearQuarterQuestion.class);
 	}
+
+	public void setSelectedQuarter(DateUnit dateUnit)
+	{
+		if (dateUnit != null && dateUnit.isQuarter())
+		{
+			ChoiceQuestion question = createQuestion(fiscalYearStartMonth);
+			ChoiceItem choiceItemToSelect = question.findChoiceByCode(Integer.toString(dateUnit.getQuarter()));
+			setSelectedItem(choiceItemToSelect);
+		}
+	}
+	
+	private int fiscalYearStartMonth;
 }

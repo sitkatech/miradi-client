@@ -33,14 +33,22 @@ public class WhenPopupEditorComponent extends AbstractPopupEditorComponent
 	@Override
 	protected void invokePopupEditor()
 	{
-		MainWindow mainWindow = EAM.getMainWindow();
-		String title = EAM.substitute(EAM.text("When - %s"), getBaseObjectForRowLabel());
-		ModalDialogWithClose dialog = new ModalDialogWithClose(mainWindow, title);
-		whenEditorPanel = new WhenEditorComponent(mainWindow.getProject().getProjectCalendar());
-		dialog.setMainPanel(whenEditorPanel);
-		Utilities.centerFrame(dialog);
-		dialog.pack();
-		dialog.setVisible(true);
+		try
+		{
+			MainWindow mainWindow = EAM.getMainWindow();
+			String title = EAM.substitute(EAM.text("When - %s"), getBaseObjectForRowLabel());
+			ModalDialogWithClose dialog = new ModalDialogWithClose(mainWindow, title);
+			whenEditorPanel = new WhenEditorComponent(mainWindow.getProject().getProjectCalendar(), baseObjectForRow);
+			dialog.setMainPanel(whenEditorPanel);
+			Utilities.centerFrame(dialog);
+			dialog.pack();
+			dialog.setVisible(true);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
+		}
 	}
 	
 	@Override
