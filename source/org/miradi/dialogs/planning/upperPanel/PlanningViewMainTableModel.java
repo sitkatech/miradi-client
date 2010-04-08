@@ -261,8 +261,11 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	private void deleteResourceAssignment(ORef resourceAssignmentRef) throws Exception
 	{	
 		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRef);
-		Vector<Command> removeAssignmentCommands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
-		getProject().executeCommandsWithoutTransaction(removeAssignmentCommands);
+		if (resourceAssignment.isEmpty())
+		{
+			Vector<Command> removeAssignmentCommands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
+			getProject().executeCommandsWithoutTransaction(removeAssignmentCommands);
+		}
 	}
 
 	private void createResourceAssignment(BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception
