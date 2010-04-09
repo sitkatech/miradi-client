@@ -25,10 +25,9 @@ import javax.swing.DefaultComboBoxModel;
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
-import org.miradi.questions.CalendarYearChoiceQuestion;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.FiscalYearChoiceQuestion;
+import org.miradi.questions.YearChoiceQuestion;
 
 public class YearComboBox extends PanelComboBox
 {
@@ -66,11 +65,7 @@ public class YearComboBox extends PanelComboBox
 	
 	protected ChoiceQuestion createYearQuestion()
 	{
-		int fiscalYearStartMonth = getProjectCalendar().getFiscalYearFirstMonth();
-		if (fiscalYearStartMonth == 1)
-			return new CalendarYearChoiceQuestion(getProjectCalendar());	
-		
-		return new FiscalYearChoiceQuestion(getProjectCalendar());
+		return new YearChoiceQuestion(getProjectCalendar());
 	}
 
 	protected ProjectCalendar getProjectCalendar()
