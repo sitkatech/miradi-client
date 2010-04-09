@@ -21,11 +21,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields.editors;
 
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.layout.OneRowPanel;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
 
-public class YearPanel extends OneRowPanel
+public class YearPanel extends DateUnitPanel
 {
 	public YearPanel(ProjectCalendar projectCalendar, DateUnit dateUnit)
 	{
