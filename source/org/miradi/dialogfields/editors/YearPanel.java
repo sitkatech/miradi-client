@@ -39,11 +39,6 @@ public class YearPanel extends OneRowPanel
 		add(new PanelTitleLabel(panelTitle));
 		add(yearChooser);
 	}
-
-	public int getYear()
-	{
-		return getDateUnit().getYearYear();
-	}
 	
 	public DateUnit getDateUnit()
 	{
