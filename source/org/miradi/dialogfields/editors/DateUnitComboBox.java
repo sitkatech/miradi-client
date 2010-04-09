@@ -29,12 +29,14 @@ import org.miradi.questions.ChoiceItem;
 
 abstract public class DateUnitComboBox extends PanelComboBox
 {
-	public DateUnitComboBox(ProjectCalendar projectCalendarToUse)
+	public DateUnitComboBox(ProjectCalendar projectCalendarToUse, DateUnit dateUnit)
 	{
 		projectCalendar = projectCalendarToUse;
 		
 		ChoiceItem[] choices = createChoices();
 		setModel(new DefaultComboBoxModel(choices));
+		
+		setSelectedDateUnit(dateUnit);
 	}
 	
 	public DateUnit getDateUnit()
@@ -52,6 +54,8 @@ abstract public class DateUnitComboBox extends PanelComboBox
 	}
 	
 	abstract protected ChoiceItem[] createChoices();
+	
+	abstract protected void setSelectedDateUnit(DateUnit dateUnit);
 	
 	private ProjectCalendar projectCalendar;
 }

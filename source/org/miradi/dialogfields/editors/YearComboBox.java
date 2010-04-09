@@ -30,12 +30,11 @@ public class YearComboBox extends DateUnitComboBox
 {
 	public YearComboBox(ProjectCalendar projectCalendarToUse, DateUnit dateUnit)
 	{
-		super(projectCalendarToUse);
-		
-		setSelectedYear(dateUnit);
+		super(projectCalendarToUse, dateUnit);
 	}
 	
-	public void setSelectedYear(DateUnit dateUnit)
+	@Override
+	public void setSelectedDateUnit(DateUnit dateUnit)
 	{
 		if (dateUnit != null && dateUnit.isYear())
 		{
@@ -45,12 +44,13 @@ public class YearComboBox extends DateUnitComboBox
 		}
 	}
 	
+	@Override
 	protected ChoiceItem[] createChoices()
 	{
 		return createQuestion().getChoices();
 	}
 	
-	protected ChoiceQuestion createQuestion()
+	private ChoiceQuestion createQuestion()
 	{
 		return new YearChoiceQuestion(getProjectCalendar());
 	}
