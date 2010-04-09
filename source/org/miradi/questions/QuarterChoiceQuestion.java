@@ -33,21 +33,7 @@ public class QuarterChoiceQuestion extends AbstractDateUnitQuestion
 	}
 	
 	@Override
-	public ChoiceItem[] getChoices()
-	{
-		Vector<DateUnit> subDateUnits = getAllProjectQuarterDateUnits();
-		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
-		for (DateUnit subDateUnit : subDateUnits)
-		{
-			String label = getProjectCalendar().getShortDateUnitString(subDateUnit);
-			ChoiceItem choiceItem = new ChoiceItem(subDateUnit.getDateUnitCode(), label);
-			choices.add(choiceItem);
-		}
-		
-		return choices.toArray(new ChoiceItem[0]);
-	}
-	
-	private Vector<DateUnit> getAllProjectQuarterDateUnits()
+	protected Vector<DateUnit> getDateUnits()
 	{
 		try
 		{

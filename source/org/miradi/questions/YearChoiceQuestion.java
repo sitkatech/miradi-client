@@ -33,21 +33,7 @@ public class YearChoiceQuestion extends AbstractDateUnitQuestion
 	}
 	
 	@Override
-	public ChoiceItem[] getChoices()
-	{
-		Vector<DateUnit> allProjectYearDateUnits = getAllProjectYearDateUnits();
-		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
-		for (DateUnit yearDateUnit : allProjectYearDateUnits)
-		{
-			String yearLabel = getProjectCalendar().getShortDateUnitString(yearDateUnit);
-			ChoiceItem yearChoiceItem = new ChoiceItem(yearDateUnit.getDateUnitCode(), yearLabel);
-			choices.add(yearChoiceItem);
-		}
-		
-		return choices.toArray(new ChoiceItem[0]);
-	}
-
-	private Vector<DateUnit> getAllProjectYearDateUnits()
+	protected Vector<DateUnit> getDateUnits()
 	{
 		try
 		{
