@@ -50,7 +50,7 @@ public class YearComboBox extends DateUnitComboBox
 		}
 	}
 	
-	public DateUnit getYear()
+	public DateUnit getDateUnit()
 	{
 		ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
 		if (selectedItem == null)
