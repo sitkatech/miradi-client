@@ -22,18 +22,17 @@ package org.miradi.dialogfields.editors;
 
 import javax.swing.DefaultComboBoxModel;
 
-import org.miradi.dialogs.fieldComponents.PanelComboBox;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.MonthQuestion;
 
-public class MonthComboBox extends PanelComboBox
+public class MonthComboBox extends DateUnitComboBox
 {
 	public MonthComboBox(ProjectCalendar projectCalendarToUse, DateUnit dateUnit)
 	{
-		projectCalendar = projectCalendarToUse;
+		super(projectCalendarToUse);
 		ChoiceItem[] choices = createChoices();
 		setModel(new DefaultComboBoxModel(choices));
 
@@ -68,12 +67,5 @@ public class MonthComboBox extends PanelComboBox
 			ChoiceItem choiceItemToSelect = getMonthQuestion().findChoiceByCode(monthToSelect);
 			setSelectedItem(choiceItemToSelect);
 		}
-	}
-	
-	protected ProjectCalendar getProjectCalendar()
-	{
-		return projectCalendar;
-	}
-	
-	private ProjectCalendar projectCalendar;
+	}	
 }
