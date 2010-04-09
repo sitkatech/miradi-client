@@ -22,29 +22,36 @@ package org.miradi.questions;
 
 import java.util.Vector;
 
+import org.miradi.objecthelpers.DateUnit;
+import org.miradi.project.ProjectCalendar;
+
 abstract public class AbstractYearChoiceQuestion extends DynamicChoiceQuestion
 {
-	public AbstractYearChoiceQuestion(int startYearToUse, int endYearToUse)
+	public AbstractYearChoiceQuestion(ProjectCalendar projectCalendarToUse)
 	{
-		startYear = startYearToUse;
-		endYear = endYearToUse;
+		projectCalendar = projectCalendarToUse;
 	}
 	
 	@Override
 	public ChoiceItem[] getChoices()
 	{
+		Vector<DateUnit> yearDateUnits = getProjectCalendar().getSafeSubYears();
 		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
-		for (int year = startYear; year <= endYear; ++year)
+		for (DateUnit yearDateUnit : yearDateUnits)
 		{
-			ChoiceItem yearChoiceItem = new ChoiceItem(Integer.toString(year), createYearLabel(year));
+			ChoiceItem yearChoiceItem = new ChoiceItem(yearDateUnit.getDateUnitCode(), createYearLabel(yearDateUnit.getYearYear()));
 			choices.add(yearChoiceItem);
 		}
 		
 		return choices.toArray(new ChoiceItem[0]);
 	}
+
+	private ProjectCalendar getProjectCalendar()
+	{
+		return projectCalendar;
+	}
 	
 	abstract protected String createYearLabel(int year);
 	
-	private int startYear;
-	private int endYear;
+	private ProjectCalendar projectCalendar;
 }

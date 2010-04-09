@@ -33,8 +33,8 @@ public class CalendarYearComboBox extends YearComboBox
 	}
 	
 	@Override
-	protected ChoiceQuestion createYearQuestion(int startYear, int endYear)
+	protected ChoiceQuestion createYearQuestion()
 	{
-		return new CalendarYearChoiceQuestion(startYear, endYear);
+		return new CalendarYearChoiceQuestion(getProjectCalendar());
 	}
 }
