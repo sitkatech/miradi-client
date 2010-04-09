@@ -20,11 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import org.miradi.layout.OneRowPanel;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
 
-public class QuarterPanel extends OneRowPanel
+public class QuarterPanel extends DateUnitPanel
 {
 	public QuarterPanel(ProjectCalendar projectCalendar, DateUnit dateUnit, String title)
 	{		
