@@ -35,7 +35,7 @@ abstract public class AbstractYearChoiceQuestion extends DynamicChoiceQuestion
 	@Override
 	public ChoiceItem[] getChoices()
 	{
-		Vector<DateUnit> yearDateUnits = getProjectCalendar().getSafeSubYears();
+		Vector<DateUnit> yearDateUnits = getProjectCalendar().getSubYears();
 		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
 		for (DateUnit yearDateUnit : yearDateUnits)
 		{
