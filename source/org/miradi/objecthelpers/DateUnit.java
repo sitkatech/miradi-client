@@ -29,7 +29,7 @@ import org.miradi.main.EAM;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class DateUnit
+public class DateUnit implements Comparable<DateUnit>
 {
 	public DateUnit()
 	{
@@ -452,6 +452,11 @@ public class DateUnit
 	public String toString()
 	{
 		return getDateUnitCode().toString();
+	}
+	
+	public int compareTo(DateUnit other)
+	{
+		return toString().compareTo(other.toString());
 	}
 	
 	private static final String[][] monthsPerQuarter = { 

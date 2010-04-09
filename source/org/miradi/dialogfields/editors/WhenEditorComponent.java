@@ -74,7 +74,10 @@ public class WhenEditorComponent extends DisposablePanel
 			}
 		}
 		
-		DateUnitRange dateUnitRange = new DateUnitRange(projectCalendar, dateUnit1, dateUnit2);
+		Vector<DateUnit> dateUnits = new Vector<DateUnit>();
+		dateUnits.add(dateUnit1);
+		dateUnits.add(dateUnit2);
+		DateUnitRange dateUnitRange = new DateUnitRange(dateUnits);
 		lowerPanel = new WhenEditorLowerPanel(projectCalendar, dateUnitRange);
 		TwoColumnPanel upperPanel = new TwoColumnPanel();
 		upperPanel.setBorder(BorderFactory.createEtchedBorder());
