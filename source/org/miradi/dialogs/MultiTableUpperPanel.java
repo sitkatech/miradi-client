@@ -33,7 +33,16 @@ public class MultiTableUpperPanel extends ObjectCollectionPanel implements ListS
 	public MultiTableUpperPanel(MainWindow mainWindowToUse, ObjectPicker pickerToUse)
 	{
 		super(mainWindowToUse, pickerToUse);
-		pickerToUse.addSelectionChangeListener(this);
+		picker = pickerToUse;
+		picker.addSelectionChangeListener(this);
+	}
+	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		picker.removeSelectionChangeListener(this);
+		picker = null;
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
@@ -48,4 +57,6 @@ public class MultiTableUpperPanel extends ObjectCollectionPanel implements ListS
 	public void valueChanged(ListSelectionEvent event)
 	{
 	}
+	
+	private ObjectPicker picker;
 }
