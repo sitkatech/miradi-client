@@ -199,9 +199,11 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		{			
 			ResourceAssignment resourceAssignment = ResourceAssignment.find(baseObject.getProject(), resourceAssignmentRefs.get(index));
 			dateUnitEffortLists.add(resourceAssignment.getDateUnitEffortList());
+			if (dateUnitEffortLists.size() > 1)
+				return true;
 		}	
 		
-		return dateUnitEffortLists.size() > 1;
+		return false;
 	}
 
 	private static boolean hasUsableNumberOfDateUnitEfforts(BaseObject baseObject) throws Exception
