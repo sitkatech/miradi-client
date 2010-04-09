@@ -21,13 +21,24 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields.editors;
 
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
+import org.miradi.questions.ChoiceItem;
 
 public class DateUnitComboBox extends PanelComboBox
 {
 	public DateUnitComboBox(ProjectCalendar projectCalendarToUse)
 	{
 		projectCalendar = projectCalendarToUse;
+	}
+	
+	public DateUnit getDateUnit()
+	{
+		ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
+		if (selectedItem == null)
+			return null;
+		
+		return new DateUnit(selectedItem.getCode());
 	}
 
 	protected ProjectCalendar getProjectCalendar()

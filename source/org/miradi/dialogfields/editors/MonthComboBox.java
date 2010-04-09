@@ -40,15 +40,6 @@ public class MonthComboBox extends DateUnitComboBox
 		setSelectedMonth(dateUnit);
 	}
 	
-	public DateUnit getDateUnit()
-	{
-		ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
-		if (selectedItem == null)
-			return null;
-		
-		return new DateUnit(selectedItem.getCode());
-	}
-
 	private ChoiceItem[] createChoices()
 	{
 		return getMonthQuestion().getChoices();
