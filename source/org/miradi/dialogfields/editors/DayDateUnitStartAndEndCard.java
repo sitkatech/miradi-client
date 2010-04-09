@@ -23,6 +23,7 @@ package org.miradi.dialogfields.editors;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.questions.DateUnitTypeQuestion;
 import org.miradi.utils.FillerLabel;
 
 public class DayDateUnitStartAndEndCard extends DateUnitStartAndEndCard
@@ -53,7 +54,7 @@ public class DayDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	@Override
 	public String getPanelDescription()
 	{
-		return WhenEditorComponent.DAY_ITEM;
+		return DateUnitTypeQuestion.DAY_ITEM;
 	}
 	
 	private DayPanel startDayPanel;
