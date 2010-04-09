@@ -33,15 +33,8 @@ public class YearChoiceQuestion extends AbstractDateUnitQuestion
 	}
 	
 	@Override
-	protected Vector<DateUnit> getDateUnits()
+	protected Vector<DateUnit> getDateUnits() throws Exception
 	{
-		try
-		{
-			return getProjectCalendar().getAllProjectYearDateUnits();
-		}
-		catch (Exception e)
-		{
-			throw new RuntimeException(e);
-		}
+		return getProjectCalendar().getAllProjectYearDateUnits();
 	}
 }
