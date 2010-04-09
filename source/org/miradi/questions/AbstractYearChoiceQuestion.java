@@ -52,7 +52,5 @@ abstract public class AbstractYearChoiceQuestion extends DynamicChoiceQuestion
 		return projectCalendar;
 	}
 	
-	abstract protected String createYearLabel(int year);
-	
 	private ProjectCalendar projectCalendar;
 }

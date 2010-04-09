@@ -29,10 +29,4 @@ public class CalendarYearChoiceQuestion extends AbstractYearChoiceQuestion
 	{
 		super(projectCalendarToUse);
 	}
-
-	@Override
-	protected String createYearLabel(int year)
-	{
-		return Integer.toString(year);
-	}
 }
