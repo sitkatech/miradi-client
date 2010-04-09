@@ -30,18 +30,54 @@ public class StartEndDateUnitProvider
 	public StartEndDateUnitProvider(Vector<DateUnit> dateUnitsToUse) throws Exception
 	{
 		dateUnits = dateUnitsToUse;
+		ensureSameTypeDateUnits();
 		
 		Collections.sort(dateUnits);
 	}
 	
+	private void ensureSameTypeDateUnits()
+	{
+		if (!areBothTheSame(getStartDateUnit(), getEndDateUnit()))
+			throw new RuntimeException("Start and End dateUnit are not the same type");
+	}
+
+	private boolean areBothTheSame(DateUnit startDateUnit, DateUnit endDateUnit)
+	{
+		if (startDateUnit == null)
+			return endDateUnit == null;
+		
+		if (startDateUnit.isDay())
+			return endDateUnit.isDay();
+
+		if (startDateUnit.isMonth())
+			return endDateUnit.isMonth();
+		
+		if (startDateUnit.isQuarter())
+			return endDateUnit.isQuarter();
+		
+		if (startDateUnit.isYear())
+			return endDateUnit.isYear();
+		
+		if (startDateUnit.isProjectTotal())
+			return endDateUnit.isProjectTotal();
+		
+		return false;
+	}
+
 	public DateUnit getStartDateUnit()
 	{
-		return dateUnits.get(0);
+		if (!dateUnits.isEmpty())
+			return dateUnits.get(0);
+		
+		return null;
 	}
 
 	public DateUnit getEndDateUnit()
 	{
-		return dateUnits.get(1);
+		if (dateUnits.size() > 1)
+			return dateUnits.get(1);
+		
+		return null;
 	}
 	
 	private Vector<DateUnit> dateUnits;
