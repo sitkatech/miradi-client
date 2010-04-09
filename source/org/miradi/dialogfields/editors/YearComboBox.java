@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import javax.swing.DefaultComboBoxModel;
-
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.ChoiceItem;
@@ -33,9 +31,6 @@ public class YearComboBox extends DateUnitComboBox
 	public YearComboBox(ProjectCalendar projectCalendarToUse, DateUnit dateUnit)
 	{
 		super(projectCalendarToUse);
-		
-		ChoiceItem[] choices = createChoices();
-		setModel(new DefaultComboBoxModel(choices));
 		
 		setSelectedYear(dateUnit);
 	}
@@ -50,7 +45,7 @@ public class YearComboBox extends DateUnitComboBox
 		}
 	}
 	
-	private ChoiceItem[] createChoices()
+	protected ChoiceItem[] createChoices()
 	{
 		return createQuestion().getChoices();
 	}
