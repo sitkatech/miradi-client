@@ -55,7 +55,7 @@ public class QuarterDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	@Override
 	public String getPanelDescription()
 	{
-		return DateUnitTypeQuestion.QUARTER_ITEM;
+		return DateUnitTypeQuestion.QUARTER_CODE;
 	}
 	
 	private QuarterPanel startQuarterPanel;

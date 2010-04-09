@@ -35,24 +35,24 @@ public class DateUnitTypeQuestion extends DynamicChoiceQuestion
 	public ChoiceItem[] getChoices()
 	{
 		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
-		choices.add(new ChoiceItem(DateUnitTypeQuestion.NONE_ITEM, DateUnitTypeQuestion.NONE_ITEM));
-		choices.add(new ChoiceItem(DateUnitTypeQuestion.PROJECT_TOTAL_ITEM, DateUnitTypeQuestion.PROJECT_TOTAL_ITEM));
-		choices.add(new ChoiceItem(DateUnitTypeQuestion.YEAR_ITEM, DateUnitTypeQuestion.YEAR_ITEM));
+		choices.add(new ChoiceItem(DateUnitTypeQuestion.NONE_CODE, DateUnitTypeQuestion.NONE_CODE));
+		choices.add(new ChoiceItem(DateUnitTypeQuestion.PROJECT_TOTAL_CODE, DateUnitTypeQuestion.PROJECT_TOTAL_CODE));
+		choices.add(new ChoiceItem(DateUnitTypeQuestion.YEAR_CODE, DateUnitTypeQuestion.YEAR_CODE));
 		if (projectCalendar.shouldShowQuarterColumns())
-			choices.add(new ChoiceItem(DateUnitTypeQuestion.QUARTER_ITEM, DateUnitTypeQuestion.QUARTER_ITEM));
+			choices.add(new ChoiceItem(DateUnitTypeQuestion.QUARTER_CODE, DateUnitTypeQuestion.QUARTER_CODE));
 		
-		choices.add(new ChoiceItem(DateUnitTypeQuestion.MONTH_ITEM, DateUnitTypeQuestion.MONTH_ITEM));
-		choices.add(new ChoiceItem(DateUnitTypeQuestion.DAY_ITEM, DateUnitTypeQuestion.DAY_ITEM));
+		choices.add(new ChoiceItem(DateUnitTypeQuestion.MONTH_CODE, DateUnitTypeQuestion.MONTH_CODE));
+		choices.add(new ChoiceItem(DateUnitTypeQuestion.DAY_CODE, DateUnitTypeQuestion.DAY_CODE));
 		
 		return choices.toArray(new ChoiceItem[0]);
 	}
 	
-	public static final String NONE_ITEM = "None";
-	public static final String PROJECT_TOTAL_ITEM = "Project Total";
-	public static final String YEAR_ITEM = "Year";
-	public static final String QUARTER_ITEM = "Quarter";
-	public static final String MONTH_ITEM = "Month";
-	public static final String DAY_ITEM = "Day";
+	public static final String NONE_CODE = "None";
+	public static final String PROJECT_TOTAL_CODE = "Project Total";
+	public static final String YEAR_CODE = "Year";
+	public static final String QUARTER_CODE = "Quarter";
+	public static final String MONTH_CODE = "Month";
+	public static final String DAY_CODE = "Day";
 	
 	private ProjectCalendar projectCalendar;
 }

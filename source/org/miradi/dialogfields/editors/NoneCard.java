@@ -40,6 +40,6 @@ public class NoneCard extends DateUnitStartAndEndCard
 	@Override
 	public String getPanelDescription()
 	{
-		return DateUnitTypeQuestion.NONE_ITEM;
+		return DateUnitTypeQuestion.NONE_CODE;
 	}
 }

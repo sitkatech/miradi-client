@@ -55,7 +55,7 @@ public class CalendarYearDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	@Override
 	public String getPanelDescription()
 	{
-		return DateUnitTypeQuestion.YEAR_ITEM;
+		return DateUnitTypeQuestion.YEAR_CODE;
 	}
 	
 	private YearPanel startYearPanel;
