@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-08 21:38-0500\n"
+"POT-Creation-Date: 2010-04-09 09:11-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -3162,7 +3162,7 @@ msgstr "Por trimestre"
 msgid "By Year"
 msgstr "Por año"
 
-#: Miradi/source/org/miradi/questions/FiscalYearChoiceQuestion.java:36
+#: Miradi/source/org/miradi/questions/FiscalYearChoiceQuestion.java:37
 msgid "FY %s"
 msgstr ""
 
