@@ -53,10 +53,10 @@ public class WhenEditorComponent extends DisposablePanel
 		dateUnitTypeCombo = new UiComboBox(choices);
 		
 		ORefList resourceAssignmentRefs = baseObjectToUse.getResourceAssignmentRefs();
-		String defaultDateUnitType = getDefaultDateUnitType(baseObjectToUse.getProject(), resourceAssignmentRefs);
+		String singleDateUnitType = getDefaultDateUnitType(baseObjectToUse.getProject(), resourceAssignmentRefs);
 		
 		Vector<DateUnit> dateUnits = new Vector<DateUnit>();
-		if (!defaultDateUnitType.equals(NONE_ITEM) && resourceAssignmentRefs.hasRefs())
+		if (!singleDateUnitType.equals(NONE_ITEM) && resourceAssignmentRefs.hasRefs())
 		{
 			ORef resourceAssignmentRef = resourceAssignmentRefs.getFirstElement();
 			ResourceAssignment resourceAssignment = ResourceAssignment.find(baseObjectToUse.getProject(), resourceAssignmentRef);
@@ -84,7 +84,7 @@ public class WhenEditorComponent extends DisposablePanel
 		add(lowerPanel, BorderLayout.PAGE_END);
 		
 		dateUnitTypeCombo.addItemListener(new ChangeHandler());
-		dateUnitTypeCombo.setSelectedItem(defaultDateUnitType);
+		dateUnitTypeCombo.setSelectedItem(singleDateUnitType);
 	}
 
 	private String[] createChoices(ProjectCalendar projectCalendar)
