@@ -49,8 +49,7 @@ public class MonthComboBox extends DateUnitComboBox
 	{
 		if (dateUnit != null && dateUnit.isMonth())
 		{
-			int monthToSelect = dateUnit.getMonth();
-			ChoiceItem choiceItemToSelect = createQuestion().findChoiceByCode(monthToSelect);
+			ChoiceItem choiceItemToSelect = createQuestion().findChoiceByCode(dateUnit.getDateUnitCode());
 			setSelectedItem(choiceItemToSelect);
 		}
 	}	
