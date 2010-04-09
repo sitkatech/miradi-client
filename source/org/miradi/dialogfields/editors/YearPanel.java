@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
 
@@ -33,16 +32,12 @@ public class YearPanel extends DateUnitPanel
 	
 	public YearPanel(ProjectCalendar projectCalendar, DateUnit dateUnit, String panelTitle)
 	{
-		yearChooser = new YearComboBox(projectCalendar, dateUnit);
-		
-		add(new PanelTitleLabel(panelTitle));
-		add(yearChooser);
+		super(projectCalendar, dateUnit, panelTitle);
 	}
-	
-	public DateUnit getDateUnit()
+
+	@Override
+	protected DateUnitComboBox createDateUnitChooser(ProjectCalendar projectCalendar,	DateUnit dateUnit)
 	{
-		return yearChooser.getDateUnit();
-	}
-	
-	private YearComboBox yearChooser;
+		return new YearComboBox(projectCalendar, dateUnit);
+	}	
 }

@@ -27,15 +27,12 @@ public class QuarterPanel extends DateUnitPanel
 {
 	public QuarterPanel(ProjectCalendar projectCalendar, DateUnit dateUnit, String title)
 	{		
-		quarterChooser = new QuarterChooser(projectCalendar, dateUnit);
-
-		add(quarterChooser);
+		super(projectCalendar, dateUnit, title);
 	}
 
-	public DateUnit getDateUnit()
+	@Override
+	protected DateUnitComboBox createDateUnitChooser(ProjectCalendar projectCalendar, DateUnit dateUnit)
 	{
-		return quarterChooser.getDateUnit();
+		return new QuarterChooser(projectCalendar, dateUnit);
 	}
-	
-	private QuarterChooser quarterChooser;
 }

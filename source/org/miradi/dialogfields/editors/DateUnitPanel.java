@@ -20,9 +20,27 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.OneRowPanel;
+import org.miradi.objecthelpers.DateUnit;
+import org.miradi.project.ProjectCalendar;
 
 abstract public class DateUnitPanel extends OneRowPanel
 {
+	public DateUnitPanel(ProjectCalendar projectCalendar, DateUnit dateUnit, String panelTitle)
+	{
+		dateUnitChooser = createDateUnitChooser(projectCalendar, dateUnit);
+		
+		add(new PanelTitleLabel(panelTitle));
+		add(dateUnitChooser);
+	}
+	
+	public DateUnit getDateUnit()
+	{
+		return dateUnitChooser.getDateUnit();
+	}
 
+	abstract protected DateUnitComboBox createDateUnitChooser(ProjectCalendar projectCalendar,	DateUnit dateUnit);
+
+	private DateUnitComboBox dateUnitChooser;
 }
