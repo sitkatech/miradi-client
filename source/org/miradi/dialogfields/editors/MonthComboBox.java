@@ -30,9 +30,7 @@ public class MonthComboBox extends DateUnitComboBox
 {
 	public MonthComboBox(ProjectCalendar projectCalendarToUse, DateUnit dateUnit)
 	{
-		super(projectCalendarToUse);
-		
-		setSelectedMonth(dateUnit);
+		super(projectCalendarToUse, dateUnit);
 	}
 	
 	@Override
@@ -46,7 +44,8 @@ public class MonthComboBox extends DateUnitComboBox
 		return new MonthQuestion(getProjectCalendar());
 	}
 	
-	private void setSelectedMonth(DateUnit dateUnit)
+	@Override
+	protected void setSelectedDateUnit(DateUnit dateUnit)
 	{
 		if (dateUnit != null && dateUnit.isMonth())
 		{
