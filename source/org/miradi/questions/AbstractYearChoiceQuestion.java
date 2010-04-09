@@ -39,7 +39,8 @@ abstract public class AbstractYearChoiceQuestion extends DynamicChoiceQuestion
 		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
 		for (DateUnit yearDateUnit : yearDateUnits)
 		{
-			ChoiceItem yearChoiceItem = new ChoiceItem(yearDateUnit.getDateUnitCode(), createYearLabel(yearDateUnit.getYearYear()));
+			String yearLabel = getProjectCalendar().getShortDateUnitString(yearDateUnit);
+			ChoiceItem yearChoiceItem = new ChoiceItem(yearDateUnit.getDateUnitCode(), yearLabel);
 			choices.add(yearChoiceItem);
 		}
 		
