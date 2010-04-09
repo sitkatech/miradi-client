@@ -20,50 +20,34 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import javax.swing.DefaultComboBoxModel;
-
-import org.miradi.dialogs.fieldComponents.PanelComboBox;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.QuarterChoiceQuestion;
 
-public class QuarterChooser extends PanelComboBox
+public class QuarterChooser extends DateUnitComboBox
 {
 	public QuarterChooser(ProjectCalendar projectCalendarToUse, DateUnit dateUnit)
 	{
-		projectCalendar = projectCalendarToUse;
-
-		ChoiceItem[] choices = createChoices();
-		setModel(new DefaultComboBoxModel(choices));
-		setSelectedQuarter(dateUnit);
+		super(projectCalendarToUse, dateUnit);
 	}
 
-	private ChoiceItem[] createChoices()
+	@Override
+	protected ChoiceItem[] createChoices()
 	{
 		return createQuestion().getChoices();
 	}
 	
-	private ChoiceQuestion createQuestion()
+	@Override
+	protected ChoiceQuestion createQuestion()
 	{
 		return new QuarterChoiceQuestion(getProjectCalendar());
 	}
 
-	public void setSelectedQuarter(DateUnit dateUnit)
+	@Override
+	protected boolean isType(DateUnit dateUnit)
 	{
-		if (dateUnit != null && dateUnit.isQuarter())
-		{
-			ChoiceQuestion question = createQuestion();
-			ChoiceItem choiceItemToSelect = question.findChoiceByCode(Integer.toString(dateUnit.getQuarter()));
-			setSelectedItem(choiceItemToSelect);
-		}
+		return dateUnit.isQuarter();
 	}
-	
-	private ProjectCalendar getProjectCalendar()
-	{
-		return projectCalendar;
-	}
-	
-	private ProjectCalendar projectCalendar;
 }
