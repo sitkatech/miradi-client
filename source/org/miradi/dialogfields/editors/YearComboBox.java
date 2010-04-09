@@ -53,6 +53,8 @@ public class YearComboBox extends PanelComboBox
 	public DateUnit getYear()
 	{
 		ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
+		if (selectedItem == null)
+			return null;
 		
 		return new DateUnit(selectedItem.getCode());
 	}
