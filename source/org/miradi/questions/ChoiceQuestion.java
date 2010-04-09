@@ -61,11 +61,6 @@ public abstract class ChoiceQuestion
 	
 	abstract public ChoiceItem[] getChoices();
 	
-	public ChoiceItem findChoiceByCode(int codeAsInt)
-	{
-		return findChoiceByCode(Integer.toString(codeAsInt));
-	}
-	
 	public ChoiceItem findChoiceByCode(String code)
 	{
 		int index = findIndexByCode(code);
