@@ -360,14 +360,23 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	public Vector<DateUnit> getAllProjectQuarterDateUnits() throws Exception
 	{
-		Vector<DateUnit> allProjectQuarterDateUnits = new Vector<DateUnit>();
-		Vector<DateUnit> allProjectYearDateUnits = getAllProjectYearDateUnits();
-		for(DateUnit yearDateUnit : allProjectYearDateUnits)
+		return getAllSubDateUnits(getAllProjectYearDateUnits());
+	}
+	
+	public Vector<DateUnit> getAllProjectMonthDateUnits() throws Exception
+	{
+		return getAllSubDateUnits(getAllProjectQuarterDateUnits());
+	}
+
+	private Vector<DateUnit> getAllSubDateUnits(Vector<DateUnit> dateUnits) throws Exception
+	{
+		Vector<DateUnit> subDateUnits = new Vector<DateUnit>();
+		for(DateUnit dateUnit : dateUnits)
 		{
-			allProjectQuarterDateUnits.addAll(getSubDateUnits(yearDateUnit));
+			subDateUnits.addAll(getSubDateUnits(dateUnit));
 		}
 
-		return allProjectQuarterDateUnits;
+		return subDateUnits;
 	}
 	
 	private Vector<DateUnit> removeQuarterDateUnits(Vector<DateUnit> superDateUnits)

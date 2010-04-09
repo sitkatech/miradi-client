@@ -20,36 +20,44 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
+import javax.swing.DefaultComboBoxModel;
+
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.MonthQuestion;
-import org.miradi.questions.StaticQuestionManager;
 
 public class MonthComboBox extends PanelComboBox
 {
-	public MonthComboBox(DateUnit dateUnit)
+	public MonthComboBox(ProjectCalendar projectCalendarToUse, DateUnit dateUnit)
 	{
-		super(createChoices());
+		projectCalendar = projectCalendarToUse;
+		ChoiceItem[] choices = createChoices();
+		setModel(new DefaultComboBoxModel(choices));
+
 		
 		setSelectedMonth(dateUnit);
 	}
 	
-	public int getMonth()
+	public DateUnit getDateUnit()
 	{
 		ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
-		return Integer.parseInt(selectedItem.getCode());
+		if (selectedItem == null)
+			return null;
+		
+		return new DateUnit(selectedItem.getCode());
 	}
 
-	private static ChoiceItem[] createChoices()
+	private ChoiceItem[] createChoices()
 	{
 		return getMonthQuestion().getChoices();
 	}
 
-	private static ChoiceQuestion getMonthQuestion()
+	private ChoiceQuestion getMonthQuestion()
 	{
-		return StaticQuestionManager.getQuestion(MonthQuestion.class);
+		return new MonthQuestion(getProjectCalendar());
 	}
 	
 	private void setSelectedMonth(DateUnit dateUnit)
@@ -61,4 +69,11 @@ public class MonthComboBox extends PanelComboBox
 			setSelectedItem(choiceItemToSelect);
 		}
 	}
+	
+	protected ProjectCalendar getProjectCalendar()
+	{
+		return projectCalendar;
+	}
+	
+	private ProjectCalendar projectCalendar;
 }

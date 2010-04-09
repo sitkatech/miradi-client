@@ -20,26 +20,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
-import org.miradi.main.EAM;
+import java.util.Vector;
 
-public class MonthQuestion extends StaticChoiceQuestion
+import org.miradi.objecthelpers.DateUnit;
+import org.miradi.project.ProjectCalendar;
+
+public class MonthQuestion extends AbstractDateUnitQuestion
 {
-	@Override
-	protected ChoiceItem[] createChoices()
+	public MonthQuestion(ProjectCalendar projectCalendarToUse)
 	{
-		return new ChoiceItem[]{
-				new ChoiceItem("1", EAM.text("Month|January")),
-				new ChoiceItem("2", EAM.text("Month|February")),
-				new ChoiceItem("3", EAM.text("Month|March")),
-				new ChoiceItem("4", EAM.text("Month|April")),
-				new ChoiceItem("5", EAM.text("Month|May")),
-				new ChoiceItem("6", EAM.text("Month|June")),
-				new ChoiceItem("7", EAM.text("Month|July")),
-				new ChoiceItem("8", EAM.text("Month|August")),
-				new ChoiceItem("9", EAM.text("Month|September")),
-				new ChoiceItem("10", EAM.text("Month|October")),
-				new ChoiceItem("11", EAM.text("Month|November")),
-				new ChoiceItem("12", EAM.text("Month|December")),
-		};
+		super(projectCalendarToUse);
+	}
+
+	@Override
+	protected Vector<DateUnit> getDateUnits() throws Exception
+	{
+		return getProjectCalendar().getAllProjectMonthDateUnits();
 	}
 }
