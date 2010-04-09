@@ -271,7 +271,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(datesAsCodeList);
 		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
 		{			
-			addDateUnitEffortList(resourceAssignmentRefs.get(index), dateUnitEffortList);
+			setDateUnitEffortList(resourceAssignmentRefs.get(index), dateUnitEffortList);
 		}
 	}
 
@@ -303,13 +303,13 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 		ORef resourceAssignmentRef = createResourceAssignment.getObjectRef();
 		DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(datesAsCodeList);
-		addDateUnitEffortList(resourceAssignmentRef, dateUnitEffortList);
+		setDateUnitEffortList(resourceAssignmentRef, dateUnitEffortList);
 
 		CommandSetObjectData appendResourceAssignment = CommandSetObjectData.createAppendIdCommand(baseObjectForRow, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentRef);
 		getProject().executeCommand(appendResourceAssignment);
 	}
 
-	private void addDateUnitEffortList(ORef resourceAssignmentRef, DateUnitEffortList dateUnitEffortList) throws Exception
+	private void setDateUnitEffortList(ORef resourceAssignmentRef, DateUnitEffortList dateUnitEffortList) throws Exception
 	{
 		CommandSetObjectData addEffortList = new CommandSetObjectData(resourceAssignmentRef, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
 		getProject().executeCommand(addEffortList);
