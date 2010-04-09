@@ -203,7 +203,7 @@ public class DateEditorComponent extends JDateChooser
 		}
 	}
 
-	class MonthChangeListener implements PropertyChangeListener
+	private class MonthChangeListener implements PropertyChangeListener
 	{
 		public void propertyChange(PropertyChangeEvent evt)
 		{
@@ -212,7 +212,7 @@ public class DateEditorComponent extends JDateChooser
 		}
 	}
 	
-	class YearChangeListener implements PropertyChangeListener
+	private class YearChangeListener implements PropertyChangeListener
 	{
 		public void propertyChange(PropertyChangeEvent evt)
 		{
@@ -221,7 +221,7 @@ public class DateEditorComponent extends JDateChooser
 		}
 	}
 	
-	class DateFieldRequestFocusAfterDiactivatedHandler extends WindowAdapter
+	private class DateFieldRequestFocusAfterDiactivatedHandler extends WindowAdapter
 	{
 		@Override
 		public void windowDeactivated(WindowEvent e)
@@ -231,7 +231,7 @@ public class DateEditorComponent extends JDateChooser
 		}
 	}
 		
-	public static class DateTextEditor extends JTextFieldDateEditor
+	private static class DateTextEditor extends JTextFieldDateEditor
 	{
 		public DateTextEditor()
 		{
@@ -291,7 +291,7 @@ public class DateEditorComponent extends JDateChooser
 		}
 	}
 	
-	public class DocumentEventHandler implements DocumentListener
+	private class DocumentEventHandler implements DocumentListener
 	{
 		public void changedUpdate(DocumentEvent arg0)
 		{
