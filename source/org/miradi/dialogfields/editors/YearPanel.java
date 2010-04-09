@@ -47,7 +47,7 @@ public class YearPanel extends OneRowPanel
 	
 	public DateUnit getDateUnit()
 	{
-		return yearChooser.getYear();
+		return yearChooser.getDateUnit();
 	}
 	
 	private YearComboBox yearChooser;
