@@ -39,7 +39,7 @@ abstract public class AbstractDateUnitQuestion extends DynamicChoiceQuestion
 		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
 		for (DateUnit dateUnit : dateUnits)
 		{
-			String label = getProjectCalendar().getShortDateUnitString(dateUnit);
+			String label = getProjectCalendar().getLongDateUnitString(dateUnit);
 			ChoiceItem choiceItem = new ChoiceItem(dateUnit.getDateUnitCode(), label);
 			choices.add(choiceItem);
 		}
