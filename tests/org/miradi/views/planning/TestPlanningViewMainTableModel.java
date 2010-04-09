@@ -50,15 +50,6 @@ public class TestPlanningViewMainTableModel extends TestCaseWithProject
 		getProject().addResourceAssignment(indicatorWithTwoAssignments);
 		getProject().addResourceAssignment(indicatorWithTwoAssignments);
 		assertFalse("can edit indicator with multiple assignments?", isWhenEditable(indicatorWithTwoAssignments));
-
-//FIXME see the FIXME in the PVMTM.isWhenEditable.		
-//		Task activityWithAssignmentWithValue = getProject().createActivity();
-//		getProject().addResourceAssignment(activityWithAssignmentWithValue, 10.0, new DateUnit());
-//		assertFalse("can edit activity with assignment that has values", isWhenEditable(activityWithAssignmentWithValue));
-//
-//		Task activityWithBlankAssignment = getProject().createActivity();
-//		getProject().addResourceAssignment(activityWithBlankAssignment, 0.0, new DateUnit());
-//		assertTrue("can't edit activity with assignment with no values?", isWhenEditable(activityWithBlankAssignment));	
 	}
 	
 	public void testIsWhenEditableWithMultipleResourceAssignmentsWithIdenticalDateUnitEffortLists() throws Exception
