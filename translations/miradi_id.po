@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-09 11:32-0500\n"
+"POT-Creation-Date: 2010-04-09 11:35-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3993,22 +3993,6 @@ msgstr "Danau Air Tawar"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:160
 msgid "Other"
 msgstr "Lainnya"
-
-#: Miradi/source/org/miradi/questions/FiscalYearQuarterQuestion.java:31
-msgid "First Fiscal Quarter"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/FiscalYearQuarterQuestion.java:32
-msgid "Second Fiscal Quarter"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/FiscalYearQuarterQuestion.java:33
-msgid "Third Fiscal Quarter"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/FiscalYearQuarterQuestion.java:34
-msgid "Fourth Fiscal Quarter"
-msgstr ""
 
 #: Miradi/source/org/miradi/questions/StatusQuestion.java:37
 msgid "Poor"
