@@ -20,6 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import org.miradi.project.ProjectCalendar;
+
 abstract public class AbstractDateUnitQuestion extends DynamicChoiceQuestion
 {
+	public AbstractDateUnitQuestion(ProjectCalendar projectCalendarToUse)
+	{
+		projectCalendar = projectCalendarToUse;
+	}
+	
+	protected ProjectCalendar getProjectCalendar()
+	{
+		return projectCalendar;
+	}
+	
+	private ProjectCalendar projectCalendar;
 }
