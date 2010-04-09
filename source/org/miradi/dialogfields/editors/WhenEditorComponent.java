@@ -23,6 +23,7 @@ package org.miradi.dialogfields.editors;
 import java.awt.BorderLayout;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Vector;
 
 import javax.swing.BorderFactory;
 
@@ -48,7 +49,7 @@ public class WhenEditorComponent extends DisposablePanel
 	{
 		setLayout(new BorderLayout());
 
-		String[] choices = new String[]{NONE_ITEM, PROJECT_TOTAL_ITEM, YEAR_ITEM, QUARTER_ITEM, MONTH_ITEM, DAY_ITEM,};
+		String[] choices = createChoices(projectCalendar);
 		dateUnitTypeCombo = new UiComboBox(choices);
 		
 		ORefList resourceAssignmentRefs = baseObjectToUse.getResourceAssignmentRefs();
@@ -85,6 +86,21 @@ public class WhenEditorComponent extends DisposablePanel
 		
 		dateUnitTypeCombo.addItemListener(new ChangeHandler());
 		dateUnitTypeCombo.setSelectedItem(defaultDateUnitType);
+	}
+
+	private String[] createChoices(ProjectCalendar projectCalendar)
+	{
+		Vector<String> choices = new Vector<String>();
+		choices.add(NONE_ITEM);
+		choices.add(PROJECT_TOTAL_ITEM);
+		choices.add(YEAR_ITEM);
+		if (projectCalendar.shouldShowQuarterColumns())
+			choices.add(QUARTER_ITEM);
+		
+		choices.add(MONTH_ITEM);
+		choices.add(DAY_ITEM);
+		
+		return choices.toArray(new String[0]);
 	}
 	
 	private String getDefaultDateUnitType(Project projectToUse, ORefList resourceAssignmentRefs) throws Exception
