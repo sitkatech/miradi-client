@@ -48,12 +48,12 @@ public class DateUnitTypeQuestion extends DynamicChoiceQuestion
 		return choices.toArray(new ChoiceItem[0]);
 	}
 	
-	public static final String NONE_CODE = "None";
-	public static final String PROJECT_TOTAL_CODE = "Project Total";
-	public static final String YEAR_CODE = "Year";
-	public static final String QUARTER_CODE = "Quarter";
-	public static final String MONTH_CODE = "Month";
-	public static final String DAY_CODE = "Day";
+	public static final String NONE_CODE = "NoneCode";
+	public static final String PROJECT_TOTAL_CODE = "ProjectTotalCode";
+	public static final String YEAR_CODE = "YearCode";
+	public static final String QUARTER_CODE = "QuarterCode";
+	public static final String MONTH_CODE = "MonthCode";
+	public static final String DAY_CODE = "DayCode";
 	
 	private ProjectCalendar projectCalendar;
 }
