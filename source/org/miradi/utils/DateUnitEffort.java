@@ -82,8 +82,16 @@ public class DateUnitEffort implements Comparable<DateUnitEffort>
 	}
 	
 	public int compareTo(DateUnitEffort other)
+	{			
+		String thisString = createComparableString(getDateUnit(), getQuantity());
+		String otherString = createComparableString(other.getDateUnit(), other.getQuantity());
+		
+		return thisString.compareToIgnoreCase(otherString);
+	}
+
+	private String createComparableString(DateUnit dateUnit2, double quantity)
 	{
-		return toString().compareToIgnoreCase(other.toString());
+		return dateUnit2.getDateUnitCode() + " " + Double.toString(quantity);
 	}
 	
 	private static final String TAG_DATEUNIT = "DateUnit";
