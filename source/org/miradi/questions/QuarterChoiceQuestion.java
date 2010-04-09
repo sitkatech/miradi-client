@@ -25,7 +25,7 @@ import java.util.Vector;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
 
-public class QuarterChoiceQuestion extends DynamicChoiceQuestion
+public class QuarterChoiceQuestion extends AbstractDateUnitQuestion
 {
 	public QuarterChoiceQuestion(ProjectCalendar projectCalendarToUse)
 	{
