@@ -46,7 +46,7 @@ public class YearComboBox extends PanelComboBox
 		if (dateUnit != null && dateUnit.isYear())
 		{
 			ChoiceQuestion question = createYearQuestion();
-			ChoiceItem choiceItem = question.findChoiceByCode(dateUnit.getYearYearString());
+			ChoiceItem choiceItem = question.findChoiceByCode(dateUnit.getDateUnitCode());
 			setSelectedItem(choiceItem);
 		}
 	}
@@ -54,7 +54,9 @@ public class YearComboBox extends PanelComboBox
 	public int getYear()
 	{
 		ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
-		return Integer.parseInt(selectedItem.getCode());
+		DateUnit selectedCode = new DateUnit(selectedItem.getCode());
+		
+		return selectedCode.getYearYear();
 	}
 
 	private ChoiceItem[] createChoices()
@@ -62,24 +64,16 @@ public class YearComboBox extends PanelComboBox
 		return createYearQuestion().getChoices();
 	}
 	
-	private ChoiceQuestion createYearQuestion()
-	{
-		int startYear = getProjectCalendar().getPlanningStartMultiCalendar().getGregorianYear();
-		int endYear = getProjectCalendar().getPlanningEndMultiCalendar().getGregorianYear();
-		
-		return createYearQuestion(startYear, endYear);
-	}
-
-	protected ChoiceQuestion createYearQuestion(int startYear, int endYear)
+	protected ChoiceQuestion createYearQuestion()
 	{
 		int fiscalYearStartMonth = getProjectCalendar().getFiscalYearFirstMonth();
 		if (fiscalYearStartMonth == 1)
-			return new CalendarYearChoiceQuestion(startYear, endYear);	
+			return new CalendarYearChoiceQuestion(getProjectCalendar());	
 		
-		return new FiscalYearChoiceQuestion(startYear, endYear);
+		return new FiscalYearChoiceQuestion(getProjectCalendar());
 	}
 
-	private ProjectCalendar getProjectCalendar()
+	protected ProjectCalendar getProjectCalendar()
 	{
 		return projectCalendar;
 	}

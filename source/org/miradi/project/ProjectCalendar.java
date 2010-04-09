@@ -352,7 +352,20 @@ public class ProjectCalendar implements CommandExecutedListener
 		
 		return subDateUnits;
 	}
-
+	
+	public Vector<DateUnit> getSafeSubYears()
+	{
+		try
+		{
+			return getSubDateUnits(new DateUnit());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new Vector<DateUnit>();
+		}
+	}
+	
 	private Vector<DateUnit> removeQuarterDateUnits(Vector<DateUnit> superDateUnits)
 	{
 		Vector<DateUnit> withoutQuarters = new Vector<DateUnit>();

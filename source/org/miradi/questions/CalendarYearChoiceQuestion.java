@@ -20,13 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import org.miradi.project.ProjectCalendar;
+
 
 public class CalendarYearChoiceQuestion extends AbstractYearChoiceQuestion
 {
-	public CalendarYearChoiceQuestion(int startYearToUse, int endYearToUse)
+	public CalendarYearChoiceQuestion(ProjectCalendar projectCalendarToUse)
 	{
-		super(startYearToUse, endYearToUse);
-		
+		super(projectCalendarToUse);
 	}
 
 	@Override
