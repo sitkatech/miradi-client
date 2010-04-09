@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-09 15:31-0500\n"
+"POT-Creation-Date: 2010-04-09 15:40-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -4869,7 +4869,7 @@ msgstr ""
 msgid "Quarter Selection: "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:81
+#: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:82
 msgid "Enter As: "
 msgstr ""
 
