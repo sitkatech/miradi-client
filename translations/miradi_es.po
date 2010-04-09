@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-09 11:32-0500\n"
+"POT-Creation-Date: 2010-04-09 11:35-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -4028,22 +4028,6 @@ msgstr "Lagos de agua dulce"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:160
 msgid "Other"
 msgstr "Otro "
-
-#: Miradi/source/org/miradi/questions/FiscalYearQuarterQuestion.java:31
-msgid "First Fiscal Quarter"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/FiscalYearQuarterQuestion.java:32
-msgid "Second Fiscal Quarter"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/FiscalYearQuarterQuestion.java:33
-msgid "Third Fiscal Quarter"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/FiscalYearQuarterQuestion.java:34
-msgid "Fourth Fiscal Quarter"
-msgstr ""
 
 #: Miradi/source/org/miradi/questions/StatusQuestion.java:37
 msgid "Poor"
