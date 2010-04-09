@@ -234,16 +234,27 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		try
 		{
 			clearDateUnitEfforts(baseObjectForRow);
-			if (datesAsCodeList.size() == 2)
-				createResourceAssignment(baseObjectForRow, datesAsCodeList);
-
 			ORefList resourceAssignmentRefs = baseObjectForRow.getResourceAssignmentRefs();
+			if (datesAsCodeList.size() == 2 && resourceAssignmentRefs.isEmpty())
+				createResourceAssignment(baseObjectForRow, datesAsCodeList);
+			
+			if (datesAsCodeList.size() == 2 && resourceAssignmentRefs.hasRefs())
+				updateResourceAssignments(resourceAssignmentRefs, datesAsCodeList);
+			
 			if (datesAsCodeList.isEmpty() && resourceAssignmentRefs.size() == 1)
 				deleteEmptyResourceAssignment(resourceAssignmentRefs.getFirstElement());
 		}
 		finally
 		{
 			getProject().executeEndTransaction();
+		}
+	}
+
+	private void updateResourceAssignments(ORefList resourceAssignmentRefs, CodeList datesAsCodeList) throws Exception
+	{
+		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
+		{			
+			addDateUnitEffortList(resourceAssignmentRefs.get(index), datesAsCodeList);
 		}
 	}
 
@@ -270,17 +281,21 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 	private void createResourceAssignment(BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception
 	{
-		DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(datesAsCodeList);
-
 		CommandCreateObject createResourceAssignment = new CommandCreateObject(ResourceAssignment.getObjectType());
 		getProject().executeCommand(createResourceAssignment);
 
 		ORef resourceAssignmentRef = createResourceAssignment.getObjectRef();
-		CommandSetObjectData addEffortList = new CommandSetObjectData(resourceAssignmentRef, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
-		getProject().executeCommand(addEffortList);
+		addDateUnitEffortList(resourceAssignmentRef, datesAsCodeList);
 
 		CommandSetObjectData appendResourceAssignment = CommandSetObjectData.createAppendIdCommand(baseObjectForRow, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentRef);
 		getProject().executeCommand(appendResourceAssignment);
+	}
+
+	private void addDateUnitEffortList(ORef resourceAssignmentRef, CodeList datesAsCodeList) throws Exception
+	{
+		DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(datesAsCodeList);	
+		CommandSetObjectData addEffortList = new CommandSetObjectData(resourceAssignmentRef, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		getProject().executeCommand(addEffortList);
 	}
 
 	private DateUnitEffortList createDateUnitEffortList(CodeList datesAsCodeList)
