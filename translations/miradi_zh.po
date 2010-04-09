@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-09 15:29-0500\n"
+"POT-Creation-Date: 2010-04-09 15:31-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1653,6 +1653,7 @@ msgstr ""
 "分解成亚任务。在Miradi中，任务是以灰色扁椭圆形来代表的。"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:207
+#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:43
 msgid "Quarter"
 msgstr "季度"
 
@@ -2653,6 +2654,26 @@ msgstr "快速评估"
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:39
 msgid "Intensive Assessment"
 msgstr "周密评估"
+
+#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:39
+msgid "None"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:40
+msgid "Project Total"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:41
+msgid "Year"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:45
+msgid "Month"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:46
+msgid "Day"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/TextBoxZOrderQuestion.java:34
 msgid "Behind"
