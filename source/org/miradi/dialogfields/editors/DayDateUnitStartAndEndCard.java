@@ -27,7 +27,7 @@ import org.miradi.utils.FillerLabel;
 
 public class DayDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 {
-	public DayDateUnitStartAndEndCard(DateUnitRange dateUnitRange)
+	public DayDateUnitStartAndEndCard(StartEndDateUnitProvider dateUnitRange)
 	{
 		startDayPanel = new DayPanel(dateUnitRange.getStartDateUnit(), getStartText());
 		endDayPanel = new DayPanel(dateUnitRange.getEndDateUnit(), getEndText());

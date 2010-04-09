@@ -28,7 +28,7 @@ import org.miradi.utils.FillerLabel;
 
 public class CalendarYearDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 {
-	public CalendarYearDateUnitStartAndEndCard(ProjectCalendar projectCalendar, DateUnitRange dateUnitRange)
+	public CalendarYearDateUnitStartAndEndCard(ProjectCalendar projectCalendar, StartEndDateUnitProvider dateUnitRange)
 	{
 		startYearPanel = new YearPanel(projectCalendar, dateUnitRange.getStartDateUnit(), getStartText());
 		endYearPanel = new YearPanel(projectCalendar, dateUnitRange.getEndDateUnit(), getEndText());
