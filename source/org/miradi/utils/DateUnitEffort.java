@@ -21,7 +21,7 @@ package org.miradi.utils;
 
 import org.miradi.objecthelpers.DateUnit;
 
-public class DateUnitEffort
+public class DateUnitEffort implements Comparable<DateUnitEffort>
 {
 	public DateUnitEffort(DateUnit dateUnitToUse, double unitQuantityToUse)
 	{
@@ -79,6 +79,11 @@ public class DateUnitEffort
 		
 		DateUnitEffort other = (DateUnitEffort) rawOther;
 		return toString().equals(other.toString());
+	}
+	
+	public int compareTo(DateUnitEffort other)
+	{
+		return toString().compareToIgnoreCase(other.toString());
 	}
 	
 	private static final String TAG_DATEUNIT = "DateUnit";
