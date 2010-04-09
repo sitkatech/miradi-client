@@ -66,18 +66,18 @@ public class StartEndDateUnitProvider
 
 	public DateUnit getStartDateUnit()
 	{
-		if (!dateUnits.isEmpty())
-			return dateUnits.get(0);
+		if (dateUnits.isEmpty())
+			return null;
 		
-		return null;
+		return dateUnits.firstElement();
 	}
 
 	public DateUnit getEndDateUnit()
 	{
-		if (dateUnits.size() > 1)
-			return dateUnits.get(1);
+		if (dateUnits.isEmpty())
+			return null;
 		
-		return null;
+		return dateUnits.lastElement();
 	}
 	
 	private Vector<DateUnit> dateUnits;
