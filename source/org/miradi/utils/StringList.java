@@ -173,6 +173,11 @@ public class StringList
 		return size() == 0;
 	}
 	
+	public boolean hasData()
+	{
+		return !isEmpty();
+	}
+	
 	protected String getJsonTag()
 	{
 		return TAG_IDS;

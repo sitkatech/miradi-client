@@ -249,10 +249,10 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		{
 			clearDateUnitEfforts(baseObjectForRow);
 			ORefList resourceAssignmentRefs = baseObjectForRow.getResourceAssignmentRefs();
-			if (datesAsCodeList.size() == 2 && resourceAssignmentRefs.isEmpty())
+			if (datesAsCodeList.hasData() && resourceAssignmentRefs.isEmpty())
 				createResourceAssignment(baseObjectForRow, datesAsCodeList);
 			
-			if (datesAsCodeList.size() == 2 && resourceAssignmentRefs.hasRefs())
+			if (datesAsCodeList.hasData() && resourceAssignmentRefs.hasRefs())
 				updateResourceAssignments(resourceAssignmentRefs, datesAsCodeList);
 			
 			if (datesAsCodeList.isEmpty() && resourceAssignmentRefs.size() == 1)
