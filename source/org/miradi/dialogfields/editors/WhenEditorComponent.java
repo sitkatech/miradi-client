@@ -57,7 +57,7 @@ public class WhenEditorComponent extends DisposablePanel
 		String singleDateUnitTypeCode = getDefaultDateUnitTypeCode(baseObjectToUse.getProject(), resourceAssignmentRefs);
 		
 		Vector<DateUnit> dateUnits = new Vector<DateUnit>();
-		if (!singleDateUnitTypeCode.equals(DateUnitTypeQuestion.NONE_ITEM) && resourceAssignmentRefs.hasRefs())
+		if (!singleDateUnitTypeCode.equals(DateUnitTypeQuestion.NONE_CODE) && resourceAssignmentRefs.hasRefs())
 		{
 			ORef resourceAssignmentRef = resourceAssignmentRefs.getFirstElement();
 			ResourceAssignment resourceAssignment = ResourceAssignment.find(baseObjectToUse.getProject(), resourceAssignmentRef);
@@ -91,32 +91,32 @@ public class WhenEditorComponent extends DisposablePanel
 	private String getDefaultDateUnitTypeCode(Project projectToUse, ORefList resourceAssignmentRefs) throws Exception
 	{
 		if (resourceAssignmentRefs.isEmpty())
-			return DateUnitTypeQuestion.NONE_ITEM;
+			return DateUnitTypeQuestion.NONE_CODE;
 		
 		ORef resourceAssignmentRef = resourceAssignmentRefs.getFirstElement();
 		ResourceAssignment resourceAssignment = ResourceAssignment.find(projectToUse, resourceAssignmentRef);
 		DateUnitEffortList dateUnitEffortList = resourceAssignment.getDateUnitEffortList();
 		if (dateUnitEffortList.size() == 0)
-			return DateUnitTypeQuestion.NONE_ITEM;
+			return DateUnitTypeQuestion.NONE_CODE;
 		
 		for (int index = 0; index < dateUnitEffortList.size(); ++index)
 		{
 			DateUnitEffort dateUnitEffort = dateUnitEffortList.getDateUnitEffort(index);
 			DateUnit dateUnit = dateUnitEffort.getDateUnit(); 
 			if (dateUnit.isDay())
-				return DateUnitTypeQuestion.DAY_ITEM;
+				return DateUnitTypeQuestion.DAY_CODE;
 			
 			if (dateUnit.isMonth())
-				return DateUnitTypeQuestion.MONTH_ITEM;
+				return DateUnitTypeQuestion.MONTH_CODE;
 			
 			if (dateUnit.isQuarter())
-				return DateUnitTypeQuestion.QUARTER_ITEM;
+				return DateUnitTypeQuestion.QUARTER_CODE;
 			
 			if (dateUnit.isYear())
-				return DateUnitTypeQuestion.YEAR_ITEM;
+				return DateUnitTypeQuestion.YEAR_CODE;
 			
 			if (dateUnit.isProjectTotal())
-				return DateUnitTypeQuestion.PROJECT_TOTAL_ITEM;
+				return DateUnitTypeQuestion.PROJECT_TOTAL_CODE;
 		}
 		
 		return null;

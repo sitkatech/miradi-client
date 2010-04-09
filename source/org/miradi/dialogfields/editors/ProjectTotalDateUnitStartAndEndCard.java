@@ -40,6 +40,6 @@ public class ProjectTotalDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	@Override
 	public String getPanelDescription()
 	{
-		return DateUnitTypeQuestion.PROJECT_TOTAL_ITEM;
+		return DateUnitTypeQuestion.PROJECT_TOTAL_CODE;
 	}
 }

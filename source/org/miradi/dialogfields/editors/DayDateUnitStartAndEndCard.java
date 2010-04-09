@@ -54,7 +54,7 @@ public class DayDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	@Override
 	public String getPanelDescription()
 	{
-		return DateUnitTypeQuestion.DAY_ITEM;
+		return DateUnitTypeQuestion.DAY_CODE;
 	}
 	
 	private DayPanel startDayPanel;

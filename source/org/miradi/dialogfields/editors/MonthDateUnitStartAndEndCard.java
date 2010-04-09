@@ -55,7 +55,7 @@ public class MonthDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	@Override
 	public String getPanelDescription()
 	{
-		return DateUnitTypeQuestion.MONTH_ITEM;
+		return DateUnitTypeQuestion.MONTH_CODE;
 	}
 	
 	private MonthPanel startMonthPanel;
