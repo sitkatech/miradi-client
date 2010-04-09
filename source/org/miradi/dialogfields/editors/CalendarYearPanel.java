@@ -29,10 +29,4 @@ public class CalendarYearPanel extends YearPanel
 	{
 		super(projectCalendar, dateUnit);
 	}
-	
-	@Override
-	protected YearComboBox createYearComboBox(ProjectCalendar projectCalendar, DateUnit dateUnit)
-	{
-		return new CalendarYearComboBox(projectCalendar, dateUnit);
-	}
 }
