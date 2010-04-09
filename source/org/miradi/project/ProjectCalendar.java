@@ -51,6 +51,26 @@ public class ProjectCalendar implements CommandExecutedListener
 	{
 		dateRanges = null;
 	}
+	
+	public String getLongDateUnitString(DateUnit dateUnit)
+	{
+		if (dateUnit.isProjectTotal())
+			return EAM.text("Total");
+		
+		if (dateUnit.isYear())
+			return getYearString(dateUnit, getFiscalYearFirstMonth());
+		
+		if (dateUnit.isQuarter())
+			return getLongQuarterString(dateUnit, getFiscalYearFirstMonth());
+
+		if (dateUnit.isMonth())
+			return getLongMonthString(dateUnit);
+		
+		if (dateUnit.isDay())
+			return Integer.toString(dateUnit.getDay());
+		
+		throw new RuntimeException("DateUnit could not be converted to long string. DateUnit = " + dateUnit + ".  Fiscal Year First Month = " + getFiscalYearFirstMonth());
+	}
 
 	public String getShortDateUnitString(DateUnit dateUnit)
 	{
@@ -209,6 +229,21 @@ public class ProjectCalendar implements CommandExecutedListener
 			quarterlyPrefixString = getFiscalQuarterlyPrefixString();
 		
 		return quarterlyPrefixString + fiscalYearQuarter;
+	}
+	
+	private static String getLongQuarterString(DateUnit dateUnit, int fiscalYearFirstMonth)
+	{
+		return createWithYear(dateUnit, getQuarterString(dateUnit, fiscalYearFirstMonth));
+	}
+	
+	private static String getLongMonthString(DateUnit dateUnit)
+	{
+		return createWithYear(dateUnit, getMonthString(dateUnit));
+	}
+	
+	private static String createWithYear(DateUnit dateUnit, String string)
+	{
+		return dateUnit.getYear() + " - " + string;
 	}
 
 	private static String getYearString(DateUnit dateUnit, int fiscalYearFirstMonth)
