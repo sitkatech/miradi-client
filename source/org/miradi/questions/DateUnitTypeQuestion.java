@@ -22,6 +22,7 @@ package org.miradi.questions;
 
 import java.util.Vector;
 
+import org.miradi.main.EAM;
 import org.miradi.project.ProjectCalendar;
 
 public class DateUnitTypeQuestion extends DynamicChoiceQuestion
@@ -35,14 +36,14 @@ public class DateUnitTypeQuestion extends DynamicChoiceQuestion
 	public ChoiceItem[] getChoices()
 	{
 		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
-		choices.add(new ChoiceItem(DateUnitTypeQuestion.NONE_CODE, DateUnitTypeQuestion.NONE_CODE));
-		choices.add(new ChoiceItem(DateUnitTypeQuestion.PROJECT_TOTAL_CODE, DateUnitTypeQuestion.PROJECT_TOTAL_CODE));
-		choices.add(new ChoiceItem(DateUnitTypeQuestion.YEAR_CODE, DateUnitTypeQuestion.YEAR_CODE));
+		choices.add(new ChoiceItem(DateUnitTypeQuestion.NONE_CODE, EAM.text("None")));
+		choices.add(new ChoiceItem(DateUnitTypeQuestion.PROJECT_TOTAL_CODE, EAM.text("Project Total")));
+		choices.add(new ChoiceItem(DateUnitTypeQuestion.YEAR_CODE, EAM.text("Year")));
 		if (projectCalendar.shouldShowQuarterColumns())
-			choices.add(new ChoiceItem(DateUnitTypeQuestion.QUARTER_CODE, DateUnitTypeQuestion.QUARTER_CODE));
+			choices.add(new ChoiceItem(DateUnitTypeQuestion.QUARTER_CODE, EAM.text("Quarter")));
 		
-		choices.add(new ChoiceItem(DateUnitTypeQuestion.MONTH_CODE, DateUnitTypeQuestion.MONTH_CODE));
-		choices.add(new ChoiceItem(DateUnitTypeQuestion.DAY_CODE, DateUnitTypeQuestion.DAY_CODE));
+		choices.add(new ChoiceItem(DateUnitTypeQuestion.MONTH_CODE, EAM.text("Month")));
+		choices.add(new ChoiceItem(DateUnitTypeQuestion.DAY_CODE, EAM.text("Day")));
 		
 		return choices.toArray(new ChoiceItem[0]);
 	}
