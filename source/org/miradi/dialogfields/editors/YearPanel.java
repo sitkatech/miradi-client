@@ -36,10 +36,15 @@ public class YearPanel extends OneRowPanel
 	public YearPanel(ProjectCalendar projectCalendar, DateUnit dateUnit, String panelTitle)
 	{
 		fiscalYearStartMonth = projectCalendar.getFiscalYearFirstMonth();
-		yearChooser = new YearComboBox(projectCalendar, dateUnit);
+		yearChooser = createYearComboBox(projectCalendar, dateUnit);
 		
 		add(new PanelTitleLabel(panelTitle));
 		add(yearChooser);
+	}
+
+	protected YearComboBox createYearComboBox(ProjectCalendar projectCalendar, DateUnit dateUnit)
+	{
+		return new YearComboBox(projectCalendar, dateUnit);
 	}
 	
 	public int getYear()
