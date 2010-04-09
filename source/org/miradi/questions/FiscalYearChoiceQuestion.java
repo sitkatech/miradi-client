@@ -23,7 +23,7 @@ package org.miradi.questions;
 import org.miradi.project.ProjectCalendar;
 
 
-public class FiscalYearChoiceQuestion extends AbstractYearChoiceQuestion
+public class FiscalYearChoiceQuestion extends YearChoiceQuestion
 {
 	public FiscalYearChoiceQuestion(ProjectCalendar projectCalendarToUse)
 	{
