@@ -39,18 +39,15 @@ public class MonthComboBox extends DateUnitComboBox
 		return createQuestion().getChoices();
 	}
 
-	private ChoiceQuestion createQuestion()
+	@Override
+	protected ChoiceQuestion createQuestion()
 	{
 		return new MonthQuestion(getProjectCalendar());
 	}
 	
 	@Override
-	protected void setSelectedDateUnit(DateUnit dateUnit)
+	protected boolean isType(DateUnit dateUnit)
 	{
-		if (dateUnit != null && dateUnit.isMonth())
-		{
-			ChoiceItem choiceItemToSelect = createQuestion().findChoiceByCode(dateUnit.getDateUnitCode());
-			setSelectedItem(choiceItemToSelect);
-		}
+		return dateUnit.isMonth();
 	}	
 }
