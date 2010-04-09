@@ -42,10 +42,10 @@ public class YearPanel extends OneRowPanel
 
 	public int getYear()
 	{
-		return getDate().getYearYear();
+		return getDateUnit().getYearYear();
 	}
 	
-	public DateUnit getDate()
+	public DateUnit getDateUnit()
 	{
 		return yearChooser.getYear();
 	}

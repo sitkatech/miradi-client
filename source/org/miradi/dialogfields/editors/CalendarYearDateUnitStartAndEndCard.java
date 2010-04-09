@@ -42,13 +42,13 @@ public class CalendarYearDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	@Override
 	protected DateUnit getEndDate()
 	{
-		return endYearPanel.getDate();
+		return endYearPanel.getDateUnit();
 	}
 
 	@Override
 	protected DateUnit getStartDate()
 	{
-		return startYearPanel.getDate();
+		return startYearPanel.getDateUnit();
 	}
 
 	@Override
