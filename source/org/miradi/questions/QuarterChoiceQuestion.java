@@ -20,18 +20,49 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
-import org.miradi.main.EAM;
+import java.util.Vector;
 
-public class QuarterChoiceQuestion extends StaticChoiceQuestion
+import org.miradi.objecthelpers.DateUnit;
+import org.miradi.project.ProjectCalendar;
+
+public class QuarterChoiceQuestion extends DynamicChoiceQuestion
 {
-	@Override
-	public ChoiceItem[] createChoices()
+	public QuarterChoiceQuestion(ProjectCalendar projectCalendarToUse)
 	{
-		return new ChoiceItem[]{
-				new ChoiceItem("1", EAM.text("First Quarter")),
-				new ChoiceItem("2", EAM.text("Second Quarter")),
-				new ChoiceItem("3", EAM.text("Third Quarter")),
-				new ChoiceItem("4", EAM.text("Fourth Quarter")),
-		};
+		projectCalendar = projectCalendarToUse;
 	}
+	
+	@Override
+	public ChoiceItem[] getChoices()
+	{
+		Vector<DateUnit> subDateUnits = getAllProjectQuarterDateUnits();
+		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
+		for (DateUnit subDateUnit : subDateUnits)
+		{
+			String label = getProjectCalendar().getShortDateUnitString(subDateUnit);
+			ChoiceItem choiceItem = new ChoiceItem(subDateUnit.getDateUnitCode(), label);
+			choices.add(choiceItem);
+		}
+		
+		return choices.toArray(new ChoiceItem[0]);
+	}
+	
+	private Vector<DateUnit> getAllProjectQuarterDateUnits()
+	{
+		try
+		{
+			return getProjectCalendar().getAllProjectQuarterDateUnits();
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException(e);
+		}
+	}
+
+	private ProjectCalendar getProjectCalendar()
+	{
+		return projectCalendar;
+	}
+	
+	private ProjectCalendar projectCalendar;
 }

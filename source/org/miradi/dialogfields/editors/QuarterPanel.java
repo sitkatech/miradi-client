@@ -29,27 +29,16 @@ public class QuarterPanel extends OneRowPanel
 {
 	public QuarterPanel(ProjectCalendar projectCalendar, DateUnit dateUnit, String title)
 	{		
-		quarterChooser = new QuarterChooser(projectCalendar.getFiscalYearFirstMonth(), dateUnit);
+		quarterChooser = new QuarterChooser(projectCalendar, dateUnit);
 
-		yearPanel = new YearPanel(projectCalendar, convertToSuperYearDateUnit(projectCalendar.getFiscalYearFirstMonth(), dateUnit), title);
-		add(yearPanel);
 		add(quarterChooser);
 	}
 
-	private DateUnit convertToSuperYearDateUnit(int fiscalYearFirstMonth, DateUnit dateUnit)
-	{
-		if (dateUnit != null && dateUnit.isQuarter())
-			return dateUnit.getSuperDateUnit(fiscalYearFirstMonth);
-		
-		return dateUnit;
-	}
-	
 	public DateUnit getDateUnit()
 	{
 		ChoiceItem choiceItem = (ChoiceItem) quarterChooser.getSelectedItem();
-		return DateUnit.createQuarterDateUnit(yearPanel.getYear(), Integer.parseInt(choiceItem.getCode()));
+		return new DateUnit(choiceItem.getCode());
 	}
 	
 	private QuarterChooser quarterChooser;
-	private YearPanel yearPanel;
 }
