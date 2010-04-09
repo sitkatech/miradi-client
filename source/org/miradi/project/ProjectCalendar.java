@@ -407,7 +407,12 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	private boolean shouldHideQuarterColumns()
 	{
-		return !getProject().getMetadata().areQuarterColumnsVisible();
+		return !shouldShowQuarterColumns();
+	}
+
+	public boolean shouldShowQuarterColumns()
+	{
+		return getProject().getMetadata().areQuarterColumnsVisible();
 	}
 
 	public Vector<DateUnit> getProjectYearsDateUnits(DateRange dateRange)
