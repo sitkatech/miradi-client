@@ -361,8 +361,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		}
 		catch (Exception e)
 		{
-			EAM.logException(e);
-			return new Vector<DateUnit>();
+			throw new RuntimeException(e);
 		}
 	}
 	
