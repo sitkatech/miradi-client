@@ -39,6 +39,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
+import org.miradi.questions.DateUnitTypeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
@@ -49,14 +50,14 @@ public class WhenEditorComponent extends DisposablePanel
 	{
 		setLayout(new BorderLayout());
 
-		String[] choices = createChoices(projectCalendar);
-		dateUnitTypeCombo = new UiComboBox(choices);
+		DateUnitTypeQuestion dateUnitTypeQuestion = new DateUnitTypeQuestion(projectCalendar);
+		dateUnitTypeCombo = new UiComboBox(dateUnitTypeQuestion.getChoices());
 		
 		ORefList resourceAssignmentRefs = baseObjectToUse.getResourceAssignmentRefs();
-		String singleDateUnitType = getDefaultDateUnitType(baseObjectToUse.getProject(), resourceAssignmentRefs);
+		String singleDateUnitTypeCode = getDefaultDateUnitTypeCode(baseObjectToUse.getProject(), resourceAssignmentRefs);
 		
 		Vector<DateUnit> dateUnits = new Vector<DateUnit>();
-		if (!singleDateUnitType.equals(NONE_ITEM) && resourceAssignmentRefs.hasRefs())
+		if (!singleDateUnitTypeCode.equals(DateUnitTypeQuestion.NONE_ITEM) && resourceAssignmentRefs.hasRefs())
 		{
 			ORef resourceAssignmentRef = resourceAssignmentRefs.getFirstElement();
 			ResourceAssignment resourceAssignment = ResourceAssignment.find(baseObjectToUse.getProject(), resourceAssignmentRef);
@@ -84,53 +85,38 @@ public class WhenEditorComponent extends DisposablePanel
 		add(lowerPanel, BorderLayout.PAGE_END);
 		
 		dateUnitTypeCombo.addItemListener(new ChangeHandler());
-		dateUnitTypeCombo.setSelectedItem(singleDateUnitType);
+		dateUnitTypeCombo.setSelectedItem(dateUnitTypeQuestion.findChoiceByCode(singleDateUnitTypeCode));
 	}
 
-	private String[] createChoices(ProjectCalendar projectCalendar)
-	{
-		Vector<String> choices = new Vector<String>();
-		choices.add(NONE_ITEM);
-		choices.add(PROJECT_TOTAL_ITEM);
-		choices.add(YEAR_ITEM);
-		if (projectCalendar.shouldShowQuarterColumns())
-			choices.add(QUARTER_ITEM);
-		
-		choices.add(MONTH_ITEM);
-		choices.add(DAY_ITEM);
-		
-		return choices.toArray(new String[0]);
-	}
-	
-	private String getDefaultDateUnitType(Project projectToUse, ORefList resourceAssignmentRefs) throws Exception
+	private String getDefaultDateUnitTypeCode(Project projectToUse, ORefList resourceAssignmentRefs) throws Exception
 	{
 		if (resourceAssignmentRefs.isEmpty())
-			return NONE_ITEM;
+			return DateUnitTypeQuestion.NONE_ITEM;
 		
 		ORef resourceAssignmentRef = resourceAssignmentRefs.getFirstElement();
 		ResourceAssignment resourceAssignment = ResourceAssignment.find(projectToUse, resourceAssignmentRef);
 		DateUnitEffortList dateUnitEffortList = resourceAssignment.getDateUnitEffortList();
 		if (dateUnitEffortList.size() == 0)
-			return NONE_ITEM;
+			return DateUnitTypeQuestion.NONE_ITEM;
 		
 		for (int index = 0; index < dateUnitEffortList.size(); ++index)
 		{
 			DateUnitEffort dateUnitEffort = dateUnitEffortList.getDateUnitEffort(index);
 			DateUnit dateUnit = dateUnitEffort.getDateUnit(); 
 			if (dateUnit.isDay())
-				return DAY_ITEM;
+				return DateUnitTypeQuestion.DAY_ITEM;
 			
 			if (dateUnit.isMonth())
-				return MONTH_ITEM;
+				return DateUnitTypeQuestion.MONTH_ITEM;
 			
 			if (dateUnit.isQuarter())
-				return QUARTER_ITEM;
+				return DateUnitTypeQuestion.QUARTER_ITEM;
 			
 			if (dateUnit.isYear())
-				return YEAR_ITEM;
+				return DateUnitTypeQuestion.YEAR_ITEM;
 			
 			if (dateUnit.isProjectTotal())
-				return PROJECT_TOTAL_ITEM;
+				return DateUnitTypeQuestion.PROJECT_TOTAL_ITEM;
 		}
 		
 		return null;
@@ -168,11 +154,4 @@ public class WhenEditorComponent extends DisposablePanel
 	
 	private WhenEditorLowerPanel lowerPanel;
 	private UiComboBox dateUnitTypeCombo;
-	
-	public static final String NONE_ITEM = "None";
-	public static final String PROJECT_TOTAL_ITEM = "Project Total";
-	public static final String YEAR_ITEM = "Year";
-	public static final String QUARTER_ITEM = "Quarter";
-	public static final String MONTH_ITEM = "Month";
-	public static final String DAY_ITEM = "Day";
 }
