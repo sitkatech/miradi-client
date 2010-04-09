@@ -353,16 +353,9 @@ public class ProjectCalendar implements CommandExecutedListener
 		return subDateUnits;
 	}
 	
-	public Vector<DateUnit> getSubYears()
+	public Vector<DateUnit> getSubYears() throws Exception
 	{
-		try
-		{
-			return getSubDateUnits(new DateUnit());
-		}
-		catch (Exception e)
-		{
-			throw new RuntimeException(e);
-		}
+		return getSubDateUnits(new DateUnit());
 	}
 	
 	public Vector<DateUnit> getAllProjectQuarterDateUnits() throws Exception
