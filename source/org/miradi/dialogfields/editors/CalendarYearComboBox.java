@@ -22,8 +22,8 @@ package org.miradi.dialogfields.editors;
 
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
-import org.miradi.questions.CalendarYearChoiceQuestion;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.YearChoiceQuestion;
 
 public class CalendarYearComboBox extends YearComboBox
 {
@@ -35,6 +35,6 @@ public class CalendarYearComboBox extends YearComboBox
 	@Override
 	protected ChoiceQuestion createYearQuestion()
 	{
-		return new CalendarYearChoiceQuestion(getProjectCalendar());
+		return new YearChoiceQuestion(getProjectCalendar());
 	}
 }
