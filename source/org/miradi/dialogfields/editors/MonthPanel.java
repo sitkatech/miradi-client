@@ -30,7 +30,7 @@ public class MonthPanel extends OneRowPanel
 {
 	public MonthPanel(ProjectCalendar projectCalendar, DateUnit dateUnit, String title)
 	{
-		yearChooser = new YearPanel(projectCalendar, getSuperYear(projectCalendar.getFiscalYearFirstMonth(), dateUnit));
+		yearChooser = new CalendarYearPanel(projectCalendar, getSuperYear(projectCalendar.getFiscalYearFirstMonth(), dateUnit));
 		monthChooser = new MonthComboBox(dateUnit);
 
 		add(new PanelTitleLabel(title));
