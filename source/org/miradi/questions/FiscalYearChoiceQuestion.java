@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
-import org.miradi.main.EAM;
 import org.miradi.project.ProjectCalendar;
 
 
@@ -29,11 +28,5 @@ public class FiscalYearChoiceQuestion extends AbstractYearChoiceQuestion
 	public FiscalYearChoiceQuestion(ProjectCalendar projectCalendarToUse)
 	{
 		super(projectCalendarToUse);
-	}
-
-	@Override
-	protected String createYearLabel(int year)
-	{
-		return EAM.substitute(EAM.text("FY %s"), Integer.toString(year));
 	}
 }
