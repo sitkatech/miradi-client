@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
@@ -76,6 +77,7 @@ public class DateUnitEffortList
 		if(size() == 0)
 			return "";
 		
+		Collections.sort(data);
 		return toJson().toString();
 	}
 	
@@ -102,7 +104,7 @@ public class DateUnitEffortList
 	@Override
 	public int hashCode()
 	{
-		return data.hashCode();
+		return toString().hashCode();
 	}
 			
 	@Override
