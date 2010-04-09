@@ -42,13 +42,13 @@ public class MonthDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	@Override
 	protected DateUnit getStartDate()
 	{
-		return startMonthPanel.getDate();
+		return startMonthPanel.getDateUnit();
 	}
 	
 	@Override
 	protected DateUnit getEndDate()
 	{
-		return endMonthPanel.getDate();
+		return endMonthPanel.getDateUnit();
 	}
 
 	@Override
