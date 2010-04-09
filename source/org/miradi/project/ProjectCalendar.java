@@ -353,7 +353,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		return subDateUnits;
 	}
 	
-	public Vector<DateUnit> getSafeSubYears()
+	public Vector<DateUnit> getSubYears()
 	{
 		try
 		{
