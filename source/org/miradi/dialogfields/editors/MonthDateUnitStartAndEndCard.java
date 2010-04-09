@@ -28,7 +28,7 @@ import org.miradi.utils.FillerLabel;
 
 public class MonthDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 {
-	public MonthDateUnitStartAndEndCard(ProjectCalendar projectCalendar, DateUnitRange dateUnitRange)
+	public MonthDateUnitStartAndEndCard(ProjectCalendar projectCalendar, StartEndDateUnitProvider dateUnitRange)
 	{
 		startMonthPanel = new MonthPanel(projectCalendar, dateUnitRange.getStartDateUnit(), getStartText());
 		endMonthPanel = new MonthPanel(projectCalendar, dateUnitRange.getEndDateUnit(), getEndText());

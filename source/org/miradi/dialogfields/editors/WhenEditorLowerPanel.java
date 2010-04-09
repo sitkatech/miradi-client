@@ -29,7 +29,7 @@ import org.miradi.project.ProjectCalendar;
 
 public class WhenEditorLowerPanel extends JPanel
 {
-	public WhenEditorLowerPanel(ProjectCalendar projectCalendar, DateUnitRange dateUnitRange)
+	public WhenEditorLowerPanel(ProjectCalendar projectCalendar, StartEndDateUnitProvider dateUnitRange)
 	{
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);

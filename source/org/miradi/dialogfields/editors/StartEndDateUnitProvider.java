@@ -25,9 +25,9 @@ import java.util.Vector;
 
 import org.miradi.objecthelpers.DateUnit;
 
-public class DateUnitRange
+public class StartEndDateUnitProvider
 {
-	public DateUnitRange(Vector<DateUnit> dateUnitsToUse) throws Exception
+	public StartEndDateUnitProvider(Vector<DateUnit> dateUnitsToUse) throws Exception
 	{
 		dateUnits = dateUnitsToUse;
 		
