@@ -29,7 +29,7 @@ public class YearChoiceQuestion extends AbstractDateUnitQuestion
 {
 	public YearChoiceQuestion(ProjectCalendar projectCalendarToUse)
 	{
-		projectCalendar = projectCalendarToUse;
+		super(projectCalendarToUse);
 	}
 	
 	@Override
@@ -58,11 +58,4 @@ public class YearChoiceQuestion extends AbstractDateUnitQuestion
 			throw new RuntimeException(e);
 		}
 	}
-
-	private ProjectCalendar getProjectCalendar()
-	{
-		return projectCalendar;
-	}
-	
-	private ProjectCalendar projectCalendar;
 }
