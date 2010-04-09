@@ -60,6 +60,26 @@ public class TestPlanningViewMainTableModel extends TestCaseWithProject
 //		getProject().addResourceAssignment(activityWithBlankAssignment, 0.0, new DateUnit());
 //		assertTrue("can't edit activity with assignment with no values?", isWhenEditable(activityWithBlankAssignment));	
 	}
+	
+	public void testIsWhenEditableWithMultipleResourceAssignmentsWithIdenticalDateUnitEffortLists() throws Exception
+	{
+		Task activity = getProject().createActivity();
+		DateUnitEffortList list = createSampleDateUnitEffortList(2, 2002, 0.0);
+		getProject().addResourceAssignment(activity, list);
+		getProject().addResourceAssignment(activity, list);
+		assertTrue("cannot edit activity with multiple assignments with identical DateUnitEffortLists?", isWhenEditable(activity));		
+	}
+	
+	public void testIsWhenEditableWithMultipleResourceAssignmentsWithDifferentDateUnitEffortLists() throws Exception
+	{
+		Task activity = getProject().createActivity();
+		DateUnitEffortList list1 = createSampleDateUnitEffortList(3, 2002, 0.0);
+		getProject().addResourceAssignment(activity, list1);
+
+		DateUnitEffortList list2 = createSampleDateUnitEffortList(3, 2002, 0.0);
+		getProject().addResourceAssignment(activity, list2);
+		assertFalse("can edit activity with multiple assignments with different DateUnitEffortLists?", isWhenEditable(activity));		
+	}
 
 	public void testIsWhenEditableWithThreeDateUnitEfforts() throws Exception
 	{

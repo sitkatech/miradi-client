@@ -21,6 +21,7 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.Color;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
@@ -158,7 +159,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (baseObject.getResourceAssignmentRefs().isEmpty())
 				return true;
 			
-			if (baseObject.getResourceAssignmentRefs().size() > 1)
+			if (hasDifferentDateUnitEffortLists(baseObject))
 				return false;
 
 			if (hasUsableNumberOfDateUnitEfforts(baseObject))
@@ -190,6 +191,19 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 	}
 	
+	private static boolean hasDifferentDateUnitEffortLists(BaseObject baseObject) throws Exception
+	{
+		ORefList resourceAssignmentRefs = baseObject.getResourceAssignmentRefs();
+		HashSet<DateUnitEffortList> dateUnitEffortLists = new HashSet<DateUnitEffortList>();
+		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
+		{			
+			ResourceAssignment resourceAssignment = ResourceAssignment.find(baseObject.getProject(), resourceAssignmentRefs.get(index));
+			dateUnitEffortLists.add(resourceAssignment.getDateUnitEffortList());
+		}	
+		
+		return dateUnitEffortLists.size() > 1;
+	}
+
 	private static boolean hasUsableNumberOfDateUnitEfforts(BaseObject baseObject) throws Exception
 	{
 		ORefList assignmentRefs = baseObject.getResourceAssignmentRefs();
