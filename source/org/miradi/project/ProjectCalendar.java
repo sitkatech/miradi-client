@@ -353,7 +353,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		return subDateUnits;
 	}
 	
-	public Vector<DateUnit> getSubYears() throws Exception
+	public Vector<DateUnit> getAllProjectYearDateUnits() throws Exception
 	{
 		return getSubDateUnits(new DateUnit());
 	}
@@ -361,7 +361,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	public Vector<DateUnit> getAllProjectQuarterDateUnits() throws Exception
 	{
 		Vector<DateUnit> allProjectQuarterDateUnits = new Vector<DateUnit>();
-		Vector<DateUnit> allProjectYearDateUnits = getSubYears();
+		Vector<DateUnit> allProjectYearDateUnits = getAllProjectYearDateUnits();
 		for(DateUnit yearDateUnit : allProjectYearDateUnits)
 		{
 			allProjectQuarterDateUnits.addAll(getSubDateUnits(yearDateUnit));
