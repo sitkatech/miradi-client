@@ -51,7 +51,7 @@ public class YearChoiceQuestion extends DynamicChoiceQuestion
 	{
 		try
 		{
-			return getProjectCalendar().getSubYears();
+			return getProjectCalendar().getAllProjectYearDateUnits();
 		}
 		catch (Exception e)
 		{
