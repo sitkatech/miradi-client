@@ -26,6 +26,7 @@ import org.miradi.dialogs.fieldComponents.PanelComboBox;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 
 abstract public class DateUnitComboBox extends PanelComboBox
 {
@@ -52,10 +53,21 @@ abstract public class DateUnitComboBox extends PanelComboBox
 	{
 		return projectCalendar;
 	}
+
+	public void setSelectedDateUnit(DateUnit dateUnit)
+	{
+		if (dateUnit != null && isType(dateUnit))
+		{
+			ChoiceItem choiceItem = createQuestion().findChoiceByCode(dateUnit.getDateUnitCode());
+			setSelectedItem(choiceItem);
+		}
+	}
 	
 	abstract protected ChoiceItem[] createChoices();
 	
-	abstract protected void setSelectedDateUnit(DateUnit dateUnit);
+	abstract protected ChoiceQuestion createQuestion();
+	
+	abstract protected boolean isType(DateUnit dateUnit);
 	
 	private ProjectCalendar projectCalendar;
 }

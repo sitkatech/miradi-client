@@ -39,18 +39,15 @@ public class YearComboBox extends DateUnitComboBox
 		return createQuestion().getChoices();
 	}
 	
-	private ChoiceQuestion createQuestion()
+	@Override
+	protected ChoiceQuestion createQuestion()
 	{
 		return new YearChoiceQuestion(getProjectCalendar());
 	}
 	
 	@Override
-	public void setSelectedDateUnit(DateUnit dateUnit)
+	protected boolean isType(DateUnit dateUnit)
 	{
-		if (dateUnit != null && dateUnit.isYear())
-		{
-			ChoiceItem choiceItem = createQuestion().findChoiceByCode(dateUnit.getDateUnitCode());
-			setSelectedItem(choiceItem);
-		}
+		return dateUnit.isYear();
 	}
 }
