@@ -35,9 +35,9 @@ public class YearChoiceQuestion extends DynamicChoiceQuestion
 	@Override
 	public ChoiceItem[] getChoices()
 	{
-		Vector<DateUnit> yearDateUnits = getAllProjectYearDateUnits();
+		Vector<DateUnit> allProjectYearDateUnits = getAllProjectYearDateUnits();
 		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
-		for (DateUnit yearDateUnit : yearDateUnits)
+		for (DateUnit yearDateUnit : allProjectYearDateUnits)
 		{
 			String yearLabel = getProjectCalendar().getShortDateUnitString(yearDateUnit);
 			ChoiceItem yearChoiceItem = new ChoiceItem(yearDateUnit.getDateUnitCode(), yearLabel);
