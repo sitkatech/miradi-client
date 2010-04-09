@@ -23,7 +23,6 @@ package org.miradi.dialogfields.editors;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
-import org.miradi.questions.ChoiceItem;
 
 public class QuarterPanel extends OneRowPanel
 {
@@ -36,8 +35,7 @@ public class QuarterPanel extends OneRowPanel
 
 	public DateUnit getDateUnit()
 	{
-		ChoiceItem choiceItem = (ChoiceItem) quarterChooser.getSelectedItem();
-		return new DateUnit(choiceItem.getCode());
+		return quarterChooser.getDateUnit();
 	}
 	
 	private QuarterChooser quarterChooser;
