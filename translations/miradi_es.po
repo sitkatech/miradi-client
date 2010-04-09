@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-09 11:35-0500\n"
+"POT-Creation-Date: 2010-04-09 12:26-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -2827,54 +2827,6 @@ msgstr "Muy alto"
 
 #: Miradi/source/org/miradi/questions/ScopeBoxTypeQuestion.java:58
 msgid "Biodiversity Target"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/MonthQuestion.java:31
-msgid "Month|January"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/MonthQuestion.java:32
-msgid "Month|February"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/MonthQuestion.java:33
-msgid "Month|March"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/MonthQuestion.java:34
-msgid "Month|April"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/MonthQuestion.java:35
-msgid "Month|May"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/MonthQuestion.java:36
-msgid "Month|June"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/MonthQuestion.java:37
-msgid "Month|July"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/MonthQuestion.java:38
-msgid "Month|August"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/MonthQuestion.java:39
-msgid "Month|September"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/MonthQuestion.java:40
-msgid "Month|October"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/MonthQuestion.java:41
-msgid "Month|November"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/MonthQuestion.java:42
-msgid "Month|December"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:36
