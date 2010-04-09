@@ -42,10 +42,10 @@ public class MonthComboBox extends DateUnitComboBox
 	
 	private ChoiceItem[] createChoices()
 	{
-		return getMonthQuestion().getChoices();
+		return createQuestion().getChoices();
 	}
 
-	private ChoiceQuestion getMonthQuestion()
+	private ChoiceQuestion createQuestion()
 	{
 		return new MonthQuestion(getProjectCalendar());
 	}
@@ -55,7 +55,7 @@ public class MonthComboBox extends DateUnitComboBox
 		if (dateUnit != null && dateUnit.isMonth())
 		{
 			int monthToSelect = dateUnit.getMonth();
-			ChoiceItem choiceItemToSelect = getMonthQuestion().findChoiceByCode(monthToSelect);
+			ChoiceItem choiceItemToSelect = createQuestion().findChoiceByCode(monthToSelect);
 			setSelectedItem(choiceItemToSelect);
 		}
 	}	
