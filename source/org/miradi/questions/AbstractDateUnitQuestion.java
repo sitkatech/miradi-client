@@ -35,7 +35,7 @@ abstract public class AbstractDateUnitQuestion extends DynamicChoiceQuestion
 	@Override
 	public ChoiceItem[] getChoices()
 	{
-		Vector<DateUnit> dateUnits = getDateUnits();
+		Vector<DateUnit> dateUnits = getSafeDateUnits();
 		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
 		for (DateUnit dateUnit : dateUnits)
 		{
@@ -52,7 +52,19 @@ abstract public class AbstractDateUnitQuestion extends DynamicChoiceQuestion
 		return projectCalendar;
 	}
 	
-	abstract protected Vector<DateUnit> getDateUnits();
+	private Vector<DateUnit> getSafeDateUnits()
+	{
+		try
+		{
+			return getDateUnits();
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException(e);
+		}
+	}
+	
+	abstract protected Vector<DateUnit> getDateUnits() throws Exception;
 	
 	private ProjectCalendar projectCalendar;
 }

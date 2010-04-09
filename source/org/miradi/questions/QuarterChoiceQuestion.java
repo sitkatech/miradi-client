@@ -33,15 +33,8 @@ public class QuarterChoiceQuestion extends AbstractDateUnitQuestion
 	}
 	
 	@Override
-	protected Vector<DateUnit> getDateUnits()
+	protected Vector<DateUnit> getDateUnits() throws Exception
 	{
-		try
-		{
-			return getProjectCalendar().getAllProjectQuarterDateUnits();
-		}
-		catch (Exception e)
-		{
-			throw new RuntimeException(e);
-		}
+		return getProjectCalendar().getAllProjectQuarterDateUnits();
 	}
 }
