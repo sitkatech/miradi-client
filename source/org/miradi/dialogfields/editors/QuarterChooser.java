@@ -20,46 +20,50 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
+import javax.swing.DefaultComboBoxModel;
+
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.FiscalYearQuarterQuestion;
 import org.miradi.questions.QuarterChoiceQuestion;
-import org.miradi.questions.StaticQuestionManager;
 
 public class QuarterChooser extends PanelComboBox
 {
-	public QuarterChooser(int fiscalYearStartMonthToUse, DateUnit dateUnit)
+	public QuarterChooser(ProjectCalendar projectCalendarToUse, DateUnit dateUnit)
 	{
-		super(createChoices(fiscalYearStartMonthToUse));
-		
-		fiscalYearStartMonth = fiscalYearStartMonthToUse;
+		projectCalendar = projectCalendarToUse;
+
+		ChoiceItem[] choices = createChoices();
+		setModel(new DefaultComboBoxModel(choices));
 		setSelectedQuarter(dateUnit);
 	}
 
-	private static ChoiceItem[] createChoices(int fiscalYearStartMonth)
+	private ChoiceItem[] createChoices()
 	{
-		return createQuestion(fiscalYearStartMonth).getChoices();
+		return createQuestion().getChoices();
 	}
 	
-	private static ChoiceQuestion createQuestion(int fiscalYearStartMonth)
+	private ChoiceQuestion createQuestion()
 	{
-		if (fiscalYearStartMonth == 1)
-			return StaticQuestionManager.getQuestion(QuarterChoiceQuestion.class);
-		
-		return StaticQuestionManager.getQuestion(FiscalYearQuarterQuestion.class);
+		return new QuarterChoiceQuestion(getProjectCalendar());
 	}
 
 	public void setSelectedQuarter(DateUnit dateUnit)
 	{
 		if (dateUnit != null && dateUnit.isQuarter())
 		{
-			ChoiceQuestion question = createQuestion(fiscalYearStartMonth);
+			ChoiceQuestion question = createQuestion();
 			ChoiceItem choiceItemToSelect = question.findChoiceByCode(Integer.toString(dateUnit.getQuarter()));
 			setSelectedItem(choiceItemToSelect);
 		}
 	}
 	
-	private int fiscalYearStartMonth;
+	private ProjectCalendar getProjectCalendar()
+	{
+		return projectCalendar;
+	}
+	
+	private ProjectCalendar projectCalendar;
 }
