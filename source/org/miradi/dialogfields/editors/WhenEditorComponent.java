@@ -55,8 +55,7 @@ public class WhenEditorComponent extends DisposablePanel
 		ORefList resourceAssignmentRefs = baseObjectToUse.getResourceAssignmentRefs();
 		String defaultDateUnitType = getDefaultDateUnitType(baseObjectToUse.getProject(), resourceAssignmentRefs);
 		
-		DateUnit dateUnit1 = null;
-		DateUnit dateUnit2 = null;
+		Vector<DateUnit> dateUnits = new Vector<DateUnit>();
 		if (!defaultDateUnitType.equals(NONE_ITEM) && resourceAssignmentRefs.hasRefs())
 		{
 			ORef resourceAssignmentRef = resourceAssignmentRefs.getFirstElement();
@@ -64,19 +63,16 @@ public class WhenEditorComponent extends DisposablePanel
 			DateUnitEffortList dateUnitEffortList = resourceAssignment.getDateUnitEffortList();
 			if (dateUnitEffortList.size() == 1)
 			{
-				dateUnit1 = dateUnitEffortList.getDateUnitEffort(0).getDateUnit();
-				dateUnit2 = dateUnitEffortList.getDateUnitEffort(0).getDateUnit();
+				dateUnits.add(dateUnitEffortList.getDateUnitEffort(0).getDateUnit());
+				dateUnits.add(dateUnitEffortList.getDateUnitEffort(0).getDateUnit());
 			}
 			if (dateUnitEffortList.size() == 2)
 			{
-				dateUnit1 = dateUnitEffortList.getDateUnitEffort(0).getDateUnit();
-				dateUnit2 = dateUnitEffortList.getDateUnitEffort(1).getDateUnit();
+				dateUnits.add(dateUnitEffortList.getDateUnitEffort(0).getDateUnit());
+				dateUnits.add(dateUnitEffortList.getDateUnitEffort(1).getDateUnit());
 			}
 		}
-		
-		Vector<DateUnit> dateUnits = new Vector<DateUnit>();
-		dateUnits.add(dateUnit1);
-		dateUnits.add(dateUnit2);
+
 		StartEndDateUnitProvider dateUnitRange = new StartEndDateUnitProvider(dateUnits);
 		lowerPanel = new WhenEditorLowerPanel(projectCalendar, dateUnitRange);
 		TwoColumnPanel upperPanel = new TwoColumnPanel();
