@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import org.martus.util.MultiCalendar;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.objecthelpers.DateUnit;
@@ -35,7 +34,6 @@ public class YearPanel extends OneRowPanel
 	
 	public YearPanel(ProjectCalendar projectCalendar, DateUnit dateUnit, String panelTitle)
 	{
-		fiscalYearStartMonth = projectCalendar.getFiscalYearFirstMonth();
 		yearChooser = new YearComboBox(projectCalendar, dateUnit);
 		
 		add(new PanelTitleLabel(panelTitle));
@@ -44,15 +42,13 @@ public class YearPanel extends OneRowPanel
 
 	public int getYear()
 	{
-		return yearChooser.getYear();
+		return getDate().getYearYear();
 	}
 	
 	public DateUnit getDate()
 	{
-		MultiCalendar year = MultiCalendar.createFromGregorianYearMonthDay(yearChooser.getYear(), fiscalYearStartMonth, 1);
-		return DateUnit.createFiscalYear(year.getGregorianYear(), fiscalYearStartMonth);
+		return yearChooser.getYear();
 	}
 	
 	private YearComboBox yearChooser;
-	private int fiscalYearStartMonth;
 }

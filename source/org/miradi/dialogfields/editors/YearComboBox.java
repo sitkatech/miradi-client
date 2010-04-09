@@ -50,12 +50,11 @@ public class YearComboBox extends PanelComboBox
 		}
 	}
 	
-	public int getYear()
+	public DateUnit getYear()
 	{
 		ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
-		DateUnit selectedCode = new DateUnit(selectedItem.getCode());
 		
-		return selectedCode.getYearYear();
+		return new DateUnit(selectedItem.getCode());
 	}
 
 	private ChoiceItem[] createChoices()
