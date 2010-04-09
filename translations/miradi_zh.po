@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-09 10:57-0500\n"
+"POT-Creation-Date: 2010-04-09 11:32-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2725,22 +2725,6 @@ msgstr "2"
 #: Miradi/source/org/miradi/questions/CurrencyDecimalQuestion.java:37
 msgid "3"
 msgstr "3"
-
-#: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:31
-msgid "First Quarter"
-msgstr "第一季度 \t\t"
-
-#: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:32
-msgid "Second Quarter"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:33
-msgid "Third Quarter"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/QuarterChoiceQuestion.java:34
-msgid "Fourth Quarter"
-msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:29
 msgid "Abandoned"
@@ -27654,6 +27638,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "First Quarter"
+#~ msgstr "第一季度 \t\t"
 
 #~ msgid "Status|Ready"
 #~ msgstr "就绪 \t\t"
