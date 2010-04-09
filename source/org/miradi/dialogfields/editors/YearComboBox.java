@@ -66,6 +66,12 @@ public class YearComboBox extends PanelComboBox
 	{
 		int startYear = getProjectCalendar().getPlanningStartMultiCalendar().getGregorianYear();
 		int endYear = getProjectCalendar().getPlanningEndMultiCalendar().getGregorianYear();
+		
+		return createYearQuestion(startYear, endYear);
+	}
+
+	protected ChoiceQuestion createYearQuestion(int startYear, int endYear)
+	{
 		int fiscalYearStartMonth = getProjectCalendar().getFiscalYearFirstMonth();
 		if (fiscalYearStartMonth == 1)
 			return new CalendarYearChoiceQuestion(startYear, endYear);	
