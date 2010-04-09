@@ -39,6 +39,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.DateUnitTypeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateUnitEffort;
@@ -148,7 +149,8 @@ public class WhenEditorComponent extends DisposablePanel
 	{
 		public void itemStateChanged(ItemEvent e)
 		{
-			lowerPanel.showCard(e.getItem().toString());
+			ChoiceItem selectedChoiceItem = (ChoiceItem) e.getItem();
+			lowerPanel.showCard(selectedChoiceItem.getCode());
 		}
 	}
 	
