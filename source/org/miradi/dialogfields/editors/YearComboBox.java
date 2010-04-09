@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
+import javax.swing.DefaultComboBoxModel;
+
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
@@ -32,9 +34,10 @@ public class YearComboBox extends PanelComboBox
 {
 	public YearComboBox(ProjectCalendar projectCalendarToUse, DateUnit dateUnit)
 	{
-		super(createChoices(projectCalendarToUse));
-		
 		projectCalendar = projectCalendarToUse;
+		ChoiceItem[] choices = createChoices();
+		setModel(new DefaultComboBoxModel(choices));
+		
 		setSelectedYear(dateUnit);
 	}
 	
@@ -42,7 +45,7 @@ public class YearComboBox extends PanelComboBox
 	{
 		if (dateUnit != null && dateUnit.isYear())
 		{
-			ChoiceQuestion question = createYearQuestion(projectCalendar);
+			ChoiceQuestion question = createYearQuestion();
 			ChoiceItem choiceItem = question.findChoiceByCode(dateUnit.getYearYearString());
 			setSelectedItem(choiceItem);
 		}
@@ -54,20 +57,25 @@ public class YearComboBox extends PanelComboBox
 		return Integer.parseInt(selectedItem.getCode());
 	}
 
-	private static ChoiceItem[] createChoices(ProjectCalendar projectCalendar)
+	private ChoiceItem[] createChoices()
 	{
-		return createYearQuestion(projectCalendar).getChoices();
+		return createYearQuestion().getChoices();
 	}
 	
-	private static ChoiceQuestion createYearQuestion(ProjectCalendar projectCalendar)
+	private ChoiceQuestion createYearQuestion()
 	{
-		int startYear = projectCalendar.getPlanningStartMultiCalendar().getGregorianYear();
-		int endYear = projectCalendar.getPlanningEndMultiCalendar().getGregorianYear();
-		int fiscalYearStartMonth = projectCalendar.getFiscalYearFirstMonth();
+		int startYear = getProjectCalendar().getPlanningStartMultiCalendar().getGregorianYear();
+		int endYear = getProjectCalendar().getPlanningEndMultiCalendar().getGregorianYear();
+		int fiscalYearStartMonth = getProjectCalendar().getFiscalYearFirstMonth();
 		if (fiscalYearStartMonth == 1)
 			return new CalendarYearChoiceQuestion(startYear, endYear);	
 		
 		return new FiscalYearChoiceQuestion(startYear, endYear);
+	}
+
+	private ProjectCalendar getProjectCalendar()
+	{
+		return projectCalendar;
 	}
 	
 	private ProjectCalendar projectCalendar;
