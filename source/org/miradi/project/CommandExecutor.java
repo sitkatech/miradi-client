@@ -277,7 +277,7 @@ public class CommandExecutor
 	
 	private boolean haveListenersChanged(final Command command, final Vector currentListenersList, final Vector copyForComparison)
 	{
-		if (viewSwitchCommandToIgnore(command))
+		if (shouldIgnoreListenerListChanges(command))
 			return false;
 		
 		Vector<String> originalList = extractClassNames(currentListenersList);
@@ -300,7 +300,7 @@ public class CommandExecutor
 		return classNames;
 	}
 
-	private boolean viewSwitchCommandToIgnore(Command command)
+	private boolean shouldIgnoreListenerListChanges(Command command)
 	{
 		if (!command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
 			return false;
