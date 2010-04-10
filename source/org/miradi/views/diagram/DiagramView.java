@@ -78,6 +78,10 @@ import org.miradi.actions.ActionDeleteSubTarget;
 import org.miradi.actions.ActionDeleteTaggedObjectSet;
 import org.miradi.actions.ActionDiagramProperties;
 import org.miradi.actions.ActionEditTaggedObjectSet;
+import org.miradi.actions.ActionExpandToGoal;
+import org.miradi.actions.ActionExpandToIndicator;
+import org.miradi.actions.ActionExpandToMeasurement;
+import org.miradi.actions.ActionExpandToMenu;
 import org.miradi.actions.ActionGroupBoxAddFactor;
 import org.miradi.actions.ActionGroupBoxRemoveFactor;
 import org.miradi.actions.ActionHideActivityBubble;
@@ -194,6 +198,10 @@ import org.miradi.views.planning.doers.CreateRelevancyActivityDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
+import org.miradi.views.targetviability.doers.ExpandToGoalDoer;
+import org.miradi.views.targetviability.doers.ExpandToIndicatorDoer;
+import org.miradi.views.targetviability.doers.ExpandToMeasurementDoer;
+import org.miradi.views.targetviability.doers.ExpandToMenuDoer;
 import org.miradi.views.threatmatrix.doers.ManageStressesDoer;
 import org.miradi.views.umbrella.DeleteActivityDoer;
 import org.miradi.views.umbrella.UmbrellaView;
@@ -336,6 +344,11 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		addDoerToMap(ActionCreateIndicatorMeasurement.class, new CreateKeyEcologicalAttributeMeasurementDoer());
 		addDoerToMap(ActionDeleteIndicatorMeasurement.class, new DeleteKeyEcologicalAttributeMeasurementDoer());
+		
+		addDoerToMap(ActionExpandToMenu.class, new ExpandToMenuDoer());
+		addDoerToMap(ActionExpandToIndicator.class, new ExpandToIndicatorDoer());
+		addDoerToMap(ActionExpandToGoal.class, new ExpandToGoalDoer());
+		addDoerToMap(ActionExpandToMeasurement.class, new ExpandToMeasurementDoer());
 		
 		addDoerToMap(ActionCreateResultsChain.class, new CreateResultsChainDoer());
 		addDoerToMap(ActionShowResultsChain.class, new ShowResultsChainDoer());
