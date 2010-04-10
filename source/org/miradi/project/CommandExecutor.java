@@ -305,10 +305,10 @@ public class CommandExecutor
 			return false;
 		
 		CommandSetObjectData setCommand = (CommandSetObjectData) command;
-		if (!ProjectMetadata.is(setCommand.getObjectType()))
-			return false;
-		
-		return setCommand.getFieldTag().equals(ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME);
+		if (setCommand.isRefAndTag(getProject().getMetadata().getRef(), ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME))
+			return true;
+				
+		return false;
 	}
 	
 	public int getCommandListenerCount()
