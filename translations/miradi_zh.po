@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-09 17:12-0500\n"
+"POT-Creation-Date: 2010-04-10 10:35-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7510,7 +7510,7 @@ msgid ""
 "Stresses can only be shown on Conceptual Model pages, not Results Chains"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/stress/StressPropertiesPanel.java:59
+#: Miradi/source/org/miradi/dialogs/stress/StressPropertiesPanel.java:58
 msgid "Title|Stress Properties"
 msgstr "压力属性"
 
