@@ -270,11 +270,11 @@ public class CommandExecutor
 			listener.commandExecuted(event);
 		}
 		
-		if (shouldLog(command, commandExecutedListeners, copyForComparison))
+		if (haveListenersChanged(command, commandExecutedListeners, copyForComparison))
 			EAM.logError("Command Listener list was changed during fireCommandExecuted");
 	}
 	
-	private boolean shouldLog(final Command command, final Vector currentListenersList, final Vector copyForComparison)
+	private boolean haveListenersChanged(final Command command, final Vector currentListenersList, final Vector copyForComparison)
 	{
 		if (viewSwitchCommandToIgnore(command))
 			return false;
