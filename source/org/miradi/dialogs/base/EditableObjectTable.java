@@ -30,6 +30,7 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
@@ -289,6 +290,11 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 	}
 
 	private void setDisposableRendererAndEditorFactories(int tableColumn, BasicTableCellEditorOrRendererFactory rendererFactory, BasicTableCellEditorOrRendererFactory editorFactory)
+	{
+		setPlainRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
+	}
+
+	private void setPlainRendererAndEditorFactories(int tableColumn, TableCellRenderer rendererFactory, 	TableCellEditor editorFactory)
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		column.setCellRenderer(rendererFactory);
