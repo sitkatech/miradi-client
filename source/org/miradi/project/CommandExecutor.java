@@ -271,7 +271,7 @@ public class CommandExecutor
 			listener.commandExecuted(event);
 		}
 		
-		if (haveListenersChanged(command, commandExecutedListeners, copyForComparison) && !shouldIgnoreListenerListChanges(command))
+		if (haveListenersChanged(command, commandExecutedListeners, copyForComparison) && canBeListenerChangingCommand(command))
 			EAM.logError("Command Listener list was changed during fireCommandExecuted");
 	}
 	
@@ -297,19 +297,19 @@ public class CommandExecutor
 		return classNames;
 	}
 
-	private boolean shouldIgnoreListenerListChanges(Command command)
+	private boolean canBeListenerChangingCommand(Command command)
 	{
 		if (!command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			return false;
+			return true;
 		
 		CommandSetObjectData setCommand = (CommandSetObjectData) command;
 		if (setCommand.isRefAndTag(getProject().getMetadata().getRef(), ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME))
-			return true;
+			return false;
 		
 		if (setCommand.isTag(AbstractTarget.TAG_VIABILITY_MODE))
-			return true;
+			return false;
 				
-		return false;
+		return true;
 	}
 	
 	public int getCommandListenerCount()
