@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
@@ -29,11 +30,11 @@ import org.miradi.utils.QuestionPopupEditorComponent;
 
 public class PopupQuestionEditorField extends ObjectDataInputField
 {
-	public PopupQuestionEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion qusetionToUse) throws Exception
+	public PopupQuestionEditorField(JDialog parentDialog, Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion qusetionToUse) throws Exception
 	{
 		super(projectToUse, refToUse, tagToUse);
 		
-		editorComponent = new QuestionPopupEditorComponent(qusetionToUse);
+		editorComponent = new QuestionPopupEditorComponent(parentDialog, qusetionToUse);
 		editorComponent.addFocusListener(this);
 	}
 

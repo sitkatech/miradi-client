@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.stress;
 
+import javax.swing.JDialog;
+
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.layout.OneColumnGridLayout;
@@ -31,20 +33,20 @@ public class StressPropertiesPanel extends ObjectDataInputPanelWithSections
 	public static StressPropertiesPanel createWithVisibilityPanel(MainWindow mainWindow) throws Exception
 	{
 		StressFactorVisibilityControlPanel visibilityPanel = new StressFactorVisibilityControlPanel(mainWindow);
-		return new StressPropertiesPanel(mainWindow, visibilityPanel);
+		return new StressPropertiesPanel(null, mainWindow, visibilityPanel);
 	}
 
-	public static StressPropertiesPanel createWithoutVisibilityPanel(MainWindow mainWindow) throws Exception
+	public static StressPropertiesPanel createWithoutVisibilityPanel(JDialog parent, MainWindow mainWindow) throws Exception
 	{
-		return new StressPropertiesPanel(mainWindow, null);
+		return new StressPropertiesPanel(parent, mainWindow, null);
 	}
 
-	private StressPropertiesPanel(MainWindow mainWindow, AbstractObjectDataInputPanel visibilityPanel) throws Exception
+	private StressPropertiesPanel(JDialog parent, MainWindow mainWindow, AbstractObjectDataInputPanel visibilityPanel) throws Exception
 	{
 		super(mainWindow.getProject(), ObjectType.STRESS);
 	
 		setLayout(new OneColumnGridLayout());
-		addSubPanelWithTitledBorder(new StressDetailsSubPanel(getProject()));
+		addSubPanelWithTitledBorder(new StressDetailsSubPanel(parent, getProject()));
 		if(visibilityPanel != null)
 			addSubPanelWithTitledBorder(visibilityPanel);
 		addSubPanelWithTitledBorder(new StressCommentsSubPanel(getProject()));

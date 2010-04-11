@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import javax.swing.JDialog;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -28,9 +29,9 @@ import org.miradi.main.EAM;
 
 public class DialogWithCloseAfterSelectionHandler extends UndecoratedModelessDialogWithClose implements ListSelectionListener
 {
-	public DialogWithCloseAfterSelectionHandler()
+	public DialogWithCloseAfterSelectionHandler(JDialog parentDialog)
 	{
-		super(EAM.getMainWindow(), EAM.text("Select"));
+		super(parentDialog, EAM.getMainWindow(), EAM.text("Select"));
 		
 		enableCloseWhenFocusLost();
 	}

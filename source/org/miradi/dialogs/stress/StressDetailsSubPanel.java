@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.stress;
 
+import javax.swing.JDialog;
+
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.icons.StressIcon;
@@ -33,10 +35,12 @@ import org.miradi.questions.StressRatingChoiceQuestion;
 
 public class StressDetailsSubPanel extends ObjectDataInputPanel
 {
-	public StressDetailsSubPanel(Project projectToUse) throws Exception
+	public StressDetailsSubPanel(JDialog parentDialogToUse, Project projectToUse) throws Exception
 	{
 		super(projectToUse, ObjectType.STRESS, BaseId.INVALID);
 	
+		parentDialog = parentDialogToUse;
+		
 		ObjectDataInputField shortLabelField = createShortStringField(Stress.TAG_SHORT_LABEL);
 		ObjectDataInputField labelField = createExpandableField(Stress.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Stress"), new StressIcon(), new ObjectDataInputField[]{shortLabelField, labelField});
@@ -50,8 +54,8 @@ public class StressDetailsSubPanel extends ObjectDataInputPanel
 
 	private void addRatingsFields() throws Exception
 	{
-		ObjectDataInputField scopeField = createPopupQuestionEditor(Stress.getObjectType(), Stress.TAG_SCOPE, ScopeThreatRatingQuestion.class);
-		ObjectDataInputField severityField = createPopupQuestionEditor(Stress.getObjectType(), Stress.TAG_SEVERITY, SeverityThreatRatingQuestion.class);		
+		ObjectDataInputField scopeField = createPopupQuestionEditor(parentDialog, Stress.getObjectType(), Stress.TAG_SCOPE, ScopeThreatRatingQuestion.class);
+		ObjectDataInputField severityField = createPopupQuestionEditor(parentDialog, Stress.getObjectType(), Stress.TAG_SEVERITY, SeverityThreatRatingQuestion.class);		
 		addFieldsOnOneLine(EAM.text("Ratings"), new ObjectDataInputField[]{scopeField, severityField});
 		
 		addField(createReadOnlyChoiceField(Stress.getObjectType(), Stress.PSEUDO_STRESS_RATING, new StressRatingChoiceQuestion()));
@@ -61,4 +65,6 @@ public class StressDetailsSubPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Title|Stress Details");
 	}
+	
+	private JDialog parentDialog;
 }
