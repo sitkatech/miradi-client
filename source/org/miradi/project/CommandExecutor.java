@@ -271,15 +271,12 @@ public class CommandExecutor
 			listener.commandExecuted(event);
 		}
 		
-		if (haveListenersChanged(command, commandExecutedListeners, copyForComparison))
+		if (haveListenersChanged(command, commandExecutedListeners, copyForComparison) && !shouldIgnoreListenerListChanges(command))
 			EAM.logError("Command Listener list was changed during fireCommandExecuted");
 	}
 	
 	private boolean haveListenersChanged(final Command command, final Vector currentListenersList, final Vector copyForComparison)
 	{
-		if (shouldIgnoreListenerListChanges(command))
-			return false;
-		
 		Vector<String> originalList = extractClassNames(currentListenersList);
 		Collections.sort(originalList);
 		
