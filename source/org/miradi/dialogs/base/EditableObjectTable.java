@@ -106,32 +106,40 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
-		column.setCellRenderer(new FloatingPointRestrictedTableCellRendererEditorFactory(model, fontProvider));
-		column.setCellEditor(new FloatingPointRestrictedTableCellRendererEditorFactory(model, fontProvider));
+		FloatingPointRestrictedTableCellRendererEditorFactory rendererFactory = new FloatingPointRestrictedTableCellRendererEditorFactory(model, fontProvider);
+		FloatingPointRestrictedTableCellRendererEditorFactory editorFactory = new FloatingPointRestrictedTableCellRendererEditorFactory(model, fontProvider);
+		column.setCellRenderer(rendererFactory);
+		column.setCellEditor(editorFactory);
 	}
 	
 	protected void createNonNegativeIntegerRestrictedColumn(int tableColumn)
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
-		column.setCellRenderer(new NonNegativeIntegerRestrictedTableCellRendererEditorFactory(model, fontProvider));
-		column.setCellEditor(new NonNegativeIntegerRestrictedTableCellRendererEditorFactory(model, fontProvider));
+		NonNegativeIntegerRestrictedTableCellRendererEditorFactory rendererFactory = new NonNegativeIntegerRestrictedTableCellRendererEditorFactory(model, fontProvider);
+		NonNegativeIntegerRestrictedTableCellRendererEditorFactory editorFactory = new NonNegativeIntegerRestrictedTableCellRendererEditorFactory(model, fontProvider);
+		column.setCellRenderer(rendererFactory);
+		column.setCellEditor(editorFactory);
 	}
 	
 	protected void createWrappableTextFieldColumn(int tableColumn)
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
-		column.setCellRenderer(new MultiLineEditableObjectTableCellEditorOrRendererFactory(model, fontProvider));
-		column.setCellEditor(new MultiLineEditableObjectTableCellEditorOrRendererFactory(model, fontProvider));
+		MultiLineEditableObjectTableCellEditorOrRendererFactory rendererFactory = new MultiLineEditableObjectTableCellEditorOrRendererFactory(model, fontProvider);
+		MultiLineEditableObjectTableCellEditorOrRendererFactory editorFactory = new MultiLineEditableObjectTableCellEditorOrRendererFactory(model, fontProvider);
+		column.setCellRenderer(rendererFactory);
+		column.setCellEditor(editorFactory);
 	}
 	
 	protected void createDateColumn(int tableColumn)
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
-		column.setCellEditor(new DateTableCellEditorOrRendererFactory(model, fontProvider));
-		column.setCellRenderer(new DateTableCellEditorOrRendererFactory(model, fontProvider));
+		DateTableCellEditorOrRendererFactory rendererFactory = new DateTableCellEditorOrRendererFactory(model, fontProvider);
+		DateTableCellEditorOrRendererFactory editorFactory = new DateTableCellEditorOrRendererFactory(model, fontProvider);
+		column.setCellEditor(editorFactory);
+		column.setCellRenderer(rendererFactory);
 	}
 		
 	protected void createComboColumn(BaseObject[] content, int tableColumn, BaseObject invalidObject)
@@ -140,30 +148,37 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		BaseObject[] comboContent = addEmptySpaceAtStart(content, invalidObject);
 		PanelComboBox comboBox = new PanelComboBox(comboContent);
 		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellEditor(new DefaultCellEditor(comboBox));
-		column.setCellRenderer(new ComboBoxRenderer(comboContent));
+		ComboBoxRenderer rendererFactory = new ComboBoxRenderer(comboContent);
+		DefaultCellEditor editorFactory = new DefaultCellEditor(comboBox);
+		column.setCellRenderer(rendererFactory);
+		column.setCellEditor(editorFactory);
 	}
 	
 	protected void createComboColumn(ChoiceItem[] choices, int tableColumn)
 	{
 		ChoiceItemComboBox comboBox = new ChoiceItemComboBox(choices);
 		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellEditor(new DefaultCellEditor(comboBox));
-		column.setCellRenderer(new ChoiceItemComboBoxRenderer(choices));
+		ChoiceItemComboBoxRenderer rendererFactory = new ChoiceItemComboBoxRenderer(choices);
+		DefaultCellEditor editorFactory = new DefaultCellEditor(comboBox);
+		column.setCellRenderer(rendererFactory);
+		column.setCellEditor(editorFactory);
 	}
 	
 	protected void createThreatStressRatingPopupColumn(ChoiceQuestion question, int tableColumn) throws Exception
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
-		column.setCellEditor(new StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory(getProject(), question, model, fontProvider));
-		column.setCellRenderer(new StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory(getProject(), question, model, fontProvider));
+		StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory rendererFactory = new StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory(getProject(), question, model, fontProvider);
+		StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory editorFactory = new StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory(getProject(), question, model, fontProvider);
+		column.setCellRenderer(rendererFactory);
+		column.setCellEditor(editorFactory);
 	}
 	
 	protected void createReadonlyChoiceItemColumn(ChoiceItem[] choices, int tableColumn)
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellRenderer(new ChoiceItemTableCellRendererFactory(model, new DefaultFontProvider(getMainWindow())));
+		ChoiceItemTableCellRendererFactory rendererFactory = new ChoiceItemTableCellRendererFactory(model, new DefaultFontProvider(getMainWindow()));
+		column.setCellRenderer(rendererFactory);
 	}
 	
 	protected BaseObject[] addEmptySpaceAtStart(BaseObject[] content, BaseObject invalidObject)
