@@ -67,6 +67,12 @@ public class DateEditorComponent extends JDateChooser
 		clearNeedsSaving();
 	}
 	
+	public void dispose()
+	{
+		dateEditor.removePropertyChangeListener(DATE_PROPERTY_NAME, this);
+		cleanup();
+	}
+	
 	@Override
 	public void addFocusListener(FocusListener focusListener)
 	{
@@ -84,13 +90,7 @@ public class DateEditorComponent extends JDateChooser
 	{
 		super.addPropertyChangeListener(listener);
 	}
-	
-	public void dispose()
-	{
-		dateEditor.removePropertyChangeListener(DATE_PROPERTY_NAME, this);
-		cleanup();
-	}
-	
+		
 	public String getText()
 	{
 		return convertDateToIsoString(getDate());
