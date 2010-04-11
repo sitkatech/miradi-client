@@ -90,6 +90,14 @@ public class DisposablePanel extends JPanel
 		dialog.setVisible(true);
 	}
 	
+	protected void disposePanel(DisposablePanel disposablePanel)
+	{
+		if (disposablePanel != null)
+		{
+			disposablePanel.dispose();
+			disposablePanel = null;
+		}
+	}
+	
 	Vector<ObjectsActionButton> objectsActionButtonsToDispose;
-
 }

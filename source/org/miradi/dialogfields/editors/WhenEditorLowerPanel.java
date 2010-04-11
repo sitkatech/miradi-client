@@ -22,12 +22,11 @@ package org.miradi.dialogfields.editors;
 
 import java.awt.CardLayout;
 
-import javax.swing.JPanel;
-
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
 
-public class WhenEditorLowerPanel extends JPanel
+public class WhenEditorLowerPanel extends DisposablePanel
 {
 	public WhenEditorLowerPanel(ProjectCalendar projectCalendar, StartEndDateUnitProvider dateUnitRange)
 	{
@@ -49,6 +48,14 @@ public class WhenEditorLowerPanel extends JPanel
 		add(dayCard, dayCard.getPanelDescription());
 		
 		currentCard = noneCard;
+	}
+
+	@Override
+	public void dispose()
+	{
+		disposePanel(dayCard);
+		
+		super.dispose();
 	}
 	
 	public DateUnit getStartDateUnit()
