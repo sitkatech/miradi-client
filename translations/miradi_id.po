@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-11 15:29-0500\n"
+"POT-Creation-Date: 2010-04-11 15:32-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2213,15 +2213,15 @@ msgstr "Rangkaian Hasil "
 msgid "Total"
 msgstr "Total "
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:345
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:347
 msgid "Fiscal Year|FY"
 msgstr "Tahun Fiskal "
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:350
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:352
 msgid "Quarter Prefix|Q"
 msgstr "Kw "
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:355
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:357
 msgid "Fiscal Quarter Prefix|FQ"
 msgstr ""
 
