@@ -108,7 +108,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		FloatingPointRestrictedTableCellRendererEditorFactory rendererFactory = new FloatingPointRestrictedTableCellRendererEditorFactory(model, fontProvider);
 		FloatingPointRestrictedTableCellRendererEditorFactory editorFactory = new FloatingPointRestrictedTableCellRendererEditorFactory(model, fontProvider);
-		setRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
+		setDisposableRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
 	}
 	
 	protected void createNonNegativeIntegerRestrictedColumn(int tableColumn)
@@ -116,7 +116,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		NonNegativeIntegerRestrictedTableCellRendererEditorFactory rendererFactory = new NonNegativeIntegerRestrictedTableCellRendererEditorFactory(model, fontProvider);
 		NonNegativeIntegerRestrictedTableCellRendererEditorFactory editorFactory = new NonNegativeIntegerRestrictedTableCellRendererEditorFactory(model, fontProvider);
-		setRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
+		setDisposableRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
 	}
 	
 	protected void createWrappableTextFieldColumn(int tableColumn)
@@ -124,7 +124,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		MultiLineEditableObjectTableCellEditorOrRendererFactory rendererFactory = new MultiLineEditableObjectTableCellEditorOrRendererFactory(model, fontProvider);
 		MultiLineEditableObjectTableCellEditorOrRendererFactory editorFactory = new MultiLineEditableObjectTableCellEditorOrRendererFactory(model, fontProvider);
-		setRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
+		setDisposableRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
 	}
 	
 	protected void createDateColumn(int tableColumn)
@@ -132,7 +132,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		DateTableCellEditorOrRendererFactory rendererFactory = new DateTableCellEditorOrRendererFactory(model, fontProvider);
 		DateTableCellEditorOrRendererFactory editorFactory = new DateTableCellEditorOrRendererFactory(model, fontProvider);
-		setRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
+		setDisposableRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
 	}
 		
 	protected void createComboColumn(BaseObject[] content, int tableColumn, BaseObject invalidObject)
@@ -164,7 +164,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory rendererFactory = new StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory(getProject(), question, model, fontProvider);
 		StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory editorFactory = new StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory(getProject(), question, model, fontProvider);
-		setRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
+		setDisposableRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
 	}
 
 	protected void createReadonlyChoiceItemColumn(ChoiceItem[] choices, int tableColumn)
@@ -288,7 +288,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		createReadonlyChoiceItemColumn(question.getChoices(), tableColumn);
 	}
 
-	private void setRendererAndEditorFactories(int tableColumn, BasicTableCellEditorOrRendererFactory rendererFactory, BasicTableCellEditorOrRendererFactory editorFactory)
+	private void setDisposableRendererAndEditorFactories(int tableColumn, BasicTableCellEditorOrRendererFactory rendererFactory, BasicTableCellEditorOrRendererFactory editorFactory)
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		column.setCellRenderer(rendererFactory);
