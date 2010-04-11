@@ -38,6 +38,17 @@ public class MultiLineEditableObjectTableCellEditorOrRendererFactory extends Obj
 		rendererComponent.setStopEditingListener(this);
 	}
 	
+	@Override
+	public void dispose()
+	{
+		if (rendererComponent != null)
+		{
+			rendererComponent.dispose();
+			rendererComponent = null;
+		}
+		
+		super.dispose();
+	}
 	public void editingWasStoppedByComponent()
 	{
 		stopCellEditing();

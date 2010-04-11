@@ -52,7 +52,7 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 
 	private void addListeners()
 	{
-		PopUpEditorHandler popupEditHandler = new PopUpEditorHandler();
+		popupEditHandler = new PopUpEditorHandler();
 		popupInvokeButton.addActionListener(popupEditHandler);
 	}
 	
@@ -76,6 +76,7 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 	
 	public void dispose()
 	{
+		popupInvokeButton.removeActionListener(popupEditHandler);
 	}
 
 	public void setText(String text)
@@ -111,6 +112,7 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 	}
 	
 	private PanelButton popupInvokeButton;
+	private PopUpEditorHandler popupEditHandler;
 	private JTextArea currentSelectionText;
 	protected MultiLineEditableObjectTableCellEditorOrRendererFactory stopEditingListener;
 }
