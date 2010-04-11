@@ -221,10 +221,10 @@ public class CommandSetObjectData extends Command
 		if (!getObjectORef().equals(refToUse))
 			return false;
 		
-		return isTag(tagToUse);
+		return isJustTagInAnyType(tagToUse);
 	}
 
-	public boolean isTag(String tagToUse)
+	public boolean isJustTagInAnyType(String tagToUse)
 	{
 		return getFieldTag().equals(tagToUse);
 	}
@@ -234,7 +234,7 @@ public class CommandSetObjectData extends Command
 		if (getObjectType() != objectType)
 			return false;
 		
-		return isTag(tagToUse);
+		return isJustTagInAnyType(tagToUse);
 	}
 	
 	@Override
