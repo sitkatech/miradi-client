@@ -143,10 +143,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		PanelComboBox comboBox = new PanelComboBox(comboContent);
 		ComboBoxRenderer rendererFactory = new ComboBoxRenderer(comboContent);
 		DefaultCellEditor editorFactory = new DefaultCellEditor(comboBox);
-		
-		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellRenderer(rendererFactory);
-		column.setCellEditor(editorFactory);
+		setPlainRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
 	}
 	
 	protected void createComboColumn(ChoiceItem[] choices, int tableColumn)
@@ -154,10 +151,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		ChoiceItemComboBox comboBox = new ChoiceItemComboBox(choices);
 		ChoiceItemComboBoxRenderer rendererFactory = new ChoiceItemComboBoxRenderer(choices);
 		DefaultCellEditor editorFactory = new DefaultCellEditor(comboBox);
-		
-		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellRenderer(rendererFactory);
-		column.setCellEditor(editorFactory);
+		setPlainRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
 	}
 	
 	protected void createThreatStressRatingPopupColumn(ChoiceQuestion question, int tableColumn) throws Exception
@@ -173,6 +167,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		ChoiceItemTableCellRendererFactory rendererFactory = new ChoiceItemTableCellRendererFactory(model, new DefaultFontProvider(getMainWindow()));
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		column.setCellRenderer(rendererFactory);
+		setPlainRendererAndEditorFactories(tableColumn, rendererFactory, null);
 	}
 	
 	protected BaseObject[] addEmptySpaceAtStart(BaseObject[] content, BaseObject invalidObject)
@@ -298,7 +293,8 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		column.setCellRenderer(rendererFactory);
-		column.setCellEditor(editorFactory);
+		if(editorFactory != null)
+			column.setCellEditor(editorFactory);
 	}
 	
 	public class SorterByToString implements Comparator<BaseObject>
