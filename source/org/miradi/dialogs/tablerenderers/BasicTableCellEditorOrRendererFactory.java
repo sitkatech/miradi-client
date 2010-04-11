@@ -39,6 +39,10 @@ abstract public class BasicTableCellEditorOrRendererFactory extends AbstractCell
 		backgroundColor = Color.WHITE;
 	}
 	
+	public void dispose()
+	{
+	}
+	
 	/**
 	 * TODO: Currently, about half of the subclasses override this method, 
 	 * and the other half override getTableCellRendererComponent directly.
