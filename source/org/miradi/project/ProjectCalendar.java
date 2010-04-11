@@ -235,13 +235,15 @@ public class ProjectCalendar implements CommandExecutedListener
 	{
 		DateUnit yearDateUnit = dateUnit.getSuperDateUnit(fiscalYearFirstMonth);
 		String yearString = getYearString(yearDateUnit, fiscalYearFirstMonth);
-		return yearString + " - " + getQuarterString(dateUnit, fiscalYearFirstMonth);
+		String quarterString = getQuarterString(dateUnit, fiscalYearFirstMonth);
+		return yearString + " - " + quarterString;
 	}
 	
 	private static String getLongMonthString(DateUnit dateUnit)
 	{
 		String yearString = Integer.toString(dateUnit.getYear());
-		return yearString + " - " + getMonthString(dateUnit);
+		String monthString = getMonthString(dateUnit);
+		return yearString + " - " + monthString;
 	}
 	
 	private static String getYearString(DateUnit dateUnit, int fiscalYearFirstMonth)
