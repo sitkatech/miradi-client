@@ -37,9 +37,10 @@ import org.miradi.exceptions.UnexpectedSideEffectException;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
-import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.Target;
 
 public class CommandExecutor
 {
@@ -306,7 +307,10 @@ public class CommandExecutor
 		if (setCommand.isRefAndTag(getProject().getMetadata().getRef(), ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME))
 			return false;
 		
-		if (setCommand.isTag(AbstractTarget.TAG_VIABILITY_MODE))
+		if (setCommand.isTypeAndTag(HumanWelfareTarget.getObjectType(), HumanWelfareTarget.TAG_VIABILITY_MODE))
+			return false;
+		
+		if (setCommand.isTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE))
 			return false;
 				
 		return true;

@@ -229,6 +229,14 @@ public class CommandSetObjectData extends Command
 		return getFieldTag().equals(tagToUse);
 	}
 	
+	public boolean isTypeAndTag(int objectType, String tagToUse)
+	{
+		if (getObjectType() != objectType)
+			return false;
+		
+		return isTag(tagToUse);
+	}
+	
 	@Override
 	public String toString()
 	{
