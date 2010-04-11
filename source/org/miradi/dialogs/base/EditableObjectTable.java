@@ -35,6 +35,7 @@ import javax.swing.table.TableColumn;
 
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
+import org.miradi.dialogs.tablerenderers.BasicTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DateTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
@@ -107,9 +108,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		FloatingPointRestrictedTableCellRendererEditorFactory rendererFactory = new FloatingPointRestrictedTableCellRendererEditorFactory(model, fontProvider);
 		FloatingPointRestrictedTableCellRendererEditorFactory editorFactory = new FloatingPointRestrictedTableCellRendererEditorFactory(model, fontProvider);
-		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellRenderer(rendererFactory);
-		column.setCellEditor(editorFactory);
+		setRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
 	}
 	
 	protected void createNonNegativeIntegerRestrictedColumn(int tableColumn)
@@ -117,9 +116,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		NonNegativeIntegerRestrictedTableCellRendererEditorFactory rendererFactory = new NonNegativeIntegerRestrictedTableCellRendererEditorFactory(model, fontProvider);
 		NonNegativeIntegerRestrictedTableCellRendererEditorFactory editorFactory = new NonNegativeIntegerRestrictedTableCellRendererEditorFactory(model, fontProvider);
-		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellRenderer(rendererFactory);
-		column.setCellEditor(editorFactory);
+		setRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
 	}
 	
 	protected void createWrappableTextFieldColumn(int tableColumn)
@@ -127,9 +124,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		MultiLineEditableObjectTableCellEditorOrRendererFactory rendererFactory = new MultiLineEditableObjectTableCellEditorOrRendererFactory(model, fontProvider);
 		MultiLineEditableObjectTableCellEditorOrRendererFactory editorFactory = new MultiLineEditableObjectTableCellEditorOrRendererFactory(model, fontProvider);
-		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellRenderer(rendererFactory);
-		column.setCellEditor(editorFactory);
+		setRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
 	}
 	
 	protected void createDateColumn(int tableColumn)
@@ -137,9 +132,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		DateTableCellEditorOrRendererFactory rendererFactory = new DateTableCellEditorOrRendererFactory(model, fontProvider);
 		DateTableCellEditorOrRendererFactory editorFactory = new DateTableCellEditorOrRendererFactory(model, fontProvider);
-		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellRenderer(rendererFactory);
-		column.setCellEditor(editorFactory);
+		setRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
 	}
 		
 	protected void createComboColumn(BaseObject[] content, int tableColumn, BaseObject invalidObject)
@@ -149,6 +142,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		PanelComboBox comboBox = new PanelComboBox(comboContent);
 		ComboBoxRenderer rendererFactory = new ComboBoxRenderer(comboContent);
 		DefaultCellEditor editorFactory = new DefaultCellEditor(comboBox);
+		
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		column.setCellRenderer(rendererFactory);
 		column.setCellEditor(editorFactory);
@@ -159,6 +153,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		ChoiceItemComboBox comboBox = new ChoiceItemComboBox(choices);
 		ChoiceItemComboBoxRenderer rendererFactory = new ChoiceItemComboBoxRenderer(choices);
 		DefaultCellEditor editorFactory = new DefaultCellEditor(comboBox);
+		
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		column.setCellRenderer(rendererFactory);
 		column.setCellEditor(editorFactory);
@@ -169,11 +164,9 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory rendererFactory = new StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory(getProject(), question, model, fontProvider);
 		StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory editorFactory = new StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory(getProject(), question, model, fontProvider);
-		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellRenderer(rendererFactory);
-		column.setCellEditor(editorFactory);
+		setRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
 	}
-	
+
 	protected void createReadonlyChoiceItemColumn(ChoiceItem[] choices, int tableColumn)
 	{
 		ChoiceItemTableCellRendererFactory rendererFactory = new ChoiceItemTableCellRendererFactory(model, new DefaultFontProvider(getMainWindow()));
@@ -295,6 +288,13 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		createReadonlyChoiceItemColumn(question.getChoices(), tableColumn);
 	}
 
+	private void setRendererAndEditorFactories(int tableColumn, BasicTableCellEditorOrRendererFactory rendererFactory, BasicTableCellEditorOrRendererFactory editorFactory)
+	{
+		TableColumn column = getColumnModel().getColumn(tableColumn);
+		column.setCellRenderer(rendererFactory);
+		column.setCellEditor(editorFactory);
+	}
+	
 	public class SorterByToString implements Comparator<BaseObject>
 	{
 		public int compare(BaseObject o1, BaseObject o2)
