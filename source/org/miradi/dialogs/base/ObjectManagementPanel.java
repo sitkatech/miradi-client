@@ -48,11 +48,8 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 	public void dispose()
 	{
 		becomeInactive();
-		listComponent.dispose();
-		listComponent = null;
-		
-		propertiesPanel.dispose();
-		propertiesPanel = null;
+		disposePanel(listComponent);
+		disposePanel(propertiesPanel);
 		
 		super.dispose();
 	}
