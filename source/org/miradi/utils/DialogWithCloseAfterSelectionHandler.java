@@ -29,11 +29,23 @@ import org.miradi.main.EAM;
 
 public class DialogWithCloseAfterSelectionHandler extends UndecoratedModelessDialogWithClose implements ListSelectionListener
 {
-	public DialogWithCloseAfterSelectionHandler(JDialog parentDialog)
+	public DialogWithCloseAfterSelectionHandler()
 	{
-		super(parentDialog, EAM.getMainWindow(), EAM.text("Select"));
+		super(EAM.getMainWindow(), createTitle());
 		
 		enableCloseWhenFocusLost();
+	}
+
+	public DialogWithCloseAfterSelectionHandler(JDialog parentDialog)
+	{
+		super(parentDialog, EAM.getMainWindow(), createTitle());
+		
+		enableCloseWhenFocusLost();
+	}
+	
+	private static String createTitle()
+	{
+		return EAM.text("Select");
 	}
 	
 	public void valueChanged(ListSelectionEvent event)

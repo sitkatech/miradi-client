@@ -176,7 +176,7 @@ public class QuestionPopupEditorComponent extends PopupEditorComponent
 		editorPanel = createPopupEditorPanel();
 		selectRating();
 
-		editorDialog = new DialogWithCloseAfterSelectionHandler(parentDialog);
+		editorDialog = createDialogWithProperParent();
 		editorPanel.addListSelectionListener(saveAfterSelectionHandler);
 		editorPanel.addListSelectionListener(editorDialog);
 
@@ -188,6 +188,14 @@ public class QuestionPopupEditorComponent extends PopupEditorComponent
 		editorDialog.pack();
 		Utilities.centerFrame(editorDialog);
 		editorDialog.setVisible(true);	
+	}
+
+	private DialogWithCloseAfterSelectionHandler createDialogWithProperParent()
+	{
+		if (parentDialog == null)
+			return new DialogWithCloseAfterSelectionHandler();
+		
+		return new DialogWithCloseAfterSelectionHandler(parentDialog);
 	}
 	
 	private void selectRating()
