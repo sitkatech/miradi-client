@@ -19,9 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.layout;
 
-import javax.swing.JPanel;
+import org.miradi.dialogs.base.DisposablePanel;
 
-public class TwoColumnPanel extends JPanel
+public class TwoColumnPanel extends DisposablePanel
 {
 	public TwoColumnPanel()
 	{
