@@ -104,40 +104,40 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 	
 	protected void createFloatingPointRestrictedColumn(int tableColumn)
 	{
-		TableColumn column = getColumnModel().getColumn(tableColumn);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		FloatingPointRestrictedTableCellRendererEditorFactory rendererFactory = new FloatingPointRestrictedTableCellRendererEditorFactory(model, fontProvider);
 		FloatingPointRestrictedTableCellRendererEditorFactory editorFactory = new FloatingPointRestrictedTableCellRendererEditorFactory(model, fontProvider);
+		TableColumn column = getColumnModel().getColumn(tableColumn);
 		column.setCellRenderer(rendererFactory);
 		column.setCellEditor(editorFactory);
 	}
 	
 	protected void createNonNegativeIntegerRestrictedColumn(int tableColumn)
 	{
-		TableColumn column = getColumnModel().getColumn(tableColumn);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		NonNegativeIntegerRestrictedTableCellRendererEditorFactory rendererFactory = new NonNegativeIntegerRestrictedTableCellRendererEditorFactory(model, fontProvider);
 		NonNegativeIntegerRestrictedTableCellRendererEditorFactory editorFactory = new NonNegativeIntegerRestrictedTableCellRendererEditorFactory(model, fontProvider);
+		TableColumn column = getColumnModel().getColumn(tableColumn);
 		column.setCellRenderer(rendererFactory);
 		column.setCellEditor(editorFactory);
 	}
 	
 	protected void createWrappableTextFieldColumn(int tableColumn)
 	{
-		TableColumn column = getColumnModel().getColumn(tableColumn);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		MultiLineEditableObjectTableCellEditorOrRendererFactory rendererFactory = new MultiLineEditableObjectTableCellEditorOrRendererFactory(model, fontProvider);
 		MultiLineEditableObjectTableCellEditorOrRendererFactory editorFactory = new MultiLineEditableObjectTableCellEditorOrRendererFactory(model, fontProvider);
+		TableColumn column = getColumnModel().getColumn(tableColumn);
 		column.setCellRenderer(rendererFactory);
 		column.setCellEditor(editorFactory);
 	}
 	
 	protected void createDateColumn(int tableColumn)
 	{
-		TableColumn column = getColumnModel().getColumn(tableColumn);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		DateTableCellEditorOrRendererFactory rendererFactory = new DateTableCellEditorOrRendererFactory(model, fontProvider);
 		DateTableCellEditorOrRendererFactory editorFactory = new DateTableCellEditorOrRendererFactory(model, fontProvider);
+		TableColumn column = getColumnModel().getColumn(tableColumn);
 		column.setCellRenderer(rendererFactory);
 		column.setCellEditor(editorFactory);
 	}
@@ -147,9 +147,9 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		Arrays.sort(content, new SorterByToString());
 		BaseObject[] comboContent = addEmptySpaceAtStart(content, invalidObject);
 		PanelComboBox comboBox = new PanelComboBox(comboContent);
-		TableColumn column = getColumnModel().getColumn(tableColumn);
 		ComboBoxRenderer rendererFactory = new ComboBoxRenderer(comboContent);
 		DefaultCellEditor editorFactory = new DefaultCellEditor(comboBox);
+		TableColumn column = getColumnModel().getColumn(tableColumn);
 		column.setCellRenderer(rendererFactory);
 		column.setCellEditor(editorFactory);
 	}
@@ -157,27 +157,27 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 	protected void createComboColumn(ChoiceItem[] choices, int tableColumn)
 	{
 		ChoiceItemComboBox comboBox = new ChoiceItemComboBox(choices);
-		TableColumn column = getColumnModel().getColumn(tableColumn);
 		ChoiceItemComboBoxRenderer rendererFactory = new ChoiceItemComboBoxRenderer(choices);
 		DefaultCellEditor editorFactory = new DefaultCellEditor(comboBox);
+		TableColumn column = getColumnModel().getColumn(tableColumn);
 		column.setCellRenderer(rendererFactory);
 		column.setCellEditor(editorFactory);
 	}
 	
 	protected void createThreatStressRatingPopupColumn(ChoiceQuestion question, int tableColumn) throws Exception
 	{
-		TableColumn column = getColumnModel().getColumn(tableColumn);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory rendererFactory = new StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory(getProject(), question, model, fontProvider);
 		StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory editorFactory = new StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory(getProject(), question, model, fontProvider);
+		TableColumn column = getColumnModel().getColumn(tableColumn);
 		column.setCellRenderer(rendererFactory);
 		column.setCellEditor(editorFactory);
 	}
 	
 	protected void createReadonlyChoiceItemColumn(ChoiceItem[] choices, int tableColumn)
 	{
-		TableColumn column = getColumnModel().getColumn(tableColumn);
 		ChoiceItemTableCellRendererFactory rendererFactory = new ChoiceItemTableCellRendererFactory(model, new DefaultFontProvider(getMainWindow()));
+		TableColumn column = getColumnModel().getColumn(tableColumn);
 		column.setCellRenderer(rendererFactory);
 	}
 	
