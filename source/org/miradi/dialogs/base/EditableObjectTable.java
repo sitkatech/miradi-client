@@ -73,11 +73,14 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 	@Override
 	public void dispose()
 	{
-		for(BasicTableCellEditorOrRendererFactory factory : factoriesToDispose)
+		if(factoriesToDispose != null)
 		{
-			factory.dispose();
+			for(BasicTableCellEditorOrRendererFactory factory : factoriesToDispose)
+			{
+				factory.dispose();
+			}
+			factoriesToDispose.clear();
 		}
-		factoriesToDispose.clear();
 
 		super.dispose();
 	}
