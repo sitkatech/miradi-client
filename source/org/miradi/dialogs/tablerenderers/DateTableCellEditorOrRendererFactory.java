@@ -35,6 +35,16 @@ public class DateTableCellEditorOrRendererFactory extends PopupEditableCellEdito
 
 	    dateComponent = new DateEditorComponent();
 	}
+	
+	@Override
+	public void dispose()
+	{
+		if(dateComponent != null)
+			dateComponent.dispose();
+		dateComponent = null;
+		
+		super.dispose();
+	}
 
 	@Override
 	protected Component getConfiguredComponent(JTable table, Object value, int row, int column)
