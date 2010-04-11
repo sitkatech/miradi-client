@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-11 15:43-0500\n"
+"POT-Creation-Date: 2010-04-11 17:50-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1362,7 +1362,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:81
 #: Miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:71
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:42
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:46
 msgid "Stress"
 msgstr "Tekanan "
 
@@ -6927,7 +6927,7 @@ msgstr ""
 msgid "Error Occurred During Sorting"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/DialogWithCloseAfterSelectionHandler.java:33
+#: Miradi/source/org/miradi/utils/DialogWithCloseAfterSelectionHandler.java:34
 msgid "Select"
 msgstr ""
 
@@ -7806,7 +7806,7 @@ msgid ""
 "Stresses can only be shown on Conceptual Model pages, not Results Chains"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/stress/StressPropertiesPanel.java:58
+#: Miradi/source/org/miradi/dialogs/stress/StressPropertiesPanel.java:60
 msgid "Title|Stress Properties"
 msgstr "Sifat-sifat Tekanan "
 
@@ -7814,7 +7814,7 @@ msgstr "Sifat-sifat Tekanan "
 msgid "Manage Stresses for "
 msgstr "Mengelola Tekanan untuk "
 
-#: Miradi/source/org/miradi/dialogs/stress/StressListManagementPanel.java:76
+#: Miradi/source/org/miradi/dialogs/stress/StressListManagementPanel.java:77
 msgid "Tab|Stresses"
 msgstr "Tekanan"
 
@@ -7822,11 +7822,11 @@ msgstr "Tekanan"
 msgid "Title|Stress Comments"
 msgstr "Komentar Tekanan "
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:55
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:59
 msgid "Ratings"
 msgstr "Peringkat "
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:62
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:66
 msgid "Title|Stress Details"
 msgstr "Rincian Tekanan "
 
