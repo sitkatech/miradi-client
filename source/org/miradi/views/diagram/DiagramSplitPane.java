@@ -413,7 +413,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		if (getCurrentDiagramComponent() == null)
 			return;
 		
-		if (commandSetObjectData.isTag(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS))
+		if (commandSetObjectData.isJustTagInAnyType(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS))
 			updateStatusBar();
 	}
 	
