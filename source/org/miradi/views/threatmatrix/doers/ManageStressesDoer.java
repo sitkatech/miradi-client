@@ -29,6 +29,7 @@ import org.miradi.views.ObjectsDoer;
 
 public class ManageStressesDoer extends ObjectsDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (getSingleSelected(Target.getObjectType()) == null)
@@ -37,6 +38,7 @@ public class ManageStressesDoer extends ObjectsDoer
 		return true;
 	}
 
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if (!isAvailable())
