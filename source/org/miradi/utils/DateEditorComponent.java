@@ -88,6 +88,7 @@ public class DateEditorComponent extends JDateChooser
 	public void dispose()
 	{
 		dateEditor.removePropertyChangeListener(DATE_PROPERTY_NAME, this);
+		cleanup();
 	}
 	
 	public String getText()
