@@ -28,6 +28,7 @@ import java.awt.event.MouseEvent;
 import java.util.HashSet;
 
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -51,13 +52,19 @@ import org.miradi.questions.ChoiceQuestion;
  */
 public class QuestionPopupEditorComponent extends PopupEditorComponent
 {
-	public QuestionPopupEditorComponent(ChoiceQuestion questionToUse) throws Exception
+	public QuestionPopupEditorComponent(JDialog parentDialog, ChoiceQuestion questionToUse) throws Exception
 	{
-		this(questionToUse, "");
+		this(parentDialog, questionToUse, "");
 	}
 	
 	public QuestionPopupEditorComponent(ChoiceQuestion questionToUse, String translatedPopupButtonTextToUse) throws Exception
 	{
+		this(null, questionToUse, translatedPopupButtonTextToUse);
+	}
+	
+	public QuestionPopupEditorComponent(JDialog parentDialogToUse, ChoiceQuestion questionToUse, String translatedPopupButtonTextToUse) throws Exception
+	{
+		parentDialog = parentDialogToUse;
 		question = questionToUse;
 		translatedPopupButtonText = translatedPopupButtonTextToUse;
 		
@@ -169,7 +176,7 @@ public class QuestionPopupEditorComponent extends PopupEditorComponent
 		editorPanel = createPopupEditorPanel();
 		selectRating();
 
-		editorDialog = new DialogWithCloseAfterSelectionHandler();
+		editorDialog = new DialogWithCloseAfterSelectionHandler(parentDialog);
 		editorPanel.addListSelectionListener(saveAfterSelectionHandler);
 		editorPanel.addListSelectionListener(editorDialog);
 
@@ -235,6 +242,7 @@ public class QuestionPopupEditorComponent extends PopupEditorComponent
 		}
 	}
 
+	private JDialog parentDialog;
 	private PanelButton popupInvokeButton;
 	private PanelTextField currentSelectionText;
 	private String currentSelectionCode;

@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.stress;
 
 import javax.swing.Icon;
+import javax.swing.JDialog;
 
 import org.miradi.actions.jump.ActionJumpTargetStressesStep;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
@@ -37,9 +38,9 @@ public class StressListManagementPanel extends ObjectListManagementPanel
 		return new StressListManagementPanel(mainWindowToUse, nodeRef, stressPropertiesPanel);
 	}
 	
-	public static StressListManagementPanel createStressManagementPanelWithoutVisibilityPanel(MainWindow mainWindowToUse, ORef nodeRef) throws Exception
+	public static StressListManagementPanel createStressManagementPanelWithoutVisibilityPanel(JDialog parent, MainWindow mainWindowToUse, ORef nodeRef) throws Exception
 	{
-		StressPropertiesPanel stressPropertiesPanel = StressPropertiesPanel.createWithoutVisibilityPanel(mainWindowToUse);
+		StressPropertiesPanel stressPropertiesPanel = StressPropertiesPanel.createWithoutVisibilityPanel(parent, mainWindowToUse);
 
 		return new StressListManagementPanel(mainWindowToUse, nodeRef, stressPropertiesPanel);
 	}

@@ -26,9 +26,9 @@ import org.miradi.objects.Target;
 
 public class ManageStressesDialog extends ModalDialogWithClose
 {
-	public ManageStressesDialog(MainWindow parent, Target target, StressListManagementPanel stressListManagementPanel)
+	public ManageStressesDialog(MainWindow parent, Target target)
 	{
-		super(parent, stressListManagementPanel, createTitle(target));
+		super(parent, createTitle(target));
 	}
 
 	private static String createTitle(Target target)

@@ -30,6 +30,7 @@ import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.AbstractBorder;
@@ -609,9 +610,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new RadioButtonsField(project, objectType, getObjectIdForType(objectType), tagToUse, question);
 	}
 	
-	public PopupQuestionEditorField createPopupQuestionEditor(int objectType, String tagToUse, Class questionClass) throws Exception
+	public PopupQuestionEditorField createPopupQuestionEditor(JDialog parentDialog, int objectType, String tagToUse, Class questionClass) throws Exception
 	{
-		return new PopupQuestionEditorField(getProject(), getRefForType(objectType), tagToUse, getProject().getQuestion(questionClass));
+		return new PopupQuestionEditorField(parentDialog, getProject(), getRefForType(objectType), tagToUse, getProject().getQuestion(questionClass));
 	}
 	
 	public ORef getRefForType(int objectType)
