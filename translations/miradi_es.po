@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-11 15:43-0500\n"
+"POT-Creation-Date: 2010-04-11 17:50-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -1367,7 +1367,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:81
 #: Miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:71
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:42
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:46
 msgid "Stress"
 msgstr "Presión"
 
@@ -6960,7 +6960,7 @@ msgstr ""
 msgid "Error Occurred During Sorting"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/DialogWithCloseAfterSelectionHandler.java:33
+#: Miradi/source/org/miradi/utils/DialogWithCloseAfterSelectionHandler.java:34
 msgid "Select"
 msgstr ""
 
@@ -7840,7 +7840,7 @@ msgid ""
 "Stresses can only be shown on Conceptual Model pages, not Results Chains"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/stress/StressPropertiesPanel.java:58
+#: Miradi/source/org/miradi/dialogs/stress/StressPropertiesPanel.java:60
 msgid "Title|Stress Properties"
 msgstr "Propiedades de la presión"
 
@@ -7848,7 +7848,7 @@ msgstr "Propiedades de la presión"
 msgid "Manage Stresses for "
 msgstr "Manejar presiones para"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressListManagementPanel.java:76
+#: Miradi/source/org/miradi/dialogs/stress/StressListManagementPanel.java:77
 msgid "Tab|Stresses"
 msgstr "Presiones"
 
@@ -7856,11 +7856,11 @@ msgstr "Presiones"
 msgid "Title|Stress Comments"
 msgstr "Comentarios sobre la presión"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:55
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:59
 msgid "Ratings"
 msgstr "Calificaciones"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:62
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:66
 msgid "Title|Stress Details"
 msgstr "Detalles de la presión"
 
