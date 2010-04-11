@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.project;
 
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Vector;
 
@@ -236,14 +237,20 @@ public class ProjectCalendar implements CommandExecutedListener
 		DateUnit yearDateUnit = dateUnit.getSuperDateUnit(fiscalYearFirstMonth);
 		String yearString = getYearString(yearDateUnit, fiscalYearFirstMonth);
 		String quarterString = getQuarterString(dateUnit, fiscalYearFirstMonth);
-		return yearString + " - " + quarterString;
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%year", yearString);
+		tokenReplacementMap.put("%quarter", quarterString);
+		return EAM.substitute("%year - %quarter", tokenReplacementMap);
 	}
 	
 	private static String getLongMonthString(DateUnit dateUnit)
 	{
 		String yearString = Integer.toString(dateUnit.getYear());
 		String monthString = getMonthString(dateUnit);
-		return yearString + " - " + monthString;
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%year", yearString);
+		tokenReplacementMap.put("%month", monthString);
+		return EAM.substitute("%year - %month", tokenReplacementMap);
 	}
 	
 	private static String getYearString(DateUnit dateUnit, int fiscalYearFirstMonth)
