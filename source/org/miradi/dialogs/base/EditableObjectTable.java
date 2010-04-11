@@ -138,8 +138,8 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		DateTableCellEditorOrRendererFactory rendererFactory = new DateTableCellEditorOrRendererFactory(model, fontProvider);
 		DateTableCellEditorOrRendererFactory editorFactory = new DateTableCellEditorOrRendererFactory(model, fontProvider);
-		column.setCellEditor(editorFactory);
 		column.setCellRenderer(rendererFactory);
+		column.setCellEditor(editorFactory);
 	}
 		
 	protected void createComboColumn(BaseObject[] content, int tableColumn, BaseObject invalidObject)
