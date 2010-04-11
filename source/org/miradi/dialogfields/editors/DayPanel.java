@@ -35,6 +35,18 @@ public class DayPanel extends TwoColumnPanel
 		
 		setSelectedDateUnit(dateUnit);
 	}
+	
+	@Override
+	public void dispose()
+	{
+		if (dateEditor != null)
+		{
+			dateEditor.dispose();
+			dateEditor = null;
+		}
+		
+		super.dispose();
+	}
 
 	private void setSelectedDateUnit(DateUnit dateUnit)
 	{

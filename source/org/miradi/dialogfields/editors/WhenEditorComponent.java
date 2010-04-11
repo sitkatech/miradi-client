@@ -88,6 +88,14 @@ public class WhenEditorComponent extends DisposablePanel
 		dateUnitTypeCombo.addItemListener(new ChangeHandler());
 		dateUnitTypeCombo.setSelectedItem(dateUnitTypeQuestion.findChoiceByCode(singleDateUnitTypeCode));
 	}
+	
+	@Override
+	public void dispose()
+	{
+		disposePanel(lowerPanel);
+
+		super.dispose();
+	}
 
 	private String getDefaultDateUnitTypeCode(Project projectToUse, ORefList resourceAssignmentRefs) throws Exception
 	{
