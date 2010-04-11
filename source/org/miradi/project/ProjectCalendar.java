@@ -233,19 +233,17 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	private static String getLongQuarterString(DateUnit dateUnit, int fiscalYearFirstMonth)
 	{
-		return createLabelWithYear(dateUnit, getQuarterString(dateUnit, fiscalYearFirstMonth));
+		DateUnit yearDateUnit = dateUnit.getSuperDateUnit(fiscalYearFirstMonth);
+		String yearString = getYearString(yearDateUnit, fiscalYearFirstMonth);
+		return yearString + " - " + getQuarterString(dateUnit, fiscalYearFirstMonth);
 	}
 	
 	private static String getLongMonthString(DateUnit dateUnit)
 	{
-		return createLabelWithYear(dateUnit, getMonthString(dateUnit));
+		String yearString = Integer.toString(dateUnit.getYear());
+		return yearString + " - " + getMonthString(dateUnit);
 	}
 	
-	private static String createLabelWithYear(DateUnit dateUnit, String rightSideLabel)
-	{
-		return dateUnit.getYear() + " - " + rightSideLabel;
-	}
-
 	private static String getYearString(DateUnit dateUnit, int fiscalYearFirstMonth)
 	{
 		String yearString = dateUnit.getYearYearString();
