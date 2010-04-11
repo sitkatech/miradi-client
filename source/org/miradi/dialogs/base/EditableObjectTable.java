@@ -24,6 +24,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Vector;
 
 import javax.swing.DefaultCellEditor;
@@ -67,6 +68,18 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		selectionListeners = new Vector();
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+	}
+	
+	@Override
+	public void dispose()
+	{
+		for(BasicTableCellEditorOrRendererFactory factory : factoriesToDispose)
+		{
+			factory.dispose();
+		}
+		factoriesToDispose.clear();
+
+		super.dispose();
 	}
 	
 	@Override
@@ -286,6 +299,11 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 
 	private void setDisposableRendererAndEditorFactories(int tableColumn, BasicTableCellEditorOrRendererFactory rendererFactory, BasicTableCellEditorOrRendererFactory editorFactory)
 	{
+		if(factoriesToDispose == null)
+			factoriesToDispose = new HashSet<BasicTableCellEditorOrRendererFactory>();
+		
+		factoriesToDispose.add(rendererFactory);
+		factoriesToDispose.add(editorFactory);
 		setPlainRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
 	}
 
@@ -366,6 +384,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 	private Vector selectionListeners;
 	private EditableObjectTableModel model;
 	private boolean isActive;
+	private HashSet<BasicTableCellEditorOrRendererFactory> factoriesToDispose; 
 	private static final int MINIMUM_VIEWPORT_HEIGHT = 100;
 	private static final int MAXIMUM_VIEWPORT_HEIGHT = 400;
 }
