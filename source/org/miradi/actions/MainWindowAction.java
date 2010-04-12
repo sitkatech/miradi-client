@@ -32,6 +32,7 @@ import org.miradi.exceptions.UnexpectedSideEffectException;
 import org.miradi.exceptions.UnexpectedNonSideEffectException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.main.Miradi;
 import org.miradi.project.Project;
 import org.miradi.views.Doer;
 import org.miradi.views.umbrella.UmbrellaView;
@@ -126,10 +127,55 @@ public abstract class MainWindowAction extends EAMAction
 			getDoer().doIt(event);
 			getMainWindow().updateActionStates();
 		}
+		catch (OutOfMemoryError e)
+		{
+			EAM.logException(new RuntimeException(e));
+			EAM.errorDialog(getOutOfMemoryErrorMessageText());
+		}
 		finally
 		{
 			getMainWindow().setCursor(prevCursor);
 		}
+	}
+
+	private String getOutOfMemoryErrorMessageText()
+	{
+		if(Miradi.isWindows())
+			return EAM.text("Miradi could not complete that operation because it ran out of memory.\n" +
+				"This can happen if you try to export a huge image, for example.\n" +
+				"\n" +
+				"You can make more memory available to Miradi by creating or editing\n" +
+				"a text file named 'Miradi.vmoptions', in the Miradi program folder\n" +
+				"(which is typically C:\\Program Files\\Miradi). In Miradi.voptions,\n" +
+				"make sure there is a line like this:\n" +
+				"    -Xmx800m\n" +
+				"That will allow Miradi to use up to 800 megabytes of RAM.\n" +
+				"If you continue to get this error, try larger numbers (like -Xmx1000m).\n");
+		
+		if(Miradi.isLinux())
+			return EAM.text("Miradi could not complete that operation because it ran out of memory.\n" +
+					"This can happen if you try to export a huge image, for example.\n" +
+					"\n" +
+					"You can make more memory available to Miradi by passing a command-line \n" +
+					"parameter in the java command used to launch Miradi." +
+					"\n" +
+					"Try adding this to the command line:\n" +
+					"   -Xmx800m\n" +
+					"That will allow Miradi to use up to 800 megabytes of RAM.\n" +
+					"If you continue to get this error, try larger numbers (like -Xmx1000m).\n");
+			
+		return EAM.text("Miradi could not complete that operation because it ran out of memory.\n" +
+				"This can happen if you try to export a huge image, for example.\n" +
+				"\n" +
+				"You can make more memory available to Miradi by editing the plist.info file\n" +
+				"that is inside the Miradi application bundle. Instead of double-clicking\n" +
+				"on the Miradi application, Control-click and choose 'Show Package Contents'.\n" +
+				"Then, double-click on plist.info to bring it up in an editor.\n" +
+				"\n" +
+				"Find the entry starting with -Xmx and increase the number, like:\n" +
+				"   -Xmx800m\n" +
+				"That will allow Miradi to use up to 800 megabytes of RAM.\n" +
+				"If you continue to get this error, try larger numbers (like -Xmx1000m).\n");
 	}
 	
 	public boolean shouldBeEnabled()
