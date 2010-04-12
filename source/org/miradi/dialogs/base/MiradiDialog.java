@@ -27,7 +27,6 @@ import java.awt.event.WindowListener;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 
-import org.miradi.dialogfields.FieldSaver;
 import org.miradi.main.AppPreferences;
 
 
@@ -66,7 +65,6 @@ public class MiradiDialog extends JDialog
 
 		public void windowClosed(WindowEvent arg0)
 		{
-			FieldSaver.savePendingEdits();
 		}
 
 		public void windowClosing(WindowEvent arg0)
