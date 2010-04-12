@@ -146,7 +146,7 @@ public abstract class MainWindowAction extends EAMAction
 				"\n" +
 				"You can make more memory available to Miradi by creating or editing\n" +
 				"a text file named 'Miradi.vmoptions', in the Miradi program folder\n" +
-				"(which is typically C:\\Program Files\\Miradi). In Miradi.voptions,\n" +
+				"(which is typically C:\\Program Files\\Miradi). In Miradi.vmoptions,\n" +
 				"make sure there is a line like this:\n" +
 				"    -Xmx800m\n" +
 				"That will allow Miradi to use up to 800 megabytes of RAM.\n" +
