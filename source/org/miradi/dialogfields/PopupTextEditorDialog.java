@@ -30,8 +30,7 @@ public class PopupTextEditorDialog extends ModalDialogWithClose
 	public PopupTextEditorDialog(MainWindow mainWindow, String title, String initialText)
 	{
 		super(mainWindow, title);
-		final int COLUMN_COUNT = 60;
-		final int ROW_COUNT = 10;
+		
 		popupTextField = new MiradiTextPane(getMainWindow(), COLUMN_COUNT, ROW_COUNT);
 		new TextAreaRightClickMouseHandler(getMainWindow().getActions(), popupTextField);
 		popupTextField.setText(initialText);
@@ -45,5 +44,8 @@ public class PopupTextEditorDialog extends ModalDialogWithClose
 		return popupTextField.getText();
 	}
 
-	private MiradiTextPane popupTextField; 
+	private MiradiTextPane popupTextField;
+	
+	private static final int COLUMN_COUNT = 60;
+	private static final int ROW_COUNT = 10;	
 }
