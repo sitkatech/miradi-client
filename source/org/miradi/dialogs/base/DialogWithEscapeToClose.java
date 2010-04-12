@@ -30,8 +30,6 @@ import javax.swing.JFrame;
 import javax.swing.JRootPane;
 import javax.swing.KeyStroke;
 
-import org.miradi.dialogfields.FieldSaver;
-
 public class DialogWithEscapeToClose extends MiradiDialog
 {
 	public DialogWithEscapeToClose(JFrame parent)
@@ -69,7 +67,6 @@ public class DialogWithEscapeToClose extends MiradiDialog
 	{
 		public void actionPerformed(ActionEvent e)
 		{
-			FieldSaver.savePendingEdits();
 			setVisible(false);
 			dispose();
 		}
