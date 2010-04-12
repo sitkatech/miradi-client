@@ -55,12 +55,12 @@ public class DialogWithDisposablePanel extends DialogWithButtonBar
 	@Override
 	public void dispose()
 	{
-		if(wrappedPanel == null)
-			return;
-		
-		becomeInactive();
-		wrappedPanel.dispose();
-		wrappedPanel = null;
+		if(wrappedPanel != null)
+		{
+			becomeInactive();
+			wrappedPanel.dispose();
+			wrappedPanel = null;
+		}
 		super.dispose();
 	}
 	

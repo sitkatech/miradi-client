@@ -66,11 +66,11 @@ public class MiradiDialog extends JDialog
 
 		public void windowClosed(WindowEvent arg0)
 		{
+			FieldSaver.savePendingEdits();
 		}
 
 		public void windowClosing(WindowEvent arg0)
 		{
-			FieldSaver.savePendingEdits();
 			window.dispose();
 		}
 
