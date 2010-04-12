@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-11 18:25-0500\n"
+"POT-Creation-Date: 2010-04-12 09:41-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -6620,7 +6620,7 @@ msgstr "Insertar factor influyente"
 msgid "TT|Insert a Contributing Factor"
 msgstr "Insertar un factor influyente"
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:86
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:87
 msgid ""
 "Attempted to execute command as side effect before any command had been "
 "executed "
@@ -6628,7 +6628,7 @@ msgstr ""
 "Intento de ejecutar el comando como efecto secundario antes de haber "
 "ejecutado algún comando."
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:89
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:90
 msgid ""
 "Attempt to execute command while in side effect mode:\n"
 " tried  "
@@ -6636,7 +6636,7 @@ msgstr ""
 "Intento de ejecutar el comando en el modo de efecto secundario:\n"
 " intento"
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:90
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:91
 msgid ""
 "\n"
 "  within "
@@ -6644,15 +6644,15 @@ msgstr ""
 "\n"
 " desde adentro."
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:97
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:98
 msgid "An internal error prevented this operation"
 msgstr "Un error interno impidió esta operación."
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:105
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:106
 msgid "An unexpected error has occurred."
 msgstr "Se ha producido un error inesperado. "
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:106
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:107
 msgid ""
 "<br> The operation completed successfully, but Undo/Redo may not work "
 "correctly."
@@ -6660,9 +6660,53 @@ msgstr ""
 "<br> La operación se completó exitosamente, pero es posible que Deshacer/"
 "Rehacer no funcione correctamente. "
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:107
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:108
 msgid "<br> Please report this problem to the Miradi support team "
 msgstr "<br> Informe este problema al equipo de soporte técnico de Miradi."
+
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:144
+msgid ""
+"Miradi could not complete that operation because it ran out of memory.\n"
+"This can happen if you try to export a huge image, for example.\n"
+"\n"
+"You can make more memory available to Miradi by creating or editing\n"
+"a text file named 'Miradi.vmoptions', in the Miradi program folder\n"
+"(which is typically C:\\Program Files\\Miradi). In Miradi.voptions,\n"
+"make sure there is a line like this:\n"
+"    -Xmx800m\n"
+"That will allow Miradi to use up to 800 megabytes of RAM.\n"
+"If you continue to get this error, try larger numbers (like -Xmx1000m).\n"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:156
+msgid ""
+"Miradi could not complete that operation because it ran out of memory.\n"
+"This can happen if you try to export a huge image, for example.\n"
+"\n"
+"You can make more memory available to Miradi by passing a command-line \n"
+"parameter in the java command used to launch Miradi.\n"
+"Try adding this to the command line:\n"
+"   -Xmx800m\n"
+"That will allow Miradi to use up to 800 megabytes of RAM.\n"
+"If you continue to get this error, try larger numbers (like -Xmx1000m).\n"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:167
+msgid ""
+"Miradi could not complete that operation because it ran out of memory.\n"
+"This can happen if you try to export a huge image, for example.\n"
+"\n"
+"You can make more memory available to Miradi by editing the plist.info file\n"
+"that is inside the Miradi application bundle. Instead of double-clicking\n"
+"on the Miradi application, Control-click and choose 'Show Package "
+"Contents'.\n"
+"Then, double-click on plist.info to bring it up in an editor.\n"
+"\n"
+"Find the entry starting with -Xmx and increase the number, like:\n"
+"   -Xmx800m\n"
+"That will allow Miradi to use up to 800 megabytes of RAM.\n"
+"If you continue to get this error, try larger numbers (like -Xmx1000m).\n"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionShowCellRatings.java:34
 msgid "Action|Show Ratings in Cell"
