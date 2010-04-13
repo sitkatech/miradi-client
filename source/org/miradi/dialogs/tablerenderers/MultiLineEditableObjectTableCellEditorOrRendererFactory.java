@@ -80,11 +80,6 @@ public class MultiLineEditableObjectTableCellEditorOrRendererFactory extends Obj
 		return rendererComponent.getPreferredSize().height;
 	}
 
-	protected TextFieldPopupEditorComponent getRendererComponent()
-	{
-		return rendererComponent;
-	}
-	
 	private TextFieldPopupEditorComponent rendererComponent;
 	private TableWithRowHeightSaver tableBeingEdited;
 }
