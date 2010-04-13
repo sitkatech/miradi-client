@@ -27,9 +27,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JTextArea;
-
 import org.miradi.dialogs.fieldComponents.PanelButton;
+import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.dialogs.tablerenderers.MultiLineEditableObjectTableCellEditorOrRendererFactory;
 import org.miradi.main.AppPreferences;
 
@@ -66,7 +65,7 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 	
 	private void createComponents()
 	{
-		currentSelectionText = new JTextArea();
+		currentSelectionText = new PanelTextArea();
 		currentSelectionText.setEditable(false);
 		currentSelectionText.setLineWrap(true);
 		currentSelectionText.setWrapStyleWord(true);
@@ -113,6 +112,6 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 	
 	private PanelButton popupInvokeButton;
 	private PopUpEditorHandler popupEditHandler;
-	private JTextArea currentSelectionText;
+	private PanelTextArea currentSelectionText;
 	protected MultiLineEditableObjectTableCellEditorOrRendererFactory stopEditingListener;
 }

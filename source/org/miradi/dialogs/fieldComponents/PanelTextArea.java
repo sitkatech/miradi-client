@@ -37,6 +37,11 @@ public class PanelTextArea extends UiTextArea
 		setFont(getMainWindow().getUserDataPanelFont());
 	}
 	
+	public PanelTextArea()
+	{
+		this("");
+	}
+
 	//TODO should not use static ref here
 	public MainWindow getMainWindow()
 	{
