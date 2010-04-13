@@ -937,7 +937,7 @@ public class Project
 		if (pool.size() == 0)
 			return;
 	
-		ViewData viewData = getCurrentViewData();
+		ViewData viewData = getDiagramViewData();
 		ORef currentDiagramObjectRef = DiagramPageList.getCurrentDiagramViewDataRef(viewData, objectType);
 		if (!currentDiagramObjectRef.isInvalid())
 			return;
