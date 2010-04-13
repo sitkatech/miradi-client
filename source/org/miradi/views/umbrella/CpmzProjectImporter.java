@@ -31,6 +31,7 @@ import java.util.zip.ZipFile;
 import javax.swing.filechooser.FileFilter;
 
 import org.martus.util.DirectoryUtils;
+import org.martus.util.UnicodeReader;
 import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.arranger.MeglerArranger;
@@ -40,6 +41,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectUnzipper;
@@ -155,6 +157,8 @@ public class CpmzProjectImporter extends AbstractProjectImporter
 				conProXmlImporter.importConProProject(projectAsInputStream);
 				ORef highOrAboveRankedThreatsTag = conProXmlImporter.getHighOrAboveRankedThreatsTag();
 				splitMainDiagramByTargets(projectToFill, highOrAboveRankedThreatsTag);
+				
+				importAdditionalFieldsFromTextFiles(projectToFill, zipFile);
 			}
 			finally
 			{
@@ -171,6 +175,33 @@ public class CpmzProjectImporter extends AbstractProjectImporter
 
 	}
 	
+	private void importAdditionalFieldsFromTextFiles(Project projectToFill, ZipFile zipFile) throws Exception
+	{
+		importIfPresent(projectToFill, TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD, zipFile, "ProjectResourcesScorecard.txt");
+		importIfPresent(projectToFill, TncProjectData.TAG_PROJECT_LEVEL_COMMENTS, zipFile, "ProjectLevelComments.txt");
+		importIfPresent(projectToFill, TncProjectData.TAG_PROJECT_CITATIONS, zipFile, "ProjectCitations.txt");
+		importIfPresent(projectToFill, TncProjectData.TAG_CAP_STANDARDS_SCORECARD, zipFile, "ProjectCapStandards.txt");
+	}
+
+	private void importIfPresent(Project projectToFill, String fieldTag, ZipFile zipFile, String entryFilename) throws Exception
+	{
+		ORef tncDataRef = projectToFill.getSafeSingleObjectRef(TncProjectData.getObjectType());
+		ZipEntry entry = zipFile.getEntry(entryFilename);
+		if(entry == null)
+			return;
+		
+		UnicodeReader reader = new UnicodeReader(zipFile.getInputStream(entry));
+		try
+		{
+			String contents = reader.readAll();
+			projectToFill.setObjectData(tncDataRef, fieldTag, contents);
+		}
+		finally
+		{
+			reader.close();
+		}
+	}
+
 	private ByteArrayInputStreamWithSeek getProjectAsInputStream(ZipFile zipFile) throws Exception
 	{
 		byte[] extractXmlBytes = readZipEntryFile(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
