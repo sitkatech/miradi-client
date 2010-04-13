@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-13 10:15-0500\n"
+"POT-Creation-Date: 2010-04-13 10:18-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -428,20 +428,20 @@ msgstr "Masukkan Nama Baru "
 msgid "Project Settings"
 msgstr "Pengaturan Proyek "
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:60
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:61
 #: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:34
 msgid "Label|Project Dates"
 msgstr "Tanggal Proyek "
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:65
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:66
 msgid "Label|Work Plan Dates"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:89
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:90
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:101
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:102
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. If the data is outside the planning date range, it will be visible "
@@ -451,13 +451,13 @@ msgid ""
 "visible if you set the fiscal year start back to its previous setting."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:115
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:116
 msgid ""
 "Quarter columns cannot be hidden because this project already has data for "
 "some quarters."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:265
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:272
 msgid "Work Plan Settings"
 msgstr "Pengaturan Rencana Kerja "
 
