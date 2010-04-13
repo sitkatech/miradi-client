@@ -40,9 +40,9 @@ import org.miradi.utils.Translation;
 
 public abstract class XmlExporter
 {
-	public XmlExporter(Project projectToUse)
+	public XmlExporter(Project projectToExport)
 	{
-		project = projectToUse;
+		project = projectToExport;
 	}
 	
 	public void export(File destination) throws Exception
