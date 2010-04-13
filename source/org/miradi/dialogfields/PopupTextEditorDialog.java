@@ -20,10 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import org.miradi.dialogfields.ObjectMultilineInputField.MiradiTextPane;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiScrollPane;
+import org.miradi.utils.MiradiTextPane;
 
 public class PopupTextEditorDialog extends ModalDialogWithClose
 {
