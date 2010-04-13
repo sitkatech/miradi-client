@@ -79,7 +79,7 @@ public abstract class AbstractProjectImporter
 		catch (FutureVersionException e)
 		{
 			EAM.logException(e);
-			showImportFailedErrorDialog("This project cannot be imported by this version of Miradi because it \n" +
+			showImportFailedErrorDialog("This project cannot be imported by this version of Miradi because it <BR>" +
 										"is in a newer data format. Please upgrade to the latest version of Miradi.");
 		}
 		catch(Exception e)
