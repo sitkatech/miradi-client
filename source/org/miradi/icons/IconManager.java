@@ -82,6 +82,8 @@ public class IconManager
 		addIcon(new FundingSourceIcon());
 		addIcon(new ExpenseAssignmentIcon());
 		addIcon(new AssignmentIcon());
+		addIcon(new ProgressReportIcon());
+		addIcon(new ProgressPercentIcon());
 		addResourceImageIcon(COLLAPSE_ICON_FILE_NAME);
 		addResourceImageIcon(EXPAND_ICON_FILE_NAME);
 	}
@@ -395,6 +397,16 @@ public class IconManager
 		return getIcon(StrategicPlanIcon.class);
 	}
 	
+	public static Icon getProgressReportIcon()
+	{
+		return getIcon(ProgressReportIcon.class);
+	}
+
+	public static Icon getProgressPercentIcon()
+	{
+		return getIcon(ProgressPercentIcon.class);
+	}
+
 	public static Icon getWarningIcon()
 	{
 		return getIcon(WarningIcon.class);

@@ -19,21 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.icons;
 
-import java.awt.Color;
+import org.miradi.utils.MiradiResourceImageIcon;
 
-import org.miradi.diagram.DiagramConstants;
-import org.miradi.diagram.renderers.FactorRenderer;
-import org.miradi.diagram.renderers.RectangleRenderer;
-
-public class ProgressReportIcon extends AbstractShapeIcon
+public class ProgressReportIcon extends MiradiResourceImageIcon
 {
-	FactorRenderer getRenderer() 
+	public ProgressReportIcon()
 	{
-		return new RectangleRenderer();
+		super("icons/progress.png");
 	}
-
-	Color getIconColor() 
-	{
-		return DiagramConstants.COLOR_STRESS;
-	}
+	
 }
