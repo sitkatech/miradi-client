@@ -38,6 +38,7 @@ public class HideActivityBubbleDoer extends AbstractActivityVisibilityDoer
 		return isShowing(selectedFactorRef);
 	}
 
+	@Override
 	protected Factor getFactor(ORef factorRef)
 	{
 		return Task.find(getProject(), factorRef);
@@ -55,6 +56,7 @@ public class HideActivityBubbleDoer extends AbstractActivityVisibilityDoer
 		return getSelectedStrategyRef();
 	}
 	
+	@Override
 	protected ORefList getAnnotationList()
 	{
 		return new ORefList();
