@@ -36,9 +36,18 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
+import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.GroupBox;
+import org.miradi.objects.HumanWelfareTarget;
+import org.miradi.objects.IntermediateResult;
+import org.miradi.objects.ScopeBox;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
+import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.objects.TextBox;
+import org.miradi.objects.ThreatReductionResult;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectRepairer
@@ -66,8 +75,47 @@ public class ProjectRepairer
 		repairUnsnappedNodes();
 		warnOfOrphanAnnotations();	
 		warnOfOrphanTasks();
+		warnOfFactorsWithoutReferringDiagramFactors();
 	}
 	 
+	private void warnOfFactorsWithoutReferringDiagramFactors()
+	{
+		ORefSet factorsWithoutDiagramFactors = getFactorsWithoutDiagramFactors();
+		if (factorsWithoutDiagramFactors.hasData())
+			EAM.logError("Factors are not covered by a diagramFactor:" + factorsWithoutDiagramFactors.toRefList());
+	}
+
+	private ORefSet getFactorsWithoutDiagramFactors()
+	{
+		ORefSet factorsWithoutDiagramFactors = new ORefSet();
+		factorsWithoutDiagramFactors.addAll(getFactorsWithoutDiagramFactors(ScopeBox.getObjectType()));
+		factorsWithoutDiagramFactors.addAll(getFactorsWithoutDiagramFactors(Target.getObjectType()));
+		factorsWithoutDiagramFactors.addAll(getFactorsWithoutDiagramFactors(HumanWelfareTarget.getObjectType()));
+		factorsWithoutDiagramFactors.addAll(getFactorsWithoutDiagramFactors(Cause.getObjectType()));
+		factorsWithoutDiagramFactors.addAll(getFactorsWithoutDiagramFactors(Strategy.getObjectType()));
+		factorsWithoutDiagramFactors.addAll(getFactorsWithoutDiagramFactors(ThreatReductionResult.getObjectType()));
+		factorsWithoutDiagramFactors.addAll(getFactorsWithoutDiagramFactors(IntermediateResult.getObjectType()));
+		factorsWithoutDiagramFactors.addAll(getFactorsWithoutDiagramFactors(GroupBox.getObjectType()));
+		factorsWithoutDiagramFactors.addAll(getFactorsWithoutDiagramFactors(TextBox.getObjectType()));
+		
+		return factorsWithoutDiagramFactors;
+	}
+
+	public ORefSet getFactorsWithoutDiagramFactors(int factorType)
+	{
+		ORefSet factorsWithoutDiagramFactors = new ORefSet();
+		ORefSet factorRefs = getProject().getPool(factorType).getRefSet();
+		for(ORef factorRef : factorRefs)
+		{
+			Factor factor = Factor.findFactor(getProject(), factorRef);
+			ORefList diagramFactorReferrerRefs = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+			if (diagramFactorReferrerRefs.isEmpty())
+				factorsWithoutDiagramFactors.addRef(factor);
+		}
+		
+		return factorsWithoutDiagramFactors;
+	}
+
 	private void warnOfOrphanTasks()
 	{
 		int type = Task.getObjectType();

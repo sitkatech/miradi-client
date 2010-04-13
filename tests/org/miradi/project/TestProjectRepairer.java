@@ -33,9 +33,16 @@ import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
+import org.miradi.objects.GroupBox;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.IntermediateResult;
+import org.miradi.objects.ScopeBox;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.objects.TextBox;
+import org.miradi.objects.ThreatReductionResult;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TestProjectRepairer extends TestCaseWithProject
@@ -43,6 +50,29 @@ public class TestProjectRepairer extends TestCaseWithProject
 	public TestProjectRepairer(String name)
 	{
 		super(name);
+	}
+	
+	public void testGetFactorsWithoutDiagramFactors() throws Exception
+	{
+		verifyFactorBeingReferredToByDiagramFactor(ScopeBox.getObjectType());
+		verifyFactorBeingReferredToByDiagramFactor(Target.getObjectType());
+		verifyFactorBeingReferredToByDiagramFactor(HumanWelfareTarget.getObjectType());
+		verifyFactorBeingReferredToByDiagramFactor(Cause.getObjectType());
+		verifyFactorBeingReferredToByDiagramFactor(Strategy.getObjectType());
+		verifyFactorBeingReferredToByDiagramFactor(ThreatReductionResult.getObjectType());
+		verifyFactorBeingReferredToByDiagramFactor(IntermediateResult.getObjectType());
+		verifyFactorBeingReferredToByDiagramFactor(GroupBox.getObjectType());
+		verifyFactorBeingReferredToByDiagramFactor(TextBox.getObjectType());
+	}
+
+	private void verifyFactorBeingReferredToByDiagramFactor(int factorType) throws Exception
+	{
+		DiagramFactor diagramFactor = getProject().createAndAddFactorToDiagram(factorType);
+		ProjectRepairer repairer = new ProjectRepairer(getProject());
+		assertEquals("factor should be covered by a diagramFactor?", 0, repairer.getFactorsWithoutDiagramFactors(factorType).size());
+		
+		getProject().deleteObject(diagramFactor);
+		assertEquals("factor should be covered by a diagramFactor?", 1, repairer.getFactorsWithoutDiagramFactors(factorType).size());
 	}
 	
 	public void testDeleteDefectiveThreatStressRatings() throws Exception
