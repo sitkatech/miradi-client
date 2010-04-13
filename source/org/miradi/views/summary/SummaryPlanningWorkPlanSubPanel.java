@@ -19,17 +19,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.summary;
 
+import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 
-import org.martus.swing.UiWrappedTextArea;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.dialogfields.ObjectMultilineDisplayField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.propertiesPanel.FillerPanel;
 import org.miradi.icons.IconManager;
-import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -45,6 +45,7 @@ import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.utils.DateRange;
+import org.miradi.utils.MiradiTextPane;
 
 public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 {
@@ -128,12 +129,18 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	
 	private JComponent createAndAddWarningPanel(String message)
 	{
-		final int MAX_COL_CHAR_COUNT = 30;
-		UiWrappedTextArea label = new UiWrappedTextArea(message, MAX_COL_CHAR_COUNT);
-		TwoColumnPanel panel = new TwoColumnPanel();
+		MiradiTextPane label = new MiradiTextPane(getMainWindow(), ObjectMultilineDisplayField.DEFAULT_WIDE_FIELD_CHARACTERS, 1);
+		label.setText(message);
+		label.setEditable(false);
+		label.setAlignmentY(TOP_ALIGNMENT);
+		
+		JLabel icon = new JLabel(IconManager.getWarningIcon());
+		icon.setAlignmentY(TOP_ALIGNMENT);
+
+		Box panel = Box.createHorizontalBox();
 		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		label.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		panel.add(new JLabel(IconManager.getWarningIcon()));
+		panel.add(icon);
 		panel.add(label);
 		
 		add(panel);
