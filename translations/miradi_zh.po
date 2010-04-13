@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-13 10:22-0500\n"
+"POT-Creation-Date: 2010-04-13 10:50-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -515,7 +515,7 @@ msgstr "RARE"
 msgid "Share Outside of TNC?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:80
+#: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:85
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:40
 msgid "TNC"
 msgstr "大自然保护协会 \t\t"
@@ -8857,6 +8857,18 @@ msgid ""
 msgstr ""
 
 msgid "FieldLabel|40.OrganizationalPriorities|Organizational Priorities"
+msgstr ""
+
+msgid "FieldLabel|40.ProjectResourcesScorecard|Project Resources Scorecard"
+msgstr ""
+
+msgid "FieldLabel|40.ProjectLevelComments|Project-level Comments"
+msgstr ""
+
+msgid "FieldLabel|40.ProjectCitations|Citations"
+msgstr ""
+
+msgid "FieldLabel|40.CapStandardsScorecard|CAP Standards Scorecard"
 msgstr ""
 
 msgid "FieldLabel|41.TrainingType|Training Type"
