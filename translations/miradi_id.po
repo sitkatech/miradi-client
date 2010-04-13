@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-12 10:50-0500\n"
+"POT-Creation-Date: 2010-04-13 10:15-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -428,33 +428,36 @@ msgstr "Masukkan Nama Baru "
 msgid "Project Settings"
 msgstr "Pengaturan Proyek "
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:57
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:60
 #: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:34
 msgid "Label|Project Dates"
 msgstr "Tanggal Proyek "
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:62
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:65
 msgid "Label|Work Plan Dates"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:87
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:89
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:99
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:101
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
-"totals. The data will be visible again if you set the planning start and end "
-"date to include the entire date range of the existing data."
+"totals. If the data is outside the planning date range, it will be visible "
+"again if you set the planning start and end date to include the entire date "
+"range of the existing data. Otherwise, it could be that annual data was "
+"entered for a different fiscal year setting, in which case it will be "
+"visible if you set the fiscal year start back to its previous setting."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:109
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:115
 msgid ""
 "Quarter columns cannot be hidden because this project already has data for "
 "some quarters."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:259
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:265
 msgid "Work Plan Settings"
 msgstr "Pengaturan Rencana Kerja "
 
