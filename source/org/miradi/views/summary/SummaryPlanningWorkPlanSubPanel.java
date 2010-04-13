@@ -113,8 +113,8 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	private void addQuarterColumnVisibilityExplanationLabel()
 	{	
 		quarterVisibilityExplanationFillerReplacement = createAndAddFillerPanel();
-		String message = EAM.text("Quarter columns cannot be hidden because this project already has data for some quarters.");
-		explanationPanel = createAndAddWarningPanel(message);	
+		String message = EAM.text("NOTE: Quarter columns cannot be hidden because this project already has data for some quarters.");
+		explanationPanel = createAndAddInformationalNotePanel(message);	
 		updateQuarterColumnVisibilityEnableStatus();
 	}
 	
@@ -125,6 +125,20 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		add(warningPanelEmptyReplacementPanel);
 		
 		return warningPanelEmptyReplacementPanel;
+	}
+
+	private JComponent createAndAddInformationalNotePanel(String message)
+	{
+		MiradiTextPane label = new MiradiTextPane(getMainWindow(), ObjectMultilineDisplayField.DEFAULT_WIDE_FIELD_CHARACTERS, 1);
+		label.setText(message);
+		label.setEditable(false);
+		label.setAlignmentY(TOP_ALIGNMENT);
+		label.setForeground(getForeground());
+		label.setBackground(getBackground());
+		
+		add(label);
+		
+		return label;
 	}
 	
 	private JComponent createAndAddWarningPanel(String message)
