@@ -107,11 +107,19 @@ public class TncProjectData extends BaseObject
 		projectPlaceTypes = new CodeListData(TAG_PROJECT_PLACE_TYPES, getProject().getQuestion(TncProjectPlaceTypeQuestion.class));
 		organizationalPriorities = new CodeListData(TAG_ORGANIZATIONAL_PRIORITIES, getProject().getQuestion(TncOrganizationalPrioritiesQuestion.class));
 		parentChild = new StringData(TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
+		projectResourcesScorecard = new StringData(TAG_PROJECT_RESOURCES_SCORECARD);
+		projectLevelComments = new StringData(TAG_PROJECT_LEVEL_COMMENTS);
+		projectCitations = new StringData(TAG_PROJECT_CITATIONS);
+		capStandardsScorecard = new StringData(TAG_CAP_STANDARDS_SCORECARD);
 		
 		addField(projectSharingCode);
 		addField(projectPlaceTypes);
 		addField(organizationalPriorities);
 		addField(parentChild);
+		addField(projectResourcesScorecard);
+		addField(projectLevelComments);
+		addField(projectCitations);
+		addField(capStandardsScorecard);
 	}
 	
 	public static final String OBJECT_NAME = "TncProjectData";
@@ -120,9 +128,17 @@ public class TncProjectData extends BaseObject
 	public final static String TAG_PROJECT_PLACE_TYPES = "ProjectPlaceTypes";
 	public final static String TAG_ORGANIZATIONAL_PRIORITIES = "OrganizationalPriorities";
 	public final static String TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT = "ConProParentChildProjectText";
+	public final static String TAG_PROJECT_RESOURCES_SCORECARD = "ProjectResourcesScorecard";
+	public final static String TAG_PROJECT_LEVEL_COMMENTS = "ProjectLevelComments";
+	public final static String TAG_PROJECT_CITATIONS = "ProjectCitations";
+	public final static String TAG_CAP_STANDARDS_SCORECARD = "CapStandardsScorecard";
 	
 	public StringData projectSharingCode;
 	public CodeListData projectPlaceTypes;
 	public CodeListData organizationalPriorities;
 	public StringData parentChild;
+	public StringData projectResourcesScorecard;
+	public StringData projectLevelComments;
+	public StringData projectCitations;
+	public StringData capStandardsScorecard;
 }
