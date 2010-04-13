@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.summary;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 
 import org.martus.swing.UiWrappedTextArea;
@@ -51,6 +52,8 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 		
+		addHiddenDataWarningLabel();
+		
 		ObjectDataInputField startDate = createDateChooserField(ProjectMetadata.TAG_START_DATE);
 		ObjectDataInputField endDate = createDateChooserField(ProjectMetadata.TAG_EXPECTED_END_DATE);
 		ObjectDataInputField[] projectDateFields = new ObjectDataInputField[] {startDate, endDate, };
@@ -62,8 +65,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(EAM.text("Label|Work Plan Dates"), workPlanDateFields);
 		
 		addDataDateRangeTextField();
-		addHiddenDataWarningLabel();
-		
+
 		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_FISCAL_YEAR_START, new FiscalYearStartQuestion()));
 		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, getProject().getQuestion(DiagramObjectDataInclusionQuestion.class)));
 		addField(createNumericField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR));
@@ -97,8 +99,12 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	{
 		warningLabelFillerReplacement =createAndAddFillerPanel();
 		String warningMessage = EAM.text("Some work plan data is currently hidden and not included in " +
-													  "calculated totals. The data will be visible again if you set the " +
-													  "planning start and end date to include the entire date range of the existing data.");
+										"calculated totals. If the data is outside the planning date range, " +
+										"it will be visible again if you set the planning start and end date " +
+										"to include the entire date range of the existing data. " +
+										"Otherwise, it could be that annual data was entered for a " +
+										"different fiscal year setting, in which case it will be visible " +
+										"if you set the fiscal year start back to its previous setting.");
 		warningPanel = createAndAddWarningPanel(warningMessage);
 		updateOutOfRangeDataWarningField();
 	}
@@ -120,7 +126,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		return warningPanelEmptyReplacementPanel;
 	}
 	
-	private TwoColumnPanel createAndAddWarningPanel(String message)
+	private JComponent createAndAddWarningPanel(String message)
 	{
 		final int MAX_COL_CHAR_COUNT = 30;
 		UiWrappedTextArea label = new UiWrappedTextArea(message, MAX_COL_CHAR_COUNT);
@@ -259,9 +265,9 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		return EAM.text("Work Plan Settings");
 	}
 	
-	private TwoColumnPanel warningPanel;
 	private FillerPanel warningLabelFillerReplacement;
 	private FillerPanel quarterVisibilityExplanationFillerReplacement;
-	private TwoColumnPanel explanationPanel;
+	private JComponent warningPanel;
+	private JComponent explanationPanel;
 	private ObjectDataInputField quarterColumnVisibilityComponent;
 }
