@@ -84,7 +84,7 @@ public class CpmzProjectImporter extends AbstractProjectImporter
 		ZipFile zipFile = new ZipFile(zipFileToImport);
 		try
 		{
-			byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
+			byte[] extractXmlBytes = readZipEntryFile(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
 			if (extractXmlBytes.length == 0)
 				throw new Exception(ExportCpmzDoer.PROJECT_XML_FILE_NAME + EAM.text(" was empty"));
 			
@@ -173,7 +173,7 @@ public class CpmzProjectImporter extends AbstractProjectImporter
 	
 	private ByteArrayInputStreamWithSeek getProjectAsInputStream(ZipFile zipFile) throws Exception
 	{
-		byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
+		byte[] extractXmlBytes = readZipEntryFile(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
 		return new ByteArrayInputStreamWithSeek(extractXmlBytes);
 	}
 
@@ -210,7 +210,7 @@ public class CpmzProjectImporter extends AbstractProjectImporter
 		filledProject.executeCommand(setCurrentDiagramCommand);
 	}
 
-	public static byte[] extractXmlBytes(ZipFile zipFile, String entryName) throws Exception
+	public static byte[] readZipEntryFile(ZipFile zipFile, String entryName) throws Exception
 	{
 		ZipEntry zipEntry = zipFile.getEntry(entryName);
 		if (zipEntry == null)
