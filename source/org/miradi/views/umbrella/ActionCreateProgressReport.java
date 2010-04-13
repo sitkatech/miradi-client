@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import org.miradi.actions.ObjectsAction;
-import org.miradi.icons.ProgressReportIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -28,7 +28,7 @@ public class ActionCreateProgressReport extends ObjectsAction
 {
 	public ActionCreateProgressReport(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), new ProgressReportIcon());
+		super(mainWindowToUse, getLabel(), IconManager.getProgressReportIcon());
 	}
 
 	private static String getLabel()

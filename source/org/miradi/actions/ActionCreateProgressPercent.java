@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions;
 
-import org.miradi.icons.ProgressPercentIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -27,7 +27,7 @@ public class ActionCreateProgressPercent extends ObjectsAction
 {
 	public ActionCreateProgressPercent(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), new ProgressPercentIcon());
+		super(mainWindowToUse, getLabel(), IconManager.getProgressPercentIcon());
 	}
 
 	private static String getLabel()
