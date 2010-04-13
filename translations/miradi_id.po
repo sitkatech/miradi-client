@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-13 10:50-0500\n"
+"POT-Creation-Date: 2010-04-13 11:29-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1066,11 +1066,11 @@ msgstr "Kesalahan selama pembatalan "
 msgid "(Definition Not Available)"
 msgstr "(Definisi Tidak Ada) "
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:89
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:91
 msgid " was empty"
 msgstr "kosong "
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:265
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:296
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:119
 msgid "Import"
