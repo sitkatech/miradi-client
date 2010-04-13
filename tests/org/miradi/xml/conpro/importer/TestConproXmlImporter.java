@@ -268,9 +268,9 @@ public class TestConproXmlImporter extends TestCaseWithProject
 //		fileInputStream.seek(0);
 //	}
 
-	private void exportProject(File afterXmlOutFile, ProjectForTesting projectToFill1) throws Exception
+	private void exportProject(File afterXmlOutFile, ProjectForTesting projectToExport) throws Exception
 	{
-		new ConproXmlExporter(projectToFill1).export(afterXmlOutFile);
+		new ConproXmlExporter(projectToExport).export(afterXmlOutFile);
 	}
 
 	private String convertFileContentToString(File fileToConvert) throws Exception

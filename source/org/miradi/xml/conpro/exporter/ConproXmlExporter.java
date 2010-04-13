@@ -85,9 +85,9 @@ import org.miradi.xml.conpro.ConProMiradiXml;
 
 public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 {
-	public ConproXmlExporter(Project project) throws Exception
+	public ConproXmlExporter(Project projectToExport) throws Exception
 	{
-		super(project);
+		super(projectToExport);
 		
 		codeMapHelper = new ConProMiradiCodeMapHelper();
 	}
