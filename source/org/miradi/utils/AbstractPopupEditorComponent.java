@@ -63,6 +63,14 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 			currentSelectionText.setBackground(bg);
 	}
 	
+	@Override
+	public void setForeground(Color fg)
+	{
+		super.setForeground(fg);
+		if (currentSelectionText != null)
+			currentSelectionText.setForeground(fg);
+	}
+	
 	private void createComponents()
 	{
 		currentSelectionText = new PanelTextArea();
