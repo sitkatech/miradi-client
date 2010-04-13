@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-13 10:22-0500\n"
+"POT-Creation-Date: 2010-04-13 10:50-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -544,7 +544,7 @@ msgstr "RARE"
 msgid "Share Outside of TNC?"
 msgstr "¿Desea compartir fuera de TNC? "
 
-#: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:80
+#: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:85
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:40
 msgid "TNC"
 msgstr "TNC"
@@ -9190,6 +9190,18 @@ msgstr "Clasificaciones de proyectos"
 
 msgid "FieldLabel|40.OrganizationalPriorities|Organizational Priorities"
 msgstr "Prioridades organizativas"
+
+msgid "FieldLabel|40.ProjectResourcesScorecard|Project Resources Scorecard"
+msgstr ""
+
+msgid "FieldLabel|40.ProjectLevelComments|Project-level Comments"
+msgstr ""
+
+msgid "FieldLabel|40.ProjectCitations|Citations"
+msgstr ""
+
+msgid "FieldLabel|40.CapStandardsScorecard|CAP Standards Scorecard"
+msgstr ""
 
 msgid "FieldLabel|41.TrainingType|Training Type"
 msgstr "Tipo de capacitación"
