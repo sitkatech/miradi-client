@@ -45,6 +45,7 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 	public PanelTreeTable(MainWindow mainWindowToUse, TreeTableModel treeTableModel)
 	{
 		super(treeTableModel);
+		
 		mainWindow = mainWindowToUse;
 		setFont(getMainWindow().getUserDataPanelFont());
 		getTableHeader().setFont(getMainWindow().getUserDataPanelFont());
@@ -122,6 +123,7 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 		return (TreeTableNode)getRawObjectForRow(row);
 	}
 	
+	@Override
 	public void columnMoved(TableColumnModelEvent event)
 	{
 		int toTableColumn = event.getToIndex();
@@ -168,6 +170,7 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 		    super();
 		}
 		
+		@Override
 		public boolean isCellEditable(EventObject e) 
 	    {
 	    	forceDispatchPressReleaseEventsToFixExpandCollapseBugOnMac(e);
@@ -213,6 +216,7 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 			return new MouseEvent(getTree(), mouseReleased, mouseEvent.getWhen(), mouseEvent.getModifiers(), mouseClickXLocation, mouseClickYLocation, clickCount, isPopupTrigger);
 		}
 		
+		@Override
 		public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int r, int c)
 		{
 			JTextField textField = (JTextField) super.getTableCellEditorComponent(table, value, isSelected, r, c);
