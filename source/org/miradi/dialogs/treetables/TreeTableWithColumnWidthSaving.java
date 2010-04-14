@@ -55,6 +55,7 @@ abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithRowHei
 		return getColumnName(tableColumn);
 	}
 	
+	@Override
 	public void rebuildTableCompletely() throws Exception
 	{
 		super.rebuildTableCompletely();
