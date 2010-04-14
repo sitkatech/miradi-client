@@ -32,6 +32,7 @@ public class PanelTable extends TableWithHelperMethods
 	public PanelTable(MainWindow mainWindowToUse, TableModel model)
 	{
 		super(model);
+		
 		mainWindow = mainWindowToUse;
 		setFontData();
 	}
