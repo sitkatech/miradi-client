@@ -41,6 +41,7 @@ public class TableHeaderWithExpandCollapseIcons extends JTableHeader
 	public TableHeaderWithExpandCollapseIcons(TableWithExpandableColumnsInterface tableToUse)
 	{
 		super(tableToUse.getColumnModel());
+		
 		tableWithExpandableColumnsInterface = tableToUse;
 		addMouseListener(new HeaderMouseHandler());
 	}
