@@ -61,7 +61,7 @@ public class WhenPopupEditorComponent extends AbstractPopupEditorComponent
 			if (whenEditorPanel != null)
 				return whenEditorPanel.getStartEndCodes().toString();
 			
-			return new CodeList().toString();
+			return null;
 		}
 		catch (Exception e)
 		{
