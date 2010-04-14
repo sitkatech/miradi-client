@@ -211,7 +211,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{
 		try
 		{
-			if (isWhenColumn(column))
+			if (isWhenColumn(column) && value != null)
 				setWhenValue(getBaseObjectForRow(row), createCodeList(value));
 		}
 		catch (Exception e)
