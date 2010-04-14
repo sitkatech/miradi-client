@@ -56,6 +56,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 	public ObjectTreeTable(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModelToUse)
 	{
 		super(mainWindowToUse, treeTableModelToUse);
+		
 		project = mainWindowToUse.getProject();
 		selectionListeners = new Vector<ListSelectionListener>();
 
