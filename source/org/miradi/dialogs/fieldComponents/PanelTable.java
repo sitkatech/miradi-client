@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.fieldComponents;
 
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
 import org.miradi.dialogs.tablerenderers.BasicTableCellEditorOrRendererFactory;
@@ -36,12 +37,26 @@ public class PanelTable extends TableWithHelperMethods
 		mainWindow = mainWindowToUse;
 		setFontData();
 	}
+	
+	@Override
+	public void setTableHeader(JTableHeader tableHeader)
+	{
+		super.setTableHeader(tableHeader);
+		
+		if (getMainWindow() != null)
+			setTableHeaderFont();
+	}
 
 	private void setFontData()
 	{
 		setFont(getMainWindow().getUserDataPanelFont());
-		getTableHeader().setFont(getMainWindow().getUserDataPanelFont());
+		setTableHeaderFont();
 		setRowHeight(getFontMetrics(getFont()).getHeight() + VERTICAL_FONT_CUSHION);
+	}
+
+	private void setTableHeaderFont()
+	{
+		getTableHeader().setFont(getMainWindow().getUserDataPanelFont());
 	}
 	
 	public MainWindow getMainWindow()
