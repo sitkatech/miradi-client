@@ -397,14 +397,14 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	
 	}
 	
-	public void selectObjectAfterSwingClearsItDueToTreeStructureChange(JTable table, int fallbackRow, int fallbackColumn)
+	public void selectObjectAfterSwingClearsItDueToTreeStructureChange(TableWithColumnWidthAndSequenceSaver table, int fallbackRow, int fallbackColumn)
 	{
 		SwingUtilities.invokeLater(new Reselecter(table, fallbackRow, fallbackColumn));
 	}
 	
 	class Reselecter implements Runnable
 	{
-		public Reselecter(JTable tableToUse, int rowToSelect, int columnToSelect)
+		public Reselecter(TableWithColumnWidthAndSequenceSaver tableToUse, int rowToSelect, int columnToSelect)
 		{
 			table = tableToUse;
 			row = rowToSelect;
@@ -419,6 +419,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 				table.getSelectionModel().setSelectionInterval(row, row);
 				if(column < table.getColumnCount())
 					table.getColumnModel().getSelectionModel().setSelectionInterval(column, column);
+				table.ensureSelectedRowVisible();
 			}
 			finally 
 			{
@@ -426,7 +427,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 			}
 		}
 		
-		private JTable table;
+		private TableWithColumnWidthAndSequenceSaver table;
 		private int row;
 		private int column;
 	}
