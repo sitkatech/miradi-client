@@ -227,6 +227,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 	
 	class MouseHandler extends MouseAdapter
 	{
+		@Override
 		public void mousePressed(MouseEvent e)
 		{
 			super.mousePressed(e);
@@ -234,6 +235,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 				doContextMenu(e.getPoint());
 		}
 		
+		@Override
 		public void mouseReleased(MouseEvent e)
 		{
 			super.mouseReleased(e);
@@ -241,6 +243,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 				doContextMenu(e.getPoint());
 		}
 		
+		@Override
 		public void mouseClicked(MouseEvent event)
 		{
 			super.mouseClicked(event);
@@ -272,6 +275,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		    super();
 		}
 		
+		@Override
 		public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int r, int c)
 		{
 			JTextField textField = (JTextField) super.getTableCellEditorComponent(table, value, isSelected, r, c);
@@ -298,6 +302,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 			projectRenderer.setLeafIcon(new MiradiApplicationIcon());
 		}
 
+		@Override
 		public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocusToUse)
 		{
 			VariableHeightTreeCellRenderer renderer = projectRenderer;
