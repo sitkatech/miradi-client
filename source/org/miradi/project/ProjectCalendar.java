@@ -513,6 +513,11 @@ public class ProjectCalendar implements CommandExecutedListener
 		return new DateRange(thisStartDate, thisEndDate);
 	}
 	
+	public boolean arePlanningStartAndEndDatesFlipped()
+	{
+		return getPlanningStartMultiCalendar().after(getPlanningEndMultiCalendar());
+	}
+	
 	public DateUnit getProjectPlanningDateUnit() throws Exception
 	{		
 		return DateUnit.createFromDateRange(getProjectPlanningDateRange());

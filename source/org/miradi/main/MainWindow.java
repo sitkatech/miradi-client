@@ -32,6 +32,7 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.Box;
@@ -660,6 +661,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		{
 			if (hasNonMatchingFiscalYearStartMonth(getProject()))
 				getMainStatusBar().setWarningStatus(EAM.text("Existing data for a different fiscal year is being excluded"));
+			else if (areStartEndDateFlipped())
+				setStartEndDateWarningStatus();
 			else if (isDataOutsideOfcurrentProjectDateRange())
 				getMainStatusBar().setWarningStatus(("WorkPlan/Financial data outside project begin/end dates will not be shown"));
 			else
@@ -675,6 +678,20 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			EAM.logException(e);
 			clearStatusBar();
 		}
+	}
+	
+	private boolean areStartEndDateFlipped()
+	{
+		return getProject().getProjectCalendar().arePlanningStartAndEndDatesFlipped();
+	}
+
+	private void setStartEndDateWarningStatus()
+	{
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%startDate", getProject().getProjectCalendar().getPlanningStartDate());
+		tokenReplacementMap.put("%endDate", getProject().getProjectCalendar().getPlanningEndDate());
+		String warningMessage = EAM.substitute(EAM.text("Start %startDate date is after end date %endDate"), tokenReplacementMap);
+		getMainStatusBar().setWarningStatus(warningMessage);
 	}
 	
 	private static boolean hasNonMatchingFiscalYearStartMonth(Project projectToUse) throws Exception
@@ -714,7 +731,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		MultiCalendar multiEndDate = MultiCalendar.createFromIsoDateString(endDate);
 		
 		if (multiStartDate.after(multiEndDate))
-			throw new InvalidDateRangeException(EAM.text("WARNING: Project end date before start date."));
+			return false;
 
 		return SummaryPlanningWorkPlanSubPanel.hasDataOutsideOfProjectDateRange(getProject());
 	}
