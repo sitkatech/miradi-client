@@ -56,11 +56,11 @@ abstract public class AbstractTreeNodeTaskDoer extends AbstractTreeNodeDoer
 		}
 	}
 	
-	protected BaseObject extractParentFromSelectionHiearchy(ORefList selecionHiearchy)
+	protected BaseObject extractParentFromSelectionHiearchy(ORefList selectionHiearchy)
 	{
-		for (int index = 0; index < selecionHiearchy.size(); ++index)
+		for (int index = 0; index < selectionHiearchy.size(); ++index)
 		{
-			ORef objectRef = selecionHiearchy.get(index);
+			ORef objectRef = selectionHiearchy.get(index);
 			if (objectRef.isInvalid())
 				continue;
 			
