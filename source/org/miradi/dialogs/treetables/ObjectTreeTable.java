@@ -211,10 +211,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 	
 	public void ensureObjectVisible(ORef ref)
 	{
-		// NOTE: This code hasn't been proven to work...we believe it needs to be called
-		// from inside invokeLater and that it will work if we do that
-		// NOTE: This code might not even be needed any more, because 
-		// selecting an object now automatically also scrolls it to be visible
+		// NOTE: This code generally must be called from inside invokeLater 
 		TreePath path = getTreeTableModel().findTreePath(ref);
 		getTree().scrollPathToVisible(path);
 	}
