@@ -29,6 +29,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.utils.AbstractPopupEditorComponent;
 import org.miradi.utils.CodeList;
 
+/*
+ * FIXME: This code currently retrieves dialog data after the dialog has been disposed
+ */
 public class WhenPopupEditorComponent extends AbstractPopupEditorComponent
 {
 	@Override
