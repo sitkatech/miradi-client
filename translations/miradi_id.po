@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-15 12:27-0500\n"
+"POT-Creation-Date: 2010-04-15 13:44-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2657,7 +2657,7 @@ msgstr "Status Saat Ini "
 
 #: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:32
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:346
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:347
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 msgid "Target"
 msgstr "Target"
@@ -6778,17 +6778,17 @@ msgstr "Pilih strategi dan aktivitas mana yang relevan dengan tujuan ini"
 msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:371
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:372
 #: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:59
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
 msgstr "Ancaman"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:908
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:909
 msgid "Project Description:"
 msgstr "Keterangan Proyek: "
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:913
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:914
 msgid "Site/Scope Description:"
 msgstr "Keterangan Lokasi/Cakupan: "
 
