@@ -165,7 +165,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			ORefSet objectiveRefs = getRelevantObjectiveRefs(strategy);
 			writeIds(out, OBJECTIVES, OBJECTIVE_ID, new ORefList(objectiveRefs));
 			
-			writeLabelElement(out, NAME, strategy, Strategy.TAG_LABEL);
+			String[] fieldTagsToConcatenate = new String[]{Strategy.TAG_SHORT_LABEL, Strategy.TAG_LABEL, Strategy.TAG_TEXT, };
+			writeElement(out, NAME, buildConcatenatedLabel(strategy, fieldTagsToConcatenate, ""));
 			writeOptionalTaxonomyClassificationCode(out, strategy);
 			writeElement(out, SELECTED, Boolean.toString(!strategy.isStatusDraft()));
 			writeOptionalElement(out, COMMENT, strategy, Strategy.TAG_COMMENTS);
@@ -430,7 +431,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			if (index > 0)
 				label += DELIMITER_TAG;
 			
-			label += baseObject.getField(tags[index]);
+			label += baseObject.getField(tags[index]).get();
 		}
 		
 		if (optionalAnnotationLabel.length() > 0)
