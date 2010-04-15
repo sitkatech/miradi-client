@@ -42,6 +42,7 @@ public class NoProjectView extends UmbrellaView
 		return null;
 	}
 	
+	@Override
 	public JToolBar createToolBar()
 	{
 		return new NoProjectToolBar(getActions());
@@ -53,12 +54,14 @@ public class NoProjectView extends UmbrellaView
 		addJumpDoerToMap(ActionJumpWelcomeImportStep.class);
 	}
 	
+	@Override
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
 		getMainWindow().hideDivider();
 	}
 
+	@Override
 	public void becomeInactive() throws Exception
 	{
 		getMainWindow().showDivider();
@@ -70,6 +73,7 @@ public class NoProjectView extends UmbrellaView
 		getMainWindow().getWizard().refresh();
 	}
 
+	@Override
 	public String cardName()
 	{
 		return getViewName();
