@@ -37,6 +37,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.StringRefMap;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Indicator;
@@ -45,6 +46,7 @@ import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
@@ -153,6 +155,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 			verifyImportEmptyProject(beforeXmlOutFile, projectToFill1);
 			verifyThreatStressRatingPoolContents(getProject(), projectToFill1);
 			verifyObjectiveLabelsAndUnsplitLabel(projectToFill1);
+			unsplitStrategyLabels(projectToFill1);
 			verifyConcatenatedProjectScopeAndDescription(projectToFill1);
 			stripDelimiterTagFromObjectiveNames(projectToFill1);
 	
@@ -186,13 +189,40 @@ public class TestConproXmlImporter extends TestCaseWithProject
 			String rawLabel = objective.getLabel();
 			String expectedLabel = "123|Some Objective label|Some objective full text data";
 			assertEquals("wrong objective label?", expectedLabel, rawLabel);
-			
+		}
+		
+		String[] tags = new String[]{Objective.TAG_SHORT_LABEL, Objective.TAG_LABEL, Objective.TAG_FULL_TEXT, };
+		unsplitLabels(projectToFill1, Objective.getObjectType(), tags);
+	}
+	
+	private void unsplitStrategyLabels(ProjectForTesting projectToFill1) throws Exception
+	{
+		String[] tags = new String[]{Strategy.TAG_SHORT_LABEL, Strategy.TAG_LABEL, Strategy.TAG_TEXT, };
+		unsplitLabels(projectToFill1, Strategy.getObjectType(), tags);
+	}
+
+	private void unsplitLabels(ProjectForTesting projectToFill1, int objectType, String[] tags) throws Exception
+	{
+		ORefList refs = projectToFill1.getPool(objectType).getORefList();
+		for (int index = 0; index < refs.size(); ++index)
+		{
+			BaseObject baseObject = BaseObject.find(projectToFill1, refs.get(index));
+			String rawLabel = baseObject.getLabel();
 			
 			String[] splittedFields = rawLabel.split("\\|");
-			objective.setData(Objective.TAG_SHORT_LABEL, splittedFields[0]);
-			objective.setData(Objective.TAG_LABEL, splittedFields[1]);
-			objective.setData(Objective.TAG_FULL_TEXT, splittedFields[2]);
+			setSafeFieldValue(baseObject, splittedFields, tags, 0);
+			setSafeFieldValue(baseObject, splittedFields, tags, 1);
+			setSafeFieldValue(baseObject, splittedFields, tags, 2);
 		}
+	}
+	
+	private void setSafeFieldValue(BaseObject baseObject, String[] splittedFields, String[] tags, int tagIndex) throws Exception
+	{
+		String thirdField = "";
+		if (splittedFields.length > tagIndex)
+			thirdField = splittedFields[tagIndex];
+		
+		baseObject.setData(tags[tagIndex], thirdField);
 	}
 	
 	private void verifyConcatenatedProjectScopeAndDescription(ProjectForTesting projectToFill1) throws Exception
@@ -458,6 +488,34 @@ public class TestConproXmlImporter extends TestCaseWithProject
 			Target importedTarget = Target.find(projectToFill, targetRefs.get(0));
 			assertTrue("Incorrect viability mode?", importedTarget.isViabilityModeTNC());
 			assertEquals("Incorrect kea children count?", 1, importedTarget.getKeyEcologicalAttributeRefs().size());
+		}
+		finally
+		{
+			beforeXmlOutFile.delete();
+			projectToFill.close();
+		}
+	}
+	
+	public void testStrategyLabel() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_SHORT_LABEL, "SomeShortLabel");
+		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_LABEL, "SomeLabel");
+		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_TEXT, "SomeDetailsText");
+		
+		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
+		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFill");
+		try
+		{
+			exportProject(beforeXmlOutFile, getProject());
+			importProject(beforeXmlOutFile, projectToFill);
+			
+			ORefList strategyRefs = projectToFill.getStrategyPool().getORefList();
+			assertEquals("Incorrect strategy count?", 1, strategyRefs.size());
+			
+			Strategy importedStrategy = Strategy.find(projectToFill, strategyRefs.getFirstElement());
+			String EXPECTED_LABEL = "SomeShortLabel|SomeLabel|SomeDetailsText";
+			assertEquals("Incorrect strategy label?", EXPECTED_LABEL, importedStrategy.getLabel());
 		}
 		finally
 		{
