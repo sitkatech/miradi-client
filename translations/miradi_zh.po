@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-15 10:33-0500\n"
+"POT-Creation-Date: 2010-04-15 12:27-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -6527,11 +6527,11 @@ msgstr ""
 msgid "Threat"
 msgstr "威胁因子"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:897
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:908
 msgid "Project Description:"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:902
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:913
 msgid "Site/Scope Description:"
 msgstr ""
 
