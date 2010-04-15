@@ -34,11 +34,6 @@ public class MainStatusBar extends JPanel
 		add(statusSummary);
 	}
 		
-	public void setStatus(String text)
-	{
-		statusSummary.setText(text);
-	}
-	
 	public void setWarningStatus(String warningMessage)
 	{
 		statusSummary.setText(warningMessage);
