@@ -416,16 +416,27 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private String buildObjectiveExportableName(Desire desire, String optionalAnnotationLabel)
 	{
-		String shortLabel = desire.getShortLabel();
-		String label = desire.getLabel();
-		String fullText = desire.getData(Objective.TAG_FULL_TEXT);		
-		
+		String[] tags = new String[]{Desire.TAG_SHORT_LABEL, Desire.TAG_LABEL, Desire.TAG_FULL_TEXT, }; 
+				
+		return buildConcatenatedLabel(desire, tags, optionalAnnotationLabel);
+	}
+	
+	private String buildConcatenatedLabel(BaseObject baseObject, String[] tags, String optionalAnnotationLabel)
+	{
 		final String DELIMITER_TAG = "|";
-		String name = shortLabel + DELIMITER_TAG + label + DELIMITER_TAG + fullText;
-		if (optionalAnnotationLabel.length() > 0)
-			name += optionalAnnotationLabel;
+		String label = "";
+		for (int index = 0; index < tags.length; ++index)
+		{
+			if (index > 0)
+				label += DELIMITER_TAG;
+			
+			label += baseObject.getField(tags[index]);
+		}
 		
-		return name;
+		if (optionalAnnotationLabel.length() > 0)
+			label += optionalAnnotationLabel;
+		
+		return label;
 	}
 	
 	private void writeProgressPercents(UnicodeWriter out, ORefList progressPercentRefs) throws Exception
