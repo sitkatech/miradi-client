@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-15 13:44-0500\n"
+"POT-Creation-Date: 2010-04-15 15:35-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4238,19 +4238,19 @@ msgstr "未知错误阻止打开项目 \t\t"
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:717
-msgid "WARNING: Project end date before start date."
-msgstr "警告：项目结束日期在起始日期之前 \t\t"
+#: Miradi/source/org/miradi/main/MainWindow.java:687
+msgid "Start %startDate date is after end date %endDate"
+msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:832
+#: Miradi/source/org/miradi/main/MainWindow.java:843
 msgid "Unable to save preferences"
 msgstr "无法保存优先选项 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1043
+#: Miradi/source/org/miradi/main/MainWindow.java:1054
 msgid "Unable to launch external web browser"
 msgstr "无法运行外部网页浏览器 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1059
+#: Miradi/source/org/miradi/main/MainWindow.java:1070
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -27655,6 +27655,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "WARNING: Project end date before start date."
+#~ msgstr "警告：项目结束日期在起始日期之前 \t\t"
 
 #~ msgid "First Quarter"
 #~ msgstr "第一季度 \t\t"
