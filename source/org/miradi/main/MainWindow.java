@@ -55,7 +55,6 @@ import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogfields.FieldSaver;
 import org.miradi.exceptions.FutureVersionException;
-import org.miradi.exceptions.InvalidDateRangeException;
 import org.miradi.exceptions.OldVersionException;
 import org.miradi.exceptions.UnknownCommandException;
 import org.miradi.main.menu.MainMenuBar;
@@ -668,11 +667,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			else
 				clearStatusBar();
 		}
-		catch (InvalidDateRangeException e)
-		{
-			getMainStatusBar().setWarningStatus(e.getMessage());
-			EAM.logException(e);
-		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
@@ -719,7 +713,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return mainStatusBar;
 	}
 
-	private boolean isDataOutsideOfcurrentProjectDateRange() throws InvalidDateRangeException
+	private boolean isDataOutsideOfcurrentProjectDateRange()
 	{
 		String startDate = getProject().getProjectCalendar().getPlanningStartDate();
 		String endDate = getProject().getProjectCalendar().getPlanningEndDate();
