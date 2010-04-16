@@ -21,10 +21,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+
+import javax.swing.Icon;
 
 import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.icons.WarningIcon;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringMap;
@@ -47,23 +49,18 @@ public class ProjectResourceFilterStatusPanel extends AbstractFixedHeightDirectl
 	{
 		ORefList projectResourceRefs = getProjectResourceFilterRefs();
 		String statusText = "";
-		panelBackgroundColor = super.getBackground();
+		Icon warningIcon = null;
 		if (projectResourceRefs.size() > 0)
 		{
 			statusText = EAM.text("Project Resource Filter Is On");
-			panelBackgroundColor = Color.red;
+			warningIcon = new WarningIcon();
 		}
 		
 		filterStatusLabel.setText(statusText);
+		filterStatusLabel.setIcon(warningIcon);
 		filterStatusLabel.invalidate();
 	}
 	
-	@Override
-	public Color getBackground()
-	{
-		return panelBackgroundColor;
-	}
-		
 	private ORefList getProjectResourceFilterRefs()
 	{
 		try
@@ -88,5 +85,4 @@ public class ProjectResourceFilterStatusPanel extends AbstractFixedHeightDirectl
 	
 	private Project project;
 	private PanelTitleLabel filterStatusLabel;
-	private Color panelBackgroundColor;
 }
