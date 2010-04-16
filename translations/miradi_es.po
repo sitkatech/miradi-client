@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-16 09:46-0500\n"
+"POT-Creation-Date: 2010-04-16 09:49-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -4486,7 +4486,7 @@ msgstr ""
 msgid "Unknown error prevented opening that project"
 msgstr "Un error desconocido impidió que se abriera ese proyecto."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:662
+#: Miradi/source/org/miradi/main/MainWindow.java:664
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
