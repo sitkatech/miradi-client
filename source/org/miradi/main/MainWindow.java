@@ -658,10 +658,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		try
 		{
-			if (hasNonMatchingFiscalYearStartMonth(getProject()))
-				getMainStatusBar().setWarningStatus(EAM.text("Existing data for a different fiscal year is being excluded"));
-			else if (areStartEndDateFlipped())
+			if (areStartEndDateFlipped())
 				setStartEndDateWarningStatus();
+			else if (hasNonMatchingFiscalYearStartMonth(getProject()))
+				getMainStatusBar().setWarningStatus(EAM.text("Existing data for a different fiscal year is being excluded"));
 			else if (isDataOutsideOfcurrentProjectDateRange())
 				getMainStatusBar().setWarningStatus(("WorkPlan/Financial data outside project begin/end dates will not be shown"));
 			else
