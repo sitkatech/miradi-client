@@ -179,6 +179,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, organiziationalPrioritiesQuestion.getAllCodes().toString());
 		
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT, "Some Parent Child Value");
+		
+		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD, "Some tnc project resources scorecard");
+		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_LEVEL_COMMENTS, "some tnc project level comments");
+		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_CITATIONS, "some tnc project citations");
+		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_CAP_STANDARDS_SCORECARD, "some tnc cap standards scorecard");
 	}
 	
 	public void setFiscalYearStartMonth(int startMonth) throws Exception
