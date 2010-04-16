@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-16 12:14-0500\n"
+"POT-Creation-Date: 2010-04-16 12:19-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -6989,7 +6989,7 @@ msgstr ""
 msgid "Collapse Selected Column"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceFilterStatusPanel.java:53
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceFilterStatusPanel.java:55
 msgid "Project Resource Filter Is On"
 msgstr ""
 
