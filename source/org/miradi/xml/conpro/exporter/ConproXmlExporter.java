@@ -308,7 +308,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			String measurementRankingCode = rankingCodeToXmlValue(measurement.getData(Measurement.TAG_STATUS));
 				
 			writeStartElementWithAttribute(out, MEASUREMENT, SEQUENCE, ++sequenceCounter);
-			writeElement(out, MEASUREMENT_SUMMARY, measurement, Measurement.TAG_SUMMARY);
+			writeOptionalElement(out, MEASUREMENT_SUMMARY, measurement, Measurement.TAG_SUMMARY);
 			writeOptionalElement(out, MEASUREMENT_COMMENT, measurement, Measurement.TAG_COMMENTS);
 			writeOptionalElement(out, MEASUREMENT_DATE, measurementDate);
 			writeOptionalElement(out, MEASUREMENT_STATUS_CONFIDENCE,  measurementStatusConfidenceCode);
