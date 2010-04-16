@@ -44,5 +44,9 @@ public class TncProjectDataSchemaElement extends ObjectSchemaElement
 		createCodeListField(XmlSchemaCreator.TNC_MARINE_ECO_REGION);
 		createCodeListField(XmlSchemaCreator.TNC_FRESHWATER_ECO_REGION);
 		createOptionalTextField(ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
+		createOptionalTextField(TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD);
+		createOptionalTextField(TncProjectData.TAG_PROJECT_LEVEL_COMMENTS);
+		createOptionalTextField(TncProjectData.TAG_PROJECT_CITATIONS);
+		createOptionalTextField(TncProjectData.TAG_CAP_STANDARDS_SCORECARD);
 	}
 }
