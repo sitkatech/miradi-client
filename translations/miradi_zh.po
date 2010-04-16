@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-15 16:21-0500\n"
+"POT-Creation-Date: 2010-04-16 09:46-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4239,7 +4239,9 @@ msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/MainWindow.java:687
-msgid "Start %startDate date is after end date %endDate"
+msgid ""
+"Start date (currently %startDate) must be earlier than end date (currently %"
+"endDate)"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/MainWindow.java:843
