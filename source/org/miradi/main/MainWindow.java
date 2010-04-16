@@ -684,7 +684,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%startDate", getProject().getProjectCalendar().getPlanningStartDate());
 		tokenReplacementMap.put("%endDate", getProject().getProjectCalendar().getPlanningEndDate());
-		String warningMessage = EAM.substitute(EAM.text("Start %startDate date is after end date %endDate"), tokenReplacementMap);
+		String warningMessage = EAM.substitute(EAM.text("Start date (currently %startDate) must be earlier than end date (currently %endDate)"), tokenReplacementMap);
 		getMainStatusBar().setWarningStatus(warningMessage);
 	}
 	
