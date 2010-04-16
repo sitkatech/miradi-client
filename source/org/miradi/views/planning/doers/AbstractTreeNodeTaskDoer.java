@@ -65,9 +65,7 @@ abstract public class AbstractTreeNodeTaskDoer extends AbstractTreeNodeDoer
 				continue;
 			
 			BaseObject objectInHieararchy = BaseObject.find(getProject(), objectRef);
-			/*
-			 * NOTE: Selection may still be a recently-deleted node
-			 */
+			// NOTE: Selection may still be a recently-deleted node
 			if (objectInHieararchy == null)
 				continue;
 			
