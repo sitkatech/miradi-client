@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-19 14:35-0500\n"
+"POT-Creation-Date: 2010-04-19 17:05-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7165,15 +7165,15 @@ msgstr "Sifat-sifat Atribut Ekologi Kunci "
 msgid "Title|Target Viability Properties"
 msgstr "Sifat-sifat Kelangsungan Target "
 
-#: Miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:42
+#: Miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:48
 msgid "Status"
 msgstr "Status "
 
-#: Miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:60
+#: Miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:85
 msgid "Title|Human Welfare Target Properties"
 msgstr "Properti Target Kesejahteraan Manusia "
 
-#: Miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:62
+#: Miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:87
 msgid "Title|Target Properties"
 msgstr "Properti Target "
 
