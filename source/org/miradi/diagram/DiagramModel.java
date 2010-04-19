@@ -298,6 +298,11 @@ abstract public class DiagramModel extends DefaultGraphModel
 		return diagramContents.isResultsChain();
 	}
 	
+	public boolean isConceptualModelDiagram()
+	{
+		return diagramContents.isConceptualModelDiagram();
+	}
+	
 	public boolean isSharedInResultsChain(DiagramFactor diagramFactorToCheck)
 	{
 		DiagramFactor[] allResultsChainDiagramFactors = GroupOfDiagrams.findAllResultsChainDiagrams(project);
