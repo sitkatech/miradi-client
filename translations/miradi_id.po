@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-19 13:32-0500\n"
+"POT-Creation-Date: 2010-04-19 14:35-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -622,7 +622,7 @@ msgid "Control Bar"
 msgstr "Balok Kontrol "
 
 #: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:335
-#: Miradi/source/org/miradi/diagram/DiagramModel.java:801
+#: Miradi/source/org/miradi/diagram/DiagramModel.java:806
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
 "the project has gotten corrupted. Please contact the Miradi team for help "
@@ -852,6 +852,12 @@ msgstr "Pertahankan "
 #: Miradi/source/org/miradi/views/diagram/InsertStrategyDoer.java:43
 msgid "Label|New Strategy"
 msgstr "Strategi Baru "
+
+#: Miradi/source/org/miradi/views/diagram/CreateResultsChainDoer.java:89
+msgid ""
+"Annotionats were removed from Contributing Factor/Threat and attached to "
+"Intermediate Result/Threat Reduction Result"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/InsertThreatReductionResultDoer.java:43
 msgid "Label|New Threat Reduction Result"
