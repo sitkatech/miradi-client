@@ -60,6 +60,7 @@ public class SummaryView extends TabbedView
 		addSummaryDoersToMap();
 	}
 
+	@Override
 	public String cardName() 
 	{
 		return getViewName();
@@ -70,11 +71,13 @@ public class SummaryView extends TabbedView
 		return Project.SUMMARY_VIEW_NAME;
 	}
 
+	@Override
 	public JToolBar createToolBar()
 	{
 		return new SummaryToolBar(getMainWindow().getActions());
 	}
 	
+	@Override
 	public void createTabs() throws Exception
 	{
 		ProjectMetadata metadata = getProject().getMetadata();
@@ -118,6 +121,7 @@ public class SummaryView extends TabbedView
 		addScrollingTab(tabPanel);
 	}
 	
+	@Override
 	public void deleteTabs() throws Exception
 	{
 		teamManagementPanel.dispose();
@@ -141,6 +145,7 @@ public class SummaryView extends TabbedView
 		addDoerToMap(ActionDeleteOrganization.class, new DeleteOranizationDoer());
 	}
 	
+	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
