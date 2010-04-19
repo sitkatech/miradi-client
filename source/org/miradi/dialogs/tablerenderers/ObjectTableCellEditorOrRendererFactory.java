@@ -58,7 +58,7 @@ abstract public class ObjectTableCellEditorOrRendererFactory extends BasicTableC
 		Font font = getCellFont(row, tableColumn);
 		editor.setFont(font);
 		final boolean EDITOR_CELL_IS_ALWAYS_SELECTED = true;
-		setSelectedColors(table, editor, EDITOR_CELL_IS_ALWAYS_SELECTED, row, tableColumn);
+		updateBorderAndColors(table, editor, EDITOR_CELL_IS_ALWAYS_SELECTED, row, tableColumn);
 		return editor;
 	}
 	
