@@ -153,7 +153,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (!AssignmentDateUnitsTableModel.canOwnAssignments(baseObject.getRef()))
 				return false;
 			
-			if (baseObject.getSubTaskRefs().hasRefs())
+			if (hasSubTasksWithData(baseObject))
 				return false;
 			
 			if (baseObject.getResourceAssignmentRefs().isEmpty())
@@ -172,6 +172,20 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			EAM.logException(e);
 			return false;
 		}
+	}
+
+	private static boolean hasSubTasksWithData(BaseObject baseObject) throws Exception
+	{
+		ORefList subTaskRefs = baseObject.getSubTaskRefs();
+		for (int index = 0; index < subTaskRefs.size(); ++index)
+		{
+			Task task = Task.find(baseObject.getProject(), subTaskRefs.get(index));
+			OptionalDouble totalCost = task.calculateTimePeriodCosts(new DateUnit()).calculateTotalCost(baseObject.getProject());
+			if (totalCost.hasValue())
+				return true;
+		}
+		
+		return false;
 	}
 	
 	private static boolean hasDifferentDateUnitEffortLists(BaseObject baseObject) throws Exception
