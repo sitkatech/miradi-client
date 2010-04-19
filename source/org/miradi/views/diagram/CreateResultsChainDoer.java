@@ -19,13 +19,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
+import java.util.HashSet;
+
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Factor;
+import org.miradi.objects.IntermediateResult;
+import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.project.ResultsChainCreatorHelper;
@@ -77,6 +84,27 @@ public class CreateResultsChainDoer extends ViewDoer
 
 		ORef newResultsChainRef = creatorHelper.createResultsChain();
 		selectResultsChain(project, diagramView, newResultsChainRef);
+		
+		if (wereAnyAnnotationsTransferred(project, newResultsChainRef) && diagramModel.isConceptualModelDiagram())
+			EAM.notifyDialog(EAM.text("Annotionats were removed from Contributing Factor/Threat and attached to Intermediate Result/Threat Reduction Result"));
+	}
+
+	private static boolean wereAnyAnnotationsTransferred(Project project, ORef newResultsChainRef)
+	{
+		ResultsChainDiagram resultsChain = ResultsChainDiagram.find(project, newResultsChainRef);
+		HashSet<Factor> factors = new HashSet<Factor>();
+		factors.addAll(resultsChain.getFactors(ThreatReductionResult.getObjectType()));
+		factors.addAll(resultsChain.getFactors(IntermediateResult.getObjectType()));
+		for (Factor factor :factors)
+		{
+			if (factor.getDirectOrIndirectIndicatorRefs().hasRefs())
+				return true;
+			
+			if (factor.getObjectiveRefs().hasRefs())
+				return true;
+		}	
+		
+		return false;
 	}
 
 	private static FactorCell[] getSelectedFactorCells(DiagramView diagramView)
