@@ -77,15 +77,15 @@ abstract public class BasicTableCellEditorOrRendererFactory extends AbstractCell
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		JComponent renderer = getRendererComponent(table, isSelected, hasFocus, row, tableColumn, value);
-		
-		renderer.setBorder(getCellBorder());		
-		setSelectedColors(table, renderer, isSelected, row, tableColumn);
+
+		updateBorderAndColors(table, renderer, isSelected, row, tableColumn);
 			
 		return renderer;
 	}
 
-	protected void setSelectedColors(JTable table, JComponent renderer, boolean isSelected, int row, int tableColumn)
+	protected void updateBorderAndColors(JTable table, JComponent renderer, boolean isSelected, int row, int tableColumn)
 	{
+		renderer.setBorder(getCellBorder());
 		if(isSelected)
 		{
 			Color fg = table.getSelectionForeground();
