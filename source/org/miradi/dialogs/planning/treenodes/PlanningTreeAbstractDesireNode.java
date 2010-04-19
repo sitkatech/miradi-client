@@ -74,7 +74,11 @@ abstract public class PlanningTreeAbstractDesireNode extends AbstractPlanningTre
 			BaseObject object = node.getObject();
 			if(object == null)
 				continue;
+			
 			Factor factor = object.getDirectOrIndirectOwningFactor();
+			if (factor == null)
+				continue;
+			
 			if(getDiagramObject().containsWrappedFactorRef(factor.getRef()))
 				newChildren.add(node);
 		}
