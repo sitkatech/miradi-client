@@ -48,6 +48,7 @@ abstract public class AbstractNumericRestrictedTableCellRendererEditorFactory ex
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		updateTextField(numericRestrictedTextRenderer, value.toString(), row, tableColumn);
+		updateBorderAndColors(numericRestrictedTextRenderer, table, row, tableColumn, isSelected);
 		return numericRestrictedTextRenderer;
 	}
 	
@@ -56,6 +57,7 @@ abstract public class AbstractNumericRestrictedTableCellRendererEditorFactory ex
 		textField.setText(value);
 		Font font = getCellFont(row, column);
 		textField.setFont(font);
+		
 	}
 
 	@Override
