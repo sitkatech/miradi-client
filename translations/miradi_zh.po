@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-19 18:17-0500\n"
+"POT-Creation-Date: 2010-04-19 18:22-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -472,7 +472,7 @@ msgstr "计划 \t\t"
 msgid "Strategic Planning"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryView.java:160
+#: Miradi/source/org/miradi/views/summary/SummaryView.java:165
 msgid "Work plan start date is before project start date"
 msgstr "工作计划起始日期早于项目起始日期 \t\t"
 
