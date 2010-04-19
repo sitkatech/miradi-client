@@ -75,6 +75,7 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		setObjectRefs(new ORef[]{metadata.getRef(), getProject().getSingletonObjectRef(TncProjectData.getObjectType()), getProject().getSafeSingleObjectRef(Xenodata.getObjectType())});
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return getTncPanelDescription();
@@ -85,6 +86,7 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		return EAM.text("TNC"); 
 	}
 	
+	@Override
 	public Icon getIcon()
 	{
 		return new TncIcon();
