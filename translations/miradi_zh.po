@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-16 16:20-0500\n"
+"POT-Creation-Date: 2010-04-19 13:32-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4082,7 +4082,7 @@ msgid "Both"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/DiagramObjectDataInclusionQuestion.java:39
-msgid "Result Chain Data"
+msgid "Results Chain Data"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/DiagramObjectDataInclusionQuestion.java:40
