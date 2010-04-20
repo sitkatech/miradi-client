@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-20 11:25-0500\n"
+"POT-Creation-Date: 2010-04-20 11:34-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -1827,10 +1827,8 @@ msgstr "Irreversibilidad "
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:223
 msgid ""
 "<html>Irreversibility - The degree to which the effects of a threat can be "
-"revcersed and the target affected by the threat restored. "
+"reversed and the target affected by the threat restored. "
 msgstr ""
-"<html>Irreversibilidad: el grado al que los efectos de una amenaza se pueden "
-"revertir y se puede restaurar el objeto afectado por la amenaza. "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
 #: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
@@ -31887,6 +31885,13 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid ""
+#~ "<html>Irreversibility - The degree to which the effects of a threat can "
+#~ "be revcersed and the target affected by the threat restored. "
+#~ msgstr ""
+#~ "<html>Irreversibilidad: el grado al que los efectos de una amenaza se "
+#~ "pueden revertir y se puede restaurar el objeto afectado por la amenaza. "
 
 # Please check this par, there seem to be some missing translations in the 'button' lines.
 #~ msgid ""
