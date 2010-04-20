@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
-import org.miradi.project.CurrencyFormat;
+import org.miradi.project.MiradiDecimalFormat;
 
 
 public class PercentageData extends NumberData
@@ -44,8 +44,7 @@ public class PercentageData extends NumberData
 		
 		String doubleAsString = super.get();
 		double rawDouble = Double.parseDouble(doubleAsString);
-		CurrencyFormat formatter = new CurrencyFormat();
-		formatter.setGroupingUsed(false);
+		MiradiDecimalFormat formatter = new MiradiDecimalFormat();
 
 		return formatter.format(rawDouble);
 	}
