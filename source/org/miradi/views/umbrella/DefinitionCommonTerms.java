@@ -221,7 +221,7 @@ public class DefinitionCommonTerms
 		defs.put("Definition:OverallThreatRating", def);
 		
 		def = Definition.createDefinitionFromTextString(EAM.text("Irreversibility"), EAM.text("<html>Irreversibility - The degree to which the effects of a " +
-				"threat can be revcersed and the target affected by the threat restored. "));
+				"threat can be reversed and the target affected by the threat restored. "));
 		defs.put("Definition:Irreversibility", def);
 
 		def = Definition.createDefinitionFromTextString(EAM.text("Severity"), EAM.text("Severity - Within the scope, the level of damage to the target from the threat " +
