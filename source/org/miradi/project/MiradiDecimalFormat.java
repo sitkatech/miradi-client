@@ -29,7 +29,7 @@ public class MiradiDecimalFormat
 	{
 		decimalFormat = new DecimalFormat();
 		decimalFormat.setGroupingUsed(false);
-		decimalFormat.setMaximumFractionDigits(MAX_FRACTION_DIGITS);
+		decimalFormat.setMaximumFractionDigits(Integer.MAX_VALUE);
 	}
 
 	public String format(double valueToFormat)
@@ -39,5 +39,4 @@ public class MiradiDecimalFormat
 	}
 
 	private DecimalFormat decimalFormat;
-	private static final int MAX_FRACTION_DIGITS = 5;
 }
