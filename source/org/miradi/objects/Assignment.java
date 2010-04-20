@@ -201,6 +201,17 @@ abstract public class Assignment extends BaseObject
 		return getProject().getProjectCalendar();
 	}
 	
+	public boolean hasCategoryData()
+	{
+		if (getFundingSourceRef().isValid())
+			return true;
+		
+		if (getAccountingCodeRef().isValid())
+			return true;
+		
+		return false;
+	}
+	
 	abstract protected TimePeriodCosts createTimePeriodCosts(OptionalDouble quantity);
 	
 	abstract public ORef getFundingSourceRef();
