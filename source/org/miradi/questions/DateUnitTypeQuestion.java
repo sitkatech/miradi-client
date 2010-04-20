@@ -23,20 +23,30 @@ package org.miradi.questions;
 import java.util.Vector;
 
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.TimePeriodCostsMap;
+import org.miradi.objects.ResourceAssignment;
+import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
+import org.miradi.utils.OptionalDouble;
 
 public class DateUnitTypeQuestion extends DynamicChoiceQuestion
 {
-	public DateUnitTypeQuestion(ProjectCalendar projectCalendarToUse)
+	public DateUnitTypeQuestion(Project projectToUse, ORefList resourceAssignmentRefsToUse)
 	{
-		projectCalendar = projectCalendarToUse;
+		project = projectToUse;
+		projectCalendar = project.getProjectCalendar();
+		resourceAssignmentRefs = resourceAssignmentRefsToUse;
 	}
 	
 	@Override
 	public ChoiceItem[] getChoices()
 	{
 		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
-		choices.add(new ChoiceItem(DateUnitTypeQuestion.NONE_CODE, EAM.text("None")));
+		if (shouldAddNoneChoice())
+			choices.add(new ChoiceItem(DateUnitTypeQuestion.NONE_CODE, EAM.text("None")));
+		
 		choices.add(new ChoiceItem(DateUnitTypeQuestion.PROJECT_TOTAL_CODE, EAM.text("Project Total")));
 		choices.add(new ChoiceItem(DateUnitTypeQuestion.YEAR_CODE, EAM.text("Year")));
 		if (projectCalendar.shouldShowQuarterColumns())
@@ -48,6 +58,42 @@ public class DateUnitTypeQuestion extends DynamicChoiceQuestion
 		return choices.toArray(new ChoiceItem[0]);
 	}
 	
+	private boolean shouldAddNoneChoice()
+	{
+		try
+		{
+			for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
+			{
+				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRefs.get(index));
+				if (resourceAssignment.getResourceRef().isValid())
+					return false;
+				
+				if (resourceAssignment.getFundingSourceRef().isValid())
+					return false;
+				
+				if (resourceAssignment.getAccountingCodeRef().isValid())
+					return false;
+
+				TimePeriodCostsMap timePeriodCostsMap = resourceAssignment.getResourceAssignmentsTimePeriodCostsMap();
+				OptionalDouble totalWorkUnits = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit()).getTotalWorkUnits();
+				if (totalWorkUnits.hasNonZeroValue())
+					return false;
+			}
+
+			return true;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
+	}
+	
+	private Project getProject()
+	{
+		return project;
+	}
+
 	public static final String NONE_CODE = "NoneCode";
 	public static final String PROJECT_TOTAL_CODE = "ProjectTotalCode";
 	public static final String YEAR_CODE = "YearCode";
@@ -56,4 +102,6 @@ public class DateUnitTypeQuestion extends DynamicChoiceQuestion
 	public static final String DAY_CODE = "DayCode";
 	
 	private ProjectCalendar projectCalendar;
+	private Project project;
+	private ORefList resourceAssignmentRefs;
 }
