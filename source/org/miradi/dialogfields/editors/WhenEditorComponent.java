@@ -106,7 +106,7 @@ public class WhenEditorComponent extends DisposablePanel
 		ResourceAssignment resourceAssignment = ResourceAssignment.find(projectToUse, resourceAssignmentRef);
 		DateUnitEffortList dateUnitEffortList = resourceAssignment.getDateUnitEffortList();
 		if (dateUnitEffortList.size() == 0)
-			return DateUnitTypeQuestion.NONE_CODE;
+			return DateUnitTypeQuestion.PROJECT_TOTAL_CODE;
 		
 		for (int index = 0; index < dateUnitEffortList.size(); ++index)
 		{
