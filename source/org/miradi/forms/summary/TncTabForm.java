@@ -50,5 +50,9 @@ public class TncTabForm extends FieldPanelSpec
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_MARINE_ECO_REGION);
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION);
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
+		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD);
+		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_LEVEL_COMMENTS);
+		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_CITATIONS);
+		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.TAG_CAP_STANDARDS_SCORECARD);
 	}
 }
