@@ -52,10 +52,10 @@ public class WhenEditorComponent extends DisposablePanel
 	{
 		setLayout(new BorderLayout());
 
-		DateUnitTypeQuestion dateUnitTypeQuestion = new DateUnitTypeQuestion(projectCalendar);
+		ORefList resourceAssignmentRefs = baseObjectToUse.getResourceAssignmentRefs();
+		DateUnitTypeQuestion dateUnitTypeQuestion = new DateUnitTypeQuestion(baseObjectToUse.getProject(), resourceAssignmentRefs);
 		dateUnitTypeCombo = new UiComboBox(dateUnitTypeQuestion.getChoices());
 		
-		ORefList resourceAssignmentRefs = baseObjectToUse.getResourceAssignmentRefs();
 		String singleDateUnitTypeCode = getDefaultDateUnitTypeCode(baseObjectToUse.getProject(), resourceAssignmentRefs);
 		
 		Vector<DateUnit> dateUnits = new Vector<DateUnit>();
