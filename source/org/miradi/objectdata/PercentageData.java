@@ -19,8 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
+import org.miradi.project.CurrencyFormat;
+
 
 public class PercentageData extends NumberData
 {
@@ -35,13 +35,17 @@ public class PercentageData extends NumberData
 		newValue = newValue.replace("%", "");
 		super.set(newValue);
 	}
-	
+
 	@Override
 	public String get()
 	{
+		if(new Double(value).isNaN())
+			return "";
+		
 		String doubleAsString = super.get();
 		double rawDouble = Double.parseDouble(doubleAsString);
-		NumberFormat formatter = DecimalFormat.getInstance();
+		CurrencyFormat formatter = new CurrencyFormat();
+		formatter.setGroupingUsed(false);
 
 		return formatter.format(rawDouble);
 	}
