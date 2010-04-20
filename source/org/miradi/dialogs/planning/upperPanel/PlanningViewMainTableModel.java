@@ -180,8 +180,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		for (int index = 0; index < subTaskRefs.size(); ++index)
 		{
 			Task task = Task.find(baseObject.getProject(), subTaskRefs.get(index));
-			OptionalDouble totalCost = task.calculateTimePeriodCosts(new DateUnit()).calculateTotalCost(baseObject.getProject());
-			if (totalCost.hasValue())
+			if (task.getResourceAssignmentRefs().hasRefs())
 				return true;
 		}
 		

@@ -49,8 +49,7 @@ public class TestPlanningViewMainTableModel extends TestCaseWithProject
 		assertTrue("can't edit strategy with empty activity?", isWhenEditable(strategy));
 		
 		Task activity = Task.find(getProject(), activityRef);
-		DateUnitEffortList list = createSampleDateUnitEffortList(1, 2002, 0.0);
-		getProject().addResourceAssignment(activity, list);
+		getProject().addResourceAssignment(activity);
 		assertFalse("can edit strategy with filled activity?", isWhenEditable(strategy));
 		
 		Indicator indicatorWithTwoAssignments = getProject().createIndicatorWithCauseParent();
