@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-20 10:56-0500\n"
+"POT-Creation-Date: 2010-04-20 11:23-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1768,7 +1768,7 @@ msgstr ""
 "abu-abu."
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:207
-#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:43
+#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:53
 msgid "Quarter"
 msgstr "Kuartal"
 
@@ -2848,23 +2848,23 @@ msgstr "Penilaian Cepat"
 msgid "Intensive Assessment"
 msgstr "Penilaian Intensif"
 
-#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:39
+#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:48
 msgid "None"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:40
+#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:50
 msgid "Project Total"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:41
+#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:51
 msgid "Year"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:45
+#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:55
 msgid "Month"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:46
+#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:56
 msgid "Day"
 msgstr ""
 
