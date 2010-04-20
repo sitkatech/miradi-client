@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-20 11:23-0500\n"
+"POT-Creation-Date: 2010-04-20 11:25-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -1067,7 +1067,7 @@ msgstr ""
 msgid "Error during undo"
 msgstr "Error al revertir la acción."
 
-#: Miradi/source/org/miradi/views/umbrella/Definition.java:58
+#: Miradi/source/org/miradi/views/umbrella/Definition.java:59
 msgid "(Definition Not Available)"
 msgstr "(Definición no disponible)"
 
@@ -1775,7 +1775,7 @@ msgstr ""
 "una tarea está representada por un óvalo plano gris."
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:207
-#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:53
+#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:50
 msgid "Quarter"
 msgstr "Trimestre "
 
@@ -2161,14 +2161,15 @@ msgstr ""
 "proyecto. "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:334
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:337
 msgid "Threat Calculations"
 msgstr "Cálculos de amenazas "
 
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:337
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:340
 msgid "Bundle Rules"
 msgstr "Reglas del paquete "
 
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:348
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:351
 msgid "Undefined"
 msgstr "Sin definir"
 
@@ -2858,23 +2859,23 @@ msgstr "Evaluación rápida "
 msgid "Intensive Assessment"
 msgstr "Evaluación intensiva "
 
-#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:48
+#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:45
 msgid "None"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:50
+#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:47
 msgid "Project Total"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:51
+#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:48
 msgid "Year"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:55
+#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:52
 msgid "Month"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:56
+#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:53
 msgid "Day"
 msgstr ""
 
@@ -9445,6 +9446,28 @@ msgstr ""
 "value='Ayuda de Miradi para practicantes de WWF' type='submit'></input></"
 "td></tr></table><p><strong>Campos específicos para proyectos de WWF:</p></"
 "div> "
+
+msgid ""
+"html|/resources/ThreatRatingExplanationOfStressBasedCalculation.html|  "
+"<html><h3>Explanation of How Target-Threat Ratings Are Calculated (Stress "
+"Based Mode)</h3><p>In stress based mode, Scope and Severity ranks are "
+"combined to create Threat Magnitude.  Irreversibility is combined with "
+"Contribution to create the Source of Stress Ranking, and then Threat "
+"Magnitude and Source of Stress Rankings are combined to create the Summary "
+"Stress Rating.</p><p><b>Stress Ranking (Threat Magnitude):</b> Each stress "
+"is given a rank for Severity and Scope. A rule-based procedure is then used "
+"to combine the rankings for the Scope and Severity variables to get a "
+"ranking of Threat Magnitude.  Under these rules, if a threat is rated 'low' "
+"on either variable, then the magnitude is 'low' overall. </p><img src="
+"\"images/StressBasedRules1.png\"  width='436' height='135'><p><b>Source of "
+"Stress Ranking:</b> A source rank is the calculated by combining the "
+"rankings for Contribution and Irreversibility as shown in the matrix below.</"
+"p><img src=\"images/StressBasedRules2.png\"  width='440' "
+"height='149'><p><b>Combining Stress and Source Ranks:</b> The source rank "
+"calculated from the first matrix is then combined with the stress rank which "
+"was calculated from the Stress Ranking matrix as shown in the matrix below.</"
+"p><img src=\"images/StressBasedRules3.png\"  width='438' height='138'></html>"
+msgstr ""
 
 msgid ""
 "html|/resources/AboveToolbarInstructions.html|<HTML><p>You can browse "
@@ -16401,7 +16424,7 @@ msgid ""
 "magnitude and source ranks are then used to calculate the summary stress "
 "rating and the summary stress ratings are then used to calculate the rank of "
 "a threat to a target which is what is displayed in the threat ratings table. "
-"<a href='Definition:ShowRulesStressCalculations'>Click here</a> for a "
+"<a href='Definition:ShowStressBasedRulesCalculations'>Click here</a> for a "
 "detailed description of how Miradi calculates the rank for a specific threat "
 "to a target, and <a href='Definition:ShowRulesBundles'>click here</a> for a "
 "detailed description of how Miradi calculates row and column totals.</p></"
