@@ -23,13 +23,10 @@ package org.miradi.questions;
 import java.util.Vector;
 
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
-import org.miradi.utils.OptionalDouble;
 
 public class DateUnitTypeQuestion extends DynamicChoiceQuestion
 {
@@ -72,11 +69,6 @@ public class DateUnitTypeQuestion extends DynamicChoiceQuestion
 					return false;
 				
 				if (resourceAssignment.getAccountingCodeRef().isValid())
-					return false;
-
-				TimePeriodCostsMap timePeriodCostsMap = resourceAssignment.getResourceAssignmentsTimePeriodCostsMap();
-				OptionalDouble totalWorkUnits = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit()).getTotalWorkUnits();
-				if (totalWorkUnits.hasNonZeroValue())
 					return false;
 			}
 
