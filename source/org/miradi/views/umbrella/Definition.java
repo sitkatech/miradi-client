@@ -54,6 +54,7 @@ public class Definition
 		}
 		catch(Exception e)
 		{
+			EAM.logWarning("Missing file: " + htmlFileName);
 			EAM.logStackTrace();
 			return EAM.text("(Definition Not Available)");
 		}
