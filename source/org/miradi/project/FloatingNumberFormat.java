@@ -23,9 +23,9 @@ package org.miradi.project;
 import java.text.DecimalFormat;
 
 
-public class MiradiDecimalFormat
+public class FloatingNumberFormat
 {
-	public MiradiDecimalFormat()
+	public FloatingNumberFormat()
 	{
 		decimalFormat = new DecimalFormat();
 		decimalFormat.setGroupingUsed(false);
