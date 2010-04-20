@@ -62,7 +62,7 @@ public class DateUnitTypeQuestion extends DynamicChoiceQuestion
 			for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
 			{
 				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRefs.get(index));
-				if (hasCategoryData(resourceAssignment))
+				if (resourceAssignment.hasCategoryData())
 					return false;
 			}
 
@@ -75,20 +75,6 @@ public class DateUnitTypeQuestion extends DynamicChoiceQuestion
 		}
 	}
 
-	private boolean hasCategoryData(ResourceAssignment resourceAssignment)
-	{
-		if (resourceAssignment.getResourceRef().isValid())
-			return true;
-		
-		if (resourceAssignment.getFundingSourceRef().isValid())
-			return true;
-		
-		if (resourceAssignment.getAccountingCodeRef().isValid())
-			return true;
-		
-		return false;
-	}
-	
 	private Project getProject()
 	{
 		return project;

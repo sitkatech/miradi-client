@@ -135,6 +135,15 @@ public class ResourceAssignment extends Assignment
 	}
 	
 	@Override
+	public boolean hasCategoryData()
+	{
+		if (super.hasCategoryData())
+			return true;
+		
+		return getResourceRef().isValid();
+	}
+	
+	@Override
 	public boolean isAssignmentDataSuperseded(DateUnit dateUnit) throws Exception
 	{
 		return getOwner().hasAnySubtaskResourceData(dateUnit);
