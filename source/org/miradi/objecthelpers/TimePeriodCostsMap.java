@@ -174,6 +174,11 @@ public class TimePeriodCostsMap
 		return data.size();
 	}
 	
+	public Set<DateUnit> getDateUnits()
+	{
+		return data.keySet();
+	}
+	
 	public boolean containsQuarterDateUnit()
 	{
 		Set<DateUnit> allDateUnits = data.keySet();

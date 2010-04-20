@@ -23,6 +23,7 @@ package org.miradi.dialogfields.editors;
 import java.awt.BorderLayout;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -35,6 +36,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
@@ -42,7 +44,6 @@ import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.DateUnitTypeQuestion;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 
 public class WhenEditorComponent extends DisposablePanel
@@ -104,14 +105,10 @@ public class WhenEditorComponent extends DisposablePanel
 		
 		ORef resourceAssignmentRef = resourceAssignmentRefs.getFirstElement();
 		ResourceAssignment resourceAssignment = ResourceAssignment.find(projectToUse, resourceAssignmentRef);
-		DateUnitEffortList dateUnitEffortList = resourceAssignment.getDateUnitEffortList();
-		if (dateUnitEffortList.size() == 0)
-			return DateUnitTypeQuestion.PROJECT_TOTAL_CODE;
-		
-		for (int index = 0; index < dateUnitEffortList.size(); ++index)
-		{
-			DateUnitEffort dateUnitEffort = dateUnitEffortList.getDateUnitEffort(index);
-			DateUnit dateUnit = dateUnitEffort.getDateUnit(); 
+		TimePeriodCostsMap timePeriodCostsMap = resourceAssignment.getResourceAssignmentsTimePeriodCostsMap();		
+		Set<DateUnit> dateUnits = timePeriodCostsMap.getDateUnits();
+		for(DateUnit dateUnit : dateUnits)
+		{	
 			if (dateUnit.isDay())
 				return DateUnitTypeQuestion.DAY_CODE;
 			
