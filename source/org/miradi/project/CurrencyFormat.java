@@ -24,8 +24,7 @@ import java.text.DecimalFormat;
 /*
  * CurrencyFormat
  * 
- * The main reason this class exists is for compatibility with Java 5,
- * whose DecimalFormat class does not support rounding.
+ * //NOTE: Java 5 DecimalFormat does not support rounding
  * 
  */
 public class CurrencyFormat
