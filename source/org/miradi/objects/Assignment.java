@@ -114,7 +114,7 @@ abstract public class Assignment extends BaseObject
 	{
 		DateUnitEffortList duel = getDateUnitEffortList();
 		TimePeriodCostsMap tpcm = new TimePeriodCostsMap();
-		if (duel.size() == 0)
+		if (duel.size() == 0 && !isEmpty())
 			addTimePeriodCostsInPlaceForNoData(duel, tpcm);
 			
 		for (int index = 0; index < duel.size(); ++index)

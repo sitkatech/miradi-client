@@ -24,6 +24,7 @@ import org.martus.util.MultiCalendar;
 import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Task;
@@ -71,6 +72,7 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 	public void testRollupResourceAssignmentsWithNoQuantities() throws Exception
 	{
 		ResourceAssignment assignment = getProject().createResourceAssignment();
+		getProject().addAccountingCode(assignment);
 		assignment.setData(ResourceAssignment.TAG_DATEUNIT_EFFORTS, new DateUnitEffortList().toString());
 
 		Task activityWithResourceAssignment = getProject().createActivity();
@@ -84,8 +86,9 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 	public void testRollupExpenseAssignmentsWithNoQuantities() throws Exception
 	{
 		Task activityWithExpenseAssignment = getProject().createActivity();
-		getProject().addExpenseAssignment(activityWithExpenseAssignment, new DateUnitEffortList());
-		
+		ExpenseAssignment expenseAssignment = getProject().addExpenseAssignment(activityWithExpenseAssignment, new DateUnitEffortList());
+		ORef accountingCodeRef = getProject().createAccountingCode().getRef();
+		expenseAssignment.setData(ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, accountingCodeRef.toString());
 		assertNotEquals("Ignored the expense assignment who?", 0, activityWithExpenseAssignment.getTotalTimePeriodCostsMap().size());
 	}
 	

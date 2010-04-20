@@ -125,7 +125,7 @@ public class WhenEditorComponent extends DisposablePanel
 				return DateUnitTypeQuestion.PROJECT_TOTAL_CODE;
 		}
 		
-		return null;
+		return DateUnitTypeQuestion.NONE_CODE;
 	}
 
 	public CodeList getStartEndCodes() throws Exception
