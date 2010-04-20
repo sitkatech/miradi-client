@@ -612,6 +612,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		getTestingDiagramObject().setData(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, taggedObjectSetRefs.toString());
 	}
 	
+	public void addAccountingCode(ResourceAssignment resourceAssignment) throws Exception
+	{
+		ORef accountingCodeRef = createAccountingCode().getRef();
+		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_ACCOUNTING_CODE, accountingCodeRef.getObjectId().toString());
+	}
+	
 	public ResourceAssignment createResourceAssignment() throws Exception
 	{
 		ORef assignmentRef = createObject(ResourceAssignment.getObjectType());
