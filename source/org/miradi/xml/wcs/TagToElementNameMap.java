@@ -71,6 +71,8 @@ public class TagToElementNameMap implements WcsXmlConstants
 	{
 		fieldTagToElementMap = new HashMap<String, HashMap<String,String>>();
 		
+		fieldTagToElementMap.put(METHOD, createTaskMap());
+		fieldTagToElementMap.put(ACTIVITY, createTaskMap());
 		fieldTagToElementMap.put(TASK, createTaskMap());
 		fieldTagToElementMap.put(PROJECT_RESOURCE, createProjectResourceMap());
 		fieldTagToElementMap.put(INDICATOR, createIndicatorMap());
@@ -83,7 +85,7 @@ public class TagToElementNameMap implements WcsXmlConstants
 		fieldTagToElementMap.put(CONCEPTUAL_MODEL, createConceptualModelMap());
 		fieldTagToElementMap.put(CAUSE, createCauseMap());
 		fieldTagToElementMap.put(STRATEGY, createStrategyMap());
-		fieldTagToElementMap.put(TARGET, createTargetMap());
+		fieldTagToElementMap.put(BIODIVERSITY_TARGET, createTargetMap());
 		fieldTagToElementMap.put(INTERMEDIATE_RESULTS, createInterMediateResultMap());
 		fieldTagToElementMap.put(RESULTS_CHAIN, createResultsChainMap());
 		fieldTagToElementMap.put(THREAT_REDUCTION_RESULTS, createThreatReductionResultsMap());
@@ -103,6 +105,7 @@ public class TagToElementNameMap implements WcsXmlConstants
 		HashMap<String, String> taskMap = new HashMap<String, String>();
 		taskMap.put(Task.TAG_LABEL, "Name");
 		taskMap.put(Task.TAG_SHORT_LABEL, "Id");
+		taskMap.put(Task.TAG_TEXT, "Details");
 		return taskMap;
 	}
 
@@ -114,6 +117,7 @@ public class TagToElementNameMap implements WcsXmlConstants
 		indicatorMap.put(Indicator.TAG_SHORT_LABEL, "Id");
 		indicatorMap.put(Indicator.TAG_DETAIL, "Details");
 		indicatorMap.put(Indicator.TAG_VIABILITY_RATINGS_COMMENT, "Comments");
+		indicatorMap.put(Indicator.TAG_FUTURE_STATUS_DETAIL, "FutureStatusDetails");
 		
 		return indicatorMap;
 	}
@@ -191,6 +195,7 @@ public class TagToElementNameMap implements WcsXmlConstants
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put(ConceptualModelDiagram.TAG_LABEL, "Name");
 		map.put(ConceptualModelDiagram.TAG_SHORT_LABEL, "Id");
+		map.put(ConceptualModelDiagram.TAG_DETAIL, "Details");
 		
 		return map;
 	}
@@ -242,6 +247,7 @@ public class TagToElementNameMap implements WcsXmlConstants
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put(ResultsChainDiagram.TAG_LABEL, "Name");
 		map.put(ResultsChainDiagram.TAG_SHORT_LABEL, "Id");
+		map.put(ResultsChainDiagram.TAG_DETAIL, "Details");
 		
 		return map;
 	}
@@ -260,6 +266,7 @@ public class TagToElementNameMap implements WcsXmlConstants
 	{
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put(TextBox.TAG_LABEL, "Name");
+		map.put(TextBox.TAG_SHORT_LABEL, "Id");
 		map.put(TextBox.TAG_TEXT, "Details");
 		
 		return map;
@@ -290,6 +297,9 @@ public class TagToElementNameMap implements WcsXmlConstants
 	{
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put(GroupBox.TAG_LABEL, "Name");
+		map.put(GroupBox.TAG_SHORT_LABEL, "Id");
+		map.put(GroupBox.TAG_TEXT, "Details");
+		
 		
 		return map;
 	}
@@ -299,6 +309,7 @@ public class TagToElementNameMap implements WcsXmlConstants
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put(SubTarget.TAG_LABEL, "Name");
 		map.put(SubTarget.TAG_SHORT_LABEL, "Id");
+		map.put(SubTarget.TAG_DETAIL, "Details");
 		
 		return map;
 
