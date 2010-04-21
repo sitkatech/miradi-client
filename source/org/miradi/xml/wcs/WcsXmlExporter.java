@@ -223,7 +223,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		if (getTncProjectData().canShareOutsideOfTnc())
 			shareOutSideOfTnc = BooleanData.BOOLEAN_TRUE;
 		
-		writeOptionalElement(getWriter(), TNC_PROJECT_DATA + TncProjectData.TAG_PROJECT_SHARING_CODE, shareOutSideOfTnc);
+		writeOptionalElement(getWriter(), TNC_PROJECT_DATA + XmlSchemaCreator.TNC_PROJECT_DATA_SHARE_OUTSIDE_TNC, shareOutSideOfTnc);
 	}
 	
 	private void writeProjectId() throws Exception
