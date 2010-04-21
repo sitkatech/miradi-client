@@ -32,6 +32,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.FosProjectData;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.RareProjectData;
+import org.miradi.objects.Target;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
@@ -42,6 +43,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
+import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.generic.XmlSchemaCreator;
@@ -349,6 +351,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_STATUS, getMetadata(), ProjectMetadata.TAG_PROJECT_STATUS);
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_NEXT_STEPS, getMetadata(), ProjectMetadata.TAG_NEXT_STEPS);
 		writeOptionalOverallProjectThreatRating();
+		writeOptionalOverallProjectViabilityRating();
 
 		writeEndElement(out, PROJECT_SUMMARY);
 	}
@@ -362,6 +365,17 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeStartElement(PROJECT_SUMMARY + OVERALL_PROJECT_THREAT_RATING);
 		writeXmlEncodedData(getWriter(), Integer.toString(rawOverallProjectThreatRatingCode));
 		writeEndElement(PROJECT_SUMMARY + OVERALL_PROJECT_THREAT_RATING);
+	}
+	
+	
+	private void writeOptionalOverallProjectViabilityRating() throws Exception
+	{
+		String code = Target.computeTNCViability(getProject());
+		ChoiceItem choiceItem = getProject().getQuestion(StatusQuestion.class).findChoiceByCode(code);
+		
+		writeStartElement(PROJECT_SUMMARY + OVERALL_PROJECT_VIABILITY_RATING);
+		writeXmlEncodedData(getWriter(), choiceItem.getCode());
+		writeEndElement(PROJECT_SUMMARY + OVERALL_PROJECT_VIABILITY_RATING);
 	}
 	
 	public void writeOptionalElementWithSameTag(String parentElementName, BaseObject object, String tag) throws Exception

@@ -27,7 +27,7 @@ public interface WcsXmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String OPTIONAL_ELEMENT = SINGLE_SPACE + "?" + SINGLE_SPACE;
 	
-	public static final String NAME_SPACE_VERSION = "26";
+	public static final String NAME_SPACE_VERSION = "27";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
@@ -152,6 +152,7 @@ public interface WcsXmlConstants
 	public static final String TARGET_RATING = "TargetRating";
 	public static final String RATING = "Rating";
 	public static final String OVERALL_PROJECT_THREAT_RATING = "OverallProjectThreatRating";
+	public static final String OVERALL_PROJECT_VIABILITY_RATING = "OverallProjectViabilityRating";
 	public static final String IUCN_REDLIST_SPECIES = "IUCNRedListSpecies";
 	public static final String OTHER_NOTABLE_SPECIES = "OtherNotableSpecies";
 	public static final String AUDIENCE = "Audience";
