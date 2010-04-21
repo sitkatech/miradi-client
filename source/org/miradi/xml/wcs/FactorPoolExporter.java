@@ -33,6 +33,7 @@ public abstract class FactorPoolExporter extends BaseObjectPoolExporter
 		super(wcsXmlExporterToUse, containerNameToUse, objectTypeToUse);
 	}
 
+	@Override
 	protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception
 	{
 		super.exportFields(writer, baseObject);
