@@ -28,7 +28,6 @@ import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.ProjectMetadata;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
 
@@ -36,7 +35,7 @@ public class SummaryPlanningPanel extends ObjectDataInputPanelWithSections
 {
 	public SummaryPlanningPanel(MainWindow mainWindowToUse, ORef orefToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), ProjectMetadata.getObjectType());
+		super(mainWindowToUse.getProject(), orefToUse);
 		
 		setLayout(new OneColumnGridLayout());
 
