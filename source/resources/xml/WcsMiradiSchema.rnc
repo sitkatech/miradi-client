@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/33'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/34'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -504,7 +504,8 @@ Task.element = element miradi:Task
   element miradi:TaskComments { text }? &
   element miradi:TaskExpenseIds { ExpenseAssignmentId.element* } &
   element miradi:TaskAssignmentIds { ResourceAssignmentId.element* } &
-  element miradi:TaskProgressReportIds { ProgressReportId.element* }
+  element miradi:TaskProgressReportIds { ProgressReportId.element* } &
+  element miradi:TaskSubTaskIds { SubTaskId.element* }
 }
 
 ProgressReportPool.element = element miradi:ProgressReportPool { ProgressReport.element* }
@@ -702,6 +703,7 @@ ResourceId.element = element miradi:ResourceId { xsd:integer }
 AcitivityId.element = element miradi:AcitivityId { xsd:integer }
 MeasurementId.element = element miradi:MeasurementId { xsd:integer }
 MethodId.element = element miradi:MethodId { xsd:integer }
+SubTaskId.element = element miradi:SubTaskId { xsd:integer }
 WrappedByDiagramFactorId.element = element miradi:WrappedByDiagramFactorId
 {
   BiodiversityTargetId.element |

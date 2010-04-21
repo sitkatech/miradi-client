@@ -190,6 +190,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		defineIdElement(writer, ACTIVITY_ID_ELEMENT_NAME);
 		defineIdElement(writer, MEASUREMENT_ID_ELEMENT_NAME);
 		defineIdElement(writer, METHOD);
+		defineIdElement(writer, SUB_TASK);
 		
 		writer.defineAlias(WcsXmlConstants.WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME + ".element", "element " + WcsXmlConstants.PREFIX + WcsXmlConstants.WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
 		writer.startBlock();
