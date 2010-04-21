@@ -189,6 +189,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		defineIdElement(writer, RESOURCE_ID_ELEMENT_NAME);
 		defineIdElement(writer, ACTIVITY_ID_ELEMENT_NAME);
 		defineIdElement(writer, MEASUREMENT_ID_ELEMENT_NAME);
+		defineIdElement(writer, METHOD);
 		
 		writer.defineAlias(WcsXmlConstants.WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME + ".element", "element " + WcsXmlConstants.PREFIX + WcsXmlConstants.WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
 		writer.startBlock();
@@ -573,5 +574,6 @@ public class XmlSchemaCreator implements WcsXmlConstants
 	public static final String MEASUREMENT_STATUS_CONFIDENCE = Measurement.TAG_STATUS_CONFIDENCE;
 	public static final String COUNTRIES = ProjectMetadata.TAG_COUNTRIES;
 	public static final String CODE_ELEMENT_NAME = "code";
+	public static final String METHOD = "Method";
 }
 
