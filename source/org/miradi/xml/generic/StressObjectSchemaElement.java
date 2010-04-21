@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.Stress;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class StressObjectSchemaElement extends FactorObjectSchemaElement
@@ -30,5 +31,11 @@ public class StressObjectSchemaElement extends FactorObjectSchemaElement
 		
 		createCodeField(XmlSchemaCreator.STRESS_SEVERITY_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_STRESS_SEVERITY);
 		createCodeField(XmlSchemaCreator.STRESS_SCOPE_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_STRESS_SCOPE);
+	}
+	
+	@Override
+	protected String getDetailsTag()
+	{
+		return Stress.TAG_DETAIL;
 	}
 }

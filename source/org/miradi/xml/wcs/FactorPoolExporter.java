@@ -38,8 +38,13 @@ public abstract class FactorPoolExporter extends BaseObjectPoolExporter
 		super.exportFields(writer, baseObject);
 		
 		writeOptionalElementWithSameTag(baseObject, Factor.TAG_SHORT_LABEL);
-		writeOptionalElementWithSameTag(baseObject, Factor.TAG_TEXT);
+		writeOptionalElementWithSameTag(baseObject, getDetailsTag());
 		writeOptionalElementWithSameTag(baseObject, Factor.TAG_COMMENTS);
+	}
+
+	protected String getDetailsTag()
+	{
+		return Factor.TAG_TEXT;
 	}
 	
 	protected void writeIndicatorIds(Factor factor) throws Exception

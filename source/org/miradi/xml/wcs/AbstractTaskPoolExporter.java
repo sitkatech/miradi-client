@@ -40,4 +40,10 @@ abstract public class AbstractTaskPoolExporter extends FactorPoolExporter
 		writeExpenseAssignmentIds(baseObject);
 		writeResourceAssignmentIds(baseObject);
 	}
+	
+	@Override
+	protected String getDetailsTag()
+	{
+		return Task.TAG_DETAILS;
+	}
 }

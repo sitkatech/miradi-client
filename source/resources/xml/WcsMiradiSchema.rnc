@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/29'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/30'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -432,7 +432,7 @@ Stress.element = element miradi:Stress
   attribute Id {xsd:integer}  &
   element miradi:StressName { text }? &
   element miradi:StressId { text }? &
-  element miradi:StressText { text }? &
+  element miradi:StressDetails { text }? &
   element miradi:StressComments { text }? &
   element miradi:StressSeverity { vocabulary_stress_severity  } &
   element miradi:StressScope { vocabulary_stress_scope  }

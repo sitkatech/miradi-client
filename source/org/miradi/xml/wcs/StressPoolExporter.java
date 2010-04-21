@@ -41,4 +41,10 @@ public class StressPoolExporter extends FactorPoolExporter
 		writeCodeElementSameAsTag(baseObject, Stress.TAG_SEVERITY, new StressSeverityChoiceQuestion());
 		writeCodeElementSameAsTag(baseObject, Stress.TAG_SCOPE, new StressScopeChoiceQuestion());
 	}
+	
+	@Override
+	protected String getDetailsTag()
+	{
+		return Stress.TAG_DETAIL;
+	}
 }
