@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/30'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/31'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -298,7 +298,7 @@ BiodiversityTarget.element = element miradi:BiodiversityTarget
   element miradi:BiodiversityTargetGoalIds { GoalId.element* } &
   element miradi:BiodiversityTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* } &
   element miradi:BiodiversityTargetIndicatorIds { IndicatorId.element* } &
-  element miradi:BiodiversityTargetRating { vocabulary_threat_rating  }? &
+  element miradi:BiodiversityTargetThreatRating { vocabulary_threat_rating  }? &
   element miradi:BiodiversityTargetStressIds { StressId.element* } &
   BiodiversityTargetHabitatAssociationContainer.element &
   element miradi:BiodiversityTargetSpeciesLatinName { text }?
@@ -319,7 +319,7 @@ HumanWelfareTarget.element = element miradi:HumanWelfareTarget
   element miradi:HumanWelfareTargetGoalIds { GoalId.element* } &
   element miradi:HumanWelfareTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* } &
   element miradi:HumanWelfareTargetIndicatorIds { IndicatorId.element* } &
-  element miradi:HumanWelfareTargetRating { vocabulary_threat_rating  }?
+  element miradi:HumanWelfareTargetThreatRating { vocabulary_threat_rating  }?
 }
 
 CausePool.element = element miradi:CausePool { Cause.element* }
