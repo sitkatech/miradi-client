@@ -249,6 +249,7 @@ abstract public class DiagramObject extends BaseObject
 		return (getDiagramLink(fromFactorRef, toFactorRef) != null);
 	}
 
+	// TODO: This code can be much simpler and faster using new low-level methods
 	public DiagramLink getDiagramLink(ORef factorRef1, ORef factorRef2)
 	{
 		Factor.ensureFactor(factorRef1);
