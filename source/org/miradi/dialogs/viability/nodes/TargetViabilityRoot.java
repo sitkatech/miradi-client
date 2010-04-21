@@ -31,6 +31,7 @@ public class TargetViabilityRoot extends TargetViabilityNode
 		super(projectToUse, targetRef);
 	}
 
+	@Override
 	public boolean isAlwaysExpanded()
 	{
 		return true;
