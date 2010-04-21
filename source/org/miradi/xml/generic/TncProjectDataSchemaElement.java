@@ -33,7 +33,7 @@ public class TncProjectDataSchemaElement extends ObjectSchemaElement
 		
 		createOptionalTextField(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		createTncProjectIdField(Xenodata.TAG_PROJECT_ID);
-		createOptionalBooleanField(TncProjectData.TAG_PROJECT_SHARING_CODE);
+		createOptionalBooleanField(XmlSchemaCreator.TNC_PROJECT_DATA_SHARE_OUTSIDE_TNC);
 		createOptionalTextField(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		createCodeListField(XmlSchemaCreator.TNC_PROJECT_PLACE_TYPES);
 		createCodeListField(XmlSchemaCreator.TNC_ORGANIZATIONAL_PRIORITIES);

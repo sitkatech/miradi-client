@@ -563,6 +563,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 	public static final String TNC_TERRESTRIAL_ECO_REGION = ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION;
 	public static final String TNC_MARINE_ECO_REGION = ProjectMetadata.TAG_TNC_MARINE_ECO_REGION;
 	public static final String TNC_FRESHWATER_ECO_REGION = ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION;
+	public static final String TNC_PROJECT_DATA_SHARE_OUTSIDE_TNC = "ShareOutsideTnc";
 	public static final String WWF_MANAGING_OFFICES = WwfProjectData.TAG_MANAGING_OFFICES;
 	public static final String WWF_REGIONS = WwfProjectData.TAG_REGIONS;
 	public static final String WWF_ECOREGIONS = WwfProjectData.TAG_ECOREGIONS;
