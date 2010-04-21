@@ -23,6 +23,7 @@ package org.miradi.xml.wcs;
 import java.util.HashMap;
 
 import org.miradi.objects.AccountingCode;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.FundingSource;
@@ -98,6 +99,21 @@ public class TagToElementNameMap implements WcsXmlConstants
 		fieldTagToElementMap.put(PROGRESS_PERCENT, createProgressPercentMap());
 		fieldTagToElementMap.put(SCOPE_BOX, createScopeBoxMap());
 		fieldTagToElementMap.put(HUMAN_WELFARE_TARGET, createHumanWelfareTargetMap());
+		fieldTagToElementMap.put(DIAGRAM_FACTOR, createBaseObjectMap());
+		fieldTagToElementMap.put(DIAGRAM_LINK, createBaseObjectMap());
+		fieldTagToElementMap.put(EXPENSE_ASSIGNMENT, createBaseObjectMap());
+		fieldTagToElementMap.put(RESOURCE_ASSIGNMENT, createBaseObjectMap());
+		fieldTagToElementMap.put(IUCN_REDLIST_SPECIES, createBaseObjectMap());
+		fieldTagToElementMap.put(OTHER_NOTABLE_SPECIES, createBaseObjectMap());
+		fieldTagToElementMap.put(AUDIENCE, createBaseObjectMap());
+		fieldTagToElementMap.put(OBJECT_TREE_TABLE_CONFIGURATION, createBaseObjectMap());
+	}
+
+	private HashMap<String, String> createBaseObjectMap()
+	{
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put(BaseObject.TAG_LABEL, "Name");
+		return map;
 	}
 
 	private HashMap<String, String> createTaskMap()
@@ -275,6 +291,7 @@ public class TagToElementNameMap implements WcsXmlConstants
 	private HashMap<String, String> createMeasurementMap()
 	{
 		HashMap<String, String> map = new HashMap<String, String>();
+		map.put(Measurement.TAG_LABEL, "Name");
 		map.put(Measurement.TAG_STATUS_CONFIDENCE, "Source");
 		map.put(Measurement.TAG_SUMMARY, "MeasurementValue");
 		map.put(Measurement.TAG_STATUS, "Rating");
