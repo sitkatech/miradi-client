@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/28'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/29'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -237,7 +237,7 @@ ConceptualModel.element = element miradi:ConceptualModel
   attribute Id {xsd:integer}  &
   element miradi:ConceptualModelName { text }? &
   element miradi:ConceptualModelId { text }? &
-  element miradi:ConceptualModelDetail { text }? &
+  element miradi:ConceptualModelDetails { text }? &
   element miradi:ConceptualModelDiagramFactorIds { DiagramFactorId.element* } &
   element miradi:ConceptualModelDiagramFactorLinkIds { DiagramLinkId.element* } &
   ConceptualModelHiddenTypesContainer.element &
@@ -250,7 +250,7 @@ ResultsChain.element = element miradi:ResultsChain
   attribute Id {xsd:integer}  &
   element miradi:ResultsChainName { text }? &
   element miradi:ResultsChainId { text }? &
-  element miradi:ResultsChainDetail { text }? &
+  element miradi:ResultsChainDetails { text }? &
   element miradi:ResultsChainDiagramFactorIds { DiagramFactorId.element* } &
   element miradi:ResultsChainDiagramFactorLinkIds { DiagramLinkId.element* } &
   ResultsChainHiddenTypesContainer.element &
@@ -287,9 +287,9 @@ BiodiversityTargetPool.element = element miradi:BiodiversityTargetPool { Biodive
 BiodiversityTarget.element = element miradi:BiodiversityTarget
 {
   attribute Id {xsd:integer}  &
-  element miradi:BiodiversityTargetLabel { text }? &
-  element miradi:BiodiversityTargetShortLabel { text }? &
-  element miradi:BiodiversityTargetText { text }? &
+  element miradi:BiodiversityTargetName { text }? &
+  element miradi:BiodiversityTargetId { text }? &
+  element miradi:BiodiversityTargetDetails { text }? &
   element miradi:BiodiversityTargetComments { text }? &
   element miradi:BiodiversityTargetTargetStatus { vocabulary_target_status  } &
   element miradi:BiodiversityTargetViabilityMode { vocabulary_target_viability_mode  } &
@@ -388,8 +388,8 @@ GroupBox.element = element miradi:GroupBox
 {
   attribute Id {xsd:integer}  &
   element miradi:GroupBoxName { text }? &
-  element miradi:GroupBoxShortLabel { text }? &
-  element miradi:GroupBoxText { text }? &
+  element miradi:GroupBoxId { text }? &
+  element miradi:GroupBoxDetails { text }? &
   element miradi:GroupBoxComments { text }?
 }
 
@@ -398,7 +398,7 @@ TextBox.element = element miradi:TextBox
 {
   attribute Id {xsd:integer}  &
   element miradi:TextBoxName { text }? &
-  element miradi:TextBoxShortLabel { text }? &
+  element miradi:TextBoxId { text }? &
   element miradi:TextBoxDetails { text }? &
   element miradi:TextBoxComments { text }?
 }
@@ -444,7 +444,7 @@ SubTarget.element = element miradi:SubTarget
   attribute Id {xsd:integer}  &
   element miradi:SubTargetName { text }? &
   element miradi:SubTargetId { text }? &
-  element miradi:SubTargetDetail { text }?
+  element miradi:SubTargetDetails { text }?
 }
 
 GoalPool.element = element miradi:GoalPool { Goal.element* }
@@ -487,7 +487,7 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorFutureStatusDate { vocabulary_date }? &
   element miradi:IndicatorFutureStatusSummary { text }? &
   element miradi:IndicatorFutureStatusRating { vocabulary_status_code  } &
-  element miradi:IndicatorFutureStatusDetail { text }? &
+  element miradi:IndicatorFutureStatusDetails { text }? &
   element miradi:IndicatorFutureStatusComment { text }? &
   element miradi:IndicatorProgressReportIds { ProgressReportId.element* } &
   element miradi:IndicatorExpenseIds { ExpenseAssignmentId.element* } &
@@ -499,9 +499,9 @@ ActivityPool.element = element miradi:ActivityPool { Activity.element* }
 Activity.element = element miradi:Activity
 {
   attribute Id {xsd:integer}  &
-  element miradi:ActivityLabel { text }? &
-  element miradi:ActivityShortLabel { text }? &
-  element miradi:ActivityText { text }? &
+  element miradi:ActivityName { text }? &
+  element miradi:ActivityId { text }? &
+  element miradi:ActivityDetails { text }? &
   element miradi:ActivityComments { text }? &
   element miradi:ActivityExpenseIds { ExpenseAssignmentId.element* } &
   element miradi:ActivityAssignmentIds { ResourceAssignmentId.element* } &
@@ -512,9 +512,9 @@ MethodPool.element = element miradi:MethodPool { Method.element* }
 Method.element = element miradi:Method
 {
   attribute Id {xsd:integer}  &
-  element miradi:MethodLabel { text }? &
-  element miradi:MethodShortLabel { text }? &
-  element miradi:MethodText { text }? &
+  element miradi:MethodName { text }? &
+  element miradi:MethodId { text }? &
+  element miradi:MethodDetails { text }? &
   element miradi:MethodComments { text }? &
   element miradi:MethodExpenseIds { ExpenseAssignmentId.element* } &
   element miradi:MethodAssignmentIds { ResourceAssignmentId.element* } &
@@ -527,7 +527,7 @@ Task.element = element miradi:Task
   attribute Id {xsd:integer}  &
   element miradi:TaskName { text }? &
   element miradi:TaskId { text }? &
-  element miradi:TaskText { text }? &
+  element miradi:TaskDetails { text }? &
   element miradi:TaskComments { text }? &
   element miradi:TaskExpenseIds { ExpenseAssignmentId.element* } &
   element miradi:TaskAssignmentIds { ResourceAssignmentId.element* } &
