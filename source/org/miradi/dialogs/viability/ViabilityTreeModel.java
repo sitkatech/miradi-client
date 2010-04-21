@@ -32,6 +32,7 @@ public class ViabilityTreeModel extends GenericViabilityTreeModel
 		super(root);
 	}
 
+	@Override
 	public String[] getColumnTags()
 	{
 		return columnTags;
