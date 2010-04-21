@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/31'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/32'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -32,8 +32,6 @@ ConservationProject.element = element miradi:ConservationProject
   GoalPool.element ?  &
   ObjectivePool.element ?  &
   IndicatorPool.element ?  &
-  ActivityPool.element ?  &
-  MethodPool.element ?  &
   TaskPool.element ?  &
   ProgressReportPool.element ?  &
   ProgressPercentPool.element ?  &
@@ -493,32 +491,6 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorExpenseIds { ExpenseAssignmentId.element* } &
   element miradi:IndicatorAssignmentIds { ResourceAssignmentId.element* } &
   element miradi:IndicatorMeasurementIds { MeasurementId.element* }
-}
-
-ActivityPool.element = element miradi:ActivityPool { Activity.element* }
-Activity.element = element miradi:Activity
-{
-  attribute Id {xsd:integer}  &
-  element miradi:ActivityName { text }? &
-  element miradi:ActivityId { text }? &
-  element miradi:ActivityDetails { text }? &
-  element miradi:ActivityComments { text }? &
-  element miradi:ActivityExpenseIds { ExpenseAssignmentId.element* } &
-  element miradi:ActivityAssignmentIds { ResourceAssignmentId.element* } &
-  element miradi:ActivityProgressReportIds { ProgressReportId.element* }
-}
-
-MethodPool.element = element miradi:MethodPool { Method.element* }
-Method.element = element miradi:Method
-{
-  attribute Id {xsd:integer}  &
-  element miradi:MethodName { text }? &
-  element miradi:MethodId { text }? &
-  element miradi:MethodDetails { text }? &
-  element miradi:MethodComments { text }? &
-  element miradi:MethodExpenseIds { ExpenseAssignmentId.element* } &
-  element miradi:MethodAssignmentIds { ResourceAssignmentId.element* } &
-  element miradi:MethodProgressReportIds { ProgressReportId.element* }
 }
 
 TaskPool.element = element miradi:TaskPool { Task.element* }

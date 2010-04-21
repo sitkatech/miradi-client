@@ -64,8 +64,6 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new ObjectPoolSchemaElement(new GoalObjectSchemaElement()));
 		objectTypes.add(new ObjectPoolSchemaElement(new ObjectiveSchemaElement()));
 		objectTypes.add(new ObjectPoolSchemaElement(new IndicatorObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new ActivityObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new MethodObjectSchemaElement()));
 		objectTypes.add(new ObjectPoolSchemaElement(new TaskObjectSchemaElement()));
 		objectTypes.add(new ObjectPoolSchemaElement(new ProgressReportObjectSchemaElement()));
 		objectTypes.add(new ObjectPoolSchemaElement(new ProgressPercentObjectSchemaElement()));
