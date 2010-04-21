@@ -63,12 +63,12 @@ public abstract class AbstractTargetPoolExporter extends FactorPoolExporter
 	{
 		int rawTargetRatingValue = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(target);
 		ChoiceItem targetThreatRating = AbstractThreatPerRowTableModel.convertThreatRatingCodeToChoiceItem(rawTargetRatingValue);
-		writeOptionalCodeElement(RATING, new ThreatRatingQuestion(), targetThreatRating.getCode());
+		writeOptionalCodeElement(TARGET_THREAT_RATING, new ThreatRatingQuestion(), targetThreatRating.getCode());
 	}
 	
 	private void exportSimpleThreatRatingThreatTargetRating(ORef targetRef) throws Exception
 	{
 		ChoiceItem threatTargetRating = getProject().getSimpleThreatRatingFramework().getTargetThreatRatingValue(targetRef);
-		writeOptionalCodeElement(RATING, new ThreatRatingQuestion(), threatTargetRating.getCode());
+		writeOptionalCodeElement(TARGET_THREAT_RATING, new ThreatRatingQuestion(), threatTargetRating.getCode());
 	}
 }
