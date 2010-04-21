@@ -261,7 +261,7 @@ DiagramFactorPool.element = element miradi:DiagramFactorPool { DiagramFactor.ele
 DiagramFactor.element = element miradi:DiagramFactor
 {
   attribute Id {xsd:integer}  &
-  element miradi:DiagramFactorLabel { text }? &
+  element miradi:DiagramFactorName { text }? &
   element miradi:DiagramFactorWrappedFactorId{ WrappedByDiagramFactorId.element } &
   element miradi:DiagramFactorLocation { DiagramPoint.element } &
   element miradi:DiagramFactorSize { DiagramSize.element } &
@@ -274,7 +274,7 @@ DiagramLinkPool.element = element miradi:DiagramLinkPool { DiagramLink.element* 
 DiagramLink.element = element miradi:DiagramLink
 {
   attribute Id {xsd:integer}  &
-  element miradi:DiagramLinkLabel { text }? &
+  element miradi:DiagramLinkName { text }? &
   element miradi:DiagramLinkFromDiagramFactorId{ LinkableFactorId.element } &
   element miradi:DiagramLinkToDiagramFactorId{ LinkableFactorId.element } &
   element miradi:DiagramLinkBendPoints{ DiagramPoint.element* } &
@@ -556,7 +556,7 @@ MeasurementPool.element = element miradi:MeasurementPool { Measurement.element* 
 Measurement.element = element miradi:Measurement
 {
   attribute Id {xsd:integer}  &
-  element miradi:MeasurementLabel { text }? &
+  element miradi:MeasurementName { text }? &
   element miradi:MeasurementTrend { vocabulary_measurement_trend  } &
   element miradi:MeasurementRating { vocabulary_measurement_status  } &
   element miradi:MeasurementDate { vocabulary_date }? &
@@ -588,7 +588,7 @@ ExpenseAssignmentPool.element = element miradi:ExpenseAssignmentPool { ExpenseAs
 ExpenseAssignment.element = element miradi:ExpenseAssignment
 {
   attribute Id {xsd:integer}  &
-  element miradi:ExpenseAssignmentLabel { text }? &
+  element miradi:ExpenseAssignmentName { text }? &
   element miradi:ExpenseAssignmentFundingSourceId{ FundingSourceId.element }? &
   element miradi:ExpenseAssignmentAccountingCodeId{ AccountingCodeId.element }? &
   element miradi:ExpenseAssignmentDetails{ DateUnitExpense.element* }?
@@ -598,7 +598,7 @@ ResourceAssignmentPool.element = element miradi:ResourceAssignmentPool { Resourc
 ResourceAssignment.element = element miradi:ResourceAssignment
 {
   attribute Id {xsd:integer}  &
-  element miradi:ResourceAssignmentLabel { text }? &
+  element miradi:ResourceAssignmentName { text }? &
   element miradi:ResourceAssignmentFundingSourceId{ FundingSourceId.element }? &
   element miradi:ResourceAssignmentAccountingCodeId{ AccountingCodeId.element }? &
   element miradi:ResourceAssignmentResourceId{ ResourceId.element }? &
@@ -619,21 +619,21 @@ IUCNRedListSpeciesPool.element = element miradi:IUCNRedListSpeciesPool { IUCNRed
 IUCNRedListSpecies.element = element miradi:IUCNRedListSpecies
 {
   attribute Id {xsd:integer}  &
-  element miradi:IUCNRedListSpeciesLabel { text }?
+  element miradi:IUCNRedListSpeciesName { text }?
 }
 
 OtherNotableSpeciesPool.element = element miradi:OtherNotableSpeciesPool { OtherNotableSpecies.element* }
 OtherNotableSpecies.element = element miradi:OtherNotableSpecies
 {
   attribute Id {xsd:integer}  &
-  element miradi:OtherNotableSpeciesLabel { text }?
+  element miradi:OtherNotableSpeciesName { text }?
 }
 
 AudiencePool.element = element miradi:AudiencePool { Audience.element* }
 Audience.element = element miradi:Audience
 {
   attribute Id {xsd:integer}  &
-  element miradi:AudienceLabel { text }? &
+  element miradi:AudienceName { text }? &
   element miradi:AudiencePeopleCount { text }? &
   element miradi:AudienceSummary { text }?
 }
@@ -642,7 +642,7 @@ PlanningViewConfigurationPool.element = element miradi:PlanningViewConfiguration
 PlanningViewConfiguration.element = element miradi:PlanningViewConfiguration
 {
   attribute Id {xsd:integer}  &
-  element miradi:PlanningViewConfigurationLabel { text }? &
+  element miradi:PlanningViewConfigurationName { text }? &
   element miradi:PlanningViewConfigurationTagDiagramDataInclusion { vocabulary_included_diagram_types  }?
 }
 
