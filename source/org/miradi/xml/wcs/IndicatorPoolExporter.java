@@ -53,6 +53,7 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 		writeExpenseAssignmentIds(indicator);
 		writeResourceAssignmentIds(indicator);
 		writeMeasurementIds(indicator.getMeasurementRefs());
+		writeIds(WcsXmlConstants.METHOD_IDS, WcsXmlConstants.METHOD, indicator.getMethodRefs());
 	}
 	
 	private void writeMeasurementIds(ORefList measurementRefs) throws Exception
