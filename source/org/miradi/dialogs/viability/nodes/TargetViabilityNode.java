@@ -47,31 +47,37 @@ public class TargetViabilityNode extends TreeTableNode
 		rebuild();
 	}
 	
+	@Override
 	public BaseObject getObject()
 	{
 		return target;
 	}
 
+	@Override
 	public TreeTableNode getChild(int index)
 	{
 		return children[index];
 	}
 
+	@Override
 	public int getChildCount()
 	{
 		return children.length;
 	}
 
+	@Override
 	public ORef getObjectReference()
 	{
 		return target.getRef();
 	}
 	
+	@Override
 	public int getType()
 	{
 		return target.getType();
 	}
 
+	@Override
 	public Object getValueAt(int column)
 	{
 		String tag = COLUMN_TAGS[column];
@@ -100,6 +106,7 @@ public class TargetViabilityNode extends TreeTableNode
 		return target.getId();
 	}
 	
+	@Override
 	public void rebuild() throws Exception
 	{
 		children = buildChildrenNodes();
