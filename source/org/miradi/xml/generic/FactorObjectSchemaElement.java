@@ -30,8 +30,13 @@ public class FactorObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 		super(objectTypeName);
 
 		createOptionalTextField(Factor.TAG_SHORT_LABEL);
-		createOptionalTextField(Factor.TAG_TEXT);
+		createOptionalTextField(getDetailsTag());
 		createOptionalTextField(Factor.TAG_COMMENTS);
+	}
+	
+	protected String getDetailsTag()
+	{
+		return Factor.TAG_TEXT;
 	}
 	
 	protected static final String INDICATOR_TYPE_NAME = "Indicator";

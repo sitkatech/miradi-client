@@ -33,4 +33,10 @@ abstract public class AbstractTaskObjectSchemaElement extends FactorObjectSchema
 		createIdListField(Task.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createIdListField(WcsXmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
 	}
+	
+	@Override
+	protected String getDetailsTag()
+	{
+		return Task.TAG_DETAILS;
+	}
 }
