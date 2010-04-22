@@ -22,6 +22,7 @@ package org.miradi.dialogs.diagram;
 import javax.swing.Icon;
 
 import org.miradi.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
+import org.miradi.actions.jump.ActionJumpDiagramWizardHumanWelfareTargetsStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainSelectStrategyStep;
@@ -32,6 +33,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -90,9 +92,13 @@ public class FactorSummaryScrollablePanel extends ModelessDialogPanel
 	@Override
 	public Class getJumpActionClass()
 	{
+		// TODO: This looks like duplicate code from FactorSummaryPanel
+		// Can we delegate to that?
 		ORef currentFactorRef = summaryPanel.getCurrentDiagramFactor().getWrappedORef();
 		if(Target.is(currentFactorRef))
 			return ActionJumpDiagramWizardDefineTargetsStep.class;
+		if(HumanWelfareTarget.is(currentFactorRef))
+			return ActionJumpDiagramWizardHumanWelfareTargetsStep.class;
 		
 		if(Cause.is(currentFactorRef))
 		{
