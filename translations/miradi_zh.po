@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-22 12:22-0500\n"
+"POT-Creation-Date: 2010-04-22 12:25-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1662,7 +1662,6 @@ msgstr ""
 "分解成亚任务。在Miradi中，任务是以灰色扁椭圆形来代表的。"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:207
-#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:50
 msgid "Quarter"
 msgstr "季度"
 
@@ -2665,23 +2664,27 @@ msgid "Intensive Assessment"
 msgstr "周密评估"
 
 #: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:45
-msgid "None"
+msgid "Unscheduled"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:47
-msgid "Project Total"
+msgid "Entire Project Duration"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:48
-msgid "Year"
+msgid "Specific Year(s)"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:50
+msgid "Specific Quarter(s)"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:52
-msgid "Month"
+msgid "Specific Month(s)"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:53
-msgid "Day"
+msgid "Specific Day(s)"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/TextBoxZOrderQuestion.java:34
@@ -4637,14 +4640,14 @@ msgstr ""
 msgid "Quarter Selection: "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:83
-msgid "Enter As: "
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:87
+#: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:80
 msgid ""
 "<html>Specifying when this work item will take place using this dialog<br> "
 "will enter zeros in the appropriate time period(s) for this work item."
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:85
+msgid "Enter As: "
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:31
