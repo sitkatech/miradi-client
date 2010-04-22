@@ -25,6 +25,7 @@ import org.miradi.actions.Actions;
 import org.miradi.actions.jump.ActionJumpDevelopDraftStrategiesStep;
 import org.miradi.actions.jump.ActionJumpDiagramOverviewStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
+import org.miradi.actions.jump.ActionJumpDiagramWizardHumanWelfareTargetsStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainSelectStrategyStep;
@@ -153,6 +154,8 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 			return ActionJumpDevelopDraftStrategiesStep.class;
 		else if (factor.isTarget())
 			return ActionJumpDiagramWizardDefineTargetsStep.class;
+		else if (factor.isHumanWelfareTarget())
+			return ActionJumpDiagramWizardHumanWelfareTargetsStep.class;
 		else if (factor.isIntermediateResult())
 			return ActionJumpDiagramWizardResultsChainSelectStrategyStep.class;
 		else if (factor.isThreatReductionResult())
