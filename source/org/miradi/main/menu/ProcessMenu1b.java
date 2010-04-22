@@ -24,8 +24,8 @@ import java.awt.event.KeyEvent;
 import org.miradi.actions.Actions;
 import org.miradi.actions.jump.ActionJumpDevelopMap;
 import org.miradi.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
+import org.miradi.actions.jump.ActionJumpDiagramWizardHumanWelfareTargetsStep;
 import org.miradi.actions.jump.ActionJumpSummaryWizardDefineProjecScope;
-import org.miradi.actions.jump.ActionJumpSummaryWizardDefineProjectVision;
 import org.miradi.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
 
 public class ProcessMenu1b extends MiradiMenu
@@ -38,7 +38,7 @@ public class ProcessMenu1b extends MiradiMenu
 		addMenuItem(ActionJumpSummaryWizardDefineProjecScope.class, KeyEvent.VK_D);
 		addMenuItem(ActionJumpDevelopMap.class, KeyEvent.VK_M);
 		addMenuItem(ActionJumpDiagramWizardDefineTargetsStep.class, KeyEvent.VK_I);
-		addMenuItem(ActionJumpSummaryWizardDefineProjectVision.class, KeyEvent.VK_A);
+		addMenuItem(ActionJumpDiagramWizardHumanWelfareTargetsStep.class, KeyEvent.VK_A);
 		addMenuItem(ActionJumpTargetViabilityMethodChoiceStep.class, KeyEvent.VK_V);
 	}
 }
