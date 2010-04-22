@@ -176,7 +176,7 @@ public class TestLinkCreator extends TestCaseWithProject
 		assertEquals("Didn't create one link in each direction?", 2, groupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType()).size());
 	}
 	
-	public void testCreateAllPossibleLinksGroupToGroup() throws Exception
+	public void testCreateAllPossibleGroupLinksGroupToGroup() throws Exception
 	{
 		LinkCreator linkCreator = new LinkCreator(getProject());
 		DiagramObject diagram = getDiagramModel().getDiagramObject();
