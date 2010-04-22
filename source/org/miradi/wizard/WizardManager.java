@@ -249,7 +249,7 @@ public class WizardManager
 		createStepEntry(new DiagramWizardVisionStep(panel));
 		createStepEntry(new DiagramWizardDefineTargetsStep(panel));
 		createStepEntry(new DiagramWizardReviewAndModifyTargetsStep(panel));
-		//TODO rename TargetViability Classes to identif which step is which
+		//TODO rename TargetViability Classes to identify which step is which
 		createStepEntry(new TargetViabilityMethodChoiceStep(panel)).
 			createControl("DoneViabilityAnalysis", TargetStressesStep.class).
 			createControl(CONTROL_NEXT, TargetStressesStep.class).
