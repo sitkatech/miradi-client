@@ -206,6 +206,13 @@ public class LinkCreator
 	
 	public boolean areGroupBoxOwnedFactorsLinked(DiagramModel diagramModel, DiagramFactor from, DiagramFactor to) throws Exception
 	{
+		DiagramObject diagramObject = diagramModel.getDiagramObject();
+		return areGroupBoxOwnedFactorsLinked(diagramObject, from, to);
+	}
+
+	private boolean areGroupBoxOwnedFactorsLinked(DiagramObject diagramObject,
+			DiagramFactor from, DiagramFactor to)
+	{
 		ORefList fromOwningGroupBoxAndChildren = getOwningGroupBoxAndChildren(from);
 		ORefList toOwningGroupBoxAndChildren = getOwningGroupBoxAndChildren(to);		
 		for (int fromIndex = 0; fromIndex < fromOwningGroupBoxAndChildren.size(); ++fromIndex)
@@ -214,7 +221,7 @@ public class LinkCreator
 			{
 				DiagramFactor thisFrom = DiagramFactor.find(getProject(), fromOwningGroupBoxAndChildren.get(fromIndex));
 				DiagramFactor thisTo = DiagramFactor.find(getProject(), toOwningGroupBoxAndChildren.get(toIndex));
-				if (diagramModel.areLinked(thisFrom.getWrappedORef(), thisTo.getWrappedORef()))
+				if (diagramObject.areLinkedEitherDirection(thisFrom.getWrappedORef(), thisTo.getWrappedORef()))
 					return true;
 			}
 		}
@@ -550,11 +557,35 @@ public class LinkCreator
 			{
 				DiagramFactor from = DiagramFactor.find(getProject(), fromDiagramFactorRef);
 				DiagramFactor to = DiagramFactor.find(getProject(), toDiagramFactorRef);
-				boolean areAlreadyLinked = diagramObject.areLinkedEitherDirection(from.getWrappedORef(), to.getWrappedORef());
+				boolean areAlreadyLinked = areFactorsOrTheirGroupsAlreadyLinked(diagramObject, from, to);
+
 				if(!areAlreadyLinked)
 					createGroupBoxChildrenDiagramLinks(diagramObject, from, to);
 			}
 		}
+	}
+
+	private boolean areFactorsOrTheirGroupsAlreadyLinked(DiagramObject diagramObject, DiagramFactor from, DiagramFactor to)
+			throws Exception
+	{
+		ORef fromFactorRef = from.getWrappedORef();
+		ORef toFactorRef = to.getWrappedORef();
+		if(diagramObject.areLinkedEitherDirection(fromFactorRef, toFactorRef))
+			return true;
+
+		DiagramFactor fromGroup = DiagramFactor.find(project, from.getOwningGroupBoxRef());
+		DiagramFactor toGroup = DiagramFactor.find(project, to.getOwningGroupBoxRef());
+
+		if(toGroup != null && diagramObject.areLinkedEitherDirection(fromFactorRef, toGroup.getWrappedORef()))
+			return true;
+		
+		if(fromGroup != null && diagramObject.areLinkedEitherDirection(fromGroup.getWrappedORef(), toFactorRef))
+			return true;
+		
+		if(fromGroup != null && toGroup != null && diagramObject.areLinkedEitherDirection(fromGroup.getWrappedORef(), toGroup.getWrappedORef()))
+			return true;
+
+		return false;
 	}
 
 	public ORefSet getRefsOfDiagramFactorsThatLinkToAllChildren(ORef groupBoxDiagramfactorRef, int direction)

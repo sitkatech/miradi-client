@@ -29,6 +29,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
@@ -173,6 +174,36 @@ public class TestLinkCreator extends TestCaseWithProject
 		LinkCreator linkCreator = new LinkCreator(getProject());
 		linkCreator.createAllPossibleGroupLinks(getDiagramModel().getDiagramObject(), groupBoxDiagramFactor);
 		assertEquals("Didn't create one link in each direction?", 2, groupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType()).size());
+	}
+	
+	public void testCreateAllPossibleLinksGroupToGroup() throws Exception
+	{
+		LinkCreator linkCreator = new LinkCreator(getProject());
+		DiagramObject diagram = getDiagramModel().getDiagramObject();
+
+		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor target1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target2 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		
+		getProject().createDiagramLinkAndAddToDiagram(cause1, target1);
+		getProject().createDiagramLinkAndAddToDiagram(cause1, target2);
+		getProject().createDiagramLinkAndAddToDiagram(cause2, target1);
+		getProject().createDiagramLinkAndAddToDiagram(cause2, target2);
+		
+		DiagramFactor causeGroupBoxDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
+		addToGroup(causeGroupBoxDiagramFactor, cause1);
+		addToGroup(causeGroupBoxDiagramFactor, cause2);
+		linkCreator.createAllPossibleGroupLinks(getDiagramModel().getDiagramObject(), causeGroupBoxDiagramFactor);
+		assertEquals("Didn't create links to the group?", 2, causeGroupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType()).size());
+		assertEquals("Wrong number of links?", 6, getProject().getPool(DiagramLink.getObjectType()).size());
+
+		DiagramFactor targetGroupBoxDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
+		addToGroup(targetGroupBoxDiagramFactor, target1);
+		addToGroup(targetGroupBoxDiagramFactor, target2);
+		linkCreator.createAllPossibleGroupLinks(getDiagramModel().getDiagramObject(), targetGroupBoxDiagramFactor);
+		assertTrue("Didn't create a group to group link?", diagram.areDiagramFactorsLinkedFromToNonBidirectional(causeGroupBoxDiagramFactor.getRef(), targetGroupBoxDiagramFactor.getRef()));
+		assertEquals("Created too many links?", 7, getProject().getPool(DiagramLink.getObjectType()).size());
 	}
 
 	private void verifyGroupBoxLinkedDiagramFactors() throws Exception
