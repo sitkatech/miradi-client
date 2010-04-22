@@ -32,7 +32,7 @@ public class ActionJumpSummaryWizardDefineProjectVision extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Add Human Welfare Targets If Desired");
+		return EAM.text("Agree on Project Vision");
 	}
 	
 }
