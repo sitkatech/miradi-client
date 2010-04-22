@@ -76,16 +76,18 @@ public class WhenEditorComponent extends DisposablePanel
 			}
 		}
 
-		StartEndDateUnitProvider dateUnitRange = new StartEndDateUnitProvider(dateUnits);
-		lowerPanel = new WhenEditorLowerPanel(projectCalendar, dateUnitRange);
+		PanelTitleLabel explanation = new PanelTitleLabel(
+				EAM.text("<html>Specifying when this work item will take place using this dialog<br> " +
+						"will enter zeros in the appropriate time period(s) for this work item."));
+		
 		TwoColumnPanel upperPanel = new TwoColumnPanel();
 		upperPanel.setBorder(BorderFactory.createEtchedBorder());
 		upperPanel.add(new PanelTitleLabel(EAM.text("Enter As: ")));
 		upperPanel.add(dateUnitTypeCombo);
 		
-		PanelTitleLabel explanation = new PanelTitleLabel(
-				EAM.text("<html>Specifying when this work item will take place using this dialog<br> " +
-						"will enter zeros in the appropriate time period(s) for this work item."));
+		StartEndDateUnitProvider dateUnitRange = new StartEndDateUnitProvider(dateUnits);
+		lowerPanel = new WhenEditorLowerPanel(projectCalendar, dateUnitRange);
+
 		add(explanation, BorderLayout.PAGE_START);
 		add(upperPanel, BorderLayout.CENTER);
 		add(lowerPanel, BorderLayout.PAGE_END);
