@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2010, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -17,32 +17,23 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.wizard.diagram;
 
-import org.miradi.actions.jump.ActionJumpSummaryWizardDefineProjectVision;
-import org.miradi.main.menu.ProcessSteps;
-import org.miradi.wizard.DiagramWizardStep;
-import org.miradi.wizard.WizardPanel;
+package org.miradi.actions.jump;
 
-public class DiagramWizardVisionStep extends DiagramWizardStep
+import org.miradi.actions.MainWindowAction;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
+
+public class ActionJumpDiagramWizardHumanWelfareTargetsStep extends MainWindowAction
 {
-	public DiagramWizardVisionStep(WizardPanel wizardToUse)
+	public ActionJumpDiagramWizardHumanWelfareTargetsStep(MainWindow mainWindowToUse)
 	{
-		super(wizardToUse);
-	}
-	public String getProcessStepTitle()
-	{
-		return ProcessSteps.PROCESS_STEP_1B;
-	}
-
-	public Class getAssociatedActionClass()
-	{
-		return ActionJumpSummaryWizardDefineProjectVision.class;
+		super(mainWindowToUse, getLabel());
 	}
 	
-	@Override
-	public String getSubHeading()
+	static String getLabel()
 	{
-		return null;
+		return EAM.text("Add Human Welfare Targets If Desired");
 	}
+
 }

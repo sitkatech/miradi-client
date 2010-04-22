@@ -42,6 +42,7 @@ import org.miradi.wizard.diagram.DiagramWizardCreateInitialModelStep;
 import org.miradi.wizard.diagram.DiagramWizardDefineAudienceStep;
 import org.miradi.wizard.diagram.DiagramWizardDefineTargetsStep;
 import org.miradi.wizard.diagram.DiagramWizardGoodResultsChainCriteriaReview;
+import org.miradi.wizard.diagram.DiagramWizardHumanWelfareTargetsStep;
 import org.miradi.wizard.diagram.DiagramWizardIdentifyDirectThreatStep;
 import org.miradi.wizard.diagram.DiagramWizardIdentifyIndirectThreatStep;
 import org.miradi.wizard.diagram.DiagramWizardLinkDirectThreatsToTargetsStep;
@@ -49,7 +50,6 @@ import org.miradi.wizard.diagram.DiagramWizardProjectScopeStep;
 import org.miradi.wizard.diagram.DiagramWizardResultsChainSelectStrategyStep;
 import org.miradi.wizard.diagram.DiagramWizardReviewAndModifyTargetsStep;
 import org.miradi.wizard.diagram.DiagramWizardReviewModelAndAdjustStep;
-import org.miradi.wizard.diagram.DiagramWizardVisionStep;
 import org.miradi.wizard.diagram.MonitoringWizardDefineIndicatorsStep;
 import org.miradi.wizard.diagram.RankDraftStrategiesStep;
 import org.miradi.wizard.diagram.SelectChainStep;
@@ -246,9 +246,9 @@ public class WizardManager
 	{
 		createStepEntry(new DiagramOverviewStep(panel));
 		createStepEntry(new DiagramWizardProjectScopeStep(panel));
-		createStepEntry(new DiagramWizardVisionStep(panel));
 		createStepEntry(new DiagramWizardDefineTargetsStep(panel));
 		createStepEntry(new DiagramWizardReviewAndModifyTargetsStep(panel));
+		createStepEntry(new DiagramWizardHumanWelfareTargetsStep(panel));
 		//TODO rename TargetViability Classes to identify which step is which
 		createStepEntry(new TargetViabilityMethodChoiceStep(panel)).
 			createControl("DoneViabilityAnalysis", TargetStressesStep.class).
@@ -372,7 +372,7 @@ public class WizardManager
 
 				DiagramWizardDefineTargetsStep.class,
 				DiagramWizardReviewAndModifyTargetsStep.class,
-				DiagramWizardVisionStep.class,
+				DiagramWizardHumanWelfareTargetsStep.class,
 				
 				TargetViabilityOverviewStep.class,
 				TargetViabilityMethodChoiceStep.class,

@@ -51,6 +51,7 @@ import org.miradi.actions.jump.ActionJumpDiagramOverviewStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardCreateInitialModelStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardDefineAudienceStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
+import org.miradi.actions.jump.ActionJumpDiagramWizardHumanWelfareTargetsStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep;
@@ -308,6 +309,7 @@ public class Actions
 		registerAction(new ActionJumpDiagramWizardDefineTargetsStep(mainWindow));
 		registerAction(new ActionJumpDiagramWizardProjectScopeStep(mainWindow));
 		registerAction(new ActionJumpDiagramWizardReviewAndModifyTargetsStep(mainWindow));
+		registerAction(new ActionJumpDiagramWizardHumanWelfareTargetsStep(mainWindow));
 		registerAction(new ActionJumpTargetViabilityMethodChoiceStep(mainWindow));
 		registerAction(new ActionJumpTargetViability3Step(mainWindow));
 		registerAction(new ActionJumpTargetStressesStep(mainWindow));
