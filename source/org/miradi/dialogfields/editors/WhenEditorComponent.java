@@ -83,7 +83,11 @@ public class WhenEditorComponent extends DisposablePanel
 		upperPanel.add(new PanelTitleLabel(EAM.text("Enter As: ")));
 		upperPanel.add(dateUnitTypeCombo);
 		
-		add(upperPanel, BorderLayout.PAGE_START);
+		PanelTitleLabel explanation = new PanelTitleLabel(
+				EAM.text("<html>Specifying when this work item will take place using this dialog<br> " +
+						"will enter zeros in the appropriate time period(s) for this work item."));
+		add(explanation, BorderLayout.PAGE_START);
+		add(upperPanel, BorderLayout.CENTER);
 		add(lowerPanel, BorderLayout.PAGE_END);
 		
 		dateUnitTypeCombo.addItemListener(new ChangeHandler());
