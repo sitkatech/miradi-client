@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 09:47-0500\n"
+"POT-Creation-Date: 2010-04-22 10:29-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -5282,8 +5282,8 @@ msgid "Identify stresses (optional)"
 msgstr "Kenali tekanan (opsional) "
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpSummaryWizardDefineProjectVision.java:35
-msgid "Add Human Welfare Targets If Desired"
-msgstr "Tambah Target Kesejahteraan Manusia Bila Perlu "
+msgid "Agree on Project Vision"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpScheduleOverviewStep.java:35
 msgid "Develop Project Schedule"
@@ -31634,6 +31634,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Add Human Welfare Targets If Desired"
+#~ msgstr "Tambah Target Kesejahteraan Manusia Bila Perlu "
 
 #~ msgid ""
 #~ "<html>Irreversibility - The degree to which the effects of a threat can "
