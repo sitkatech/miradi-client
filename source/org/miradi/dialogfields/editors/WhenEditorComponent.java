@@ -27,6 +27,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 
 import org.martus.swing.UiComboBox;
 import org.miradi.dialogs.base.DisposablePanel;
@@ -79,14 +80,17 @@ public class WhenEditorComponent extends DisposablePanel
 		PanelTitleLabel explanation = new PanelTitleLabel(
 				EAM.text("<html>Specifying when this work item will take place using this dialog<br> " +
 						"will enter zeros in the appropriate time period(s) for this work item."));
+		explanation.setBorder(createSmallCushionBorder());
 		
 		TwoColumnPanel upperPanel = new TwoColumnPanel();
 		upperPanel.setBorder(BorderFactory.createEtchedBorder());
 		upperPanel.add(new PanelTitleLabel(EAM.text("Enter As: ")));
 		upperPanel.add(dateUnitTypeCombo);
+		upperPanel.setBorder(createSmallCushionBorder());
 		
 		StartEndDateUnitProvider dateUnitRange = new StartEndDateUnitProvider(dateUnits);
 		lowerPanel = new WhenEditorLowerPanel(projectCalendar, dateUnitRange);
+		lowerPanel.setBorder(createSmallCushionBorder());
 
 		add(explanation, BorderLayout.PAGE_START);
 		add(upperPanel, BorderLayout.CENTER);
@@ -94,6 +98,11 @@ public class WhenEditorComponent extends DisposablePanel
 		
 		dateUnitTypeCombo.addItemListener(new ChangeHandler());
 		dateUnitTypeCombo.setSelectedItem(dateUnitTypeQuestion.findChoiceByCode(singleDateUnitTypeCode));
+	}
+
+	private Border createSmallCushionBorder()
+	{
+		return BorderFactory.createEmptyBorder(4,4,4,4);
 	}
 	
 	@Override
