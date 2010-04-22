@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 09:47-0500\n"
+"POT-Creation-Date: 2010-04-22 10:29-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5036,7 +5036,7 @@ msgid "Identify stresses (optional)"
 msgstr "识别压力（可选项） \t\t"
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpSummaryWizardDefineProjectVision.java:35
-msgid "Add Human Welfare Targets If Desired"
+msgid "Agree on Project Vision"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpScheduleOverviewStep.java:35
