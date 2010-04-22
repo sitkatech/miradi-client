@@ -42,15 +42,15 @@ public class DateUnitTypeQuestion extends DynamicChoiceQuestion
 	{
 		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
 		if (shouldAddNoneChoice())
-			choices.add(new ChoiceItem(DateUnitTypeQuestion.NONE_CODE, EAM.text("None")));
+			choices.add(new ChoiceItem(DateUnitTypeQuestion.NONE_CODE, EAM.text("Unscheduled")));
 		
-		choices.add(new ChoiceItem(DateUnitTypeQuestion.PROJECT_TOTAL_CODE, EAM.text("Project Total")));
-		choices.add(new ChoiceItem(DateUnitTypeQuestion.YEAR_CODE, EAM.text("Year")));
+		choices.add(new ChoiceItem(DateUnitTypeQuestion.PROJECT_TOTAL_CODE, EAM.text("Entire Project Duration")));
+		choices.add(new ChoiceItem(DateUnitTypeQuestion.YEAR_CODE, EAM.text("Specific Year(s)")));
 		if (projectCalendar.shouldShowQuarterColumns())
-			choices.add(new ChoiceItem(DateUnitTypeQuestion.QUARTER_CODE, EAM.text("Quarter")));
+			choices.add(new ChoiceItem(DateUnitTypeQuestion.QUARTER_CODE, EAM.text("Specific Quarter(s)")));
 		
-		choices.add(new ChoiceItem(DateUnitTypeQuestion.MONTH_CODE, EAM.text("Month")));
-		choices.add(new ChoiceItem(DateUnitTypeQuestion.DAY_CODE, EAM.text("Day")));
+		choices.add(new ChoiceItem(DateUnitTypeQuestion.MONTH_CODE, EAM.text("Specific Month(s)")));
+		choices.add(new ChoiceItem(DateUnitTypeQuestion.DAY_CODE, EAM.text("Specific Day(s)")));
 		
 		return choices.toArray(new ChoiceItem[0]);
 	}
