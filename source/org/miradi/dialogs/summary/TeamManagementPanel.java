@@ -32,6 +32,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.rtf.RtfManagementExporter;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.BufferedImageFactory;
+import org.miradi.utils.ImageTooLargeException;
 import org.miradi.utils.ObjectTableModelExporter;
 import org.miradi.utils.TableExporter;
 
@@ -58,7 +59,7 @@ public class TeamManagementPanel extends ObjectManagementPanel
 		return true;
 	}
 	
-	public BufferedImage getImage()
+	public BufferedImage getImage() throws ImageTooLargeException
 	{
 		TeamPoolTable table = createTable();
 		BufferedImage image = BufferedImageFactory.createImageFromTable(table);
