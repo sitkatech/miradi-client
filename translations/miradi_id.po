@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-23 09:59-0500\n"
+"POT-Creation-Date: 2010-04-23 10:32-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -897,11 +897,17 @@ msgstr "Filter menurut Sumber Daya "
 msgid "Instructions"
 msgstr "Instruksi "
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:57
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:58
 msgid "Export complete"
 msgstr "Ekspor selesai "
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:77
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:62
+msgid ""
+"The image is too large to be exported.\n"
+"Please use the <Zoom Out> feature to make it smaller, and try again."
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:84
 msgid "Error Occurred please try saving under different name."
 msgstr "Terjadi Kesalahan, harap simpan dengan nama lain. "
 
@@ -7376,7 +7382,7 @@ msgstr "Anggota Tim "
 msgid "Title|Team Properties"
 msgstr "Sifat-sifat Tim "
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamManagementPanel.java:48
+#: Miradi/source/org/miradi/dialogs/summary/TeamManagementPanel.java:49
 msgid "Title|Team"
 msgstr "Tim "
 

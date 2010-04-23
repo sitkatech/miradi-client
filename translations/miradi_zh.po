@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-23 09:59-0500\n"
+"POT-Creation-Date: 2010-04-23 10:32-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -859,11 +859,17 @@ msgstr ""
 msgid "Instructions"
 msgstr "说明 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:57
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:58
 msgid "Export complete"
 msgstr "导出完成 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:77
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:62
+msgid ""
+"The image is too large to be exported.\n"
+"Please use the <Zoom Out> feature to make it smaller, and try again."
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:84
 msgid "Error Occurred please try saving under different name."
 msgstr "出错，请尝试用不同的文件名保存。 \t\t"
 
@@ -7105,7 +7111,7 @@ msgstr "团队成员 \t\t"
 msgid "Title|Team Properties"
 msgstr "团队属性 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamManagementPanel.java:48
+#: Miradi/source/org/miradi/dialogs/summary/TeamManagementPanel.java:49
 msgid "Title|Team"
 msgstr "团队 \t\t"
 
