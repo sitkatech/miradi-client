@@ -26,6 +26,7 @@ import java.util.zip.ZipException;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.utils.EAMFileSaveChooser;
+import org.miradi.utils.ImageTooLargeException;
 import org.miradi.views.ViewDoer;
 
 abstract public class AbstractFileSaverDoer extends ViewDoer
@@ -55,6 +56,12 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 
 			doWork(chosen);
 			EAM.notifyDialog(EAM.text("Export complete"));
+		}
+		catch(ImageTooLargeException e)
+		{
+			String errorMessage = EAM.text("The image is too large to be exported.\n" +
+					"Please use the <Zoom Out> feature to make it smaller, and try again.");
+			EAM.errorDialog(errorMessage);
 		}
 		catch (ZipException e)
 		{

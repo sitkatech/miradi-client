@@ -61,7 +61,7 @@ public  class BufferedImageFactory
 		return image;
 	}
 	
-	public static BufferedImage getImage(JComponent swingComponent,  int inset) 
+	public static BufferedImage getImage(JComponent swingComponent,  int inset) throws ImageTooLargeException
 	{
 		realizeComponent(swingComponent);
 
@@ -72,15 +72,28 @@ public  class BufferedImageFactory
 		toScreen(bounds);
 		int width = (int) bounds.getWidth() + 2 * inset;
 		int height = (int) bounds.getHeight() + 2 * inset;
-		
-		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-		
-		Graphics2D graphics = image.createGraphics();
-		graphics.setColor(Color.WHITE);
-		graphics.fillRect(0, 0, image.getWidth(), image.getHeight());
-		swingComponent.print(graphics);
-		graphics.dispose();
-		return image;
+
+		try
+		{
+			BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+			
+			Graphics2D graphics = image.createGraphics();
+			graphics.setColor(Color.WHITE);
+			graphics.fillRect(0, 0, image.getWidth(), image.getHeight());
+			swingComponent.print(graphics);
+			graphics.dispose();
+			return image;
+		}
+		catch(OutOfMemoryError e)
+		{
+			double size = width * height;
+			double max = 30000000;
+			int tooBigByPercent = (int)((size / max - 1) * 100);
+			if(tooBigByPercent < 0)
+				throw e;
+			
+			throw new ImageTooLargeException(tooBigByPercent);
+		}
 
 	}
 
@@ -104,7 +117,7 @@ public  class BufferedImageFactory
 		return createImageFromDiagram(diagram);
 	}
 	
-	private static BufferedImage createImageFromDiagram(DiagramComponent diagram)
+	private static BufferedImage createImageFromDiagram(DiagramComponent diagram) throws ImageTooLargeException
 	{
 		Rectangle totalBoundsIgnoringVisibilityOfFactors = diagram.getDiagramObject().getBoundsOfFactorsAndBendPoints();
 		if (totalBoundsIgnoringVisibilityOfFactors == null)
@@ -149,19 +162,19 @@ public  class BufferedImageFactory
 		rect.setFrame(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
 	}
 	
-	public static BufferedImage createImageFromTreeTable(TreeTableWithRowHeightSaver table)
+	public static BufferedImage createImageFromTreeTable(TreeTableWithRowHeightSaver table) throws ImageTooLargeException
 	{
 		table.updateAutomaticRowHeights();
 		return createImageForTableInScrollPane(table);
 	}
 
-	public static BufferedImage createImageFromTable(TableWithRowHeightSaver table)
+	public static BufferedImage createImageFromTable(TableWithRowHeightSaver table) throws ImageTooLargeException
 	{
 		table.updateAutomaticRowHeights();	
 		return createImageForTableInScrollPane(table);
 	}
 
-	private static BufferedImage createImageForTableInScrollPane(JTable table)
+	private static BufferedImage createImageForTableInScrollPane(JTable table) throws ImageTooLargeException
 	{
 		JScrollPane scrollerToShowHeaders = new JScrollPane(table);
 		scrollerToShowHeaders.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -171,7 +184,7 @@ public  class BufferedImageFactory
 		return createImageFromComponent(scrollerToShowHeaders);
 	}
 	
-	public static BufferedImage createImageFromComponent(JComponent component)
+	public static BufferedImage createImageFromComponent(JComponent component) throws ImageTooLargeException
 	{
 		return getImage(component, COMPONENT_INSET);
 	}
