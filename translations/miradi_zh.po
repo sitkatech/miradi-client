@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-23 10:32-0500\n"
+"POT-Creation-Date: 2010-04-23 10:36-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -817,8 +817,10 @@ msgstr "新策略 \t\t"
 
 #: Miradi/source/org/miradi/views/diagram/CreateResultsChainDoer.java:89
 msgid ""
-"Annotionats were removed from Contributing Factor/Threat and attached to "
-"Intermediate Result/Threat Reduction Result"
+"Any Indicators or Objectives that were associated to Contributing Factors or "
+"Threats \n"
+"have been moved to the corresponding Threat Reduction Result or Intermediate "
+"Result"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/InsertThreatReductionResultDoer.java:43
