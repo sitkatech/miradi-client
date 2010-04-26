@@ -44,8 +44,8 @@ public class WhenPopupEditorComponent extends AbstractPopupEditorComponent
 			ModalDialogWithClose dialog = new ModalDialogWithClose(mainWindow, title);
 			whenEditorPanel = new WhenEditorComponent(mainWindow.getProject().getProjectCalendar(), baseObjectForRow);
 			dialog.setMainPanel(whenEditorPanel);
-			Utilities.centerFrame(dialog);
 			dialog.pack();
+			Utilities.centerFrame(dialog);
 			dialog.setVisible(true);
 			FieldSaver.savePendingEdits();
 		}
