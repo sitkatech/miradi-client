@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-23 10:36-0500\n"
+"POT-Creation-Date: 2010-04-26 10:08-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -4893,11 +4893,11 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:81
 msgid ""
-"<html>Specifying when this work item will take place using this dialog<br> "
-"will enter zeros in the appropriate time period(s) for this work item."
+"<html>Specifying when this work item will take place using this dialog "
+"<br>will enter zeros in the appropriate time period column(s)."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:87
+#: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:88
 msgid "Enter As: "
 msgstr ""
 
