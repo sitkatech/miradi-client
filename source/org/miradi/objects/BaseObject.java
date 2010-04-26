@@ -1205,13 +1205,13 @@ abstract public class BaseObject
 		StringBuffer result = new StringBuffer();
 		for(int index = 0; index < refs.size(); ++index)
 		{
-			if(index < refs.size() && refs.size() > 1)
+			if(refs.size() > 1)
 				result.append(FAKE_BULLET);
 			
 			BaseObject baseObject = BaseObject.find(getProject(), refs.get(index));
 			result.append(baseObject.getData(BaseObject.TAG_LABEL));
 
-			if(index < refs.size()&& refs.size() > 1)
+			if(refs.size() > 1)
 				result.append(NEW_LINE);
 		}
 		
