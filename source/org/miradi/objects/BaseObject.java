@@ -1200,11 +1200,12 @@ abstract public class BaseObject
 	
 	public String getBaseObjectLabelsOnASingleLine(ORefList refs)
 	{
+		final String FAKE_BULLET = "- ";
 		StringBuffer result = new StringBuffer();
 		for(int index = 0; index < refs.size(); ++index)
 		{
 			if(index < refs.size() && refs.size() > 1)
-				result.append("- ");
+				result.append(FAKE_BULLET);
 			
 			BaseObject baseObject = BaseObject.find(getProject(), refs.get(index));
 			result.append(baseObject.getData(BaseObject.TAG_LABEL));
