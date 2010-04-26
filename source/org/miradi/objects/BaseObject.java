@@ -1211,7 +1211,10 @@ abstract public class BaseObject
 			result.append(baseObject.getData(BaseObject.TAG_LABEL));
 
 			if(index < refs.size()&& refs.size() > 1)
-				result.append("\n");
+			{
+				String NEW_LINE = "\n";
+				result.append(NEW_LINE);
+			}
 		}
 		
 		return result.toString();
