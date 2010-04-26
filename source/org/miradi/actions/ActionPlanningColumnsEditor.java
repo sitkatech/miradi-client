@@ -31,7 +31,7 @@ public class ActionPlanningColumnsEditor extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Table|Edit Columns...");
+		return EAM.text("Action|Table|Show Columns...");
 	}
 
 	public String getToolTipText()
