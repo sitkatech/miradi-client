@@ -488,10 +488,10 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if(columnTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
 				return new StrategyRatingSummaryQuestion().findChoiceByCode(rawValue);
 			
-			if (Desire.isDesire(baseObject.getType()) && columnTag.equals(Desire.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
+			if (Desire.isDesire(baseObject.getRef()) && columnTag.equals(Desire.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
 				return createAppendedRelevantIndicatorLabels((Desire)baseObject);
 			
-			if (Desire.isDesire(baseObject.getType()) && columnTag.equals(Desire.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS))
+			if (Desire.isDesire(baseObject.getRef()) && columnTag.equals(Desire.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS))
 				return createAppendedRelevantStrategyAndActivityLabels((Desire)baseObject);
 			
 			if(isWhenColumn(columnTag))
