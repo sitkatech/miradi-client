@@ -1201,6 +1201,7 @@ abstract public class BaseObject
 	public String getBaseObjectLabelsOnASingleLine(ORefList refs)
 	{
 		final String FAKE_BULLET = "- ";
+		final String NEW_LINE = "\n";
 		StringBuffer result = new StringBuffer();
 		for(int index = 0; index < refs.size(); ++index)
 		{
@@ -1211,10 +1212,7 @@ abstract public class BaseObject
 			result.append(baseObject.getData(BaseObject.TAG_LABEL));
 
 			if(index < refs.size()&& refs.size() > 1)
-			{
-				String NEW_LINE = "\n";
 				result.append(NEW_LINE);
-			}
 		}
 		
 		return result.toString();
