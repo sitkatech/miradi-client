@@ -488,6 +488,12 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if(columnTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
 				return new StrategyRatingSummaryQuestion().findChoiceByCode(rawValue);
 			
+			if (Desire.isDesire(baseObject.getType()) && columnTag.equals(Desire.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
+				return createAppendedRelevantInidicatorLabels((Desire)baseObject);
+			
+			if (Desire.isDesire(baseObject.getType()) && columnTag.equals(Desire.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS))
+				return createAppendedRelevantStrategyAndActivityLabels((Desire)baseObject);
+			
 			if(isWhenColumn(columnTag))
 				return getFilteredWhen(baseObject);
 			
@@ -500,6 +506,23 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 	}
 	
+	private ChoiceItem createAppendedRelevantStrategyAndActivityLabels(Desire desire) throws Exception
+	{
+		return createLabelsOnSingleLine(desire, desire.getRelevantStrategyAndActivityRefs());
+	}
+
+	private ChoiceItem createAppendedRelevantInidicatorLabels(Desire desire) throws Exception
+	{
+		return createLabelsOnSingleLine(desire, desire.getRelevantIndicatorRefList());
+	}
+	
+	private ChoiceItem createLabelsOnSingleLine(Desire desire, ORefList refs)
+	{
+		String labelsOnASingleLine = desire.getBaseObjectLabelsOnASingleLine(refs);
+		
+		return new TaglessChoiceItem(labelsOnASingleLine);
+	}
+
 	private ChoiceItem getRatingChoiceItem(BaseObject baseObject) throws Exception
 	{
 		if (Cause.is(baseObject))
@@ -632,6 +655,12 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		{
 			if (columnTag.equals(Factor.TAG_COMMENTS))
 				return Desire.TAG_COMMENTS;
+			
+			if (columnTag.equals(Factor.PSEUDO_TAG_INDICATORS))
+				return Desire.PSEUDO_TAG_RELEVANT_INDICATOR_REFS;
+			
+			if (columnTag.equals(Strategy.PSEUDO_TAG_ACTIVITIES))
+				return Desire.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS;
 		}
 		if(Goal.is(nodeType))
 		{
