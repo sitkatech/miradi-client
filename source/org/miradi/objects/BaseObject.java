@@ -1198,7 +1198,7 @@ abstract public class BaseObject
 		return getType() == typeToUse;
 	}
 	
-	protected String getBaseObjectLabelsOnASingleLine(ORefList refs)
+	public String getBaseObjectLabelsOnASingleLine(ORefList refs)
 	{
 		StringBuffer result = new StringBuffer();
 		for(int index = 0; index < refs.size(); ++index)
