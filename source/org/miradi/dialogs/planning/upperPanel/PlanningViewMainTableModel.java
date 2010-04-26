@@ -489,7 +489,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 				return new StrategyRatingSummaryQuestion().findChoiceByCode(rawValue);
 			
 			if (Desire.isDesire(baseObject.getType()) && columnTag.equals(Desire.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
-				return createAppendedRelevantInidicatorLabels((Desire)baseObject);
+				return createAppendedRelevantIndicatorLabels((Desire)baseObject);
 			
 			if (Desire.isDesire(baseObject.getType()) && columnTag.equals(Desire.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS))
 				return createAppendedRelevantStrategyAndActivityLabels((Desire)baseObject);
@@ -511,7 +511,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return createLabelsOnSingleLine(desire, desire.getRelevantStrategyAndActivityRefs());
 	}
 
-	private ChoiceItem createAppendedRelevantInidicatorLabels(Desire desire) throws Exception
+	private ChoiceItem createAppendedRelevantIndicatorLabels(Desire desire) throws Exception
 	{
 		return createLabelsOnSingleLine(desire, desire.getRelevantIndicatorRefList());
 	}
