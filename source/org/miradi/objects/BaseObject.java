@@ -1203,11 +1203,14 @@ abstract public class BaseObject
 		StringBuffer result = new StringBuffer();
 		for(int index = 0; index < refs.size(); ++index)
 		{
-			if(index > 0)
-				result.append("; ");
+			if(index < refs.size() && refs.size() > 1)
+				result.append("- ");
 			
 			BaseObject baseObject = BaseObject.find(getProject(), refs.get(index));
 			result.append(baseObject.getData(BaseObject.TAG_LABEL));
+
+			if(index < refs.size()&& refs.size() > 1)
+				result.append("\n");
 		}
 		
 		return result.toString();
