@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-26 16:20-0500\n"
+"POT-Creation-Date: 2010-04-26 18:50-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -6023,8 +6023,8 @@ msgid "TT|Delete the selected item"
 msgstr "Eliminar el elemento seleccionado"
 
 #: Miradi/source/org/miradi/actions/ActionPlanningColumnsEditor.java:34
-msgid "Action|Table|Edit Columns..."
-msgstr "Editar columnas... "
+msgid "Action|Table|Show Columns..."
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionPlanningColumnsEditor.java:39
 msgid "TT|Change visible columns"
@@ -6297,8 +6297,8 @@ msgid "TT|Edit the methods for this indicator"
 msgstr "Editar los métodos para este indicador"
 
 #: Miradi/source/org/miradi/actions/ActionPlanningRowsEditor.java:34
-msgid "Action|Table|Edit Rows..."
-msgstr "Editar filas... "
+msgid "Action|Table|Show Rows..."
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionPlanningRowsEditor.java:39
 msgid "TT|Change visible rows"
@@ -31803,6 +31803,12 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Action|Table|Edit Columns..."
+#~ msgstr "Editar columnas... "
+
+#~ msgid "Action|Table|Edit Rows..."
+#~ msgstr "Editar filas... "
 
 #~ msgid ""
 #~ "html|/resources/help/AboutExtra.html|  <p>This software is being "

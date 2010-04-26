@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-26 16:20-0500\n"
+"POT-Creation-Date: 2010-04-26 18:50-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -5992,8 +5992,8 @@ msgid "TT|Delete the selected item"
 msgstr "Hapus butir terpilih "
 
 #: Miradi/source/org/miradi/actions/ActionPlanningColumnsEditor.java:34
-msgid "Action|Table|Edit Columns..."
-msgstr "Edit Kolom..."
+msgid "Action|Table|Show Columns..."
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionPlanningColumnsEditor.java:39
 msgid "TT|Change visible columns"
@@ -6265,8 +6265,8 @@ msgid "TT|Edit the methods for this indicator"
 msgstr "Edit metode untuk indikator ini "
 
 #: Miradi/source/org/miradi/actions/ActionPlanningRowsEditor.java:34
-msgid "Action|Table|Edit Rows..."
-msgstr "Edit Baris... "
+msgid "Action|Table|Show Rows..."
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionPlanningRowsEditor.java:39
 msgid "TT|Change visible rows"
@@ -31555,6 +31555,12 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Action|Table|Edit Columns..."
+#~ msgstr "Edit Kolom..."
+
+#~ msgid "Action|Table|Edit Rows..."
+#~ msgstr "Edit Baris... "
 
 #~ msgid ""
 #~ "html|/resources/help/AboutExtra.html|  <p>This software is being "
