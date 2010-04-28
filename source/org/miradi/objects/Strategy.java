@@ -181,7 +181,10 @@ public class Strategy extends Factor
 	@Override
 	public Vector<Command> createCommandsToDeleteChildren() throws Exception
 	{
-		return createCommandsToDeleteBudgetChildren();
+		Vector<Command> commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
+		commandsToDeleteChildren.addAll(createCommandsToDeleteBudgetChildren());
+		
+		return commandsToDeleteChildren;
 	}
 
 	@Override
