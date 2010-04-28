@@ -71,7 +71,8 @@ public class Task extends Factor
 	@Override
 	public Vector<Command> createCommandsToDeleteChildren() throws Exception
 	{
-		Vector<Command> commandsToDeleteChildren = createCommandsToDeleteBudgetChildren();
+		Vector<Command> commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
+		commandsToDeleteChildren.addAll(createCommandsToDeleteBudgetChildren());
 		commandsToDeleteChildren.addAll(getDeleteSelfAndSubtasksCommands(getProject()));
 		
 		return commandsToDeleteChildren;
