@@ -773,7 +773,10 @@ abstract public class BaseObject
 	
 	public Vector<Command> createCommandsToDeleteChildren() throws Exception
 	{
-		return new Vector<Command>();
+		Vector<Command> commandsToDeleteChildren  = new Vector<Command>();
+		commandsToDeleteChildren.addAll(creatCommandsToDeleteRefs(TAG_PROGRESS_REPORT_REFS));
+		
+		return commandsToDeleteChildren;
 	}
 	
 	protected Vector<Command> createCommandsToDeleteBudgetChildren() throws Exception
@@ -785,7 +788,7 @@ abstract public class BaseObject
 		return commandToDeleteChildren;
 	}
 
-	private Vector<Command> creatCommandsToDeleteRefs(String tag) throws Exception
+	protected Vector<Command> creatCommandsToDeleteRefs(String tag) throws Exception
 	{
 		ORefList refsToDelete = getRefList(tag);
 		Vector<Command> commandsToDeleteRefList = createDeleteCommands(refsToDelete);
