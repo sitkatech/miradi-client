@@ -23,6 +23,7 @@ import java.util.Vector;
 
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.GroupBox;
+import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
@@ -41,6 +42,7 @@ public class FilteredDiagramFactorsQuestion extends ObjectQuestion
 		typesToExclude.add(GroupBox.getObjectType());
 		typesToExclude.add(Stress.getObjectType());
 		typesToExclude.add(Task.getObjectType());
+		typesToExclude.add(ScopeBox.getObjectType());
 		
 		return typesToExclude;
 	}
