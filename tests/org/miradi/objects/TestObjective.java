@@ -19,14 +19,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.objects;
 
+import java.util.Vector;
+
+import org.miradi.commands.Command;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objects.Cause;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.Objective;
+import org.miradi.project.ProjectForTesting;
 
 
 public class TestObjective extends ObjectTestCase
@@ -62,5 +64,32 @@ public class TestObjective extends ObjectTestCase
 		relvancyOverrides.add(new RelevancyOverride(indicatorRef, overrideBoolean));
 		objective.setData(Objective.TAG_RELEVANT_INDICATOR_SET, relvancyOverrides.toString());
 		assertEquals("wrong indicator count?", expectedValue, objective.getRelevantIndicatorRefList().size());
+	}
+	
+	public void testCreateCommandsToDeleteChildren() throws Exception
+	{
+		verifyProgressPercentIsDeleted(getProject());
+	}
+
+	public static void verifyProgressPercentIsDeleted(ProjectForTesting projectToUse) throws Exception
+	{
+		Strategy strategy = projectToUse.createStrategy();
+		Objective objective = projectToUse.createObjective(strategy);
+		
+		verifyAnnotationIsDeletedFromParent(projectToUse, objective, Objective.TAG_PROGRESS_PERCENT_REFS, ProgressPercent.getObjectType());
+	}
+
+	public static void verifyAnnotationIsDeletedFromParent(ProjectForTesting projectToUse, BaseObject parent, String annotationTag, int annotationType) throws Exception
+	{
+		ORef annotationRef = projectToUse.createObject(annotationType);
+		ORefList singleAnnotationRefList = new ORefList(annotationRef);
+		
+		projectToUse.fillObjectUsingCommand(parent, annotationTag, singleAnnotationRefList);
+		
+		Vector<Command> commandsToDelete = parent.createCommandsToDeleteChildrenAndObject();
+		projectToUse.executeCommandsAsTransaction(commandsToDelete);
+		
+		ORefList shouldBeEmptyRefList = projectToUse.getPool(annotationType).getRefList();
+		assertTrue("Annotation was not deleted?", shouldBeEmptyRefList.isEmpty());
 	}
 }

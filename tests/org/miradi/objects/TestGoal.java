@@ -33,4 +33,8 @@ public class TestGoal extends ObjectTestCase
 		verifyFields(ObjectType.GOAL);
 	}
 	
+	public void testCreateCommandsToDeleteChildren() throws Exception
+	{
+		TestObjective.verifyProgressPercentIsDeleted(getProject());
+	}
 }

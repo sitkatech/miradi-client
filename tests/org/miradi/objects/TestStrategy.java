@@ -133,6 +133,12 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 		TestTask.verifyIsAssignmentDataSuperseded(getProject(), strategy, Strategy.TAG_ACTIVITY_IDS);
 	}
 	
+	public void testCreateCommandsToDeleteChildren() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();		
+		TestObjective.verifyAnnotationIsDeletedFromParent(getProject(), strategy, Strategy.TAG_PROGRESS_REPORT_REFS, ProgressReport.getObjectType());
+	}
+	
 	static final BaseId criterionId1 = new BaseId(17);
 	static final BaseId criterionId2 = new BaseId(952);
 	static final BaseId criterionId3 = new BaseId(2833);

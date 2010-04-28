@@ -20,7 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import java.util.Arrays;
+import java.util.Vector;
 
+import org.miradi.commands.Command;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -50,6 +52,15 @@ abstract public class Desire extends BaseObject
 	public Desire(ObjectManager objectManager, BaseId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, idToUse, json);
+	}
+	
+	@Override
+	public Vector<Command> createCommandsToDeleteChildren() throws Exception
+	{
+		Vector<Command> commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
+		commandsToDeleteChildren.addAll(creatCommandsToDeleteRefs(TAG_PROGRESS_PERCENT_REFS));
+		
+		return commandsToDeleteChildren;
 	}
 
 	@Override
