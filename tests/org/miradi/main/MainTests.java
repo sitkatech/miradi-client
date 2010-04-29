@@ -197,6 +197,7 @@ import org.miradi.utils.TestTaxonomyFileLoader;
 import org.miradi.utils.TestThreatStressRatingHelper;
 import org.miradi.utils.TestTranslations;
 import org.miradi.views.budget.ImportAccountingCodesDoerTest;
+import org.miradi.views.diagram.TestDiagramAliasPaster;
 import org.miradi.views.diagram.TestLinkBendPointsMoveHandler;
 import org.miradi.views.diagram.doers.TestDeleteAnnotationDoer;
 import org.miradi.views.planning.TestAbstractPlanningTreeNode;
@@ -438,6 +439,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(org.miradi.views.diagram.TestInsertFactorDoer.class));
 		suite.addTest(new TestSuite(org.miradi.views.diagram.TestLayerManager.class));
 		suite.addTest(new TestSuite(org.miradi.views.diagram.TestDiagramPaster.class));
+		suite.addTest(new TestSuite(TestDiagramAliasPaster.class));
 		suite.addTest(new TestSuite(TestDeleteAnnotationDoer.class));
 		
 		// view.planning package
