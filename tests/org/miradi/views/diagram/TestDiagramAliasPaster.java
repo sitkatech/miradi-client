@@ -84,14 +84,8 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	
 	public void testCutPasteInSameDiagramAsExistingSharedThreatTarget() throws Exception
 	{	
-		Vector<DiagramFactor> diagramFactorsToCutPaste = new Vector<DiagramFactor>();
-		diagramFactorsToCutPaste.add(groupBoxDiagramFactor);
-		diagramFactorsToCutPaste.add(targetDiagramFactor);
-		diagramFactorsToCutPaste.add(threatDiagramFactor);
-		
-		Vector<DiagramLink> diagramLinksToCutPaste = new Vector<DiagramLink>();
-		diagramLinksToCutPaste.add(groupBoxDiagramLink);
-		diagramLinksToCutPaste.add(threatTargetDiagramLink);
+		Vector<DiagramFactor> diagramFactorsToCutPaste = createDiagramFactorList();
+		Vector<DiagramLink> diagramLinksToCutPaste = createDiagramLinkList();
 		TransferableMiradiList transferableList = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, diagramLinksToCutPaste);		
 		pasteShared(diagramModelToPasteInto, transferableList);
 		
@@ -132,19 +126,32 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	
 	private void cutPasteAll(DiagramModel diagramModelToPasteIntoToUse) throws Exception
 	{
-		Vector<DiagramFactor> diagramFactorsToCutPaste = new Vector<DiagramFactor>();
-		diagramFactorsToCutPaste.add(groupBoxDiagramFactor);
-		diagramFactorsToCutPaste.add(targetDiagramFactor);
-		diagramFactorsToCutPaste.add(threatDiagramFactor);
-		
-		Vector<DiagramLink> diagramLinksToCutPaste = new Vector<DiagramLink>();
-		diagramLinksToCutPaste.add(groupBoxDiagramLink);
-		diagramLinksToCutPaste.add(threatTargetDiagramLink);
+		Vector<DiagramFactor> diagramFactorsToCutPaste = createDiagramFactorList();
+		Vector<DiagramLink> diagramLinksToCutPaste = createDiagramLinkList();
 		TransferableMiradiList transferableList = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, diagramLinksToCutPaste);
 		
 		deleteDiagramLinkAndOrphandFactorLink(groupBoxDiagramLink);
 		deleteDiagramFactors(diagramFactorsToCutPaste);
 		pasteShared(diagramModelToPasteIntoToUse, transferableList);
+	}
+
+	private Vector<DiagramLink> createDiagramLinkList()
+	{
+		Vector<DiagramLink> diagramLinksToCutPaste = new Vector<DiagramLink>();
+		diagramLinksToCutPaste.add(groupBoxDiagramLink);
+		diagramLinksToCutPaste.add(threatTargetDiagramLink);
+		
+		return diagramLinksToCutPaste;
+	}
+
+	private Vector<DiagramFactor> createDiagramFactorList()
+	{
+		Vector<DiagramFactor> diagramFactorsToCutPaste = new Vector<DiagramFactor>();
+		diagramFactorsToCutPaste.add(groupBoxDiagramFactor);
+		diagramFactorsToCutPaste.add(targetDiagramFactor);
+		diagramFactorsToCutPaste.add(threatDiagramFactor);
+		
+		return diagramFactorsToCutPaste;
 	}
 
 	private void wrapThreatAndThreatTargetLinkWithGroupBox() throws Exception
