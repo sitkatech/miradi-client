@@ -64,11 +64,10 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		target = (Target) targetDiagramFactor.getWrappedFactor();
 		threat = (Cause) threatDiagramFactor.getWrappedFactor();
 		getProject().enableAsThreat(threatDiagramFactor.getWrappedORef());
-		threatTargetDiagramLink = getProject().createDiagramLinkAndAddToDiagramModel(threatDiagramFactor, targetDiagramFactor);
 		
 		diagramModelToPasteInto = createDiagramModelToPasteInto();
 	}
-	
+
 	public void testPasteGroupCreatesExtraGroup() throws Exception
 	{
 		wrapThreatWithGroupBox();
@@ -86,6 +85,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	
 	public void testPasteSharedGroupNonExistingGroupAndTarget() throws Exception
 	{	
+		threatTargetDiagramLink = createThreatTargetLink();
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, threatDiagramFactor);
 		wrapThreatAndThreatTargetLinkWithGroupBox();
 		cutPasteAll(diagramModelToPasteInto);
@@ -94,6 +94,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	
 	public void testPasteSharedGroupNonExistingGroupAndThreat() throws Exception
 	{	
+		threatTargetDiagramLink = createThreatTargetLink();
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, targetDiagramFactor);
 		wrapThreatAndThreatTargetLinkWithGroupBox();
 		cutPasteAll(diagramModelToPasteInto);
@@ -102,6 +103,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	
 	public void testPasteSharedGroupAllExist() throws Exception
 	{	
+		threatTargetDiagramLink = createThreatTargetLink();
 		wrapThreatAndThreatTargetLinkWithGroupBox();
 		Vector<DiagramFactor> diagramFactorsToCutPaste = createDiagramFactorList();
 		Vector<DiagramLink> diagramLinksToCutPaste = createDiagramLinkList();
@@ -116,6 +118,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 
 	public void testFactorLinkNotCreatedDuringCutPaste() throws Exception
 	{					
+		threatTargetDiagramLink = createThreatTargetLink();
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, threatDiagramFactor);
 		
 		Vector<DiagramFactor> diagramFactorsToCutPaste = new Vector<DiagramFactor>();
@@ -275,6 +278,11 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		linkCreator.updateGroupBoxChildrenRefs(coveredLinkRefs, newGroupBoxDiagramLinkRef);		
 		
 		return DiagramLink.find(getProject(), newGroupBoxDiagramLinkRef);
+	}
+	
+	private DiagramLink createThreatTargetLink() throws Exception
+	{
+		return getProject().createDiagramLinkAndAddToDiagramModel(threatDiagramFactor, targetDiagramFactor);
 	}
 	
 	private class ModelUpdater implements CommandExecutedListener
