@@ -119,11 +119,11 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		verifyFactorLinkAfterPaste(FactorLink.FROM, threatDiagramFactor.getWrappedFactor(), diagramModelToPasteInto);
 	}
 	
-	private void verifyFactorLinkAfterPaste(int direction, BaseObject sharedFactor, DiagramModel diagramModelToPasteIntoToUse)
+	private void verifyFactorLinkAfterPaste(int direction, BaseObject sharedFactor, DiagramModel diagramModel)
 	{
 		ORef factorLinkRef = getProject().getFactorLinkPool().getRefList().getFirstElement();
 		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
-		DiagramLink pastedDiagramLink = diagramModelToPasteIntoToUse.getDiagramObject().getDiagramFactorLink(factorLinkRef);
+		DiagramLink pastedDiagramLink = diagramModel.getDiagramObject().getDiagramFactorLink(factorLinkRef);
 		assertNotNull("Diagram Link not found?", pastedDiagramLink);
 		assertEquals("FactorLink end is not the original factor?", sharedFactor.getRef(), factorLink.getFactorRef(direction));
 		assertTrue("FactorLink to is not a target?", Target.is(factorLink.getToFactorRef()));
