@@ -35,6 +35,7 @@ import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
@@ -59,23 +60,30 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		
 		targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
 		threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		threat = (Cause) threatDiagramFactor.getWrappedFactor();
 		getProject().enableAsThreat(threatDiagramFactor.getWrappedORef());
 		threatTargetDiagramLink = getProject().createDiagramLinkAndAddToDiagramModel(threatDiagramFactor, targetDiagramFactor);
 		
 		createDiagramModelToPasteInto();
 	}
 	
-	public void testGroupBoxDiagramFactorNotCreatedDuringCutPasteAsAlias() throws Exception
+	public void testCutPasteInSameDiagramAsExistingSharedThreat() throws Exception
 	{	
 		pasteAsAlias(getDiagramModel(), diagramModelToPasteInto, threatDiagramFactor);
-		
-		DiagramFactor groupBoxDiagramFactor = createGroupBoxDiagramFactor(threatDiagramFactor);
-		DiagramLink groupBoxDiagramLink = createGroupBoxLinkWithChildren(groupBoxDiagramFactor, targetDiagramFactor, threatTargetDiagramLink);
-		
-		assertTrue("threat to target link is not covered by group box link?", threatTargetDiagramLink.isCoveredByGroupBoxLink());
-		assertEquals("group box has incorrect child links?", 1, groupBoxDiagramLink.getGroupedDiagramLinkRefs().size());
-
+		wrapThreatAndThreatTargetLinkWithGroupBox();
+		cutPasteAll();
+		verifyFactorLinkAfterPaste(FactorLink.FROM, threatDiagramFactor.getWrappedFactor(), diagramModelToPasteInto);
+	}
+	
+	public void testCutPasteInSameDiagramAsExistingSharedTarget() throws Exception
+	{	
+		pasteAsAlias(getDiagramModel(), diagramModelToPasteInto, targetDiagramFactor);
+		wrapThreatAndThreatTargetLinkWithGroupBox();
+		cutPasteAll();
+		verifyFactorLinkAfterPaste(FactorLink.TO, targetDiagramFactor.getWrappedFactor(), diagramModelToPasteInto);
+	}
+	
+	public void testCutPasteInSameDiagramAsExistingSharedThreatTarget() throws Exception
+	{	
 		Vector<DiagramFactor> diagramFactorsToCutPaste = new Vector<DiagramFactor>();
 		diagramFactorsToCutPaste.add(groupBoxDiagramFactor);
 		diagramFactorsToCutPaste.add(targetDiagramFactor);
@@ -84,17 +92,16 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		Vector<DiagramLink> diagramLinksToCutPaste = new Vector<DiagramLink>();
 		diagramLinksToCutPaste.add(groupBoxDiagramLink);
 		diagramLinksToCutPaste.add(threatTargetDiagramLink);
-		TransferableMiradiList transferableList = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, diagramLinksToCutPaste);
-		
-		deleteDiagramLinkAndOrphandFactorLink(groupBoxDiagramLink);
-		deleteDiagramFactors(diagramFactorsToCutPaste);
+		TransferableMiradiList transferableList = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, diagramLinksToCutPaste);		
 		paste(diagramModelToPasteInto, transferableList);
 		
-		verifyFactorLinkAfterPaste(threat, diagramModelToPasteInto);
+		wrapThreatAndThreatTargetLinkWithGroupBox();
+		cutPasteAll();
+		verifyFactorLinkAfterPaste(FactorLink.FROM, threatDiagramFactor.getWrappedFactor(), diagramModelToPasteInto);
 	}
 
 	public void testFactorLinkNotCreatedDuringCutPaste() throws Exception
-	{				
+	{					
 		pasteAsAlias(getDiagramModel(), diagramModelToPasteInto, threatDiagramFactor);
 		
 		Vector<DiagramFactor> diagramFactorsToCutPaste = new Vector<DiagramFactor>();
@@ -109,17 +116,43 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		deleteDiagramFactors(diagramFactorsToCutPaste);
 		paste(diagramModelToPasteInto, transferableList);
 		
-		verifyFactorLinkAfterPaste(threat, diagramModelToPasteInto);
+		verifyFactorLinkAfterPaste(FactorLink.FROM, threatDiagramFactor.getWrappedFactor(), diagramModelToPasteInto);
 	}
 	
-	private void verifyFactorLinkAfterPaste(Cause threatToUse, DiagramModel diagramModelToPasteIntoToUse)
+	private void verifyFactorLinkAfterPaste(int direction, BaseObject factorLinkEndFactor, DiagramModel diagramModelToPasteIntoToUse)
 	{
 		ORef factorLinkRef = getProject().getFactorLinkPool().getRefList().getFirstElement();
 		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
 		DiagramLink pastedDiagramLink = diagramModelToPasteIntoToUse.getDiagramObject().getDiagramFactorLink(factorLinkRef);
 		assertNotNull("Diagram Link not found?", pastedDiagramLink);
-		assertEquals("FactorLink from is not the original threat?", threatToUse.getRef(), factorLink.getFromFactorRef());
+		assertEquals("FactorLink end is not the original factor?", factorLinkEndFactor.getRef(), factorLink.getFactorRef(direction));
 		assertTrue("FactorLink to is not a target?", Target.is(factorLink.getToFactorRef()));
+	}
+	
+	private void cutPasteAll() throws Exception
+	{
+		Vector<DiagramFactor> diagramFactorsToCutPaste = new Vector<DiagramFactor>();
+		diagramFactorsToCutPaste.add(groupBoxDiagramFactor);
+		diagramFactorsToCutPaste.add(targetDiagramFactor);
+		diagramFactorsToCutPaste.add(threatDiagramFactor);
+		
+		Vector<DiagramLink> diagramLinksToCutPaste = new Vector<DiagramLink>();
+		diagramLinksToCutPaste.add(groupBoxDiagramLink);
+		diagramLinksToCutPaste.add(threatTargetDiagramLink);
+		TransferableMiradiList transferableList = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, diagramLinksToCutPaste);
+		
+		deleteDiagramLinkAndOrphandFactorLink(groupBoxDiagramLink);
+		deleteDiagramFactors(diagramFactorsToCutPaste);
+		paste(diagramModelToPasteInto, transferableList);
+	}
+
+	private void wrapThreatAndThreatTargetLinkWithGroupBox() throws Exception
+	{
+		groupBoxDiagramFactor = createGroupBoxDiagramFactor(threatDiagramFactor);
+		groupBoxDiagramLink = createGroupBoxLinkWithChildren(groupBoxDiagramFactor, targetDiagramFactor, threatTargetDiagramLink);
+
+		assertTrue("threat to target link is not covered by group box link?", threatTargetDiagramLink.isCoveredByGroupBoxLink());
+		assertEquals("group box has incorrect child links?", 1, groupBoxDiagramLink.getGroupedDiagramLinkRefs().size());
 	}
 
 	private DiagramModel createDiagramModelToPasteInto() throws Exception
@@ -232,5 +265,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	private DiagramFactor targetDiagramFactor;
 	private DiagramFactor threatDiagramFactor;
 	private DiagramLink threatTargetDiagramLink;
-	private Cause threat;
+	private DiagramFactor groupBoxDiagramFactor;
+	private DiagramLink groupBoxDiagramLink;
+
 }
