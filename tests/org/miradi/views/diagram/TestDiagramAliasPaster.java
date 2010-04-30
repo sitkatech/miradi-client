@@ -92,6 +92,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		wrapThreatAndThreatTargetLinkWithGroupBox();
 		cutPasteAll(diagramModelToPasteInto);
 		verifyFactorLinkAfterPaste(FactorLink.FROM, threatDiagramFactor.getWrappedFactor(), diagramModelToPasteInto);
+		verifyFactorLinkAfterPaste(FactorLink.TO, targetDiagramFactor.getWrappedFactor(), diagramModelToPasteInto);
 	}
 
 	public void testFactorLinkNotCreatedDuringCutPaste() throws Exception
