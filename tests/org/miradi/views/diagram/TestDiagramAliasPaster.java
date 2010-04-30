@@ -61,7 +61,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		DiagramLink threatTargetDiagramLink = getProject().createDiagramLinkAndAddToDiagramModel(threatDiagramFactor, targetDiagramFactor);
 		
 		DiagramModel diagramModelToPasteInto = createDiagramModelToPasteInto();
-		pasteAsAlias(getDiagramModel(), diagramModelToPasteInto, targetDiagramFactor);
+		pasteAsAlias(getDiagramModel(), diagramModelToPasteInto, threatDiagramFactor);
 		
 		DiagramFactor groupBoxDiagramFactor = createGroupBoxDiagramFactor(threatDiagramFactor);
 		DiagramLink groupBoxDiagramLink = createGroupBoxLinkWithChildren(groupBoxDiagramFactor, targetDiagramFactor, threatTargetDiagramLink);
@@ -118,9 +118,9 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		ORef factorLinkRef = getProject().getFactorLinkPool().getRefList().getFirstElement();
 		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
 		DiagramLink pastedDiagramLink = diagramModelToPasteInto.getDiagramObject().getDiagramFactorLink(factorLinkRef);
-		assertNotNull("factorLink is inside wrong diagram?", pastedDiagramLink);
-		assertEquals("FactorLink from is not threat?", threat.getRef(), factorLink.getFromFactorRef());
-		assertTrue("FactorLink to is not target?", Target.is(factorLink.getToFactorRef()));
+		assertNotNull("Diagram Link not found?", pastedDiagramLink);
+		assertEquals("FactorLink from is not the original threat?", threat.getRef(), factorLink.getFromFactorRef());
+		assertTrue("FactorLink to is not a target?", Target.is(factorLink.getToFactorRef()));
 	}
 
 	private DiagramModel createDiagramModelToPasteInto() throws Exception
