@@ -36,6 +36,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Factor;
+import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.ViewData;
@@ -51,6 +52,7 @@ public class DiagramAliasPaster extends DiagramPaster
 	public void pasteFactorsAndLinks(Point startPoint) throws Exception
 	{
 		pasteFactors(startPoint);
+		createNewFactorLinks();
 		createNewDiagramLinks();
 		updateAutoCreatedThreatStressRatings();
 		selectNewlyPastedItems();
@@ -106,7 +108,11 @@ public class DiagramAliasPaster extends DiagramPaster
 
 	public ORef getCorrospondingNewRef(ORef oldWrappedRef)
 	{
-		return oldWrappedRef;
+		if(BaseObject.find(getProject(), oldWrappedRef) != null)
+			return oldWrappedRef;
+		
+		ORef newRef = oldToNewPastedObjectMap.get(oldWrappedRef);
+		return newRef;
 	}
 	
 	public ORef getFactorLinkRef(ORef oldWrappedFactorLinkRef)
@@ -146,7 +152,20 @@ public class DiagramAliasPaster extends DiagramPaster
 		BaseObject foundObject = getProject().findObject(ref);
 		return foundObject == null;
 	}
-
+	
+	@Override
+	protected FactorLink createFactorLink(EnhancedJsonObject json) throws Exception
+	{
+		ORef newFromRef = getFixedupRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_FROM_REF);
+		ORef newToRef = getFixedupRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_TO_REF);	
+		
+		FactorLink existingLink = findFactorLink(newFromRef, newToRef);
+		if(existingLink != null)
+			return existingLink;
+		
+		return super.createFactorLink(json);
+	}
+	
 	private boolean shouldCreateCopy(ORef ref)
 	{
 		return GroupBox.is(ref);

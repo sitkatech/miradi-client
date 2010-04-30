@@ -276,7 +276,7 @@ abstract public class DiagramPaster
 		return ORef.INVALID;
 	}
 
-	private ORef getFixedupRef(HashMap pastedObjectMap, EnhancedJsonObject json, String tag) throws Exception
+	protected ORef getFixedupRef(HashMap pastedObjectMap, EnhancedJsonObject json, String tag) throws Exception
 	{
 		ORef oldRef = json.getRef(tag);
 		return fixupSingleRef(pastedObjectMap, oldRef);
@@ -611,16 +611,17 @@ abstract public class DiagramPaster
 			String movedBendPointsAsString = movePoints(originalBendPoints, offsetToAvoidOverlaying);
 			json.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
 			
-			ORef oldWrappedFactorLinkRef = new ORef(FactorLink.getObjectType(), json.getId(DiagramLink.TAG_WRAPPED_ID));
-			ORef newFactorLinkRef = getFactorLinkRef(oldWrappedFactorLinkRef);
-			if(newFactorLinkRef == null)
-			{
-				EAM.logVerbose("Skipping link because Factor Link " + oldWrappedFactorLinkRef + " for Diagram Link " + diagramLinkRef + " is null");
-				continue;
-			}
-			
 			DiagramFactorId fromDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 			DiagramFactorId toDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
+			DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), new ORef(DiagramFactor.getObjectType(), fromDiagramFactorId));
+			DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), new ORef(DiagramFactor.getObjectType(), toDiagramFactorId));
+			ORef fromFactorRef = fromDiagramFactor.getWrappedORef();
+			ORef toFactorRef = toDiagramFactor.getWrappedORef();
+			ORef newFactorLinkRef = null;
+			FactorLink factorLink = findFactorLink(fromFactorRef, toFactorRef);
+			if(factorLink != null)
+				newFactorLinkRef = factorLink.getRef();
+			
 			LinkCreator linkCreator = new LinkCreator(getProject());
 			if (linkCreator.linkToBePastedWasRejected(currentModel, fromDiagramFactorId, toDiagramFactorId))
 				continue;
@@ -633,6 +634,8 @@ abstract public class DiagramPaster
 			Command[]  commandsToLoadFromJson = newDiagramLink.createCommandsToLoadFromJson(json);
 			getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
 	
+			if(newDiagramLink.getWrappedFactorLink() == null && !newDiagramLink.isGroupBoxLink())
+				throw new RuntimeException("Created non-group DiagramLink with no wrapped FactorLink: " + newDiagramLink.getRef());
 			ORef newDiagramLinkRef = newDiagramLink.getRef();
 			getOldToNewObjectRefMap().put(diagramLinkRef, newDiagramLinkRef);
 			fixupRefs(getOldToNewObjectRefMap(), newDiagramLink);
@@ -666,7 +669,20 @@ abstract public class DiagramPaster
 		fixupRefs(pastedObjectMap, newObject);
 	}
 	
-	private FactorLink createFactorLink(EnhancedJsonObject json) throws Exception
+	protected FactorLink findFactorLink(ORef fromFactorRef, ORef toFactorRef)
+	{
+		ORefList allFactorLinks = getProject().getPool(FactorLink.getObjectType()).getRefList();
+		for(int i = 0; i < allFactorLinks.size(); ++i)
+		{
+			FactorLink link = FactorLink.find(getProject(), allFactorLinks.get(i));
+			if(link.getFromFactorRef().equals(fromFactorRef) && link.getToFactorRef().equals(toFactorRef))
+				return link;
+		}
+		
+		return null;
+	}
+
+	protected FactorLink createFactorLink(EnhancedJsonObject json) throws Exception
 	{
 		if (cannotCreateNewFactorLinkFromAnotherProject(json))
 			return null;
