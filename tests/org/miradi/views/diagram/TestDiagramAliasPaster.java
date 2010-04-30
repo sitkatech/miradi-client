@@ -63,7 +63,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		getProject().enableAsThreat(threatDiagramFactor.getWrappedORef());
 		threatTargetDiagramLink = getProject().createDiagramLinkAndAddToDiagramModel(threatDiagramFactor, targetDiagramFactor);
 		
-		createDiagramModelToPasteInto();
+		diagramModelToPasteInto = createDiagramModelToPasteInto();
 	}
 	
 	public void testCutPasteInSameDiagramAsExistingSharedThreat() throws Exception
@@ -157,13 +157,13 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 
 	private DiagramModel createDiagramModelToPasteInto() throws Exception
 	{
-		diagramModelToPasteInto = new PersistentDiagramModel(getProject());
+		PersistentDiagramModel diagramModel = new PersistentDiagramModel(getProject());
 		ORef diagramObjectRef = getProject().createObject(ConceptualModelDiagram.getObjectType());
 		DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectRef);
-		diagramModelToPasteInto.fillFrom(diagramObject);
-		new ModelUpdater(diagramModelToPasteInto);
+		diagramModel.fillFrom(diagramObject);
+		new ModelUpdater(diagramModel);
 		
-		return diagramModelToPasteInto;
+		return diagramModel;
 	}
 	
 	private void deleteDiagramFactors(Vector<DiagramFactor> diagramFactorsToCutPaste) throws Exception
