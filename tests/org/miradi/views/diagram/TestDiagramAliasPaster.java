@@ -126,6 +126,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		DiagramLink pastedDiagramLink = diagramModel.getDiagramObject().getDiagramFactorLink(factorLinkRef);
 		assertNotNull("Diagram Link not found?", pastedDiagramLink);
 		assertEquals("FactorLink end is not the original factor?", sharedFactor.getRef(), factorLink.getFactorRef(direction));
+		assertTrue("FactorLink from is not a cause?", Cause.is(factorLink.getFromFactorRef()));
 		assertTrue("FactorLink to is not a target?", Target.is(factorLink.getToFactorRef()));
 	}
 	
