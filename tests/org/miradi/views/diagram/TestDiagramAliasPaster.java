@@ -85,7 +85,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		verifyFactorLinkAfterPaste(FactorLink.TO, target, diagramModelToPasteInto);
 	}
 	
-	public void testPasteSharedGroupNonExistingGroup() throws Exception
+	public void testPasteSharedGroupAllExist() throws Exception
 	{	
 		wrapThreatAndThreatTargetLinkWithGroupBox();
 		Vector<DiagramFactor> diagramFactorsToCutPaste = createDiagramFactorList();
