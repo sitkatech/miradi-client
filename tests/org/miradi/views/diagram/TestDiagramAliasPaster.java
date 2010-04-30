@@ -227,8 +227,8 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 
 	private void pasteShared(DiagramModel diagramModelToPasteIntoToUse, TransferableMiradiList transferableList) throws Exception
 	{
-		DiagramPaster paster = new DiagramAliasPaster(null, diagramModelToPasteIntoToUse, transferableList);
-		paster.pasteFactorsAndLinks(new Point(0, 0));
+		DiagramPaster sharedPaster = new DiagramAliasPaster(null, diagramModelToPasteIntoToUse, transferableList);
+		sharedPaster.pasteFactorsAndLinks(new Point(0, 0));
 	}
 	
 	private DiagramFactor createGroupBoxDiagramFactor(DiagramFactor groupBoxChild) throws Exception
