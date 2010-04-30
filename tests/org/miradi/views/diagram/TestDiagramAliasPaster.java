@@ -93,7 +93,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		diagramLinksToCutPaste.add(groupBoxDiagramLink);
 		diagramLinksToCutPaste.add(threatTargetDiagramLink);
 		TransferableMiradiList transferableList = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, diagramLinksToCutPaste);		
-		paste(diagramModelToPasteInto, transferableList);
+		pasteShared(diagramModelToPasteInto, transferableList);
 		
 		wrapThreatAndThreatTargetLinkWithGroupBox();
 		cutPasteAll();
@@ -114,7 +114,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		
 		deleteDiagramLinkAndOrphandFactorLink(threatTargetDiagramLink);
 		deleteDiagramFactors(diagramFactorsToCutPaste);
-		paste(diagramModelToPasteInto, transferableList);
+		pasteShared(diagramModelToPasteInto, transferableList);
 		
 		verifyFactorLinkAfterPaste(FactorLink.FROM, threatDiagramFactor.getWrappedFactor(), diagramModelToPasteInto);
 	}
@@ -143,7 +143,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		
 		deleteDiagramLinkAndOrphandFactorLink(groupBoxDiagramLink);
 		deleteDiagramFactors(diagramFactorsToCutPaste);
-		paste(diagramModelToPasteInto, transferableList);
+		pasteShared(diagramModelToPasteInto, transferableList);
 	}
 
 	private void wrapThreatAndThreatTargetLinkWithGroupBox() throws Exception
@@ -184,7 +184,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	private void pasteShared(DiagramModel diagramModelToCopyFrom, DiagramModel diagramModelToPasteIntoToUse, DiagramFactor diagramFactor) throws Exception
 	{
 		TransferableMiradiList transferableList = createTransferable(diagramModelToCopyFrom, diagramFactor);
-		paste(diagramModelToPasteIntoToUse, transferableList);
+		pasteShared(diagramModelToPasteIntoToUse, transferableList);
 	}
 	
 	private TransferableMiradiList createTransferable(DiagramModel diagramModelToCopyFrom, DiagramFactor diagramFactor) throws Exception
@@ -217,7 +217,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		return transferableList;
 	}
 
-	private void paste(DiagramModel diagramModelToPasteIntoToUse, TransferableMiradiList transferableList) throws Exception
+	private void pasteShared(DiagramModel diagramModelToPasteIntoToUse, TransferableMiradiList transferableList) throws Exception
 	{
 		DiagramPaster paster = new DiagramAliasPaster(null, diagramModelToPasteIntoToUse, transferableList);
 		paster.pasteFactorsAndLinks(new Point(0, 0));
