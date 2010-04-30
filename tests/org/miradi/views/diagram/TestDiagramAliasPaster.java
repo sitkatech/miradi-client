@@ -69,7 +69,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		diagramModelToPasteInto = createDiagramModelToPasteInto();
 	}
 	
-	public void testPasteSharedGroupNonExistingThreat() throws Exception
+	public void testPasteSharedGroupNonExistingGroupAndTarget() throws Exception
 	{	
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, threatDiagramFactor);
 		wrapThreatAndThreatTargetLinkWithGroupBox();
@@ -77,7 +77,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		verifyFactorLinkAfterPaste(FactorLink.FROM, threat, diagramModelToPasteInto);
 	}
 	
-	public void testPasteSharedGroupNonExistingTarget() throws Exception
+	public void testPasteSharedGroupNonExistingGroupAndThreat() throws Exception
 	{	
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, targetDiagramFactor);
 		wrapThreatAndThreatTargetLinkWithGroupBox();
