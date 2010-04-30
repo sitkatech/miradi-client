@@ -71,15 +71,17 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	public void testPasteGroupCreatesExtraGroup() throws Exception
 	{
 		wrapThreatWithGroupBox();
-		pasteShared(getDiagramModel(), diagramModelToPasteInto, groupBoxDiagramFactor);
-		
 		Vector<DiagramFactor> diagramFactorsToCutPaste = new Vector<DiagramFactor>();
 		diagramFactorsToCutPaste.add(groupBoxDiagramFactor);
 		diagramFactorsToCutPaste.add(threatDiagramFactor);
-		TransferableMiradiList transferableList = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, new Vector());
 		
+		TransferableMiradiList transferableListBeforeCut = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, new Vector());
+		pasteShared(diagramModelToPasteInto, transferableListBeforeCut);
+		
+		TransferableMiradiList transferableList = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, new Vector());
 		deleteDiagramFactors(diagramFactorsToCutPaste);
 		pasteShared(diagramModelToPasteInto, transferableList);
+		
 		assertEquals("Group box was not pasted?", 1, getProject().getGroupBoxPool().size());
 	}
 	
