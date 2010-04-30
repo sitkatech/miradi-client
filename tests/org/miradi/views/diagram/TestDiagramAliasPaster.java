@@ -68,7 +68,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	
 	public void testCutPasteInSameDiagramAsExistingSharedThreat() throws Exception
 	{	
-		pasteAsAlias(getDiagramModel(), diagramModelToPasteInto, threatDiagramFactor);
+		pasteShared(getDiagramModel(), diagramModelToPasteInto, threatDiagramFactor);
 		wrapThreatAndThreatTargetLinkWithGroupBox();
 		cutPasteAll();
 		verifyFactorLinkAfterPaste(FactorLink.FROM, threatDiagramFactor.getWrappedFactor(), diagramModelToPasteInto);
@@ -76,7 +76,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	
 	public void testCutPasteInSameDiagramAsExistingSharedTarget() throws Exception
 	{	
-		pasteAsAlias(getDiagramModel(), diagramModelToPasteInto, targetDiagramFactor);
+		pasteShared(getDiagramModel(), diagramModelToPasteInto, targetDiagramFactor);
 		wrapThreatAndThreatTargetLinkWithGroupBox();
 		cutPasteAll();
 		verifyFactorLinkAfterPaste(FactorLink.TO, targetDiagramFactor.getWrappedFactor(), diagramModelToPasteInto);
@@ -102,7 +102,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 
 	public void testFactorLinkNotCreatedDuringCutPaste() throws Exception
 	{					
-		pasteAsAlias(getDiagramModel(), diagramModelToPasteInto, threatDiagramFactor);
+		pasteShared(getDiagramModel(), diagramModelToPasteInto, threatDiagramFactor);
 		
 		Vector<DiagramFactor> diagramFactorsToCutPaste = new Vector<DiagramFactor>();
 		diagramFactorsToCutPaste.add(targetDiagramFactor);
@@ -181,7 +181,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		linkDeletor.deleteDiagramLinkAndOrphandFactorLink(diagramLink);
 	}
 	
-	private void pasteAsAlias(DiagramModel diagramModelToCopyFrom, DiagramModel diagramModelToPasteIntoToUse, DiagramFactor diagramFactor) throws Exception
+	private void pasteShared(DiagramModel diagramModelToCopyFrom, DiagramModel diagramModelToPasteIntoToUse, DiagramFactor diagramFactor) throws Exception
 	{
 		TransferableMiradiList transferableList = createTransferable(diagramModelToCopyFrom, diagramFactor);
 		paste(diagramModelToPasteIntoToUse, transferableList);
