@@ -87,6 +87,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	
 	public void testPasteSharedGroupNonExistingGroup() throws Exception
 	{	
+		wrapThreatAndThreatTargetLinkWithGroupBox();
 		Vector<DiagramFactor> diagramFactorsToCutPaste = createDiagramFactorList();
 		Vector<DiagramLink> diagramLinksToCutPaste = createDiagramLinkList();
 		TransferableMiradiList transferableList = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, diagramLinksToCutPaste);		
