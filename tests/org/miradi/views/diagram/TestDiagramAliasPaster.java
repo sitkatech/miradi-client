@@ -70,7 +70,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	{	
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, threatDiagramFactor);
 		wrapThreatAndThreatTargetLinkWithGroupBox();
-		cutPasteAll();
+		cutPasteAll(diagramModelToPasteInto);
 		verifyFactorLinkAfterPaste(FactorLink.FROM, threatDiagramFactor.getWrappedFactor(), diagramModelToPasteInto);
 	}
 	
@@ -78,7 +78,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	{	
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, targetDiagramFactor);
 		wrapThreatAndThreatTargetLinkWithGroupBox();
-		cutPasteAll();
+		cutPasteAll(diagramModelToPasteInto);
 		verifyFactorLinkAfterPaste(FactorLink.TO, targetDiagramFactor.getWrappedFactor(), diagramModelToPasteInto);
 	}
 	
@@ -96,7 +96,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		pasteShared(diagramModelToPasteInto, transferableList);
 		
 		wrapThreatAndThreatTargetLinkWithGroupBox();
-		cutPasteAll();
+		cutPasteAll(diagramModelToPasteInto);
 		verifyFactorLinkAfterPaste(FactorLink.FROM, threatDiagramFactor.getWrappedFactor(), diagramModelToPasteInto);
 	}
 
@@ -129,7 +129,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		assertTrue("FactorLink to is not a target?", Target.is(factorLink.getToFactorRef()));
 	}
 	
-	private void cutPasteAll() throws Exception
+	private void cutPasteAll(DiagramModel diagramModelToPasteIntoToUse) throws Exception
 	{
 		Vector<DiagramFactor> diagramFactorsToCutPaste = new Vector<DiagramFactor>();
 		diagramFactorsToCutPaste.add(groupBoxDiagramFactor);
@@ -143,7 +143,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		
 		deleteDiagramLinkAndOrphandFactorLink(groupBoxDiagramLink);
 		deleteDiagramFactors(diagramFactorsToCutPaste);
-		pasteShared(diagramModelToPasteInto, transferableList);
+		pasteShared(diagramModelToPasteIntoToUse, transferableList);
 	}
 
 	private void wrapThreatAndThreatTargetLinkWithGroupBox() throws Exception
