@@ -66,7 +66,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		diagramModelToPasteInto = createDiagramModelToPasteInto();
 	}
 	
-	public void testCutPasteInSameDiagramAsExistingSharedThreat() throws Exception
+	public void testCutPasteInSameDiagramAsExistingSharedThreatInsideGroupBox() throws Exception
 	{	
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, threatDiagramFactor);
 		wrapThreatAndThreatTargetLinkWithGroupBox();
