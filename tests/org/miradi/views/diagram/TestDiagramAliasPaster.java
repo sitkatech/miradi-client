@@ -52,15 +52,22 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		super(name);
 	}
 	
-	public void testGroupBoxDiagramFactorNotCreatedDuringCutPasteAsAlias() throws Exception
+	@Override
+	public void setUp() throws Exception
 	{
-		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		Cause threat = (Cause) threatDiagramFactor.getWrappedFactor();
-		getProject().enableAsThreat(threatDiagramFactor.getWrappedORef());
-		DiagramLink threatTargetDiagramLink = getProject().createDiagramLinkAndAddToDiagramModel(threatDiagramFactor, targetDiagramFactor);
+		super.setUp();
 		
-		DiagramModel diagramModelToPasteInto = createDiagramModelToPasteInto();
+		targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		threat = (Cause) threatDiagramFactor.getWrappedFactor();
+		getProject().enableAsThreat(threatDiagramFactor.getWrappedORef());
+		threatTargetDiagramLink = getProject().createDiagramLinkAndAddToDiagramModel(threatDiagramFactor, targetDiagramFactor);
+		
+		createDiagramModelToPasteInto();
+	}
+	
+	public void testGroupBoxDiagramFactorNotCreatedDuringCutPasteAsAlias() throws Exception
+	{	
 		pasteAsAlias(getDiagramModel(), diagramModelToPasteInto, threatDiagramFactor);
 		
 		DiagramFactor groupBoxDiagramFactor = createGroupBoxDiagramFactor(threatDiagramFactor);
@@ -87,15 +94,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	}
 
 	public void testFactorLinkNotCreatedDuringCutPaste() throws Exception
-	{
-		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		Cause threat = (Cause) threatDiagramFactor.getWrappedFactor();
-		
-		getProject().enableAsThreat(threatDiagramFactor.getWrappedORef());
-		DiagramLink diagramLink = getProject().createDiagramLinkAndAddToDiagramModel(threatDiagramFactor, targetDiagramFactor);
-		
-		DiagramModel diagramModelToPasteInto = createDiagramModelToPasteInto();		
+	{				
 		pasteAsAlias(getDiagramModel(), diagramModelToPasteInto, threatDiagramFactor);
 		
 		Vector<DiagramFactor> diagramFactorsToCutPaste = new Vector<DiagramFactor>();
@@ -103,29 +102,29 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		diagramFactorsToCutPaste.add(threatDiagramFactor);
 		
 		Vector<DiagramLink> diagramLinksToCutPaste = new Vector<DiagramLink>();
-		diagramLinksToCutPaste.add(diagramLink);
+		diagramLinksToCutPaste.add(threatTargetDiagramLink);
 		TransferableMiradiList transferableList = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, diagramLinksToCutPaste);
 		
-		deleteDiagramLinkAndOrphandFactorLink(diagramLink);
+		deleteDiagramLinkAndOrphandFactorLink(threatTargetDiagramLink);
 		deleteDiagramFactors(diagramFactorsToCutPaste);
 		paste(diagramModelToPasteInto, transferableList);
 		
 		verifyFactorLinkAfterPaste(threat, diagramModelToPasteInto);
 	}
 	
-	private void verifyFactorLinkAfterPaste(Cause threat, DiagramModel diagramModelToPasteInto)
+	private void verifyFactorLinkAfterPaste(Cause threatToUse, DiagramModel diagramModelToPasteIntoToUse)
 	{
 		ORef factorLinkRef = getProject().getFactorLinkPool().getRefList().getFirstElement();
 		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
-		DiagramLink pastedDiagramLink = diagramModelToPasteInto.getDiagramObject().getDiagramFactorLink(factorLinkRef);
+		DiagramLink pastedDiagramLink = diagramModelToPasteIntoToUse.getDiagramObject().getDiagramFactorLink(factorLinkRef);
 		assertNotNull("Diagram Link not found?", pastedDiagramLink);
-		assertEquals("FactorLink from is not the original threat?", threat.getRef(), factorLink.getFromFactorRef());
+		assertEquals("FactorLink from is not the original threat?", threatToUse.getRef(), factorLink.getFromFactorRef());
 		assertTrue("FactorLink to is not a target?", Target.is(factorLink.getToFactorRef()));
 	}
 
 	private DiagramModel createDiagramModelToPasteInto() throws Exception
 	{
-		DiagramModel diagramModelToPasteInto = new PersistentDiagramModel(getProject());
+		diagramModelToPasteInto = new PersistentDiagramModel(getProject());
 		ORef diagramObjectRef = getProject().createObject(ConceptualModelDiagram.getObjectType());
 		DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectRef);
 		diagramModelToPasteInto.fillFrom(diagramObject);
@@ -149,10 +148,10 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		linkDeletor.deleteDiagramLinkAndOrphandFactorLink(diagramLink);
 	}
 	
-	private void pasteAsAlias(DiagramModel diagramModelToCopyFrom, DiagramModel diagramModelToPasteInto, DiagramFactor diagramFactor) throws Exception
+	private void pasteAsAlias(DiagramModel diagramModelToCopyFrom, DiagramModel diagramModelToPasteIntoToUse, DiagramFactor diagramFactor) throws Exception
 	{
 		TransferableMiradiList transferableList = createTransferable(diagramModelToCopyFrom, diagramFactor);
-		paste(diagramModelToPasteInto, transferableList);
+		paste(diagramModelToPasteIntoToUse, transferableList);
 	}
 	
 	private TransferableMiradiList createTransferable(DiagramModel diagramModelToCopyFrom, DiagramFactor diagramFactor) throws Exception
@@ -185,9 +184,9 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		return transferableList;
 	}
 
-	private void paste(DiagramModel diagramModelToPasteInto, TransferableMiradiList transferableList) throws Exception
+	private void paste(DiagramModel diagramModelToPasteIntoToUse, TransferableMiradiList transferableList) throws Exception
 	{
-		DiagramPaster paster = new DiagramAliasPaster(null, diagramModelToPasteInto, transferableList);
+		DiagramPaster paster = new DiagramAliasPaster(null, diagramModelToPasteIntoToUse, transferableList);
 		paster.pasteFactorsAndLinks(new Point(0, 0));
 	}
 	
@@ -228,4 +227,10 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		
 		private DiagramModelUpdater modelUpdater;
 	}
+	
+	private DiagramModel diagramModelToPasteInto;
+	private DiagramFactor targetDiagramFactor;
+	private DiagramFactor threatDiagramFactor;
+	private DiagramLink threatTargetDiagramLink;
+	private Cause threat;
 }
