@@ -66,7 +66,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		diagramModelToPasteInto = createDiagramModelToPasteInto();
 	}
 	
-	public void testCutPasteInSameDiagramAsExistingSharedThreatInsideGroupBox() throws Exception
+	public void testPasteSharedGroupNonExistingThreat() throws Exception
 	{	
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, threatDiagramFactor);
 		wrapThreatAndThreatTargetLinkWithGroupBox();
@@ -74,7 +74,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		verifyFactorLinkAfterPaste(FactorLink.FROM, threatDiagramFactor.getWrappedFactor(), diagramModelToPasteInto);
 	}
 	
-	public void testCutPasteInSameDiagramAsExistingSharedTarget() throws Exception
+	public void testPasteSharedGroupNonExistingTarget() throws Exception
 	{	
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, targetDiagramFactor);
 		wrapThreatAndThreatTargetLinkWithGroupBox();
@@ -82,7 +82,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		verifyFactorLinkAfterPaste(FactorLink.TO, targetDiagramFactor.getWrappedFactor(), diagramModelToPasteInto);
 	}
 	
-	public void testCutPasteInSameDiagramAsExistingSharedThreatTarget() throws Exception
+	public void testPasteSharedGroupNonExistingGroup() throws Exception
 	{	
 		Vector<DiagramFactor> diagramFactorsToCutPaste = createDiagramFactorList();
 		Vector<DiagramLink> diagramLinksToCutPaste = createDiagramLinkList();
