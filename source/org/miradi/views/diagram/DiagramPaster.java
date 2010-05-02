@@ -305,11 +305,16 @@ abstract public class DiagramPaster
 		{
 			ORef groupedDiagramLinkRef = groupedDiagramLinkRefs.get(index);
 			DiagramLink diagramLink = DiagramLink.find(getProject(), groupedDiagramLinkRef);
+
+			boolean shouldOmit = false;
 			if(diagramLink == null)
-				groupedDiagramLinkRefsToOmit.add(groupedDiagramLinkRef);
+				shouldOmit = true;
 			else if(isFromGroup && !legalFromRefs.contains(diagramLink.getFromDiagramFactorRef()))
-				groupedDiagramLinkRefsToOmit.add(groupedDiagramLinkRef);
+				shouldOmit = true;
 			else if (isToGroup && !legalToRefs.contains(diagramLink.getToDiagramFactorRef()))
+				shouldOmit = true;
+			
+			if(shouldOmit)
 				groupedDiagramLinkRefsToOmit.add(groupedDiagramLinkRef);
 		}
 		return groupedDiagramLinkRefsToOmit;
