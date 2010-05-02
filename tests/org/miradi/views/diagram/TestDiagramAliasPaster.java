@@ -243,6 +243,11 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	
 	private void verifyGroupContainingThreatLinkedToTarget(DiagramModel diagramModel)
 	{
+		ProjectRepairer repairer = new ProjectRepairer(getProject());
+		assertEquals("Orphaned threats?", 0, repairer.getFactorsWithoutDiagramFactors(Cause.getObjectType()).size());
+		assertEquals("Orphaned groups?", 0, repairer.getFactorsWithoutDiagramFactors(GroupBox.getObjectType()).size());
+		assertEquals("Orphaned targets?", 0, repairer.getFactorsWithoutDiagramFactors(Target.getObjectType()).size());
+
 		assertEquals("Not one group?", 1, diagramModel.getAllGroupBoxCells().size());
 		DiagramFactor gdf = ((FactorCell)(diagramModel.getAllGroupBoxCells().get(0))).getDiagramFactor();
 		assertEquals("Group not in diagram?", new ORefList(diagramModel.getDiagramObject().getRef()), gdf.findObjectsThatReferToUs(ConceptualModelDiagram.getObjectType()));
