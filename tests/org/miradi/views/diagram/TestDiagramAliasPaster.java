@@ -128,7 +128,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		new ProjectRepairer(getProject()).getFactorsWithoutDiagramFactors(GroupBox.getObjectType());
 	}
 	
-	public void testPasteSharedGroupWithLinkNonExistingGroupAndTarget() throws Exception
+	public void testPasteSharedGroupWithLinkOnlyThreatExists() throws Exception
 	{	
 		threatTargetDiagramLink = createThreatTargetLink();
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, threatDiagramFactor);
@@ -137,7 +137,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		verifyFactorLinkAfterPaste(FactorLink.FROM, threat, diagramModelToPasteInto);
 	}
 	
-	public void testPasteSharedGroupWithLinkNonExistingGroupAndThreat() throws Exception
+	public void testPasteSharedGroupWithLinkOnlyTargetExists() throws Exception
 	{	
 		threatTargetDiagramLink = createThreatTargetLink();
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, targetDiagramFactor);
