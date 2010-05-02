@@ -84,6 +84,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		pasteShared(diagramModelToPasteInto, transferableListBeforeCut);
 		
 		// Cut from second diagram, then paste-shared back into first diagram
+		// where the threat and group still exist
 		TransferableMiradiList transferableList = createTransferable(diagramModelToPasteInto, diagramModelToPasteInto.getAllDiagramFactors(), new Vector());
 		deleteDiagramFactors(diagramModelToPasteInto.getDiagramObject(), diagramModelToPasteInto.getAllDiagramFactors());
 		pasteShared(getDiagramModel(), transferableList);
@@ -97,6 +98,8 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), diagramFactorRefs.get(i));
 			if(diagramFactor.isGroupBoxFactor())
 			{
+				// FIXME: I think the actual desired end result is two groups, 
+				// with the newly pasted one having no children
 				assertNull("More than one group?", pastedGroupDiagramFactor);
 				pastedGroupDiagramFactor = diagramFactor;
 			}
@@ -111,17 +114,22 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 			}
 		}
 		
+		// FIXME: I think the actual desired end result is two groups, 
+		// with the newly pasted one having no children
 		assertEquals("Don't have threat+group diagram factors?", 2, diagramFactorRefs.size());
 
 		assertEquals("Threat not shared?", threat.getRef(), pastedThreatDiagramFactor.getWrappedORef());
 		assertEquals("Threat not shared twice?", 2, threat.findObjectsThatReferToUs(DiagramFactor.getObjectType()).size());
 
+		// FIXME: I think the actual desired end result is two groups, 
+		// with the newly pasted one having no children
 		ORefSet children = pastedGroupDiagramFactor.getGroupBoxChildrenSet();
 		assertEquals("Group doesn't contain one factor?", 1, children.size());
 		assertContains("Group doesn't wrap threat?", pastedThreatDiagramFactor.getRef(), children);
 		
-		new ProjectRepairer(getProject()).getFactorsWithoutDiagramFactors(Cause.getObjectType());
-		new ProjectRepairer(getProject()).getFactorsWithoutDiagramFactors(GroupBox.getObjectType());
+		ProjectRepairer repairer = new ProjectRepairer(getProject());
+		assertEquals("Orphaned threats?", 0, repairer.getFactorsWithoutDiagramFactors(Cause.getObjectType()).size());
+		assertEquals("Orphaned groups?", 0, repairer.getFactorsWithoutDiagramFactors(GroupBox.getObjectType()).size());
 	}
 	
 	public void testPasteSharedGroupWithLinkOnlyThreatExists() throws Exception
