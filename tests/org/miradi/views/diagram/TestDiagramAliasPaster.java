@@ -98,15 +98,17 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), diagramFactorRefs.get(i));
 			if(diagramFactor.isGroupBoxFactor())
 			{
-				// FIXME: I think the actual desired end result is two groups, 
-				// with the newly pasted one having no children
-				assertNull("More than one group?", pastedGroupDiagramFactor);
-				pastedGroupDiagramFactor = diagramFactor;
+				if(!diagramFactor.getRef().equals(groupBoxDiagramFactor.getRef()))
+				{
+					assertNull("More than one pasted group?", pastedGroupDiagramFactor);
+					pastedGroupDiagramFactor = diagramFactor;
+				}
 			}
 			else if(Cause.is(diagramFactor.getWrappedORef()))
 			{
 				assertNull("More than one threat?", pastedThreatDiagramFactor);
 				pastedThreatDiagramFactor = diagramFactor;
+				assertEquals("Created a new threat?", threatDiagramFactor.getRef(), pastedThreatDiagramFactor.getRef());
 			}
 			else
 			{
@@ -114,18 +116,14 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 			}
 		}
 		
-		// FIXME: I think the actual desired end result is two groups, 
-		// with the newly pasted one having no children
-		assertEquals("Don't have threat+group diagram factors?", 2, diagramFactorRefs.size());
+		assertEquals("Don't have threat+oldgroup and newgroup diagram factors?", 3, diagramFactorRefs.size());
 
-		assertEquals("Threat not shared?", threat.getRef(), pastedThreatDiagramFactor.getWrappedORef());
-		assertEquals("Threat not shared twice?", 2, threat.findObjectsThatReferToUs(DiagramFactor.getObjectType()).size());
+		assertEquals("Threat no longer wrapped?", threat.getRef(), pastedThreatDiagramFactor.getWrappedORef());
+		assertEquals("Threat factor shared?", 1, threat.findObjectsThatReferToUs(DiagramFactor.getObjectType()).size());
+		assertEquals("Threat diagram factor shared?", 1, threatDiagramFactor.findObjectsThatReferToUs(DiagramFactor.getObjectType()).size());
 
-		// FIXME: I think the actual desired end result is two groups, 
-		// with the newly pasted one having no children
 		ORefSet children = pastedGroupDiagramFactor.getGroupBoxChildrenSet();
-		assertEquals("Group doesn't contain one factor?", 1, children.size());
-		assertContains("Group doesn't wrap threat?", pastedThreatDiagramFactor.getRef(), children);
+		assertEquals("Pasted group isn't empty?", 0, children.size());
 		
 		ProjectRepairer repairer = new ProjectRepairer(getProject());
 		assertEquals("Orphaned threats?", 0, repairer.getFactorsWithoutDiagramFactors(Cause.getObjectType()).size());
