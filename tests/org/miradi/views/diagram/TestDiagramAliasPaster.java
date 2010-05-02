@@ -308,6 +308,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		ORefList groupLinkRefs = newGroupDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
 		assertEquals("Group is not linked?", 1, groupLinkRefs.size());
 		DiagramLink groupLink = DiagramLink.find(getProject(), groupLinkRefs.getFirstElement());
+		assertFalse("Group link is bidi?", groupLink.isBidirectional());
 		assertEquals("Group link has child links?", 0, groupLink.getGroupedDiagramLinkRefs().size());
 	}
 

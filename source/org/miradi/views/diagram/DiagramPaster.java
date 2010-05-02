@@ -248,10 +248,17 @@ abstract public class DiagramPaster
 		ORefList oldList = new ORefList(newObject.getData(annotationTag));
 		ORefList newList = getNewFixedUpRefList(pastedObjectMap, oldList);
 		
-		if(DiagramFactor.is(newObject.getRef()) && annotationTag.equals(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS))
+		ORef newObjectRef = newObject.getRef();
+		if(DiagramFactor.is(newObjectRef) && annotationTag.equals(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS))
 		{
 			ORefList groupBoxChildrenRefsToOmit = getExsitingGroupBoxChildrenRefsToOmit(newList);
 			newList.removeAll(groupBoxChildrenRefsToOmit);
+		}
+		
+		if(DiagramLink.is(newObjectRef) && annotationTag.equals(DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS))
+		{
+			ORefList groupedLinkRefsToOmit = getExistingGroupedDiagramLinkRefsToOmit(newObjectRef, newList);
+			newList.removeAll(groupedLinkRefsToOmit);
 		}
 		
 		return new CommandSetObjectData(newObject.getRef(), annotationTag, newList.toString());
@@ -275,6 +282,32 @@ abstract public class DiagramPaster
 				groupBoxChildrenRefsToOmit.add(groupBoxChildFactorRef);
 		}
 		return groupBoxChildrenRefsToOmit;
+	}
+
+	private ORefList getExistingGroupedDiagramLinkRefsToOmit(ORef groupDiagramLinkRef, ORefList groupedDiagramLinkRefs)
+	{
+		ORefList groupedDiagramLinkRefsToOmit = new ORefList();
+		
+		DiagramLink groupDiagramLink = DiagramLink.find(getProject(), groupDiagramLinkRef);
+		DiagramFactor fromDiagramFactor = groupDiagramLink.getFromDiagramFactor();
+		boolean isFromGroup = fromDiagramFactor.isGroupBoxFactor();
+		ORefList legalFromRefs = fromDiagramFactor.getGroupBoxChildrenRefs();
+		DiagramFactor toDiagramfactoFactor = groupDiagramLink.getToDiagramFactor();
+		boolean isToGroup = toDiagramfactoFactor.isGroupBoxFactor();
+		ORefList legalToRefs = toDiagramfactoFactor.getGroupBoxChildrenRefs();
+		
+		for(int index = 0; index < groupedDiagramLinkRefs.size(); ++ index)
+		{
+			ORef groupedDiagramLinkRef = groupedDiagramLinkRefs.get(index);
+			DiagramLink diagramLink = DiagramLink.find(getProject(), groupedDiagramLinkRef);
+			if(diagramLink == null)
+				groupedDiagramLinkRefsToOmit.add(groupedDiagramLinkRef);
+			else if(isFromGroup && !legalFromRefs.contains(diagramLink.getFromDiagramFactorRef()))
+				groupedDiagramLinkRefsToOmit.add(groupedDiagramLinkRef);
+			else if (isToGroup && !legalToRefs.contains(diagramLink.getToDiagramFactorRef()))
+				groupedDiagramLinkRefsToOmit.add(groupedDiagramLinkRef);
+		}
+		return groupedDiagramLinkRefsToOmit;
 	}
 
 	private ORefList getNewFixedUpRefList(HashMap pastedObjectMap, ORefList oldList) throws Exception
