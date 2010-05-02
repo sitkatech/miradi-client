@@ -251,7 +251,7 @@ abstract public class DiagramPaster
 		ORef newObjectRef = newObject.getRef();
 		if(DiagramFactor.is(newObjectRef) && annotationTag.equals(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS))
 		{
-			ORefList groupBoxChildrenRefsToOmit = getExsitingGroupBoxChildrenRefsToOmit(newList);
+			ORefList groupBoxChildrenRefsToOmit = getExistingGroupBoxChildrenRefsToOmit(newList);
 			newList.removeAll(groupBoxChildrenRefsToOmit);
 		}
 		
@@ -264,7 +264,7 @@ abstract public class DiagramPaster
 		return new CommandSetObjectData(newObject.getRef(), annotationTag, newList.toString());
 	}
 
-	private ORefList getExsitingGroupBoxChildrenRefsToOmit(ORefList groupBoxDiagramFactorChildrenRefs)
+	private ORefList getExistingGroupBoxChildrenRefsToOmit(ORefList groupBoxDiagramFactorChildrenRefs)
 	{
 		ORefList groupBoxChildrenRefsToOmit = new ORefList();
 		for (int index = 0; index < groupBoxDiagramFactorChildrenRefs.size(); ++index)
