@@ -153,7 +153,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		threatTargetDiagramLink = createThreatTargetLink();
 		wrapThreatAndThreatTargetLinkWithGroupBox();
 
-		pasteShared(getDiagramModel(), diagramModelToPasteInto, targetDiagramFactor);
+		pasteShared(getDiagramModel(), diagramModelToPasteInto, groupBoxDiagramFactor);
 		cutPasteAll(diagramModelToPasteInto);
 		verifyGroupContainingThreatLinkedToTarget(diagramModelToPasteInto);
 	}
