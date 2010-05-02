@@ -79,17 +79,13 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 
 		wrapThreatWithGroupBox();
 
-		Vector<DiagramFactor> groupAndChildThreat = new Vector<DiagramFactor>();
-		groupAndChildThreat.add(groupBoxDiagramFactor);
-		groupAndChildThreat.add(threatDiagramFactor);
-		
 		// Copy/paste-shared grouped threat into other diagram
-		TransferableMiradiList transferableListBeforeCut = createTransferable(getDiagramModel(), groupAndChildThreat, new Vector());
+		TransferableMiradiList transferableListBeforeCut = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector());
 		pasteShared(diagramModelToPasteInto, transferableListBeforeCut);
 		
-		// Cut from first diagram, then paste-shared back into first diagram
+		// Cut from second diagram, then paste-shared back into first diagram
 		TransferableMiradiList transferableList = createTransferable(diagramModelToPasteInto, diagramModelToPasteInto.getAllDiagramFactors(), new Vector());
-		deleteDiagramFactors(groupAndChildThreat);
+		deleteDiagramFactors(diagramModelToPasteInto.getAllDiagramFactors());
 		pasteShared(getDiagramModel(), transferableList);
 		
 		DiagramObject diagramObject = getDiagramObject();
