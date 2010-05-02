@@ -137,7 +137,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, threatDiagramFactor);
 		cutPasteAll(diagramModelToPasteInto);
-		verifyGroupContainingThreatLinkedToTarget(diagramModelToPasteInto);
+		verifyOneGroupContainingThreatLinkedToTarget(diagramModelToPasteInto);
 	}
 	
 	public void testPasteSharedGroupWithLinkOnlyTargetExists() throws Exception
@@ -147,7 +147,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, targetDiagramFactor);
 		cutPasteAll(diagramModelToPasteInto);
-		verifyGroupContainingThreatLinkedToTarget(diagramModelToPasteInto);
+		verifyOneGroupContainingThreatLinkedToTarget(diagramModelToPasteInto);
 	}
 	
 	public void testPasteSharedGroupWithLinkOnlyGroupExists() throws Exception
@@ -157,7 +157,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, groupBoxDiagramFactor);
 		cutPasteAll(diagramModelToPasteInto);
-		verifyGroupContainingThreatLinkedToTarget(diagramModelToPasteInto);
+		verifyEmptyGroupPlusGroupContainingThreatLinkedToTarget(diagramModelToPasteInto);
 	}
 	
 	public void testPasteSharedGroupWithLinkOnlyGroupAndThreatExist() throws Exception
@@ -168,7 +168,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, threatDiagramFactor);
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, groupBoxDiagramFactor);
 		cutPasteAll(diagramModelToPasteInto);
-		verifyGroupContainingThreatLinkedToTarget(diagramModelToPasteInto);
+		verifyEmptyGroupPlusGroupContainingThreatLinkedToTarget(diagramModelToPasteInto);
 	}
 	
 	public void testPasteSharedGroupWithLinkOnlyThreatAndTargetExist() throws Exception
@@ -179,7 +179,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, threatDiagramFactor);
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, targetDiagramFactor);
 		cutPasteAll(diagramModelToPasteInto);
-		verifyGroupContainingThreatLinkedToTarget(diagramModelToPasteInto);
+		verifyOneGroupContainingThreatLinkedToTarget(diagramModelToPasteInto);
 	}
 	
 	public void testPasteSharedGroupWithLinkOnlyGroupAndTargetExist() throws Exception
@@ -190,7 +190,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, targetDiagramFactor);
 		pasteShared(getDiagramModel(), diagramModelToPasteInto, groupBoxDiagramFactor);
 		cutPasteAll(diagramModelToPasteInto);
-		verifyGroupContainingThreatLinkedToTarget(diagramModelToPasteInto);
+		verifyEmptyGroupPlusGroupContainingThreatLinkedToTarget(diagramModelToPasteInto);
 	}
 	
 	public void testPasteSharedGroupWithLinkAllExist() throws Exception
@@ -205,7 +205,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		
 		wrapThreatAndThreatTargetLinkWithGroupBox();
 		cutPasteAll(diagramModelToPasteInto);
-		verifyGroupContainingThreatLinkedToTarget(diagramModelToPasteInto);
+		verifyEmptyGroupPlusGroupContainingThreatLinkedToTarget(diagramModelToPasteInto);
 	}
 
 	public void testFactorLinkNotCreatedDuringCutPaste() throws Exception
@@ -239,28 +239,18 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		assertTrue("FactorLink to is not a target?", Target.is(factorLink.getToFactorRef()));
 	}
 	
-	private void verifyGroupContainingThreatLinkedToTarget(DiagramModel diagramModel)
+	private void verifyOneGroupContainingThreatLinkedToTarget(DiagramModel diagramModel)
 	{
-		ProjectRepairer repairer = new ProjectRepairer(getProject());
-		assertEquals("Orphaned threats?", 0, repairer.getFactorsWithoutDiagramFactors(Cause.getObjectType()).size());
-		assertEquals("Orphaned groups?", 0, repairer.getFactorsWithoutDiagramFactors(GroupBox.getObjectType()).size());
-		assertEquals("Orphaned targets?", 0, repairer.getFactorsWithoutDiagramFactors(Target.getObjectType()).size());
-
 		assertEquals("Not one group?", 1, diagramModel.getAllGroupBoxCells().size());
 		DiagramFactor gdf = ((FactorCell)(diagramModel.getAllGroupBoxCells().get(0))).getDiagramFactor();
-		assertEquals("Group not in diagram?", new ORefList(diagramModel.getDiagramObject().getRef()), gdf.findObjectsThatReferToUs(ConceptualModelDiagram.getObjectType()));
-		assertEquals("Group doesn't have one child?", 1, gdf.getGroupBoxChildrenSet().size());
+		verifyGroupContainingThreatLinkedToTarget(diagramModel, gdf);
 
-		DiagramFactor cdf = DiagramFactor.find(getProject(), gdf.getGroupBoxChildrenRefs().get(0));
-		assertEquals("Cause not in diagram?", new ORefList(diagramModel.getDiagramObject().getRef()), cdf.findObjectsThatReferToUs(ConceptualModelDiagram.getObjectType()));
-
-		assertEquals("Not one target?", 1, diagramModel.getAllDiagramTargets().size());
-		DiagramFactor tdf = (diagramModel.getAllDiagramTargets().get(0)).getDiagramFactor();
-		assertEquals("Target not in diagram?", new ORefList(diagramModel.getDiagramObject().getRef()), tdf.findObjectsThatReferToUs(ConceptualModelDiagram.getObjectType()));
-
-		assertTrue("No threat-target link?", diagramModel.getDiagramObject().areDiagramFactorsLinkedFromToNonBidirectional(cdf.getRef(), tdf.getRef()));
+		ORef targetRef = getProject().getTargetPool().getORefList().getFirstElement();
+		Target newTarget = Target.find(getProject(), targetRef);
+		ORef targetDiagramFactorRef = newTarget.findObjectsThatReferToUs(DiagramFactor.getObjectType()).getFirstElement();
+		DiagramFactor tdf = DiagramFactor.find(getProject(), targetDiagramFactorRef);
 		assertTrue("No group-target link?", diagramModel.getDiagramObject().areDiagramFactorsLinkedFromToNonBidirectional(gdf.getRef(), tdf.getRef()));
-
+		
 		DiagramLink gdl = DiagramLink.find(getProject(), gdf.findObjectsThatReferToUs().getRefForType(DiagramLink.getObjectType()));
 		assertTrue("Isn't a group link?", gdl.isGroupBoxLink());
 		assertNull("Group link has an FL?", gdl.getWrappedFactorLink());
@@ -271,6 +261,51 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		DiagramLink tdl = DiagramLink.find(getProject(), gdl.getGroupedDiagramLinkRefs().getFirstElement());
 		assertEquals("Threat link not from threat?", Cause.getObjectType(), tdl.getFromDiagramFactor().getWrappedType());
 		assertEquals("Threat link not to target?", Target.getObjectType(), tdl.getToDiagramFactor().getWrappedType());
+	}
+
+	private void verifyGroupContainingThreatLinkedToTarget(DiagramModel diagramModel, DiagramFactor groupDiagramFactor)
+	{
+		ProjectRepairer repairer = new ProjectRepairer(getProject());
+		assertEquals("Orphaned threats?", 0, repairer.getFactorsWithoutDiagramFactors(Cause.getObjectType()).size());
+		assertEquals("Orphaned groups?", 0, repairer.getFactorsWithoutDiagramFactors(GroupBox.getObjectType()).size());
+		assertEquals("Orphaned targets?", 0, repairer.getFactorsWithoutDiagramFactors(Target.getObjectType()).size());
+
+		assertEquals("Group not in diagram?", new ORefList(diagramModel.getDiagramObject().getRef()), groupDiagramFactor.findObjectsThatReferToUs(ConceptualModelDiagram.getObjectType()));
+		assertEquals("Group doesn't have one child?", 1, groupDiagramFactor.getGroupBoxChildrenSet().size());
+
+		DiagramFactor cdf = DiagramFactor.find(getProject(), groupDiagramFactor.getGroupBoxChildrenRefs().get(0));
+		assertEquals("Cause not in diagram?", new ORefList(diagramModel.getDiagramObject().getRef()), cdf.findObjectsThatReferToUs(ConceptualModelDiagram.getObjectType()));
+
+		assertEquals("Not one target?", 1, diagramModel.getAllDiagramTargets().size());
+		DiagramFactor tdf = (diagramModel.getAllDiagramTargets().get(0)).getDiagramFactor();
+		assertEquals("Target not in diagram?", new ORefList(diagramModel.getDiagramObject().getRef()), tdf.findObjectsThatReferToUs(ConceptualModelDiagram.getObjectType()));
+
+		assertTrue("No threat-target link?", diagramModel.getDiagramObject().areDiagramFactorsLinkedFromToNonBidirectional(cdf.getRef(), tdf.getRef()));
+	}
+
+	private void verifyEmptyGroupPlusGroupContainingThreatLinkedToTarget(DiagramModel diagramModel)
+	{
+		DiagramFactor newThreatDiagramFactor = diagramModel.getDiagramFactor(threat.getRef());
+		ORefList referrers = newThreatDiagramFactor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		ORef oldGroupDiagramFactorRef = referrers.getRefForType(DiagramFactor.getObjectType());
+		DiagramFactor nonEmptyGroupDiagramFactor = DiagramFactor.find(getProject(), oldGroupDiagramFactorRef);
+		assertEquals("Old group doesn't have one child?", 1, nonEmptyGroupDiagramFactor.getGroupBoxChildrenSet().size());
+		verifyGroupContainingThreatLinkedToTarget(diagramModel, nonEmptyGroupDiagramFactor);
+		
+		ORefList groupDiagramFactorRefs = new ORefList();
+		ORefList allDiagramFactorRefs = diagramModel.getDiagramObject().getAllDiagramFactorRefs();
+		for(int i = 0; i < allDiagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor df = DiagramFactor.find(getProject(), allDiagramFactorRefs.get(i));
+			if(df.isGroupBoxFactor())
+				groupDiagramFactorRefs.add(df.getRef());
+		}
+		groupDiagramFactorRefs.remove(oldGroupDiagramFactorRef);
+		assertEquals("Didn't create a second group?", 1, groupDiagramFactorRefs.size());
+		DiagramFactor newGroupDiagramFactor = DiagramFactor.find(getProject(), groupDiagramFactorRefs.getFirstElement());
+		
+		assertEquals("Empty group has children?", 0, newGroupDiagramFactor.getGroupBoxChildrenSet().size());
+		assertEquals("Group is linked?", 0, newGroupDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType()).size());
 	}
 
 	private DiagramObject getDiagramObject()
