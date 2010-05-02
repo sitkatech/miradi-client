@@ -248,7 +248,33 @@ abstract public class DiagramPaster
 		ORefList oldList = new ORefList(newObject.getData(annotationTag));
 		ORefList newList = getNewFixedUpRefList(pastedObjectMap, oldList);
 		
+		if(DiagramFactor.is(newObject.getRef()) && annotationTag.equals(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS))
+		{
+			ORefList groupBoxChildrenRefsToOmit = getExsitingGroupBoxChildrenRefsToOmit(newList);
+			newList.removeAll(groupBoxChildrenRefsToOmit);
+		}
+		
 		return new CommandSetObjectData(newObject.getRef(), annotationTag, newList.toString());
+	}
+
+	private ORefList getExsitingGroupBoxChildrenRefsToOmit(ORefList groupBoxDiagramFactorChildrenRefs)
+	{
+		ORefList groupBoxChildrenRefsToOmit = new ORefList();
+		for (int index = 0; index < groupBoxDiagramFactorChildrenRefs.size(); ++index)
+		{
+			ORef groupBoxChildFactorRef = groupBoxDiagramFactorChildrenRefs.get(index);
+			DiagramFactor groupBoxChildDiagramFactor = DiagramFactor.find(getProject(), groupBoxChildFactorRef);
+			if (groupBoxChildDiagramFactor == null)
+				continue;
+			
+			DiagramFactor diagramFactor = getDiagramObject().getDiagramFactor(groupBoxChildDiagramFactor.getWrappedORef());
+			if (diagramFactor == null)
+				continue;
+			
+			if (diagramFactor.isCoveredByGroupBox())
+				groupBoxChildrenRefsToOmit.add(groupBoxChildFactorRef);
+		}
+		return groupBoxChildrenRefsToOmit;
 	}
 
 	private ORefList getNewFixedUpRefList(HashMap pastedObjectMap, ORefList oldList) throws Exception
