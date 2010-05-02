@@ -277,7 +277,8 @@ abstract public class DiagramPaster
 				continue;
 			}
 			
-			DiagramFactor diagramFactor = getDiagramObject().getDiagramFactor(groupBoxChildDiagramFactor.getWrappedORef());
+			ORef wrappedFactorRef = groupBoxChildDiagramFactor.getWrappedORef();
+			DiagramFactor diagramFactor = getDiagramObject().getDiagramFactor(wrappedFactorRef);
 			if (diagramFactor == null)
 				continue;
 			
