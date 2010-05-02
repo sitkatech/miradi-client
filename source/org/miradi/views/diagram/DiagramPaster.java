@@ -273,7 +273,8 @@ abstract public class DiagramPaster
 			DiagramFactor groupBoxChildDiagramFactor = DiagramFactor.find(getProject(), groupBoxChildFactorRef);
 			if (groupBoxChildDiagramFactor == null)
 			{
-				EAM.logWarning("Pasted a missing gb child: " + groupBoxChildFactorRef);
+				EAM.logError("Pasted a missing gb child: " + groupBoxChildFactorRef);
+				groupBoxChildrenRefsToOmit.add(groupBoxChildFactorRef);
 				continue;
 			}
 			
