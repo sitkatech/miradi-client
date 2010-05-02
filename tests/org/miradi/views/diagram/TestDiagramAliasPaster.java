@@ -305,7 +305,10 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		DiagramFactor newGroupDiagramFactor = DiagramFactor.find(getProject(), groupDiagramFactorRefs.getFirstElement());
 		
 		assertEquals("Empty group has children?", 0, newGroupDiagramFactor.getGroupBoxChildrenSet().size());
-		assertEquals("Group is linked?", 0, newGroupDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType()).size());
+		ORefList groupLinkRefs = newGroupDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		assertEquals("Group is not linked?", 1, groupLinkRefs.size());
+		DiagramLink groupLink = DiagramLink.find(getProject(), groupLinkRefs.getFirstElement());
+		assertEquals("Group link has child links?", 0, groupLink.getGroupedDiagramLinkRefs().size());
 	}
 
 	private DiagramObject getDiagramObject()
