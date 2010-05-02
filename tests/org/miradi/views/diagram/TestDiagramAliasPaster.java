@@ -35,6 +35,7 @@ import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -45,6 +46,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.Target;
 import org.miradi.project.FactorDeleteHelper;
+import org.miradi.project.ProjectRepairer;
 
 public class TestDiagramAliasPaster extends TestCaseWithProject
 {
@@ -70,19 +72,60 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 
 	public void testPasteGroupCreatesExtraGroup() throws Exception
 	{
+		// get rid of target
+		Vector<DiagramFactor> targetAsVector = new Vector<DiagramFactor>();
+		targetAsVector.add(targetDiagramFactor);
+		deleteDiagramFactors(targetAsVector);
+
 		wrapThreatWithGroupBox();
-		Vector<DiagramFactor> diagramFactorsToCutPaste = new Vector<DiagramFactor>();
-		diagramFactorsToCutPaste.add(groupBoxDiagramFactor);
-		diagramFactorsToCutPaste.add(threatDiagramFactor);
+
+		Vector<DiagramFactor> groupAndChildThreat = new Vector<DiagramFactor>();
+		groupAndChildThreat.add(groupBoxDiagramFactor);
+		groupAndChildThreat.add(threatDiagramFactor);
 		
-		TransferableMiradiList transferableListBeforeCut = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, new Vector());
+		// Copy/paste-shared grouped threat into other diagram
+		TransferableMiradiList transferableListBeforeCut = createTransferable(getDiagramModel(), groupAndChildThreat, new Vector());
 		pasteShared(diagramModelToPasteInto, transferableListBeforeCut);
 		
-		TransferableMiradiList transferableList = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, new Vector());
-		deleteDiagramFactors(diagramFactorsToCutPaste);
-		pasteShared(diagramModelToPasteInto, transferableList);
+		// Cut from first diagram, then paste-shared back into first diagram
+		TransferableMiradiList transferableList = createTransferable(diagramModelToPasteInto, diagramModelToPasteInto.getAllDiagramFactors(), new Vector());
+		deleteDiagramFactors(groupAndChildThreat);
+		pasteShared(getDiagramModel(), transferableList);
 		
-		assertEquals("Group box was not pasted?", 1, getProject().getGroupBoxPool().size());
+		DiagramObject diagramObject = getDiagramModel().getDiagramObject();
+		ORefList diagramFactorRefs = diagramObject.getAllDiagramFactorRefs();
+		DiagramFactor pastedThreatDiagramFactor = null;
+		DiagramFactor pastedGroupDiagramFactor = null;
+		for(int i = 0; i < diagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), diagramFactorRefs.get(i));
+			if(diagramFactor.isGroupBoxFactor())
+			{
+				assertNull("More than one group?", pastedGroupDiagramFactor);
+				pastedGroupDiagramFactor = diagramFactor;
+			}
+			else if(Cause.is(diagramFactor.getWrappedORef()))
+			{
+				assertNull("More than one threat?", pastedThreatDiagramFactor);
+				pastedThreatDiagramFactor = diagramFactor;
+			}
+			else
+			{
+				fail("Unexpected factor: " + diagramFactor.getRef() + " wraps " + diagramFactor.getWrappedORef());
+			}
+		}
+		
+		assertEquals("Don't have threat+group diagram factors?", 2, diagramFactorRefs.size());
+
+		assertEquals("Threat not shared?", threat.getRef(), pastedThreatDiagramFactor.getWrappedORef());
+		assertEquals("Threat not shared twice?", 2, threat.findObjectsThatReferToUs(DiagramFactor.getObjectType()).size());
+
+		ORefSet children = pastedGroupDiagramFactor.getGroupBoxChildrenSet();
+		assertEquals("Group doesn't contain one factor?", 1, children.size());
+		assertContains("Group doesn't wrap threat?", pastedThreatDiagramFactor.getRef(), children);
+		
+		new ProjectRepairer(getProject()).getFactorsWithoutDiagramFactors(Cause.getObjectType());
+		new ProjectRepairer(getProject()).getFactorsWithoutDiagramFactors(GroupBox.getObjectType());
 	}
 	
 	public void testPasteSharedGroupNonExistingGroupAndTarget() throws Exception
