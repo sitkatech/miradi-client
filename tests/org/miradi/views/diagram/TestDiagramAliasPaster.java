@@ -63,7 +63,6 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
 		threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		
-		target = (Target) targetDiagramFactor.getWrappedFactor();
 		threat = (Cause) threatDiagramFactor.getWrappedFactor();
 		getProject().enableAsThreat(threatDiagramFactor.getWrappedORef());
 		
@@ -475,7 +474,6 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	private DiagramModel diagramModelToPasteInto;
 	private DiagramFactor targetDiagramFactor;
 	private DiagramFactor threatDiagramFactor;
-	private Target target;
 	private Cause threat;
 	private DiagramLink threatTargetDiagramLink;
 	private DiagramFactor groupBoxDiagramFactor;
