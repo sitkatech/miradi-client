@@ -278,11 +278,11 @@ abstract public class DiagramPaster
 			}
 			
 			ORef wrappedFactorRef = groupBoxChildDiagramFactor.getWrappedORef();
-			DiagramFactor diagramFactor = getDiagramObject().getDiagramFactor(wrappedFactorRef);
-			if (diagramFactor == null)
+			DiagramFactor wrappingDiagramFactorOnThisDiagram = getDiagramObject().getDiagramFactor(wrappedFactorRef);
+			if (wrappingDiagramFactorOnThisDiagram == null)
 				continue;
 			
-			if (diagramFactor.isCoveredByGroupBox())
+			if (wrappingDiagramFactorOnThisDiagram.isCoveredByGroupBox())
 				groupBoxChildrenRefsToOmit.add(groupBoxChildFactorRef);
 		}
 		return groupBoxChildrenRefsToOmit;
