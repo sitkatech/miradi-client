@@ -75,7 +75,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		// get rid of target
 		Vector<DiagramFactor> targetAsVector = new Vector<DiagramFactor>();
 		targetAsVector.add(targetDiagramFactor);
-		deleteDiagramFactors(targetAsVector);
+		deleteDiagramFactors(getDiagramObject(), targetAsVector);
 
 		wrapThreatWithGroupBox();
 
@@ -85,7 +85,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		
 		// Cut from second diagram, then paste-shared back into first diagram
 		TransferableMiradiList transferableList = createTransferable(diagramModelToPasteInto, diagramModelToPasteInto.getAllDiagramFactors(), new Vector());
-		deleteDiagramFactors(diagramModelToPasteInto.getAllDiagramFactors());
+		deleteDiagramFactors(diagramModelToPasteInto.getDiagramObject(), diagramModelToPasteInto.getAllDiagramFactors());
 		pasteShared(getDiagramModel(), transferableList);
 		
 		DiagramObject diagramObject = getDiagramObject();
@@ -216,7 +216,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		TransferableMiradiList transferableList = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, diagramLinksToCutPaste);
 		
 		deleteDiagramLinkAndOrphandFactorLink(threatTargetDiagramLink);
-		deleteDiagramFactors(diagramFactorsToCutPaste);
+		deleteDiagramFactors(getDiagramObject(), diagramFactorsToCutPaste);
 		pasteShared(diagramModelToPasteInto, transferableList);
 		
 		verifyFactorLinkAfterPaste(FactorLink.FROM, threat, diagramModelToPasteInto);
@@ -274,7 +274,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		TransferableMiradiList transferableList = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, diagramLinksToCutPaste);
 		
 		deleteDiagramLinkAndOrphandFactorLink(groupBoxDiagramLink);
-		deleteDiagramFactors(diagramFactorsToCutPaste);
+		deleteDiagramFactors(getDiagramObject(), diagramFactorsToCutPaste);
 		pasteShared(diagramModelToPasteIntoToUse, transferableList);
 	}
 
@@ -322,9 +322,9 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		return diagramModel;
 	}
 	
-	private void deleteDiagramFactors(Vector<DiagramFactor> diagramFactorsToCutPaste) throws Exception
+	private void deleteDiagramFactors(DiagramObject diagramObject, Vector<DiagramFactor> diagramFactorsToCutPaste) throws Exception
 	{
-		FactorDeleteHelper helper = FactorDeleteHelper.createFactorDeleteHelperForNonSelectedFactors(getDiagramObject());
+		FactorDeleteHelper helper = FactorDeleteHelper.createFactorDeleteHelperForNonSelectedFactors(diagramObject);
 		for (int index = 0; index < diagramFactorsToCutPaste.size(); ++index)
 		{
 			helper.deleteFactorAndDiagramFactor(diagramFactorsToCutPaste.get(index));
