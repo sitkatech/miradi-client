@@ -272,7 +272,10 @@ abstract public class DiagramPaster
 			ORef groupBoxChildFactorRef = groupBoxDiagramFactorChildrenRefs.get(index);
 			DiagramFactor groupBoxChildDiagramFactor = DiagramFactor.find(getProject(), groupBoxChildFactorRef);
 			if (groupBoxChildDiagramFactor == null)
+			{
+				EAM.logWarning("Pasted a missing gb child: " + groupBoxChildFactorRef);
 				continue;
+			}
 			
 			DiagramFactor diagramFactor = getDiagramObject().getDiagramFactor(groupBoxChildDiagramFactor.getWrappedORef());
 			if (diagramFactor == null)
