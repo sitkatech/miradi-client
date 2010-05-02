@@ -70,7 +70,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		diagramModelToPasteInto = createDiagramModelToPasteInto();
 	}
 
-	public void testPasteGroupCreatesExtraGroup() throws Exception
+	public void testPasteSharedGroup() throws Exception
 	{
 		// get rid of target
 		Vector<DiagramFactor> targetAsVector = new Vector<DiagramFactor>();
