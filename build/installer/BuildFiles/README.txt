@@ -4,7 +4,7 @@ Copyright 2005-2010, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION 3.0
+VERSION 3.1
 
 License and Copying
 
@@ -68,11 +68,20 @@ For GNU/Linux:
 ---------------------
 INSTALLING
 
+Projects created with earlier versions of Miradi can be opened 
+with later versions. They will be migrated automatically when 
+you first open them with the new version.
+
+
+
 MS Windows:
-- If you had Miradi 2.3.1 or earlier, we recommend that you uninstall it 
-  before installing Miradi 2.4 or later. Your existing projects will not 
-  be affected by the uninstall, and will be available when you start the 
-  new Miradi version.
+    IMPORTANT NOTE: If you have Miradi 2.3.1 or earlier installed on 
+    Windows, you MUST uninstall it before installing this version. 
+    Your existing projects will not be affected by the uninstall, 
+    and will be available when you start the new Miradi version.
+    If you have been Miradi 2.4 or later, you do not need to 
+    uninstall it first. Just install this version over it.
+    
 - Download and run MiradiSetup.exe
 - A copy of the latest Marine Example project will be installed automatically
 - You do not need to have Java already installed on your system, because 
@@ -82,33 +91,34 @@ MS Windows:
 
 
 Mac OS X:
-- Make sure Apple's official Java 1.5 (aka Java 5) or 1.6 (aka Java 6) 
+    IMPORTANT NOTE: If you had manually installed Miradi 2.3.1 or earlier 
+    (from a .zip file) on a Mac, you MUST uninstall the third-party 
+    components before installing this new version. To uninstall them, 
+    open each of these folders:
+      - System/Library/Java/Extensions
+      - Users/[user]/Library/Java/Extensions
+    and if any of these files exist, delete them:
+      - BrowserLauncher2-all-10rc4.jar
+      - jcalendar-1.3.2.jar
+      - jing.jar
+      - jxl.jar
+      - miradi-jgraph.jar
+      - TableLayout.jar
+    If you do not have the Martus (Human Rights) application on your system,
+    delete the following files also:
+      - icu4j_3_2_calendar.jar
+      - martus-swing.jar
+      - martus-utils.jar
+      - persiancalendar.jar
+
+- Before installing Miradi, make sure Apple's official Java J2SE5 or J2SE6 
   is installed (Miradi will not work with Java 1.4). If you are running 
   a current version of OS X, Java should have been installed automatically.
-  
-- IMPORTANT: If you had manually installed Miradi earlier (from a .zip file), 
-  you MUST uninstall the third-party components before installing this new 
-  version. To uninstall them, open each of these folders:
-    System/Library/Java/Extensions
-    Users/[user]/Library/Java/Extensions
-  and if any of these files exist, delete them:
-      BrowserLauncher2-all-10rc4.jar
-      jcalendar-1.3.2.jar
-      jing.jar
-      jxl.jar
-      miradi-jgraph.jar
-      TableLayout.jar
-  If you do not have the Martus (Human Rights) application on your system,
-  delete the following files also:
-      icu4j_3_2_calendar.jar
-      martus-swing.jar
-      martus-utils.jar
-      persiancalendar.jar
-
-- Obtain Miradi.dmg from http://miradi.org and open it
+- Download Miradi.dmg from http://miradi.org and open it
 - Copy the .app file to your desktop, or to your Applications folder, or 
   wherever you wish to launch it from
-- MarineExample.mpz is a sample project that can be imported into Miradi. 
+- MarineExample.mpz is a sample project that can be imported into Miradi 
+  after you start the app
 
 
 GNU/Linux:
@@ -126,20 +136,60 @@ GNU/Linux:
     java -Xmx512m -jar <path-to-miradi.jar>
     
 - MarineExample.mpz is a sample project that can be imported into Miradi
+  after you start the app
 
 
-
----------------------
-Upgrading From Earlier Versions
-
-If you installed an earlier version of Miradi, you can just 
-install this new version right over it. Your projects will be 
-migrated automatically when you first open them with the new version.
 
 ---------------------
 Changes
 
-Here are the most notable improvements of version 3.0 over 2.4.1:
+When comparing Miradi 3.1 to 3.0, there were hundreds of changes, 
+but these are the most notable:
+
+Application Wide:
+- support for native system fonts - will improve the quality of image exports
+- New pop up text editing windows for all multi line text fields -  allows 
+  for easier editing of large text entries
+- New table-based entry for Progress Reports and Progress Percents 
+  that are used to report progress throughout the application.
+  Miradi can now be opened by clicking .mpz and .cpmz files and 
+  these files will have the Miradi icon
+- Extensive changes and improvements to all export schemas
+
+Diagram View:
+- Zoom settings are now saved for each page 
+- Extensive improvements to Group Boxes, including automatic link creation
+- Increased the overall responsiveness of actions in Diagram View
+- Projects imported from ConPro have much cleaner diagrams
+
+Viability View:
+- New “Expand to” feature allows for quick configuration of Viability tree
+- Improvements to overall appearance of upper tree
+
+Threat Rating View:
+- New rating selection interface displays the full definitions
+- Improvements to ensure that sorting actions are saved and apply to exports
+
+Strategic Plan View:
+- New option added to preferences allow the user to specify whether Goals 
+  and Objectives should appear within diagrams or at the top of the tree
+- Eliminated some cases where items would appear more than once in the tree
+- Added Indicators and Activities as selectable rows in the Custom tab
+- Custom tab now has more column choices available
+
+Work Plan View:
+- New preference to include work plan data from Conceptual Model pages, 
+  Results Chains or Both
+- Budget Total columns added to the Resources tab
+- New pop up “when” editor for easier high-level planning
+- High-level estimates that have been overridden by a finer level of detail 
+  are now shown with strike-through formatting
+- New preference to allow the exclusion of quarters as columns
+- Fixed some Fiscal Year related issues.
+- Improvements to the handling of changes to column widths
+
+
+Version 3.0 was a significant upgrade, with these fixes over 2.4.1:
 
 INSTALLER
 - On Windows, now requires Java 6 (will download it if necessary)
@@ -223,7 +273,6 @@ CPMZ IMPORT/EXPORT
 - Imported "all on one page" diagram is now automatically arranged, 
   reducing the number and crossing of links
 
------------------------------------------------------------------------------
 Version 2.4.1 was a minor release with these fixes over 2.4:
 
 PLANNING VIEW
