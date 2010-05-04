@@ -76,7 +76,7 @@ public abstract class Command
 		}
 	}
 	
-	private String logDataAsString(Project target)
+	public String logDataAsString(Project target)
 	{
 		return getCommandName() + ": " + formatLogData(getLogData());
 	}
