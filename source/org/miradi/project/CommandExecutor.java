@@ -478,7 +478,10 @@ public class CommandExecutor
 			}
 			
 			if (isInCommandSideEffectMode())
-				throw new UnexpectedNonSideEffectException(); 
+			{
+				EAM.logError(command.logDataAsString(getProject()));
+				throw new UnexpectedNonSideEffectException();
+			}
 
 			beginCommandSideEffectMode();
 			try
@@ -506,7 +509,10 @@ public class CommandExecutor
 				return;
 
 			if (!isInCommandSideEffectMode())
+			{
+				EAM.logError(command.logDataAsString(getProject()));
 				throw new UnexpectedSideEffectException(command);
+			}
 			
 			internalExecuteCommand(command);
 		}
