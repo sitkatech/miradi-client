@@ -52,6 +52,12 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 	@Override
 	public boolean needsToBeSaved()
 	{
+		if(dateEditor == null)
+		{
+			EAM.logWarning("ODCIF.needsToBeSaved called after dispose");
+			EAM.logStackTrace();
+			return false;
+		}
 		return dateEditor.needsToBeSaved();
 	}
 	
