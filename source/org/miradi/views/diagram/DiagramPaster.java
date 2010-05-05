@@ -684,17 +684,17 @@ abstract public class DiagramPaster
 			DiagramFactorId toDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
 			DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), new ORef(DiagramFactor.getObjectType(), fromDiagramFactorId));
 			DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), new ORef(DiagramFactor.getObjectType(), toDiagramFactorId));
+
+			LinkCreator linkCreator = new LinkCreator(getProject());
+			if (linkCreator.linkToBePastedWasRejected(currentModel, fromDiagramFactorId, toDiagramFactorId))
+				continue;
+			
 			ORef fromFactorRef = fromDiagramFactor.getWrappedORef();
 			ORef toFactorRef = toDiagramFactor.getWrappedORef();
 			ORef newFactorLinkRef = null;
 			FactorLink factorLink = findFactorLink(fromFactorRef, toFactorRef);
 			if(factorLink != null)
 				newFactorLinkRef = factorLink.getRef();
-			
-			LinkCreator linkCreator = new LinkCreator(getProject());
-			if (linkCreator.linkToBePastedWasRejected(currentModel, fromDiagramFactorId, toDiagramFactorId))
-				continue;
-			
 			
 			CreateDiagramFactorLinkParameter extraInfo = createFactorLinkExtraInfo(fromDiagramFactorId, toDiagramFactorId, newFactorLinkRef);
 			int type = getTypeFromJson(json);
