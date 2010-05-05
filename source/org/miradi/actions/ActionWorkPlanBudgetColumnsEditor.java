@@ -32,7 +32,7 @@ public class ActionWorkPlanBudgetColumnsEditor extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Edit Columns...");
+		return EAM.text("Action|Show Columns...");
 	}
 
 	public String getToolTipText()

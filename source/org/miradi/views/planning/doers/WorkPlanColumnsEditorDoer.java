@@ -40,6 +40,6 @@ public class WorkPlanColumnsEditorDoer extends AbstractWorkPlanStringMapEditorDo
 	@Override
 	protected String getDialogTitle()
 	{
-		return EAM.text("Title|Edit Columns");
+		return EAM.text("Title|Show Columns");
 	}
 }
