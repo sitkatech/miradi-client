@@ -148,9 +148,9 @@ public class DiagramAliasPaster extends DiagramPaster
 		return true;
 	}
 	
-	protected boolean shouldCreateObject(ORef ref)
+	protected boolean shouldCreateObject(ORef ref, EnhancedJsonObject json)
 	{
-		if (shouldCreateCopy(ref))
+		if (shouldCreateCopy(ref, json))
 			return true;
 		
 		BaseObject foundObject = getProject().findObject(ref);
@@ -170,7 +170,7 @@ public class DiagramAliasPaster extends DiagramPaster
 		return super.createFactorLink(json);
 	}
 	
-	private boolean shouldCreateCopy(ORef ref)
+	private boolean shouldCreateCopy(ORef ref, EnhancedJsonObject json)
 	{
 		return GroupBox.is(ref);
 	}
