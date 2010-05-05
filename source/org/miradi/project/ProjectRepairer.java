@@ -73,6 +73,11 @@ public class ProjectRepairer
 	{
 		fixAnyProblemsWithThreatStressRatings();
 		repairUnsnappedNodes();
+		logOrphansAndSimilarProblems();
+	}
+
+	public void logOrphansAndSimilarProblems()
+	{
 		warnOfOrphanAnnotations();	
 		warnOfOrphanTasks();
 		warnOfFactorsWithoutReferringDiagramFactors();
