@@ -27,6 +27,7 @@ import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Task;
+import org.miradi.utils.EnhancedJsonObject;
 
 public class DiagramCopyPaster extends DiagramPaster
 {
@@ -76,7 +77,7 @@ public class DiagramCopyPaster extends DiagramPaster
 		return true;
 	}
 	
-	protected boolean shouldCreateObject(ORef ref)
+	protected boolean shouldCreateObject(ORef ref, EnhancedJsonObject json)
 	{
 		return true;
 	}
