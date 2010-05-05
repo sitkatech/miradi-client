@@ -35,6 +35,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
@@ -172,6 +173,16 @@ public class DiagramAliasPaster extends DiagramPaster
 	
 	private boolean shouldCreateCopy(ORef ref, EnhancedJsonObject json)
 	{
-		return GroupBox.is(ref);
+		if(GroupBox.is(ref))
+			return true;
+		
+		if(DiagramFactor.is(ref))
+		{
+			ORef wrappedRef = json.optRef(DiagramFactor.TAG_WRAPPED_REF);
+			if(GroupBox.is(wrappedRef))
+				return true;
+		}
+		
+		return false;
 	}
 }
