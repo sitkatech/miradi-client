@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-04 19:44-0500\n"
+"POT-Creation-Date: 2010-05-04 19:46-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -291,8 +291,8 @@ msgid "Tab|Custom"
 msgstr "Personalizar"
 
 #: Miradi/source/org/miradi/views/planning/doers/WorkPlanColumnsEditorDoer.java:43
-msgid "Title|Edit Columns"
-msgstr "Editar columnas"
+msgid "Title|Show Columns"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:33
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:48
@@ -6551,8 +6551,8 @@ msgid "TT|Delete the selected Accounting Code"
 msgstr "Eliminar el código contable seleccionado"
 
 #: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:35
-msgid "Action|Edit Columns..."
-msgstr "Editar columnas... "
+msgid "Action|Show Columns..."
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:40
 msgid "TT|Change which columns are shown"
@@ -31615,6 +31615,12 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Title|Edit Columns"
+#~ msgstr "Editar columnas"
+
+#~ msgid "Action|Edit Columns..."
+#~ msgstr "Editar columnas... "
 
 #~ msgid ""
 #~ "html|/resources/views/SummaryView/MoreInfo.html|<p><table>\t<tr>\t"
