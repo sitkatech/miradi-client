@@ -570,16 +570,17 @@ abstract public class DiagramPaster
 	
 	private void createNewDiagramFactor(EnhancedJsonObject json) throws Exception
 	{
+		ORef oldWrappedRef = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
+		boolean isGroupBox = GroupBox.is(oldWrappedRef);
+
 		DiagramFactorId diagramFactorId = new DiagramFactorId(json.getId(DiagramFactor.TAG_ID).asInt());
 		ORef diagramFactorRef = new ORef(DiagramFactor.getObjectType(), diagramFactorId);
 		if (oldToNewPastedObjectMap.containsKey(diagramFactorRef))
 			return;
 		
-		ORef oldWrappedRef = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
 		ORef newWrappedRef = getCorrospondingNewRef(oldWrappedRef);
 		
 		boolean isShared = oldWrappedRef.equals(newWrappedRef);
-		boolean isGroupBox = GroupBox.is(oldWrappedRef);
 		if (isShared && isGroupBox)
 		{
 			if(childrenAreAlreadyInGroupsHere(diagramFactorRef))
