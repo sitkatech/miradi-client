@@ -24,6 +24,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
+import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.ORef;
@@ -69,6 +70,8 @@ public class TestProjectCommandExecutions extends TestCaseWithProject implements
 	{
 		assertTrue("should not be in side effect mode?", !getProject().isInCommandSideEffectMode());
 		CommandCreateObject createTarget = new CommandCreateObject(Target.getObjectType());
+		
+		EAM.setLogToString();
 		try
 		{
 			getProject().executeAsSideEffect(createTarget);
@@ -76,6 +79,11 @@ public class TestProjectCommandExecutions extends TestCaseWithProject implements
 		}
 		catch (Exception ignoreExpected)
 		{
+			assertContains("SEVERE", EAM.getLoggedString());
+		}
+		finally
+		{
+			EAM.setLogToConsole();
 		}
 	}
 	
