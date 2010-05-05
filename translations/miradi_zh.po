@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-04 19:44-0500\n"
+"POT-Creation-Date: 2010-05-04 19:46-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -265,7 +265,7 @@ msgid "Tab|Custom"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/doers/WorkPlanColumnsEditorDoer.java:43
-msgid "Title|Edit Columns"
+msgid "Title|Show Columns"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:33
@@ -6271,7 +6271,7 @@ msgid "TT|Delete the selected Accounting Code"
 msgstr "删除选定的会计编码 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:35
-msgid "Action|Edit Columns..."
+msgid "Action|Show Columns..."
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:40

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-04 19:44-0500\n"
+"POT-Creation-Date: 2010-05-04 19:46-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -288,8 +288,8 @@ msgid "Tab|Custom"
 msgstr "Khusus "
 
 #: Miradi/source/org/miradi/views/planning/doers/WorkPlanColumnsEditorDoer.java:43
-msgid "Title|Edit Columns"
-msgstr "Edit Kolom "
+msgid "Title|Show Columns"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:33
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:48
@@ -6519,8 +6519,8 @@ msgid "TT|Delete the selected Accounting Code"
 msgstr "Hapus Kode Akuntansi terpilih "
 
 #: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:35
-msgid "Action|Edit Columns..."
-msgstr "Edit Kolom... "
+msgid "Action|Show Columns..."
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:40
 msgid "TT|Change which columns are shown"
@@ -31359,6 +31359,12 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Title|Edit Columns"
+#~ msgstr "Edit Kolom "
+
+#~ msgid "Action|Edit Columns..."
+#~ msgstr "Edit Kolom... "
 
 #~ msgid ""
 #~ "html|/resources/views/SummaryView/MoreInfo.html|<p><table>\t<tr>\t"
