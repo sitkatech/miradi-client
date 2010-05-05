@@ -68,6 +68,26 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		
 		diagramModelToPasteInto = createDiagramModelToPasteInto();
 	}
+	
+	public void testPasteSharedGroupTwice() throws Exception
+	{
+		// get rid of target
+		Vector<DiagramFactor> targetAsVector = new Vector<DiagramFactor>();
+		targetAsVector.add(targetDiagramFactor);
+		deleteDiagramFactors(getDiagramObject(), targetAsVector);
+
+		wrapThreatWithGroupBox();
+
+		// Copy/paste-shared grouped threat into other diagram
+		TransferableMiradiList transferableListBeforeCut = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector());
+		pasteShared(diagramModelToPasteInto, transferableListBeforeCut);
+
+		// Copy/paste-shared grouped threat into other diagram a second time
+		pasteShared(diagramModelToPasteInto, transferableListBeforeCut);
+		
+		ORefSet problems = new ProjectRepairer(getProject()).getFactorsWithoutDiagramFactors(GroupBox.getObjectType());
+		assertEquals("Created GB without DF?", 0, problems.size());
+	}
 
 	public void testPasteSharedGroup() throws Exception
 	{
