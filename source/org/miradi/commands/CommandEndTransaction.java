@@ -32,31 +32,37 @@ public class CommandEndTransaction extends Command
 		super();
 	}
 	
+	@Override
 	public void execute(Project target) throws CommandFailedException 
 	{
 		target.internalEndTransaction();
 	}
 	
+	@Override
 	public Command getReverseCommand() throws CommandFailedException
 	{
 		return new CommandBeginTransaction();
 	}
 
+	@Override
 	public String getCommandName()
 	{
 		return COMMAND_NAME;
 	}
 
+	@Override
 	public String toString()
 	{
 		return getCommandName();
 	}
 	
+	@Override
 	public boolean isEndTransaction()
 	{
 		return true;
 	}
 
+	@Override
 	public HashMap getLogData()
 	{
 		HashMap dataPairs = new HashMap();
