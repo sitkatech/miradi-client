@@ -69,7 +69,7 @@ public abstract class Command
 	{
 		try
 		{
-			target.writeLogLine(logDataAsString(target));
+			target.writeLogLine(logDataAsString());
 		}
 		catch (Exception e)
 		{
@@ -77,7 +77,7 @@ public abstract class Command
 		}
 	}
 	
-	public String logDataAsString(Project target)
+	public String logDataAsString()
 	{
 		return getCommandName() + ": " + formatLogData(getLogData());
 	}
