@@ -479,7 +479,7 @@ public class CommandExecutor
 			
 			if (isInCommandSideEffectMode())
 			{
-				EAM.logError("Should not have been in Side Effect mode for: " + command.logDataAsString(getProject()));
+				EAM.logError("Should not have been in Side Effect mode for: " + command.logDataAsString());
 				throw new UnexpectedNonSideEffectException();
 			}
 
@@ -510,7 +510,7 @@ public class CommandExecutor
 
 			if (!isInCommandSideEffectMode())
 			{
-				EAM.logError("Should have been in Side Effect mode for: " + command.logDataAsString(getProject()));
+				EAM.logError("Should have been in Side Effect mode for: " + command.logDataAsString());
 				throw new UnexpectedSideEffectException(command);
 			}
 			
