@@ -49,9 +49,9 @@ public class CommandSetThreatRating extends Command
 		return COMMAND_NAME;
 	}
 
-	public void execute(Project target) throws CommandFailedException
+	public void execute(Project project) throws CommandFailedException
 	{
-		previousValueId = setBundleValue(target, valueId, BaseId.INVALID);
+		previousValueId = setBundleValue(project, valueId, BaseId.INVALID);
 	}
 	
 	public Command getReverseCommand() throws CommandFailedException

@@ -69,13 +69,13 @@ public class CommandDeleteObject extends Command
 	}
 
 	@Override
-	public void execute(Project target) throws CommandFailedException
+	public void execute(Project project) throws CommandFailedException
 	{
 		try
 		{
-			BaseObject object = target.findObject(type, id);
+			BaseObject object = project.findObject(type, id);
 			reverseExtraInfo = object.getCreationExtraInfo();
-			target.deleteObject(object);
+			project.deleteObject(object);
 		}
 		catch (Exception e)
 		{
