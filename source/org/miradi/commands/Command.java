@@ -33,6 +33,7 @@ public abstract class Command
 	abstract public String getCommandName();
 	abstract public void execute(Project target) throws CommandFailedException;
 	
+	@Override
 	public boolean equals(Object other)
 	{
 		return toString().equals(other.toString());
