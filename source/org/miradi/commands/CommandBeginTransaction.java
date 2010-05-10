@@ -32,9 +32,9 @@ public class CommandBeginTransaction extends Command
 	}
 	
 	@Override
-	public void execute(Project target) throws CommandFailedException 
+	public void execute(Project project) throws CommandFailedException 
 	{
-		target.internalBeginTransaction();
+		project.internalBeginTransaction();
 	}
 
 	@Override

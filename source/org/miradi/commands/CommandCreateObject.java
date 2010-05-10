@@ -74,11 +74,11 @@ public class CommandCreateObject extends Command
 	}
 
 	@Override
-	public void execute(Project target) throws CommandFailedException
+	public void execute(Project project) throws CommandFailedException
 	{
 		try
 		{
-			createdId = target.createObject(type, createdId, parameter);
+			createdId = project.createObject(type, createdId, parameter);
 		}
 		catch (Exception e)
 		{

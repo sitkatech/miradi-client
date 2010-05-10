@@ -33,9 +33,9 @@ public class CommandEndTransaction extends Command
 	}
 	
 	@Override
-	public void execute(Project target) throws CommandFailedException 
+	public void execute(Project project) throws CommandFailedException 
 	{
-		target.internalEndTransaction();
+		project.internalEndTransaction();
 	}
 	
 	@Override

@@ -244,12 +244,12 @@ public class CommandSetObjectData extends Command
 	}
 
 	@Override
-	public void execute(Project target) throws CommandFailedException
+	public void execute(Project project) throws CommandFailedException
 	{
 		try
 		{
-			oldValue = getExistingData(target);
-			target.setObjectData(type, id, tag, newValue);		
+			oldValue = getExistingData(project);
+			project.setObjectData(type, id, tag, newValue);		
 		}
 		catch (Exception e)
 		{
