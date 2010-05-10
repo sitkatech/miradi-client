@@ -54,10 +54,10 @@ public abstract class Command
 		return false;
 	}
 	
-	public void executeAndLog(Project target) throws CommandFailedException
+	public void executeAndLog(Project project) throws CommandFailedException
 	{
-		execute(target);
-		logData(target, getLogData());
+		execute(project);
+		logData(project, getLogData());
 	}
 	
 	public Command getReverseCommand() throws CommandFailedException
