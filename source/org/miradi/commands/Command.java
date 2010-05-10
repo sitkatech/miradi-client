@@ -65,11 +65,11 @@ public abstract class Command
 		throw new CommandFailedException("Unimplemented getReverseCommand: " + getClass());
 	}
 	
-	private void logData(Project target, HashMap dataPairs) throws CommandFailedException
+	private void logData(Project project, HashMap dataPairs) throws CommandFailedException
 	{
 		try
 		{
-			target.writeLogLine(logDataAsString());
+			project.writeLogLine(logDataAsString());
 		}
 		catch (Exception e)
 		{
