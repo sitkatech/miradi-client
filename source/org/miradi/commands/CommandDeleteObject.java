@@ -62,11 +62,13 @@ public class CommandDeleteObject extends Command
 		return new ORef(getObjectType(), getObjectId());
 	}
 
+	@Override
 	public String getCommandName()
 	{
 		return COMMAND_NAME;
 	}
 
+	@Override
 	public void execute(Project target) throws CommandFailedException
 	{
 		try
@@ -81,6 +83,7 @@ public class CommandDeleteObject extends Command
 		}
 	}
 	
+	@Override
 	public Command getReverseCommand() throws CommandFailedException
 	{
 		CommandCreateObject command = new CommandCreateObject(type, reverseExtraInfo);
@@ -88,6 +91,7 @@ public class CommandDeleteObject extends Command
 		return command;
 	}
 	
+	@Override
 	public HashMap getLogData()
 	{
 		HashMap dataPairs = new HashMap();
