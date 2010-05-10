@@ -31,26 +31,31 @@ public class CommandBeginTransaction extends Command
 		super();
 	}
 	
+	@Override
 	public void execute(Project target) throws CommandFailedException 
 	{
 		target.internalBeginTransaction();
 	}
 
+	@Override
 	public Command getReverseCommand() throws CommandFailedException
 	{
 		return new CommandEndTransaction();
 	}
 
+	@Override
 	public String getCommandName()
 	{
 		return COMMAND_NAME;
 	}
 
+	@Override
 	public String toString()
 	{
 		return getCommandName();
 	}
 
+	@Override
 	public boolean isBeginTransaction()
 	{
 		return true;
@@ -60,6 +65,7 @@ public class CommandBeginTransaction extends Command
 	public static final String COMMAND_NAME = "BeginTransaction";
 
 
+	@Override
 	public HashMap getLogData()
 	{
 		HashMap dataPairs = new HashMap();
