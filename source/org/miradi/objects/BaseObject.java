@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import java.text.ParseException;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -756,9 +755,9 @@ abstract public class BaseObject
 		return null;
 	}
 	
-	public Collection<CommandSetObjectData> createCommandsToClearAsList()
+	public Vector<CommandSetObjectData> createCommandsToClearAsList()
 	{
-		return Arrays.asList(createCommandsToClear());
+		return new Vector(Arrays.asList(createCommandsToClear()));
 	}
 	
 	public Vector<Command> createCommandsToDeleteChildrenAndObject() throws Exception
