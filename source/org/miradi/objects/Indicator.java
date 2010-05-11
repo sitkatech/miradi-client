@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import java.util.Collection;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
@@ -79,8 +80,28 @@ public class Indicator extends BaseObject
 		Vector<Command> commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
 		commandsToDeleteChildren.addAll(createCommandsToDeleteBudgetChildren());
 		commandsToDeleteChildren.addAll(createCommandsToDeleteMethods());
+		commandsToDeleteChildren.addAll(createCommandsToDeleteMeasurements());
 		
 		return commandsToDeleteChildren;
+	}
+
+	private Collection<Command> createCommandsToDeleteMeasurements() throws Exception
+	{
+		return createCommandsToDeleteAnnotation(getMeasurementRefs());
+	}
+	
+	private Collection<Command> createCommandsToDeleteAnnotation(ORefList annotationRefs) throws Exception
+	{
+		Vector<Command> commandsToDeleteAnnotation = new Vector<Command>();
+		for (int index = 0; index < annotationRefs.size(); ++index)
+		{
+			BaseObject annotationToDelete = BaseObject.find(getProject(), annotationRefs.get(index));
+			ORefList referrers = annotationToDelete.findObjectsThatReferToUs(getObjectType());
+			if (referrers.size() == 1)
+				commandsToDeleteAnnotation.addAll(annotationToDelete.createCommandsToDeleteChildrenAndObject());
+		}
+		
+		return commandsToDeleteAnnotation;
 	}
 
 	private Vector<Command> createCommandsToDeleteMethods() throws Exception
