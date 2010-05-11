@@ -766,11 +766,17 @@ abstract public class BaseObject
 		Vector<Command> commandsToDeleteChildrenAndObject = new Vector<Command>();
 		commandsToDeleteChildrenAndObject.addAll(createCommandsToClearAsList());
 		commandsToDeleteChildrenAndObject.addAll(createCommandsToDeleteChildren());
+		commandsToDeleteChildrenAndObject.addAll(createCommandsToDereferenceObject());
 		commandsToDeleteChildrenAndObject.add(new CommandDeleteObject(this));
 		
 		return commandsToDeleteChildrenAndObject;
 	}
 	
+	protected Vector<Command> createCommandsToDereferenceObject() throws Exception
+	{
+		return new Vector<Command>();
+	}
+
 	public Vector<Command> createCommandsToDeleteChildren() throws Exception
 	{
 		Vector<Command> commandsToDeleteChildren  = new Vector<Command>();

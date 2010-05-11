@@ -19,12 +19,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.objects;
 
+import java.util.Vector;
+
 import org.martus.util.MultiCalendar;
+import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.RelevancyOverride;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.project.ProjectForTesting;
 
 
@@ -136,6 +141,23 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 	{
 		Indicator indicator = getProject().createIndicatorWithCauseParent();
 		TestTask.verifyIsAssignmentDataSuperseded(getProject(), indicator, Indicator.TAG_METHOD_IDS);
+	}
+	
+	public void testIndicatorIsRemovedFromRelevancyListWhenDeleted() throws Exception
+	{
+		Cause indicatorOwner = getProject().createCause();
+		Indicator indicator = getProject().createIndicator(indicatorOwner);
+		Strategy objectiveOwner = getProject().createStrategy();
+		Objective objective = getProject().createObjective(objectiveOwner);
+		RelevancyOverrideSet relevantIndicators = new RelevancyOverrideSet();
+		relevantIndicators.add(new RelevancyOverride(indicator.getRef(), true));
+		getProject().fillObjectUsingCommand(objective, Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicators.toString());
+		assertEquals("Object's indicator relevancy list was not updated?", 1, objective.getRelevantIndicatorRefList().size());
+		
+		Vector<Command> commandsToDeleteIndicator = indicator.createCommandsToDeleteChildrenAndObject();
+		getProject().executeCommandsAsTransaction(commandsToDeleteIndicator);
+		
+		assertEquals("Indicator was not removed from objective relevancy list?", 0, objective.getRelevantIndicatorRefList().size());
 	}
 
 	private ProjectForTesting project;
