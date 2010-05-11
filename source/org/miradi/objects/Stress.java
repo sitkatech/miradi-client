@@ -47,6 +47,7 @@ public class Stress extends Factor
 		super(objectManager, idToUse, Factor.TYPE_STRESS, json);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
@@ -90,6 +91,7 @@ public class Stress extends Factor
 		return threatStressRatingsWithThreatInList;
 	}
 	
+	@Override
 	public boolean isStress()
 	{
 		return true;
@@ -107,11 +109,13 @@ public class Stress extends Factor
 		return referrers.size() > 0;
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
 	}
 	
+	@Override
 	public String getPseudoData(String fieldTag)
 	{
 		if (fieldTag.equals(PSEUDO_STRESS_RATING))
@@ -145,6 +149,7 @@ public class Stress extends Factor
 		return formula.computeSeverityByScope(scopeRating, severityRating);
 	}
 	
+	@Override
 	public String getShortLabel()
 	{
 		return shortLabel.get();
@@ -175,11 +180,13 @@ public class Stress extends Factor
 		return objectType == getObjectType();
 	}
 			
+	@Override
 	public String toString()
 	{
 		return getLabel();
 	}
 	
+	@Override
 	public void clear()
 	{
 		super.clear();
