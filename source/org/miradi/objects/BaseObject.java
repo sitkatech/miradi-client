@@ -83,7 +83,7 @@ abstract public class BaseObject
 	
 	public void loadFromJson(EnhancedJsonObject json) throws Exception
 	{
-		Set<String> tags = fields.keySet();
+		Set<String> tags = getFields().keySet();
 		for (String tag : tags)
 		{
 			if (!getField(tag).isPseudoField())
@@ -102,11 +102,16 @@ abstract public class BaseObject
 			}
 		}
 	}
+
+	private HashMap<String, ObjectData> getFields()
+	{
+		return fields;
+	}
 	
 	public Command[] createCommandsToLoadFromJson(EnhancedJsonObject json) throws Exception
 	{
 		Vector commands = new Vector();
-		Set<String> tags = fields.keySet();
+		Set<String> tags = getFields().keySet();
 		for (String tag : tags)
 		{
 			if (getField(tag).isPseudoField() || nonClearedFieldTags.contains(tag))
@@ -478,7 +483,7 @@ abstract public class BaseObject
 
 	public boolean doesFieldExist(String fieldTag)
 	{
-		return fields.containsKey(fieldTag);
+		return getFields().containsKey(fieldTag);
 	}
 	
 	public boolean isEmpty()
@@ -704,7 +709,7 @@ abstract public class BaseObject
 	{
 		if(!data.getTag().equals(tag))
 			throw new RuntimeException("Wrong tag: " + tag + " in " + data.getTag() + " for " + getRef());
-		fields.put(tag, data);
+		getFields().put(tag, data);
 	}
 	
 	protected void addPresentationDataField(String tag, ObjectData data)
@@ -716,7 +721,7 @@ abstract public class BaseObject
 	protected void addNoClearField(String tag, ObjectData data)
 	{
 		nonClearedFieldTags.add(tag);
-		fields.put(tag, data);
+		getFields().put(tag, data);
 	}
 	
 	public boolean isPresentationDataField(String tag)
@@ -726,7 +731,7 @@ abstract public class BaseObject
 	
 	public String[] getFieldTags()
 	{
-		return fields.keySet().toArray(new String[0]);
+		return getFields().keySet().toArray(new String[0]);
 	}
 	
 	public Vector<String> getStoredFieldTags()
@@ -744,7 +749,7 @@ abstract public class BaseObject
 
 	public ObjectData getField(String fieldTag)
 	{
-		ObjectData data = fields.get(fieldTag);
+		ObjectData data = getFields().get(fieldTag);
 		return data;
 	}
 	
@@ -756,7 +761,7 @@ abstract public class BaseObject
 	public Vector<CommandSetObjectData> createCommandsToClearAsList()
 	{
 		Vector commands = new Vector();
-		Set<String> tags = fields.keySet();
+		Set<String> tags = getFields().keySet();
 		for (String tag : tags)
 		{
 			if (nonClearedFieldTags.contains(tag))
@@ -831,7 +836,7 @@ abstract public class BaseObject
 	public CommandSetObjectData[] createCommandsToClone(BaseId baseId)
 	{
 		Vector commands = new Vector();
-		Set<String> tags = fields.keySet();
+		Set<String> tags = getFields().keySet();
 		for (String tag : tags)
 		{
 			if (nonClearedFieldTags.contains(tag))
@@ -859,7 +864,7 @@ abstract public class BaseObject
 		EnhancedJsonObject json = new EnhancedJsonObject();
 		json.put(TAG_TIME_STAMP_MODIFIED, Long.toString(new Date().getTime()));
 		json.put(TAG_ID, id.asInt());
-		Set<String> tags = fields.keySet();
+		Set<String> tags = getFields().keySet();
 		for (String tag : tags)
 		{
 			if(isPseudoField(tag))
@@ -1013,7 +1018,7 @@ abstract public class BaseObject
 	public ORefSet getAllReferencedObjects()
 	{
 		ORefSet list = new ORefSet();
-		for(ObjectData field : fields.values())
+		for(ObjectData field : getFields().values())
 		{
 			ORefList refList = getRefListForField(field);
 			list.addAllRefs(refList);
