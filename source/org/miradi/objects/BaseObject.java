@@ -83,7 +83,7 @@ abstract public class BaseObject
 	
 	public void loadFromJson(EnhancedJsonObject json) throws Exception
 	{
-		Set<String> tags = getFields().keySet();
+		Set<String> tags = getTags();
 		for (String tag : tags)
 		{
 			if (!getField(tag).isPseudoField())
@@ -103,6 +103,11 @@ abstract public class BaseObject
 		}
 	}
 
+	private Set<String> getTags()
+	{
+		return getFields().keySet();
+	}
+
 	private HashMap<String, ObjectData> getFields()
 	{
 		return fields;
@@ -111,7 +116,7 @@ abstract public class BaseObject
 	public Command[] createCommandsToLoadFromJson(EnhancedJsonObject json) throws Exception
 	{
 		Vector commands = new Vector();
-		Set<String> tags = getFields().keySet();
+		Set<String> tags = getTags();
 		for (String tag : tags)
 		{
 			if (getField(tag).isPseudoField() || nonClearedFieldTags.contains(tag))
@@ -731,7 +736,7 @@ abstract public class BaseObject
 	
 	public String[] getFieldTags()
 	{
-		return getFields().keySet().toArray(new String[0]);
+		return getTags().toArray(new String[0]);
 	}
 	
 	public Vector<String> getStoredFieldTags()
@@ -761,7 +766,7 @@ abstract public class BaseObject
 	public Vector<CommandSetObjectData> createCommandsToClearAsList()
 	{
 		Vector commands = new Vector();
-		Set<String> tags = getFields().keySet();
+		Set<String> tags = getTags();
 		for (String tag : tags)
 		{
 			if (nonClearedFieldTags.contains(tag))
@@ -836,7 +841,7 @@ abstract public class BaseObject
 	public CommandSetObjectData[] createCommandsToClone(BaseId baseId)
 	{
 		Vector commands = new Vector();
-		Set<String> tags = getFields().keySet();
+		Set<String> tags = getTags();
 		for (String tag : tags)
 		{
 			if (nonClearedFieldTags.contains(tag))
@@ -864,7 +869,7 @@ abstract public class BaseObject
 		EnhancedJsonObject json = new EnhancedJsonObject();
 		json.put(TAG_TIME_STAMP_MODIFIED, Long.toString(new Date().getTime()));
 		json.put(TAG_ID, id.asInt());
-		Set<String> tags = getFields().keySet();
+		Set<String> tags = getTags();
 		for (String tag : tags)
 		{
 			if(isPseudoField(tag))
