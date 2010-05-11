@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import java.text.ParseException;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -757,7 +756,20 @@ abstract public class BaseObject
 	
 	public Vector<CommandSetObjectData> createCommandsToClearAsList()
 	{
-		return new Vector(Arrays.asList(createCommandsToClear()));
+		Vector commands = new Vector();
+		Iterator iter = fields.keySet().iterator();
+		while(iter.hasNext())
+		{
+			String tag = (String)iter.next();
+			if (nonClearedFieldTags.contains(tag))
+				continue;
+			if(isPseudoField(tag))
+				continue;
+		
+			commands.add(new CommandSetObjectData(getType(), getId(), tag, ""));
+		}
+		
+		return commands;
 	}
 	
 	public Vector<Command> createCommandsToDeleteChildrenAndObject() throws Exception
@@ -815,24 +827,6 @@ abstract public class BaseObject
 		
 		return deleteCommands;
 	}
-	
-	private CommandSetObjectData[] createCommandsToClear()
-	{
-		Vector commands = new Vector();
-		Iterator iter = fields.keySet().iterator();
-		while(iter.hasNext())
-		{
-			String tag = (String)iter.next();
-			if (nonClearedFieldTags.contains(tag))
-				continue;
-			if(isPseudoField(tag))
-				continue;
-
-			commands.add(new CommandSetObjectData(getType(), getId(), tag, ""));
-		}
-		return (CommandSetObjectData[])commands.toArray(new CommandSetObjectData[0]);
-	}
-	
 	
 	//Note this method does not clone referenced or owned objects
 	public CommandSetObjectData[] createCommandsToClone(BaseId baseId)
