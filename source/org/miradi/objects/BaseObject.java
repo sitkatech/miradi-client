@@ -24,6 +24,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 import java.util.Vector;
 
 import org.martus.util.xml.XmlUtilities;
@@ -757,12 +758,12 @@ abstract public class BaseObject
 	public Vector<CommandSetObjectData> createCommandsToClearAsList()
 	{
 		Vector commands = new Vector();
-		Iterator iter = fields.keySet().iterator();
-		while(iter.hasNext())
+		Set<String> tags = fields.keySet();
+		for (String tag : tags)
 		{
-			String tag = (String)iter.next();
 			if (nonClearedFieldTags.contains(tag))
 				continue;
+			
 			if(isPseudoField(tag))
 				continue;
 		
