@@ -48,6 +48,7 @@ public class KeyEcologicalAttribute extends BaseObject
 		super(objectManager, new BaseId(idAsInt), json);
 	}
 	
+	@Override
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_INDICATOR_IDS))
@@ -56,6 +57,7 @@ public class KeyEcologicalAttribute extends BaseObject
 		return super.getAnnotationType(tag);
 	}
 
+	@Override
 	public boolean isIdListTag(String tag)
 	{
 		if (tag.equals(TAG_INDICATOR_IDS))
@@ -64,11 +66,13 @@ public class KeyEcologicalAttribute extends BaseObject
 		return super.isIdListTag(tag);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -88,6 +92,7 @@ public class KeyEcologicalAttribute extends BaseObject
 		return ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
 	}
 	
+	@Override
 	public ORefList getOwnedObjects(int objectType)
 	{
 		ORefList list = super.getOwnedObjects(objectType);
@@ -116,6 +121,7 @@ public class KeyEcologicalAttribute extends BaseObject
 		return keyEcologicalAttributeType.toString();
 	}
 	
+	@Override
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_VIABILITY_STATUS))
@@ -139,6 +145,7 @@ public class KeyEcologicalAttribute extends BaseObject
 		return TNCViabilityFormula.getAverageRatingCode(statuses);
 	}
 	
+	@Override
 	public String getShortLabel()
 	{
 		return shortLabel.get();
@@ -175,6 +182,7 @@ public class KeyEcologicalAttribute extends BaseObject
 		return find(project.getObjectManager(), keaRef);
 	}
 	
+	@Override
 	void clear()
 	{
 		super.clear();
