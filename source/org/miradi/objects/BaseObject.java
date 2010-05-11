@@ -816,7 +816,7 @@ abstract public class BaseObject
 		return deleteCommands;
 	}
 	
-	public CommandSetObjectData[] createCommandsToClear()
+	private CommandSetObjectData[] createCommandsToClear()
 	{
 		Vector commands = new Vector();
 		Iterator iter = fields.keySet().iterator();
