@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-11 09:58-0500\n"
+"POT-Creation-Date: 2010-05-11 11:40-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -349,8 +349,8 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:44
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:45
+#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:64
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:66
-#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:68
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
 #: Miradi/source/org/miradi/main/EAM.java:444
 #: Miradi/source/org/miradi/main/EAM.java:445
@@ -806,7 +806,7 @@ msgstr "[页 %s] \t\t"
 msgid "Choose Indicator to Create from"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:66
+#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:64
 #: Miradi/source/org/miradi/main/EAM.java:444
 msgid "Retain"
 msgstr "保留 \t\t"
