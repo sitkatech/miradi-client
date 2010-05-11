@@ -107,7 +107,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	{
 		Vector commands = new Vector();
 		commands.addAll(buildCommandsToUntag(project, annotationToDelete.getRef()));
-		// TODO: buildCommandsToDeleteReferredObjects also removes this object from owner right now, but shouldn't
+		commands.add(buildCommandToRemoveAnnotationFromObject(owner, annotationIdListTag, annotationToDelete.getRef()));
 		commands.addAll(buildCommandsToDeleteReferredObjects(project, owner, annotationIdListTag, annotationToDelete));
 		commands.addAll(buildCommandsToDeleteReferringObjects(project, owner, annotationIdListTag, annotationToDelete));
 		if (Indicator.is(annotationToDelete))
@@ -135,9 +135,6 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	private static Vector buildCommandsToDeleteReferredObjects(Project project, BaseObject owner, String annotationIdListTag,	BaseObject annotationToDelete) throws Exception
 	{
 		Vector commands = new Vector<Command>();
-		//TODO removing annotation from parent needs to be pulled up into the caller.  
-		commands.add(buildCommandToRemoveAnnotationFromObject(owner, annotationIdListTag, annotationToDelete.getRef()));
-		
 		if (Indicator.is(annotationToDelete))
 		{
 			commands.addAll(buildCommandsToDeleteMeasurements(project, (Indicator)annotationToDelete));
