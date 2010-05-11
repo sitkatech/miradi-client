@@ -62,7 +62,7 @@ public class Task extends Factor
 		{
 			BaseId subTaskId = getSubtaskId(index);
 			Task  subTask = (Task)project.findObject(ObjectType.TASK, subTaskId);
-			deleteIds.addAll(subTask.createCommandsToDeleteChildrenAndObject());
+			deleteIds.addAll(subTask.createCommandsToDelete());
 		}
 		
 		return deleteIds;

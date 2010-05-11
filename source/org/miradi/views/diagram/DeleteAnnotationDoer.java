@@ -104,7 +104,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		commands.add(buildCommandToRemoveAnnotationFromObject(owner, annotationIdListTag, annotationToDelete.getRef()));
 		commands.addAll(buildCommandsToDeleteReferredObjects(project, owner, annotationIdListTag, annotationToDelete));
 		commands.addAll(buildCommandsToDeleteReferringObjects(project, owner, annotationIdListTag, annotationToDelete));		
-		commands.addAll(annotationToDelete.createCommandsToDeleteChildrenAndObject());
+		commands.addAll(annotationToDelete.createCommandsToDelete());
 		
 		return (Command[])commands.toArray(new Command[0]);
 	}

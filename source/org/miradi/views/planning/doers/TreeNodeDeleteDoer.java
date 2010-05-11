@@ -128,7 +128,7 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 			}
 		}
 		
-		commands.addAll(objectToRemove.createCommandsToDeleteChildrenAndObject());
+		commands.addAll(objectToRemove.createCommandsToDelete());
 	
 		return commands;
 	}

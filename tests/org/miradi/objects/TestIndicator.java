@@ -154,7 +154,7 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 		getProject().fillObjectUsingCommand(objective, Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicators.toString());
 		assertEquals("Object's indicator relevancy list was not updated?", 1, objective.getRelevantIndicatorRefList().size());
 		
-		Vector<Command> commandsToDeleteIndicator = indicator.createCommandsToDeleteChildrenAndObject();
+		Vector<Command> commandsToDeleteIndicator = indicator.createCommandsToDelete();
 		getProject().executeCommandsAsTransaction(commandsToDeleteIndicator);
 		
 		assertEquals("Indicator was not removed from objective relevancy list?", 0, objective.getRelevantIndicatorRefList().size());
