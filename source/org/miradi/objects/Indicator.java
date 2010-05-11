@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.util.Collection;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
@@ -85,12 +84,17 @@ public class Indicator extends BaseObject
 		return commandsToDeleteChildren;
 	}
 
-	private Collection<Command> createCommandsToDeleteMeasurements() throws Exception
+	private Vector<Command> createCommandsToDeleteMeasurements() throws Exception
 	{
 		return createCommandsToDeleteAnnotation(getMeasurementRefs());
 	}
 	
-	private Collection<Command> createCommandsToDeleteAnnotation(ORefList annotationRefs) throws Exception
+	private Vector<Command> createCommandsToDeleteMethods() throws Exception
+	{		
+		return createCommandsToDeleteAnnotation(getMethodRefs());
+	}
+	
+	private Vector<Command> createCommandsToDeleteAnnotation(ORefList annotationRefs) throws Exception
 	{
 		Vector<Command> commandsToDeleteAnnotation = new Vector<Command>();
 		for (int index = 0; index < annotationRefs.size(); ++index)
@@ -102,21 +106,6 @@ public class Indicator extends BaseObject
 		}
 		
 		return commandsToDeleteAnnotation;
-	}
-
-	private Vector<Command> createCommandsToDeleteMethods() throws Exception
-	{
-		Vector<Command> commandsToDeleteMethods = new Vector<Command>();
-		ORefList methodRefs = getMethodRefs();
-		for (int index = 0; index < methodRefs.size(); ++index)
-		{
-			Task methodToDelete = Task.find(getProject(), methodRefs.get(index));
-			ORefList indicatorReferrers = methodToDelete.findObjectsThatReferToUs(getObjectType());
-			if (indicatorReferrers.size() == 1)
-				commandsToDeleteMethods.addAll(methodToDelete.createCommandsToDeleteChildrenAndObject());
-		}
-		
-		return commandsToDeleteMethods;
 	}
 
 	//TODO: several pseudo fields are shared between Indicator and Desires; this may indicate a need for a common super class
