@@ -34,6 +34,7 @@ import org.miradi.views.ViewDoer;
 
 public class DeleteSelectedItemDoer extends ViewDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())
@@ -46,6 +47,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		return (selected.length > 0);
 	}
 
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if (!isAvailable())
