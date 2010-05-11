@@ -21,7 +21,6 @@ package org.miradi.views.diagram;
 
 import java.text.ParseException;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
@@ -41,7 +40,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Stress;
 import org.miradi.objects.TaggedObjectSet;
@@ -135,10 +133,6 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	private static Vector buildCommandsToDeleteReferredObjects(Project project, BaseObject owner, String annotationIdListTag,	BaseObject annotationToDelete) throws Exception
 	{
 		Vector commands = new Vector<Command>();
-		if (Indicator.is(annotationToDelete))
-		{
-			commands.addAll(buildCommandsToDeleteMeasurements(project, (Indicator)annotationToDelete));
-		}
 		if (KeyEcologicalAttribute.is(annotationToDelete.getType()))
 		{
 			commands.addAll(buildCommandsToDeleteKEAIndicators(project, (KeyEcologicalAttribute) annotationToDelete));
@@ -229,29 +223,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		}
 
 		return commands;
-	}
-
-	private static Collection buildCommandsToDeleteMeasurements(Project project, Indicator indicator) throws Exception
-	{
-		Vector commands = new Vector();
-		CommandSetObjectData clearIndicatorMeasurements = new CommandSetObjectData(indicator.getRef(), Indicator.TAG_MEASUREMENT_REFS, new ORefList().toString());
-		commands.add(clearIndicatorMeasurements);
-		
-		ORefList measurementRefs = indicator.getMeasurementRefs();
-		for (int i  = 0; i < measurementRefs.size(); i++)
-		{
-			ORef measurementRef = measurementRefs.get(i);
-			Measurement measurementToDelete = (Measurement) project.findObject(measurementRef);
-			ORefList referrers = measurementToDelete.findObjectsThatReferToUs(Indicator.getObjectType());
-			if (referrers.size() == 1)
-			{
-				commands.addAll(measurementToDelete.createCommandsToDeleteChildrenAndObject());
-			}
-		}
-		
-		return commands;
-	}
-	
+	}	
 
 	abstract public String[] getDialogText();
 	abstract public String getAnnotationIdListTag();
