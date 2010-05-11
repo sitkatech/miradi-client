@@ -780,6 +780,7 @@ abstract public class BaseObject
 	public Vector<Command> createCommandsToDeleteChildren() throws Exception
 	{
 		Vector<Command> commandsToDeleteChildren  = new Vector<Command>();
+		commandsToDeleteChildren.addAll(createCommandsToDeleteBudgetChildren());
 		commandsToDeleteChildren.addAll(creatCommandsToDeleteRefs(TAG_PROGRESS_REPORT_REFS));
 		
 		return commandsToDeleteChildren;
