@@ -110,7 +110,6 @@ public class Indicator extends BaseObject
 	public Vector<Command> createCommandsToDeleteChildren() throws Exception
 	{
 		Vector<Command> commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
-		commandsToDeleteChildren.addAll(createCommandsToDeleteBudgetChildren());
 		commandsToDeleteChildren.addAll(createCommandsToDeleteMethods());
 		commandsToDeleteChildren.addAll(createCommandsToDeleteMeasurements());
 		

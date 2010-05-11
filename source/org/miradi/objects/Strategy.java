@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import java.util.Vector;
 
-import org.miradi.commands.Command;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
@@ -178,15 +177,6 @@ public class Strategy extends Factor
 		return result;
 	}
 	
-	@Override
-	public Vector<Command> createCommandsToDeleteChildren() throws Exception
-	{
-		Vector<Command> commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
-		commandsToDeleteChildren.addAll(createCommandsToDeleteBudgetChildren());
-		
-		return commandsToDeleteChildren;
-	}
-
 	@Override
 	public String toString()
 	{
