@@ -168,11 +168,11 @@ public class ObjectTestCase extends TestCaseWithProject
 		BaseObject got = BaseObject.createFromJson(project.getObjectManager(), object.getType(), object.toJson());
 		assertEquals("didn't jsonize " + tag + "?", object.getData(tag), got.getData(tag));
 		
-		CommandSetObjectData[] commandsToClear = object.createCommandsToClear();
-		for(int i = 0; i < commandsToClear.length; ++i)
+		Vector<CommandSetObjectData> commandsToClear = object.createCommandsToClearAsList();
+		for(int i = 0; i < commandsToClear.size(); ++i)
 		{
-			assertNotEquals("Tried to clear Id?", BaseObject.TAG_ID, commandsToClear[i].getFieldTag());
-			project.executeCommand(commandsToClear[i]);
+			assertNotEquals("Tried to clear Id?", BaseObject.TAG_ID, commandsToClear.get(i).getFieldTag());
+			project.executeCommand(commandsToClear.get(i));
 		}
 		assertEquals("Didn't clear " + tag + "?", emptyData, object.getData(tag));
 		project.undo();
