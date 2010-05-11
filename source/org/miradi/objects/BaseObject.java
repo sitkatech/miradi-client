@@ -83,10 +83,9 @@ abstract public class BaseObject
 	
 	public void loadFromJson(EnhancedJsonObject json) throws Exception
 	{
-		Iterator iter = fields.keySet().iterator();
-		while(iter.hasNext())
+		Set<String> tags = fields.keySet();
+		for (String tag : tags)
 		{
-			String tag = (String)iter.next();
 			if (!getField(tag).isPseudoField())
 			{
 				String value = json.optString(tag);
@@ -107,10 +106,9 @@ abstract public class BaseObject
 	public Command[] createCommandsToLoadFromJson(EnhancedJsonObject json) throws Exception
 	{
 		Vector commands = new Vector();
-		Iterator iter = fields.keySet().iterator();
-		while(iter.hasNext())
+		Set<String> tags = fields.keySet();
+		for (String tag : tags)
 		{
-			String tag = (String)iter.next();
 			if (getField(tag).isPseudoField() || nonClearedFieldTags.contains(tag))
 				continue;
 			
@@ -833,10 +831,9 @@ abstract public class BaseObject
 	public CommandSetObjectData[] createCommandsToClone(BaseId baseId)
 	{
 		Vector commands = new Vector();
-		Iterator iter = fields.keySet().iterator();
-		while(iter.hasNext())
+		Set<String> tags = fields.keySet();
+		for (String tag : tags)
 		{
-			String tag = (String)iter.next();
 			if (nonClearedFieldTags.contains(tag))
 				continue;
 			if(isPseudoField(tag))
@@ -862,10 +859,9 @@ abstract public class BaseObject
 		EnhancedJsonObject json = new EnhancedJsonObject();
 		json.put(TAG_TIME_STAMP_MODIFIED, Long.toString(new Date().getTime()));
 		json.put(TAG_ID, id.asInt());
-		Iterator iter = fields.keySet().iterator();
-		while(iter.hasNext())
+		Set<String> tags = fields.keySet();
+		for (String tag : tags)
 		{
-			String tag = (String)iter.next();
 			if(isPseudoField(tag))
 				continue;
 			ObjectData data = getField(tag);
