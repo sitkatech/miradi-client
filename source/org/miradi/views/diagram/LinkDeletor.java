@@ -127,7 +127,7 @@ public class LinkDeletor
 		CommandSetObjectData removeDiagramFactorLink = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLink.getDiagramLinkId());
 		project.executeCommand(removeDiagramFactorLink);
 
-		Vector<Command> commandsToDeleteChildrenAndDiagramLink = diagramLink.createCommandsToDeleteChildrenAndObject();
+		Vector<Command> commandsToDeleteChildrenAndDiagramLink = diagramLink.createCommandsToDelete();
 		getProject().executeCommandsWithoutTransaction(commandsToDeleteChildrenAndDiagramLink);
 	}
 
@@ -150,7 +150,7 @@ public class LinkDeletor
 		if (diagramLinkReferrers.size() != 0)
 			return;
 		
-		Vector<Command> commandsToDeleteChildrenAndFactorLink = factorLink.createCommandsToDeleteChildrenAndObject();
+		Vector<Command> commandsToDeleteChildrenAndFactorLink = factorLink.createCommandsToDelete();
 		getProject().executeCommandsWithoutTransaction(commandsToDeleteChildrenAndFactorLink);		
 	}
 

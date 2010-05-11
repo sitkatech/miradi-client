@@ -74,7 +74,7 @@ public class DeleteKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcol
 			if (referrerRefs.size() > 0)
 				return;
 			
-			Vector<Command> commandsToDeleteChildrenAndMeasurement = measurement.createCommandsToDeleteChildrenAndObject();
+			Vector<Command> commandsToDeleteChildrenAndMeasurement = measurement.createCommandsToDelete();
 			getProject().executeCommandsWithoutTransaction(commandsToDeleteChildrenAndMeasurement);
 		}
 		catch(Exception e)
