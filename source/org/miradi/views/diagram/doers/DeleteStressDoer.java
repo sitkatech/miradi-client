@@ -27,6 +27,7 @@ import org.miradi.views.diagram.DeleteAnnotationDoer;
 
 public class DeleteStressDoer extends DeleteAnnotationDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (getObjects().length == 0)
@@ -38,21 +39,25 @@ public class DeleteStressDoer extends DeleteAnnotationDoer
 		return true;
 	}
 	
+	@Override
 	protected BaseObject getParent(BaseObject annotationToDelete)
 	{
 		return getSingleSelected(Target.getObjectType());  
 	}
 
+	@Override
 	public String[] getDialogText()
 	{
 		return new String[] { EAM.text("Are you sure you want to delete this Stress?"),};
 	}
 
+	@Override
 	public String getAnnotationIdListTag()
 	{
 		return Target.TAG_STRESS_REFS;
 	}
 	
+	@Override
 	public int getAnnotationType()
 	{
 		return Stress.getObjectType();
