@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-11 13:28-0500\n"
+"POT-Creation-Date: 2010-05-11 14:50-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -782,7 +782,7 @@ msgstr "新因素 \t\t"
 msgid "Label|New Intermediate Result"
 msgstr "新的中途结果 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/DeleteSelectedItemDoer.java:139
+#: Miradi/source/org/miradi/views/diagram/DeleteSelectedItemDoer.java:141
 msgid ""
 "The link(s) will be deleted from all Conceptual Model pages and Results "
 "Chains, not just this one. "
