@@ -623,21 +623,16 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		for (int i=0; i<selectedRefs.size(); ++i)
 		{
-			int type = getORef(i).getObjectType();
+			int type = selectedRefs.get(i).getObjectType();
 			if (objectType == type)
-				return  getORef(i).getObjectId();
+				return  selectedRefs.get(i).getObjectId();
 		}
 		return BaseId.INVALID;
 	}
 	
 	private ORef getFirstSelectedRef()
 	{
-		return getORef(0);
-	}
-	
-	private ORef getORef(int index)
-	{
-		return selectedRefs.get(index);
+		return selectedRefs.get(0);
 	}
 	
 	public void saveModifiedFields()
@@ -728,7 +723,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 	public BaseId getObjectId()
 	{
-		return getORef(selectedRefs.size()-1).getObjectId();
+		return selectedRefs.get((selectedRefs.size()-1)).getObjectId();
 	}
 	
 	public ORefList getSelectedRefs()
