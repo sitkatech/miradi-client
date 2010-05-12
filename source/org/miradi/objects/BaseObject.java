@@ -763,7 +763,7 @@ abstract public class BaseObject
 		return null;
 	}
 	
-	public Vector<CommandSetObjectData> createCommandsToClearAsList()
+	public Vector<CommandSetObjectData> createCommandsToClear()
 	{
 		Vector commands = new Vector();
 		Set<String> tags = getTags();
@@ -784,7 +784,7 @@ abstract public class BaseObject
 	public Vector<Command> createCommandsToDeleteChildrenAndObject() throws Exception
 	{
 		Vector<Command> commandsToDeleteChildrenAndObject = new Vector<Command>();
-		commandsToDeleteChildrenAndObject.addAll(createCommandsToClearAsList());
+		commandsToDeleteChildrenAndObject.addAll(createCommandsToClear());
 		commandsToDeleteChildrenAndObject.addAll(createCommandsToDeleteChildren());
 		commandsToDeleteChildrenAndObject.addAll(createCommandsToDereferenceObject());
 		commandsToDeleteChildrenAndObject.add(new CommandDeleteObject(this));
@@ -830,7 +830,7 @@ abstract public class BaseObject
 		for (int index = 0; index < refs.size(); ++index)
 		{
 			BaseObject objectToDelete = BaseObject.find(getProject(), refs.get(index));
-			deleteCommands.addAll(objectToDelete.createCommandsToClearAsList());
+			deleteCommands.addAll(objectToDelete.createCommandsToClear());
 			deleteCommands.add(new CommandDeleteObject(objectToDelete));
 		}
 		

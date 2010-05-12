@@ -77,7 +77,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 			
 			FactorDeleteHelper factorDeleteHelper = FactorDeleteHelper.createFactorDeleteHelper(getDiagramPanel().getCurrentDiagramComponent());
 			factorDeleteHelper.deleteAnnotations(selectedFactorToPasteContentInto);
-			Vector<Command> commandsToClear = new Vector(selectedFactorToPasteContentInto.createCommandsToClearAsList());
+			Vector<Command> commandsToClear = new Vector(selectedFactorToPasteContentInto.createCommandsToClear());
 			getProject().executeCommandsWithoutTransaction(commandsToClear);
 			
 			DiagramFactor newlyPastedDiagramFactor = getNewlyPastedFactor(paster);
