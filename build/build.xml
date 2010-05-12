@@ -573,7 +573,7 @@
 <!-- ================================================================== -->
 <!-- UKRAINIAN                   -->
 <!-- ================================================================== -->
-<target name="create-missing-po" unless="${po.exists} description="Create empty po file for ${po.locale}">
+<target name="create-missing-po" unless="${po.exists}" description="Create empty po file for ${po.locale}">
 	<echo message="Creating po file: ${po.locale} ${po.file}"/>
 <!--	<exec executable="msginit" failonerror="true">
 		<arg value="--input=${miradi.pot}"/>
