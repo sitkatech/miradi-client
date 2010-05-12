@@ -713,7 +713,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		selectedRefs = (ORef[])orefList.toArray(new ORef[0]);
 	}
 
-	boolean wasOurObjectJustDeleted(CommandExecutedEvent event)
+	private boolean wasOurObjectJustDeleted(CommandExecutedEvent event)
 	{
 		if(!event.isDeleteObjectCommand())
 			return false;
