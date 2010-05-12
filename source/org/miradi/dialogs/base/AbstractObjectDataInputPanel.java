@@ -189,8 +189,8 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		{
 			subPanel.setObjectRefs(orefsToUse);
 		}
-		selectedRefs = orefsToUse;
-		picker.setObjectRefs(selectedRefs);
+		selectedRefs = new ORefList(orefsToUse);
+		picker.setObjectRefs(selectedRefs.toArray());
 	}
 	
 	public void selectSectionForTag(String tag)
@@ -621,7 +621,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public BaseId getObjectIdForType(int objectType)
 	{
-		for (int i=0; i<selectedRefs.length; ++i)
+		for (int i=0; i<selectedRefs.size(); ++i)
 		{
 			int type = getORef(i).getObjectType();
 			if (objectType == type)
@@ -632,7 +632,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ORef getORef(int index)
 	{
-		return selectedRefs[index];
+		return selectedRefs.get(index);
 	}
 	
 	
@@ -704,7 +704,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		ORefList orefList = new ORefList(selectedRefs);
 		orefList.remove(deletedObjectRef);
-		selectedRefs = orefList.toArray();
+		selectedRefs = orefList;
 	}
 
 	private boolean wasOurObjectJustDeleted(CommandExecutedEvent event)
@@ -726,7 +726,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 	public BaseId getObjectId()
 	{
-		return getORef(selectedRefs.length-1).getObjectId();
+		return getORef(selectedRefs.size()-1).getObjectId();
 	}
 	
 	public ORefList getSelectedRefs()
@@ -749,8 +749,8 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		public BaseObject[] getSelectedObjects()
 		{
 			Vector<BaseObject> objects = new Vector<BaseObject>();
-			for(int i = 0; i < selectedRefs.length; ++i)
-				objects.add(getProject().findObject(selectedRefs[i]));
+			for(int i = 0; i < selectedRefs.size(); ++i)
+				objects.add(getProject().findObject(selectedRefs.get(i)));
 			
 			return objects.toArray(new BaseObject[0]);
 		}
@@ -903,7 +903,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	private Project project;
 	private Picker picker;
-	private ORef[] selectedRefs;
+	private ORefList selectedRefs;
 	private Vector<ObjectDataInputField> fields;
 	private Vector<AbstractObjectDataInputPanel> subPanels;
 }
