@@ -721,11 +721,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return null;
 	}
 
-	public BaseId getObjectId()
-	{
-		return selectedRefs.get((selectedRefs.size()-1)).getObjectId();
-	}
-	
 	public ORefList getSelectedRefs()
 	{
 		return new ORefList(selectedRefs);
