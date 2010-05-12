@@ -703,11 +703,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public void deleteObjectFromList(BaseId baseId)
 	{
 		ORefList orefList = new ORefList(selectedRefs);
-		for (int i=0; i<selectedRefs.length; ++i)
+		for (int index=0; index<selectedRefs.length; ++index)
 		{
-			BaseId objectId = getORef(i).getObjectId();
+			BaseId objectId = getORef(index).getObjectId();
 			if (objectId.equals(baseId))
-				orefList.remove(i);
+				orefList.remove(index);
 		}
 		selectedRefs = orefList.toArray();
 	}
