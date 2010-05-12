@@ -154,8 +154,8 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		CommandSetObjectData removeFromDiagram = CommandSetObjectData.createRemoveIdCommand(getDiagramModel().getDiagramObject(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, newlyPastedDiagramFactor.getId());
 		getProject().executeCommand(removeFromDiagram);
 		
-		getProject().executeCommandsWithoutTransaction(newlyPastedDiagramFactor.createCommandsToDelete());
-		getProject().executeCommandsWithoutTransaction(factorToDelete.createCommandsToDelete());
+		getProject().executeCommandsWithoutTransaction(newlyPastedDiagramFactor.createCommandsToDeleteChildrenAndObject());
+		getProject().executeCommandsWithoutTransaction(factorToDelete.createCommandsToDeleteChildrenAndObject());
 	}
 
 	private DiagramFactor getNewlyPastedFactor(DiagramCopyPaster paster)

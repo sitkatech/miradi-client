@@ -781,7 +781,7 @@ abstract public class BaseObject
 		return commands;
 	}
 	
-	public Vector<Command> createCommandsToDelete() throws Exception
+	public Vector<Command> createCommandsToDeleteChildrenAndObject() throws Exception
 	{
 		Vector<Command> commandsToDeleteChildrenAndObject = new Vector<Command>();
 		commandsToDeleteChildrenAndObject.addAll(createCommandsToClearAsList());

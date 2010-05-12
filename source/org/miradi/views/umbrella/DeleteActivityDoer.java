@@ -112,7 +112,7 @@ public class DeleteActivityDoer extends ObjectsDoer
 		if (! selectedTask.isOrphandTask())
 			return;
 		
-		Vector commandsToDeletTask = selectedTask.createCommandsToDelete();
+		Vector commandsToDeletTask = selectedTask.createCommandsToDeleteChildrenAndObject();
 		project.executeCommandsWithoutTransaction(commandsToDeletTask);
 	}
 	
@@ -184,7 +184,7 @@ public class DeleteActivityDoer extends ObjectsDoer
 				if (strategyRefs.contains(strategyRef))
 				{
 					commands.add(CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, activityDiagramFactorRef.getObjectId()));
-					commands.addAll(activityDiagramFactor.createCommandsToDelete());
+					commands.addAll(activityDiagramFactor.createCommandsToDeleteChildrenAndObject());
 				}
 			}
 		}
