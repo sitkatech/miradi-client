@@ -632,7 +632,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	private ORef getFirstSelectedRef()
 	{
-		return selectedRefs.get(0);
+		return selectedRefs.getFirstElement();
 	}
 	
 	public void saveModifiedFields()
