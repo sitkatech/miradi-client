@@ -273,6 +273,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		addFieldToList(field);
 		addLabel(field.getObjectType(), field.getTag());
 		addFieldComponent(field.getComponent());
+
 		return field;
 	}
 	
@@ -354,7 +355,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return objectCheckBoxField;
 	}
 	
-	
 	public ObjectDataInputField createStringField(String tag)
 	{
 		return new ObjectStringInputField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, 50);
@@ -384,7 +384,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		return createMediumStringField(getFirstSelectedRef().getObjectType(), tag);
 	}
-	
 	
 	public ObjectDataInputField createStringField(String tag, int column)
 	{
@@ -462,7 +461,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		return new ObjectScrollingMultilineInputField(getMainWindow(), objectType, getObjectIdForType(objectType), tag, columns);
 	}
-	
 	
 	public ObjectDataInputField createExpandableField(String tag)
 	{
@@ -551,7 +549,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		return new ObjectChoiceField(project, objectType, getObjectIdForType(objectType), tagToUse, question);
 	}
-	
 	
 	public ObjectDataInputField createClassificationChoiceField(String tagToUse, ChoiceQuestion question)
 	{
@@ -646,7 +643,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		{
 			subPanel.saveModifiedFields();
 		}
-
 	}
 	
 	public void updateFieldsFromProject()
@@ -661,7 +657,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		{
 			subPanel.updateFieldsFromProject();
 		}
-
 	}
 
 	public Vector<ObjectDataInputField> getFields()
@@ -680,7 +675,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		{
 			subPanel.setFieldObjectIds();
 		}
-
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
