@@ -527,7 +527,7 @@
 <target name="ensure-po-exists" description="Ensure po file exists for ${po.locale}">
 	<available file="${po.file}" property="po.exists"/>
 	<echo message="${po.exists} for ${po.file}" />
-	<antcall target="create-missing-po"">
+	<antcall target="create-missing-po">
 		<param name="po.file" value="${po.file}" />
 		<param name="po.locale" value="${po.locale}" />
 		<param name="po.exists" value="${po.exists}" />
