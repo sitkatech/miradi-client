@@ -23,7 +23,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Vector;
 
@@ -703,14 +702,14 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public void deleteObjectFromList(BaseId baseId)
 	{
-		Vector orefList = new Vector(Arrays.asList(selectedRefs));
+		ORefList orefList = new ORefList(selectedRefs);
 		for (int i=0; i<selectedRefs.length; ++i)
 		{
 			BaseId objectId = getORef(i).getObjectId();
 			if (objectId.equals(baseId))
 				orefList.remove(i);
 		}
-		selectedRefs = (ORef[])orefList.toArray(new ORef[0]);
+		selectedRefs = orefList.toArray();
 	}
 
 	private boolean wasOurObjectJustDeleted(CommandExecutedEvent event)
