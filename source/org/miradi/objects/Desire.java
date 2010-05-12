@@ -58,7 +58,7 @@ abstract public class Desire extends BaseObject
 	public Vector<Command> createCommandsToDeleteChildren() throws Exception
 	{
 		Vector<Command> commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
-		commandsToDeleteChildren.addAll(creatCommandsToDeleteRefs(TAG_PROGRESS_PERCENT_REFS));
+		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_PROGRESS_PERCENT_REFS));
 		
 		return commandsToDeleteChildren;
 	}
