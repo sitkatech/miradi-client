@@ -630,7 +630,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return BaseId.INVALID;
 	}
 	
-	public ORef getORef(int index)
+	private ORef getORef(int index)
 	{
 		return selectedRefs.get(index);
 	}
