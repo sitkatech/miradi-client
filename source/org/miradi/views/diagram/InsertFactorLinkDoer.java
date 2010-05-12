@@ -40,6 +40,7 @@ import org.miradi.views.ViewDoer;
 
 public class InsertFactorLinkDoer extends ViewDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (! getProject().isOpen())
@@ -51,6 +52,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 		return (getDiagramView().getDiagramModel().getFactorCount() >= 2);
 	}
 
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		DiagramView diagramView = getDiagramView();
