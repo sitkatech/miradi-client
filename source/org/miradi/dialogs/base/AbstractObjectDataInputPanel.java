@@ -689,7 +689,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		if(wasOurObjectJustDeleted(event))
 		{
 			CommandDeleteObject cmd = (CommandDeleteObject)event.getCommand();
-			deleteObjectFromList(cmd.getObjectId());
+			deleteObjectFromList(cmd.getObjectRef());
 			setFieldObjectIds();
 			return;
 		}
@@ -700,15 +700,10 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		}
 	}
 	
-	public void deleteObjectFromList(BaseId baseId)
+	public void deleteObjectFromList(ORef deletedObjectRef)
 	{
 		ORefList orefList = new ORefList(selectedRefs);
-		for (int index=0; index<selectedRefs.length; ++index)
-		{
-			BaseId objectId = getORef(index).getObjectId();
-			if (objectId.equals(baseId))
-				orefList.remove(index);
-		}
+		orefList.remove(deletedObjectRef);
 		selectedRefs = orefList.toArray();
 	}
 
