@@ -503,6 +503,34 @@
 </target>
 
 <!-- ================================================================== -->
+<!-- CREATE MISSING PO                                            -->
+<!-- ================================================================== -->
+<target name="create-missing-po" unless="${po.exists}" description="Create empty po file for ${po.locale}">
+	<echo message="Creating po file: ${po.locale} ${po.file}"/>
+	<exec executable="msginit" failonerror="true">
+		<arg value="--no-translator"/>
+		<arg value="--input=${miradi.pot}"/>
+		<arg value="--output-file=${po.file}"/>
+		<arg value="--locale=${po.locale}"/>
+	</exec>
+	<echo message="Updating PO to UTF-8"/>
+	<exec executable="sed" failonerror="true">
+		<arg value="--in-place" />
+		<arg value='s/^"Content-Type:.*$/"Content-Type: text\/plain; charset=UTF-8\\n"/'/>
+		<arg value="${po.file}" />
+	</exec>
+</target>
+
+<!-- ================================================================== -->
+<!-- ENSURE PO EXISTS                                            -->
+<!-- ================================================================== -->
+<target name="ensure-po-exists" description="Ensure po file exists for ${po.locale}">
+	<available file="${po.file}" property="po.exists"/>
+	<antcall target="create-missing-po">
+	</antcall>
+</target>
+
+<!-- ================================================================== -->
 <!-- S P A N I S H                                            -->
 <!-- ================================================================== -->
 <target name="spanish" depends="pot" description="Update Spanish Content">
@@ -573,26 +601,6 @@
 <!-- ================================================================== -->
 <!-- UKRAINIAN                   -->
 <!-- ================================================================== -->
-<target name="create-missing-po" unless="${po.exists}" description="Create empty po file for ${po.locale}">
-	<echo message="Creating po file: ${po.locale} ${po.file}"/>
-	<exec executable="msginit" failonerror="true">
-		<arg value="--no-translator"/>
-		<arg value="--input=${miradi.pot}"/>
-		<arg value="--output-file=${po.file}"/>
-		<arg value="--locale=${po.locale}"/>
-	</exec>
-	<echo message="Updating PO to UTF-8"/>
-	<exec executable="sed" failonerror="true">
-		<arg value="--in-place" />
-		<arg value='s/^"Content-Type:.*$/"Content-Type: text\/plain; charset=UTF-8\\n"/'/>
-		<arg value="${po.file}" />
-	</exec>
-</target>
-<target name="ensure-po-exists" description="Ensure po file exists for ${po.locale}">
-	<available file="${po.file}" property="po.exists"/>
-	<antcall target="create-missing-po">
-	</antcall>
-</target>
 <target name="ukrainian" depends="pot" description="Update Ukrainian Content">
 	<antcall target="ensure-po-exists">
 		<param name="po.locale" value="UK" />
