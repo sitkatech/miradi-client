@@ -719,10 +719,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 			return false;
 		
 		CommandDeleteObject cmd = (CommandDeleteObject)event.getCommand();
-		if(cmd.getObjectRef().equals(getRefForType(cmd.getObjectType())))
-			return true;
-		
-		return false;
+		return cmd.getObjectRef().equals(getRefForType(cmd.getObjectType()));
 	}
 
 	@Override
