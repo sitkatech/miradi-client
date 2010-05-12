@@ -694,10 +694,13 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 			setFieldObjectIds();
 			return;
 		}
-		updateFieldsFromProject();
+		
+		if (!getProject().isInTransaction())
+		{
+			updateFieldsFromProject();
+		}
 	}
 	
-
 	public void deleteObjectFromList(BaseId baseId)
 	{
 		Vector orefList = new Vector(Arrays.asList(selectedRefs));
