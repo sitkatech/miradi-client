@@ -584,7 +584,7 @@
 	<echo message="Updating PO to UTF-8"/>
 	<exec executable="sed" failonerror="true">
 		<arg value="--in-place" />
-		<arg value='s/^"Content-Type:.*$/^"Content-Type: text\/plain; charset=UTF-8"$/'/>
+		<arg value='s/^"Content-Type:.*$/"Content-Type: text\/plain; charset=UTF-8\\n"/'/>
 		<arg value="${po.file}" />
 	</exec>
 </target>
