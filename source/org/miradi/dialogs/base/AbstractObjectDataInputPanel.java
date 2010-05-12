@@ -344,7 +344,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createCheckBoxField(String tag, String on, String off)
 	{
-		return createCheckBoxField(getORef(0).getObjectType(), tag, on, off);
+		return createCheckBoxField(getFirstSelectedRef().getObjectType(), tag, on, off);
 	}
 	
 	public ObjectDataInputField createCheckBoxField(int objectType, String tag, String on, String off)
@@ -357,7 +357,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createStringField(String tag)
 	{
-		return new ObjectStringInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, 50);
+		return new ObjectStringInputField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, 50);
 	}
 	
 	public ObjectDataInputField createStringField(int objectType, String tag)
@@ -382,13 +382,13 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createMediumStringField(String tag)
 	{
-		return createMediumStringField(getORef(0).getObjectType(), tag);
+		return createMediumStringField(getFirstSelectedRef().getObjectType(), tag);
 	}
 	
 	
 	public ObjectDataInputField createStringField(String tag, int column)
 	{
-		return new ObjectStringInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, column);
+		return new ObjectStringInputField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, column);
 	}
 	
 	public ObjectDataInputField createStringField(int objectType, String tag, int column)
@@ -403,7 +403,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createDateChooserField(String tag)
 	{
-		return new ObjectDateChooserInputField(project,  getORef(0).getObjectType(), getObjectIdForType( getORef(0).getObjectType()), tag);
+		return new ObjectDateChooserInputField(project,  getFirstSelectedRef().getObjectType(), getObjectIdForType( getFirstSelectedRef().getObjectType()), tag);
 	}
 	
 	public ObjectDataInputField createDateChooserField(int objectType, String tag)
@@ -413,7 +413,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createNumericField(String tag, int column)
 	{
-		return new ObjectFloatingPointRestrictedInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, column);
+		return new ObjectFloatingPointRestrictedInputField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, column);
 	}
 	
 	public ObjectDataInputField createNumericField(int objectType, String tag, int column)
@@ -423,19 +423,19 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 	public ObjectDataInputField createCurrencyField(String tag)
 	{
-		return new ObjectCurrencyInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, 10);
+		return new ObjectCurrencyInputField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, 10);
 	}
 
 	public ObjectDataInputField createReadonlyCurrencyField(String tag)
 	{
-		ObjectCurrencyInputField field = new ObjectCurrencyInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, 10);
+		ObjectCurrencyInputField field = new ObjectCurrencyInputField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, 10);
 		field.setEditable(false);
 		return field;
 	}
 
 	public ObjectDataInputField createNumericField(String tag)
 	{
-		return new ObjectFloatingPointRestrictedInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag);
+		return new ObjectFloatingPointRestrictedInputField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag);
 	}
 	
 	public ObjectDataInputField createNumericField(int objectType, String tag)
@@ -445,12 +445,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 	public ObjectDataInputField createPercentageField(String tag)
 	{
-		return new ObjectPercentageInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag);
+		return new ObjectPercentageInputField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag);
 	}
 	
 	public ObjectDataInputField createMultilineField(String tag)
 	{
-		return createMultilineField(getORef(0).getObjectType(), tag);
+		return createMultilineField(getFirstSelectedRef().getObjectType(), tag);
 	}
 	
 	public ObjectDataInputField createMultilineField(int objectType, String tag)
@@ -466,7 +466,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createExpandableField(String tag)
 	{
-		return createExpandableField(getORef(0).getObjectType(), tag);
+		return createExpandableField(getFirstSelectedRef().getObjectType(), tag);
 	}
 	
 	public ObjectDataInputField createExpandableField(int objectType, String tag)
@@ -481,14 +481,14 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 	public ObjectOverridenListField createOverridenObjectListField(String tag, ChoiceQuestion question)
 	{
-		return new ObjectOverridenListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, question);
+		return new ObjectOverridenListField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, question);
 	}
 	
 	public ObjectDataInputField createIndicatorRelevancyOverrideListField(ChoiceQuestion question)
 	{
-		return new IndicatorRelevancyOverrideListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question);
+		return new IndicatorRelevancyOverrideListField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), question);
 	}
-	
+
 	public ObjectDataInputField createSingleColumnCodeListField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
 		return createEditableCodeListField(objectType, tagToUse, question, 1);
@@ -501,7 +501,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createEditableCodeListField(String tagToUse, ChoiceQuestion question, int columnCount)
 	{
-		return new EditableCodeListField(project, getORef(0), tagToUse, question, columnCount);
+		return new EditableCodeListField(project, getFirstSelectedRef(), tagToUse, question, columnCount);
 	}
 	
 	public ObjectDataInputField createReadOnlyCodeListField(int objctType, String tagToUse, ChoiceQuestion question)
@@ -511,7 +511,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectCodeEditorField createMultiCodeField(String tagToUse, ChoiceQuestion question, int columnCount)
 	{
-		return new ObjectCodeEditorField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tagToUse, question, columnCount);
+		return new ObjectCodeEditorField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tagToUse, question, columnCount);
 	}
 	
 	public ObjectDataInputField createMultiCodeEditorField(int objectType, String tagToUse, ChoiceQuestion question, int columnCount)
@@ -539,7 +539,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createReadonlyTextField(String tag)
 	{
-		return new ObjectMultilineDisplayField(getMainWindow(), getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag);
+		return new ObjectMultilineDisplayField(getMainWindow(), getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag);
 	}
 	
 	public ObjectDataInputField createReadonlyTextField(int objectType, String tag)
@@ -555,12 +555,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createClassificationChoiceField(String tagToUse, ChoiceQuestion question)
 	{
-		return new ObjectClassificationChoiceField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tagToUse, question);
+		return new ObjectClassificationChoiceField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tagToUse, question);
 	}
 	
 	public ObjectDataInputField createRatingChoiceField(String tagToUse, ChoiceQuestion question)
 	{
-		return new ObjectRaitingChoiceField(project,  getORef(0).getObjectType(), getObjectIdForType( getORef(0).getObjectType()), tagToUse, question);
+		return new ObjectRaitingChoiceField(project,  getFirstSelectedRef().getObjectType(), getObjectIdForType( getFirstSelectedRef().getObjectType()), tagToUse, question);
 	}
 	
 	public ObjectDataInputField createRatingChoiceField(int objectType, String tagToUse, ChoiceQuestion question)
@@ -575,7 +575,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createReadOnlyChoiceField(String tagToUse, ChoiceQuestion question)
 	{
-		return new ObjectReadonlyChoiceField(project,  getORef(0).getObjectType(), getObjectIdForType( getORef(0).getObjectType()), tagToUse, question);
+		return new ObjectReadonlyChoiceField(project,  getFirstSelectedRef().getObjectType(), getObjectIdForType( getFirstSelectedRef().getObjectType()), tagToUse, question);
 	}
 	
 	public ObjectDataInputField createReadOnlyChoiceField(int objectType, String tagToUse, ChoiceQuestion question)
@@ -630,11 +630,15 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return BaseId.INVALID;
 	}
 	
+	private ORef getFirstSelectedRef()
+	{
+		return getORef(0);
+	}
+	
 	private ORef getORef(int index)
 	{
 		return selectedRefs.get(index);
 	}
-	
 	
 	public void saveModifiedFields()
 	{
