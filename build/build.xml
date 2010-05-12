@@ -459,7 +459,7 @@
 <!-- ================================================================== -->
 <!-- P O T                                            -->
 <!-- ================================================================== -->
-<target name="pot" description="Create Translatable POT file">
+<target name="pot" depends="init" description="Create Translatable POT file">
 	<property name="java_files" value="${dist.dir}/java_files.txt"/>
 	
 	<!-- Required for all languages -->
