@@ -526,30 +526,44 @@
 <!-- ================================================================== -->
 <target name="ensure-po-exists" description="Ensure po file exists for ${po.locale}">
 	<available file="${po.file}" property="po.exists"/>
+	<echo message="${po.exists} for ${po.file}" />
 	<antcall target="create-missing-po">
+		<param name="po.file" value="${po.file}" />
+		<param name="po.locale" value="${po.locale}" />
+		<param name="po.exists" value="${po.exists}" />
 	</antcall>
+</target>
+
+<!-- ================================================================== -->
+<!-- UPDATE PO CONTENTS                                            -->
+<!-- ================================================================== -->
+<target name="update-po" depends="pot" description="Update ${po.file}">
+	<echo message="updating ${po.file}"/>
+	<exec executable="msgmerge" failonerror="true">
+		<arg value="--update"/>
+		<arg value="--backup=none"/>
+		<arg value="--no-fuzzy-matching"/>
+		<arg value="${po.file}"/>
+		<arg value="${miradi.pot}"/>
+	</exec>
+	<echo message="building ${language.code} content jar"/>
+	<zip destfile="${dist.dir}/MiradiContent-${version.langpack}-${language.code}.jar">
+        <fileset dir="${eam.src.root}" includes="resources/**/*.txt" />
+        <fileset dir="${eam.src.root}" includes="**/*.jpg"/>
+        <fileset dir="${eam.src.root}" includes="**/*.png"/>
+        <fileset dir="${eam.src.root}" includes="**/*.gif"/>
+		<fileset dir="${translations.dir}" includes="miradi_${language_code}.po"/>
+	</zip>
 </target>
 
 <!-- ================================================================== -->
 <!-- S P A N I S H                                            -->
 <!-- ================================================================== -->
 <target name="spanish" depends="pot" description="Update Spanish Content">
-	<echo message="updating Spanish po file"/>
-	<exec executable="msgmerge" failonerror="true">
-		<arg value="--update"/>
-		<arg value="--backup=none"/>
-		<arg value="--no-fuzzy-matching"/>
-		<arg value="${miradi.po.es}"/>
-		<arg value="${miradi.pot}"/>
-	</exec>
-	<echo message="building Spanish content jar"/>
-	<zip destfile="${dist.dir}/MiradiContent-${version.langpack}-es.jar">
-        <fileset dir="${eam.src.root}" includes="resources/**/*.txt" />
-        <fileset dir="${eam.src.root}" includes="**/*.jpg"/>
-        <fileset dir="${eam.src.root}" includes="**/*.png"/>
-        <fileset dir="${eam.src.root}" includes="**/*.gif"/>
-		<fileset dir="${translations.dir}" includes="miradi_es.po"/>
-	</zip>
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.es}"/>
+		<param name="language.code" value="es"/>
+	</antcall>
 </target>
 	
 <!-- ================================================================== -->
