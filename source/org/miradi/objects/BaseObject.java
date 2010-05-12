@@ -818,8 +818,9 @@ abstract public class BaseObject
 	protected Vector<Command> createCommandsToDeleteRefs(String tag) throws Exception
 	{
 		ORefList refsToDelete = getRefList(tag);
-		Vector<Command> commandsToDeleteRefList = createDeleteCommands(refsToDelete);
+		Vector<Command> commandsToDeleteRefList = new Vector<Command>();
 		commandsToDeleteRefList.add(new CommandSetObjectData(this, tag, ""));
+		commandsToDeleteRefList.addAll(createDeleteCommands(refsToDelete));
 		
 		return commandsToDeleteRefList;
 	}
