@@ -53,7 +53,7 @@ public class DiagramObjectDeleteHelper
 
 	private void deleteDiagramObject(DiagramObject diagramObject) throws Exception
 	{
-		Vector<Command> commandsToDeleteChildrenAndDiagramObject = diagramObject.createCommandsToDelete();
+		Vector<Command> commandsToDeleteChildrenAndDiagramObject = diagramObject.createCommandsToDeleteChildrenAndObject();
 		getProject().executeCommandsWithoutTransaction(commandsToDeleteChildrenAndDiagramObject);
 	}
 

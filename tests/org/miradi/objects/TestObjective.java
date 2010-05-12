@@ -86,7 +86,7 @@ public class TestObjective extends ObjectTestCase
 		
 		projectToUse.fillObjectUsingCommand(parent, annotationTag, singleAnnotationRefList);
 		
-		Vector<Command> commandsToDelete = parent.createCommandsToDelete();
+		Vector<Command> commandsToDelete = parent.createCommandsToDeleteChildrenAndObject();
 		projectToUse.executeCommandsAsTransaction(commandsToDelete);
 		
 		ORefList shouldBeEmptyRefList = projectToUse.getPool(annotationType).getRefList();

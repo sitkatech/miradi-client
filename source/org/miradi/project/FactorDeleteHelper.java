@@ -101,7 +101,7 @@ public class FactorDeleteHelper
 		//to clearSelection.
 		clearSelection();
 		
-		return diagramFactor.createCommandsToDelete();
+		return diagramFactor.createCommandsToDeleteChildrenAndObject();
 	}
 
 	public void removeNodeFromDiagram(DiagramObject diagramObjectToUse, DiagramFactorId idToDelete) throws CommandFailedException, ParseException
@@ -221,7 +221,7 @@ public class FactorDeleteHelper
 
 	private void deleteUnderlyingNode(Factor factorToDelete) throws Exception
 	{
-		getProject().executeCommandsWithoutTransaction(factorToDelete.createCommandsToDelete());
+		getProject().executeCommandsWithoutTransaction(factorToDelete.createCommandsToDeleteChildrenAndObject());
 	}
 	
 	public void deleteAnnotations(Factor factorToDelete) throws Exception

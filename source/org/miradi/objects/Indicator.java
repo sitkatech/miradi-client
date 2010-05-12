@@ -134,7 +134,7 @@ public class Indicator extends BaseObject
 			BaseObject annotationToDelete = BaseObject.find(getProject(), annotationRefs.get(index));
 			ORefList referrers = annotationToDelete.findObjectsThatReferToUs(getObjectType());
 			if (referrers.size() == 1)
-				commandsToDeleteAnnotation.addAll(annotationToDelete.createCommandsToDelete());
+				commandsToDeleteAnnotation.addAll(annotationToDelete.createCommandsToDeleteChildrenAndObject());
 		}
 		
 		return commandsToDeleteAnnotation;
