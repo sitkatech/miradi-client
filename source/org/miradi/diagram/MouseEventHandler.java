@@ -36,7 +36,6 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
@@ -235,7 +234,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 				doer.setLocation(at);
 				doer.doIt();
 			} 
-			catch (CommandFailedException e) 
+			catch (Exception e) 
 			{
 				EAM.logException(e);
 			}

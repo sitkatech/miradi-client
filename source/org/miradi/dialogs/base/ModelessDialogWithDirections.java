@@ -94,7 +94,7 @@ public class ModelessDialogWithDirections extends ModelessDialogWithClose
 			{
 				doAction();
 			}
-			catch(CommandFailedException e1)
+			catch(Exception e1)
 			{
 				EAM.logException(e1);
 			}
