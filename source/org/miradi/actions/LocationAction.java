@@ -24,7 +24,6 @@ import java.util.EventObject;
 
 import javax.swing.Icon;
 
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.LocationHolder;
 import org.miradi.views.Doer;
@@ -50,7 +49,7 @@ public abstract class LocationAction extends MainWindowAction
 		createAt = location;
 	}
 
-	public void doAction(EventObject event) throws CommandFailedException
+	public void doAction(EventObject event) throws Exception
 	{
 		LocationHolder invoker = (LocationHolder)event.getSource();
 		if(!invoker.hasLocation())

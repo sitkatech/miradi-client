@@ -59,7 +59,6 @@ import org.miradi.actions.ActionCut;
 import org.miradi.actions.ActionDelete;
 import org.miradi.actions.ActionPaste;
 import org.miradi.actions.Actions;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.EAMResourceImageIcon;
 import org.miradi.main.MainWindow;
@@ -263,7 +262,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 		}
 		
 		@Override
-		public void doAction(EventObject event) throws CommandFailedException
+		public void doAction(EventObject event) throws Exception
 		{
 			copy();
 		}
