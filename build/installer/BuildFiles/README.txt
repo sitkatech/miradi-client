@@ -4,7 +4,7 @@ Copyright 2005-2010, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION 3.1
+VERSION 3.1.1
 
 License and Copying
 
@@ -143,10 +143,30 @@ GNU/Linux:
 ---------------------
 Changes
 
+Miradi 3.1.1 was a minor release with these changes compared to 3.1:
+
+Application-wide:
+- Clicking on a date editor button when there were unsaved changes in 
+  another field would give an error, even though the operation worked
+
+Diagram:
+- Creating the first Results Chain from the Results Chain tab would 
+  display an error, even though the operation worked
+  
+Strategic Plan:
+- On the Custom tab, the Activities column for Goals and Objectives 
+  was also displaying relevant Strategies, instead of just Activities
+
+Work Plan:
+- The "When" column editor offered the wrong choices for months if 
+  quarter columns were being hidden
+  
+ 
+ 
 When comparing Miradi 3.1 to 3.0, there were hundreds of changes, 
 but these are the most notable:
 
-Application Wide:
+Application-wide:
 - support for native system fonts - will improve the quality of image exports
 - New pop up text editing windows for all multi line text fields -  allows 
   for easier editing of large text entries
