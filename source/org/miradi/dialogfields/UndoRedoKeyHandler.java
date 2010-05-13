@@ -54,7 +54,8 @@ public class UndoRedoKeyHandler extends KeyAdapter
 		}
 		catch(Exception e)
 		{
-			EAM.errorDialog(EAM.text("An unexpected error prevented that operation"));
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
 		}
 	}
 
