@@ -38,6 +38,7 @@ abstract public class AbstractTaskChangeSequenceDoer extends ObjectsDoer
 {
 	protected abstract int getDelta();
 	
+	@Override
 	public boolean isAvailable()
 	{
 		try
@@ -64,6 +65,7 @@ abstract public class AbstractTaskChangeSequenceDoer extends ObjectsDoer
 		}
 	}
 
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if(!isAvailable())
