@@ -85,7 +85,7 @@ public class CreateResultsChainDoer extends ViewDoer
 		ORef newResultsChainRef = creatorHelper.createResultsChain();
 		selectResultsChain(project, diagramView, newResultsChainRef);
 		
-		if (diagramModel.isConceptualModelDiagram() && wereAnyAnnotationsTransferred(project, newResultsChainRef))
+		if (diagramModel != null && diagramModel.isConceptualModelDiagram() && wereAnyAnnotationsTransferred(project, newResultsChainRef))
 			EAM.notifyDialog(EAM.text("Any Indicators or Objectives that were associated to Contributing Factors or Threats \n" +
 									"have been moved to the corresponding Threat Reduction Result or Intermediate Result"));
 	}
