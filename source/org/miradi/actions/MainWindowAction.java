@@ -91,12 +91,11 @@ public abstract class MainWindowAction extends EAMAction
 							"  within " + lastCommand.toString())
 			);
 		}
-		catch (CommandFailedException e)
+		catch (Exception e)
 		{
 			EAM.logException(e);
 			EAM.errorDialog(EAM.text("An internal error prevented this operation"));
 		}
-		
 	}
 
 	private void displayUndoRedoErrorMessage()

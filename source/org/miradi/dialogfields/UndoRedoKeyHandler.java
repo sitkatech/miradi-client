@@ -26,7 +26,6 @@ import org.miradi.actions.ActionRedo;
 import org.miradi.actions.ActionUndo;
 import org.miradi.actions.Actions;
 import org.miradi.actions.EAMAction;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 
 public class UndoRedoKeyHandler extends KeyAdapter
@@ -52,7 +51,7 @@ public class UndoRedoKeyHandler extends KeyAdapter
 				getRedoAction().doAction();
 			}
 		}
-		catch(CommandFailedException e)
+		catch(Exception e)
 		{
 			EAM.errorDialog(EAM.text("An unexpected error prevented that operation"));
 		}
