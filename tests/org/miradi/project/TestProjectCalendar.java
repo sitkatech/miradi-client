@@ -24,8 +24,11 @@ import java.util.GregorianCalendar;
 import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.utils.DateRange;
 
@@ -34,6 +37,50 @@ public class TestProjectCalendar extends TestCaseWithProject
 	public TestProjectCalendar(String name)
 	{
 		super(name);
+	}
+	
+	public void testGetAllProjectQuarterDateUnits() throws Exception
+	{
+		ProjectCalendar pc = getProjectCalendar();
+		ORef metadataRef = getProject().getMetadata().getRef(); 
+		getProject().executeCommand(new CommandSetObjectData(metadataRef, ProjectMetadata.TAG_WORKPLAN_START_DATE, "2010-01-01"));
+		getProject().executeCommand(new CommandSetObjectData(metadataRef, ProjectMetadata.TAG_WORKPLAN_END_DATE, "2010-12-31"));
+		
+		assertTrue("Project not including quarters?", pc.shouldShowQuarterColumns());
+		Vector<DateUnit> quarters = pc.getAllProjectQuarterDateUnits();
+		assertEquals("Not 4 quarters?", 4, quarters.size());
+		assertContains("Missing Q1?", DateUnit.createQuarterDateUnit(2010, 1), quarters);
+		assertContains("Missing Q2?", DateUnit.createQuarterDateUnit(2010, 2), quarters);
+		assertContains("Missing Q3?", DateUnit.createQuarterDateUnit(2010, 3), quarters);
+		assertContains("Missing Q4?", DateUnit.createQuarterDateUnit(2010, 4), quarters);
+		
+		getProject().executeCommand(new CommandSetObjectData(metadataRef, ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, BooleanData.BOOLEAN_TRUE));
+		assertFalse("Project including quarters?", pc.shouldShowQuarterColumns());
+		Vector<DateUnit> quartersWithQuartersHidden = pc.getAllProjectQuarterDateUnits();
+		assertEquals("Project included hidden quarters?", 0, quartersWithQuartersHidden.size());
+	}
+	
+	public void testGetAllProjectMonthDateUnits() throws Exception
+	{
+		ProjectCalendar pc = getProjectCalendar();
+		ORef metadataRef = getProject().getMetadata().getRef(); 
+		getProject().executeCommand(new CommandSetObjectData(metadataRef, ProjectMetadata.TAG_WORKPLAN_START_DATE, "2010-01-01"));
+		getProject().executeCommand(new CommandSetObjectData(metadataRef, ProjectMetadata.TAG_WORKPLAN_END_DATE, "2010-03-31"));
+		assertTrue("Project not including quarters?", pc.shouldShowQuarterColumns());
+
+		Vector<DateUnit> months = pc.getAllProjectMonthDateUnits();
+		assertEquals("Not 3 months?", 3, months.size());
+		assertContains("Missing Jan?", DateUnit.createMonthDateUnit("2010-01-01"), months);
+		assertContains("Missing Feb?", DateUnit.createMonthDateUnit("2010-02-01"), months);
+		assertContains("Missing Mar?", DateUnit.createMonthDateUnit("2010-03-01"), months);
+
+		getProject().executeCommand(new CommandSetObjectData(metadataRef, ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, BooleanData.BOOLEAN_TRUE));
+		assertFalse("Project including quarters?", pc.shouldShowQuarterColumns());
+		Vector<DateUnit> monthsWithoutQuarters = pc.getAllProjectMonthDateUnits();
+		assertEquals("Not 3 months?", 3, monthsWithoutQuarters.size());
+		assertContains("Missing Jan without quarters?", DateUnit.createMonthDateUnit("2010-01-01"), monthsWithoutQuarters);
+		assertContains("Missing Feb without quarters?", DateUnit.createMonthDateUnit("2010-02-01"), monthsWithoutQuarters);
+		assertContains("Missing Mar without quarters?", DateUnit.createMonthDateUnit("2010-03-01"), monthsWithoutQuarters);
 	}
 	
 	public void testGettingDatesThatAreNotSet() throws Exception
