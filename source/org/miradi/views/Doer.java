@@ -22,7 +22,6 @@ package org.miradi.views;
 import java.awt.Point;
 import java.util.EventObject;
 
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -31,7 +30,7 @@ import org.miradi.views.umbrella.UmbrellaView;
 abstract public class Doer
 {
 	abstract public boolean isAvailable();
-	abstract public void doIt() throws CommandFailedException;
+	abstract public void doIt() throws Exception;
 	
 	public void doIt(EventObject event) throws Exception
 	{

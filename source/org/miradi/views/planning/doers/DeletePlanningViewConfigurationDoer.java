@@ -25,7 +25,6 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -42,7 +41,7 @@ public class DeletePlanningViewConfigurationDoer extends AbstractPlanningViewCon
 		return super.isAvailable();
 	}
 
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (! isAvailable())
 			return;

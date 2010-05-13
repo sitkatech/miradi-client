@@ -50,7 +50,7 @@ public class JumpDoer extends MainWindowDoer
 	}
 
 	@Override
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if(!isAvailable())
 			return;

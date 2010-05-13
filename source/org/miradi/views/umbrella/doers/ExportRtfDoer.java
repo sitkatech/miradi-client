@@ -21,7 +21,6 @@ package org.miradi.views.umbrella.doers;
 
 import java.io.File;
 
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.RtfFileChooser;
@@ -39,7 +38,7 @@ public class ExportRtfDoer extends ViewDoer
 	}
 
 	@Override
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

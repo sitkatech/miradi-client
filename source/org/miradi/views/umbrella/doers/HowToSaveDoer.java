@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.utils.Translation;
@@ -34,7 +33,7 @@ public class HowToSaveDoer extends MainWindowDoer
 	}
 		
 	@Override
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

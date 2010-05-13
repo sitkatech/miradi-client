@@ -25,7 +25,6 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.TaggedObjectSet;
@@ -40,7 +39,7 @@ public class CreateNamedTaggedObjectSetDoer extends ObjectsDoer
 	}
 
 	@Override
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

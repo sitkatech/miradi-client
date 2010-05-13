@@ -20,12 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram.doers;
 
 import org.miradi.dialogs.stress.StressPoolTablePanel;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 
 public class CloneStressDoer extends CreateStressDoer
 {
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

@@ -23,7 +23,6 @@ import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.dialogs.diagram.ConceptualModelPropertiesPanel;
 import org.miradi.dialogs.diagram.ResultsChainPropertiesPanel;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ResultsChainDiagram;
@@ -39,7 +38,7 @@ public class DiagramPropertiesShowDoer extends ObjectsDoer
 		return true;
 	}
 
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

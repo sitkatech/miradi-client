@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
@@ -28,7 +27,7 @@ import org.miradi.utils.HtmlViewPanel;
 public class ViewLegacyTncStrategyRankingDoer extends AbstractLegacyTncRankingDoer
 {
 	@Override
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

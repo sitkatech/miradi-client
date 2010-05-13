@@ -25,7 +25,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 
 abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
@@ -55,7 +54,7 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 	}
 
 	@Override
-	protected void tryAgain() throws CommandFailedException
+	protected void tryAgain() throws Exception
 	{
 		doIt();
 	}

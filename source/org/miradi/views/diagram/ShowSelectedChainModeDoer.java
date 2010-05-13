@@ -66,7 +66,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 		return true;
 	}
 
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if(!isAvailable())
 			return;

@@ -27,7 +27,6 @@ import org.miradi.actions.ActionCreateNamedTaggedObjectSet;
 import org.miradi.dialogfields.FactorTagListEditor;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Factor;
@@ -46,7 +45,7 @@ abstract public class AbstractManageFactorTagDoer extends ObjectsDoer
 	}
 	
 	@Override
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

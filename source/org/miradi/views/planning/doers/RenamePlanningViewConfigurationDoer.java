@@ -23,14 +23,13 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewCustomLabelPropertiesPanel;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ViewData;
 
 public class RenamePlanningViewConfigurationDoer extends AbstractPlanningViewConfigurationDoer
 {
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (! isAvailable())
 			return;

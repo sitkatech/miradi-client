@@ -22,7 +22,6 @@ package org.miradi.views.planning.doers;
 import java.text.ParseException;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -66,7 +65,7 @@ abstract public class AbstractTaskChangeSequenceDoer extends ObjectsDoer
 	}
 
 	@Override
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if(!isAvailable())
 			return;

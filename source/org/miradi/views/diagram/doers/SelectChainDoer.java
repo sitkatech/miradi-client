@@ -29,7 +29,6 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.dialogs.diagram.DiagramPanel;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
@@ -58,7 +57,7 @@ public class SelectChainDoer extends ViewDoer
 	}
 	
 	@Override
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if(!isAvailable())
 			return;

@@ -39,7 +39,7 @@ public class CopyDoer extends ViewDoer
 		return (selected.length > 0);
 	}
 
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		try
 		{

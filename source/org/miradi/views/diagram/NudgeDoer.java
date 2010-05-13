@@ -58,7 +58,7 @@ public class NudgeDoer extends LocationDoer
 		return diagramPanel.getOnlySelectedFactorCells().length > 0 || diagramPanel.getOnlySelectedLinkCells().size() > 0;
 	}
 
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (! isAvailable())
 			return;

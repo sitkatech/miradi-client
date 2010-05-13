@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.threatmatrix.doers;
 
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.AppPreferences;
 
 public class ShowCellRatingsDoer extends CellRatingsDoer
@@ -32,7 +31,7 @@ public class ShowCellRatingsDoer extends CellRatingsDoer
 		return false;
 	}
 	
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

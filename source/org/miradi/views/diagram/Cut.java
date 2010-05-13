@@ -22,7 +22,6 @@ package org.miradi.views.diagram;
 import org.miradi.actions.ActionCopy;
 import org.miradi.actions.ActionDelete;
 import org.miradi.diagram.cells.EAMGraphCell;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.views.ViewDoer;
 
 public class Cut extends ViewDoer
@@ -39,7 +38,7 @@ public class Cut extends ViewDoer
 		return (selected.length > 0);
 	}
 
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		CopyDoer copyDoer = (CopyDoer)getView().getDoer(ActionCopy.class);
 		DeleteSelectedItemDoer deleteDoer = (DeleteSelectedItemDoer)getView().getDoer(ActionDelete.class);

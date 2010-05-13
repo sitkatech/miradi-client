@@ -53,7 +53,7 @@ public class HelpButtonDoer extends MainWindowDoer
 		}
 	}
 	
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		throw new CommandFailedException("Invalid call; use DoIt(event)");
 	}

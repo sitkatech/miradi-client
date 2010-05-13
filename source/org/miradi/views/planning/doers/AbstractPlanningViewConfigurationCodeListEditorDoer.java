@@ -38,7 +38,7 @@ abstract public class AbstractPlanningViewConfigurationCodeListEditorDoer extend
 	}
 	
 	@Override
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

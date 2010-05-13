@@ -73,7 +73,7 @@ public class CreateViabilityIndicatorDoer extends AbstractKeyEcologicalAttribute
 		return types;
 	}
 
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if(!isAvailable())
 			return;

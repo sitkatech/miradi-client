@@ -33,7 +33,7 @@ public class PreferencesPopupDoer extends ViewDoer
 	}
 
 	@Override
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{		
 		try
 		{

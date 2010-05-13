@@ -29,7 +29,7 @@ public class Close extends MainWindowDoer
 		return getMainWindow().getProject().isOpen();
 	}
 
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		try
 		{
