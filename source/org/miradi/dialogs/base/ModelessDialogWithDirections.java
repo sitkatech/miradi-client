@@ -28,7 +28,6 @@ import org.martus.swing.UiButton;
 import org.miradi.actions.EAMAction;
 import org.miradi.actions.MainWindowAction;
 import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -78,7 +77,7 @@ public class ModelessDialogWithDirections extends ModelessDialogWithClose
 		}
 		
 		@Override
-		public void doAction() throws CommandFailedException
+		public void doAction() throws Exception
 		{
 			EAMAction action = getRealJumpAction();
 			if(action == null)

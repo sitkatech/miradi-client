@@ -109,7 +109,7 @@ public abstract class MainWindowAction extends EAMAction
 	}
 
 	@Override
-	public void doAction() throws CommandFailedException
+	public void doAction() throws Exception
 	{
 		doAction(null);
 	}
