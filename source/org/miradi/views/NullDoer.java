@@ -28,7 +28,7 @@ public class NullDoer extends Doer
 		return false;
 	}
 
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		throw new CommandFailedException("Attempted to doIt in NullDoer!");
 	}

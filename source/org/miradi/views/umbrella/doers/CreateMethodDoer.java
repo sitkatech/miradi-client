@@ -42,7 +42,7 @@ public class CreateMethodDoer extends ObjectsDoer
 		return true;
 	}
 
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if(!isAvailable())
 			return;

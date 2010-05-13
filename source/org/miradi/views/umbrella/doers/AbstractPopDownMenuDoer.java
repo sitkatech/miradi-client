@@ -29,7 +29,6 @@ import javax.swing.JPopupMenu;
 import org.miradi.actions.Actions;
 import org.miradi.actions.EAMAction;
 import org.miradi.actions.MainWindowAction;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.views.Doer;
 import org.miradi.views.ObjectsDoer;
@@ -49,7 +48,7 @@ abstract public class AbstractPopDownMenuDoer extends ObjectsDoer
 	}
 	
 	@Override
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		EAM.logWarning("AbstractMenuDoer called without an event");
 	}

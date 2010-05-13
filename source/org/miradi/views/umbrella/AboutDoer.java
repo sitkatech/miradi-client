@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.VersionConstants;
 import org.miradi.utils.Translation;
@@ -36,7 +35,7 @@ public class AboutDoer extends MainWindowDoer
 		return true;
 	}
 	
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		String text =  buildMainSection();
 		text += loadHtmlFile("AboutExtra.html");

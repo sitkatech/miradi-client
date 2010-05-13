@@ -23,7 +23,7 @@ import org.miradi.views.MainWindowDoer;
 
 public class Exit extends MainWindowDoer
 {
-	public void doIt()
+	public void doIt() throws Exception
 	{
 		getMainWindow().exitNormally();
 	}

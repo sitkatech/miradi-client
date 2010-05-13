@@ -20,12 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram;
 
 import org.miradi.dialogs.objective.ObjectivePoolTablePanel;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 
 public class CloneObjectiveDoer extends CreateObjectiveDoer
 {
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

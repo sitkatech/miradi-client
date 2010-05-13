@@ -24,7 +24,6 @@ import java.util.Vector;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
@@ -47,7 +46,7 @@ public abstract class DeleteListedObjectDoer extends ObjectsDoer
 		return true;
 	}
 
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (! isAvailable())
 			return;

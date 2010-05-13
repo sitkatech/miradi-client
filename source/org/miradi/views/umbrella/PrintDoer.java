@@ -33,7 +33,7 @@ import org.miradi.views.ViewDoer;
 
 abstract public class PrintDoer extends ViewDoer
 {
-	public void doIt() throws CommandFailedException 
+	public void doIt() throws Exception 
 	{
 		try
 		{

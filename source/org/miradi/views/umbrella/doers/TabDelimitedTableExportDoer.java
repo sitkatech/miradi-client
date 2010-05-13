@@ -22,7 +22,6 @@ package org.miradi.views.umbrella.doers;
 import java.io.File;
 
 import org.martus.util.UnicodeWriter;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -47,7 +46,7 @@ public class TabDelimitedTableExportDoer extends ViewDoer
 	}
 
 	@Override
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

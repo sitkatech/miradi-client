@@ -20,12 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram;
 
 import org.miradi.dialogs.goal.GoalPoolTablePanel;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 
 public class CloneGoalDoer extends CreateGoal
 {
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

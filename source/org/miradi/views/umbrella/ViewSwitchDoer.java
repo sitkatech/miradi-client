@@ -35,7 +35,7 @@ abstract public class ViewSwitchDoer extends MainWindowDoer
 		return getProject().isOpen();
 	}
 
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if(!isAvailable())
 			return;

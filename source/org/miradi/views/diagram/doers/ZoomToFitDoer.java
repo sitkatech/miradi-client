@@ -24,7 +24,6 @@ import java.awt.geom.Rectangle2D;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.DiagramObject;
 import org.miradi.views.ViewDoer;
 
@@ -40,7 +39,7 @@ public class ZoomToFitDoer extends ViewDoer
 	}
 
 	@Override
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

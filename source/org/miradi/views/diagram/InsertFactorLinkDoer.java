@@ -53,7 +53,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 	}
 
 	@Override
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		DiagramView diagramView = getDiagramView();
 		DiagramModel model = diagramView.getDiagramModel();

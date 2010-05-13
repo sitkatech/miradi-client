@@ -40,7 +40,7 @@ public class TeamCreateMemberDoer extends ObjectsDoer
 		return getProject().isOpen();
 	}
 
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if(!isAvailable())
 			return;

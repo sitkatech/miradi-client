@@ -23,7 +23,6 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -48,7 +47,7 @@ public class CreateConceptualModelPageDoer extends ViewDoer
 		return true;
 	}
 	
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (! isAvailable())
 			return;

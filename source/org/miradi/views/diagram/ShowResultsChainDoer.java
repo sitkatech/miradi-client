@@ -59,7 +59,7 @@ public class ShowResultsChainDoer extends ViewDoer
 		return strategy.getResultsChains().size() >= 1;
 	}
 
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (! isAvailable())
 			return;

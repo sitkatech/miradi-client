@@ -105,7 +105,7 @@ public class PropertiesDoer extends LocationDoer
 		return false;
 	}
 
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if(!isAvailable())
 			return;

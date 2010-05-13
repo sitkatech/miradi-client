@@ -34,7 +34,7 @@ import org.miradi.views.diagram.doers.AbstractPasteDoer;
 
 public class PasteDoer extends AbstractPasteDoer
 {
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		getProject().executeCommand(new CommandBeginTransaction());
 		try 

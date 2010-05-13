@@ -38,7 +38,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 	}
 	
 	@Override
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;
@@ -94,7 +94,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		return true;
 	}
 
-	protected void tryAgain() throws CommandFailedException
+	protected void tryAgain() throws Exception
 	{
 		doIt();
 	}

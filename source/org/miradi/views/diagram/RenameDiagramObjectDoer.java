@@ -21,12 +21,11 @@ package org.miradi.views.diagram;
 
 import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.dialogs.diagram.DiagramTabsLabelPropertiesPanel;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.DiagramObject;
 
 abstract public class RenameDiagramObjectDoer extends DiagramPageDoer 
 {	
-	public void doIt() throws CommandFailedException 
+	public void doIt() throws Exception 
 	{
 		if (!isAvailable())
 			return;

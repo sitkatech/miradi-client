@@ -42,7 +42,7 @@ public class ExportZippedProjectFileDoer extends MainWindowDoer
 	}
 
 	@Override
-	public void doIt() throws CommandFailedException 
+	public void doIt() throws Exception 
 	{
 		if (!isAvailable())
 			return;

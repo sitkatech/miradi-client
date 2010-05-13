@@ -33,7 +33,7 @@ public class Redo extends ProjectDoer
 		return (getProject().canRedo());
 	}
 
-	public void doIt() throws CommandFailedException
+	public void doIt() throws Exception
 	{
 		redo(getProject());
 	}
