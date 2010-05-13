@@ -296,7 +296,9 @@ public class DiagramContextMenuHandler
 		insertMenu.add(createMenuItem(ActionInsertContributingFactor.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertDirectThreat.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertTarget.class, menuInvokedAt));
-		insertMenu.add(createMenuItem(ActionInsertHumanWelfareTarget.class, menuInvokedAt));
+		if (getProject().getMetadata().isHumanWelfareTargetMode())
+			insertMenu.add(createMenuItem(ActionInsertHumanWelfareTarget.class, menuInvokedAt));
+
 		insertMenu.add(createMenuItem(ActionInsertIntermediateResult.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertThreatReductionResult.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertTextBox.class, menuInvokedAt));
