@@ -506,6 +506,13 @@
 
 <!-- ================================================================== -->
 <!-- CREATE NEW PO                                            -->
+<!--   
+	To use this, insert three lines like this 
+	at the start of the new language target:	
+		<property name="po.locale" value="IT" />
+		<property name="po.file" value="${miradi.po.it}" />
+		<antcall target="create-new-po"/>
+-->
 <!-- ================================================================== -->
 <target name="create-new-po" description="Create empty po file">
 	<echo message="Creating po file: ${po.locale} ${po.file}"/>
@@ -589,10 +596,6 @@
 <!-- ITALIAN                   -->
 <!-- ================================================================== -->
 <target name="italian" depends="pot" description="Update Italian Content">
-	<property name="po.locale" value="IT" />
-	<property name="po.file" value="${miradi.po.it}" />
-	<antcall target="create-new-po"/>
-
 	<antcall target="update-po">
 		<param name="po.file" value="${miradi.po.it}"/>
 		<param name="language.code" value="it"/>
