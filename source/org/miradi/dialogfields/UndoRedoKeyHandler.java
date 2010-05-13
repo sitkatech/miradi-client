@@ -35,6 +35,7 @@ public class UndoRedoKeyHandler extends KeyAdapter
 		actions = actionsToUse;
 	}
 	
+	@Override
 	public void keyTyped(KeyEvent event)
 	{
 		try
