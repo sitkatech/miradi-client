@@ -27,7 +27,6 @@ import javax.swing.Icon;
 
 import org.miradi.commands.Command;
 import org.miradi.dialogfields.FieldSaver;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UnexpectedNonSideEffectException;
 import org.miradi.exceptions.UnexpectedSideEffectException;
 import org.miradi.main.EAM;
@@ -114,7 +113,7 @@ public abstract class MainWindowAction extends EAMAction
 		doAction(null);
 	}
 
-	public void doAction(EventObject event) throws CommandFailedException
+	public void doAction(EventObject event) throws Exception
 	{
 		Cursor prevCursor = getMainWindow().getCursor();
 		getMainWindow().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
