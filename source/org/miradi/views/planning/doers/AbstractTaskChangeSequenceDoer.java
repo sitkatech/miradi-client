@@ -82,6 +82,8 @@ abstract public class AbstractTaskChangeSequenceDoer extends ObjectsDoer
 		String tag = Task.getTaskIdsTag(parent);
 		CommandSetObjectData cmd = new CommandSetObjectData(parent.getRef(), tag, newSiblings.toString());
 		getProject().executeCommand(cmd);
+		
+		getPicker().ensureObjectVisible(task.getRef());
 	}
 
 	protected Task getSingleSelectedTask()
