@@ -86,8 +86,9 @@
 	<!-- translations -->
 	<property name="miradi.pot" value="${dist.temp}/miradi.pot" />
     <property name="miradi.po.es" value="${translations.dir}/miradi_es.po" />
-    <property name="miradi.po.uk" value="${translations.dir}/miradi_uk.po" />
     <property name="miradi.po.id" value="${translations.dir}/miradi_id.po" />
+    <property name="miradi.po.it" value="${translations.dir}/miradi_it.po" />
+    <property name="miradi.po.uk" value="${translations.dir}/miradi_uk.po" />
     <property name="miradi.po.zh" value="${translations.dir}/miradi_zh.po" />
 
 	
@@ -503,10 +504,10 @@
 </target>
 
 <!-- ================================================================== -->
-<!-- CREATE MISSING PO                                            -->
+<!-- CREATE NEW PO                                            -->
 <!-- ================================================================== -->
-<target name="${po.file}" description="Create empty po file for ${po.locale}">
-	<echo message="Creating po file: ${po.locale} ${po.file} because ${po.exists}"/>
+<target name="create-new-po" description="Create empty po file">
+	<echo message="Creating po file: ${po.locale} ${po.file}"/>
 	<exec executable="msginit" failonerror="true">
 		<arg value="--no-translator"/>
 		<arg value="--input=${miradi.pot}"/>
@@ -519,19 +520,6 @@
 		<arg value='s/^"Content-Type:.*$/"Content-Type: text\/plain; charset=UTF-8\\n"/'/>
 		<arg value="${po.file}" />
 	</exec>
-</target>
-
-<!-- ================================================================== -->
-<!-- ENSURE PO EXISTS                                            -->
-<!-- ================================================================== -->
-<target name="ensure-po-exists" description="Ensure po file exists for ${po.locale}">
-	<available file="${po.file}" property="po.exists"/>
-	<echo message="${po.exists} for ${po.file}" />
-	<antcall target="${po.file}">
-		<param name="po.file" value="${po.file}" />
-		<param name="po.locale" value="${po.locale}" />
-		<param name="po.exists" value="${po.exists}" />
-	</antcall>
 </target>
 
 <!-- ================================================================== -->
@@ -570,71 +558,44 @@
 <!-- I N D O N E S I A N                   -->
 <!-- ================================================================== -->
 <target name="indonesian" depends="pot" description="Update Indonesian Content">
-	<echo message="updating Indonesian po file"/>
-	<exec executable="msgmerge" failonerror="true">
-		<arg value="--update"/>
-		<arg value="--backup=none"/>
-		<arg value="--no-fuzzy-matching"/>
-		<arg value="${miradi.po.id}"/>
-		<arg value="${miradi.pot}"/>
-	</exec>
-	<echo message="building Indonesian content jar"/>
-	<zip destfile="${dist.dir}/MiradiContent-${version.langpack}-id.jar">
-        <fileset dir="${eam.src.root}" includes="resources/**/*.txt" />
-        <fileset dir="${eam.src.root}" includes="**/*.jpg"/>
-        <fileset dir="${eam.src.root}" includes="**/*.png"/>
-        <fileset dir="${eam.src.root}" includes="**/*.gif"/>
-		<fileset dir="${translations.dir}" includes="miradi_id.po"/>
-	</zip>
-	
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.id}"/>
+		<param name="language.code" value="id"/>
+	</antcall>
 </target>
 	
 <!-- ================================================================== -->
 <!-- C H I N E S E                   -->
 <!-- ================================================================== -->
 <target name="chinese" depends="pot" description="Update Chinese Content">
-	<echo message="updating Chinese po file"/>
-	<exec executable="msgmerge" failonerror="true">
-		<arg value="--update"/>
-		<arg value="--backup=none"/>
-		<arg value="--no-fuzzy-matching"/>
-		<arg value="${miradi.po.zh}"/>
-		<arg value="${miradi.pot}"/>
-	</exec>
-	<echo message="building Chinese content jar"/>
-	<zip destfile="${dist.dir}/MiradiContent-${version.langpack}-zh.jar">
-        <fileset dir="${eam.src.root}" includes="resources/**/*.txt" />
-        <fileset dir="${eam.src.root}" includes="**/*.jpg"/>
-        <fileset dir="${eam.src.root}" includes="**/*.png"/>
-        <fileset dir="${eam.src.root}" includes="**/*.gif"/>
-		<fileset dir="${translations.dir}" includes="miradi_zh.po"/>
-	</zip>
-	
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.zh}"/>
+		<param name="language.code" value="zh"/>
+	</antcall>
 </target>
 	
 <!-- ================================================================== -->
 <!-- UKRAINIAN                   -->
 <!-- ================================================================== -->
 <target name="ukrainian" depends="pot" description="Update Ukrainian Content">
-	<antcall target="ensure-po-exists">
-		<param name="po.locale" value="UK" />
-		<param name="po.file" value="${miradi.po.uk}" />
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.uk}"/>
+		<param name="language.code" value="uk"/>
 	</antcall>
-	<exec executable="msgmerge" failonerror="true">
-		<arg value="--update"/>
-		<arg value="--backup=none"/>
-		<arg value="--no-fuzzy-matching"/>
-		<arg value="${miradi.po.uk}"/>
-		<arg value="${miradi.pot}"/>
-	</exec>
-	<echo message="building Ukrainian content jar"/>
-	<zip destfile="${dist.dir}/MiradiContent-${version.langpack}-uk.jar">
-        <fileset dir="${eam.src.root}" includes="resources/**/*.txt" />
-        <fileset dir="${eam.src.root}" includes="**/*.jpg"/>
-        <fileset dir="${eam.src.root}" includes="**/*.png"/>
-        <fileset dir="${eam.src.root}" includes="**/*.gif"/>
-		<fileset dir="${translations.dir}" includes="miradi_uk.po"/>
-	</zip>
+</target>
+	
+<!-- ================================================================== -->
+<!-- ITALIAN                   -->
+<!-- ================================================================== -->
+<target name="italian" depends="pot" description="Update Italian Content">
+	<property name="po.locale" value="IT" />
+	<property name="po.file" value="${miradi.po.it}" />
+	<antcall target="create-new-po"/>
+
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.it}"/>
+		<param name="language.code" value="it"/>
+	</antcall>
 </target>
 	
 <!-- ================================================================== -->
