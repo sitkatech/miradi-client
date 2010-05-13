@@ -299,8 +299,8 @@ public class DiagramContextMenuHandler
 		if (getProject().getMetadata().isHumanWelfareTargetMode())
 			insertMenu.add(createMenuItem(ActionInsertHumanWelfareTarget.class, menuInvokedAt));
 
-		insertMenu.add(createMenuItem(ActionInsertIntermediateResult.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertThreatReductionResult.class, menuInvokedAt));
+		insertMenu.add(createMenuItem(ActionInsertIntermediateResult.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertTextBox.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertScopeBox.class, menuInvokedAt));
 		
