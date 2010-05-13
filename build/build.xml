@@ -598,7 +598,7 @@
 <!-- ================================================================== -->
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
-<target name="translations" depends="pot, spanish, indonesian, chinese, ukrainian" description="Create Translatable Content jars/zips">
+<target name="translations" depends="pot, spanish, indonesian, chinese" description="Create Translatable Content jars/zips">
 	
 </target>
 	
