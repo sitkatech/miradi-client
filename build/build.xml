@@ -475,6 +475,7 @@
 	<exec executable="xgettext" failonerror="true">
 		<arg value="--language=java"/>
 		<arg value="--from-code=UTF-8"/>
+		<arg value="--sort-output"/>
 		<arg value="--keyword"/>
 		<arg value="--keyword=EAM.text"/>
 		<arg value="--copyright-holder=Benetech"/>
