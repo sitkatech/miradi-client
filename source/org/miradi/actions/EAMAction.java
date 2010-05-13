@@ -22,7 +22,6 @@ package org.miradi.actions;
 import javax.swing.AbstractAction;
 import javax.swing.Icon;
 
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.views.Doer;
 
@@ -38,7 +37,7 @@ public abstract class EAMAction extends AbstractAction
 		super(label, icon);
 	}
 	
-	public abstract void doAction() throws CommandFailedException;
+	public abstract void doAction() throws Exception;
 	public abstract Doer getDoer();
 	
 	public boolean isObjectAction()
