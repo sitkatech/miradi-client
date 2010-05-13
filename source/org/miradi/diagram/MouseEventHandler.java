@@ -67,6 +67,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 	}
 
 	//Note: customMarquee Handler will get notified first
+	@Override
 	public void mousePressed(MouseEvent event)
 	{
 		selectedAndGroupBoxCoveredLinkCells = new HashSet();
@@ -122,6 +123,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		}
 	}
 
+	@Override
 	public void mouseReleased(MouseEvent event)
 	{
 		mainWindow.getCurrentDiagramComponent().setMarquee(false);
@@ -221,6 +223,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		getProject().executeCommandsWithoutTransaction(bendPointsMoveCommands);
 	}
 	
+	@Override
 	public void mouseClicked(MouseEvent event)
 	{
 		if(isPropertiesEvent(event))
