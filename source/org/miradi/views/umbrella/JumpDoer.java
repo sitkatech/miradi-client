@@ -35,6 +35,7 @@ public class JumpDoer extends MainWindowDoer
 		actionClass = actionClassToUse;
 	}
 	
+	@Override
 	public boolean isAvailable()
 	{
 		WizardManager wizardManager = getWizardManager();
@@ -48,6 +49,7 @@ public class JumpDoer extends MainWindowDoer
 		return action.isAvailableWithoutProject();
 	}
 
+	@Override
 	public void doIt() throws CommandFailedException
 	{
 		if(!isAvailable())
