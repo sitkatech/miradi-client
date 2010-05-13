@@ -70,27 +70,18 @@ abstract public class AbstractTaskChangeSequenceDoer extends ObjectsDoer
 		if(!isAvailable())
 			return;
 		
-		try
-		{
-			Task task = getSingleSelectedTask();
-			IdList newSiblings = new IdList(getSiblingList(task));
-	
-			int wasAt = newSiblings.find(task.getId());
-			newSiblings.removeId(task.getId());
-			newSiblings.insertAt(task.getId(), wasAt + getDelta());
-	
-			ORef parentRef = getSelectedParentRef(task);
-			BaseObject parent = getProject().findObject(parentRef);
-			String tag = Task.getTaskIdsTag(parent);
-			CommandSetObjectData cmd = new CommandSetObjectData(parent.getRef(), tag, newSiblings.toString());
-			getProject().executeCommand(cmd);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog("Error: " + e.getMessage());
-		}
-		
+		Task task = getSingleSelectedTask();
+		IdList newSiblings = new IdList(getSiblingList(task));
+
+		int wasAt = newSiblings.find(task.getId());
+		newSiblings.removeId(task.getId());
+		newSiblings.insertAt(task.getId(), wasAt + getDelta());
+
+		ORef parentRef = getSelectedParentRef(task);
+		BaseObject parent = getProject().findObject(parentRef);
+		String tag = Task.getTaskIdsTag(parent);
+		CommandSetObjectData cmd = new CommandSetObjectData(parent.getRef(), tag, newSiblings.toString());
+		getProject().executeCommand(cmd);
 	}
 
 	protected Task getSingleSelectedTask()
