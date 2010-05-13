@@ -109,6 +109,7 @@ public abstract class MainWindowAction extends EAMAction
 			  "</html>");
 	}
 
+	@Override
 	public void doAction() throws CommandFailedException
 	{
 		doAction(null);
@@ -145,6 +146,7 @@ public abstract class MainWindowAction extends EAMAction
 					"If that does not work, contact Miradi support.");
 	}
 	
+	@Override
 	public boolean shouldBeEnabled()
 	{
 		Doer doer = getDoer();
@@ -153,6 +155,7 @@ public abstract class MainWindowAction extends EAMAction
 		return doer.isAvailable();
 	}
 	
+	@Override
 	public Doer getDoer()
 	{
 		UmbrellaView currentView = mainWindow.getCurrentView();
