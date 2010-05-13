@@ -402,11 +402,17 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	public Vector<DateUnit> getAllProjectQuarterDateUnits() throws Exception
 	{
+		if(shouldHideQuarterColumns())
+			return new Vector<DateUnit>();
+		
 		return getAllSubDateUnits(getAllProjectYearDateUnits());
 	}
 	
 	public Vector<DateUnit> getAllProjectMonthDateUnits() throws Exception
 	{
+		if(shouldHideQuarterColumns())
+			return getAllSubDateUnits(getAllProjectYearDateUnits());
+
 		return getAllSubDateUnits(getAllProjectQuarterDateUnits());
 	}
 
