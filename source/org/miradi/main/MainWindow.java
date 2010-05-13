@@ -53,6 +53,7 @@ import org.miradi.actions.Actions;
 import org.miradi.database.ProjectServer;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
+import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
 import org.miradi.dialogfields.FieldSaver;
 import org.miradi.exceptions.FutureVersionException;
 import org.miradi.exceptions.OldVersionException;
@@ -60,10 +61,12 @@ import org.miradi.exceptions.UnknownCommandException;
 import org.miradi.main.menu.MainMenuBar;
 import org.miradi.objecthelpers.ColorsFileLoader;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.StringMap;
 import org.miradi.objecthelpers.TwoLevelEntry;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectRepairer;
 import org.miradi.questions.ChoiceItem;
@@ -660,6 +663,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		{
 			if (areStartEndDateFlipped())
 				setStartEndDateWarningStatus();
+			else if (areAnyProjectResourceFiltersOn())
+				getMainStatusBar().setWarningStatus(EAM.text("Project Resource Filter Is On"));
 			else if (hasNonMatchingFiscalYearStartMonth(getProject()))
 				getMainStatusBar().setWarningStatus(EAM.text("Existing data for a different fiscal year is being excluded"));
 			else if (isDataOutsideOfcurrentProjectDateRange())
@@ -672,6 +677,15 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			EAM.logException(e);
 			clearStatusBar();
 		}
+	}
+	
+	private boolean areAnyProjectResourceFiltersOn() throws Exception
+	{
+		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), AbstractWorkPlanStringMapEditorDoer.getTabSpecificModelIdentifier());
+		StringMap tableSettingsMap = tableSettings.getTableSettingsMap();
+		String refs = tableSettingsMap.get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
+
+		return new ORefList(refs).size() > 0;
 	}
 	
 	private boolean areStartEndDateFlipped()
