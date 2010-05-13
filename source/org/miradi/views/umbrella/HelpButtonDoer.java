@@ -38,7 +38,7 @@ public class HelpButtonDoer extends MainWindowDoer
 		return true;
 	}
 	
-	public void doIt(EventObject event) throws CommandFailedException
+	public void doIt(EventObject event) throws Exception
 	{
 		try
 		{

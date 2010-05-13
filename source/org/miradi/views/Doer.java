@@ -33,7 +33,7 @@ abstract public class Doer
 	abstract public boolean isAvailable();
 	abstract public void doIt() throws CommandFailedException;
 	
-	public void doIt(EventObject event) throws CommandFailedException
+	public void doIt(EventObject event) throws Exception
 	{
 		doIt();
 	}

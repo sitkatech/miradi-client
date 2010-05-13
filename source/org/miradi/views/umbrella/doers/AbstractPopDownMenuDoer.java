@@ -55,7 +55,7 @@ abstract public class AbstractPopDownMenuDoer extends ObjectsDoer
 	}
 
 	@Override
-	public void doIt(EventObject event) throws CommandFailedException
+	public void doIt(EventObject event) throws Exception
 	{
 		if(!isAvailable())
 			return;
