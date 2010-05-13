@@ -34,12 +34,14 @@ import org.miradi.views.MainWindowDoer;
 
 public class ExportZippedProjectFileDoer extends MainWindowDoer
 {
+	@Override
 	public boolean isAvailable() 
 	{
 		Project project = getProject();
 		return project.isOpen();
 	}
 
+	@Override
 	public void doIt() throws CommandFailedException 
 	{
 		if (!isAvailable())
