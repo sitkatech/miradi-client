@@ -179,9 +179,13 @@ public class EAM
 	
 	public static void setExceptionLoggingDestination()
 	{
+		setExceptionLoggingDestination(getDefaultExceptionsLogFile());
+	}
+
+	public static void setExceptionLoggingDestination(File destination)
+	{
 		try
 		{
-			File destination = getDefaultExceptionsLogFile();
 			FileOutputStream outputStream = new FileOutputStream(destination);
 			setExceptionLoggingDestination(outputStream);
 		}
@@ -189,12 +193,11 @@ public class EAM
 		{
 			System.out.println("Unable to create exception logging file: " + e.getLocalizedMessage());
 		}
-
 	}
 
 	private static File getDefaultExceptionsLogFile()
 	{
-		return new File(getHomeDirectory(), "exceptions.log");
+		return new File(getHomeDirectory(), EXCEPTIONS_LOG_FILE_NAME);
 	}
 
 	public static void setExceptionLoggingDestination(OutputStream outputStream)
@@ -599,6 +602,7 @@ public class EAM
 	public static final String LEGAL_NON_ALPHA_NUMERIC_CHARACTERS = "_. " + DASH;
 	public static final String INFORMATION_DIALOG_TITLE = EAM.text("Wintitle|Information");
 	
+	public static final String EXCEPTIONS_LOG_FILE_NAME = "exceptions.log";
 }
 
 
