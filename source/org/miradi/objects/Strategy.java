@@ -40,7 +40,6 @@ import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.views.umbrella.DeleteActivityDoer;
 
 
 public class Strategy extends Factor
@@ -198,7 +197,7 @@ public class Strategy extends Factor
 	protected Vector<Command> createCommandsToDereferenceObject() throws Exception
 	{
 		Vector commandsToDereferences = super.createCommandsToDereferenceObject();
-		commandsToDereferences.addAll(DeleteActivityDoer.buildRemoveFromRelevancyListCommands(getProject(), getRef()));
+		commandsToDereferences.addAll(buildRemoveFromRelevancyListCommands(getProject(), getRef()));
 		
 		return commandsToDereferences;
 	}

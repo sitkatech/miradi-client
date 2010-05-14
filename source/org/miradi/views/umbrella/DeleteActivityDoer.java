@@ -32,12 +32,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.Objective;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
@@ -217,14 +214,5 @@ public class DeleteActivityDoer extends ObjectsDoer
 		}
 		
 		return removeCommands;		
-	}
-
-	public static Vector<Command> buildRemoveFromRelevancyListCommands(Project project, ORef relevantObjectRefToRemove) throws Exception
-	{
-		Vector<Command> removeFromRelevancyListCommands = new Vector();
-		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(project, Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
-		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(project, Goal.getObjectType(), Goal.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
-		
-		return removeFromRelevancyListCommands;
 	}
 }
