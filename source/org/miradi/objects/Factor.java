@@ -449,8 +449,8 @@ abstract public class Factor extends BaseObject
 	protected Vector<Command> buildRemoveFromRelevancyListCommands(Project project, ORef relevantObjectRefToRemove) throws Exception
 	{
 		Vector<Command> removeFromRelevancyListCommands = new Vector();
-		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(project, Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
-		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(project, Goal.getObjectType(), Goal.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
+		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
+		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), Goal.getObjectType(), Goal.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
 		
 		return removeFromRelevancyListCommands;
 	}
