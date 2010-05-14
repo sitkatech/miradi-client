@@ -19,20 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.views.workplan;
 
-import java.util.Vector;
-
-import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.RelevancyOverride;
-import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objects.Cause;
-import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
@@ -105,28 +97,5 @@ public class TestDeleteActivity extends TestCaseWithProject
 			project.executeCommand(new CommandEndTransaction());
 		}
 
-	}
-	
-	public void testBuildRemoveFromObjectiveRelevancyListCommands() throws Exception
-	{
-		ORef objectiveRef = getProject().createObject(Objective.getObjectType());
-		Cause cause = getProject().createCause();
-		IdList objectiveIdList = new ORefList(objectiveRef).convertToIdList(Objective.getObjectType());
-		cause.setData(Cause.TAG_OBJECTIVE_IDS, objectiveIdList.toString());
-		
-		Strategy strategy = getProject().createAndPopulateStrategy();
-		RelevancyOverrideSet relevancyOverrideSet = new RelevancyOverrideSet();
-		RelevancyOverride relevancyOverride = new RelevancyOverride(strategy.getRef(), true);
-		relevancyOverrideSet.add(relevancyOverride);
-		
-		Objective objective = Objective.find(getProject(), objectiveRef);
-		objective.setData(Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancyOverrideSet.toString());
-		
-		assertEquals("relevancy override was not set?", 1, objective.getRelevantStrategyAndActivityRefs().size());
-																	   
-		Vector<Command> commandsToUpdateRelevancyList = DeleteActivityDoer.buildRemoveObjectFromRelevancyListCommands(getProject(), Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, strategy.getRef());
-		getProject().executeCommandsWithoutTransaction(commandsToUpdateRelevancyList);
-		
-		assertEquals("relevancy override was not updated after delete?", 0, objective.getRelevantStrategyAndActivityRefs().size());
 	}
 }
