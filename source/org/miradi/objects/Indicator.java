@@ -22,7 +22,6 @@ package org.miradi.objects;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.IndicatorId;
@@ -35,9 +34,7 @@ import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.NonDraftStrategySet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -46,6 +43,7 @@ import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.StringMapData;
+import org.miradi.views.umbrella.DeleteActivityDoer;
 
 public class Indicator extends BaseObject
 {
@@ -80,32 +78,11 @@ public class Indicator extends BaseObject
 	protected Vector<Command> createCommandsToDereferenceObject() throws Exception
 	{
 		Vector commandsToDereferences = super.createCommandsToDereferenceObject();
-		commandsToDereferences.addAll(createCommandsToRemoveFromRelevancyList());
+		commandsToDereferences.addAll(DeleteActivityDoer.buildRemoveIndicatorFromRelevancyListCommands(getProject(), getRef()));
 		
 		return commandsToDereferences;
 	}
-	
-	private Vector<Command> createCommandsToRemoveFromRelevancyList() throws Exception
-	{
-		Vector<Command> removeFromRelevancyListCommands = new Vector();
-		ORefList allObjectiveRefs = getProject().getObjectivePool().getORefList();
-		for (int index = 0; index < allObjectiveRefs.size(); ++index)
-		{
-			Objective objective = Objective.find(getProject(), allObjectiveRefs.get(index));
-			ORefSet relevantIndicatorRefs = objective.getAllIndicatorRefsFromRelevancyOverrides();
-			if (relevantIndicatorRefs.contains(getRef()))
-			{
-				ORefList listToRemoveFrom = new ORefList(relevantIndicatorRefs);
-				listToRemoveFrom.remove(getRef());
-				RelevancyOverrideSet relevancySet = objective.getCalculatedRelevantIndicatorOverrides(listToRemoveFrom);	
-				CommandSetObjectData removeFromRelevancyListCommand = new CommandSetObjectData(objective.getRef(), Objective.TAG_RELEVANT_INDICATOR_SET, relevancySet.toString());
-				removeFromRelevancyListCommands.add(removeFromRelevancyListCommand);
-			}
-		}
-
-		return removeFromRelevancyListCommands;
-	}
-	
+		
 	@Override
 	public Vector<Command> createCommandsToDeleteChildren() throws Exception
 	{
