@@ -227,13 +227,4 @@ public class DeleteActivityDoer extends ObjectsDoer
 		
 		return removeFromRelevancyListCommands;
 	}
-	
-	public static Vector<Command> buildRemoveIndicatorFromRelevancyListCommands(Project project, ORef relevantIndicatorRefToRemove) throws Exception
-	{
-		Vector<Command> removeFromRelevancyListCommands = new Vector();
-		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(project, Objective.getObjectType(), Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
-		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(project, Goal.getObjectType(), Goal.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
-		
-		return removeFromRelevancyListCommands;
-	}
 }
