@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import java.util.Vector;
 
+import org.miradi.commands.Command;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
@@ -39,6 +40,7 @@ import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.views.umbrella.DeleteActivityDoer;
 
 
 public class Strategy extends Factor
@@ -190,6 +192,15 @@ public class Strategy extends Factor
 		deepObjectRefsToCopy.addAll(getActivityRefs());
 		
 		return deepObjectRefsToCopy;
+	}
+	
+	@Override
+	protected Vector<Command> createCommandsToDereferenceObject() throws Exception
+	{
+		Vector commandsToDereferences = super.createCommandsToDereferenceObject();
+		commandsToDereferences.addAll(DeleteActivityDoer.buildRemoveFromRelevancyListCommands(getProject(), getRef()));
+		
+		return commandsToDereferences;
 	}
 	
 	@Override

@@ -39,6 +39,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
+import org.miradi.views.umbrella.DeleteActivityDoer;
 
 public class Task extends Factor
 {
@@ -75,6 +76,15 @@ public class Task extends Factor
 		commandsToDeleteChildren.addAll(getDeleteSelfAndSubtasksCommands(getProject()));
 		
 		return commandsToDeleteChildren;
+	}
+	
+	@Override
+	protected Vector<Command> createCommandsToDereferenceObject() throws Exception
+	{
+		Vector commandsToDereferences = super.createCommandsToDereferenceObject();
+		commandsToDereferences.addAll(DeleteActivityDoer.buildRemoveFromRelevancyListCommands(getProject(), getRef()));
+		
+		return commandsToDereferences;
 	}
 	
 	@Override
