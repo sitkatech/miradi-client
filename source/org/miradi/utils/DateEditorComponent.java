@@ -41,7 +41,6 @@ import javax.swing.event.DocumentListener;
 
 import org.martus.swing.Utilities;
 import org.martus.util.MultiCalendar;
-import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogs.base.UndecoratedModelessDialogWithClose;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -158,9 +157,6 @@ public class DateEditorComponent extends JDateChooser
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		// TODO: Should not have dependency from miradi.utils class to miradi.dialogFields
-		FieldSaver.savePendingEdits();
-		
 		calendarDialog = createCalendarDialogWithCorrectOwner();
 		calendarDialog.addWindowListener(new DateFieldRequestFocusAfterDiactivatedHandler());
 		calendarDialog.enableCloseWhenFocusLost();
