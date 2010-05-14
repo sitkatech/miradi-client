@@ -77,16 +77,16 @@ public class Indicator extends BaseObject
 	protected Vector<Command> createCommandsToDereferenceObject() throws Exception
 	{
 		Vector commandsToDereferences = super.createCommandsToDereferenceObject();
-		commandsToDereferences.addAll(buildRemoveIndicatorFromRelevancyListCommands(getProject(), getRef()));
+		commandsToDereferences.addAll(buildRemoveIndicatorFromRelevancyListCommands(getRef()));
 		
 		return commandsToDereferences;
 	}
 	
-	private Vector<Command> buildRemoveIndicatorFromRelevancyListCommands(Project project, ORef relevantIndicatorRefToRemove) throws Exception
+	private Vector<Command> buildRemoveIndicatorFromRelevancyListCommands(ORef relevantIndicatorRefToRemove) throws Exception
 	{
 		Vector<Command> removeFromRelevancyListCommands = new Vector();
-		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(project, Objective.getObjectType(), Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
-		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(project, Goal.getObjectType(), Goal.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
+		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), Objective.getObjectType(), Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
+		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), Goal.getObjectType(), Goal.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
 		
 		return removeFromRelevancyListCommands;
 	}
