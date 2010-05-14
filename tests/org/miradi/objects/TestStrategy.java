@@ -19,10 +19,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.objects;
 
+import java.util.Vector;
+
+import org.miradi.commands.Command;
+import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.RelevancyOverride;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
 
 public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 {
@@ -138,6 +145,58 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 		Strategy strategy = getProject().createStrategy();		
 		TestObjective.verifyAnnotationIsDeletedFromParent(getProject(), strategy, Strategy.TAG_PROGRESS_REPORT_REFS, ProgressReport.getObjectType());
 	}
+	
+	public void testStrategyIsRemovedFromObjectiveRelevancyList() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		Cause cause = getProject().createCause();
+		Objective objective = getProject().createObjective(cause);
+		verifyRelevancyIsUpdatedAfterActivityIsDeleted(strategy, cause, objective);
+	}
+	
+	public void testStrategyIsRemovedFromGoalRelevancyListWhenDeleted() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		Target goalOwner = getProject().createTarget();
+		Goal goal = getProject().createGoal(goalOwner);
+		verifyRelevancyIsUpdatedAfterActivityIsDeleted(strategy, goalOwner, goal);
+	}
+	
+	public void testActivityIsRemovedFromObjectiveRelevancyListWhenDeleted() throws Exception
+	{
+		Task activitiy = getProject().createActivity();
+		Strategy objectiveOwner = getProject().createStrategy();
+		Objective objective = getProject().createObjective(objectiveOwner);
+		verifyRelevancyIsUpdatedAfterActivityIsDeleted(activitiy, objectiveOwner, objective);
+	}
+
+	public void testActivityIsRemovedFromGoalRelevancyListWhenDeleted() throws Exception
+	{
+		Task activitiy = getProject().createActivity();
+		Target goalOwner = getProject().createTarget();
+		Goal goal = getProject().createGoal(goalOwner);
+		verifyRelevancyIsUpdatedAfterActivityIsDeleted(activitiy, goalOwner, goal);
+	}
+
+	private void verifyRelevancyIsUpdatedAfterActivityIsDeleted(BaseObject itemInRelevancyListToBeDeleted, Factor desireOwner, Desire desire) throws Exception, CommandFailedException
+	{
+		RelevancyOverrideSet relevantActivities = new RelevancyOverrideSet();
+		relevantActivities.add(new RelevancyOverride(itemInRelevancyListToBeDeleted.getRef(), true));
+		getProject().fillObjectUsingCommand(desire, Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantActivities.toString());
+
+		ORefList relevantStrategyAndActivityRefs = desire.getRelevantStrategyAndActivityRefs();
+		ORefList relevantActivityRefs = relevantStrategyAndActivityRefs.getFilteredBy(itemInRelevancyListToBeDeleted.getType());
+		assertEquals("Desire's activity relevancy list was not updated?", 1, relevantActivityRefs.size());
+		
+		Vector<Command> commandsToDelete = itemInRelevancyListToBeDeleted.createCommandsToDeleteChildrenAndObject();
+		getProject().executeCommandsAsTransaction(commandsToDelete);
+		
+		ORefList relevantStrategyAndActivityRefsAfterDelete = desire.getRelevantStrategyAndActivityRefs();
+		ORefList relevantActivityRefsAfterDelete = relevantStrategyAndActivityRefsAfterDelete.getFilteredBy(itemInRelevancyListToBeDeleted.getType());
+		
+		assertEquals("Activity was not removed from Desire relevancy list?", 0, relevantActivityRefsAfterDelete.size());
+	}
+
 	
 	static final BaseId criterionId1 = new BaseId(17);
 	static final BaseId criterionId2 = new BaseId(952);

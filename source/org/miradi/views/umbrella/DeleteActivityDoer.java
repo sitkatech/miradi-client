@@ -126,7 +126,6 @@ public class DeleteActivityDoer extends ObjectsDoer
 		
 		//FIXME medium: need to consider parent hierachy when creating commands.  first refactor dup code.  
 		Vector commandsToDeleteTasks = new Vector();
-		commandsToDeleteTasks.addAll(buildRemoveFromRelevancyListCommands(project, task.getRef()));
 		commandsToDeleteTasks.addAll(buildDeleteDiagramFactors(project, selectionHierachy, task));
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForActivityIds(project, selectionHierachy, task));
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForMethodIds(project, selectionHierachy, task));

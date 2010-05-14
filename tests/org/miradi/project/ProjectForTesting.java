@@ -56,6 +56,7 @@ import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.FundingSource;
+import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -561,6 +562,15 @@ public class ProjectForTesting extends ProjectWithHelpers
 		executeCommand(append);
 		Objective objective = Objective.find(this, objectiveRef);
 		return objective;
+	}
+	
+	public Goal createGoal(Target targetOwner) throws Exception
+	{
+		ORef goalRef = createObject(Goal.getObjectType());
+		CommandSetObjectData append = CommandSetObjectData.createAppendIdCommand(targetOwner, Target.TAG_GOAL_IDS, goalRef.getObjectId());
+		executeCommand(append);
+		
+		return Goal.find(this, goalRef);
 	}
 	
 	public Strategy createStrategy() throws Exception
