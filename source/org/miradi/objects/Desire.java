@@ -291,14 +291,12 @@ abstract public class Desire extends BaseObject
 
 	public ORefSet getAllIndicatorRefsFromRelevancyOverrides() throws Exception
 	{
-		ORefSet rawRelevantIndicatorOverrideList = new ORefSet();
-		RelevancyOverrideSet relevantOverrides = relevantIndicatorOverrides.getRawRelevancyOverrideSet();
-		for(RelevancyOverride relevancyOverride : relevantOverrides)
-		{
-			rawRelevantIndicatorOverrideList.add(relevancyOverride.getRef());
-		}
-		
-		return rawRelevantIndicatorOverrideList;
+		return relevantIndicatorOverrides.extractRelevantRefs();
+	}
+	
+	public ORefSet getAllStrategyAndActivityRefsFromRelevancyOverrides() throws Exception
+	{
+		return relevantStrategyActivityOverrides.extractRelevantRefs();
 	}
 
 	public ORefList getRelevantStrategyAndActivityRefs() throws Exception

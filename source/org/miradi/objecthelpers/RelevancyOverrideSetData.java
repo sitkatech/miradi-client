@@ -42,6 +42,19 @@ public class RelevancyOverrideSetData extends ObjectData
 		return relevancyOverrideSet;
 	}
 	
+	public ORefSet extractRelevantRefs()
+	{
+		RelevancyOverrideSet rawRelevancyOverrideSet = getRawRelevancyOverrideSet();
+		ORefSet rawRelevantOverrideList = new ORefSet();
+		RelevancyOverrideSet relevantOverrides = rawRelevancyOverrideSet;
+		for(RelevancyOverride relevancyOverride : relevantOverrides)
+		{
+			rawRelevantOverrideList.add(relevancyOverride.getRef());
+		}
+		
+		return rawRelevantOverrideList;
+	}
+	
 	public String get()
 	{
 		return relevancyOverrideSet.toString();

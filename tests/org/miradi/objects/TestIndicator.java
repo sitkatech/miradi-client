@@ -152,12 +152,12 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 		RelevancyOverrideSet relevantIndicators = new RelevancyOverrideSet();
 		relevantIndicators.add(new RelevancyOverride(indicator.getRef(), true));
 		getProject().fillObjectUsingCommand(objective, Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicators.toString());
-		assertEquals("Object's indicator relevancy list was not updated?", 1, objective.getRelevantIndicatorRefList().size());
+		assertEquals("Object's indicator relevancy list was not updated?", 1, objective.getAllIndicatorRefsFromRelevancyOverrides().size());
 		
 		Vector<Command> commandsToDeleteIndicator = indicator.createCommandsToDeleteChildrenAndObject();
 		getProject().executeCommandsAsTransaction(commandsToDeleteIndicator);
 		
-		assertEquals("Indicator was not removed from objective relevancy list?", 0, objective.getRelevantIndicatorRefList().size());
+		assertEquals("Indicator was not removed from objective relevancy list?", 0, objective.getAllIndicatorRefsFromRelevancyOverrides().size());
 	}
 
 	private ProjectForTesting project;
