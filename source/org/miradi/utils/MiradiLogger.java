@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.io.PrintStream;
+import java.util.Date;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -27,6 +28,7 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 import org.miradi.main.EAM;
+import org.miradi.main.VersionConstants;
 
 public class MiradiLogger
 {
@@ -42,6 +44,7 @@ public class MiradiLogger
 	public void setExceptionLoggingDestination(PrintStream destination)
 	{
 		exceptionDestination = destination;
+		logMetadata();
 	}
 	
 	public PrintStream getExceptionLoggingDestination()
@@ -110,8 +113,35 @@ public class MiradiLogger
 		log.log(Level.SEVERE, "Exception", e);
 		if(exceptionDestination != null)
 		{
+			logTimeStamp();
 			e.printStackTrace(exceptionDestination);
 			exceptionDestination.flush();
+		}
+	}
+
+	private void logMetadata()
+	{
+		try
+		{
+			exceptionDestination.println("Miradi Version = " + VersionConstants.getVersion());
+			exceptionDestination.println("Java Version = " + EAM.getJavaVersion());
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace(exceptionDestination);
+		}
+	}
+
+	private void logTimeStamp()
+	{
+		try
+		{
+			Date now = new Date();
+			exceptionDestination.println("Time Stamp = " + now);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace(exceptionDestination);
 		}
 	}
 	
