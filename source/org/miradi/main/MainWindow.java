@@ -484,6 +484,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	public void createOrOpenProject(String projectName)
 	{
+		logExceptionsInsideProjectDir(projectName);
 		preventActionUpdates();
 		project.beginCommandSideEffectMode();
 		try
@@ -538,6 +539,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			updateActionsAndStatusBar();
 			project.endCommandSideEffectMode();
 		}
+	}
+
+	private void logExceptionsInsideProjectDir(String projectName)
+	{
+		File projectDir = new File(EAM.getHomeDirectory(), projectName);
+		EAM.setExceptionLoggingDestination(new File(projectDir, EAM.EXCEPTIONS_LOG_FILE_NAME));
 	}
 	
 	public DiagramView getDiagramView()
