@@ -23,6 +23,7 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -331,6 +332,26 @@ abstract public class Desire extends BaseObject
 				relevantRefList.remove(override.getRef());
 		}
 		return new ORefList(relevantRefList);
+	}
+	
+	public static Vector<Command> buildRemoveObjectFromRelevancyListCommands(Project project, int typeWithRelevacnyOverrideSetList, String relevancyTag, ORef relevantObjectRefToRemove) throws Exception
+	{
+		Vector<Command> removeFromRelevancyListCommands = new Vector();
+		ORefList objectRefsWithRelevancyOverrides = project.getPool(typeWithRelevacnyOverrideSetList).getORefList();
+		for (int index = 0; index < objectRefsWithRelevancyOverrides.size(); ++index)
+		{
+			BaseObject objectWithRelevancyOverrides = BaseObject.find(project, objectRefsWithRelevancyOverrides.get(index));
+			String relevancySetAsString = objectWithRelevancyOverrides.getData(relevancyTag);
+			RelevancyOverrideSet relevancyOverrideSet = new RelevancyOverrideSet(relevancySetAsString);
+			if (relevancyOverrideSet.contains(relevantObjectRefToRemove))
+			{
+				relevancyOverrideSet.remove(relevantObjectRefToRemove);
+				CommandSetObjectData removeFromRelevancyListCommand = new CommandSetObjectData(objectWithRelevancyOverrides.getRef(), relevancyTag, relevancyOverrideSet.toString());
+				removeFromRelevancyListCommands.add(removeFromRelevancyListCommand);
+			}
+		}
+		
+		return removeFromRelevancyListCommands;
 	}
 	
 	private String getLatestProgressPercentDetails()

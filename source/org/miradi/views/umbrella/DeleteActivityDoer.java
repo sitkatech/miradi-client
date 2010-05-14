@@ -31,8 +31,8 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Goal;
@@ -222,8 +222,8 @@ public class DeleteActivityDoer extends ObjectsDoer
 	public static Vector<Command> buildRemoveFromRelevancyListCommands(Project project, ORef relevantObjectRefToRemove) throws Exception
 	{
 		Vector<Command> removeFromRelevancyListCommands = new Vector();
-		removeFromRelevancyListCommands.addAll(buildRemoveObjectFromRelevancyListCommands(project, Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
-		removeFromRelevancyListCommands.addAll(buildRemoveObjectFromRelevancyListCommands(project, Goal.getObjectType(), Goal.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
+		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(project, Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
+		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(project, Goal.getObjectType(), Goal.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
 		
 		return removeFromRelevancyListCommands;
 	}
@@ -231,28 +231,8 @@ public class DeleteActivityDoer extends ObjectsDoer
 	public static Vector<Command> buildRemoveIndicatorFromRelevancyListCommands(Project project, ORef relevantIndicatorRefToRemove) throws Exception
 	{
 		Vector<Command> removeFromRelevancyListCommands = new Vector();
-		removeFromRelevancyListCommands.addAll(buildRemoveObjectFromRelevancyListCommands(project, Objective.getObjectType(), Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
-		removeFromRelevancyListCommands.addAll(buildRemoveObjectFromRelevancyListCommands(project, Goal.getObjectType(), Goal.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
-		
-		return removeFromRelevancyListCommands;
-	}
-	
-	private static Vector<Command> buildRemoveObjectFromRelevancyListCommands(Project project, int typeWithRelevacnyOverrideSetList, String relevancyTag, ORef relevantObjectRefToRemove) throws Exception
-	{
-		Vector<Command> removeFromRelevancyListCommands = new Vector();
-		ORefList objectRefsWithRelevancyOverrides = project.getPool(typeWithRelevacnyOverrideSetList).getORefList();
-		for (int index = 0; index < objectRefsWithRelevancyOverrides.size(); ++index)
-		{
-			BaseObject objectWithRelevancyOverrides = BaseObject.find(project, objectRefsWithRelevancyOverrides.get(index));
-			String relevancySetAsString = objectWithRelevancyOverrides.getData(relevancyTag);
-			RelevancyOverrideSet relevancyOverrideSet = new RelevancyOverrideSet(relevancySetAsString);
-			if (relevancyOverrideSet.contains(relevantObjectRefToRemove))
-			{
-				relevancyOverrideSet.remove(relevantObjectRefToRemove);
-				CommandSetObjectData removeFromRelevancyListCommand = new CommandSetObjectData(objectWithRelevancyOverrides.getRef(), relevancyTag, relevancyOverrideSet.toString());
-				removeFromRelevancyListCommands.add(removeFromRelevancyListCommand);
-			}
-		}
+		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(project, Objective.getObjectType(), Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
+		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(project, Goal.getObjectType(), Goal.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
 		
 		return removeFromRelevancyListCommands;
 	}
