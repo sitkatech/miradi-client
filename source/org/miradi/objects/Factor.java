@@ -446,7 +446,7 @@ abstract public class Factor extends BaseObject
 		return findObjectsThatReferToUs(TaggedObjectSet.getObjectType());
 	}
 	
-	protected Vector<Command> buildRemoveFromRelevancyListCommands(Project project, ORef relevantObjectRefToRemove) throws Exception
+	protected Vector<Command> buildRemoveFromRelevancyListCommands(ORef relevantObjectRefToRemove) throws Exception
 	{
 		Vector<Command> removeFromRelevancyListCommands = new Vector();
 		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));

@@ -197,7 +197,7 @@ public class Strategy extends Factor
 	protected Vector<Command> createCommandsToDereferenceObject() throws Exception
 	{
 		Vector commandsToDereferences = super.createCommandsToDereferenceObject();
-		commandsToDereferences.addAll(buildRemoveFromRelevancyListCommands(getProject(), getRef()));
+		commandsToDereferences.addAll(buildRemoveFromRelevancyListCommands(getRef()));
 		
 		return commandsToDereferences;
 	}
