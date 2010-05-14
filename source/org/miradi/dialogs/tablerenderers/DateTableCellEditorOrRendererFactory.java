@@ -26,6 +26,7 @@ import javax.swing.JTable;
 
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.DateEditorComponent;
+import org.miradi.utils.DateEditorComponentInsideTable;
 
 public class DateTableCellEditorOrRendererFactory extends PopupEditableCellEditorOrRendererFactory
 {
@@ -33,7 +34,7 @@ public class DateTableCellEditorOrRendererFactory extends PopupEditableCellEdito
 	{
 	    super(objectProvider, fontProvider);
 
-	    dateComponent = new DateEditorComponent();
+	    dateComponent = new DateEditorComponentInsideTable();
 	}
 	
 	@Override
