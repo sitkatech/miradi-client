@@ -61,9 +61,33 @@ public class DiagramAliasPaster extends DiagramPaster
 		selectNewlyPastedItems();
 
 		ProjectRepairer repairer = new ProjectRepairer(getProject());
+		postPasteDeleteOrphansCreated();
 		repairer.logOrphansAndSimilarProblems();
 	}
 	
+	private void postPasteDeleteOrphansCreated() throws Exception
+	{
+		Vector<String> factorDeepCopies = getFactorDeepCopies();
+		for(String jsonString : factorDeepCopies)
+		{
+			EnhancedJsonObject json = new EnhancedJsonObject(jsonString);
+			int type = getTypeFromJson(json);
+			int id = json.getInt(BaseObject.TAG_ID);
+			ORef oldRef = new ORef(type, new BaseId(id));
+			ORef newRef = getOldToNewObjectRefMap().get(oldRef);
+			if (newRef == null)
+				continue;
+			
+			BaseObject baseObject = BaseObject.find(getProject(), newRef);
+			ORefList allReferrers = baseObject.findObjectsThatReferToUs();
+			if (allReferrers.isEmpty())
+			{
+				Vector<Command> commandsToDeleteOrphan = baseObject.createCommandsToDeleteChildrenAndObject();
+				getProject().executeCommandsWithoutTransaction(commandsToDeleteOrphan);
+			} 
+		}
+	}
+
 	public void pasteDiagramLinks() throws Exception
 	{
 		createNewDiagramLinks();

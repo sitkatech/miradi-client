@@ -28,6 +28,7 @@ import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
+import org.miradi.ids.IdList;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.TestCaseWithProject;
@@ -43,7 +44,9 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.Target;
 import org.miradi.project.FactorDeleteHelper;
 import org.miradi.project.ProjectRepairer;
@@ -69,6 +72,39 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		diagramModelToPasteInto = createDiagramModelToPasteInto();
 	}
 	
+	public void testPasteSharedDeletingOrphanedIndicatorAfterCopy() throws Exception
+	{
+		Goal orphanGoal = createOrphanGoal();
+		assertTrue("goal is not orphan?", orphanGoal.findObjectsThatReferToUs().isEmpty());
+		
+		Indicator indicator = getProject().createIndicator(threat);
+		TransferableMiradiList transferable = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector());
+		
+		deleteIndicatorBeforePasteAsShared(indicator);
+		assertEquals("Indicator was not deleted?", 0, getProject().getIndicatorPool().size());
+		assertEquals("Indicator was not removed from threat?", 0, threat.getDirectOrIndirectIndicatorRefs().size());
+		
+		pasteShared(diagramModelToPasteInto, transferable);
+		
+		assertEquals("Before copy Paste Orphan goal was deleted?", 1, getProject().getGoalPool().size());
+		assertEquals("Orphan Indicator as a result of paste was not deleted?", 0, getProject().getIndicatorPool().size());
+	}
+
+	private void deleteIndicatorBeforePasteAsShared(Indicator indicator) throws Exception
+	{
+		getProject().executeCommandsAsTransaction(indicator.createCommandsToDeleteChildrenAndObject());
+		getProject().fillObjectUsingCommand(threat, Cause.TAG_INDICATOR_IDS, new IdList(Indicator.getObjectType()));
+	}
+	
+	private Goal createOrphanGoal() throws Exception
+	{
+		Target target = getProject().createTarget();
+		Goal goalToOrphan = getProject().createGoal(target);
+		getProject().deleteObject(target);
+		
+		return goalToOrphan;
+	}
+
 	public void testPasteSharedGroupTwice() throws Exception
 	{
 		// get rid of target
