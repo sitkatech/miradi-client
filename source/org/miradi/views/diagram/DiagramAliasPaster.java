@@ -51,6 +51,7 @@ public class DiagramAliasPaster extends DiagramPaster
 		super(diagramPanelToUse, modelToUse, transferableListToUse);
 	}
 	
+	@Override
 	public void pasteFactorsAndLinks(Point startPoint) throws Exception
 	{
 		pasteFactors(startPoint);
@@ -68,6 +69,7 @@ public class DiagramAliasPaster extends DiagramPaster
 		createNewDiagramLinks();
 	}
 
+	@Override
 	public void pasteFactors(Point startPoint) throws Exception
 	{
 		dataHelper = new PointManipulater(startPoint, transferableList.getUpperMostLeftMostCorner());
@@ -111,6 +113,7 @@ public class DiagramAliasPaster extends DiagramPaster
 		return pastedFactorRefs;
 	}
 
+	@Override
 	public ORef getCorrospondingNewRef(ORef oldWrappedRef)
 	{
 		if(BaseObject.find(getProject(), oldWrappedRef) != null)
@@ -120,6 +123,7 @@ public class DiagramAliasPaster extends DiagramPaster
 		return newRef;
 	}
 	
+	@Override
 	public ORef getFactorLinkRef(ORef oldWrappedFactorLinkRef)
 	{
 		return oldWrappedFactorLinkRef;
@@ -133,6 +137,7 @@ public class DiagramAliasPaster extends DiagramPaster
 				};
 	}
 	
+	@Override
 	protected boolean canPasteTypeInDiagram(int type)
 	{
 		if (isPastingInSameDiagramType())
@@ -149,6 +154,7 @@ public class DiagramAliasPaster extends DiagramPaster
 		return true;
 	}
 	
+	@Override
 	protected boolean shouldCreateObject(ORef ref, EnhancedJsonObject json)
 	{
 		if (shouldCreateCopy(ref, json))
