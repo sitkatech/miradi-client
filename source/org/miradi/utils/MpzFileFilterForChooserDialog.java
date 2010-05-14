@@ -23,6 +23,7 @@ import org.miradi.main.EAM;
 
 public class MpzFileFilterForChooserDialog extends GenericMiradiFileFilter
 {
+	@Override
 	public String getDescription()
 	{
 		return EAM.text("FileFilter|Miradi Project Zip (*.mpz)");
