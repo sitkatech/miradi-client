@@ -43,7 +43,6 @@ import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.StringMapData;
-import org.miradi.views.umbrella.DeleteActivityDoer;
 
 public class Indicator extends BaseObject
 {
@@ -78,9 +77,18 @@ public class Indicator extends BaseObject
 	protected Vector<Command> createCommandsToDereferenceObject() throws Exception
 	{
 		Vector commandsToDereferences = super.createCommandsToDereferenceObject();
-		commandsToDereferences.addAll(DeleteActivityDoer.buildRemoveIndicatorFromRelevancyListCommands(getProject(), getRef()));
+		commandsToDereferences.addAll(buildRemoveIndicatorFromRelevancyListCommands(getProject(), getRef()));
 		
 		return commandsToDereferences;
+	}
+	
+	private Vector<Command> buildRemoveIndicatorFromRelevancyListCommands(Project project, ORef relevantIndicatorRefToRemove) throws Exception
+	{
+		Vector<Command> removeFromRelevancyListCommands = new Vector();
+		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(project, Objective.getObjectType(), Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
+		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(project, Goal.getObjectType(), Goal.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
+		
+		return removeFromRelevancyListCommands;
 	}
 		
 	@Override
