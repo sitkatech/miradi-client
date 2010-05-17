@@ -44,7 +44,6 @@ public class MiradiLogger
 	public void setExceptionLoggingDestination(PrintStream destination)
 	{
 		exceptionDestination = destination;
-		logVersions();
 	}
 	
 	public PrintStream getExceptionLoggingDestination()
@@ -114,6 +113,7 @@ public class MiradiLogger
 		if(exceptionDestination != null)
 		{
 			logTimeStamp();
+			logVersions();
 			e.printStackTrace(exceptionDestination);
 			exceptionDestination.flush();
 		}
