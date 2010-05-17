@@ -44,7 +44,7 @@ public class MiradiLogger
 	public void setExceptionLoggingDestination(PrintStream destination)
 	{
 		exceptionDestination = destination;
-		logMetadata();
+		logVersions();
 	}
 	
 	public PrintStream getExceptionLoggingDestination()
@@ -119,7 +119,7 @@ public class MiradiLogger
 		}
 	}
 
-	private void logMetadata()
+	private void logVersions()
 	{
 		try
 		{
