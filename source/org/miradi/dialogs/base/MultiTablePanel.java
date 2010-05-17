@@ -150,7 +150,7 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 	{
 	}
 
-	public void ensureObjectVisible(ORef ref)
+	public void ensureObjectSelectedAndVisible(ORef ref)
 	{
 	}
 	

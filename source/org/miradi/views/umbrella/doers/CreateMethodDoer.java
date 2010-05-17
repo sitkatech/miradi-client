@@ -52,7 +52,7 @@ public class CreateMethodDoer extends ObjectsDoer
 		try
 		{
 			ORef createdRef = createAndAppendId(indicator, Indicator.TAG_METHOD_IDS, Task.getObjectType());
-			getPicker().ensureObjectVisible(createdRef);
+			getPicker().ensureObjectSelectedAndVisible(createdRef);
 		}
 		catch (Exception e)
 		{

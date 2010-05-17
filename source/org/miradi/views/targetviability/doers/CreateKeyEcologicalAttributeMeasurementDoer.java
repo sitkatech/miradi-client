@@ -68,7 +68,7 @@ public class CreateKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcol
 			CommandSetObjectData addMeasurement = CommandSetObjectData.createAppendORefCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, newMeasurementRef);
 			getProject().executeCommand(addMeasurement);
 			
-			getPicker().ensureObjectVisible(newMeasurementRef);
+			getPicker().ensureObjectSelectedAndVisible(newMeasurementRef);
 		}
 		finally
 		{

@@ -750,7 +750,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		{
 		}
 
-		public void ensureObjectVisible(ORef ref)
+		public void ensureObjectSelectedAndVisible(ORef ref)
 		{
 		}
 		

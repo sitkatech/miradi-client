@@ -47,7 +47,7 @@ public class StaticPicker implements ObjectPicker
 	{
 	}
 
-	public void ensureObjectVisible(ORef ref)
+	public void ensureObjectSelectedAndVisible(ORef ref)
 	{
 	}
 

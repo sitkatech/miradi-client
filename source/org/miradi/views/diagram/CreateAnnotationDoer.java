@@ -74,7 +74,7 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 	public static void ensureObjectVisible(ObjectPicker picker, ORef createRef)
 	{
 		if(picker != null)
-			picker.ensureObjectVisible(createRef);
+			picker.ensureObjectSelectedAndVisible(createRef);
 	}
 
 	protected void doExtraWork(ORef newlyCreatedObjectRef) throws Exception

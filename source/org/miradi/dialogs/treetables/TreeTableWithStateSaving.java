@@ -224,12 +224,12 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	}
 	
 	@Override
-	public void ensureObjectVisible(ORef ref)
+	public void ensureObjectSelectedAndVisible(ORef ref)
 	{
 		try
 		{
 			addObjectToExpandedList(ref);
-			super.ensureObjectVisible(ref);
+			super.ensureObjectSelectedAndVisible(ref);
 			selectObjectAfterSwingClearsItDueToTreeStructureChange(findHierarchyForRef(ref), 0);
 			
 		}
