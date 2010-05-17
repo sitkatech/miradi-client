@@ -125,6 +125,8 @@ public class MiradiLogger
 		{
 			exceptionDestination.println("Miradi Version = " + VersionConstants.getVersion());
 			exceptionDestination.println("Java Version = " + EAM.getJavaVersion());
+			exceptionDestination.println("OS Name = " + System.getProperty("os.name"));
+			exceptionDestination.println("OS Version = " + System.getProperty("os.version"));
 		}
 		catch(Exception e)
 		{
