@@ -61,11 +61,11 @@ public class DiagramAliasPaster extends DiagramPaster
 		selectNewlyPastedItems();
 
 		ProjectRepairer repairer = new ProjectRepairer(getProject());
-		postPasteDeleteOrphansCreated();
+		deleteOrphansCreatedDuringPaste();
 		repairer.logOrphansAndSimilarProblems();
 	}
 	
-	private void postPasteDeleteOrphansCreated() throws Exception
+	private void deleteOrphansCreatedDuringPaste() throws Exception
 	{
 		Vector<String> factorDeepCopies = getFactorDeepCopies();
 		for(String jsonString : factorDeepCopies)
