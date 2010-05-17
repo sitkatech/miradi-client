@@ -232,7 +232,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		return selectedHierarchies;
 	}
 
-	public void ensureObjectVisible(ORef ref)
+	public void ensureObjectSelectedAndVisible(ORef ref)
 	{
 		// TODO Auto-generated method stub
 		// we should scroll the table as needed to make this 
