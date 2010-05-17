@@ -55,9 +55,10 @@ public class NewsPanel extends WizardRightSideHtmlViewer
 	{
 		final String VERSION_HEADER = "version=" + VersionConstants.getVersion();
 		final String BUILD_HEADER = "build=" + VersionConstants.getTimestamp();
+		final String LANGUAGE = "language=" + Translation.getCurrentLanguageCode();
 		final String NEWS_ADDRESS = "https://miradi.org/rest/latestnews";
 		
-		return new URL((NEWS_ADDRESS + "?" + VERSION_HEADER + "&"+  BUILD_HEADER));
+		return new URL((NEWS_ADDRESS + "?" + VERSION_HEADER + "&"+  BUILD_HEADER + "&" + LANGUAGE));
 	}
 	
 	class NewsRetriever extends RemoteHtmlRetriever
@@ -87,10 +88,8 @@ public class NewsPanel extends WizardRightSideHtmlViewer
 			{
 				EAM.logException(e);
 				return "Miradi news is not available";
-
 			}
 		}
-		
 	}
 	
 	private class NewsUpdater implements Runnable
@@ -99,9 +98,7 @@ public class NewsPanel extends WizardRightSideHtmlViewer
 		{
 			updateText();
 		}
-		
 	}
-	
 	
 	private void updateText()
 	{
