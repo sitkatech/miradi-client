@@ -67,6 +67,7 @@ public class NewsPanel extends WizardRightSideHtmlViewer
 			super(url);
 		}
 
+		@Override
 		public void run()
 		{
 			super.run();
