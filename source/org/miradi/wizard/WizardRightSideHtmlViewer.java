@@ -30,9 +30,11 @@ public class WizardRightSideHtmlViewer extends MiradiHtmlViewer
 	public WizardRightSideHtmlViewer(MainWindow mainWindow, HyperlinkHandler hyperLinkHandler)
 	{
 		super(mainWindow, hyperLinkHandler);
+		
 		setBackground(AppPreferences.getSideBarBackgroundColor());
 	}
 
+	@Override
 	public void customizeStyleSheet(StyleSheet style)
 	{
 		super.customizeStyleSheet(style);
@@ -49,5 +51,4 @@ public class WizardRightSideHtmlViewer extends MiradiHtmlViewer
 	final static String[] rules = {
 		"body {margin: 10; background-color: " + AppPreferences.getWizardSidebarBackgroundColorForCss() + ";}",
 	};
-
 }
