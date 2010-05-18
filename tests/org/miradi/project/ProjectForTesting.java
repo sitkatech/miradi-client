@@ -964,15 +964,15 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateSubTarget();
 		createAndPopulateTarget();
 		createAndPopulateThreat();
-		createAndPopulateDraftStrategy();
-		Strategy strategy = createAndPopulateStrategy();
-		createAndPopulateStrategyThreatTargetAssociation();
-		createAndPopulateObjective(strategy);
-		Task activity = createAndPopulateActivity();
-		createAndPopulateTask(activity, "Some Task Label");
-		createIndicatorContainingWhiteSpacePaddedCode();
-		createAndPopulateOrganization();
-		createAndPopulateExpenseAssignment();
+//		createAndPopulateDraftStrategy();
+//		Strategy strategy = createAndPopulateStrategy();
+//		createAndPopulateStrategyThreatTargetAssociation();
+//		createAndPopulateObjective(strategy);
+//		Task activity = createAndPopulateActivity();
+//		createAndPopulateTask(activity, "Some Task Label");
+//		createIndicatorContainingWhiteSpacePaddedCode();
+//		createAndPopulateOrganization();
+//		createAndPopulateExpenseAssignment();
 		
 	}
 
