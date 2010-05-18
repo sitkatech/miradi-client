@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-12 21:01-0500\n"
+"POT-Creation-Date: 2010-05-18 13:36-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -15,14 +15,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Miradi/source/org/miradi/main/EAM.java:377
+#: Miradi/source/org/miradi/main/EAM.java:380
 msgid ""
 "\n"
 "\n"
 "Miradi has attempted to save your latest changes, and will now exit."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:374
+#: Miradi/source/org/miradi/main/EAM.java:377
 msgid ""
 "\n"
 "\n"
@@ -32,7 +32,7 @@ msgid ""
 "   "
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:90
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:89
 msgid ""
 "\n"
 "  within "
@@ -106,7 +106,7 @@ msgstr ""
 msgid "(See Project tab)"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:72
+#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:71
 msgid "(Translation: %code %date)"
 msgstr ""
 
@@ -322,7 +322,7 @@ msgid ""
 "\">support@miradi.org<a>) for assistance</HTML>"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1070
+#: Miradi/source/org/miradi/main/MainWindow.java:1091
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -361,11 +361,11 @@ msgid ""
 "versa</HTML>"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:107
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:105
 msgid "<br> Please report this problem to the Miradi support team "
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:106
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:104
 msgid ""
 "<br> The operation completed successfully, but Undo/Redo may not work "
 "correctly."
@@ -707,7 +707,7 @@ msgid ""
 "the degree of reduction of the target population within the scope."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:59
+#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:58
 msgid "<strong>Version: %s</strong>"
 msgstr ""
 
@@ -1647,7 +1647,7 @@ msgstr ""
 msgid "All on One Page"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:81
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:78
 msgid "All subtasks within this item will be removed as well."
 msgstr ""
 
@@ -1669,24 +1669,20 @@ msgid ""
 "this problem has been resolved."
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:97
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:96
 msgid "An internal error prevented this operation"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:383
+#: Miradi/source/org/miradi/main/EAM.java:386
 msgid "An unexpected error has occurred"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:105
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:103
 msgid "An unexpected error has occurred."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:373
+#: Miradi/source/org/miradi/main/EAM.java:376
 msgid "An unexpected error occurred: "
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogfields/UndoRedoKeyHandler.java:57
-msgid "An unexpected error prevented that operation"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpAnalyzeProjectCapacity.java:35
@@ -1764,7 +1760,7 @@ msgstr ""
 msgid "Are you sure you want to delete this project? "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:47
+#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:46
 msgid "Are you sure?"
 msgstr ""
 
@@ -1919,7 +1915,7 @@ msgstr ""
 msgid "Attempt to execute command while in side effect mode"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:89
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:88
 msgid ""
 "Attempt to execute command while in side effect mode:\n"
 " tried  "
@@ -1931,7 +1927,7 @@ msgid ""
 "The pre-migration project was archived in: "
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:86
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:85
 msgid ""
 "Attempted to execute command as side effect before any command had been "
 "executed "
@@ -2027,7 +2023,7 @@ msgstr ""
 #: Miradi/source/org/miradi/database/DataUpgrader.java:48
 #: Miradi/source/org/miradi/database/DataUpgrader.java:60
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:71
-#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
+#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:52
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:224
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
@@ -2045,7 +2041,7 @@ msgstr ""
 msgid "Button|Continue"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
 msgid "Button|Delete"
 msgstr ""
 
@@ -2081,7 +2077,7 @@ msgstr ""
 msgid "Button|OK"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:52
+#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:51
 msgid "Button|Ok"
 msgstr ""
 
@@ -2097,7 +2093,7 @@ msgstr ""
 msgid "Button|Replace Backup"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
 msgid "Button|Retain"
 msgstr ""
 
@@ -2233,11 +2229,11 @@ msgstr ""
 msgid "Choose Folder"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/CloneGoalDoer.java:33
+#: Miradi/source/org/miradi/views/diagram/CloneGoalDoer.java:32
 msgid "Choose Goal to Create from"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/CloneIndicatorDoer.java:33
+#: Miradi/source/org/miradi/views/diagram/CloneIndicatorDoer.java:32
 msgid "Choose Indicator to Create from"
 msgstr ""
 
@@ -2245,7 +2241,7 @@ msgstr ""
 msgid "Choose Key Ecological Attribute to Create from"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/CloneObjectiveDoer.java:33
+#: Miradi/source/org/miradi/views/diagram/CloneObjectiveDoer.java:32
 msgid "Choose Objective to Create from"
 msgstr ""
 
@@ -2253,11 +2249,11 @@ msgstr ""
 msgid "Choose Relevant Indicator(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/doers/CloneStressDoer.java:33
+#: Miradi/source/org/miradi/views/diagram/doers/CloneStressDoer.java:32
 msgid "Choose Stress to Create from"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/doers/AbstractManageFactorTagDoer.java:56
+#: Miradi/source/org/miradi/views/diagram/doers/AbstractManageFactorTagDoer.java:55
 msgid "Choose Tags"
 msgstr ""
 
@@ -2440,13 +2436,13 @@ msgstr ""
 msgid "Current Status"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/ShowCurrentWizardFileNameDoer.java:41
+#: Miradi/source/org/miradi/views/umbrella/doers/ShowCurrentWizardFileNameDoer.java:40
 msgid ""
 "Current Wizard Step Name:\n"
 " %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/ExportRtfDoer.java:55
+#: Miradi/source/org/miradi/views/umbrella/doers/ExportRtfDoer.java:54
 msgid "Current page was exported as RTF."
 msgstr ""
 
@@ -2521,7 +2517,7 @@ msgstr ""
 msgid "Data Location"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:63
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:62
 msgid "Data was exported as tab delimited."
 msgstr ""
 
@@ -2563,8 +2559,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:60
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:62
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
-#: Miradi/source/org/miradi/main/EAM.java:444
-#: Miradi/source/org/miradi/main/EAM.java:445
+#: Miradi/source/org/miradi/main/EAM.java:447
+#: Miradi/source/org/miradi/main/EAM.java:448
 msgid "Delete"
 msgstr ""
 
@@ -2576,7 +2572,7 @@ msgstr ""
 msgid "Delete Resource"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:46
+#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:45
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:96
 msgid "Delete..."
 msgstr ""
@@ -2849,7 +2845,7 @@ msgstr ""
 msgid "Enter New Name"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/doers/CreateNamedTaggedObjectSetDoer.java:48
+#: Miradi/source/org/miradi/views/diagram/doers/CreateNamedTaggedObjectSetDoer.java:47
 msgid "Enter Tag Name"
 msgstr ""
 
@@ -2871,7 +2867,7 @@ msgstr ""
 msgid "Error Creating: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportZippedProjectFileDoer.java:71
+#: Miradi/source/org/miradi/views/umbrella/ExportZippedProjectFileDoer.java:73
 msgid "Error Export To Miradi Zip: Possible Write Protected: "
 msgstr ""
 
@@ -2919,7 +2915,7 @@ msgstr ""
 msgid "Error occurred while switching threat rating mode."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/ExportRtfDoer.java:60
+#: Miradi/source/org/miradi/views/umbrella/doers/ExportRtfDoer.java:59
 msgid "Error occurred while trying to export current page as RTF.\n"
 msgstr ""
 
@@ -2928,7 +2924,7 @@ msgid ""
 "Error occurred while trying to export selected report template as RTF.\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:68
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:67
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 
@@ -2956,7 +2952,7 @@ msgstr ""
 msgid "Euro"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:664
+#: Miradi/source/org/miradi/main/MainWindow.java:676
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -3058,7 +3054,7 @@ msgstr ""
 msgid "FileFilter|Miradi Language Pack (%s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/MpzFileFilterForChooserDialog.java:28
+#: Miradi/source/org/miradi/utils/MpzFileFilterForChooserDialog.java:29
 msgid "FileFilter|Miradi Project Zip (*.mpz)"
 msgstr ""
 
@@ -3347,7 +3343,7 @@ msgstr ""
 msgid "Habitat"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/HowToSaveDoer.java:45
+#: Miradi/source/org/miradi/views/umbrella/doers/HowToSaveDoer.java:44
 msgid "Help"
 msgstr ""
 
@@ -3544,7 +3540,7 @@ msgstr ""
 msgid "Indicators:"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:289
+#: Miradi/source/org/miradi/main/MainWindow.java:292
 msgid "Information"
 msgstr ""
 
@@ -3590,7 +3586,7 @@ msgid "Installed successfully"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/TabbedView.java:233
-#: Miradi/source/org/miradi/dialogs/base/ModelessDialogWithDirections.java:77
+#: Miradi/source/org/miradi/dialogs/base/ModelessDialogWithDirections.java:76
 msgid "Instructions"
 msgstr ""
 
@@ -4344,7 +4340,7 @@ msgstr ""
 msgid "Minor Issues - Ongoing, has minor issues that need attention"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:142
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:141
 msgid ""
 "Miradi could not complete that operation \n"
 "because it ran out of memory.\n"
@@ -4679,7 +4675,7 @@ msgstr ""
 msgid "PlanningSubViewName|Custom"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:59
+#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:60
 #: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:68
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
@@ -4856,7 +4852,7 @@ msgstr ""
 msgid "Project Resource Filter Editor"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceFilterStatusPanel.java:55
+#: Miradi/source/org/miradi/main/MainWindow.java:674
 msgid "Project Resource Filter Is On"
 msgstr ""
 
@@ -5044,7 +5040,7 @@ msgid "Results Chains"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:60
-#: Miradi/source/org/miradi/main/EAM.java:444
+#: Miradi/source/org/miradi/main/EAM.java:447
 msgid "Retain"
 msgstr ""
 
@@ -5392,7 +5388,7 @@ msgstr ""
 msgid "Standard Reports"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:687
+#: Miradi/source/org/miradi/main/MainWindow.java:708
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -6449,7 +6445,7 @@ msgid ""
 "task is represented by a grey flattened oval."
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/Task.java:339
+#: Miradi/source/org/miradi/objects/Task.java:348
 msgid "Task does not have a parent"
 msgstr ""
 
@@ -6493,18 +6489,18 @@ msgstr ""
 msgid "That language pack is already installed"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:512
+#: Miradi/source/org/miradi/main/MainWindow.java:516
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:516
+#: Miradi/source/org/miradi/main/MainWindow.java:520
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:508
+#: Miradi/source/org/miradi/main/MainWindow.java:512
 msgid "That project is in use by another copy of this application"
 msgstr ""
 
@@ -6523,7 +6519,7 @@ msgid ""
 "available at www.ConservationMeasures.org "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportZippedProjectFileDoer.java:60
+#: Miradi/source/org/miradi/views/umbrella/ExportZippedProjectFileDoer.java:62
 msgid ""
 "The MPZ file cannot be saved to a folder within the project being exported"
 msgstr ""
@@ -6556,7 +6552,7 @@ msgid ""
 "an older (supported) format."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:76
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr ""
 
@@ -6704,7 +6700,7 @@ msgstr ""
 msgid "Title|Contributing Factor Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:83
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
 msgid "Title|Delete"
 msgstr ""
 
@@ -6720,7 +6716,7 @@ msgstr ""
 msgid "Title|Direct Threat Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:392
+#: Miradi/source/org/miradi/main/EAM.java:395
 msgid "Title|Error"
 msgstr ""
 
@@ -6907,11 +6903,11 @@ msgstr ""
 msgid "Title|Threat Reduction Result Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/ConfigureLayers.java:45
+#: Miradi/source/org/miradi/views/diagram/ConfigureLayers.java:44
 msgid "Title|View Layers"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/ViewLegacyTncStrategyRankingDoer.java:38
+#: Miradi/source/org/miradi/views/umbrella/doers/ViewLegacyTncStrategyRankingDoer.java:37
 msgid "Title|View..."
 msgstr ""
 
@@ -6940,7 +6936,7 @@ msgid ""
 "application:\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1054
+#: Miradi/source/org/miradi/main/MainWindow.java:1075
 msgid "Unable to launch external web browser"
 msgstr ""
 
@@ -6959,7 +6955,7 @@ msgid ""
 "application:\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:843
+#: Miradi/source/org/miradi/main/MainWindow.java:864
 msgid "Unable to save preferences"
 msgstr ""
 
@@ -7007,7 +7003,7 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:503
+#: Miradi/source/org/miradi/main/MainWindow.java:507
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -7022,7 +7018,7 @@ msgstr ""
 msgid "Unknown error displaying diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:521
+#: Miradi/source/org/miradi/main/MainWindow.java:525
 msgid "Unknown error prevented opening that project"
 msgstr ""
 
@@ -7264,7 +7260,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:600
+#: Miradi/source/org/miradi/main/EAM.java:603
 msgid "Wintitle|Information"
 msgstr ""
 
@@ -7376,7 +7372,7 @@ msgstr ""
 msgid "[Not Named]"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/CreateConceptualModelPageDoer.java:97
+#: Miradi/source/org/miradi/views/diagram/CreateConceptualModelPageDoer.java:96
 msgid "[Page %s]"
 msgstr ""
 
