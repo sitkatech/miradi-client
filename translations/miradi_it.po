@@ -1,11 +1,11 @@
-# Language IT translations for j package.
+# Language IT translations for Miradi package.
 # Copyright (C) 2010 Benetech
-# This file is distributed under the same license as the j package.
+# This file is distributed under the GPL 3.0
 # Automatically generated, 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: j 2ee-hudson\n"
+"Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-18 13:40-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
