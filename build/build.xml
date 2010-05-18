@@ -542,7 +542,7 @@
 		<arg value="${po.file}"/>
 		<arg value="${miradi.pot}"/>
 	</exec>
-	<available property="po.exists" file="${translations.dir}"/>
+	<available property="po.exists" file="${translations.dir}/miradi_es.po"/>
 	<echo message="${po.exists}"/>
 	<echo message="building ${language.code} content jar (${po.file} exists? ${po.exists})"/>
 	<zip destfile="${dist.dir}/MiradiContent-${version.langpack}-${language.code}.jar">
