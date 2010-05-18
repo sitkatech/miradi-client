@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-12 20:56-0500\n"
+"POT-Creation-Date: 2010-05-18 13:36-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Miradi/source/org/miradi/main/EAM.java:377
+#: Miradi/source/org/miradi/main/EAM.java:380
 msgid ""
 "\n"
 "\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Miradi telah berusaha untuk menyimpan perubahan yang terakhir, dan sekarang "
 "akan ditutup. "
 
-#: Miradi/source/org/miradi/main/EAM.java:374
+#: Miradi/source/org/miradi/main/EAM.java:377
 msgid ""
 "\n"
 "\n"
@@ -42,7 +42,7 @@ msgstr ""
 "\n"
 " "
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:90
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:89
 msgid ""
 "\n"
 "  within "
@@ -126,7 +126,7 @@ msgstr "(Lihat tab Lokasi) "
 msgid "(See Project tab)"
 msgstr "(Lihat tab Proyek) "
 
-#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:72
+#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:71
 msgid "(Translation: %code %date)"
 msgstr "(Penerjemahan: : %code %date) "
 
@@ -345,7 +345,7 @@ msgstr ""
 "<BR>Silakan hubungi Dukungan Miradi (<a href=\"mailto:support@miradi.org"
 "\">support@miradi.org<a>) untuk mendapatkan bantuan</HTML> "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1070
+#: Miradi/source/org/miradi/main/MainWindow.java:1091
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -407,11 +407,11 @@ msgstr ""
 "<HTML>Saat menempelkan di antara proyek, tidak bisa menempelkan dari CM ke "
 "RC atau sebaliknya.</HTML> "
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:107
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:105
 msgid "<br> Please report this problem to the Miradi support team "
 msgstr "<br> Silakan laporkan masalah ini ke tim dukungan Miradi "
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:106
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:104
 msgid ""
 "<br> The operation completed successfully, but Undo/Redo may not work "
 "correctly."
@@ -823,7 +823,7 @@ msgid ""
 "the degree of reduction of the target population within the scope."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:59
+#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:58
 msgid "<strong>Version: %s</strong>"
 msgstr "<strong>Versi: %s</strong> "
 
@@ -1790,7 +1790,7 @@ msgstr "Sepakati peran tim "
 msgid "All on One Page"
 msgstr "Semua dalam Satu Halaman"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:81
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:78
 msgid "All subtasks within this item will be removed as well."
 msgstr "Semua subtugas dalam butir ini juga akan dihapus. "
 
@@ -1816,25 +1816,21 @@ msgstr ""
 "bantuan dan saran. Kami sarankan Anda tidak membuat perubahan terhadap "
 "proyek ini sampai masalah ini terselesaikan. "
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:97
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:96
 msgid "An internal error prevented this operation"
 msgstr "Kesalahan internal mencegah operasi ini "
 
-#: Miradi/source/org/miradi/main/EAM.java:383
+#: Miradi/source/org/miradi/main/EAM.java:386
 msgid "An unexpected error has occurred"
 msgstr "Kesalahan tak terduga telah terjadi "
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:105
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:103
 msgid "An unexpected error has occurred."
 msgstr "Kesalahan yang tak terduga telah terjadi. "
 
-#: Miradi/source/org/miradi/main/EAM.java:373
+#: Miradi/source/org/miradi/main/EAM.java:376
 msgid "An unexpected error occurred: "
 msgstr "Terjadi kesalahan yang tidak diharapkan: "
-
-#: Miradi/source/org/miradi/dialogfields/UndoRedoKeyHandler.java:57
-msgid "An unexpected error prevented that operation"
-msgstr "Kesalahan tak terduga telah menghalangi operasi tersebut "
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpAnalyzeProjectCapacity.java:35
 msgid "Analyze Project Capacity"
@@ -1913,7 +1909,7 @@ msgstr ""
 msgid "Are you sure you want to delete this project? "
 msgstr "Anda yakin ingin menghapus proyek ini? "
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:47
+#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:46
 msgid "Are you sure?"
 msgstr "Anda yakin? "
 
@@ -2072,7 +2068,7 @@ msgstr "Pengalokasian "
 msgid "Attempt to execute command while in side effect mode"
 msgstr "Berusaha mengeksekusi perintah saat berada dalam mode efek samping "
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:89
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:88
 msgid ""
 "Attempt to execute command while in side effect mode:\n"
 " tried  "
@@ -2088,7 +2084,7 @@ msgstr ""
 "Upaya memindahkan proyek ke format data saat ini GAGAL\n"
 "Proyek prapemindahan diarsipkan dalam: "
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:86
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:85
 msgid ""
 "Attempted to execute command as side effect before any command had been "
 "executed "
@@ -2191,7 +2187,7 @@ msgstr "Sebagai Salinan"
 #: Miradi/source/org/miradi/database/DataUpgrader.java:48
 #: Miradi/source/org/miradi/database/DataUpgrader.java:60
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:71
-#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
+#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:52
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:224
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
@@ -2209,7 +2205,7 @@ msgstr "Tutup "
 msgid "Button|Continue"
 msgstr "Lanjutkan "
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
 msgid "Button|Delete"
 msgstr "Hapus "
 
@@ -2245,7 +2241,7 @@ msgstr "Tidak "
 msgid "Button|OK"
 msgstr "OK "
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:52
+#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:51
 msgid "Button|Ok"
 msgstr "Baik "
 
@@ -2261,7 +2257,7 @@ msgstr "Ganti "
 msgid "Button|Replace Backup"
 msgstr "Ganti Cadangan  "
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
 msgid "Button|Retain"
 msgstr "Pertahankan "
 
@@ -2402,11 +2398,11 @@ msgstr "Pilih Folder Data "
 msgid "Choose Folder"
 msgstr "Pilih Folder "
 
-#: Miradi/source/org/miradi/views/diagram/CloneGoalDoer.java:33
+#: Miradi/source/org/miradi/views/diagram/CloneGoalDoer.java:32
 msgid "Choose Goal to Create from"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/CloneIndicatorDoer.java:33
+#: Miradi/source/org/miradi/views/diagram/CloneIndicatorDoer.java:32
 msgid "Choose Indicator to Create from"
 msgstr ""
 
@@ -2414,7 +2410,7 @@ msgstr ""
 msgid "Choose Key Ecological Attribute to Create from"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/CloneObjectiveDoer.java:33
+#: Miradi/source/org/miradi/views/diagram/CloneObjectiveDoer.java:32
 msgid "Choose Objective to Create from"
 msgstr ""
 
@@ -2422,11 +2418,11 @@ msgstr ""
 msgid "Choose Relevant Indicator(s)"
 msgstr "Pilih Indikator(-indikator) yang Relevan "
 
-#: Miradi/source/org/miradi/views/diagram/doers/CloneStressDoer.java:33
+#: Miradi/source/org/miradi/views/diagram/doers/CloneStressDoer.java:32
 msgid "Choose Stress to Create from"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/doers/AbstractManageFactorTagDoer.java:56
+#: Miradi/source/org/miradi/views/diagram/doers/AbstractManageFactorTagDoer.java:55
 msgid "Choose Tags"
 msgstr "Pilih Tag "
 
@@ -2624,7 +2620,7 @@ msgstr "Lainnya"
 msgid "Current Status"
 msgstr "Status Saat Ini "
 
-#: Miradi/source/org/miradi/views/umbrella/doers/ShowCurrentWizardFileNameDoer.java:41
+#: Miradi/source/org/miradi/views/umbrella/doers/ShowCurrentWizardFileNameDoer.java:40
 msgid ""
 "Current Wizard Step Name:\n"
 " %s"
@@ -2632,7 +2628,7 @@ msgstr ""
 "Nama Langkah Wizard Saat Ini:\n"
 " %s "
 
-#: Miradi/source/org/miradi/views/umbrella/doers/ExportRtfDoer.java:55
+#: Miradi/source/org/miradi/views/umbrella/doers/ExportRtfDoer.java:54
 msgid "Current page was exported as RTF."
 msgstr "Halaman yang tampak saat ini telah diekspor sebagai format RTF."
 
@@ -2709,7 +2705,7 @@ msgstr "Kuning Tua"
 msgid "Data Location"
 msgstr "Lokasi Data"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:63
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:62
 msgid "Data was exported as tab delimited."
 msgstr "Data diekspor sebagai data yang dipisahkan oleh tab. "
 
@@ -2751,8 +2747,8 @@ msgstr "Definisikan cakupan proyek "
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:60
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:62
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
-#: Miradi/source/org/miradi/main/EAM.java:444
-#: Miradi/source/org/miradi/main/EAM.java:445
+#: Miradi/source/org/miradi/main/EAM.java:447
+#: Miradi/source/org/miradi/main/EAM.java:448
 msgid "Delete"
 msgstr "Hapus "
 
@@ -2764,7 +2760,7 @@ msgstr "Hapus %s "
 msgid "Delete Resource"
 msgstr "Hapus Sumber Daya"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:46
+#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:45
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:96
 msgid "Delete..."
 msgstr "Hapus… "
@@ -3057,7 +3053,7 @@ msgstr ""
 msgid "Enter New Name"
 msgstr "Masukkan Nama Baru "
 
-#: Miradi/source/org/miradi/views/diagram/doers/CreateNamedTaggedObjectSetDoer.java:48
+#: Miradi/source/org/miradi/views/diagram/doers/CreateNamedTaggedObjectSetDoer.java:47
 msgid "Enter Tag Name"
 msgstr "Masukkan Tag Baru "
 
@@ -3079,7 +3075,7 @@ msgstr "Kesalahan "
 msgid "Error Creating: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportZippedProjectFileDoer.java:71
+#: Miradi/source/org/miradi/views/umbrella/ExportZippedProjectFileDoer.java:73
 msgid "Error Export To Miradi Zip: Possible Write Protected: "
 msgstr "Kesalahan Ekspor ke Zip Miradi: Mungkin Terproteksi Tulis: "
 
@@ -3127,7 +3123,7 @@ msgstr "Terjadi kesalahan saat menyimpan lokasi data "
 msgid "Error occurred while switching threat rating mode."
 msgstr "Terjadi kesalahan saat mengganti mode peringkat ancaman. "
 
-#: Miradi/source/org/miradi/views/umbrella/doers/ExportRtfDoer.java:60
+#: Miradi/source/org/miradi/views/umbrella/doers/ExportRtfDoer.java:59
 msgid "Error occurred while trying to export current page as RTF.\n"
 msgstr ""
 "Terjadi kesalahan saat mencoba mengekspor halaman yang tampak saat ini "
@@ -3140,7 +3136,7 @@ msgstr ""
 "Terjadi kesalahan saat mencoba mengekspor templat laporan terpilih sebagai "
 "format RTF.\n"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:68
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:67
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 "Terjadi kesalahan saat mencoba mengekspor ke berkas yang dibatasi tab. "
@@ -3169,7 +3165,7 @@ msgstr "Perkirakan biaya kegiatan dan pemantauan "
 msgid "Euro"
 msgstr "Euro"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:664
+#: Miradi/source/org/miradi/main/MainWindow.java:676
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -3274,7 +3270,7 @@ msgstr "MTE (*.mte) "
 msgid "FileFilter|Miradi Language Pack (%s)"
 msgstr "Paket Bahasa Miradi (%s) "
 
-#: Miradi/source/org/miradi/utils/MpzFileFilterForChooserDialog.java:28
+#: Miradi/source/org/miradi/utils/MpzFileFilterForChooserDialog.java:29
 msgid "FileFilter|Miradi Project Zip (*.mpz)"
 msgstr "Zip Proyek Miradi (*.mpz) "
 
@@ -3582,7 +3578,7 @@ msgstr "Sifat-sifat Kotak Grup "
 msgid "Habitat"
 msgstr "Habitat "
 
-#: Miradi/source/org/miradi/views/umbrella/doers/HowToSaveDoer.java:45
+#: Miradi/source/org/miradi/views/umbrella/doers/HowToSaveDoer.java:44
 msgid "Help"
 msgstr "Bantuan "
 
@@ -3788,7 +3784,7 @@ msgstr "Indikator Saja "
 msgid "Indicators:"
 msgstr "Indikator: "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:289
+#: Miradi/source/org/miradi/main/MainWindow.java:292
 msgid "Information"
 msgstr "Informasi "
 
@@ -3834,7 +3830,7 @@ msgid "Installed successfully"
 msgstr "Berhasil diinstal "
 
 #: Miradi/source/org/miradi/views/TabbedView.java:233
-#: Miradi/source/org/miradi/dialogs/base/ModelessDialogWithDirections.java:77
+#: Miradi/source/org/miradi/dialogs/base/ModelessDialogWithDirections.java:76
 msgid "Instructions"
 msgstr "Instruksi "
 
@@ -4618,7 +4614,7 @@ msgstr ""
 "Masalah Kecil – Sedang berlangsung, memiliki masalah-masalah kecil yang "
 "memerlukan perhatian"
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:142
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:141
 msgid ""
 "Miradi could not complete that operation \n"
 "because it ran out of memory.\n"
@@ -4973,7 +4969,7 @@ msgstr "Sifat-sifat Label Konfigurasi Tampilan Perencanaan "
 msgid "PlanningSubViewName|Custom"
 msgstr "Khusus "
 
-#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:59
+#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:60
 #: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:68
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
@@ -5159,7 +5155,7 @@ msgstr "Sumber Daya Proyek "
 msgid "Project Resource Filter Editor"
 msgstr "Editor Filter Sumber Daya Proyek "
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceFilterStatusPanel.java:55
+#: Miradi/source/org/miradi/main/MainWindow.java:674
 msgid "Project Resource Filter Is On"
 msgstr "Filter Sumber Daya Proyek Adalah Aktif "
 
@@ -5356,7 +5352,7 @@ msgid "Results Chains"
 msgstr "Rangkaian Hasil "
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:60
-#: Miradi/source/org/miradi/main/EAM.java:444
+#: Miradi/source/org/miradi/main/EAM.java:447
 msgid "Retain"
 msgstr "Pertahankan "
 
@@ -5734,7 +5730,7 @@ msgstr "Pemilik Kepentingan"
 msgid "Standard Reports"
 msgstr "Laporan Standar "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:687
+#: Miradi/source/org/miradi/main/MainWindow.java:708
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -6837,7 +6833,7 @@ msgstr ""
 "subtugas-subtugas. Dalam Miradi, tugas diwakili oleh bentuk oval pipih warna "
 "abu-abu."
 
-#: Miradi/source/org/miradi/objects/Task.java:339
+#: Miradi/source/org/miradi/objects/Task.java:348
 msgid "Task does not have a parent"
 msgstr ""
 
@@ -6881,7 +6877,7 @@ msgstr "Paket bahasa ini sudah ada. Ganti? "
 msgid "That language pack is already installed"
 msgstr "Paket bahasa ini sudah diinstal"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:512
+#: Miradi/source/org/miradi/main/MainWindow.java:516
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
@@ -6889,14 +6885,14 @@ msgstr ""
 "Proyek tersebut tidak bisa dibuka karena dibuat oleh versi baru dari "
 "aplikasi ini "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:516
+#: Miradi/source/org/miradi/main/MainWindow.java:520
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 "Proyek tersebut tidak bisa dibuka sebelum dipindahkan ke format data saat "
 "ini "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:508
+#: Miradi/source/org/miradi/main/MainWindow.java:512
 msgid "That project is in use by another copy of this application"
 msgstr "Proyek tersebut sedang digunakan oleh salinan lain dari aplikasi ini "
 
@@ -6922,7 +6918,7 @@ msgstr ""
 "untuk mengembangkan standar dan alat bantu yang dipakai bersama seperti "
 "Miradi. Informasi lebih lanjut bisa diperoleh di www.ConservationMeasures.org"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportZippedProjectFileDoer.java:60
+#: Miradi/source/org/miradi/views/umbrella/ExportZippedProjectFileDoer.java:62
 msgid ""
 "The MPZ file cannot be saved to a folder within the project being exported"
 msgstr ""
@@ -6964,7 +6960,7 @@ msgstr ""
 "mengekspor ulang proyek ke format lebih lama (yang didukung versi saat "
 "ini).  "
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:76
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr ""
 "Butir ini digunakan bersama, jadi akan dihapus dari lebih dari satu tempat. "
@@ -7129,7 +7125,7 @@ msgstr ""
 msgid "Title|Contributing Factor Properties"
 msgstr "Properti Faktor Kontribusi "
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:83
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
 msgid "Title|Delete"
 msgstr "Hapus "
 
@@ -7145,7 +7141,7 @@ msgstr "Sifat-sifat Diagram "
 msgid "Title|Direct Threat Properties"
 msgstr "Sifat-sifat Ancaman Langsung"
 
-#: Miradi/source/org/miradi/main/EAM.java:392
+#: Miradi/source/org/miradi/main/EAM.java:395
 msgid "Title|Error"
 msgstr "Kesalahan"
 
@@ -7332,11 +7328,11 @@ msgstr "Sifat-sifat Tim "
 msgid "Title|Threat Reduction Result Properties"
 msgstr "Sifat-sifat Hasil Pengurangan Ancaman"
 
-#: Miradi/source/org/miradi/views/diagram/ConfigureLayers.java:45
+#: Miradi/source/org/miradi/views/diagram/ConfigureLayers.java:44
 msgid "Title|View Layers"
 msgstr "Lihat Lapisan "
 
-#: Miradi/source/org/miradi/views/umbrella/doers/ViewLegacyTncStrategyRankingDoer.java:38
+#: Miradi/source/org/miradi/views/umbrella/doers/ViewLegacyTncStrategyRankingDoer.java:37
 msgid "Title|View..."
 msgstr "Tampilan… "
 
@@ -7371,7 +7367,7 @@ msgstr ""
 "aplikasi ini:\n"
 " "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1054
+#: Miradi/source/org/miradi/main/MainWindow.java:1075
 msgid "Unable to launch external web browser"
 msgstr "Tidak bisa meluncurkan perambah web eksternal "
 
@@ -7393,7 +7389,7 @@ msgstr ""
 "dari aplikasi ini:\n"
 " "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:843
+#: Miradi/source/org/miradi/main/MainWindow.java:864
 msgid "Unable to save preferences"
 msgstr "Tidak bisa menyimpan preferensi "
 
@@ -7443,7 +7439,7 @@ msgstr "Universitas"
 msgid "Unknown"
 msgstr "Tidak Dikenal"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:503
+#: Miradi/source/org/miradi/main/MainWindow.java:507
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -7461,7 +7457,7 @@ msgstr "Kode tak dikenal: "
 msgid "Unknown error displaying diagram"
 msgstr "Kesalahan tak dikenal saat menampilkan diagram "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:521
+#: Miradi/source/org/miradi/main/MainWindow.java:525
 msgid "Unknown error prevented opening that project"
 msgstr "Kesalahan tak dikenal mencegah dibukanya proyek "
 
@@ -7735,7 +7731,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr "Yang Menambah adalah: %s "
 
-#: Miradi/source/org/miradi/main/EAM.java:600
+#: Miradi/source/org/miradi/main/EAM.java:603
 msgid "Wintitle|Information"
 msgstr "Informasi "
 
@@ -7861,7 +7857,7 @@ msgstr "[Tidak Ada Proyek] "
 msgid "[Not Named]"
 msgstr "[Tidak Diberi Nama] "
 
-#: Miradi/source/org/miradi/views/diagram/CreateConceptualModelPageDoer.java:97
+#: Miradi/source/org/miradi/views/diagram/CreateConceptualModelPageDoer.java:96
 msgid "[Page %s]"
 msgstr "[Halaman %s] "
 
@@ -31359,6 +31355,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "An unexpected error prevented that operation"
+#~ msgstr "Kesalahan tak terduga telah menghalangi operasi tersebut "
 
 #~ msgid "Title|Edit Columns"
 #~ msgstr "Edit Kolom "
