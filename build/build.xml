@@ -548,7 +548,7 @@
         <fileset dir="${eam.src.root}" includes="**/*.jpg"/>
         <fileset dir="${eam.src.root}" includes="**/*.png"/>
         <fileset dir="${eam.src.root}" includes="**/*.gif"/>
-		<fileset dir="${translations.dir}" includes="miradi_${language_code}.po"/>
+		<fileset dir="${eam.translations.dir}" includes="miradi_${language_code}.po"/>
 	</zip>
 </target>
 
