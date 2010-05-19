@@ -24,7 +24,6 @@ import javax.xml.namespace.NamespaceContext;
 
 import org.miradi.project.Project;
 import org.miradi.xml.AbstractXmlImporter;
-import org.miradi.xml.XmpzNameSpaceContext;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConstants
