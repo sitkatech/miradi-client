@@ -37,16 +37,16 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	
 	public void testValidateEmptyProject() throws Exception
 	{
-		validateProject();
+		validateExportImportExportProject();
 	}
 	
 	public void testValidateFilledProject() throws Exception
 	{
 		getProject().populateEverything();
-		validateProject();
+		validateExportImportExportProject();
 	}
 	
-	private void validateProject() throws Exception
+	private void validateExportImportExportProject() throws Exception
 	{
 		File beforeXmlOutFile = createTempFileFromName("XmlBeforeImport.xml");		
 		File afterXmlOutFile = createTempFileFromName("XmlAfterFirstImport.xml");
