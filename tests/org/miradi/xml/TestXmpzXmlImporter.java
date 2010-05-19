@@ -28,9 +28,9 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.xml.wcs.WcsXmlExporter;
 
-public class TestXmlImporter extends TestCaseWithProject
+public class TestXmpzXmlImporter extends TestCaseWithProject
 {
-	public TestXmlImporter(String name)
+	public TestXmpzXmlImporter(String name)
 	{
 		super(name);
 	}
