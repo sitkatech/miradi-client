@@ -156,17 +156,18 @@ abstract public class AbstractXmlImporter
 
 	public String generatePath(Node parentNode, String[] pathElements)
 	{
-		String path = "";
+		StringBuffer path = new StringBuffer();
 		for (int index = 0; index < pathElements.length; ++index)
 		{
 			String elementName = getSafeParentNodeName(parentNode) + pathElements[index];
 			
 			String prefixedElement = getPrefixedElement(elementName);
-			path += prefixedElement;
+			path.append(prefixedElement);
 			if ((index + 1) < pathElements.length)
-				path += "/";
+				path.append("/");
 		}
-		return path;
+		
+		return path.toString();
 	}
 
 	private String getSafeParentNodeName(Node parentNode)
