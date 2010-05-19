@@ -42,7 +42,7 @@ public class XmlImporter extends AbstractXmlImporter implements WcsXmlConstants
 
 	private void importProjectSummaryElement() throws Exception
 	{
-		Node projectSumaryNode = getNode(getRootNode(), PROJECT_SUMMARY);
+		Node projectSumaryNode = getParentNode(getRootNode(), PROJECT_SUMMARY);
 				
 		importField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_NAME, getProjectMetadataRef(), ProjectMetadata.TAG_PROJECT_NAME);
 	}
