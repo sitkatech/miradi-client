@@ -20,50 +20,30 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml;
 
-import javax.xml.namespace.NamespaceContext;
+import org.miradi.objecthelpers.ORef;
+import org.w3c.dom.Node;
 
-import org.miradi.project.Project;
-import org.miradi.xml.wcs.WcsXmlConstants;
-
-public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConstants
+abstract public class AbstractXmpzObjectImporter
 {
-	public XmpzXmlImporter(Project projectToFill) throws Exception
+	public AbstractXmpzObjectImporter(XmpzXmlImporter importerToUse)
 	{
-		super(projectToFill);
+		importer = importerToUse;
 	}
 	
-	@Override
-	protected void importXml() throws Exception
+	protected XmpzXmlImporter getImporter()
 	{
-		new ProjectSummaryImporter(this).importElement();
-	}
-
-	@Override
-	protected String getNameSpaceVersion()
-	{
-		return NAME_SPACE_VERSION;
-	}
-
-	@Override
-	protected String getPartialNameSpace()
-	{
-		return PARTIAL_NAME_SPACE;
-	}
-
-	@Override
-	protected String getRootNodeName()
-	{
-		return CONSERVATION_PROJECT;
+		return importer;
 	}
 	
-	@Override
-	protected String getPrefix()
+	protected ORef getMetadataRef()
 	{
-		return PREFIX;
+		return getImporter().getProjectMetadataRef();
 	}
 	
-	protected NamespaceContext getNameSpaceContext()
+	protected void importField(Node node, String elementName, ORef objectRefToImportInto, String tag) throws Exception
 	{
-		return new XmpzNameSpaceContext();
+		getImporter().importField(node, elementName, objectRefToImportInto, tag);
 	}
+	
+	private XmpzXmlImporter importer;
 }
