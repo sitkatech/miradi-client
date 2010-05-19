@@ -77,7 +77,7 @@ public class TestXmlImporter extends TestCaseWithProject
 
 	private void importProject(File beforeXmlOutFile, ProjectForTesting projectToFill1) throws Exception
 	{		
-		XmlImporter xmlImporter = new XmlImporter(projectToFill1);
+		XmpzXmlImporter xmlImporter = new XmpzXmlImporter(projectToFill1);
 		FileInputStreamWithSeek fileInputStream = new FileInputStreamWithSeek(beforeXmlOutFile); 
 		try
 		{
