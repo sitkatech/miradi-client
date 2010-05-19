@@ -22,7 +22,7 @@ package org.miradi.xml;
 
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class XmlMiradiNameSpaceContext extends AbstractXmlNamespaceContext
+public class XmpzXmlNameSpaceContext extends AbstractXmlNamespaceContext
 {
 	@Override
 	protected String getNameSpace()
