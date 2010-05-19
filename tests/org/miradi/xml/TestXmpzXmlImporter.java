@@ -50,15 +50,15 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	{
 		File beforeXmlOutFile = createTempFileFromName("XmlBeforeImport.xml");		
 		File afterXmlOutFile = createTempFileFromName("XmlAfterFirstImport.xml");
-		ProjectForTesting projectToFill1 = new ProjectForTesting("ProjectToFill1");
+		ProjectForTesting projectToImportInto = new ProjectForTesting("ProjectToFill1");
 		try
 		{
 			exportProject(beforeXmlOutFile, getProject());
 			String firstExport = convertFileContentToString(beforeXmlOutFile);
 			
-			importProject(beforeXmlOutFile, projectToFill1);
+			importProject(beforeXmlOutFile, projectToImportInto);
 			
-			exportProject(afterXmlOutFile, projectToFill1);
+			exportProject(afterXmlOutFile, projectToImportInto);
 			String exportedAfterImport = convertFileContentToString(afterXmlOutFile);
 			assertEquals("incorrect project values after first import?", firstExport, exportedAfterImport);
 		}
@@ -66,7 +66,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		{
 			beforeXmlOutFile.delete();
 			afterXmlOutFile.delete();
-			projectToFill1.close();
+			projectToImportInto.close();
 		}	
 	}
 	
