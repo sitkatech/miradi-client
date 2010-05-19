@@ -59,8 +59,8 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 			importProject(beforeXmlOutFile, projectToFill1);
 			
 			exportProject(afterXmlOutFile, projectToFill1);
-			String secondExport = convertFileContentToString(afterXmlOutFile);
-			assertEquals("incorrect project values after first import?", firstExport, secondExport);
+			String exportedAfterImport = convertFileContentToString(afterXmlOutFile);
+			assertEquals("incorrect project values after first import?", firstExport, exportedAfterImport);
 		}
 		finally
 		{
