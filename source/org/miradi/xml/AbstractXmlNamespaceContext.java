@@ -25,7 +25,7 @@ import java.util.Iterator;
 import javax.xml.XMLConstants;
 import javax.xml.namespace.NamespaceContext;
 
-abstract public class AbstractMiradiNameSpaceContext implements NamespaceContext
+abstract public class AbstractXmlNamespaceContext implements NamespaceContext
 {
 	public String getNamespaceURI(String prefix) 
 	{
