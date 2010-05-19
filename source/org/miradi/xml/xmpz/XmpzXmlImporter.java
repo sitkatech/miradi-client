@@ -65,7 +65,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 	}
 	
 	@Override
-	protected NamespaceContext getNameSpaceContext()
+	protected NamespaceContext getNamespaceContext()
 	{
 		return new XmpzNameSpaceContext();
 	}

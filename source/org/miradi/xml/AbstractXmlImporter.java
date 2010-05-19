@@ -117,7 +117,7 @@ abstract public class AbstractXmlImporter
 	{
 		XPathFactory xPathFactory = XPathFactory.newInstance();
 		XPath  thisXPath = xPathFactory.newXPath();
-		thisXPath.setNamespaceContext(getNameSpaceContext());
+		thisXPath.setNamespaceContext(getNamespaceContext());
 		
 		return thisXPath;
 	}
@@ -314,7 +314,7 @@ abstract public class AbstractXmlImporter
 	
 	abstract protected String getPrefix();
 	
-	abstract protected NamespaceContext getNameSpaceContext();
+	abstract protected NamespaceContext getNamespaceContext();
 
 	private Project project;
 	private XPath xPath;
