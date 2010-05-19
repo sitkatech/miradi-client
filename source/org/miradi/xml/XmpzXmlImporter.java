@@ -27,9 +27,9 @@ import org.miradi.project.Project;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
-public class XmlImporter extends AbstractXmlImporter implements WcsXmlConstants
+public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConstants
 {
-	public XmlImporter(Project projectToFill) throws Exception
+	public XmpzXmlImporter(Project projectToFill) throws Exception
 	{
 		super(projectToFill);
 	}
