@@ -18,11 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml;
+package org.miradi.xml.xmpz;
 
 import javax.xml.namespace.NamespaceContext;
 
 import org.miradi.project.Project;
+import org.miradi.xml.AbstractXmlImporter;
+import org.miradi.xml.XmpzNameSpaceContext;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConstants

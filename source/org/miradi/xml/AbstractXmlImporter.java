@@ -211,14 +211,14 @@ abstract public class AbstractXmlImporter
 		return (Node) expression.evaluate(node, XPathConstants.NODE);
 	}
 	
-	protected Node getParentNode(Node node, String element) throws Exception
+	public Node getParentNode(Node node, String element) throws Exception
 	{
 		String path = generatePath(null, new String[]{element});
 		XPathExpression expression = getXPath().compile(path);
 		return (Node) expression.evaluate(node, XPathConstants.NODE);
 	}
 	
-	protected Node getRootNode() throws Exception
+	public Node getRootNode() throws Exception
 	{
 		return getNode(generatePath(null, new String[]{getRootNodeName()}));
 	}

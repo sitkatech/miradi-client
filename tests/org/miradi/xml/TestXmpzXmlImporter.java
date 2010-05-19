@@ -27,6 +27,7 @@ import org.martus.util.inputstreamwithseek.FileInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.xml.wcs.WcsXmlExporter;
+import org.miradi.xml.xmpz.XmpzXmlImporter;
 
 public class TestXmpzXmlImporter extends TestCaseWithProject
 {
