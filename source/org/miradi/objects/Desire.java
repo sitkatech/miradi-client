@@ -136,6 +136,9 @@ abstract public class Desire extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS))
 			return getRelevantStrategyActivityRefsAsString();
 		
+		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_ACTIVITY_REFS))
+			return getRelevantActivityRefsAsString();
+		
 		if (fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE))
 			return getLatestProgressPercentComplete();
 		
@@ -213,6 +216,21 @@ abstract public class Desire extends BaseObject
 		try
 		{
 			refList = getRelevantStrategyAndActivityRefs();
+			return refList.toString();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+
+	protected String getRelevantActivityRefsAsString()
+	{
+		ORefList refList;
+		try
+		{
+			refList = getRelevantActivityRefs();
 			return refList.toString();
 		}
 		catch(Exception e)
@@ -306,6 +324,14 @@ abstract public class Desire extends BaseObject
 		RelevancyOverrideSet relevantOverrides = getStrategyActivityRelevancyOverrideSet();
 	
 		return calculateRefList(relevantRefList, relevantOverrides);
+	}
+
+	public ORefList getRelevantActivityRefs() throws Exception
+	{
+		ORefSet relevantRefList = new ORefSet(getDirectlyUpstreamNonDraftStrategies());
+		RelevancyOverrideSet relevantOverrides = getStrategyActivityRelevancyOverrideSet();
+	
+		return calculateRefList(relevantRefList, relevantOverrides).getFilteredBy(Task.getObjectType());
 	}
 
 	public RelevancyOverrideSet getStrategyActivityRelevancyOverrideSet()
@@ -417,6 +443,7 @@ abstract public class Desire extends BaseObject
 		multiLineFactor = new PseudoStringData(PSEUDO_TAG_FACTOR);
 		relevantIndicatorRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
 		relevantStrategyRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS);
+		relevantActivityRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_ACTIVITY_REFS);
 		latestProgressPercentComplete = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE);
 		latestProgressPercentDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS);
 		
@@ -433,6 +460,7 @@ abstract public class Desire extends BaseObject
 		addField(PSEUDO_TAG_FACTOR, multiLineFactor);
 		addField(PSEUDO_TAG_RELEVANT_INDICATOR_REFS, relevantIndicatorRefs);
 		addField(PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS, relevantStrategyRefs);
+		addField(PSEUDO_TAG_RELEVANT_ACTIVITY_REFS, relevantActivityRefs);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE, latestProgressPercentComplete);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS, latestProgressPercentDetails);
 	}
@@ -445,6 +473,7 @@ abstract public class Desire extends BaseObject
 	public static final String TAG_PROGRESS_PERCENT_REFS = "ProgressPrecentRefs";
 	public static final String PSEUDO_TAG_RELEVANT_INDICATOR_REFS = "PseudoRelevantIndicatorRefs";
 	public static final String PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS = "PseudoRelevantStrategyRefs";
+	public static final String PSEUDO_TAG_RELEVANT_ACTIVITY_REFS = "PseudoRelevantActivityRefs";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE = "PseudoLatestProgressPercentComplete";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS = "PseudoLatestProgressPercentDetails";
 	public final static String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
@@ -464,6 +493,7 @@ abstract public class Desire extends BaseObject
 	private ObjectData multiLineFactor;
 	private ObjectData relevantIndicatorRefs;
 	private ObjectData relevantStrategyRefs;
+	private ObjectData relevantActivityRefs;
 	private ObjectData latestProgressPercentComplete;
 	private ObjectData latestProgressPercentDetails;
 }
