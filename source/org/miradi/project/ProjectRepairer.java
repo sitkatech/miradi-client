@@ -36,7 +36,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
-import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
@@ -114,7 +113,7 @@ public class ProjectRepairer
 		ORefSet orphanRefs = new ORefSet();
 		for(ORef possibleOrphanRef : possibleOrphanRefs)
 		{
-			BaseObject possibleOrphan = Factor.findFactor(getProject(), possibleOrphanRef);
+			BaseObject possibleOrphan = BaseObject.find(getProject(), possibleOrphanRef);
 			ORefList referrerRefs = possibleOrphan.findObjectsThatReferToUs(referringObjectType);
 			if (referrerRefs.isEmpty())
 				orphanRefs.addRef(possibleOrphan);
