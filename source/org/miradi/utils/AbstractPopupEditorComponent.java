@@ -31,6 +31,7 @@ import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.dialogs.tablerenderers.MultiLineEditableObjectTableCellEditorOrRendererFactory;
 import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
 
 abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 {
@@ -102,19 +103,33 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 		popupInvokeButton.setEnabled(isEnabled);
 	}
 	
-	abstract protected void invokePopupEditor();
+	abstract protected void invokePopupEditor() throws Exception;
 
 	private class PopUpEditorHandler extends MouseAdapter implements ActionListener 
 	{
 		@Override
-		public void mouseReleased(MouseEvent e)
+		public void mouseReleased(MouseEvent event)
 		{
-			invokePopupEditor();
+			try
+			{
+				invokePopupEditor();
+			}
+			catch(Exception e)
+			{
+				EAM.unexpectedErrorDialog(e);
+			}
 		}
 		
 		public void actionPerformed(ActionEvent event)
 		{
-			invokePopupEditor();	
+			try
+			{
+				invokePopupEditor();
+			}
+			catch(Exception e)
+			{
+				EAM.unexpectedErrorDialog(e);
+			}
 		}
 	}
 	

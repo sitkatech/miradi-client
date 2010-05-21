@@ -28,7 +28,7 @@ import org.miradi.questions.CurrencyTypeQuestion;
 
 public class SummaryPlanningFinancialSubPanel extends ObjectDataInputPanel
 {
-	public SummaryPlanningFinancialSubPanel(MainWindow mainWindowToUse)
+	public SummaryPlanningFinancialSubPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse.getProject(), mainWindowToUse.getProject().getMetadata().getRef());
 		

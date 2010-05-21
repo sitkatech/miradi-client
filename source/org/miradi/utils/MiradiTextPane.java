@@ -32,7 +32,7 @@ import org.miradi.main.MainWindow;
 
 public class MiradiTextPane extends JTextPane
 {
-	public MiradiTextPane(MainWindow mainWindow, int fixedApproximateColumnCount, int initialApproximateRowCount)
+	public MiradiTextPane(MainWindow mainWindow, int fixedApproximateColumnCount, int initialApproximateRowCount) throws Exception
 	{
 		setFont(mainWindow.getUserDataPanelFont());
 		int fontWidth = getFontMetrics(getFont()).stringWidth("W");

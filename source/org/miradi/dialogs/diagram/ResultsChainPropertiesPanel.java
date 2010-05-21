@@ -29,7 +29,7 @@ import org.miradi.project.Project;
 
 public class ResultsChainPropertiesPanel extends ObjectDataInputPanelWithSections
 {
-	public ResultsChainPropertiesPanel(Project projectToUse, ORef resultsChainRef)
+	public ResultsChainPropertiesPanel(Project projectToUse, ORef resultsChainRef) throws Exception
 	{
 		super(projectToUse, resultsChainRef);
 		createSingleSection(EAM.text("Results Chain"));

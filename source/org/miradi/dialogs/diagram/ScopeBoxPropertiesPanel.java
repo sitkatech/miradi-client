@@ -31,7 +31,7 @@ import org.miradi.questions.ScopeBoxTypeQuestion;
 
 public class ScopeBoxPropertiesPanel extends ObjectDataInputPanel
 {
-	public ScopeBoxPropertiesPanel(Project projectToUse, DiagramFactor diagramFactor)
+	public ScopeBoxPropertiesPanel(Project projectToUse, DiagramFactor diagramFactor) throws Exception
 	{
 		super(projectToUse, ObjectType.SCOPE_BOX, diagramFactor.getWrappedId());
 

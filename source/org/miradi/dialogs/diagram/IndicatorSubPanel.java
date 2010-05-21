@@ -29,7 +29,7 @@ import org.miradi.project.Project;
 
 public class IndicatorSubPanel extends ObjectDataInputPanel
 {
-	public IndicatorSubPanel(Project projectToUse, ORef orefToUse)
+	public IndicatorSubPanel(Project projectToUse, ORef orefToUse) throws Exception
 	{
 		super(projectToUse, orefToUse);
 

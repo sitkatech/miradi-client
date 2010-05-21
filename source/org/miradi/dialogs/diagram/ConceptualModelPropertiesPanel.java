@@ -29,7 +29,7 @@ import org.miradi.project.Project;
 
 public class ConceptualModelPropertiesPanel extends ObjectDataInputPanelWithSections
 {
-	public ConceptualModelPropertiesPanel(Project projectToUse, ORef diagramObjectRef)
+	public ConceptualModelPropertiesPanel(Project projectToUse, ORef diagramObjectRef) throws Exception
 	{
 		super(projectToUse, diagramObjectRef);
 		createSingleSection(EAM.text("CM Page"));

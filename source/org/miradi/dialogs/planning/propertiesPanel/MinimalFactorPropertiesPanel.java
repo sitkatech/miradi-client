@@ -35,7 +35,7 @@ public class MinimalFactorPropertiesPanel extends ObjectDataInputPanelWithSectio
 		createSingleSection(EAM.text("Summary"));
 	}
 	
-	protected void createAndAddFields(String translatedNameLabel, Icon icon)
+	protected void createAndAddFields(String translatedNameLabel, Icon icon) throws Exception
 	{
 		ObjectDataInputField shortLabelField = createShortStringField(Factor.TAG_SHORT_LABEL);
 		ObjectDataInputField labelField = createExpandableField(Factor.TAG_LABEL);

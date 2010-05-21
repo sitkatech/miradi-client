@@ -28,7 +28,7 @@ import org.miradi.project.Project;
 
 public class HumanStakeholderPanel extends ObjectDataInputPanel
 {
-	public HumanStakeholderPanel(Project projectToUse, ORef orefToUse)
+	public HumanStakeholderPanel(Project projectToUse, ORef orefToUse) throws Exception
 	{
 		super(projectToUse, orefToUse);
 

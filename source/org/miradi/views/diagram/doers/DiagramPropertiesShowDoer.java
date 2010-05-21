@@ -49,7 +49,7 @@ public class DiagramPropertiesShowDoer extends ObjectsDoer
 		getView().showFloatingPropertiesDialog(dlg);
 	}
 	
-	private AbstractObjectDataInputPanel createDiagramPropertiesPanel(ORef diagramObjectRef)
+	private AbstractObjectDataInputPanel createDiagramPropertiesPanel(ORef diagramObjectRef) throws Exception
 	{
 		if (ResultsChainDiagram.is(diagramObjectRef))
 			return new ResultsChainPropertiesPanel(getProject(), diagramObjectRef);

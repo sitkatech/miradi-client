@@ -32,7 +32,7 @@ import org.miradi.questions.ViabilityModeQuestion;
 
 public class TargetCoreSubPanel extends ObjectDataInputPanel
 {
-	public TargetCoreSubPanel(Project projectToUse, int targetType)
+	public TargetCoreSubPanel(Project projectToUse, int targetType) throws Exception
 	{
 		super(projectToUse, targetType);
 	

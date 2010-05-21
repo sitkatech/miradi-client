@@ -26,7 +26,7 @@ import org.miradi.main.MainWindow;
 
 public class ObjectExpandingMultilineInputField extends ObjectMultilineInputField
 {
-	public ObjectExpandingMultilineInputField(MainWindow mainWindow, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse)
+	public ObjectExpandingMultilineInputField(MainWindow mainWindow, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse) throws Exception
 	{
 		super(mainWindow, objectTypeToUse, objectIdToUse, tagToUse, 1, columnsToUse);
 	}

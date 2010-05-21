@@ -36,7 +36,7 @@ import org.miradi.questions.StatusQuestion;
 
 public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 {
-	public IndicatorViabilityRatingsSubPanel(Project projectToUse, ORef orefToUse)
+	public IndicatorViabilityRatingsSubPanel(Project projectToUse, ORef orefToUse) throws Exception
 	{
 		super(projectToUse, orefToUse);
 		

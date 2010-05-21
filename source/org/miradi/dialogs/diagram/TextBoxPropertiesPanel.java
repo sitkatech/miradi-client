@@ -34,7 +34,7 @@ import org.miradi.questions.TextBoxZOrderQuestion;
 
 public class TextBoxPropertiesPanel extends ObjectDataInputPanel
 {
-	public TextBoxPropertiesPanel(Project projectToUse, DiagramFactor diagramFactor)
+	public TextBoxPropertiesPanel(Project projectToUse, DiagramFactor diagramFactor) throws Exception
 	{
 		super(projectToUse, diagramFactor.getWrappedORef());
 

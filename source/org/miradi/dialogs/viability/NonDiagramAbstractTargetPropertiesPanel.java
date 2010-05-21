@@ -33,7 +33,7 @@ import org.miradi.questions.StatusQuestion;
 
 public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPanelWithSections
 {
-	public NonDiagramAbstractTargetPropertiesPanel(Project projectToUse, int targetTypeToUse)
+	public NonDiagramAbstractTargetPropertiesPanel(Project projectToUse, int targetTypeToUse) throws Exception
 	{
 		super(projectToUse, targetTypeToUse);
 		

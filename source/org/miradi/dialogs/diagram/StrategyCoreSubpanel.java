@@ -35,7 +35,7 @@ import org.miradi.questions.StrategyTaxonomyQuestion;
 
 public class StrategyCoreSubpanel extends ObjectDataInputPanel
 {
-	public StrategyCoreSubpanel(Project projectToUse, Actions actions, int objectType)
+	public StrategyCoreSubpanel(Project projectToUse, Actions actions, int objectType) throws Exception
 	{
 		super(projectToUse, objectType);
 

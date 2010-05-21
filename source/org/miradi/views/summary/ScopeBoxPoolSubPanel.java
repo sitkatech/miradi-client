@@ -21,6 +21,7 @@ package org.miradi.views.summary;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.layout.OneColumnGridLayout;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ScopeBox;
@@ -28,7 +29,7 @@ import org.miradi.project.Project;
 
 public class ScopeBoxPoolSubPanel extends ObjectDataInputPanel
 {
-	public ScopeBoxPoolSubPanel(Project projectToUse)
+	public ScopeBoxPoolSubPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, ScopeBox.getObjectType());
 		
@@ -44,10 +45,17 @@ public class ScopeBoxPoolSubPanel extends ObjectDataInputPanel
 	{
 		super.setObjectRefs(orefsToUse);
 		
-		reloadSubPanels();
+		try
+		{
+			reloadSubPanels();
+		}
+		catch(Exception e)
+		{
+			EAM.panic(e);
+		}
 	}
 
-	private void reloadSubPanels()
+	private void reloadSubPanels() throws Exception
 	{
 		removeAll();
 		

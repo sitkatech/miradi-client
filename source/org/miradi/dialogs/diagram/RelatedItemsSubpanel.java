@@ -26,7 +26,7 @@ import org.miradi.project.Project;
 
 public class RelatedItemsSubpanel extends ObjectDataInputPanel
 {
-	public RelatedItemsSubpanel(Project projectToUse, int objectType)
+	public RelatedItemsSubpanel(Project projectToUse, int objectType) throws Exception
 	{
 		super(projectToUse, objectType);
 		

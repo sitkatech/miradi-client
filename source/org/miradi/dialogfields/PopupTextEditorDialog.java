@@ -27,7 +27,7 @@ import org.miradi.utils.MiradiTextPane;
 
 public class PopupTextEditorDialog extends ModalDialogWithClose
 {
-	public PopupTextEditorDialog(MainWindow mainWindow, String title, String initialText)
+	public PopupTextEditorDialog(MainWindow mainWindow, String title, String initialText) throws Exception
 	{
 		super(mainWindow, title);
 		

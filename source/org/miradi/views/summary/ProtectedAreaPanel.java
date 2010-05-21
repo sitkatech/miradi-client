@@ -30,7 +30,7 @@ import org.miradi.questions.ProtectedAreaCategoryQuestion;
 
 public class ProtectedAreaPanel extends ObjectDataInputPanel
 {
-	public ProtectedAreaPanel(Project projectToUse, ORef[] orefsToUse)
+	public ProtectedAreaPanel(Project projectToUse, ORef[] orefsToUse) throws Exception
 	{
 		super(projectToUse, orefsToUse);
 		

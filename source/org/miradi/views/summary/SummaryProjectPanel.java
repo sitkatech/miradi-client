@@ -34,7 +34,7 @@ import org.miradi.rtf.RtfWriter;
 
 public class SummaryProjectPanel extends ObjectDataInputPanel
 {
-	public SummaryProjectPanel(Project projectToUse, ORef refToUse)
+	public SummaryProjectPanel(Project projectToUse, ORef refToUse) throws Exception
 	{
 		super(projectToUse, refToUse);
 		
