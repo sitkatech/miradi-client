@@ -26,7 +26,7 @@ import org.miradi.project.Project;
 
 public class PlanningViewContributingFactorPropertiesPanel extends MinimalFactorPropertiesPanel
 {
-	public PlanningViewContributingFactorPropertiesPanel(Project projectToUse)
+	public PlanningViewContributingFactorPropertiesPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, Cause.getObjectType());
 		

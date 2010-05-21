@@ -24,7 +24,7 @@ import org.miradi.main.MainWindow;
 
 public class ObjectMultilineDisplayField extends ObjectMultilineInputField
 {
-	public ObjectMultilineDisplayField(MainWindow mainWindow, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
+	public ObjectMultilineDisplayField(MainWindow mainWindow, int objectTypeToUse, BaseId objectIdToUse, String tagToUse) throws Exception
 	{
 		super(mainWindow, objectTypeToUse, objectIdToUse, tagToUse, 1, DEFAULT_WIDE_FIELD_CHARACTERS);
 		setEditable(false);

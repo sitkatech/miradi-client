@@ -40,12 +40,12 @@ import org.miradi.questions.StatusQuestion;
 
 public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanel
 {
-	public IndicatorFutureStatusSubPanel(Project project)
+	public IndicatorFutureStatusSubPanel(Project project) throws Exception
 	{
 		this(project, new ORef(Indicator.getObjectType(), BaseId.INVALID));
 	}
 	
-	public IndicatorFutureStatusSubPanel(Project projectToUse, ORef orefToUse)
+	public IndicatorFutureStatusSubPanel(Project projectToUse, ORef orefToUse) throws Exception
 	{
 		super(projectToUse, orefToUse.getObjectType());
 

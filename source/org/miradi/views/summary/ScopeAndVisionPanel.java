@@ -27,7 +27,7 @@ import org.miradi.project.Project;
 
 public class ScopeAndVisionPanel extends ObjectDataInputPanel
 {
-	public ScopeAndVisionPanel(Project projectToUse, ORef orefToUse)
+	public ScopeAndVisionPanel(Project projectToUse, ORef orefToUse) throws Exception
 	{
 		super(projectToUse, orefToUse);
 

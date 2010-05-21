@@ -26,7 +26,7 @@ import org.miradi.project.Project;
 
 public class PlanningViewIntermediateResultPropertiesPanel extends MinimalFactorPropertiesPanel
 {
-	public PlanningViewIntermediateResultPropertiesPanel(Project projectToUse)
+	public PlanningViewIntermediateResultPropertiesPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, IntermediateResult.getObjectType());
 		

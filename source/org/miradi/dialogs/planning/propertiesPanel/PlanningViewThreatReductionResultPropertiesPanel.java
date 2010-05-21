@@ -26,7 +26,7 @@ import org.miradi.project.Project;
 
 public class PlanningViewThreatReductionResultPropertiesPanel extends MinimalFactorPropertiesPanel
 {
-	public PlanningViewThreatReductionResultPropertiesPanel(Project projectToUse)
+	public PlanningViewThreatReductionResultPropertiesPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, ThreatReductionResult.getObjectType());
 		

@@ -33,6 +33,7 @@ import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.ids.BaseId;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.PopupEditorButton;
@@ -40,7 +41,7 @@ import org.miradi.utils.Translation;
 
 public class ObjectScrollingMultilineInputField extends ObjectMultilineInputField
 {
-	public ObjectScrollingMultilineInputField(MainWindow mainWindow, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse)
+	public ObjectScrollingMultilineInputField(MainWindow mainWindow, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse) throws Exception
 	{
 		super(mainWindow, objectTypeToUse, objectIdToUse, tagToUse, INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT, columnsToUse);
 	}
@@ -81,13 +82,20 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 
 	private class PopupButtonHandler implements ActionListener
 	{
-		public void actionPerformed(ActionEvent e)
+		public void actionPerformed(ActionEvent event)
 		{
-			String fieldLabel = Translation.fieldLabel(getObjectType(), getTag());
-			dialog = new PopupTextEditorDialog(getMainWindow(), fieldLabel, getTextField().getText());
-			dialog.addWindowListener(new WindowCloseSaveHandler());
-			Utilities.centerDlg(dialog);
-			dialog.setVisible(true);
+			try
+			{
+				String fieldLabel = Translation.fieldLabel(getObjectType(), getTag());
+				dialog = new PopupTextEditorDialog(getMainWindow(), fieldLabel, getTextField().getText());
+				dialog.addWindowListener(new WindowCloseSaveHandler());
+				Utilities.centerDlg(dialog);
+				dialog.setVisible(true);
+			}
+			catch(Exception e)
+			{
+				EAM.unexpectedErrorDialog(e);
+			}
 		}
 
 		private class WindowCloseSaveHandler extends WindowAdapter

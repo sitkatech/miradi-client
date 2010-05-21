@@ -28,14 +28,14 @@ import org.miradi.utils.MiradiTextPane;
 
 public abstract class ObjectMultilineInputField extends ObjectTextInputField
 {
-	protected ObjectMultilineInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int initialVisibleRows, int columnsToUse)
+	protected ObjectMultilineInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int initialVisibleRows, int columnsToUse) throws Exception
 	{
 		super(mainWindowToUse.getProject(), objectTypeToUse, objectIdToUse, tagToUse, createTextComponent(mainWindowToUse, initialVisibleRows, columnsToUse));
 		
 		mainWindow = mainWindowToUse;
 	}
 
-	private static JTextComponent createTextComponent(MainWindow mainWindow, int initialVisibleRows, int columnsToUse)
+	private static JTextComponent createTextComponent(MainWindow mainWindow, int initialVisibleRows, int columnsToUse) throws Exception
 	{
 		return new MiradiTextPane(mainWindow, columnsToUse, initialVisibleRows);
 	}

@@ -170,7 +170,7 @@ public class PropertiesDoer extends LocationDoer
 		}
 	}
 
-	void doScopeBoxProperties(DiagramFactor diagramFactor) throws CommandFailedException
+	void doScopeBoxProperties(DiagramFactor diagramFactor) throws Exception
 	{
 		ScopeBoxPropertiesPanel scopeBoxPanel = new ScopeBoxPropertiesPanel(getProject(), diagramFactor);
 		ScopeBoxPropertiesDialog dlg = new ScopeBoxPropertiesDialog(getMainWindow(), scopeBoxPanel); 
@@ -224,14 +224,14 @@ public class PropertiesDoer extends LocationDoer
 		view.showNodeProperties(diagramFactor, tabToStartOn);
 	}
 	
-	private void doTextBoxProperties(DiagramFactor diagramFactor)
+	private void doTextBoxProperties(DiagramFactor diagramFactor) throws Exception
 	{
 		TextBoxPropertiesPanel panel = new TextBoxPropertiesPanel(getProject(), diagramFactor);
 		ModelessDialogWithClose propertiesDialog = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription()); 
 		getView().showFloatingPropertiesDialog(propertiesDialog);
 	}
 
-	private void doGroupBoxProperties(DiagramFactor diagramFactor)
+	private void doGroupBoxProperties(DiagramFactor diagramFactor) throws Exception
 	{
 		GroupBoxPropertiesPanel panel = new GroupBoxPropertiesPanel(getProject(), diagramFactor);
 		ModelessDialogWithClose propertiesDialog = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription()); 

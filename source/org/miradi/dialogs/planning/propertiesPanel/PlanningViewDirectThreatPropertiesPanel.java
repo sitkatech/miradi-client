@@ -27,7 +27,7 @@ import org.miradi.questions.ThreatClassificationQuestion;
 
 public class PlanningViewDirectThreatPropertiesPanel extends MinimalFactorPropertiesPanel
 {
-	public PlanningViewDirectThreatPropertiesPanel(Project projectToUse)
+	public PlanningViewDirectThreatPropertiesPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, Cause.getObjectType());
 		

@@ -31,7 +31,7 @@ import org.miradi.utils.ObjectsActionButton;
 
 public class IndicatorMonitoringPlanSubPanel extends ObjectDataInputPanel
 {
-	public IndicatorMonitoringPlanSubPanel(Project projectToUse, ORef orefToUse)
+	public IndicatorMonitoringPlanSubPanel(Project projectToUse, ORef orefToUse) throws Exception
 	{
 		super(projectToUse, orefToUse);
 		

@@ -35,7 +35,7 @@ import org.miradi.rtf.RtfWriter;
 
 public class SummaryLocationPanel extends ObjectDataInputPanel
 {
-	public SummaryLocationPanel(Project projectToUse, ORef orefToUse)
+	public SummaryLocationPanel(Project projectToUse, ORef orefToUse) throws Exception
 	{
 		super(projectToUse, orefToUse);
 		

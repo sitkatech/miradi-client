@@ -28,7 +28,7 @@ import org.miradi.project.Project;
 
 public class BiodiversityPanel extends ObjectDataInputPanel
 {
-	public BiodiversityPanel(Project projectToUse, ORef orefToUse)
+	public BiodiversityPanel(Project projectToUse, ORef orefToUse) throws Exception
 	{
 		super(projectToUse, orefToUse);
 		

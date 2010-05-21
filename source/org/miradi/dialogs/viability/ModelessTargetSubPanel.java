@@ -28,7 +28,7 @@ import org.miradi.questions.HabitatAssociationQuestion;
 
 public class ModelessTargetSubPanel extends ObjectDataInputPanel
 {
-	public ModelessTargetSubPanel(Project projectToUse, int targetType)
+	public ModelessTargetSubPanel(Project projectToUse, int targetType) throws Exception
 	{
 		super(projectToUse, targetType);
 		

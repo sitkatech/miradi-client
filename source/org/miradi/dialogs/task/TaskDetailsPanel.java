@@ -37,7 +37,7 @@ import org.miradi.project.Project;
 
 public class TaskDetailsPanel extends ObjectDataInputPanel
 {
-	public TaskDetailsPanel(Project projectToUse, Actions actionsToUse)
+	public TaskDetailsPanel(Project projectToUse, Actions actionsToUse) throws Exception
 	{
 		super(projectToUse, Task.getObjectType());
 		

@@ -27,7 +27,7 @@ import org.miradi.project.Project;
 
 public class FactorSummaryCommentsPanel extends ObjectDataInputPanel
 {
-	public FactorSummaryCommentsPanel(Project project, Actions actions, int factorType)
+	public FactorSummaryCommentsPanel(Project project, Actions actions, int factorType) throws Exception
 	{
 		super(project, factorType);
 

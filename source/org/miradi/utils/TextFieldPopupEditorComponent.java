@@ -32,7 +32,7 @@ import org.miradi.main.MainWindow;
 public class TextFieldPopupEditorComponent extends AbstractPopupEditorComponent
 {
 	@Override
-	protected void invokePopupEditor()
+	protected void invokePopupEditor() throws Exception
 	{
 		MainWindow mainWindow = EAM.getMainWindow();
 		String title = EAM.text("Edit Text");

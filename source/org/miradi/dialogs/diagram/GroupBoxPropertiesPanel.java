@@ -33,7 +33,7 @@ import org.miradi.questions.DiagramFactorFontStyleQuestion;
 
 public class GroupBoxPropertiesPanel extends ObjectDataInputPanel
 {
-	public GroupBoxPropertiesPanel(Project projectToUse, DiagramFactor diagramFactor)
+	public GroupBoxPropertiesPanel(Project projectToUse, DiagramFactor diagramFactor) throws Exception
 	{
 		super(projectToUse, ObjectType.GROUP_BOX, diagramFactor.getWrappedId());
 

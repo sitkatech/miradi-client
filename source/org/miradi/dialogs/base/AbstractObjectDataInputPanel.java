@@ -447,32 +447,32 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectPercentageInputField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag);
 	}
 	
-	public ObjectDataInputField createMultilineField(String tag)
+	public ObjectDataInputField createMultilineField(String tag) throws Exception
 	{
 		return createMultilineField(getFirstSelectedRef().getObjectType(), tag);
 	}
 	
-	public ObjectDataInputField createMultilineField(int objectType, String tag)
+	public ObjectDataInputField createMultilineField(int objectType, String tag) throws Exception
 	{
 		return createMultilineField(objectType, tag, DEFAULT_TEXT_COLUM_COUNT);
 	}
 	
-	public ObjectDataInputField createMultilineField(int objectType, String tag, int columns)
+	public ObjectDataInputField createMultilineField(int objectType, String tag, int columns) throws Exception
 	{
 		return new ObjectScrollingMultilineInputField(getMainWindow(), objectType, getObjectIdForType(objectType), tag, columns);
 	}
 	
-	public ObjectDataInputField createExpandableField(String tag)
+	public ObjectDataInputField createExpandableField(String tag) throws Exception
 	{
 		return createExpandableField(getFirstSelectedRef().getObjectType(), tag);
 	}
 	
-	public ObjectDataInputField createExpandableField(int objectType, String tag)
+	public ObjectDataInputField createExpandableField(int objectType, String tag) throws Exception
 	{
 		return createExpandableField(objectType, tag, 25);
 	}
 	
-	public ObjectDataInputField createExpandableField(int objectType, String tag, int columns)
+	public ObjectDataInputField createExpandableField(int objectType, String tag, int columns)  throws Exception
 	{
 		return new ObjectExpandingMultilineInputField(getMainWindow(), objectType, getObjectIdForType(objectType), tag, columns);
 	}
@@ -535,12 +535,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new StringMapProjectResourceFilterEditorField(getProject(), objectType, getObjectIdForType(objectType), tagToUse, question);
 	}
 	
-	public ObjectDataInputField createReadonlyTextField(String tag)
+	public ObjectDataInputField createReadonlyTextField(String tag) throws Exception
 	{
 		return new ObjectMultilineDisplayField(getMainWindow(), getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag);
 	}
 	
-	public ObjectDataInputField createReadonlyTextField(int objectType, String tag)
+	public ObjectDataInputField createReadonlyTextField(int objectType, String tag) throws Exception
 	{
 		return new ObjectMultilineDisplayField(getMainWindow(), objectType, getObjectIdForType(objectType), tag);
 	}

@@ -26,7 +26,7 @@ import org.miradi.project.Project;
 
 public class ScopeBoxSubPanel extends ObjectDataInputPanel
 {
-	public ScopeBoxSubPanel(Project projectToUse)
+	public ScopeBoxSubPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, ScopeBox.getObjectType());
 		

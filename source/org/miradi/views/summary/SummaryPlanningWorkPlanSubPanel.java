@@ -96,7 +96,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		add(textArea);
 	}
 
-	private void addHiddenDataWarningLabel()
+	private void addHiddenDataWarningLabel() throws Exception
 	{
 		warningLabelFillerReplacement =createAndAddFillerPanel();
 		String warningMessage = EAM.text("Some work plan data is currently hidden and not included in " +
@@ -110,7 +110,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		updateOutOfRangeDataWarningField();
 	}
 	
-	private void addQuarterColumnVisibilityExplanationLabel()
+	private void addQuarterColumnVisibilityExplanationLabel() throws Exception
 	{	
 		quarterVisibilityExplanationFillerReplacement = createAndAddFillerPanel();
 		String message = EAM.text("NOTE: Quarter columns cannot be hidden because this project already has data for some quarters.");
@@ -127,7 +127,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		return warningPanelEmptyReplacementPanel;
 	}
 
-	private JComponent createAndAddInformationalNotePanel(String message)
+	private JComponent createAndAddInformationalNotePanel(String message) throws Exception
 	{
 		MiradiTextPane label = new MiradiTextPane(getMainWindow(), ObjectMultilineDisplayField.DEFAULT_WIDE_FIELD_CHARACTERS, 1);
 		label.setText(message);
@@ -141,7 +141,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		return label;
 	}
 	
-	private JComponent createAndAddWarningPanel(String message)
+	private JComponent createAndAddWarningPanel(String message) throws Exception
 	{
 		MiradiTextPane label = new MiradiTextPane(getMainWindow(), ObjectMultilineDisplayField.DEFAULT_WIDE_FIELD_CHARACTERS, 1);
 		label.setText(message);

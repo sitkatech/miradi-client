@@ -28,7 +28,7 @@ import org.miradi.project.Project;
 
 public class RareCampaignPlanningSummarySubPanel extends ObjectDataInputPanel
 {
-	public RareCampaignPlanningSummarySubPanel(Project projectToUse)
+	public RareCampaignPlanningSummarySubPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()));
 		
