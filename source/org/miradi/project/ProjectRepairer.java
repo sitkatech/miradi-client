@@ -110,10 +110,12 @@ public class ProjectRepairer
 	{
 		ORefSet factorsWithoutDiagramFactors = new ORefSet();
 		ORefSet factorRefs = getProject().getPool(factorType).getRefSet();
+		int referringObjectType = DiagramFactor.getObjectType();
+
 		for(ORef factorRef : factorRefs)
 		{
 			Factor factor = Factor.findFactor(getProject(), factorRef);
-			ORefList diagramFactorReferrerRefs = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+			ORefList diagramFactorReferrerRefs = factor.findObjectsThatReferToUs(referringObjectType);
 			if (diagramFactorReferrerRefs.isEmpty())
 				factorsWithoutDiagramFactors.addRef(factor);
 		}
