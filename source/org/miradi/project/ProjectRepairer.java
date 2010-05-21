@@ -114,7 +114,7 @@ public class ProjectRepairer
 		ORefSet orphanRefs = new ORefSet();
 		for(ORef possibleOrphanRef : possibleOrphanRefs)
 		{
-			Factor possibleOrphan = Factor.findFactor(getProject(), possibleOrphanRef);
+			BaseObject possibleOrphan = Factor.findFactor(getProject(), possibleOrphanRef);
 			ORefList referrerRefs = possibleOrphan.findObjectsThatReferToUs(referringObjectType);
 			if (referrerRefs.isEmpty())
 				orphanRefs.addRef(possibleOrphan);
