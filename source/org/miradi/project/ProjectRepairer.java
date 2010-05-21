@@ -110,6 +110,12 @@ public class ProjectRepairer
 		ORefSet possibleOrphanRefs = getProject().getPool(factorType).getRefSet();
 		int referringObjectType = DiagramFactor.getObjectType();
 
+		return getActualOrphanRefs(possibleOrphanRefs, referringObjectType);
+	}
+
+	private ORefSet getActualOrphanRefs(ORefSet possibleOrphanRefs,
+			int referringObjectType)
+	{
 		ORefSet orphanRefs = new ORefSet();
 		for(ORef possibleOrphanRef : possibleOrphanRefs)
 		{
