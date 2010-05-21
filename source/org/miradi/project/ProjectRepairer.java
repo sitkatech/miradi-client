@@ -115,8 +115,8 @@ public class ProjectRepairer
 		for(ORef possibleOrphanRef : possibleOrphanRefs)
 		{
 			Factor possibleOrphan = Factor.findFactor(getProject(), possibleOrphanRef);
-			ORefList diagramFactorReferrerRefs = possibleOrphan.findObjectsThatReferToUs(referringObjectType);
-			if (diagramFactorReferrerRefs.isEmpty())
+			ORefList referrerRefs = possibleOrphan.findObjectsThatReferToUs(referringObjectType);
+			if (referrerRefs.isEmpty())
 				factorsWithoutDiagramFactors.addRef(possibleOrphan);
 		}
 		
