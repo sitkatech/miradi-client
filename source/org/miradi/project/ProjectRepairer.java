@@ -34,12 +34,14 @@ import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objectpools.PoolWithIdAssigner;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
+import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
+import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
@@ -77,11 +79,21 @@ public class ProjectRepairer
 
 	public void logOrphansAndSimilarProblems()
 	{
+		warnOfOrphanDiagramFactors();
 		warnOfOrphanAnnotations();	
 		warnOfOrphanTasks();
 		warnOfFactorsWithoutReferringDiagramFactors();
 	}
 	 
+	private void warnOfOrphanDiagramFactors()
+	{
+		ORefSet possibleOrphanRefs = getProject().getPool(DiagramFactor.getObjectType()).getRefSet();
+		int[] diagramTypes = new int[] {ConceptualModelDiagram.getObjectType(), ResultsChainDiagram.getObjectType()};
+		ORefSet orphanRefs = getActualOrphanRefs(possibleOrphanRefs, diagramTypes);
+		if (orphanRefs.hasData())
+			EAM.logError(orphanRefs.size() + " DiagramFactors are not in any diagram:" + orphanRefs.toRefList());
+	}
+
 	private void warnOfFactorsWithoutReferringDiagramFactors()
 	{
 		ORefSet factorsWithoutDiagramFactors = getFactorsWithoutDiagramFactors();
