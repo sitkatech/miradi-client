@@ -167,8 +167,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 				setLanguage(languageCode);
 
 			getAppPreferences().setLanguageCode(languageCode);
-			new SampleInstaller(getAppPreferences()).installSampleProjects();
 		}
+
+		new SampleInstaller(getAppPreferences()).installSampleProjects();
 
 		if(hasExpired() || commandLineArguments.contains("--expired"))
 		{
