@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-18 13:40-0500\n"
+"POT-Creation-Date: 2010-05-25 10:09-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -324,7 +324,7 @@ msgid ""
 "\">support@miradi.org<a>) for assistance</HTML>"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1091
+#: Miradi/source/org/miradi/main/MainWindow.java:1092
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -3036,7 +3036,7 @@ msgstr "估计活动及监控的开销 \t\t"
 msgid "Euro"
 msgstr "欧元"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:676
+#: Miradi/source/org/miradi/main/MainWindow.java:677
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -3633,7 +3633,7 @@ msgstr "仅限于指示物 \t\t"
 msgid "Indicators:"
 msgstr "指示物: \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:292
+#: Miradi/source/org/miradi/main/MainWindow.java:293
 msgid "Information"
 msgstr "信息 \t\t"
 
@@ -4964,7 +4964,7 @@ msgstr ""
 msgid "Project Resource Filter Editor"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:674
+#: Miradi/source/org/miradi/main/MainWindow.java:675
 msgid "Project Resource Filter Is On"
 msgstr ""
 
@@ -5513,7 +5513,7 @@ msgstr "利益相关者"
 msgid "Standard Reports"
 msgstr "标准报告 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:708
+#: Miradi/source/org/miradi/main/MainWindow.java:709
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -6637,18 +6637,18 @@ msgstr ""
 msgid "That language pack is already installed"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:516
+#: Miradi/source/org/miradi/main/MainWindow.java:517
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
 msgstr "此项目无法被打开，因为它是由该应用程序的更高版本所创建 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:520
+#: Miradi/source/org/miradi/main/MainWindow.java:521
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr "此项目在被转换成当前数据格式之前无法打开 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:512
+#: Miradi/source/org/miradi/main/MainWindow.java:513
 msgid "That project is in use by another copy of this application"
 msgstr "此项目正被本应用程序的另一个拷贝所使用 \t\t"
 
@@ -7104,7 +7104,7 @@ msgstr ""
 "无法删除该项目，因为它正被该应用程序的另一拷贝所使用:\n"
 " \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1075
+#: Miradi/source/org/miradi/main/MainWindow.java:1076
 msgid "Unable to launch external web browser"
 msgstr "无法运行外部网页浏览器 \t\t"
 
@@ -7125,7 +7125,7 @@ msgstr ""
 "无法重命名该项目，因为它正被该应用程序的另一拷贝所使用:\n"
 " \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:864
+#: Miradi/source/org/miradi/main/MainWindow.java:865
 msgid "Unable to save preferences"
 msgstr "无法保存优先选项 \t\t"
 
@@ -7175,7 +7175,7 @@ msgstr "大学"
 msgid "Unknown"
 msgstr "未知"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:507
+#: Miradi/source/org/miradi/main/MainWindow.java:508
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -7192,7 +7192,7 @@ msgstr "未知代码： \t\t"
 msgid "Unknown error displaying diagram"
 msgstr "显示图表时出现未知错误 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:525
+#: Miradi/source/org/miradi/main/MainWindow.java:526
 msgid "Unknown error prevented opening that project"
 msgstr "未知错误阻止打开项目 \t\t"
 
