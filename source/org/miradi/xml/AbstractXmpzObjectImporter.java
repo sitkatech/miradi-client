@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml;
 
-import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -53,19 +52,6 @@ abstract public class AbstractXmpzObjectImporter
 	public Project getProject()
 	{
 		return getImporter().getProject();
-	}
-	
-	protected void importObject(int objectType) throws Exception
-	{
-		NodeList nodes = getImporter().getNodes(getImporter().getRootNode(), new String[]{getPoolName() + WcsXmlConstants.POOL_ELEMENT_TAG, getPoolName(), });
-		for (int index = 0; index < nodes.getLength(); ++index)
-		{
-			Node node = nodes.item(index);
-			String intIdAsString = getImporter().getAttributeValue(node, WcsXmlConstants.ID);
-			ORef ref = getProject().createObject(objectType, new BaseId(intIdAsString));
-			
-			importFields(node, ref);
-		}
 	}
 	
 	protected void importCodeField(Node parentNode, String elementContainerName, ORef ref, String tag, ChoiceQuestion question) throws Exception
@@ -105,8 +91,6 @@ abstract public class AbstractXmpzObjectImporter
 	
 	abstract public void importElement() throws Exception;
 	
-	abstract protected void importFields(Node node, ORef ref) throws Exception;
-
 	private XmpzXmlImporter importer;
 	private String poolName;
 }

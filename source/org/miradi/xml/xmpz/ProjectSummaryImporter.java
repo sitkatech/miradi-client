@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz;
 
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.WcsXmlConstants;
@@ -51,11 +50,6 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 	private void importSummaryField(Node projectSumaryNode,	String tag) throws Exception
 	{
 		importField(projectSumaryNode, getPoolName(), getMetadataRef(), tag);
-	}
-	
-	@Override
-	protected void importFields(Node node, ORef ref) throws Exception
-	{
 	}
 }
 
