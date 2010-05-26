@@ -249,6 +249,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return isSpellCheckAvailable;
 	}
 	
+	public boolean isSpellCheckEnabled()
+	{
+		// TODO: Need to also ask AppPreferences if it is enabled
+		return isSpellCheckAvailable();
+	}
+	
 	private Dimension getSizeFromPreferences()
 	{
 		int MINIMUM_WIDTH = 200;

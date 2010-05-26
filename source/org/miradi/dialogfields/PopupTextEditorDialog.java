@@ -38,7 +38,7 @@ public class PopupTextEditorDialog extends ModalDialogWithClose
 		popupTextField.setText(initialText);
 		add(new MiradiScrollPane(popupTextField));
 		
-		if(mainWindow.isSpellCheckAvailable())
+		if(mainWindow.isSpellCheckEnabled())
 			SpellChecker.register(popupTextField, false, false, true);
 
 		pack();
