@@ -23,11 +23,10 @@ package org.miradi.xml.xmpz;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Organization;
-import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
-public class OrganizationImporter extends AbstractXmpzObjectImporter
+public class OrganizationImporter extends AbstractBaseObjectImporter
 {
 	public OrganizationImporter(XmpzXmlImporter importerToUse)
 	{

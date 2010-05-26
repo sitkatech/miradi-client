@@ -23,12 +23,11 @@ package org.miradi.xml.xmpz;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectResource;
 import org.miradi.questions.ResourceTypeQuestion;
-import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
 
-public class ProjectResourceImporter extends AbstractXmpzObjectImporter
+public class ProjectResourceImporter extends AbstractBaseObjectImporter
 {
 	public ProjectResourceImporter(XmpzXmlImporter importerToUse)
 	{
