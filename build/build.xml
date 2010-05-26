@@ -422,7 +422,7 @@
 	</antcall>
 	<antcall target='download'>
 		<param name='directory' value='jortho/jortho/0.4' />
-		<param name='filename' value='JOrtho.zip' />
+		<param name='filename' value='JOrtho-source.zip' />
 	</antcall>
 </target>
 
