@@ -25,7 +25,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectResource;
 import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.xml.AbstractXmpzObjectImporter;
-import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -77,12 +76,5 @@ public class ProjectResourceImporter extends AbstractXmpzObjectImporter
 	private void importSummaryField(Node projectSumaryNode,	ORef ref, String tag) throws Exception
 	{
 		importSummaryField(projectSumaryNode, WcsXmlConstants.PROJECT_RESOURCE, ref, tag);
-	}
-	
-	private void importSummaryField(Node projectSumaryNode,	String elementContainerName, ORef ref, String tag) throws Exception
-	{
-		TagToElementNameMap map = new TagToElementNameMap();
-		String elementName = map.findElementName(elementContainerName, tag);
-		importField(projectSumaryNode, elementContainerName + elementName, ref, tag);
 	}
 }
