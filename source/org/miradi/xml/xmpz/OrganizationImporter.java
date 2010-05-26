@@ -42,13 +42,13 @@ public class OrganizationImporter extends AbstractBaseObjectImporter
 	@Override
 	protected void importFields(Node node, ORef ref) throws Exception
 	{
-		importField(node, WcsXmlConstants.ORGANIZATION, ref, BaseObject.TAG_LABEL);
-		importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_SHORT_LABEL);
-		importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_ROLES_DESCRIPTION);
-		importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_CONTACT_FIRST_NAME);
-		importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_CONTACT_LAST_NAME);
-		importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_EMAIL);
-		importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_PHONE_NUMBER);
-		importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_COMMENTS);
+		importField(node, ref, BaseObject.TAG_LABEL);
+		importField(node, ref, Organization.TAG_SHORT_LABEL);
+		importField(node, ref, Organization.TAG_ROLES_DESCRIPTION);
+		importField(node, ref, Organization.TAG_CONTACT_FIRST_NAME);
+		importField(node, ref, Organization.TAG_CONTACT_LAST_NAME);
+		importField(node, ref, Organization.TAG_EMAIL);
+		importField(node, ref, Organization.TAG_PHONE_NUMBER);
+		importField(node, ref, Organization.TAG_COMMENTS);
 	}
 }

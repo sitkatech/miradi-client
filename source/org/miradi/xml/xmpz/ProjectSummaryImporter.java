@@ -49,7 +49,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 
 	private void importSummaryField(Node projectSumaryNode,	String tag) throws Exception
 	{
-		importField(projectSumaryNode, getPoolName(), getMetadataRef(), tag);
+		importField(projectSumaryNode, getMetadataRef(), tag);
 	}
 }
 
