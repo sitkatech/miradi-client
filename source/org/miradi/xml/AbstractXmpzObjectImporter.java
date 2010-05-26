@@ -22,8 +22,14 @@ package org.miradi.xml;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.CodeList;
+import org.miradi.xml.generic.XmlSchemaCreator;
+import org.miradi.xml.wcs.TagToElementNameMap;
+import org.miradi.xml.wcs.WcsXmlConstants;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 abstract public class AbstractXmpzObjectImporter
 {
@@ -52,7 +58,30 @@ abstract public class AbstractXmpzObjectImporter
 		return getImporter().getProject();
 	}
 	
-	abstract public void importElement() throws Exception;
+	protected void importCodeField(Node node, String elementContainerName, ORef ref, String tag, ChoiceQuestion question) throws Exception
+	{
+		TagToElementNameMap map = new TagToElementNameMap();
+		String elementName = map.findElementName(elementContainerName, tag);
+		getImporter().importCodeField(node, elementContainerName + elementName, ref, tag, question);
+	}
+
+	protected void importCodeListElement(Node node, String elementContainerName, ORef ref, String tag) throws Exception
+	{
+		TagToElementNameMap map = new TagToElementNameMap();
+		String elementName = map.findElementName(elementContainerName, tag);
+		NodeList codeNodes = getImporter().getNodes(node, new String[]{elementContainerName + elementName + WcsXmlConstants.CONTAINER_ELEMENT_TAG, XmlSchemaCreator.CODE_ELEMENT_NAME});
+		CodeList codesToImport = new CodeList();
+		for (int index = 0; index < codeNodes.getLength(); ++index)
+		{
+			Node codeNode = codeNodes.item(index);
+			String code = getImporter().getSafeNodeContent(codeNode);
+			codesToImport.add(code);
+		}
+		
+		getImporter().setData(ref, tag, codesToImport.toString());
+	}
 	
+	abstract public void importElement() throws Exception;
+
 	private XmpzXmlImporter importer;
 }
