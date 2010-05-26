@@ -20,7 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz;
 
+import org.miradi.ids.BaseId;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.xml.AbstractXmpzObjectImporter;
+import org.miradi.xml.wcs.WcsXmlConstants;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 abstract public class AbstractBaseObjectImporter extends AbstractXmpzObjectImporter
 {
@@ -28,4 +33,19 @@ abstract public class AbstractBaseObjectImporter extends AbstractXmpzObjectImpor
 	{
 		super(importerToUse, poolNameToUse);
 	}
+	
+	protected void importObject(int objectType) throws Exception
+	{
+		NodeList nodes = getImporter().getNodes(getImporter().getRootNode(), new String[]{getPoolName() + WcsXmlConstants.POOL_ELEMENT_TAG, getPoolName(), });
+		for (int index = 0; index < nodes.getLength(); ++index)
+		{
+			Node node = nodes.item(index);
+			String intIdAsString = getImporter().getAttributeValue(node, WcsXmlConstants.ID);
+			ORef ref = getProject().createObject(objectType, new BaseId(intIdAsString));
+			
+			importFields(node, ref);
+		}
+	}
+	
+	abstract protected void importFields(Node node, ORef ref) throws Exception;
 }
