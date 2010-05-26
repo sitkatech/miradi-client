@@ -53,7 +53,7 @@ public class ProjectResourceImporter extends AbstractXmpzObjectImporter
 			importSummaryField(projectResourceNode, projectResourceRef, ProjectResource.TAG_GIVEN_NAME);
 			importSummaryField(projectResourceNode, projectResourceRef, ProjectResource.TAG_SUR_NAME);
 			importSummaryField(projectResourceNode, projectResourceRef, ProjectResource.TAG_INITIALS);
-			importCodeListElement(projectResourceNode, WcsXmlConstants.PROJECT_RESOURCE, projectResourceRef, ProjectResource.TAG_ROLE_CODES);
+			importCodeListField(projectResourceNode, WcsXmlConstants.PROJECT_RESOURCE, projectResourceRef, ProjectResource.TAG_ROLE_CODES);
 			importSummaryField(projectResourceNode, projectResourceRef, ProjectResource.TAG_ORGANIZATION);
 			importSummaryField(projectResourceNode, projectResourceRef, ProjectResource.TAG_POSITION);
 			importSummaryField(projectResourceNode, projectResourceRef, ProjectResource.TAG_LOCATION);

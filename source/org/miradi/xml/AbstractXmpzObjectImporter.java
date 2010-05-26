@@ -65,7 +65,7 @@ abstract public class AbstractXmpzObjectImporter
 		getImporter().importCodeField(parentNode, elementContainerName + elementName, ref, tag, question);
 	}
 
-	protected void importCodeListElement(Node parentNode, String elementContainerName, ORef ref, String tag) throws Exception
+	protected void importCodeListField(Node parentNode, String elementContainerName, ORef ref, String tag) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(elementContainerName, tag);
