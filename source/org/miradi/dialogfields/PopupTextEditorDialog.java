@@ -25,6 +25,8 @@ import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.MiradiTextPane;
 
+import com.inet.jortho.SpellChecker;
+
 public class PopupTextEditorDialog extends ModalDialogWithClose
 {
 	public PopupTextEditorDialog(MainWindow mainWindow, String title, String initialText) throws Exception
@@ -36,6 +38,9 @@ public class PopupTextEditorDialog extends ModalDialogWithClose
 		popupTextField.setText(initialText);
 		add(new MiradiScrollPane(popupTextField));
 		
+		if(mainWindow.isSpellCheckAvailable())
+			SpellChecker.register(popupTextField, false, false, true);
+
 		pack();
 	}
 	
