@@ -37,6 +37,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 	protected void importXml() throws Exception
 	{
 		new ProjectSummaryImporter(this).importElement();
+		new ProjectResourceImporter(this).importElement();
 	}
 
 	@Override

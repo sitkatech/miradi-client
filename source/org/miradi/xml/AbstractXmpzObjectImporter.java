@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.project.Project;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
 import org.w3c.dom.Node;
 
@@ -45,6 +46,13 @@ abstract public class AbstractXmpzObjectImporter
 	{
 		getImporter().importField(node, elementName, objectRefToImportInto, tag);
 	}
+	
+	public Project getProject()
+	{
+		return getImporter().getProject();
+	}
+	
+	abstract public void importElement() throws Exception;
 	
 	private XmpzXmlImporter importer;
 }
