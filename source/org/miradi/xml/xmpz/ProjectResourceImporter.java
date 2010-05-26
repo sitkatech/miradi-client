@@ -68,6 +68,6 @@ public class ProjectResourceImporter extends AbstractBaseObjectImporter
 	
 	private void importSummaryField(Node projectSumaryNode,	ORef ref, String tag) throws Exception
 	{
-		importField(projectSumaryNode, WcsXmlConstants.PROJECT_RESOURCE, ref, tag);
+		importField(projectSumaryNode, ref, tag);
 	}
 }

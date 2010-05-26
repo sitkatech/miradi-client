@@ -77,7 +77,7 @@ abstract public class AbstractXmpzObjectImporter
 		getImporter().setData(ref, tag, codesToImport.toString());
 	}
 
-	protected void importField(Node parentNode, String elementContainerName, ORef ref, String tag) throws Exception
+	protected void importField(Node parentNode, ORef ref, String tag) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(getPoolName(), tag);
