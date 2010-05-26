@@ -57,7 +57,7 @@ public class ProjectResourceImporter extends AbstractXmpzObjectImporter
 			importSummaryField(projectResourceNode, projectResourceRef, ProjectResource.TAG_GIVEN_NAME);
 			importSummaryField(projectResourceNode, projectResourceRef, ProjectResource.TAG_SUR_NAME);
 			importSummaryField(projectResourceNode, projectResourceRef, ProjectResource.TAG_INITIALS);
-			importCodeListElement(projectResourceNode, projectResourceRef, ProjectResource.TAG_ROLE_CODES);
+			importCodeListElement(projectResourceNode, WcsXmlConstants.PROJECT_RESOURCE, projectResourceRef, ProjectResource.TAG_ROLE_CODES);
 			importSummaryField(projectResourceNode, projectResourceRef, ProjectResource.TAG_ORGANIZATION);
 			importSummaryField(projectResourceNode, projectResourceRef, ProjectResource.TAG_POSITION);
 			importSummaryField(projectResourceNode, projectResourceRef, ProjectResource.TAG_LOCATION);
@@ -84,11 +84,11 @@ public class ProjectResourceImporter extends AbstractXmpzObjectImporter
 		getImporter().importCodeField(node, WcsXmlConstants.PROJECT_RESOURCE + elementName, ref, tag, new ResourceTypeQuestion());
 	}
 	
-	private void importCodeListElement(Node node, ORef ref, String tag) throws Exception
+	private void importCodeListElement(Node node, String elementContainerName, ORef ref, String tag) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
-		String elementName = map.findElementName(WcsXmlConstants.PROJECT_RESOURCE, tag);
-		NodeList codeNodes = getImporter().getNodes(node, new String[]{WcsXmlConstants.PROJECT_RESOURCE + elementName + WcsXmlConstants.CONTAINER_ELEMENT_TAG, XmlSchemaCreator.CODE_ELEMENT_NAME});
+		String elementName = map.findElementName(elementContainerName, tag);
+		NodeList codeNodes = getImporter().getNodes(node, new String[]{elementContainerName + elementName + WcsXmlConstants.CONTAINER_ELEMENT_TAG, XmlSchemaCreator.CODE_ELEMENT_NAME});
 		CodeList codesToImport = new CodeList();
 		for (int index = 0; index < codeNodes.getLength(); ++index)
 		{
