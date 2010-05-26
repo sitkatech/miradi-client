@@ -29,6 +29,7 @@ public class CodeFieldSchemaElement extends AbstractCodeFieldSchemaElement
 		super(objectTypeNameToUse, fieldNameToUse, vocabularyNameToUse);
 	}
 
+	@Override
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
