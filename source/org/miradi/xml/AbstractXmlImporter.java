@@ -40,6 +40,7 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.xml.wcs.WcsMiradiXmlValidator;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -132,10 +133,26 @@ abstract public class AbstractXmlImporter
 		String data = getPathData(node, elements);
 		importField(ref, tag, data);
 	}
-
-	private String getPathData(Node node, String[] elements) throws XPathExpressionException
+	
+	public void importCodeField(Node node, String elementName, ORef ref, String tag, ChoiceQuestion question) throws Exception
 	{
-		String generatedPath = generatePath(node, elements);
+		String code = getPathData(node, new String[]{elementName, });
+		String rawCode = getRawCode(question, code);
+		importField(ref, tag, rawCode);
+	}
+
+	private String getRawCode(ChoiceQuestion question, String code)
+	{
+		String convertedCode = question.convertToReadableCode(code);
+		if (code.equals(convertedCode))
+			return code;
+			
+		return "";
+	}
+
+	public String getPathData(Node node, String[] elements) throws XPathExpressionException
+	{
+		String generatedPath = generatePath(elements);
 		return getXPath().evaluate(generatedPath, node);
 	}
 
@@ -144,7 +161,7 @@ abstract public class AbstractXmlImporter
 		setData(ref, tag, data);
 	}
 		
-	private void setData(ORef ref, String tag, String data) throws Exception
+	public void setData(ORef ref, String tag, String data) throws Exception
 	{
 		getProject().setObjectData(ref, tag, data.trim());
 	}
@@ -154,13 +171,12 @@ abstract public class AbstractXmlImporter
 		getProject().setObjectData(ref, tag, refList.toString());
 	}
 
-	public String generatePath(Node parentNode, String[] pathElements)
+	public String generatePath(String[] pathElements)
 	{
 		StringBuffer path = new StringBuffer();
 		for (int index = 0; index < pathElements.length; ++index)
 		{
-			String elementName = getSafeParentNodeName(parentNode) + pathElements[index];
-			
+			String elementName = pathElements[index];			
 			String prefixedElement = getPrefixedElement(elementName);
 			path.append(prefixedElement);
 			if ((index + 1) < pathElements.length)
@@ -170,14 +186,6 @@ abstract public class AbstractXmlImporter
 		return path.toString();
 	}
 
-	private String getSafeParentNodeName(Node parentNode)
-	{
-		if (parentNode == null)
-			return "";
-		
-		return parentNode.getNodeName();
-	}
-	
 	public String[] extractNodesAsList(String path) throws Exception
 	{
 		XPathExpression expression = getXPath().compile(path);
@@ -191,7 +199,7 @@ abstract public class AbstractXmlImporter
 		return nodes.toArray(new String[0]);
 	}
 	
-	protected String getAttributeValue(Node elementNode, String attributeName)
+	public String getAttributeValue(Node elementNode, String attributeName)
 	{
 		NamedNodeMap attributes = elementNode.getAttributes();
 		Node attributeNode = attributes.getNamedItem(attributeName);
@@ -204,26 +212,26 @@ abstract public class AbstractXmlImporter
 		return new ORef(type, new BaseId(idAsString));
 	}
 	
-	protected Node getNode(Node node, String element) throws Exception
+	public Node getNode(Node node, String element) throws Exception
 	{
-		String path = generatePath(node, new String[]{element});
+		String path = generatePath(new String[]{element});
 		XPathExpression expression = getXPath().compile(path);
 		return (Node) expression.evaluate(node, XPathConstants.NODE);
 	}
 	
 	public Node getParentNode(Node node, String element) throws Exception
 	{
-		String path = generatePath(null, new String[]{element});
+		String path = generatePath(new String[]{element});
 		XPathExpression expression = getXPath().compile(path);
 		return (Node) expression.evaluate(node, XPathConstants.NODE);
 	}
 	
 	public Node getRootNode() throws Exception
 	{
-		return getNode(generatePath(null, new String[]{getRootNodeName()}));
+		return getNode(generatePath(new String[]{getRootNodeName()}));
 	}
 	
-	private Node getNode(String path) throws Exception
+	public Node getNode(String path) throws Exception
 	{
 		XPathExpression expression = getXPath().compile(path);
 		return (Node) expression.evaluate(getDocument(), XPathConstants.NODE);
@@ -235,7 +243,7 @@ abstract public class AbstractXmlImporter
 		return getSafeNodeContent(foundNode);
 	}
 
-	private String getSafeNodeContent(Node foundNode)
+	public String getSafeNodeContent(Node foundNode)
 	{
 		if (foundNode == null)
 			return "";
@@ -243,9 +251,9 @@ abstract public class AbstractXmlImporter
 		return foundNode.getTextContent();
 	}
 	
-	private NodeList getNodes(Node node, String[] pathElements) throws Exception
+	public NodeList getNodes(Node node, String[] pathElements) throws Exception
 	{
-		String path = generatePath(node, pathElements);
+		String path = generatePath(pathElements);
 		XPathExpression expression = getXPath().compile(path);
 		
 		return (NodeList) expression.evaluate(node, XPathConstants.NODESET);

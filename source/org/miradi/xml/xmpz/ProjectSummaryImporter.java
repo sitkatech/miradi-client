@@ -34,7 +34,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 	
 	public void importElement() throws Exception
 	{
-		Node projectSumaryNode = getImporter().getParentNode(getImporter().getRootNode(), WcsXmlConstants.PROJECT_SUMMARY);
+		Node projectSumaryNode = getImporter().getNode(getImporter().getRootNode(), WcsXmlConstants.PROJECT_SUMMARY);
 				
 		importSummaryField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_NAME);
 		importSummaryField(projectSumaryNode, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
@@ -49,6 +49,6 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 	private void importSummaryField(Node projectSumaryNode,	String tag) throws Exception
 	{
 		String elementNameSameAsTag = tag;
-		importField(projectSumaryNode, elementNameSameAsTag, getMetadataRef(), tag);
+		importField(projectSumaryNode, WcsXmlConstants.PROJECT_SUMMARY + elementNameSameAsTag, getMetadataRef(), tag);
 	}
 }
