@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.WcsXmlConstants;
@@ -32,6 +33,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 		super(importerToUse, WcsXmlConstants.PROJECT_SUMMARY);
 	}
 	
+	@Override
 	public void importElement() throws Exception
 	{
 		Node projectSumaryNode = getImporter().getNode(getImporter().getRootNode(), WcsXmlConstants.PROJECT_SUMMARY);
@@ -48,7 +50,12 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 
 	private void importSummaryField(Node projectSumaryNode,	String tag) throws Exception
 	{
-		String elementNameSameAsTag = tag;
-		importField(projectSumaryNode, WcsXmlConstants.PROJECT_SUMMARY + elementNameSameAsTag, getMetadataRef(), tag);
+		importField(projectSumaryNode, getPoolName(), getMetadataRef(), tag);
+	}
+	
+	@Override
+	protected void importFields(Node node, ORef ref) throws Exception
+	{
 	}
 }
+

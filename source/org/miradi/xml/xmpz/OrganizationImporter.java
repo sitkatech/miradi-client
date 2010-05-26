@@ -20,13 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz;
 
-import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Organization;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 public class OrganizationImporter extends AbstractXmpzObjectImporter
 {
@@ -38,22 +37,19 @@ public class OrganizationImporter extends AbstractXmpzObjectImporter
 	@Override
 	public void importElement() throws Exception
 	{
-		String poolName = WcsXmlConstants.ORGANIZATION  + WcsXmlConstants.POOL_ELEMENT_TAG;
-		NodeList nodes = getImporter().getNodes(getImporter().getRootNode(), new String[]{poolName, WcsXmlConstants.ORGANIZATION, });
-		for (int index = 0; index < nodes.getLength(); ++index)
-		{
-			Node node = nodes.item(index);
-			String intIdAsString = getImporter().getAttributeValue(node, WcsXmlConstants.ID);
-			ORef ref = getProject().createObject(Organization.getObjectType(), new BaseId(intIdAsString));
-			
-			importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_LABEL);
-			importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_SHORT_LABEL);
-			importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_ROLES_DESCRIPTION);
-			importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_CONTACT_FIRST_NAME);
-			importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_CONTACT_LAST_NAME);
-			importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_EMAIL);
-			importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_PHONE_NUMBER);
-			importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_COMMENTS);
-		}
+		importObject(Organization.getObjectType());
+	}
+	
+	@Override
+	protected void importFields(Node node, ORef ref) throws Exception
+	{
+		importField(node, WcsXmlConstants.ORGANIZATION, ref, BaseObject.TAG_LABEL);
+		importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_SHORT_LABEL);
+		importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_ROLES_DESCRIPTION);
+		importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_CONTACT_FIRST_NAME);
+		importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_CONTACT_LAST_NAME);
+		importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_EMAIL);
+		importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_PHONE_NUMBER);
+		importField(node, WcsXmlConstants.ORGANIZATION, ref, Organization.TAG_COMMENTS);
 	}
 }
