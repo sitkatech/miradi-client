@@ -48,11 +48,6 @@ abstract public class AbstractXmpzObjectImporter
 		return getImporter().getProjectMetadataRef();
 	}
 	
-	protected void importField(Node node, String elementName, ORef objectRefToImportInto, String tag) throws Exception
-	{
-		getImporter().importField(node, elementName, objectRefToImportInto, tag);
-	}
-	
 	public Project getProject()
 	{
 		return getImporter().getProject();
@@ -81,11 +76,11 @@ abstract public class AbstractXmpzObjectImporter
 		getImporter().setData(ref, tag, codesToImport.toString());
 	}
 
-	protected void importSummaryField(Node parentNode, String elementContainerName, ORef ref, String tag) throws Exception
+	protected void importField(Node parentNode, String elementContainerName, ORef ref, String tag) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(elementContainerName, tag);
-		importField(parentNode, elementContainerName + elementName, ref, tag);
+		getImporter().importField(parentNode, elementContainerName + elementName, ref, tag);
 	}
 	
 	abstract public void importElement() throws Exception;

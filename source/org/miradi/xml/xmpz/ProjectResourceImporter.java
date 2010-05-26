@@ -41,7 +41,6 @@ public class ProjectResourceImporter extends AbstractXmpzObjectImporter
 	public void importElement() throws Exception
 	{
 		String poolName = WcsXmlConstants.PROJECT_RESOURCE  + WcsXmlConstants.POOL_ELEMENT_TAG;
-		
 		NodeList nodes = getImporter().getNodes(getImporter().getRootNode(), new String[]{poolName, WcsXmlConstants.PROJECT_RESOURCE, });
 		for (int index = 0; index < nodes.getLength(); ++index)
 		{
@@ -75,6 +74,6 @@ public class ProjectResourceImporter extends AbstractXmpzObjectImporter
 	
 	private void importSummaryField(Node projectSumaryNode,	ORef ref, String tag) throws Exception
 	{
-		importSummaryField(projectSumaryNode, WcsXmlConstants.PROJECT_RESOURCE, ref, tag);
+		importField(projectSumaryNode, WcsXmlConstants.PROJECT_RESOURCE, ref, tag);
 	}
 }
