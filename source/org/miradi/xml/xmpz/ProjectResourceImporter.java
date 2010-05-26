@@ -76,8 +76,13 @@ public class ProjectResourceImporter extends AbstractXmpzObjectImporter
 	
 	private void importSummaryField(Node projectSumaryNode,	ORef ref, String tag) throws Exception
 	{
+		importSummaryField(projectSumaryNode, WcsXmlConstants.PROJECT_RESOURCE, ref, tag);
+	}
+	
+	private void importSummaryField(Node projectSumaryNode,	String elementContainerName, ORef ref, String tag) throws Exception
+	{
 		TagToElementNameMap map = new TagToElementNameMap();
-		String elementName = map.findElementName(WcsXmlConstants.PROJECT_RESOURCE, tag);
-		importField(projectSumaryNode, WcsXmlConstants.PROJECT_RESOURCE + elementName, ref, tag);
+		String elementName = map.findElementName(elementContainerName, tag);
+		importField(projectSumaryNode, elementContainerName + elementName, ref, tag);
 	}
 }
