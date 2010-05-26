@@ -52,7 +52,7 @@ public class ProjectResourceImporter extends AbstractXmpzObjectImporter
 			Node projectResourceNode = nodes.item(index);
 			String intIdAsString = getImporter().getAttributeValue(projectResourceNode, WcsXmlConstants.ID);
 			ORef projectResourceRef = getProject().createObject(ProjectResource.getObjectType(), new BaseId(intIdAsString));
-			importCodeField(projectResourceNode, projectResourceRef, ProjectResource.TAG_RESOURCE_TYPE, new ResourceTypeQuestion());
+			importCodeField(projectResourceNode, WcsXmlConstants.PROJECT_RESOURCE, projectResourceRef, ProjectResource.TAG_RESOURCE_TYPE, new ResourceTypeQuestion());
 			
 			importSummaryField(projectResourceNode, projectResourceRef, ProjectResource.TAG_GIVEN_NAME);
 			importSummaryField(projectResourceNode, projectResourceRef, ProjectResource.TAG_SUR_NAME);
@@ -77,11 +77,11 @@ public class ProjectResourceImporter extends AbstractXmpzObjectImporter
 		}
 	}
 	
-	private void importCodeField(Node node, ORef ref, String tag, ChoiceQuestion question) throws Exception
+	private void importCodeField(Node node, String elementContainerName, ORef ref, String tag, ChoiceQuestion question) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
-		String elementName = map.findElementName(WcsXmlConstants.PROJECT_RESOURCE, tag);
-		getImporter().importCodeField(node, WcsXmlConstants.PROJECT_RESOURCE + elementName, ref, tag, new ResourceTypeQuestion());
+		String elementName = map.findElementName(elementContainerName, tag);
+		getImporter().importCodeField(node, elementContainerName + elementName, ref, tag, question);
 	}
 	
 	private void importCodeListElement(Node node, String elementContainerName, ORef ref, String tag) throws Exception
