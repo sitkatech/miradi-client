@@ -24,11 +24,6 @@ import java.awt.event.FocusListener;
 
 public class PanelTextFieldWithSelectAllOnFocusGained extends PanelTextField
 {
-	public PanelTextFieldWithSelectAllOnFocusGained()
-	{
-		super();
-	}
-
 	public PanelTextFieldWithSelectAllOnFocusGained(int columns)
 	{
 		super(columns);
