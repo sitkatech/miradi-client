@@ -24,6 +24,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.Action;
+import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.KeyStroke;
@@ -39,6 +40,9 @@ import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.views.umbrella.CopyTextAction;
 import org.miradi.views.umbrella.CutTextAction;
 import org.miradi.views.umbrella.PasteTextAction;
+
+import com.inet.jortho.MiradiSpellCheckerMenu;
+import com.inet.jortho.SpellChecker;
 
 public class TextAreaRightClickMouseHandler extends MouseAdapter
 {
@@ -98,6 +102,12 @@ public class TextAreaRightClickMouseHandler extends MouseAdapter
 		menuItemPaste.setText(EAM.text("Paste"));
 		menuItemPaste.setAccelerator(KeyStroke.getKeyStroke('V', KeyEvent.CTRL_DOWN_MASK));
 		menu.add(menuItemPaste);
+		
+		if(EAM.getMainWindow().isSpellCheckAvailable())
+		{
+			JMenu spellCheckMenu = new MiradiSpellCheckerMenu(SpellChecker.getOptions());
+			menu.add(spellCheckMenu);
+		}
 		
 		return menu;
 	}
