@@ -23,14 +23,14 @@ import java.text.ParseException;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.StringMap;
-import org.miradi.project.Project;
 
 public class ObjectStringMapInputField extends ObjectStringInputField
 {
-	public ObjectStringMapInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, String codeToUse, int columnsToUse)
+	public ObjectStringMapInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, String codeToUse, int columnsToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, columnsToUse);
+		super(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, columnsToUse);
 		
 		code = codeToUse;
 	}

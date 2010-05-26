@@ -357,12 +357,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createStringField(String tag)
 	{
-		return new ObjectStringInputField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, 50);
+		return new ObjectStringInputField(getMainWindow(), getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, 50);
 	}
 	
 	public ObjectDataInputField createStringField(int objectType, String tag)
 	{
-		return new ObjectStringInputField(project, objectType, getObjectIdForType(objectType), tag, 50);
+		return new ObjectStringInputField(getMainWindow(), objectType, getObjectIdForType(objectType), tag, 50);
 	}
 	
 	public ObjectDataInputField createShortStringField(int objectType, String tag)
@@ -387,17 +387,17 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createStringField(String tag, int column)
 	{
-		return new ObjectStringInputField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, column);
+		return new ObjectStringInputField(getMainWindow(), getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, column);
 	}
 	
 	public ObjectDataInputField createStringField(int objectType, String tag, int column)
 	{
-		return new ObjectStringInputField(project, objectType, getObjectIdForType(objectType), tag, column);
+		return new ObjectStringInputField(getMainWindow(), objectType, getObjectIdForType(objectType), tag, column);
 	}
 
 	public ObjectDataInputField createStringMapField(int objectType, String tag, String code, int length)
 	{
-		return new ObjectStringMapInputField(project, objectType, getObjectIdForType(objectType), tag, code, length);
+		return new ObjectStringMapInputField(getMainWindow(), objectType, getObjectIdForType(objectType), tag, code, length);
 	}
 	
 	public ObjectDataInputField createDateChooserField(String tag)
@@ -412,39 +412,39 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createNumericField(String tag, int column)
 	{
-		return new ObjectFloatingPointRestrictedInputField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, column);
+		return new ObjectFloatingPointRestrictedInputField(getMainWindow(), getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, column);
 	}
 	
 	public ObjectDataInputField createNumericField(int objectType, String tag, int column)
 	{
-		return new ObjectFloatingPointRestrictedInputField(project, objectType, getObjectIdForType(objectType), tag, column);
+		return new ObjectFloatingPointRestrictedInputField(getMainWindow(), objectType, getObjectIdForType(objectType), tag, column);
 	}
 
 	public ObjectDataInputField createCurrencyField(String tag)
 	{
-		return new ObjectCurrencyInputField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, 10);
+		return new ObjectCurrencyInputField(getMainWindow(), getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, 10);
 	}
 
 	public ObjectDataInputField createReadonlyCurrencyField(String tag)
 	{
-		ObjectCurrencyInputField field = new ObjectCurrencyInputField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, 10);
+		ObjectCurrencyInputField field = new ObjectCurrencyInputField(getMainWindow(), getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, 10);
 		field.setEditable(false);
 		return field;
 	}
 
 	public ObjectDataInputField createNumericField(String tag)
 	{
-		return new ObjectFloatingPointRestrictedInputField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag);
+		return new ObjectFloatingPointRestrictedInputField(getMainWindow(), getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag);
 	}
 	
 	public ObjectDataInputField createNumericField(int objectType, String tag)
 	{
-		return new ObjectFloatingPointRestrictedInputField(project, objectType, getObjectIdForType(objectType), tag);
+		return new ObjectFloatingPointRestrictedInputField(getMainWindow(), objectType, getObjectIdForType(objectType), tag);
 	}
 
 	public ObjectDataInputField createPercentageField(String tag)
 	{
-		return new ObjectPercentageInputField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag);
+		return new ObjectPercentageInputField(getMainWindow(), getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag);
 	}
 	
 	public ObjectDataInputField createMultilineField(String tag) throws Exception
