@@ -58,18 +58,18 @@ abstract public class AbstractXmpzObjectImporter
 		return getImporter().getProject();
 	}
 	
-	protected void importCodeField(Node node, String elementContainerName, ORef ref, String tag, ChoiceQuestion question) throws Exception
+	protected void importCodeField(Node parentNode, String elementContainerName, ORef ref, String tag, ChoiceQuestion question) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(elementContainerName, tag);
-		getImporter().importCodeField(node, elementContainerName + elementName, ref, tag, question);
+		getImporter().importCodeField(parentNode, elementContainerName + elementName, ref, tag, question);
 	}
 
-	protected void importCodeListElement(Node node, String elementContainerName, ORef ref, String tag) throws Exception
+	protected void importCodeListElement(Node parentNode, String elementContainerName, ORef ref, String tag) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(elementContainerName, tag);
-		NodeList codeNodes = getImporter().getNodes(node, new String[]{elementContainerName + elementName + WcsXmlConstants.CONTAINER_ELEMENT_TAG, XmlSchemaCreator.CODE_ELEMENT_NAME});
+		NodeList codeNodes = getImporter().getNodes(parentNode, new String[]{elementContainerName + elementName + WcsXmlConstants.CONTAINER_ELEMENT_TAG, XmlSchemaCreator.CODE_ELEMENT_NAME});
 		CodeList codesToImport = new CodeList();
 		for (int index = 0; index < codeNodes.getLength(); ++index)
 		{
