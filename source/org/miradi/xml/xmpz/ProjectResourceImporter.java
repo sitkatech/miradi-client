@@ -34,7 +34,7 @@ public class ProjectResourceImporter extends AbstractXmpzObjectImporter
 {
 	public ProjectResourceImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse);
+		super(importerToUse, WcsXmlConstants.PROJECT_RESOURCE);
 	}
 	
 	@Override
