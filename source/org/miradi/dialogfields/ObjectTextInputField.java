@@ -32,6 +32,8 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
+import com.inet.jortho.SpellChecker;
+
 public class ObjectTextInputField extends ObjectDataInputField
 {
 	public ObjectTextInputField(MainWindow mainWindowToUse, int objectType, BaseId objectId, String tag, JTextComponent componentToUse)
@@ -50,6 +52,8 @@ public class ObjectTextInputField extends ObjectDataInputField
 		field.getDocument().addDocumentListener(new DocumentEventHandler());
 		new TextAreaRightClickMouseHandler(getActions(), field);
 		field.addKeyListener(new UndoRedoKeyHandler(getActions()));
+		if(EAM.getMainWindow().isSpellCheckEnabled())
+			SpellChecker.register(field, false, false, true);
 		
 		setDefaultFieldBorder();
 	}	
