@@ -47,7 +47,7 @@
 	<property name="swingx.jar" value="${dist.temp.jars}/swingx/0.9.7/swingx-0.9.7.jar" />
 	<property name="cleansheets.jar" value="${dist.temp.jars}/Miradi-CleanSheets/1.4b-0/Miradi-CleanSheets-1.4b-0.jar" />
 	<property name="antlr.jar" value="${dist.temp.jars}/Miradi-CleanSheets/1.4b-0/antlr.jar" />
-	<property name="jortho.jar" value="${dist.temp.jars}/jortho/bin/jortho.jar" />
+	<property name="jortho.jar" value="${dist.temp.jars}/jortho/jortho/0.4/jortho.jar" />
     
 	<property name="junit.jar" value="${dist.temp.jars}/junit/3.8.1/bin/junit-3.8.1.jar" />
 
@@ -461,7 +461,7 @@
    		<zipfileset dir="${dist.temp.jars}/PersianCalendar/source/" prefix='source' includes="PersianCalendar*.zip" />
     	<zipfileset dir="${dist.temp.jars}/swingx/0.9.7" prefix="source" includes="swingx-0.9.7-src.zip" />
 		<zipfileset dir="${dist.temp.jars}/Miradi-CleanSheets/1.4b-0" prefix="source" includes="*-src.zip" />
-		<zipfileset dir="${dist.temp.jars}/jortho/0.4/" prefix="source" includes="JOrtho*.zip" />
+		<zipfileset dir="${dist.temp.jars}/jortho/" prefix="source" includes="JOrtho*.zip" />
 	</zip>
 	
 	<copy file="${installer.buildfiles.dir}/${samples.marine.mpz}" todir="${dist.dir}" />
