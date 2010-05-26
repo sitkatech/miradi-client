@@ -29,7 +29,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 {
 	public ProjectSummaryImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse);
+		super(importerToUse, WcsXmlConstants.PROJECT_SUMMARY);
 	}
 	
 	public void importElement() throws Exception

@@ -32,7 +32,7 @@ public class OrganizationImporter extends AbstractXmpzObjectImporter
 {
 	public OrganizationImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse);
+		super(importerToUse, WcsXmlConstants.ORGANIZATION);
 	}
 
 	@Override

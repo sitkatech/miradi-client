@@ -33,9 +33,10 @@ import org.w3c.dom.NodeList;
 
 abstract public class AbstractXmpzObjectImporter
 {
-	public AbstractXmpzObjectImporter(XmpzXmlImporter importerToUse)
+	public AbstractXmpzObjectImporter(XmpzXmlImporter importerToUse, String poolNameToUse)
 	{
 		importer = importerToUse;
+		poolName = poolNameToUse;
 	}
 	
 	protected XmpzXmlImporter getImporter()
@@ -83,7 +84,13 @@ abstract public class AbstractXmpzObjectImporter
 		getImporter().importField(parentNode, elementContainerName + elementName, ref, tag);
 	}
 	
+	public String getPoolName()
+	{
+		return poolName;
+	}
+	
 	abstract public void importElement() throws Exception;
 
 	private XmpzXmlImporter importer;
+	private String poolName;
 }
