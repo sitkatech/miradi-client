@@ -103,7 +103,7 @@ public class TextAreaRightClickMouseHandler extends MouseAdapter
 		menuItemPaste.setAccelerator(KeyStroke.getKeyStroke('V', KeyEvent.CTRL_DOWN_MASK));
 		menu.add(menuItemPaste);
 		
-		if(EAM.getMainWindow().isSpellCheckAvailable())
+		if(EAM.getMainWindow().isSpellCheckEnabled())
 		{
 			JMenu spellCheckMenu = new MiradiSpellCheckerMenu(SpellChecker.getOptions());
 			menu.add(spellCheckMenu);
