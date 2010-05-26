@@ -44,30 +44,25 @@ public class ProjectResourceImporter extends AbstractBaseObjectImporter
 	protected void importFields(Node node, ORef ref) throws Exception
 	{
 		importCodeField(node, WcsXmlConstants.PROJECT_RESOURCE, ref, ProjectResource.TAG_RESOURCE_TYPE, new ResourceTypeQuestion());			
-		importSummaryField(node, ref, ProjectResource.TAG_GIVEN_NAME);
-		importSummaryField(node, ref, ProjectResource.TAG_SUR_NAME);
-		importSummaryField(node, ref, ProjectResource.TAG_INITIALS);
+		importField(node, ref, ProjectResource.TAG_GIVEN_NAME);
+		importField(node, ref, ProjectResource.TAG_SUR_NAME);
+		importField(node, ref, ProjectResource.TAG_INITIALS);
 		importCodeListField(node, WcsXmlConstants.PROJECT_RESOURCE, ref, ProjectResource.TAG_ROLE_CODES);
-		importSummaryField(node, ref, ProjectResource.TAG_ORGANIZATION);
-		importSummaryField(node, ref, ProjectResource.TAG_POSITION);
-		importSummaryField(node, ref, ProjectResource.TAG_LOCATION);
-		importSummaryField(node, ref, ProjectResource.TAG_PHONE_NUMBER);
-		importSummaryField(node, ref, ProjectResource.TAG_PHONE_NUMBER_MOBILE);
-		importSummaryField(node, ref, ProjectResource.TAG_PHONE_NUMBER_HOME);
-		importSummaryField(node, ref, ProjectResource.TAG_PHONE_NUMBER_OTHER);
-		importSummaryField(node, ref, ProjectResource.TAG_EMAIL);
-		importSummaryField(node, ref, ProjectResource.TAG_ALTERNATIVE_EMAIL);
-		importSummaryField(node, ref, ProjectResource.TAG_IM_ADDRESS);
-		importSummaryField(node, ref, ProjectResource.TAG_IM_SERVICE);
-		importSummaryField(node, ref, ProjectResource.TAG_DATE_UPDATED);
-		importSummaryField(node, ref, ProjectResource.TAG_COST_PER_UNIT);
-		importSummaryField(node, ref, ProjectResource.TAG_COMMENTS);
-		importSummaryField(node, ref, ProjectResource.TAG_CUSTOM_FIELD_1);
-		importSummaryField(node, ref, ProjectResource.TAG_CUSTOM_FIELD_2);
-	}
-	
-	private void importSummaryField(Node projectSumaryNode,	ORef ref, String tag) throws Exception
-	{
-		importField(projectSumaryNode, ref, tag);
+		importField(node, ref, ProjectResource.TAG_ORGANIZATION);
+		importField(node, ref, ProjectResource.TAG_POSITION);
+		importField(node, ref, ProjectResource.TAG_LOCATION);
+		importField(node, ref, ProjectResource.TAG_PHONE_NUMBER);
+		importField(node, ref, ProjectResource.TAG_PHONE_NUMBER_MOBILE);
+		importField(node, ref, ProjectResource.TAG_PHONE_NUMBER_HOME);
+		importField(node, ref, ProjectResource.TAG_PHONE_NUMBER_OTHER);
+		importField(node, ref, ProjectResource.TAG_EMAIL);
+		importField(node, ref, ProjectResource.TAG_ALTERNATIVE_EMAIL);
+		importField(node, ref, ProjectResource.TAG_IM_ADDRESS);
+		importField(node, ref, ProjectResource.TAG_IM_SERVICE);
+		importField(node, ref, ProjectResource.TAG_DATE_UPDATED);
+		importField(node, ref, ProjectResource.TAG_COST_PER_UNIT);
+		importField(node, ref, ProjectResource.TAG_COMMENTS);
+		importField(node, ref, ProjectResource.TAG_CUSTOM_FIELD_1);
+		importField(node, ref, ProjectResource.TAG_CUSTOM_FIELD_2);
 	}
 }
