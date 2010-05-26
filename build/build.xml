@@ -447,7 +447,7 @@
         <zipfileset dir="${dist.temp.jars}/jing/bin/" prefix='${JarFolder}' includes="jing.jar" />
         <zipfileset dir="${dist.temp.jars}/swingx/0.9.7/" prefix='${JarFolder}' includes="swingx-0.9.7.jar" />
     	<zipfileset dir="${dist.temp.jars}/Miradi-CleanSheets/1.4b-0/" prefix='${JarFolder}' includes="*.jar"/>
-    	<zipfileset dir="${dist.temp.jars}/jortho/0.4/" prefix='${JarFolder}' includes="*.jar"/>
+    	<zipfileset dir="${dist.temp.jars}/jortho/jortho/0.4/" prefix='${JarFolder}' includes="*.jar"/>
 
     	<zipfileset dir="${dist.temp.jars}/PersianCalendar/bin/" prefix='${JarFolder}' includes="*.jar" />
     </zip>
