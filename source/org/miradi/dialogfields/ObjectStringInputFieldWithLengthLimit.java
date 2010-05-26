@@ -24,13 +24,13 @@ import javax.swing.event.UndoableEditListener;
 import javax.swing.text.Document;
 
 import org.miradi.ids.BaseId;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 
 public class ObjectStringInputFieldWithLengthLimit extends ObjectStringInputField
 {
-	public ObjectStringInputFieldWithLengthLimit(Project projectToUse, int objectType, BaseId objectId, String tag, int columnsToUse, Document document)
+	public ObjectStringInputFieldWithLengthLimit(MainWindow mainWindowToUse, int objectType, BaseId objectId, String tag, int columnsToUse, Document document)
 	{
-		super(projectToUse, objectType, objectId, tag, columnsToUse, document);
+		super(mainWindowToUse, objectType, objectId, tag, columnsToUse, document);
 		
 		DocumentEventHandler handler = new DocumentEventHandler();
 		getTextField().getDocument().addUndoableEditListener(handler);

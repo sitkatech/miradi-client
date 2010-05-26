@@ -31,28 +31,28 @@ import org.martus.swing.UiTextArea;
 import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 
 public class ObjectStringInputField extends ObjectTextInputField
 {
-	public ObjectStringInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse)
+	public ObjectStringInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse)
 	{
-		this(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(0, columnsToUse));		
+		this(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(0, columnsToUse));		
 	}
 	
-	public ObjectStringInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse, Document document)
+	public ObjectStringInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse, Document document)
 	{
-		this(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(0, columnsToUse), document);
+		this(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(0, columnsToUse), document);
 	}
 	
-	private ObjectStringInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, PanelTextArea componentToUse)
+	private ObjectStringInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, PanelTextArea componentToUse)
 	{
-		this(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, componentToUse, componentToUse.getDocument());
+		this(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, componentToUse, componentToUse.getDocument());
 	}
 
-	private ObjectStringInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, PanelTextArea componentToUse, Document document)
+	private ObjectStringInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, PanelTextArea componentToUse, Document document)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, componentToUse, document);
+		super(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, componentToUse, document);
 		
 		DocumentEventHandler handler = new DocumentEventHandler();
 		((JTextComponent)getComponent()).getDocument().addUndoableEditListener(handler);
