@@ -251,8 +251,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	public boolean isSpellCheckEnabled()
 	{
-		// TODO: Need to also ask AppPreferences if it is enabled
-		return isSpellCheckAvailable();
+		return isSpellCheckAvailable() && getAppPreferences().getIsSpellCheckEnabled();
 	}
 	
 	private Dimension getSizeFromPreferences()

@@ -140,6 +140,14 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		String rowHeightMode = getMainWindow().getRowHeightModeString();
 		ChoiceQuestion rowHeightModeQuestion = StaticQuestionManager.getQuestion(TableRowHeightModeQuestion.class);
 		panelRowHeightModeCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Table Row Height Mode"), rowHeightModeQuestion, rowHeightMode);
+		
+		htmlTab.add(new PanelTitleLabel(EAM.text("Enable Spell Checking")));
+		enableSpellCheckingCheckBox = new PanelCheckBox();
+		enableSpellCheckingCheckBox.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		enableSpellCheckingCheckBox.setSelected(getMainWindow().getBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE));
+		enableSpellCheckingCheckBox.addActionListener(this);
+		htmlTab.add(enableSpellCheckingCheckBox);
+
 		return htmlTab;
 	}
 
@@ -281,6 +289,8 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		
 		String rowHeightMode = getSelectedItemQuestionBox(panelRowHeightModeCombo);
 		getMainWindow().setRowHeightMode(rowHeightMode);
+		
+		getMainWindow().setBooleanPreference(AppPreferences.TAG_IS_SPELL_CHECK_ENABLED, enableSpellCheckingCheckBox.isSelected());
 
 		getMainWindow().safelySavePreferences();
 	}
@@ -382,6 +392,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private UiComboBox threatReductionResultDropDown;
 	private UiCheckBox gridVisibleCheckBox; 
 	private UiCheckBox cellRatingsVisibleCheckBox;
+	private UiCheckBox enableSpellCheckingCheckBox;
 	
 	private UiComboBox panelFontSizeCombo;
 	private UiComboBox panelFontFamilyCombo;

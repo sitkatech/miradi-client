@@ -58,6 +58,16 @@ public class AppPreferences
 		JSONFile.write(preferencesFile, toJson());
 	}
 	
+	public void setIsSpellCheckEnabled(boolean state)
+	{
+		isSpellCheckEnabled = state;
+	}
+	
+	public boolean getIsSpellCheckEnabled()
+	{
+		return isSpellCheckEnabled;
+	}
+	
 	public void setIsMaximized(boolean state)
 	{
 		isMaximized = state;
@@ -214,6 +224,8 @@ public class AppPreferences
 			isGridVisible = state;
 		else if (tag.equals(TAG_CELL_RATINGS_VISIBLE))
 			isCellRatingsVisible = state;
+		else if (tag.equals(TAG_IS_SPELL_CHECK_ENABLED))
+			isSpellCheckEnabled = state;
 		else
 			throw new RuntimeException(tag);
 	}
@@ -342,6 +354,8 @@ public class AppPreferences
 		json.put(TAG_TAGGED_INTS, putIntegerMapToJson());
 		json.put(TAG_TAGGED_STRINGS, putStringMapToJson());
 		
+		json.put(TAG_IS_SPELL_CHECK_ENABLED, isSpellCheckEnabled);
+		
 		return json;
 	}
 	
@@ -406,6 +420,8 @@ public class AppPreferences
 		
 		taggedIntMap = loadTagIntegerMap(json);
 		taggedStringMap = loadTagStringMap(json);
+		
+		isSpellCheckEnabled = json.optBoolean(TAG_IS_SPELL_CHECK_ENABLED);
 	}
 
 	private HashMap loadTagStringMap(EnhancedJsonObject json)
@@ -612,6 +628,8 @@ public class AppPreferences
 	
 	public static final String TAG_ROW_HEIGHT_MODE = "TableRowHeightMode";
 	
+	public static final String TAG_IS_SPELL_CHECK_ENABLED = "SpellCheckEnabled";
+	
 	public static final Color WIZARD_TITLE_FOREGROUND = new Color(72, 112, 28);
 	public static final String WIZARD_TITLE_FOREGROUND_FOR_CSS = "#48701C";
 
@@ -693,4 +711,6 @@ public class AppPreferences
 
 	private HashMap<String, Integer> taggedIntMap;
 	private HashMap<String, String> taggedStringMap;
+
+	private boolean isSpellCheckEnabled;
 }
