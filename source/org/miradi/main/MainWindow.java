@@ -410,7 +410,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		if(currentView != null)
 		{
-			currentView.publicBecomeInactive();
+			currentView.becomeInactive();
 			if(getProject().getCommandListenerCount() != existingCommandListenerCount)
 			{
 				EAM.logError("CommandListener count wrong (was " + existingCommandListenerCount + ")");
