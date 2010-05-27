@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-26 14:53-0500\n"
+"POT-Creation-Date: 2010-05-27 10:03-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -324,7 +324,7 @@ msgid ""
 "\">support@miradi.org<a>) for assistance</HTML>"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1119
+#: Miradi/source/org/miradi/main/MainWindow.java:1118
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -385,7 +385,7 @@ msgid ""
 "correctly."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:222
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:230
 msgid ""
 "<div class='DataPanel'><p>Why are my choices limited to one color family for "
 "each type of factor?</p>"
@@ -2021,11 +2021,11 @@ msgstr "生物多样性特征 \t\t"
 msgid "Biodiversity Target"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:208
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:216
 msgid "Biodiversity Target (Lighter Green)"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:210
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:218
 msgid "Biodiversity Target Scope (Darker Green)"
 msgstr ""
 
@@ -2317,7 +2317,7 @@ msgstr ""
 msgid "Choose Tags"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:204
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:212
 msgid "Choose the colors that look best on your system:"
 msgstr "选择在您的系统中显示最好的颜色： \t\t"
 
@@ -2396,7 +2396,7 @@ msgstr "保护对象 "
 msgid "Contributing Factor"
 msgstr "影响因素"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:207
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:215
 msgid "Contributing Factor (Orange)"
 msgstr "影响因素（橙） \t\t"
 
@@ -2808,7 +2808,7 @@ msgstr "图表总览 \t\t"
 msgid "Direct Threat"
 msgstr "直接威胁因子"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:206
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:214
 msgid "Direct Threat (Pink)"
 msgstr "直接威胁因子（粉红） \t\t"
 
@@ -2912,6 +2912,10 @@ msgstr "编辑器 \t\t"
 #: Miradi/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:40
 msgid "Effective"
 msgstr "有效 "
+
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:144
+msgid "Enable Spell Checking"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:36
 msgid "End:"
@@ -3036,7 +3040,7 @@ msgstr "估计活动及监控的开销 \t\t"
 msgid "Euro"
 msgstr "欧元"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:704
+#: Miradi/source/org/miradi/main/MainWindow.java:703
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -3474,7 +3478,7 @@ msgstr "人力利益相关者 \t\t"
 msgid "Human Welfare Target"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:209
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:217
 msgid "Human Welfare Target (Lighter Brown)"
 msgstr ""
 
@@ -3482,7 +3486,7 @@ msgstr ""
 msgid "Human Welfare Target Mode"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:211
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:219
 msgid "Human Welfare Target Scope (Darker Brown)"
 msgstr ""
 
@@ -3633,7 +3637,7 @@ msgstr "仅限于指示物 \t\t"
 msgid "Indicators:"
 msgstr "指示物: \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:320
+#: Miradi/source/org/miradi/main/MainWindow.java:319
 msgid "Information"
 msgstr "信息 \t\t"
 
@@ -3692,7 +3696,7 @@ msgstr "周密评估"
 msgid "Intermediate Result"
 msgstr "中途结果"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:212
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:220
 msgid "Intermediate Result (Light Blue)"
 msgstr "中途结果（淡蓝） \t\t"
 
@@ -4821,7 +4825,7 @@ msgstr "差"
 msgid "Pound (United Kingdom)"
 msgstr "英镑（英国） "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:354
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:364
 msgid "Preferences"
 msgstr "优先选项 \t\t"
 
@@ -4964,7 +4968,7 @@ msgstr ""
 msgid "Project Resource Filter Editor"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:702
+#: Miradi/source/org/miradi/main/MainWindow.java:701
 msgid "Project Resource Filter Is On"
 msgstr ""
 
@@ -5392,7 +5396,7 @@ msgstr "与全世界的实践者共享成功与失败 \t\t"
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:237
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:245
 msgid "Show Diagram Grid"
 msgstr "显示图标栅格 \t\t"
 
@@ -5400,7 +5404,7 @@ msgstr "显示图标栅格 \t\t"
 msgid "Show Quarter Columns"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:182
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:190
 msgid "Show Ratings in Cell"
 msgstr "在单元格中显示分级 \t\t"
 
@@ -5513,7 +5517,7 @@ msgstr "利益相关者"
 msgid "Standard Reports"
 msgstr "标准报告 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:736
+#: Miradi/source/org/miradi/main/MainWindow.java:735
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -5590,7 +5594,7 @@ msgstr "仅限于策略 \t\t"
 msgid "Strategy"
 msgstr "策略 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:205
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:213
 msgid "Strategy (Yellow)"
 msgstr "策略（黄） \t\t"
 
@@ -6637,18 +6641,18 @@ msgstr ""
 msgid "That language pack is already installed"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:544
+#: Miradi/source/org/miradi/main/MainWindow.java:543
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
 msgstr "此项目无法被打开，因为它是由该应用程序的更高版本所创建 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:548
+#: Miradi/source/org/miradi/main/MainWindow.java:547
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr "此项目在被转换成当前数据格式之前无法打开 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:540
+#: Miradi/source/org/miradi/main/MainWindow.java:539
 msgid "That project is in use by another copy of this application"
 msgstr "此项目正被本应用程序的另一个拷贝所使用 \t\t"
 
@@ -6803,7 +6807,7 @@ msgstr ""
 msgid "Threat Reduction Result"
 msgstr "威胁因子减少结果"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:213
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:221
 msgid "Threat Reduction Result (Light Purple)"
 msgstr "减少威胁因子的结果（淡紫） \t\t"
 
@@ -7104,7 +7108,7 @@ msgstr ""
 "无法删除该项目，因为它正被该应用程序的另一拷贝所使用:\n"
 " \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1103
+#: Miradi/source/org/miradi/main/MainWindow.java:1102
 msgid "Unable to launch external web browser"
 msgstr "无法运行外部网页浏览器 \t\t"
 
@@ -7125,7 +7129,7 @@ msgstr ""
 "无法重命名该项目，因为它正被该应用程序的另一拷贝所使用:\n"
 " \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:892
+#: Miradi/source/org/miradi/main/MainWindow.java:891
 msgid "Unable to save preferences"
 msgstr "无法保存优先选项 \t\t"
 
@@ -7175,7 +7179,7 @@ msgstr "大学"
 msgid "Unknown"
 msgstr "未知"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:535
+#: Miradi/source/org/miradi/main/MainWindow.java:534
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -7192,7 +7196,7 @@ msgstr "未知代码： \t\t"
 msgid "Unknown error displaying diagram"
 msgstr "显示图表时出现未知错误 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:553
+#: Miradi/source/org/miradi/main/MainWindow.java:552
 msgid "Unknown error prevented opening that project"
 msgstr "未知错误阻止打开项目 \t\t"
 
@@ -7326,7 +7330,7 @@ msgstr "警告 \t\t"
 msgid "Was expecting a %s, instead got:\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:223
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:231
 msgid ""
 "We are trying to create a standard set of symbols that can be recognized "
 "globally. Just like people the world over recognize a red octagon as a stop "
