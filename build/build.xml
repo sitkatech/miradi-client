@@ -424,6 +424,14 @@
 		<param name='directory' value='jortho/jortho/0.4' />
 		<param name='filename' value='JOrtho-source.zip' />
 	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jortho/dictionaries/2009-01' />
+		<param name='filename' value='dictionary_en_2009_01.zip' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jortho/dictionaries/2009-01' />
+		<param name='filename' value='dictionary_es_2009_01.zip' />
+	</antcall>
 </target>
 
 <!-- ================================================================== -->
@@ -437,6 +445,7 @@
 		<zipfileset dir="${installer.buildfiles.dir}" includes="LICENSE.txt"/>
     	<zipfileset dir="${dist.dir}" includes="miradi.jar"/>
 		<zipfileset dir="${installer.buildfiles.dir}" includes="${samples.marine.mpz}" />
+		<zipfileset dir="${dist.temp.jars}/jortho/dictionaries/2009-01/" includes="*.ortho" />
     	
     	<!-- ThirdParty jars -->
     	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='${JarFolder}' includes="BrowserLauncher*.jar" />
@@ -462,6 +471,7 @@
     	<zipfileset dir="${dist.temp.jars}/swingx/0.9.7" prefix="source" includes="swingx-0.9.7-src.zip" />
 		<zipfileset dir="${dist.temp.jars}/Miradi-CleanSheets/1.4b-0" prefix="source" includes="*-src.zip" />
 		<zipfileset dir="${dist.temp.jars}/jortho/" prefix="source" includes="JOrtho*.zip" />
+		<zipfileset dir="${dist.temp.jars}/jortho/" prefix="source" includes="dictionary*.zip" />
 	</zip>
 	
 	<copy file="${installer.buildfiles.dir}/${samples.marine.mpz}" todir="${dist.dir}" />
