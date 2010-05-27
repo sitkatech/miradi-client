@@ -428,10 +428,20 @@
 		<param name='directory' value='jortho/dictionaries/2009-01' />
 		<param name='filename' value='dictionary_en_2009_01.zip' />
 	</antcall>
+	<unzip src='${dist.temp.jars}/jortho/dictionaries/2009-01/dictionary_en_2009_01.zip' dest='${dist.temp}'>
+		<patternset>
+			<include name="**/*.ortho"/>
+		</patternset>
+	</unzip>
 	<antcall target='download'>
 		<param name='directory' value='jortho/dictionaries/2009-01' />
 		<param name='filename' value='dictionary_es_2009_01.zip' />
 	</antcall>
+	<unzip src='${dist.temp.jars}/jortho/dictionaries/2009-01/dictionary_es_2009_01.zip' dest='${dist.temp}'>
+		<patternset>
+			<include name="**/*.ortho"/>
+		</patternset>
+	</unzip>
 </target>
 
 <!-- ================================================================== -->
@@ -445,7 +455,7 @@
 		<zipfileset dir="${installer.buildfiles.dir}" includes="LICENSE.txt"/>
     	<zipfileset dir="${dist.dir}" includes="miradi.jar"/>
 		<zipfileset dir="${installer.buildfiles.dir}" includes="${samples.marine.mpz}" />
-		<zipfileset dir="${dist.temp.jars}/jortho/dictionaries/2009-01/" includes="*.ortho" />
+		<zipfileset dir="${dist.temp}" includes="*.ortho" />
     	
     	<!-- ThirdParty jars -->
     	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='${JarFolder}' includes="BrowserLauncher*.jar" />
