@@ -37,17 +37,17 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 	{
 		Node projectSumaryNode = getImporter().getNode(getImporter().getRootNode(), WcsXmlConstants.PROJECT_SUMMARY);
 				
-		importSummaryField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_NAME);
-		importSummaryField(projectSumaryNode, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
-		importSummaryField(projectSumaryNode, ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
-		importSummaryField(projectSumaryNode, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
-		importSummaryField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_URL);
-		importSummaryField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_DESCRIPTION);
-		importSummaryField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_STATUS);
-		importSummaryField(projectSumaryNode, ProjectMetadata.TAG_NEXT_STEPS);
+		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_NAME);
+		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
+		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
+		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
+		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_URL);
+		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_DESCRIPTION);
+		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_STATUS);
+		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_NEXT_STEPS);
 	}
 
-	private void importSummaryField(Node projectSumaryNode,	String tag) throws Exception
+	private void importProjectMetadataField(Node projectSumaryNode,	String tag) throws Exception
 	{
 		importField(projectSumaryNode, getMetadataRef(), tag);
 	}
