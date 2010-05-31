@@ -77,11 +77,11 @@ abstract public class AbstractXmpzObjectImporter
 		getImporter().setData(ref, tag, codesToImport.toString());
 	}
 
-	protected void importField(Node parentNode, ORef ref, String tag) throws Exception
+	protected void importField(Node parentNode, ORef destinationRef, String tag) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(getPoolName(), tag);
-		getImporter().importField(parentNode, getPoolName() + elementName, ref, tag);
+		getImporter().importField(parentNode, getPoolName() + elementName, destinationRef, tag);
 	}
 	
 	public String getPoolName()
