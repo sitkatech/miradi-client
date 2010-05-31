@@ -47,9 +47,9 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_NEXT_STEPS);
 	}
 
-	private void importProjectMetadataField(Node projectSumaryNode,	String tag) throws Exception
+	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception
 	{
-		importField(projectSumaryNode, getMetadataRef(), tag);
+		importField(projectSummaryNode, getMetadataRef(), tag);
 	}
 }
 
