@@ -123,22 +123,22 @@ abstract public class AbstractXmlImporter
 		return thisXPath;
 	}
 
-	protected void importField(Node node, String path, ORef ref, String tag) throws Exception
+	protected void importField(Node node, String path, ORef ref, String destinationTag) throws Exception
 	{
-		importField(node, new String[]{path,}, ref, tag);
+		importField(node, new String[]{path,}, ref, destinationTag);
 	}
 	
-	private void importField(Node node, String[] elements, ORef ref, String tag) throws Exception 
+	private void importField(Node node, String[] elements, ORef ref, String destinationTag) throws Exception 
 	{
 		String data = getPathData(node, elements);
-		importField(ref, tag, data);
+		importField(ref, destinationTag, data);
 	}
 	
-	public void importCodeField(Node node, String elementName, ORef ref, String tag, ChoiceQuestion question) throws Exception
+	public void importCodeField(Node node, String elementName, ORef ref, String destinationTag, ChoiceQuestion question) throws Exception
 	{
 		String code = getPathData(node, new String[]{elementName, });
 		String rawCode = getRawCode(question, code);
-		importField(ref, tag, rawCode);
+		importField(ref, destinationTag, rawCode);
 	}
 
 	private String getRawCode(ChoiceQuestion question, String code)
@@ -156,9 +156,9 @@ abstract public class AbstractXmlImporter
 		return getXPath().evaluate(generatedPath, node);
 	}
 
-	private void importField(ORef ref, String tag, String data)	throws Exception
+	private void importField(ORef ref, String destinationTag, String data)	throws Exception
 	{
-		setData(ref, tag, data);
+		setData(ref, destinationTag, data);
 	}
 		
 	public void setData(ORef ref, String tag, String data) throws Exception
