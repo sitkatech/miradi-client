@@ -54,14 +54,14 @@ abstract public class AbstractXmpzObjectImporter
 		return getImporter().getProject();
 	}
 	
-	protected void importCodeField(Node parentNode, String elementContainerName, ORef ref, String destinationTag, ChoiceQuestion question) throws Exception
+	protected void importCodeField(Node parentNode, String elementContainerName, ORef destinationRef, String destinationTag, ChoiceQuestion question) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(elementContainerName, destinationTag);
-		getImporter().importCodeField(parentNode, elementContainerName + elementName, ref, destinationTag, question);
+		getImporter().importCodeField(parentNode, elementContainerName + elementName, destinationRef, destinationTag, question);
 	}
 
-	protected void importCodeListField(Node parentNode, String elementContainerName, ORef ref, String destinationTag) throws Exception
+	protected void importCodeListField(Node parentNode, String elementContainerName, ORef destinationRef, String destinationTag) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(elementContainerName, destinationTag);
@@ -74,7 +74,7 @@ abstract public class AbstractXmpzObjectImporter
 			codesToImport.add(code);
 		}
 		
-		getImporter().setData(ref, destinationTag, codesToImport.toString());
+		getImporter().setData(destinationRef, destinationTag, codesToImport.toString());
 	}
 
 	protected void importField(Node parentNode, ORef destinationRef, String destinationTag) throws Exception
