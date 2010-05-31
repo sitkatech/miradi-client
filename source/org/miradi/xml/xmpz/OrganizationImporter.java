@@ -40,15 +40,15 @@ public class OrganizationImporter extends AbstractBaseObjectImporter
 	}
 	
 	@Override
-	protected void importFields(Node node, ORef ref) throws Exception
+	protected void importFields(Node node, ORef destinationRef) throws Exception
 	{
-		importField(node, ref, BaseObject.TAG_LABEL);
-		importField(node, ref, Organization.TAG_SHORT_LABEL);
-		importField(node, ref, Organization.TAG_ROLES_DESCRIPTION);
-		importField(node, ref, Organization.TAG_CONTACT_FIRST_NAME);
-		importField(node, ref, Organization.TAG_CONTACT_LAST_NAME);
-		importField(node, ref, Organization.TAG_EMAIL);
-		importField(node, ref, Organization.TAG_PHONE_NUMBER);
-		importField(node, ref, Organization.TAG_COMMENTS);
+		importField(node, destinationRef, BaseObject.TAG_LABEL);
+		importField(node, destinationRef, Organization.TAG_SHORT_LABEL);
+		importField(node, destinationRef, Organization.TAG_ROLES_DESCRIPTION);
+		importField(node, destinationRef, Organization.TAG_CONTACT_FIRST_NAME);
+		importField(node, destinationRef, Organization.TAG_CONTACT_LAST_NAME);
+		importField(node, destinationRef, Organization.TAG_EMAIL);
+		importField(node, destinationRef, Organization.TAG_PHONE_NUMBER);
+		importField(node, destinationRef, Organization.TAG_COMMENTS);
 	}
 }

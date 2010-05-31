@@ -47,5 +47,5 @@ abstract public class AbstractBaseObjectImporter extends AbstractXmpzObjectImpor
 		}
 	}
 	
-	abstract protected void importFields(Node node, ORef ref) throws Exception;
+	abstract protected void importFields(Node node, ORef destinationRef) throws Exception;
 }
