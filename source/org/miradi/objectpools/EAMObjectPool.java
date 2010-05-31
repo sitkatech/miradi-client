@@ -53,6 +53,7 @@ public class EAMObjectPool extends ObjectPool
 	public ORefList getSortedRefList()
 	{
 		ORefList sortedList = new ORefList(getObjectType(), getIdList());
+		sortedList.sort();
 		return sortedList;
 	}
 }
