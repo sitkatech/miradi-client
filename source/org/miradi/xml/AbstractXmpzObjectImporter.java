@@ -54,18 +54,18 @@ abstract public class AbstractXmpzObjectImporter
 		return getImporter().getProject();
 	}
 	
-	protected void importCodeField(Node parentNode, String elementContainerName, ORef destinationRef, String destinationTag, ChoiceQuestion question) throws Exception
+	protected void importCodeField(Node node, String elementContainerName, ORef destinationRef, String destinationTag, ChoiceQuestion question) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(elementContainerName, destinationTag);
-		getImporter().importCodeField(parentNode, elementContainerName + elementName, destinationRef, destinationTag, question);
+		getImporter().importCodeField(node, elementContainerName + elementName, destinationRef, destinationTag, question);
 	}
 
-	protected void importCodeListField(Node parentNode, String elementContainerName, ORef destinationRef, String destinationTag) throws Exception
+	protected void importCodeListField(Node node, String elementContainerName, ORef destinationRef, String destinationTag) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(elementContainerName, destinationTag);
-		NodeList codeNodes = getImporter().getNodes(parentNode, new String[]{elementContainerName + elementName + WcsXmlConstants.CONTAINER_ELEMENT_TAG, XmlSchemaCreator.CODE_ELEMENT_NAME});
+		NodeList codeNodes = getImporter().getNodes(node, new String[]{elementContainerName + elementName + WcsXmlConstants.CONTAINER_ELEMENT_TAG, XmlSchemaCreator.CODE_ELEMENT_NAME});
 		CodeList codesToImport = new CodeList();
 		for (int index = 0; index < codeNodes.getLength(); ++index)
 		{
@@ -77,11 +77,11 @@ abstract public class AbstractXmpzObjectImporter
 		getImporter().setData(destinationRef, destinationTag, codesToImport.toString());
 	}
 
-	protected void importField(Node parentNode, ORef destinationRef, String destinationTag) throws Exception
+	protected void importField(Node node, ORef destinationRef, String destinationTag) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(getPoolName(), destinationTag);
-		getImporter().importField(parentNode, getPoolName() + elementName, destinationRef, destinationTag);
+		getImporter().importField(node, getPoolName() + elementName, destinationRef, destinationTag);
 	}
 	
 	public String getPoolName()
