@@ -54,17 +54,17 @@ abstract public class AbstractXmpzObjectImporter
 		return getImporter().getProject();
 	}
 	
-	protected void importCodeField(Node parentNode, String elementContainerName, ORef ref, String tag, ChoiceQuestion question) throws Exception
+	protected void importCodeField(Node parentNode, String elementContainerName, ORef ref, String destinationTag, ChoiceQuestion question) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
-		String elementName = map.findElementName(elementContainerName, tag);
-		getImporter().importCodeField(parentNode, elementContainerName + elementName, ref, tag, question);
+		String elementName = map.findElementName(elementContainerName, destinationTag);
+		getImporter().importCodeField(parentNode, elementContainerName + elementName, ref, destinationTag, question);
 	}
 
-	protected void importCodeListField(Node parentNode, String elementContainerName, ORef ref, String tag) throws Exception
+	protected void importCodeListField(Node parentNode, String elementContainerName, ORef ref, String destinationTag) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
-		String elementName = map.findElementName(elementContainerName, tag);
+		String elementName = map.findElementName(elementContainerName, destinationTag);
 		NodeList codeNodes = getImporter().getNodes(parentNode, new String[]{elementContainerName + elementName + WcsXmlConstants.CONTAINER_ELEMENT_TAG, XmlSchemaCreator.CODE_ELEMENT_NAME});
 		CodeList codesToImport = new CodeList();
 		for (int index = 0; index < codeNodes.getLength(); ++index)
@@ -74,7 +74,7 @@ abstract public class AbstractXmpzObjectImporter
 			codesToImport.add(code);
 		}
 		
-		getImporter().setData(ref, tag, codesToImport.toString());
+		getImporter().setData(ref, destinationTag, codesToImport.toString());
 	}
 
 	protected void importField(Node parentNode, ORef destinationRef, String destinationTag) throws Exception
