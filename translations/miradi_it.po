@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-01 08:49-0500\n"
+"POT-Creation-Date: 2010-06-01 09:08-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -15,14 +15,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Miradi/source/org/miradi/main/EAM.java:384
+#: Miradi/source/org/miradi/main/EAM.java:367
 msgid ""
 "\n"
 "\n"
 "Miradi has attempted to save your latest changes, and will now exit."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:381
+#: Miradi/source/org/miradi/main/EAM.java:364
 msgid ""
 "\n"
 "\n"
@@ -1673,7 +1673,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:390
+#: Miradi/source/org/miradi/main/EAM.java:373
 msgid "An unexpected error has occurred"
 msgstr ""
 
@@ -1681,7 +1681,7 @@ msgstr ""
 msgid "An unexpected error has occurred."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:380
+#: Miradi/source/org/miradi/main/EAM.java:363
 msgid "An unexpected error occurred: "
 msgstr ""
 
@@ -2559,8 +2559,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:60
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:62
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
-#: Miradi/source/org/miradi/main/EAM.java:451
-#: Miradi/source/org/miradi/main/EAM.java:452
+#: Miradi/source/org/miradi/main/EAM.java:434
+#: Miradi/source/org/miradi/main/EAM.java:435
 msgid "Delete"
 msgstr ""
 
@@ -5045,7 +5045,7 @@ msgid "Results Chains"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:60
-#: Miradi/source/org/miradi/main/EAM.java:451
+#: Miradi/source/org/miradi/main/EAM.java:434
 msgid "Retain"
 msgstr ""
 
@@ -6721,7 +6721,7 @@ msgstr ""
 msgid "Title|Direct Threat Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:399
+#: Miradi/source/org/miradi/main/EAM.java:382
 msgid "Title|Error"
 msgstr ""
 
@@ -7143,7 +7143,7 @@ msgstr ""
 msgid "WWF"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:140
+#: Miradi/source/org/miradi/main/EAM.java:139
 msgid "Warning"
 msgstr ""
 
@@ -7265,7 +7265,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:607
+#: Miradi/source/org/miradi/main/EAM.java:590
 msgid "Wintitle|Information"
 msgstr ""
 
