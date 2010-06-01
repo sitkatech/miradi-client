@@ -21,6 +21,7 @@ package org.miradi.main;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Arrays;
@@ -94,6 +95,13 @@ public class Miradi
 		
 		StaticQuestionManager.initialize();
 
+		initializeSpellChecker();
+
+		Miradi.start(args);
+	}
+
+	private static void initializeSpellChecker() throws MalformedURLException
+	{
 		String english = Translation.DEFAULT_LANGUAGE_CODE;
 		URL dictionaryFolderURL = ResourcesHandler.getEnglishResourceURL("");
 		URL dictionaryURL = new URL(dictionaryFolderURL, getDictionaryName(english));
@@ -112,8 +120,6 @@ public class Miradi
 //				ZipEntry dictionaryEntry = languagePackZip.getEntry(dictionaryName);
 //				if(dictionaryEntry != null)
 //					initializeSpellChecker(new URL("jar:" + jarFile.toURI().toURL() + "!/"), languageCode);
-
-		Miradi.start(args);
 	}
 
 	public static boolean isDemoMode()
