@@ -21,9 +21,9 @@ package org.miradi.views.schedule;
 
 import org.miradi.actions.Actions;
 import org.miradi.actions.views.ActionViewSchedule;
-import org.miradi.main.EAMToolBar;
+import org.miradi.main.MiradiToolBar;
 
-public class ScheduleToolBar extends EAMToolBar
+public class ScheduleToolBar extends MiradiToolBar
 {
 	public ScheduleToolBar(Actions actions)
 	{

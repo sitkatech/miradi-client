@@ -21,9 +21,9 @@ package org.miradi.views.targetviability;
 
 import org.miradi.actions.Actions;
 import org.miradi.actions.views.ActionViewTargetViability;
-import org.miradi.main.EAMToolBar;
+import org.miradi.main.MiradiToolBar;
 
-public class TargetViabilityToolBar extends EAMToolBar
+public class TargetViabilityToolBar extends MiradiToolBar
 {
 	public TargetViabilityToolBar(Actions actions)
 	{
