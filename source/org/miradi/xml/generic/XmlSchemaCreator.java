@@ -48,6 +48,7 @@ import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
+import org.miradi.questions.LanguageQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
@@ -107,6 +108,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		writer.println("vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } ");
 		writer.println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
 		writer.println(VOCABULARY_TEXT_BOX_Z_ORDER + " = '" + Z_ORDER_BACK_CODE + "' | '" + TextBoxZOrderQuestion.FRONT_CODE + "'");
+		defineVocabulary(writer, VOCABULARY_LANGUAGE_CODE, new LanguageQuestion());
 		defineVocabulary(writer, VOCABULARY_FISCAL_YEAR_START, new FiscalYearStartQuestion());
 		defineVocabulary(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, new ProtectedAreaCategoryQuestion());
 		defineVocabulary(writer, VOCABULARY_RESOURCE_TYPE, new ResourceTypeQuestion());
@@ -466,6 +468,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		writer.println();
 	}
 	
+	public static final String VOCABULARY_LANGUAGE_CODE = "vocabulary_language_code";
 	private static final String VOCABULARY_FISCAL_YEAR_START = "vocabulary_fiscal_year_start_month";
 	private static final String VOCABULARY_PROTECTED_AREA_CATEGORIES = "vocabulary_protected_area_categories";
 	public static final String VOCABULARY_RESOURCE_TYPE = "vocabulary_resource_type";

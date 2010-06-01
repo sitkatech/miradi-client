@@ -149,6 +149,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void fillGeneralProjectData() throws Exception
 	{
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_NAME, "Some Project Name");
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_LANGUAGE, "en");
 		setProjectStartDate(MultiCalendar.createFromGregorianYearMonthDay(2008, 1, 1));
 		setProjectEndDate(MultiCalendar.createFromGregorianYearMonthDay(2009, 12, 31));
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, "2006-09-27");

@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/34'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/35'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -50,6 +50,7 @@ ConservationProject.element = element miradi:ConservationProject
 ProjectSummary.element = element miradi:ProjectSummary
 {
   element miradi:ProjectSummaryProjectName { text }? &
+  element miradi:ProjectSummaryProjectLanguage { vocabulary_language_code  }? &
   element miradi:ProjectSummaryDataEffectiveDate { vocabulary_date }? &
   element miradi:ProjectSummaryOtherOrgProjectNumber { text }? &
   element miradi:ProjectSummaryOtherOrgRelatedProjects { text }? &
@@ -625,6 +626,7 @@ vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' }
 vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } 
 vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }
 vocabulary_text_box_z_order = 'Back' | 'Front'
+vocabulary_language_code = 'ab'|'aa'|'af'|'ak'|'sq'|'am'|'ar'|'an'|'hy'|'as'|'av'|'ae'|'ay'|'az'|'bm'|'ba'|'eu'|'be'|'bn'|'bh'|'bi'|'nb'|'bs'|'br'|'bg'|'my'|'ca'|'km'|'ch'|'ce'|'ny'|'zh'|'cu'|'cv'|'kw'|'co'|'cr'|'hr'|'cs'|'da'|'dv'|'nl'|'dz'|'en'|'eo'|'et'|'ee'|'fo'|'fj'|'fi'|'fr'|'ff'|'gd'|'gl'|'lg'|'ka'|'de'|'el'|'gn'|'gu'|'ht'|'ha'|'he'|'hz'|'hi'|'ho'|'hu'|'is'|'io'|'ig'|'id'|'ia'|'ie'|'iu'|'ik'|'ga'|'it'|'ja'|'jv'|'kl'|'kn'|'kr'|'ks'|'kk'|'ki'|'rw'|'ky'|'kv'|'kg'|'ko'|'kj'|'ku'|'lo'|'la'|'lv'|'li'|'ln'|'lt'|'lu'|'lb'|'mk'|'mg'|'ms'|'ml'|'mt'|'gv'|'mi'|'mr'|'mh'|'mo'|'mn'|'na'|'nv'|'nd'|'nr'|'ng'|'ne'|'se'|'no'|'nn'|'oc'|'oj'|'or'|'om'|'os'|'pi'|'pa'|'fa'|'pl'|'pt'|'ps'|'qu'|'ro'|'rm'|'rn'|'ru'|'sm'|'sg'|'sa'|'sc'|'sr'|'sn'|'ii'|'sd'|'si'|'sk'|'sl'|'so'|'st'|'es'|'su'|'sw'|'ss'|'sv'|'tl'|'ty'|'tg'|'ta'|'tt'|'te'|'th'|'bo'|'ti'|'to'|'ts'|'tn'|'tr'|'tk'|'tw'|'ug'|'uk'|'ur'|'uz'|'ve'|'vi'|'vo'|'wa'|'cy'|'fy'|'wo'|'xh'|'yi'|'yo'|'za'|'zu'
 vocabulary_fiscal_year_start_month = ''|'10'|'7'|'4'
 vocabulary_protected_area_categories = 'Ia'|'Ib'|'II'|'III'|'IV'|'V'|'VI'
 vocabulary_resource_type = 'Person'|'Group'
@@ -669,7 +671,7 @@ vocabulary_measurement_status = ''|'1'|'2'|'3'|'4'
 vocabulary_measurement_status_confidence = ''|'RoughGuess'|'ExpertKnowledge'|'RapidAssessment'|'IntensiveAssessment'
 vocabulary_countries = 'ZZZ'|'XXX'|'AFG'|'ALA'|'ALB'|'DZA'|'ASM'|'AND'|'AGO'|'AIA'|'ATA'|'ATG'|'ARG'|'ARM'|'ABW'|'AUS'|'AUT'|'AZE'|'BHS'|'BHR'|'BGD'|'BRB'|'BLR'|'BEL'|'BLZ'|'BEN'|'BMU'|'BTN'|'BOL'|'BIH'|'BWA'|'BVT'|'BRA'|'IOT'|'VGB'|'BRN'|'BGR'|'BFA'|'BDI'|'KHM'|'CMR'|'CAN'|'CPV'|'CYM'|'CAF'|'TCD'|'CHL'|'CHN'|'CXR'|'CCK'|'COL'|'COM'|'COG'|'COK'|'CRI'|'CIV'|'HRV'|'CUB'|'CYP'|'CZE'|'PRK'|'COD'|'DNK'|'DJI'|'DMA'|'DOM'|'ECU'|'EGY'|'SLV'|'GNQ'|'ERI'|'EST'|'ETH'|'FRO'|'FLK'|'FJI'|'FIN'|'FRA'|'FXX'|'GUF'|'PYF'|'ATF'|'GAB'|'GMB'|'GEO'|'DEU'|'GHA'|'GIB'|'GRC'|'GRL'|'GRD'|'GLP'|'GUM'|'GTM'|'GIN'|'GNB'|'GUY'|'HTI'|'HMD'|'VAT'|'HND'|'HKG'|'HUN'|'ISL'|'IND'|'IDN'|'IRN'|'IRQ'|'IRL'|'IMN'|'ISR'|'ITA'|'JAM'|'JPN'|'JOR'|'KAZ'|'KEN'|'KIR'|'KWT'|'KGZ'|'LAO'|'LVA'|'LBN'|'LSO'|'LBR'|'LBY'|'LIE'|'LTU'|'LUX'|'MAC'|'MKD'|'MDG'|'MWI'|'MYS'|'MDV'|'MLI'|'MLT'|'MHL'|'MTQ'|'MRT'|'MUS'|'MYT'|'MEX'|'FSM'|'MCO'|'MNG'|'MSR'|'MAR'|'MOZ'|'MMR'|'NAM'|'NRU'|'NPL'|'NLD'|'ANT'|'NCL'|'NZL'|'NIC'|'NER'|'NGA'|'NIU'|'NFK'|'MNP'|'NOR'|'PSE'|'OMN'|'PAK'|'PLW'|'PAN'|'PNG'|'PRY'|'PER'|'PHL'|'PCN'|'POL'|'PRT'|'PRI'|'QAT'|'KOR'|'MDA'|'REU'|'ROU'|'RUS'|'RWA'|'SHN'|'KNA'|'LCA'|'SPM'|'VCT'|'WSM'|'SMR'|'STP'|'SAU'|'SEN'|'SCG'|'SYC'|'SLE'|'SGP'|'SVK'|'SVN'|'SLB'|'SOM'|'ZAF'|'SGS'|'ESP'|'LKA'|'SDN'|'SUR'|'SJM'|'SWZ'|'SWE'|'CHE'|'SYR'|'TWN'|'TJK'|'THA'|'TLS'|'TGO'|'TKL'|'TON'|'TTO'|'TUN'|'TUR'|'TKM'|'TCA'|'TUV'|'UGA'|'UKR'|'ARE'|'GBR'|'TZA'|'UMI'|'USA'|'VIR'|'URY'|'UZB'|'VUT'|'VEN'|'VNM'|'WLF'|'PSE'|'ESH'|'YEM'|'ZMB'|'ZWE'
 vocabulary_threat_rating = ''|'1'|'2'|'3'|'4'
-vocabulary_included_diagram_types = 'AllTypes'|'IncludeResultsChainData'|'IncludeConceptualModelData'
+vocabulary_included_diagram_types = 'AllTypes'|'IncludeConceptualModelData'|'IncludeResultsChainData'
 vocabulary_planning_tree_target_node_position = 'TargetNodesChildrenOfDiagramObjects'|'TargetNodesTopOfPlanningTree'
 ConceptualModelId.element = element miradi:ConceptualModelId { xsd:integer }
 ResultsChainId.element = element miradi:ResultsChainId { xsd:integer }
@@ -954,3 +956,4 @@ ProjectSummaryLocationCountriesContainer.element = element miradi:ProjectSummary
 {
   element miradi:code { vocabulary_countries } * 
 }
+

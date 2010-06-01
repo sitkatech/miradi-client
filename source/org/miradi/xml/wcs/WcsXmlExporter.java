@@ -341,6 +341,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeStartElement(out, PROJECT_SUMMARY);
 		
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_NAME, getMetadata(), ProjectMetadata.TAG_PROJECT_NAME);
+		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_LANGUAGE, getMetadata(), ProjectMetadata.TAG_PROJECT_LANGUAGE);
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, getMetadata(), ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);

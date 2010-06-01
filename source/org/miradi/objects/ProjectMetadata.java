@@ -44,6 +44,7 @@ import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.FontSizeQuestion;
+import org.miradi.questions.LanguageQuestion;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
@@ -364,6 +365,7 @@ public class ProjectMetadata extends BaseObject
 		super.clear();
 		projectName = new StringData(TAG_PROJECT_NAME);
 
+		projectLanguage = new ChoiceData(TAG_PROJECT_LANGUAGE, getQuestion(LanguageQuestion.class));
 		projectDescription = new StringData(TAG_PROJECT_DESCRIPTION);
 		projectURL = new StringData(TAG_PROJECT_URL);
 		projectScope = new StringData(TAG_PROJECT_SCOPE);
@@ -419,6 +421,7 @@ public class ProjectMetadata extends BaseObject
 
 		addPresentationDataField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
 		addField(TAG_PROJECT_NAME, projectName);
+		addField(TAG_PROJECT_LANGUAGE, projectLanguage);
 		addField(TAG_PROJECT_SCOPE, projectScope);
 		addField(TAG_SHORT_PROJECT_SCOPE, shortProjectScope);
 		addField(TAG_PROJECT_VISION, projectVision);
@@ -510,6 +513,7 @@ public class ProjectMetadata extends BaseObject
 
 	public static final String TAG_CURRENT_WIZARD_SCREEN_NAME = "CurrentWizardScreenName";
 	public static final String TAG_PROJECT_NAME = "ProjectName";
+	public static final String TAG_PROJECT_LANGUAGE = "ProjectLanguage";
 	public static final String TAG_PROJECT_SCOPE = "ProjectScope";
 	public static final String TAG_SHORT_PROJECT_SCOPE = "ShortProjectScope";
 	public static final String TAG_PROJECT_VISION = "ProjectVision";
@@ -582,6 +586,7 @@ public class ProjectMetadata extends BaseObject
 	private StringData currentWizardScreenName;
 
 	private StringData projectName;
+	private ChoiceData projectLanguage;
 	private StringData projectScope;
 	private StringData shortProjectScope;
 	private StringData projectVision;
