@@ -132,12 +132,7 @@ public class Miradi
 	{
 		Translation.restoreDefaultLocalization();
 		ResourcesHandler.restoreDefaultLocalization();
-	
-		URL dictionary = ResourcesHandler.getEnglishResourceURL(getDictionaryName(Translation.DEFAULT_LANGUAGE_CODE));
-		if(dictionary != null)
-			initializeSpellChecker(ResourcesHandler.getEnglishResourceURL(""), Translation.DEFAULT_LANGUAGE_CODE);
-		else
-			EAM.logWarning("English dictionary not found");
+
 	}
 
 	public static void switchToLanguage(String languageCode) throws Exception
@@ -146,6 +141,11 @@ public class Miradi
 		if(languageCode == null)
 		{
 			Miradi.restoreDefaultLocalization();
+			URL dictionary = ResourcesHandler.getEnglishResourceURL(getDictionaryName(Translation.DEFAULT_LANGUAGE_CODE));
+			if(dictionary != null)
+				initializeSpellChecker(ResourcesHandler.getEnglishResourceURL(""), Translation.DEFAULT_LANGUAGE_CODE);
+			else
+				EAM.logWarning("English dictionary not found");
 			return;
 		}
 		
