@@ -133,9 +133,11 @@ public class Miradi
 		Translation.restoreDefaultLocalization();
 		ResourcesHandler.restoreDefaultLocalization();
 	
-		File dictionary = new File(EAM.getHomeDirectory(), getDictionaryName(Translation.DEFAULT_LANGUAGE_CODE));
-		if(dictionary.exists())
-			initializeSpellChecker(EAM.getHomeDirectory().toURI().toURL(), Translation.DEFAULT_LANGUAGE_CODE);
+		URL dictionary = ResourcesHandler.getEnglishResourceURL(getDictionaryName(Translation.DEFAULT_LANGUAGE_CODE));
+		if(dictionary != null)
+			initializeSpellChecker(ResourcesHandler.getEnglishResourceURL(""), Translation.DEFAULT_LANGUAGE_CODE);
+		else
+			EAM.logWarning("English dictionary not found");
 	}
 
 	public static void switchToLanguage(String languageCode) throws Exception
