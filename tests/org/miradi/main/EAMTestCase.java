@@ -40,7 +40,7 @@ public class EAMTestCase extends TestCaseEnhanced
 		--setUpTearDownCount;
 		EAM.setLogToConsole();
 		verifySetUpAndTearDownCalledEqually(getCurrentTestName());
-		EAM.restoreDefaultLocalization();
+		Miradi.restoreDefaultLocalization();
 	}
 	
 	private String getCurrentTestName()

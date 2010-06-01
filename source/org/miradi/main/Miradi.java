@@ -119,23 +119,42 @@ public class Miradi
 		return isSpellCheckAvailable;
 	}
 
+	///////////////////////////////////////////////////////////////////
+	// Translations
+
+	public static void setLocalization(URL urlOfLocalizationZip, String languageCode) throws Exception
+	{
+		Translation.setLocalization(urlOfLocalizationZip, languageCode);
+		ResourcesHandler.setLocalization(urlOfLocalizationZip);
+	}
+
+	public static void restoreDefaultLocalization() throws Exception
+	{
+		Translation.restoreDefaultLocalization();
+		ResourcesHandler.restoreDefaultLocalization();
+	
+		File dictionary = new File(EAM.getHomeDirectory(), getDictionaryName(Translation.DEFAULT_LANGUAGE_CODE));
+		if(dictionary.exists())
+			initializeSpellChecker(EAM.getHomeDirectory().toURI().toURL(), Translation.DEFAULT_LANGUAGE_CODE);
+	}
+
 	public static void switchToLanguage(String languageCode) throws Exception
 	{
 		String dictionaryName = getDictionaryName(languageCode);
 		if(languageCode == null)
 		{
-			EAM.restoreDefaultLocalization();
+			Miradi.restoreDefaultLocalization();
 			return;
 		}
 		
 		String jarName = LANGUAGE_PACK_PREFIX + languageCode + ".jar";
 		File jarFile = findLanguageJar(jarName);
-		EAM.setLocalization(jarFile.toURI().toURL(), languageCode);
+		Miradi.setLocalization(jarFile.toURI().toURL(), languageCode);
 
 		ZipFile languagePackZip = new ZipFile(new File(jarFile.toURI()));
 		ZipEntry dictionaryEntry = languagePackZip.getEntry(dictionaryName);
 		if(dictionaryEntry != null)
-			initializeSpellChecker(new URL("jar:" + jarFile.getAbsolutePath() + "!/"), languageCode);
+			initializeSpellChecker(new URL("jar:" + jarFile.toURI().toURL() + "!/"), languageCode);
 	}
 
 	public static String getDictionaryName(String languageCode)

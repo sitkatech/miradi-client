@@ -24,6 +24,7 @@ import java.net.URL;
 
 import org.miradi.main.EAM;
 import org.miradi.main.EAMTestCase;
+import org.miradi.main.Miradi;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Task;
@@ -54,7 +55,7 @@ public class TestTranslations extends EAMTestCase
 	{
 		try
 		{
-			EAM.setLocalization(new URL("xyz"), "es");
+			Miradi.setLocalization(new URL("xyz"), "es");
 			fail("Should have thrown setting bad locale");
 		}
 		catch(IOException ignoreExpected)
@@ -78,7 +79,7 @@ public class TestTranslations extends EAMTestCase
 	{
 		URL localizationForTesting = Translation.class.getResource("/translations/test/Miradi-test.zip");
 		assertNotNull("Can't find localization for testing", localizationForTesting);
-		EAM.setLocalization(localizationForTesting, "test");
+		Miradi.setLocalization(localizationForTesting, "test");
 	}
 	
 	public void testFieldLabel() throws Exception
