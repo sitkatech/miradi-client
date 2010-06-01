@@ -27,8 +27,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Vector;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -96,6 +94,25 @@ public class Miradi
 		
 		StaticQuestionManager.initialize();
 
+		String english = Translation.DEFAULT_LANGUAGE_CODE;
+		URL dictionaryFolderURL = ResourcesHandler.getEnglishResourceURL("");
+		URL dictionaryURL = new URL(dictionaryFolderURL, getDictionaryName(english));
+		if(dictionaryURL != null)
+		{
+			SpellChecker.registerDictionaries(dictionaryFolderURL, english, english);
+		}
+		else
+		{
+			EAM.logWarning("English dictionary not found");
+		}
+		// TODO: Probably remove this code, assuming we choose a different mechanism
+		// for loading non-English dictionaries
+//				String dictionaryName = getDictionaryName(languageCode);
+//				ZipFile languagePackZip = new ZipFile(new File(jarFile.toURI()));
+//				ZipEntry dictionaryEntry = languagePackZip.getEntry(dictionaryName);
+//				if(dictionaryEntry != null)
+//					initializeSpellChecker(new URL("jar:" + jarFile.toURI().toURL() + "!/"), languageCode);
+
 		Miradi.start(args);
 	}
 
@@ -114,11 +131,6 @@ public class Miradi
 		return isAlphaTesterMode;
 	}
 	
-	public static boolean isSpellCheckAvailable()
-	{
-		return isSpellCheckAvailable;
-	}
-
 	///////////////////////////////////////////////////////////////////
 	// Translations
 
@@ -137,26 +149,15 @@ public class Miradi
 
 	public static void switchToLanguage(String languageCode) throws Exception
 	{
-		String dictionaryName = getDictionaryName(languageCode);
 		if(languageCode == null)
 		{
 			Miradi.restoreDefaultLocalization();
-			URL dictionary = ResourcesHandler.getEnglishResourceURL(getDictionaryName(Translation.DEFAULT_LANGUAGE_CODE));
-			if(dictionary != null)
-				initializeSpellChecker(ResourcesHandler.getEnglishResourceURL(""), Translation.DEFAULT_LANGUAGE_CODE);
-			else
-				EAM.logWarning("English dictionary not found");
 			return;
 		}
 		
 		String jarName = LANGUAGE_PACK_PREFIX + languageCode + ".jar";
 		File jarFile = findLanguageJar(jarName);
 		Miradi.setLocalization(jarFile.toURI().toURL(), languageCode);
-
-		ZipFile languagePackZip = new ZipFile(new File(jarFile.toURI()));
-		ZipEntry dictionaryEntry = languagePackZip.getEntry(dictionaryName);
-		if(dictionaryEntry != null)
-			initializeSpellChecker(new URL("jar:" + jarFile.toURI().toURL() + "!/"), languageCode);
 	}
 
 	public static String getDictionaryName(String languageCode)
@@ -165,12 +166,6 @@ public class Miradi
 		return dictionaryName;
 	}
 	
-	public static void initializeSpellChecker(URL dictionary, String languageCode) throws Exception
-	{
-		SpellChecker.registerDictionaries(dictionary, languageCode, languageCode);
-		isSpellCheckAvailable = true;
-	}
-
 	public static HashSet<ChoiceItem> getAvailableLanguageChoices() throws Exception
 	{
 		HashSet<ChoiceItem> results = new HashSet();
@@ -331,5 +326,4 @@ public class Miradi
 	private static boolean demoMode;
 	private static boolean developerMode;
 	private static boolean isAlphaTesterMode;
-	private static boolean isSpellCheckAvailable;
 }
