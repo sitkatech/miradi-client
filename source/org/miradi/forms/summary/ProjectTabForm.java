@@ -31,6 +31,7 @@ public class ProjectTabForm extends FieldPanelSpec
 
 		int type = ProjectMetadata.getObjectType();
 		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_NAME);
+		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_LANGUAGE);
 		addLabelAndField(type, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
 		addLabelAndField(type, ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME);
 		addBlankHorizontalLine();

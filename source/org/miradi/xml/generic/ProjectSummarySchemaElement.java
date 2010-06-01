@@ -30,6 +30,7 @@ class ProjectSummarySchemaElement extends ObjectSchemaElement
 		super(WcsXmlConstants.PROJECT_SUMMARY);
 	
 		createOptionalTextField(ProjectMetadata.TAG_PROJECT_NAME);
+		createOptionalCodeField(ProjectMetadata.TAG_PROJECT_LANGUAGE, XmlSchemaCreator.VOCABULARY_LANGUAGE_CODE);
 		createOptionalDateField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
 		createOptionalTextField(ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
 		createOptionalTextField(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
