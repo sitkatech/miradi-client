@@ -228,14 +228,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		safelySavePreferences();
 	}
 
-	public boolean isSpellCheckAvailable()
-	{
-		return Miradi.isSpellCheckAvailable();
-	}
-	
 	public boolean isSpellCheckEnabled()
 	{
-		return isSpellCheckAvailable() && getAppPreferences().getIsSpellCheckEnabled();
+		return getAppPreferences().getIsSpellCheckEnabled();
 	}
 	
 	private Dimension getSizeFromPreferences()
