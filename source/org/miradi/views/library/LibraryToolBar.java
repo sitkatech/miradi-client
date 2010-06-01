@@ -21,9 +21,9 @@ package org.miradi.views.library;
 
 import org.miradi.actions.Actions;
 import org.miradi.actions.views.ActionViewImages;
-import org.miradi.main.EAMToolBar;
+import org.miradi.main.MiradiToolBar;
 
-public class LibraryToolBar extends EAMToolBar
+public class LibraryToolBar extends MiradiToolBar
 {
 	public LibraryToolBar(Actions actions)
 	{

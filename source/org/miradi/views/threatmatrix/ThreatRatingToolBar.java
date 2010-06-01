@@ -32,7 +32,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBoxWithMaxAsPreferredSize;
 import org.miradi.main.EAM;
-import org.miradi.main.EAMToolBar;
+import org.miradi.main.MiradiToolBar;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
@@ -41,7 +41,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.utils.ToolBarButton;
 
-public class ThreatRatingToolBar extends EAMToolBar
+public class ThreatRatingToolBar extends MiradiToolBar
 {
 	public ThreatRatingToolBar(MainWindow mainWindowToUse, boolean isCellRatingVisible)
 	{

@@ -23,9 +23,9 @@ import javax.swing.JComponent;
 
 import org.miradi.actions.Actions;
 import org.miradi.actions.views.ActionViewWorkPlan;
-import org.miradi.main.EAMToolBar;
+import org.miradi.main.MiradiToolBar;
 
-public class WorkPlanToolBar extends EAMToolBar
+public class WorkPlanToolBar extends MiradiToolBar
 {
 	public WorkPlanToolBar(Actions actions)
 	{

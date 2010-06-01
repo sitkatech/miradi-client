@@ -23,9 +23,9 @@ import javax.swing.JComponent;
 
 import org.miradi.actions.Actions;
 import org.miradi.actions.views.ActionViewSummary;
-import org.miradi.main.EAMToolBar;
+import org.miradi.main.MiradiToolBar;
 
-public class SummaryToolBar extends EAMToolBar
+public class SummaryToolBar extends MiradiToolBar
 {
 
 	public SummaryToolBar(Actions actions)
