@@ -21,11 +21,13 @@ package org.miradi.questions;
 
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Vector;
 
 import org.martus.util.UnicodeReader;
 import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
+import org.miradi.utils.IgnoreCaseStringComparator;
 
 public class LanguageQuestion extends ChoiceQuestion
 {
@@ -78,6 +80,7 @@ public class LanguageQuestion extends ChoiceQuestion
 		}
 		
 		choices = loadedChoices.toArray(new ChoiceItem[0]);
+		Arrays.sort(choices, new IgnoreCaseStringComparator());
 	}
 
 	private ChoiceItem[] choices;
