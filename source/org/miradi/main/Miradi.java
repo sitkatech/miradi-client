@@ -27,6 +27,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Vector;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -36,6 +38,8 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.LanguageQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.Translation;
+
+import com.inet.jortho.SpellChecker;
 
 
 public class Miradi
@@ -109,9 +113,15 @@ public class Miradi
 	{
 		return isAlphaTesterMode;
 	}
+	
+	public static boolean isSpellCheckAvailable()
+	{
+		return isSpellCheckAvailable;
+	}
 
 	public static void switchToLanguage(String languageCode) throws Exception
 	{
+		String dictionaryName = getDictionaryName(languageCode);
 		if(languageCode == null)
 		{
 			EAM.restoreDefaultLocalization();
@@ -121,8 +131,25 @@ public class Miradi
 		String jarName = LANGUAGE_PACK_PREFIX + languageCode + ".jar";
 		File jarFile = findLanguageJar(jarName);
 		EAM.setLocalization(jarFile.toURI().toURL(), languageCode);
+
+		ZipFile languagePackZip = new ZipFile(new File(jarFile.toURI()));
+		ZipEntry dictionaryEntry = languagePackZip.getEntry(dictionaryName);
+		if(dictionaryEntry != null)
+			initializeSpellChecker(new URL("jar:" + jarFile.getAbsolutePath() + "!/"), languageCode);
+	}
+
+	public static String getDictionaryName(String languageCode)
+	{
+		String dictionaryName = "dictionary_" + languageCode + ".ortho";
+		return dictionaryName;
 	}
 	
+	public static void initializeSpellChecker(URL dictionary, String languageCode) throws Exception
+	{
+		SpellChecker.registerDictionaries(dictionary, languageCode, languageCode);
+		isSpellCheckAvailable = true;
+	}
+
 	public static HashSet<ChoiceItem> getAvailableLanguageChoices() throws Exception
 	{
 		HashSet<ChoiceItem> results = new HashSet();
@@ -283,4 +310,5 @@ public class Miradi
 	private static boolean demoMode;
 	private static boolean developerMode;
 	private static boolean isAlphaTesterMode;
+	private static boolean isSpellCheckAvailable;
 }

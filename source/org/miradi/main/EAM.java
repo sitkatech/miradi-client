@@ -333,6 +333,10 @@ public class EAM
 	{
 		Translation.restoreDefaultLocalization();
 		ResourcesHandler.restoreDefaultLocalization();
+
+		File dictionary = new File(EAM.getHomeDirectory(), Miradi.getDictionaryName(Translation.DEFAULT_LANGUAGE_CODE));
+		if(dictionary.exists())
+			Miradi.initializeSpellChecker(EAM.getHomeDirectory().toURI().toURL(), Translation.DEFAULT_LANGUAGE_CODE);
 	}
 
 	public static String text(String key)
