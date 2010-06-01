@@ -52,8 +52,6 @@ public class ObjectTextInputField extends ObjectDataInputField
 		field.getDocument().addDocumentListener(new DocumentEventHandler());
 		new TextAreaRightClickMouseHandler(getActions(), field);
 		field.addKeyListener(new UndoRedoKeyHandler(getActions()));
-		if(EAM.getMainWindow().isSpellCheckEnabled())
-			SpellChecker.register(field, false, false, true);
 		
 		setDefaultFieldBorder();
 	}	
@@ -99,6 +97,11 @@ public class ObjectTextInputField extends ObjectDataInputField
 		}
 		field.setForeground(fg);
 		field.setBackground(bg);
+
+		if(EAM.getMainWindow().isSpellCheckEnabled())
+			SpellChecker.register(field, false, false, true);
+		else
+			SpellChecker.unregister(field);
 	}
 
 	private Actions getActions()
