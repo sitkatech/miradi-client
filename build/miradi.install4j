@@ -22,13 +22,10 @@
       <root id="104" fileset="" location="${installer:myRootDir}" />
     </roots>
     <mountPoints>
-      <mountPoint id="225" root="" location="ThirdParty/Dictionaries" mode="755" />
       <mountPoint id="95" root="" location="ThirdParty" mode="755" />
       <mountPoint id="17" root="" location="" mode="755" />
     </mountPoints>
     <entries>
-      <fileEntry mountPoint="225" file="../dist/temp/dictionary_en_2009_01.ortho" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="225" file="../dist/temp/dictionary_es_2009_01.ortho" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/jortho/jortho/0.4/jortho.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/martus-utils/bin/martus-utils.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/martus-swing/bin/martus-swing.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
