@@ -455,7 +455,6 @@
 		<zipfileset dir="${installer.buildfiles.dir}" includes="LICENSE.txt"/>
     	<zipfileset dir="${dist.dir}" includes="miradi.jar"/>
 		<zipfileset dir="${installer.buildfiles.dir}" includes="${samples.marine.mpz}" />
-		<zipfileset dir="${dist.temp}" prefix="${JarFolder}/Dictionaries" includes="*.ortho" />
     	
     	<!-- ThirdParty jars -->
     	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='${JarFolder}' includes="BrowserLauncher*.jar" />
