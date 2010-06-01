@@ -28,7 +28,6 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.PrintWriter;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.prefs.Preferences;
@@ -323,22 +322,6 @@ public class EAM
 
 	///////////////////////////////////////////////////////////////////
 	// Translations
-	public static void setLocalization(URL urlOfLocalizationZip, String languageCode) throws Exception
-	{
-		Translation.setLocalization(urlOfLocalizationZip, languageCode);
-		ResourcesHandler.setLocalization(urlOfLocalizationZip);
-	}
-
-	public static void restoreDefaultLocalization() throws Exception
-	{
-		Translation.restoreDefaultLocalization();
-		ResourcesHandler.restoreDefaultLocalization();
-
-		File dictionary = new File(EAM.getHomeDirectory(), Miradi.getDictionaryName(Translation.DEFAULT_LANGUAGE_CODE));
-		if(dictionary.exists())
-			Miradi.initializeSpellChecker(EAM.getHomeDirectory().toURI().toURL(), Translation.DEFAULT_LANGUAGE_CODE);
-	}
-
 	public static String text(String key)
 	{
 		return Translation.text(key);
