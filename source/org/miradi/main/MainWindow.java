@@ -31,7 +31,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -99,8 +98,6 @@ import org.miradi.wizard.SkeletonWizardStep;
 import org.miradi.wizard.WizardManager;
 import org.miradi.wizard.WizardPanel;
 import org.miradi.wizard.WizardTitlePanel;
-
-import com.inet.jortho.SpellChecker;
 
 import edu.stanford.ejalbert.BrowserLauncher;
 import edu.stanford.ejalbert.BrowserLauncherRunner;
@@ -172,8 +169,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			getAppPreferences().setLanguageCode(languageCode);
 		}
 
-		initializeSpellChecker(getAppPreferences().getLanguageCode());
-		
 		new SampleInstaller(getAppPreferences()).installSampleProjects();
 
 		if(hasExpired() || commandLineArguments.contains("--expired"))
@@ -233,20 +228,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		safelySavePreferences();
 	}
 
-	private void initializeSpellChecker(String languageCode) throws Exception
-	{
-		File dictionary = new File(EAM.getHomeDirectory(), "dictionary_" + languageCode + ".ortho"); 
-		if(!dictionary.exists())
-			return;
-		
-		URL dictionaryUrl = dictionary.toURI().toURL();
-		SpellChecker.registerDictionaries(dictionaryUrl, languageCode, languageCode);
-		isSpellCheckAvailable = true;
-	}
-
 	public boolean isSpellCheckAvailable()
 	{
-		return isSpellCheckAvailable;
+		return Miradi.isSpellCheckAvailable();
 	}
 	
 	public boolean isSpellCheckEnabled()
@@ -1148,5 +1132,4 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private int preventActionUpdatesCount;
 	
 	private boolean hasMemoryWarningBeenShown;
-	private boolean isSpellCheckAvailable;
 }
