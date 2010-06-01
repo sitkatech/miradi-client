@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-01 09:08-0500\n"
+"POT-Creation-Date: 2010-06-01 11:28-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4933,7 +4933,7 @@ msgstr "进度报告 "
 msgid "Progress Reports"
 msgstr "进展报告 \t\t"
 
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:87
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:90
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
@@ -7919,6 +7919,9 @@ msgstr ""
 
 msgid "FieldLabel|11.PseudoTagProjectFilename|Project Filename"
 msgstr "项目文件名 \t\t"
+
+msgid "FieldLabel|11.ProjectLanguage|Primary Project Data Language"
+msgstr ""
 
 msgid "FieldLabel|11.ProjectName|Project Name"
 msgstr "项目名称 \t\t"

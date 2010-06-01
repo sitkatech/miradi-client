@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-01 09:08-0500\n"
+"POT-Creation-Date: 2010-06-01 11:28-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -5160,7 +5160,7 @@ msgstr "Informe de progreso "
 msgid "Progress Reports"
 msgstr "Informes de progreso"
 
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:87
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:90
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
@@ -8249,6 +8249,9 @@ msgstr "Proyecto"
 
 msgid "FieldLabel|11.PseudoTagProjectFilename|Project Filename"
 msgstr "Nombre de archivo del proyecto"
+
+msgid "FieldLabel|11.ProjectLanguage|Primary Project Data Language"
+msgstr ""
 
 msgid "FieldLabel|11.ProjectName|Project Name"
 msgstr "Nombre del proyecto"
