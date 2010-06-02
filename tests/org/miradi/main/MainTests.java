@@ -146,6 +146,7 @@ import org.miradi.objects.TestWwfProjectData;
 import org.miradi.objects.TestXenodata;
 import org.miradi.project.TestCausePool;
 import org.miradi.project.TestChainManager;
+import org.miradi.project.TestCommandExecutor;
 import org.miradi.project.TestDateUnit;
 import org.miradi.project.TestFactorDeleteHelper;
 import org.miradi.project.TestFactorLinkPool;
@@ -281,6 +282,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestStressBasedThreatRatingFramework.class));
 		suite.addTest(new TestSuite(TestGroupBoxPool.class));
 		suite.addTest(new TestSuite(TestProjectTotalCalculator.class));
+		suite.addTest(new TestSuite(TestCommandExecutor.class));
 		
 		//questions package
 		suite.addTest(new TestSuite(TestChoiceItem.class));
