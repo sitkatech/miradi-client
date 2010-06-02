@@ -32,6 +32,7 @@ import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.commands.CommandSetThreatRating;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.exceptions.UnableToBeginTransactionException;
 import org.miradi.exceptions.UnexpectedNonSideEffectException;
 import org.miradi.exceptions.UnexpectedSideEffectException;
 import org.miradi.main.CommandExecutedEvent;
@@ -61,7 +62,14 @@ public class CommandExecutor
 	
 	public void executeCommand(Command command) throws UnexpectedNonSideEffectException, CommandFailedException
 	{
-		normalExecutor.executeCommand(command);
+		try
+		{
+			getNormalExecutor().executeCommand(command);
+		}
+		catch (UnableToBeginTransactionException e)
+		{
+			EAM.panic(e);
+		}
 	}
 
 	private boolean shouldUpdateLastModfiedTime(Command command)
@@ -189,7 +197,14 @@ public class CommandExecutor
 	
 	public void executeAsSideEffect(Command command) throws UnexpectedSideEffectException, CommandFailedException
 	{
-		sideEffectExecutor.executeAsSideEffect(command);
+		try
+		{
+			sideEffectExecutor.executeAsSideEffect(command);
+		}
+		catch (UnableToBeginTransactionException e)
+		{
+			EAM.panic(e);
+		}
 	}
 	
 	public void recordCommand(Command command)
@@ -438,9 +453,14 @@ public class CommandExecutor
 		return project;
 	}
 	
+	protected NormalExecutor getNormalExecutor()
+	{
+		return normalExecutor;
+	}
+	
 	private class Executor
 	{
-		protected void internalExecuteCommand(Command command) throws CommandFailedException
+		protected void internalExecuteCommand(Command command) throws CommandFailedException, UnableToBeginTransactionException
 		{
 			enableIsExecuting();
 			try
@@ -454,6 +474,9 @@ public class CommandExecutor
 			}
 			catch (Exception e)
 			{
+				if (command.isBeginTransaction())
+					throw new UnableToBeginTransactionException();
+				
 				throw new CommandFailedException(e);
 			}
 			finally
@@ -467,9 +490,9 @@ public class CommandExecutor
 		}		
 	}
 	
-	private class NormalExecutor extends Executor
+	protected class NormalExecutor extends Executor
 	{
-		public void executeCommand(Command command) throws UnexpectedNonSideEffectException, CommandFailedException
+		public void executeCommand(Command command) throws UnexpectedNonSideEffectException, CommandFailedException, UnableToBeginTransactionException
 		{
 			if (isDoNothingCommandEnabledOptimization() && isDoNothingCommand(command))
 			{
@@ -503,7 +526,7 @@ public class CommandExecutor
 	
 	private class SideEffectExecutor extends Executor
 	{
-		protected void executeAsSideEffect(Command command) throws UnexpectedSideEffectException, CommandFailedException
+		protected void executeAsSideEffect(Command command) throws UnexpectedSideEffectException, CommandFailedException, UnableToBeginTransactionException
 		{
 			if (isDoNothingCommandEnabledOptimization() && isDoNothingCommand(command))
 				return;
@@ -514,7 +537,7 @@ public class CommandExecutor
 				throw new UnexpectedSideEffectException(command);
 			}
 			
-			internalExecuteCommand(command);
+			internalExecuteCommand(command);	
 		}
 	}
 	
