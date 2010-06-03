@@ -119,9 +119,7 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		        invalidWord = tokenizer.nextInvalidWord();
 		    } while( tokenizer.getWordOffset() < begOffs );
 
-		    // get the word from current position
-		    final int endOffs = Utilities.getWordEnd( jText, begOffs );
-		    final String word = jText.getText( begOffs, endOffs - begOffs );
+		    final String word = jText.getText( begOffs, Utilities.getWordEnd( jText, begOffs ) - begOffs );
 
 		    if( !word.equals( invalidWord ) ) {
 		        // the current word is not invalid
