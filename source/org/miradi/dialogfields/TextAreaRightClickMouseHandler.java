@@ -41,6 +41,7 @@ import org.miradi.views.umbrella.CopyTextAction;
 import org.miradi.views.umbrella.CutTextAction;
 import org.miradi.views.umbrella.PasteTextAction;
 
+import com.inet.jortho.AddWordAction;
 import com.inet.jortho.MiradiSpellCheckerMenu;
 import com.inet.jortho.SpellChecker;
 
@@ -105,8 +106,10 @@ public class TextAreaRightClickMouseHandler extends MouseAdapter
 		
 		if(EAM.getMainWindow().isSpellCheckEnabled())
 		{
+			menu.addSeparator();
 			JMenu spellCheckMenu = new MiradiSpellCheckerMenu(EAM.text("Spelling Suggestions"), SpellChecker.getOptions());
 			menu.add(spellCheckMenu);
+			menu.add(new AddWordAction(EAM.text("Add Word to Dictionary")));
 		}
 		
 		return menu;
