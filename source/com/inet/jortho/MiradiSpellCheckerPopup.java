@@ -41,7 +41,7 @@ public class MiradiSpellCheckerPopup extends JPopupMenu
 {
 	public MiradiSpellCheckerPopup(SpellCheckerOptions options)
 	{
-		MiradiSpellCheckerListener listener = new MiradiSpellCheckerListener(this, options);
+		MiradiCheckerListener listener = new MiradiCheckerListener(this, options);
         super.addPopupMenuListener(listener);
 	}
 
