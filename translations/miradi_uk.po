@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-03 18:08-0500\n"
+"POT-Creation-Date: 2010-06-03 18:55-0500\n"
 "PO-Revision-Date: 2010-05-12 13:30-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1623,6 +1623,10 @@ msgstr ""
 msgid "Add Human Welfare Targets If Desired"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:112
+msgid "Add Word to Dictionary"
+msgstr ""
+
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:134
 msgid ""
 "Additional languages are supported by installing Miradi Language Packs,<br> "
@@ -2361,7 +2365,7 @@ msgstr ""
 msgid "Control Bar"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:97
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:98
 msgid "Copy"
 msgstr ""
 
@@ -2464,7 +2468,7 @@ msgstr ""
 msgid "Custom Reports"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:92
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:93
 msgid "Cut"
 msgstr ""
 
@@ -4612,7 +4616,7 @@ msgstr ""
 msgid "Page:"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:102
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:103
 msgid "Paste"
 msgstr ""
 
@@ -5385,7 +5389,7 @@ msgstr ""
 msgid "Specific Year(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:108
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:110
 msgid "Spelling Suggestions"
 msgstr ""
 
