@@ -45,10 +45,14 @@ public class MiradiSpellCheckerMenu extends JMenu implements HierarchyListener
     
     private final MiradiCheckerListener listener;
 
-    public MiradiSpellCheckerMenu(SpellCheckerOptions options){
-        super( Utils.getResource("spelling"));
+    public MiradiSpellCheckerMenu(String menuItemText, SpellCheckerOptions options){
+        super( menuItemText );
         listener = new MiradiCheckerListener(this, options);
         super.addHierarchyListener(this);
+    }
+    
+    public MiradiSpellCheckerMenu(SpellCheckerOptions options){
+    	this( Utils.getResource("spelling"), options);
     }
 
 
