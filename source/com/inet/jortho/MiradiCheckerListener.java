@@ -137,15 +137,12 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 			boolean needCapitalization = tokenizer.isFirstWordInSentence() && Utils.isFirstCapitalized( word );
 		    Vector<JMenuItem> menuItems = getSpellCheckerMenuItems(jText, begOffs, endOffs, tokenizer, list, needCapitalization);
 
-			System.out.println(menuItems.size());
-
 			//Disable the menu if it is empty
 			if(menuItems.size() == 0)
 			{
 				menu.setEnabled( false );
 				return;
 			}
-			System.out.println("adding menu items");
 
 			for(JMenuItem menuItem : menuItems)
 			{
