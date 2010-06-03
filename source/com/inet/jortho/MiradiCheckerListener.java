@@ -132,6 +132,15 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		    }
 
 			List<Suggestion> list = dictionary.searchSuggestions( word );
+
+			//Disable then menu item if there are no suggestions
+			if(list.size() == 0)
+			{
+				menu.setEnabled( false );
+				return;
+			}
+
+			menu.setEnabled( true );
 			boolean needCapitalization = tokenizer.isFirstWordInSentence() && Utils.isFirstCapitalized( word );
 		    populateSpellCheckerMenu(jText, begOffs, endOffs, tokenizer, list, needCapitalization);
 		} catch( BadLocationException ex ) {
@@ -144,9 +153,6 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 			final int begOffs, final int endOffs, Tokenizer tokenizer, 
 			List<Suggestion> list, boolean needCapitalization)
 	{
-		//Disable then menu item if there are no suggestions
-		menu.setEnabled( list.size() > 0 );
-
 		for( int i = 0; i < list.size() && i < options.getSuggestionsLimitMenu(); i++ ) {
 		    Suggestion sugestion = list.get( i );
 		    String sugestionWord = sugestion.getWord();
