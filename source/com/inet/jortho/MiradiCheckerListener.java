@@ -104,6 +104,8 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		        return;
 		    }
 		    
+		    menu.removeAll();
+
 		    // get the word from current position
 		    final int begOffs = Utilities.getWordStart( jText, offs );
 		    final int endOffs = Utilities.getWordEnd( jText, offs );
@@ -115,7 +117,6 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		    do {
 		        invalidWord = tokenizer.nextInvalidWord();
 		    } while( tokenizer.getWordOffset() < begOffs );
-		    menu.removeAll();
 
 		    if( !word.equals( invalidWord ) ) {
 		        // the current word is not invalid
@@ -129,36 +130,42 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		        return;
 		    }
 
-		    List<Suggestion> list = dictionary.searchSuggestions( word );
-
-		    //Disable then menu item if there are no suggestions
-		    menu.setEnabled( list.size() > 0 );
-
-		    boolean needCapitalization = tokenizer.isFirstWordInSentence() && Utils.isFirstCapitalized( word );
-
-		    for( int i = 0; i < list.size() && i < options.getSuggestionsLimitMenu(); i++ ) {
-		        Suggestion sugestion = list.get( i );
-		        String sugestionWord = sugestion.getWord();
-		        if( needCapitalization ) {
-		            sugestionWord = Utils.getCapitalized( sugestionWord );
-		        }
-		        JMenuItem item = new JMenuItem( sugestionWord );
-		        menu.add( item );
-		        final String newWord = sugestionWord;
-		        item.addActionListener( new ActionListener() {
-
-		            public void actionPerformed( ActionEvent e ) {
-		                jText.setSelectionStart( begOffs );
-		                jText.setSelectionEnd( begOffs + word.length() );
-		                jText.replaceSelection( newWord );
-		            }
-
-		        } );
-		    }
+		    populateSpellCheckerMenu(jText, begOffs, word, tokenizer);
 		} catch( BadLocationException ex ) {
 		    ex.printStackTrace();
 		}
 		return;
+	}
+
+	private void populateSpellCheckerMenu(final JTextComponent jText,
+			final int begOffs, final String word, Tokenizer tokenizer)
+	{
+		List<Suggestion> list = dictionary.searchSuggestions( word );
+
+		//Disable then menu item if there are no suggestions
+		menu.setEnabled( list.size() > 0 );
+
+		boolean needCapitalization = tokenizer.isFirstWordInSentence() && Utils.isFirstCapitalized( word );
+
+		for( int i = 0; i < list.size() && i < options.getSuggestionsLimitMenu(); i++ ) {
+		    Suggestion sugestion = list.get( i );
+		    String sugestionWord = sugestion.getWord();
+		    if( needCapitalization ) {
+		        sugestionWord = Utils.getCapitalized( sugestionWord );
+		    }
+		    JMenuItem item = new JMenuItem( sugestionWord );
+		    menu.add( item );
+		    final String newWord = sugestionWord;
+		    item.addActionListener( new ActionListener() {
+
+		        public void actionPerformed( ActionEvent e ) {
+		            jText.setSelectionStart( begOffs );
+		            jText.setSelectionEnd( begOffs + word.length() );
+		            jText.replaceSelection( newWord );
+		        }
+
+		    } );
+		}
 	}
 
 	private int getOffsetOfStartOfWordAtCursor(final JTextComponent jText)
