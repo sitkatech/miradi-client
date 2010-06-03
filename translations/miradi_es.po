@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-03 18:08-0500\n"
+"POT-Creation-Date: 2010-06-03 18:55-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -1766,6 +1766,10 @@ msgstr "Software de manejo adaptivo para proyectos de conservación"
 msgid "Add Human Welfare Targets If Desired"
 msgstr "Agregue objetivos de bienestar humano, si lo desea."
 
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:112
+msgid "Add Word to Dictionary"
+msgstr ""
+
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:134
 msgid ""
 "Additional languages are supported by installing Miradi Language Packs,<br> "
@@ -2554,7 +2558,7 @@ msgstr ""
 msgid "Control Bar"
 msgstr "Barra de control"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:97
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:98
 msgid "Copy"
 msgstr "Copiar"
 
@@ -2664,7 +2668,7 @@ msgstr ""
 msgid "Custom Reports"
 msgstr "Informes personalizados"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:92
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:93
 msgid "Cut"
 msgstr "Cortar"
 
@@ -4941,7 +4945,7 @@ msgstr "Calificación general de amenazas "
 msgid "Page:"
 msgstr "Página:"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:102
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:103
 msgid "Paste"
 msgstr "Pegar"
 
@@ -5767,7 +5771,7 @@ msgstr ""
 msgid "Specific Year(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:108
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:110
 msgid "Spelling Suggestions"
 msgstr ""
 

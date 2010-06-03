@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-03 18:08-0500\n"
+"POT-Creation-Date: 2010-06-03 18:55-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1674,6 +1674,10 @@ msgstr "针对保护项目的适应性管理软件 \t\t"
 msgid "Add Human Welfare Targets If Desired"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:112
+msgid "Add Word to Dictionary"
+msgstr ""
+
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:134
 msgid ""
 "Additional languages are supported by installing Miradi Language Packs,<br> "
@@ -2428,7 +2432,7 @@ msgstr ""
 msgid "Control Bar"
 msgstr "控制栏 \t\t"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:97
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:98
 msgid "Copy"
 msgstr "复制 \t\t"
 
@@ -2536,7 +2540,7 @@ msgstr ""
 msgid "Custom Reports"
 msgstr "定制报告 \t\t"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:92
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:93
 msgid "Cut"
 msgstr "剪切 \t\t"
 
@@ -4721,7 +4725,7 @@ msgstr "总体威胁因子评级"
 msgid "Page:"
 msgstr "页： \t\t"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:102
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:103
 msgid "Paste"
 msgstr "粘贴 \t\t"
 
@@ -5509,7 +5513,7 @@ msgstr ""
 msgid "Specific Year(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:108
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:110
 msgid "Spelling Suggestions"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-03 18:08-0500\n"
+"POT-Creation-Date: 2010-06-03 18:55-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1762,6 +1762,10 @@ msgstr "Perangkat Lunak Manajemen Adaptif untuk Proyek Konservasi "
 msgid "Add Human Welfare Targets If Desired"
 msgstr "Tambah Target Kesejahteraan Manusia Bila Perlu "
 
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:112
+msgid "Add Word to Dictionary"
+msgstr ""
+
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:134
 msgid ""
 "Additional languages are supported by installing Miradi Language Packs,<br> "
@@ -2543,7 +2547,7 @@ msgstr ""
 msgid "Control Bar"
 msgstr "Balok Kontrol "
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:97
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:98
 msgid "Copy"
 msgstr "Salin "
 
@@ -2652,7 +2656,7 @@ msgstr ""
 msgid "Custom Reports"
 msgstr "Laporan Tersuai "
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:92
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:93
 msgid "Cut"
 msgstr "Potong "
 
@@ -4906,7 +4910,7 @@ msgstr "Keseluruhan Peringkat Ancaman"
 msgid "Page:"
 msgstr "Halaman: "
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:102
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:103
 msgid "Paste"
 msgstr "Tempel "
 
@@ -5727,7 +5731,7 @@ msgstr ""
 msgid "Specific Year(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:108
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:110
 msgid "Spelling Suggestions"
 msgstr ""
 
