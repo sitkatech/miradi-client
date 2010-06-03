@@ -83,88 +83,94 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 
         Component invoker = popup.getInvoker();
         if( invoker instanceof JTextComponent ) {
-            final JTextComponent jText = (JTextComponent)invoker;
-            if( !jText.isEditable() ) {
-                // Suggestions only for editable text components
-                menu.setEnabled( false );
-                return;
-            }
-            Caret caret = jText.getCaret();
-            int offs = Math.min( caret.getDot(), caret.getMark() );
-            Point p = jText.getMousePosition();
-            if( p != null ) {
-                // use position from mouse click and not from editor cursor position 
-                offs = jText.viewToModel( p );
-            }
-            try {
-                Document doc = jText.getDocument();
-                if( offs > 0 && (offs >= doc.getLength() || Character.isWhitespace( doc.getText( offs, 1 ).charAt( 0 ) )) ) {
-                    // if the next character is a white space then use the word on the left site
-                    offs--;
-                }
-                
-                if( offs < 0 ) {
-                    // occur if there nothing under the mouse pointer
-                    menu.setEnabled( false );
-                    return;
-                }
-                
-                // get the word from current position
-                final int begOffs = Utilities.getWordStart( jText, offs );
-                final int endOffs = Utilities.getWordEnd( jText, offs );
-                String word = jText.getText( begOffs, endOffs - begOffs );
-
-                //find the first invalid word from current position
-                Tokenizer tokenizer = new Tokenizer( jText, dictionary, locale, offs, options );
-                String invalidWord;
-                do {
-                    invalidWord = tokenizer.nextInvalidWord();
-                } while( tokenizer.getWordOffset() < begOffs );
-                menu.removeAll();
-
-                if( !word.equals( invalidWord ) ) {
-                    // the current word is not invalid
-                    menu.setEnabled( false );
-                    return;
-                }
-
-                if( dictionary == null ) {
-                    // without dictionary it is disabled
-                    menu.setEnabled( false );
-                    return;
-                }
-
-                List<Suggestion> list = dictionary.searchSuggestions( word );
-
-                //Disable then menu item if there are no suggestions
-                menu.setEnabled( list.size() > 0 );
-
-                boolean needCapitalization = tokenizer.isFirstWordInSentence() && Utils.isFirstCapitalized( word );
-
-                for( int i = 0; i < list.size() && i < options.getSuggestionsLimitMenu(); i++ ) {
-                    Suggestion sugestion = list.get( i );
-                    String sugestionWord = sugestion.getWord();
-                    if( needCapitalization ) {
-                        sugestionWord = Utils.getCapitalized( sugestionWord );
-                    }
-                    JMenuItem item = new JMenuItem( sugestionWord );
-                    menu.add( item );
-                    final String newWord = sugestionWord;
-                    item.addActionListener( new ActionListener() {
-
-                        public void actionPerformed( ActionEvent e ) {
-                            jText.setSelectionStart( begOffs );
-                            jText.setSelectionEnd( endOffs );
-                            jText.replaceSelection( newWord );
-                        }
-
-                    } );
-                }
-            } catch( BadLocationException ex ) {
-                ex.printStackTrace();
-            }
+            populateSpellCheckerMenu(invoker);
         }
     }
+
+	private void populateSpellCheckerMenu(Component invoker)
+	{
+		final JTextComponent jText = (JTextComponent)invoker;
+		if( !jText.isEditable() ) {
+		    // Suggestions only for editable text components
+		    menu.setEnabled( false );
+		    return;
+		}
+		Caret caret = jText.getCaret();
+		int offs = Math.min( caret.getDot(), caret.getMark() );
+		Point p = jText.getMousePosition();
+		if( p != null ) {
+		    // use position from mouse click and not from editor cursor position 
+		    offs = jText.viewToModel( p );
+		}
+		try {
+		    Document doc = jText.getDocument();
+		    if( offs > 0 && (offs >= doc.getLength() || Character.isWhitespace( doc.getText( offs, 1 ).charAt( 0 ) )) ) {
+		        // if the next character is a white space then use the word on the left site
+		        offs--;
+		    }
+		    
+		    if( offs < 0 ) {
+		        // occur if there nothing under the mouse pointer
+		        menu.setEnabled( false );
+		        return;
+		    }
+		    
+		    // get the word from current position
+		    final int begOffs = Utilities.getWordStart( jText, offs );
+		    final int endOffs = Utilities.getWordEnd( jText, offs );
+		    String word = jText.getText( begOffs, endOffs - begOffs );
+
+		    //find the first invalid word from current position
+		    Tokenizer tokenizer = new Tokenizer( jText, dictionary, locale, offs, options );
+		    String invalidWord;
+		    do {
+		        invalidWord = tokenizer.nextInvalidWord();
+		    } while( tokenizer.getWordOffset() < begOffs );
+		    menu.removeAll();
+
+		    if( !word.equals( invalidWord ) ) {
+		        // the current word is not invalid
+		        menu.setEnabled( false );
+		        return;
+		    }
+
+		    if( dictionary == null ) {
+		        // without dictionary it is disabled
+		        menu.setEnabled( false );
+		        return;
+		    }
+
+		    List<Suggestion> list = dictionary.searchSuggestions( word );
+
+		    //Disable then menu item if there are no suggestions
+		    menu.setEnabled( list.size() > 0 );
+
+		    boolean needCapitalization = tokenizer.isFirstWordInSentence() && Utils.isFirstCapitalized( word );
+
+		    for( int i = 0; i < list.size() && i < options.getSuggestionsLimitMenu(); i++ ) {
+		        Suggestion sugestion = list.get( i );
+		        String sugestionWord = sugestion.getWord();
+		        if( needCapitalization ) {
+		            sugestionWord = Utils.getCapitalized( sugestionWord );
+		        }
+		        JMenuItem item = new JMenuItem( sugestionWord );
+		        menu.add( item );
+		        final String newWord = sugestionWord;
+		        item.addActionListener( new ActionListener() {
+
+		            public void actionPerformed( ActionEvent e ) {
+		                jText.setSelectionStart( begOffs );
+		                jText.setSelectionEnd( endOffs );
+		                jText.replaceSelection( newWord );
+		            }
+
+		        } );
+		    }
+		} catch( BadLocationException ex ) {
+		    ex.printStackTrace();
+		}
+		return;
+	}
 
     public void languageChanged( LanguageChangeEvent ev ) {
         dictionary = SpellChecker.getCurrentDictionary();
