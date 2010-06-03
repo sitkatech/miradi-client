@@ -59,7 +59,8 @@ ProjectSummary.element = element miradi:ProjectSummary
   element miradi:ProjectSummaryProjectStatus { text }? &
   element miradi:ProjectSummaryNextSteps { text }? &
   element miradi:ProjectSummaryOverallProjectThreatRating { vocabulary_threat_rating  }? &
-  element miradi:ProjectSummaryOverallProjectViabilityRating { vocabulary_target_status  }?
+  element miradi:ProjectSummaryOverallProjectViabilityRating { vocabulary_target_status  }? &
+  element miradi:ProjectSummaryProjectId { ProjectId.element *} 
 }
 
 ProjectResourcePool.element = element miradi:ProjectResourcePool { ProjectResource.element* }
@@ -163,7 +164,6 @@ ProjectSummaryPlanning.element = element miradi:ProjectSummaryPlanning
 TncProjectData.element = element miradi:TncProjectData
 {
   element miradi:TncProjectDataTNC.DatabaseDownloadDate { text }? &
-  element miradi:TncProjectDataProjectId { ProjectIds.element } &
   element miradi:TncProjectDataShareOutsideTnc { xsd:boolean }? &
   element miradi:TncProjectDataOtherOrgRelatedProjects { text }? &
   TncProjectDataProjectPlaceTypesContainer.element &
@@ -743,9 +743,10 @@ GeospatialLocation.element = element miradi:GeospatialLocation
   element miradi:longitude { xsd:decimal } 
 }
 
-ProjectIds.element = element miradi:ProjectIds
+ProjectId.element = element miradi:ProjectId
 {
-  element miradi:ProjectId { xsd:integer }*
+  attribute ExternalAppThatAssignsIdsToMiradiProjects {text} &
+  attribute Id {xsd:integer}
 }
 
 DiagramPoint.element = element miradi:DiagramPoint
