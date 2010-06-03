@@ -112,8 +112,9 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		        return;
 		    }
 		    
-		    //find the first invalid word from current position
 		    Tokenizer tokenizer = new Tokenizer( jText, dictionary, locale, begOffs, options );
+
+		    //find the first invalid word from current position
 		    String invalidWord = findFirstInvalidWordFromOffset(tokenizer, begOffs);
 
 		    final String word = getWord(jText, begOffs);
