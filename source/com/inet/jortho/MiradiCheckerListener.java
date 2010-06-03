@@ -119,7 +119,7 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		        invalidWord = tokenizer.nextInvalidWord();
 		    } while( tokenizer.getWordOffset() < begOffs );
 
-		    final String word = jText.getText( begOffs, Utilities.getWordEnd( jText, begOffs ) - begOffs );
+		    final String word = getWord(jText, begOffs);
 
 		    if( !word.equals( invalidWord ) ) {
 		        // the current word is not invalid
@@ -150,6 +150,13 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		    ex.printStackTrace();
 		}
 		return;
+	}
+
+	private String getWord(final JTextComponent jText, int begOffs)
+			throws BadLocationException
+	{
+		final String word = jText.getText( begOffs, Utilities.getWordEnd( jText, begOffs ) - begOffs );
+		return word;
 	}
 
 	private Vector<JMenuItem> getSpellCheckerMenuItems(final JTextComponent jText,
