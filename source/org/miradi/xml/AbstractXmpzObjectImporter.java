@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.WcpaProjectData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
@@ -47,6 +48,11 @@ abstract public class AbstractXmpzObjectImporter
 	protected ORef getMetadataRef()
 	{
 		return getImporter().getProjectMetadataRef();
+	}
+	
+	protected ORef getWcpaProjectDataRef()
+	{
+		return getProject().getSingletonObjectRef(WcpaProjectData.getObjectType());
 	}
 	
 	public Project getProject()
@@ -82,6 +88,11 @@ abstract public class AbstractXmpzObjectImporter
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(getPoolName(), destinationTag);
 		getImporter().importField(node, getPoolName() + elementName, destinationRef, destinationTag);
+	}
+	
+	protected void importField(Node node, String elementName, ORef destinationRef, String destinationTag) throws Exception
+	{
+		getImporter().importField(node, elementName, destinationRef, destinationTag);
 	}
 	
 	public String getPoolName()
