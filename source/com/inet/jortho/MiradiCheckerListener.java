@@ -118,7 +118,7 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		    // get the word from current position
 		    final int begOffs = Utilities.getWordStart( jText, offs );
 		    final int endOffs = Utilities.getWordEnd( jText, offs );
-		    String word = jText.getText( begOffs, endOffs - begOffs );
+		    final String word = jText.getText( begOffs, endOffs - begOffs );
 
 		    //find the first invalid word from current position
 		    Tokenizer tokenizer = new Tokenizer( jText, dictionary, locale, offs, options );
@@ -160,7 +160,7 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 
 		            public void actionPerformed( ActionEvent e ) {
 		                jText.setSelectionStart( begOffs );
-		                jText.setSelectionEnd( endOffs );
+		                jText.setSelectionEnd( begOffs + word.length() );
 		                jText.replaceSelection( newWord );
 		            }
 
