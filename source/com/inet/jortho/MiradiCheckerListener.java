@@ -135,7 +135,7 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 			List<Suggestion> list = dictionary.searchSuggestions( word );
 
 			boolean needCapitalization = tokenizer.isFirstWordInSentence() && Utils.isFirstCapitalized( word );
-		    Vector<JMenuItem> menuItems = getSpellCheckerMenuItems(jText, begOffs, endOffs, list, needCapitalization);
+		    Vector<JMenuItem> menuItems = getSpellCheckerMenuItems(jText, begOffs, list, needCapitalization);
 
 			//Disable the menu if it is empty
 			if(menuItems.size() == 0)
@@ -156,11 +156,12 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 	}
 
 	private Vector<JMenuItem> getSpellCheckerMenuItems(final JTextComponent jText,
-			final int begOffs, final int endOffs, 
-			List<Suggestion> list, boolean needCapitalization)
+			final int begOffs, List<Suggestion> list, boolean needCapitalization) throws BadLocationException
 	{
 		Vector<JMenuItem> menuItems = new Vector<JMenuItem>();
 		
+	    final int endOffs = Utilities.getWordEnd( jText, begOffs );
+
 		for( int i = 0; i < list.size() && i < options.getSuggestionsLimitMenu(); i++ ) {
 		    Suggestion sugestion = list.get( i );
 		    String sugestionWord = sugestion.getWord();
