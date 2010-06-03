@@ -90,6 +90,8 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 
 	private void populateSpellCheckerMenu(Component invoker)
 	{
+	    menu.removeAll();
+
 		final JTextComponent jText = (JTextComponent)invoker;
 		if( !jText.isEditable() ) {
 		    // Suggestions only for editable text components
@@ -124,8 +126,6 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		        menu.setEnabled( false );
 		        return;
 		    }
-
-		    menu.removeAll();
 
 			List<Suggestion> list = dictionary.searchSuggestions( word );
 
