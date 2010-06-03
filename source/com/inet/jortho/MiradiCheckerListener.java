@@ -123,7 +123,6 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		    do {
 		        invalidWord = tokenizer.nextInvalidWord();
 		    } while( tokenizer.getWordOffset() < begOffs );
-			boolean needCapitalization = tokenizer.isFirstWordInSentence() && Utils.isFirstCapitalized( word );
 
 		    if( !word.equals( invalidWord ) ) {
 		        // the current word is not invalid
@@ -135,6 +134,7 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 
 			List<Suggestion> list = dictionary.searchSuggestions( word );
 
+			boolean needCapitalization = tokenizer.isFirstWordInSentence() && Utils.isFirstCapitalized( word );
 		    Vector<JMenuItem> menuItems = getSpellCheckerMenuItems(jText, begOffs, list, needCapitalization);
 
 			//Disable the menu if it is empty
