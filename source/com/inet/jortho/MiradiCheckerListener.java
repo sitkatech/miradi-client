@@ -40,6 +40,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Locale;
+import java.util.Vector;
 
 import javax.swing.JComponent;
 import javax.swing.JMenuItem;
@@ -133,26 +134,36 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 
 			List<Suggestion> list = dictionary.searchSuggestions( word );
 
-			//Disable then menu item if there are no suggestions
-			if(list.size() == 0)
+			boolean needCapitalization = tokenizer.isFirstWordInSentence() && Utils.isFirstCapitalized( word );
+		    Vector<JMenuItem> menuItems = getSpellCheckerMenuItems(jText, begOffs, endOffs, tokenizer, list, needCapitalization);
+
+			System.out.println(menuItems.size());
+
+			//Disable the menu if it is empty
+			if(menuItems.size() == 0)
 			{
 				menu.setEnabled( false );
 				return;
 			}
+			System.out.println("adding menu items");
 
+			for(JMenuItem menuItem : menuItems)
+			{
+				menu.add(menuItem);
+			}
 			menu.setEnabled( true );
-			boolean needCapitalization = tokenizer.isFirstWordInSentence() && Utils.isFirstCapitalized( word );
-		    populateSpellCheckerMenu(jText, begOffs, endOffs, tokenizer, list, needCapitalization);
 		} catch( BadLocationException ex ) {
 		    ex.printStackTrace();
 		}
 		return;
 	}
 
-	private void populateSpellCheckerMenu(final JTextComponent jText,
+	private Vector<JMenuItem> getSpellCheckerMenuItems(final JTextComponent jText,
 			final int begOffs, final int endOffs, Tokenizer tokenizer, 
 			List<Suggestion> list, boolean needCapitalization)
 	{
+		Vector<JMenuItem> menuItems = new Vector<JMenuItem>();
+		
 		for( int i = 0; i < list.size() && i < options.getSuggestionsLimitMenu(); i++ ) {
 		    Suggestion sugestion = list.get( i );
 		    String sugestionWord = sugestion.getWord();
@@ -160,7 +171,7 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		        sugestionWord = Utils.getCapitalized( sugestionWord );
 		    }
 		    JMenuItem item = new JMenuItem( sugestionWord );
-		    menu.add( item );
+		    menuItems.add( item );
 		    final String newWord = sugestionWord;
 		    item.addActionListener( new ActionListener() {
 
@@ -172,6 +183,8 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 
 		    } );
 		}
+
+		return menuItems;
 	}
 
 	private int getOffsetOfStartOfWordAtCursor(final JTextComponent jText)
