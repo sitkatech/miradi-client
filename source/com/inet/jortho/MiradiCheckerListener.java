@@ -95,6 +95,13 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		    menu.setEnabled( false );
 		    return;
 		}
+
+	    if( dictionary == null ) {
+	        // without dictionary it is disabled
+	        menu.setEnabled( false );
+	        return;
+	    }
+
 		try {
 			int offs = getOffsetOfStartOfWordAtCursor(jText);
 		    
@@ -104,12 +111,6 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		        return;
 		    }
 		    
-		    if( dictionary == null ) {
-		        // without dictionary it is disabled
-		        menu.setEnabled( false );
-		        return;
-		    }
-
 		    menu.removeAll();
 
 		    // get the word from current position
