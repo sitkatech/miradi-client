@@ -105,7 +105,7 @@ public class TextAreaRightClickMouseHandler extends MouseAdapter
 		
 		if(EAM.getMainWindow().isSpellCheckEnabled())
 		{
-			JMenu spellCheckMenu = new MiradiSpellCheckerMenu(SpellChecker.getOptions());
+			JMenu spellCheckMenu = new MiradiSpellCheckerMenu(EAM.text("Spelling Suggestions"), SpellChecker.getOptions());
 			menu.add(spellCheckMenu);
 		}
 		
