@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcpaProjectData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -53,6 +54,11 @@ abstract public class AbstractXmpzObjectImporter
 	protected ORef getWcpaProjectDataRef()
 	{
 		return getProject().getSingletonObjectRef(WcpaProjectData.getObjectType());
+	}
+	
+	protected ORef getTncProjectDataRef()
+	{
+		return getProject().getSingletonObjectRef(TncProjectData.getObjectType());
 	}
 	
 	public Project getProject()
