@@ -194,7 +194,6 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeStartElement(out, TNC_PROJECT_DATA);
 		
 		writeOptionalElementWithSameTag(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
-		writeProjectId();
 		writeShareOutsideOfTncElement();
 		writeOptionalElementWithSameTag(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_PROJECT_PLACE_TYPES, getTncProjectData(), TncProjectData.TAG_PROJECT_PLACE_TYPES);
@@ -226,15 +225,14 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 	
 	private void writeProjectId() throws Exception
 	{
-		writeStartElement(getWriter(), createParentAndChildElementName(TNC_PROJECT_DATA, Xenodata.TAG_PROJECT_ID));
-		
-		writeStartElement(getWriter(), PROJECT_IDS_ELEMENT_NAME);
+		writeStartElement(getWriter(), createParentAndChildElementName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID));
+
 		String stringRefMapAsString = getProject().getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
 		StringRefMap stringRefMap = new StringRefMap(stringRefMapAsString);
-		Set keys = stringRefMap.getKeys();
-		for(Object key: keys)
+		Set<String> keys = stringRefMap.getKeys();
+		for(String key: keys)
 		{
-			ORef xenodataRef = stringRefMap.getValue((String) key);
+			ORef xenodataRef = stringRefMap.getValue(key);
 			if (xenodataRef.isInvalid())
 			{
 				EAM.logWarning("Invalid Xenodata ref found for key: " + key + " while exporting.");
@@ -243,14 +241,11 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 
 			Xenodata xenodata = Xenodata.find(getProject(), xenodataRef);
 			String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
-
-			writeStartElement(getWriter(), Xenodata.TAG_PROJECT_ID);
-			writeXmlEncodedData(out, projectId);
-			writeEndElement(out, Xenodata.TAG_PROJECT_ID);
+			writeStartElementWithTwoAttributes(getWriter(), Xenodata.TAG_PROJECT_ID, "ExternalAppThatAssignsIdsToMiradiProjects", key, "Id", projectId);
+			writeEndElement(Xenodata.TAG_PROJECT_ID);
 		}
 		
-		writeEndElement(getWriter(), PROJECT_IDS_ELEMENT_NAME);
-		writeEndElement(getWriter(), createParentAndChildElementName(TNC_PROJECT_DATA, Xenodata.TAG_PROJECT_ID));
+		writeEndElement(getWriter(), createParentAndChildElementName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID));
 	}
 
 	private void writeProjectSummaryPlanningSchemaElement() throws Exception
@@ -351,6 +346,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_NEXT_STEPS, getMetadata(), ProjectMetadata.TAG_NEXT_STEPS);
 		writeOptionalOverallProjectThreatRating();
 		writeOptionalOverallProjectViabilityRating();
+		writeProjectId();
 
 		writeEndElement(out, PROJECT_SUMMARY);
 	}

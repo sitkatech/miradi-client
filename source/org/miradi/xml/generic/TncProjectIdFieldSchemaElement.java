@@ -33,6 +33,6 @@ public class TncProjectIdFieldSchemaElement extends FieldSchemaElement
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
-		writer.write(" { ProjectIds.element }");
+		writer.write(" { ProjectId.element *} ");
 	}
 }

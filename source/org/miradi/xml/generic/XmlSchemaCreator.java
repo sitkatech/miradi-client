@@ -232,10 +232,8 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + "longitude { xsd:decimal } ");
 		writer.endBlock();
 		
-		writer.defineAlias("ProjectIds.element", "element " + WcsXmlConstants.PREFIX + "ProjectIds");
-		writer.startBlock();
-		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + "ProjectId { xsd:integer }*");
-		writer.endBlock();
+		String[] subElements = new String[]{"attribute ExternalAppThatAssignsIdsToMiradiProjects {text}", "attribute Id {xsd:integer}"};
+		defineElement(writer, "ProjectId", subElements);
 		
 		writer.defineAlias(WcsXmlConstants.DIAGRAM_POINT_ELEMENT_NAME + ".element", "element " + WcsXmlConstants.PREFIX + WcsXmlConstants.DIAGRAM_POINT_ELEMENT_NAME);
 		writer.startBlock();

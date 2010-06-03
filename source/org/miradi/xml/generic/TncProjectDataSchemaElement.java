@@ -22,7 +22,6 @@ package org.miradi.xml.generic;
 
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
-import org.miradi.objects.Xenodata;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
 public class TncProjectDataSchemaElement extends ObjectSchemaElement
@@ -32,7 +31,6 @@ public class TncProjectDataSchemaElement extends ObjectSchemaElement
 		super(WcsXmlConstants.TNC_PROJECT_DATA);
 		
 		createOptionalTextField(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
-		createTncProjectIdField(Xenodata.TAG_PROJECT_ID);
 		createOptionalBooleanField(XmlSchemaCreator.TNC_PROJECT_DATA_SHARE_OUTSIDE_TNC);
 		createOptionalTextField(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		createCodeListField(XmlSchemaCreator.TNC_PROJECT_PLACE_TYPES);

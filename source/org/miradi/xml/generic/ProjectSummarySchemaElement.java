@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.Xenodata;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
 class ProjectSummarySchemaElement extends ObjectSchemaElement
@@ -40,5 +41,6 @@ class ProjectSummarySchemaElement extends ObjectSchemaElement
 		createOptionalTextField(ProjectMetadata.TAG_NEXT_STEPS);
 		createOptionalCodeField(OVERALL_PROJECT_THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING);
 		createOptionalCodeField(OVERALL_PROJECT_VIABILITY_RATING, XmlSchemaCreator.VOCABULARY_TARGET_STATUS);
+		createTncProjectIdField(Xenodata.TAG_PROJECT_ID);
 	}
 }
