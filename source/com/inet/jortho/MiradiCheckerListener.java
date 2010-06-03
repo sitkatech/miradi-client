@@ -104,21 +104,20 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 	    }
 
 		try {
-			int offs = getOffsetOfStartOfWordAtCursor(jText);
+			int begOffs = getOffsetOfStartOfWordAtCursor(jText);
 		    
-		    if( offs < 0 ) {
+		    if( begOffs < 0 ) {
 		        // occur if there nothing under the mouse pointer
 		        menu.setEnabled( false );
 		        return;
 		    }
 		    
 		    // get the word from current position
-		    final int begOffs = Utilities.getWordStart( jText, offs );
-		    final int endOffs = Utilities.getWordEnd( jText, offs );
+		    final int endOffs = Utilities.getWordEnd( jText, begOffs );
 		    final String word = jText.getText( begOffs, endOffs - begOffs );
 
 		    //find the first invalid word from current position
-		    Tokenizer tokenizer = new Tokenizer( jText, dictionary, locale, offs, options );
+		    Tokenizer tokenizer = new Tokenizer( jText, dictionary, locale, begOffs, options );
 		    String invalidWord;
 		    do {
 		        invalidWord = tokenizer.nextInvalidWord();
@@ -200,7 +199,11 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		    // if the next character is a white space then use the word on the left site
 		    offs--;
 		}
-		return offs;
+		
+		if(offs < 0)
+			return offs;
+		
+		return Utilities.getWordStart( jText, offs );
 	}
 
     public void languageChanged( LanguageChangeEvent ev ) {
