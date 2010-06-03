@@ -39,6 +39,8 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		new ProjectSummaryImporter(this).importElement();
 		new ProjectResourceImporter(this).importElement();
 		new OrganizationImporter(this).importElement();
+		new ProjectSummaryScopeImporter(this).importElement();
+		new ProjectSummaryLocationImporter(this).importElement();
 	}
 
 	@Override
