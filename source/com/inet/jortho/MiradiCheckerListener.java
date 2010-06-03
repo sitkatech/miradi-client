@@ -138,13 +138,9 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 			}
 
 			//Disable the menu if it is empty
-			if(menuItems.size() == 0)
-			{
-				menu.setEnabled( false );
-				return;
-			}
+			boolean isMenuEmpty = menuItems.size() == 0;
+			menu.setEnabled( !isMenuEmpty );
 
-			menu.setEnabled( true );
 		} catch( BadLocationException ex ) {
 		    ex.printStackTrace();
 		}
