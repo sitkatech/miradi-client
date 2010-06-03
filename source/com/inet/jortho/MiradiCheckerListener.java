@@ -112,8 +112,6 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		        return;
 		    }
 		    
-		    menu.removeAll();
-
 		    // get the word from current position
 		    final int begOffs = Utilities.getWordStart( jText, offs );
 		    final int endOffs = Utilities.getWordEnd( jText, offs );
@@ -131,6 +129,8 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		        menu.setEnabled( false );
 		        return;
 		    }
+
+		    menu.removeAll();
 
 			List<Suggestion> list = dictionary.searchSuggestions( word );
 
