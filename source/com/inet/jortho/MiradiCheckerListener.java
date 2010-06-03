@@ -104,6 +104,12 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		        return;
 		    }
 		    
+		    if( dictionary == null ) {
+		        // without dictionary it is disabled
+		        menu.setEnabled( false );
+		        return;
+		    }
+
 		    menu.removeAll();
 
 		    // get the word from current position
@@ -120,12 +126,6 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 
 		    if( !word.equals( invalidWord ) ) {
 		        // the current word is not invalid
-		        menu.setEnabled( false );
-		        return;
-		    }
-
-		    if( dictionary == null ) {
-		        // without dictionary it is disabled
 		        menu.setEnabled( false );
 		        return;
 		    }
