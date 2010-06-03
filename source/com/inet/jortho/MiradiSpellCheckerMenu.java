@@ -43,11 +43,11 @@ import javax.swing.JPopupMenu;
 public class MiradiSpellCheckerMenu extends JMenu implements HierarchyListener
 {
     
-    private final CheckerListener listener;
+    private final MiradiCheckerListener listener;
 
     public MiradiSpellCheckerMenu(SpellCheckerOptions options){
         super( Utils.getResource("spelling"));
-        listener = new CheckerListener(this, options);
+        listener = new MiradiCheckerListener(this, options);
         super.addHierarchyListener(this);
     }
 
