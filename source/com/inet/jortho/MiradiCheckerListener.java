@@ -155,8 +155,8 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 	private String getWord(final JTextComponent jText, int begOffs)
 			throws BadLocationException
 	{
-		final String word = jText.getText( begOffs, Utilities.getWordEnd( jText, begOffs ) - begOffs );
-		return word;
+		int endOffs = Utilities.getWordEnd( jText, begOffs );
+		return jText.getText( begOffs, endOffs - begOffs );
 	}
 
 	private Vector<JMenuItem> getSpellCheckerMenuItems(final JTextComponent jText,
