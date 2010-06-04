@@ -52,7 +52,8 @@ public class MiradiProjectToolBar extends MiradiToolBar
 		addSeparator();
 		add(new ToolBarButton(actions, ActionUndo.class));
 		add(new ToolBarButton(actions, ActionRedo.class));
-		add(new ToolBarButton(actions, ActionToggleSpellChecker.class));
+		toggleSpellCheckButton = new ToolBarButton(actions, ActionToggleSpellChecker.class);
+		add(toggleSpellCheckButton);
 
 		for(int segment = 0; segment < customButtons.length; ++segment)
 		{
@@ -66,8 +67,25 @@ public class MiradiProjectToolBar extends MiradiToolBar
 		add(new MoreInfoButton(actions.get(ActionHelpButtonMoreInfo.class)));
 		add(new ExamplesButton(actions.get(ActionHelpButtonExamples.class)));
 		add(new WorkshopButton(actions.get(ActionHelpButtonWorkshop.class)));
+		
+		updateButtonStates();
 	}
 	
+	@Override
+	public void updateButtonStates()
+	{
+		super.updateButtonStates();
+		boolean isSpellCheckerActive = getMainWindow().isSpellCheckerActive();
+		toggleSpellCheckButton.setSelected(isSpellCheckerActive);
+	}
+	
+	private MainWindow getMainWindow()
+	{
+		// TODO: Shouldn't use static here
+		return EAM.getMainWindow();
+	}
+
+	private ToolBarButton toggleSpellCheckButton;
 }
 
 abstract class HelpButton extends PanelButton
