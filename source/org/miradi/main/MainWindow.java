@@ -225,7 +225,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		safelySavePreferences();
 	}
 
-	public boolean isSpellCheckEnabled()
+	public boolean isSpellCheckerActive()
 	{
 		if(!getProject().isOpen())
 			return false;
