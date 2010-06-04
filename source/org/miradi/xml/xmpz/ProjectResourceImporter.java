@@ -31,13 +31,13 @@ public class ProjectResourceImporter extends AbstractBaseObjectImporter
 {
 	public ProjectResourceImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, WcsXmlConstants.PROJECT_RESOURCE);
+		super(importerToUse, WcsXmlConstants.PROJECT_RESOURCE, ProjectResource.getObjectType());
 	}
 	
 	@Override
 	public void importElement() throws Exception
 	{
-		importObject(ProjectResource.getObjectType());
+		importObject();
 	}
 	
 	@Override
