@@ -57,6 +57,11 @@ public class Miradi
 			System.exit(1);
 		}
 		
+		if(!EAM.initializeHomeDirectory())
+		{
+			System.exit(1);
+		}
+
 		Translation.initialize();
 		
 		List<String> argsAsList = Arrays.asList(args);
@@ -108,6 +113,7 @@ public class Miradi
 		if(dictionaryURL != null)
 		{
 			SpellChecker.registerDictionaries(dictionaryFolderURL, english, english);
+			SpellChecker.setUserDictionaryProvider(new MiradiUserDictionary());
 		}
 		else
 		{
