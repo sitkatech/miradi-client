@@ -43,6 +43,7 @@ import org.miradi.views.umbrella.PasteTextAction;
 
 import com.inet.jortho.AddWordAction;
 import com.inet.jortho.MiradiSpellCheckerMenu;
+import com.inet.jortho.SpellCheckedWord;
 import com.inet.jortho.SpellChecker;
 
 public class TextAreaRightClickMouseHandler extends MouseAdapter
@@ -106,10 +107,26 @@ public class TextAreaRightClickMouseHandler extends MouseAdapter
 		
 		if(EAM.getMainWindow().isSpellCheckEnabled())
 		{
-			menu.addSeparator();
-			JMenu spellCheckMenu = new MiradiSpellCheckerMenu(EAM.text("Spelling Suggestions"), SpellChecker.getOptions());
-			menu.add(spellCheckMenu);
-			menu.add(new AddWordAction(EAM.text("Add Word to Dictionary")));
+			try
+			{
+				SpellCheckedWord word = new SpellCheckedWord(textField, SpellChecker.getOptions(), null);
+				if(word.hasWord() && !word.isWordValid())
+				{
+					menu.addSeparator();
+					
+					String addWordLabel = EAM.substitute(EAM.text("Add '%s' to Dictionary"), word.getWord());
+					AddWordAction addWordAction = new AddWordAction(textField, word.getWord(), addWordLabel);
+					menu.add(addWordAction);
+
+					JMenu spellCheckMenu = new MiradiSpellCheckerMenu(EAM.text("Spelling Suggestions"), SpellChecker.getOptions());
+					menu.add(spellCheckMenu);
+				}
+			}
+			catch(Exception e)
+			{
+				// about all we can do is just not add the menu item
+				EAM.logException(e);
+			}
 		}
 		
 		return menu;

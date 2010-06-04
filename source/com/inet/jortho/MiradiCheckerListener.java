@@ -35,7 +35,6 @@ under their commercial license.
 package com.inet.jortho;
 
 import java.awt.Component;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -48,8 +47,6 @@ import javax.swing.JPopupMenu;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 import javax.swing.text.BadLocationException;
-import javax.swing.text.Caret;
-import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.Utilities;
 
@@ -106,31 +103,17 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 	    }
 
 		try {
-			int begOffs = getOffsetOfStartOfWordAtCursor(jText);
-		    
-		    if( begOffs < 0 ) {
-		        // occur if there nothing under the mouse pointer
-		        menu.setEnabled( false );
-		        return;
-		    }
-		    
-		    Tokenizer tokenizer = new Tokenizer( jText, dictionary, locale, begOffs, options );
+			SpellCheckedWord word = new SpellCheckedWord(jText, options, locale);
+			
+			if(!word.hasWord() || word.isWordValid())
+			{
+				menu.setEnabled( false );
+				return;
+			}
+			
+			List<Suggestion> list = dictionary.searchSuggestions( word.getWord() );
 
-		    //find the first invalid word from current position
-		    String invalidWord = findFirstInvalidWordFromOffset(tokenizer, begOffs);
-
-		    final String word = getWord(jText, begOffs);
-
-		    if( !word.equals( invalidWord ) ) {
-		        // the current word is not invalid
-		        menu.setEnabled( false );
-		        return;
-		    }
-
-			List<Suggestion> list = dictionary.searchSuggestions( word );
-
-			boolean needCapitalization = tokenizer.isFirstWordInSentence() && Utils.isFirstCapitalized( word );
-		    Vector<JMenuItem> menuItems = getSpellCheckerMenuItems(jText, begOffs, list, needCapitalization);
+		    Vector<JMenuItem> menuItems = getSpellCheckerMenuItems(word, list);
 
 			for(JMenuItem menuItem : menuItems)
 			{
@@ -147,29 +130,14 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		return;
 	}
 
-	private String findFirstInvalidWordFromOffset(Tokenizer tokenizer,
-			int begOffs)
-	{
-		String invalidWord;
-		do {
-		    invalidWord = tokenizer.nextInvalidWord();
-		} while( tokenizer.getWordOffset() < begOffs );
-		return invalidWord;
-	}
-
-	private String getWord(final JTextComponent jText, int begOffs)
-			throws BadLocationException
-	{
-		int endOffs = Utilities.getWordEnd( jText, begOffs );
-		return jText.getText( begOffs, endOffs - begOffs );
-	}
-
-	private Vector<JMenuItem> getSpellCheckerMenuItems(final JTextComponent jText,
-			final int begOffs, List<Suggestion> list, boolean needCapitalization) throws BadLocationException
+	private Vector<JMenuItem> getSpellCheckerMenuItems(SpellCheckedWord word, List<Suggestion> list) throws BadLocationException
 	{
 		Vector<JMenuItem> menuItems = new Vector<JMenuItem>();
-		
+
+		final JTextComponent jText = word.getTextComponent();
+		final int begOffs = word.getWordStartOffset();
 	    final int endOffs = Utilities.getWordEnd( jText, begOffs );
+		final boolean needCapitalization = word.needCapitalization();
 
 		for( int i = 0; i < list.size() && i < options.getSuggestionsLimitMenu(); i++ ) {
 		    Suggestion sugestion = list.get( i );
@@ -192,28 +160,6 @@ public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeL
 		}
 
 		return menuItems;
-	}
-
-	private int getOffsetOfStartOfWordAtCursor(final JTextComponent jText)
-			throws BadLocationException
-	{
-		Caret caret = jText.getCaret();
-		int offs = Math.min( caret.getDot(), caret.getMark() );
-		Point p = jText.getMousePosition();
-		if( p != null ) {
-		    // use position from mouse click and not from editor cursor position 
-		    offs = jText.viewToModel( p );
-		}
-		Document doc = jText.getDocument();
-		if( offs > 0 && (offs >= doc.getLength() || Character.isWhitespace( doc.getText( offs, 1 ).charAt( 0 ) )) ) {
-		    // if the next character is a white space then use the word on the left site
-		    offs--;
-		}
-		
-		if(offs < 0)
-			return offs;
-		
-		return Utilities.getWordStart( jText, offs );
 	}
 
     public void languageChanged( LanguageChangeEvent ev ) {
