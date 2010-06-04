@@ -230,10 +230,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		if(!getProject().isOpen())
 			return false;
 		
-		return getAppPreferences().getIsSpellCheckEnabled() && isSpellCheckAvailable();
+		return getAppPreferences().getIsSpellCheckEnabled() && isSpellCheckPossible();
 	}
 	
-	public boolean isSpellCheckAvailable()
+	public boolean isSpellCheckPossible()
 	{
 		String languageCode = getProject().getMetadata().getData(ProjectMetadata.TAG_PROJECT_LANGUAGE);
 		return isSpellCheckAvailable(languageCode);
