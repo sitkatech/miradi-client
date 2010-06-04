@@ -31,6 +31,7 @@ import org.miradi.actions.ActionHelpButtonExamples;
 import org.miradi.actions.ActionHelpButtonMoreInfo;
 import org.miradi.actions.ActionHelpButtonWorkshop;
 import org.miradi.actions.ActionRedo;
+import org.miradi.actions.ActionToggleSpellChecker;
 import org.miradi.actions.ActionUndo;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.fieldComponents.PanelButton;
@@ -52,6 +53,7 @@ public class MiradiToolBar extends JToolBar
 		addSeparator();
 		add(new ToolBarButton(actions, ActionUndo.class));
 		add(new ToolBarButton(actions, ActionRedo.class));
+		add(new ToolBarButton(actions, ActionToggleSpellChecker.class));
 
 		for(int segment = 0; segment < customButtons.length; ++segment)
 		{
