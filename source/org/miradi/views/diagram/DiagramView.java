@@ -26,7 +26,6 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.JPopupMenu;
-import javax.swing.JToolBar;
 
 import org.martus.swing.Utilities;
 import org.miradi.actions.ActionActivityMoveDown;
@@ -142,6 +141,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.main.MiradiToolBar;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -254,7 +254,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	}
 	
 	@Override
-	public JToolBar createToolBar()
+	public MiradiToolBar createToolBar()
 	{
 		return new DiagramToolBar(getActions(), this);
 	}

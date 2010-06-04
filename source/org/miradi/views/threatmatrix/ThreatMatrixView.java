@@ -21,7 +21,6 @@ package org.miradi.views.threatmatrix;
 
 import java.awt.image.BufferedImage;
 
-import javax.swing.JToolBar;
 
 import org.miradi.actions.ActionCloneStress;
 import org.miradi.actions.ActionCreateStress;
@@ -36,6 +35,7 @@ import org.miradi.dialogs.threatrating.upperPanel.ThreatRatingMultiTablePanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
+import org.miradi.main.MiradiToolBar;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -64,7 +64,7 @@ public class ThreatMatrixView extends CardedView
 	}
 
 	@Override
-	public JToolBar createToolBar()
+	public MiradiToolBar createToolBar()
 	{
 		return new ThreatRatingToolBar(getMainWindow(), isCellRatingsVisible());
 	}
