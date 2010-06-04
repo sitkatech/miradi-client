@@ -41,7 +41,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
-import javax.swing.JToolBar;
 import javax.swing.SwingUtilities;
 import javax.swing.ToolTipManager;
 
@@ -448,7 +447,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			UmbrellaView view = getCurrentView();
 			if(view == null)
 				return;
-			JToolBar toolBar = view.createToolBar();
+			MiradiToolBar toolBar = view.createToolBar();
 			if(toolBar == null)
 				throw new RuntimeException("View must have toolbar");
 
