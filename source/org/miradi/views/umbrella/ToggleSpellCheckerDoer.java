@@ -31,7 +31,7 @@ public class ToggleSpellCheckerDoer extends MainWindowDoer
 		if(!isProjectOpen())
 			return false;
 		
-		return getMainWindow().isSpellCheckAvailable();
+		return getMainWindow().isSpellCheckPossible();
 	}
 
 	@Override
