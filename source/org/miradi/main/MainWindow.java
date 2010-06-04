@@ -127,9 +127,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	public void start(String[] args) throws Exception
 	{
-		if(!EAM.initializeHomeDirectory())
-			System.exit(1);
-
 		List<String> commandLineArguments = Arrays.asList(args);
 		
 		if(ResourcesHandler.isRunningFromInsideJar())
