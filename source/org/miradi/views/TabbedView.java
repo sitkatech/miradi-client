@@ -289,7 +289,7 @@ abstract public class TabbedView extends UmbrellaView
 	{
 		closeActivePropertiesDialog();
 		getMainWindow().updateActionStates();
-		getMainWindow().updateToolBar();
+		getMainWindow().rebuildToolBar();
 		MiradiTabContentsPanelInterface newPanel = getTabPanel(getSelectedTabIndex());
 		if(newPanel != null)
 			newPanel.becomeActive();

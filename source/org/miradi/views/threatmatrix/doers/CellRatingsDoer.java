@@ -31,7 +31,7 @@ abstract public class CellRatingsDoer extends ViewDoer
 	
 	public void updateToolBar()
 	{
-		getMainWindow().updateToolBar();
+		getMainWindow().rebuildToolBar();
 	}
 
 }
