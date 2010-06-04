@@ -78,8 +78,10 @@ import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
+import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.CountriesQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
@@ -107,6 +109,9 @@ import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.TncProjectSharingQuestion;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.questions.WwfEcoRegionsQuestion;
+import org.miradi.questions.WwfManagingOfficesQuestion;
+import org.miradi.questions.WwfRegionsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
@@ -188,6 +193,15 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_CITATIONS, "some tnc project citations");
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_CAP_STANDARDS_SCORECARD, "some tnc cap standards scorecard");
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, TncProjectSharingQuestion.SHARE_OUTSIDE_TNC);
+	}
+	
+	private void fillWwfProjectData() throws Exception
+	{
+		ORef wwfProjectDataRef = getSingletonObjectRef(WwfProjectData.getObjectType());
+		fillObjectUsingCommand(wwfProjectDataRef, WwfProjectData.TAG_MANAGING_OFFICES, new WwfManagingOfficesQuestion().getAllCodes().toString());
+		fillObjectUsingCommand(wwfProjectDataRef, WwfProjectData.TAG_REGIONS, new WwfRegionsQuestion().getAllCodes().toString());
+		fillObjectUsingCommand(wwfProjectDataRef, WwfProjectData.TAG_COUNTRIES, new CountriesQuestion().getAllCodes().toString());
+		fillObjectUsingCommand(wwfProjectDataRef, WwfProjectData.TAG_ECOREGIONS, new WwfEcoRegionsQuestion().getAllCodes().toString());
 	}
 	
 	public void setFiscalYearStartMonth(int startMonth) throws Exception
@@ -960,6 +974,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		switchToStressBaseMode();
 		fillGeneralProjectData();
+		fillWwfProjectData();
 		createAndPopulateDirectThreatLink();
 		createAndPopulateMeasurement();
 		createAndPopulateProjectResource();
