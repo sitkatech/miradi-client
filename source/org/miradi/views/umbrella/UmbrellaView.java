@@ -26,7 +26,6 @@ import java.util.HashMap;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
@@ -181,6 +180,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.main.MiradiToolBar;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ViewData;
@@ -288,7 +288,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		return getMainWindow().getActions();
 	}
 	
-	abstract public JToolBar createToolBar();
+	abstract public MiradiToolBar createToolBar();
 	
 	public boolean isImageAvailable()
 	{

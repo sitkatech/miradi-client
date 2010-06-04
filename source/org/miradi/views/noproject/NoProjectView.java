@@ -19,11 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.noproject;
 
-import javax.swing.JToolBar;
 
 import org.miradi.actions.jump.ActionJumpWelcomeCreateStep;
 import org.miradi.actions.jump.ActionJumpWelcomeImportStep;
 import org.miradi.main.MainWindow;
+import org.miradi.main.MiradiToolBar;
 import org.miradi.project.Project;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.umbrella.UmbrellaView;
@@ -43,7 +43,7 @@ public class NoProjectView extends UmbrellaView
 	}
 	
 	@Override
-	public JToolBar createToolBar()
+	public MiradiToolBar createToolBar()
 	{
 		return new NoProjectToolBar(getActions());
 	}

@@ -22,7 +22,6 @@ package org.miradi.views.summary;
 
 import java.util.HashSet;
 
-import javax.swing.JToolBar;
 
 import org.martus.util.MultiCalendar;
 import org.miradi.actions.ActionCreateOrganization;
@@ -36,6 +35,7 @@ import org.miradi.dialogs.summary.TeamManagementPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.main.MiradiToolBar;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.FosProjectData;
 import org.miradi.objects.ProjectMetadata;
@@ -72,7 +72,7 @@ public class SummaryView extends TabbedView
 	}
 
 	@Override
-	public JToolBar createToolBar()
+	public MiradiToolBar createToolBar()
 	{
 		return new SummaryToolBar(getMainWindow().getActions());
 	}

@@ -22,11 +22,11 @@ package org.miradi.views.schedule;
 import java.awt.BorderLayout;
 
 import javax.swing.JLabel;
-import javax.swing.JToolBar;
 
 import org.martus.swing.UiScrollPane;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.main.MiradiToolBar;
 import org.miradi.project.Project;
 import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.views.TabbedView;
@@ -49,7 +49,7 @@ public class ScheduleView extends TabbedView
 		return Project.SCHEDULE_VIEW_NAME;
 	}
 
-	public JToolBar createToolBar()
+	public MiradiToolBar createToolBar()
 	{
 		return new ScheduleToolBar(getActions());
 	}

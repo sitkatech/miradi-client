@@ -23,9 +23,9 @@ import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JToolBar;
 
 import org.miradi.main.MainWindow;
+import org.miradi.main.MiradiToolBar;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.project.Project;
 import org.miradi.utils.MiradiScrollPane;
@@ -49,7 +49,7 @@ public class MapView extends TabbedView
 		return Project.MAP_VIEW_NAME;
 	}
 
-	public JToolBar createToolBar()
+	public MiradiToolBar createToolBar()
 	{
 		return new MapToolBar(getActions());
 	}

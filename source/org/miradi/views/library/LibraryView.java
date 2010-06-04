@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.library;
 
 import javax.swing.JLabel;
-import javax.swing.JToolBar;
 
 import org.miradi.main.MainWindow;
+import org.miradi.main.MiradiToolBar;
 import org.miradi.project.Project;
 import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.utils.MiradiScrollPane;
@@ -46,7 +46,7 @@ public class LibraryView extends TabbedView
 		return Project.LIBRARY_VIEW_NAME;
 	}
 
-	public JToolBar createToolBar()
+	public MiradiToolBar createToolBar()
 	{
 		return new LibraryToolBar(getActions());
 	}

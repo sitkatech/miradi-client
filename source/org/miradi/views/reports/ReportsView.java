@@ -21,7 +21,6 @@ package org.miradi.views.reports;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JToolBar;
 
 import org.miradi.actions.ActionCreateReportTemplate;
 import org.miradi.actions.ActionDeleteReportTemplate;
@@ -30,6 +29,7 @@ import org.miradi.dialogs.reportTemplate.ReportTemplateManagementPanel;
 import org.miradi.dialogs.reportTemplate.StandardReportPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.main.MiradiToolBar;
 import org.miradi.project.Project;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.TabbedView;
@@ -69,7 +69,7 @@ public class ReportsView extends TabbedView
 		return Project.REPORT_VIEW_NAME;
 	}
 
-	public JToolBar createToolBar()
+	public MiradiToolBar createToolBar()
 	{
 		return new ReportToolBar(getActions());
 	}

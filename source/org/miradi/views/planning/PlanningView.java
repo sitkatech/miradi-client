@@ -22,7 +22,6 @@ package org.miradi.views.planning;
 
 import java.util.HashMap;
 
-import javax.swing.JToolBar;
 
 import org.miradi.actions.ActionCreatePlanningViewConfigurationMenuDoer;
 import org.miradi.actions.ActionCreatePlanningViewEmptyConfiguration;
@@ -51,6 +50,7 @@ import org.miradi.dialogs.planning.EmptyRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.MainWindow;
+import org.miradi.main.MiradiToolBar;
 import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
 import org.miradi.views.planning.doers.CreateActivityNodeDoer;
@@ -153,7 +153,7 @@ public class PlanningView extends TabbedView
 	}
 
 	@Override
-	public JToolBar createToolBar()
+	public MiradiToolBar createToolBar()
 	{
 		return new PlanningToolBar(getActions());
 	}

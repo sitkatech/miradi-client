@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.targetviability;
 
-import javax.swing.JToolBar;
 
 import org.miradi.actions.ActionCreateKeyEcologicalAttribute;
 import org.miradi.actions.ActionCreateKeyEcologicalAttributeIndicator;
@@ -36,6 +35,7 @@ import org.miradi.actions.ActionExpandToTarget;
 import org.miradi.dialogs.viability.TargetViabilityManagementPanel;
 import org.miradi.dialogs.viability.ViabilityViewTreeManagementPanel;
 import org.miradi.main.MainWindow;
+import org.miradi.main.MiradiToolBar;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
@@ -71,7 +71,7 @@ public class TargetViabilityView extends TabbedView
 		return Project.TARGET_VIABILITY_NAME;
 	}
 
-	public JToolBar createToolBar()
+	public MiradiToolBar createToolBar()
 	{
 		return new TargetViabilityToolBar(getActions());
 	}

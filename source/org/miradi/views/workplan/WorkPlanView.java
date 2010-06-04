@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.workplan;
 
-import javax.swing.JToolBar;
 
 import org.miradi.actions.ActionCreateAccountingCode;
 import org.miradi.actions.ActionCreateChildTask;
@@ -42,6 +41,7 @@ import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.actions.ActionWorkPlanBudgetColumnsEditor;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.main.MainWindow;
+import org.miradi.main.MiradiToolBar;
 import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
 import org.miradi.views.planning.doers.CreateAccountingCodeDoer;
@@ -117,7 +117,7 @@ public class WorkPlanView extends TabbedView
 	}
 
 	@Override
-	public JToolBar createToolBar()
+	public MiradiToolBar createToolBar()
 	{
 		return new WorkPlanToolBar(getActions());
 	}
