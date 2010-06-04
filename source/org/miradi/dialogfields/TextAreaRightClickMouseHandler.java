@@ -105,7 +105,7 @@ public class TextAreaRightClickMouseHandler extends MouseAdapter
 		menuItemPaste.setAccelerator(KeyStroke.getKeyStroke('V', KeyEvent.CTRL_DOWN_MASK));
 		menu.add(menuItemPaste);
 		
-		if(EAM.getMainWindow().isSpellCheckEnabled())
+		if(EAM.getMainWindow().isSpellCheckerActive())
 		{
 			try
 			{

@@ -98,7 +98,7 @@ public class ObjectTextInputField extends ObjectDataInputField
 		field.setForeground(fg);
 		field.setBackground(bg);
 
-		if(EAM.getMainWindow().isSpellCheckEnabled())
+		if(EAM.getMainWindow().isSpellCheckerActive())
 			SpellChecker.register(field, false, false, true);
 		else
 			SpellChecker.unregister(field);
