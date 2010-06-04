@@ -23,29 +23,36 @@ package com.inet.jortho;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
+import javax.swing.text.JTextComponent;
 
 public class AddWordAction extends AbstractAction
 {
 	private Dictionary dictionary;
+	private String word;
+	private JTextComponent jText;
 	
-	public AddWordAction()
+	public AddWordAction(JTextComponent jTextComponent, String wordToAdd)
 	{
-		this(Utils.getResource("addToDictionary"));
+		this(jTextComponent, wordToAdd, Utils.getResource("addToDictionary"));
 	}
 	
-	public AddWordAction(String labelText)
+	public AddWordAction(JTextComponent jTextComponent, String wordToAdd, String labelText)
 	{
 		super(labelText);
+		dictionary = SpellChecker.getCurrentDictionary();
+		word = wordToAdd;
+		jText = jTextComponent;
 	}
 	
 	public void actionPerformed(ActionEvent arg0)
 	{
-//        UserDictionaryProvider provider = SpellChecker.getUserDictionaryProvider();
-//        if( provider != null ) {
-//            provider.addWord( oldWord );
-//        }
-//        dictionary.add( oldWord );
+        UserDictionaryProvider provider = SpellChecker.getUserDictionaryProvider();
+        if( provider != null ) {
+            provider.addWord( word );
+        }
+        dictionary.add( word );
         dictionary.trimToSize();
+        AutoSpellChecker.refresh( jText );
 	}
 
 }
