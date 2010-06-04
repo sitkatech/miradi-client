@@ -241,7 +241,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 
 			Xenodata xenodata = Xenodata.find(getProject(), xenodataRef);
 			String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
-			writeStartElementWithTwoAttributes(getWriter(), Xenodata.TAG_PROJECT_ID, "ExternalAppThatAssignsIdsToMiradiProjects", key, "Id", projectId);
+			writeStartElementWithTwoAttributes(getWriter(), Xenodata.TAG_PROJECT_ID, EXTERNAL_APP_THAT_ASSIGNED_ID, key, ID, projectId);
 			writeEndElement(Xenodata.TAG_PROJECT_ID);
 		}
 		

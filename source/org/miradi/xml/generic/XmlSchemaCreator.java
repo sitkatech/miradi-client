@@ -35,6 +35,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WwfProjectData;
+import org.miradi.objects.Xenodata;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CountriesQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
@@ -232,8 +233,8 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + "longitude { xsd:decimal } ");
 		writer.endBlock();
 		
-		String[] subElements = new String[]{"attribute ExternalAppThatAssignsIdsToMiradiProjects {text}", "attribute Id {xsd:integer}"};
-		defineElement(writer, "ProjectId", subElements);
+		String[] subElements = new String[]{"attribute " + WcsXmlConstants.EXTERNAL_APP_THAT_ASSIGNED_ID + " {text}", "attribute " + ID + " {xsd:integer}"};
+		defineElement(writer, Xenodata.TAG_PROJECT_ID, subElements);
 		
 		writer.defineAlias(WcsXmlConstants.DIAGRAM_POINT_ELEMENT_NAME + ".element", "element " + WcsXmlConstants.PREFIX + WcsXmlConstants.DIAGRAM_POINT_ELEMENT_NAME);
 		writer.startBlock();

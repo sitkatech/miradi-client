@@ -161,4 +161,5 @@ public interface WcsXmlConstants
 	public static final String OBJECT_TREE_TABLE_CONFIGURATION = "PlanningViewConfiguration";
 	public static final String METHOD_IDS = "MethodIds";
 	public static final String SUB_TASK_IDS = "SubTaskIds";
+	public static final String EXTERNAL_APP_THAT_ASSIGNED_ID = "ExternalAppThatAssignedId";
 }
