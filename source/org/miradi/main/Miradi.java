@@ -114,7 +114,7 @@ public class Miradi
 		{
 			System.out.println("Initializing English spell checker");
 			SpellChecker.registerDictionaries(dictionaryFolderURL, english, english);
-			SpellChecker.setUserDictionaryProvider(new MiradiUserDictionary());
+//			SpellChecker.setUserDictionaryProvider(new MiradiUserDictionary());
 		}
 		else
 		{
