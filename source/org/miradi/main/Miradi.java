@@ -21,7 +21,6 @@ package org.miradi.main;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Arrays;
@@ -37,8 +36,6 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.LanguageQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.Translation;
-
-import com.inet.jortho.SpellChecker;
 
 
 public class Miradi
@@ -100,33 +97,9 @@ public class Miradi
 		
 		StaticQuestionManager.initialize();
 
-		initializeSpellChecker();
+		SpellCheckerManager.initializeSpellChecker();
 
 		Miradi.start(args);
-	}
-
-	private static void initializeSpellChecker() throws MalformedURLException
-	{
-		String english = Translation.DEFAULT_LANGUAGE_CODE;
-		URL dictionaryFolderURL = ResourcesHandler.getEnglishResourceURL("");
-		URL dictionaryURL = new URL(dictionaryFolderURL, getDictionaryName(english));
-		if(dictionaryURL != null)
-		{
-			System.out.println("Initializing English spell checker");
-			SpellChecker.registerDictionaries(dictionaryFolderURL, english, english);
-//			SpellChecker.setUserDictionaryProvider(new MiradiUserDictionary());
-		}
-		else
-		{
-			EAM.logWarning("English dictionary not found");
-		}
-		// TODO: Probably remove this code, assuming we choose a different mechanism
-		// for loading non-English dictionaries
-//				String dictionaryName = getDictionaryName(languageCode);
-//				ZipFile languagePackZip = new ZipFile(new File(jarFile.toURI()));
-//				ZipEntry dictionaryEntry = languagePackZip.getEntry(dictionaryName);
-//				if(dictionaryEntry != null)
-//					initializeSpellChecker(new URL("jar:" + jarFile.toURI().toURL() + "!/"), languageCode);
 	}
 
 	public static boolean isDemoMode()
@@ -173,12 +146,6 @@ public class Miradi
 		Miradi.setLocalization(jarFile.toURI().toURL(), languageCode);
 	}
 
-	public static String getDictionaryName(String languageCode)
-	{
-		String dictionaryName = "dictionary_" + languageCode + ".ortho";
-		return dictionaryName;
-	}
-	
 	public static HashSet<ChoiceItem> getAvailableLanguageChoices() throws Exception
 	{
 		HashSet<ChoiceItem> results = new HashSet();
