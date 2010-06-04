@@ -91,7 +91,7 @@ abstract public class AbstractXmlImporter
 		xPath = createXPath();
 	}
 
-	protected boolean isTrue(String value)
+	public boolean isTrue(String value)
 	{
 		if (value.length() == 0)
 			return false;
