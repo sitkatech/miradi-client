@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2010, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -17,15 +17,12 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.noproject;
 
-import org.miradi.actions.Actions;
-import org.miradi.main.MiradiToolBar;
+package org.miradi.main;
 
-public class NoProjectToolBar extends MiradiToolBar
+import javax.swing.JToolBar;
+
+public class MiradiToolBar extends JToolBar
 {
-	public NoProjectToolBar(Actions actions)
-	{
-	}
 
 }
