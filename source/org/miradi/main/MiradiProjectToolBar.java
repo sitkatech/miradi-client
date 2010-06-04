@@ -25,7 +25,6 @@ import java.awt.Dimension;
 import javax.swing.Action;
 import javax.swing.Box;
 import javax.swing.JComponent;
-import javax.swing.JToolBar;
 
 import org.miradi.actions.ActionHelpButtonExamples;
 import org.miradi.actions.ActionHelpButtonMoreInfo;
@@ -39,7 +38,7 @@ import org.miradi.utils.ToolBarButton;
 import org.miradi.views.umbrella.HelpButtonData;
 import org.miradi.views.umbrella.ViewSpecificHelpButtonData;
 
-public class MiradiProjectToolBar extends JToolBar
+public class MiradiProjectToolBar extends MiradiToolBar
 {
 	public MiradiProjectToolBar(Actions actions, Class currentViewActionClass)
 	{
