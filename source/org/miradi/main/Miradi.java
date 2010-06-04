@@ -112,6 +112,7 @@ public class Miradi
 		URL dictionaryURL = new URL(dictionaryFolderURL, getDictionaryName(english));
 		if(dictionaryURL != null)
 		{
+			System.out.println("Initializing English spell checker");
 			SpellChecker.registerDictionaries(dictionaryFolderURL, english, english);
 			SpellChecker.setUserDictionaryProvider(new MiradiUserDictionary());
 		}
@@ -237,6 +238,7 @@ public class Miradi
 		String jarSubdirectoryName = "ThirdParty";
 		File miradiDirectory = getAppCodeDirectory();
 		File thirdPartyDirectory = new File(miradiDirectory, jarSubdirectoryName);
+System.out.println("Adding jars to classpath: " + thirdPartyDirectory.getAbsolutePath());
 		RuntimeJarLoader.addJarsInSubdirectoryToClasspath(thirdPartyDirectory);
 		System.err.println("Miradi code running from: " + miradiDirectory.getAbsolutePath());
 		System.err.println("Added jars to classpath: " + thirdPartyDirectory.getAbsolutePath());
