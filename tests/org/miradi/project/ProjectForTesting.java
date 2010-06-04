@@ -78,6 +78,7 @@ import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
+import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.questions.ChoiceQuestion;
@@ -202,6 +203,17 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(wwfProjectDataRef, WwfProjectData.TAG_REGIONS, new WwfRegionsQuestion().getAllCodes().toString());
 		fillObjectUsingCommand(wwfProjectDataRef, WwfProjectData.TAG_COUNTRIES, new CountriesQuestion().getAllCodes().toString());
 		fillObjectUsingCommand(wwfProjectDataRef, WwfProjectData.TAG_ECOREGIONS, new WwfEcoRegionsQuestion().getAllCodes().toString());
+	}
+	
+	private void fillWcsProjectData() throws Exception
+	{
+		ORef wcsProjectDataRef = getSingletonObjectRef(WcsProjectData.getObjectType());
+		fillObjectUsingCommand(wcsProjectDataRef, WcsProjectData.TAG_ORGANIZATIONAL_FOCUS, "Sample Organizational Focus");
+		fillObjectUsingCommand(wcsProjectDataRef, WcsProjectData.TAG_ORGANIZATIONAL_LEVEL, "Sample Organizational Level");
+		fillObjectUsingCommand(wcsProjectDataRef, WcsProjectData.TAG_SWOT_COMPLETED, BooleanData.BOOLEAN_TRUE);
+		fillObjectUsingCommand(wcsProjectDataRef, WcsProjectData.TAG_SWOT_URL, "Sample Swot Url");
+		fillObjectUsingCommand(wcsProjectDataRef, WcsProjectData.TAG_STEP_COMPLETED, BooleanData.BOOLEAN_TRUE);
+		fillObjectUsingCommand(wcsProjectDataRef, WcsProjectData.TAG_STEP_URL, "Sample Steps url");
 	}
 	
 	public void setFiscalYearStartMonth(int startMonth) throws Exception
@@ -975,6 +987,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		switchToStressBaseMode();
 		fillGeneralProjectData();
 		fillWwfProjectData();
+		fillWcsProjectData();
 		createAndPopulateDirectThreatLink();
 		createAndPopulateMeasurement();
 		createAndPopulateProjectResource();
