@@ -21,9 +21,9 @@ package org.miradi.views.map;
 
 import org.miradi.actions.Actions;
 import org.miradi.actions.views.ActionViewMap;
-import org.miradi.main.MiradiToolBar;
+import org.miradi.main.MiradiProjectToolBar;
 
-public class MapToolBar extends MiradiToolBar
+public class MapToolBar extends MiradiProjectToolBar
 {
 	public MapToolBar(Actions actions)
 	{

@@ -39,14 +39,14 @@ import org.miradi.utils.ToolBarButton;
 import org.miradi.views.umbrella.HelpButtonData;
 import org.miradi.views.umbrella.ViewSpecificHelpButtonData;
 
-public class MiradiToolBar extends JToolBar
+public class MiradiProjectToolBar extends JToolBar
 {
-	public MiradiToolBar(Actions actions, Class currentViewActionClass)
+	public MiradiProjectToolBar(Actions actions, Class currentViewActionClass)
 	{
 		this(actions, currentViewActionClass, new JComponent[0][0]);
 	}
 	
-	public MiradiToolBar(Actions actions, Class currentViewActionClass, JComponent[][] customButtons)
+	public MiradiProjectToolBar(Actions actions, Class currentViewActionClass, JComponent[][] customButtons)
 	{
 		setFloatable(false);
 		add(ViewSwitcher.create(actions, currentViewActionClass));
