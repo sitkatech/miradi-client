@@ -67,6 +67,7 @@ import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.RareProjectData;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
@@ -214,6 +215,32 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(wcsProjectDataRef, WcsProjectData.TAG_SWOT_URL, "Sample Swot Url");
 		fillObjectUsingCommand(wcsProjectDataRef, WcsProjectData.TAG_STEP_COMPLETED, BooleanData.BOOLEAN_TRUE);
 		fillObjectUsingCommand(wcsProjectDataRef, WcsProjectData.TAG_STEP_URL, "Sample Steps url");
+	}
+	
+	private void fillRareProjectData() throws Exception
+	{
+		ORef rareProjectDataRef = getSingletonObjectRef(RareProjectData.getObjectType());
+		
+		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_COHORT);
+		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.LEGACY_TAG_THREATS_ADDRESSED_NOTES);
+		fillObjectUsingCommand(rareProjectDataRef, RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA, "3");
+		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_BIODIVERSITY_HOTSPOTS);
+		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_FLAGSHIP_SPECIES_COMMON_NAME);
+		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME);
+		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_FLAGSHIP_SPECIES_DETAIL);
+		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_CAMPAIGN_THEORY_OF_CHANGE);
+		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_CAMPAIGN_SLOGAN);
+		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES);
+		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_MAIN_ACTIVITIES_NOTES);
+		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_THREAT_REDUCTION_OBJECTIVE_NOTES);
+		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_MONITORING_OBJECTIVE_NOTES);
+		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_COURSE_MANAGER_NOTES);
+		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_REGIONAL_DIRECTOR_NOTES);
+		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_CAMPAIGN_MANAGER_NOTES);
+		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_LOCAL_PARTNER_CONTACT_NOTES);
+		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_BINGO_PARTNER_CONTACT_NOTES);
+		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_THREAT_REDUCTION_PARTNER_CONTACT_NOTES);
+		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_MONITORING_PARTNER_CONTACT_NOTES);		
 	}
 	
 	public void setFiscalYearStartMonth(int startMonth) throws Exception
@@ -988,6 +1015,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillGeneralProjectData();
 		fillWwfProjectData();
 		fillWcsProjectData();
+		fillRareProjectData();
 		createAndPopulateDirectThreatLink();
 		createAndPopulateMeasurement();
 		createAndPopulateProjectResource();
@@ -1079,6 +1107,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		countriesCodeList.add("AGO");
 		
 		return countriesCodeList;
+	}
+	
+	public void fillObjectWithSampleStringData(ORef objectRef, String fieldTag) throws Exception
+	{
+		CommandSetObjectData setData = new CommandSetObjectData(objectRef, fieldTag, "Sample " + fieldTag + " data");
+		executeCommand(setData);
 	}
 
 	public void fillCostPerUnitField(ProjectResource projectResource, String costPerUnit) throws Exception
