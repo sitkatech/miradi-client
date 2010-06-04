@@ -44,11 +44,13 @@ public class WwfProjectData extends BaseObject
 		super(objectManager, new BaseId(idAsInt), jsonObject);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -80,6 +82,7 @@ public class WwfProjectData extends BaseObject
 		return find(project.getObjectManager(), wwfProjectDataRef);
 	}
 	
+	@Override
 	void clear()
 	{
 		super.clear();
