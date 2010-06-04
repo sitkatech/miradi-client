@@ -622,6 +622,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		// NOTE: We don't have a real status bar right now
 	}
+	
+	public void updateToolBar()
+	{
+		toolBarBox.updateToolBar();
+	}
 
 	public void exitNormally()
 	{
@@ -792,6 +797,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		updateActionStates();
 		updateStatusBar();
+		updateToolBar();
 	}
 
 	public void updateActionStates()

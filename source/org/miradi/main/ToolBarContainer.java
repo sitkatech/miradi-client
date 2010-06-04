@@ -45,5 +45,12 @@ public class ToolBarContainer extends JPanel
 		removeAll();
 	}
 
+	public void updateToolBar()
+	{
+		if(toolBar != null)
+			toolBar.updateButtonStates();
+	}
+
 	MiradiToolBar toolBar;
+
 }
