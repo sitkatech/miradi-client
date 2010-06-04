@@ -114,7 +114,7 @@ public class TextAreaRightClickMouseHandler extends MouseAdapter
 				{
 					menu.addSeparator();
 					
-					String addWordLabel = EAM.substitute(EAM.text("Add '%s' to Dictionary"), word.getWord());
+					String addWordLabel = EAM.substitute(EAM.text("Add '%s' to User Dictionary"), word.getWord());
 					AddWordAction addWordAction = new AddWordAction(textField, word.getWord(), addWordLabel);
 					menu.add(addWordAction);
 
