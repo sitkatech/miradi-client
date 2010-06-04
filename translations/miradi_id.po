@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-04 09:52-0500\n"
+"POT-Creation-Date: 2010-06-04 09:58-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -345,7 +345,7 @@ msgstr ""
 "<BR>Silakan hubungi Dukungan Miradi (<a href=\"mailto:support@miradi.org"
 "\">support@miradi.org<a>) untuk mendapatkan bantuan</HTML> "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1110
+#: Miradi/source/org/miradi/main/MainWindow.java:1116
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -3177,7 +3177,7 @@ msgstr "Perkirakan biaya kegiatan dan pemantauan "
 msgid "Euro"
 msgstr "Euro"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:695
+#: Miradi/source/org/miradi/main/MainWindow.java:700
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -5168,7 +5168,7 @@ msgstr "Sumber Daya Proyek "
 msgid "Project Resource Filter Editor"
 msgstr "Editor Filter Sumber Daya Proyek "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:693
+#: Miradi/source/org/miradi/main/MainWindow.java:698
 msgid "Project Resource Filter Is On"
 msgstr "Filter Sumber Daya Proyek Adalah Aktif "
 
@@ -5747,7 +5747,7 @@ msgstr "Pemilik Kepentingan"
 msgid "Standard Reports"
 msgstr "Laporan Standar "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:727
+#: Miradi/source/org/miradi/main/MainWindow.java:732
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -7384,7 +7384,7 @@ msgstr ""
 "aplikasi ini:\n"
 " "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1094
+#: Miradi/source/org/miradi/main/MainWindow.java:1100
 msgid "Unable to launch external web browser"
 msgstr "Tidak bisa meluncurkan perambah web eksternal "
 
@@ -7406,7 +7406,7 @@ msgstr ""
 "dari aplikasi ini:\n"
 " "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:883
+#: Miradi/source/org/miradi/main/MainWindow.java:889
 msgid "Unable to save preferences"
 msgstr "Tidak bisa menyimpan preferensi "
 
