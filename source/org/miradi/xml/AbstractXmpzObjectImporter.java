@@ -23,6 +23,7 @@ package org.miradi.xml;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcpaProjectData;
+import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -55,6 +56,11 @@ abstract public class AbstractXmpzObjectImporter
 	protected ORef getWcpaProjectDataRef()
 	{
 		return getSingletonObject(WcpaProjectData.getObjectType());
+	}
+	
+	protected ORef getWcsProjectDataRef()
+	{
+		return getSingletonObject(WcsProjectData.getObjectType());
 	}
 
 	protected ORef getTncProjectDataRef()
