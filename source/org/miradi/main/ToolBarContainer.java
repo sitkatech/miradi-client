@@ -21,9 +21,7 @@ package org.miradi.main;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.JToolBar;
 
 public class ToolBarContainer extends JPanel
 {
@@ -32,7 +30,7 @@ public class ToolBarContainer extends JPanel
 		super(new BorderLayout());
 	}
 	
-	public void setToolBar(JToolBar toolBarToUse)
+	public void setToolBar(MiradiToolBar toolBarToUse)
 	{
 		clear();
 		toolBar = toolBarToUse;
@@ -47,5 +45,5 @@ public class ToolBarContainer extends JPanel
 		removeAll();
 	}
 
-	JComponent toolBar;
+	MiradiToolBar toolBar;
 }
