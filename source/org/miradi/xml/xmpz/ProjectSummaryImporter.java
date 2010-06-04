@@ -20,10 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz;
 
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.Xenodata;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 {
@@ -46,11 +50,31 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_DESCRIPTION);
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_STATUS);
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_NEXT_STEPS);
+		writeProjectId(projectSumaryNode);
 	}
 
 	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception
 	{
 		importField(projectSummaryNode, getMetadataRef(), tag);
+	}
+	
+	private void writeProjectId(Node projectSumaryNode) throws Exception
+	{
+		Node projectIdNode = getImporter().getNode(projectSumaryNode, getPoolName() + Xenodata.TAG_PROJECT_ID);
+		NodeList projectIdNodes = getImporter().getNodes(projectIdNode, new String[]{Xenodata.TAG_PROJECT_ID, });
+		
+		StringRefMap stringRefMap = new StringRefMap();
+		for (int index = 0; index < projectIdNodes.getLength(); ++index)
+		{
+			Node node = projectIdNodes.item(index);
+			String externalAppThatAssignedId = getImporter().getAttributeValue(node, WcsXmlConstants.EXTERNAL_APP_THAT_ASSIGNED_ID);
+			String projectId = getImporter().getAttributeValue(node, WcsXmlConstants.ID);
+			ORef xenodataRef = getProject().createObject(Xenodata.getObjectType());
+			getImporter().setData(xenodataRef, Xenodata.TAG_PROJECT_ID, projectId);
+			stringRefMap.add(externalAppThatAssignedId, xenodataRef);
+		}
+		
+		getImporter().setData(getMetadataRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, stringRefMap.toString());
 	}
 }
 

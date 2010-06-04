@@ -745,7 +745,7 @@ GeospatialLocation.element = element miradi:GeospatialLocation
 
 ProjectId.element = element miradi:ProjectId
 {
-  attribute ExternalAppThatAssignsIdsToMiradiProjects {text} &
+  attribute ExternalAppThatAssignedId {text} &
   attribute Id {xsd:integer}
 }
 
