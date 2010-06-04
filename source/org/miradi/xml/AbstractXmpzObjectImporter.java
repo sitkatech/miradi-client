@@ -53,12 +53,17 @@ abstract public class AbstractXmpzObjectImporter
 	
 	protected ORef getWcpaProjectDataRef()
 	{
-		return getProject().getSingletonObjectRef(WcpaProjectData.getObjectType());
+		return getSingletonObject(WcpaProjectData.getObjectType());
 	}
-	
+
 	protected ORef getTncProjectDataRef()
 	{
-		return getProject().getSingletonObjectRef(TncProjectData.getObjectType());
+		return getSingletonObject(TncProjectData.getObjectType());
+	}
+	
+	private ORef getSingletonObject(int objectType)
+	{
+		return getProject().getSingletonObjectRef(objectType);
 	}
 	
 	public Project getProject()
