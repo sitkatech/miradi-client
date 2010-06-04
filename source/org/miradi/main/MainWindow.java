@@ -419,7 +419,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		try
 		{
 			currentView.becomeActive();
-			updateToolBar();
+			rebuildToolBar();
 		}
 		finally
 		{
@@ -434,7 +434,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		mainMenuBar.updateMenuOptions();
 	}
 
-	public void updateToolBar()
+	public void rebuildToolBar()
 	{
 		toolBarBox.clear();
 		SwingUtilities.invokeLater(new ToolBarUpdater());

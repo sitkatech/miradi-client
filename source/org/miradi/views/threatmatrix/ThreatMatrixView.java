@@ -192,7 +192,7 @@ public class ThreatMatrixView extends CardedView
 		String value = command.getDataValue();
 		ChoiceItem choice = new ThreatRatingModeChoiceQuestion().findChoiceByCode(value);
 		showCurrentCard(choice.getCode());
-		getMainWindow().updateToolBar();
+		getMainWindow().rebuildToolBar();
 	}
 
 	private String getThreatStressRatingCardName()

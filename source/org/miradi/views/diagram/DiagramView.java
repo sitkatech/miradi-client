@@ -223,7 +223,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	private void updateToolBar()
 	{
-		getMainWindow().updateToolBar();
+		getMainWindow().rebuildToolBar();
 	}
 	
 	public DiagramComponent getCurrentDiagramComponent()
