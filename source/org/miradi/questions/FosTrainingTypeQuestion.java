@@ -35,8 +35,10 @@ public class FosTrainingTypeQuestion extends StaticChoiceQuestion
 				new ChoiceItem("", EAM.text("Not Specified")),
 				new ChoiceItem("1", EAM.text("Workshop")),
 				new ChoiceItem("2", EAM.text("University")),
-				new ChoiceItem("3", EAM.text("Online")),
+				new ChoiceItem(ONLINE_CODE, EAM.text("Online")),
 				new ChoiceItem("4", EAM.text("FOS Training Type|Other")),
 		};
 	}
+	
+	public static final String ONLINE_CODE = "3";
 }

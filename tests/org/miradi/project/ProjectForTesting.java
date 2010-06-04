@@ -55,6 +55,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.FosProjectData;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
@@ -87,6 +88,7 @@ import org.miradi.questions.CountriesQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
+import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
@@ -241,6 +243,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_BINGO_PARTNER_CONTACT_NOTES);
 		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_THREAT_REDUCTION_PARTNER_CONTACT_NOTES);
 		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_MONITORING_PARTNER_CONTACT_NOTES);		
+	}
+	
+	private void fillFosProjectData() throws Exception
+	{
+		ORef fosProjectDataRef = getSingletonObjectRef(FosProjectData.getObjectType());
+		
+		fillObjectUsingCommand(fosProjectDataRef, FosProjectData.TAG_TRAINING_TYPE, FosTrainingTypeQuestion.ONLINE_CODE);
+		fillObjectWithSampleStringData(fosProjectDataRef, FosProjectData.TAG_TRAINING_DATES);
+		fillObjectWithSampleStringData(fosProjectDataRef, FosProjectData.TAG_TRAINERS);
+		fillObjectWithSampleStringData(fosProjectDataRef, FosProjectData.TAG_COACHES);	
 	}
 	
 	public void setFiscalYearStartMonth(int startMonth) throws Exception
@@ -1016,6 +1028,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillWwfProjectData();
 		fillWcsProjectData();
 		fillRareProjectData();
+		fillFosProjectData();
 		createAndPopulateDirectThreatLink();
 		createAndPopulateMeasurement();
 		createAndPopulateProjectResource();

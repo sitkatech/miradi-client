@@ -46,6 +46,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		new WwfProjectDataImporter(this).importElement();
 		new WcsProjectDataImporter(this).importElement();
 		new RareProjetDataImporter(this).importElement();
+		new FosProjectDataImporter(this).importElement();
 	}
 
 	@Override
