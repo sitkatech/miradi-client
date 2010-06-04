@@ -281,6 +281,7 @@ public class Actions
 		
 		registerAction(new ActionDeleteWorkPlanNode(mainWindow));
 		registerAction(new ActionPreferences(mainWindow));
+		registerAction(new ActionToggleSpellChecker(mainWindow));
 		registerAction(new ActionTreeNodeUp(mainWindow));
 		registerAction(new ActionTreeNodeDown(mainWindow));
 		

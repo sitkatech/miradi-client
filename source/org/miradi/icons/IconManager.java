@@ -86,6 +86,7 @@ public class IconManager
 		addIcon(new ProgressPercentIcon());
 		addResourceImageIcon(COLLAPSE_ICON_FILE_NAME);
 		addResourceImageIcon(EXPAND_ICON_FILE_NAME);
+		addResourceImageIcon(SPELLCHECK_ICON_FILE_NAME);
 	}
 	
 	private static void addIcon(Icon icon)
@@ -382,6 +383,11 @@ public class IconManager
 		return getIcon(COLLAPSE_ICON_FILE_NAME);
 	}
 	
+	public static Icon getSpellCheckIcon()
+	{
+		return getIcon(SPELLCHECK_ICON_FILE_NAME);
+	}
+	
 	public static Icon getResourceIcon()
 	{
 		return getIcon(ProjectResourceIcon.class);
@@ -420,4 +426,5 @@ public class IconManager
 	private static HashMap<String, Icon> iconMap;
 	private static final String EXPAND_ICON_FILE_NAME = "icons/expand.png";
 	private static final String COLLAPSE_ICON_FILE_NAME = "icons/collapse.png";
+	private static final String SPELLCHECK_ICON_FILE_NAME = "icons/spellcheck.png";
 }
