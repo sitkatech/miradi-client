@@ -36,10 +36,10 @@ import org.miradi.actions.ActionZoomOut;
 import org.miradi.actions.ActionZoomToFit;
 import org.miradi.actions.Actions;
 import org.miradi.actions.views.ActionViewDiagram;
-import org.miradi.main.MiradiToolBar;
+import org.miradi.main.MiradiProjectToolBar;
 import org.miradi.utils.ToolBarButton;
 
-public class DiagramToolBar extends MiradiToolBar
+public class DiagramToolBar extends MiradiProjectToolBar
 {
 	public DiagramToolBar(Actions actions, DiagramView diagramView)
 	{

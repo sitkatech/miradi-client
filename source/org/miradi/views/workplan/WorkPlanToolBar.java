@@ -23,9 +23,9 @@ import javax.swing.JComponent;
 
 import org.miradi.actions.Actions;
 import org.miradi.actions.views.ActionViewWorkPlan;
-import org.miradi.main.MiradiToolBar;
+import org.miradi.main.MiradiProjectToolBar;
 
-public class WorkPlanToolBar extends MiradiToolBar
+public class WorkPlanToolBar extends MiradiProjectToolBar
 {
 	public WorkPlanToolBar(Actions actions)
 	{

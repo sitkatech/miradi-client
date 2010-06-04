@@ -21,9 +21,9 @@ package org.miradi.views.reports;
 
 import org.miradi.actions.Actions;
 import org.miradi.actions.views.ActionViewReports;
-import org.miradi.main.MiradiToolBar;
+import org.miradi.main.MiradiProjectToolBar;
 
-public class ReportToolBar extends MiradiToolBar
+public class ReportToolBar extends MiradiProjectToolBar
 {
 	public ReportToolBar(Actions actions)
 	{

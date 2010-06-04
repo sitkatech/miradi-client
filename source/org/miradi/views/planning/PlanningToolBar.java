@@ -21,9 +21,9 @@ package org.miradi.views.planning;
 
 import org.miradi.actions.Actions;
 import org.miradi.actions.views.ActionViewPlanning;
-import org.miradi.main.MiradiToolBar;
+import org.miradi.main.MiradiProjectToolBar;
 
-public class PlanningToolBar extends MiradiToolBar
+public class PlanningToolBar extends MiradiProjectToolBar
 {
 	public PlanningToolBar(Actions actions)
 	{
