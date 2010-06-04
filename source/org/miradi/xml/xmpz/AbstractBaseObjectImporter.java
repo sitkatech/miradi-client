@@ -29,23 +29,32 @@ import org.w3c.dom.NodeList;
 
 abstract public class AbstractBaseObjectImporter extends AbstractXmpzObjectImporter
 {
-	public AbstractBaseObjectImporter(XmpzXmlImporter importerToUse, String poolNameToUse)
+	public AbstractBaseObjectImporter(XmpzXmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
 	{
 		super(importerToUse, poolNameToUse);
+		
+		objectTypeToImport = objectTypeToImportToUse;
 	}
 	
-	protected void importObject(int objectType) throws Exception
+	protected void importObject() throws Exception
 	{
 		NodeList nodes = getImporter().getNodes(getImporter().getRootNode(), new String[]{getPoolName() + WcsXmlConstants.POOL_ELEMENT_TAG, getPoolName(), });
 		for (int index = 0; index < nodes.getLength(); ++index)
 		{
 			Node node = nodes.item(index);
 			String intIdAsString = getImporter().getAttributeValue(node, WcsXmlConstants.ID);
-			ORef ref = getProject().createObject(objectType, new BaseId(intIdAsString));
+			ORef ref = getProject().createObject(getObjectTypeToImport(), new BaseId(intIdAsString));
 			
 			importFields(node, ref);
 		}
 	}
 	
+	private int getObjectTypeToImport()
+	{
+		return objectTypeToImport;
+	}
+	
 	abstract protected void importFields(Node node, ORef destinationRef) throws Exception;
+	
+	private int objectTypeToImport;
 }

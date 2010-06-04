@@ -30,13 +30,13 @@ public class OrganizationImporter extends AbstractBaseObjectImporter
 {
 	public OrganizationImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, WcsXmlConstants.ORGANIZATION);
+		super(importerToUse, WcsXmlConstants.ORGANIZATION, Organization.getObjectType());
 	}
 
 	@Override
 	public void importElement() throws Exception
 	{
-		importObject(Organization.getObjectType());
+		importObject();
 	}
 	
 	@Override
