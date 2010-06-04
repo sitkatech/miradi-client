@@ -24,5 +24,8 @@ import javax.swing.JToolBar;
 
 public class MiradiToolBar extends JToolBar
 {
+	public void updateButtonStates()
+	{
+	}
 
 }
