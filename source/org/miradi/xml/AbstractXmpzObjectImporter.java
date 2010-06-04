@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.RareProjectData;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
@@ -71,6 +72,11 @@ abstract public class AbstractXmpzObjectImporter
 	protected ORef getWwfProjectDataRef()
 	{
 		return getSingletonObject(WwfProjectData.getObjectType());
+	}
+	
+	protected ORef getRareProjectDataRef()
+	{
+		return getSingletonObject(RareProjectData.getObjectType());
 	}
 	
 	private ORef getSingletonObject(int objectType)
