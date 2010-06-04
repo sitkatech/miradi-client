@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-03 18:55-0500\n"
+"POT-Creation-Date: 2010-06-03 19:52-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1670,12 +1670,12 @@ msgstr "实际开支"
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr "针对保护项目的适应性管理软件 \t\t"
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardHumanWelfareTargetsStep.java:36
-msgid "Add Human Welfare Targets If Desired"
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:117
+msgid "Add '%s' to Dictionary"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:112
-msgid "Add Word to Dictionary"
+#: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardHumanWelfareTargetsStep.java:36
+msgid "Add Human Welfare Targets If Desired"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:134
@@ -2432,7 +2432,7 @@ msgstr ""
 msgid "Control Bar"
 msgstr "控制栏 \t\t"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:98
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:99
 msgid "Copy"
 msgstr "复制 \t\t"
 
@@ -2540,7 +2540,7 @@ msgstr ""
 msgid "Custom Reports"
 msgstr "定制报告 \t\t"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:93
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:94
 msgid "Cut"
 msgstr "剪切 \t\t"
 
@@ -4725,7 +4725,7 @@ msgstr "总体威胁因子评级"
 msgid "Page:"
 msgstr "页： \t\t"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:103
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:104
 msgid "Paste"
 msgstr "粘贴 \t\t"
 
@@ -5513,7 +5513,7 @@ msgstr ""
 msgid "Specific Year(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:110
+#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:121
 msgid "Spelling Suggestions"
 msgstr ""
 
