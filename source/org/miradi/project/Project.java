@@ -906,8 +906,7 @@ public class Project
 		loadThreatRatingFramework();
 		
 		simpleThreatFramework.createDefaultObjectsIfNeeded();
-		createDefaultConceptualModel();
-		createDefaultPlanningCustomization();
+		createDefaultObjects();
 		selectDefaultPlanningCustomization();
 		turnOnBudgetRelatedColumnsInWorkPlan();
 		
@@ -917,6 +916,12 @@ public class Project
 		setDefaultDiagramPage(ObjectType.RESULTS_CHAIN_DIAGRAM);
 		database.writeVersion();
 
+	}
+
+	private void createDefaultObjects() throws Exception
+	{
+		createDefaultConceptualModel();
+		createDefaultPlanningCustomization();
 	}
 
 	private void createBuiltInObjects() throws Exception
