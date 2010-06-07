@@ -35,6 +35,7 @@ import org.miradi.exceptions.CpmzVersionTooOldException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.ids.BaseId;
+import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
@@ -169,6 +170,11 @@ abstract public class AbstractXmlImporter
 	protected void setData(ORef ref, String tag, ORefList refList) throws Exception
 	{
 		getProject().setObjectData(ref, tag, refList.toString());
+	}
+	
+	protected void setData(ORef ref, String tag, IdList idList) throws Exception
+	{
+		getProject().setObjectData(ref, tag, idList.toString());
 	}
 
 	public String generatePath(String[] pathElements)

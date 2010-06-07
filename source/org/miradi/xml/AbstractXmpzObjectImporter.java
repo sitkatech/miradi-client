@@ -20,7 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml;
 
+import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.FosProjectData;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.TncProjectData;
@@ -116,6 +118,22 @@ abstract public class AbstractXmpzObjectImporter
 		}
 		
 		getImporter().setData(destinationRef, destinationTag, codesToImport.toString());
+	}
+	
+	protected void importIds(Node node, ORef destinationRef, String destinationTag, int idsType) throws Exception
+	{
+		TagToElementNameMap map = new TagToElementNameMap();
+		String elementName = map.findElementName(getPoolName(), destinationTag);
+		NodeList idNodes = getImporter().getNodes(node, new String[]{getPoolName() + elementName, WcsXmlConstants.ID});
+		ORefList importedRefs = new ORefList();
+		for (int index = 0; index < idNodes.getLength(); ++index)
+		{
+			Node idNode = idNodes.item(index);
+			String id = getImporter().getSafeNodeContent(idNode);
+			importedRefs.add(new ORef(idsType, new BaseId(id)));
+		}
+		
+		getImporter().setData(destinationRef, destinationTag, importedRefs.convertToIdList(idsType));
 	}
 
 	protected void importField(Node node, ORef destinationRef, String destinationTag) throws Exception
