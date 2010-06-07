@@ -900,16 +900,7 @@ public class Project
 	
 	protected void finishOpening() throws Exception
 	{
-		if(getMetadataId().isInvalid())
-			createProjectMetadata();
-		
-		createDefaultProjectDataObject(WwfProjectData.getObjectType());
-		createDefaultProjectDataObject(RareProjectData.getObjectType());
-		createDefaultProjectDataObject(WcsProjectData.getObjectType());
-		createDefaultProjectDataObject(TncProjectData.getObjectType());
-		createDefaultProjectDataObject(FosProjectData.getObjectType());
-		createDefaultProjectDataObject(WcpaProjectData.getObjectType());
-		createDefaultProjectDataObject(ThreatRatingCommentsData.getObjectType());
+		createBuiltInObjects();
 		
 		
 		loadThreatRatingFramework();
@@ -926,6 +917,20 @@ public class Project
 		setDefaultDiagramPage(ObjectType.RESULTS_CHAIN_DIAGRAM);
 		database.writeVersion();
 
+	}
+
+	private void createBuiltInObjects() throws Exception
+	{
+		if(getMetadataId().isInvalid())
+			createProjectMetadata();
+		
+		createDefaultProjectDataObject(WwfProjectData.getObjectType());
+		createDefaultProjectDataObject(RareProjectData.getObjectType());
+		createDefaultProjectDataObject(WcsProjectData.getObjectType());
+		createDefaultProjectDataObject(TncProjectData.getObjectType());
+		createDefaultProjectDataObject(FosProjectData.getObjectType());
+		createDefaultProjectDataObject(WcpaProjectData.getObjectType());
+		createDefaultProjectDataObject(ThreatRatingCommentsData.getObjectType());
 	}
 
 	private void setDefaultDiagramPage(int objectType) throws Exception
