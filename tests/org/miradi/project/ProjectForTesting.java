@@ -142,6 +142,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		getDatabase().setMemoryDataLocation("Memory");
 		getDatabase().createProject(testName);
+		createMissingDefaultObjects();
 		finishOpening();
 	}
 	
