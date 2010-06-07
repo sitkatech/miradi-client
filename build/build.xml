@@ -638,9 +638,6 @@
 <!-- MONGOLIAN (CYRILLIC SCRIPT)                   -->
 <!-- ================================================================== -->
 <target name="mongolian" depends="pot" description="Update Mongolian Content">
-		<property name="po.locale" value="MN" />
-		<property name="po.file" value="${miradi.po.mn}" />
-		<antcall target="create-new-po"/>
 	<antcall target="update-po">
 		<param name="po.file" value="${miradi.po.mn}"/>
 		<param name="language.code" value="mn"/>
