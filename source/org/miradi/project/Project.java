@@ -903,12 +903,6 @@ public class Project
 		if(getMetadataId().isInvalid())
 			createProjectMetadata();
 		
-		loadThreatRatingFramework();
-		
-		simpleThreatFramework.createDefaultObjectsIfNeeded();
-		createDefaultConceptualModel();
-		createDefaultPlanningCustomization();
-		selectDefaultPlanningCustomization();
 		createDefaultProjectDataObject(WwfProjectData.getObjectType());
 		createDefaultProjectDataObject(RareProjectData.getObjectType());
 		createDefaultProjectDataObject(WcsProjectData.getObjectType());
@@ -916,6 +910,14 @@ public class Project
 		createDefaultProjectDataObject(FosProjectData.getObjectType());
 		createDefaultProjectDataObject(WcpaProjectData.getObjectType());
 		createDefaultProjectDataObject(ThreatRatingCommentsData.getObjectType());
+		
+		
+		loadThreatRatingFramework();
+		
+		simpleThreatFramework.createDefaultObjectsIfNeeded();
+		createDefaultConceptualModel();
+		createDefaultPlanningCustomization();
+		selectDefaultPlanningCustomization();
 		turnOnBudgetRelatedColumnsInWorkPlan();
 		
 		ensureAllConceptualModelPagesHaveLabels();
