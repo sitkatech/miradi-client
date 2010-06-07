@@ -49,6 +49,6 @@ public class ResourceTypeQuestion extends StaticChoiceQuestion
 		return "Person";
 	}
 	
-	public static final String GROUP_CODE = "Group";
 	public static final String PERSON_CODE = "";
+	public static final String GROUP_CODE = "Group";
 }
