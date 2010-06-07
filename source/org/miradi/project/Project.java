@@ -757,8 +757,11 @@ public class Project
 			return;
 		
 		ORefList contomizationRefs = getPlanningViewConfigurationPool().getORefList();
+		if (contomizationRefs.isEmpty())
+			return;
+		
 		ViewData planningViewData = getViewData(PlanningView.getViewName());
-		setObjectData(planningViewData.getRef(), ViewData.TAG_TREE_CONFIGURATION_REF, contomizationRefs.get(0).toString());
+		setObjectData(planningViewData.getRef(), ViewData.TAG_TREE_CONFIGURATION_REF, contomizationRefs.getFirstElement().toString());
 	}
 
 	private void createDefaultConceptualModel() throws Exception
