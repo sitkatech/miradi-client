@@ -905,7 +905,7 @@ public class Project
 		loadThreatRatingFramework();		
 		simpleThreatFramework.createDefaultObjectsIfNeeded();
 		
-		createDefaultObjects();
+		createMissingDefaultObjects();
 		applyDefaultBehavior();
 		database.writeVersion();
 	}
@@ -921,7 +921,7 @@ public class Project
 		setDefaultDiagramPage(ObjectType.RESULTS_CHAIN_DIAGRAM);
 	}
 
-	private void createDefaultObjects() throws Exception
+	private void createMissingDefaultObjects() throws Exception
 	{
 		createDefaultConceptualModel();
 		createDefaultPlanningCustomization();
