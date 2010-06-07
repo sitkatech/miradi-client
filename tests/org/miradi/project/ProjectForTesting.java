@@ -141,9 +141,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public ProjectForTesting(String testName) throws Exception
 	{
 		this(testName, new ProjectServerForTesting());
-		
+
 		createMissingDefaultObjects();
 		finishOpening();
+		loadDiagram();
 	}
 	
 	private ProjectForTesting(String testName, ProjectServer server) throws Exception
