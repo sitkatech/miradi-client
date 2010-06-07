@@ -90,6 +90,7 @@
     <property name="miradi.po.es" value="${translations.dir}/miradi_es.po" />
     <property name="miradi.po.id" value="${translations.dir}/miradi_id.po" />
     <property name="miradi.po.it" value="${translations.dir}/miradi_it.po" />
+    <property name="miradi.po.mn" value="${translations.dir}/miradi_mn.po" />
     <property name="miradi.po.uk" value="${translations.dir}/miradi_uk.po" />
     <property name="miradi.po.zh" value="${translations.dir}/miradi_zh.po" />
 
@@ -634,9 +635,22 @@
 </target>
 	
 <!-- ================================================================== -->
+<!-- MONGOLIAN (CYRILLIC SCRIPT)                   -->
+<!-- ================================================================== -->
+<target name="mongolian" depends="pot" description="Update Mongolian Content">
+		<property name="po.locale" value="MN" />
+		<property name="po.file" value="${miradi.po.mn}" />
+		<antcall target="create-new-po"/>
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.mn}"/>
+		<param name="language.code" value="mn"/>
+	</antcall>
+</target>
+	
+<!-- ================================================================== -->
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
-<target name="translations" depends="pot, spanish, indonesian, italian, ukrainian, chinese" description="Create Translatable Content jars/zips">
+<target name="translations" depends="pot, spanish, indonesian, italian, mongolian, ukrainian, chinese" description="Create Translatable Content jars/zips">
 	
 </target>
 	
