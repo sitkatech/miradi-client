@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Organization;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
@@ -42,7 +41,6 @@ public class OrganizationImporter extends AbstractBaseObjectImporter
 	@Override
 	protected void importFields(Node node, ORef destinationRef) throws Exception
 	{
-		importField(node, destinationRef, BaseObject.TAG_LABEL);
 		importField(node, destinationRef, Organization.TAG_SHORT_LABEL);
 		importField(node, destinationRef, Organization.TAG_ROLES_DESCRIPTION);
 		importField(node, destinationRef, Organization.TAG_CONTACT_FIRST_NAME);

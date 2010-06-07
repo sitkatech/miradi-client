@@ -23,8 +23,10 @@ package org.miradi.xml.xmpz;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.xml.generic.XmlSchemaCreator;
+import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
 abstract public class AbstractDiagramPoolImporter extends AbstractBaseObjectImporter
@@ -43,11 +45,13 @@ abstract public class AbstractDiagramPoolImporter extends AbstractBaseObjectImpo
 	@Override
 	protected void importFields(Node node, ORef destinationRef)	throws Exception
 	{
+		super.importFields(node, destinationRef);
 		//FIXME this method is still under construction. Need to deal with duplicate ids before moving on
 		importField(node, destinationRef, ConceptualModelDiagram.TAG_SHORT_LABEL);
 		importField(node, destinationRef, ConceptualModelDiagram.TAG_DETAIL);
 		importCodeListField(node, XmlSchemaCreator.HIDDEN_TYPES_ELEMENT_NAME, destinationRef, DiagramObject.TAG_HIDDEN_TYPES);
-		importIds(node, destinationRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DiagramFactor.getObjectType());
+		importIds(node, destinationRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DiagramFactor.getObjectType(), WcsXmlConstants.DIAGRAM_FACTOR + WcsXmlConstants.ID);
+		importIds(node, destinationRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DiagramLink.getObjectType(), WcsXmlConstants.DIAGRAM_LINK + WcsXmlConstants.ID);
 
 //		DiagramObject conceptualModel = (DiagramObject) baseObject;
 //		writeIds(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DIAGRAM_FACTOR, conceptualModel.getAllDiagramFactorRefs());

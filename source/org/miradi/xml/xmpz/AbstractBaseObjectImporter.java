@@ -22,6 +22,7 @@ package org.miradi.xml.xmpz;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
@@ -54,7 +55,10 @@ abstract public class AbstractBaseObjectImporter extends AbstractXmpzObjectImpor
 		return objectTypeToImport;
 	}
 	
-	abstract protected void importFields(Node node, ORef destinationRef) throws Exception;
+	protected void importFields(Node node, ORef destinationRef) throws Exception
+	{
+		importField(node, destinationRef, BaseObject.TAG_LABEL);	
+	}
 	
 	private int objectTypeToImport;
 }
