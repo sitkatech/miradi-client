@@ -130,20 +130,30 @@ import org.miradi.xml.conpro.ConProMiradiXml;
 
 public class ProjectForTesting extends ProjectWithHelpers
 {
+	public static ProjectForTesting createProjectWithoutDefaultObjects(String testName) throws Exception
+	{
+		ProjectForTesting projectForTesting = new ProjectForTesting(testName, new ProjectServerForTesting());
+		projectForTesting.finishOpening();
+		
+		return projectForTesting;
+	}
+	
 	public ProjectForTesting(String testName) throws Exception
 	{
 		this(testName, new ProjectServerForTesting());
+		
+		createMissingDefaultObjects();
+		finishOpening();
 	}
 	
-	public ProjectForTesting(String testName, ProjectServer server) throws Exception
+	private ProjectForTesting(String testName, ProjectServer server) throws Exception
 	{
 		super(server);
+		
 		Translation.initialize();
 		
 		getDatabase().setMemoryDataLocation("Memory");
 		getDatabase().createProject(testName);
-		createMissingDefaultObjects();
-		finishOpening();
 	}
 	
 	@Override
