@@ -44,6 +44,8 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	public void testValidateFilledProject() throws Exception
 	{
 		getProject().populateEverything();
+		getProject().createDiagramFactorLink();
+		
 		validateExportImportExportProject();
 	}
 	

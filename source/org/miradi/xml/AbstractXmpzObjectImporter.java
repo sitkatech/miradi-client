@@ -120,11 +120,11 @@ abstract public class AbstractXmpzObjectImporter
 		getImporter().setData(destinationRef, destinationTag, codesToImport.toString());
 	}
 	
-	protected void importIds(Node node, ORef destinationRef, String destinationTag, int idsType) throws Exception
+	protected void importIds(Node node, ORef destinationRef, String destinationTag, int idsType, String idElementName) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(getPoolName(), destinationTag);
-		NodeList idNodes = getImporter().getNodes(node, new String[]{getPoolName() + elementName, WcsXmlConstants.ID});
+		NodeList idNodes = getImporter().getNodes(node, new String[]{getPoolName() + elementName, idElementName});
 		ORefList importedRefs = new ORefList();
 		for (int index = 0; index < idNodes.getLength(); ++index)
 		{
