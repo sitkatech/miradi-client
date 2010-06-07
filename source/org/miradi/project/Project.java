@@ -907,6 +907,13 @@ public class Project
 		
 		simpleThreatFramework.createDefaultObjectsIfNeeded();
 		createDefaultObjects();
+		
+		applyDefaultBehavior();
+		database.writeVersion();
+	}
+
+	private void applyDefaultBehavior() throws Exception
+	{
 		selectDefaultPlanningCustomization();
 		turnOnBudgetRelatedColumnsInWorkPlan();
 		
@@ -914,8 +921,6 @@ public class Project
 		ensureAllDiagramFactorsAreVisible();
 		setDefaultDiagramPage(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 		setDefaultDiagramPage(ObjectType.RESULTS_CHAIN_DIAGRAM);
-		database.writeVersion();
-
 	}
 
 	private void createDefaultObjects() throws Exception
