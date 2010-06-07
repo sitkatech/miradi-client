@@ -688,25 +688,6 @@ public class Project
 		return new File(EAM.getHomeDirectory(), getFilename());
 	}
 	
-	private void applyDefaultBehavior() throws Exception
-	{
-		simpleThreatFramework.createDefaultObjectsIfNeeded();
-		createDefaultConceptualModel();
-		createDefaultPlanningCustomization();
-		selectDefaultPlanningCustomization();
-		createDefaultProjectDataObject(WwfProjectData.getObjectType());
-		createDefaultProjectDataObject(RareProjectData.getObjectType());
-		createDefaultProjectDataObject(WcsProjectData.getObjectType());
-		createDefaultProjectDataObject(TncProjectData.getObjectType());
-		createDefaultProjectDataObject(FosProjectData.getObjectType());
-		createDefaultProjectDataObject(WcpaProjectData.getObjectType());
-		createDefaultProjectDataObject(ThreatRatingCommentsData.getObjectType());
-		turnOnBudgetRelatedColumnsInWorkPlan();
-		
-		ensureAllConceptualModelPagesHaveLabels();
-		ensureAllDiagramFactorsAreVisible();
-	}
-
 	private void turnOnBudgetRelatedColumnsInWorkPlan() throws Exception
 	{
 		if (TableSettings.exists(this, WorkPlanTreeTablePanel.getTabSpecificModelIdentifier()))
@@ -924,7 +905,21 @@ public class Project
 		
 		loadThreatRatingFramework();
 		
-		applyDefaultBehavior();
+		simpleThreatFramework.createDefaultObjectsIfNeeded();
+		createDefaultConceptualModel();
+		createDefaultPlanningCustomization();
+		selectDefaultPlanningCustomization();
+		createDefaultProjectDataObject(WwfProjectData.getObjectType());
+		createDefaultProjectDataObject(RareProjectData.getObjectType());
+		createDefaultProjectDataObject(WcsProjectData.getObjectType());
+		createDefaultProjectDataObject(TncProjectData.getObjectType());
+		createDefaultProjectDataObject(FosProjectData.getObjectType());
+		createDefaultProjectDataObject(WcpaProjectData.getObjectType());
+		createDefaultProjectDataObject(ThreatRatingCommentsData.getObjectType());
+		turnOnBudgetRelatedColumnsInWorkPlan();
+		
+		ensureAllConceptualModelPagesHaveLabels();
+		ensureAllDiagramFactorsAreVisible();
 		setDefaultDiagramPage(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 		setDefaultDiagramPage(ObjectType.RESULTS_CHAIN_DIAGRAM);
 		database.writeVersion();
