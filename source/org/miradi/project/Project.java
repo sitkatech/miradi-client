@@ -902,12 +902,10 @@ public class Project
 	{
 		createBuiltInObjects();
 		
-		
-		loadThreatRatingFramework();
-		
+		loadThreatRatingFramework();		
 		simpleThreatFramework.createDefaultObjectsIfNeeded();
-		createDefaultObjects();
 		
+		createDefaultObjects();
 		applyDefaultBehavior();
 		database.writeVersion();
 	}
