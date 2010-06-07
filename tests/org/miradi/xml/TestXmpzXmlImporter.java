@@ -51,7 +51,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	{
 		File beforeXmlOutFile = createTempFileFromName("XmlBeforeImport.xml");		
 		File afterXmlOutFile = createTempFileFromName("XmlAfterFirstImport.xml");
-		ProjectForTesting projectToImportInto = new ProjectForTesting("ProjectToFill1");
+		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToFill1");
 		try
 		{
 			exportProject(beforeXmlOutFile, getProject());
