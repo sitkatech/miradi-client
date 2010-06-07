@@ -62,6 +62,7 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 	@Override
 	protected void finishOpening() throws Exception
 	{
+		createMissingDefaultObjects();
 		super.finishOpening();
 		loadDiagram();
 	}
