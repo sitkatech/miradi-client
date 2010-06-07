@@ -40,7 +40,7 @@ import org.miradi.views.diagram.DiagramModelUpdater;
 
 public class ProjectWithHelpers extends Project implements CommandExecutedListener
 {
-	public ProjectWithHelpers(ProjectServer server) throws Exception
+	protected ProjectWithHelpers(ProjectServer server) throws Exception
 	{
 		super(server);
 
@@ -57,13 +57,6 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 	public DiagramModel getDiagramModel()
 	{
 		return diagramModel;
-	}
-
-	@Override
-	protected void finishOpening() throws Exception
-	{
-		super.finishOpening();
-		loadDiagram();
 	}
 
 	@Override
