@@ -133,7 +133,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public static ProjectForTesting createProjectWithoutDefaultObjects(String testName) throws Exception
 	{
 		ProjectForTesting projectForTesting = new ProjectForTesting(testName, new ProjectServerForTesting());
-		projectForTesting.finishOpening();
 		projectForTesting.applyDefaultBehavior();
 		
 		return projectForTesting;
@@ -143,7 +142,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		this(testName, new ProjectServerForTesting());
 
-		finishOpening();
 		createMissingDefaultObjects();
 		applyDefaultBehavior();
 		loadDiagramModelForTesting();
@@ -157,6 +155,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		getDatabase().setMemoryDataLocation("Memory");
 		getDatabase().createProject(testName);
+
+		finishOpening();
 	}
 	
 	@Override
