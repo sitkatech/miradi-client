@@ -489,25 +489,25 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		clear();
 		ProjectServer db = getDatabase();
 		EnhancedJsonObject json = db.readRawThreatRatingFramework();
-		if(json == null)
-			return;
-
-		EnhancedJsonArray bundleKeys = json.optJsonArray(TAG_BUNDLE_KEYS);
-		if(bundleKeys == null)
-			bundleKeys = new EnhancedJsonArray();
-		for(int i = 0; i < bundleKeys.length(); ++i)
+		if(json != null)
 		{
-			JSONObject pair = bundleKeys.getJson(i);
-			BaseId threatId = new BaseId(pair.getInt(TAG_BUNDLE_THREAT_ID));
-			BaseId targetId = new BaseId(pair.getInt(TAG_BUNDLE_TARGET_ID));
-			ThreatRatingBundle bundle = db.readThreatRatingBundle(threatId, targetId);
-			memorize(bundle);
+			EnhancedJsonArray bundleKeys = json.optJsonArray(TAG_BUNDLE_KEYS);
+			if(bundleKeys == null)
+				bundleKeys = new EnhancedJsonArray();
+			for(int i = 0; i < bundleKeys.length(); ++i)
+			{
+				JSONObject pair = bundleKeys.getJson(i);
+				BaseId threatId = new BaseId(pair.getInt(TAG_BUNDLE_THREAT_ID));
+				BaseId targetId = new BaseId(pair.getInt(TAG_BUNDLE_TARGET_ID));
+				ThreatRatingBundle bundle = db.readThreatRatingBundle(threatId, targetId);
+				memorize(bundle);
+			}
+			
+			ratingValueOptions = findValueOptions(new IdList(ValueOption.getObjectType(), json.optJson(TAG_VALUE_OPTION_IDS)));
+			Arrays.sort(ratingValueOptions, new OptionSorter());
+			criteria = findCriteria(new IdList(RatingCriterion.getObjectType(), json.optJson(TAG_CRITERION_IDS)));
+			sortCriteria();
 		}
-		
-		ratingValueOptions = findValueOptions(new IdList(ValueOption.getObjectType(), json.optJson(TAG_VALUE_OPTION_IDS)));
-		Arrays.sort(ratingValueOptions, new OptionSorter());
-		criteria = findCriteria(new IdList(RatingCriterion.getObjectType(), json.optJson(TAG_CRITERION_IDS)));
-		sortCriteria();
 	}
 
 	private ValueOption[] findValueOptions(IdList ids)
