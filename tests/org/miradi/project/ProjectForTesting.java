@@ -26,6 +26,7 @@ import org.martus.util.MultiCalendar;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.database.ProjectServer;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.exceptions.CommandFailedException;
@@ -70,6 +71,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.ResourceAssignment;
+import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
@@ -313,6 +315,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 			dateAsString = projectDate.toString();  
 			
 		fillObjectUsingCommand(getMetadata().getRef(), tag, dateAsString);
+	}
+	
+	public ORef createResultsChainDiagram() throws Exception
+	{
+		ORef resultsChainRef = createObject(ResultsChainDiagram.getObjectType());
+		ResultsChainDiagram resultsChain = ResultsChainDiagram.find(this, resultsChainRef);
+		PersistentDiagramModel resultsChainDiagramModel = new PersistentDiagramModel(this);
+		resultsChainDiagramModel.fillFrom(resultsChain);
+		
+		return resultsChainRef;
 	}
 	
 	private String createConproXenodata() throws Exception
@@ -1155,6 +1167,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void fillObjectUsingCommand(BaseObject object, String fieldTag, String data) throws Exception
 	{
 		fillObjectUsingCommand(object.getRef(), fieldTag, data);
+	}
+	
+	public void fillObjectUsingCommand(ORef ref, String fieldTag, ORefList data) throws Exception
+	{
+		fillObjectUsingCommand(ref, fieldTag, data.toString());
 	}
 	
 	public void fillObjectUsingCommand(BaseObject object, String fieldTag, ORefList data) throws Exception

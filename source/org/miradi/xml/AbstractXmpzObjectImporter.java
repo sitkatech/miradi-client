@@ -108,7 +108,8 @@ abstract public class AbstractXmpzObjectImporter
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(elementContainerName, destinationTag);
-		NodeList codeNodes = getImporter().getNodes(node, new String[]{elementContainerName + elementName + WcsXmlConstants.CONTAINER_ELEMENT_TAG, XmlSchemaCreator.CODE_ELEMENT_NAME});
+		String containerElementName = elementContainerName + elementName + WcsXmlConstants.CONTAINER_ELEMENT_TAG;
+		NodeList codeNodes = getImporter().getNodes(node, new String[]{containerElementName, XmlSchemaCreator.CODE_ELEMENT_NAME});
 		CodeList codesToImport = new CodeList();
 		for (int index = 0; index < codeNodes.getLength(); ++index)
 		{
@@ -125,6 +126,13 @@ abstract public class AbstractXmpzObjectImporter
 		ORefList importedRefs = extractRefs(node, destinationTag, idsType, idElementName);
 		
 		getImporter().setData(destinationRef, destinationTag, importedRefs.convertToIdList(idsType));
+	}
+
+	protected void importRefs(Node node, String elementName, ORef destinationRef, String destinationTag, int idsType, String idElementName) throws Exception
+	{
+		ORefList importedRefs = extractRefs(node, elementName, idsType, idElementName);
+		
+		getImporter().setData(destinationRef, destinationTag, importedRefs);
 	}
 
 	private ORefList extractRefs(Node node, String destinationTag, int idsType, String idElementName) throws Exception

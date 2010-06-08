@@ -57,11 +57,13 @@ public class DiagramLegendQuestion extends StaticChoiceQuestion
 				new ChoiceItem(Indicator.OBJECT_NAME, Indicator.OBJECT_NAME),
 				new ChoiceItem(TextBox.OBJECT_NAME, TextBox.OBJECT_NAME),
 				new ChoiceItem(ScopeBox.OBJECT_NAME, ScopeBox.OBJECT_NAME),
-				new ChoiceItem(Stress.OBJECT_NAME, Stress.OBJECT_NAME),
+				new ChoiceItem(STRESS_HIDDEN_TYPE_CODE, Stress.OBJECT_NAME),
 				new ChoiceItem(Task.ACTIVITY_NAME, Task.ACTIVITY_NAME),
 				new ChoiceItem(IntermediateResult.OBJECT_NAME, IntermediateResult.OBJECT_NAME),
 				new ChoiceItem(ThreatReductionResult.OBJECT_NAME, ThreatReductionResult.OBJECT_NAME),
 				new ChoiceItem(GroupBox.OBJECT_NAME, GroupBox.OBJECT_NAME),
 		};
 	}
+
+	public static final String STRESS_HIDDEN_TYPE_CODE = Stress.OBJECT_NAME;
 }

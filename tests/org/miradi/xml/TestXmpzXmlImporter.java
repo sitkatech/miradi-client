@@ -25,7 +25,14 @@ import java.io.File;
 import org.martus.util.UnicodeReader;
 import org.martus.util.inputstreamwithseek.FileInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.DiagramObject;
+import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.questions.DiagramLegendQuestion;
+import org.miradi.utils.CodeList;
 import org.miradi.xml.wcs.WcsXmlExporter;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
 
@@ -44,9 +51,26 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	public void testValidateFilledProject() throws Exception
 	{
 		getProject().populateEverything();
+		createFilledResultsChainDiagram();
 		getProject().createDiagramFactorLink();
 		
 		validateExportImportExportProject();
+	}
+
+	private void createFilledResultsChainDiagram() throws Exception
+	{
+		ORef resultsChainRef = getProject().createResultsChainDiagram();
+		TaggedObjectSet taggedOjectSet = getProject().createTaggedObjectSet();
+		ORefList taggedObjectSetRefs = new ORefList(taggedOjectSet);
+		getProject().fillObjectUsingCommand(resultsChainRef, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, taggedObjectSetRefs);
+		getProject().fillObjectUsingCommand(resultsChainRef, ResultsChainDiagram.TAG_LABEL, "SomeLabel");
+		getProject().fillObjectUsingCommand(resultsChainRef, ResultsChainDiagram.TAG_SHORT_LABEL, "SomeShortLabel");
+		getProject().fillObjectUsingCommand(resultsChainRef, ResultsChainDiagram.TAG_DETAIL, "SomeDetails");
+		getProject().fillObjectUsingCommand(resultsChainRef, ResultsChainDiagram.TAG_ZOOM_SCALE, "2.0");
+		
+		CodeList hiddentTypeCodes = new CodeList();
+		hiddentTypeCodes.add(DiagramLegendQuestion.STRESS_HIDDEN_TYPE_CODE);
+		getProject().fillObjectUsingCommand(resultsChainRef, ResultsChainDiagram.TAG_HIDDEN_TYPES, hiddentTypeCodes.toString());
 	}
 	
 	private void validateExportImportExportProject() throws Exception
