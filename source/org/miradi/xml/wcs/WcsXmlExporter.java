@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
+import java.io.IOException;
 import java.util.Set;
 
 import org.martus.util.UnicodeWriter;
@@ -493,6 +494,19 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 	void writeEndElement(String endElementName) throws Exception
 	{
 		writeEndElement(getWriter(), endElementName);
+	}
+	
+	@Override
+	protected void writeStartElement(UnicodeWriter outToUse, String startElementName) throws IOException
+	{
+		outToUse.write("<" + startElementName + ">");
+	}
+	
+	@Override
+	public void writeEndElement(UnicodeWriter outToUse, String endElementName) throws IOException
+	{
+		outToUse.write("</" + endElementName + ">");
+		outToUse.writeln();
 	}
 	
 	public String createParentAndChildElementName(String parentElementName, String childElementName)
