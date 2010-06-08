@@ -948,15 +948,15 @@ public class Project
 
 	private void setDefaultDiagramPage(int objectType) throws Exception
 	{
-		EAMObjectPool pool = getPool(objectType);
-		if (pool.size() == 0)
-			return;
-	
 		ViewData viewData = getDiagramViewData();
 		ORef currentDiagramObjectRef = DiagramPageList.getCurrentDiagramViewDataRef(viewData, objectType);
 		if (currentDiagramObjectRef.isValid())
 			return;
 
+		EAMObjectPool pool = getPool(objectType);
+		if (pool.size() == 0)
+			return;
+	
 		ORef firstPoolItemRef = pool.getORefList().get(0);
 		String currentDiagramViewDataTag = DiagramPageList.getCurrentDiagramViewDataTag(objectType);
 		CommandSetObjectData setCurrentDiagramObject = new CommandSetObjectData(viewData.getRef(), currentDiagramViewDataTag, firstPoolItemRef);
