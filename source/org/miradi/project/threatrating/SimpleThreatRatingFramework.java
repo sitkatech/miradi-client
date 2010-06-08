@@ -508,6 +508,8 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 			criteria = findCriteria(new IdList(RatingCriterion.getObjectType(), json.optJson(TAG_CRITERION_IDS)));
 			sortCriteria();
 		}
+
+		createMissingBuiltInObjects();
 	}
 
 	private ValueOption[] findValueOptions(IdList ids)

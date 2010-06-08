@@ -904,7 +904,6 @@ public class Project
 	private void loadThreatRatingFramework() throws Exception
 	{
 		getSimpleThreatRatingFramework().load();
-		getSimpleThreatRatingFramework().createMissingBuiltInObjects();
 	}
 	
 	protected void finishOpening() throws Exception
