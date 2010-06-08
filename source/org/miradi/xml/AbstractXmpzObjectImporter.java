@@ -122,6 +122,13 @@ abstract public class AbstractXmpzObjectImporter
 	
 	protected void importIds(Node node, ORef destinationRef, String destinationTag, int idsType, String idElementName) throws Exception
 	{
+		ORefList importedRefs = extractRefs(node, destinationTag, idsType, idElementName);
+		
+		getImporter().setData(destinationRef, destinationTag, importedRefs.convertToIdList(idsType));
+	}
+
+	private ORefList extractRefs(Node node, String destinationTag, int idsType, String idElementName) throws Exception
+	{
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(getPoolName(), destinationTag);
 		NodeList idNodes = getImporter().getNodes(node, new String[]{getPoolName() + elementName, idElementName});
@@ -133,7 +140,7 @@ abstract public class AbstractXmpzObjectImporter
 			importedRefs.add(new ORef(idsType, new BaseId(id)));
 		}
 		
-		getImporter().setData(destinationRef, destinationTag, importedRefs.convertToIdList(idsType));
+		return importedRefs;
 	}
 
 	protected void importField(Node node, ORef destinationRef, String destinationTag) throws Exception
