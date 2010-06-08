@@ -508,9 +508,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		project.beginCommandSideEffectMode();
 		try
 		{
-			int projectAction = project.createOrOpen(projectName);
-			if (projectAction == Project.PROJECT_WAS_CREATED)
-				project.createDefaultHelpTextBoxDiagramFactor();
+			project.createOrOpen(projectName);
 			
 			ProjectRepairer.repairAnyProblems(project);
 			ProjectRepairer.scanForCorruptedObjects(project);
