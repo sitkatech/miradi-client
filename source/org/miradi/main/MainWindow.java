@@ -503,12 +503,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	public void createOrOpenProject(String projectName)
 	{
-		logExceptionsInsideProjectDir(projectName);
 		preventActionUpdates();
 		project.beginCommandSideEffectMode();
 		try
 		{
 			project.createOrOpen(projectName);
+			logExceptionsInsideProjectDir(projectName);
 			
 			ProjectRepairer.repairAnyProblems(project);
 			ProjectRepairer.scanForCorruptedObjects(project);
