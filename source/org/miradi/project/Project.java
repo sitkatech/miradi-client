@@ -686,7 +686,7 @@ public class Project
 	
 	public File getProjectDirectory()
 	{
-		return new File(EAM.getHomeDirectory(), getFilename());
+		return getDatabase().getCurrentLocalProjectDirectory();
 	}
 	
 	private void turnOnBudgetRelatedColumnsInWorkPlan() throws Exception
