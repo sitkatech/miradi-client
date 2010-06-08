@@ -87,7 +87,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return ids;
 	}
 	
-	public void createDefaultObjectsIfNeeded() throws Exception
+	public void createMissingBuiltInObjects() throws Exception
 	{
 		if(criteria.length == 0)
 		{

@@ -200,7 +200,7 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 	
 	public void testGetThreatRatingSummary() throws Exception
 	{
-		framework.createDefaultObjectsIfNeeded();
+		framework.createMissingBuiltInObjects();
 		
 		DiagramFactor threat1 = createThreat(project);
 		DiagramFactor threat2 = createThreat(project);
