@@ -77,7 +77,7 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 	
 	private void addExceptionLogFile(ZipOutputStream zipOut) throws Exception
 	{
-		File exceptionLogFile = new File(getProject().createProjectDirectory(), EAM.EXCEPTIONS_LOG_FILE_NAME);
+		File exceptionLogFile = new File(getProject().getProjectDirectory(), EAM.EXCEPTIONS_LOG_FILE_NAME);
 		URL exceptionLogUrl = exceptionLogFile.toURI().toURL();
 		if(exceptionLogUrl != null)
 			writeContent(zipOut, EAM.EXCEPTIONS_LOG_FILE_NAME, readAll(exceptionLogUrl));

@@ -76,7 +76,7 @@ public class CpmzProjectImporter extends AbstractProjectImporter
 
 	private void deleteIncompleteProject(Project projectToFill)	throws Exception
 	{
-		File projectDirectory = projectToFill.createProjectDirectory();
+		File projectDirectory = projectToFill.getProjectDirectory();
 		projectToFill.close();
 		DirectoryUtils.deleteEntireDirectoryTree(projectDirectory);
 	}
