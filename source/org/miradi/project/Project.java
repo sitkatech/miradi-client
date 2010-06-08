@@ -907,7 +907,7 @@ public class Project
 		createMissingBuiltInObjects();
 		
 		loadThreatRatingFramework();		
-		simpleThreatFramework.createDefaultObjectsIfNeeded();
+		simpleThreatFramework.createMissingBuiltInObjects();
 		
 		applyDefaultBehavior();
 		database.writeVersion();
