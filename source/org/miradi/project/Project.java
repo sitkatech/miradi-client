@@ -902,10 +902,7 @@ public class Project
 	protected void finishOpening() throws Exception
 	{
 		createMissingBuiltInObjects();
-		
 		loadThreatRatingFramework();		
-		
-		database.writeVersion();
 	}
 
 	protected void applyDefaultBehavior() throws Exception
