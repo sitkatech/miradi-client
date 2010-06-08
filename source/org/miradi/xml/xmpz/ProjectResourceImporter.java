@@ -35,12 +35,6 @@ public class ProjectResourceImporter extends AbstractBaseObjectImporter
 	}
 	
 	@Override
-	public void importElement() throws Exception
-	{
-		importObject();
-	}
-	
-	@Override
 	protected void importFields(Node node, ORef destinationRef) throws Exception
 	{
 		importCodeField(node, WcsXmlConstants.PROJECT_RESOURCE, destinationRef, ProjectResource.TAG_RESOURCE_TYPE, new ResourceTypeQuestion());			

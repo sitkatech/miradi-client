@@ -33,12 +33,6 @@ public class OrganizationImporter extends AbstractBaseObjectImporter
 	}
 
 	@Override
-	public void importElement() throws Exception
-	{
-		importObject();
-	}
-	
-	@Override
 	protected void importFields(Node node, ORef destinationRef) throws Exception
 	{
 		importField(node, destinationRef, Organization.TAG_SHORT_LABEL);

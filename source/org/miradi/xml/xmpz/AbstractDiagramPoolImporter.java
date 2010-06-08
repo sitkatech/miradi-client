@@ -37,12 +37,6 @@ abstract public class AbstractDiagramPoolImporter extends AbstractBaseObjectImpo
 	}
 	
 	@Override
-	public void importElement() throws Exception
-	{
-		importObject();
-	}
-
-	@Override
 	protected void importFields(Node node, ORef destinationRef)	throws Exception
 	{
 		super.importFields(node, destinationRef);
