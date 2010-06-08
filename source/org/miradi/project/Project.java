@@ -904,7 +904,7 @@ public class Project
 	
 	protected void finishOpening() throws Exception
 	{
-		createBuiltInObjects();
+		createMissingBuiltInObjects();
 		
 		loadThreatRatingFramework();		
 		simpleThreatFramework.createDefaultObjectsIfNeeded();
@@ -930,7 +930,7 @@ public class Project
 		createDefaultPlanningCustomization();
 	}
 
-	private void createBuiltInObjects() throws Exception
+	private void createMissingBuiltInObjects() throws Exception
 	{
 		if(getMetadataId().isInvalid())
 			createProjectMetadata();
