@@ -41,6 +41,7 @@ public class DiagramObjectPoolExporter extends BaseObjectPoolExporter
 		DiagramObject conceptualModel = (DiagramObject) baseObject;
 		writeOptionalElementWithSameTag(conceptualModel, ConceptualModelDiagram.TAG_SHORT_LABEL);
 		writeOptionalElementWithSameTag(conceptualModel, ConceptualModelDiagram.TAG_DETAIL);
+		writeOptionalElementWithSameTag(conceptualModel, ConceptualModelDiagram.TAG_ZOOM_SCALE);
 		writeIds(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DIAGRAM_FACTOR, conceptualModel.getAllDiagramFactorRefs());
 		writeIds(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DIAGRAM_LINK, conceptualModel.getAllDiagramLinkRefs());
 		writeCodeListElement(XmlSchemaCreator.HIDDEN_TYPES_ELEMENT_NAME, conceptualModel, DiagramObject.TAG_HIDDEN_TYPES);
