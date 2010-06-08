@@ -134,6 +134,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ProjectForTesting projectForTesting = new ProjectForTesting(testName, new ProjectServerForTesting());
 		projectForTesting.finishOpening();
+		projectForTesting.applyDefaultBehavior();
 		
 		return projectForTesting;
 	}
@@ -144,6 +145,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 		createMissingDefaultObjects();
 		finishOpening();
+		applyDefaultBehavior();
 		loadDiagram();
 	}
 	
