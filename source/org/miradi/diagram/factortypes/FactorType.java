@@ -106,11 +106,13 @@ public abstract class FactorType
 		return false;
 	}
 	
+	@Override
 	public boolean equals(Object other)
 	{
 		return getClass().getName().equals(other.getClass().getName());
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return getClass().getName().hashCode();
@@ -199,6 +201,7 @@ public abstract class FactorType
 		throw new RuntimeException("Unknown factor type: " + factor.getRef());
 	}
 	
+	@Override
 	public abstract String toString();
 
 }
