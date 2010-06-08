@@ -643,6 +643,7 @@ public class Project
 	
 		createMissingDefaultObjects();
 		finishOpening();
+		applyDefaultBehavior();
 		
 		if (projectAction == Project.PROJECT_WAS_CREATED)
 			createDefaultHelpTextBoxDiagramFactor();
@@ -912,11 +913,10 @@ public class Project
 		loadThreatRatingFramework();		
 		simpleThreatFramework.createMissingBuiltInObjects();
 		
-		applyDefaultBehavior();
 		database.writeVersion();
 	}
 
-	private void applyDefaultBehavior() throws Exception
+	protected void applyDefaultBehavior() throws Exception
 	{
 		selectDefaultPlanningCustomization();
 		turnOnBudgetRelatedColumnsInWorkPlan();
