@@ -43,7 +43,7 @@ abstract public class AbstractBaseObjectImporter extends AbstractXmpzObjectImpor
 		importObjects();
 	}
 	
-	protected void importObjects() throws Exception
+	private void importObjects() throws Exception
 	{
 		NodeList nodes = getImporter().getNodes(getImporter().getRootNode(), new String[]{getPoolName() + WcsXmlConstants.POOL_ELEMENT_TAG, getPoolName(), });
 		for (int index = 0; index < nodes.getLength(); ++index)
