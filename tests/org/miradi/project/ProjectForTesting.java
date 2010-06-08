@@ -133,7 +133,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public static ProjectForTesting createProjectWithoutDefaultObjects(String testName) throws Exception
 	{
 		ProjectForTesting projectForTesting = new ProjectForTesting(testName, new ProjectServerForTesting());
-		projectForTesting.applyDefaultBehavior();
 		
 		return projectForTesting;
 	}
