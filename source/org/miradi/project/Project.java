@@ -659,8 +659,6 @@ public class Project
 		getDatabase().setRemoteDataLocation(remoteLocation);
 	}
 
-	//TODO: need to remvoe duplicate code after test code fixed as to not need to be tested for
-	// between writeStartingLogEntry and writeLogLine...the two new File() lines
 	private void writeStartingLogEntry() throws Exception
 	{
 		File thisProjectDirectory = createProjectDirectory();
