@@ -67,11 +67,6 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 		diagramModel = null;
 	}
 
-	protected void setDefaultDiagramPage(int objectType)
-	{
-		//TODO overrode to be empty, so that tests dont fail
-	}
-
 	public void closeAndReopen() throws Exception
 	{
 		String projectName = getDatabase().getCurrentProjectName();
