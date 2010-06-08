@@ -146,7 +146,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		finishOpening();
 		createMissingDefaultObjects();
 		applyDefaultBehavior();
-		loadDiagram();
+		loadDiagramModelForTesting();
 	}
 	
 	private ProjectForTesting(String testName, ProjectServer server) throws Exception
