@@ -904,6 +904,7 @@ public class Project
 	private void loadThreatRatingFramework() throws Exception
 	{
 		getSimpleThreatRatingFramework().load();
+		getSimpleThreatRatingFramework().createMissingBuiltInObjects();
 	}
 	
 	protected void finishOpening() throws Exception
@@ -911,7 +912,6 @@ public class Project
 		createMissingBuiltInObjects();
 		
 		loadThreatRatingFramework();		
-		simpleThreatFramework.createMissingBuiltInObjects();
 		
 		database.writeVersion();
 	}
