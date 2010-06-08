@@ -143,8 +143,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		this(testName, new ProjectServerForTesting());
 
-		createMissingDefaultObjects();
 		finishOpening();
+		createMissingDefaultObjects();
 		applyDefaultBehavior();
 		loadDiagram();
 	}

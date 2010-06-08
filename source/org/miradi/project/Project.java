@@ -641,8 +641,8 @@ public class Project
 		
 		writeStartingLogEntry();
 	
-		createMissingDefaultObjects();
 		finishOpening();
+		createMissingDefaultObjects();
 		applyDefaultBehavior();
 		
 		if (projectAction == Project.PROJECT_WAS_CREATED)
