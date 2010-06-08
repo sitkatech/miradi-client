@@ -954,7 +954,7 @@ public class Project
 	
 		ViewData viewData = getDiagramViewData();
 		ORef currentDiagramObjectRef = DiagramPageList.getCurrentDiagramViewDataRef(viewData, objectType);
-		if (!currentDiagramObjectRef.isInvalid())
+		if (currentDiagramObjectRef.isValid())
 			return;
 
 		ORef firstPoolItemRef = pool.getORefList().get(0);
