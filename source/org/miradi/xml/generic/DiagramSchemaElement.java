@@ -31,6 +31,7 @@ abstract public class DiagramSchemaElement extends BaseObjectSchemaElementWithLa
 
 		createOptionalTextField(DiagramObject.TAG_SHORT_LABEL);
 		createOptionalTextField(DiagramObject.TAG_DETAIL);
+		createOptionalNumericField(DiagramObject.TAG_ZOOM_SCALE);
 		createIdListField(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, "DiagramFactor");
 		createIdListField(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, "DiagramLink");
 		createCodeListField(XmlSchemaCreator.HIDDEN_TYPES_ELEMENT_NAME);
