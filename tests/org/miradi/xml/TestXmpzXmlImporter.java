@@ -53,6 +53,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		getProject().populateEverything();
 		createFilledResultsChainDiagram();
 		getProject().createDiagramFactorLink();
+		getProject().createObjective(getProject().createCause());
 		
 		validateExportImportExportProject();
 	}

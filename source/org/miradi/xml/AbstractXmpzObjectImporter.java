@@ -150,7 +150,7 @@ abstract public class AbstractXmpzObjectImporter
 		
 		return importedRefs;
 	}
-
+	
 	protected void importField(Node node, ORef destinationRef, String destinationTag) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();

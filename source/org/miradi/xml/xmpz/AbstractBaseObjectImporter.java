@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz;
 
 import org.miradi.ids.BaseId;
+import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.xml.AbstractXmpzObjectImporter;
@@ -50,12 +51,17 @@ abstract public class AbstractBaseObjectImporter extends AbstractXmpzObjectImpor
 		{
 			Node node = nodes.item(index);
 			String intIdAsString = getImporter().getAttributeValue(node, WcsXmlConstants.ID);
-			ORef ref = getProject().createObject(getObjectTypeToImport(), new BaseId(intIdAsString));
+			ORef ref = getProject().createObjectAndReturnRef(getObjectTypeToImport(), new BaseId(intIdAsString), getExtraInfo(node));
 			
 			importFields(node, ref);
 		}
 	}
 	
+	protected CreateObjectParameter getExtraInfo(Node node) throws Exception
+	{
+		return null;
+	}
+
 	private int getObjectTypeToImport()
 	{
 		return objectTypeToImport;
