@@ -36,7 +36,6 @@ public class SpellCheckerManager
 		URL dictionaryURL = new URL(dictionaryFolderURL, getDictionaryName(english));
 		if(dictionaryURL != null)
 		{
-			System.out.println("Initializing English spell checker");
 			SpellChecker.registerDictionaries(dictionaryFolderURL, english, english);
 			SpellChecker.setUserDictionaryProvider(new MiradiUserDictionary());
 		}
