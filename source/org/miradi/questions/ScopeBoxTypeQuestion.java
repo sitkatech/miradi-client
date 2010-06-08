@@ -77,6 +77,7 @@ public class ScopeBoxTypeQuestion extends DynamicChoiceQuestion
 		return "Biodiversity";
 	}
 	
+	@Override
 	public String convertToReadableCode(String code)
 	{
 		if (code.equals(HUMAN_WELFARE_TARGET_CODE))
