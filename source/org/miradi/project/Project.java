@@ -672,7 +672,7 @@ public class Project
 	{
 		File thisProjectDirectory = getProjectDirectory();
 		
-		//TODO: this line is here to support test code
+		//NOTE: this line is here to support test code
 		if (!thisProjectDirectory.exists())
 			return;
 		
