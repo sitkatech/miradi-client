@@ -66,7 +66,6 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Strategy;
-import org.miradi.objects.TextBox;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramCopyPaster;
@@ -796,7 +795,6 @@ public class TestProject extends EAMTestCase
 			DiagramFactor diagramFactor = createNodeAndAddToDiagram(diskProject, conceptualModel, ObjectType.CAUSE);
 			deleteNodeAndRemoveFromDiagram(conceptualModel, diagramFactor);
 			
-			createNodeAndAddToDiagram(diskProject, conceptualModel, TextBox.getObjectType());
 			memorizedHighestId = diskProject.getAnnotationIdAssigner().getHighestAssignedId();
 		}
 		finally

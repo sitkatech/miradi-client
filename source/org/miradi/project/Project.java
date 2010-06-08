@@ -644,6 +644,9 @@ public class Project
 		createMissingDefaultObjects();
 		finishOpening();
 		
+		if (projectAction == Project.PROJECT_WAS_CREATED)
+			createDefaultHelpTextBoxDiagramFactor();
+
 		return projectAction;
 	}
 
