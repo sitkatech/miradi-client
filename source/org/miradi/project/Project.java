@@ -629,15 +629,15 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// database
 	
-	public int createOrOpen(String projectName) throws Exception
+	public void createOrOpen(String projectName) throws Exception
 	{
 		clear();
 		
-		int projectAction;
-		if(getDatabase().isExistingProject(projectName))
-			projectAction = openProject(projectName);
+		boolean didProjectAlreadyExist = getDatabase().isExistingProject(projectName);
+		if(didProjectAlreadyExist)
+			openProject(projectName);
 		else
-			projectAction = createProject(projectName);
+			createProject(projectName);
 		
 		writeStartingLogEntry();
 	
@@ -645,10 +645,8 @@ public class Project
 		createMissingDefaultObjects();
 		applyDefaultBehavior();
 		
-		if (projectAction == Project.PROJECT_WAS_CREATED)
+		if (!didProjectAlreadyExist)
 			createDefaultHelpTextBoxDiagramFactor();
-
-		return projectAction;
 	}
 
 	public void setLocalDataLocation(File dataDirectory) throws Exception
@@ -854,7 +852,7 @@ public class Project
 		return ConceptualModelDiagram.DEFAULT_MAIN_NAME;
 	}
 	
-	public int openProject(String projectName) throws Exception
+	public void openProject(String projectName) throws Exception
 	{
 		int existingVersion = getDatabase().readProjectDataVersion(projectName); 
 		if(existingVersion > ProjectServer.DATA_VERSION)
@@ -880,14 +878,11 @@ public class Project
 			close();
 			throw e;
 		}
-		
-		return PROJECT_WAS_OPENED;
 	}
 	
-	private int createProject(String projectName) throws Exception
+	private void createProject(String projectName) throws Exception
 	{
 		getDatabase().createProject(projectName);
-		return PROJECT_WAS_CREATED;
 		
 	}
 	
@@ -1417,7 +1412,5 @@ public class Project
 	// FIXME low: This should go away, but it's difficult
 	private String currentViewName;
 	
-	public static final int PROJECT_WAS_CREATED = 100;
-	public static final int PROJECT_WAS_OPENED = 200;
 	public CommandExecutor commandExecutor;
 }
