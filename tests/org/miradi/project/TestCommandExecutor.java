@@ -34,7 +34,7 @@ public class TestCommandExecutor extends TestCaseWithProject
 		super(name);
 	}
 
-	public void testBeginCommandException() throws CommandFailedException
+	public void testExceptionsOccurringDuringABeginTransaction() throws CommandFailedException
 	{
 		try
 		{
