@@ -236,8 +236,10 @@ public class AppPreferences
 			return isGridVisible;
 		else if (tag.equals(TAG_CELL_RATINGS_VISIBLE))
 			return isCellRatingsVisible;
+		else if (tag.equals(TAG_IS_SPELL_CHECK_ENABLED))
+			return isSpellCheckEnabled;
 	
-		throw new RuntimeException(tag);
+		throw new RuntimeException(getClass().getName() + ": Unrecognized boolean tag: " + tag);
 	}
 	
 	public void setTaggedInt(String tag, int value)

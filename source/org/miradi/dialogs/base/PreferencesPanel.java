@@ -144,7 +144,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		htmlTab.add(new PanelTitleLabel(EAM.text("Enable Spell Checking")));
 		enableSpellCheckingCheckBox = new PanelCheckBox();
 		enableSpellCheckingCheckBox.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		enableSpellCheckingCheckBox.setSelected(getMainWindow().getBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE));
+		enableSpellCheckingCheckBox.setSelected(getMainWindow().getBooleanPreference(AppPreferences.TAG_IS_SPELL_CHECK_ENABLED));
 		enableSpellCheckingCheckBox.addActionListener(this);
 		htmlTab.add(enableSpellCheckingCheckBox);
 
