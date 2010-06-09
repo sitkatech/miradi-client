@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml;
 
+import java.awt.Dimension;
+import java.awt.Point;
 import java.io.File;
 
 import org.martus.util.UnicodeReader;
@@ -27,12 +29,18 @@ import org.martus.util.inputstreamwithseek.FileInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Cause;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.questions.DiagramFactorFontSizeQuestion;
+import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.DiagramLegendQuestion;
+import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.xml.wcs.WcsXmlExporter;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
 
@@ -50,12 +58,24 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	
 	public void testValidateFilledProject() throws Exception
 	{
+		createFilledDiagramFactor();
 		getProject().populateEverything();
 		createFilledResultsChainDiagram();
 		getProject().createDiagramFactorLink();
+		
 		getProject().createObjective(getProject().createCause());
 		
 		validateExportImportExportProject();
+	}
+
+	private void createFilledDiagramFactor() throws Exception
+	{
+		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		getProject().fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(new Point(100, 12)));
+		getProject().fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(45, 45)));
+		getProject().fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, TextBoxZOrderQuestion.FRONT_CODE);
+		getProject().fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FONT_STYLE, DiagramFactorFontStyleQuestion.BOLD_CODE);
+		getProject().fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FONT_SIZE, DiagramFactorFontSizeQuestion.LARGEST_FONT_SIZE_CODE);
 	}
 
 	private void createFilledResultsChainDiagram() throws Exception

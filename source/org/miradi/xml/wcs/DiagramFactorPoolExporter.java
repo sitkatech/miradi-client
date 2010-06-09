@@ -96,7 +96,7 @@ public class DiagramFactorPoolExporter extends BaseObjectPoolExporter
 	
 	private void writeDiagramFactorLocation(DiagramFactor diagramFactor) throws Exception
 	{
-		String locationElementName = getWcsXmlExporter().createParentAndChildElementName(DIAGRAM_FACTOR, "Location");
+		String locationElementName = getWcsXmlExporter().createParentAndChildElementName(DIAGRAM_FACTOR, WcsXmlConstants.LOCATION);
 		getWcsXmlExporter().writeStartElement(locationElementName);
 		Point location = diagramFactor.getLocation();
 		writeDiagramPoint(location);
@@ -105,7 +105,7 @@ public class DiagramFactorPoolExporter extends BaseObjectPoolExporter
 	
 	private void writeDiagramFactorSize(DiagramFactor diagramFactor) throws Exception
 	{
-		String sizeElementName = getWcsXmlExporter().createParentAndChildElementName(DIAGRAM_FACTOR, "Size");
+		String sizeElementName = getWcsXmlExporter().createParentAndChildElementName(DIAGRAM_FACTOR, WcsXmlConstants.SIZE);
 		getWcsXmlExporter().writeStartElement(sizeElementName);
 		getWcsXmlExporter().writeStartElement(DIAGRAM_SIZE_ELEMENT_NAME);
 		getWcsXmlExporter().writeElement(getWriter(), WIDTH_ELEMENT_NAME, diagramFactor.getSize().width);		

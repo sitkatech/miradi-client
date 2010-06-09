@@ -137,18 +137,9 @@ abstract public class AbstractXmlImporter
 	
 	public void importCodeField(Node node, String elementName, ORef ref, String destinationTag, ChoiceQuestion question) throws Exception
 	{
-		String code = getPathData(node, new String[]{elementName, });
-		String rawCode = getRawCode(question, code);
-		importField(ref, destinationTag, rawCode);
-	}
-
-	private String getRawCode(ChoiceQuestion question, String code)
-	{
-		String convertedCode = question.convertToReadableCode(code);
-		if (code.equals(convertedCode))
-			return code;
-			
-		return "";
+		String importedReadableCode = getPathData(node, new String[]{elementName, });
+		String internalCode = question.convertToInternalCode(importedReadableCode);
+		importField(ref, destinationTag, internalCode);
 	}
 
 	public String getPathData(Node node, String[] elements) throws XPathExpressionException
