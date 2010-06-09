@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-08 16:42-0500\n"
+"POT-Creation-Date: 2010-06-09 14:02-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -385,7 +385,7 @@ msgid ""
 "correctly."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:230
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:236
 msgid ""
 "<div class='DataPanel'><p>Why are my choices limited to one color family for "
 "each type of factor?</p>"
@@ -2029,11 +2029,11 @@ msgstr "生物多样性特征 \t\t"
 msgid "Biodiversity Target"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:216
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:222
 msgid "Biodiversity Target (Lighter Green)"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:218
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:224
 msgid "Biodiversity Target Scope (Darker Green)"
 msgstr ""
 
@@ -2325,7 +2325,7 @@ msgstr ""
 msgid "Choose Tags"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:212
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:218
 msgid "Choose the colors that look best on your system:"
 msgstr "选择在您的系统中显示最好的颜色： \t\t"
 
@@ -2404,7 +2404,7 @@ msgstr "保护对象 "
 msgid "Contributing Factor"
 msgstr "影响因素"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:215
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:221
 msgid "Contributing Factor (Orange)"
 msgstr "影响因素（橙） \t\t"
 
@@ -2593,7 +2593,7 @@ msgstr "暗红色"
 msgid "Dark Yellow"
 msgstr "暗黄色"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:117
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:118
 msgid "Data Location"
 msgstr "数据位置"
 
@@ -2795,7 +2795,7 @@ msgstr "开发用于记录、储存、处理及备份项目数据的系统 \t\t"
 msgid "Develop target viability"
 msgstr "发展对象生存力 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:107
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:108
 msgid "Diagram"
 msgstr "图表"
 
@@ -2816,7 +2816,7 @@ msgstr "图表总览 \t\t"
 msgid "Direct Threat"
 msgstr "直接威胁因子"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:214
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:220
 msgid "Direct Threat (Pink)"
 msgstr "直接威胁因子（粉红） \t\t"
 
@@ -2921,7 +2921,7 @@ msgstr "编辑器 \t\t"
 msgid "Effective"
 msgstr "有效 "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:144
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:145
 msgid "Enable Spell Checking"
 msgstr ""
 
@@ -3244,11 +3244,11 @@ msgstr ""
 msgid "Font"
 msgstr "字体 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:137
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:138
 msgid "Font Family"
 msgstr "字体集 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:134
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:135
 msgid "Font Size"
 msgstr "字体大小 \t\t"
 
@@ -3486,7 +3486,7 @@ msgstr "人力利益相关者 \t\t"
 msgid "Human Welfare Target"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:217
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:223
 msgid "Human Welfare Target (Lighter Brown)"
 msgstr ""
 
@@ -3494,7 +3494,7 @@ msgstr ""
 msgid "Human Welfare Target Mode"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:219
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:225
 msgid "Human Welfare Target Scope (Darker Brown)"
 msgstr ""
 
@@ -3704,7 +3704,7 @@ msgstr "周密评估"
 msgid "Intermediate Result"
 msgstr "中途结果"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:220
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:226
 msgid "Intermediate Result (Light Blue)"
 msgstr "中途结果（淡蓝） \t\t"
 
@@ -4515,6 +4515,12 @@ msgid ""
 "for some quarters."
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:154
+msgid ""
+"NOTE: Spell Checking is only available for projects identified as using "
+"English in Summary View"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:41
 msgid "Name"
 msgstr ""
@@ -4781,7 +4787,7 @@ msgid "Plan project lifespan and exit strategy"
 msgstr "计划项目的寿命及退出策略 \t\t"
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:61
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:111
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:112
 msgid "Planning"
 msgstr "计划 \t\t"
 
@@ -4833,7 +4839,7 @@ msgstr "差"
 msgid "Pound (United Kingdom)"
 msgstr "英镑（英国） "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:364
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:370
 msgid "Preferences"
 msgstr "优先选项 \t\t"
 
@@ -4994,7 +5000,7 @@ msgid "Project Scope"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/ProjectSettingsPanel.java:46
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:114
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:115
 msgid "Project Settings"
 msgstr ""
 
@@ -5404,7 +5410,7 @@ msgstr "与全世界的实践者共享成功与失败 \t\t"
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:245
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:251
 msgid "Show Diagram Grid"
 msgstr "显示图标栅格 \t\t"
 
@@ -5412,7 +5418,7 @@ msgstr "显示图标栅格 \t\t"
 msgid "Show Quarter Columns"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:190
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:196
 msgid "Show Ratings in Cell"
 msgstr "在单元格中显示分级 \t\t"
 
@@ -5606,7 +5612,7 @@ msgstr "仅限于策略 \t\t"
 msgid "Strategy"
 msgstr "策略 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:213
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:219
 msgid "Strategy (Yellow)"
 msgstr "策略（黄） \t\t"
 
@@ -5707,7 +5713,7 @@ msgstr ""
 msgid "Summary Threat Rating"
 msgstr "威胁因子分级摘要 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:106
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:107
 msgid "Systemwide"
 msgstr "系统范围"
 
@@ -6448,7 +6454,7 @@ msgstr ""
 msgid "TabDelimitedFile"
 msgstr "制表符分隔文件"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:142
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:143
 msgid "Table Row Height Mode"
 msgstr "表格行高模式"
 
@@ -6802,7 +6808,7 @@ msgstr ""
 msgid "Threat Rating Preferences Panel"
 msgstr "威胁因子分级优先选择面板 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:110
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:111
 msgid "Threat Ratings"
 msgstr "威胁因子评级"
 
@@ -6819,7 +6825,7 @@ msgstr ""
 msgid "Threat Reduction Result"
 msgstr "威胁因子减少结果"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:221
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:227
 msgid "Threat Reduction Result (Light Purple)"
 msgstr "减少威胁因子的结果（淡紫） \t\t"
 
@@ -7342,7 +7348,7 @@ msgstr "警告 \t\t"
 msgid "Was expecting a %s, instead got:\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:231
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:237
 msgid ""
 "We are trying to create a standard set of symbols that can be recognized "
 "globally. Just like people the world over recognize a red octagon as a stop "
