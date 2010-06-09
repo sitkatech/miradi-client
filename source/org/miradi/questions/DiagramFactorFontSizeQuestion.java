@@ -38,7 +38,7 @@ public class DiagramFactorFontSizeQuestion extends StaticChoiceQuestion
 				new ChoiceItem("0.9", EAM.text("Small")),
 				new ChoiceItem("1.25", EAM.text("Large")),
 				new ChoiceItem("1.75", EAM.text("Very Large")),
-				new ChoiceItem("2.5", EAM.text("Largest")),
+				new ChoiceItem(LARGEST_FONT_SIZE_CODE, EAM.text("Largest")),
 		};
 	}
 
@@ -53,4 +53,6 @@ public class DiagramFactorFontSizeQuestion extends StaticChoiceQuestion
 	{
 		return "1.0";
 	}
+	
+	public static final String LARGEST_FONT_SIZE_CODE = "2.5";
 }

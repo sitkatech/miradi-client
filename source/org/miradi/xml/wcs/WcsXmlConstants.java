@@ -163,4 +163,6 @@ public interface WcsXmlConstants
 	public static final String METHOD_IDS = "MethodIds";
 	public static final String SUB_TASK_IDS = "SubTaskIds";
 	public static final String EXTERNAL_APP_THAT_ASSIGNED_ID = "ExternalAppThatAssignedId";
+	public static final String LOCATION = "Location";
+	public static final String SIZE = "Size";
 }

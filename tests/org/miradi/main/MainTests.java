@@ -487,6 +487,8 @@ public class MainTests extends TestCase
 		
 		//xml.conpro.importer
 		suite.addTest(new TestSuite(TestConproXmlImporter.class));
+		//FIXME when imports are completed uncomment this test
+		//suite.addTest(new TestSuite(TestXmpzXmlImporter.class));
 
 	    return suite;
 	}
