@@ -60,7 +60,7 @@ ProjectSummary.element = element miradi:ProjectSummary
   element miradi:ProjectSummaryNextSteps { text }? &
   element miradi:ProjectSummaryOverallProjectThreatRating { vocabulary_threat_rating  }? &
   element miradi:ProjectSummaryOverallProjectViabilityRating { vocabulary_target_status  }? &
-  element miradi:ProjectSummaryProjectId { ProjectId.element *} 
+  element miradi:ProjectSummaryProjectId { ExternalProjectId.element *} 
 }
 
 ProjectResourcePool.element = element miradi:ProjectResourcePool { ProjectResource.element* }
@@ -745,7 +745,7 @@ GeospatialLocation.element = element miradi:GeospatialLocation
   element miradi:longitude { xsd:decimal } 
 }
 
-ProjectId.element = element miradi:ProjectId
+ExternalProjectId.element = element miradi:ExternalProjectId
 {
   attribute ExternalAppThatAssignedId {text} &
   attribute Id {xsd:integer}
