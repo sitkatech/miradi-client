@@ -26,11 +26,19 @@ import java.net.URL;
 import org.miradi.utils.Translation;
 
 import com.inet.jortho.SpellChecker;
+import com.inet.jortho.SpellCheckerOptions;
 
 public class SpellCheckerManager
 {
 	public static void initializeSpellChecker() throws MalformedURLException
 	{
+		SpellCheckerOptions options = SpellChecker.getOptions();
+		options.setCaseSensitive(true);
+		options.setIgnoreAllCapsWords(true);
+		options.setIgnoreCapitalization(true);
+		options.setIgnoreWordsWithNumbers(true);
+		options.setSuggestionsLimitMenu(15);
+		
 		String english = Translation.DEFAULT_LANGUAGE_CODE;
 		URL dictionaryFolderURL = ResourcesHandler.getEnglishResourceURL("");
 		URL dictionaryURL = new URL(dictionaryFolderURL, getDictionaryName(english));
