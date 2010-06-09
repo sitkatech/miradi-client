@@ -890,9 +890,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORefList measurementRefs = new ORefList(measurement.getRef());
 		fillObjectUsingCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, measurementRefs.toString());
 		
-		ProgressReport progressReport = createAndPopulateProgressReport();
-		ORefList progressReportRefs = new ORefList(progressReport.getRef());
-		fillObjectUsingCommand(indicator, Indicator.TAG_PROGRESS_REPORT_REFS, progressReportRefs.toString());
+		addProgressReport(indicator);
 		
 		StringMap threshold = new StringMap();
 		threshold.add(StatusQuestion.POOR, "poor text");
@@ -973,6 +971,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(strategy, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING, "good, tnc legacy strategy rating");
 		
 		addExpenseWithValue(strategy);
+		addProgressReport(strategy);
+	}
+
+	public void addProgressReport(BaseObject baseObject) throws Exception
+	{
+		ProgressReport progressReport = createAndPopulateProgressReport();
+		ORefList progressReportRefs = new ORefList(progressReport.getRef());
+		fillObjectUsingCommand(baseObject, BaseObject.TAG_PROGRESS_REPORT_REFS, progressReportRefs.toString());
 	}
 	
 	public void populateProgressReport(ProgressReport progressReport) throws Exception
@@ -1061,16 +1067,15 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateSubTarget();
 		createAndPopulateTarget();
 		createAndPopulateThreat();
-//		createAndPopulateDraftStrategy();
-//		Strategy strategy = createAndPopulateStrategy();
-//		createAndPopulateStrategyThreatTargetAssociation();
-//		createAndPopulateObjective(strategy);
-//		Task activity = createAndPopulateActivity();
-//		createAndPopulateTask(activity, "Some Task Label");
-//		createIndicatorContainingWhiteSpacePaddedCode();
-//		createAndPopulateOrganization();
-//		createAndPopulateExpenseAssignment();
-		
+		createAndPopulateDraftStrategy();
+		Strategy strategy = createAndPopulateStrategy();
+		createAndPopulateStrategyThreatTargetAssociation();
+		createAndPopulateObjective(strategy);
+		Task activity = createAndPopulateActivity();
+		createAndPopulateTask(activity, "Some Task Label");
+		createIndicatorContainingWhiteSpacePaddedCode();
+		createAndPopulateOrganization();
+		createAndPopulateExpenseAssignment();
 	}
 
 	public void validateObjectOwners(int type)

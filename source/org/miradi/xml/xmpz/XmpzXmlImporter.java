@@ -52,14 +52,12 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		new DiagramFactorPoolImporter(this).importElement();
 		new CausePoolImporter(this).importElement();
 		new BiodiversityTargetPoolImporter(this).importElement();
+		new HumanWelfareTargetPoolImporter(this).importElement();
+		new StrategyPoolImporter(this).importElement();
 		
 		//FIXME uncomment and create pool importer classes
 		//new DiagramLinkPoolImporter(this).importElement();
 
-//		new DiagramLinkPoolExporter(this).exportXml();
-//		new BiodiversityTargetPoolExporter(this).exportXml();
-//		new HumanWelfareTargetPoolExporter(this).exportXml();
-//		new CausePoolExporter(this).exportXml();
 //		new StrategyPoolExporter(this).exportXml();
 //		new ThreatReductionResultsPoolExporter(this).exportXml();
 //		new IntermediateResultPoolExporter(this).exportXml();

@@ -24,6 +24,9 @@ import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.ProgressReport;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
@@ -72,5 +75,20 @@ abstract public class AbstractBaseObjectImporter extends AbstractXmpzObjectImpor
 		importField(node, destinationRef, BaseObject.TAG_LABEL);	
 	}
 	
+	protected void importProgressReportRefs(Node node, ORef destinationRef) throws Exception
+	{
+		importRefs(node, WcsXmlConstants.PROGRESS_REPORT_IDS, destinationRef, BaseObject.TAG_PROGRESS_REPORT_REFS, ProgressReport.getObjectType(), WcsXmlConstants.PROGRESS_REPORT + WcsXmlConstants.ID);
+	}
+	
+	protected void importExpenseAssignmentRefs(Node node, ORef destinationRef) throws Exception
+	{
+		importRefs(node, WcsXmlConstants.EXPENSE_IDS, destinationRef, BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, ExpenseAssignment.getObjectType(), WcsXmlConstants.EXPENSE_ASSIGNMENT + WcsXmlConstants.ID);
+	}
+
+	protected void importResourceAssignmentIds(Node node, ORef destinationRef) throws Exception
+	{
+		importIds(node, destinationRef, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType(), WcsXmlConstants.RESOURCE_ASSIGNMENT);
+	}
+
 	private int objectTypeToImport;
 }
