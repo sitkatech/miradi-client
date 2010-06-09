@@ -475,7 +475,7 @@ public class CommandExecutor
 			catch (Exception e)
 			{
 				if (command.isBeginTransaction())
-					throw new UnableToBeginTransactionException();
+					throw new UnableToBeginTransactionException(e);
 				
 				throw new CommandFailedException(e);
 			}

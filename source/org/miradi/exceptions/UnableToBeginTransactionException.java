@@ -22,5 +22,8 @@ package org.miradi.exceptions;
 
 public class UnableToBeginTransactionException extends Exception
 {
-
+	public UnableToBeginTransactionException(Exception e)
+	{
+		super(e);
+	}
 }
