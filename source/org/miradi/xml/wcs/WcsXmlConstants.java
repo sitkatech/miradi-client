@@ -65,6 +65,7 @@ public interface WcsXmlConstants
 	public static final String KEY_ECOLOGICAL_ATTRIBUTE = "KeyEcologicalAttribute";
 	public static final String STRESS = "Stress";
 	public static final String SUB_TARGET = "SubTarget";
+	public static final String SUB_TARGET_IDS_ELEMENT = "SubTargetIds";
 	public static final String GOAL = "Goal";
 	public static final String OBJECTIVE = "Objective";
 	public static final String INDICATOR = "Indicator";

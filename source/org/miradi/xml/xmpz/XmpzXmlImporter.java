@@ -51,6 +51,41 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		new ResultsChainDiagramPoolImporter(this).importElement();
 		new DiagramFactorPoolImporter(this).importElement();
 		new CausePoolImporter(this).importElement();
+		new BiodiversityTargetPoolImporter(this).importElement();
+		
+		//FIXME uncomment and create pool importer classes
+		//new DiagramLinkPoolImporter(this).importElement();
+
+//		new DiagramLinkPoolExporter(this).exportXml();
+//		new BiodiversityTargetPoolExporter(this).exportXml();
+//		new HumanWelfareTargetPoolExporter(this).exportXml();
+//		new CausePoolExporter(this).exportXml();
+//		new StrategyPoolExporter(this).exportXml();
+//		new ThreatReductionResultsPoolExporter(this).exportXml();
+//		new IntermediateResultPoolExporter(this).exportXml();
+//		new GroupBoxPoolExporter(this).exportXml();
+//		new TextBoxPoolExporter(this).exportXml();
+//		new ScopeBoxPoolExporter(this).exportXml();
+//		new KeyEcologicalAttributePoolExporter(this).exportXml();
+//		new StressPoolExporter(this).exportXml();
+//		new SubTargetPoolExporter(this).exportXml();
+//		new GoalPoolExporter(this).exportXml();
+//		new ObjectivePoolExporter(this).exportXml();
+//		new IndicatorPoolExporter(this).exportXml();
+//		new TaskPoolExporter(this).exportXml();
+//		new ProgressReportPoolExporter(this).exportXml();
+//		new ProgressPercentPoolExporter(this).exportXml();
+//		new MeasurementPoolExporter(this).exportXml();
+//		new AccountingCodePoolExporter(this).exportXml();
+//		new FundingSourcePoolExporter(this).exportXml();
+//		new ExpenseAssignmentPoolExporter(this).exportXml();
+//		new ResourceAssignmentPoolExporter(this).exportXml();
+//		new ThreatTargetThreatRatingElementExporter(this).exportXml();
+//		new IucnRedListspeciesPoolExporter(this).exportXml();
+//		new OtherNotableSpeciesPoolExporter(this).exportXml();
+//		new AudiencePoolExporter(this).exportXml();
+//		new ObjectTreeTableConfigurationPoolExporter(this).exportXml();
+
 	}
 
 	@Override

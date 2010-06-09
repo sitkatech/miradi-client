@@ -34,6 +34,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.TaggedObjectSet;
+import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
@@ -59,6 +60,8 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	public void testValidateFilledProject() throws Exception
 	{
 		createFilledDiagramFactor();
+		Target target = getProject().createTarget();
+		getProject().createGoal(target);
 		getProject().populateEverything();
 		createFilledResultsChainDiagram();
 		getProject().createDiagramFactorLink();
