@@ -40,7 +40,7 @@ public class TestCommandExecutor extends TestCaseWithProject
 		{
 			new CommandHandler(getProject());
 			getProject().getCommandExecutor().getNormalExecutor().executeCommand(new CommandBeginTransaction());
-			fail("Should have failed due to nesting");
+			fail("Should have thrown for exception during begin transaction");
 		}
 		catch (UnableToBeginTransactionException ignoreExpectedException)
 		{
