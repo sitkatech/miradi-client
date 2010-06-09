@@ -137,6 +137,27 @@ public abstract class ChoiceQuestion
 		return code;
 	}
 	
+	public String convertToInternalCode(String code)
+	{
+		if (hasReadableAlternativeDefaultCode() && isReadableAlternativeDefaultCode(code))
+			return getInternalDefaultCode(code);
+		
+		return code;
+	}
+	
+	protected String getInternalDefaultCode(String code)
+	{
+		return "";
+	}
+
+	protected boolean isReadableAlternativeDefaultCode(String code)
+	{
+		if (code.equals(getReadableAlternativeDefaultCode()))
+			return true;
+		
+		return false;
+	}
+
 	protected boolean hasReadableAlternativeDefaultCode()
 	{
 		return false;
