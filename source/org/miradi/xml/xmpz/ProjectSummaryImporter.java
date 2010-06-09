@@ -50,7 +50,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_DESCRIPTION);
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_STATUS);
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_NEXT_STEPS);
-		writeProjectId(projectSumaryNode);
+		importProjectId(projectSumaryNode);
 	}
 
 	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception
@@ -58,7 +58,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 		importField(projectSummaryNode, getMetadataRef(), tag);
 	}
 	
-	private void writeProjectId(Node projectSumaryNode) throws Exception
+	private void importProjectId(Node projectSumaryNode) throws Exception
 	{
 		Node projectIdNode = getImporter().getNode(projectSumaryNode, getPoolName() + Xenodata.TAG_PROJECT_ID);
 		NodeList projectIdNodes = getImporter().getNodes(projectIdNode, new String[]{Xenodata.TAG_PROJECT_ID, });

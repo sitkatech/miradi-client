@@ -233,7 +233,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		writer.endBlock();
 		
 		String[] subElements = new String[]{"attribute " + WcsXmlConstants.EXTERNAL_APP_THAT_ASSIGNED_ID + " {text}", "attribute " + ID + " {xsd:integer}"};
-		defineElement(writer, EXTERNAL_PROJECT_ID_ELEMENT, subElements);
+		defineElement(writer, EXTERNAL_SYSTEM_ID_ELEMENT, subElements);
 		
 		writer.defineAlias(WcsXmlConstants.DIAGRAM_POINT_ELEMENT_NAME + ".element", "element " + WcsXmlConstants.PREFIX + WcsXmlConstants.DIAGRAM_POINT_ELEMENT_NAME);
 		writer.startBlock();
