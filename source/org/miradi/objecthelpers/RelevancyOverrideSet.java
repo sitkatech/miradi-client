@@ -90,6 +90,7 @@ public class RelevancyOverrideSet extends HashSet<RelevancyOverride>
 		return find(ref) != null;
 	}
 	
+	@Override
 	public String toString()
 	{
 		if(size() == 0)
