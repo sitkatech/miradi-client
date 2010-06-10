@@ -59,7 +59,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		buttons.setGaps(3);
 		buttons.setBackground(AppPreferences.getDataPanelBackgroundColor());
 
-		add(buttons, BorderLayout.AFTER_LAST_LINE);
+		add(buttons, BorderLayout.BEFORE_FIRST_LINE);
 		setFocusCycleRoot(true);
 		getProject().addCommandExecutedListener(this);
 
