@@ -133,6 +133,7 @@ public class TagToElementNameMap implements WcsXmlConstants
 		indicatorMap.put(Indicator.TAG_DETAIL, "Details");
 		indicatorMap.put(Indicator.TAG_VIABILITY_RATINGS_COMMENT, "Comments");
 		indicatorMap.put(Indicator.TAG_FUTURE_STATUS_DETAIL, "FutureStatusDetails");
+		indicatorMap.put(Indicator.TAG_METHOD_IDS, WcsXmlConstants.METHOD_IDS);
 		
 		return indicatorMap;
 	}

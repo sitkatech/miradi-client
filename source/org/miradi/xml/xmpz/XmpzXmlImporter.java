@@ -58,6 +58,8 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		new IntermediateResultPoolImporter(this).importElement();
 		new GoalPoolImporter(this).importElement();
 		new ObjectivePoolImporter(this).importElement();
+		new IndicatorPoolImporter(this).importElement();
+		new MeasurementPoolImporter(this).importElement();
 		
 		//FIXME uncomment and create pool importer classes
 		//new DiagramLinkPoolImporter(this).importElement();
@@ -69,11 +71,9 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 //		new SubTargetPoolExporter(this).exportXml();
 //		new GoalPoolExporter(this).exportXml();
 //		new ObjectivePoolExporter(this).exportXml();
-//		new IndicatorPoolExporter(this).exportXml();
 //		new TaskPoolExporter(this).exportXml();
 //		new ProgressReportPoolExporter(this).exportXml();
 //		new ProgressPercentPoolExporter(this).exportXml();
-//		new MeasurementPoolExporter(this).exportXml();
 //		new AccountingCodePoolExporter(this).exportXml();
 //		new FundingSourcePoolExporter(this).exportXml();
 //		new ExpenseAssignmentPoolExporter(this).exportXml();
