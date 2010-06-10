@@ -948,6 +948,27 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(objective, Objective.TAG_PROGRESS_PERCENT_REFS, progressPercentRefs.toString());
 	}
 	
+	public void createAndPopulateGoal(Target targetOwner) throws Exception
+	{
+		Goal goal = createGoal(targetOwner);
+		
+		fillRelevantIndicators(goal);
+	}
+
+	private void fillRelevantIndicators(Goal goal) throws Exception
+	{
+		Cause cause = createCause();
+		Indicator indicator = createIndicator(cause);
+		ORefList relevantIndicatorRefs = new ORefList(indicator);
+		RelevancyOverrideSet relevantIndicators = new RelevancyOverrideSet();
+		for (int index = 0; index < relevantIndicatorRefs.size(); ++index)
+		{
+			relevantIndicators.add(new RelevancyOverride(relevantIndicatorRefs.get(index), true));
+		}
+			
+		fillObjectUsingCommand(goal, Goal.TAG_RELEVANT_INDICATOR_SET, relevantIndicators.toString());
+	}
+	
 	public void populateStrategy(Strategy strategy) throws Exception
 	{
 		fillObjectUsingCommand(strategy, Strategy.TAG_LABEL, "Some Strategy label");

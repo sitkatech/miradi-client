@@ -21,10 +21,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.RelevancyOverride;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.Desire;
+import org.miradi.objects.Indicator;
+import org.miradi.objects.Strategy;
+import org.miradi.objects.Task;
+import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
-//FIXME Class under construction 
 abstract public class DesirePoolImporter extends AbstractBaseObjectImporter
 {
 	public DesirePoolImporter(XmpzXmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
@@ -46,16 +52,32 @@ abstract public class DesirePoolImporter extends AbstractBaseObjectImporter
 		importRelevantStrategyIds(node, destinationRef);
 		importRelevantActivityIds(node, destinationRef);
 	}
-
-	private void importRelevantStrategyIds(Node node, ORef destinationRef)
-	{
-	}
-
+	
 	private void importRelevantIndicatorIds(Node node, ORef destinationRef) throws Exception
 	{
+		importRelevantRefs(node, destinationRef, Desire.TAG_RELEVANT_INDICATOR_SET, WcsXmlConstants.RELEVANT_INDICATOR_IDS, WcsXmlConstants.INDICATOR, Indicator.getObjectType());
+	}
+
+	private void importRelevantStrategyIds(Node node, ORef destinationRef) throws Exception
+	{
+		importRelevantRefs(node, destinationRef, Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, WcsXmlConstants.RELEVANT_STRATEGY_IDS, WcsXmlConstants.STRATEGY, Strategy.getObjectType());
 	}
 	
-	private void importRelevantActivityIds(Node node, ORef destinationRef)
+	private void importRelevantActivityIds(Node node, ORef destinationRef) throws Exception
 	{
+		importRelevantRefs(node, destinationRef, Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, WcsXmlConstants.RELEVANT_ACTIVITY_IDS, WcsXmlConstants.ACTIVITY, Task.getObjectType());
+	}
+
+	private void importRelevantRefs(Node node, ORef destinationRef,	String tag, String relevantIdsElement, String idElement, int objectType) throws Exception
+	{
+		ORefList relevantIndicatorRefs = extractRefs(node, relevantIdsElement, objectType, idElement + WcsXmlConstants.ID);
+		RelevancyOverrideSet relevantObjects = new RelevancyOverrideSet();
+		for(int index = 0; index < relevantIndicatorRefs.size(); ++index)
+		{
+			ORef ref = relevantIndicatorRefs.get(index);
+			relevantObjects.add(new RelevancyOverride(ref, true));
+		}
+		
+		getImporter().setData(destinationRef, tag, relevantObjects.toString());
 	}
 }

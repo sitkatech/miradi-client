@@ -135,10 +135,10 @@ abstract public class AbstractXmpzObjectImporter
 		getImporter().setData(destinationRef, destinationTag, importedRefs);
 	}
 
-	private ORefList extractRefs(Node node, String destinationTag, int idsType, String idElementName) throws Exception
+	protected ORefList extractRefs(Node node, String idsElementName, int idsType, String idElementName) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
-		String elementName = map.findElementName(getPoolName(), destinationTag);
+		String elementName = map.findElementName(getPoolName(), idsElementName);
 		NodeList idNodes = getImporter().getNodes(node, new String[]{getPoolName() + elementName, idElementName});
 		ORefList importedRefs = new ORefList();
 		for (int index = 0; index < idNodes.getLength(); ++index)
