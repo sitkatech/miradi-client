@@ -973,12 +973,32 @@ public class ProjectForTesting extends ProjectWithHelpers
 		addExpenseWithValue(strategy);
 		addProgressReport(strategy);
 	}
+	
+	public void createandpopulateThreatReductionResult() throws Exception
+	{
+		ThreatReductionResult threatReductionResult = createThreatReductionResult();
+		fillObjectWithSampleStringData(threatReductionResult.getRef(), ThreatReductionResult.TAG_LABEL);
+		fillObjectWithSampleStringData(threatReductionResult.getRef(), ThreatReductionResult.TAG_SHORT_LABEL);
+		fillObjectWithSampleStringData(threatReductionResult.getRef(), ThreatReductionResult.TAG_COMMENTS);
+		fillObjectWithSampleStringData(threatReductionResult.getRef(), ThreatReductionResult.TAG_TEXT);
+		addObjective(threatReductionResult);
+		
+		Cause threat = createCause();
+		fillObjectUsingCommand(threatReductionResult, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, threat.getRef().toString());
+	}
 
 	public void addProgressReport(BaseObject baseObject) throws Exception
 	{
 		ProgressReport progressReport = createAndPopulateProgressReport();
 		ORefList progressReportRefs = new ORefList(progressReport.getRef());
 		fillObjectUsingCommand(baseObject, BaseObject.TAG_PROGRESS_REPORT_REFS, progressReportRefs.toString());
+	}
+	
+	public void addObjective(Factor factor) throws Exception
+	{
+		IdList objectiveIds = new IdList(Objective.getObjectType());
+		objectiveIds.addRef(createAndPopulateObjective(factor).getRef());
+		fillObjectUsingCommand(factor, Factor.TAG_OBJECTIVE_IDS, objectiveIds.toString());
 	}
 	
 	public void populateProgressReport(ProgressReport progressReport) throws Exception
@@ -1150,6 +1170,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		countriesCodeList.add("AGO");
 		
 		return countriesCodeList;
+	}
+	
+	public void fillObjectWithSampleStringData(BaseObject baseObject, String fieldTag) throws Exception
+	{
+		fillObjectWithSampleStringData(baseObject.getRef(), fieldTag);
 	}
 	
 	public void fillObjectWithSampleStringData(ORef objectRef, String fieldTag) throws Exception
