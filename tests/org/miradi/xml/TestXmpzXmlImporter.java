@@ -62,6 +62,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		createFilledDiagramFactor();
 		Target target = getProject().createTarget();
 		getProject().createGoal(target);
+		getProject().createandpopulateThreatReductionResult();
 		getProject().populateEverything();
 		createFilledResultsChainDiagram();
 		getProject().createDiagramFactorLink();
