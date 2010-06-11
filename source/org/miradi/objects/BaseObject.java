@@ -687,8 +687,7 @@ abstract public class BaseObject
 		presentationDataFields = new HashSet();
 		nonClearedFieldTags = new Vector();
 
-		label = new StringData(TAG_LABEL);
-		addField(label);
+		addField(new StringData(TAG_LABEL));
 		addField(new IdListData(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType()));
 		addField(new ORefListData(TAG_EXPENSE_ASSIGNMENT_REFS));
 		addField(new ORefListData(TAG_PROGRESS_REPORT_REFS));
@@ -1389,6 +1388,4 @@ abstract public class BaseObject
 	private HashMap<String, ObjectData> fields;
 	private HashSet<String> presentationDataFields; 
 	private Vector<String> nonClearedFieldTags;
-	
-	private ObjectData label;
 }
