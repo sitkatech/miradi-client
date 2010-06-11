@@ -70,6 +70,9 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		new ProgressPercentPoolImporter(this).importElement();
 		new AccountingCodePoolImporter(this).importElement();
 		new FundingSourcePoolImporter(this).importElement();
+		new IucnRedListspeciesPoolImporter(this).importElement();
+		new OtherNotableSpeciesPoolImporter(this).importElement();
+		new AudiencePoolImporter(this).importElement();
 		
 		//FIXME uncomment and create pool importer classes
 		//new DiagramLinkPoolImporter(this).importElement();
@@ -77,9 +80,6 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 //		new ExpenseAssignmentPoolExporter(this).exportXml();
 //		new ResourceAssignmentPoolExporter(this).exportXml();
 //		new ThreatTargetThreatRatingElementExporter(this).exportXml();
-//		new IucnRedListspeciesPoolExporter(this).exportXml();
-//		new OtherNotableSpeciesPoolExporter(this).exportXml();
-//		new AudiencePoolExporter(this).exportXml();
 //		new ObjectTreeTableConfigurationPoolExporter(this).exportXml();
 
 	}
