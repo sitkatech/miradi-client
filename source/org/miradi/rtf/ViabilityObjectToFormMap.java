@@ -22,9 +22,8 @@ package org.miradi.rtf;
 import org.miradi.forms.HumanWelfareTargetPropertiesForm;
 import org.miradi.forms.PanelHolderSpec;
 import org.miradi.forms.PropertiesPanelSpec;
-import org.miradi.forms.objects.AccountingCodePropertiesForm;
 import org.miradi.forms.objects.ActivityPropertiesForm;
-import org.miradi.forms.objects.FundingSourcePropertiesForm;
+import org.miradi.forms.objects.BudgetCategoryPropertiesForm;
 import org.miradi.forms.objects.GoalPropertiesForm;
 import org.miradi.forms.objects.IndicatorPropertiesForm;
 import org.miradi.forms.objects.IntermediateResultsPropertiesForm;
@@ -107,10 +106,10 @@ public class ViabilityObjectToFormMap
 			return new ResourcePropertiesForm();
 		
 		if (FundingSource.is(objectType))
-			return new FundingSourcePropertiesForm();
+			return new BudgetCategoryPropertiesForm(objectType);
 		
 		if (AccountingCode.is(objectType))
-			return new AccountingCodePropertiesForm();
+			return new BudgetCategoryPropertiesForm(objectType);
 		
 		if (Organization.is(objectType))
 			return new OrganizationPropertiesForm();
