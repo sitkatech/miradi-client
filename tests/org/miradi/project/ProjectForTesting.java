@@ -48,6 +48,7 @@ import org.miradi.objecthelpers.StringMap;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.AccountingCode;
+import org.miradi.objects.Audience;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -61,10 +62,12 @@ import org.miradi.objects.FundingSource;
 import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Organization;
+import org.miradi.objects.OtherNotableSpecies;
 import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
@@ -697,6 +700,25 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return GroupBox.find(this, groupBoxRef);
 	}
 	
+	public Audience createAudience() throws Exception
+	{
+		ORef audienceRef = createObject(Audience.getObjectType());
+		
+		return Audience.find(this, audienceRef);
+	}
+	
+	public OtherNotableSpecies createOtherNotableSpecies() throws Exception
+	{
+		ORef otherNotableSpeciesRef = createObject(OtherNotableSpecies.getObjectType());
+		return OtherNotableSpecies.find(this, otherNotableSpeciesRef);
+	}
+	
+	public IucnRedlistSpecies createIucnRedlistSpecies() throws Exception
+	{
+		ORef iucnRedlistSpeciesRef = createObject(IucnRedlistSpecies.getObjectType());
+		return IucnRedlistSpecies.find(this, iucnRedlistSpeciesRef);
+	}
+	
 	public Strategy createStrategy() throws Exception
 	{
 		ORef strategyRef = createObject(Strategy.getObjectType(), new FactorId(takeNextId(Strategy.getObjectType())));
@@ -973,6 +995,23 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectWithSampleStringData(groupBox, GroupBox.TAG_LABEL);
 	}
 	
+	public void populateAudience(Audience audience) throws Exception
+	{
+		fillObjectWithSampleStringData(audience, Audience.TAG_LABEL);
+		fillObjectWithSampleStringData(audience, Audience.TAG_SUMMARY);
+		fillObjectUsingCommand(audience, Audience.TAG_PEOPLE_COUNT, "12");
+	}
+	
+	public void populateOtherNotableSpecies(OtherNotableSpecies otherNotableSpecies) throws Exception
+	{
+		fillObjectWithSampleStringData(otherNotableSpecies, OtherNotableSpecies.TAG_LABEL);
+	}
+	
+	public void populateIucnRedlistSpecies(IucnRedlistSpecies iucnRedlistSpecies) throws Exception
+	{
+		fillObjectWithSampleStringData(iucnRedlistSpecies, IucnRedlistSpecies.TAG_LABEL);
+	}
+	
 	public void populateObjective(Objective objective) throws Exception
 	{
 		fillObjectUsingCommand(objective, Objective.TAG_SHORT_LABEL, "123");
@@ -1016,7 +1055,25 @@ public class ProjectForTesting extends ProjectWithHelpers
 		GroupBox groupBox = createGroupBox();
 		populateGroupBox(groupBox);
 	}
-
+	
+	public void createAndPopulateAudience() throws Exception
+	{
+		Audience audience = createAudience();
+		populateAudience(audience);
+	}
+	
+	public void createAndPopulateOtherNotableSpecies() throws Exception
+	{
+		OtherNotableSpecies otherNotableSpecies = createOtherNotableSpecies();
+		populateOtherNotableSpecies(otherNotableSpecies);
+	}
+	
+	public void createAndPopulateIucnRedlistspecies() throws Exception
+	{
+		IucnRedlistSpecies iucnRedlistSpecies = createIucnRedlistSpecies();
+		populateIucnRedlistSpecies(iucnRedlistSpecies);
+	}
+	
 	private void fillRelevantIndicators(Goal goal) throws Exception
 	{
 		Cause cause = createCause();
@@ -1182,6 +1239,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateExpenseAssignment();
 		createAndPopulateTextBox();
 		createAndPopulateGroupBox();
+		createAndPopulateAudience();
+		createAndPopulateOtherNotableSpecies();
+		createAndPopulateIucnRedlistspecies();
 	}
 
 	public void validateObjectOwners(int type)
