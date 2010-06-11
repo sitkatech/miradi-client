@@ -22,7 +22,6 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FundingSourceId;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -69,12 +68,6 @@ public class FundingSource extends AbstractBudgetCategoryObject
 		return toString(EAM.text("Label|(Undefined Funding Source)"));
 	}
 
-	@Override
-	public String getFullName()
-	{
-		return toFullNameWithCode(code.get());
-	}
-	
 	public static FundingSource find(ObjectManager objectManager, ORef fundingSourceRef)
 	{
 		return (FundingSource) objectManager.findObject(fundingSourceRef);
@@ -100,22 +93,5 @@ public class FundingSource extends AbstractBudgetCategoryObject
 		return is(ref.getObjectType());
 	}
 			
-	public void clear()
-	{
-		super.clear();
-		
-		code = new StringData(TAG_CODE);
-		comments = new StringData(TAG_COMMENTS);
-		
-		addField(TAG_CODE, code);
-		addField(TAG_COMMENTS, comments);
-	}
-	
-	public static final String TAG_CODE = "Code";
-	public static final String TAG_COMMENTS = "Comments";
 	public static final String OBJECT_NAME = "FundingSource";
-	
-
-	StringData code;
-	StringData comments;
 }
