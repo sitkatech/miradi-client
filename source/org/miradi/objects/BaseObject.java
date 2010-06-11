@@ -441,7 +441,7 @@ abstract public class BaseObject
 		
 	public String getLabel()
 	{
-		return label.get();
+		return getData(TAG_LABEL);
 	}
 	
 	public String getShortLabel()
