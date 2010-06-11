@@ -81,6 +81,20 @@ abstract public class BaseObject
 		loadFromJson(json);
 	}
 	
+	public String getData(String fieldTag)
+	{
+		if(TAG_ID.equals(fieldTag))
+			return id.toString();
+		
+		if (TAG_EMPTY.equals(fieldTag))
+			return "";
+		
+		if(!doesFieldExist(fieldTag))
+			throw new RuntimeException("Attempted to get data for bad field: " + fieldTag + " in object type: " + getClass().getSimpleName());
+
+		return getField(fieldTag).get();
+	}
+
 	public void loadFromJson(EnhancedJsonObject json) throws Exception
 	{
 		Set<String> tags = getTags();
@@ -472,20 +486,6 @@ abstract public class BaseObject
 		return getField(fieldTag).isPseudoField();
 	}
 	
-	public String getData(String fieldTag)
-	{
-		if(TAG_ID.equals(fieldTag))
-			return id.toString();
-		
-		if (TAG_EMPTY.equals(fieldTag))
-			return "";
-		
-		if(!doesFieldExist(fieldTag))
-			throw new RuntimeException("Attempted to get data for bad field: " + fieldTag + " in object type: " + getClass().getSimpleName());
-
-		return getField(fieldTag).get();
-	}
-
 	public boolean doesFieldExist(String fieldTag)
 	{
 		return getFields().containsKey(fieldTag);
