@@ -68,12 +68,12 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		new GroupBoxPoolImporter(this).importElement();
 		new ProgressReportPoolImporter(this).importElement();
 		new ProgressPercentPoolImporter(this).importElement();
+		new AccountingCodePoolImporter(this).importElement();
+		new FundingSourcePoolImporter(this).importElement();
 		
 		//FIXME uncomment and create pool importer classes
 		//new DiagramLinkPoolImporter(this).importElement();
 //		new TaskPoolExporter(this).exportXml();
-//		new AccountingCodePoolExporter(this).exportXml();
-//		new FundingSourcePoolExporter(this).exportXml();
 //		new ExpenseAssignmentPoolExporter(this).exportXml();
 //		new ResourceAssignmentPoolExporter(this).exportXml();
 //		new ThreatTargetThreatRatingElementExporter(this).exportXml();
