@@ -72,6 +72,7 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
@@ -100,6 +101,7 @@ import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
+import org.miradi.questions.ScopeBoxTypeQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyFeasibilityQuestion;
@@ -346,6 +348,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return projectResource;
 	}
 	
+	public ScopeBox createAndPopulateScopeBox() throws Exception
+	{
+		ScopeBox scopeBox = createScopeBox();
+		populateScopeBox(scopeBox);
+		return scopeBox;
+	}
+	
 	public Target createAndPopulateTarget() throws Exception
 	{
 		Target target = createTarget();
@@ -556,6 +565,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return ProjectResource.find(this, projectResourceRef);
 	}
 	
+	public ScopeBox createScopeBox() throws Exception
+	{
+		ORef scopeBoxRef = createObject(ScopeBox.getObjectType());
+		
+		return ScopeBox.find(this, scopeBoxRef);
+	}
+	
 	public Target createTarget() throws Exception
 	{
 		ORef targetRef = createObject(Target.getObjectType(), new FactorId(takeNextId(Target.getObjectType())));
@@ -755,6 +771,15 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef organizationRef = createObject(Organization.getObjectType());
 		return Organization.find(this, organizationRef);
+	}
+	
+	public void populateScopeBox(ScopeBox scopeBox) throws Exception
+	{
+		fillObjectWithSampleStringData(scopeBox, ScopeBox.TAG_LABEL);
+		fillObjectWithSampleStringData(scopeBox, ScopeBox.TAG_SHORT_LABEL);
+		fillObjectWithSampleStringData(scopeBox, ScopeBox.TAG_TEXT);
+		fillObjectWithSampleStringData(scopeBox, ScopeBox.TAG_COMMENTS);
+		fillObjectUsingCommand(scopeBox, ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.HUMAN_WELFARE_TARGET_CODE);
 	}
 	
 	public void populateTarget(Target target) throws Exception
@@ -1101,6 +1126,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillWcsProjectData();
 		fillRareProjectData();
 		fillFosProjectData();
+		createAndPopulateScopeBox();
 		createAndPopulateDirectThreatLink();
 		createAndPopulateMeasurement();
 		createAndPopulateProjectResource();
