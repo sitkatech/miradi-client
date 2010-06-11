@@ -48,4 +48,20 @@ abstract public class PropertiesPanelSpec
 	{
 		return EAM.text("Sub classes need to override this method.");
 	}
+	
+	public static final int TYPE_VERY_SHORT_STRING = 1;
+	public static final int TYPE_FAIRLY_SHORT_STRING = 2;
+	public static final int TYPE_SINGLE_LINE_STRING = 3;
+	public static final int TYPE_EXPANDING_STRING = 4;
+	public static final int TYPE_MULTILINE_STRING = 5;
+
+	public static final int TYPE_INTEGER = 11;
+	public static final int TYPE_FLOAT = 12;
+	public static final int TYPE_CURRENCY = 13;
+
+	public static final int TYPE_DATE = 21;
+	
+	public static final int TYPE_SINGLE_CHOICE = 31;
+	public static final int TYPE_MULTIPLE_CHOICE = 32;
+	
 }

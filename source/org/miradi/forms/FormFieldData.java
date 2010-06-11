@@ -26,9 +26,22 @@ public class FormFieldData extends FieldRelatedFormItem
 		super(objectTypeToUse, objectTagToUse);
 	}
 	
+	public FormFieldData(int objectTypeToUse, String fieldTagToUse, int dataEntryTypeToUse)
+	{
+		this(objectTypeToUse, fieldTagToUse);
+		dataEntryType = dataEntryTypeToUse;
+	}
+
 	@Override
 	public boolean isFormFieldData()
 	{
 		return true;
 	}
+	
+	public int getDataEntryType()
+	{
+		return dataEntryType;
+	}
+	
+	private int dataEntryType;
 }
