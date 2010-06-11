@@ -210,13 +210,13 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		
 		Task activityWithNoSubTasksWithAssignment = getProject().createActivity();
 		addAssignment(activityWithNoSubTasksWithAssignment, 1.0, 2006, 2006);
-		assertEquals("assignment was not added?", 1, activityWithNoSubTasksWithAssignment.getResourceAssignmentIdList().size());
+		assertEquals("assignment was not added?", 1, activityWithNoSubTasksWithAssignment.getIdListData(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS).size());
 		DateRange whenRollup = activityWithNoSubTasksWithAssignment.getWhenRollup();
 		assertEquals("wrong combined date range?", "2006", whenRollup.toString());
 		
 		Task activityWithoutUnits = getProject().createActivity();
 		addAssignment(activityWithoutUnits, 0, 2003, 2003);
-		assertEquals("assignment was not added?", 1, activityWithoutUnits.getResourceAssignmentIdList().size());
+		assertEquals("assignment was not added?", 1, activityWithoutUnits.getIdListData(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS).size());
 		assertEquals("wrong combined date range?", "2003", activityWithoutUnits.getWhenRollup().toString());
 		
 		Task taskWithSubtasks = getProject().createActivity();
