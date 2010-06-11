@@ -1086,7 +1086,7 @@ abstract public class BaseObject
 				list.addAll(getRefListData(TAG_EXPENSE_ASSIGNMENT_REFS));
 				break;
 			case ObjectType.PROGRESS_REPORT:
-				list.addAll(getProgressReportRefs());
+				list.addAll(getRefListData(TAG_PROGRESS_REPORT_REFS));
 				break;
 		}
 		
@@ -1156,7 +1156,7 @@ abstract public class BaseObject
 
 	public ProgressReport getLatestProgressReport()
 	{
-		return (ProgressReport) getLatestObject(getObjectManager(), getProgressReportRefs(), ProgressReport.TAG_PROGRESS_DATE);
+		return (ProgressReport) getLatestObject(getObjectManager(), getRefListData(TAG_PROGRESS_REPORT_REFS), ProgressReport.TAG_PROGRESS_DATE);
 	}
 
 	protected static BaseObject getLatestObject(ObjectManager objectManagerToUse, ORefList objectRefs, String dateTag)
@@ -1195,11 +1195,6 @@ abstract public class BaseObject
 			ownerRef = owner.getOwnerRef();
 		}
 		return null;
-	}
-
-	public ORefList getProgressReportRefs()
-	{
-		return getRefListData(TAG_PROGRESS_REPORT_REFS);
 	}
 
 	public static BaseObject find(ObjectManager objectManager, ORef objectRef)

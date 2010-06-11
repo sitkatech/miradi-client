@@ -30,6 +30,7 @@ import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
@@ -248,7 +249,7 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_DATE, date);
 		getProject().fillObjectUsingCommand(progressReport, ProgressReport.TAG_DETAILS, details);
 		
-		ORefList progressReportRefs = indicator.getProgressReportRefs();
+		ORefList progressReportRefs = indicator.getRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS);
 		progressReportRefs.add(progressReport);
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_PROGRESS_REPORT_REFS, progressReportRefs);
 	}
