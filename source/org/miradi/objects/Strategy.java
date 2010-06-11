@@ -181,7 +181,7 @@ public class Strategy extends Factor
 	@Override
 	public String toString()
 	{
-		return combineShortLabelAndLabel(getShortLabel().toString(), label.toString());
+		return combineShortLabelAndLabel(getShortLabel(), getLabel());
 	}
 	
 	@Override
