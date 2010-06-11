@@ -74,6 +74,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		new OtherNotableSpeciesPoolImporter(this).importElement();
 		new AudiencePoolImporter(this).importElement();
 		new TaskPoolImporter(this).importElement();
+		new ObjectTreeTableConfigurationPoolImporter(this).importElement();
 		
 		//FIXME uncomment and create pool importer classes
 		//new DiagramLinkPoolImporter(this).importElement();
@@ -81,8 +82,6 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 //		new ExpenseAssignmentPoolExporter(this).exportXml();
 //		new ResourceAssignmentPoolExporter(this).exportXml();
 //		new ThreatTargetThreatRatingElementExporter(this).exportXml();
-//		new ObjectTreeTableConfigurationPoolExporter(this).exportXml();
-
 	}
 
 	@Override
