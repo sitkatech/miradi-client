@@ -22,8 +22,6 @@ package org.miradi.objects;
 import org.miradi.ids.AccountingCodeId;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.ObjectData;
-import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -73,12 +71,6 @@ public class AccountingCode extends AbstractBudgetCategoryObject
 		return toString(EAM.text("Label|(Undefined Accounting Code)"));
 	}
 	
-	@Override
-	public String getFullName()
-	{
-		return toFullNameWithCode(code.get());
-	}
-	
 	public static boolean is(BaseObject baseObject)
 	{
 		return is(baseObject.getType());
@@ -104,22 +96,6 @@ public class AccountingCode extends AbstractBudgetCategoryObject
 		return find(project.getObjectManager(), accountingCodeRef);
 	}
 		
-	@Override
-	public void clear()
-	{
-		super.clear();
-		
-		code = new StringData(TAG_CODE);
-		comments = new StringData(TAG_COMMENTS);
-		
-		addField(TAG_CODE, code);
-		addField(TAG_COMMENTS, comments);
-	}
-	
-	public static final String TAG_CODE = "Code";
-	public static final String TAG_COMMENTS = "Comments";
 	public static final String OBJECT_NAME = "AccountingCode";
 
-	private ObjectData code;
-	private ObjectData comments;
 }
