@@ -191,14 +191,11 @@ public class ResourceAssignment extends Assignment
 		resourceIdData = new BaseIdData(TAG_RESOURCE_ID, ProjectResource.getObjectType());
 		accountingIdData = new BaseIdData(TAG_ACCOUNTING_CODE, AccountingCode.getObjectType());
 		fundingIdData = new BaseIdData(TAG_FUNDING_SOURCE, FundingSource.getObjectType());
-		pseudoProjectResourceLabel = new PseudoStringData(PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
-		pseudoOwningFactorNameLabel = new PseudoStringData(PSEUDO_TAG_OWNING_FACTOR_NAME);
-		
 		addField(TAG_RESOURCE_ID, resourceIdData);
 		addField(TAG_ACCOUNTING_CODE, accountingIdData);
 		addField(TAG_FUNDING_SOURCE, fundingIdData);
-		addField(PSEUDO_TAG_PROJECT_RESOURCE_LABEL, pseudoProjectResourceLabel);
-		addField(PSEUDO_TAG_OWNING_FACTOR_NAME, pseudoOwningFactorNameLabel);
+		addField(PSEUDO_TAG_PROJECT_RESOURCE_LABEL, new PseudoStringData(PSEUDO_TAG_PROJECT_RESOURCE_LABEL));
+		addField(PSEUDO_TAG_OWNING_FACTOR_NAME, new PseudoStringData(PSEUDO_TAG_OWNING_FACTOR_NAME));
 	}
 	
 	public static final String TAG_RESOURCE_ID = "ResourceId";
@@ -213,6 +210,4 @@ public class ResourceAssignment extends Assignment
 	private ObjectData resourceIdData;
 	private ObjectData accountingIdData;
 	private ObjectData fundingIdData;
-	private ObjectData pseudoProjectResourceLabel;
-	private ObjectData pseudoOwningFactorNameLabel;
 }
