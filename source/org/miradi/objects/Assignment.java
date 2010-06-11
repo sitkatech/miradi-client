@@ -104,7 +104,7 @@ abstract public class Assignment extends BaseObject
 	public void clear()
 	{
 		super.clear();
-		addField(TAG_DATEUNIT_EFFORTS, new DateUnitEffortListData(TAG_DATEUNIT_EFFORTS));
+		addField(new DateUnitEffortListData(TAG_DATEUNIT_EFFORTS));
 	}
 	
 	protected TimePeriodCostsMap convertDateUnitEffortList() throws Exception
