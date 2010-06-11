@@ -94,6 +94,15 @@ abstract public class BaseObject
 
 		return getField(fieldTag).get();
 	}
+	
+	public IdList getIdListData(String fieldTag)
+	{
+		ObjectData field = getField(fieldTag);
+		if(!field.isIdListData())
+			throw new RuntimeException("Attempted to get IdList data from non-IdList field " + fieldTag);
+		
+		return ((IdListData)field).getIdList().createClone();
+	}
 
 	public void loadFromJson(EnhancedJsonObject json) throws Exception
 	{
@@ -1077,7 +1086,7 @@ abstract public class BaseObject
 	
 	public IdList getResourceAssignmentIdList()
 	{
-		return resourceAssignmentIds.getIdList().createClone();
+		return getIdListData(TAG_RESOURCE_ASSIGNMENT_IDS);
 	}
 	
 	public ORefList getResourceAssignmentRefs()
