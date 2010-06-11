@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-11 11:29-0500\n"
+"POT-Creation-Date: 2010-06-11 16:41-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7128,7 +7128,7 @@ msgstr ""
 msgid "Title|About Miradi"
 msgstr "Tentang Miradi "
 
-#: Miradi/source/org/miradi/dialogs/accountingcode/AccountingCodePropertiesPanel.java:45
+#: Miradi/source/org/miradi/dialogs/accountingcode/AccountingCodePropertiesPanel.java:44
 msgid "Title|Accounting Code Properties"
 msgstr "Sifat-sifat Kode Akuntansi "
 

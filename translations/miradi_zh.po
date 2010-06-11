@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-11 11:29-0500\n"
+"POT-Creation-Date: 2010-06-11 16:41-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -6866,7 +6866,7 @@ msgstr ""
 msgid "Title|About Miradi"
 msgstr "关于Miradi \t\t"
 
-#: Miradi/source/org/miradi/dialogs/accountingcode/AccountingCodePropertiesPanel.java:45
+#: Miradi/source/org/miradi/dialogs/accountingcode/AccountingCodePropertiesPanel.java:44
 msgid "Title|Accounting Code Properties"
 msgstr "会计代码属性"
 
