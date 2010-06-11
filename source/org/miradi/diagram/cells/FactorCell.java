@@ -206,11 +206,6 @@ abstract public class FactorCell extends EAMGraphCell
 		return getWrappedFactor().getLabel();
 	}
 	
-	public void setLabel(String name) throws Exception
-	{
-		getWrappedFactor().setLabel(name);
-	}
-
 	public void setNodeType(FactorType typeToUse)
 	{
 		setColors();
