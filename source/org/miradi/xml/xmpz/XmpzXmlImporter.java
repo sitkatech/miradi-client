@@ -64,11 +64,11 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		new KeyEcologicalAttributePoolImporter(this).importElement();
 		new ScopeBoxPoolImporter(this).importElement();
 		new SubTargetPoolImporter(this).importElement();
+		new TextBoxPoolImporter(this).importElement();
 		
 		//FIXME uncomment and create pool importer classes
 		//new DiagramLinkPoolImporter(this).importElement();
 //		new GroupBoxPoolExporter(this).exportXml();
-//		new TextBoxPoolExporter(this).exportXml();
 //		new TaskPoolExporter(this).exportXml();
 //		new ProgressReportPoolExporter(this).exportXml();
 //		new ProgressPercentPoolExporter(this).exportXml();
