@@ -49,8 +49,8 @@ abstract public class AbstractBudgetCategoryObject extends BaseObject
 	{
 		super.clear();
 		
-		code = new StringData(TAG_CODE);
-		comments = new StringData(TAG_COMMENTS);
+		ObjectData code = new StringData(TAG_CODE);
+		ObjectData comments = new StringData(TAG_COMMENTS);
 		
 		addField(TAG_CODE, code);
 		addField(TAG_COMMENTS, comments);
@@ -58,7 +58,4 @@ abstract public class AbstractBudgetCategoryObject extends BaseObject
 	
 	public static final String TAG_CODE = "Code";
 	public static final String TAG_COMMENTS = "Comments";
-
-	private ObjectData code;
-	private ObjectData comments;
 }
