@@ -1403,7 +1403,7 @@ abstract public class BaseObject
 	private Vector<String> nonClearedFieldTags;
 	
 	protected StringData label;
-	protected PseudoStringData whenTotal;
+	private PseudoStringData whenTotal;
 	private ObjectData latestProgressReport;
 	private ObjectData latestProgressReportDetails;
 	private ObjectData resourceAssignmentIds;
