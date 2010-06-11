@@ -1402,7 +1402,7 @@ abstract public class BaseObject
 	private HashSet<String> presentationDataFields; 
 	private Vector<String> nonClearedFieldTags;
 	
-	private StringData label;
+	protected StringData label;
 	protected PseudoStringData whenTotal;
 	private ObjectData latestProgressReport;
 	private ObjectData latestProgressReportDetails;
