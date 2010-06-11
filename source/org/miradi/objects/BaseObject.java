@@ -1413,6 +1413,6 @@ abstract public class BaseObject
 	private PseudoQuestionData latestProgressReport;
 	private PseudoStringData latestProgressReportDetails;
 	protected ObjectData resourceAssignmentIds;
-	protected ORefListData expenseAssignmentRefs;
+	protected ObjectData expenseAssignmentRefs;
 	protected ORefListData progressReportRefs;
 }
