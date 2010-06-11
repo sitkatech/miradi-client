@@ -44,6 +44,11 @@ public class ORef implements Comparable<ORef>
 		objectId = json.getId(TAG_OBJECT_ID);
 	}
 	
+	public ORef(ORef ref)
+	{
+		this(ref.getObjectType(), ref.getObjectId());
+	}
+
 	public static ORef createFromString(String orefAsJsonString)
 	{
 		try
