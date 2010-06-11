@@ -33,6 +33,12 @@ public class BaseIdData extends ObjectData
 	}
 	
 	@Override
+	public boolean isBaseIdData()
+	{
+		return true;
+	}
+	
+	@Override
 	public String get()
 	{
 		if(id.isInvalid())

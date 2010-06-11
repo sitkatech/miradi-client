@@ -59,6 +59,11 @@ abstract public class ObjectData
 		return false;
 	}
 	
+	public boolean isBaseIdData()
+	{
+		return false;
+	}
+
 	public boolean isRefData()
 	{
 		return false;
