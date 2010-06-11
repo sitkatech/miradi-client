@@ -103,6 +103,15 @@ abstract public class BaseObject
 		
 		return ((IdListData)field).getIdList().createClone();
 	}
+	
+	public ORefList getRefListData(String fieldTag)
+	{
+		ObjectData field = getField(fieldTag);
+		if(!field.isRefListData())
+			throw new RuntimeException("Attempted to get RefList data from non-RefList field " + fieldTag);
+
+		return ((ORefListData)field).getRefList();
+	}
 
 	public void loadFromJson(EnhancedJsonObject json) throws Exception
 	{
@@ -1091,7 +1100,7 @@ abstract public class BaseObject
 	
 	public ORefList getExpenseAssignmentRefs()
 	{
-		return expenseAssignmentRefs.getRefList();
+		return getRefListData(TAG_EXPENSE_ASSIGNMENT_REFS);
 	}
 	
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
