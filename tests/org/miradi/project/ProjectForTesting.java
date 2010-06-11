@@ -1688,7 +1688,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ExpenseAssignment assignment = ExpenseAssignment.find(this, expenseRef);
 		assignment.setData(ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
 		
-		ORefList currentAssignmentRefList = baseObject.getExpenseAssignmentRefs();
+		ORefList currentAssignmentRefList = baseObject.getRefListData(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS);
 		currentAssignmentRefList.add(assignment.getRef());
 		baseObject.setData(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, currentAssignmentRefList.toString());
 		

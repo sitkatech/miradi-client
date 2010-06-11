@@ -53,7 +53,7 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 	
 	protected void writeExpenseAssignmentIds(BaseObject baseObject) throws Exception
 	{
-		writeIds(WcsXmlConstants.EXPENSE_IDS, WcsXmlConstants.EXPENSE_ASSIGNMENT, baseObject.getExpenseAssignmentRefs());
+		writeIds(WcsXmlConstants.EXPENSE_IDS, WcsXmlConstants.EXPENSE_ASSIGNMENT, baseObject.getRefListData(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS));
 	}
 	
 	protected void writeResourceAssignmentIds(BaseObject baseObject) throws Exception
