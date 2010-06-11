@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-09 14:02-0500\n"
+"POT-Creation-Date: 2010-06-11 11:29-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -3988,11 +3988,11 @@ msgstr "Atributo clave "
 msgid "Key Ecological Attribute (KEA)"
 msgstr "Atributos ecológicos clave (AEC)"
 
-#: Miradi/source/org/miradi/objects/AccountingCode.java:73
+#: Miradi/source/org/miradi/objects/AccountingCode.java:71
 msgid "Label|(Undefined Accounting Code)"
 msgstr "(Código contable sin definir)"
 
-#: Miradi/source/org/miradi/objects/FundingSource.java:69
+#: Miradi/source/org/miradi/objects/FundingSource.java:68
 msgid "Label|(Undefined Funding Source)"
 msgstr "(Fuente de financiamiento sin definir)"
 
