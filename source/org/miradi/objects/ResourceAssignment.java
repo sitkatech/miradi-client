@@ -120,13 +120,13 @@ public class ResourceAssignment extends Assignment
 	@Override
 	public ORef getFundingSourceRef()
 	{
-		return getRefData(TAG_FUNDING_SOURCE);
+		return getRefData(TAG_FUNDING_SOURCE_ID);
 	}
 	
 	@Override
 	public ORef getAccountingCodeRef()
 	{
-		return getRefData(TAG_ACCOUNTING_CODE);
+		return getRefData(TAG_ACCOUNTING_CODE_ID);
 	}
 	
 	public ORef getResourceRef()
@@ -189,18 +189,18 @@ public class ResourceAssignment extends Assignment
 	{
 		super.clear();
 		resourceIdData = new BaseIdData(TAG_RESOURCE_ID, ProjectResource.getObjectType());
-		accountingIdData = new BaseIdData(TAG_ACCOUNTING_CODE, AccountingCode.getObjectType());
-		fundingIdData = new BaseIdData(TAG_FUNDING_SOURCE, FundingSource.getObjectType());
+		accountingIdData = new BaseIdData(TAG_ACCOUNTING_CODE_ID, AccountingCode.getObjectType());
+		fundingIdData = new BaseIdData(TAG_FUNDING_SOURCE_ID, FundingSource.getObjectType());
 		addField(TAG_RESOURCE_ID, resourceIdData);
-		addField(TAG_ACCOUNTING_CODE, accountingIdData);
-		addField(TAG_FUNDING_SOURCE, fundingIdData);
+		addField(TAG_ACCOUNTING_CODE_ID, accountingIdData);
+		addField(TAG_FUNDING_SOURCE_ID, fundingIdData);
 		addField(PSEUDO_TAG_PROJECT_RESOURCE_LABEL, new PseudoStringData(PSEUDO_TAG_PROJECT_RESOURCE_LABEL));
 		addField(PSEUDO_TAG_OWNING_FACTOR_NAME, new PseudoStringData(PSEUDO_TAG_OWNING_FACTOR_NAME));
 	}
 	
 	public static final String TAG_RESOURCE_ID = "ResourceId";
-	public static final String TAG_ACCOUNTING_CODE = "AccountingCode";
-	public static final String TAG_FUNDING_SOURCE = "FundingSource";
+	public static final String TAG_ACCOUNTING_CODE_ID = "AccountingCode";
+	public static final String TAG_FUNDING_SOURCE_ID = "FundingSource";
 	public static final String PSEUDO_TAG_PROJECT_RESOURCE_LABEL = "PseudoTagProjectResourceLabel";
 	public static final String PSEUDO_TAG_OWNING_FACTOR_NAME = "PseudoTagOwningFactorName";
 	

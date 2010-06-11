@@ -160,10 +160,10 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		project.setObjectData(assignmentRef, ResourceAssignment.TAG_RESOURCE_ID, projectResourceId.toString());
 		
 		BaseId accountingCodeId = project.createObjectAndReturnId(ObjectType.ACCOUNTING_CODE);
-		project.setObjectData(assignmentRef, ResourceAssignment.TAG_ACCOUNTING_CODE, accountingCodeId.toString());
+		project.setObjectData(assignmentRef, ResourceAssignment.TAG_ACCOUNTING_CODE_ID, accountingCodeId.toString());
 		
 		BaseId fundingSourceId = project.createObjectAndReturnId(ObjectType.FUNDING_SOURCE);
-		project.setObjectData(assignmentRef, ResourceAssignment.TAG_FUNDING_SOURCE, fundingSourceId.toString());
+		project.setObjectData(assignmentRef, ResourceAssignment.TAG_FUNDING_SOURCE_ID, fundingSourceId.toString());
 		
 		//----------- start test -----------
 		
