@@ -1199,7 +1199,7 @@ abstract public class BaseObject
 
 	public ORefList getProgressReportRefs()
 	{
-		return progressReportRefs.getRefList();
+		return getRefListData(TAG_PROGRESS_REPORT_REFS);
 	}
 
 	public static BaseObject find(ObjectManager objectManager, ORef objectRef)
