@@ -40,6 +40,7 @@ import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.IdListData;
+import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.StringData;
@@ -111,6 +112,15 @@ abstract public class BaseObject
 			throw new RuntimeException("Attempted to get RefList data from non-RefList field " + fieldTag);
 
 		return new ORefList(((ORefListData)field).getRefList());
+	}
+	
+	public ORef getRefData(String fieldTag)
+	{
+		ObjectData field = getField(fieldTag);
+		if(!field.isRefData())
+			throw new RuntimeException("Attempted to get Ref data from non-Ref field " + fieldTag);
+
+		return new ORef(((ORefData)field).getRef());
 	}
 
 	public void loadFromJson(EnhancedJsonObject json) throws Exception
