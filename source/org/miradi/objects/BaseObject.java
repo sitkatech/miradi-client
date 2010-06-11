@@ -1407,7 +1407,7 @@ abstract public class BaseObject
 	
 	private ObjectData latestProgressReport;
 	private ObjectData latestProgressReportDetails;
-	protected ObjectData resourceAssignmentIds;
-	protected ObjectData expenseAssignmentRefs;
-	protected ObjectData progressReportRefs;
+	private ObjectData resourceAssignmentIds;
+	private ObjectData expenseAssignmentRefs;
+	private ObjectData progressReportRefs;
 }
