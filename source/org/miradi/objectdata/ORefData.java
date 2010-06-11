@@ -49,6 +49,12 @@ public class ORefData extends ObjectData
 	}
 	
 	@Override
+	public boolean isRefData()
+	{
+		return true;
+	}
+	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof ORefData))
