@@ -41,7 +41,7 @@ abstract public class AbstractBudgetCategoryObject extends BaseObject
 	@Override
 	public String getFullName()
 	{
-		return toFullNameWithCode(code.get());
+		return toFullNameWithCode(getData(TAG_CODE));
 	}
 	
 	@Override
