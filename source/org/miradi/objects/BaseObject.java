@@ -689,25 +689,17 @@ abstract public class BaseObject
 	void clear()
 	{
 		label = new StringData(TAG_LABEL);
-		ObjectData resourceAssignmentIds = new IdListData(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
-		ObjectData expenseAssignmentRefs = new ORefListData(TAG_EXPENSE_ASSIGNMENT_REFS);
-		ObjectData progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
-		ObjectData whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
-		 
-		ObjectData latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, createSet(TAG_PROGRESS_REPORT_REFS), new ProgressReportLongStatusQuestion());
-		ObjectData latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
-
 		fields = new HashMap();
 		presentationDataFields = new HashSet();
 		nonClearedFieldTags = new Vector();
 		addField(label);
-		addField(resourceAssignmentIds);
-		addField(expenseAssignmentRefs);
-		addField(progressReportRefs);
+		addField(new IdListData(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType()));
+		addField(new ORefListData(TAG_EXPENSE_ASSIGNMENT_REFS));
+		addField(new ORefListData(TAG_PROGRESS_REPORT_REFS));
 		
-		addField(whenTotal);
-		addField(latestProgressReport);
-		addField(latestProgressReportDetails);
+		addField(new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL));
+		addField(new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, createSet(TAG_PROGRESS_REPORT_REFS), new ProgressReportLongStatusQuestion()));
+		addField(new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS));
 	}
 	
 	public static HashSet<String> createSet(String parentTagToUse)
