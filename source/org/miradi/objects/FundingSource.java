@@ -29,7 +29,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class FundingSource extends BaseObject
+public class FundingSource extends AbstractBudgetCategoryObject
 {
 	public FundingSource(ObjectManager objectManager, BaseId idToUse)
 	{
