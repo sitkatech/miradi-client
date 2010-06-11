@@ -54,19 +54,21 @@ public class ExpenseAssignment extends Assignment
 	@Override
 	public ORef getFundingSourceRef()
 	{
-		if (fundingSourceRef.getRef().isInvalid())
+		ORef ref = fundingSourceRef.getRef();
+		if (ref.isInvalid())
 			return ORef.createInvalidWithType(FundingSource.getObjectType());
 		
-		return fundingSourceRef.getRef();
+		return ref;
 	}
 	
 	@Override
 	public ORef getAccountingCodeRef()
 	{
-		if (accountingCodeRef.getRef().isInvalid())
+		ORef ref = accountingCodeRef.getRef();
+		if (ref.isInvalid())
 			return ORef.createInvalidWithType(AccountingCode.getObjectType());
 		
-		return accountingCodeRef.getRef();
+		return ref;
 	}
 	
 	@Override
