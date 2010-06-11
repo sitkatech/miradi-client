@@ -96,7 +96,7 @@ abstract public class AbstractBaseObjectImporter extends AbstractXmpzObjectImpor
 
 	protected void importResourceAssignmentIds(Node node, ORef destinationRef) throws Exception
 	{
-		importIds(node, destinationRef, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType(), WcsXmlConstants.RESOURCE_ASSIGNMENT);
+		importIds(node, destinationRef, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType(), WcsXmlConstants.RESOURCE_ASSIGNMENT + WcsXmlConstants.ID);
 	}
 	
 	protected void importIndicatorIds(Node node, ORef destinationRef) throws Exception

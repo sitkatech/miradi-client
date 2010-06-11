@@ -73,6 +73,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		new IucnRedListspeciesPoolImporter(this).importElement();
 		new OtherNotableSpeciesPoolImporter(this).importElement();
 		new AudiencePoolImporter(this).importElement();
+		new TaskPoolImporter(this).importElement();
 		
 		//FIXME uncomment and create pool importer classes
 		//new DiagramLinkPoolImporter(this).importElement();
