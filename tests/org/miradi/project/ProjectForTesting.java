@@ -690,6 +690,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return TextBox.find(this, textBoxRef);
 	}
 	
+	public GroupBox createGroupBox() throws Exception
+	{
+		ORef groupBoxRef = createObject(GroupBox.getObjectType());
+		
+		return GroupBox.find(this, groupBoxRef);
+	}
+	
 	public Strategy createStrategy() throws Exception
 	{
 		ORef strategyRef = createObject(Strategy.getObjectType(), new FactorId(takeNextId(Strategy.getObjectType())));
@@ -961,6 +968,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectWithSampleStringData(textBox, TextBox.TAG_LABEL);
 	}
 	
+	public void populateGroupBox(GroupBox groupBox) throws Exception
+	{
+		fillObjectWithSampleStringData(groupBox, GroupBox.TAG_LABEL);
+	}
+	
 	public void populateObjective(Objective objective) throws Exception
 	{
 		fillObjectUsingCommand(objective, Objective.TAG_SHORT_LABEL, "123");
@@ -997,6 +1009,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		TextBox textBox = createTextBox();	
 		populateTextBox(textBox);
+	}
+	
+	public void createAndPopulateGroupBox() throws Exception
+	{
+		GroupBox groupBox = createGroupBox();
+		populateGroupBox(groupBox);
 	}
 
 	private void fillRelevantIndicators(Goal goal) throws Exception
@@ -1163,6 +1181,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateOrganization();
 		createAndPopulateExpenseAssignment();
 		createAndPopulateTextBox();
+		createAndPopulateGroupBox();
 	}
 
 	public void validateObjectOwners(int type)
