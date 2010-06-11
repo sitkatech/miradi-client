@@ -122,6 +122,7 @@ public class TagToElementNameMap implements WcsXmlConstants
 		HashMap<String, String> taskMap = new HashMap<String, String>();
 		taskMap.put(Task.TAG_LABEL, "Name");
 		taskMap.put(Task.TAG_SHORT_LABEL, "Id");
+		taskMap.put(Task.TAG_SUBTASK_IDS, WcsXmlConstants.SUB_TASK_IDS);
 		return taskMap;
 	}
 
