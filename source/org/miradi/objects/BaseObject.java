@@ -1405,8 +1405,8 @@ abstract public class BaseObject
 	private HashSet<String> presentationDataFields; 
 	private Vector<String> nonClearedFieldTags;
 	
-	private PseudoQuestionData latestProgressReport;
-	private PseudoStringData latestProgressReportDetails;
+	private ObjectData latestProgressReport;
+	private ObjectData latestProgressReportDetails;
 	protected ObjectData resourceAssignmentIds;
 	protected ObjectData expenseAssignmentRefs;
 	protected ObjectData progressReportRefs;
