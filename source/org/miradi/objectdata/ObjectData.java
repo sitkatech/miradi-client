@@ -64,6 +64,11 @@ abstract public class ObjectData
 		return false;
 	}
 	
+	public boolean isRefListData()
+	{
+		return false;
+	}
+	
 	public boolean isChoiceItemData()
 	{
 		return false;

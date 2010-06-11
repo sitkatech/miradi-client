@@ -56,6 +56,12 @@ public class ORefListData extends ObjectData
 	}
 	
 	@Override
+	public boolean isRefListData()
+	{
+		return true;
+	}
+	
+	@Override
 	public int hashCode()
 	{
 		return toString().hashCode();
