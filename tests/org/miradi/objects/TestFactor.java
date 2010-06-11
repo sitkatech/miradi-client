@@ -85,7 +85,7 @@ public class TestFactor extends TestCaseWithProject
 
 		FactorId factorId = new FactorId(2342);
 		Cause factor = new Cause(getObjectManager(), factorId);
-		factor.setLabel("JustAName");
+		factor.setData(BaseObject.TAG_LABEL, "JustAName");
 		factor.setComment("This is a great comment");
 		factor.setIndicators(indicators);
 		factor.setObjectives(objectives);
@@ -108,7 +108,7 @@ public class TestFactor extends TestCaseWithProject
 		
 		FactorId factorId = new FactorId(2342);
 		Target factor = new Target(getObjectManager(), factorId);
-		factor.setLabel("JustAName");
+		factor.setData(BaseObject.TAG_LABEL, "JustAName");
 		factor.setComment("This is a great comment");
 		factor.setGoals(goals);
 		Target got = (Target)Factor.createFromJson(getObjectManager(), factor.getType(), factor.toJson());

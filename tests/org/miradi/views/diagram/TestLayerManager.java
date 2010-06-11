@@ -29,6 +29,7 @@ import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
@@ -50,13 +51,13 @@ public class TestLayerManager extends EAMTestCase
 		project = new ProjectForTesting(getName());
 		ORef targetRef = project.createObject(Target.getObjectType());
 		cmTarget = (Target) Factor.findFactor(project, targetRef);
-		cmTarget.setLabel("Target");
+		cmTarget.setData(BaseObject.TAG_LABEL, "Target");
 		ORef causeRef = project.createObject(Cause.getObjectType());
 		cmFactor = (Cause) Factor.findFactor(project, causeRef);
-		cmFactor.setLabel("Factor");
+		cmFactor.setData(BaseObject.TAG_LABEL, "Factor");
 		ORef strategyRef = project.createObject(Strategy.getObjectType());
 		cmIntervention = (Strategy) Factor.findFactor(project, strategyRef);
-		cmIntervention.setLabel("Strategy");
+		cmIntervention.setData(BaseObject.TAG_LABEL, "Strategy");
 		
 		target = project.createFactorCell(ObjectType.TARGET);
 		factor = project.createFactorCell(ObjectType.CAUSE);
