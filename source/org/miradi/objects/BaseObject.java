@@ -110,7 +110,7 @@ abstract public class BaseObject
 		if(!field.isRefListData())
 			throw new RuntimeException("Attempted to get RefList data from non-RefList field " + fieldTag);
 
-		return ((ORefListData)field).getRefList();
+		return new ORefList(((ORefListData)field).getRefList());
 	}
 
 	public void loadFromJson(EnhancedJsonObject json) throws Exception
