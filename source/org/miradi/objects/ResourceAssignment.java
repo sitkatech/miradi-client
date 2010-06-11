@@ -22,7 +22,6 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.ResourceAssignmentId;
 import org.miradi.objectdata.BaseIdData;
-import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -188,12 +187,9 @@ public class ResourceAssignment extends Assignment
 	public void clear()
 	{
 		super.clear();
-		resourceIdData = new BaseIdData(TAG_RESOURCE_ID, ProjectResource.getObjectType());
-		accountingIdData = new BaseIdData(TAG_ACCOUNTING_CODE_ID, AccountingCode.getObjectType());
-		fundingIdData = new BaseIdData(TAG_FUNDING_SOURCE_ID, FundingSource.getObjectType());
-		addField(TAG_RESOURCE_ID, resourceIdData);
-		addField(TAG_ACCOUNTING_CODE_ID, accountingIdData);
-		addField(TAG_FUNDING_SOURCE_ID, fundingIdData);
+		addField(TAG_RESOURCE_ID, new BaseIdData(TAG_RESOURCE_ID, ProjectResource.getObjectType()));
+		addField(TAG_ACCOUNTING_CODE_ID, new BaseIdData(TAG_ACCOUNTING_CODE_ID, AccountingCode.getObjectType()));
+		addField(TAG_FUNDING_SOURCE_ID, new BaseIdData(TAG_FUNDING_SOURCE_ID, FundingSource.getObjectType()));
 		addField(PSEUDO_TAG_PROJECT_RESOURCE_LABEL, new PseudoStringData(PSEUDO_TAG_PROJECT_RESOURCE_LABEL));
 		addField(PSEUDO_TAG_OWNING_FACTOR_NAME, new PseudoStringData(PSEUDO_TAG_OWNING_FACTOR_NAME));
 	}
@@ -206,8 +202,4 @@ public class ResourceAssignment extends Assignment
 	
 	
 	public static final String OBJECT_NAME = "ResourceAssignment";
-	
-	private ObjectData resourceIdData;
-	private ObjectData accountingIdData;
-	private ObjectData fundingIdData;
 }
