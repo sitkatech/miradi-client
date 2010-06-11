@@ -30,7 +30,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class AccountingCode extends BaseObject
+public class AccountingCode extends AbstractBudgetCategoryObject
 {
 	public AccountingCode(ObjectManager objectManager, BaseId idToUse)
 	{
