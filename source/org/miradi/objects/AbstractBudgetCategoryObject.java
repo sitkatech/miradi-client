@@ -48,8 +48,8 @@ abstract public class AbstractBudgetCategoryObject extends BaseObject
 	{
 		super.clear();
 		
-		addField(TAG_CODE, new StringData(TAG_CODE));
-		addField(TAG_COMMENTS, new StringData(TAG_COMMENTS));
+		addField(new StringData(TAG_CODE));
+		addField(new StringData(TAG_COMMENTS));
 	}
 	
 	public static final String TAG_CODE = "Code";
