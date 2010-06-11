@@ -700,14 +700,14 @@ abstract public class BaseObject
 		fields = new HashMap();
 		presentationDataFields = new HashSet();
 		nonClearedFieldTags = new Vector();
-		addField(TAG_LABEL, label);
-		addField(TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentIds);
-		addField(TAG_EXPENSE_ASSIGNMENT_REFS, expenseAssignmentRefs);
-		addField(TAG_PROGRESS_REPORT_REFS, progressReportRefs);
+		addField(label);
+		addField(resourceAssignmentIds);
+		addField(expenseAssignmentRefs);
+		addField(progressReportRefs);
 		
-		addField(PSEUDO_TAG_WHEN_TOTAL, whenTotal);
-		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, latestProgressReport);
-		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS, latestProgressReportDetails);
+		addField(whenTotal);
+		addField(latestProgressReport);
+		addField(latestProgressReportDetails);
 	}
 	
 	public static HashSet<String> createSet(String parentTagToUse)
