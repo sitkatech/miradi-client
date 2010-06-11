@@ -99,28 +99,28 @@ abstract public class BaseObject
 	public IdList getIdListData(String fieldTag)
 	{
 		ObjectData field = getField(fieldTag);
-		if(!field.isIdListData())
-			throw new RuntimeException("Attempted to get IdList data from non-IdList field " + fieldTag);
-		
-		return ((IdListData)field).getIdList().createClone();
+		if(field.isIdListData())
+			return ((IdListData)field).getIdList().createClone();
+
+		throw new RuntimeException("Attempted to get IdList data from non-IdList field " + fieldTag);
 	}
 	
 	public ORefList getRefListData(String fieldTag)
 	{
 		ObjectData field = getField(fieldTag);
-		if(!field.isRefListData())
-			throw new RuntimeException("Attempted to get RefList data from non-RefList field " + fieldTag);
-
-		return new ORefList(((ORefListData)field).getRefList());
+		if(field.isRefListData())
+			return new ORefList(((ORefListData)field).getRefList());
+		
+		throw new RuntimeException("Attempted to get RefList data from non-RefList field " + fieldTag);
 	}
 	
 	public ORef getRefData(String fieldTag)
 	{
 		ObjectData field = getField(fieldTag);
-		if(!field.isRefData())
-			throw new RuntimeException("Attempted to get Ref data from non-Ref field " + fieldTag);
-
-		return new ORef(((ORefData)field).getRef());
+		if(field.isRefData())
+			return new ORef(((ORefData)field).getRef());
+		
+		throw new RuntimeException("Attempted to get Ref data from non-Ref field " + fieldTag);
 	}
 
 	public void loadFromJson(EnhancedJsonObject json) throws Exception
