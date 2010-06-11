@@ -29,8 +29,9 @@ import org.miradi.actions.ActionDeleteKeyEcologicalAttributeIndicator;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
 import org.miradi.actions.ActionExpandToMenu;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
-import org.miradi.dialogs.treetables.TreeTablePanelWithFourButtonColumns;
+import org.miradi.dialogs.treetables.TreeTablePanel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
+import org.miradi.layout.OneRowGridLayout;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
@@ -47,7 +48,9 @@ import org.miradi.objects.Measurement;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 
-public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButtonColumns
+import com.jhlabs.awt.GridLayoutPlus;
+
+public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 {
 	public TargetViabililtyTreeTablePanel(MainWindow mainWindowToUse, Project projectToUse, TreeTableWithStateSaving treeToUse) throws Exception
 	{
@@ -64,6 +67,12 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButton
 	public Dimension getPreferredSize()
 	{
 		return new Dimension(super.getPreferredSize().width, 100);
+	}
+
+	@Override
+	protected GridLayoutPlus createButtonLayout()
+	{
+		return new OneRowGridLayout();
 	}
 
 	//FIXME low: This code needs to be analyzed
@@ -143,4 +152,5 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButton
 			ActionDeleteKeyEcologicalAttributeIndicator.class,
 			ActionDeleteKeyEcologicalAttributeMeasurement.class,
 			};
+
 }
