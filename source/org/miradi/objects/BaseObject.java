@@ -688,10 +688,11 @@ abstract public class BaseObject
 
 	void clear()
 	{
-		label = new StringData(TAG_LABEL);
 		fields = new HashMap();
 		presentationDataFields = new HashSet();
 		nonClearedFieldTags = new Vector();
+
+		label = new StringData(TAG_LABEL);
 		addField(label);
 		addField(new IdListData(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType()));
 		addField(new ORefListData(TAG_EXPENSE_ASSIGNMENT_REFS));
