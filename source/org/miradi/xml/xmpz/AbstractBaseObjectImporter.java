@@ -26,6 +26,8 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
 import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.Factor;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ResourceAssignment;
@@ -95,6 +97,11 @@ abstract public class AbstractBaseObjectImporter extends AbstractXmpzObjectImpor
 	protected void importResourceAssignmentIds(Node node, ORef destinationRef) throws Exception
 	{
 		importIds(node, destinationRef, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType(), WcsXmlConstants.RESOURCE_ASSIGNMENT);
+	}
+	
+	protected void importIndicatorIds(Node node, ORef destinationRef) throws Exception
+	{
+		importIds(node, destinationRef, Factor.TAG_INDICATOR_IDS, Indicator.getObjectType(), WcsXmlConstants.INDICATOR + WcsXmlConstants.ID);
 	}
 
 	private int objectTypeToImport;
