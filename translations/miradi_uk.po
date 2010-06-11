@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-09 14:02-0500\n"
+"POT-Creation-Date: 2010-06-11 11:29-0500\n"
 "PO-Revision-Date: 2010-05-12 13:30-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3717,11 +3717,11 @@ msgstr ""
 msgid "Key Ecological Attribute (KEA)"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/AccountingCode.java:73
+#: Miradi/source/org/miradi/objects/AccountingCode.java:71
 msgid "Label|(Undefined Accounting Code)"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/FundingSource.java:69
+#: Miradi/source/org/miradi/objects/FundingSource.java:68
 msgid "Label|(Undefined Funding Source)"
 msgstr ""
 
