@@ -689,13 +689,13 @@ abstract public class BaseObject
 	void clear()
 	{
 		label = new StringData(TAG_LABEL);
-		resourceAssignmentIds = new IdListData(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
-		expenseAssignmentRefs = new ORefListData(TAG_EXPENSE_ASSIGNMENT_REFS);
-		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
-		whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
+		ObjectData resourceAssignmentIds = new IdListData(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
+		ObjectData expenseAssignmentRefs = new ORefListData(TAG_EXPENSE_ASSIGNMENT_REFS);
+		ObjectData progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
+		ObjectData whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
 		 
-		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, createSet(TAG_PROGRESS_REPORT_REFS), new ProgressReportLongStatusQuestion());
-		latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
+		ObjectData latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, createSet(TAG_PROGRESS_REPORT_REFS), new ProgressReportLongStatusQuestion());
+		ObjectData latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 
 		fields = new HashMap();
 		presentationDataFields = new HashSet();
@@ -1403,10 +1403,4 @@ abstract public class BaseObject
 	private Vector<String> nonClearedFieldTags;
 	
 	private ObjectData label;
-	private ObjectData whenTotal;
-	private ObjectData latestProgressReport;
-	private ObjectData latestProgressReportDetails;
-	private ObjectData resourceAssignmentIds;
-	private ObjectData expenseAssignmentRefs;
-	private ObjectData progressReportRefs;
 }
