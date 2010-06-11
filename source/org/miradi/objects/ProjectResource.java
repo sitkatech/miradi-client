@@ -118,7 +118,7 @@ public class ProjectResource extends BaseObject
 		if(result.length() > 0)
 			return result;
 		
-		result = label.get();
+		result = super.getLabel();
 		if (result.length() > 0)
 			return result;
 		
