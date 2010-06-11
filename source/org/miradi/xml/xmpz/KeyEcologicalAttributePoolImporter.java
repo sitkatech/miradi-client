@@ -21,16 +21,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Factor;
-import org.miradi.objects.Objective;
+import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
-abstract public class FactorPoolImporter extends AbstractBaseObjectImporter
+public class KeyEcologicalAttributePoolImporter extends	AbstractBaseObjectImporter
 {
-	public FactorPoolImporter(XmpzXmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
+	public KeyEcologicalAttributePoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, poolNameToUse, objectTypeToImportToUse);
+		super(importerToUse, WcsXmlConstants.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.getObjectType());
 	}
 	
 	@Override
@@ -38,18 +38,10 @@ abstract public class FactorPoolImporter extends AbstractBaseObjectImporter
 	{
 		super.importFields(node, destinationRef);
 		
-		importField(node, destinationRef, Factor.TAG_SHORT_LABEL);
-		importField(node, destinationRef, getDetailsTag());
-		importField(node, destinationRef, Factor.TAG_COMMENTS);
-	}
-	
-	protected String getDetailsTag()
-	{
-		return Factor.TAG_TEXT;
-	}
-	
-	protected void importObjectiveIds(Node node, ORef destinationRef)	throws Exception
-	{
-		importIds(node, destinationRef, Factor.TAG_OBJECTIVE_IDS, Objective.getObjectType(), WcsXmlConstants.OBJECTIVE + WcsXmlConstants.ID);
+		importField(node, destinationRef, KeyEcologicalAttribute.TAG_SHORT_LABEL);
+		importField(node, destinationRef, KeyEcologicalAttribute.TAG_DETAILS);
+		importField(node, destinationRef, KeyEcologicalAttribute.TAG_DESCRIPTION);
+		importIndicatorIds(node, destinationRef);
+		importCodeField(node, getPoolName(), destinationRef, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, new KeyEcologicalAttributeTypeQuestion());
 	}
 }
