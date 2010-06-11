@@ -79,6 +79,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
@@ -682,6 +683,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return Goal.find(this, goalRef);
 	}
 	
+	public TextBox createTextBox() throws Exception
+	{
+		ORef textBoxRef = createObject(TextBox.getObjectType());
+		
+		return TextBox.find(this, textBoxRef);
+	}
+	
 	public Strategy createStrategy() throws Exception
 	{
 		ORef strategyRef = createObject(Strategy.getObjectType(), new FactorId(takeNextId(Strategy.getObjectType())));
@@ -948,6 +956,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(measurement, Measurement.TAG_COMMENTS, "Some Measurement comment");
 	}
 	
+	public void populateTextBox(TextBox textBox) throws Exception
+	{
+		fillObjectWithSampleStringData(textBox, TextBox.TAG_LABEL);
+	}
+	
 	public void populateObjective(Objective objective) throws Exception
 	{
 		fillObjectUsingCommand(objective, Objective.TAG_SHORT_LABEL, "123");
@@ -978,6 +991,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		Goal goal = createGoal(targetOwner);
 		
 		fillRelevantIndicators(goal);
+	}
+	
+	public void createAndPopulateTextBox() throws Exception
+	{
+		TextBox textBox = createTextBox();	
+		populateTextBox(textBox);
 	}
 
 	private void fillRelevantIndicators(Goal goal) throws Exception
@@ -1143,6 +1162,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createIndicatorContainingWhiteSpacePaddedCode();
 		createAndPopulateOrganization();
 		createAndPopulateExpenseAssignment();
+		createAndPopulateTextBox();
 	}
 
 	public void validateObjectOwners(int type)
