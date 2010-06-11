@@ -39,6 +39,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.BaseIdData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ORefListData;
@@ -119,6 +120,9 @@ abstract public class BaseObject
 		ObjectData field = getField(fieldTag);
 		if(field.isRefData())
 			return new ORef(((ORefData)field).getRef());
+		
+		if(field.isBaseIdData())
+			return new ORef(((BaseIdData)field).getRef());
 		
 		throw new RuntimeException("Attempted to get Ref data from non-Ref field " + fieldTag);
 	}

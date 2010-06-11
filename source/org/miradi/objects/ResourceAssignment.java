@@ -120,18 +120,18 @@ public class ResourceAssignment extends Assignment
 	@Override
 	public ORef getFundingSourceRef()
 	{
-		return fundingIdData.getRef();
+		return getRefData(TAG_FUNDING_SOURCE);
 	}
 	
 	@Override
 	public ORef getAccountingCodeRef()
 	{
-		return accountingIdData.getRef();
+		return getRefData(TAG_ACCOUNTING_CODE);
 	}
 	
 	public ORef getResourceRef()
 	{
-		return resourceIdData.getRef();
+		return getRefData(TAG_RESOURCE_ID);
 	}
 	
 	@Override
