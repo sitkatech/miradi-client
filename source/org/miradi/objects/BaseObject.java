@@ -1083,7 +1083,7 @@ abstract public class BaseObject
 				list.addAll(getResourceAssignmentRefs());
 				break;
 			case ObjectType.EXPENSE_ASSIGNMENT:
-				list.addAll(getExpenseAssignmentRefs());
+				list.addAll(getRefListData(TAG_EXPENSE_ASSIGNMENT_REFS));
 				break;
 			case ObjectType.PROGRESS_REPORT:
 				list.addAll(getProgressReportRefs());
@@ -1096,11 +1096,6 @@ abstract public class BaseObject
 	public ORefList getResourceAssignmentRefs()
 	{
 		return new ORefList(ResourceAssignment.getObjectType(), getIdListData(TAG_RESOURCE_ASSIGNMENT_IDS));
-	}
-	
-	public ORefList getExpenseAssignmentRefs()
-	{
-		return getRefListData(TAG_EXPENSE_ASSIGNMENT_REFS);
 	}
 	
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
