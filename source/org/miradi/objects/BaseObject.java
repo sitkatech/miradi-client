@@ -1396,15 +1396,14 @@ abstract public class BaseObject
 	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
 
 	protected BaseId id;
-	protected StringData label;
-	
-	protected PseudoStringData whenTotal;
 
 	protected ObjectManager objectManager;
 	private HashMap<String, ObjectData> fields;
 	private HashSet<String> presentationDataFields; 
 	private Vector<String> nonClearedFieldTags;
 	
+	protected StringData label;
+	protected PseudoStringData whenTotal;
 	private ObjectData latestProgressReport;
 	private ObjectData latestProgressReportDetails;
 	private ObjectData resourceAssignmentIds;
