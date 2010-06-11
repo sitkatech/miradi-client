@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.fundingsource;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.forms.objects.BudgetCategoryPropertiesForm;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
@@ -31,11 +32,8 @@ public class FundingSourcePropertiesPanel extends ObjectDataInputPanel
 	public FundingSourcePropertiesPanel(Project projectToUse, BaseId idToEdit) throws Exception
 	{
 		super(projectToUse, ObjectType.FUNDING_SOURCE, idToEdit);
-		
-		addField(createStringField(FundingSource.TAG_CODE));
-		addField(createStringField(FundingSource.TAG_LABEL));
-		addField(createMultilineField(FundingSource.TAG_COMMENTS));
-		
+
+		createFieldsFromForm(new BudgetCategoryPropertiesForm(FundingSource.getObjectType()));
 		updateFieldsFromProject();
 	}
 
