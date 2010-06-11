@@ -76,7 +76,7 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 		assignment.setData(ResourceAssignment.TAG_DATEUNIT_EFFORTS, new DateUnitEffortList().toString());
 
 		Task activityWithResourceAssignment = getProject().createActivity();
-		IdList currentAssignmentIdList = activityWithResourceAssignment.getResourceAssignmentIdList();
+		IdList currentAssignmentIdList = activityWithResourceAssignment.getIdListData(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
 		currentAssignmentIdList.add(assignment.getId());
 		activityWithResourceAssignment.setData(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
 		

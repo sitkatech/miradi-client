@@ -1084,14 +1084,9 @@ abstract public class BaseObject
 		return list;
 	}
 	
-	public IdList getResourceAssignmentIdList()
-	{
-		return getIdListData(TAG_RESOURCE_ASSIGNMENT_IDS);
-	}
-	
 	public ORefList getResourceAssignmentRefs()
 	{
-		return new ORefList(ResourceAssignment.getObjectType(), getResourceAssignmentIdList());
+		return new ORefList(ResourceAssignment.getObjectType(), getIdListData(TAG_RESOURCE_ASSIGNMENT_IDS));
 	}
 	
 	public ORefList getExpenseAssignmentRefs()
