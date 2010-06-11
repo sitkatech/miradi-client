@@ -476,7 +476,7 @@ abstract public class BaseObject
 	
 	public void setLabel(String newLabel) throws Exception
 	{
-		label.set(newLabel);
+		setData(TAG_LABEL, newLabel);
 	}
 	
 	public void setData(String fieldTag, String dataValue) throws Exception
