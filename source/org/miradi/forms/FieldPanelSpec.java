@@ -91,6 +91,11 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 	{
 		addField(type, fieldTag, new FormFieldQuestionData(type, fieldTag, question));
 	}
+	
+	protected void addLabelAndField(int objectType, String fieldTag, int dataEntryType)
+	{
+		addField(objectType, fieldTag, new FormFieldData(objectType, fieldTag, dataEntryType));
+	}
 
 	protected void addLabelAndField(int type, String fieldTag)
 	{

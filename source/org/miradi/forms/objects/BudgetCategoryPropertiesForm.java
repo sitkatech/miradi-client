@@ -27,8 +27,8 @@ public class BudgetCategoryPropertiesForm extends FieldPanelSpec
 {
 	public BudgetCategoryPropertiesForm(int objectType)
 	{
-		addLabelAndField(objectType, AbstractBudgetCategoryObject.TAG_CODE);
-		addLabelAndField(objectType, AbstractBudgetCategoryObject.TAG_LABEL);
-		addLabelAndField(objectType, AbstractBudgetCategoryObject.TAG_COMMENTS);
+		addLabelAndField(objectType, AbstractBudgetCategoryObject.TAG_CODE, TYPE_SINGLE_LINE_STRING);
+		addLabelAndField(objectType, AbstractBudgetCategoryObject.TAG_LABEL, TYPE_SINGLE_LINE_STRING);
+		addLabelAndField(objectType, AbstractBudgetCategoryObject.TAG_COMMENTS, TYPE_MULTILINE_STRING);
 	}
 }

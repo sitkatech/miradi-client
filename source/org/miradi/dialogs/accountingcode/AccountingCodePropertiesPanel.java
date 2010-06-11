@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.accountingcode;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.forms.objects.BudgetCategoryPropertiesForm;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
@@ -32,9 +33,7 @@ public class AccountingCodePropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.ACCOUNTING_CODE, idToEdit);
 		
-		addField(createStringField(AccountingCode.TAG_CODE));
-		addField(createStringField(AccountingCode.TAG_LABEL));
-		addField(createMultilineField(AccountingCode.TAG_COMMENTS));
+		createFieldsFromForm(new BudgetCategoryPropertiesForm(AccountingCode.getObjectType()));
 		
 		updateFieldsFromProject();
 	}

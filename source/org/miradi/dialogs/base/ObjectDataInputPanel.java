@@ -45,7 +45,7 @@ import org.miradi.utils.CodeList;
 import com.jhlabs.awt.Alignment;
 import com.jhlabs.awt.GridLayoutPlus;
 
-abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelWithActivation
+abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelWithCreationFromForms
 {
 	public ObjectDataInputPanel(Project projectToUse, int objectType)
 	{
