@@ -1409,5 +1409,5 @@ abstract public class BaseObject
 	private PseudoStringData latestProgressReportDetails;
 	protected ObjectData resourceAssignmentIds;
 	protected ObjectData expenseAssignmentRefs;
-	protected ORefListData progressReportRefs;
+	protected ObjectData progressReportRefs;
 }
