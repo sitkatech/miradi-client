@@ -48,6 +48,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class TagToElementNameMap implements WcsXmlConstants
 {
@@ -357,6 +358,7 @@ public class TagToElementNameMap implements WcsXmlConstants
 		map.put(ScopeBox.TAG_LABEL, "Name");
 		map.put(Organization.TAG_SHORT_LABEL, "Id");
 		map.put(ScopeBox.TAG_TEXT, "Details");
+		map.put(ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, XmlSchemaCreator.SCOPE_BOX_COLOR_ELEMENT_NAME);
 		
 		return map;
 	}

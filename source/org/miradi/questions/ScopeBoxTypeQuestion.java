@@ -81,11 +81,21 @@ public class ScopeBoxTypeQuestion extends DynamicChoiceQuestion
 	public String convertToReadableCode(String code)
 	{
 		if (code.equals(HUMAN_WELFARE_TARGET_CODE))
-			return "HumanWelfare";
+			return READABLE_HUMAN_WELFARE_CODE;
 
 		return getReadableAlternativeDefaultCode();
 	}
 	
+	@Override
+	public String convertToInternalCode(String code)
+	{
+		if (code.equals(READABLE_HUMAN_WELFARE_CODE))
+			return HUMAN_WELFARE_TARGET_CODE;
+		
+		return code;
+	}
+		
 	private AppPreferences appPreferences;
-	private static final String HUMAN_WELFARE_TARGET_CODE = "HumanWelfareTargetBrown";
+	public static final String HUMAN_WELFARE_TARGET_CODE = "HumanWelfareTargetBrown";
+	public static final String READABLE_HUMAN_WELFARE_CODE = "HumanWelfare";
 }
