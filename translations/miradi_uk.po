@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-11 16:41-0500\n"
+"POT-Creation-Date: 2010-06-11 16:43-0500\n"
 "PO-Revision-Date: 2010-05-12 13:30-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -6756,7 +6756,7 @@ msgstr ""
 msgid "Title|Found Corrupted Links"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/fundingsource/FundingSourcePropertiesPanel.java:44
+#: Miradi/source/org/miradi/dialogs/fundingsource/FundingSourcePropertiesPanel.java:42
 msgid "Title|Funding Source Properties"
 msgstr ""
 

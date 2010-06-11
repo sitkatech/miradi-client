@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-11 16:41-0500\n"
+"POT-Creation-Date: 2010-06-11 16:43-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -7223,7 +7223,7 @@ msgstr "Filtrar por recursos"
 msgid "Title|Found Corrupted Links"
 msgstr "Se encontraron enlaces dañados."
 
-#: Miradi/source/org/miradi/dialogs/fundingsource/FundingSourcePropertiesPanel.java:44
+#: Miradi/source/org/miradi/dialogs/fundingsource/FundingSourcePropertiesPanel.java:42
 msgid "Title|Funding Source Properties"
 msgstr "Propiedades de la fuente de financiamiento"
 
