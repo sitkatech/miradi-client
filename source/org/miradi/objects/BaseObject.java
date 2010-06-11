@@ -474,11 +474,6 @@ abstract public class BaseObject
 		return defaultValue;
 	}
 	
-	public void setLabel(String newLabel) throws Exception
-	{
-		setData(TAG_LABEL, newLabel);
-	}
-	
 	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(TAG_ID.equals(fieldTag))
