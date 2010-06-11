@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.DateUnitEffortListData;
-import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TimePeriodCosts;
@@ -105,9 +104,7 @@ abstract public class Assignment extends BaseObject
 	public void clear()
 	{
 		super.clear();
-		detailListData = new DateUnitEffortListData(TAG_DATEUNIT_EFFORTS);
-		
-		addField(TAG_DATEUNIT_EFFORTS, detailListData);
+		addField(TAG_DATEUNIT_EFFORTS, new DateUnitEffortListData(TAG_DATEUNIT_EFFORTS));
 	}
 	
 	protected TimePeriodCostsMap convertDateUnitEffortList() throws Exception
@@ -219,6 +216,4 @@ abstract public class Assignment extends BaseObject
 	abstract public ORef getAccountingCodeRef();
 	
 	public static final String TAG_DATEUNIT_EFFORTS = "Details";
-	
-	private ObjectData detailListData;
 }
