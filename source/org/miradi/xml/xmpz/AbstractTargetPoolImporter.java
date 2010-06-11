@@ -23,6 +23,7 @@ package org.miradi.xml.xmpz;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Goal;
+import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.SubTarget;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
@@ -45,13 +46,8 @@ abstract public class AbstractTargetPoolImporter extends FactorPoolImporter
 		importCodeField(node, getPoolName(), destinationRef, AbstractTarget.TAG_VIABILITY_MODE, new ViabilityModeQuestion());
 		importField(node, destinationRef, AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION);
 		importRefs(node, WcsXmlConstants.SUB_TARGET_IDS_ELEMENT, destinationRef, AbstractTarget.TAG_SUB_TARGET_REFS, SubTarget.getObjectType(), WcsXmlConstants.SUB_TARGET + WcsXmlConstants.ID);
-		
-		//FIXME when we import KEA uncomment this.  Its causing a null pointer exception.
-		//importIds(node, destinationRef, AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttribute.getObjectType(), WcsXmlConstants.KEY_ECOLOGICAL_ATTRIBUTE + WcsXmlConstants.ID);
-		
+		importIds(node, destinationRef, AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttribute.getObjectType(), WcsXmlConstants.KEY_ECOLOGICAL_ATTRIBUTE + WcsXmlConstants.ID);
 		importIds(node, destinationRef, AbstractTarget.TAG_GOAL_IDS, Goal.getObjectType(), WcsXmlConstants.GOAL + WcsXmlConstants.ID);	
-		
-		//FIXME Need to import indicators for KEAs before the test for indicators passes.
 		importIndicatorIds(node, destinationRef);
 	}	
 }
