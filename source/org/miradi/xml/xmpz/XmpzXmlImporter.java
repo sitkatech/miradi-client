@@ -60,6 +60,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		new ObjectivePoolImporter(this).importElement();
 		new IndicatorPoolImporter(this).importElement();
 		new MeasurementPoolImporter(this).importElement();
+		new StressPoolImporter(this).importElement();
 		
 		//FIXME uncomment and create pool importer classes
 		//new DiagramLinkPoolImporter(this).importElement();
@@ -67,10 +68,8 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 //		new TextBoxPoolExporter(this).exportXml();
 //		new ScopeBoxPoolExporter(this).exportXml();
 //		new KeyEcologicalAttributePoolExporter(this).exportXml();
-//		new StressPoolExporter(this).exportXml();
+//		
 //		new SubTargetPoolExporter(this).exportXml();
-//		new GoalPoolExporter(this).exportXml();
-//		new ObjectivePoolExporter(this).exportXml();
 //		new TaskPoolExporter(this).exportXml();
 //		new ProgressReportPoolExporter(this).exportXml();
 //		new ProgressPercentPoolExporter(this).exportXml();
