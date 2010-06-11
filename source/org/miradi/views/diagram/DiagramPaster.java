@@ -162,10 +162,10 @@ abstract public class DiagramPaster
 	{
 		if (ResourceAssignment.getObjectType() == newObject.getType())
 		{
-			if (ResourceAssignment.TAG_ACCOUNTING_CODE.equals(tag))
+			if (ResourceAssignment.TAG_ACCOUNTING_CODE_ID.equals(tag))
 				return getCommandToFixId(pastedObjectMap, newObject, AccountingCode.getObjectType(), tag);
 
-			if (ResourceAssignment.TAG_FUNDING_SOURCE.equals(tag))
+			if (ResourceAssignment.TAG_FUNDING_SOURCE_ID.equals(tag))
 				return getCommandToFixId(pastedObjectMap, newObject, FundingSource.getObjectType(), tag);
 
 			if (ResourceAssignment.TAG_RESOURCE_ID.equals(tag))

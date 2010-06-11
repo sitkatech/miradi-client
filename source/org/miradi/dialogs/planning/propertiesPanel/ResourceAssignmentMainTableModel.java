@@ -219,13 +219,13 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 	@Override
 	protected String getAccountingCodeTag()
 	{
-		return ResourceAssignment.TAG_ACCOUNTING_CODE;
+		return ResourceAssignment.TAG_ACCOUNTING_CODE_ID;
 	}
 	
 	@Override
 	protected String getFundingSourceTag()
 	{
-		return ResourceAssignment.TAG_FUNDING_SOURCE;
+		return ResourceAssignment.TAG_FUNDING_SOURCE_ID;
 	}
 
 	@Override

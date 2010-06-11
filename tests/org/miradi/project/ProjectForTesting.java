@@ -749,7 +749,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void addAccountingCode(ResourceAssignment resourceAssignment) throws Exception
 	{
 		ORef accountingCodeRef = createAccountingCode().getRef();
-		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_ACCOUNTING_CODE, accountingCodeRef.getObjectId().toString());
+		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_ACCOUNTING_CODE_ID, accountingCodeRef.getObjectId().toString());
 	}
 	
 	public ResourceAssignment createResourceAssignment() throws Exception
