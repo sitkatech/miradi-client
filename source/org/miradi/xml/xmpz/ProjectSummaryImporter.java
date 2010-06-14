@@ -24,6 +24,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Xenodata;
+import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
@@ -51,6 +52,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_STATUS);
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_NEXT_STEPS);
 		importProjectId(projectSumaryNode);
+		importCodeField(projectSumaryNode, getPoolName(), getMetadataRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion());
 	}
 
 	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception

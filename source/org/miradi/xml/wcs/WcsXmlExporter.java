@@ -45,6 +45,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.generic.XmlSchemaCreator;
@@ -348,6 +349,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeOptionalOverallProjectThreatRating();
 		writeOptionalOverallProjectViabilityRating();
 		writeProjectIds();
+		writeCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion(), getMetadata().getThreatRatingMode());
 
 		writeEndElement(out, PROJECT_SUMMARY);
 	}
