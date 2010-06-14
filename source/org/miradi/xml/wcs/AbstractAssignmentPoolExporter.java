@@ -120,7 +120,7 @@ abstract public class AbstractAssignmentPoolExporter extends BaseObjectPoolExpor
 	{
 		getWcsXmlExporter().writeStartElement(getQuantatityElementName());
 		
-		getWriter().writeln(Double.toString(expense));
+		getWriter().write(Double.toString(expense));
 		
 		getWcsXmlExporter().writeEndElement(getQuantatityElementName());
 	}

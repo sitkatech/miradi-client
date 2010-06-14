@@ -25,13 +25,17 @@ import java.awt.Point;
 import java.io.File;
 
 import org.martus.util.UnicodeReader;
+import org.martus.util.UnicodeStringWriter;
 import org.martus.util.inputstreamwithseek.FileInputStreamWithSeek;
+import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
@@ -41,6 +45,8 @@ import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.DateUnitEffort;
+import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.xml.wcs.WcsXmlExporter;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
@@ -57,6 +63,43 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		validateExportImportExportProject();
 	}
 	
+	public void testExpenseAssignmentLifeCycle() throws Exception
+	{
+		ExpenseAssignment expense = getProject().createExpenseAssignment();
+		getProject().createExpenseAssignment();
+		DateUnitEffortList lis = new DateUnitEffortList();
+		DateUnit month = new DateUnit("2008-09");
+		DateUnitEffort dateUnitEffort = new DateUnitEffort(month, 22.9);
+		lis.add(dateUnitEffort);
+		getProject().fillObjectUsingCommand(expense, ExpenseAssignment.TAG_DATEUNIT_EFFORTS, lis.toString());
+		
+		WcsXmlExporter firstExporter = new WcsXmlExporter(getProject());
+		UnicodeStringWriter firstWriter = UnicodeStringWriter.create();
+		firstExporter.setWriter(firstWriter);
+		firstExporter.exportProject(firstWriter);
+		firstWriter.flush();
+		
+		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToImportInto");
+		XmpzXmlImporter xmlImporter = new XmpzXmlImporter(projectToImportInto);
+		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(firstWriter.toString());
+		try
+		{
+			xmlImporter.importProject(stringInputputStream);
+		}
+		finally
+		{
+			stringInputputStream.close();	
+		}
+		
+		WcsXmlExporter secondExporter = new WcsXmlExporter(getProject());
+		UnicodeStringWriter secondWriter = UnicodeStringWriter.create();
+		firstExporter.setWriter(secondWriter);
+		secondExporter.exportProject(secondWriter);
+		secondWriter.flush();
+		
+		assertEquals("Exports from projects do not match?", firstWriter.toString(), secondWriter.toString());
+	}
+	
 	public void testValidateFilledProject() throws Exception
 	{
 		createFilledDiagramFactor();
@@ -66,8 +109,8 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		getProject().populateEverything();
 		createFilledResultsChainDiagram();
 		getProject().createDiagramFactorLink();
-		
-		getProject().createObjective(getProject().createCause());
+		getProject().createObjective(getProject().createCause());		
+		getProject().createAndPopulateExpenseAssignment();
 		
 		validateExportImportExportProject();
 	}
