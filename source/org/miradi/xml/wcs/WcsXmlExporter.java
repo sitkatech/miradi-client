@@ -519,7 +519,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		return getProject().getMetadata();
 	}
 	
-	private void setWriter(UnicodeWriter outToUse)
+	public void setWriter(UnicodeWriter outToUse)
 	{
 		out = outToUse;
 	}

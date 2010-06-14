@@ -39,7 +39,7 @@ import org.miradi.xml.xmpz.XmpzXmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-abstract public class AbstractXmpzObjectImporter
+abstract public class AbstractXmpzObjectImporter implements WcsXmlConstants
 {
 	public AbstractXmpzObjectImporter(XmpzXmlImporter importerToUse, String poolNameToUse)
 	{
@@ -119,6 +119,35 @@ abstract public class AbstractXmpzObjectImporter
 		}
 		
 		getImporter().setData(destinationRef, destinationTag, codesToImport.toString());
+	}
+	
+	protected void importOptionalRef(Node node, ORef destinationRef, String destinationTag, String idElementName, int objectType) throws Exception
+	{
+		ORef refToImport = getRefToImport(node, idElementName, objectType);
+		if (refToImport.isValid())
+			getImporter().setData(destinationRef, destinationTag, refToImport.toString());
+	}
+	
+	protected void importOptionalId(Node node, ORef destinationRef, String destinationTag, String idElementName, int objectType) throws Exception
+	{
+		ORef refToImport = getRefToImport(node, idElementName, objectType);
+		getImporter().setData(destinationRef, destinationTag, refToImport.getObjectId().toString());
+	}
+
+	private ORef getRefToImport(Node node, String idElementName, int objectType) throws Exception
+	{
+		String element = getPoolName() + idElementName + WcsXmlConstants.ID;
+		Node idNode = getImporter().getNode(node, element);
+		if (idNode == null)
+			return ORef.INVALID;
+
+		//FIXME We don not understand where a new line is coming from.  
+		//Due to lack of source and debugging capabilies, the string is trimmed.
+		//Need to understand where the new line is coming from and remove the trim.
+		String trimmedIdAsString = idNode.getTextContent().trim();
+		BaseId baseObjectIdToImport = new BaseId(trimmedIdAsString);
+		
+		return new ORef(objectType, baseObjectIdToImport);
 	}
 	
 	protected void importIds(Node node, ORef destinationRef, String destinationTag, int idsType, String idElementName) throws Exception

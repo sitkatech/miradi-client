@@ -75,11 +75,12 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		new AudiencePoolImporter(this).importElement();
 		new TaskPoolImporter(this).importElement();
 		new ObjectTreeTableConfigurationPoolImporter(this).importElement();
+		new ExpenseAssignmentPoolImporter(this).importElement();
+		new ResourceAssignmentPoolImporter(this).importElement();
 		
 		//FIXME uncomment and create pool importer classes
 		//new DiagramLinkPoolImporter(this).importElement();
-//		new TaskPoolExporter(this).exportXml();
-//		new ExpenseAssignmentPoolExporter(this).exportXml();
+
 //		new ResourceAssignmentPoolExporter(this).exportXml();
 //		new ThreatTargetThreatRatingElementExporter(this).exportXml();
 	}
