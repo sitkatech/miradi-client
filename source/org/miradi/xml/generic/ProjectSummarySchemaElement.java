@@ -42,5 +42,6 @@ class ProjectSummarySchemaElement extends ObjectSchemaElement
 		createOptionalCodeField(OVERALL_PROJECT_THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING);
 		createOptionalCodeField(OVERALL_PROJECT_VIABILITY_RATING, XmlSchemaCreator.VOCABULARY_TARGET_STATUS);
 		createTncProjectIdField(Xenodata.TAG_PROJECT_ID);
+		createCodeField(ProjectMetadata.TAG_THREAT_RATING_MODE, XmlSchemaCreator.VOCABULARY_THREAT_RATING_MODE);
 	}
 }

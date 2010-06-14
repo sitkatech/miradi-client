@@ -38,6 +38,18 @@ public class ThreatRatingModeChoiceQuestion extends StaticChoiceQuestion
 		};
 	}
 	
+	@Override
+	protected boolean hasReadableAlternativeDefaultCode()
+	{
+		return true;
+	}
+	
+	@Override
+	protected String getReadableAlternativeDefaultCode()
+	{
+		return "SimpleBased";
+	}
+	
 	public static final String STRESS_BASED_CODE = "StressBased";
 	public static final String SIMPLE_BASED_CODE = "";
 }

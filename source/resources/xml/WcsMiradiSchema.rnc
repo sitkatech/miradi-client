@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/36'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/37'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -60,7 +60,8 @@ ProjectSummary.element = element miradi:ProjectSummary
   element miradi:ProjectSummaryNextSteps { text }? &
   element miradi:ProjectSummaryOverallProjectThreatRating { vocabulary_threat_rating  }? &
   element miradi:ProjectSummaryOverallProjectViabilityRating { vocabulary_target_status  }? &
-  element miradi:ProjectSummaryProjectId { ExternalProjectId.element *} 
+  element miradi:ProjectSummaryProjectId { ExternalProjectId.element *}  &
+  element miradi:ProjectSummaryThreatRatingMode { vocabulary_threat_rating_mode  }
 }
 
 ProjectResourcePool.element = element miradi:ProjectResourcePool { ProjectResource.element* }
@@ -675,6 +676,7 @@ vocabulary_countries = 'ZZZ'|'XXX'|'AFG'|'ALA'|'ALB'|'DZA'|'ASM'|'AND'|'AGO'|'AI
 vocabulary_threat_rating = ''|'1'|'2'|'3'|'4'
 vocabulary_included_diagram_types = 'AllTypes'|'IncludeConceptualModelData'|'IncludeResultsChainData'
 vocabulary_planning_tree_target_node_position = 'TargetNodesChildrenOfDiagramObjects'|'TargetNodesTopOfPlanningTree'
+vocabulary_threat_rating_mode = 'SimpleBased'|'StressBased'
 ConceptualModelId.element = element miradi:ConceptualModelId { xsd:integer }
 ResultsChainId.element = element miradi:ResultsChainId { xsd:integer }
 DiagramFactorId.element = element miradi:DiagramFactorId { xsd:integer }
