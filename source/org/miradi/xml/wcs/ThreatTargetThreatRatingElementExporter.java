@@ -53,11 +53,8 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 	public void exportXml() throws Exception
 	{
 		getWcsXmlExporter().writeStartPoolElement(THREAT_RATING);
-		if (getProject().isStressBaseMode())
-			exportStressBasedThreatRating();
-		else
-			exportSimpleThreatRating();
-		
+		exportStressBasedThreatRating();
+		exportSimpleThreatRating();
 		getWcsXmlExporter().writeEndPoolElement(THREAT_RATING);
 	}
 
