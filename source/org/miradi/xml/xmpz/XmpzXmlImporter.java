@@ -80,9 +80,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		
 		//FIXME uncomment and create pool importer classes
 		//new DiagramLinkPoolImporter(this).importElement();
-
-//		new ResourceAssignmentPoolExporter(this).exportXml();
-//		new ThreatTargetThreatRatingElementExporter(this).exportXml();
+		//new ThreatTargetThreatRatingElementExporter(this).exportXml();
 	}
 
 	@Override
