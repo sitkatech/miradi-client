@@ -51,7 +51,7 @@ public class TestProjectChainObject extends EAMTestCase
 		NonDiagramChainWalker builder = project.getObjectManager().getNonDiagramChainWalker();
 		ORef targetRef = project.createObject(Target.getObjectType());
 		Target target = (Target)project.findObject(targetRef);
-		FactorSet nothingUpstreamYet = builder.buildUpstreamChainAndGetFactors(target);
+		FactorSet nothingUpstreamYet = builder.buildUpstreamDownstreamChainAndGetFactors(target);
 		assertEquals("Already something upstream?", 1, nothingUpstreamYet.size());
 
 		ORef threatRef = project.createObject(Cause.getObjectType());
@@ -60,13 +60,13 @@ public class TestProjectChainObject extends EAMTestCase
 		ORef linkRef = project.createObject(FactorLink.getObjectType(), extraInfo);
 		FactorLink link = (FactorLink)project.findObject(linkRef);
 		
-		FactorSet upstreamOfTarget = builder.buildUpstreamChainAndGetFactors(target);
+		FactorSet upstreamOfTarget = builder.buildUpstreamDownstreamChainAndGetFactors(target);
 		assertEquals("Threat not upstream of target now?", 2, upstreamOfTarget.size());
 		FactorSet downstreamOfThreat = builder.buildUpstreamDownstreamChainAndGetFactors(threat);
 		assertEquals("Target not downstream of threat?", 2, downstreamOfThreat.size());
 		
 		project.deleteObject(link);
-		FactorSet nothingUpstream = builder.buildUpstreamChainAndGetFactors(target);
+		FactorSet nothingUpstream = builder.buildUpstreamDownstreamChainAndGetFactors(target);
 		assertEquals("Didn't reset upstream?", 1, nothingUpstream.size());
 		FactorSet nothingDownstream = builder.buildNormalChainAndGetFactors(threat);
 		assertEquals("Didn't reset downstream?", 1, nothingDownstream.size());
