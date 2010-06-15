@@ -37,6 +37,26 @@ public class NonDiagramChainWalker
 		clearCaches();
 	}
 
+	public FactorSet buildUpstreamChainAndGetFactors(Factor factor)
+	{
+		buildUpstreamChain(factor);
+		return getFactors();
+	}
+	public FactorSet buildUpstreamDownstreamChainAndGetFactors(Factor factor)
+	{
+		buildUpstreamDownstreamChain(factor);
+		return getFactors();
+	}
+	public FactorSet buildNormalChainAndGetFactors(Factor factor)
+	{
+		buildNormalChain(factor);
+		return getFactors();
+	}
+	public ORefSet buildNormalChainAndGetFactorRefs(Factor factor)
+	{
+		buildNormalChain(factor);
+		return getFactors().getFactorRefs();
+	}
 	protected FactorSet getFactors()
 	{
 		return factorSet;
@@ -106,26 +126,6 @@ public class NonDiagramChainWalker
 	{
 		cachedUpstreamChain = new HashMap();
 		cachedDownstreamChain = new HashMap();
-	}
-	public FactorSet buildUpstreamChainAndGetFactors(Factor factor)
-	{
-		buildUpstreamChain(factor);
-		return getFactors();
-	}
-	public FactorSet buildUpstreamDownstreamChainAndGetFactors(Factor factor)
-	{
-		buildUpstreamDownstreamChain(factor);
-		return getFactors();
-	}
-	public FactorSet buildNormalChainAndGetFactors(Factor factor)
-	{
-		buildNormalChain(factor);
-		return getFactors();
-	}
-	public ORefSet buildNormalChainAndGetFactorRefs(Factor factor)
-	{
-		buildNormalChain(factor);
-		return getFactors().getFactorRefs();
 	}
 	private void buildDirectThreatChain(Factor factor)
 	{
