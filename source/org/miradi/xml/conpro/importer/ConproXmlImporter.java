@@ -1359,13 +1359,13 @@ public class ConproXmlImporter implements ConProMiradiXml
 		ORefSet mediumOrBelowRankedThreatRefs = new ORefSet();
 		ORefSet highOrAboveRankedThreatRefs = new ORefSet();
 		
-		NonDiagramChainWalker chainObject = new NonDiagramChainWalker();
+		NonDiagramChainWalker chainWalker = new NonDiagramChainWalker();
 		Cause[] threats = getProject().getCausePool().getDirectThreats();
 		for (int index = 0; index < threats.length; ++index)
 		{
 			Cause threat = threats[index];
 			ChoiceItem threatRatingChoice = getProject().getThreatRatingFramework().getThreatThreatRatingValue(threat.getRef());			
-			ORefSet factorRefsInChain = chainObject.buildNormalChainAndGetFactorRefs(threat);
+			ORefSet factorRefsInChain = chainWalker.buildNormalChainAndGetFactorRefs(threat);
 			if (threatRatingChoice != null && highOrAboveCodes.contains(threatRatingChoice.getCode()))
 				highOrAboveRankedThreatRefs.addAll(factorRefsInChain);
 			else
