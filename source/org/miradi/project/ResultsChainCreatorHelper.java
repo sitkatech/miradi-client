@@ -400,7 +400,7 @@ public class ResultsChainCreatorHelper
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
 			DiagramFactor diagramFactor = selectedFactorCells[i].getDiagramFactor();
-			DiagramChainWalker chainObject = diagramFactor.getDiagramChainBuilder();
+			DiagramChainWalker chainObject = diagramFactor.getDiagramChainWalker();
 			Factor[] factorsArray = chainObject.buildNormalChainAndGetFactors(model, diagramFactor).toFactorArray();
 			
 			Vector diagramFactors = convertToDiagramFactors(factorsArray);
@@ -470,7 +470,7 @@ public class ResultsChainCreatorHelper
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
 			DiagramFactor diagramFactor = selectedFactorCells[i].getDiagramFactor();
-			DiagramChainWalker chainObject = diagramFactor.getDiagramChainBuilder();  
+			DiagramChainWalker chainObject = diagramFactor.getDiagramChainWalker();  
 			allDiagramLinks.addAll(chainObject.buildNormalChainAndGetDiagramLinks(model, diagramFactor));
 		}
 		
