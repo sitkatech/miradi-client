@@ -115,7 +115,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 		return project;
 	}
 	
-	DiagramChainWalker getDiagramChainWalker()
+	public DiagramChainWalker getDiagramChainWalker()
 	{
 		return getDiagramObject().getDiagramChainWalker();
 	}
@@ -344,12 +344,6 @@ abstract public class DiagramModel extends DefaultGraphModel
 	{
 		DiagramChainWalker chainObject = getDiagramChainWalker();
 		return chainObject.buildNormalChainAndGetFactors(this, startingFactor);
-	}
-		
-	public FactorSet getDirectlyLinkedUpstreamNodes(DiagramFactor startingFactor)
-	{
-		DiagramChainWalker chainObject = getDiagramChainWalker();
-		return chainObject.buildDirectlyLinkedUpstreamChainAndGetFactors(this, startingFactor);
 	}
 		
 	public void moveFactors(int deltaX, int deltaY, ORefList diagramFactorRefs) throws Exception
