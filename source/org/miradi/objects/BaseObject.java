@@ -31,7 +31,7 @@ import org.martus.util.xml.XmlUtilities;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.DiagramChainObject;
+import org.miradi.diagram.DiagramChainWalker;
 import org.miradi.diagram.factortypes.FactorTypeCause;
 import org.miradi.diagram.factortypes.FactorTypeStrategy;
 import org.miradi.diagram.factortypes.FactorTypeTarget;
@@ -250,7 +250,7 @@ abstract public class BaseObject
 		return getObjectManager().getProjectChainBuilder();
 	}
 	
-	public DiagramChainObject getDiagramChainBuilder()
+	public DiagramChainWalker getDiagramChainBuilder()
 	{
 		return getObjectManager().getDiagramChainBuilder();
 	}

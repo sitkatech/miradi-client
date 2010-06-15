@@ -27,7 +27,7 @@ import java.util.Vector;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.DiagramChainObject;
+import org.miradi.diagram.DiagramChainWalker;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
@@ -400,7 +400,7 @@ public class ResultsChainCreatorHelper
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
 			DiagramFactor diagramFactor = selectedFactorCells[i].getDiagramFactor();
-			DiagramChainObject chainObject = diagramFactor.getDiagramChainBuilder();
+			DiagramChainWalker chainObject = diagramFactor.getDiagramChainBuilder();
 			Factor[] factorsArray = chainObject.buildNormalChainAndGetFactors(model, diagramFactor).toFactorArray();
 			
 			Vector diagramFactors = convertToDiagramFactors(factorsArray);
@@ -470,7 +470,7 @@ public class ResultsChainCreatorHelper
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
 			DiagramFactor diagramFactor = selectedFactorCells[i].getDiagramFactor();
-			DiagramChainObject chainObject = diagramFactor.getDiagramChainBuilder();  
+			DiagramChainWalker chainObject = diagramFactor.getDiagramChainBuilder();  
 			allDiagramLinks.addAll(chainObject.buildNormalChainAndGetDiagramLinks(model, diagramFactor));
 		}
 		

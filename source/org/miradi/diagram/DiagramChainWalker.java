@@ -33,7 +33,7 @@ import org.miradi.project.Project;
 //TODO: If the methods took a diagram factor instead of a 
 //factor we shold be able to get to both the model and 
 //factor so that many of these methods could be moved to the super
-public class DiagramChainObject
+public class DiagramChainWalker
 {
 	public HashSet<DiagramLink> buildNormalChainAndGetDiagramLinks(DiagramModel model, DiagramFactor diagramFactor)
 	{
