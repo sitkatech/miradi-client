@@ -27,7 +27,7 @@ import java.util.Vector;
 
 import org.miradi.database.ObjectManifest;
 import org.miradi.database.ProjectServer;
-import org.miradi.diagram.DiagramChainObject;
+import org.miradi.diagram.DiagramChainWalker;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
@@ -105,7 +105,7 @@ public class ObjectManager
 	{
 		project = projectToUse;
 		projectChainBuilder = new NonDiagramChainWalker();
-		diagramChainBuilder = new DiagramChainObject();
+		diagramChainBuilder = new DiagramChainWalker();
 		referrerCache = new HashMap<ORef, ORefSet>();
 
 		pools = new HashMap<Integer, PoolWithIdAssigner>();
@@ -170,7 +170,7 @@ public class ObjectManager
 		return projectChainBuilder;
 	}
 	
-	public DiagramChainObject getDiagramChainBuilder()
+	public DiagramChainWalker getDiagramChainBuilder()
 	{
 		return diagramChainBuilder;
 	}
@@ -555,7 +555,7 @@ public class ObjectManager
 	
 	private Project project;
 	private NonDiagramChainWalker projectChainBuilder;
-	private DiagramChainObject diagramChainBuilder;
+	private DiagramChainWalker diagramChainBuilder;
 	private HashMap<Integer, PoolWithIdAssigner> pools;
 	private HashMap<ORef, ORefSet> referrerCache;
 }

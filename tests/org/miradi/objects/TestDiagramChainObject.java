@@ -22,7 +22,7 @@ package org.miradi.objects;
 import java.util.HashSet;
 import java.util.Vector;
 
-import org.miradi.diagram.DiagramChainObject;
+import org.miradi.diagram.DiagramChainWalker;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 
@@ -82,7 +82,7 @@ public class TestDiagramChainObject extends TestCaseWithProject
 
 	private void verifyChain(DiagramFactor strartingDiagramFactor, Vector<DiagramFactor> allDiagramFactors)
 	{
-		DiagramChainObject chainObject = new DiagramChainObject();
+		DiagramChainWalker chainObject = new DiagramChainWalker();
 		HashSet<DiagramFactor> diagramFactorsInChain = chainObject.buildNormalChainAndGetDiagramFactors(getProject().getTestingDiagramObject(), strartingDiagramFactor);
 		assertEquals("wrong diagram factor in chain count?", 3, diagramFactorsInChain.size());
 		

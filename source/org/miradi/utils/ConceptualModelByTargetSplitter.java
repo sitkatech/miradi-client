@@ -24,7 +24,7 @@ import java.util.HashSet;
 
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.DiagramChainObject;
+import org.miradi.diagram.DiagramChainWalker;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.exceptions.CommandFailedException;
@@ -67,7 +67,7 @@ public class ConceptualModelByTargetSplitter
 	
 	private void createDiagramForTarget(DiagramFactor targetDiagramFactor) throws Exception
 	{
-		DiagramChainObject chainObject = new DiagramChainObject();
+		DiagramChainWalker chainObject = new DiagramChainWalker();
 		HashSet<DiagramFactor> diagramFactors = chainObject.buildNormalChainAndGetDiagramFactors(getDiagramObjectBeingSplit(), targetDiagramFactor);
 		HashSet<DiagramLink> diagramLinks = chainObject.buildNormalChainAndGetDiagramLinks(getDiagramObjectBeingSplit(), targetDiagramFactor);
 		
