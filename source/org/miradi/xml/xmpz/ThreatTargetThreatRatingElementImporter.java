@@ -22,7 +22,10 @@ package org.miradi.xml.xmpz;
 
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.WcsXmlConstants;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
+//FIXME this class is still under construction.  Need to import links before importing threat ratings.
 public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectImporter
 {
 	public ThreatTargetThreatRatingElementImporter(XmpzXmlImporter importerToUse)
@@ -33,21 +36,56 @@ public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectI
 	@Override
 	public void importElement() throws Exception
 	{
-		
+		NodeList nodes = getImporter().getNodes(getImporter().getRootNode(), new String[]{getPoolName() + WcsXmlConstants.POOL_ELEMENT_TAG, });
+		for (int index = 0; index < nodes.getLength(); ++index)
+		{
+			Node threatRatingNode = nodes.item(index);
+			importThreatRatings(threatRatingNode);
+		}		
+	}
+
+	private void importThreatRatings(Node threatRatingNode) throws Exception
+	{
+		importThreatRatingsComment(threatRatingNode);
+		Node threatRatingRatings = getImporter().getNode(threatRatingNode, THREAT_RATING + RATINGS);
+		Node simpleThreatRatingNode = getImporter().getNode(threatRatingRatings, SIMPLE_BASED_THREAT_RATING);
+		if (simpleThreatRatingNode != null)
+			importSimpleThreatRating(threatRatingRatings, simpleThreatRatingNode);
+
+		Node stressBasedThreatRatingNode = getImporter().getNode(threatRatingRatings, STRESS_BASED_THREAT_RATING);
+		if (stressBasedThreatRatingNode != null)
+			importStressBasedThreatRating(threatRatingRatings, stressBasedThreatRatingNode);		
 	}
 	
-//	@Override
-//	public void exportXml() throws Exception
-//	{
-//		getWcsXmlExporter().writeStartPoolElement(THREAT_RATING);
-//		if (getProject().isStressBaseMode())
-//			exportStressBasedThreatRating();
-//		else
-//			exportSimpleThreatRating();
-//		
-//		getWcsXmlExporter().writeEndPoolElement(THREAT_RATING);
-//	}
-//
+	private void importThreatRatingsComment(Node threatRatingNode) throws Exception
+	{
+//		ORef targetRef = getImporter().getNodeAsRef(threatRatingNode, BIODIVERSITY_TARGET + ID, Target.getObjectType());
+//		System.out.println("target = " + targetRef); 
+//		ORef threatRef = getImporter().getNodeAsRef(threatRatingNode, THREAT + ID, Cause.getObjectType());
+//		System.out.println("threat = " + threatRef);
+//		Node commentsNode = getImporter().getNode(threatRatingNode, THREAT_RATING + COMMENTS);
+//		if (commentsNode != null)
+//		{
+//			String comment = commentsNode.getTextContent();
+//			System.out.println("come = " + comment);
+//		}
+//		System.out.println("TSR count = " + getProject().getThreatStressRatingPool().size());
+//		ThreatRatingCommentsData threatRatingCommentsData = getProject().getSingletonThreatRatingCommentsData();
+		
+//		String threatRatingComment = threatRatingCommentsData.findComment(threatRef, targetRef);
+//		getWcsXmlExporter().writeOptionalElement(getWcsXmlExporter().getWriter(), THREAT_RATING + COMMENTS, threatRatingComment);
+	}
+
+	private void importSimpleThreatRating(Node threatRatingRatings, Node simpleThreatRatingNode)
+	{
+		
+	}
+
+	private void importStressBasedThreatRating(Node threatRatingRatings, Node stressBasedThreatRatingNode)
+	{
+		
+	}
+
 //	private void exportSimpleThreatRating() throws Exception
 //	{
 //		Vector<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
