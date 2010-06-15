@@ -11,6 +11,6 @@
 	<classpathentry kind="lib" path="/miradi-thirdparty/jing/bin/jing.jar" sourcepath="/miradi-thirdparty/jing/jing-src-20030619.zip"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/jgraph/miradi-jgraph-5.12.2.2b.jar" sourcepath="/miradi-thirdparty/jgraph/miradi-jgraph-5.12.2.2b-src.zip"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/swingx/0.9.7/swingx-0.9.7.jar" sourcepath="/miradi-thirdparty/swingx/0.9.7/swingx-0.9.7-src.zip"/>
-	<classpathentry kind="lib" path="/miradi-thirdparty/jortho/bin/jortho.jar" sourcepath="/miradi-thirdparty/jortho/lib/JOrtho_0.4.zip"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/jortho/bin/jortho.jar" sourcepath="/miradi-thirdparty/jortho/lib/JOrtho_0.5.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

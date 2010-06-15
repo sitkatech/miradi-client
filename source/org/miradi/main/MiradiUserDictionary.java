@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.main;
 
+import java.util.Iterator;
 import java.util.Locale;
 
 import org.miradi.utils.Translation;
@@ -32,10 +33,10 @@ public class MiradiUserDictionary extends FileUserDictionary
 	{
 		super(EAM.getHomeDirectory().getAbsolutePath());
 	}
-	
+
 	@Override
-	public String getUserWords(Locale locale)
+	public Iterator<String> getWords(Locale locale)
 	{
-		return super.getUserWords(new Locale(Translation.getCurrentLanguageCode()));
+		return super.getWords(new Locale(Translation.getCurrentLanguageCode()));
 	}
 }
