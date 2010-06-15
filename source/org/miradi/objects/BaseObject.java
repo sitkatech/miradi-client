@@ -245,7 +245,7 @@ abstract public class BaseObject
 		return objectManager.getProject();
 	}
 	
-	public NonDiagramChainWalker getProjectChainBuilder()
+	public NonDiagramChainWalker getNonDiagramChainWalker()
 	{
 		return getObjectManager().getNonDiagramChainWalker();
 	}
@@ -927,7 +927,7 @@ abstract public class BaseObject
 		if(owner == null)
 			return new Factor[0];
 		
-		NonDiagramChainWalker chainObject = getProjectChainBuilder();
+		NonDiagramChainWalker chainObject = getNonDiagramChainWalker();
 		return chainObject.buildUpstreamDownstreamChainAndGetFactors(owner).toFactorArray();
 	}
 	
