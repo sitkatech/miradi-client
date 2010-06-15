@@ -95,6 +95,7 @@ import org.miradi.questions.CountriesQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
+import org.miradi.questions.DiagramLinkColorQuestion;
 import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
@@ -553,6 +554,33 @@ public class ProjectForTesting extends ProjectWithHelpers
 		populateDiagramFactor(diagramFactor);
 		
 		return diagramFactor;
+	}
+	
+	public DiagramLink createAndPopulateDiagramLink() throws Exception
+	{
+		ORef diagramLinkRef = createDiagramLink();
+		DiagramLink diagramLink = DiagramLink.find(this, diagramLinkRef);
+		populateDiagramLink(diagramLink);
+		
+		return diagramLink;
+	}
+	
+	public DiagramLink createAndPopulateGroupBoxDiagramLink() throws Exception
+	{	
+		DiagramFactor cause = createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor causeGroupBox = createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
+		fillObjectUsingCommand(causeGroupBox, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, new ORefList(cause));
+		
+		DiagramFactor target = createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetGroupBox = createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
+		fillObjectUsingCommand(targetGroupBox, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, new ORefList(target));
+		
+		DiagramLink causeTargetLink = createDiagramLinkAndAddToDiagramModel(cause, target);
+		DiagramLink groupToGroupDiagramLink = createDiagramLinkAndAddToDiagramModel(causeGroupBox, targetGroupBox);
+		
+		fillObjectUsingCommand(groupToGroupDiagramLink, DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, new ORefList(causeTargetLink));
+		
+		return groupToGroupDiagramLink;
 	}
 	
 	public ExpenseAssignment createAndPopulateExpenseAssignment() throws Exception
@@ -1199,6 +1227,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FONT_SIZE, "2.5");
 		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FONT_STYLE, DiagramFactorFontStyleQuestion.BOLD_CODE);
 		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, TextBoxZOrderQuestion.FRONT_CODE);		
+	}
+	
+	private void populateDiagramLink(DiagramLink diagramLink) throws Exception
+	{
+		fillObjectUsingCommand(diagramLink, DiagramLink.TAG_COLOR, DiagramLinkColorQuestion.DARK_BLUE_CODE);
+		fillObjectUsingCommand(diagramLink.getWrappedFactorLink(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
+		
+		PointList bendPoints = new PointList();
+		bendPoints.add(new Point(100, 100));
+		fillObjectUsingCommand(diagramLink, DiagramLink.TAG_BEND_POINTS, bendPoints.toString());
 	}
 	
 	public void populateExpenseAssignment(ExpenseAssignment expenseAssignment) throws Exception

@@ -103,6 +103,8 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	public void testValidateFilledProject() throws Exception
 	{
 		createFilledDiagramFactor();
+		getProject().createAndPopulateDiagramLink();
+		getProject().createAndPopulateGroupBoxDiagramLink();
 		Target target = getProject().createTarget();
 		getProject().createAndPopulateGoal(target);
 		getProject().createandpopulateThreatReductionResult();

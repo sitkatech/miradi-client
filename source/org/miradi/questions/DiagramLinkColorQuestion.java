@@ -39,7 +39,7 @@ public class DiagramLinkColorQuestion extends StaticChoiceQuestion
 				new ChoiceItem("DarkOrange", EAM.text("Dark Orange"), DiagramFactorFontColorQuestion.DARK_ORANGE_FROM_HEX),
 				new ChoiceItem("DarkYellow", EAM.text("Dark Yellow"), DiagramFactorFontColorQuestion.DARK_YELLOW_FROM_HEX),
 				new ChoiceItem("darkGreen", EAM.text("Dark Green"), DiagramFactorFontColorQuestion.DARK_GREEN_FROM_HEX),
-				new ChoiceItem("darkBlue", EAM.text("Dark Blue"), DiagramFactorFontColorQuestion.DARK_BLUE_FROM_HEX),
+				new ChoiceItem(DARK_BLUE_CODE, EAM.text("Dark Blue"), DiagramFactorFontColorQuestion.DARK_BLUE_FROM_HEX),
 				new ChoiceItem("DarkPurple", EAM.text("Dark Purple"), DiagramFactorFontColorQuestion.DARK_PURPLE_FROM_HEX),
 				new ChoiceItem("brown", EAM.text("Brown"), DiagramFactorFontColorQuestion.BROWN_FROM_HEX),
 				new ChoiceItem("lightGray", EAM.text("Light Gray"), DiagramFactorFontColorQuestion.LIGHT_GRAY_FROM_HEX),
@@ -65,4 +65,6 @@ public class DiagramLinkColorQuestion extends StaticChoiceQuestion
 	{
 		return "black";
 	}
+	
+	public static final String DARK_BLUE_CODE = "darkBlue";
 }

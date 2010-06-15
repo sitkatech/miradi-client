@@ -203,7 +203,7 @@ abstract public class AbstractXmlImporter
 		return attributeNode.getNodeValue();
 	}
 	
-	protected ORef getNodeAsRef(Node node, String element, int type) throws Exception
+	public ORef getNodeAsRef(Node node, String element, int type) throws Exception
 	{
 		String idAsString = getNodeContent(node, element);
 		return new ORef(type, new BaseId(idAsString));
