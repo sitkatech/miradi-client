@@ -34,136 +34,24 @@ under their commercial license.
 
 package com.inet.jortho;
 
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.List;
-import java.util.Locale;
-import java.util.Vector;
-
 import javax.swing.JComponent;
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
 import javax.swing.event.PopupMenuEvent;
-import javax.swing.event.PopupMenuListener;
-import javax.swing.text.BadLocationException;
 import javax.swing.text.JTextComponent;
-import javax.swing.text.Utilities;
 
-public class MiradiCheckerListener implements PopupMenuListener, LanguageChangeListener {
-
-    private final JComponent          menu;
-
-    private Dictionary                dictionary;
-
-    private Locale                    locale;
-
-    private final SpellCheckerOptions options;
-
+public class MiradiCheckerListener extends CheckerListener {
     MiradiCheckerListener( JComponent menu, SpellCheckerOptions options ) {
-        this.menu = menu;
-        this.options = options == null ? SpellChecker.getOptions() : options;
-        SpellChecker.addLanguageChangeLister( this );
-        dictionary = SpellChecker.getCurrentDictionary();
-        locale = SpellChecker.getCurrentLocale();
+		super(menu, options);
     }
 
-    public void popupMenuCanceled( PopupMenuEvent e ) {
-        /* empty */
-    }
-
-    public void popupMenuWillBecomeInvisible( PopupMenuEvent e ) {
-        /* empty */
-    }
-
+    @Override
     public void popupMenuWillBecomeVisible( PopupMenuEvent ev ) {
-        JPopupMenu popup = (JPopupMenu)ev.getSource();
-
-        Component invoker = popup.getInvoker();
-        if( invoker instanceof JTextComponent ) {
-            populateSpellCheckerMenu(invoker);
-        }
+    	super.popupMenuWillBecomeVisible(ev);
     }
-
-	private void populateSpellCheckerMenu(Component invoker)
-	{
-	    menu.removeAll();
-
-		final JTextComponent jText = (JTextComponent)invoker;
-		if( !jText.isEditable() ) {
-		    // Suggestions only for editable text components
-		    menu.setEnabled( false );
-		    return;
-		}
-
-	    if( dictionary == null ) {
-	        // without dictionary it is disabled
-	        menu.setEnabled( false );
-	        return;
-	    }
-
-		try {
-			SpellCheckedWord word = new SpellCheckedWord(jText, options, locale);
-			
-			if(!word.hasWord() || word.isWordValid())
-			{
-				menu.setEnabled( false );
-				return;
-			}
-			
-			List<Suggestion> list = dictionary.searchSuggestions( word.getWord() );
-
-		    Vector<JMenuItem> menuItems = getSpellCheckerMenuItems(word, list);
-
-			for(JMenuItem menuItem : menuItems)
-			{
-				menu.add(menuItem);
-			}
-
-			//Disable the menu if it is empty
-			boolean isMenuEmpty = menuItems.size() == 0;
-			menu.setEnabled( !isMenuEmpty );
-
-		} catch( BadLocationException ex ) {
-		    ex.printStackTrace();
-		}
-		return;
-	}
-
-	private Vector<JMenuItem> getSpellCheckerMenuItems(SpellCheckedWord word, List<Suggestion> list) throws BadLocationException
-	{
-		Vector<JMenuItem> menuItems = new Vector<JMenuItem>();
-
-		final JTextComponent jText = word.getTextComponent();
-		final int begOffs = word.getWordStartOffset();
-	    final int endOffs = Utilities.getWordEnd( jText, begOffs );
-		final boolean needCapitalization = word.needCapitalization();
-
-		for( int i = 0; i < list.size() && i < options.getSuggestionsLimitMenu(); i++ ) {
-		    Suggestion sugestion = list.get( i );
-		    String sugestionWord = sugestion.getWord();
-		    if( needCapitalization ) {
-		        sugestionWord = Utils.getCapitalized( sugestionWord );
-		    }
-		    JMenuItem item = new JMenuItem( sugestionWord );
-		    menuItems.add( item );
-		    final String newWord = sugestionWord;
-		    item.addActionListener( new ActionListener() {
-
-		        public void actionPerformed( ActionEvent e ) {
-		            jText.setSelectionStart( begOffs );
-		            jText.setSelectionEnd( endOffs );
-		            jText.replaceSelection( newWord );
-		        }
-
-		    } );
-		}
-
-		return menuItems;
-	}
-
-    public void languageChanged( LanguageChangeEvent ev ) {
-        dictionary = SpellChecker.getCurrentDictionary();
-        locale = SpellChecker.getCurrentLocale();
+    
+    @Override
+    protected void addMenuItemAddToDictionary(JTextComponent jText,
+    		String word, boolean addSeparator)
+    {
+    	// Do nothing because we already added the Add Word item elsewhere
     }
 }
