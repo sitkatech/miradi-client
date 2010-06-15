@@ -105,7 +105,7 @@ public class ObjectManager
 	{
 		project = projectToUse;
 		nonDiagramChainWalker = new NonDiagramChainWalker();
-		diagramChainBuilder = new DiagramChainWalker();
+		diagramChainWalker = new DiagramChainWalker();
 		referrerCache = new HashMap<ORef, ORefSet>();
 
 		pools = new HashMap<Integer, PoolWithIdAssigner>();
@@ -172,7 +172,7 @@ public class ObjectManager
 	
 	public DiagramChainWalker getDiagramChainBuilder()
 	{
-		return diagramChainBuilder;
+		return diagramChainWalker;
 	}
 
 	private void addNormalPool(EAMNormalObjectPool pool)
@@ -555,7 +555,7 @@ public class ObjectManager
 	
 	private Project project;
 	private NonDiagramChainWalker nonDiagramChainWalker;
-	private DiagramChainWalker diagramChainBuilder;
+	private DiagramChainWalker diagramChainWalker;
 	private HashMap<Integer, PoolWithIdAssigner> pools;
 	private HashMap<ORef, ORefSet> referrerCache;
 }
