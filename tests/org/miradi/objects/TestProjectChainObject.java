@@ -23,10 +23,7 @@ import org.miradi.main.EAMTestCase;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Cause;
-import org.miradi.objects.FactorLink;
-import org.miradi.objects.Target;
-import org.miradi.project.ProjectChainObject;
+import org.miradi.project.ChainObject;
 import org.miradi.project.ProjectForTesting;
 
 public class TestProjectChainObject extends EAMTestCase
@@ -51,7 +48,7 @@ public class TestProjectChainObject extends EAMTestCase
 
 	public void testCacheClearing() throws Exception
 	{
-		ProjectChainObject builder = project.getObjectManager().getProjectChainBuilder();
+		ChainObject builder = project.getObjectManager().getProjectChainBuilder();
 		ORef targetRef = project.createObject(Target.getObjectType());
 		Target target = (Target)project.findObject(targetRef);
 		FactorSet nothingUpstreamYet = builder.buildUpstreamChainAndGetFactors(target);

@@ -90,8 +90,8 @@ import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ValueOption;
 import org.miradi.objects.Xenodata;
+import org.miradi.project.ChainObject;
 import org.miradi.project.Project;
-import org.miradi.project.ProjectChainObject;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
@@ -1359,7 +1359,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		ORefSet mediumOrBelowRankedThreatRefs = new ORefSet();
 		ORefSet highOrAboveRankedThreatRefs = new ORefSet();
 		
-		ProjectChainObject chainObject = new ProjectChainObject();
+		ChainObject chainObject = new ChainObject();
 		Cause[] threats = getProject().getCausePool().getDirectThreats();
 		for (int index = 0; index < threats.length; ++index)
 		{

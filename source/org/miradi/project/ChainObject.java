@@ -30,7 +30,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 
 
-abstract public class ChainObject
+public class ChainObject
 {	
 	public ChainObject()
 	{

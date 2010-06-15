@@ -60,10 +60,10 @@ import org.miradi.objectpools.IntermediateResultPool;
 import org.miradi.objectpools.IucnRedlistSpeciesPool;
 import org.miradi.objectpools.KeyEcologicalAttributePool;
 import org.miradi.objectpools.MeasurementPool;
+import org.miradi.objectpools.ObjectTreeTableConfigurationPool;
 import org.miradi.objectpools.ObjectivePool;
 import org.miradi.objectpools.OrganizationPool;
 import org.miradi.objectpools.OtherNotableSpeciesPool;
-import org.miradi.objectpools.ObjectTreeTableConfigurationPool;
 import org.miradi.objectpools.PoolWithIdAssigner;
 import org.miradi.objectpools.ProgressPercentPool;
 import org.miradi.objectpools.ProgressReportPool;
@@ -104,7 +104,7 @@ public class ObjectManager
 	public ObjectManager(Project projectToUse)
 	{
 		project = projectToUse;
-		projectChainBuilder = new ProjectChainObject();
+		projectChainBuilder = new ChainObject();
 		diagramChainBuilder = new DiagramChainObject();
 		referrerCache = new HashMap<ORef, ORefSet>();
 
@@ -165,7 +165,7 @@ public class ObjectManager
 		addNormalPool(new AudiencePool(ida));
 	}
 	
-	public ProjectChainObject getProjectChainBuilder()
+	public ChainObject getProjectChainBuilder()
 	{
 		return projectChainBuilder;
 	}
@@ -554,7 +554,7 @@ public class ObjectManager
 	}
 	
 	private Project project;
-	private ProjectChainObject projectChainBuilder;
+	private ChainObject projectChainBuilder;
 	private DiagramChainObject diagramChainBuilder;
 	private HashMap<Integer, PoolWithIdAssigner> pools;
 	private HashMap<ORef, ORefSet> referrerCache;
