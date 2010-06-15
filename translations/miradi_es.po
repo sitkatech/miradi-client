@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-15 11:59-0500\n"
+"POT-Creation-Date: 2010-06-15 13:01-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -1766,7 +1766,7 @@ msgstr "Gastos reales "
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr "Software de manejo adaptivo para proyectos de conservación"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:117
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:140
 msgid "Add '%s' to User Dictionary"
 msgstr ""
 
@@ -2562,7 +2562,7 @@ msgstr ""
 msgid "Control Bar"
 msgstr "Barra de control"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:99
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:100
 msgid "Copy"
 msgstr "Copiar"
 
@@ -2672,7 +2672,7 @@ msgstr ""
 msgid "Custom Reports"
 msgstr "Informes personalizados"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:94
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:95
 msgid "Cut"
 msgstr "Cortar"
 
@@ -4705,6 +4705,10 @@ msgstr ""
 msgid "Month Selection: "
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:113
+msgid "More Suggestions"
+msgstr ""
+
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListMoveToDirectoryAction.java:32
 msgid "Move To..."
 msgstr "Mover a... "
@@ -4955,7 +4959,7 @@ msgstr "Calificación general de amenazas "
 msgid "Page:"
 msgstr "Página:"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:104
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:105
 msgid "Paste"
 msgstr "Pegar"
 
@@ -5779,10 +5783,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:48
 msgid "Specific Year(s)"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogfields/TextAreaRightClickMouseHandler.java:121
-msgid "Spelling Suggestions"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ResourceRoleQuestion.java:56
