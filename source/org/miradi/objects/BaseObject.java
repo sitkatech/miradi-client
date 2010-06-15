@@ -54,7 +54,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
-import org.miradi.project.ChainObject;
+import org.miradi.project.ChainWalker;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -245,7 +245,7 @@ abstract public class BaseObject
 		return objectManager.getProject();
 	}
 	
-	public ChainObject getProjectChainBuilder()
+	public ChainWalker getProjectChainBuilder()
 	{
 		return getObjectManager().getProjectChainBuilder();
 	}
@@ -927,7 +927,7 @@ abstract public class BaseObject
 		if(owner == null)
 			return new Factor[0];
 		
-		ChainObject chainObject = getProjectChainBuilder();
+		ChainWalker chainObject = getProjectChainBuilder();
 		return chainObject.buildUpstreamDownstreamChainAndGetFactors(owner).toFactorArray();
 	}
 	

@@ -60,7 +60,7 @@ public class ChainManager
 		
 		if(owningFactor != null)
 		{
-			ChainObject chainObject = owner.getProjectChainBuilder();
+			ChainWalker chainObject = owner.getProjectChainBuilder();
 			FactorSet nodesInChain = chainObject.buildUpstreamDownstreamChainAndGetFactors(owningFactor);
 			
 			relatedFactors.attemptToAddAll(nodesInChain);
