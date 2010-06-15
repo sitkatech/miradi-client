@@ -457,7 +457,7 @@ abstract public class Factor extends BaseObject
 
 	private String getFactorRelatedDirectThreats()
 	{
-		NonDiagramChainWalker chain = getProjectChainBuilder();
+		NonDiagramChainWalker chain = getNonDiagramChainWalker();
 		FactorSet factors = chain.buildNormalChainAndGetFactors(this);
 		DirectThreatSet directThreats = new DirectThreatSet(factors);
 		
@@ -466,7 +466,7 @@ abstract public class Factor extends BaseObject
 
 	private String getFactorRelatedTargets()
 	{
-		NonDiagramChainWalker chain = getProjectChainBuilder();
+		NonDiagramChainWalker chain = getNonDiagramChainWalker();
 		FactorSet factors = chain.buildNormalChainAndGetFactors(this);
 		TargetSet directThreats = new TargetSet(factors);
 		
