@@ -346,12 +346,6 @@ abstract public class DiagramModel extends DefaultGraphModel
 		return chainObject.buildNormalChainAndGetFactors(this, startingFactor);
 	}
 		
-	public FactorSet getAllDownstreamNodes(DiagramFactor startingFactor)
-	{
-		DiagramChainWalker chainObject = getChainBuilder();
-		return chainObject.buildDownstreamChainAndGetFactors(this, startingFactor);
-	}
-
 	public FactorSet getDirectlyLinkedUpstreamNodes(DiagramFactor startingFactor)
 	{
 		DiagramChainWalker chainObject = getChainBuilder();
