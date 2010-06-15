@@ -165,7 +165,7 @@ public class ObjectManager
 		addNormalPool(new AudiencePool(ida));
 	}
 	
-	public NonDiagramChainWalker getProjectChainBuilder()
+	public NonDiagramChainWalker getNonDiagramChainWalker()
 	{
 		return nonDiagramChainWalker;
 	}
@@ -291,7 +291,7 @@ public class ObjectManager
 				pool.put(realId, cmLinkage);
 				getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
 				createdId = cmLinkage.getId();
-				getProjectChainBuilder().clearCaches();
+				getNonDiagramChainWalker().clearCaches();
 				break;
 			}
 			default:
@@ -327,7 +327,7 @@ public class ObjectManager
 		pool.remove(objectId);
 		getDatabase().deleteObject(objectType, objectId);
 		if(objectType == FactorLink.getObjectType())
-			getProjectChainBuilder().clearCaches();
+			getNonDiagramChainWalker().clearCaches();
 		getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
 	}
 

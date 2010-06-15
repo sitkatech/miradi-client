@@ -48,7 +48,7 @@ public class TestProjectChainObject extends EAMTestCase
 
 	public void testCacheClearing() throws Exception
 	{
-		NonDiagramChainWalker builder = project.getObjectManager().getProjectChainBuilder();
+		NonDiagramChainWalker builder = project.getObjectManager().getNonDiagramChainWalker();
 		ORef targetRef = project.createObject(Target.getObjectType());
 		Target target = (Target)project.findObject(targetRef);
 		FactorSet nothingUpstreamYet = builder.buildUpstreamChainAndGetFactors(target);
