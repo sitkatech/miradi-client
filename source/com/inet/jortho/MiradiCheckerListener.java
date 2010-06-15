@@ -35,23 +35,12 @@ under their commercial license.
 package com.inet.jortho;
 
 import javax.swing.JComponent;
-import javax.swing.event.PopupMenuEvent;
-import javax.swing.text.JTextComponent;
 
+/**
+ * This subclass only exists to expose the constructor as public
+ */
 public class MiradiCheckerListener extends CheckerListener {
-    MiradiCheckerListener( JComponent menu, SpellCheckerOptions options ) {
+    public MiradiCheckerListener( JComponent menu, SpellCheckerOptions options ) {
 		super(menu, options);
-    }
-
-    @Override
-    public void popupMenuWillBecomeVisible( PopupMenuEvent ev ) {
-    	super.popupMenuWillBecomeVisible(ev);
-    }
-    
-    @Override
-    protected void addMenuItemAddToDictionary(JTextComponent jText,
-    		String word, boolean addSeparator)
-    {
-    	// Do nothing because we already added the Add Word item elsewhere
     }
 }
