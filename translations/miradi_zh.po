@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-11 16:43-0500\n"
+"POT-Creation-Date: 2010-06-15 08:44-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1117,7 +1117,7 @@ msgstr ""
 msgid "Action|Insert|Insert Intermediate Result"
 msgstr "插入中途结果 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionInsertFactorLink.java:35
+#: Miradi/source/org/miradi/actions/ActionInsertLink.java:35
 msgid "Action|Insert|Insert Link..."
 msgstr "插入链接… \t\t"
 
@@ -5730,7 +5730,7 @@ msgstr "添加 \t\t"
 msgid "TT|Add Factor(s) to Group Box"
 msgstr "添加（多个）因素到组合框 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionInsertFactorLink.java:40
+#: Miradi/source/org/miradi/actions/ActionInsertLink.java:40
 msgid "TT|Add a link between two factors"
 msgstr "在两个因素之间添加链接 \t\t"
 

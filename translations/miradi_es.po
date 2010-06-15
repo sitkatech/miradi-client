@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-11 16:43-0500\n"
+"POT-Creation-Date: 2010-06-15 08:44-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -1207,7 +1207,7 @@ msgstr "Insertar objetivo de bienestar humano"
 msgid "Action|Insert|Insert Intermediate Result"
 msgstr "Insertar resultado intermedio"
 
-#: Miradi/source/org/miradi/actions/ActionInsertFactorLink.java:35
+#: Miradi/source/org/miradi/actions/ActionInsertLink.java:35
 msgid "Action|Insert|Insert Link..."
 msgstr "Insertar enlace…"
 
@@ -5996,7 +5996,7 @@ msgstr "Agregar"
 msgid "TT|Add Factor(s) to Group Box"
 msgstr "Agregar factor(es) al cuadro de grupo"
 
-#: Miradi/source/org/miradi/actions/ActionInsertFactorLink.java:40
+#: Miradi/source/org/miradi/actions/ActionInsertLink.java:40
 msgid "TT|Add a link between two factors"
 msgstr "Agregar un enlace entre dos factores"
 
