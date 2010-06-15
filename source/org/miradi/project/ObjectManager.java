@@ -170,7 +170,7 @@ public class ObjectManager
 		return nonDiagramChainWalker;
 	}
 	
-	public DiagramChainWalker getDiagramChainBuilder()
+	public DiagramChainWalker getDiagramChainWalker()
 	{
 		return diagramChainWalker;
 	}

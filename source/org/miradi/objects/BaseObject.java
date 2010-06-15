@@ -252,7 +252,7 @@ abstract public class BaseObject
 	
 	public DiagramChainWalker getDiagramChainBuilder()
 	{
-		return getObjectManager().getDiagramChainBuilder();
+		return getObjectManager().getDiagramChainWalker();
 	}
 		
 	public static BaseObject createFromJson(ObjectManager objectManager, int type, EnhancedJsonObject json) throws Exception
