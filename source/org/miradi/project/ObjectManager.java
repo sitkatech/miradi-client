@@ -104,7 +104,7 @@ public class ObjectManager
 	public ObjectManager(Project projectToUse)
 	{
 		project = projectToUse;
-		projectChainBuilder = new NonDiagramChainWalker();
+		nonDiagramChainWalker = new NonDiagramChainWalker();
 		diagramChainBuilder = new DiagramChainWalker();
 		referrerCache = new HashMap<ORef, ORefSet>();
 
@@ -167,7 +167,7 @@ public class ObjectManager
 	
 	public NonDiagramChainWalker getProjectChainBuilder()
 	{
-		return projectChainBuilder;
+		return nonDiagramChainWalker;
 	}
 	
 	public DiagramChainWalker getDiagramChainBuilder()
@@ -554,7 +554,7 @@ public class ObjectManager
 	}
 	
 	private Project project;
-	private NonDiagramChainWalker projectChainBuilder;
+	private NonDiagramChainWalker nonDiagramChainWalker;
 	private DiagramChainWalker diagramChainBuilder;
 	private HashMap<Integer, PoolWithIdAssigner> pools;
 	private HashMap<ORef, ORefSet> referrerCache;
