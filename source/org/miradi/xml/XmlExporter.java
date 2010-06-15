@@ -137,7 +137,8 @@ public abstract class XmlExporter
 	{
 		out.write("<" + elementName + ">");
 		writeXmlEncodedData(out, data);
-		out.writeln("</" + elementName + ">");
+		out.write("</" + elementName + ">");
+		out.writeln();
 	}
 
 	public void writeOptionalElement(UnicodeWriter out, String elementName, String data) throws Exception

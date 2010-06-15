@@ -64,6 +64,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		new TaskPoolImporter(this).importElement();		
 		
 		new DiagramFactorPoolImporter(this).importElement();
+		new DiagramLinkPoolImporter(this).importElement();
 		
 		new KeyEcologicalAttributePoolImporter(this).importElement();
 		new IndicatorPoolImporter(this).importElement();

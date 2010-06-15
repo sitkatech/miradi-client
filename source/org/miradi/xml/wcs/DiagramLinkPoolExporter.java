@@ -79,7 +79,7 @@ public class DiagramLinkPoolExporter extends BaseObjectPoolExporter
 		
 		Factor fromFactor = diagramLink.getFromDiagramFactor().getWrappedFactor();
 		String fromFactorTypeName = getFactorTypeName(fromFactor);
-		getWcsXmlExporter().writeElement(fromFactorTypeName, ID_ELEMENT_NAME, diagramLink.getWrappedId().toString());
+		getWcsXmlExporter().writeElement(fromFactorTypeName, ID_ELEMENT_NAME, diagramLink.getFromDiagramFactorId().toString());
 		
 		getWcsXmlExporter().writeEndElement(LINKABLE_FACTOR_ID);
 		getWcsXmlExporter().writeEndElement(DIAGRAM_LINK + FROM_DIAGRAM_FACTOR_ID);
@@ -92,7 +92,7 @@ public class DiagramLinkPoolExporter extends BaseObjectPoolExporter
 		
 		Factor toFactor = diagramLink.getToDiagramFactor().getWrappedFactor();
 		String toFactorTypeName = getFactorTypeName(toFactor);
-		getWcsXmlExporter().writeElement(toFactorTypeName, ID_ELEMENT_NAME, diagramLink.getWrappedId().toString());
+		getWcsXmlExporter().writeElement(toFactorTypeName, ID_ELEMENT_NAME, diagramLink.getToDiagramFactorId().toString());
 		
 		getWcsXmlExporter().writeEndElement(LINKABLE_FACTOR_ID);
 		getWcsXmlExporter().writeEndElement(DIAGRAM_LINK + TO_DIAGRAM_FACTOR_ID);

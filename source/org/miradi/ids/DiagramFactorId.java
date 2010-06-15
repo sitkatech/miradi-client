@@ -21,10 +21,13 @@ package org.miradi.ids;
 
 public class DiagramFactorId extends BaseId
 {
-
 	public DiagramFactorId(int idToUse)
 	{
 		super(idToUse);
 	}
-
+	
+	public DiagramFactorId(String idAsString)
+	{
+		super(idAsString);
+	}
 }

@@ -20,7 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz;
 
+import java.awt.Point;
+
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
@@ -102,6 +105,29 @@ abstract public class AbstractBaseObjectImporter extends AbstractXmpzObjectImpor
 	protected void importIndicatorIds(Node node, ORef destinationRef) throws Exception
 	{
 		importIds(node, destinationRef, Factor.TAG_INDICATOR_IDS, Indicator.getObjectType(), WcsXmlConstants.INDICATOR + WcsXmlConstants.ID);
+	}
+	
+	protected Point extractPointFromNode(Node pointNode) throws Exception
+	{
+		Node xNode = getImporter().getNode(pointNode, WcsXmlConstants.X_ELEMENT_NAME);
+		Node yNode = getImporter().getNode(pointNode, WcsXmlConstants.Y_ELEMENT_NAME);
+		int x = extractNodeTextContentAsInt(xNode);
+		int y = extractNodeTextContentAsInt(yNode);
+		
+		return new Point(x, y);
+	}
+	
+	protected int extractNodeTextContentAsInt(Node node)
+	{
+		try
+		{
+			return Integer.parseInt(node.getTextContent());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return 0;
+		}
 	}
 
 	private int objectTypeToImport;

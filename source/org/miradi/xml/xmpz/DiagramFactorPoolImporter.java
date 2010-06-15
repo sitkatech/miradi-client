@@ -156,24 +156,8 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectImporter
 	{
 		Node locationNode = getImporter().getNode(node, getPoolName()+ WcsXmlConstants.LOCATION);
 		Node pointNode = getImporter().getNode(locationNode, WcsXmlConstants.DIAGRAM_POINT_ELEMENT_NAME);
-		Node xNode = getImporter().getNode(pointNode, WcsXmlConstants.X_ELEMENT_NAME);
-		Node yNode = getImporter().getNode(pointNode, WcsXmlConstants.Y_ELEMENT_NAME);
-		int x = extractNodeTextContentAsInt(xNode);
-		int y = extractNodeTextContentAsInt(yNode);
-		String pointAsString = EnhancedJsonObject.convertFromPoint(new Point(x, y));
+		Point point = extractPointFromNode(pointNode);
+		String pointAsString = EnhancedJsonObject.convertFromPoint(point);
 		getImporter().setData(destinationRef, DiagramFactor.TAG_LOCATION, pointAsString);
-	}
-
-	private int extractNodeTextContentAsInt(Node node)
-	{
-		try
-		{
-			return Integer.parseInt(node.getTextContent());
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return 0;
-		}
 	}
 }
