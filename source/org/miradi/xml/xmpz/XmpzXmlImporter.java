@@ -83,11 +83,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		new ExpenseAssignmentPoolImporter(this).importElement();
 		new ResourceAssignmentPoolImporter(this).importElement();
 		//FIXME uncomment this threat rating importer and finish it after importing diagam links
-		//new ThreatTargetThreatRatingElementImporter(this).importElement();
-		
-		//FIXME uncomment and create pool importer classes
-		//new DiagramLinkPoolImporter(this).importElement();
-		//new ThreatTargetThreatRatingElementExporter(this).exportXml();
+		//new ThreatTargetThreatRatingElementImporter(this).importElement();		
 	}
 
 	@Override
