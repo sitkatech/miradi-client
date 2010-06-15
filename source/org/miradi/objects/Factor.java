@@ -48,7 +48,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TargetSet;
-import org.miradi.project.ChainObject;
+import org.miradi.project.ChainWalker;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
@@ -457,7 +457,7 @@ abstract public class Factor extends BaseObject
 
 	private String getFactorRelatedDirectThreats()
 	{
-		ChainObject chain = getProjectChainBuilder();
+		ChainWalker chain = getProjectChainBuilder();
 		FactorSet factors = chain.buildNormalChainAndGetFactors(this);
 		DirectThreatSet directThreats = new DirectThreatSet(factors);
 		
@@ -466,7 +466,7 @@ abstract public class Factor extends BaseObject
 
 	private String getFactorRelatedTargets()
 	{
-		ChainObject chain = getProjectChainBuilder();
+		ChainWalker chain = getProjectChainBuilder();
 		FactorSet factors = chain.buildNormalChainAndGetFactors(this);
 		TargetSet directThreats = new TargetSet(factors);
 		

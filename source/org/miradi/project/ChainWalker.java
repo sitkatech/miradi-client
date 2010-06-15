@@ -30,9 +30,9 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 
 
-public class ChainObject
+public class ChainWalker
 {	
-	public ChainObject()
+	public ChainWalker()
 	{
 		clearCaches();
 	}

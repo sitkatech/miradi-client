@@ -104,7 +104,7 @@ public class ObjectManager
 	public ObjectManager(Project projectToUse)
 	{
 		project = projectToUse;
-		projectChainBuilder = new ChainObject();
+		projectChainBuilder = new ChainWalker();
 		diagramChainBuilder = new DiagramChainObject();
 		referrerCache = new HashMap<ORef, ORefSet>();
 
@@ -165,7 +165,7 @@ public class ObjectManager
 		addNormalPool(new AudiencePool(ida));
 	}
 	
-	public ChainObject getProjectChainBuilder()
+	public ChainWalker getProjectChainBuilder()
 	{
 		return projectChainBuilder;
 	}
@@ -554,7 +554,7 @@ public class ObjectManager
 	}
 	
 	private Project project;
-	private ChainObject projectChainBuilder;
+	private ChainWalker projectChainBuilder;
 	private DiagramChainObject diagramChainBuilder;
 	private HashMap<Integer, PoolWithIdAssigner> pools;
 	private HashMap<ORef, ORefSet> referrerCache;
