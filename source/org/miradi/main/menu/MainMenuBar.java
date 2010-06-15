@@ -256,7 +256,7 @@ public class MainMenuBar extends JMenuBar
 		menu.add(createGroupBoxMenu(actions));
 		menu.addSeparator();
 
-		addMenuItem(actions, menu, ActionInsertFactorLink.class, KeyEvent.VK_I);
+		addMenuItem(actions, menu, ActionInsertLink.class, KeyEvent.VK_I);
 		addMenuItem(actions, menu, ActionCreateBendPoint.class, KeyEvent.VK_B);
 		addMenuItem(actions, menu, ActionDeleteBendPoint.class, KeyEvent.VK_DELETE);
 		

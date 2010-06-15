@@ -28,7 +28,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import org.miradi.actions.ActionInsertDraftStrategy;
-import org.miradi.actions.ActionInsertFactorLink;
+import org.miradi.actions.ActionInsertLink;
 import org.miradi.actions.ActionInsertGroupBox;
 import org.miradi.actions.ActionInsertHumanWelfareTarget;
 import org.miradi.actions.ActionInsertScopeBox;
@@ -178,7 +178,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		if (mainWindow.getDiagramView().isStategyBrainstormMode())
 			addButtonLineWithCheckBox(jpanel, Strategy.getObjectType(), Strategy.OBJECT_NAME_DRAFT, actions.get(ActionInsertDraftStrategy.class));
 
-		addButtonLineWithCheckBox(jpanel, FactorLink.getObjectType(), FactorLink.OBJECT_NAME, actions.get(ActionInsertFactorLink.class));
+		addButtonLineWithCheckBox(jpanel, FactorLink.getObjectType(), FactorLink.OBJECT_NAME, actions.get(ActionInsertLink.class));
 		
 		addIconLineWithCheckBox(jpanel, Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon());
 		addIconLineWithCheckBox(jpanel, Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon());

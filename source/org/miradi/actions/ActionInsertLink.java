@@ -23,9 +23,9 @@ import org.miradi.icons.FactorLinkIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionInsertFactorLink extends ViewAction
+public class ActionInsertLink extends ViewAction
 {
-	public ActionInsertFactorLink(MainWindow mainWindow)
+	public ActionInsertLink(MainWindow mainWindow)
 	{
 		super(mainWindow, getLabel(), new FactorLinkIcon());
 	}
