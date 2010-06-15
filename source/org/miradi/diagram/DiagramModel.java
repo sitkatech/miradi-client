@@ -115,7 +115,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 		return project;
 	}
 	
-	DiagramChainWalker getChainBuilder()
+	DiagramChainWalker getDiagramChainWalker()
 	{
 		return getDiagramObject().getDiagramChainWalker();
 	}
@@ -342,13 +342,13 @@ abstract public class DiagramModel extends DefaultGraphModel
 
 	public FactorSet getNodesInChain(DiagramFactor startingFactor)
 	{
-		DiagramChainWalker chainObject = getChainBuilder();
+		DiagramChainWalker chainObject = getDiagramChainWalker();
 		return chainObject.buildNormalChainAndGetFactors(this, startingFactor);
 	}
 		
 	public FactorSet getDirectlyLinkedUpstreamNodes(DiagramFactor startingFactor)
 	{
-		DiagramChainWalker chainObject = getChainBuilder();
+		DiagramChainWalker chainObject = getDiagramChainWalker();
 		return chainObject.buildDirectlyLinkedUpstreamChainAndGetFactors(this, startingFactor);
 	}
 		
