@@ -24,7 +24,7 @@ import java.util.Vector;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
-import org.miradi.diagram.ThreatTargetChainObject;
+import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
@@ -54,7 +54,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 	public void createOrDeleteThreatStressRatingsAsNeeded() throws Exception
 	{
 		HashSet<ThreatStressPair> threatStressPairs = new HashSet();
-		ThreatTargetChainObject chainObject = new ThreatTargetChainObject(getProject());
+		ThreatTargetChainWalker chainObject = new ThreatTargetChainWalker(getProject());
 		ORefList allTargetRefs = getProject().getTargetPool().getRefList();
 		for (int index = 0; index < allTargetRefs.size(); ++index)
 		{

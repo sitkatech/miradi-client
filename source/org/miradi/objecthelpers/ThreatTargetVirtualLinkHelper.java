@@ -21,7 +21,7 @@ package org.miradi.objecthelpers;
 
 import java.util.Vector;
 
-import org.miradi.diagram.ThreatTargetChainObject;
+import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ThreatStressRating;
@@ -133,7 +133,7 @@ public class ThreatTargetVirtualLinkHelper
 	{
 		try
 		{
-			ThreatTargetChainObject chain = new ThreatTargetChainObject(projectToUse);
+			ThreatTargetChainWalker chain = new ThreatTargetChainWalker(projectToUse);
 			ORefSet downStreamTargets = chain.getDownstreamTargetRefsFromThreat(threat);
 			return downStreamTargets.contains(targetRef);
 		}

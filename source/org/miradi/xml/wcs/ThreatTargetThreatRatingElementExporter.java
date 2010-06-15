@@ -22,7 +22,7 @@ package org.miradi.xml.wcs;
 
 import java.util.Vector;
 
-import org.miradi.diagram.ThreatTargetChainObject;
+import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.objecthelpers.ORef;
@@ -61,7 +61,7 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 	private void exportSimpleThreatRating() throws Exception
 	{
 		Vector<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
-		ThreatTargetChainObject chain = new ThreatTargetChainObject(getProject());
+		ThreatTargetChainWalker chain = new ThreatTargetChainWalker(getProject());
 		for(Target target : targets)
 		{
 			ORefSet upstreamThreats = chain.getUpstreamThreatRefsFromTarget(target);

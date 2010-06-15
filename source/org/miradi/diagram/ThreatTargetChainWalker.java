@@ -30,9 +30,9 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 
-public class ThreatTargetChainObject
+public class ThreatTargetChainWalker
 {
-	public ThreatTargetChainObject(Project projectToUse)
+	public ThreatTargetChainWalker(Project projectToUse)
 	{
 		project = projectToUse;
 	}
