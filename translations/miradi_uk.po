@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-15 13:01-0500\n"
+"POT-Creation-Date: 2010-06-15 17:29-0500\n"
 "PO-Revision-Date: 2010-05-12 13:30-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2249,7 +2249,7 @@ msgstr ""
 msgid "Choose Key Ecological Attribute to Create from"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/CloneObjectiveDoer.java:32
+#: Miradi/source/org/miradi/views/diagram/CloneObjectiveDoer.java:33
 msgid "Choose Objective to Create from"
 msgstr ""
 
