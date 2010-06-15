@@ -21,7 +21,7 @@ package org.miradi.objects;
 
 import java.util.HashSet;
 
-import org.miradi.diagram.ThreatTargetChainObject;
+import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objectdata.BooleanData;
 
@@ -57,7 +57,7 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		getProject().createDiagramLinkAndAddToDiagram(threat2, strategy);			
 		getProject().createDiagramLinkAndAddToDiagram(strategy, target);
 		
-		ThreatTargetChainObject chainObject = new ThreatTargetChainObject(getProject());
+		ThreatTargetChainWalker chainObject = new ThreatTargetChainWalker(getProject());
 		verifySingleUpstreamThreat(chainObject, threat1.getWrappedFactor(), target.getWrappedFactor());
 		verifySingleUpstreamThreat(chainObject, threat2.getWrappedFactor(), target.getWrappedFactor());
 		verifySingleDownstreamTarget(chainObject, threat1.getWrappedFactor(), target.getWrappedFactor());
@@ -77,7 +77,7 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		getProject().createDiagramLinkAndAddToDiagram(threat1, target1); 
 		getProject().createDiagramLinkAndAddToDiagram(target1, target2);			
 		
-		ThreatTargetChainObject chainObject = new ThreatTargetChainObject(getProject());
+		ThreatTargetChainWalker chainObject = new ThreatTargetChainWalker(getProject());
 		verifySingleUpstreamThreat(chainObject, threat1.getWrappedFactor(), target1.getWrappedFactor());	
 		verifyDoubleDownstreamTargets(chainObject, threat1.getWrappedFactor(), target1.getWrappedFactor(), target2.getWrappedFactor());
 	}
@@ -106,7 +106,7 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		getProject().createDiagramLinkAndAddToDiagram(threat1, target); 
 		getProject().createDiagramLinkAndAddToDiagram(threat2, target);			
 		
-		ThreatTargetChainObject chainObject = new ThreatTargetChainObject(getProject());
+		ThreatTargetChainWalker chainObject = new ThreatTargetChainWalker(getProject());
 		verifyDoubleUpstreamThreats(chainObject, threat1.getWrappedFactor(), threat2.getWrappedFactor(), target.getWrappedFactor());	
 		verifySingleDownstreamTarget(chainObject, threat1.getWrappedFactor(), target.getWrappedFactor());	
 		verifySingleDownstreamTarget(chainObject, threat2.getWrappedFactor(), target.getWrappedFactor());
@@ -125,7 +125,7 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		getProject().createDiagramLinkAndAddToDiagram(threat1, target1); 
 		getProject().createDiagramLinkAndAddToDiagram(threat1, target2);			
 		
-		ThreatTargetChainObject chainObject = new ThreatTargetChainObject(getProject());
+		ThreatTargetChainWalker chainObject = new ThreatTargetChainWalker(getProject());
 		verifySingleUpstreamThreat(chainObject, threat1.getWrappedFactor(), target1.getWrappedFactor());	
 		verifySingleUpstreamThreat(chainObject, threat1.getWrappedFactor(), target2.getWrappedFactor());
 		verifyDoubleDownstreamTargets(chainObject, threat1.getWrappedFactor(), target1.getWrappedFactor(), target2.getWrappedFactor());	
@@ -142,19 +142,19 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		getProject().createDiagramLinkAndAddToDiagram(threat, cause, isBidirectionalTag);
 		getProject().createDiagramLinkAndAddToDiagram(cause, target, isBidirectionalTag);			
 		
-		ThreatTargetChainObject chainObject = new ThreatTargetChainObject(getProject());
+		ThreatTargetChainWalker chainObject = new ThreatTargetChainWalker(getProject());
 		verifySingleUpstreamThreat(chainObject, threat.getWrappedFactor(), target.getWrappedFactor());
 		verifySingleDownstreamTarget(chainObject, threat.getWrappedFactor(), target.getWrappedFactor());
 	}
 
-	private void verifySingleDownstreamTarget(ThreatTargetChainObject chainObject, Factor threat, Factor target)
+	private void verifySingleDownstreamTarget(ThreatTargetChainWalker chainObject, Factor threat, Factor target)
 	{
 		HashSet<Factor> downStreamTargetsFromThreat1 = chainObject.getDownstreamTargetsFromThreat(threat);
 		assertEquals("wrong target count?", 1, downStreamTargetsFromThreat1.size());
 		assertTrue("wrong threat in list?", downStreamTargetsFromThreat1.contains(target));
 	}
 	
-	private void verifyDoubleDownstreamTargets(ThreatTargetChainObject chainObject, Factor threat, Factor target1, Factor target2)
+	private void verifyDoubleDownstreamTargets(ThreatTargetChainWalker chainObject, Factor threat, Factor target1, Factor target2)
 	{
 		HashSet<Factor> downStreamTargetsFromThreat1 = chainObject.getDownstreamTargetsFromThreat(threat);
 		assertEquals("wrong target count?", 2, downStreamTargetsFromThreat1.size());
@@ -162,14 +162,14 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		assertTrue("wrong threat in list?", downStreamTargetsFromThreat1.contains(target2));
 	}
 		
-	private void verifySingleUpstreamThreat(ThreatTargetChainObject chainObject, Factor threat, Factor target)
+	private void verifySingleUpstreamThreat(ThreatTargetChainWalker chainObject, Factor threat, Factor target)
 	{
 		HashSet<Factor> upstreamThreats = chainObject.getUpstreamThreatsFromTarget(target);
 		assertTrue("threat is not in chain?", upstreamThreats.contains(threat));
 		assertTrue("wrong threat in list?", upstreamThreats.contains(threat));
 	}
 	
-	private void verifyDoubleUpstreamThreats(ThreatTargetChainObject chainObject, Factor threat1, Factor threat2, Factor target)
+	private void verifyDoubleUpstreamThreats(ThreatTargetChainWalker chainObject, Factor threat1, Factor threat2, Factor target)
 	{
 		HashSet<Factor> upstreamThreats = chainObject.getUpstreamThreatsFromTarget(target);
 		assertEquals("wrong threat count?", 2, upstreamThreats.size());

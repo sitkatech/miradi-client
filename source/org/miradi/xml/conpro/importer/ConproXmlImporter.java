@@ -37,7 +37,7 @@ import org.martus.util.MultiCalendar;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.ThreatTargetChainObject;
+import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.CpmzVersionTooOldException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
@@ -878,7 +878,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 	
 	private void createThreatStressRatings(ORef targetRef, ORef stressRef) throws Exception
 	{
-		ThreatTargetChainObject threatTargetChainObject = new ThreatTargetChainObject(getProject());
+		ThreatTargetChainWalker threatTargetChainObject = new ThreatTargetChainWalker(getProject());
 		Target target = Target.find(getProject(), targetRef);
 		ORefSet upstreatThreatRefs = threatTargetChainObject.getUpstreamThreatRefsFromTarget(target);
 		for(ORef threatRef : upstreatThreatRefs)
