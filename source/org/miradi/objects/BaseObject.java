@@ -247,7 +247,7 @@ abstract public class BaseObject
 	
 	public NonDiagramChainWalker getProjectChainBuilder()
 	{
-		return getObjectManager().getProjectChainBuilder();
+		return getObjectManager().getNonDiagramChainWalker();
 	}
 	
 	public DiagramChainWalker getDiagramChainBuilder()
