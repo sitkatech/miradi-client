@@ -52,11 +52,14 @@ public class DiagramLinkPoolImporter extends AbstractBaseObjectImporter
 		
 		importRefs(node, GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, destinationRef, DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, DiagramLink.getObjectType(), DIAGRAM_LINK + ID);
 		importCodeField(node, getPoolName(), destinationRef, DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion());
-		importBidirectionalCode(node, destinationRef);
+		DiagramLink diagramLink = DiagramLink.find(getProject(), destinationRef);
+		if (!diagramLink.isGroupBoxLink())
+			importBidirectionalCode(node, diagramLink);
+		
 		importBendPoints(node, destinationRef);
 	}
 
-	private void importBidirectionalCode(Node node, ORef destinationRef) throws Exception
+	private void importBidirectionalCode(Node node, DiagramLink diagramLink) throws Exception
 	{
 		Node bidirectionalNode = getImporter().getNode(node, getPoolName() + FactorLink.TAG_BIDIRECTIONAL_LINK);
 		String bidirectionalNodeValue = bidirectionalNode.getTextContent();
@@ -64,9 +67,7 @@ public class DiagramLinkPoolImporter extends AbstractBaseObjectImporter
 		if (getImporter().isTrue(bidirectionalNodeValue))
 			bidirectionalValue = BooleanData.BOOLEAN_TRUE;
 		
-		DiagramLink diagramLink = DiagramLink.find(getProject(), destinationRef);
-		if (!diagramLink.isGroupBoxLink())
-			getImporter().setData(diagramLink.getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, bidirectionalValue);
+		getImporter().setData(diagramLink.getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, bidirectionalValue);
 	}
 	
 	private void importBendPoints(Node node, ORef destinationRef) throws Exception
