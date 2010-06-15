@@ -37,11 +37,6 @@ public class NonDiagramChainWalker
 		clearCaches();
 	}
 
-	public FactorSet buildUpstreamChainAndGetFactors(Factor factor)
-	{
-		buildUpstreamChain(factor);
-		return getFactors();
-	}
 	public FactorSet buildUpstreamDownstreamChainAndGetFactors(Factor factor)
 	{
 		buildUpstreamDownstreamChain(factor);
