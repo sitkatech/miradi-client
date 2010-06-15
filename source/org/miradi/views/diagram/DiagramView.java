@@ -125,6 +125,7 @@ import org.miradi.actions.ActionZoomOut;
 import org.miradi.actions.ActionZoomToFit;
 import org.miradi.actions.EAMAction;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.DiagramChainWalker;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.EAMGraphSelectionModel;
@@ -712,7 +713,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		for(int i = 0; i < factorORefs.size(); ++i)
 		{
 			DiagramFactor diagramFactor = diagramModel.getFactorCellByWrappedRef(factorORefs.get(i)).getDiagramFactor();
-			FactorSet possibleDraftStrategies = diagramModel.getDirectlyLinkedUpstreamNodes(diagramFactor);
+			DiagramChainWalker chainObject = diagramModel.getDiagramChainWalker();
+			FactorSet possibleDraftStrategies = chainObject.buildDirectlyLinkedUpstreamChainAndGetFactors(diagramModel, diagramFactor);
 			Iterator iter = possibleDraftStrategies.iterator();
 			while(iter.hasNext())
 			{
