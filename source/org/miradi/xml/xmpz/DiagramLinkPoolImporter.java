@@ -63,11 +63,8 @@ public class DiagramLinkPoolImporter extends AbstractBaseObjectImporter
 	{
 		Node bidirectionalNode = getImporter().getNode(node, getPoolName() + FactorLink.TAG_BIDIRECTIONAL_LINK);
 		String bidirectionalNodeValue = bidirectionalNode.getTextContent();
-		String bidirectionalValue = BooleanData.BOOLEAN_FALSE;
 		if (getImporter().isTrue(bidirectionalNodeValue))
-			bidirectionalValue = BooleanData.BOOLEAN_TRUE;
-		
-		getImporter().setData(diagramLink.getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, bidirectionalValue);
+			getImporter().setData(diagramLink.getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
 	}
 	
 	private void importBendPoints(Node node, ORef destinationRef) throws Exception
