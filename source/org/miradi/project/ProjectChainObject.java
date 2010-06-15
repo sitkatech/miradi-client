@@ -24,8 +24,4 @@ package org.miradi.project;
 
 public class ProjectChainObject  extends ChainObject
 {
-	public ProjectChainObject()
-	{
-		clearCaches();
-	}
 }

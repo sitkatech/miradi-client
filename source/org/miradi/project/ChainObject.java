@@ -32,6 +32,11 @@ import org.miradi.objects.FactorLink;
 
 abstract public class ChainObject
 {	
+	public ChainObject()
+	{
+		clearCaches();
+	}
+
 	protected FactorSet getFactors()
 	{
 		return factorSet;
