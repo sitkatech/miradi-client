@@ -47,25 +47,30 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		new WcsProjectDataImporter(this).importElement();
 		new RareProjetDataImporter(this).importElement();
 		new FosProjectDataImporter(this).importElement();
+		
 		new ConceptualModelPoolImporter(this).importElement();
 		new ResultsChainDiagramPoolImporter(this).importElement();
-		new DiagramFactorPoolImporter(this).importElement();
+		
 		new CausePoolImporter(this).importElement();
 		new BiodiversityTargetPoolImporter(this).importElement();
 		new HumanWelfareTargetPoolImporter(this).importElement();
 		new StrategyPoolImporter(this).importElement();
 		new ThreatReductionResultsPoolImporter(this).importElement();
 		new IntermediateResultPoolImporter(this).importElement();
-		new GoalPoolImporter(this).importElement();
-		new ObjectivePoolImporter(this).importElement();
-		new IndicatorPoolImporter(this).importElement();
-		new MeasurementPoolImporter(this).importElement();
 		new StressPoolImporter(this).importElement();
-		new KeyEcologicalAttributePoolImporter(this).importElement();
 		new ScopeBoxPoolImporter(this).importElement();
-		new SubTargetPoolImporter(this).importElement();
 		new TextBoxPoolImporter(this).importElement();
 		new GroupBoxPoolImporter(this).importElement();
+		new TaskPoolImporter(this).importElement();		
+		
+		new DiagramFactorPoolImporter(this).importElement();
+		
+		new KeyEcologicalAttributePoolImporter(this).importElement();
+		new IndicatorPoolImporter(this).importElement();
+		new GoalPoolImporter(this).importElement();
+		new ObjectivePoolImporter(this).importElement();
+		new MeasurementPoolImporter(this).importElement();
+		new SubTargetPoolImporter(this).importElement();
 		new ProgressReportPoolImporter(this).importElement();
 		new ProgressPercentPoolImporter(this).importElement();
 		new AccountingCodePoolImporter(this).importElement();
@@ -73,7 +78,6 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		new IucnRedListspeciesPoolImporter(this).importElement();
 		new OtherNotableSpeciesPoolImporter(this).importElement();
 		new AudiencePoolImporter(this).importElement();
-		new TaskPoolImporter(this).importElement();
 		new ObjectTreeTableConfigurationPoolImporter(this).importElement();
 		new ExpenseAssignmentPoolImporter(this).importElement();
 		new ResourceAssignmentPoolImporter(this).importElement();
