@@ -38,7 +38,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.views.ViewDoer;
 
-public class InsertFactorLinkDoer extends ViewDoer
+public class InsertLinkDoer extends ViewDoer
 {
 	@Override
 	public boolean isAvailable()
