@@ -88,7 +88,7 @@ import org.miradi.actions.ActionHideStressBubble;
 import org.miradi.actions.ActionInsertContributingFactor;
 import org.miradi.actions.ActionInsertDirectThreat;
 import org.miradi.actions.ActionInsertDraftStrategy;
-import org.miradi.actions.ActionInsertFactorLink;
+import org.miradi.actions.ActionInsertLink;
 import org.miradi.actions.ActionInsertGroupBox;
 import org.miradi.actions.ActionInsertHumanWelfareTarget;
 import org.miradi.actions.ActionInsertIntermediateResult;
@@ -285,7 +285,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionInsertDirectThreat.class, new InsertDirectThreatDoer());
 		addDoerToMap(ActionInsertStrategy.class, new InsertStrategyDoer());
 		addDoerToMap(ActionInsertDraftStrategy.class, new InsertDraftStrategyDoer());
-		addDoerToMap(ActionInsertFactorLink.class, new InsertLinkDoer());
+		addDoerToMap(ActionInsertLink.class, new InsertLinkDoer());
 		addDoerToMap(ActionCreateBendPoint.class, new CreateBendPointDoer());
 		addDoerToMap(ActionDeleteBendPoint.class, new DeleteBendPointDoer());
 		addDoerToMap(ActionRenameResultsChain.class, new RenameResultsChainDoer());

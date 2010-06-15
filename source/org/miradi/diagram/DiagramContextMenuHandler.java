@@ -50,7 +50,7 @@ import org.miradi.actions.ActionGroupBoxRemoveFactor;
 import org.miradi.actions.ActionInsertContributingFactor;
 import org.miradi.actions.ActionInsertDirectThreat;
 import org.miradi.actions.ActionInsertDraftStrategy;
-import org.miradi.actions.ActionInsertFactorLink;
+import org.miradi.actions.ActionInsertLink;
 import org.miradi.actions.ActionInsertGroupBox;
 import org.miradi.actions.ActionInsertHumanWelfareTarget;
 import org.miradi.actions.ActionInsertIntermediateResult;
@@ -305,7 +305,7 @@ public class DiagramContextMenuHandler
 		insertMenu.add(createMenuItem(ActionInsertScopeBox.class, menuInvokedAt));
 		
 		insertMenu.addSeparator();
-		insertMenu.add(actions.get(ActionInsertFactorLink.class));
+		insertMenu.add(actions.get(ActionInsertLink.class));
 		
 		return insertMenu;
 	}

@@ -149,7 +149,7 @@ public class Actions
 		registerAction(new ActionPrint(mainWindow));
 		registerAction(new ActionInsertIntermediateResult(mainWindow));
 		registerAction(new ActionInsertThreatReductionResult(mainWindow));
-		registerAction(new ActionInsertFactorLink(mainWindow));
+		registerAction(new ActionInsertLink(mainWindow));
 		registerAction(new ActionInsertTarget(mainWindow));
 		registerAction(new ActionInsertHumanWelfareTarget(mainWindow));
 		registerAction(new ActionInsertDraftStrategy(mainWindow));
