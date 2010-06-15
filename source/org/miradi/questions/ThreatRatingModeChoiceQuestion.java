@@ -47,7 +47,7 @@ public class ThreatRatingModeChoiceQuestion extends StaticChoiceQuestion
 	@Override
 	protected String getReadableAlternativeDefaultCode()
 	{
-		return "SimpleBased";
+		return "Simple";
 	}
 	
 	public static final String STRESS_BASED_CODE = "StressBased";
