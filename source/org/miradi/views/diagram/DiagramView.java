@@ -693,7 +693,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		ORefList oRefsToHide = new ORefList();
 		ViewData viewData = diagramModel.getProject().getDiagramViewData();
 		ORefList visibleFactorORefs = new ORefList(viewData.getData(ViewData.TAG_CHAIN_MODE_FACTOR_REFS));
-		visibleFactorORefs.addAll(getRelatedDraftInterventions(diagramModel, visibleFactorORefs));
+		visibleFactorORefs.addAll(getRelatedDraftStrategies(diagramModel, visibleFactorORefs));
 		DiagramFactor[] allDiagramFactors = diagramModel.getProject().getAllDiagramFactors();
 		for (int i = 0; i < allDiagramFactors.length; ++i)
 		{
@@ -705,7 +705,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return oRefsToHide;
 	}
 	
-	private static ORefList getRelatedDraftInterventions(DiagramModel diagramModel, ORefList factorORefs) throws Exception
+	private static ORefList getRelatedDraftStrategies(DiagramModel diagramModel, ORefList factorORefs) throws Exception
 	{
 		ORefList draftsToAdd = new ORefList();
 		
