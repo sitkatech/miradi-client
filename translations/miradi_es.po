@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-15 09:37-0500\n"
+"POT-Creation-Date: 2010-06-15 11:59-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -7906,7 +7906,7 @@ msgstr "[NO ESPECIFICADO]"
 msgid "[New Results Chain]"
 msgstr "[Nueva cadena de resultados]"
 
-#: Miradi/source/org/miradi/project/Project.java:965
+#: Miradi/source/org/miradi/project/Project.java:970
 msgid "[No Project]"
 msgstr "[Sin proyecto]"
 

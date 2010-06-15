@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-15 09:37-0500\n"
+"POT-Creation-Date: 2010-06-15 11:59-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7576,7 +7576,7 @@ msgstr "[未指定的] \t\t"
 msgid "[New Results Chain]"
 msgstr "[新结果链] \t\t"
 
-#: Miradi/source/org/miradi/project/Project.java:965
+#: Miradi/source/org/miradi/project/Project.java:970
 msgid "[No Project]"
 msgstr "[无项目] \t\t"
 
