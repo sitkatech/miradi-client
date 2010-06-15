@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-15 09:34-0500\n"
+"POT-Creation-Date: 2010-06-15 09:37-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1812,7 +1812,7 @@ msgid "An error has occured while writing assignment data."
 msgstr "Terjadi kesalahan saat menulis data alokasi. "
 
 #: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:335
-#: Miradi/source/org/miradi/diagram/DiagramModel.java:794
+#: Miradi/source/org/miradi/diagram/DiagramModel.java:788
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
 "the project has gotten corrupted. Please contact the Miradi team for help "
@@ -3431,7 +3431,7 @@ msgstr "Hutan – Rawa-rawa Tropis/Subtropis"
 msgid "Forest - Temperate"
 msgstr "Hutan - Temperat"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:483
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:484
 msgid "Found Corrupted Data:"
 msgstr "Data yang Rusak Ditemukan: "
 
@@ -7168,7 +7168,7 @@ msgstr "Sifat-sifat Ancaman Langsung"
 msgid "Title|Error"
 msgstr "Kesalahan"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:983
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:985
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Sifat-sifat Faktor "
@@ -7476,7 +7476,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Kode tak dikenal: "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:410
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:411
 msgid "Unknown error displaying diagram"
 msgstr "Kesalahan tak dikenal saat menampilkan diagram "
 

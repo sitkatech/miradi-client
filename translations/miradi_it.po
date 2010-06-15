@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-15 09:34-0500\n"
+"POT-Creation-Date: 2010-06-15 09:37-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1669,7 +1669,7 @@ msgid "An error has occured while writing assignment data."
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:335
-#: Miradi/source/org/miradi/diagram/DiagramModel.java:794
+#: Miradi/source/org/miradi/diagram/DiagramModel.java:788
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
 "the project has gotten corrupted. Please contact the Miradi team for help "
@@ -3205,7 +3205,7 @@ msgstr ""
 msgid "Forest - Temperate"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:483
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:484
 msgid "Found Corrupted Data:"
 msgstr ""
 
@@ -6743,7 +6743,7 @@ msgstr ""
 msgid "Title|Error"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:983
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:985
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr ""
@@ -7037,7 +7037,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:410
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:411
 msgid "Unknown error displaying diagram"
 msgstr ""
 

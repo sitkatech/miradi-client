@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-15 09:34-0500\n"
+"POT-Creation-Date: 2010-06-15 09:37-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1720,7 +1720,7 @@ msgid "An error has occured while writing assignment data."
 msgstr "编写分配数据时出现一个错误。 \t\t"
 
 #: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:335
-#: Miradi/source/org/miradi/diagram/DiagramModel.java:794
+#: Miradi/source/org/miradi/diagram/DiagramModel.java:788
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
 "the project has gotten corrupted. Please contact the Miradi team for help "
@@ -3292,7 +3292,7 @@ msgstr "森林-亚热带/热带沼泽"
 msgid "Forest - Temperate"
 msgstr "森林-温带森林"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:483
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:484
 msgid "Found Corrupted Data:"
 msgstr "发现损坏的数据： \t\t"
 
@@ -6906,7 +6906,7 @@ msgstr "标题|直接威胁因子属性"
 msgid "Title|Error"
 msgstr "错误 "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:983
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:985
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "因素属性 \t\t"
@@ -7210,7 +7210,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "未知代码： \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:410
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:411
 msgid "Unknown error displaying diagram"
 msgstr "显示图表时出现未知错误 \t\t"
 
