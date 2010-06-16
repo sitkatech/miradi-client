@@ -749,8 +749,8 @@ GeospatialLocation.element = element miradi:GeospatialLocation
 
 ExternalProjectId.element = element miradi:ExternalProjectId
 {
-  attribute ExternalAppThatAssignedId {text} &
-  attribute Id {xsd:integer}
+  element miradi:ExternalApp { text } &
+  element miradi:ExternalProjectId { text } 
 }
 
 DiagramPoint.element = element miradi:DiagramPoint
@@ -962,3 +962,4 @@ ProjectSummaryLocationCountriesContainer.element = element miradi:ProjectSummary
 {
   element miradi:code { vocabulary_countries } * 
 }
+
