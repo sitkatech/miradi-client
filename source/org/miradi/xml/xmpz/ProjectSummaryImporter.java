@@ -63,16 +63,20 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 	private void importProjectId(Node projectSumaryNode) throws Exception
 	{
 		Node projectIdNode = getImporter().getNode(projectSumaryNode, getPoolName() + Xenodata.TAG_PROJECT_ID);
-		NodeList projectIdNodes = getImporter().getNodes(projectIdNode, new String[]{Xenodata.TAG_PROJECT_ID, });
-		
+		NodeList projectIdNodes = getImporter().getNodes(projectIdNode, new String[]{EXTERNAL_SYSTEM_ID_ELEMENT, });
 		StringRefMap stringRefMap = new StringRefMap();
 		for (int index = 0; index < projectIdNodes.getLength(); ++index)
 		{
 			Node node = projectIdNodes.item(index);
-			String externalAppThatAssignedId = getImporter().getAttributeValue(node, WcsXmlConstants.EXTERNAL_APP_THAT_ASSIGNED_ID);
-			String projectId = getImporter().getAttributeValue(node, WcsXmlConstants.ID);
+			
+			Node externalAppNode = getImporter().getNode(node, EXTERNAL_APP);
+			String externalAppThatAssignedId = externalAppNode.getTextContent();
+			
+			Node externalProjectIdNode = getImporter().getNode(node, WcsXmlConstants.EXTERNAL_SYSTEM_ID_ELEMENT);
+			String externalProjectId = externalProjectIdNode.getTextContent();
+			
 			ORef xenodataRef = getProject().createObject(Xenodata.getObjectType());
-			getImporter().setData(xenodataRef, Xenodata.TAG_PROJECT_ID, projectId);
+			getImporter().setData(xenodataRef, Xenodata.TAG_PROJECT_ID, externalProjectId);
 			stringRefMap.add(externalAppThatAssignedId, xenodataRef);
 		}
 		
