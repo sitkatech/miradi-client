@@ -1317,7 +1317,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateEverything() throws Exception
 	{
-		switchToStressBaseMode();
 		fillGeneralProjectData();
 		fillWwfProjectData();
 		fillWcsProjectData();
