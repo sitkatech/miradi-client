@@ -92,7 +92,7 @@ public class ThreatTargetVirtualLinkHelper
 		if (threatStressRatingRef.isValid())
 			return threatStressRatingRef;
 		
-		throw new Exception("Stress has no matching Threat Stress Rating.  Stress ref = " + stressRef); 
+		throw new Exception("Stress has no matching Threat Stress Rating.  threatRef =" + threatRef + " targetRef =" + targetRef + " stressRef =" + stressRef); 
 	}
 
 	//TODO this method needs to use threat and stress to get all referring TSRs, and then return the intersection of the referrers
