@@ -23,7 +23,6 @@ package org.miradi.xml.xmpz;
 import java.awt.Point;
 
 import org.miradi.ids.BaseId;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
@@ -117,18 +116,5 @@ abstract public class AbstractBaseObjectImporter extends AbstractXmpzObjectImpor
 		return new Point(x, y);
 	}
 	
-	protected int extractNodeTextContentAsInt(Node node)
-	{
-		try
-		{
-			return Integer.parseInt(node.getTextContent());
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return 0;
-		}
-	}
-
 	private int objectTypeToImport;
 }
