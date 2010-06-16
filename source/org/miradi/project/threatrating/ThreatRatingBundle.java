@@ -100,6 +100,7 @@ public class ThreatRatingBundle
 		return json;
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(! (rawOther instanceof ThreatRatingBundle))
@@ -115,6 +116,7 @@ public class ThreatRatingBundle
 		return true;
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return threatId.hashCode();
