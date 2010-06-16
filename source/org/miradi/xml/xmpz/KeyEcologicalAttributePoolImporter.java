@@ -26,7 +26,7 @@ import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
-public class KeyEcologicalAttributePoolImporter extends	AbstractBaseObjectImporter
+public class KeyEcologicalAttributePoolImporter extends	AbstractBaseObjectPoolImporter
 {
 	public KeyEcologicalAttributePoolImporter(XmpzXmlImporter importerToUse)
 	{

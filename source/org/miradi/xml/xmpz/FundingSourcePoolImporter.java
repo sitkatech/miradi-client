@@ -25,7 +25,7 @@ import org.miradi.objects.FundingSource;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
-public class FundingSourcePoolImporter extends AbstractBaseObjectImporter
+public class FundingSourcePoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public FundingSourcePoolImporter(XmpzXmlImporter importerToUse)
 	{

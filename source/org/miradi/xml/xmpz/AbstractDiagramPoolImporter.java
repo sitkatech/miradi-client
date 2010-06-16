@@ -29,7 +29,7 @@ import org.miradi.objects.TaggedObjectSet;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
-abstract public class AbstractDiagramPoolImporter extends AbstractBaseObjectImporter
+abstract public class AbstractDiagramPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public AbstractDiagramPoolImporter(XmpzXmlImporter importerToUse, String poolNameToUse, int diagramTypeToImport)
 	{

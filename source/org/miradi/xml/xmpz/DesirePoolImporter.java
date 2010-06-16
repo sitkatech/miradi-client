@@ -31,7 +31,7 @@ import org.miradi.objects.Task;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
-abstract public class DesirePoolImporter extends AbstractBaseObjectImporter
+abstract public class DesirePoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public DesirePoolImporter(XmpzXmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
 	{

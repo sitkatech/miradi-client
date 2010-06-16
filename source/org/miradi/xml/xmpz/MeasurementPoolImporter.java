@@ -28,7 +28,7 @@ import org.miradi.questions.TrendQuestion;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
-public class MeasurementPoolImporter extends AbstractBaseObjectImporter
+public class MeasurementPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public MeasurementPoolImporter(XmpzXmlImporter importerToUse)
 	{

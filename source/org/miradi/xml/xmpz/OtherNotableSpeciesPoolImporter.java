@@ -23,7 +23,7 @@ package org.miradi.xml.xmpz;
 import org.miradi.objects.OtherNotableSpecies;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class OtherNotableSpeciesPoolImporter extends AbstractBaseObjectImporter
+public class OtherNotableSpeciesPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public OtherNotableSpeciesPoolImporter(XmpzXmlImporter importerToUse)
 	{

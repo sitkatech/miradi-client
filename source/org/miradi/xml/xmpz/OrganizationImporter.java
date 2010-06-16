@@ -25,7 +25,7 @@ import org.miradi.objects.Organization;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
-public class OrganizationImporter extends AbstractBaseObjectImporter
+public class OrganizationImporter extends AbstractBaseObjectPoolImporter
 {
 	public OrganizationImporter(XmpzXmlImporter importerToUse)
 	{
