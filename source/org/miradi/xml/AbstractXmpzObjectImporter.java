@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml;
 
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.FosProjectData;
@@ -195,6 +196,19 @@ abstract public class AbstractXmpzObjectImporter implements WcsXmlConstants
 	public String getPoolName()
 	{
 		return poolName;
+	}
+	
+	protected int extractNodeTextContentAsInt(Node node)
+	{
+		try
+		{
+			return Integer.parseInt(node.getTextContent());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return 0;
+		}
 	}
 	
 	abstract public void importElement() throws Exception;
