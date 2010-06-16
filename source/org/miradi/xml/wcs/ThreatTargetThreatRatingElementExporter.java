@@ -33,6 +33,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatRatingCommentsData;
+import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.project.threatrating.ThreatRatingFramework;
@@ -137,6 +138,10 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 		
 		ChoiceItem contribution = ThreatStressRatingDetailsTableExporter.getContribution(getProject(), target.getRef(), threat.getRef(), stress);
 		getWcsXmlExporter().writeOptionalElement(getWcsXmlExporter().getWriter(), STRESS_BASED_THREAT_RATING + CONTRIBUTION, contribution.getCode());
+		
+		ThreatStressRating threatStressRating = ThreatStressRatingDetailsTableExporter.findThreatStressRating(getProject(), target.getRef(), threat.getRef(), stress);
+		if (threatStressRating != null)
+			getWcsXmlExporter().writeOptionalElement(STRESS_BASED_THREAT_RATING, THREAT_STRESS_RATING_IS_ACTIVE, threatStressRating, ThreatStressRating.TAG_IS_ACTIVE);
 		
 		exportStressBasedStressRating(stress.getCalculatedStressRating());
 		exportStressBasedThreatStressRating(target.getRef(), threat.getRef());
