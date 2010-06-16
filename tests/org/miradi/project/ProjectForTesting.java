@@ -90,6 +90,7 @@ import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
+import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CountriesQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
@@ -622,21 +623,43 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return Cause.find(this, threatRef);
 	}
 	
+	public void populateSimpleThreatRatingValues() throws Exception
+	{
+		DiagramLink diagramLink = createThreatTargetDiagramLink();
+		ORef threatRef = diagramLink.getFromDiagramFactor().getWrappedORef();
+		ORef targetRef = diagramLink.getToDiagramFactor().getWrappedORef();
+		
+		SimpleThreatRatingFramework framework = getSimpleThreatRatingFramework();
+		framework.setScope(threatRef, targetRef, SimpleThreatRatingFramework.HIGH_RATING_VALUE);
+		framework.setSeverity(threatRef, targetRef, SimpleThreatRatingFramework.MEDIUM_RATING_VALUE);
+		framework.setIrreversibility(threatRef, targetRef, SimpleThreatRatingFramework.MEDIUM_RATING_VALUE);
+	}
+	
 	public DiagramLink createThreatTargetDiagramLinkWithRating() throws Exception
 	{
+		DiagramLink diagramLink = createThreatTargetDiagramLink();
 		switchToStressBaseMode();
-		DiagramFactor diagramFactorTarget = createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor diagramFactorTarget = diagramLink.getToDiagramFactor();
 		Target target = (Target) diagramFactorTarget.getWrappedFactor();
 		Stress stress = createAndPopulateStress();
 		fillObjectUsingCommand(target, Target.TAG_STRESS_REFS, new ORefList(stress));
 		
+		DiagramFactor diagramFactorCause = diagramLink.getFromDiagramFactor();
+		createDiagramFactorLinkAndAddToDiagram(diagramFactorCause, diagramFactorTarget);
+		
+		ThreatStressRating threatStressRating = createThreatStressRating(stress.getRef(), diagramFactorCause.getWrappedORef());
+		populateThreatStressRating(threatStressRating);
+		
+		return diagramLink;
+	}
+	
+	public DiagramLink createThreatTargetDiagramLink() throws Exception
+	{
+		DiagramFactor diagramFactorTarget = createDiagramFactorAndAddToDiagram(Target.getObjectType());
 		DiagramFactor diagramFactorCause = createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		Cause threat = (Cause) diagramFactorCause.getWrappedFactor();
 		enableAsThreat(threat);
 		ORef diagramLink = createDiagramFactorLinkAndAddToDiagram(diagramFactorCause, diagramFactorTarget);
-		
-		ThreatStressRating threatStressRating = createThreatStressRating(stress.getRef(), threat.getRef());
-		populateThreatStressRating(threatStressRating);
 		
 		return DiagramLink.find(this, diagramLink);
 	}
@@ -1176,14 +1199,25 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateStressBasedThreatRatingCommentsData() throws Exception
 	{
+		populateThreatTargetCommentsData(ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP);
+	}
+	
+	public void populateSimpleThreatRatingCommentsData() throws Exception
+	{
+		populateThreatTargetCommentsData(ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP);
+	}
+
+	private void populateThreatTargetCommentsData(String tagStressBasedThreatRatingCommentsMap) throws Exception
+	{
 		ThreatRatingCommentsData threatRatingCommentsData = getSingletonThreatRatingCommentsData();
-		DiagramLink diagramLink = createThreatTargetDiagramLinkWithRating();
+		DiagramLink diagramLink = createThreatTargetDiagramLink();
 		FactorLink factorLink = diagramLink.getWrappedFactorLink();
 		String commentsKey = ThreatRatingCommentsData.createKey(factorLink.getFromFactorRef(), factorLink.getToFactorRef());
 		String comment = "Some Comment for Threat and Target";
 		StringMap map = new StringMap();
 		map.add(commentsKey, comment);
-		fillObjectUsingCommand(threatRatingCommentsData, ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP, map.toString());
+		
+		fillObjectUsingCommand(threatRatingCommentsData, tagStressBasedThreatRatingCommentsMap, map.toString());
 	}
 
 	public void addProgressReport(BaseObject baseObject) throws Exception

@@ -82,6 +82,13 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		validateUsingStringWriter();
 	}
 	
+	public void testProjectWithSimpleThreatRatingData() throws Exception
+	{
+		getProject().populateSimpleThreatRatingCommentsData();
+		getProject().populateSimpleThreatRatingValues();
+		validateUsingStringWriter();
+	}
+	
 	public void testValidateFilledProject() throws Exception
 	{
 		getProject().createAndPopulateDiagramLink();
