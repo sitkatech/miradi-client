@@ -38,7 +38,7 @@ import org.miradi.utils.PointList;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class DiagramLinkPoolImporter extends AbstractBaseObjectImporter
+public class DiagramLinkPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public DiagramLinkPoolImporter(XmpzXmlImporter importerToUse)
 	{

@@ -38,9 +38,9 @@ import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-abstract public class AbstractBaseObjectImporter extends AbstractXmpzObjectImporter
+abstract public class AbstractBaseObjectPoolImporter extends AbstractXmpzObjectImporter
 {
-	public AbstractBaseObjectImporter(XmpzXmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
+	public AbstractBaseObjectPoolImporter(XmpzXmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
 	{
 		super(importerToUse, poolNameToUse);
 		

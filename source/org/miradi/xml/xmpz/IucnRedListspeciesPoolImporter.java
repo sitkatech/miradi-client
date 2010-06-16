@@ -23,7 +23,7 @@ package org.miradi.xml.xmpz;
 import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class IucnRedListspeciesPoolImporter extends AbstractBaseObjectImporter
+public class IucnRedListspeciesPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public IucnRedListspeciesPoolImporter(XmpzXmlImporter importerToUse)
 	{

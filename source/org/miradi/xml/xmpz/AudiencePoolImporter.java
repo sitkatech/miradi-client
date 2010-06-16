@@ -25,7 +25,7 @@ import org.miradi.objects.Audience;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
-public class AudiencePoolImporter extends AbstractBaseObjectImporter
+public class AudiencePoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public AudiencePoolImporter(XmpzXmlImporter importerToUse)
 	{

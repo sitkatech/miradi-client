@@ -26,7 +26,7 @@ import org.miradi.objects.Objective;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
-abstract public class FactorPoolImporter extends AbstractBaseObjectImporter
+abstract public class FactorPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public FactorPoolImporter(XmpzXmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
 	{

@@ -25,7 +25,7 @@ import org.miradi.objects.AccountingCode;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
-public class AccountingCodePoolImporter extends AbstractBaseObjectImporter
+public class AccountingCodePoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public AccountingCodePoolImporter(XmpzXmlImporter importerToUse)
 	{

@@ -30,7 +30,7 @@ import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-abstract public class AbstractAssignmentPoolImporter extends AbstractBaseObjectImporter
+abstract public class AbstractAssignmentPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public AbstractAssignmentPoolImporter(XmpzXmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
 	{

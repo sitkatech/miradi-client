@@ -50,7 +50,7 @@ import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
-public class DiagramFactorPoolImporter extends AbstractBaseObjectImporter
+public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public DiagramFactorPoolImporter(XmpzXmlImporter importerToUse)
 	{

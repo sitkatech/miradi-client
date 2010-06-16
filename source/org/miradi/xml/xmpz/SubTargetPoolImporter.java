@@ -25,7 +25,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
-public class SubTargetPoolImporter extends AbstractBaseObjectImporter
+public class SubTargetPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public SubTargetPoolImporter(XmpzXmlImporter importerToUse)
 	{

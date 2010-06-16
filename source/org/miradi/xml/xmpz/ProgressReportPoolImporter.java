@@ -26,7 +26,7 @@ import org.miradi.questions.ProgressReportLongStatusQuestion;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
-public class ProgressReportPoolImporter extends AbstractBaseObjectImporter
+public class ProgressReportPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public ProgressReportPoolImporter(XmpzXmlImporter importerToUse)
 	{

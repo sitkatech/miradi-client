@@ -27,7 +27,7 @@ import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
 
-public class ProjectResourceImporter extends AbstractBaseObjectImporter
+public class ProjectResourceImporter extends AbstractBaseObjectPoolImporter
 {
 	public ProjectResourceImporter(XmpzXmlImporter importerToUse)
 	{

@@ -25,7 +25,7 @@ import org.miradi.objects.ProgressPercent;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
-public class ProgressPercentPoolImporter extends AbstractBaseObjectImporter
+public class ProgressPercentPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public ProgressPercentPoolImporter(XmpzXmlImporter importerToUse)
 	{

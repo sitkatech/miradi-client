@@ -29,7 +29,7 @@ import org.miradi.questions.StatusQuestion;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
-public class IndicatorPoolImporter extends AbstractBaseObjectImporter
+public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public IndicatorPoolImporter(XmpzXmlImporter importerToUse)
 	{

@@ -26,7 +26,7 @@ import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
-public class ObjectTreeTableConfigurationPoolImporter extends AbstractBaseObjectImporter
+public class ObjectTreeTableConfigurationPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public ObjectTreeTableConfigurationPoolImporter(XmpzXmlImporter importerToUse)
 	{
