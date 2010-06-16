@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/37'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/38'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -785,6 +785,7 @@ StressBasedThreatRating.element = element miradi:StressBasedThreatRating
   element miradi:StressBasedThreatRatingStressId{ StressId.element } &
   element miradi:StressBasedThreatRatingContribution { vocabulary_contribution_code }? &
   element miradi:StressBasedThreatRatingIrreversibility { vocabulary_irreversibility_code }? &
+  element miradi:StressBasedThreatRatingIsActive { xsd:boolean }? &
   element miradi:StressBasedThreatRatingStressRating { vocabulary_threat_rating }? &
   element miradi:StressBasedThreatRatingThreatStressRating { vocabulary_threat_rating }? 
 }
@@ -961,4 +962,3 @@ ProjectSummaryLocationCountriesContainer.element = element miradi:ProjectSummary
 {
   element miradi:code { vocabulary_countries } * 
 }
-

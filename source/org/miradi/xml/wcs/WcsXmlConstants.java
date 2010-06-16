@@ -28,7 +28,7 @@ public interface WcsXmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String OPTIONAL_ELEMENT = SINGLE_SPACE + "?" + SINGLE_SPACE;
 	
-	public static final String NAME_SPACE_VERSION = "37";
+	public static final String NAME_SPACE_VERSION = "38";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
@@ -87,6 +87,7 @@ public interface WcsXmlConstants
 	public static final String SEVERITY = "Severity";
 	public static final String IRREVERSIBILITY = "Irreversibility";
 	public static final String CONTRIBUTION = "Contribution";
+	public static final String THREAT_STRESS_RATING_IS_ACTIVE = "IsActive";
 	public static final String COMMENTS = "Comments";
 	public static final String SIMPLE_BASED_THREAT_RATING = "SimpleThreatRating";
 	public static final String STRESS_BASED_THREAT_RATING = "StressBasedThreatRating";
