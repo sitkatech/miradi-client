@@ -106,11 +106,11 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		if(ratingValueOptions.length == 0)
 		{
 			IdList ids = new IdList(ValueOption.getObjectType());
-			ids.add(createDefaultValueOption("None", 0, Color.WHITE));
-			ids.add(createDefaultValueOption("Very High", 4, Color.RED));
-			ids.add(createDefaultValueOption("High", 3, Color.ORANGE));
-			ids.add(createDefaultValueOption("Medium", 2, Color.YELLOW));
-			ids.add(createDefaultValueOption("Low", 1, Color.GREEN));
+			ids.add(createDefaultValueOption("None", NONE_VALUE, Color.WHITE));
+			ids.add(createDefaultValueOption("Very High", VERY_HIGH_RATING_VALUE, Color.RED));
+			ids.add(createDefaultValueOption("High", HIGH_RATING_VALUE, Color.ORANGE));
+			ids.add(createDefaultValueOption("Medium", MEDIUM_RATING_VALUE, Color.YELLOW));
+			ids.add(createDefaultValueOption("Low", LOW_RATING_VALUE, Color.GREEN));
 			
 			ratingValueOptions = new ValueOption[ids.size()];
 			for(int i = 0; i < ratingValueOptions.length; ++i)
@@ -184,6 +184,31 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return (RatingCriterion)getCriterionPool().findObject(id);
 	}
 	
+	public void setScope(ORef threatRef, ORef targetRef, int scopeValue) throws Exception
+	{
+		ThreatRatingBundle bundle = getBundle(threatRef, targetRef);
+		setBundleValue(bundle, CRITERION_SCOPE, scopeValue);
+	}
+	
+	public void setSeverity(ORef threatRef, ORef targetRef, int severityValue) throws Exception
+	{
+		ThreatRatingBundle bundle = getBundle(threatRef, targetRef);
+		setBundleValue(bundle, CRITERION_SEVERITY, severityValue);
+	}
+
+	public void setIrreversibility(ORef threatRef, ORef targetRef, int irreversibilityValue) throws Exception
+	{
+		ThreatRatingBundle bundle = getBundle(threatRef, targetRef);
+		setBundleValue(bundle, CRITERION_IRREVERSIBILITY, irreversibilityValue);
+	}
+	
+	private void setBundleValue(ThreatRatingBundle bundle, String criterionLabel, int ratingValue) throws Exception
+	{
+		RatingCriterion ratingCriterion = findCriterionByLabel(criterionLabel);
+		ValueOption valueOption = findValueOptionByNumericValue(ratingValue);
+		bundle.setValueId(ratingCriterion.getId(), valueOption.getId());
+		saveBundle(bundle);
+	}
 
 	public int getScopeNumericValue(ThreatRatingBundle bundle)
 	{
@@ -562,6 +587,12 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	private static final String CRITERION_IRREVERSIBILITY = "Irreversibility";
 	private static final String CRITERION_SEVERITY = "Severity";
 	private static final String CRITERION_SCOPE = "Scope";
+	
+	public static final int NONE_VALUE = 0;
+	public static final int LOW_RATING_VALUE = 1;
+	public static final int MEDIUM_RATING_VALUE = 2;
+	public static final int HIGH_RATING_VALUE = 3;
+	public static final int VERY_HIGH_RATING_VALUE = 4;
 
 	private HashMap bundles;
 	private ValueOption[] ratingValueOptions;
