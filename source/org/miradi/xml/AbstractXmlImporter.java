@@ -40,6 +40,7 @@ import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.xml.wcs.WcsMiradiXmlValidator;
@@ -135,11 +136,11 @@ abstract public class AbstractXmlImporter
 		importField(ref, destinationTag, data);
 	}
 	
-	public void importCodeField(Node node, String elementName, ORef ref, String destinationTag, ChoiceQuestion question) throws Exception
+	public void importCodeField(Node node, String elementName, ORef destinationRef, String destinationTag, ChoiceQuestion question) throws Exception
 	{
 		String importedReadableCode = getPathData(node, new String[]{elementName, });
-		String internalCode = question.convertToInternalCode(importedReadableCode);
-		importField(ref, destinationTag, internalCode);
+		String internalCode = question.convertToInternalCode(importedReadableCode);		
+		importField(destinationRef, destinationTag, internalCode);
 	}
 
 	public String getPathData(Node node, String[] elements) throws XPathExpressionException
@@ -151,6 +152,11 @@ abstract public class AbstractXmlImporter
 	private void importField(ORef ref, String destinationTag, String data)	throws Exception
 	{
 		setData(ref, destinationTag, data);
+	}
+	
+	public void setData(BaseObject baseObject, String tag, String data) throws Exception
+	{
+		setData(baseObject.getRef(), tag, data);
 	}
 		
 	public void setData(ORef ref, String tag, String data) throws Exception
@@ -205,8 +211,8 @@ abstract public class AbstractXmlImporter
 	
 	public ORef getNodeAsRef(Node node, String element, int type) throws Exception
 	{
-		String idAsString = getNodeContent(node, element);
-		return new ORef(type, new BaseId(idAsString));
+		String trimmedIdAsString = getNodeContent(node, element).trim();
+		return new ORef(type, new BaseId(trimmedIdAsString));
 	}
 	
 	public Node getNode(Node node, String element) throws Exception
