@@ -22,11 +22,8 @@ package org.miradi.xml;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.io.File;
 
-import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringWriter;
-import org.martus.util.inputstreamwithseek.FileInputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.DateUnit;
@@ -59,7 +56,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	
 	public void testValidateEmptyProject() throws Exception
 	{
-		validateExportImportExportProject();
+		validateUsingStringWriter();
 	}
 	
 	public void testExpenseAssignmentLifeCycle() throws Exception
@@ -102,7 +99,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		getProject().createObjective(getProject().createCause());		
 		getProject().createAndPopulateExpenseAssignment();
 		
-		validateExportImportExportProject();
+		validateUsingStringWriter();
 	}
 
 	private void createFilledDiagramFactor() throws Exception
@@ -131,54 +128,6 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(resultsChainRef, ResultsChainDiagram.TAG_HIDDEN_TYPES, hiddentTypeCodes.toString());
 	}
 	
-	private void validateExportImportExportProject() throws Exception
-	{
-		File beforeXmlOutFile = createTempFileFromName("XmlBeforeImport.xml");		
-		File afterXmlOutFile = createTempFileFromName("XmlAfterFirstImport.xml");
-		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToFill1");
-		try
-		{
-			exportProject(beforeXmlOutFile, getProject());
-			String firstExport = convertFileContentToString(beforeXmlOutFile);
-			
-			importProject(beforeXmlOutFile, projectToImportInto);
-			
-			exportProject(afterXmlOutFile, projectToImportInto);
-			String exportedAfterImport = convertFileContentToString(afterXmlOutFile);
-			assertEquals("incorrect project values after first import?", firstExport, exportedAfterImport);
-		}
-		finally
-		{
-			beforeXmlOutFile.delete();
-			afterXmlOutFile.delete();
-			projectToImportInto.close();
-		}	
-	}
-	
-	private void exportProject(File afterXmlOutFile, ProjectForTesting projectToExport) throws Exception
-	{
-		new WcsXmlExporter(projectToExport).export(afterXmlOutFile);
-	}
-
-	private void importProject(File beforeXmlOutFile, ProjectForTesting projectToFill1) throws Exception
-	{		
-		XmpzXmlImporter xmlImporter = new XmpzXmlImporter(projectToFill1);
-		FileInputStreamWithSeek fileInputStream = new FileInputStreamWithSeek(beforeXmlOutFile); 
-		try
-		{
-			xmlImporter.importProject(fileInputStream);
-		}
-		finally
-		{
-			fileInputStream.close();	
-		}
-	}
-	
-	private String convertFileContentToString(File fileToConvert) throws Exception
-	{
-	    return new UnicodeReader(fileToConvert).readAll();
-	}
-	
 	private void validateUsingStringWriter() throws Exception
 	{
 		UnicodeStringWriter firstWriter = createWriter(getProject());
@@ -196,7 +145,6 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		}
 		
 		UnicodeStringWriter secondWriter = createWriter(projectToImportInto);
-		
 		assertEquals("Exports from projects do not match?", firstWriter.toString(), secondWriter.toString());
 	}
 
