@@ -20,6 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz;
 
+import org.miradi.objectdata.BooleanData;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.StringMap;
+import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
+import org.miradi.objects.Cause;
+import org.miradi.objects.Stress;
+import org.miradi.objects.Target;
+import org.miradi.objects.ThreatRatingCommentsData;
+import org.miradi.objects.ThreatStressRating;
+import org.miradi.questions.StressContributionQuestion;
+import org.miradi.questions.StressIrreversibilityQuestion;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
@@ -36,10 +47,11 @@ public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectI
 	@Override
 	public void importElement() throws Exception
 	{
-		NodeList nodes = getImporter().getNodes(getImporter().getRootNode(), new String[]{getPoolName() + WcsXmlConstants.POOL_ELEMENT_TAG, });
-		for (int index = 0; index < nodes.getLength(); ++index)
+		Node threatRatingPoolNode = getImporter().getNode(getImporter().getRootNode(), getPoolName() + WcsXmlConstants.POOL_ELEMENT_TAG);
+		NodeList threatRatingNodes = getImporter().getNodes(threatRatingPoolNode, new String[]{THREAT_RATING, });
+		for (int index = 0; index < threatRatingNodes.getLength(); ++index)
 		{
-			Node threatRatingNode = nodes.item(index);
+			Node threatRatingNode = threatRatingNodes.item(index);
 			importThreatRatings(threatRatingNode);
 		}		
 	}
@@ -48,42 +60,106 @@ public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectI
 	{
 		importThreatRatingsComment(threatRatingNode);
 		Node threatRatingRatings = getImporter().getNode(threatRatingNode, THREAT_RATING + RATINGS);
-		Node simpleThreatRatingNode = getImporter().getNode(threatRatingRatings, SIMPLE_BASED_THREAT_RATING);
-		if (simpleThreatRatingNode != null)
-			importSimpleThreatRating(threatRatingRatings, simpleThreatRatingNode);
-
-		Node stressBasedThreatRatingNode = getImporter().getNode(threatRatingRatings, STRESS_BASED_THREAT_RATING);
-		if (stressBasedThreatRatingNode != null)
-			importStressBasedThreatRating(threatRatingRatings, stressBasedThreatRatingNode);		
+		if (isSimpleThreatRatingNode(threatRatingNode))
+			importSimpleThreatRating(threatRatingRatings);
+		else
+			importStressBasedThreatRating(threatRatingNode, threatRatingRatings);	
 	}
 	
 	private void importThreatRatingsComment(Node threatRatingNode) throws Exception
 	{
-//		ORef targetRef = getImporter().getNodeAsRef(threatRatingNode, BIODIVERSITY_TARGET + ID, Target.getObjectType());
-//		System.out.println("target = " + targetRef); 
-//		ORef threatRef = getImporter().getNodeAsRef(threatRatingNode, THREAT + ID, Cause.getObjectType());
-//		System.out.println("threat = " + threatRef);
-//		Node commentsNode = getImporter().getNode(threatRatingNode, THREAT_RATING + COMMENTS);
-//		if (commentsNode != null)
-//		{
-//			String comment = commentsNode.getTextContent();
-//			System.out.println("come = " + comment);
-//		}
-//		System.out.println("TSR count = " + getProject().getThreatStressRatingPool().size());
-//		ThreatRatingCommentsData threatRatingCommentsData = getProject().getSingletonThreatRatingCommentsData();
+		ORef targetRef = getTargetRef(threatRatingNode);
+		ORef threatRef = getThreatRef(threatRatingNode);
 		
-//		String threatRatingComment = threatRatingCommentsData.findComment(threatRef, targetRef);
-//		getWcsXmlExporter().writeOptionalElement(getWcsXmlExporter().getWriter(), THREAT_RATING + COMMENTS, threatRatingComment);
+		Node commentsNode = getImporter().getNode(threatRatingNode, THREAT_RATING + COMMENTS);
+		ThreatRatingCommentsData threatRatingCommentsData = getProject().getSingletonThreatRatingCommentsData();
+		if (commentsNode != null)
+		{
+			String comment = commentsNode.getTextContent();
+			StringMap commentsMap = getThreatRatingCommentsMap(threatRatingNode, threatRatingCommentsData);
+			String threatTargetKey = ThreatRatingCommentsData.createKey(threatRef, targetRef);
+			
+			commentsMap.add(threatTargetKey, comment);
+			String commentsMapTag = getCommentsMapTag(threatRatingNode);
+			getImporter().setData(threatRatingCommentsData, commentsMapTag, commentsMap.toString());
+		}
 	}
 
-	private void importSimpleThreatRating(Node threatRatingRatings, Node simpleThreatRatingNode)
+	private ORef getThreatRef(Node threatRatingNode) throws Exception
 	{
-		
+		Node threatIdNode = getImporter().getNode(threatRatingNode, getPoolName() + THREAT + ID);
+		ORef threatRef = getImporter().getNodeAsRef(threatIdNode, THREAT + ID, Cause.getObjectType());
+		return threatRef;
 	}
 
-	private void importStressBasedThreatRating(Node threatRatingRatings, Node stressBasedThreatRatingNode)
+	private ORef getTargetRef(Node threatRatingNode) throws Exception
 	{
+		Node targetIdNode = getImporter().getNode(threatRatingNode, getPoolName() + TARGET + ID);
+		ORef targetRef = getImporter().getNodeAsRef(targetIdNode,  BIODIVERSITY_TARGET + ID, Target.getObjectType());
+		return targetRef;
+	}
+
+	private StringMap getThreatRatingCommentsMap(Node threatRatingNode, ThreatRatingCommentsData threatRatingCommentsData) throws Exception
+	{
+		if (isSimpleThreatRatingNode(threatRatingNode))
+			return threatRatingCommentsData.getSimpleThreatRatingCommentsMap();
 		
+		return threatRatingCommentsData.getStressBasedThreatRatingCommentsMap();
+	}
+
+	private String getCommentsMapTag(Node threatRatingNode) throws Exception
+	{
+		if (isSimpleThreatRatingNode(threatRatingNode))
+			return ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP;
+		
+		return ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP;
+	}
+	
+	private boolean isSimpleThreatRatingNode(Node threatRatingNode) throws Exception
+	{
+		Node threatRatingRatings = getImporter().getNode(threatRatingNode, THREAT_RATING + RATINGS);
+		Node simpleThreatRatingNode = getImporter().getNode(threatRatingRatings, SIMPLE_BASED_THREAT_RATING);
+		if (simpleThreatRatingNode != null)
+			return true;
+
+		return false;
+	}
+
+	private void importSimpleThreatRating(Node threatRatingRatings) throws Exception
+	{
+//		Node simpleThreatRatingNode = getImporter().getNode(threatRatingRatings, SIMPLE_BASED_THREAT_RATING);
+	}
+
+	private void importStressBasedThreatRating(Node threatRatingNode, Node threatRatingRatings) throws Exception
+	{
+		Node stressBasedThreatRatingNode = getImporter().getNode(threatRatingRatings, STRESS_BASED_THREAT_RATING);
+		ORef stressRef = getStressRef(stressBasedThreatRatingNode);
+		ORef threatRef = getThreatRef(threatRatingNode);
+		ThreatTargetVirtualLinkHelper helper = new ThreatTargetVirtualLinkHelper(getProject());
+		ORef threatStressRatingRef = helper.findThreatStressRating(threatRef, getTargetRef(threatRatingNode), stressRef);
+		if (threatStressRatingRef.isInvalid())
+			return;
+		
+		importCodeField(stressBasedThreatRatingNode, STRESS_BASED_THREAT_RATING, threatStressRatingRef, ThreatStressRating.TAG_CONTRIBUTION, new StressContributionQuestion());
+		importCodeField(stressBasedThreatRatingNode, STRESS_BASED_THREAT_RATING, threatStressRatingRef, ThreatStressRating.TAG_IRREVERSIBILITY, new StressIrreversibilityQuestion());
+		importIsActive(stressBasedThreatRatingNode, threatStressRatingRef);
+	}
+	
+	private void importIsActive(Node stressBasedThreatRatingNode, ORef threatStressRatingRef)	throws Exception
+	{
+		Node isActiveNode = getImporter().getNode(stressBasedThreatRatingNode, STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING_IS_ACTIVE);
+		String isActive = BooleanData.BOOLEAN_FALSE;
+		if (isActiveNode != null && getImporter().isTrue(isActiveNode.getTextContent()))
+			isActive = BooleanData.BOOLEAN_TRUE;;
+		
+		getImporter().setData(threatStressRatingRef, ThreatStressRating.TAG_IS_ACTIVE, isActive);
+	}
+
+	private ORef getStressRef(Node stressBasedThreatRatingNode)	throws Exception
+	{
+		Node stressIdNode = getImporter().getNode(stressBasedThreatRatingNode, STRESS_BASED_THREAT_RATING + STRESS + ID);
+		ORef stressRef = getImporter().getNodeAsRef(stressIdNode,  STRESS+ ID, Stress.getObjectType());
+		return stressRef;
 	}
 
 //	private void exportSimpleThreatRating() throws Exception

@@ -38,7 +38,6 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
@@ -73,44 +72,26 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		lis.add(dateUnitEffort);
 		getProject().fillObjectUsingCommand(expense, ExpenseAssignment.TAG_DATEUNIT_EFFORTS, lis.toString());
 		
-		WcsXmlExporter firstExporter = new WcsXmlExporter(getProject());
-		UnicodeStringWriter firstWriter = UnicodeStringWriter.create();
-		firstExporter.setWriter(firstWriter);
-		firstExporter.exportProject(firstWriter);
-		firstWriter.flush();
-		
-		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToImportInto");
-		XmpzXmlImporter xmlImporter = new XmpzXmlImporter(projectToImportInto);
-		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(firstWriter.toString());
-		try
-		{
-			xmlImporter.importProject(stringInputputStream);
-		}
-		finally
-		{
-			stringInputputStream.close();	
-		}
-		
-		WcsXmlExporter secondExporter = new WcsXmlExporter(getProject());
-		UnicodeStringWriter secondWriter = UnicodeStringWriter.create();
-		firstExporter.setWriter(secondWriter);
-		secondExporter.exportProject(secondWriter);
-		secondWriter.flush();
-		
-		assertEquals("Exports from projects do not match?", firstWriter.toString(), secondWriter.toString());
+		validateUsingStringWriter();
+	}
+
+	public void testProjectWithStressBasedThreatRatingData() throws Exception
+	{
+		getProject().populateStressBasedThreatRatingCommentsData();
+		getProject().createThreatTargetDiagramLinkWithRating();
+		validateUsingStringWriter();
 	}
 	
 	public void testValidateFilledProject() throws Exception
 	{
-		createFilledDiagramFactor();
 		getProject().createAndPopulateDiagramLink();
+		createFilledDiagramFactor();
+		getProject().createDiagramFactorLink();
 		getProject().createAndPopulateGroupBoxDiagramLink();
-		Target target = getProject().createTarget();
-		getProject().createAndPopulateGoal(target);
+		getProject().createAndPopulateGoal(getProject().createTarget());
 		getProject().createandpopulateThreatReductionResult();
 		getProject().populateEverything();
 		createFilledResultsChainDiagram();
-		getProject().createDiagramFactorLink();
 		getProject().createObjective(getProject().createCause());		
 		getProject().createAndPopulateExpenseAssignment();
 		
@@ -189,5 +170,37 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	private String convertFileContentToString(File fileToConvert) throws Exception
 	{
 	    return new UnicodeReader(fileToConvert).readAll();
+	}
+	
+	private void validateUsingStringWriter() throws Exception
+	{
+		UnicodeStringWriter firstWriter = createWriter(getProject());
+		
+		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToImportInto");
+		XmpzXmlImporter xmlImporter = new XmpzXmlImporter(projectToImportInto);
+		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(firstWriter.toString());
+		try
+		{
+			xmlImporter.importProject(stringInputputStream);
+		}
+		finally
+		{
+			stringInputputStream.close();	
+		}
+		
+		UnicodeStringWriter secondWriter = createWriter(projectToImportInto);
+		
+		assertEquals("Exports from projects do not match?", firstWriter.toString(), secondWriter.toString());
+	}
+
+	private UnicodeStringWriter createWriter(ProjectForTesting project) throws Exception
+	{
+		WcsXmlExporter exporter = new WcsXmlExporter(project);
+		UnicodeStringWriter writer = UnicodeStringWriter.create();
+		exporter.setWriter(writer);
+		exporter.exportProject(writer);
+		writer.flush();
+		
+		return writer;
 	}
 }
