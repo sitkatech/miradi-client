@@ -63,7 +63,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 	private void importExternalProjectId(Node projectSumaryNode) throws Exception
 	{
 		Node projectIdNode = getImporter().getNode(projectSumaryNode, getPoolName() + Xenodata.TAG_PROJECT_ID);
-		NodeList projectIdNodes = getImporter().getNodes(projectIdNode, new String[]{EXTERNAL_SYSTEM_ID_ELEMENT_NAME, });
+		NodeList projectIdNodes = getImporter().getNodes(projectIdNode, new String[]{EXTERNAL_PROJECT_ID_ELEMENT_NAME, });
 		StringRefMap stringRefMap = new StringRefMap();
 		for (int index = 0; index < projectIdNodes.getLength(); ++index)
 		{
@@ -72,7 +72,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 			Node externalAppNode = getImporter().getNode(node, EXTERNAL_APP_ELEMENT_NAME);
 			String externalAppThatAssignedId = externalAppNode.getTextContent();
 			
-			Node externalProjectIdNode = getImporter().getNode(node, WcsXmlConstants.EXTERNAL_SYSTEM_ID_ELEMENT_NAME);
+			Node externalProjectIdNode = getImporter().getNode(node, WcsXmlConstants.EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 			String externalProjectId = externalProjectIdNode.getTextContent();
 			
 			ORef xenodataRef = getProject().createObject(Xenodata.getObjectType());
