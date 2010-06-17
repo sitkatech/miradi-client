@@ -234,10 +234,10 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + "longitude { xsd:decimal } ");
 		writer.endBlock();
 		
-		writer.defineAlias(WcsXmlConstants.EXTERNAL_SYSTEM_ID_ELEMENT + ".element", "element " + WcsXmlConstants.PREFIX + WcsXmlConstants.EXTERNAL_SYSTEM_ID_ELEMENT);
+		writer.defineAlias(WcsXmlConstants.EXTERNAL_SYSTEM_ID_ELEMENT_NAME + ".element", "element " + WcsXmlConstants.PREFIX + WcsXmlConstants.EXTERNAL_SYSTEM_ID_ELEMENT_NAME);
 		writer.startBlock();
 		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + WcsXmlConstants.EXTERNAL_APP + " { text } &");
-		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + WcsXmlConstants.EXTERNAL_SYSTEM_ID_ELEMENT + " { text } ");
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + WcsXmlConstants.EXTERNAL_SYSTEM_ID_ELEMENT_NAME + " { text } ");
 		writer.endBlock();
 		
 		writer.defineAlias(WcsXmlConstants.DIAGRAM_POINT_ELEMENT_NAME + ".element", "element " + WcsXmlConstants.PREFIX + WcsXmlConstants.DIAGRAM_POINT_ELEMENT_NAME);
