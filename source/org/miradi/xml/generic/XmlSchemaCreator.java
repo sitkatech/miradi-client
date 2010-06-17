@@ -236,7 +236,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		
 		writer.defineAlias(WcsXmlConstants.EXTERNAL_SYSTEM_ID_ELEMENT_NAME + ".element", "element " + WcsXmlConstants.PREFIX + WcsXmlConstants.EXTERNAL_SYSTEM_ID_ELEMENT_NAME);
 		writer.startBlock();
-		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + WcsXmlConstants.EXTERNAL_APP + " { text } &");
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + WcsXmlConstants.EXTERNAL_APP_ELEMENT_NAME + " { text } &");
 		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + WcsXmlConstants.EXTERNAL_SYSTEM_ID_ELEMENT_NAME + " { text } ");
 		writer.endBlock();
 		
