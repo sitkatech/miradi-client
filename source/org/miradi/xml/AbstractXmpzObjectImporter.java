@@ -109,6 +109,11 @@ abstract public class AbstractXmpzObjectImporter implements WcsXmlConstants
 		getImporter().importCodeField(node, elementContainerName + elementName, destinationRef, destinationTag, question);
 	}
 	
+	protected void importCodeListField(Node node, ORef destinationRef, String destinationTag) throws Exception
+	{
+		importCodeListField(node, getPoolName(), destinationRef, destinationTag);
+	}
+	
 	protected void importCodeListField(Node node, String elementContainerName, ORef destinationRef, String destinationTag) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();

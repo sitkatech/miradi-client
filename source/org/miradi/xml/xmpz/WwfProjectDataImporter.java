@@ -37,8 +37,8 @@ public class WwfProjectDataImporter extends AbstractXmpzObjectImporter
 	{
 		Node wwfProjectDataNode = getImporter().getNode(getImporter().getRootNode(), getPoolName());
 		
-		importCodeListField(wwfProjectDataNode, getPoolName(), getWwfProjectDataRef(), WwfProjectData.TAG_MANAGING_OFFICES);
-		importCodeListField(wwfProjectDataNode, getPoolName(), getWwfProjectDataRef(), WwfProjectData.TAG_REGIONS);
-		importCodeListField(wwfProjectDataNode, getPoolName(), getWwfProjectDataRef(), WwfProjectData.TAG_ECOREGIONS);
+		importCodeListField(wwfProjectDataNode, getWwfProjectDataRef(), WwfProjectData.TAG_MANAGING_OFFICES);
+		importCodeListField(wwfProjectDataNode, getWwfProjectDataRef(), WwfProjectData.TAG_REGIONS);
+		importCodeListField(wwfProjectDataNode, getWwfProjectDataRef(), WwfProjectData.TAG_ECOREGIONS);
 	}
 }

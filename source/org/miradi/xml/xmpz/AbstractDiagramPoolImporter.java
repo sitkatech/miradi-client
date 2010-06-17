@@ -44,7 +44,7 @@ abstract public class AbstractDiagramPoolImporter extends AbstractBaseObjectPool
 		importField(node, destinationRef, ConceptualModelDiagram.TAG_SHORT_LABEL);
 		importField(node, destinationRef, ConceptualModelDiagram.TAG_DETAIL);
 		importField(node, destinationRef, ConceptualModelDiagram.TAG_ZOOM_SCALE);
-		importCodeListField(node, getPoolName(), destinationRef, DiagramObject.TAG_HIDDEN_TYPES);
+		importCodeListField(node, destinationRef, DiagramObject.TAG_HIDDEN_TYPES);
 		importIds(node, destinationRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DiagramFactor.getObjectType(), WcsXmlConstants.DIAGRAM_FACTOR);
 		importIds(node, destinationRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DiagramLink.getObjectType(), WcsXmlConstants.DIAGRAM_LINK);		
 		importRefs(node, WcsXmlConstants.SELECTED_TAGGED_OBJECT_SET_IDS, destinationRef, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSet.getObjectType(), WcsXmlConstants.TAGGED_OBJECT_SET_ELEMENT_NAME);

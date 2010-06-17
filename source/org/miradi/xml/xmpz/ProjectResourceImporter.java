@@ -41,7 +41,7 @@ public class ProjectResourceImporter extends AbstractBaseObjectPoolImporter
 		importField(node, destinationRef, ProjectResource.TAG_GIVEN_NAME);
 		importField(node, destinationRef, ProjectResource.TAG_SUR_NAME);
 		importField(node, destinationRef, ProjectResource.TAG_INITIALS);
-		importCodeListField(node, WcsXmlConstants.PROJECT_RESOURCE, destinationRef, ProjectResource.TAG_ROLE_CODES);
+		importCodeListField(node, destinationRef, ProjectResource.TAG_ROLE_CODES);
 		importField(node, destinationRef, ProjectResource.TAG_ORGANIZATION);
 		importField(node, destinationRef, ProjectResource.TAG_POSITION);
 		importField(node, destinationRef, ProjectResource.TAG_LOCATION);

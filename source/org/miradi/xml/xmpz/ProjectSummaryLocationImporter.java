@@ -39,7 +39,7 @@ public class ProjectSummaryLocationImporter extends AbstractXmpzObjectImporter
 		
 		importGeospatialLocationField(projectSummaryLocationNode);		
 		importField(projectSummaryLocationNode, getMetadataRef(), ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
-		importCodeListField(projectSummaryLocationNode, WcsXmlConstants.PROJECT_SUMMARY_LOCATION, getMetadataRef(), ProjectMetadata.TAG_COUNTRIES);
+		importCodeListField(projectSummaryLocationNode, getMetadataRef(), ProjectMetadata.TAG_COUNTRIES);
 		importField(projectSummaryLocationNode, getMetadataRef(), ProjectMetadata.TAG_STATE_AND_PROVINCES);
 		importField(projectSummaryLocationNode, getMetadataRef(), ProjectMetadata.TAG_MUNICIPALITIES);
 		importField(projectSummaryLocationNode, getMetadataRef(), ProjectMetadata.TAG_LEGISLATIVE_DISTRICTS);
