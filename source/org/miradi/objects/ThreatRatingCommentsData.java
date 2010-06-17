@@ -91,6 +91,17 @@ public class ThreatRatingCommentsData extends BaseObject
 		
 		return TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP;
 	}
+	
+	public StringMap getThreatRatingCommentsMap(String tag)
+	{
+		if (tag.equals(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP))
+			return getSimpleThreatRatingCommentsMap();
+		
+		if (tag.equals(TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP))
+			return getStressBasedThreatRatingCommentsMap();
+		
+		throw new RuntimeException("Trying to get threat rating comments map with unknown tag:" + tag);
+	}
 
 	public StringMap getStressBasedThreatRatingCommentsMap()
 	{

@@ -175,17 +175,19 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 
 	private void exportSimpleRatingComment(ORef threatRef, ORef targetRef) throws Exception
 	{
-		ThreatRatingCommentsData threatRatingCommentsData = getProject().getSingletonThreatRatingCommentsData();
-		String threatTargetRefsAsKey = threatRatingCommentsData.createKey(threatRef, targetRef);
-		String threatRatingComment = threatRatingCommentsData.getSimpleThreatRatingCommentsMap().get(threatTargetRefsAsKey);
-		getWcsXmlExporter().writeOptionalElement(getWcsXmlExporter().getWriter(), THREAT_RATING + COMMENTS, threatRatingComment);
+		exportThreatRatingComment(threatRef, targetRef, ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP);
+	}
+
+	private void exportStressBasedRatingComment(ORef threatRef, ORef targetRef) throws Exception
+	{
+		exportThreatRatingComment(threatRef, targetRef, ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP);
 	}
 	
-	private void exportStressBasedRatingComment(ORef threatRef, ORef targetRef) throws Exception
+	private void exportThreatRatingComment(ORef threatRef, ORef targetRef, String threatRatingCommentsMapTag) throws Exception
 	{
 		ThreatRatingCommentsData threatRatingCommentsData = getProject().getSingletonThreatRatingCommentsData();
 		String threatTargetRefsAsKey = threatRatingCommentsData.createKey(threatRef, targetRef);
-		String threatRatingComment = threatRatingCommentsData.getStressBasedThreatRatingCommentsMap().get(threatTargetRefsAsKey);
+		String threatRatingComment = threatRatingCommentsData.getThreatRatingCommentsMap(threatRatingCommentsMapTag).get(threatTargetRefsAsKey);
 		getWcsXmlExporter().writeOptionalElement(getWcsXmlExporter().getWriter(), THREAT_RATING + COMMENTS, threatRatingComment);
 	}
 	
