@@ -100,7 +100,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 	private int getObjectTypeOfNode(Node typedIdNode)
 	{
 		String nodeName = typedIdNode.getNodeName();
-		String objectTypeName = nodeName.replaceFirst(ID, "");
+		String objectTypeName = removeAppendedId(nodeName);
 		
 		if (objectTypeName.equals(SCOPE_BOX))
 			return ScopeBox.getObjectType();
@@ -137,6 +137,11 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 		
 		EAM.logError("Could not find type for node: " + objectTypeName);
 		return ObjectType.FAKE;
+	}
+
+	private String removeAppendedId(String nodeName)
+	{
+		return nodeName.replaceFirst(ID, "");
 	}
 
 	private void importDiagramFactorSize(Node node, ORef destinationRef) throws Exception
