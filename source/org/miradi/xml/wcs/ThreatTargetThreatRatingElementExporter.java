@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
+import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.diagram.ThreatTargetChainWalker;
@@ -98,22 +99,23 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 
 	private void exportStressBasedThreatRating() throws Exception
 	{
-		Vector<Cause> threats =  getProject().getCausePool().getDirectThreatsAsVector();
 		Vector<Target> targets = AbstractThreatTargetTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
 		for(Target target : targets)
 		{
 			if (target.getStressRefs().hasRefs())
-				exportStressBasedThreatRatingDetailsRow(target, threats);
+				exportStressBasedThreatRatingDetailsRow(target);
 		}
 	}
 	
-	private void exportStressBasedThreatRatingDetailsRow(Target target, Vector<Cause> threats) throws Exception
+	private void exportStressBasedThreatRatingDetailsRow(Target target) throws Exception
 	{
 		ORefList stressRefs = target.getStressRefs();
 		for (int index = 0; index < stressRefs.size(); ++index)
 		{
 			Stress stress = Stress.find(getProject(), stressRefs.get(index));
-			for(Cause threat : threats)
+			ThreatTargetChainWalker chainWalker = new ThreatTargetChainWalker(getProject());
+			HashSet<Cause> upstreamThreatsFromTarget = chainWalker.getUpstreamThreatsFromTarget(target);
+			for(Cause threat : upstreamThreatsFromTarget)
 			{
 				getWcsXmlExporter().writeStartElement(THREAT_RATING);
 				ORef targetRef = target.getRef();
