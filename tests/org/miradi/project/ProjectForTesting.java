@@ -646,10 +646,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		DiagramFactor diagramFactorCause = diagramLink.getFromDiagramFactor();
 		createDiagramFactorLinkAndAddToDiagram(diagramFactorCause, diagramFactorTarget);
-		
-		ThreatStressRating threatStressRating = createThreatStressRating(stress.getRef(), diagramFactorCause.getWrappedORef());
-		populateThreatStressRating(threatStressRating);
-		
+				
 		return diagramLink;
 	}
 	
