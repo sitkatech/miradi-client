@@ -47,12 +47,12 @@ public class ThreatTargetChainWalker
 	
 	public ORefSet getUpstreamThreatRefsFromTarget(Factor startingFactorToUse)
 	{
-		HashSet<Factor> upstreamThreats = getUpstreamThreatsFromTarget(startingFactorToUse);
+		HashSet<Cause> upstreamThreats = getUpstreamThreatsFromTarget(startingFactorToUse);
 		
 		return new ORefSet(upstreamThreats.toArray(new Factor[0]));
 	}
 	
-	public HashSet<Factor> getUpstreamThreatsFromTarget(Factor startingFactorToUse)
+	public HashSet<Cause> getUpstreamThreatsFromTarget(Factor startingFactorToUse)
 	{
 		startingFactorToUse.getRef().ensureType(Target.getObjectType());
 		initializeChain(startingFactorToUse);
@@ -111,7 +111,7 @@ public class ThreatTargetChainWalker
 			if (thisFactorToProcess.isCause())
 			{
 				if (thisFactorToProcess.isDirectThreat())
-					resultingThreats.add(thisFactorToProcess);
+					resultingThreats.add((Cause) thisFactorToProcess);
 				
 				unprocessedFactors.add(thisFactorToProcess);
 			}
@@ -173,7 +173,7 @@ public class ThreatTargetChainWalker
 		return project;
 	}
 	
-	private HashSet<Factor> resultingThreats;
+	private HashSet<Cause> resultingThreats;
 	private HashSet<Factor> resultingTargets;
 	private HashSet<FactorLink> processedLinks;
 	private Factor startingFactor;

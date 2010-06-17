@@ -164,14 +164,14 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		
 	private void verifySingleUpstreamThreat(ThreatTargetChainWalker chainObject, Factor threat, Factor target)
 	{
-		HashSet<Factor> upstreamThreats = chainObject.getUpstreamThreatsFromTarget(target);
+		HashSet<Cause> upstreamThreats = chainObject.getUpstreamThreatsFromTarget(target);
 		assertTrue("threat is not in chain?", upstreamThreats.contains(threat));
 		assertTrue("wrong threat in list?", upstreamThreats.contains(threat));
 	}
 	
 	private void verifyDoubleUpstreamThreats(ThreatTargetChainWalker chainObject, Factor threat1, Factor threat2, Factor target)
 	{
-		HashSet<Factor> upstreamThreats = chainObject.getUpstreamThreatsFromTarget(target);
+		HashSet<Cause> upstreamThreats = chainObject.getUpstreamThreatsFromTarget(target);
 		assertEquals("wrong threat count?", 2, upstreamThreats.size());
 		assertTrue("wrong threat in list?", upstreamThreats.contains(threat1));
 		assertTrue("wrong threat in list?", upstreamThreats.contains(threat2));
