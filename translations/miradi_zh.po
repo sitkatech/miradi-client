@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-17 16:22-0500\n"
+"POT-Creation-Date: 2010-06-17 16:30-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -69,6 +69,7 @@ msgid " A project by this name already exists: "
 msgstr "已存在使用相同名称的项目: \t\t"
 
 #: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:82
+#: Miradi/source/org/miradi/views/umbrella/XmpzProjectImporter.java:62
 msgid " was empty"
 msgstr ""
 
@@ -1088,6 +1089,10 @@ msgstr "如何保存 \t\t"
 #: Miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:34
 msgid "Action|Import Accounting Codes"
 msgstr "导入会计编码 \t\t"
+
+#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:35
+msgid "Action|Import Xmpz (BETA)"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionGroupBoxAddFactor.java:35
 msgid "Action|Insert|Add Factor(s) to Group Box"
@@ -4336,11 +4341,11 @@ msgstr "中"
 msgid "Medium (Default)"
 msgstr "中等（默认）"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:231
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:232
 msgid "MenuBar|Actions"
 msgstr "动作 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:161
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:162
 msgid "MenuBar|Edit"
 msgstr "编辑 \t\t"
 
@@ -4348,15 +4353,15 @@ msgstr "编辑 \t\t"
 msgid "MenuBar|File"
 msgstr "文件 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:499
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:500
 msgid "MenuBar|Help"
 msgstr "帮助 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:481
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:482
 msgid "MenuBar|Step-by-Step"
 msgstr "一步一步 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:418
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:419
 msgid "MenuBar|View"
 msgstr "视图 \t\t"
 
@@ -4393,7 +4398,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "导出当前项目为... "
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:281
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:406
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:407
 msgid "Menu|Group Box"
 msgstr "组合框 \t\t"
 
@@ -6185,6 +6190,10 @@ msgstr "隐藏该压力使之不再出现于本概念模型页面 \t\t"
 msgid "TT|How to save files in Miradi"
 msgstr "如何在Miradi中保存文件 \t\t"
 
+#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:41
+msgid "TT|Import Project from Xmpz ZIP file"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionImportZippedConproProject.java:39
 msgid "TT|Import a .cpmz file that was exported from ConPro"
 msgstr "导入一个从ConPro导出的.cpmz文件 \t\t"
@@ -7576,7 +7585,7 @@ msgstr "[未指定的] \t\t"
 msgid "[New Results Chain]"
 msgstr "[新结果链] \t\t"
 
-#: Miradi/source/org/miradi/project/Project.java:970
+#: Miradi/source/org/miradi/project/Project.java:977
 msgid "[No Project]"
 msgstr "[无项目] \t\t"
 
