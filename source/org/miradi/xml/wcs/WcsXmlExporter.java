@@ -225,7 +225,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeOptionalElement(getWriter(), TNC_PROJECT_DATA + XmlSchemaCreator.TNC_PROJECT_DATA_SHARE_OUTSIDE_TNC, shareOutSideOfTnc);
 	}
 	
-	private void writeProjectIds() throws Exception
+	private void writeExternalSystemElements() throws Exception
 	{
 		writeStartElement(getWriter(), createParentAndChildElementName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID));
 
@@ -350,7 +350,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_NEXT_STEPS, getMetadata(), ProjectMetadata.TAG_NEXT_STEPS);
 		writeOptionalOverallProjectThreatRating();
 		writeOptionalOverallProjectViabilityRating();
-		writeProjectIds();
+		writeExternalSystemElements();
 		writeCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion(), getMetadata().getThreatRatingMode());
 
 		writeEndElement(out, PROJECT_SUMMARY);
