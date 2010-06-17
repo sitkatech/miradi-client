@@ -161,6 +161,7 @@ public class Actions
 		registerAction(new ActionExportZippedProjectFile(mainWindow));
 		registerAction(new ActionExportProjectXml(mainWindow));
 		registerAction(new ActionExportWcsProjectZip(mainWindow));
+		registerAction(new ActionImportXmpz(mainWindow));
 		registerAction(new ActionExportConProXml(mainWindow));
 		registerAction(new ActionImportZippedProjectFile(mainWindow));
 		registerAction(new ActionImportZippedConproProject(mainWindow));
