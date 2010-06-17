@@ -89,9 +89,9 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 	
 	private ORef importWrappedRef(Node parentNode) throws Exception
 	{
-		Node node = getImporter().getNode(parentNode, getPoolName() + WcsXmlConstants.WRAPPED_FACTOR_ID_ELEMENT_NAME);
-		Node node2 = getImporter().getNode(node, WcsXmlConstants.WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
-		Node typedIdNode = node2.getFirstChild();
+		Node wrappedFactorIdNode = getImporter().getNode(parentNode, getPoolName() + WcsXmlConstants.WRAPPED_FACTOR_ID_ELEMENT_NAME);
+		Node wrappedByDiagamFactorIdNode = getImporter().getNode(wrappedFactorIdNode, WcsXmlConstants.WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
+		Node typedIdNode = wrappedByDiagamFactorIdNode.getFirstChild();
 		
 		BaseId wrappedId = new BaseId(typedIdNode.getTextContent());
 		
