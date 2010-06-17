@@ -165,5 +165,5 @@ public interface WcsXmlConstants
 	public static final String EXTERNAL_APP_ELEMENT_NAME = "ExternalApp";
 	public static final String LOCATION = "Location";
 	public static final String SIZE = "Size";
-	public static final String EXTERNAL_SYSTEM_ID_ELEMENT_NAME = "ExternalProjectId";
+	public static final String EXTERNAL_PROJECT_ID_ELEMENT_NAME = "ExternalProjectId";
 }
