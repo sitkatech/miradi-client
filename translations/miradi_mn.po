@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-17 16:22-0500\n"
+"POT-Creation-Date: 2010-06-17 16:30-0500\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -67,6 +67,7 @@ msgid " A project by this name already exists: "
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:82
+#: Miradi/source/org/miradi/views/umbrella/XmpzProjectImporter.java:62
 msgid " was empty"
 msgstr ""
 
@@ -1040,6 +1041,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:34
 msgid "Action|Import Accounting Codes"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:35
+msgid "Action|Import Xmpz (BETA)"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionGroupBoxAddFactor.java:35
@@ -4238,11 +4243,11 @@ msgstr ""
 msgid "Medium (Default)"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:231
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:232
 msgid "MenuBar|Actions"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:161
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:162
 msgid "MenuBar|Edit"
 msgstr ""
 
@@ -4250,15 +4255,15 @@ msgstr ""
 msgid "MenuBar|File"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:499
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:500
 msgid "MenuBar|Help"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:481
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:482
 msgid "MenuBar|Step-by-Step"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:418
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:419
 msgid "MenuBar|View"
 msgstr ""
 
@@ -4295,7 +4300,7 @@ msgid "Menu|Export Current Project as..."
 msgstr ""
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:281
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:406
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:407
 msgid "Menu|Group Box"
 msgstr ""
 
@@ -6048,6 +6053,10 @@ msgstr ""
 msgid "TT|How to save files in Miradi"
 msgstr ""
 
+#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:41
+msgid "TT|Import Project from Xmpz ZIP file"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionImportZippedConproProject.java:39
 msgid "TT|Import a .cpmz file that was exported from ConPro"
 msgstr ""
@@ -7387,7 +7396,7 @@ msgstr ""
 msgid "[New Results Chain]"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:970
+#: Miradi/source/org/miradi/project/Project.java:977
 msgid "[No Project]"
 msgstr ""
 
