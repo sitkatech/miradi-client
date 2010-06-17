@@ -94,10 +94,10 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 		
 		BaseId wrappedId = new BaseId(typedIdNode.getTextContent());
 		
-		return new ORef(getNodeType(typedIdNode), wrappedId);
+		return new ORef(getObjectTypeOfNode(typedIdNode), wrappedId);
 	}
 
-	private int getNodeType(Node typedIdNode)
+	private int getObjectTypeOfNode(Node typedIdNode)
 	{
 		String nodeName = typedIdNode.getNodeName();
 		String objectTypeName = nodeName.replaceFirst(ID, "");
