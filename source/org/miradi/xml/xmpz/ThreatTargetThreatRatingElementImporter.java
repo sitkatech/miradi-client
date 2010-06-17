@@ -148,10 +148,7 @@ public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectI
 		ORef stressRef = getStressRef(stressBasedThreatRatingNode);
 		ORef threatRef = getThreatRef(threatRatingNode);
 		ThreatTargetVirtualLinkHelper helper = new ThreatTargetVirtualLinkHelper(getProject());
-		ORef threatStressRatingRef = helper.findThreatStressRating(threatRef, getTargetRef(threatRatingNode), stressRef);
-		if (threatStressRatingRef.isInvalid())
-			return;
-		
+		ORef threatStressRatingRef = helper.findThreatStressRatingReferringToStress(threatRef, getTargetRef(threatRatingNode), stressRef);
 		importCodeField(stressBasedThreatRatingNode, STRESS_BASED_THREAT_RATING, threatStressRatingRef, ThreatStressRating.TAG_CONTRIBUTION, new StressContributionQuestion());
 		importCodeField(stressBasedThreatRatingNode, STRESS_BASED_THREAT_RATING, threatStressRatingRef, ThreatStressRating.TAG_IRREVERSIBILITY, new StressIrreversibilityQuestion());
 		importIsActive(stressBasedThreatRatingNode, threatStressRatingRef);
