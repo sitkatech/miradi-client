@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-16 11:08-0500\n"
+"POT-Creation-Date: 2010-06-17 16:22-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -66,7 +66,7 @@ msgstr ""
 msgid " A project by this name already exists: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:91
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:82
 msgid " was empty"
 msgstr ""
 
@@ -608,7 +608,7 @@ msgid ""
 "select its replacement on the TNC Tab of the Summary Page.</html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:126
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:133
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr ""
 
@@ -3469,7 +3469,7 @@ msgstr ""
 msgid "Implement work plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:296
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:251
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:119
 msgid "Import"
@@ -3483,11 +3483,11 @@ msgstr ""
 msgid "Import Completed"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:106
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:113
 msgid "Import Completed.  Would you like to open %s?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:50
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:57
 msgid "Import Project"
 msgstr ""
 
@@ -4583,7 +4583,7 @@ msgstr ""
 msgid "Open"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:107
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:114
 msgid "Open Project"
 msgstr ""
 
@@ -6566,7 +6566,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:152
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:202
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -6588,7 +6588,7 @@ msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:71
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:78
 msgid ""
 "This project cannot be imported by this version of Miradi because it \n"
 "is in a newer data format. Please upgrade to the latest version of Miradi."
