@@ -159,7 +159,7 @@ public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectI
 	
 	private void importIsActive(Node stressBasedThreatRatingNode, ORef threatStressRatingRef)	throws Exception
 	{
-		Node isActiveNode = getImporter().getNode(stressBasedThreatRatingNode, STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING_IS_ACTIVE);
+		Node isActiveNode = getImporter().getNode(stressBasedThreatRatingNode, STRESS_BASED_THREAT_RATING + IS_ACTIVE);
 		String isActive = BooleanData.BOOLEAN_FALSE;
 		if (isActiveNode != null && getImporter().isTrue(isActiveNode.getTextContent()))
 			isActive = BooleanData.BOOLEAN_TRUE;;

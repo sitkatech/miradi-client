@@ -141,7 +141,7 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 		
 		ThreatStressRating threatStressRating = ThreatStressRatingDetailsTableExporter.findThreatStressRating(getProject(), target.getRef(), threat.getRef(), stress);
 		if (threatStressRating != null)
-			getWcsXmlExporter().writeOptionalElement(STRESS_BASED_THREAT_RATING, THREAT_STRESS_RATING_IS_ACTIVE, threatStressRating, ThreatStressRating.TAG_IS_ACTIVE);
+			getWcsXmlExporter().writeOptionalElement(STRESS_BASED_THREAT_RATING, IS_ACTIVE, threatStressRating, ThreatStressRating.TAG_IS_ACTIVE);
 		
 		exportStressBasedStressRating(stress.getCalculatedStressRating());
 		exportStressBasedThreatStressRating(target.getRef(), threat.getRef());
