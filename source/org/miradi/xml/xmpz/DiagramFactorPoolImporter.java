@@ -47,14 +47,13 @@ import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 
 public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public DiagramFactorPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, WcsXmlConstants.DIAGRAM_FACTOR, DiagramFactor.getObjectType());
+		super(importerToUse, DIAGRAM_FACTOR, DiagramFactor.getObjectType());
 	}
 	
 	@Override
@@ -64,19 +63,19 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 		
 		importDiagramFactorLocation(node, destinationRef);
 		importDiagramFactorSize(node, destinationRef);
-		importRefs(node, WcsXmlConstants.GROUP_BOX_CHILDREN_IDS, destinationRef, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, DiagramFactor.getObjectType(), WcsXmlConstants.DIAGRAM_FACTOR_ID_ELEMENT_NAME);
+		importRefs(node, GROUP_BOX_CHILDREN_IDS, destinationRef, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, DiagramFactor.getObjectType(), DIAGRAM_FACTOR_ID_ELEMENT_NAME);
 		importCodeField(node, getPoolName(), destinationRef, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, new TextBoxZOrderQuestion());
 		importFontStylingElements(node, destinationRef);
 	}
 	
 	private void importFontStylingElements(Node node, ORef destinationRef) throws Exception
 	{
-		Node diagramFactorSyleNode = getImporter().getNode(node, getPoolName() + WcsXmlConstants.STYLING);
-		Node style = getImporter().getNode(diagramFactorSyleNode, WcsXmlConstants.STYLING);
-		importCodeField(style, WcsXmlConstants.DIAGRAM_FACTOR, destinationRef, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
-		importCodeField(style, WcsXmlConstants.DIAGRAM_FACTOR, destinationRef, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
-		importCodeField(style, WcsXmlConstants.DIAGRAM_FACTOR, destinationRef, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
-		importCodeField(style, WcsXmlConstants.DIAGRAM_FACTOR, destinationRef, DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion());
+		Node diagramFactorSyleNode = getImporter().getNode(node, getPoolName() + STYLING);
+		Node style = getImporter().getNode(diagramFactorSyleNode, STYLING);
+		importCodeField(style, DIAGRAM_FACTOR, destinationRef, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
+		importCodeField(style, DIAGRAM_FACTOR, destinationRef, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
+		importCodeField(style, DIAGRAM_FACTOR, destinationRef, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
+		importCodeField(style, DIAGRAM_FACTOR, destinationRef, DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion());
 	}
 	
 	@Override
@@ -89,8 +88,8 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 	
 	private ORef importWrappedRef(Node parentNode) throws Exception
 	{
-		Node wrappedFactorIdNode = getImporter().getNode(parentNode, getPoolName() + WcsXmlConstants.WRAPPED_FACTOR_ID_ELEMENT_NAME);
-		Node wrappedByDiagamFactorIdNode = getImporter().getNode(wrappedFactorIdNode, WcsXmlConstants.WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
+		Node wrappedFactorIdNode = getImporter().getNode(parentNode, getPoolName() + WRAPPED_FACTOR_ID_ELEMENT_NAME);
+		Node wrappedByDiagamFactorIdNode = getImporter().getNode(wrappedFactorIdNode, WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
 		Node typedIdNode = wrappedByDiagamFactorIdNode.getFirstChild();
 		
 		BaseId wrappedId = new BaseId(typedIdNode.getTextContent());
@@ -103,37 +102,37 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 		String nodeName = typedIdNode.getNodeName();
 		String objectTypeName = nodeName.replaceFirst(ID, "");
 		
-		if (objectTypeName.equals(WcsXmlConstants.SCOPE_BOX))
+		if (objectTypeName.equals(SCOPE_BOX))
 			return ScopeBox.getObjectType();
 		
-		if (objectTypeName.equals(WcsXmlConstants.BIODIVERSITY_TARGET))
+		if (objectTypeName.equals(BIODIVERSITY_TARGET))
 			return Target.getObjectType();
 		
-		if (objectTypeName.equals(WcsXmlConstants.HUMAN_WELFARE_TARGET))
+		if (objectTypeName.equals(HUMAN_WELFARE_TARGET))
 			return HumanWelfareTarget.getObjectType();
 		
-		if (objectTypeName.equals(WcsXmlConstants.CAUSE) || objectTypeName.equals(WcsXmlConstants.THREAT))
+		if (objectTypeName.equals(CAUSE) || objectTypeName.equals(THREAT))
 			return Cause.getObjectType();
 		
-		if (objectTypeName.equals(WcsXmlConstants.STRATEGY))
+		if (objectTypeName.equals(STRATEGY))
 			return Strategy.getObjectType();
 		
-		if (objectTypeName.equals(WcsXmlConstants.INTERMEDIATE_RESULTS))
+		if (objectTypeName.equals(INTERMEDIATE_RESULTS))
 			return IntermediateResult.getObjectType();
 		
-		if (objectTypeName.equals(WcsXmlConstants.THREAT_REDUCTION_RESULTS))
+		if (objectTypeName.equals(THREAT_REDUCTION_RESULTS))
 			return ThreatReductionResult.getObjectType();
 		
-		if (objectTypeName.equals(WcsXmlConstants.TEXT_BOX))
+		if (objectTypeName.equals(TEXT_BOX))
 			return TextBox.getObjectType();
 		
-		if (objectTypeName.equals(WcsXmlConstants.GROUP_BOX))
+		if (objectTypeName.equals(GROUP_BOX))
 			return GroupBox.getObjectType();
 		
-		if (objectTypeName.equals(WcsXmlConstants.TASK))
+		if (objectTypeName.equals(TASK))
 			return Task.getObjectType();
 		
-		if (objectTypeName.equals(WcsXmlConstants.STRESS))
+		if (objectTypeName.equals(STRESS))
 			return Stress.getObjectType();
 		
 		EAM.logError("Could not find type for node: " + objectTypeName);
@@ -142,10 +141,10 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 
 	private void importDiagramFactorSize(Node node, ORef destinationRef) throws Exception
 	{
-		Node diagramFactorSizeNode = getImporter().getNode(node, getPoolName()+ WcsXmlConstants.SIZE);
-		Node sizNode = getImporter().getNode(diagramFactorSizeNode, WcsXmlConstants.DIAGRAM_SIZE_ELEMENT_NAME);
-		Node widthNode = getImporter().getNode(sizNode, WcsXmlConstants.WIDTH_ELEMENT_NAME);
-		Node heightNode = getImporter().getNode(sizNode, WcsXmlConstants.HEIGHT_ELEMENT_NAME);
+		Node diagramFactorSizeNode = getImporter().getNode(node, getPoolName()+ SIZE);
+		Node sizNode = getImporter().getNode(diagramFactorSizeNode, DIAGRAM_SIZE_ELEMENT_NAME);
+		Node widthNode = getImporter().getNode(sizNode, WIDTH_ELEMENT_NAME);
+		Node heightNode = getImporter().getNode(sizNode, HEIGHT_ELEMENT_NAME);
 		int width = extractNodeTextContentAsInt(widthNode);
 		int height = extractNodeTextContentAsInt(heightNode);
 		String dimensionAsString = EnhancedJsonObject.convertFromDimension(new Dimension(width, height));
@@ -154,8 +153,8 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 	
 	private void importDiagramFactorLocation(Node node, ORef destinationRef) throws Exception
 	{
-		Node locationNode = getImporter().getNode(node, getPoolName()+ WcsXmlConstants.LOCATION);
-		Node pointNode = getImporter().getNode(locationNode, WcsXmlConstants.DIAGRAM_POINT_ELEMENT_NAME);
+		Node locationNode = getImporter().getNode(node, getPoolName()+ LOCATION);
+		Node pointNode = getImporter().getNode(locationNode, DIAGRAM_POINT_ELEMENT_NAME);
 		Point point = extractPointFromNode(pointNode);
 		String pointAsString = EnhancedJsonObject.convertFromPoint(point);
 		getImporter().setData(destinationRef, DiagramFactor.TAG_LOCATION, pointAsString);
