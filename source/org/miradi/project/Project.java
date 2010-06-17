@@ -641,6 +641,16 @@ public class Project
 	
 	public void createOrOpen(String projectName) throws Exception
 	{
+		boolean didProjectAlreadyExist = createorOpenForImport(projectName);
+		createMissingDefaultObjects();
+		applyDefaultBehavior();
+		
+		if (!didProjectAlreadyExist)
+			createDefaultHelpTextBoxDiagramFactor();
+	}
+
+	public boolean createorOpenForImport(String projectName) throws Exception
+	{
 		clear();
 		
 		boolean didProjectAlreadyExist = getDatabase().isExistingProject(projectName);
@@ -652,11 +662,8 @@ public class Project
 		writeStartingLogEntry();
 	
 		finishOpening();
-		createMissingDefaultObjects();
-		applyDefaultBehavior();
 		
-		if (!didProjectAlreadyExist)
-			createDefaultHelpTextBoxDiagramFactor();
+		return didProjectAlreadyExist;
 	}
 
 	public void setLocalDataLocation(File dataDirectory) throws Exception
@@ -888,7 +895,7 @@ public class Project
 		}
 	}
 	
-	private void createProject(String projectName) throws Exception
+	public void createProject(String projectName) throws Exception
 	{
 		getDatabase().createProject(projectName);
 		
@@ -932,7 +939,7 @@ public class Project
 		createDefaultPlanningCustomization();
 	}
 
-	private void createMissingBuiltInObjects() throws Exception
+	public void createMissingBuiltInObjects() throws Exception
 	{
 		if(getMetadataId().isInvalid())
 			createProjectMetadata();
