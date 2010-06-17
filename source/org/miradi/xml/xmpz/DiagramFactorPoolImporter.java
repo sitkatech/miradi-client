@@ -129,7 +129,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 		if (objectTypeName.equals(GROUP_BOX))
 			return GroupBox.getObjectType();
 		
-		if (objectTypeName.equals(TASK))
+		if (isTask(objectTypeName))
 			return Task.getObjectType();
 		
 		if (objectTypeName.equals(STRESS))
@@ -137,6 +137,17 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 		
 		EAM.logError("Could not find type for node: " + objectTypeName);
 		return ObjectType.FAKE;
+	}
+
+	private boolean isTask(String objectTypeName)
+	{
+		if (objectTypeName.equals(Task.ACTIVITY_NAME))
+			return true;
+		
+		if (objectTypeName.equals(Task.METHOD_NAME))
+			return true;
+		
+		return objectTypeName.equals(TASK);
 	}
 
 	private String removeAppendedId(String nodeName)
