@@ -40,7 +40,7 @@ public class TaskPoolImporter extends FactorPoolImporter
 		importProgressReportRefs(node, destinationRef);
 		importExpenseAssignmentRefs(node, destinationRef);
 		importResourceAssignmentIds(node, destinationRef);
-		importIds(node, destinationRef, Task.TAG_SUBTASK_IDS, Task.getObjectType(), WcsXmlConstants.SUB_TASK + WcsXmlConstants.ID);
+		importIds(node, destinationRef, Task.TAG_SUBTASK_IDS, Task.getObjectType(), WcsXmlConstants.SUB_TASK);
 	}
 	
 	@Override

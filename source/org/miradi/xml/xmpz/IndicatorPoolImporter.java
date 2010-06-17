@@ -53,7 +53,7 @@ public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 		importProgressReportRefs(node, destinationRef);
 		importExpenseAssignmentRefs(node, destinationRef);
 		importResourceAssignmentIds(node, destinationRef);
-		importIds(node, destinationRef, Indicator.TAG_METHOD_IDS, Task.getObjectType(), WcsXmlConstants.METHOD + WcsXmlConstants.ID);
+		importIds(node, destinationRef, Indicator.TAG_METHOD_IDS, Task.getObjectType(), WcsXmlConstants.METHOD);
 		importRefs(node, WcsXmlConstants.MEASUREMENT_IDS, destinationRef, Indicator.TAG_MEASUREMENT_REFS, Measurement.getObjectType(), WcsXmlConstants.MEASUREMENT + WcsXmlConstants.ID);
 	}
 }
