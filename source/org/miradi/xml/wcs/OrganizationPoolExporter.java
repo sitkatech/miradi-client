@@ -34,6 +34,8 @@ public class OrganizationPoolExporter extends BaseObjectPoolExporter
 	@Override
 	protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception
 	{
+		super.exportFields(writer, baseObject);
+		
 		Organization organization = (Organization) baseObject;
 										
 		writeOptionalElementWithSameTag(organization, Organization.TAG_SHORT_LABEL);
