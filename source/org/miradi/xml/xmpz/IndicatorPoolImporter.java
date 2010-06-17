@@ -44,10 +44,10 @@ public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 		importField(node, destinationRef, Indicator.TAG_SHORT_LABEL);
 		importField(node, destinationRef, Indicator.TAG_DETAIL);
 		importField(node, destinationRef, Indicator.TAG_COMMENTS);
-		importCodeField(node, getPoolName(), destinationRef, Indicator.TAG_PRIORITY, new PriorityRatingQuestion());
+		importCodeField(node, destinationRef, Indicator.TAG_PRIORITY, new PriorityRatingQuestion());
 		importField(node, destinationRef, Indicator.TAG_FUTURE_STATUS_DATE);
 		importField(node, destinationRef, Indicator.TAG_FUTURE_STATUS_SUMMARY);
-		importCodeField(node, getPoolName(), destinationRef, Indicator.TAG_FUTURE_STATUS_RATING, new StatusQuestion());
+		importCodeField(node, destinationRef, Indicator.TAG_FUTURE_STATUS_RATING, new StatusQuestion());
 		importField(node, destinationRef, Indicator.TAG_FUTURE_STATUS_DETAIL);
 		importField(node, destinationRef, Indicator.TAG_FUTURE_STATUS_COMMENT);
 		importProgressReportRefs(node, destinationRef);

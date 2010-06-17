@@ -54,6 +54,6 @@ public class ProjectSummaryPlanningImporter extends AbstractXmpzObjectImporter
 		importField(projectSummaryPlanningNode, getMetadataRef(), ProjectMetadata.TAG_KEY_FUNDING_SOURCES);
 		importField(projectSummaryPlanningNode, getMetadataRef(), ProjectMetadata.TAG_FINANCIAL_COMMENTS);
 		
-		importCodeField(projectSummaryPlanningNode, WcsXmlConstants.PROJECT_SUMMARY_PLANNING, getMetadataRef(), ProjectMetadata.TAG_PLANNING_TREE_TARGET_NODE_POSITION, new PlanningTreeTargetPositionQuestion());
+		importCodeField(projectSummaryPlanningNode, getMetadataRef(), ProjectMetadata.TAG_PLANNING_TREE_TARGET_NODE_POSITION, new PlanningTreeTargetPositionQuestion());
 	}
 }

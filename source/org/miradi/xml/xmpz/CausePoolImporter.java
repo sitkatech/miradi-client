@@ -40,7 +40,7 @@ public class CausePoolImporter extends FactorPoolImporter
 		super.importFields(node, destinationRef);
 		
 		importIsThreat(node, destinationRef);		
-		importCodeField(node, getPoolName(), destinationRef, Cause.TAG_TAXONOMY_CODE, new ThreatClassificationQuestion());
+		importCodeField(node, destinationRef, Cause.TAG_TAXONOMY_CODE, new ThreatClassificationQuestion());
 		importObjectiveIds(node, destinationRef);
 		importIndicatorIds(node, destinationRef);
 	}

@@ -40,6 +40,6 @@ public class ProgressReportPoolImporter extends AbstractBaseObjectPoolImporter
 		
 		importField(node, destinationRef, ProgressReport.TAG_PROGRESS_DATE);
 		importField(node, destinationRef, ProgressReport.TAG_DETAILS);
-		importCodeField(node, getPoolName(), destinationRef, ProgressReport.TAG_PROGRESS_STATUS, new ProgressReportLongStatusQuestion());
+		importCodeField(node, destinationRef, ProgressReport.TAG_PROGRESS_STATUS, new ProgressReportLongStatusQuestion());
 	}
 }

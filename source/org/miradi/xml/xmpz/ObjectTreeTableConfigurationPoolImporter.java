@@ -38,6 +38,6 @@ public class ObjectTreeTableConfigurationPoolImporter extends AbstractBaseObject
 	{
 		super.importFields(node, destinationRef);
 		
-		importCodeField(node, getPoolName(), destinationRef, ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, new DiagramObjectDataInclusionQuestion());
+		importCodeField(node, destinationRef, ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, new DiagramObjectDataInclusionQuestion());
 	}
 }
