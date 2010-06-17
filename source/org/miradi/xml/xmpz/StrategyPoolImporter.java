@@ -43,7 +43,7 @@ public class StrategyPoolImporter extends FactorPoolImporter
 
 		importObjectiveIds(node, destinationRef);
 		
-		importIds(node, destinationRef, Strategy.TAG_ACTIVITY_IDS, Task.getObjectType(), WcsXmlConstants.ACTIVITY + WcsXmlConstants.ID);
+		importIds(node, destinationRef, Strategy.TAG_ACTIVITY_IDS, Task.getObjectType(), WcsXmlConstants.ACTIVITY);
 		importField(node, destinationRef, Strategy.TAG_STATUS);
 		importCodeField(node, getPoolName(), destinationRef, Strategy.TAG_TAXONOMY_CODE, new StrategyTaxonomyQuestion());
 		importCodeField(node, getPoolName(), destinationRef, Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion());

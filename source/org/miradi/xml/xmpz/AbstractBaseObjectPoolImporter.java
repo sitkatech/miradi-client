@@ -98,12 +98,12 @@ abstract public class AbstractBaseObjectPoolImporter extends AbstractXmpzObjectI
 
 	protected void importResourceAssignmentIds(Node node, ORef destinationRef) throws Exception
 	{
-		importIds(node, destinationRef, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType(), WcsXmlConstants.RESOURCE_ASSIGNMENT + WcsXmlConstants.ID);
+		importIds(node, destinationRef, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType(), WcsXmlConstants.RESOURCE_ASSIGNMENT);
 	}
 	
 	protected void importIndicatorIds(Node node, ORef destinationRef) throws Exception
 	{
-		importIds(node, destinationRef, Factor.TAG_INDICATOR_IDS, Indicator.getObjectType(), WcsXmlConstants.INDICATOR + WcsXmlConstants.ID);
+		importIds(node, destinationRef, Factor.TAG_INDICATOR_IDS, Indicator.getObjectType(), WcsXmlConstants.INDICATOR);
 	}
 	
 	protected Point extractPointFromNode(Node pointNode) throws Exception

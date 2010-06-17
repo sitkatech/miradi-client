@@ -50,6 +50,6 @@ abstract public class FactorPoolImporter extends AbstractBaseObjectPoolImporter
 	
 	protected void importObjectiveIds(Node node, ORef destinationRef)	throws Exception
 	{
-		importIds(node, destinationRef, Factor.TAG_OBJECTIVE_IDS, Objective.getObjectType(), WcsXmlConstants.OBJECTIVE + WcsXmlConstants.ID);
+		importIds(node, destinationRef, Factor.TAG_OBJECTIVE_IDS, Objective.getObjectType(), WcsXmlConstants.OBJECTIVE);
 	}
 }
