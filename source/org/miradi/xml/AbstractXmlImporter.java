@@ -211,6 +211,8 @@ abstract public class AbstractXmlImporter
 	
 	public ORef getNodeAsRef(Node node, String element, int type) throws Exception
 	{
+		// FIXME low - Why do we need to trim??.  We have this fixme in other places and need to figure out
+		//why a new line has been appended.  Export is not appending a new line and has been verified in output.s
 		String trimmedIdAsString = getNodeContent(node, element).trim();
 		return new ORef(type, new BaseId(trimmedIdAsString));
 	}
