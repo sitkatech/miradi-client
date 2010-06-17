@@ -41,11 +41,13 @@ public class ZippedProjectImporter extends AbstractProjectImporter
 		new ZippedProjectImporter(mainWindow).importProject();
 	}
 	
+	@Override
 	protected void createProject(File importFile, File homeDirectory, String newProjectFilename) throws Exception
 	{
 		ProjectUnzipper.unzipToProjectDirectory(importFile, homeDirectory, newProjectFilename);
 	}
 
+	@Override
 	protected FileFilter[] getFileFilters()
 	{
 		return new FileFilter[] {new ZIPFileFilter(), new MpzFileFilterForChooserDialog()};
