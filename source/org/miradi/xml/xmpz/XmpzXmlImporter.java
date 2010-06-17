@@ -88,7 +88,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 
 	private void importThreatStressRatings() throws Exception
 	{
-		getProject().beginCommandSideEffectMode();
+		beginUsingCommandsToSetData();
 		try
 		{
 			ThreatStressRatingEnsurer ensurer = new ThreatStressRatingEnsurer(getProject());
@@ -96,10 +96,20 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		}
 		finally
 		{
-			getProject().endCommandSideEffectMode();
+			endUsingCommandsToSetData();
 		}
 		
 		new ThreatTargetThreatRatingElementImporter(this).importElement();
+	}
+
+	private void endUsingCommandsToSetData()
+	{
+		getProject().endCommandSideEffectMode();
+	}
+
+	private void beginUsingCommandsToSetData()
+	{
+		getProject().beginCommandSideEffectMode();
 	}
 
 	@Override
