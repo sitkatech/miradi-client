@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-16 11:08-0500\n"
+"POT-Creation-Date: 2010-06-17 16:22-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -86,7 +86,7 @@ msgstr "2) Conectar amenaza a objetos relevantes"
 msgid " A project by this name already exists: "
 msgstr "Ya existe un proyecto con este nombre:"
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:91
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:82
 msgid " was empty"
 msgstr "vacío"
 
@@ -692,7 +692,7 @@ msgstr ""
 "<html>Una unidad operativa para este proyecto se ha<br>sustituido. "
 "Seleccione su reemplazo en la ficha TNC de la Página de resumen.</html>"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:126
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:133
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Falló la importación: <br><p> %s </p></html> "
 
@@ -3725,7 +3725,7 @@ msgstr "Implementar planes estratégicos y de monitoreo"
 msgid "Implement work plan"
 msgstr "Implementar plan de trabajo"
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:296
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:251
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:119
 msgid "Import"
@@ -3739,11 +3739,11 @@ msgstr "Importar códigos contables"
 msgid "Import Completed"
 msgstr "Se completó la importación."
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:106
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:113
 msgid "Import Completed.  Would you like to open %s?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:50
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:57
 msgid "Import Project"
 msgstr "Importar proyecto"
 
@@ -4908,7 +4908,7 @@ msgstr "Investigación en el sitio"
 msgid "Open"
 msgstr "Abrir"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:107
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:114
 msgid "Open Project"
 msgstr ""
 
@@ -7011,7 +7011,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:152
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:202
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7041,7 +7041,7 @@ msgstr ""
 "Este modelo no es para asignaciones individuales y no cuenta con información "
 "de la asignación."
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:71
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:78
 msgid ""
 "This project cannot be imported by this version of Miradi because it \n"
 "is in a newer data format. Please upgrade to the latest version of Miradi."
