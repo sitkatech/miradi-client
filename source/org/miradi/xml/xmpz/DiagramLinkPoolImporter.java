@@ -50,7 +50,7 @@ public class DiagramLinkPoolImporter extends AbstractBaseObjectPoolImporter
 	{
 		super.importFields(node, destinationRef);
 		
-		importRefs(node, GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, destinationRef, DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, DiagramLink.getObjectType(), DIAGRAM_LINK + ID);
+		importRefs(node, GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, destinationRef, DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, DiagramLink.getObjectType(), DIAGRAM_LINK);
 		importCodeField(node, getPoolName(), destinationRef, DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion());
 		DiagramLink diagramLink = DiagramLink.find(getProject(), destinationRef);
 		if (!diagramLink.isGroupBoxLink())
