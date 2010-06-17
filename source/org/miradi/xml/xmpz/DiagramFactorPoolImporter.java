@@ -63,7 +63,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 		
 		importDiagramFactorLocation(node, destinationRef);
 		importDiagramFactorSize(node, destinationRef);
-		importRefs(node, GROUP_BOX_CHILDREN_IDS, destinationRef, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, DiagramFactor.getObjectType(), DIAGRAM_FACTOR_ID_ELEMENT_NAME);
+		importRefs(node, GROUP_BOX_CHILDREN_IDS, destinationRef, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, DiagramFactor.getObjectType(), DIAGRAM_FACTOR);
 		importCodeField(node, getPoolName(), destinationRef, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, new TextBoxZOrderQuestion());
 		importFontStylingElements(node, destinationRef);
 	}

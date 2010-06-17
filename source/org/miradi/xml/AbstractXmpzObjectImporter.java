@@ -159,7 +159,7 @@ abstract public class AbstractXmpzObjectImporter implements WcsXmlConstants
 
 	protected void importRefs(Node node, String elementName, ORef destinationRef, String destinationTag, int idsType, String idElementName) throws Exception
 	{
-		ORefList importedRefs = extractRefs(node, elementName, idsType, idElementName);
+		ORefList importedRefs = extractRefs(node, elementName, idsType, idElementName + ID);
 		
 		getImporter().setData(destinationRef, destinationTag, importedRefs);
 	}

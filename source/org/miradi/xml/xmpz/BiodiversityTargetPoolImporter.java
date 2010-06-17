@@ -38,7 +38,7 @@ public class BiodiversityTargetPoolImporter extends AbstractTargetPoolImporter
 	{
 		super.importFields(node, destinationRef);
 		
-		importRefs(node, WcsXmlConstants.STRESS_IDS_ELEMENT, destinationRef, Target.TAG_STRESS_REFS, Stress.getObjectType(), WcsXmlConstants.STRESS + WcsXmlConstants.ID);
+		importRefs(node, WcsXmlConstants.STRESS_IDS_ELEMENT, destinationRef, Target.TAG_STRESS_REFS, Stress.getObjectType(), WcsXmlConstants.STRESS);
 		importCodeListField(node, getPoolName(), destinationRef, Target.TAG_HABITAT_ASSOCIATION);
 		importField(node, destinationRef, Target.TAG_SPECIES_LATIN_NAME);
 	}

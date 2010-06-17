@@ -83,17 +83,17 @@ abstract public class AbstractBaseObjectPoolImporter extends AbstractXmpzObjectI
 	
 	protected void importProgressReportRefs(Node node, ORef destinationRef) throws Exception
 	{
-		importRefs(node, WcsXmlConstants.PROGRESS_REPORT_IDS, destinationRef, BaseObject.TAG_PROGRESS_REPORT_REFS, ProgressReport.getObjectType(), WcsXmlConstants.PROGRESS_REPORT + WcsXmlConstants.ID);
+		importRefs(node, WcsXmlConstants.PROGRESS_REPORT_IDS, destinationRef, BaseObject.TAG_PROGRESS_REPORT_REFS, ProgressReport.getObjectType(), WcsXmlConstants.PROGRESS_REPORT);
 	}
 	
 	protected void importProgressPercentRefs(Node node, ORef destinationRef) throws Exception
 	{
-		importRefs(node, WcsXmlConstants.PROGRESS_PERCENT_IDS, destinationRef, Desire.TAG_PROGRESS_PERCENT_REFS, ProgressPercent.getObjectType(), WcsXmlConstants.PROGRESS_PERCENT + WcsXmlConstants.ID);
+		importRefs(node, WcsXmlConstants.PROGRESS_PERCENT_IDS, destinationRef, Desire.TAG_PROGRESS_PERCENT_REFS, ProgressPercent.getObjectType(), WcsXmlConstants.PROGRESS_PERCENT );
 	}
 	
 	protected void importExpenseAssignmentRefs(Node node, ORef destinationRef) throws Exception
 	{
-		importRefs(node, WcsXmlConstants.EXPENSE_IDS, destinationRef, BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, ExpenseAssignment.getObjectType(), WcsXmlConstants.EXPENSE_ASSIGNMENT + WcsXmlConstants.ID);
+		importRefs(node, WcsXmlConstants.EXPENSE_IDS, destinationRef, BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, ExpenseAssignment.getObjectType(), WcsXmlConstants.EXPENSE_ASSIGNMENT);
 	}
 
 	protected void importResourceAssignmentIds(Node node, ORef destinationRef) throws Exception

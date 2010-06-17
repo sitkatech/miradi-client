@@ -47,7 +47,7 @@ public class DiagramFactorPoolExporter extends BaseObjectPoolExporter
 		writeWrappedFactorId(diagramFactor);
 		writeDiagramFactorLocation(diagramFactor);
 		writeDiagramFactorSize(diagramFactor);
-		getWcsXmlExporter().writeIds(DIAGRAM_FACTOR, GROUP_BOX_CHILDREN_IDS, WcsXmlConstants.DIAGRAM_FACTOR_ID_ELEMENT_NAME, diagramFactor.getGroupBoxChildrenRefs());
+		getWcsXmlExporter().writeIds(DIAGRAM_FACTOR, GROUP_BOX_CHILDREN_IDS, WcsXmlConstants.DIAGRAM_FACTOR + ID, diagramFactor.getGroupBoxChildrenRefs());
 		exportTextBoxZOrder(diagramFactor);
 		exportFontStylingElements(diagramFactor);
 	}
