@@ -101,7 +101,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 	private int getNodeType(Node typedIdNode)
 	{
 		String nodeName = typedIdNode.getNodeName();
-		String objectTypeName = nodeName.replaceFirst("Id", "");
+		String objectTypeName = nodeName.replaceFirst(ID, "");
 		
 		if (objectTypeName.equals(WcsXmlConstants.SCOPE_BOX))
 			return ScopeBox.getObjectType();
