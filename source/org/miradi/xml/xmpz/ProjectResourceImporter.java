@@ -37,7 +37,7 @@ public class ProjectResourceImporter extends AbstractBaseObjectPoolImporter
 	@Override
 	protected void importFields(Node node, ORef destinationRef) throws Exception
 	{
-		importCodeField(node, WcsXmlConstants.PROJECT_RESOURCE, destinationRef, ProjectResource.TAG_RESOURCE_TYPE, new ResourceTypeQuestion());			
+		importCodeField(node, destinationRef, ProjectResource.TAG_RESOURCE_TYPE, new ResourceTypeQuestion());			
 		importField(node, destinationRef, ProjectResource.TAG_GIVEN_NAME);
 		importField(node, destinationRef, ProjectResource.TAG_SUR_NAME);
 		importField(node, destinationRef, ProjectResource.TAG_INITIALS);

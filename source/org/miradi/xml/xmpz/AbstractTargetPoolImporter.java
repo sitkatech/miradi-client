@@ -42,8 +42,8 @@ abstract public class AbstractTargetPoolImporter extends FactorPoolImporter
 	{
 		super.importFields(node, destinationRef);
 
-		importCodeField(node, getPoolName(), destinationRef, AbstractTarget.TAG_TARGET_STATUS, new StatusQuestion());
-		importCodeField(node, getPoolName(), destinationRef, AbstractTarget.TAG_VIABILITY_MODE, new ViabilityModeQuestion());
+		importCodeField(node, destinationRef, AbstractTarget.TAG_TARGET_STATUS, new StatusQuestion());
+		importCodeField(node, destinationRef, AbstractTarget.TAG_VIABILITY_MODE, new ViabilityModeQuestion());
 		importField(node, destinationRef, AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION);
 		importRefs(node, WcsXmlConstants.SUB_TARGET_IDS_ELEMENT, destinationRef, AbstractTarget.TAG_SUB_TARGET_REFS, SubTarget.getObjectType(), WcsXmlConstants.SUB_TARGET);
 		importIds(node, destinationRef, AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttribute.getObjectType(), WcsXmlConstants.KEY_ECOLOGICAL_ATTRIBUTE);

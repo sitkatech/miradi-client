@@ -40,12 +40,12 @@ public class MeasurementPoolImporter extends AbstractBaseObjectPoolImporter
 	{
 		super.importFields(node, destinationRef);
 		
-		importCodeField(node, getPoolName(), destinationRef, Measurement.TAG_TREND, new TrendQuestion());
-		importCodeField(node, getPoolName(), destinationRef, Measurement.TAG_STATUS, new StatusQuestion());
+		importCodeField(node, destinationRef, Measurement.TAG_TREND, new TrendQuestion());
+		importCodeField(node, destinationRef, Measurement.TAG_STATUS, new StatusQuestion());
 		importField(node, destinationRef,Measurement.TAG_DATE);
 		importField(node, destinationRef,Measurement.TAG_SUMMARY);
 		importField(node, destinationRef,Measurement.TAG_DETAIL);
-		importCodeField(node, getPoolName(), destinationRef, Measurement.TAG_STATUS_CONFIDENCE, new StatusConfidenceQuestion());
+		importCodeField(node, destinationRef, Measurement.TAG_STATUS_CONFIDENCE, new StatusConfidenceQuestion());
 		importField(node, destinationRef,Measurement.TAG_COMMENTS);
 	}
 }

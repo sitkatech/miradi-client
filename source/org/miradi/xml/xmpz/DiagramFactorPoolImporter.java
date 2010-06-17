@@ -64,7 +64,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 		importDiagramFactorLocation(node, destinationRef);
 		importDiagramFactorSize(node, destinationRef);
 		importRefs(node, GROUP_BOX_CHILDREN_IDS, destinationRef, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, DiagramFactor.getObjectType(), DIAGRAM_FACTOR);
-		importCodeField(node, getPoolName(), destinationRef, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, new TextBoxZOrderQuestion());
+		importCodeField(node, destinationRef, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, new TextBoxZOrderQuestion());
 		importFontStylingElements(node, destinationRef);
 	}
 	
@@ -72,10 +72,10 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 	{
 		Node diagramFactorSyleNode = getImporter().getNode(node, getPoolName() + STYLING);
 		Node style = getImporter().getNode(diagramFactorSyleNode, STYLING);
-		importCodeField(style, DIAGRAM_FACTOR, destinationRef, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
-		importCodeField(style, DIAGRAM_FACTOR, destinationRef, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
-		importCodeField(style, DIAGRAM_FACTOR, destinationRef, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
-		importCodeField(style, DIAGRAM_FACTOR, destinationRef, DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion());
+		importCodeField(style, destinationRef, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
+		importCodeField(style, destinationRef, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
+		importCodeField(style, destinationRef, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
+		importCodeField(style, destinationRef, DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion());
 	}
 	
 	@Override

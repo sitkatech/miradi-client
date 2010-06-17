@@ -38,6 +38,6 @@ public class ScopeBoxPoolImporter extends FactorPoolImporter
 	{
 		super.importFields(node, destinationRef);
 		
-		importCodeField(node, getPoolName(), destinationRef, ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxTypeQuestion());
+		importCodeField(node, destinationRef, ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxTypeQuestion());
 	}
 }

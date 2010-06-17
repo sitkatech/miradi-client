@@ -39,8 +39,8 @@ public class StressPoolImporter extends FactorPoolImporter
 	{
 		super.importFields(node, destinationRef);
 
-		importCodeField(node, getPoolName(), destinationRef, Stress.TAG_SEVERITY, new StressSeverityChoiceQuestion());
-		importCodeField(node, getPoolName(), destinationRef, Stress.TAG_SCOPE, new StressScopeChoiceQuestion());
+		importCodeField(node, destinationRef, Stress.TAG_SEVERITY, new StressSeverityChoiceQuestion());
+		importCodeField(node, destinationRef, Stress.TAG_SCOPE, new StressScopeChoiceQuestion());
 	}
 	
 	@Override

@@ -42,6 +42,6 @@ public class KeyEcologicalAttributePoolImporter extends	AbstractBaseObjectPoolIm
 		importField(node, destinationRef, KeyEcologicalAttribute.TAG_DETAILS);
 		importField(node, destinationRef, KeyEcologicalAttribute.TAG_DESCRIPTION);
 		importIndicatorIds(node, destinationRef);
-		importCodeField(node, getPoolName(), destinationRef, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, new KeyEcologicalAttributeTypeQuestion());
+		importCodeField(node, destinationRef, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, new KeyEcologicalAttributeTypeQuestion());
 	}
 }
