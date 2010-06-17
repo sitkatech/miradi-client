@@ -87,7 +87,7 @@ public interface WcsXmlConstants
 	public static final String SEVERITY = "Severity";
 	public static final String IRREVERSIBILITY = "Irreversibility";
 	public static final String CONTRIBUTION = "Contribution";
-	public static final String THREAT_STRESS_RATING_IS_ACTIVE = "IsActive";
+	public static final String IS_ACTIVE = "IsActive";
 	public static final String COMMENTS = "Comments";
 	public static final String SIMPLE_BASED_THREAT_RATING = "SimpleThreatRating";
 	public static final String STRESS_BASED_THREAT_RATING = "StressBasedThreatRating";

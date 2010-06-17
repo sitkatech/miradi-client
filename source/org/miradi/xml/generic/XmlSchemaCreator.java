@@ -322,7 +322,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + "StressId{ StressId.element } &");
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + CONTRIBUTION + " { " + XmlSchemaCreator.VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE + " }? &");
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + IRREVERSIBILITY + " { " + XmlSchemaCreator.VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE + " }? &");
-		writer.printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING_IS_ACTIVE + " { xsd:boolean }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + IS_ACTIVE + " { xsd:boolean }? &");
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + STRESS_RATING + " { " + XmlSchemaCreator.VOCABULARY_THREAT_RATING + " }? &");
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING + " { " + XmlSchemaCreator.VOCABULARY_THREAT_RATING + " }? ");
 		writer.endBlock();
