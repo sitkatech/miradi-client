@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.umbrella;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,7 +29,6 @@ import java.util.zip.ZipFile;
 
 import javax.swing.filechooser.FileFilter;
 
-import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeReader;
 import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
 import org.miradi.commands.CommandSetObjectData;
@@ -72,13 +70,6 @@ public class CpmzProjectImporter extends AbstractProjectImporter
 			
 		File newProjectDir = new File(EAM.getHomeDirectory(), newProjectFilename);
 		importProject(importFile, newProjectDir);
-	}
-
-	private void deleteIncompleteProject(Project projectToFill)	throws Exception
-	{
-		File projectDirectory = projectToFill.getProjectDirectory();
-		projectToFill.close();
-		DirectoryUtils.deleteEntireDirectoryTree(projectDirectory);
 	}
 
 	private void importProject(File zipFileToImport, File newProjectDir) throws ZipException, IOException, Exception, ValidationException
@@ -202,12 +193,6 @@ public class CpmzProjectImporter extends AbstractProjectImporter
 		}
 	}
 
-	private ByteArrayInputStreamWithSeek getProjectAsInputStream(ZipFile zipFile) throws Exception
-	{
-		byte[] extractXmlBytes = readZipEntryFile(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
-		return new ByteArrayInputStreamWithSeek(extractXmlBytes);
-	}
-
 	private void splitMainDiagramByTargets(Project filledProject, ORef highOrAboveRankedThreatsTag) throws Exception
 	{
 		ORefList conceptualModelRefs = filledProject.getConceptualModelDiagramPool().getRefList();
@@ -241,36 +226,6 @@ public class CpmzProjectImporter extends AbstractProjectImporter
 		filledProject.executeCommand(setCurrentDiagramCommand);
 	}
 
-	public static byte[] readZipEntryFile(ZipFile zipFile, String entryName) throws Exception
-	{
-		ZipEntry zipEntry = zipFile.getEntry(entryName);
-		if (zipEntry == null)
-			return new byte[0];
-		
-		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
-		try
-		{
-			byte[] data = new byte[(int) zipEntry.getSize()];
-			InputStream inputStream = zipFile.getInputStream(zipEntry);
-			int offset = 0;
-			while(true)
-			{
-				if(offset >= data.length)
-					break;
-				
-				int got = inputStream.read(data, 0, data.length - offset);
-				offset += got;
-				byteOut.write(data, 0, got);
-			}
-		}
-		finally
-		{
-			byteOut.close();
-		}
-
-		return byteOut.toByteArray(); 
-	}
-	
 	public static boolean zipContainsMpzProject(ZipFile zipFile)
 	{
 		return containsEntry(zipFile, ExportCpmzDoer.PROJECT_ZIP_FILE_NAME);

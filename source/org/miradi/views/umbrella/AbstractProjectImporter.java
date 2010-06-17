@@ -19,18 +19,25 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.InputStream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
 import org.martus.swing.UiFileChooser;
+import org.martus.util.DirectoryUtils;
+import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
 import org.miradi.exceptions.CpmzVersionTooOldException;
 import org.miradi.exceptions.FutureVersionException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.project.Project;
 import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.views.noproject.NoProjectView;
 import org.miradi.views.noproject.RenameProjectDoer;
@@ -141,6 +148,49 @@ public abstract class AbstractProjectImporter
 	{
 		NoProjectView noProjectView = (NoProjectView) getMainWindow().getView(NoProjectView.getViewName());
 		noProjectView.refreshText();
+	}
+	
+	protected ByteArrayInputStreamWithSeek getProjectAsInputStream(ZipFile zipFile) throws Exception
+	{
+		byte[] extractXmlBytes = readZipEntryFile(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
+		return new ByteArrayInputStreamWithSeek(extractXmlBytes);
+	}
+
+	protected byte[] readZipEntryFile(ZipFile zipFile, String entryName) throws Exception
+	{
+		ZipEntry zipEntry = zipFile.getEntry(entryName);
+		if (zipEntry == null)
+			return new byte[0];
+		
+		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+		try
+		{
+			byte[] data = new byte[(int) zipEntry.getSize()];
+			InputStream inputStream = zipFile.getInputStream(zipEntry);
+			int offset = 0;
+			while(true)
+			{
+				if(offset >= data.length)
+					break;
+				
+				int got = inputStream.read(data, 0, data.length - offset);
+				offset += got;
+				byteOut.write(data, 0, got);
+			}
+		}
+		finally
+		{
+			byteOut.close();
+		}
+
+		return byteOut.toByteArray(); 
+	}
+	
+	protected void deleteIncompleteProject(Project projectToFill)	throws Exception
+	{
+		File projectDirectory = projectToFill.getProjectDirectory();
+		projectToFill.close();
+		DirectoryUtils.deleteEntireDirectoryTree(projectDirectory);
 	}
 	
 	protected MainWindow getMainWindow()
