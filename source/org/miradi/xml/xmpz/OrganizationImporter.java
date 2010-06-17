@@ -35,6 +35,8 @@ public class OrganizationImporter extends AbstractBaseObjectPoolImporter
 	@Override
 	protected void importFields(Node node, ORef destinationRef) throws Exception
 	{
+		super.importFields(node, destinationRef);
+		
 		importField(node, destinationRef, Organization.TAG_SHORT_LABEL);
 		importField(node, destinationRef, Organization.TAG_ROLES_DESCRIPTION);
 		importField(node, destinationRef, Organization.TAG_CONTACT_FIRST_NAME);
