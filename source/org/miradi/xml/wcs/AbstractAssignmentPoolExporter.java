@@ -41,7 +41,7 @@ abstract public class AbstractAssignmentPoolExporter extends BaseObjectPoolExpor
 		
 		Assignment assignment = (Assignment) baseObject;
 		exportId(assignment.getFundingSourceRef(), FUNDING_SOURCE_ID);
-		exportId(assignment.getFundingSourceRef(), ACCOUNTING_CODE_ID);
+		exportId(assignment.getAccountingCodeRef(), ACCOUNTING_CODE_ID);
 	}	
 	
 	protected void exportDateUnitEfforList(DateUnitEffortList dateUnitEffortList, String dateUnitsElementName) throws Exception
