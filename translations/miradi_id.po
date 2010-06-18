@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-18 09:55-0500\n"
+"POT-Creation-Date: 2010-06-18 09:58-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1176,10 +1176,6 @@ msgstr "Cara Menyimpan "
 msgid "Action|Import Accounting Codes"
 msgstr "Impor Kode Akuntansi "
 
-#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:35
-msgid "Action|Import Xmpz (BETA)"
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionGroupBoxAddFactor.java:35
 msgid "Action|Insert|Add Factor(s) to Group Box"
 msgstr "Tambahkan Faktor(-faktor) ke Kotak Grup "
@@ -1708,6 +1704,10 @@ msgstr "Rencana Kerja "
 #: Miradi/source/org/miradi/actions/ActionHelpButtonWorkshop.java:34
 msgid "Action|Workshop"
 msgstr "Lokakarya "
+
+#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:35
+msgid "Action|XML Miradi Project ZIP (BETA)"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportProjectXml.java:34
 msgid "Action|XML Miradi Project ZIP (BETA) "
@@ -6420,10 +6420,6 @@ msgstr ""
 msgid "TT|How to save files in Miradi"
 msgstr "Cara menyimpan berkas di Miradi "
 
-#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:41
-msgid "TT|Import Project from Xmpz ZIP file"
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionImportZippedConproProject.java:39
 msgid "TT|Import a .cpmz file that was exported from ConPro"
 msgstr "Impor berkas .cpmz yang diekspor dari ConPro "
@@ -6435,6 +6431,10 @@ msgstr "Impor berkas .mpz yang diekspor dari Miradi "
 #: Miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:39
 msgid "TT|Import accounting codes"
 msgstr "Impor Kode Akuntansi "
+
+#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:41
+msgid "TT|Import entire project from a XML file"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionInsertContributingFactor.java:42
 msgid "TT|Insert a Contributing Factor"

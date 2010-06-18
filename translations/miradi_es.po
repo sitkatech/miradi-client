@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-18 09:55-0500\n"
+"POT-Creation-Date: 2010-06-18 09:58-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -1180,10 +1180,6 @@ msgstr "Cómo grabar"
 msgid "Action|Import Accounting Codes"
 msgstr "Importar códigos contables"
 
-#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:35
-msgid "Action|Import Xmpz (BETA)"
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionGroupBoxAddFactor.java:35
 msgid "Action|Insert|Add Factor(s) to Group Box"
 msgstr "Agregar factor(es) al cuadro de grupo"
@@ -1712,6 +1708,10 @@ msgstr "Plan de trabajo"
 #: Miradi/source/org/miradi/actions/ActionHelpButtonWorkshop.java:34
 msgid "Action|Workshop"
 msgstr "Taller"
+
+#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:35
+msgid "Action|XML Miradi Project ZIP (BETA)"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportProjectXml.java:34
 msgid "Action|XML Miradi Project ZIP (BETA) "
@@ -6462,10 +6462,6 @@ msgstr ""
 msgid "TT|How to save files in Miradi"
 msgstr "Cómo grabar archivos en Miradi"
 
-#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:41
-msgid "TT|Import Project from Xmpz ZIP file"
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionImportZippedConproProject.java:39
 msgid "TT|Import a .cpmz file that was exported from ConPro"
 msgstr "Importar un archivo .cpmz que se exportó de ConPro"
@@ -6477,6 +6473,10 @@ msgstr "Importar un archivo .mpz que se exportó de Miradi"
 #: Miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:39
 msgid "TT|Import accounting codes"
 msgstr "Importar códigos contables"
+
+#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:41
+msgid "TT|Import entire project from a XML file"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionInsertContributingFactor.java:42
 msgid "TT|Insert a Contributing Factor"
