@@ -895,7 +895,7 @@ public class Project
 		}
 	}
 	
-	public void createProject(String projectName) throws Exception
+	private void createProject(String projectName) throws Exception
 	{
 		getDatabase().createProject(projectName);
 		
