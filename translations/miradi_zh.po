@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-18 09:55-0500\n"
+"POT-Creation-Date: 2010-06-18 09:58-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1090,10 +1090,6 @@ msgstr "如何保存 \t\t"
 msgid "Action|Import Accounting Codes"
 msgstr "导入会计编码 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:35
-msgid "Action|Import Xmpz (BETA)"
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionGroupBoxAddFactor.java:35
 msgid "Action|Insert|Add Factor(s) to Group Box"
 msgstr "添加（多个）因素到组合框 \t\t"
@@ -1622,6 +1618,10 @@ msgstr ""
 #: Miradi/source/org/miradi/actions/ActionHelpButtonWorkshop.java:34
 msgid "Action|Workshop"
 msgstr "学习班 \t\t"
+
+#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:35
+msgid "Action|XML Miradi Project ZIP (BETA)"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportProjectXml.java:34
 msgid "Action|XML Miradi Project ZIP (BETA) "
@@ -6190,10 +6190,6 @@ msgstr "隐藏该压力使之不再出现于本概念模型页面 \t\t"
 msgid "TT|How to save files in Miradi"
 msgstr "如何在Miradi中保存文件 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:41
-msgid "TT|Import Project from Xmpz ZIP file"
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionImportZippedConproProject.java:39
 msgid "TT|Import a .cpmz file that was exported from ConPro"
 msgstr "导入一个从ConPro导出的.cpmz文件 \t\t"
@@ -6205,6 +6201,10 @@ msgstr "导入一个从Miradi导出的.mpz文件 \t\t"
 #: Miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:39
 msgid "TT|Import accounting codes"
 msgstr "导入会计编码 \t\t"
+
+#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:41
+msgid "TT|Import entire project from a XML file"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionInsertContributingFactor.java:42
 msgid "TT|Insert a Contributing Factor"
