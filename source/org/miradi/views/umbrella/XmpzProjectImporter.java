@@ -27,7 +27,7 @@ import java.util.zip.ZipFile;
 
 import javax.swing.filechooser.FileFilter;
 
-import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
+import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -76,7 +76,7 @@ public class XmpzProjectImporter extends AbstractProjectImporter
 		projectToFill.rawCreateorOpen(newProjectDir.getName());
 		try
 		{
-			ByteArrayInputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
+			InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
 			try
 			{
 				XmpzXmlImporter xmpzImporter = new XmpzXmlImporter(projectToFill);

@@ -30,7 +30,7 @@ import java.util.zip.ZipFile;
 import javax.swing.filechooser.FileFilter;
 
 import org.martus.util.UnicodeReader;
-import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
+import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.arranger.MeglerArranger;
 import org.miradi.exceptions.ValidationException;
@@ -115,7 +115,7 @@ public class CpmzProjectImporter extends AbstractProjectImporter
 		projectToFill.openProject(newProjectDir.getName());
 		try
 		{
-			ByteArrayInputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
+			InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
 			try
 			{
 				new ConproXmlImporter(projectToFill).importConProjectNumbers(projectAsInputStream);
@@ -141,7 +141,7 @@ public class CpmzProjectImporter extends AbstractProjectImporter
 		projectToFill.createOrOpenWithDefaultObjects(newProjectDir.getName());
 		try
 		{
-			ByteArrayInputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
+			InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
 			try
 			{
 				ConproXmlImporter conProXmlImporter = new ConproXmlImporter(projectToFill);
