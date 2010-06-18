@@ -32,12 +32,12 @@ public class ActionImportXmpz extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Import Xmpz (BETA)");
+		return EAM.text("Action|XML Miradi Project ZIP (BETA)");
 	}
 
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Import Project from Xmpz ZIP file");
+		return EAM.text("TT|Import entire project from a XML file");
 	}
 }
