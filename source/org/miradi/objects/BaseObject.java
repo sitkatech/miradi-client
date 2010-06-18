@@ -409,6 +409,12 @@ abstract public class BaseObject
 				
 			case ObjectType.AUDIENCE:
 				return new Audience(objectManager, idAsInt, json);
+			
+			case ObjectType.CATEGORY_ONE:
+				return new CategoryOne(objectManager, idAsInt, json);
+				
+			case ObjectType.CATEGORY_TWO:
+				return new CategoryTwo(objectManager, idAsInt, json);
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
