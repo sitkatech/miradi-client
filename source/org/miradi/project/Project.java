@@ -939,7 +939,7 @@ public class Project
 		createDefaultPlanningCustomization();
 	}
 
-	public void createMissingBuiltInObjects() throws Exception
+	private void createMissingBuiltInObjects() throws Exception
 	{
 		if(getMetadataId().isInvalid())
 			createProjectMetadata();
