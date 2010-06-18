@@ -55,7 +55,7 @@ public class ListAllFields
 		tempDirectory.mkdirs();
 		Project project = new Project();
 		project.setLocalDataLocation(tempDirectory);
-		project.createOrOpen("ListAllFields");
+		project.createOrOpenWithDefaultObjects("ListAllFields");
 		listFieldsToConsole(project);
 		project.close();
 		DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);

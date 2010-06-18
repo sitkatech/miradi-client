@@ -774,7 +774,7 @@ public class TestProject extends EAMTestCase
 		String projectName = "testOpenProject";
 		Project diskProject = new Project();
 		diskProject.setLocalDataLocation(tempDir);
-		diskProject.createOrOpen(projectName);
+		diskProject.createOrOpenWithDefaultObjects(projectName);
 		
 		ORef conceptualModelRef = diskProject.getConceptualModelDiagramPool().getORefList().getRefForType(ConceptualModelDiagram.getObjectType());
 		ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(diskProject, conceptualModelRef);
@@ -804,7 +804,7 @@ public class TestProject extends EAMTestCase
 		
 		Project loadedProject = new Project();
 		loadedProject.setLocalDataLocation(tempDir);
-		loadedProject.createOrOpen(projectName);
+		loadedProject.createOrOpenWithDefaultObjects(projectName);
 		try
 		{
 			assertEquals("didn't read cause pool?", 1, loadedProject.getCausePool().size());
@@ -848,7 +848,7 @@ public class TestProject extends EAMTestCase
 		String projectName = "testCreateNewProject";
 		Project newProject = new Project();
 		newProject.setLocalDataLocation(tempDir);
-		newProject.createOrOpen(projectName);
+		newProject.createOrOpenWithDefaultObjects(projectName);
 		
 		try
 		{

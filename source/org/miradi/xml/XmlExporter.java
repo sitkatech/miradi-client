@@ -72,7 +72,7 @@ public abstract class XmlExporter
 		
 		Project newProject = new Project();
 		newProject.setLocalDataLocation(dataDirectory);
-		newProject.createOrOpen(projectName);
+		newProject.createOrOpenWithDefaultObjects(projectName);
 		Translation.initialize();
 		
 		return newProject;
