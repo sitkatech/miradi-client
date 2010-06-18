@@ -41,6 +41,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.AccountingCodePool;
 import org.miradi.objectpools.AssignmentPool;
 import org.miradi.objectpools.AudiencePool;
+import org.miradi.objectpools.CategoryOnePool;
+import org.miradi.objectpools.CategoryTwoPool;
 import org.miradi.objectpools.CausePool;
 import org.miradi.objectpools.ConceptualModelDiagramPool;
 import org.miradi.objectpools.CostAllocationRulePool;
@@ -163,6 +165,8 @@ public class ObjectManager
 		addNormalPool(new IucnRedlistSpeciesPool(ida));
 		addNormalPool(new OtherNotableSpeciesPool(ida));
 		addNormalPool(new AudiencePool(ida));
+		addNormalPool(new CategoryOnePool(ida));
+		addNormalPool(new CategoryTwoPool(ida));
 	}
 	
 	public NonDiagramChainWalker getNonDiagramChainWalker()
@@ -427,6 +431,8 @@ public class ObjectManager
 			ObjectType.IUCN_REDLIST_SPECIES,
 			ObjectType.OTHER_NOTABLE_SPECIES,
 			ObjectType.AUDIENCE,
+			ObjectType.CATEGORY_ONE,
+			ObjectType.CATEGORY_TWO,
 		};
 		for(int type : types)
 			loadPool(type, extractManifest(manifests, type));
