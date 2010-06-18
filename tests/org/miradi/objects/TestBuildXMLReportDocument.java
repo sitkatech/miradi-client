@@ -67,7 +67,7 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 			
 			Project project = new Project();
 			project.setLocalDataLocation(tempDirectory);
-			project.createOrOpen(projectName);
+			project.createOrOpenWithDefaultObjects(projectName);
 			
 			writeXMLVersionLine();
 			writeLineReturn();

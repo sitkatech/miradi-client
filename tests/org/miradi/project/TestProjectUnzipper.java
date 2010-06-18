@@ -101,7 +101,7 @@ public class TestProjectUnzipper extends EAMTestCase
 		{
 			Project project = new Project();
 			project.setLocalDataLocation(tempDirectory);
-			project.createOrOpen(projectName);
+			project.createOrOpenWithDefaultObjects(projectName);
 			project.createObjectAndReturnId(ObjectType.TARGET, targetId);
 			project.close();
 
@@ -124,7 +124,7 @@ public class TestProjectUnzipper extends EAMTestCase
 					try
 					{
 						ProjectUnzipper.unzipToProjectDirectory(zip, fakeHomeDirectory, projectFilename);
-						unzippedProject.createOrOpen(projectFilename);
+						unzippedProject.createOrOpenWithDefaultObjects(projectFilename);
 						Factor target = Target.find(unzippedProject, new ORef(Target.getObjectType(), targetId));
 						assertNotNull("didn't find the target we wrote?", target);
 					}
@@ -160,7 +160,7 @@ public class TestProjectUnzipper extends EAMTestCase
 		{
 			Project project = new Project();
 			project.setLocalDataLocation(originalDirectory);
-			project.createOrOpen(originalProjectName);
+			project.createOrOpenWithDefaultObjects(originalProjectName);
 			project.close();
 			
 			File zip = createTempFile();

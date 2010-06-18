@@ -138,7 +138,7 @@ public class CpmzProjectImporter extends AbstractProjectImporter
 	{
 		Project projectToFill = new Project();
 		projectToFill.setLocalDataLocation(newProjectDir.getParentFile());
-		projectToFill.createOrOpen(newProjectDir.getName());
+		projectToFill.createOrOpenWithDefaultObjects(newProjectDir.getName());
 		try
 		{
 			ByteArrayInputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);

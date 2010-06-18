@@ -639,7 +639,7 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// database
 	
-	public void createOrOpen(String projectName) throws Exception
+	public void createOrOpenWithDefaultObjects(String projectName) throws Exception
 	{
 		boolean didProjectAlreadyExist = createorOpenForImport(projectName);
 		createMissingDefaultObjects();
