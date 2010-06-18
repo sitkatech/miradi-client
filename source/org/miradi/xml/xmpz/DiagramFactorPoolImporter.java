@@ -90,8 +90,14 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 	{
 		Node wrappedFactorIdNode = getImporter().getNode(parentNode, getPoolName() + WRAPPED_FACTOR_ID_ELEMENT_NAME);
 		Node wrappedByDiagamFactorIdNode = getImporter().getNode(wrappedFactorIdNode, WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
-		Node typedIdNode = wrappedByDiagamFactorIdNode.getFirstChild();
+		int childrenNodeCount = wrappedByDiagamFactorIdNode.getChildNodes().getLength();
+		final int ONE_CHILD_NODE_FOR_ELEMENT = 1;
+		final int ONE_CHILD_FOR_TEXT = 1;
+		final int EXPECTED_CHILDREN_COUNT = ONE_CHILD_NODE_FOR_ELEMENT + ONE_CHILD_FOR_TEXT;
+		if (childrenNodeCount != EXPECTED_CHILDREN_COUNT)
+			throw new RuntimeException("DiagramFactor wrapped factor id node does not have an id node and a text id. children count= " +  childrenNodeCount);
 		
+		Node typedIdNode = wrappedByDiagamFactorIdNode.getFirstChild();
 		BaseId wrappedId = new BaseId(typedIdNode.getTextContent());
 		
 		return new ORef(getObjectTypeOfNode(typedIdNode), wrappedId);
