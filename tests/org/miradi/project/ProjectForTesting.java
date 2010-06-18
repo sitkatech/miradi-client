@@ -592,6 +592,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return expenseAssignment;
 	}
 	
+	public ResourceAssignment createAndPopulateResourceAssignment() throws Exception
+	{
+		ResourceAssignment resourceAssignment = createResourceAssignment();
+		populateResourceAssignment(resourceAssignment);
+		
+		return resourceAssignment;
+	}
+	
 	public ProjectResource createProjectResource() throws Exception
 	{
 		ORef projectResourceRef = createObject(ProjectResource.getObjectType());
@@ -1309,7 +1317,18 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(createDateUnitEffort(2008, 2008, 10.0));
-		fillObjectUsingCommand(expenseAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		fillObjectUsingCommand(expenseAssignment, ExpenseAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+	}
+	
+	public void populateResourceAssignment(ResourceAssignment resourceAssignment) throws Exception
+	{
+		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_LABEL, "Some Resource Assignment");
+		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_FUNDING_SOURCE_ID, createFundingSource().getId().toString());
+		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_ACCOUNTING_CODE_ID, createAccountingCode().getId().toString());
+		
+		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+		dateUnitEffortList.add(createDateUnitEffort(2007, 2008, 11.0));
+		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
 	}
 	
 	public void populateEverything() throws Exception
@@ -1336,6 +1355,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createIndicatorContainingWhiteSpacePaddedCode();
 		createAndPopulateOrganization();
 		createAndPopulateExpenseAssignment();
+		createAndPopulateResourceAssignment();
 		createAndPopulateTextBox();
 		createAndPopulateGroupBox();
 		createAndPopulateAudience();
