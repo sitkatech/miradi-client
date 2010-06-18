@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-17 16:30-0500\n"
+"POT-Creation-Date: 2010-06-18 09:55-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -689,7 +689,7 @@ msgstr ""
 "<html>Unit Operasi untuk proyek ini sudah <br>diganti. Silakan pilih "
 "penggantinya pada Tab TNC dalam Halaman Ringkasan.</html> "
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:133
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:134
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Impor gagal: <br><p> %s </p></html> "
 
@@ -3726,11 +3726,11 @@ msgstr "Impor Kode Akuntansi "
 msgid "Import Completed"
 msgstr "Impor Selesai "
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:113
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:114
 msgid "Import Completed.  Would you like to open %s?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:57
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:58
 msgid "Import Project"
 msgstr "Impor Proyek "
 
@@ -4878,7 +4878,7 @@ msgstr "Penelitian di Lokasi"
 msgid "Open"
 msgstr "Buka \t"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:114
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:115
 msgid "Open Project"
 msgstr ""
 
@@ -6373,7 +6373,7 @@ msgstr "Ekspor halaman yang tampak saat ini sebagai berkas RTF"
 msgid "TT|Export entire project as a WCS Miradi Project ZIP file"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionExportProjectXml.java:39
+#: Miradi/source/org/miradi/actions/ActionExportProjectXml.java:40
 msgid "TT|Export entire project as an XML file"
 msgstr "Ekspor keseluruhan proyek sebagai berkas XML"
 
@@ -6977,7 +6977,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:202
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:205
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7008,7 +7008,7 @@ msgstr ""
 "Model ini bukan untuk pengalokasian tunggal dan belum mempunyai informasi "
 "pengalokasian "
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:78
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:79
 msgid ""
 "This project cannot be imported by this version of Miradi because it \n"
 "is in a newer data format. Please upgrade to the latest version of Miradi."
