@@ -55,7 +55,7 @@ public class ScopeBoxTypeQuestion extends DynamicChoiceQuestion
 	public ChoiceItem[] getChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItemWithDynamicColor("", EAM.text("Biodiversity Target"), getAppPreferences(), AppPreferences.TAG_COLOR_SCOPE_BOX),
+				new ChoiceItemWithDynamicColor(BIODIVERSITY_TARGET_CODE, EAM.text("Biodiversity Target"), getAppPreferences(), AppPreferences.TAG_COLOR_SCOPE_BOX),
 				new ChoiceItemWithDynamicColor(HUMAN_WELFARE_TARGET_CODE, EAM.text("Human Welfare Target"), getAppPreferences(), AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX),
 			};
 	}
@@ -74,7 +74,7 @@ public class ScopeBoxTypeQuestion extends DynamicChoiceQuestion
 	@Override
 	public String getReadableAlternativeDefaultCode()
 	{
-		return "Biodiversity";
+		return READABLE_BIODIVERSITY_CODE;
 	}
 	
 	@Override
@@ -92,10 +92,17 @@ public class ScopeBoxTypeQuestion extends DynamicChoiceQuestion
 		if (code.equals(READABLE_HUMAN_WELFARE_CODE))
 			return HUMAN_WELFARE_TARGET_CODE;
 		
+		if (code.equals(READABLE_BIODIVERSITY_CODE))
+			return BIODIVERSITY_TARGET_CODE;
+		
 		return code;
 	}
 		
 	private AppPreferences appPreferences;
+	public static final String BIODIVERSITY_TARGET_CODE = "";
 	public static final String HUMAN_WELFARE_TARGET_CODE = "HumanWelfareTargetBrown";
+	
+	public static final String READABLE_BIODIVERSITY_CODE = "Biodiversity";
 	public static final String READABLE_HUMAN_WELFARE_CODE = "HumanWelfare";
+	
 }

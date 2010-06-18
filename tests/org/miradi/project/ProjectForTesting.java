@@ -354,10 +354,17 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return projectResource;
 	}
 	
-	public ScopeBox createAndPopulateScopeBox() throws Exception
+	public ScopeBox createAndPopulateHumanWelfareScopeBox() throws Exception
 	{
 		ScopeBox scopeBox = createScopeBox();
-		populateScopeBox(scopeBox);
+		populateScopeBox(scopeBox, ScopeBoxTypeQuestion.HUMAN_WELFARE_TARGET_CODE);
+		return scopeBox;
+	}
+	
+	public ScopeBox createAndPopulateBiodiversityScopeBox() throws Exception
+	{
+		ScopeBox scopeBox = createScopeBox();
+		populateScopeBox(scopeBox, ScopeBoxTypeQuestion.BIODIVERSITY_TARGET_CODE);
 		return scopeBox;
 	}
 	
@@ -885,13 +892,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return Organization.find(this, organizationRef);
 	}
 	
-	public void populateScopeBox(ScopeBox scopeBox) throws Exception
+	public void populateScopeBox(ScopeBox scopeBox, String scopeBoxTypeCode) throws Exception
 	{
 		fillObjectWithSampleStringData(scopeBox, ScopeBox.TAG_LABEL);
 		fillObjectWithSampleStringData(scopeBox, ScopeBox.TAG_SHORT_LABEL);
 		fillObjectWithSampleStringData(scopeBox, ScopeBox.TAG_TEXT);
 		fillObjectWithSampleStringData(scopeBox, ScopeBox.TAG_COMMENTS);
-		fillObjectUsingCommand(scopeBox, ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.HUMAN_WELFARE_TARGET_CODE);
+		fillObjectUsingCommand(scopeBox, ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, scopeBoxTypeCode);
 	}
 	
 	public void populateTarget(Target target) throws Exception
@@ -1338,7 +1345,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillWcsProjectData();
 		fillRareProjectData();
 		fillFosProjectData();
-		createAndPopulateScopeBox();
+		createAndPopulateHumanWelfareScopeBox();
+		createAndPopulateBiodiversityScopeBox();
 		createAndPopulateDirectThreatLink();
 		createAndPopulateMeasurement();
 		createAndPopulateProjectResource();
