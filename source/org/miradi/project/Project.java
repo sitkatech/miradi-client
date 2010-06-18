@@ -641,7 +641,7 @@ public class Project
 	
 	public void createOrOpenWithDefaultObjects(String projectName) throws Exception
 	{
-		boolean didProjectAlreadyExist = createorOpenForImport(projectName);
+		boolean didProjectAlreadyExist = rawCreateorOpen(projectName);
 		createMissingDefaultObjects();
 		applyDefaultBehavior();
 		
@@ -649,7 +649,7 @@ public class Project
 			createDefaultHelpTextBoxDiagramFactor();
 	}
 
-	public boolean createorOpenForImport(String projectName) throws Exception
+	public boolean rawCreateorOpen(String projectName) throws Exception
 	{
 		clear();
 		

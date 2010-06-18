@@ -73,7 +73,7 @@ public class XmpzProjectImporter extends AbstractProjectImporter
 	{
 		Project projectToFill = new Project();
 		projectToFill.setLocalDataLocation(newProjectDir.getParentFile());
-		projectToFill.createorOpenForImport(newProjectDir.getName());
+		projectToFill.rawCreateorOpen(newProjectDir.getName());
 		try
 		{
 			ByteArrayInputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
