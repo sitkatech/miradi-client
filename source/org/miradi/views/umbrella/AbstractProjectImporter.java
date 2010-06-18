@@ -30,7 +30,8 @@ import javax.swing.filechooser.FileFilter;
 
 import org.martus.swing.UiFileChooser;
 import org.martus.util.DirectoryUtils;
-import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
+import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
+import org.martus.util.inputstreamwithseek.ZipEntryInputStreamWithSeek;
 import org.miradi.exceptions.CpmzVersionTooOldException;
 import org.miradi.exceptions.FutureVersionException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
@@ -150,10 +151,9 @@ public abstract class AbstractProjectImporter
 		noProjectView.refreshText();
 	}
 	
-	protected ByteArrayInputStreamWithSeek getProjectAsInputStream(ZipFile zipFile) throws Exception
+	protected InputStreamWithSeek getProjectAsInputStream(ZipFile zipFile) throws Exception
 	{
-		byte[] extractXmlBytes = readZipEntryFile(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
-		return new ByteArrayInputStreamWithSeek(extractXmlBytes);
+		return new ZipEntryInputStreamWithSeek(zipFile, zipFile.getEntry(ExportCpmzDoer.PROJECT_XML_FILE_NAME));
 	}
 
 	protected byte[] readZipEntryFile(ZipFile zipFile, String entryName) throws Exception
@@ -162,6 +162,7 @@ public abstract class AbstractProjectImporter
 		if (zipEntry == null)
 			return new byte[0];
 		
+		byte[] byteArray;
 		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
 		try
 		{
@@ -177,13 +178,15 @@ public abstract class AbstractProjectImporter
 				offset += got;
 				byteOut.write(data, 0, got);
 			}
+			
+			byteArray = byteOut.toByteArray();
 		}
 		finally
 		{
 			byteOut.close();
 		}
 
-		return byteOut.toByteArray(); 
+		return byteArray; 
 	}
 	
 	protected void deleteIncompleteProject(Project projectToFill)	throws Exception
