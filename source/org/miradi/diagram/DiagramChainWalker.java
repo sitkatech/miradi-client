@@ -53,11 +53,6 @@ public class DiagramChainWalker
 		return getDiagramFactors();
 	}
 	
-	public FactorSet buildUpstreamChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
-	{
-		return buildUpstreamChainAndGetFactors(model.getDiagramObject(), diagramFactor);
-	}
-
 	public FactorSet buildUpstreamChainAndGetFactors(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
 	{
 		buildUpstreamChain(diagramObjectToUse, diagramFactor);
