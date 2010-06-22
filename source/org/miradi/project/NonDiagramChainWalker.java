@@ -25,7 +25,6 @@ import java.util.Vector;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 
@@ -42,11 +41,7 @@ public class NonDiagramChainWalker
 		buildNormalChain(factor);
 		return getFactors();
 	}
-	public ORefSet buildNormalChainAndGetFactorRefs(Factor factor)
-	{
-		return buildNormalChainAndGetFactors(factor).getFactorRefs();
-	}
-
+	
 	private FactorSet getFactors()
 	{
 		return factorSet;

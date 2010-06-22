@@ -67,9 +67,9 @@ public class TestNonDiagramChainWalker extends EAMTestCase
 		CreateFactorLinkParameter extraInfo2 = new CreateFactorLinkParameter(threatRef, factorRef);
 		project.createObject(FactorLink.getObjectType(), extraInfo2);
 
-		ORefSet targetChain = walker.buildNormalChainAndGetFactorRefs(target);
-		ORefSet factorChain = walker.buildNormalChainAndGetFactorRefs(factor);
-		ORefSet threatChain = walker.buildNormalChainAndGetFactorRefs(threat);
+		ORefSet targetChain = walker.buildNormalChainAndGetFactors(target).getFactorRefs();
+		ORefSet factorChain = walker.buildNormalChainAndGetFactors(factor).getFactorRefs();
+		ORefSet threatChain = walker.buildNormalChainAndGetFactors(threat).getFactorRefs();
 		
 		assertEquals("Target and factor chains not identical?", targetChain, factorChain);
 		assertEquals("Target and threat chains not identical?", factorChain, threatChain);
