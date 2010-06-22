@@ -22,7 +22,6 @@ package org.miradi.xml.xmpz;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Indicator;
@@ -49,35 +48,25 @@ abstract public class DesirePoolImporter extends AbstractBaseObjectPoolImporter
 		importProgressPercentRefs(node, destinationRef);
 
 		importRelevantIndicatorIds(node, destinationRef);
-		importRelevantStrategyIds(node, destinationRef);
-		importRelevantActivityIds(node, destinationRef);
-	}
-	
-	private void importRelevantIndicatorIds(Node node, ORef destinationRef) throws Exception
-	{
-		importRelevantRefs(node, destinationRef, Desire.TAG_RELEVANT_INDICATOR_SET, WcsXmlConstants.RELEVANT_INDICATOR_IDS, WcsXmlConstants.INDICATOR, Indicator.getObjectType());
+		importRelevantStrategyAndActivityIds(node, destinationRef);
 	}
 
-	private void importRelevantStrategyIds(Node node, ORef destinationRef) throws Exception
+	private void importRelevantIndicatorIds(Node node, ORef destinationDesireRef) throws Exception
 	{
-		importRelevantRefs(node, destinationRef, Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, WcsXmlConstants.RELEVANT_STRATEGY_IDS, WcsXmlConstants.STRATEGY, Strategy.getObjectType());
-	}
-	
-	private void importRelevantActivityIds(Node node, ORef destinationRef) throws Exception
-	{
-		importRelevantRefs(node, destinationRef, Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, WcsXmlConstants.RELEVANT_ACTIVITY_IDS, WcsXmlConstants.ACTIVITY, Task.getObjectType());
+		ORefList importedRelevantRefs = extractRefs(node, WcsXmlConstants.RELEVANT_INDICATOR_IDS, Indicator.getObjectType(), WcsXmlConstants.INDICATOR + WcsXmlConstants.ID);
+		Desire desire = Desire.findDesire(getProject(), destinationDesireRef);
+		RelevancyOverrideSet set = desire.getCalculatedRelevantIndicatorOverrides(importedRelevantRefs);		
+		getImporter().setData(destinationDesireRef, Desire.TAG_RELEVANT_INDICATOR_SET, set.toString());
 	}
 
-	private void importRelevantRefs(Node node, ORef destinationRef,	String tag, String relevantIdsElement, String idElement, int objectType) throws Exception
+	private void importRelevantStrategyAndActivityIds(Node node, ORef destinationDesireRef) throws Exception
 	{
-		ORefList relevantIndicatorRefs = extractRefs(node, relevantIdsElement, objectType, idElement + WcsXmlConstants.ID);
-		RelevancyOverrideSet relevantObjects = new RelevancyOverrideSet();
-		for(int index = 0; index < relevantIndicatorRefs.size(); ++index)
-		{
-			ORef ref = relevantIndicatorRefs.get(index);
-			relevantObjects.add(new RelevancyOverride(ref, true));
-		}
+		ORefList importedStrategyAndActivityRefs = new ORefList();
+		importedStrategyAndActivityRefs.addAll(extractRefs(node, WcsXmlConstants.RELEVANT_STRATEGY_IDS, Strategy.getObjectType(), WcsXmlConstants.STRATEGY + WcsXmlConstants.ID));
+		importedStrategyAndActivityRefs.addAll(extractRefs(node, WcsXmlConstants.RELEVANT_ACTIVITY_IDS, Task.getObjectType(), WcsXmlConstants.ACTIVITY + WcsXmlConstants.ID));
 		
-		getImporter().setData(destinationRef, tag, relevantObjects.toString());
-	}
+		Desire desire = Desire.findDesire(getProject(), destinationDesireRef);
+		RelevancyOverrideSet set = desire.getCalculatedRelevantStrategyActivityOverrides(importedStrategyAndActivityRefs);
+		getImporter().setData(destinationDesireRef, Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, set.toString());
+	}	
 }
