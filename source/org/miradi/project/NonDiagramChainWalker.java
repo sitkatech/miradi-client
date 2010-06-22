@@ -110,7 +110,6 @@ public class NonDiagramChainWalker
 
 	private void buildNormalChain(Factor factor)
 	{
-		initializeChain(factor);
 		buildUpstreamDownstreamChain(factor);
 	}
 	private void buildUpstreamDownstreamChain(Factor factor)
