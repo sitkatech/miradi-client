@@ -67,7 +67,7 @@ public class NonDiagramChainWalker
 		return startingFactor.getProject();
 	}
 	
-	private void attempToAdd(FactorLink thisLinkage)
+	private void attemptToAdd(FactorLink thisLinkage)
 	{
 		if (!processedLinks.contains(thisLinkage))
 			processedLinks.add(thisLinkage);
@@ -78,7 +78,7 @@ public class NonDiagramChainWalker
 		FactorSet newFactorIfAny = new FactorSet();
 		if(thisLink.getFactorRef(direction).equals(thisFactor.getRef()))
 		{
-			attempToAdd(thisLink);
+			attemptToAdd(thisLink);
 			Factor linkedNode = (Factor) getProject().findObject(thisLink.getOppositeFactorRef(direction));
 			newFactorIfAny.attemptToAdd(linkedNode);
 			return newFactorIfAny;
@@ -89,7 +89,7 @@ public class NonDiagramChainWalker
 		
 		if(thisLink.getOppositeFactorRef(direction).equals(thisFactor.getRef()))
 		{
-			attempToAdd(thisLink);
+			attemptToAdd(thisLink);
 			Factor linkedNode = (Factor) getProject().findObject(thisLink.getFactorRef(direction));
 			newFactorIfAny.attemptToAdd(linkedNode);
 		}
