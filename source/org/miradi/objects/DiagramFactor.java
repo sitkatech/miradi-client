@@ -237,6 +237,14 @@ public class DiagramFactor extends BaseObject
 		return false;
 	}
 	
+	public ORefList findDiagramsThatReferToUs()
+	{
+		ORefList result = new ORefList();
+		result.addAll(findObjectsThatReferToUs(ConceptualModelDiagram.getObjectType()));
+		result.addAll(findObjectsThatReferToUs(ResultsChainDiagram.getObjectType()));
+		return result;
+	}
+
 	@Override
 	public int getAnnotationType(String tag)
 	{
