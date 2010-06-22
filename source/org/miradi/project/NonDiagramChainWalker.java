@@ -44,12 +44,12 @@ public class NonDiagramChainWalker
 	}
 	public FactorSet buildNormalChainAndGetFactors(Factor factor)
 	{
-		buildNormalChain(factor);
+		buildUpstreamDownstreamChain(factor);
 		return getFactors();
 	}
 	public ORefSet buildNormalChainAndGetFactorRefs(Factor factor)
 	{
-		buildNormalChain(factor);
+		buildUpstreamDownstreamChain(factor);
 		return getFactors().getFactorRefs();
 	}
 	private FactorSet getFactors()
@@ -108,10 +108,6 @@ public class NonDiagramChainWalker
 		cachedDownstreamChain = new HashMap();
 	}
 
-	private void buildNormalChain(Factor factor)
-	{
-		buildUpstreamDownstreamChain(factor);
-	}
 	private void buildUpstreamDownstreamChain(Factor factor)
 	{
 		initializeChain(factor);
