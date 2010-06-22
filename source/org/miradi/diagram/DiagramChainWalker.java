@@ -61,7 +61,7 @@ public class DiagramChainWalker
 	
 	public FactorSet buildDownstreamChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
-		buildDownstreamChain(model, diagramFactor);
+		buildDownstreamChain(model.getDiagramObject(), diagramFactor);
 		return getFactors();
 	}
 	
@@ -96,10 +96,8 @@ public class DiagramChainWalker
 		resultingFactors.addAll(getAllUpstreamFactors());
 	}
 	
-	private void buildDownstreamChain(DiagramModel model, DiagramFactor diagramFactor)
+	private void buildDownstreamChain(DiagramObject diagram, DiagramFactor diagramFactor)
 	{
-		DiagramObject diagram = model.getDiagramObject();
-		
 		initializeChain(diagram, diagramFactor);
 		resultingFactors.addAll(getAllDownstreamFactors());
 	}
