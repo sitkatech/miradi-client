@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-22 14:41-0500\n"
+"POT-Creation-Date: 2010-06-22 15:15-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -86,7 +86,7 @@ msgstr "2) Hubungkan ancaman dengan target relevan "
 msgid " A project by this name already exists: "
 msgstr "Sudah ada proyek lain yang memakai nama ini: "
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:48
+#: Miradi/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:47
 msgid " was empty"
 msgstr "kosong "
 

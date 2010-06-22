@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-22 14:41-0500\n"
+"POT-Creation-Date: 2010-06-22 15:15-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -86,7 +86,7 @@ msgstr "2) Conectar amenaza a objetos relevantes"
 msgid " A project by this name already exists: "
 msgstr "Ya existe un proyecto con este nombre:"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:48
+#: Miradi/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:47
 msgid " was empty"
 msgstr "vacío"
 
