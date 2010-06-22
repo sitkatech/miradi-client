@@ -37,6 +37,7 @@ public class FundingSourcePropertiesPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Funding Source Properties");
