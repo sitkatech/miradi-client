@@ -53,7 +53,7 @@ public class TestNonDiagramChainWalker extends EAMTestCase
 	{
 		ORef targetRef = project.createObject(Target.getObjectType());
 		Target target = Target.find(getProject(), targetRef);
-		FactorSet nothingUpstreamYet = walker.buildUpstreamDownstreamChainAndGetFactors(target);
+		FactorSet nothingUpstreamYet = walker.buildNormalChainAndGetFactors(target);
 		assertEquals("Already something upstream?", 1, nothingUpstreamYet.size());
 
 		ORef factorRef = project.createObject(Cause.getObjectType());
@@ -79,7 +79,7 @@ public class TestNonDiagramChainWalker extends EAMTestCase
 	{
 		ORef targetRef = project.createObject(Target.getObjectType());
 		Target target = (Target)project.findObject(targetRef);
-		FactorSet nothingUpstreamYet = walker.buildUpstreamDownstreamChainAndGetFactors(target);
+		FactorSet nothingUpstreamYet = walker.buildNormalChainAndGetFactors(target);
 		assertEquals("Already something upstream?", 1, nothingUpstreamYet.size());
 
 		ORef threatRef = project.createObject(Cause.getObjectType());
@@ -88,13 +88,13 @@ public class TestNonDiagramChainWalker extends EAMTestCase
 		ORef linkRef = project.createObject(FactorLink.getObjectType(), extraInfo);
 		FactorLink link = (FactorLink)project.findObject(linkRef);
 		
-		FactorSet upstreamOfTarget = walker.buildUpstreamDownstreamChainAndGetFactors(target);
+		FactorSet upstreamOfTarget = walker.buildNormalChainAndGetFactors(target);
 		assertEquals("Threat not upstream of target now?", 2, upstreamOfTarget.size());
-		FactorSet downstreamOfThreat = walker.buildUpstreamDownstreamChainAndGetFactors(threat);
+		FactorSet downstreamOfThreat = walker.buildNormalChainAndGetFactors(threat);
 		assertEquals("Target not downstream of threat?", 2, downstreamOfThreat.size());
 		
 		project.deleteObject(link);
-		FactorSet nothingUpstream = walker.buildUpstreamDownstreamChainAndGetFactors(target);
+		FactorSet nothingUpstream = walker.buildNormalChainAndGetFactors(target);
 		assertEquals("Didn't reset upstream?", 1, nothingUpstream.size());
 		FactorSet nothingDownstream = walker.buildNormalChainAndGetFactors(threat);
 		assertEquals("Didn't reset downstream?", 1, nothingDownstream.size());
