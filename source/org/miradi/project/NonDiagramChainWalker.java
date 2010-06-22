@@ -102,7 +102,7 @@ public class NonDiagramChainWalker
 		return newFactorIfAny;
 	}
 	
-	private void clearCaches()
+	public void clearCaches()
 	{
 		cachedUpstreamChain = new HashMap();
 		cachedDownstreamChain = new HashMap();
