@@ -27,7 +27,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class CategoryTwo extends BaseObject
+public class CategoryTwo extends AbstractBudgetCategoryObject
 {
 	public CategoryTwo(ObjectManager objectManager, BaseId idToUse)
 	{
