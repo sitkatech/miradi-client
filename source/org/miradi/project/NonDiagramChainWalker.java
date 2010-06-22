@@ -52,48 +52,33 @@ public class NonDiagramChainWalker
 		buildNormalChain(factor);
 		return getFactors().getFactorRefs();
 	}
-	protected FactorSet getFactors()
+	private FactorSet getFactors()
 	{
 		return factorSet;
 	}
 
-	protected FactorLink[] getFactorLinksArray()
-	{
-		return (FactorLink[])processedLinks.toArray(new FactorLink[0]);
-	}
-	
-	protected FactorSet getDirectlyLinkedDownstreamFactors()
-	{
-		return getDirectlyLinkedFactors(FactorLink.FROM);
-	}
-	
-	protected FactorSet getDirectlyLinkedUpstreamFactors()
-	{
-		return getDirectlyLinkedFactors(FactorLink.TO);
-	}
-	
-	protected FactorSet getAllUpstreamFactors()
+	private FactorSet getAllUpstreamFactors()
 	{
 		return getAllLinkedFactors(FactorLink.TO);
 	}
 	
-	protected FactorSet getAllDownstreamFactors()
+	private FactorSet getAllDownstreamFactors()
 	{
 		return getAllLinkedFactors(FactorLink.FROM);
 	}
 	
-	protected Project getProject()
+	private Project getProject()
 	{
 		return startingFactor.getProject();
 	}
 	
-	protected void attempToAdd(FactorLink thisLinkage)
+	private void attempToAdd(FactorLink thisLinkage)
 	{
 		if (!processedLinks.contains(thisLinkage))
 			processedLinks.add(thisLinkage);
 	}
 	
-	protected FactorSet processLink(Factor thisFactor, FactorLink thisLink, int direction)
+	private FactorSet processLink(Factor thisFactor, FactorLink thisLink, int direction)
 	{
 		FactorSet newFactorIfAny = new FactorSet();
 		if(thisLink.getFactorRef(direction).equals(thisFactor.getRef()))
@@ -117,44 +102,25 @@ public class NonDiagramChainWalker
 		return newFactorIfAny;
 	}
 	
-	protected void clearCaches()
+	private void clearCaches()
 	{
 		cachedUpstreamChain = new HashMap();
 		cachedDownstreamChain = new HashMap();
 	}
 
-	protected void buildNormalChain(Factor factor)
+	private void buildNormalChain(Factor factor)
 	{
 		initializeChain(factor);
 		buildUpstreamDownstreamChain(factor);
 	}
-	protected void buildUpstreamDownstreamChain(Factor factor)
+	private void buildUpstreamDownstreamChain(Factor factor)
 	{
 		initializeChain(factor);
 		factorSet.attemptToAddAll(getAllDownstreamFactors());
 		factorSet.attemptToAddAll(getAllUpstreamFactors());
 	}
-	protected void buildUpstreamChain(Factor factor)
-	{
-		initializeChain(factor);
-		factorSet.attemptToAddAll(getAllUpstreamFactors());
-	}
-	protected void buildDownstreamChain(Factor factor)
-	{
-		initializeChain(factor);
-		factorSet.attemptToAddAll(getAllDownstreamFactors());
-	}
-	protected void buidDirectlyLinkedDownstreamChain(Factor factor)
-	{
-		initializeChain(factor);
-		factorSet.attemptToAddAll(getDirectlyLinkedDownstreamFactors());
-	}
-	protected void buildDirectlyLinkedUpstreamChain(Factor factor)
-	{
-		initializeChain(factor);
-		factorSet.attemptToAddAll(getDirectlyLinkedUpstreamFactors());
-	}
-	protected FactorSet getAllLinkedFactors(int direction)
+
+	private FactorSet getAllLinkedFactors(int direction)
 	{
 		HashMap<ORef, FactorSet> cache = getCache(direction);
 		if(cache.containsKey(startingFactor.getRef()))
@@ -180,16 +146,7 @@ public class NonDiagramChainWalker
 		cache.put(startingFactor.getRef(), linkedFactors);
 		return linkedFactors;
 	}
-	protected FactorSet getDirectlyLinkedFactors(int direction)
-	{
-		FactorSet results = new FactorSet();
-		results.attemptToAdd(startingFactor);
-		
-		ORefList factorLinkRefs = getAllFactorLinkRefs();
-		results.attemptToAddAll(getFactorsToProcess(direction, factorLinkRefs, startingFactor));
-	
-		return results;
-	}
+
 	private FactorSet getFactorsToProcess(int direction, ORefList allFactorLinkRefs, Factor factorToProcess)
 	{
 		FactorSet unprocessedFactors = new FactorSet();
@@ -224,9 +181,9 @@ public class NonDiagramChainWalker
 		return getProject().getFactorLinkPool().getFactorLinkRefs();
 	}
 
-	protected FactorSet factorSet;
-	protected Vector processedLinks;
-	protected Factor startingFactor;
-	HashMap<ORef, FactorSet> cachedUpstreamChain;
-	HashMap<ORef, FactorSet> cachedDownstreamChain;
+	private FactorSet factorSet;
+	private Vector processedLinks;
+	private Factor startingFactor;
+	private HashMap<ORef, FactorSet> cachedUpstreamChain;
+	private HashMap<ORef, FactorSet> cachedDownstreamChain;
 }
