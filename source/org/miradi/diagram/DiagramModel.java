@@ -343,7 +343,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 	public FactorSet getNodesInChain(DiagramFactor startingFactor)
 	{
 		DiagramChainWalker chainObject = getDiagramChainWalker();
-		return chainObject.buildNormalChainAndGetFactors(this, startingFactor);
+		return chainObject.buildNormalChainAndGetFactors(getDiagramObject(), startingFactor);
 	}
 		
 	public void moveFactors(int deltaX, int deltaY, ORefList diagramFactorRefs) throws Exception

@@ -41,9 +41,9 @@ public class DiagramChainWalker
 		return processedLinks;
 	}
 	
-	public FactorSet buildNormalChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
+	public FactorSet buildNormalChainAndGetFactors(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
 	{
-		buildNormalChain(model.getDiagramObject(), diagramFactor);
+		buildNormalChain(diagramObjectToUse, diagramFactor);
 		return getFactors();
 	}
 	
