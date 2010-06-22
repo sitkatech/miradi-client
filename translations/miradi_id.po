@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-22 14:24-0500\n"
+"POT-Creation-Date: 2010-06-22 14:29-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -86,8 +86,7 @@ msgstr "2) Hubungkan ancaman dengan target relevan "
 msgid " A project by this name already exists: "
 msgstr "Sudah ada proyek lain yang memakai nama ini: "
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:82
-#: Miradi/source/org/miradi/views/umbrella/XmpzProjectImporter.java:62
+#: Miradi/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:48
 msgid " was empty"
 msgstr "kosong "
 
@@ -3712,7 +3711,7 @@ msgstr "Implementasikan rencana strategis dan pemantauan "
 msgid "Implement work plan"
 msgstr "Laksanakan rencana kerja "
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:236
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:232
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:119
 msgid "Import"
