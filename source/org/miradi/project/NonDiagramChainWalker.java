@@ -44,9 +44,9 @@ public class NonDiagramChainWalker
 	}
 	public ORefSet buildNormalChainAndGetFactorRefs(Factor factor)
 	{
-		buildNormalChain(factor);
-		return getFactors().getFactorRefs();
+		return buildNormalChainAndGetFactors(factor).getFactorRefs();
 	}
+
 	private FactorSet getFactors()
 	{
 		return factorSet;
