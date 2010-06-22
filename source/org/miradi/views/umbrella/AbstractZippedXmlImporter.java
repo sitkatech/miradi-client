@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.util.zip.ZipFile;
 
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 
@@ -43,6 +44,9 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 		try
 		{
 			InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
+			if (projectAsInputStream.available() == 0)
+				throw new Exception(ExportCpmzDoer.PROJECT_XML_FILE_NAME + EAM.text(" was empty"));
+
 			try
 			{
 				importProjectXml(projectToFill, zipFile, projectAsInputStream);

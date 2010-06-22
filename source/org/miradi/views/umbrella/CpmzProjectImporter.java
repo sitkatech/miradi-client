@@ -77,10 +77,6 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		ZipFile zipFile = new ZipFile(zipFileToImport);
 		try
 		{
-			byte[] extractXmlBytes = readZipEntryFile(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
-			if (extractXmlBytes.length == 0)
-				throw new Exception(ExportCpmzDoer.PROJECT_XML_FILE_NAME + EAM.text(" was empty"));
-			
 			if (zipContainsMpzProject(zipFile))
 				importProjectFromMpzEntry(zipFile, newProjectDir);
 			else
