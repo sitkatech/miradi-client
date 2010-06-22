@@ -38,6 +38,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
+import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -401,7 +402,8 @@ public class ResultsChainCreatorHelper
 		{
 			DiagramFactor diagramFactor = selectedFactorCells[i].getDiagramFactor();
 			DiagramChainWalker chainObject = diagramFactor.getDiagramChainWalker();
-			Factor[] factorsArray = chainObject.buildNormalChainAndGetFactors(model, diagramFactor).toFactorArray();
+			FactorSet chainFactors = chainObject.buildNormalChainAndGetFactors(model, diagramFactor);
+			Factor[] factorsArray = chainFactors.toFactorArray();
 			
 			Vector diagramFactors = convertToDiagramFactors(factorsArray);
 			allDiagramFactors.addAll(diagramFactors);
