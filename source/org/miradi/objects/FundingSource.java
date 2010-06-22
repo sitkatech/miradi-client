@@ -33,6 +33,7 @@ public class FundingSource extends AbstractBudgetCategoryObject
 	public FundingSource(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse);
+
 		clear();
 	}
 	
@@ -40,13 +41,14 @@ public class FundingSource extends AbstractBudgetCategoryObject
 	{
 		super(objectManager, new FundingSourceId(idAsInt), json);
 	}
-
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -63,6 +65,7 @@ public class FundingSource extends AbstractBudgetCategoryObject
 		return ObjectType.FUNDING_SOURCE;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return toString(EAM.text("Label|(Undefined Funding Source)"));
