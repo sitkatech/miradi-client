@@ -30,6 +30,7 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -105,7 +106,8 @@ public class SelectChainDoer extends ViewDoer
 		{
 			FactorCell selectedFactor = factors[i];
 			DiagramChainWalker chainObject = new DiagramChainWalker();
-			Factor[] chainNodes = chainObject.buildNormalChainAndGetFactors(diagramModel, selectedFactor.getDiagramFactor()).toFactorArray();
+			FactorSet chainFactors = chainObject.buildNormalChainAndGetFactors(diagramModel, selectedFactor.getDiagramFactor());
+			Factor[] chainNodes = chainFactors.toFactorArray();
 			nodes.addAll(Arrays.asList(chainNodes));
 		}
 		return (Factor[])nodes.toArray(new Factor[0]);
