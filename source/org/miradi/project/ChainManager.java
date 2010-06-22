@@ -46,12 +46,6 @@ public class ChainManager
 		return findAllFactorsRelatedToThisObject(ref);
 	}
 
-	public FactorSet findAllFactorsRelatedToThisGoal(BaseId indicatorId) throws Exception
-	{
-		ORef ref = new ORef(ObjectType.GOAL, indicatorId);
-		return findAllFactorsRelatedToThisObject(ref);
-	}
-
 	public FactorSet findAllFactorsRelatedToThisObject(ORef ref) throws Exception
 	{
 		BaseObject owner = getProject().findObject(ref);
