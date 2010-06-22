@@ -69,31 +69,17 @@ public class XmpzProjectImporter extends AbstractZippedXmlImporter
 		}
 	}
 	
-	private void importProjectFromXmlEntry(ZipFile zipFile, File newProjectDir) throws Exception, IOException
+	@Override
+	protected void importProjectXml(Project projectToFill, ZipFile zipFile, InputStreamWithSeek projectAsInputStream) throws Exception
 	{
-		Project projectToFill = new Project();
-		projectToFill.setLocalDataLocation(newProjectDir.getParentFile());
-		projectToFill.rawCreateorOpen(newProjectDir.getName());
-		try
-		{
-			InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
-			try
-			{
-				XmpzXmlImporter xmpzImporter = new XmpzXmlImporter(projectToFill);
-				xmpzImporter.importProject(projectAsInputStream);
-			}
-			finally
-			{
-				projectAsInputStream.close();
-			}
+		XmpzXmlImporter xmpzImporter = new XmpzXmlImporter(projectToFill);
+		xmpzImporter.importProject(projectAsInputStream);
+	}
 
-			projectToFill.close();
-		}
-		catch(Exception e)
-		{
-			deleteIncompleteProject(projectToFill);
-			throw e;
-		}
+	@Override
+	protected void createOrOpenProject(Project projectToFill, String projectName) throws Exception
+	{
+		projectToFill.rawCreateorOpen(projectName);
 	}
 		
 	@Override

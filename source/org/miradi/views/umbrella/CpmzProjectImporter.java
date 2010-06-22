@@ -134,36 +134,21 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		}
 	}
 
-	private void importProjectFromXmlEntry(ZipFile zipFile, File newProjectDir) throws Exception, IOException
+	@Override
+	protected void createOrOpenProject(Project projectToFill, String projectName)	throws Exception
 	{
-		Project projectToFill = new Project();
-		projectToFill.setLocalDataLocation(newProjectDir.getParentFile());
-		projectToFill.createOrOpenWithDefaultObjects(newProjectDir.getName());
-		try
-		{
-			InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
-			try
-			{
-				ConproXmlImporter conProXmlImporter = new ConproXmlImporter(projectToFill);
-				conProXmlImporter.importConProProject(projectAsInputStream);
-				ORef highOrAboveRankedThreatsTag = conProXmlImporter.getHighOrAboveRankedThreatsTag();
-				splitMainDiagramByTargets(projectToFill, highOrAboveRankedThreatsTag);
-				
-				importAdditionalFieldsFromTextFiles(projectToFill, zipFile);
-			}
-			finally
-			{
-				projectAsInputStream.close();
-			}
+		projectToFill.openProject(projectName);
+	}
 
-			projectToFill.close();
-		}
-		catch(Exception e)
-		{
-			deleteIncompleteProject(projectToFill);
-			throw e;
-		}
-
+	@Override
+	protected void importProjectXml(Project projectToFill, ZipFile zipFile, InputStreamWithSeek projectAsInputStream) throws Exception
+	{
+		ConproXmlImporter conProXmlImporter = new ConproXmlImporter(projectToFill);
+		conProXmlImporter.importConProProject(projectAsInputStream);
+		ORef highOrAboveRankedThreatsTag = conProXmlImporter.getHighOrAboveRankedThreatsTag();
+		splitMainDiagramByTargets(projectToFill, highOrAboveRankedThreatsTag);
+		
+		importAdditionalFieldsFromTextFiles(projectToFill, zipFile);
 	}
 	
 	private void importAdditionalFieldsFromTextFiles(Project projectToFill, ZipFile zipFile) throws Exception
