@@ -38,7 +38,7 @@ public class TestNonDiagramChainWalker extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		project = new ProjectForTesting(getName());
-		builder = project.getObjectManager().getNonDiagramChainWalker();
+		walker = project.getObjectManager().getNonDiagramChainWalker();
 		super.setUp();
 	}
 	
@@ -53,7 +53,7 @@ public class TestNonDiagramChainWalker extends EAMTestCase
 	{
 		ORef targetRef = project.createObject(Target.getObjectType());
 		Target target = Target.find(getProject(), targetRef);
-		FactorSet nothingUpstreamYet = builder.buildUpstreamDownstreamChainAndGetFactors(target);
+		FactorSet nothingUpstreamYet = walker.buildUpstreamDownstreamChainAndGetFactors(target);
 		assertEquals("Already something upstream?", 1, nothingUpstreamYet.size());
 
 		ORef factorRef = project.createObject(Cause.getObjectType());
@@ -67,9 +67,9 @@ public class TestNonDiagramChainWalker extends EAMTestCase
 		CreateFactorLinkParameter extraInfo2 = new CreateFactorLinkParameter(threatRef, factorRef);
 		project.createObject(FactorLink.getObjectType(), extraInfo2);
 
-		ORefSet targetChain = builder.buildNormalChainAndGetFactorRefs(target);
-		ORefSet factorChain = builder.buildNormalChainAndGetFactorRefs(factor);
-		ORefSet threatChain = builder.buildNormalChainAndGetFactorRefs(threat);
+		ORefSet targetChain = walker.buildNormalChainAndGetFactorRefs(target);
+		ORefSet factorChain = walker.buildNormalChainAndGetFactorRefs(factor);
+		ORefSet threatChain = walker.buildNormalChainAndGetFactorRefs(threat);
 		
 		assertEquals("Target and factor chains not identical?", targetChain, factorChain);
 		assertEquals("Target and threat chains not identical?", factorChain, threatChain);
@@ -79,7 +79,7 @@ public class TestNonDiagramChainWalker extends EAMTestCase
 	{
 		ORef targetRef = project.createObject(Target.getObjectType());
 		Target target = (Target)project.findObject(targetRef);
-		FactorSet nothingUpstreamYet = builder.buildUpstreamDownstreamChainAndGetFactors(target);
+		FactorSet nothingUpstreamYet = walker.buildUpstreamDownstreamChainAndGetFactors(target);
 		assertEquals("Already something upstream?", 1, nothingUpstreamYet.size());
 
 		ORef threatRef = project.createObject(Cause.getObjectType());
@@ -88,15 +88,15 @@ public class TestNonDiagramChainWalker extends EAMTestCase
 		ORef linkRef = project.createObject(FactorLink.getObjectType(), extraInfo);
 		FactorLink link = (FactorLink)project.findObject(linkRef);
 		
-		FactorSet upstreamOfTarget = builder.buildUpstreamDownstreamChainAndGetFactors(target);
+		FactorSet upstreamOfTarget = walker.buildUpstreamDownstreamChainAndGetFactors(target);
 		assertEquals("Threat not upstream of target now?", 2, upstreamOfTarget.size());
-		FactorSet downstreamOfThreat = builder.buildUpstreamDownstreamChainAndGetFactors(threat);
+		FactorSet downstreamOfThreat = walker.buildUpstreamDownstreamChainAndGetFactors(threat);
 		assertEquals("Target not downstream of threat?", 2, downstreamOfThreat.size());
 		
 		project.deleteObject(link);
-		FactorSet nothingUpstream = builder.buildUpstreamDownstreamChainAndGetFactors(target);
+		FactorSet nothingUpstream = walker.buildUpstreamDownstreamChainAndGetFactors(target);
 		assertEquals("Didn't reset upstream?", 1, nothingUpstream.size());
-		FactorSet nothingDownstream = builder.buildNormalChainAndGetFactors(threat);
+		FactorSet nothingDownstream = walker.buildNormalChainAndGetFactors(threat);
 		assertEquals("Didn't reset downstream?", 1, nothingDownstream.size());
 	}
 	
@@ -106,5 +106,5 @@ public class TestNonDiagramChainWalker extends EAMTestCase
 	}
 
 	private ProjectForTesting project;
-	private NonDiagramChainWalker builder;
+	private NonDiagramChainWalker walker;
 }
