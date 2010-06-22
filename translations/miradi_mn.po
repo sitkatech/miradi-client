@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-18 09:58-0500\n"
+"POT-Creation-Date: 2010-06-22 09:17-0500\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3726,7 +3726,7 @@ msgstr ""
 msgid "Label|(Undefined Accounting Code)"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/FundingSource.java:68
+#: Miradi/source/org/miradi/objects/FundingSource.java:71
 msgid "Label|(Undefined Funding Source)"
 msgstr ""
 
