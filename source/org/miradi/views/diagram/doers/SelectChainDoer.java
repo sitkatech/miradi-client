@@ -129,7 +129,7 @@ public class SelectChainDoer extends ViewDoer
 			
 			DiagramChainWalker downstreamChain = new DiagramChainWalker();
 			DiagramFactor to = cell.getTo().getDiagramFactor();
-			Factor[] downstreamFactors = downstreamChain.buildDownstreamChainAndGetFactors(diagramModel, to).toFactorArray();
+			Factor[] downstreamFactors = downstreamChain.buildDownstreamChainAndGetFactors(diagramModel.getDiagramObject(), to).toFactorArray();
 			nodes.addAll(Arrays.asList(downstreamFactors));
 		}
 		return (Factor[])nodes.toArray(new Factor[0]);

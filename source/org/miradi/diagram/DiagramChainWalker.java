@@ -59,9 +59,9 @@ public class DiagramChainWalker
 		return getFactors();
 	}
 	
-	public FactorSet buildDownstreamChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
+	public FactorSet buildDownstreamChainAndGetFactors(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
 	{
-		buildDownstreamChain(model.getDiagramObject(), diagramFactor);
+		buildDownstreamChain(diagramObjectToUse, diagramFactor);
 		return getFactors();
 	}
 	
