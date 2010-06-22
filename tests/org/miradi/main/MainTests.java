@@ -147,7 +147,6 @@ import org.miradi.objects.TestWcsProjectData;
 import org.miradi.objects.TestWwfProjectData;
 import org.miradi.objects.TestXenodata;
 import org.miradi.project.TestCausePool;
-import org.miradi.project.TestChainManager;
 import org.miradi.project.TestCommandExecutor;
 import org.miradi.project.TestDateUnit;
 import org.miradi.project.TestFactorDeleteHelper;
@@ -395,7 +394,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestIntermediateResult.class));
 		suite.addTest(new TestSuite(TestTextBox.class));
 		suite.addTest(new TestSuite(TestScopeBox.class));
-		suite.addTest(new TestSuite(TestChainManager.class));
 		suite.addTest(new TestSuite(TestPlanningViewConfiguration.class));
 		suite.addTest(new TestSuite(TestDiagramObject.class));
 		suite.addTest(new TestSuite(TestWwfProjectData.class));
