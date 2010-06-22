@@ -325,6 +325,11 @@ abstract public class Desire extends BaseObject
 	
 		return calculateRefList(relevantRefList, relevantOverrides);
 	}
+	
+	public ORefList getRelevantStrategyRefs() throws Exception
+	{
+		return getRelevantStrategyAndActivityRefs().getFilteredBy(Strategy.getObjectType());
+	}
 
 	public ORefList getRelevantActivityRefs() throws Exception
 	{

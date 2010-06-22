@@ -29,12 +29,18 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.RelevancyOverride;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.Indicator;
+import org.miradi.objects.Objective;
 import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.TaggedObjectSet;
+import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
@@ -57,6 +63,86 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	public void testValidateEmptyProject() throws Exception
 	{
 		validateUsingStringWriter();
+	}
+	
+	public void testDefaultIndicatorRelevancyLifeCycle() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		Objective objective = getProject().createObjective(strategy);
+		Indicator indicator = getProject().createIndicator(strategy);
+		assertEquals("indicator on same factor is no relevant by default?", 1, objective.getRelevantIndicatorRefList().size());
+		
+		ProjectForTesting projectToImportInto = validateUsingStringWriter();
+		ORefList objeciveRefs = projectToImportInto.getObjectivePool().getRefList();
+		Objective importedObjective = Objective.find(projectToImportInto, objeciveRefs.getFirstElement());
+		ORefList relevantIndicators = importedObjective.getRelevantIndicatorRefList();
+		assertEquals("default indicator is no longer relevant?", 1, importedObjective.getRelevantIndicatorRefList().size());
+		assertEquals("relevant default indicator changed?", indicator.getRef(), relevantIndicators.getFirstElement());		
+	}
+	
+	public void testIndicatorRelevancyLifeCycle() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		Objective objective = getProject().createObjective(strategy);
+		
+		Strategy indicatorOwner = getProject().createStrategy();
+		Indicator relevantIndicator = getProject().createIndicator(indicatorOwner);
+		Indicator nonRelevantIndicator = getProject().createIndicator(indicatorOwner);
+		
+		RelevancyOverrideSet indicatorRelevancyIndicators = new RelevancyOverrideSet();
+		indicatorRelevancyIndicators.add(new RelevancyOverride(relevantIndicator.getRef(), true));
+		indicatorRelevancyIndicators.add(new RelevancyOverride(nonRelevantIndicator.getRef(), false));
+		getProject().fillObjectUsingCommand(objective, Objective.TAG_RELEVANT_INDICATOR_SET, indicatorRelevancyIndicators.toString());
+		
+		ProjectForTesting projectToImportInto = validateUsingStringWriter();
+		ORef importedObjectiveRef = projectToImportInto.getObjectivePool().getRefList().getFirstElement();
+		Objective importedObjective = objective.find(projectToImportInto, importedObjectiveRef);
+		ORefList importedRelevantIndicatorRefs = importedObjective.getRelevantIndicatorRefList();
+		assertEquals("incorrect relevant indicator ref count?", 1, importedRelevantIndicatorRefs.size());
+		assertEquals("incorrect relevant indicator imported?", relevantIndicator.getRef(), importedRelevantIndicatorRefs.getFirstElement());
+	}
+	
+	public void testDefaultStrategyRelevancyLifeCycle() throws Exception
+	{
+		Strategy objectiveOwner = getProject().createStrategy();
+		getProject().createObjective(objectiveOwner);
+		
+		ProjectForTesting projectToImportInto = validateUsingStringWriter(); 
+		ORefList objeciveRefs = projectToImportInto.getObjectivePool().getRefList();
+		ORef importedObjectiveRef = objeciveRefs.getFirstElement();
+		Objective objective = Objective.find(projectToImportInto, importedObjectiveRef);
+		ORefList relevantStrategies = objective.getRelevantStrategyRefs();
+		assertEquals("default strategy is no longer relevant?", 1, relevantStrategies.size());
+		assertEquals("relevant default strategy changed?", objectiveOwner.getRef(), relevantStrategies.getFirstElement());
+	}
+	
+	public void testStrategyAndActivityRelevancyLifeCycle() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		Strategy objectiveAndActivityOwner = getProject().createStrategy();
+		Objective objective = getProject().createObjective(objectiveAndActivityOwner);
+		Task activity = getProject().createTask(objectiveAndActivityOwner);
+		
+		getProject().createFactorLink(strategy.getRef(), objectiveAndActivityOwner.getRef());
+		
+		RelevancyOverrideSet relevantStrategies = new RelevancyOverrideSet();
+		relevantStrategies.add(new RelevancyOverride(strategy.getRef(), true));
+		relevantStrategies.add(new RelevancyOverride(activity.getRef(), false));
+		relevantStrategies.add(new RelevancyOverride(objectiveAndActivityOwner.getRef(), false));
+		getProject().fillObjectUsingCommand(objective, Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantStrategies.toString());
+
+		ORefList relevantStrategyAndActivityRefs = objective.getRelevantStrategyAndActivityRefs();
+		assertEquals("incorrect relevant strategy count?", 1, relevantStrategyAndActivityRefs.size());
+		assertTrue("relevant strategy is not included in list?", relevantStrategies.contains(strategy.getRef()));
+		
+		ProjectForTesting projectToImportInto = validateUsingStringWriter(); 
+		ORefList objeciveRefs = projectToImportInto.getObjectivePool().getRefList();
+		assertEquals("incorrect objective count after import?", 1, objeciveRefs.size());
+		
+		ORef objectiveRef = objeciveRefs.getFirstElement();
+		Objective importedObjective = Objective.find(projectToImportInto, objectiveRef);
+		ORefList relevantStrategiesAndActivitiesAfterImport = importedObjective.getRelevantStrategyAndActivityRefs();
+		assertEquals("imported relevancy list is not same as exported list?", objective.getRelevantStrategyAndActivityRefs(), relevantStrategiesAndActivitiesAfterImport);
 	}
 	
 	public void testExpenseAssignmentLifeCycle() throws Exception
@@ -128,7 +214,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(resultsChainRef, ResultsChainDiagram.TAG_HIDDEN_TYPES, hiddentTypeCodes.toString());
 	}
 	
-	private void validateUsingStringWriter() throws Exception
+	private ProjectForTesting validateUsingStringWriter() throws Exception
 	{
 		UnicodeStringWriter firstWriter = createWriter(getProject());
 		
@@ -146,6 +232,8 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		
 		UnicodeStringWriter secondWriter = createWriter(projectToImportInto);
 		assertEquals("Exports from projects do not match?", firstWriter.toString(), secondWriter.toString());
+		
+		return projectToImportInto;
 	}
 
 	private UnicodeStringWriter createWriter(ProjectForTesting project) throws Exception
