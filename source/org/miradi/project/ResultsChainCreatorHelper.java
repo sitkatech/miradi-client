@@ -471,7 +471,7 @@ public class ResultsChainCreatorHelper
 		{
 			DiagramFactor diagramFactor = selectedFactorCells[i].getDiagramFactor();
 			DiagramChainWalker chainObject = diagramFactor.getDiagramChainWalker();  
-			allDiagramLinks.addAll(chainObject.buildNormalChainAndGetDiagramLinks(model, diagramFactor));
+			allDiagramLinks.addAll(chainObject.buildNormalChainAndGetDiagramLinks(model.getDiagramObject(), diagramFactor));
 		}
 		
 		return allDiagramLinks.toArray(new DiagramLink[0]);

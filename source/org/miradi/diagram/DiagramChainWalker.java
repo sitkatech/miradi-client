@@ -35,12 +35,6 @@ import org.miradi.project.Project;
 //factor so that many of these methods could be moved to the super
 public class DiagramChainWalker
 {
-	public HashSet<DiagramLink> buildNormalChainAndGetDiagramLinks(DiagramModel model, DiagramFactor diagramFactor)
-	{
-		buildNormalChain(model.getDiagramObject(), diagramFactor);
-		return processedLinks;
-	}
-	
 	public HashSet<DiagramLink> buildNormalChainAndGetDiagramLinks(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
 	{
 		buildNormalChain(diagramObjectToUse, diagramFactor);
