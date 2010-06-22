@@ -187,7 +187,7 @@ public class TestDiagramModel extends EAMTestCase
 				DiagramFactor diagramFactor = findDiagramFactor(label);
 				DiagramChainWalker chainObject = model.getDiagramChainWalker();
 				
-				FactorSet gotUpChainNodes = chainObject.buildUpstreamChainAndGetFactors(model, diagramFactor);
+				FactorSet gotUpChainNodes = chainObject.buildUpstreamChainAndGetFactors(model.getDiagramObject(), diagramFactor);
 				Set gotLabels1 = getLabelSet(gotUpChainNodes);
 				assertEquals("wrong upstream chain nodes for " + expectedChainNodeIds[i] + "?", toSet(expectedChainNodeIds), gotLabels1);
 				
