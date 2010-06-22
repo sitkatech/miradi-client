@@ -26,9 +26,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.NonDiagramChainWalker;
 import org.miradi.project.ProjectForTesting;
 
-public class TestProjectChainObject extends EAMTestCase
+public class TestNonDiagramChainWalker extends EAMTestCase
 {
-	public TestProjectChainObject(String name)
+	public TestNonDiagramChainWalker(String name)
 	{
 		super(name);
 	}
