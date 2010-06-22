@@ -19,40 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.project;
 
-import org.miradi.objecthelpers.FactorSet;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Factor;
 
 
 public class ChainManager
 {
 	public ChainManager(Project projectToUse)
 	{
-		project = projectToUse;
 	}
-	
-	public FactorSet findAllFactorsRelatedToThisObject(ORef ref) throws Exception
-	{
-		BaseObject owner = getProject().findObject(ref);
-		Factor owningFactor = owner.getDirectOrIndirectOwningFactor();
-		FactorSet relatedFactors = new FactorSet();
-		
-		if(owningFactor != null)
-		{
-			NonDiagramChainWalker chainObject = owner.getNonDiagramChainWalker();
-			FactorSet nodesInChain = chainObject.buildUpstreamDownstreamChainAndGetFactors(owningFactor);
-			
-			relatedFactors.attemptToAddAll(nodesInChain);
-		}
-		
-		return relatedFactors;
-	}
-	
-	private Project getProject()
-	{
-		return project;
-	}
-	
-	private Project project;
 }
