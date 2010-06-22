@@ -19,10 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.InputStream;
-import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import javax.swing.JFileChooser;
@@ -156,39 +153,6 @@ public abstract class AbstractProjectImporter
 		return new ZipEntryInputStreamWithSeek(zipFile, zipFile.getEntry(ExportCpmzDoer.PROJECT_XML_FILE_NAME));
 	}
 
-	protected byte[] readZipEntryFile(ZipFile zipFile, String entryName) throws Exception
-	{
-		ZipEntry zipEntry = zipFile.getEntry(entryName);
-		if (zipEntry == null)
-			return new byte[0];
-		
-		byte[] byteArray;
-		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
-		try
-		{
-			byte[] data = new byte[(int) zipEntry.getSize()];
-			InputStream inputStream = zipFile.getInputStream(zipEntry);
-			int offset = 0;
-			while(true)
-			{
-				if(offset >= data.length)
-					break;
-				
-				int got = inputStream.read(data, 0, data.length - offset);
-				offset += got;
-				byteOut.write(data, 0, got);
-			}
-			
-			byteArray = byteOut.toByteArray();
-		}
-		finally
-		{
-			byteOut.close();
-		}
-
-		return byteArray; 
-	}
-	
 	protected void deleteIncompleteProject(Project projectToFill)	throws Exception
 	{
 		File projectDirectory = projectToFill.getProjectDirectory();
