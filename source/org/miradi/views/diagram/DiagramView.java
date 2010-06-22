@@ -714,7 +714,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		{
 			DiagramFactor diagramFactor = diagramModel.getFactorCellByWrappedRef(factorORefs.get(i)).getDiagramFactor();
 			DiagramChainWalker chainObject = diagramModel.getDiagramChainWalker();
-			FactorSet possibleDraftStrategies = chainObject.buildDirectlyLinkedUpstreamChainAndGetFactors(diagramModel, diagramFactor);
+			FactorSet possibleDraftStrategies = chainObject.buildDirectlyLinkedUpstreamChainAndGetFactors(diagramModel.getDiagramObject(), diagramFactor);
 			Iterator iter = possibleDraftStrategies.iterator();
 			while(iter.hasNext())
 			{
