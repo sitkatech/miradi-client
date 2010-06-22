@@ -35,7 +35,7 @@ import org.miradi.project.Project;
 import org.miradi.utils.XmpzFileFilter;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
 
-public class XmpzProjectImporter extends AbstractProjectImporter
+public class XmpzProjectImporter extends AbstractZippedXmlImporter
 {
 	public XmpzProjectImporter(MainWindow mainWindowToUse)
 	{

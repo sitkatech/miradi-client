@@ -50,7 +50,7 @@ import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.xml.conpro.importer.ConproXmlImporter;
 
-public class CpmzProjectImporter extends AbstractProjectImporter
+public class CpmzProjectImporter extends AbstractZippedXmlImporter
 {	
 	public CpmzProjectImporter(MainWindow mainWindowToUse)
 	{
