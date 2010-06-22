@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-22 15:50-0500\n"
+"POT-Creation-Date: 2010-06-22 18:34-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5168,7 +5168,7 @@ msgstr "资源"
 msgid "Resources:"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:193
+#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:194
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:71
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:35
 msgid "Results Chain"
@@ -7580,7 +7580,7 @@ msgstr "[主要图表] \t\t"
 msgid "[NOT SPECIFIED]"
 msgstr "[未指定的] \t\t"
 
-#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:171
+#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:172
 msgid "[New Results Chain]"
 msgstr "[新结果链] \t\t"
 
