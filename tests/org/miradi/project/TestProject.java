@@ -704,8 +704,9 @@ public class TestProject extends EAMTestCase
 		
 		
 		createLinkage(BaseId.INVALID, nodeContributingFactor.getWrappedFactorRef(), nodeDirectThreat.getWrappedFactorRef());
+		ORef ref = new ORef(ObjectType.OBJECTIVE, objectiveId1);
 		
-		FactorSet foundNodes = chainManager.findAllFactorsRelatedToThisObjective(objectiveId1);
+		FactorSet foundNodes = chainManager.findAllFactorsRelatedToThisObject(ref);
 		
 		assertEquals("didn't find anything?", 2, foundNodes.size());
 		assertContains("missing direct threat?", nodeDirectThreat.getWrappedFactor(), foundNodes);
