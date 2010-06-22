@@ -20,7 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.umbrella;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.zip.ZipFile;
+
+import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.main.MainWindow;
+import org.miradi.project.Project;
 
 abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 {
@@ -28,4 +34,36 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 	{
 		super(mainWindowToUse);
 	}
+	
+	protected void importProjectFromXmlEntry(ZipFile zipFile, File newProjectDir) throws Exception, IOException
+	{
+		Project projectToFill = new Project();
+		projectToFill.setLocalDataLocation(newProjectDir.getParentFile());
+		createOrOpenProject(projectToFill, newProjectDir.getName());
+		try
+		{
+			InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
+			try
+			{
+				importProjectXml(projectToFill, zipFile, projectAsInputStream);
+			}
+			finally
+			{
+				projectAsInputStream.close();
+			}
+
+			projectToFill.close();
+		}
+		catch(Exception e)
+		{
+			deleteIncompleteProject(projectToFill);
+			throw e;
+		}
+
+	}
+	
+	abstract protected void createOrOpenProject(Project projectToFill, String projectName) throws Exception;
+
+	abstract protected void importProjectXml(Project projectToFill, ZipFile zipFile, InputStreamWithSeek projectAsInputStream) throws Exception;
+
 }
