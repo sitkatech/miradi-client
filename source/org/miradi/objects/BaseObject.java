@@ -934,7 +934,7 @@ abstract public class BaseObject
 			return new Factor[0];
 		
 		NonDiagramChainWalker chainObject = getNonDiagramChainWalker();
-		return chainObject.buildUpstreamDownstreamChainAndGetFactors(owner).toFactorArray();
+		return chainObject.buildNormalChainAndGetFactors(owner).toFactorArray();
 	}
 	
 	public String getRelatedLabelsAsMultiLine(FactorSet filterSet)

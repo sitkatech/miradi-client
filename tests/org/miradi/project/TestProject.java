@@ -744,7 +744,7 @@ public class TestProject extends EAMTestCase
 		if(owningFactor != null)
 		{
 			NonDiagramChainWalker chainObject = owner.getNonDiagramChainWalker();
-			FactorSet nodesInChain = chainObject.buildUpstreamDownstreamChainAndGetFactors(owningFactor);
+			FactorSet nodesInChain = chainObject.buildNormalChainAndGetFactors(owningFactor);
 			
 			relatedFactors.attemptToAddAll(nodesInChain);
 		}
