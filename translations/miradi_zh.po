@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-22 14:24-0500\n"
+"POT-Creation-Date: 2010-06-22 14:29-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -68,8 +68,7 @@ msgstr "2)将威胁因子链接到相关的对象 \t\t"
 msgid " A project by this name already exists: "
 msgstr "已存在使用相同名称的项目: \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:82
-#: Miradi/source/org/miradi/views/umbrella/XmpzProjectImporter.java:62
+#: Miradi/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:48
 msgid " was empty"
 msgstr ""
 
@@ -3563,7 +3562,7 @@ msgstr "实施策略及监控计划 \t\t"
 msgid "Implement work plan"
 msgstr "实施工作计划 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:236
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:232
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:119
 msgid "Import"
