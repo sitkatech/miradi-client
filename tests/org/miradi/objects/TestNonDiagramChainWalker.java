@@ -20,9 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.main.EAMTestCase;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.project.NonDiagramChainWalker;
 import org.miradi.project.ProjectForTesting;
 
@@ -36,6 +38,7 @@ public class TestNonDiagramChainWalker extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		project = new ProjectForTesting(getName());
+		builder = project.getObjectManager().getNonDiagramChainWalker();
 		super.setUp();
 	}
 	
@@ -46,9 +49,34 @@ public class TestNonDiagramChainWalker extends EAMTestCase
 		project = null;
 	}
 
+	public void testThreatFactorTargetChain() throws Exception
+	{
+		ORef targetRef = project.createObject(Target.getObjectType());
+		Target target = Target.find(getProject(), targetRef);
+		FactorSet nothingUpstreamYet = builder.buildUpstreamDownstreamChainAndGetFactors(target);
+		assertEquals("Already something upstream?", 1, nothingUpstreamYet.size());
+
+		ORef factorRef = project.createObject(Cause.getObjectType());
+		Cause factor = Cause.find(getProject(), factorRef);
+		CreateFactorLinkParameter extraInfo1 = new CreateFactorLinkParameter(factorRef, targetRef);
+		project.createObject(FactorLink.getObjectType(), extraInfo1);
+	
+		ORef threatRef = project.createObject(Cause.getObjectType());
+		Cause threat = Cause.find(getProject(), threatRef);
+		threat.setData(Cause.TAG_IS_DIRECT_THREAT, BooleanData.BOOLEAN_TRUE);
+		CreateFactorLinkParameter extraInfo2 = new CreateFactorLinkParameter(threatRef, factorRef);
+		project.createObject(FactorLink.getObjectType(), extraInfo2);
+
+		ORefSet targetChain = builder.buildNormalChainAndGetFactorRefs(target);
+		ORefSet factorChain = builder.buildNormalChainAndGetFactorRefs(factor);
+		ORefSet threatChain = builder.buildNormalChainAndGetFactorRefs(threat);
+		
+		assertEquals("Target and factor chains not identical?", targetChain, factorChain);
+		assertEquals("Target and threat chains not identical?", factorChain, threatChain);
+	}
+	
 	public void testCacheClearing() throws Exception
 	{
-		NonDiagramChainWalker builder = project.getObjectManager().getNonDiagramChainWalker();
 		ORef targetRef = project.createObject(Target.getObjectType());
 		Target target = (Target)project.findObject(targetRef);
 		FactorSet nothingUpstreamYet = builder.buildUpstreamDownstreamChainAndGetFactors(target);
@@ -72,5 +100,11 @@ public class TestNonDiagramChainWalker extends EAMTestCase
 		assertEquals("Didn't reset downstream?", 1, nothingDownstream.size());
 	}
 	
-	ProjectForTesting project;
+	public ProjectForTesting getProject()
+	{
+		return project;
+	}
+
+	private ProjectForTesting project;
+	private NonDiagramChainWalker builder;
 }

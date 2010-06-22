@@ -122,22 +122,11 @@ public class NonDiagramChainWalker
 		cachedUpstreamChain = new HashMap();
 		cachedDownstreamChain = new HashMap();
 	}
-	private void buildDirectThreatChain(Factor factor)
-	{
-		initializeChain(factor);
-		if(startingFactor.isDirectThreat())
-		{
-			factorSet.attemptToAddAll(getDirectlyLinkedDownstreamFactors());
-			factorSet.attemptToAddAll(getAllUpstreamFactors());
-		}
-	}
+
 	protected void buildNormalChain(Factor factor)
 	{
 		initializeChain(factor);
-		if (startingFactor.isDirectThreat())
-			buildDirectThreatChain(factor);
-		else
-			buildUpstreamDownstreamChain(factor);
+		buildUpstreamDownstreamChain(factor);
 	}
 	protected void buildUpstreamDownstreamChain(Factor factor)
 	{
