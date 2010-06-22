@@ -84,7 +84,6 @@ public class TestProject extends EAMTestCase
 	{
 		project = new ProjectForTesting(getName());
 		idAssigner = project.getNodeIdAssigner();
-		chainManager = new ChainManager(project);
 		super.setUp();
 	}
 	
@@ -706,13 +705,11 @@ public class TestProject extends EAMTestCase
 		createLinkage(BaseId.INVALID, nodeContributingFactor.getWrappedFactorRef(), nodeDirectThreat.getWrappedFactorRef());
 		ORef ref = new ORef(ObjectType.OBJECTIVE, objectiveId1);
 		
-		FactorSet foundNodes = chainManager.findAllFactorsRelatedToThisObject(ref);
+		FactorSet foundNodes = findAllFactorsRelatedToThisObject(ref);
 		
 		assertEquals("didn't find anything?", 2, foundNodes.size());
 		assertContains("missing direct threat?", nodeDirectThreat.getWrappedFactor(), foundNodes);
 		assertContains("missing contributing factor?", cf, foundNodes);
-		
-		
 	}
 	
 	public void testFindAllNodesRelatedToThisIndicator() throws Exception
@@ -731,15 +728,31 @@ public class TestProject extends EAMTestCase
 		createLinkage(BaseId.INVALID, nodeContributingFactor.getWrappedFactorRef(), nodeDirectThreat.getWrappedFactorRef());
 		ORef ref = new ORef(ObjectType.INDICATOR, indicatorId1);
 		
-		FactorSet foundNodes = chainManager.findAllFactorsRelatedToThisObject(ref);
+		FactorSet foundNodes = findAllFactorsRelatedToThisObject(ref);
 		
 		assertEquals("didn't find anything?", 2, foundNodes.size());
 		assertContains("missing direct threat?", nodeDirectThreat.getWrappedFactor(), foundNodes);
 		assertContains("missing contributing factor?", nodeContributingFactor.getWrappedFactor(), foundNodes);
-		
-		
 	}
 	
+	private FactorSet findAllFactorsRelatedToThisObject(ORef ref) throws Exception
+	{
+		BaseObject owner = getProject().findObject(ref);
+		Factor owningFactor = owner.getDirectOrIndirectOwningFactor();
+		FactorSet relatedFactors = new FactorSet();
+		
+		if(owningFactor != null)
+		{
+			NonDiagramChainWalker chainObject = owner.getNonDiagramChainWalker();
+			FactorSet nodesInChain = chainObject.buildUpstreamDownstreamChainAndGetFactors(owningFactor);
+			
+			relatedFactors.attemptToAddAll(nodesInChain);
+		}
+		
+		return relatedFactors;
+	}
+	
+
 	public void testDirectThreatSet() throws Exception
 	{
 		FactorCell nodeContributingFactor = project.createFactorCell(ObjectType.CAUSE);
@@ -936,5 +949,4 @@ public class TestProject extends EAMTestCase
 	
 	private ProjectForTesting project;
 	private IdAssigner idAssigner;
-	private ChainManager chainManager;
 }
