@@ -31,18 +31,18 @@ public class NonDiagramChainWalker
 {	
 	public FactorSet buildNormalChainAndGetFactors(Factor factor)
 	{
-		project = factor.getProject();
+		Project project = factor.getProject();
 		FactorSet factorsOnAllDiagrams = new FactorSet();
 		DiagramChainWalker realWalker = new DiagramChainWalker();
 		ORefList diagramFactorRefs = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
-			DiagramFactor df = DiagramFactor.find(getProject(), diagramFactorRefs.get(i));
+			DiagramFactor df = DiagramFactor.find(project, diagramFactorRefs.get(i));
 			ORefList diagramRefs = df.findDiagramsThatReferToUs();
 			if(diagramRefs.size() != 1)
 				throw new RuntimeException("DF " + df.getRef() + " is in multiple diagrams: " + diagramRefs);
 			
-			DiagramObject diagram = DiagramObject.findDiagramObject(getProject(), diagramRefs.getFirstElement());
+			DiagramObject diagram = DiagramObject.findDiagramObject(project, diagramRefs.getFirstElement());
 			FactorSet factorsOnThisDiagram = realWalker.buildNormalChainAndGetFactors(diagram, df);
 			factorsOnAllDiagrams.attemptToAddAll(factorsOnThisDiagram);
 		}
@@ -50,10 +50,4 @@ public class NonDiagramChainWalker
 		return factorsOnAllDiagrams;
 	}
 	
-	private Project getProject()
-	{
-		return project;
-	}
-	
-	private Project project;
 }
