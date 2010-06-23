@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.treenodes;
 
-import org.miradi.diagram.DiagramChainWalker;
+import org.miradi.diagram.ChainWalker;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -66,7 +66,7 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 	{
 		ORefList strategyRefs = new ORefList();
 		
-		DiagramChainWalker chain = diagram.getDiagramChainWalker();
+		ChainWalker chain = diagram.getDiagramChainWalker();
 		DiagramFactor targetDiagramFactor = diagram.getDiagramFactor(target.getRef());
 		FactorSet factors = chain.buildDirectlyLinkedUpstreamChainAndGetFactors(diagram, targetDiagramFactor);
 		for(Factor factor : factors)

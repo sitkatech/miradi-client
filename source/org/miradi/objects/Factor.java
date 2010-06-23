@@ -23,7 +23,7 @@ import java.text.ParseException;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
-import org.miradi.diagram.DiagramChainWalker;
+import org.miradi.diagram.ChainWalker;
 import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.diagram.factortypes.FactorTypeActivity;
 import org.miradi.diagram.factortypes.FactorTypeCause;
@@ -457,7 +457,7 @@ abstract public class Factor extends BaseObject
 
 	private String getFactorRelatedDirectThreats()
 	{
-		DiagramChainWalker chain = getNonDiagramChainWalker();
+		ChainWalker chain = getNonDiagramChainWalker();
 		FactorSet factors = chain.buildNormalChainAndGetFactors(this);
 		DirectThreatSet directThreats = new DirectThreatSet(factors);
 		
@@ -466,7 +466,7 @@ abstract public class Factor extends BaseObject
 
 	private String getFactorRelatedTargets()
 	{
-		DiagramChainWalker chain = getNonDiagramChainWalker();
+		ChainWalker chain = getNonDiagramChainWalker();
 		FactorSet factors = chain.buildNormalChainAndGetFactors(this);
 		TargetSet directThreats = new TargetSet(factors);
 		

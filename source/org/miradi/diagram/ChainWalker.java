@@ -30,7 +30,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
 
-public class DiagramChainWalker
+public class ChainWalker
 {
 	public HashSet<DiagramLink> buildNormalChainAndGetDiagramLinks(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
 	{
@@ -240,7 +240,7 @@ public class DiagramChainWalker
 	{
 		Project project = factor.getProject();
 		FactorSet factorsOnAllDiagrams = new FactorSet();
-		DiagramChainWalker realWalker = new DiagramChainWalker();
+		ChainWalker realWalker = new ChainWalker();
 		ORefList diagramFactorRefs = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{

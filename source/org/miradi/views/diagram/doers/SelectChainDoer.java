@@ -23,7 +23,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Vector;
 
-import org.miradi.diagram.DiagramChainWalker;
+import org.miradi.diagram.ChainWalker;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
@@ -105,7 +105,7 @@ public class SelectChainDoer extends ViewDoer
 		for(int i = 0; i < factors.length; ++i)
 		{
 			FactorCell selectedFactor = factors[i];
-			DiagramChainWalker chainObject = new DiagramChainWalker();
+			ChainWalker chainObject = new ChainWalker();
 			FactorSet chainFactors = chainObject.buildNormalChainAndGetFactors(diagramModel.getDiagramObject(), selectedFactor.getDiagramFactor());
 			Factor[] chainNodes = chainFactors.toFactorArray();
 			nodes.addAll(Arrays.asList(chainNodes));
@@ -122,12 +122,12 @@ public class SelectChainDoer extends ViewDoer
 			DiagramLink selectedLinkage = DiagramLink.find(project, diagramLinkRefs.get(i));
 			LinkCell cell = diagramModel.findLinkCell(selectedLinkage);
 			
-			DiagramChainWalker upstreamChain = new DiagramChainWalker();
+			ChainWalker upstreamChain = new ChainWalker();
 			DiagramFactor from = cell.getFrom().getDiagramFactor();
 			Factor[] upstreamFactors = upstreamChain.buildUpstreamChainAndGetFactors(diagramModel.getDiagramObject(), from).toFactorArray();
 			nodes.addAll(Arrays.asList(upstreamFactors));
 			
-			DiagramChainWalker downstreamChain = new DiagramChainWalker();
+			ChainWalker downstreamChain = new ChainWalker();
 			DiagramFactor to = cell.getTo().getDiagramFactor();
 			Factor[] downstreamFactors = downstreamChain.buildDownstreamChainAndGetFactors(diagramModel.getDiagramObject(), to).toFactorArray();
 			nodes.addAll(Arrays.asList(downstreamFactors));

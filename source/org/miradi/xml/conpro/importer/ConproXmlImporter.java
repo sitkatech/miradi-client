@@ -37,7 +37,7 @@ import org.martus.util.MultiCalendar;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.DiagramChainWalker;
+import org.miradi.diagram.ChainWalker;
 import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.CpmzVersionTooOldException;
@@ -1359,7 +1359,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		ORefSet mediumOrBelowRankedThreatRefs = new ORefSet();
 		ORefSet highOrAboveRankedThreatRefs = new ORefSet();
 		
-		DiagramChainWalker chainWalker = new DiagramChainWalker();
+		ChainWalker chainWalker = new ChainWalker();
 		Cause[] threats = getProject().getCausePool().getDirectThreats();
 		for (int index = 0; index < threats.length; ++index)
 		{
