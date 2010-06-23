@@ -30,6 +30,7 @@ public class ResourceAssignmentDetailsMainTable extends AbstractAssignmentDetail
 		super(mainWindowToUse, modelToUse, getUniqueIdentifier());
 	}
 	
+	@Override
 	public void rebuildColumnEditorsAndRenderers() throws Exception
 	{
 		for (int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
