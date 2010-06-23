@@ -37,14 +37,6 @@ public class ThreatTargetChainWalker
 		project = projectToUse;
 	}
 	
-	private void initializeChain(Factor startingFactorToUse)
-	{
-		setStartingFactor(startingFactorToUse);
-		resultingThreats = new HashSet();
-		resultingTargets = new HashSet();
-		processedLinks = new HashSet();
-	}
-	
 	public ORefSet getUpstreamThreatRefsFromTarget(Factor startingFactorToUse)
 	{
 		HashSet<Cause> upstreamThreats = getUpstreamThreatsFromTarget(startingFactorToUse);
@@ -73,6 +65,14 @@ public class ThreatTargetChainWalker
 		initializeChain(startingFactorToUse);
 		buildDownstreamChain();
 		return resultingTargets;
+	}
+	
+	private void initializeChain(Factor startingFactorToUse)
+	{
+		setStartingFactor(startingFactorToUse);
+		resultingThreats = new HashSet();
+		resultingTargets = new HashSet();
+		processedLinks = new HashSet();
 	}
 	
 	private void buildChain(int direction)
