@@ -35,9 +35,9 @@ public class ActionCreateAccountingCode extends ObjectsAction
 		return EAM.text("Action|Manage|Create Accounting Code");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create an Accounting Code");
 	}
-
 }
