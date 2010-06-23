@@ -246,7 +246,7 @@ abstract public class BaseObject
 	
 	public DiagramChainWalker getNonDiagramChainWalker()
 	{
-		return getObjectManager().getNonDiagramChainWalker();
+		return getObjectManager().getDiagramChainWalker();
 	}
 	
 	public DiagramChainWalker getDiagramChainWalker()

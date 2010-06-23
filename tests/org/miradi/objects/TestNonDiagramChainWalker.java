@@ -36,7 +36,7 @@ public class TestNonDiagramChainWalker extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		project = new ProjectForTesting(getName());
-		walker = project.getObjectManager().getNonDiagramChainWalker();
+		walker = project.getObjectManager().getDiagramChainWalker();
 		super.setUp();
 	}
 	
