@@ -106,7 +106,7 @@ public class ObjectManager
 	public ObjectManager(Project projectToUse)
 	{
 		project = projectToUse;
-		nonDiagramChainWalker = new NonDiagramChainWalker();
+		nonDiagramChainWalker = new NonDiagramChainWalker(getProject());
 		diagramChainWalker = new DiagramChainWalker();
 		referrerCache = new HashMap<ORef, ORefSet>();
 
@@ -295,7 +295,6 @@ public class ObjectManager
 				pool.put(realId, cmLinkage);
 				getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
 				createdId = cmLinkage.getId();
-				getNonDiagramChainWalker().clearCaches();
 				break;
 			}
 			default:
@@ -322,7 +321,8 @@ public class ObjectManager
 
 	public void deleteObject(BaseObject object) throws Exception
 	{
-		removeFromReferrerCache(object.getRef());
+		ORef objectRef = object.getRef();
+		removeFromReferrerCache(objectRef);
 		int objectType = object.getType();
 		BaseId objectId = object.getId();
 		EAMObjectPool pool = getPool(objectType);
@@ -330,8 +330,6 @@ public class ObjectManager
 			throw new RuntimeException("Attempted to delete missing object: " + objectType + ":" + objectId);
 		pool.remove(objectId);
 		getDatabase().deleteObject(objectType, objectId);
-		if(objectType == FactorLink.getObjectType())
-			getNonDiagramChainWalker().clearCaches();
 		getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
 	}
 
