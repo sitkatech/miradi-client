@@ -140,6 +140,23 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 		throw new RuntimeException("createInvalidObject does not handle the object type: " + objectType);
 	}
 	
+	public boolean isColumnForType(int column, int objectType)
+	{
+		if (FundingSource.is(objectType))
+			return isFundingSourceColumn(column);
+		
+		if (AccountingCode.is(objectType))
+			return isAccountingCodeColumn(column);
+		
+		if (CategoryOne.is(objectType))
+			return isCategoryOneColumn(column);
+		
+		if (CategoryTwo.is(objectType))
+			return isCategoryTwoColumn(column);
+		
+		return false;
+	}
+	
 	abstract protected BaseObject getFundingSource(BaseObject assignment);
 	
 	abstract protected BaseObject getAccountingCode(BaseObject assignment);
