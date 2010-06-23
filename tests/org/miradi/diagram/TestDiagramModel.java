@@ -185,7 +185,7 @@ public class TestDiagramModel extends EAMTestCase
 			{
 				String label = Integer.toString(expectedChainNodeIds[i]);
 				DiagramFactor diagramFactor = findDiagramFactor(label);
-				DiagramChainWalker chainObject = model.getDiagramChainWalker();
+				ChainWalker chainObject = model.getDiagramChainWalker();
 				
 				FactorSet gotUpChainNodes = chainObject.buildUpstreamChainAndGetFactors(model.getDiagramObject(), diagramFactor);
 				Set gotLabels1 = getLabelSet(gotUpChainNodes);
