@@ -59,42 +59,30 @@ public class AbstractAssignmentDetailsMainTable extends AbstractComponentTable
 	
 	private void createAccountingCodeColumn(int tableColumn)
 	{
-		int modelColumn = convertColumnIndexToModel(tableColumn);
-		if (! getAbstractSummaryTableModel().isAccountingCodeColumn(modelColumn))
-			return;
-		
 		createComboColumnWithInvalidObject(tableColumn, AccountingCode.getObjectType());
 	}
 	
 	private void createFundingSourceColumn(int tableColumn)
 	{
-		int modelColumn = convertColumnIndexToModel(tableColumn);
-		if (! getAbstractSummaryTableModel().isFundingSourceColumn(modelColumn))
-			return;
-
 		createComboColumnWithInvalidObject(tableColumn, FundingSource.getObjectType());
 	}
 	
 	private void createCategoryOneColumn(int tableColumn)
 	{
-		int modelColumn = convertColumnIndexToModel(tableColumn);
-		if (! getAbstractSummaryTableModel().isCategoryOneColumn(modelColumn))
-			return;
-
 		createComboColumnWithInvalidObject(tableColumn, CategoryOne.getObjectType());
 	}
 
 	private void createCategoryTwoColumn(int tableColumn)
 	{
-		int modelColumn = convertColumnIndexToModel(tableColumn);
-		if (! getAbstractSummaryTableModel().isCategoryTwoColumn(modelColumn))
-			return;
-
 		createComboColumnWithInvalidObject(tableColumn, CategoryTwo.getObjectType());
 	}
 	
 	private void createComboColumnWithInvalidObject(int tableColumn, int objectType)
 	{
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		if (! getAbstractSummaryTableModel().isColumnForType(modelColumn, objectType))
+			return;
+		
 		BaseObject[] baseObjects = getObjectManager().getPool(objectType).getAllObjectsAsArray();
 		BaseObject invalidObject = ResourceAssignmentMainTableModel.createInvalidObject(getObjectManager(), objectType);
 		createComboColumn(baseObjects, tableColumn, invalidObject);
