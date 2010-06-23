@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2010, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -20,12 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.objects.AccountingCode;
 
-public class AccountingCodeObjectSchemaElement extends AbstractBudgetCategorySchemaElement
+abstract public class AbstractBudgetCategorySchemaElement extends BaseObjectSchemaElementWithLabel
 {
-	public AccountingCodeObjectSchemaElement()
+	public AbstractBudgetCategorySchemaElement(String objectTypeNameToUse)
 	{
-		super(WcsXmlConstants.ACCOUNTING_CODE);
+		super(objectTypeNameToUse);
+		
+		createOptionalTextField(AccountingCode.TAG_CODE);
+		createOptionalTextField(AccountingCode.TAG_COMMENTS);
 	}
 }
