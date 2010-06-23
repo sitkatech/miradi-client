@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/38'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/39'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -38,6 +38,8 @@ ConservationProject.element = element miradi:ConservationProject
   MeasurementPool.element ?  &
   AccountingCodePool.element ?  &
   FundingSourcePool.element ?  &
+  CategoryOnePool.element ?  &
+  CategoryTwoPool.element ?  &
   ExpenseAssignmentPool.element ?  &
   ResourceAssignmentPool.element ?  &
   ThreatRatingPool.element ?  &
@@ -560,6 +562,24 @@ FundingSource.element = element miradi:FundingSource
   element miradi:FundingSourceName { text }? &
   element miradi:FundingSourceCode { text }? &
   element miradi:FundingSourceComments { text }?
+}
+
+CategoryOnePool.element = element miradi:CategoryOnePool { CategoryOne.element* }
+CategoryOne.element = element miradi:CategoryOne
+{
+  attribute Id {xsd:integer}  &
+  element miradi:CategoryOneLabel { text }? &
+  element miradi:CategoryOneCode { text }? &
+  element miradi:CategoryOneComments { text }?
+}
+
+CategoryTwoPool.element = element miradi:CategoryTwoPool { CategoryTwo.element* }
+CategoryTwo.element = element miradi:CategoryTwo
+{
+  attribute Id {xsd:integer}  &
+  element miradi:CategoryTwoLabel { text }? &
+  element miradi:CategoryTwoCode { text }? &
+  element miradi:CategoryTwoComments { text }?
 }
 
 ExpenseAssignmentPool.element = element miradi:ExpenseAssignmentPool { ExpenseAssignment.element* }

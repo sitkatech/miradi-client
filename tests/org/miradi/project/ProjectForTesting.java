@@ -47,9 +47,12 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objecthelpers.TimePeriodCosts;
+import org.miradi.objects.AbstractBudgetCategoryObject;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Audience;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.CategoryOne;
+import org.miradi.objects.CategoryTwo;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -556,6 +559,22 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return organization;
 	}
 	
+	public CategoryOne createAndPopulateCategoryOne() throws Exception
+	{
+		CategoryOne categoryOne = createCategoryOne();
+		populateCategoryOne(categoryOne);
+		
+		return categoryOne;
+	}
+	
+	public CategoryTwo createAndPopulateCategoryTwo() throws Exception
+	{
+		CategoryTwo categoryTwo = createCategoryTwo();
+		populateCategoryTwo(categoryTwo);
+		
+		return categoryTwo;
+	}
+	
 	public DiagramFactor createAndPopulateDiagramFactor() throws Exception
 	{
 		DiagramFactor diagramFactor = createDiagramFactorAndAddToDiagram(Target.getObjectType());
@@ -880,6 +899,18 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return AccountingCode.find(this, accountingCodeRef);
 	}
 	
+	public CategoryOne createCategoryOne() throws Exception
+	{
+		ORef categoryOneRef = createObject(CategoryOne.getObjectType());
+		return CategoryOne.find(this, categoryOneRef);
+	}
+	
+	public CategoryTwo createCategoryTwo() throws Exception
+	{
+		ORef categoryTwoRef = createObject(CategoryTwo.getObjectType());
+		return CategoryTwo.find(this, categoryTwoRef);
+	}
+
 	public ThreatReductionResult createThreatReductionResult() throws Exception
 	{
 		ORef threatReductionResultRef = createObject(ThreatReductionResult.getObjectType());
@@ -1295,6 +1326,18 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(organization, Organization.TAG_COMMENTS, "Some organization comments");
 	}
 	
+	public void populateCategoryOne(CategoryOne categoryOne) throws Exception
+	{
+		fillObjectWithSampleStringData(categoryOne, AbstractBudgetCategoryObject.TAG_CODE);
+		fillObjectWithSampleStringData(categoryOne, AbstractBudgetCategoryObject.TAG_COMMENTS);
+	}
+	
+	public void populateCategoryTwo(CategoryTwo categoryTwo) throws Exception
+	{
+		fillObjectWithSampleStringData(categoryTwo, AbstractBudgetCategoryObject.TAG_CODE);
+		fillObjectWithSampleStringData(categoryTwo, AbstractBudgetCategoryObject.TAG_COMMENTS);
+	}
+	
 	public void populateDiagramFactor(DiagramFactor diagramFactor) throws Exception
 	{
 		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(new Point(10, 10)));
@@ -1369,6 +1412,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateAudience();
 		createAndPopulateOtherNotableSpecies();
 		createAndPopulateIucnRedlistspecies();
+		createAndPopulateCategoryOne();
+		createAndPopulateCategoryTwo();
 	}
 
 	public void validateObjectOwners(int type)
