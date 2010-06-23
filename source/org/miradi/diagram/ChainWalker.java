@@ -68,6 +68,27 @@ public class ChainWalker
 		return getFactors();
 	}
 	
+	public FactorSet buildNormalChainAndGetFactors(Factor factor)
+	{
+		Project project = factor.getProject();
+		FactorSet factorsOnAllDiagrams = new FactorSet();
+		ChainWalker realWalker = new ChainWalker();
+		ORefList diagramFactorRefs = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		for(int i = 0; i < diagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor df = DiagramFactor.find(project, diagramFactorRefs.get(i));
+			ORefList diagramRefs = df.findDiagramsThatReferToUs();
+			if(diagramRefs.size() != 1)
+				throw new RuntimeException("DF " + df.getRef() + " is in multiple diagrams: " + diagramRefs);
+			
+			DiagramObject diagram = DiagramObject.findDiagramObject(project, diagramRefs.getFirstElement());
+			FactorSet factorsOnThisDiagram = realWalker.buildNormalChainAndGetFactors(diagram, df);
+			factorsOnAllDiagrams.attemptToAddAll(factorsOnThisDiagram);
+		}
+		
+		return factorsOnAllDiagrams;
+	}
+
 	private void buildNormalChain(DiagramObject diagramObjectToUse , DiagramFactor diagramFactor)
 	{
 		initializeChain(diagramObjectToUse, diagramFactor);
@@ -234,27 +255,6 @@ public class ChainWalker
 	private Factor getStartingFactor()
 	{
 		return startingFactor.getWrappedFactor();
-	}
-
-	public FactorSet buildNormalChainAndGetFactors(Factor factor)
-	{
-		Project project = factor.getProject();
-		FactorSet factorsOnAllDiagrams = new FactorSet();
-		ChainWalker realWalker = new ChainWalker();
-		ORefList diagramFactorRefs = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
-		for(int i = 0; i < diagramFactorRefs.size(); ++i)
-		{
-			DiagramFactor df = DiagramFactor.find(project, diagramFactorRefs.get(i));
-			ORefList diagramRefs = df.findDiagramsThatReferToUs();
-			if(diagramRefs.size() != 1)
-				throw new RuntimeException("DF " + df.getRef() + " is in multiple diagrams: " + diagramRefs);
-			
-			DiagramObject diagram = DiagramObject.findDiagramObject(project, diagramRefs.getFirstElement());
-			FactorSet factorsOnThisDiagram = realWalker.buildNormalChainAndGetFactors(diagram, df);
-			factorsOnAllDiagrams.attemptToAddAll(factorsOnThisDiagram);
-		}
-		
-		return factorsOnAllDiagrams;
 	}
 
 	private DiagramObject diagramObject;
