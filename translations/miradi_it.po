@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-22 18:34-0500\n"
+"POT-Creation-Date: 2010-06-23 09:56-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -5780,7 +5780,7 @@ msgstr ""
 msgid "TT|Create a projected expense"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreateAccountingCode.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateAccountingCode.java:41
 msgid "TT|Create an Accounting Code"
 msgstr ""
 
