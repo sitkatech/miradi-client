@@ -35,9 +35,9 @@ public class ActionDeleteAccountingCode extends ObjectsAction
 		return EAM.text("Action|Manage|Delete Accounting Code");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete the selected Accounting Code");
 	}
-
 }
