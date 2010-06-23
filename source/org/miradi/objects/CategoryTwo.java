@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -62,6 +63,12 @@ public class CategoryTwo extends AbstractBudgetCategoryObject
 	public static int getObjectType()
 	{
 		return ObjectType.CATEGORY_TWO;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return toString(EAM.text("Label|(Undefined Category Two)"));
 	}
 	
 	public static boolean is(BaseObject object)

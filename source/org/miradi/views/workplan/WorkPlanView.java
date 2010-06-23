@@ -22,12 +22,14 @@ package org.miradi.views.workplan;
 
 import org.miradi.actions.ActionCreateAccountingCode;
 import org.miradi.actions.ActionCreateCategoryOne;
+import org.miradi.actions.ActionCreateCategoryTwo;
 import org.miradi.actions.ActionCreateChildTask;
 import org.miradi.actions.ActionCreateFundingSource;
 import org.miradi.actions.ActionCreateResource;
 import org.miradi.actions.ActionCreateSameLevelTask;
 import org.miradi.actions.ActionDeleteAccountingCode;
 import org.miradi.actions.ActionDeleteCategoryOne;
+import org.miradi.actions.ActionDeleteCategoryTwo;
 import org.miradi.actions.ActionDeleteFundingSource;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionDeleteResource;
@@ -65,7 +67,9 @@ import org.miradi.views.umbrella.doers.TaskMoveDownDoer;
 import org.miradi.views.umbrella.doers.TaskMoveUpDoer;
 import org.miradi.views.umbrella.doers.TreeNodeShareActivityDoer;
 import org.miradi.views.umbrella.doers.TreeNodeShareMethodDoer;
+import org.miradi.views.workplan.doers.CreateCategoryTwoDoer;
 import org.miradi.views.workplan.doers.CreateCategotyOneDoer;
+import org.miradi.views.workplan.doers.DeleteCategoryTwoDoer;
 import org.miradi.views.workplan.doers.DeleteCategotyOneDoer;
 import org.miradi.views.workplan.doers.ProjectResourceWorkPlanFilterEditDoer;
 
@@ -85,12 +89,14 @@ public class WorkPlanView extends TabbedView
 		accountingCodePoolManagementPanel = WorkPlanAccountingCodeManagementPanel.createAccountingPanel(getMainWindow());
 		fundingSourceManagementPanel = WorkPlanFundingSourceManagementPanel.createFundingSourcePanel(getMainWindow());
 		categoryOnePoolMangementPanel = WorkPlanCategoryOneMangementPanel.createPanel(getMainWindow());
+		categoryTwoPoolMangementPanel = WorkPlanCategoryTwoMangementPanel.createPanel(getMainWindow());
 		
 		addNonScrollingTab(workPlanManagementPanel);
 		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
 		addNonScrollingTab(fundingSourceManagementPanel);
 		addNonScrollingTab(categoryOnePoolMangementPanel);
+		addNonScrollingTab(categoryTwoPoolMangementPanel);
 	}
 	
 	@Override
@@ -110,6 +116,9 @@ public class WorkPlanView extends TabbedView
 		
 		categoryOnePoolMangementPanel.dispose();
 		categoryOnePoolMangementPanel = null;
+		
+		categoryTwoPoolMangementPanel.dispose();
+		categoryTwoPoolMangementPanel = null;
 		
 		super.deleteTabs();
 	}
@@ -154,6 +163,9 @@ public class WorkPlanView extends TabbedView
 		
 		addDoerToMap(ActionCreateCategoryOne.class, new CreateCategotyOneDoer());
 		addDoerToMap(ActionDeleteCategoryOne.class, new DeleteCategotyOneDoer());		
+		
+		addDoerToMap(ActionCreateCategoryTwo.class, new CreateCategoryTwoDoer());
+		addDoerToMap(ActionDeleteCategoryTwo.class, new DeleteCategoryTwoDoer());
 
 		addDoerToMap(ActionCreateFundingSource.class, new CreateFundingSourceDoer());
 		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());
@@ -173,4 +185,5 @@ public class WorkPlanView extends TabbedView
 	private PlanningTreeManagementPanel accountingCodePoolManagementPanel;
 	private PlanningTreeManagementPanel fundingSourceManagementPanel;
 	private PlanningTreeManagementPanel categoryOnePoolMangementPanel;
+	private PlanningTreeManagementPanel categoryTwoPoolMangementPanel;
 }
