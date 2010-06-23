@@ -23,7 +23,7 @@ package org.miradi.views.workplan.doers;
 import org.miradi.objects.CategoryOne;
 import org.miradi.views.planning.doers.CreatePoolObjectDoer;
 
-public class CreateCategotyOneDoer extends CreatePoolObjectDoer
+public class CreateCategoryOneDoer extends CreatePoolObjectDoer
 {
 	@Override
 	protected int getTypeToCreate()

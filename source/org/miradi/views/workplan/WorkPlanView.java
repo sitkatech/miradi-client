@@ -68,7 +68,7 @@ import org.miradi.views.umbrella.doers.TaskMoveUpDoer;
 import org.miradi.views.umbrella.doers.TreeNodeShareActivityDoer;
 import org.miradi.views.umbrella.doers.TreeNodeShareMethodDoer;
 import org.miradi.views.workplan.doers.CreateCategoryTwoDoer;
-import org.miradi.views.workplan.doers.CreateCategotyOneDoer;
+import org.miradi.views.workplan.doers.CreateCategoryOneDoer;
 import org.miradi.views.workplan.doers.DeleteCategoryTwoDoer;
 import org.miradi.views.workplan.doers.DeleteCategotyOneDoer;
 import org.miradi.views.workplan.doers.ProjectResourceWorkPlanFilterEditDoer;
@@ -161,7 +161,7 @@ public class WorkPlanView extends TabbedView
 		addDoerToMap(ActionDeleteAccountingCode.class, new DeleteAccountingCodeDoer());
 		addDoerToMap(ActionImportAccountingCodes.class, new ImportAccountingCodesDoer());
 		
-		addDoerToMap(ActionCreateCategoryOne.class, new CreateCategotyOneDoer());
+		addDoerToMap(ActionCreateCategoryOne.class, new CreateCategoryOneDoer());
 		addDoerToMap(ActionDeleteCategoryOne.class, new DeleteCategotyOneDoer());		
 		
 		addDoerToMap(ActionCreateCategoryTwo.class, new CreateCategoryTwoDoer());
