@@ -106,7 +106,7 @@ public class ObjectManager
 	public ObjectManager(Project projectToUse)
 	{
 		project = projectToUse;
-		nonDiagramChainWalker = new NonDiagramChainWalker(getProject());
+		nonDiagramChainWalker = new NonDiagramChainWalker();
 		diagramChainWalker = new DiagramChainWalker();
 		referrerCache = new HashMap<ORef, ORefSet>();
 
