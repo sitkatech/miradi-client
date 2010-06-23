@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectpools;
 
+import java.util.Vector;
+
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
@@ -55,5 +57,23 @@ public class EAMObjectPool extends ObjectPool
 		ORefList sortedList = new ORefList(getObjectType(), getIdList());
 		sortedList.sort();
 		return sortedList;
+	}
+	
+	public BaseObject[] getAllObjectsAsArray()
+	{
+		return getAllObjects().toArray(new BaseObject[0]);
+	}
+	
+	public Vector<BaseObject> getAllObjects()
+	{
+		Vector<BaseObject> allObjects = new Vector<BaseObject>();
+		ORefList allRefs = getORefList();
+		for (int index = 0; index < allRefs.size(); ++index)
+		{
+			ORef ref = allRefs.get(index);
+			allObjects.add(findObject(ref));
+		}
+		
+		return allObjects;
 	}
 }

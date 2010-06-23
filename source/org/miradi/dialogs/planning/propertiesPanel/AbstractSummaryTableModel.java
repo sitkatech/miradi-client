@@ -19,9 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
+import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.CategoryOne;
+import org.miradi.objects.CategoryTwo;
+import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.ColumnTagProvider;
 
@@ -47,6 +52,12 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 		if (isFundingSourceColumn(column))
 			return EAM.text("Funding Source");
 		
+		if (isCategoryOneColumn(column))
+			return EAM.text("Category One");
+		
+		if (isCategoryTwoColumn(column))
+			return EAM.text("Category Two");
+		
 		return null;
 	}
 	
@@ -65,7 +76,22 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 		if (isAccountingCodeColumn(column))
 			return getAccountingCode(baseObjectForRow);
 		
+		if (isCategoryOneColumn(column))
+			return getBaseObject(baseObjectForRow, Assignment.TAG_CATEGORY_ONE_REF, CategoryOne.getObjectType());
+		
+		if (isCategoryTwoColumn(column))
+			return getBaseObject(baseObjectForRow, Assignment.TAG_CATEGORY_TWO_REF, CategoryTwo.getObjectType());
+		
 		return null;
+	}
+	
+	protected BaseObject getBaseObject(BaseObject baseObjectForRow, String tagForRef, int objectType)
+	{
+		ORef ref = baseObjectForRow.getRef(tagForRef);
+		if (ref.isInvalid())
+			return createInvalidObject(getObjectManager(), objectType);
+			
+		return BaseObject.find(getProject(), ref);
 	}
 
 	@Override
@@ -77,11 +103,33 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 		
 		if (isFundingSourceColumn(column))
 			setFundingSource(value, refForRow, column);
+		
+		if (isCategoryOneColumn(column))
+			setRefValue((BaseObject) value, Assignment.TAG_CATEGORY_ONE_REF, refForRow);
+		
+		if (isCategoryTwoColumn(column))
+			setRefValue((BaseObject) value, Assignment.TAG_CATEGORY_TWO_REF, refForRow);
 	}
 	
+	private void setRefValue(BaseObject baseObject, String destinationTag, ORef refForRow)
+	{
+		setValueUsingCommand(refForRow, destinationTag, baseObject.getRef());
+	}
+
 	public String getColumnTag(int column)
 	{
 		return getColumnName(column);
+	}
+	
+	public static BaseObject createInvalidObject(ObjectManager objectManager, int objectType)
+	{
+		if (CategoryOne.is(objectType))
+			return new CategoryOne(objectManager, BaseId.INVALID);
+		
+		if (CategoryTwo.is(objectType))
+			return new CategoryTwo(objectManager, BaseId.INVALID);
+		
+		throw new RuntimeException("createInvalidObject does not handle the object type: " + objectType);
 	}
 	
 	abstract protected BaseObject getFundingSource(BaseObject assignment);
@@ -91,6 +139,10 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 	abstract public boolean isFundingSourceColumn(int column);
 
 	abstract public boolean isAccountingCodeColumn(int column);
+	
+	abstract public boolean isCategoryOneColumn(int column);
+	
+	abstract public boolean isCategoryTwoColumn(int column);
 
 	abstract public int getColumnCount();
 	

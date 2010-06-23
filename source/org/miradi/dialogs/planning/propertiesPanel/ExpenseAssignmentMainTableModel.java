@@ -114,6 +114,18 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 	{
 		return getAccountingCodeColumn() == column;
 	}
+	
+	@Override
+	public boolean isCategoryOneColumn(int column)
+	{
+		return CATEGORY_ONE_COLUMN == column;
+	}
+	
+	@Override
+	public boolean isCategoryTwoColumn(int column)
+	{
+		return CATEGORY_TWO_COLUMN == column;
+	}
 
 	private int getAccountingCodeColumn()
 	{
@@ -192,9 +204,11 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 				
 	private static final String UNIQUE_MODEL_IDENTIFIER = "ExpenseAssignmentMainTableModel";
 	
-	private static final int COLUMN_COUNT = 3;
+	private static final int COLUMN_COUNT = 5;
 	
 	private static final int EXPENSE_NAME_COLUMN = 0;
 	private static final int ACCOUNTING_CODE_COLUMN = 1;
 	private static final int FUNDING_SOURCE_COLUMN = 2;
+	private static final int CATEGORY_ONE_COLUMN = 3;
+	private static final int CATEGORY_TWO_COLUMN = 4;
 }

@@ -24,6 +24,9 @@ import java.awt.Color;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.AccountingCode;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.CategoryOne;
+import org.miradi.objects.CategoryTwo;
 import org.miradi.objects.FundingSource;
 
 public class AbstractAssignmentDetailsMainTable extends AbstractComponentTable
@@ -49,6 +52,8 @@ public class AbstractAssignmentDetailsMainTable extends AbstractComponentTable
 		{
 			createFundingSourceColumn(tableColumn);
 			createAccountingCodeColumn(tableColumn);
+			createCategoryOneColumn(tableColumn);
+			createCategoryTwoColumn(tableColumn);
 		}
 	}
 	
@@ -72,6 +77,31 @@ public class AbstractAssignmentDetailsMainTable extends AbstractComponentTable
 		FundingSource[] fundingSources = getObjectManager().getFundingSourcePool().getAllFundingSources();
 		FundingSource invalidFundintSource = ResourceAssignmentMainTableModel.createInvalidFundingSource(getObjectManager());
 		createComboColumn(fundingSources, tableColumn, invalidFundintSource);
+	}
+	
+	private void createCategoryOneColumn(int tableColumn)
+	{
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		if (! getAbstractSummaryTableModel().isCategoryOneColumn(modelColumn))
+			return;
+
+		createComboColumnWithInvalidObject(tableColumn, CategoryOne.getObjectType());
+	}
+
+	private void createCategoryTwoColumn(int tableColumn)
+	{
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		if (! getAbstractSummaryTableModel().isCategoryTwoColumn(modelColumn))
+			return;
+
+		createComboColumnWithInvalidObject(tableColumn, CategoryTwo.getObjectType());
+	}
+	
+	private void createComboColumnWithInvalidObject(int tableColumn, int objectType)
+	{
+		BaseObject[] baseObjects = getObjectManager().getPool(objectType).getAllObjectsAsArray();
+		BaseObject invalidObject = ResourceAssignmentMainTableModel.createInvalidObject(getObjectManager(), objectType);
+		createComboColumn(baseObjects, tableColumn, invalidObject);
 	}
 	
 	protected AbstractSummaryTableModel getAbstractSummaryTableModel()
