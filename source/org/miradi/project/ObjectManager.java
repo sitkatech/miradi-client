@@ -168,11 +168,6 @@ public class ObjectManager
 		addNormalPool(new CategoryTwoPool(ida));
 	}
 	
-	public DiagramChainWalker getNonDiagramChainWalker()
-	{
-		return getDiagramChainWalker();
-	}
-	
 	public DiagramChainWalker getDiagramChainWalker()
 	{
 		return diagramChainWalker;
