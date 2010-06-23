@@ -50,31 +50,11 @@ public class AbstractAssignmentDetailsMainTable extends AbstractComponentTable
 	{
 		for (int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
 		{
-			createFundingSourceColumn(tableColumn);
-			createAccountingCodeColumn(tableColumn);
-			createCategoryOneColumn(tableColumn);
-			createCategoryTwoColumn(tableColumn);
+			createComboColumnWithInvalidObject(tableColumn, FundingSource.getObjectType());
+			createComboColumnWithInvalidObject(tableColumn, AccountingCode.getObjectType());
+			createComboColumnWithInvalidObject(tableColumn, CategoryOne.getObjectType());
+			createComboColumnWithInvalidObject(tableColumn, CategoryTwo.getObjectType());
 		}
-	}
-	
-	private void createAccountingCodeColumn(int tableColumn)
-	{
-		createComboColumnWithInvalidObject(tableColumn, AccountingCode.getObjectType());
-	}
-	
-	private void createFundingSourceColumn(int tableColumn)
-	{
-		createComboColumnWithInvalidObject(tableColumn, FundingSource.getObjectType());
-	}
-	
-	private void createCategoryOneColumn(int tableColumn)
-	{
-		createComboColumnWithInvalidObject(tableColumn, CategoryOne.getObjectType());
-	}
-
-	private void createCategoryTwoColumn(int tableColumn)
-	{
-		createComboColumnWithInvalidObject(tableColumn, CategoryTwo.getObjectType());
 	}
 	
 	private void createComboColumnWithInvalidObject(int tableColumn, int objectType)
