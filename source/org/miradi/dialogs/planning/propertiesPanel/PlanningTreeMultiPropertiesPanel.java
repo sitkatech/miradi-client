@@ -23,6 +23,7 @@ import org.miradi.dialogs.accountingcode.AccountingCodePropertiesPanel;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
 import org.miradi.dialogs.categoryOne.CategoryOnePropertiesPanel;
+import org.miradi.dialogs.categoryTwo.CategoryTwoPropertiesPanel;
 import org.miradi.dialogs.diagram.AbstractStrategyPropertiesPanel;
 import org.miradi.dialogs.diagram.ConceptualModelPropertiesPanel;
 import org.miradi.dialogs.diagram.ResultsChainPropertiesPanel;
@@ -41,6 +42,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.CategoryOne;
+import org.miradi.objects.CategoryTwo;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.FundingSource;
@@ -86,6 +88,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		fundingSourcePropertiesPanel = new FundingSourcePropertiesPanel(getProject(), BaseId.INVALID);
 		accountingCodePropertiesPanel = new AccountingCodePropertiesPanel(getProject(), BaseId.INVALID);
 		categoryOnePropertiesPanel = new CategoryOnePropertiesPanel(getProject());
+		categoryTwoPropertiesPanel = new CategoryTwoPropertiesPanel(getProject());
 		
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
 		
@@ -107,6 +110,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		addPanel(fundingSourcePropertiesPanel);
 		addPanel(accountingCodePropertiesPanel);
 		addPanel(categoryOnePropertiesPanel);
+		addPanel(categoryTwoPropertiesPanel);
 		addPanel(blankPropertiesPanel);
 	}
 
@@ -196,6 +200,9 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		if (CategoryOne.is(objectType))
 			return categoryOnePropertiesPanel;
 		
+		if (CategoryTwo.is(objectType))
+			return categoryTwoPropertiesPanel;
+		
 		return blankPropertiesPanel;
 	}
 
@@ -239,5 +246,6 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private FundingSourcePropertiesPanel fundingSourcePropertiesPanel;
 	private AccountingCodePropertiesPanel accountingCodePropertiesPanel;
 	private CategoryOnePropertiesPanel categoryOnePropertiesPanel;
+	private CategoryTwoPropertiesPanel categoryTwoPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 }

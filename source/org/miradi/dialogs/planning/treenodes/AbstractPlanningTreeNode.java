@@ -30,6 +30,8 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.AccountingCode;
+import org.miradi.objects.CategoryOne;
+import org.miradi.objects.CategoryTwo;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
@@ -328,6 +330,8 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			ProjectResource.getObjectType(),
 			AccountingCode.getObjectType(),
 			FundingSource.getObjectType(),
+			CategoryOne.getObjectType(),
+			CategoryTwo.getObjectType(),
 			Task.getObjectType(),
 			Measurement.getObjectType(),
 			ResourceAssignment.getObjectType(),

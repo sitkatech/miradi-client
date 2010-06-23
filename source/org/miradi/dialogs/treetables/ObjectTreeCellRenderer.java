@@ -32,6 +32,7 @@ import org.miradi.icons.AccountingCodeIcon;
 import org.miradi.icons.ActivityIcon;
 import org.miradi.icons.AssignmentIcon;
 import org.miradi.icons.CategoryOneIcon;
+import org.miradi.icons.CategoryTwoIcon;
 import org.miradi.icons.ConceptualModelIcon;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
@@ -60,6 +61,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.CategoryOne;
+import org.miradi.objects.CategoryTwo;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.ExpenseAssignment;
@@ -167,6 +169,9 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		categoryOneRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(categoryOneRenderer, new CategoryOneIcon(), getPlainFont());
 		
+		categoryTwoRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(categoryTwoRenderer, new CategoryTwoIcon(), getPlainFont());
+		
 		scopeBoxRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(scopeBoxRenderer, new ScopeBoxIcon(), getPlainFont());
 	}
@@ -239,6 +244,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = accountingCodeRenderer;
 		else if (CategoryOne.is(node.getType()))
 			renderer = categoryOneRenderer;
+		else if (CategoryTwo.is(node.getType()))
+			renderer = categoryTwoRenderer;
 		else if (ScopeBox.is(node.getType()))
 			renderer = scopeBoxRenderer;
 		
@@ -321,6 +328,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	private VariableHeightTreeCellRenderer fundingSourceRenderer;
 	private VariableHeightTreeCellRenderer accountingCodeRenderer;
 	private VariableHeightTreeCellRenderer categoryOneRenderer;
+	private VariableHeightTreeCellRenderer categoryTwoRenderer;
 	private	VariableHeightTreeCellRenderer scopeBoxRenderer;
 	
 }
