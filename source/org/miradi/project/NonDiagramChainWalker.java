@@ -27,7 +27,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 
 
-public class NonDiagramChainWalker
+public class NonDiagramChainWalker extends DiagramChainWalker
 {	
 	public FactorSet buildNormalChainAndGetFactors(Factor factor)
 	{
