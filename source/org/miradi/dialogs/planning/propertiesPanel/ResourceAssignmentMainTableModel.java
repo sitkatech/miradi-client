@@ -23,10 +23,10 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AccountingCode;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 
@@ -150,6 +150,18 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 	public boolean isAccountingCodeColumn(int column)
 	{
 		return getAccountingCodeColumn() == column;
+	}
+	
+	@Override
+	public boolean isCategoryOneColumn(int column)
+	{
+		return CATEGORY_ONE_COLUMN == column;
+	}
+
+	@Override
+	public boolean isCategoryTwoColumn(int column)
+	{
+		return CATEGORY_TWO_COLUMN == column;
 	}
 
 	public boolean isResourceCostPerUnitColumn(int column)
@@ -275,13 +287,15 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 	{
 		return new AccountingCode(objectManager, BaseId.INVALID);
 	}
-
+	
 	private static final String UNIQUE_MODEL_IDENTIFIER = "ResourceAssignmentMainTableModel";
 	
-	private static final int COLUMN_COUNT = 4;
+	private static final int COLUMN_COUNT = 6;
 	
 	private static final int RESOURCE_COLUMM = 0;
 	private static final int RESOURCE_COST_PER_UNIT_COLUMN = 1;
 	private static final int ACCOUNTING_CODE_COLUMN = 2;
 	private static final int FUNDING_SOURCE_COLUMN = 3;
+	private static final int CATEGORY_ONE_COLUMN = 4;
+	private static final int CATEGORY_TWO_COLUMN = 5;
 }
