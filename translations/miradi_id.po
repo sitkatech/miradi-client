@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-23 09:56-0500\n"
+"POT-Creation-Date: 2010-06-23 10:02-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -6267,7 +6267,7 @@ msgstr ""
 msgid "TT|Delete the Other Notable Species"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionDeleteAccountingCode.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteAccountingCode.java:41
 msgid "TT|Delete the selected Accounting Code"
 msgstr "Hapus Kode Akuntansi terpilih "
 
