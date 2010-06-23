@@ -106,7 +106,7 @@ public class ObjectManager
 	public ObjectManager(Project projectToUse)
 	{
 		project = projectToUse;
-		nonDiagramChainWalker = new NonDiagramChainWalker();
+		nonDiagramChainWalker = new DiagramChainWalker();
 		diagramChainWalker = new DiagramChainWalker();
 		referrerCache = new HashMap<ORef, ORefSet>();
 
@@ -169,7 +169,7 @@ public class ObjectManager
 		addNormalPool(new CategoryTwoPool(ida));
 	}
 	
-	public NonDiagramChainWalker getNonDiagramChainWalker()
+	public DiagramChainWalker getNonDiagramChainWalker()
 	{
 		return nonDiagramChainWalker;
 	}
@@ -558,7 +558,7 @@ public class ObjectManager
 	}
 	
 	private Project project;
-	private NonDiagramChainWalker nonDiagramChainWalker;
+	private DiagramChainWalker nonDiagramChainWalker;
 	private DiagramChainWalker diagramChainWalker;
 	private HashMap<Integer, PoolWithIdAssigner> pools;
 	private HashMap<ORef, ORefSet> referrerCache;
