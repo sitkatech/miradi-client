@@ -20,23 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
-import org.martus.util.UnicodeWriter;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.FundingSource;
 
-public class FundingSourcePoolExporter extends BaseObjectPoolExporter
+public class FundingSourcePoolExporter extends AbstractBudgetCategoryPoolExporter
 {
 	public FundingSourcePoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, FUNDING_SOURCE, FundingSource.getObjectType());
-	}
-	
-	@Override
-	protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception
-	{
-		super.exportFields(writer, baseObject);
-		
-		writeOptionalElementWithSameTag(baseObject, FundingSource.TAG_CODE);
-		writeOptionalElementWithSameTag(baseObject, FundingSource.TAG_COMMENTS);
 	}
 }
