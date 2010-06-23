@@ -25,7 +25,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.CategoryOne;
 import org.miradi.views.umbrella.doers.DeletePoolObjectDoer;
 
-public class DeleteCategotyOneDoer extends DeletePoolObjectDoer
+public class DeleteCategoryOneDoer extends DeletePoolObjectDoer
 {
 	@Override
 	protected String getCustomText()
