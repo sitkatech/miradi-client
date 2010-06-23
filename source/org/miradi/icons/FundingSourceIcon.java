@@ -26,20 +26,21 @@ import org.miradi.diagram.renderers.RectangleRenderer;
 
 public class FundingSourceIcon  extends AbstractShapeIcon 
 {
-
+	@Override
 	FactorRenderer getRenderer() 
 	{
 		return new RectangleRenderer();
 	}
 
+	@Override
 	Color getIconColor() 
 	{
 		return Color.GREEN;
 	}
 	
+	@Override
 	public int getIconHeight()
 	{
 		return 10;
 	}
-
 }

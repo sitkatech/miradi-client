@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2010, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -20,22 +20,24 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning;
 
-import org.miradi.objects.AbstractBudgetCategoryObject;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.objects.CategoryOne;
 import org.miradi.utils.CodeList;
 
-public class AccountingCodeRowColumnProvider extends AccountingCodeCoreRowColumnProvider
+public class CategoryOneCoreRowColumnProvider implements RowColumnProvider
 {
-	@Override
 	public CodeList getColumnListToShow()
 	{
-		CodeList columnCodes = new CodeList();
-		columnCodes.add(AbstractBudgetCategoryObject.TAG_CODE);
+		return new CodeList(new String[] {
+				CategoryOne.TAG_CODE,
+				CategoryOne.TAG_LABEL,
+		});
 		
-		columnCodes.add(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
-		columnCodes.add(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE);
-		columnCodes.add(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE);
-		
-		return columnCodes;
+	}
+
+	public CodeList getRowListToShow()
+	{
+		return new CodeList(new String[] {
+				CategoryOne.OBJECT_NAME,
+		});
 	}
 }
