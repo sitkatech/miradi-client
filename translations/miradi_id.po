@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-23 12:24-0500\n"
+"POT-Creation-Date: 2010-06-23 15:00-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -902,7 +902,7 @@ msgstr ""
 msgid "AccountingCodes"
 msgstr "Kode Akuntansi"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:45
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:50
 msgid "Acct Code"
 msgstr "Kode Akuntansi "
 
@@ -2386,11 +2386,13 @@ msgstr "Kategori Ib: Kawasan Liar"
 
 #: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryOneDoer.java:33
 #: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryOneMangementPanel.java:69
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:56
 msgid "Category One"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryTwoMangementPanel.java:71
 #: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryTwoDoer.java:33
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:59
 msgid "Category Two"
 msgstr ""
 
@@ -3518,7 +3520,7 @@ msgid "Full Report"
 msgstr "Laporan Lengkap"
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:33
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:48
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:53
 msgid "Funding Source"
 msgstr "Sumber Dana "
 
@@ -4805,7 +4807,7 @@ msgstr "Tidak Efektif"
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: Miradi/source/org/miradi/utils/Translation.java:306
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:258
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:270
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/BaseObjectNotSpecifiedNode.java:81
 msgid "Not Specified"
 msgstr "Tidak Terspesifikasi "
