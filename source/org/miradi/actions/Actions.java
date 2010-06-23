@@ -269,6 +269,8 @@ public class Actions
 		registerAction(new ActionCreateAccountingCode(mainWindow));
 		registerAction(new ActionDeleteAccountingCode(mainWindow));
 		registerAction(new ActionImportAccountingCodes(mainWindow));
+		registerAction(new ActionCreateCategoryOne(mainWindow));
+		registerAction(new ActionDeleteCategoryOne(mainWindow));
 		registerAction(new ActionCreateFundingSource(mainWindow));
 		registerAction(new ActionDeleteFundingSource(mainWindow));
 		registerAction(new ActionCreateExpense(mainWindow));
