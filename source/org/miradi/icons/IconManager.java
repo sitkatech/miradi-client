@@ -25,6 +25,7 @@ import javax.swing.Icon;
 
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.CategoryOne;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
@@ -80,6 +81,7 @@ public class IconManager
 		addIcon(new IntermediateResultIcon());
 		addIcon(new AccountingCodeIcon());
 		addIcon(new FundingSourceIcon());
+		addIcon(new CategoryOneIcon());
 		addIcon(new ExpenseAssignmentIcon());
 		addIcon(new AssignmentIcon());
 		addIcon(new ProgressReportIcon());
@@ -170,6 +172,9 @@ public class IconManager
 		
 		if (AccountingCode.is(type))
 			return getAccountingCodeIcon();
+		
+		if (CategoryOne.is(type))
+			return getCategoryOneIcon();
 		
 		throw new RuntimeException("Could not find icon for type:" + type);
 	}
@@ -266,6 +271,11 @@ public class IconManager
 	private static Icon getFundingSourceIcon()
 	{
 		return getIcon(FundingSourceIcon.class);
+	}
+	
+	private static Icon getCategoryOneIcon()
+	{
+		return getIcon(CategoryOneIcon.class);
 	}
 
 	private static Icon getExpenseIcon()
