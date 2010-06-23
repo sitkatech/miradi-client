@@ -19,11 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.objects;
 
+import org.miradi.diagram.DiagramChainWalker;
 import org.miradi.main.EAMTestCase;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORefSet;
-import org.miradi.project.NonDiagramChainWalker;
 import org.miradi.project.ProjectForTesting;
 
 public class TestNonDiagramChainWalker extends EAMTestCase
@@ -104,5 +104,5 @@ public class TestNonDiagramChainWalker extends EAMTestCase
 	}
 
 	private ProjectForTesting project;
-	private NonDiagramChainWalker walker;
+	private DiagramChainWalker walker;
 }

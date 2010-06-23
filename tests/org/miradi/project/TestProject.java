@@ -29,6 +29,7 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.DiagramChainWalker;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
@@ -743,7 +744,7 @@ public class TestProject extends EAMTestCase
 		
 		if(owningFactor != null)
 		{
-			NonDiagramChainWalker chainObject = owner.getNonDiagramChainWalker();
+			DiagramChainWalker chainObject = owner.getNonDiagramChainWalker();
 			FactorSet nodesInChain = chainObject.buildNormalChainAndGetFactors(owningFactor);
 			
 			relatedFactors.attemptToAddAll(nodesInChain);
