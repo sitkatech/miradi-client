@@ -29,13 +29,9 @@ import org.miradi.objects.Factor;
 
 public class NonDiagramChainWalker
 {	
-	public NonDiagramChainWalker(Project projectToUse)
-	{
-		project = projectToUse;
-	}
-
 	public FactorSet buildNormalChainAndGetFactors(Factor factor)
 	{
+		project = factor.getProject();
 		FactorSet factorsOnAllDiagrams = new FactorSet();
 		DiagramChainWalker realWalker = new DiagramChainWalker();
 		ORefList diagramFactorRefs = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
