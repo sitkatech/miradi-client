@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-23 10:02-0500\n"
+"POT-Creation-Date: 2010-06-23 10:17-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -1264,6 +1264,10 @@ msgstr "Crear actividad"
 msgid "Action|Manage|Create Audience"
 msgstr ""
 
+#: Miradi/source/org/miradi/actions/ActionCreateCategoryOne.java:36
+msgid "Action|Manage|Create Category One"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionCreateChildTask.java:40
 msgid "Action|Manage|Create Child Task"
 msgstr ""
@@ -1354,6 +1358,10 @@ msgstr "Eliminar código contable"
 #: Miradi/source/org/miradi/actions/ActionDeleteActivity.java:35
 msgid "Action|Manage|Delete Activity"
 msgstr "Eliminar actividad"
+
+#: Miradi/source/org/miradi/actions/ActionDeleteCategoryOne.java:36
+msgid "Action|Manage|Delete Category One"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeleteFundingSource.java:35
 msgid "Action|Manage|Delete Funding Source"
@@ -2376,6 +2384,11 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/ProtectedAreaCategoryQuestion.java:36
 msgid "Category Ib: Wilderness area"
 msgstr "Categoría Ib: Área selvática"
+
+#: Miradi/source/org/miradi/views/workplan/doers/DeleteCategotyOneDoer.java:33
+#: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryOneMangementPanel.java:69
+msgid "Category One"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProtectedAreaCategoryQuestion.java:40
 msgid "Category V: Protected Landscape/Seascape"
@@ -6078,6 +6091,10 @@ msgstr ""
 msgid "TT|Create a Bend Point"
 msgstr "Crear un punto de curvatura"
 
+#: Miradi/source/org/miradi/actions/ActionCreateCategoryOne.java:42
+msgid "TT|Create a Category One"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionCreateSameLevelTask.java:42
 msgid "TT|Create a Create Task at Same Level"
 msgstr ""
@@ -6314,6 +6331,10 @@ msgstr "Eliminar el código contable seleccionado"
 #: Miradi/source/org/miradi/actions/ActionDeleteActivity.java:40
 msgid "TT|Delete the selected Activity"
 msgstr "Eliminar la actividad seleccionada"
+
+#: Miradi/source/org/miradi/actions/ActionDeleteCategoryOne.java:42
+msgid "TT|Delete the selected Category One"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:40
 msgid "TT|Delete the selected Custom Planning View"
@@ -7192,6 +7213,14 @@ msgstr "Visibilidad de la actividad"
 
 #: Miradi/source/org/miradi/dialogs/audience/AudienceSubPanel.java:60
 msgid "Title|Audiences"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/categoryOne/CategoryOnePropertiesPanel.java:38
+msgid "Title|Category One Properties"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/categoryTwo/CategoryTwoPropertiesPanel.java:38
+msgid "Title|Category Two Properties"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:39
