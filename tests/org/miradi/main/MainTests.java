@@ -119,7 +119,7 @@ import org.miradi.objects.TestOtherNotableSpecies;
 import org.miradi.objects.TestPlanningViewConfiguration;
 import org.miradi.objects.TestProgressPercent;
 import org.miradi.objects.TestProgressReport;
-import org.miradi.objects.TestNonDiagramChainWalker;
+import org.miradi.objects.TestChainWalker;
 import org.miradi.objects.TestProjectMetadata;
 import org.miradi.objects.TestProjectResource;
 import org.miradi.objects.TestRareProjectData;
@@ -368,7 +368,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestKeyEcologicalAttribute.class));
 		suite.addTest(new TestSuite(TestObjective.class));
 		suite.addTest(new TestSuite(TestObjectManager.class));
-		suite.addTest(new TestSuite(TestNonDiagramChainWalker.class));
+		suite.addTest(new TestSuite(TestChainWalker.class));
 		suite.addTest(new TestSuite(TestDiagramChainObject.class));
 		suite.addTest(new TestSuite(TestThreatTargetChainObject.class));
 		suite.addTest(new TestSuite(TestProjectMetadata.class));

@@ -26,9 +26,9 @@ import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.project.ProjectForTesting;
 
-public class TestNonDiagramChainWalker extends EAMTestCase
+public class TestChainWalker extends EAMTestCase
 {
-	public TestNonDiagramChainWalker(String name)
+	public TestChainWalker(String name)
 	{
 		super(name);
 	}
