@@ -28,7 +28,7 @@ public interface WcsXmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String OPTIONAL_ELEMENT = SINGLE_SPACE + "?" + SINGLE_SPACE;
 	
-	public static final String NAME_SPACE_VERSION = "38";
+	public static final String NAME_SPACE_VERSION = "39";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
@@ -95,6 +95,8 @@ public interface WcsXmlConstants
 	public static final String MEASUREMENT_IDS = "MeasurementIds";
 	public static final String ACCOUNTING_CODE = "AccountingCode";
 	public static final String FUNDING_SOURCE = "FundingSource";
+	public static final String CATEGORY_ONE = "CategoryOne";
+	public static final String CATEGORY_TWO = "CategoryTwo";
 	public static final String PROJECT_LOCATION = "ProjectLocation";
 	public static final String GEOSPATIAL_LOCATION = "GeospatialLocation";
 	public static final String LATITUDE = "latitude";

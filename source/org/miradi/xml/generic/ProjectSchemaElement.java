@@ -70,6 +70,8 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new ObjectPoolSchemaElement(new MeasurementObjectSchemaElement()));
 		objectTypes.add(new ObjectPoolSchemaElement(new AccountingCodeObjectSchemaElement()));
 		objectTypes.add(new ObjectPoolSchemaElement(new FundingSourceObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new CategoryOneObjectSchemaElement()));
+		objectTypes.add(new ObjectPoolSchemaElement(new CategoryTwoObjectSchemaElement()));
 		objectTypes.add(new ObjectPoolSchemaElement(new ExpenseAssignmentObjectSchemaElement()));
 		objectTypes.add(new ObjectPoolSchemaElement(new ResourceAssignmentObjectSchemaElement()));
 		objectTypes.add(new ObjectPoolSchemaElement(new ThreatTargetThreatRatingElement()));
