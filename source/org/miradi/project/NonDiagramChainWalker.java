@@ -20,34 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import org.miradi.diagram.DiagramChainWalker;
-import org.miradi.objecthelpers.FactorSet;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Factor;
 
 
 public class NonDiagramChainWalker extends DiagramChainWalker
-{	
-	public FactorSet buildNormalChainAndGetFactors(Factor factor)
-	{
-		Project project = factor.getProject();
-		FactorSet factorsOnAllDiagrams = new FactorSet();
-		DiagramChainWalker realWalker = new DiagramChainWalker();
-		ORefList diagramFactorRefs = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
-		for(int i = 0; i < diagramFactorRefs.size(); ++i)
-		{
-			DiagramFactor df = DiagramFactor.find(project, diagramFactorRefs.get(i));
-			ORefList diagramRefs = df.findDiagramsThatReferToUs();
-			if(diagramRefs.size() != 1)
-				throw new RuntimeException("DF " + df.getRef() + " is in multiple diagrams: " + diagramRefs);
-			
-			DiagramObject diagram = DiagramObject.findDiagramObject(project, diagramRefs.getFirstElement());
-			FactorSet factorsOnThisDiagram = realWalker.buildNormalChainAndGetFactors(diagram, df);
-			factorsOnAllDiagrams.attemptToAddAll(factorsOnThisDiagram);
-		}
-		
-		return factorsOnAllDiagrams;
-	}
+{
 	
 }
