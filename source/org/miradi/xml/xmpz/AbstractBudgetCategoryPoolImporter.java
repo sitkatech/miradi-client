@@ -20,13 +20,23 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz;
 
-import org.miradi.objects.FundingSource;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.AbstractBudgetCategoryObject;
+import org.w3c.dom.Node;
 
-public class FundingSourcePoolImporter extends AbstractBudgetCategoryPoolImporter
+public class AbstractBudgetCategoryPoolImporter extends	AbstractBaseObjectPoolImporter
 {
-	public FundingSourcePoolImporter(XmpzXmlImporter importerToUse)
+	public AbstractBudgetCategoryPoolImporter(XmpzXmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
 	{
-		super(importerToUse, WcsXmlConstants.FUNDING_SOURCE, FundingSource.getObjectType());
+		super(importerToUse, poolNameToUse, objectTypeToImportToUse);
+	}
+
+	@Override
+	protected void importFields(Node node, ORef destinationRef)	throws Exception
+	{
+		super.importFields(node, destinationRef);
+		
+		importField(node, destinationRef, AbstractBudgetCategoryObject.TAG_CODE);
+		importField(node, destinationRef, AbstractBudgetCategoryObject.TAG_COMMENTS);
 	}
 }
