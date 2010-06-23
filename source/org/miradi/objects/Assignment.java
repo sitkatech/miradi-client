@@ -66,47 +66,7 @@ abstract public class Assignment extends BaseObject
 	{
 		return convertDateUnitEffortList();
 	}
-	
-	public static boolean isAssignment(BaseObject baseObject)
-	{
-		return isAssignment(baseObject.getType());
-	}
-	
-	public static boolean isAssignment(ORef ref)
-	{
-		return isAssignment(ref.getObjectType());
-	}
-	
-	public static boolean is(ORef ref)
-	{
-		return isAssignment(ref.getObjectType());
-	}
-	
-	public static boolean isAssignment(int objectType)
-	{
-		if (ResourceAssignment.is(objectType))
-			return true;
 		
-		return ExpenseAssignment.is(objectType);
-	}
-	
-	public static Assignment findAssignment(ObjectManager objectManager, ORef assignmentRef)
-	{
-		return (Assignment) find(objectManager, assignmentRef);
-	}
-	
-	public static Assignment findAssignment(Project project, ORef assignmentRef)
-	{
-		return findAssignment(project.getObjectManager(), assignmentRef);
-	}
-		
-	@Override
-	public void clear()
-	{
-		super.clear();
-		addField(new DateUnitEffortListData(TAG_DATEUNIT_EFFORTS));
-	}
-	
 	protected TimePeriodCostsMap convertDateUnitEffortList() throws Exception
 	{
 		DateUnitEffortList duel = getDateUnitEffortList();
@@ -207,6 +167,47 @@ abstract public class Assignment extends BaseObject
 			return true;
 		
 		return false;
+	}
+	
+	public static boolean isAssignment(ORef ref)
+	{
+		return isAssignment(ref.getObjectType());
+	}
+	
+	public static boolean is(ORef ref)
+	{
+		return isAssignment(ref.getObjectType());
+	}
+	
+	public static boolean isAssignment(BaseObject baseObject)
+	{
+		return isAssignment(baseObject.getType());
+	}
+	
+	public static boolean isAssignment(int objectType)
+	{
+		if (ResourceAssignment.is(objectType))
+			return true;
+		
+		return ExpenseAssignment.is(objectType);
+	}
+	
+	public static Assignment findAssignment(ObjectManager objectManager, ORef assignmentRef)
+	{
+		return (Assignment) find(objectManager, assignmentRef);
+	}
+	
+	public static Assignment findAssignment(Project project, ORef assignmentRef)
+	{
+		return findAssignment(project.getObjectManager(), assignmentRef);
+	}
+	
+	@Override
+	public void clear()
+	{
+		super.clear();
+		
+		addField(new DateUnitEffortListData(TAG_DATEUNIT_EFFORTS));
 	}
 	
 	abstract protected TimePeriodCosts createTimePeriodCosts(OptionalDouble quantity);
