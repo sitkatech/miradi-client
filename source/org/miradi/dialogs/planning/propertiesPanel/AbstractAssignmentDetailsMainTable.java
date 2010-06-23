@@ -63,9 +63,7 @@ public class AbstractAssignmentDetailsMainTable extends AbstractComponentTable
 		if (! getAbstractSummaryTableModel().isAccountingCodeColumn(modelColumn))
 			return;
 		
-		AccountingCode[] accountingCodes = getObjectManager().getAccountingCodePool().getAllAccountingCodes();
-		AccountingCode invalidAccountingCode = ResourceAssignmentMainTableModel.createInvalidAccountingCode(getObjectManager());
-		createComboColumn(accountingCodes, tableColumn, invalidAccountingCode);
+		createComboColumnWithInvalidObject(tableColumn, AccountingCode.getObjectType());
 	}
 	
 	private void createFundingSourceColumn(int tableColumn)
@@ -74,9 +72,7 @@ public class AbstractAssignmentDetailsMainTable extends AbstractComponentTable
 		if (! getAbstractSummaryTableModel().isFundingSourceColumn(modelColumn))
 			return;
 
-		FundingSource[] fundingSources = getObjectManager().getFundingSourcePool().getAllFundingSources();
-		FundingSource invalidFundintSource = ResourceAssignmentMainTableModel.createInvalidFundingSource(getObjectManager());
-		createComboColumn(fundingSources, tableColumn, invalidFundintSource);
+		createComboColumnWithInvalidObject(tableColumn, FundingSource.getObjectType());
 	}
 	
 	private void createCategoryOneColumn(int tableColumn)
