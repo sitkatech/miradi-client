@@ -22,10 +22,12 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.CategoryOne;
 import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.FundingSource;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.ColumnTagProvider;
@@ -123,6 +125,12 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 	
 	public static BaseObject createInvalidObject(ObjectManager objectManager, int objectType)
 	{
+		if (AccountingCode.is(objectType))
+			return new AccountingCode(objectManager, BaseId.INVALID);
+		
+		if (FundingSource.is(objectType))
+			return new FundingSource(objectManager, BaseId.INVALID);
+		
 		if (CategoryOne.is(objectType))
 			return new CategoryOne(objectManager, BaseId.INVALID);
 		
