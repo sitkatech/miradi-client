@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-23 10:59-0500\n"
+"POT-Creation-Date: 2010-06-23 12:09-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -1268,6 +1268,10 @@ msgstr ""
 msgid "Action|Manage|Create Category One"
 msgstr ""
 
+#: Miradi/source/org/miradi/actions/ActionCreateCategoryTwo.java:36
+msgid "Action|Manage|Create Category Two"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionCreateChildTask.java:40
 msgid "Action|Manage|Create Child Task"
 msgstr ""
@@ -1361,6 +1365,10 @@ msgstr "Eliminar actividad"
 
 #: Miradi/source/org/miradi/actions/ActionDeleteCategoryOne.java:36
 msgid "Action|Manage|Delete Category One"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionDeleteCategoryTwo.java:36
+msgid "Action|Manage|Delete Category Two"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeleteFundingSource.java:35
@@ -2388,6 +2396,11 @@ msgstr "Categoría Ib: Área selvática"
 #: Miradi/source/org/miradi/views/workplan/doers/DeleteCategotyOneDoer.java:33
 #: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryOneMangementPanel.java:69
 msgid "Category One"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryTwoMangementPanel.java:71
+#: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryTwoDoer.java:33
+msgid "Category Two"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProtectedAreaCategoryQuestion.java:40
@@ -4011,6 +4024,10 @@ msgstr "(Código contable sin definir)"
 
 #: Miradi/source/org/miradi/objects/CategoryOne.java:71
 msgid "Label|(Undefined Category One)"
+msgstr ""
+
+#: Miradi/source/org/miradi/objects/CategoryTwo.java:71
+msgid "Label|(Undefined Category Two)"
 msgstr ""
 
 #: Miradi/source/org/miradi/objects/FundingSource.java:71
@@ -6099,6 +6116,10 @@ msgstr "Crear un punto de curvatura"
 msgid "TT|Create a Category One"
 msgstr ""
 
+#: Miradi/source/org/miradi/actions/ActionCreateCategoryTwo.java:42
+msgid "TT|Create a Category Two"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionCreateSameLevelTask.java:42
 msgid "TT|Create a Create Task at Same Level"
 msgstr ""
@@ -6338,6 +6359,10 @@ msgstr "Eliminar la actividad seleccionada"
 
 #: Miradi/source/org/miradi/actions/ActionDeleteCategoryOne.java:42
 msgid "TT|Delete the selected Category One"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionDeleteCategoryTwo.java:42
+msgid "TT|Delete the selected Category Two"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:40
@@ -7063,7 +7088,7 @@ msgid "This item is shared, so will be deleted from multiple places."
 msgstr ""
 "Este elemento está compartido, por lo que se eliminará de varios lugares."
 
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:430
+#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:434
 msgid "This method is not responsible for creating task nodes."
 msgstr "Este método no es responsable de la creación de nodos de tarea. "
 
@@ -9451,6 +9476,15 @@ msgid "FieldLabel|56.Code|Source Code"
 msgstr ""
 
 msgid "FieldLabel|56.Comments|Comments"
+msgstr ""
+
+msgid "FieldLabel|57.Label|Category Two Name"
+msgstr ""
+
+msgid "FieldLabel|57.Code|Source Code"
+msgstr ""
+
+msgid "FieldLabel|57.Comments|Comments"
 msgstr ""
 
 msgid ""

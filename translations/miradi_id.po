@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-23 10:59-0500\n"
+"POT-Creation-Date: 2010-06-23 12:09-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1264,6 +1264,10 @@ msgstr ""
 msgid "Action|Manage|Create Category One"
 msgstr ""
 
+#: Miradi/source/org/miradi/actions/ActionCreateCategoryTwo.java:36
+msgid "Action|Manage|Create Category Two"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionCreateChildTask.java:40
 msgid "Action|Manage|Create Child Task"
 msgstr ""
@@ -1357,6 +1361,10 @@ msgstr "Hapus Kegiatan "
 
 #: Miradi/source/org/miradi/actions/ActionDeleteCategoryOne.java:36
 msgid "Action|Manage|Delete Category One"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionDeleteCategoryTwo.java:36
+msgid "Action|Manage|Delete Category Two"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeleteFundingSource.java:35
@@ -2379,6 +2387,11 @@ msgstr "Kategori Ib: Kawasan Liar"
 #: Miradi/source/org/miradi/views/workplan/doers/DeleteCategotyOneDoer.java:33
 #: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryOneMangementPanel.java:69
 msgid "Category One"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryTwoMangementPanel.java:71
+#: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryTwoDoer.java:33
+msgid "Category Two"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProtectedAreaCategoryQuestion.java:40
@@ -3992,6 +4005,10 @@ msgstr " (Kode Akuntansi Tak Terdefinisi) "
 
 #: Miradi/source/org/miradi/objects/CategoryOne.java:71
 msgid "Label|(Undefined Category One)"
+msgstr ""
+
+#: Miradi/source/org/miradi/objects/CategoryTwo.java:71
+msgid "Label|(Undefined Category Two)"
 msgstr ""
 
 #: Miradi/source/org/miradi/objects/FundingSource.java:71
@@ -6060,6 +6077,10 @@ msgstr "Buat satu Titik Belok "
 msgid "TT|Create a Category One"
 msgstr ""
 
+#: Miradi/source/org/miradi/actions/ActionCreateCategoryTwo.java:42
+msgid "TT|Create a Category Two"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionCreateSameLevelTask.java:42
 msgid "TT|Create a Create Task at Same Level"
 msgstr ""
@@ -6298,6 +6319,10 @@ msgstr "Hapus Kegiatan terpilih "
 
 #: Miradi/source/org/miradi/actions/ActionDeleteCategoryOne.java:42
 msgid "TT|Delete the selected Category One"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionDeleteCategoryTwo.java:42
+msgid "TT|Delete the selected Category Two"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:40
@@ -7021,7 +7046,7 @@ msgid "This item is shared, so will be deleted from multiple places."
 msgstr ""
 "Butir ini digunakan bersama, jadi akan dihapus dari lebih dari satu tempat. "
 
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:430
+#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:434
 msgid "This method is not responsible for creating task nodes."
 msgstr "Metode ini tidak bertanggung jawab untuk membuat simpul tugas. "
 
@@ -9415,6 +9440,15 @@ msgid "FieldLabel|56.Code|Source Code"
 msgstr ""
 
 msgid "FieldLabel|56.Comments|Comments"
+msgstr ""
+
+msgid "FieldLabel|57.Label|Category Two Name"
+msgstr ""
+
+msgid "FieldLabel|57.Code|Source Code"
+msgstr ""
+
+msgid "FieldLabel|57.Comments|Comments"
 msgstr ""
 
 msgid ""
