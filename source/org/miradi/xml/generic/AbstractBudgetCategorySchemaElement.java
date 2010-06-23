@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.objects.AccountingCode;
+import org.miradi.objects.AbstractBudgetCategoryObject;
 
 abstract public class AbstractBudgetCategorySchemaElement extends BaseObjectSchemaElementWithLabel
 {
@@ -28,7 +28,7 @@ abstract public class AbstractBudgetCategorySchemaElement extends BaseObjectSche
 	{
 		super(objectTypeNameToUse);
 		
-		createOptionalTextField(AccountingCode.TAG_CODE);
-		createOptionalTextField(AccountingCode.TAG_COMMENTS);
+		createOptionalTextField(AbstractBudgetCategoryObject.TAG_CODE);
+		createOptionalTextField(AbstractBudgetCategoryObject.TAG_COMMENTS);
 	}
 }
