@@ -40,6 +40,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.SubTarget;
 import org.miradi.objects.Task;
 import org.miradi.utils.MiradiResourceImageIcon;
  
@@ -88,6 +89,7 @@ public class IconManager
 		addIcon(new AssignmentIcon());
 		addIcon(new ProgressReportIcon());
 		addIcon(new ProgressPercentIcon());
+		addIcon(new SubTargetIcon());
 		addResourceImageIcon(COLLAPSE_ICON_FILE_NAME);
 		addResourceImageIcon(EXPAND_ICON_FILE_NAME);
 		addResourceImageIcon(SPELLCHECK_ICON_FILE_NAME);
@@ -180,6 +182,9 @@ public class IconManager
 		
 		if (CategoryTwo.is(type))
 			return getCategoryTwoIcon();
+		
+		if (SubTarget.is(type))
+			return getSubTargetIcon();
 		
 		throw new RuntimeException("Could not find icon for type:" + type);
 	}
@@ -441,6 +446,11 @@ public class IconManager
 	public static Icon getCancelIcon()
 	{
 		return getIcon(CancelIcon.class);
+	}
+	
+	private static Icon getSubTargetIcon()
+	{
+		return new SubTargetIcon();
 	}
 
 	private static HashMap<String, Icon> iconMap;

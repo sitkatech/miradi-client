@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -33,6 +34,7 @@ public class SubTarget extends BaseObject
 	public SubTarget(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse);
+		
 		clear();
 	}
 		
@@ -41,11 +43,13 @@ public class SubTarget extends BaseObject
 		super(objectManager, new BaseId(idAsInt), json);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -70,22 +74,37 @@ public class SubTarget extends BaseObject
 		return false;
 	}
 
+	@Override
 	public ORefList getOwnedObjects(int objectType)
 	{
 		return new ORefList();
 	}
 	
+	@Override
 	public String getShortLabel()
 	{
 		return getData(TAG_SHORT_LABEL);
 	}
 	
+	@Override
+	public String toString()
+	{
+		return toString(EAM.text("Label|Nested Target"));
+	}
+	
 	public static boolean is(ORef ref)
 	{
-		if (ref.getObjectType() == ObjectType.SUB_TARGET)
-			return true;
-		
-		return false;
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
+	}
+	
+	public static boolean is(BaseObject object)
+	{
+		return is(object.getType());
 	}
 	
 	public static SubTarget find(ObjectManager objectManager, ORef subTargetRef)
@@ -98,6 +117,7 @@ public class SubTarget extends BaseObject
 		return find(project.getObjectManager(), subTargetRef);
 	}
 	
+	@Override
 	void clear()
 	{
 		super.clear();

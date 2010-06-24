@@ -53,6 +53,7 @@ import org.miradi.icons.ResultsChainIcon;
 import org.miradi.icons.ScopeBoxIcon;
 import org.miradi.icons.StrategyIcon;
 import org.miradi.icons.StressIcon;
+import org.miradi.icons.SubTargetIcon;
 import org.miradi.icons.TargetIcon;
 import org.miradi.icons.TaskIcon;
 import org.miradi.icons.TextBoxIcon;
@@ -73,6 +74,7 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.ScopeBox;
+import org.miradi.objects.SubTarget;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 
@@ -117,6 +119,9 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 
 		stressRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(stressRenderer, new StressIcon(), getPlainFont());
+		
+		subTargetRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(subTargetRenderer, new SubTargetIcon(), getPlainFont());
 		
 		keyEcologicalAttributeRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(keyEcologicalAttributeRenderer, new KeyEcologicalAttributeIcon(), getPlainFont());
@@ -224,6 +229,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = keyEcologicalAttributeRenderer;
 		else if(node.getType() == ObjectType.STRESS)
 			renderer = stressRenderer;
+		else if(SubTarget.is(node.getType()))
+			renderer = subTargetRenderer;
 		else if(node.getType() == ObjectType.MEASUREMENT)
 			renderer = measurementRenderer;
 		else if(node.getType() == ProjectMetadata.getObjectType())
@@ -308,6 +315,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	protected VariableHeightTreeCellRenderer indicatorRenderer;
 	private VariableHeightTreeCellRenderer activityRenderer;
 	private VariableHeightTreeCellRenderer stressRenderer;
+	private VariableHeightTreeCellRenderer subTargetRenderer;
 	private VariableHeightTreeCellRenderer methodRenderer;
 	private VariableHeightTreeCellRenderer taskRenderer;
 	private VariableHeightTreeCellRenderer conceptualModelRenderer;
