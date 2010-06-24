@@ -47,11 +47,5 @@ public class SubTargetNode extends AbstractPlanningTreeNode
 		return false;
 	}
 	
-	@Override
-	public String toRawString()
-	{
-		return subTarget.toString();
-	}
-
 	private SubTarget subTarget;
 }

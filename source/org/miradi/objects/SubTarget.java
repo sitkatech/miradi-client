@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.main.EAM;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -84,12 +83,6 @@ public class SubTarget extends BaseObject
 	public String getShortLabel()
 	{
 		return getData(TAG_SHORT_LABEL);
-	}
-	
-	@Override
-	public String toString()
-	{
-		return toString(EAM.text("Label|Nested Target"));
 	}
 	
 	public static boolean is(ORef ref)
