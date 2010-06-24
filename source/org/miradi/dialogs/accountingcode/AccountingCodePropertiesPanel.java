@@ -21,7 +21,6 @@ package org.miradi.dialogs.accountingcode;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.forms.objects.BudgetCategoryPropertiesForm;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AccountingCode;
@@ -29,9 +28,9 @@ import org.miradi.project.Project;
 
 public class AccountingCodePropertiesPanel extends ObjectDataInputPanel
 {
-	public AccountingCodePropertiesPanel(Project projectToUse, BaseId idToEdit) throws Exception
+	public AccountingCodePropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, ObjectType.ACCOUNTING_CODE, idToEdit);
+		super(projectToUse, ObjectType.ACCOUNTING_CODE);
 		
 		createFieldsFromForm(new BudgetCategoryPropertiesForm(AccountingCode.getObjectType()));
 		
