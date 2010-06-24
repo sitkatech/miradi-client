@@ -58,6 +58,8 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 				new ChoiceItem(PLANNING_VIEW_RESOURCES_TAB_CODE, getResourcesLabel()),
 				new ChoiceItem(PLANNING_VIEW_ACCOUNTING_CODE_TAB_CODE, getAccountingCodesLabel()),
 				new ChoiceItem(PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE, getFundingSourcesLabel()),
+				new ChoiceItem(CATEGORY_ONE_TAB_CODE, getCategoryOneLabel()),
+				new ChoiceItem(CATEGORY_TWO_TAB_CODE, getCategoryTwoLabel()),
 				new ChoiceItem(PROGRESS_REPORT_CODE, getProgressReportLabel()),
 				new ChoiceItem(LEGEND_TABLE_REPORT_CODE, getLegendTableLabel()),
 		};
@@ -86,6 +88,16 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 	public static String getFundingSourcesLabel()
 	{
 		return EAM.text("Funding Sources");
+	}
+	
+	public static String getCategoryOneLabel()
+	{
+		return EAM.text("Category One");
+	}
+	
+	public static String getCategoryTwoLabel()
+	{
+		return EAM.text("Category Two");
 	}
 
 	public static String getAccountingCodesLabel()
@@ -156,6 +168,8 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 	public static final String PLANNING_VIEW_RESOURCES_TAB_CODE = "PlanningViewResourcesTab";
 	public static final String PLANNING_VIEW_ACCOUNTING_CODE_TAB_CODE = "PlanningViewAccountingCodesTab";
 	public static final String PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE = "PlanningViewFundingSourceTab";
+	public static final String CATEGORY_ONE_TAB_CODE = "CategoryOneTab";
+	public static final String CATEGORY_TWO_TAB_CODE = "CategoryTwoTab";
 	public static final String PROGRESS_REPORT_CODE = "ProgressReport";
 	public static final String LEGEND_TABLE_REPORT_CODE = "LegendTableReport";
 }

@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.rtf.viewExporters;
 
 import org.miradi.dialogs.planning.AccountingCodeCoreRowColumnProvider;
+import org.miradi.dialogs.planning.CategoryOneCoreRowColumnProvider;
+import org.miradi.dialogs.planning.CategoryTwoCoreRowColumnProvider;
 import org.miradi.dialogs.planning.FundingSourceCoreRowColumnProvider;
 import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
 import org.miradi.dialogs.planning.ProgressReportRowColumnProvider;
@@ -32,6 +34,8 @@ import org.miradi.dialogs.planning.propertiesPanel.ExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningWorkUnitsTableModel;
 import org.miradi.dialogs.planning.upperPanel.AccountingCodeTreeTableModel;
+import org.miradi.dialogs.planning.upperPanel.CategoryOneTreeTableModel;
+import org.miradi.dialogs.planning.upperPanel.CategoryTwoTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.FundingSourceTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewFutureStatusTableModel;
@@ -80,6 +84,12 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE))
 			exportFundingSourceTab(writer, new FundingSourceCoreRowColumnProvider(), ReportTemplateContentQuestion.getFundingSourcesLabel());
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.CATEGORY_ONE_TAB_CODE))
+			exportCategoryOneTab(writer, new CategoryOneCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryOneLabel());
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.CATEGORY_TWO_TAB_CODE))
+			exportCategoryTwoTab(writer, new CategoryTwoCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryTwoLabel());
 	}
 
 	private void exportResourcesTab(RtfWriter writer, RowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
@@ -97,6 +107,18 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	private void exportFundingSourceTab(RtfWriter writer, RowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
 	{
 		ExportablePlanningTreeTableModel model = FundingSourceTreeTableModel.createFundingSourceTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow(), AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
+		exportTab(writer, rowColumnProvider, translatedTableName, model);
+	}
+	
+	private void exportCategoryOneTab(RtfWriter writer, RowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
+	{
+		ExportablePlanningTreeTableModel model = CategoryOneTreeTableModel.createCategoryOneTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow(), AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
+		exportTab(writer, rowColumnProvider, translatedTableName, model);
+	}
+	
+	private void exportCategoryTwoTab(RtfWriter writer, RowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
+	{
+		ExportablePlanningTreeTableModel model = CategoryTwoTreeTableModel.createCategoryTwoTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow(), AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
 		exportTab(writer, rowColumnProvider, translatedTableName, model);
 	}
 	
