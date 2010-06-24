@@ -23,6 +23,7 @@ package org.miradi.views.workplan.doers;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.CategoryOne;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.views.umbrella.doers.DeletePoolObjectDoer;
 
 public class DeleteCategoryOneDoer extends DeletePoolObjectDoer
@@ -36,7 +37,7 @@ public class DeleteCategoryOneDoer extends DeletePoolObjectDoer
 	@Override
 	protected void doWork(BaseObject objectToDelete) throws Exception
 	{
-		//FIXME category One,  need to clear from assignment
+		clearIdFromAssignment(objectToDelete, ResourceAssignment.TAG_CATEGORY_ONE_REF);
 	}
 
 	@Override
