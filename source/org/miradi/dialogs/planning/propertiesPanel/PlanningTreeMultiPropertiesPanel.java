@@ -86,7 +86,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		conceptualModelPropertiesPanel = new ConceptualModelPropertiesPanel(getProject(), ORef.INVALID);
 		projectResourcePropertiesPanel = new ResourcePropertiesPanel(getProject(), BaseId.INVALID);
 		fundingSourcePropertiesPanel = new FundingSourcePropertiesPanel(getProject());
-		accountingCodePropertiesPanel = new AccountingCodePropertiesPanel(getProject(), BaseId.INVALID);
+		accountingCodePropertiesPanel = new AccountingCodePropertiesPanel(getProject());
 		categoryOnePropertiesPanel = new CategoryOnePropertiesPanel(getProject());
 		categoryTwoPropertiesPanel = new CategoryTwoPropertiesPanel(getProject());
 		
