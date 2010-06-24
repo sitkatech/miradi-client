@@ -21,14 +21,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 import org.miradi.objects.CategoryOne;
-import org.miradi.utils.CodeList;
 
 public class CategoryOneCoreRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
 {
-	public CodeList getRowListToShow()
+	@Override
+	protected String getObjectTypeName()
 	{
-		return new CodeList(new String[] {
-				CategoryOne.OBJECT_NAME,
-		});
+		return CategoryOne.OBJECT_NAME;
 	}
 }

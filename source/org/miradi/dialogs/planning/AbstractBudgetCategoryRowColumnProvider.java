@@ -33,4 +33,13 @@ abstract public class AbstractBudgetCategoryRowColumnProvider implements RowColu
 				BaseObject.TAG_LABEL,
 		});
 	}
+	
+	public CodeList getRowListToShow()
+	{
+		return new CodeList(new String[] {
+				getObjectTypeName(),
+		});
+	}
+
+	abstract protected String getObjectTypeName();
 }
