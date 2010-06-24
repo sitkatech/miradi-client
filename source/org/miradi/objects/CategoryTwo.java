@@ -68,7 +68,7 @@ public class CategoryTwo extends AbstractBudgetCategoryObject
 	@Override
 	public String toString()
 	{
-		return toString(EAM.text("Label|(Undefined Category Two)"));
+		return toString(EAM.text("Label|Budget Category Two"));
 	}
 	
 	public static boolean is(BaseObject object)
