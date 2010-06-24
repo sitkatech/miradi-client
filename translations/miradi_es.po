@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-24 12:56-0500\n"
+"POT-Creation-Date: 2010-06-24 13:59-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -4094,10 +4094,6 @@ msgstr "Iniciales"
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:42
 msgid "Label|Methods"
 msgstr "Métodos"
-
-#: Miradi/source/org/miradi/objects/SubTarget.java:92
-msgid "Label|Nested Target"
-msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:60
 msgid "Label|New Draft Strategy"
