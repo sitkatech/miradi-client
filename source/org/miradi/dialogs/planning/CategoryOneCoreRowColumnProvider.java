@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning;
 
+import org.miradi.objects.AbstractBudgetCategoryObject;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.CategoryOne;
 import org.miradi.utils.CodeList;
 
@@ -28,10 +30,9 @@ public class CategoryOneCoreRowColumnProvider implements RowColumnProvider
 	public CodeList getColumnListToShow()
 	{
 		return new CodeList(new String[] {
-				CategoryOne.TAG_CODE,
-				CategoryOne.TAG_LABEL,
+				AbstractBudgetCategoryObject.TAG_CODE,
+				BaseObject.TAG_LABEL,
 		});
-		
 	}
 
 	public CodeList getRowListToShow()
