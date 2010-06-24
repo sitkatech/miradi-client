@@ -40,12 +40,6 @@ public class FundingSourceTreeTableModel extends ExportablePlanningTreeTableMode
 		super(project, rootNode, getFundingSourceRows(), visibleColumns, uniqueTreeTableModeIdentifier);
 	}
 	
-	public static FundingSourceTreeTableModel createFundingSourceTreeTableModel(Project project, CodeList visibleColumns) throws Exception
-	{
-		TreeTableNode projectRootNode = createFundingSourceRootNode(project);
-		return new FundingSourceTreeTableModel(project, projectRootNode, visibleColumns);
-	}
-	
 	public static FundingSourceTreeTableModel createOperationalPlanFundingSourceTreeTableModel(Project project, CodeList visibleColumns) throws Exception
 	{
 		TreeTableNode projectRootNode = createHiddenFundingSourceRootNode(project);
