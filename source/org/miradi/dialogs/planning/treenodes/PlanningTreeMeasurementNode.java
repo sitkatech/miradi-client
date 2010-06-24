@@ -33,11 +33,13 @@ public class PlanningTreeMeasurementNode extends AbstractPlanningTreeNode
 		measurement = (Measurement) project.findObject(measurementRef);
 	}
 
+	@Override
 	public BaseObject getObject()
 	{
 		return measurement;
 	}
 	
+	@Override
 	boolean shouldSortChildren()
 	{
 		return false;
