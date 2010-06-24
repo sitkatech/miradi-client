@@ -40,12 +40,6 @@ public class AccountingCodeTreeTableModel extends ExportablePlanningTreeTableMod
 		super(project, rootNode, getAccountingCodeRows(), visibleColumns, uniqueTreeTableModeIdentifier);
 	}
 	
-	public static AccountingCodeTreeTableModel createAccountingCodeTreeTableModel(Project project, CodeList visibleColumns) throws Exception
-	{
-		TreeTableNode projectRootNode = createAccountingCodeRootNode(project);
-		return new AccountingCodeTreeTableModel(project, projectRootNode, visibleColumns);
-	}
-	
 	public static AccountingCodeTreeTableModel createOperationalPlanAccountingCodeTreeTableModel(Project project, CodeList visibleColumns) throws Exception
 	{
 		TreeTableNode projectRootNode = createHiddenAccountingCodeRootNode(project);
