@@ -86,7 +86,7 @@ abstract public class DeletePoolObjectDoer extends ObjectsDoer
 		}
 	}
 	
-	protected void clearFromAssignment(BaseObject objectToDelete, String referringTag) throws Exception
+	protected void clearIdFromAssignment(BaseObject objectToDelete, String referringTag) throws Exception
 	{
 		ORefList assignmentReferrerRefs = objectToDelete.findObjectsThatReferToUs(ResourceAssignment.getObjectType());
 		for (int index = 0; index < assignmentReferrerRefs.size(); ++index)
