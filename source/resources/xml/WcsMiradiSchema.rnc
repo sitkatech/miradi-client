@@ -38,8 +38,8 @@ ConservationProject.element = element miradi:ConservationProject
   MeasurementPool.element ?  &
   AccountingCodePool.element ?  &
   FundingSourcePool.element ?  &
-  CategoryOnePool.element ?  &
-  CategoryTwoPool.element ?  &
+  BudgetCategoryOnePool.element ?  &
+  BudgetCategoryTwoPool.element ?  &
   ExpenseAssignmentPool.element ?  &
   ResourceAssignmentPool.element ?  &
   ThreatRatingPool.element ?  &
@@ -564,22 +564,22 @@ FundingSource.element = element miradi:FundingSource
   element miradi:FundingSourceComments { text }?
 }
 
-CategoryOnePool.element = element miradi:CategoryOnePool { CategoryOne.element* }
-CategoryOne.element = element miradi:CategoryOne
+BudgetCategoryOnePool.element = element miradi:BudgetCategoryOnePool { BudgetCategoryOne.element* }
+BudgetCategoryOne.element = element miradi:BudgetCategoryOne
 {
   attribute Id {xsd:integer}  &
-  element miradi:CategoryOneLabel { text }? &
-  element miradi:CategoryOneCode { text }? &
-  element miradi:CategoryOneComments { text }?
+  element miradi:BudgetCategoryOneLabel { text }? &
+  element miradi:BudgetCategoryOneCode { text }? &
+  element miradi:BudgetCategoryOneComments { text }?
 }
 
-CategoryTwoPool.element = element miradi:CategoryTwoPool { CategoryTwo.element* }
-CategoryTwo.element = element miradi:CategoryTwo
+BudgetCategoryTwoPool.element = element miradi:BudgetCategoryTwoPool { BudgetCategoryTwo.element* }
+BudgetCategoryTwo.element = element miradi:BudgetCategoryTwo
 {
   attribute Id {xsd:integer}  &
-  element miradi:CategoryTwoLabel { text }? &
-  element miradi:CategoryTwoCode { text }? &
-  element miradi:CategoryTwoComments { text }?
+  element miradi:BudgetCategoryTwoLabel { text }? &
+  element miradi:BudgetCategoryTwoCode { text }? &
+  element miradi:BudgetCategoryTwoComments { text }?
 }
 
 ExpenseAssignmentPool.element = element miradi:ExpenseAssignmentPool { ExpenseAssignment.element* }
