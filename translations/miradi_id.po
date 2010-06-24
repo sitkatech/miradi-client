@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-24 09:18-0500\n"
+"POT-Creation-Date: 2010-06-24 09:20-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7188,7 +7188,7 @@ msgstr ""
 msgid "Title|About Miradi"
 msgstr "Tentang Miradi "
 
-#: Miradi/source/org/miradi/dialogs/accountingcode/AccountingCodePropertiesPanel.java:44
+#: Miradi/source/org/miradi/dialogs/accountingcode/AccountingCodePropertiesPanel.java:37
 msgid "Title|Accounting Code Properties"
 msgstr "Sifat-sifat Kode Akuntansi "
 
@@ -7249,7 +7249,7 @@ msgstr "Filter menurut Sumber Daya "
 msgid "Title|Found Corrupted Links"
 msgstr "Ditemukan Tautan yang Rusak "
 
-#: Miradi/source/org/miradi/dialogs/fundingsource/FundingSourcePropertiesPanel.java:43
+#: Miradi/source/org/miradi/dialogs/fundingsource/FundingSourcePropertiesPanel.java:37
 msgid "Title|Funding Source Properties"
 msgstr "Sifat-sifat Sumber Dana "
 
