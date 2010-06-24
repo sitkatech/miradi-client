@@ -36,7 +36,7 @@ public class DeleteFundingSourceDoer extends DeletePoolObjectDoer
 	@Override
 	protected void doWork(BaseObject objectToDelete) throws Exception
 	{
-		clearFromAssignment(objectToDelete, ResourceAssignment.TAG_FUNDING_SOURCE_ID);
+		clearIdFromAssignment(objectToDelete, ResourceAssignment.TAG_FUNDING_SOURCE_ID);
 	}
 
 	@Override
