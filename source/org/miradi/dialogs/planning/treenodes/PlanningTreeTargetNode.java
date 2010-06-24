@@ -36,6 +36,7 @@ import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.SubTarget;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
@@ -56,6 +57,7 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 	{
 		DiagramObject diagram = diagramObject;
 
+		createAndAddChildren(target.getSubTargetRefs(), diagram);
 		createAndAddChildren(target.getOwnedObjects(Goal.getObjectType()), diagram);
 		ORefList indicatorRefs = new ORefList(Indicator.getObjectType(), target.getDirectOrIndirectIndicators());
 		createAndAddChildren(indicatorRefs, diagram);
@@ -82,6 +84,7 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 	protected int[] getNodeSortOrder()
 	{
 		return new int[] {
+				SubTarget.getObjectType(),
 				Goal.getObjectType(),
 				Objective.getObjectType(),
 				Strategy.getObjectType(),

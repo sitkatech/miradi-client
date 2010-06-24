@@ -33,6 +33,7 @@ import org.miradi.dialogs.goal.GoalPropertiesPanel;
 import org.miradi.dialogs.objective.ObjectivePropertiesPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.resource.ResourcePropertiesPanel;
+import org.miradi.dialogs.subTarget.SubTargetPropertiesPanel;
 import org.miradi.dialogs.viability.AbstractIndicatorPropertiesPanel;
 import org.miradi.dialogs.viability.IndicatorPropertiesPanelWithBudgetPanels;
 import org.miradi.dialogs.viability.NonDiagramAbstractTargetPropertiesPanel;
@@ -55,6 +56,7 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
@@ -89,7 +91,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		accountingCodePropertiesPanel = new AccountingCodePropertiesPanel(getProject());
 		categoryOnePropertiesPanel = new CategoryOnePropertiesPanel(getProject());
 		categoryTwoPropertiesPanel = new CategoryTwoPropertiesPanel(getProject());
-		
+		subTargetPropertiesPanel = new SubTargetPropertiesPanel(getProject());
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
 		
 		addPanel(goalPropertiesPanel);
@@ -111,6 +113,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		addPanel(accountingCodePropertiesPanel);
 		addPanel(categoryOnePropertiesPanel);
 		addPanel(categoryTwoPropertiesPanel);
+		addPanel(subTargetPropertiesPanel);
 		addPanel(blankPropertiesPanel);
 	}
 
@@ -203,6 +206,9 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		if (CategoryTwo.is(objectType))
 			return categoryTwoPropertiesPanel;
 		
+		if (SubTarget.is(objectType))
+			return subTargetPropertiesPanel;
+		
 		return blankPropertiesPanel;
 	}
 
@@ -247,5 +253,6 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private AccountingCodePropertiesPanel accountingCodePropertiesPanel;
 	private CategoryOnePropertiesPanel categoryOnePropertiesPanel;
 	private CategoryTwoPropertiesPanel categoryTwoPropertiesPanel;
+	private SubTargetPropertiesPanel subTargetPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 }

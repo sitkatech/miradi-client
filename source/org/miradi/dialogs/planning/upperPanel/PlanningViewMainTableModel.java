@@ -55,6 +55,7 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
@@ -719,6 +720,11 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		{
 			if (isDetailsColumn(column))
 				return Factor.TAG_TEXT;
+		}
+		if (SubTarget.is(nodeType))
+		{
+			if (isDetailsColumn(column))
+				return SubTarget.TAG_DETAIL;
 		}
 		
 		return columnTag;

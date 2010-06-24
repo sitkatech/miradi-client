@@ -48,6 +48,7 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
@@ -321,6 +322,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			ResultsChainDiagram.getObjectType(),
 			ConceptualModelDiagram.getObjectType(),
 			Goal.getObjectType(),
+			SubTarget.getObjectType(),
 			Cause.getObjectType(),
 			ThreatReductionResult.getObjectType(),
 			IntermediateResult.getObjectType(),
@@ -436,6 +438,8 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 				return new PlanningTreeResourceAssignmentNode(project, refToAdd, visibleRows);
 			if (type == ExpenseAssignment.getObjectType())
 				return new PlanningTreeExpenseAssignmentNode(project, refToAdd, visibleRows);
+			if (SubTarget.is(type))
+				return new SubTargetNode(project, refToAdd, visibleRows);
 			
 			throw new Exception("Attempted to create node of unknown type: " + refToAdd);
 		}
