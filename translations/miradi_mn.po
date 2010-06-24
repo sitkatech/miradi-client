@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-24 12:12-0500\n"
+"POT-Creation-Date: 2010-06-24 12:56-0500\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3824,6 +3824,10 @@ msgstr ""
 msgid "Label|Methods"
 msgstr ""
 
+#: Miradi/source/org/miradi/objects/SubTarget.java:92
+msgid "Label|Nested Target"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:60
 msgid "Label|New Draft Strategy"
 msgstr ""
@@ -6641,7 +6645,7 @@ msgstr ""
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:434
+#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:436
 msgid "This method is not responsible for creating task nodes."
 msgstr ""
 
@@ -7441,7 +7445,7 @@ msgid ""
 "migrations. "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:505
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:506
 msgid "[Error]"
 msgstr ""
 
@@ -7532,6 +7536,9 @@ msgid "FieldLabel|3.Details|Details"
 msgstr ""
 
 msgid "FieldLabel|3.ProgressReportRefs|Progress Reports"
+msgstr ""
+
+msgid "FieldLabel|3.Comments|Comments"
 msgstr ""
 
 msgid "FieldLabel|6.Stress|Stress"
@@ -8615,6 +8622,9 @@ msgid "FieldLabel|34.Irreversibility|Irreversibility"
 msgstr ""
 
 msgid "FieldLabel|35.Label|Text"
+msgstr ""
+
+msgid "FieldLabel|36.SubTarget|Nested Target"
 msgstr ""
 
 msgid "FieldLabel|36.ShortLabel|ID"

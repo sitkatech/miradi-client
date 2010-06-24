@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-24 12:12-0500\n"
+"POT-Creation-Date: 2010-06-24 12:56-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -4076,6 +4076,10 @@ msgstr "Inisial "
 msgid "Label|Methods"
 msgstr "Metode "
 
+#: Miradi/source/org/miradi/objects/SubTarget.java:92
+msgid "Label|Nested Target"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:60
 msgid "Label|New Draft Strategy"
 msgstr "Rancangan Strategi Baru "
@@ -7050,7 +7054,7 @@ msgid "This item is shared, so will be deleted from multiple places."
 msgstr ""
 "Butir ini digunakan bersama, jadi akan dihapus dari lebih dari satu tempat. "
 
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:434
+#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:436
 msgid "This method is not responsible for creating task nodes."
 msgstr "Metode ini tidak bertanggung jawab untuk membuat simpul tugas. "
 
@@ -7926,7 +7930,7 @@ msgstr ""
 "impor. Miradi juga akan membuat berkas zip untuk cadangan berkas proyek yang "
 "dibuat selama pemindahan format."
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:505
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:506
 msgid "[Error]"
 msgstr "[Kesalahan] "
 
@@ -8018,6 +8022,9 @@ msgstr "Rincian "
 
 msgid "FieldLabel|3.ProgressReportRefs|Progress Reports"
 msgstr "Laporan Kemajuan"
+
+msgid "FieldLabel|3.Comments|Comments"
+msgstr ""
 
 msgid "FieldLabel|6.Stress|Stress"
 msgstr "Tekanan"
@@ -9101,6 +9108,9 @@ msgstr "Ketakterbalikan"
 
 msgid "FieldLabel|35.Label|Text"
 msgstr "Teks"
+
+msgid "FieldLabel|36.SubTarget|Nested Target"
+msgstr ""
 
 msgid "FieldLabel|36.ShortLabel|ID"
 msgstr "ID"

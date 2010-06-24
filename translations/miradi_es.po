@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-24 12:12-0500\n"
+"POT-Creation-Date: 2010-06-24 12:56-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -4095,6 +4095,10 @@ msgstr "Iniciales"
 msgid "Label|Methods"
 msgstr "Métodos"
 
+#: Miradi/source/org/miradi/objects/SubTarget.java:92
+msgid "Label|Nested Target"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:60
 msgid "Label|New Draft Strategy"
 msgstr "Nueva estrategia en borrador"
@@ -7092,7 +7096,7 @@ msgid "This item is shared, so will be deleted from multiple places."
 msgstr ""
 "Este elemento está compartido, por lo que se eliminará de varios lugares."
 
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:434
+#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:436
 msgid "This method is not responsible for creating task nodes."
 msgstr "Este método no es responsable de la creación de nodos de tarea. "
 
@@ -7960,7 +7964,7 @@ msgstr ""
 "comandos exportar e importar. Miradi también creará archivos zip para las "
 "copias de seguridad del proyecto creadas durante las migraciones de formato."
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:505
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:506
 msgid "[Error]"
 msgstr "[Error]"
 
@@ -8052,6 +8056,9 @@ msgstr "Detalles"
 
 msgid "FieldLabel|3.ProgressReportRefs|Progress Reports"
 msgstr "Informes de progreso "
+
+msgid "FieldLabel|3.Comments|Comments"
+msgstr ""
 
 msgid "FieldLabel|6.Stress|Stress"
 msgstr "Presión"
@@ -9137,6 +9144,9 @@ msgstr "Irreversibilidad"
 
 msgid "FieldLabel|35.Label|Text"
 msgstr "Texto"
+
+msgid "FieldLabel|36.SubTarget|Nested Target"
+msgstr ""
 
 msgid "FieldLabel|36.ShortLabel|ID"
 msgstr "ID"
