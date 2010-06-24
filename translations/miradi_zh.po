@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-23 16:14-0500\n"
+"POT-Creation-Date: 2010-06-24 09:18-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3850,14 +3850,6 @@ msgstr "关键生态学属性(KEA) \t\t"
 msgid "Label|(Undefined Accounting Code)"
 msgstr "（未定义的会计代码） \t\t"
 
-#: Miradi/source/org/miradi/objects/CategoryOne.java:71
-msgid "Label|(Undefined Category One)"
-msgstr ""
-
-#: Miradi/source/org/miradi/objects/CategoryTwo.java:71
-msgid "Label|(Undefined Category Two)"
-msgstr ""
-
 #: Miradi/source/org/miradi/objects/FundingSource.java:71
 msgid "Label|(Undefined Funding Source)"
 msgstr ""
@@ -3874,6 +3866,14 @@ msgstr "--- 影响 --> \t\t"
 #: Miradi/source/org/miradi/forms/summary/ScopeTabBiodiversitySubPanelForm.java:40
 msgid "Label|Biodiversity Area (hectares)"
 msgstr "生物多样性区域（公顷） \t\t"
+
+#: Miradi/source/org/miradi/objects/CategoryOne.java:71
+msgid "Label|Budget Category One"
+msgstr ""
+
+#: Miradi/source/org/miradi/objects/CategoryTwo.java:71
+msgid "Label|Budget Category Two"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:68
 msgid "Label|Campaign"
