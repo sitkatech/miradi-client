@@ -36,7 +36,7 @@ public class DeleteAccountingCodeDoer extends DeletePoolObjectDoer
 	@Override
 	protected void doWork(BaseObject objectToDelete) throws Exception
 	{
-		clearIdFromAssignment(objectToDelete, ResourceAssignment.TAG_ACCOUNTING_CODE_ID);
+		clearReferringAssignmentField(objectToDelete, ResourceAssignment.TAG_ACCOUNTING_CODE_ID);
 	}
 
 	@Override
