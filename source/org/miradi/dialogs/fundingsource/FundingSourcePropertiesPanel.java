@@ -19,21 +19,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.fundingsource;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.forms.objects.BudgetCategoryPropertiesForm;
+import org.miradi.dialogs.base.AbsractBudgetCategoryPropertiesPanel;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
 
-public class FundingSourcePropertiesPanel extends ObjectDataInputPanel
+public class FundingSourcePropertiesPanel extends AbsractBudgetCategoryPropertiesPanel
 {
 	public FundingSourcePropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, ObjectType.FUNDING_SOURCE);
-
-		createFieldsFromForm(new BudgetCategoryPropertiesForm(FundingSource.getObjectType()));
-		updateFieldsFromProject();
+		super(projectToUse, FundingSource.getObjectType());
 	}
 
 	@Override
