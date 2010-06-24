@@ -23,17 +23,8 @@ package org.miradi.dialogs.planning;
 import org.miradi.objects.AccountingCode;
 import org.miradi.utils.CodeList;
 
-public class AccountingCodeCoreRowColumnProvider implements RowColumnProvider
+public class AccountingCodeCoreRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
 {
-	public CodeList getColumnListToShow()
-	{
-		return new CodeList(new String[] {
-				AccountingCode.TAG_CODE,
-				AccountingCode.TAG_LABEL,
-		});
-		
-	}
-
 	public CodeList getRowListToShow()
 	{
 		return new CodeList(new String[] {

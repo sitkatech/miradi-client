@@ -20,21 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning;
 
-import org.miradi.objects.AbstractBudgetCategoryObject;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.CategoryOne;
 import org.miradi.utils.CodeList;
 
-public class CategoryOneCoreRowColumnProvider implements RowColumnProvider
+public class CategoryOneCoreRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
 {
-	public CodeList getColumnListToShow()
-	{
-		return new CodeList(new String[] {
-				AbstractBudgetCategoryObject.TAG_CODE,
-				BaseObject.TAG_LABEL,
-		});
-	}
-
 	public CodeList getRowListToShow()
 	{
 		return new CodeList(new String[] {
