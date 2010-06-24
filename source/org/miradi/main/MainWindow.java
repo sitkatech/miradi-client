@@ -582,12 +582,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	public void closeProject() throws Exception
 	{
 		EAM.logDebug(getMemoryStatistics());
-
 		project.close();
 		getWizardManager().setOverViewStep(NoProjectView.getViewName());
 
 		updateTitle();
 		getMainStatusBar().clear();
+		EAM.getExceptionLoggingDestination().close();
 	}
 	
 	public void refreshWizard() throws Exception
