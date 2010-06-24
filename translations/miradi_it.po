@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-23 16:14-0500\n"
+"POT-Creation-Date: 2010-06-24 09:18-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3753,14 +3753,6 @@ msgstr ""
 msgid "Label|(Undefined Accounting Code)"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/CategoryOne.java:71
-msgid "Label|(Undefined Category One)"
-msgstr ""
-
-#: Miradi/source/org/miradi/objects/CategoryTwo.java:71
-msgid "Label|(Undefined Category Two)"
-msgstr ""
-
 #: Miradi/source/org/miradi/objects/FundingSource.java:71
 msgid "Label|(Undefined Funding Source)"
 msgstr ""
@@ -3776,6 +3768,14 @@ msgstr ""
 #: Miradi/source/org/miradi/views/summary/BiodiversityPanel.java:37
 #: Miradi/source/org/miradi/forms/summary/ScopeTabBiodiversitySubPanelForm.java:40
 msgid "Label|Biodiversity Area (hectares)"
+msgstr ""
+
+#: Miradi/source/org/miradi/objects/CategoryOne.java:71
+msgid "Label|Budget Category One"
+msgstr ""
+
+#: Miradi/source/org/miradi/objects/CategoryTwo.java:71
+msgid "Label|Budget Category Two"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:68

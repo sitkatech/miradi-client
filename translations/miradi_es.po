@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-23 16:14-0500\n"
+"POT-Creation-Date: 2010-06-24 09:18-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -4024,14 +4024,6 @@ msgstr "Atributos ecológicos clave (AEC)"
 msgid "Label|(Undefined Accounting Code)"
 msgstr "(Código contable sin definir)"
 
-#: Miradi/source/org/miradi/objects/CategoryOne.java:71
-msgid "Label|(Undefined Category One)"
-msgstr ""
-
-#: Miradi/source/org/miradi/objects/CategoryTwo.java:71
-msgid "Label|(Undefined Category Two)"
-msgstr ""
-
 #: Miradi/source/org/miradi/objects/FundingSource.java:71
 msgid "Label|(Undefined Funding Source)"
 msgstr "(Fuente de financiamiento sin definir)"
@@ -4048,6 +4040,14 @@ msgstr "--- afecta -->"
 #: Miradi/source/org/miradi/forms/summary/ScopeTabBiodiversitySubPanelForm.java:40
 msgid "Label|Biodiversity Area (hectares)"
 msgstr "Área de biodiversidad (hectáreas)"
+
+#: Miradi/source/org/miradi/objects/CategoryOne.java:71
+msgid "Label|Budget Category One"
+msgstr ""
+
+#: Miradi/source/org/miradi/objects/CategoryTwo.java:71
+msgid "Label|Budget Category Two"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:68
 msgid "Label|Campaign"
