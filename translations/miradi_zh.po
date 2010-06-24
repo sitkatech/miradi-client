@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-24 12:12-0500\n"
+"POT-Creation-Date: 2010-06-24 12:56-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3921,6 +3921,10 @@ msgstr "缩写名 \t\t"
 msgid "Label|Methods"
 msgstr "方法 \t\t"
 
+#: Miradi/source/org/miradi/objects/SubTarget.java:92
+msgid "Label|Nested Target"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:60
 msgid "Label|New Draft Strategy"
 msgstr "新策略草案 \t\t"
@@ -6797,7 +6801,7 @@ msgstr ""
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr "本条目是共享的，因此将会从多个地方删除。 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:434
+#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:436
 msgid "This method is not responsible for creating task nodes."
 msgstr ""
 
@@ -7630,7 +7634,7 @@ msgstr ""
 "意：如果您使用导出和导入命令，Miradi将自动为您压缩或解压文件夹。Mirad也会为在"
 "格式迁移过程中创建的项目备份文件而创建压缩文件。"
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:505
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:506
 msgid "[Error]"
 msgstr ""
 
@@ -7722,6 +7726,9 @@ msgstr "详情 \t\t"
 
 msgid "FieldLabel|3.ProgressReportRefs|Progress Reports"
 msgstr "进度 报告"
+
+msgid "FieldLabel|3.Comments|Comments"
+msgstr ""
 
 msgid "FieldLabel|6.Stress|Stress"
 msgstr "压力 \t\t"
@@ -8805,6 +8812,9 @@ msgstr "不可逆性 \t\t"
 
 msgid "FieldLabel|35.Label|Text"
 msgstr "文本 \t\t"
+
+msgid "FieldLabel|36.SubTarget|Nested Target"
+msgstr ""
 
 msgid "FieldLabel|36.ShortLabel|ID"
 msgstr "ID \t\t"
