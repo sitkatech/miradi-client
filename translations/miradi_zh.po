@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-24 13:59-0500\n"
+"POT-Creation-Date: 2010-06-24 14:18-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2277,7 +2277,7 @@ msgstr "种类Ia：严格的自然保护/野生保护地区"
 msgid "Category Ib: Wilderness area"
 msgstr "种类Ib：野生地区"
 
-#: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryOneDoer.java:33
+#: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryOneDoer.java:34
 #: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryOneMangementPanel.java:69
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:95
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:58
@@ -2285,7 +2285,7 @@ msgid "Category One"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryTwoMangementPanel.java:71
-#: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryTwoDoer.java:33
+#: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryTwoDoer.java:34
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:100
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:61
 msgid "Category Two"
