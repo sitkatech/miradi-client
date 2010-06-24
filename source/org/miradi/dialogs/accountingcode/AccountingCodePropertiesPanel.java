@@ -19,22 +19,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.accountingcode;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.forms.objects.BudgetCategoryPropertiesForm;
+import org.miradi.dialogs.base.AbsractBudgetCategoryPropertiesPanel;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AccountingCode;
 import org.miradi.project.Project;
 
-public class AccountingCodePropertiesPanel extends ObjectDataInputPanel
+public class AccountingCodePropertiesPanel extends AbsractBudgetCategoryPropertiesPanel
 {
 	public AccountingCodePropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, ObjectType.ACCOUNTING_CODE);
-		
-		createFieldsFromForm(new BudgetCategoryPropertiesForm(AccountingCode.getObjectType()));
-		
-		updateFieldsFromProject();
+		super(projectToUse, AccountingCode.getObjectType());
 	}
 
 	@Override

@@ -42,7 +42,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 {
 	public ResourcePropertiesPanel(Project projectToUse, BaseId idToEdit) throws Exception
 	{
-		super(projectToUse, ObjectType.PROJECT_RESOURCE, idToEdit);
+		super(projectToUse, ObjectType.PROJECT_RESOURCE);
 
 		teamMemberCheckBoxHandler = new TeamMemberHandler();
 		
