@@ -40,12 +40,6 @@ public class CategoryTwoTreeTableModel extends ExportablePlanningTreeTableModel
 		super(project, rootNode, getRowColumnProvider(), visibleColumns, uniqueTreeTableModeIdentifier);
 	}
 	
-	public static CategoryTwoTreeTableModel createCategoryTwoTreeTableModel(Project project, CodeList visibleColumns) throws Exception
-	{
-		TreeTableNode projectRootNode = createRootNode(project);
-		return new CategoryTwoTreeTableModel(project, projectRootNode, visibleColumns);
-	}
-	
 	public static CategoryTwoTreeTableModel createOperationalPlanCategoryTwoTreeTableModel(Project project, CodeList visibleColumns) throws Exception
 	{
 		TreeTableNode projectRootNode = createHiddenRootNode(project);
