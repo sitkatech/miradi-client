@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-24 09:20-0500\n"
+"POT-Creation-Date: 2010-06-24 09:56-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -800,7 +800,7 @@ msgid "Accounting Code"
 msgstr "会计编码 \t\t"
 
 #: Miradi/source/org/miradi/views/planning/AbstractAccountingCodeManagementPanel.java:45
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:93
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:105
 msgid "Accounting Codes"
 msgstr "会计编码"
 
@@ -2279,12 +2279,14 @@ msgstr "种类Ib：野生地区"
 
 #: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryOneDoer.java:33
 #: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryOneMangementPanel.java:69
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:95
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:58
 msgid "Category One"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryTwoMangementPanel.java:71
 #: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryTwoDoer.java:33
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:100
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:61
 msgid "Category Two"
 msgstr ""
@@ -3383,7 +3385,7 @@ msgstr "资金来源 \t\t"
 
 #: Miradi/source/org/miradi/views/planning/AbstractFundingSourceManagementPanel.java:45
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:304
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:88
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:90
 msgid "Funding Sources"
 msgstr "资金来源"
 
@@ -4058,7 +4060,7 @@ msgid "Legacy TNC Ratings"
 msgstr "传承TNC分级 \t\t"
 
 #: Miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:100
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:78
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:80
 msgid "Legend Table"
 msgstr "图例表格 "
 
@@ -4518,7 +4520,7 @@ msgid "Monitoring Overview"
 msgstr "监控总览 \t\t"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:108
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:120
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:68
 msgid "Monitoring Plan"
 msgstr "监控计划 \t\t"
@@ -4753,7 +4755,7 @@ msgid "Orange"
 msgstr "橙色"
 
 #: Miradi/source/org/miradi/views/summary/doers/DeleteOranizationDoer.java:32
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:133
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:145
 msgid "Organization"
 msgstr "组织 \t\t"
 
@@ -4983,7 +4985,7 @@ msgstr "进展 "
 msgid "Progress Percents"
 msgstr "进展百分比 \t\t"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:83
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:85
 msgid "Progress Report"
 msgstr "进度报告 "
 
@@ -5196,7 +5198,7 @@ msgstr ""
 "资源——指为完成某活动/方法或任务所需的人或物品。资源主要有三种——人力、物力和财"
 "力。"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:98
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:110
 msgid "Resources"
 msgstr "资源"
 
@@ -5616,7 +5618,7 @@ msgstr "步骤（无）"
 msgid "Stop"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:113
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:125
 msgid "Strategic Plan"
 msgstr "策略计划 \t\t"
 
@@ -6604,11 +6606,11 @@ msgstr "古铜色"
 msgid "Target"
 msgstr "对象"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:73
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:75
 msgid "Target Viability - Details"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:70
 msgid "Target Viability - Table"
 msgstr ""
 
@@ -6683,7 +6685,7 @@ msgstr ""
 msgid "Tasks"
 msgstr "任务 \t\t"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:128
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:140
 msgid "Team"
 msgstr "团队"
 
@@ -6872,11 +6874,11 @@ msgstr "威胁因子分级优先选择面板 \t\t"
 msgid "Threat Ratings"
 msgstr "威胁因子评级"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:123
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:135
 msgid "Threat Ratings - Details"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:118
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:130
 msgid "Threat Ratings - Table"
 msgstr ""
 
@@ -7541,7 +7543,7 @@ msgid "Wizard load of control failed:"
 msgstr "控制向导加载失败： \t\t"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:191
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:103
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:115
 msgid "Work Plan"
 msgstr "工作计划"
 
