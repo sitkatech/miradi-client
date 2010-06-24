@@ -47,11 +47,13 @@ public class Measurement extends BaseObject
 	}
 
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -88,6 +90,7 @@ public class Measurement extends BaseObject
 		return summary.get();
 	}
 	
+	@Override
 	public String toString()
 	{
 		return date.toString();
@@ -120,6 +123,7 @@ public class Measurement extends BaseObject
 		return find(project.getObjectManager(), measurementRef);
 	}
 	
+	@Override
 	public void clear()
 	{
 		super.clear();
