@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-24 09:18-0500\n"
+"POT-Creation-Date: 2010-06-24 09:20-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -6926,7 +6926,7 @@ msgstr ""
 msgid "Title|About Miradi"
 msgstr "关于Miradi \t\t"
 
-#: Miradi/source/org/miradi/dialogs/accountingcode/AccountingCodePropertiesPanel.java:44
+#: Miradi/source/org/miradi/dialogs/accountingcode/AccountingCodePropertiesPanel.java:37
 msgid "Title|Accounting Code Properties"
 msgstr "会计代码属性"
 
@@ -6987,7 +6987,7 @@ msgstr ""
 msgid "Title|Found Corrupted Links"
 msgstr "发现损坏的链接 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/fundingsource/FundingSourcePropertiesPanel.java:43
+#: Miradi/source/org/miradi/dialogs/fundingsource/FundingSourcePropertiesPanel.java:37
 msgid "Title|Funding Source Properties"
 msgstr "资金来源属性 \t\t"
 
