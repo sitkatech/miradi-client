@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-24 09:56-0500\n"
+"POT-Creation-Date: 2010-06-24 12:12-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1665,7 +1665,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:198
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:86
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:77
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:78
 msgid "Activity"
 msgstr "活动"
 
@@ -4453,7 +4453,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:85
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:79
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:80
 msgid "Method"
 msgstr "方法"
 
@@ -5736,7 +5736,7 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:37
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:104
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:105
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:143
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:61
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:122
@@ -6664,7 +6664,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:202
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:84
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:81
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:82
 msgid "Task"
 msgstr "任务"
 
