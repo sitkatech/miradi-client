@@ -22,23 +22,15 @@ package org.miradi.dialogs.planning;
 
 import org.miradi.objects.AbstractBudgetCategoryObject;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.CategoryTwo;
 import org.miradi.utils.CodeList;
 
-public class CategoryTwoCoreRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
+abstract public class AbstractBudgetCategoryRowColumnProvider implements RowColumnProvider
 {
 	public CodeList getColumnListToShow()
 	{
 		return new CodeList(new String[] {
 				AbstractBudgetCategoryObject.TAG_CODE,
 				BaseObject.TAG_LABEL,
-		});
-	}
-
-	public CodeList getRowListToShow()
-	{
-		return new CodeList(new String[] {
-				CategoryTwo.OBJECT_NAME,
 		});
 	}
 }

@@ -23,17 +23,8 @@ package org.miradi.dialogs.planning;
 import org.miradi.objects.FundingSource;
 import org.miradi.utils.CodeList;
 
-public class FundingSourceCoreRowColumnProvider implements RowColumnProvider
+public class FundingSourceCoreRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
 {
-	public CodeList getColumnListToShow()
-	{
-		return new CodeList(new String[] {
-				FundingSource.TAG_CODE,
-				FundingSource.TAG_LABEL,
-		});
-		
-	}
-
 	public CodeList getRowListToShow()
 	{
 		return new CodeList(new String[] {
