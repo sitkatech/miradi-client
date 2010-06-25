@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-24 14:18-0500\n"
+"POT-Creation-Date: 2010-06-25 08:42-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1496,6 +1496,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:36
 msgid "Action|Table|Expand To Goal"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionExpandToHumanWelfareTarget.java:36
+msgid "Action|Table|Expand To Human Welfare Target"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExpandToIndicator.java:36
@@ -4292,15 +4296,15 @@ msgstr ""
 msgid "MenuBar|File"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:500
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:508
 msgid "MenuBar|Help"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:482
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:490
 msgid "MenuBar|Step-by-Step"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:419
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:424
 msgid "MenuBar|View"
 msgstr ""
 
@@ -4337,7 +4341,7 @@ msgid "Menu|Export Current Project as..."
 msgstr ""
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:281
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:407
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:412
 msgid "Menu|Group Box"
 msgstr ""
 
@@ -6027,6 +6031,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:42
 msgid "TT|Expand To Goal"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionExpandToHumanWelfareTarget.java:42
+msgid "TT|Expand To Human Welfare Target"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExpandToIndicator.java:42
