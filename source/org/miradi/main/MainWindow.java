@@ -1048,6 +1048,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	class WindowEventHandler extends WindowAdapter
 	{
+		@Override
 		public void windowClosing(WindowEvent event)
 		{
 			try
