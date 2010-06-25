@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-25 12:19-0500\n"
+"POT-Creation-Date: 2010-06-25 16:56-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3117,7 +3117,7 @@ msgstr "Masukkan Tag Baru "
 msgid "Entire Project Duration"
 msgstr ""
 
-#: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:55
+#: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:85
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:87
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:84
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
