@@ -92,12 +92,12 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 	
 	public static String getCategoryOneLabel()
 	{
-		return EAM.text("Category One");
+		return EAM.text("Budget Category One");
 	}
 	
 	public static String getCategoryTwoLabel()
 	{
-		return EAM.text("Category Two");
+		return EAM.text("Budget Category Two");
 	}
 
 	public static String getAccountingCodesLabel()
