@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-25 12:11-0500\n"
+"POT-Creation-Date: 2010-06-25 12:19-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Miradi/source/org/miradi/main/EAM.java:367
+#: Miradi/source/org/miradi/main/EAM.java:370
 msgid ""
 "\n"
 "\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Miradi telah berusaha untuk menyimpan perubahan yang terakhir, dan sekarang "
 "akan ditutup. "
 
-#: Miradi/source/org/miradi/main/EAM.java:364
+#: Miradi/source/org/miradi/main/EAM.java:367
 msgid ""
 "\n"
 "\n"
@@ -345,7 +345,7 @@ msgstr ""
 "<BR>Silakan hubungi Dukungan Miradi (<a href=\"mailto:support@miradi.org"
 "\">support@miradi.org<a>) untuk mendapatkan bantuan</HTML> "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1115
+#: Miradi/source/org/miradi/main/MainWindow.java:1114
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -1852,7 +1852,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "Kesalahan internal mencegah operasi ini "
 
-#: Miradi/source/org/miradi/main/EAM.java:373
+#: Miradi/source/org/miradi/main/EAM.java:376
 msgid "An unexpected error has occurred"
 msgstr "Kesalahan tak terduga telah terjadi "
 
@@ -1860,7 +1860,7 @@ msgstr "Kesalahan tak terduga telah terjadi "
 msgid "An unexpected error has occurred."
 msgstr "Kesalahan yang tak terduga telah terjadi. "
 
-#: Miradi/source/org/miradi/main/EAM.java:363
+#: Miradi/source/org/miradi/main/EAM.java:366
 msgid "An unexpected error occurred: "
 msgstr "Terjadi kesalahan yang tidak diharapkan: "
 
@@ -2799,8 +2799,8 @@ msgstr "Definisikan cakupan proyek "
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:60
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:62
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
-#: Miradi/source/org/miradi/main/EAM.java:434
-#: Miradi/source/org/miradi/main/EAM.java:435
+#: Miradi/source/org/miradi/main/EAM.java:437
+#: Miradi/source/org/miradi/main/EAM.java:438
 msgid "Delete"
 msgstr "Hapus "
 
@@ -3221,7 +3221,7 @@ msgstr "Perkirakan biaya kegiatan dan pemantauan "
 msgid "Euro"
 msgstr "Euro"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:698
+#: Miradi/source/org/miradi/main/MainWindow.java:697
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -5230,7 +5230,7 @@ msgstr "Sumber Daya Proyek "
 msgid "Project Resource Filter Editor"
 msgstr "Editor Filter Sumber Daya Proyek "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:696
+#: Miradi/source/org/miradi/main/MainWindow.java:695
 msgid "Project Resource Filter Is On"
 msgstr "Filter Sumber Daya Proyek Adalah Aktif "
 
@@ -5427,7 +5427,7 @@ msgid "Results Chains"
 msgstr "Rangkaian Hasil "
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:60
-#: Miradi/source/org/miradi/main/EAM.java:434
+#: Miradi/source/org/miradi/main/EAM.java:437
 msgid "Retain"
 msgstr "Pertahankan "
 
@@ -5805,7 +5805,7 @@ msgstr "Pemilik Kepentingan"
 msgid "Standard Reports"
 msgstr "Laporan Standar "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:730
+#: Miradi/source/org/miradi/main/MainWindow.java:729
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -7248,7 +7248,7 @@ msgstr "Sifat-sifat Diagram "
 msgid "Title|Direct Threat Properties"
 msgstr "Sifat-sifat Ancaman Langsung"
 
-#: Miradi/source/org/miradi/main/EAM.java:382
+#: Miradi/source/org/miradi/main/EAM.java:385
 msgid "Title|Error"
 msgstr "Kesalahan"
 
@@ -7474,7 +7474,7 @@ msgstr ""
 "aplikasi ini:\n"
 " "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1099
+#: Miradi/source/org/miradi/main/MainWindow.java:1098
 msgid "Unable to launch external web browser"
 msgstr "Tidak bisa meluncurkan perambah web eksternal "
 
@@ -7496,7 +7496,7 @@ msgstr ""
 "dari aplikasi ini:\n"
 " "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:887
+#: Miradi/source/org/miradi/main/MainWindow.java:886
 msgid "Unable to save preferences"
 msgstr "Tidak bisa menyimpan preferensi "
 
@@ -7838,7 +7838,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr "Yang Menambah adalah: %s "
 
-#: Miradi/source/org/miradi/main/EAM.java:590
+#: Miradi/source/org/miradi/main/EAM.java:593
 msgid "Wintitle|Information"
 msgstr "Informasi "
 
