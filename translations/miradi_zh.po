@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-25 12:11-0500\n"
+"POT-Creation-Date: 2010-06-25 12:19-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -15,14 +15,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Miradi/source/org/miradi/main/EAM.java:367
+#: Miradi/source/org/miradi/main/EAM.java:370
 msgid ""
 "\n"
 "\n"
 "Miradi has attempted to save your latest changes, and will now exit."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:364
+#: Miradi/source/org/miradi/main/EAM.java:367
 msgid ""
 "\n"
 "\n"
@@ -324,7 +324,7 @@ msgid ""
 "\">support@miradi.org<a>) for assistance</HTML>"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1115
+#: Miradi/source/org/miradi/main/MainWindow.java:1114
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -1758,7 +1758,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "一个内部错误阻止了该操作 \t\t"
 
-#: Miradi/source/org/miradi/main/EAM.java:373
+#: Miradi/source/org/miradi/main/EAM.java:376
 msgid "An unexpected error has occurred"
 msgstr ""
 
@@ -1766,7 +1766,7 @@ msgstr ""
 msgid "An unexpected error has occurred."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:363
+#: Miradi/source/org/miradi/main/EAM.java:366
 msgid "An unexpected error occurred: "
 msgstr "出现意外错误： \t\t"
 
@@ -2683,8 +2683,8 @@ msgstr "规定项目范围 \t\t"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:60
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:62
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
-#: Miradi/source/org/miradi/main/EAM.java:434
-#: Miradi/source/org/miradi/main/EAM.java:435
+#: Miradi/source/org/miradi/main/EAM.java:437
+#: Miradi/source/org/miradi/main/EAM.java:438
 msgid "Delete"
 msgstr "删除 \t\t"
 
@@ -3092,7 +3092,7 @@ msgstr "估计活动及监控的开销 \t\t"
 msgid "Euro"
 msgstr "欧元"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:698
+#: Miradi/source/org/miradi/main/MainWindow.java:697
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -5038,7 +5038,7 @@ msgstr ""
 msgid "Project Resource Filter Editor"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:696
+#: Miradi/source/org/miradi/main/MainWindow.java:695
 msgid "Project Resource Filter Is On"
 msgstr ""
 
@@ -5232,7 +5232,7 @@ msgid "Results Chains"
 msgstr "结果链 \t\t"
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:60
-#: Miradi/source/org/miradi/main/EAM.java:434
+#: Miradi/source/org/miradi/main/EAM.java:437
 msgid "Retain"
 msgstr "保留 \t\t"
 
@@ -5587,7 +5587,7 @@ msgstr "利益相关者"
 msgid "Standard Reports"
 msgstr "标准报告 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:730
+#: Miradi/source/org/miradi/main/MainWindow.java:729
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -6986,7 +6986,7 @@ msgstr "图表属性 \t\t"
 msgid "Title|Direct Threat Properties"
 msgstr "标题|直接威胁因子属性"
 
-#: Miradi/source/org/miradi/main/EAM.java:382
+#: Miradi/source/org/miradi/main/EAM.java:385
 msgid "Title|Error"
 msgstr "错误 "
 
@@ -7210,7 +7210,7 @@ msgstr ""
 "无法删除该项目，因为它正被该应用程序的另一拷贝所使用:\n"
 " \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1099
+#: Miradi/source/org/miradi/main/MainWindow.java:1098
 msgid "Unable to launch external web browser"
 msgstr "无法运行外部网页浏览器 \t\t"
 
@@ -7231,7 +7231,7 @@ msgstr ""
 "无法重命名该项目，因为它正被该应用程序的另一拷贝所使用:\n"
 " \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:887
+#: Miradi/source/org/miradi/main/MainWindow.java:886
 msgid "Unable to save preferences"
 msgstr "无法保存优先选项 \t\t"
 
@@ -7548,7 +7548,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:590
+#: Miradi/source/org/miradi/main/EAM.java:593
 msgid "Wintitle|Information"
 msgstr "信息 \t\t"
 
