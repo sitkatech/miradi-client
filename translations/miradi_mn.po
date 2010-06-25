@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-25 11:38-0500\n"
+"POT-Creation-Date: 2010-06-25 12:11-0500\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -322,7 +322,7 @@ msgid ""
 "\">support@miradi.org<a>) for assistance</HTML>"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1114
+#: Miradi/source/org/miradi/main/MainWindow.java:1115
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -7043,7 +7043,7 @@ msgid ""
 "application:\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1098
+#: Miradi/source/org/miradi/main/MainWindow.java:1099
 msgid "Unable to launch external web browser"
 msgstr ""
 
