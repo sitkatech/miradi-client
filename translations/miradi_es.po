@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-25 11:38-0500\n"
+"POT-Creation-Date: 2010-06-25 12:11-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -345,7 +345,7 @@ msgstr ""
 "<BR>Comuníquese con el equipo de soporte técnico de Miradi (<a href=\"mailto:"
 "support@miradi.org\">support@miradi.org<a>) para obtener ayuda.</HTML>"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1114
+#: Miradi/source/org/miradi/main/MainWindow.java:1115
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -7515,7 +7515,7 @@ msgstr ""
 "No se puede eliminar el nombre de este proyecto porque otra copia de esta "
 "aplicación lo está usando:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1098
+#: Miradi/source/org/miradi/main/MainWindow.java:1099
 msgid "Unable to launch external web browser"
 msgstr "No se pudo iniciar el navegador web externo."
 
