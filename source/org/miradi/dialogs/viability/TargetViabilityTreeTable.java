@@ -33,6 +33,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.tree.TreeSelectionModel;
 
 import org.miradi.actions.ActionExpandToGoal;
+import org.miradi.actions.ActionExpandToHumanWelfareTarget;
 import org.miradi.actions.ActionExpandToIndicator;
 import org.miradi.actions.ActionExpandToKeyEcologicalAttribute;
 import org.miradi.actions.ActionExpandToMeasurement;
@@ -168,6 +169,7 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		relevantActions.addAll(super.getRelevantActions());
 		relevantActions.add(ActionExpandToMenu.class);
 		relevantActions.add(ActionExpandToTarget.class);
+		relevantActions.add(ActionExpandToHumanWelfareTarget.class);
 		relevantActions.add(ActionExpandToKeyEcologicalAttribute.class);
 		relevantActions.add(ActionExpandToIndicator.class);
 		relevantActions.add(ActionExpandToGoal.class);
