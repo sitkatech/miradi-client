@@ -587,7 +587,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 		updateTitle();
 		getMainStatusBar().clear();
-		EAM.getExceptionLoggingDestination().close();
 	}
 	
 	public void refreshWizard() throws Exception

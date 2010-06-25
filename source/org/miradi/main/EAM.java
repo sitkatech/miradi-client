@@ -185,6 +185,9 @@ public class EAM
 	{
 		try
 		{
+			if (getExceptionLoggingDestination() != null)
+				getExceptionLoggingDestination().close();
+			
 			FileOutputStream outputStream = new FileOutputStream(destination);
 			setExceptionLoggingDestination(outputStream);
 		}
