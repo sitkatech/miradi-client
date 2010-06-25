@@ -24,6 +24,8 @@ import java.util.Vector;
 import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
+import org.miradi.objects.Stress;
+import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
@@ -38,7 +40,35 @@ public class ThreatTargetVirtualLinkHelper
 	{
 		project = projectToUse;
 	}
-	
+
+	public ORefSet getUpstreamThreatRefs(Target target)
+	{
+		ORefSet upstreamOfTargetThreatRefs = new ORefSet();
+		ORefList stressRefs = target.getStressRefs();
+		for(int stressIndex = 0; stressIndex < stressRefs.size(); ++stressIndex)
+		{
+			Stress stress = Stress.find(getProject(), stressRefs.get(stressIndex));
+			
+			ORefSet upstreamOfStressThreatRefs = getUpstreamThreatRefs(stress);
+			upstreamOfTargetThreatRefs.addAll(upstreamOfStressThreatRefs);
+		}
+		
+		return upstreamOfTargetThreatRefs;
+	}
+
+	public ORefSet getUpstreamThreatRefs(Stress stress)
+	{
+		ORefSet upstreamOfStressThreatRefs = new ORefSet();
+		ORefList relevantRatingRefs = stress.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+		for(int ratingIndex = 0; ratingIndex < relevantRatingRefs.size(); ++ratingIndex)
+		{
+			ThreatStressRating rating = ThreatStressRating.find(getProject(), relevantRatingRefs.get(ratingIndex));
+			upstreamOfStressThreatRefs.add(rating.getThreatRef());
+		}
+		return upstreamOfStressThreatRefs;
+	}
+
+
 	public String getCalculatedThreatRatingBundleValue(ORef threatRef, ORef targetRef)
 	{
 		try
