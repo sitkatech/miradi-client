@@ -991,6 +991,7 @@ public class Project
 		{
 			getDatabase().close();
 			clear();
+			EAM.setExceptionLoggingDestination();
 		}
 		catch (IOException e)
 		{
