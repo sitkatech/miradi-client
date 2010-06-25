@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-25 08:42-0500\n"
+"POT-Creation-Date: 2010-06-25 11:38-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2093,6 +2093,14 @@ msgstr ""
 "预算——指一种前瞻性估算，即针对为实施您的策略和监控计划而要展开的活动/方法和任"
 "务所需的开支和预期资金资源的估算。"
 
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:95
+msgid "Budget Category One"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:100
+msgid "Budget Category Two"
+msgstr ""
+
 #: Miradi/source/org/miradi/database/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:79
 msgid "Budget Override was: "
 msgstr ""
@@ -2283,14 +2291,12 @@ msgstr "种类Ib：野生地区"
 
 #: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryOneDoer.java:34
 #: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryOneMangementPanel.java:69
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:95
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:58
 msgid "Category One"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryTwoMangementPanel.java:71
 #: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryTwoDoer.java:34
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:100
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:61
 msgid "Category Two"
 msgstr ""
