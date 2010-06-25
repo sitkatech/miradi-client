@@ -224,6 +224,7 @@ public class Actions
 		registerAction(new ActionFilterWorkPlanByProjectResource(mainWindow));
 		registerAction(new ActionExpandToMenu(mainWindow));
 		registerAction(new ActionExpandToTarget(mainWindow));
+		registerAction(new ActionExpandToHumanWelfareTarget(mainWindow));
 		registerAction(new ActionExpandToKeyEcologicalAttribute(mainWindow));
 		registerAction(new ActionExpandToIndicator(mainWindow));
 		registerAction(new ActionExpandToMeasurement(mainWindow));

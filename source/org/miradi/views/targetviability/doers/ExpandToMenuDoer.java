@@ -23,6 +23,7 @@ package org.miradi.views.targetviability.doers;
 import org.miradi.actions.ActionCollapseAllRows;
 import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.ActionExpandToGoal;
+import org.miradi.actions.ActionExpandToHumanWelfareTarget;
 import org.miradi.actions.ActionExpandToIndicator;
 import org.miradi.actions.ActionExpandToKeyEcologicalAttribute;
 import org.miradi.actions.ActionExpandToMeasurement;
@@ -38,6 +39,7 @@ public class ExpandToMenuDoer extends AbstractPopDownMenuDoer
 				ActionExpandAllRows.class,
 				ActionCollapseAllRows.class,
 				ActionExpandToTarget.class,
+				ActionExpandToHumanWelfareTarget.class,
 				ActionExpandToKeyEcologicalAttribute.class,
 				ActionExpandToIndicator.class,
 				ActionExpandToGoal.class,

@@ -246,7 +246,7 @@ public class MainMenuBar extends JMenuBar
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertThreatReductionResult.class),KeyEvent.VK_R));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertScopeBox.class), KeyEvent.VK_B));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertTarget.class),KeyEvent.VK_T));
-		if (getMainWindow().getProject().getMetadata().isHumanWelfareTargetMode())
+		if (isHumanWelfareTargetMode())
 		{
 			menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertHumanWelfareTarget.class), KeyEvent.VK_H));
 		}
@@ -288,6 +288,11 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionDiagramProperties.class);
 		
 		return menu;
+	}
+
+	private boolean isHumanWelfareTargetMode()
+	{
+		return getMainWindow().getProject().getMetadata().isHumanWelfareTargetMode();
 	}
 
 	private JMenu createPlanningActionsMenu(Actions actions)
@@ -462,6 +467,9 @@ public class MainMenuBar extends JMenuBar
 		if (isViabilityView())
 		{
 			addMenuItem(actions, menu, ActionExpandToTarget.class);
+			if (isHumanWelfareTargetMode())
+				addMenuItem(actions, menu, ActionExpandToHumanWelfareTarget.class);
+			
 			addMenuItem(actions, menu, ActionExpandToKeyEcologicalAttribute.class);
 			addMenuItem(actions, menu, ActionExpandToIndicator.class);
 			addMenuItem(actions, menu, ActionExpandToGoal.class);
