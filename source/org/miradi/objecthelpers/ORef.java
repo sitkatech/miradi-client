@@ -39,8 +39,7 @@ public class ORef implements Comparable<ORef>
 			return;
 		}
 			
-		objectType = json.getInt(TAG_OBJECT_TYPE);
-		objectId = json.getId(TAG_OBJECT_ID);
+		setTypeAndId(json.getInt(TAG_OBJECT_TYPE), json.getId(TAG_OBJECT_ID));
 	}
 	
 	private void setTypeAndId(int objectTypeToUse, BaseId objectIdToUse)
