@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-28 16:46-0500\n"
+"POT-Creation-Date: 2010-06-28 16:55-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3654,7 +3654,7 @@ msgstr ""
 msgid "High"
 msgstr "Tinggi"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1349
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1350
 msgid "High/Very-High Threat Chains"
 msgstr "Rangkaian Ancaman Tinggi/Sangat Tinggi "
 
@@ -3816,7 +3816,7 @@ msgstr ""
 "konsisten, dan sensitif. Dalam Miradi, indikator diwakili oleh bentuk "
 "segitiga warna ungu."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1249
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1250
 msgid "Indicator Holder"
 msgstr "Pemilik Indikator "
 
@@ -4298,7 +4298,7 @@ msgstr "Lokasi "
 msgid "Low"
 msgstr "Rendah"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1350
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1351
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Rangkaian Ancaman Rendah/Sedang/Tak Terukur "
 
@@ -4858,7 +4858,7 @@ msgstr ""
 "diinginkan dari suatu proyek, seperti mengurangi ancaman kritis. Dalam "
 "Miradi, sasaran diwakili oleh persegi empat kecil warna biru."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1243
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1244
 msgid "Objective Holder"
 msgstr "Pemilik Tujuan "
 
@@ -5011,7 +5011,7 @@ msgstr "Merah Muda"
 msgid "Place scope on diagram"
 msgstr "Tempatkan cakupan pada diagram "
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1239
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1240
 msgid "Placeholder - From ConPro"
 msgstr "Placeholder - Dari ConPro "
 
