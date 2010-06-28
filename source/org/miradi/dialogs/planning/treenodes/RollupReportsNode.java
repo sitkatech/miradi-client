@@ -36,6 +36,7 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		nodeObject = nodeObjectToUse;
 		levelObjectTypes = levelObjectTypesToUse;
 		currentLevel = levelToUse;
+		setChildLevel();
 		rebuild();
 	}
 
@@ -52,16 +53,22 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		String levelObjectTypeAsString = levelObjectTypes.get(currentLevel);
 		int levelObjectType = Integer.parseInt(levelObjectTypeAsString);
 		ORefList refs = getProject().getPool(levelObjectType).getRefList();
-		++currentLevel;
 		for (int index = 0; index < refs.size(); ++index)
 		{	
 			BaseObject baseObject = BaseObject.find(getProject(), refs.get(index));
-			children.add(new RollupReportsNode(getProject(), getVisibleRows(), baseObject, levelObjectTypes, currentLevel));
+			children.add(new RollupReportsNode(getProject(), getVisibleRows(), baseObject, levelObjectTypes, childLevel));
 			
 		}		
+	}
+	
+	private void setChildLevel()
+	{
+		final int ONE_LEVEL = 1;
+		childLevel = currentLevel + ONE_LEVEL;
 	}
 	
 	private BaseObject nodeObject;
 	private CodeList levelObjectTypes;
 	private int currentLevel;
+	private int childLevel;
 }
