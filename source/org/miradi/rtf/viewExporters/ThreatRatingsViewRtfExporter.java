@@ -21,12 +21,12 @@ package org.miradi.rtf.viewExporters;
 
 import java.util.Vector;
 
-import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.dialogs.threatrating.upperPanel.ThreatRatingMultiTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Target;
 import org.miradi.questions.ReportTemplateContentQuestion;
@@ -86,10 +86,9 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 	private void exportSimpleThreatRatingDetails(RtfWriter writer) throws Exception
 	{
 		Vector<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
-		ThreatTargetChainWalker chain = new ThreatTargetChainWalker(getProject());
 		for(Target target : targets)
 		{
-			ORefSet upstreamThreats = chain.getUpstreamThreatRefsFromTarget(target);
+			ORefSet upstreamThreats = new ThreatTargetVirtualLinkHelper(getProject()).getUpstreamThreatRefs(target);
 			SimpleThreatRatingDetailsTableExporter exporter = new SimpleThreatRatingDetailsTableExporter(getProject(), target, upstreamThreats.toRefList());
 			exportTable(writer, exporter, target.getFullName());		
 		}
