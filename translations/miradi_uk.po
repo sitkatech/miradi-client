@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-28 12:23-0500\n"
+"POT-Creation-Date: 2010-06-28 14:21-0500\n"
 "PO-Revision-Date: 2010-05-12 13:30-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -62,7 +62,7 @@ msgstr ""
 msgid " 2) Connect threat to relevant targets"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:181
+#: Miradi/source/org/miradi/project/Project.java:182
 msgid " A project by this name already exists: "
 msgstr ""
 
@@ -718,7 +718,7 @@ msgid ""
 "safe to do this, unless an earlier migration attempt failed."
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:187
+#: Miradi/source/org/miradi/project/Project.java:188
 msgid "A file or folder exist by the same name:"
 msgstr ""
 
@@ -7475,7 +7475,7 @@ msgstr ""
 msgid "[New Results Chain]"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:977
+#: Miradi/source/org/miradi/project/Project.java:983
 msgid "[No Project]"
 msgstr ""
 
