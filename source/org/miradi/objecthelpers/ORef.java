@@ -19,8 +19,24 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
+import org.miradi.ids.AccountingCodeId;
 import org.miradi.ids.BaseId;
+import org.miradi.ids.DiagramContentsId;
+import org.miradi.ids.DiagramFactorId;
+import org.miradi.ids.DiagramLinkId;
+import org.miradi.ids.FactorId;
+import org.miradi.ids.FactorLinkId;
+import org.miradi.ids.FundingSourceId;
+import org.miradi.ids.GoalId;
+import org.miradi.ids.IndicatorId;
+import org.miradi.ids.KeyEcologicalAttributeId;
+import org.miradi.ids.ObjectId;
+import org.miradi.ids.ProjectResourceId;
+import org.miradi.ids.ResourceAssignmentId;
+import org.miradi.ids.TaskId;
+import org.miradi.ids.ViewDataId;
 import org.miradi.main.EAM;
+import org.miradi.objects.Factor;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ORef implements Comparable<ORef>
@@ -44,10 +60,55 @@ public class ORef implements Comparable<ORef>
 	
 	private void setTypeAndId(int objectTypeToUse, BaseId objectIdToUse)
 	{
+		Class<? extends BaseId> incomingClass = objectIdToUse.getClass();
+		Class<BaseId> baseClass = BaseId.class;
+		if(incomingClass.equals(baseClass))
+			objectIdToUse = createTypedId(objectTypeToUse, objectIdToUse);
 		objectType = objectTypeToUse;
 		objectId = objectIdToUse;
 	}
 	
+	private BaseId createTypedId(int objectTypeToUse, BaseId objectIdToUse)
+	{
+		int idToUse = objectIdToUse.asInt();
+		switch(objectTypeToUse)
+		{
+			case ObjectType.CONCEPTUAL_MODEL_DIAGRAM:
+				return new DiagramContentsId(idToUse);
+			case ObjectType.DIAGRAM_FACTOR:
+				return new DiagramFactorId(idToUse);
+			case ObjectType.DIAGRAM_LINK:
+				return new DiagramLinkId(idToUse);
+			case ObjectType.ACCOUNTING_CODE:
+				return new AccountingCodeId(idToUse);
+			case ObjectType.FACTOR_LINK:
+				return new FactorLinkId(idToUse);
+			case ObjectType.FUNDING_SOURCE:
+				return new FundingSourceId(idToUse);
+			case ObjectType.GOAL:
+				return new GoalId(idToUse);
+			case ObjectType.INDICATOR:
+				return new IndicatorId(idToUse);
+			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE:
+				return new KeyEcologicalAttributeId(idToUse);
+			case ObjectType.OBJECTIVE:
+				return new ObjectId(idToUse);
+			case ObjectType.PROJECT_RESOURCE:
+				return new ProjectResourceId(idToUse);
+			case ObjectType.RESOURCE_ASSIGNMENT:
+				return new ResourceAssignmentId(idToUse);
+			case ObjectType.TASK:
+				return new TaskId(idToUse);
+			case ObjectType.VIEW_DATA:
+				return new ViewDataId(idToUse);
+		}
+		
+		if(Factor.isFactor(objectTypeToUse))
+			return new FactorId(idToUse);
+		
+		return objectIdToUse;
+	}
+
 	public ORef(ORef ref)
 	{
 		this(ref.getObjectType(), ref.getObjectId());
