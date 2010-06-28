@@ -63,10 +63,9 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 	private void exportSimpleThreatRating() throws Exception
 	{
 		Vector<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
-		ThreatTargetChainWalker chain = new ThreatTargetChainWalker(getProject());
 		for(Target target : targets)
 		{
-			ORefSet upstreamThreats = chain.getUpstreamThreatRefsFromTarget(target);
+			ORefSet upstreamThreats = new ThreatTargetVirtualLinkHelper(getProject()).getUpstreamThreatRefs(target);
 			for(ORef threatRef : upstreamThreats)
 			{
 				getWcsXmlExporter().writeStartElement(THREAT_RATING);
