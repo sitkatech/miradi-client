@@ -62,6 +62,7 @@ import org.miradi.objectpools.ConceptualModelDiagramPool;
 import org.miradi.objectpools.DiagramFactorLinkPool;
 import org.miradi.objectpools.DiagramFactorPool;
 import org.miradi.objectpools.EAMObjectPool;
+import org.miradi.objectpools.ExpensePool;
 import org.miradi.objectpools.FactorLinkPool;
 import org.miradi.objectpools.FundingSourcePool;
 import org.miradi.objectpools.GoalPool;
@@ -70,8 +71,8 @@ import org.miradi.objectpools.HumanWelfareTargetPool;
 import org.miradi.objectpools.IndicatorPool;
 import org.miradi.objectpools.IntermediateResultPool;
 import org.miradi.objectpools.KeyEcologicalAttributePool;
-import org.miradi.objectpools.ObjectivePool;
 import org.miradi.objectpools.ObjectTreeTableConfigurationPool;
+import org.miradi.objectpools.ObjectivePool;
 import org.miradi.objectpools.RareProjectDataPool;
 import org.miradi.objectpools.ResourcePool;
 import org.miradi.objectpools.ResultsChainDiagramPool;
@@ -365,6 +366,11 @@ public class Project
 	public AssignmentPool getAssignmentPool()
 	{
 		return objectManager.getAssignmentPool();
+	}
+	
+	public ExpensePool getExpenseAssignmentPool()
+	{
+		return objectManager.getExpenseAssignmentPool();
 	}
 	
 	public ObjectTreeTableConfigurationPool getPlanningViewConfigurationPool()

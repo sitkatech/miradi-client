@@ -95,6 +95,7 @@ import org.miradi.objectpools.WcsProjectDataPool;
 import org.miradi.objectpools.WwfProjectDataPool;
 import org.miradi.objectpools.XenodataPool;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.SubTarget;
@@ -242,6 +243,11 @@ public class ObjectManager
 	public AssignmentPool getAssignmentPool()
 	{
 		return (AssignmentPool)getPool(ObjectType.RESOURCE_ASSIGNMENT);
+	}
+	
+	public ExpensePool getExpenseAssignmentPool()
+	{
+		return (ExpensePool)getPool(ExpenseAssignment.getObjectType());
 	}
 
 	public KeyEcologicalAttributePool getKeyEcologicalAttributePool()

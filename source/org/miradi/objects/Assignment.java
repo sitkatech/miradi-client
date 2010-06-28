@@ -170,6 +170,21 @@ abstract public class Assignment extends BaseObject
 		return false;
 	}
 	
+	public ORef getResourceRef()
+	{
+		return ORef.INVALID;
+	}
+	
+	public ORef getCategoryOneRef()
+	{
+		return getRef(TAG_CATEGORY_ONE_REF);
+	}
+	
+	public ORef getCategoryTwoRef()
+	{
+		return getRef(TAG_CATEGORY_TWO_REF);
+	}
+	
 	public static boolean isAssignment(ORef ref)
 	{
 		return isAssignment(ref.getObjectType());

@@ -128,6 +128,7 @@ public class ResourceAssignment extends Assignment
 		return getRefData(TAG_ACCOUNTING_CODE_ID);
 	}
 	
+	@Override
 	public ORef getResourceRef()
 	{
 		return getRefData(TAG_RESOURCE_ID);
