@@ -22,8 +22,15 @@ package org.miradi.dialogs.planning.treenodes;
 
 import java.util.Vector;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.AccountingCode;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.CategoryOne;
+import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.FundingSource;
+import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
@@ -51,6 +58,10 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		final int ONE_LEVEL = 1;
 		int childLevel = currentLevel + ONE_LEVEL;
 
+		ORefList allAssignments = new ORefList();
+		allAssignments.addAll(getProject().getAssignmentPool().getRefList());
+		allAssignments.addAll(getProject().getExpenseAssignmentPool().getRefList());
+		
 		children = new Vector();
 		String levelObjectTypeAsString = levelObjectTypes.get(currentLevel);
 		int levelObjectType = Integer.parseInt(levelObjectTypeAsString);
@@ -58,11 +69,36 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		for (int index = 0; index < refs.size(); ++index)
 		{	
 			BaseObject baseObject = BaseObject.find(getProject(), refs.get(index));
-			children.add(new RollupReportsNode(getProject(), getVisibleRows(), baseObject, levelObjectTypes, childLevel));
-			
+			for (int assignmentIndex = 0; assignmentIndex < allAssignments.size(); ++assignmentIndex)
+			{
+				Assignment assignment = Assignment.findAssignment(getProject(), allAssignments.get(assignmentIndex));
+				ORef refForLevelType = getRefForLevelType(levelObjectType, assignment);
+				if (baseObject.getRef().equals(refForLevelType))
+					children.add(new RollupReportsNode(getProject(), getVisibleRows(), baseObject, levelObjectTypes, childLevel));
+			}
 		}		
 	}
 	
+	private ORef getRefForLevelType(int levelObjectType, Assignment assignment)
+	{
+		if (ProjectResource.is(levelObjectType))
+			return assignment.getResourceRef();
+		
+		if (FundingSource.is(levelObjectType))
+			return assignment.getFundingSourceRef();
+		
+		if (AccountingCode.is(levelObjectType))
+			return assignment.getAccountingCodeRef();
+		
+		if (CategoryOne.is(levelObjectType))
+			return assignment.getCategoryOneRef();
+		
+		if (CategoryTwo.is(levelObjectType))
+			return assignment.getCategoryTwoRef();
+		
+		throw new RuntimeException("unkwnown budget type: " + levelObjectType);
+	}
+
 	private BaseObject nodeObject;
 	private CodeList levelObjectTypes;
 	private int currentLevel;
