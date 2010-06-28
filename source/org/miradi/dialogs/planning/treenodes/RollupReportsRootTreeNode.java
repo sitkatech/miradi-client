@@ -39,6 +39,12 @@ public class RollupReportsRootTreeNode extends AbstractPlanningTreeNode
 		
 		rebuild();
 	}
+	
+	@Override
+	public boolean isAlwaysExpanded()
+	{
+		return true;
+	}
 
 	@Override
 	public BaseObject getObject()
