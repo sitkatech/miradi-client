@@ -36,7 +36,6 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		nodeObject = nodeObjectToUse;
 		levelObjectTypes = levelObjectTypesToUse;
 		currentLevel = levelToUse;
-		setChildLevel();
 		rebuild();
 	}
 
@@ -49,6 +48,9 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 	@Override
 	public void rebuild() throws Exception
 	{
+		final int ONE_LEVEL = 1;
+		int childLevel = currentLevel + ONE_LEVEL;
+
 		children = new Vector();
 		String levelObjectTypeAsString = levelObjectTypes.get(currentLevel);
 		int levelObjectType = Integer.parseInt(levelObjectTypeAsString);
@@ -61,14 +63,7 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		}		
 	}
 	
-	private void setChildLevel()
-	{
-		final int ONE_LEVEL = 1;
-		childLevel = currentLevel + ONE_LEVEL;
-	}
-	
 	private BaseObject nodeObject;
 	private CodeList levelObjectTypes;
 	private int currentLevel;
-	private int childLevel;
 }
