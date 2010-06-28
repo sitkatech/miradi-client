@@ -36,13 +36,15 @@ import org.miradi.utils.CodeList;
 
 public class RollupReportsNode extends AbstractPlanningTreeNode
 {
-	public RollupReportsNode(Project project, CodeList visibleRows,	BaseObject nodeObjectToUse, CodeList levelObjectTypesToUse, int levelToUse) throws Exception
+	public RollupReportsNode(Project project, CodeList visibleRows,	BaseObject nodeObjectToUse, CodeList levelObjectTypesToUse, int levelToUse, ORefList assignmentsToUse) throws Exception
 	{
 		super(project, visibleRows);
 		
 		nodeObject = nodeObjectToUse;
 		levelObjectTypes = levelObjectTypesToUse;
 		currentLevel = levelToUse;
+		assignments = assignmentsToUse;
+		
 		rebuild();
 	}
 
@@ -64,26 +66,25 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		ORefList refs = getProject().getPool(levelObjectType).getRefList();
 		for (int index = 0; index < refs.size(); ++index)
 		{	
-			BaseObject baseObject = BaseObject.find(getProject(), refs.get(index));
-			if (isReferredToByAtleastOneAssignment(baseObject, levelObjectType))
-				children.add(new RollupReportsNode(getProject(), getVisibleRows(), baseObject, levelObjectTypes, childLevel));
+			BaseObject childBaseObject = BaseObject.find(getProject(), refs.get(index));
+			ORefList referringAssignmentRefs = isReferredToByAtleastOneAssignment(childBaseObject, levelObjectType);
+			if (referringAssignmentRefs.hasRefs())
+				children.add(new RollupReportsNode(getProject(), getVisibleRows(), childBaseObject, levelObjectTypes, childLevel, referringAssignmentRefs));
 		}		
 	}
 	
-	private boolean isReferredToByAtleastOneAssignment(BaseObject baseObject, int levelObjectType)
+	private ORefList isReferredToByAtleastOneAssignment(BaseObject childBaseObject, int levelObjectType)
 	{
-		ORefList allAssignments = new ORefList();
-		allAssignments.addAll(getProject().getAssignmentPool().getRefList());
-		allAssignments.addAll(getProject().getExpenseAssignmentPool().getRefList());	
-		for (int assignmentIndex = 0; assignmentIndex < allAssignments.size(); ++assignmentIndex)
+		ORefList assignmentsReferringToNode = new ORefList();
+		for (int assignmentIndex = 0; assignmentIndex < assignments.size(); ++assignmentIndex)
 		{
-			Assignment assignment = Assignment.findAssignment(getProject(), allAssignments.get(assignmentIndex));
+			Assignment assignment = Assignment.findAssignment(getProject(), assignments.get(assignmentIndex));
 			ORef refForLevelType = getRefForLevelType(levelObjectType, assignment);
-			if (baseObject.getRef().equals(refForLevelType))
-				return true;
+			if (childBaseObject.getRef().equals(refForLevelType))
+				assignmentsReferringToNode.add(assignment);
 		}
 		
-		return false;
+		return assignmentsReferringToNode;
 	}
 	
 	private ORef getRefForLevelType(int levelObjectType, Assignment assignment)
@@ -109,4 +110,5 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 	private BaseObject nodeObject;
 	private CodeList levelObjectTypes;
 	private int currentLevel;
+	private ORefList assignments;
 }
