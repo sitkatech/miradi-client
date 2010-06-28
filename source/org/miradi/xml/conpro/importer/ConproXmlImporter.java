@@ -876,6 +876,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		}
 	}
 	
+	// FIXME: Can we use the ThreatStressRatingEnsurer instead of manually creating?
 	private void createThreatStressRatings(ORef targetRef, ORef stressRef) throws Exception
 	{
 		ThreatTargetChainWalker threatTargetChainObject = new ThreatTargetChainWalker(getProject());
