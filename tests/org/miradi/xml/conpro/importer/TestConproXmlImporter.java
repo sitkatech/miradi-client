@@ -152,7 +152,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 			exportProject(beforeXmlOutFile, getProject());
 			String firstExport = convertFileContentToString(beforeXmlOutFile);
 			
-			verifyImportEmptyProject(beforeXmlOutFile, projectToFill1);
+			importProject(beforeXmlOutFile, projectToFill1);
 			verifyThreatStressRatingPoolContents(getProject(), projectToFill1);
 			verifyObjectiveLabelsAndUnsplitLabel(projectToFill1);
 			unsplitStrategyLabels(projectToFill1);
@@ -422,7 +422,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		try
 		{
 			verifyEmpyProject(beforeXmlOutFile);
-			verifyImportEmptyProject(beforeXmlOutFile, projectToFill);
+			importProject(beforeXmlOutFile, projectToFill);
 			ORefSet resourceRefs = projectToFill.getResourcePool().getRefSet();
 			assertEquals("wrong project resource count?", 1, resourceRefs.size());
 			for(ORef resourceRef : resourceRefs)
