@@ -29,11 +29,11 @@ import org.miradi.utils.CodeList;
 
 public class RollupReportsNode extends AbstractPlanningTreeNode
 {
-	public RollupReportsNode(Project project, CodeList visibleRows,	BaseObject parentNodeObjectToUse, CodeList levelObjectTypesToUse, int levelToUse) throws Exception
+	public RollupReportsNode(Project project, CodeList visibleRows,	BaseObject nodeObjectToUse, CodeList levelObjectTypesToUse, int levelToUse) throws Exception
 	{
 		super(project, visibleRows);
 		
-		parentNodeObject = parentNodeObjectToUse;
+		nodeObject = nodeObjectToUse;
 		levelObjectTypes = levelObjectTypesToUse;
 		currentLevel = levelToUse;
 		rebuild();
@@ -42,7 +42,7 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 	@Override
 	public BaseObject getObject()
 	{
-		return parentNodeObject;
+		return nodeObject;
 	}
 	
 	@Override
@@ -57,10 +57,11 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		{	
 			BaseObject baseObject = BaseObject.find(getProject(), refs.get(index));
 			children.add(new RollupReportsNode(getProject(), getVisibleRows(), baseObject, levelObjectTypes, currentLevel));
-		}
+			
+		}		
 	}
 	
-	private BaseObject parentNodeObject;
+	private BaseObject nodeObject;
 	private CodeList levelObjectTypes;
 	private int currentLevel;
 }
