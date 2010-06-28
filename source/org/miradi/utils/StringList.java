@@ -72,6 +72,11 @@ public class StringList
 		data.add(code);
 	}
 	
+	public void addIntCode(int codeAsInt)
+	{
+		add(Integer.toString(codeAsInt));
+	}
+	
 	public void addAll(StringList listToAdd)
 	{
 		data.addAll(Arrays.asList(listToAdd.toArray()));
