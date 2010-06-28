@@ -67,10 +67,10 @@ import org.miradi.views.umbrella.doers.TaskMoveDownDoer;
 import org.miradi.views.umbrella.doers.TaskMoveUpDoer;
 import org.miradi.views.umbrella.doers.TreeNodeShareActivityDoer;
 import org.miradi.views.umbrella.doers.TreeNodeShareMethodDoer;
-import org.miradi.views.workplan.doers.CreateCategoryTwoDoer;
 import org.miradi.views.workplan.doers.CreateCategoryOneDoer;
-import org.miradi.views.workplan.doers.DeleteCategoryTwoDoer;
+import org.miradi.views.workplan.doers.CreateCategoryTwoDoer;
 import org.miradi.views.workplan.doers.DeleteCategoryOneDoer;
+import org.miradi.views.workplan.doers.DeleteCategoryTwoDoer;
 import org.miradi.views.workplan.doers.ProjectResourceWorkPlanFilterEditDoer;
 
 public class WorkPlanView extends TabbedView
@@ -85,6 +85,7 @@ public class WorkPlanView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		workPlanManagementPanel = WorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
+		rollupReportsManagementPanel = RollupReportsManagementPanel.createRollUpReportsPanel(getMainWindow());
 		resourceManagementPanel = WorkPlanResourcesManagementPanel.createProjectResourcesPanel(getMainWindow());
 		accountingCodePoolManagementPanel = WorkPlanAccountingCodeManagementPanel.createAccountingPanel(getMainWindow());
 		fundingSourceManagementPanel = WorkPlanFundingSourceManagementPanel.createFundingSourcePanel(getMainWindow());
@@ -92,6 +93,7 @@ public class WorkPlanView extends TabbedView
 		categoryTwoPoolMangementPanel = WorkPlanCategoryTwoMangementPanel.createPanel(getMainWindow());
 		
 		addNonScrollingTab(workPlanManagementPanel);
+		addNonScrollingTab(rollupReportsManagementPanel);
 		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
 		addNonScrollingTab(fundingSourceManagementPanel);
@@ -104,6 +106,9 @@ public class WorkPlanView extends TabbedView
 	{
 		workPlanManagementPanel.dispose();
 		workPlanManagementPanel = null;
+		
+		rollupReportsManagementPanel.dispose();
+		rollupReportsManagementPanel = null;
 		
 		resourceManagementPanel.dispose();
 		resourceManagementPanel = null;
@@ -181,6 +186,7 @@ public class WorkPlanView extends TabbedView
 	}
 	
 	private PlanningTreeManagementPanel workPlanManagementPanel;
+	private PlanningTreeManagementPanel rollupReportsManagementPanel;
 	private PlanningTreeManagementPanel resourceManagementPanel;
 	private PlanningTreeManagementPanel accountingCodePoolManagementPanel;
 	private PlanningTreeManagementPanel fundingSourceManagementPanel;
