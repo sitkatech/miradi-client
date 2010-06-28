@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning.treenodes;
 
 import java.util.Vector;
 
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.CategoryOne;
@@ -57,7 +58,11 @@ public class RollupReportsRootTreeNode extends AbstractPlanningTreeNode
 	{
 		children = new Vector();
 		int levelType = 0;
-		children.add(new RollupReportsNode(getProject(), getVisibleRows(), getProject().getMetadata(), getLevelTypeCodes(), levelType));
+		
+		ORefList allAssignments = new ORefList();
+		allAssignments.addAll(getProject().getAssignmentPool().getRefList());
+		allAssignments.addAll(getProject().getExpenseAssignmentPool().getRefList());	
+		children.add(new RollupReportsNode(getProject(), getVisibleRows(), getProject().getMetadata(), getLevelTypeCodes(), levelType, allAssignments));
 	}
 
 	private CodeList getLevelTypeCodes()
