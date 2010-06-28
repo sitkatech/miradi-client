@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-25 16:56-0500\n"
+"POT-Creation-Date: 2010-06-28 12:23-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5259,6 +5259,10 @@ msgstr "江河、小溪和河流"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:83
 msgid "Rocky Areas [e.g. inland cliffs, mountain peaks]"
 msgstr "内陆岩石区[比如内陆悬崖、山峰]"
+
+#: Miradi/source/org/miradi/views/workplan/RollupReportsManagementPanel.java:66
+msgid "Rollup Reports"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:36
 #: Miradi/source/org/miradi/questions/RatingSourceQuestion.java:36
