@@ -49,9 +49,9 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		children = new Vector();
-		String typeAsString = levelObjectTypes.get(currentLevel);
-		int levelType = Integer.parseInt(typeAsString);
-		ORefList refs = getProject().getPool(levelType).getRefList();
+		String levelObjectTypeAsString = levelObjectTypes.get(currentLevel);
+		int levelObjectType = Integer.parseInt(levelObjectTypeAsString);
+		ORefList refs = getProject().getPool(levelObjectType).getRefList();
 		++currentLevel;
 		for (int index = 0; index < refs.size(); ++index)
 		{	
