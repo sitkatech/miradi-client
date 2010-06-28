@@ -28,7 +28,6 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.martus.util.UnicodeWriter;
-import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
@@ -639,8 +638,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	{
 		writeStartElement(out, STRATEGY_THREAT_TARGET_ASSOCIATIONS);
 		
-		ThreatTargetChainWalker threatTargetChainObject = new ThreatTargetChainWalker(getProject());
-		ORefSet upstreamThreatRefs = threatTargetChainObject.getUpstreamThreatRefsFromTarget(target);
+		ORefSet upstreamThreatRefs = new ThreatTargetVirtualLinkHelper(getProject()).getUpstreamThreatRefs(target);
 		for(ORef threatRef : upstreamThreatRefs)
 		{
 			writeStrategyThreatTargetAssociations(out, target, threatRef);
