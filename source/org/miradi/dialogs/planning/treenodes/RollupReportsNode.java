@@ -58,10 +58,6 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		final int ONE_LEVEL = 1;
 		int childLevel = currentLevel + ONE_LEVEL;
 
-		ORefList allAssignments = new ORefList();
-		allAssignments.addAll(getProject().getAssignmentPool().getRefList());
-		allAssignments.addAll(getProject().getExpenseAssignmentPool().getRefList());
-		
 		children = new Vector();
 		String levelObjectTypeAsString = levelObjectTypes.get(currentLevel);
 		int levelObjectType = Integer.parseInt(levelObjectTypeAsString);
@@ -69,14 +65,25 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		for (int index = 0; index < refs.size(); ++index)
 		{	
 			BaseObject baseObject = BaseObject.find(getProject(), refs.get(index));
-			for (int assignmentIndex = 0; assignmentIndex < allAssignments.size(); ++assignmentIndex)
-			{
-				Assignment assignment = Assignment.findAssignment(getProject(), allAssignments.get(assignmentIndex));
-				ORef refForLevelType = getRefForLevelType(levelObjectType, assignment);
-				if (baseObject.getRef().equals(refForLevelType))
-					children.add(new RollupReportsNode(getProject(), getVisibleRows(), baseObject, levelObjectTypes, childLevel));
-			}
+			if (isReferredToByAtleastOneAssignment(baseObject, levelObjectType))
+				children.add(new RollupReportsNode(getProject(), getVisibleRows(), baseObject, levelObjectTypes, childLevel));
 		}		
+	}
+	
+	private boolean isReferredToByAtleastOneAssignment(BaseObject baseObject, int levelObjectType)
+	{
+		ORefList allAssignments = new ORefList();
+		allAssignments.addAll(getProject().getAssignmentPool().getRefList());
+		allAssignments.addAll(getProject().getExpenseAssignmentPool().getRefList());	
+		for (int assignmentIndex = 0; assignmentIndex < allAssignments.size(); ++assignmentIndex)
+		{
+			Assignment assignment = Assignment.findAssignment(getProject(), allAssignments.get(assignmentIndex));
+			ORef refForLevelType = getRefForLevelType(levelObjectType, assignment);
+			if (baseObject.getRef().equals(refForLevelType))
+				return true;
+		}
+		
+		return false;
 	}
 	
 	private ORef getRefForLevelType(int levelObjectType, Assignment assignment)
