@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-28 14:21-0500\n"
+"POT-Creation-Date: 2010-06-28 16:46-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -5241,7 +5241,7 @@ msgstr "Proyecto"
 msgid "Project Advisor"
 msgstr "Asesor del proyecto "
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:909
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:907
 msgid "Project Description:"
 msgstr "Descripción del proyecto: "
 
@@ -5795,7 +5795,7 @@ msgstr "Modo de calificación simple de amenazas "
 msgid "Simple viability"
 msgstr "Viabilidad simple"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:914
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:912
 msgid "Site/Scope Description:"
 msgstr "Descripción del alcance/sitio: "
 
