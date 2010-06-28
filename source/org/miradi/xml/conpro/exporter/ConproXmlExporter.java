@@ -40,6 +40,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectToStringSorter;
 import org.miradi.objecthelpers.StringRefMap;
+import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Desire;
@@ -701,8 +702,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	{		
 		writeStartElement(out, THREAT_TARGET_ASSOCIATIONS);
 
-		ThreatTargetChainWalker threatTargetChainObejct = new ThreatTargetChainWalker(getProject());
-		ORefSet upstreamThreats = threatTargetChainObejct.getUpstreamThreatRefsFromTarget(target);
+		ORefSet upstreamThreats = new ThreatTargetVirtualLinkHelper(getProject()).getUpstreamThreatRefs(target);
 		ORefList sortedUpstreamThreatRefs = new ORefList(upstreamThreats);
 		sortedUpstreamThreatRefs.sort();
 		for (int index = 0; index < sortedUpstreamThreatRefs.size(); ++index)
