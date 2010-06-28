@@ -27,10 +27,9 @@ public class ORef implements Comparable<ORef>
 {
 	public ORef(int objectTypeToUse, BaseId objectIdToUse)
 	{
-		objectType = objectTypeToUse;
-		objectId = objectIdToUse;
+		setTypeAndId(objectTypeToUse, objectIdToUse);
 	}
-	
+
 	public ORef(EnhancedJsonObject json)
 	{
 		if (! json.has(TAG_OBJECT_TYPE))
@@ -42,6 +41,12 @@ public class ORef implements Comparable<ORef>
 			
 		objectType = json.getInt(TAG_OBJECT_TYPE);
 		objectId = json.getId(TAG_OBJECT_ID);
+	}
+	
+	private void setTypeAndId(int objectTypeToUse, BaseId objectIdToUse)
+	{
+		objectType = objectTypeToUse;
+		objectId = objectIdToUse;
 	}
 	
 	public ORef(ORef ref)
