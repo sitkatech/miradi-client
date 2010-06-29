@@ -41,7 +41,7 @@ public class ThreatTargetVirtualLinkHelper
 		project = projectToUse;
 	}
 
-	public ORefSet getUpstreamThreatRefs(Target target)
+	public ORefSet getUpstreamThreatRefsViaTSR(Target target)
 	{
 		ORefSet upstreamOfTargetThreatRefs = new ORefSet();
 		ORefList stressRefs = target.getStressRefs();
