@@ -20,13 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.workplan;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.CategoryOne;
+import org.miradi.objects.Assignment;
+import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.ResourceAssignment;
 
 public class RollupReportsTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -54,9 +57,43 @@ public class RollupReportsTreeTablePanel extends PlanningTreeTablePanel
 		if (super.doesCommandForceRebuild(event))
 			return true;
 			
-		return wasTypeCreatedOrDeleted(event, CategoryOne.getObjectType());
+		return wereAssignmentsChanged(event);
 	}
 	
+	private boolean wereAssignmentsChanged(CommandExecutedEvent event)
+	{
+		if (event.isSetDataCommandWithThisTypeAndTag(ExpenseAssignment.getObjectType(), ExpenseAssignment.TAG_ACCOUNTING_CODE_REF))
+			return true;
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(ExpenseAssignment.getObjectType(), ExpenseAssignment.TAG_FUNDING_SOURCE_REF))
+			return true;
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(ResourceAssignment.getObjectType(), ResourceAssignment.TAG_FUNDING_SOURCE_ID))
+			return true;
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(ResourceAssignment.getObjectType(), ResourceAssignment.TAG_ACCOUNTING_CODE_ID))
+			return true;
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(ResourceAssignment.getObjectType(), ResourceAssignment.TAG_RESOURCE_ID))
+			return true;
+		
+		if (event.isSetDataCommand())
+			return isAssignmentBudgetCategoryCommand(event.getSetCommand());
+		
+		return false;
+	}
+
+	private boolean isAssignmentBudgetCategoryCommand(CommandSetObjectData setCommand)
+	{
+		if (!Assignment.isAssignment(setCommand.getObjectType()))
+			return false;
+		
+		if (setCommand.isJustTagInAnyType(Assignment.TAG_CATEGORY_ONE_REF))
+			return true;
+		
+		return setCommand.isJustTagInAnyType(Assignment.TAG_CATEGORY_TWO_REF);
+	}
+
 	private static Class[] getButtonActions()
 	{
 		return new Class[] {
