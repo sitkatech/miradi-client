@@ -58,11 +58,12 @@ public class RollupReportsRootTreeNode extends AbstractPlanningTreeNode
 	{
 		children = new Vector();
 		int levelType = 0;
+		CodeList levelObjectTypes = getLevelTypeCodes();
 		
-		ORefList allAssignments = new ORefList();
-		allAssignments.addAll(getProject().getAssignmentPool().getRefList());
-		allAssignments.addAll(getProject().getExpenseAssignmentPool().getRefList());	
-		children.add(new RollupReportsNode(getProject(), getVisibleRows(), getProject().getMetadata(), getLevelTypeCodes(), levelType, allAssignments));
+		ORefList allAsignmentRefs = new ORefList();
+		allAsignmentRefs.addAll(getProject().getAssignmentPool().getRefList());
+		allAsignmentRefs.addAll(getProject().getExpenseAssignmentPool().getRefList());
+		children.add(new RollupReportsNode(getProject(), getVisibleRows(), getObject(), levelObjectTypes, levelType, allAsignmentRefs));
 	}
 
 	private CodeList getLevelTypeCodes()
