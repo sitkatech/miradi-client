@@ -49,14 +49,14 @@ public class ThreatTargetVirtualLinkHelper
 		{
 			Stress stress = Stress.find(getProject(), stressRefs.get(stressIndex));
 			
-			ORefSet upstreamOfStressThreatRefs = getUpstreamThreatRefs(stress);
+			ORefSet upstreamOfStressThreatRefs = getUpstreamThreatRefsViaTSR(stress);
 			upstreamOfTargetThreatRefs.addAll(upstreamOfStressThreatRefs);
 		}
 		
 		return upstreamOfTargetThreatRefs;
 	}
 
-	public ORefSet getUpstreamThreatRefs(Stress stress)
+	private ORefSet getUpstreamThreatRefsViaTSR(Stress stress)
 	{
 		ORefSet upstreamOfStressThreatRefs = new ORefSet();
 		ORefList relevantRatingRefs = stress.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
