@@ -36,7 +36,7 @@ public class DeleteFundingSourceDoer extends DeletePoolObjectDoer
 	@Override
 	protected void doWork(BaseObject objectToDelete) throws Exception
 	{
-		clearReferringAssignmentField(objectToDelete, ResourceAssignment.TAG_FUNDING_SOURCE_ID);
+		removeAssignmentReferenceToObject(objectToDelete, ResourceAssignment.TAG_FUNDING_SOURCE_ID);
 	}
 
 	@Override

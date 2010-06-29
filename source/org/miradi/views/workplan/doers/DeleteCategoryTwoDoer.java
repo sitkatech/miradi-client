@@ -37,7 +37,7 @@ public class DeleteCategoryTwoDoer extends DeletePoolObjectDoer
 	@Override
 	protected void doWork(BaseObject objectToDelete) throws Exception
 	{
-		clearReferringAssignmentField(objectToDelete, ResourceAssignment.TAG_CATEGORY_TWO_REF);
+		removeAssignmentReferenceToObject(objectToDelete, ResourceAssignment.TAG_CATEGORY_TWO_REF);
 	}
 
 	@Override
