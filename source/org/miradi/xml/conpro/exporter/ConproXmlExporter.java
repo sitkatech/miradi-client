@@ -28,6 +28,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
@@ -39,7 +40,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectToStringSorter;
 import org.miradi.objecthelpers.StringRefMap;
-import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Desire;
@@ -638,7 +638,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	{
 		writeStartElement(out, STRATEGY_THREAT_TARGET_ASSOCIATIONS);
 		
-		ORefSet upstreamThreatRefs = new ThreatTargetVirtualLinkHelper(getProject()).getUpstreamThreatRefs(target);
+		ThreatTargetChainWalker threatTargetChainObject = new ThreatTargetChainWalker(getProject());
+		ORefSet upstreamThreatRefs = threatTargetChainObject.getUpstreamThreatRefsFromTarget(target);
 		for(ORef threatRef : upstreamThreatRefs)
 		{
 			writeStrategyThreatTargetAssociations(out, target, threatRef);
@@ -700,7 +701,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	{		
 		writeStartElement(out, THREAT_TARGET_ASSOCIATIONS);
 
-		ORefSet upstreamThreats = new ThreatTargetVirtualLinkHelper(getProject()).getUpstreamThreatRefs(target);
+		ThreatTargetChainWalker threatTargetChainObejct = new ThreatTargetChainWalker(getProject());
+		ORefSet upstreamThreats = threatTargetChainObejct.getUpstreamThreatRefsFromTarget(target);
 		ORefList sortedUpstreamThreatRefs = new ORefList(upstreamThreats);
 		sortedUpstreamThreatRefs.sort();
 		for (int index = 0; index < sortedUpstreamThreatRefs.size(); ++index)
