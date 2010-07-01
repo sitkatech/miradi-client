@@ -95,6 +95,7 @@ public class StaticQuestionManager
 		addQuestion(new QuarterColumnsVisibilityQuestion());
 		addQuestion(new DiagramObjectDataInclusionQuestion());
 		addQuestion(new PlanningTreeTargetPositionQuestion());
+		addQuestion(new RollupReportsObjectTypeQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
