@@ -23,14 +23,10 @@ package org.miradi.dialogs.planning.treenodes;
 import java.util.Vector;
 
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.CategoryOne;
-import org.miradi.objects.CategoryTwo;
-import org.miradi.objects.FundingSource;
-import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
+import org.miradi.views.workplan.WorkPlanView;
 
 public class RollupReportsRootTreeNode extends AbstractPlanningTreeNode
 {
@@ -66,14 +62,8 @@ public class RollupReportsRootTreeNode extends AbstractPlanningTreeNode
 		children.add(new RollupReportsNode(getProject(), getVisibleRows(), getObject(), levelObjectTypes, levelType, allAsignmentRefs));
 	}
 
-	private CodeList getLevelTypeCodes()
+	private CodeList getLevelTypeCodes() throws Exception
 	{
-		CodeList types = new CodeList();
-		types.addIntCode(ProjectResource.getObjectType());
-		types.addIntCode(FundingSource.getObjectType());
-		types.addIntCode(AccountingCode.getObjectType());
-		types.addIntCode(CategoryOne.getObjectType());
-		types.addIntCode(CategoryTwo.getObjectType());
-		return types;
+		return getProject().getViewData(WorkPlanView.getViewName()).getBudgetRollupReportLevelTypes();
 	}
 }

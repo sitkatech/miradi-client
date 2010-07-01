@@ -25,6 +25,7 @@ import java.util.Vector;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.questions.RollupReportsObjectTypeQuestion;
 import org.miradi.utils.CodeList;
 
 public class RollupReportsNode extends AbstractPlanningTreeNode
@@ -54,7 +55,13 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		int childLevel = getCurrentLevel() + ONE_LEVEL;
 
 		children = new Vector();
+		if (!getLevelObjectTypes().hasData())
+			return;
+		
 		String levelObjectTypeAsString = getLevelObjectTypes().get(getCurrentLevel());
+		if (levelObjectTypeAsString.equals(RollupReportsObjectTypeQuestion.UNSPECIEFIED_CODE))
+			return;
+		
 		int levelObjectType = Integer.parseInt(levelObjectTypeAsString);
 		ORefList refs = getProject().getPool(levelObjectType).getRefList();
 		for (int index = 0; index < refs.size(); ++index)
