@@ -33,6 +33,7 @@ import org.miradi.actions.ActionDeleteCategoryTwo;
 import org.miradi.actions.ActionDeleteFundingSource;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionDeleteResource;
+import org.miradi.actions.ActionEditRollupReportsLevelTypes;
 import org.miradi.actions.ActionFilterWorkPlanByProjectResource;
 import org.miradi.actions.ActionImportAccountingCodes;
 import org.miradi.actions.ActionPlanningCreationMenu;
@@ -71,6 +72,7 @@ import org.miradi.views.workplan.doers.CreateCategoryOneDoer;
 import org.miradi.views.workplan.doers.CreateCategoryTwoDoer;
 import org.miradi.views.workplan.doers.DeleteCategoryOneDoer;
 import org.miradi.views.workplan.doers.DeleteCategoryTwoDoer;
+import org.miradi.views.workplan.doers.EditoRollupReportsLevelTypesDoer;
 import org.miradi.views.workplan.doers.ProjectResourceWorkPlanFilterEditDoer;
 
 public class WorkPlanView extends TabbedView
@@ -174,6 +176,8 @@ public class WorkPlanView extends TabbedView
 
 		addDoerToMap(ActionCreateFundingSource.class, new CreateFundingSourceDoer());
 		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());
+		
+		addDoerToMap(ActionEditRollupReportsLevelTypes.class, new EditoRollupReportsLevelTypesDoer());
 		
 		addDoerToMap(ActionPlanningCreationMenu.class, new PlanningTreeNodeCreationMenuDoer());
 		addDoerToMap(ActionWorkPlanBudgetColumnsEditor.class, new WorkPlanColumnsEditorDoer());

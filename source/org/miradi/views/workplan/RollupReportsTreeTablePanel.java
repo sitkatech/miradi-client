@@ -20,8 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.workplan;
 
-import java.awt.BorderLayout;
-
+import org.miradi.actions.ActionEditRollupReportsLevelTypes;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
@@ -42,19 +41,8 @@ public class RollupReportsTreeTablePanel extends PlanningTreeTablePanel
 	) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonClasses, rowColumnProvider);
-		
-		rollupReportsEditorComponent = new BudgetRollupChoiceEditorPanel(getProject());
-		add(rollupReportsEditorComponent, BorderLayout.BEFORE_FIRST_LINE);
 	}
 	
-	@Override
-	public void dispose()
-	{
-		rollupReportsEditorComponent.dispose();
-		
-		super.dispose();
-	}
-
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model, RowColumnProvider rowColumnProvider) throws Exception
 	{
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
@@ -121,8 +109,7 @@ public class RollupReportsTreeTablePanel extends PlanningTreeTablePanel
 	private static Class[] getButtonActions()
 	{
 		return new Class[] {
+			ActionEditRollupReportsLevelTypes.class,
 		};
 	}
-	
-	private BudgetRollupChoiceEditorPanel rollupReportsEditorComponent;
 }
