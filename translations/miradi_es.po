@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-01 13:27-0500\n"
+"POT-Creation-Date: 2010-07-01 14:11-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -1126,6 +1126,10 @@ msgstr "Editar recursos estimados…"
 #: Miradi/source/org/miradi/actions/ActionEditMethods.java:34
 msgid "Action|Edit Methods..."
 msgstr "Editar métodos…"
+
+#: Miradi/source/org/miradi/actions/ActionEditRollupReportsLevelTypes.java:36
+msgid "Action|Edit Types..."
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionEditTaggedObjectSet.java:34
 msgid "Action|Edit..."
@@ -3089,6 +3093,10 @@ msgstr "Editar todas las estrategias"
 #: Miradi/source/org/miradi/actions/jump/ActionJumpMonitoringWizardEditIndicatorsStep.java:35
 msgid "Edit Indicators"
 msgstr "Editar indicadores"
+
+#: Miradi/source/org/miradi/views/workplan/doers/EditoRollupReportsLevelTypesDoer.java:43
+msgid "Edit Level Types"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/EditMethodsDoer.java:31
 msgid "Edit Methods"
@@ -6440,6 +6448,10 @@ msgstr "Eliminar la selección"
 #: Miradi/source/org/miradi/actions/views/ActionViewWorkPlan.java:41
 msgid "TT|Develop a work plan and budget"
 msgstr "Desarrollar plan de trabajo y presupuesto"
+
+#: Miradi/source/org/miradi/actions/ActionEditRollupReportsLevelTypes.java:42
+msgid "TT|Edit Types"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionEditEstimatedResource.java:39
 msgid "TT|Edit the list of estimated resources."

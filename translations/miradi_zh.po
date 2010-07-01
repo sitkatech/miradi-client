@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-01 13:27-0500\n"
+"POT-Creation-Date: 2010-07-01 14:11-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1036,6 +1036,10 @@ msgstr "编辑估计的资源… \t\t"
 #: Miradi/source/org/miradi/actions/ActionEditMethods.java:34
 msgid "Action|Edit Methods..."
 msgstr "编辑方法… \t\t"
+
+#: Miradi/source/org/miradi/actions/ActionEditRollupReportsLevelTypes.java:36
+msgid "Action|Edit Types..."
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionEditTaggedObjectSet.java:34
 msgid "Action|Edit..."
@@ -2950,6 +2954,10 @@ msgstr "编辑所有策略 \t\t"
 #: Miradi/source/org/miradi/actions/jump/ActionJumpMonitoringWizardEditIndicatorsStep.java:35
 msgid "Edit Indicators"
 msgstr "编辑指示物 \t\t"
+
+#: Miradi/source/org/miradi/views/workplan/doers/EditoRollupReportsLevelTypesDoer.java:43
+msgid "Edit Level Types"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/EditMethodsDoer.java:31
 msgid "Edit Methods"
@@ -6171,6 +6179,10 @@ msgstr "删除选定的 \t\t"
 
 #: Miradi/source/org/miradi/actions/views/ActionViewWorkPlan.java:41
 msgid "TT|Develop a work plan and budget"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionEditRollupReportsLevelTypes.java:42
+msgid "TT|Edit Types"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionEditEstimatedResource.java:39
