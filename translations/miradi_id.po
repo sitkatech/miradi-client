@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-01 13:27-0500\n"
+"POT-Creation-Date: 2010-07-01 14:11-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1122,6 +1122,10 @@ msgstr "Edit Perkiraan Sumber Daya… "
 #: Miradi/source/org/miradi/actions/ActionEditMethods.java:34
 msgid "Action|Edit Methods..."
 msgstr "Edit Metode… "
+
+#: Miradi/source/org/miradi/actions/ActionEditRollupReportsLevelTypes.java:36
+msgid "Action|Edit Types..."
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionEditTaggedObjectSet.java:34
 msgid "Action|Edit..."
@@ -3078,6 +3082,10 @@ msgstr "Edit Semua Strategi "
 #: Miradi/source/org/miradi/actions/jump/ActionJumpMonitoringWizardEditIndicatorsStep.java:35
 msgid "Edit Indicators"
 msgstr "Edit Indikator "
+
+#: Miradi/source/org/miradi/views/workplan/doers/EditoRollupReportsLevelTypesDoer.java:43
+msgid "Edit Level Types"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/EditMethodsDoer.java:31
 msgid "Edit Methods"
@@ -6400,6 +6408,10 @@ msgstr "Hapus pilihan "
 #: Miradi/source/org/miradi/actions/views/ActionViewWorkPlan.java:41
 msgid "TT|Develop a work plan and budget"
 msgstr "Buat rencana dan anggaran kerja "
+
+#: Miradi/source/org/miradi/actions/ActionEditRollupReportsLevelTypes.java:42
+msgid "TT|Edit Types"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionEditEstimatedResource.java:39
 msgid "TT|Edit the list of estimated resources."
