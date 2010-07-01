@@ -30,14 +30,14 @@ import org.miradi.utils.CodeList;
 
 public class RollupReportsNode extends AbstractPlanningTreeNode
 {
-	public RollupReportsNode(Project project, CodeList visibleRows,	BaseObject nodeObjectToUse, CodeList levelObjectTypesToUse, int levelToUse, ORefList incomingAssignmentRefsToUse) throws Exception
+	public RollupReportsNode(Project project, CodeList visibleRows,	BaseObject nodeObjectToUse, CodeList levelObjectTypesToUse, int levelToUse, ORefList assignmentRefsThatMatchToUse) throws Exception
 	{
 		super(project, visibleRows);
 		
 		nodeObject = nodeObjectToUse;
 		levelObjectTypes = levelObjectTypesToUse;
 		currentLevel = levelToUse;
-		incomingAssignmentRefs = incomingAssignmentRefsToUse;
+		assignmentRefsThatMatch = assignmentRefsThatMatchToUse;
 		
 		rebuild();
 	}
@@ -76,7 +76,7 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 
 	private ORefList getIncomingAssignmentRefs()
 	{
-		return incomingAssignmentRefs;
+		return assignmentRefsThatMatch;
 	}
 
 	private CodeList getLevelObjectTypes()
@@ -92,5 +92,5 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 	private BaseObject nodeObject;
 	private CodeList levelObjectTypes;
 	private int currentLevel;
-	private ORefList incomingAssignmentRefs;
+	private ORefList assignmentRefsThatMatch;
 }
