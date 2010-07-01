@@ -67,6 +67,7 @@ import org.miradi.dialogfields.ObjectStringMapInputField;
 import org.miradi.dialogfields.PopupQuestionEditorField;
 import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogfields.ReadOnlyCodeListField;
+import org.miradi.dialogfields.RollupReportsObjectsChooserField;
 import org.miradi.dialogfields.StringMapBudgetColumnCodeListEditorField;
 import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
@@ -528,6 +529,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		objectCodeListField.setDisabledCodes(disabledChoices);
 		
 		return objectCodeListField;
+	}
+	
+	public ObjectDataInputField createBudgetRollupReportEditorField(ORef refToUse, String tagToUse, ChoiceQuestion question)
+	{
+		return new RollupReportsObjectsChooserField(getProject(), refToUse, tagToUse, question);
 	}
 	
 	public ObjectDataInputField createStringMapWorkPlanBudgetColumnCodeListEditor(int objectType, String tagToUse, ChoiceQuestion question)

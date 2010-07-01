@@ -35,6 +35,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.InternalQuestionWithoutValues;
+import org.miradi.questions.RollupReportsObjectTypeQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ViewData extends BaseObject
@@ -42,6 +43,7 @@ public class ViewData extends BaseObject
 	public ViewData(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse);
+
 		clear();
 	}
 
@@ -164,12 +166,14 @@ public class ViewData extends BaseObject
 	void clear()
 	{
 		super.clear();
+
 		currentMode = new StringData(TAG_CURRENT_MODE);
 		chainModeFactorRefs = new ORefListData(TAG_CHAIN_MODE_FACTOR_REFS);
 		currentTab = new IntegerData(TAG_CURRENT_TAB);
 		currentResultsChainRef = new ORefData(TAG_CURRENT_RESULTS_CHAIN_REF);
 		currentConceptualModelRef = new ORefData(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
 		diagramHiddenTypes = new CodeListData(TAG_DIAGRAM_HIDDEN_TYPES, getQuestion(InternalQuestionWithoutValues.class));
+		budgetRollupReportTypes = new CodeListData(TAG_BUDGET_ROLLUP_REPORT_TYPES, getQuestion(RollupReportsObjectTypeQuestion.class));
 		planningSingleLevelChoice = new StringData(TAG_PLANNING_SINGLE_LEVEL_CHOICE);
 		treeConfigurationRef = new ORefData(TAG_TREE_CONFIGURATION_REF);
 		currentWizardStep = new StringData(TAG_CURRENT_WIZARD_STEP);
@@ -180,6 +184,7 @@ public class ViewData extends BaseObject
 		addPresentationDataField(TAG_CHAIN_MODE_FACTOR_REFS, chainModeFactorRefs);
 		addPresentationDataField(TAG_CURRENT_TAB, currentTab);
 		addPresentationDataField(TAG_DIAGRAM_HIDDEN_TYPES, diagramHiddenTypes);
+		addField(TAG_BUDGET_ROLLUP_REPORT_TYPES, budgetRollupReportTypes);
 		
 		addPresentationDataField(TAG_PLANNING_SINGLE_LEVEL_CHOICE, planningSingleLevelChoice);
 		addPresentationDataField(TAG_TREE_CONFIGURATION_REF, treeConfigurationRef);
@@ -192,6 +197,7 @@ public class ViewData extends BaseObject
 	public static final String TAG_CHAIN_MODE_FACTOR_REFS = "ChainModeFactorRefs";
 	public static final String TAG_CURRENT_TAB = "CurrentTab";
 	public static final String TAG_DIAGRAM_HIDDEN_TYPES = "DiagramHiddenTypes";
+	public static final String TAG_BUDGET_ROLLUP_REPORT_TYPES = "BudgetRollupReportTypes";
 	
 	public static final String TAG_PLANNING_SINGLE_LEVEL_CHOICE = "SingleLevelChoice";
 	public static final String TAG_TREE_CONFIGURATION_REF = "CustomPlanRef";
@@ -208,6 +214,7 @@ public class ViewData extends BaseObject
 	private ORefData currentResultsChainRef;
 	private ORefData currentConceptualModelRef;
 	private CodeListData diagramHiddenTypes;
+	private CodeListData budgetRollupReportTypes;
 	private StringData planningSingleLevelChoice;
 	private ORefData treeConfigurationRef;
 	private StringData currentWizardStep;
