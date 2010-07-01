@@ -22,14 +22,12 @@ package org.miradi.views.workplan;
 
 import java.awt.BorderLayout;
 
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.Assignment;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ViewData;
@@ -78,36 +76,46 @@ public class RollupReportsTreeTablePanel extends PlanningTreeTablePanel
 	
 	private boolean wereAssignmentsChanged(CommandExecutedEvent event)
 	{
-		if (event.isSetDataCommandWithThisTypeAndTag(ExpenseAssignment.getObjectType(), ExpenseAssignment.TAG_ACCOUNTING_CODE_REF))
+		if (wasResourceAssignmentBudgetRelatedTagChange(event))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(ExpenseAssignment.getObjectType(), ExpenseAssignment.TAG_FUNDING_SOURCE_REF))
-			return true;
-		
-		if (event.isSetDataCommandWithThisTypeAndTag(ResourceAssignment.getObjectType(), ResourceAssignment.TAG_FUNDING_SOURCE_ID))
-			return true;
-		
-		if (event.isSetDataCommandWithThisTypeAndTag(ResourceAssignment.getObjectType(), ResourceAssignment.TAG_ACCOUNTING_CODE_ID))
-			return true;
-		
-		if (event.isSetDataCommandWithThisTypeAndTag(ResourceAssignment.getObjectType(), ResourceAssignment.TAG_RESOURCE_ID))
-			return true;
-		
-		if (event.isSetDataCommand())
-			return isAssignmentBudgetCategoryCommand(event.getSetCommand());
-		
-		return false;
+		return wasExpenseAssignmentBudgetRelatedTagChange(event);
 	}
 
-	private boolean isAssignmentBudgetCategoryCommand(CommandSetObjectData setCommand)
+	private boolean wasResourceAssignmentBudgetRelatedTagChange(CommandExecutedEvent event)
 	{
-		if (!Assignment.isAssignment(setCommand.getObjectType()))
-			return false;
+		String[] resourceAssignmentBudgetTags = new String[]{
+				ResourceAssignment.TAG_RESOURCE_ID,
+				ResourceAssignment.TAG_ACCOUNTING_CODE_ID,
+				ResourceAssignment.TAG_FUNDING_SOURCE_ID,
+				ResourceAssignment.TAG_CATEGORY_ONE_REF,
+				ResourceAssignment.TAG_CATEGORY_TWO_REF,
+		};
 		
-		if (setCommand.isJustTagInAnyType(Assignment.TAG_CATEGORY_ONE_REF))
-			return true;
+		return wasAssignmentBudgetRelatedChange(event, ResourceAssignment.getObjectType(), resourceAssignmentBudgetTags);
+	}
+
+	private boolean wasExpenseAssignmentBudgetRelatedTagChange(CommandExecutedEvent event)
+	{
+		String[] expenseAssignmentBudgetTags = new String[]{
+				ExpenseAssignment.TAG_ACCOUNTING_CODE_REF,
+				ExpenseAssignment.TAG_FUNDING_SOURCE_REF,
+				ExpenseAssignment.TAG_CATEGORY_ONE_REF,
+				ExpenseAssignment.TAG_CATEGORY_TWO_REF,
+		};
 		
-		return setCommand.isJustTagInAnyType(Assignment.TAG_CATEGORY_TWO_REF);
+		return wasAssignmentBudgetRelatedChange(event, ExpenseAssignment.getObjectType(), expenseAssignmentBudgetTags);
+	}
+
+	private boolean wasAssignmentBudgetRelatedChange(CommandExecutedEvent event, int objectType, String[] expenseAssignmentBudgetTags)
+	{
+		for (int index = 0; index < expenseAssignmentBudgetTags.length; ++index)
+		{
+			if (event.isSetDataCommandWithThisTypeAndTag(objectType, expenseAssignmentBudgetTags[index]))
+				return true;
+		}
+		
+		return false;
 	}
 
 	private static Class[] getButtonActions()
