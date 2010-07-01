@@ -24,6 +24,7 @@ import java.util.Vector;
 
 import org.miradi.dialogfields.RollupReportsObjectsChooserField.ComboBoxChangeHandler;
 import org.miradi.dialogs.base.MiradiPanel;
+import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.questions.RollupReportsObjectTypeQuestion;
 import org.miradi.utils.CodeList;
@@ -64,6 +65,12 @@ public class RollupReportsEditorComponent extends MiradiPanel
 	public void setText(String codes) throws Exception
 	{
 		CodeList allCodes = new CodeList(codes);
+		if (allCodes.size() > editors.size())
+		{
+			allCodes = stripOutExtraCodes(allCodes);
+			EAM.logError(EAM.text("Stripped out extra codes being used for roll up report level types"));
+		}
+		
 		for (int index = 0; index < allCodes.size(); ++index)
 		{
 			SingleChoiceItemEditor levelEditor = editors.get(index);
@@ -72,6 +79,18 @@ public class RollupReportsEditorComponent extends MiradiPanel
 		}
 	}
 	
+	private CodeList stripOutExtraCodes(CodeList allCodes)
+	{
+		CodeList strippedOfExtras = new CodeList();
+		for (int index = 0; index < editors.size(); ++index)
+		{
+			String code = allCodes.get(index);
+			strippedOfExtras.add(code);
+		}
+		
+		return strippedOfExtras;
+	}
+
 	public void addActionListener(ComboBoxChangeHandler comboChangeHandler)
 	{
 		for(SingleChoiceItemEditor levelEditor : editors)
