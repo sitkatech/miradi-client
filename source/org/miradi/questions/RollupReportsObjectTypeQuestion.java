@@ -21,24 +21,31 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.questions;
 
 import org.miradi.main.EAM;
+import org.miradi.objects.AccountingCode;
+import org.miradi.objects.CategoryOne;
+import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.FundingSource;
+import org.miradi.objects.ProjectResource;
 
 public class RollupReportsObjectTypeQuestion extends StaticChoiceQuestion
 {
 	public RollupReportsObjectTypeQuestion()
 	{
-		super("");
+		super();
 	}
 	
 	@Override
 	protected ChoiceItem[] createChoices()
 	{
 		return new ChoiceItem[]{
-			new ChoiceItem("", EAM.text("Unspecified")),
-			new ChoiceItem("ProjectResource", EAM.text("Resource")),
-			new ChoiceItem("FundingSource", EAM.text("Funding Source")),
-			new ChoiceItem("AccountingCode", EAM.text("Accounting Code")),
-			new ChoiceItem("BudgetCategoryOne", EAM.text("Budget Category One")),
-			new ChoiceItem("BudgetCategoryTwo", EAM.text("Budget Category Two")),
+			new ChoiceItem(UNSPECIEFIED_CODE, EAM.text("Unspecified")),
+			new ChoiceItem(ProjectResource.getObjectType(), EAM.text("Resource")),
+			new ChoiceItem(FundingSource.getObjectType(), EAM.text("Funding Source")),
+			new ChoiceItem(AccountingCode.getObjectType(), EAM.text("Accounting Code")),
+			new ChoiceItem(CategoryOne.getObjectType(), EAM.text("Budget Category One")),
+			new ChoiceItem(CategoryTwo.getObjectType(), EAM.text("Budget Category Two")),
 		};
 	}
+	
+	public static final String UNSPECIEFIED_CODE = "";
 }

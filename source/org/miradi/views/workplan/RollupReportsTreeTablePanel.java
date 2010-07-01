@@ -32,6 +32,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ResourceAssignment;
+import org.miradi.objects.ViewData;
 
 public class RollupReportsTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -67,6 +68,9 @@ public class RollupReportsTreeTablePanel extends PlanningTreeTablePanel
 	protected boolean doesCommandForceRebuild(CommandExecutedEvent event)
 	{
 		if (super.doesCommandForceRebuild(event))
+			return true;
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_BUDGET_ROLLUP_REPORT_TYPES))
 			return true;
 			
 		return wereAssignmentsChanged(event);
