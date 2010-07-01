@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-01 09:16-0500\n"
+"POT-Creation-Date: 2010-07-01 09:56-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -751,7 +751,7 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:33
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:39
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:44
 msgid "Accounting Code"
 msgstr ""
 
@@ -2037,12 +2037,12 @@ msgid ""
 "your strategic and monitoring plans."
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:40
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:45
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:95
 msgid "Budget Category One"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:41
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:46
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:100
 msgid "Budget Category Two"
 msgstr ""
@@ -3305,7 +3305,7 @@ msgid "Full Report"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:33
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:38
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:43
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:55
 msgid "Funding Source"
 msgstr ""
@@ -5081,7 +5081,7 @@ msgid "Report to project team and stakeholders"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:213
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:37
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:42
 msgid "Resource"
 msgstr ""
 
@@ -7143,7 +7143,7 @@ msgid "Unscheduled"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/DirectThreatPoolQuestion.java:47
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:36
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:41
 msgid "Unspecified"
 msgstr ""
 
