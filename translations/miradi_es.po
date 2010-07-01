@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-28 20:50-0500\n"
+"POT-Creation-Date: 2010-07-01 09:16-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -883,6 +883,7 @@ msgstr ""
 "fuera de este rango aceptable, es un atributo \"degradado\". "
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:33
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:39
 msgid "Accounting Code"
 msgstr "Código contable"
 
@@ -2208,10 +2209,12 @@ msgstr ""
 "financiamiento anticipadas para las actividades/métodos y tareas necesarias "
 "para implementar sus planes estratégicos y de monitoreo."
 
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:40
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:95
 msgid "Budget Category One"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:41
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:100
 msgid "Budget Category Two"
 msgstr ""
@@ -3548,6 +3551,7 @@ msgid "Full Report"
 msgstr "Informe completo "
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:33
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:38
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:55
 msgid "Funding Source"
 msgstr "Fuente de financiamiento"
@@ -5423,6 +5427,7 @@ msgid "Report to project team and stakeholders"
 msgstr "Informar al equipo del proyecto y partes interesadas"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:213
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:37
 msgid "Resource"
 msgstr "Recurso "
 
@@ -7618,6 +7623,7 @@ msgid "Unscheduled"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/DirectThreatPoolQuestion.java:47
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:36
 msgid "Unspecified"
 msgstr ""
 
@@ -8072,6 +8078,9 @@ msgid "FieldLabel|3.ProgressReportRefs|Progress Reports"
 msgstr "Informes de progreso "
 
 msgid "FieldLabel|3.Comments|Comments"
+msgstr ""
+
+msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
 msgstr ""
 
 msgid "FieldLabel|6.Stress|Stress"
