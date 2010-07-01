@@ -34,14 +34,20 @@ public class RollupReportsEditorComponent extends MiradiPanel
 	{
 		editors = new Vector<SingleChoiceItemEditor>();
 		RollupReportsObjectTypeQuestion question = new RollupReportsObjectTypeQuestion();
-		final int UNSPECIFIED_CHOICE_COUNT = 1;
-		int NUMBER_OF_LEVELS = question.size() - UNSPECIFIED_CHOICE_COUNT;
+		int NUMBER_OF_LEVELS = getDropDownCount(question);
 		for (int index = 0; index < NUMBER_OF_LEVELS; ++index)
 		{
 			SingleChoiceItemEditor levelEditor = new SingleChoiceItemEditor(question);
 			editors.add(levelEditor);
 			add(levelEditor);
 		}
+	}
+
+	private int getDropDownCount(RollupReportsObjectTypeQuestion question)
+	{
+		final int UNSPECIFIED_CHOICE_COUNT = 1;
+		
+		return question.size() - UNSPECIFIED_CHOICE_COUNT;
 	}
 	
 	public String getText() throws Exception
