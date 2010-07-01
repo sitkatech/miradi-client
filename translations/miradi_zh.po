@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-28 20:50-0500\n"
+"POT-Creation-Date: 2010-07-01 09:16-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -796,6 +796,7 @@ msgstr ""
 "性。"
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:33
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:39
 msgid "Accounting Code"
 msgstr "会计编码 \t\t"
 
@@ -2093,10 +2094,12 @@ msgstr ""
 "预算——指一种前瞻性估算，即针对为实施您的策略和监控计划而要展开的活动/方法和任"
 "务所需的开支和预期资金资源的估算。"
 
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:40
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:95
 msgid "Budget Category One"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:41
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:100
 msgid "Budget Category Two"
 msgstr ""
@@ -3389,6 +3392,7 @@ msgid "Full Report"
 msgstr "完整报告"
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:33
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:38
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:55
 msgid "Funding Source"
 msgstr "资金来源 \t\t"
@@ -5192,6 +5196,7 @@ msgid "Report to project team and stakeholders"
 msgstr "向项目团队及利益相关者汇报 \t\t"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:213
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:37
 msgid "Resource"
 msgstr "资源"
 
@@ -7311,6 +7316,7 @@ msgid "Unscheduled"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/DirectThreatPoolQuestion.java:47
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:36
 msgid "Unspecified"
 msgstr ""
 
@@ -7742,6 +7748,9 @@ msgid "FieldLabel|3.ProgressReportRefs|Progress Reports"
 msgstr "进度 报告"
 
 msgid "FieldLabel|3.Comments|Comments"
+msgstr ""
+
+msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
 msgstr ""
 
 msgid "FieldLabel|6.Stress|Stress"
