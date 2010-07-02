@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-01 14:11-0500\n"
+"POT-Creation-Date: 2010-07-02 12:20-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -5247,6 +5247,7 @@ msgid "Project Resource Filter Is On"
 msgstr "Filter Sumber Daya Proyek Adalah Aktif "
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceWorkUnitsTableModel.java:70
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/RollupReportsWorkUnitsModel.java:86
 msgid "Project Resource Work Units Table is not editbale."
 msgstr "Tabel Unit Kerja Sumber Daya Proyek tidak dapat diedit. "
 
@@ -8670,6 +8671,10 @@ msgstr ""
 
 msgid "FieldLabel|12.MetaBudgetDetailColumnCode|Budget Totals"
 msgstr "Total Anggaran "
+
+msgid ""
+"FieldLabel|12.MetaRollupReportsWorkUnitsColumnCode|Rollup Work Units Report"
+msgstr ""
 
 msgid "FieldLabel|12.ResourceType|Resource Type"
 msgstr "Jenis Sumber Daya "

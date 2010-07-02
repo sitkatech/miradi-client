@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-01 14:11-0500\n"
+"POT-Creation-Date: 2010-07-02 12:20-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -5282,6 +5282,7 @@ msgid "Project Resource Filter Is On"
 msgstr "El filtro de recursos del proyecto está activado."
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceWorkUnitsTableModel.java:70
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/RollupReportsWorkUnitsModel.java:86
 msgid "Project Resource Work Units Table is not editbale."
 msgstr ""
 "La Tabla de unidades de trabajo de recursos del proyecto no se puede editar. "
@@ -8706,6 +8707,10 @@ msgstr ""
 
 msgid "FieldLabel|12.MetaBudgetDetailColumnCode|Budget Totals"
 msgstr "Totales del presupuesto"
+
+msgid ""
+"FieldLabel|12.MetaRollupReportsWorkUnitsColumnCode|Rollup Work Units Report"
+msgstr ""
 
 msgid "FieldLabel|12.ResourceType|Resource Type"
 msgstr "Tipo de recurso"
