@@ -258,7 +258,7 @@ public class TimePeriodCosts
 	
 	private void updateTotalExpenses(Vector<DataPack> dataPacks)
 	{
-		totalExpenses = getTotal(dataPacks);		
+		totalExpenses = getTotal(expensesPacks);		
 	}
 
 	private void updateTotalWorkUnits()
