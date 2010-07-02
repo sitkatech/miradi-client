@@ -34,7 +34,7 @@ public class TimePeriodCosts
 	public TimePeriodCosts()
 	{
 		workUnitCategorizedQuantities = new Vector();
-		expensesPacks = new Vector();
+		expensesCategorizedQuantities = new Vector();
 
 		totalExpenses = new OptionalDouble();
 		totalWorkUnits = new OptionalDouble();
@@ -55,7 +55,7 @@ public class TimePeriodCosts
 		accountingCodeRef.ensureValidType(AccountingCode.getObjectType());
 		
 		addExpensesToTotal(expenseToUse);
-		addToCategorizedQuantities(expensesPacks, new CategorizedQuantity(ORef.INVALID, fundingSourceRef, accountingCodeRef, expenseToUse));
+		addToCategorizedQuantities(expensesCategorizedQuantities, new CategorizedQuantity(ORef.INVALID, fundingSourceRef, accountingCodeRef, expenseToUse));
 	}
 	
 	public TimePeriodCosts(ORef resourceRef, ORef fundingSourceRef,	ORef accountingCodeRef, OptionalDouble workUnits)
@@ -73,7 +73,7 @@ public class TimePeriodCosts
 	public void add(TimePeriodCosts timePeriodCosts)
 	{
 		addExpensesToTotal(timePeriodCosts);
-		addDataPack(expensesPacks, timePeriodCosts.expensesPacks);
+		addDataPack(expensesCategorizedQuantities, timePeriodCosts.expensesCategorizedQuantities);
 		
 		addWorkUnitsToTotal(timePeriodCosts);
 		addDataPack(workUnitCategorizedQuantities, timePeriodCosts.workUnitCategorizedQuantities);
@@ -164,7 +164,7 @@ public class TimePeriodCosts
 	
 	public OptionalDouble getFundingSourceExpenses(ORef fundingSourceRef)
 	{
-		return getRolledUpQuantityForRef(expensesPacks, fundingSourceRef);
+		return getRolledUpQuantityForRef(expensesCategorizedQuantities, fundingSourceRef);
 	}
 	
 	private OptionalDouble getRolledUpQuantityForRef(Vector<CategorizedQuantity> dataPacksToSearch, ORef refToFindBy)
@@ -189,7 +189,7 @@ public class TimePeriodCosts
 	{
 		addExpensesToTotal(timePeriodCostsToMergeAdd);
 		
-		mergeDataPackSetInPlace(expensesPacks, timePeriodCostsToMergeAdd.expensesPacks);
+		mergeDataPackSetInPlace(expensesCategorizedQuantities, timePeriodCostsToMergeAdd.expensesCategorizedQuantities);
 	}
 	
 	public void mergeAllWorkUnitDataPackInPlace(TimePeriodCosts timePeriodCostsToMerge)
@@ -224,7 +224,7 @@ public class TimePeriodCosts
 	
 	public void retainExpenseDataRelatedToAnyOf(ORefSet refsToRetain)
 	{
-		filterByUnionOf(expensesPacks, refsToRetain);
+		filterByUnionOf(expensesCategorizedQuantities, refsToRetain);
 		updateTotalExpenses();
 	}
 	
@@ -248,7 +248,7 @@ public class TimePeriodCosts
 	
 	private void updateTotalExpenses()
 	{
-		totalExpenses = getTotal(expensesPacks);		
+		totalExpenses = getTotal(expensesCategorizedQuantities);		
 	}
 
 	private void updateTotalWorkUnits()
@@ -272,7 +272,7 @@ public class TimePeriodCosts
 		divideByDataPacks(workUnitCategorizedQuantities, divideByValue);
 		updateTotalWorkUnits();
 		
-		divideByDataPacks(expensesPacks, divideByValue);
+		divideByDataPacks(expensesCategorizedQuantities, divideByValue);
 		updateTotalExpenses();
 	}
 	
@@ -300,7 +300,7 @@ public class TimePeriodCosts
 		if (!other.workUnitCategorizedQuantities.equals(workUnitCategorizedQuantities))
 			return false;
 		
-		return other.expensesPacks.equals(expensesPacks);
+		return other.expensesCategorizedQuantities.equals(expensesCategorizedQuantities);
 	}
 	
 	@Override
@@ -326,7 +326,7 @@ public class TimePeriodCosts
 	
 	public Set<ORef> getExpenseRefSetForType(int objectType)
 	{
-		return extractRefs(expensesPacks, objectType);
+		return extractRefs(expensesCategorizedQuantities, objectType);
 	}
 	
 	private ORefSet extractRefs(Vector<CategorizedQuantity> dataPacksToUse, int type)
@@ -356,5 +356,5 @@ public class TimePeriodCosts
 	private OptionalDouble totalWorkUnits;
 	
 	private Vector<CategorizedQuantity> workUnitCategorizedQuantities;
-	private Vector<CategorizedQuantity> expensesPacks;
+	private Vector<CategorizedQuantity> expensesCategorizedQuantities;
 }
