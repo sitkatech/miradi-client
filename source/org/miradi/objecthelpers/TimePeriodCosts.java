@@ -55,7 +55,7 @@ public class TimePeriodCosts
 		accountingCodeRef.ensureValidType(AccountingCode.getObjectType());
 		
 		addExpensesToTotal(expenseToUse);
-		addToDataPacks(expensesPacks, new CategorizedQuantity(ORef.INVALID, fundingSourceRef, accountingCodeRef, expenseToUse));
+		addToCategorizedQuantities(expensesPacks, new CategorizedQuantity(ORef.INVALID, fundingSourceRef, accountingCodeRef, expenseToUse));
 	}
 	
 	public TimePeriodCosts(ORef resourceRef, ORef fundingSourceRef,	ORef accountingCodeRef, OptionalDouble workUnits)
@@ -67,7 +67,7 @@ public class TimePeriodCosts
 		accountingCodeRef.ensureValidType(AccountingCode.getObjectType());
 		
 		addWorkUnitsToTotal(workUnits);
-		addToDataPacks(workUnitPacks, new CategorizedQuantity(resourceRef, fundingSourceRef, accountingCodeRef, workUnits));
+		addToCategorizedQuantities(workUnitPacks, new CategorizedQuantity(resourceRef, fundingSourceRef, accountingCodeRef, workUnits));
 	}
 
 	public void add(TimePeriodCosts timePeriodCosts)
@@ -86,11 +86,11 @@ public class TimePeriodCosts
 		
 		for(CategorizedQuantity thisDataPack : packsToAdd)
 		{
-			addToDataPacks(packToUpdate, thisDataPack);
+			addToCategorizedQuantities(packToUpdate, thisDataPack);
 		}
 	}
 	
-	private void addToDataPacks(Vector<CategorizedQuantity> dataPacksToUpdate, CategorizedQuantity dataPackToAdd)
+	private void addToCategorizedQuantities(Vector<CategorizedQuantity> dataPacksToUpdate, CategorizedQuantity dataPackToAdd)
 	{
 		dataPacksToUpdate.add(dataPackToAdd);
 	}
@@ -203,7 +203,7 @@ public class TimePeriodCosts
 	{
 		for(CategorizedQuantity thisDataPack : dataPackToMergeFrom)
 		{
-			addToDataPacks(dataPackToUpdate, thisDataPack);
+			addToCategorizedQuantities(dataPackToUpdate, thisDataPack);
 		}
 	}
 	
