@@ -51,8 +51,8 @@ public class TimePeriodCosts
 	{
 		this();
 		
-		ensureFundingSource(fundingSourceRef);
-		ensureAccountingCode(accountingCodeRef);
+		ensureRef(fundingSourceRef, FundingSource.getObjectType());
+		ensureRef(accountingCodeRef, AccountingCode.getObjectType());
 		
 		addExpensesToTotal(expenseToUse);
 		addToDataPacks(expensesPacks, new DataPack(ORef.INVALID, fundingSourceRef, accountingCodeRef, expenseToUse));
@@ -62,9 +62,9 @@ public class TimePeriodCosts
 	{
 		this();
 		
-		ensureResource(resourceRef);
-		ensureFundingSource(fundingSourceRef);
-		ensureAccountingCode(accountingCodeRef);
+		ensureRef(resourceRef, ProjectResource.getObjectType());
+		ensureRef(fundingSourceRef, FundingSource.getObjectType());
+		ensureRef(accountingCodeRef, AccountingCode.getObjectType());
 		
 		addWorkUnitsToTotal(workUnits);
 		addToDataPacks(workUnitPacks, new DataPack(resourceRef, fundingSourceRef, accountingCodeRef, workUnits));
@@ -352,30 +352,12 @@ public class TimePeriodCosts
 		return getTotalWorkUnits().hasValue();
 	}
 	
-	private void ensureResource(ORef resourceRef)
+	private void ensureRef(ORef ref, int objectType)
 	{
-		if (resourceRef.isValid() && !ProjectResource.is(resourceRef))
-			throw new RuntimeException(getWrongRefErrorMessage(resourceRef, "ProjectResource Ref"));
+		if (ref.isValid())
+			ref.ensureType(objectType);
 	}
 
-	private void ensureFundingSource(ORef fundingSourceRef)
-	{
-		if (fundingSourceRef.isValid() && !FundingSource.is(fundingSourceRef))
-			throw new RuntimeException(getWrongRefErrorMessage(fundingSourceRef, "FundingSource Ref"));
-	}
-	
-	private void ensureAccountingCode(ORef accountingCodeRef)
-	{
-		if (accountingCodeRef.isValid() && !AccountingCode.is(accountingCodeRef))
-			throw new RuntimeException(getWrongRefErrorMessage(accountingCodeRef, "AccountingCode Ref"));
-	}
-	
-	private String getWrongRefErrorMessage(ORef ref, String substituionText)
-	{
-		return EAM.substitute(EAM.text("Was expecting a %s, instead got:\n" + ref.toString()), substituionText);
-	}
-
-	
 	class DataPack 
 	{
 		public DataPack()
