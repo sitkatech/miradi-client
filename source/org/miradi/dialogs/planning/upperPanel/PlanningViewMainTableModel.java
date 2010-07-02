@@ -572,7 +572,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	private ChoiceItem appendedProjectResources(BaseObject baseObject) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, new DateUnit());
-		timePeriodCosts.filterWorkUnitRelated(getResourcesFilter());
+		timePeriodCosts.filterRelatedWorkUnitUnionOf(getResourcesFilter());
 		ORefSet filteredResources = new ORefSet(timePeriodCosts.getResourceRefSet());
 		
 		Vector<String> sortedNames = getSortedResourceNames(filteredResources);		
