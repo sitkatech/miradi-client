@@ -71,6 +71,34 @@ public class TestCategorizedQuantity extends TestCaseWithProject
 		assertTrue("should be equal to itself?", categorizedQuantity1.equals(categorizedQuantity1));
 		assertFalse("categorized Quantity objects with different containing refs should not be the same", categorizedQuantity1.equals(categorizedQuantity2));
 	}
+	
+	public void testContainsAll() throws Exception
+	{
+		ORef resourceRef = getProject().createProjectResource().getRef();
+		ORef fundingSourceRef = getProject().createFundingSource().getRef();
+		ORef accountingCodeRef = getProject().createAccountingCode().getRef();
+		ORef categoryOneRef = getProject().createCategoryOne().getRef();
+		ORef categoryTwoRef = getProject().createCategoryTwo().getRef();
+		
+		CategorizedQuantity categorizedQuantity = new CategorizedQuantity(resourceRef, fundingSourceRef, accountingCodeRef, categoryOneRef, categoryTwoRef, new OptionalDouble(14.0));
+		
+		ORefSet refs = new ORefSet();
+		addAndVerifyTrueContainsAll(categorizedQuantity, refs, resourceRef);
+		addAndVerifyTrueContainsAll(categorizedQuantity, refs, fundingSourceRef);
+		addAndVerifyTrueContainsAll(categorizedQuantity, refs, accountingCodeRef);
+		addAndVerifyTrueContainsAll(categorizedQuantity, refs, categoryOneRef);
+		addAndVerifyTrueContainsAll(categorizedQuantity, refs, categoryTwoRef);
+		
+		ORef resourceRefNotContained = getProject().createProjectResource().getRef();
+		refs.add(resourceRefNotContained);
+		assertFalse("should not contain all?", categorizedQuantity.containsAll(refs));
+	}
+
+	private void addAndVerifyTrueContainsAll(CategorizedQuantity categorizedQuantity, ORefSet refs, ORef resourceRef)
+	{
+		refs.add(resourceRef);
+		assertTrue("should contain all?", categorizedQuantity.containsAll(refs));
+	}
 
 	private CategorizedQuantity createSampleCategorizedQuantity() throws Exception
 	{

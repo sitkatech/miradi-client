@@ -22,6 +22,8 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.propertiesPanel.AbstractExpenseTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.Project;
 import org.miradi.utils.OptionalDouble;
 
@@ -35,8 +37,13 @@ public class RollupReportsExpenseTableModel extends AbstractExpenseTableModel
 	@Override
 	protected OptionalDouble getOptionalDoubleAt(int row, int column)
 	{
-		//FIXME urgent cRV needs to calculate expenses value
 		return calculateRollupValue(row, column);
+	}
+	
+	@Override
+	protected void retainDataRelatedToAnyOf(TimePeriodCosts timePeriodCosts, ORefSet objectHierarchy)
+	{
+		timePeriodCosts.retainExpenseDataRelatedToAllOf(objectHierarchy);
 	}
 	
 	@Override

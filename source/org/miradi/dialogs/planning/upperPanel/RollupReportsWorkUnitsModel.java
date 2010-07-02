@@ -25,6 +25,8 @@ import org.miradi.dialogs.planning.propertiesPanel.AbstractWorkUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
@@ -41,6 +43,12 @@ public class RollupReportsWorkUnitsModel extends AbstractWorkUnitsTableModel
 	protected OptionalDouble getOptionalDoubleAt(int row, int column)
 	{
 		return calculateRollupValue(row, column);
+	}
+
+	@Override
+	protected void retainDataRelatedToAnyOf(TimePeriodCosts timePeriodCosts, ORefSet objectHierarchy)
+	{
+		timePeriodCosts.retainWorkUnitDataRelatedToAllOf(objectHierarchy);
 	}
 
 	@Override

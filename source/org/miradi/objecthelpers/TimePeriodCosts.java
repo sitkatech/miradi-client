@@ -23,6 +23,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.main.EAM;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.utils.OptionalDouble;
@@ -207,16 +208,38 @@ public class TimePeriodCosts
 			mergeAllWorkUnitCategorizedQuantityInPlace(timePeriodCostsToMerge);
 	}
 	
+	public void retainWorkUnitDataRelatedToAnyOf(BaseObject baseObject)
+	{
+		retainWorkUnitDataRelatedToAnyOf(new ORefSet(baseObject));
+	}
+	
 	public void retainWorkUnitDataRelatedToAnyOf(ORefSet refsToRetain)
 	{
 		filterByUnionOf(workUnitCategorizedQuantities, refsToRetain);
 		updateTotalWorkUnits();
 	}
 	
+	public void retainExpenseDataRelatedToAnyOf(BaseObject baseObject)
+	{
+		retainExpenseDataRelatedToAnyOf(new ORefSet(baseObject));
+	}
+	
 	public void retainExpenseDataRelatedToAnyOf(ORefSet refsToRetain)
 	{
 		filterByUnionOf(expensesCategorizedQuantities, refsToRetain);
 		updateTotalExpenses();
+	}
+	
+	public void retainExpenseDataRelatedToAllOf(ORefSet refsToRetain)
+	{
+		filterByIntersectionOf(expensesCategorizedQuantities, refsToRetain);
+		updateTotalExpenses();
+	}
+	
+	public void retainWorkUnitDataRelatedToAllOf(ORefSet refsToRetain)
+	{
+		filterByIntersectionOf(workUnitCategorizedQuantities, refsToRetain);
+		updateTotalWorkUnits();
 	}
 	
 	private void filterByUnionOf(Vector<CategorizedQuantity> categorizedQuantities, ORefSet refsToRetain)
@@ -227,10 +250,29 @@ public class TimePeriodCosts
 		if (refsToRetain.contains(ORef.INVALID))
 			EAM.logError("WARNING: Filtering on invalid ref with no type");
 		
+		
 		Vector<CategorizedQuantity> categorizedQuantitiesToRetain = new Vector();
 		for(CategorizedQuantity categorizedQuantityToFilter : categorizedQuantities)
 		{
 			if (categorizedQuantityToFilter.containsAtleastOne(refsToRetain))
+				categorizedQuantitiesToRetain.add(categorizedQuantityToFilter);
+		}
+		
+		categorizedQuantities.retainAll(categorizedQuantitiesToRetain);
+	}
+	
+	private void filterByIntersectionOf(Vector<CategorizedQuantity> categorizedQuantities, ORefSet refsToRetain)
+	{
+		if (refsToRetain.size() == 0)
+			return;
+		
+		if (refsToRetain.contains(ORef.INVALID))
+			EAM.logError("WARNING: Filtering on invalid ref with no type");
+		
+		Vector<CategorizedQuantity> categorizedQuantitiesToRetain = new Vector();
+		for(CategorizedQuantity categorizedQuantityToFilter : categorizedQuantities)
+		{
+			if (categorizedQuantityToFilter.containsAll(refsToRetain))
 				categorizedQuantitiesToRetain.add(categorizedQuantityToFilter);
 		}
 		
