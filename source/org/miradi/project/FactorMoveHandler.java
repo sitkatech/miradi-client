@@ -241,7 +241,7 @@ public class FactorMoveHandler
 			currentLocation.translate(deltaX, deltaY);
 			Point snappedLocation = getProject().getSnapped(currentLocation);
 			String snappedLocationAsJson = EnhancedJsonObject.convertFromPoint(snappedLocation);
-			groupChildRef.ensureType(DiagramFactor.getObjectType());
+			groupChildRef.ensureExactType(DiagramFactor.getObjectType());
 			commandsToMove.add(new CommandSetObjectData(DiagramFactor.getObjectType(), new DiagramFactorId(groupChildRef.getObjectId().asInt()), DiagramFactor.TAG_LOCATION, snappedLocationAsJson));
 		}
 				

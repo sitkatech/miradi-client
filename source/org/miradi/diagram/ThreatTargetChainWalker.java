@@ -46,7 +46,7 @@ public class ThreatTargetChainWalker
 	
 	public HashSet<Cause> getUpstreamThreatsFromTarget(Factor startingFactorToUse)
 	{
-		startingFactorToUse.getRef().ensureType(Target.getObjectType());
+		startingFactorToUse.getRef().ensureExactType(Target.getObjectType());
 		initializeChain(startingFactorToUse);
 		buildUpstreamChain();
 		return resultingThreats;
@@ -61,7 +61,7 @@ public class ThreatTargetChainWalker
 
 	public HashSet<Factor> getDownstreamTargetsFromThreat(Factor startingFactorToUse)
 	{
-		startingFactorToUse.getRef().ensureType(Cause.getObjectType());
+		startingFactorToUse.getRef().ensureExactType(Cause.getObjectType());
 		initializeChain(startingFactorToUse);
 		buildDownstreamChain();
 		return resultingTargets;

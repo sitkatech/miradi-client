@@ -78,7 +78,7 @@ public class TestORef extends TestCaseEnhanced
 		ORef ref = new ORef(Cause.getObjectType(), new BaseId(4));
 		try
 		{
-			ref.ensureType(Cause.getObjectType());
+			ref.ensureExactType(Cause.getObjectType());
 		}
 		catch (Exception e)
 		{
@@ -87,7 +87,7 @@ public class TestORef extends TestCaseEnhanced
 		
 		try
 		{
-			ref.ensureType(Target.getObjectType());
+			ref.ensureExactType(Target.getObjectType());
 			fail("was suppose to fail due to wrong type?");
 		}
 		catch (Exception e)

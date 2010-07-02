@@ -34,8 +34,8 @@ public class ThreatStressPair
 	public ThreatStressPair(Project projectToUse, ORef threatRefToUse, ORef stressRefToUse)
 	{
 		project = projectToUse;
-		threatRefToUse.ensureType(Cause.getObjectType());
-		stressRefToUse.ensureType(Stress.getObjectType());
+		threatRefToUse.ensureExactType(Cause.getObjectType());
+		stressRefToUse.ensureExactType(Stress.getObjectType());
 		
 		threatRef = threatRefToUse;
 		stressRef = stressRefToUse;

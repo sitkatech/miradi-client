@@ -60,7 +60,7 @@ class CellInventory
 	
 	public FactorCell getFactorCellByDiagramFactorRef(ORef diagramFactorRef)
 	{
-		diagramFactorRef.ensureType(DiagramFactor.getObjectType());
+		diagramFactorRef.ensureExactType(DiagramFactor.getObjectType());
 		return diagramFactorRefToCellMap.get(diagramFactorRef);
 	}
 	
