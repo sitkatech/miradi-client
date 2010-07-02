@@ -263,7 +263,7 @@ public class TimePeriodCosts
 
 	private void updateTotalWorkUnits(Vector<DataPack> dataPacks)
 	{
-		totalWorkUnits = getTotal(dataPacks);
+		totalWorkUnits = getTotal(workUnitPacks);
 	}
 	
 	private OptionalDouble getTotal(Vector<DataPack> dataPacks)
