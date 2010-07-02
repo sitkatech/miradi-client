@@ -226,15 +226,19 @@ public class TimePeriodCosts
 		updateTotalWorkUnits();
 	}
 	
-	public void filterFundingSourcesExpenses(ORefSet fundingSourceRefsToRetain)
+	public void filterFundingSourcesExpenses(ORefSet refsToRetain)
 	{
-		filterDataPacks(expensesPacks, fundingSourceRefsToRetain);
-		updateTotalExpenses();
+		filterExpenseRelated(refsToRetain);
 	}
 	
-	public void filterAccountingCodeExpenses(ORefSet accountingCodeRefsToRetain)
+	public void filterAccountingCodeExpenses(ORefSet refsToRetain)
 	{
-		filterDataPacks(expensesPacks, accountingCodeRefsToRetain);
+		filterExpenseRelated(refsToRetain);
+	}
+
+	private void filterExpenseRelated(ORefSet refsToRetain)
+	{
+		filterDataPacks(expensesPacks, refsToRetain);
 		updateTotalExpenses();
 	}
 	
