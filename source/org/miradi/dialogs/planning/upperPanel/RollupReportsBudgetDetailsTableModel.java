@@ -42,7 +42,7 @@ public class RollupReportsBudgetDetailsTableModel extends AbstractBudgetDetailsT
 	}
 	
 	@Override
-	protected void retainDataRelatedToAnyOf(TimePeriodCosts timePeriodCosts, ORefSet objectHierarchy)
+	protected void retainDataRelatedToAllOf(TimePeriodCosts timePeriodCosts, ORefSet objectHierarchy)
 	{
 		timePeriodCosts.retainWorkUnitDataRelatedToAllOf(objectHierarchy);
 		timePeriodCosts.retainExpenseDataRelatedToAllOf(objectHierarchy);

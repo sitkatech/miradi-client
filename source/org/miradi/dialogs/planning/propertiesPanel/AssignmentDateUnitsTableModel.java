@@ -491,7 +491,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			ORefList objectHierarchy = getProvider().getObjectHiearchy(row, column);
 			ORefSet refsToRetain = new ORefSet(objectHierarchy);
 			removeMetadataRootNodeRefInPlace(refsToRetain);
-			retainDataRelatedToAnyOf(timePeriodCosts, refsToRetain);
+			retainDataRelatedToAllOf(timePeriodCosts, refsToRetain);
 			
 			return calculateValue(timePeriodCosts);
 		}
@@ -507,7 +507,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		refsToRetain.remove(getProject().getMetadata().getRef());
 	}
 
-	protected void retainDataRelatedToAnyOf(TimePeriodCosts timePeriodCosts, ORefSet objectHierarchy)
+	protected void retainDataRelatedToAllOf(TimePeriodCosts timePeriodCosts, ORefSet objectHierarchy)
 	{
 		throw new RuntimeException("Model needs to override retainDataRelatedToAnyOf");
 	}

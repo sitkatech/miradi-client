@@ -46,7 +46,7 @@ public class RollupReportsWorkUnitsModel extends AbstractWorkUnitsTableModel
 	}
 
 	@Override
-	protected void retainDataRelatedToAnyOf(TimePeriodCosts timePeriodCosts, ORefSet objectHierarchy)
+	protected void retainDataRelatedToAllOf(TimePeriodCosts timePeriodCosts, ORefSet objectHierarchy)
 	{
 		timePeriodCosts.retainWorkUnitDataRelatedToAllOf(objectHierarchy);
 	}
