@@ -79,7 +79,7 @@ public class CategorizedQuantity
 		quantity = quantity.divideBy(divideBy);
 	}
 	
-	ORef getResourceRef()
+	public ORef getResourceRef()
 	{
 		return resourceRef;
 	}
@@ -94,7 +94,7 @@ public class CategorizedQuantity
 		return accountingCodeRef;
 	}
 	
-	OptionalDouble getQuantity()
+	public OptionalDouble getQuantity()
 	{
 		return quantity;
 	}
