@@ -41,7 +41,7 @@ public class AccountingCodeExpenseTableModel extends AbstractExpenseTableModel
 	{
 		TimePeriodCosts timePeriodCosts = getProjectTotalTimePeriodCostFor(dateUnit);
 		if (AccountingCode.is(baseObject))
-			timePeriodCosts.filterAccountingCodeExpenses(new ORefSet(baseObject));
+			timePeriodCosts.filterExpenseRelated(new ORefSet(baseObject));
 		
 		return calculateValue(timePeriodCosts);
 	}
