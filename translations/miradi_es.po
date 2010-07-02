@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 16:49-0500\n"
+"POT-Creation-Date: 2010-07-02 18:42-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -106,7 +106,7 @@ msgstr "(Crear, manejar y calificar las presiones para este objeto)"
 msgid "(Definition Not Available)"
 msgstr "(Definición no disponible)"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:118
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:113
 msgid "(Error)"
 msgstr "(Error)"
 
@@ -2371,7 +2371,7 @@ msgstr "No se puede enlazar un elemento con sí mismo."
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: Miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:76
+#: Miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:77
 msgid "Cannot add a vector to itself."
 msgstr "No se puede agregar un vector a sí mismo. "
 
@@ -5288,7 +5288,7 @@ msgid "Project Resource Filter Is On"
 msgstr "El filtro de recursos del proyecto está activado."
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceWorkUnitsTableModel.java:70
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/RollupReportsWorkUnitsModel.java:49
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/RollupReportsWorkUnitsModel.java:57
 msgid "Project Resource Work Units Table is not editbale."
 msgstr ""
 "La Tabla de unidades de trabajo de recursos del proyecto no se puede editar. "
@@ -5743,7 +5743,7 @@ msgstr "Compartir comentarios de modo formal o informal"
 msgid "Share success & failures with practitioners around the world"
 msgstr "Compartir éxitos y fracasos con practicantes de todo el mundo"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:615
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:602
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr "Ahora debería permitir que se calcule el empleo a tiempo completo para"
 
@@ -8708,6 +8708,15 @@ msgstr "Totales del presupuesto"
 
 msgid ""
 "FieldLabel|12.MetaRollupReportsWorkUnitsColumnCode|Rollup Work Units Report"
+msgstr ""
+
+msgid ""
+"FieldLabel|12.MetaRollupReportsExpensesColumnCode|Rollup Expenses Report"
+msgstr ""
+
+msgid ""
+"FieldLabel|12.MetaRollupReportsBudgetDetailsColumnCode|Rollup Budget Details "
+"Report"
 msgstr ""
 
 msgid "FieldLabel|12.ResourceType|Resource Type"
