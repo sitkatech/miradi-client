@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 14:22-0500\n"
+"POT-Creation-Date: 2010-07-02 14:47-0500\n"
 "PO-Revision-Date: 2010-05-12 13:30-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2199,7 +2199,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: Miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:84
+#: Miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:85
 msgid "Cannot add a vector to itself."
 msgstr ""
 
@@ -7278,7 +7278,7 @@ msgstr ""
 msgid "Warning"
 msgstr ""
 
-#: Miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:379
+#: Miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:380
 msgid "Was expecting a %s, instead got:\n"
 msgstr ""
 
