@@ -68,7 +68,7 @@ public class RollupReportsEditorComponent extends MiradiPanel
 		if (allCodes.size() > editors.size())
 		{
 			allCodes = stripOutExtraCodes(allCodes);
-			EAM.logError(EAM.text("Stripped out extra codes being used for roll up report level types"));
+			EAM.logError(EAM.text("Extra/unexpected configuration data was found, and will be ignored."));
 		}
 		
 		for (int index = 0; index < allCodes.size(); ++index)
