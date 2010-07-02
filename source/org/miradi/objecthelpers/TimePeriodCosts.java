@@ -237,7 +237,7 @@ public class TimePeriodCosts
 	
 	private void filterWorkUnitRelated(Vector<DataPack> dataPacks, ORefSet refsToRetain)
 	{
-		filterDataPacks(dataPacks, refsToRetain);
+		filterDataPacks(workUnitPacks, refsToRetain);
 		updateTotalWorkUnits(workUnitPacks);
 	}
 	
