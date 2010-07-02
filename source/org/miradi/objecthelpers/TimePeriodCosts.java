@@ -216,13 +216,13 @@ public class TimePeriodCosts
 			mergeAllWorkUnitDataPackInPlace(timePeriodCostsToMerge);
 	}
 	
-	public void filterRelatedWorkUnitUnionOf(ORefSet refsToRetain)
+	public void retainWorkUnitDataRelatedToAnyOf(ORefSet refsToRetain)
 	{
 		filterByUnionOf(workUnitPacks, refsToRetain);
 		updateTotalWorkUnits();
 	}
 	
-	public void filterRelatedExpenseUnionOf(ORefSet refsToRetain)
+	public void retainExpenseDataRelatedToAnyOf(ORefSet refsToRetain)
 	{
 		filterByUnionOf(expensesPacks, refsToRetain);
 		updateTotalExpenses();
