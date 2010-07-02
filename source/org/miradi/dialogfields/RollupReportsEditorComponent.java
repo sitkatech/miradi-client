@@ -35,8 +35,8 @@ public class RollupReportsEditorComponent extends MiradiPanel
 	{
 		editors = new Vector<SingleChoiceItemEditor>();
 		RollupReportsObjectTypeQuestion question = new RollupReportsObjectTypeQuestion();
-		int NUMBER_OF_LEVELS = getNumberOfDropdowns(question);
-		for (int index = 0; index < NUMBER_OF_LEVELS; ++index)
+		int numberOfDropdowns = getNumberOfDropdowns(question);
+		for (int index = 0; index < numberOfDropdowns; ++index)
 		{
 			SingleChoiceItemEditor levelEditor = new SingleChoiceItemEditor(question);
 			editors.add(levelEditor);
