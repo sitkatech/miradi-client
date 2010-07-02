@@ -147,10 +147,10 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		
 		ProjectResource fred = createProjectResource();
 		TimePeriodCosts fredTen = getProject().createTimePeriodCosts(fred.getRef(), 10.0);
-		totalTimePeriodCosts.mergeAllWorkUnitDataPackInPlace(fredTen);
+		totalTimePeriodCosts.mergeAllWorkUnitCategorizedQuantityInPlace(fredTen);
 		assertEquals("wrong total work units?", 10.0, totalTimePeriodCosts.getTotalWorkUnits().getValue());
 		
-		totalTimePeriodCosts.mergeAllWorkUnitDataPackInPlace(fredTen);
+		totalTimePeriodCosts.mergeAllWorkUnitCategorizedQuantityInPlace(fredTen);
 		assertEquals("wrong total work units?", 20.0, totalTimePeriodCosts.getTotalWorkUnits().getValue());		
 	}
 	
@@ -161,11 +161,11 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		ORef fundingSourceRef = createFundingSource();
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts(INVALID_RESOURCE_REF, fundingSourceRef, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(11.0));
 		
-		totalTimePeriodCosts.mergeAllWorkUnitDataPackInPlace(timePeriodCosts);
+		totalTimePeriodCosts.mergeAllWorkUnitCategorizedQuantityInPlace(timePeriodCosts);
 		assertTrue("funding source does not have value after merge?", totalTimePeriodCosts.getWorkUnitsForRef(fundingSourceRef).hasValue());
 		assertEquals("funding source was not merged?", 11.0, totalTimePeriodCosts.getWorkUnitsForRef(fundingSourceRef).getValue());
 		
-		totalTimePeriodCosts.mergeAllWorkUnitDataPackInPlace(timePeriodCosts);
+		totalTimePeriodCosts.mergeAllWorkUnitCategorizedQuantityInPlace(timePeriodCosts);
 		assertEquals("funding source was not merged?", 22.0, totalTimePeriodCosts.getWorkUnitsForRef(fundingSourceRef).getValue());
 	}
 	
@@ -175,8 +175,8 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		TimePeriodCosts timePeriodCosts2 = new TimePeriodCosts(INVALID_RESOURCE_REF, INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(1.0));
 		
 		TimePeriodCosts total = new TimePeriodCosts();
-		total.mergeAllWorkUnitDataPackInPlace(timePeriodCosts1);
-		total.mergeAllWorkUnitDataPackInPlace(timePeriodCosts2);
+		total.mergeAllWorkUnitCategorizedQuantityInPlace(timePeriodCosts1);
+		total.mergeAllWorkUnitCategorizedQuantityInPlace(timePeriodCosts2);
 		
 		total.retainWorkUnitDataRelatedToAnyOf(new ORefSet());
 		
@@ -190,9 +190,9 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		TimePeriodCosts timePeriodCosts3 = new TimePeriodCosts(INVALID_RESOURCE_REF, INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(4.0));
 		
 		TimePeriodCosts total = new TimePeriodCosts();
-		total.mergeAllWorkUnitDataPackInPlace(timePeriodCosts1);
-		total.mergeAllWorkUnitDataPackInPlace(timePeriodCosts2);
-		total.mergeAllWorkUnitDataPackInPlace(timePeriodCosts3);
+		total.mergeAllWorkUnitCategorizedQuantityInPlace(timePeriodCosts1);
+		total.mergeAllWorkUnitCategorizedQuantityInPlace(timePeriodCosts2);
+		total.mergeAllWorkUnitCategorizedQuantityInPlace(timePeriodCosts3);
 		
 		total.retainWorkUnitDataRelatedToAnyOf(new ORefSet());
 		
