@@ -502,7 +502,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 				ORefSet singleObjectSet = new ORefSet(baseObject);
 				if (ProjectResource.is(baseObject) && rollupReportsTypes.containsInt(baseObject.getType()))
 				{
-					timePeriodCosts.filterProjectResources(singleObjectSet);
+					timePeriodCosts.filterWorkUnitRelated(singleObjectSet);
 				}
 					
 				if (FundingSource.is(baseObject) && rollupReportsTypes.containsInt(baseObject.getType()))
@@ -744,7 +744,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, dateUnit);
-		timePeriodCosts.filterProjectResources(getResourcesFilter());
+		timePeriodCosts.filterWorkUnitRelated(getResourcesFilter());
 		
 		return calculateValue(timePeriodCosts);
 	}

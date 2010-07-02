@@ -220,11 +220,6 @@ public class TimePeriodCosts
 			mergeAllWorkUnitDataPackInPlace(timePeriodCostsToMerge);
 	}
 	
-	public void filterProjectResources(ORefSet projectResourceRefsToRetain)
-	{
-		filterWorkUnitRelated(projectResourceRefsToRetain);
-	}
-
 	public void filterWorkUnitRelated(ORefSet refsToRetain)
 	{
 		filterDataPacks(workUnitPacks, refsToRetain);
