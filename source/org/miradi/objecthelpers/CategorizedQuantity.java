@@ -31,11 +31,11 @@ public class CategorizedQuantity
 {
 	public CategorizedQuantity(ORef resourceRefToUse, ORef fundingSourceRefToUse, ORef accountingCodeRefToUse, ORef categoryOneRefToUse, ORef categoryTwoRefToUse, OptionalDouble quantityToUse)
 	{
-		resourceRefToUse.ensureValidType(ProjectResource.getObjectType());
-		fundingSourceRefToUse.ensureValidType(FundingSource.getObjectType());
-		accountingCodeRefToUse.ensureValidType(AccountingCode.getObjectType());
-		categoryOneRefToUse.ensureValidType(CategoryOne.getObjectType());
-		categoryTwoRefToUse.ensureValidType(CategoryTwo.getObjectType());
+		resourceRefToUse.ensureTypeIfValid(ProjectResource.getObjectType());
+		fundingSourceRefToUse.ensureTypeIfValid(FundingSource.getObjectType());
+		accountingCodeRefToUse.ensureTypeIfValid(AccountingCode.getObjectType());
+		categoryOneRefToUse.ensureTypeIfValid(CategoryOne.getObjectType());
+		categoryTwoRefToUse.ensureTypeIfValid(CategoryTwo.getObjectType());
 		
 		resourceRef = resourceRefToUse;
 		fundingSourceRef = fundingSourceRefToUse;
