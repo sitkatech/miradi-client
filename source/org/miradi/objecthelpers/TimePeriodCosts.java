@@ -33,7 +33,7 @@ public class TimePeriodCosts
 {
 	public TimePeriodCosts()
 	{
-		workUnitPacks = new Vector();
+		workUnitCategorizedQuantities = new Vector();
 		expensesPacks = new Vector();
 
 		totalExpenses = new OptionalDouble();
@@ -67,7 +67,7 @@ public class TimePeriodCosts
 		accountingCodeRef.ensureValidType(AccountingCode.getObjectType());
 		
 		addWorkUnitsToTotal(workUnits);
-		addToCategorizedQuantities(workUnitPacks, new CategorizedQuantity(resourceRef, fundingSourceRef, accountingCodeRef, workUnits));
+		addToCategorizedQuantities(workUnitCategorizedQuantities, new CategorizedQuantity(resourceRef, fundingSourceRef, accountingCodeRef, workUnits));
 	}
 
 	public void add(TimePeriodCosts timePeriodCosts)
@@ -76,7 +76,7 @@ public class TimePeriodCosts
 		addDataPack(expensesPacks, timePeriodCosts.expensesPacks);
 		
 		addWorkUnitsToTotal(timePeriodCosts);
-		addDataPack(workUnitPacks, timePeriodCosts.workUnitPacks);
+		addDataPack(workUnitCategorizedQuantities, timePeriodCosts.workUnitCategorizedQuantities);
 	}
 	
 	private void addDataPack(Vector<CategorizedQuantity> packToUpdate, Vector<CategorizedQuantity> packsToAdd)
@@ -136,7 +136,7 @@ public class TimePeriodCosts
 	private OptionalDouble calculateResourcesTotalCost(Project projectToUse)
 	{
 		OptionalDouble resourcesTotalCost = new OptionalDouble();
-		Vector<CategorizedQuantity> dataPacks = workUnitPacks;
+		Vector<CategorizedQuantity> dataPacks = workUnitCategorizedQuantities;
 		for(CategorizedQuantity thisDataPack : dataPacks)
 		{
 			OptionalDouble costPerUnit = getCostPerUnit(projectToUse, thisDataPack.getResourceRef());
@@ -159,7 +159,7 @@ public class TimePeriodCosts
 	
 	public OptionalDouble getWorkUnitsForRef(ORef ref)
 	{
-		return getRolledUpQuantityForRef(workUnitPacks, ref);
+		return getRolledUpQuantityForRef(workUnitCategorizedQuantities, ref);
 	}
 	
 	public OptionalDouble getFundingSourceExpenses(ORef fundingSourceRef)
@@ -196,7 +196,7 @@ public class TimePeriodCosts
 	{
 		addWorkUnitsToTotal(timePeriodCostsToMerge);
 		
-		mergeDataPackSetInPlace(workUnitPacks, timePeriodCostsToMerge.workUnitPacks);
+		mergeDataPackSetInPlace(workUnitCategorizedQuantities, timePeriodCostsToMerge.workUnitCategorizedQuantities);
 	}
 	
 	private void mergeDataPackSetInPlace(Vector<CategorizedQuantity> dataPackToUpdate, Vector<CategorizedQuantity> dataPackToMergeFrom)
@@ -218,7 +218,7 @@ public class TimePeriodCosts
 	
 	public void retainWorkUnitDataRelatedToAnyOf(ORefSet refsToRetain)
 	{
-		filterByUnionOf(workUnitPacks, refsToRetain);
+		filterByUnionOf(workUnitCategorizedQuantities, refsToRetain);
 		updateTotalWorkUnits();
 	}
 	
@@ -253,7 +253,7 @@ public class TimePeriodCosts
 
 	private void updateTotalWorkUnits()
 	{
-		totalWorkUnits = getTotal(workUnitPacks);
+		totalWorkUnits = getTotal(workUnitCategorizedQuantities);
 	}
 	
 	private OptionalDouble getTotal(Vector<CategorizedQuantity> dataPacks)
@@ -269,7 +269,7 @@ public class TimePeriodCosts
 	
 	public void divideBy(OptionalDouble divideByValue)
 	{
-		divideByDataPacks(workUnitPacks, divideByValue);
+		divideByDataPacks(workUnitCategorizedQuantities, divideByValue);
 		updateTotalWorkUnits();
 		
 		divideByDataPacks(expensesPacks, divideByValue);
@@ -297,7 +297,7 @@ public class TimePeriodCosts
 		if (!other.getTotalWorkUnits().equals(getTotalWorkUnits()))
 			return false;
 		
-		if (!other.workUnitPacks.equals(workUnitPacks))
+		if (!other.workUnitCategorizedQuantities.equals(workUnitCategorizedQuantities))
 			return false;
 		
 		return other.expensesPacks.equals(expensesPacks);
@@ -321,7 +321,7 @@ public class TimePeriodCosts
 
 	public Set<ORef> getWorkUnitsRefSetForType(int objectType)
 	{
-		return extractRefs(workUnitPacks, objectType);
+		return extractRefs(workUnitCategorizedQuantities, objectType);
 	}
 	
 	public Set<ORef> getExpenseRefSetForType(int objectType)
@@ -355,6 +355,6 @@ public class TimePeriodCosts
 	private OptionalDouble totalExpenses;
 	private OptionalDouble totalWorkUnits;
 	
-	private Vector<CategorizedQuantity> workUnitPacks;
+	private Vector<CategorizedQuantity> workUnitCategorizedQuantities;
 	private Vector<CategorizedQuantity> expensesPacks;
 }
