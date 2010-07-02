@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 12:33-0500\n"
+"POT-Creation-Date: 2010-07-02 13:26-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -106,7 +106,7 @@ msgstr "(Membuat, mengelola, dan menilai tekanan-tekanan untuk target ini) "
 msgid "(Definition Not Available)"
 msgstr "(Definisi Tidak Ada) "
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:113
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:118
 msgid "(Error)"
 msgstr "(Kesalahan) "
 
@@ -5253,7 +5253,7 @@ msgid "Project Resource Filter Is On"
 msgstr "Filter Sumber Daya Proyek Adalah Aktif "
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceWorkUnitsTableModel.java:70
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/RollupReportsWorkUnitsModel.java:86
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/RollupReportsWorkUnitsModel.java:49
 msgid "Project Resource Work Units Table is not editbale."
 msgstr "Tabel Unit Kerja Sumber Daya Proyek tidak dapat diedit. "
 
@@ -5703,7 +5703,7 @@ msgid "Share success & failures with practitioners around the world"
 msgstr ""
 "Berbagi keberhasilan & kegagalan dengan para praktisi di seluruh dunia "
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:572
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:616
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr "Memungkinkan Kalkulasi Karyawan Purnawaktu Untuk "
 
@@ -7969,7 +7969,7 @@ msgstr ""
 "impor. Miradi juga akan membuat berkas zip untuk cadangan berkas proyek yang "
 "dibuat selama pemindahan format."
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:506
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:509
 msgid "[Error]"
 msgstr "[Kesalahan] "
 

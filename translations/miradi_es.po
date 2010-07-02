@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 12:33-0500\n"
+"POT-Creation-Date: 2010-07-02 13:26-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -106,7 +106,7 @@ msgstr "(Crear, manejar y calificar las presiones para este objeto)"
 msgid "(Definition Not Available)"
 msgstr "(Definición no disponible)"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:113
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:118
 msgid "(Error)"
 msgstr "(Error)"
 
@@ -5288,7 +5288,7 @@ msgid "Project Resource Filter Is On"
 msgstr "El filtro de recursos del proyecto está activado."
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceWorkUnitsTableModel.java:70
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/RollupReportsWorkUnitsModel.java:86
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/RollupReportsWorkUnitsModel.java:49
 msgid "Project Resource Work Units Table is not editbale."
 msgstr ""
 "La Tabla de unidades de trabajo de recursos del proyecto no se puede editar. "
@@ -5743,7 +5743,7 @@ msgstr "Compartir comentarios de modo formal o informal"
 msgid "Share success & failures with practitioners around the world"
 msgstr "Compartir éxitos y fracasos con practicantes de todo el mundo"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:572
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:616
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr "Ahora debería permitir que se calcule el empleo a tiempo completo para"
 
@@ -8003,7 +8003,7 @@ msgstr ""
 "comandos exportar e importar. Miradi también creará archivos zip para las "
 "copias de seguridad del proyecto creadas durante las migraciones de formato."
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:506
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:509
 msgid "[Error]"
 msgstr "[Error]"
 
