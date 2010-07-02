@@ -199,7 +199,7 @@ public class ORef implements Comparable<ORef>
 			throw new RuntimeException("wrong type: " + type + " for ref type: " + getObjectType());
 	}
 	
-	public void ensureValidType(int type)
+	public void ensureTypeIfValid(int type)
 	{
 		if (isValid())
 			ensureExactType(type);
