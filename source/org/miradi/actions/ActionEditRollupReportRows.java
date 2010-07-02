@@ -24,9 +24,9 @@ import org.miradi.actions.ObjectsAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionEditRollupReportsLevelTypes extends ObjectsAction
+public class ActionEditRollupReportRows extends ObjectsAction
 {
-	public ActionEditRollupReportsLevelTypes(MainWindow mainWindowToUse)
+	public ActionEditRollupReportRows(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}

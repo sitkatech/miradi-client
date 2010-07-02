@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.workplan;
 
-import org.miradi.actions.ActionEditRollupReportsLevelTypes;
+import org.miradi.actions.ActionEditRollupReportRows;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
@@ -109,7 +109,7 @@ public class RollupReportsTreeTablePanel extends PlanningTreeTablePanel
 	private static Class[] getButtonActions()
 	{
 		return new Class[] {
-			ActionEditRollupReportsLevelTypes.class,
+			ActionEditRollupReportRows.class,
 		};
 	}
 }
