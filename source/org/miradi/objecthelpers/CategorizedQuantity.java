@@ -22,9 +22,9 @@ package org.miradi.objecthelpers;
 
 import org.miradi.utils.OptionalDouble;
 
-public class DataPack 
+public class CategorizedQuantity 
 {
-	public DataPack()
+	public CategorizedQuantity()
 	{
 		resourceRef = ORef.INVALID;
 		fundingSourceRef = ORef.INVALID;
@@ -32,7 +32,7 @@ public class DataPack
 		quantity = new OptionalDouble();
 	}
 	
-	public DataPack(ORef resourceRefToUse, ORef fundingSourceRefToUse, ORef accountingCodeRefToUse, OptionalDouble quantityToUse)
+	public CategorizedQuantity(ORef resourceRefToUse, ORef fundingSourceRefToUse, ORef accountingCodeRefToUse, OptionalDouble quantityToUse)
 	{
 		resourceRef = resourceRefToUse;
 		fundingSourceRef = fundingSourceRefToUse;
@@ -108,10 +108,10 @@ public class DataPack
 	@Override
 	public boolean equals(Object rawOther)
 	{
-		if (!(rawOther instanceof DataPack))
+		if (!(rawOther instanceof CategorizedQuantity))
 			return false;
 		
-		DataPack other = (DataPack) rawOther;
+		CategorizedQuantity other = (CategorizedQuantity) rawOther;
 		if (!fundingSourceRef.equals(other.fundingSourceRef))
 			return false;
 		
