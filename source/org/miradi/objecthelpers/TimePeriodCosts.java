@@ -222,20 +222,20 @@ public class TimePeriodCosts
 	
 	public void filterProjectResources(ORefSet projectResourceRefsToRetain)
 	{
-		filterWorkUnitRelated(workUnitPacks, projectResourceRefsToRetain);
+		filterWorkUnitRelated(projectResourceRefsToRetain);
 	}
 
 	public void filterFundingSourcesWorkUnits(ORefSet fundingSourceRefsToRetain)
 	{
-		filterWorkUnitRelated(workUnitPacks, fundingSourceRefsToRetain);
+		filterWorkUnitRelated(fundingSourceRefsToRetain);
 	}
 	
 	public void filterAccountingCodeWorkUnits(ORefSet accountingCodeRefsToRetain)
 	{
-		filterWorkUnitRelated(workUnitPacks, accountingCodeRefsToRetain);
+		filterWorkUnitRelated(accountingCodeRefsToRetain);
 	}
 	
-	private void filterWorkUnitRelated(Vector<DataPack> dataPacks, ORefSet refsToRetain)
+	private void filterWorkUnitRelated(ORefSet refsToRetain)
 	{
 		filterDataPacks(workUnitPacks, refsToRetain);
 		updateTotalWorkUnits(workUnitPacks);
