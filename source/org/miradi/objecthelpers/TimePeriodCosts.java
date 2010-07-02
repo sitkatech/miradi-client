@@ -229,13 +229,13 @@ public class TimePeriodCosts
 	public void filterFundingSourcesExpenses(ORefSet fundingSourceRefsToRetain)
 	{
 		filterDataPacks(expensesPacks, fundingSourceRefsToRetain);
-		updateTotalExpenses(expensesPacks);
+		updateTotalExpenses();
 	}
 	
 	public void filterAccountingCodeExpenses(ORefSet accountingCodeRefsToRetain)
 	{
 		filterDataPacks(expensesPacks, accountingCodeRefsToRetain);
-		updateTotalExpenses(expensesPacks);
+		updateTotalExpenses();
 	}
 	
 	private void filterDataPacks(Vector<DataPack> dataPacks, ORefSet refsToRetain)
@@ -256,7 +256,7 @@ public class TimePeriodCosts
 		dataPacks.retainAll(dataPacksToRetain);
 	}
 	
-	private void updateTotalExpenses(Vector<DataPack> dataPacks)
+	private void updateTotalExpenses()
 	{
 		totalExpenses = getTotal(expensesPacks);		
 	}
@@ -283,7 +283,7 @@ public class TimePeriodCosts
 		updateTotalWorkUnits();
 		
 		divideByDataPacks(expensesPacks, divideByValue);
-		updateTotalExpenses(expensesPacks);
+		updateTotalExpenses();
 	}
 	
 	private void divideByDataPacks(Vector<DataPack> dataPacksToDivide, OptionalDouble divideByValue)
