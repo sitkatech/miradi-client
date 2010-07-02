@@ -36,6 +36,7 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 				createChoiceItem(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE),
 				createChoiceItem(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE),
 				createChoiceItem(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE),
+				createChoiceItem(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE),
 		};
 	}
 	
@@ -54,6 +55,9 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 		
 		if (getAllPossibleBudgetTotalsColumnGroups().contains(budgetColumnGroupCode))
 			return CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE;
+		
+		if (budgetColumnGroupCode.equals(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE))
+			return CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE;
 		
 		throw new RuntimeException("Column code is not a budet column. Code: " + budgetColumnGroupCode);
 	}

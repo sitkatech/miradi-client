@@ -670,7 +670,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return new ChoiceItem(optionalDouble.toUnformattedString(), optionalDouble.toUnformattedString());
 	}
 	
-	private OptionalDouble getOptionalDoubleAt(int row, int column)
+	protected OptionalDouble getOptionalDoubleAt(int row, int column)
 	{
 		try	
 		{

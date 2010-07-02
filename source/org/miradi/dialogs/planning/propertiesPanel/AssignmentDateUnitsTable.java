@@ -43,6 +43,7 @@ import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
@@ -221,6 +222,11 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		PanelTitleLabel label = new PanelTitleLabel(choiceItem.getLabel());
 		
 		return label.getPreferredSize().width;
+	}
+	
+	public ORefList getObjectHiearchy(int row, int column)
+	{
+		return new ORefList(getBaseObjectForRowColumn(row, column));
 	}
 		
 	public static final String UNIQUE_IDENTIFIER = "WorkUnitsTable";

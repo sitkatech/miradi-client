@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.tablerenderers;
 
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 
 public interface RowColumnBaseObjectProvider
@@ -27,4 +28,5 @@ public interface RowColumnBaseObjectProvider
 	public BaseObject getBaseObjectForRowColumn(int row, int column);
 	public int getProportionShares(int row);
 	public boolean areBudgetValuesAllocated(int row);
+	public ORefList getObjectHiearchy(int row, int column);
 }

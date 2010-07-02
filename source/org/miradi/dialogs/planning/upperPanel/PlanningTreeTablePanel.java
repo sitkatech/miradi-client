@@ -124,6 +124,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		accoundingCodeBudgetDetailsTableModel = new AccountingCodeBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		fundingSourceExpenseTableModel = new FundingSourceExpenseTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		accountingCodeExpenseTableModel = new AccountingCodeExpenseTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		rollupReportsWorkUnitsModel = new RollupReportsWorkUnitsModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 	}
 
 	protected boolean wasTypeCreatedOrDeleted(CommandExecutedEvent event, int objectType)
@@ -185,6 +186,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		budgetDetailsTableModel.fireTableDataChanged();
 		fundingSourceBudgetDetailsTableModel.fireTableDataChanged();
 		accoundingCodeBudgetDetailsTableModel.fireTableDataChanged();
+		rollupReportsWorkUnitsModel.fireTableDataChanged();
 		restoreTreeExpansionState();
 		updateRightSideTablePanels();
 
@@ -235,6 +237,9 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		
 		if (shouldShow(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
 			multiModel.addModel(budgetDetailsTableModel);
+		
+		if (shouldShow(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE))
+			multiModel.addModel(rollupReportsWorkUnitsModel);
 		
 		mainTable.updateToReflectNewColumns();
 		validate();
@@ -448,6 +453,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	private ProjectResourceBudgetDetailsTableModel resourceBudgetDetailsTableModel;
 	private FundingSourceExpenseTableModel fundingSourceExpenseTableModel;
 	private AccountingCodeExpenseTableModel accountingCodeExpenseTableModel;
+	private RollupReportsWorkUnitsModel rollupReportsWorkUnitsModel;
 	
 	private MainTableSelectionHandler mainTableColumnSelectionListener;
 	private TreeTableRowSelectionHandler treeTableRowSelectionListener;
