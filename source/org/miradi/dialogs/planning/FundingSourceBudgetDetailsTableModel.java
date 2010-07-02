@@ -51,7 +51,7 @@ public class FundingSourceBudgetDetailsTableModel extends AbstractBudgetDetailsT
 		{
 			ORefSet fundingSourceRefsToRetain = new ORefSet(baseObject);
 			timePeriodCosts.filterFundingSourcesExpenses(fundingSourceRefsToRetain);
-			timePeriodCosts.filterFundingSourcesWorkUnits(fundingSourceRefsToRetain);
+			timePeriodCosts.filterWorkUnitRelated(fundingSourceRefsToRetain);
 		}
 		
 		return calculateValue(timePeriodCosts);
