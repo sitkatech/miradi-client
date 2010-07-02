@@ -61,11 +61,6 @@ public class CategorizedQuantity
 		return fundingSourceRef.equals(refToMatch);
 	}
 	
-	public void addQuantity(OptionalDouble quantityToAdd)
-	{
-		quantity = quantity.add(quantityToAdd);
-	}
-	
 	public void divideBy(OptionalDouble divideBy)
 	{
 		quantity = quantity.divideBy(divideBy);
