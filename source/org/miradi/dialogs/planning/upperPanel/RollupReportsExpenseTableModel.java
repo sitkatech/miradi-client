@@ -41,7 +41,7 @@ public class RollupReportsExpenseTableModel extends AbstractExpenseTableModel
 	}
 	
 	@Override
-	protected void retainDataRelatedToAnyOf(TimePeriodCosts timePeriodCosts, ORefSet objectHierarchy)
+	protected void retainDataRelatedToAllOf(TimePeriodCosts timePeriodCosts, ORefSet objectHierarchy)
 	{
 		timePeriodCosts.retainExpenseDataRelatedToAllOf(objectHierarchy);
 	}
