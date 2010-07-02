@@ -43,6 +43,7 @@ public class TimePeriodCosts
 	public TimePeriodCosts(TimePeriodCosts timePeriodCostsToUse)
 	{
 		this();
+		
 		add(timePeriodCostsToUse);
 	}
 	
