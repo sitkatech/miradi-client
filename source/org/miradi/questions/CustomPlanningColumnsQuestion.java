@@ -65,6 +65,8 @@ public class CustomPlanningColumnsQuestion extends StaticChoiceQuestion
 	}
 	
 	public static final String META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE = "MetaRollupReportsWorkUnitsColumnCode";
+	public static final String META_ROLLUP_REPORTS_EXPENSES_CODE = "MetaRollupReportsExpensesColumnCode";
+	public static final String META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE = "MetaRollupReportsBudgetDetailsColumnCode";
 
 	public static final String META_RESOURCE_ASSIGNMENT_COLUMN_CODE = "MetaWorkUnitColumnCode";
 	public static final String META_EXPENSE_ASSIGNMENT_COLUMN_CODE = "MetaExpenseAmountColumnCode";

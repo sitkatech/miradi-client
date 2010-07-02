@@ -20,19 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.planning.propertiesPanel.AbstractWorkUnitsTableModel;
+import org.miradi.dialogs.planning.AbstractBudgetDetailsTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.OptionalDouble;
 
-public class RollupReportsWorkUnitsModel extends AbstractWorkUnitsTableModel
+public class RollupReportsBudgetDetailsTableModel extends AbstractBudgetDetailsTableModel
 {
-	public RollupReportsWorkUnitsModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse,	String treeModelIdentifierAsTagToUse) throws Exception
+	public RollupReportsBudgetDetailsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
 	}
@@ -40,32 +36,21 @@ public class RollupReportsWorkUnitsModel extends AbstractWorkUnitsTableModel
 	@Override
 	protected OptionalDouble getOptionalDoubleAt(int row, int column)
 	{
+		//FIXME urgent - cRV needs to calculate correct value for details
 		return calculateRollupValue(row, column);
-	}
-
-	@Override
-	protected CommandSetObjectData createAppendAssignmentCommand(BaseObject baseObjectForRowColumn, ORef assignmentRef)	throws Exception
-	{
-		throw new RuntimeException(EAM.text("Project Resource Work Units Table is not editbale."));
 	}
 	
 	@Override
 	public String getColumnGroupCode(int modelColumn)
 	{
-		return CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE;
+		return CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE;
 	}
-
-	@Override
-	protected boolean isEditableModel()
-	{
-		return false;
-	}
-
+	
 	@Override
 	public String getUniqueTableModelIdentifier()
 	{
 		return getTreeModelIdentifierAsTag() + "." + UNIQUE_TABLE_MODEL_IDENTIFIER;
 	}
 	
-	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "RollupReportsWorkUnitsModel";
+	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "RollupReportsBudgetDetailsTableModel";
 }

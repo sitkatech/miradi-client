@@ -125,6 +125,8 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		fundingSourceExpenseTableModel = new FundingSourceExpenseTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		accountingCodeExpenseTableModel = new AccountingCodeExpenseTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		rollupReportsWorkUnitsModel = new RollupReportsWorkUnitsModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		rollupReportsExpenseModel = new RollupReportsExpenseTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		rollupReportsBudgetDetailsModel = new RollupReportsBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 	}
 
 	protected boolean wasTypeCreatedOrDeleted(CommandExecutedEvent event, int objectType)
@@ -187,6 +189,8 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		fundingSourceBudgetDetailsTableModel.fireTableDataChanged();
 		accoundingCodeBudgetDetailsTableModel.fireTableDataChanged();
 		rollupReportsWorkUnitsModel.fireTableDataChanged();
+		rollupReportsExpenseModel.fireTableDataChanged();
+		rollupReportsBudgetDetailsModel.fireTableDataChanged();
 		restoreTreeExpansionState();
 		updateRightSideTablePanels();
 
@@ -240,6 +244,12 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		
 		if (shouldShow(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE))
 			multiModel.addModel(rollupReportsWorkUnitsModel);
+		
+		if (shouldShow(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE))
+			multiModel.addModel(rollupReportsExpenseModel);
+		
+		if (shouldShow(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE))
+			multiModel.addModel(rollupReportsBudgetDetailsModel);
 		
 		mainTable.updateToReflectNewColumns();
 		validate();
@@ -454,6 +464,8 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	private FundingSourceExpenseTableModel fundingSourceExpenseTableModel;
 	private AccountingCodeExpenseTableModel accountingCodeExpenseTableModel;
 	private RollupReportsWorkUnitsModel rollupReportsWorkUnitsModel;
+	private RollupReportsExpenseTableModel rollupReportsExpenseModel;
+	private RollupReportsBudgetDetailsTableModel rollupReportsBudgetDetailsModel;
 	
 	private MainTableSelectionHandler mainTableColumnSelectionListener;
 	private TreeTableRowSelectionHandler treeTableRowSelectionListener;
