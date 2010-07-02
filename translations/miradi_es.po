@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 12:30-0500\n"
+"POT-Creation-Date: 2010-07-02 12:33-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -3094,7 +3094,7 @@ msgstr "Editar todas las estrategias"
 msgid "Edit Indicators"
 msgstr "Editar indicadores"
 
-#: Miradi/source/org/miradi/views/workplan/doers/EditoRollupReportsLevelTypesDoer.java:43
+#: Miradi/source/org/miradi/views/workplan/doers/EditRollupReportRowsDoer.java:43
 msgid "Edit Level Types"
 msgstr ""
 
