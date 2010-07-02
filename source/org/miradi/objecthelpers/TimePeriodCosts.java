@@ -259,9 +259,9 @@ public class TimePeriodCosts
 	private OptionalDouble getTotal(Vector<CategorizedQuantity> dataPacks)
 	{
 		OptionalDouble totals = new OptionalDouble();
-		for(CategorizedQuantity dataPack: dataPacks)
+		for(CategorizedQuantity categorizedQuantity: dataPacks)
 		{
-			totals = totals.add(dataPack.getQuantity());
+			totals = totals.add(categorizedQuantity.getQuantity());
 		}
 		
 		return totals;
