@@ -158,12 +158,17 @@ public class TimePeriodCosts
 	
 	public OptionalDouble getResourceWorkUnits(ORef resourceRef)
 	{
-		return getRolledUpQuantityForRef(workUnitPacks, resourceRef);
+		return getWorkUnitsForRef(resourceRef);
 	}
-	
+
 	public OptionalDouble getFundingSourceWorkUnits(ORef fundingSourceRef)
 	{
-		return getRolledUpQuantityForRef(workUnitPacks, fundingSourceRef);
+		return getWorkUnitsForRef(fundingSourceRef);
+	}
+	
+	private OptionalDouble getWorkUnitsForRef(ORef ref)
+	{
+		return getRolledUpQuantityForRef(workUnitPacks, ref);
 	}
 	
 	public OptionalDouble getFundingSourceExpenses(ORef fundingSourceRef)
