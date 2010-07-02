@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 12:33-0500\n"
+"POT-Creation-Date: 2010-07-02 13:26-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -86,7 +86,7 @@ msgstr ""
 msgid "(Definition Not Available)"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:113
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:118
 msgid "(Error)"
 msgstr ""
 
@@ -4950,7 +4950,7 @@ msgid "Project Resource Filter Is On"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceWorkUnitsTableModel.java:70
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/RollupReportsWorkUnitsModel.java:86
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/RollupReportsWorkUnitsModel.java:49
 msgid "Project Resource Work Units Table is not editbale."
 msgstr ""
 
@@ -5363,7 +5363,7 @@ msgstr ""
 msgid "Share success & failures with practitioners around the world"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:572
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:616
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr ""
 
@@ -7484,7 +7484,7 @@ msgid ""
 "migrations. "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:506
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:509
 msgid "[Error]"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 12:33-0500\n"
+"POT-Creation-Date: 2010-07-02 13:26-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -88,7 +88,7 @@ msgstr "（对本对象进行创建、管理、以及压力分级） \t\t"
 msgid "(Definition Not Available)"
 msgstr "（无可用定义） \t\t"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:113
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:118
 msgid "(Error)"
 msgstr "（错误） \t\t"
 
@@ -5061,7 +5061,7 @@ msgid "Project Resource Filter Is On"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceWorkUnitsTableModel.java:70
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/RollupReportsWorkUnitsModel.java:86
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/RollupReportsWorkUnitsModel.java:49
 msgid "Project Resource Work Units Table is not editbale."
 msgstr ""
 
@@ -5486,7 +5486,7 @@ msgstr "正式地或者非正式地共享反馈信息 \t\t"
 msgid "Share success & failures with practitioners around the world"
 msgstr "与全世界的实践者共享成功与失败 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:572
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:616
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr ""
 
@@ -7673,7 +7673,7 @@ msgstr ""
 "意：如果您使用导出和导入命令，Miradi将自动为您压缩或解压文件夹。Mirad也会为在"
 "格式迁移过程中创建的项目备份文件而创建压缩文件。"
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:506
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:509
 msgid "[Error]"
 msgstr ""
 
