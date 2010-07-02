@@ -24,6 +24,8 @@ import java.util.Vector;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.AccountingCode;
+import org.miradi.objects.CategoryOne;
+import org.miradi.objects.CategoryTwo;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
@@ -47,27 +49,31 @@ public class TimePeriodCosts
 		add(timePeriodCostsToUse);
 	}
 	
-	public TimePeriodCosts(ORef fundingSourceRef, ORef accountingCodeRef, OptionalDouble expenseToUse)
+	public TimePeriodCosts(ORef fundingSourceRef, ORef accountingCodeRef, ORef categoryOneRef, ORef categoryTwoRef, OptionalDouble expenseToUse)
 	{
 		this();
 		
 		fundingSourceRef.ensureValidType(FundingSource.getObjectType());
 		accountingCodeRef.ensureValidType(AccountingCode.getObjectType());
+		categoryOneRef.ensureValidType(CategoryOne.getObjectType());
+		categoryTwoRef.ensureValidType(CategoryTwo.getObjectType());
 		
 		addExpensesToTotal(expenseToUse);
-		addToCategorizedQuantities(expensesCategorizedQuantities, new CategorizedQuantity(ORef.INVALID, fundingSourceRef, accountingCodeRef, expenseToUse));
+		addToCategorizedQuantities(expensesCategorizedQuantities, new CategorizedQuantity(ORef.INVALID, fundingSourceRef, accountingCodeRef, categoryOneRef, categoryTwoRef, expenseToUse));
 	}
 	
-	public TimePeriodCosts(ORef resourceRef, ORef fundingSourceRef,	ORef accountingCodeRef, OptionalDouble workUnits)
+	public TimePeriodCosts(ORef resourceRef, ORef fundingSourceRef,	ORef accountingCodeRef, ORef categoryOneRef, ORef categoryTwoRef, OptionalDouble workUnits)
 	{
 		this();
 		
 		resourceRef.ensureValidType(ProjectResource.getObjectType());
 		fundingSourceRef.ensureValidType(FundingSource.getObjectType());
 		accountingCodeRef.ensureValidType(AccountingCode.getObjectType());
+		categoryOneRef.ensureValidType(CategoryOne.getObjectType());
+		categoryTwoRef.ensureValidType(CategoryTwo.getObjectType());
 		
 		addWorkUnitsToTotal(workUnits);
-		addToCategorizedQuantities(workUnitCategorizedQuantities, new CategorizedQuantity(resourceRef, fundingSourceRef, accountingCodeRef, workUnits));
+		addToCategorizedQuantities(workUnitCategorizedQuantities, new CategorizedQuantity(resourceRef, fundingSourceRef, accountingCodeRef, categoryOneRef, categoryTwoRef, workUnits));
 	}
 
 	public void add(TimePeriodCosts timePeriodCosts)
