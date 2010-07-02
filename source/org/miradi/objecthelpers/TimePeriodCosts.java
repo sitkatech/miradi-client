@@ -51,8 +51,8 @@ public class TimePeriodCosts
 	{
 		this();
 		
-		ensureRef(fundingSourceRef, FundingSource.getObjectType());
-		ensureRef(accountingCodeRef, AccountingCode.getObjectType());
+		fundingSourceRef.ensureValidType(FundingSource.getObjectType());
+		accountingCodeRef.ensureType(AccountingCode.getObjectType());
 		
 		addExpensesToTotal(expenseToUse);
 		addToDataPacks(expensesPacks, new DataPack(ORef.INVALID, fundingSourceRef, accountingCodeRef, expenseToUse));
@@ -62,9 +62,9 @@ public class TimePeriodCosts
 	{
 		this();
 		
-		ensureRef(resourceRef, ProjectResource.getObjectType());
-		ensureRef(fundingSourceRef, FundingSource.getObjectType());
-		ensureRef(accountingCodeRef, AccountingCode.getObjectType());
+		resourceRef.ensureType(ProjectResource.getObjectType());
+		fundingSourceRef.ensureType(FundingSource.getObjectType());
+		accountingCodeRef.ensureType(AccountingCode.getObjectType());
 		
 		addWorkUnitsToTotal(workUnits);
 		addToDataPacks(workUnitPacks, new DataPack(resourceRef, fundingSourceRef, accountingCodeRef, workUnits));
@@ -352,12 +352,6 @@ public class TimePeriodCosts
 		return getTotalWorkUnits().hasValue();
 	}
 	
-	private void ensureRef(ORef ref, int objectType)
-	{
-		if (ref.isValid())
-			ref.ensureType(objectType);
-	}
-
 	class DataPack 
 	{
 		public DataPack()
