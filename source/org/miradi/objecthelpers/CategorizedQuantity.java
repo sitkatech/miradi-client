@@ -44,8 +44,8 @@ public class CategorizedQuantity
 	{
 		ORefSet allContainingRefs = new ORefSet();
 		allContainingRefs.add(getResourceRef());
-		allContainingRefs.add(getFundingSourceRef());
-		allContainingRefs.add(getAccountingCodeRef());
+		allContainingRefs.add(fundingSourceRef);
+		allContainingRefs.add(accountingCodeRef);
 		
 		return allContainingRefs;
 	}
@@ -82,16 +82,6 @@ public class CategorizedQuantity
 	public ORef getResourceRef()
 	{
 		return resourceRef;
-	}
-	
-	private ORef getFundingSourceRef()
-	{
-		return fundingSourceRef;
-	}
-	
-	private ORef getAccountingCodeRef()
-	{
-		return accountingCodeRef;
 	}
 	
 	public OptionalDouble getQuantity()
