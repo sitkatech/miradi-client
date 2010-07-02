@@ -20,16 +20,27 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objecthelpers;
 
+import org.miradi.objects.AccountingCode;
+import org.miradi.objects.CategoryOne;
+import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.FundingSource;
+import org.miradi.objects.ProjectResource;
 import org.miradi.utils.OptionalDouble;
 
 public class CategorizedQuantity 
 {
-	public CategorizedQuantity(ORef resourceRefToUse, ORef fundingSourceRefToUse, ORef accountingCodeRefToUse, ORef categoryOneRefTouse, ORef categoryTwoRefToUse, OptionalDouble quantityToUse)
+	public CategorizedQuantity(ORef resourceRefToUse, ORef fundingSourceRefToUse, ORef accountingCodeRefToUse, ORef categoryOneRefToUse, ORef categoryTwoRefToUse, OptionalDouble quantityToUse)
 	{
+		resourceRefToUse.ensureValidType(ProjectResource.getObjectType());
+		fundingSourceRefToUse.ensureValidType(FundingSource.getObjectType());
+		accountingCodeRefToUse.ensureValidType(AccountingCode.getObjectType());
+		categoryOneRefToUse.ensureValidType(CategoryOne.getObjectType());
+		categoryTwoRefToUse.ensureValidType(CategoryTwo.getObjectType());
+		
 		resourceRef = resourceRefToUse;
 		fundingSourceRef = fundingSourceRefToUse;
 		accountingCodeRef = accountingCodeRefToUse;
-		categoryOneRef = categoryOneRefTouse;
+		categoryOneRef = categoryOneRefToUse;
 		categoryTwoRef = categoryTwoRefToUse;
 		quantity = quantityToUse;
 	}
