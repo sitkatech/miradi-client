@@ -521,9 +521,8 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		catch(Exception e)
 		{
 			EAM.logException(e);
+			return new OptionalDouble();
 		}
-	
-		return new OptionalDouble();
 	}
 	
 	public Vector<DateUnit> getCopyOfDateUnits()
