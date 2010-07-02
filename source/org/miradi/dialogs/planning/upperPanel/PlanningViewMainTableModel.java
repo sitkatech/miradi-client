@@ -416,6 +416,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 											CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE,
 											CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE,
 											CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE,
+											CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE,
+											CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE,
+											CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE,
 		};
 		
 		columnsToShow.subtract(new CodeList(codesToOmit));

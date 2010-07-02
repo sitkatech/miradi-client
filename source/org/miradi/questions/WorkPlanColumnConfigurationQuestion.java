@@ -37,6 +37,8 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 				createChoiceItem(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE),
 				createChoiceItem(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE),
 				createChoiceItem(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE),
+				createChoiceItem(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE),
+				createChoiceItem(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE),
 		};
 	}
 	
@@ -56,7 +58,7 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 		if (getAllPossibleBudgetTotalsColumnGroups().contains(budgetColumnGroupCode))
 			return CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE;
 		
-		if (budgetColumnGroupCode.equals(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE))
+		if (getAllPossibleRollupReportsColumnGroups().contains(budgetColumnGroupCode))
 			return CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE;
 		
 		throw new RuntimeException("Column code is not a budet column. Code: " + budgetColumnGroupCode);
@@ -88,6 +90,16 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 		columnGroups.add(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE);
 		columnGroups.add(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE);
 		columnGroups.add(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE);
+		
+		return columnGroups;
+	}
+	
+	public static Vector<String> getAllPossibleRollupReportsColumnGroups()
+	{
+		Vector<String> columnGroups = new Vector();
+		columnGroups.add(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE);
+		columnGroups.add(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE);
+		columnGroups.add(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE);
 		
 		return columnGroups;
 	}
