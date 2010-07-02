@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 13:26-0500\n"
+"POT-Creation-Date: 2010-07-02 13:28-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5486,7 +5486,7 @@ msgstr "正式地或者非正式地共享反馈信息 \t\t"
 msgid "Share success & failures with practitioners around the world"
 msgstr "与全世界的实践者共享成功与失败 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:616
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:615
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr ""
 

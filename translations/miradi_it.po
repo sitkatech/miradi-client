@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 13:26-0500\n"
+"POT-Creation-Date: 2010-07-02 13:28-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -5363,7 +5363,7 @@ msgstr ""
 msgid "Share success & failures with practitioners around the world"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:616
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:615
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr ""
 
