@@ -25,7 +25,7 @@ import org.miradi.main.EAM;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.workplan.BudgetRollupChoiceEditorPanel;
 
-public class EditoRollupReportsLevelTypesDoer extends ObjectsDoer
+public class EditRollupReportRowsDoer extends ObjectsDoer
 {
 	@Override
 	public boolean isAvailable()
