@@ -223,7 +223,7 @@ public class TimePeriodCosts
 	public void filterWorkUnitRelated(ORefSet refsToRetain)
 	{
 		filterDataPacks(workUnitPacks, refsToRetain);
-		updateTotalWorkUnits(workUnitPacks);
+		updateTotalWorkUnits();
 	}
 	
 	public void filterFundingSourcesExpenses(ORefSet fundingSourceRefsToRetain)
@@ -261,7 +261,7 @@ public class TimePeriodCosts
 		totalExpenses = getTotal(dataPacks);		
 	}
 
-	private void updateTotalWorkUnits(Vector<DataPack> dataPacks)
+	private void updateTotalWorkUnits()
 	{
 		totalWorkUnits = getTotal(workUnitPacks);
 	}
@@ -280,7 +280,7 @@ public class TimePeriodCosts
 	public void divideBy(OptionalDouble divideByValue)
 	{
 		divideByDataPacks(workUnitPacks, divideByValue);
-		updateTotalWorkUnits(workUnitPacks);
+		updateTotalWorkUnits();
 		
 		divideByDataPacks(expensesPacks, divideByValue);
 		updateTotalExpenses(expensesPacks);
