@@ -71,7 +71,9 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 			ORefList overlapptingAssignmentRefs = referringAssignmentRefs.getOverlappingRefs(getAssignmentRefsThatMatch());
 			if (overlapptingAssignmentRefs.hasRefs())
 				children.add(new RollupReportsNode(getProject(), getVisibleRows(), childBaseObject, getLevelObjectTypes(), childLevel, overlapptingAssignmentRefs));
-		}		
+		}
+		
+		pruneUnwantedLayers(getVisibleRows());
 	}
 
 	private ORefList getAssignmentRefsThatMatch()

@@ -77,7 +77,12 @@ abstract public class AbstractObjectTableModel extends AbstractTableModel  imple
 		
 		return new TableModelStringComparator(this, sortColumn);
 	}
-
+	
+	public ORefList getObjectHiearchy(int row, int column)
+	{
+		return new ORefList(getBaseObjectForRowColumn(row, column));
+	}
+	
 	abstract public String getUniqueTableModelIdentifier();
 	
 	abstract public void setRowObjectRefs(ORefList objectRowRefs);

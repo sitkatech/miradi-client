@@ -72,6 +72,11 @@ public class CodeList extends StringList
 	{
 		return TAG_IDS;
 	}
+	
+	public boolean containsInt(int codeAsInt)
+	{
+		return contains(Integer.toString(codeAsInt));
+	}
 		
 	private static final String TAG_IDS = "Codes";
 }

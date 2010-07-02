@@ -36,7 +36,7 @@ public class RollupReportsRowColumnProvider implements RowColumnProvider
 	{
 		CodeList columnCodes = new CodeList();
 		columnCodes.add(AbstractBudgetCategoryObject.TAG_CODE);		
-		columnCodes.add(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
+		columnCodes.add(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE);
 		
 		return columnCodes;
 	}

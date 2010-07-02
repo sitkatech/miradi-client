@@ -109,6 +109,11 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 		return uniqueTreeTableModelIdentifier;
 	}
 	
+	public ORefList getObjectHiearchy(int row, int column)
+	{
+		return new ORefList(getBaseObjectForRowColumn(row, column));
+	}
+	
 	private String uniqueTreeTableModelIdentifier;
 
 	private ORefList rowObjectRefs;

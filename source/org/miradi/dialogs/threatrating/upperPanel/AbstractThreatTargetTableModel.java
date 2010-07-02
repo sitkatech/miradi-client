@@ -228,6 +228,11 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel 
 		return getProject().getQuestion(ThreatRatingQuestion.class);
 	}
 	
+	public ORefList getObjectHiearchy(int row, int column)
+	{
+		return new ORefList(getBaseObjectForRowColumn(row, column));
+	}
+	
 	public abstract String getUniqueTableModelIdentifier();
 	
 	private Project project;

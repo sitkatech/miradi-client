@@ -54,6 +54,7 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.tablerenderers.WhenTableCellPopupEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.WhoColumnTableCellEditorFactory;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.DoubleClickAutoSelectCellEditor;
@@ -224,6 +225,11 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private Actions getActions()
 	{
 		return getMainWindow().getActions();
+	}
+	
+	public ORefList getObjectHiearchy(int row, int column)
+	{
+		return new ORefList(getBaseObjectForRowColumn(row, column));
 	}
 	
 	private PlanningTreeTable masterTree;

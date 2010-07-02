@@ -257,6 +257,11 @@ abstract public class ObjectTable extends SortableRowTable implements ObjectPick
 			listener.valueChanged(null);
 		}
 	}
+	
+	public ORefList getObjectHiearchy(int row, int column)
+	{
+		return new ORefList(getBaseObjectForRowColumn(row, column));
+	}
 
 	private Vector selectionListeners;
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
