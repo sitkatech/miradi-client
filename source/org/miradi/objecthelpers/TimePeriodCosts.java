@@ -217,17 +217,17 @@ public class TimePeriodCosts
 	
 	public void filterWorkUnitRelated(ORefSet refsToRetain)
 	{
-		filterDataPacks(workUnitPacks, refsToRetain);
+		filterByUnionOf(workUnitPacks, refsToRetain);
 		updateTotalWorkUnits();
 	}
 	
 	public void filterExpenseRelated(ORefSet refsToRetain)
 	{
-		filterDataPacks(expensesPacks, refsToRetain);
+		filterByUnionOf(expensesPacks, refsToRetain);
 		updateTotalExpenses();
 	}
 	
-	private void filterDataPacks(Vector<DataPack> dataPacks, ORefSet refsToRetain)
+	private void filterByUnionOf(Vector<DataPack> dataPacks, ORefSet refsToRetain)
 	{
 		if (refsToRetain.size() == 0)
 			return;
