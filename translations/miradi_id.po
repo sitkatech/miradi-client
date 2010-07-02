@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 14:22-0500\n"
+"POT-Creation-Date: 2010-07-02 14:47-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2363,7 +2363,7 @@ msgstr "Tidak bisa menautkan butir dengan butir itu sendiri "
 msgid "Cancel"
 msgstr "Batalkan "
 
-#: Miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:84
+#: Miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:85
 msgid "Cannot add a vector to itself."
 msgstr "Tidak dapat menambahkan vektor ke dirinya sendiri. "
 
@@ -7728,7 +7728,7 @@ msgstr "WWF"
 msgid "Warning"
 msgstr "Peringatan "
 
-#: Miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:379
+#: Miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:380
 msgid "Was expecting a %s, instead got:\n"
 msgstr ""
 "Membutuhkan %s, ketimbang:\n"
