@@ -256,7 +256,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		TimePeriodCosts withExpenses = new TimePeriodCosts();
 		withExpenses.add(new TimePeriodCosts(fundingSourceRefForJill, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(10.0)));
 		withExpenses.add(new TimePeriodCosts(fundingSourceRefForFred, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(11.0)));
-		withExpenses.filterExpenseRelated(new ORefSet(fundingSourceRefForJill));
+		withExpenses.filterRelatedExpenseUnionOf(new ORefSet(fundingSourceRefForJill));
 		assertFalse("fred was not filtered out?", withExpenses.getFundingSourceExpensesRefSet().contains(fundingSourceRefForFred));
 	}
 	

@@ -222,7 +222,7 @@ public class TimePeriodCosts
 		updateTotalWorkUnits();
 	}
 	
-	public void filterExpenseRelated(ORefSet refsToRetain)
+	public void filterRelatedExpenseUnionOf(ORefSet refsToRetain)
 	{
 		filterByUnionOf(expensesPacks, refsToRetain);
 		updateTotalExpenses();
