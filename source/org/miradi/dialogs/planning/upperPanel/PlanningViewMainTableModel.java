@@ -573,7 +573,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{
 		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, new DateUnit());
 		timePeriodCosts.filterRelatedWorkUnitUnionOf(getResourcesFilter());
-		ORefSet filteredResources = new ORefSet(timePeriodCosts.getResourceRefSet());
+		ORefSet filteredResources = new ORefSet(timePeriodCosts.getWorkUnitsRefSetForType(ProjectResource.getObjectType()));
 		
 		Vector<String> sortedNames = getSortedResourceNames(filteredResources);		
 		String appendedResources = createAppendedResourceNames(sortedNames);

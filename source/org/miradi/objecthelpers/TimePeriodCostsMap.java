@@ -22,6 +22,7 @@ package org.miradi.objecthelpers;
 import java.util.HashMap;
 import java.util.Set;
 
+import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.OptionalDouble;
@@ -124,7 +125,7 @@ public class TimePeriodCostsMap
 		for(DateUnit dateUnit : keys)
 		{
 			TimePeriodCosts timePeriodCosts = data.get(dateUnit);
-			Set<ORef> resourceRefSet = timePeriodCosts.getResourceRefSet();
+			Set<ORef> resourceRefSet = timePeriodCosts.getWorkUnitsRefSetForType(ProjectResource.getObjectType());
 			ORefSet resourcesRefs = new ORefSet(resourceRefSet);
 			if (resourcesToFilterBy.containsAny(resourcesRefs) || resourcesToFilterBy.isEmpty())
 				combinedDateRange = DateRange.combine(combinedDateRange, convertToDateRange(dateUnit, projectDateRange));
@@ -148,7 +149,7 @@ public class TimePeriodCostsMap
 		for(DateUnit dateUnit : keys)
 		{
 			final TimePeriodCosts timePeriodCosts = data.get(dateUnit);
-			allProjectResourceRefs.addAll(timePeriodCosts.getResourceRefSet());
+			allProjectResourceRefs.addAll(timePeriodCosts.getWorkUnitsRefSetForType(ProjectResource.getObjectType()));
 		}
 		
 		return allProjectResourceRefs;
