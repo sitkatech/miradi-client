@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 12:26-0500\n"
+"POT-Creation-Date: 2010-07-02 12:30-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -853,6 +853,10 @@ msgstr ""
 msgid "Action|Configure Export"
 msgstr ""
 
+#: Miradi/source/org/miradi/actions/ActionEditRollupReportRows.java:36
+msgid "Action|Configure Rows..."
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionContextualHelp.java:37
 msgid "Action|ContextSensitive|Help"
 msgstr ""
@@ -988,10 +992,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionEditMethods.java:34
 msgid "Action|Edit Methods..."
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/ActionEditRollupReportsLevelTypes.java:36
-msgid "Action|Edit Types..."
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionEditTaggedObjectSet.java:34
@@ -5734,6 +5734,10 @@ msgstr ""
 msgid "TT|Collapse All Tree Rows"
 msgstr ""
 
+#: Miradi/source/org/miradi/actions/ActionEditRollupReportRows.java:42
+msgid "TT|Configure which rows are displayed"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionCopy.java:39
 msgid "TT|Copy the selection to the clipboard"
 msgstr ""
@@ -6045,10 +6049,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/views/ActionViewWorkPlan.java:41
 msgid "TT|Develop a work plan and budget"
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/ActionEditRollupReportsLevelTypes.java:42
-msgid "TT|Edit Types"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionEditEstimatedResource.java:39
