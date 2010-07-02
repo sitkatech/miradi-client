@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.treenodes;
 
+import java.util.Collections;
 import java.util.Vector;
 
 import org.miradi.objecthelpers.ORefList;
@@ -73,7 +74,7 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 				children.add(new RollupReportsNode(getProject(), getVisibleRows(), childBaseObject, getLevelObjectTypes(), childLevel, overlapptingAssignmentRefs));
 		}
 		
-		pruneUnwantedLayers(getVisibleRows());
+		Collections.sort(children, createNodeSorter());
 	}
 
 	private ORefList getAssignmentRefsThatMatch()

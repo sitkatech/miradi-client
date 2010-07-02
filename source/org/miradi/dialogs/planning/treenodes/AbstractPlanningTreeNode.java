@@ -220,7 +220,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return false;
 	}
 
-	private NodeSorter createNodeSorter()
+	protected NodeSorter createNodeSorter()
 	{
 		return new NodeSorter();
 	}
