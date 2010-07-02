@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 14:55-0500\n"
+"POT-Creation-Date: 2010-07-02 15:11-0500\n"
 "PO-Revision-Date: 2010-05-12 13:30-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -7276,10 +7276,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/main/EAM.java:139
 msgid "Warning"
-msgstr ""
-
-#: Miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:375
-msgid "Was expecting a %s, instead got:\n"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:237

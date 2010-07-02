@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 14:55-0500\n"
+"POT-Creation-Date: 2010-07-02 15:11-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7727,12 +7727,6 @@ msgstr "WWF"
 #: Miradi/source/org/miradi/main/EAM.java:139
 msgid "Warning"
 msgstr "Peringatan "
-
-#: Miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:375
-msgid "Was expecting a %s, instead got:\n"
-msgstr ""
-"Membutuhkan %s, ketimbang:\n"
-" "
 
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:237
 msgid ""
@@ -31525,6 +31519,11 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Was expecting a %s, instead got:\n"
+#~ msgstr ""
+#~ "Membutuhkan %s, ketimbang:\n"
+#~ " "
 
 #~ msgid "An unexpected error prevented that operation"
 #~ msgstr "Kesalahan tak terduga telah menghalangi operasi tersebut "
