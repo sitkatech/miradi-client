@@ -512,7 +512,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 				
 				if (AccountingCode.is(baseObject) && rollupReportsTypes.containsInt(baseObject.getType()))
 				{
-					timePeriodCosts.filterAccountingCodeWorkUnits(singleObjectSet);
+					timePeriodCosts.filterWorkUnitRelated(singleObjectSet);
 				}
 			}
 			

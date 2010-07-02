@@ -51,7 +51,7 @@ public class AccountingCodeBudgetDetailsTableModel extends AbstractBudgetDetails
 		{
 			ORefSet accountingCodeRefsToRetain = new ORefSet(baseObject);
 			timePeriodCosts.filterAccountingCodeExpenses(accountingCodeRefsToRetain);
-			timePeriodCosts.filterAccountingCodeWorkUnits(accountingCodeRefsToRetain);
+			timePeriodCosts.filterWorkUnitRelated(accountingCodeRefsToRetain);
 		}
 		
 		return calculateValue(timePeriodCosts);

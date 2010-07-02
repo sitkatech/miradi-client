@@ -230,12 +230,7 @@ public class TimePeriodCosts
 		filterWorkUnitRelated(fundingSourceRefsToRetain);
 	}
 	
-	public void filterAccountingCodeWorkUnits(ORefSet accountingCodeRefsToRetain)
-	{
-		filterWorkUnitRelated(accountingCodeRefsToRetain);
-	}
-	
-	private void filterWorkUnitRelated(ORefSet refsToRetain)
+	public void filterWorkUnitRelated(ORefSet refsToRetain)
 	{
 		filterDataPacks(workUnitPacks, refsToRetain);
 		updateTotalWorkUnits(workUnitPacks);
