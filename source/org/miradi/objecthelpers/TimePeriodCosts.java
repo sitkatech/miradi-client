@@ -55,7 +55,7 @@ public class TimePeriodCosts
 		accountingCodeRef.ensureValidType(AccountingCode.getObjectType());
 		
 		addExpensesToTotal(expenseToUse);
-		addToDataPacks(expensesPacks, new DataPack(ORef.INVALID, fundingSourceRef, accountingCodeRef, expenseToUse));
+		addToDataPacks(expensesPacks, new CategorizedQuantity(ORef.INVALID, fundingSourceRef, accountingCodeRef, expenseToUse));
 	}
 	
 	public TimePeriodCosts(ORef resourceRef, ORef fundingSourceRef,	ORef accountingCodeRef, OptionalDouble workUnits)
@@ -67,7 +67,7 @@ public class TimePeriodCosts
 		accountingCodeRef.ensureValidType(AccountingCode.getObjectType());
 		
 		addWorkUnitsToTotal(workUnits);
-		addToDataPacks(workUnitPacks, new DataPack(resourceRef, fundingSourceRef, accountingCodeRef, workUnits));
+		addToDataPacks(workUnitPacks, new CategorizedQuantity(resourceRef, fundingSourceRef, accountingCodeRef, workUnits));
 	}
 
 	public void add(TimePeriodCosts timePeriodCosts)
@@ -79,18 +79,18 @@ public class TimePeriodCosts
 		addDataPack(workUnitPacks, timePeriodCosts.workUnitPacks);
 	}
 	
-	private void addDataPack(Vector<DataPack> packToUpdate, Vector<DataPack> packsToAdd)
+	private void addDataPack(Vector<CategorizedQuantity> packToUpdate, Vector<CategorizedQuantity> packsToAdd)
 	{
 		if (packToUpdate == packsToAdd)
 			throw new RuntimeException(EAM.text("Cannot add a vector to itself."));
 		
-		for(DataPack thisDataPack : packsToAdd)
+		for(CategorizedQuantity thisDataPack : packsToAdd)
 		{
 			addToDataPacks(packToUpdate, thisDataPack);
 		}
 	}
 	
-	private void addToDataPacks(Vector<DataPack> dataPacksToUpdate, DataPack dataPackToAdd)
+	private void addToDataPacks(Vector<CategorizedQuantity> dataPacksToUpdate, CategorizedQuantity dataPackToAdd)
 	{
 		dataPacksToUpdate.add(dataPackToAdd);
 	}
@@ -136,8 +136,8 @@ public class TimePeriodCosts
 	private OptionalDouble calculateResourcesTotalCost(Project projectToUse)
 	{
 		OptionalDouble resourcesTotalCost = new OptionalDouble();
-		Vector<DataPack> dataPacks = workUnitPacks;
-		for(DataPack thisDataPack : dataPacks)
+		Vector<CategorizedQuantity> dataPacks = workUnitPacks;
+		for(CategorizedQuantity thisDataPack : dataPacks)
 		{
 			OptionalDouble costPerUnit = getCostPerUnit(projectToUse, thisDataPack.getResourceRef());
 			OptionalDouble workUnits = thisDataPack.getQuantity();
@@ -167,10 +167,10 @@ public class TimePeriodCosts
 		return getRolledUpQuantityForRef(expensesPacks, fundingSourceRef);
 	}
 	
-	private OptionalDouble getRolledUpQuantityForRef(Vector<DataPack> dataPacksToSearch, ORef refToFindBy)
+	private OptionalDouble getRolledUpQuantityForRef(Vector<CategorizedQuantity> dataPacksToSearch, ORef refToFindBy)
 	{
 		OptionalDouble totalQuantityForRef = new OptionalDouble();
-		for(DataPack thisDataPack : dataPacksToSearch)
+		for(CategorizedQuantity thisDataPack : dataPacksToSearch)
 		{
 			if (thisDataPack.containsRef(refToFindBy))
 				totalQuantityForRef = totalQuantityForRef.add(thisDataPack.getQuantity());
@@ -199,9 +199,9 @@ public class TimePeriodCosts
 		mergeDataPackSetInPlace(workUnitPacks, timePeriodCostsToMerge.workUnitPacks);
 	}
 	
-	private void mergeDataPackSetInPlace(Vector<DataPack> dataPackToUpdate, Vector<DataPack> dataPackToMergeFrom)
+	private void mergeDataPackSetInPlace(Vector<CategorizedQuantity> dataPackToUpdate, Vector<CategorizedQuantity> dataPackToMergeFrom)
 	{
-		for(DataPack thisDataPack : dataPackToMergeFrom)
+		for(CategorizedQuantity thisDataPack : dataPackToMergeFrom)
 		{
 			addToDataPacks(dataPackToUpdate, thisDataPack);
 		}
@@ -228,7 +228,7 @@ public class TimePeriodCosts
 		updateTotalExpenses();
 	}
 	
-	private void filterByUnionOf(Vector<DataPack> dataPacks, ORefSet refsToRetain)
+	private void filterByUnionOf(Vector<CategorizedQuantity> dataPacks, ORefSet refsToRetain)
 	{
 		if (refsToRetain.size() == 0)
 			return;
@@ -236,8 +236,8 @@ public class TimePeriodCosts
 		if (refsToRetain.contains(ORef.INVALID))
 			EAM.logError("WARNING: Filtering on invalid ref with no type");
 		
-		Vector<DataPack> dataPacksToRetain = new Vector();
-		for(DataPack dataPackToFilter : dataPacks)
+		Vector<CategorizedQuantity> dataPacksToRetain = new Vector();
+		for(CategorizedQuantity dataPackToFilter : dataPacks)
 		{
 			if (dataPackToFilter.containsAtleastOne(refsToRetain))
 				dataPacksToRetain.add(dataPackToFilter);
@@ -256,10 +256,10 @@ public class TimePeriodCosts
 		totalWorkUnits = getTotal(workUnitPacks);
 	}
 	
-	private OptionalDouble getTotal(Vector<DataPack> dataPacks)
+	private OptionalDouble getTotal(Vector<CategorizedQuantity> dataPacks)
 	{
 		OptionalDouble totals = new OptionalDouble();
-		for(DataPack dataPack: dataPacks)
+		for(CategorizedQuantity dataPack: dataPacks)
 		{
 			totals = totals.add(dataPack.getQuantity());
 		}
@@ -276,9 +276,9 @@ public class TimePeriodCosts
 		updateTotalExpenses();
 	}
 	
-	private void divideByDataPacks(Vector<DataPack> dataPacksToDivide, OptionalDouble divideByValue)
+	private void divideByDataPacks(Vector<CategorizedQuantity> dataPacksToDivide, OptionalDouble divideByValue)
 	{
-		for(DataPack dataPack : dataPacksToDivide)
+		for(CategorizedQuantity dataPack : dataPacksToDivide)
 		{
 			dataPack.divideBy(divideByValue);
 		}
@@ -329,10 +329,10 @@ public class TimePeriodCosts
 		return extractRefs(expensesPacks, objectType);
 	}
 	
-	private ORefSet extractRefs(Vector<DataPack> dataPacksToUse, int type)
+	private ORefSet extractRefs(Vector<CategorizedQuantity> dataPacksToUse, int type)
 	{
 		ORefSet extractedRefs = new ORefSet();
-		for(DataPack dataPack : dataPacksToUse)
+		for(CategorizedQuantity dataPack : dataPacksToUse)
 		{
 			ORefSet containingRefs = dataPack.getContainingRefs();
 			ORefSet filteredRefs = containingRefs.getFilteredBy(type);
@@ -355,6 +355,6 @@ public class TimePeriodCosts
 	private OptionalDouble totalExpenses;
 	private OptionalDouble totalWorkUnits;
 	
-	private Vector<DataPack> workUnitPacks;
-	private Vector<DataPack> expensesPacks;
+	private Vector<CategorizedQuantity> workUnitPacks;
+	private Vector<CategorizedQuantity> expensesPacks;
 }
