@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 12:20-0500\n"
+"POT-Creation-Date: 2010-07-02 12:23-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -3288,6 +3288,10 @@ msgstr "No se valida el archivo exportado."
 msgid "External Research"
 msgstr "Investigación externa "
 
+#: Miradi/source/org/miradi/dialogfields/RollupReportsEditorComponent.java:71
+msgid "Extra/unexpected configuration data was found, and will be ignored."
+msgstr ""
+
 #: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:570
 msgid "Extracting factors..."
 msgstr ""
@@ -6014,10 +6018,6 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/DiagramFactorFontStyleQuestion.java:38
 msgid "Strike through"
 msgstr "Tachar"
-
-#: Miradi/source/org/miradi/dialogfields/RollupReportsEditorComponent.java:71
-msgid "Stripped out extra codes being used for roll up report level types"
-msgstr ""
 
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:43
 msgid "Strong Decrease"
