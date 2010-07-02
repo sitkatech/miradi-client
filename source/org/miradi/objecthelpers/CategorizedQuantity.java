@@ -65,6 +65,13 @@ public class CategorizedQuantity
 		return containingRefs.size() > 0;
 	}
 	
+	public boolean containsAll(ORefSet refsToRetain)
+	{
+		ORefSet containtingRefs = getContainingRefs();
+		
+		return containtingRefs.containsAll(refsToRetain);
+	}
+	
 	public boolean containsRef(ORef refToMatch)
 	{
 		if (resourceRef.equals(refToMatch))

@@ -33,16 +33,12 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
-import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.FundingSource;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.Task;
-import org.miradi.objects.ViewData;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
@@ -55,7 +51,6 @@ import org.miradi.utils.ColumnTagProvider;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.OptionalDouble;
-import org.miradi.views.workplan.WorkPlanView;
 
 abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTableModel implements ColumnTagProvider
 {
@@ -491,30 +486,12 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{		
 		try	
 		{
-			ViewData workPlanViewData = getProject().getViewData(WorkPlanView.getViewName());
-			CodeList rollupReportsTypes = workPlanViewData.getBudgetRollupReportLevelTypes();
 			DateUnit dateUnit = getDateUnit(column);
 			TimePeriodCosts timePeriodCosts = getProjectTotalTimePeriodCostFor(dateUnit);
 			ORefList objectHierarchy = getProvider().getObjectHiearchy(row, column);
-			for (int index = 0; index < objectHierarchy.size(); ++index)
-			{
-				BaseObject baseObject = BaseObject.find(getProject(), objectHierarchy.get(index));
-				ORefSet singleObjectSet = new ORefSet(baseObject);
-				if (ProjectResource.is(baseObject) && rollupReportsTypes.containsInt(baseObject.getType()))
-				{
-					timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(singleObjectSet);
-				}
-					
-				if (FundingSource.is(baseObject) && rollupReportsTypes.containsInt(baseObject.getType()))
-				{
-					timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(singleObjectSet);
-				}
-				
-				if (AccountingCode.is(baseObject) && rollupReportsTypes.containsInt(baseObject.getType()))
-				{
-					timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(singleObjectSet);
-				}
-			}
+			ORefSet refsToRetain = new ORefSet(objectHierarchy);
+			removeMetadataRootNodeRefInPlace(refsToRetain);
+			retainDataRelatedToAnyOf(timePeriodCosts, refsToRetain);
 			
 			return calculateValue(timePeriodCosts);
 		}
@@ -523,6 +500,16 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			EAM.logException(e);
 			return new OptionalDouble();
 		}
+	}
+
+	private void removeMetadataRootNodeRefInPlace(ORefSet refsToRetain)
+	{
+		refsToRetain.remove(getProject().getMetadata().getRef());
+	}
+
+	protected void retainDataRelatedToAnyOf(TimePeriodCosts timePeriodCosts, ORefSet objectHierarchy)
+	{
+		throw new RuntimeException("Model needs to override retainDataRelatedToAnyOf");
 	}
 	
 	public Vector<DateUnit> getCopyOfDateUnits()

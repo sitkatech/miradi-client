@@ -22,6 +22,8 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.AbstractBudgetDetailsTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.OptionalDouble;
@@ -36,8 +38,14 @@ public class RollupReportsBudgetDetailsTableModel extends AbstractBudgetDetailsT
 	@Override
 	protected OptionalDouble getOptionalDoubleAt(int row, int column)
 	{
-		//FIXME urgent - cRV needs to calculate correct value for details
 		return calculateRollupValue(row, column);
+	}
+	
+	@Override
+	protected void retainDataRelatedToAnyOf(TimePeriodCosts timePeriodCosts, ORefSet objectHierarchy)
+	{
+		timePeriodCosts.retainWorkUnitDataRelatedToAllOf(objectHierarchy);
+		timePeriodCosts.retainExpenseDataRelatedToAllOf(objectHierarchy);
 	}
 	
 	@Override
