@@ -52,7 +52,7 @@ public class TimePeriodCosts
 		this();
 		
 		fundingSourceRef.ensureValidType(FundingSource.getObjectType());
-		accountingCodeRef.ensureType(AccountingCode.getObjectType());
+		accountingCodeRef.ensureValidType(AccountingCode.getObjectType());
 		
 		addExpensesToTotal(expenseToUse);
 		addToDataPacks(expensesPacks, new DataPack(ORef.INVALID, fundingSourceRef, accountingCodeRef, expenseToUse));
@@ -62,9 +62,9 @@ public class TimePeriodCosts
 	{
 		this();
 		
-		resourceRef.ensureType(ProjectResource.getObjectType());
-		fundingSourceRef.ensureType(FundingSource.getObjectType());
-		accountingCodeRef.ensureType(AccountingCode.getObjectType());
+		resourceRef.ensureValidType(ProjectResource.getObjectType());
+		fundingSourceRef.ensureValidType(FundingSource.getObjectType());
+		accountingCodeRef.ensureValidType(AccountingCode.getObjectType());
 		
 		addWorkUnitsToTotal(workUnits);
 		addToDataPacks(workUnitPacks, new DataPack(resourceRef, fundingSourceRef, accountingCodeRef, workUnits));
