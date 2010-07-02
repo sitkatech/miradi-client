@@ -41,7 +41,7 @@ public class FundingSourceExpenseTableModel extends AbstractExpenseTableModel
 	{
 		TimePeriodCosts timePeriodCosts = getProjectTotalTimePeriodCostFor(dateUnit);
 		if (FundingSource.is(baseObject))
-			timePeriodCosts.filterExpenseRelated(new ORefSet(baseObject));
+			timePeriodCosts.filterRelatedExpenseUnionOf(new ORefSet(baseObject));
 		
 		return calculateValue(timePeriodCosts);
 	}
