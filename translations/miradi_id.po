@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 12:30-0500\n"
+"POT-Creation-Date: 2010-07-02 12:33-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3083,7 +3083,7 @@ msgstr "Edit Semua Strategi "
 msgid "Edit Indicators"
 msgstr "Edit Indikator "
 
-#: Miradi/source/org/miradi/views/workplan/doers/EditoRollupReportsLevelTypesDoer.java:43
+#: Miradi/source/org/miradi/views/workplan/doers/EditRollupReportRowsDoer.java:43
 msgid "Edit Level Types"
 msgstr ""
 
