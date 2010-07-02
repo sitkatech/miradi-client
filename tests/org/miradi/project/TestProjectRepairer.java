@@ -106,8 +106,8 @@ public class TestProjectRepairer extends TestCaseWithProject
 		ORefList stressRefs = new ORefList(getProject().createAndPopulateStress().getRef());
 		getProject().fillObjectUsingCommand(target.getWrappedORef(), Target.TAG_STRESS_REFS, stressRefs.toString());
 		
-		getProject().createDiagramFactorLink(threat2, threat1);
-		getProject().createDiagramFactorLink(threat1, target);
+		getProject().createDiagramLinkAndAddToDiagram(threat2, threat1);
+		getProject().createDiagramLinkAndAddToDiagram(threat1, target);
 	}
 	
 	public void testDeleteOrphanObjectives() throws Exception
