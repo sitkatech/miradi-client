@@ -131,7 +131,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	
 	public void testFundingSourceExpenseMapBasics() throws Exception
 	{
-		assertEquals("funding source expense map should be empty?", 0, new TimePeriodCosts().getFundingSourceExpensesRefSet().size());
+		assertEquals("funding source expense map should be empty?", 0, new TimePeriodCosts().getExpenseRefSetForType(FundingSource.getObjectType()).size());
 		
 		ORef fundingSourceRef = createFundingSource();
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts(fundingSourceRef, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(10.0));
@@ -257,7 +257,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		withExpenses.add(new TimePeriodCosts(fundingSourceRefForJill, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(10.0)));
 		withExpenses.add(new TimePeriodCosts(fundingSourceRefForFred, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(11.0)));
 		withExpenses.filterRelatedExpenseUnionOf(new ORefSet(fundingSourceRefForJill));
-		assertFalse("fred was not filtered out?", withExpenses.getFundingSourceExpensesRefSet().contains(fundingSourceRefForFred));
+		assertFalse("fred was not filtered out?", withExpenses.getExpenseRefSetForType(FundingSource.getObjectType()).contains(fundingSourceRefForFred));
 	}
 	
 	public void testFilterByMoreThanOneItem() throws Exception

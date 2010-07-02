@@ -324,12 +324,7 @@ public class TimePeriodCosts
 		return extractRefs(workUnitPacks, objectType);
 	}
 	
-	public Set<ORef> getFundingSourceExpensesRefSet()
-	{
-		return getExpenseRefSetForType(FundingSource.getObjectType());
-	}
-
-	private Set<ORef> getExpenseRefSetForType(int objectType)
+	public Set<ORef> getExpenseRefSetForType(int objectType)
 	{
 		return extractRefs(expensesPacks, objectType);
 	}
