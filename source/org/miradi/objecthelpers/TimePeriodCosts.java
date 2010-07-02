@@ -437,22 +437,22 @@ public class TimePeriodCosts
 			quantity = quantity.divideBy(divideBy);
 		}
 		
-		public ORef getResourceRef()
+		private ORef getResourceRef()
 		{
 			return resourceRef;
 		}
 		
-		public ORef getFundingSourceRef()
+		private ORef getFundingSourceRef()
 		{
 			return fundingSourceRef;
 		}
 		
-		public ORef getAccountingCodeRef()
+		private ORef getAccountingCodeRef()
 		{
 			return accountingCodeRef;
 		}
 		
-		public OptionalDouble getQuantity()
+		private OptionalDouble getQuantity()
 		{
 			return quantity;
 		}
