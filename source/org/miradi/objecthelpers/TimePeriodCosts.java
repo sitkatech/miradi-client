@@ -321,12 +321,17 @@ public class TimePeriodCosts
 
 	public Set<ORef> getResourceRefSet()
 	{
-		return extractRefs(workUnitPacks, ProjectResource.getObjectType());
+		return getWorkUnitsRefSetForType(ProjectResource.getObjectType());
 	}
 	
 	public Set<ORef> getFundingSourceWorkUnitsRefSet()
 	{
-		return extractRefs(workUnitPacks, FundingSource.getObjectType());
+		return getWorkUnitsRefSetForType(FundingSource.getObjectType());
+	}
+
+	private Set<ORef> getWorkUnitsRefSetForType(int objectType)
+	{
+		return extractRefs(workUnitPacks, objectType);
 	}
 	
 	public Set<ORef> getFundingSourceExpensesRefSet()
