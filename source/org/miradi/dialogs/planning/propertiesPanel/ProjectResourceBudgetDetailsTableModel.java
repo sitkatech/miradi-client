@@ -49,7 +49,7 @@ public class ProjectResourceBudgetDetailsTableModel extends AbstractBudgetDetail
 	{
 		TimePeriodCosts timePeriodCosts = getProjectTotalTimePeriodCostFor(dateUnit);
 		if (ProjectResource.is(baseObject))
-			timePeriodCosts.filterRelatedWorkUnitUnionOf(new ORefSet(baseObject));
+			timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(new ORefSet(baseObject));
 			
 		return calculateValue(timePeriodCosts);	
 	}
