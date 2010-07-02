@@ -71,6 +71,7 @@ import org.miradi.objectdata.TestDateRangeData;
 import org.miradi.objectdata.TestIntegerData;
 import org.miradi.objectdata.TestRefListListData;
 import org.miradi.objecthelpers.TestBaseObjectRollupValues;
+import org.miradi.objecthelpers.TestCategorizedQuantity;
 import org.miradi.objecthelpers.TestDateUnitEffort;
 import org.miradi.objecthelpers.TestDateUnitEffortList;
 import org.miradi.objecthelpers.TestMapList;
@@ -351,6 +352,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestDateUnitEffortList.class));
 		suite.addTest(new TestSuite(TestBaseObjectRollupValues.class));
 		suite.addTest(new TestSuite(TestResultsChainCreatorHelper.class));
+		suite.addTest(new TestSuite(TestCategorizedQuantity.class));
 		
 		// objects package
 		suite.addTest(new TestSuite(TestStrategy.class));

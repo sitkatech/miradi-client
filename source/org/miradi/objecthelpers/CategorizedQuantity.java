@@ -24,11 +24,13 @@ import org.miradi.utils.OptionalDouble;
 
 public class CategorizedQuantity 
 {
-	public CategorizedQuantity(ORef resourceRefToUse, ORef fundingSourceRefToUse, ORef accountingCodeRefToUse, OptionalDouble quantityToUse)
+	public CategorizedQuantity(ORef resourceRefToUse, ORef fundingSourceRefToUse, ORef accountingCodeRefToUse, ORef categoryOneRefTouse, ORef categoryTwoRefToUse, OptionalDouble quantityToUse)
 	{
 		resourceRef = resourceRefToUse;
 		fundingSourceRef = fundingSourceRefToUse;
 		accountingCodeRef = accountingCodeRefToUse;
+		categoryOneRef = categoryOneRefTouse;
+		categoryTwoRef = categoryTwoRefToUse;
 		quantity = quantityToUse;
 	}
 	
@@ -38,6 +40,8 @@ public class CategorizedQuantity
 		allContainingRefs.add(getResourceRef());
 		allContainingRefs.add(fundingSourceRef);
 		allContainingRefs.add(accountingCodeRef);
+		allContainingRefs.add(categoryOneRef);
+		allContainingRefs.add(categoryTwoRef);
 		
 		return allContainingRefs;
 	}
@@ -58,7 +62,13 @@ public class CategorizedQuantity
 		if (accountingCodeRef.equals(refToMatch))
 			return true;
 		
-		return fundingSourceRef.equals(refToMatch);
+		if (fundingSourceRef.equals(refToMatch))
+			return true;
+		
+		if (categoryOneRef.equals(refToMatch))
+			return true;
+		
+		return categoryTwoRef.equals(refToMatch);
 	}
 	
 	public void divideBy(OptionalDouble divideBy)
@@ -79,7 +89,7 @@ public class CategorizedQuantity
 	@Override
 	public int hashCode()
 	{
-		return fundingSourceRef.hashCode() + resourceRef.hashCode() + accountingCodeRef.hashCode();
+		return fundingSourceRef.hashCode() + resourceRef.hashCode() + accountingCodeRef.hashCode() + categoryOneRef.hashCode() + categoryTwoRef.hashCode();
 	}
 	
 	@Override
@@ -98,6 +108,12 @@ public class CategorizedQuantity
 		if (!accountingCodeRef.equals(other.accountingCodeRef))
 			return false;
 		
+		if (!categoryOneRef.equals(other.categoryOneRef))
+			return false;
+		
+		if (!categoryTwoRef.equals(other.categoryTwoRef))
+			return false;
+		
 		return quantity.equals(other.quantity);
 	}
 	
@@ -110,5 +126,7 @@ public class CategorizedQuantity
 	private ORef resourceRef;
 	private ORef fundingSourceRef;
 	private ORef accountingCodeRef;
+	private ORef categoryOneRef;
+	private ORef categoryTwoRef;
 	private OptionalDouble quantity;
 }
