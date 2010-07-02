@@ -73,13 +73,13 @@ public class TimePeriodCosts
 	public void add(TimePeriodCosts timePeriodCosts)
 	{
 		addExpensesToTotal(timePeriodCosts);
-		addDataPack(expensesCategorizedQuantities, timePeriodCosts.expensesCategorizedQuantities);
+		addCategorizedQuantity(expensesCategorizedQuantities, timePeriodCosts.expensesCategorizedQuantities);
 		
 		addWorkUnitsToTotal(timePeriodCosts);
-		addDataPack(workUnitCategorizedQuantities, timePeriodCosts.workUnitCategorizedQuantities);
+		addCategorizedQuantity(workUnitCategorizedQuantities, timePeriodCosts.workUnitCategorizedQuantities);
 	}
 	
-	private void addDataPack(Vector<CategorizedQuantity> packToUpdate, Vector<CategorizedQuantity> packsToAdd)
+	private void addCategorizedQuantity(Vector<CategorizedQuantity> packToUpdate, Vector<CategorizedQuantity> packsToAdd)
 	{
 		if (packToUpdate == packsToAdd)
 			throw new RuntimeException(EAM.text("Cannot add a vector to itself."));
