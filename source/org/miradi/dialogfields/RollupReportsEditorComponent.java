@@ -68,7 +68,7 @@ public class RollupReportsEditorComponent extends MiradiPanel
 		if (allCodes.size() > editors.size())
 		{
 			allCodes = stripOutExtraCodes(allCodes);
-			EAM.logError(EAM.text("Extra/unexpected configuration data was found, and will be ignored."));
+			EAM.logError(EAM.text("Extra/unexpected configuration data was found, and will be ignored.\n CodeList= " + codes));
 		}
 		
 		for (int index = 0; index < allCodes.size(); ++index)
