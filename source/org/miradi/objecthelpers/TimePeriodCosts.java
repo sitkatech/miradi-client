@@ -79,14 +79,14 @@ public class TimePeriodCosts
 		addCategorizedQuantity(workUnitCategorizedQuantities, timePeriodCosts.workUnitCategorizedQuantities);
 	}
 	
-	private void addCategorizedQuantity(Vector<CategorizedQuantity> packToUpdate, Vector<CategorizedQuantity> packsToAdd)
+	private void addCategorizedQuantity(Vector<CategorizedQuantity> categorizedQuantityToUpdate, Vector<CategorizedQuantity> categorizedQuantitiesToAdd)
 	{
-		if (packToUpdate == packsToAdd)
+		if (categorizedQuantityToUpdate == categorizedQuantitiesToAdd)
 			throw new RuntimeException(EAM.text("Cannot add a vector to itself."));
 		
-		for(CategorizedQuantity thisCategorizedQuantity : packsToAdd)
+		for(CategorizedQuantity thisCategorizedQuantity : categorizedQuantitiesToAdd)
 		{
-			addToCategorizedQuantities(packToUpdate, thisCategorizedQuantity);
+			addToCategorizedQuantities(categorizedQuantityToUpdate, thisCategorizedQuantity);
 		}
 	}
 	
@@ -199,11 +199,11 @@ public class TimePeriodCosts
 		mergeCategorizedQuantitySetInPlace(workUnitCategorizedQuantities, timePeriodCostsToMerge.workUnitCategorizedQuantities);
 	}
 	
-	private void mergeCategorizedQuantitySetInPlace(Vector<CategorizedQuantity> dataPackToUpdate, Vector<CategorizedQuantity> dataPackToMergeFrom)
+	private void mergeCategorizedQuantitySetInPlace(Vector<CategorizedQuantity> categorizedQuantityToUpdate, Vector<CategorizedQuantity> categorizedQuantityToMergeFrom)
 	{
-		for(CategorizedQuantity thisDataPack : dataPackToMergeFrom)
+		for(CategorizedQuantity thisCategorizedQuantity : categorizedQuantityToMergeFrom)
 		{
-			addToCategorizedQuantities(dataPackToUpdate, thisDataPack);
+			addToCategorizedQuantities(categorizedQuantityToUpdate, thisCategorizedQuantity);
 		}
 	}
 	
@@ -228,7 +228,7 @@ public class TimePeriodCosts
 		updateTotalExpenses();
 	}
 	
-	private void filterByUnionOf(Vector<CategorizedQuantity> dataPacks, ORefSet refsToRetain)
+	private void filterByUnionOf(Vector<CategorizedQuantity> categorizedQuantities, ORefSet refsToRetain)
 	{
 		if (refsToRetain.size() == 0)
 			return;
@@ -236,14 +236,14 @@ public class TimePeriodCosts
 		if (refsToRetain.contains(ORef.INVALID))
 			EAM.logError("WARNING: Filtering on invalid ref with no type");
 		
-		Vector<CategorizedQuantity> dataPacksToRetain = new Vector();
-		for(CategorizedQuantity dataPackToFilter : dataPacks)
+		Vector<CategorizedQuantity> categorizedQuantitiesToRetain = new Vector();
+		for(CategorizedQuantity categorizedQuantityToFilter : categorizedQuantities)
 		{
-			if (dataPackToFilter.containsAtleastOne(refsToRetain))
-				dataPacksToRetain.add(dataPackToFilter);
+			if (categorizedQuantityToFilter.containsAtleastOne(refsToRetain))
+				categorizedQuantitiesToRetain.add(categorizedQuantityToFilter);
 		}
 		
-		dataPacks.retainAll(dataPacksToRetain);
+		categorizedQuantities.retainAll(categorizedQuantitiesToRetain);
 	}
 	
 	private void updateTotalExpenses()
