@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 14:07-0500\n"
+"POT-Creation-Date: 2010-07-02 14:20-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7457,7 +7457,7 @@ msgstr "WWF "
 msgid "Warning"
 msgstr "警告 \t\t"
 
-#: Miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:390
+#: Miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:384
 msgid "Was expecting a %s, instead got:\n"
 msgstr ""
 
