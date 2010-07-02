@@ -33,12 +33,12 @@ public class ActionEditRollupReportsLevelTypes extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Edit Types...");
+		return EAM.text("Action|Configure Rows...");
 	}
 
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Edit Types");
+		return EAM.text("TT|Configure which rows are displayed");
 	}
 }
