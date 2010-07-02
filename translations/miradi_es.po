@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 12:23-0500\n"
+"POT-Creation-Date: 2010-07-02 12:26-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -3289,7 +3289,9 @@ msgid "External Research"
 msgstr "Investigación externa "
 
 #: Miradi/source/org/miradi/dialogfields/RollupReportsEditorComponent.java:71
-msgid "Extra/unexpected configuration data was found, and will be ignored."
+msgid ""
+"Extra/unexpected configuration data was found, and will be ignored.\n"
+" CodeList= %s"
 msgstr ""
 
 #: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:570
