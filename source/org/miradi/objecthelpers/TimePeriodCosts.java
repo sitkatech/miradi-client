@@ -84,15 +84,15 @@ public class TimePeriodCosts
 		if (packToUpdate == packsToAdd)
 			throw new RuntimeException(EAM.text("Cannot add a vector to itself."));
 		
-		for(CategorizedQuantity thisDataPack : packsToAdd)
+		for(CategorizedQuantity thisCategorizedQuantity : packsToAdd)
 		{
-			addToCategorizedQuantities(packToUpdate, thisDataPack);
+			addToCategorizedQuantities(packToUpdate, thisCategorizedQuantity);
 		}
 	}
 	
-	private void addToCategorizedQuantities(Vector<CategorizedQuantity> dataPacksToUpdate, CategorizedQuantity dataPackToAdd)
+	private void addToCategorizedQuantities(Vector<CategorizedQuantity> categorizedQuantitiesToUpdate, CategorizedQuantity categorizedQuantityToAdd)
 	{
-		dataPacksToUpdate.add(dataPackToAdd);
+		categorizedQuantitiesToUpdate.add(categorizedQuantityToAdd);
 	}
 	
 	private void addWorkUnitsToTotal(TimePeriodCosts timePeriodCosts)
@@ -136,11 +136,11 @@ public class TimePeriodCosts
 	private OptionalDouble calculateResourcesTotalCost(Project projectToUse)
 	{
 		OptionalDouble resourcesTotalCost = new OptionalDouble();
-		Vector<CategorizedQuantity> dataPacks = workUnitCategorizedQuantities;
-		for(CategorizedQuantity thisDataPack : dataPacks)
+		Vector<CategorizedQuantity> categorizedQuantities = workUnitCategorizedQuantities;
+		for(CategorizedQuantity thisCategorizedQuantity : categorizedQuantities)
 		{
-			OptionalDouble costPerUnit = getCostPerUnit(projectToUse, thisDataPack.getResourceRef());
-			OptionalDouble workUnits = thisDataPack.getQuantity();
+			OptionalDouble costPerUnit = getCostPerUnit(projectToUse, thisCategorizedQuantity.getResourceRef());
+			OptionalDouble workUnits = thisCategorizedQuantity.getQuantity();
 			OptionalDouble multiplyValue = workUnits.multiply(costPerUnit);
 			resourcesTotalCost = resourcesTotalCost.add(multiplyValue);
 		}
@@ -167,13 +167,13 @@ public class TimePeriodCosts
 		return getRolledUpQuantityForRef(expensesCategorizedQuantities, fundingSourceRef);
 	}
 	
-	private OptionalDouble getRolledUpQuantityForRef(Vector<CategorizedQuantity> dataPacksToSearch, ORef refToFindBy)
+	private OptionalDouble getRolledUpQuantityForRef(Vector<CategorizedQuantity> categorizedQuantitiesToSearch, ORef refToFindBy)
 	{
 		OptionalDouble totalQuantityForRef = new OptionalDouble();
-		for(CategorizedQuantity thisDataPack : dataPacksToSearch)
+		for(CategorizedQuantity thisCategorizedQuantity : categorizedQuantitiesToSearch)
 		{
-			if (thisDataPack.containsRef(refToFindBy))
-				totalQuantityForRef = totalQuantityForRef.add(thisDataPack.getQuantity());
+			if (thisCategorizedQuantity.containsRef(refToFindBy))
+				totalQuantityForRef = totalQuantityForRef.add(thisCategorizedQuantity.getQuantity());
 		}
 		
 		return totalQuantityForRef;
@@ -181,25 +181,25 @@ public class TimePeriodCosts
 	
 	protected void mergeAllTimePeriodCosts(TimePeriodCosts timePeriodCostsToMergeAdd)
 	{
-		mergeAllExpensePacksInPlace(timePeriodCostsToMergeAdd);
-		mergeAllWorkUnitDataPackInPlace(timePeriodCostsToMergeAdd);
+		mergeAllExpenseCategorizedQuantityInPlace(timePeriodCostsToMergeAdd);
+		mergeAllWorkUnitCategorizedQuantityInPlace(timePeriodCostsToMergeAdd);
 	}
 
-	private void mergeAllExpensePacksInPlace(TimePeriodCosts timePeriodCostsToMergeAdd)
+	private void mergeAllExpenseCategorizedQuantityInPlace(TimePeriodCosts timePeriodCostsToMergeAdd)
 	{
 		addExpensesToTotal(timePeriodCostsToMergeAdd);
 		
-		mergeDataPackSetInPlace(expensesCategorizedQuantities, timePeriodCostsToMergeAdd.expensesCategorizedQuantities);
+		mergeCategorizedQuantitySetInPlace(expensesCategorizedQuantities, timePeriodCostsToMergeAdd.expensesCategorizedQuantities);
 	}
 	
-	public void mergeAllWorkUnitDataPackInPlace(TimePeriodCosts timePeriodCostsToMerge)
+	public void mergeAllWorkUnitCategorizedQuantityInPlace(TimePeriodCosts timePeriodCostsToMerge)
 	{
 		addWorkUnitsToTotal(timePeriodCostsToMerge);
 		
-		mergeDataPackSetInPlace(workUnitCategorizedQuantities, timePeriodCostsToMerge.workUnitCategorizedQuantities);
+		mergeCategorizedQuantitySetInPlace(workUnitCategorizedQuantities, timePeriodCostsToMerge.workUnitCategorizedQuantities);
 	}
 	
-	private void mergeDataPackSetInPlace(Vector<CategorizedQuantity> dataPackToUpdate, Vector<CategorizedQuantity> dataPackToMergeFrom)
+	private void mergeCategorizedQuantitySetInPlace(Vector<CategorizedQuantity> dataPackToUpdate, Vector<CategorizedQuantity> dataPackToMergeFrom)
 	{
 		for(CategorizedQuantity thisDataPack : dataPackToMergeFrom)
 		{
@@ -210,10 +210,10 @@ public class TimePeriodCosts
 	protected void mergeNonConflicting(TimePeriodCosts snapShotTimePeriodCosts, TimePeriodCosts timePeriodCostsToMerge) throws Exception
 	{
 		if (!snapShotTimePeriodCosts.hasExpenseData())
-			mergeAllExpensePacksInPlace(timePeriodCostsToMerge);
+			mergeAllExpenseCategorizedQuantityInPlace(timePeriodCostsToMerge);
 		
 		if (!snapShotTimePeriodCosts.hasTotalWorkUnitsData())
-			mergeAllWorkUnitDataPackInPlace(timePeriodCostsToMerge);
+			mergeAllWorkUnitCategorizedQuantityInPlace(timePeriodCostsToMerge);
 	}
 	
 	public void retainWorkUnitDataRelatedToAnyOf(ORefSet refsToRetain)
@@ -256,10 +256,10 @@ public class TimePeriodCosts
 		totalWorkUnits = getTotal(workUnitCategorizedQuantities);
 	}
 	
-	private OptionalDouble getTotal(Vector<CategorizedQuantity> dataPacks)
+	private OptionalDouble getTotal(Vector<CategorizedQuantity> categorizedQuantities)
 	{
 		OptionalDouble totals = new OptionalDouble();
-		for(CategorizedQuantity categorizedQuantity: dataPacks)
+		for(CategorizedQuantity categorizedQuantity: categorizedQuantities)
 		{
 			totals = totals.add(categorizedQuantity.getQuantity());
 		}
@@ -269,18 +269,18 @@ public class TimePeriodCosts
 	
 	public void divideBy(OptionalDouble divideByValue)
 	{
-		divideByDataPacks(workUnitCategorizedQuantities, divideByValue);
+		divideByCategorizedQuantities(workUnitCategorizedQuantities, divideByValue);
 		updateTotalWorkUnits();
 		
-		divideByDataPacks(expensesCategorizedQuantities, divideByValue);
+		divideByCategorizedQuantities(expensesCategorizedQuantities, divideByValue);
 		updateTotalExpenses();
 	}
 	
-	private void divideByDataPacks(Vector<CategorizedQuantity> dataPacksToDivide, OptionalDouble divideByValue)
+	private void divideByCategorizedQuantities(Vector<CategorizedQuantity> categorizedQuantitiesToDivide, OptionalDouble divideByValue)
 	{
-		for(CategorizedQuantity dataPack : dataPacksToDivide)
+		for(CategorizedQuantity categorizedQuantity : categorizedQuantitiesToDivide)
 		{
-			dataPack.divideBy(divideByValue);
+			categorizedQuantity.divideBy(divideByValue);
 		}
 	}
 	
@@ -329,12 +329,12 @@ public class TimePeriodCosts
 		return extractRefs(expensesCategorizedQuantities, objectType);
 	}
 	
-	private ORefSet extractRefs(Vector<CategorizedQuantity> dataPacksToUse, int type)
+	private ORefSet extractRefs(Vector<CategorizedQuantity> categorizedQuantitiesToUse, int type)
 	{
 		ORefSet extractedRefs = new ORefSet();
-		for(CategorizedQuantity dataPack : dataPacksToUse)
+		for(CategorizedQuantity categorizedQuantity : categorizedQuantitiesToUse)
 		{
-			ORefSet containingRefs = dataPack.getContainingRefs();
+			ORefSet containingRefs = categorizedQuantity.getContainingRefs();
 			ORefSet filteredRefs = containingRefs.getFilteredBy(type);
 			extractedRefs.addAll(filteredRefs);
 		}
