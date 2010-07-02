@@ -24,14 +24,6 @@ import org.miradi.utils.OptionalDouble;
 
 public class CategorizedQuantity 
 {
-	public CategorizedQuantity()
-	{
-		resourceRef = ORef.INVALID;
-		fundingSourceRef = ORef.INVALID;
-		accountingCodeRef = ORef.INVALID;
-		quantity = new OptionalDouble();
-	}
-	
 	public CategorizedQuantity(ORef resourceRefToUse, ORef fundingSourceRefToUse, ORef accountingCodeRefToUse, OptionalDouble quantityToUse)
 	{
 		resourceRef = resourceRefToUse;
