@@ -38,7 +38,7 @@ public class RollupReportsObjectTypeQuestion extends StaticChoiceQuestion
 	protected ChoiceItem[] createChoices()
 	{
 		return new ChoiceItem[]{
-			new ChoiceItem(UNSPECIEFIED_CODE, EAM.text("Unspecified")),
+			new ChoiceItem(UNSPECIFIED_CODE, EAM.text("Unspecified")),
 			new ChoiceItem(ProjectResource.getObjectType(), EAM.text("Resource")),
 			new ChoiceItem(FundingSource.getObjectType(), EAM.text("Funding Source")),
 			new ChoiceItem(AccountingCode.getObjectType(), EAM.text("Accounting Code")),
@@ -47,5 +47,5 @@ public class RollupReportsObjectTypeQuestion extends StaticChoiceQuestion
 		};
 	}
 	
-	public static final String UNSPECIEFIED_CODE = "";
+	public static final String UNSPECIFIED_CODE = "";
 }
