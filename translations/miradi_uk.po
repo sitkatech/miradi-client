@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 15:11-0500\n"
+"POT-Creation-Date: 2010-07-02 16:41-0500\n"
 "PO-Revision-Date: 2010-05-12 13:30-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2199,7 +2199,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: Miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:85
+#: Miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:91
 msgid "Cannot add a vector to itself."
 msgstr ""
 
