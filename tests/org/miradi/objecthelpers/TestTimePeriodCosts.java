@@ -243,13 +243,13 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertFalse("fred was not filtered out?", withWorkUnits.getResourceRefSet().contains(fred.getRef()));
 		assertFalse("funding source for fred was not removed?", withWorkUnits.getFundingSourceWorkUnitsRefSet().contains(fundingSourceRefForFred));
 		
-		withWorkUnits.filterFundingSourcesWorkUnits(new ORefSet(fundingSourceRefForJill));
+		withWorkUnits.filterWorkUnitRelated(new ORefSet(fundingSourceRefForJill));
 		assertEquals("jill should not have been filtered out?", 1, withWorkUnits.getResourceRefSet().size());
 		assertEquals("funding source related to jill was filtered out?", 1, withWorkUnits.getFundingSourceWorkUnitsRefSet().size());
 		
 		withWorkUnits.add(new TimePeriodCosts(jill.getRef(), fundingSourceRefForJill, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(12.0)));
 		withWorkUnits.add(new TimePeriodCosts(fred.getRef(), fundingSourceRefForFred, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(13.0)));
-		withWorkUnits.filterFundingSourcesWorkUnits(new ORefSet(fundingSourceRefForJill));
+		withWorkUnits.filterWorkUnitRelated(new ORefSet(fundingSourceRefForJill));
 		assertFalse("fred was not filtered out?", withWorkUnits.getResourceRefSet().contains(fred.getRef()));
 		assertFalse("funding source for fred was not removed?", withWorkUnits.getFundingSourceWorkUnitsRefSet().contains(fundingSourceRefForFred));
 		

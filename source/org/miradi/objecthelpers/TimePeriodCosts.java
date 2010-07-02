@@ -225,11 +225,6 @@ public class TimePeriodCosts
 		filterWorkUnitRelated(projectResourceRefsToRetain);
 	}
 
-	public void filterFundingSourcesWorkUnits(ORefSet fundingSourceRefsToRetain)
-	{
-		filterWorkUnitRelated(fundingSourceRefsToRetain);
-	}
-	
 	public void filterWorkUnitRelated(ORefSet refsToRetain)
 	{
 		filterDataPacks(workUnitPacks, refsToRetain);
