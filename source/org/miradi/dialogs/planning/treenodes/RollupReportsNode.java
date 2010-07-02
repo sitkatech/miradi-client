@@ -59,7 +59,7 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 			return;
 		
 		String levelObjectTypeAsString = getLevelObjectTypes().get(getCurrentLevel());
-		if (levelObjectTypeAsString.equals(RollupReportsObjectTypeQuestion.UNSPECIEFIED_CODE))
+		if (levelObjectTypeAsString.equals(RollupReportsObjectTypeQuestion.UNSPECIFIED_CODE))
 			return;
 		
 		int levelObjectType = Integer.parseInt(levelObjectTypeAsString);
