@@ -53,7 +53,7 @@ public class ProjectResourceWorkUnitsTableModel extends AbstractWorkUnitsTableMo
 	{
 		TimePeriodCosts timePeriodCosts = getProjectTotalTimePeriodCostFor(dateUnit);
 		if (ProjectResource.is(baseObject))
-			timePeriodCosts.filterProjectResources(new ORefSet(baseObject));
+			timePeriodCosts.filterWorkUnitRelated(new ORefSet(baseObject));
 			
 		if (FundingSource.is(baseObject))
 			timePeriodCosts.filterWorkUnitRelated(new ORefSet(baseObject));

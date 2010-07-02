@@ -178,7 +178,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		total.mergeAllWorkUnitDataPackInPlace(timePeriodCosts1);
 		total.mergeAllWorkUnitDataPackInPlace(timePeriodCosts2);
 		
-		total.filterProjectResources(new ORefSet());
+		total.filterWorkUnitRelated(new ORefSet());
 		
 		assertEquals("wrong total work units?", 2.0, total.getTotalWorkUnits().getValue());
 	}
@@ -194,7 +194,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		total.mergeAllWorkUnitDataPackInPlace(timePeriodCosts2);
 		total.mergeAllWorkUnitDataPackInPlace(timePeriodCosts3);
 		
-		total.filterProjectResources(new ORefSet());
+		total.filterWorkUnitRelated(new ORefSet());
 		
 		assertEquals("wrong total work units?", 16.0, total.getTotalWorkUnits().getValue());
 	}
@@ -202,11 +202,11 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	public void testProjectResourceFilter() throws Exception
 	{
 		TimePeriodCosts empty = new TimePeriodCosts();
-		empty.filterProjectResources(new ORefSet());
+		empty.filterWorkUnitRelated(new ORefSet());
 		assertEquals("resources map should still be empty after filtering nothing?", 0, empty.getResourceRefSet().size());
 
 		ProjectResource fred = createProjectResource();
-		empty.filterProjectResources(new ORefSet(fred));
+		empty.filterWorkUnitRelated(new ORefSet(fred));
 		assertEquals("resources map should still be empty after filter?", 0, empty.getResourceRefSet().size());
 		
 		ProjectResource jill = createProjectResource();
@@ -217,13 +217,13 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertEquals("wrong resources count?", 2, withJillAndFred.getResourceRefSet().size());
 		assertEquals("wrong total work units for fred and jill?", 25.0, withJillAndFred.getTotalWorkUnits().getValue());
 		
-		withJillAndFred.filterProjectResources(new ORefSet(jill));
+		withJillAndFred.filterWorkUnitRelated(new ORefSet(jill));
 		Set<ORef> afterFilteringOutFred = withJillAndFred.getResourceRefSet();
 		assertEquals("wrong resources count after filtering?", 1, afterFilteringOutFred.size());
 		assertTrue("jill was removed during filtering?", afterFilteringOutFred.contains(jill.getRef()));
 		assertEquals("wrong totals work Units after fred filtered out?", 12.0, withJillAndFred.getTotalWorkUnits().getValue());
 		
-		withJillAndFred.filterProjectResources(new ORefSet(fred));
+		withJillAndFred.filterWorkUnitRelated(new ORefSet(fred));
 		Set<ORef> afterFilteringOutJillAndFred = withJillAndFred.getResourceRefSet();
 		assertEquals("wrong resources count after filtering out fred?", 0, afterFilteringOutJillAndFred.size());
 		assertTrue("wrong totals work Units after fred filtered out?", withJillAndFred.getTotalWorkUnits().hasNoValue());
@@ -239,7 +239,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		withWorkUnits.add(new TimePeriodCosts(jill.getRef(), fundingSourceRefForJill, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(12.0)));
 		withWorkUnits.add(new TimePeriodCosts(fred.getRef(), fundingSourceRefForFred, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(13.0)));
 		
-		withWorkUnits.filterProjectResources(new ORefSet(jill));
+		withWorkUnits.filterWorkUnitRelated(new ORefSet(jill));
 		assertFalse("fred was not filtered out?", withWorkUnits.getResourceRefSet().contains(fred.getRef()));
 		assertFalse("funding source for fred was not removed?", withWorkUnits.getFundingSourceWorkUnitsRefSet().contains(fundingSourceRefForFred));
 		
@@ -273,7 +273,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		ORefSet resourceRefsToRetain = new ORefSet(jill);
 		resourceRefsToRetain.addRef(fred);
 		
-		timePeriodCosts.filterProjectResources(resourceRefsToRetain);
+		timePeriodCosts.filterWorkUnitRelated(resourceRefsToRetain);
 		Set<ORef> resourceRefsAfterFiltering = timePeriodCosts.getResourceRefSet();
 		assertTrue("fred was filtered out?", resourceRefsAfterFiltering.contains(fred.getRef()));	
 		assertTrue("jill was filtered out?", resourceRefsAfterFiltering.contains(jill.getRef()));
@@ -291,7 +291,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		timePeriodCosts.add(new TimePeriodCosts(fred.getRef(), INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(30.0)));
 		
 		ORefSet resourceRefsToRetain = new ORefSet(jill);
-		timePeriodCosts.filterProjectResources(resourceRefsToRetain);
+		timePeriodCosts.filterWorkUnitRelated(resourceRefsToRetain);
 		Set<ORef> resourceRefsAfterFiltering = timePeriodCosts.getResourceRefSet();
 		assertFalse("both freds were not removed?", resourceRefsAfterFiltering.contains(fred.getRef()));
 	}
