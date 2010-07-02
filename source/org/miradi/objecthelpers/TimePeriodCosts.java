@@ -156,17 +156,7 @@ public class TimePeriodCosts
 		return new OptionalDouble(projectResource.getCostPerUnit());
 	}
 	
-	public OptionalDouble getResourceWorkUnits(ORef resourceRef)
-	{
-		return getWorkUnitsForRef(resourceRef);
-	}
-
-	public OptionalDouble getFundingSourceWorkUnits(ORef fundingSourceRef)
-	{
-		return getWorkUnitsForRef(fundingSourceRef);
-	}
-	
-	private OptionalDouble getWorkUnitsForRef(ORef ref)
+	public OptionalDouble getWorkUnitsForRef(ORef ref)
 	{
 		return getRolledUpQuantityForRef(workUnitPacks, ref);
 	}
