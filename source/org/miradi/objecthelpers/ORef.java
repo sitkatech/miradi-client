@@ -193,7 +193,7 @@ public class ORef implements Comparable<ORef>
 		return toString().compareTo(otherRef.toString());
 	}
 	
-	public void ensureType(int type)
+	public void ensureExactType(int type)
 	{
 		if (getObjectType() != type)
 			throw new RuntimeException("wrong type: " + type + " for ref type: " + getObjectType());
@@ -202,7 +202,7 @@ public class ORef implements Comparable<ORef>
 	public void ensureValidType(int type)
 	{
 		if (isValid())
-			ensureType(type);
+			ensureExactType(type);
 	}
 	
 	public static ORef createInvalidWithType(int type)

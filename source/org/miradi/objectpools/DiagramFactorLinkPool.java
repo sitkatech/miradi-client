@@ -64,8 +64,8 @@ public class DiagramFactorLinkPool extends EAMNormalObjectPool
 	//TODO this method needs to be more efficient.  Use link referrers and do an intersection
 	public DiagramLink getDiagramLink(ORef fromDiagramFactorRef, ORef toDiagramFactorRef)
 	{
-		fromDiagramFactorRef.ensureType(DiagramFactor.getObjectType());
-		toDiagramFactorRef.ensureType(DiagramFactor.getObjectType());
+		fromDiagramFactorRef.ensureExactType(DiagramFactor.getObjectType());
+		toDiagramFactorRef.ensureExactType(DiagramFactor.getObjectType());
 		
 		ORefList diagramLinkRefs = getORefList();
 		for(int i = 0; i < diagramLinkRefs.size(); ++i)

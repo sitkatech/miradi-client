@@ -518,7 +518,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 	
 	public FactorCell getFactorCellByRef(ORef diagramFactorRef) throws Exception
 	{
-		diagramFactorRef.ensureType(DiagramFactor.getObjectType());
+		diagramFactorRef.ensureExactType(DiagramFactor.getObjectType());
 		FactorCell factorCell = rawGetFactorCellByRef(diagramFactorRef);
 		if(factorCell == null)
 			throw new Exception("FactorCell doesn't exist, ref: " + diagramFactorRef);
@@ -545,7 +545,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 	
 	public boolean containsDiagramFactor(ORef diagramFactorRef)
 	{
-		diagramFactorRef.ensureType(DiagramFactor.getObjectType());
+		diagramFactorRef.ensureExactType(DiagramFactor.getObjectType());
 		FactorCell node = rawGetFactorCellByRef(diagramFactorRef);
 
 		return node != null;
@@ -594,7 +594,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 	
 	public boolean doesDiagramLinkExist(ORef factorLinkRef)
 	{
-		factorLinkRef.ensureType(FactorLink.getObjectType());
+		factorLinkRef.ensureExactType(FactorLink.getObjectType());
 		DiagramLink diagramLink = cellInventory.getFactorLinkByRef(factorLinkRef);
 		return (diagramLink != null);
 	}
