@@ -20,14 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.dialogs.planning.propertiesPanel.AbstractExpenseTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.CategorizedExpenseAmountsTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.Project;
 import org.miradi.utils.OptionalDouble;
 
-public class RollupReportsExpenseTableModel extends AbstractExpenseTableModel
+public class RollupReportsExpenseTableModel extends CategorizedExpenseAmountsTableModel
 {
 	public RollupReportsExpenseTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
