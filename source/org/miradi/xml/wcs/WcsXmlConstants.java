@@ -28,7 +28,7 @@ public interface WcsXmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String OPTIONAL_ELEMENT = SINGLE_SPACE + "?" + SINGLE_SPACE;
 	
-	public static final String NAME_SPACE_VERSION = "39";
+	public static final String NAME_SPACE_VERSION = "40";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
@@ -120,6 +120,8 @@ public interface WcsXmlConstants
 	public static final String GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID = "GroupedDiagramLinkIds";
 	public static final String FUNDING_SOURCE_ID = "FundingSourceId";
 	public static final String ACCOUNTING_CODE_ID = "AccountingCodeId";
+	public static final String BUDGET_CATEGORY_ONE_ID = "BudgetCategoryOneId";
+	public static final String BUDGET_CATEGORY_TWO_ID = "BudgetCategoryTwoId";
 	public static final String PROGRESS_REPORT_IDS = "ProgressReportIds";
 	public static final String PROGRESS_PERCENT_IDS = "ProgressPercentIds";
 	public static final String EXPENSE_IDS = "ExpenseIds";
