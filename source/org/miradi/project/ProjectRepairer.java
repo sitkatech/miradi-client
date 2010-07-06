@@ -91,14 +91,14 @@ public class ProjectRepairer
 		int[] diagramTypes = new int[] {ConceptualModelDiagram.getObjectType(), ResultsChainDiagram.getObjectType()};
 		ORefSet orphanRefs = getActualOrphanRefs(possibleOrphanRefs, diagramTypes);
 		if (orphanRefs.hasData())
-			EAM.logError(orphanRefs.size() + " DiagramFactors are not in any diagram:" + orphanRefs.toRefList());
+			EAM.logError("NOTE: " + orphanRefs.size() + " DiagramFactors are not in any diagram:" + orphanRefs.toRefList());
 	}
 
 	private void warnOfFactorsWithoutReferringDiagramFactors()
 	{
 		ORefSet factorsWithoutDiagramFactors = getFactorsWithoutDiagramFactors();
 		if (factorsWithoutDiagramFactors.hasData())
-			EAM.logError("Factors are not covered by a diagramFactor:" + factorsWithoutDiagramFactors.toRefList());
+			EAM.logError("WARNING: Factors are not covered by a diagramFactor:" + factorsWithoutDiagramFactors.toRefList());
 	}
 
 	private ORefSet getFactorsWithoutDiagramFactors()
@@ -150,7 +150,7 @@ public class ProjectRepairer
 		{
 			BaseObject object = BaseObject.find(getProject(), refs.get(i));
 			if(object.getOwnerRef().isInvalid())
-				EAM.logWarning("Object without owner! " + object.getRef());
+				EAM.logWarning("NOTE: Object without owner! " + object.getRef());
 		}
 	}
 
@@ -226,7 +226,7 @@ public class ProjectRepairer
 				BaseObject owner = object.getOwner();
 				if(owner == null)
 				{
-					EAM.logWarning("Found orphan " + annotationType + ":" + annotationId);
+					EAM.logWarning("NOTE: Found orphan " + annotationType + ":" + annotationId);
 				}
 			}
 			catch(Exception e)
@@ -261,7 +261,7 @@ public class ProjectRepairer
 			if (hasOnlyTableSettingReferrers(referrers))
 				continue;
 			
-			String errorMessage = "Missing object: " + missingRef + " referred to by: " + referrers;
+			String errorMessage = "ERROR: Missing object: " + missingRef + " referred to by: " + referrers;
 			orderedErrorMesseges.add(errorMessage);
 		}
 		
@@ -300,7 +300,7 @@ public class ProjectRepairer
 			BaseObject possibleOrphan = BaseObject.find(getProject(), possibleOrphanRef);
 			ORefList custodianRefs = possibleOrphan.findObjectsThatReferToUs(custodianType);
 			if(custodianRefs.size() == 0)
-				EAM.logError(possibleOrphan.getTypeName() + " without custodian: " + possibleOrphanRef);
+				EAM.logError("NOTE: " + possibleOrphan.getTypeName() + " without custodian: " + possibleOrphanRef);
 		}
 	}
 	
@@ -342,13 +342,13 @@ public class ProjectRepairer
 			
 			if(ref.getObjectType() == ObjectType.FAKE)
 			{
-				EAM.logDebug("Ref with fake type but non-invalid id: " + ref.getObjectId());
+				EAM.logDebug("WARNING: Ref with fake type but non-invalid id: " + ref.getObjectId());
 				continue;
 			}
 			
 			if (ref.getObjectType() == ObjectType.FACTOR)
 			{
-				EAM.logDebug("Ref with factor type with id:" + ref.getObjectId());
+				EAM.logDebug("WARNING: Ref with factor type with id:" + ref.getObjectId());
 				continue;
 			}
 			
