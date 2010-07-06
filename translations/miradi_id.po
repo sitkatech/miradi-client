@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-06 09:55-0500\n"
+"POT-Creation-Date: 2010-07-06 10:38-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -106,7 +106,7 @@ msgstr "(Membuat, mengelola, dan menilai tekanan-tekanan untuk target ini) "
 msgid "(Definition Not Available)"
 msgstr "(Definisi Tidak Ada) "
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:113
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:114
 msgid "(Error)"
 msgstr "(Kesalahan) "
 
@@ -2358,7 +2358,7 @@ msgid "Can't link an item to itself"
 msgstr "Tidak bisa menautkan butir dengan butir itu sendiri "
 
 #: Miradi/source/org/miradi/utils/ConstantButtonNames.java:28
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:70
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:69
 #: Miradi/source/org/miradi/dialogs/base/AbstractSelectionDialog.java:90
 msgid "Cancel"
 msgstr "Batalkan "
@@ -3134,7 +3134,7 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:103
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:102
 msgid "Error"
 msgstr "Kesalahan "
 
@@ -3291,7 +3291,7 @@ msgstr "FOS"
 msgid "FOS Training Type|Other"
 msgstr "Lainnya"
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:123
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:122
 msgid "FTE Days Per Year:"
 msgstr "Sisipkan Pecahan FTE "
 
@@ -3528,11 +3528,11 @@ msgstr ""
 msgid "Found null underlying factor  .Diagram = %s"
 msgstr "Ditemukan nol faktor yang mendasari. Diagram = %s "
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:58
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:57
 msgid "Fraction of FTE..."
 msgstr "Pecahan FTE... "
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:130
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:129
 msgid "Fraction:"
 msgstr "Pecahan: "
 
@@ -3876,11 +3876,11 @@ msgstr "Tim Proyek Awal – Orang-orang yang mencetuskan dan memelopori proyek."
 msgid "Initializing..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:67
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:66
 msgid "Insert"
 msgstr "Sisipkan "
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:73
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:72
 msgid "Insert FTE Fraction"
 msgstr "Sisipkan Pecahan FTE "
 
@@ -4750,7 +4750,7 @@ msgstr ""
 msgid "Move To..."
 msgstr "Pindahkan Ke... "
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:216
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:215
 msgid "Must be a positive number"
 msgstr "Harus bilangan positif "
 
@@ -5698,7 +5698,7 @@ msgid "Share success & failures with practitioners around the world"
 msgstr ""
 "Berbagi keberhasilan & kegagalan dengan para praktisi di seluruh dunia "
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:602
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:603
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr "Memungkinkan Kalkulasi Karyawan Purnawaktu Untuk "
 
@@ -7091,7 +7091,7 @@ msgstr ""
 msgid "This method is not responsible for creating task nodes."
 msgstr "Metode ini tidak bertanggung jawab untuk membuat simpul tugas. "
 
-#: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
+#: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:88
 msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr ""

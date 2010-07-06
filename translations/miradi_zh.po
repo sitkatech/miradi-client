@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-06 09:55-0500\n"
+"POT-Creation-Date: 2010-07-06 10:38-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -88,7 +88,7 @@ msgstr "（对本对象进行创建、管理、以及压力分级） \t\t"
 msgid "(Definition Not Available)"
 msgstr "（无可用定义） \t\t"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:113
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:114
 msgid "(Error)"
 msgstr "（错误） \t\t"
 
@@ -2251,7 +2251,7 @@ msgid "Can't link an item to itself"
 msgstr "不能将条目链接到其本身 \t\t"
 
 #: Miradi/source/org/miradi/utils/ConstantButtonNames.java:28
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:70
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:69
 #: Miradi/source/org/miradi/dialogs/base/AbstractSelectionDialog.java:90
 msgid "Cancel"
 msgstr "取消 \t\t"
@@ -3006,7 +3006,7 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:103
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:102
 msgid "Error"
 msgstr ""
 
@@ -3162,7 +3162,7 @@ msgstr "FOS "
 msgid "FOS Training Type|Other"
 msgstr "其它"
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:123
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:122
 msgid "FTE Days Per Year:"
 msgstr ""
 
@@ -3385,11 +3385,11 @@ msgstr "从来自或引入已打包因素的图表链接中发现无效图表 = 
 msgid "Found null underlying factor  .Diagram = %s"
 msgstr "发现无效的潜在因素。图表 = %s  \t\t"
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:58
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:57
 msgid "Fraction of FTE..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:130
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:129
 msgid "Fraction:"
 msgstr ""
 
@@ -3724,11 +3724,11 @@ msgstr "初始项目团队——指构思并启动项目的人们。"
 msgid "Initializing..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:67
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:66
 msgid "Insert"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:73
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:72
 msgid "Insert FTE Fraction"
 msgstr ""
 
@@ -4573,7 +4573,7 @@ msgstr ""
 msgid "Move To..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:216
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:215
 msgid "Must be a positive number"
 msgstr ""
 
@@ -5481,7 +5481,7 @@ msgstr "正式地或者非正式地共享反馈信息 \t\t"
 msgid "Share success & failures with practitioners around the world"
 msgstr "与全世界的实践者共享成功与失败 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:602
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:603
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr ""
 
@@ -6838,7 +6838,7 @@ msgstr "本条目是共享的，因此将会从多个地方删除。 \t\t"
 msgid "This method is not responsible for creating task nodes."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
+#: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:88
 msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr ""
