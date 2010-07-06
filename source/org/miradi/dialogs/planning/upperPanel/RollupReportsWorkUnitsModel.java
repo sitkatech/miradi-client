@@ -22,11 +22,8 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.propertiesPanel.CategorizedWorkUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
-import org.miradi.utils.OptionalDouble;
 
 public class RollupReportsWorkUnitsModel extends CategorizedWorkUnitsTableModel
 {
@@ -35,18 +32,6 @@ public class RollupReportsWorkUnitsModel extends CategorizedWorkUnitsTableModel
 		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
 	}
 	
-	@Override
-	protected OptionalDouble getOptionalDoubleAt(int row, int column)
-	{
-		return calculateRollupValue(row, column);
-	}
-
-	@Override
-	protected void retainDataRelatedToAllOf(TimePeriodCosts timePeriodCosts, ORefSet objectHierarchy)
-	{
-		timePeriodCosts.retainWorkUnitDataRelatedToAllOf(objectHierarchy);
-	}
-
 	@Override
 	public String getColumnGroupCode(int modelColumn)
 	{
