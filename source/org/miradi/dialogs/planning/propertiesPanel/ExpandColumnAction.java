@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import javax.swing.JTable;
 
 import org.miradi.dialogs.planning.AbstractExpandColumnAction;
+import org.miradi.dialogs.planning.AssignmentDateUnitsTableModel;
 
 public class ExpandColumnAction extends AbstractExpandColumnAction
 {

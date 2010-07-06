@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.dialogs.planning.AbstractExpandColumnAction;
+import org.miradi.dialogs.planning.AssignmentDateUnitsTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
 
 public class MultiTableExpandColumnAction extends AbstractExpandColumnAction

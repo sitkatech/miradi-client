@@ -38,7 +38,6 @@ import org.miradi.dialogs.base.DialogWithButtonBar;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeMultiTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
