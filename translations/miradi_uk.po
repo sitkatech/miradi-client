@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-06 09:55-0500\n"
+"POT-Creation-Date: 2010-07-06 10:38-0500\n"
 "PO-Revision-Date: 2010-05-12 13:30-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -86,7 +86,7 @@ msgstr ""
 msgid "(Definition Not Available)"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:113
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:114
 msgid "(Error)"
 msgstr ""
 
@@ -2194,7 +2194,7 @@ msgid "Can't link an item to itself"
 msgstr ""
 
 #: Miradi/source/org/miradi/utils/ConstantButtonNames.java:28
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:70
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:69
 #: Miradi/source/org/miradi/dialogs/base/AbstractSelectionDialog.java:90
 msgid "Cancel"
 msgstr ""
@@ -2926,7 +2926,7 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:103
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:102
 msgid "Error"
 msgstr ""
 
@@ -3078,7 +3078,7 @@ msgstr ""
 msgid "FOS Training Type|Other"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:123
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:122
 msgid "FTE Days Per Year:"
 msgstr ""
 
@@ -3298,11 +3298,11 @@ msgstr ""
 msgid "Found null underlying factor  .Diagram = %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:58
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:57
 msgid "Fraction of FTE..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:130
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:129
 msgid "Fraction:"
 msgstr ""
 
@@ -3632,11 +3632,11 @@ msgstr ""
 msgid "Initializing..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:67
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:66
 msgid "Insert"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:73
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:72
 msgid "Insert FTE Fraction"
 msgstr ""
 
@@ -4472,7 +4472,7 @@ msgstr ""
 msgid "Move To..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:216
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:215
 msgid "Must be a positive number"
 msgstr ""
 
@@ -5358,7 +5358,7 @@ msgstr ""
 msgid "Share success & failures with practitioners around the world"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:602
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:603
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr ""
 
@@ -6682,7 +6682,7 @@ msgstr ""
 msgid "This method is not responsible for creating task nodes."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
+#: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:88
 msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr ""
