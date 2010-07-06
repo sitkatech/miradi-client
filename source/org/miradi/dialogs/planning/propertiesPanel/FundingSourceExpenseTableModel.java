@@ -29,7 +29,7 @@ import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
 import org.miradi.utils.OptionalDouble;
 
-public class FundingSourceExpenseTableModel extends AbstractExpenseTableModel
+public class FundingSourceExpenseTableModel extends CategorizedExpenseAmountsTableModel
 {
 	public FundingSourceExpenseTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
