@@ -758,7 +758,10 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	abstract protected boolean isAssignmentForModel(Assignment assignment);
 
-    abstract protected boolean isEditableModel();
+    protected boolean isEditableModel()
+    {
+    	return false;
+    }
     
     abstract protected String getAssignmentsTag();
     

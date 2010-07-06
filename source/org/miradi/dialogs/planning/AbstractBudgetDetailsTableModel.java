@@ -61,12 +61,6 @@ abstract public class AbstractBudgetDetailsTableModel extends AssignmentDateUnit
 	}
 	
 	@Override
-	protected boolean isEditableModel()
-	{
-		return false;
-	}
-
-	@Override
 	protected boolean isAssignmentForModel(Assignment assignment)
 	{
 		return false;
