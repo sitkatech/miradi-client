@@ -69,6 +69,7 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 		Vector<String> columnGroups = new Vector();
 		columnGroups.add(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
 		columnGroups.add(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
+		columnGroups.add(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE);
 		
 		return columnGroups;
 	}
@@ -79,6 +80,7 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 		columnGroups.add(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
 		columnGroups.add(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE);
 		columnGroups.add(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE);
+		columnGroups.add(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE);
 		
 		return columnGroups;
 	}
@@ -90,6 +92,7 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 		columnGroups.add(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE);
 		columnGroups.add(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE);
 		columnGroups.add(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE);
+		columnGroups.add(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE);
 		
 		return columnGroups;
 	}
