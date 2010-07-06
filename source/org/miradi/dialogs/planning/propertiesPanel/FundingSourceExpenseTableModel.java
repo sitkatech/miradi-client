@@ -47,12 +47,6 @@ public class FundingSourceExpenseTableModel extends AbstractExpenseTableModel
 	}
 	
 	@Override
-	protected boolean isEditableModel()
-	{
-		return false;
-	}
-
-	@Override
 	public String getUniqueTableModelIdentifier()
 	{
 		return getTreeModelIdentifierAsTag() + "." + UNIQUE_TABLE_MODEL_IDENTIFIER;

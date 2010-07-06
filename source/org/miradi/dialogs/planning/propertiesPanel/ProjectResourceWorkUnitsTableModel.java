@@ -48,12 +48,6 @@ public class ProjectResourceWorkUnitsTableModel extends AbstractWorkUnitsTableMo
 	}
 
 	@Override
-	protected boolean isEditableModel()
-	{
-		return false;
-	}
-	
-	@Override
 	public String getColumnGroupCode(int modelColumn)
 	{
 		return CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE;
