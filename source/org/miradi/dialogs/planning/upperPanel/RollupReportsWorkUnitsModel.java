@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.dialogs.planning.propertiesPanel.AbstractWorkUnitsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.CategorizedWorkUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCosts;
@@ -28,7 +28,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.OptionalDouble;
 
-public class RollupReportsWorkUnitsModel extends AbstractWorkUnitsTableModel
+public class RollupReportsWorkUnitsModel extends CategorizedWorkUnitsTableModel
 {
 	public RollupReportsWorkUnitsModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse,	String treeModelIdentifierAsTagToUse) throws Exception
 	{

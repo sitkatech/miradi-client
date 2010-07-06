@@ -30,7 +30,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.OptionalDouble;
 
-public class ProjectResourceWorkUnitsTableModel extends AbstractWorkUnitsTableModel
+public class ProjectResourceWorkUnitsTableModel extends CategorizedWorkUnitsTableModel
 {
 	public ProjectResourceWorkUnitsTableModel(Project projectToUse,	RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
