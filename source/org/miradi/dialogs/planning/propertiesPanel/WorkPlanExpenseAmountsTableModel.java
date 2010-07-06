@@ -22,9 +22,9 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.project.Project;
 
-public class ExpenseAmountsTableModel extends AbstractExpenseTableModel
+public class WorkPlanExpenseAmountsTableModel extends AbstractExpenseTableModel
 {
-	public ExpenseAmountsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
+	public WorkPlanExpenseAmountsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
 	}

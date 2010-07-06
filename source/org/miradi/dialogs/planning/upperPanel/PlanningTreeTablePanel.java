@@ -41,7 +41,7 @@ import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAb
 import org.miradi.dialogs.planning.propertiesPanel.AbstractWorkUnitsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.AccountingCodeExpenseTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.BudgetDetailsTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.ExpenseAmountsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.WorkPlanExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.FundingSourceExpenseTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanWorkUnitsTableModel;
@@ -118,7 +118,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		workUnitsTableModel = new WorkPlanWorkUnitsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		resourceWorkUnitsTableModel = new ProjectResourceWorkUnitsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		resourceBudgetDetailsTableModel = new ProjectResourceBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
-		expenseAmountsTableModel = new ExpenseAmountsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		expenseAmountsTableModel = new WorkPlanExpenseAmountsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		budgetDetailsTableModel = new BudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		fundingSourceBudgetDetailsTableModel = new FundingSourceBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		accoundingCodeBudgetDetailsTableModel = new AccountingCodeBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
@@ -455,7 +455,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	private PlanningViewMeasurementTableModel measurementModel;
 	private PlanningViewFutureStatusTableModel futureStatusModel;
 	protected AbstractWorkUnitsTableModel workUnitsTableModel;
-	private ExpenseAmountsTableModel expenseAmountsTableModel;
+	private WorkPlanExpenseAmountsTableModel expenseAmountsTableModel;
 	protected BudgetDetailsTableModel budgetDetailsTableModel;
 	private FundingSourceBudgetDetailsTableModel fundingSourceBudgetDetailsTableModel;
 	private AccountingCodeBudgetDetailsTableModel accoundingCodeBudgetDetailsTableModel;
