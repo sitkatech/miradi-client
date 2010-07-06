@@ -88,6 +88,26 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	}
 	
 	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		try
+		{
+			if(needsFullRebuild)
+				rebuildEntireTreeAndTable();
+		}
+		catch(Exception e)
+		{
+			EAM.panic(e);
+		}
+	}
+
+	protected boolean isActive()
+	{
+		return getPicker().isActive();
+	}
+
+	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		try
@@ -130,6 +150,14 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	
 	protected void rebuildEntireTreeAndTable() throws Exception
 	{
+		if(!isActive())
+		{
+			needsFullRebuild = true;
+			return;
+		}
+		
+		needsFullRebuild = false;
+		
 		disableSectionSwitchDuringFullRebuild();
 		try
 		{
@@ -363,5 +391,6 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	abstract protected void rebuildEntireTreeTable() throws Exception;
 	
 	private int disableSideTabSwitchingCount;
+	private boolean needsFullRebuild;
 	protected ScrollPaneWithHideableScrollBar mainTableScrollPane;
 }
