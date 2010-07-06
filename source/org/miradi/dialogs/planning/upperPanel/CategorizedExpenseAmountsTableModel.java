@@ -18,17 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.planning.propertiesPanel;
+package org.miradi.dialogs.planning.upperPanel;
 
+import org.miradi.dialogs.planning.propertiesPanel.AbstractExpenseTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.Project;
 import org.miradi.utils.OptionalDouble;
 
-abstract public class CategorizedWorkUnitsTableModel extends AbstractWorkUnitsTableModel
+abstract public class CategorizedExpenseAmountsTableModel extends
+		AbstractExpenseTableModel
 {
-	public CategorizedWorkUnitsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
+	public CategorizedExpenseAmountsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
 	}
@@ -42,6 +44,7 @@ abstract public class CategorizedWorkUnitsTableModel extends AbstractWorkUnitsTa
 	@Override
 	protected void retainDataRelatedToAllOf(TimePeriodCosts timePeriodCosts, ORefSet objectHierarchy)
 	{
-		timePeriodCosts.retainWorkUnitDataRelatedToAllOf(objectHierarchy);
+		timePeriodCosts.retainExpenseDataRelatedToAllOf(objectHierarchy);
 	}
+
 }
