@@ -24,9 +24,7 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
@@ -46,12 +44,6 @@ public class ProjectResourceWorkUnitsTableModel extends AbstractWorkUnitsTableMo
 		if (ProjectResource.is(baseObject))
 			timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(new ORefSet(baseObject));
 			
-		if (FundingSource.is(baseObject))
-			timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(new ORefSet(baseObject));
-		
-		if (AccountingCode.is(baseObject))
-			timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(new ORefSet(baseObject));
-		
 		return calculateValue(timePeriodCosts);
 	}
 
