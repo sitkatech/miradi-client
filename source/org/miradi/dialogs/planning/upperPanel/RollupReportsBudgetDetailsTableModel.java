@@ -38,7 +38,7 @@ public class RollupReportsBudgetDetailsTableModel extends AbstractBudgetDetailsT
 	@Override
 	protected OptionalDouble getOptionalDoubleAt(int row, int column)
 	{
-		return calculateRollupValue(row, column);
+		return calculateRollupReportValue(row, column);
 	}
 	
 	@Override
