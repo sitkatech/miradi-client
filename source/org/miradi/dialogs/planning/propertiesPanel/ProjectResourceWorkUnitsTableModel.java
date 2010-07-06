@@ -43,12 +43,6 @@ public class ProjectResourceWorkUnitsTableModel extends AbstractWorkUnitsTableMo
 	}
 	
 	@Override
-	public boolean isCellEditable(int row, int column)
-	{
-		return false;
-	}
-	
-	@Override
 	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = getProjectTotalTimePeriodCostFor(dateUnit);
