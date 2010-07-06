@@ -21,14 +21,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
-import java.text.ParseException;
 
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.planning.AssignmentDateUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
@@ -56,12 +53,6 @@ abstract public class AbstractExpenseTableModel extends AssignmentDateUnitsTable
 	protected boolean isAssignmentForModel(Assignment assignment)
 	{
 		return ExpenseAssignment.is(assignment);
-	}
-	
-	@Override
-	protected CommandSetObjectData createAppendAssignmentCommand(BaseObject baseObjectForRowColumn, ORef assignmentRef) throws ParseException
-	{
-		return CommandSetObjectData.createAppendORefCommand(baseObjectForRowColumn, getAssignmentsTag(), assignmentRef);
 	}
 	
 	@Override
