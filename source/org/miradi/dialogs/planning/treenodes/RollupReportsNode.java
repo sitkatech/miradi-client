@@ -25,6 +25,7 @@ import java.util.Vector;
 
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.RollupReportsObjectTypeQuestion;
 import org.miradi.utils.CodeList;
@@ -47,6 +48,15 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 	public BaseObject getObject()
 	{
 		return nodeObject;
+	}
+	
+	@Override
+	public String toRawString()
+	{
+		if (ProjectMetadata.is(getObjectReference()))
+			return BaseObjectTreeRootNodeWithUnspecifiedNode.getProjectTotalsName();
+		
+		return super.toRawString();
 	}
 	
 	@Override
