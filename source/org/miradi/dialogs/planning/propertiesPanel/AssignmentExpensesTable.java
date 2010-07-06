@@ -26,6 +26,7 @@ import javax.swing.Action;
 
 import org.miradi.actions.ActionCreateExpense;
 import org.miradi.actions.ActionDeleteExpense;
+import org.miradi.dialogs.planning.AssignmentDateUnitsTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 

@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
 
+import org.miradi.dialogs.planning.AssignmentDateUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.DateUnit;

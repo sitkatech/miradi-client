@@ -22,7 +22,7 @@ package org.miradi.dialogs.tablerenderers;
 
 import java.awt.Font;
 
-import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTableModel;
+import org.miradi.dialogs.planning.AssignmentDateUnitsTableModel;
 import org.miradi.objecthelpers.DateUnit;
 
 public class NumericTableCellRendererWithStrikeThroughFactory extends NumericTableCellRendererFactory

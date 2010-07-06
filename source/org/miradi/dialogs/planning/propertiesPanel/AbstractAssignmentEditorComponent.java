@@ -27,6 +27,7 @@ import org.martus.swing.UiScrollPane;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.DataInputPanel;
 import org.miradi.dialogs.base.MultiTablePanel;
+import org.miradi.dialogs.planning.AssignmentDateUnitsTableModel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;

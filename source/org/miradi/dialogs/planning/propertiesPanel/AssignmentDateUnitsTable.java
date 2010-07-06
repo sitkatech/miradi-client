@@ -31,6 +31,7 @@ import javax.swing.table.TableColumn;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.dialogs.planning.AssignmentDateUnitsTableModel;
 import org.miradi.dialogs.planning.RightClickActionProvider;
 import org.miradi.dialogs.planning.TableHeaderWithExpandCollapseIcons;
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;

@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.planning;
 
-import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTableModel;
+import org.miradi.dialogs.planning.AssignmentDateUnitsTableModel;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.DateUnit;
 

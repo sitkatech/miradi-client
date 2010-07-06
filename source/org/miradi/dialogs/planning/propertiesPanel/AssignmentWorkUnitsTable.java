@@ -6,6 +6,7 @@ import javax.swing.Action;
 
 import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionRemoveAssignment;
+import org.miradi.dialogs.planning.AssignmentDateUnitsTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 
