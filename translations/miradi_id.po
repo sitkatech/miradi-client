@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-06 09:23-0500\n"
+"POT-Creation-Date: 2010-07-06 09:44-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -5252,11 +5252,6 @@ msgstr "Editor Filter Sumber Daya Proyek "
 msgid "Project Resource Filter Is On"
 msgstr "Filter Sumber Daya Proyek Adalah Aktif "
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceWorkUnitsTableModel.java:64
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/RollupReportsWorkUnitsModel.java:57
-msgid "Project Resource Work Units Table is not editbale."
-msgstr "Tabel Unit Kerja Sumber Daya Proyek tidak dapat diedit. "
-
 #: Miradi/source/org/miradi/views/planning/ProjectResourceManagementPanel.java:51
 msgid "Project Resources"
 msgstr "Sumber Daya Proyek "
@@ -7096,7 +7091,7 @@ msgstr ""
 msgid "This method is not responsible for creating task nodes."
 msgstr "Metode ini tidak bertanggung jawab untuk membuat simpul tugas. "
 
-#: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:104
+#: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:95
 msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr ""
@@ -31528,6 +31523,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Project Resource Work Units Table is not editbale."
+#~ msgstr "Tabel Unit Kerja Sumber Daya Proyek tidak dapat diedit. "
 
 #~ msgid "Was expecting a %s, instead got:\n"
 #~ msgstr ""

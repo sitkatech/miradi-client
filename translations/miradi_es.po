@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-06 09:23-0500\n"
+"POT-Creation-Date: 2010-07-06 09:44-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -5287,12 +5287,6 @@ msgstr "Editor del filtro de recursos del proyecto"
 msgid "Project Resource Filter Is On"
 msgstr "El filtro de recursos del proyecto está activado."
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceWorkUnitsTableModel.java:64
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/RollupReportsWorkUnitsModel.java:57
-msgid "Project Resource Work Units Table is not editbale."
-msgstr ""
-"La Tabla de unidades de trabajo de recursos del proyecto no se puede editar. "
-
 #: Miradi/source/org/miradi/views/planning/ProjectResourceManagementPanel.java:51
 msgid "Project Resources"
 msgstr "Recursos del proyecto"
@@ -7138,7 +7132,7 @@ msgstr ""
 msgid "This method is not responsible for creating task nodes."
 msgstr "Este método no es responsable de la creación de nodos de tarea. "
 
-#: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:104
+#: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:95
 msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr ""
@@ -31786,6 +31780,11 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Project Resource Work Units Table is not editbale."
+#~ msgstr ""
+#~ "La Tabla de unidades de trabajo de recursos del proyecto no se puede "
+#~ "editar. "
 
 #~ msgid "Was expecting a %s, instead got:\n"
 #~ msgstr "Se esperaba %s, pero se obtuvo:\n"
