@@ -24,9 +24,9 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 
-public class BudgetDetailsTableModel extends AbstractBudgetDetailsTableModel
+public class WorkPlanBudgetDetailsTableModel extends AbstractBudgetDetailsTableModel
 {
-	public BudgetDetailsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
+	public WorkPlanBudgetDetailsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
 	}
