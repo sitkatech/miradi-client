@@ -44,7 +44,7 @@ import org.miradi.dialogs.planning.propertiesPanel.BudgetDetailsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.ExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.FundingSourceExpenseTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
-import org.miradi.dialogs.planning.propertiesPanel.PlanningWorkUnitsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.WorkPlanWorkUnitsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceBudgetDetailsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceWorkUnitsTableModel;
 import org.miradi.dialogs.treetables.AbstractTreeTablePanel;
@@ -115,7 +115,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		multiModel = new PlanningTreeMultiTableModel(getTree().getUniqueTableIdentifier());
 		measurementModel = new PlanningViewMeasurementTableModel(getProject(), getTree());
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), getTree());
-		workUnitsTableModel = new PlanningWorkUnitsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		workUnitsTableModel = new WorkPlanWorkUnitsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		resourceWorkUnitsTableModel = new ProjectResourceWorkUnitsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		resourceBudgetDetailsTableModel = new ProjectResourceBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		expenseAmountsTableModel = new ExpenseAmountsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
