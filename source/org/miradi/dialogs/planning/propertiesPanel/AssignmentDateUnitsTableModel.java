@@ -482,7 +482,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return dateUnits;
 	}
 	
-	protected OptionalDouble calculateRollupReportValue(int row, int column)
+	protected OptionalDouble calculateRollupValue(int row, int column)
 	{		
 		try	
 		{
