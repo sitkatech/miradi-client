@@ -19,7 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
+import java.text.ParseException;
+
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
 public class WorkPlanExpenseAmountsTableModel extends AbstractExpenseTableModel
@@ -39,6 +44,12 @@ public class WorkPlanExpenseAmountsTableModel extends AbstractExpenseTableModel
 	protected boolean isEditableModel()
 	{
 		return true;
+	}
+	
+	@Override
+	protected CommandSetObjectData createAppendAssignmentCommand(BaseObject baseObjectForRowColumn, ORef assignmentRef) throws ParseException
+	{
+		return CommandSetObjectData.createAppendORefCommand(baseObjectForRowColumn, getAssignmentsTag(), assignmentRef);
 	}
 	
 	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "ExpenseAmountsTableModel";
