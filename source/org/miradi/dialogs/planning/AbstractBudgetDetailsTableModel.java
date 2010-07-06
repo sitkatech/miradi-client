@@ -22,16 +22,13 @@ package org.miradi.dialogs.planning;
 
 import java.awt.Color;
 
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.Assignment;
-import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.CurrencyFormattedChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
@@ -87,12 +84,6 @@ abstract public class AbstractBudgetDetailsTableModel extends AssignmentDateUnit
 		throw new RuntimeException(getErrorMessage());
 	}
 	
-	@Override
-	protected CommandSetObjectData createAppendAssignmentCommand(BaseObject baseObjectForRowColumn, ORef assignmentRef)	throws Exception
-	{
-		throw new RuntimeException(getErrorMessage());
-	}
-
 	@Override
 	protected TaglessChoiceItem createFormattedChoiceItem(OptionalDouble optionalDouble)
 	{

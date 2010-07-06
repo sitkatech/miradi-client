@@ -20,14 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractWorkUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.OptionalDouble;
@@ -51,12 +47,6 @@ public class RollupReportsWorkUnitsModel extends AbstractWorkUnitsTableModel
 		timePeriodCosts.retainWorkUnitDataRelatedToAllOf(objectHierarchy);
 	}
 
-	@Override
-	protected CommandSetObjectData createAppendAssignmentCommand(BaseObject baseObjectForRowColumn, ORef assignmentRef)	throws Exception
-	{
-		throw new RuntimeException(EAM.text("Project Resource Work Units Table is not editbale."));
-	}
-	
 	@Override
 	public String getColumnGroupCode(int modelColumn)
 	{

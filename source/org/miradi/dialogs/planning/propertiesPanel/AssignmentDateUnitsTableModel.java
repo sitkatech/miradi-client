@@ -764,7 +764,10 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
     
     abstract protected int getAssignmentType();
     
-    abstract protected CommandSetObjectData createAppendAssignmentCommand(BaseObject baseObjectForRowColumn, ORef assignmentRef) throws Exception;
+    protected CommandSetObjectData createAppendAssignmentCommand(BaseObject baseObjectForRowColumn, ORef assignmentRef) throws Exception
+    {
+		throw new RuntimeException("Cannot create assignment in this table.");
+    }
 	
 	private Vector<DateUnit> dateUnits;
 	private RowColumnBaseObjectProvider provider;
