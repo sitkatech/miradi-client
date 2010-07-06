@@ -20,7 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objecthelpers;
 
+import org.miradi.ids.BaseId;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objects.FundingSource;
 import org.miradi.utils.OptionalDouble;
 
 public class TestCategorizedQuantity extends TestCaseWithProject
@@ -92,6 +94,15 @@ public class TestCategorizedQuantity extends TestCaseWithProject
 		ORef resourceRefNotContained = getProject().createProjectResource().getRef();
 		refs.add(resourceRefNotContained);
 		assertFalse("should not contain all?", categorizedQuantity.containsAll(refs));
+		assertTrue("should contain empty list?", categorizedQuantity.containsAll(new ORefSet()));
+		
+		ORefSet listWithInvalidRef = new ORefSet(ORef.INVALID);
+		assertFalse("should not contain list with invalid", categorizedQuantity.containsAll(listWithInvalidRef));
+
+		ORefSet listWithSomeMatchingRefs = new ORefSet();
+		listWithSomeMatchingRefs.add(resourceRef);
+		listWithSomeMatchingRefs.add(new ORef(FundingSource.getObjectType(), new BaseId(9999)));
+		assertFalse("should not contain list with non matching refs", categorizedQuantity.containsAll(listWithSomeMatchingRefs));
 	}
 
 	private void addAndVerifyTrueContainsAll(CategorizedQuantity categorizedQuantity, ORefSet refs, ORef resourceRef)
