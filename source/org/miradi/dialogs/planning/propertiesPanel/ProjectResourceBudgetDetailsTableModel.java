@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.dialogs.planning.AbstractBudgetDetailsTableModel;
+import org.miradi.dialogs.planning.CategorizedBudgetDetailsTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORefSet;
@@ -31,7 +31,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.OptionalDouble;
 
-public class ProjectResourceBudgetDetailsTableModel extends AbstractBudgetDetailsTableModel
+public class ProjectResourceBudgetDetailsTableModel extends CategorizedBudgetDetailsTableModel
 {
 	public ProjectResourceBudgetDetailsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
