@@ -21,30 +21,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
-import org.miradi.utils.OptionalDouble;
 
 public class RollupReportsBudgetDetailsTableModel extends CategorizedBudgetDetailsTableModel
 {
 	public RollupReportsBudgetDetailsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
-	}
-	
-	@Override
-	protected OptionalDouble getOptionalDoubleAt(int row, int column)
-	{
-		return calculateRollupValue(row, column);
-	}
-	
-	@Override
-	protected void retainDataRelatedToAllOf(TimePeriodCosts timePeriodCosts, ORefSet objectHierarchy)
-	{
-		timePeriodCosts.retainWorkUnitDataRelatedToAllOf(objectHierarchy);
-		timePeriodCosts.retainExpenseDataRelatedToAllOf(objectHierarchy);
 	}
 	
 	@Override
