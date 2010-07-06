@@ -21,14 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objects.AccountingCode;
-import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
-import org.miradi.utils.OptionalDouble;
 
 public class AccountingCodeBudgetDetailsTableModel extends CategorizedBudgetDetailsTableModel
 {
@@ -41,20 +35,6 @@ public class AccountingCodeBudgetDetailsTableModel extends CategorizedBudgetDeta
 	public String getColumnGroupCode(int modelColumn)
 	{
 		return CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE;
-	}
-	
-	@Override
-	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
-	{
-		TimePeriodCosts timePeriodCosts = getProjectTotalTimePeriodCostFor(dateUnit);
-		if (AccountingCode.is(baseObject))
-		{
-			ORefSet accountingCodeRefsToRetain = new ORefSet(baseObject);
-			timePeriodCosts.retainExpenseDataRelatedToAnyOf(accountingCodeRefsToRetain);
-			timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(accountingCodeRefsToRetain);
-		}
-		
-		return calculateValue(timePeriodCosts);
 	}
 	
 	@Override

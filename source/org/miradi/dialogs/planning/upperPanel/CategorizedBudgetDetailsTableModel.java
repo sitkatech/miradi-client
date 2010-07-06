@@ -22,7 +22,10 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.AbstractBudgetDetailsTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.Project;
+import org.miradi.utils.OptionalDouble;
 
 abstract public class CategorizedBudgetDetailsTableModel extends
 		AbstractBudgetDetailsTableModel
@@ -30,6 +33,19 @@ abstract public class CategorizedBudgetDetailsTableModel extends
 	public CategorizedBudgetDetailsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
+	}
+
+	@Override
+	protected OptionalDouble getOptionalDoubleAt(int row, int column)
+	{
+		return calculateRollupValue(row, column);
+	}
+
+	@Override
+	protected void retainDataRelatedToAllOf(TimePeriodCosts timePeriodCosts, ORefSet objectHierarchy)
+	{
+		timePeriodCosts.retainWorkUnitDataRelatedToAllOf(objectHierarchy);
+		timePeriodCosts.retainExpenseDataRelatedToAllOf(objectHierarchy);
 	}
 
 }
