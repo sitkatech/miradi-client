@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2010, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -20,17 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.xml.wcs.WcsXmlConstants;
+import java.io.IOException;
 
-abstract public class AbstractAssignmentObjectSchemaElement extends BaseObjectSchemaElementWithLabel
+public class BudgetCategoryTwoIdSchemaElement extends FieldSchemaElement
 {
-	public AbstractAssignmentObjectSchemaElement(String objectTypeNameToUse)
+	protected BudgetCategoryTwoIdSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
 	{
-		super(objectTypeNameToUse);
+		super(objectTypeNameToUse, fieldNameToUse);
+	}
+
+	@Override
+	public void output(SchemaWriter writer) throws IOException
+	{
+		super.output(writer);
 		
-		createFundingSourceIdField(WcsXmlConstants.FUNDING_SOURCE_ID);
-		createAccountingCodeIdField(WcsXmlConstants.ACCOUNTING_CODE_ID);
-		createBudgetCategoryOneIdField(WcsXmlConstants.BUDGET_CATEGORY_ONE_ID);
-		createBudgetCategoryTwoIdField(WcsXmlConstants.BUDGET_CATEGORY_TWO_ID);
+		writer.print("{ BudgetCategoryTwoId.element }?");
 	}
 }

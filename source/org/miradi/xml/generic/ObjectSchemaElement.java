@@ -98,6 +98,18 @@ class ObjectSchemaElement extends SchemaElement
 		FieldSchemaElement field = new AccountingCodeIdSchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
 	}
+	
+	public void createBudgetCategoryOneIdField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new BudgetCategoryOneIdSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
+	
+	public void createBudgetCategoryTwoIdField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new BudgetCategoryTwoIdSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
 
 	protected void createWrappedByDiagramFactorIdField(String fieldNameToUse)
 	{

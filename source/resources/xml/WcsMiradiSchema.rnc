@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/39'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/40'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -589,6 +589,8 @@ ExpenseAssignment.element = element miradi:ExpenseAssignment
   element miradi:ExpenseAssignmentName { text }? &
   element miradi:ExpenseAssignmentFundingSourceId{ FundingSourceId.element }? &
   element miradi:ExpenseAssignmentAccountingCodeId{ AccountingCodeId.element }? &
+  element miradi:ExpenseAssignmentBudgetCategoryOneId{ BudgetCategoryOneId.element }? &
+  element miradi:ExpenseAssignmentBudgetCategoryTwoId{ BudgetCategoryTwoId.element }? &
   element miradi:ExpenseAssignmentDetails{ DateUnitExpense.element* }?
 }
 
@@ -599,6 +601,8 @@ ResourceAssignment.element = element miradi:ResourceAssignment
   element miradi:ResourceAssignmentName { text }? &
   element miradi:ResourceAssignmentFundingSourceId{ FundingSourceId.element }? &
   element miradi:ResourceAssignmentAccountingCodeId{ AccountingCodeId.element }? &
+  element miradi:ResourceAssignmentBudgetCategoryOneId{ BudgetCategoryOneId.element }? &
+  element miradi:ResourceAssignmentBudgetCategoryTwoId{ BudgetCategoryTwoId.element }? &
   element miradi:ResourceAssignmentResourceId{ ResourceId.element }? &
   element miradi:ResourceAssignmentDetails{ DateUnitWorkUnits.element* }?
 }
@@ -721,6 +725,8 @@ SubTargetId.element = element miradi:SubTargetId { xsd:integer }
 ThreatId.element = element miradi:ThreatId { xsd:integer }
 AccountingCodeId.element = element miradi:AccountingCodeId { xsd:integer }
 FundingSourceId.element = element miradi:FundingSourceId { xsd:integer }
+BudgetCategoryOneId.element = element miradi:BudgetCategoryOneId { xsd:integer }
+BudgetCategoryTwoId.element = element miradi:BudgetCategoryTwoId { xsd:integer }
 ProgressReportId.element = element miradi:ProgressReportId { xsd:integer }
 ProgressPercentId.element = element miradi:ProgressPercentId { xsd:integer }
 ExpenseAssignmentId.element = element miradi:ExpenseAssignmentId { xsd:integer }
