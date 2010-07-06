@@ -30,7 +30,7 @@ import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProviderWithBudgetColumns;
 import org.miradi.dialogs.planning.propertiesPanel.BudgetDetailsTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.ExpenseAmountsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.WorkPlanExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanWorkUnitsTableModel;
 import org.miradi.dialogs.planning.upperPanel.AccountingCodeTreeTableModel;
@@ -161,7 +161,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		}
 		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
 		{
-			ExpenseAmountsTableModel expensesModel = new ExpenseAmountsTableModel(project, model, model.getUniqueTreeTableModelIdentifier());;
+			WorkPlanExpenseAmountsTableModel expensesModel = new WorkPlanExpenseAmountsTableModel(project, model, model.getUniqueTreeTableModelIdentifier());;
 			multiModelExporter.addExportable(new PlanningViewMainModelExporter(project, expensesModel, model, expensesModel.getUniqueTableModelIdentifier()));
 		}
 		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
