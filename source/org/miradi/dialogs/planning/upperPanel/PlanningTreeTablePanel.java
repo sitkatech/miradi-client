@@ -40,7 +40,7 @@ import org.miradi.dialogs.planning.propertiesPanel.AboveBudgetColumnsBar;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAboveTreeTablePanel;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractWorkUnitsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.AccountingCodeExpenseTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.BudgetDetailsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.WorkPlanBudgetDetailsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.FundingSourceExpenseTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
@@ -119,7 +119,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		resourceWorkUnitsTableModel = new ProjectResourceWorkUnitsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		resourceBudgetDetailsTableModel = new ProjectResourceBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		expenseAmountsTableModel = new WorkPlanExpenseAmountsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
-		budgetDetailsTableModel = new BudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		budgetDetailsTableModel = new WorkPlanBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		fundingSourceBudgetDetailsTableModel = new FundingSourceBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		accoundingCodeBudgetDetailsTableModel = new AccountingCodeBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		fundingSourceExpenseTableModel = new FundingSourceExpenseTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
@@ -291,7 +291,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		return workUnitsTableModel;
 	}
 	
-	protected BudgetDetailsTableModel getBudgetDetailsTableModel()
+	protected WorkPlanBudgetDetailsTableModel getBudgetDetailsTableModel()
 	{
 		return budgetDetailsTableModel;
 	}
@@ -456,7 +456,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	private PlanningViewFutureStatusTableModel futureStatusModel;
 	protected AbstractWorkUnitsTableModel workUnitsTableModel;
 	private WorkPlanExpenseAmountsTableModel expenseAmountsTableModel;
-	protected BudgetDetailsTableModel budgetDetailsTableModel;
+	protected WorkPlanBudgetDetailsTableModel budgetDetailsTableModel;
 	private FundingSourceBudgetDetailsTableModel fundingSourceBudgetDetailsTableModel;
 	private AccountingCodeBudgetDetailsTableModel accoundingCodeBudgetDetailsTableModel;
 	private ProjectResourceWorkUnitsTableModel resourceWorkUnitsTableModel;
