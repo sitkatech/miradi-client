@@ -38,7 +38,7 @@ public class RollupReportsWorkUnitsModel extends AbstractWorkUnitsTableModel
 	@Override
 	protected OptionalDouble getOptionalDoubleAt(int row, int column)
 	{
-		return calculateRollupReportValue(row, column);
+		return calculateRollupValue(row, column);
 	}
 
 	@Override
