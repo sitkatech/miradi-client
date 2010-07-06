@@ -18,22 +18,21 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.planning;
+package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.dialogs.planning.upperPanel.CategorizedBudgetDetailsTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCosts;
+import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.OptionalDouble;
 
-public class FundingSourceBudgetDetailsTableModel extends CategorizedBudgetDetailsTableModel
+public class AccountingCodeBudgetDetailsTableModel extends CategorizedBudgetDetailsTableModel
 {
-	public FundingSourceBudgetDetailsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
+	public AccountingCodeBudgetDetailsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
 	}
@@ -41,18 +40,18 @@ public class FundingSourceBudgetDetailsTableModel extends CategorizedBudgetDetai
 	@Override
 	public String getColumnGroupCode(int modelColumn)
 	{
-		return CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE;
+		return CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE;
 	}
 	
 	@Override
 	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = getProjectTotalTimePeriodCostFor(dateUnit);
-		if (FundingSource.is(baseObject))
+		if (AccountingCode.is(baseObject))
 		{
-			ORefSet fundingSourceRefsToRetain = new ORefSet(baseObject);
-			timePeriodCosts.retainExpenseDataRelatedToAnyOf(fundingSourceRefsToRetain);
-			timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(fundingSourceRefsToRetain);
+			ORefSet accountingCodeRefsToRetain = new ORefSet(baseObject);
+			timePeriodCosts.retainExpenseDataRelatedToAnyOf(accountingCodeRefsToRetain);
+			timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(accountingCodeRefsToRetain);
 		}
 		
 		return calculateValue(timePeriodCosts);
@@ -64,5 +63,5 @@ public class FundingSourceBudgetDetailsTableModel extends CategorizedBudgetDetai
 		return getTreeModelIdentifierAsTag() + "." + UNIQUE_TABLE_MODEL_IDENTIFIER;
 	}
 	
-	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "FundingSourceBudgetDetailsTableModel";
+	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "AccountingCodeBudgetDetailsTableModel";
 }
