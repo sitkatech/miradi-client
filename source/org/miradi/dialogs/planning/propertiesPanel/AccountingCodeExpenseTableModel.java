@@ -21,29 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objects.AccountingCode;
-import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.utils.OptionalDouble;
 
 public class AccountingCodeExpenseTableModel extends CategorizedExpenseAmountsTableModel
 {
 	public AccountingCodeExpenseTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
-	}
-	
-	@Override
-	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
-	{
-		TimePeriodCosts timePeriodCosts = getProjectTotalTimePeriodCostFor(dateUnit);
-		if (AccountingCode.is(baseObject))
-			timePeriodCosts.retainExpenseDataRelatedToAnyOf(new ORefSet(baseObject));
-		
-		return calculateValue(timePeriodCosts);
 	}
 	
 	@Override
