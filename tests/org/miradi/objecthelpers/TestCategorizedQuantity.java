@@ -103,6 +103,11 @@ public class TestCategorizedQuantity extends TestCaseWithProject
 		listWithSomeMatchingRefs.add(resourceRef);
 		listWithSomeMatchingRefs.add(new ORef(FundingSource.getObjectType(), new BaseId(9999)));
 		assertFalse("should not contain list with non matching refs", categorizedQuantity.containsAll(listWithSomeMatchingRefs));
+		
+		ORefSet listWithTwoMatchingRefs = new ORefSet();
+		listWithTwoMatchingRefs.add(resourceRef);
+		listWithTwoMatchingRefs.add(fundingSourceRef);
+		assertTrue("should contain all refs?", categorizedQuantity.containsAll(listWithTwoMatchingRefs));
 	}
 
 	private void addAndVerifyTrueContainsAll(CategorizedQuantity categorizedQuantity, ORefSet refs, ORef resourceRef)
