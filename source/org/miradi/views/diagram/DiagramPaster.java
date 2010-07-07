@@ -36,7 +36,6 @@ import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.TransferableMiradiList;
@@ -658,7 +657,7 @@ abstract public class DiagramPaster
 			if(factorLink != null)
 				newFactorLinkRef = factorLink.getRef();
 			
-			CreateDiagramFactorLinkParameter extraInfo = createFactorLinkExtraInfo(fromDiagramFactorId, toDiagramFactorId, newFactorLinkRef);
+			CreateDiagramFactorLinkParameter extraInfo = createFactorLinkExtraInfo(fromDiagramFactorRef, toDiagramFactorRef, newFactorLinkRef);
 			int type = getTypeFromJson(json);
 			DiagramLink newDiagramLink = (DiagramLink) createObject(type, extraInfo);
 			
@@ -693,13 +692,12 @@ abstract public class DiagramPaster
 		return diagramFactorId;
 	}
 
-	private CreateDiagramFactorLinkParameter createFactorLinkExtraInfo(DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId, ORef newFactorLinkRef)
+	private CreateDiagramFactorLinkParameter createFactorLinkExtraInfo(ORef fromDiagramFactorRef, ORef toDiagramFactorRef, ORef newFactorLinkRef)
 	{
 		if (newFactorLinkRef == null)
-			return new CreateDiagramFactorLinkParameter(fromDiagramFactorId, toDiagramFactorId);
+			return new CreateDiagramFactorLinkParameter(fromDiagramFactorRef, toDiagramFactorRef);
 		
-		FactorLinkId newFactorLinkId = new FactorLinkId(newFactorLinkRef.getObjectId().asInt());
-		return new CreateDiagramFactorLinkParameter(newFactorLinkId, fromDiagramFactorId, toDiagramFactorId);
+		return new CreateDiagramFactorLinkParameter(newFactorLinkRef, fromDiagramFactorRef, toDiagramFactorRef);
 	}
 
 	private boolean isPastingIntoResultsChain()
