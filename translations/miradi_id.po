@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-07 07:25-0500\n"
+"POT-Creation-Date: 2010-07-07 14:05-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -345,7 +345,7 @@ msgstr ""
 "<BR>Silakan hubungi Dukungan Miradi (<a href=\"mailto:support@miradi.org"
 "\">support@miradi.org<a>) untuk mendapatkan bantuan</HTML> "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1115
+#: Miradi/source/org/miradi/main/MainWindow.java:1124
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -2501,6 +2501,10 @@ msgstr "Khalayak yang Terdefinisi dengan jelas "
 msgid "Clearly define monitoring tasks"
 msgstr "Definisikan dengan jelas tugas pemantauan "
 
+#: Miradi/source/org/miradi/project/ProjectRepairer.java:111
+msgid "Close"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/planning/AbstractCollapseColumnAction.java:29
 msgid "Collapse Selected Column"
 msgstr "Lipat Kolom yang Dipilih "
@@ -3232,7 +3236,7 @@ msgstr "Perkirakan biaya kegiatan dan pemantauan "
 msgid "Euro"
 msgstr "Euro"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:698
+#: Miradi/source/org/miradi/main/MainWindow.java:707
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -4717,6 +4721,16 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
+#: Miradi/source/org/miradi/project/ProjectRepairer.java:91
+msgid ""
+"Miradi has detected one or more problems with this project which could cause "
+"errors or further damage in the future. \n"
+"The specific problems are listed below, to help assess the severity of the "
+"damage. \n"
+"We recommend that you close this project and contact the Miradi support team "
+"so they can safely repair this project."
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/jump/ActionJumpMonitoringPlanOverviewStep.java:35
 msgid "Monitoring Overview"
 msgstr "Ikhtisar Pemantauan "
@@ -4942,6 +4956,10 @@ msgstr "Penelitian di Lokasi"
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:90
 msgid "Open"
 msgstr "Buka \t"
+
+#: Miradi/source/org/miradi/project/ProjectRepairer.java:110
+msgid "Open Anyway"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:112
 msgid "Open Project"
@@ -5248,7 +5266,7 @@ msgstr "Sumber Daya Proyek "
 msgid "Project Resource Filter Editor"
 msgstr "Editor Filter Sumber Daya Proyek "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:696
+#: Miradi/source/org/miradi/main/MainWindow.java:705
 msgid "Project Resource Filter Is On"
 msgstr "Filter Sumber Daya Proyek Adalah Aktif "
 
@@ -5824,7 +5842,7 @@ msgstr "Pemilik Kepentingan"
 msgid "Standard Reports"
 msgstr "Laporan Standar "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:730
+#: Miradi/source/org/miradi/main/MainWindow.java:739
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -6999,7 +7017,7 @@ msgstr "Paket bahasa ini sudah ada. Ganti? "
 msgid "That language pack is already installed"
 msgstr "Paket bahasa ini sudah diinstal"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:534
+#: Miradi/source/org/miradi/main/MainWindow.java:543
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
@@ -7007,14 +7025,14 @@ msgstr ""
 "Proyek tersebut tidak bisa dibuka karena dibuat oleh versi baru dari "
 "aplikasi ini "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:538
+#: Miradi/source/org/miradi/main/MainWindow.java:547
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 "Proyek tersebut tidak bisa dibuka sebelum dipindahkan ke format data saat "
 "ini "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:530
+#: Miradi/source/org/miradi/main/MainWindow.java:539
 msgid "That project is in use by another copy of this application"
 msgstr "Proyek tersebut sedang digunakan oleh salinan lain dari aplikasi ini "
 
@@ -7497,7 +7515,7 @@ msgstr ""
 "aplikasi ini:\n"
 " "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1099
+#: Miradi/source/org/miradi/main/MainWindow.java:1108
 msgid "Unable to launch external web browser"
 msgstr "Tidak bisa meluncurkan perambah web eksternal "
 
@@ -7519,7 +7537,7 @@ msgstr ""
 "dari aplikasi ini:\n"
 " "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:887
+#: Miradi/source/org/miradi/main/MainWindow.java:896
 msgid "Unable to save preferences"
 msgstr "Tidak bisa menyimpan preferensi "
 
@@ -7569,7 +7587,7 @@ msgstr "Universitas"
 msgid "Unknown"
 msgstr "Tidak Dikenal"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:525
+#: Miradi/source/org/miradi/main/MainWindow.java:534
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -7587,7 +7605,7 @@ msgstr "Kode tak dikenal: "
 msgid "Unknown error displaying diagram"
 msgstr "Kesalahan tak dikenal saat menampilkan diagram "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:543
+#: Miradi/source/org/miradi/main/MainWindow.java:552
 msgid "Unknown error prevented opening that project"
 msgstr "Kesalahan tak dikenal mencegah dibukanya proyek "
 
