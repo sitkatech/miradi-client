@@ -19,12 +19,24 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.project;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Point;
-import java.util.LinkedHashSet;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
 
+import javax.swing.BorderFactory;
+
+import org.martus.swing.UiWrappedTextArea;
+import org.martus.swing.Utilities;
+import org.miradi.dialogs.base.MiradiDialog;
+import org.miradi.dialogs.base.MiradiPanel;
+import org.miradi.dialogs.fieldComponents.PanelButton;
+import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
+import org.miradi.layout.OneRowGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -50,13 +62,106 @@ import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.MiradiScrollPane;
 
 public class ProjectRepairer
 {
-	public static void scanForSeriousCorruption(Project project) throws Exception
+	public static boolean scanForSeriousCorruption(Project project) throws Exception
 	{
 		ProjectRepairer repairer = new ProjectRepairer(project);
-		repairer.possiblyShowMissingObjectsWarningDialog();
+		HashMap<ORef, ORefSet> rawProblems = repairer.possiblyShowMissingObjectsWarningDialog();
+		if(rawProblems.size() == 0)
+			return true;
+		
+		String listOfProblems = "";
+		for(ORef missingRef : rawProblems.keySet())
+		{
+			ORefSet referrers = rawProblems.get(missingRef);
+			String typeName = ObjectType.getUserFriendlyObjectTypeName(missingRef.getObjectType());
+			listOfProblems += "Missing " + typeName + " " + missingRef + " referred to by " + referrers.toString() + "\n";
+		}
+		
+		MiradiPanel panel = new MiradiPanel(new BorderLayout());
+		
+		String template = EAM.text(
+				"Miradi has detected one or more problems with this project " + 
+				"which could cause errors or further damage in the future. " +
+				"\n" +
+				"The specific problems are listed below, to help assess the " +
+				"severity of the damage. " +
+				"\n" +
+				"We recommend that you close this project and contact the " +
+				"Miradi support team so they can safely repair this project.");
+		PanelTextArea explanation = new PanelTextArea(template);
+		explanation.setLineWrap(true);
+		explanation.setWrapStyleWord(true);
+		explanation.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
+		panel.add(explanation, BorderLayout.PAGE_START);
+		
+		UiWrappedTextArea details = new UiWrappedTextArea(listOfProblems);
+		details.setWrapStyleWord(true);
+		details.setLineWrap(true);
+		panel.add(new MiradiScrollPane(details), BorderLayout.CENTER);
+
+		MiradiPanel buttonBox = new MiradiPanel(new OneRowGridLayout());
+		PanelButton openButton = new PanelButton(EAM.text("Open Anyway"));
+		PanelButton closeButton = new PanelButton(EAM.text("Close"));
+		buttonBox.add(openButton);
+		buttonBox.add(closeButton);
+		panel.add(buttonBox, BorderLayout.PAGE_END);
+
+		MiradiDialog dialog = new MiradiDialog(EAM.getMainWindow());
+
+		OpenProjectAnywayHandler openProjectAnywayHandler = new OpenProjectAnywayHandler(dialog);
+		openButton.addActionListener(openProjectAnywayHandler);
+		closeButton.addActionListener(new CloseProjectHandler(dialog));
+
+		dialog.add(panel);
+		dialog.setModalityType(MiradiDialog.DEFAULT_MODALITY_TYPE);
+		dialog.setSize(600, 400);
+		Utilities.centerDlg(dialog);
+		dialog.setVisible(true);
+		
+		return openProjectAnywayHandler.wasPressed();
+	}
+	
+	static class OpenProjectAnywayHandler implements ActionListener
+	{
+		public OpenProjectAnywayHandler(MiradiDialog dialogToDispose)
+		{
+			dialog = dialogToDispose;
+		}
+
+		public void actionPerformed(ActionEvent arg0)
+		{
+			wasPressed = true;
+			dialog.setVisible(false);
+			dialog.dispose();
+		}
+		
+		public boolean wasPressed()
+		{
+			return wasPressed;
+		}
+
+		private MiradiDialog dialog;
+		private boolean wasPressed;
+	}
+	
+	static class CloseProjectHandler implements ActionListener
+	{
+		public CloseProjectHandler(MiradiDialog dialogToDispose)
+		{
+			dialog = dialogToDispose;
+		}
+
+		public void actionPerformed(ActionEvent e)
+		{
+			dialog.setVisible(false);
+			dialog.dispose();
+		}
+		
+		private MiradiDialog dialog;
 	}
 	
 	public static void repairProblemsWherePossible(Project project) throws Exception
@@ -255,14 +360,11 @@ public class ProjectRepairer
 		ensurer.createOrDeleteThreatStressRatingsAsNeeded();
 	}
 
-	private void possiblyShowMissingObjectsWarningDialog() throws Exception
+	private HashMap<ORef, ORefSet> possiblyShowMissingObjectsWarningDialog() throws Exception
 	{
-		LinkedHashSet<String> orderedErrorMesseges = new LinkedHashSet<String>();
+		HashMap<ORef, ORefSet> missingObjectsAndReferrers = new HashMap<ORef, ORefSet>();
 
 		ORefList missingObjectRefs = findAllMissingObjects();
-		if (missingObjectRefs.size() == 0 )
-			return;
-		
 		for (int i = 0; i < missingObjectRefs.size(); ++i)
 		{
 			ORef missingRef = missingObjectRefs.get(i);
@@ -270,14 +372,10 @@ public class ProjectRepairer
 			if (hasOnlyTableSettingReferrers(referrers))
 				continue;
 			
-			String errorMessage = "ERROR: Missing object: " + missingRef + " referred to by: " + referrers;
-			orderedErrorMesseges.add(errorMessage);
+			missingObjectsAndReferrers.put(missingRef, referrers);
 		}
 		
-		for(String errorMessage : orderedErrorMesseges)
-		{
-			EAM.logError(errorMessage);
-		}
+		return missingObjectsAndReferrers;
 	}
 
 	private boolean hasOnlyTableSettingReferrers(ORefSet referrers)

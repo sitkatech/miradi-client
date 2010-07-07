@@ -500,6 +500,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		getProject().setRemoteDataLocation(remoteLocation);
 	}
+	
+	static class AlreadyHandledException extends Exception
+	{
+	}
 
 	public void createOrOpenProject(String projectName)
 	{
@@ -510,7 +514,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			project.createOrOpenWithDefaultObjects(projectName);
 			logExceptionsInsideProjectDir(projectName);
 			
-			ProjectRepairer.scanForSeriousCorruption(project);
+			if(!ProjectRepairer.scanForSeriousCorruption(project))
+				throw new AlreadyHandledException();
 			ProjectRepairer.repairProblemsWherePossible(project);
 			ProjectRepairer.reportOrphansAndMinorProblems(project);
 			refreshWizard();
@@ -519,6 +524,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			updateTitle();
 			updateStatusBar();
 			getDiagramView().updateVisibilityOfFactorsAndClearSelectionModel();
+		}
+		catch(AlreadyHandledException e)
+		{
+			// No action required here
 		}
 		catch(UnknownCommandException e)
 		{
