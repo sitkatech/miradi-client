@@ -59,7 +59,7 @@ public class ProjectRepairer
 		repairer.possiblyShowMissingObjectsWarningDialog();
 	}
 	
-	public static void repairAnyProblems(Project project) throws Exception
+	public static void repairProblemsWherePossible(Project project) throws Exception
 	{
 		ProjectRepairer repairer = new ProjectRepairer(project);
 		repairer.repair();
