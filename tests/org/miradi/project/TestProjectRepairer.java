@@ -84,7 +84,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		getProject().beginCommandSideEffectMode();
 		try
 		{
-			ProjectRepairer.repairAnyProblems(getProject());
+			ProjectRepairer.repairProblemsWherePossible(getProject());
 		}
 		finally
 		{
@@ -149,7 +149,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		EAM.setLogToString();
 
 //		TODO: removed orphan deletion code until a solution can be found to general extentions of having annoations having annoations
-		ProjectRepairer.repairAnyProblems(getProject());
+		ProjectRepairer.repairProblemsWherePossible(getProject());
 		//assertContains("Deleting orphan", EAM.getLoggedString());
 		//assertNull("Didn't delete orphan?", project.findObject(annotationType, orphan));
 		assertEquals("Deleted non-orphan?", nonOrphan, getProject().findObject(annotationType, nonOrphan).getId());
