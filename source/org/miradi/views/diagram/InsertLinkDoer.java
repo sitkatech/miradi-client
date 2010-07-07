@@ -106,6 +106,11 @@ public class InsertLinkDoer extends ViewDoer
 		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
 		ORefList diagramLinkReferrerRefs = factorLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
 		ORef diagramLinkReferrerRef = diagramLinkReferrerRefs.getRefForType(DiagramLink.getObjectType());
+		if(diagramLinkReferrerRef.isInvalid())
+		{
+			EAM.logWarning("Skipped inserting an invalid DL ref into the diagram");
+			return;
+		}
 		
 		CommandSetObjectData addDiagramLink = CommandSetObjectData.createAppendIdCommand(getDiagramView().getCurrentDiagramObject(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, new DiagramLinkId(diagramLinkReferrerRef.getObjectId().asInt()));
 		getProject().executeCommand(addDiagramLink);
