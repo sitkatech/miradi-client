@@ -79,6 +79,9 @@ public class ProjectRepairer
 
 	public void logOrphansAndSimilarProblems()
 	{
+		detectAndReportOrphans(FactorLink.getObjectType(), DiagramLink.getObjectType());
+		detectAndReportOrphans(Cause.getObjectType(), DiagramFactor.getObjectType());
+
 		warnOfOrphanDiagramFactors();
 		warnOfOrphanAnnotations();	
 		warnOfOrphanTasks();
@@ -270,9 +273,6 @@ public class ProjectRepairer
 			EAM.logError(errorMessage);
 		}
 		
-		detectAndReportOrphans(FactorLink.getObjectType(), DiagramLink.getObjectType());
-		detectAndReportOrphans(Cause.getObjectType(), DiagramFactor.getObjectType());
-
 // NOTE: This is appropriate for testing, but not for production
 //		EAM.notifyDialog("<html>This project has some data corruption, " +
 //						 "which may cause error messages or unexpected results within Miradi. <br>" +
