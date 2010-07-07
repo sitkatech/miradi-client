@@ -65,6 +65,12 @@ public class ProjectRepairer
 		repairer.repair();
 	}
 	
+	public static void reportOrphansAndMinorProblems(Project project) throws Exception
+	{
+		ProjectRepairer repairer = new ProjectRepairer(project);
+		repairer.logOrphansAndSimilarProblems();
+	}
+	
 	public ProjectRepairer(Project projectToRepair)
 	{
 		project = projectToRepair;
@@ -74,7 +80,6 @@ public class ProjectRepairer
 	{
 		fixAnyProblemsWithThreatStressRatings();
 		repairUnsnappedNodes();
-		logOrphansAndSimilarProblems();
 	}
 
 	public void logOrphansAndSimilarProblems()
