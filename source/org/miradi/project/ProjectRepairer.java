@@ -65,6 +65,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.objects.ThreatStressRating;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.MiradiScrollPane;
 
@@ -374,8 +375,28 @@ public class ProjectRepairer
 	
 	private void fixAnyProblemsWithThreatStressRatings() throws Exception
 	{
+		deleteThreatStressRatingsWithInvalidRefs();
+		
 		ThreatStressRatingEnsurer ensurer = new ThreatStressRatingEnsurer(getProject());
 		ensurer.createOrDeleteThreatStressRatingsAsNeeded();
+	}
+
+	private void deleteThreatStressRatingsWithInvalidRefs() throws Exception
+	{
+		ORefSet deletedRefs = new ORefSet();
+		ORefList ratingObjectRefs = getProject().getThreatStressRatingPool().getRefList();
+		for(int i = 0; i < ratingObjectRefs.size(); ++i)
+		{
+			ThreatStressRating rating = ThreatStressRating.find(getProject(), ratingObjectRefs.get(i));
+			if(rating.getThreatRef().isInvalid() || rating.getStressRef().isInvalid())
+			{
+				deletedRefs.add(rating.getRef());
+				getProject().deleteObject(rating);
+			}
+		}
+		
+		if(deletedRefs.size() > 0)
+			EAM.logWarning("Deleted " + deletedRefs.size() + " TSR's with invalid refs");
 	}
 
 	private HashMap<ORef, ORefSet> possiblyShowMissingObjectsWarningDialog() throws Exception
