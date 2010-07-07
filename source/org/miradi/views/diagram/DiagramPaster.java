@@ -639,8 +639,9 @@ abstract public class DiagramPaster
 			String movedBendPointsAsString = movePoints(originalBendPoints, offsetToAvoidOverlaying);
 			json.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
 			
-			DiagramFactorId fromDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
-			DiagramFactorId toDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
+			//TODO need to change to using ORefs
+			DiagramFactorId fromDiagramFactorId = getDiagramFactorEnd(json, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, FactorLink.FROM);
+			DiagramFactorId toDiagramFactorId = getDiagramFactorEnd(json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, FactorLink.TO);
 			DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), new ORef(DiagramFactor.getObjectType(), fromDiagramFactorId));
 			DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), new ORef(DiagramFactor.getObjectType(), toDiagramFactorId));
 
@@ -670,6 +671,24 @@ abstract public class DiagramPaster
 			addToCurrentDiagram(newDiagramLinkRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
 			addDiagramLinkToSelection(newDiagramLinkRef);
 		}
+	}
+
+	private DiagramFactorId getDiagramFactorEnd(EnhancedJsonObject json, String diagramFactorEndTag, int direction)
+	{
+		DiagramFactorId diagramFactorId = getDiagramFactorId(json, diagramFactorEndTag);
+		ORef diagramFactorRef = new ORef(DiagramFactor.getObjectType(), diagramFactorId);
+		if (getDiagramModel().containsDiagramFactor(diagramFactorRef))
+			return diagramFactorId;
+		
+		BaseId diagramLinkId = json.getId(DiagramLink.TAG_ID);
+		ORef diagramLinkRef = new ORef(DiagramLink.getObjectType(), diagramLinkId);
+		DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);
+		FactorLink factorLink = diagramLink.getWrappedFactorLink();
+		ORef factorRef = factorLink.getFactorRef(direction);
+		if (getDiagramObject().containsWrappedFactorRef(factorRef))
+			return getDiagramObject().getDiagramFactor(factorRef).getDiagramFactorId();
+		
+		return diagramFactorId;
 	}
 
 	private CreateDiagramFactorLinkParameter createFactorLinkExtraInfo(DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId, ORef newFactorLinkRef)
