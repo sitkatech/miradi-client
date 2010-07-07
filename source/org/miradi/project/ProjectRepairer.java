@@ -20,23 +20,25 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.Vector;
 
 import javax.swing.BorderFactory;
 
 import org.martus.swing.UiWrappedTextArea;
 import org.martus.swing.Utilities;
+import org.miradi.dialogs.base.DialogWithButtonBar;
 import org.miradi.dialogs.base.MiradiDialog;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
-import org.miradi.layout.OneRowGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -105,23 +107,23 @@ public class ProjectRepairer
 		details.setLineWrap(true);
 		panel.add(new MiradiScrollPane(details), BorderLayout.CENTER);
 
-		MiradiPanel buttonBox = new MiradiPanel(new OneRowGridLayout());
 		PanelButton openButton = new PanelButton(EAM.text("Open Anyway"));
 		PanelButton closeButton = new PanelButton(EAM.text("Close"));
-		buttonBox.add(openButton);
-		buttonBox.add(closeButton);
-		panel.add(buttonBox, BorderLayout.PAGE_END);
+		Vector<Component> buttons = new Vector<Component>();
+		buttons.add(openButton);
+		buttons.add(closeButton);
 
-		MiradiDialog dialog = new MiradiDialog(EAM.getMainWindow());
+		DialogWithButtonBar dialog = new DialogWithButtonBar(EAM.getMainWindow());
+		dialog.setModal(true);
+		dialog.setButtons(buttons);
+		dialog.setSimpleCloseButton(closeButton);
+		dialog.add(panel);
+		dialog.setSize(600, 400);
+		Utilities.centerDlg(dialog);
 
 		OpenProjectAnywayHandler openProjectAnywayHandler = new OpenProjectAnywayHandler(dialog);
 		openButton.addActionListener(openProjectAnywayHandler);
-		closeButton.addActionListener(new CloseProjectHandler(dialog));
 
-		dialog.add(panel);
-		dialog.setModalityType(MiradiDialog.DEFAULT_MODALITY_TYPE);
-		dialog.setSize(600, 400);
-		Utilities.centerDlg(dialog);
 		dialog.setVisible(true);
 		
 		return openProjectAnywayHandler.wasPressed();
@@ -148,22 +150,6 @@ public class ProjectRepairer
 
 		private MiradiDialog dialog;
 		private boolean wasPressed;
-	}
-	
-	static class CloseProjectHandler implements ActionListener
-	{
-		public CloseProjectHandler(MiradiDialog dialogToDispose)
-		{
-			dialog = dialogToDispose;
-		}
-
-		public void actionPerformed(ActionEvent e)
-		{
-			dialog.setVisible(false);
-			dialog.dispose();
-		}
-		
-		private MiradiDialog dialog;
 	}
 	
 	public static void repairProblemsWherePossible(Project project) throws Exception
