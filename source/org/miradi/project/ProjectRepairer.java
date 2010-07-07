@@ -53,7 +53,7 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectRepairer
 {
-	public static void scanForCorruptedObjects(Project project) throws Exception
+	public static void scanForSeriousCorruption(Project project) throws Exception
 	{
 		ProjectRepairer repairer = new ProjectRepairer(project);
 		repairer.possiblyShowMissingObjectsWarningDialog();
