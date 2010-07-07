@@ -32,6 +32,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
@@ -50,6 +51,37 @@ public class TestProjectRepairer extends TestCaseWithProject
 	public TestProjectRepairer(String name)
 	{
 		super(name);
+	}
+	
+	public void testRemoveInvalidDiagramLinkRefs() throws Exception
+	{
+		DiagramFactor targetDF = getProject().createAndAddFactorToDiagram(Target.getObjectType());
+		DiagramFactor causeDF = getProject().createAndAddFactorToDiagram(Cause.getObjectType());
+		getProject().createDiagramLinkAndAddToDiagram(causeDF, targetDF);
+		DiagramFactor strategyDF = getProject().createAndAddFactorToDiagram(Strategy.getObjectType());
+		getProject().createDiagramLinkAndAddToDiagram(strategyDF, causeDF);
+
+		DiagramObject mainDiagram = getProject().getMainDiagramObject();
+		IdList originalDiagramLinkIds = mainDiagram.getAllDiagramFactorLinkIds();
+		assertNotEquals("Missing sample data?", 0, originalDiagramLinkIds.size());
+		
+		IdList badIds = new IdList(originalDiagramLinkIds);
+		badIds.insertAt(BaseId.INVALID, 0);
+		badIds.add(BaseId.INVALID);
+		getProject().setObjectData(mainDiagram, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, badIds.toString());
+
+		EAM.setLogToString();
+		try
+		{
+			ProjectRepairer.repairProblemsWherePossible(getProject());
+			assertContains("-1", EAM.getLoggedString());
+		}
+		finally
+		{
+			EAM.setLogToConsole();
+		}
+		IdList repairedIds = mainDiagram.getAllDiagramFactorLinkIds();
+		assertEquals("Didn't remove -1's?", originalDiagramLinkIds, repairedIds);
 	}
 	
 	public void testGetFactorsWithoutDiagramFactors() throws Exception

@@ -43,12 +43,14 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
+import org.miradi.objectpools.ObjectPool;
 import org.miradi.objectpools.PoolWithIdAssigner;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
@@ -185,6 +187,36 @@ public class ProjectRepairer
 	{
 		fixAnyProblemsWithThreatStressRatings();
 		repairUnsnappedNodes();
+		removeInvalidDiagramLinkRefs();
+	}
+
+	private void removeInvalidDiagramLinkRefs() throws Exception
+	{
+		removeInvalidDiagramLinkRefs(project.getConceptualModelDiagramPool());
+		removeInvalidDiagramLinkRefs(project.getResultsChainDiagramPool());
+	}
+
+	private void removeInvalidDiagramLinkRefs(ObjectPool diagramPool) throws Exception
+	{
+		ORefList diagramRefs = diagramPool.getRefList();
+		for(int i = 0; i < diagramRefs.size(); ++i)
+		{
+			DiagramObject diagram = DiagramObject.findDiagramObject(getProject(), diagramRefs.get(i));
+			removeInvalidDiagramLinkRefs(diagram);
+		}
+	}
+
+	private void removeInvalidDiagramLinkRefs(DiagramObject diagram) throws Exception
+	{
+		IdList diagramLinkIds = new IdList(diagram.getAllDiagramFactorLinkIds());
+		while(diagramLinkIds.contains(BaseId.INVALID))
+			diagramLinkIds.removeId(BaseId.INVALID);
+		
+		if(diagramLinkIds.size() < diagram.getAllDiagramFactorLinkIds().size())
+		{
+			EAM.logWarning("Deleting -1 diagram link ids from " + diagram.getRef());
+			getProject().setObjectData(diagram, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkIds.toString());
+		}
 	}
 
 	public void logOrphansAndSimilarProblems()
