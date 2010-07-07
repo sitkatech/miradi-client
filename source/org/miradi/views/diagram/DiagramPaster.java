@@ -638,11 +638,8 @@ abstract public class DiagramPaster
 			String movedBendPointsAsString = movePoints(originalBendPoints, offsetToAvoidOverlaying);
 			json.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
 			
-			//TODO need to change to using ORefs
-			DiagramFactorId fromDiagramFactorId = getDiagramFactorEnd(json, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, FactorLink.FROM);
-			DiagramFactorId toDiagramFactorId = getDiagramFactorEnd(json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, FactorLink.TO);
-			ORef fromDiagramFactorRef = new ORef(DiagramFactor.getObjectType(), fromDiagramFactorId);
-			ORef toDiagramFactorRef = new ORef(DiagramFactor.getObjectType(), toDiagramFactorId);
+			ORef fromDiagramFactorRef = getDiagramFactorEnd(json, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, FactorLink.FROM);
+			ORef toDiagramFactorRef = getDiagramFactorEnd(json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, FactorLink.TO);
 			DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), fromDiagramFactorRef);
 			DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), toDiagramFactorRef);
 
@@ -674,12 +671,11 @@ abstract public class DiagramPaster
 		}
 	}
 
-	private DiagramFactorId getDiagramFactorEnd(EnhancedJsonObject json, String diagramFactorEndTag, int direction)
+	private ORef getDiagramFactorEnd(EnhancedJsonObject json, String diagramFactorEndTag, int direction)
 	{
-		DiagramFactorId diagramFactorId = getDiagramFactorId(json, diagramFactorEndTag);
-		ORef diagramFactorRef = new ORef(DiagramFactor.getObjectType(), diagramFactorId);
+		ORef diagramFactorRef = getDiagramFactorId(json, diagramFactorEndTag);
 		if (getDiagramModel().containsDiagramFactor(diagramFactorRef))
-			return diagramFactorId;
+			return diagramFactorRef;
 		
 		BaseId diagramLinkId = json.getId(DiagramLink.TAG_ID);
 		ORef diagramLinkRef = new ORef(DiagramLink.getObjectType(), diagramLinkId);
@@ -687,9 +683,9 @@ abstract public class DiagramPaster
 		FactorLink factorLink = diagramLink.getWrappedFactorLink();
 		ORef factorRef = factorLink.getFactorRef(direction);
 		if (getDiagramObject().containsWrappedFactorRef(factorRef))
-			return getDiagramObject().getDiagramFactor(factorRef).getDiagramFactorId();
+			return getDiagramObject().getDiagramFactor(factorRef).getRef();
 		
-		return diagramFactorId;
+		return diagramFactorRef;
 	}
 
 	private CreateDiagramFactorLinkParameter createFactorLinkExtraInfo(ORef fromDiagramFactorRef, ORef toDiagramFactorRef, ORef newFactorLinkRef)
@@ -791,15 +787,15 @@ abstract public class DiagramPaster
 	}
 	
 
-	private DiagramFactorId getDiagramFactorId(EnhancedJsonObject json, String tag)
+	private ORef getDiagramFactorId(EnhancedJsonObject json, String tag)
 	{
 		BaseId oldId = json.getId(tag);
 		ORef oldRef = new ORef(ObjectType.DIAGRAM_FACTOR, oldId);
 		ORef newRef = getOldToNewObjectRefMap().get(oldRef);
 		if (newRef == null)
-			return new DiagramFactorId(oldId.asInt()); 
+			return oldRef; 
 			 
-		return new DiagramFactorId(newRef.getObjectId().asInt());
+		return newRef;
 	}
 	
 	private int convertType(ORef oldObjectRef)
