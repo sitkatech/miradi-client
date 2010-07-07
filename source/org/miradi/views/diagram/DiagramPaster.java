@@ -794,7 +794,8 @@ abstract public class DiagramPaster
 	private DiagramFactorId getDiagramFactorId(EnhancedJsonObject json, String tag)
 	{
 		BaseId oldId = json.getId(tag);
-		ORef newRef = getOldToNewObjectRefMap().get(new ORef(ObjectType.DIAGRAM_FACTOR, oldId));
+		ORef oldRef = new ORef(ObjectType.DIAGRAM_FACTOR, oldId);
+		ORef newRef = getOldToNewObjectRefMap().get(oldRef);
 		if (newRef == null)
 			return new DiagramFactorId(oldId.asInt()); 
 			 
