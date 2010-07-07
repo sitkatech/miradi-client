@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-07 16:09-0500\n"
+"POT-Creation-Date: 2010-07-07 16:15-0500\n"
 "PO-Revision-Date: 2010-05-12 13:30-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2332,7 +2332,7 @@ msgstr ""
 msgid "Clearly define monitoring tasks"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/ProjectRepairer.java:111
+#: Miradi/source/org/miradi/project/ProjectRepairer.java:112
 msgid "Close"
 msgstr ""
 
@@ -4447,7 +4447,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/ProjectRepairer.java:91
+#: Miradi/source/org/miradi/project/ProjectRepairer.java:92
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -4667,7 +4667,7 @@ msgstr ""
 msgid "Open"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/ProjectRepairer.java:110
+#: Miradi/source/org/miradi/project/ProjectRepairer.java:111
 msgid "Open Anyway"
 msgstr ""
 
