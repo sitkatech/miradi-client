@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-07 16:09-0500\n"
+"POT-Creation-Date: 2010-07-07 16:15-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2501,7 +2501,7 @@ msgstr "Khalayak yang Terdefinisi dengan jelas "
 msgid "Clearly define monitoring tasks"
 msgstr "Definisikan dengan jelas tugas pemantauan "
 
-#: Miradi/source/org/miradi/project/ProjectRepairer.java:111
+#: Miradi/source/org/miradi/project/ProjectRepairer.java:112
 msgid "Close"
 msgstr ""
 
@@ -4721,7 +4721,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/ProjectRepairer.java:91
+#: Miradi/source/org/miradi/project/ProjectRepairer.java:92
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -4957,7 +4957,7 @@ msgstr "Penelitian di Lokasi"
 msgid "Open"
 msgstr "Buka \t"
 
-#: Miradi/source/org/miradi/project/ProjectRepairer.java:110
+#: Miradi/source/org/miradi/project/ProjectRepairer.java:111
 msgid "Open Anyway"
 msgstr ""
 
