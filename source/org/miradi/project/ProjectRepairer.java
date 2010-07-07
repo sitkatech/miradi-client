@@ -257,11 +257,12 @@ public class ProjectRepairer
 
 	private void possiblyShowMissingObjectsWarningDialog() throws Exception
 	{
+		LinkedHashSet<String> orderedErrorMesseges = new LinkedHashSet<String>();
+
 		ORefList missingObjectRefs = findAllMissingObjects();
 		if (missingObjectRefs.size() == 0 )
 			return;
 		
-		LinkedHashSet<String> orderedErrorMesseges = new LinkedHashSet<String>();
 		for (int i = 0; i < missingObjectRefs.size(); ++i)
 		{
 			ORef missingRef = missingObjectRefs.get(i);
