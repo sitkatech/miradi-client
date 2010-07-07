@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-07 14:05-0500\n"
+"POT-Creation-Date: 2010-07-07 16:09-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -2352,16 +2352,16 @@ msgstr "Calendario"
 msgid "Calibri"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:115
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:124
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:114
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:123
 msgid "Can't Create Link"
 msgstr "No se puede crear el enlace."
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:123
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:122
 msgid "Can't link a group to an item it contains"
 msgstr "No se puede enlazar un grupo a un elemento que éste contenga."
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:114
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:113
 msgid "Can't link an item to itself"
 msgstr "No se puede enlazar un elemento con sí mismo."
 
