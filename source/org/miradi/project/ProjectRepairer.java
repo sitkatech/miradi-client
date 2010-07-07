@@ -277,12 +277,6 @@ public class ProjectRepairer
 		{
 			EAM.logError(errorMessage);
 		}
-		
-// NOTE: This is appropriate for testing, but not for production
-//		EAM.notifyDialog("<html>This project has some data corruption, " +
-//						 "which may cause error messages or unexpected results within Miradi. <br>" +
-//						 "Please contact the Miradi team to report this problem, " +
-//						 "and/or to have them repair this project.");
 	}
 
 	private boolean hasOnlyTableSettingReferrers(ORefSet referrers)
