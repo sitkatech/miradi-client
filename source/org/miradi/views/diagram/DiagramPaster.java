@@ -642,8 +642,10 @@ abstract public class DiagramPaster
 			//TODO need to change to using ORefs
 			DiagramFactorId fromDiagramFactorId = getDiagramFactorEnd(json, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, FactorLink.FROM);
 			DiagramFactorId toDiagramFactorId = getDiagramFactorEnd(json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, FactorLink.TO);
-			DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), new ORef(DiagramFactor.getObjectType(), fromDiagramFactorId));
-			DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), new ORef(DiagramFactor.getObjectType(), toDiagramFactorId));
+			ORef fromDiagramFactorRef = new ORef(DiagramFactor.getObjectType(), fromDiagramFactorId);
+			ORef toDiagramFactorRef = new ORef(DiagramFactor.getObjectType(), toDiagramFactorId);
+			DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), fromDiagramFactorRef);
+			DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), toDiagramFactorRef);
 
 			LinkCreator linkCreator = new LinkCreator(getProject());
 			if (linkCreator.linkToBePastedWasRejected(currentModel, fromDiagramFactorId, toDiagramFactorId))
