@@ -160,6 +160,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
     	Rectangle everything = new Rectangle(0, 0, getWidth(), getHeight());
     	fromScreen(everything);
     	addOffscreenDirty(everything);
+    	revalidate();
     }
     
 	public EAMGraphSelectionModel getEAMGraphSelectionModel()
