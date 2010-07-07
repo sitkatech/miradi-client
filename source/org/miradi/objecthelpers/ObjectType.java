@@ -81,7 +81,51 @@ public class ObjectType
 	public static final int AUDIENCE = 55;
 	public static final int CATEGORY_ONE = 56;
 	public static final int CATEGORY_TWO = 57;
+	// When you add a new type, be sure to:
+	// - increment OBJECT_TYPE_COUNT
+	// - add a case to getUserFriendlyObjectTypeName below IF it is a user-visible object
 	
 	public static final int OBJECT_TYPE_COUNT = 58;
+
+	public static String getUserFriendlyObjectTypeName(int objectType)
+	{
+		switch(objectType)
+		{
+			case TASK: return "Activity/Method/Task";
+			case FACTOR_LINK: return "Internal Factor Link";
+			case PROJECT_RESOURCE: return "Project Resource";
+			case INDICATOR: return "Indicator";
+			case OBJECTIVE: return "Objective";
+			case GOAL: return "Goal";
+			case DIAGRAM_LINK: return "Diagram Link";
+			case RESOURCE_ASSIGNMENT: return "Resource Assignment";
+			case ACCOUNTING_CODE: return "Accounting Code";
+			case FUNDING_SOURCE: return "Funding Source";
+			case KEY_ECOLOGICAL_ATTRIBUTE: return "Key Ecological Attribute";
+			case DIAGRAM_FACTOR: return "Diagram Factor";
+			case CAUSE: return "Contributing Factor/Direct Threat";
+			case STRATEGY: return "Strategy";
+			case TARGET: return "Biodiversity Target";
+			case INTERMEDIATE_RESULT: return "Intermediate Result";
+			case THREAT_REDUCTION_RESULT: return "Threat Reduction Result";
+			case TEXT_BOX: return "Text Box";
+			case MEASUREMENT: return "Measurement";
+			case STRESS: return "Stress";
+			case GROUP_BOX: return "Group Box";
+			case SUB_TARGET: return "Sub-Target";
+			case PROGRESS_REPORT: return "Progress Report";
+			case ORGANIZATION: return "Organization";
+			case PROGRESS_PERCENT: return "Progress Percent";
+			case SCOPE_BOX: return "Scope Box";
+			case EXPENSE_ASSIGNMENT: return "Expense Entry";
+			case HUMAN_WELFARE_TARGET: return "Human Welfare Target";
+			case IUCN_REDLIST_SPECIES: return "IUCN Redlist Species";
+			case OTHER_NOTABLE_SPECIES: return "Other Notable Species";
+			case AUDIENCE: return "Audience";
+			case CATEGORY_ONE: return "Budget Category One";
+			case CATEGORY_TWO: return "Budget Category Two";
+			default: return "Internal Object";
+		}
+	}
 }
 
