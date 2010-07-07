@@ -28,7 +28,6 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
@@ -87,10 +86,10 @@ public class LinkCreator
 		return(from.getGroupBoxChildrenRefs().contains(potentialChildDiagramFactorRef));
 	}
 
-	public boolean linkToBePastedWasRejected(DiagramModel model, DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws Exception
+	public boolean linkToBePastedWasRejected(DiagramModel model, ORef fromDiagramFactorRef, ORef toDiagramFactorRef) throws Exception
 	{
-		DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
-		DiagramFactor toDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, toDiagramFactorId));
+		DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(fromDiagramFactorRef);
+		DiagramFactor toDiagramFactor = (DiagramFactor) project.findObject(toDiagramFactorRef);
 		
 		return linkWasRejected(model, fromDiagramFactor, toDiagramFactor);
 	}
