@@ -52,6 +52,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
+import org.miradi.objects.ViewData;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectRepairer
@@ -317,24 +318,29 @@ public class ProjectRepairer
 		{
 			ORef missingRef = missingObjectRefs.get(i);
 			ORefSet referrers = project.getObjectManager().getReferringObjects(missingRef);
-			if (hasOnlyTableSettingReferrers(referrers))
-				continue;
+			referrers = getOnlyReferrersThatMatter(referrers);
 			
-			missingObjectsAndReferrers.put(missingRef, referrers);
+			if(referrers.size() > 0)
+				missingObjectsAndReferrers.put(missingRef, referrers);
 		}
 		
 		return missingObjectsAndReferrers;
 	}
 
-	private boolean hasOnlyTableSettingReferrers(ORefSet referrers)
+	private ORefSet getOnlyReferrersThatMatter(ORefSet referrers)
 	{
+		ORefSet filteredReferrers = new ORefSet();
 		for(ORef ref : referrers)
 		{
-			if (!TableSettings.is(ref))
-				return false;
+			if(TableSettings.is(ref))
+				continue;
+			if(ViewData.is(ref))
+				continue;
+			
+			filteredReferrers.add(ref);
 		}
 		
-		return true;
+		return filteredReferrers;
 	}
 
 	private void detectAndReportOrphans(int possibleOrphanType,	final int custodianType)
