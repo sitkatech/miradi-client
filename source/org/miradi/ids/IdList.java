@@ -183,6 +183,7 @@ public class IdList
 		return json;
 	}
 	
+	@Override
 	public String toString()
 	{
 		if(size() == 0)
@@ -190,6 +191,7 @@ public class IdList
 		return toJson().toString();
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(! (rawOther instanceof IdList))
@@ -199,6 +201,7 @@ public class IdList
 		return data.equals(other.data);
 	}
 	
+	@Override
 	public int hashCode()
 	{
 		return data.hashCode();
