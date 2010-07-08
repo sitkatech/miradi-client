@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-08 13:49-0500\n"
+"POT-Creation-Date: 2010-07-08 17:05-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -349,7 +349,7 @@ msgstr ""
 "<BR>Comuníquese con el equipo de soporte técnico de Miradi (<a href=\"mailto:"
 "support@miradi.org\">support@miradi.org<a>) para obtener ayuda.</HTML>"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1205
+#: Miradi/source/org/miradi/main/MainWindow.java:1248
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -2515,7 +2515,7 @@ msgstr "Definir audiencias claramente"
 msgid "Clearly define monitoring tasks"
 msgstr "Definir claramente tareas de monitoreo "
 
-#: Miradi/source/org/miradi/dialogs/ProjectCorruptionDialog.java:73
+#: Miradi/source/org/miradi/dialogs/ProjectCorruptionDialog.java:79
 msgid "Close"
 msgstr ""
 
@@ -2834,6 +2834,10 @@ msgstr "Eliminar"
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:58
 msgid "Delete %s"
 msgstr "Eliminar %s"
+
+#: Miradi/source/org/miradi/main/MainWindow.java:625
+msgid "Delete All Orphans"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
 msgid "Delete Resource"
@@ -3255,7 +3259,7 @@ msgstr "Estimar costos para actividades y monitoreo"
 msgid "Euro"
 msgstr "Euro "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:788
+#: Miradi/source/org/miradi/main/MainWindow.java:831
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -3884,7 +3888,7 @@ msgstr "Indicadores solamente"
 msgid "Indicators:"
 msgstr "Indicadores:"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:317
+#: Miradi/source/org/miradi/main/MainWindow.java:320
 msgid "Information"
 msgstr "Información"
 
@@ -4332,7 +4336,7 @@ msgstr "Listas"
 msgid "Location"
 msgstr "Localización"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:600
+#: Miradi/source/org/miradi/main/MainWindow.java:603
 msgid "Lost Objects Detected"
 msgstr ""
 
@@ -4763,7 +4767,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:631
+#: Miradi/source/org/miradi/main/MainWindow.java:674
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5000,7 +5004,7 @@ msgstr "Investigación en el sitio"
 msgid "Open"
 msgstr "Abrir"
 
-#: Miradi/source/org/miradi/dialogs/ProjectCorruptionDialog.java:72
+#: Miradi/source/org/miradi/dialogs/ProjectCorruptionDialog.java:78
 msgid "Open Anyway"
 msgstr ""
 
@@ -5285,7 +5289,7 @@ msgstr "Proyecto"
 msgid "Project Advisor"
 msgstr "Asesor del proyecto "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:629
+#: Miradi/source/org/miradi/main/MainWindow.java:672
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -5313,7 +5317,7 @@ msgstr "Recurso del proyecto"
 msgid "Project Resource Filter Editor"
 msgstr "Editor del filtro de recursos del proyecto"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:786
+#: Miradi/source/org/miradi/main/MainWindow.java:829
 msgid "Project Resource Filter Is On"
 msgstr "El filtro de recursos del proyecto está activado."
 
@@ -5893,7 +5897,7 @@ msgstr "Parte interesada "
 msgid "Standard Reports"
 msgstr "Informes estándar"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:820
+#: Miradi/source/org/miradi/main/MainWindow.java:863
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -7071,7 +7075,7 @@ msgstr "Dicho paquete de idiomas ya existe. ¿Desea reemplazarlo? "
 msgid "That language pack is already installed"
 msgstr "Dicho paquete de idiomas ya se encuentra instalado."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:555
+#: Miradi/source/org/miradi/main/MainWindow.java:558
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
@@ -7079,13 +7083,13 @@ msgstr ""
 "Ese proyecto no puede abrirse porque se creó con una versión más nueva de "
 "esta aplicación."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:559
+#: Miradi/source/org/miradi/main/MainWindow.java:562
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 "Ese proyecto no puede abrirse hasta que se migre al formato de datos actual."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:551
+#: Miradi/source/org/miradi/main/MainWindow.java:554
 msgid "That project is in use by another copy of this application"
 msgstr "Otra copia de esta aplicación está usando ese proyecto."
 
@@ -7118,7 +7122,7 @@ msgstr ""
 "El archivo MPZ no puede guardarse en una carpeta dentro del proyecto que se "
 "exportará."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:601
+#: Miradi/source/org/miradi/main/MainWindow.java:604
 msgid ""
 "The following objects exist in the project, but cannot be accessed.\n"
 "\n"
@@ -7144,6 +7148,17 @@ msgid ""
 msgstr ""
 "Los enlaces se eliminarán de todas las páginas de Modelo conceptual y "
 "Cadenas de resultado, no sólo ésta."
+
+#: Miradi/source/org/miradi/main/MainWindow.java:638
+msgid ""
+"The orphans have been deleted. Miradi must exit now, \n"
+"after which you can restart it and open this project.\n"
+"\n"
+"Additional orphans may be reported then, in which case \n"
+"you can delete those, and try again. Depending on the \n"
+"nature of the orphans, it may take several cycles to \n"
+"eliminate them all."
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:51
 msgid ""
@@ -7580,7 +7595,7 @@ msgstr ""
 "No se puede eliminar el nombre de este proyecto porque otra copia de esta "
 "aplicación lo está usando:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1189
+#: Miradi/source/org/miradi/main/MainWindow.java:1232
 msgid "Unable to launch external web browser"
 msgstr "No se pudo iniciar el navegador web externo."
 
@@ -7601,7 +7616,7 @@ msgstr ""
 "No se puede cambiar el nombre de este proyecto porque otra copia de esta "
 "aplicación lo está usando:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:977
+#: Miradi/source/org/miradi/main/MainWindow.java:1020
 msgid "Unable to save preferences"
 msgstr "No se pudieron grabar las preferencias."
 
@@ -7652,7 +7667,7 @@ msgstr "Universidad "
 msgid "Unknown"
 msgstr "Desconocido "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:546
+#: Miradi/source/org/miradi/main/MainWindow.java:549
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -7670,7 +7685,7 @@ msgstr "Código desconocido:"
 msgid "Unknown error displaying diagram"
 msgstr "Error desconocido al mostrar el diagrama"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:564
+#: Miradi/source/org/miradi/main/MainWindow.java:567
 msgid "Unknown error prevented opening that project"
 msgstr "Un error desconocido impidió que se abriera ese proyecto."
 
