@@ -64,6 +64,12 @@ public class ProjectRepairer
 		return repairer.findOrphans();
 	}
 	
+	public static Vector<ORef> deleteEmptyOrphans(Project project, Vector<ORef> orphanRefs) throws Exception
+	{
+		ProjectRepairer repairer = new ProjectRepairer(project);
+		return repairer.deleteEmptyOrphans(orphanRefs);
+	}
+
 	public ProjectRepairer(Project projectToRepair)
 	{
 		project = projectToRepair;
@@ -339,6 +345,22 @@ public class ProjectRepairer
 		return missingObjectRefs;
 	}
 	
+	public Vector<ORef> deleteEmptyOrphans(Vector<ORef> orphanRefs) throws Exception
+	{
+		Vector<ORef> deletedRefs = new Vector<ORef>();
+		for(ORef orphanRef : orphanRefs)
+		{
+			BaseObject object = BaseObject.find(getProject(), orphanRef);
+			if(object.isEmpty())
+			{
+				getProject().deleteObject(object);
+				deletedRefs.add(orphanRef);
+			}
+		}
+		
+		return deletedRefs;
+	}
+
 	private Project getProject()
 	{
 		return project;

@@ -582,9 +582,17 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private void scanForOrphans() throws Exception
 	{
 		Vector<ORef> orphanRefs = ProjectRepairer.scanForOrphans(project);
+		
+		Vector<ORef> deletedRefs = ProjectRepairer.deleteEmptyOrphans(project, orphanRefs);
+		if(deletedRefs.size() > 0)
+		{
+			EAM.logWarning("Found and deleted " + deletedRefs.size() + " empty orphan objects");
+			orphanRefs.removeAll(deletedRefs);
+		}
+		
 		if(orphanRefs.size() == 0)
 			return;
-		
+
 		String title = EAM.text("Lost Objects Detected");
 		String bodyText = EAM.text("" +
 				"The following objects exist in the project, but cannot be accessed." +
