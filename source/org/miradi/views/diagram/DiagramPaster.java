@@ -696,8 +696,8 @@ abstract public class DiagramPaster
 	{
 		BaseId factorLinkId = json.getId(DiagramLink.TAG_WRAPPED_ID);
 		ORef oldFactorLinkRef = new ORef(FactorLink.getObjectType(), factorLinkId);
-		ORef factorLinkRef = getRefFromMap(oldFactorLinkRef);
-		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
+		ORef newFactorLinkRef = getRefFromMap(oldFactorLinkRef);
+		FactorLink factorLink = FactorLink.find(getProject(), newFactorLinkRef);
 		ORef factorRef = factorLink.getFactorRef(direction);
 
 		return getDiagramObject().getDiagramFactor(factorRef).getRef();
