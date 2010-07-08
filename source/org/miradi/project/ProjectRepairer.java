@@ -60,7 +60,7 @@ public class ProjectRepairer
 	public static HashMap<ORef, ORefSet> scanForMissingObjects(Project project) throws Exception
 	{
 		ProjectRepairer repairer = new ProjectRepairer(project);
-		return  repairer.getListOfMissingObjects();
+		return repairer.getListOfMissingObjects();
 	}
 	
 	public static void repairProblemsWherePossible(Project project) throws Exception
