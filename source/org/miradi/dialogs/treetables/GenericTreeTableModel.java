@@ -55,7 +55,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		}
 	}
 
-	public TreePath getPathOfNode(ORef ref)
+	public TreePath findFirstMatchingTreePath(ORef ref)
 	{
 		return findTreePath(ref);
 	}
