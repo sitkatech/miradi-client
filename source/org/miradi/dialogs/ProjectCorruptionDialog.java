@@ -40,17 +40,18 @@ import org.miradi.utils.MiradiScrollPane;
 
 public class ProjectCorruptionDialog extends DialogWithButtonBar
 {
-	public static boolean askUserWhetherToOpen(MainWindow mainWindowToUse, String bodyText, String listOfProblems)
+	public static boolean askUserWhetherToOpen(MainWindow mainWindowToUse, String title, String bodyText, String listOfProblems)
 	{
-		ProjectCorruptionDialog dialog = new ProjectCorruptionDialog(mainWindowToUse, bodyText, listOfProblems);
+		ProjectCorruptionDialog dialog = new ProjectCorruptionDialog(mainWindowToUse, title, bodyText, listOfProblems);
 		dialog.setVisible(true);
 		return dialog.wasPressed();
 	}
 	
-	private ProjectCorruptionDialog(MainWindow mainWindowToUse, String bodyText, String listOfProblems)
+	private ProjectCorruptionDialog(MainWindow mainWindowToUse, String title, String bodyText, String listOfProblems)
 	{
 		super(mainWindowToUse);
 		setModal(true);
+		setTitle(title);
 
 		MiradiPanel panel = new MiradiPanel(new BorderLayout());
 		
