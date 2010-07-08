@@ -27,6 +27,7 @@ import java.awt.Font;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.Transferable;
+import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -36,6 +37,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
+import javax.swing.AbstractAction;
 import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -59,6 +61,7 @@ import org.miradi.dialogs.ProjectCorruptionDialog;
 import org.miradi.exceptions.FutureVersionException;
 import org.miradi.exceptions.OldVersionException;
 import org.miradi.exceptions.UnknownCommandException;
+import org.miradi.icons.IconManager;
 import org.miradi.main.menu.MainMenuBar;
 import org.miradi.objecthelpers.ColorsFileLoader;
 import org.miradi.objecthelpers.ORef;
@@ -614,8 +617,48 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			BaseObject object = BaseObject.find(getProject(), orphanRef);
 			listOfProblems += typeName + ": " + object.getFullName() + " " + orphanRef + "\n";
 		}
+		
+		class DeleteAllOrphansAction extends AbstractAction
+		{
+			public DeleteAllOrphansAction(Vector<ORef> orphanRefsToDelete)
+			{
+				super(EAM.text("Delete All Orphans"), IconManager.getDeleteIcon());
+				orphanRefs = orphanRefsToDelete;
+			}
+			
+			public void actionPerformed(ActionEvent arg0)
+			{
+				try
+				{
+					for(ORef orphanRef : orphanRefs)
+					{
+						BaseObject object = BaseObject.find(getProject(), orphanRef);
+						getProject().deleteObject(object);
+					}
+					EAM.notifyDialog(EAM.text("" +
+							"The orphans have been deleted. Miradi must exit now, \n" +
+							"after which you can restart it and open this project." +
+							"\n\n" +
+							"Additional orphans may be reported then, in which case \n" +
+							"you can delete those, and try again. Depending on the \n" +
+							"nature of the orphans, it may take several cycles to \n" +
+							"eliminate them all."));
+				}
+				catch(Exception e)
+				{
+					EAM.unexpectedErrorDialog(e);
+				}
+				finally
+				{
+					exitNormally();
+				}
+			}
 
-		if(!ProjectCorruptionDialog.askUserWhetherToOpen(this, title, bodyText, listOfProblems))
+			private Vector<ORef> orphanRefs;
+
+		}
+
+		if(!ProjectCorruptionDialog.askUserWhetherToOpen(this, title, bodyText, listOfProblems, new DeleteAllOrphansAction(orphanRefs)))
 			throw new AlreadyHandledException();
 		
 	}
