@@ -76,12 +76,6 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 	}
 	
 	@Override
-	public int getProportionShares(int row)
-	{
-		return getNodeForRow(row).getProportionShares();
-	}
-	
-	@Override
 	public boolean areBudgetValuesAllocated(int row)
 	{
 		return getNodeForRow(row).areBudgetValuesAllocated();
