@@ -61,8 +61,8 @@ import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AccountingCode;
-import org.miradi.objects.CategoryOne;
-import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.BudgetCategoryOne;
+import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.ExpenseAssignment;
@@ -249,9 +249,9 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = fundingSourceRenderer;
 		else if (AccountingCode.is(node.getType()))
 			renderer = accountingCodeRenderer;
-		else if (CategoryOne.is(node.getType()))
+		else if (BudgetCategoryOne.is(node.getType()))
 			renderer = categoryOneRenderer;
-		else if (CategoryTwo.is(node.getType()))
+		else if (BudgetCategoryTwo.is(node.getType()))
 			renderer = categoryTwoRenderer;
 		else if (ScopeBox.is(node.getType()))
 			renderer = scopeBoxRenderer;

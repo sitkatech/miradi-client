@@ -22,14 +22,14 @@ package org.miradi.dialogs.categoryOne;
 
 import org.miradi.dialogs.base.AbsractBudgetCategoryPropertiesPanel;
 import org.miradi.main.EAM;
-import org.miradi.objects.CategoryOne;
+import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.project.Project;
 
 public class CategoryOnePropertiesPanel extends AbsractBudgetCategoryPropertiesPanel
 {
 	public CategoryOnePropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, CategoryOne.getObjectType());
+		super(projectToUse, BudgetCategoryOne.getObjectType());
 	}
 
 	@Override

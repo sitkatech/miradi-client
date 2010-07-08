@@ -23,8 +23,8 @@ import java.util.Set;
 
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.AccountingCode;
-import org.miradi.objects.CategoryOne;
-import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.BudgetCategoryOne;
+import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.utils.OptionalDouble;
@@ -338,6 +338,6 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	private ORef INVALID_RESOURCE_REF = ORef.createInvalidWithType(ProjectResource.getObjectType());
 	private ORef INVALID_FUNDING_SOURCE_REF = ORef.createInvalidWithType(FundingSource.getObjectType());
 	private ORef INVALID_ACCOUNTING_CODE_REF = ORef.createInvalidWithType(AccountingCode.getObjectType());
-	private ORef INVALID_CATEGORY_ONE_REF = ORef.createInvalidWithType(CategoryOne.getObjectType());
-	private ORef INVALID_CATEGORY_TWO_REF = ORef.createInvalidWithType(CategoryTwo.getObjectType());
+	private ORef INVALID_CATEGORY_ONE_REF = ORef.createInvalidWithType(BudgetCategoryOne.getObjectType());
+	private ORef INVALID_CATEGORY_TWO_REF = ORef.createInvalidWithType(BudgetCategoryTwo.getObjectType());
 }

@@ -31,8 +31,8 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objects.CategoryOne;
-import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.BudgetCategoryOne;
+import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
@@ -156,10 +156,10 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		lis.add(dateUnitEffort);
 		getProject().fillObjectUsingCommand(expense, ExpenseAssignment.TAG_DATEUNIT_EFFORTS, lis.toString());
 		
-		CategoryOne categoryOne = getProject().createCategoryOne();
+		BudgetCategoryOne categoryOne = getProject().createCategoryOne();
 		getProject().fillObjectUsingCommand(expense, ExpenseAssignment.TAG_CATEGORY_ONE_REF, categoryOne.getRef().toString());
 		
-		CategoryTwo categoryTwo = getProject().createCategoryTwo();
+		BudgetCategoryTwo categoryTwo = getProject().createCategoryTwo();
 		getProject().fillObjectUsingCommand(expense, ExpenseAssignment.TAG_CATEGORY_TWO_REF, categoryTwo.getRef().toString());
 		
 		validateUsingStringWriter();

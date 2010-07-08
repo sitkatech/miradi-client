@@ -25,8 +25,8 @@ import javax.swing.Icon;
 
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.CategoryOne;
-import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.BudgetCategoryOne;
+import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
@@ -177,10 +177,10 @@ public class IconManager
 		if (AccountingCode.is(type))
 			return getAccountingCodeIcon();
 		
-		if (CategoryOne.is(type))
+		if (BudgetCategoryOne.is(type))
 			return getCategoryOneIcon();
 		
-		if (CategoryTwo.is(type))
+		if (BudgetCategoryTwo.is(type))
 			return getCategoryTwoIcon();
 		
 		if (SubTarget.is(type))

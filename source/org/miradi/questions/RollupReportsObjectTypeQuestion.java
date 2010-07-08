@@ -22,8 +22,8 @@ package org.miradi.questions;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.AccountingCode;
-import org.miradi.objects.CategoryOne;
-import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.BudgetCategoryOne;
+import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 
@@ -42,8 +42,8 @@ public class RollupReportsObjectTypeQuestion extends StaticChoiceQuestion
 			new ChoiceItem(ProjectResource.getObjectType(), EAM.text("Resource")),
 			new ChoiceItem(FundingSource.getObjectType(), EAM.text("Funding Source")),
 			new ChoiceItem(AccountingCode.getObjectType(), EAM.text("Accounting Code")),
-			new ChoiceItem(CategoryOne.getObjectType(), EAM.text("Budget Category One")),
-			new ChoiceItem(CategoryTwo.getObjectType(), EAM.text("Budget Category Two")),
+			new ChoiceItem(BudgetCategoryOne.getObjectType(), EAM.text("Budget Category One")),
+			new ChoiceItem(BudgetCategoryTwo.getObjectType(), EAM.text("Budget Category Two")),
 		};
 	}
 	

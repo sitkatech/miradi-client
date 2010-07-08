@@ -23,8 +23,8 @@ package org.miradi.dialogs;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.objects.AbstractBudgetCategoryObject;
 import org.miradi.objects.AccountingCode;
-import org.miradi.objects.CategoryOne;
-import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.BudgetCategoryOne;
+import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
@@ -49,8 +49,8 @@ public class RollupReportsRowColumnProvider implements RowColumnProvider
 				ProjectResource.OBJECT_NAME,
 				AccountingCode.OBJECT_NAME,
 				FundingSource.OBJECT_NAME,
-				CategoryOne.OBJECT_NAME,
-				CategoryTwo.OBJECT_NAME,
+				BudgetCategoryOne.OBJECT_NAME,
+				BudgetCategoryTwo.OBJECT_NAME,
 		});
 	}
 }

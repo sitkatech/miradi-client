@@ -24,7 +24,7 @@ import org.miradi.dialogs.planning.CategoryOneCoreRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.BaseObjectTreeRootNode;
 import org.miradi.dialogs.planning.treenodes.HiddenRootNodeWithBaseObjectChild;
 import org.miradi.dialogs.treetables.TreeTableNode;
-import org.miradi.objects.CategoryOne;
+import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
@@ -55,12 +55,12 @@ public class CategoryOneTreeTableModel extends ExportablePlanningTreeTableModel
 	
 	private static TreeTableNode createRootNode(Project project) throws Exception
 	{
-		return new BaseObjectTreeRootNode(project, CategoryOne.getObjectType(), CategoryOne.OBJECT_NAME, getRowColumnProvider());
+		return new BaseObjectTreeRootNode(project, BudgetCategoryOne.getObjectType(), BudgetCategoryOne.OBJECT_NAME, getRowColumnProvider());
 	}
 	
 	private static TreeTableNode createHiddenRootNode(Project project) throws Exception
 	{
-		return new HiddenRootNodeWithBaseObjectChild(project, CategoryOne.getObjectType(), CategoryOne.OBJECT_NAME, getRowColumnProvider());
+		return new HiddenRootNodeWithBaseObjectChild(project, BudgetCategoryOne.getObjectType(), BudgetCategoryOne.OBJECT_NAME, getRowColumnProvider());
 	}
 	
 	private static CodeList getRowColumnProvider()

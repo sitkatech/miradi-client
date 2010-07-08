@@ -22,14 +22,14 @@ package org.miradi.dialogs.categoryTwo;
 
 import org.miradi.dialogs.base.AbsractBudgetCategoryPropertiesPanel;
 import org.miradi.main.EAM;
-import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.project.Project;
 
 public class CategoryTwoPropertiesPanel extends AbsractBudgetCategoryPropertiesPanel
 {
 	public CategoryTwoPropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, CategoryTwo.getObjectType());
+		super(projectToUse, BudgetCategoryTwo.getObjectType());
 	}
 
 	@Override

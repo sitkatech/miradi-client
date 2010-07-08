@@ -51,8 +51,8 @@ import org.miradi.objects.AbstractBudgetCategoryObject;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Audience;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.CategoryOne;
-import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.BudgetCategoryOne;
+import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -559,17 +559,17 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return organization;
 	}
 	
-	public CategoryOne createAndPopulateCategoryOne() throws Exception
+	public BudgetCategoryOne createAndPopulateCategoryOne() throws Exception
 	{
-		CategoryOne categoryOne = createCategoryOne();
+		BudgetCategoryOne categoryOne = createCategoryOne();
 		populateCategoryOne(categoryOne);
 		
 		return categoryOne;
 	}
 	
-	public CategoryTwo createAndPopulateCategoryTwo() throws Exception
+	public BudgetCategoryTwo createAndPopulateCategoryTwo() throws Exception
 	{
-		CategoryTwo categoryTwo = createCategoryTwo();
+		BudgetCategoryTwo categoryTwo = createCategoryTwo();
 		populateCategoryTwo(categoryTwo);
 		
 		return categoryTwo;
@@ -899,16 +899,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return AccountingCode.find(this, accountingCodeRef);
 	}
 	
-	public CategoryOne createCategoryOne() throws Exception
+	public BudgetCategoryOne createCategoryOne() throws Exception
 	{
-		ORef categoryOneRef = createObject(CategoryOne.getObjectType());
-		return CategoryOne.find(this, categoryOneRef);
+		ORef categoryOneRef = createObject(BudgetCategoryOne.getObjectType());
+		return BudgetCategoryOne.find(this, categoryOneRef);
 	}
 	
-	public CategoryTwo createCategoryTwo() throws Exception
+	public BudgetCategoryTwo createCategoryTwo() throws Exception
 	{
-		ORef categoryTwoRef = createObject(CategoryTwo.getObjectType());
-		return CategoryTwo.find(this, categoryTwoRef);
+		ORef categoryTwoRef = createObject(BudgetCategoryTwo.getObjectType());
+		return BudgetCategoryTwo.find(this, categoryTwoRef);
 	}
 
 	public ThreatReductionResult createThreatReductionResult() throws Exception
@@ -1326,13 +1326,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(organization, Organization.TAG_COMMENTS, "Some organization comments");
 	}
 	
-	public void populateCategoryOne(CategoryOne categoryOne) throws Exception
+	public void populateCategoryOne(BudgetCategoryOne categoryOne) throws Exception
 	{
 		fillObjectWithSampleStringData(categoryOne, AbstractBudgetCategoryObject.TAG_CODE);
 		fillObjectWithSampleStringData(categoryOne, AbstractBudgetCategoryObject.TAG_COMMENTS);
 	}
 	
-	public void populateCategoryTwo(CategoryTwo categoryTwo) throws Exception
+	public void populateCategoryTwo(BudgetCategoryTwo categoryTwo) throws Exception
 	{
 		fillObjectWithSampleStringData(categoryTwo, AbstractBudgetCategoryObject.TAG_CODE);
 		fillObjectWithSampleStringData(categoryTwo, AbstractBudgetCategoryObject.TAG_COMMENTS);

@@ -28,16 +28,16 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class CategoryTwo extends AbstractBudgetCategoryObject
+public class BudgetCategoryOne extends AbstractBudgetCategoryObject
 {
-	public CategoryTwo(ObjectManager objectManager, BaseId idToUse)
+	public BudgetCategoryOne(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse);
 		
 		clear();
 	}
 		
-	public CategoryTwo(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	public BudgetCategoryOne(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new BaseId(idAsInt), json);
 	}
@@ -62,13 +62,13 @@ public class CategoryTwo extends AbstractBudgetCategoryObject
 	
 	public static int getObjectType()
 	{
-		return ObjectType.CATEGORY_TWO;
+		return ObjectType.CATEGORY_ONE;
 	}
 	
 	@Override
 	public String toString()
 	{
-		return toString(EAM.text("Label|Budget Category Two"));
+		return toString(EAM.text("Label|Budget Category One"));
 	}
 	
 	public static boolean is(BaseObject object)
@@ -86,15 +86,15 @@ public class CategoryTwo extends AbstractBudgetCategoryObject
 		return objectType == getObjectType();
 	}
 	
-	public static CategoryTwo find(ObjectManager objectManager, ORef ref)
+	public static BudgetCategoryOne find(ObjectManager objectManager, ORef ref)
 	{
-		return (CategoryTwo) objectManager.findObject(ref);
+		return (BudgetCategoryOne) objectManager.findObject(ref);
 	}
 	
-	public static CategoryTwo find(Project project, ORef ref)
+	public static BudgetCategoryOne find(Project project, ORef ref)
 	{
 		return find(project.getObjectManager(), ref);
 	}
 	
-	public static final String OBJECT_NAME = "CategoryTwo";
+	public static final String OBJECT_NAME = "CategoryOne";
 }

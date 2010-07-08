@@ -21,8 +21,8 @@ package org.miradi.objecthelpers;
 
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Audience;
-import org.miradi.objects.CategoryOne;
-import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.BudgetCategoryOne;
+import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.CostAllocationRule;
 import org.miradi.objects.FosProjectData;
@@ -188,8 +188,8 @@ public class ObjectType
 			IucnRedlistSpecies.getObjectType(),
 			OtherNotableSpecies.getObjectType(),
 			Audience.getObjectType(),
-			CategoryOne.getObjectType(),
-			CategoryTwo.getObjectType(),
+			BudgetCategoryOne.getObjectType(),
+			BudgetCategoryTwo.getObjectType(),
 		};
 	}
 }

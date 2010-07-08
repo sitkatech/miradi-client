@@ -29,6 +29,6 @@ public class TestCategoryTwo extends ObjectTestCase
 
 	public void testFields() throws Exception
 	{
-		verifyFields(CategoryTwo.getObjectType());
+		verifyFields(BudgetCategoryTwo.getObjectType());
 	}
 }

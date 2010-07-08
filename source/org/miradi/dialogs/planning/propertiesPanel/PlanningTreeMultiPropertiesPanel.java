@@ -42,8 +42,8 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AccountingCode;
-import org.miradi.objects.CategoryOne;
-import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.BudgetCategoryOne;
+import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.FundingSource;
@@ -200,10 +200,10 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		if (AccountingCode.is(objectType))
 			return accountingCodePropertiesPanel;
 		
-		if (CategoryOne.is(objectType))
+		if (BudgetCategoryOne.is(objectType))
 			return categoryOnePropertiesPanel;
 		
-		if (CategoryTwo.is(objectType))
+		if (BudgetCategoryTwo.is(objectType))
 			return categoryTwoPropertiesPanel;
 		
 		if (SubTarget.is(objectType))
