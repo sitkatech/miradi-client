@@ -59,12 +59,6 @@ public class PlanningTreeTable extends TreeTableWithPreferredScrollableViewportS
 	}
 	
 	@Override
-	public boolean areBudgetValuesAllocated(int row)
-	{
-		return getNodeForRow(row).areBudgetValuesAllocated();
-	}
-	
-	@Override
 	protected Set<Class> getRelevantActions()
 	{
 		HashSet<Class> actions = new HashSet<Class>();
