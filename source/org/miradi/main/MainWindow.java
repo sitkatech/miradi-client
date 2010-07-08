@@ -593,6 +593,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		if(orphanRefs.size() == 0)
 			return;
 
+		if(!Miradi.isAlphaTesterMode())
+			return;
+		
 		String title = EAM.text("Lost Objects Detected");
 		String bodyText = EAM.text("" +
 				"The following objects exist in the project, but cannot be accessed." +
@@ -609,7 +612,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			String typeName = ObjectType.getUserFriendlyObjectTypeName(orphanRef.getObjectType());
 			listOfProblems += typeName + " " + orphanRef + "\n";
 		}
-		
+
 		if(!ProjectCorruptionDialog.askUserWhetherToOpen(this, title, bodyText, listOfProblems))
 			throw new AlreadyHandledException();
 		
