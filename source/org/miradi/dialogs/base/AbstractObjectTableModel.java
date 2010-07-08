@@ -80,7 +80,7 @@ abstract public class AbstractObjectTableModel extends AbstractTableModel  imple
 	
 	public ORefList getObjectHiearchy(int row, int column)
 	{
-		return new ORefList(getBaseObjectForRowColumn(row, column));
+		throw new RuntimeException("Method is currently unused and has no implementation");
 	}
 	
 	abstract public String getUniqueTableModelIdentifier();

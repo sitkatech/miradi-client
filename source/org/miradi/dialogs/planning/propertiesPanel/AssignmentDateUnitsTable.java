@@ -227,7 +227,7 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 	
 	public ORefList getObjectHiearchy(int row, int column)
 	{
-		return new ORefList(getBaseObjectForRowColumn(row, column));
+		throw new RuntimeException("Method is currently unused and has no implementation");
 	}
 		
 	public static final String UNIQUE_IDENTIFIER = "WorkUnitsTable";

@@ -260,7 +260,7 @@ abstract public class ObjectTable extends SortableRowTable implements ObjectPick
 	
 	public ORefList getObjectHiearchy(int row, int column)
 	{
-		return new ORefList(getBaseObjectForRowColumn(row, column));
+		throw new RuntimeException("Method is currently unused and has no implementation");
 	}
 
 	private Vector selectionListeners;

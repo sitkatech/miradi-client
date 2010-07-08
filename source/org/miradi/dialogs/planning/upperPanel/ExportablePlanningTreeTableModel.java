@@ -111,7 +111,7 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 	
 	public ORefList getObjectHiearchy(int row, int column)
 	{
-		return new ORefList(getBaseObjectForRowColumn(row, column));
+		throw new RuntimeException("Method is currently unused and has no implementation");
 	}
 	
 	private String uniqueTreeTableModelIdentifier;
