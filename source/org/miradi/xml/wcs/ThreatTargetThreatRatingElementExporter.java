@@ -67,8 +67,11 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 		for(Target target : targets)
 		{
 			ORefSet upstreamThreats = chain.getUpstreamThreatRefsFromTarget(target);
-			for(ORef threatRef : upstreamThreats)
+			ORefList sortedUpStreamThreats = new ORefList(upstreamThreats);
+			sortedUpStreamThreats.sort();
+			for (int index = 0; index < sortedUpStreamThreats.size(); ++index)
 			{
+				ORef threatRef = sortedUpStreamThreats.get(index);
 				getWcsXmlExporter().writeStartElement(THREAT_RATING);
 				
 				ORef targetRef = target.getRef();
