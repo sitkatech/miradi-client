@@ -195,12 +195,12 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel 
 
 	public int getProportionShares(int row)
 	{
-		throw new RuntimeException("getProportionShares has not been implemented by ObjectTableModel");
+		throw new RuntimeException("getProportionShares has not been implemented by AbstractThreatTargetTableModel");
 	}
 
 	public boolean areBudgetValuesAllocated(int row)
 	{
-		return false;
+		throw new RuntimeException("areBudgetValuesAllocated has not been implemented by AbstractThreatTargetTableModel");
 	}
 
 	public ORef getLinkRef(Factor from, Factor to)
