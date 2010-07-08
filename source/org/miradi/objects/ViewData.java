@@ -168,6 +168,11 @@ public class ViewData extends BaseObject
 		return find(project.getObjectManager(), viewDataRef);
 	}
 	
+	public static boolean is(ORef ref)
+	{
+		return ref.getObjectType() == getObjectType();
+	}
+
 	@Override
 	void clear()
 	{
