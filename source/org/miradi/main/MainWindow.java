@@ -531,7 +531,14 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		}
 		catch(AlreadyHandledException e)
 		{
-			// No action required here
+			try
+			{
+				closeProject();
+			}
+			catch(Exception exceptionDuringClose)
+			{
+				throw new RuntimeException("Unable to close the partially-opened project", exceptionDuringClose);
+			}
 		}
 		catch(UnknownCommandException e)
 		{
