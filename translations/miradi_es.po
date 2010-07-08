@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-08 10:19-0500\n"
+"POT-Creation-Date: 2010-07-08 13:07-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -345,7 +345,7 @@ msgstr ""
 "<BR>Comuníquese con el equipo de soporte técnico de Miradi (<a href=\"mailto:"
 "support@miradi.org\">support@miradi.org<a>) para obtener ayuda.</HTML>"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1192
+#: Miradi/source/org/miradi/main/MainWindow.java:1200
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -3251,7 +3251,7 @@ msgstr "Estimar costos para actividades y monitoreo"
 msgid "Euro"
 msgstr "Euro "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:775
+#: Miradi/source/org/miradi/main/MainWindow.java:783
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -4328,7 +4328,7 @@ msgstr "Listas"
 msgid "Location"
 msgstr "Localización"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:588
+#: Miradi/source/org/miradi/main/MainWindow.java:596
 msgid "Lost Objects Detected"
 msgstr ""
 
@@ -4759,7 +4759,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:618
+#: Miradi/source/org/miradi/main/MainWindow.java:626
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5281,7 +5281,7 @@ msgstr "Proyecto"
 msgid "Project Advisor"
 msgstr "Asesor del proyecto "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:616
+#: Miradi/source/org/miradi/main/MainWindow.java:624
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -5309,7 +5309,7 @@ msgstr "Recurso del proyecto"
 msgid "Project Resource Filter Editor"
 msgstr "Editor del filtro de recursos del proyecto"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:773
+#: Miradi/source/org/miradi/main/MainWindow.java:781
 msgid "Project Resource Filter Is On"
 msgstr "El filtro de recursos del proyecto está activado."
 
@@ -5889,7 +5889,7 @@ msgstr "Parte interesada "
 msgid "Standard Reports"
 msgstr "Informes estándar"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:807
+#: Miradi/source/org/miradi/main/MainWindow.java:815
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -7114,7 +7114,7 @@ msgstr ""
 "El archivo MPZ no puede guardarse en una carpeta dentro del proyecto que se "
 "exportará."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:589
+#: Miradi/source/org/miradi/main/MainWindow.java:597
 msgid ""
 "The following objects exist in the project, but cannot be accessed.\n"
 "\n"
@@ -7576,7 +7576,7 @@ msgstr ""
 "No se puede eliminar el nombre de este proyecto porque otra copia de esta "
 "aplicación lo está usando:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1176
+#: Miradi/source/org/miradi/main/MainWindow.java:1184
 msgid "Unable to launch external web browser"
 msgstr "No se pudo iniciar el navegador web externo."
 
@@ -7597,7 +7597,7 @@ msgstr ""
 "No se puede cambiar el nombre de este proyecto porque otra copia de esta "
 "aplicación lo está usando:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:964
+#: Miradi/source/org/miradi/main/MainWindow.java:972
 msgid "Unable to save preferences"
 msgstr "No se pudieron grabar las preferencias."
 

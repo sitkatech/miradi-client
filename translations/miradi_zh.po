@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-08 10:19-0500\n"
+"POT-Creation-Date: 2010-07-08 13:07-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -324,7 +324,7 @@ msgid ""
 "\">support@miradi.org<a>) for assistance</HTML>"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1192
+#: Miradi/source/org/miradi/main/MainWindow.java:1200
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -3107,7 +3107,7 @@ msgstr "估计活动及监控的开销 \t\t"
 msgid "Euro"
 msgstr "欧元"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:775
+#: Miradi/source/org/miradi/main/MainWindow.java:783
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -4154,7 +4154,7 @@ msgstr ""
 msgid "Location"
 msgstr "地点 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:588
+#: Miradi/source/org/miradi/main/MainWindow.java:596
 msgid "Lost Objects Detected"
 msgstr ""
 
@@ -4551,7 +4551,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:618
+#: Miradi/source/org/miradi/main/MainWindow.java:626
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5054,7 +5054,7 @@ msgstr "项目 \t\t"
 msgid "Project Advisor"
 msgstr "项目顾问"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:616
+#: Miradi/source/org/miradi/main/MainWindow.java:624
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -5082,7 +5082,7 @@ msgstr ""
 msgid "Project Resource Filter Editor"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:773
+#: Miradi/source/org/miradi/main/MainWindow.java:781
 msgid "Project Resource Filter Is On"
 msgstr ""
 
@@ -5632,7 +5632,7 @@ msgstr "利益相关者"
 msgid "Standard Reports"
 msgstr "标准报告 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:807
+#: Miradi/source/org/miradi/main/MainWindow.java:815
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -6823,7 +6823,7 @@ msgid ""
 "The MPZ file cannot be saved to a folder within the project being exported"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:589
+#: Miradi/source/org/miradi/main/MainWindow.java:597
 msgid ""
 "The following objects exist in the project, but cannot be accessed.\n"
 "\n"
@@ -7272,7 +7272,7 @@ msgstr ""
 "无法删除该项目，因为它正被该应用程序的另一拷贝所使用:\n"
 " \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1176
+#: Miradi/source/org/miradi/main/MainWindow.java:1184
 msgid "Unable to launch external web browser"
 msgstr "无法运行外部网页浏览器 \t\t"
 
@@ -7293,7 +7293,7 @@ msgstr ""
 "无法重命名该项目，因为它正被该应用程序的另一拷贝所使用:\n"
 " \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:964
+#: Miradi/source/org/miradi/main/MainWindow.java:972
 msgid "Unable to save preferences"
 msgstr "无法保存优先选项 \t\t"
 
