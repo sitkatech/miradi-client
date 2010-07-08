@@ -182,11 +182,6 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel
 		return getObjectFromRow(row);
 	}
 	
-	public int getProportionShares(int row)
-	{
-		throw new RuntimeException("getProportionShares has not been implemented by ObjectTableModel");
-	}
-	
 	public boolean areBudgetValuesAllocated(int row)
 	{
 		throw new RuntimeException("areBudgetValuesAllocated has not been implemented by ObjectTableModel");
