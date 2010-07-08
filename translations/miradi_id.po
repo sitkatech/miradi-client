@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-08 09:04-0500\n"
+"POT-Creation-Date: 2010-07-08 09:40-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -4056,11 +4056,11 @@ msgstr "--- mempengaruhi --> "
 msgid "Label|Biodiversity Area (hectares)"
 msgstr "Daerah Keanekaragaman Hayati (hektar) "
 
-#: Miradi/source/org/miradi/objects/CategoryOne.java:71
+#: Miradi/source/org/miradi/objects/BudgetCategoryOne.java:71
 msgid "Label|Budget Category One"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/CategoryTwo.java:71
+#: Miradi/source/org/miradi/objects/BudgetCategoryTwo.java:71
 msgid "Label|Budget Category Two"
 msgstr ""
 

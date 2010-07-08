@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-08 09:04-0500\n"
+"POT-Creation-Date: 2010-07-08 09:40-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -4075,11 +4075,11 @@ msgstr "--- afecta -->"
 msgid "Label|Biodiversity Area (hectares)"
 msgstr "Área de biodiversidad (hectáreas)"
 
-#: Miradi/source/org/miradi/objects/CategoryOne.java:71
+#: Miradi/source/org/miradi/objects/BudgetCategoryOne.java:71
 msgid "Label|Budget Category One"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/CategoryTwo.java:71
+#: Miradi/source/org/miradi/objects/BudgetCategoryTwo.java:71
 msgid "Label|Budget Category Two"
 msgstr ""
 
