@@ -79,8 +79,8 @@ public class ObjectType
 	public static final int RESULTS_CHAIN_DIAGRAM = 24;
 	public static final int THREAT_REDUCTION_RESULT = 25;
 	public static final int TEXT_BOX = 26;
-	public static final int SLIDE = 27;		// Never used in production
-	public static final int SLIDESHOW = 28;	// Never used in production
+//	public static final int SLIDE = 27;		// Never used in production
+//	public static final int SLIDESHOW = 28;	// Never used in production
 	public static final int OBJECT_TREE_TABLE_CONFIGURATION = 29;
 	public static final int WWF_PROJECT_DATA = 30;
 	public static final int COST_ALLOCATION_RULE = 31;
@@ -167,13 +167,10 @@ public class ObjectType
 			ViewData.getObjectType(),
 			ProjectResource.getObjectType(),
 			ProjectMetadata.getObjectType(),
-			ObjectType.FAKE,
 			AccountingCode.getObjectType(),
 			FundingSource.getObjectType(),
 			ConceptualModelDiagram.getObjectType(),
 			ResultsChainDiagram.getObjectType(),
-			ObjectType.SLIDE,
-			ObjectType.SLIDESHOW,
 			ObjectTreeTableConfiguration.getObjectType(),
 			WwfProjectData.getObjectType(),
 			CostAllocationRule.getObjectType(),
