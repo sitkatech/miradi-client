@@ -75,7 +75,7 @@ public class ProjectCorruptionDialog extends DialogWithButtonBar
 
 		setButtons(buttons);
 		setSimpleCloseButton(closeButton);
-		setSize(600, 400);
+		pack();
 		Utilities.centerDlg(this);
 
 		openProjectAnywayHandler = new OpenProjectAnywayHandler();
