@@ -24,6 +24,7 @@ import javax.swing.tree.TreePath;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -98,9 +99,18 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 		ORef rowObjectRef = rowObjectRefs.get(row);
 		if (rowObjectRef.isInvalid())
 			return null;
-		TreePath path = findFirstMatchingTreePath(rowObjectRef);
-		TreeTableNode node = (TreeTableNode) path.getLastPathComponent();
-		return node;
+		
+		try
+		{
+			TreePath path = getFullyExpandedTreePathList().get(row);
+			
+			return (TreeTableNode) path.getLastPathComponent();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			throw new RuntimeException(e);
+		}
 	}
 	
 	@Override
