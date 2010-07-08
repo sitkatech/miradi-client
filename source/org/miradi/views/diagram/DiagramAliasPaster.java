@@ -41,7 +41,6 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.ViewData;
-import org.miradi.project.ProjectRepairer;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class DiagramAliasPaster extends DiagramPaster
@@ -60,9 +59,7 @@ public class DiagramAliasPaster extends DiagramPaster
 		updateAutoCreatedThreatStressRatings();
 		selectNewlyPastedItems();
 
-		ProjectRepairer repairer = new ProjectRepairer(getProject());
 		deleteOrphansCreatedDuringPaste();
-		repairer.logOrphansAndSimilarProblems();
 	}
 	
 	private void deleteOrphansCreatedDuringPaste() throws Exception
