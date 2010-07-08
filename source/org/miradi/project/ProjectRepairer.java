@@ -23,7 +23,6 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.util.HashMap;
 
-import org.miradi.dialogs.ProjectCorruptionDialog;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -57,33 +56,10 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectRepairer
 {
-	public static boolean scanForSeriousCorruption(Project project) throws Exception
+	public static HashMap<ORef, ORefSet> scanForMissingObjects(Project project) throws Exception
 	{
 		ProjectRepairer repairer = new ProjectRepairer(project);
-		HashMap<ORef, ORefSet> rawProblems = repairer.possiblyShowMissingObjectsWarningDialog();
-		if(rawProblems.size() == 0)
-			return true;
-
-		String title = EAM.text("Project Corruption Detected");
-		String bodyText = EAM.text(
-				"Miradi has detected one or more problems with this project " + 
-				"which could cause errors or further damage in the future. " +
-				"\n" +
-				"The specific problems are listed below, to help assess the " +
-				"severity of the damage. " +
-				"\n" +
-				"We recommend that you close this project and contact the " +
-				"Miradi support team so they can safely repair this project.");
-
-		String listOfProblems = "";
-		for(ORef missingRef : rawProblems.keySet())
-		{
-			ORefSet referrers = rawProblems.get(missingRef);
-			String typeName = ObjectType.getUserFriendlyObjectTypeName(missingRef.getObjectType());
-			listOfProblems += "Missing " + typeName + " " + missingRef + " referred to by " + referrers.toString() + "\n";
-		}
-		
-		return ProjectCorruptionDialog.askUserWhetherToOpen(EAM.getMainWindow(), title, bodyText, listOfProblems);
+		return  repairer.getListOfMissingObjects();
 	}
 	
 	public static void repairProblemsWherePossible(Project project) throws Exception
@@ -332,7 +308,7 @@ public class ProjectRepairer
 			EAM.logWarning("Deleted " + deletedRefs.size() + " TSR's with invalid refs");
 	}
 
-	private HashMap<ORef, ORefSet> possiblyShowMissingObjectsWarningDialog() throws Exception
+	private HashMap<ORef, ORefSet> getListOfMissingObjects() throws Exception
 	{
 		HashMap<ORef, ORefSet> missingObjectsAndReferrers = new HashMap<ORef, ORefSet>();
 
