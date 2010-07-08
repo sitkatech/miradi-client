@@ -65,7 +65,7 @@ public class ProjectRepairer
 	public static void repairProblemsWherePossible(Project project) throws Exception
 	{
 		ProjectRepairer repairer = new ProjectRepairer(project);
-		repairer.repair();
+		repairer.repairProblemsWherePossible();
 	}
 	
 	public static void reportOrphansAndMinorProblems(Project project) throws Exception
@@ -79,7 +79,7 @@ public class ProjectRepairer
 		project = projectToRepair;
 	}
 	
-	void repair() throws Exception
+	void repairProblemsWherePossible() throws Exception
 	{
 		fixAnyProblemsWithThreatStressRatings();
 		repairUnsnappedNodes();
