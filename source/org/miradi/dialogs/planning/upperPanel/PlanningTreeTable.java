@@ -59,12 +59,6 @@ public class PlanningTreeTable extends TreeTableWithPreferredScrollableViewportS
 	}
 	
 	@Override
-	public int getProportionShares(int row)
-	{
-		return getNodeForRow(row).getProportionShares();
-	}
-	
-	@Override
 	public boolean areBudgetValuesAllocated(int row)
 	{
 		return getNodeForRow(row).areBudgetValuesAllocated();
