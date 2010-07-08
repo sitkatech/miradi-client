@@ -68,6 +68,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objecthelpers.TwoLevelEntry;
 import org.miradi.objects.Assignment;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TableSettings;
@@ -610,7 +611,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		for(ORef orphanRef : orphanRefs)
 		{
 			String typeName = ObjectType.getUserFriendlyObjectTypeName(orphanRef.getObjectType());
-			listOfProblems += typeName + " " + orphanRef + "\n";
+			BaseObject object = BaseObject.find(getProject(), orphanRef);
+			listOfProblems += typeName + ": " + object.getFullName() + " " + orphanRef + "\n";
 		}
 
 		if(!ProjectCorruptionDialog.askUserWhetherToOpen(this, title, bodyText, listOfProblems))

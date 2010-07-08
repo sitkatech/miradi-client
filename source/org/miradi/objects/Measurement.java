@@ -96,6 +96,12 @@ public class Measurement extends BaseObject
 		return date.toString();
 	}
 	
+	@Override
+	public String getFullName()
+	{
+		return date.toString() + ": " + getSummary();
+	}
+	
 	public static boolean is(BaseObject object)
 	{
 		if(object == null)

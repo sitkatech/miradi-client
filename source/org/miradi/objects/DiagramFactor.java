@@ -28,6 +28,7 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorId;
+import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.DimensionData;
 import org.miradi.objectdata.ORefData;
@@ -227,6 +228,15 @@ public class DiagramFactor extends BaseObject
 			return getGroupBoxChildrenRefs();
 		
 		return new ORefList(getRef());
+	}
+	
+	@Override
+	public String getFullName()
+	{
+		Factor wrappedFactor = Factor.findFactor(objectManager, getWrappedORef());
+		if(wrappedFactor == null)
+			return EAM.text("(Unknown)");
+		return wrappedFactor.getFullName();
 	}
 	
 	public boolean isGroupBoxFactor()
