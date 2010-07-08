@@ -63,15 +63,8 @@ public class ProjectRepairer
 		HashMap<ORef, ORefSet> rawProblems = repairer.possiblyShowMissingObjectsWarningDialog();
 		if(rawProblems.size() == 0)
 			return true;
-		
-		String listOfProblems = "";
-		for(ORef missingRef : rawProblems.keySet())
-		{
-			ORefSet referrers = rawProblems.get(missingRef);
-			String typeName = ObjectType.getUserFriendlyObjectTypeName(missingRef.getObjectType());
-			listOfProblems += "Missing " + typeName + " " + missingRef + " referred to by " + referrers.toString() + "\n";
-		}
-		
+
+		String title = EAM.text("Project Corruption Detected");
 		String bodyText = EAM.text(
 				"Miradi has detected one or more problems with this project " + 
 				"which could cause errors or further damage in the future. " +
@@ -82,7 +75,15 @@ public class ProjectRepairer
 				"We recommend that you close this project and contact the " +
 				"Miradi support team so they can safely repair this project.");
 
-		return ProjectCorruptionDialog.askUserWhetherToOpen(EAM.getMainWindow(), bodyText, listOfProblems);
+		String listOfProblems = "";
+		for(ORef missingRef : rawProblems.keySet())
+		{
+			ORefSet referrers = rawProblems.get(missingRef);
+			String typeName = ObjectType.getUserFriendlyObjectTypeName(missingRef.getObjectType());
+			listOfProblems += "Missing " + typeName + " " + missingRef + " referred to by " + referrers.toString() + "\n";
+		}
+		
+		return ProjectCorruptionDialog.askUserWhetherToOpen(EAM.getMainWindow(), title, bodyText, listOfProblems);
 	}
 	
 	public static void repairProblemsWherePossible(Project project) throws Exception
