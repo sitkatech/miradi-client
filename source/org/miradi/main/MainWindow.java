@@ -520,7 +520,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			
 			ProjectRepairer.repairProblemsWherePossible(project);
 			scanForSeriousCorruption();
-			ProjectRepairer.reportOrphansAndMinorProblems(project);
+			ProjectRepairer.scanForOrphans(project);
 			refreshWizard();
 
 			validate();

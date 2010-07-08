@@ -69,7 +69,7 @@ public class ProjectRepairer
 		repairer.repairProblemsWherePossible();
 	}
 	
-	public static void reportOrphansAndMinorProblems(Project project) throws Exception
+	public static void scanForOrphans(Project project) throws Exception
 	{
 		ProjectRepairer repairer = new ProjectRepairer(project);
 		repairer.logOrphansAndSimilarProblems();
