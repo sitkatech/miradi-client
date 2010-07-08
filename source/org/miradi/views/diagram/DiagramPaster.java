@@ -638,8 +638,14 @@ abstract public class DiagramPaster
 			String movedBendPointsAsString = movePoints(originalBendPoints, offsetToAvoidOverlaying);
 			json.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
 			
-			ORef fromDiagramFactorRef = getDiagramFactorEnd(json, FactorLink.FROM);
-			ORef toDiagramFactorRef = getDiagramFactorEnd(json, FactorLink.TO);
+			ORef fromDiagramFactorRef = getGroupBoxDiagramFactorEnd(json, FactorLink.FROM);
+			if (fromDiagramFactorRef.isInvalid())
+				fromDiagramFactorRef = getDiagramFactorEnd(json, FactorLink.FROM);
+			
+			ORef toDiagramFactorRef = getGroupBoxDiagramFactorEnd(json, FactorLink.TO);
+			if (toDiagramFactorRef.isInvalid())
+				toDiagramFactorRef = getDiagramFactorEnd(json, FactorLink.TO);
+			
 			DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), fromDiagramFactorRef);
 			DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), toDiagramFactorRef);
 
@@ -671,28 +677,30 @@ abstract public class DiagramPaster
 		}
 	}
 
-	private ORef getDiagramFactorEnd(EnhancedJsonObject json, int direction)
+	private ORef getGroupBoxDiagramFactorEnd(EnhancedJsonObject json, int direction)
 	{
 		String diagramFactorEndTag = DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID;
 		if (direction == FactorLink.TO)
 			diagramFactorEndTag = DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID;
 		
 		ORef diagramFactorRef = getDiagramFactorId(json, diagramFactorEndTag);
-		if (getDiagramModel().containsDiagramFactor(diagramFactorRef))
-			return diagramFactorRef;
-		
 		BaseId factorLinkId = json.getId(DiagramLink.TAG_WRAPPED_ID);
 		ORef oldFactorLinkRef = new ORef(FactorLink.getObjectType(), factorLinkId);
 		if (oldFactorLinkRef.isInvalid())
 			return diagramFactorRef;
 		
+		return ORef.INVALID;
+	}
+	
+	private ORef getDiagramFactorEnd(EnhancedJsonObject json, int direction)
+	{
+		BaseId factorLinkId = json.getId(DiagramLink.TAG_WRAPPED_ID);
+		ORef oldFactorLinkRef = new ORef(FactorLink.getObjectType(), factorLinkId);
 		ORef factorLinkRef = getRefFromMap(oldFactorLinkRef);
 		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
 		ORef factorRef = factorLink.getFactorRef(direction);
-		if (getDiagramObject().containsWrappedFactorRef(factorRef))
-			return getDiagramObject().getDiagramFactor(factorRef).getRef();
-		
-		return diagramFactorRef;
+
+		return getDiagramObject().getDiagramFactor(factorRef).getRef();
 	}
 
 	private CreateDiagramFactorLinkParameter createFactorLinkExtraInfo(ORef fromDiagramFactorRef, ORef toDiagramFactorRef, ORef newFactorLinkRef)
