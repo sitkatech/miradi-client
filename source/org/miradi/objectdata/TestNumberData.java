@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2010, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -17,50 +17,22 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+
 package org.miradi.objectdata;
 
-import org.miradi.main.EAM;
-import org.miradi.main.EAMTestCase;
+import org.martus.util.TestCaseEnhanced;
 
-public class TestIntegerData extends EAMTestCase
+public class TestNumberData extends TestCaseEnhanced
 {
-	public TestIntegerData(String name)
+	public TestNumberData(String name)
 	{
 		super(name);
 	}
 
 	public void testFormatting() throws Exception
 	{
-		IntegerData data = new IntegerData("tag");
+		NumberData data = new NumberData("tag");
 		data.set("5e7");
 		assertEquals("Didn't avoid scientific notation?", "50000000", data.get());
-	}
-	
-	public void testReadingFloatingValues() throws Exception
-	{
-		IntegerData data = new IntegerData("tag");
-		try
-		{
-			EAM.setLogToString();
-			data.set("1.0");
-			assertEquals("1", data.get());
-			data.set("2.2");
-			assertEquals("2", data.get());
-			assertContains("Didn't warn for non-int double?", "TRUNCATING", EAM.getLoggedString());
-
-			try
-			{
-				data.set("2.not a number");
-				fail("should have thrown for not a number");
-			}
-			catch(NumberFormatException ignoreExpected)
-			{
-			}
-		}
-		finally
-		{
-			EAM.setLogToConsole();
-		}
-
 	}
 }
