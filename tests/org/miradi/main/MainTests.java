@@ -69,6 +69,7 @@ import org.miradi.ids.TestIdList;
 import org.miradi.objectdata.TestDateData;
 import org.miradi.objectdata.TestDateRangeData;
 import org.miradi.objectdata.TestIntegerData;
+import org.miradi.objectdata.TestNumberData;
 import org.miradi.objectdata.TestRefListListData;
 import org.miradi.objecthelpers.TestBaseObjectRollupValues;
 import org.miradi.objecthelpers.TestCategorizedQuantity;
@@ -93,6 +94,7 @@ import org.miradi.objects.TestBaseObject;
 import org.miradi.objects.TestCategoryOne;
 import org.miradi.objects.TestCategoryTwo;
 import org.miradi.objects.TestCause;
+import org.miradi.objects.TestChainWalker;
 import org.miradi.objects.TestConceptualModelDiagram;
 import org.miradi.objects.TestConceptualModelThreatRatings;
 import org.miradi.objects.TestCostAllocationRule;
@@ -120,7 +122,6 @@ import org.miradi.objects.TestOtherNotableSpecies;
 import org.miradi.objects.TestPlanningViewConfiguration;
 import org.miradi.objects.TestProgressPercent;
 import org.miradi.objects.TestProgressReport;
-import org.miradi.objects.TestChainWalker;
 import org.miradi.objects.TestProjectMetadata;
 import org.miradi.objects.TestProjectResource;
 import org.miradi.objects.TestRareProjectData;
@@ -335,6 +336,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestDateData.class));
 		suite.addTest(new TestSuite(TestDateRangeData.class));
 		suite.addTest(new TestSuite(TestIntegerData.class));
+		suite.addTest(new TestSuite(TestNumberData.class));
 		suite.addTest(new TestSuite(TestRefListListData.class));
 		
 		//objecthelpers package
