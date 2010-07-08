@@ -518,8 +518,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			project.createOrOpenWithDefaultObjects(projectName);
 			logExceptionsInsideProjectDir(projectName);
 			
-			scanForSeriousCorruption();
 			ProjectRepairer.repairProblemsWherePossible(project);
+			scanForSeriousCorruption();
 			ProjectRepairer.reportOrphansAndMinorProblems(project);
 			refreshWizard();
 
