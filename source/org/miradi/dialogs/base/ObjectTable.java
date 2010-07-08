@@ -159,7 +159,7 @@ abstract public class ObjectTable extends SortableRowTable implements ObjectPick
 	
 	public boolean areBudgetValuesAllocated(int row)
 	{
-		return false;
+		throw new RuntimeException("areBudgetValuesAllocated has not been implemented by ObjectTableModel");
 	}
 
 	public void ensureOneCopyOfObjectSelectedAndVisible(ORef ref)
