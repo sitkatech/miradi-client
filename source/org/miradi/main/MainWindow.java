@@ -596,10 +596,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 				"it may be among these objects, in which case you should contact the Miradi support team " +
 				"to have them safely recover the data.");
 		String listOfProblems = "";
-		for(ORef missingRef : orphanRefs)
+		for(ORef orphanRef : orphanRefs)
 		{
-			String typeName = ObjectType.getUserFriendlyObjectTypeName(missingRef.getObjectType());
-			listOfProblems += typeName + " " + missingRef + "\n";
+			String typeName = ObjectType.getUserFriendlyObjectTypeName(orphanRef.getObjectType());
+			listOfProblems += typeName + " " + orphanRef + "\n";
 		}
 		
 		if(!ProjectCorruptionDialog.askUserWhetherToOpen(this, title, bodyText, listOfProblems))
