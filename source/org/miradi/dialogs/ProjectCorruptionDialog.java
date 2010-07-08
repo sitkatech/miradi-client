@@ -56,6 +56,7 @@ public class ProjectCorruptionDialog extends DialogWithButtonBar
 		MiradiPanel panel = new MiradiPanel(new BorderLayout());
 		
 		PanelTextArea bodyTextArea = new PanelTextArea(bodyText);
+		bodyTextArea.setEditable(false);
 		bodyTextArea.setLineWrap(true);
 		bodyTextArea.setWrapStyleWord(true);
 		bodyTextArea.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
