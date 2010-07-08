@@ -55,11 +55,6 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		}
 	}
 
-	public TreePath findFirstMatchingTreePath(ORef ref)
-	{
-		return findTreePath(ref);
-	}
-	
 	protected TreeTableNode getRootNode()
 	{
 		return (TreeTableNode)getRoot();
@@ -78,7 +73,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 	
 	public void rebuildObjectRow(ORef ref)
 	{
-		TreePath pathToRepaint = findTreePath(ref);
+		TreePath pathToRepaint = findFirstMatchingTreePath(ref);
 		if(pathToRepaint == null)
 			return;
 		
@@ -95,7 +90,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		fireTreeNodesChanged(nodeToRepaint, pathToParent.getPath(), childIndex, childObject);
 	}
 	
-	public TreePath findTreePath(ORef ref)
+	public TreePath findFirstMatchingTreePath(ORef ref)
 	{
 		Vector<TreePath> treePaths = findTreePaths(ref);
 		if (treePaths.isEmpty())
