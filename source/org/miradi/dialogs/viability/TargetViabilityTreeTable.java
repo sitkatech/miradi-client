@@ -49,7 +49,6 @@ import org.miradi.dialogs.treetables.ObjectTreeTable;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Goal;
@@ -223,11 +222,6 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		return (GenericViabilityTreeModel)getTreeTableModel();
 	}
 	
-	public ORefList getObjectHiearchy(int row, int column)
-	{
-		return new ORefList(getBaseObjectForRowColumn(row, column));
-	}
-
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
 	private MultiLineObjectTableCellRendererOnlyFactory multiLineRenderer;
 }
