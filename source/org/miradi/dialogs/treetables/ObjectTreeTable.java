@@ -328,10 +328,9 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 	
 	public ORefList getObjectHiearchy(int row, int column)
 	{
-		BaseObject baseObjectForRowColumn = getBaseObjectForRowColumn(row, column);
-		TreePath treePath = getTreeTableModel().findFirstMatchingTreePath(baseObjectForRowColumn.getRef());
-
-		return getTreeTableModel().convertTreePathToRefList(treePath);
+		TreePath treePathForRow = getTree().getPathForRow(row);
+		
+		return getTreeTableModel().convertTreePathToRefList(treePathForRow);
 	}
 
 	protected Project project;
