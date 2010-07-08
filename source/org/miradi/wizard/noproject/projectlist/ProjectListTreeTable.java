@@ -137,6 +137,10 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 			mainWindow.setLocalDataLocation(file.getParentFile());
 			mainWindow.createOrOpenProject(file.getName());
 		}
+		catch(Exception e)
+		{
+			EAM.panic(e);
+		}
 		finally
 		{
 			mainWindow.setCursor(cursor);
