@@ -222,7 +222,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		cause4.setData(DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(45, 45)));
 		
 		ProjectRepairer repairer = new ProjectRepairer(getProject());
-		repairer.repair();
+		repairer.repairProblemsWherePossible();
 		
 		DiagramFactor repairedCause1 = DiagramFactor.find(getProject(), cause1.getRef());
 		Dimension expectedSnappedSize = new Dimension(30, 30);
