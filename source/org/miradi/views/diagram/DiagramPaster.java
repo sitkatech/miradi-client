@@ -640,11 +640,11 @@ abstract public class DiagramPaster
 			
 			ORef fromDiagramFactorRef = getGroupLinkDiagramFactorEnd(json, FactorLink.FROM);
 			if (fromDiagramFactorRef.isInvalid())
-				fromDiagramFactorRef = getDiagramFactorEnd(json, FactorLink.FROM);
+				fromDiagramFactorRef = getWrappedLinkFactorEnd(json, FactorLink.FROM);
 			
 			ORef toDiagramFactorRef = getGroupLinkDiagramFactorEnd(json, FactorLink.TO);
 			if (toDiagramFactorRef.isInvalid())
-				toDiagramFactorRef = getDiagramFactorEnd(json, FactorLink.TO);
+				toDiagramFactorRef = getWrappedLinkFactorEnd(json, FactorLink.TO);
 			
 			DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), fromDiagramFactorRef);
 			DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), toDiagramFactorRef);
@@ -692,7 +692,7 @@ abstract public class DiagramPaster
 		return ORef.INVALID;
 	}
 	
-	private ORef getDiagramFactorEnd(EnhancedJsonObject json, int direction)
+	private ORef getWrappedLinkFactorEnd(EnhancedJsonObject json, int direction)
 	{
 		BaseId factorLinkId = json.getId(DiagramLink.TAG_WRAPPED_ID);
 		ORef oldFactorLinkRef = new ORef(FactorLink.getObjectType(), factorLinkId);
