@@ -71,15 +71,6 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		fireTreeStructureChanged(getRoot(), new Object[] {getPathToRoot()}, null, null);
 	}
 	
-	public void rebuildObjectRow(ORef ref)
-	{
-		TreePath pathToRepaint = findFirstMatchingTreePath(ref);
-		if(pathToRepaint == null)
-			return;
-		
-		rebuildRow(pathToRepaint);
-	}
-
 	public void rebuildRow(TreePath pathToRepaint)
 	{
 		TreeTableNode nodeToRepaint = (TreeTableNode)pathToRepaint.getLastPathComponent();
