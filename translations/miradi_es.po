@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-08 08:29-0500\n"
+"POT-Creation-Date: 2010-07-08 08:43-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -2511,7 +2511,7 @@ msgstr "Definir audiencias claramente"
 msgid "Clearly define monitoring tasks"
 msgstr "Definir claramente tareas de monitoreo "
 
-#: Miradi/source/org/miradi/project/ProjectRepairer.java:136
+#: Miradi/source/org/miradi/dialogs/ProjectCorruptionDialog.java:71
 msgid "Close"
 msgstr ""
 
@@ -4755,7 +4755,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/ProjectRepairer.java:90
+#: Miradi/source/org/miradi/project/ProjectRepairer.java:76
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -4992,7 +4992,7 @@ msgstr "Investigación en el sitio"
 msgid "Open"
 msgstr "Abrir"
 
-#: Miradi/source/org/miradi/project/ProjectRepairer.java:135
+#: Miradi/source/org/miradi/dialogs/ProjectCorruptionDialog.java:70
 msgid "Open Anyway"
 msgstr ""
 
