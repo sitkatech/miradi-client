@@ -78,6 +78,11 @@ abstract public class AbstractObjectTableModel extends AbstractTableModel  imple
 		return new TableModelStringComparator(this, sortColumn);
 	}
 	
+	public int getProportionShares(int row)
+	{
+		throw new RuntimeException("getProportionShares has not been implemented by ObjectTableModel");
+	}
+	
 	public ORefList getObjectHiearchy(int row, int column)
 	{
 		throw new RuntimeException("Method is currently unused and has no implementation");
