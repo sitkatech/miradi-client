@@ -37,7 +37,7 @@ public interface ObjectPicker extends ListSelectionListener
 	public TreeTableNode[] getSelectedTreeNodes();
 
 	public void clearSelection();
-	public void ensureObjectSelectedAndVisible(ORef ref);
+	public void ensureOneCopyOfObjectSelectedAndVisible(ORef ref);
 	
 	public void addSelectionChangeListener(ListSelectionListener listener);
 	public void removeSelectionChangeListener(ListSelectionListener listener);

@@ -40,7 +40,7 @@ abstract public class CreatePoolObjectDoer extends ObjectsDoer
 			CommandCreateObject cmd = new CommandCreateObject(getTypeToCreate());
 			getProject().executeCommand(cmd);
 			if(getPicker() != null)
-				getPicker().ensureObjectSelectedAndVisible(cmd.getObjectRef());
+				getPicker().ensureOneCopyOfObjectSelectedAndVisible(cmd.getObjectRef());
 		}
 		catch (Exception e)
 		{
