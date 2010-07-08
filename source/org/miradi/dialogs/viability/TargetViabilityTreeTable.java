@@ -76,12 +76,6 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 	}
 	
 	@Override
-	public boolean areBudgetValuesAllocated(int row)
-	{
-		return getNodeForRow(row).areBudgetValuesAllocated();
-	}
-
-	@Override
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return getNodeForRow(row).getObject();
