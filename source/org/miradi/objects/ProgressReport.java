@@ -87,12 +87,13 @@ public class ProgressReport extends BaseObject
 	
 	public String toString()
 	{
-		return getDateAsString() + " " + getLabel();
+		return getDateAsString() + ": " + getProgressStatusChoice().getLabel();
 	}
-	
-	public String getLabel()
+
+	@Override
+	public String getFullName()
 	{
-		return getProgressStatusChoice().getLabel();	
+		return toString();
 	}
 	
 	public ChoiceItem getProgressStatusChoice()
