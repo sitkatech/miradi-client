@@ -681,10 +681,13 @@ abstract public class DiagramPaster
 		if (getDiagramModel().containsDiagramFactor(diagramFactorRef))
 			return diagramFactorRef;
 		
-		BaseId diagramLinkId = json.getId(DiagramLink.TAG_ID);
-		ORef diagramLinkRef = new ORef(DiagramLink.getObjectType(), diagramLinkId);
-		DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);
-		FactorLink factorLink = diagramLink.getWrappedFactorLink();
+		BaseId factorLinkId = json.getId(DiagramLink.TAG_WRAPPED_ID);
+		ORef oldFactorLinkRef = new ORef(FactorLink.getObjectType(), factorLinkId);
+		if (oldFactorLinkRef.isInvalid())
+			return diagramFactorRef;
+		
+		ORef factorLinkRef = getRefFromMap(oldFactorLinkRef);
+		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
 		ORef factorRef = factorLink.getFactorRef(direction);
 		if (getDiagramObject().containsWrappedFactorRef(factorRef))
 			return getDiagramObject().getDiagramFactor(factorRef).getRef();
@@ -795,12 +798,18 @@ abstract public class DiagramPaster
 	{
 		BaseId oldId = json.getId(tag);
 		ORef oldRef = new ORef(ObjectType.DIAGRAM_FACTOR, oldId);
+		return getRefFromMap(oldRef);
+	}
+
+	private ORef getRefFromMap(ORef oldRef)
+	{
 		ORef newRef = getOldToNewObjectRefMap().get(oldRef);
 		if (newRef == null)
 			return oldRef; 
 			 
 		return newRef;
 	}
+	
 	
 	private int convertType(ORef oldObjectRef)
 	{
