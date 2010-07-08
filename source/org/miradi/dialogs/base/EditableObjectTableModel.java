@@ -76,11 +76,6 @@ abstract public class EditableObjectTableModel extends AbstractObjectTableModel
 		}
 	}
 	
-	public int getProportionShares(int row)
-	{
-		return 1;
-	}
-	
 	public boolean areBudgetValuesAllocated(int row)
 	{
 		return false;
