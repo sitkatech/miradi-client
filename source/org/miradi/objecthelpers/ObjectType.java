@@ -19,6 +19,35 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
+import org.miradi.objects.AccountingCode;
+import org.miradi.objects.Audience;
+import org.miradi.objects.CategoryOne;
+import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.CostAllocationRule;
+import org.miradi.objects.FosProjectData;
+import org.miradi.objects.FundingSource;
+import org.miradi.objects.IucnRedlistSpecies;
+import org.miradi.objects.ObjectTreeTableConfiguration;
+import org.miradi.objects.Organization;
+import org.miradi.objects.OtherNotableSpecies;
+import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ProjectResource;
+import org.miradi.objects.RareProjectData;
+import org.miradi.objects.RatingCriterion;
+import org.miradi.objects.ReportTemplate;
+import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.TableSettings;
+import org.miradi.objects.TaggedObjectSet;
+import org.miradi.objects.ThreatRatingCommentsData;
+import org.miradi.objects.ThreatStressRating;
+import org.miradi.objects.TncProjectData;
+import org.miradi.objects.ValueOption;
+import org.miradi.objects.ViewData;
+import org.miradi.objects.WcpaProjectData;
+import org.miradi.objects.WcsProjectData;
+import org.miradi.objects.WwfProjectData;
+
 public class ObjectType
 {
 	public static final int INVALID = -1;
@@ -50,8 +79,8 @@ public class ObjectType
 	public static final int RESULTS_CHAIN_DIAGRAM = 24;
 	public static final int THREAT_REDUCTION_RESULT = 25;
 	public static final int TEXT_BOX = 26;
-//	public static final int SLIDE = 27;		// Never used in production
-//	public static final int SLIDESHOW = 28;	// Never used in production
+	public static final int SLIDE = 27;		// Never used in production
+	public static final int SLIDESHOW = 28;	// Never used in production
 	public static final int OBJECT_TREE_TABLE_CONFIGURATION = 29;
 	public static final int WWF_PROJECT_DATA = 30;
 	public static final int COST_ALLOCATION_RULE = 31;
@@ -83,7 +112,8 @@ public class ObjectType
 	public static final int CATEGORY_TWO = 57;
 	// When you add a new type, be sure to:
 	// - increment OBJECT_TYPE_COUNT
-	// - add a case to getUserFriendlyObjectTypeName below IF it is a user-visible object
+	// - IF it is a user-visible object, add a case to getUserFriendlyObjectTypeName below
+	// - IF it is a top-level object, add it to getTopLevelObjectTypes below
 	
 	public static final int OBJECT_TYPE_COUNT = 58;
 
@@ -126,6 +156,44 @@ public class ObjectType
 			case CATEGORY_TWO: return "Budget Category Two";
 			default: return "Internal Object";
 		}
+	}
+	
+	public static int[] getTopLevelObjectTypes()
+	{
+		return new int[] 
+		{
+			RatingCriterion.getObjectType(),
+			ValueOption.getObjectType(),
+			ViewData.getObjectType(),
+			ProjectResource.getObjectType(),
+			ProjectMetadata.getObjectType(),
+			ObjectType.FAKE,
+			AccountingCode.getObjectType(),
+			FundingSource.getObjectType(),
+			ConceptualModelDiagram.getObjectType(),
+			ResultsChainDiagram.getObjectType(),
+			ObjectType.SLIDE,
+			ObjectType.SLIDESHOW,
+			ObjectTreeTableConfiguration.getObjectType(),
+			WwfProjectData.getObjectType(),
+			CostAllocationRule.getObjectType(),
+			ThreatStressRating.getObjectType(),
+			RareProjectData.getObjectType(),
+			WcsProjectData.getObjectType(),
+			TncProjectData.getObjectType(),
+			FosProjectData.getObjectType(),
+			Organization.getObjectType(),
+			WcpaProjectData.getObjectType(),
+			ReportTemplate.getObjectType(),
+			TaggedObjectSet.getObjectType(),
+			TableSettings.getObjectType(),
+			ThreatRatingCommentsData.getObjectType(),
+			IucnRedlistSpecies.getObjectType(),
+			OtherNotableSpecies.getObjectType(),
+			Audience.getObjectType(),
+			CategoryOne.getObjectType(),
+			CategoryTwo.getObjectType(),
+		};
 	}
 }
 
