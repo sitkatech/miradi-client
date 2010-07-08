@@ -125,7 +125,6 @@ public class ProjectRepairer
 		warnOfOrphanAnnotations();	
 		warnOfOrphanTasks();
 		warnOfFactorsWithoutReferringDiagramFactors();
-		// TODO: Warn of links not covered by diagram links
 	}
 	 
 	private void warnOfOrphanDiagramFactors()
