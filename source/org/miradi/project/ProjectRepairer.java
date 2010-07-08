@@ -88,7 +88,7 @@ public class ProjectRepairer
 		
 		MiradiPanel panel = new MiradiPanel(new BorderLayout());
 		
-		String template = EAM.text(
+		String bodyText = EAM.text(
 				"Miradi has detected one or more problems with this project " + 
 				"which could cause errors or further damage in the future. " +
 				"\n" +
@@ -97,11 +97,11 @@ public class ProjectRepairer
 				"\n" +
 				"We recommend that you close this project and contact the " +
 				"Miradi support team so they can safely repair this project.");
-		PanelTextArea explanation = new PanelTextArea(template);
-		explanation.setLineWrap(true);
-		explanation.setWrapStyleWord(true);
-		explanation.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
-		panel.add(explanation, BorderLayout.PAGE_START);
+		PanelTextArea bodyTextArea = new PanelTextArea(bodyText);
+		bodyTextArea.setLineWrap(true);
+		bodyTextArea.setWrapStyleWord(true);
+		bodyTextArea.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
+		panel.add(bodyTextArea, BorderLayout.PAGE_START);
 		
 		UiWrappedTextArea details = new UiWrappedTextArea(listOfProblems);
 		details.setWrapStyleWord(true);
