@@ -19,6 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Audience;
 import org.miradi.objects.BudgetCategoryOne;
@@ -158,9 +162,9 @@ public class ObjectType
 		}
 	}
 	
-	public static int[] getTopLevelObjectTypes()
+	public static Set<Integer> getTopLevelObjectTypes()
 	{
-		return new int[] 
+		Integer[] types = new Integer[] 
 		{
 			RatingCriterion.getObjectType(),
 			ValueOption.getObjectType(),
@@ -191,6 +195,8 @@ public class ObjectType
 			BudgetCategoryOne.getObjectType(),
 			BudgetCategoryTwo.getObjectType(),
 		};
+		
+		return new HashSet<Integer>(Arrays.asList(types));
 	}
 }
 

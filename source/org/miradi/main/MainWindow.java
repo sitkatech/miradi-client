@@ -34,6 +34,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
@@ -520,7 +521,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			
 			ProjectRepairer.repairProblemsWherePossible(project);
 			scanForSeriousCorruption();
-			ProjectRepairer.scanForOrphans(project);
+			scanForOrphans();
 			refreshWizard();
 
 			validate();
@@ -569,6 +570,34 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			updateActionsAndStatusBar();
 			project.endCommandSideEffectMode();
 		}
+	}
+
+	private void scanForOrphans() throws Exception
+	{
+		Vector<ORef> orphanRefs = ProjectRepairer.scanForOrphans(project);
+		if(orphanRefs.size() == 0)
+			return;
+		
+		String title = EAM.text("Lost Objects Detected");
+		String bodyText = EAM.text("" +
+				"The following objects exist in the project, but cannot be accessed." +
+				"\n\n" +
+				"Most likely they are not needed, and were created by errors in earlier versions of Miradi." +
+				"\n\n" +
+				"It is safe to open your project and use it. If all of your data seems to be visible, " +
+				"then these objects are not needed and can be ignored. If you are missing valuable data, " +
+				"it may be among these objects, in which case you should contact the Miradi support team " +
+				"to have them safely recover the data.");
+		String listOfProblems = "";
+		for(ORef missingRef : orphanRefs)
+		{
+			String typeName = ObjectType.getUserFriendlyObjectTypeName(missingRef.getObjectType());
+			listOfProblems += typeName + " " + missingRef + "\n";
+		}
+		
+		if(!ProjectCorruptionDialog.askUserWhetherToOpen(this, title, bodyText, listOfProblems))
+			throw new AlreadyHandledException();
+		
 	}
 
 	private void scanForSeriousCorruption() throws Exception

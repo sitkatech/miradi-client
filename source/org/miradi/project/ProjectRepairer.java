@@ -21,7 +21,10 @@ package org.miradi.project;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Set;
+import java.util.Vector;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
@@ -34,23 +37,9 @@ import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objectpools.ObjectPool;
 import org.miradi.objectpools.PoolWithIdAssigner;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
-import org.miradi.objects.FactorLink;
-import org.miradi.objects.GroupBox;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.IntermediateResult;
-import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.ScopeBox;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.TextBox;
-import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.EnhancedJsonObject;
@@ -69,10 +58,10 @@ public class ProjectRepairer
 		repairer.repairProblemsWherePossible();
 	}
 	
-	public static void scanForOrphans(Project project) throws Exception
+	public static Vector<ORef> scanForOrphans(Project project) throws Exception
 	{
 		ProjectRepairer repairer = new ProjectRepairer(project);
-		repairer.logOrphansAndSimilarProblems();
+		return repairer.findOrphans();
 	}
 	
 	public ProjectRepairer(Project projectToRepair)
@@ -116,47 +105,38 @@ public class ProjectRepairer
 		}
 	}
 
-	public void logOrphansAndSimilarProblems()
+	private Vector<ORef> findOrphans()
 	{
-		detectAndReportOrphans(FactorLink.getObjectType(), DiagramLink.getObjectType());
-		detectAndReportOrphans(Cause.getObjectType(), DiagramFactor.getObjectType());
-
-		warnOfOrphanDiagramFactors();
-		warnOfOrphanAnnotations();	
-		warnOfOrphanTasks();
-		warnOfFactorsWithoutReferringDiagramFactors();
-	}
-	 
-	private void warnOfOrphanDiagramFactors()
-	{
-		ORefSet possibleOrphanRefs = getProject().getPool(DiagramFactor.getObjectType()).getRefSet();
-		int[] diagramTypes = new int[] {ConceptualModelDiagram.getObjectType(), ResultsChainDiagram.getObjectType()};
-		ORefSet orphanRefs = getActualOrphanRefs(possibleOrphanRefs, diagramTypes);
-		if (orphanRefs.hasData())
-			EAM.logError("NOTE: " + orphanRefs.size() + " DiagramFactors are not in any diagram:" + orphanRefs.toRefList());
-	}
-
-	private void warnOfFactorsWithoutReferringDiagramFactors()
-	{
-		ORefSet factorsWithoutDiagramFactors = getFactorsWithoutDiagramFactors();
-		if (factorsWithoutDiagramFactors.hasData())
-			EAM.logError("WARNING: Factors are not covered by a diagramFactor:" + factorsWithoutDiagramFactors.toRefList());
-	}
-
-	private ORefSet getFactorsWithoutDiagramFactors()
-	{
-		ORefSet factorsWithoutDiagramFactors = new ORefSet();
-		factorsWithoutDiagramFactors.addAll(getFactorsWithoutDiagramFactors(ScopeBox.getObjectType()));
-		factorsWithoutDiagramFactors.addAll(getFactorsWithoutDiagramFactors(Target.getObjectType()));
-		factorsWithoutDiagramFactors.addAll(getFactorsWithoutDiagramFactors(HumanWelfareTarget.getObjectType()));
-		factorsWithoutDiagramFactors.addAll(getFactorsWithoutDiagramFactors(Cause.getObjectType()));
-		factorsWithoutDiagramFactors.addAll(getFactorsWithoutDiagramFactors(Strategy.getObjectType()));
-		factorsWithoutDiagramFactors.addAll(getFactorsWithoutDiagramFactors(ThreatReductionResult.getObjectType()));
-		factorsWithoutDiagramFactors.addAll(getFactorsWithoutDiagramFactors(IntermediateResult.getObjectType()));
-		factorsWithoutDiagramFactors.addAll(getFactorsWithoutDiagramFactors(GroupBox.getObjectType()));
-		factorsWithoutDiagramFactors.addAll(getFactorsWithoutDiagramFactors(TextBox.getObjectType()));
+		Vector<ORef> orphanRefs = new Vector<ORef>();
 		
-		return factorsWithoutDiagramFactors;
+		Set<Integer> topLevelTypes = ObjectType.getTopLevelObjectTypes();
+		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
+		{
+			if(topLevelTypes.contains(objectType))
+				continue;
+			
+			ObjectPool pool = getProject().getPool(objectType);
+			if(pool == null)
+				continue;
+			
+			orphanRefs.addAll(findOrphans(pool.getRefSet()));
+		}
+		
+		Collections.sort(orphanRefs);
+		return orphanRefs;
+	}
+
+	private ORefSet findOrphans(ORefSet possibleOrphanRefs)
+	{
+		ORefSet orphanRefs = new ORefSet();
+		for(ORef ref : possibleOrphanRefs)
+		{
+			ORefSet referrers = getProject().getObjectManager().getReferringObjects(ref);
+			if(referrers.isEmpty())
+				orphanRefs.add(ref);
+		}
+		
+		return orphanRefs;
 	}
 
 	public ORefSet getFactorsWithoutDiagramFactors(int factorType)
@@ -182,18 +162,6 @@ public class ProjectRepairer
 		}
 		
 		return orphanRefs;
-	}
-
-	private void warnOfOrphanTasks()
-	{
-		int type = Task.getObjectType();
-		ORefList refs = getProject().getPool(type).getRefList();
-		for(int i = 0; i < refs.size(); ++i)
-		{
-			BaseObject object = BaseObject.find(getProject(), refs.get(i));
-			if(object.getOwnerRef().isInvalid())
-				EAM.logWarning("NOTE: Object without owner! " + object.getRef());
-		}
 	}
 
 	private void repairUnsnappedNodes()
@@ -248,36 +216,6 @@ public class ProjectRepairer
 		}
 	}
 	
-	private void warnOfOrphanAnnotations()
-	{
-		warnOfOrphanAnnotations(ObjectType.OBJECTIVE);
-		warnOfOrphanAnnotations(ObjectType.GOAL);
-		warnOfOrphanAnnotations(ObjectType.INDICATOR);
-		warnOfOrphanAnnotations(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
-	}
-
-	private void warnOfOrphanAnnotations(int annotationType)
-	{
-		IdList allIds = project.getPool(annotationType).getIdList();
-		for(int i = 0; i < allIds.size(); ++i)
-		{
-			BaseId annotationId = allIds.get(i);
-			try
-			{
-				BaseObject object = project.getObjectManager().findObject(annotationType, annotationId);
-				BaseObject owner = object.getOwner();
-				if(owner == null)
-				{
-					EAM.logWarning("NOTE: Found orphan " + annotationType + ":" + annotationId);
-				}
-			}
-			catch(Exception e)
-			{
-				logAndContinue(e);
-			}
-		}
-	}
-
 	private void logAndContinue(Exception e)
 	{
 		EAM.logException(e);
@@ -343,19 +281,6 @@ public class ProjectRepairer
 		return filteredReferrers;
 	}
 
-	private void detectAndReportOrphans(int possibleOrphanType,	final int custodianType)
-	{
-		ORefList possibleOrphanRefs = getProject().getObjectManager().getPool(possibleOrphanType).getORefList();
-		for(int i = 0; i < possibleOrphanRefs.size(); ++i)
-		{
-			final ORef possibleOrphanRef = possibleOrphanRefs.get(i);
-			BaseObject possibleOrphan = BaseObject.find(getProject(), possibleOrphanRef);
-			ORefList custodianRefs = possibleOrphan.findObjectsThatReferToUs(custodianType);
-			if(custodianRefs.size() == 0)
-				EAM.logError("NOTE: " + possibleOrphan.getTypeName() + " without custodian: " + possibleOrphanRef);
-		}
-	}
-	
 	public ORefList findAllMissingObjects() throws Exception
 	{
 		ORefList missingObjectRefs = new ORefList();
