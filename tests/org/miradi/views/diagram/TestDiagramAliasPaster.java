@@ -31,7 +31,6 @@ import org.miradi.diagram.cells.LinkCell;
 import org.miradi.ids.IdList;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
-import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
@@ -85,17 +84,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		assertEquals("Indicator was not deleted?", 0, getProject().getIndicatorPool().size());
 		assertEquals("Indicator was not removed from threat?", 0, threat.getDirectOrIndirectIndicatorRefs().size());
 
-		EAM.setLogToString();
-		try
-		{
-			pasteShared(diagramModelToPasteInto, transferable);
-			assertEquals("Logged too much?", 1, EAM.getLoggedString().split("\n").length);
-			assertContains("orphan", EAM.getLoggedString());
-		}
-		finally
-		{
-			EAM.setLogToConsole();
-		}
+		pasteShared(diagramModelToPasteInto, transferable);
 		
 		assertEquals("Before copy Paste Orphan goal was deleted?", 1, getProject().getGoalPool().size());
 		assertEquals("Orphan Indicator as a result of paste was not deleted?", 0, getProject().getIndicatorPool().size());
