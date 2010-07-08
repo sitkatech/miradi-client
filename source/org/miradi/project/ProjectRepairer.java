@@ -86,8 +86,6 @@ public class ProjectRepairer
 			listOfProblems += "Missing " + typeName + " " + missingRef + " referred to by " + referrers.toString() + "\n";
 		}
 		
-		MiradiPanel panel = new MiradiPanel(new BorderLayout());
-		
 		String bodyText = EAM.text(
 				"Miradi has detected one or more problems with this project " + 
 				"which could cause errors or further damage in the future. " +
@@ -97,6 +95,32 @@ public class ProjectRepairer
 				"\n" +
 				"We recommend that you close this project and contact the " +
 				"Miradi support team so they can safely repair this project.");
+
+		class OpenProjectAnywayHandler implements ActionListener
+		{
+			public OpenProjectAnywayHandler(MiradiDialog dialogToDispose)
+			{
+				dialog = dialogToDispose;
+			}
+
+			public void actionPerformed(ActionEvent arg0)
+			{
+				wasPressed = true;
+				dialog.setVisible(false);
+				dialog.dispose();
+			}
+			
+			public boolean wasPressed()
+			{
+				return wasPressed;
+			}
+
+			private MiradiDialog dialog;
+			private boolean wasPressed;
+		}
+		
+		MiradiPanel panel = new MiradiPanel(new BorderLayout());
+		
 		PanelTextArea bodyTextArea = new PanelTextArea(bodyText);
 		bodyTextArea.setLineWrap(true);
 		bodyTextArea.setWrapStyleWord(true);
@@ -128,29 +152,6 @@ public class ProjectRepairer
 		dialog.setVisible(true);
 		
 		return openProjectAnywayHandler.wasPressed();
-	}
-	
-	static class OpenProjectAnywayHandler implements ActionListener
-	{
-		public OpenProjectAnywayHandler(MiradiDialog dialogToDispose)
-		{
-			dialog = dialogToDispose;
-		}
-
-		public void actionPerformed(ActionEvent arg0)
-		{
-			wasPressed = true;
-			dialog.setVisible(false);
-			dialog.dispose();
-		}
-		
-		public boolean wasPressed()
-		{
-			return wasPressed;
-		}
-
-		private MiradiDialog dialog;
-		private boolean wasPressed;
 	}
 	
 	public static void repairProblemsWherePossible(Project project) throws Exception
