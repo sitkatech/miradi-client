@@ -19,24 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.project;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
-import java.util.Vector;
 
-import javax.swing.BorderFactory;
-
-import org.martus.swing.UiWrappedTextArea;
-import org.martus.swing.Utilities;
-import org.miradi.dialogs.base.DialogWithButtonBar;
-import org.miradi.dialogs.base.MiradiDialog;
-import org.miradi.dialogs.base.MiradiPanel;
-import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.dialogs.fieldComponents.PanelTextArea;
+import org.miradi.dialogs.ProjectCorruptionDialog;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -67,7 +54,6 @@ import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.MiradiScrollPane;
 
 public class ProjectRepairer
 {
@@ -96,62 +82,7 @@ public class ProjectRepairer
 				"We recommend that you close this project and contact the " +
 				"Miradi support team so they can safely repair this project.");
 
-		class OpenProjectAnywayHandler implements ActionListener
-		{
-			public OpenProjectAnywayHandler(MiradiDialog dialogToDispose)
-			{
-				dialog = dialogToDispose;
-			}
-
-			public void actionPerformed(ActionEvent arg0)
-			{
-				wasPressed = true;
-				dialog.setVisible(false);
-				dialog.dispose();
-			}
-			
-			public boolean wasPressed()
-			{
-				return wasPressed;
-			}
-
-			private MiradiDialog dialog;
-			private boolean wasPressed;
-		}
-		
-		MiradiPanel panel = new MiradiPanel(new BorderLayout());
-		
-		PanelTextArea bodyTextArea = new PanelTextArea(bodyText);
-		bodyTextArea.setLineWrap(true);
-		bodyTextArea.setWrapStyleWord(true);
-		bodyTextArea.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
-		panel.add(bodyTextArea, BorderLayout.PAGE_START);
-		
-		UiWrappedTextArea details = new UiWrappedTextArea(listOfProblems);
-		details.setWrapStyleWord(true);
-		details.setLineWrap(true);
-		panel.add(new MiradiScrollPane(details), BorderLayout.CENTER);
-
-		PanelButton openButton = new PanelButton(EAM.text("Open Anyway"));
-		PanelButton closeButton = new PanelButton(EAM.text("Close"));
-		Vector<Component> buttons = new Vector<Component>();
-		buttons.add(openButton);
-		buttons.add(closeButton);
-
-		DialogWithButtonBar dialog = new DialogWithButtonBar(EAM.getMainWindow());
-		dialog.setModal(true);
-		dialog.setButtons(buttons);
-		dialog.setSimpleCloseButton(closeButton);
-		dialog.add(panel);
-		dialog.setSize(600, 400);
-		Utilities.centerDlg(dialog);
-
-		OpenProjectAnywayHandler openProjectAnywayHandler = new OpenProjectAnywayHandler(dialog);
-		openButton.addActionListener(openProjectAnywayHandler);
-
-		dialog.setVisible(true);
-		
-		return openProjectAnywayHandler.wasPressed();
+		return ProjectCorruptionDialog.askUserWhetherToOpen(EAM.getMainWindow(), bodyText, listOfProblems);
 	}
 	
 	public static void repairProblemsWherePossible(Project project) throws Exception
