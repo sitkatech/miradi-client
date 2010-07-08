@@ -146,7 +146,7 @@ public class ObjectType
 			case MEASUREMENT: return "Measurement";
 			case STRESS: return "Stress";
 			case GROUP_BOX: return "Group Box";
-			case SUB_TARGET: return "Sub-Target";
+			case SUB_TARGET: return "Nested Target";
 			case PROGRESS_REPORT: return "Progress Report";
 			case ORGANIZATION: return "Organization";
 			case PROGRESS_PERCENT: return "Progress Percent";
