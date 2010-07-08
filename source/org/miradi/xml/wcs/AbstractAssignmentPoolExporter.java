@@ -20,6 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 import org.martus.util.UnicodeWriter;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objects.Assignment;
@@ -122,7 +125,8 @@ abstract public class AbstractAssignmentPoolExporter extends BaseObjectPoolExpor
 	{
 		getWcsXmlExporter().writeStartElement(getQuantatityElementName());
 		
-		getWriter().write(Double.toString(expense));
+		NumberFormat format = new DecimalFormat("#.#");
+		getWriter().write(format.format(expense));
 		
 		getWcsXmlExporter().writeEndElement(getQuantatityElementName());
 	}
