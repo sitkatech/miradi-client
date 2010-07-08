@@ -76,11 +76,6 @@ abstract public class EditableObjectTableModel extends AbstractObjectTableModel
 		}
 	}
 	
-	public boolean areBudgetValuesAllocated(int row)
-	{
-		return false;
-	}
-	
 	@Override
 	public void setRowObjectRefs(ORefList objectRowRefs)
 	{

@@ -182,11 +182,6 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel
 		return getObjectFromRow(row);
 	}
 	
-	public boolean areBudgetValuesAllocated(int row)
-	{
-		throw new RuntimeException("areBudgetValuesAllocated has not been implemented by ObjectTableModel");
-	}
-	
 	abstract public ORefList getLatestRefListFromProject();
 	
 	private int rowObjectType;
