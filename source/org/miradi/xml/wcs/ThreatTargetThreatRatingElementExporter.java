@@ -20,12 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
+import org.miradi.objecthelpers.BaseObjectByRefSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -63,6 +65,7 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 	private void exportSimpleThreatRating() throws Exception
 	{
 		Vector<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
+		Collections.sort(targets, new BaseObjectByRefSorter());
 		ThreatTargetChainWalker chain = new ThreatTargetChainWalker(getProject());
 		for(Target target : targets)
 		{
