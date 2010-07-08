@@ -52,7 +52,7 @@ public class TeamCreateMemberDoer extends ObjectsDoer
 			addTeamMemberRole(resource);
 			
 			if (getPicker() != null)
-				getPicker().ensureObjectSelectedAndVisible(resource.getRef());
+				getPicker().ensureOneCopyOfObjectSelectedAndVisible(resource.getRef());
 		}
 		catch (Exception e)
 		{

@@ -162,7 +162,7 @@ abstract public class ObjectTable extends SortableRowTable implements ObjectPick
 		return false;
 	}
 
-	public void ensureObjectSelectedAndVisible(ORef ref)
+	public void ensureOneCopyOfObjectSelectedAndVisible(ORef ref)
 	{
 		setSelectedRow(ref);
 	}

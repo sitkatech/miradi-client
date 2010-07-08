@@ -209,7 +209,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		return getTreeTableModel().getRootNode().getObjectReference();
 	}
 	
-	public void ensureObjectSelectedAndVisible(ORef ref)
+	public void ensureOneCopyOfObjectSelectedAndVisible(ORef ref)
 	{
 		// NOTE: This code generally must be called from inside invokeLater 
 		TreePath path = getTreeTableModel().findFirstMatchingTreePath(ref);

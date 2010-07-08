@@ -761,7 +761,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		{
 		}
 
-		public void ensureObjectSelectedAndVisible(ORef ref)
+		public void ensureOneCopyOfObjectSelectedAndVisible(ORef ref)
 		{
 		}
 		
