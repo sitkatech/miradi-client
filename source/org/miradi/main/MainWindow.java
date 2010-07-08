@@ -54,12 +54,16 @@ import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
 import org.miradi.dialogfields.FieldSaver;
+import org.miradi.dialogs.ProjectCorruptionDialog;
 import org.miradi.exceptions.FutureVersionException;
 import org.miradi.exceptions.OldVersionException;
 import org.miradi.exceptions.UnknownCommandException;
 import org.miradi.main.menu.MainMenuBar;
 import org.miradi.objecthelpers.ColorsFileLoader;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objecthelpers.TwoLevelEntry;
 import org.miradi.objects.Assignment;
@@ -514,8 +518,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			project.createOrOpenWithDefaultObjects(projectName);
 			logExceptionsInsideProjectDir(projectName);
 			
-			if(!ProjectRepairer.scanForSeriousCorruption(project))
-				throw new AlreadyHandledException();
+			scanForSeriousCorruption();
 			ProjectRepairer.repairProblemsWherePossible(project);
 			ProjectRepairer.reportOrphansAndMinorProblems(project);
 			refreshWizard();
@@ -566,6 +569,35 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			updateActionsAndStatusBar();
 			project.endCommandSideEffectMode();
 		}
+	}
+
+	private void scanForSeriousCorruption() throws Exception
+	{
+		HashMap<ORef, ORefSet> rawProblems = ProjectRepairer.scanForMissingObjects(project);
+		if(rawProblems.size() == 0)
+			return;
+
+		String title = EAM.text("Project Corruption Detected");
+		String bodyText = EAM.text(
+				"Miradi has detected one or more problems with this project " + 
+				"which could cause errors or further damage in the future. " +
+				"\n" +
+				"The specific problems are listed below, to help assess the " +
+				"severity of the damage. " +
+				"\n" +
+				"We recommend that you close this project and contact the " +
+				"Miradi support team so they can safely repair this project.");
+
+		String listOfProblems = "";
+		for(ORef missingRef : rawProblems.keySet())
+		{
+			ORefSet referrers = rawProblems.get(missingRef);
+			String typeName = ObjectType.getUserFriendlyObjectTypeName(missingRef.getObjectType());
+			listOfProblems += "Missing " + typeName + " " + missingRef + " referred to by " + referrers.toString() + "\n";
+		}
+		
+		if(!ProjectCorruptionDialog.askUserWhetherToOpen(this, title, bodyText, listOfProblems))
+			throw new AlreadyHandledException();
 	}
 
 	private void logExceptionsInsideProjectDir(String projectName)
