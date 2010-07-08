@@ -26,6 +26,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
+import javax.swing.Action;
 import javax.swing.BorderFactory;
 
 import org.martus.swing.UiWrappedTextArea;
@@ -40,14 +41,19 @@ import org.miradi.utils.MiradiScrollPane;
 
 public class ProjectCorruptionDialog extends DialogWithButtonBar
 {
-	public static boolean askUserWhetherToOpen(MainWindow mainWindowToUse, String title, String bodyText, String listOfProblems)
+	public static boolean askUserWhetherToOpen(MainWindow mainWindowToUse, String title, String bodyText, String listOfProblems, Action additionalButtonAction)
 	{
-		ProjectCorruptionDialog dialog = new ProjectCorruptionDialog(mainWindowToUse, title, bodyText, listOfProblems);
+		ProjectCorruptionDialog dialog = new ProjectCorruptionDialog(mainWindowToUse, title, bodyText, listOfProblems, additionalButtonAction);
 		dialog.setVisible(true);
 		return dialog.wasPressed();
 	}
 	
-	private ProjectCorruptionDialog(MainWindow mainWindowToUse, String title, String bodyText, String listOfProblems)
+	public static boolean askUserWhetherToOpen(MainWindow mainWindowToUse, String title, String bodyText, String listOfProblems)
+	{
+		return askUserWhetherToOpen(mainWindowToUse, title, bodyText, listOfProblems, null);
+	}
+	
+	private ProjectCorruptionDialog(MainWindow mainWindowToUse, String title, String bodyText, String listOfProblems, Action additionalButtonAction)
 	{
 		super(mainWindowToUse);
 		setModal(true);
@@ -73,6 +79,8 @@ public class ProjectCorruptionDialog extends DialogWithButtonBar
 		PanelButton closeButton = new PanelButton(EAM.text("Close"));
 		Vector<Component> buttons = new Vector<Component>();
 		buttons.add(openButton);
+		if(additionalButtonAction != null)
+			buttons.add(new PanelButton(additionalButtonAction));
 		buttons.add(closeButton);
 
 		setButtons(buttons);
