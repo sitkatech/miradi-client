@@ -98,7 +98,7 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 		ORef rowObjectRef = rowObjectRefs.get(row);
 		if (rowObjectRef.isInvalid())
 			return null;
-		TreePath path = findTreePath(rowObjectRef);
+		TreePath path = findFirstMatchingTreePath(rowObjectRef);
 		TreeTableNode node = (TreeTableNode) path.getLastPathComponent();
 		return node;
 	}

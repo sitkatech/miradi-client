@@ -212,7 +212,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 	public void ensureObjectSelectedAndVisible(ORef ref)
 	{
 		// NOTE: This code generally must be called from inside invokeLater 
-		TreePath path = getTreeTableModel().findTreePath(ref);
+		TreePath path = getTreeTableModel().findFirstMatchingTreePath(ref);
 		getTree().scrollPathToVisible(path);
 	}
 
@@ -329,7 +329,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 	public ORefList getObjectHiearchy(int row, int column)
 	{
 		BaseObject baseObjectForRowColumn = getBaseObjectForRowColumn(row, column);
-		TreePath treePath = getTreeTableModel().findTreePath(baseObjectForRowColumn.getRef());
+		TreePath treePath = getTreeTableModel().findFirstMatchingTreePath(baseObjectForRowColumn.getRef());
 
 		return getTreeTableModel().convertTreePathToRefList(treePath);
 	}
