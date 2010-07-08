@@ -25,7 +25,7 @@ import org.miradi.actions.ActionDeleteCategoryTwo;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.BudgetCategoryTwo;
 
 public class CategoryTwoTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -53,7 +53,7 @@ public class CategoryTwoTreeTablePanel extends PlanningTreeTablePanel
 		if (super.doesCommandForceRebuild(event))
 			return true;
 			
-		return wasTypeCreatedOrDeleted(event, CategoryTwo.getObjectType());
+		return wasTypeCreatedOrDeleted(event, BudgetCategoryTwo.getObjectType());
 	}
 	
 	private static Class[] getButtonActions()

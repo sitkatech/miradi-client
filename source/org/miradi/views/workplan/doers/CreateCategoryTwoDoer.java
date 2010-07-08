@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.workplan.doers;
 
-import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.views.planning.doers.CreatePoolObjectDoer;
 
 public class CreateCategoryTwoDoer extends CreatePoolObjectDoer
@@ -28,6 +28,6 @@ public class CreateCategoryTwoDoer extends CreatePoolObjectDoer
 	@Override
 	protected int getTypeToCreate()
 	{
-		return CategoryTwo.getObjectType();
+		return BudgetCategoryTwo.getObjectType();
 	}
 }

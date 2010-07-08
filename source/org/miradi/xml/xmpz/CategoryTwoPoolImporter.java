@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz;
 
-import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.BudgetCategoryTwo;
 
 public class CategoryTwoPoolImporter extends AbstractBudgetCategoryPoolImporter
 {
 	public CategoryTwoPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, CATEGORY_TWO, CategoryTwo.getObjectType());
+		super(importerToUse, CATEGORY_TWO, BudgetCategoryTwo.getObjectType());
 	}
 }

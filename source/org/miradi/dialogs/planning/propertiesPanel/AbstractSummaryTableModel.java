@@ -25,8 +25,8 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.CategoryOne;
-import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.BudgetCategoryOne;
+import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.FundingSource;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -79,10 +79,10 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 			return getAccountingCode(baseObjectForRow);
 		
 		if (isCategoryOneColumn(column))
-			return getBaseObject(baseObjectForRow, Assignment.TAG_CATEGORY_ONE_REF, CategoryOne.getObjectType());
+			return getBaseObject(baseObjectForRow, Assignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOne.getObjectType());
 		
 		if (isCategoryTwoColumn(column))
-			return getBaseObject(baseObjectForRow, Assignment.TAG_CATEGORY_TWO_REF, CategoryTwo.getObjectType());
+			return getBaseObject(baseObjectForRow, Assignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwo.getObjectType());
 		
 		return null;
 	}
@@ -131,11 +131,11 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 		if (FundingSource.is(objectType))
 			return new FundingSource(objectManager, BaseId.INVALID);
 		
-		if (CategoryOne.is(objectType))
-			return new CategoryOne(objectManager, BaseId.INVALID);
+		if (BudgetCategoryOne.is(objectType))
+			return new BudgetCategoryOne(objectManager, BaseId.INVALID);
 		
-		if (CategoryTwo.is(objectType))
-			return new CategoryTwo(objectManager, BaseId.INVALID);
+		if (BudgetCategoryTwo.is(objectType))
+			return new BudgetCategoryTwo(objectManager, BaseId.INVALID);
 		
 		throw new RuntimeException("createInvalidObject does not handle the object type: " + objectType);
 	}
@@ -148,10 +148,10 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 		if (AccountingCode.is(objectType))
 			return isAccountingCodeColumn(column);
 		
-		if (CategoryOne.is(objectType))
+		if (BudgetCategoryOne.is(objectType))
 			return isCategoryOneColumn(column);
 		
-		if (CategoryTwo.is(objectType))
+		if (BudgetCategoryTwo.is(objectType))
 			return isCategoryTwoColumn(column);
 		
 		return false;

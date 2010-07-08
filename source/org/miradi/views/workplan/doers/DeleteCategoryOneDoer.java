@@ -22,7 +22,7 @@ package org.miradi.views.workplan.doers;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.CategoryOne;
+import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.views.umbrella.doers.DeletePoolObjectDoer;
 
@@ -43,6 +43,6 @@ public class DeleteCategoryOneDoer extends DeletePoolObjectDoer
 	@Override
 	protected boolean canDelete(BaseObject singleSelectedObject)
 	{
-		return CategoryOne.is(singleSelectedObject);
+		return BudgetCategoryOne.is(singleSelectedObject);
 	}
 }

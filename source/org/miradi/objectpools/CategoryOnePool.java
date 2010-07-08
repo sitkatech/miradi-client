@@ -25,7 +25,7 @@ import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.CategoryOne;
+import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.project.ObjectManager;
 
 public class CategoryOnePool extends EAMNormalObjectPool
@@ -35,19 +35,19 @@ public class CategoryOnePool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.CATEGORY_ONE);
 	}
 	
-	public void put(CategoryOne categoryOne) throws Exception
+	public void put(BudgetCategoryOne categoryOne) throws Exception
 	{
 		put(categoryOne.getId(), categoryOne);
 	}
 	
-	public CategoryOne find(BaseId id)
+	public BudgetCategoryOne find(BaseId id)
 	{
-		return (CategoryOne) getRawObject(id);
+		return (BudgetCategoryOne) getRawObject(id);
 	}
 	
 	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
-		return new CategoryOne(objectManager, actualId);
+		return new BudgetCategoryOne(objectManager, actualId);
 	}
 }

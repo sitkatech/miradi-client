@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning;
 
-import org.miradi.objects.CategoryTwo;
+import org.miradi.objects.BudgetCategoryTwo;
 
 public class CategoryTwoCoreRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
 {
 	@Override
 	protected String getObjectTypeName()
 	{
-		return CategoryTwo.OBJECT_NAME;
+		return BudgetCategoryTwo.OBJECT_NAME;
 	}
 }
