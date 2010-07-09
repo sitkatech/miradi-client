@@ -52,6 +52,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		tables.add(table);
 	}
 	
+	@Override
 	public int getColumnCount()
 	{
 		int combinedCount = 0;
@@ -63,6 +64,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		return combinedCount;
 	}
 
+	@Override
 	public int getModelDepth(int row, int modelColumn)
 	{
 		if (tables.size() == 0)
@@ -71,6 +73,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		return tables.get(0).getModelDepth(row, modelColumn);
 	}
 
+	@Override
 	public int getMaxDepthCount()
 	{
 		if (tables.size() == 0)
@@ -79,6 +82,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		return tables.get(0).getMaxDepthCount();	
 	}
 
+	@Override
 	public int getRowCount()
 	{
 		if (tables.size() > 0) 
@@ -93,6 +97,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		return tableAndColumnHolder.getTable().getColumnGroupName(tableAndColumnHolder.getColumn());
 	}
 
+	@Override
 	public String getModelColumnName(int modelColumn)
 	{
 		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(modelColumn);
@@ -106,6 +111,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		return tableAndColumnHolder.getTable().getModelChoiceItemAt(row, tableAndColumnHolder.getColumn());
 	}
 	
+	@Override
 	public String getStyleTagAt(int row, int column)
 	{
 		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(column);		
@@ -127,6 +133,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		return getSafeValue(value);
 	}
 			
+	@Override
 	public BaseObject getBaseObjectForRow(int row)
 	{
 		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(0);
@@ -218,6 +225,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		return absoluteModelColumn;
 	}
 	
+	@Override
 	public String getAboveColumnHeaderText(int tableColumn)
 	{
 		int modelColumn = convertToModelColumn(tableColumn);
