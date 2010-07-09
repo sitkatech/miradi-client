@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-08 17:05-0500\n"
+"POT-Creation-Date: 2010-07-09 10:23-0500\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -38,7 +38,7 @@ msgid ""
 "  within "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
+#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:61
 msgid ""
 "\n"
 "Are you sure you want to delete the selected %s?"
@@ -754,7 +754,7 @@ msgid ""
 "it is a \"degraded\" attribute."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:33
+#: Miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:34
 #: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:44
 msgid "Accounting Code"
 msgstr ""
@@ -2243,14 +2243,14 @@ msgstr ""
 msgid "Category Ib: Wilderness area"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryOneDoer.java:34
+#: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryOneDoer.java:35
 #: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryOneMangementPanel.java:69
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:58
 msgid "Category One"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryTwoMangementPanel.java:71
-#: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryTwoDoer.java:34
+#: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryTwoDoer.java:35
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:61
 msgid "Category Two"
 msgstr ""
@@ -2631,7 +2631,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:58
+#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:60
 msgid "Delete %s"
 msgstr ""
 
@@ -3330,7 +3330,7 @@ msgstr ""
 msgid "Full Report"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:33
+#: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:34
 #: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:43
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:55
 msgid "Funding Source"
@@ -4548,7 +4548,7 @@ msgstr ""
 msgid "New project name: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
+#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
 #: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 #: Miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:34
 msgid "No"
@@ -7506,7 +7506,7 @@ msgstr ""
 msgid "Yen (Japan)"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
+#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
 #: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 #: Miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:35
 msgid "Yes"
