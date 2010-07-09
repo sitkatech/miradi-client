@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-08 17:05-0500\n"
+"POT-Creation-Date: 2010-07-09 10:23-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -38,7 +38,7 @@ msgid ""
 "  within "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
+#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:61
 msgid ""
 "\n"
 "Are you sure you want to delete the selected %s?"
@@ -799,7 +799,7 @@ msgstr ""
 "象是否属于\"已受保护\"。如果该属性落在此可接受范围以外，则其属于\"退化\"属"
 "性。"
 
-#: Miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:33
+#: Miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:34
 #: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:44
 msgid "Accounting Code"
 msgstr "会计编码 \t\t"
@@ -2300,14 +2300,14 @@ msgstr "种类Ia：严格的自然保护/野生保护地区"
 msgid "Category Ib: Wilderness area"
 msgstr "种类Ib：野生地区"
 
-#: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryOneDoer.java:34
+#: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryOneDoer.java:35
 #: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryOneMangementPanel.java:69
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:58
 msgid "Category One"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryTwoMangementPanel.java:71
-#: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryTwoDoer.java:34
+#: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryTwoDoer.java:35
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:61
 msgid "Category Two"
 msgstr ""
@@ -2703,7 +2703,7 @@ msgstr "规定项目范围 \t\t"
 msgid "Delete"
 msgstr "删除 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:58
+#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:60
 msgid "Delete %s"
 msgstr ""
 
@@ -3417,7 +3417,7 @@ msgstr "淡水湖泊"
 msgid "Full Report"
 msgstr "完整报告"
 
-#: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:33
+#: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:34
 #: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:43
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:55
 msgid "Funding Source"
@@ -4651,7 +4651,7 @@ msgstr "新的项目文件名： \t\t"
 msgid "New project name: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
+#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
 #: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 #: Miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:34
 msgid "No"
@@ -7689,7 +7689,7 @@ msgstr "黄色"
 msgid "Yen (Japan)"
 msgstr "日元（日本）"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
+#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
 #: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 #: Miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:35
 msgid "Yes"
