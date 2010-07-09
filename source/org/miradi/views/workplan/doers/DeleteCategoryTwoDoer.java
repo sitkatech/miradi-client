@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.workplan.doers;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.ExpenseAssignment;
@@ -38,8 +37,7 @@ public class DeleteCategoryTwoDoer extends DeletePoolObjectDoer
 	@Override
 	protected void doWork(BaseObject objectToDelete) throws Exception
 	{
-		removeResourceAssignmentReferenceToObject(objectToDelete, Assignment.TAG_CATEGORY_TWO_REF);
-		removeExpenseAssignmentReferenceToObject(objectToDelete, ExpenseAssignment.TAG_CATEGORY_TWO_REF);
+		removeAssignmentReferenceToObject(objectToDelete, ExpenseAssignment.TAG_CATEGORY_TWO_REF);
 	}
 
 	@Override
