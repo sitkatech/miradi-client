@@ -34,5 +34,11 @@ public class TestNumberData extends TestCaseEnhanced
 		NumberData data = new NumberData("tag");
 		data.set("5e7");
 		assertEquals("Didn't avoid scientific notation?", "50000000", data.get());
+		data.set("1.23456");
+		assertEquals("Didn't keep decimals?", "1.23456", data.get());
+		data.set("0");
+		assertEquals("Didn't keep zero as zero?", "0", data.get());
+		data.set(".1");
+		assertEquals("Didn't handle .1 properly?", "0.1", data.get());
 	}
 }

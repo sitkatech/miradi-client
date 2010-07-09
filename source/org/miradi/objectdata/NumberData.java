@@ -59,6 +59,7 @@ public class NumberData extends ObjectData
 			return "";
 
 		NumberFormat format = new DecimalFormat("#.#");
+		format.setMaximumFractionDigits(Integer.MAX_VALUE);
 		return format.format(value);
 	}
 	
