@@ -27,7 +27,9 @@ import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ResourceAssignment;
@@ -86,14 +88,27 @@ abstract public class DeletePoolObjectDoer extends ObjectsDoer
 		}
 	}
 	
-	protected void removeAssignmentReferenceToObject(BaseObject objectToDelete, String referringTag) throws Exception
+	protected void removeResourceAssignmentReferenceToObject(BaseObject objectToDelete, String referringTag) throws Exception
 	{
-		ORefList assignmentReferrerRefs = new ORefList();
-		assignmentReferrerRefs.addAll(objectToDelete.findObjectsThatReferToUs(ResourceAssignment.getObjectType()));
-		assignmentReferrerRefs.addAll(objectToDelete.findObjectsThatReferToUs(ExpenseAssignment.getObjectType()));
-		for (int index = 0; index < assignmentReferrerRefs.size(); ++index)
+		removeAssignmentReferenceToObject(objectToDelete, ResourceAssignment.getObjectType(), referringTag);
+	}
+	
+	protected void removeExpenseAssignmentReferenceToObject(BaseObject objectToDelete, String referringTag) throws Exception
+	{
+		removeAssignmentReferenceToObject(objectToDelete, ExpenseAssignment.getObjectType(), referringTag);
+	}
+
+	private void removeAssignmentReferenceToObject(BaseObject objectToDelete, int objectType, String referringTag) throws Exception
+	{
+		ORefList expenseAssignmentReferrerRefs = objectToDelete.findObjectsThatReferToUs(objectType);
+		for (int index = 0; index < expenseAssignmentReferrerRefs.size(); ++index)
 		{
-			CommandSetObjectData clearTag = new CommandSetObjectData(assignmentReferrerRefs.get(index), referringTag, "");
+			ORef assignmentRef = expenseAssignmentReferrerRefs.get(index);
+			Assignment assignment = Assignment.findAssignment(getProject(), assignmentRef);
+			if (!assignment.doesFieldExist(referringTag))
+				EAM.unexpectedErrorDialog(new Exception());
+			
+			CommandSetObjectData clearTag = new CommandSetObjectData(assignmentRef, referringTag, "");
 			getProject().executeCommand(clearTag);
 		}
 	}
