@@ -88,6 +88,12 @@ abstract public class DeletePoolObjectDoer extends ObjectsDoer
 		}
 	}
 	
+	protected void removeAssignmentReferenceToObject(BaseObject objectToDelete, String referringTag) throws Exception
+	{
+		removeResourceAssignmentReferenceToObject(objectToDelete, referringTag);
+		removeExpenseAssignmentReferenceToObject(objectToDelete, referringTag);
+	}
+	
 	protected void removeResourceAssignmentReferenceToObject(BaseObject objectToDelete, String referringTag) throws Exception
 	{
 		removeAssignmentReferenceToObject(objectToDelete, ResourceAssignment.getObjectType(), referringTag);
