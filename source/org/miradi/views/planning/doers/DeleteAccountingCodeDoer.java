@@ -21,6 +21,7 @@ package org.miradi.views.planning.doers;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.AccountingCode;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.views.umbrella.doers.DeletePoolObjectDoer;
@@ -36,7 +37,8 @@ public class DeleteAccountingCodeDoer extends DeletePoolObjectDoer
 	@Override
 	protected void doWork(BaseObject objectToDelete) throws Exception
 	{
-		removeAssignmentReferenceToObject(objectToDelete, ResourceAssignment.TAG_ACCOUNTING_CODE_ID);
+		removeResourceAssignmentReferenceToObject(objectToDelete, ResourceAssignment.TAG_ACCOUNTING_CODE_ID);
+		removeExpenseAssignmentReferenceToObject(objectToDelete, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF);
 	}
 
 	@Override

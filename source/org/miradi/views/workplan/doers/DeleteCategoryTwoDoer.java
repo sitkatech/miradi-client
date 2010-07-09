@@ -24,6 +24,7 @@ import org.miradi.main.EAM;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.BudgetCategoryTwo;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.views.umbrella.doers.DeletePoolObjectDoer;
 
 public class DeleteCategoryTwoDoer extends DeletePoolObjectDoer
@@ -37,7 +38,8 @@ public class DeleteCategoryTwoDoer extends DeletePoolObjectDoer
 	@Override
 	protected void doWork(BaseObject objectToDelete) throws Exception
 	{
-		removeAssignmentReferenceToObject(objectToDelete, Assignment.TAG_CATEGORY_TWO_REF);
+		removeResourceAssignmentReferenceToObject(objectToDelete, Assignment.TAG_CATEGORY_TWO_REF);
+		removeExpenseAssignmentReferenceToObject(objectToDelete, ExpenseAssignment.TAG_CATEGORY_TWO_REF);
 	}
 
 	@Override
