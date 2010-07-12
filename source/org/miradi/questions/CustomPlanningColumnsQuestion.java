@@ -64,7 +64,6 @@ public class CustomPlanningColumnsQuestion extends StaticChoiceQuestion
 		return new ChoiceItem(tag, EAM.fieldLabel(ObjectType.FAKE, tag));
 	}
 	
-	public static final String META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE = "MetaRollupReportsWorkUnitsColumnCode";
 	public static final String META_ROLLUP_REPORTS_EXPENSES_CODE = "MetaRollupReportsExpensesColumnCode";
 	public static final String META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE = "MetaRollupReportsBudgetDetailsColumnCode";
 

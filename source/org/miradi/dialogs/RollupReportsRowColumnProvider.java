@@ -28,6 +28,7 @@ import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 
 public class RollupReportsRowColumnProvider implements RowColumnProvider
@@ -36,7 +37,7 @@ public class RollupReportsRowColumnProvider implements RowColumnProvider
 	{
 		CodeList columnCodes = new CodeList();
 		columnCodes.add(AbstractBudgetCategoryObject.TAG_CODE);		
-		columnCodes.add(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE);
+		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE);
 		columnCodes.add(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE);
 		columnCodes.add(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE);
 		

@@ -36,7 +36,7 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 				createChoiceItem(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE),
 				createChoiceItem(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE),
 				createChoiceItem(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE),
-				createChoiceItem(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE),
+				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE),
 				createChoiceItem(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE),
 				createChoiceItem(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE),
 		};
@@ -59,7 +59,7 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 			return CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE;
 		
 		if (getAllPossibleRollupReportsColumnGroups().contains(budgetColumnGroupCode))
-			return CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE;
+			return WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE;
 		
 		throw new RuntimeException("Column code is not a budet column. Code: " + budgetColumnGroupCode);
 	}
@@ -69,7 +69,7 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 		Vector<String> columnGroups = new Vector();
 		columnGroups.add(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
 		columnGroups.add(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE);
 		
 		return columnGroups;
 	}
@@ -100,10 +100,12 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 	public static Vector<String> getAllPossibleRollupReportsColumnGroups()
 	{
 		Vector<String> columnGroups = new Vector();
-		columnGroups.add(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE);
 		columnGroups.add(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE);
 		columnGroups.add(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE);
 		
 		return columnGroups;
 	}
+
+	public static final String META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE = "MetaRollupReportsWorkUnitsColumnCode";
 }
