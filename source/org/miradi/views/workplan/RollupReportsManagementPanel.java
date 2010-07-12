@@ -46,7 +46,7 @@ public class RollupReportsManagementPanel extends PlanningTreeManagementPanel
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, RowColumnProvider rowColumnProvider) throws Exception
 	{
 		PlanningTreeTableModel model = RollupReportsTreeTableModel.createRollupReportsTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow());
-		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(getMainWindow(), rowColumnProvider, model);
+		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
 	}
 
 	public static RollupReportsManagementPanel createRollUpReportsPanel(MainWindow mainWindowToUse) throws Exception

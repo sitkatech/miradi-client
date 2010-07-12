@@ -47,7 +47,7 @@ public class WorkPlanAccountingCodeManagementPanel extends AbstractAccountingCod
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, RowColumnProvider rowColumnProvider) throws Exception
 	{
 		PlanningTreeTableModel model = AccountingCodeTreeTableModel.createOperationalPlanAccountingCodeTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow());
-		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(getMainWindow(), rowColumnProvider, model);
+		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
 	}
 
 	public static PlanningTreeManagementPanel createAccountingPanel(MainWindow mainWindowToUse) throws Exception
