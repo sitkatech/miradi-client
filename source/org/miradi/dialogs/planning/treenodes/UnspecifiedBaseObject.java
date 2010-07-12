@@ -25,9 +25,9 @@ import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
 
-public class UnspecifiedProjectResource extends BaseObject
+public class UnspecifiedBaseObject extends BaseObject
 {
-	public UnspecifiedProjectResource(ObjectManager objectManagerToUse, int objectTypeToUse, String objectNameToUse)
+	public UnspecifiedBaseObject(ObjectManager objectManagerToUse, int objectTypeToUse, String objectNameToUse)
 	{
 		super(objectManagerToUse, BaseId.INVALID);
 		
