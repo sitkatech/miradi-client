@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-12 14:23-0500\n"
+"POT-Creation-Date: 2010-07-12 14:26-0500\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -4580,7 +4580,7 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: Miradi/source/org/miradi/utils/Translation.java:306
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:270
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/UnspecifiedProjectResource.java:59
+#: Miradi/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:59
 msgid "Not Specified"
 msgstr ""
 
