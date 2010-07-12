@@ -57,6 +57,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
 import org.miradi.utils.TableExporter;
@@ -239,7 +240,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		if (shouldShow(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
 			multiModel.addModel(budgetDetailsTableModel);
 		
-		if (shouldShow(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE))
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE))
 			multiModel.addModel(rollupReportsWorkUnitsModel);
 		
 		if (shouldShow(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE))
