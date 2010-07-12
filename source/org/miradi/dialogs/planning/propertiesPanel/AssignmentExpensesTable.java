@@ -28,7 +28,7 @@ import org.miradi.actions.ActionCreateExpense;
 import org.miradi.actions.ActionDeleteExpense;
 import org.miradi.dialogs.planning.AssignmentDateUnitsTableModel;
 import org.miradi.main.MainWindow;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 
 public class AssignmentExpensesTable extends AssignmentDateUnitsTable
 {
@@ -51,6 +51,6 @@ public class AssignmentExpensesTable extends AssignmentDateUnitsTable
 	@Override
 	public String getColumnGroupCode(int tableColumn)
 	{
-		return CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE;
+		return WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE;
 	}
 }

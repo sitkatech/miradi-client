@@ -33,12 +33,12 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] 
 		{
-				createChoiceItem(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE),
-				createChoiceItem(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE),
-				createChoiceItem(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE),
+				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE),
+				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE),
+				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE),
 				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE),
-				createChoiceItem(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE),
-				createChoiceItem(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE),
+				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE),
+				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE),
 		};
 	}
 	
@@ -50,13 +50,13 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 	public static String getNormalizedBudgetGroupColumnCode(String budgetColumnGroupCode)
 	{
 		if (getAllPossibleWorkUnitsColumnGroups().contains(budgetColumnGroupCode))
-			return CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
+			return WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
 		
 		if (getAllPossibleExpensesColumnGroups().contains(budgetColumnGroupCode))
-			return CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE;
+			return WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE;
 		
 		if (getAllPossibleBudgetTotalsColumnGroups().contains(budgetColumnGroupCode))
-			return CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE;
+			return WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE;
 		
 		if (getAllPossibleRollupReportsColumnGroups().contains(budgetColumnGroupCode))
 			return WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE;
@@ -67,8 +67,8 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 	public static Vector<String> getAllPossibleWorkUnitsColumnGroups()
 	{
 		Vector<String> columnGroups = new Vector();
-		columnGroups.add(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE);
 		
 		return columnGroups;
@@ -77,10 +77,10 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 	public static Vector<String> getAllPossibleExpensesColumnGroups()
 	{
 		Vector<String> columnGroups = new Vector();
-		columnGroups.add(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE);
 		
 		return columnGroups;
 	}
@@ -88,11 +88,11 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 	public static Vector<String> getAllPossibleBudgetTotalsColumnGroups()
 	{
 		Vector<String> columnGroups = new Vector();
-		columnGroups.add(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE);
 		
 		return columnGroups;
 	}
@@ -101,11 +101,22 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 	{
 		Vector<String> columnGroups = new Vector();
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE);
-		columnGroups.add(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE);
 		
 		return columnGroups;
 	}
 
 	public static final String META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE = "MetaRollupReportsWorkUnitsColumnCode";
+	public static final String META_ROLLUP_REPORTS_EXPENSES_CODE = "MetaRollupReportsExpensesColumnCode";
+	public static final String META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE = "MetaRollupReportsBudgetDetailsColumnCode";
+	public static final String META_RESOURCE_ASSIGNMENT_COLUMN_CODE = "MetaWorkUnitColumnCode";
+	public static final String META_EXPENSE_ASSIGNMENT_COLUMN_CODE = "MetaExpenseAmountColumnCode";
+	public static final String META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE = "MetaFundingSourceExpenseColumnCode";
+	public static final String META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE = "MetaFundingSourceBudgetDetailsColumnCode";
+	public static final String META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE = "MetaAcountingCodeExpenseColumnCode";
+	public static final String META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE = "MetaAccountingCodeBudgetDetailsColumnCode";
+	public static final String META_BUDGET_DETAIL_COLUMN_CODE = "MetaBudgetDetailColumnCode";
+	public static final String META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE = "MetaProjectResourceWorkUnitsColumnCode";
+	public static final String META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE = "MetaProjectResourceBudgetDetailsColumnCode";
 }

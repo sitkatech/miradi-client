@@ -26,7 +26,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 
 public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 {
@@ -229,13 +229,13 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	public String getAboveColumnHeaderText(int tableColumn)
 	{
 		int modelColumn = convertToModelColumn(tableColumn);
-		if (getColumnGroupName(modelColumn).equals(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
+		if (getColumnGroupName(modelColumn).equals(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
 			return AboveBudgetColumnsBar.getWorkUnitsAboveColumnLabel();
 		
-		if (getColumnGroupName(modelColumn).equals(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
+		if (getColumnGroupName(modelColumn).equals(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
 			return AboveBudgetColumnsBar.getExpensesAboveColumnLabel();
 		
-		if (getColumnGroupName(modelColumn).equals(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
+		if (getColumnGroupName(modelColumn).equals(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
 			return AboveBudgetColumnsBar.getBudgetTotalsAboveColumnLabel();
 		
 		return "";

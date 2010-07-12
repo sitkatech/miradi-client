@@ -47,8 +47,8 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.ReportTemplateContentQuestion;
+import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.CodeList;
@@ -154,17 +154,17 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 			PlanningViewFutureStatusTableModel futureStatusModel = new PlanningViewFutureStatusTableModel(project, model);
 			multiModelExporter.addExportable(new PlanningViewMainModelExporter(project, futureStatusModel, model, futureStatusModel.getUniqueTableModelIdentifier()));
 		}
-		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
 		{
 			WorkPlanWorkUnitsTableModel workUnitsModel = new WorkPlanWorkUnitsTableModel(project, model, model.getUniqueTreeTableModelIdentifier());;
 			multiModelExporter.addExportable(new PlanningViewMainModelExporter(project, workUnitsModel, model, workUnitsModel.getUniqueTableModelIdentifier()));
 		}
-		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
 		{
 			WorkPlanExpenseAmountsTableModel expensesModel = new WorkPlanExpenseAmountsTableModel(project, model, model.getUniqueTreeTableModelIdentifier());;
 			multiModelExporter.addExportable(new PlanningViewMainModelExporter(project, expensesModel, model, expensesModel.getUniqueTableModelIdentifier()));
 		}
-		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
 		{
 			WorkPlanBudgetDetailsTableModel budgetDetailsModel = new WorkPlanBudgetDetailsTableModel(project, model, model.getUniqueTreeTableModelIdentifier());;
 			multiModelExporter.addExportable(new PlanningViewMainModelExporter(project, budgetDetailsModel, model, budgetDetailsModel.getUniqueTableModelIdentifier()));

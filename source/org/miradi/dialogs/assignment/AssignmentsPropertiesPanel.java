@@ -24,7 +24,7 @@ import org.miradi.dialogs.planning.propertiesPanel.ResourceAssignmentEditorCompo
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class AssignmentsPropertiesPanel extends ObjectDataInputPanelWithSections
@@ -76,7 +76,7 @@ public class AssignmentsPropertiesPanel extends ObjectDataInputPanelWithSections
 	@Override
 	protected boolean doesSectionContainFieldWithTag(String tag)
 	{
-		if (tag.equals(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
+		if (tag.equals(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
 			return true;
 		
 		return super.doesSectionContainFieldWithTag(tag);

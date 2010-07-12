@@ -23,7 +23,7 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.CategorizedWorkUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.project.Project;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 
 public class ProjectResourceWorkUnitsTableModel extends CategorizedWorkUnitsTableModel
 {
@@ -35,7 +35,7 @@ public class ProjectResourceWorkUnitsTableModel extends CategorizedWorkUnitsTabl
 	@Override
 	public String getColumnGroupCode(int modelColumn)
 	{
-		return CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE;
+		return WorkPlanColumnConfigurationQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE;
 	}
 
 	@Override

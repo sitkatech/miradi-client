@@ -38,7 +38,6 @@ import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 
@@ -74,17 +73,17 @@ public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeT
 
 	public static String getWorkUnitsAboveColumnLabel()
 	{
-		return getChoiceLabel(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
+		return getChoiceLabel(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
 	}
 
 	public static String getExpensesAboveColumnLabel()
 	{
-		return getChoiceLabel(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
+		return getChoiceLabel(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
 	}
 
 	public static String getBudgetTotalsAboveColumnLabel()
 	{
-		return getChoiceLabel(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
+		return getChoiceLabel(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
 	}
 	
 	private static String getChoiceLabel(String metaResourceAssignmentColumnCode)
