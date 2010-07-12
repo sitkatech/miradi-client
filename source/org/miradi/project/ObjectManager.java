@@ -521,7 +521,8 @@ public class ObjectManager
 		ORefSet addedReferrals = ORefSet.subtract(newReferrals, oldReferrals);
 		for(ORef referredRef: addedReferrals)
 		{
-			getReferrerRefsSet(referredRef).add(referrerRef);
+			if(referredRef.isValid())
+				getReferrerRefsSet(referredRef).add(referrerRef);
 		}
 	}
 

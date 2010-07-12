@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.project.ObjectManager;
@@ -60,6 +61,14 @@ public class TestObjectManager extends EAMTestCase
 	{
 		project.close();
 		project = null;
+	}
+	
+	public void testCachingInvalidRefs() throws Exception
+	{
+		assertEquals("Already have invalid refs?", 0, manager.getReferringObjects(ORef.INVALID).size());
+		ORefSet containsInvalid = new ORefSet(ORef.INVALID);
+		manager.updateReferrerCache(project.getMetadata().getRef(), new ORefSet(), containsInvalid);
+		assertEquals("Now cached an invalid refs?", 0, manager.getReferringObjects(ORef.INVALID).size());
 	}
 
 	public void testObjectLifecycles() throws Exception
