@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2010, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -20,29 +20,51 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.treenodes;
 
+import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.Project;
-import org.miradi.utils.CodeList;
+import org.miradi.project.ObjectManager;
 
-public class BaseObjectNotSpecifiedNode extends AbstractPlanningTreeNode
+public class UnspecifiedProjectResource extends BaseObject
 {
-	public BaseObjectNotSpecifiedNode(Project projectToUse, int objectType, String objectNameToUse, CodeList visibleRowsToUse) throws Exception
+	public UnspecifiedProjectResource(ObjectManager objectManagerToUse, int objectTypeToUse, String objectNameToUse)
 	{
-		super(projectToUse, visibleRowsToUse);
+		super(objectManagerToUse, BaseId.INVALID);
 		
-		unspecifiedResource = new UnspecifiedProjectResource(getProject().getObjectManager(), objectType, objectNameToUse);
-		rebuild();
-	}
-	
-	public BaseObject getObject()
-	{
-		return unspecifiedResource;
+		objectType = objectTypeToUse;
+		objectName = objectNameToUse;
 	}
 
 	@Override
-	public void rebuild() throws Exception
+	public int getType()
 	{
+		return objectType;
+	}
+
+	@Override
+	public String getTypeName()
+	{
+		return objectName;
 	}
 	
-	private UnspecifiedProjectResource unspecifiedResource;
+	@Override
+	public String getLabel()
+	{
+		return toString();
+	}
+	
+	@Override
+	public String toString()
+	{
+		return EAM.text("Not Specified");
+	}
+	
+	@Override
+	public int[] getTypesThatCanOwnUs()
+	{
+		return NO_OWNERS;
+	}
+	
+	private int objectType;
+	private String objectName;
 }
