@@ -40,19 +40,21 @@ public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse, RowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifier) throws Exception
 	{
 		PlanningTreeTableModel model = new ExportablePlanningTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, uniqueTreeTableModelIdentifier);
-		return createPlanningTreeTablePanelWithoutButtons(mainWindowToUse, rowColumnProvider, model);
+		return createPlanningTreeTablePanelWithoutButtonsForExporting(mainWindowToUse, rowColumnProvider, model);
 	}
 
-	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse, RowColumnProvider rowColumnProvider, GenericTreeTableModel model) throws Exception
+	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtonsForExporting(MainWindow mainWindowToUse, RowColumnProvider rowColumnProvider, GenericTreeTableModel model) throws Exception
 	{
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
-			
-		return new ExportablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, new Class[0], rowColumnProvider);
+		ExportablePlanningTreeTablePanel exportablePlanningTreeTablePanel = new ExportablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, new Class[0], rowColumnProvider);
+		exportablePlanningTreeTablePanel.rebuildEntireTreeTable();
+
+		return exportablePlanningTreeTablePanel;
 	}
 	
 	public static JComponent createPrintablePlanningTreeTablePanel(MainWindow mainWindow, RowColumnProvider rowColumnProvider, GenericTreeTableModel modelToUse) throws Exception
 	{
-		PlanningTreeTablePanel wholePanel = createPlanningTreeTablePanelWithoutButtons(mainWindow, rowColumnProvider, modelToUse);
+		PlanningTreeTablePanel wholePanel = createPlanningTreeTablePanelWithoutButtonsForExporting(mainWindow, rowColumnProvider, modelToUse);
 
 		TwoColumnPanel reformatted = new TwoColumnPanel();
 		reformatted.add(wholePanel.getTree().getTableHeader());

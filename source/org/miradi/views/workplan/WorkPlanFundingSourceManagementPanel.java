@@ -47,7 +47,7 @@ public class WorkPlanFundingSourceManagementPanel extends AbstractFundingSourceM
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, RowColumnProvider rowColumnProvider) throws Exception
 	{
 		PlanningTreeTableModel model = FundingSourceTreeTableModel.createOperationalPlanFundingSourceTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow());
-		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(getMainWindow(), rowColumnProvider, model);
+		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
 	}
 
 	public static PlanningTreeManagementPanel createFundingSourcePanel(MainWindow mainWindowToUse) throws Exception
