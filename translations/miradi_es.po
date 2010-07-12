@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-12 12:44-0500\n"
+"POT-Creation-Date: 2010-07-12 14:23-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -4897,7 +4897,7 @@ msgstr "No efectivo "
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: Miradi/source/org/miradi/utils/Translation.java:306
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:270
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/BaseObjectNotSpecifiedNode.java:81
+#: Miradi/source/org/miradi/dialogs/planning/treenodes/UnspecifiedProjectResource.java:59
 msgid "Not Specified"
 msgstr "No especificado"
 
