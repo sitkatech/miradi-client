@@ -24,7 +24,6 @@ import org.miradi.dialogs.RollupReportsRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
-import org.miradi.dialogs.planning.upperPanel.CategoryOneTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
@@ -46,7 +45,7 @@ public class RollupReportsManagementPanel extends PlanningTreeManagementPanel
 	@Override
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, RowColumnProvider rowColumnProvider) throws Exception
 	{
-		PlanningTreeTableModel model = CategoryOneTreeTableModel.createOperationalPlanCategoryOneTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow());
+		PlanningTreeTableModel model = RollupReportsTreeTableModel.createRollupReportsTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow());
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(getMainWindow(), rowColumnProvider, model);
 	}
 
