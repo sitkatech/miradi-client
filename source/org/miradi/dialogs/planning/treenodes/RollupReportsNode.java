@@ -84,6 +84,7 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 				children.add(new RollupReportsNode(getProject(), getVisibleRows(), childBaseObject, getLevelObjectTypes(), childLevel, overlapptingAssignmentRefs));
 		}
 		
+		children.add(new BaseObjectNotSpecifiedNode(getProject(), levelObjectType, getObject().getTypeName(), getVisibleRows()));
 		Collections.sort(children, createNodeSorter());
 	}
 
