@@ -30,7 +30,7 @@ public class BaseObjectNotSpecifiedNode extends AbstractPlanningTreeNode
 	{
 		super(projectToUse, visibleRowsToUse);
 		
-		unspecifiedResource = new UnspecifiedProjectResource(getProject().getObjectManager(), objectType, objectNameToUse);
+		unspecifiedResource = new UnspecifiedBaseObject(getProject().getObjectManager(), objectType, objectNameToUse);
 		rebuild();
 	}
 	
@@ -44,5 +44,5 @@ public class BaseObjectNotSpecifiedNode extends AbstractPlanningTreeNode
 	{
 	}
 	
-	private UnspecifiedProjectResource unspecifiedResource;
+	private UnspecifiedBaseObject unspecifiedResource;
 }
