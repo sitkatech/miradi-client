@@ -8,7 +8,7 @@ import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionRemoveAssignment;
 import org.miradi.dialogs.planning.AssignmentDateUnitsTableModel;
 import org.miradi.main.MainWindow;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 
 public class AssignmentWorkUnitsTable extends AssignmentDateUnitsTable
 {
@@ -31,6 +31,6 @@ public class AssignmentWorkUnitsTable extends AssignmentDateUnitsTable
 	@Override
 	public String getColumnGroupCode(int tableColumn)
 	{
-		return CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
+		return WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
 	}
 }

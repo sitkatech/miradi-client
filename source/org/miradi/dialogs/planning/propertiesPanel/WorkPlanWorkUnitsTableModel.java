@@ -30,7 +30,7 @@ import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.OptionalDouble;
 
 public class WorkPlanWorkUnitsTableModel extends AbstractWorkUnitsTableModel
@@ -73,7 +73,7 @@ public class WorkPlanWorkUnitsTableModel extends AbstractWorkUnitsTableModel
 	@Override
 	public String getColumnGroupCode(int modelColumn)
 	{
-		return CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
+		return WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
 	}
 	
 	@Override

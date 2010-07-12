@@ -56,7 +56,6 @@ import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.ResourceAssignment;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
@@ -213,40 +212,40 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 			multiModel.addModel(futureStatusModel);
 		
-		if (shouldShow(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(workUnitsTableModel);
 		
-		if (shouldShow(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE))
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE))
 			multiModel.addModel(resourceWorkUnitsTableModel);
 		
-		if (shouldShow(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE))
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE))
 			multiModel.addModel(resourceBudgetDetailsTableModel);
 		
-		if (shouldShow(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(expenseAmountsTableModel);
 		
-		if (shouldShow(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE))
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE))
 			multiModel.addModel(fundingSourceExpenseTableModel);
 		
-		if (shouldShow(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE))
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE))
 			multiModel.addModel(accountingCodeExpenseTableModel);
 		
-		if (shouldShow(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE))
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE))
 			multiModel.addModel(fundingSourceBudgetDetailsTableModel);
 		
-		if (shouldShow(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE))
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE))
 			multiModel.addModel(accoundingCodeBudgetDetailsTableModel);
 		
-		if (shouldShow(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
 			multiModel.addModel(budgetDetailsTableModel);
 		
 		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE))
 			multiModel.addModel(rollupReportsWorkUnitsModel);
 		
-		if (shouldShow(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE))
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE))
 			multiModel.addModel(rollupReportsExpenseModel);
 		
-		if (shouldShow(CustomPlanningColumnsQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE))
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE))
 			multiModel.addModel(rollupReportsBudgetDetailsModel);
 		
 		mainTable.updateToReflectNewColumns();

@@ -119,11 +119,11 @@ import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.FontSizeQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Translation;
@@ -719,9 +719,9 @@ public class Project
 		
 		TableSettings newTableSettings = TableSettings.findOrCreate(this, WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
 		CodeList budgetColumnCodes = new CodeList();
-		budgetColumnCodes.add(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
-		budgetColumnCodes.add(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
-		budgetColumnCodes.add(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
+		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
+		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
+		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
 		
 		StringMap newTableSettingsMap = new StringMap();
 		newTableSettingsMap.add(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, budgetColumnCodes.toString());

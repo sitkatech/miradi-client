@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 import org.miradi.project.Project;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 
 public class WorkPlanRowColumnProviderWithBudgetColumns extends WorkPlanRowColumnProvider
@@ -35,9 +35,9 @@ public class WorkPlanRowColumnProviderWithBudgetColumns extends WorkPlanRowColum
 	protected CodeList getBudgetColumnCodesFromTableSettingsMap()
 	{
 		CodeList budgetColumns = new CodeList();
-		budgetColumns.add(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
-		budgetColumns.add(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
-		budgetColumns.add(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
+		budgetColumns.add(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
+		budgetColumns.add(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
+		budgetColumns.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
 		
 		return budgetColumns;
 	}

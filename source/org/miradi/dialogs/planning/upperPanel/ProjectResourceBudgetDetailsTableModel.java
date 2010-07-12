@@ -22,7 +22,7 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.project.Project;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 
 public class ProjectResourceBudgetDetailsTableModel extends CategorizedBudgetDetailsTableModel
 {
@@ -34,7 +34,7 @@ public class ProjectResourceBudgetDetailsTableModel extends CategorizedBudgetDet
 	@Override
 	public String getColumnGroupCode(int modelColumn)
 	{
-		return CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE;
+		return WorkPlanColumnConfigurationQuestion.META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE;
 	}
 	
 	@Override
