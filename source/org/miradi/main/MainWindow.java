@@ -585,13 +585,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		ProjectRepairer repairer = new ProjectRepairer(project);
 		repairer.repairProblemsWherePossible();
-		scanForSeriousCorruption();
-		scanForOrphans();
+		scanForSeriousCorruption(repairer);
+		scanForOrphans(repairer);
 	}
 
-	private void scanForOrphans() throws Exception
+	private void scanForOrphans(ProjectRepairer repairer) throws Exception
 	{
-		ProjectRepairer repairer = new ProjectRepairer(project);
 		Vector<ORef> orphanRefs = repairer.findOrphans();
 		
 		Vector<ORef> deletedRefs = repairer.deleteEmptyOrphans(orphanRefs);
@@ -670,9 +669,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		
 	}
 
-	private void scanForSeriousCorruption() throws Exception
+	private void scanForSeriousCorruption(ProjectRepairer repairer) throws Exception
 	{
-		ProjectRepairer repairer = new ProjectRepairer(project);
 		HashMap<ORef, ORefSet> rawProblems = repairer.getListOfMissingObjects();
 		if(rawProblems.size() == 0)
 			return;
