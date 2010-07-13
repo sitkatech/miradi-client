@@ -162,14 +162,14 @@ abstract public class Assignment extends BaseObject
 	public ORef getCategoryRef(int categoryObjectType)
 	{
 		String tagForCategoryType = getTagForCategoryType(categoryObjectType);
+		if (!doesFieldExist(tagForCategoryType))
+			return ORef.INVALID;
+		
 		ORef categoryRef = getRefData(tagForCategoryType);
 		if (categoryRef.isValid())
 			return categoryRef;
 		
-		if (doesFieldExist(tagForCategoryType))
-			return ORef.createInvalidWithType(categoryObjectType);
-		
-		return ORef.INVALID;
+		return ORef.createInvalidWithType(categoryObjectType);
 	}
 
 	public String getTagForCategoryType(int categoryObjectType)
