@@ -104,10 +104,10 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 			Assignment assignment = Assignment.findAssignment(getProject(), getAssignmentRefsThatMatch().get(index));
 			ORefList refList = new ORefList(assignment);
 			ORef categoryRef = assignment.getCategoryRef(levelObjectType);
-			if (categoryRefToAssignmentRefsMap.containsKey(categoryRef))
-				categoryRefToAssignmentRefsMap.get(categoryRef).addAll(refList);
-			else
-				categoryRefToAssignmentRefsMap.put(categoryRef, refList);
+			if (!categoryRefToAssignmentRefsMap.containsKey(categoryRef))
+				categoryRefToAssignmentRefsMap.put(categoryRef, new ORefList());
+				
+			categoryRefToAssignmentRefsMap.get(categoryRef).addAll(refList);
 		}
 		
 		return categoryRefToAssignmentRefsMap;
