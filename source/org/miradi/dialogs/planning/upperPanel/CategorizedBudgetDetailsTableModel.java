@@ -27,8 +27,7 @@ import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.Project;
 import org.miradi.utils.OptionalDouble;
 
-abstract public class CategorizedBudgetDetailsTableModel extends
-		AbstractBudgetDetailsTableModel
+abstract public class CategorizedBudgetDetailsTableModel extends AbstractBudgetDetailsTableModel
 {
 	public CategorizedBudgetDetailsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
