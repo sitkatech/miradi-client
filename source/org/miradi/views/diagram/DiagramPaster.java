@@ -679,7 +679,6 @@ abstract public class DiagramPaster
 	private DiagramFactor getNewDiagramFactor(EnhancedJsonObject diagramLinkJson, int direction)
 	{
 		ORef newDiagramFactorRef = getNewDiagramFactorRef(diagramLinkJson, direction);
-
 		if(newDiagramFactorRef.isInvalid())
 			return null;
 		
@@ -688,12 +687,10 @@ abstract public class DiagramPaster
 
 	private ORef getNewDiagramFactorRef(EnhancedJsonObject diagramLinkJson, int direction)
 	{
-		ORef newDiagramFactorRef = ORef.INVALID;
 		if(isGroupLink(diagramLinkJson))
-			newDiagramFactorRef = getGroupLinkDiagramFactorEnd(diagramLinkJson, direction);
-		else
-			newDiagramFactorRef = getWrappedLinkFactorEnd(diagramLinkJson, direction);
-		return newDiagramFactorRef;
+			return getGroupLinkDiagramFactorEnd(diagramLinkJson, direction);
+
+		return getWrappedLinkFactorEnd(diagramLinkJson, direction);
 	}
 
 	private boolean isGroupLink(EnhancedJsonObject diagramLinkJson)
