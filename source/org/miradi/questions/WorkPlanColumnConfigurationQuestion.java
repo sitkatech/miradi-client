@@ -39,6 +39,14 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE),
 				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE),
 				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE),
+				
+				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_WORK_UNITS_COLUMN_CODE),
+				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_EXPENSE_COLUMN_CODE),
+				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_BUDGET_DETAILS_COLUMN_CODE),
+				
+				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_WORK_UNITS_COLUMN_CODE),
+				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_EXPENSE_COLUMN_CODE),
+				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_BUDGET_DETAILS_COLUMN_CODE),
 		};
 	}
 	
@@ -70,6 +78,8 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_WORK_UNITS_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_WORK_UNITS_COLUMN_CODE);
 		
 		return columnGroups;
 	}
@@ -81,6 +91,8 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_EXPENSE_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_EXPENSE_COLUMN_CODE);
 		
 		return columnGroups;
 	}
@@ -93,6 +105,8 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_BUDGET_DETAILS_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_BUDGET_DETAILS_COLUMN_CODE);
 		
 		return columnGroups;
 	}
@@ -119,4 +133,12 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 	public static final String META_BUDGET_DETAIL_COLUMN_CODE = "MetaBudgetDetailColumnCode";
 	public static final String META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE = "MetaProjectResourceWorkUnitsColumnCode";
 	public static final String META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE = "MetaProjectResourceBudgetDetailsColumnCode";
+	
+	public static final String META_BUDGET_CATEGORY_ONE_WORK_UNITS_COLUMN_CODE = "MetaBudgetCategoryOneWorkUnitsColumnCode";
+	public static final String META_BUDGET_CATEGORY_ONE_EXPENSE_COLUMN_CODE = "MetaBudgetCategoryOneExpenseColumnCode";
+	public static final String META_BUDGET_CATEGORY_ONE_BUDGET_DETAILS_COLUMN_CODE = "MetaBudgetCategoryOneBudgetDetailsColumnCode";
+	
+	public static final String META_BUDGET_CATEGORY_TWO_WORK_UNITS_COLUMN_CODE = "MetaBudgetCategoryTwoWorkUnitsColumnCode";
+	public static final String META_BUDGET_CATEGORY_TWO_EXPENSE_COLUMN_CODE = "MetaBudgetCategoryTwoExpenseColumnCode";
+	public static final String META_BUDGET_CATEGORY_TWO_BUDGET_DETAILS_COLUMN_CODE = "MetaBudgetCategoryTwoBudgetDetailsColumnCode";
 }

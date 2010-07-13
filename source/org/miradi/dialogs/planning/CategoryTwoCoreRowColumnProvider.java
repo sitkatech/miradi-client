@@ -21,9 +21,22 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 import org.miradi.objects.BudgetCategoryTwo;
+import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
+import org.miradi.utils.CodeList;
 
 public class CategoryTwoCoreRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
 {
+	@Override
+	public CodeList getColumnListToShow()
+	{
+		CodeList columnCodes = super.getColumnListToShow();
+		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_WORK_UNITS_COLUMN_CODE);
+		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_EXPENSE_COLUMN_CODE);
+		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_BUDGET_DETAILS_COLUMN_CODE);
+		
+		return columnCodes; 
+	}
+
 	@Override
 	protected String getObjectTypeName()
 	{
