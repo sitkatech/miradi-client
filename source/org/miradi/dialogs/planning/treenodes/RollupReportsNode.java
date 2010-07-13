@@ -98,14 +98,10 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 
 	private HashMap<ORef, ORefList> createCategoryRefToAssignmentRefsMap(int levelObjectType)
 	{
-		ORefList allAsignmentRefs = new ORefList();
-		allAsignmentRefs.addAll(getProject().getAssignmentPool().getRefList());
-		allAsignmentRefs.addAll(getProject().getExpenseAssignmentPool().getRefList());
-
 		HashMap<ORef, ORefList> categoryRefToAssignmentRefsMap = new HashMap<ORef, ORefList>();
-		for (int index = 0; index < allAsignmentRefs.size(); ++index)
+		for (int index = 0; index < getAssignmentRefsThatMatch().size(); ++index)
 		{
-			Assignment assignment = Assignment.findAssignment(getProject(), allAsignmentRefs.get(index));
+			Assignment assignment = Assignment.findAssignment(getProject(), getAssignmentRefsThatMatch().get(index));
 			ORefList refList = new ORefList(assignment);
 			ORef categoryRef = assignment.getCategoryRef(levelObjectType);
 			if (categoryRefToAssignmentRefsMap.containsKey(categoryRef))
