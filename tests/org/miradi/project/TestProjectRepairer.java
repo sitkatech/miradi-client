@@ -52,6 +52,13 @@ public class TestProjectRepairer extends TestCaseWithProject
 	{
 		super(name);
 	}
+
+	@Override
+	public void setUp() throws Exception
+	{
+		super.setUp();
+		repairer = new ProjectRepairer(getProject());
+	}
 	
 	public void testRemoveInvalidDiagramLinkRefs() throws Exception
 	{
@@ -73,7 +80,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		EAM.setLogToString();
 		try
 		{
-			TestProjectRepairer.repairProblemsWherePossible(getProject());
+			repairer.repairProblemsWherePossible();
 			assertContains("-1", EAM.getLoggedString());
 		}
 		finally
@@ -100,7 +107,6 @@ public class TestProjectRepairer extends TestCaseWithProject
 	private void verifyFactorBeingReferredToByDiagramFactor(int factorType) throws Exception
 	{
 		DiagramFactor diagramFactor = getProject().createAndAddFactorToDiagram(factorType);
-		ProjectRepairer repairer = new ProjectRepairer(getProject());
 		assertEquals("factor should be covered by a diagramFactor?", 0, repairer.getFactorsWithoutDiagramFactors(factorType).size());
 		
 		getProject().deleteObject(diagramFactor);
@@ -116,7 +122,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		getProject().beginCommandSideEffectMode();
 		try
 		{
-			TestProjectRepairer.repairProblemsWherePossible(getProject());
+			repairer.repairProblemsWherePossible();
 		}
 		finally
 		{
@@ -181,7 +187,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		EAM.setLogToString();
 
 //		TODO: removed orphan deletion code until a solution can be found to general extentions of having annoations having annoations
-		TestProjectRepairer.repairProblemsWherePossible(getProject());
+		repairer.repairProblemsWherePossible();
 		//assertContains("Deleting orphan", EAM.getLoggedString());
 		//assertNull("Didn't delete orphan?", project.findObject(annotationType, orphan));
 		assertEquals("Deleted non-orphan?", nonOrphan, getProject().findObject(annotationType, nonOrphan).getId());
@@ -189,8 +195,6 @@ public class TestProjectRepairer extends TestCaseWithProject
 	
 	public void testScanForCorruptedObjects() throws Exception
 	{
-		ProjectRepairer repairer = new ProjectRepairer(getProject());
-
 		ORef indicatorRef = getProject().createObject(Indicator.getObjectType());
 		Indicator indicator = (Indicator) getProject().findObject(indicatorRef);
 		BaseId nonExistantId = new BaseId(500);
@@ -221,7 +225,6 @@ public class TestProjectRepairer extends TestCaseWithProject
 		DiagramFactor cause4 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		cause4.setData(DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(45, 45)));
 		
-		ProjectRepairer repairer = new ProjectRepairer(getProject());
 		repairer.repairProblemsWherePossible();
 		
 		DiagramFactor repairedCause1 = DiagramFactor.find(getProject(), cause1.getRef());
@@ -238,9 +241,5 @@ public class TestProjectRepairer extends TestCaseWithProject
 		assertEquals("wrong cause4 size?", new Dimension(60, 60), repairedCause4.getSize());
 	}
 
-	public static void repairProblemsWherePossible(Project project) throws Exception
-	{
-		ProjectRepairer repairer = new ProjectRepairer(project);
-		repairer.repairProblemsWherePossible();
-	}	
+	private ProjectRepairer repairer;
 }
