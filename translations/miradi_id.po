@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-13 10:50-0500\n"
+"POT-Creation-Date: 2010-07-13 10:52-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -349,7 +349,7 @@ msgstr ""
 "<BR>Silakan hubungi Dukungan Miradi (<a href=\"mailto:support@miradi.org"
 "\">support@miradi.org<a>) untuk mendapatkan bantuan</HTML> "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1256
+#: Miradi/source/org/miradi/main/MainWindow.java:1254
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -2823,7 +2823,7 @@ msgstr "Hapus "
 msgid "Delete %s"
 msgstr "Hapus %s "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:632
+#: Miradi/source/org/miradi/main/MainWindow.java:631
 msgid "Delete All Orphans"
 msgstr ""
 
@@ -3244,7 +3244,7 @@ msgstr "Perkirakan biaya kegiatan dan pemantauan "
 msgid "Euro"
 msgstr "Euro"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:839
+#: Miradi/source/org/miradi/main/MainWindow.java:837
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -4317,7 +4317,7 @@ msgstr "Daftar "
 msgid "Location"
 msgstr "Lokasi "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:610
+#: Miradi/source/org/miradi/main/MainWindow.java:609
 msgid "Lost Objects Detected"
 msgstr ""
 
@@ -4733,7 +4733,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:682
+#: Miradi/source/org/miradi/main/MainWindow.java:680
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5254,7 +5254,7 @@ msgstr "Proyek "
 msgid "Project Advisor"
 msgstr "Penasihat Proyek"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:680
+#: Miradi/source/org/miradi/main/MainWindow.java:678
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -5282,7 +5282,7 @@ msgstr "Sumber Daya Proyek "
 msgid "Project Resource Filter Editor"
 msgstr "Editor Filter Sumber Daya Proyek "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:837
+#: Miradi/source/org/miradi/main/MainWindow.java:835
 msgid "Project Resource Filter Is On"
 msgstr "Filter Sumber Daya Proyek Adalah Aktif "
 
@@ -5858,7 +5858,7 @@ msgstr "Pemilik Kepentingan"
 msgid "Standard Reports"
 msgstr "Laporan Standar "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:871
+#: Miradi/source/org/miradi/main/MainWindow.java:869
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -7080,7 +7080,7 @@ msgid ""
 msgstr ""
 "File MPZ tidak dapat disimpan ke folder dalam proyek yang sedang diimpor. "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:611
+#: Miradi/source/org/miradi/main/MainWindow.java:610
 msgid ""
 "The following objects exist in the project, but cannot be accessed.\n"
 "\n"
@@ -7107,7 +7107,7 @@ msgstr ""
 "Tautan(-tautan) akan dihapus dari semua halaman Model Konsep dan Rangkaian "
 "Hasil, bukan hanya dari halaman ini. "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:645
+#: Miradi/source/org/miradi/main/MainWindow.java:644
 msgid ""
 "The orphans have been deleted. Miradi must exit now, \n"
 "after which you can restart it and open this project.\n"
@@ -7555,7 +7555,7 @@ msgstr ""
 "aplikasi ini:\n"
 " "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1240
+#: Miradi/source/org/miradi/main/MainWindow.java:1238
 msgid "Unable to launch external web browser"
 msgstr "Tidak bisa meluncurkan perambah web eksternal "
 
@@ -7577,7 +7577,7 @@ msgstr ""
 "dari aplikasi ini:\n"
 " "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1028
+#: Miradi/source/org/miradi/main/MainWindow.java:1026
 msgid "Unable to save preferences"
 msgstr "Tidak bisa menyimpan preferensi "
 
