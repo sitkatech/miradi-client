@@ -83,14 +83,14 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		childRefs.add(ORef.INVALID);
 		for (int index = 0; index < childRefs.size(); ++index)
 		{	
-			BaseObject childBaseObject = createOrFindChildObject(childRefs.get(index), levelObjectType);
-			ORefList referringAssignmentRefs = categoryRefToAssignmentRefsMap.get(childBaseObject.getRef());
+			BaseObject possibleChildObject = createOrFindChildObject(childRefs.get(index), levelObjectType);
+			ORefList referringAssignmentRefs = categoryRefToAssignmentRefsMap.get(possibleChildObject.getRef());
 			if (referringAssignmentRefs == null)
 				continue;
 			
 			ORefList overlappingAssignmentRefs = referringAssignmentRefs.getOverlappingRefs(getAssignmentRefsThatMatch());
 			if (overlappingAssignmentRefs.hasRefs())
-				children.add(new RollupReportsNode(getProject(), getVisibleRows(), childBaseObject, getLevelObjectTypes(), childLevel, overlappingAssignmentRefs));
+				children.add(new RollupReportsNode(getProject(), getVisibleRows(), possibleChildObject, getLevelObjectTypes(), childLevel, overlappingAssignmentRefs));
 		}
 		
 		Collections.sort(children, createNodeSorter());
