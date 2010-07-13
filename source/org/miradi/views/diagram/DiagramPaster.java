@@ -444,8 +444,11 @@ abstract public class DiagramPaster
 			EnhancedJsonObject tsrJson = new EnhancedJsonObject(jsonAsString);
 
 			ThreatStressRating threatStressRating = findThreatStressRating(tsrJson);
-			Command[] commands = threatStressRating.createCommandsToLoadFromJson(tsrJson);
-			getProject().executeCommandsWithoutTransaction(commands);
+			if(threatStressRating != null)
+			{
+				Command[] commands = threatStressRating.createCommandsToLoadFromJson(tsrJson);
+				getProject().executeCommandsWithoutTransaction(commands);
+			}
 		}
 	}
 	
@@ -639,7 +642,11 @@ abstract public class DiagramPaster
 			diagramLinkJson.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
 			
 			DiagramFactor fromDiagramFactor = getNewDiagramFactor(diagramLinkJson, FactorLink.FROM);
+			if(fromDiagramFactor == null)
+				continue;
 			DiagramFactor toDiagramFactor = getNewDiagramFactor(diagramLinkJson, FactorLink.TO);
+			if(toDiagramFactor == null)
+				continue;
 
 			LinkCreator linkCreator = new LinkCreator(getProject());
 			if (linkCreator.linkToBePastedWasRejected(currentModel, fromDiagramFactor.getRef(), toDiagramFactor.getRef()))
@@ -671,12 +678,25 @@ abstract public class DiagramPaster
 
 	private DiagramFactor getNewDiagramFactor(EnhancedJsonObject diagramLinkJson, int direction)
 	{
-		ORef fromDiagramFactorRef = getGroupLinkDiagramFactorEnd(diagramLinkJson, direction);
-		if (fromDiagramFactorRef.isInvalid())
-			fromDiagramFactorRef = getWrappedLinkFactorEnd(diagramLinkJson, direction);
-		ORef newDiagramFactorRef = fromDiagramFactorRef;
-		DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), newDiagramFactorRef);
-		return fromDiagramFactor;
+		ORef newDiagramFactorRef = ORef.INVALID;
+		if(isGroupLink(diagramLinkJson))
+			newDiagramFactorRef = getGroupLinkDiagramFactorEnd(diagramLinkJson, direction);
+		else
+			newDiagramFactorRef = getWrappedLinkFactorEnd(diagramLinkJson, direction);
+
+		if(newDiagramFactorRef.isInvalid())
+			return null;
+		
+		return DiagramFactor.find(getProject(), newDiagramFactorRef);
+	}
+
+	private boolean isGroupLink(EnhancedJsonObject diagramLinkJson)
+	{
+		BaseId wrappedLinkId = diagramLinkJson.optId(DiagramLink.TAG_WRAPPED_ID);
+		if(wrappedLinkId.isInvalid())
+			return true;
+		
+		return false;
 	}
 
 	private ORef getGroupLinkDiagramFactorEnd(EnhancedJsonObject json, int direction)
@@ -701,8 +721,11 @@ abstract public class DiagramPaster
 		ORef newFactorLinkRef = getRefFromMap(oldFactorLinkRef);
 		FactorLink factorLink = FactorLink.find(getProject(), newFactorLinkRef);
 		ORef factorRef = factorLink.getFactorRef(direction);
-
-		return getDiagramObject().getDiagramFactor(factorRef).getRef();
+		DiagramFactor newDiagramFactor = getDiagramObject().getDiagramFactor(factorRef);
+		if(newDiagramFactor == null)
+			return ORef.INVALID;
+		
+		return newDiagramFactor.getRef();
 	}
 
 	private CreateDiagramFactorLinkParameter createFactorLinkExtraInfo(ORef fromDiagramFactorRef, ORef toDiagramFactorRef, ORef newFactorLinkRef)
