@@ -73,7 +73,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		EAM.setLogToString();
 		try
 		{
-			ProjectRepairer.repairProblemsWherePossible(getProject());
+			TestProjectRepairer.repairProblemsWherePossible(getProject());
 			assertContains("-1", EAM.getLoggedString());
 		}
 		finally
@@ -116,7 +116,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		getProject().beginCommandSideEffectMode();
 		try
 		{
-			ProjectRepairer.repairProblemsWherePossible(getProject());
+			TestProjectRepairer.repairProblemsWherePossible(getProject());
 		}
 		finally
 		{
@@ -181,7 +181,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		EAM.setLogToString();
 
 //		TODO: removed orphan deletion code until a solution can be found to general extentions of having annoations having annoations
-		ProjectRepairer.repairProblemsWherePossible(getProject());
+		TestProjectRepairer.repairProblemsWherePossible(getProject());
 		//assertContains("Deleting orphan", EAM.getLoggedString());
 		//assertNull("Didn't delete orphan?", project.findObject(annotationType, orphan));
 		assertEquals("Deleted non-orphan?", nonOrphan, getProject().findObject(annotationType, nonOrphan).getId());
@@ -236,5 +236,11 @@ public class TestProjectRepairer extends TestCaseWithProject
 		
 		DiagramFactor repairedCause4 = DiagramFactor.find(getProject(), cause4.getRef());
 		assertEquals("wrong cause4 size?", new Dimension(60, 60), repairedCause4.getSize());
+	}
+
+	public static void repairProblemsWherePossible(Project project) throws Exception
+	{
+		ProjectRepairer repairer = new ProjectRepairer(project);
+		repairer.repairProblemsWherePossible();
 	}	
 }

@@ -46,12 +46,6 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectRepairer
 {
-	public static void repairProblemsWherePossible(Project project) throws Exception
-	{
-		ProjectRepairer repairer = new ProjectRepairer(project);
-		repairer.repairProblemsWherePossible();
-	}
-	
 	public ProjectRepairer(Project projectToRepair)
 	{
 		project = projectToRepair;
