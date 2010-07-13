@@ -46,30 +46,12 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectRepairer
 {
-	public static HashMap<ORef, ORefSet> scanForMissingObjects(Project project) throws Exception
-	{
-		ProjectRepairer repairer = new ProjectRepairer(project);
-		return repairer.getListOfMissingObjects();
-	}
-	
 	public static void repairProblemsWherePossible(Project project) throws Exception
 	{
 		ProjectRepairer repairer = new ProjectRepairer(project);
 		repairer.repairProblemsWherePossible();
 	}
 	
-	public static Vector<ORef> scanForOrphans(Project project) throws Exception
-	{
-		ProjectRepairer repairer = new ProjectRepairer(project);
-		return repairer.findOrphans();
-	}
-	
-	public static Vector<ORef> deleteEmptyOrphans(Project project, Vector<ORef> orphanRefs) throws Exception
-	{
-		ProjectRepairer repairer = new ProjectRepairer(project);
-		return repairer.deleteEmptyOrphans(orphanRefs);
-	}
-
 	public ProjectRepairer(Project projectToRepair)
 	{
 		project = projectToRepair;
@@ -111,7 +93,7 @@ public class ProjectRepairer
 		}
 	}
 
-	private Vector<ORef> findOrphans()
+	public Vector<ORef> findOrphans()
 	{
 		Vector<ORef> orphanRefs = new Vector<ORef>();
 		
@@ -253,7 +235,7 @@ public class ProjectRepairer
 			EAM.logWarning("Deleted " + deletedRefs.size() + " TSR's with invalid refs");
 	}
 
-	private HashMap<ORef, ORefSet> getListOfMissingObjects() throws Exception
+	public HashMap<ORef, ORefSet> getListOfMissingObjects() throws Exception
 	{
 		HashMap<ORef, ORefSet> missingObjectsAndReferrers = new HashMap<ORef, ORefSet>();
 
