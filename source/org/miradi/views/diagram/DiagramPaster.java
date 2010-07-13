@@ -639,9 +639,7 @@ abstract public class DiagramPaster
 			diagramLinkJson.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
 			
 			int direction = FactorLink.FROM;
-			ORef fromDiagramFactorRef = getGroupLinkDiagramFactorEnd(diagramLinkJson, direction);
-			if (fromDiagramFactorRef.isInvalid())
-				fromDiagramFactorRef = getWrappedLinkFactorEnd(diagramLinkJson, direction);
+			ORef fromDiagramFactorRef = getNewDiagramFactorRef(diagramLinkJson, direction);
 			
 			ORef toDiagramFactorRef = getGroupLinkDiagramFactorEnd(diagramLinkJson, FactorLink.TO);
 			if (toDiagramFactorRef.isInvalid())
@@ -676,6 +674,15 @@ abstract public class DiagramPaster
 			addToCurrentDiagram(newDiagramLinkRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
 			addDiagramLinkToSelection(newDiagramLinkRef);
 		}
+	}
+
+	private ORef getNewDiagramFactorRef(EnhancedJsonObject diagramLinkJson,
+			int direction)
+	{
+		ORef fromDiagramFactorRef = getGroupLinkDiagramFactorEnd(diagramLinkJson, direction);
+		if (fromDiagramFactorRef.isInvalid())
+			fromDiagramFactorRef = getWrappedLinkFactorEnd(diagramLinkJson, direction);
+		return fromDiagramFactorRef;
 	}
 
 	private ORef getGroupLinkDiagramFactorEnd(EnhancedJsonObject json, int direction)
