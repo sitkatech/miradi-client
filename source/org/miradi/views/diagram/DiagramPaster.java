@@ -639,9 +639,9 @@ abstract public class DiagramPaster
 			diagramLinkJson.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
 			
 			ORef fromDiagramFactorRef = getNewDiagramFactorRef(diagramLinkJson, FactorLink.FROM);
-			ORef toDiagramFactorRef = getNewDiagramFactorRef(diagramLinkJson, FactorLink.TO);
-			
 			DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), fromDiagramFactorRef);
+
+			ORef toDiagramFactorRef = getNewDiagramFactorRef(diagramLinkJson, FactorLink.TO);
 			DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), toDiagramFactorRef);
 
 			LinkCreator linkCreator = new LinkCreator(getProject());
