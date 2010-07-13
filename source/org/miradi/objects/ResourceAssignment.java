@@ -117,6 +117,24 @@ public class ResourceAssignment extends Assignment
 	}
 	
 	@Override
+	protected String getProjectResourceTag()
+	{
+		return TAG_RESOURCE_ID;
+	}
+
+	@Override
+	protected String getFundingSourceTag()
+	{
+		return TAG_FUNDING_SOURCE_ID;
+	}
+
+	@Override
+	protected String getAccountingCodeTag()
+	{
+		return TAG_ACCOUNTING_CODE_ID;
+	}
+	
+	@Override
 	public ORef getFundingSourceRef()
 	{
 		return getRefData(TAG_FUNDING_SOURCE_ID);

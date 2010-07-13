@@ -50,6 +50,16 @@ public class ExpenseAssignment extends Assignment
 		return new TimePeriodCosts(getFundingSourceRef(), getAccountingCodeRef(), getCategoryOneRef(), getCategoryTwoRef(), quantity);
 	}
 	
+	protected String getFundingSourceTag()
+	{
+		return TAG_FUNDING_SOURCE_REF;
+	}
+
+	protected String getAccountingCodeTag()
+	{
+		return TAG_ACCOUNTING_CODE_REF;
+	}
+	
 	@Override
 	public ORef getFundingSourceRef()
 	{
