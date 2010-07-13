@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-13 10:52-0500\n"
+"POT-Creation-Date: 2010-07-13 16:32-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -8051,7 +8051,7 @@ msgstr ""
 "comandos exportar e importar. Miradi también creará archivos zip para las "
 "copias de seguridad del proyecto creadas durante las migraciones de formato."
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:510
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:516
 msgid "[Error]"
 msgstr "[Error]"
 

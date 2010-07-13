@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-13 10:52-0500\n"
+"POT-Creation-Date: 2010-07-13 16:32-0500\n"
 "PO-Revision-Date: 2010-05-12 13:30-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -7533,7 +7533,7 @@ msgid ""
 "migrations. "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:510
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:516
 msgid "[Error]"
 msgstr ""
 
