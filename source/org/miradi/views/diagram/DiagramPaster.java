@@ -671,7 +671,8 @@ abstract public class DiagramPaster
 
 	private DiagramFactor getNewDiagramFactor(EnhancedJsonObject diagramLinkJson, int direction)
 	{
-		DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), getNewDiagramFactorRef(diagramLinkJson, direction));
+		ORef newDiagramFactorRef = getNewDiagramFactorRef(diagramLinkJson, direction);
+		DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), newDiagramFactorRef);
 		return fromDiagramFactor;
 	}
 
