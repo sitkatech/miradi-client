@@ -655,7 +655,7 @@ abstract public class DiagramPaster
 			if(factorLink != null)
 				newFactorLinkRef = factorLink.getRef();
 			
-			CreateDiagramFactorLinkParameter extraInfo = createFactorLinkExtraInfo(fromDiagramFactorRef, toDiagramFactorRef, newFactorLinkRef);
+			CreateDiagramFactorLinkParameter extraInfo = createFactorLinkExtraInfo(fromDiagramFactor.getRef(), toDiagramFactor.getRef(), newFactorLinkRef);
 			int type = getTypeFromJson(diagramLinkJson);
 			DiagramLink newDiagramLink = (DiagramLink) createObject(type, extraInfo);
 			
