@@ -124,6 +124,12 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		rollupReportsWorkUnitsModel = new RollupReportsWorkUnitsModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		rollupReportsExpenseModel = new RollupReportsExpenseTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		rollupReportsBudgetDetailsModel = new RollupReportsBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		budgetCategoryOneWorkUnitsModel = new BudgetCategoryOneWorkUnitsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		budgetCategoryOneExpenseModel = new BudgetCategoryOneExpenseTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		budgetCategoryOneBudgetDetailsModel = new BudgetCategoryOneBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		budgetCategoryTwoWorkUnitsModel = new BudgetCategoryTwoWorkUnitsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		budgetCategoryTwoExpenseModel = new BudgetCategoryTwoExpenseTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		budgetCategoryTwoBudgetDetailsModel = new BudgetCategoryOneBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 	}
 
 	protected boolean wasTypeCreatedOrDeleted(CommandExecutedEvent event, int objectType)
@@ -247,6 +253,24 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		
 		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE))
 			multiModel.addModel(rollupReportsBudgetDetailsModel);
+		
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_WORK_UNITS_COLUMN_CODE))
+			multiModel.addModel(budgetCategoryOneWorkUnitsModel);
+		
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_EXPENSE_COLUMN_CODE))
+			multiModel.addModel(budgetCategoryOneExpenseModel);
+		
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_BUDGET_DETAILS_COLUMN_CODE))
+			multiModel.addModel(budgetCategoryOneBudgetDetailsModel);
+		
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_WORK_UNITS_COLUMN_CODE))
+			multiModel.addModel(budgetCategoryTwoWorkUnitsModel);
+		
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_EXPENSE_COLUMN_CODE))
+			multiModel.addModel(budgetCategoryTwoExpenseModel);
+		
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_BUDGET_DETAILS_COLUMN_CODE))
+			multiModel.addModel(budgetCategoryTwoBudgetDetailsModel);
 		
 		mainTable.updateToReflectNewColumns();
 		validate();
@@ -463,6 +487,12 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	private RollupReportsWorkUnitsModel rollupReportsWorkUnitsModel;
 	private RollupReportsExpenseTableModel rollupReportsExpenseModel;
 	private RollupReportsBudgetDetailsTableModel rollupReportsBudgetDetailsModel;
+	private BudgetCategoryOneWorkUnitsTableModel budgetCategoryOneWorkUnitsModel;
+	private BudgetCategoryOneExpenseTableModel budgetCategoryOneExpenseModel;
+	private BudgetCategoryOneBudgetDetailsTableModel budgetCategoryOneBudgetDetailsModel;
+	private BudgetCategoryTwoWorkUnitsTableModel budgetCategoryTwoWorkUnitsModel;
+	private BudgetCategoryTwoExpenseTableModel budgetCategoryTwoExpenseModel;
+	private BudgetCategoryOneBudgetDetailsTableModel budgetCategoryTwoBudgetDetailsModel;
 	
 	private MainTableSelectionHandler mainTableColumnSelectionListener;
 	private TreeTableRowSelectionHandler treeTableRowSelectionListener;

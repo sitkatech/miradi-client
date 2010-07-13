@@ -18,28 +18,30 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.planning;
+package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.objects.BudgetCategoryOne;
+import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.project.Project;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
-import org.miradi.utils.CodeList;
 
-public class CategoryOneCoreRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
+public class BudgetCategoryTwoWorkUnitsTableModel extends CategorizedWorkUnitsTableModel
 {
-	@Override
-	public CodeList getColumnListToShow()
+	public BudgetCategoryTwoWorkUnitsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
-		CodeList columnCodes = super.getColumnListToShow();
-		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_WORK_UNITS_COLUMN_CODE);
-		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_EXPENSE_COLUMN_CODE);
-		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_BUDGET_DETAILS_COLUMN_CODE);
-		
-		return columnCodes; 
+		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
 	}
 	
 	@Override
-	protected String getObjectTypeName()
+	public String getColumnGroupCode(int modelColumn)
 	{
-		return BudgetCategoryOne.OBJECT_NAME;
+		return WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_WORK_UNITS_COLUMN_CODE;
 	}
+
+	@Override
+	public String getUniqueTableModelIdentifier()
+	{
+		return getTreeModelIdentifierAsTag() + "." + UNIQUE_TABLE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "BudgetCategoryTwoWorkUnitsTableModel";
 }
