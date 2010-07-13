@@ -159,6 +159,54 @@ abstract public class Assignment extends BaseObject
 		return getProject().getProjectCalendar();
 	}
 	
+	public ORef getCategoryRef(int categoryObjectType)
+	{
+		String tagForCategoryType = getTagForCategoryType(categoryObjectType);
+		ORef categoryRef = getRefData(tagForCategoryType);
+		if (categoryRef.isValid())
+			return categoryRef;
+		
+		if (doesFieldExist(tagForCategoryType))
+			return ORef.createInvalidWithType(categoryObjectType);
+		
+		return ORef.INVALID;
+	}
+
+	public String getTagForCategoryType(int categoryObjectType)
+	{
+		if (ProjectResource.is(categoryObjectType))
+			return getProjectResourceTag();
+		
+		if (FundingSource.is(categoryObjectType))
+			return getFundingSourceTag();
+		
+		if (AccountingCode.is(categoryObjectType))
+			return getAccountingCodeTag();
+		
+		if (BudgetCategoryOne.is(categoryObjectType))
+			return TAG_CATEGORY_TWO_REF;
+		
+		if (BudgetCategoryTwo.is(categoryObjectType))
+			return TAG_CATEGORY_ONE_REF;
+		
+		throw new RuntimeException("category type was not recognized.  category Object type: "+ categoryObjectType);
+	}
+	
+	protected String getProjectResourceTag()
+	{
+		return "";
+	}
+
+	protected String getFundingSourceTag()
+	{
+		return "";
+	}
+
+	protected String getAccountingCodeTag()
+	{
+		return "";
+	}
+
 	public boolean hasCategoryData()
 	{
 		if (getFundingSourceRef().isValid())

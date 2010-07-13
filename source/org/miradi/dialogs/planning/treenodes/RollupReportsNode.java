@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.treenodes;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Vector;
 
 import org.miradi.objecthelpers.ORef;
@@ -42,7 +43,6 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		levelObjectTypes = levelObjectTypesToUse;
 		currentLevel = levelToUse;
 		assignmentRefsThatMatch = assignmentRefsThatMatchToUse;
-		siblingAssignmentsThatMatch = new ORefList();
 		
 		rebuild();
 	}
@@ -76,16 +76,19 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		if (levelObjectTypeAsString.equals(RollupReportsObjectTypeQuestion.UNSPECIFIED_CODE))
 			return;
 		
+		
 		int levelObjectType = Integer.parseInt(levelObjectTypeAsString);
-		ORefList refs = getProject().getPool(levelObjectType).getRefList();
-		refs.add(ORef.INVALID);
-		for (int index = 0; index < refs.size(); ++index)
+		HashMap<ORef, ORefList> categoryRefToAssignmentRefsMap = createCategoryRefToAssignmentRefsMap(levelObjectType);
+		ORefList childRefs = getProject().getPool(levelObjectType).getRefList();
+		childRefs.add(ORef.INVALID);
+		for (int index = 0; index < childRefs.size(); ++index)
 		{	
-			ORef ref = refs.get(index);
-			BaseObject childBaseObject = createOrFindChildObject(ref, levelObjectType);
-			ORefList referringAssignmentRefs = getReferringAssignmentRefs(childBaseObject, levelObjectType);
+			BaseObject childBaseObject = createOrFindChildObject(childRefs.get(index), levelObjectType);
+			ORefList referringAssignmentRefs = categoryRefToAssignmentRefsMap.get(childBaseObject.getRef());
+			if (referringAssignmentRefs == null)
+				continue;
+			
 			ORefList overlapptingAssignmentRefs = referringAssignmentRefs.getOverlappingRefs(getAssignmentRefsThatMatch());
-			siblingAssignmentsThatMatch.addAll(overlapptingAssignmentRefs);
 			if (overlapptingAssignmentRefs.hasRefs())
 				children.add(new RollupReportsNode(getProject(), getVisibleRows(), childBaseObject, getLevelObjectTypes(), childLevel, overlapptingAssignmentRefs));
 		}
@@ -93,24 +96,25 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		Collections.sort(children, createNodeSorter());
 	}
 
-	private ORefList getReferringAssignmentRefs(BaseObject childBaseObject, int levelType)
+	private HashMap<ORef, ORefList> createCategoryRefToAssignmentRefsMap(int levelObjectType)
 	{
-		if (childBaseObject.getRef().isValid())
-			return childBaseObject.findObjectsThatReferToUs();
-		
 		ORefList allAsignmentRefs = new ORefList();
 		allAsignmentRefs.addAll(getProject().getAssignmentPool().getRefList());
 		allAsignmentRefs.addAll(getProject().getExpenseAssignmentPool().getRefList());
-		ORefList referringToInvalidAssingments = new ORefList();
+
+		HashMap<ORef, ORefList> categoryRefToAssignmentRefsMap = new HashMap<ORef, ORefList>();
 		for (int index = 0; index < allAsignmentRefs.size(); ++index)
 		{
 			Assignment assignment = Assignment.findAssignment(getProject(), allAsignmentRefs.get(index));
-			ORefList refList = assignment.getReferencedObjects(levelType);
-			if (refList.hasRefs() && !siblingAssignmentsThatMatch.contains(assignment.getRef()))
-				referringToInvalidAssingments.add(assignment);
+			ORefList refList = new ORefList(assignment);
+			ORef categoryRef = assignment.getCategoryRef(levelObjectType);
+			if (categoryRefToAssignmentRefsMap.containsKey(categoryRef))
+				categoryRefToAssignmentRefsMap.get(categoryRef).addAll(refList);
+			else
+				categoryRefToAssignmentRefsMap.put(categoryRef, refList);
 		}
 		
-		return referringToInvalidAssingments;
+		return categoryRefToAssignmentRefsMap;
 	}
 
 	private BaseObject createOrFindChildObject(ORef ref, int levelObjectType)
@@ -140,5 +144,4 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 	private CodeList levelObjectTypes;
 	private int currentLevel;
 	private ORefList assignmentRefsThatMatch;
-	private ORefList siblingAssignmentsThatMatch;
 }
