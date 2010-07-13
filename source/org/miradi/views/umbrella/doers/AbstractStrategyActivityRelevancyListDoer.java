@@ -31,7 +31,7 @@ abstract public class AbstractStrategyActivityRelevancyListDoer extends Abstract
 	@Override
 	protected Dimension getDialogPreferredSize()
 	{
-		return new Dimension(600, 600);
+		return new Dimension(1000, 600);
 	}
 	
 	@Override
