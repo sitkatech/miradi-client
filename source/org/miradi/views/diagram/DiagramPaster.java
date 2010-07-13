@@ -671,17 +671,12 @@ abstract public class DiagramPaster
 
 	private DiagramFactor getNewDiagramFactor(EnhancedJsonObject diagramLinkJson, int direction)
 	{
-		ORef newDiagramFactorRef = getNewDiagramFactorRef(diagramLinkJson, direction);
-		DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), newDiagramFactorRef);
-		return fromDiagramFactor;
-	}
-
-	private ORef getNewDiagramFactorRef(EnhancedJsonObject diagramLinkJson, int direction)
-	{
 		ORef fromDiagramFactorRef = getGroupLinkDiagramFactorEnd(diagramLinkJson, direction);
 		if (fromDiagramFactorRef.isInvalid())
 			fromDiagramFactorRef = getWrappedLinkFactorEnd(diagramLinkJson, direction);
-		return fromDiagramFactorRef;
+		ORef newDiagramFactorRef = fromDiagramFactorRef;
+		DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), newDiagramFactorRef);
+		return fromDiagramFactor;
 	}
 
 	private ORef getGroupLinkDiagramFactorEnd(EnhancedJsonObject json, int direction)
