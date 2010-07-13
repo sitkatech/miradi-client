@@ -162,6 +162,9 @@ abstract public class Assignment extends BaseObject
 	public ORef getCategoryRef(int categoryObjectType)
 	{
 		String tagForCategoryType = getTagForCategoryType(categoryObjectType);
+		if (tagForCategoryType == null)
+			return ORef.INVALID;
+		
 		if (!doesFieldExist(tagForCategoryType))
 			return ORef.INVALID;
 		
@@ -194,7 +197,7 @@ abstract public class Assignment extends BaseObject
 	
 	protected String getProjectResourceTag()
 	{
-		return "";
+		return null;
 	}
 
 	public boolean hasCategoryData()
