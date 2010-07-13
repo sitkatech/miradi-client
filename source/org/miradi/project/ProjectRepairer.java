@@ -57,7 +57,7 @@ public class ProjectRepairer
 		project = projectToRepair;
 	}
 	
-	void repairProblemsWherePossible() throws Exception
+	public void repairProblemsWherePossible() throws Exception
 	{
 		fixAnyProblemsWithThreatStressRatings();
 		repairUnsnappedNodes();
