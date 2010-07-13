@@ -197,16 +197,6 @@ abstract public class Assignment extends BaseObject
 		return "";
 	}
 
-	protected String getFundingSourceTag()
-	{
-		return "";
-	}
-
-	protected String getAccountingCodeTag()
-	{
-		return "";
-	}
-
 	public boolean hasCategoryData()
 	{
 		if (getFundingSourceRef().isValid())
@@ -281,6 +271,10 @@ abstract public class Assignment extends BaseObject
 	abstract public ORef getFundingSourceRef();
 	
 	abstract public ORef getAccountingCodeRef();
+
+	abstract protected String getFundingSourceTag();
+	
+	abstract protected String getAccountingCodeTag();
 	
 	public static final String TAG_DATEUNIT_EFFORTS = "Details";
 	public static final String TAG_CATEGORY_ONE_REF = "CategoryOneRef";
