@@ -628,24 +628,24 @@ abstract public class DiagramPaster
 		for (int i = diagramLinkDeepCopies.size() - 1; i >= 0; --i)
 		{
 			String jsonAsString = diagramLinkDeepCopies.get(i);
-			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-			BaseId diagramLinkId = json.getId(DiagramLink.TAG_ID);
+			EnhancedJsonObject diagramLinkJson = new EnhancedJsonObject(jsonAsString);
+			BaseId diagramLinkId = diagramLinkJson.getId(DiagramLink.TAG_ID);
 			ORef diagramLinkRef = new ORef(DiagramLink.getObjectType(), diagramLinkId);
 			if (oldToNewPastedObjectMap.containsKey(diagramLinkRef))
 				continue;
 	
-			PointList originalBendPoints = new PointList(json.getString(DiagramLink.TAG_BEND_POINTS));
+			PointList originalBendPoints = new PointList(diagramLinkJson.getString(DiagramLink.TAG_BEND_POINTS));
 			String movedBendPointsAsString = movePoints(originalBendPoints, offsetToAvoidOverlaying);
-			json.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
+			diagramLinkJson.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
 			
 			int direction = FactorLink.FROM;
-			ORef fromDiagramFactorRef = getGroupLinkDiagramFactorEnd(json, direction);
+			ORef fromDiagramFactorRef = getGroupLinkDiagramFactorEnd(diagramLinkJson, direction);
 			if (fromDiagramFactorRef.isInvalid())
-				fromDiagramFactorRef = getWrappedLinkFactorEnd(json, direction);
+				fromDiagramFactorRef = getWrappedLinkFactorEnd(diagramLinkJson, direction);
 			
-			ORef toDiagramFactorRef = getGroupLinkDiagramFactorEnd(json, FactorLink.TO);
+			ORef toDiagramFactorRef = getGroupLinkDiagramFactorEnd(diagramLinkJson, FactorLink.TO);
 			if (toDiagramFactorRef.isInvalid())
-				toDiagramFactorRef = getWrappedLinkFactorEnd(json, FactorLink.TO);
+				toDiagramFactorRef = getWrappedLinkFactorEnd(diagramLinkJson, FactorLink.TO);
 			
 			DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), fromDiagramFactorRef);
 			DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), toDiagramFactorRef);
@@ -662,10 +662,10 @@ abstract public class DiagramPaster
 				newFactorLinkRef = factorLink.getRef();
 			
 			CreateDiagramFactorLinkParameter extraInfo = createFactorLinkExtraInfo(fromDiagramFactorRef, toDiagramFactorRef, newFactorLinkRef);
-			int type = getTypeFromJson(json);
+			int type = getTypeFromJson(diagramLinkJson);
 			DiagramLink newDiagramLink = (DiagramLink) createObject(type, extraInfo);
 			
-			Command[]  commandsToLoadFromJson = newDiagramLink.createCommandsToLoadFromJson(json);
+			Command[]  commandsToLoadFromJson = newDiagramLink.createCommandsToLoadFromJson(diagramLinkJson);
 			getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
 	
 			if(newDiagramLink.getWrappedFactorLink() == null && !newDiagramLink.isGroupBoxLink())
