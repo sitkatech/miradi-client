@@ -638,8 +638,8 @@ abstract public class DiagramPaster
 			String movedBendPointsAsString = movePoints(originalBendPoints, offsetToAvoidOverlaying);
 			diagramLinkJson.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
 			
-			DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), getNewDiagramFactorRef(diagramLinkJson, FactorLink.FROM));
-			DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), getNewDiagramFactorRef(diagramLinkJson, FactorLink.TO));
+			DiagramFactor fromDiagramFactor = getNewDiagramFactor(diagramLinkJson, FactorLink.FROM);
+			DiagramFactor toDiagramFactor = getNewDiagramFactor(diagramLinkJson, FactorLink.TO);
 
 			LinkCreator linkCreator = new LinkCreator(getProject());
 			if (linkCreator.linkToBePastedWasRejected(currentModel, fromDiagramFactor.getRef(), toDiagramFactor.getRef()))
@@ -669,8 +669,13 @@ abstract public class DiagramPaster
 		}
 	}
 
-	private ORef getNewDiagramFactorRef(EnhancedJsonObject diagramLinkJson,
-			int direction)
+	private DiagramFactor getNewDiagramFactor(EnhancedJsonObject diagramLinkJson, int direction)
+	{
+		DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), getNewDiagramFactorRef(diagramLinkJson, direction));
+		return fromDiagramFactor;
+	}
+
+	private ORef getNewDiagramFactorRef(EnhancedJsonObject diagramLinkJson, int direction)
 	{
 		ORef fromDiagramFactorRef = getGroupLinkDiagramFactorEnd(diagramLinkJson, direction);
 		if (fromDiagramFactorRef.isInvalid())
