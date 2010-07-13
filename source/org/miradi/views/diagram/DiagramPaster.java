@@ -638,9 +638,10 @@ abstract public class DiagramPaster
 			String movedBendPointsAsString = movePoints(originalBendPoints, offsetToAvoidOverlaying);
 			json.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
 			
-			ORef fromDiagramFactorRef = getGroupLinkDiagramFactorEnd(json, FactorLink.FROM);
+			int direction = FactorLink.FROM;
+			ORef fromDiagramFactorRef = getGroupLinkDiagramFactorEnd(json, direction);
 			if (fromDiagramFactorRef.isInvalid())
-				fromDiagramFactorRef = getWrappedLinkFactorEnd(json, FactorLink.FROM);
+				fromDiagramFactorRef = getWrappedLinkFactorEnd(json, direction);
 			
 			ORef toDiagramFactorRef = getGroupLinkDiagramFactorEnd(json, FactorLink.TO);
 			if (toDiagramFactorRef.isInvalid())
