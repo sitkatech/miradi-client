@@ -638,11 +638,8 @@ abstract public class DiagramPaster
 			String movedBendPointsAsString = movePoints(originalBendPoints, offsetToAvoidOverlaying);
 			diagramLinkJson.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
 			
-			ORef fromDiagramFactorRef = getNewDiagramFactorRef(diagramLinkJson, FactorLink.FROM);
-			DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), fromDiagramFactorRef);
-
-			ORef toDiagramFactorRef = getNewDiagramFactorRef(diagramLinkJson, FactorLink.TO);
-			DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), toDiagramFactorRef);
+			DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), getNewDiagramFactorRef(diagramLinkJson, FactorLink.FROM));
+			DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), getNewDiagramFactorRef(diagramLinkJson, FactorLink.TO));
 
 			LinkCreator linkCreator = new LinkCreator(getProject());
 			if (linkCreator.linkToBePastedWasRejected(currentModel, fromDiagramFactor.getRef(), toDiagramFactor.getRef()))
