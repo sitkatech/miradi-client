@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import java.awt.Dimension;
+import java.util.Vector;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
@@ -34,6 +35,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
+import org.miradi.objects.FundingSource;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
@@ -58,6 +60,21 @@ public class TestProjectRepairer extends TestCaseWithProject
 	{
 		super.setUp();
 		repairer = new ProjectRepairer(getProject());
+	}
+	
+	public void testFindOrphans() throws Exception
+	{
+		Factor target = getProject().createTarget();
+		ORef targetRef = target.getRef();
+		FundingSource fundingSource = getProject().createFundingSource();
+		ORef fundingSourceRef = fundingSource.getRef();
+		
+		Vector<ORef> orphanRefs = repairer.findOrphans();
+		assertContains("Didn't find target?", targetRef, orphanRefs);
+		assertNotContains("Called FS an orphan?", fundingSourceRef, orphanRefs);
+		repairer.deleteEmptyOrphans(orphanRefs);
+		assertNull("Didn't delete target?", Target.find(getProject(), targetRef));
+		assertNotNull("Deleted FS?", FundingSource.find(getProject(), fundingSourceRef));
 	}
 	
 	public void testRemoveInvalidDiagramLinkRefs() throws Exception
