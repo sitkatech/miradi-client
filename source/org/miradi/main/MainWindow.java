@@ -585,9 +585,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	private void scanForOrphans() throws Exception
 	{
-		Vector<ORef> orphanRefs = ProjectRepairer.scanForOrphans(project);
+		ProjectRepairer repairer = new ProjectRepairer(project);
+		Vector<ORef> orphanRefs = repairer.findOrphans();
 		
-		Vector<ORef> deletedRefs = ProjectRepairer.deleteEmptyOrphans(project, orphanRefs);
+		Vector<ORef> deletedRefs = repairer.deleteEmptyOrphans(orphanRefs);
 		if(deletedRefs.size() > 0)
 		{
 			EAM.logWarning("Found and deleted " + deletedRefs.size() + " empty orphan objects");
@@ -665,7 +666,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	private void scanForSeriousCorruption() throws Exception
 	{
-		HashMap<ORef, ORefSet> rawProblems = ProjectRepairer.scanForMissingObjects(project);
+		ProjectRepairer repairer = new ProjectRepairer(project);
+		HashMap<ORef, ORefSet> rawProblems = repairer.getListOfMissingObjects();
 		if(rawProblems.size() == 0)
 			return;
 
