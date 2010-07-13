@@ -523,10 +523,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			project.createOrOpenWithDefaultObjects(projectName);
 			logExceptionsInsideProjectDir(projectName);
 			
-			ProjectRepairer repairer = new ProjectRepairer(project);
-			repairer.repairProblemsWherePossible();
-			scanForSeriousCorruption();
-			scanForOrphans();
+			repairProject();
 			refreshWizard();
 
 			validate();
@@ -582,6 +579,14 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			updateActionsAndStatusBar();
 			project.endCommandSideEffectMode();
 		}
+	}
+
+	private void repairProject() throws Exception
+	{
+		ProjectRepairer repairer = new ProjectRepairer(project);
+		repairer.repairProblemsWherePossible();
+		scanForSeriousCorruption();
+		scanForOrphans();
 	}
 
 	private void scanForOrphans() throws Exception
