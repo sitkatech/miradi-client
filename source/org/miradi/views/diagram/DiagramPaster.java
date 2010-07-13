@@ -645,7 +645,7 @@ abstract public class DiagramPaster
 			DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), toDiagramFactorRef);
 
 			LinkCreator linkCreator = new LinkCreator(getProject());
-			if (linkCreator.linkToBePastedWasRejected(currentModel, fromDiagramFactorRef, toDiagramFactorRef))
+			if (linkCreator.linkToBePastedWasRejected(currentModel, fromDiagramFactor.getRef(), toDiagramFactor.getRef()))
 				continue;
 			
 			ORef fromFactorRef = fromDiagramFactor.getWrappedORef();
