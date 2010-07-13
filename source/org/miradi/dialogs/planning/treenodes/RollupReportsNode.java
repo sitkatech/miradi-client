@@ -23,7 +23,9 @@ package org.miradi.dialogs.planning.treenodes;
 import java.util.Collections;
 import java.util.Vector;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
@@ -40,6 +42,7 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		levelObjectTypes = levelObjectTypesToUse;
 		currentLevel = levelToUse;
 		assignmentRefsThatMatch = assignmentRefsThatMatchToUse;
+		siblingAssignmentsThatMatch = new ORefList();
 		
 		rebuild();
 	}
@@ -75,17 +78,47 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		
 		int levelObjectType = Integer.parseInt(levelObjectTypeAsString);
 		ORefList refs = getProject().getPool(levelObjectType).getRefList();
+		refs.add(ORef.INVALID);
 		for (int index = 0; index < refs.size(); ++index)
 		{	
-			BaseObject childBaseObject = BaseObject.find(getProject(), refs.get(index));
-			ORefList referringAssignmentRefs = childBaseObject.findObjectsThatReferToUs();
+			ORef ref = refs.get(index);
+			BaseObject childBaseObject = createOrFindChildObject(ref, levelObjectType);
+			ORefList referringAssignmentRefs = getReferringAssignmentRefs(childBaseObject, levelObjectType);
 			ORefList overlapptingAssignmentRefs = referringAssignmentRefs.getOverlappingRefs(getAssignmentRefsThatMatch());
+			siblingAssignmentsThatMatch.addAll(overlapptingAssignmentRefs);
 			if (overlapptingAssignmentRefs.hasRefs())
 				children.add(new RollupReportsNode(getProject(), getVisibleRows(), childBaseObject, getLevelObjectTypes(), childLevel, overlapptingAssignmentRefs));
 		}
 		
-		children.add(new BaseObjectNotSpecifiedNode(getProject(), levelObjectType, getObject().getTypeName(), getVisibleRows()));
 		Collections.sort(children, createNodeSorter());
+	}
+
+	private ORefList getReferringAssignmentRefs(BaseObject childBaseObject, int levelType)
+	{
+		if (childBaseObject.getRef().isValid())
+			return childBaseObject.findObjectsThatReferToUs();
+		
+		ORefList allAsignmentRefs = new ORefList();
+		allAsignmentRefs.addAll(getProject().getAssignmentPool().getRefList());
+		allAsignmentRefs.addAll(getProject().getExpenseAssignmentPool().getRefList());
+		ORefList referringToInvalidAssingments = new ORefList();
+		for (int index = 0; index < allAsignmentRefs.size(); ++index)
+		{
+			Assignment assignment = Assignment.findAssignment(getProject(), allAsignmentRefs.get(index));
+			ORefList refList = assignment.getReferencedObjects(levelType);
+			if (refList.hasRefs() && !siblingAssignmentsThatMatch.contains(assignment.getRef()))
+				referringToInvalidAssingments.add(assignment);
+		}
+		
+		return referringToInvalidAssingments;
+	}
+
+	private BaseObject createOrFindChildObject(ORef ref, int levelObjectType)
+	{
+		if (ref.isValid())
+			return BaseObject.find(getProject(), ref);
+		
+		return new UnspecifiedBaseObject(getProject().getObjectManager(), levelObjectType, getObjectTypeName());
 	}
 
 	private ORefList getAssignmentRefsThatMatch()
@@ -102,9 +135,10 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 	{
 		return currentLevel;
 	}
-	
+		
 	private BaseObject nodeObject;
 	private CodeList levelObjectTypes;
 	private int currentLevel;
 	private ORefList assignmentRefsThatMatch;
+	private ORefList siblingAssignmentsThatMatch;
 }
