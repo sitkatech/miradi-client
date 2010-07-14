@@ -80,7 +80,7 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		int levelObjectType = Integer.parseInt(levelObjectTypeAsString);
 		HashMap<ORef, ORefList> categoryRefToAssignmentRefsMap = createCategoryRefToAssignmentRefsMap(levelObjectType);
 		ORefList childRefs = getProject().getPool(levelObjectType).getRefList();
-		childRefs.add(ORef.INVALID);
+		addUnspecifiedRowInPlace(childRefs);
 		for (int index = 0; index < childRefs.size(); ++index)
 		{	
 			BaseObject possibleChildObject = createOrFindChildObject(childRefs.get(index), levelObjectType);
@@ -94,6 +94,11 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		}
 		
 		Collections.sort(children, createNodeSorter());
+	}
+
+	private void addUnspecifiedRowInPlace(ORefList childRefs)
+	{
+		childRefs.add(ORef.INVALID);
 	}
 
 	private HashMap<ORef, ORefList> createCategoryRefToAssignmentRefsMap(int levelObjectType)
