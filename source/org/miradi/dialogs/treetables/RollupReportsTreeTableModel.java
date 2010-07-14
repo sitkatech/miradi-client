@@ -34,10 +34,10 @@ public class RollupReportsTreeTableModel extends ExportablePlanningTreeTableMode
 		super(project, rootNode, getRowColumnProvider().getRowListToShow(), rowColumnProvider.getColumnListToShow(), uniqueTreeTableModeIdentifier);
 	}
 	
-	public static RollupReportsTreeTableModel createRollupReportsTreeTableModel(Project project, RowColumnProvider rowColumnProvider) throws Exception
+	public static RollupReportsTreeTableModel createRollupReportsTreeTableModel(Project project, RowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
 	{
 		TreeTableNode projectRootNode = createRootNode(project);
-		return new RollupReportsTreeTableModel(project, projectRootNode, rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
+		return new RollupReportsTreeTableModel(project, projectRootNode, rowColumnProvider, uniqueTreeTableModeIdentifier);
 	}
 	
 	private static TreeTableNode createRootNode(Project project) throws Exception
@@ -49,12 +49,4 @@ public class RollupReportsTreeTableModel extends ExportablePlanningTreeTableMode
 	{
 		return new RollupReportsRowColumnProvider();
 	}
-
-	@Override
-	public String getUniqueTreeTableModelIdentifier()
-	{
-		return UNIQUE_TREE_TABLE_IDENTIFIER;
-	}
-	
-	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "RollupReportsTreeTableModel";
 }
