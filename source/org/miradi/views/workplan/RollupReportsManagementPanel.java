@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.workplan;
 
+import org.miradi.actions.ActionEditRollupReportRows;
 import org.miradi.dialogs.RollupReportsRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
@@ -53,7 +54,7 @@ public class RollupReportsManagementPanel extends PlanningTreeManagementPanel
 	{
 		RowColumnProvider rowColumnProvider = new RollupReportsRowColumnProvider();
 		PlanningTreeTableModel treeTableModel = RollupReportsTreeTableModel.createRollupReportsTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
-		PlanningTreeTablePanel treeTablePanel = RollupReportsTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider);
+		PlanningTreeTablePanel treeTablePanel = RollupReportsTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider, getButtonActions());
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
 		return new RollupReportsManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
@@ -63,6 +64,13 @@ public class RollupReportsManagementPanel extends PlanningTreeManagementPanel
 	public String getPanelDescription()
 	{
 		return EAM.text("Rollup Reports");
+	}
+	
+	private static Class[] getButtonActions()
+	{
+		return new Class[] {
+			ActionEditRollupReportRows.class,
+		};
 	}
 	
 	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "RollupReportsTreeTableModel";

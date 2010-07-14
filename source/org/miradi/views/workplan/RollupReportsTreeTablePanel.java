@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.workplan;
 
-import org.miradi.actions.ActionEditRollupReportRows;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
@@ -43,11 +42,11 @@ public class RollupReportsTreeTablePanel extends PlanningTreeTablePanel
 		super(mainWindowToUse, treeToUse, modelToUse, buttonClasses, rowColumnProvider);
 	}
 	
-	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model, RowColumnProvider rowColumnProvider) throws Exception
+	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model, RowColumnProvider rowColumnProvider, Class[] buttonActions) throws Exception
 	{
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 
-		return new RollupReportsTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
+		return new RollupReportsTreeTablePanel(mainWindowToUse, treeTable, model, buttonActions, rowColumnProvider);
 	}
 	
 	@Override
@@ -104,12 +103,5 @@ public class RollupReportsTreeTablePanel extends PlanningTreeTablePanel
 		}
 		
 		return false;
-	}
-
-	private static Class[] getButtonActions()
-	{
-		return new Class[] {
-			ActionEditRollupReportRows.class,
-		};
 	}
 }
