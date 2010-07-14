@@ -31,7 +31,7 @@ public class RollupReportsTreeTableModel extends ExportablePlanningTreeTableMode
 {
 	private RollupReportsTreeTableModel(Project project, TreeTableNode rootNode, RowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
 	{
-		super(project, rootNode, getRowColumnProvider().getRowListToShow(), rowColumnProvider.getColumnListToShow(), uniqueTreeTableModeIdentifier);
+		super(project, rootNode, rowColumnProvider.getRowListToShow(), rowColumnProvider.getColumnListToShow(), uniqueTreeTableModeIdentifier);
 	}
 	
 	public static RollupReportsTreeTableModel createRollupReportsTreeTableModel(Project project, RowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
