@@ -22,15 +22,18 @@ package org.miradi.views.workplan;
 
 import javax.swing.Icon;
 
+import org.miradi.actions.ActionCreateCategoryTwo;
+import org.miradi.actions.ActionDeleteCategoryTwo;
+import org.miradi.dialogs.planning.AbstractUnspecifiedRowCategoryProvider;
 import org.miradi.dialogs.planning.CategoryTwoCoreRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.CategoryTwoTreeTableModel;
-import org.miradi.dialogs.planning.upperPanel.CategoryTwoTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
+import org.miradi.dialogs.treetables.RollupReportsTreeTableModel;
 import org.miradi.icons.CategoryTwoIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -57,9 +60,9 @@ public class WorkPlanCategoryTwoMangementPanel extends
 
 	public static PlanningTreeManagementPanel createPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		RowColumnProvider rowColumnProvider = new CategoryTwoCoreRowColumnProvider();
-		PlanningTreeTableModel treeTableModel = CategoryTwoTreeTableModel.createOperationalPlanCategoryTwoTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider.getColumnListToShow());
-		PlanningTreeTablePanel treeTablePanel = CategoryTwoTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider);
+		AbstractUnspecifiedRowCategoryProvider rowColumnProvider = new CategoryTwoCoreRowColumnProvider();
+		PlanningTreeTableModel treeTableModel = RollupReportsTreeTableModel.createRollupReportsTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
+		PlanningTreeTablePanel treeTablePanel = RollupReportsTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider, getButtonActions());
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
 		return new WorkPlanCategoryTwoMangementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
@@ -76,4 +79,15 @@ public class WorkPlanCategoryTwoMangementPanel extends
 	{
 		return new CategoryTwoIcon();
 	}
+	
+	
+	private static Class[] getButtonActions()
+	{
+		return new Class[] {
+				ActionCreateCategoryTwo.class, 
+				ActionDeleteCategoryTwo.class,
+		};
+	}
+	
+	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "CategoryTwoTreeTableModel";
 }

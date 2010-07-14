@@ -20,33 +20,26 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.treetables;
 
-import org.miradi.dialogs.RollupReportsRowColumnProvider;
 import org.miradi.dialogs.planning.AbstractUnspecifiedRowCategoryProvider;
-import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.RollupReportsRootTreeNode;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
 import org.miradi.project.Project;
 
 public class RollupReportsTreeTableModel extends ExportablePlanningTreeTableModel
 {
-	private RollupReportsTreeTableModel(Project project, TreeTableNode rootNode, RowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
+	private RollupReportsTreeTableModel(Project project, TreeTableNode rootNode, AbstractUnspecifiedRowCategoryProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
 	{
 		super(project, rootNode, rowColumnProvider.getRowListToShow(), rowColumnProvider.getColumnListToShow(), uniqueTreeTableModeIdentifier);
 	}
 	
-	public static RollupReportsTreeTableModel createRollupReportsTreeTableModel(Project project, RowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
+	public static RollupReportsTreeTableModel createRollupReportsTreeTableModel(Project project, AbstractUnspecifiedRowCategoryProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
 	{
-		TreeTableNode projectRootNode = createRootNode(project);
+		TreeTableNode projectRootNode = createRootNode(project, rowColumnProvider);
 		return new RollupReportsTreeTableModel(project, projectRootNode, rowColumnProvider, uniqueTreeTableModeIdentifier);
 	}
 	
-	private static TreeTableNode createRootNode(Project project) throws Exception
+	private static TreeTableNode createRootNode(Project project, AbstractUnspecifiedRowCategoryProvider rowColumnProvider) throws Exception
 	{
-		return new RollupReportsRootTreeNode(project, getRowColumnProvider());
-	}
-	
-	private static AbstractUnspecifiedRowCategoryProvider getRowColumnProvider()
-	{
-		return new RollupReportsRowColumnProvider();
+		return new RollupReportsRootTreeNode(project, rowColumnProvider);
 	}
 }
