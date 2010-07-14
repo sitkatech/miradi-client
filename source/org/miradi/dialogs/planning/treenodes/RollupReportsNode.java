@@ -24,6 +24,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Vector;
 
+import org.miradi.dialogs.planning.AbstractUnspecifiedRowCategoryProvider;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Assignment;
@@ -35,10 +36,11 @@ import org.miradi.utils.CodeList;
 
 public class RollupReportsNode extends AbstractPlanningTreeNode
 {
-	public RollupReportsNode(Project project, CodeList visibleRows,	BaseObject nodeObjectToUse, CodeList levelObjectTypesToUse, int levelToUse, ORefList assignmentRefsThatMatchToUse) throws Exception
+	public RollupReportsNode(Project project, AbstractUnspecifiedRowCategoryProvider rowColumnProviderToUse, BaseObject nodeObjectToUse, CodeList levelObjectTypesToUse, int levelToUse, ORefList assignmentRefsThatMatchToUse) throws Exception
 	{
-		super(project, visibleRows);
+		super(project, rowColumnProviderToUse.getRowListToShow());
 		
+		rowColumnProvider = rowColumnProviderToUse;
 		nodeObject = nodeObjectToUse;
 		levelObjectTypes = levelObjectTypesToUse;
 		currentLevel = levelToUse;
@@ -86,11 +88,19 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 			BaseObject possibleChildObject = createOrFindChildObject(childRefs.get(index), levelObjectType);
 			ORefList assignmentRefsReferringToRow = getAssignmentsReferringToRow(categoryRefToAssignmentRefsMap, possibleChildObject);
 			ORefList overlappingAssignmentRefs = assignmentRefsReferringToRow.getOverlappingRefs(getAssignmentRefsThatMatch());
-			if (overlappingAssignmentRefs.hasRefs())
-				children.add(new RollupReportsNode(getProject(), getVisibleRows(), possibleChildObject, getLevelObjectTypes(), childLevel, overlappingAssignmentRefs));
+			if (shouldIncludeChildNode(overlappingAssignmentRefs))
+				children.add(new RollupReportsNode(getProject(), rowColumnProvider, possibleChildObject, getLevelObjectTypes(), childLevel, overlappingAssignmentRefs));
 		}
 		
 		Collections.sort(children, createNodeSorter());
+	}
+
+	private boolean shouldIncludeChildNode(ORefList overlappingAssignmentRefs)
+	{
+		if (overlappingAssignmentRefs.hasRefs())
+			return true;
+		
+		return rowColumnProvider.shouldIncludeEmptyRows();
 	}
 
 	private ORefList getAssignmentsReferringToRow(HashMap<ORef, ORefList> categoryRefToAssignmentRefsMap, BaseObject possibleChildObject)
@@ -151,4 +161,5 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 	private CodeList levelObjectTypes;
 	private int currentLevel;
 	private ORefList assignmentRefsThatMatch;
+	private AbstractUnspecifiedRowCategoryProvider rowColumnProvider;
 }
