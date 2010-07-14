@@ -21,17 +21,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.treetables;
 
 import org.miradi.dialogs.RollupReportsRowColumnProvider;
+import org.miradi.dialogs.planning.AbstractUnspecifiedRowCategoryProvider;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.RollupReportsRootTreeNode;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
 import org.miradi.project.Project;
-import org.miradi.utils.CodeList;
 
 public class RollupReportsTreeTableModel extends ExportablePlanningTreeTableModel
 {
 	private RollupReportsTreeTableModel(Project project, TreeTableNode rootNode, RowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
 	{
-		super(project, rootNode, getRowColumnProvider(), rowColumnProvider.getColumnListToShow(), uniqueTreeTableModeIdentifier);
+		super(project, rootNode, getRowColumnProvider().getRowListToShow(), rowColumnProvider.getColumnListToShow(), uniqueTreeTableModeIdentifier);
 	}
 	
 	public static RollupReportsTreeTableModel createRollupReportsTreeTableModel(Project project, RowColumnProvider rowColumnProvider) throws Exception
@@ -45,9 +45,9 @@ public class RollupReportsTreeTableModel extends ExportablePlanningTreeTableMode
 		return new RollupReportsRootTreeNode(project, getRowColumnProvider());
 	}
 	
-	private static CodeList getRowColumnProvider()
+	private static AbstractUnspecifiedRowCategoryProvider getRowColumnProvider()
 	{
-		return new RollupReportsRowColumnProvider().getRowListToShow();
+		return new RollupReportsRowColumnProvider();
 	}
 
 	@Override

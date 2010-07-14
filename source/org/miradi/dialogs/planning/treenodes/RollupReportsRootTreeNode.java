@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning.treenodes;
 
 import java.util.Vector;
 
+import org.miradi.dialogs.planning.AbstractUnspecifiedRowCategoryProvider;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
@@ -30,10 +31,11 @@ import org.miradi.views.workplan.WorkPlanView;
 
 public class RollupReportsRootTreeNode extends AbstractPlanningTreeNode
 {
-	public RollupReportsRootTreeNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
+	public RollupReportsRootTreeNode(Project projectToUse, AbstractUnspecifiedRowCategoryProvider rowColumnProviderToUse) throws Exception
 	{
-		super(projectToUse, visibleRowsToUse);
+		super(projectToUse, rowColumnProviderToUse.getRowListToShow());
 		
+		rowColumnProvider = rowColumnProviderToUse;
 		rebuild();
 	}
 	
@@ -59,11 +61,13 @@ public class RollupReportsRootTreeNode extends AbstractPlanningTreeNode
 		ORefList allAsignmentRefs = new ORefList();
 		allAsignmentRefs.addAll(getProject().getAssignmentPool().getRefList());
 		allAsignmentRefs.addAll(getProject().getExpenseAssignmentPool().getRefList());
-		children.add(new RollupReportsNode(getProject(), getVisibleRows(), getObject(), levelObjectTypes, levelType, allAsignmentRefs));
+		children.add(new RollupReportsNode(getProject(), rowColumnProvider, getObject(), levelObjectTypes, levelType, allAsignmentRefs));
 	}
 
 	private CodeList getLevelTypeCodes() throws Exception
 	{
 		return getProject().getViewData(WorkPlanView.getViewName()).getBudgetRollupReportLevelTypes();
 	}
+	
+	private AbstractUnspecifiedRowCategoryProvider rowColumnProvider;
 }
