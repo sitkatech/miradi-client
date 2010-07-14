@@ -22,6 +22,7 @@ package org.miradi.views.workplan;
 
 import org.miradi.actions.ActionEditRollupReportRows;
 import org.miradi.dialogs.RollupReportsRowColumnProvider;
+import org.miradi.dialogs.planning.AbstractUnspecifiedRowCategoryProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
@@ -46,13 +47,14 @@ public class RollupReportsManagementPanel extends PlanningTreeManagementPanel
 	@Override
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, RowColumnProvider rowColumnProvider) throws Exception
 	{
-		PlanningTreeTableModel model = RollupReportsTreeTableModel.createRollupReportsTreeTableModel(getProject(), rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
+		//TODO should not cast provider
+		PlanningTreeTableModel model = RollupReportsTreeTableModel.createRollupReportsTreeTableModel(getProject(), (AbstractUnspecifiedRowCategoryProvider) rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
 	}
 
 	public static RollupReportsManagementPanel createRollUpReportsPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		RowColumnProvider rowColumnProvider = new RollupReportsRowColumnProvider();
+		AbstractUnspecifiedRowCategoryProvider rowColumnProvider = new RollupReportsRowColumnProvider();
 		PlanningTreeTableModel treeTableModel = RollupReportsTreeTableModel.createRollupReportsTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
 		PlanningTreeTablePanel treeTablePanel = RollupReportsTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider, getButtonActions());
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
