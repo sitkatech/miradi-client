@@ -84,16 +84,22 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		for (int index = 0; index < childRefs.size(); ++index)
 		{	
 			BaseObject possibleChildObject = createOrFindChildObject(childRefs.get(index), levelObjectType);
-			ORefList referringAssignmentRefs = categoryRefToAssignmentRefsMap.get(possibleChildObject.getRef());
-			if (referringAssignmentRefs == null)
-				continue;
-			
-			ORefList overlappingAssignmentRefs = referringAssignmentRefs.getOverlappingRefs(getAssignmentRefsThatMatch());
+			ORefList assignmentRefsReferringToRow = getAssignmentsReferringToRow(categoryRefToAssignmentRefsMap, possibleChildObject);
+			ORefList overlappingAssignmentRefs = assignmentRefsReferringToRow.getOverlappingRefs(getAssignmentRefsThatMatch());
 			if (overlappingAssignmentRefs.hasRefs())
 				children.add(new RollupReportsNode(getProject(), getVisibleRows(), possibleChildObject, getLevelObjectTypes(), childLevel, overlappingAssignmentRefs));
 		}
 		
 		Collections.sort(children, createNodeSorter());
+	}
+
+	private ORefList getAssignmentsReferringToRow(HashMap<ORef, ORefList> categoryRefToAssignmentRefsMap, BaseObject possibleChildObject)
+	{
+		ORefList referringAssignments = categoryRefToAssignmentRefsMap.get(possibleChildObject.getRef());
+		if (referringAssignments == null)
+			return new ORefList();
+		
+		return referringAssignments;
 	}
 
 	private void addUnspecifiedRowInPlace(ORefList childRefs)
