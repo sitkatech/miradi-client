@@ -22,7 +22,11 @@ package org.miradi.objecthelpers;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objects.AccountingCode;
+import org.miradi.objects.BudgetCategoryOne;
+import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.FundingSource;
+import org.miradi.objects.ProjectResource;
 import org.miradi.utils.OptionalDouble;
 
 public class TestCategorizedQuantity extends TestCaseWithProject
@@ -47,6 +51,22 @@ public class TestCategorizedQuantity extends TestCaseWithProject
 		verifyContainsMethods(categorizedQuantity, fundingSourceRef);
 		verifyContainsMethods(categorizedQuantity, categoryOneRef);
 		verifyContainsMethods(categorizedQuantity, categoryTwoRef);
+	}
+	
+	public void testUntypedInvalidsPassedToConstructor()
+	{
+		ORef resourceRef = ORef.INVALID;
+		ORef fundingSourceRef = ORef.INVALID;
+		ORef accountingCodeRef = ORef.INVALID;
+		ORef categoryOneRef = ORef.INVALID;
+		ORef categoryTwoRef = ORef.INVALID;
+		CategorizedQuantity categorizedQuantity = new CategorizedQuantity(resourceRef, fundingSourceRef, accountingCodeRef, categoryOneRef, categoryTwoRef, new OptionalDouble(14.0));
+		
+		verifyContainsMethods(categorizedQuantity, new ORef(ProjectResource.getObjectType(), BaseId.INVALID));
+		verifyContainsMethods(categorizedQuantity, new ORef(FundingSource.getObjectType(), BaseId.INVALID));
+		verifyContainsMethods(categorizedQuantity, new ORef(AccountingCode.getObjectType(), BaseId.INVALID));
+		verifyContainsMethods(categorizedQuantity, new ORef(BudgetCategoryOne.getObjectType(), BaseId.INVALID));
+		verifyContainsMethods(categorizedQuantity, new ORef(BudgetCategoryTwo.getObjectType(), BaseId.INVALID));
 	}
 
 	private void verifyContainsMethods(CategorizedQuantity categorizedQuantity, ORef ref)
