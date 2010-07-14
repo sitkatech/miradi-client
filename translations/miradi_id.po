@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-14 16:54-0500\n"
+"POT-Creation-Date: 2010-07-14 17:01-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2413,7 +2413,7 @@ msgstr "Kategori Ib: Kawasan Liar"
 msgid "Category One"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryTwoMangementPanel.java:71
+#: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryTwoMangementPanel.java:74
 #: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryTwoDoer.java:34
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:61
 msgid "Category Two"
@@ -5505,7 +5505,7 @@ msgstr "Sungai, Anak Sungai dan Aliran Air "
 msgid "Rocky Areas [e.g. inland cliffs, mountain peaks]"
 msgstr "Kawasan Berbatu [misalnya puncak pegunungan, tebing di pedalaman]"
 
-#: Miradi/source/org/miradi/views/workplan/RollupReportsManagementPanel.java:66
+#: Miradi/source/org/miradi/views/workplan/RollupReportsManagementPanel.java:68
 msgid "Rollup Reports"
 msgstr ""
 
