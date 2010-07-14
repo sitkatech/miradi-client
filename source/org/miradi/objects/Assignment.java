@@ -165,9 +165,6 @@ abstract public class Assignment extends BaseObject
 		if (tagForCategoryType == null)
 			return ORef.INVALID;
 		
-		if (!doesFieldExist(tagForCategoryType))
-			return ORef.INVALID;
-		
 		ORef categoryRef = getRefData(tagForCategoryType);
 		if (categoryRef.isValid())
 			return categoryRef;
