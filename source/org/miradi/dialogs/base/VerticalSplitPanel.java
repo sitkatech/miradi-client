@@ -21,7 +21,6 @@ package org.miradi.dialogs.base;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.LayoutManager2;
 
 import javax.swing.JScrollPane;
 
@@ -35,13 +34,15 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 {
 	public VerticalSplitPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, Component top, Component bottom)
 	{
-		this(splitPositionSaverToUse, new BorderLayout());
+		this(splitPositionSaverToUse);
+		
 		createVerticalSplitPane(top, bottom, getSplitterDescription());
 	}
 	
-	private VerticalSplitPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, LayoutManager2 layoutToUse)
+	private VerticalSplitPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse)
 	{
-		super(layoutToUse);
+		super(new BorderLayout());
+		
 		splitPositionSaver = splitPositionSaverToUse;
 	}
 
