@@ -37,14 +37,14 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 		super(new BorderLayout());
 		
 		splitPositionSaver = splitPositionSaverToUse;
-		createVerticalSplitPane(top, bottom, getSplitterDescription());
+		createVerticalSplitPane(top, bottom);
 	}
 	
-	private void createVerticalSplitPane(Component top, Component bottom, String splitterName)
+	private void createVerticalSplitPane(Component top, Component bottom)
 	{
 		JScrollPane propertiesScroll = new MiradiScrollPane(bottom);
 		
-		splitter = new ManagementPanelSplitPane(this, splitPositionSaver, splitterName, top, propertiesScroll );
+		splitter = new ManagementPanelSplitPane(this, splitPositionSaver, getSplitterDescription(), top, propertiesScroll );
 		add(splitter, BorderLayout.CENTER);
 	}
 	
