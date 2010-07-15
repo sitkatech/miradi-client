@@ -52,14 +52,14 @@ public class RollupReportsManagementPanel extends PlanningTreeManagementPanel
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
 	}
 
-	public static RollupReportsManagementPanel createRollUpReportsPanel(MainWindow mainWindowToUse, AbstractManagementConfiguration mangementConfiguration) throws Exception
+	public static RollupReportsManagementPanel createRollUpReportsPanel(MainWindow mainWindowToUse, AbstractManagementConfiguration managementConfiguration) throws Exception
 	{
-		RowColumnProviderWithEmptyRowChecking rowColumnProvider = mangementConfiguration.getRowColumnProvider();
-		PlanningTreeTableModel treeTableModel = RollupReportsTreeTableModel.createRollupReportsTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, mangementConfiguration.getUniqueTreeTableIdentifier());
-		PlanningTreeTablePanel treeTablePanel = RollupReportsTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider, mangementConfiguration.getButtonActions());
+		RowColumnProviderWithEmptyRowChecking rowColumnProvider = managementConfiguration.getRowColumnProvider();
+		PlanningTreeTableModel treeTableModel = RollupReportsTreeTableModel.createRollupReportsTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, managementConfiguration.getUniqueTreeTableIdentifier());
+		PlanningTreeTablePanel treeTablePanel = RollupReportsTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider, managementConfiguration.getButtonActions());
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
-		return new RollupReportsManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel, mangementConfiguration);
+		return new RollupReportsManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel, managementConfiguration);
 	}
 	
 	@Override
