@@ -184,10 +184,10 @@ abstract public class Assignment extends BaseObject
 			return getAccountingCodeTag();
 		
 		if (BudgetCategoryOne.is(categoryObjectType))
-			return TAG_CATEGORY_TWO_REF;
+			return TAG_CATEGORY_ONE_REF;
 		
 		if (BudgetCategoryTwo.is(categoryObjectType))
-			return TAG_CATEGORY_ONE_REF;
+			return TAG_CATEGORY_TWO_REF;
 		
 		throw new RuntimeException("category type was not recognized.  category Object type: "+ categoryObjectType);
 	}
