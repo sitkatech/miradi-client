@@ -92,7 +92,7 @@ public class WorkPlanView extends TabbedView
 		accountingCodePoolManagementPanel = WorkPlanAccountingCodeManagementPanel.createAccountingPanel(getMainWindow());
 		fundingSourceManagementPanel = WorkPlanFundingSourceManagementPanel.createFundingSourcePanel(getMainWindow());
 		categoryOnePoolMangementPanel = WorkPlanCategoryOneMangementPanel.createPanel(getMainWindow());
-		categoryTwoPoolMangementPanel = WorkPlanCategoryTwoMangementPanel.createPanel(getMainWindow());
+		categoryTwoPoolMangementPanel = RollupReportsManagementPanel.createRollUpReportsPanel(getMainWindow(), new BudgetCategoryTwoManagementConfiguration(getProject()));
 		
 		addNonScrollingTab(workPlanManagementPanel);
 		addNonScrollingTab(rollupReportsManagementPanel);
