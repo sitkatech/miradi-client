@@ -27,14 +27,16 @@ import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
+import org.miradi.project.Project;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.views.workplan.WorkPlanView;
 
 public class RollupReportsRowColumnProvider implements RowColumnProviderWithEmptyRowChecking
 { 
-	public RollupReportsRowColumnProvider(CodeList levelTypeCodesToUse)
+	public RollupReportsRowColumnProvider(Project projectToUse)
 	{
-		levelTypeCodes = levelTypeCodesToUse;
+		project = projectToUse;
 	}
 	
 	public CodeList getColumnListToShow()
@@ -64,10 +66,15 @@ public class RollupReportsRowColumnProvider implements RowColumnProviderWithEmpt
 		return false;
 	}
 	
-	public CodeList getLevelTypeCodes()
+	public CodeList getLevelTypeCodes() throws Exception
 	{
-		return levelTypeCodes;
+		return getProject().getViewData(WorkPlanView.getViewName()).getBudgetRollupReportLevelTypes();
 	}
 	
-	private CodeList levelTypeCodes;
+	private Project getProject()
+	{
+		return project;
+	}
+	
+	private Project project;
 }
