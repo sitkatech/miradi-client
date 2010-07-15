@@ -36,12 +36,12 @@ public class RollupReportsManagementConfiguration extends AbstractManagementConf
 	
 	public RowColumnProviderWithEmptyRowChecking getRowColumnProvider() throws Exception
 	{
-		return new RollupReportsRowColumnProvider(getLevelTypeCodes());
+		return new RollupReportsRowColumnProvider(getProject());
 	}
 	
 	public CodeList getLevelTypeCodes() throws Exception
 	{
-		return getProject().getViewData(WorkPlanView.getViewName()).getBudgetRollupReportLevelTypes();
+		return getRowColumnProvider().getLevelTypeCodes();
 	}
 
 	public String getPanelDescription()
