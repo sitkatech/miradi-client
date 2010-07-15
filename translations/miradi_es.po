@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-15 13:28-0500\n"
+"POT-Creation-Date: 2010-07-15 13:33-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -5535,7 +5535,8 @@ msgid "Rocky Areas [e.g. inland cliffs, mountain peaks]"
 msgstr ""
 "Áreas rocosas [por ejemplo, acantilados tierra adentro y picos de montañas]"
 
-#: Miradi/source/org/miradi/views/workplan/RollupReportsManagementPanel.java:75
+#: Miradi/source/org/miradi/views/workplan/RollupReportsManagementConfiguration.java:49
+#: Miradi/source/org/miradi/views/workplan/RollupReportsManagementPanel.java:67
 msgid "Rollup Reports"
 msgstr ""
 
