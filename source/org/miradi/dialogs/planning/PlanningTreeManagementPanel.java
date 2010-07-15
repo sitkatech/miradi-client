@@ -36,10 +36,22 @@ import org.miradi.utils.TableExporter;
 
 abstract public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 {
+	public PlanningTreeManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel planningTreeTablePanelToUse, PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel, String uniqueTreeTableIdentifier) throws Exception
+	{
+		super(mainWindowToUse, planningTreeTablePanelToUse, planningTreePropertiesPanel, uniqueTreeTableIdentifier);
+		
+		setTreeTablePanel(planningTreeTablePanelToUse);
+	}
+	
 	public PlanningTreeManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel planningTreeTablePanelToUse, PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel) throws Exception
 	{
 		super(mainWindowToUse, planningTreeTablePanelToUse, planningTreePropertiesPanel);
 		
+		setTreeTablePanel(planningTreeTablePanelToUse);
+	}
+
+	private void setTreeTablePanel(PlanningTreeTablePanel planningTreeTablePanelToUse)
+	{
 		planningTreeTablePanel = planningTreeTablePanelToUse;
 	}
 

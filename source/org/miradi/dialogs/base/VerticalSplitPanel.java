@@ -32,10 +32,23 @@ import org.miradi.views.umbrella.PersistentSplitPane;
 
 abstract public class VerticalSplitPanel extends ModelessDialogPanel
 {
-	public VerticalSplitPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, Component top, Component bottom)
+	public VerticalSplitPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, Component top, Component bottom, String uniqueIdentifier)
 	{
 		super(new BorderLayout());
 		
+		initializeSplitter(splitPositionSaverToUse, top, bottom, uniqueIdentifier);
+	}
+	
+	public VerticalSplitPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, Component top, Component bottom)
+	{
+		super(new BorderLayout());
+
+		initializeSplitter(splitPositionSaverToUse, top, bottom, getPanelDescription());
+	}
+
+	private void initializeSplitter(SplitterPositionSaverAndGetter splitPositionSaverToUse, Component top, Component bottom, String splitterDescriptionToUse)
+	{
+		setSplitterDescription(splitterDescriptionToUse);
 		splitPositionSaver = splitPositionSaverToUse;
 		createVerticalSplitPane(top, bottom);
 	}
@@ -60,10 +73,15 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 	
 	public String getSplitterDescription()
 	{
-		String panelDescription = getPanelDescription();
-		if(panelDescription == null)
+		if(splitterDescription == null)
 			EAM.logWarning("VerticalSplitPanel splitter description is null: " + getClass().getSimpleName());
-		return panelDescription;
+	
+		return splitterDescription;
+	}
+
+	private void setSplitterDescription(String splitterDescriptionToUse)
+	{
+		splitterDescription = splitterDescriptionToUse;
 	}
 	
 	public void setDividerThick()
@@ -76,4 +94,5 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 	public final static String SPLITTER_TAG = "Splitter";
 	private SplitterPositionSaverAndGetter splitPositionSaver;
 	private PersistentSplitPane splitter;
+	private String splitterDescription;
 }

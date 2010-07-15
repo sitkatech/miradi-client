@@ -33,10 +33,22 @@ import org.miradi.views.MiradiTabContentsPanelInterface;
 
 abstract public class ObjectManagementPanel extends VerticalSplitPanel implements MiradiTabContentsPanelInterface
 {
+	public ObjectManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse, String uniqueTreeTableIdentifier) throws Exception
+	{
+		super(mainWindowToUse, tablePanelToUse, propertiesPanelToUse, uniqueTreeTableIdentifier);
+		
+		initializeManagementPanel(mainWindowToUse, tablePanelToUse, propertiesPanelToUse);
+	}
+	
 	public ObjectManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
 		super(mainWindowToUse, tablePanelToUse, propertiesPanelToUse);
 		
+		initializeManagementPanel(mainWindowToUse, tablePanelToUse, propertiesPanelToUse);
+	}
+
+	private void initializeManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse)
+	{
 		mainWindow = mainWindowToUse;
 		setDividerThick();
 		listComponent = tablePanelToUse;
