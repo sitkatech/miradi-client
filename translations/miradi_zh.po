@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-15 15:20-0500\n"
+"POT-Creation-Date: 2010-07-15 15:28-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2308,6 +2308,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryTwoMangementPanel.java:74
 #: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryTwoDoer.java:34
+#: Miradi/source/org/miradi/views/workplan/BudgetCategoryTwoManagementConfiguration.java:49
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:61
 msgid "Category Two"
 msgstr ""
