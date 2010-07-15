@@ -24,7 +24,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Vector;
 
-import org.miradi.dialogs.planning.AbstractUnspecifiedRowCategoryProvider;
+import org.miradi.dialogs.planning.RowColumnProviderWithEmptyRowChecking;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Assignment;
@@ -36,7 +36,7 @@ import org.miradi.utils.CodeList;
 
 public class RollupReportsNode extends AbstractPlanningTreeNode
 {
-	public RollupReportsNode(Project project, AbstractUnspecifiedRowCategoryProvider rowColumnProviderToUse, BaseObject nodeObjectToUse, CodeList levelObjectTypesToUse, int levelToUse, ORefList assignmentRefsThatMatchToUse) throws Exception
+	public RollupReportsNode(Project project, RowColumnProviderWithEmptyRowChecking rowColumnProviderToUse, BaseObject nodeObjectToUse, CodeList levelObjectTypesToUse, int levelToUse, ORefList assignmentRefsThatMatchToUse) throws Exception
 	{
 		super(project, rowColumnProviderToUse.getRowListToShow());
 		
@@ -161,5 +161,5 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 	private CodeList levelObjectTypes;
 	private int currentLevel;
 	private ORefList assignmentRefsThatMatch;
-	private AbstractUnspecifiedRowCategoryProvider rowColumnProvider;
+	private RowColumnProviderWithEmptyRowChecking rowColumnProvider;
 }
