@@ -24,7 +24,7 @@ import org.miradi.objects.AbstractBudgetCategoryObject;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.CodeList;
 
-abstract public class AbstractBudgetCategoryRowColumnProvider extends AbstractUnspecifiedRowCategoryProvider
+abstract public class AbstractBudgetCategoryRowColumnProvider implements AbstractUnspecifiedRowCategoryProvider
 {
 	public CodeList getColumnListToShow()
 	{
@@ -41,7 +41,6 @@ abstract public class AbstractBudgetCategoryRowColumnProvider extends AbstractUn
 		});
 	}
 	
-	@Override
 	public boolean shouldIncludeEmptyRows()
 	{
 		return true;

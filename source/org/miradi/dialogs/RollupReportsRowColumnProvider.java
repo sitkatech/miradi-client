@@ -30,7 +30,7 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 
-public class RollupReportsRowColumnProvider extends AbstractUnspecifiedRowCategoryProvider
+public class RollupReportsRowColumnProvider implements AbstractUnspecifiedRowCategoryProvider
 { 
 	public CodeList getColumnListToShow()
 	{
@@ -54,7 +54,6 @@ public class RollupReportsRowColumnProvider extends AbstractUnspecifiedRowCatego
 		});
 	}
 	
-	@Override
 	public boolean shouldIncludeEmptyRows()
 	{
 		return false;
