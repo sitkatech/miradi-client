@@ -20,11 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.workplan;
 
-import org.miradi.actions.ActionEditRollupReportRows;
-import org.miradi.dialogs.RollupReportsRowColumnProvider;
-import org.miradi.dialogs.planning.RowColumnProviderWithEmptyRowChecking;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
+import org.miradi.dialogs.planning.RowColumnProviderWithEmptyRowChecking;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
@@ -33,54 +31,46 @@ import org.miradi.dialogs.treetables.RollupReportsTreeTableModel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
-import org.miradi.utils.CodeList;
 
 public class RollupReportsManagementPanel extends PlanningTreeManagementPanel
 {
 	public RollupReportsManagementPanel(MainWindow mainWindowToUse,
 			PlanningTreeTablePanel planningTreeTablePanelToUse,
-			PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel)
+			PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel, RollupReportsManagementConfiguration mangementConfirationToUse)
 			throws Exception
 	{
 		super(mainWindowToUse, planningTreeTablePanelToUse, planningTreePropertiesPanel);
+		
+		mangementConfiration = mangementConfirationToUse;
 	}
 	
 	@Override
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, RowColumnProvider rowColumnProvider) throws Exception
 	{
-		//TODO should not cast provider
-		PlanningTreeTableModel model = RollupReportsTreeTableModel.createRollupReportsTreeTableModel(getProject(), (RowColumnProviderWithEmptyRowChecking) rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
+		PlanningTreeTableModel model = RollupReportsTreeTableModel.createRollupReportsTreeTableModel(getProject(), mangementConfiration.getRowColumnProvider(), getMangementConfiguration().getUniqueTreeTableIdentifier());
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
 	}
 
-	public static RollupReportsManagementPanel createRollUpReportsPanel(MainWindow mainWindowToUse) throws Exception
+	public static RollupReportsManagementPanel createRollUpReportsPanel(MainWindow mainWindowToUse, RollupReportsManagementConfiguration mangementConfiguration) throws Exception
 	{
-		RowColumnProviderWithEmptyRowChecking rowColumnProvider = new RollupReportsRowColumnProvider(getLevelTypeCodes(mainWindowToUse.getProject()));
-		PlanningTreeTableModel treeTableModel = RollupReportsTreeTableModel.createRollupReportsTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
-		PlanningTreeTablePanel treeTablePanel = RollupReportsTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider, getButtonActions());
+		RowColumnProviderWithEmptyRowChecking rowColumnProvider = mangementConfiguration.getRowColumnProvider();
+		PlanningTreeTableModel treeTableModel = RollupReportsTreeTableModel.createRollupReportsTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, mangementConfiguration.getUniqueTreeTableIdentifier());
+		PlanningTreeTablePanel treeTablePanel = RollupReportsTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider, mangementConfiguration.getButtonActions());
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
-		return new RollupReportsManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
+		return new RollupReportsManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel, mangementConfiguration);
 	}
 	
-	private static CodeList getLevelTypeCodes(Project project) throws Exception
-	{
-		return project.getViewData(WorkPlanView.getViewName()).getBudgetRollupReportLevelTypes();
-	}
-
 	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Rollup Reports");
 	}
 	
-	private static Class[] getButtonActions()
+	private RollupReportsManagementConfiguration getMangementConfiguration()
 	{
-		return new Class[] {
-			ActionEditRollupReportRows.class,
-		};
+		return mangementConfiration;
 	}
 	
-	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "RollupReportsTreeTableModel";
+	private RollupReportsManagementConfiguration mangementConfiration;
 }
