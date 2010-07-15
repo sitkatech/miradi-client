@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 
-abstract public class AbstractUnspecifiedRowCategoryProvider implements RowColumnProvider
+public interface AbstractUnspecifiedRowCategoryProvider extends RowColumnProvider
 {
-	abstract public boolean shouldIncludeEmptyRows();
+	public boolean shouldIncludeEmptyRows();
 }
