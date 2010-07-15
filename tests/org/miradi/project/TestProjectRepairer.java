@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import java.awt.Dimension;
-import java.util.Vector;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
@@ -31,11 +30,13 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FundingSource;
+import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
@@ -62,19 +63,32 @@ public class TestProjectRepairer extends TestCaseWithProject
 		repairer = new ProjectRepairer(getProject());
 	}
 	
-	public void testFindOrphans() throws Exception
+	public void testDeleteOrphans() throws Exception
 	{
-		Factor target = getProject().createTarget();
+		Factor empty = getProject().createStrategy();
+		ORef emptyRef = empty.getRef();
+
+		Target target = getProject().createTarget();
 		ORef targetRef = target.getRef();
+		getProject().setObjectData(targetRef, Target.TAG_LABEL, "Sample data");
+		Goal goal = getProject().createGoal(target);
+		ORef goalRef = goal.getRef();
+		getProject().setObjectData(goalRef, Goal.TAG_SHORT_LABEL, "Id");
+
 		FundingSource fundingSource = getProject().createFundingSource();
 		ORef fundingSourceRef = fundingSource.getRef();
+
+		repairer.quarantineOrphans();
+		assertNull("Didn't delete empty strategy?", BaseObject.find(getProject(), emptyRef));
+		assertNull("Didn't delete target?", BaseObject.find(getProject(), targetRef));
+		assertNull("Didn't delete goal?", BaseObject.find(getProject(), goalRef));
+		assertNotNull("Deleted Funding Source?", BaseObject.find(getProject(), fundingSourceRef));
 		
-		Vector<ORef> orphanRefs = repairer.findOrphans();
-		assertContains("Didn't find target?", targetRef, orphanRefs);
-		assertNotContains("Called FS an orphan?", fundingSourceRef, orphanRefs);
-		repairer.deleteEmptyOrphans(orphanRefs);
-		assertNull("Didn't delete target?", Target.find(getProject(), targetRef));
-		assertNotNull("Deleted FS?", FundingSource.find(getProject(), fundingSourceRef));
+		String quarantined = getProject().getQuarantineFileContents();
+		assertNotContains(emptyRef.toString(), quarantined);
+		assertContains(targetRef.toString(), quarantined);
+		assertContains(goalRef.toString(), quarantined);
+		assertNotContains(fundingSourceRef.toString(), quarantined);
 	}
 	
 	public void testRemoveInvalidDiagramLinkRefs() throws Exception

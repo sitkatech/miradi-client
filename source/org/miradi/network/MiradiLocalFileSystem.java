@@ -153,6 +153,24 @@ public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 		}
 		return map;
 	}
+	
+	public void appendToFile(String projectName, File relativeFile, String textToAppend) throws Exception
+	{
+		if(!doesProjectDirectoryExist(projectName))
+			throw new FileNotFoundException("No project directory: " + projectPath(projectName));
+		
+		File path = filePath(projectName, relativeFile);
+		path.getParentFile().mkdirs();
+		UnicodeWriter writer = new UnicodeWriter(path, UnicodeWriter.APPEND);
+		try
+		{
+			writer.write(textToAppend);
+		}
+		finally
+		{
+			writer.close();
+		}
+	}
 
 	public void writeFile(String projectName, File file, String contents)
 			throws Exception
@@ -166,8 +184,14 @@ public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 		File path = filePath(projectName, file);
 		path.getParentFile().mkdirs();
 		UnicodeWriter writer = new UnicodeWriter(path);
-		writer.write(contents);
-		writer.close();
+		try
+		{
+			writer.write(contents);
+		}
+		finally
+		{
+			writer.close();
+		}
 	}
 	
 	public void writeMultipleFiles(String projectName, HashMap<File, String> fileContentsMap) throws Exception

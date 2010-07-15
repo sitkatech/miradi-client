@@ -27,7 +27,6 @@ import java.awt.Font;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.Transferable;
-import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -35,9 +34,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Vector;
 
-import javax.swing.AbstractAction;
 import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -61,7 +58,6 @@ import org.miradi.dialogs.ProjectCorruptionDialog;
 import org.miradi.exceptions.FutureVersionException;
 import org.miradi.exceptions.OldVersionException;
 import org.miradi.exceptions.UnknownCommandException;
-import org.miradi.icons.IconManager;
 import org.miradi.main.menu.MainMenuBar;
 import org.miradi.objecthelpers.ColorsFileLoader;
 import org.miradi.objecthelpers.ORef;
@@ -71,7 +67,6 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objecthelpers.TwoLevelEntry;
 import org.miradi.objects.Assignment;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TableSettings;
@@ -584,89 +579,18 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private void repairProject() throws Exception
 	{
 		ProjectRepairer repairer = new ProjectRepairer(project);
+		quarantineOrphans(repairer);
 		repairer.repairProblemsWherePossible();
 		scanForSeriousCorruption(repairer);
-		scanForOrphans(repairer);
 	}
 
-	private void scanForOrphans(ProjectRepairer repairer) throws Exception
+	private void quarantineOrphans(ProjectRepairer repairer) throws Exception
 	{
-		Vector<ORef> orphanRefs = repairer.findOrphans();
-		
-		Vector<ORef> deletedRefs = repairer.deleteEmptyOrphans(orphanRefs);
-		if(deletedRefs.size() > 0)
-		{
-			EAM.logWarning("Found and deleted " + deletedRefs.size() + " empty orphan objects");
-			orphanRefs.removeAll(deletedRefs);
-		}
-		
-		if(orphanRefs.size() == 0)
-			return;
-
-		if(!Miradi.isAlphaTesterMode())
+		int quarantinedCount = repairer.quarantineOrphans();
+		if(quarantinedCount == 0)
 			return;
 		
-		String title = EAM.text("Lost Objects Detected");
-		String bodyText = EAM.text("" +
-				"The following objects exist in the project, but cannot be accessed." +
-				"\n\n" +
-				"Most likely they are not needed, and were created by errors in earlier versions of Miradi." +
-				"\n\n" +
-				"It is safe to open your project and use it. If all of your data seems to be visible, " +
-				"then these objects are not needed and can be ignored. If you are missing valuable data, " +
-				"it may be among these objects, in which case you should contact the Miradi support team " +
-				"to have them safely recover the data.");
-		String listOfProblems = "";
-		for(ORef orphanRef : orphanRefs)
-		{
-			String typeName = ObjectType.getUserFriendlyObjectTypeName(orphanRef.getObjectType());
-			BaseObject object = BaseObject.find(getProject(), orphanRef);
-			listOfProblems += typeName + ": " + object.getFullName() + " " + orphanRef + "\n";
-		}
-		
-		class DeleteAllOrphansAction extends AbstractAction
-		{
-			public DeleteAllOrphansAction(Vector<ORef> orphanRefsToDelete)
-			{
-				super(EAM.text("Delete All Orphans"), IconManager.getDeleteIcon());
-				orphanRefs = orphanRefsToDelete;
-			}
-			
-			public void actionPerformed(ActionEvent arg0)
-			{
-				try
-				{
-					for(ORef orphanRef : orphanRefs)
-					{
-						BaseObject object = BaseObject.find(getProject(), orphanRef);
-						getProject().deleteObject(object);
-					}
-					EAM.notifyDialog(EAM.text("" +
-							"The orphans have been deleted. Miradi must exit now, \n" +
-							"after which you can restart it and open this project." +
-							"\n\n" +
-							"Additional orphans may be reported then, in which case \n" +
-							"you can delete those, and try again. Depending on the \n" +
-							"nature of the orphans, it may take several cycles to \n" +
-							"eliminate them all."));
-				}
-				catch(Exception e)
-				{
-					EAM.unexpectedErrorDialog(e);
-				}
-				finally
-				{
-					exitNormally();
-				}
-			}
-
-			private Vector<ORef> orphanRefs;
-
-		}
-
-		if(!ProjectCorruptionDialog.askUserWhetherToOpen(this, title, bodyText, listOfProblems, new DeleteAllOrphansAction(orphanRefs)))
-			throw new AlreadyHandledException();
-		
+		EAM.notifyDialog(EAM.text("This project has been optimized to remove data that is no longer needed.\n"));
 	}
 
 	private void scanForSeriousCorruption(ProjectRepairer repairer) throws Exception
