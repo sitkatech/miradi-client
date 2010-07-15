@@ -20,12 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.workplan;
 
+import javax.swing.Icon;
+
 import org.miradi.actions.ActionEditRollupReportRows;
 import org.miradi.dialogs.RollupReportsRowColumnProvider;
 import org.miradi.dialogs.planning.RowColumnProviderWithEmptyRowChecking;
+import org.miradi.icons.PlanningIcon;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
-import org.miradi.utils.CodeList;
 
 public class RollupReportsManagementConfiguration extends AbstractManagementConfiguration
 {
@@ -34,21 +36,19 @@ public class RollupReportsManagementConfiguration extends AbstractManagementConf
 		super(projectToUse);
 	}
 	
+	@Override
 	public RowColumnProviderWithEmptyRowChecking getRowColumnProvider() throws Exception
 	{
 		return new RollupReportsRowColumnProvider(getProject());
 	}
 	
-	public CodeList getLevelTypeCodes() throws Exception
-	{
-		return getRowColumnProvider().getLevelTypeCodes();
-	}
-
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Rollup Reports");
 	}
 	
+	@Override
 	public Class[] getButtonActions()
 	{
 		return new Class[] {
@@ -56,9 +56,16 @@ public class RollupReportsManagementConfiguration extends AbstractManagementConf
 		};
 	}
 	
+	@Override
 	public String getUniqueTreeTableIdentifier()
 	{
 		return UNIQUE_TREE_TABLE_IDENTIFIER;
+	}
+	
+	@Override
+	public Icon getIcon()
+	{
+		return new PlanningIcon();
 	}
 	
 	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "RollupReportsTreeTableModel";
