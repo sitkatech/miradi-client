@@ -33,9 +33,9 @@ import org.miradi.dialogs.treetables.RollupReportsTreeTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
-public class RollupReportsManagementPanel extends PlanningTreeManagementPanel
+public class CategoryManagementPanel extends PlanningTreeManagementPanel
 {
-	public RollupReportsManagementPanel(MainWindow mainWindowToUse,
+	public CategoryManagementPanel(MainWindow mainWindowToUse,
 			PlanningTreeTablePanel planningTreeTablePanelToUse,
 			PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel, AbstractManagementConfiguration mangementConfirationToUse)
 			throws Exception
@@ -52,14 +52,14 @@ public class RollupReportsManagementPanel extends PlanningTreeManagementPanel
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
 	}
 
-	public static RollupReportsManagementPanel createRollUpReportsPanel(MainWindow mainWindowToUse, AbstractManagementConfiguration managementConfiguration) throws Exception
+	public static CategoryManagementPanel createRollUpReportsPanel(MainWindow mainWindowToUse, AbstractManagementConfiguration managementConfiguration) throws Exception
 	{
 		RowColumnProviderWithEmptyRowChecking rowColumnProvider = managementConfiguration.getRowColumnProvider();
 		PlanningTreeTableModel treeTableModel = RollupReportsTreeTableModel.createRollupReportsTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, managementConfiguration.getUniqueTreeTableIdentifier());
 		PlanningTreeTablePanel treeTablePanel = RollupReportsTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider, managementConfiguration.getButtonActions());
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
-		return new RollupReportsManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel, managementConfiguration);
+		return new CategoryManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel, managementConfiguration);
 	}
 	
 	@Override
