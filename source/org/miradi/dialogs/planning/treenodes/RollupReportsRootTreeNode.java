@@ -26,8 +26,6 @@ import org.miradi.dialogs.planning.RowColumnProviderWithEmptyRowChecking;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.utils.CodeList;
-import org.miradi.views.workplan.WorkPlanView;
 
 public class RollupReportsRootTreeNode extends AbstractPlanningTreeNode
 {
@@ -56,18 +54,12 @@ public class RollupReportsRootTreeNode extends AbstractPlanningTreeNode
 	{
 		children = new Vector();
 		int initialLevel = 0;
-		CodeList levelObjectTypes = getLevelTypeCodes();
 		
 		ORefList allAsignmentRefs = new ORefList();
 		allAsignmentRefs.addAll(getProject().getAssignmentPool().getRefList());
 		allAsignmentRefs.addAll(getProject().getExpenseAssignmentPool().getRefList());
-		children.add(new RollupReportsNode(getProject(), rowColumnProvider, getObject(), levelObjectTypes, initialLevel, allAsignmentRefs));
+		children.add(new RollupReportsNode(getProject(), rowColumnProvider, getObject(), initialLevel, allAsignmentRefs));
 	}
 
-	private CodeList getLevelTypeCodes() throws Exception
-	{
-		return getProject().getViewData(WorkPlanView.getViewName()).getBudgetRollupReportLevelTypes();
-	}
-	
 	private RowColumnProviderWithEmptyRowChecking rowColumnProvider;
 }

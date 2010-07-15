@@ -36,13 +36,13 @@ import org.miradi.utils.CodeList;
 
 public class RollupReportsNode extends AbstractPlanningTreeNode
 {
-	public RollupReportsNode(Project project, RowColumnProviderWithEmptyRowChecking rowColumnProviderToUse, BaseObject nodeObjectToUse, CodeList levelObjectTypesToUse, int levelToUse, ORefList assignmentRefsThatMatchToUse) throws Exception
+	public RollupReportsNode(Project project, RowColumnProviderWithEmptyRowChecking rowColumnProviderToUse, BaseObject nodeObjectToUse, int levelToUse, ORefList assignmentRefsThatMatchToUse) throws Exception
 	{
 		super(project, rowColumnProviderToUse.getRowListToShow());
 		
 		rowColumnProvider = rowColumnProviderToUse;
 		nodeObject = nodeObjectToUse;
-		levelObjectTypes = levelObjectTypesToUse;
+		levelObjectTypes = rowColumnProvider.getLevelTypeCodes();
 		currentLevel = levelToUse;
 		assignmentRefsThatMatch = assignmentRefsThatMatchToUse;
 		
@@ -74,10 +74,12 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		if (!getLevelObjectTypes().hasData())
 			return;
 		
+		if (getLevelObjectTypes().size() <= getCurrentLevel())
+			return;
+		
 		String levelObjectTypeAsString = getLevelObjectTypes().get(getCurrentLevel());
 		if (levelObjectTypeAsString.equals(RollupReportsObjectTypeQuestion.UNSPECIFIED_CODE))
 			return;
-		
 		
 		int levelObjectType = Integer.parseInt(levelObjectTypeAsString);
 		HashMap<ORef, ORefList> categoryRefToAssignmentRefsMap = createCategoryRefToAssignmentRefsMap(levelObjectType);
@@ -89,7 +91,7 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 			ORefList assignmentRefsReferringToRow = getAssignmentsReferringToRow(categoryRefToAssignmentRefsMap, possibleChildObject);
 			ORefList overlappingAssignmentRefs = assignmentRefsReferringToRow.getOverlappingRefs(getAssignmentRefsThatMatch());
 			if (shouldIncludeChildNode(overlappingAssignmentRefs))
-				children.add(new RollupReportsNode(getProject(), rowColumnProvider, possibleChildObject, getLevelObjectTypes(), childLevel, overlappingAssignmentRefs));
+				children.add(new RollupReportsNode(getProject(), rowColumnProvider, possibleChildObject, childLevel, overlappingAssignmentRefs));
 		}
 		
 		Collections.sort(children, createNodeSorter());

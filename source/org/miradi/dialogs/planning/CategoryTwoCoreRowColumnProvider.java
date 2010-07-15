@@ -42,4 +42,10 @@ public class CategoryTwoCoreRowColumnProvider extends AbstractBudgetCategoryRowC
 	{
 		return BudgetCategoryTwo.OBJECT_NAME;
 	}
+	
+	@Override
+	protected int getObjectType()
+	{
+		return BudgetCategoryTwo.getObjectType();
+	}
 }
