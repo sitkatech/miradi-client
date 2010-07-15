@@ -28,7 +28,6 @@ import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.treetables.RollupReportsTreeTableModel;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
@@ -39,15 +38,15 @@ public class RollupReportsManagementPanel extends PlanningTreeManagementPanel
 			PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel, RollupReportsManagementConfiguration mangementConfirationToUse)
 			throws Exception
 	{
-		super(mainWindowToUse, planningTreeTablePanelToUse, planningTreePropertiesPanel);
+		super(mainWindowToUse, planningTreeTablePanelToUse, planningTreePropertiesPanel, mangementConfirationToUse.getUniqueTreeTableIdentifier());
 		
-		mangementConfiration = mangementConfirationToUse;
+		mangementConfiguration = mangementConfirationToUse;
 	}
 	
 	@Override
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, RowColumnProvider rowColumnProvider) throws Exception
 	{
-		PlanningTreeTableModel model = RollupReportsTreeTableModel.createRollupReportsTreeTableModel(getProject(), mangementConfiration.getRowColumnProvider(), getMangementConfiguration().getUniqueTreeTableIdentifier());
+		PlanningTreeTableModel model = RollupReportsTreeTableModel.createRollupReportsTreeTableModel(getProject(), mangementConfiguration.getRowColumnProvider(), getMangementConfiguration().getUniqueTreeTableIdentifier());
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
 	}
 
@@ -64,13 +63,13 @@ public class RollupReportsManagementPanel extends PlanningTreeManagementPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Rollup Reports");
+		return mangementConfiguration.getPanelDescription();
 	}
 	
 	private RollupReportsManagementConfiguration getMangementConfiguration()
 	{
-		return mangementConfiration;
+		return mangementConfiguration;
 	}
 	
-	private RollupReportsManagementConfiguration mangementConfiration;
+	private RollupReportsManagementConfiguration mangementConfiguration;
 }

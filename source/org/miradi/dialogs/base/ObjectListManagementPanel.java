@@ -25,6 +25,11 @@ import org.miradi.rtf.RtfWriter;
 
 abstract public class ObjectListManagementPanel extends ObjectManagementPanel
 {
+	public ObjectListManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse, String uniqueTreeTableIdentifier) throws Exception
+	{
+		super(mainWindowToUse, tablePanelToUse, propertiesPanelToUse, uniqueTreeTableIdentifier);
+	}
+	
 	public ObjectListManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
 		super(mainWindowToUse, tablePanelToUse, propertiesPanelToUse);
