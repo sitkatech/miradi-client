@@ -41,6 +41,7 @@ public interface MiradiFileSystem
 	public abstract Map<Integer, String> readAllManifestFiles(String projectName) throws Exception;
 	public abstract Map<File, String> readMultipleFiles(String projectName, Vector<File> filePathSet) throws Exception;
 	public abstract String readFile(String projectName, File file) throws Exception;
+	public abstract void appendToFile(String currentProjectName, File relativeFile, String textToAppend) throws Exception;
 
 	public abstract void beginTransaction(String projectName) throws Exception;
 	public abstract void endTransaction() throws Exception;

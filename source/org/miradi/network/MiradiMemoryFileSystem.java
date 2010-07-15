@@ -139,6 +139,14 @@ public class MiradiMemoryFileSystem extends AbstractNonRemoteMiradiFileSystem
 		}
 		return results;
 	}
+	
+	public void appendToFile(String projectName, File relativeFile, String textToAppend) throws Exception
+	{
+		if(!doesProjectDirectoryExist(projectName))
+			throw new FileNotFoundException("Project not found: " + projectName);
+		String oldText = getProject(projectName).get(relativeFile);
+		getProject(projectName).put(relativeFile, oldText + textToAppend);
+	}
 
 	public void setDataLocation(String dataLocation) throws Exception
 	{

@@ -22,6 +22,7 @@ package org.miradi.project;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.Vector;
@@ -51,6 +52,43 @@ public class ProjectRepairer
 		project = projectToRepair;
 	}
 	
+	public int quarantineOrphans() throws Exception
+	{
+		int quarantinedCount = 0;
+		while(true)
+		{
+			Vector<ORef> orphanRefs = findOrphans();
+			if(orphanRefs.size() == 0)
+				break;
+			
+			quarantinedCount += quarantineObjects(orphanRefs);
+		}
+		
+		return quarantinedCount;
+	}
+
+	private int quarantineObjects(Vector<ORef> orphanRefs) throws Exception
+	{
+		for(ORef orphanRef : orphanRefs)
+		{
+			BaseObject object = BaseObject.find(getProject(), orphanRef);
+			if(!object.isEmpty())
+				addToQuarantine(object);
+			getProject().deleteObject(object);
+		}
+		EAM.logDebug("Quarantined orphans: " + orphanRefs);
+		
+		return orphanRefs.size();
+	}
+
+	private void addToQuarantine(BaseObject object) throws Exception
+	{
+		getProject().appendToQuarantineFile("# " + new Date() + "\n");
+		getProject().appendToQuarantineFile("ORef: " + object.getRef() + "\n");
+		getProject().appendToQuarantineFile(object.toJson().toString(2));
+		getProject().appendToQuarantineFile("\n");
+	}
+
 	public void repairProblemsWherePossible() throws Exception
 	{
 		fixAnyProblemsWithThreatStressRatings();
@@ -87,7 +125,7 @@ public class ProjectRepairer
 		}
 	}
 
-	public Vector<ORef> findOrphans()
+	private Vector<ORef> findOrphans()
 	{
 		Vector<ORef> orphanRefs = new Vector<ORef>();
 		
@@ -321,22 +359,6 @@ public class ProjectRepairer
 		return missingObjectRefs;
 	}
 	
-	public Vector<ORef> deleteEmptyOrphans(Vector<ORef> orphanRefs) throws Exception
-	{
-		Vector<ORef> deletedRefs = new Vector<ORef>();
-		for(ORef orphanRef : orphanRefs)
-		{
-			BaseObject object = BaseObject.find(getProject(), orphanRef);
-			if(object.isEmpty())
-			{
-				getProject().deleteObject(object);
-				deletedRefs.add(orphanRef);
-			}
-		}
-		
-		return deletedRefs;
-	}
-
 	private Project getProject()
 	{
 		return project;

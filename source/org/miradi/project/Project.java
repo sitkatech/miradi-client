@@ -544,6 +544,15 @@ public class Project
 		return StaticQuestionManager.getQuestion(questionClass);
 	}
 
+	public void appendToQuarantineFile(String textToAppend) throws Exception
+	{
+		getDatabase().appendToQuarantineFile(textToAppend);
+	}
+	
+	public String getQuarantineFileContents() throws Exception
+	{
+		return getDatabase().getQuarantineFileContents();
+	}
 
 	/////////////////////////////////////////////////////////////////////////////////
 	// objects

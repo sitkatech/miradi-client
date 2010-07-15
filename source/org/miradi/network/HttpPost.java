@@ -60,6 +60,17 @@ class HttpPost extends HttpTransaction
 		return post;
 	}
 	
+	public static HttpTransaction appendToFile(URL serverURL, String projectName, File relativeFile, String textToAppend) throws Exception
+	{
+		HttpPost post = new HttpPost(serverURL, projectName, relativeFile);
+		UnicodeWriter writer = new UnicodeWriter(post.connection.getOutputStream());
+		String encoded = URLEncoder.encode(textToAppend, "UTF-8");
+		writer.write("data=" + encoded);
+		writer.close();
+		post.performRequest(post.connection);
+		return post;
+	}
+
 	public static HttpTransaction lockFile(URL serverURL, String projectName, File file) throws Exception
 	{
 		HttpPost post = new HttpPost(serverURL, projectName, file, new String[] {LOCK});

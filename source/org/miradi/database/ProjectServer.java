@@ -381,6 +381,16 @@ public class ProjectServer
 		return isExistingProject(fileSystem, projectDirectory.getName());
 	}
 
+	public void appendToQuarantineFile(String textToAppend) throws Exception
+	{
+		currentFileSystem.appendToFile(getCurrentProjectName(), getRelativeQuarantineFile(), textToAppend);
+	}
+
+	public String getQuarantineFileContents() throws Exception
+	{
+		return currentFileSystem.readFile(getCurrentProjectName(), getRelativeQuarantineFile());
+	}
+
 	public static String readLocalLastModifiedProjectTime(File projectDirectory) throws Exception
 	{
 		File dataDirectory = projectDirectory.getParentFile();
@@ -424,6 +434,11 @@ public class ProjectServer
 		return new File(JSON_DIRECTORY);
 	}
 
+	private File getRelativeQuarantineFile()
+	{
+		return new File(QUARANTINE_FILE_NAME);
+	}
+
 	private static File getRelativeObjectsDirectory(int type)
 	{
 		return new File(getRelativeJsonDirectory(), "objects-" + Integer.toString(type));
@@ -452,6 +467,7 @@ public class ProjectServer
 
 	public static final int DATA_VERSION = 58;
 	private static final String LAST_MODIFIED_FILE_NAME = "LastModifiedProjectTime.txt";
+	private static final String QUARANTINE_FILE_NAME = "DeletedOrphans.txt";
 	private static final String TAG_VERSION = "Version";
 	private static final String JSON_DIRECTORY = "json";
 
