@@ -32,6 +32,11 @@ import org.miradi.utils.CodeList;
 
 public class RollupReportsRowColumnProvider implements RowColumnProviderWithEmptyRowChecking
 { 
+	public RollupReportsRowColumnProvider(CodeList levelTypeCodesToUse)
+	{
+		levelTypeCodes = levelTypeCodesToUse;
+	}
+	
 	public CodeList getColumnListToShow()
 	{
 		CodeList columnCodes = new CodeList();
@@ -58,4 +63,11 @@ public class RollupReportsRowColumnProvider implements RowColumnProviderWithEmpt
 	{
 		return false;
 	}
+	
+	public CodeList getLevelTypeCodes()
+	{
+		return levelTypeCodes;
+	}
+	
+	private CodeList levelTypeCodes;
 }

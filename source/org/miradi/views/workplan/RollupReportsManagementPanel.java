@@ -33,6 +33,8 @@ import org.miradi.dialogs.treetables.RollupReportsTreeTableModel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 
 public class RollupReportsManagementPanel extends PlanningTreeManagementPanel
 {
@@ -54,12 +56,17 @@ public class RollupReportsManagementPanel extends PlanningTreeManagementPanel
 
 	public static RollupReportsManagementPanel createRollUpReportsPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		RowColumnProviderWithEmptyRowChecking rowColumnProvider = new RollupReportsRowColumnProvider();
+		RowColumnProviderWithEmptyRowChecking rowColumnProvider = new RollupReportsRowColumnProvider(getLevelTypeCodes(mainWindowToUse.getProject()));
 		PlanningTreeTableModel treeTableModel = RollupReportsTreeTableModel.createRollupReportsTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
 		PlanningTreeTablePanel treeTablePanel = RollupReportsTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider, getButtonActions());
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
 		return new RollupReportsManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
+	}
+	
+	private static CodeList getLevelTypeCodes(Project project) throws Exception
+	{
+		return project.getViewData(WorkPlanView.getViewName()).getBudgetRollupReportLevelTypes();
 	}
 
 	@Override

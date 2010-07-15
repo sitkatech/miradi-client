@@ -45,6 +45,15 @@ abstract public class AbstractBudgetCategoryRowColumnProvider implements RowColu
 	{
 		return true;
 	}
-
+	
+	public CodeList getLevelTypeCodes()
+	{
+		return new CodeList(new String[] {
+				Integer.toString(getObjectType()),
+		});
+	}
+	
+	abstract protected int getObjectType();
+	
 	abstract protected String getObjectTypeName();
 }

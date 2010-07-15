@@ -20,8 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning;
 
+import org.miradi.utils.CodeList;
+
 
 public interface RowColumnProviderWithEmptyRowChecking extends RowColumnProvider
 {
 	public boolean shouldIncludeEmptyRows();
+	
+	public CodeList getLevelTypeCodes() throws Exception;
 }

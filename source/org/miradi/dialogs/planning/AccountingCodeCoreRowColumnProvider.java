@@ -29,4 +29,10 @@ public class AccountingCodeCoreRowColumnProvider extends AbstractBudgetCategoryR
 	{
 		return AccountingCode.OBJECT_NAME;
 	}
+	
+	@Override
+	protected int getObjectType()
+	{
+		return AccountingCode.getObjectType();
+	}
 }
