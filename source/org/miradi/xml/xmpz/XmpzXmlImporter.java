@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.project.Project;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.wcs.WcsXmlConstants;
+import org.w3c.dom.Node;
 
 public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConstants
 {
@@ -86,6 +87,13 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		new ExpenseAssignmentPoolImporter(this).importElement();
 		new ResourceAssignmentPoolImporter(this).importElement();
 		importThreatStressRatings();
+		importDeletedOrphanText();
+	}
+
+	private void importDeletedOrphanText() throws Exception
+	{
+		Node node = getNode(getRootNode(), WcsXmlConstants.DELETED_ORPHANS_ELEMENT_NAME);
+		getProject().appendToQuarantineFile(getSafeNodeContent(node));
 	}
 
 	private void importThreatStressRatings() throws Exception

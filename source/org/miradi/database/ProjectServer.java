@@ -388,7 +388,10 @@ public class ProjectServer
 
 	public String getQuarantineFileContents() throws Exception
 	{
-		return currentFileSystem.readFile(getCurrentProjectName(), getRelativeQuarantineFile());
+		String contents = currentFileSystem.readFile(getCurrentProjectName(), getRelativeQuarantineFile());
+		if(contents == null)
+			contents = "";
+		return contents;
 	}
 
 	public static String readLocalLastModifiedProjectTime(File projectDirectory) throws Exception

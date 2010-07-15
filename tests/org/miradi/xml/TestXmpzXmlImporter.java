@@ -43,6 +43,7 @@ import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Task;
+import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
@@ -193,6 +194,14 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		getProject().createAndPopulateExpenseAssignment();
 		
 		validateUsingStringWriter();
+	}
+	
+	public void testDeletedOrphans() throws Exception
+	{
+		String fakeOrphanText = "blah blah<>{}\\/[]\"!";
+		getProject().appendToQuarantineFile(fakeOrphanText);
+		Project imported = validateUsingStringWriter();
+		assertContains(fakeOrphanText, imported.getQuarantineFileContents());
 	}
 
 	private void createFilledDiagramFactor() throws Exception

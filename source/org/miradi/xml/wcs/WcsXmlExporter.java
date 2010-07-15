@@ -113,6 +113,8 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		new AudiencePoolExporter(this).exportXml();
 		new ObjectTreeTableConfigurationPoolExporter(this).exportXml();
 		
+		writeOptionalElement(out, DELETED_ORPHANS_ELEMENT_NAME, getProject().getQuarantineFileContents());
+
 		writeEndElement(out, CONSERVATION_PROJECT);
 	}
 	
