@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-15 13:33-0500\n"
+"POT-Creation-Date: 2010-07-15 15:03-0500\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -5185,7 +5185,6 @@ msgid "Rocky Areas [e.g. inland cliffs, mountain peaks]"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/RollupReportsManagementConfiguration.java:49
-#: Miradi/source/org/miradi/views/workplan/RollupReportsManagementPanel.java:67
 msgid "Rollup Reports"
 msgstr ""
 
