@@ -55,13 +55,13 @@ public class RollupReportsRootTreeNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		children = new Vector();
-		int levelType = 0;
+		int initialLevel = 0;
 		CodeList levelObjectTypes = getLevelTypeCodes();
 		
 		ORefList allAsignmentRefs = new ORefList();
 		allAsignmentRefs.addAll(getProject().getAssignmentPool().getRefList());
 		allAsignmentRefs.addAll(getProject().getExpenseAssignmentPool().getRefList());
-		children.add(new RollupReportsNode(getProject(), rowColumnProvider, getObject(), levelObjectTypes, levelType, allAsignmentRefs));
+		children.add(new RollupReportsNode(getProject(), rowColumnProvider, getObject(), levelObjectTypes, initialLevel, allAsignmentRefs));
 	}
 
 	private CodeList getLevelTypeCodes() throws Exception
