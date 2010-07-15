@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/40'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/41'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -46,7 +46,8 @@ ConservationProject.element = element miradi:ConservationProject
   IUCNRedListSpeciesPool.element ?  &
   OtherNotableSpeciesPool.element ?  &
   AudiencePool.element ?  &
-  PlanningViewConfigurationPool.element ? 
+  PlanningViewConfigurationPool.element ?  &
+  element miradi:DeletedOrphans { text }?
 }
 
 ProjectSummary.element = element miradi:ProjectSummary

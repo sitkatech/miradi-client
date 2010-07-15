@@ -92,11 +92,9 @@ class ProjectSchemaElement extends SchemaElement
 			if (objectElement.isPool())
 				writer.print(WcsXmlConstants.OPTIONAL_ELEMENT);
 				
-			if(i < objectTypes.size() - 1)
-				writer.print(" &");
-
-			writer.println();
+			writer.println(" &");
 		}
+		writer.println("  element " + WcsXmlConstants.PREFIX + DELETED_ORPHANS_ELEMENT_NAME +  "{ text }?");
 		writer.endBlock();
 		
 		for(ObjectSchemaElement objectElement: objectTypes)
