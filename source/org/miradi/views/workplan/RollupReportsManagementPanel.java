@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.workplan;
 
+import javax.swing.Icon;
+
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.RowColumnProviderWithEmptyRowChecking;
@@ -35,7 +37,7 @@ public class RollupReportsManagementPanel extends PlanningTreeManagementPanel
 {
 	public RollupReportsManagementPanel(MainWindow mainWindowToUse,
 			PlanningTreeTablePanel planningTreeTablePanelToUse,
-			PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel, RollupReportsManagementConfiguration mangementConfirationToUse)
+			PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel, AbstractManagementConfiguration mangementConfirationToUse)
 			throws Exception
 	{
 		super(mainWindowToUse, planningTreeTablePanelToUse, planningTreePropertiesPanel, mangementConfirationToUse.getUniqueTreeTableIdentifier());
@@ -50,7 +52,7 @@ public class RollupReportsManagementPanel extends PlanningTreeManagementPanel
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
 	}
 
-	public static RollupReportsManagementPanel createRollUpReportsPanel(MainWindow mainWindowToUse, RollupReportsManagementConfiguration mangementConfiguration) throws Exception
+	public static RollupReportsManagementPanel createRollUpReportsPanel(MainWindow mainWindowToUse, AbstractManagementConfiguration mangementConfiguration) throws Exception
 	{
 		RowColumnProviderWithEmptyRowChecking rowColumnProvider = mangementConfiguration.getRowColumnProvider();
 		PlanningTreeTableModel treeTableModel = RollupReportsTreeTableModel.createRollupReportsTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, mangementConfiguration.getUniqueTreeTableIdentifier());
@@ -66,10 +68,17 @@ public class RollupReportsManagementPanel extends PlanningTreeManagementPanel
 		return mangementConfiguration.getPanelDescription();
 	}
 	
-	private RollupReportsManagementConfiguration getMangementConfiguration()
+	private AbstractManagementConfiguration getMangementConfiguration()
 	{
 		return mangementConfiguration;
 	}
 	
-	private RollupReportsManagementConfiguration mangementConfiguration;
+	@Override
+	public Icon getIcon()
+	{
+		return getMangementConfiguration().getIcon();
+	}
+
+	
+	private AbstractManagementConfiguration mangementConfiguration;
 }
