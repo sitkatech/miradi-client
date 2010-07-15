@@ -29,6 +29,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ViewData;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.RollupReportsObjectTypeQuestion;
+import org.miradi.utils.CodeList;
 
 public class RollupReportsTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -57,8 +60,29 @@ public class RollupReportsTreeTablePanel extends PlanningTreeTablePanel
 		
 		if (event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_BUDGET_ROLLUP_REPORT_TYPES))
 			return true;
+		
+		if (wasBudgetTypeCreatedOrDeleted(event))
+			return true;
 			
 		return wereAssignmentsChanged(event);
+	}
+
+	private boolean wasBudgetTypeCreatedOrDeleted(CommandExecutedEvent event)
+	{
+		ChoiceQuestion question = getProject().getQuestion(RollupReportsObjectTypeQuestion.class);
+		CodeList possibleLevelTypes = question.getAllCodes();
+		for (int index = 0; index < possibleLevelTypes.size(); ++index)
+		{
+			String levelTypeAsString = possibleLevelTypes.get(index);
+			if (levelTypeAsString.equals(RollupReportsObjectTypeQuestion.UNSPECIFIED_CODE))
+				continue;
+			
+			int levelType = Integer.parseInt(levelTypeAsString); 
+			if (wasTypeCreatedOrDeleted(event, levelType))
+				return true;
+		}
+		
+		return false;
 	}
 	
 	private boolean wereAssignmentsChanged(CommandExecutedEvent event)
