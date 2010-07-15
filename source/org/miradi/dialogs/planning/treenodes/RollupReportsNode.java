@@ -42,7 +42,6 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		
 		rowColumnProvider = rowColumnProviderToUse;
 		nodeObject = nodeObjectToUse;
-		levelObjectTypes = rowColumnProvider.getLevelTypeCodes();
 		currentLevel = levelToUse;
 		assignmentRefsThatMatch = assignmentRefsThatMatchToUse;
 		
@@ -149,9 +148,9 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		return assignmentRefsThatMatch;
 	}
 
-	private CodeList getLevelObjectTypes()
+	private CodeList getLevelObjectTypes() throws Exception
 	{
-		return levelObjectTypes;
+		return rowColumnProvider.getLevelTypeCodes();
 	}
 
 	private int getCurrentLevel()
@@ -160,7 +159,6 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 	}
 		
 	private BaseObject nodeObject;
-	private CodeList levelObjectTypes;
 	private int currentLevel;
 	private ORefList assignmentRefsThatMatch;
 	private RowColumnProviderWithEmptyRowChecking rowColumnProvider;
