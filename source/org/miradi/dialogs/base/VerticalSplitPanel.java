@@ -39,12 +39,7 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 		createVerticalSplitPane(top, bottom, getSplitterDescription());
 	}
 	
-	public VerticalSplitPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse)
-	{
-		this(splitPositionSaverToUse, new BorderLayout());
-	}
-	
-	public VerticalSplitPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, LayoutManager2 layoutToUse)
+	private VerticalSplitPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, LayoutManager2 layoutToUse)
 	{
 		super(layoutToUse);
 		splitPositionSaver = splitPositionSaverToUse;
