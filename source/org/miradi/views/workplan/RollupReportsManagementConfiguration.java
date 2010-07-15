@@ -56,7 +56,7 @@ public class RollupReportsManagementConfiguration extends AbstractManagementConf
 		};
 	}
 	
-	public static String getUniqueTreeTableIdentifier()
+	public String getUniqueTreeTableIdentifier()
 	{
 		return UNIQUE_TREE_TABLE_IDENTIFIER;
 	}
