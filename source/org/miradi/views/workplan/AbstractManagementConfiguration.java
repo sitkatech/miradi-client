@@ -20,9 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.workplan;
 
-import org.miradi.project.Project;
+import javax.swing.Icon;
 
-public class AbstractManagementConfiguration
+import org.miradi.dialogs.planning.RowColumnProviderWithEmptyRowChecking;
+import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
+
+abstract public class AbstractManagementConfiguration
 {
 	public AbstractManagementConfiguration(Project projectToUse)
 	{
@@ -33,6 +37,21 @@ public class AbstractManagementConfiguration
 	{
 		return project;
 	}
+	
+	public CodeList getLevelTypeCodes() throws Exception
+	{
+		return getRowColumnProvider().getLevelTypeCodes();
+	}
+	
+	abstract public RowColumnProviderWithEmptyRowChecking getRowColumnProvider() throws Exception;
+
+	abstract public String getPanelDescription();
+
+	abstract public Class[] getButtonActions();
+	
+	abstract public String getUniqueTreeTableIdentifier();
+	
+	abstract public Icon getIcon();
 	
 	private Project project;
 }
