@@ -87,7 +87,7 @@ public class WorkPlanView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		workPlanManagementPanel = WorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
-		rollupReportsManagementPanel = RollupReportsManagementPanel.createRollUpReportsPanel(getMainWindow());
+		rollupReportsManagementPanel = RollupReportsManagementPanel.createRollUpReportsPanel(getMainWindow(), new RollupReportsManagementConfiguration(getProject()));
 		resourceManagementPanel = WorkPlanResourcesManagementPanel.createProjectResourcesPanel(getMainWindow());
 		accountingCodePoolManagementPanel = WorkPlanAccountingCodeManagementPanel.createAccountingPanel(getMainWindow());
 		fundingSourceManagementPanel = WorkPlanFundingSourceManagementPanel.createFundingSourcePanel(getMainWindow());
