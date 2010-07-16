@@ -95,6 +95,12 @@ public class WorkPlanCategoryTreeNode extends AbstractPlanningTreeNode
 		
 		Collections.sort(children, createNodeSorter());
 	}
+	
+	@Override
+	public boolean isAlwaysExpanded()
+	{
+		return (ProjectMetadata.is(getObjectReference()));
+	}
 
 	private boolean shouldIncludeChildNode(ORefList overlappingAssignmentRefs)
 	{
