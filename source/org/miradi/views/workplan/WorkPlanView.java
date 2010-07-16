@@ -88,7 +88,7 @@ public class WorkPlanView extends TabbedView
 	{
 		workPlanManagementPanel = WorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
 		rollupReportsManagementPanel = CategoryManagementPanel.createManagementPanel(getMainWindow(), new RollupReportsManagementConfiguration(getProject()));
-		resourceManagementPanel = WorkPlanResourcesManagementPanel.createProjectResourcesPanel(getMainWindow());
+		resourceManagementPanel = CategoryManagementPanel.createManagementPanel(getMainWindow(), new ProjectResourceManagementConfiguration(getProject()));
 		accountingCodePoolManagementPanel = CategoryManagementPanel.createManagementPanel(getMainWindow(), new AccountingCodeManagementConfiguration(getProject()));
 		fundingSourcePoolManagementPanel = CategoryManagementPanel.createManagementPanel(getMainWindow(), new FundingSourceManagementConfiguration(getProject())); 
 		categoryOnePoolMangementPanel = CategoryManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryOneManagementConfiguration(getProject()));
