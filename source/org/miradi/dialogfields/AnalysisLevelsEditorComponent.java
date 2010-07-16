@@ -30,7 +30,7 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
-import org.miradi.questions.AnalysisObjectTypeQuestion;
+import org.miradi.questions.WorkPlanCategoryTypesQuestion;
 import org.miradi.utils.CodeList;
 
 public class AnalysisLevelsEditorComponent extends MiradiPanel
@@ -40,7 +40,7 @@ public class AnalysisLevelsEditorComponent extends MiradiPanel
 		super(new OneColumnGridLayout());
 		
 		editors = new Vector<SingleChoiceItemEditor>();
-		AnalysisObjectTypeQuestion question = new AnalysisObjectTypeQuestion();
+		WorkPlanCategoryTypesQuestion question = new WorkPlanCategoryTypesQuestion();
 		int numberOfDropdowns = getNumberOfDropdowns(question);
 		for (int level = 0; level < numberOfDropdowns; ++level)
 		{
@@ -65,7 +65,7 @@ public class AnalysisLevelsEditorComponent extends MiradiPanel
 		return EAM.text("Then by");
 	}
 
-	private int getNumberOfDropdowns(AnalysisObjectTypeQuestion question)
+	private int getNumberOfDropdowns(WorkPlanCategoryTypesQuestion question)
 	{
 		final int UNSPECIFIED_CHOICE_COUNT = 1;
 		

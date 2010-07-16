@@ -23,7 +23,7 @@ package org.miradi.views.workplan;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
-import org.miradi.questions.AnalysisObjectTypeQuestion;
+import org.miradi.questions.WorkPlanCategoryTypesQuestion;
 
 public class EditAnalysisRowsPanel extends ObjectDataInputPanel
 {
@@ -31,7 +31,7 @@ public class EditAnalysisRowsPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ViewData.getObjectType());
 		
-		addFieldWithoutLabel(createConfigureAnaysisRowsField(getProject().getCurrentViewData().getRef(), ViewData.TAG_BUDGET_ROLLUP_REPORT_TYPES, getProject().getQuestion(AnalysisObjectTypeQuestion.class)));
+		addFieldWithoutLabel(createConfigureAnaysisRowsField(getProject().getCurrentViewData().getRef(), ViewData.TAG_BUDGET_ROLLUP_REPORT_TYPES, getProject().getQuestion(WorkPlanCategoryTypesQuestion.class)));
 		setObjectRef(getProject().getCurrentViewData().getRef());
 	}
 
