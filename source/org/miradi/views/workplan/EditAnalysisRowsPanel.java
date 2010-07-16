@@ -20,18 +20,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.workplan;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import javax.swing.JLabel;
+
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.layout.OneColumnGridLayout;
+import org.miradi.main.EAM;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.WorkPlanCategoryTypesQuestion;
 
-public class EditAnalysisRowsPanel extends ObjectDataInputPanel
+public class EditAnalysisRowsPanel extends AbstractObjectDataInputPanel
 {
 	public EditAnalysisRowsPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, ViewData.getObjectType());
-		
+		super(projectToUse, projectToUse.getCurrentViewData().getRef());
+
+		setLayout(new OneColumnGridLayout());
+		add(new PanelTitleLabel(EAM.text(
+				"Select how to group the data for analysis.")));
+		add(new JLabel(" "));
 		addFieldWithoutLabel(createConfigureAnaysisRowsField(getProject().getCurrentViewData().getRef(), ViewData.TAG_BUDGET_ROLLUP_REPORT_TYPES, getProject().getQuestion(WorkPlanCategoryTypesQuestion.class)));
+
 		setObjectRef(getProject().getCurrentViewData().getRef());
 	}
 
