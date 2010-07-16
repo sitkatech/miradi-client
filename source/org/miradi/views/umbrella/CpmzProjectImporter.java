@@ -133,7 +133,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	@Override
 	protected void createOrOpenProject(Project projectToFill, String projectName)	throws Exception
 	{
-		projectToFill.openProject(projectName);
+		projectToFill.createOrOpenWithDefaultObjects(projectName);
 	}
 
 	@Override
