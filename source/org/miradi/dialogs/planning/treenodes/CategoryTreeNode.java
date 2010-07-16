@@ -36,14 +36,14 @@ import org.miradi.utils.CodeList;
 
 public class CategoryTreeNode extends AbstractPlanningTreeNode
 {
-	public CategoryTreeNode(Project project, CategoryTreeRowColumnProvider rowColumnProviderToUse, BaseObject nodeObjectToUse, int levelToUse, ORefList assignmentRefsThatMatchParentRowToUse) throws Exception
+	public CategoryTreeNode(Project project, CategoryTreeRowColumnProvider rowColumnProviderToUse, BaseObject nodeObjectToUse, int levelToUse, ORefList assignmentRefsThatMatchThisNodeToUse) throws Exception
 	{
 		super(project, rowColumnProviderToUse.getRowListToShow());
 		
 		rowColumnProvider = rowColumnProviderToUse;
 		nodeObject = nodeObjectToUse;
 		currentLevel = levelToUse;
-		assignmentRefsThatMatchParentRow = assignmentRefsThatMatchParentRowToUse;
+		assignmentRefsThatMatchThisNode = assignmentRefsThatMatchThisNodeToUse;
 		
 		rebuild();
 	}
@@ -88,7 +88,7 @@ public class CategoryTreeNode extends AbstractPlanningTreeNode
 		{	
 			BaseObject possibleChildObject = createOrFindChildObject(childRefs.get(index), levelObjectType);
 			ORefList assignmentRefsReferringToPossibleChild = getAssignmentsReferringToRow(categoryRefToAssignmentRefsMap, possibleChildObject);
-			ORefList assignmentRefsThatMatchPossibleChild = assignmentRefsReferringToPossibleChild.getOverlappingRefs(getAssignmentRefsThatMatchParentRow());
+			ORefList assignmentRefsThatMatchPossibleChild = assignmentRefsReferringToPossibleChild.getOverlappingRefs(getAssignmentRefsThatMatchThisNode());
 			if (shouldIncludeChildNode(assignmentRefsThatMatchPossibleChild))
 				children.add(new CategoryTreeNode(getProject(), rowColumnProvider, possibleChildObject, childLevel, assignmentRefsThatMatchPossibleChild));
 		}
@@ -121,9 +121,9 @@ public class CategoryTreeNode extends AbstractPlanningTreeNode
 	private HashMap<ORef, ORefList> createCategoryRefToAssignmentRefsMap(int levelObjectType)
 	{
 		HashMap<ORef, ORefList> categoryRefToAssignmentRefsMap = new HashMap<ORef, ORefList>();
-		for (int index = 0; index < getAssignmentRefsThatMatchParentRow().size(); ++index)
+		for (int index = 0; index < getAssignmentRefsThatMatchThisNode().size(); ++index)
 		{
-			Assignment assignment = Assignment.findAssignment(getProject(), getAssignmentRefsThatMatchParentRow().get(index));
+			Assignment assignment = Assignment.findAssignment(getProject(), getAssignmentRefsThatMatchThisNode().get(index));
 			ORefList refList = new ORefList(assignment);
 			ORef categoryRef = assignment.getCategoryRef(levelObjectType);
 			if (!categoryRefToAssignmentRefsMap.containsKey(categoryRef))
@@ -143,9 +143,9 @@ public class CategoryTreeNode extends AbstractPlanningTreeNode
 		return new UnspecifiedBaseObject(getProject().getObjectManager(), levelObjectType, getObjectTypeName());
 	}
 
-	private ORefList getAssignmentRefsThatMatchParentRow()
+	private ORefList getAssignmentRefsThatMatchThisNode()
 	{
-		return assignmentRefsThatMatchParentRow;
+		return assignmentRefsThatMatchThisNode;
 	}
 
 	private CodeList getLevelObjectTypes() throws Exception
@@ -160,6 +160,6 @@ public class CategoryTreeNode extends AbstractPlanningTreeNode
 		
 	private BaseObject nodeObject;
 	private int currentLevel;
-	private ORefList assignmentRefsThatMatchParentRow;
+	private ORefList assignmentRefsThatMatchThisNode;
 	private CategoryTreeRowColumnProvider rowColumnProvider;
 }
