@@ -52,7 +52,7 @@ public class RollupReportsTreeTablePanel extends PlanningTreeTablePanel
 		return new RollupReportsTreeTablePanel(mainWindowToUse, treeTable, model, buttonActions, rowColumnProvider);
 	}
 	
-	private CategoryTreeRowColumnProvider  getCastedRowColumnProvider()
+	private CategoryTreeRowColumnProvider  getCategoryTreeRowColumnProvider()
 	{
 		return (CategoryTreeRowColumnProvider) getRowColumnProvider();
 	}
@@ -74,7 +74,7 @@ public class RollupReportsTreeTablePanel extends PlanningTreeTablePanel
 
 	private boolean wasBudgetTypeCreatedOrDeleted(CommandExecutedEvent event) throws Exception
 	{
-		CodeList possibleLevelTypes = getCastedRowColumnProvider().getLevelTypeCodes();
+		CodeList possibleLevelTypes = getCategoryTreeRowColumnProvider().getLevelTypeCodes();
 		for (int index = 0; index < possibleLevelTypes.size(); ++index)
 		{
 			String levelTypeAsString = possibleLevelTypes.get(index);
