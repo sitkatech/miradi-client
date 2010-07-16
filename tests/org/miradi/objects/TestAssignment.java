@@ -55,6 +55,7 @@ public class TestAssignment extends ObjectTestCase
 		verifyTagForType(expenseAssignment, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, FundingSource.getObjectType());
 		verifyTagForType(expenseAssignment, ExpenseAssignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOne.getObjectType());
 		verifyTagForType(expenseAssignment, ExpenseAssignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwo.getObjectType());
+		verifyTagForType(expenseAssignment, null, ProjectResource.getObjectType());
 		
 		try
 		{
