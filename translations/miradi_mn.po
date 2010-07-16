@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 14:46-0500\n"
+"POT-Creation-Date: 2010-07-16 14:52-0500\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -755,7 +755,7 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:34
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:44
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:48
 msgid "Accounting Code"
 msgstr ""
 
@@ -2046,12 +2046,12 @@ msgid ""
 "your strategic and monitoring plans."
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:45
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:50
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:95
 msgid "Budget Category One"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:46
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:51
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:100
 msgid "Budget Category Two"
 msgstr ""
@@ -3328,7 +3328,7 @@ msgid "Full Report"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:34
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:43
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:49
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:55
 msgid "Funding Source"
 msgstr ""
@@ -4965,7 +4965,7 @@ msgstr ""
 msgid "Project Plan For "
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:42
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:47
 #: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:47
 msgid "Project Resource"
 msgstr ""
@@ -7191,7 +7191,7 @@ msgid "Unscheduled"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/DirectThreatPoolQuestion.java:47
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:41
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:46
 msgid "Unspecified"
 msgstr ""
 
