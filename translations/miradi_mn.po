@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 17:35-0500\n"
+"POT-Creation-Date: 2010-07-16 17:43-0500\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -5313,6 +5313,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardDefineTargetsStep.java:35
 msgid "Select conservation targets"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:41
+msgid "Select how to group the data for analysis."
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpSummaryWizardDefineTeamMembers.java:35
