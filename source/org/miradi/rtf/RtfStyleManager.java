@@ -24,6 +24,8 @@ import java.util.Vector;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.BudgetCategoryOne;
+import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.FundingSource;
@@ -120,6 +122,12 @@ public class RtfStyleManager
 		
 		if (Goal.is(objectType))
 			return Goal.OBJECT_NAME;
+		
+		if (BudgetCategoryOne.is(objectType))
+			return BudgetCategoryOne.OBJECT_NAME;
+		
+		if (BudgetCategoryTwo.is(objectType))
+			return BudgetCategoryTwo.OBJECT_NAME;
 		
 		if (ObjectType.FAKE == objectType)
 			return "";
