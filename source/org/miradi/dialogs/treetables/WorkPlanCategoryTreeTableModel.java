@@ -25,17 +25,17 @@ import org.miradi.dialogs.planning.treenodes.WorkPlanCategoryTreeRootNode;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
 import org.miradi.project.Project;
 
-public class CategoryTreeTableModel extends ExportablePlanningTreeTableModel
+public class WorkPlanCategoryTreeTableModel extends ExportablePlanningTreeTableModel
 {
-	private CategoryTreeTableModel(Project project, TreeTableNode rootNode, CategoryTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
+	private WorkPlanCategoryTreeTableModel(Project project, TreeTableNode rootNode, CategoryTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
 	{
 		super(project, rootNode, rowColumnProvider.getRowListToShow(), rowColumnProvider.getColumnListToShow(), uniqueTreeTableModeIdentifier);
 	}
 	
-	public static CategoryTreeTableModel createCategoryTreeTableModel(Project project, CategoryTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
+	public static WorkPlanCategoryTreeTableModel createCategoryTreeTableModel(Project project, CategoryTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
 	{
 		TreeTableNode projectRootNode = createRootNode(project, rowColumnProvider);
-		return new CategoryTreeTableModel(project, projectRootNode, rowColumnProvider, uniqueTreeTableModeIdentifier);
+		return new WorkPlanCategoryTreeTableModel(project, projectRootNode, rowColumnProvider, uniqueTreeTableModeIdentifier);
 	}
 	
 	private static TreeTableNode createRootNode(Project project, CategoryTreeRowColumnProvider rowColumnProvider) throws Exception
