@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 14:46-0500\n"
+"POT-Creation-Date: 2010-07-16 14:52-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -883,7 +883,7 @@ msgstr ""
 "ini, maka atribut tersebut merupakan atribut yang \"terdegradasi\"."
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:34
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:44
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:48
 msgid "Accounting Code"
 msgstr "Kode Akuntansi "
 
@@ -2210,12 +2210,12 @@ msgstr ""
 "telah diduga untuk aktivitas/metode dan tugas –tugas yang diperlukan untuk "
 "melaksanakan rencana strategis dan rencana pemantauan Anda."
 
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:45
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:50
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:95
 msgid "Budget Category One"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:46
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:51
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:100
 msgid "Budget Category Two"
 msgstr ""
@@ -3558,7 +3558,7 @@ msgid "Full Report"
 msgstr "Laporan Lengkap"
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:34
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:43
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:49
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:55
 msgid "Funding Source"
 msgstr "Sumber Dana "
@@ -5268,7 +5268,7 @@ msgstr "Nomor Proyek "
 msgid "Project Plan For "
 msgstr "Rencana Proyek untuk"
 
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:42
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:47
 #: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:47
 msgid "Project Resource"
 msgstr "Sumber Daya Proyek "
@@ -7630,7 +7630,7 @@ msgid "Unscheduled"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/DirectThreatPoolQuestion.java:47
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:41
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:46
 msgid "Unspecified"
 msgstr ""
 
