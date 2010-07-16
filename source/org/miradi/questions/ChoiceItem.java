@@ -25,6 +25,11 @@ import javax.swing.Icon;
 
 public class ChoiceItem implements Comparable
 {
+	public ChoiceItem(int codeAsInt, String labelToUse, Icon iconToUse)
+	{
+		this(Integer.toString(codeAsInt), labelToUse, iconToUse);
+	}
+	
 	public ChoiceItem(int codeAsInt, String labelToUse)
 	{
 		this(Integer.toString(codeAsInt), labelToUse);
