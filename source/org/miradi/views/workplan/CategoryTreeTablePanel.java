@@ -33,9 +33,9 @@ import org.miradi.objects.ViewData;
 import org.miradi.questions.RollupReportsObjectTypeQuestion;
 import org.miradi.utils.CodeList;
 
-public class RollupReportsTreeTablePanel extends PlanningTreeTablePanel
+public class CategoryTreeTablePanel extends PlanningTreeTablePanel
 {
-	protected RollupReportsTreeTablePanel(MainWindow mainWindowToUse,
+	protected CategoryTreeTablePanel(MainWindow mainWindowToUse,
 			PlanningTreeTable treeToUse, 
 			PlanningTreeTableModel modelToUse,
 			Class[] buttonClasses,
@@ -49,7 +49,7 @@ public class RollupReportsTreeTablePanel extends PlanningTreeTablePanel
 	{
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 
-		return new RollupReportsTreeTablePanel(mainWindowToUse, treeTable, model, buttonActions, rowColumnProvider);
+		return new CategoryTreeTablePanel(mainWindowToUse, treeTable, model, buttonActions, rowColumnProvider);
 	}
 	
 	private CategoryTreeRowColumnProvider  getCategoryTreeRowColumnProvider()

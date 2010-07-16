@@ -56,7 +56,7 @@ public class CategoryManagementPanel extends PlanningTreeManagementPanel
 	{
 		CategoryTreeRowColumnProvider rowColumnProvider = managementConfiguration.getRowColumnProvider();
 		PlanningTreeTableModel treeTableModel = CategoryTreeTableModel.createRollupReportsTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, managementConfiguration.getUniqueTreeTableIdentifier());
-		PlanningTreeTablePanel treeTablePanel = RollupReportsTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider, managementConfiguration.getButtonActions());
+		PlanningTreeTablePanel treeTablePanel = CategoryTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider, managementConfiguration.getButtonActions());
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
 		return new CategoryManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel, managementConfiguration);
