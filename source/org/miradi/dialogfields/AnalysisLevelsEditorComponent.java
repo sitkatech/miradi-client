@@ -29,9 +29,9 @@ import org.miradi.project.Project;
 import org.miradi.questions.AnalysisObjectTypeQuestion;
 import org.miradi.utils.CodeList;
 
-public class AnalysisEditorComponent extends MiradiPanel
+public class AnalysisLevelsEditorComponent extends MiradiPanel
 {
-	public AnalysisEditorComponent(Project projectToUse)
+	public AnalysisLevelsEditorComponent(Project projectToUse)
 	{
 		editors = new Vector<SingleChoiceItemEditor>();
 		AnalysisObjectTypeQuestion question = new AnalysisObjectTypeQuestion();

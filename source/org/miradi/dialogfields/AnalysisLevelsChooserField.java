@@ -36,7 +36,7 @@ public class AnalysisLevelsChooserField extends ObjectDataInputField
 	{
 		super(projectToUse, refToUse, tagToUse);
 		
-		component = new AnalysisEditorComponent(projectToUse);
+		component = new AnalysisLevelsEditorComponent(projectToUse);
 		component.addActionListener(new ComboBoxChangeHandler());
 	}
 
@@ -110,5 +110,5 @@ public class AnalysisLevelsChooserField extends ObjectDataInputField
 	}
 	
 	private boolean skipSave;
-	private AnalysisEditorComponent component;
+	private AnalysisLevelsEditorComponent component;
 }
