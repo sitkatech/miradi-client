@@ -22,7 +22,7 @@ package org.miradi.dialogfields;
 
 import java.util.Vector;
 
-import org.miradi.dialogfields.RollupReportsObjectsChooserField.ComboBoxChangeHandler;
+import org.miradi.dialogfields.AnalysisObjectsChooserField.ComboBoxChangeHandler;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
