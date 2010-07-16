@@ -56,7 +56,7 @@ public class WorkPlanCategoryManagementPanel extends PlanningTreeManagementPanel
 	{
 		CategoryTreeRowColumnProvider rowColumnProvider = managementConfiguration.getRowColumnProvider();
 		PlanningTreeTableModel treeTableModel = WorkPlanCategoryTreeTableModel.createCategoryTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, managementConfiguration.getUniqueTreeTableIdentifier());
-		PlanningTreeTablePanel treeTablePanel = CategoryTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider, managementConfiguration.getButtonActions());
+		PlanningTreeTablePanel treeTablePanel = WorkPlanCategoryTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider, managementConfiguration.getButtonActions());
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
 		return new WorkPlanCategoryManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel, managementConfiguration);
