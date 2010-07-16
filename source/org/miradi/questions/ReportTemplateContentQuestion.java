@@ -55,11 +55,11 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 				new ChoiceItem(PLANNING_VIEW_STRATEGIC_PLAN_CODE, getStrategicPlanLabel()),
 				new ChoiceItem(PLANNING_VIEW_MONITORING_PLAN_CODE, getMonitoringPlanLabel()),
 				new ChoiceItem(PLANNING_VIEW_WORK_PLAN_CODE, getWorkPlanLabel()),
-				new ChoiceItem(PLANNING_VIEW_RESOURCES_TAB_CODE, getResourcesLabel()),
-				new ChoiceItem(PLANNING_VIEW_ACCOUNTING_CODE_TAB_CODE, getAccountingCodesLabel()),
-				new ChoiceItem(PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE, getFundingSourcesLabel()),
-				new ChoiceItem(CATEGORY_ONE_TAB_CODE, getCategoryOneLabel()),
-				new ChoiceItem(CATEGORY_TWO_TAB_CODE, getCategoryTwoLabel()),
+				new ChoiceItem(PLANNING_VIEW_RESOURCES_CODE, getResourcesLabel()),
+				new ChoiceItem(PLANNING_VIEW_ACCOUNTING_CODE_CODE, getAccountingCodesLabel()),
+				new ChoiceItem(PLANNING_VIEW_FUNDING_SOURCE_CODE, getFundingSourcesLabel()),
+				new ChoiceItem(BUDGET_CATEGORY_ONE_CODE, getCategoryOneLabel()),
+				new ChoiceItem(BUDGET_CATEGORY_TWO_CODE, getCategoryTwoLabel()),
 				new ChoiceItem(ANALYSIS_TAB_CODE, getAnalysisLabel()),
 				new ChoiceItem(PROGRESS_REPORT_CODE, getProgressReportLabel()),
 				new ChoiceItem(LEGEND_TABLE_REPORT_CODE, getLegendTableLabel()),
@@ -171,11 +171,11 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 	public static final String PLANNING_VIEW_STRATEGIC_PLAN_CODE = "PlanningViewStrategicPlan";
 	public static final String PLANNING_VIEW_MONITORING_PLAN_CODE = "PlanningViewMonitoringPlan";
 	public static final String PLANNING_VIEW_WORK_PLAN_CODE = "PlanningViewWorkPlan";
-	public static final String PLANNING_VIEW_RESOURCES_TAB_CODE = "PlanningViewResourcesTab";
-	public static final String PLANNING_VIEW_ACCOUNTING_CODE_TAB_CODE = "PlanningViewAccountingCodesTab";
-	public static final String PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE = "PlanningViewFundingSourceTab";
-	public static final String CATEGORY_ONE_TAB_CODE = "CategoryOneTab";
-	public static final String CATEGORY_TWO_TAB_CODE = "CategoryTwoTab";
+	public static final String PLANNING_VIEW_RESOURCES_CODE = "PlanningViewResourcesTab";
+	public static final String PLANNING_VIEW_ACCOUNTING_CODE_CODE = "PlanningViewAccountingCodesTab";
+	public static final String PLANNING_VIEW_FUNDING_SOURCE_CODE = "PlanningViewFundingSourceTab";
+	public static final String BUDGET_CATEGORY_ONE_CODE = "CategoryOneTab";
+	public static final String BUDGET_CATEGORY_TWO_CODE = "CategoryTwoTab";
 	public static final String ANALYSIS_TAB_CODE = "AnalysisTabCode";
 	public static final String PROGRESS_REPORT_CODE = "ProgressReport";
 	public static final String LEGEND_TABLE_REPORT_CODE = "LegendTableReport";
