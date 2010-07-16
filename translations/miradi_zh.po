@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 15:31-0500\n"
+"POT-Creation-Date: 2010-07-16 15:34-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -800,7 +800,7 @@ msgstr ""
 "性。"
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:34
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:48
+#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:48
 msgid "Accounting Code"
 msgstr "会计编码 \t\t"
 
@@ -905,7 +905,7 @@ msgstr ""
 msgid "Action|Configure Export"
 msgstr "配置导出 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionEditRollupReportRows.java:36
+#: Miradi/source/org/miradi/actions/ActionEditAnalysisRows.java:36
 msgid "Action|Configure Rows..."
 msgstr ""
 
@@ -2107,12 +2107,12 @@ msgstr ""
 "预算——指一种前瞻性估算，即针对为实施您的策略和监控计划而要展开的活动/方法和任"
 "务所需的开支和预期资金资源的估算。"
 
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:50
+#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:50
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:95
 msgid "Budget Category One"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:51
+#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:51
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:100
 msgid "Budget Category Two"
 msgstr ""
@@ -3157,7 +3157,7 @@ msgstr "导出的文件不正确。 \t\t"
 msgid "External Research"
 msgstr "外部研究"
 
-#: Miradi/source/org/miradi/dialogfields/RollupReportsEditorComponent.java:71
+#: Miradi/source/org/miradi/dialogfields/AnalysisEditorComponent.java:71
 msgid ""
 "Extra/unexpected configuration data was found, and will be ignored.\n"
 " CodeList= %s"
@@ -3419,7 +3419,7 @@ msgid "Full Report"
 msgstr "完整报告"
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:34
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:49
+#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:49
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:55
 msgid "Funding Source"
 msgstr "资金来源 \t\t"
@@ -5080,7 +5080,7 @@ msgstr "项目编号 \t\t"
 msgid "Project Plan For "
 msgstr "为…制定计划"
 
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:47
+#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:47
 #: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:47
 msgid "Project Resource"
 msgstr ""
@@ -5895,7 +5895,7 @@ msgstr "选择哪个策略和活动与本分目标相关联"
 msgid "TT|Collapse All Tree Rows"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionEditRollupReportRows.java:42
+#: Miradi/source/org/miradi/actions/ActionEditAnalysisRows.java:42
 msgid "TT|Configure which rows are displayed"
 msgstr ""
 
@@ -7363,8 +7363,8 @@ msgstr "未知错误阻止打开项目 \t\t"
 msgid "Unscheduled"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:46
 #: Miradi/source/org/miradi/questions/DirectThreatPoolQuestion.java:47
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:46
 msgid "Unspecified"
 msgstr ""
 
