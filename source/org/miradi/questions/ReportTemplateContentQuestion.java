@@ -60,7 +60,7 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 				new ChoiceItem(PLANNING_VIEW_FUNDING_SOURCE_CODE, getFundingSourcesLabel()),
 				new ChoiceItem(BUDGET_CATEGORY_ONE_CODE, getCategoryOneLabel()),
 				new ChoiceItem(BUDGET_CATEGORY_TWO_CODE, getCategoryTwoLabel()),
-				new ChoiceItem(ANALYSIS_TAB_CODE, getAnalysisLabel()),
+				new ChoiceItem(ANALYSIS_CODE, getAnalysisLabel()),
 				new ChoiceItem(PROGRESS_REPORT_CODE, getProgressReportLabel()),
 				new ChoiceItem(LEGEND_TABLE_REPORT_CODE, getLegendTableLabel()),
 		};
@@ -176,7 +176,7 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 	public static final String PLANNING_VIEW_FUNDING_SOURCE_CODE = "PlanningViewFundingSourceTab";
 	public static final String BUDGET_CATEGORY_ONE_CODE = "CategoryOneTab";
 	public static final String BUDGET_CATEGORY_TWO_CODE = "CategoryTwoTab";
-	public static final String ANALYSIS_TAB_CODE = "AnalysisTab";
+	public static final String ANALYSIS_CODE = "AnalysisTab";
 	public static final String PROGRESS_REPORT_CODE = "ProgressReport";
 	public static final String LEGEND_TABLE_REPORT_CODE = "LegendTableReport";
 }
