@@ -23,7 +23,7 @@ package org.miradi.views.workplan;
 import javax.swing.Icon;
 
 import org.miradi.actions.ActionCollapseAllRows;
-import org.miradi.actions.ActionEditRollupReportRows;
+import org.miradi.actions.ActionEditAnalysisRows;
 import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.dialogs.AnalysisRowColumnProvider;
 import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
@@ -56,7 +56,7 @@ public class AnalysisManagementConfiguration extends AbstractManagementConfigura
 		return new Class[] {
 			ActionExpandAllRows.class,
 			ActionCollapseAllRows.class,
-			ActionEditRollupReportRows.class,
+			ActionEditAnalysisRows.class,
 		};
 	}
 	
