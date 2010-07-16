@@ -36,7 +36,7 @@ public class RollupReportsObjectsChooserField extends ObjectDataInputField
 	{
 		super(projectToUse, refToUse, tagToUse);
 		
-		component = new RollupReportsEditorComponent(projectToUse);
+		component = new AnalysisEditorComponent(projectToUse);
 		component.addActionListener(new ComboBoxChangeHandler());
 	}
 
@@ -110,5 +110,5 @@ public class RollupReportsObjectsChooserField extends ObjectDataInputField
 	}
 	
 	private boolean skipSave;
-	private RollupReportsEditorComponent component;
+	private AnalysisEditorComponent component;
 }
