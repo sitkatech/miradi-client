@@ -25,7 +25,7 @@ import javax.swing.Icon;
 import org.miradi.actions.ActionCreateCategoryTwo;
 import org.miradi.actions.ActionDeleteCategoryTwo;
 import org.miradi.dialogs.planning.CategoryTwoCoreRowColumnProvider;
-import org.miradi.dialogs.planning.RowColumnProviderWithEmptyRowChecking;
+import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
 import org.miradi.icons.CategoryTwoIcon;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
@@ -38,7 +38,7 @@ public class BudgetCategoryTwoManagementConfiguration extends AbstractManagement
 	}
 	
 	@Override
-	public RowColumnProviderWithEmptyRowChecking getRowColumnProvider() throws Exception
+	public CategoryTreeRowColumnProvider getRowColumnProvider() throws Exception
 	{
 		return new CategoryTwoCoreRowColumnProvider();
 	}

@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.workplan;
 
 import org.miradi.dialogs.planning.RowColumnProvider;
-import org.miradi.dialogs.planning.RowColumnProviderWithEmptyRowChecking;
+import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
@@ -45,16 +45,16 @@ public class RollupReportsTreeTablePanel extends PlanningTreeTablePanel
 		super(mainWindowToUse, treeToUse, modelToUse, buttonClasses, rowColumnProvider);
 	}
 	
-	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model, RowColumnProviderWithEmptyRowChecking  rowColumnProvider, Class[] buttonActions) throws Exception
+	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model, CategoryTreeRowColumnProvider  rowColumnProvider, Class[] buttonActions) throws Exception
 	{
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 
 		return new RollupReportsTreeTablePanel(mainWindowToUse, treeTable, model, buttonActions, rowColumnProvider);
 	}
 	
-	private RowColumnProviderWithEmptyRowChecking  getCastedRowColumnProvider()
+	private CategoryTreeRowColumnProvider  getCastedRowColumnProvider()
 	{
-		return (RowColumnProviderWithEmptyRowChecking) getRowColumnProvider();
+		return (CategoryTreeRowColumnProvider) getRowColumnProvider();
 	}
 	
 	@Override
