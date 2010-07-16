@@ -31,9 +31,9 @@ import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.views.workplan.WorkPlanView;
 
-public class RollupReportsRowColumnProvider implements CategoryTreeRowColumnProvider
+public class AnalysisRowColumnProvider implements CategoryTreeRowColumnProvider
 { 
-	public RollupReportsRowColumnProvider(Project projectToUse)
+	public AnalysisRowColumnProvider(Project projectToUse)
 	{
 		project = projectToUse;
 	}
