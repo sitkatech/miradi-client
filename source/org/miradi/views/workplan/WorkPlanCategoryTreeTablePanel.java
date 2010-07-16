@@ -30,7 +30,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ViewData;
-import org.miradi.questions.AnalysisObjectTypeQuestion;
+import org.miradi.questions.WorkPlanCategoryTypesQuestion;
 import org.miradi.utils.CodeList;
 
 public class WorkPlanCategoryTreeTablePanel extends PlanningTreeTablePanel
@@ -78,7 +78,7 @@ public class WorkPlanCategoryTreeTablePanel extends PlanningTreeTablePanel
 		for (int index = 0; index < possibleLevelTypes.size(); ++index)
 		{
 			String levelTypeAsString = possibleLevelTypes.get(index);
-			if (levelTypeAsString.equals(AnalysisObjectTypeQuestion.UNSPECIFIED_CODE))
+			if (levelTypeAsString.equals(WorkPlanCategoryTypesQuestion.UNSPECIFIED_CODE))
 				continue;
 			
 			int levelType = Integer.parseInt(levelTypeAsString); 

@@ -31,7 +31,7 @@ import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
-import org.miradi.questions.AnalysisObjectTypeQuestion;
+import org.miradi.questions.WorkPlanCategoryTypesQuestion;
 import org.miradi.utils.CodeList;
 
 public class WorkPlanCategoryTreeNode extends AbstractPlanningTreeNode
@@ -77,7 +77,7 @@ public class WorkPlanCategoryTreeNode extends AbstractPlanningTreeNode
 			return;
 		
 		String levelObjectTypeAsString = getLevelObjectTypes().get(getCurrentLevel());
-		if (levelObjectTypeAsString.equals(AnalysisObjectTypeQuestion.UNSPECIFIED_CODE))
+		if (levelObjectTypeAsString.equals(WorkPlanCategoryTypesQuestion.UNSPECIFIED_CODE))
 			return;
 		
 		int levelObjectType = Integer.parseInt(levelObjectTypeAsString);
