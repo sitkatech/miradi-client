@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 17:13-0500\n"
+"POT-Creation-Date: 2010-07-16 17:29-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3157,7 +3157,7 @@ msgstr "导出的文件不正确。 \t\t"
 msgid "External Research"
 msgstr "外部研究"
 
-#: Miradi/source/org/miradi/dialogfields/AnalysisLevelsEditorComponent.java:71
+#: Miradi/source/org/miradi/dialogfields/AnalysisLevelsEditorComponent.java:92
 msgid ""
 "Extra/unexpected configuration data was found, and will be ignored.\n"
 " CodeList= %s"
@@ -3515,6 +3515,10 @@ msgstr "组合框"
 #: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:53
 msgid "Group Box Properties"
 msgstr "组合框属性 \t\t"
+
+#: Miradi/source/org/miradi/dialogfields/AnalysisLevelsEditorComponent.java:63
+msgid "Group by"
+msgstr ""
 
 #: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:53
 msgid "Habitat"
@@ -6838,6 +6842,10 @@ msgid ""
 msgstr ""
 "该（多重）链接将会被从所有概念模型页面及结果链中删除，而不是仅限于该单一链"
 "接。 \t\t"
+
+#: Miradi/source/org/miradi/dialogfields/AnalysisLevelsEditorComponent.java:65
+msgid "Then by"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:51
 msgid ""

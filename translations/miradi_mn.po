@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 17:13-0500\n"
+"POT-Creation-Date: 2010-07-16 17:29-0500\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3073,7 +3073,7 @@ msgstr ""
 msgid "External Research"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AnalysisLevelsEditorComponent.java:71
+#: Miradi/source/org/miradi/dialogfields/AnalysisLevelsEditorComponent.java:92
 msgid ""
 "Extra/unexpected configuration data was found, and will be ignored.\n"
 " CodeList= %s"
@@ -3425,6 +3425,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:53
 msgid "Group Box Properties"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogfields/AnalysisLevelsEditorComponent.java:63
+msgid "Group by"
 msgstr ""
 
 #: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:53
@@ -6684,6 +6688,10 @@ msgstr ""
 msgid ""
 "The link(s) will be deleted from all Conceptual Model pages and Results "
 "Chains, not just this one. "
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogfields/AnalysisLevelsEditorComponent.java:65
+msgid "Then by"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:51
