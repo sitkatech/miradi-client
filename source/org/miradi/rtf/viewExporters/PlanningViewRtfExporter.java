@@ -34,9 +34,7 @@ import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanBudgetDetailsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanWorkUnitsTableModel;
-import org.miradi.dialogs.planning.upperPanel.AccountingCodeTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
-import org.miradi.dialogs.planning.upperPanel.FundingSourceTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewFutureStatusTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMainTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMeasurementTableModel;
@@ -80,10 +78,10 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 			exportResourcesTab(writer, new ProjectResourceRowColumnProvider(), ReportTemplateContentQuestion.getResourcesLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_ACCOUNTING_CODE_TAB_CODE))
-			exportAccountingCodeTab(writer, new AccountingCodeCoreRowColumnProvider(), ReportTemplateContentQuestion.getAccountingCodesLabel());
+			exportCategoryTab(writer, new AccountingCodeCoreRowColumnProvider(), ReportTemplateContentQuestion.getAccountingCodesLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE))
-			exportFundingSourceTab(writer, new FundingSourceCoreRowColumnProvider(), ReportTemplateContentQuestion.getFundingSourcesLabel());
+			exportCategoryTab(writer, new FundingSourceCoreRowColumnProvider(), ReportTemplateContentQuestion.getFundingSourcesLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.CATEGORY_ONE_TAB_CODE))
 			exportCategoryTab(writer, new CategoryOneCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryOneLabel());
@@ -98,18 +96,6 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		exportTab(writer, rowColumnProvider, translatedTableName, model);
 	}
 
-	private void exportAccountingCodeTab(RtfWriter writer, RowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
-	{
-		ExportablePlanningTreeTableModel model = AccountingCodeTreeTableModel.createAccountingCodeTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow(), AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
-		exportTab(writer, rowColumnProvider, translatedTableName, model);
-	}
-	
-	private void exportFundingSourceTab(RtfWriter writer, RowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
-	{
-		ExportablePlanningTreeTableModel model = FundingSourceTreeTableModel.createFundingSourceTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow(), AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
-		exportTab(writer, rowColumnProvider, translatedTableName, model);
-	}
-	
 	private void exportCategoryTab(RtfWriter writer, AbstractBudgetCategoryRowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
 	{
 		ExportablePlanningTreeTableModel model = CategoryTreeTableModel.createCategoryTreeTableModel(getProject(), rowColumnProvider, AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);

@@ -78,7 +78,6 @@ public class CategoryManagementPanel extends PlanningTreeManagementPanel
 	{
 		return getMangementConfiguration().getIcon();
 	}
-
 	
 	private AbstractManagementConfiguration mangementConfiguration;
 }
