@@ -27,9 +27,9 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
-public class WorkPlanCategoryRootTreeNode extends AbstractPlanningTreeNode
+public class WorkPlanCategoryTreeRootNode extends AbstractPlanningTreeNode
 {
-	public WorkPlanCategoryRootTreeNode(Project projectToUse, CategoryTreeRowColumnProvider rowColumnProviderToUse) throws Exception
+	public WorkPlanCategoryTreeRootNode(Project projectToUse, CategoryTreeRowColumnProvider rowColumnProviderToUse) throws Exception
 	{
 		super(projectToUse, rowColumnProviderToUse.getRowListToShow());
 		
