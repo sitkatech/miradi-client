@@ -33,9 +33,9 @@ import org.miradi.dialogs.treetables.CategoryTreeTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
-public class CategoryManagementPanel extends PlanningTreeManagementPanel
+public class WorkPlanCategoryManagementPanel extends PlanningTreeManagementPanel
 {
-	public CategoryManagementPanel(MainWindow mainWindowToUse,
+	public WorkPlanCategoryManagementPanel(MainWindow mainWindowToUse,
 			PlanningTreeTablePanel planningTreeTablePanelToUse,
 			PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel, AbstractManagementConfiguration mangementConfirationToUse)
 			throws Exception
@@ -52,14 +52,14 @@ public class CategoryManagementPanel extends PlanningTreeManagementPanel
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
 	}
 
-	public static CategoryManagementPanel createManagementPanel(MainWindow mainWindowToUse, AbstractManagementConfiguration managementConfiguration) throws Exception
+	public static WorkPlanCategoryManagementPanel createManagementPanel(MainWindow mainWindowToUse, AbstractManagementConfiguration managementConfiguration) throws Exception
 	{
 		CategoryTreeRowColumnProvider rowColumnProvider = managementConfiguration.getRowColumnProvider();
 		PlanningTreeTableModel treeTableModel = CategoryTreeTableModel.createCategoryTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, managementConfiguration.getUniqueTreeTableIdentifier());
 		PlanningTreeTablePanel treeTablePanel = CategoryTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider, managementConfiguration.getButtonActions());
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
-		return new CategoryManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel, managementConfiguration);
+		return new WorkPlanCategoryManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel, managementConfiguration);
 	}
 	
 	@Override
