@@ -29,7 +29,7 @@ import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPa
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
-import org.miradi.dialogs.treetables.CategoryTreeTableModel;
+import org.miradi.dialogs.treetables.WorkPlanCategoryTreeTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
@@ -48,14 +48,14 @@ public class WorkPlanCategoryManagementPanel extends PlanningTreeManagementPanel
 	@Override
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, RowColumnProvider rowColumnProvider) throws Exception
 	{
-		PlanningTreeTableModel model = CategoryTreeTableModel.createCategoryTreeTableModel(getProject(), mangementConfiguration.getRowColumnProvider(), getMangementConfiguration().getUniqueTreeTableIdentifier());
+		PlanningTreeTableModel model = WorkPlanCategoryTreeTableModel.createCategoryTreeTableModel(getProject(), mangementConfiguration.getRowColumnProvider(), getMangementConfiguration().getUniqueTreeTableIdentifier());
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
 	}
 
 	public static WorkPlanCategoryManagementPanel createManagementPanel(MainWindow mainWindowToUse, AbstractManagementConfiguration managementConfiguration) throws Exception
 	{
 		CategoryTreeRowColumnProvider rowColumnProvider = managementConfiguration.getRowColumnProvider();
-		PlanningTreeTableModel treeTableModel = CategoryTreeTableModel.createCategoryTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, managementConfiguration.getUniqueTreeTableIdentifier());
+		PlanningTreeTableModel treeTableModel = WorkPlanCategoryTreeTableModel.createCategoryTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, managementConfiguration.getUniqueTreeTableIdentifier());
 		PlanningTreeTablePanel treeTablePanel = CategoryTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider, managementConfiguration.getButtonActions());
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
