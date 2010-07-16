@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf.viewExporters;
 
+import org.miradi.dialogs.AnalysisRowColumnProvider;
 import org.miradi.dialogs.planning.AccountingCodeCoreRowColumnProvider;
 import org.miradi.dialogs.planning.CategoryOneCoreRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
@@ -87,6 +88,9 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.CATEGORY_TWO_TAB_CODE))
 			exportCategoryTab(writer, new CategoryTwoCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryTwoLabel());
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.ANALYSIS_TAB_CODE))
+			exportCategoryTab(writer, new AnalysisRowColumnProvider(getProject()), ReportTemplateContentQuestion.getAnalysisLabel());
 	}
 
 	private void exportCategoryTab(RtfWriter writer, WorkPlanCategoryTreeRowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
