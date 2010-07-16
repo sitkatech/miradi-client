@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 10:59-0500\n"
+"POT-Creation-Date: 2010-07-16 11:13-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5091,6 +5091,7 @@ msgid "Project Resource Filter Is On"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/ProjectResourceManagementPanel.java:51
+#: Miradi/source/org/miradi/views/workplan/ProjectResourceManagementConfiguration.java:58
 msgid "Project Resources"
 msgstr ""
 
