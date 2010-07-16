@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 15:01-0500\n"
+"POT-Creation-Date: 2010-07-16 15:31-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -1878,7 +1878,7 @@ msgstr "Se ha producido un error inesperado. "
 msgid "An unexpected error occurred: "
 msgstr "Se produjo un error inesperado"
 
-#: Miradi/source/org/miradi/views/workplan/RollupReportsManagementConfiguration.java:50
+#: Miradi/source/org/miradi/views/workplan/AnalysisManagementConfiguration.java:50
 msgid "Analysis"
 msgstr ""
 
