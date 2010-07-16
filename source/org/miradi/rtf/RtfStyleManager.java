@@ -129,6 +129,12 @@ public class RtfStyleManager
 		if (BudgetCategoryTwo.is(objectType))
 			return BudgetCategoryTwo.OBJECT_NAME;
 		
+		if (AccountingCode.is(objectType))
+			return AccountingCode.OBJECT_NAME;
+		
+		if (FundingSource.is(objectType))
+			return FundingSource.OBJECT_NAME;
+		
 		if (ObjectType.FAKE == objectType)
 			return "";
 		
