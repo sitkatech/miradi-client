@@ -24,9 +24,9 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.project.Project;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 
-public class RollupReportsWorkUnitsModel extends CategorizedWorkUnitsTableModel
+public class AnalysisWorkUnitsModel extends CategorizedWorkUnitsTableModel
 {
-	public RollupReportsWorkUnitsModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse,	String treeModelIdentifierAsTagToUse) throws Exception
+	public AnalysisWorkUnitsModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse,	String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
 	}

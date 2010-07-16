@@ -120,7 +120,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		accoundingCodeBudgetDetailsTableModel = new AccountingCodeBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		fundingSourceExpenseTableModel = new FundingSourceExpenseTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		accountingCodeExpenseTableModel = new AccountingCodeExpenseTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
-		rollupReportsWorkUnitsModel = new RollupReportsWorkUnitsModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		rollupReportsWorkUnitsModel = new AnalysisWorkUnitsModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		rollupReportsExpenseModel = new AnalysisExpenseTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		rollupReportsBudgetDetailsModel = new AnalysisBudgetDetailsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		budgetCategoryOneWorkUnitsModel = new BudgetCategoryOneWorkUnitsTableModel(getProject(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
@@ -476,7 +476,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	private ProjectResourceBudgetDetailsTableModel resourceBudgetDetailsTableModel;
 	private FundingSourceExpenseTableModel fundingSourceExpenseTableModel;
 	private AccountingCodeExpenseTableModel accountingCodeExpenseTableModel;
-	private RollupReportsWorkUnitsModel rollupReportsWorkUnitsModel;
+	private AnalysisWorkUnitsModel rollupReportsWorkUnitsModel;
 	private AnalysisExpenseTableModel rollupReportsExpenseModel;
 	private AnalysisBudgetDetailsTableModel rollupReportsBudgetDetailsModel;
 	private BudgetCategoryOneWorkUnitsTableModel budgetCategoryOneWorkUnitsModel;
