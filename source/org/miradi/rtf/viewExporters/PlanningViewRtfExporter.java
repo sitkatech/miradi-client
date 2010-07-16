@@ -74,23 +74,18 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PROGRESS_REPORT_CODE))
 			exportReport(writer, new ProgressReportRowColumnProvider(), ReportTemplateContentQuestion.getProgressReportLabel());
 		
-		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_RESOURCES_TAB_CODE))
-			exportCategoryTab(writer, new ProjectResourceRowColumnProvider(), ReportTemplateContentQuestion.getResourcesLabel());
-		
-		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_ACCOUNTING_CODE_TAB_CODE))
-			exportCategoryTab(writer, new AccountingCodeCoreRowColumnProvider(), ReportTemplateContentQuestion.getAccountingCodesLabel());
-		
-		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE))
-			exportCategoryTab(writer, new FundingSourceCoreRowColumnProvider(), ReportTemplateContentQuestion.getFundingSourcesLabel());
-		
-		if (reportTemplateContent.contains(ReportTemplateContentQuestion.CATEGORY_ONE_TAB_CODE))
-			exportCategoryTab(writer, new CategoryOneCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryOneLabel());
-		
-		if (reportTemplateContent.contains(ReportTemplateContentQuestion.CATEGORY_TWO_TAB_CODE))
-			exportCategoryTab(writer, new CategoryTwoCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryTwoLabel());
-		
-		if (reportTemplateContent.contains(ReportTemplateContentQuestion.ANALYSIS_TAB_CODE))
-			exportCategoryTab(writer, new AnalysisRowColumnProvider(getProject()), ReportTemplateContentQuestion.getAnalysisLabel());
+		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.PLANNING_VIEW_RESOURCES_TAB_CODE, new ProjectResourceRowColumnProvider(), ReportTemplateContentQuestion.getResourcesLabel());
+		exportWorkPlanCategoryTab(writer, reportTemplateContent,ReportTemplateContentQuestion.PLANNING_VIEW_ACCOUNTING_CODE_TAB_CODE, new AccountingCodeCoreRowColumnProvider(), ReportTemplateContentQuestion.getAccountingCodesLabel());
+		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE, new FundingSourceCoreRowColumnProvider(), ReportTemplateContentQuestion.getFundingSourcesLabel());
+		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.CATEGORY_ONE_TAB_CODE, new CategoryOneCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryOneLabel());
+		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.CATEGORY_TWO_TAB_CODE, new CategoryTwoCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryTwoLabel());
+		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.ANALYSIS_TAB_CODE, new AnalysisRowColumnProvider(getProject()), ReportTemplateContentQuestion.getAnalysisLabel());
+	}
+
+	private void exportWorkPlanCategoryTab(RtfWriter writer, CodeList reportTemplateContent, final String code,	final WorkPlanCategoryTreeRowColumnProvider rowColumnProvider,	String resourcesLabel) throws Exception
+	{
+		if (reportTemplateContent.contains(code))
+			exportCategoryTab(writer, rowColumnProvider, resourcesLabel);
 	}
 
 	private void exportCategoryTab(RtfWriter writer, WorkPlanCategoryTreeRowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
