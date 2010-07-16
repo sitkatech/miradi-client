@@ -61,7 +61,7 @@ public class TestBuildXMLDocument extends EAMTestCase
 		{
 			Project project = new Project();
 			project.setLocalDataLocation(tempDirectory);
-			project.createOrOpenWithDefaultObjects(projectName);
+			project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
 			
 			//processObjectPool(project, "Fake",ObjectType.FAKE);
 			

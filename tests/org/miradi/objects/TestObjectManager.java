@@ -219,13 +219,13 @@ public class TestObjectManager extends EAMTestCase
 		{
 			Project projectToWrite = new Project();
 			projectToWrite.setLocalDataLocation(tempDirectory);
-			projectToWrite.createOrOpenWithDefaultObjects(projectName);
+			projectToWrite.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
 			BaseId idToReload = projectToWrite.createObject(type, BaseId.INVALID, parameter);
 			projectToWrite.close();
 			
 			Project projectToRead = new Project();
 			projectToRead.setLocalDataLocation(tempDirectory);
-			projectToRead.createOrOpenWithDefaultObjects(projectName);
+			projectToRead.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
 			try
 			{
 				projectToRead.getObjectData(type, idToReload, BaseObject.TAG_LABEL);

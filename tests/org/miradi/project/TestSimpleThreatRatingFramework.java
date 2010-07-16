@@ -80,7 +80,7 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 		{
 			Project realProject = new Project();
 			realProject.setLocalDataLocation(tempDir);
-			realProject.createOrOpenWithDefaultObjects(projectName);
+			realProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
 			BaseId createdId = realProject.createObjectAndReturnId(ObjectType.RATING_CRITERION);
 			
 			FactorId threatId = new FactorId(283);
@@ -94,7 +94,7 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 
 			Project loadedProject = new Project();
 			loadedProject.setLocalDataLocation(tempDir);
-			loadedProject.createOrOpenWithDefaultObjects(projectName);
+			loadedProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
 			IdList loadedOptionIds = loadedProject.getSimpleThreatRatingFramework().getValueOptionIds();
 			SimpleThreatRatingFramework loadedFramework = loadedProject.getSimpleThreatRatingFramework();
 			assertEquals("didn't reload framework?", createdId, loadedFramework.getCriterion(createdId).getId());

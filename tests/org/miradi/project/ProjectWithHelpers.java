@@ -71,7 +71,7 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 	{
 		String projectName = getDatabase().getCurrentProjectName();
 		getTestDatabase().closeAndDontDelete();
-		createOrOpenWithDefaultObjects(projectName);
+		createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
 	}
 
 	protected Command getLastCommand()

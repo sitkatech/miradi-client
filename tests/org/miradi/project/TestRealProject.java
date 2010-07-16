@@ -50,7 +50,7 @@ public class TestRealProject extends EAMTestCase
 		Project project = new Project();
 		assertFalse("already open?", project.isOpen());
 		project.setLocalDataLocation(tempDirectory);
-		project.createOrOpenWithDefaultObjects(projectName);
+		project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
 		assertTrue("not open?", project.isOpen());
 		project.close();
 		assertFalse("still open?", project.isOpen());
