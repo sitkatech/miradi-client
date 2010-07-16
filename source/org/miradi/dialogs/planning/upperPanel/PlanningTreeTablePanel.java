@@ -141,7 +141,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	}
 
 	@Override
-	protected boolean wereAssignmentNodesAddedOrRemoved(CommandExecutedEvent event)
+	protected boolean wereAssignmentNodesAddedOrRemoved(CommandExecutedEvent event) throws Exception
 	{
 		try
 		{
