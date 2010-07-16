@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 17:29-0500\n"
+"POT-Creation-Date: 2010-07-16 17:35-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -887,7 +887,7 @@ msgstr ""
 "fuera de este rango aceptable, es un atributo \"degradado\". "
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:34
-#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:48
+#: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:48
 msgid "Accounting Code"
 msgstr "Código contable"
 
@@ -2222,12 +2222,12 @@ msgstr ""
 "financiamiento anticipadas para las actividades/métodos y tareas necesarias "
 "para implementar sus planes estratégicos y de monitoreo."
 
-#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:50
+#: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:50
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:96
 msgid "Budget Category One"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:51
+#: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:51
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:101
 msgid "Budget Category Two"
 msgstr ""
@@ -3578,7 +3578,7 @@ msgid "Full Report"
 msgstr "Informe completo "
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:34
-#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:49
+#: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:49
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:55
 msgid "Funding Source"
 msgstr "Fuente de financiamiento"
@@ -5310,7 +5310,7 @@ msgstr "Número de proyecto"
 msgid "Project Plan For "
 msgstr "Plan de proyecto para "
 
-#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:47
+#: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
 #: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:47
 msgid "Project Resource"
 msgstr "Recurso del proyecto"
@@ -7676,8 +7676,8 @@ msgstr "Un error desconocido impidió que se abriera ese proyecto."
 msgid "Unscheduled"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:46
 #: Miradi/source/org/miradi/questions/DirectThreatPoolQuestion.java:47
+#: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:46
 msgid "Unspecified"
 msgstr ""
 
@@ -8741,16 +8741,14 @@ msgstr ""
 msgid "FieldLabel|12.MetaBudgetDetailColumnCode|Budget Totals"
 msgstr "Totales del presupuesto"
 
-msgid ""
-"FieldLabel|12.MetaAnalysisWorkUnitsColumnCode|Analysis Work Units Report"
+msgid "FieldLabel|12.MetaAnalysisWorkUnitsColumnCode|Analysis Work Units"
 msgstr ""
 
-msgid "FieldLabel|12.MetaAnalysisExpensesColumnCode|Analysis Expenses Report"
+msgid "FieldLabel|12.MetaAnalysisExpensesColumnCode|Analysis Expenses"
 msgstr ""
 
 msgid ""
-"FieldLabel|12.MetaAnalysisBudgetDetailsColumnCode|Analysis Budget Details "
-"Report"
+"FieldLabel|12.MetaAnalysisBudgetDetailsColumnCode|Analysis Budget Details"
 msgstr ""
 
 msgid "FieldLabel|12.ResourceType|Resource Type"

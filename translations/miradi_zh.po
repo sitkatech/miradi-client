@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 17:29-0500\n"
+"POT-Creation-Date: 2010-07-16 17:35-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -800,7 +800,7 @@ msgstr ""
 "性。"
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:34
-#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:48
+#: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:48
 msgid "Accounting Code"
 msgstr "会计编码 \t\t"
 
@@ -2107,12 +2107,12 @@ msgstr ""
 "预算——指一种前瞻性估算，即针对为实施您的策略和监控计划而要展开的活动/方法和任"
 "务所需的开支和预期资金资源的估算。"
 
-#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:50
+#: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:50
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:96
 msgid "Budget Category One"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:51
+#: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:51
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:101
 msgid "Budget Category Two"
 msgstr ""
@@ -3419,7 +3419,7 @@ msgid "Full Report"
 msgstr "完整报告"
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:34
-#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:49
+#: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:49
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:55
 msgid "Funding Source"
 msgstr "资金来源 \t\t"
@@ -5083,7 +5083,7 @@ msgstr "项目编号 \t\t"
 msgid "Project Plan For "
 msgstr "为…制定计划"
 
-#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:47
+#: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
 #: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:47
 msgid "Project Resource"
 msgstr ""
@@ -7370,8 +7370,8 @@ msgstr "未知错误阻止打开项目 \t\t"
 msgid "Unscheduled"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:46
 #: Miradi/source/org/miradi/questions/DirectThreatPoolQuestion.java:47
+#: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:46
 msgid "Unspecified"
 msgstr ""
 
@@ -8410,16 +8410,14 @@ msgstr ""
 msgid "FieldLabel|12.MetaBudgetDetailColumnCode|Budget Totals"
 msgstr ""
 
-msgid ""
-"FieldLabel|12.MetaAnalysisWorkUnitsColumnCode|Analysis Work Units Report"
+msgid "FieldLabel|12.MetaAnalysisWorkUnitsColumnCode|Analysis Work Units"
 msgstr ""
 
-msgid "FieldLabel|12.MetaAnalysisExpensesColumnCode|Analysis Expenses Report"
+msgid "FieldLabel|12.MetaAnalysisExpensesColumnCode|Analysis Expenses"
 msgstr ""
 
 msgid ""
-"FieldLabel|12.MetaAnalysisBudgetDetailsColumnCode|Analysis Budget Details "
-"Report"
+"FieldLabel|12.MetaAnalysisBudgetDetailsColumnCode|Analysis Budget Details"
 msgstr ""
 
 msgid "FieldLabel|12.ResourceType|Resource Type"
