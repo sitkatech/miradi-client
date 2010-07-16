@@ -32,9 +32,9 @@ import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 
-public class RollupReportsObjectTypeQuestion extends StaticChoiceQuestion
+public class AnalysisObjectTypeQuestion extends StaticChoiceQuestion
 {
-	public RollupReportsObjectTypeQuestion()
+	public AnalysisObjectTypeQuestion()
 	{
 		super();
 	}

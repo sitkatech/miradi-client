@@ -26,7 +26,7 @@ import org.miradi.dialogfields.RollupReportsObjectsChooserField.ComboBoxChangeHa
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
-import org.miradi.questions.RollupReportsObjectTypeQuestion;
+import org.miradi.questions.AnalysisObjectTypeQuestion;
 import org.miradi.utils.CodeList;
 
 public class RollupReportsEditorComponent extends MiradiPanel
@@ -34,7 +34,7 @@ public class RollupReportsEditorComponent extends MiradiPanel
 	public RollupReportsEditorComponent(Project projectToUse)
 	{
 		editors = new Vector<SingleChoiceItemEditor>();
-		RollupReportsObjectTypeQuestion question = new RollupReportsObjectTypeQuestion();
+		AnalysisObjectTypeQuestion question = new AnalysisObjectTypeQuestion();
 		int numberOfDropdowns = getNumberOfDropdowns(question);
 		for (int index = 0; index < numberOfDropdowns; ++index)
 		{
@@ -44,7 +44,7 @@ public class RollupReportsEditorComponent extends MiradiPanel
 		}
 	}
 
-	private int getNumberOfDropdowns(RollupReportsObjectTypeQuestion question)
+	private int getNumberOfDropdowns(AnalysisObjectTypeQuestion question)
 	{
 		final int UNSPECIFIED_CHOICE_COUNT = 1;
 		

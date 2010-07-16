@@ -35,7 +35,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.InternalQuestionWithoutValues;
-import org.miradi.questions.RollupReportsObjectTypeQuestion;
+import org.miradi.questions.AnalysisObjectTypeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -184,7 +184,7 @@ public class ViewData extends BaseObject
 		currentResultsChainRef = new ORefData(TAG_CURRENT_RESULTS_CHAIN_REF);
 		currentConceptualModelRef = new ORefData(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
 		diagramHiddenTypes = new CodeListData(TAG_DIAGRAM_HIDDEN_TYPES, getQuestion(InternalQuestionWithoutValues.class));
-		budgetRollupReportLevelTypes = new CodeListData(TAG_BUDGET_ROLLUP_REPORT_TYPES, getQuestion(RollupReportsObjectTypeQuestion.class));
+		budgetRollupReportLevelTypes = new CodeListData(TAG_BUDGET_ROLLUP_REPORT_TYPES, getQuestion(AnalysisObjectTypeQuestion.class));
 		planningSingleLevelChoice = new StringData(TAG_PLANNING_SINGLE_LEVEL_CHOICE);
 		treeConfigurationRef = new ORefData(TAG_TREE_CONFIGURATION_REF);
 		currentWizardStep = new StringData(TAG_CURRENT_WIZARD_STEP);

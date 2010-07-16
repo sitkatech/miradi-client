@@ -31,7 +31,7 @@ import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
-import org.miradi.questions.RollupReportsObjectTypeQuestion;
+import org.miradi.questions.AnalysisObjectTypeQuestion;
 import org.miradi.utils.CodeList;
 
 public class CategoryTreeNode extends AbstractPlanningTreeNode
@@ -77,7 +77,7 @@ public class CategoryTreeNode extends AbstractPlanningTreeNode
 			return;
 		
 		String levelObjectTypeAsString = getLevelObjectTypes().get(getCurrentLevel());
-		if (levelObjectTypeAsString.equals(RollupReportsObjectTypeQuestion.UNSPECIFIED_CODE))
+		if (levelObjectTypeAsString.equals(AnalysisObjectTypeQuestion.UNSPECIFIED_CODE))
 			return;
 		
 		int levelObjectType = Integer.parseInt(levelObjectTypeAsString);
