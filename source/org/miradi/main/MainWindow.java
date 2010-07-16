@@ -515,7 +515,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		project.beginCommandSideEffectMode();
 		try
 		{
-			project.createOrOpenWithDefaultObjects(projectName);
+			project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
 			logExceptionsInsideProjectDir(projectName);
 			
 			repairProject();

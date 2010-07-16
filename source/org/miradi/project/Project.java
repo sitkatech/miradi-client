@@ -654,7 +654,7 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// database
 	
-	public void createOrOpenWithDefaultObjects(String projectName) throws Exception
+	public void createOrOpenWithDefaultObjectsAndDiagramHelp(String projectName) throws Exception
 	{
 		boolean didProjectAlreadyExist = rawCreateorOpen(projectName);
 		createMissingDefaultObjects();
