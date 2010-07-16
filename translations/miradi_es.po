@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 12:16-0500\n"
+"POT-Creation-Date: 2010-07-16 12:58-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -2418,13 +2418,11 @@ msgid "Category Ib: Wilderness area"
 msgstr "Categoría Ib: Área selvática"
 
 #: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryOneDoer.java:34
-#: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryOneMangementPanel.java:69
 #: Miradi/source/org/miradi/views/workplan/BudgetCategoryOneManagementConfiguration.java:58
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:58
 msgid "Category One"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/workplan/WorkPlanCategoryTwoMangementPanel.java:74
 #: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryTwoDoer.java:34
 #: Miradi/source/org/miradi/views/workplan/BudgetCategoryTwoManagementConfiguration.java:49
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:61
