@@ -39,7 +39,7 @@ public class RollupReportsObjectTypeQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[]{
 			new ChoiceItem(UNSPECIFIED_CODE, EAM.text("Unspecified")),
-			new ChoiceItem(ProjectResource.getObjectType(), EAM.text("Resource")),
+			new ChoiceItem(ProjectResource.getObjectType(), EAM.text("Project Resource")),
 			new ChoiceItem(FundingSource.getObjectType(), EAM.text("Funding Source")),
 			new ChoiceItem(AccountingCode.getObjectType(), EAM.text("Accounting Code")),
 			new ChoiceItem(BudgetCategoryOne.getObjectType(), EAM.text("Budget Category One")),
