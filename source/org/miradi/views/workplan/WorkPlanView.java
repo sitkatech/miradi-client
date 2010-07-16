@@ -90,7 +90,7 @@ public class WorkPlanView extends TabbedView
 		rollupReportsManagementPanel = CategoryManagementPanel.createManagementPanel(getMainWindow(), new RollupReportsManagementConfiguration(getProject()));
 		resourceManagementPanel = WorkPlanResourcesManagementPanel.createProjectResourcesPanel(getMainWindow());
 		accountingCodePoolManagementPanel = CategoryManagementPanel.createManagementPanel(getMainWindow(), new AccountingCodeManagementConfiguration(getProject()));
-		fundingSourceManagementPanel = CategoryManagementPanel.createManagementPanel(getMainWindow(), new FundingSourceManagementConfiguration(getProject())); 
+		fundingSourcePoolManagementPanel = CategoryManagementPanel.createManagementPanel(getMainWindow(), new FundingSourceManagementConfiguration(getProject())); 
 		categoryOnePoolMangementPanel = CategoryManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryOneManagementConfiguration(getProject()));
 		categoryTwoPoolMangementPanel = CategoryManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryTwoManagementConfiguration(getProject()));
 		
@@ -98,7 +98,7 @@ public class WorkPlanView extends TabbedView
 		addNonScrollingTab(rollupReportsManagementPanel);
 		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
-		addNonScrollingTab(fundingSourceManagementPanel);
+		addNonScrollingTab(fundingSourcePoolManagementPanel);
 		addNonScrollingTab(categoryOnePoolMangementPanel);
 		addNonScrollingTab(categoryTwoPoolMangementPanel);
 	}
@@ -118,8 +118,8 @@ public class WorkPlanView extends TabbedView
 		accountingCodePoolManagementPanel.dispose();
 		accountingCodePoolManagementPanel = null;
 		
-		fundingSourceManagementPanel.dispose();
-		fundingSourceManagementPanel = null;
+		fundingSourcePoolManagementPanel.dispose();
+		fundingSourcePoolManagementPanel = null;
 		
 		categoryOnePoolMangementPanel.dispose();
 		categoryOnePoolMangementPanel = null;
@@ -193,7 +193,7 @@ public class WorkPlanView extends TabbedView
 	private PlanningTreeManagementPanel rollupReportsManagementPanel;
 	private PlanningTreeManagementPanel resourceManagementPanel;
 	private PlanningTreeManagementPanel accountingCodePoolManagementPanel;
-	private PlanningTreeManagementPanel fundingSourceManagementPanel;
+	private PlanningTreeManagementPanel fundingSourcePoolManagementPanel;
 	private PlanningTreeManagementPanel categoryOnePoolMangementPanel;
 	private PlanningTreeManagementPanel categoryTwoPoolMangementPanel;
 }
