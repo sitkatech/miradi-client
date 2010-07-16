@@ -88,9 +88,9 @@ public class CategoryTreeNode extends AbstractPlanningTreeNode
 		{	
 			BaseObject possibleChildObject = createOrFindChildObject(childRefs.get(index), levelObjectType);
 			ORefList assignmentRefsReferringToPossibleChild = getAssignmentsReferringToRow(categoryRefToAssignmentRefsMap, possibleChildObject);
-			ORefList overlappingAssignmentRefs = assignmentRefsReferringToPossibleChild.getOverlappingRefs(getAssignmentRefsThatMatchParentRow());
-			if (shouldIncludeChildNode(overlappingAssignmentRefs))
-				children.add(new CategoryTreeNode(getProject(), rowColumnProvider, possibleChildObject, childLevel, overlappingAssignmentRefs));
+			ORefList assignmentRefsThatMatchPossibleChild = assignmentRefsReferringToPossibleChild.getOverlappingRefs(getAssignmentRefsThatMatchParentRow());
+			if (shouldIncludeChildNode(assignmentRefsThatMatchPossibleChild))
+				children.add(new CategoryTreeNode(getProject(), rowColumnProvider, possibleChildObject, childLevel, assignmentRefsThatMatchPossibleChild));
 		}
 		
 		Collections.sort(children, createNodeSorter());
