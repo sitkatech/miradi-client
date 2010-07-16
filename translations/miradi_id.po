@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 11:13-0500\n"
+"POT-Creation-Date: 2010-07-16 12:13-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -8010,7 +8010,7 @@ msgstr "[TIDAK TERSPESIFIKASI] "
 msgid "[New Results Chain]"
 msgstr "[Rangkaian Hasil Baru] "
 
-#: Miradi/source/org/miradi/project/Project.java:992
+#: Miradi/source/org/miradi/project/Project.java:999
 msgid "[No Project]"
 msgstr "[Tidak Ada Proyek] "
 
