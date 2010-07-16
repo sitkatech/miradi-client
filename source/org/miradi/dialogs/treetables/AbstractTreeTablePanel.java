@@ -174,7 +174,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		return event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_DATE_UNIT_LIST_DATA);
 	}
 	
-	protected boolean doesCommandForceRebuild(CommandExecutedEvent event)
+	protected boolean doesCommandForceRebuild(CommandExecutedEvent event) throws Exception
 	{
 		if(wereAssignmentNodesAddedOrRemoved(event))
 			return true;

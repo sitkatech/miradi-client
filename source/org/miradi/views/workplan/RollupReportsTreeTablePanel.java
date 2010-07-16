@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.workplan;
 
 import org.miradi.dialogs.planning.RowColumnProvider;
+import org.miradi.dialogs.planning.RowColumnProviderWithEmptyRowChecking;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
@@ -29,7 +30,6 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ViewData;
-import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.RollupReportsObjectTypeQuestion;
 import org.miradi.utils.CodeList;
 
@@ -45,15 +45,20 @@ public class RollupReportsTreeTablePanel extends PlanningTreeTablePanel
 		super(mainWindowToUse, treeToUse, modelToUse, buttonClasses, rowColumnProvider);
 	}
 	
-	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model, RowColumnProvider rowColumnProvider, Class[] buttonActions) throws Exception
+	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model, RowColumnProviderWithEmptyRowChecking  rowColumnProvider, Class[] buttonActions) throws Exception
 	{
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 
 		return new RollupReportsTreeTablePanel(mainWindowToUse, treeTable, model, buttonActions, rowColumnProvider);
 	}
 	
+	private RowColumnProviderWithEmptyRowChecking  getCastedRowColumnProvider()
+	{
+		return (RowColumnProviderWithEmptyRowChecking) getRowColumnProvider();
+	}
+	
 	@Override
-	protected boolean doesCommandForceRebuild(CommandExecutedEvent event)
+	protected boolean doesCommandForceRebuild(CommandExecutedEvent event) throws Exception
 	{
 		if (super.doesCommandForceRebuild(event))
 			return true;
@@ -67,10 +72,9 @@ public class RollupReportsTreeTablePanel extends PlanningTreeTablePanel
 		return wereAssignmentsChanged(event);
 	}
 
-	private boolean wasBudgetTypeCreatedOrDeleted(CommandExecutedEvent event)
+	private boolean wasBudgetTypeCreatedOrDeleted(CommandExecutedEvent event) throws Exception
 	{
-		ChoiceQuestion question = getProject().getQuestion(RollupReportsObjectTypeQuestion.class);
-		CodeList possibleLevelTypes = question.getAllCodes();
+		CodeList possibleLevelTypes = getCastedRowColumnProvider().getLevelTypeCodes();
 		for (int index = 0; index < possibleLevelTypes.size(); ++index)
 		{
 			String levelTypeAsString = possibleLevelTypes.get(index);

@@ -48,7 +48,7 @@ public class CategoryTwoTreeTablePanel extends PlanningTreeTablePanel
 	}
 	
 	@Override
-	protected boolean doesCommandForceRebuild(CommandExecutedEvent event)
+	protected boolean doesCommandForceRebuild(CommandExecutedEvent event) throws Exception
 	{
 		if (super.doesCommandForceRebuild(event))
 			return true;
