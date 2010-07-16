@@ -295,6 +295,13 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			int diff = typeSortLocationA - typeSortLocationB;
 			if(diff != 0)
 				return diff;
+
+			ORef refA = nodeA.getObjectReference();
+			ORef refB = nodeB.getObjectReference();
+			if(refA.isValid() && refB.isInvalid())
+				return -1;
+			if(refA.isInvalid() && refB.isValid())
+				return 1;
 			
 			String labelA = nodeA.toString();
 			String labelB = nodeB.toString();
