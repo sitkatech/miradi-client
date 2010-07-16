@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 14:52-0500\n"
+"POT-Creation-Date: 2010-07-16 14:58-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -1877,6 +1877,10 @@ msgstr "Se ha producido un error inesperado. "
 #: Miradi/source/org/miradi/main/EAM.java:366
 msgid "An unexpected error occurred: "
 msgstr "Se produjo un error inesperado"
+
+#: Miradi/source/org/miradi/views/workplan/RollupReportsManagementConfiguration.java:48
+msgid "Analysis"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpAnalyzeProjectCapacity.java:35
 msgid "Analyze Project Capacity"
@@ -5537,10 +5541,6 @@ msgstr "Ríos, riachuelos y arroyos"
 msgid "Rocky Areas [e.g. inland cliffs, mountain peaks]"
 msgstr ""
 "Áreas rocosas [por ejemplo, acantilados tierra adentro y picos de montañas]"
-
-#: Miradi/source/org/miradi/views/workplan/RollupReportsManagementConfiguration.java:48
-msgid "Rollup Reports"
-msgstr ""
 
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:36
 #: Miradi/source/org/miradi/questions/RatingSourceQuestion.java:36
