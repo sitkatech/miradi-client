@@ -113,9 +113,9 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 		return columnGroups;
 	}
 
-	public static final String META_ANALYSIS_WORK_UNITS_COLUMN_CODE = "MetaRollupReportsWorkUnitsColumnCode";
-	public static final String META_ANALYSIS_EXPENSES_CODE = "MetaRollupReportsExpensesColumnCode";
-	public static final String META_ANALYSIS_BUDGET_DETAILS_COLUMN_CODE = "MetaRollupReportsBudgetDetailsColumnCode";
+	public static final String META_ANALYSIS_WORK_UNITS_COLUMN_CODE = "MetaAnalysisWorkUnitsColumnCode";
+	public static final String META_ANALYSIS_EXPENSES_CODE = "MetaAnalysisExpensesColumnCode";
+	public static final String META_ANALYSIS_BUDGET_DETAILS_COLUMN_CODE = "MetaAnalysisBudgetDetailsColumnCode";
 	public static final String META_RESOURCE_ASSIGNMENT_COLUMN_CODE = "MetaWorkUnitColumnCode";
 	public static final String META_EXPENSE_ASSIGNMENT_COLUMN_CODE = "MetaExpenseAmountColumnCode";
 	public static final String META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE = "MetaFundingSourceExpenseColumnCode";
