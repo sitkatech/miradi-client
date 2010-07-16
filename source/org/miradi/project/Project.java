@@ -663,16 +663,15 @@ public class Project
 			createDefaultHelpTextBoxDiagramFactor();
 	}
 
-	private boolean createOrOpenWithDefaultObjects(String projectName)
+	private void createOrOpenWithDefaultObjects(String projectName)
 			throws Exception
 	{
-		boolean didProjectAlreadyExist = rawCreateorOpen(projectName);
+		rawCreateorOpen(projectName);
 		createMissingDefaultObjects();
 		applyDefaultBehavior();
-		return didProjectAlreadyExist;
 	}
 
-	public boolean rawCreateorOpen(String projectName) throws Exception
+	public void rawCreateorOpen(String projectName) throws Exception
 	{
 		clear();
 		
@@ -685,8 +684,6 @@ public class Project
 		writeStartingLogEntry();
 	
 		finishOpening();
-		
-		return didProjectAlreadyExist;
 	}
 
 	public void setLocalDataLocation(File dataDirectory) throws Exception
