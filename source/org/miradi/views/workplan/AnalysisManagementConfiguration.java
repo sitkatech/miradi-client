@@ -25,7 +25,7 @@ import javax.swing.Icon;
 import org.miradi.actions.ActionCollapseAllRows;
 import org.miradi.actions.ActionEditRollupReportRows;
 import org.miradi.actions.ActionExpandAllRows;
-import org.miradi.dialogs.RollupReportsRowColumnProvider;
+import org.miradi.dialogs.AnalysisRowColumnProvider;
 import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
 import org.miradi.icons.PlanningIcon;
 import org.miradi.main.EAM;
@@ -41,7 +41,7 @@ public class AnalysisManagementConfiguration extends AbstractManagementConfigura
 	@Override
 	public CategoryTreeRowColumnProvider getRowColumnProvider() throws Exception
 	{
-		return new RollupReportsRowColumnProvider(getProject());
+		return new AnalysisRowColumnProvider(getProject());
 	}
 	
 	@Override
