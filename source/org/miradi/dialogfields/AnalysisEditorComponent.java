@@ -29,9 +29,9 @@ import org.miradi.project.Project;
 import org.miradi.questions.AnalysisObjectTypeQuestion;
 import org.miradi.utils.CodeList;
 
-public class RollupReportsEditorComponent extends MiradiPanel
+public class AnalysisEditorComponent extends MiradiPanel
 {
-	public RollupReportsEditorComponent(Project projectToUse)
+	public AnalysisEditorComponent(Project projectToUse)
 	{
 		editors = new Vector<SingleChoiceItemEditor>();
 		AnalysisObjectTypeQuestion question = new AnalysisObjectTypeQuestion();
