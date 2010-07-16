@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 12:58-0500\n"
+"POT-Creation-Date: 2010-07-16 14:46-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -5303,6 +5303,7 @@ msgstr "Número de proyecto"
 msgid "Project Plan For "
 msgstr "Plan de proyecto para "
 
+#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:42
 #: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:47
 msgid "Project Resource"
 msgstr "Recurso del proyecto"
@@ -5465,7 +5466,6 @@ msgid "Report to project team and stakeholders"
 msgstr "Informar al equipo del proyecto y partes interesadas"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:213
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:42
 msgid "Resource"
 msgstr "Recurso "
 
