@@ -22,8 +22,12 @@ package org.miradi.dialogfields;
 
 import java.util.Vector;
 
+import javax.swing.Box;
+
 import org.miradi.dialogfields.AnalysisLevelsChooserField.ComboBoxChangeHandler;
 import org.miradi.dialogs.base.MiradiPanel;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.questions.AnalysisObjectTypeQuestion;
@@ -33,15 +37,32 @@ public class AnalysisLevelsEditorComponent extends MiradiPanel
 {
 	public AnalysisLevelsEditorComponent(Project projectToUse)
 	{
+		super(new OneColumnGridLayout());
+		
 		editors = new Vector<SingleChoiceItemEditor>();
 		AnalysisObjectTypeQuestion question = new AnalysisObjectTypeQuestion();
 		int numberOfDropdowns = getNumberOfDropdowns(question);
-		for (int index = 0; index < numberOfDropdowns; ++index)
+		for (int level = 0; level < numberOfDropdowns; ++level)
 		{
 			SingleChoiceItemEditor levelEditor = new SingleChoiceItemEditor(question);
 			editors.add(levelEditor);
-			add(levelEditor);
+			
+			Box box = Box.createHorizontalBox();
+			box.add(Box.createHorizontalStrut(level * INDENT_PER_LEVEL));
+			box.add(new PanelTitleLabel(getLabel(level)));
+			box.add(Box.createHorizontalStrut(GAP_BETWEEN_LABEL_AND_DROPDOWN));
+			box.add(levelEditor);
+			
+			add(box);
 		}
+	}
+
+	private String getLabel(int level)
+	{
+		if(level == 0)
+			return EAM.text("Group by");
+		
+		return EAM.text("Then by");
 	}
 
 	private int getNumberOfDropdowns(AnalysisObjectTypeQuestion question)
@@ -98,6 +119,9 @@ public class AnalysisLevelsEditorComponent extends MiradiPanel
 			levelEditor.addActionListener(comboChangeHandler);
 		}
 	}
+
+	private static final int INDENT_PER_LEVEL = 20;
+	private static final int GAP_BETWEEN_LABEL_AND_DROPDOWN = 4;
 	
 	private Vector<SingleChoiceItemEditor> editors;
 }

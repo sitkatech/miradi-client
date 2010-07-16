@@ -31,7 +31,7 @@ public class EditAnalysisRowsPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ViewData.getObjectType());
 		
-		addField(createConfigureAnaysisRowsField(getProject().getCurrentViewData().getRef(), ViewData.TAG_BUDGET_ROLLUP_REPORT_TYPES, getProject().getQuestion(AnalysisObjectTypeQuestion.class)));
+		addFieldWithoutLabel(createConfigureAnaysisRowsField(getProject().getCurrentViewData().getRef(), ViewData.TAG_BUDGET_ROLLUP_REPORT_TYPES, getProject().getQuestion(AnalysisObjectTypeQuestion.class)));
 		setObjectRef(getProject().getCurrentViewData().getRef());
 	}
 
