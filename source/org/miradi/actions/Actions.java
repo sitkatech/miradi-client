@@ -221,7 +221,7 @@ public class Actions
 		registerAction(new ActionPlanningRowsEditor(mainWindow));
 		registerAction(new ActionPlanningColumnsEditor(mainWindow));
 		registerAction(new ActionWorkPlanBudgetColumnsEditor(mainWindow));
-		registerAction(new ActionEditRollupReportRows(mainWindow));
+		registerAction(new ActionEditAnalysisRows(mainWindow));
 		registerAction(new ActionFilterWorkPlanByProjectResource(mainWindow));
 		registerAction(new ActionExpandToMenu(mainWindow));
 		registerAction(new ActionExpandToTarget(mainWindow));
