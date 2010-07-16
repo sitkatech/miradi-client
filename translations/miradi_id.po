@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 15:31-0500\n"
+"POT-Creation-Date: 2010-07-16 15:34-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -883,7 +883,7 @@ msgstr ""
 "ini, maka atribut tersebut merupakan atribut yang \"terdegradasi\"."
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:34
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:48
+#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:48
 msgid "Accounting Code"
 msgstr "Kode Akuntansi "
 
@@ -991,7 +991,7 @@ msgstr "File ConPro (CPMZ) "
 msgid "Action|Configure Export"
 msgstr "Atur Ekspor "
 
-#: Miradi/source/org/miradi/actions/ActionEditRollupReportRows.java:36
+#: Miradi/source/org/miradi/actions/ActionEditAnalysisRows.java:36
 msgid "Action|Configure Rows..."
 msgstr ""
 
@@ -2214,12 +2214,12 @@ msgstr ""
 "telah diduga untuk aktivitas/metode dan tugas –tugas yang diperlukan untuk "
 "melaksanakan rencana strategis dan rencana pemantauan Anda."
 
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:50
+#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:50
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:95
 msgid "Budget Category One"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:51
+#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:51
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:100
 msgid "Budget Category Two"
 msgstr ""
@@ -3286,7 +3286,7 @@ msgstr "Berkas yang diekspor tidak bisa divalidasi. "
 msgid "External Research"
 msgstr "Penelitian Eksternal"
 
-#: Miradi/source/org/miradi/dialogfields/RollupReportsEditorComponent.java:71
+#: Miradi/source/org/miradi/dialogfields/AnalysisEditorComponent.java:71
 msgid ""
 "Extra/unexpected configuration data was found, and will be ignored.\n"
 " CodeList= %s"
@@ -3562,7 +3562,7 @@ msgid "Full Report"
 msgstr "Laporan Lengkap"
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:34
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:49
+#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:49
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:55
 msgid "Funding Source"
 msgstr "Sumber Dana "
@@ -5272,7 +5272,7 @@ msgstr "Nomor Proyek "
 msgid "Project Plan For "
 msgstr "Rencana Proyek untuk"
 
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:47
+#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:47
 #: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:47
 msgid "Project Resource"
 msgstr "Sumber Daya Proyek "
@@ -6123,7 +6123,7 @@ msgstr "Pilih strategi dan aktivitas mana yang relevan dengan tujuan ini"
 msgid "TT|Collapse All Tree Rows"
 msgstr "Lipat Semua Baris Pohon "
 
-#: Miradi/source/org/miradi/actions/ActionEditRollupReportRows.java:42
+#: Miradi/source/org/miradi/actions/ActionEditAnalysisRows.java:42
 msgid "TT|Configure which rows are displayed"
 msgstr ""
 
@@ -7629,8 +7629,8 @@ msgstr "Kesalahan tak dikenal mencegah dibukanya proyek "
 msgid "Unscheduled"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:46
 #: Miradi/source/org/miradi/questions/DirectThreatPoolQuestion.java:47
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:46
 msgid "Unspecified"
 msgstr ""
 

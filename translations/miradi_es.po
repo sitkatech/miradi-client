@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 15:31-0500\n"
+"POT-Creation-Date: 2010-07-16 15:34-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -887,7 +887,7 @@ msgstr ""
 "fuera de este rango aceptable, es un atributo \"degradado\". "
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:34
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:48
+#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:48
 msgid "Accounting Code"
 msgstr "Código contable"
 
@@ -995,7 +995,7 @@ msgstr "Archivo ConPro (CPMZ)"
 msgid "Action|Configure Export"
 msgstr "Configurar exportación"
 
-#: Miradi/source/org/miradi/actions/ActionEditRollupReportRows.java:36
+#: Miradi/source/org/miradi/actions/ActionEditAnalysisRows.java:36
 msgid "Action|Configure Rows..."
 msgstr ""
 
@@ -2222,12 +2222,12 @@ msgstr ""
 "financiamiento anticipadas para las actividades/métodos y tareas necesarias "
 "para implementar sus planes estratégicos y de monitoreo."
 
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:50
+#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:50
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:95
 msgid "Budget Category One"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:51
+#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:51
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:100
 msgid "Budget Category Two"
 msgstr ""
@@ -3301,7 +3301,7 @@ msgstr "No se valida el archivo exportado."
 msgid "External Research"
 msgstr "Investigación externa "
 
-#: Miradi/source/org/miradi/dialogfields/RollupReportsEditorComponent.java:71
+#: Miradi/source/org/miradi/dialogfields/AnalysisEditorComponent.java:71
 msgid ""
 "Extra/unexpected configuration data was found, and will be ignored.\n"
 " CodeList= %s"
@@ -3578,7 +3578,7 @@ msgid "Full Report"
 msgstr "Informe completo "
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:34
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:49
+#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:49
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:55
 msgid "Funding Source"
 msgstr "Fuente de financiamiento"
@@ -5307,7 +5307,7 @@ msgstr "Número de proyecto"
 msgid "Project Plan For "
 msgstr "Plan de proyecto para "
 
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:47
+#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:47
 #: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:47
 msgid "Project Resource"
 msgstr "Recurso del proyecto"
@@ -6161,7 +6161,7 @@ msgstr ""
 msgid "TT|Collapse All Tree Rows"
 msgstr "Contraer todas las filas del árbol"
 
-#: Miradi/source/org/miradi/actions/ActionEditRollupReportRows.java:42
+#: Miradi/source/org/miradi/actions/ActionEditAnalysisRows.java:42
 msgid "TT|Configure which rows are displayed"
 msgstr ""
 
@@ -7669,8 +7669,8 @@ msgstr "Un error desconocido impidió que se abriera ese proyecto."
 msgid "Unscheduled"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:46
 #: Miradi/source/org/miradi/questions/DirectThreatPoolQuestion.java:47
-#: Miradi/source/org/miradi/questions/RollupReportsObjectTypeQuestion.java:46
 msgid "Unspecified"
 msgstr ""
 
