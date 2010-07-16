@@ -23,7 +23,7 @@ package org.miradi.views.workplan.doers;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.main.EAM;
 import org.miradi.views.ObjectsDoer;
-import org.miradi.views.workplan.BudgetRollupChoiceEditorPanel;
+import org.miradi.views.workplan.EditAnalysisRowsPanel;
 
 public class EditAnalysisRowsDoer extends ObjectsDoer
 {
@@ -39,7 +39,7 @@ public class EditAnalysisRowsDoer extends ObjectsDoer
 		if (!isAvailable())
 			return;
 		
-		BudgetRollupChoiceEditorPanel rollupReportsEditorComponent = new BudgetRollupChoiceEditorPanel(getProject());
+		EditAnalysisRowsPanel rollupReportsEditorComponent = new EditAnalysisRowsPanel(getProject());
 		ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), rollupReportsEditorComponent, EAM.text("Edit Level Types"));
 		dialog.setScrollableMainPanel(rollupReportsEditorComponent);
 		getView().showFloatingPropertiesDialog(dialog);

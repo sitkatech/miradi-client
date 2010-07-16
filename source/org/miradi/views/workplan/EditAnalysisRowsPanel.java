@@ -25,9 +25,9 @@ import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.AnalysisObjectTypeQuestion;
 
-public class BudgetRollupChoiceEditorPanel extends ObjectDataInputPanel
+public class EditAnalysisRowsPanel extends ObjectDataInputPanel
 {
-	public BudgetRollupChoiceEditorPanel(Project projectToUse) throws Exception
+	public EditAnalysisRowsPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, ViewData.getObjectType());
 		
