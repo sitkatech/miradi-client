@@ -39,9 +39,9 @@ public class EditAnalysisRowsDoer extends ObjectsDoer
 		if (!isAvailable())
 			return;
 		
-		EditAnalysisRowsPanel rollupReportsEditorComponent = new EditAnalysisRowsPanel(getProject());
-		ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), rollupReportsEditorComponent, EAM.text("Edit Level Types"));
-		dialog.setScrollableMainPanel(rollupReportsEditorComponent);
+		EditAnalysisRowsPanel panel = new EditAnalysisRowsPanel(getProject());
+		ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), panel, EAM.text("Edit Level Types"));
+		dialog.setScrollableMainPanel(panel);
 		getView().showFloatingPropertiesDialog(dialog);
 	}
 }
