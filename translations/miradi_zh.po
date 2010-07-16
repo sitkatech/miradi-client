@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 17:10-0500\n"
+"POT-Creation-Date: 2010-07-16 17:13-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3424,7 +3424,6 @@ msgstr "完整报告"
 msgid "Funding Source"
 msgstr "资金来源 \t\t"
 
-#: Miradi/source/org/miradi/views/planning/AbstractFundingSourceManagementPanel.java:45
 #: Miradi/source/org/miradi/views/workplan/FundingSourceManagementConfiguration.java:58
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:304
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:91
