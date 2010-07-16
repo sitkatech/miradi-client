@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-15 17:02-0500\n"
+"POT-Creation-Date: 2010-07-16 10:52-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3565,6 +3565,7 @@ msgid "Funding Source"
 msgstr "Sumber Dana "
 
 #: Miradi/source/org/miradi/views/planning/AbstractFundingSourceManagementPanel.java:45
+#: Miradi/source/org/miradi/views/workplan/FundingSourceManagementConfiguration.java:58
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:304
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:90
 msgid "Funding Sources"
