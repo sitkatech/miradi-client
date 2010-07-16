@@ -20,25 +20,25 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.treetables;
 
-import org.miradi.dialogs.planning.RowColumnProviderWithEmptyRowChecking;
+import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.RollupReportsRootTreeNode;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
 import org.miradi.project.Project;
 
 public class RollupReportsTreeTableModel extends ExportablePlanningTreeTableModel
 {
-	private RollupReportsTreeTableModel(Project project, TreeTableNode rootNode, RowColumnProviderWithEmptyRowChecking rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
+	private RollupReportsTreeTableModel(Project project, TreeTableNode rootNode, CategoryTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
 	{
 		super(project, rootNode, rowColumnProvider.getRowListToShow(), rowColumnProvider.getColumnListToShow(), uniqueTreeTableModeIdentifier);
 	}
 	
-	public static RollupReportsTreeTableModel createRollupReportsTreeTableModel(Project project, RowColumnProviderWithEmptyRowChecking rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
+	public static RollupReportsTreeTableModel createRollupReportsTreeTableModel(Project project, CategoryTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
 	{
 		TreeTableNode projectRootNode = createRootNode(project, rowColumnProvider);
 		return new RollupReportsTreeTableModel(project, projectRootNode, rowColumnProvider, uniqueTreeTableModeIdentifier);
 	}
 	
-	private static TreeTableNode createRootNode(Project project, RowColumnProviderWithEmptyRowChecking rowColumnProvider) throws Exception
+	private static TreeTableNode createRootNode(Project project, CategoryTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
 		return new RollupReportsRootTreeNode(project, rowColumnProvider);
 	}

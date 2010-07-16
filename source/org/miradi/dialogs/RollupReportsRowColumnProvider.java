@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs;
 
-import org.miradi.dialogs.planning.RowColumnProviderWithEmptyRowChecking;
+import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
 import org.miradi.objects.AbstractBudgetCategoryObject;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BudgetCategoryOne;
@@ -32,7 +32,7 @@ import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.views.workplan.WorkPlanView;
 
-public class RollupReportsRowColumnProvider implements RowColumnProviderWithEmptyRowChecking
+public class RollupReportsRowColumnProvider implements CategoryTreeRowColumnProvider
 { 
 	public RollupReportsRowColumnProvider(Project projectToUse)
 	{

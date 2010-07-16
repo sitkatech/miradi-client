@@ -24,7 +24,7 @@ import javax.swing.Icon;
 
 import org.miradi.actions.ActionEditRollupReportRows;
 import org.miradi.dialogs.RollupReportsRowColumnProvider;
-import org.miradi.dialogs.planning.RowColumnProviderWithEmptyRowChecking;
+import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
 import org.miradi.icons.PlanningIcon;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
@@ -37,7 +37,7 @@ public class RollupReportsManagementConfiguration extends AbstractManagementConf
 	}
 	
 	@Override
-	public RowColumnProviderWithEmptyRowChecking getRowColumnProvider() throws Exception
+	public CategoryTreeRowColumnProvider getRowColumnProvider() throws Exception
 	{
 		return new RollupReportsRowColumnProvider(getProject());
 	}

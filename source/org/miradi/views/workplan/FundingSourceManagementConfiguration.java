@@ -25,7 +25,7 @@ import javax.swing.Icon;
 import org.miradi.actions.ActionCreateFundingSource;
 import org.miradi.actions.ActionDeleteFundingSource;
 import org.miradi.dialogs.planning.FundingSourceRowColumnProvider;
-import org.miradi.dialogs.planning.RowColumnProviderWithEmptyRowChecking;
+import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
 import org.miradi.icons.FundingSourceIcon;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
@@ -59,7 +59,7 @@ public class FundingSourceManagementConfiguration extends AbstractManagementConf
 	}
 
 	@Override
-	public RowColumnProviderWithEmptyRowChecking getRowColumnProvider() throws Exception
+	public CategoryTreeRowColumnProvider getRowColumnProvider() throws Exception
 	{
 		return new FundingSourceRowColumnProvider();
 	}

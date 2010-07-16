@@ -24,7 +24,7 @@ import javax.swing.Icon;
 
 import org.miradi.actions.ActionCreateCategoryTwo;
 import org.miradi.actions.ActionDeleteCategoryTwo;
-import org.miradi.dialogs.planning.RowColumnProviderWithEmptyRowChecking;
+import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.CategoryTwoCoreRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
@@ -60,7 +60,7 @@ public class WorkPlanCategoryTwoMangementPanel extends
 
 	public static PlanningTreeManagementPanel createPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		RowColumnProviderWithEmptyRowChecking rowColumnProvider = new CategoryTwoCoreRowColumnProvider();
+		CategoryTreeRowColumnProvider rowColumnProvider = new CategoryTwoCoreRowColumnProvider();
 		PlanningTreeTableModel treeTableModel = RollupReportsTreeTableModel.createRollupReportsTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
 		PlanningTreeTablePanel treeTablePanel = RollupReportsTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider, getButtonActions());
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);

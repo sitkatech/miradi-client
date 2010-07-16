@@ -22,14 +22,14 @@ package org.miradi.dialogs.planning.treenodes;
 
 import java.util.Vector;
 
-import org.miradi.dialogs.planning.RowColumnProviderWithEmptyRowChecking;
+import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
 public class RollupReportsRootTreeNode extends AbstractPlanningTreeNode
 {
-	public RollupReportsRootTreeNode(Project projectToUse, RowColumnProviderWithEmptyRowChecking rowColumnProviderToUse) throws Exception
+	public RollupReportsRootTreeNode(Project projectToUse, CategoryTreeRowColumnProvider rowColumnProviderToUse) throws Exception
 	{
 		super(projectToUse, rowColumnProviderToUse.getRowListToShow());
 		
@@ -61,5 +61,5 @@ public class RollupReportsRootTreeNode extends AbstractPlanningTreeNode
 		children.add(new RollupReportsNode(getProject(), rowColumnProvider, getObject(), initialLevel, allAsignmentRefs));
 	}
 
-	private RowColumnProviderWithEmptyRowChecking rowColumnProvider;
+	private CategoryTreeRowColumnProvider rowColumnProvider;
 }
