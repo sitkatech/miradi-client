@@ -23,9 +23,9 @@ package org.miradi.dialogs.planning.upperPanel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.project.Project;
 
-public class RollupReportsExpenseTableModel extends CategorizedExpenseAmountsTableModel
+public class AnalysisExpenseTableModel extends CategorizedExpenseAmountsTableModel
 {
-	public RollupReportsExpenseTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
+	public AnalysisExpenseTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
 	}
