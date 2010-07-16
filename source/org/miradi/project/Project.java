@@ -656,12 +656,19 @@ public class Project
 	
 	public void createOrOpenWithDefaultObjectsAndDiagramHelp(String projectName) throws Exception
 	{
-		boolean didProjectAlreadyExist = rawCreateorOpen(projectName);
-		createMissingDefaultObjects();
-		applyDefaultBehavior();
+		boolean didProjectAlreadyExist = createOrOpenWithDefaultObjects(projectName);
 		
 		if (!didProjectAlreadyExist)
 			createDefaultHelpTextBoxDiagramFactor();
+	}
+
+	private boolean createOrOpenWithDefaultObjects(String projectName)
+			throws Exception
+	{
+		boolean didProjectAlreadyExist = rawCreateorOpen(projectName);
+		createMissingDefaultObjects();
+		applyDefaultBehavior();
+		return didProjectAlreadyExist;
 	}
 
 	public boolean rawCreateorOpen(String projectName) throws Exception
