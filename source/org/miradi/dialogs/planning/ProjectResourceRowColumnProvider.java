@@ -24,8 +24,9 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 
-public class ProjectResourceRowColumnProvider implements WorkPlanCategoryTreeRowColumnProvider
+public class ProjectResourceRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
 {
+	@Override
 	public CodeList getColumnListToShow()
 	{
 		return new CodeList(new String[] {
@@ -36,22 +37,15 @@ public class ProjectResourceRowColumnProvider implements WorkPlanCategoryTreeRow
 		
 	}
 
-	public CodeList getRowListToShow()
+	@Override
+	protected int getObjectType()
 	{
-		return new CodeList(new String[] {
-				ProjectResource.OBJECT_NAME,
-		});
+		return ProjectResource.getObjectType();
 	}
 
-	public CodeList getLevelTypeCodes() throws Exception
+	@Override
+	protected String getObjectTypeName()
 	{
-		return new CodeList(new String[] {
-				Integer.toString(ProjectResource.getObjectType()),
-		});
-	}
-
-	public boolean shouldIncludeEmptyRows()
-	{
-		return true;
+		return ProjectResource.OBJECT_NAME;
 	}
 }
