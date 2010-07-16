@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 14:52-0500\n"
+"POT-Creation-Date: 2010-07-16 14:58-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1873,6 +1873,10 @@ msgstr "Kesalahan yang tak terduga telah terjadi. "
 #: Miradi/source/org/miradi/main/EAM.java:366
 msgid "An unexpected error occurred: "
 msgstr "Terjadi kesalahan yang tidak diharapkan: "
+
+#: Miradi/source/org/miradi/views/workplan/RollupReportsManagementConfiguration.java:48
+msgid "Analysis"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpAnalyzeProjectCapacity.java:35
 msgid "Analyze Project Capacity"
@@ -5499,10 +5503,6 @@ msgstr "Sungai, Anak Sungai dan Aliran Air "
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:83
 msgid "Rocky Areas [e.g. inland cliffs, mountain peaks]"
 msgstr "Kawasan Berbatu [misalnya puncak pegunungan, tebing di pedalaman]"
-
-#: Miradi/source/org/miradi/views/workplan/RollupReportsManagementConfiguration.java:48
-msgid "Rollup Reports"
-msgstr ""
 
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:36
 #: Miradi/source/org/miradi/questions/RatingSourceQuestion.java:36
