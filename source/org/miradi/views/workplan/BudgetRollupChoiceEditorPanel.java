@@ -23,7 +23,7 @@ package org.miradi.views.workplan;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
-import org.miradi.questions.RollupReportsObjectTypeQuestion;
+import org.miradi.questions.AnalysisObjectTypeQuestion;
 
 public class BudgetRollupChoiceEditorPanel extends ObjectDataInputPanel
 {
@@ -31,7 +31,7 @@ public class BudgetRollupChoiceEditorPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ViewData.getObjectType());
 		
-		addField(createBudgetRollupReportEditorField(getProject().getCurrentViewData().getRef(), ViewData.TAG_BUDGET_ROLLUP_REPORT_TYPES, getProject().getQuestion(RollupReportsObjectTypeQuestion.class)));
+		addField(createBudgetRollupReportEditorField(getProject().getCurrentViewData().getRef(), ViewData.TAG_BUDGET_ROLLUP_REPORT_TYPES, getProject().getQuestion(AnalysisObjectTypeQuestion.class)));
 		setObjectRef(getProject().getCurrentViewData().getRef());
 	}
 
