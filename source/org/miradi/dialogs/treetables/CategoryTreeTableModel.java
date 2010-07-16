@@ -32,7 +32,7 @@ public class CategoryTreeTableModel extends ExportablePlanningTreeTableModel
 		super(project, rootNode, rowColumnProvider.getRowListToShow(), rowColumnProvider.getColumnListToShow(), uniqueTreeTableModeIdentifier);
 	}
 	
-	public static CategoryTreeTableModel createRollupReportsTreeTableModel(Project project, CategoryTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
+	public static CategoryTreeTableModel createCategoryTreeTableModel(Project project, CategoryTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
 	{
 		TreeTableNode projectRootNode = createRootNode(project, rowColumnProvider);
 		return new CategoryTreeTableModel(project, projectRootNode, rowColumnProvider, uniqueTreeTableModeIdentifier);
