@@ -31,16 +31,16 @@ public class CategorizedQuantity
 {
 	public CategorizedQuantity(ORef resourceRefToUse, ORef fundingSourceRefToUse, ORef accountingCodeRefToUse, ORef categoryOneRefToUse, ORef categoryTwoRefToUse, OptionalDouble quantityToUse)
 	{
-		resourceRef = ensureInvalidIsTyped(resourceRefToUse, ProjectResource.getObjectType());
-		fundingSourceRef = ensureInvalidIsTyped(fundingSourceRefToUse, FundingSource.getObjectType());
-		accountingCodeRef = ensureInvalidIsTyped(accountingCodeRefToUse, AccountingCode.getObjectType());
-		categoryOneRef = ensureInvalidIsTyped(categoryOneRefToUse, BudgetCategoryOne.getObjectType());
-		categoryTwoRef = ensureInvalidIsTyped(categoryTwoRefToUse, BudgetCategoryTwo.getObjectType());
+		resourceRef = ensureRefHasCorrectType(resourceRefToUse, ProjectResource.getObjectType());
+		fundingSourceRef = ensureRefHasCorrectType(fundingSourceRefToUse, FundingSource.getObjectType());
+		accountingCodeRef = ensureRefHasCorrectType(accountingCodeRefToUse, AccountingCode.getObjectType());
+		categoryOneRef = ensureRefHasCorrectType(categoryOneRefToUse, BudgetCategoryOne.getObjectType());
+		categoryTwoRef = ensureRefHasCorrectType(categoryTwoRefToUse, BudgetCategoryTwo.getObjectType());
 		
 		quantity = quantityToUse;
 	}
 
-	private ORef ensureInvalidIsTyped(ORef categoryRefToUse,	final int objectType)
+	private ORef ensureRefHasCorrectType(ORef categoryRefToUse,	final int objectType)
 	{
 		if (categoryRefToUse.isInvalid())
 			categoryRefToUse = ORef.createInvalidWithType(objectType);
