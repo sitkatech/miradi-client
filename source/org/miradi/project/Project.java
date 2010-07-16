@@ -656,7 +656,8 @@ public class Project
 	
 	public void createOrOpenWithDefaultObjectsAndDiagramHelp(String projectName) throws Exception
 	{
-		boolean didProjectAlreadyExist = createOrOpenWithDefaultObjects(projectName);
+		boolean didProjectAlreadyExist = getDatabase().isExistingProject(projectName);
+		createOrOpenWithDefaultObjects(projectName);
 		
 		if (!didProjectAlreadyExist)
 			createDefaultHelpTextBoxDiagramFactor();
