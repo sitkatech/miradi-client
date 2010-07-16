@@ -56,9 +56,6 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 	}
 
 	@Override
-	abstract public String getPanelDescription();
-	
-	@Override
 	public Icon getIcon()
 	{
 		return new PlanningIcon();
@@ -122,6 +119,9 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 	{
 		return getPlanningTreeTablePanel().getRowColumnProvider();
 	}
+	
+	@Override
+	abstract public String getPanelDescription();
 	
 	private PlanningTreeTablePanel planningTreeTablePanel;
 }
