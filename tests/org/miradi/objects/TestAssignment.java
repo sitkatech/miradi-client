@@ -41,6 +41,36 @@ public class TestAssignment extends ObjectTestCase
 		verifyFields(ObjectType.RESOURCE_ASSIGNMENT);
 	}
 	
+	public void testGetTagForCategoryType() throws Exception
+	{
+		Assignment resourceAssignment = getProject().createResourceAssignment();
+		verifyTagForType(resourceAssignment, ResourceAssignment.TAG_ACCOUNTING_CODE_ID, AccountingCode.getObjectType());
+		verifyTagForType(resourceAssignment, ResourceAssignment.TAG_FUNDING_SOURCE_ID, FundingSource.getObjectType());
+		verifyTagForType(resourceAssignment, ResourceAssignment.TAG_RESOURCE_ID, ProjectResource.getObjectType());
+		verifyTagForType(resourceAssignment, ResourceAssignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOne.getObjectType());
+		verifyTagForType(resourceAssignment, ResourceAssignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwo.getObjectType());
+		
+		Assignment expenseAssignemnt = getProject().createExpenseAssignment();
+		verifyTagForType(expenseAssignemnt, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, AccountingCode.getObjectType());
+		verifyTagForType(expenseAssignemnt, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, FundingSource.getObjectType());
+		verifyTagForType(expenseAssignemnt, ExpenseAssignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOne.getObjectType());
+		verifyTagForType(expenseAssignemnt, ExpenseAssignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwo.getObjectType());
+		
+		try
+		{
+			expenseAssignemnt.getTagForCategoryType(Target.getObjectType());
+			fail("Assignment should not have a tag for target?");
+		}
+		catch (Exception ignoreExpectedExcetion)
+		{
+		}
+	}
+
+	private void verifyTagForType(Assignment assignment, final String tagForType, final int objectType)
+	{
+		assertEquals("wrong tag for type", tagForType, assignment.getTagForCategoryType(objectType));
+	}
+	
 	public void testConvertDateUnitEffortList() throws Exception
 	{
 		ResourceAssignment emptyAssignment = getProject().createResourceAssignment();

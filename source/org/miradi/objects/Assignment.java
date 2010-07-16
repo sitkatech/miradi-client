@@ -172,7 +172,7 @@ abstract public class Assignment extends BaseObject
 		return ORef.createInvalidWithType(categoryObjectType);
 	}
 
-	private String getTagForCategoryType(int categoryObjectType)
+	protected String getTagForCategoryType(int categoryObjectType)
 	{
 		if (ProjectResource.is(categoryObjectType))
 			return getProjectResourceTag();
