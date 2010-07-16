@@ -31,9 +31,9 @@ import org.miradi.icons.PlanningIcon;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
-public class RollupReportsManagementConfiguration extends AbstractManagementConfiguration
+public class AnalysisManagementConfiguration extends AbstractManagementConfiguration
 {
-	public RollupReportsManagementConfiguration(Project projectToUse)
+	public AnalysisManagementConfiguration(Project projectToUse)
 	{
 		super(projectToUse);
 	}
