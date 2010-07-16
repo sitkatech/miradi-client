@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 16:58-0500\n"
+"POT-Creation-Date: 2010-07-16 17:07-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -3302,7 +3302,7 @@ msgstr "No se valida el archivo exportado."
 msgid "External Research"
 msgstr "Investigación externa "
 
-#: Miradi/source/org/miradi/dialogfields/AnalysisEditorComponent.java:71
+#: Miradi/source/org/miradi/dialogfields/AnalysisLevelsEditorComponent.java:71
 msgid ""
 "Extra/unexpected configuration data was found, and will be ignored.\n"
 " CodeList= %s"
