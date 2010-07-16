@@ -45,7 +45,7 @@ public class RollupReportsManagementConfiguration extends AbstractManagementConf
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Rollup Reports");
+		return EAM.text("Analysis");
 	}
 	
 	@Override
