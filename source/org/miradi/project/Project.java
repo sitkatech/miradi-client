@@ -663,7 +663,7 @@ public class Project
 			createDefaultHelpTextBoxDiagramFactor();
 	}
 
-	private void createOrOpenWithDefaultObjects(String projectName)
+	public void createOrOpenWithDefaultObjects(String projectName)
 			throws Exception
 	{
 		rawCreateorOpen(projectName);
