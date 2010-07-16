@@ -22,7 +22,9 @@ package org.miradi.views.workplan;
 
 import javax.swing.Icon;
 
+import org.miradi.actions.ActionCollapseAllRows;
 import org.miradi.actions.ActionEditRollupReportRows;
+import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.dialogs.RollupReportsRowColumnProvider;
 import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
 import org.miradi.icons.PlanningIcon;
@@ -52,6 +54,8 @@ public class RollupReportsManagementConfiguration extends AbstractManagementConf
 	public Class[] getButtonActions()
 	{
 		return new Class[] {
+			ActionExpandAllRows.class,
+			ActionCollapseAllRows.class,
 			ActionEditRollupReportRows.class,
 		};
 	}
