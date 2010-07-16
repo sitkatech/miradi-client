@@ -36,9 +36,9 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE),
 				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE),
 				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE),
-				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE),
-				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE),
-				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE),
+				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_WORK_UNITS_COLUMN_CODE),
+				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_EXPENSES_CODE),
+				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_BUDGET_DETAILS_COLUMN_CODE),
 		};
 	}
 	
@@ -59,7 +59,7 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 			return WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE;
 		
 		if (getAllPossibleRollupReportsColumnGroups().contains(budgetColumnGroupCode))
-			return WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE;
+			return WorkPlanColumnConfigurationQuestion.META_ANALYSIS_WORK_UNITS_COLUMN_CODE;
 		
 		throw new RuntimeException("Column code is not a budet column. Code: " + budgetColumnGroupCode);
 	}
@@ -69,7 +69,7 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 		Vector<String> columnGroups = new Vector();
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
-		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_WORK_UNITS_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_WORK_UNITS_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_WORK_UNITS_COLUMN_CODE);
 		
@@ -82,7 +82,7 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE);
-		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_EXPENSES_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_EXPENSE_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_EXPENSE_COLUMN_CODE);
 		
@@ -96,7 +96,7 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE);
-		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_BUDGET_DETAILS_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_BUDGET_DETAILS_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_BUDGET_DETAILS_COLUMN_CODE);
 		
@@ -106,16 +106,16 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 	public static Vector<String> getAllPossibleRollupReportsColumnGroups()
 	{
 		Vector<String> columnGroups = new Vector();
-		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE);
-		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE);
-		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_WORK_UNITS_COLUMN_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_EXPENSES_CODE);
+		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_BUDGET_DETAILS_COLUMN_CODE);
 		
 		return columnGroups;
 	}
 
-	public static final String META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE = "MetaRollupReportsWorkUnitsColumnCode";
-	public static final String META_ROLLUP_REPORTS_EXPENSES_CODE = "MetaRollupReportsExpensesColumnCode";
-	public static final String META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE = "MetaRollupReportsBudgetDetailsColumnCode";
+	public static final String META_ANALYSIS_WORK_UNITS_COLUMN_CODE = "MetaRollupReportsWorkUnitsColumnCode";
+	public static final String META_ANALYSIS_EXPENSES_CODE = "MetaRollupReportsExpensesColumnCode";
+	public static final String META_ANALYSIS_BUDGET_DETAILS_COLUMN_CODE = "MetaRollupReportsBudgetDetailsColumnCode";
 	public static final String META_RESOURCE_ASSIGNMENT_COLUMN_CODE = "MetaWorkUnitColumnCode";
 	public static final String META_EXPENSE_ASSIGNMENT_COLUMN_CODE = "MetaExpenseAmountColumnCode";
 	public static final String META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE = "MetaFundingSourceExpenseColumnCode";

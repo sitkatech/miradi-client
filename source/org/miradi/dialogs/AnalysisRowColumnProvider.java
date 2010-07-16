@@ -41,9 +41,9 @@ public class AnalysisRowColumnProvider implements CategoryTreeRowColumnProvider
 	public CodeList getColumnListToShow()
 	{
 		CodeList columnCodes = new CodeList();		
-		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE);
-		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE);
-		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE);
+		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_WORK_UNITS_COLUMN_CODE);
+		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_EXPENSES_CODE);
+		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_BUDGET_DETAILS_COLUMN_CODE);
 		
 		return columnCodes;
 	}

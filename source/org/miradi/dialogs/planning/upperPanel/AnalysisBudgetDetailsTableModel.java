@@ -34,7 +34,7 @@ public class AnalysisBudgetDetailsTableModel extends CategorizedBudgetDetailsTab
 	@Override
 	public String getColumnGroupCode(int modelColumn)
 	{
-		return WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE;
+		return WorkPlanColumnConfigurationQuestion.META_ANALYSIS_BUDGET_DETAILS_COLUMN_CODE;
 	}
 	
 	@Override
