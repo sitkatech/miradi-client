@@ -24,7 +24,6 @@ import java.io.IOException;
 
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
-import org.miradi.database.ProjectServer;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
@@ -36,7 +35,6 @@ import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.Translation;
 
 public abstract class XmlExporter
 {
@@ -57,26 +55,6 @@ public abstract class XmlExporter
 			out.close();
 		}
 	}
-	
-	protected static Project getOpenedProject(String[] commandLineArguments) throws Exception
-	{
-		if (incorrectArgumentCount(commandLineArguments))
-			throw new RuntimeException("Incorrect number of arguments " + commandLineArguments.length);
-
-		File projectDirectory = getProjectDirectory(commandLineArguments);
-		if(!ProjectServer.isExistingLocalProject(projectDirectory))
-			throw new RuntimeException("Project does not exist:" + projectDirectory);
-
-		File dataDirectory = projectDirectory.getParentFile();
-		String projectName = projectDirectory.getName();
-		
-		Project newProject = new Project();
-		newProject.setLocalDataLocation(dataDirectory);
-		newProject.createOrOpenWithDefaultObjects(projectName);
-		Translation.initialize();
-		
-		return newProject;
-	}	 
 	
 	public static File getProjectDirectory(String[] commandLineArguments) throws Exception
 	{
