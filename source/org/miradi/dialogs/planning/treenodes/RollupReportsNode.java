@@ -36,14 +36,14 @@ import org.miradi.utils.CodeList;
 
 public class RollupReportsNode extends AbstractPlanningTreeNode
 {
-	public RollupReportsNode(Project project, RowColumnProviderWithEmptyRowChecking rowColumnProviderToUse, BaseObject nodeObjectToUse, int levelToUse, ORefList assignmentRefsThatMatchToUse) throws Exception
+	public RollupReportsNode(Project project, RowColumnProviderWithEmptyRowChecking rowColumnProviderToUse, BaseObject nodeObjectToUse, int levelToUse, ORefList assignmentRefsThatMatchParentRowToUse) throws Exception
 	{
 		super(project, rowColumnProviderToUse.getRowListToShow());
 		
 		rowColumnProvider = rowColumnProviderToUse;
 		nodeObject = nodeObjectToUse;
 		currentLevel = levelToUse;
-		assignmentRefsThatMatch = assignmentRefsThatMatchToUse;
+		assignmentRefsThatMatchParentRow = assignmentRefsThatMatchParentRowToUse;
 		
 		rebuild();
 	}
@@ -88,7 +88,7 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		{	
 			BaseObject possibleChildObject = createOrFindChildObject(childRefs.get(index), levelObjectType);
 			ORefList assignmentRefsReferringToRow = getAssignmentsReferringToRow(categoryRefToAssignmentRefsMap, possibleChildObject);
-			ORefList overlappingAssignmentRefs = assignmentRefsReferringToRow.getOverlappingRefs(getAssignmentRefsThatMatch());
+			ORefList overlappingAssignmentRefs = assignmentRefsReferringToRow.getOverlappingRefs(getAssignmentRefsThatMatchParentRow());
 			if (shouldIncludeChildNode(overlappingAssignmentRefs))
 				children.add(new RollupReportsNode(getProject(), rowColumnProvider, possibleChildObject, childLevel, overlappingAssignmentRefs));
 		}
@@ -121,9 +121,9 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 	private HashMap<ORef, ORefList> createCategoryRefToAssignmentRefsMap(int levelObjectType)
 	{
 		HashMap<ORef, ORefList> categoryRefToAssignmentRefsMap = new HashMap<ORef, ORefList>();
-		for (int index = 0; index < getAssignmentRefsThatMatch().size(); ++index)
+		for (int index = 0; index < getAssignmentRefsThatMatchParentRow().size(); ++index)
 		{
-			Assignment assignment = Assignment.findAssignment(getProject(), getAssignmentRefsThatMatch().get(index));
+			Assignment assignment = Assignment.findAssignment(getProject(), getAssignmentRefsThatMatchParentRow().get(index));
 			ORefList refList = new ORefList(assignment);
 			ORef categoryRef = assignment.getCategoryRef(levelObjectType);
 			if (!categoryRefToAssignmentRefsMap.containsKey(categoryRef))
@@ -143,9 +143,9 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		return new UnspecifiedBaseObject(getProject().getObjectManager(), levelObjectType, getObjectTypeName());
 	}
 
-	private ORefList getAssignmentRefsThatMatch()
+	private ORefList getAssignmentRefsThatMatchParentRow()
 	{
-		return assignmentRefsThatMatch;
+		return assignmentRefsThatMatchParentRow;
 	}
 
 	private CodeList getLevelObjectTypes() throws Exception
@@ -160,6 +160,6 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 		
 	private BaseObject nodeObject;
 	private int currentLevel;
-	private ORefList assignmentRefsThatMatch;
+	private ORefList assignmentRefsThatMatchParentRow;
 	private RowColumnProviderWithEmptyRowChecking rowColumnProvider;
 }
