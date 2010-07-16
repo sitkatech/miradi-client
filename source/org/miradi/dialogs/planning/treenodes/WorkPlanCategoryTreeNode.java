@@ -87,10 +87,10 @@ public class WorkPlanCategoryTreeNode extends AbstractPlanningTreeNode
 		for (int index = 0; index < childRefs.size(); ++index)
 		{	
 			BaseObject possibleChildObject = createOrFindChildObject(childRefs.get(index), levelObjectType);
-			ORefList assignmentRefsThatMatchPossibleChildHierarchy = getAssignmentsReferringToRow(categoryRefToAssignmentRefsMap, possibleChildObject);
-			ORefList assignmentRefsThatMatchPossibleChild = assignmentRefsThatMatchPossibleChildHierarchy.getOverlappingRefs(getAssignmentRefsThatMatchThisNodeHierarchy());
-			if (shouldIncludeChildNode(assignmentRefsThatMatchPossibleChild))
-				children.add(new WorkPlanCategoryTreeNode(getProject(), rowColumnProvider, possibleChildObject, childLevel, assignmentRefsThatMatchPossibleChild));
+			ORefList assignmentRefsThatMatchPossibleChild = getAssignmentsReferringToRow(categoryRefToAssignmentRefsMap, possibleChildObject);
+			ORefList assignmentRefsThatMatchPossibleChildHierarchy = assignmentRefsThatMatchPossibleChild.getOverlappingRefs(getAssignmentRefsThatMatchThisNodeHierarchy());
+			if (shouldIncludeChildNode(assignmentRefsThatMatchPossibleChildHierarchy))
+				children.add(new WorkPlanCategoryTreeNode(getProject(), rowColumnProvider, possibleChildObject, childLevel, assignmentRefsThatMatchPossibleChildHierarchy));
 		}
 		
 		Collections.sort(children, createNodeSorter());
