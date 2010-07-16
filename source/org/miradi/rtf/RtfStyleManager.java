@@ -36,6 +36,7 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -134,6 +135,9 @@ public class RtfStyleManager
 		
 		if (FundingSource.is(objectType))
 			return FundingSource.OBJECT_NAME;
+		
+		if (ProjectResource.is(objectType))
+			return ProjectResource.OBJECT_NAME;
 		
 		if (ObjectType.FAKE == objectType)
 			return "";
