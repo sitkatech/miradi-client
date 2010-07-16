@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs;
 
 import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
-import org.miradi.objects.AbstractBudgetCategoryObject;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
@@ -41,8 +40,7 @@ public class RollupReportsRowColumnProvider implements CategoryTreeRowColumnProv
 	
 	public CodeList getColumnListToShow()
 	{
-		CodeList columnCodes = new CodeList();
-		columnCodes.add(AbstractBudgetCategoryObject.TAG_CODE);		
+		CodeList columnCodes = new CodeList();		
 		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE);
 		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE);
 		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE);
