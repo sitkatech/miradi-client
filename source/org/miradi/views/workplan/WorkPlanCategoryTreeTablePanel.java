@@ -33,9 +33,9 @@ import org.miradi.objects.ViewData;
 import org.miradi.questions.AnalysisObjectTypeQuestion;
 import org.miradi.utils.CodeList;
 
-public class CategoryTreeTablePanel extends PlanningTreeTablePanel
+public class WorkPlanCategoryTreeTablePanel extends PlanningTreeTablePanel
 {
-	protected CategoryTreeTablePanel(MainWindow mainWindowToUse,
+	protected WorkPlanCategoryTreeTablePanel(MainWindow mainWindowToUse,
 			PlanningTreeTable treeToUse, 
 			PlanningTreeTableModel modelToUse,
 			Class[] buttonClasses,
@@ -49,7 +49,7 @@ public class CategoryTreeTablePanel extends PlanningTreeTablePanel
 	{
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 
-		return new CategoryTreeTablePanel(mainWindowToUse, treeTable, model, buttonActions, rowColumnProvider);
+		return new WorkPlanCategoryTreeTablePanel(mainWindowToUse, treeTable, model, buttonActions, rowColumnProvider);
 	}
 	
 	private CategoryTreeRowColumnProvider  getCategoryTreeRowColumnProvider()
