@@ -30,9 +30,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
-public class RollupReportsObjectsChooserField extends ObjectDataInputField
+public class AnalysisObjectsChooserField extends ObjectDataInputField
 { 
-	public RollupReportsObjectsChooserField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
+	public AnalysisObjectsChooserField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, refToUse, tagToUse);
 		
