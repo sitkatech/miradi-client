@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 16:10-0500\n"
+"POT-Creation-Date: 2010-07-16 16:25-0500\n"
 "PO-Revision-Date: 2010-05-12 13:30-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -761,7 +761,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/AbstractAccountingCodeManagementPanel.java:45
 #: Miradi/source/org/miradi/views/workplan/AccountingCodeManagementConfiguration.java:60
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:105
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:111
 msgid "Accounting Codes"
 msgstr ""
 
@@ -1728,6 +1728,7 @@ msgid "An unexpected error occurred: "
 msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/AnalysisManagementConfiguration.java:50
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:106
 msgid "Analysis"
 msgstr ""
 
@@ -2051,12 +2052,12 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:50
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:95
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:96
 msgid "Budget Category One"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/AnalysisObjectTypeQuestion.java:51
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:100
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:101
 msgid "Budget Category Two"
 msgstr ""
 
@@ -3340,7 +3341,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/planning/AbstractFundingSourceManagementPanel.java:45
 #: Miradi/source/org/miradi/views/workplan/FundingSourceManagementConfiguration.java:58
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:304
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:90
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:91
 msgid "Funding Sources"
 msgstr ""
 
@@ -4005,7 +4006,7 @@ msgid "Legacy TNC Ratings"
 msgstr ""
 
 #: Miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:100
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:80
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:81
 msgid "Legend Table"
 msgstr ""
 
@@ -4472,7 +4473,7 @@ msgid "Monitoring Overview"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:120
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:126
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:68
 msgid "Monitoring Plan"
 msgstr ""
@@ -4702,7 +4703,7 @@ msgid "Orange"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/doers/DeleteOranizationDoer.java:32
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:145
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:151
 msgid "Organization"
 msgstr ""
 
@@ -4930,7 +4931,7 @@ msgstr ""
 msgid "Progress Percents"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:85
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:86
 msgid "Progress Report"
 msgstr ""
 
@@ -5139,7 +5140,7 @@ msgid ""
 "financial."
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:110
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:116
 msgid "Resources"
 msgstr ""
 
@@ -5549,7 +5550,7 @@ msgstr ""
 msgid "Stop"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:125
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:131
 msgid "Strategic Plan"
 msgstr ""
 
@@ -6533,11 +6534,11 @@ msgstr ""
 msgid "Target"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:75
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:76
 msgid "Target Viability - Details"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:70
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:71
 msgid "Target Viability - Table"
 msgstr ""
 
@@ -6604,7 +6605,7 @@ msgstr ""
 msgid "Tasks"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:140
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:146
 msgid "Team"
 msgstr ""
 
@@ -6783,11 +6784,11 @@ msgstr ""
 msgid "Threat Ratings"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:135
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:141
 msgid "Threat Ratings - Details"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:130
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:136
 msgid "Threat Ratings - Table"
 msgstr ""
 
@@ -7430,7 +7431,7 @@ msgid "Wizard load of control failed:"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:191
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:115
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:121
 msgid "Work Plan"
 msgstr ""
 
