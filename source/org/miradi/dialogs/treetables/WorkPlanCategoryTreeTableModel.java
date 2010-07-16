@@ -20,25 +20,25 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.treetables;
 
-import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
+import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.WorkPlanCategoryTreeRootNode;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
 import org.miradi.project.Project;
 
 public class WorkPlanCategoryTreeTableModel extends ExportablePlanningTreeTableModel
 {
-	private WorkPlanCategoryTreeTableModel(Project project, TreeTableNode rootNode, CategoryTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
+	private WorkPlanCategoryTreeTableModel(Project project, TreeTableNode rootNode, WorkPlanCategoryTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
 	{
 		super(project, rootNode, rowColumnProvider.getRowListToShow(), rowColumnProvider.getColumnListToShow(), uniqueTreeTableModeIdentifier);
 	}
 	
-	public static WorkPlanCategoryTreeTableModel createCategoryTreeTableModel(Project project, CategoryTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
+	public static WorkPlanCategoryTreeTableModel createCategoryTreeTableModel(Project project, WorkPlanCategoryTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
 	{
 		TreeTableNode projectRootNode = createRootNode(project, rowColumnProvider);
 		return new WorkPlanCategoryTreeTableModel(project, projectRootNode, rowColumnProvider, uniqueTreeTableModeIdentifier);
 	}
 	
-	private static TreeTableNode createRootNode(Project project, CategoryTreeRowColumnProvider rowColumnProvider) throws Exception
+	private static TreeTableNode createRootNode(Project project, WorkPlanCategoryTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
 		return new WorkPlanCategoryTreeRootNode(project, rowColumnProvider);
 	}

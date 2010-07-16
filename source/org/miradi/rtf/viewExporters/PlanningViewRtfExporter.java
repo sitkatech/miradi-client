@@ -21,7 +21,7 @@ package org.miradi.rtf.viewExporters;
 
 import org.miradi.dialogs.planning.AccountingCodeCoreRowColumnProvider;
 import org.miradi.dialogs.planning.CategoryOneCoreRowColumnProvider;
-import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
+import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.CategoryTwoCoreRowColumnProvider;
 import org.miradi.dialogs.planning.FundingSourceCoreRowColumnProvider;
 import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
@@ -89,7 +89,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 			exportCategoryTab(writer, new CategoryTwoCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryTwoLabel());
 	}
 
-	private void exportCategoryTab(RtfWriter writer, CategoryTreeRowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
+	private void exportCategoryTab(RtfWriter writer, WorkPlanCategoryTreeRowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
 	{
 		ExportablePlanningTreeTableModel model = WorkPlanCategoryTreeTableModel.createCategoryTreeTableModel(getProject(), rowColumnProvider, AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
 		exportTab(writer, rowColumnProvider, translatedTableName, model);

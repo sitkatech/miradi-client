@@ -22,14 +22,14 @@ package org.miradi.dialogs.planning.treenodes;
 
 import java.util.Vector;
 
-import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
+import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
 public class WorkPlanCategoryTreeRootNode extends AbstractPlanningTreeNode
 {
-	public WorkPlanCategoryTreeRootNode(Project projectToUse, CategoryTreeRowColumnProvider rowColumnProviderToUse) throws Exception
+	public WorkPlanCategoryTreeRootNode(Project projectToUse, WorkPlanCategoryTreeRowColumnProvider rowColumnProviderToUse) throws Exception
 	{
 		super(projectToUse, rowColumnProviderToUse.getRowListToShow());
 		
@@ -61,5 +61,5 @@ public class WorkPlanCategoryTreeRootNode extends AbstractPlanningTreeNode
 		children.add(new WorkPlanCategoryTreeNode(getProject(), rowColumnProvider, getObject(), initialLevel, allAsignmentRefs));
 	}
 
-	private CategoryTreeRowColumnProvider rowColumnProvider;
+	private WorkPlanCategoryTreeRowColumnProvider rowColumnProvider;
 }

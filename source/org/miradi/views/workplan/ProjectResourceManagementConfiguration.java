@@ -25,7 +25,7 @@ import javax.swing.Icon;
 import org.miradi.actions.ActionCreateResource;
 import org.miradi.actions.ActionDeleteResource;
 import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
-import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
+import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.icons.ProjectResourceIcon;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
@@ -59,7 +59,7 @@ public class ProjectResourceManagementConfiguration extends	AbstractManagementCo
 	}
 
 	@Override
-	public CategoryTreeRowColumnProvider getRowColumnProvider() throws Exception
+	public WorkPlanCategoryTreeRowColumnProvider getRowColumnProvider() throws Exception
 	{
 		return new ProjectResourceRowColumnProvider();
 	}

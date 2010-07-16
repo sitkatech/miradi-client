@@ -22,7 +22,7 @@ package org.miradi.views.workplan;
 
 import javax.swing.Icon;
 
-import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
+import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
@@ -43,7 +43,7 @@ abstract public class AbstractManagementConfiguration
 		return getRowColumnProvider().getLevelTypeCodes();
 	}
 	
-	abstract public CategoryTreeRowColumnProvider getRowColumnProvider() throws Exception;
+	abstract public WorkPlanCategoryTreeRowColumnProvider getRowColumnProvider() throws Exception;
 
 	abstract public String getPanelDescription();
 

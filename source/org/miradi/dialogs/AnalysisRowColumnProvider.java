@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs;
 
-import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
+import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
@@ -31,7 +31,7 @@ import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.views.workplan.WorkPlanView;
 
-public class AnalysisRowColumnProvider implements CategoryTreeRowColumnProvider
+public class AnalysisRowColumnProvider implements WorkPlanCategoryTreeRowColumnProvider
 { 
 	public AnalysisRowColumnProvider(Project projectToUse)
 	{

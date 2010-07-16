@@ -24,7 +24,7 @@ import javax.swing.Icon;
 
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
-import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
+import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
@@ -54,7 +54,7 @@ public class WorkPlanCategoryManagementPanel extends PlanningTreeManagementPanel
 
 	public static WorkPlanCategoryManagementPanel createManagementPanel(MainWindow mainWindowToUse, AbstractManagementConfiguration managementConfiguration) throws Exception
 	{
-		CategoryTreeRowColumnProvider rowColumnProvider = managementConfiguration.getRowColumnProvider();
+		WorkPlanCategoryTreeRowColumnProvider rowColumnProvider = managementConfiguration.getRowColumnProvider();
 		PlanningTreeTableModel treeTableModel = WorkPlanCategoryTreeTableModel.createCategoryTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, managementConfiguration.getUniqueTreeTableIdentifier());
 		PlanningTreeTablePanel treeTablePanel = WorkPlanCategoryTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider, managementConfiguration.getButtonActions());
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
