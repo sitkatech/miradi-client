@@ -38,17 +38,16 @@ import org.miradi.dialogs.planning.propertiesPanel.AboveBudgetColumnsBar;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAboveTreeTablePanel;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractWorkUnitsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.AccountingCodeExpenseTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.WorkPlanBudgetDetailsTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.WorkPlanExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.FundingSourceExpenseTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
-import org.miradi.dialogs.planning.propertiesPanel.WorkPlanWorkUnitsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceWorkUnitsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.WorkPlanBudgetDetailsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.WorkPlanExpenseAmountsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.WorkPlanWorkUnitsTableModel;
 import org.miradi.dialogs.treetables.AbstractTreeTablePanel;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.CommandExecutedEvent;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
@@ -143,19 +142,12 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	@Override
 	protected boolean wereAssignmentNodesAddedOrRemoved(CommandExecutedEvent event) throws Exception
 	{
-		try
-		{
-			CodeList rowCodes = getRowColumnProvider().getRowListToShow();
-			if (rowCodes.contains(ResourceAssignment.OBJECT_NAME) && event.isSetDataCommandWithThisTag(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS))
-				return true;
-			
-			if (rowCodes.contains(ExpenseAssignment.OBJECT_NAME) && event.isSetDataCommandWithThisTag(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS))
-				return true;
-		}
-		catch(Exception e)
-		{
-			EAM.logStackTrace();
-		}
+		CodeList rowCodes = getRowColumnProvider().getRowListToShow();
+		if (rowCodes.contains(ResourceAssignment.OBJECT_NAME) && event.isSetDataCommandWithThisTag(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS))
+			return true;
+
+		if (rowCodes.contains(ExpenseAssignment.OBJECT_NAME) && event.isSetDataCommandWithThisTag(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS))
+			return true;
 		
 		return false;
 	}
