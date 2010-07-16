@@ -34,9 +34,9 @@ import org.miradi.project.Project;
 import org.miradi.questions.AnalysisObjectTypeQuestion;
 import org.miradi.utils.CodeList;
 
-public class CategoryTreeNode extends AbstractPlanningTreeNode
+public class WorkPlanCategoryTreeNode extends AbstractPlanningTreeNode
 {
-	public CategoryTreeNode(Project project, CategoryTreeRowColumnProvider rowColumnProviderToUse, BaseObject nodeObjectToUse, int levelToUse, ORefList assignmentRefsThatMatchThisNodeHierarchyToUse) throws Exception
+	public WorkPlanCategoryTreeNode(Project project, CategoryTreeRowColumnProvider rowColumnProviderToUse, BaseObject nodeObjectToUse, int levelToUse, ORefList assignmentRefsThatMatchThisNodeHierarchyToUse) throws Exception
 	{
 		super(project, rowColumnProviderToUse.getRowListToShow());
 		
@@ -90,7 +90,7 @@ public class CategoryTreeNode extends AbstractPlanningTreeNode
 			ORefList assignmentRefsThatMatchPossibleChildHierarchy = getAssignmentsReferringToRow(categoryRefToAssignmentRefsMap, possibleChildObject);
 			ORefList assignmentRefsThatMatchPossibleChild = assignmentRefsThatMatchPossibleChildHierarchy.getOverlappingRefs(getAssignmentRefsThatMatchThisNodeHierarchy());
 			if (shouldIncludeChildNode(assignmentRefsThatMatchPossibleChild))
-				children.add(new CategoryTreeNode(getProject(), rowColumnProvider, possibleChildObject, childLevel, assignmentRefsThatMatchPossibleChild));
+				children.add(new WorkPlanCategoryTreeNode(getProject(), rowColumnProvider, possibleChildObject, childLevel, assignmentRefsThatMatchPossibleChild));
 		}
 		
 		Collections.sort(children, createNodeSorter());

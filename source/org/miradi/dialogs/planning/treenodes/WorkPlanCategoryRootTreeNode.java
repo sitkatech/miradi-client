@@ -58,7 +58,7 @@ public class WorkPlanCategoryRootTreeNode extends AbstractPlanningTreeNode
 		ORefList allAsignmentRefs = new ORefList();
 		allAsignmentRefs.addAll(getProject().getAssignmentPool().getRefList());
 		allAsignmentRefs.addAll(getProject().getExpenseAssignmentPool().getRefList());
-		children.add(new CategoryTreeNode(getProject(), rowColumnProvider, getObject(), initialLevel, allAsignmentRefs));
+		children.add(new WorkPlanCategoryTreeNode(getProject(), rowColumnProvider, getObject(), initialLevel, allAsignmentRefs));
 	}
 
 	private CategoryTreeRowColumnProvider rowColumnProvider;
