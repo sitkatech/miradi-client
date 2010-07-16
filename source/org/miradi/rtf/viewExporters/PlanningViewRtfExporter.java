@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf.viewExporters;
 
+import org.miradi.dialogs.planning.AbstractBudgetCategoryRowColumnProvider;
 import org.miradi.dialogs.planning.AccountingCodeCoreRowColumnProvider;
 import org.miradi.dialogs.planning.CategoryOneCoreRowColumnProvider;
 import org.miradi.dialogs.planning.CategoryTwoCoreRowColumnProvider;
@@ -29,13 +30,11 @@ import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProviderWithBudgetColumns;
+import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanBudgetDetailsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanExpenseAmountsTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanWorkUnitsTableModel;
 import org.miradi.dialogs.planning.upperPanel.AccountingCodeTreeTableModel;
-import org.miradi.dialogs.planning.upperPanel.CategoryOneTreeTableModel;
-import org.miradi.dialogs.planning.upperPanel.CategoryTwoTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.FundingSourceTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewFutureStatusTableModel;
@@ -43,6 +42,7 @@ import org.miradi.dialogs.planning.upperPanel.PlanningViewMainTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMeasurementTableModel;
 import org.miradi.dialogs.planning.upperPanel.ProjectResourceTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.TreeTableModelExporter;
+import org.miradi.dialogs.treetables.CategoryTreeTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
@@ -86,10 +86,10 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 			exportFundingSourceTab(writer, new FundingSourceCoreRowColumnProvider(), ReportTemplateContentQuestion.getFundingSourcesLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.CATEGORY_ONE_TAB_CODE))
-			exportCategoryOneTab(writer, new CategoryOneCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryOneLabel());
+			exportCategoryTab(writer, new CategoryOneCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryOneLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.CATEGORY_TWO_TAB_CODE))
-			exportCategoryTwoTab(writer, new CategoryTwoCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryTwoLabel());
+			exportCategoryTab(writer, new CategoryTwoCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryTwoLabel());
 	}
 
 	private void exportResourcesTab(RtfWriter writer, RowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
@@ -110,15 +110,9 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		exportTab(writer, rowColumnProvider, translatedTableName, model);
 	}
 	
-	private void exportCategoryOneTab(RtfWriter writer, RowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
+	private void exportCategoryTab(RtfWriter writer, AbstractBudgetCategoryRowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
 	{
-		ExportablePlanningTreeTableModel model = CategoryOneTreeTableModel.createCategoryOneTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow(), AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
-		exportTab(writer, rowColumnProvider, translatedTableName, model);
-	}
-	
-	private void exportCategoryTwoTab(RtfWriter writer, RowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
-	{
-		ExportablePlanningTreeTableModel model = CategoryTwoTreeTableModel.createCategoryTwoTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow(), AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
+		ExportablePlanningTreeTableModel model = CategoryTreeTableModel.createCategoryTreeTableModel(getProject(), rowColumnProvider, AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
 		exportTab(writer, rowColumnProvider, translatedTableName, model);
 	}
 	
