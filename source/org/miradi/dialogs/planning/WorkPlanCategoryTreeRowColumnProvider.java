@@ -23,7 +23,7 @@ package org.miradi.dialogs.planning;
 import org.miradi.utils.CodeList;
 
 
-public interface CategoryTreeRowColumnProvider extends RowColumnProvider
+public interface WorkPlanCategoryTreeRowColumnProvider extends RowColumnProvider
 {
 	public boolean shouldIncludeEmptyRows();
 	

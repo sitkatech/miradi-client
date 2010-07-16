@@ -24,7 +24,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Vector;
 
-import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
+import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Assignment;
@@ -36,7 +36,7 @@ import org.miradi.utils.CodeList;
 
 public class WorkPlanCategoryTreeNode extends AbstractPlanningTreeNode
 {
-	public WorkPlanCategoryTreeNode(Project project, CategoryTreeRowColumnProvider rowColumnProviderToUse, BaseObject nodeObjectToUse, int levelToUse, ORefList assignmentRefsThatMatchThisNodeHierarchyToUse) throws Exception
+	public WorkPlanCategoryTreeNode(Project project, WorkPlanCategoryTreeRowColumnProvider rowColumnProviderToUse, BaseObject nodeObjectToUse, int levelToUse, ORefList assignmentRefsThatMatchThisNodeHierarchyToUse) throws Exception
 	{
 		super(project, rowColumnProviderToUse.getRowListToShow());
 		
@@ -161,5 +161,5 @@ public class WorkPlanCategoryTreeNode extends AbstractPlanningTreeNode
 	private BaseObject nodeObject;
 	private int currentLevel;
 	private ORefList assignmentRefsThatMatchThisNodeHierarchy;
-	private CategoryTreeRowColumnProvider rowColumnProvider;
+	private WorkPlanCategoryTreeRowColumnProvider rowColumnProvider;
 }

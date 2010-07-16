@@ -26,7 +26,7 @@ import org.miradi.actions.ActionCollapseAllRows;
 import org.miradi.actions.ActionEditAnalysisRows;
 import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.dialogs.AnalysisRowColumnProvider;
-import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
+import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.icons.PlanningIcon;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
@@ -39,7 +39,7 @@ public class AnalysisManagementConfiguration extends AbstractManagementConfigura
 	}
 	
 	@Override
-	public CategoryTreeRowColumnProvider getRowColumnProvider() throws Exception
+	public WorkPlanCategoryTreeRowColumnProvider getRowColumnProvider() throws Exception
 	{
 		return new AnalysisRowColumnProvider(getProject());
 	}

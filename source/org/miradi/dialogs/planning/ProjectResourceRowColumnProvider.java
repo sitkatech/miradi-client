@@ -24,7 +24,7 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 
-public class ProjectResourceRowColumnProvider implements CategoryTreeRowColumnProvider
+public class ProjectResourceRowColumnProvider implements WorkPlanCategoryTreeRowColumnProvider
 {
 	public CodeList getColumnListToShow()
 	{

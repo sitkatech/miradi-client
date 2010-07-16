@@ -26,7 +26,7 @@ import org.miradi.actions.ActionCreateAccountingCode;
 import org.miradi.actions.ActionDeleteAccountingCode;
 import org.miradi.actions.ActionImportAccountingCodes;
 import org.miradi.dialogs.planning.AccountingCodeRowColumnProvider;
-import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
+import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.icons.AccountingCodeIcon;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
@@ -61,7 +61,7 @@ public class AccountingCodeManagementConfiguration extends AbstractManagementCon
 	}
 
 	@Override
-	public CategoryTreeRowColumnProvider getRowColumnProvider() throws Exception
+	public WorkPlanCategoryTreeRowColumnProvider getRowColumnProvider() throws Exception
 	{
 		return new AccountingCodeRowColumnProvider();
 	}
