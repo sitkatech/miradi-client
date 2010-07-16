@@ -20,6 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import org.miradi.icons.AccountingCodeIcon;
+import org.miradi.icons.CategoryOneIcon;
+import org.miradi.icons.CategoryTwoIcon;
+import org.miradi.icons.FundingSourceIcon;
+import org.miradi.icons.ProjectResourceIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BudgetCategoryOne;
@@ -39,11 +44,11 @@ public class RollupReportsObjectTypeQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[]{
 			new ChoiceItem(UNSPECIFIED_CODE, EAM.text("Unspecified")),
-			new ChoiceItem(ProjectResource.getObjectType(), EAM.text("Project Resource")),
-			new ChoiceItem(FundingSource.getObjectType(), EAM.text("Funding Source")),
-			new ChoiceItem(AccountingCode.getObjectType(), EAM.text("Accounting Code")),
-			new ChoiceItem(BudgetCategoryOne.getObjectType(), EAM.text("Budget Category One")),
-			new ChoiceItem(BudgetCategoryTwo.getObjectType(), EAM.text("Budget Category Two")),
+			new ChoiceItem(ProjectResource.getObjectType(), EAM.text("Project Resource"), new ProjectResourceIcon()),
+			new ChoiceItem(AccountingCode.getObjectType(), EAM.text("Accounting Code"), new AccountingCodeIcon()),
+			new ChoiceItem(FundingSource.getObjectType(), EAM.text("Funding Source"), new FundingSourceIcon()),
+			new ChoiceItem(BudgetCategoryOne.getObjectType(), EAM.text("Budget Category One"), new CategoryOneIcon()),
+			new ChoiceItem(BudgetCategoryTwo.getObjectType(), EAM.text("Budget Category Two"), new CategoryTwoIcon()),
 		};
 	}
 	
