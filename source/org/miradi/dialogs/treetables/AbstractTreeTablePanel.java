@@ -209,7 +209,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		return false;
 	}
 	
-	protected boolean wereAssignmentNodesAddedOrRemoved(CommandExecutedEvent event)
+	protected boolean wereAssignmentNodesAddedOrRemoved(CommandExecutedEvent event) throws Exception
 	{
 		return false;
 	}
