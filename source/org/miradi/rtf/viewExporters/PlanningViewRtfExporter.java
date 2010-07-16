@@ -74,11 +74,11 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PROGRESS_REPORT_CODE))
 			exportReport(writer, new ProgressReportRowColumnProvider(), ReportTemplateContentQuestion.getProgressReportLabel());
 		
-		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.PLANNING_VIEW_RESOURCES_TAB_CODE, new ProjectResourceRowColumnProvider(), ReportTemplateContentQuestion.getResourcesLabel());
-		exportWorkPlanCategoryTab(writer, reportTemplateContent,ReportTemplateContentQuestion.PLANNING_VIEW_ACCOUNTING_CODE_TAB_CODE, new AccountingCodeCoreRowColumnProvider(), ReportTemplateContentQuestion.getAccountingCodesLabel());
-		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE, new FundingSourceCoreRowColumnProvider(), ReportTemplateContentQuestion.getFundingSourcesLabel());
-		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.CATEGORY_ONE_TAB_CODE, new CategoryOneCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryOneLabel());
-		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.CATEGORY_TWO_TAB_CODE, new CategoryTwoCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryTwoLabel());
+		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.PLANNING_VIEW_RESOURCES_CODE, new ProjectResourceRowColumnProvider(), ReportTemplateContentQuestion.getResourcesLabel());
+		exportWorkPlanCategoryTab(writer, reportTemplateContent,ReportTemplateContentQuestion.PLANNING_VIEW_ACCOUNTING_CODE_CODE, new AccountingCodeCoreRowColumnProvider(), ReportTemplateContentQuestion.getAccountingCodesLabel());
+		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.PLANNING_VIEW_FUNDING_SOURCE_CODE, new FundingSourceCoreRowColumnProvider(), ReportTemplateContentQuestion.getFundingSourcesLabel());
+		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.BUDGET_CATEGORY_ONE_CODE, new CategoryOneCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryOneLabel());
+		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.BUDGET_CATEGORY_TWO_CODE, new CategoryTwoCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryTwoLabel());
 		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.ANALYSIS_TAB_CODE, new AnalysisRowColumnProvider(getProject()), ReportTemplateContentQuestion.getAnalysisLabel());
 	}
 
