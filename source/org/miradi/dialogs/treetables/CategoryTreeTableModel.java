@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.treetables;
 
 import org.miradi.dialogs.planning.CategoryTreeRowColumnProvider;
-import org.miradi.dialogs.planning.treenodes.CategoryRootTreeNode;
+import org.miradi.dialogs.planning.treenodes.WorkPlanCategoryRootTreeNode;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
 import org.miradi.project.Project;
 
@@ -40,6 +40,6 @@ public class CategoryTreeTableModel extends ExportablePlanningTreeTableModel
 	
 	private static TreeTableNode createRootNode(Project project, CategoryTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
-		return new CategoryRootTreeNode(project, rowColumnProvider);
+		return new WorkPlanCategoryRootTreeNode(project, rowColumnProvider);
 	}
 }
