@@ -237,13 +237,13 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
 			multiModel.addModel(budgetDetailsTableModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE))
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_WORK_UNITS_COLUMN_CODE))
 			multiModel.addModel(rollupReportsWorkUnitsModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_EXPENSES_CODE))
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_EXPENSES_CODE))
 			multiModel.addModel(rollupReportsExpenseModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_BUDGET_DETAILS_COLUMN_CODE))
+		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_BUDGET_DETAILS_COLUMN_CODE))
 			multiModel.addModel(rollupReportsBudgetDetailsModel);
 		
 		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_WORK_UNITS_COLUMN_CODE))

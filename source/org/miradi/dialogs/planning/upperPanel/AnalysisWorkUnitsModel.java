@@ -34,7 +34,7 @@ public class AnalysisWorkUnitsModel extends CategorizedWorkUnitsTableModel
 	@Override
 	public String getColumnGroupCode(int modelColumn)
 	{
-		return WorkPlanColumnConfigurationQuestion.META_ROLLUP_REPORTS_WORK_UNITS_COLUMN_CODE;
+		return WorkPlanColumnConfigurationQuestion.META_ANALYSIS_WORK_UNITS_COLUMN_CODE;
 	}
 
 	@Override
