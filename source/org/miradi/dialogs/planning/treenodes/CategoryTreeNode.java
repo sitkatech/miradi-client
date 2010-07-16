@@ -34,9 +34,9 @@ import org.miradi.project.Project;
 import org.miradi.questions.RollupReportsObjectTypeQuestion;
 import org.miradi.utils.CodeList;
 
-public class RollupReportsNode extends AbstractPlanningTreeNode
+public class CategoryTreeNode extends AbstractPlanningTreeNode
 {
-	public RollupReportsNode(Project project, CategoryTreeRowColumnProvider rowColumnProviderToUse, BaseObject nodeObjectToUse, int levelToUse, ORefList assignmentRefsThatMatchParentRowToUse) throws Exception
+	public CategoryTreeNode(Project project, CategoryTreeRowColumnProvider rowColumnProviderToUse, BaseObject nodeObjectToUse, int levelToUse, ORefList assignmentRefsThatMatchParentRowToUse) throws Exception
 	{
 		super(project, rowColumnProviderToUse.getRowListToShow());
 		
@@ -90,7 +90,7 @@ public class RollupReportsNode extends AbstractPlanningTreeNode
 			ORefList assignmentRefsReferringToRow = getAssignmentsReferringToRow(categoryRefToAssignmentRefsMap, possibleChildObject);
 			ORefList overlappingAssignmentRefs = assignmentRefsReferringToRow.getOverlappingRefs(getAssignmentRefsThatMatchParentRow());
 			if (shouldIncludeChildNode(overlappingAssignmentRefs))
-				children.add(new RollupReportsNode(getProject(), rowColumnProvider, possibleChildObject, childLevel, overlappingAssignmentRefs));
+				children.add(new CategoryTreeNode(getProject(), rowColumnProvider, possibleChildObject, childLevel, overlappingAssignmentRefs));
 		}
 		
 		Collections.sort(children, createNodeSorter());
