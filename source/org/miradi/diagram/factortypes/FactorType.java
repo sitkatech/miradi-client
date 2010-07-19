@@ -118,6 +118,7 @@ public abstract class FactorType
 		return getClass().getName().hashCode();
 	}
 	
+	//FIXME medium - Should use ObjectManager.getInternalObjectName(type)
 	public static String getFactorTypeLabel(Factor factor)
 	{
 		if(factor.isDirectThreat())
