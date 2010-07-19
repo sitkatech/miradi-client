@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-19 11:14-0500\n"
+"POT-Creation-Date: 2010-07-19 12:47-0500\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -7619,6 +7619,9 @@ msgstr ""
 msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
 msgstr ""
 
+msgid "FieldLabel|6.Link|Factor Link"
+msgstr ""
+
 msgid "FieldLabel|6.Stress|Stress"
 msgstr ""
 
@@ -8283,6 +8286,9 @@ msgstr ""
 msgid "FieldLabel|12.PseudoTagActivities|Activities"
 msgstr ""
 
+msgid "FieldLabel|13.DiagramLink|Diagram Link"
+msgstr ""
+
 msgid "FieldLabel|13.FromDiagramFactorId|From"
 msgstr ""
 
@@ -8616,6 +8622,9 @@ msgstr ""
 msgid "FieldLabel|27.DiagramObjectLabel|Diagram Name"
 msgstr ""
 
+msgid "FieldLabel|29.PlanningViewConfiguration|Planning View Configuration"
+msgstr ""
+
 msgid "FieldLabel|29.Label|Label"
 msgstr ""
 
@@ -8626,6 +8635,9 @@ msgid "FieldLabel|29.TagColConfiguration|Columns"
 msgstr ""
 
 msgid "FieldLabel|29.TagDiagramDataInclusion|Include Data From"
+msgstr ""
+
+msgid "FieldLabel|30.WwfProjectData|WwfProjectData"
 msgstr ""
 
 msgid "FieldLabel|30.RelatedProjects|Related Projects"
@@ -8644,6 +8656,9 @@ msgid "FieldLabel|30.EcoRegions|Ecoregions"
 msgstr ""
 
 msgid "FieldLabel|30.Regions|Regions"
+msgstr ""
+
+msgid "FieldLabel|31.CostAllocationRule|Cost Allocation Rule"
 msgstr ""
 
 msgid "FieldLabel|32.Measurement|Measurement"
@@ -8668,6 +8683,9 @@ msgid "FieldLabel|32.Detail|Details"
 msgstr ""
 
 msgid "FieldLabel|32.Trend|Trend"
+msgstr ""
+
+msgid "FieldLabel|33.Stress|Stress"
 msgstr ""
 
 msgid "FieldLabel|33.ShortLabel|ID"
@@ -8697,6 +8715,9 @@ msgstr ""
 msgid "FieldLabel|33.Irreversibility|Irreversibility"
 msgstr ""
 
+msgid "FieldLabel|34.ThreatStressRating|Threat-Stress Rating"
+msgstr ""
+
 msgid "FieldLabel|34.PseudoThreatRating|Summary Rating"
 msgstr ""
 
@@ -8724,6 +8745,9 @@ msgstr ""
 msgid "FieldLabel|36.Detail|Details"
 msgstr ""
 
+msgid "FieldLabel|37.ProgressReport|Progress Report"
+msgstr ""
+
 msgid "FieldLabel|37.ProgressStatus|Progress Status"
 msgstr ""
 
@@ -8731,6 +8755,9 @@ msgid "FieldLabel|37.ProgressDate|Progress Date"
 msgstr ""
 
 msgid "FieldLabel|37.Details|Details"
+msgstr ""
+
+msgid "FieldLabel|38.RareProjectData|Rare Project Data"
 msgstr ""
 
 msgid "FieldLabel|38.FlagshipSpeciesCommonName|Flagship Species Common Name"
@@ -8812,6 +8839,9 @@ msgstr ""
 msgid "FieldLabel|38.Cohort|Cohort"
 msgstr ""
 
+msgid "FieldLabel|39.WcsProjectData|WCS Project Data"
+msgstr ""
+
 msgid "FieldLabel|39.OrganizationalFocus|Organizational Focus"
 msgstr ""
 
@@ -8828,6 +8858,9 @@ msgid "FieldLabel|39.StepCompleted|Completed?"
 msgstr ""
 
 msgid "FieldLabel|39.StepUrl|URL"
+msgstr ""
+
+msgid "FieldLabel|40.TncProjectData|TNC Project Data"
 msgstr ""
 
 msgid "FieldLabel|40.ConProProjectNumber|ConPro Project Number"
@@ -8862,6 +8895,9 @@ msgid "FieldLabel|40.ProjectCitations|Citations"
 msgstr ""
 
 msgid "FieldLabel|40.CapStandardsScorecard|CAP Standards Scorecard"
+msgstr ""
+
+msgid "FieldLabel|41.FosProjectData|FOS Project Data"
 msgstr ""
 
 msgid "FieldLabel|41.TrainingType|Training Type"
@@ -8903,6 +8939,9 @@ msgstr ""
 msgid "FieldLabel|42.Comments|Comments"
 msgstr ""
 
+msgid "FieldLabel|43.WCPAProjectData|WCPA Project Data"
+msgstr ""
+
 msgid "FieldLabel|43.LegalStatus|Legal Status"
 msgstr ""
 
@@ -8936,7 +8975,13 @@ msgstr ""
 msgid "FieldLabel|43.ManagementResources|Management Resources"
 msgstr ""
 
+msgid "FieldLabel|44.Xenodata|External System Data"
+msgstr ""
+
 msgid "FieldLabel|44.ProjectId|ConPro Project Number"
+msgstr ""
+
+msgid "FieldLabel|45.ProgressPercent|Progress Percent"
 msgstr ""
 
 msgid "FieldLabel|45.PercentDate|Date"
@@ -8946,6 +8991,9 @@ msgid "FieldLabel|45.PercentComplete|Percent Complete"
 msgstr ""
 
 msgid "FieldLabel|45.PercentCompleteNotes|Details"
+msgstr ""
+
+msgid "FieldLabel|46.ReportTemplate|Report Template"
 msgstr ""
 
 msgid "FieldLabel|46.Label|Name"
@@ -8960,6 +9008,9 @@ msgstr ""
 msgid "FieldLabel|46.IncludeSectionCodes|Content"
 msgstr ""
 
+msgid "FieldLabel|47.TaggedObjectSet|Tag"
+msgstr ""
+
 msgid "FieldLabel|47.ShortLabel|ID"
 msgstr ""
 
@@ -8969,7 +9020,13 @@ msgstr ""
 msgid "FieldLabel|47.Comments|Comments"
 msgstr ""
 
+msgid "FieldLabel|48.TableSettings|Table Settings"
+msgstr ""
+
 msgid "FieldLabel|48.TagTableSettingsMap|Table Settings"
+msgstr ""
+
+msgid "FieldLabel|49.ThreatRatingCommentsData|Threat Rating Comments"
 msgstr ""
 
 msgid "FieldLabel|50.ProjectScopeBox|Project Scope Box"
@@ -9035,10 +9092,19 @@ msgstr ""
 msgid "FieldLabel|52.TargetViability|Target Viability Status"
 msgstr ""
 
+msgid "FieldLabel|53.IucnRedlistSpecies|IUCN Redlist Species"
+msgstr ""
+
 msgid "FieldLabel|53.Label|Name"
 msgstr ""
 
+msgid "FieldLabel|54.OtherNotableSpecies|Other Notable Species"
+msgstr ""
+
 msgid "FieldLabel|54.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|55.Audience|Audience"
 msgstr ""
 
 msgid "FieldLabel|55.Label|Audiences"
