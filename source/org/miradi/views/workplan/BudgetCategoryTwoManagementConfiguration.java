@@ -26,7 +26,7 @@ import org.miradi.actions.ActionCreateCategoryTwo;
 import org.miradi.actions.ActionDeleteCategoryTwo;
 import org.miradi.dialogs.planning.BudgetCategoryTwoCoreRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
-import org.miradi.icons.CategoryTwoIcon;
+import org.miradi.icons.BudgetCategoryTwoIcon;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
@@ -51,7 +51,7 @@ public class BudgetCategoryTwoManagementConfiguration extends AbstractManagement
 	
 	public Icon getIcon()
 	{
-		return new CategoryTwoIcon();
+		return new BudgetCategoryTwoIcon();
 	}
 	
 	@Override

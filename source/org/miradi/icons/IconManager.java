@@ -84,7 +84,7 @@ public class IconManager
 		addIcon(new AccountingCodeIcon());
 		addIcon(new FundingSourceIcon());
 		addIcon(new BudgetCategoryOneIcon());
-		addIcon(new CategoryTwoIcon());
+		addIcon(new BudgetCategoryTwoIcon());
 		addIcon(new ExpenseAssignmentIcon());
 		addIcon(new AssignmentIcon());
 		addIcon(new ProgressReportIcon());
@@ -290,7 +290,7 @@ public class IconManager
 	
 	private static Icon getCategoryTwoIcon()
 	{
-		return getIcon(CategoryTwoIcon.class);
+		return getIcon(BudgetCategoryTwoIcon.class);
 	}
 
 	private static Icon getExpenseIcon()
