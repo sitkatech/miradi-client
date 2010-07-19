@@ -146,7 +146,8 @@ public class WorkPlanCategoryTreeNode extends AbstractPlanningTreeNode
 		if (ref.isValid())
 			return BaseObject.find(getProject(), ref);
 		
-		return new UnspecifiedBaseObject(getProject().getObjectManager(), levelObjectType, getObjectTypeName());
+		String objectNameForType = getProject().getObjectManager().getInternalObjectName(levelObjectType);
+		return new UnspecifiedBaseObject(getProject().getObjectManager(), levelObjectType, objectNameForType);
 	}
 
 	private ORefList getAssignmentRefsThatMatchThisNodeHierarchy()
