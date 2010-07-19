@@ -412,7 +412,7 @@ abstract public class BaseObject
 			case ObjectType.CATEGORY_ONE:
 				return new BudgetCategoryOne(objectManager, idAsInt, json);
 				
-			case ObjectType.CATEGORY_TWO:
+			case ObjectType.BUDGET_CATEGORY_TWO:
 				return new BudgetCategoryTwo(objectManager, idAsInt, json);
 				
 			default:
