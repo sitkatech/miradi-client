@@ -23,7 +23,7 @@ import org.miradi.dialogs.AnalysisRowColumnProvider;
 import org.miradi.dialogs.planning.AccountingCodeCoreRowColumnProvider;
 import org.miradi.dialogs.planning.BudgetCategoryOneCoreRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
-import org.miradi.dialogs.planning.CategoryTwoCoreRowColumnProvider;
+import org.miradi.dialogs.planning.BudgetCategoryTwoCoreRowColumnProvider;
 import org.miradi.dialogs.planning.FundingSourceCoreRowColumnProvider;
 import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
 import org.miradi.dialogs.planning.ProgressReportRowColumnProvider;
@@ -78,7 +78,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		exportWorkPlanCategoryTab(writer, reportTemplateContent,ReportTemplateContentQuestion.PLANNING_VIEW_ACCOUNTING_CODE_CODE, new AccountingCodeCoreRowColumnProvider(), ReportTemplateContentQuestion.getAccountingCodesLabel());
 		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.PLANNING_VIEW_FUNDING_SOURCE_CODE, new FundingSourceCoreRowColumnProvider(), ReportTemplateContentQuestion.getFundingSourcesLabel());
 		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.BUDGET_CATEGORY_ONE_CODE, new BudgetCategoryOneCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryOneLabel());
-		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.BUDGET_CATEGORY_TWO_CODE, new CategoryTwoCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryTwoLabel());
+		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.BUDGET_CATEGORY_TWO_CODE, new BudgetCategoryTwoCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryTwoLabel());
 		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.ANALYSIS_CODE, new AnalysisRowColumnProvider(getProject()), ReportTemplateContentQuestion.getAnalysisLabel());
 	}
 

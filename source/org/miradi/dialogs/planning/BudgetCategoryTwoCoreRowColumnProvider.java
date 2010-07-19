@@ -24,7 +24,7 @@ import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 
-public class CategoryTwoCoreRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
+public class BudgetCategoryTwoCoreRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
 {
 	@Override
 	public CodeList getColumnListToShow()
