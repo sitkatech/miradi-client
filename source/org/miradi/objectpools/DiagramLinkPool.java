@@ -32,9 +32,9 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.project.ObjectManager;
 
-public class DiagramFactorLinkPool extends EAMNormalObjectPool
+public class DiagramLinkPool extends EAMNormalObjectPool
 {
-	public DiagramFactorLinkPool(IdAssigner idAssignerToUse)
+	public DiagramLinkPool(IdAssigner idAssignerToUse)
 	{
 		super(idAssignerToUse, ObjectType.DIAGRAM_LINK);
 	}

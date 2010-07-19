@@ -46,7 +46,7 @@ import org.miradi.objectpools.CategoryTwoPool;
 import org.miradi.objectpools.CausePool;
 import org.miradi.objectpools.ConceptualModelDiagramPool;
 import org.miradi.objectpools.CostAllocationRulePool;
-import org.miradi.objectpools.DiagramFactorLinkPool;
+import org.miradi.objectpools.DiagramLinkPool;
 import org.miradi.objectpools.DiagramFactorPool;
 import org.miradi.objectpools.EAMNormalObjectPool;
 import org.miradi.objectpools.EAMObjectPool;
@@ -171,7 +171,7 @@ public class ObjectManager
 		addNormalPool(new ObjectivePool(ida), Objective.OBJECT_NAME);
 		addNormalPool(new GoalPool(ida), Goal.OBJECT_NAME);
 		addNormalPool(new ProjectMetadataPool(ida), ProjectMetadata.OBJECT_NAME);
-		addNormalPool(new DiagramFactorLinkPool(ida), DiagramLink.OBJECT_NAME);
+		addNormalPool(new DiagramLinkPool(ida), DiagramLink.OBJECT_NAME);
 		addNormalPool(new AssignmentPool(ida), ResourceAssignment.OBJECT_NAME);
 		addNormalPool(new AccountingCodePool(ida), AccountingCode.OBJECT_NAME);
 		addNormalPool(new FundingSourcePool(ida), FundingSource.OBJECT_NAME);
@@ -322,9 +322,9 @@ public class ObjectManager
 		return (DiagramFactorPool) getPool(ObjectType.DIAGRAM_FACTOR);
 	}
 	
-	public DiagramFactorLinkPool getDiagramFactorLinkPool()
+	public DiagramLinkPool getDiagramFactorLinkPool()
 	{
-		return (DiagramFactorLinkPool) getPool(ObjectType.DIAGRAM_LINK);
+		return (DiagramLinkPool) getPool(ObjectType.DIAGRAM_LINK);
 	}
 	
 	public ConceptualModelDiagramPool getConceptualModelDiagramPool()
