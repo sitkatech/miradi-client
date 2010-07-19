@@ -53,11 +53,13 @@ public class ValueOption extends BaseObject
 	}
 	
 	
+	@Override
 	public int getType()
 	{	
 		return getObjectType();
 	}
 
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -98,11 +100,13 @@ public class ValueOption extends BaseObject
 		return Color.BLACK;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getLabel();
 	}
 	
+	@Override
 	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(TAG_NUMERIC.equals(fieldTag))
@@ -113,6 +117,7 @@ public class ValueOption extends BaseObject
 			super.setData(fieldTag, dataValue);
 	}
 	
+	@Override
 	public String getData(String fieldTag)
 	{
 		if(TAG_NUMERIC.equals(fieldTag))
@@ -123,6 +128,7 @@ public class ValueOption extends BaseObject
 		return super.getData(fieldTag);
 	}
 	
+	@Override
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = super.toJson();
@@ -136,7 +142,7 @@ public class ValueOption extends BaseObject
 	final public static String TAG_COLOR = "Color";
 	final private static Color INVALID_GRAY = new Color(200,200,200);
 	
-	static final String OBJECT_NAME = "ValueOption";
+	public static final String OBJECT_NAME = "ValueOption";
 
 	int numeric;
 	Color color;
