@@ -161,7 +161,7 @@ public class ObjectManager
 
 		pools = new HashMap<Integer, BaseObjectInformation>();
 		IdAssigner ida = getAnnotationIdAssigner();
-		addNormalPool(new FactorLinkPool(project.getNodeIdAssigner()), FactorLink.OBJECT_NAME);
+		addNormalPool(new FactorLinkPool(ida), FactorLink.OBJECT_NAME);
 		addNormalPool(new RatingCriterionPool(ida), RatingCriterion.OBJECT_NAME);
 		addNormalPool(new ValueOptionPool(ida), ValueOption.OBJECT_NAME);
 		addNormalPool(new TaskPool(ida), Task.OBJECT_NAME);
