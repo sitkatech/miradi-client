@@ -79,7 +79,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements WcsXmlConsta
 		new AccountingCodePoolImporter(this).importElement();
 		new FundingSourcePoolImporter(this).importElement();
 		new BudgetCategoryOnePoolImporter(this).importElement();
-		new CategoryTwoPoolImporter(this).importElement();
+		new BudgetCategoryTwoPoolImporter(this).importElement();
 		new IucnRedListspeciesPoolImporter(this).importElement();
 		new OtherNotableSpeciesPoolImporter(this).importElement();
 		new AudiencePoolImporter(this).importElement();
