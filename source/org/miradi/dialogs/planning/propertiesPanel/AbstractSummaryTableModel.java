@@ -123,6 +123,8 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 		return getColumnName(column);
 	}
 	
+	//FIXME medium - this method should not create invalid objects. Having invalid objects, might be saved to disk.  
+	//Should use some unspecified object,  see how unspecified nodes are created in Funding source tree. 
 	public static BaseObject createInvalidObject(ObjectManager objectManager, int objectType)
 	{
 		if (AccountingCode.is(objectType))
