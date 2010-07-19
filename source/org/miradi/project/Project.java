@@ -906,7 +906,6 @@ public class Project
 			loadProjectInfo();
 			objectManager.loadFromDatabase();
 			EAM.logVerbose("Highest Factor Id: " + getNodeIdAssigner().getHighestAssignedId());
-			EAM.logVerbose("Highest Normal Id: " + getAnnotationIdAssigner().getHighestAssignedId());
 		}
 		catch(Exception e)
 		{
