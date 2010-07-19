@@ -27,6 +27,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.TaskId;
+import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objectdata.BaseIdData;
 import org.miradi.objectdata.BooleanData;
@@ -93,6 +94,8 @@ public class ObjectTestCase extends TestCaseWithProject
 		{
 			BaseId id = project.createObject(objectType, BaseId.INVALID, extraInfo);
 			BaseObject object = project.findObject(objectType, id);
+			verifyTypeName(object);
+			
 			Vector<String> fieldTags = object.getStoredFieldTags();
 			for(int i = 0; i < fieldTags.size(); ++i)
 			{
@@ -112,6 +115,36 @@ public class ObjectTestCase extends TestCaseWithProject
 		}
 		
 		verifyLoadPool(objectType, extraInfo);
+	}
+
+	private void verifyTypeName(BaseObject object)
+	{
+		if(isObjectWhoseTypeNameVaries(object))
+			return;
+		
+		int objectType = object.getType();
+		String internalTypeName = object.getObjectManager().getInternalObjectName(objectType);
+		assertEquals(internalTypeName, object.getTypeName());
+		EAM.setLogToString();
+		try
+		{
+			EAM.fieldLabel(objectType, internalTypeName);
+			assertEquals("Logged a problem?", 0, EAM.getLoggedString().length());
+		}
+		finally
+		{
+			EAM.setLogToConsole();
+		}
+	}
+
+	private boolean isObjectWhoseTypeNameVaries(BaseObject object)
+	{
+		if(Task.is(object))
+			return true;
+		if(Cause.is(object))
+			return true;
+		
+		return false;
 	}
 
 	public ProjectForTesting createAndOpenProject() throws Exception
