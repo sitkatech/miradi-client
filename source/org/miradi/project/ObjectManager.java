@@ -229,7 +229,7 @@ public class ObjectManager
 
 	private IdAssigner getAnnotationIdAssigner()
 	{
-		return getProject().getNodeIdAssigner();
+		return getProject().getNormalIdAssigner();
 	}
 
 	public EAMObjectPool getPool(int objectType)

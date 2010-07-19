@@ -58,7 +58,7 @@ public class TestCommandCreateObject extends EAMTestCase
 			assertEquals("already has an id?", BaseId.INVALID, cmd.getCreatedId());
 			cmd.execute(project);
 			FactorId createdId = new FactorId(cmd.getCreatedId().asInt());
-			int highestId = project.getNodeIdAssigner().getHighestAssignedId();
+			int highestId = project.getNormalIdAssigner().getHighestAssignedId();
 			assertEquals("didn't assign an id?", highestId, createdId.asInt());
 			
 			Factor node = Factor.findFactor(project, cmd.getObjectRef());
