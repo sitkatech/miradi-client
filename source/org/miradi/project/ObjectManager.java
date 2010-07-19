@@ -110,7 +110,7 @@ public class ObjectManager
 		diagramChainWalker = new ChainWalker();
 		referrerCache = new HashMap<ORef, ORefSet>();
 
-		pools = new HashMap<Integer, PoolWithIdAssigner>();
+		pools = new HashMap<Integer, ObjectBundle>();
 		IdAssigner ida = getAnnotationIdAssigner();
 		addNormalPool(new FactorLinkPool(project.getNodeIdAssigner()));
 		addNormalPool(new RatingCriterionPool(ida));
@@ -174,7 +174,8 @@ public class ObjectManager
 
 	private void addNormalPool(PoolWithIdAssigner pool)
 	{
-		pools.put(new Integer(pool.getObjectType()), pool);
+		ObjectBundle objectBundle = new ObjectBundle(pool);
+		pools.put(new Integer(pool.getObjectType()), objectBundle);
 	}
 
 	private IdAssigner getAnnotationIdAssigner()
@@ -184,7 +185,13 @@ public class ObjectManager
 
 	public EAMObjectPool getPool(int objectType)
 	{
-		return pools.get(new Integer(objectType));
+		if (pools.containsKey(objectType))
+		{
+			ObjectBundle objectBundle = pools.get(new Integer(objectType));
+			return objectBundle.getPool();
+		}
+		
+		return null;
 	}
 
 	public FactorLinkPool getLinkagePool()
@@ -553,11 +560,26 @@ public class ObjectManager
 
 	public HashMap getAllPools()
 	{
-		return new HashMap<Integer, PoolWithIdAssigner>(pools);
+		return new HashMap<Integer, ObjectBundle>(pools);
+	}
+	
+	private class ObjectBundle 
+	{
+		private ObjectBundle(PoolWithIdAssigner poolToUse)
+		{
+			pool = poolToUse;
+		}
+		
+		public PoolWithIdAssigner getPool()
+		{
+			return pool;
+		}
+		
+		private PoolWithIdAssigner pool;
 	}
 	
 	private Project project;
 	private ChainWalker diagramChainWalker;
-	private HashMap<Integer, PoolWithIdAssigner> pools;
+	private HashMap<Integer, ObjectBundle> pools;
 	private HashMap<ORef, ORefSet> referrerCache;
 }
