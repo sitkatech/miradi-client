@@ -195,7 +195,7 @@ public class Project
 	// so maybe take rename one of the methods and take out the other one.  so all callers use the same method.
 	public IdAssigner getNodeIdAssigner()
 	{
-		return projectInfo.getFactorAndLinkIdAssigner();
+		return projectInfo.getNormalIdAssigner();
 	}
 	
 	public ProjectServer getDatabase()
