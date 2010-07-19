@@ -378,7 +378,7 @@ public class DiagramFactor extends BaseObject
 	public static final String TAG_BACKGROUND_COLOR = "BackgroundColor";
 	public static final String TAG_TEXT_BOX_Z_ORDER_CODE = "TextBoxZOrderCode";
 	
-	static final String OBJECT_NAME = "DiagramFactor";
+	public static final String OBJECT_NAME = "DiagramFactor";
 	
 	public static final Dimension DEFAULT_STRESS_SIZE = new Dimension(60, 30);
 	public static final Dimension DEFAULT_ACTIVITY_SIZE = new Dimension(60, 30);
