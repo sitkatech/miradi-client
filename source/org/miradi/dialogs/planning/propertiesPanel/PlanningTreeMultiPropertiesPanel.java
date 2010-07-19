@@ -23,7 +23,7 @@ import org.miradi.dialogs.accountingcode.AccountingCodePropertiesPanel;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
 import org.miradi.dialogs.categoryOne.BudgetCategoryOnePropertiesPanel;
-import org.miradi.dialogs.categoryTwo.CategoryTwoPropertiesPanel;
+import org.miradi.dialogs.categoryTwo.BudgetCategoryTwoPropertiesPanel;
 import org.miradi.dialogs.diagram.AbstractStrategyPropertiesPanel;
 import org.miradi.dialogs.diagram.ConceptualModelPropertiesPanel;
 import org.miradi.dialogs.diagram.ResultsChainPropertiesPanel;
@@ -90,7 +90,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		fundingSourcePropertiesPanel = new FundingSourcePropertiesPanel(getProject());
 		accountingCodePropertiesPanel = new AccountingCodePropertiesPanel(getProject());
 		categoryOnePropertiesPanel = new BudgetCategoryOnePropertiesPanel(getProject());
-		categoryTwoPropertiesPanel = new CategoryTwoPropertiesPanel(getProject());
+		categoryTwoPropertiesPanel = new BudgetCategoryTwoPropertiesPanel(getProject());
 		subTargetPropertiesPanel = new SubTargetPropertiesPanel(getProject());
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
 		
@@ -252,7 +252,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private FundingSourcePropertiesPanel fundingSourcePropertiesPanel;
 	private AccountingCodePropertiesPanel accountingCodePropertiesPanel;
 	private BudgetCategoryOnePropertiesPanel categoryOnePropertiesPanel;
-	private CategoryTwoPropertiesPanel categoryTwoPropertiesPanel;
+	private BudgetCategoryTwoPropertiesPanel categoryTwoPropertiesPanel;
 	private SubTargetPropertiesPanel subTargetPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 }
