@@ -22,9 +22,9 @@ package org.miradi.xml.generic;
 
 import org.miradi.xml.wcs.WcsXmlConstants;
 
-public class CategoryTwoObjectSchemaElement extends	AbstractBudgetCategorySchemaElement
+public class BudgetCategoryTwoObjectSchemaElement extends	AbstractBudgetCategorySchemaElement
 {
-	public CategoryTwoObjectSchemaElement()
+	public BudgetCategoryTwoObjectSchemaElement()
 	{
 		super(WcsXmlConstants.CATEGORY_TWO);
 	}
