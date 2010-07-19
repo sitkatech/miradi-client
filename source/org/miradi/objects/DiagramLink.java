@@ -401,7 +401,7 @@ public class DiagramLink extends BaseObject
 	public static final String TAG_GROUPED_DIAGRAM_LINK_REFS = "GroupedDiagramLinkRefs";
 	public static final String TAG_COLOR = "Color";
 	
-	static final String OBJECT_NAME = "DiagramLink";
+	public static final String OBJECT_NAME = "DiagramLink";
 	
 	private BaseIdData underlyingObjectId;
 	private BaseIdData fromId;
