@@ -53,11 +53,6 @@ public class ProjectInfo
 		return metadataId;
 	}
 
-	public IdAssigner getFactorAndLinkIdAssigner()
-	{
-		return getNormalIdAssigner();
-	}
-	
 	public FactorId obtainRealFactorId(BaseId proposedId)
 	{
 		return new FactorId(normalObjectIdAssigner.obtainRealId(proposedId).asInt());
