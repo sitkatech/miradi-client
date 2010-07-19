@@ -898,7 +898,7 @@ public class Project
 		{
 			loadProjectInfo();
 			objectManager.loadFromDatabase();
-			EAM.logVerbose("Highest Factor Id: " + getNormalIdAssigner().getHighestAssignedId());
+			EAM.logVerbose("Highest BaseObject Id: " + getNormalIdAssigner().getHighestAssignedId());
 		}
 		catch(Exception e)
 		{
