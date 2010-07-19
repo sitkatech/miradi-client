@@ -223,8 +223,8 @@ public class ObjectManager
 
 	private void addNormalPool(PoolWithIdAssigner pool, String objectName)
 	{
-		BaseObjectInformation objectBundle = new BaseObjectInformation(pool, objectName);
-		pools.put(new Integer(pool.getObjectType()), objectBundle);
+		BaseObjectInformation baseObjectInformation = new BaseObjectInformation(pool, objectName);
+		pools.put(new Integer(pool.getObjectType()), baseObjectInformation);
 	}
 
 	private IdAssigner getAnnotationIdAssigner()
