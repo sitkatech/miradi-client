@@ -104,7 +104,7 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		new AccountingCodePoolExporter(this).exportXml();
 		new FundingSourcePoolExporter(this).exportXml();
 		new BudgetCategoryOnePoolExporter(this).exportXml();
-		new CategoryTwoPoolExporter(this).exportXml();
+		new BudgetCategoryTwoPoolExporter(this).exportXml();
 		new ExpenseAssignmentPoolExporter(this).exportXml();
 		new ResourceAssignmentPoolExporter(this).exportXml();
 		new ThreatTargetThreatRatingElementExporter(this).exportXml();
