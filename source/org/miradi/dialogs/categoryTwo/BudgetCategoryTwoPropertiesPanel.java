@@ -35,6 +35,6 @@ public class BudgetCategoryTwoPropertiesPanel extends AbsractBudgetCategoryPrope
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Category Two Properties");
+		return EAM.text("Title|Budget Category Two Properties");
 	}
 }
