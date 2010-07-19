@@ -27,9 +27,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.ObjectManager;
 
-public class TableSetttingsPool extends EAMNormalObjectPool
+public class TableSettingsPool extends EAMNormalObjectPool
 {
-	public TableSetttingsPool(IdAssigner idAssignerToUse)
+	public TableSettingsPool(IdAssigner idAssignerToUse)
 	{
 		super(idAssignerToUse, ObjectType.TABLE_SETTINGS);
 	}

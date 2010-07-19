@@ -79,7 +79,7 @@ import org.miradi.objectpools.ScopeBoxPool;
 import org.miradi.objectpools.StrategyPool;
 import org.miradi.objectpools.StressPool;
 import org.miradi.objectpools.SubTargetPool;
-import org.miradi.objectpools.TableSetttingsPool;
+import org.miradi.objectpools.TableSettingsPool;
 import org.miradi.objectpools.TaggedObjectSetPool;
 import org.miradi.objectpools.TargetPool;
 import org.miradi.objectpools.TaskPool;
@@ -204,7 +204,7 @@ public class ObjectManager
 		addNormalPool(new ProgressPercentPool(ida), ProgressPercent.OBJECT_NAME);
 		addNormalPool(new ReportTemplatePool(ida), ReportTemplate.OBJECT_NAME);
 		addNormalPool(new TaggedObjectSetPool(ida), TaggedObjectSet.OBJECT_NAME);
-		addNormalPool(new TableSetttingsPool(ida), TableSettings.OBJECT_NAME);
+		addNormalPool(new TableSettingsPool(ida), TableSettings.OBJECT_NAME);
 		addNormalPool(new ThreatRatingCommentsDataPool(ida), ThreatRatingCommentsData.OBJECT_NAME);
 		addNormalPool(new ScopeBoxPool(ida), ScopeBox.OBJECT_NAME);
 		addNormalPool(new ExpensePool(ida), ExpenseAssignment.OBJECT_NAME);
