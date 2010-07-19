@@ -111,10 +111,8 @@ public class ObjectManager
 		referrerCache = new HashMap<ORef, ORefSet>();
 
 		pools = new HashMap<Integer, PoolWithIdAssigner>();
-		IdAssigner factorAndLinkIdAssigner = project.getNodeIdAssigner();
-
 		IdAssigner ida = getAnnotationIdAssigner();
-		addNormalPool(new FactorLinkPool(factorAndLinkIdAssigner));
+		addNormalPool(new FactorLinkPool(project.getNodeIdAssigner()));
 		addNormalPool(new RatingCriterionPool(ida));
 		addNormalPool(new ValueOptionPool(ida));
 		addNormalPool(new TaskPool(ida));
