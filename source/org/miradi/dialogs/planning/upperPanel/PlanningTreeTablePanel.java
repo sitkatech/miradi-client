@@ -100,9 +100,16 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	@Override
 	protected void addAboveColumnBar(JPanel rightPanel)
 	{
+		AboveBudgetColumnsBar aboveMainTableBar = createAboveColumnBar();
+		rightPanel.add(aboveMainTableBar, BorderLayout.BEFORE_FIRST_LINE);
+	}
+
+	public AboveBudgetColumnsBar createAboveColumnBar()
+	{
 		AboveBudgetColumnsBar aboveMainTableBar = new AboveBudgetColumnsBar(mainTable);
 		aboveMainTableBar.setTableScrollPane(mainTableScrollPane);
-		rightPanel.add(aboveMainTableBar, BorderLayout.BEFORE_FIRST_LINE);
+		
+		return aboveMainTableBar;
 	}
 
 	private void createModels() throws Exception

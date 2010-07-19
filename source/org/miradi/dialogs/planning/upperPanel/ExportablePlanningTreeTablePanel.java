@@ -25,6 +25,7 @@ import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.FillerLabel;
 
 public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -57,6 +58,9 @@ public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 		PlanningTreeTablePanel wholePanel = createPlanningTreeTablePanelWithoutButtonsForExporting(mainWindow, rowColumnProvider, modelToUse);
 
 		TwoColumnPanel reformatted = new TwoColumnPanel();
+		reformatted.add(new FillerLabel());
+		reformatted.add(wholePanel.createAboveColumnBar());
+		
 		reformatted.add(wholePanel.getTree().getTableHeader());
 		reformatted.add(wholePanel.getMainTable().getTableHeader());
 		
