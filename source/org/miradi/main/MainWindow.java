@@ -614,7 +614,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		for(ORef missingRef : rawProblems.keySet())
 		{
 			ORefSet referrers = rawProblems.get(missingRef);
-			String typeName = ObjectType.getUserFriendlyObjectTypeName(missingRef.getObjectType());
+			String typeName = ObjectType.getUserFriendlyObjectTypeName(getProject(), missingRef.getObjectType());
 			listOfProblems += "Missing " + typeName + " " + missingRef + " referred to by " + referrers.toString() + "\n";
 		}
 		

@@ -123,9 +123,8 @@ public class ObjectType
 	
 	public static final int OBJECT_TYPE_COUNT = 58;
 
-	public static String getUserFriendlyObjectTypeName(int objectType)
+	public static String getUserFriendlyObjectTypeName(Project project, int objectType)
 	{
-		Project project = EAM.getMainWindow().getProject();
 		return EAM.fieldLabel(objectType, project.getObjectManager().getInternalObjectName(objectType));
 	}
 	
