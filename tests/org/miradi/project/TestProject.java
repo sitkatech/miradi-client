@@ -97,9 +97,9 @@ public class TestProject extends EAMTestCase
 	
 	public void testForOnlyOneAnnotationIdAssigner() throws Exception
 	{
-		IdAssigner original = project.getAnnotationIdAssigner();
+		IdAssigner original = project.getNodeIdAssigner();
 		project.getProjectInfo().fillFrom(project.getProjectInfo().toJson());
-		assertTrue("Constructed new annotation id assigner?", original == project.getAnnotationIdAssigner());
+		assertTrue("Constructed new annotation id assigner?", original == project.getNodeIdAssigner());
 	}
 	
 	public void testEmptyTransaction() throws Exception
@@ -811,7 +811,7 @@ public class TestProject extends EAMTestCase
 			DiagramFactor diagramFactor = createNodeAndAddToDiagram(diskProject, conceptualModel, ObjectType.CAUSE);
 			deleteNodeAndRemoveFromDiagram(conceptualModel, diagramFactor);
 			
-			memorizedHighestId = diskProject.getAnnotationIdAssigner().getHighestAssignedId();
+			memorizedHighestId = diskProject.getNodeIdAssigner().getHighestAssignedId();
 		}
 		finally
 		{
@@ -834,7 +834,7 @@ public class TestProject extends EAMTestCase
 			assertEquals("didn't read link pool?", 1, loadedProject.getFactorLinkPool().size());
 			assertEquals("didn't populate diagram?", 3, conceptualModel.getAllDiagramFactorRefs().size());
 			assertEquals("didn't preserve next node id?", memorizedHighestId, loadedProject.getNodeIdAssigner().getHighestAssignedId());
-			assertEquals("didn't preserve next annotation id?", memorizedHighestId, loadedProject.getAnnotationIdAssigner().getHighestAssignedId());
+			assertEquals("didn't preserve next annotation id?", memorizedHighestId, loadedProject.getNodeIdAssigner().getHighestAssignedId());
 			Cause factor = Cause.find(loadedProject, factorRef);
 			assertTrue("didn't update factor target count?", factor.isDirectThreat());
 		}
@@ -849,7 +849,7 @@ public class TestProject extends EAMTestCase
 		assertEquals("didn't clear node target pool?", 0, diskProject.getTargetPool().size());
 		assertEquals("didn't clear conceptual model diagram pool?", 0, diskProject.getConceptualModelDiagramPool().size());
 		assertEquals("didn't clear link pool?", 0, diskProject.getFactorLinkPool().size());
-		assertTrue("didn't clear next annotation id?", diskProject.getAnnotationIdAssigner().getHighestAssignedId() < memorizedHighestId);
+		assertTrue("didn't clear next annotation id?", diskProject.getNodeIdAssigner().getHighestAssignedId() < memorizedHighestId);
 	}
 	
 	private void deleteNodeAndRemoveFromDiagram(DiagramObject diagramObject, DiagramFactor diagramFactor) throws Exception
