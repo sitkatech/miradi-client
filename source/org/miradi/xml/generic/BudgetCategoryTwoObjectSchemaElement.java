@@ -26,6 +26,6 @@ public class BudgetCategoryTwoObjectSchemaElement extends	AbstractBudgetCategory
 {
 	public BudgetCategoryTwoObjectSchemaElement()
 	{
-		super(WcsXmlConstants.CATEGORY_TWO);
+		super(WcsXmlConstants.BUDGET_CATEGORY_TWO);
 	}
 }

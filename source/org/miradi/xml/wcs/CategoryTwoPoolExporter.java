@@ -26,6 +26,6 @@ public class CategoryTwoPoolExporter extends AbstractBudgetCategoryPoolExporter
 {
 	public CategoryTwoPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, CATEGORY_TWO, BudgetCategoryTwo.getObjectType());
+		super(wcsXmlExporterToUse, BUDGET_CATEGORY_TWO, BudgetCategoryTwo.getObjectType());
 	}
 }
