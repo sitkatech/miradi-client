@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-16 18:43-0500\n"
+"POT-Creation-Date: 2010-07-19 11:14-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -9050,6 +9050,9 @@ msgstr ""
 msgid "FieldLabel|55.Summary|Audience Summary"
 msgstr ""
 
+msgid "FieldLabel|56.CategoryOne|Budget Category One"
+msgstr ""
+
 msgid "FieldLabel|56.Label|Category One Name"
 msgstr ""
 
@@ -9057,6 +9060,9 @@ msgid "FieldLabel|56.Code|Source Code"
 msgstr ""
 
 msgid "FieldLabel|56.Comments|Comments"
+msgstr ""
+
+msgid "FieldLabel|57.CategoryTwo|Budget Category Two"
 msgstr ""
 
 msgid "FieldLabel|57.Label|Category Two Name"
