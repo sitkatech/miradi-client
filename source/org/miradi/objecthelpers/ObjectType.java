@@ -23,6 +23,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.miradi.main.EAM;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Audience;
 import org.miradi.objects.BudgetCategoryOne;
@@ -51,6 +52,7 @@ import org.miradi.objects.ViewData;
 import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
+import org.miradi.project.Project;
 
 public class ObjectType
 {
@@ -123,43 +125,8 @@ public class ObjectType
 
 	public static String getUserFriendlyObjectTypeName(int objectType)
 	{
-		switch(objectType)
-		{
-			case TASK: return "Activity/Method/Task";
-			case FACTOR_LINK: return "Internal Factor Link";
-			case PROJECT_RESOURCE: return "Project Resource";
-			case INDICATOR: return "Indicator";
-			case OBJECTIVE: return "Objective";
-			case GOAL: return "Goal";
-			case DIAGRAM_LINK: return "Diagram Link";
-			case RESOURCE_ASSIGNMENT: return "Resource Assignment";
-			case ACCOUNTING_CODE: return "Accounting Code";
-			case FUNDING_SOURCE: return "Funding Source";
-			case KEY_ECOLOGICAL_ATTRIBUTE: return "Key Ecological Attribute";
-			case DIAGRAM_FACTOR: return "Diagram Factor";
-			case CAUSE: return "Contributing Factor/Direct Threat";
-			case STRATEGY: return "Strategy";
-			case TARGET: return "Biodiversity Target";
-			case INTERMEDIATE_RESULT: return "Intermediate Result";
-			case THREAT_REDUCTION_RESULT: return "Threat Reduction Result";
-			case TEXT_BOX: return "Text Box";
-			case MEASUREMENT: return "Measurement";
-			case STRESS: return "Stress";
-			case GROUP_BOX: return "Group Box";
-			case SUB_TARGET: return "Nested Target";
-			case PROGRESS_REPORT: return "Progress Report";
-			case ORGANIZATION: return "Organization";
-			case PROGRESS_PERCENT: return "Progress Percent";
-			case SCOPE_BOX: return "Scope Box";
-			case EXPENSE_ASSIGNMENT: return "Expense Entry";
-			case HUMAN_WELFARE_TARGET: return "Human Welfare Target";
-			case IUCN_REDLIST_SPECIES: return "IUCN Redlist Species";
-			case OTHER_NOTABLE_SPECIES: return "Other Notable Species";
-			case AUDIENCE: return "Audience";
-			case CATEGORY_ONE: return "Budget Category One";
-			case CATEGORY_TWO: return "Budget Category Two";
-			default: return "Internal Object";
-		}
+		Project project = EAM.getMainWindow().getProject();
+		return EAM.fieldLabel(objectType, project.getObjectManager().getInternalObjectName(objectType));
 	}
 	
 	public static Set<Integer> getTopLevelObjectTypes()
