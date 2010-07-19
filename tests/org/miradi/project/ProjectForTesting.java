@@ -1681,7 +1681,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		if(nextStrategyId == 0)
 		{
-			int startAt = getNodeIdAssigner().getHighestAssignedId() + 1;
+			int startAt = getNormalIdAssigner().getHighestAssignedId() + 1;
 			nextStrategyId = startAt;
 			nextCauseId = startAt;
 			nextTargetId = startAt;
@@ -1699,7 +1699,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		else
 			next = nextOtherId++;
 		
-		getNodeIdAssigner().idTaken(new BaseId(next));
+		getNormalIdAssigner().idTaken(new BaseId(next));
 		return next;
 	}
 	

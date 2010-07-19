@@ -193,7 +193,7 @@ public class Project
 	
 	//TODO the two below methods both use getNormalIdAssigner.  was a bit confusing at first
 	// so maybe take rename one of the methods and take out the other one.  so all callers use the same method.
-	public IdAssigner getNodeIdAssigner()
+	public IdAssigner getNormalIdAssigner()
 	{
 		return projectInfo.getNormalIdAssigner();
 	}
@@ -900,7 +900,7 @@ public class Project
 		{
 			loadProjectInfo();
 			objectManager.loadFromDatabase();
-			EAM.logVerbose("Highest Factor Id: " + getNodeIdAssigner().getHighestAssignedId());
+			EAM.logVerbose("Highest Factor Id: " + getNormalIdAssigner().getHighestAssignedId());
 		}
 		catch(Exception e)
 		{
