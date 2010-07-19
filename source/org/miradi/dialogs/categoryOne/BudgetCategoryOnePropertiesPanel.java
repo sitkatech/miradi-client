@@ -25,9 +25,9 @@ import org.miradi.main.EAM;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.project.Project;
 
-public class CategoryOnePropertiesPanel extends AbsractBudgetCategoryPropertiesPanel
+public class BudgetCategoryOnePropertiesPanel extends AbsractBudgetCategoryPropertiesPanel
 {
-	public CategoryOnePropertiesPanel(Project projectToUse) throws Exception
+	public BudgetCategoryOnePropertiesPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, BudgetCategoryOne.getObjectType());
 	}
