@@ -191,8 +191,6 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// simple getters
 	
-	//TODO the two below methods both use getNormalIdAssigner.  was a bit confusing at first
-	// so maybe take rename one of the methods and take out the other one.  so all callers use the same method.
 	public IdAssigner getNormalIdAssigner()
 	{
 		return projectInfo.getNormalIdAssigner();
