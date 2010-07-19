@@ -492,7 +492,7 @@ public class ObjectManager
 			ObjectType.OTHER_NOTABLE_SPECIES,
 			ObjectType.AUDIENCE,
 			ObjectType.CATEGORY_ONE,
-			ObjectType.CATEGORY_TWO,
+			ObjectType.BUDGET_CATEGORY_TWO,
 		};
 		for(int type : types)
 			loadPool(type, extractManifest(manifests, type));

@@ -32,7 +32,7 @@ public class BudgetCategoryTwoPool extends EAMNormalObjectPool
 {
 	public BudgetCategoryTwoPool(IdAssigner idAssignerToUse)
 	{
-		super(idAssignerToUse, ObjectType.CATEGORY_TWO);
+		super(idAssignerToUse, ObjectType.BUDGET_CATEGORY_TWO);
 	}
 	
 	public void put(BudgetCategoryTwo categoryTwo) throws Exception

@@ -115,7 +115,7 @@ public class ObjectType
 	public static final int OTHER_NOTABLE_SPECIES = 54;
 	public static final int AUDIENCE = 55;
 	public static final int CATEGORY_ONE = 56;
-	public static final int CATEGORY_TWO = 57;
+	public static final int BUDGET_CATEGORY_TWO = 57;
 	// When you add a new type, be sure to:
 	// - increment OBJECT_TYPE_COUNT
 	// - IF it is a user-visible object, add a case to getUserFriendlyObjectTypeName below
