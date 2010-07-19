@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-19 11:14-0500\n"
+"POT-Creation-Date: 2010-07-19 12:47-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7808,6 +7808,9 @@ msgstr ""
 msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
 msgstr ""
 
+msgid "FieldLabel|6.Link|Factor Link"
+msgstr ""
+
 msgid "FieldLabel|6.Stress|Stress"
 msgstr "压力 \t\t"
 
@@ -8472,6 +8475,9 @@ msgstr ""
 msgid "FieldLabel|12.PseudoTagActivities|Activities"
 msgstr ""
 
+msgid "FieldLabel|13.DiagramLink|Diagram Link"
+msgstr ""
+
 msgid "FieldLabel|13.FromDiagramFactorId|From"
 msgstr "自: \t\t"
 
@@ -8805,6 +8811,9 @@ msgstr "详情 \t\t"
 msgid "FieldLabel|27.DiagramObjectLabel|Diagram Name"
 msgstr "图表名称 \t\t"
 
+msgid "FieldLabel|29.PlanningViewConfiguration|Planning View Configuration"
+msgstr ""
+
 msgid "FieldLabel|29.Label|Label"
 msgstr "标签"
 
@@ -8815,6 +8824,9 @@ msgid "FieldLabel|29.TagColConfiguration|Columns"
 msgstr ""
 
 msgid "FieldLabel|29.TagDiagramDataInclusion|Include Data From"
+msgstr ""
+
+msgid "FieldLabel|30.WwfProjectData|WwfProjectData"
 msgstr ""
 
 msgid "FieldLabel|30.RelatedProjects|Related Projects"
@@ -8834,6 +8846,9 @@ msgstr "生态区 \t\t"
 
 msgid "FieldLabel|30.Regions|Regions"
 msgstr "区域 \t\t"
+
+msgid "FieldLabel|31.CostAllocationRule|Cost Allocation Rule"
+msgstr ""
 
 msgid "FieldLabel|32.Measurement|Measurement"
 msgstr "测量 \t\t"
@@ -8858,6 +8873,9 @@ msgstr ""
 
 msgid "FieldLabel|32.Trend|Trend"
 msgstr "趋势 \t\t"
+
+msgid "FieldLabel|33.Stress|Stress"
+msgstr ""
 
 msgid "FieldLabel|33.ShortLabel|ID"
 msgstr "ID \t\t"
@@ -8884,6 +8902,9 @@ msgid "FieldLabel|33.Contribution|Contribution"
 msgstr ""
 
 msgid "FieldLabel|33.Irreversibility|Irreversibility"
+msgstr ""
+
+msgid "FieldLabel|34.ThreatStressRating|Threat-Stress Rating"
 msgstr ""
 
 msgid "FieldLabel|34.PseudoThreatRating|Summary Rating"
@@ -8913,6 +8934,9 @@ msgstr "名称 \t\t"
 msgid "FieldLabel|36.Detail|Details"
 msgstr "详情 \t\t"
 
+msgid "FieldLabel|37.ProgressReport|Progress Report"
+msgstr ""
+
 msgid "FieldLabel|37.ProgressStatus|Progress Status"
 msgstr "进展状况 \t\t"
 
@@ -8921,6 +8945,9 @@ msgstr "进展日期 \t\t"
 
 msgid "FieldLabel|37.Details|Details"
 msgstr "详情 \t\t"
+
+msgid "FieldLabel|38.RareProjectData|Rare Project Data"
+msgstr ""
 
 msgid "FieldLabel|38.FlagshipSpeciesCommonName|Flagship Species Common Name"
 msgstr "旗舰物种普通名称 \t\t"
@@ -9001,6 +9028,9 @@ msgstr "监控伙伴联系方式 \t\t"
 msgid "FieldLabel|38.Cohort|Cohort"
 msgstr "合伙人 \t\t"
 
+msgid "FieldLabel|39.WcsProjectData|WCS Project Data"
+msgstr ""
+
 msgid "FieldLabel|39.OrganizationalFocus|Organizational Focus"
 msgstr "组织机构关注焦点 \t\t"
 
@@ -9018,6 +9048,9 @@ msgstr "已完成? \t\t"
 
 msgid "FieldLabel|39.StepUrl|URL"
 msgstr "URL \t\t"
+
+msgid "FieldLabel|40.TncProjectData|TNC Project Data"
+msgstr ""
 
 msgid "FieldLabel|40.ConProProjectNumber|ConPro Project Number"
 msgstr "ConPro项目编号 \t\t"
@@ -9051,6 +9084,9 @@ msgid "FieldLabel|40.ProjectCitations|Citations"
 msgstr ""
 
 msgid "FieldLabel|40.CapStandardsScorecard|CAP Standards Scorecard"
+msgstr ""
+
+msgid "FieldLabel|41.FosProjectData|FOS Project Data"
 msgstr ""
 
 msgid "FieldLabel|41.TrainingType|Training Type"
@@ -9093,6 +9129,9 @@ msgstr "组织机构 \t\t"
 msgid "FieldLabel|42.Comments|Comments"
 msgstr "评论 \t\t"
 
+msgid "FieldLabel|43.WCPAProjectData|WCPA Project Data"
+msgstr ""
+
 msgid "FieldLabel|43.LegalStatus|Legal Status"
 msgstr "法律地位 \t\t"
 
@@ -9126,7 +9165,13 @@ msgstr "当前土地使用 \t\t"
 msgid "FieldLabel|43.ManagementResources|Management Resources"
 msgstr "管理资源 \t\t"
 
+msgid "FieldLabel|44.Xenodata|External System Data"
+msgstr ""
+
 msgid "FieldLabel|44.ProjectId|ConPro Project Number"
+msgstr ""
+
+msgid "FieldLabel|45.ProgressPercent|Progress Percent"
 msgstr ""
 
 msgid "FieldLabel|45.PercentDate|Date"
@@ -9136,6 +9181,9 @@ msgid "FieldLabel|45.PercentComplete|Percent Complete"
 msgstr "完成百分比 "
 
 msgid "FieldLabel|45.PercentCompleteNotes|Details"
+msgstr ""
+
+msgid "FieldLabel|46.ReportTemplate|Report Template"
 msgstr ""
 
 msgid "FieldLabel|46.Label|Name"
@@ -9150,6 +9198,9 @@ msgstr ""
 msgid "FieldLabel|46.IncludeSectionCodes|Content"
 msgstr "内容"
 
+msgid "FieldLabel|47.TaggedObjectSet|Tag"
+msgstr ""
+
 msgid "FieldLabel|47.ShortLabel|ID"
 msgstr "ID"
 
@@ -9159,7 +9210,13 @@ msgstr "名称"
 msgid "FieldLabel|47.Comments|Comments"
 msgstr ""
 
+msgid "FieldLabel|48.TableSettings|Table Settings"
+msgstr ""
+
 msgid "FieldLabel|48.TagTableSettingsMap|Table Settings"
+msgstr ""
+
+msgid "FieldLabel|49.ThreatRatingCommentsData|Threat Rating Comments"
 msgstr ""
 
 msgid "FieldLabel|50.ProjectScopeBox|Project Scope Box"
@@ -9225,10 +9282,19 @@ msgstr ""
 msgid "FieldLabel|52.TargetViability|Target Viability Status"
 msgstr ""
 
+msgid "FieldLabel|53.IucnRedlistSpecies|IUCN Redlist Species"
+msgstr ""
+
 msgid "FieldLabel|53.Label|Name"
 msgstr ""
 
+msgid "FieldLabel|54.OtherNotableSpecies|Other Notable Species"
+msgstr ""
+
 msgid "FieldLabel|54.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|55.Audience|Audience"
 msgstr ""
 
 msgid "FieldLabel|55.Label|Audiences"

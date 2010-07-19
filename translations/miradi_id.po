@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-19 11:14-0500\n"
+"POT-Creation-Date: 2010-07-19 12:47-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -8102,6 +8102,9 @@ msgstr ""
 msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
 msgstr ""
 
+msgid "FieldLabel|6.Link|Factor Link"
+msgstr ""
+
 msgid "FieldLabel|6.Stress|Stress"
 msgstr "Tekanan"
 
@@ -8766,6 +8769,9 @@ msgstr ""
 msgid "FieldLabel|12.PseudoTagActivities|Activities"
 msgstr ""
 
+msgid "FieldLabel|13.DiagramLink|Diagram Link"
+msgstr ""
+
 msgid "FieldLabel|13.FromDiagramFactorId|From"
 msgstr "Dari"
 
@@ -9099,6 +9105,9 @@ msgstr "Rincian "
 msgid "FieldLabel|27.DiagramObjectLabel|Diagram Name"
 msgstr "Nama Diagram "
 
+msgid "FieldLabel|29.PlanningViewConfiguration|Planning View Configuration"
+msgstr ""
+
 msgid "FieldLabel|29.Label|Label"
 msgstr "Label"
 
@@ -9109,6 +9118,9 @@ msgid "FieldLabel|29.TagColConfiguration|Columns"
 msgstr "Kolom "
 
 msgid "FieldLabel|29.TagDiagramDataInclusion|Include Data From"
+msgstr ""
+
+msgid "FieldLabel|30.WwfProjectData|WwfProjectData"
 msgstr ""
 
 msgid "FieldLabel|30.RelatedProjects|Related Projects"
@@ -9128,6 +9140,9 @@ msgstr "Wilayah Ekologi "
 
 msgid "FieldLabel|30.Regions|Regions"
 msgstr "Wilayah"
+
+msgid "FieldLabel|31.CostAllocationRule|Cost Allocation Rule"
+msgstr ""
 
 msgid "FieldLabel|32.Measurement|Measurement"
 msgstr "Pengukuran"
@@ -9152,6 +9167,9 @@ msgstr ""
 
 msgid "FieldLabel|32.Trend|Trend"
 msgstr "Kecenderungan"
+
+msgid "FieldLabel|33.Stress|Stress"
+msgstr ""
 
 msgid "FieldLabel|33.ShortLabel|ID"
 msgstr "ID"
@@ -9180,6 +9198,9 @@ msgstr "Kontribusi "
 msgid "FieldLabel|33.Irreversibility|Irreversibility"
 msgstr "Ketakterpulihkan "
 
+msgid "FieldLabel|34.ThreatStressRating|Threat-Stress Rating"
+msgstr ""
+
 msgid "FieldLabel|34.PseudoThreatRating|Summary Rating"
 msgstr "Peringkat Ringkasan "
 
@@ -9207,6 +9228,9 @@ msgstr "Nama"
 msgid "FieldLabel|36.Detail|Details"
 msgstr "Rincian"
 
+msgid "FieldLabel|37.ProgressReport|Progress Report"
+msgstr ""
+
 msgid "FieldLabel|37.ProgressStatus|Progress Status"
 msgstr "Status Kemajuan "
 
@@ -9215,6 +9239,9 @@ msgstr "Tanggal Kemajuan "
 
 msgid "FieldLabel|37.Details|Details"
 msgstr "Rincian"
+
+msgid "FieldLabel|38.RareProjectData|Rare Project Data"
+msgstr ""
 
 msgid "FieldLabel|38.FlagshipSpeciesCommonName|Flagship Species Common Name"
 msgstr "Nama Umum Spesies Panji-Panji "
@@ -9295,6 +9322,9 @@ msgstr "Kontak Mitra Pemantauan "
 msgid "FieldLabel|38.Cohort|Cohort"
 msgstr "Kohor"
 
+msgid "FieldLabel|39.WcsProjectData|WCS Project Data"
+msgstr ""
+
 msgid "FieldLabel|39.OrganizationalFocus|Organizational Focus"
 msgstr "Fokus Organisasi "
 
@@ -9312,6 +9342,9 @@ msgstr "Selesai? "
 
 msgid "FieldLabel|39.StepUrl|URL"
 msgstr "URL"
+
+msgid "FieldLabel|40.TncProjectData|TNC Project Data"
+msgstr ""
 
 msgid "FieldLabel|40.ConProProjectNumber|ConPro Project Number"
 msgstr "Nomor Proyek ConPro "
@@ -9345,6 +9378,9 @@ msgid "FieldLabel|40.ProjectCitations|Citations"
 msgstr ""
 
 msgid "FieldLabel|40.CapStandardsScorecard|CAP Standards Scorecard"
+msgstr ""
+
+msgid "FieldLabel|41.FosProjectData|FOS Project Data"
 msgstr ""
 
 msgid "FieldLabel|41.TrainingType|Training Type"
@@ -9386,6 +9422,9 @@ msgstr "Organisasi"
 msgid "FieldLabel|42.Comments|Comments"
 msgstr "Komentar"
 
+msgid "FieldLabel|43.WCPAProjectData|WCPA Project Data"
+msgstr ""
+
 msgid "FieldLabel|43.LegalStatus|Legal Status"
 msgstr "Status Hukum "
 
@@ -9419,8 +9458,14 @@ msgstr "Penggunaan Tanah Sekarang "
 msgid "FieldLabel|43.ManagementResources|Management Resources"
 msgstr "Sumber Daya Manajemen "
 
+msgid "FieldLabel|44.Xenodata|External System Data"
+msgstr ""
+
 msgid "FieldLabel|44.ProjectId|ConPro Project Number"
 msgstr "Nomor Proyek ConPro "
+
+msgid "FieldLabel|45.ProgressPercent|Progress Percent"
+msgstr ""
 
 msgid "FieldLabel|45.PercentDate|Date"
 msgstr "Tanggal"
@@ -9430,6 +9475,9 @@ msgstr "Persentase yang Selesai "
 
 msgid "FieldLabel|45.PercentCompleteNotes|Details"
 msgstr "Perincian "
+
+msgid "FieldLabel|46.ReportTemplate|Report Template"
+msgstr ""
 
 msgid "FieldLabel|46.Label|Name"
 msgstr "Nama"
@@ -9443,6 +9491,9 @@ msgstr "Komentar "
 msgid "FieldLabel|46.IncludeSectionCodes|Content"
 msgstr "Isi"
 
+msgid "FieldLabel|47.TaggedObjectSet|Tag"
+msgstr ""
+
 msgid "FieldLabel|47.ShortLabel|ID"
 msgstr "ID "
 
@@ -9452,8 +9503,14 @@ msgstr "Nama "
 msgid "FieldLabel|47.Comments|Comments"
 msgstr "Komentar "
 
+msgid "FieldLabel|48.TableSettings|Table Settings"
+msgstr ""
+
 msgid "FieldLabel|48.TagTableSettingsMap|Table Settings"
 msgstr "Pengaturan Tabel "
+
+msgid "FieldLabel|49.ThreatRatingCommentsData|Threat Rating Comments"
+msgstr ""
 
 msgid "FieldLabel|50.ProjectScopeBox|Project Scope Box"
 msgstr "Kotak Cakupan Proyek "
@@ -9518,10 +9575,19 @@ msgstr "Mode Kelangsungan "
 msgid "FieldLabel|52.TargetViability|Target Viability Status"
 msgstr "Status Kelangsungan Target "
 
+msgid "FieldLabel|53.IucnRedlistSpecies|IUCN Redlist Species"
+msgstr ""
+
 msgid "FieldLabel|53.Label|Name"
 msgstr ""
 
+msgid "FieldLabel|54.OtherNotableSpecies|Other Notable Species"
+msgstr ""
+
 msgid "FieldLabel|54.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|55.Audience|Audience"
 msgstr ""
 
 msgid "FieldLabel|55.Label|Audiences"
