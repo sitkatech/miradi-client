@@ -36,11 +36,13 @@ public class RatingCriterion extends BaseObject
 		super(objectManager, new BaseId(idAsInt), json);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -57,7 +59,7 @@ public class RatingCriterion extends BaseObject
 		return ObjectType.RATING_CRITERION;
 	}
 	
-	
+	@Override
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = super.toJson();
@@ -65,6 +67,5 @@ public class RatingCriterion extends BaseObject
 		return json;
 	}
 
-	static final String OBJECT_NAME = "RatingCriterion";
-
+	public static final String OBJECT_NAME = "RatingCriterion";
 }
