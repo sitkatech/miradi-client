@@ -112,9 +112,9 @@ public class ObjectManager
 
 		pools = new HashMap<Integer, PoolWithIdAssigner>();
 		IdAssigner factorAndLinkIdAssigner = project.getNodeIdAssigner();
-		pools.put(new Integer(ObjectType.FACTOR_LINK), new FactorLinkPool(factorAndLinkIdAssigner));
 
 		IdAssigner ida = getAnnotationIdAssigner();
+		addNormalPool(new FactorLinkPool(factorAndLinkIdAssigner));
 		addNormalPool(new RatingCriterionPool(ida));
 		addNormalPool(new ValueOptionPool(ida));
 		addNormalPool(new TaskPool(ida));
@@ -174,7 +174,7 @@ public class ObjectManager
 		return diagramChainWalker;
 	}
 
-	private void addNormalPool(EAMNormalObjectPool pool)
+	private void addNormalPool(PoolWithIdAssigner pool)
 	{
 		pools.put(new Integer(pool.getObjectType()), pool);
 	}
