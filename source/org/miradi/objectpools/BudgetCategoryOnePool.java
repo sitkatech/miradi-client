@@ -28,9 +28,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.project.ObjectManager;
 
-public class CategoryOnePool extends EAMNormalObjectPool
+public class BudgetCategoryOnePool extends EAMNormalObjectPool
 {
-	public CategoryOnePool(IdAssigner idAssignerToUse)
+	public BudgetCategoryOnePool(IdAssigner idAssignerToUse)
 	{
 		super(idAssignerToUse, ObjectType.CATEGORY_ONE);
 	}

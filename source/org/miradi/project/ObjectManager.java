@@ -41,7 +41,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.AccountingCodePool;
 import org.miradi.objectpools.AssignmentPool;
 import org.miradi.objectpools.AudiencePool;
-import org.miradi.objectpools.CategoryOnePool;
+import org.miradi.objectpools.BudgetCategoryOnePool;
 import org.miradi.objectpools.CategoryTwoPool;
 import org.miradi.objectpools.CausePool;
 import org.miradi.objectpools.ConceptualModelDiagramPool;
@@ -212,7 +212,7 @@ public class ObjectManager
 		addNormalPool(new IucnRedlistSpeciesPool(ida), IucnRedlistSpecies.OBJECT_NAME);
 		addNormalPool(new OtherNotableSpeciesPool(ida), OtherNotableSpecies.OBJECT_NAME);
 		addNormalPool(new AudiencePool(ida), Audience.OBJECT_NAME);
-		addNormalPool(new CategoryOnePool(ida), BudgetCategoryOne.OBJECT_NAME);
+		addNormalPool(new BudgetCategoryOnePool(ida), BudgetCategoryOne.OBJECT_NAME);
 		addNormalPool(new CategoryTwoPool(ida), BudgetCategoryTwo.OBJECT_NAME);
 	}
 	
