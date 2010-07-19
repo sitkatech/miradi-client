@@ -59,7 +59,7 @@ import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objectpools.DiagramFactorLinkPool;
+import org.miradi.objectpools.DiagramLinkPool;
 import org.miradi.objectpools.DiagramFactorPool;
 import org.miradi.objectpools.FactorLinkPool;
 import org.miradi.objectpools.GoalPool;
@@ -855,7 +855,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 		return project.getDiagramFactorPool();
 	}
 	
-	public DiagramFactorLinkPool getDiagramFactorLinkPool()
+	public DiagramLinkPool getDiagramFactorLinkPool()
 	{
 		return project.getDiagramFactorLinkPool();
 	}

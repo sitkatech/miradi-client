@@ -59,7 +59,7 @@ import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objectpools.AssignmentPool;
 import org.miradi.objectpools.CausePool;
 import org.miradi.objectpools.ConceptualModelDiagramPool;
-import org.miradi.objectpools.DiagramFactorLinkPool;
+import org.miradi.objectpools.DiagramLinkPool;
 import org.miradi.objectpools.DiagramFactorPool;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objectpools.ExpensePool;
@@ -313,7 +313,7 @@ public class Project
 		return objectManager.getDiagramFactorPool();
 	}
 	
-	public DiagramFactorLinkPool getDiagramFactorLinkPool()
+	public DiagramLinkPool getDiagramFactorLinkPool()
 	{
 		return objectManager.getDiagramFactorLinkPool();
 	}
