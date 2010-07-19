@@ -125,7 +125,7 @@ public class ObjectType
 
 	public static String getUserFriendlyObjectTypeName(Project project, int objectType)
 	{
-		return EAM.fieldLabel(objectType, project.getObjectManager().getInternalObjectName(objectType));
+		return EAM.fieldLabel(objectType, project.getObjectManager().getInternalObjectTypeName(objectType));
 	}
 	
 	public static Set<Integer> getTopLevelObjectTypes()

@@ -243,7 +243,7 @@ public class ObjectManager
 		return null;
 	}
 	
-	public String getInternalObjectName(int objectType)
+	public String getInternalObjectTypeName(int objectType)
 	{
 		if (pools.containsKey(objectType))
 			return pools.get(objectType).getObjectName();
