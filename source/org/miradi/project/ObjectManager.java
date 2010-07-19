@@ -160,7 +160,7 @@ public class ObjectManager
 		referrerCache = new HashMap<ORef, ORefSet>();
 
 		pools = new HashMap<Integer, BaseObjectInformation>();
-		IdAssigner ida = getAnnotationIdAssigner();
+		IdAssigner ida = getNormalIdAssigner();
 		addNormalPool(new FactorLinkPool(ida), FactorLink.OBJECT_NAME);
 		addNormalPool(new RatingCriterionPool(ida), RatingCriterion.OBJECT_NAME);
 		addNormalPool(new ValueOptionPool(ida), ValueOption.OBJECT_NAME);
@@ -227,7 +227,7 @@ public class ObjectManager
 		pools.put(new Integer(pool.getObjectType()), baseObjectInformation);
 	}
 
-	private IdAssigner getAnnotationIdAssigner()
+	private IdAssigner getNormalIdAssigner()
 	{
 		return getProject().getNormalIdAssigner();
 	}
