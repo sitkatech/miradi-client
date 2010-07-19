@@ -491,7 +491,7 @@ public class ObjectManager
 			ObjectType.IUCN_REDLIST_SPECIES,
 			ObjectType.OTHER_NOTABLE_SPECIES,
 			ObjectType.AUDIENCE,
-			ObjectType.CATEGORY_ONE,
+			ObjectType.BUDGET_CATEGORY_ONE,
 			ObjectType.BUDGET_CATEGORY_TWO,
 		};
 		for(int type : types)

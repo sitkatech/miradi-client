@@ -114,7 +114,7 @@ public class ObjectType
 	public static final int IUCN_REDLIST_SPECIES = 53;
 	public static final int OTHER_NOTABLE_SPECIES = 54;
 	public static final int AUDIENCE = 55;
-	public static final int CATEGORY_ONE = 56;
+	public static final int BUDGET_CATEGORY_ONE = 56;
 	public static final int BUDGET_CATEGORY_TWO = 57;
 	// When you add a new type, be sure to:
 	// - increment OBJECT_TYPE_COUNT

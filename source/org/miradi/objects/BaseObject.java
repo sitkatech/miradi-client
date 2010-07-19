@@ -409,7 +409,7 @@ abstract public class BaseObject
 			case ObjectType.AUDIENCE:
 				return new Audience(objectManager, idAsInt, json);
 			
-			case ObjectType.CATEGORY_ONE:
+			case ObjectType.BUDGET_CATEGORY_ONE:
 				return new BudgetCategoryOne(objectManager, idAsInt, json);
 				
 			case ObjectType.BUDGET_CATEGORY_TWO:

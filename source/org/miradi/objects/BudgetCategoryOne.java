@@ -62,7 +62,7 @@ public class BudgetCategoryOne extends AbstractBudgetCategoryObject
 	
 	public static int getObjectType()
 	{
-		return ObjectType.CATEGORY_ONE;
+		return ObjectType.BUDGET_CATEGORY_ONE;
 	}
 	
 	@Override
