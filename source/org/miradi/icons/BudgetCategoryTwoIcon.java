@@ -25,7 +25,7 @@ import java.awt.Color;
 import org.miradi.diagram.renderers.FactorRenderer;
 import org.miradi.diagram.renderers.RectangleRenderer;
 
-public class CategoryTwoIcon extends AbstractShapeIcon
+public class BudgetCategoryTwoIcon extends AbstractShapeIcon
 {
 	@Override
 	FactorRenderer getRenderer() 

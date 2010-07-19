@@ -22,7 +22,7 @@ package org.miradi.questions;
 
 import org.miradi.icons.AccountingCodeIcon;
 import org.miradi.icons.BudgetCategoryOneIcon;
-import org.miradi.icons.CategoryTwoIcon;
+import org.miradi.icons.BudgetCategoryTwoIcon;
 import org.miradi.icons.FundingSourceIcon;
 import org.miradi.icons.ProjectResourceIcon;
 import org.miradi.main.EAM;
@@ -48,7 +48,7 @@ public class WorkPlanCategoryTypesQuestion extends StaticChoiceQuestion
 			new ChoiceItem(AccountingCode.getObjectType(), EAM.text("Accounting Code"), new AccountingCodeIcon()),
 			new ChoiceItem(FundingSource.getObjectType(), EAM.text("Funding Source"), new FundingSourceIcon()),
 			new ChoiceItem(BudgetCategoryOne.getObjectType(), EAM.text("Budget Category One"), new BudgetCategoryOneIcon()),
-			new ChoiceItem(BudgetCategoryTwo.getObjectType(), EAM.text("Budget Category Two"), new CategoryTwoIcon()),
+			new ChoiceItem(BudgetCategoryTwo.getObjectType(), EAM.text("Budget Category Two"), new BudgetCategoryTwoIcon()),
 		};
 	}
 	

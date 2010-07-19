@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.actions;
 
-import org.miradi.icons.CategoryTwoIcon;
+import org.miradi.icons.BudgetCategoryTwoIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -28,7 +28,7 @@ public class ActionCreateCategoryTwo extends ObjectsAction
 {
 	public ActionCreateCategoryTwo(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), new CategoryTwoIcon());
+		super(mainWindowToUse, getLabel(), new BudgetCategoryTwoIcon());
 	}
 
 	private static String getLabel()

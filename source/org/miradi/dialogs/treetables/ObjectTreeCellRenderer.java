@@ -32,7 +32,7 @@ import org.miradi.icons.AccountingCodeIcon;
 import org.miradi.icons.ActivityIcon;
 import org.miradi.icons.AssignmentIcon;
 import org.miradi.icons.BudgetCategoryOneIcon;
-import org.miradi.icons.CategoryTwoIcon;
+import org.miradi.icons.BudgetCategoryTwoIcon;
 import org.miradi.icons.ConceptualModelIcon;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
@@ -175,7 +175,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		setRendererDefaults(categoryOneRenderer, new BudgetCategoryOneIcon(), getPlainFont());
 		
 		categoryTwoRenderer = createRenderer(treeTableToUse);
-		setRendererDefaults(categoryTwoRenderer, new CategoryTwoIcon(), getPlainFont());
+		setRendererDefaults(categoryTwoRenderer, new BudgetCategoryTwoIcon(), getPlainFont());
 		
 		scopeBoxRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(scopeBoxRenderer, new ScopeBoxIcon(), getPlainFont());
