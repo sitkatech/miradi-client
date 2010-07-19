@@ -21,7 +21,7 @@ package org.miradi.rtf.viewExporters;
 
 import org.miradi.dialogs.AnalysisRowColumnProvider;
 import org.miradi.dialogs.planning.AccountingCodeCoreRowColumnProvider;
-import org.miradi.dialogs.planning.CategoryOneCoreRowColumnProvider;
+import org.miradi.dialogs.planning.BudgetCategoryOneCoreRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.CategoryTwoCoreRowColumnProvider;
 import org.miradi.dialogs.planning.FundingSourceCoreRowColumnProvider;
@@ -77,7 +77,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.PLANNING_VIEW_RESOURCES_CODE, new ProjectResourceRowColumnProvider(), ReportTemplateContentQuestion.getResourcesLabel());
 		exportWorkPlanCategoryTab(writer, reportTemplateContent,ReportTemplateContentQuestion.PLANNING_VIEW_ACCOUNTING_CODE_CODE, new AccountingCodeCoreRowColumnProvider(), ReportTemplateContentQuestion.getAccountingCodesLabel());
 		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.PLANNING_VIEW_FUNDING_SOURCE_CODE, new FundingSourceCoreRowColumnProvider(), ReportTemplateContentQuestion.getFundingSourcesLabel());
-		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.BUDGET_CATEGORY_ONE_CODE, new CategoryOneCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryOneLabel());
+		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.BUDGET_CATEGORY_ONE_CODE, new BudgetCategoryOneCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryOneLabel());
 		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.BUDGET_CATEGORY_TWO_CODE, new CategoryTwoCoreRowColumnProvider(), ReportTemplateContentQuestion.getCategoryTwoLabel());
 		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.ANALYSIS_CODE, new AnalysisRowColumnProvider(getProject()), ReportTemplateContentQuestion.getAnalysisLabel());
 	}
