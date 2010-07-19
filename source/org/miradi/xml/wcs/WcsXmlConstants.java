@@ -95,7 +95,7 @@ public interface WcsXmlConstants
 	public static final String MEASUREMENT_IDS = "MeasurementIds";
 	public static final String ACCOUNTING_CODE = "AccountingCode";
 	public static final String FUNDING_SOURCE = "FundingSource";
-	public static final String CATEGORY_ONE = "BudgetCategoryOne";
+	public static final String BUDGET_CATEGORY_ONE = "BudgetCategoryOne";
 	public static final String CATEGORY_TWO = "BudgetCategoryTwo";
 	public static final String PROJECT_LOCATION = "ProjectLocation";
 	public static final String GEOSPATIAL_LOCATION = "GeospatialLocation";
