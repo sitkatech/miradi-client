@@ -22,9 +22,9 @@ package org.miradi.xml.xmpz;
 
 import org.miradi.objects.BudgetCategoryOne;
 
-public class CategoryOnePoolImporter extends AbstractBudgetCategoryPoolImporter
+public class BudgetCategoryOnePoolImporter extends AbstractBudgetCategoryPoolImporter
 {
-	public CategoryOnePoolImporter(XmpzXmlImporter importerToUse)
+	public BudgetCategoryOnePoolImporter(XmpzXmlImporter importerToUse)
 	{
 		super(importerToUse, BUDGET_CATEGORY_ONE, BudgetCategoryOne.getObjectType());
 	}
