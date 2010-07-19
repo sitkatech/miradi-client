@@ -76,11 +76,11 @@ public class WorkPlanCategoryTreeNode extends AbstractPlanningTreeNode
 		if (getLevelObjectTypes().size() <= getCurrentLevel())
 			return;
 		
-		String levelObjectTypeAsString = getLevelObjectTypes().get(getCurrentLevel());
-		if (levelObjectTypeAsString.equals(WorkPlanCategoryTypesQuestion.UNSPECIFIED_CODE))
+		String typeOfChildrenAsString = getLevelObjectTypes().get(getCurrentLevel());
+		if (typeOfChildrenAsString.equals(WorkPlanCategoryTypesQuestion.UNSPECIFIED_CODE))
 			return;
 		
-		int typeOfChildren = Integer.parseInt(levelObjectTypeAsString);
+		int typeOfChildren = Integer.parseInt(typeOfChildrenAsString);
 		HashMap<ORef, ORefList> categoryRefToAssignmentRefsMap = createCategoryRefToAssignmentRefsMap(typeOfChildren);
 		ORefList childRefs = getProject().getPool(typeOfChildren).getRefList();
 		addUnspecifiedRowInPlace(childRefs);
