@@ -89,6 +89,6 @@ public class ProjectInfo
 	static String TAG_HIGHEST_NORMAL_ID = "HighestUsedAnnotationId";
 	static String TAG_PROJECT_METADATA_ID = "ProjectMetadataId";
 	
-	IdAssigner normalObjectIdAssigner;
-	BaseId metadataId;
+	private IdAssigner normalObjectIdAssigner;
+	private BaseId metadataId;
 }
