@@ -79,7 +79,7 @@ import org.miradi.objectpools.ResultsChainDiagramPool;
 import org.miradi.objectpools.ScopeBoxPool;
 import org.miradi.objectpools.StrategyPool;
 import org.miradi.objectpools.StressPool;
-import org.miradi.objectpools.TableSetttingsPool;
+import org.miradi.objectpools.TableSettingsPool;
 import org.miradi.objectpools.TaggedObjectSetPool;
 import org.miradi.objectpools.TargetPool;
 import org.miradi.objectpools.TaskPool;
@@ -383,9 +383,9 @@ public class Project
 		return (GroupBoxPool) getPool(ObjectType.GROUP_BOX);
 	}
 	
-	public TableSetttingsPool getTableSettingsPool()
+	public TableSettingsPool getTableSettingsPool()
 	{
-		return (TableSetttingsPool) getPool(ObjectType.TABLE_SETTINGS);
+		return (TableSettingsPool) getPool(ObjectType.TABLE_SETTINGS);
 	}
 	
 	public ThreatRatingCommentsData getSingletonThreatRatingCommentsData()
