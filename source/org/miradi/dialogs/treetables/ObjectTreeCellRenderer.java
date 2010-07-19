@@ -31,7 +31,7 @@ import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.icons.AccountingCodeIcon;
 import org.miradi.icons.ActivityIcon;
 import org.miradi.icons.AssignmentIcon;
-import org.miradi.icons.CategoryOneIcon;
+import org.miradi.icons.BudgetCategoryOneIcon;
 import org.miradi.icons.CategoryTwoIcon;
 import org.miradi.icons.ConceptualModelIcon;
 import org.miradi.icons.ContributingFactorIcon;
@@ -172,7 +172,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		setRendererDefaults(accountingCodeRenderer, new AccountingCodeIcon(), getPlainFont());
 		
 		categoryOneRenderer = createRenderer(treeTableToUse);
-		setRendererDefaults(categoryOneRenderer, new CategoryOneIcon(), getPlainFont());
+		setRendererDefaults(categoryOneRenderer, new BudgetCategoryOneIcon(), getPlainFont());
 		
 		categoryTwoRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(categoryTwoRenderer, new CategoryTwoIcon(), getPlainFont());
