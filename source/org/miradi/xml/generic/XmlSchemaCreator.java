@@ -186,7 +186,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		defineIdElement(writer, THREAT_ID_ELEMENT_NAME);
 		defineIdElement(writer, ACCOUNTING_CODE_ID_ELEMENT_NAME);
 		defineIdElement(writer, FUNDING_SOURCE_ID_ELEMENT_NAME);
-		defineIdElement(writer, CATEGORY_ONE);
+		defineIdElement(writer, BUDGET_CATEGORY_ONE);
 		defineIdElement(writer, CATEGORY_TWO);
 		defineIdElement(writer, PROGRESS_REPORT_ID_ELEMENT_NAME);
 		defineIdElement(writer, PROGRESS_PERCENT_ID_ELEMENT_NAME);

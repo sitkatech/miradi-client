@@ -26,6 +26,6 @@ public class CategoryOneObjectSchemaElement extends AbstractBudgetCategorySchema
 {
 	public CategoryOneObjectSchemaElement()
 	{
-		super(WcsXmlConstants.CATEGORY_ONE);
+		super(WcsXmlConstants.BUDGET_CATEGORY_ONE);
 	}
 }

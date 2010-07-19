@@ -26,6 +26,6 @@ public class BudgetCategoryOnePoolExporter extends AbstractBudgetCategoryPoolExp
 {
 	public BudgetCategoryOnePoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, CATEGORY_ONE, BudgetCategoryOne.getObjectType());
+		super(wcsXmlExporterToUse, BUDGET_CATEGORY_ONE, BudgetCategoryOne.getObjectType());
 	}
 }

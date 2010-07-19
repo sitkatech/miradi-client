@@ -44,7 +44,7 @@ abstract public class AbstractAssignmentPoolImporter extends AbstractBaseObjectP
 	{
 		super.importFields(node, destinationRef);
 		
-		importOptionalRef(node, destinationRef, Assignment.TAG_CATEGORY_ONE_REF, WcsXmlConstants.CATEGORY_ONE, BudgetCategoryOne.getObjectType());
+		importOptionalRef(node, destinationRef, Assignment.TAG_CATEGORY_ONE_REF, WcsXmlConstants.BUDGET_CATEGORY_ONE, BudgetCategoryOne.getObjectType());
 		importOptionalRef(node, destinationRef, Assignment.TAG_CATEGORY_TWO_REF, WcsXmlConstants.CATEGORY_TWO, BudgetCategoryTwo.getObjectType());
 		importDateUnitEffortList(node, destinationRef);
 	}

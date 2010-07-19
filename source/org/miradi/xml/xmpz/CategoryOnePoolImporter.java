@@ -26,6 +26,6 @@ public class CategoryOnePoolImporter extends AbstractBudgetCategoryPoolImporter
 {
 	public CategoryOnePoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, CATEGORY_ONE, BudgetCategoryOne.getObjectType());
+		super(importerToUse, BUDGET_CATEGORY_ONE, BudgetCategoryOne.getObjectType());
 	}
 }
