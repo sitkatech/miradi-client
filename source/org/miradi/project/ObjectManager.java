@@ -615,11 +615,6 @@ public class ObjectManager
 		referrerCache.remove(refToRemove);
 	}
 
-	public HashMap getAllPools()
-	{
-		return new HashMap<Integer, BaseObjectInformation>(pools);
-	}
-	
 	private class BaseObjectInformation 
 	{
 		private BaseObjectInformation(PoolWithIdAssigner poolToUse, String objectNameToUse)
