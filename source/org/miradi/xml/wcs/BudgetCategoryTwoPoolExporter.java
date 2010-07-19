@@ -22,9 +22,9 @@ package org.miradi.xml.wcs;
 
 import org.miradi.objects.BudgetCategoryTwo;
 
-public class CategoryTwoPoolExporter extends AbstractBudgetCategoryPoolExporter
+public class BudgetCategoryTwoPoolExporter extends AbstractBudgetCategoryPoolExporter
 {
-	public CategoryTwoPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public BudgetCategoryTwoPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, BUDGET_CATEGORY_TWO, BudgetCategoryTwo.getObjectType());
 	}
