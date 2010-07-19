@@ -278,6 +278,8 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 		}
 	}
 	
+	//FIXME medium, need to use method from AbstractSummaryTable.createInvalidObject() instead of the methods
+	//below
 	public static FundingSource createInvalidFundingSource(ObjectManager objectManager)
 	{
 		return new FundingSource(objectManager, BaseId.INVALID);
