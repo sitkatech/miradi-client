@@ -198,11 +198,6 @@ public class Project
 		return projectInfo.getFactorAndLinkIdAssigner();
 	}
 	
-	public IdAssigner getAnnotationIdAssigner()
-	{
-		return projectInfo.getNormalIdAssigner();
-	}
-	
 	public ProjectServer getDatabase()
 	{
 		return database;
