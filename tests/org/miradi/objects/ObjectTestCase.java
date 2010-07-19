@@ -123,7 +123,7 @@ public class ObjectTestCase extends TestCaseWithProject
 			return;
 		
 		int objectType = object.getType();
-		String internalTypeName = object.getObjectManager().getInternalObjectName(objectType);
+		String internalTypeName = object.getObjectManager().getInternalObjectTypeName(objectType);
 		assertEquals(internalTypeName, object.getTypeName());
 		EAM.setLogToString();
 		try
