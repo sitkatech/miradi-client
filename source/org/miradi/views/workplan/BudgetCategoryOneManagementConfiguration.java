@@ -26,7 +26,7 @@ import org.miradi.actions.ActionCreateCategoryOne;
 import org.miradi.actions.ActionDeleteCategoryOne;
 import org.miradi.dialogs.planning.CategoryOneCoreRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
-import org.miradi.icons.CategoryOneIcon;
+import org.miradi.icons.BudgetCategoryOneIcon;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
@@ -49,7 +49,7 @@ public class BudgetCategoryOneManagementConfiguration extends AbstractManagement
 	@Override
 	public Icon getIcon()
 	{
-		return new CategoryOneIcon();
+		return new BudgetCategoryOneIcon();
 	}
 
 	@Override

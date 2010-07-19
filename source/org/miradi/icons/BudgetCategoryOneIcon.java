@@ -27,7 +27,7 @@ import javax.swing.Icon;
 import org.miradi.diagram.renderers.FactorRenderer;
 import org.miradi.diagram.renderers.RectangleRenderer;
 
-public class CategoryOneIcon extends AbstractShapeIcon implements Icon
+public class BudgetCategoryOneIcon extends AbstractShapeIcon implements Icon
 {
 	@Override
 	FactorRenderer getRenderer() 
