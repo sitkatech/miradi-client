@@ -80,13 +80,13 @@ public class WorkPlanCategoryTreeNode extends AbstractPlanningTreeNode
 		if (levelObjectTypeAsString.equals(WorkPlanCategoryTypesQuestion.UNSPECIFIED_CODE))
 			return;
 		
-		int levelObjectType = Integer.parseInt(levelObjectTypeAsString);
-		HashMap<ORef, ORefList> categoryRefToAssignmentRefsMap = createCategoryRefToAssignmentRefsMap(levelObjectType);
-		ORefList childRefs = getProject().getPool(levelObjectType).getRefList();
+		int typeOfChildren = Integer.parseInt(levelObjectTypeAsString);
+		HashMap<ORef, ORefList> categoryRefToAssignmentRefsMap = createCategoryRefToAssignmentRefsMap(typeOfChildren);
+		ORefList childRefs = getProject().getPool(typeOfChildren).getRefList();
 		addUnspecifiedRowInPlace(childRefs);
 		for (int index = 0; index < childRefs.size(); ++index)
 		{	
-			BaseObject possibleChildObject = createOrFindChildObject(childRefs.get(index), levelObjectType);
+			BaseObject possibleChildObject = createOrFindChildObject(childRefs.get(index), typeOfChildren);
 			ORefList assignmentRefsThatMatchPossibleChild = getAssignmentsReferringToRow(categoryRefToAssignmentRefsMap, possibleChildObject);
 			ORefList assignmentRefsThatMatchPossibleChildHierarchy = assignmentRefsThatMatchPossibleChild.getOverlappingRefs(getAssignmentRefsThatMatchThisNodeHierarchy());
 			if (shouldIncludeChildNode(assignmentRefsThatMatchPossibleChildHierarchy))
