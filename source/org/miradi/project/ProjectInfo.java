@@ -24,7 +24,6 @@ import java.util.NoSuchElementException;
 
 import org.json.JSONObject;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.utils.EnhancedJsonObject;
@@ -53,11 +52,6 @@ public class ProjectInfo
 		return metadataId;
 	}
 
-	public FactorId obtainRealFactorId(BaseId proposedId)
-	{
-		return new FactorId(getNormalIdAssigner().obtainRealId(proposedId).asInt());
-	}
-	
 	public FactorLinkId obtainRealLinkId(BaseId proposedId)
 	{
 		return new FactorLinkId(getNormalIdAssigner().obtainRealId(proposedId).asInt());
