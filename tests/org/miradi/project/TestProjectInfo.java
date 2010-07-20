@@ -34,7 +34,7 @@ public class TestProjectInfo extends TestCaseEnhanced
 	public void testJson() throws Exception
 	{
 		ProjectInfo info = new ProjectInfo();
-		info.obtainRealLinkId(new BaseId(55));
+		info.obtainFactorLinkId(new BaseId(55));
 		info.getNormalIdAssigner().takeNextId();
 		info.setMetadataId(new BaseId(79));
 		

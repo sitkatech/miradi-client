@@ -52,7 +52,7 @@ public class ProjectInfo
 		return metadataId;
 	}
 
-	public FactorLinkId obtainRealLinkId(BaseId proposedId)
+	public FactorLinkId obtainFactorLinkId(BaseId proposedId)
 	{
 		return new FactorLinkId(getNormalIdAssigner().obtainRealId(proposedId).asInt());
 	}
