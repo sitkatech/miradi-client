@@ -23,6 +23,8 @@ package org.miradi.project;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.CommandExecutedListener;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -33,14 +35,29 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 
-public class ProjectTotalCalculator
+public class ProjectTotalCalculator implements CommandExecutedListener
 {
 	public ProjectTotalCalculator(Project projectToUse)
 	{
 		project = projectToUse;
+		project.addCommandExecutedListener(this);
 	}
 	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		// TODO: Only clear the cache when it actually needs it
+		cachedTimePeriodCostMap = null;
+	}
+
 	public TimePeriodCostsMap calculateProjectTotals() throws Exception
+	{
+		if(cachedTimePeriodCostMap == null)
+			cachedTimePeriodCostMap = computeTotalTimePeriodCostsMap();
+		
+		return cachedTimePeriodCostMap;
+	}
+
+	private TimePeriodCostsMap computeTotalTimePeriodCostsMap()	throws Exception
 	{
 		Set allIndicators = getIncludedDiagramIndicators();
 		Set nonDraftStrategies = getIncludedNonDraftStrategies();
@@ -48,7 +65,6 @@ public class ProjectTotalCalculator
 		TimePeriodCostsMap totalTimePeriodCostsMap = new TimePeriodCostsMap();
 		totalTimePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(allIndicators));
 		totalTimePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(nonDraftStrategies));
-		
 		return totalTimePeriodCostsMap;
 	}
 
@@ -141,4 +157,5 @@ public class ProjectTotalCalculator
 	}
 	
 	private Project project;
+	private TimePeriodCostsMap cachedTimePeriodCostMap;
 }
