@@ -71,7 +71,7 @@ public class ProjectInfo
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
-		json.put(TAG_HIGHEST_FACTOR_OR_LINK_ID, getNormalIdAssigner().getHighestAssignedId());
+		json.put(TAG_HIGHEST_OBJECT_ID, getNormalIdAssigner().getHighestAssignedId());
 		json.put(TAG_PROJECT_METADATA_ID, metadataId.asInt());
 		
 		return json;
@@ -80,11 +80,11 @@ public class ProjectInfo
 	public void fillFrom(JSONObject copyFrom) throws NoSuchElementException, ParseException
 	{
 		clear();
-		getNormalIdAssigner().idTaken(new BaseId(copyFrom.optInt(TAG_HIGHEST_FACTOR_OR_LINK_ID, IdAssigner.INVALID_ID)));
+		getNormalIdAssigner().idTaken(new BaseId(copyFrom.optInt(TAG_HIGHEST_OBJECT_ID, IdAssigner.INVALID_ID)));
 		metadataId = new BaseId(copyFrom.optInt(TAG_PROJECT_METADATA_ID, -1));
 	}
 	
-	private static final String TAG_HIGHEST_FACTOR_OR_LINK_ID = "HighestUsedNodeId";
+	private static final String TAG_HIGHEST_OBJECT_ID = "HighestUsedNodeId";
 	private static final String TAG_PROJECT_METADATA_ID = "ProjectMetadataId";
 	
 	private IdAssigner normalObjectIdAssigner;
