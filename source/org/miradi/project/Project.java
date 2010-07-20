@@ -557,7 +557,7 @@ public class Project
 	
 	public FactorLinkId obtainRealLinkageId(BaseId proposedId)
 	{
-		return projectInfo.obtainRealLinkId(proposedId);
+		return projectInfo.obtainFactorLinkId(proposedId);
 	}
 	
 	public ORef createObject(int objectType) throws Exception
