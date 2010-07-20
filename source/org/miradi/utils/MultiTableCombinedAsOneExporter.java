@@ -229,13 +229,14 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	public String getAboveColumnHeaderText(int tableColumn)
 	{
 		int modelColumn = convertToModelColumn(tableColumn);
-		if (getColumnGroupName(modelColumn).equals(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
+		String columnGroupName = getColumnGroupName(modelColumn);
+		if (WorkPlanColumnConfigurationQuestion.getAllPossibleWorkUnitsColumnGroups().contains(columnGroupName))
 			return AboveBudgetColumnsBar.getWorkUnitsAboveColumnLabel();
 		
-		if (getColumnGroupName(modelColumn).equals(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
+		if (WorkPlanColumnConfigurationQuestion.getAllPossibleExpensesColumnGroups().contains(columnGroupName))
 			return AboveBudgetColumnsBar.getExpensesAboveColumnLabel();
 		
-		if (getColumnGroupName(modelColumn).equals(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
+		if (WorkPlanColumnConfigurationQuestion.getAllPossibleBudgetTotalsColumnGroups().contains(columnGroupName))
 			return AboveBudgetColumnsBar.getBudgetTotalsAboveColumnLabel();
 		
 		return "";
