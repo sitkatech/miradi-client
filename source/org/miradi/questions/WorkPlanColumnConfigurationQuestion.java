@@ -100,16 +100,6 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 		return columnGroups;
 	}
 	
-	public static Vector<String> getAllPossibleRollupReportsColumnGroups()
-	{
-		Vector<String> columnGroups = new Vector();
-		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_WORK_UNITS_COLUMN_CODE);
-		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_EXPENSES_CODE);
-		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_BUDGET_DETAILS_COLUMN_CODE);
-		
-		return columnGroups;
-	}
-
 	public static final String META_ANALYSIS_WORK_UNITS_COLUMN_CODE = "MetaAnalysisWorkUnitsColumnCode";
 	public static final String META_ANALYSIS_EXPENSES_CODE = "MetaAnalysisExpensesColumnCode";
 	public static final String META_ANALYSIS_BUDGET_DETAILS_COLUMN_CODE = "MetaAnalysisBudgetDetailsColumnCode";
