@@ -36,9 +36,6 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE),
 				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE),
 				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE),
-				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_WORK_UNITS_COLUMN_CODE),
-				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_EXPENSES_CODE),
-				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_BUDGET_DETAILS_COLUMN_CODE),
 		};
 	}
 	
