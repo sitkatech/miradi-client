@@ -27,8 +27,7 @@ import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.Project;
 import org.miradi.utils.OptionalDouble;
 
-abstract public class CategorizedExpenseAmountsTableModel extends
-		AbstractExpenseTableModel
+abstract public class CategorizedExpenseAmountsTableModel extends AbstractExpenseTableModel
 {
 	public CategorizedExpenseAmountsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
@@ -46,5 +45,4 @@ abstract public class CategorizedExpenseAmountsTableModel extends
 	{
 		timePeriodCosts.retainExpenseDataRelatedToAllOf(objectHierarchy);
 	}
-
 }
