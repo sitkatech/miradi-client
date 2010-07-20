@@ -34,7 +34,6 @@ public class TestProjectInfo extends TestCaseEnhanced
 	public void testJson() throws Exception
 	{
 		ProjectInfo info = new ProjectInfo();
-		info.obtainRealFactorId(new BaseId(27));
 		info.obtainRealLinkId(new BaseId(55));
 		info.getNormalIdAssigner().takeNextId();
 		info.setMetadataId(new BaseId(79));
@@ -63,7 +62,6 @@ public class TestProjectInfo extends TestCaseEnhanced
 	public void testClear()
 	{
 		ProjectInfo info = new ProjectInfo();
-		info.obtainRealFactorId(new BaseId(27));
 		info.getNormalIdAssigner().takeNextId();
 		assertTrue("MetadataId not invalid?", info.getMetadataId().isInvalid());
 		BaseId metadataId = new BaseId(525);
