@@ -560,11 +560,6 @@ public class Project
 		return projectInfo.obtainRealLinkId(proposedId);
 	}
 	
-	public BaseId obtainRealNodeId(BaseId proposedId)
-	{
-		return projectInfo.obtainRealFactorId(proposedId);
-	}
-	
 	public ORef createObject(int objectType) throws Exception
 	{
 		BaseId createdId = createObjectAndReturnId(objectType);
