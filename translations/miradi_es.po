@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-19 15:14-0500\n"
+"POT-Creation-Date: 2010-07-20 09:14-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -8747,16 +8747,6 @@ msgstr ""
 
 msgid "FieldLabel|12.MetaBudgetDetailColumnCode|Budget Totals"
 msgstr "Totales del presupuesto"
-
-msgid "FieldLabel|12.MetaAnalysisWorkUnitsColumnCode|Analysis Work Units"
-msgstr ""
-
-msgid "FieldLabel|12.MetaAnalysisExpensesColumnCode|Analysis Expenses"
-msgstr ""
-
-msgid ""
-"FieldLabel|12.MetaAnalysisBudgetDetailsColumnCode|Analysis Budget Details"
-msgstr ""
 
 msgid "FieldLabel|12.ResourceType|Resource Type"
 msgstr "Tipo de recurso"
