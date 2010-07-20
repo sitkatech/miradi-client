@@ -90,7 +90,10 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 		currentCard = findPanel(orefsToUse);
 		cardLayout.show(this, currentCard.getPanelDescription());
 		if (isMultiPropertiesPanelActive())
+		{
 			activateCurrentCard();
+			currentCard.setObjectRefs(orefsToUse);
+		}
 		
 		scrollRectToVisible(new Rectangle(0,0,0,0));
 		
