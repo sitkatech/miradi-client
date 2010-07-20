@@ -60,6 +60,15 @@ public class TestProjectServer extends TestCaseWithProject
 		super.tearDown();
 	}
 	
+	public void testQuarantineFile() throws Exception
+	{
+		assertEquals("Quarantine doesn't default to empty?", "", storage.getQuarantineFileContents());
+		
+		final String SAMPLE_TEXT = "whatever";
+		storage.appendToQuarantineFile(SAMPLE_TEXT);
+		assertContains("Quarantine can't be written and read?", SAMPLE_TEXT, storage.getQuarantineFileContents());
+	}
+	
 	public void testObjectManifest() throws Exception
 	{
 		int type = Target.getObjectType();
