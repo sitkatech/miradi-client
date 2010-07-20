@@ -58,9 +58,6 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 		if (getAllPossibleBudgetTotalsColumnGroups().contains(budgetColumnGroupCode))
 			return WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE;
 		
-		if (getAllPossibleRollupReportsColumnGroups().contains(budgetColumnGroupCode))
-			return WorkPlanColumnConfigurationQuestion.META_ANALYSIS_WORK_UNITS_COLUMN_CODE;
-		
 		throw new RuntimeException("Column code is not a budet column. Code: " + budgetColumnGroupCode);
 	}
 	
