@@ -198,6 +198,8 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	
 	public void testDeletedOrphans() throws Exception
 	{
+		validateUsingStringWriter();
+		
 		String fakeOrphanText = "blah blah<>{}\\/[]\"!";
 		getProject().appendToQuarantineFile(fakeOrphanText);
 		Project imported = validateUsingStringWriter();
