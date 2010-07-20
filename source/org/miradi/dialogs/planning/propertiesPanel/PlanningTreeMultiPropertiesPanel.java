@@ -39,6 +39,7 @@ import org.miradi.dialogs.viability.IndicatorPropertiesPanelWithBudgetPanels;
 import org.miradi.dialogs.viability.NonDiagramAbstractTargetPropertiesPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AccountingCode;
@@ -72,48 +73,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	
 	private void createPropertiesPanels() throws Exception
 	{
-		goalPropertiesPanel = new GoalPropertiesPanel(getProject(), getMainWindow().getActions());
-		objectivePropertiesPanel = new ObjectivePropertiesPanel(getProject(), getMainWindow().getActions());
-		indicatorPropertiesPanel = createIndicatorPropertiesPanel();
-		strategyPropertiesPanel = createStrategyPropertiesPanel();
-		taskPropertiesInputPanel = createTaskPropertiesPanel();
-		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
-		targetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), Target.getObjectType());
-		humanWelfareTargetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), HumanWelfareTarget.getObjectType());
-		threatPropertiesPanel = new PlanningViewDirectThreatPropertiesPanel(getProject());
-		contributingFactorPropertiesPanel = new PlanningViewContributingFactorPropertiesPanel(getProject());
-		intermediateResultPropertiesPanel = new PlanningViewIntermediateResultPropertiesPanel(getProject());
-		threatReductionResultPropertiesPanel = new PlanningViewThreatReductionResultPropertiesPanel(getProject());
-		resultsChainPropertiesPanel = new ResultsChainPropertiesPanel(getProject(), ORef.INVALID);
-		conceptualModelPropertiesPanel = new ConceptualModelPropertiesPanel(getProject(), ORef.INVALID);
-		projectResourcePropertiesPanel = new ResourcePropertiesPanel(getProject(), BaseId.INVALID);
-		fundingSourcePropertiesPanel = new FundingSourcePropertiesPanel(getProject());
-		accountingCodePropertiesPanel = new AccountingCodePropertiesPanel(getProject());
-		categoryOnePropertiesPanel = new BudgetCategoryOnePropertiesPanel(getProject());
-		categoryTwoPropertiesPanel = new BudgetCategoryTwoPropertiesPanel(getProject());
-		subTargetPropertiesPanel = new SubTargetPropertiesPanel(getProject());
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
-		
-		addPanel(goalPropertiesPanel);
-		addPanel(objectivePropertiesPanel);
-		addPanel(indicatorPropertiesPanel);
-		addPanel(strategyPropertiesPanel);
-		addPanel(taskPropertiesInputPanel);
-		addPanel(measurementPropertiesPanel);
-		addPanel(targetPropertiesPanel);
-		addPanel(humanWelfareTargetPropertiesPanel);
-		addPanel(threatPropertiesPanel);
-		addPanel(contributingFactorPropertiesPanel);
-		addPanel(intermediateResultPropertiesPanel);
-		addPanel(threatReductionResultPropertiesPanel);
-		addPanel(resultsChainPropertiesPanel);
-		addPanel(conceptualModelPropertiesPanel);
-		addPanel(projectResourcePropertiesPanel);
-		addPanel(fundingSourcePropertiesPanel);
-		addPanel(accountingCodePropertiesPanel);
-		addPanel(categoryOnePropertiesPanel);
-		addPanel(categoryTwoPropertiesPanel);
-		addPanel(subTargetPropertiesPanel);
 		addPanel(blankPropertiesPanel);
 	}
 
@@ -150,75 +110,283 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		if(orefsToUse.length == 0)
 			return blankPropertiesPanel;
 		
-		ORef firstRef = orefsToUse[DEEPEST_INDEX];
-		int objectType = firstRef.getObjectType();
-		if (Goal.getObjectType() == objectType)
-			return goalPropertiesPanel;
-		
-		if (Objective.getObjectType() == objectType)
-			return objectivePropertiesPanel;
-		
-		if (Indicator.getObjectType() == objectType)
-			return indicatorPropertiesPanel;
-		
-		if (Strategy.getObjectType() == objectType)
-			return strategyPropertiesPanel;
-		
-		if (Task.getObjectType() == objectType)
-			return taskPropertiesInputPanel;
-		
-		if (Measurement.getObjectType() == objectType)
-			return measurementPropertiesPanel;
-		
-		if (Target.getObjectType() == objectType)
-			return targetPropertiesPanel;
-		
-		if (HumanWelfareTarget.is(objectType))
-			return humanWelfareTargetPropertiesPanel;
-		
-		if (Cause.getObjectType() == objectType)
-			return getCausePropertiesPanel(firstRef);
-		
-		if (IntermediateResult.getObjectType() == objectType)
-			return intermediateResultPropertiesPanel;
-		
-		if (ThreatReductionResult.getObjectType() == objectType)
-			return threatReductionResultPropertiesPanel;
-	
-		if (ResultsChainDiagram.is(objectType))
-			return resultsChainPropertiesPanel;
-		
-		if (ConceptualModelDiagram.is(objectType))
-			return conceptualModelPropertiesPanel;
-		
-		if (ProjectResource.is(objectType))
-			return projectResourcePropertiesPanel;
-		
-		if (FundingSource.is(objectType))
-			return fundingSourcePropertiesPanel;
-		
-		if (AccountingCode.is(objectType))
-			return accountingCodePropertiesPanel;
-		
-		if (BudgetCategoryOne.is(objectType))
-			return categoryOnePropertiesPanel;
-		
-		if (BudgetCategoryTwo.is(objectType))
-			return categoryTwoPropertiesPanel;
-		
-		if (SubTarget.is(objectType))
-			return subTargetPropertiesPanel;
+		try
+		{
+			ORef firstRef = orefsToUse[DEEPEST_INDEX];
+			int objectType = firstRef.getObjectType();
+			if (Goal.getObjectType() == objectType)
+				return getGoalPropertiesPanel();
+			
+			if (Objective.getObjectType() == objectType)
+				return getObjectivePropertiesPanel();
+			
+			if (Indicator.getObjectType() == objectType)
+				return getIndicatorPropertiesPanel();
+			
+			if (Strategy.getObjectType() == objectType)
+				return getStrategyPropertiesPanel();
+			
+			if (Task.getObjectType() == objectType)
+				return getTaskPropertiesPanel();
+			
+			if (Measurement.getObjectType() == objectType)
+				return getMeasurementPropertiesPanel();
+			
+			if (Target.getObjectType() == objectType)
+				return getBiodiversityTargetPropertiesPanel();
+			
+			if (HumanWelfareTarget.is(objectType))
+				return getHumanWelfareTargetPropertiesPanel();
+			
+			if (Cause.getObjectType() == objectType)
+				return getCausePropertiesPanel(firstRef);
+			
+			if (IntermediateResult.getObjectType() == objectType)
+				return getIntermediateResultPropertiesPanel();
+			
+			if (ThreatReductionResult.getObjectType() == objectType)
+				return getThreatReductionResultPropertiesPanel();
+
+			if (ResultsChainDiagram.is(objectType))
+				return getResultsChainPropertiesPanel();
+			
+			if (ConceptualModelDiagram.is(objectType))
+				return getConceptualModelPropertiesPanel();
+			
+			if (ProjectResource.is(objectType))
+				return getProjectResourcePropertiesPanel();
+			
+			if (FundingSource.is(objectType))
+				return getFundingSourcePropertiesPanel();
+			
+			if (AccountingCode.is(objectType))
+				return getAccountingCodePropertiesPanel();
+			
+			if (BudgetCategoryOne.is(objectType))
+				return getBudgetCategoryOnePropertiesPanel();
+			
+			if (BudgetCategoryTwo.is(objectType))
+				return getBudgetCategoryTwoPropertiesPanel();
+			
+			if (SubTarget.is(objectType))
+				return getSubTargetPropertiesPanel();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
+		}
 		
 		return blankPropertiesPanel;
 	}
 
-	private MinimalFactorPropertiesPanel getCausePropertiesPanel(ORef causeRef)
+	private AbstractObjectDataInputPanel getGoalPropertiesPanel() throws Exception
+	{
+		if(goalPropertiesPanel == null)
+		{
+			goalPropertiesPanel = new GoalPropertiesPanel(getProject(), getMainWindow().getActions());
+			addPanel(goalPropertiesPanel);
+		}
+		return goalPropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getObjectivePropertiesPanel() throws Exception
+	{
+		if(objectivePropertiesPanel == null)
+		{
+			objectivePropertiesPanel = new ObjectivePropertiesPanel(getProject(), getMainWindow().getActions());
+			addPanel(objectivePropertiesPanel);
+		}
+		return objectivePropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getIndicatorPropertiesPanel() throws Exception
+	{
+		if(indicatorPropertiesPanel == null)
+		{
+			indicatorPropertiesPanel = createIndicatorPropertiesPanel();
+			addPanel(indicatorPropertiesPanel);
+		}
+		return indicatorPropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getStrategyPropertiesPanel() throws Exception
+	{
+		if(strategyPropertiesPanel == null)
+		{
+			strategyPropertiesPanel = createStrategyPropertiesPanel();
+			addPanel(strategyPropertiesPanel);
+		}
+		return strategyPropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getTaskPropertiesPanel() throws Exception
+	{
+		if(taskPropertiesInputPanel == null)
+		{
+			taskPropertiesInputPanel = createTaskPropertiesPanel();
+			addPanel(taskPropertiesInputPanel);
+		}
+		return taskPropertiesInputPanel;
+	}
+
+	private AbstractObjectDataInputPanel getMeasurementPropertiesPanel() throws Exception
+	{
+		if(measurementPropertiesPanel == null)
+		{
+			measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
+			addPanel(measurementPropertiesPanel);
+		}
+		return measurementPropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getBiodiversityTargetPropertiesPanel() throws Exception
+	{
+		if(targetPropertiesPanel == null)
+		{
+			targetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), Target.getObjectType());
+			addPanel(targetPropertiesPanel);
+		}
+		return targetPropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getHumanWelfareTargetPropertiesPanel() throws Exception
+	{
+		if(humanWelfareTargetPropertiesPanel == null)
+		{
+			humanWelfareTargetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), HumanWelfareTarget.getObjectType());
+			addPanel(humanWelfareTargetPropertiesPanel);
+		}
+		return humanWelfareTargetPropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getIntermediateResultPropertiesPanel() throws Exception
+	{
+		if(intermediateResultPropertiesPanel == null)
+		{
+			intermediateResultPropertiesPanel = new PlanningViewIntermediateResultPropertiesPanel(getProject());
+			addPanel(intermediateResultPropertiesPanel);
+		}
+		return intermediateResultPropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getThreatReductionResultPropertiesPanel() throws Exception
+	{
+		if (threatReductionResultPropertiesPanel == null)
+		{
+			threatReductionResultPropertiesPanel = new PlanningViewThreatReductionResultPropertiesPanel(getProject());
+			addPanel(threatReductionResultPropertiesPanel);
+		}
+		return threatReductionResultPropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getResultsChainPropertiesPanel() throws Exception
+	{
+		if(resultsChainPropertiesPanel == null)
+		{
+			resultsChainPropertiesPanel = new ResultsChainPropertiesPanel(getProject(), ORef.INVALID);
+			addPanel(resultsChainPropertiesPanel);
+		}
+		return resultsChainPropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getConceptualModelPropertiesPanel() throws Exception
+	{
+		if(conceptualModelPropertiesPanel == null)
+		{
+			conceptualModelPropertiesPanel = new ConceptualModelPropertiesPanel(getProject(), ORef.INVALID);
+			addPanel(conceptualModelPropertiesPanel);
+		}
+		return conceptualModelPropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getProjectResourcePropertiesPanel() throws Exception
+	{
+		if(projectResourcePropertiesPanel == null)
+		{
+			projectResourcePropertiesPanel = new ResourcePropertiesPanel(getProject(), BaseId.INVALID);
+			addPanel(projectResourcePropertiesPanel);
+		}
+		return projectResourcePropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getFundingSourcePropertiesPanel() throws Exception
+	{
+		if(fundingSourcePropertiesPanel == null)
+		{
+			fundingSourcePropertiesPanel = new FundingSourcePropertiesPanel(getProject());
+			addPanel(fundingSourcePropertiesPanel);
+		}
+		return fundingSourcePropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getAccountingCodePropertiesPanel() throws Exception
+	{
+		if(accountingCodePropertiesPanel == null)
+		{
+			accountingCodePropertiesPanel = new AccountingCodePropertiesPanel(getProject());
+			addPanel(accountingCodePropertiesPanel);
+		}
+		return accountingCodePropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getBudgetCategoryOnePropertiesPanel() throws Exception
+	{
+		if(categoryOnePropertiesPanel == null)
+		{
+			categoryOnePropertiesPanel = new BudgetCategoryOnePropertiesPanel(getProject());
+			addPanel(categoryOnePropertiesPanel);
+		}
+		return categoryOnePropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getBudgetCategoryTwoPropertiesPanel() throws Exception
+	{
+		if(categoryTwoPropertiesPanel == null)
+		{
+			categoryTwoPropertiesPanel = new BudgetCategoryTwoPropertiesPanel(getProject());
+			addPanel(categoryTwoPropertiesPanel);
+		}
+		return categoryTwoPropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getSubTargetPropertiesPanel() throws Exception
+	{
+		if(subTargetPropertiesPanel == null)
+		{
+			subTargetPropertiesPanel = new SubTargetPropertiesPanel(getProject());
+			addPanel(subTargetPropertiesPanel);
+		}
+		return subTargetPropertiesPanel;
+	}
+
+	private MinimalFactorPropertiesPanel getCausePropertiesPanel(ORef causeRef) throws Exception
 	{
 		Cause cause = Cause.find(getProject(), causeRef);
 		if (cause.isDirectThreat())
-			return threatPropertiesPanel;
+			return getThreatPropertiesPanel();
 		
+		return getContributingFactorPropertiesPanel();
+	}
+
+	private MinimalFactorPropertiesPanel getContributingFactorPropertiesPanel() throws Exception
+	{
+		if(contributingFactorPropertiesPanel == null)
+		{
+			contributingFactorPropertiesPanel = new PlanningViewContributingFactorPropertiesPanel(getProject());
+			addPanel(contributingFactorPropertiesPanel);
+		}
 		return contributingFactorPropertiesPanel;
+	}
+
+	private MinimalFactorPropertiesPanel getThreatPropertiesPanel() throws Exception
+	{
+		if(threatPropertiesPanel == null)
+		{
+			threatPropertiesPanel = new PlanningViewDirectThreatPropertiesPanel(getProject());
+			addPanel(threatPropertiesPanel);
+		}
+		return threatPropertiesPanel;
 	}
 
 	@Override
