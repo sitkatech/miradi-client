@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/41'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/42'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -47,7 +47,7 @@ ConservationProject.element = element miradi:ConservationProject
   OtherNotableSpeciesPool.element ?  &
   AudiencePool.element ?  &
   PlanningViewConfigurationPool.element ?  &
-  element miradi:DeletedOrphans { text }?
+  element miradi:DeletedOrphans{ text }?
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -458,7 +458,7 @@ Goal.element = element miradi:Goal
   attribute Id {xsd:integer}  &
   element miradi:GoalName { text }? &
   element miradi:GoalId { text }? &
-  element miradi:GoalText { text }? &
+  element miradi:GoalDetails { text }? &
   element miradi:GoalRelevantIndicatorIds { IndicatorId.element* } &
   element miradi:GoalRelevantStrategyIds { StrategyId.element* } &
   element miradi:GoalRelevantActiviyIds { ActivityId.element* } &
@@ -472,7 +472,7 @@ Objective.element = element miradi:Objective
   attribute Id {xsd:integer}  &
   element miradi:ObjectiveName { text }? &
   element miradi:ObjectiveId { text }? &
-  element miradi:ObjectiveText { text }? &
+  element miradi:ObjectiveDetails { text }? &
   element miradi:ObjectiveRelevantIndicatorIds { IndicatorId.element* } &
   element miradi:ObjectiveRelevantStrategyIds { StrategyId.element* } &
   element miradi:ObjectiveRelevantActiviyIds { ActivityId.element* } &
