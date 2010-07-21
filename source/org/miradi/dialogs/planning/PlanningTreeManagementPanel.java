@@ -87,6 +87,7 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 		String uniqueTreeTableModelIdentifier = getPlanningTreeTablePanel().getTree().getTreeTableModel().getUniqueTreeTableModelIdentifier();
 		RowColumnProvider rowColumnProvider = getPlanningTreeTablePanel().getRowColumnProvider();
 		PlanningTreeTablePanel panel = createPlanningTreeTablePanel(uniqueTreeTableModelIdentifier,	rowColumnProvider);
+		panel.becomeActive();
 		TableExporter table = panel.getTableForExporting();
 		panel.dispose();
 		
@@ -104,6 +105,7 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 		String uniqueTreeTableModelIdentifier = getPlanningTreeTablePanel().getTree().getTreeTableModel().getUniqueTreeTableModelIdentifier();
 		RowColumnProvider rowColumnProvider = getPlanningTreeTablePanel().getRowColumnProvider();
 		PlanningTreeTablePanel thisPlanningTreeTablePanel = createPlanningTreeTablePanel(uniqueTreeTableModelIdentifier, rowColumnProvider);
+		thisPlanningTreeTablePanel.becomeActive();
 		GenericTreeTableModel planningTreeTableModel = thisPlanningTreeTablePanel.getTreeTableModel();
 		thisPlanningTreeTablePanel.dispose();
 		
