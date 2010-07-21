@@ -53,10 +53,8 @@ public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 		return exportablePlanningTreeTablePanel;
 	}
 	
-	public static JComponent createPrintablePlanningTreeTablePanel(MainWindow mainWindow, RowColumnProvider rowColumnProvider, GenericTreeTableModel modelToUse) throws Exception
+	public static JComponent createReformattedPrintablePlanningTreeTablePanel(PlanningTreeTablePanel wholePanel)
 	{
-		PlanningTreeTablePanel wholePanel = createPlanningTreeTablePanelWithoutButtonsForExporting(mainWindow, rowColumnProvider, modelToUse);
-
 		TwoColumnPanel reformatted = new TwoColumnPanel();
 		reformatted.add(new FillerLabel());
 		reformatted.add(wholePanel.createAboveColumnBar());
