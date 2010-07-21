@@ -29,6 +29,7 @@ public class OptionalTextFieldSchemaElement extends FieldSchemaElement
 		super(objectTypeNameToUse, tagToUse);
 	}
 
+	@Override
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
