@@ -19,13 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
-import javax.swing.JComponent;
 
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
-import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.FillerLabel;
 
 public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -51,21 +48,5 @@ public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 		exportablePlanningTreeTablePanel.rebuildEntireTreeTable();
 
 		return exportablePlanningTreeTablePanel;
-	}
-	
-	public static JComponent createReformattedPrintablePlanningTreeTablePanel(PlanningTreeTablePanel wholePanel)
-	{
-		TwoColumnPanel reformatted = new TwoColumnPanel();
-		reformatted.add(new FillerLabel());
-		reformatted.add(wholePanel.createAboveColumnBar());
-		
-		reformatted.add(wholePanel.getTree().getTableHeader());
-		reformatted.add(wholePanel.getMainTable().getTableHeader());
-		
-		reformatted.add(wholePanel.getTree());
-		reformatted.add(wholePanel.getMainTable());
-		
-		wholePanel.dispose();
-		return reformatted;
 	}
 }

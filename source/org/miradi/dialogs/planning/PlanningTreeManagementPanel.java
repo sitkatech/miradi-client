@@ -111,7 +111,7 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 		
 		PlanningTreeTablePanel wholePanel = ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, planningTreeTableModel);
 		
-		return ExportablePlanningTreeTablePanel.createReformattedPrintablePlanningTreeTablePanel(wholePanel);
+		return PlanningTreeTablePanel.createReformattedPrintablePlanningTreeTablePanel(wholePanel);
 	}
 	
 	public PlanningTreeTablePanel getPlanningTreeTablePanel()

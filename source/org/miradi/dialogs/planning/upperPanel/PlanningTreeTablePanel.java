@@ -47,6 +47,7 @@ import org.miradi.dialogs.planning.propertiesPanel.WorkPlanWorkUnitsTableModel;
 import org.miradi.dialogs.treetables.AbstractTreeTablePanel;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
+import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
@@ -57,6 +58,7 @@ import org.miradi.objects.Measurement;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.FillerLabel;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
 import org.miradi.utils.TableExporter;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
@@ -430,6 +432,22 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		
 		return ObjectType.FAKE;
 	
+	}
+	
+	public static JComponent createReformattedPrintablePlanningTreeTablePanel(PlanningTreeTablePanel wholePanel)
+	{
+		TwoColumnPanel reformatted = new TwoColumnPanel();
+		reformatted.add(new FillerLabel());
+		reformatted.add(wholePanel.createAboveColumnBar());
+		
+		reformatted.add(wholePanel.getTree().getTableHeader());
+		reformatted.add(wholePanel.getMainTable().getTableHeader());
+		
+		reformatted.add(wholePanel.getTree());
+		reformatted.add(wholePanel.getMainTable());
+		
+		wholePanel.dispose();
+		return reformatted;
 	}
 	
 	public void selectObjectAfterSwingClearsItDueToTreeStructureChange(TableWithColumnWidthAndSequenceSaver table, int fallbackRow, int fallbackColumn)
