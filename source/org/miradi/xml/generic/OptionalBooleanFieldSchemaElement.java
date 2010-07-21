@@ -29,6 +29,7 @@ public class OptionalBooleanFieldSchemaElement extends FieldSchemaElement
 		super(objectTypeNameToUse, fieldNameToUse);
 	}
 
+	@Override
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
