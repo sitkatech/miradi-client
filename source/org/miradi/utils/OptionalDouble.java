@@ -19,8 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
+import org.miradi.project.FloatingPointFormatter;
 
 public class OptionalDouble
 {	
@@ -155,7 +154,7 @@ public class OptionalDouble
 	{
 		if(hasValue())
 		{
-			NumberFormat formatter = new DecimalFormat();
+			FloatingPointFormatter formatter = new FloatingPointFormatter();
 			formatter.setGroupingUsed(false);
 			formatter.setMinimumFractionDigits(0);
 			return formatter.format(getRawValue());

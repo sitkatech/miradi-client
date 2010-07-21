@@ -34,7 +34,16 @@ public class FloatingPointFormatter
 	{
 		return decimalFormat.format(valueToFormat);
 	}
-
+	
+	public void setGroupingUsed(boolean shouldGroup)
+	{
+		decimalFormat.setGroupingUsed(shouldGroup);
+	}
+	
+	public void setMinimumFractionDigits(int minFractionDigits)
+	{
+		decimalFormat.setMinimumFractionDigits(minFractionDigits);
+	}
 
 	private DecimalFormat decimalFormat;
 }
