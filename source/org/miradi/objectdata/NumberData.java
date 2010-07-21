@@ -19,9 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-
+import org.miradi.project.FloatingPointFormatter;
 import org.miradi.utils.InvalidNumberException;
 
 public class NumberData extends ObjectData
@@ -58,8 +56,7 @@ public class NumberData extends ObjectData
 		if(new Double(value).isNaN())
 			return "";
 
-		NumberFormat format = new DecimalFormat("#.#");
-		format.setMaximumFractionDigits(Integer.MAX_VALUE);
+		FloatingPointFormatter format = new FloatingPointFormatter();
 		return format.format(value);
 	}
 	
