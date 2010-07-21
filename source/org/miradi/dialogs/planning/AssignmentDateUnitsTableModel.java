@@ -698,7 +698,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	protected ChoiceItem createFormattedChoiceItem(OptionalDouble optionalDouble)
 	{
-		return new ChoiceItem(optionalDouble.toUnformattedString(), optionalDouble.toUnformattedString());
+		return new ChoiceItem(optionalDouble.toString(), optionalDouble.toString());
 	}
 	
 	protected OptionalDouble getOptionalDoubleAt(int row, int column)
