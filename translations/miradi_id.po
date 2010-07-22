@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-22 09:16-0500\n"
+"POT-Creation-Date: 2010-07-22 10:01-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -9281,29 +9281,6 @@ msgid ""
 "FieldLabel|38.NumberOfCommunitiesInCampaignArea|Number of Communities in "
 "Campaign Area"
 msgstr "Jumlah Komunitas di Area Kampanye "
-
-msgid "FieldLabel|38.CourseManagerNotes|Course Manager"
-msgstr "Manajer Pelatihan "
-
-msgid "FieldLabel|38.RegionalDirectorNotes|Regional Director"
-msgstr "Direktur Wilayah "
-
-msgid "FieldLabel|38.CampaignManagerNotes|Campaign Manager"
-msgstr "Manajer Kampanye "
-
-msgid "FieldLabel|38.LocalPartnerContactNotes|Local Partner Contact"
-msgstr "Kontak Mitra Lokal "
-
-msgid "FieldLabel|38.BingoPartnerContactNotes|BINGO Partner Contact"
-msgstr "Kontak Mitra BINGO "
-
-msgid ""
-"FieldLabel|38.ThreatReductionPartnerContactNotes|Threat Reduction Partner "
-"Contact"
-msgstr "Kontak Mitra Pengurangan Ancaman"
-
-msgid "FieldLabel|38.MonitoringPartnerContactNotes|Monitoring Partner Contact"
-msgstr "Kontak Mitra Pemantauan "
 
 msgid "FieldLabel|38.Cohort|Cohort"
 msgstr "Kohor"
@@ -31623,6 +31600,30 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "FieldLabel|38.CourseManagerNotes|Course Manager"
+#~ msgstr "Manajer Pelatihan "
+
+#~ msgid "FieldLabel|38.RegionalDirectorNotes|Regional Director"
+#~ msgstr "Direktur Wilayah "
+
+#~ msgid "FieldLabel|38.CampaignManagerNotes|Campaign Manager"
+#~ msgstr "Manajer Kampanye "
+
+#~ msgid "FieldLabel|38.LocalPartnerContactNotes|Local Partner Contact"
+#~ msgstr "Kontak Mitra Lokal "
+
+#~ msgid "FieldLabel|38.BingoPartnerContactNotes|BINGO Partner Contact"
+#~ msgstr "Kontak Mitra BINGO "
+
+#~ msgid ""
+#~ "FieldLabel|38.ThreatReductionPartnerContactNotes|Threat Reduction Partner "
+#~ "Contact"
+#~ msgstr "Kontak Mitra Pengurangan Ancaman"
+
+#~ msgid ""
+#~ "FieldLabel|38.MonitoringPartnerContactNotes|Monitoring Partner Contact"
+#~ msgstr "Kontak Mitra Pemantauan "
 
 #~ msgid "Label|Team Information"
 #~ msgstr "Informasi Tim "

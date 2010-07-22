@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-22 09:16-0500\n"
+"POT-Creation-Date: 2010-07-22 10:01-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -8797,29 +8797,6 @@ msgstr ""
 msgid ""
 "FieldLabel|38.NumberOfCommunitiesInCampaignArea|Number of Communities in "
 "Campaign Area"
-msgstr ""
-
-msgid "FieldLabel|38.CourseManagerNotes|Course Manager"
-msgstr ""
-
-msgid "FieldLabel|38.RegionalDirectorNotes|Regional Director"
-msgstr ""
-
-msgid "FieldLabel|38.CampaignManagerNotes|Campaign Manager"
-msgstr ""
-
-msgid "FieldLabel|38.LocalPartnerContactNotes|Local Partner Contact"
-msgstr ""
-
-msgid "FieldLabel|38.BingoPartnerContactNotes|BINGO Partner Contact"
-msgstr ""
-
-msgid ""
-"FieldLabel|38.ThreatReductionPartnerContactNotes|Threat Reduction Partner "
-"Contact"
-msgstr ""
-
-msgid "FieldLabel|38.MonitoringPartnerContactNotes|Monitoring Partner Contact"
 msgstr ""
 
 msgid "FieldLabel|38.Cohort|Cohort"
