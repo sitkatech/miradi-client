@@ -153,7 +153,7 @@ public class OptionalDouble
 	public String toString()
 	{
 		if(hasValue())
-			return FloatingPointFormatter.createDisabledGroupedFormatter(getRawValue());
+			return FloatingPointFormatter.createFloatingPointFormatterForEditableValues(getRawValue());
 		
 		return "";
 	}
