@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-22 09:13-0500\n"
+"POT-Creation-Date: 2010-07-22 09:16-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -4224,10 +4224,6 @@ msgstr "Recurso"
 #: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:58
 msgid "Label|Roles (people only)"
 msgstr "Funciones (personas solamente)"
-
-#: Miradi/source/org/miradi/views/summary/RareTeamInformationSummarySubPanel.java:49
-msgid "Label|Team Information"
-msgstr "Información del equipo"
 
 #: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:51
 msgid "Label|Team Member"
@@ -31884,6 +31880,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Label|Team Information"
+#~ msgstr "Información del equipo"
 
 #~ msgid "Project Resource Work Units Table is not editbale."
 #~ msgstr ""

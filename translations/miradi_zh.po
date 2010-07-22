@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-22 09:13-0500\n"
+"POT-Creation-Date: 2010-07-22 09:16-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4050,10 +4050,6 @@ msgstr "资源 "
 #: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:58
 msgid "Label|Roles (people only)"
 msgstr "角色（仅限于人） \t\t"
-
-#: Miradi/source/org/miradi/views/summary/RareTeamInformationSummarySubPanel.java:49
-msgid "Label|Team Information"
-msgstr "团队信息 \t\t"
 
 #: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:51
 msgid "Label|Team Member"
@@ -27778,6 +27774,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Label|Team Information"
+#~ msgstr "团队信息 \t\t"
 
 #~ msgid ""
 #~ "html|/resources/views/NoProjectView/MoreInfo.html|  <p><table>\t<tr>\t"
