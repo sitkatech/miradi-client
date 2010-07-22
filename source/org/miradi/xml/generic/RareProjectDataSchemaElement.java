@@ -42,7 +42,5 @@ public class RareProjectDataSchemaElement extends ObjectSchemaElement
 		createOptionalTextField(RareProjectData.TAG_CAMPAIGN_SLOGAN);
 		createOptionalTextField(RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES);
 		createOptionalTextField(RareProjectData.TAG_MAIN_ACTIVITIES_NOTES);
-		createOptionalTextField(RareProjectData.TAG_THREAT_REDUCTION_OBJECTIVE_NOTES);
-		createOptionalTextField(RareProjectData.TAG_MONITORING_OBJECTIVE_NOTES);
 	}
 }

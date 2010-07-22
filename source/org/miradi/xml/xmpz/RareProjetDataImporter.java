@@ -48,7 +48,5 @@ public class RareProjetDataImporter extends AbstractXmpzObjectImporter
 		importField(rareProjectDataNode, getRareProjectDataRef(), RareProjectData.TAG_CAMPAIGN_SLOGAN);
 		importField(rareProjectDataNode, getRareProjectDataRef(), RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES);
 		importField(rareProjectDataNode, getRareProjectDataRef(), RareProjectData.TAG_MAIN_ACTIVITIES_NOTES);
-		importField(rareProjectDataNode, getRareProjectDataRef(), RareProjectData.TAG_THREAT_REDUCTION_OBJECTIVE_NOTES);
-		importField(rareProjectDataNode, getRareProjectDataRef(), RareProjectData.TAG_MONITORING_OBJECTIVE_NOTES);
 	}
 }
