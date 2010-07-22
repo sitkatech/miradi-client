@@ -40,6 +40,6 @@ public class StrategyObjectSchemaElement extends FactorObjectSchemaElement
 		createOptionalIdListField(WcsXmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
 		createOptionalIdListField(WcsXmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createOptionalIdListField(Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
-		createIdListField(Factor.TAG_INDICATOR_IDS, INDICATOR_TYPE_NAME);
+		createOptionalIdListField(Factor.TAG_INDICATOR_IDS, INDICATOR_TYPE_NAME);
 	}
 }
