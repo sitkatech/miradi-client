@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-22 10:01-0500\n"
+"POT-Creation-Date: 2010-07-22 10:07-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -138,7 +138,7 @@ msgstr "(Tidak Dikenal) "
 msgid "(see Diagram)"
 msgstr "(lihat Diagram) "
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:43
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:41
 msgid "(see Project tab)"
 msgstr "(Lihat tab Proyek) "
 
@@ -4081,7 +4081,7 @@ msgstr ""
 msgid "Label|Campaign"
 msgstr "Kampanye "
 
-#: Miradi/source/org/miradi/views/summary/RareCampaignPlanningSummarySubPanel.java:57
+#: Miradi/source/org/miradi/views/summary/RareCampaignPlanningSummarySubPanel.java:55
 msgid "Label|Campaign Planning"
 msgstr "Perencanaan Kampanye "
 
@@ -5398,7 +5398,7 @@ msgstr "Merah"
 msgid "Related Items"
 msgstr "Butir-butir Terkait "
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:42
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:40
 msgid "Related Projects"
 msgstr "Proyek Terkait "
 

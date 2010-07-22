@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-22 10:01-0500\n"
+"POT-Creation-Date: 2010-07-22 10:07-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -120,7 +120,7 @@ msgstr "（未知） \t\t"
 msgid "(see Diagram)"
 msgstr "（参见图表） \t\t"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:43
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:41
 msgid "(see Project tab)"
 msgstr "（参见项目标签） \t\t"
 
@@ -3926,7 +3926,7 @@ msgstr ""
 msgid "Label|Campaign"
 msgstr "运动 \t\t"
 
-#: Miradi/source/org/miradi/views/summary/RareCampaignPlanningSummarySubPanel.java:57
+#: Miradi/source/org/miradi/views/summary/RareCampaignPlanningSummarySubPanel.java:55
 msgid "Label|Campaign Planning"
 msgstr "运动计划 \t\t"
 
@@ -5204,7 +5204,7 @@ msgstr "红色"
 msgid "Related Items"
 msgstr "相关条目 \t\t"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:42
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:40
 msgid "Related Projects"
 msgstr "相关的项目 \t\t"
 
