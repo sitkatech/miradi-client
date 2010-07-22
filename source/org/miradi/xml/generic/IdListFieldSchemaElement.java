@@ -22,7 +22,7 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-public class IdListFieldSchemaElement extends FieldSchemaElement
+public class IdListFieldSchemaElement extends AbstractIdListFieldElement
 {
 	protected IdListFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse, String storedObjectTypeNameToUse)
 	{
