@@ -31,7 +31,7 @@ public class StrategyObjectSchemaElement extends FactorObjectSchemaElement
 		super(WcsXmlConstants.STRATEGY);
 		
 		createOptionalIdListField(Factor.TAG_OBJECTIVE_IDS, XmlSchemaCreator.OBJECTIVE_ID_ELEMENT_NAME);
-		createIdListField(Strategy.TAG_ACTIVITY_IDS, XmlSchemaCreator.ACITIVTY_ID_ELEMENT_NAME);
+		createOptionalIdListField(Strategy.TAG_ACTIVITY_IDS, XmlSchemaCreator.ACITIVTY_ID_ELEMENT_NAME);
 		createOptionalTextField(Strategy.TAG_STATUS);
 		createCodeField(XmlSchemaCreator.STRATEGY_TAXONOMY_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_STRATEGY_TAXONOMY_CODE);
 		createCodeField(XmlSchemaCreator.STRATEGY_IMPACT_RATING_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_STRATEGY_IMAPACT_RATING_CODE);
