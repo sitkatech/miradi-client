@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-22 10:01-0500\n"
+"POT-Creation-Date: 2010-07-22 10:07-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -138,7 +138,7 @@ msgstr "(Desconocido)"
 msgid "(see Diagram)"
 msgstr "(ver Diagrama)"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:43
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:41
 msgid "(see Project tab)"
 msgstr "(Ver lengüeta Proyecto)"
 
@@ -4100,7 +4100,7 @@ msgstr ""
 msgid "Label|Campaign"
 msgstr "Campaña"
 
-#: Miradi/source/org/miradi/views/summary/RareCampaignPlanningSummarySubPanel.java:57
+#: Miradi/source/org/miradi/views/summary/RareCampaignPlanningSummarySubPanel.java:55
 msgid "Label|Campaign Planning"
 msgstr "Planificación de campañas"
 
@@ -5434,7 +5434,7 @@ msgstr "Rojo "
 msgid "Related Items"
 msgstr "Elementos relacionados"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:42
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:40
 msgid "Related Projects"
 msgstr "Proyectos relacionados"
 
