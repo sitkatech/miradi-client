@@ -29,7 +29,7 @@ public class BiodiversityTargetObjectSchemaElement extends TargetObjectSchemaEle
 	{
 		super(WcsXmlConstants.BIODIVERSITY_TARGET);
 
-		createIdListField("StressIds", "Stress");
+		createOptionalIdListField(STRESS_IDS_ELEMENT, STRESS);
 		createCodeListField(XmlSchemaCreator.BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME);
 		createOptionalTextField(Target.TAG_SPECIES_LATIN_NAME);
 	}

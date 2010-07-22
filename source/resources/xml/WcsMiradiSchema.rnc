@@ -295,7 +295,7 @@ BiodiversityTarget.element = element miradi:BiodiversityTarget
   element miradi:BiodiversityTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* } &
   element miradi:BiodiversityTargetIndicatorIds { IndicatorId.element* }? &
   element miradi:BiodiversityTargetThreatRating { vocabulary_threat_rating  }? &
-  element miradi:BiodiversityTargetStressIds { StressId.element* } &
+  element miradi:BiodiversityTargetStressIds { StressId.element* }? &
   BiodiversityTargetHabitatAssociationContainer.element &
   element miradi:BiodiversityTargetSpeciesLatinName { text }?
 }
@@ -980,3 +980,4 @@ ProjectSummaryLocationCountriesContainer.element = element miradi:ProjectSummary
 {
   element miradi:code { vocabulary_countries } * 
 }
+
