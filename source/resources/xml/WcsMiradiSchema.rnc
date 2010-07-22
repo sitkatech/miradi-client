@@ -291,8 +291,8 @@ BiodiversityTarget.element = element miradi:BiodiversityTarget
   element miradi:BiodiversityTargetViabilityMode { vocabulary_target_viability_mode  } &
   element miradi:BiodiversityTargetCurrentStatusJustification { text }? &
   element miradi:BiodiversityTargetSubTargetIds { SubTargetId.element* }? &
-  element miradi:BiodiversityTargetGoalIds { GoalId.element* } &
-  element miradi:BiodiversityTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* } &
+  element miradi:BiodiversityTargetGoalIds { GoalId.element* }? &
+  element miradi:BiodiversityTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* }? &
   element miradi:BiodiversityTargetIndicatorIds { IndicatorId.element* }? &
   element miradi:BiodiversityTargetThreatRating { vocabulary_threat_rating  }? &
   element miradi:BiodiversityTargetStressIds { StressId.element* }? &
@@ -312,8 +312,8 @@ HumanWelfareTarget.element = element miradi:HumanWelfareTarget
   element miradi:HumanWelfareTargetViabilityMode { vocabulary_target_viability_mode  } &
   element miradi:HumanWelfareTargetCurrentStatusJustification { text }? &
   element miradi:HumanWelfareTargetSubTargetIds { SubTargetId.element* }? &
-  element miradi:HumanWelfareTargetGoalIds { GoalId.element* } &
-  element miradi:HumanWelfareTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* } &
+  element miradi:HumanWelfareTargetGoalIds { GoalId.element* }? &
+  element miradi:HumanWelfareTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* }? &
   element miradi:HumanWelfareTargetIndicatorIds { IndicatorId.element* }? &
   element miradi:HumanWelfareTargetThreatRating { vocabulary_threat_rating  }?
 }
@@ -980,3 +980,4 @@ ProjectSummaryLocationCountriesContainer.element = element miradi:ProjectSummary
 {
   element miradi:code { vocabulary_countries } * 
 }
+
