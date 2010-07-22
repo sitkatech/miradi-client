@@ -31,6 +31,7 @@ public class IdListFieldSchemaElement extends FieldSchemaElement
 		storedObjectTypeName = storedObjectTypeNameToUse;
 	}
 
+	@Override
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
