@@ -41,7 +41,6 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.Task;
 import org.miradi.project.CurrencyFormat;
-import org.miradi.project.FloatingPointFormatter;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.project.ProjectTotalCalculator;
@@ -52,6 +51,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.ColumnTagProvider;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
+import org.miradi.utils.FloatingPointFormatter;
 import org.miradi.utils.OptionalDouble;
 
 abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTableModel implements ColumnTagProvider
