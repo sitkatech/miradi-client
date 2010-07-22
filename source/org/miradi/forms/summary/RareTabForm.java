@@ -28,6 +28,5 @@ public class RareTabForm extends PanelHolderSpec
 		addPanel(new RareTabTrackingSubPanelForm());
 		addPanel(new RareTabCampaignSubPanelForm());
 		addPanel(new RareTabCampaignPlanningSubPanelForm());
-		addPanel(new RareTabTeamInformationSubPanelForm());
 	}
 }
