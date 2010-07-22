@@ -51,7 +51,7 @@ abstract public class DesirePoolExporter extends BaseObjectPoolExporter
 	
 	protected void writeRelevantIndicatorIds(Desire desire) throws Exception
 	{
-		writeIndicatorIds(WcsXmlConstants.RELEVANT_INDICATOR_IDS, desire.getRelevantIndicatorRefList());
+		writeOptionalIndicatorIds(WcsXmlConstants.RELEVANT_INDICATOR_IDS, desire.getRelevantIndicatorRefList());
 	}
 	
 	protected void writeRelevantStrategyIds(Desire desire) throws Exception

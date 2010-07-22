@@ -41,7 +41,7 @@ public class KeyEcologicalAttributePoolExporter extends BaseObjectPoolExporter
 		writeOptionalElementWithSameTag(baseObject, KeyEcologicalAttribute.TAG_DETAILS);
 		writeOptionalElementWithSameTag(baseObject, KeyEcologicalAttribute.TAG_DESCRIPTION);
 		KeyEcologicalAttribute keyEcologicalAttribute = (KeyEcologicalAttribute) baseObject;
-		writeIndicatorIds(keyEcologicalAttribute.getIndicatorRefs());
+		writeOptionalIndicatorIds(keyEcologicalAttribute.getIndicatorRefs());
 		writeCodeElementSameAsTag(keyEcologicalAttribute, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, new KeyEcologicalAttributeTypeQuestion());
 	}
 }

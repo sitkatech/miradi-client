@@ -50,7 +50,7 @@ public abstract class FactorPoolExporter extends BaseObjectPoolExporter
 	
 	protected void writeIndicatorIds(Factor factor) throws Exception
 	{
-		writeIndicatorIds(factor.getDirectOrIndirectIndicatorRefs());
+		writeOptionalIndicatorIds(factor.getDirectOrIndirectIndicatorRefs());
 	}
 
 	protected void writeObjectiveIds(Factor factor) throws Exception
