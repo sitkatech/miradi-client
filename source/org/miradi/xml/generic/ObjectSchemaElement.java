@@ -176,6 +176,12 @@ class ObjectSchemaElement extends SchemaElement
 		FieldSchemaElement field = new IdListFieldSchemaElement(getObjectTypeName(), fieldNameToUse, storedObjectTypeName);
 		fields.add(field);
 	}
+	
+	protected void createOptionalIdListField(String fieldNameToUse, String storedObjectTypeName)
+	{
+		FieldSchemaElement field = new OptionalIdListFieldSchemaElement(getObjectTypeName(), fieldNameToUse, storedObjectTypeName);
+		fields.add(field);
+	}
 
 	protected void createCodeListField(String fieldNameToUse)
 	{
