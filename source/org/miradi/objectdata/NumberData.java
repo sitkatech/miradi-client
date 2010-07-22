@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
-import org.miradi.project.FloatingPointFormatter;
+import org.miradi.utils.FloatingPointFormatter;
 import org.miradi.utils.InvalidNumberException;
 
 public class NumberData extends ObjectData
