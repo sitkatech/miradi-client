@@ -68,7 +68,7 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 
 	protected void writeIndicatorIds(String idsElementName, ORefList indicatorRefs) throws Exception
 	{
-		writeIds(idsElementName, WcsXmlConstants.INDICATOR, indicatorRefs);
+		writeOptionalIds(idsElementName, WcsXmlConstants.INDICATOR, indicatorRefs);
 	}
 	
 	protected String getFactorTypeName(Factor wrappedFactor)

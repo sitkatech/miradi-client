@@ -30,6 +30,6 @@ public class IntermediateResultObjectSchemaElement extends FactorObjectSchemaEle
 		super(WcsXmlConstants.INTERMEDIATE_RESULTS);
 		
 		createIdListField(Factor.TAG_OBJECTIVE_IDS, OBJECTIVE_TYPE_NAME);
-		createIdListField(Factor.TAG_INDICATOR_IDS, INDICATOR_TYPE_NAME);
+		createOptionalIdListField(Factor.TAG_INDICATOR_IDS, INDICATOR_TYPE_NAME);
 	}
 }

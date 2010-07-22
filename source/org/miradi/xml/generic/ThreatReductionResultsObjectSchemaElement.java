@@ -31,6 +31,6 @@ public class ThreatReductionResultsObjectSchemaElement extends FactorObjectSchem
 		
 		createThreatReductionResultsThreatIdField(WcsXmlConstants.RELATED_THREAT_ID);
 		createIdListField(Factor.TAG_OBJECTIVE_IDS, OBJECTIVE_TYPE_NAME);
-		createIdListField(Factor.TAG_INDICATOR_IDS, INDICATOR_TYPE_NAME);
+		createOptionalIdListField(Factor.TAG_INDICATOR_IDS, INDICATOR_TYPE_NAME);
 	}
 }
