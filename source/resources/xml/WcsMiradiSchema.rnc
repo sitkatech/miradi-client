@@ -348,9 +348,9 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyImpactRating { vocabulary_strategy_impact_rating_code  } &
   element miradi:StrategyFeasibilityRating { vocabulary_strategy_feasibility_rating_code  } &
   element miradi:StrategyLegacyTncStrategyRanking { text }? &
-  element miradi:StrategyProgressReportIds { ProgressReportId.element* } &
+  element miradi:StrategyProgressReportIds { ProgressReportId.element* }? &
   element miradi:StrategyExpenseIds { ExpenseAssignmentId.element* }? &
-  element miradi:StrategyAssignmentIds { ResourceAssignmentId.element* } &
+  element miradi:StrategyAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:StrategyIndicatorIds { IndicatorId.element* }
 }
 
@@ -485,9 +485,9 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorFutureStatusRating { vocabulary_status_code  } &
   element miradi:IndicatorFutureStatusDetails { text }? &
   element miradi:IndicatorFutureStatusComment { text }? &
-  element miradi:IndicatorProgressReportIds { ProgressReportId.element* } &
+  element miradi:IndicatorProgressReportIds { ProgressReportId.element* }? &
   element miradi:IndicatorExpenseIds { ExpenseAssignmentId.element* }? &
-  element miradi:IndicatorAssignmentIds { ResourceAssignmentId.element* } &
+  element miradi:IndicatorAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:IndicatorMeasurementIds { MeasurementId.element* } &
   element miradi:IndicatorMethodIds { MethodId.element* }
 }
@@ -501,9 +501,9 @@ Task.element = element miradi:Task
   element miradi:TaskDetails { text }? &
   element miradi:TaskComments { text }? &
   element miradi:TaskExpenseIds { ExpenseAssignmentId.element* }? &
-  element miradi:TaskAssignmentIds { ResourceAssignmentId.element* } &
-  element miradi:TaskProgressReportIds { ProgressReportId.element* } &
-  element miradi:TaskSubTaskIds { SubTaskId.element* }
+  element miradi:TaskAssignmentIds { ResourceAssignmentId.element* }? &
+  element miradi:TaskProgressReportIds { ProgressReportId.element* }? &
+  element miradi:TaskSubTaskIds { SubTaskId.element* }?
 }
 
 ProgressReportPool.element = element miradi:ProgressReportPool { ProgressReport.element* }
