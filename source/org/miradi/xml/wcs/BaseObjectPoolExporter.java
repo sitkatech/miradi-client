@@ -61,12 +61,12 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 		writeOptionalIds(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, WcsXmlConstants.RESOURCE_ASSIGNMENT, baseObject.getResourceAssignmentRefs());
 	}
 	
-	protected void writeIndicatorIds(ORefList indicatorRefs) throws Exception
+	protected void writeOptionalIndicatorIds(ORefList indicatorRefs) throws Exception
 	{
-		writeIndicatorIds("IndicatorIds", indicatorRefs);
+		writeOptionalIndicatorIds("IndicatorIds", indicatorRefs);
 	}
 
-	protected void writeIndicatorIds(String idsElementName, ORefList indicatorRefs) throws Exception
+	protected void writeOptionalIndicatorIds(String idsElementName, ORefList indicatorRefs) throws Exception
 	{
 		writeOptionalIds(idsElementName, WcsXmlConstants.INDICATOR, indicatorRefs);
 	}
