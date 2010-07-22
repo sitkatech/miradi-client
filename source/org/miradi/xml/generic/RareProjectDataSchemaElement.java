@@ -44,13 +44,5 @@ public class RareProjectDataSchemaElement extends ObjectSchemaElement
 		createOptionalTextField(RareProjectData.TAG_MAIN_ACTIVITIES_NOTES);
 		createOptionalTextField(RareProjectData.TAG_THREAT_REDUCTION_OBJECTIVE_NOTES);
 		createOptionalTextField(RareProjectData.TAG_MONITORING_OBJECTIVE_NOTES);
-		
-		createOptionalTextField(RareProjectData.TAG_COURSE_MANAGER_NOTES);
-		createOptionalTextField(RareProjectData.TAG_REGIONAL_DIRECTOR_NOTES);
-		createOptionalTextField(RareProjectData.TAG_CAMPAIGN_MANAGER_NOTES);
-		createOptionalTextField(RareProjectData.TAG_LOCAL_PARTNER_CONTACT_NOTES);
-		createOptionalTextField(RareProjectData.TAG_BINGO_PARTNER_CONTACT_NOTES);
-		createOptionalTextField(RareProjectData.TAG_THREAT_REDUCTION_PARTNER_CONTACT_NOTES);
-		createOptionalTextField(RareProjectData.TAG_MONITORING_PARTNER_CONTACT_NOTES);
 	}
 }
