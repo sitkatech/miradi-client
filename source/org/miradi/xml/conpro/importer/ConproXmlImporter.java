@@ -133,7 +133,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		importXml();
 	}
 	
-	public void importConProjectNumbers(InputStreamWithSeek projectAsInputStream) throws Exception
+	public void importConProProjectNumbers(InputStreamWithSeek projectAsInputStream) throws Exception
 	{
 		loadXml(projectAsInputStream);
 		Node projectSumaryNode = getNode(getRootNode(), PROJECT_SUMMARY);
@@ -722,7 +722,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 	}
 
 	private void importTeamMembers(Node projectSumaryNode, ORef metadataRef) throws Exception
-	{
+	{	
 		NodeList teamMemberNodeList = getNodes(projectSumaryNode, TEAM, PERSON);
 		for (int nodeIndex = 0; nodeIndex < teamMemberNodeList.getLength(); ++nodeIndex) 
 		{
