@@ -32,7 +32,7 @@ public class FloatingPointFormatter
 		decimalFormat.setMaximumFractionDigits(Integer.MAX_VALUE);
 	}
 	
-	public static String createEditableValue(OptionalDouble valueToFormat)
+	public static String formatEditableValue(OptionalDouble valueToFormat)
 	{
 		if (valueToFormat.hasNoValue())
 			return "";
