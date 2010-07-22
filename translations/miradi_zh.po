@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-22 09:16-0500\n"
+"POT-Creation-Date: 2010-07-22 10:01-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -8987,29 +8987,6 @@ msgid ""
 "FieldLabel|38.NumberOfCommunitiesInCampaignArea|Number of Communities in "
 "Campaign Area"
 msgstr "运动区域群落数 \t\t"
-
-msgid "FieldLabel|38.CourseManagerNotes|Course Manager"
-msgstr "过程经理 \t\t"
-
-msgid "FieldLabel|38.RegionalDirectorNotes|Regional Director"
-msgstr "区域主管 \t\t"
-
-msgid "FieldLabel|38.CampaignManagerNotes|Campaign Manager"
-msgstr "运动经理 \t\t"
-
-msgid "FieldLabel|38.LocalPartnerContactNotes|Local Partner Contact"
-msgstr "当地伙伴联系方式 \t\t"
-
-msgid "FieldLabel|38.BingoPartnerContactNotes|BINGO Partner Contact"
-msgstr "BINGO伙伴联系方式 \t\t"
-
-msgid ""
-"FieldLabel|38.ThreatReductionPartnerContactNotes|Threat Reduction Partner "
-"Contact"
-msgstr "威胁因子减少伙伴联系方式 \t\t"
-
-msgid "FieldLabel|38.MonitoringPartnerContactNotes|Monitoring Partner Contact"
-msgstr "监控伙伴联系方式 \t\t"
 
 msgid "FieldLabel|38.Cohort|Cohort"
 msgstr "合伙人 \t\t"
@@ -27774,6 +27751,30 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "FieldLabel|38.CourseManagerNotes|Course Manager"
+#~ msgstr "过程经理 \t\t"
+
+#~ msgid "FieldLabel|38.RegionalDirectorNotes|Regional Director"
+#~ msgstr "区域主管 \t\t"
+
+#~ msgid "FieldLabel|38.CampaignManagerNotes|Campaign Manager"
+#~ msgstr "运动经理 \t\t"
+
+#~ msgid "FieldLabel|38.LocalPartnerContactNotes|Local Partner Contact"
+#~ msgstr "当地伙伴联系方式 \t\t"
+
+#~ msgid "FieldLabel|38.BingoPartnerContactNotes|BINGO Partner Contact"
+#~ msgstr "BINGO伙伴联系方式 \t\t"
+
+#~ msgid ""
+#~ "FieldLabel|38.ThreatReductionPartnerContactNotes|Threat Reduction Partner "
+#~ "Contact"
+#~ msgstr "威胁因子减少伙伴联系方式 \t\t"
+
+#~ msgid ""
+#~ "FieldLabel|38.MonitoringPartnerContactNotes|Monitoring Partner Contact"
+#~ msgstr "监控伙伴联系方式 \t\t"
 
 #~ msgid "Label|Team Information"
 #~ msgstr "团队信息 \t\t"
