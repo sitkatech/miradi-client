@@ -31,14 +31,14 @@ public class TestFloatingPointFormatter extends EAMTestCase
 	
 	public void testCreateEditableValue()
 	{
-		assertEquals("", FloatingPointFormatter.createEditableValue(new OptionalDouble()));
-		assertEquals("0", FloatingPointFormatter.createEditableValue(new OptionalDouble(0.0))); 
-		assertEquals("0.9", FloatingPointFormatter.createEditableValue(new OptionalDouble(0.9)));
-		assertEquals("0.09", FloatingPointFormatter.createEditableValue(new OptionalDouble(0.09)));
-		assertEquals("0.009", FloatingPointFormatter.createEditableValue(new OptionalDouble(0.009)));
-		assertEquals("0.009", FloatingPointFormatter.createEditableValue(new OptionalDouble(0.0089)));
-		assertEquals("0.001", FloatingPointFormatter.createEditableValue(new OptionalDouble(0.000999999999999999999)));
+		assertEquals("", FloatingPointFormatter.formatEditableValue(new OptionalDouble()));
+		assertEquals("0", FloatingPointFormatter.formatEditableValue(new OptionalDouble(0.0))); 
+		assertEquals("0.9", FloatingPointFormatter.formatEditableValue(new OptionalDouble(0.9)));
+		assertEquals("0.09", FloatingPointFormatter.formatEditableValue(new OptionalDouble(0.09)));
+		assertEquals("0.009", FloatingPointFormatter.formatEditableValue(new OptionalDouble(0.009)));
+		assertEquals("0.009", FloatingPointFormatter.formatEditableValue(new OptionalDouble(0.0089)));
+		assertEquals("0.001", FloatingPointFormatter.formatEditableValue(new OptionalDouble(0.000999999999999999999)));
 		
-		assertEquals("formatted using scientific value?", "100000000000000", FloatingPointFormatter.createEditableValue(new OptionalDouble(100000000000000.0)));
+		assertEquals("formatted using scientific value?", "100000000000000", FloatingPointFormatter.formatEditableValue(new OptionalDouble(100000000000000.0)));
 	}
 }
