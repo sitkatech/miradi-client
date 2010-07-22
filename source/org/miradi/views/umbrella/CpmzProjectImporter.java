@@ -114,7 +114,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 			InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
 			try
 			{
-				new ConproXmlImporter(projectToFill).importConProjectNumbers(projectAsInputStream);
+				new ConproXmlImporter(projectToFill).importConProProjectNumbers(projectAsInputStream);
 			}
 			finally
 			{
