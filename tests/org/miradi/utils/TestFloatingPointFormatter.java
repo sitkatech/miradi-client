@@ -38,5 +38,7 @@ public class TestFloatingPointFormatter extends EAMTestCase
 		assertEquals("0.009", FloatingPointFormatter.createEditableValue(new OptionalDouble(0.009)));
 		assertEquals("0.009", FloatingPointFormatter.createEditableValue(new OptionalDouble(0.0089)));
 		assertEquals("0.001", FloatingPointFormatter.createEditableValue(new OptionalDouble(0.000999999999999999999)));
+		
+		assertEquals("formatted using scientific value?", "100000000000000", FloatingPointFormatter.createEditableValue(new OptionalDouble(100000000000000.0)));
 	}
 }
