@@ -29,7 +29,7 @@ public class TestFloatingPointFormatter extends EAMTestCase
 		super(name);
 	}
 	
-	public void testCreateEditableValue()
+	public void testFormatEditableValue()
 	{
 		assertEquals("", FloatingPointFormatter.formatEditableValue(new OptionalDouble()));
 		assertEquals("0", FloatingPointFormatter.formatEditableValue(new OptionalDouble(0.0))); 
