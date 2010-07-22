@@ -43,7 +43,7 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 	
 	protected void writeProgressReportIds(BaseObject baseObject) throws Exception
 	{
-		writeIds(WcsXmlConstants.PROGRESS_REPORT_IDS, WcsXmlConstants.PROGRESS_REPORT, baseObject.getRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS));
+		writeOptionalIds(WcsXmlConstants.PROGRESS_REPORT_IDS, WcsXmlConstants.PROGRESS_REPORT, baseObject.getRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS));
 	}
 	
 	protected void writeProgressPercetIds(ORefList progressPercentRefs) throws Exception
@@ -58,7 +58,7 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 	
 	protected void writeResourceAssignmentIds(BaseObject baseObject) throws Exception
 	{
-		writeIds(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, WcsXmlConstants.RESOURCE_ASSIGNMENT, baseObject.getResourceAssignmentRefs());
+		writeOptionalIds(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, WcsXmlConstants.RESOURCE_ASSIGNMENT, baseObject.getResourceAssignmentRefs());
 	}
 	
 	protected void writeIndicatorIds(ORefList indicatorRefs) throws Exception

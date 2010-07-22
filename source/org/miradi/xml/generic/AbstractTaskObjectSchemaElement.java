@@ -30,9 +30,9 @@ abstract public class AbstractTaskObjectSchemaElement extends FactorObjectSchema
 		super(objectTypeName);
 		
 		createOptionalIdListField(WcsXmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
-		createIdListField(Task.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
-		createIdListField(WcsXmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
-		createIdListField(WcsXmlConstants.SUB_TASK_IDS, XmlSchemaCreator.SUB_TASK);
+		createOptionalIdListField(Task.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
+		createOptionalIdListField(WcsXmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
+		createOptionalIdListField(WcsXmlConstants.SUB_TASK_IDS, XmlSchemaCreator.SUB_TASK);
 	}
 	
 	@Override

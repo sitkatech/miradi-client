@@ -37,9 +37,9 @@ public class StrategyObjectSchemaElement extends FactorObjectSchemaElement
 		createCodeField(XmlSchemaCreator.STRATEGY_IMPACT_RATING_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_STRATEGY_IMAPACT_RATING_CODE);
 		createCodeField(XmlSchemaCreator.STRATEGY_FEASIBILITY_RATING_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE);
 		createOptionalTextField(Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
-		createIdListField(WcsXmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
+		createOptionalIdListField(WcsXmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
 		createOptionalIdListField(WcsXmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
-		createIdListField(Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
+		createOptionalIdListField(Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createIdListField(Factor.TAG_INDICATOR_IDS, INDICATOR_TYPE_NAME);
 	}
 }
