@@ -41,6 +41,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.TableSettings;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.EnhancedJsonObject;
@@ -293,6 +294,8 @@ public class ProjectRepairer
 			if(TableSettings.is(ref))
 				continue;
 			if(ViewData.is(ref))
+				continue;
+			if(TaggedObjectSet.is(ref))
 				continue;
 			
 			filteredReferrers.add(ref);
