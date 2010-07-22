@@ -1,5 +1,5 @@
 /* 
-opyright 2005-2010, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2010, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -20,29 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import java.io.IOException;
-
-public class OptionalIdListFieldSchemaElement extends AbstractIdListFieldElement
+public class AbstractIdListFieldElement extends FieldSchemaElement
 {
-	protected OptionalIdListFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse, String storedObjectTypeNameToUse)
+	protected AbstractIdListFieldElement(String objectTypeNameToUse, String tagToUse)
 	{
-		super(objectTypeNameToUse, fieldNameToUse);
-		
-		storedObjectTypeName = storedObjectTypeNameToUse;
+		super(objectTypeNameToUse, tagToUse);
 	}
-
-	@Override
-	public void output(SchemaWriter writer) throws IOException
-	{
-		super.output(writer);
-		
-		writer.write(" { " + storedObjectTypeName + "Id.element* }" + getElementCountTag());
-	}
-
-	private String getElementCountTag()
-	{
-		return "?";
-	}
-
-	private String storedObjectTypeName;
 }
