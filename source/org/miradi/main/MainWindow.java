@@ -245,7 +245,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private boolean isSpellCheckPossible(String languageCode)
 	{
 		if(languageCode == null || languageCode.length() == 0)
-			return false;
+			return true;
 		
 		return (languageCode.equals("en"));
 	}
