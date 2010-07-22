@@ -262,13 +262,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_MAIN_ACTIVITIES_NOTES);
 		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_THREAT_REDUCTION_OBJECTIVE_NOTES);
 		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_MONITORING_OBJECTIVE_NOTES);
-		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_COURSE_MANAGER_NOTES);
-		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_REGIONAL_DIRECTOR_NOTES);
-		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_CAMPAIGN_MANAGER_NOTES);
-		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_LOCAL_PARTNER_CONTACT_NOTES);
-		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_BINGO_PARTNER_CONTACT_NOTES);
-		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_THREAT_REDUCTION_PARTNER_CONTACT_NOTES);
-		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_MONITORING_PARTNER_CONTACT_NOTES);		
 	}
 	
 	private void fillFosProjectData() throws Exception
