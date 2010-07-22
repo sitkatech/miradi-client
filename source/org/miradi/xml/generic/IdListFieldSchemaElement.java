@@ -24,8 +24,7 @@ import java.io.IOException;
 
 public class IdListFieldSchemaElement extends FieldSchemaElement
 {
-	protected IdListFieldSchemaElement(String objectTypeNameToUse,
-			String fieldNameToUse, String storedObjectTypeNameToUse)
+	protected IdListFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse, String storedObjectTypeNameToUse)
 	{
 		super(objectTypeNameToUse, fieldNameToUse);
 		storedObjectTypeName = storedObjectTypeNameToUse;
