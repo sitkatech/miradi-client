@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+opyright 2005-2010, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -20,24 +20,29 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.objects.Task;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import java.io.IOException;
 
-abstract public class AbstractTaskObjectSchemaElement extends FactorObjectSchemaElement
+public class OptionalIdListFieldSchemaElement extends FieldSchemaElement
 {
-	public AbstractTaskObjectSchemaElement(String objectTypeName)
+	protected OptionalIdListFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse, String storedObjectTypeNameToUse)
 	{
-		super(objectTypeName);
+		super(objectTypeNameToUse, fieldNameToUse);
 		
-		createOptionalIdListField(WcsXmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
-		createIdListField(Task.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
-		createIdListField(WcsXmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
-		createIdListField(WcsXmlConstants.SUB_TASK_IDS, XmlSchemaCreator.SUB_TASK);
+		storedObjectTypeName = storedObjectTypeNameToUse;
 	}
-	
+
 	@Override
-	protected String getDetailsTag()
+	public void output(SchemaWriter writer) throws IOException
 	{
-		return Task.TAG_DETAILS;
+		super.output(writer);
+		
+		writer.write(" { " + storedObjectTypeName + "Id.element* }" + getElementCountTag());
 	}
+
+	private String getElementCountTag()
+	{
+		return "?";
+	}
+
+	private String storedObjectTypeName;
 }

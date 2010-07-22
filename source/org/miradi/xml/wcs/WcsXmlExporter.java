@@ -118,6 +118,14 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeEndElement(out, CONSERVATION_PROJECT);
 	}
 	
+	public void writeOptionalIds(String parentElementName, String childElementName, String idElementName, ORefList refList) throws Exception
+	{
+		if (refList.isEmpty())
+			return;
+		
+		writeIds(parentElementName, childElementName, idElementName, refList);
+	}
+	
 	public void writeIds(String parentElementName, String childElementName, String idElementName, ORefList refList) throws Exception
 	{
 		writeStartElement(getWriter(), createParentAndChildElementName(parentElementName, childElementName));
