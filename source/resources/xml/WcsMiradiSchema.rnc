@@ -290,7 +290,7 @@ BiodiversityTarget.element = element miradi:BiodiversityTarget
   element miradi:BiodiversityTargetTargetStatus { vocabulary_target_status  } &
   element miradi:BiodiversityTargetViabilityMode { vocabulary_target_viability_mode  } &
   element miradi:BiodiversityTargetCurrentStatusJustification { text }? &
-  element miradi:BiodiversityTargetSubTargetIds { SubTargetId.element* } &
+  element miradi:BiodiversityTargetSubTargetIds { SubTargetId.element* }? &
   element miradi:BiodiversityTargetGoalIds { GoalId.element* } &
   element miradi:BiodiversityTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* } &
   element miradi:BiodiversityTargetIndicatorIds { IndicatorId.element* }? &
@@ -311,7 +311,7 @@ HumanWelfareTarget.element = element miradi:HumanWelfareTarget
   element miradi:HumanWelfareTargetTargetStatus { vocabulary_target_status  } &
   element miradi:HumanWelfareTargetViabilityMode { vocabulary_target_viability_mode  } &
   element miradi:HumanWelfareTargetCurrentStatusJustification { text }? &
-  element miradi:HumanWelfareTargetSubTargetIds { SubTargetId.element* } &
+  element miradi:HumanWelfareTargetSubTargetIds { SubTargetId.element* }? &
   element miradi:HumanWelfareTargetGoalIds { GoalId.element* } &
   element miradi:HumanWelfareTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* } &
   element miradi:HumanWelfareTargetIndicatorIds { IndicatorId.element* }? &
@@ -980,4 +980,3 @@ ProjectSummaryLocationCountriesContainer.element = element miradi:ProjectSummary
 {
   element miradi:code { vocabulary_countries } * 
 }
-
