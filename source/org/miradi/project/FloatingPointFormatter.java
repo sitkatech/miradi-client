@@ -45,6 +45,7 @@ public class FloatingPointFormatter
 		FloatingPointFormatter formatter = new FloatingPointFormatter();
 		formatter.setGroupingUsed(false);
 		formatter.setMinimumFractionDigits(0);
+		formatter.setMaximumFractionDigits(3);
 
 		return formatter.format(valueToFormat);
 	}
@@ -64,5 +65,10 @@ public class FloatingPointFormatter
 		decimalFormat.setMinimumFractionDigits(minFractionDigits);
 	}
 
-	private DecimalFormat decimalFormat;
+	public void setMaximumFractionDigits(int maxFractionDigits)
+	{
+		decimalFormat.setMaximumFractionDigits(maxFractionDigits);
+	}
+
+	protected DecimalFormat decimalFormat;
 }
