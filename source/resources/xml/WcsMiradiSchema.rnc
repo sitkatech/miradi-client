@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/42'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/43'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -216,14 +216,7 @@ RareProjectData.element = element miradi:RareProjectData
   element miradi:RareProjectDataSummaryOfKeyMessages { text }? &
   element miradi:RareProjectDataMainActivitiesNotes { text }? &
   element miradi:RareProjectDataThreatReductionObjectiveNotes { text }? &
-  element miradi:RareProjectDataMonitoringObjectiveNotes { text }? &
-  element miradi:RareProjectDataCourseManagerNotes { text }? &
-  element miradi:RareProjectDataRegionalDirectorNotes { text }? &
-  element miradi:RareProjectDataCampaignManagerNotes { text }? &
-  element miradi:RareProjectDataLocalPartnerContactNotes { text }? &
-  element miradi:RareProjectDataBingoPartnerContactNotes { text }? &
-  element miradi:RareProjectDataThreatReductionPartnerContactNotes { text }? &
-  element miradi:RareProjectDataMonitoringPartnerContactNotes { text }?
+  element miradi:RareProjectDataMonitoringObjectiveNotes { text }?
 }
 
 FosProjectData.element = element miradi:FosProjectData
