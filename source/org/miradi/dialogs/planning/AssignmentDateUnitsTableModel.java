@@ -699,7 +699,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	protected ChoiceItem createFormattedChoiceItem(OptionalDouble optionalDouble)
 	{
-		String formattedValue = FloatingPointFormatter.createFloatingPointFormatterForEditableValues(optionalDouble);
+		String formattedValue = FloatingPointFormatter.createEditableValue(optionalDouble);
 		
 		return new ChoiceItem(formattedValue, formattedValue);
 	}

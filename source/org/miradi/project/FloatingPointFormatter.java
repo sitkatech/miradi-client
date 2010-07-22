@@ -32,15 +32,15 @@ public class FloatingPointFormatter
 		decimalFormat.setMaximumFractionDigits(Integer.MAX_VALUE);
 	}
 	
-	public static String createFloatingPointFormatterForEditableValues(OptionalDouble valueToFormat)
+	public static String createEditableValue(OptionalDouble valueToFormat)
 	{
 		if (valueToFormat.hasNoValue())
 			return "";
 		
-		return createFloatingPointFormatterForEditableValues(valueToFormat.getValue());
+		return formatEditableValue(valueToFormat.getValue());
 	}
 	
-	public static String createFloatingPointFormatterForEditableValues(double valueToFormat)
+	public static String formatEditableValue(double valueToFormat)
 	{
 		FloatingPointFormatter formatter = new FloatingPointFormatter();
 		formatter.setGroupingUsed(false);
