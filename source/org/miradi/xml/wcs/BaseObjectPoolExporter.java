@@ -48,7 +48,7 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 	
 	protected void writeProgressPercetIds(ORefList progressPercentRefs) throws Exception
 	{
-		writeIds(WcsXmlConstants.PROGRESS_PERCENT_IDS, WcsXmlConstants.PROGRESS_PERCENT, progressPercentRefs);
+		writeOptionalIds(WcsXmlConstants.PROGRESS_PERCENT_IDS, WcsXmlConstants.PROGRESS_PERCENT, progressPercentRefs);
 	}
 	
 	protected void writeExpenseAssignmentIds(BaseObject baseObject) throws Exception

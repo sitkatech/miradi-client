@@ -41,7 +41,7 @@ public class IndicatorObjectSchemaElement extends BaseObjectSchemaElementWithLab
 		createOptionalIdListField(WcsXmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
 		createOptionalIdListField(WcsXmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createOptionalIdListField(Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
-		createIdListField(WcsXmlConstants.MEASUREMENT_IDS, XmlSchemaCreator.MEASUREMENT_ID_ELEMENT_NAME);
-		createIdListField(WcsXmlConstants.METHOD_IDS, XmlSchemaCreator.METHOD);
+		createOptionalIdListField(WcsXmlConstants.MEASUREMENT_IDS, XmlSchemaCreator.MEASUREMENT_ID_ELEMENT_NAME);
+		createOptionalIdListField(WcsXmlConstants.METHOD_IDS, XmlSchemaCreator.METHOD);
 	}
 }

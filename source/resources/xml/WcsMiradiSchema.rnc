@@ -342,7 +342,7 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyDetails { text }? &
   element miradi:StrategyComments { text }? &
   element miradi:StrategyObjectiveIds { ObjectiveId.element* }? &
-  element miradi:StrategyActivityIds { ActivityId.element* } &
+  element miradi:StrategyActivityIds { ActivityId.element* }? &
   element miradi:StrategyStatus { text }? &
   element miradi:StrategyStandardClassification { vocabulary_strategy_taxonomy_code  } &
   element miradi:StrategyImpactRating { vocabulary_strategy_impact_rating_code  } &
@@ -453,7 +453,7 @@ Goal.element = element miradi:Goal
   element miradi:GoalRelevantIndicatorIds { IndicatorId.element* }? &
   element miradi:GoalRelevantStrategyIds { StrategyId.element* } &
   element miradi:GoalRelevantActiviyIds { ActivityId.element* } &
-  element miradi:GoalProgressPercentIds { ProgressPercentId.element* } &
+  element miradi:GoalProgressPercentIds { ProgressPercentId.element* }? &
   element miradi:GoalComments { text }?
 }
 
@@ -467,7 +467,7 @@ Objective.element = element miradi:Objective
   element miradi:ObjectiveRelevantIndicatorIds { IndicatorId.element* }? &
   element miradi:ObjectiveRelevantStrategyIds { StrategyId.element* } &
   element miradi:ObjectiveRelevantActiviyIds { ActivityId.element* } &
-  element miradi:ObjectiveProgressPercentIds { ProgressPercentId.element* } &
+  element miradi:ObjectiveProgressPercentIds { ProgressPercentId.element* }? &
   element miradi:ObjectiveComments { text }?
 }
 
@@ -488,8 +488,8 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorProgressReportIds { ProgressReportId.element* }? &
   element miradi:IndicatorExpenseIds { ExpenseAssignmentId.element* }? &
   element miradi:IndicatorAssignmentIds { ResourceAssignmentId.element* }? &
-  element miradi:IndicatorMeasurementIds { MeasurementId.element* } &
-  element miradi:IndicatorMethodIds { MethodId.element* }
+  element miradi:IndicatorMeasurementIds { MeasurementId.element* }? &
+  element miradi:IndicatorMethodIds { MethodId.element* }?
 }
 
 TaskPool.element = element miradi:TaskPool { Task.element* }
@@ -980,4 +980,3 @@ ProjectSummaryLocationCountriesContainer.element = element miradi:ProjectSummary
 {
   element miradi:code { vocabulary_countries } * 
 }
-
