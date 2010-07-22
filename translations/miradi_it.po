@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-22 09:13-0500\n"
+"POT-Creation-Date: 2010-07-22 09:16-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3952,10 +3952,6 @@ msgstr ""
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:33
 #: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:58
 msgid "Label|Roles (people only)"
-msgstr ""
-
-#: Miradi/source/org/miradi/views/summary/RareTeamInformationSummarySubPanel.java:49
-msgid "Label|Team Information"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:51

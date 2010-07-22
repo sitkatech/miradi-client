@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-22 09:13-0500\n"
+"POT-Creation-Date: 2010-07-22 09:16-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -4205,10 +4205,6 @@ msgstr "Sumber daya "
 #: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:58
 msgid "Label|Roles (people only)"
 msgstr "Peran (orang saja) "
-
-#: Miradi/source/org/miradi/views/summary/RareTeamInformationSummarySubPanel.java:49
-msgid "Label|Team Information"
-msgstr "Informasi Tim "
 
 #: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:51
 msgid "Label|Team Member"
@@ -31627,6 +31623,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Label|Team Information"
+#~ msgstr "Informasi Tim "
 
 #~ msgid "Project Resource Work Units Table is not editbale."
 #~ msgstr "Tabel Unit Kerja Sumber Daya Proyek tidak dapat diedit. "
