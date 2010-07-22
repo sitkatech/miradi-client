@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-22 08:39-0500\n"
+"POT-Creation-Date: 2010-07-22 09:07-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -106,7 +106,7 @@ msgstr "(Membuat, mengelola, dan menilai tekanan-tekanan untuk target ini) "
 msgid "(Definition Not Available)"
 msgstr "(Definisi Tidak Ada) "
 
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:114
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:115
 msgid "(Error)"
 msgstr "(Kesalahan) "
 
@@ -5734,7 +5734,7 @@ msgid "Share success & failures with practitioners around the world"
 msgstr ""
 "Berbagi keberhasilan & kegagalan dengan para praktisi di seluruh dunia "
 
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:603
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:604
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr "Memungkinkan Kalkulasi Karyawan Purnawaktu Untuk "
 
