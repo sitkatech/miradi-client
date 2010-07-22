@@ -32,8 +32,8 @@ public class DesireSchemaElement extends BaseObjectSchemaElementWithLabel
 		createOptionalTextField(Desire.TAG_SHORT_LABEL);
 		createOptionalTextField(Desire.TAG_FULL_TEXT);
 		createOptionalIdListField(WcsXmlConstants.RELEVANT_INDICATOR_IDS, WcsXmlConstants.INDICATOR);
-		createIdListField(WcsXmlConstants.RELEVANT_STRATEGY_IDS, WcsXmlConstants.STRATEGY);
-		createIdListField(WcsXmlConstants.RELEVANT_ACTIVITY_IDS, WcsXmlConstants.ACTIVITY);
+		createOptionalIdListField(WcsXmlConstants.RELEVANT_STRATEGY_IDS, WcsXmlConstants.STRATEGY);
+		createOptionalIdListField(WcsXmlConstants.RELEVANT_ACTIVITY_IDS, WcsXmlConstants.ACTIVITY);
 		createOptionalIdListField(WcsXmlConstants.PROGRESS_PERCENT_IDS, XmlSchemaCreator.PROGRESS_PERCENT_ID_ELEMENT_NAME);
 		createOptionalTextField(Desire.TAG_COMMENTS);
 	}
