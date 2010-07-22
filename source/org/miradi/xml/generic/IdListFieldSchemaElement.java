@@ -20,22 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import java.io.IOException;
 
 public class IdListFieldSchemaElement extends AbstractIdListFieldElement
 {
 	protected IdListFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse, String storedObjectTypeNameToUse)
 	{
-		super(objectTypeNameToUse, fieldNameToUse);
-		storedObjectTypeName = storedObjectTypeNameToUse;
+		super(objectTypeNameToUse, fieldNameToUse, storedObjectTypeNameToUse);
 	}
 
 	@Override
-	public void output(SchemaWriter writer) throws IOException
+	protected String getElementCountTag()
 	{
-		super.output(writer);
-		writer.write(" { " + storedObjectTypeName + "Id.element* }");
+		return "";
 	}
-
-	private String storedObjectTypeName;
 }
