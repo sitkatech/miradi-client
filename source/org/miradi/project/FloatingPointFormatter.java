@@ -30,6 +30,15 @@ public class FloatingPointFormatter
 		decimalFormat.setMaximumFractionDigits(Integer.MAX_VALUE);
 	}
 	
+	public static String createDisabledGroupedFormatter(double valueToFormat)
+	{
+		FloatingPointFormatter formatter = new FloatingPointFormatter();
+		formatter.setGroupingUsed(false);
+		formatter.setMinimumFractionDigits(0);
+
+		return formatter.format(valueToFormat);
+	}
+	
 	public String format(double valueToFormat)
 	{
 		return decimalFormat.format(valueToFormat);
