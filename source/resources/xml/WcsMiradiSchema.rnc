@@ -451,8 +451,8 @@ Goal.element = element miradi:Goal
   element miradi:GoalId { text }? &
   element miradi:GoalDetails { text }? &
   element miradi:GoalRelevantIndicatorIds { IndicatorId.element* }? &
-  element miradi:GoalRelevantStrategyIds { StrategyId.element* } &
-  element miradi:GoalRelevantActiviyIds { ActivityId.element* } &
+  element miradi:GoalRelevantStrategyIds { StrategyId.element* }? &
+  element miradi:GoalRelevantActiviyIds { ActivityId.element* }? &
   element miradi:GoalProgressPercentIds { ProgressPercentId.element* }? &
   element miradi:GoalComments { text }?
 }
@@ -465,8 +465,8 @@ Objective.element = element miradi:Objective
   element miradi:ObjectiveId { text }? &
   element miradi:ObjectiveDetails { text }? &
   element miradi:ObjectiveRelevantIndicatorIds { IndicatorId.element* }? &
-  element miradi:ObjectiveRelevantStrategyIds { StrategyId.element* } &
-  element miradi:ObjectiveRelevantActiviyIds { ActivityId.element* } &
+  element miradi:ObjectiveRelevantStrategyIds { StrategyId.element* }? &
+  element miradi:ObjectiveRelevantActiviyIds { ActivityId.element* }? &
   element miradi:ObjectiveProgressPercentIds { ProgressPercentId.element* }? &
   element miradi:ObjectiveComments { text }?
 }
