@@ -42,7 +42,6 @@ public class RARESummaryPanel extends ObjectDataInputPanelWithSections
 		addSubPanelWithTitledBorder(new RareTrackingSummarySubPanel(projectToUse));
 		addSubPanelWithTitledBorder(new RareCampaignSummarySubPanel(projectToUse));
 		addSubPanelWithTitledBorder(new RareCampaignPlanningSummarySubPanel(projectToUse));
-		addSubPanelWithTitledBorder(new RareTeamInformationSummarySubPanel(projectToUse));
 
 		setObjectRefs(new ORef[] {projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()), projectToUse.getSingletonObjectRef(ProjectMetadata.getObjectType()),});
 	}
