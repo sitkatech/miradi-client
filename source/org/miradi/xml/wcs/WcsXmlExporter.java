@@ -157,8 +157,6 @@ public class WcsXmlExporter extends XmlExporter implements WcsXmlConstants
 		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_CAMPAIGN_SLOGAN);
 		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES);
 		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_MAIN_ACTIVITIES_NOTES);
-		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_THREAT_REDUCTION_OBJECTIVE_NOTES);
-		writeOptionalElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_MONITORING_OBJECTIVE_NOTES);
 		
 		writeEndElement(out, rareParentElementName);
 	}

@@ -35,8 +35,6 @@ public class RareTabCampaignPlanningSubPanelForm extends FieldPanelSpec
 		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES);
 		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_MAIN_ACTIVITIES_NOTES);
 		addLeftRightConstants(RELATED_PROJECTS_CONSTANT, SEE_PROJECT_TAB_CONSTANT);
-		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_THREAT_REDUCTION_OBJECTIVE_NOTES);
-		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_MONITORING_OBJECTIVE_NOTES);
 	}
 	
 	public static final String RELATED_PROJECTS_CONSTANT = EAM.text("Related Projects");

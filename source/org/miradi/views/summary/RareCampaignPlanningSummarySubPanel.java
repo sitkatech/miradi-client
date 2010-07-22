@@ -37,9 +37,7 @@ public class RareCampaignPlanningSummarySubPanel extends ObjectDataInputPanel
 		addField(createMultilineField(RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES));
 		addField(createMultilineField(RareProjectData.TAG_MAIN_ACTIVITIES_NOTES));
 		addLabelsOnSingleRow(RareTabCampaignPlanningSubPanelForm.RELATED_PROJECTS_CONSTANT, RareTabCampaignPlanningSubPanelForm.SEE_PROJECT_TAB_CONSTANT);
-		addField(createMultilineField(RareProjectData.TAG_THREAT_REDUCTION_OBJECTIVE_NOTES));
-		addField(createMultilineField(RareProjectData.TAG_MONITORING_OBJECTIVE_NOTES));
-		
+
 		updateFieldsFromProject();
 	}
 
