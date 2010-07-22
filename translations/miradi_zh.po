@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-22 09:07-0500\n"
+"POT-Creation-Date: 2010-07-22 09:13-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4033,7 +4033,7 @@ msgstr "项目日期 \t\t"
 msgid "Label|Protected Area Categories"
 msgstr "受保护区域种类 \t\t"
 
-#: Miradi/source/org/miradi/views/summary/RARESummaryPanel.java:53
+#: Miradi/source/org/miradi/views/summary/RARESummaryPanel.java:52
 msgid "Label|RARE"
 msgstr "RARE"
 
