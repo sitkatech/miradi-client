@@ -22,12 +22,22 @@ package org.miradi.project;
 
 import java.text.DecimalFormat;
 
+import org.miradi.utils.OptionalDouble;
+
 public class FloatingPointFormatter
 {
 	public FloatingPointFormatter()
 	{
 		decimalFormat = new DecimalFormat("#.#");
 		decimalFormat.setMaximumFractionDigits(Integer.MAX_VALUE);
+	}
+	
+	public static String createDisabledGroupedFormatter(OptionalDouble valueToFormat)
+	{
+		if (valueToFormat.hasNoValue())
+			return "";
+		
+		return createDisabledGroupedFormatter(valueToFormat.getValue());
 	}
 	
 	public static String createDisabledGroupedFormatter(double valueToFormat)
