@@ -328,7 +328,7 @@ Cause.element = element miradi:Cause
   element miradi:CauseComments { text }? &
   element miradi:CauseIsDirectThreat { xsd:boolean }? &
   element miradi:CauseStandardClassification { vocabulary_cause_taxonomy_code  }? &
-  element miradi:CauseObjectiveIds { ObjectiveId.element* } &
+  element miradi:CauseObjectiveIds { ObjectiveId.element* }? &
   element miradi:CauseIndicatorIds { IndicatorId.element* }? &
   element miradi:CauseThreatRating { vocabulary_threat_rating  }?
 }
@@ -341,7 +341,7 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyId { text }? &
   element miradi:StrategyDetails { text }? &
   element miradi:StrategyComments { text }? &
-  element miradi:StrategyObjectiveIds { ObjectiveId.element* } &
+  element miradi:StrategyObjectiveIds { ObjectiveId.element* }? &
   element miradi:StrategyActivityIds { ActivityId.element* } &
   element miradi:StrategyStatus { text }? &
   element miradi:StrategyStandardClassification { vocabulary_strategy_taxonomy_code  } &
@@ -363,7 +363,7 @@ ThreatReductionResult.element = element miradi:ThreatReductionResult
   element miradi:ThreatReductionResultDetails { text }? &
   element miradi:ThreatReductionResultComments { text }? &
   element miradi:ThreatReductionResultRelatedDirectThreatId{ ThreatReductionResultThreatId.element }? &
-  element miradi:ThreatReductionResultObjectiveIds { ObjectiveId.element* } &
+  element miradi:ThreatReductionResultObjectiveIds { ObjectiveId.element* }? &
   element miradi:ThreatReductionResultIndicatorIds { IndicatorId.element* }?
 }
 
@@ -375,7 +375,7 @@ IntermediateResult.element = element miradi:IntermediateResult
   element miradi:IntermediateResultId { text }? &
   element miradi:IntermediateResultDetails { text }? &
   element miradi:IntermediateResultComments { text }? &
-  element miradi:IntermediateResultObjectiveIds { ObjectiveId.element* } &
+  element miradi:IntermediateResultObjectiveIds { ObjectiveId.element* }? &
   element miradi:IntermediateResultIndicatorIds { IndicatorId.element* }?
 }
 
@@ -980,4 +980,3 @@ ProjectSummaryLocationCountriesContainer.element = element miradi:ProjectSummary
 {
   element miradi:code { vocabulary_countries } * 
 }
-
