@@ -369,8 +369,8 @@ public class ProjectMetadata extends BaseObject
 	void clear()
 	{
 		super.clear();
+		
 		projectName = new StringData(TAG_PROJECT_NAME);
-
 		projectLanguage = new ChoiceData(TAG_PROJECT_LANGUAGE, new LanguageQuestion());
 		projectDescription = new StringData(TAG_PROJECT_DESCRIPTION);
 		projectURL = new StringData(TAG_PROJECT_URL);
