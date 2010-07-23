@@ -83,12 +83,14 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	public void testEmptyMetaOneXeno() throws Exception
 	{
 		ProjectForTesting projectToImportInto = createProjectWithNoXenodata(PROJECT_FOR_IMPORTING_NAME_TAG);
+		projectToImportInto.createAndPopulateXenodata("55555");
 		verifyImportIntoProjectWithXeno(projectToImportInto);
 	}
 
 	public void testEmptyMetaTwoXenos() throws Exception
 	{
 		ProjectForTesting projectToImportInto = createProjectWithNoXenodata(PROJECT_FOR_IMPORTING_NAME_TAG);
+		projectToImportInto.createAndPopulateXenodata("55555");
 		projectToImportInto.createAndPopulateXenodata("666666");
 		verifyImportIntoProjectWithXeno(projectToImportInto);
 	}
@@ -117,7 +119,6 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	private void verifyImportIntoProjectWithXeno(ProjectForTesting projectToImportInto) throws Exception
 	{
 		ProjectForTesting projectToExport = createProjectWithConproProjectId();
-		projectToImportInto.createAndPopulateXenodata("55555");
 		try
 		{
 			exportImportInto(projectToExport, projectToImportInto);
