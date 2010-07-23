@@ -719,7 +719,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		StringRefMap stringRefMap = getProject().getMetadata().getXenodataStringRefMap();
 		Set keys = stringRefMap.getKeys();
 		if (keys.size() == 0 && xenodataRefs.hasRefs())
-			throw new RuntimeException("There is more than one Xenodata object. Count = " + xenodataRefs.size());
+			throw new RuntimeException("All Xenodata objects are orphans. Count =" + xenodataRefs.size());
 		
 		return xenodataRefs.getRefForType(Xenodata.getObjectType());
 	}
