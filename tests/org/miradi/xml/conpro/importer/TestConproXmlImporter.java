@@ -91,14 +91,11 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	{
 		ProjectForTesting projectToSetup = createProjectWithNoXenodata("ForExporting");
 		
-		Xenodata xenodata = projectToSetup.createAndPopulateXenodata(conproProjectId);
-		StringRefMap refMap = new StringRefMap();
-		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, xenodata.getRef());
-		projectToSetup.fillObjectUsingCommand(projectToSetup.getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, refMap.toString());
+		projectToSetup.createConproXenodataRefferedToByMetadata(conproProjectId);
 		
 		return projectToSetup;
 	}
-	
+
 	private ProjectForTesting createProjectWithNoXenodata(String projectNameTag) throws Exception
 	{
 		ProjectForTesting emptyProject = new ProjectForTesting(getName() + projectNameTag);
