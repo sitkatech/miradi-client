@@ -71,6 +71,8 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	
 	public void testEmptyMetaNoXeno() throws Exception
 	{
+		clearMetadataXenoField();
+		
 		ProjectForTesting importedIntoProject = new ProjectForTesting(getName());
 		exportImportInto(importedIntoProject);
 		String stringRefMapAsString = importedIntoProject.getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
@@ -79,7 +81,30 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		
 		assertEquals("empty project should not point to xenodata?", 0, keys.size());
 	}
+	
+	public void testEmptyMetaMultipleXenos() throws Exception
+	{
+		clearMetadataXenoField();
+		
+		getProject().createObject(Xenodata.getObjectType());
+		getProject().createObject(Xenodata.getObjectType());
+		
+		ProjectForTesting importedIntoProject = new ProjectForTesting(getName());
+		try
+		{
+			exportImportInto(importedIntoProject);
+			fail("Should have failed to import a project with empty metadata and multiple xenos?");
+		}
+		catch (Exception ignoreExpectedException)
+		{
+		}
+	}
 
+	private void clearMetadataXenoField() throws Exception
+	{
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, "");
+	}
+	
 	public void testDuplicateXenodataObjects() throws Exception
 	{
 		ORef xenodataRef = getProject().createObject(Xenodata.getObjectType());
