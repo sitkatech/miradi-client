@@ -74,7 +74,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		final String CONPRO_PROJECT_ID = "4444";
 		
 		ProjectForTesting projectToExport = createProjectWithConproProjectId(CONPRO_PROJECT_ID);
-		ProjectForTesting projectToImportInto = createEmptyProject("ForImporting");
+		ProjectForTesting projectToImportInto = createProjectWithNoXenodata("ForImporting");
 		
 		exportImportInto(projectToExport, projectToImportInto);
 		
@@ -89,7 +89,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 
 	private ProjectForTesting createProjectWithConproProjectId(final String conproProjectId) throws Exception
 	{
-		ProjectForTesting projectToSetup = createEmptyProject("ForExporting");
+		ProjectForTesting projectToSetup = createProjectWithNoXenodata("ForExporting");
 		
 		Xenodata xenodata = projectToSetup.createAndPopulateXenodata(conproProjectId);
 		StringRefMap refMap = new StringRefMap();
@@ -99,7 +99,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		return projectToSetup;
 	}
 	
-	private ProjectForTesting createEmptyProject(String projectNameTag) throws Exception
+	private ProjectForTesting createProjectWithNoXenodata(String projectNameTag) throws Exception
 	{
 		ProjectForTesting emptyProject = new ProjectForTesting(getName() + projectNameTag);
 		verifyProjectHasNoXenodata(emptyProject);
