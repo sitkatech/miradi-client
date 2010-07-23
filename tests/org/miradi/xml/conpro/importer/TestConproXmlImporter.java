@@ -108,12 +108,30 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	public void testMetaWithXenoAndOrphanXenos() throws Exception
 	{
 		ProjectForTesting projectToExport = createProjectWithConproProjectId();
-		ProjectForTesting projectToImportInto = createProjectWithNoXenodata("ForImporting");
+		ProjectForTesting projectToImportInto = createProjectWithNoXenodata(PROJECT_FOR_IMPORTING_NAME_TAG);
 		projectToImportInto.createConproXenodataReferredToByMetadata("55555");
 		projectToImportInto.createAndPopulateXenodata("666666");
 		
 		exportImportInto(projectToExport, projectToImportInto);
 		verifyMetaRefersToConproXeno(projectToImportInto);
+	}
+	
+	public void testMetaPointingToMissingXeno() throws Exception
+	{
+		ProjectForTesting projectToExport = createProjectWithNoXenodata(PROJECT_FOR_EXPORTING_NAME_TAG);
+		StringRefMap refMap = new StringRefMap();
+		ORef nonExistingXenodataObjectRef = new ORef(Xenodata.getObjectType(), new BaseId(999999));
+		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, nonExistingXenodataObjectRef);
+		projectToExport.fillObjectUsingCommand(projectToExport.getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, refMap.toString());
+		try
+		{
+			ProjectForTesting projectToImportInto = createProjectWithNoXenodata(PROJECT_FOR_IMPORTING_NAME_TAG);
+			exportImportInto(projectToExport, projectToImportInto);
+			fail("should not be able to import xenodata that does not exist?");
+		}
+		catch (Exception ignoreExpectedException)
+		{
+		}
 	}
 	
 	private void verifyMetaRefersToConproXeno(ProjectForTesting projectToImportInto) throws ParseException
