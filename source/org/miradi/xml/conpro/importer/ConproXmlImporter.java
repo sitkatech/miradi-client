@@ -22,6 +22,7 @@ package org.miradi.xml.conpro.importer;
 import java.awt.Point;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.Vector;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -714,8 +715,10 @@ public class ConproXmlImporter implements ConProMiradiXml
 		ORefList xenodataRefs = getProject().getPool(Xenodata.getObjectType()).getRefList();
 		if (xenodataRefs.isEmpty())
 			return getProject().createObject(Xenodata.getObjectType());
-		
-		if (xenodataRefs.hasRefs())
+			
+		StringRefMap stringRefMap = getProject().getMetadata().getXenodataStringRefMap();
+		Set keys = stringRefMap.getKeys();
+		if (keys.size() == 0 && xenodataRefs.hasRefs())
 			throw new RuntimeException("There is more than one Xenodata object. Count = " + xenodataRefs.size());
 		
 		return xenodataRefs.getRefForType(Xenodata.getObjectType());

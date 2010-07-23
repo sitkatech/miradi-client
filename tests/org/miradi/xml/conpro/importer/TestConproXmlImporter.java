@@ -23,6 +23,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
 import java.util.Set;
 
 import org.martus.util.UnicodeReader;
@@ -76,13 +77,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		
 		exportImportInto(projectToExport, projectToImportInto);
 		
-		String stringRefMapAsString = projectToImportInto.getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
-		StringRefMap stringRefMap = new StringRefMap(stringRefMapAsString);
-		Set keys = stringRefMap.getKeys();
-		assertEquals("incorrect number of xeno refs?", 1, keys.size());
-		ORef xenodataRef = stringRefMap.getValue(ConProMiradiXml.CONPRO_CONTEXT);
-		Xenodata xenodataToVerify = Xenodata.find(projectToImportInto, xenodataRef);
-		assertEquals("wrong project id imported?", CONPRO_PROJECT_ID, xenodataToVerify.getData(Xenodata.TAG_PROJECT_ID));
+		verifyMetaRefersToConproXeno(projectToImportInto);
 	}
 
 	public void testEmptyMetaOneXeno() throws Exception
@@ -96,6 +91,27 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		ProjectForTesting projectToImportInto = createProjectWithNoXenodata(PROJECT_FOR_IMPORTING_NAME_TAG);
 		projectToImportInto.createAndPopulateXenodata("666666");
 		verifyImportIntoProjectWithXeno(projectToImportInto);
+	}
+	
+	public void testMetaWithSingleXeno() throws Exception
+	{
+		ProjectForTesting projectToExport = createProjectWithConproProjectId();
+		ProjectForTesting projectToImportInto = createProjectWithNoXenodata("ForImporting");
+		projectToImportInto.createConproXenodataReferredToByMetadata("55555");
+		
+		exportImportInto(projectToExport, projectToImportInto);
+		verifyMetaRefersToConproXeno(projectToImportInto);
+	}
+	
+	private void verifyMetaRefersToConproXeno(ProjectForTesting projectToImportInto) throws ParseException
+	{
+		String stringRefMapAsString = projectToImportInto.getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
+		StringRefMap stringRefMap = new StringRefMap(stringRefMapAsString);
+		Set keys = stringRefMap.getKeys();
+		assertEquals("incorrect number of xeno refs?", 1, keys.size());
+		ORef xenodataRef = stringRefMap.getValue(ConProMiradiXml.CONPRO_CONTEXT);
+		Xenodata xenodataToVerify = Xenodata.find(projectToImportInto, xenodataRef);
+		assertEquals("wrong project id imported?", CONPRO_PROJECT_ID, xenodataToVerify.getData(Xenodata.TAG_PROJECT_ID));
 	}
 	
 	private void verifyImportIntoProjectWithXeno(ProjectForTesting projectToImportInto) throws Exception
