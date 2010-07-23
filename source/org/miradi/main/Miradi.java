@@ -169,7 +169,7 @@ public class Miradi
 		}
 		EAM.logDebug("Looking for content jars in: " + directory.getAbsolutePath());
 		
-		ChoiceQuestion languages = StaticQuestionManager.getQuestion(LanguageQuestion.class);
+		ChoiceQuestion languages = new LanguageQuestion();
 		Vector<ChoiceItem> results = new Vector();
 		String[] jarNames = directory.list(new LanguageJarFilter());
 		if(jarNames == null)
