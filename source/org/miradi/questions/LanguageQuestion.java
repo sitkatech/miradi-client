@@ -53,7 +53,8 @@ public class LanguageQuestion extends DynamicChoiceQuestion
 	{
 		Vector<ChoiceItem> loadedChoices = new Vector();
 		URL url = ResourcesHandler.getEnglishResourceURL("/resources/Languages.dat");
-
+		loadedChoices.add(new ChoiceItem("", EAM.text("Unspecified")));
+		
 		InputStream inputStream = url.openStream();
 		UnicodeReader reader = new UnicodeReader(inputStream);
 		try
