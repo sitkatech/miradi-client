@@ -30,6 +30,7 @@ import java.util.Vector;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
+import org.miradi.main.Miradi;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -84,8 +85,9 @@ public class ProjectRepairer
 
 	private void addToQuarantine(BaseObject object) throws Exception
 	{
-		getProject().appendToQuarantineFile("# " + new Date() + "\n");
-		getProject().appendToQuarantineFile("ORef: " + object.getRef() + "\n");
+		String typeName = object.getObjectManager().getInternalObjectTypeName(object.getType());
+		getProject().appendToQuarantineFile("# " + new Date() + ", Version " + Miradi.MAIN_VERSION + "\n");
+		getProject().appendToQuarantineFile("ORef: " + object.getRef() + " # " + typeName + "\n");
 		getProject().appendToQuarantineFile(object.toJson().toString(2));
 		getProject().appendToQuarantineFile("\n");
 	}
