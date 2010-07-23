@@ -342,6 +342,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void createConproXenodataReferedToByMetadata(final String conproProjectId) throws Exception
 	{
+		if (getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP).length() > 0)
+			throw new RuntimeException("Project metadata xenodata field has data, cannot override");
+		
 		Xenodata xenodata = createAndPopulateXenodata(conproProjectId);
 		StringRefMap refMap = new StringRefMap();
 		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, xenodata.getRef());
