@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-23 13:04-0500\n"
+"POT-Creation-Date: 2010-07-23 14:25-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -4937,7 +4937,7 @@ msgstr ""
 msgid "Progress Reports"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:90
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:89
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
