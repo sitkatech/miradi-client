@@ -71,10 +71,17 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	
 	public void testEmptyMetaNoXeno() throws Exception
 	{
-		setupProjectForExporting(getProject());
+		ProjectForTesting projectToUse = getProject();
+		assertEquals("metadata xeno field is not empty?", projectToUse.getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP).length());
+		assertEquals("should not have any xenodata objects?", projectToUse.getPool(Xenodata.getObjectType()).size());
+		Xenodata xenodata = projectToUse.createAndPopulateXenodata("4444");
+		StringRefMap refMap = new StringRefMap();
+		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, xenodata.getRef());
+		projectToUse.fillObjectUsingCommand(projectToUse.getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, refMap.toString());
 		
 		ProjectForTesting projectToImportInto = new ProjectForTesting(getName());
-		verifyEmptyProject(projectToImportInto);
+		assertEquals("metadata xeno field is not empty?", projectToImportInto.getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP).length());
+		assertEquals("should not have any xenodata objects?", projectToImportInto.getPool(Xenodata.getObjectType()).size());
 		
 		exportImportInto(getProject(), projectToImportInto);
 		String stringRefMapAsString = projectToImportInto.getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
@@ -103,21 +110,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		}
 	}
 */
-	private void setupProjectForExporting(ProjectForTesting projectToUse) throws Exception
-	{
-		verifyEmptyProject(projectToUse);
-		Xenodata xenodata = projectToUse.createAndPopulateXenodata("4444");
-		StringRefMap refMap = new StringRefMap();
-		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, xenodata.getRef());
-		projectToUse.fillObjectUsingCommand(projectToUse.getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, refMap.toString());
-	}
 
-	private void verifyEmptyProject(ProjectForTesting projectToUse)
-	{
-		assertEquals("metadata xeno field is not empty?", projectToUse.getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP).length());
-		assertEquals("should not have any xenodata objects?", projectToUse.getPool(Xenodata.getObjectType()).size());
-	}
-	
 	public void testDuplicateXenodataObjects() throws Exception
 	{
 		ORef xenodataRef = getProject().createObject(Xenodata.getObjectType());
