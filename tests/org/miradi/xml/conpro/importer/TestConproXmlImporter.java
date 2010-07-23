@@ -73,13 +73,13 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	{
 		final String CONPRO_PROJECT_ID = "4444";
 		
-		ProjectForTesting projectToExport = getProject();
+		ProjectForTesting projectToExport = new ProjectForTesting(getName());
 		setupProjectWithConproProjectId(projectToExport, CONPRO_PROJECT_ID);
 		
 		ProjectForTesting projectToImportInto = new ProjectForTesting(getName());
 		verifyEmptyProject(projectToImportInto);
 		
-		exportImportInto(getProject(), projectToImportInto);
+		exportImportInto(projectToExport, projectToImportInto);
 		
 		String stringRefMapAsString = projectToImportInto.getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
 		StringRefMap stringRefMap = new StringRefMap(stringRefMapAsString);
