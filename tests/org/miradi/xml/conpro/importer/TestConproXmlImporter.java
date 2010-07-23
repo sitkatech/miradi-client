@@ -71,24 +71,29 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	
 	public void testEmptyMetaNoXeno() throws Exception
 	{
-		ProjectForTesting projectToUse = getProject();
-		assertEquals("metadata xeno field is not empty?", projectToUse.getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP).length());
-		assertEquals("should not have any xenodata objects?", projectToUse.getPool(Xenodata.getObjectType()).size());
-		Xenodata xenodata = projectToUse.createAndPopulateXenodata("4444");
+		ProjectForTesting projectToExport = getProject();
+		assertEquals("metadata xeno field is not empty?", 0, projectToExport.getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP).length());
+		assertEquals("should not have any xenodata objects?", 0, projectToExport.getPool(Xenodata.getObjectType()).size());
+		final String CONPRO_PROJECT_ID = "4444";
+		Xenodata xenodata = projectToExport.createAndPopulateXenodata(CONPRO_PROJECT_ID);
 		StringRefMap refMap = new StringRefMap();
 		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, xenodata.getRef());
-		projectToUse.fillObjectUsingCommand(projectToUse.getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, refMap.toString());
+		projectToExport.fillObjectUsingCommand(projectToExport.getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, refMap.toString());
 		
 		ProjectForTesting projectToImportInto = new ProjectForTesting(getName());
-		assertEquals("metadata xeno field is not empty?", projectToImportInto.getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP).length());
-		assertEquals("should not have any xenodata objects?", projectToImportInto.getPool(Xenodata.getObjectType()).size());
+		assertEquals("metadata xeno field is not empty?", 0, projectToImportInto.getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP).length());
+		assertEquals("should not have any xenodata objects?", 0, projectToImportInto.getPool(Xenodata.getObjectType()).size());
 		
 		exportImportInto(getProject(), projectToImportInto);
+		
 		String stringRefMapAsString = projectToImportInto.getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
 		StringRefMap stringRefMap = new StringRefMap(stringRefMapAsString);
 		Set keys = stringRefMap.getKeys();
 		
-		assertEquals("empty project should not point to xenodata?", 0, keys.size());
+		assertEquals("incorrect number of xeno refs?", 1, keys.size());
+		ORef xenodataRef = stringRefMap.getValue(ConProMiradiXml.CONPRO_CONTEXT);
+		Xenodata xenodataToVerify = Xenodata.find(projectToImportInto, xenodataRef);
+		assertEquals("wrong project id imported?", CONPRO_PROJECT_ID, xenodataToVerify.getData(Xenodata.TAG_PROJECT_ID));
 	}
 
 	//FIXME urgent - temporarly commented, uncomment and make it work
