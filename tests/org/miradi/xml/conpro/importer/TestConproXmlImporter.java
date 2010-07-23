@@ -105,6 +105,17 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		verifyMetaRefersToConproXeno(projectToImportInto);
 	}
 	
+	public void testMetaWithXenoAndOrphanXenos() throws Exception
+	{
+		ProjectForTesting projectToExport = createProjectWithConproProjectId();
+		ProjectForTesting projectToImportInto = createProjectWithNoXenodata("ForImporting");
+		projectToImportInto.createConproXenodataReferredToByMetadata("55555");
+		projectToImportInto.createAndPopulateXenodata("666666");
+		
+		exportImportInto(projectToExport, projectToImportInto);
+		verifyMetaRefersToConproXeno(projectToImportInto);
+	}
+	
 	private void verifyMetaRefersToConproXeno(ProjectForTesting projectToImportInto) throws ParseException
 	{
 		String stringRefMapAsString = projectToImportInto.getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
