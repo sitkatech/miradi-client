@@ -71,9 +71,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	
 	public void testEmptyMetaNoXeno() throws Exception
 	{
-		final String CONPRO_PROJECT_ID = "4444";
-		
-		ProjectForTesting projectToExport = createProjectWithConproProjectId(CONPRO_PROJECT_ID);
+		ProjectForTesting projectToExport = createProjectWithConproProjectId();
 		ProjectForTesting projectToImportInto = createProjectWithNoXenodata("ForImporting");
 		
 		exportImportInto(projectToExport, projectToImportInto);
@@ -89,8 +87,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 
 	public void testEmptyMetaMultipleXenos() throws Exception
 	{
-		final String CONPRO_PROJECT_ID = "4444";
-		ProjectForTesting projectToExport = createProjectWithConproProjectId(CONPRO_PROJECT_ID);
+		ProjectForTesting projectToExport = createProjectWithConproProjectId();
 		projectToExport.createAndPopulateXenodata("55555");
 		
 		ProjectForTesting projectToImportInto = createProjectWithNoXenodata("ForImporting");
@@ -104,11 +101,11 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		}
 	}
 	
-	private ProjectForTesting createProjectWithConproProjectId(final String conproProjectId) throws Exception
+	private ProjectForTesting createProjectWithConproProjectId() throws Exception
 	{
 		ProjectForTesting projectToSetup = createProjectWithNoXenodata("ForExporting");
 		
-		projectToSetup.createConproXenodataReferredToByMetadata(conproProjectId);
+		projectToSetup.createConproXenodataReferredToByMetadata(CONPRO_PROJECT_ID);
 		
 		return projectToSetup;
 	}
@@ -588,4 +585,6 @@ public class TestConproXmlImporter extends TestCaseWithProject
 			projectToFill.close();
 		}
 	}
+	
+	private static final String CONPRO_PROJECT_ID = "4444";
 }
