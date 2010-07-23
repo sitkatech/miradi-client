@@ -29,7 +29,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.utils.IgnoreCaseStringComparator;
 
-public class LanguageQuestion extends ChoiceQuestion
+public class LanguageQuestion extends DynamicChoiceQuestion
 {
 	public LanguageQuestion()
 	{
