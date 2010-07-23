@@ -181,21 +181,6 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		assertEquals("should not have any xenodata objects?", 0, projectToImportInto.getPool(Xenodata.getObjectType()).size());
 	}
 
-//FIXME,  once the 5 tests dealing with xeno data are done, analys this test and remove it if its duplicate
-//	public void testDuplicateXenodataObjects() throws Exception
-//	{
-//		ORef xenodataRef = getProject().createObject(Xenodata.getObjectType());
-//		getProject().fillObjectUsingCommand(xenodataRef, Xenodata.TAG_PROJECT_ID, "99999");
-//		assertEquals("wrong xenodata count?", 1, getProject().getPool(Xenodata.getObjectType()).size());
-//		
-//		StringRefMap idRefMap = new StringRefMap();
-//		idRefMap.add(ConProMiradiXml.CONPRO_CONTEXT, xenodataRef);
-//		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, idRefMap.toString());
-//		
-//		exportImportInto(getProject());
-//		assertEquals("wrong xenodata count?", 1, getProject().getPool(Xenodata.getObjectType()).size());
-//	}
-	
 	public void testAvoidConflictingActivityAndMethodIds() throws Exception
 	{
 		getProject().createActivity();
