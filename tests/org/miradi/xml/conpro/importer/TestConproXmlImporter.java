@@ -85,12 +85,23 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		assertEquals("wrong project id imported?", CONPRO_PROJECT_ID, xenodataToVerify.getData(Xenodata.TAG_PROJECT_ID));
 	}
 
-	public void testEmptyMetaMultipleXenos() throws Exception
+	public void testEmptyMetaOneXeno() throws Exception
+	{
+		ProjectForTesting projectToImportInto = createProjectWithNoXenodata("ForImporting");
+		verifyImportIntoProjectWithXeno(projectToImportInto);
+	}
+
+	public void testEmptyMetaTwoXenos() throws Exception
+	{
+		ProjectForTesting projectToImportInto = createProjectWithNoXenodata("ForImporting");
+		projectToImportInto.createAndPopulateXenodata("666666");
+		verifyImportIntoProjectWithXeno(projectToImportInto);
+	}
+	
+	private void verifyImportIntoProjectWithXeno(ProjectForTesting projectToImportInto) throws Exception
 	{
 		ProjectForTesting projectToExport = createProjectWithConproProjectId();
-		projectToExport.createAndPopulateXenodata("55555");
-		
-		ProjectForTesting projectToImportInto = createProjectWithNoXenodata("ForImporting");
+		projectToImportInto.createAndPopulateXenodata("55555");
 		try
 		{
 			exportImportInto(projectToExport, projectToImportInto);
