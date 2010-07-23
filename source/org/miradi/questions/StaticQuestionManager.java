@@ -41,7 +41,6 @@ public class StaticQuestionManager
 		addQuestion(new FontFamiliyQuestion());
 		addQuestion(new FontSizeQuestion());
 		addQuestion(new KeyEcologicalAttributeTypeQuestion());
-		addQuestion(new LanguageQuestion());
 		addQuestion(new PriorityRatingQuestion());
 		addQuestion(new ProgressReportLongStatusQuestion());
 		addQuestion(new ProgressReportShortStatusQuestion());
