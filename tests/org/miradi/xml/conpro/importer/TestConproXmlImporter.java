@@ -23,6 +23,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.Set;
 
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeWriter;
@@ -68,6 +69,17 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testEmptyMetaNoXeno() throws Exception
+	{
+		ProjectForTesting importedIntoProject = new ProjectForTesting(getName());
+		exportImportInto(importedIntoProject);
+		String stringRefMapAsString = importedIntoProject.getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
+		StringRefMap stringRefMap = new StringRefMap(stringRefMapAsString);
+		Set keys = stringRefMap.getKeys();
+		
+		assertEquals("empty project should not point to xenodata?", 0, keys.size());
+	}
+
 	public void testDuplicateXenodataObjects() throws Exception
 	{
 		ORef xenodataRef = getProject().createObject(Xenodata.getObjectType());
