@@ -340,7 +340,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return refMap.toString();
 	}
 	
-	public void createConproXenodataRefferedToByMetadata(final String conproProjectId) throws Exception
+	public void createConproXenodataReferedToByMetadata(final String conproProjectId) throws Exception
 	{
 		Xenodata xenodata = createAndPopulateXenodata(conproProjectId);
 		StringRefMap refMap = new StringRefMap();
