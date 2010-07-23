@@ -68,7 +68,6 @@ import org.miradi.utils.OptionalDouble;
 
 abstract public class BaseObject
 {
-
 	public BaseObject(ObjectManager objectManagerToUse, BaseId idToUse)
 	{
 		objectManager = objectManagerToUse;
@@ -79,6 +78,7 @@ abstract public class BaseObject
 	BaseObject(ObjectManager objectManagerToUse, BaseId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		this(objectManagerToUse, idToUse);
+		
 		loadFromJson(json);
 	}
 	
