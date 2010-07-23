@@ -339,6 +339,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		return refMap.toString();
 	}
+	
+	public void createConproXenodataRefferedToByMetadata(final String conproProjectId) throws Exception
+	{
+		Xenodata xenodata = createAndPopulateXenodata(conproProjectId);
+		StringRefMap refMap = new StringRefMap();
+		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, xenodata.getRef());
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, refMap.toString());
+	}
 
 	public ProjectResource createAndPopulateProjectResource() throws Exception
 	{
