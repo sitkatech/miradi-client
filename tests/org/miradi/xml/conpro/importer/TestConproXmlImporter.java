@@ -73,11 +73,8 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	{
 		final String CONPRO_PROJECT_ID = "4444";
 		
-		ProjectForTesting projectToExport = new ProjectForTesting(getName());
-		setupProjectWithConproProjectId(projectToExport, CONPRO_PROJECT_ID);
-		
-		ProjectForTesting projectToImportInto = new ProjectForTesting(getName());
-		verifyEmptyProject(projectToImportInto);
+		ProjectForTesting projectToExport = createProjectWithConproProjectId(CONPRO_PROJECT_ID);
+		ProjectForTesting projectToImportInto = createEmptyProject("ForImporting");
 		
 		exportImportInto(projectToExport, projectToImportInto);
 		
@@ -90,14 +87,24 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		assertEquals("wrong project id imported?", CONPRO_PROJECT_ID, xenodataToVerify.getData(Xenodata.TAG_PROJECT_ID));
 	}
 
-	private void setupProjectWithConproProjectId(ProjectForTesting projectToSetup, final String conproProjectId) throws Exception
+	private ProjectForTesting createProjectWithConproProjectId(final String conproProjectId) throws Exception
 	{
-		verifyEmptyProject(projectToSetup);
+		ProjectForTesting projectToSetup = createEmptyProject("ForExporting");
 		
 		Xenodata xenodata = projectToSetup.createAndPopulateXenodata(conproProjectId);
 		StringRefMap refMap = new StringRefMap();
 		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, xenodata.getRef());
 		projectToSetup.fillObjectUsingCommand(projectToSetup.getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, refMap.toString());
+		
+		return projectToSetup;
+	}
+	
+	private ProjectForTesting createEmptyProject(String projectNameTag) throws Exception
+	{
+		ProjectForTesting emptyProject = new ProjectForTesting(getName() + projectNameTag);
+		verifyEmptyProject(emptyProject);
+		
+		return emptyProject;
 	}
 	
 	private void verifyEmptyProject(ProjectForTesting projectToImportInto)
