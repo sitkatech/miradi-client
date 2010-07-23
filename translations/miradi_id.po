@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-23 13:04-0500\n"
+"POT-Creation-Date: 2010-07-23 14:25-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -5240,7 +5240,7 @@ msgstr "Laporan Kemajuan"
 msgid "Progress Reports"
 msgstr "Laporan Kemajuan "
 
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:90
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:89
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
