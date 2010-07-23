@@ -110,25 +110,22 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		assertEquals("should not have any xenodata objects?", 0, projectToImportInto.getPool(Xenodata.getObjectType()).size());
 	}
 
-	//FIXME urgent - temporarly commented, uncomment and make it work
-/*	public void testEmptyMetaMultipleXenos() throws Exception
+	public void testEmptyMetaMultipleXenos() throws Exception
 	{
-		setupProjectForExporting(getProject());
+		final String CONPRO_PROJECT_ID = "4444";
+		ProjectForTesting projectToExport = createProjectWithConproProjectId(CONPRO_PROJECT_ID);
+		projectToExport.createAndPopulateXenodata("55555");
 		
-		getProject().createObject(Xenodata.getObjectType());
-		getProject().createObject(Xenodata.getObjectType());
-		
-		ProjectForTesting importedIntoProject = new ProjectForTesting(getName());
+		ProjectForTesting projectToImportInto = createProjectWithNoXenodata("ForImporting");
 		try
 		{
-			exportImportInto(importedIntoProject);
+			exportImportInto(projectToExport, projectToImportInto);
 			fail("Should have failed to import a project with empty metadata and multiple xenos?");
 		}
 		catch (Exception ignoreExpectedException)
 		{
 		}
 	}
-*/
 
 	public void testDuplicateXenodataObjects() throws Exception
 	{
