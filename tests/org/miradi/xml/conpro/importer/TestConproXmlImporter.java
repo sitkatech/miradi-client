@@ -87,6 +87,23 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		assertEquals("wrong project id imported?", CONPRO_PROJECT_ID, xenodataToVerify.getData(Xenodata.TAG_PROJECT_ID));
 	}
 
+	public void testEmptyMetaMultipleXenos() throws Exception
+	{
+		final String CONPRO_PROJECT_ID = "4444";
+		ProjectForTesting projectToExport = createProjectWithConproProjectId(CONPRO_PROJECT_ID);
+		projectToExport.createAndPopulateXenodata("55555");
+		
+		ProjectForTesting projectToImportInto = createProjectWithNoXenodata("ForImporting");
+		try
+		{
+			exportImportInto(projectToExport, projectToImportInto);
+			fail("Should have failed to import a project with empty metadata and multiple xenos?");
+		}
+		catch (Exception ignoreExpectedException)
+		{
+		}
+	}
+	
 	private ProjectForTesting createProjectWithConproProjectId(final String conproProjectId) throws Exception
 	{
 		ProjectForTesting projectToSetup = createProjectWithNoXenodata("ForExporting");
@@ -108,23 +125,6 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	{
 		assertEquals("metadata xeno field is not empty?", 0, projectToImportInto.getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP).length());
 		assertEquals("should not have any xenodata objects?", 0, projectToImportInto.getPool(Xenodata.getObjectType()).size());
-	}
-
-	public void testEmptyMetaMultipleXenos() throws Exception
-	{
-		final String CONPRO_PROJECT_ID = "4444";
-		ProjectForTesting projectToExport = createProjectWithConproProjectId(CONPRO_PROJECT_ID);
-		projectToExport.createAndPopulateXenodata("55555");
-		
-		ProjectForTesting projectToImportInto = createProjectWithNoXenodata("ForImporting");
-		try
-		{
-			exportImportInto(projectToExport, projectToImportInto);
-			fail("Should have failed to import a project with empty metadata and multiple xenos?");
-		}
-		catch (Exception ignoreExpectedException)
-		{
-		}
 	}
 
 	public void testDuplicateXenodataObjects() throws Exception
