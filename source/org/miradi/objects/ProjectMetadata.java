@@ -35,6 +35,7 @@ import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objecthelpers.StringRefMapData;
 import org.miradi.project.ObjectManager;
 import org.miradi.questions.BudgetTimePeriodQuestion;
@@ -210,6 +211,11 @@ public class ProjectMetadata extends BaseObject
 	public String getProjectNumber()
 	{
 		return otherOrgProjectNumber.get();
+	}
+	
+	public StringRefMap getXenodataStringRefMap()
+	{
+		return xenodataRefs.getStringRefMap();
 	}
 	
 	public boolean shouldIncludeResultsChain()
