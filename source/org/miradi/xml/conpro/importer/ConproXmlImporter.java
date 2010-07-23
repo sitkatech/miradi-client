@@ -715,7 +715,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		if (xenodataRefs.isEmpty())
 			return getProject().createObject(Xenodata.getObjectType());
 		
-		if (xenodataRefs.size() > 1)
+		if (xenodataRefs.hasRefs())
 			throw new RuntimeException("There is more than one Xenodata object. Count = " + xenodataRefs.size());
 		
 		return xenodataRefs.getRefForType(Xenodata.getObjectType());
