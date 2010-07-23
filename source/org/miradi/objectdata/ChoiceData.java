@@ -27,6 +27,7 @@ public class ChoiceData extends StringData
 	public ChoiceData(String tagToUse, ChoiceQuestion questionToUse)
 	{
 		super(tagToUse);
+		
 		question = questionToUse;
 	}
 	
