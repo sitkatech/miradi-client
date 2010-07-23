@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-22 10:07-0500\n"
+"POT-Creation-Date: 2010-07-23 13:04-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -3354,7 +3354,7 @@ msgstr ""
 "El nombre de archivo debe contener sólo caracteres alfanuméricos o '_'."
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:90
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:168
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:169
 msgid "File to import does not validate."
 msgstr "El archivo para importar no se valida."
 
@@ -3707,7 +3707,7 @@ msgstr ""
 msgid "High"
 msgstr "Alto "
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1350
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1353
 msgid "High/Very-High Threat Chains"
 msgstr "Cadenas de amenazas altas/muy altas"
 
@@ -3868,7 +3868,7 @@ msgstr ""
 "criterios: mensurable, preciso, consistente y sensible. en Miradi, un "
 "indicador está representado por un triángulo violeta."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1250
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1253
 msgid "Indicator Holder"
 msgstr "Marcador de indicadores"
 
@@ -4348,7 +4348,7 @@ msgstr "Localización"
 msgid "Low"
 msgstr "Bajo "
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1351
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1354
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Cadenas de amenazas bajas/medias/sin clasificación"
 
@@ -4898,7 +4898,7 @@ msgstr "No efectivo "
 msgid "Not Specified"
 msgstr "No especificado"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:616
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:617
 msgid "Not all classification Codes could imported."
 msgstr "No se pueden importar todos los Códigos de clasificación. "
 
@@ -4934,7 +4934,7 @@ msgstr ""
 "proyecto, como la reducción de una amenaza crítica. En Miradi, una meta está "
 "representado por un pequeño rectángulo azul."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1244
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1247
 msgid "Objective Holder"
 msgstr "Marcador de objetivos"
 
@@ -5091,7 +5091,7 @@ msgstr "Rosa "
 msgid "Place scope on diagram"
 msgstr "Ubicar el alcance en el diagrama"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1240
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1243
 msgid "Placeholder - From ConPro"
 msgstr "Marcador de posición: de ConPro"
 
