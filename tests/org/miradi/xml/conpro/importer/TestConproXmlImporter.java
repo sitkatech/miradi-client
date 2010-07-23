@@ -108,7 +108,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	{
 		ProjectForTesting projectToSetup = createProjectWithNoXenodata("ForExporting");
 		
-		projectToSetup.createConproXenodataReferedToByMetadata(conproProjectId);
+		projectToSetup.createConproXenodataReferredToByMetadata(conproProjectId);
 		
 		return projectToSetup;
 	}
