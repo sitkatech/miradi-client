@@ -94,7 +94,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		try
 		{
 			exportImportInto(projectToExport, projectToImportInto);
-			fail("Should have failed to import a project with empty metadata and multiple xenos?");
+			fail("Should have failed to import a project with empty metadata and atleast one xenos?");
 		}
 		catch (Exception ignoreExpectedException)
 		{
