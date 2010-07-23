@@ -102,12 +102,12 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	private ProjectForTesting createEmptyProject(String projectNameTag) throws Exception
 	{
 		ProjectForTesting emptyProject = new ProjectForTesting(getName() + projectNameTag);
-		verifyEmptyProject(emptyProject);
+		verifyProjectHasNoXenodata(emptyProject);
 		
 		return emptyProject;
 	}
 	
-	private void verifyEmptyProject(ProjectForTesting projectToImportInto)
+	private void verifyProjectHasNoXenodata(ProjectForTesting projectToImportInto)
 	{
 		assertEquals("metadata xeno field is not empty?", 0, projectToImportInto.getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP).length());
 		assertEquals("should not have any xenodata objects?", 0, projectToImportInto.getPool(Xenodata.getObjectType()).size());
