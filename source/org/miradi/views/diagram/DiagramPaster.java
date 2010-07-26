@@ -723,6 +723,9 @@ abstract public class DiagramPaster
 		ORef oldFactorLinkRef = new ORef(FactorLink.getObjectType(), factorLinkId);
 		ORef newFactorLinkRef = getRefFromMap(oldFactorLinkRef);
 		FactorLink factorLink = FactorLink.find(getProject(), newFactorLinkRef);
+		if (factorLink == null)
+			return ORef.INVALID;
+		
 		ORef factorRef = factorLink.getFactorRef(direction);
 		DiagramFactor newDiagramFactor = getDiagramObject().getDiagramFactor(factorRef);
 		if(newDiagramFactor == null)
