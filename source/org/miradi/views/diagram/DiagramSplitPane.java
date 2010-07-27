@@ -186,11 +186,6 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		return legendPanel;
 	}
 	
-	public DiagramObject getDiagramObject()
-	{
-		return getDiagramModel().getDiagramObject();
-	}
-	
 	public DiagramModel getDiagramModel()
 	{
 		DiagramComponent diagram = getCurrentDiagramComponent();
