@@ -33,16 +33,19 @@ public class ConceptualModelDiagramSplitPane extends DiagramSplitPane
 		super(mainWindow, ObjectType.CONCEPTUAL_MODEL_DIAGRAM, "ConceptualModelDiagramSplitPane");
 	}
 
+	@Override
 	public DiagramLegendPanel createLegendPanel(MainWindow mainWindow)
 	{
 		return new ConceptualModelDiagramLegendPanel(mainWindow);
 	}
 	
+	@Override
 	public DiagramPageList createPageList(MainWindow mainWindowToUse)
 	{
 		return new ConceptualModelPageList(mainWindowToUse);
 	}
 	
+	@Override
 	public Class[] getPopUpMenuActions()
 	{
 		return  new Class[] {
