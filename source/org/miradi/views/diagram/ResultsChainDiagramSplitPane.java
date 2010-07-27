@@ -33,16 +33,19 @@ public class ResultsChainDiagramSplitPane extends DiagramSplitPane
 		super(mainWindow, ObjectType.RESULTS_CHAIN_DIAGRAM, "ResultsChainDiagramSplitPane");
 	}
 
+	@Override
 	public DiagramLegendPanel createLegendPanel(MainWindow mainWindow)
 	{
 		return new ResultsChainDiagramLegendPanel(mainWindow);
 	}
 	
+	@Override
 	public DiagramPageList createPageList(MainWindow mainWindowToUse)
 	{
 		return new ResultsChainPageList(mainWindowToUse);
 	}
 	
+	@Override
 	public Class[] getPopUpMenuActions()
 	{
 		return  new Class[] {
