@@ -35,6 +35,7 @@ abstract public class CardedView extends UmbrellaView
 		setLayout(cardLayout);
 	}
 	
+	@Override
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
@@ -43,6 +44,7 @@ abstract public class CardedView extends UmbrellaView
 		forceLayoutSoSplittersWork();
 	}
 	
+	@Override
 	public void becomeInactive() throws Exception
 	{
 		super.becomeInactive();
