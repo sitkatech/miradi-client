@@ -496,7 +496,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 	{
 		reloadDiagramCards(getContentType());
 		getDiagramPageList().listChanged();
-		validate();
+		showCurrentCard();
 	}
 
 	public int getContentType()
