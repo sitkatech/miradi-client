@@ -24,6 +24,7 @@ import java.util.Vector;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
+import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.FactorCell;
@@ -32,6 +33,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
@@ -154,8 +156,15 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		CommandSetObjectData removeFromDiagram = CommandSetObjectData.createRemoveIdCommand(getDiagramModel().getDiagramObject(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, newlyPastedDiagramFactor.getId());
 		getProject().executeCommand(removeFromDiagram);
 		
-		getProject().executeCommandsWithoutTransaction(newlyPastedDiagramFactor.createCommandsToDeleteChildrenAndObject());
-		getProject().executeCommandsWithoutTransaction(factorToDelete.createCommandsToDeleteChildrenAndObject());
+		shallowDeleteObject(newlyPastedDiagramFactor);
+		shallowDeleteObject(factorToDelete);		
+	}
+
+	private void shallowDeleteObject(BaseObject objectToShallowDelete) throws Exception
+	{
+		Vector commandsToClearFactor = objectToShallowDelete.createCommandsToClear();
+		getProject().executeCommandsWithoutTransaction(commandsToClearFactor);
+		getProject().executeCommand(new CommandDeleteObject(objectToShallowDelete));
 	}
 
 	private DiagramFactor getNewlyPastedFactor(DiagramCopyPaster paster)
