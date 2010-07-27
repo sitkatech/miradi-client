@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-23 14:36-0500\n"
+"POT-Creation-Date: 2010-07-27 09:44-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1752,7 +1752,7 @@ msgstr ""
 msgid "An error has occured while writing assignment data."
 msgstr "编写分配数据时出现一个错误。 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:335
+#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:337
 #: Miradi/source/org/miradi/diagram/DiagramModel.java:788
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
@@ -4688,7 +4688,7 @@ msgstr "未指定 \t\t"
 msgid "Not all classification Codes could imported."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:424
+#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:426
 msgid "Not all factors are being shown because %s tag(s) are checked"
 msgstr ""
 
