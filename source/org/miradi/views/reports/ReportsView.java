@@ -46,6 +46,7 @@ public class ReportsView extends TabbedView
 		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
 	}
 	
+	@Override
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
@@ -59,6 +60,7 @@ public class ReportsView extends TabbedView
 		addDoerToMap(ActionRunReportTemplate.class, new RunReportTemplateDoer());
 	}
 
+	@Override
 	public String cardName() 
 	{
 		return getViewName();
@@ -69,11 +71,13 @@ public class ReportsView extends TabbedView
 		return Project.REPORT_VIEW_NAME;
 	}
 
+	@Override
 	public MiradiToolBar createToolBar()
 	{
 		return new ReportToolBar(getActions());
 	}
 
+	@Override
 	public void createTabs() throws Exception
 	{
 		reportTemplateManagementPanel = new ReportTemplateManagementPanel(getMainWindow());
@@ -84,6 +88,7 @@ public class ReportsView extends TabbedView
 
 	}
 	
+	@Override
 	public void deleteTabs() throws Exception
 	{
 		reportTemplateManagementPanel.dispose();
