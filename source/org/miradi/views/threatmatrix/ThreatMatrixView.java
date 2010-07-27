@@ -130,6 +130,7 @@ public class ThreatMatrixView extends CardedView
 	protected void showCurrentCard(String code)
 	{
 		showCard(getThreatStressRatingCardName());
+		getMainWindow().rebuildToolBar();
 	}
 	
 	@Override

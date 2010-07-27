@@ -43,6 +43,7 @@ public class ToggleSpellCheckerDoer extends MainWindowDoer
 		boolean newState = !getAppPreferences().getIsSpellCheckEnabled();
 		getAppPreferences().setIsSpellCheckEnabled(newState);
 		getMainWindow().getCurrentView().refresh();
+		getMainWindow().savePreferences();
 	}
 
 	private AppPreferences getAppPreferences()
