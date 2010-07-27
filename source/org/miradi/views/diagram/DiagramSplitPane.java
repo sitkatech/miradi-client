@@ -327,6 +327,8 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 			// Cleaner fixes ran into strange problems where Windows and Linux systems
 			// behaved differently. SEE ALSO DiagramView.getPrintableComponent()
 			diagramComponent.clearSelection();
+
+			diagramComponent.forceRepaint();
 			updateStatusBar();
 		}
 		catch (Exception e)
