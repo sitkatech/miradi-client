@@ -339,7 +339,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		}		
 	}
 
-	public void setCurrentDiagramObjectRef(ORef currentDiagramObjectRef)
+	private void setCurrentDiagramObjectRef(ORef currentDiagramObjectRef)
 	{
 		currentRef = currentDiagramObjectRef;
 	}
