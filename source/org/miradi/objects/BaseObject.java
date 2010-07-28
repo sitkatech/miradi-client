@@ -855,14 +855,12 @@ abstract public class BaseObject
 		for (int index = 0; index < refs.size(); ++index)
 		{
 			BaseObject objectToDelete = BaseObject.find(getProject(), refs.get(index));
-			deleteCommands.addAll(objectToDelete.createCommandsToClear());
-			deleteCommands.add(new CommandDeleteObject(objectToDelete));
+			deleteCommands.addAll(objectToDelete.createCommandsToShallowDelete());
 		}
 		
 		return deleteCommands;
 	}
 	
-	//TODO - using this method in the above method createDeleteCommands()
 	public Vector<Command> createCommandsToShallowDelete()
 	{
 		Vector<Command> commandsToShallowDelete = new Vector<Command>();
