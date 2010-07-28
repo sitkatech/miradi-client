@@ -71,6 +71,7 @@ public class ShowFullModelModeDoer extends ViewDoer
 		try
 		{
 			showFullModelMode(getProject(), getDiagramView().getCurrentDiagramComponent());
+			getView().refresh();
 		}
 		catch (Exception e)
 		{
