@@ -862,6 +862,16 @@ abstract public class BaseObject
 		return deleteCommands;
 	}
 	
+	//TODO - using this method in the above method createDeleteCommands()
+	public Vector<Command> createCommandsToShallowDelete()
+	{
+		Vector<Command> commandsToShallowDelete = new Vector<Command>();
+		commandsToShallowDelete.addAll(createCommandsToClear());
+		commandsToShallowDelete.add(new CommandDeleteObject(this));
+		
+		return commandsToShallowDelete;
+	}
+	
 	//Note this method does not clone referenced or owned objects
 	public CommandSetObjectData[] createCommandsToClone(BaseId baseId)
 	{
