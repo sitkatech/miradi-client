@@ -172,6 +172,7 @@ public class DiagramContextMenuHandler
 			}
 			catch(Exception e)
 			{
+				EAM.logException(e);
 				EAM.errorDialog(EAM.text("Unexpected error prevented the tag operation from succeeding"));
 			}
 		}
