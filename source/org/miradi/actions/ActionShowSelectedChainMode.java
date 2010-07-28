@@ -39,6 +39,7 @@ public class ActionShowSelectedChainMode extends ViewAction
 		return EAM.text("Action|Brainstorm Mode");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Isolate the selected factor chain in Brainstorm Mode");
