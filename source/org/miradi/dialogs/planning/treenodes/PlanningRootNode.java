@@ -23,9 +23,9 @@ package org.miradi.dialogs.planning.treenodes;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-public class ObjectsOnlyRootNode extends AbstractProjectNode
+public class PlanningRootNode extends AbstractProjectNode
 {
-	public ObjectsOnlyRootNode(Project projectToUse, CodeList visibleRowsToUse)	throws Exception
+	public PlanningRootNode(Project projectToUse, CodeList visibleRowsToUse)	throws Exception
 	{
 		super(projectToUse, visibleRowsToUse);
 	}
