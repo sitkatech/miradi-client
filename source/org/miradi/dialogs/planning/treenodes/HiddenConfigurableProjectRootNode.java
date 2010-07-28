@@ -24,9 +24,9 @@ import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.views.planning.PlanningView;
 
-public class HiddenProjectRootNode extends AbstractProjectNode
+public class HiddenConfigurableProjectRootNode extends AbstractProjectNode
 {
-	public HiddenProjectRootNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
+	public HiddenConfigurableProjectRootNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
 	{
 		super(projectToUse, visibleRowsToUse);
 	}

@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning;
 
 import org.miradi.dialogs.planning.treenodes.AbstractProjectNode;
-import org.miradi.dialogs.planning.treenodes.HiddenProjectRootNode;
+import org.miradi.dialogs.planning.treenodes.HiddenConfigurableProjectRootNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -52,7 +52,7 @@ public class TestPlanningTreeActivityNode extends TestPlanningTreeNode
 	{
 		CodeList rowCodes = new CodeList();
 		rowCodes.add(Task.ACTIVITY_NAME);
-		HiddenProjectRootNode root = new HiddenProjectRootNode(project, rowCodes);
+		HiddenConfigurableProjectRootNode root = new HiddenConfigurableProjectRootNode(project, rowCodes);
 		assertEquals(1, root.getChildCount());
 
 		final TreeTableNode firstChild = root.getChild(0);
