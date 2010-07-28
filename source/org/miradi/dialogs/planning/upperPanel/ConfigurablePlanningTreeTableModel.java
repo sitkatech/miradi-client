@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.dialogs.planning.treenodes.HiddenProjectRootNode;
+import org.miradi.dialogs.planning.treenodes.HiddenConfigurableProjectRootNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
@@ -46,7 +46,7 @@ public class ConfigurablePlanningTreeTableModel extends ExportablePlanningTreeTa
 	
 	private static TreeTableNode createConfigurablePlanningTreeRootNode(Project projectToUse) throws Exception
 	{
-		return new HiddenProjectRootNode(projectToUse, getVisibleRowCodes(projectToUse));
+		return new HiddenConfigurableProjectRootNode(projectToUse, getVisibleRowCodes(projectToUse));
 	}
 
 	@Override
