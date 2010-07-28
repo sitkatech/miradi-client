@@ -35,6 +35,7 @@ public class ActionCreateKeyEcologicalAttributeMeasurement extends ObjectsAction
 		return EAM.text("Action|Manage|Create Measurement");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a new Measurement");
