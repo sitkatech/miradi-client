@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
-import org.miradi.dialogs.planning.treenodes.ObjectsOnlyRootNode;
+import org.miradi.dialogs.planning.treenodes.PlanningRootNode;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
@@ -47,7 +47,7 @@ abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 
 	private static TreeTableNode createPlanningTreeRootNode(Project projectToUse, CodeList visibleRowCodesToUse) throws Exception
 	{
-		return new ObjectsOnlyRootNode(projectToUse, visibleRowCodesToUse);
+		return new PlanningRootNode(projectToUse, visibleRowCodesToUse);
 	}
 	
 	protected void updateColumnsToShow(CodeList visibleColumnCodes)
