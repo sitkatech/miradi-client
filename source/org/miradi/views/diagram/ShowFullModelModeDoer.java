@@ -40,6 +40,7 @@ import org.miradi.views.ViewDoer;
 
 public class ShowFullModelModeDoer extends ViewDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		try
@@ -60,6 +61,7 @@ public class ShowFullModelModeDoer extends ViewDoer
 		return true;
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if(!isAvailable())
