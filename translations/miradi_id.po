@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-28 09:47-0500\n"
+"POT-Creation-Date: 2010-07-28 10:05-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2301,7 +2301,7 @@ msgstr "OK "
 msgid "Button|Ok"
 msgstr "Baik "
 
-#: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:203
+#: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:194
 msgid "Button|Paste Contents"
 msgstr "Tempelkan Isi… "
 
@@ -5033,7 +5033,7 @@ msgstr "Tempel Sebagai Salinan"
 msgid "Paste As..."
 msgstr "Tempel Sebagai... "
 
-#: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:104
+#: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:102
 msgid "Paste Content..."
 msgstr "Tempelkan Isi… "
 
@@ -7171,7 +7171,7 @@ msgstr ""
 "Nilai ini harus numerik<br><br>Simbol mata uang dan tanda persen tidak "
 "diizinkan "
 
-#: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:105
+#: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:103
 msgid ""
 "This will replace all the selected factor's contents with the contents of "
 "the factor that was cut/copied earlier. Are you sure you want to do this?"
