@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-28 12:32-0500\n"
+"POT-Creation-Date: 2010-07-28 13:25-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5983,7 +5983,7 @@ msgstr "创建一个新的定制计划视图 \t\t"
 msgid "TT|Create a new Indicator"
 msgstr "创建一个新的指示物 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttributeMeasurement.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttributeMeasurement.java:41
 msgid "TT|Create a new Measurement"
 msgstr "创建一个新的测量法 \t\t"
 

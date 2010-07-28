@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-28 12:32-0500\n"
+"POT-Creation-Date: 2010-07-28 13:25-0500\n"
 "PO-Revision-Date: 2010-05-12 13:30-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -5846,7 +5846,7 @@ msgstr ""
 msgid "TT|Create a new Indicator"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttributeMeasurement.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttributeMeasurement.java:41
 msgid "TT|Create a new Measurement"
 msgstr ""
 
