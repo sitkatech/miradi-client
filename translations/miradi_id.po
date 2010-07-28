@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-28 13:25-0500\n"
+"POT-Creation-Date: 2010-07-28 15:59-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -4623,7 +4623,7 @@ msgstr "4. Analisis, Gunakan, Sesuaikan"
 msgid "Menu|5. Capture and Share Learning"
 msgstr "5. Tangkap dan Berbagi Pembelajaran "
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:244
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Tambahkan Tag ke %n Butir yang Dipilih "
 
@@ -4635,7 +4635,7 @@ msgstr "Ekspor Halaman Saat Ini sebagai…"
 msgid "Menu|Export Current Project as..."
 msgstr "Ekspor Proyek Saat Ini sebagai…"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:281
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
 #: Miradi/source/org/miradi/main/menu/MainMenuBar.java:412
 msgid "Menu|Group Box"
 msgstr "Kotak Grup"
@@ -4644,11 +4644,11 @@ msgstr "Kotak Grup"
 msgid "Menu|Import"
 msgstr "Impor "
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:292
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:293
 msgid "Menu|Insert"
 msgstr "Sisipkan "
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:249
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:250
 msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Hapus Tag dari %n Item yang Dipilih "
 
@@ -7582,7 +7582,7 @@ msgstr "Panggilan tak terduga ke setText "
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Kesalahan tak terduga membuat paket bahasa tidak dapat diinstal "
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:175
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:176
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr "Kesalahan tak terduga telah menghalangi operasi tag tersebut "
 
