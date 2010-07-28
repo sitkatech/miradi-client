@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-28 13:25-0500\n"
+"POT-Creation-Date: 2010-07-28 15:59-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4456,7 +4456,7 @@ msgstr "4. 分析，使用，适应 \t\t"
 msgid "Menu|5. Capture and Share Learning"
 msgstr "5. 捕捉及共享学识 \t\t"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:244
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr ""
 
@@ -4468,7 +4468,7 @@ msgstr "导出当前页面为... "
 msgid "Menu|Export Current Project as..."
 msgstr "导出当前项目为... "
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:281
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
 #: Miradi/source/org/miradi/main/menu/MainMenuBar.java:412
 msgid "Menu|Group Box"
 msgstr "组合框 \t\t"
@@ -4477,11 +4477,11 @@ msgstr "组合框 \t\t"
 msgid "Menu|Import"
 msgstr "导入 \t\t"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:292
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:293
 msgid "Menu|Insert"
 msgstr "插入 \t\t"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:249
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:250
 msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr ""
 
@@ -7320,7 +7320,7 @@ msgstr ""
 msgid "Unexpected error prevented installing that language pack"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:175
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:176
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr ""
 
