@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-27 14:23-0500\n"
+"POT-Creation-Date: 2010-07-28 09:47-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -6644,7 +6644,7 @@ msgstr "Insertar una estrategia preliminar"
 msgid "TT|Install the selected language pack"
 msgstr "Instalar el paquete de idiomas seleccionado"
 
-#: Miradi/source/org/miradi/actions/ActionShowSelectedChainMode.java:44
+#: Miradi/source/org/miradi/actions/ActionShowSelectedChainMode.java:45
 msgid "TT|Isolate the selected factor chain in Brainstorm Mode"
 msgstr "Aislar la cadena de factores seleccionada en el modo Tormenta de ideas"
 

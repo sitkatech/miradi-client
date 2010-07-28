@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-27 14:23-0500\n"
+"POT-Creation-Date: 2010-07-28 09:47-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -6603,7 +6603,7 @@ msgstr "Sisipkan satu rancangan Strategi "
 msgid "TT|Install the selected language pack"
 msgstr "Instal paket bahasa yang dipilih "
 
-#: Miradi/source/org/miradi/actions/ActionShowSelectedChainMode.java:44
+#: Miradi/source/org/miradi/actions/ActionShowSelectedChainMode.java:45
 msgid "TT|Isolate the selected factor chain in Brainstorm Mode"
 msgstr "Asingkan rangkaian faktor terpilih dalam Mode Sumbang Saran "
 
