@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.dialogs.planning.treenodes.ObjectsOnlyRootNode;
-import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
@@ -31,7 +29,7 @@ public class ObjectsOnlyPlanningTreeTableModel extends ExportablePlanningTreeTab
 {
 	public ObjectsOnlyPlanningTreeTableModel(Project project) throws Exception
 	{
-		super(project, createRootNode(project), getVisibleRowCodes(project), getVisibleColumnCodes(project), UNIQUE_TREE_TABLE_IDENTIFIER);
+		super(project, getVisibleRowCodes(project), getVisibleColumnCodes(project), UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 
 	private static CodeList getVisibleColumnCodes(Project projectToUse) throws Exception
@@ -42,11 +40,6 @@ public class ObjectsOnlyPlanningTreeTableModel extends ExportablePlanningTreeTab
 	public static CodeList getVisibleRowCodes(Project projectToUse) throws Exception
 	{
 		return RowManager.getVisibleRowsForSingleType(projectToUse.getCurrentViewData());
-	}
-	
-	private static TreeTableNode createRootNode(Project project) throws Exception
-	{
-		return new ObjectsOnlyRootNode(project, getVisibleRowCodes(project));
 	}
 
 	@Override
