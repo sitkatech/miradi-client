@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-28 10:05-0500\n"
+"POT-Creation-Date: 2010-07-28 12:32-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -317,13 +317,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpCreate.java:35
 msgid "7C. Create a Learning Environment"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningTreeTableModel.java:58
-msgid ""
-"<HTML>A severe error has prevented this Planning Subview from being shown."
-"<BR>Please contact Miradi Support (<a href=\"mailto:support@miradi.org"
-"\">support@miradi.org<a>) for assistance</HTML>"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/MainWindow.java:1178
