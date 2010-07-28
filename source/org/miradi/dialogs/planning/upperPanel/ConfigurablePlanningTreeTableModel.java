@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
+import org.miradi.dialogs.planning.treenodes.HiddenProjectRootNode;
+import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
@@ -29,7 +31,7 @@ public class ConfigurablePlanningTreeTableModel extends ExportablePlanningTreeTa
 {
 	public ConfigurablePlanningTreeTableModel(Project project) throws Exception
 	{
-		super(project, getVisibleRowCodes(project), getVisibleColumnCodes(project), UNIQUE_TREE_TABLE_IDENTIFIER);
+		super(project, createConfigurablePlanningTreeRootNode(project), getVisibleRowCodes(project), getVisibleColumnCodes(project), UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 
 	private static CodeList getVisibleColumnCodes(Project projectToUse) throws Exception
@@ -40,6 +42,11 @@ public class ConfigurablePlanningTreeTableModel extends ExportablePlanningTreeTa
 	public static CodeList getVisibleRowCodes(Project projectToUse) throws Exception
 	{
 		return RowManager.getVisibleRowsForCustomization(projectToUse.getCurrentViewData());
+	}
+	
+	private static TreeTableNode createConfigurablePlanningTreeRootNode(Project projectToUse) throws Exception
+	{
+		return new HiddenProjectRootNode(projectToUse, getVisibleRowCodes(projectToUse));
 	}
 
 	@Override

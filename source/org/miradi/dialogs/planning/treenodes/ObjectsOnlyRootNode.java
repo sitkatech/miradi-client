@@ -29,6 +29,12 @@ public class ObjectsOnlyRootNode extends AbstractProjectNode
 	{
 		super(projectToUse, visibleRowsToUse);
 	}
+	
+	@Override
+	public boolean isAlwaysExpanded()
+	{
+		return true;
+	}
 
 	@Override
 	protected boolean shouldIncludeConceptualModelPage() throws Exception
