@@ -262,7 +262,7 @@ public class DefinitionCommonTerms
 
 		def = Definition.createDefinitionFromTextString(EAM.text("OpenStandards"), EAM.text("Open Standards for the Practice of Conservation - A series of best practices " +
 		"for designing, managing, monitoring, and learning from conservation projects. " +
-		"The basis for Miradi. You can download a copy of the Open Standards at www.ConservationMeasures.org"));
+		"The basis for Miradi. You can download a copy of the Open Standards at <a href='http://www.ConservationMeasures.org'>www.ConservationMeasures.org<a>"));
 		defs.put("Definition:OpenStandards", def);
 
 		
