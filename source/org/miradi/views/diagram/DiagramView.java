@@ -764,6 +764,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		catch (Exception e)
 		{
 			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
 		}
 	}
 
@@ -831,7 +832,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	private void updateAllTabs(CommandSetObjectData cmd) throws Exception
 	{
-		
 		String newValue = cmd.getDataValue();
 		setModeIfRelevant(cmd, newValue);
 		
@@ -935,27 +935,19 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		model.updateCellFromDiagramFactor(diagramFactorRef);
 	}
 
-	private void setModeIfRelevant(CommandSetObjectData cmd, String newMode)
+	private void setModeIfRelevant(CommandSetObjectData cmd, String newMode) throws Exception
 	{
 		String fieldTag = cmd.getFieldTag();
-		try
+		ViewData ourViewData = getViewData();
+		if (!cmd.getObjectORef().equals(ourViewData.getRef()))
+			return;
+
+		boolean modeChange = fieldTag.equals(ViewData.TAG_CURRENT_MODE);
+		boolean cmChange = fieldTag.equals(ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF);
+		boolean rcChange = fieldTag.equals(ViewData.TAG_CURRENT_RESULTS_CHAIN_REF);
+		if(modeChange || cmChange || rcChange)
 		{
-			ViewData ourViewData = getViewData();
-			if (!cmd.getObjectORef().equals(ourViewData.getRef()))
-				return;
-			
-			boolean modeChange = fieldTag.equals(ViewData.TAG_CURRENT_MODE);
-			boolean cmChange = fieldTag.equals(ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF);
-			boolean rcChange = fieldTag.equals(ViewData.TAG_CURRENT_RESULTS_CHAIN_REF);
-			if(modeChange || cmChange || rcChange)
-			{
-				setMode(newMode);
-			}
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog("Unknown error prevented this operation");
+			setMode(newMode);
 		}
 	}
 	
