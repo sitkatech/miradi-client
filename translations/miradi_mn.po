@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-29 12:14-0500\n"
+"POT-Creation-Date: 2010-07-29 12:16-0500\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -6884,7 +6884,7 @@ msgstr ""
 msgid "Title|Error"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:984
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:976
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr ""
