@@ -941,10 +941,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		try
 		{
 			ViewData ourViewData = getViewData();
-			if(cmd.getObjectType() != ourViewData.getType())
+			if (!cmd.getObjectORef().equals(ourViewData.getRef()))
 				return;
-			if(cmd.getObjectId() != ourViewData.getId())
-				return;
+			
 			boolean modeChange = fieldTag.equals(ViewData.TAG_CURRENT_MODE);
 			boolean cmChange = fieldTag.equals(ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF);
 			boolean rcChange = fieldTag.equals(ViewData.TAG_CURRENT_RESULTS_CHAIN_REF);
