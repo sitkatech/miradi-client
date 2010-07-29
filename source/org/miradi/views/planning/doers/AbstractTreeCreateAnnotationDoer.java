@@ -36,6 +36,8 @@ abstract public class AbstractTreeCreateAnnotationDoer extends AbstractTreeNodeD
 	{
 		try
 		{
+			//FIXME low, look at the FIXME in AbstractCreateTaskNodeDoer.  Sometimes a deleted
+			//object will not get removed from the selection hiearchy in time.
 			BaseObject selectedObject = getSingleSelectedObject();
 			if (selectedObject == null)
 				return false;

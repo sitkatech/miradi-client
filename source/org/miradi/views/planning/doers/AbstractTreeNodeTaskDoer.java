@@ -65,7 +65,8 @@ abstract public class AbstractTreeNodeTaskDoer extends AbstractTreeNodeDoer
 				continue;
 			
 			BaseObject objectInHieararchy = BaseObject.find(getProject(), objectRef);
-			// NOTE: Selection may still be a recently-deleted node
+			//FIXME low, look at the FIXME in AbstractCreateTaskNodeDoer.  Sometimes a deleted
+			//object will not get removed from the selection hiearchy in time.
 			if (objectInHieararchy == null)
 				continue;
 			
