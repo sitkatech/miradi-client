@@ -59,6 +59,8 @@ abstract public class AbstractCreateTaskNodeDoer extends AbstractTreeNodeDoer
 		}
 	}
 	
+	//FIXME low - Sometimes when an object is deleted, the selection hierarchy has
+	//not been updated so there is a ref in the hierarch that points to the deleted object.
 	private boolean doesFirstSelectedRefExist()
 	{
 		ORefList selectionHierarchy = getSelectionHierarchy();
