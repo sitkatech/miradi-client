@@ -188,7 +188,7 @@ public class EAM
 			if (getExceptionLoggingDestination() != null)
 				getExceptionLoggingDestination().close();
 			
-			FileOutputStream outputStream = new FileOutputStream(destination);
+			FileOutputStream outputStream = new FileOutputStream(destination, true);
 			setExceptionLoggingDestination(outputStream);
 		}
 		catch(FileNotFoundException e)
