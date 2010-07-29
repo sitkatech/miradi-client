@@ -39,6 +39,9 @@ abstract public class AbstractCreateTaskNodeDoer extends AbstractTreeNodeDoer
 	{
 		try
 		{
+			if (!doesFirstSelectedRefExist())
+				return false;
+			
 			ORef parentRef = getParentRef();
 			if (parentRef.isInvalid())
 				return false;
@@ -56,6 +59,20 @@ abstract public class AbstractCreateTaskNodeDoer extends AbstractTreeNodeDoer
 		}
 	}
 	
+	private boolean doesFirstSelectedRefExist()
+	{
+		ORefList selectionHierarchy = getSelectionHierarchy();
+		if (selectionHierarchy.isEmpty())
+			return false;
+
+		ORef selectedRef = selectionHierarchy.getFirstElement();
+		if (selectedRef.isInvalid())
+			return false;
+		
+		BaseObject baseObject = BaseObject.find(getProject(), selectedRef);
+		return baseObject != null;
+	}
+
 	@Override
 	public void doIt() throws Exception
 	{
