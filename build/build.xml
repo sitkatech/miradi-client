@@ -661,6 +661,7 @@
 		<zipfileset dir="${eam.src.root}/" prefix='Miradi-${version.full}' includes="**/*" excludes=".svn" />
 		<zipfileset dir="${installer.buildfiles.dir}" includes="README.txt"/>
 		<zipfileset dir="${installer.buildfiles.dir}" includes="LICENSE.txt"/>
+		<zipfileset dir="${installer.buildfiles.dir}" includes="LicenseOverview.txt"/>
 		<zipfileset dir="${build.dir}" includes='build.xml'/>
 	</zip>
 	
