@@ -44,7 +44,7 @@ Beneficent Technology, Inc. ("The Benetech Initiative").
 
 Miradi relies on the following third-party libraries and tools: 
 BrowserLauncher2, jcalendar, jgraph, jing, jhlabs, 
-jtreetable, jarbuilder, install4j.
+jtreetable, jarbuilder, install4j, jortho.
 
 
 ---------------------
