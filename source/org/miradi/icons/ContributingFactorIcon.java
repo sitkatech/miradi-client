@@ -30,11 +30,13 @@ import org.miradi.main.EAM;
 
 public class ContributingFactorIcon extends AbstractShapeIcon
 {
+	@Override
 	FactorRenderer getRenderer()
 	{
 		return new RectangleRenderer();
 	}
 	
+	@Override
 	Color getIconColor()
 	{
 		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR);
@@ -47,6 +49,7 @@ public class ContributingFactorIcon extends AbstractShapeIcon
 	
 	private static final class ContributingFactorDisabledIcon extends ContributingFactorIcon
 	{
+		@Override
 		Color getIconColor()
 		{
 			return Color.LIGHT_GRAY;
