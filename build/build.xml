@@ -454,6 +454,7 @@
     <zip destfile="${dist.dir}/Miradi-Linux.zip">
 		<zipfileset dir="${installer.buildfiles.dir}" includes="README.txt"/>
 		<zipfileset dir="${installer.buildfiles.dir}" includes="LICENSE.txt"/>
+		<zipfileset dir="${installer.buildfiles.dir}" includes="LicenseOverview.txt"/>
     	<zipfileset dir="${dist.dir}" includes="miradi.jar"/>
 		<zipfileset dir="${installer.buildfiles.dir}" includes="${samples.marine.mpz}" />
     	
