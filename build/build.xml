@@ -413,6 +413,7 @@
 			<param name='directory' value='swingx/0.9.7' />
 			<param name='filename' value='COPYING' />
 	</antcall>
+	<move file="${dist.temp.jars}/swingx/0.9.7/COPYING" tofile="${dist.temp.jars}/swingx/0.9.7/LICENSE.swingx.txt"/>
 
 	<antcall target='download'>
 		<param name='directory' value='Miradi-CleanSheets/1.4b-0' />
@@ -485,7 +486,7 @@
     	<zipfileset dir="${dist.temp.jars}/jing/" prefix='${JarFolder}' includes="LICENSE-jing.txt" />
     	<zipfileset dir="${dist.temp.jars}/jing/" prefix='${JarFolder}' includes="LICENSE-xerces.copying.txt" />
         <zipfileset dir="${dist.temp.jars}/swingx/0.9.7/" prefix='${JarFolder}' includes="swingx-0.9.7.jar" />
-    	<zipfileset dir="${dist.temp.jars}/swingx/0.9.7/" prefix='${JarFolder}' includes="COPYING" />
+    	<zipfileset dir="${dist.temp.jars}/swingx/0.9.7/" prefix='${JarFolder}' includes="LICENSE.swingx.txt" />
     	<zipfileset dir="${dist.temp.jars}/Miradi-CleanSheets/1.4b-0/" prefix='${JarFolder}' includes="*.jar"/>
     	<zipfileset dir="${dist.temp.jars}/jortho/jortho/0.5/" prefix='${JarFolder}' includes="*.jar"/>
     	<zipfileset dir="${dist.temp.jars}/jortho/jortho/0.5/" prefix='${JarFolder}' includes="license-jortho.txt"/>
