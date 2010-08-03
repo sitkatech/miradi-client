@@ -490,7 +490,7 @@
     	<zipfileset dir="${dist.temp.jars}/jortho/jortho/0.5/" prefix='${JarFolder}' includes="license-jortho.txt"/>
 
     	<zipfileset dir="${dist.temp.jars}/PersianCalendar/bin/" prefix='${JarFolder}' includes="*.jar" />
-    	<zipfileset dir="${dist.temp.jars}/PersianCalendar/bin/" prefix='${JarFolder}' includes="gpl.txt" />
+    	<zipfileset dir="${dist.temp.jars}/PersianCalendar/license/" prefix='${JarFolder}' includes="gpl.txt" />
     </zip>
 	
 	<!-- Third-party source code -->
