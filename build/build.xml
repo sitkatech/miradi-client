@@ -399,8 +399,10 @@
 			<param name='directory' value='PersianCalendar/license' />
 			<param name='filename' value='gpl.txt' />
 	</antcall>
-	<move file="gpl.txt" tofile="LICENSE.PersianCalendar.txt"/>
-
+	<antcall target='move'>
+    	<move file="gpl.txt" tofile="LICENSE.PersianCalendar.txt"/>
+	</antcall>
+	
 	<antcall target='download'>
 		<param name='directory' value='swingx/0.9.7' />
 		<param name='filename' value='swingx-0.9.7.jar' />
