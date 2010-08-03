@@ -398,7 +398,6 @@
 	<antcall target='download'>
 			<param name='directory' value='PersianCalendar/license' />
 			<param name='filename' value='gpl.txt' />
-			<move file="gpl.txt" tofile="LICENSE.PersianCalendar.txt"/>
 	</antcall>
 
 	<antcall target='download'>
