@@ -400,7 +400,7 @@
 			<param name='filename' value='gpl.txt' />
 	</antcall>
 	<antcall target='move'>
-    	<move file="gpl.txt" tofile="LICENSE.PersianCalendar.txt"/>
+    	<move file="PersianCalendar/gpl.txt" tofile="PersianCalendar/LICENSE.PersianCalendar.txt"/>
 	</antcall>
 	
 	<antcall target='download'>
