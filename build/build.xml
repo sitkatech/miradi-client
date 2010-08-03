@@ -466,10 +466,13 @@
     	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='${JarFolder}' includes="BrowserLauncher*.jar" />
     	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='${JarFolder}' includes="License.BrowserLauncher2" />
     	<zipfileset dir="${dist.temp.jars}/jcalendar-1.3.2/" prefix='${JarFolder}' includes="jcalendar*.jar" />
+    	<zipfileset dir="${dist.temp.jars}/jcalendar-1.3.2/" prefix='${JarFolder}' includes="LICENSE.jcalendar" />
     	<zipfileset dir="${dist.temp.jars}/jgraph/" prefix='${JarFolder}' includes="miradi-jgraph-5.12.2.2b.jar" />
+    	<zipfileset dir="${dist.temp.jars}/jgraph/" prefix='${JarFolder}' includes="LICENSE.jgraph" />
     	<zipfileset dir="${dist.temp.jars}/martus-utils/bin/" prefix='${JarFolder}' includes="martus-utils.jar" />
        	<zipfileset dir="${dist.temp.jars}/martus-swing/bin/" prefix='${JarFolder}' includes="martus-swing.jar" />
         <zipfileset dir="${dist.temp.jars}/jing/bin/" prefix='${JarFolder}' includes="jing.jar" />
+    	<zipfileset dir="${dist.temp.jars}/jing/bin/" prefix='${JarFolder}' includes="LICENSE-jing.txt" />
         <zipfileset dir="${dist.temp.jars}/swingx/0.9.7/" prefix='${JarFolder}' includes="swingx-0.9.7.jar" />
     	<zipfileset dir="${dist.temp.jars}/Miradi-CleanSheets/1.4b-0/" prefix='${JarFolder}' includes="*.jar"/>
     	<zipfileset dir="${dist.temp.jars}/jortho/jortho/0.5/" prefix='${JarFolder}' includes="*.jar"/>
