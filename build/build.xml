@@ -464,6 +464,7 @@
     	
     	<!-- ThirdParty jars -->
     	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='${JarFolder}' includes="BrowserLauncher*.jar" />
+    	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='${JarFolder}' includes="License.BrowserLauncher2" />
     	<zipfileset dir="${dist.temp.jars}/jcalendar-1.3.2/" prefix='${JarFolder}' includes="jcalendar*.jar" />
     	<zipfileset dir="${dist.temp.jars}/jgraph/" prefix='${JarFolder}' includes="miradi-jgraph-5.12.2.2b.jar" />
     	<zipfileset dir="${dist.temp.jars}/martus-utils/bin/" prefix='${JarFolder}' includes="martus-utils.jar" />
