@@ -429,6 +429,10 @@
 		<param name='directory' value='jortho/dictionaries/2009-01' />
 		<param name='filename' value='dictionary_en_2009_01.zip' />
 	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jortho/jortho/0.5' />
+		<param name='filename' value='license-jortho.txt' />
+	</antcall>
 	<unzip src='${dist.temp.jars}/jortho/dictionaries/2009-01/dictionary_en_2009_01.zip' dest='${dist.temp}'>
 		<patternset>
 			<include name="**/*.ortho"/>
@@ -468,6 +472,7 @@
         <zipfileset dir="${dist.temp.jars}/swingx/0.9.7/" prefix='${JarFolder}' includes="swingx-0.9.7.jar" />
     	<zipfileset dir="${dist.temp.jars}/Miradi-CleanSheets/1.4b-0/" prefix='${JarFolder}' includes="*.jar"/>
     	<zipfileset dir="${dist.temp.jars}/jortho/jortho/0.5/" prefix='${JarFolder}' includes="*.jar"/>
+    	<zipfileset dir="${dist.temp.jars}/jortho/jortho/0.5/" prefix='${JarFolder}' includes="license-jortho.txt"/>
 
     	<zipfileset dir="${dist.temp.jars}/PersianCalendar/bin/" prefix='${JarFolder}' includes="*.jar" />
     </zip>
