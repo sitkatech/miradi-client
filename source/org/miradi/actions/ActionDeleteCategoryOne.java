@@ -33,12 +33,12 @@ public class ActionDeleteCategoryOne extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Delete Category One");
+		return EAM.text("Action|Manage|Delete Category #1 Item");
 	}
 
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Delete the selected Category One");
+		return EAM.text("TT|Delete the selected Budget Category #1 item");
 	}
 }

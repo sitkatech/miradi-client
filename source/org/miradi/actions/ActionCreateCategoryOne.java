@@ -33,12 +33,12 @@ public class ActionCreateCategoryOne extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Create Category One");
+		return EAM.text("Action|Manage|Create Category #1 Item");
 	}
 
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Create a Category One");
+		return EAM.text("TT|Create a new item of type Budget Category #1");
 	}
 }

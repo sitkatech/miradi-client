@@ -55,7 +55,7 @@ public class BudgetCategoryOneManagementConfiguration extends AbstractManagement
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Category One");
+		return EAM.text("Category #1");
 	}
 
 	@Override
