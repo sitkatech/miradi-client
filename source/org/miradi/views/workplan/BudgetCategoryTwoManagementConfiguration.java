@@ -46,7 +46,7 @@ public class BudgetCategoryTwoManagementConfiguration extends AbstractManagement
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Category Two");
+		return EAM.text("Category #2");
 	}	
 	
 	public Icon getIcon()
