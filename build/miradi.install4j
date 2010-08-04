@@ -35,7 +35,7 @@
       <fileEntry mountPoint="95" file="../dist/temp/jars/jing/bin/saxon.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/jing/bin/jing.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/swingx/0.9.7/swingx-0.9.7.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="../dist/temp/jars/swingx/0.9.7/COPYING" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/swingx/0.9.7/LICENSE.swingx.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/jing/bin/isorelax.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/jing/LICENSE-jing.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/jing/LICENSE-xerces.copying.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
