@@ -4,7 +4,7 @@ Copyright 2005-2010, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION 3.1.1
+VERSION 3.2
 
 License and Copying
 
@@ -142,6 +142,30 @@ GNU/Linux:
 
 ---------------------
 Changes
+
+Miradi 3.2 has several significant new features, in addition to many 
+minor fixes and improvements. Here are the highlights:
+
+Application-wide:
+- New Spell Check feature (currently only for English)
+- Improved error handling
+- Some speed improvements, especially in Work Plan
+- BETA: Ability to import Miradi XMPZ project files 
+
+Summary:
+- Can now specify which language the project data is in
+- Changes to the organization-specific tab for Rare
+
+Diagram:
+- Fixed some errors related to copy/paste
+
+Work Plan:
+- Two new tabs with custom categories for work and expenses
+- New Analysis tab allows summarizing work and expense data in a 
+  variety of ways. It is similar to cross-tabs and pivot tables.
+- RTF export now respects the Resource filter, if active
+
+
 
 Miradi 3.1.1 was a minor release with these changes compared to 3.1:
 
