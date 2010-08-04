@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-02 14:35-0500\n"
+"POT-Creation-Date: 2010-08-04 08:03-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -8252,7 +8252,7 @@ msgstr ""
 msgid "FieldLabel|12.Label|Name"
 msgstr ""
 
-msgid "FieldLabel|12.Code|Source Code"
+msgid "FieldLabel|12.Code|Code"
 msgstr ""
 
 msgid "FieldLabel|12.SpeciesLatinName|Species Latin Name"
@@ -8282,10 +8282,10 @@ msgstr ""
 msgid "FieldLabel|14.ResourceAssignment|Assignment"
 msgstr ""
 
-msgid "FieldLabel|15.Label|Category Name"
+msgid "FieldLabel|15.Label|Accounting Code Name"
 msgstr ""
 
-msgid "FieldLabel|15.Code|Category Code"
+msgid "FieldLabel|15.Code|Accounting Code"
 msgstr ""
 
 msgid "FieldLabel|15.Comments|Comments"
@@ -8297,10 +8297,10 @@ msgstr ""
 msgid "FieldLabel|16.FundingSource|Funding Source"
 msgstr ""
 
-msgid "FieldLabel|16.Label|Source Name"
+msgid "FieldLabel|16.Label|Funding Source Name"
 msgstr ""
 
-msgid "FieldLabel|16.Code|Source Code"
+msgid "FieldLabel|16.Code|Funding Source Code"
 msgstr ""
 
 msgid "FieldLabel|16.Comments|Comments"
