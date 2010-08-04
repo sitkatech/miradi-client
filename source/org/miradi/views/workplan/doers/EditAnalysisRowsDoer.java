@@ -40,7 +40,8 @@ public class EditAnalysisRowsDoer extends ObjectsDoer
 			return;
 		
 		EditAnalysisRowsPanel panel = new EditAnalysisRowsPanel(getProject());
-		ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), panel, EAM.text("Edit Level Types"));
+		ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), panel, 
+				EAM.text("Configure Work Plan Analysis"));
 		dialog.setScrollableMainPanel(panel);
 		getView().showFloatingPropertiesDialog(dialog);
 	}
