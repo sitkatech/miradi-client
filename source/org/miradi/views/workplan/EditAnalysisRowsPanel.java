@@ -38,7 +38,7 @@ public class EditAnalysisRowsPanel extends AbstractObjectDataInputPanel
 
 		setLayout(new OneColumnGridLayout());
 		add(new PanelTitleLabel(EAM.text(
-				"Select how to group the data for analysis.")));
+				"Specify values in the drop downs to group work and expense assignments for analysis.")));
 		add(new JLabel(" "));
 		addFieldWithoutLabel(createConfigureAnaysisRowsField(getProject().getCurrentViewData().getRef(), ViewData.TAG_BUDGET_ROLLUP_REPORT_TYPES, getProject().getQuestion(WorkPlanCategoryTypesQuestion.class)));
 
