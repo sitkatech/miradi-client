@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-04 08:38-0500\n"
+"POT-Creation-Date: 2010-08-04 09:02-0500\n"
 "PO-Revision-Date: 2010-05-12 13:30-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2391,6 +2391,10 @@ msgid ""
 "cycle"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/workplan/doers/EditAnalysisRowsDoer.java:44
+msgid "Configure Work Plan Analysis"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/base/ConfirmDialog.java:36
 msgid "Confirmation"
 msgstr ""
@@ -2885,10 +2889,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpMonitoringWizardEditIndicatorsStep.java:35
 msgid "Edit Indicators"
-msgstr ""
-
-#: Miradi/source/org/miradi/views/workplan/doers/EditAnalysisRowsDoer.java:43
-msgid "Edit Level Types"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/EditMethodsDoer.java:31
@@ -5313,10 +5313,6 @@ msgstr ""
 msgid "Select conservation targets"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:41
-msgid "Select how to group the data for analysis."
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/jump/ActionJumpSummaryWizardDefineTeamMembers.java:35
 msgid "Select initial team members"
 msgstr ""
@@ -5506,6 +5502,12 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:48
 msgid "Specific Year(s)"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:41
+msgid ""
+"Specify values in the drop downs to group work and expense assignments for "
+"analysis."
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ResourceRoleQuestion.java:56
