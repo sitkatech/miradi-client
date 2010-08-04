@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-02 14:35-0500\n"
+"POT-Creation-Date: 2010-08-04 08:03-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -8728,8 +8728,8 @@ msgstr "Siapa "
 msgid "FieldLabel|12.Label|Name"
 msgstr "Nama "
 
-msgid "FieldLabel|12.Code|Source Code"
-msgstr "Kode Sumber Daya "
+msgid "FieldLabel|12.Code|Code"
+msgstr ""
 
 msgid "FieldLabel|12.SpeciesLatinName|Species Latin Name"
 msgstr ""
@@ -8758,11 +8758,11 @@ msgstr "Warna "
 msgid "FieldLabel|14.ResourceAssignment|Assignment"
 msgstr "Pengalokasian "
 
-msgid "FieldLabel|15.Label|Category Name"
-msgstr "Nama Kategori "
+msgid "FieldLabel|15.Label|Accounting Code Name"
+msgstr ""
 
-msgid "FieldLabel|15.Code|Category Code"
-msgstr "Kode Kategori "
+msgid "FieldLabel|15.Code|Accounting Code"
+msgstr ""
 
 msgid "FieldLabel|15.Comments|Comments"
 msgstr "Komentar "
@@ -8773,11 +8773,11 @@ msgstr "Kode Akuntansi "
 msgid "FieldLabel|16.FundingSource|Funding Source"
 msgstr "Sumber Pendanaan "
 
-msgid "FieldLabel|16.Label|Source Name"
-msgstr "Nama Sumber "
+msgid "FieldLabel|16.Label|Funding Source Name"
+msgstr ""
 
-msgid "FieldLabel|16.Code|Source Code"
-msgstr "Kode Sumber "
+msgid "FieldLabel|16.Code|Funding Source Code"
+msgstr ""
 
 msgid "FieldLabel|16.Comments|Comments"
 msgstr "Komentar "
@@ -31514,6 +31514,21 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "FieldLabel|12.Code|Source Code"
+#~ msgstr "Kode Sumber Daya "
+
+#~ msgid "FieldLabel|15.Label|Category Name"
+#~ msgstr "Nama Kategori "
+
+#~ msgid "FieldLabel|15.Code|Category Code"
+#~ msgstr "Kode Kategori "
+
+#~ msgid "FieldLabel|16.Label|Source Name"
+#~ msgstr "Nama Sumber "
+
+#~ msgid "FieldLabel|16.Code|Source Code"
+#~ msgstr "Kode Sumber "
 
 #~ msgid ""
 #~ "html|/resources/help/Credits.html|  <!DOCTYPE HTML PUBLIC \"-//W3C//DTD "

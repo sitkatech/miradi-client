@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-02 14:35-0500\n"
+"POT-Creation-Date: 2010-08-04 08:03-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -8765,8 +8765,8 @@ msgstr "Quién"
 msgid "FieldLabel|12.Label|Name"
 msgstr "Nombre"
 
-msgid "FieldLabel|12.Code|Source Code"
-msgstr "Código fuente"
+msgid "FieldLabel|12.Code|Code"
+msgstr ""
 
 msgid "FieldLabel|12.SpeciesLatinName|Species Latin Name"
 msgstr ""
@@ -8795,11 +8795,11 @@ msgstr "Color"
 msgid "FieldLabel|14.ResourceAssignment|Assignment"
 msgstr "Asignación"
 
-msgid "FieldLabel|15.Label|Category Name"
-msgstr "Nombre de categoría"
+msgid "FieldLabel|15.Label|Accounting Code Name"
+msgstr ""
 
-msgid "FieldLabel|15.Code|Category Code"
-msgstr "Código de categoría"
+msgid "FieldLabel|15.Code|Accounting Code"
+msgstr ""
 
 msgid "FieldLabel|15.Comments|Comments"
 msgstr "Comentarios"
@@ -8810,11 +8810,11 @@ msgstr "Código contable"
 msgid "FieldLabel|16.FundingSource|Funding Source"
 msgstr "Fuente de financiamiento"
 
-msgid "FieldLabel|16.Label|Source Name"
-msgstr "Nombre de la fuente"
+msgid "FieldLabel|16.Label|Funding Source Name"
+msgstr ""
 
-msgid "FieldLabel|16.Code|Source Code"
-msgstr "Código fuente"
+msgid "FieldLabel|16.Code|Funding Source Code"
+msgstr ""
 
 msgid "FieldLabel|16.Comments|Comments"
 msgstr "Comentarios"
@@ -31770,6 +31770,21 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "FieldLabel|12.Code|Source Code"
+#~ msgstr "Código fuente"
+
+#~ msgid "FieldLabel|15.Label|Category Name"
+#~ msgstr "Nombre de categoría"
+
+#~ msgid "FieldLabel|15.Code|Category Code"
+#~ msgstr "Código de categoría"
+
+#~ msgid "FieldLabel|16.Label|Source Name"
+#~ msgstr "Nombre de la fuente"
+
+#~ msgid "FieldLabel|16.Code|Source Code"
+#~ msgstr "Código fuente"
 
 #~ msgid ""
 #~ "html|/resources/help/Credits.html|  <!DOCTYPE HTML PUBLIC \"-//W3C//DTD "
