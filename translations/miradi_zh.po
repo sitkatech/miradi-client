@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-04 08:13-0500\n"
+"POT-Creation-Date: 2010-08-04 08:25-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2656,7 +2656,7 @@ msgstr "暗红色"
 msgid "Dark Yellow"
 msgstr "暗黄色"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:118
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:117
 msgid "Data Location"
 msgstr "数据位置"
 
@@ -2858,7 +2858,7 @@ msgstr "开发用于记录、储存、处理及备份项目数据的系统 \t\t"
 msgid "Develop target viability"
 msgstr "发展对象生存力 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:108
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:107
 msgid "Diagram"
 msgstr "图表"
 
@@ -2988,7 +2988,7 @@ msgstr "编辑器 \t\t"
 msgid "Effective"
 msgstr "有效 "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:145
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:144
 msgid "Enable Spell Checking"
 msgstr ""
 
@@ -3317,11 +3317,11 @@ msgstr ""
 msgid "Font"
 msgstr "字体 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:138
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:137
 msgid "Font Family"
 msgstr "字体集 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:135
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:134
 msgid "Font Size"
 msgstr "字体大小 \t\t"
 
@@ -4611,10 +4611,12 @@ msgid ""
 "for some quarters."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:154
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:152
 msgid ""
-"NOTE: Spell Checking is only available for projects identified as using "
-"English in Summary View"
+"NOTE: Spell checking is currently only available in English. <br>If the "
+"'Primary Project Data Language' in the Project tab of the Summary view "
+"<br>is set to use a language other than English, spell check will not be "
+"available. <br>"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:41
@@ -4886,7 +4888,7 @@ msgid "Plan project lifespan and exit strategy"
 msgstr "计划项目的寿命及退出策略 \t\t"
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:61
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:112
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:111
 msgid "Planning"
 msgstr "计划 \t\t"
 
@@ -5101,7 +5103,7 @@ msgid "Project Scope"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/ProjectSettingsPanel.java:46
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:115
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:114
 msgid "Project Settings"
 msgstr ""
 
@@ -5814,7 +5816,7 @@ msgstr ""
 msgid "Summary Threat Rating"
 msgstr "威胁因子分级摘要 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:107
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:106
 msgid "Systemwide"
 msgstr "系统范围"
 
@@ -6583,7 +6585,7 @@ msgstr ""
 msgid "TabDelimitedFile"
 msgstr "制表符分隔文件"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:143
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:142
 msgid "Table Row Height Mode"
 msgstr "表格行高模式"
 
@@ -6946,7 +6948,7 @@ msgstr ""
 msgid "Threat Rating Preferences Panel"
 msgstr "威胁因子分级优先选择面板 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:111
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:110
 msgid "Threat Ratings"
 msgstr "威胁因子评级"
 
