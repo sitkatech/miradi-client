@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-04 08:03-0500\n"
+"POT-Creation-Date: 2010-08-04 08:13-0500\n"
 "PO-Revision-Date: 2010-05-12 13:30-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1130,11 +1130,11 @@ msgid "Action|Manage|Create Audience"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCreateCategoryOne.java:36
-msgid "Action|Manage|Create Category One"
+msgid "Action|Manage|Create Category #1 Item"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCreateCategoryTwo.java:36
-msgid "Action|Manage|Create Category Two"
+msgid "Action|Manage|Create Category #2 Item"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCreateChildTask.java:40
@@ -1229,11 +1229,11 @@ msgid "Action|Manage|Delete Activity"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeleteCategoryOne.java:36
-msgid "Action|Manage|Delete Category One"
+msgid "Action|Manage|Delete Category #1 Item"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeleteCategoryTwo.java:36
-msgid "Action|Manage|Delete Category Two"
+msgid "Action|Manage|Delete Category #2 Item"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeleteFundingSource.java:35
@@ -2221,6 +2221,14 @@ msgstr ""
 msgid "Cannot save a project back to its existing name"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/workplan/BudgetCategoryOneManagementConfiguration.java:58
+msgid "Category #1"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/workplan/BudgetCategoryTwoManagementConfiguration.java:49
+msgid "Category #2"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/ProtectedAreaCategoryQuestion.java:37
 msgid "Category II: National park"
 msgstr ""
@@ -2242,13 +2250,11 @@ msgid "Category Ib: Wilderness area"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryOneDoer.java:34
-#: Miradi/source/org/miradi/views/workplan/BudgetCategoryOneManagementConfiguration.java:58
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:58
 msgid "Category One"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryTwoDoer.java:34
-#: Miradi/source/org/miradi/views/workplan/BudgetCategoryTwoManagementConfiguration.java:49
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:61
 msgid "Category Two"
 msgstr ""
@@ -5771,14 +5777,6 @@ msgstr ""
 msgid "TT|Create a Bend Point"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreateCategoryOne.java:42
-msgid "TT|Create a Category One"
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/ActionCreateCategoryTwo.java:42
-msgid "TT|Create a Category Two"
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionCreateSameLevelTask.java:42
 msgid "TT|Create a Create Task at Same Level"
 msgstr ""
@@ -5867,6 +5865,14 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCreatePlanningViewEmptyConfiguration.java:40
 msgid "TT|Create a new blank Custom Planning View"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionCreateCategoryOne.java:42
+msgid "TT|Create a new item of type Budget Category #1"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionCreateCategoryTwo.java:42
+msgid "TT|Create a new item of type Budget Category #2"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionPlanningCreationMenu.java:39
@@ -6016,11 +6022,11 @@ msgid "TT|Delete the selected Activity"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeleteCategoryOne.java:42
-msgid "TT|Delete the selected Category One"
+msgid "TT|Delete the selected Budget Category #1 item"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeleteCategoryTwo.java:42
-msgid "TT|Delete the selected Category Two"
+msgid "TT|Delete the selected Budget Category #2 item"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:40
@@ -9074,25 +9080,25 @@ msgstr ""
 msgid "FieldLabel|55.Summary|Audience Summary"
 msgstr ""
 
-msgid "FieldLabel|56.CategoryOne|Budget Category One"
+msgid "FieldLabel|56.CategoryOne|Budget Category #1"
 msgstr ""
 
-msgid "FieldLabel|56.Label|Category One Name"
+msgid "FieldLabel|56.Label|Name"
 msgstr ""
 
-msgid "FieldLabel|56.Code|Source Code"
+msgid "FieldLabel|56.Code|ID"
 msgstr ""
 
 msgid "FieldLabel|56.Comments|Comments"
 msgstr ""
 
-msgid "FieldLabel|57.CategoryTwo|Budget Category Two"
+msgid "FieldLabel|57.CategoryTwo|Budget Category #2"
 msgstr ""
 
-msgid "FieldLabel|57.Label|Category Two Name"
+msgid "FieldLabel|57.Label|Name"
 msgstr ""
 
-msgid "FieldLabel|57.Code|Source Code"
+msgid "FieldLabel|57.Code|ID"
 msgstr ""
 
 msgid "FieldLabel|57.Comments|Comments"
