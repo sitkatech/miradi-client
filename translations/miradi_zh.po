@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-04 08:38-0500\n"
+"POT-Creation-Date: 2010-08-04 09:02-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2453,6 +2453,10 @@ msgid ""
 "cycle"
 msgstr "在项目周期内适时地实施评估和/或审计 \t\t"
 
+#: Miradi/source/org/miradi/views/workplan/doers/EditAnalysisRowsDoer.java:44
+msgid "Configure Work Plan Analysis"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/base/ConfirmDialog.java:36
 msgid "Confirmation"
 msgstr ""
@@ -2966,10 +2970,6 @@ msgstr "编辑所有策略 \t\t"
 #: Miradi/source/org/miradi/actions/jump/ActionJumpMonitoringWizardEditIndicatorsStep.java:35
 msgid "Edit Indicators"
 msgstr "编辑指示物 \t\t"
-
-#: Miradi/source/org/miradi/views/workplan/doers/EditAnalysisRowsDoer.java:43
-msgid "Edit Level Types"
-msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/EditMethodsDoer.java:31
 msgid "Edit Methods"
@@ -5431,10 +5431,6 @@ msgstr "选择适当的方法 \t\t"
 msgid "Select conservation targets"
 msgstr "选择保护对象 \t\t"
 
-#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:41
-msgid "Select how to group the data for analysis."
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/jump/ActionJumpSummaryWizardDefineTeamMembers.java:35
 msgid "Select initial team members"
 msgstr "选择初始团队成员 \t\t"
@@ -5628,6 +5624,12 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:48
 msgid "Specific Year(s)"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:41
+msgid ""
+"Specify values in the drop downs to group work and expense assignments for "
+"analysis."
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ResourceRoleQuestion.java:56
