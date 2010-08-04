@@ -44,7 +44,6 @@ import org.miradi.dialogs.fieldComponents.PanelComboBox;
 import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.threatrating.ThreatRatingPreferencesPanel;
-import org.miradi.layout.OneRowPanel;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -147,12 +146,13 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		enableSpellCheckingCheckBox.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		enableSpellCheckingCheckBox.setSelected(getMainWindow().getBooleanPreference(AppPreferences.TAG_IS_SPELL_CHECK_ENABLED));
 		enableSpellCheckingCheckBox.addActionListener(this);
-		OneRowPanel panel = new OneRowPanel();
-		panel.setBackground(getBackground());
-		panel.setForeground(getForeground());
-		panel.add(enableSpellCheckingCheckBox);
-		panel.add(new PanelTitleLabel("<html><i>" + EAM.text("NOTE: Spell Checking is only available for projects identified as using English in Summary View")));
-		htmlTab.add(panel);
+		htmlTab.add(enableSpellCheckingCheckBox);
+
+		htmlTab.add(new JLabel(" "));
+		htmlTab.add(new PanelTitleLabel("<html><i>" + EAM.text("" +
+				"NOTE: Spell checking is currently only available in English. <br>" +
+				"If the 'Primary Project Data Language' in the Project tab of the Summary view <br>" +
+				"is set to use a language other than English, spell check will not be available. <br>")));
 
 		return htmlTab;
 	}
