@@ -27,7 +27,7 @@ import org.miradi.actions.ActionEditAnalysisRows;
 import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.dialogs.AnalysisRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
-import org.miradi.icons.PlanningIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
@@ -69,7 +69,7 @@ public class AnalysisManagementConfiguration extends AbstractManagementConfigura
 	@Override
 	public Icon getIcon()
 	{
-		return new PlanningIcon();
+		return IconManager.getAnalysisIcon();
 	}
 	
 	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "RollupReportsTreeTableModel";

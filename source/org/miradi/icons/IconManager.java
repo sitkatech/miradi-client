@@ -93,6 +93,9 @@ public class IconManager
 		addResourceImageIcon(COLLAPSE_ICON_FILE_NAME);
 		addResourceImageIcon(EXPAND_ICON_FILE_NAME);
 		addResourceImageIcon(SPELLCHECK_ICON_FILE_NAME);
+		addResourceImageIcon(ANALYSIS_ICON_FILE_NAME);
+		addResourceImageIcon(COLLAPSE_ALL_ICON_FILE_NAME);
+		addResourceImageIcon(EXPAND_ALL_ICON_FILE_NAME);
 	}
 	
 	private static void addIcon(Icon icon)
@@ -413,6 +416,21 @@ public class IconManager
 		return getIcon(SPELLCHECK_ICON_FILE_NAME);
 	}
 	
+	public static Icon getAnalysisIcon()
+	{
+		return getIcon(ANALYSIS_ICON_FILE_NAME);
+	}
+	
+	public static Icon getCollapseAllIcon()
+	{
+		return getIcon(COLLAPSE_ALL_ICON_FILE_NAME);
+	}
+
+	public static Icon getExpandAllIcon()
+	{
+		return getIcon(EXPAND_ALL_ICON_FILE_NAME);
+	}
+
 	public static Icon getResourceIcon()
 	{
 		return getIcon(ProjectResourceIcon.class);
@@ -457,4 +475,7 @@ public class IconManager
 	private static final String EXPAND_ICON_FILE_NAME = "icons/expand.png";
 	private static final String COLLAPSE_ICON_FILE_NAME = "icons/collapse.png";
 	private static final String SPELLCHECK_ICON_FILE_NAME = "icons/spellcheck.png";
+	private static final String ANALYSIS_ICON_FILE_NAME = "icons/analysis.png";
+	private static final String COLLAPSE_ALL_ICON_FILE_NAME = "icons/collapseAll.png";
+	private static final String EXPAND_ALL_ICON_FILE_NAME = "icons/expandAll.png";
 }

@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions;
 
+import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -26,7 +27,7 @@ public class ActionCollapseAllRows extends ObjectsAction
 {
 	public ActionCollapseAllRows(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
+		super(mainWindow, getLabel(), IconManager.getCollapseAllIcon());
 	}
 
 	private static String getLabel()
