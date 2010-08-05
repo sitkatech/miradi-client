@@ -20,28 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.icons;
 
-import java.awt.Color;
+import org.miradi.utils.MiradiResourceImageIcon;
 
-import org.miradi.diagram.renderers.FactorRenderer;
-import org.miradi.diagram.renderers.RectangleRenderer;
-
-public class BudgetCategoryTwoIcon extends AbstractShapeIcon
+public class BudgetCategoryTwoIcon extends MiradiResourceImageIcon
 {
-	@Override
-	FactorRenderer getRenderer() 
+	public BudgetCategoryTwoIcon()
 	{
-		return new RectangleRenderer();
-	}
-
-	@Override
-	Color getIconColor() 
-	{
-		return Color.YELLOW;
-	}
-	
-	@Override
-	public int getIconHeight()
-	{
-		return 10;
+		super("icons/budgetCategoryTwo.png");
 	}
 }
