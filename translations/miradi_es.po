@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-05 11:05-0500\n"
+"POT-Creation-Date: 2010-08-05 16:25-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -966,7 +966,7 @@ msgstr "Cerrar proyecto"
 msgid "Action|Close the Loop"
 msgstr "Cerrar el bucle"
 
-#: Miradi/source/org/miradi/actions/ActionCollapseAllRows.java:34
+#: Miradi/source/org/miradi/actions/ActionCollapseAllRows.java:35
 msgid "Action|Collapse All Rows"
 msgstr "Contraer todas las filas"
 
@@ -1138,7 +1138,7 @@ msgstr "Ejemplos"
 msgid "Action|Exit"
 msgstr "Salir"
 
-#: Miradi/source/org/miradi/actions/ActionExpandAllRows.java:34
+#: Miradi/source/org/miradi/actions/ActionExpandAllRows.java:35
 msgid "Action|Expand All Rows"
 msgstr "Expandir todas las filas"
 
@@ -6157,7 +6157,7 @@ msgid ""
 msgstr ""
 "Seleccionar las estrategias y actividades relevantes para este objetivo. "
 
-#: Miradi/source/org/miradi/actions/ActionCollapseAllRows.java:39
+#: Miradi/source/org/miradi/actions/ActionCollapseAllRows.java:40
 msgid "TT|Collapse All Tree Rows"
 msgstr "Contraer todas las filas del árbol"
 
@@ -6487,7 +6487,7 @@ msgstr "Editar la lista de recursos estimados"
 msgid "TT|Edit the methods for this indicator"
 msgstr "Editar los métodos para este indicador"
 
-#: Miradi/source/org/miradi/actions/ActionExpandAllRows.java:39
+#: Miradi/source/org/miradi/actions/ActionExpandAllRows.java:40
 msgid "TT|Expand All Tree Rows"
 msgstr "Expandir todas las filas del árbol"
 
