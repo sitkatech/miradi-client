@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions;
 
-import org.miradi.icons.ExpandAllIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -27,7 +26,7 @@ public class ActionExpandAllRows extends ObjectsAction
 {
 	public ActionExpandAllRows(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), new ExpandAllIcon());
+		super(mainWindow, getLabel());
 	}
 
 	private static String getLabel()
