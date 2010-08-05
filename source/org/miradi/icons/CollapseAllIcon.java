@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2010, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -17,26 +17,15 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.actions;
 
-import org.miradi.icons.ExpandAllIcon;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+package org.miradi.icons;
 
-public class ActionExpandAllRows extends ObjectsAction
+import org.miradi.utils.MiradiResourceImageIcon;
+
+public class CollapseAllIcon extends MiradiResourceImageIcon
 {
-	public ActionExpandAllRows(MainWindow mainWindow)
+	public CollapseAllIcon()
 	{
-		super(mainWindow, getLabel(), new ExpandAllIcon());
-	}
-
-	private static String getLabel()
-	{
-		return EAM.text("Action|Expand All Rows");
-	}
-	
-	public String getToolTipText()
-	{
-		return EAM.text("TT|Expand All Tree Rows");
+		super("icons/collapseAll.png");
 	}
 }
