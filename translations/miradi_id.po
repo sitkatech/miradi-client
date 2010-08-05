@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-05 16:37-0500\n"
+"POT-Creation-Date: 2010-08-05 16:43-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -963,7 +963,7 @@ msgstr "Tutup Proyek "
 msgid "Action|Close the Loop"
 msgstr "Tutup Simpal "
 
-#: Miradi/source/org/miradi/actions/ActionCollapseAllRows.java:34
+#: Miradi/source/org/miradi/actions/ActionCollapseAllRows.java:35
 msgid "Action|Collapse All Rows"
 msgstr "Lipat Semua Baris "
 
@@ -1134,7 +1134,7 @@ msgstr "Contoh "
 msgid "Action|Exit"
 msgstr "Keluar "
 
-#: Miradi/source/org/miradi/actions/ActionExpandAllRows.java:34
+#: Miradi/source/org/miradi/actions/ActionExpandAllRows.java:35
 msgid "Action|Expand All Rows"
 msgstr "Perluas Semua Baris "
 
@@ -6119,7 +6119,7 @@ msgid ""
 "TT|Choose which strategies and activities are relevant to this objective."
 msgstr "Pilih strategi dan aktivitas mana yang relevan dengan tujuan ini"
 
-#: Miradi/source/org/miradi/actions/ActionCollapseAllRows.java:39
+#: Miradi/source/org/miradi/actions/ActionCollapseAllRows.java:40
 msgid "TT|Collapse All Tree Rows"
 msgstr "Lipat Semua Baris Pohon "
 
@@ -6448,7 +6448,7 @@ msgstr "Edit daftar perkiraan sumber daya. "
 msgid "TT|Edit the methods for this indicator"
 msgstr "Edit metode untuk indikator ini "
 
-#: Miradi/source/org/miradi/actions/ActionExpandAllRows.java:39
+#: Miradi/source/org/miradi/actions/ActionExpandAllRows.java:40
 msgid "TT|Expand All Tree Rows"
 msgstr "Perluas Semua Baris Pohon "
 
