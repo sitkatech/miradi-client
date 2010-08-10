@@ -148,7 +148,7 @@ public class Miradi
 
 	public static HashSet<ChoiceItem> getAvailableLanguageChoices() throws Exception
 	{
-		HashSet<ChoiceItem> results = new HashSet();
+		HashSet<ChoiceItem> results = new HashSet<ChoiceItem>();
 		results.addAll(getAvailableLanguageChoices(EAM.getHomeDirectory()));
 		results.addAll(getAvailableLanguageChoices(getAppCodeDirectory()));
 		return results;
@@ -170,7 +170,7 @@ public class Miradi
 		EAM.logDebug("Looking for content jars in: " + directory.getAbsolutePath());
 		
 		ChoiceQuestion languages = new LanguageQuestion();
-		Vector<ChoiceItem> results = new Vector();
+		Vector<ChoiceItem> results = new Vector<ChoiceItem>();
 		String[] jarNames = directory.list(new LanguageJarFilter());
 		if(jarNames == null)
 			return results;
