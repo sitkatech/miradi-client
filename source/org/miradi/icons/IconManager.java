@@ -48,7 +48,7 @@ public class IconManager
 {
 	public static void initialize()
 	{
-		iconMap = new HashMap();
+		iconMap = new HashMap<String, Icon>();
 		
 		addIcon(new WarningIcon());
 		addIcon(new CancelIcon());

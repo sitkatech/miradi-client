@@ -126,7 +126,7 @@ public class Actions
 {
 	public Actions(MainWindow mainWindow)
 	{
-		actions = new HashMap();
+		actions = new HashMap<Class, EAMAction>();
 		
 		registerAction(new ActionAbout(mainWindow));
 		registerAction(new ActionAboutBenetech(mainWindow));

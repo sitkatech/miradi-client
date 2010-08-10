@@ -41,7 +41,7 @@ public class RefListListData extends AbstractStringListData
 
 	public Vector<ORefList> convertToRefListVector() throws Exception
 	{
-		Vector<ORefList> refListList = new Vector();
+		Vector<ORefList> refListList = new Vector<ORefList>();
 		for (int index = 0; index < size(); ++index)
 		{
 			ORefList refList = new ORefList(get(index));

@@ -39,7 +39,7 @@ public class ClassPathHacker
 		final Object[] urlAsObjectArray = new Object[] { urlToAdd };
 
 		final URLClassLoader systemClassLoader = (URLClassLoader) ClassLoader.getSystemClassLoader();
-		final Class systemClassLoaderClass = URLClassLoader.class;
+		final Class<URLClassLoader> systemClassLoaderClass = URLClassLoader.class;
 
 		final Class[] parameters = new Class[] { URL.class };
 		final Method method = systemClassLoaderClass.getDeclaredMethod("addURL", parameters);

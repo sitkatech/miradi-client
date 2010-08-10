@@ -64,7 +64,7 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 
 	private Vector<AbstractPlanningTreeNode> buildTaskNodes(ORefList subtaskRefs) throws Exception
 	{
-		Vector<AbstractPlanningTreeNode> subTaskNodes = new Vector();
+		Vector<AbstractPlanningTreeNode> subTaskNodes = new Vector<AbstractPlanningTreeNode>();
 		for(int i = 0; i < subtaskRefs.size(); ++i)
 		{
 			ORef taskRef = subtaskRefs.get(i);

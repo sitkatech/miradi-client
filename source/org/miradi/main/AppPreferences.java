@@ -426,9 +426,9 @@ public class AppPreferences
 		isSpellCheckEnabled = json.optBoolean(TAG_IS_SPELL_CHECK_ENABLED);
 	}
 
-	private HashMap loadTagStringMap(EnhancedJsonObject json)
+	private HashMap<String, String> loadTagStringMap(EnhancedJsonObject json)
 	{
-		HashMap map = new HashMap<String, String>();
+		HashMap<String, String> map = new HashMap<String, String>();
 		EnhancedJsonObject taggedStringJson = json.optJson(TAG_TAGGED_STRINGS);
 		Iterator iter = taggedStringJson.keys();
 		while(iter.hasNext())
@@ -441,9 +441,9 @@ public class AppPreferences
 	}
 	
 	
-	private HashMap loadTagIntegerMap(EnhancedJsonObject json)
+	private HashMap<String, Integer> loadTagIntegerMap(EnhancedJsonObject json)
 	{
-		HashMap map = new HashMap<String, Integer>();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		EnhancedJsonObject taggedIntJson = json.optJson(TAG_TAGGED_INTS);
 		Iterator iter = taggedIntJson.keys();
 		while(iter.hasNext())

@@ -74,10 +74,10 @@ public class SampleInstaller
 	private Vector<File> getInstallableSampleProjects(File[] allMpzFiles) throws Exception
 	{
 		if (installedSampleProjectCodes.contains(getVersionString()))
-			return new Vector();
+			return new Vector<File>();
 		
 		installedSampleProjectCodes.add(getVersionString());
-		Vector<File> installableSampleProjects = new Vector(); 
+		Vector<File> installableSampleProjects = new Vector<File>(); 
 		File homeDir = EAM.getHomeDirectory();
 		for (int index = 0; index < allMpzFiles.length; ++index)
 		{
