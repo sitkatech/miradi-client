@@ -90,7 +90,7 @@ abstract public class DiagramPaster
 		threatStressRatings = transferableListToUse.getThreatStressRatingDeepCopies();
 		factorLinkDeepCopies = transferableList.getFactorLinkDeepCopies();
 		diagramLinkDeepCopies = transferableList.getDiagramLinkDeepCopies();
-		pastedCellsToSelect = new Vector();
+		pastedCellsToSelect = new Vector<EAMGraphCell>();
 	}
 	
 	protected Vector<String> getFactorDeepCopies()
@@ -109,7 +109,7 @@ abstract public class DiagramPaster
 		if (diagramPanel == null)
 			return;
 
-		EAMGraphCell[] cellsToSelect = (EAMGraphCell[]) pastedCellsToSelect.toArray(new EAMGraphCell[0]);  
+		EAMGraphCell[] cellsToSelect = pastedCellsToSelect.toArray(new EAMGraphCell[0]);  
 		diagramPanel.selectCells(cellsToSelect);
 	}
 
@@ -126,7 +126,7 @@ abstract public class DiagramPaster
 	
 	public Command[] createCommandToFixupRefLists(HashMap pastedObjectMap, BaseObject newObject) throws Exception
 	{
-		Vector commands = new Vector();
+		Vector<Command> commands = new Vector<Command>();
 		String[] fieldTags = newObject.getFieldTags();
 		for (int i = 0; i < fieldTags.length; ++i)
 		{
@@ -136,7 +136,7 @@ abstract public class DiagramPaster
 			commands.addAll(Arrays.asList(getCommandToFixUpIdRefs(pastedObjectMap,newObject, tag)));
 		}
 		
-		return (Command[]) commands.toArray(new Command[0]);
+		return commands.toArray(new Command[0]);
 	}
 	
 	private Command[] getCommandsToFixUpIdListRefs(HashMap pastedObjectMap, BaseObject newObject, String tag) throws Exception
@@ -1001,7 +1001,7 @@ abstract public class DiagramPaster
 	protected HashMap<ORef, ORef> oldToNewPastedObjectMap;	
 	protected PointManipulater dataHelper;
 	protected TransferableMiradiList transferableList;
-	private Vector pastedCellsToSelect;
+	private Vector<EAMGraphCell> pastedCellsToSelect;
 	
 	public static final String FAKE_TAG_TYPE = "Type";
 	public static final String FAKE_TAG_TAG_NAMES = "TagNames";

@@ -42,19 +42,19 @@ public class GroupOfDiagrams
 
 	private static DiagramFactor[] findAllDiagramFactorsInDiagramObjects(Project project, ORefList diagramObjectRefs)
 	{
-		Vector diagramFactors = new Vector();
+		Vector<DiagramFactor> diagramFactors = new Vector<DiagramFactor>();
 		for (int i = 0; i < diagramObjectRefs.size(); ++i)
 		{
 			DiagramObject diagramObject = (DiagramObject) project.findObject(diagramObjectRefs.get(i));
 			diagramFactors.addAll(getAllDiagramFactors(project, diagramObject));
 		}
 		
-		return (DiagramFactor[]) diagramFactors.toArray(new DiagramFactor[0]);
+		return diagramFactors.toArray(new DiagramFactor[0]);
 	}
 
-	public static Vector getAllDiagramFactors(Project project, DiagramObject diagramObject)
+	public static Vector<DiagramFactor> getAllDiagramFactors(Project project, DiagramObject diagramObject)
 	{
-		Vector diagramFactors = new Vector();
+		Vector<DiagramFactor> diagramFactors = new Vector<DiagramFactor>();
 		ORefList diagramFactorRefs = diagramObject.getAllDiagramFactorRefs();
 		for (int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
