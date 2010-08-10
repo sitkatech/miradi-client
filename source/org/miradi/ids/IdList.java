@@ -73,9 +73,9 @@ public class IdList
 		
 	}
 	
-	public IdList(int objectTypeToStore, List dataToUse)
+	public IdList(int objectTypeToStore, List<BaseId> dataToUse)
 	{
-		data = new Vector(dataToUse);
+		data = new Vector<BaseId>(dataToUse);
 		idListType = objectTypeToStore;
 	}
 	
@@ -135,7 +135,7 @@ public class IdList
 	
 	public BaseId get(int index)
 	{
-		return (BaseId)data.get(index);
+		return data.get(index);
 	}
 	
 	public boolean contains(ORef ref)
@@ -235,6 +235,6 @@ public class IdList
 
 	private static final String TAG_IDS = "Ids";
 
-	private Vector data;
+	private Vector<BaseId> data;
 	private int idListType;
 }
