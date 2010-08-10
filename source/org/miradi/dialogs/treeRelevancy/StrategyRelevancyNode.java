@@ -73,7 +73,7 @@ public class StrategyRelevancyNode extends AbstractRelevancyNode
 	@Override
 	public void rebuild() throws Exception
 	{
-		activityChildren = new Vector();
+		activityChildren = new Vector<ActivityRelevancyNode>();
 		ORefList activityRefs = strategy.getActivityRefs();
 		for (int index = 0; index < activityRefs.size(); ++index)
 		{

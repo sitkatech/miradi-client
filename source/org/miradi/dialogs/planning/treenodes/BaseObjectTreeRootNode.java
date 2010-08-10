@@ -47,7 +47,7 @@ public class BaseObjectTreeRootNode extends AbstractPlanningTreeNode
 	@Override
 	public void rebuild() throws Exception
 	{
-		children = new Vector();
+		children = new Vector<AbstractPlanningTreeNode>();
 		ORefList refs = getProject().getPool(getChildObjectType()).getRefList();
 		for (int index = 0; index < refs.size(); ++index)
 		{

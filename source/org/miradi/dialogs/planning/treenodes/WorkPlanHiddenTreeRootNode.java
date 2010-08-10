@@ -57,7 +57,7 @@ public class WorkPlanHiddenTreeRootNode extends AbstractPlanningTreeNode
 	@Override
 	public void rebuild() throws Exception
 	{
-		children = new Vector();
+		children = new Vector<AbstractPlanningTreeNode>();
 		children.add(new WorkPlanProjectNode(getProject(), getVisibleRows()));
 	}
 }

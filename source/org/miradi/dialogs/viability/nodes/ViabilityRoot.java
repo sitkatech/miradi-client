@@ -91,7 +91,7 @@ public class ViabilityRoot extends TreeTableNode
 	@Override
 	public void rebuild() throws Exception
 	{
-		Vector vector = new Vector();
+		Vector<ViabilityProjectNode> vector = new Vector<ViabilityProjectNode>();
 		vector.add(new ViabilityProjectNode(project));
 		children = vector;
 	}

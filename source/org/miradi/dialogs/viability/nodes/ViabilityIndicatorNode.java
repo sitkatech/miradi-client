@@ -143,7 +143,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 	public void rebuild() throws Exception
 	{
 		ORefList measurementRefs = indicator.getMeasurementRefs();
-		Vector measurementAndFutureStatusObjects = new Vector();
+		Vector<TreeTableNode> measurementAndFutureStatusObjects = new Vector<TreeTableNode>();
 		for (int i = 0; i < measurementRefs.size(); ++i)
 		{
 			Measurement measurement = (Measurement) project.findObject(measurementRefs.get(i));
@@ -152,7 +152,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 
 		Collections.sort(measurementAndFutureStatusObjects, new MeasurementNodeDateComparator());		
 		measurementAndFutureStatusObjects.add(new ViabilityFutureStatusNode(this));
-		measurements = (TreeTableNode[]) measurementAndFutureStatusObjects.toArray(new TreeTableNode[0]);
+		measurements = measurementAndFutureStatusObjects.toArray(new TreeTableNode[0]);
 	}
 	
 	public static class MeasurementNodeDateComparator implements Comparator<TreeTableNode>

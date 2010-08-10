@@ -100,14 +100,14 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 	public void rebuild() throws Exception
 	{
 		int childCount = kea.getIndicatorIds().size();
-		Vector indicatorVector = new Vector();
+		Vector<ViabilityIndicatorNode> indicatorVector = new Vector<ViabilityIndicatorNode>();
 		for(int i = 0; i < childCount; ++i)
 		{
 			BaseId indicatorId = kea.getIndicatorIds().get(i);
 			Indicator indicator = project.getIndicatorPool().find(indicatorId);
 			indicatorVector.add(new ViabilityIndicatorNode(project, this, indicator));
 		}
-		indicators = (ViabilityIndicatorNode[])indicatorVector.toArray(new ViabilityIndicatorNode[0]);
+		indicators = indicatorVector.toArray(new ViabilityIndicatorNode[0]);
 	}
 	
 	public static final String[] COLUMN_TAGS = {
