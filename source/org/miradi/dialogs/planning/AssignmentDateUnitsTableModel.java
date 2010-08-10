@@ -445,7 +445,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	private Vector<Assignment> refsToAssignments(ORefList assignmentRefs)
 	{
-		Vector<Assignment> assignments = new Vector();
+		Vector<Assignment> assignments = new Vector<Assignment>();
 		for (int index = 0; index < assignmentRefs.size(); ++index)
 		{
 			Assignment assignment = Assignment.findAssignment(getProject(), assignmentRefs.get(index));
@@ -457,7 +457,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	private Vector<Assignment> convertToVector(Assignment assignment)
 	{
-		Vector<Assignment> singleList = new Vector();
+		Vector<Assignment> singleList = new Vector<Assignment>();
 		singleList.add(assignment);
 		return singleList;
 	}
@@ -516,7 +516,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	public Vector<DateUnit> getCopyOfDateUnits()
 	{
-		return new Vector(getDateUnits());
+		return new Vector<DateUnit>(getDateUnits());
 	}
 	
 	public boolean isDateUnitColumnExpanded(int column)
@@ -641,7 +641,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	private void setDeepestExpandedColumn(DateUnit dateUnit) throws Exception
 	{
-		Vector<DateUnit> visibleDateUnits = new Vector();
+		Vector<DateUnit> visibleDateUnits = new Vector<DateUnit>();
 		if (dateUnit != null)
 		{
 			visibleDateUnits.addAll(getSubDateUnits(dateUnit));
