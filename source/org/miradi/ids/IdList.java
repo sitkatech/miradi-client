@@ -34,7 +34,7 @@ public class IdList
 {
 	public IdList(int type)
 	{
-		this(type, new Vector());
+		this(type, new Vector<BaseId>());
 	}
 	
 	public IdList(BaseObject baseObjectToAdd)
@@ -46,7 +46,7 @@ public class IdList
 	
 	public IdList(IdList copyFrom)
 	{
-		this(copyFrom.idListType, new Vector(copyFrom.data));
+		this(copyFrom.idListType, new Vector<BaseId>(copyFrom.data));
 	}
 	
 	public IdList(int objectTypeToStore, BaseId[] ids)
