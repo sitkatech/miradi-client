@@ -30,7 +30,7 @@ public class PointList
 {
 	public PointList()
 	{
-		this(new Vector());
+		this(new Vector<Point>());
 	}
 	
 	public PointList(PointList copyFrom)
