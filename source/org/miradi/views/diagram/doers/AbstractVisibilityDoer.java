@@ -86,7 +86,7 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 	private Vector<Command> hideDiagramFactors(ORefList diagramFactorRefs) throws Exception
 	{
 		DiagramObject diagramObject = getDiagramObject();
-		Vector<Command> commandsToHide = new Vector();
+		Vector<Command> commandsToHide = new Vector<Command>();
 		for (int refIndex = 0; refIndex < diagramFactorRefs.size(); ++refIndex)
 		{
 			ORef diagramFactorRef = diagramFactorRefs.get(refIndex);
@@ -103,7 +103,7 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 
 	public static Vector<Command> createCommandsToHideDiagramFactorForNonSelectedFactors(DiagramObject diagramObject, DiagramFactor diagramFactorToDelete) throws Exception
 	{
-		Vector<Command> commandsToHide = new Vector();
+		Vector<Command> commandsToHide = new Vector<Command>();
 		FactorDeleteHelper helper = FactorDeleteHelper.createFactorDeleteHelperForNonSelectedFactors(diagramObject);
 		commandsToHide.add(helper.buildCommandToRemoveNodeFromDiagram(diagramObject, diagramFactorToDelete.getDiagramFactorId()));
 		commandsToHide.addAll(helper.buildCommandsToDeleteDiagramFactor(diagramFactorToDelete));
@@ -170,7 +170,7 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		ORefList diagramFactorRefsFromCurrentDiagram = getDiagramObject().getAllDiagramFactorRefs();		
 		ORefList diagramFactorRefsToBeRemoved = diagramFactorReferrerRefs.getOverlappingRefs(diagramFactorRefsFromCurrentDiagram);
 		
-		Vector commandsToHideBubble = hideDiagramFactors(diagramFactorRefsToBeRemoved);
+		Vector<Command> commandsToHideBubble = hideDiagramFactors(diagramFactorRefsToBeRemoved);
 		getProject().executeCommandsWithoutTransaction(commandsToHideBubble);
 	}
 	
