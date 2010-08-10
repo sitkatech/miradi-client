@@ -468,7 +468,7 @@ public class LinkCreator
 							   HumanWelfareTarget.getObjectType(),
 							   GroupBox.getObjectType(), };  
 		
-		HashSet linkableTypes = new HashSet();
+		HashSet<Integer> linkableTypes = new HashSet<Integer>();
 		for (int i = 0; i < linkableTypesArray.length; ++i)
 		{
 			linkableTypes.add(linkableTypesArray[i]);
@@ -592,7 +592,7 @@ public class LinkCreator
 		DiagramFactor groupBoxDiagramFactor = DiagramFactor.find(getProject(), groupBoxDiagramfactorRef);
 		ORefSet childRefs = groupBoxDiagramFactor.getGroupBoxChildrenSet();
 
-		Vector<ORefSet> linkedFactorsForEachGroupedFactor = new Vector();
+		Vector<ORefSet> linkedFactorsForEachGroupedFactor = new Vector<ORefSet>();
 		for(ORef childRef : childRefs)
 		{
 			ORefSet diagramFactorsThatLinkToThis = new ORefSet();
