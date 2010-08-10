@@ -93,7 +93,7 @@ abstract public class DiagramPaster
 		pastedCellsToSelect = new Vector();
 	}
 	
-	protected Vector getFactorDeepCopies()
+	protected Vector<String> getFactorDeepCopies()
 	{
 		return factorDeepCopies;
 	}
