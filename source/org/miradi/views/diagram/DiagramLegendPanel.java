@@ -209,7 +209,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		Object[] keys = checkBoxes.keySet().toArray();
 		for (int index = 0; index < keys.length; ++index)
 		{
-			updateCheckBox(getLayerManager(), ((JCheckBox)checkBoxes.get(keys[index])).getClientProperty(LAYER).toString());
+			updateCheckBox(getLayerManager(), checkBoxes.get(keys[index]).getClientProperty(LAYER).toString());
 		}
 	}
 	
