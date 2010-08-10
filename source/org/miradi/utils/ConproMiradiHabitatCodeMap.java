@@ -30,17 +30,17 @@ public class ConproMiradiHabitatCodeMap
 {
 	public HashMap<String, String> loadMap() throws Exception
 	{
-		HashMap habitatCodeMap = new HashMap();
+		HashMap<String, String> habitatCodeMap = new HashMap<String, String>();
 		URL fileToImport = ResourcesHandler.getEnglishResourceURL(TNC_MIRADI_HABITAT_CODE_MAP_FILE_NAME);
 		UnicodeReader reader = new UnicodeReader(fileToImport.openStream());
 		try 
 		{
-			Vector fileVector = new DelimitedFileLoader().getDelimitedContents(reader);
+			Vector<Vector<String>> fileVector = new DelimitedFileLoader().getDelimitedContents(reader);
 			for (int i = 0; i < fileVector.size(); ++i)
 			{
-				Vector vector = (Vector) fileVector.get(i);
-				Object miradiHabitatCode = vector.get(0);
-				Object conProHabitatCode = vector.get(1);
+				Vector<String> vector = fileVector.get(i);
+				String miradiHabitatCode = vector.get(0);
+				String conProHabitatCode = vector.get(1);
 				habitatCodeMap.put(miradiHabitatCode, conProHabitatCode);
 			}
 		}
