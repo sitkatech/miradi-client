@@ -291,7 +291,7 @@ public class CommandExecutor
 			EAM.logError("Command Listener list was changed during fireCommandExecuted");
 	}
 	
-	private boolean haveListenersChanged(final Command command, final Vector currentListenersList, final Vector copyForComparison)
+	private boolean haveListenersChanged(final Command command, final Vector<CommandExecutedListener> currentListenersList, final Vector<CommandExecutedListener> copyForComparison)
 	{
 		Vector<String> originalList = extractClassNames(currentListenersList);
 		Collections.sort(originalList);
