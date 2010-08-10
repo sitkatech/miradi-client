@@ -89,7 +89,7 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 	protected Vector<DiagramFactor> getSelectedGroupBoxDiagramFactors()
 	{
 		FactorCell[] selected = getSelectedCells();
-		Vector<DiagramFactor> groupBoxDiagramFactors = new Vector();
+		Vector<DiagramFactor> groupBoxDiagramFactors = new Vector<DiagramFactor>();
 		for (int i = 0; i < selected.length; ++i)
 		{
 			if (!selected[i].isFactor())
