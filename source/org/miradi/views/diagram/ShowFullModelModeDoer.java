@@ -100,7 +100,7 @@ public class ShowFullModelModeDoer extends ViewDoer
 	
 	public static Vector<Command> createCommandsToSwithToDefaultMode(ORef viewDataRef)
 	{
-		Vector<Command> commandsToSwitch = new Vector();
+		Vector<Command> commandsToSwitch = new Vector<Command>();
 		CommandSetObjectData changeToDefaultMode = new CommandSetObjectData(viewDataRef, ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT);
 		commandsToSwitch.add(changeToDefaultMode);
 		
