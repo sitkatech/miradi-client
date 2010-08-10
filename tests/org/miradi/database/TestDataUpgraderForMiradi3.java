@@ -242,7 +242,7 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 	
 	private void verifyDeleteEmptyMethods(File jsonDir, final int EXPECTED_NUMBER_OF_METHODS_DELETED) throws Exception
 	{
-		verifyDeleteEmptyMethods(jsonDir, EXPECTED_NUMBER_OF_METHODS_DELETED, new Vector(), new Vector());
+		verifyDeleteEmptyMethods(jsonDir, EXPECTED_NUMBER_OF_METHODS_DELETED, new Vector<String>(), new Vector<String>());
 	}
 	
 	private void verifyDeleteEmptyMethods(File jsonDir, final int EXPECTED_NUMBER_OF_METHODS_DELETED, Vector<String> indicatorsSharingMethod, Vector<String> sharedMethods) throws Exception
@@ -358,7 +358,7 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		
 		ObjectManifest xenodataManifestObject = new ObjectManifest(JSONFile.read(xenodataManifestFile));
 		BaseId[] xenodataIdsArray = xenodataManifestObject.getAllKeys();
-		Vector<BaseId> xenodataIds = new Vector(Arrays.asList(xenodataIdsArray));
+		Vector<BaseId> xenodataIds = new Vector<BaseId>(Arrays.asList(xenodataIdsArray));
 		if (!xenodataIds.isEmpty())
 			assertTrue("Xenodata ref in project metadata is incorrect?", xenodataIds.contains(xenodataRef.getObjectId()));
 	}
@@ -1164,7 +1164,7 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		Vector<Integer> expected30ResourceList = new Vector<Integer>();
 		expected30ResourceList.add(30);
 		
-		Vector<Integer> allResources = new Vector();
+		Vector<Integer> allResources = new Vector<Integer>();
 		allResources.addAll(expected36ResourceList);
 		allResources.addAll(expected30ResourceList);
 		
@@ -1181,7 +1181,7 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		verifyExpenseAssignment(jsonDir, indicator1Json, 5000.0, 1);
 		
 		EnhancedJsonObject indicator2Json = getObjectFileAsJson(jsonDir, INDICATOR_TYPE, indicatorRawIds[1]);
-		Vector<Integer> expectedResourceIds = new Vector();
+		Vector<Integer> expectedResourceIds = new Vector<Integer>();
 		verifyDetailsField(jsonDir, indicator2Json, "Detail", Double.toString(0.0), expectedResourceIds, "", "", "");
 		verifyResourceAssignments(jsonDir, indicator2Json, expectedResourceIds);
 		verifyExpenseAssignment(jsonDir, indicator2Json, 0.0, 0);
@@ -1193,19 +1193,19 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		verifyExpenseAssignment(jsonDir, strategy1Json, 125.0, 1);
 		
 		EnhancedJsonObject strategy2Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[1]);
-		Vector<Integer> expectedResourceIds1 = new Vector();
+		Vector<Integer> expectedResourceIds1 = new Vector<Integer>();
 		verifyDetailsField(jsonDir, strategy2Json, "Text", "", expectedResourceIds1, "", "", "");
 		verifyResourceAssignments(jsonDir, strategy2Json, expectedResourceIds1);
 		verifyExpenseAssignment(jsonDir, strategy2Json, Double.NaN, 0);
 		
 		EnhancedJsonObject strategy3Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[2]);
-		verifyDetailsField(jsonDir, strategy3Json, "Text", Double.toString(4500.0), new Vector(), "", "", "");
-		verifyResourceAssignments(jsonDir, strategy3Json, new Vector());
+		verifyDetailsField(jsonDir, strategy3Json, "Text", Double.toString(4500.0), new Vector<Integer>(), "", "", "");
+		verifyResourceAssignments(jsonDir, strategy3Json, new Vector<Integer>());
 		verifyExpenseAssignment(jsonDir, strategy3Json, 4500.0, 1);
 		
 		EnhancedJsonObject strategy4Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[3]);
-		verifyDetailsField(jsonDir, strategy4Json, "Text", "", new Vector(), "2009-05-19 - 2010-05-19", "", "");
-		verifyResourceAssignments(jsonDir, strategy4Json, new Vector());
+		verifyDetailsField(jsonDir, strategy4Json, "Text", "", new Vector<Integer>(), "2009-05-19 - 2010-05-19", "", "");
+		verifyResourceAssignments(jsonDir, strategy4Json, new Vector<Integer>());
 		verifyExpenseAssignment(jsonDir, strategy4Json, Double.NaN, 0);
 		
 		EnhancedJsonObject strategy5Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[4]);
@@ -1214,8 +1214,8 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		verifyExpenseAssignment(jsonDir, strategy5Json, Double.NaN, 0);
 		
 		EnhancedJsonObject strategy6Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[5]);
-		verifyDetailsField(jsonDir, strategy6Json, "Text", Double.toString(3300.0), new Vector(), "2009-01-01 - 2009-12-31", "", "");
-		verifyResourceAssignments(jsonDir, strategy6Json, new Vector());
+		verifyDetailsField(jsonDir, strategy6Json, "Text", Double.toString(3300.0), new Vector<Integer>(), "2009-01-01 - 2009-12-31", "", "");
+		verifyResourceAssignments(jsonDir, strategy6Json, new Vector<Integer>());
 		verifyExpenseAssignment(jsonDir, strategy6Json, 3300.0, 1);
 		
 		EnhancedJsonObject strategy7Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[6]);

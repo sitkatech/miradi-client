@@ -72,7 +72,7 @@ abstract public class AbstractMigrationTestCase extends EAMTestCase
 			throw new RuntimeException("Attempting to create and populate an existing object dir. Type:" + objectType);
 		
 		File objectsDir = DataUpgrader.createObjectsDir(jsonDir, objectType);
-		Vector<Integer> objectIds = new Vector();
+		Vector<Integer> objectIds = new Vector<Integer>();
 		
 		for (int index = 0; index < jsonStrings.length; ++index)
 		{

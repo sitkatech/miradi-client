@@ -191,7 +191,7 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 	{
 		for (int i=0; i<fieldDefs.size(); ++i)
 		{
-			write((String)fieldDefs.get(i));
+			write(fieldDefs.get(i));
 			writeLineReturn();
 		}
 		fieldDefs.clear();
@@ -224,7 +224,7 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 		return field_def_part1 + name + field_def_part2;
 	}
 	
-	Vector fieldDefs = new Vector();
+	Vector<String> fieldDefs = new Vector<String>();
 	
 	private static String field_def_part1 = "<field name=\"";
 	private static String field_def_part2 = "\" class=\"java.lang.String\" /> ";

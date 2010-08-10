@@ -46,7 +46,7 @@ public class TestDiagramChainObject extends TestCaseWithProject
 		getProject().createDiagramLinkAndAddToDiagram(threat1, threat2);
 		getProject().createDiagramLinkAndAddToDiagram(threat2, target);
 		
-		Vector<DiagramFactor> allDiagramFactors = new Vector();
+		Vector<DiagramFactor> allDiagramFactors = new Vector<DiagramFactor>();
 		allDiagramFactors.add(threat1);
 		allDiagramFactors.add(threat2);
 		allDiagramFactors.add(target);
@@ -70,7 +70,7 @@ public class TestDiagramChainObject extends TestCaseWithProject
 		
 		assertTrue("link is not bidirectional?", factorLink.isBidirectional());
 		
-		Vector<DiagramFactor> allDiagramFactors = new Vector();
+		Vector<DiagramFactor> allDiagramFactors = new Vector<DiagramFactor>();
 		allDiagramFactors.add(strategy);
 		allDiagramFactors.add(causeLinkedTo);
 		allDiagramFactors.add(causeLinkedToFrom);

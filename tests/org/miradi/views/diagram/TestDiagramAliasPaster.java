@@ -78,7 +78,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		assertTrue("goal is not orphan?", orphanGoal.findObjectsThatReferToUs().isEmpty());
 		
 		Indicator indicator = getProject().createIndicator(threat);
-		TransferableMiradiList transferable = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector());
+		TransferableMiradiList transferable = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector<DiagramLink>());
 		
 		deleteIndicatorBeforePasteAsShared(indicator);
 		assertEquals("Indicator was not deleted?", 0, getProject().getIndicatorPool().size());
@@ -115,7 +115,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		wrapThreatWithGroupBox();
 
 		// Copy/paste-shared grouped threat into other diagram
-		TransferableMiradiList transferableListBeforeCut = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector());
+		TransferableMiradiList transferableListBeforeCut = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector<DiagramLink>());
 		pasteShared(diagramModelToPasteInto, transferableListBeforeCut);
 
 		// Copy/paste-shared grouped threat into other diagram a second time
@@ -135,12 +135,12 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		wrapThreatWithGroupBox();
 
 		// Copy/paste-shared grouped threat into other diagram
-		TransferableMiradiList transferableListBeforeCut = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector());
+		TransferableMiradiList transferableListBeforeCut = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector<DiagramLink>());
 		pasteShared(diagramModelToPasteInto, transferableListBeforeCut);
 		
 		// Cut from second diagram, then paste-shared back into first diagram
 		// where the threat and group still exist
-		TransferableMiradiList transferableList = createTransferable(diagramModelToPasteInto, diagramModelToPasteInto.getAllDiagramFactors(), new Vector());
+		TransferableMiradiList transferableList = createTransferable(diagramModelToPasteInto, diagramModelToPasteInto.getAllDiagramFactors(), new Vector<DiagramLink>());
 		deleteDiagramFactors(diagramModelToPasteInto.getDiagramObject(), diagramModelToPasteInto.getAllDiagramFactors());
 		pasteShared(getDiagramModel(), transferableList);
 		
@@ -297,7 +297,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	private void verifyOneGroupContainingThreatLinkedToTarget(DiagramModel diagramModel)
 	{
 		assertEquals("Not one group?", 1, diagramModel.getAllGroupBoxCells().size());
-		DiagramFactor gdf = ((FactorCell)(diagramModel.getAllGroupBoxCells().get(0))).getDiagramFactor();
+		DiagramFactor gdf = (diagramModel.getAllGroupBoxCells().get(0)).getDiagramFactor();
 		verifyGroupContainingThreatLinkedToTarget(diagramModel, gdf);
 
 		ORef targetRef = getProject().getTargetPool().getORefList().getFirstElement();
@@ -458,7 +458,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	
 	private TransferableMiradiList createTransferable(DiagramModel diagramModelToCopyFrom, Vector<DiagramFactor> diagramFactors, Vector<DiagramLink> diagramLinks) throws Exception
 	{
-		Vector<EAMGraphCell> cellsToCopy = new Vector();
+		Vector<EAMGraphCell> cellsToCopy = new Vector<EAMGraphCell>();
 		for(DiagramLink diagramLink : diagramLinks)
 		{
 			LinkCell linkCell = diagramModelToCopyFrom.getLinkCell(diagramLink);
