@@ -77,9 +77,9 @@ public class RecordType
 		return fields.get(fieldName);
 	}
 	
-	public static boolean isLegalFieldType(String fieldType)
+	private static boolean isLegalFieldType(String fieldType)
 	{
-		return new Vector(Arrays.asList(LEGAL_FIELD_TYPES)).contains(fieldType);
+		return new Vector<String>(Arrays.asList(LEGAL_FIELD_TYPES)).contains(fieldType);
 	}
 	
 	public static final String STRING = "String";
