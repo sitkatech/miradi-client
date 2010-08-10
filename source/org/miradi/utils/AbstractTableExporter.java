@@ -60,7 +60,7 @@ public abstract class AbstractTableExporter implements TableExporter
 		CodeList desiredSequenceCodes = ColumnSequenceSaver.calculateArrangedColumnCodes(new CodeList(desiredSequenceCodesToUse), new CodeList(modelColumnCodes));
 		
 		int destination = 0;
-		HashMap<Integer, Integer> tableColumnToModelColumnMap = new HashMap();
+		HashMap<Integer, Integer> tableColumnToModelColumnMap = new HashMap<Integer, Integer>();
 		for (int tableColumn = 0; tableColumn < desiredSequenceCodes.size(); ++tableColumn)
 		{
 			String desiredCode = desiredSequenceCodes.get(tableColumn);

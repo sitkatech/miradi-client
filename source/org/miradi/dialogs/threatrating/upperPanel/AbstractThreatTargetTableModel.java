@@ -59,7 +59,7 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel 
 
 	public static Vector<Target> getOnlyTargetsInConceptualModelDiagrams(Project projectToUse)
 	{
-		Vector<Target> targetsInConceptualModelDiagrams = new Vector();
+		Vector<Target> targetsInConceptualModelDiagrams = new Vector<Target>();
 		Target[] allTargets =  projectToUse.getTargetPool().getSortedTargets();
 		for (int index = 0; index < allTargets.length; ++index)
 		{
@@ -97,7 +97,7 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel 
 
 	public Factor[] getThreatsSortedBy(int sortByTableColumn, String sortDirectionCode)
 	{	
-		Vector<Integer> rows = new Vector();
+		Vector<Integer> rows = new Vector<Integer>();
 		for(int index = 0; index < getRowCount(); ++index)
 		{
 			rows.add(new Integer(index));
@@ -107,7 +107,7 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel 
 		if (sortDirectionCode.equals(SortDirectionQuestion.REVERSED_SORT_ORDER_CODE))
 			Collections.reverse(rows);
 		
-		Vector<Factor> newSortedThreatList = new Vector();
+		Vector<Factor> newSortedThreatList = new Vector<Factor>();
 		for(int index = 0; index < rows.size(); ++index)
 		{
 			int nextExistingRowIndex = rows.get(index).intValue();
@@ -218,7 +218,7 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel 
 		return getTargets()[targetIndex].getRef();
 	}
 		
-	public Comparator getComparator(int columnToSortOn)
+	public Comparator<Integer> getComparator(int columnToSortOn)
 	{
 		return new TableModelStringComparator(this, columnToSortOn);
 	}

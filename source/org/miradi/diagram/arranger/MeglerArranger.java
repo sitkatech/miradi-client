@@ -169,7 +169,7 @@ public class MeglerArranger
 		
 		sortGroupCandidatesByLinkCount(groupCandidates, direction);
 
-		Vector<Vector<DiagramFactor>> groupsToCreate = new Vector();
+		Vector<Vector<DiagramFactor>> groupsToCreate = new Vector<Vector<DiagramFactor>>();
 		
 		while(groupCandidates.size() > 1)
 		{
@@ -177,7 +177,7 @@ public class MeglerArranger
 			if(grouped.size() == 0)
 				break;
 			if(grouped.size() > 1)
-				groupsToCreate.add(new Vector(grouped));
+				groupsToCreate.add(new Vector<DiagramFactor>(grouped));
 			groupCandidates.removeAll(grouped);
 		}
 		return groupsToCreate;
@@ -263,7 +263,7 @@ public class MeglerArranger
 
 	private Vector<DiagramFactor> findBiggestPossibleGroup(Vector<DiagramFactor> originalGroupCandidates, int direction, int objectTypeInThatDirection) throws Exception, UnexpectedNonSideEffectException, CommandFailedException
 	{
-		Vector<DiagramFactor> groupCandidates = new Vector(originalGroupCandidates);
+		Vector<DiagramFactor> groupCandidates = new Vector<DiagramFactor>(originalGroupCandidates);
 		while(groupCandidates.size() > 1)
 		{
 			int wouldRemoveLinkCount = 0;
