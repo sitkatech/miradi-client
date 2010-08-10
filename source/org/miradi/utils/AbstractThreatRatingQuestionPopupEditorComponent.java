@@ -63,7 +63,7 @@ public class AbstractThreatRatingQuestionPopupEditorComponent extends QuestionPo
 		
 		String threatLabel = EAM.substitute(EAM.text("Threat: %s"), threat.getFullName());
 		String targetLabel = EAM.substitute(EAM.text("Target: %s"), target.getFullName());
-		Vector<String> labels = new Vector();
+		Vector<String> labels = new Vector<String>();
 		labels.add(threatLabel);
 		labels.add(targetLabel);
 		String additionalLabel = getAdditionalLabel();

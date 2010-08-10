@@ -65,7 +65,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		super(mainWindowToUse, modelToUse, uniqueTableIdentifierToUse);
 		
 		model = modelToUse;
-		selectionListeners = new Vector();
+		selectionListeners = new Vector<ListSelectionListener>();
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	}
@@ -285,7 +285,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		
 		for(int i = 0; i < selectionListeners.size(); ++i)
 		{
-			ListSelectionListener listener = (ListSelectionListener)selectionListeners.get(i);
+			ListSelectionListener listener = selectionListeners.get(i);
 			listener.valueChanged(null);
 		}
 	}
@@ -384,7 +384,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		}
 	}
 	
-	private Vector selectionListeners;
+	private Vector<ListSelectionListener> selectionListeners;
 	private EditableObjectTableModel model;
 	private boolean isActive;
 	private HashSet<BasicTableCellEditorOrRendererFactory> factoriesToDispose; 

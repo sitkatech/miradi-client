@@ -53,9 +53,9 @@ public class Task extends Factor
 		super(objectManager, idToUse, Factor.TYPE_ACTIVITY, json);
 	}
 		
-	public Vector getDeleteSelfAndSubtasksCommands(Project project) throws Exception
+	public Vector<Command> getDeleteSelfAndSubtasksCommands(Project project) throws Exception
 	{
-		Vector deleteIds = new Vector();
+		Vector<Command> deleteIds = new Vector<Command>();
 		deleteIds.add(new CommandSetObjectData(getType(), getId(), Task.TAG_SUBTASK_IDS, ""));
 		int subTaskCount = getSubtaskCount();
 		for (int index = 0; index < subTaskCount; index++)
@@ -80,7 +80,7 @@ public class Task extends Factor
 	@Override
 	protected Vector<Command> createCommandsToDereferenceObject() throws Exception
 	{
-		Vector commandsToDereferences = super.createCommandsToDereferenceObject();
+		Vector<Command> commandsToDereferences = super.createCommandsToDereferenceObject();
 		commandsToDereferences.addAll(buildRemoveFromRelevancyListCommands(getRef()));
 		
 		return commandsToDereferences;

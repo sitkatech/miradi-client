@@ -40,7 +40,7 @@ public class AccountingCodeLoader extends DelimitedFileLoader
 	
 	private static AccountingCodeData[] processVector(Vector fileVector)
 	{
-		Vector AccountingCodeData = new Vector();
+		Vector<AccountingCodeData> AccountingCodeData = new Vector<AccountingCodeData>();
 		for(int vectorIndex = 0; vectorIndex < fileVector.size(); ++vectorIndex)
 		{
 			Vector row = (Vector) fileVector.get(vectorIndex);
@@ -48,7 +48,7 @@ public class AccountingCodeLoader extends DelimitedFileLoader
 			String label = (String) row.get(1);
 			AccountingCodeData.add(new AccountingCodeData(code, label));
 		}
-		return (AccountingCodeData[]) AccountingCodeData.toArray(new AccountingCodeData[0]);
+		return AccountingCodeData.toArray(new AccountingCodeData[0]);
 	}
 
 }

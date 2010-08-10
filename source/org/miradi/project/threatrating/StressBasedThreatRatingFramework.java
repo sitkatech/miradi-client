@@ -119,7 +119,7 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 	private int[] calculateSummaryRatingValue(Target target) throws Exception
 	{
 		ORefSet upstreamThreatRefs = new ThreatTargetVirtualLinkHelper(getProject()).getUpstreamThreatRefsViaTSR(target);
-		Vector<Integer> calculatedSummaryRatingValues = new Vector();
+		Vector<Integer> calculatedSummaryRatingValues = new Vector<Integer>();
 		ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
 		for(ORef threatRef : upstreamThreatRefs)
 		{
@@ -133,7 +133,7 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 	private int[] calculateSummaryRatingValue(Cause threat) throws Exception
 	{
 		ORefSet downStreamTargets = threatTargetChainObject.getDownstreamTargetRefsFromThreat(threat);
-		Vector<Integer> calculatedSummaryRatingValues = new Vector();
+		Vector<Integer> calculatedSummaryRatingValues = new Vector<Integer>();
 		ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
 		for(ORef targetRef : downStreamTargets)
 		{

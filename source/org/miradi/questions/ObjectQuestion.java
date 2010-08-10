@@ -34,14 +34,14 @@ abstract public class ObjectQuestion extends DynamicChoiceQuestion
 	@Override
 	public ChoiceItem[] getChoices()
 	{
-		Vector choiceItems = new Vector();
+		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
 		for (int i = 0; i < objects.length; ++i)
 		{
 			BaseObject thisObject = objects[i];
 			choiceItems.add(new ChoiceItem(thisObject.getRef().toString(), getStringToDisplay(thisObject)));
 		}
 		
-		ChoiceItem[] sortedChoiceItems = (ChoiceItem[]) choiceItems.toArray(new ChoiceItem[0]);
+		ChoiceItem[] sortedChoiceItems = choiceItems.toArray(new ChoiceItem[0]);
 		Arrays.sort(sortedChoiceItems);
 		
 		return sortedChoiceItems;

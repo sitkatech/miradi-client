@@ -66,7 +66,7 @@ abstract public class DiagramObject extends BaseObject
 
 	public HashSet<Factor> getFactors(int wrappedType)
 	{
-		HashSet<Factor> filteredFactorsByType = new HashSet();
+		HashSet<Factor> filteredFactorsByType = new HashSet<Factor>();
 		HashSet<DiagramFactor> filteredDiagramFactors = getFactorsFromDiagram(wrappedType);
 		for(DiagramFactor diagramFactor : filteredDiagramFactors)
 		{
@@ -78,7 +78,7 @@ abstract public class DiagramObject extends BaseObject
 	
 	public HashSet<DiagramFactor> getFactorsFromDiagram(int wrappedType)
 	{
-		HashSet<DiagramFactor> filteredFactorsByType = new HashSet();
+		HashSet<DiagramFactor> filteredFactorsByType = new HashSet<DiagramFactor>();
 		ORefList allDiagramFactorRefs = getAllDiagramFactorRefs();
 		for (int index = 0; index < allDiagramFactorRefs.size(); ++index)
 		{
@@ -337,7 +337,7 @@ abstract public class DiagramObject extends BaseObject
 	
 	public Factor[] getAllWrappedFactors()
 	{
-		return getFactorsExcludingTypes(new Vector());
+		return getFactorsExcludingTypes(new Vector<Integer>());
 	}
 	
 	public ORefSet getAllWrappedFactorRefSet()
@@ -348,7 +348,7 @@ abstract public class DiagramObject extends BaseObject
 	public Factor[] getFactorsExcludingTypes(Vector<Integer> typesToFilterBy)
 	{
 		ORefList diagramFactorRefs = getAllDiagramFactorRefs();
-		Vector<Factor> factors = new Vector();
+		Vector<Factor> factors = new Vector<Factor>();
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
 			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(diagramFactorRefs.get(i));

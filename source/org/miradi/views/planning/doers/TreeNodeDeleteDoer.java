@@ -112,7 +112,7 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 	
 	public static Vector<Command> buildCommandsToDeleteAnnotation(Project project, BaseObject objectToRemove, String annotationListTag) throws Exception
 	{
-		Vector commands = new Vector();
+		Vector<Command> commands = new Vector<Command>();
 		ORefList ownerRefs = objectToRemove.findObjectsThatReferToUs();
 		for (int refIndex = 0; refIndex < ownerRefs.size(); ++refIndex)
 		{
@@ -135,7 +135,7 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 
 	private static Vector<Command> createCommandToRemoveId(BaseObject owner, BaseObject selected, String annotationListTag) throws ParseException
 	{
-		Vector commands = new Vector();
+		Vector<Command> commands = new Vector<Command>();
 		IdList idsToRemoveFrom = new IdList(selected.getType(), owner.getData(annotationListTag));
 		if (idsToRemoveFrom.contains(selected.getId()))
 			commands.add(CommandSetObjectData.createRemoveIdCommand(owner, annotationListTag, selected.getId()));
@@ -145,7 +145,7 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 	
 	private static Vector<Command> createCommandToRemoveRef(BaseObject owner, BaseObject selected, String annotationListTag) throws ParseException
 	{
-		Vector commands = new Vector();
+		Vector<Command> commands = new Vector<Command>();
 		ORefList refsToRemoveFrom = new ORefList(owner.getData(annotationListTag));
 		if (refsToRemoveFrom.contains(selected.getRef()))
 			commands.add(CommandSetObjectData.createRemoveORefCommand(owner, annotationListTag, selected.getRef()));

@@ -31,6 +31,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
+import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultGraphModel;
@@ -181,7 +182,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 	private void insertCellIntoGraph(DefaultGraphCell cell)
 	{
 		Object[] cells = new Object[] {cell};
-		Hashtable nestedAttributeMap = getNestedAttributeMap(cell);
+		Hashtable<DefaultGraphCell, AttributeMap> nestedAttributeMap = getNestedAttributeMap(cell);
 		insert(cells, nestedAttributeMap, null, null, null);
 		sortLayers();
 	}
@@ -191,9 +192,9 @@ abstract public class DiagramModel extends DefaultGraphModel
 		Collections.sort(roots, new LayerSorter());
 	}
 	
-	private Hashtable getNestedAttributeMap(DefaultGraphCell cell)
+	private Hashtable<DefaultGraphCell, AttributeMap> getNestedAttributeMap(DefaultGraphCell cell)
 	{
-		Hashtable nest = new Hashtable();
+		Hashtable<DefaultGraphCell, AttributeMap> nest = new Hashtable<DefaultGraphCell, AttributeMap>();
 		nest.put(cell, cell.getAttributes());
 		return nest;
 	}
@@ -243,7 +244,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 		LinkCell cell = new LinkCell(factorLink, diagramFactorLink, from, to);
 		
 		EAMGraphCell[] newLinks = new EAMGraphCell[]{cell};
-		Map nestedMap = getNestedAttributeMap(cell);
+		Map<DefaultGraphCell, AttributeMap> nestedMap = getNestedAttributeMap(cell);
 		ConnectionSet cs = new ConnectionSet(cell, from.getPort(), to.getPort());
 
 		insert(newLinks, nestedMap, cs, null, null);
@@ -896,7 +897,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 	
 	public void updateGroupBoxCells()
 	{
-		Vector allGroupBoxes = getAllGroupBoxCells();
+		Vector<FactorCell> allGroupBoxes = getAllGroupBoxCells();
 		for (int i = 0; i < allGroupBoxes.size(); ++i)
 		{
 			DiagramGroupBoxCell cell = (DiagramGroupBoxCell) allGroupBoxes.get(i);
@@ -906,7 +907,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 		sortLayers();
 	}
 
-	public Vector getAllGroupBoxCells()
+	public Vector<FactorCell> getAllGroupBoxCells()
 	{
 		Vector<FactorCell> allGroupBoxCells = new Vector<FactorCell>();
 		Vector allFactors = getAllFactorCells();

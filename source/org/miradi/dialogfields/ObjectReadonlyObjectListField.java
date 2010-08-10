@@ -60,7 +60,7 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 		{
 			ORefList orefList = new ORefList(newValue);
 			
-			Vector names = new Vector();
+			Vector<String> names = new Vector<String>();
 			for (int i = 0; i < orefList.size(); ++i)
 			{
 				ORef ref = orefList.get(i);

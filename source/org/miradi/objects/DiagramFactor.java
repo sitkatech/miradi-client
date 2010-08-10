@@ -275,7 +275,7 @@ public class DiagramFactor extends BaseObject
 	
 	public Command[] createCommandsToMirror(DiagramFactorId newlyCreatedId)
 	{
-		Vector commands = new Vector();
+		Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();
 		String sizeAsString = EnhancedJsonObject.convertFromDimension(getSize());
 		CommandSetObjectData setSizeCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_SIZE, sizeAsString);
 		commands.add(setSizeCommand);
@@ -296,7 +296,7 @@ public class DiagramFactor extends BaseObject
 		CommandSetObjectData setBackgroundColorCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_BACKGROUND_COLOR, backgroundColor.get());
 		commands.add(setBackgroundColorCommand);
 		
-		return (Command[]) commands.toArray(new Command[0]);
+		return commands.toArray(new Command[0]);
 	}
 	
 	public boolean isCoveredByGroupBox()

@@ -215,7 +215,7 @@ public class QuestionPopupEditorComponent extends PopupEditorComponent
 	
 	protected HashSet<JComponent> getPopupEditorComponents()
 	{
-		HashSet components = new HashSet<JComponent>();
+		HashSet<JComponent> components = new HashSet<JComponent>();
 		components.add(this);
 		components.add(staticLabel);
 		components.add(currentSelectionText);

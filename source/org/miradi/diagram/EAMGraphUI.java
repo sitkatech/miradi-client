@@ -210,7 +210,7 @@ public class EAMGraphUI extends BasicGraphUI
 
 		public void updateControlPoints(CellView[] viewsToUse, double deltaX, double deltaY)
 		{			
-			Vector allToTranslate = new Vector();
+			Vector<CellView> allToTranslate = new Vector<CellView>();
 			for (int i = 0; i < viewsToUse.length; ++i)
 			{
 				if (isFactorView(viewsToUse[i]))
@@ -256,7 +256,7 @@ public class EAMGraphUI extends BasicGraphUI
 				}
 			}
 			
-			CellView[] viewsToTranslate = (CellView[]) allToTranslate.toArray(new CellView[0]);
+			CellView[] viewsToTranslate = allToTranslate.toArray(new CellView[0]);
 			GraphLayoutCache.translateViews(viewsToTranslate, deltaX, deltaY);
 		}
 		

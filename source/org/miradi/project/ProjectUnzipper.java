@@ -43,7 +43,7 @@ public class ProjectUnzipper
 	
 	public static boolean isZipFileImportable(ZipInputStream zipInput) throws IOException
 	{
-		HashSet topLevelDirectories = new HashSet();
+		HashSet<String> topLevelDirectories = new HashSet<String>();
 
 		try
 		{

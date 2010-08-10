@@ -74,7 +74,7 @@ public class CustomPlanningRowsQuestion extends DynamicChoiceQuestion
 
 	private Vector<ChoiceItem> getRowChoices()
 	{	
-		Vector<ChoiceItem> choiceItems = new Vector();
+		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
 
 		choiceItems.add(createChoiceItem(ConceptualModelDiagram.getObjectType(), ConceptualModelDiagram.OBJECT_NAME, new ConceptualModelIcon()));
 		choiceItems.add(createChoiceItem(ResultsChainDiagram.getObjectType(), ResultsChainDiagram.OBJECT_NAME, new ResultsChainIcon()));

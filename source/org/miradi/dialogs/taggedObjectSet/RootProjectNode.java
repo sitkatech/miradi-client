@@ -76,7 +76,7 @@ public class RootProjectNode extends TreeTableNode
 	@Override
 	public void rebuild() throws Exception
 	{
-		children = new Vector();
+		children = new Vector<TreeTableNode>();
 		ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getSortedRefList();
 		ORefList resultsChainRefs = getProject().getResultsChainDiagramPool().getSortedRefList();
 		createAndAddChildren(conceptualModelRefs);

@@ -122,7 +122,7 @@ public class ChainWalker
 	
 	private HashSet<Factor> getDirectlyLinkedFactors(int direction)
 	{
-		HashSet<Factor> results = new HashSet();
+		HashSet<Factor> results = new HashSet<Factor>();
 		results.add(getStartingFactor());
 		
 		ORefList allDiagramLinkRefs = getAllDiagramLinkRefs();
@@ -133,8 +133,8 @@ public class ChainWalker
 		
 	private HashSet<Factor> getAllLinkedFactors(int direction)
 	{
-		HashSet<Factor> linkedFactors = new HashSet();
-		HashSet<Factor> unprocessedFactors = new HashSet();
+		HashSet<Factor> linkedFactors = new HashSet<Factor>();
+		HashSet<Factor> unprocessedFactors = new HashSet<Factor>();
 		linkedFactors.add(getStartingFactor());
 
 		ORefList allDiagramLinkRefs = getAllDiagramLinkRefs();
@@ -156,7 +156,7 @@ public class ChainWalker
 
 	private HashSet<Factor> getFactorsToProcess(int direction, ORefList allDiagramLinkRefs, Factor factorToProcess)
 	{
-		HashSet<Factor> unprocessedFactors = new HashSet();
+		HashSet<Factor> unprocessedFactors = new HashSet<Factor>();
 		for(int index = 0; index < allDiagramLinkRefs.size(); ++index)
 		{
 			DiagramLink link = DiagramLink.find(getProject(), allDiagramLinkRefs.get(index));	
@@ -178,7 +178,7 @@ public class ChainWalker
 		diagramObject = diagram;
 		setStartingFactor(diagramFactor);
 		resultingFactors = new HashSet<Factor>();
-		processedLinks = new HashSet();
+		processedLinks = new HashSet<DiagramLink>();
 	}
 	
 	private Project getProject()
@@ -220,7 +220,7 @@ public class ChainWalker
 	
 	private HashSet<DiagramFactor> getDiagramFactors()
 	{
-		HashSet<DiagramFactor> diagramFactors = new HashSet();
+		HashSet<DiagramFactor> diagramFactors = new HashSet<DiagramFactor>();
  		FactorSet processedFactors = getFactors();
  		for(Factor factor : processedFactors)
 		{

@@ -367,7 +367,7 @@ abstract public class Desire extends BaseObject
 	
 	public static Vector<Command> buildRemoveObjectFromRelevancyListCommands(Project project, int typeWithRelevacnyOverrideSetList, String relevancyTag, ORef relevantObjectRefToRemove) throws Exception
 	{
-		Vector<Command> removeFromRelevancyListCommands = new Vector();
+		Vector<Command> removeFromRelevancyListCommands = new Vector<Command>();
 		ORefList objectRefsWithRelevancyOverrides = project.getPool(typeWithRelevacnyOverrideSetList).getORefList();
 		for (int index = 0; index < objectRefsWithRelevancyOverrides.size(); ++index)
 		{

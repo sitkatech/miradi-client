@@ -193,7 +193,7 @@ abstract public class AbstractXmlImporter
 	{
 		XPathExpression expression = getXPath().compile(path);
 		NodeList nodeList = (NodeList) expression.evaluate(getDocument(), XPathConstants.NODESET);
-		Vector<String> nodes = new Vector();
+		Vector<String> nodes = new Vector<String>();
 		for (int nodeIndex = 0; nodeIndex < nodeList.getLength(); ++nodeIndex) 
 		{
 			nodes.add(nodeList.item(nodeIndex).getTextContent());

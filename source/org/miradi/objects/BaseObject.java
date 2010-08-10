@@ -160,7 +160,7 @@ abstract public class BaseObject
 	
 	public Command[] createCommandsToLoadFromJson(EnhancedJsonObject json) throws Exception
 	{
-		Vector commands = new Vector();
+		Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();
 		Set<String> tags = getTags();
 		for (String tag : tags)
 		{
@@ -171,7 +171,7 @@ abstract public class BaseObject
 			commands.add(setDataCommand);
 		}
 		
-		return (Command[]) commands.toArray(new Command[0]);
+		return commands.toArray(new Command[0]);
 	}
 	
 	public ORef getORef(String tag) throws Exception
@@ -702,9 +702,9 @@ abstract public class BaseObject
 
 	void clear()
 	{
-		fields = new HashMap();
-		presentationDataFields = new HashSet();
-		nonClearedFieldTags = new Vector();
+		fields = new HashMap<String, ObjectData>();
+		presentationDataFields = new HashSet<String>();
+		nonClearedFieldTags = new Vector<String>();
 
 		addField(new StringData(TAG_LABEL));
 		addField(new IdListData(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType()));
@@ -789,7 +789,7 @@ abstract public class BaseObject
 	
 	public Vector<CommandSetObjectData> createCommandsToClear()
 	{
-		Vector commands = new Vector();
+		Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();
 		Set<String> tags = getTags();
 		for (String tag : tags)
 		{
@@ -873,7 +873,7 @@ abstract public class BaseObject
 	//Note this method does not clone referenced or owned objects
 	public CommandSetObjectData[] createCommandsToClone(BaseId baseId)
 	{
-		Vector commands = new Vector();
+		Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();
 		Set<String> tags = getTags();
 		for (String tag : tags)
 		{
@@ -888,7 +888,7 @@ abstract public class BaseObject
 			
 			commands.add(new CommandSetObjectData(getType(), baseId, tag, getData(tag)));
 		}
-		return (CommandSetObjectData[])commands.toArray(new CommandSetObjectData[0]);
+		return commands.toArray(new CommandSetObjectData[0]);
 	}
 
 	private boolean isIdListField(String tag)

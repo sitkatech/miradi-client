@@ -59,7 +59,7 @@ public class StrategyPool extends EAMNormalObjectPool
 	
 	public Factor[] getDraftStrategies()
 	{
-		Vector draftStrategies = new Vector();
+		Vector<Strategy> draftStrategies = new Vector<Strategy>();
 		Factor[] allStrategies = getDraftAndNonDraftStrategies();
 		for(int i = 0; i < allStrategies.length; ++i)
 		{
@@ -67,7 +67,7 @@ public class StrategyPool extends EAMNormalObjectPool
 			if(strategy.isStatusDraft())
 				draftStrategies.add(strategy);
 		}
-		return (Factor[])draftStrategies.toArray(new Factor[0]);
+		return draftStrategies.toArray(new Factor[0]);
 	}
 	
 	public Factor[] getDraftAndNonDraftStrategies()
@@ -77,7 +77,7 @@ public class StrategyPool extends EAMNormalObjectPool
 	
 	private Factor[] getNodesOfType(int type)
 	{
-		Vector cmNodes = new Vector();
+		Vector<Factor> cmNodes = new Vector<Factor>();
 		FactorId[] ids = getModelNodeIds();
 		Arrays.sort(ids);
 		for(int i = 0; i < ids.length; ++i)
@@ -86,7 +86,7 @@ public class StrategyPool extends EAMNormalObjectPool
 			if(cmNode.getType() == type)
 				cmNodes.add(cmNode);
 		}
-		return (Factor[])cmNodes.toArray(new Factor[0]);
+		return cmNodes.toArray(new Factor[0]);
 	}
 
 	public FactorId[] getModelNodeIds()
@@ -101,7 +101,7 @@ public class StrategyPool extends EAMNormalObjectPool
 	
 	public Factor[] getNonDraftStrategies()
 	{
-		Vector nonDraftStrategies = new Vector();
+		Vector<Strategy> nonDraftStrategies = new Vector<Strategy>();
 		Factor[] allStrategies = getDraftAndNonDraftStrategies();
 		for(int i = 0; i < allStrategies.length; ++i)
 		{
@@ -109,6 +109,6 @@ public class StrategyPool extends EAMNormalObjectPool
 			if(!strategy.isStatusDraft())
 				nonDraftStrategies.add(strategy);
 		}
-		return (Factor[])nonDraftStrategies.toArray(new Factor[0]);
+		return nonDraftStrategies.toArray(new Factor[0]);
 	}
 }

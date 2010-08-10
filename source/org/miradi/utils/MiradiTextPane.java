@@ -85,7 +85,7 @@ public class MiradiTextPane extends JTextPane
 
 	private Set buildTabKeySet(int shiftMask)
 	{
-		Set set = new HashSet();
+		Set<KeyStroke> set = new HashSet<KeyStroke>();
 		set.add(KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_TAB, shiftMask));
 		return set;
 	}

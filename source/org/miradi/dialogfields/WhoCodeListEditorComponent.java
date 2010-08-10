@@ -146,7 +146,7 @@ public class WhoCodeListEditorComponent extends AbstractQuestionBasedComponent
 	private Vector<ResourceAssignment> extractResourceAssignments(ORef selectedResourceRef) throws Exception
 	{
 		ORefList oldResourceAssignmentRefs = getResourceAssignmentRefs();
-		Vector<ResourceAssignment> resourceAssignmentsToDelete = new Vector();
+		Vector<ResourceAssignment> resourceAssignmentsToDelete = new Vector<ResourceAssignment>();
 		for (int index = 0; index < oldResourceAssignmentRefs.size(); ++index)
 		{
 			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), oldResourceAssignmentRefs.get(index));

@@ -58,7 +58,7 @@ public class DeleteResourceDoer extends ObjectsDoer
 			return;
 		
 		ProjectResource resource = (ProjectResource)getObjects()[0];
-		Vector dialogText = new Vector();
+		Vector<String> dialogText = new Vector<String>();
 		ORefList allThatUseThisResource = resource.findObjectsThatReferToUs();
 
 		//TODO fix dialog text
@@ -67,7 +67,7 @@ public class DeleteResourceDoer extends ObjectsDoer
 		
 		dialogText.add(EAM.text("\nAre you sure you want to delete this resource?"));
 		String[] buttons = {EAM.text("Yes"), EAM.text("No"), };
-		if(!EAM.confirmDialog(EAM.text("Delete Resource"), (String[])dialogText.toArray(new String[0]), buttons))
+		if(!EAM.confirmDialog(EAM.text("Delete Resource"), dialogText.toArray(new String[0]), buttons))
 			return;
 		
 		try

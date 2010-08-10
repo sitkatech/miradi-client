@@ -44,7 +44,7 @@ public class ObjectRadioButtonGroupField extends ObjectDataInputField
 		group = new ButtonGroup();
 		panel = new OneRowPanel();
 		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		buttonsByCode = new HashMap();
+		buttonsByCode = new HashMap<String, JRadioButton>();
 		
 		for(int i = 0; i < questionToUse.size(); ++i)
 		{

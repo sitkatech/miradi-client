@@ -29,7 +29,7 @@ public class FactorSet implements Collection<Factor>
 {
 	public FactorSet()
 	{
-		nodes = new HashSet();
+		nodes = new HashSet<Factor>();
 	}
 	
 	public void attemptToAdd(Factor node)
@@ -72,7 +72,7 @@ public class FactorSet implements Collection<Factor>
 
 	public Factor[] toFactorArray()
 	{
-		return (Factor[])nodes.toArray(new Factor[0]);
+		return nodes.toArray(new Factor[0]);
 	}
 	
 	public ORefSet getFactorRefs()
@@ -177,6 +177,6 @@ public class FactorSet implements Collection<Factor>
 		return result.toString();
 	}
 
-	HashSet nodes;
+	HashSet<Factor> nodes;
 
 }

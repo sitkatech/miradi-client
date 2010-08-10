@@ -70,14 +70,14 @@ public class DeleteActivityDoer extends ObjectsDoer
 
 	public static void deleteTaskWithUserConfirmation(Project project, ORefList selectionHierachy, Task selectedTask) throws CommandFailedException
 	{
-		Vector dialogText = new Vector();
+		Vector<String> dialogText = new Vector<String>();
 		boolean containsMoreThanOneParent = selectionHierachy.getOverlappingRefs(selectedTask.findObjectsThatReferToUs()).size() > 1;
 		if (containsMoreThanOneParent)
 			dialogText.add(EAM.text("This item is shared, so will be deleted from multiple places."));
 		
 		dialogText.add(EAM.text("All subtasks within this item will be removed as well."));
 		String[] buttons = {EAM.text("Button|Delete"), EAM.text("Button|Retain"), };
-		if(!EAM.confirmDialog(EAM.text("Title|Delete"), (String[]) dialogText.toArray(new String[0]), buttons))
+		if(!EAM.confirmDialog(EAM.text("Title|Delete"), dialogText.toArray(new String[0]), buttons))
 			return;
 		
 		deleteTask(project, selectionHierachy, selectedTask);
@@ -122,7 +122,7 @@ public class DeleteActivityDoer extends ObjectsDoer
 	{
 		
 		//FIXME medium: need to consider parent hierachy when creating commands.  first refactor dup code.  
-		Vector commandsToDeleteTasks = new Vector();
+		Vector<Command> commandsToDeleteTasks = new Vector<Command>();
 		commandsToDeleteTasks.addAll(buildDeleteDiagramFactors(project, selectionHierachy, task));
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForActivityIds(project, selectionHierachy, task));
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForMethodIds(project, selectionHierachy, task));
@@ -152,7 +152,7 @@ public class DeleteActivityDoer extends ObjectsDoer
 		if (! task.isTask())
 			return new Vector();
 		
-		Vector removeCommands = new Vector();
+		Vector<Command> removeCommands = new Vector<Command>();
 		BaseObject parentObject = task.getOwner();
 		removeCommands.add(CommandSetObjectData.createRemoveIdCommand(parentObject,	Task.TAG_SUBTASK_IDS, task.getId()));
 		
@@ -161,7 +161,7 @@ public class DeleteActivityDoer extends ObjectsDoer
 	
 	private static Vector<Command> buildDeleteDiagramFactors(Project project, ORefList selectionHierachy, Task task) throws Exception
 	{
-		Vector<Command> commands = new Vector();
+		Vector<Command> commands = new Vector<Command>();
 		if (!task.isActivity())
 			return commands;
 		
@@ -204,7 +204,7 @@ public class DeleteActivityDoer extends ObjectsDoer
 	
 	private static Vector buildRemoveCommands(Project project, int parentType, ORefList selectionHierachy, String tag, Task task) throws Exception
 	{
-		Vector removeCommands = new Vector();
+		Vector<Command> removeCommands = new Vector<Command>();
 		ORefList referrerRefs = task.findObjectsThatReferToUs(parentType);
 		for (int i = 0; i < referrerRefs.size(); ++i)
 		{

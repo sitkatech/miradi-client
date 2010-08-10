@@ -51,7 +51,7 @@ public class LanguageQuestion extends DynamicChoiceQuestion
 	
 	private void loadChoices() throws Exception
 	{
-		Vector<ChoiceItem> loadedChoices = new Vector();
+		Vector<ChoiceItem> loadedChoices = new Vector<ChoiceItem>();
 		URL url = ResourcesHandler.getEnglishResourceURL("/resources/Languages.dat");
 		loadedChoices.add(new ChoiceItem("", EAM.text("Unspecified")));
 		

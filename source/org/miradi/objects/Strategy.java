@@ -128,7 +128,7 @@ public class Strategy extends Factor
 	
 	public Vector<Task> getActivities()
 	{
-		Vector<Task> activities = new Vector();
+		Vector<Task> activities = new Vector<Task>();
 		ORefList activityRefs = getActivityRefs();
 		for (int index = 0; index < activityRefs.size(); ++index)
 		{
@@ -196,7 +196,7 @@ public class Strategy extends Factor
 	@Override
 	protected Vector<Command> createCommandsToDereferenceObject() throws Exception
 	{
-		Vector commandsToDereferences = super.createCommandsToDereferenceObject();
+		Vector<Command> commandsToDereferences = super.createCommandsToDereferenceObject();
 		commandsToDereferences.addAll(buildRemoveFromRelevancyListCommands(getRef()));
 		
 		return commandsToDereferences;

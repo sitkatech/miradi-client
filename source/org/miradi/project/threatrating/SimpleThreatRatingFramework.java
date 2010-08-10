@@ -61,7 +61,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 
 	public void clear()
 	{
-		bundles = new HashMap();
+		bundles = new HashMap<String, ThreatRatingBundle>();
 		criteria = new RatingCriterion[0];
 		ratingValueOptions = new ValueOption[0];
 	}
@@ -276,7 +276,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	public ValueOption getProjectMajorityRating()
 	{
 		Factor[] targets = getProject().getTargetPool().getSortedTargets();
-		Vector<Integer> highestValues = new Vector();
+		Vector<Integer> highestValues = new Vector<Integer>();
 		for(int i = 0; i < targets.length; ++i)
 		{
 			int targetRating = getHighestValueForTarget(targets[i].getId());
@@ -317,7 +317,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 
 	private ThreatRatingBundle[] getBundlesForThisThreat(BaseId threatId)
 	{
-		HashSet bundlesForThisThreat = new HashSet();
+		HashSet<ThreatRatingBundle> bundlesForThisThreat = new HashSet<ThreatRatingBundle>();
 		
 		Iterator iter = bundles.values().iterator();
 		while(iter.hasNext())
@@ -326,7 +326,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 			if(bundle.getThreatId().equals(threatId) && isBundleForLinkedThreatAndTarget(bundle))
 				bundlesForThisThreat.add(bundle);
 		}
-		ThreatRatingBundle[] bundleArray = (ThreatRatingBundle[])bundlesForThisThreat.toArray(new ThreatRatingBundle[0]);
+		ThreatRatingBundle[] bundleArray = bundlesForThisThreat.toArray(new ThreatRatingBundle[0]);
 		return bundleArray;
 	}
 	
@@ -344,7 +344,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 
 	private ThreatRatingBundle[] getBundlesForThisTarget(BaseId targetId)
 	{
-		HashSet bundlesForThisThreat = new HashSet();
+		HashSet<ThreatRatingBundle> bundlesForThisThreat = new HashSet<ThreatRatingBundle>();
 		
 		Iterator iter = bundles.values().iterator();
 		while(iter.hasNext())
@@ -353,7 +353,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 			if(bundle.getTargetId().equals(targetId) && isBundleForLinkedThreatAndTarget(bundle))
 				bundlesForThisThreat.add(bundle);
 		}
-		ThreatRatingBundle[] bundleArray = (ThreatRatingBundle[])bundlesForThisThreat.toArray(new ThreatRatingBundle[0]);
+		ThreatRatingBundle[] bundleArray = bundlesForThisThreat.toArray(new ThreatRatingBundle[0]);
 		return bundleArray;
 	}
 	
@@ -436,7 +436,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	
 	public ThreatRatingBundle getBundle(FactorId threatId, FactorId targetId) throws Exception
 	{
-		ThreatRatingBundle existing = (ThreatRatingBundle)bundles.get(getBundleKey(threatId, targetId));
+		ThreatRatingBundle existing = bundles.get(getBundleKey(threatId, targetId));
 		if(existing != null)
 			return existing;
 		
@@ -497,7 +497,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		Iterator iter = bundles.keySet().iterator();
 		while(iter.hasNext())
 		{
-			ThreatRatingBundle bundle = (ThreatRatingBundle)bundles.get(iter.next());
+			ThreatRatingBundle bundle = bundles.get(iter.next());
 			JSONObject pair = new JSONObject();
 			pair.put(TAG_BUNDLE_THREAT_ID, bundle.getThreatId());
 			pair.put(TAG_BUNDLE_TARGET_ID, bundle.getTargetId());
@@ -594,7 +594,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	public static final int HIGH_RATING_VALUE = 3;
 	public static final int VERY_HIGH_RATING_VALUE = 4;
 
-	private HashMap bundles;
+	private HashMap<String, ThreatRatingBundle> bundles;
 	private ValueOption[] ratingValueOptions;
 	private RatingCriterion[] criteria;
 }

@@ -50,7 +50,7 @@ public class ThreatStressRatingHelper
 		ORefList stressRefs = target.getStressRefs();
 		Cause threat = Cause.find(getProject(), threatRef);
 		ORefList threatStressRatingReferrerRefs = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
-		Vector<ThreatStressRating> threatStressRatings = new Vector();
+		Vector<ThreatStressRating> threatStressRatings = new Vector<ThreatStressRating>();
 		for (int index = 0; index < threatStressRatingReferrerRefs.size(); ++index)
 		{
 			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingReferrerRefs.get(index));

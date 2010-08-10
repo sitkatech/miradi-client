@@ -259,7 +259,7 @@ abstract public class AbstractTarget extends Factor
 	{
 		IdList keyEcologicalAttributeIds = getKeyEcologicalAttributes();
 		int childCount = keyEcologicalAttributeIds.size();
-		Vector KeyEcologicalAttributes = new Vector();
+		Vector<KeyEcologicalAttribute> KeyEcologicalAttributes = new Vector<KeyEcologicalAttribute>();
 		for(int i = 0; i < childCount; ++i)
 		{
 			BaseId keaId = keyEcologicalAttributeIds.get(i);
@@ -268,7 +268,7 @@ abstract public class AbstractTarget extends Factor
 				KeyEcologicalAttributes.add(kea);
 		}
 		
-		return (KeyEcologicalAttribute[])KeyEcologicalAttributes.toArray(new KeyEcologicalAttribute[0]);
+		return KeyEcologicalAttributes.toArray(new KeyEcologicalAttribute[0]);
 	}
 
 	public static String computeTNCViability(Project project)

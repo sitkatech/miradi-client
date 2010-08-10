@@ -32,8 +32,8 @@ public class TimePeriodCosts
 {
 	public TimePeriodCosts()
 	{
-		workUnitCategorizedQuantities = new Vector();
-		expensesCategorizedQuantities = new Vector();
+		workUnitCategorizedQuantities = new Vector<CategorizedQuantity>();
+		expensesCategorizedQuantities = new Vector<CategorizedQuantity>();
 
 		totalExpenses = new OptionalDouble();
 		totalWorkUnits = new OptionalDouble();
@@ -251,7 +251,7 @@ public class TimePeriodCosts
 			EAM.logError("WARNING: Filtering on invalid ref with no type");
 		
 		
-		Vector<CategorizedQuantity> categorizedQuantitiesToRetain = new Vector();
+		Vector<CategorizedQuantity> categorizedQuantitiesToRetain = new Vector<CategorizedQuantity>();
 		for(CategorizedQuantity categorizedQuantityToFilter : categorizedQuantities)
 		{
 			if (categorizedQuantityToFilter.containsAtleastOne(refsToRetain))
@@ -269,7 +269,7 @@ public class TimePeriodCosts
 		if (refsToRetain.contains(ORef.INVALID))
 			EAM.logError("WARNING: Filtering on invalid ref with no type");
 		
-		Vector<CategorizedQuantity> categorizedQuantitiesToRetain = new Vector();
+		Vector<CategorizedQuantity> categorizedQuantitiesToRetain = new Vector<CategorizedQuantity>();
 		for(CategorizedQuantity categorizedQuantityToFilter : categorizedQuantities)
 		{
 			if (categorizedQuantityToFilter.containsAll(refsToRetain))

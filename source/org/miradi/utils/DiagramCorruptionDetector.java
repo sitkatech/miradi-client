@@ -38,7 +38,7 @@ public class DiagramCorruptionDetector
 {
 	public static Vector<String> getCorruptedDiagrams(Project project)
 	{
-		Vector<String> errorMessages = new Vector();
+		Vector<String> errorMessages = new Vector<String>();
 		ORefList diagramObjectRefs = project.getAllDiagramObjectRefs();
 		for (int index = 0; index < diagramObjectRefs.size(); ++index)
 		{
@@ -51,7 +51,7 @@ public class DiagramCorruptionDetector
 
 	private static Vector<String> getDiagramCorruptedErrorMessages(Project project, DiagramObject diagramObject)
 	{
-		Vector<String> errorMessages = new Vector();
+		Vector<String> errorMessages = new Vector<String>();
 		errorMessages.addAll(getCorruptedDiagramFactorErrorMessages(project, diagramObject));
 		errorMessages.addAll(getCorruptedDiagramLinksErrorMessages(project, diagramObject));
 		
@@ -95,7 +95,7 @@ public class DiagramCorruptionDetector
 
 	protected static Vector<DiagramLink> getCorruptedGroupBoxDiagramLinks(Project project, DiagramObject diagramObject)
 	{
-		Vector<DiagramLink> errorMessages = new Vector();
+		Vector<DiagramLink> errorMessages = new Vector<DiagramLink>();
 		ORefList diagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
 		for (int index = 0; index < diagramLinkRefs.size(); ++index)
 		{
@@ -114,7 +114,7 @@ public class DiagramCorruptionDetector
 
 	protected static Vector<String> getCorruptedDiagramFactorErrorMessages(Project project, DiagramObject diagramObject)
 	{
-		Vector<String> errorMessages = new Vector();
+		Vector<String> errorMessages = new Vector<String>();
 		String diagramName = diagramObject.toString();
 		ORefList diagramFactorRefs = diagramObject.getAllDiagramFactorRefs();
 		for (int index = 0; index < diagramFactorRefs.size(); ++index)

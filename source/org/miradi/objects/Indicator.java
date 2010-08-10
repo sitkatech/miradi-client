@@ -76,7 +76,7 @@ public class Indicator extends BaseObject
 	@Override
 	protected Vector<Command> createCommandsToDereferenceObject() throws Exception
 	{
-		Vector commandsToDereferences = super.createCommandsToDereferenceObject();
+		Vector<Command> commandsToDereferences = super.createCommandsToDereferenceObject();
 		commandsToDereferences.addAll(buildRemoveIndicatorFromRelevancyListCommands(getRef()));
 		
 		return commandsToDereferences;
@@ -84,7 +84,7 @@ public class Indicator extends BaseObject
 	
 	private Vector<Command> buildRemoveIndicatorFromRelevancyListCommands(ORef relevantIndicatorRefToRemove) throws Exception
 	{
-		Vector<Command> removeFromRelevancyListCommands = new Vector();
+		Vector<Command> removeFromRelevancyListCommands = new Vector<Command>();
 		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), Objective.getObjectType(), Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
 		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), Goal.getObjectType(), Goal.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
 		
@@ -188,7 +188,7 @@ public class Indicator extends BaseObject
 	
 	public Vector<Task> getMethods()
 	{
-		Vector<Task> methods = new Vector();
+		Vector<Task> methods = new Vector<Task>();
 		ORefList methodRefs = getMethodRefs();
 		for (int index = 0; index < methodRefs.size(); ++index)
 		{

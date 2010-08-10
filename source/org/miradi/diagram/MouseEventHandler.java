@@ -30,6 +30,7 @@ import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphLayoutCache;
+import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
@@ -70,7 +71,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 	@Override
 	public void mousePressed(MouseEvent event)
 	{
-		selectedAndGroupBoxCoveredLinkCells = new HashSet();
+		selectedAndGroupBoxCoveredLinkCells = new HashSet<LinkCell>();
 		dragStartedAt = null;
 		if(event.isPopupTrigger())
 		{
@@ -193,7 +194,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 
 	private void moveBendPoints() throws Exception
 	{
-		Vector bendPointsMoveCommands = new Vector();
+		Vector<Command> bendPointsMoveCommands = new Vector<Command>();
 		LinkCell[] linkCells = selectedAndGroupBoxCoveredLinkCells.toArray(new LinkCell[0]);
 		for (int i = 0; i < linkCells.length; ++i)
 		{
@@ -318,7 +319,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 
 	private HashSet<LinkCell> getSelectedLinksWithSelectedBendPoints()
 	{
-		HashSet<LinkCell> linksWithBendPoints = new HashSet();
+		HashSet<LinkCell> linksWithBendPoints = new HashSet<LinkCell>();
 		for(int i = 0; i < selectedCells.length; ++i)
 		{
 			EAMGraphCell selectedCell = (EAMGraphCell)selectedCells[i];

@@ -51,7 +51,7 @@ public class TaggedObjectSetPool extends EAMNormalObjectPool
 	public Vector<TaggedObjectSet> getAllTaggedObjectSets()
 	{
 		ORefList allTaggedObjectSetRefs = getORefList();
-		Vector<TaggedObjectSet> allTaggedObjectSets = new Vector();
+		Vector<TaggedObjectSet> allTaggedObjectSets = new Vector<TaggedObjectSet>();
 		for (int index = 0; index < allTaggedObjectSetRefs.size(); ++index)
 		{
 			TaggedObjectSet taggedObjectSet = (TaggedObjectSet) findObject(allTaggedObjectSetRefs.get(index));
@@ -63,7 +63,7 @@ public class TaggedObjectSetPool extends EAMNormalObjectPool
 	
 	public Vector<TaggedObjectSet> findTaggedObjectSetsWithFactor(ORef factorRef) throws Exception
 	{
-		Vector<TaggedObjectSet> taggedObjectSetsWithFactor = new Vector();
+		Vector<TaggedObjectSet> taggedObjectSetsWithFactor = new Vector<TaggedObjectSet>();
 		ORefList taggedObjectRefs = getORefList();
 		for (int index = 0; index < taggedObjectRefs.size(); ++index)
 		{

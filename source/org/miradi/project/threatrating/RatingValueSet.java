@@ -30,7 +30,7 @@ public class RatingValueSet
 {
 	public RatingValueSet()
 	{
-		map = new HashMap();
+		map = new HashMap<BaseId, BaseId>();
 	}
 	
 	public RatingValueSet(EnhancedJsonObject json)
@@ -89,9 +89,9 @@ public class RatingValueSet
 
 	private BaseId getRawValueOptionId(BaseId criterionId)
 	{
-		return (BaseId)map.get(criterionId);
+		return map.get(criterionId);
 	}
 	
-	HashMap map;
+	HashMap<BaseId, BaseId> map;
 
 }
