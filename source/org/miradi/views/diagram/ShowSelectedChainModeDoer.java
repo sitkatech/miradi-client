@@ -134,7 +134,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 
 	private FactorCell[] getOrphanedDraftStrategies(Project project, DiagramView view, DiagramComponent diagram)
 	{
-		Vector orphanedDraftStrategies = new Vector();
+		Vector<FactorCell> orphanedDraftStrategies = new Vector<FactorCell>();
 		DiagramModel model = view.getDiagramModel();
 		Factor[] draftStrategies = project.getStrategyPool().getDraftStrategies();
 		for (int i=0; i<draftStrategies.length; ++i)
@@ -143,7 +143,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 			if (isOrphan(model, draftStrategyCell))
 				orphanedDraftStrategies.add(draftStrategyCell);
 		}
-		return (FactorCell[])orphanedDraftStrategies.toArray(new FactorCell[0]);
+		return orphanedDraftStrategies.toArray(new FactorCell[0]);
 	}
 	
 	private boolean isOrphan(DiagramModel model, FactorCell draftStrategyCell)
