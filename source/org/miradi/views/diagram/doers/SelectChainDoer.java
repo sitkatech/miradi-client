@@ -93,15 +93,15 @@ public class SelectChainDoer extends ViewDoer
 	{
 		Factor[] factorReleatedFactors = getChainsBasedOnFactors(model, factorCells);
 		Factor[] linkRelatedFactors = getChainsBasedOnLinks(model, diagramLinkRefs);
-		Vector nodes = new Vector();
+		Vector<Factor> nodes = new Vector<Factor>();
 		nodes.addAll(Arrays.asList(factorReleatedFactors));
 		nodes.addAll(Arrays.asList(linkRelatedFactors));
-		selectFactors(diagramComponent, model, (Factor[])nodes.toArray(new Factor[0]));
+		selectFactors(diagramComponent, model, nodes.toArray(new Factor[0]));
 	}
 
 	private static Factor[] getChainsBasedOnFactors(DiagramModel diagramModel, FactorCell[] factors) throws Exception
 	{
-		Vector nodes = new Vector();
+		Vector<Factor> nodes = new Vector<Factor>();
 		for(int i = 0; i < factors.length; ++i)
 		{
 			FactorCell selectedFactor = factors[i];
@@ -110,13 +110,13 @@ public class SelectChainDoer extends ViewDoer
 			Factor[] chainNodes = chainFactors.toFactorArray();
 			nodes.addAll(Arrays.asList(chainNodes));
 		}
-		return (Factor[])nodes.toArray(new Factor[0]);
+		return nodes.toArray(new Factor[0]);
 	}
 	
 	private static Factor[] getChainsBasedOnLinks(DiagramModel diagramModel, ORefList diagramLinkRefs) throws Exception
 	{
 		Project project = diagramModel.getProject();
-		Vector nodes = new Vector();
+		Vector<Factor> nodes = new Vector<Factor>();
 		for(int i = 0; i < diagramLinkRefs.size(); ++i)
 		{
 			DiagramLink selectedLinkage = DiagramLink.find(project, diagramLinkRefs.get(i));
@@ -132,7 +132,7 @@ public class SelectChainDoer extends ViewDoer
 			Factor[] downstreamFactors = downstreamChain.buildDownstreamChainAndGetFactors(diagramModel.getDiagramObject(), to).toFactorArray();
 			nodes.addAll(Arrays.asList(downstreamFactors));
 		}
-		return (Factor[])nodes.toArray(new Factor[0]);
+		return nodes.toArray(new Factor[0]);
 	}
 
 	private static void selectFactors(DiagramComponent diagramComponent, DiagramModel model, Factor[] chainNodes) throws Exception
