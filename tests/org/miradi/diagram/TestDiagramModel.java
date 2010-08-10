@@ -200,7 +200,7 @@ public class TestDiagramModel extends EAMTestCase
 	
 	private Set toSet(int[] ints)
 	{
-		HashSet set = new HashSet();
+		HashSet<String> set = new HashSet<String>();
 		for (int i = 0; i < ints.length; ++i)
 		{
 			set.add(Integer.toString(ints[i]));
@@ -212,7 +212,7 @@ public class TestDiagramModel extends EAMTestCase
 	private Set getLabelSet(FactorSet gotChainNodes)
 	{
 		Factor[] factors = gotChainNodes.toFactorArray();
-		HashSet set = new HashSet();
+		HashSet<String> set = new HashSet<String>();
 		for (int i = 0; i < factors.length; ++i)
 		{
 			set.add(factors[i].getLabel());

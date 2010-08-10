@@ -48,7 +48,7 @@ public class TestProjectZipper extends EAMTestCase
 		
 		try
 		{
-			Vector zipFileEntries = new Vector();
+			Vector<File> zipFileEntries = new Vector<File>();
 			File fileA = new File(testDir, "fileA");
 			createSampleFile(fileA);
 			zipFileEntries.add(fileA);
@@ -88,8 +88,8 @@ public class TestProjectZipper extends EAMTestCase
 
 				File foundFile = null;
 				for (int i = 0; i < zipFileEntries.size(); i++)
-					if (e.getName().endsWith(((File)zipFileEntries.get(i)).getName()))
-						foundFile = (File)zipFileEntries.get(i);
+					if (e.getName().endsWith(zipFileEntries.get(i).getName()))
+						foundFile = zipFileEntries.get(i);
 				
 				assertEquals("wrong name?",e.getName(), entrySearched);
 				assertEquals("wrong contents? ", foundFile.getAbsoluteFile().toString(), readZipEntryContents(in));				

@@ -55,7 +55,7 @@ public class TestFactor extends TestCaseWithProject
 			Factor.TAG_OBJECTIVE_IDS,
 		};
 
-		Vector sampleIds = new Vector();
+		Vector<BaseId> sampleIds = new Vector<BaseId>();
 		sampleIds.add(new BaseId(12));
 		sampleIds.add(new BaseId(275));
 		

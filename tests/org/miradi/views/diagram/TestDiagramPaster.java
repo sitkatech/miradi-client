@@ -95,11 +95,11 @@ public class TestDiagramPaster extends EAMTestCase
 		ORef threatStressRatingRef = helper.findThreatStressRating(threatDiagramFactor.getWrappedORef(), targetDiagramFactor.getWrappedORef(), stress.getRef());
 		assertTrue("threatStressRating was not created?", threatStressRatingRef.isValid());
 		
-		Vector<DiagramFactor> diagramFactorsToPaste = new Vector();
+		Vector<DiagramFactor> diagramFactorsToPaste = new Vector<DiagramFactor>();
 		diagramFactorsToPaste.add(threatDiagramFactor);
 		diagramFactorsToPaste.add(targetDiagramFactor);
 		
-		Vector<DiagramLink> diagramLinksToPaste = new Vector();
+		Vector<DiagramLink> diagramLinksToPaste = new Vector<DiagramLink>();
 		diagramLinksToPaste.add(DiagramLink.find(getProject(), diagramLinkRef));
 		
 		ProjectForTesting projectToPasteInto = createNewProject();
@@ -270,15 +270,15 @@ public class TestDiagramPaster extends EAMTestCase
 	
 	private DiagramPaster pasteDiagramFactor(ProjectForTesting projectToPasteInto, DiagramFactor diagramFactor) throws Exception
 	{
-		Vector<DiagramFactor> diagramFactors = new Vector();
+		Vector<DiagramFactor> diagramFactors = new Vector<DiagramFactor>();
 		diagramFactors.add(diagramFactor);
 		
-		return paste(projectToPasteInto, diagramFactors, new Vector());
+		return paste(projectToPasteInto, diagramFactors, new Vector<DiagramLink>());
 	}
 	
 	private DiagramPaster paste(ProjectForTesting projectToPasteInto, Vector<DiagramFactor> diagramFactors, Vector<DiagramLink> diagramLinks) throws Exception
 	{
-		Vector<EAMGraphCell> cellsToCopy = new Vector();
+		Vector<EAMGraphCell> cellsToCopy = new Vector<EAMGraphCell>();
 		for(DiagramLink diagramLink : diagramLinks)
 		{
 			LinkCell linkCell = getDiagramModel().getLinkCell(diagramLink);

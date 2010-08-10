@@ -46,7 +46,7 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 
 		addCommandExecutedListener(this);
 		diagramModel = new PersistentDiagramModel(this);
-		commandStack = new Vector();
+		commandStack = new Vector<Command>();
 	}
 	
 	public DiagramObject getTestingDiagramObject()
@@ -76,7 +76,7 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 
 	protected Command getLastCommand()
 	{
-		return (Command)commandStack.remove(commandStack.size()-1);
+		return commandStack.remove(commandStack.size()-1);
 	}
 
 	public ProjectServerForTesting getTestDatabase()
@@ -129,5 +129,5 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 	}
 	
 	private PersistentDiagramModel diagramModel;
-	private Vector commandStack;
+	private Vector<Command> commandStack;
 }

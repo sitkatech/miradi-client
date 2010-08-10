@@ -37,7 +37,7 @@ public class TestConProCodeMapHelper extends EAMTestCase
 		String VALUE_2 = "value2";
 		String KEY_2 = "key2";
 		
-		HashMap map = new HashMap<String, String>();
+		HashMap<String, String> map = new HashMap<String, String>();
 		map.put(KEY_1, VALUE_1);
 		map.put(KEY_2, VALUE_2);
 		

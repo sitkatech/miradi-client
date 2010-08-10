@@ -249,7 +249,7 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		EnhancedJsonObject diagramObjectJson = new EnhancedJsonObject(readFile(diagramObjectFile));
 		IdList diagramFactorIds = new IdList(diagramObjectType, diagramObjectJson.optString("DiagramFactorIds"));
 		
-		Vector<EnhancedJsonObject> singleScopeBoxJsons = new Vector();
+		Vector<EnhancedJsonObject> singleScopeBoxJsons = new Vector<EnhancedJsonObject>();
 		File diagramFactorDir = DataUpgrader.getObjectsDir(jsonDir, DIAGRAM_FACTOR_TYPE);
 		for (int index = 0; index < diagramFactorIds.size(); ++index)
 		{
@@ -1378,7 +1378,7 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		factorLinkIds[0] = 56;
 		factorLinkIds[1] = 57;
 		
-		HashMap factorToDiamgramFactorIdMap = new HashMap();
+		HashMap<Integer, Integer> factorToDiamgramFactorIdMap = new HashMap<Integer, Integer>();
 		factorToDiamgramFactorIdMap.put(new Integer(28), new Integer(91));
 		factorToDiamgramFactorIdMap.put(new Integer(29), new Integer(92));
 	

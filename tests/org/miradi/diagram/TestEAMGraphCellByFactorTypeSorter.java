@@ -58,7 +58,7 @@ public class TestEAMGraphCellByFactorTypeSorter extends TestCaseWithProject
 		DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);
 		LinkCell linkCell = new LinkCell(diagramLink.getWrappedFactorLink(), diagramLink, causeCell, targetCell);
 		
-		Vector<EAMGraphCell> cellsToSort = new Vector();
+		Vector<EAMGraphCell> cellsToSort = new Vector<EAMGraphCell>();
 		cellsToSort.add(strategyCell);
 		cellsToSort.add(targetCell);
 		cellsToSort.add(linkCell);
