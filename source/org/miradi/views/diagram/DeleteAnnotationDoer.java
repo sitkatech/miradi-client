@@ -99,20 +99,20 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	
 	public static Command[] buildCommandsToDeleteAnnotation(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
 	{
-		Vector commands = new Vector();
+		Vector<Command> commands = new Vector<Command>();
 		commands.addAll(buildCommandsToUntag(project, annotationToDelete.getRef()));
 		commands.add(buildCommandToRemoveAnnotationFromObject(owner, annotationIdListTag, annotationToDelete.getRef()));
 		commands.addAll(buildCommandsToDeleteReferredObjects(project, owner, annotationIdListTag, annotationToDelete));
 		commands.addAll(buildCommandsToDeleteReferringObjects(project, owner, annotationIdListTag, annotationToDelete));		
 		commands.addAll(annotationToDelete.createCommandsToDeleteChildrenAndObject());
 		
-		return (Command[])commands.toArray(new Command[0]);
+		return commands.toArray(new Command[0]);
 	}
 
 	public static Vector<Command> buildCommandsToUntag(Project project, ORef refToUntag) throws Exception
 	{
 		Vector<TaggedObjectSet> taggedObjectSetsWithFactor = project.getTaggedObjectSetPool().findTaggedObjectSetsWithFactor(refToUntag);
-		Vector<Command> commandsToUntag = new Vector();
+		Vector<Command> commandsToUntag = new Vector<Command>();
 		for (int index = 0; index < taggedObjectSetsWithFactor.size(); ++index)
 		{
 			TaggedObjectSet taggedObjectSet = taggedObjectSetsWithFactor.get(index);
@@ -123,9 +123,9 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return commandsToUntag;
 	}
 
-	private static Vector buildCommandsToDeleteReferredObjects(Project project, BaseObject owner, String annotationIdListTag,	BaseObject annotationToDelete) throws Exception
+	private static Vector<Command> buildCommandsToDeleteReferredObjects(Project project, BaseObject owner, String annotationIdListTag,	BaseObject annotationToDelete) throws Exception
 	{
-		Vector commands = new Vector<Command>();
+		Vector<Command> commands = new Vector<Command>();
 		if (KeyEcologicalAttribute.is(annotationToDelete.getType()))
 		{
 			commands.addAll(buildCommandsToDeleteKEAIndicators(project, (KeyEcologicalAttribute) annotationToDelete));
@@ -145,7 +145,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 
 	private static Vector<Command> createCommandsToDeleteStressDiagramFactors(Project project, BaseObject annotationToDelete) throws Exception
 	{
-		Vector<Command> commandsToHide = new Vector();
+		Vector<Command> commandsToHide = new Vector<Command>();
 		ORefList diagramFactorRefs = annotationToDelete.findObjectsThatReferToUs(DiagramFactor.getObjectType());
 		for (int index = 0; index < diagramFactorRefs.size(); ++index)
 		{
@@ -183,9 +183,9 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	}
 	
 	
-	public static Vector buildCommandsToDeleteKEAIndicators(Project project, KeyEcologicalAttribute kea) throws Exception
+	public static Vector<Command> buildCommandsToDeleteKEAIndicators(Project project, KeyEcologicalAttribute kea) throws Exception
 	{
-		Vector commands = new Vector();
+		Vector<Command> commands = new Vector<Command>();
 		IdList indicatorList = kea.getIndicatorIds();
 		for (int i  = 0; i < indicatorList.size(); i++)
 		{
