@@ -237,7 +237,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		super(new BorderLayout());
 		mainWindow = mainWindowToUse;
 		nullDoer = new NullDoer();
-		actionToDoerMap = new HashMap();
+		actionToDoerMap = new HashMap<Class, Doer>();
 		addUmbrellaDoersToMap();
 	}
 	
