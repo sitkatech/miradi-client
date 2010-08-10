@@ -36,7 +36,7 @@ public class DeleteViabilityIndicatorDoer extends AbstractKeyEcologicalAttribute
 {	
 	public Vector<Integer> getRequiredObjectTypes()
 	{
-		Vector<Integer> types = new Vector(1);
+		Vector<Integer> types = new Vector<Integer>(1);
 		types.add(Indicator.getObjectType());
 
 		return types;
