@@ -106,7 +106,7 @@ public class DiagramAliasPaster extends DiagramPaster
 	
 	private void ensureVisible(ORefList refs) throws Exception
 	{
-		Vector<Command> commands = new Vector();
+		Vector<Command> commands = new Vector<Command>();
 		ViewData viewData = getProject().getDiagramViewData();
 		for(int i = 0; i < refs.size(); ++i)
 		{
