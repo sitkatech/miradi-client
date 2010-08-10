@@ -29,7 +29,7 @@ public class StringList
 {
 	public StringList()
 	{
-		this(new Vector());
+		this(new Vector<String>());
 	}
 	
 	public StringList(String[] codes)
@@ -39,7 +39,7 @@ public class StringList
 	
 	public StringList(StringList copyFrom)
 	{
-		this(new Vector(copyFrom.data));
+		this(new Vector<String>(copyFrom.data));
 	}
 	
 	public StringList(EnhancedJsonObject json)
