@@ -94,7 +94,7 @@ public class PlanningView extends TabbedView
 		objectsOnlyManagementPanel = ObjectsOnlyManagementPanel.createObjectsOnlyPanel(getMainWindow());
 		resourceManagementPanel = StrategicPlanResourcesManagementPanel.createProjectResourcesPanelWithoutBudgetColumns(getMainWindow());
 		
-		managementPanelMap = new HashMap();
+		managementPanelMap = new HashMap<String, PlanningTreeManagementPanel>();
 
 		addPlanningManagementTab(strategicPlanManagementPanel);
 		addPlanningManagementTab(monitoringPlanManagementPanel);
