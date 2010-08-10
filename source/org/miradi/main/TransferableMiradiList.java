@@ -94,12 +94,12 @@ public class TransferableMiradiList implements Transferable, Serializable
 
 	private void clear()
 	{
-		factorDeepCopies = new Vector();
-		diagramFactorDeepCopies = new Vector();
-		threatStressRatingCopies = new Vector();
+		factorDeepCopies = new Vector<String>();
+		diagramFactorDeepCopies = new Vector<String>();
+		threatStressRatingCopies = new Vector<String>();
 		
-		factorLinkDeepCopies = new Vector();
-		diagramLinkDeepCopies = new Vector();
+		factorLinkDeepCopies = new Vector<String>();
+		diagramLinkDeepCopies = new Vector<String>();
 	}
 
 	public void storeData(EAMGraphCell[] selectedCellsToCopy) throws Exception
@@ -165,11 +165,11 @@ public class TransferableMiradiList implements Transferable, Serializable
 		if (shouldDeepCopyFactor(diagramFactor.getWrappedType()))
 		{
 			Factor factor = diagramFactor.getWrappedFactor();		
-			Vector factorJsonStrings = deepCopier.createDeepCopy(deepCopiedFactorRefs, factor);
+			Vector<String> factorJsonStrings = deepCopier.createDeepCopy(deepCopiedFactorRefs, factor);
 			factorDeepCopies.addAll(factorJsonStrings);
 		}
 	
-		Vector diagramFactorJsonStrings = deepCopier.createDeepCopy(deepCopiedFactorRefs, diagramFactor);
+		Vector<String> diagramFactorJsonStrings = deepCopier.createDeepCopy(deepCopiedFactorRefs, diagramFactor);
 		diagramFactorDeepCopies.addAll(diagramFactorJsonStrings);
 		
 		addToUpperMostLeftMostCorner(diagramFactor);
@@ -198,19 +198,19 @@ public class TransferableMiradiList implements Transferable, Serializable
 	private void addFactorLinkDeepCopies(ObjectDeepCopier deepCopier, DiagramLink diagramLink)
 	{
 		FactorLink factorLink = diagramLink.getWrappedFactorLink();
-		Vector factorLinkJsonStrings = deepCopier.createDeepCopy(factorLink);
+		Vector<String> factorLinkJsonStrings = deepCopier.createDeepCopy(factorLink);
 		factorLinkDeepCopies.addAll(factorLinkJsonStrings);
 	
-		Vector diagramLinkJsonStrings = deepCopier.createDeepCopy(diagramLink);
+		Vector<String> diagramLinkJsonStrings = deepCopier.createDeepCopy(diagramLink);
 		diagramLinkDeepCopies.addAll(diagramLinkJsonStrings);	
 	}
 	
-	public Vector getDiagramFactorDeepCopies()
+	public Vector<String> getDiagramFactorDeepCopies()
 	{
 		return diagramFactorDeepCopies;
 	}
 	
-	public Vector getThreatStressRatingDeepCopies()
+	public Vector<String> getThreatStressRatingDeepCopies()
 	{
 		return threatStressRatingCopies;
 	}
@@ -248,12 +248,12 @@ public class TransferableMiradiList implements Transferable, Serializable
 		return factorRefs;
 	}
 
-	public Vector getDiagramLinkDeepCopies()
+	public Vector<String> getDiagramLinkDeepCopies()
 	{
 		return diagramLinkDeepCopies;
 	}
 
-	public Vector getFactorLinkDeepCopies()
+	public Vector<String> getFactorLinkDeepCopies()
 	{
 		return factorLinkDeepCopies;
 	}
@@ -297,11 +297,11 @@ public class TransferableMiradiList implements Transferable, Serializable
 		diagramObjectRefCopiedFrom =  new ORef(diagramType, new BaseId(diagramId)); 
 		
 		projectName = (String) objectIn.readObject();
-		factorDeepCopies = (Vector) objectIn.readObject();
-		diagramFactorDeepCopies = (Vector) objectIn.readObject();
-		threatStressRatingCopies = (Vector) objectIn.readObject();
-		factorLinkDeepCopies = (Vector) objectIn.readObject();
-		diagramLinkDeepCopies = (Vector) objectIn.readObject();
+		factorDeepCopies = (Vector<String>) objectIn.readObject();
+		diagramFactorDeepCopies = (Vector<String>) objectIn.readObject();
+		threatStressRatingCopies = (Vector<String>) objectIn.readObject();
+		factorLinkDeepCopies = (Vector<String>) objectIn.readObject();
+		diagramLinkDeepCopies = (Vector<String>) objectIn.readObject();
 		rectWithUpperMostLeftMostCorner = (Rectangle) objectIn.readObject();
 	}
 		
