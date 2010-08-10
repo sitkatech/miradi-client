@@ -30,7 +30,7 @@ public class DateUnitEffortList
 {
 	public DateUnitEffortList()
 	{
-		this(new Vector());
+		this(new Vector<DateUnitEffort>());
 	}
 	
 	public DateUnitEffortList(String listAsJsonString) throws Exception

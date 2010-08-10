@@ -25,7 +25,7 @@ public class IntVector
 {
 	public IntVector()
 	{
-		integers = new Vector();
+		integers = new Vector<Integer>();
 	}
 	
 	public void add(int intToAdd)
@@ -40,7 +40,7 @@ public class IntVector
 	
 	public int get(int index)
 	{
-		return ((Integer) integers.get(index)).intValue();
+		return integers.get(index).intValue();
 	}
 	
 	public int size()
@@ -53,5 +53,5 @@ public class IntVector
 		return integers.contains(new Integer(item));
 	}
 	
-	Vector integers;
+	Vector<Integer> integers;
 }
