@@ -34,7 +34,7 @@ public class ObjectPool
 	public ObjectPool(int objectTypeToStore)
 	{
 		objectType = objectTypeToStore;
-		map = new HashMap();
+		map = new HashMap<BaseId, Object>();
 	}
 	
 	public int getObjectType()
@@ -49,7 +49,7 @@ public class ObjectPool
 	
 	public BaseId[] getIds()
 	{
-		return (BaseId[])getRawIds().toArray(new BaseId[0]);
+		return getRawIds().toArray(new BaseId[0]);
 	}
 	
 	public IdList getIdList()
@@ -80,7 +80,7 @@ public class ObjectPool
 		map.put(id, obj);
 	}
 	
-	Set getRawIds()
+	Set<BaseId> getRawIds()
 	{
 		return map.keySet();
 	}
@@ -101,5 +101,5 @@ public class ObjectPool
 	}
 
 	private int objectType;
-	private HashMap map;
+	private HashMap<BaseId, Object> map;
 }
