@@ -66,7 +66,7 @@ public class CreateViabilityIndicatorDoer extends AbstractKeyEcologicalAttribute
 	
 	public Vector<Integer> getRequiredObjectTypes()
 	{
-		Vector<Integer> types = new Vector();
+		Vector<Integer> types = new Vector<Integer>();
 		types.add(Target.getObjectType());
 		types.add(KeyEcologicalAttribute.getObjectType());
 
