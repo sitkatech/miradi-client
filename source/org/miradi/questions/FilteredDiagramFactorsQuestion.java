@@ -37,7 +37,7 @@ public class FilteredDiagramFactorsQuestion extends ObjectQuestion
 	
 	private static Vector<Integer> getTypesWithSpecialProperties()
 	{
-		Vector<Integer> typesToExclude = new Vector();
+		Vector<Integer> typesToExclude = new Vector<Integer>();
 		typesToExclude.add(TextBox.getObjectType());
 		typesToExclude.add(GroupBox.getObjectType());
 		typesToExclude.add(Stress.getObjectType());

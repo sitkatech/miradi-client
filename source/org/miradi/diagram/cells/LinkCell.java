@@ -133,8 +133,8 @@ public class LinkCell extends EAMGraphCell implements Edge
 	private void updateBendPoints()
 	{
 		PointList bendPoints = getDiagramLink().getBendPoints();
-		Vector bendPointList = new Vector(bendPoints.getAllPoints());
-		Vector newList = new Vector();
+		Vector<Point> bendPointList = new Vector<Point>(bendPoints.getAllPoints());
+		Vector<Point> newList = new Vector<Point>();
 		newList.add(to.getLocation());
 		newList.addAll(bendPointList);
 		newList.add(from.getLocation());

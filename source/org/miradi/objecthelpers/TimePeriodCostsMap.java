@@ -206,7 +206,7 @@ public class TimePeriodCostsMap
 
 	private HashMap<DateUnit, TimePeriodCosts> getDateUnitTimePeriodCostsMap()
 	{
-		return new HashMap(data);
+		return new HashMap<DateUnit, TimePeriodCosts>(data);
 	}
 
 	private HashMap<DateUnit, TimePeriodCosts> data;

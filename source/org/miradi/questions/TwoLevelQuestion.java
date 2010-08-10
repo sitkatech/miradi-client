@@ -42,7 +42,7 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 	{
 		try 
 		{
-			Vector chocies = new Vector();
+			Vector<ChoiceItem> chocies = new Vector<ChoiceItem>();
 			TwoLevelEntry[] twoLevelEntry = twoLevelFileLoader.load();
 
 			for (int i = 0; i < twoLevelEntry.length; ++i)
@@ -54,7 +54,7 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 				chocies.add(choice);
 			}
 			
-			return (ChoiceItem[])chocies.toArray(new ChoiceItem[0]);
+			return chocies.toArray(new ChoiceItem[0]);
 		}
 		catch (Exception e)
 		{

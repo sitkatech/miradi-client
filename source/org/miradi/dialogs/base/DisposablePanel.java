@@ -42,7 +42,7 @@ public class DisposablePanel extends JPanel
 	public DisposablePanel(LayoutManager2 layoutToUse)
 	{
 		super(layoutToUse);
-		objectsActionButtonsToDispose = new Vector();
+		objectsActionButtonsToDispose = new Vector<ObjectsActionButton>();
 	}
 	
 	public ObjectsActionButton createObjectsActionButton(ObjectsAction action, ObjectPicker picker)

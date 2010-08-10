@@ -92,7 +92,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 	public ObjectDataInputField addRadioButtonFieldWithCustomLabel(int objectType, String fieldTag, ChoiceQuestion question, String customLabel)
 	{
 		RadioButtonsField radioButtonField = createRadioButtonsField(objectType, fieldTag, question);
-		Vector<JComponent> radioButtons = new Vector();
+		Vector<JComponent> radioButtons = new Vector<JComponent>();
 		CodeList allCodes = question.getAllCodes();
 		for (int index = 0; index < allCodes.size(); ++index)
 		{

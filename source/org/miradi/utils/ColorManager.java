@@ -41,7 +41,7 @@ public class ColorManager
 
 	private void clear()
 	{
-		availableColors = new Vector();
+		availableColors = new Vector<Color>();
 		
 		availableColors.add(Color.black);
 		availableColors.add(Color.blue);

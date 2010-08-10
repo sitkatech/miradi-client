@@ -42,14 +42,14 @@ public class ObjectTreeTableConfigurationQuestion extends DynamicChoiceQuestion
 		ObjectTreeTableConfigurationPool configurationPool = (ObjectTreeTableConfigurationPool) getProject().getPool(ObjectTreeTableConfiguration.getObjectType());
 		ORefList allConfigurationRefs = configurationPool.getORefList();
 
-		Vector allCustomizations = new Vector();
+		Vector<ChoiceItem> allCustomizations = new Vector<ChoiceItem>();
 		for (int i = 0; i < allConfigurationRefs.size(); ++i)
 		{
 			ChoiceItem choiceItem = createChoiceItem(getProject(), allConfigurationRefs.get(i));
 			allCustomizations.add(choiceItem);
 		}
 
-		return (ChoiceItem[]) allCustomizations.toArray(new ChoiceItem[0]);	
+		return allCustomizations.toArray(new ChoiceItem[0]);	
 	}
 
 	private static ChoiceItem createChoiceItem(Project project, ORef configurationRef)

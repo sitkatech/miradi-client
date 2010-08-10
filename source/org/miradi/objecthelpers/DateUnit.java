@@ -304,7 +304,7 @@ public class DateUnit implements Comparable<DateUnit>
 	
 	public Vector<DateUnit> getSuperDateUnitHierarchy(int fiscalYearFirstMonth)
 	{
-		Vector<DateUnit> superDateUnits = new Vector();
+		Vector<DateUnit> superDateUnits = new Vector<DateUnit>();
 		DateUnit superDateUnit = getSafeSuperDateUnit(fiscalYearFirstMonth);
 		while(superDateUnit != null)
 		{

@@ -225,9 +225,9 @@ public class FactorMoveHandler
 	{
 		int deltaX = factorCell.getLocation().x - factorCell.getDiagramFactor().getLocation().x;
 		int deltaY = factorCell.getLocation().y - factorCell.getDiagramFactor().getLocation().y;
-		Vector<Command> commandsToMove = new Vector();
+		Vector<Command> commandsToMove = new Vector<Command>();
 		if (factorCell.getWrappedType() != GroupBox.getObjectType())
-			return new Vector();
+			return new Vector<Command>();
 		
 		ORefList groupChildRefs = factorCell.getDiagramFactor().getGroupBoxChildrenRefs();
 		for (int i = 0; i < groupChildRefs.size(); ++i)

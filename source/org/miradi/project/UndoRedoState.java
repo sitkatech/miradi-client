@@ -30,8 +30,8 @@ public class UndoRedoState
 {
 	public UndoRedoState()
 	{
-		undoableCommands = new Vector();
-		redoableCommands = new Vector();
+		undoableCommands = new Vector<Command>();
+		redoableCommands = new Vector<Command>();
 	}
 	
 	public int size()

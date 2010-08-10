@@ -120,7 +120,7 @@ abstract public class ThreatFormula
 		veryHigh += ((high - newHigh) / 3);
 		high = newHigh;
 	
-		HashMap<Integer, Integer> computedValues = new HashMap();
+		HashMap<Integer, Integer> computedValues = new HashMap<Integer, Integer>();
 		computedValues.put(1, low);
 		computedValues.put(2, medium);
 		computedValues.put(3, high);

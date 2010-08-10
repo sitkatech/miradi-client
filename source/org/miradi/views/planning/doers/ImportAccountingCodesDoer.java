@@ -111,7 +111,7 @@ public class ImportAccountingCodesDoer extends ViewDoer
 	private static AccountingCode[] createAccountingCodeObjectsFromDataObjects(Project project, AccountingCodeData[] accountingCodes) throws Exception
 	{
 		AccountingCodesDataMap map = new AccountingCodesDataMap(project);
-		Vector accountingCodeVector = new Vector();
+		Vector<AccountingCode> accountingCodeVector = new Vector<AccountingCode>();
 		for (int i=0; i<accountingCodes.length; ++i) 
 		{
 			AccountingCodeData AccountingCodeData = accountingCodes[i];
@@ -135,7 +135,7 @@ public class ImportAccountingCodesDoer extends ViewDoer
 					AccountingCode.TAG_CODE, AccountingCodeData.getCode()));
 		}
 
-		AccountingCode[] toArray = (AccountingCode[])accountingCodeVector.toArray(new AccountingCode[0]);
+		AccountingCode[] toArray = accountingCodeVector.toArray(new AccountingCode[0]);
 		return toArray;
 	}
 	

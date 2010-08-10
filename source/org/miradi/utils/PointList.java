@@ -57,9 +57,9 @@ public class PointList
 		this(new EnhancedJsonObject(listAsJsonString));
 	}
 	
-	private PointList(List dataToUse)
+	private PointList(List<Point> dataToUse)
 	{
-		points = new Vector(dataToUse);
+		points = new Vector<Point>(dataToUse);
 	}
 	
 	public int size()
@@ -77,7 +77,7 @@ public class PointList
 		points.add(point);
 	}
 	
-	public void addAll(List listToAdd)
+	public void addAll(List<Point> listToAdd)
 	{
 		points.addAll(listToAdd);
 	}
@@ -92,7 +92,7 @@ public class PointList
 		points.set(index, point);
 	}
 	
-	public Vector getAllPoints()
+	public Vector<Point> getAllPoints()
 	{
 		return points;
 	}

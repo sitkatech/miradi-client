@@ -105,7 +105,7 @@ public class ThreatTargetVirtualLinkHelper
 	public int calculateStressBasedThreatRating(ORef threatRef, ORef targetRef)
 	{
 		ORefList ratingRefs = getThreatStressRatingRefs(threatRef, targetRef);
-		Vector<Integer> ratingBundleValues = new Vector();
+		Vector<Integer> ratingBundleValues = new Vector<Integer>();
 		for (int i = 0; i < ratingRefs.size(); ++i)
 		{
 			ThreatStressRating rating = ThreatStressRating.find(getProject(), ratingRefs.get(i));

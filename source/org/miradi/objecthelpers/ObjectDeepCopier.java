@@ -49,7 +49,7 @@ public class ObjectDeepCopier
 
 	private void clear()
 	{
-		allOwnedObjects = new Vector();
+		allOwnedObjects = new Vector<String>();
 	}
 	
 	private void recursivelyCreateDeepCopy(ORefList deepCopiedFactorRefs, BaseObject objectToDeepCopy)

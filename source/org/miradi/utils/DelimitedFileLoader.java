@@ -30,7 +30,7 @@ public class DelimitedFileLoader
 	public Vector<Vector<String>> getDelimitedContents(Reader rawReader) throws IOException
 	{
 		BufferedReader reader = new BufferedReader(rawReader);
-		Vector<Vector<String>> lineVector = new Vector();
+		Vector<Vector<String>> lineVector = new Vector<Vector<String>>();
 		while(reader.ready())
 		{
 			String line = reader.readLine();
@@ -42,7 +42,7 @@ public class DelimitedFileLoader
 			
 			line = translateLine(line);
 			StringTokenizer st = new StringTokenizer(line, TAB);
-			Vector<String> thisLine = new Vector();
+			Vector<String> thisLine = new Vector<String>();
 			while(st.hasMoreTokens())
 			{
 				String token = st.nextToken().trim();
@@ -60,7 +60,7 @@ public class DelimitedFileLoader
 		return line;
 	}
 
-	private static void addElementToLine(Vector thisLine, String token)
+	private static void addElementToLine(Vector<String> thisLine, String token)
 	{
 		if(token.startsWith(QUOTE))
 			token = token.substring(1, token.length() - 1);

@@ -90,7 +90,7 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 			indicatorRefs.addAll(allDiagramFactors[index].getDirectOrIndirectIndicatorRefSet());
 		}
 		
-		HashSet<Indicator> indicators = new HashSet();
+		HashSet<Indicator> indicators = new HashSet<Indicator>();
 		for(ORef indicatorRef : indicatorRefs)
 		{
 			Indicator indicator = Indicator.find(getProject(), indicatorRef);

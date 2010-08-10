@@ -48,7 +48,7 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractThreatRating
 
 	private Vector<Stress> loadStressesFromTarget(Target targetToUse)
 	{
-		Vector stresses = new Vector();
+		Vector<Stress> stresses = new Vector<Stress>();
 		for (int index = 0; index < targetToUse.getStressRefs().size(); ++index)
 		{
 			Stress stress = Stress.find(getProject(), targetToUse.getStressRefs().get(index));

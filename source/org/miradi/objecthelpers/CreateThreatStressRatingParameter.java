@@ -41,7 +41,7 @@ public class CreateThreatStressRatingParameter extends CreateObjectParameter
 	
 	public String getFormatedDataString()
 	{
-		HashMap dataPairs = new HashMap();
+		HashMap<String, ORef> dataPairs = new HashMap<String, ORef>();
 		dataPairs.put("StressRef", stressRef);
 		dataPairs.put("ThreatRef", threatRef);
 		

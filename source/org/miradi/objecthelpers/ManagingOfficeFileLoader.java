@@ -30,7 +30,7 @@ public class ManagingOfficeFileLoader extends TwoLevelFileLoader
 
 	protected Vector<TwoLevelEntry> processVector(Vector<Vector<String>> fileVector)
 	{
-		Vector entries = new Vector();
+		Vector<TwoLevelEntry> entries = new Vector<TwoLevelEntry>();
 		for (int i  = 0; i < fileVector.size(); ++i)
 		{
 			Vector row = fileVector.get(i);

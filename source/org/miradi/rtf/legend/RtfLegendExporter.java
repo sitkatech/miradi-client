@@ -73,7 +73,7 @@ class LegendModelExporter extends AbstractSingleTableExporter
 	@Override
 	public Vector<Integer> getAllTypes()
 	{
-		return new Vector();
+		return new Vector<Integer>();
 	}
 
 	@Override

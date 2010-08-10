@@ -39,7 +39,7 @@ public class DirectThreatQuestion extends DynamicChoiceQuestion
 	@Override
 	public ChoiceItem[] getChoices()
 	{
-		Vector choiceItems = new Vector();
+		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
 		ChoiceItem notSpecifiedChoice = new ChoiceItem(ORef.INVALID.toString(), EAM.text("Not Specified"));
 		choiceItems.add(notSpecifiedChoice);
 		
@@ -50,7 +50,7 @@ public class DirectThreatQuestion extends DynamicChoiceQuestion
 			choiceItems.add(new ChoiceItem(directThreat.getRef().toString(), directThreat.getLabel()));
 		}
 		
-		return (ChoiceItem[]) choiceItems.toArray(new ChoiceItem[0]);
+		return choiceItems.toArray(new ChoiceItem[0]);
 	}
 	
 	public Project getProject()

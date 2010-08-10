@@ -44,7 +44,7 @@ public class PlanningViewSingleLevelQuestion extends DynamicChoiceQuestion
 
 	private Vector<ChoiceItem> getSingleLevelChoices()
 	{
-		Vector<ChoiceItem> choices = new Vector();
+		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
 
 		choices.add(new ChoiceItem(Goal.OBJECT_NAME, EAM.text("Goals Only")));
 		choices.add(new ChoiceItem(Objective.OBJECT_NAME, EAM.text("Objectives Only")));

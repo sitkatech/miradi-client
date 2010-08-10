@@ -60,7 +60,7 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 	
 	public static Vector<String> getAllPossibleWorkUnitsColumnGroups()
 	{
-		Vector<String> columnGroups = new Vector();
+		Vector<String> columnGroups = new Vector<String>();
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_WORK_UNITS_COLUMN_CODE);
@@ -72,7 +72,7 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 
 	public static Vector<String> getAllPossibleExpensesColumnGroups()
 	{
-		Vector<String> columnGroups = new Vector();
+		Vector<String> columnGroups = new Vector<String>();
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE);
@@ -85,7 +85,7 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 
 	public static Vector<String> getAllPossibleBudgetTotalsColumnGroups()
 	{
-		Vector<String> columnGroups = new Vector();
+		Vector<String> columnGroups = new Vector<String>();
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE);
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE);

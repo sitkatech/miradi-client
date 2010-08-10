@@ -42,7 +42,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 	public MultiTableRowSortController(Project projectToUse)
 	{
 		project = projectToUse;
-		tablesToSort = new Vector();
+		tablesToSort = new Vector<TableWithRowHeightSaver>();
 		
 		project.addCommandExecutedListener(this);
 	}

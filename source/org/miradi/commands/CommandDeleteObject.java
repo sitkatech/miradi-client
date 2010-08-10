@@ -92,9 +92,9 @@ public class CommandDeleteObject extends Command
 	}
 	
 	@Override
-	public HashMap getLogData()
+	public HashMap<String, Comparable> getLogData()
 	{
-		HashMap dataPairs = new HashMap();
+		HashMap<String, Comparable> dataPairs = new HashMap<String, Comparable>();
 		dataPairs.put("OBJECT_TYPE", new Integer(type));
 		dataPairs.put(BaseId.class.getSimpleName(), id);
 		return dataPairs;

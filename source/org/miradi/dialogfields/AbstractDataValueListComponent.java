@@ -32,7 +32,7 @@ abstract public class AbstractDataValueListComponent extends AbstractQuestionEdi
 	{
 		super(questionToUse, columnCount);
 		
-		listSelectionListeners = new Vector();
+		listSelectionListeners = new Vector<ListSelectionListener>();
 	}
 	
 	@Override

@@ -210,7 +210,7 @@ public class ConProMiradiCodeMapHelper
 	
 	public static HashMap<String, String> reverseMap(HashMap<String, String> map)
 	{
-		HashMap reversedMap = new HashMap<String, String>();
+		HashMap<String, String> reversedMap = new HashMap<String, String>();
 		Set<String> keys = map.keySet();
 		for(String key : keys)
 		{

@@ -52,7 +52,7 @@ abstract public class SortableRowTable extends TableWithColumnWidthAndSequenceSa
 	public void sort(int sortByTableColumn) 
 	{
 		Comparator comparator = getComparator(sortByTableColumn);
-		Vector rows = new Vector();
+		Vector<Integer> rows = new Vector<Integer>();
 		for(int row = 0; row < getRowCount(); ++row)
 		{
 			rows.add(new Integer(row));
@@ -64,7 +64,7 @@ abstract public class SortableRowTable extends TableWithColumnWidthAndSequenceSa
 		if (sortByTableColumn == currentSortColumn && rows.equals(unsortedRows))
 			Collections.reverse(rows);
 
-		getAbstractObjectTableModel().setNewRowOrder(((Integer[])rows.toArray(new Integer[0])));
+		getAbstractObjectTableModel().setNewRowOrder(rows.toArray(new Integer[0]));
 		
 		// TODO: Should memorize sort order for each table
 		currentSortColumn = sortByTableColumn;

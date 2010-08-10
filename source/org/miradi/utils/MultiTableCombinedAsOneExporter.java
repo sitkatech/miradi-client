@@ -39,7 +39,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 
 	public void clear()
 	{
-		tables = new Vector();
+		tables = new Vector<AbstractTableExporter>();
 	}
 	
 	public void addAsMasterTable(AbstractTableExporter table)

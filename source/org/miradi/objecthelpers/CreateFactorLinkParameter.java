@@ -41,7 +41,7 @@ public class CreateFactorLinkParameter extends CreateObjectParameter
 	
 	public String getFormatedDataString()
 	{
-		HashMap dataPairs = new HashMap();
+		HashMap<String, ORef> dataPairs = new HashMap<String, ORef>();
 		dataPairs.put("FactorFromRef", fromRef);
 		dataPairs.put("FactorToRef", toRef);
 		return formatDataString(dataPairs);

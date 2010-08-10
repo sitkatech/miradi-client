@@ -49,7 +49,7 @@ abstract public class ObjectTable extends SortableRowTable implements ObjectPick
 	{
 		super(mainWindowToUse, modelToUse, modelToUse.getUniqueTableModelIdentifier());
 		
-		selectionListeners = new Vector();
+		selectionListeners = new Vector<ListSelectionListener>();
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		resizeTable(4);
@@ -113,7 +113,7 @@ abstract public class ObjectTable extends SortableRowTable implements ObjectPick
 	public BaseObject[] getSelectedObjects()
 	{
 		ORefList[] selectedHierarchies = getSelectedHierarchies();
-		Vector<BaseObject> selectedObjects = new Vector();
+		Vector<BaseObject> selectedObjects = new Vector<BaseObject>();
 		for (int i = 0; i < selectedHierarchies.length; ++i)
 		{
 			ORefList thisSelectionHierarchy = selectedHierarchies[i];
@@ -253,7 +253,7 @@ abstract public class ObjectTable extends SortableRowTable implements ObjectPick
 		
 		for(int i = 0; i < selectionListeners.size(); ++i)
 		{
-			ListSelectionListener listener = (ListSelectionListener)selectionListeners.get(i);
+			ListSelectionListener listener = selectionListeners.get(i);
 			listener.valueChanged(null);
 		}
 	}
@@ -263,7 +263,7 @@ abstract public class ObjectTable extends SortableRowTable implements ObjectPick
 		throw new RuntimeException("Method is currently unused and has no implementation");
 	}
 
-	private Vector selectionListeners;
+	private Vector<ListSelectionListener> selectionListeners;
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
 	private BasicTableCellEditorOrRendererFactory otherRenderer;
 	private CodeListRendererFactory codeListRenderer;

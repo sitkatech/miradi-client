@@ -479,7 +479,7 @@ public class ProjectCalendar implements CommandExecutedListener
 
 	public Vector<DateUnit> getProjectYearsDateUnits(DateRange dateRange)
 	{
-		Vector<DateUnit> dateUnits = new Vector();
+		Vector<DateUnit> dateUnits = new Vector<DateUnit>();
 		MultiCalendar start = dateRange.getStartDate();
 		MultiCalendar end = dateRange.getEndDate();
 

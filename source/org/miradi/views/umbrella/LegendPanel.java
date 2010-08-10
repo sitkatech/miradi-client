@@ -49,7 +49,7 @@ abstract public class LegendPanel extends DisposablePanel implements ActionListe
 		super(new BasicGridLayout(0, 1));
 	
 		project = projectToUse;
-		checkBoxes = new Hashtable();
+		checkBoxes = new Hashtable<String, JCheckBox>();
 		buttonsToDispose = new HashSet<ObjectsActionButton>();
 		setBackground(AppPreferences.getControlPanelBackgroundColor());
 	}
@@ -71,7 +71,7 @@ abstract public class LegendPanel extends DisposablePanel implements ActionListe
 
 	protected JCheckBox findCheckBox(Object property)
 	{
-		return (JCheckBox)checkBoxes.get(property);
+		return checkBoxes.get(property);
 	}
 
 	public boolean isSelected(String property)
@@ -137,6 +137,6 @@ abstract public class LegendPanel extends DisposablePanel implements ActionListe
 
 	protected static final String LAYER = "LAYER";
 	Project project;
-	protected Hashtable checkBoxes;
+	protected Hashtable<String, JCheckBox> checkBoxes;
 	private HashSet<ObjectsActionButton> buttonsToDispose;
 }

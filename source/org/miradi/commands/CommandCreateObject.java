@@ -96,7 +96,7 @@ public class CommandCreateObject extends Command
 	@Override
 	public HashMap getLogData()
 	{
-		HashMap dataPairs = new HashMap();
+		HashMap<String, Comparable> dataPairs = new HashMap<String, Comparable>();
 		dataPairs.put("OBJECT_TYPE", new Integer(type));
 		if (parameter!=null)
 			dataPairs.put(parameter.getClass().getSimpleName(), parameter.getFormatedDataString());

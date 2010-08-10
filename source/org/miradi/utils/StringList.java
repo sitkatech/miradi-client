@@ -34,7 +34,7 @@ public class StringList
 	
 	public StringList(String[] codes)
 	{
-		this(new Vector(Arrays.asList(codes)));
+		this(new Vector<String>(Arrays.asList(codes)));
 	}
 	
 	public StringList(StringList copyFrom)
@@ -57,9 +57,9 @@ public class StringList
 		this(new EnhancedJsonObject(listAsJsonString));
 	}
 	
-	protected StringList(List dataToUse)
+	protected StringList(List<String> dataToUse)
 	{
-		data = new Vector(dataToUse);
+		data = new Vector<String>(dataToUse);
 	}
 	
 	public int size()
@@ -121,7 +121,7 @@ public class StringList
 	
 	public Vector<String> toVector()
 	{
-		return new Vector(data);
+		return new Vector<String>(data);
 	}
 	
 	public String[] toArray()

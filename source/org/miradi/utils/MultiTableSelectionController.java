@@ -89,7 +89,7 @@ public class MultiTableSelectionController implements ListSelectionListener
 		propagateSelectionsFlag = false;
 	}
 
-	private Vector<JTable> tables = new Vector();
+	private Vector<JTable> tables = new Vector<JTable>();
 	private MultiTableSelectionChangingListener selectionChangingListener;
 	private boolean propagateSelectionsFlag;
 }

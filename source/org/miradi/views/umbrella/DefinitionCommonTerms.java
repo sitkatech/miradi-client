@@ -27,7 +27,7 @@ public class DefinitionCommonTerms
 {
     static
     {
-    	Hashtable defs = new Hashtable();
+    	Hashtable<String, Definition> defs = new Hashtable<String, Definition>();
 		Definition def = Definition.createDefinitionFromTextString(EAM.text("Goal"), EAM.text("Goal - A formal statement detailing a desired impact of a project. " +
 		"In conservation projects, it is the desired future status of a target. In Miradi, a goal is represented by a small blue oval."));
 		defs.put("Definition:Goal", def);

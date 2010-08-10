@@ -25,7 +25,7 @@ public class StaticQuestionManager
 {
 	public static void initialize()
 	{
-		questions = new HashMap();
+		questions = new HashMap<String, ChoiceQuestion>();
 		addQuestion(new InternalQuestionWithoutValues());
 		
 		addQuestion(new BudgetTimePeriodQuestion());

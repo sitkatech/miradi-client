@@ -43,7 +43,7 @@ public class DirectThreatPoolQuestion extends ObjectQuestion
 	public ChoiceItem[] getChoices()
 	{
 		ChoiceItem[] choices = super.getChoices();
-		Vector<ChoiceItem> choicesWithUnspecified = new Vector();
+		Vector<ChoiceItem> choicesWithUnspecified = new Vector<ChoiceItem>();
 		choicesWithUnspecified.add(new ChoiceItem("", EAM.text("Unspecified")));
 		choicesWithUnspecified.addAll(Arrays.asList(choices));
 		

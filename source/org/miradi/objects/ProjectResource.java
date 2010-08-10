@@ -180,7 +180,7 @@ public class ProjectResource extends BaseObject
 	
 	public static CodeList getSortedProjectResourceCodes(Project project, ORefSet resourceRefs)
 	{
-		Vector<ProjectResource> sortedProjectResources = new Vector();
+		Vector<ProjectResource> sortedProjectResources = new Vector<ProjectResource>();
 		for(ORef projectResourceRef : resourceRefs)
 		{
 			ProjectResource projectResource = ProjectResource.find(project, projectResourceRef);

@@ -70,15 +70,15 @@ public class ThreatTargetChainWalker
 	private void initializeChain(Factor startingFactorToUse)
 	{
 		setStartingFactor(startingFactorToUse);
-		resultingThreats = new HashSet();
-		resultingTargets = new HashSet();
-		processedLinks = new HashSet();
+		resultingThreats = new HashSet<Cause>();
+		resultingTargets = new HashSet<Factor>();
+		processedLinks = new HashSet<FactorLink>();
 	}
 	
 	private void buildChain(int direction)
 	{
-		HashSet<Factor> linkedFactors = new HashSet();
-		HashSet<Factor> unprocessedFactors = new HashSet();
+		HashSet<Factor> linkedFactors = new HashSet<Factor>();
+		HashSet<Factor> unprocessedFactors = new HashSet<Factor>();
 		linkedFactors.add(getStartingFactor());
 		
 		ORefList allFactorLinkRefs = getProject().getFactorLinkPool().getRefList();
@@ -98,7 +98,7 @@ public class ThreatTargetChainWalker
 
 	private HashSet<Factor> getFactorsToProcess(int direction, ORefList allFactorLinkRefs, Factor factorToProcess)
 	{
-		HashSet<Factor> unprocessedFactors = new HashSet();
+		HashSet<Factor> unprocessedFactors = new HashSet<Factor>();
 		for(int i = 0; i < allFactorLinkRefs.size(); ++i)
 		{
 			FactorLink link = FactorLink.find(getProject(), allFactorLinkRefs.get(i));
