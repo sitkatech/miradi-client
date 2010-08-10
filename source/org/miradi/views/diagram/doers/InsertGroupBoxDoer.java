@@ -119,7 +119,7 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 	
 	public static boolean containsDifferentType(FactorCell[] selectedFactorCells)
 	{
-		HashSet<Integer> differentTypes = new HashSet();
+		HashSet<Integer> differentTypes = new HashSet<Integer>();
 		for (int i = 0; i < selectedFactorCells.length; ++i)
 		{
 			int wrappedType = selectedFactorCells[i].getWrappedType();
