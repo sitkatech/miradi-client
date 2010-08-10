@@ -138,7 +138,7 @@ public class StringRefMap
 		return "";
 	}
 	
-	public Set getKeys()
+	public Set<String> getKeys()
 	{
 		return data.keySet();
 	}
