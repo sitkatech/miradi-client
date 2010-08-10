@@ -59,8 +59,8 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 
 	private TimePeriodCostsMap computeTotalTimePeriodCostsMap()	throws Exception
 	{
-		Set allIndicators = getIncludedDiagramIndicators();
-		Set nonDraftStrategies = getIncludedNonDraftStrategies();
+		Set<BaseObject> allIndicators = getIncludedDiagramIndicators();
+		Set<BaseObject> nonDraftStrategies = getIncludedNonDraftStrategies();
 		
 		TimePeriodCostsMap totalTimePeriodCostsMap = new TimePeriodCostsMap();
 		totalTimePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(allIndicators));
@@ -68,9 +68,9 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 		return totalTimePeriodCostsMap;
 	}
 
-	private HashSet<Indicator> getIncludedDiagramIndicators() throws Exception
+	private HashSet<BaseObject> getIncludedDiagramIndicators() throws Exception
 	{
-		HashSet<Indicator> indicators = new HashSet();
+		HashSet<BaseObject> indicators = new HashSet<BaseObject>();
 		ORefList diagramRefsToExtractIndicatorsFrom = getIncludedDiagramRefs();
 		for (int index = 0; index < diagramRefsToExtractIndicatorsFrom.size(); ++index)
 		{
@@ -112,9 +112,9 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 		return totalTimePeriodCostsMap;
 	}
 
-	private Set<Strategy> getIncludedNonDraftStrategies() throws Exception
+	private Set<BaseObject> getIncludedNonDraftStrategies() throws Exception
 	{
-		Set<Strategy> nonDraftStrategies = new HashSet();
+		Set<BaseObject> nonDraftStrategies = new HashSet<BaseObject>();
 		ORefList diagramRefsToExtractIndicatorsFrom = getIncludedDiagramRefs();
 		for (int index = 0; index < diagramRefsToExtractIndicatorsFrom.size(); ++index)
 		{
@@ -139,7 +139,7 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 
 	private Set<Strategy> getNonDraftStrategies(DiagramObject diagramObject)
 	{
-		Set<Strategy> nonDraftStrategies = new HashSet();
+		Set<Strategy> nonDraftStrategies = new HashSet<Strategy>();
 		Set<Factor> strategies = diagramObject.getFactors(Strategy.getObjectType());
 		for(Factor factor : strategies)
 		{
