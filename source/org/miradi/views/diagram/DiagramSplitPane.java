@@ -215,13 +215,13 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		public DiagramCards()
 		{
 			super(new BorderLayout());
-			cards = new Vector();
+			cards = new Vector<DiagramComponent>();
 		}
 		
 		public void clear()
 		{
 			removeAll();
-			cards = new Vector();
+			cards = new Vector<DiagramComponent>();
 		}
 
 		public void showDiagram(ORef ref) throws Exception
@@ -279,7 +279,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		{
 			for (int i = 0; i < cards.size(); ++i)
 			{
-				DiagramComponent diagramComponent = (DiagramComponent) cards.get(i);
+				DiagramComponent diagramComponent = cards.get(i);
 				ORef diagramObjectRef = diagramComponent.getDiagramModel().getDiagramObject().getRef();
 				if (diagramObjectRef.equals(ref))
 				{
@@ -292,7 +292,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		
 		public DiagramComponent[] getAllDiagramComponents()
 		{
-			return (DiagramComponent[]) cards.toArray(new DiagramComponent[0]);
+			return cards.toArray(new DiagramComponent[0]);
 		}
 		
 		public int getCardCount()
@@ -300,7 +300,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 			return cards.size();
 		}
 		
-		Vector cards;
+		Vector<DiagramComponent> cards;
 	}
 		
 	public void showCard(ORef diagramObjectRef)
