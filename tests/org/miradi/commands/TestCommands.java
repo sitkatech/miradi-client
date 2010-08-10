@@ -397,7 +397,7 @@ public class TestCommands extends EAMTestCase
 	{
 		public UndoListener()
 		{
-			undoneCommands = new Vector();
+			undoneCommands = new Vector<Command>();
 		}
 		
 		public void commandExecuted(CommandExecutedEvent event)
@@ -406,7 +406,7 @@ public class TestCommands extends EAMTestCase
 			
 		}
 
-		Vector undoneCommands;
+		Vector<Command> undoneCommands;
 	}
 	
 	public void testUndoFiresCommandUndone() throws Exception
