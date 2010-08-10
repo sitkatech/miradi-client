@@ -34,12 +34,12 @@ public class StringMap
 {
 	public StringMap()
 	{
-		this(new HashMap());
+		this(new HashMap<String, String>());
 	}
 
 	public StringMap(StringMap copyFrom)
 	{
-		this(new HashMap(copyFrom.data));
+		this(new HashMap<String, String>(copyFrom.data));
 	}
 
 	public StringMap(EnhancedJsonObject json)
