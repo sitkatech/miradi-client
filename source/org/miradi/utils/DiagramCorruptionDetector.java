@@ -61,7 +61,7 @@ public class DiagramCorruptionDetector
 	protected static Vector<String> getCorruptedDiagramLinksErrorMessages(Project project, DiagramObject diagramObject)
 	{
 		String diagramName = diagramObject.toString();
-		Vector<String> errorMessages = new Vector();
+		Vector<String> errorMessages = new Vector<String>();
 		ORefList diagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
 		for (int index = 0; index < diagramLinkRefs.size(); ++index)
 		{
