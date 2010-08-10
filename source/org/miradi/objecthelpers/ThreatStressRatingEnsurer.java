@@ -53,7 +53,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 	
 	public void createOrDeleteThreatStressRatingsAsNeeded() throws Exception
 	{
-		HashSet<ThreatStressPair> threatStressPairs = new HashSet();
+		HashSet<ThreatStressPair> threatStressPairs = new HashSet<ThreatStressPair>();
 		ThreatTargetChainWalker chainObject = new ThreatTargetChainWalker(getProject());
 		ORefList allTargetRefs = getProject().getTargetPool().getRefList();
 		for (int index = 0; index < allTargetRefs.size(); ++index)
@@ -77,7 +77,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 
 	private void createThreatStressRatings(HashSet<ThreatStressPair> desiredThreatStressPairs, HashSet<ThreatStressPair> existingThreatStressPairs) throws Exception
 	{
-		HashSet<ThreatStressPair> toCreate = new HashSet(desiredThreatStressPairs);
+		HashSet<ThreatStressPair> toCreate = new HashSet<ThreatStressPair>(desiredThreatStressPairs);
 		toCreate.removeAll(existingThreatStressPairs);
 		for(ThreatStressPair threatStressPair : toCreate)
 		{
@@ -91,7 +91,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 	
 	private void deleteThreatStressRatings(HashSet<ThreatStressPair> desiredThreatStressPairs, HashSet<ThreatStressPair> existingThreatStressPairs) throws Exception
 	{
-		HashSet<ThreatStressPair> toDelete = new HashSet(existingThreatStressPairs);
+		HashSet<ThreatStressPair> toDelete = new HashSet<ThreatStressPair>(existingThreatStressPairs);
 		toDelete.removeAll(desiredThreatStressPairs);
 		for(ThreatStressPair threatStressPair : toDelete)
 		{		
@@ -103,7 +103,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 	
 	private void deleteThreatStressRating(ThreatStressRating threatStressRating) throws Exception
 	{
-		Vector<Command> commandsToDeleteThreatStressRating = new Vector();
+		Vector<Command> commandsToDeleteThreatStressRating = new Vector<Command>();
 		commandsToDeleteThreatStressRating.addAll(threatStressRating.createCommandsToDeleteChildrenAndObject());
 		
 		getProject().executeAsSideEffect(commandsToDeleteThreatStressRating);
@@ -112,7 +112,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 	private HashSet<ThreatStressPair> createThreatStressFromPoolPairs()
 	{
 		ORefSet allThreatStressRatingRefs = getProject().getThreatStressRatingPool().getRefSet();
-		HashSet<ThreatStressPair> threatStressPairs = new HashSet();
+		HashSet<ThreatStressPair> threatStressPairs = new HashSet<ThreatStressPair>();
 		for(ORef threatStressRatingRef : allThreatStressRatingRefs)
 		{
 			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRef);
@@ -130,7 +130,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 	
 	private HashSet<ThreatStressPair> createThreatStressPairs(ORefSet threatRefs, ORefSet stressRefs)
 	{
-		HashSet<ThreatStressPair> threatStressPairs = new HashSet();
+		HashSet<ThreatStressPair> threatStressPairs = new HashSet<ThreatStressPair>();
 		for(ORef threatRef : threatRefs)
 		{
 			for(ORef stressRef : stressRefs)
