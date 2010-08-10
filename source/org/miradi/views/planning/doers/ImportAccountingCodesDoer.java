@@ -144,7 +144,7 @@ public class ImportAccountingCodesDoer extends ViewDoer
 
 class ImportFileErrorException extends Exception {}
 
-class AccountingCodesDataMap extends HashMap
+class AccountingCodesDataMap extends HashMap<String, String>
 {
 	public AccountingCodesDataMap(Project project)
 	{
