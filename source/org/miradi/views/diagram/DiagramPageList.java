@@ -100,13 +100,13 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		getObjectPoolTableModel().rowsWereAddedOrRemoved();
 	}
 
-	private Vector buildCommandsToSetCurrentDiagramObjectRef(ORef selectedRef) throws Exception
+	private Vector<CommandSetObjectData> buildCommandsToSetCurrentDiagramObjectRef(ORef selectedRef) throws Exception
 	{
 		ORef currentDiagramRef = getCurrentDiagramViewDataRef();
 		if (currentDiagramRef.equals(selectedRef))
-			return new Vector();
+			return new Vector<CommandSetObjectData>();
 	
-		Vector commandsVector = new Vector();
+		Vector<CommandSetObjectData> commandsVector = new Vector<CommandSetObjectData>();
 		ViewData viewData = project.getDiagramViewData();
 		commandsVector.add(new CommandSetObjectData(viewData.getRef(), getCurrentDiagramViewDataTag(), selectedRef));
 		return commandsVector;
@@ -163,21 +163,21 @@ abstract public class DiagramPageList extends ObjectPoolTable
 
 		private void setCurrentDiagram() throws Exception
 		{
-			Vector commandsToExecute = new Vector();
+			Vector<Command> commandsToExecute = new Vector<Command>();
 			commandsToExecute.addAll(buildCommandsToSetCurrentDiagramObjectRef(getSelectedRef()));
 			
 			if (commandsToExecute.size() == 0)
 				return;
 			
 			commandsToExecute.addAll(createSwitchToDefaultModeCommand());
-			project.executeCommandsAsTransaction((Command[]) commandsToExecute.toArray(new Command[0]));		
+			project.executeCommandsAsTransaction(commandsToExecute.toArray(new Command[0]));		
 		}
 
-		private Vector createSwitchToDefaultModeCommand() throws Exception
+		private Vector<Command> createSwitchToDefaultModeCommand() throws Exception
 		{
 			ViewData viewData = project.getCurrentViewData();
 			if (viewData.getData(ViewData.TAG_CURRENT_MODE).equals(ViewData.MODE_DEFAULT))
-				return new Vector();
+				return new Vector<Command>();
 			
 			return ShowFullModelModeDoer.createCommandsToSwithToDefaultMode(viewData.getRef());
 		}
