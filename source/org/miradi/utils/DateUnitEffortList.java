@@ -48,9 +48,9 @@ public class DateUnitEffortList
 		}
 	}
 	
-	private DateUnitEffortList(List listToUse)
+	private DateUnitEffortList(List<DateUnitEffort> listToUse)
 	{
-		data = new Vector(listToUse);
+		data = new Vector<DateUnitEffort>(listToUse);
 	}
 	
 	public EnhancedJsonObject toJson()
