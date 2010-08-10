@@ -244,6 +244,5 @@ public class PointList
 	}
 	
 	protected static final String TAG_POINTS = "Points";
-	//TODO rename data to points
 	private Vector<Point> points;
 }
