@@ -36,7 +36,7 @@ public class ORefList
 {
 	public ORefList()
 	{
-		this(new Vector());
+		this(new Vector<ORef>());
 	}
 	
 	public ORefList(BaseObject baseObject)
