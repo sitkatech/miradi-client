@@ -116,7 +116,7 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 
 	protected Vector<DiagramFactor> getSelectedDiagramFactors()
 	{
-		Vector<DiagramFactor> diagramFactors = new Vector();
+		Vector<DiagramFactor> diagramFactors = new Vector<DiagramFactor>();
 		EAMGraphCell[] cells = getOnlySelectedCells();
 		for (int index = 0; index < cells.length; ++index)
 		{
