@@ -71,7 +71,7 @@ public class RootTreeTableNode extends AbstractRelevancyNode
 	@Override
 	public void rebuild() throws Exception
 	{
-		strategyChildren = new Vector();
+		strategyChildren = new Vector<StrategyRelevancyNode>();
 		for (int index = 0; index < strategyRefs.size(); ++index)
 		{
 			Strategy strategy = Strategy.find(getProject(), strategyRefs.get(index));

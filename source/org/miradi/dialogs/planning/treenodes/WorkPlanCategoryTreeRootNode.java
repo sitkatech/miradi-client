@@ -52,7 +52,7 @@ public class WorkPlanCategoryTreeRootNode extends AbstractPlanningTreeNode
 	@Override
 	public void rebuild() throws Exception
 	{
-		children = new Vector();
+		children = new Vector<AbstractPlanningTreeNode>();
 		int initialLevel = 0;
 		
 		ORefList allAsignmentRefs = new ORefList();

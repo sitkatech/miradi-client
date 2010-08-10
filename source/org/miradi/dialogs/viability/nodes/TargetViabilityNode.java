@@ -122,7 +122,7 @@ public class TargetViabilityNode extends TreeTableNode
 
 	private ViabilityIndicatorNode[] getTargetIndicatorNodes() throws Exception
 	{
-		Vector<ViabilityIndicatorNode> viabilityIndicatorNodes = new Vector();
+		Vector<ViabilityIndicatorNode> viabilityIndicatorNodes = new Vector<ViabilityIndicatorNode>();
 		ORefList indicatorRefs = target.getOnlyDirectIndicatorRefs();
 		for (int index = 0; index < indicatorRefs.size(); ++index)
 		{
@@ -141,14 +141,14 @@ public class TargetViabilityNode extends TreeTableNode
 		
 		Project project = target.getProject();
 		IdList keas = target.getKeyEcologicalAttributes();
-		Vector keyEcologicalAttributesVector = new Vector();
+		Vector<KeyEcologicalAttributeNode> keyEcologicalAttributesVector = new Vector<KeyEcologicalAttributeNode>();
 		for(int i = 0; i < keas.size(); ++i)
 		{
 			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(new ORef(KeyEcologicalAttribute.getObjectType(),keas.get(i)));
 			keyEcologicalAttributesVector.add(new KeyEcologicalAttributeNode(project, kea));
 		}
 		
-		KeyEcologicalAttributeNode[] keaNodes = (KeyEcologicalAttributeNode[])keyEcologicalAttributesVector.toArray(new KeyEcologicalAttributeNode[0]);
+		KeyEcologicalAttributeNode[] keaNodes = keyEcologicalAttributesVector.toArray(new KeyEcologicalAttributeNode[0]);
 		sortObjectList(keaNodes, new KeaNodeComparator());
 		return keaNodes;
 	}

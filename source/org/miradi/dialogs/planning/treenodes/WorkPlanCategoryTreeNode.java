@@ -69,7 +69,7 @@ public class WorkPlanCategoryTreeNode extends AbstractPlanningTreeNode
 		final int ONE_LEVEL = 1;
 		int childLevel = getCurrentLevel() + ONE_LEVEL;
 
-		children = new Vector();
+		children = new Vector<AbstractPlanningTreeNode>();
 		if (!getLevelObjectTypes().hasData())
 			return;
 		

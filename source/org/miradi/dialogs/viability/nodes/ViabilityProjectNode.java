@@ -98,7 +98,7 @@ public class ViabilityProjectNode extends TreeTableNode
 	@Override
 	public void rebuild() throws Exception
 	{
-		Vector vector = new Vector();
+		Vector<TargetViabilityNode> vector = new Vector<TargetViabilityNode>();
 		HumanWelfareTarget[] humanWelfareTargetRefs = getProject().getHumanWelfareTargetPool().getSortedHumanWelfareTargets();
 		for(int index = 0; index < humanWelfareTargetRefs.length; ++index)
 		{

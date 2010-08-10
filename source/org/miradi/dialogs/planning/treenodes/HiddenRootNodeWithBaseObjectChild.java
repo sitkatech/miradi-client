@@ -35,7 +35,7 @@ public class HiddenRootNodeWithBaseObjectChild extends BaseObjectTreeRootNode
 	@Override
 	public void rebuild() throws Exception
 	{
-		children = new Vector();
+		children = new Vector<AbstractPlanningTreeNode>();
 		children.add(new BaseObjectTreeRootNodeWithUnspecifiedNode(getProject(), getChildObjectType(), getChildObjectName(), getVisibleRows()));
 	}
 	
