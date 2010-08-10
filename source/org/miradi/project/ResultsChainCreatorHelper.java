@@ -441,7 +441,7 @@ public class ResultsChainCreatorHelper
 	{
 		ORefSet diagramFactorAndChildrenRefSet = extractDiagramFactorRefs();
 		DiagramLink[] allDiagramLinks = model.getAllDiagramLinksAsArray();
-		Vector containedDiagramLinks = new Vector();
+		Vector<DiagramLink> containedDiagramLinks = new Vector<DiagramLink>();
 		for (int i = 0; i < allDiagramLinks.length; ++i)
 		{
 			ORef fromRef = allDiagramLinks[i].getFromDiagramFactorRef();
@@ -450,7 +450,7 @@ public class ResultsChainCreatorHelper
 				containedDiagramLinks.add(allDiagramLinks[i]);
 		}
 		
-		return (DiagramLink[]) containedDiagramLinks.toArray(new DiagramLink[0]);
+		return containedDiagramLinks.toArray(new DiagramLink[0]);
 	}
 	
 	private ORefSet extractDiagramFactorRefs()
