@@ -48,7 +48,7 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 		viewName = viewNameToUse;
 		tabIdentifier = tabIdentifierToUse;
 		
-		controls = new Hashtable();
+		controls = new Hashtable<String, Class>();
 	}
 	
 	public SkeletonWizardStep(WizardPanel wizardToUse, String viewNameToUse)
@@ -246,7 +246,7 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	
 	public Class getControl(String controlName)
 	{
-		return (Class) controls.get(controlName);
+		return controls.get(controlName);
 	}
 
 	public void addControl(String controlName, Class targetStepp)
@@ -258,7 +258,7 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	private static final String LEFT = "Left";
 	private static final String NEITHER = "";
 	
-	private Hashtable controls;
+	private Hashtable<String, Class> controls;
 	private WizardPanel wizard;
 	private String viewName;
 	private String tabIdentifier;
