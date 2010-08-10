@@ -194,22 +194,22 @@ public class ResultsChainCreatorHelper
 		return EAM.text("Results Chain");
 	}
 
-	private ORefList extractClonedObjectRefs(HashMap clonedBaseObjects)
+	private ORefList extractClonedObjectRefs(HashMap<BaseObject, BaseObject> clonedBaseObjects)
 	{
 		ORefList clonedBaseObjectRefs = new ORefList();
-		Vector baseObjects = new Vector(clonedBaseObjects.values());
+		Vector<BaseObject> baseObjects = new Vector<BaseObject>(clonedBaseObjects.values());
 		for (int i = 0; i < baseObjects.size(); i ++)
 		{
-			BaseObject baseObject = ((BaseObject) baseObjects.get(i));
+			BaseObject baseObject = baseObjects.get(i);
 			clonedBaseObjectRefs.add(baseObject.getRef());
 		}
 		
 		return clonedBaseObjectRefs;
 	}
 
-	private HashMap cloneDiagramFactors(HashSet<DiagramFactor> diagramFactors) throws Exception
+	private HashMap<DiagramFactor, DiagramFactor> cloneDiagramFactors(HashSet<DiagramFactor> diagramFactors) throws Exception
 	{
-		HashMap originalAndClonedDiagramFactors = new HashMap();
+		HashMap<DiagramFactor, DiagramFactor> originalAndClonedDiagramFactors = new HashMap<DiagramFactor, DiagramFactor>();
 		for(DiagramFactor diagramFactorToBeCloned : diagramFactors)
 		{	
 			if (diagramFactorToBeCloned.isGroupBoxFactor())
@@ -223,7 +223,7 @@ public class ResultsChainCreatorHelper
 
 	private HashMap<DiagramFactor, DiagramFactor> cloneGroupBoxDiagramFactor(HashSet<DiagramFactor> diagramFactors, DiagramFactor groupBox) throws Exception
 	{
-		HashMap originalAndClonedDiagramFactors = new HashMap();
+		HashMap<DiagramFactor, DiagramFactor> originalAndClonedDiagramFactors = new HashMap<DiagramFactor, DiagramFactor>();
 		ORefList childrenRefs = groupBox.getGroupBoxChildrenRefs();
 		for (int childIndex = 0; childIndex < childrenRefs.size(); ++childIndex)
 		{
@@ -239,7 +239,7 @@ public class ResultsChainCreatorHelper
 	private HashMap<DiagramFactor, DiagramFactor> cloneDiagramFactor(HashSet<DiagramFactor> diagramFactors, DiagramFactor diagramFactorToBeCloned) throws Exception, CommandFailedException
 	{
 		
-		HashMap originalAndClonedDiagramFactors = new HashMap();
+		HashMap<DiagramFactor, DiagramFactor> originalAndClonedDiagramFactors = new HashMap<DiagramFactor, DiagramFactor>();
 		if (ignoreCloning(diagramFactors, diagramFactorToBeCloned))
 			return originalAndClonedDiagramFactors;
 		
@@ -386,7 +386,7 @@ public class ResultsChainCreatorHelper
 	
 	private HashSet<DiagramFactor> extractDiagramFactors(FactorCell[] selectedFactorCells)
 	{
-		HashSet<DiagramFactor> diagramFactors = new HashSet();
+		HashSet<DiagramFactor> diagramFactors = new HashSet<DiagramFactor>();
 		for (int i = 0; i < selectedFactorCells.length; ++i)
 		{
 			diagramFactors.add(selectedFactorCells[i].getDiagramFactor());
@@ -405,7 +405,7 @@ public class ResultsChainCreatorHelper
 			FactorSet chainFactors = chainObject.buildNormalChainAndGetFactors(model.getDiagramObject(), diagramFactor);
 			Factor[] factorsArray = chainFactors.toFactorArray();
 			
-			Vector diagramFactors = convertToDiagramFactors(factorsArray);
+			Vector<DiagramFactor> diagramFactors = convertToDiagramFactors(factorsArray);
 			allDiagramFactors.addAll(diagramFactors);
 		}
 	
@@ -481,7 +481,7 @@ public class ResultsChainCreatorHelper
 	
 	private HashMap cloneDiagramLinks(DiagramLink[] diagramLinks, HashMap diagramFactors) throws Exception
 	{
-		HashMap originalAndClonedDiagramLinks = new HashMap();
+		HashMap<DiagramLink, DiagramLink> originalAndClonedDiagramLinks = new HashMap<DiagramLink, DiagramLink>();
 		for (int i = 0; i < diagramLinks.length; i++)
 		{
 			DiagramLink diagramLink = diagramLinks[i];
@@ -567,9 +567,9 @@ public class ResultsChainCreatorHelper
 		return from.getWrappedORef().equals(fromCloned.getWrappedORef()) && to.getWrappedORef().equals(toCloned.getWrappedORef());
 	}
 	
-	private Vector convertToDiagramFactors(Factor[] factors)
+	private Vector<DiagramFactor> convertToDiagramFactors(Factor[] factors)
 	{
-		Vector vector = new Vector();
+		Vector<DiagramFactor> vector = new Vector<DiagramFactor>();
 		for (int i = 0; i < factors.length; i++)
 		{
 			ORef factorRef = factors[i].getRef();
