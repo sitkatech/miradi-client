@@ -77,7 +77,7 @@ public class TNCViabilityFormula
 
 	public static String getTotalCategoryRatingCode(CodeList keaCodes)
 	{
-		HashSet codes = new HashSet(Arrays.asList(keaCodes.toArray()));
+		HashSet<String> codes = new HashSet<String>(Arrays.asList(keaCodes.toArray()));
 		if(codes.size() == 0)
 			return StatusQuestion.UNSPECIFIED;
 		if(codes.contains(StatusQuestion.POOR))
