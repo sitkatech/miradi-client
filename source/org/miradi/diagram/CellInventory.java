@@ -53,9 +53,9 @@ class CellInventory
 		diagramFactorRefToCellMap.put(factorCell.getDiagramFactorRef(), factorCell);
 	}
 	
-	public Vector getAllFactors()
+	public Vector<FactorCell> getAllFactors()
 	{
-		return new Vector(diagramFactorRefToCellMap.values());
+		return new Vector<FactorCell>(diagramFactorRefToCellMap.values());
 	}
 	
 	public FactorCell getFactorCellByDiagramFactorRef(ORef diagramFactorRef)
@@ -91,14 +91,14 @@ class CellInventory
 		diagramLinkToCellMap.put(link, cell);
 	}
 
-	public Vector getAllFactorLinkCells()
+	public Vector<LinkCell> getAllFactorLinkCells()
 	{
-		return new Vector(diagramLinkToCellMap.values());
+		return new Vector<LinkCell>(diagramLinkToCellMap.values());
 	}
 	
-	public Vector getAllFactorLinks()
+	public Vector<DiagramLink> getAllFactorLinks()
 	{
-		return new Vector(diagramLinkToCellMap.keySet());
+		return new Vector<DiagramLink>(diagramLinkToCellMap.keySet());
 	}
 	
 	public DiagramLink getDiagramLink(ORef diagramLinkRef)

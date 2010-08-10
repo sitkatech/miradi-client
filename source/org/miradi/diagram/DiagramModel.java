@@ -640,12 +640,12 @@ abstract public class DiagramModel extends DefaultGraphModel
 
 	public LinkCell[] getAllFactorLinkCells()
 	{
-		return (LinkCell[]) cellInventory.getAllFactorLinkCells().toArray(new LinkCell[0]);
+		return cellInventory.getAllFactorLinkCells().toArray(new LinkCell[0]);
 	}
 	
 	public DiagramLink[] getAllDiagramLinksAsArray()
 	{
-		return (DiagramLink[]) getAllDiagramFactorLinks().toArray(new DiagramLink[0]);
+		return getAllDiagramFactorLinks().toArray(new DiagramLink[0]);
 	}
 	
 	public HashSet<EAMGraphCell> getAllSelectedCellsWithRelatedLinkages(Object[] rawSelectedCells) throws Exception 
@@ -745,7 +745,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 		return groupLinkChildCells;
 	}
 	
-	public Vector getAllDiagramFactorLinks()
+	public Vector<DiagramLink> getAllDiagramFactorLinks()
 	{
 		return cellInventory.getAllFactorLinks();
 	}
