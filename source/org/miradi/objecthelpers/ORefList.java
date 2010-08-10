@@ -154,9 +154,9 @@ public class ORefList
 		return data.get(index);
 	}
 		
-	private ORefList(List listToUse)
+	private ORefList(List<ORef> listToUse)
 	{
-		data = new Vector(listToUse);
+		data = new Vector<ORef>(listToUse);
 	}
 		
 	public ORef[] toArray()
