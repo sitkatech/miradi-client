@@ -67,7 +67,7 @@ public class FontFamiliyQuestion extends StaticChoiceQuestion
 	{
 		String[] desiredFamilies = getRawDesiredFamilies(fontFamilyChoice.getCode());
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		Set<String> availableFamilies = new HashSet(Arrays.asList(ge.getAvailableFontFamilyNames()));
+		Set<String> availableFamilies = new HashSet<String>(Arrays.asList(ge.getAvailableFontFamilyNames()));
 		for(int i = 0; i < desiredFamilies.length; ++ i)
 		{
 			if(availableFamilies.contains(desiredFamilies[i]))
