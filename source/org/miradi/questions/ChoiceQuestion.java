@@ -124,7 +124,7 @@ public abstract class ChoiceQuestion
 		return findChoiceByCode(code);
 	}
 	
-	public Comparator getComparator()
+	public Comparator<ChoiceItem> getComparator()
 	{
 		return new ChoiceItemLabelComparator();
 	}
