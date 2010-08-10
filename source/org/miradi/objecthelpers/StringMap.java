@@ -53,9 +53,9 @@ public class StringMap
 		this(new EnhancedJsonObject(mapAsJsonString));
 	}
 	
-	private StringMap(Map dataToUse)
+	private StringMap(Map<String, String> dataToUse)
 	{
-		data = new HashMap(dataToUse);
+		data = new HashMap<String, String>(dataToUse);
 	}
 
 	private void copyFromJson(EnhancedJsonObject json)
@@ -77,10 +77,10 @@ public class StringMap
 		EnhancedJsonObject json = new EnhancedJsonObject();
 		EnhancedJsonObject array = new EnhancedJsonObject();
 		
-		Iterator iterator = data.keySet().iterator();
+		Iterator<String> iterator = data.keySet().iterator();
 		while (iterator.hasNext())
 		{
-			String key = (String)iterator.next();
+			String key = iterator.next();
 			array.put(key, get(key));
 		}
 		json.put(TAG_STRING_MAP, array);
@@ -152,7 +152,7 @@ public class StringMap
 	public void toXml(UnicodeWriter out) throws IOException
 	{
 		out.writeln("<StringMap>");
-		Set keys = data.keySet();
+		Set<String> keys = data.keySet();
 		for(Object object : keys)
 		{
 			out.write("<Item code='" + XmlUtilities.getXmlEncoded(object.toString()) + "'>");
