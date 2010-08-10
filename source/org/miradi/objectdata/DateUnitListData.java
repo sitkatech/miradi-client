@@ -33,7 +33,7 @@ public class DateUnitListData extends AbstractStringListData
 
 	public Vector<DateUnit> getDateUnits()
 	{
-		Vector<DateUnit> dateUnits = new Vector();
+		Vector<DateUnit> dateUnits = new Vector<DateUnit>();
 		CodeList codes = getCodeList();
 		for (int index = 0; index < codes.size(); ++index)
 		{

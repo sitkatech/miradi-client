@@ -58,7 +58,7 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 
 	private void saveState() throws Exception
 	{	
-		Vector commands = new Vector();
+		Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();
 		commands.addAll(getComboSaveCommnds());
 		if (commands.size() == 0)
 			return;
@@ -66,7 +66,7 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			getProject().executeCommandsWithoutTransaction((Command[])commands.toArray(new Command[0]));
+			getProject().executeCommandsWithoutTransaction(commands.toArray(new Command[0]));
 		}
 		finally
 		{
@@ -74,14 +74,14 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		}
 	}
 
-	private Vector getComboSaveCommnds() throws Exception
+	private Vector<CommandSetObjectData> getComboSaveCommnds() throws Exception
 	{
 		if (! comboBoxNeedsSave())
-			return new Vector();
+			return new Vector<CommandSetObjectData>();
 		
 		ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
 		String newValue = selectedItem.getCode();
-		Vector comboSaveCommands = new Vector();
+		Vector<CommandSetObjectData> comboSaveCommands = new Vector<CommandSetObjectData>();
 		ViewData viewData = getProject().getCurrentViewData();
 
 		comboSaveCommands.add(new CommandSetObjectData(viewData.getRef(), getChoiceTag(), newValue));

@@ -67,7 +67,7 @@ public class PointListData extends ObjectData
 		points.add(point);
 	}
 	
-	public void addAll(List listToAdd)
+	public void addAll(List<Point> listToAdd)
 	{
 		points.addAll(listToAdd);
 	}

@@ -162,7 +162,7 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		AssignmentDateUnitsTableModel model = getWorkUnitsTableModel();
 		
-		Vector<Action> rightClickActions = new Vector();
+		Vector<Action> rightClickActions = new Vector<Action>();
 
 		if(model.isColumnExpandable(modelColumn))
 			rightClickActions.add(new ExpandColumnAction(this, model));

@@ -25,8 +25,8 @@ public class FormRow
 {
 	public FormRow()
 	{
-		leftFormItems = new Vector();
-		rightFormItems = new Vector();
+		leftFormItems = new Vector<FormItem>();
+		rightFormItems = new Vector<FormItem>();
 	}
 	
 	public FormRow(FormItem leftFormItem, FormItem rightFormItem)

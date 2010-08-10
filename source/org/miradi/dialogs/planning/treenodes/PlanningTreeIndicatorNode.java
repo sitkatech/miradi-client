@@ -49,7 +49,7 @@ public class PlanningTreeIndicatorNode extends AbstractPlanningTreeNode
 	private void addSortedMeasurementChildren() throws Exception
 	{
 		ORefList measurementRefs = indicator.getMeasurementRefs();
-		Vector<AbstractPlanningTreeNode> measurementChildren = new Vector();
+		Vector<AbstractPlanningTreeNode> measurementChildren = new Vector<AbstractPlanningTreeNode>();
 		for(int i = 0; i < measurementRefs.size(); ++i)
 		{
 			measurementChildren.add(createChildNode(measurementRefs.get(i), null));

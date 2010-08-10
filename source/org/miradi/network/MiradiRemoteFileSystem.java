@@ -138,7 +138,7 @@ public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
 	
 	public Map<Integer, String> readAllManifestFiles(String projectName) throws Exception
 	{
-		HashMap map = new HashMap();
+		HashMap<Integer, String> map = new HashMap<Integer, String>();
 		HttpTransaction get = new HttpGet(serverURL, projectName, new String[] {MANIFESTS});
 		if(get.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(get.getResultMessage());

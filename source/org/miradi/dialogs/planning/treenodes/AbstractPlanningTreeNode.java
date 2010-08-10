@@ -61,7 +61,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	{
 		project = projectToUse;
 		visibleRows = visibleRowsToUse;
-		children = new Vector();
+		children = new Vector<AbstractPlanningTreeNode>();
 	}
 	
 	@Override
@@ -188,7 +188,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		if(isAnyChildAllocated(children))
 			isAllocated = true;
 		
-		Vector<AbstractPlanningTreeNode> newChildren = new Vector();
+		Vector<AbstractPlanningTreeNode> newChildren = new Vector<AbstractPlanningTreeNode>();
 		for(AbstractPlanningTreeNode child : children)
 		{
 			child.pruneUnwantedLayers(objectTypesToShow);
@@ -249,7 +249,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	{
 		for(AbstractPlanningTreeNode parentNode : destination)
 		{
-			Vector children = parentNode.getChildren();
+			Vector<AbstractPlanningTreeNode> children = parentNode.getChildren();
 			AbstractPlanningTreeNode foundMatchingChild = findNodeWithRef(children, newChild.getObjectReference());
 			if (foundMatchingChild != null)
 				return true;
@@ -381,7 +381,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	
 	protected Vector<AbstractPlanningTreeNode> buildExpenseAssignmentNodes(ORefList expenseAssignmentRefs) throws Exception
 	{
-		Vector<AbstractPlanningTreeNode> expenseAssignmentNodes = new Vector();
+		Vector<AbstractPlanningTreeNode> expenseAssignmentNodes = new Vector<AbstractPlanningTreeNode>();
 		for (int index = 0; index < expenseAssignmentRefs.size(); ++index)
 		{
 			expenseAssignmentNodes.add(new PlanningTreeExpenseAssignmentNode(project, expenseAssignmentRefs.get(index), visibleRows));
@@ -392,7 +392,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 
 	protected Vector<AbstractPlanningTreeNode> buildResourceAssignmentNodes(ORefList assignmentRefs) throws Exception
 	{
-		Vector<AbstractPlanningTreeNode> resourceAssignmentNodes = new Vector();
+		Vector<AbstractPlanningTreeNode> resourceAssignmentNodes = new Vector<AbstractPlanningTreeNode>();
 		for (int index = 0; index < assignmentRefs.size(); ++index)
 		{
 			resourceAssignmentNodes.add(new PlanningTreeResourceAssignmentNode(project, assignmentRefs.get(index), visibleRows));
