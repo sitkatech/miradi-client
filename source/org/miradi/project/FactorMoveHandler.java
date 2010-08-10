@@ -58,7 +58,7 @@ public class FactorMoveHandler
 		{
 			model.factorsWereMoved(diagramFactorRefs);
 			
-			Vector commandsToExecute = new Vector();
+			Vector<Command> commandsToExecute = new Vector<Command>();
 			for(int i = 0 ; i < diagramFactorRefs.size(); ++i)
 			{
 				FactorCell factorCell = model.getFactorCellByRef(diagramFactorRefs.get(i));
@@ -78,7 +78,7 @@ public class FactorMoveHandler
 			{
 				for(int i=0; i < commandsToExecute.size(); ++i)
 				{
-					getProject().executeCommand((Command)commandsToExecute.get(i));
+					getProject().executeCommand(commandsToExecute.get(i));
 				}
 			}
 			
@@ -248,7 +248,7 @@ public class FactorMoveHandler
 		return commandsToMove;
 	}
 
-	private Object buildMoveCommand(FactorCell node)
+	private Command buildMoveCommand(FactorCell node)
 	{
 		Point location = node.getLocation();
 		Point snappedLocation = getProject().getSnapped(location);
