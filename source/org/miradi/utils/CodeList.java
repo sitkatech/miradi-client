@@ -49,7 +49,7 @@ public class CodeList extends StringList
 		super(listAsJsonString);
 	}
 	
-	public CodeList(List dataToUse)
+	public CodeList(List<String> dataToUse)
 	{
 		super(dataToUse);
 	}
