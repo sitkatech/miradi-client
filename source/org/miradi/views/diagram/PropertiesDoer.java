@@ -149,16 +149,16 @@ public class PropertiesDoer extends LocationDoer
 	private HashSet<FactorCell> getChildrenIfAny(EAMGraphCell selected) throws Exception
 	{
 		if(selected.isFactorLink())
-			return new HashSet();
+			return new HashSet<FactorCell>();
 		
 		DiagramModel model = getDiagramView().getDiagramPanel().getDiagramModel();
 		if (selected.isScopeBox())
-			return new HashSet(model.getAllDiagramTargets());
+			return new HashSet<FactorCell>(model.getAllDiagramTargets());
 		
 		if (selected.getDiagramFactor().isGroupBoxFactor())
 			return  model.getGroupBoxFactorChildren(selected);			
 		
-		return new HashSet();
+		return new HashSet<FactorCell>();
 	}
 	
 	class ScopeBoxPropertiesDialog extends ModelessDialogWithDirections
@@ -303,7 +303,7 @@ public class PropertiesDoer extends LocationDoer
 	
 	private HashSet<LinkCell> getSelectedLinksExcludingInternalGroupBoxLinks()
 	{
-		HashSet<LinkCell> selectedLinkCells = new HashSet(getDiagramComponent().getOnlySelectedLinkCells());
+		HashSet<LinkCell> selectedLinkCells = new HashSet<LinkCell>(getDiagramComponent().getOnlySelectedLinkCells());
 		HashSet<LinkCell> selectedInternalGroupBoxLinks = getInternalGroupBoxLinks();
 		selectedLinkCells.removeAll(selectedInternalGroupBoxLinks);
 		return selectedLinkCells;
@@ -320,7 +320,7 @@ public class PropertiesDoer extends LocationDoer
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return new HashSet();
+			return new HashSet<LinkCell>();
 		}
 	}
 
