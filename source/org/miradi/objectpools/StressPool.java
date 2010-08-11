@@ -40,6 +40,7 @@ public class StressPool extends EAMNormalObjectPool
 		return (Stress)findObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new Stress(objectManager, new FactorId(actualId.asInt()));

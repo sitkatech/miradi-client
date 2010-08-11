@@ -45,6 +45,7 @@ public class ThreatReductionResultPool extends EAMNormalObjectPool
 		return (ThreatReductionResult)getRawObject(id);
 	}
 	
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
 		return new ThreatReductionResult(objectManager ,new FactorId(actualId.asInt()));

@@ -43,6 +43,7 @@ public class ExpensePool extends EAMNormalObjectPool
 		return (ExpenseAssignment) getRawObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new ExpenseAssignment(objectManager, actualId);

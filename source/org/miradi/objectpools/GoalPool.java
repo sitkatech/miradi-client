@@ -39,6 +39,7 @@ public class GoalPool extends DesirePool
 		return (Goal)findDesire(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new Goal(objectManager, actualId);

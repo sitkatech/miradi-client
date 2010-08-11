@@ -34,6 +34,7 @@ public class ValueOptionPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.VALUE_OPTION);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new ValueOption(objectManager, actualId);

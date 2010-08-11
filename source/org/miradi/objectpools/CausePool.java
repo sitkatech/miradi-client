@@ -48,6 +48,7 @@ public class CausePool extends EAMNormalObjectPool
 		return (Cause)getRawObject(id);
 	}
 	
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
 		return new Cause(objectManager ,new FactorId(actualId.asInt()));

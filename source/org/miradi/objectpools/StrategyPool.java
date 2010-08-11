@@ -51,6 +51,7 @@ public class StrategyPool extends EAMNormalObjectPool
 		return (Strategy)getRawObject(id);
 	}
 	
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
 		return new Strategy(objectManager ,new FactorId(actualId.asInt()));

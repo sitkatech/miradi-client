@@ -44,6 +44,7 @@ public class WcsProjectDataPool extends EAMNormalObjectPool
 		return (WcsProjectData) getRawObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new WcsProjectData(objectManager, new BaseId(actualId.asInt()));

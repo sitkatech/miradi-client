@@ -39,6 +39,7 @@ public class ProjectMetadataPool extends EAMNormalObjectPool
 		return (ProjectMetadata)findObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new ProjectMetadata(objectManager, actualId);

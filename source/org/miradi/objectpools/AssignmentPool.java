@@ -44,6 +44,7 @@ public class AssignmentPool extends EAMNormalObjectPool
 		return (ResourceAssignment)getRawObject(id);
 	}
 	
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
 		return new ResourceAssignment(objectManager ,actualId);

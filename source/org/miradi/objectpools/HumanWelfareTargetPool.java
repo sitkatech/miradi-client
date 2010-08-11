@@ -48,6 +48,7 @@ public class HumanWelfareTargetPool extends EAMNormalObjectPool
 		return (HumanWelfareTarget)getRawObject(id);
 	}
 	
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
 		return new HumanWelfareTarget(objectManager ,new FactorId(actualId.asInt()));

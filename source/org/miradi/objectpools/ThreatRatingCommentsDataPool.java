@@ -44,6 +44,7 @@ public class ThreatRatingCommentsDataPool extends EAMNormalObjectPool
 		return (ThreatRatingCommentsData) getRawObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new ThreatRatingCommentsData(objectManager, new BaseId(actualId.asInt()));

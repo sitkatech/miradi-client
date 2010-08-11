@@ -39,6 +39,7 @@ public class MeasurementPool extends EAMNormalObjectPool
 		return (Measurement) findObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new Measurement(objectManager, actualId);

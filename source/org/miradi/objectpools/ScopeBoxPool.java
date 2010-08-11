@@ -45,6 +45,7 @@ public class ScopeBoxPool extends EAMNormalObjectPool
 		return (ScopeBox)getRawObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new ScopeBox(objectManager, new FactorId(actualId.asInt()));

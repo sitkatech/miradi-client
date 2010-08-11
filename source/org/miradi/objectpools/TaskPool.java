@@ -47,6 +47,7 @@ public class TaskPool extends EAMNormalObjectPool
 		return (Task)getRawObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
 		return new Task(objectManager, new FactorId(actualId.asInt()));

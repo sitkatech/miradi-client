@@ -44,6 +44,7 @@ public class TableSettingsPool extends EAMNormalObjectPool
 		return (TableSettings) getRawObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new TableSettings(objectManager, actualId);

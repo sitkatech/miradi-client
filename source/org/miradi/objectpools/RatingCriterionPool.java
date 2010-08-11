@@ -34,6 +34,7 @@ public class RatingCriterionPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.RATING_CRITERION);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new RatingCriterion(objectManager, actualId);

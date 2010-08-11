@@ -44,6 +44,7 @@ public class ProgressReportPool extends EAMNormalObjectPool
 		return (ProgressReport) getRawObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new ProgressReport(objectManager, actualId);

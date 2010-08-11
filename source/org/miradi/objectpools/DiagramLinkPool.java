@@ -44,6 +44,7 @@ public class DiagramLinkPool extends EAMNormalObjectPool
 		return (DiagramLink)findObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
 		return new DiagramLink(objectManager, actualId, (CreateDiagramFactorLinkParameter)extraInfo);

@@ -46,6 +46,7 @@ public class DiagramFactorPool extends EAMNormalObjectPool
 		return (DiagramFactor)findObject(id);
 	}
 	
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)	throws Exception
 	{
 		DiagramFactorId diagramFactorId = new DiagramFactorId(actualId.asInt());

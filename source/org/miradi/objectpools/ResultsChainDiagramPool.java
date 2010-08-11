@@ -45,6 +45,7 @@ public class ResultsChainDiagramPool extends DiagramObjectPool
 		return (ResultsChainDiagram)getRawObject(id);
 	}
 	
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
 		return new ResultsChainDiagram(objectManager ,new DiagramContentsId(actualId.asInt()));

@@ -40,6 +40,7 @@ public class ThreatStressRatingPool extends EAMNormalObjectPool
 		return (ThreatStressRating)findObject(id);
 	}
 	
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
 		return new ThreatStressRating(objectManager, actualId, (CreateThreatStressRatingParameter) extraInfo);
