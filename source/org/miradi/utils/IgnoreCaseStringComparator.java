@@ -21,7 +21,7 @@ package org.miradi.utils;
 
 import java.util.Comparator;
 
-public class IgnoreCaseStringComparator implements Comparator
+public class IgnoreCaseStringComparator implements Comparator<Object>
 {
 	public int compare(Object object1, Object object2)
 	{
