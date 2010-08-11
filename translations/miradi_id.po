@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 12:32-0500\n"
+"POT-Creation-Date: 2010-08-11 12:46-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -162,7 +162,7 @@ msgstr "- Gua-gua"
 msgid "- Other Subterranean Habitats"
 msgstr "- Habitat Bawah Tanah Lainnya"
 
-#: Miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:36
+#: Miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:37
 msgid "--Select a classification--"
 msgstr "--Pilih klasifikasi-- "
 
