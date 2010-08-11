@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectpools;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.ids.BaseId;
@@ -54,11 +53,6 @@ public class CausePool extends EAMNormalObjectPool
 		return new Cause(objectManager ,new FactorId(actualId.asInt()));
 	}
 	
-	private FactorId[] getModelNodeIds()
-	{
-		return (FactorId[])new HashSet(getRawIds()).toArray(new FactorId[0]);
-	}
-	
 	public Cause[] getDirectThreats()
 	{
 		return getDirectThreatsAsVector().toArray(new Cause[0]);
@@ -67,7 +61,7 @@ public class CausePool extends EAMNormalObjectPool
 	public Vector<Cause> getDirectThreatsAsVector()
 	{
 		Vector<Cause> cmNodes = new Vector<Cause>();
-		FactorId[] ids = getModelNodeIds();
+		BaseId[] ids = getIds();
 		Arrays.sort(ids);
 		for(int i = 0; i < ids.length; ++i)
 		{
