@@ -56,7 +56,7 @@ public class TargetPool extends EAMNormalObjectPool
 	
 	public Target[] getSortedTargets()
 	{
-		Target[] targets = (Target[]) getValues().toArray(new BaseObject[0]);
+		Target[] targets = (Target[]) getValues().toArray(new Target[0]);
 		Arrays.sort(targets, new BaseObjectByFullNameSorter());
 		return targets;
 	}
