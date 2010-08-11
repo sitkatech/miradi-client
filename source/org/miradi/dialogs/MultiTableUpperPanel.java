@@ -45,10 +45,12 @@ public class MultiTableUpperPanel extends ObjectCollectionPanel implements ListS
 		picker = null;
 	}
 	
+	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 	}
 
+	@Override
 	public BaseObject getSelectedObject()
 	{
 		return null;
