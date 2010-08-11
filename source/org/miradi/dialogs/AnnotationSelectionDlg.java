@@ -31,11 +31,13 @@ public class AnnotationSelectionDlg extends AbstractSelectionDialog
 		super(mainWindow, title, poolTable);
 	}
 
+	@Override
 	protected String createCustomButtonLabel()
 	{
 		return  EAM.text("Create from Existing");
 	}
 	
+	@Override
 	protected String getPanelTitleInstructions()
 	{
 		return EAM.text("Please select which item should be created into this factor, then press the Create from Existing  button");
