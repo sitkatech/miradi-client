@@ -27,6 +27,7 @@ import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.project.FactorDeleteHelper;
@@ -121,7 +122,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 	
 	private Vector extractType(EAMGraphCell[] selectedRelatedCells, int typeToExtract)
 	{
-		Vector filteredList = new Vector();
+		Vector<BaseObject> filteredList = new Vector<BaseObject>();
 		for (int i = 0; i < selectedRelatedCells.length; ++i)
 		{
 			EAMGraphCell cell = selectedRelatedCells[i];
