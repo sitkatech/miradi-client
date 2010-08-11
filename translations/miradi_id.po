@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 10:05-0500\n"
+"POT-Creation-Date: 2010-08-11 11:07-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7081,7 +7081,7 @@ msgid ""
 "Please use the <Zoom Out> feature to make it smaller, and try again."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DeleteSelectedItemDoer.java:141
+#: Miradi/source/org/miradi/views/diagram/DeleteSelectedItemDoer.java:142
 msgid ""
 "The link(s) will be deleted from all Conceptual Model pages and Results "
 "Chains, not just this one. "
