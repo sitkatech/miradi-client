@@ -45,6 +45,7 @@ import org.miradi.utils.PointList;
 
 public class EAMGraphUI extends BasicGraphUI
 {
+	@Override
 	protected MouseListener createMouseListener() 
 	{
 		return new DiagramMouseHandler();
@@ -60,6 +61,7 @@ public class EAMGraphUI extends BasicGraphUI
 		return focus;
 	}
 	
+	@Override
 	public CellHandle createHandle(GraphContext context) 
 	{
 		if (context != null && !context.isEmpty() && graph.isEnabled()) 
@@ -93,6 +95,7 @@ public class EAMGraphUI extends BasicGraphUI
 			super(ctx);
 		}
 		
+		@Override
 		protected void setHandle(MouseEvent event)
 		{
 			for (int i = 0; i < views.length; ++i)
@@ -106,6 +109,7 @@ public class EAMGraphUI extends BasicGraphUI
 			}
 		}
 
+		@Override
 		protected double getDxToStayAboveZero(double dx, double totDx)
 		{
 			for (int i = 0; i < views.length; ++i)
@@ -125,6 +129,7 @@ public class EAMGraphUI extends BasicGraphUI
 			return dx;
 		}
 		
+		@Override
 		protected double getDyToStayAboveZero(double dy, double totDy)
 		{
 			for (int i = 0; i < views.length; ++i)
@@ -208,6 +213,7 @@ public class EAMGraphUI extends BasicGraphUI
 			return delta;
 		}
 
+		@Override
 		public void updateControlPoints(CellView[] viewsToUse, double deltaX, double deltaY)
 		{			
 			Vector<CellView> allToTranslate = new Vector<CellView>();
@@ -277,12 +283,14 @@ public class EAMGraphUI extends BasicGraphUI
 	
 	class DiagramMouseHandler extends BasicGraphUI.MouseHandler
 	{
-        public void mousePressed(MouseEvent event)
+        @Override
+		public void mousePressed(MouseEvent event)
 		{
         	super.mousePressed(event);
 			processMouseEvent(event);
 		}
 
+		@Override
 		public void mouseReleased(MouseEvent event)
 		{
 			// JGraph calls this with a null event if you press Escape
@@ -293,7 +301,8 @@ public class EAMGraphUI extends BasicGraphUI
 				super.mouseReleased(event);
 		}
 		
-	    public void mouseDragged(MouseEvent event)
+	    @Override
+		public void mouseDragged(MouseEvent event)
 		{
 			if(!SwingUtilities.isRightMouseButton(event))
 				super.mouseDragged(event);
