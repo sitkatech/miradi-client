@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 12:59-0500\n"
+"POT-Creation-Date: 2010-08-11 13:01-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -839,11 +839,11 @@ msgstr "File atau folder dengan nama yang sama sudah ada: "
 msgid "A project or file by this name already exists: "
 msgstr "Sudah ada proyek atau berkas lain yang memakai nama ini: "
 
-#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:29
+#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:30
 msgid "Abandoned"
 msgstr "Ditinggalkan "
 
-#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:29
+#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:30
 msgid "Abandoned - No longer relevant or useful"
 msgstr "Ditelantarkan - Tidak lagi relevan atau berguna"
 
@@ -2522,11 +2522,11 @@ msgstr "Grup kolom: "
 msgid "Comments"
 msgstr "Komentar "
 
-#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:34
+#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:36
 msgid "Completed"
 msgstr "Diselesaikan "
 
-#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:34
+#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:36
 msgid "Completed - Successfully accomplished"
 msgstr "Selesai – Berhasil diselesaikan"
 
@@ -4329,11 +4329,11 @@ msgstr "Rendah"
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Rangkaian Ancaman Rendah/Sedang/Tak Terukur "
 
-#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:49
+#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:54
 msgid "Major Issues"
 msgstr "Masalah Besar"
 
-#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:49
+#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:54
 msgid "Major Issues - Ongoing, major issues that need attention"
 msgstr ""
 "Masalah Utama – Sedang berlangsung, masalah-masalah utama yang memerlukan "
@@ -4696,11 +4696,11 @@ msgstr "Penurunan Kecil"
 msgid "Mild Increase"
 msgstr "Kenaikan Kecil"
 
-#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:44
+#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:48
 msgid "Minor Issues"
 msgstr "Masalah Kecil"
 
-#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:44
+#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:48
 msgid "Minor Issues - Ongoing, has minor issues that need attention"
 msgstr ""
 "Masalah Kecil – Sedang berlangsung, memiliki masalah-masalah kecil yang "
@@ -4849,7 +4849,7 @@ msgstr "Tidak Efektif"
 #: Miradi/source/org/miradi/questions/KeyEcologicalAttributeTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/StressScopeChoiceQuestion.java:36
 #: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:37
-#: Miradi/source/org/miradi/questions/AbstractProgressReportStatusQuestion.java:37
+#: Miradi/source/org/miradi/questions/AbstractProgressReportStatusQuestion.java:38
 #: Miradi/source/org/miradi/questions/RatingSourceQuestion.java:35
 #: Miradi/source/org/miradi/questions/StressRatingChoiceQuestion.java:36
 #: Miradi/source/org/miradi/questions/StressSeverityChoiceQuestion.java:36
@@ -4925,11 +4925,11 @@ msgstr ""
 msgid "October to September"
 msgstr "Oktober sampai September "
 
-#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:39
+#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:42
 msgid "On-Track"
 msgstr "Sesuai Aturan "
 
-#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:39
+#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:42
 msgid "On-Track - Ongoing, generally on track"
 msgstr "Sesuai Jadwal – Sedang berlangsung, secara umum sesuai jadwal"
 
@@ -5547,11 +5547,11 @@ msgstr "Simpan %s "
 msgid "Save As..."
 msgstr "Simpan Sebagai... "
 
-#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:54
+#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:60
 msgid "Scheduled"
 msgstr "Terjadwal "
 
-#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:54
+#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:60
 msgid "Scheduled for future implementation"
 msgstr "Dijadwalkan untuk pelaksanaan di masa datang"
 
