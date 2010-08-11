@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 12:59-0500\n"
+"POT-Creation-Date: 2010-08-11 13:01-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -844,11 +844,11 @@ msgstr "Ya existe un archivo o carpeta con este mismo nombre: "
 msgid "A project or file by this name already exists: "
 msgstr "Ya existe un proyecto o archivo con este nombre:"
 
-#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:29
+#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:30
 msgid "Abandoned"
 msgstr "Abandonado"
 
-#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:29
+#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:30
 msgid "Abandoned - No longer relevant or useful"
 msgstr "Abandonado - Ya no es relevante o útil  "
 
@@ -2532,11 +2532,11 @@ msgstr "Grupos de columnas: "
 msgid "Comments"
 msgstr "Comentarios"
 
-#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:34
+#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:36
 msgid "Completed"
 msgstr "Completo"
 
-#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:34
+#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:36
 msgid "Completed - Successfully accomplished"
 msgstr "Completo – Logrado con éxito "
 
@@ -4348,11 +4348,11 @@ msgstr "Bajo "
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Cadenas de amenazas bajas/medias/sin clasificación"
 
-#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:49
+#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:54
 msgid "Major Issues"
 msgstr "Problemas importantes"
 
-#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:49
+#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:54
 msgid "Major Issues - Ongoing, major issues that need attention"
 msgstr ""
 "Problemas importantes – Activo, problemas importantes que requieren atención "
@@ -4732,11 +4732,11 @@ msgstr "Disminución moderada "
 msgid "Mild Increase"
 msgstr "Incremento moderado "
 
-#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:44
+#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:48
 msgid "Minor Issues"
 msgstr "Problemas menores"
 
-#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:44
+#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:48
 msgid "Minor Issues - Ongoing, has minor issues that need attention"
 msgstr "Problemas menores – Activo, problemas menores que requieren atención "
 
@@ -4882,7 +4882,7 @@ msgstr "No efectivo "
 #: Miradi/source/org/miradi/questions/KeyEcologicalAttributeTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/StressScopeChoiceQuestion.java:36
 #: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:37
-#: Miradi/source/org/miradi/questions/AbstractProgressReportStatusQuestion.java:37
+#: Miradi/source/org/miradi/questions/AbstractProgressReportStatusQuestion.java:38
 #: Miradi/source/org/miradi/questions/RatingSourceQuestion.java:35
 #: Miradi/source/org/miradi/questions/StressRatingChoiceQuestion.java:36
 #: Miradi/source/org/miradi/questions/StressSeverityChoiceQuestion.java:36
@@ -4960,11 +4960,11 @@ msgstr ""
 msgid "October to September"
 msgstr "De octubre a septiembre"
 
-#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:39
+#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:42
 msgid "On-Track"
 msgstr "Avanza bien"
 
-#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:39
+#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:42
 msgid "On-Track - Ongoing, generally on track"
 msgstr "Avanza bien – Activo, generalmente avanza bien "
 
@@ -5585,11 +5585,11 @@ msgstr "Grabar %s"
 msgid "Save As..."
 msgstr "Guardar como... "
 
-#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:54
+#: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:60
 msgid "Scheduled"
 msgstr "Programado"
 
-#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:54
+#: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:60
 msgid "Scheduled for future implementation"
 msgstr "Programado para implementación futura "
 
