@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 13:10-0500\n"
+"POT-Creation-Date: 2010-08-11 13:25-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1483,7 +1483,7 @@ msgid "Action|Show Columns..."
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionShowConceptualModel.java:35
-#: Miradi/source/org/miradi/actions/ActionShowConceptualModel.java:40
+#: Miradi/source/org/miradi/actions/ActionShowConceptualModel.java:41
 msgid "Action|Show Conceptual Model"
 msgstr "显示概念模型 \t\t"
 
@@ -1500,7 +1500,7 @@ msgid "Action|Show Ratings in Cell"
 msgstr "在单元格中显示分级 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionShowResultsChain.java:36
-#: Miradi/source/org/miradi/actions/ActionShowResultsChain.java:41
+#: Miradi/source/org/miradi/actions/ActionShowResultsChain.java:42
 msgid "Action|Show Results Chain"
 msgstr "显示结果链 \t\t"
 
@@ -1509,7 +1509,7 @@ msgid "Action|Show Stress on this page"
 msgstr "在本页面显示压力 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionCreateOrShowResultsChain.java:35
-#: Miradi/source/org/miradi/actions/ActionCreateOrShowResultsChain.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateOrShowResultsChain.java:41
 msgid "Action|Show/Create Results Chain"
 msgstr "显示/创建结果链 \t\t"
 
@@ -5827,76 +5827,76 @@ msgstr "系统范围"
 msgid "TNC"
 msgstr "大自然保护协会 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionResourceListAdd.java:39
+#: Miradi/source/org/miradi/actions/ActionResourceListAdd.java:40
 msgid "TT|Add"
 msgstr "添加 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionGroupBoxAddFactor.java:40
+#: Miradi/source/org/miradi/actions/ActionGroupBoxAddFactor.java:41
 msgid "TT|Add Factor(s) to Group Box"
 msgstr "添加（多个）因素到组合框 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionInsertLink.java:40
+#: Miradi/source/org/miradi/actions/ActionInsertLink.java:41
 msgid "TT|Add a link between two factors"
 msgstr "在两个因素之间添加链接 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionTeamCreateMember.java:40
+#: Miradi/source/org/miradi/actions/ActionTeamCreateMember.java:41
 msgid "TT|Add member to the team"
 msgstr "添加成员到团队 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionViewPossibleResources.java:39
+#: Miradi/source/org/miradi/actions/ActionViewPossibleResources.java:40
 msgid "TT|Add resources to activity"
 msgstr "添加资源到活动 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionManageFactorTagsFromMenu.java:40
+#: Miradi/source/org/miradi/actions/ActionManageFactorTagsFromMenu.java:41
 msgid "TT|Add/remove tags for the selected factor"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionManageFactorTags.java:40
+#: Miradi/source/org/miradi/actions/ActionManageFactorTags.java:41
 msgid "TT|Add/remove tags for this factor"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionAssignResource.java:40
+#: Miradi/source/org/miradi/actions/ActionAssignResource.java:41
 msgid "TT|Assign a resource to this task"
 msgstr "分配一项资源到该任务 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionArrangeConceptualModel.java:40
+#: Miradi/source/org/miradi/actions/ActionArrangeConceptualModel.java:41
 msgid "TT|Automatically arrange the factors in this Conceptual Model page"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionPlanningColumnsEditor.java:39
+#: Miradi/source/org/miradi/actions/ActionPlanningColumnsEditor.java:40
 msgid "TT|Change visible columns"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionPlanningRowsEditor.java:39
+#: Miradi/source/org/miradi/actions/ActionPlanningRowsEditor.java:40
 msgid "TT|Change visible rows"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:40
+#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:41
 msgid "TT|Change which columns are shown"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionEditTaggedObjectSet.java:39
+#: Miradi/source/org/miradi/actions/ActionEditTaggedObjectSet.java:40
 msgid "TT|Choose which factors are tagged."
 msgstr "选择将哪个因素加上标签。 "
 
-#: Miradi/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:39
+#: Miradi/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:40
 msgid "TT|Choose which indicators are relevant to this goal"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:39
+#: Miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:40
 msgid "TT|Choose which indicators are relevant to this objective"
 msgstr "选择哪个指示物与该分目标相关联 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:39
+#: Miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:40
 msgid "TT|Choose which strategies and activities are relevant to this goal"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:39
+#: Miradi/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:40
 msgid ""
 "TT|Choose which strategies and activities are relevant to this objective."
 msgstr "选择哪个策略和活动与本分目标相关联"
 
-#: Miradi/source/org/miradi/actions/ActionCollapseAllRows.java:40
+#: Miradi/source/org/miradi/actions/ActionCollapseAllRows.java:41
 msgid "TT|Collapse All Tree Rows"
 msgstr ""
 
@@ -5904,7 +5904,7 @@ msgstr ""
 msgid "TT|Configure which rows are displayed"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCopy.java:39
+#: Miradi/source/org/miradi/actions/ActionCopy.java:40
 msgid "TT|Copy the selection to the clipboard"
 msgstr "将选定的内容复制到剪贴板 \t\t"
 
@@ -5912,7 +5912,7 @@ msgstr "将选定的内容复制到剪贴板 \t\t"
 msgid "TT|Create a Audience"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreateBendPoint.java:39
+#: Miradi/source/org/miradi/actions/ActionCreateBendPoint.java:40
 msgid "TT|Create a Bend Point"
 msgstr "创建一个曲点 \t\t"
 
@@ -5920,15 +5920,15 @@ msgstr "创建一个曲点 \t\t"
 msgid "TT|Create a Create Task at Same Level"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreateFundingSource.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateFundingSource.java:41
 msgid "TT|Create a Funding Source"
 msgstr "创建一项资金来源 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionCreateGoal.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateGoal.java:41
 msgid "TT|Create a Goal"
 msgstr "创建一个目标 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionInsertGroupBox.java:40
+#: Miradi/source/org/miradi/actions/ActionInsertGroupBox.java:41
 msgid "TT|Create a Group Box"
 msgstr "创建一个组合框 \t\t"
 
@@ -5936,7 +5936,7 @@ msgstr "创建一个组合框 \t\t"
 msgid "TT|Create a IUCN Redlist Species"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttribute.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttribute.java:41
 msgid "TT|Create a Key Ecological Attribute"
 msgstr "创建一项关键生态属性 \t\t"
 
@@ -5944,7 +5944,7 @@ msgstr "创建一项关键生态属性 \t\t"
 msgid "TT|Create a Method for the selected Indicator"
 msgstr "为选定的指示物创建一个方法 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionCreateSubTarget.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateSubTarget.java:41
 msgid "TT|Create a Nested Target"
 msgstr "创建一个嵌套对象 \t\t"
 
@@ -5952,23 +5952,23 @@ msgstr "创建一个嵌套对象 \t\t"
 msgid "TT|Create a Other Notable Species"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreateReportTemplate.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateReportTemplate.java:41
 msgid "TT|Create a Report Template"
 msgstr "创建报告模板"
 
-#: Miradi/source/org/miradi/actions/ActionCreateResource.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateResource.java:41
 msgid "TT|Create a Resource (person, team, etc)"
 msgstr "创建一项资源（个人、团队等） \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionCreateStress.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateStress.java:41
 msgid "TT|Create a Stress"
 msgstr "创建一项压力 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionCreateStressFromKea.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateStressFromKea.java:41
 msgid "TT|Create a Stress from a Key Ecological Attribute"
 msgstr "从一项关键生态属性创建一项压力 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionCreateTaggedObjectSet.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateTaggedObjectSet.java:41
 msgid "TT|Create a Tag"
 msgstr "创建一个标签"
 
@@ -5976,11 +5976,11 @@ msgstr "创建一个标签"
 msgid "TT|Create a child Task for the selected item"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenuDoer.java:39
+#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenuDoer.java:40
 msgid "TT|Create a new Custom Planning View"
 msgstr "创建一个新的定制计划视图 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttributeIndicator.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttributeIndicator.java:41
 msgid "TT|Create a new Indicator"
 msgstr "创建一个新的指示物 \t\t"
 
@@ -5988,21 +5988,21 @@ msgstr "创建一个新的指示物 \t\t"
 msgid "TT|Create a new Measurement"
 msgstr "创建一个新的测量法 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionCreateMethod.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateMethod.java:41
 msgid "TT|Create a new Method"
 msgstr "创建一个新方法 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionCreateProgressPercent.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateProgressPercent.java:41
 msgid "TT|Create a new Progress Percent"
 msgstr "创建新的进展百分比 \t\t"
 
 #: Miradi/source/org/miradi/views/umbrella/ActionCreateProgressReport.java:41
-#: Miradi/source/org/miradi/actions/ActionCreateTaskProgressReport.java:40
-#: Miradi/source/org/miradi/actions/ActionCreateStrategyProgressReport.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateTaskProgressReport.java:41
+#: Miradi/source/org/miradi/actions/ActionCreateStrategyProgressReport.java:41
 msgid "TT|Create a new Progress Report"
 msgstr "创建新的进展报告 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewEmptyConfiguration.java:40
+#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewEmptyConfiguration.java:41
 msgid "TT|Create a new blank Custom Planning View"
 msgstr ""
 
@@ -6014,15 +6014,15 @@ msgstr ""
 msgid "TT|Create a new item of type Budget Category #2"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionPlanningCreationMenu.java:39
+#: Miradi/source/org/miradi/actions/ActionPlanningCreationMenu.java:40
 msgid "TT|Create a new object"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewPrefilledConfiguration.java:39
+#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewPrefilledConfiguration.java:40
 msgid "TT|Create a new prefilled Custom Planning View"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:41
 msgid "TT|Create a new tag"
 msgstr ""
 
@@ -6038,31 +6038,31 @@ msgstr "创建一个会计编码 \t\t"
 msgid "TT|Create an Activity for the selected Strategy"
 msgstr "为选定的策略创建一项活动 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionCreateIncomingJunction.java:39
+#: Miradi/source/org/miradi/actions/ActionCreateIncomingJunction.java:40
 msgid "TT|Create an Incoming Junction Bend Point"
 msgstr "创建一个向内交叉点的曲点 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionCreateIndicator.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateIndicator.java:41
 msgid "TT|Create an Indicator"
 msgstr "创建一项指示物 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionTreeCreateIndicator.java:45
+#: Miradi/source/org/miradi/actions/ActionTreeCreateIndicator.java:46
 msgid "TT|Create an Indicator for the selected factor"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreateObjective.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateObjective.java:41
 msgid "TT|Create an Objective"
 msgstr "创建一个分目标 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionTreeCreateObjective.java:45
+#: Miradi/source/org/miradi/actions/ActionTreeCreateObjective.java:46
 msgid "TT|Create an Objective for the selected factor"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreateOrganization.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateOrganization.java:41
 msgid "TT|Create an Organization"
 msgstr "创建一个组织机构"
 
-#: Miradi/source/org/miradi/actions/ActionCreateOutgoingJunction.java:39
+#: Miradi/source/org/miradi/actions/ActionCreateOutgoingJunction.java:40
 msgid "TT|Create an Outgoing Junction Bend Point"
 msgstr "创建一个外向交叉点的曲点 \t\t"
 
@@ -6082,57 +6082,57 @@ msgstr ""
 msgid "TT|Create from an Existing Stress"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionManageStresses.java:40
+#: Miradi/source/org/miradi/actions/ActionManageStresses.java:41
 msgid "TT|Create, Delete, or Edit Stresses"
 msgstr "创建、删除、或编辑压力 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionCut.java:39
+#: Miradi/source/org/miradi/actions/ActionCut.java:40
 msgid "TT|Cut the selection to the clipboard"
 msgstr "将选定的内容剪切到剪贴板 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteGroupBox.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteGroupBox.java:41
 msgid "TT|Delete Group Box(s) but not children"
 msgstr "删除（多个）组合框，除了儿童 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeIndicator.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeIndicator.java:41
 msgid "TT|Delete Indicator"
 msgstr "删除指示物 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteLegacyTncStrategyRanking.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteLegacyTncStrategyRanking.java:41
 msgid "TT|Delete Legacy TNC Strategy Ranking."
 msgstr "删除TNC传承策略评级 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteSubTarget.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteSubTarget.java:41
 msgid "TT|Delete Nested Target"
 msgstr "删除嵌套对象 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteOrganization.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteOrganization.java:41
 msgid "TT|Delete Organization"
 msgstr "删除组织机构 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:41
 msgid "TT|Delete Progress Percent"
 msgstr "删除进展百分比 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteStrategyProgressReport.java:40
-#: Miradi/source/org/miradi/actions/ActionDeleteTaskProgressReport.java:40
-#: Miradi/source/org/miradi/actions/ActionDeleteProgressReport.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteStrategyProgressReport.java:41
+#: Miradi/source/org/miradi/actions/ActionDeleteTaskProgressReport.java:41
+#: Miradi/source/org/miradi/actions/ActionDeleteProgressReport.java:41
 msgid "TT|Delete Progress Report"
 msgstr "删除进展报告 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteBendPoint.java:39
+#: Miradi/source/org/miradi/actions/ActionDeleteBendPoint.java:40
 msgid "TT|Delete a Bend Point"
 msgstr "删除一个曲点 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeMeasurement.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeMeasurement.java:41
 msgid "TT|Delete a Measurement"
 msgstr "删除一项测量法 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteReportTemplate.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteReportTemplate.java:41
 msgid "TT|Delete a Report Template"
 msgstr "删除报告模板"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteTaggedObjectSet.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteTaggedObjectSet.java:41
 msgid "TT|Delete a Tag"
 msgstr "删除一个标签"
 
@@ -6156,7 +6156,7 @@ msgstr ""
 msgid "TT|Delete the selected Accounting Code"
 msgstr "删除选定的会计编码 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteActivity.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteActivity.java:41
 msgid "TT|Delete the selected Activity"
 msgstr "删除选定的活动 \t\t"
 
@@ -6168,48 +6168,48 @@ msgstr ""
 msgid "TT|Delete the selected Budget Category #2 item"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:40
+#: Miradi/source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:41
 msgid "TT|Delete the selected Custom Planning View"
 msgstr "删除选定的定制计划视图 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteFundingSource.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteFundingSource.java:41
 msgid "TT|Delete the selected Funding Source"
 msgstr "删除选定的资金来源 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteGoal.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteGoal.java:41
 msgid "TT|Delete the selected Goal"
 msgstr "删除选定的总目标 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteIndicator.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteIndicator.java:41
 msgid "TT|Delete the selected Indicator"
 msgstr "删除选定的指示物 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttribute.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttribute.java:41
 msgid "TT|Delete the selected Key Ecological Attribute"
 msgstr "删除选定的关键生态属性 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteMethod.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteMethod.java:41
 msgid "TT|Delete the selected Method"
 msgstr "删除选定的方法 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteObjective.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteObjective.java:41
 msgid "TT|Delete the selected Objective"
 msgstr "删除选定的分目标 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteResource.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteResource.java:41
 msgid "TT|Delete the selected Resource (person, team, etc)"
 msgstr "删除选定的资源（个人、团队等） \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteStress.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteStress.java:41
 msgid "TT|Delete the selected Stress"
 msgstr "删除选定的压力 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteWorkPlanNode.java:39
-#: Miradi/source/org/miradi/actions/ActionDeletePlanningViewTreeNode.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteWorkPlanNode.java:40
+#: Miradi/source/org/miradi/actions/ActionDeletePlanningViewTreeNode.java:41
 msgid "TT|Delete the selected item"
 msgstr "删除选定的条目 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDelete.java:40
+#: Miradi/source/org/miradi/actions/ActionDelete.java:41
 msgid "TT|Delete the selection"
 msgstr "删除选定的 \t\t"
 
@@ -6217,15 +6217,15 @@ msgstr "删除选定的 \t\t"
 msgid "TT|Develop a work plan and budget"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionEditEstimatedResource.java:39
+#: Miradi/source/org/miradi/actions/ActionEditEstimatedResource.java:40
 msgid "TT|Edit the list of estimated resources."
 msgstr "编辑估计资源的列表 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionEditMethods.java:39
+#: Miradi/source/org/miradi/actions/ActionEditMethods.java:40
 msgid "TT|Edit the methods for this indicator"
 msgstr "为该指示物编辑方法 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionExpandAllRows.java:40
+#: Miradi/source/org/miradi/actions/ActionExpandAllRows.java:41
 msgid "TT|Expand All Tree Rows"
 msgstr ""
 
@@ -6257,15 +6257,15 @@ msgstr ""
 msgid "TT|Expand To Type"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionExportConProXml.java:39
+#: Miradi/source/org/miradi/actions/ActionExportConProXml.java:40
 msgid "TT|Export a file that can be imported by ConPro"
 msgstr "导出一个能够被导入到ConPro的文件 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionExportRtf.java:39
+#: Miradi/source/org/miradi/actions/ActionExportRtf.java:40
 msgid "TT|Export current page as an RTF file"
 msgstr "将当前页面导出为RTF文件"
 
-#: Miradi/source/org/miradi/actions/ActionExportWcsProjectZip.java:40
+#: Miradi/source/org/miradi/actions/ActionExportWcsProjectZip.java:41
 msgid "TT|Export entire project as a WCS Miradi Project ZIP file"
 msgstr ""
 
@@ -6273,56 +6273,56 @@ msgstr ""
 msgid "TT|Export entire project as an XML file"
 msgstr "将整个项目导出为XML文件"
 
-#: Miradi/source/org/miradi/actions/ActionExportBudgetTableTree.java:39
+#: Miradi/source/org/miradi/actions/ActionExportBudgetTableTree.java:40
 msgid "TT|Export finance tree"
 msgstr "导出金融树 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionExportZippedProjectFile.java:39
+#: Miradi/source/org/miradi/actions/ActionExportZippedProjectFile.java:40
 msgid "TT|Export project as a Miradi Project Zip (MPZ) file"
 msgstr "将项目导出为Miradi项目Zip（MPZ）文件"
 
-#: Miradi/source/org/miradi/actions/ActionExportTable.java:39
+#: Miradi/source/org/miradi/actions/ActionExportTable.java:40
 msgid "TT|Export this view's table to a tab delimited file"
 msgstr "将本视图的表格导入到制表符分隔文件 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionFilterWorkPlanByProjectResource.java:40
+#: Miradi/source/org/miradi/actions/ActionFilterWorkPlanByProjectResource.java:41
 msgid "TT|Filter to only display budget data for the selected resource(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionWizardNext.java:41
+#: Miradi/source/org/miradi/actions/ActionWizardNext.java:42
 msgid "TT|Go to the Next wizard step"
 msgstr "进入下一个向导步骤 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionWizardPrevious.java:41
+#: Miradi/source/org/miradi/actions/ActionWizardPrevious.java:42
 msgid "TT|Go to the Previous wizard step"
 msgstr "回到上一个向导步骤 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionConfigureLayers.java:39
+#: Miradi/source/org/miradi/actions/ActionConfigureLayers.java:40
 msgid "TT|Hide or show portions of the diagram"
 msgstr "隐藏或显示图表部分 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionHideActivityBubble.java:39
+#: Miradi/source/org/miradi/actions/ActionHideActivityBubble.java:40
 msgid "TT|Hide this Activity so it no longer appears on this Results Chain"
 msgstr "隐藏本活动使之不再出现于该结果链 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionHideStressBubble.java:39
+#: Miradi/source/org/miradi/actions/ActionHideStressBubble.java:40
 msgid ""
 "TT|Hide this Stress so it no longer appears on this Conceptual Model page"
 msgstr "隐藏该压力使之不再出现于本概念模型页面 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionHowToSave.java:39
+#: Miradi/source/org/miradi/actions/ActionHowToSave.java:40
 msgid "TT|How to save files in Miradi"
 msgstr "如何在Miradi中保存文件 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionImportZippedConproProject.java:39
+#: Miradi/source/org/miradi/actions/ActionImportZippedConproProject.java:40
 msgid "TT|Import a .cpmz file that was exported from ConPro"
 msgstr "导入一个从ConPro导出的.cpmz文件 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionImportZippedProjectFile.java:39
+#: Miradi/source/org/miradi/actions/ActionImportZippedProjectFile.java:40
 msgid "TT|Import a .mpz file that was exported from Miradi"
 msgstr "导入一个从Miradi导出的.mpz文件 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:39
+#: Miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:40
 msgid "TT|Import accounting codes"
 msgstr "导入会计编码 \t\t"
 
@@ -6330,44 +6330,44 @@ msgstr "导入会计编码 \t\t"
 msgid "TT|Import entire project from a XML file"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionInsertContributingFactor.java:42
+#: Miradi/source/org/miradi/actions/ActionInsertContributingFactor.java:43
 msgid "TT|Insert a Contributing Factor"
 msgstr "插入一项影响因素 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionInsertDirectThreat.java:42
+#: Miradi/source/org/miradi/actions/ActionInsertDirectThreat.java:43
 msgid "TT|Insert a Direct Threat"
 msgstr "插入一个直接威胁因子 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionInsertHumanWelfareTarget.java:43
+#: Miradi/source/org/miradi/actions/ActionInsertHumanWelfareTarget.java:44
 msgid "TT|Insert a Human Welfare Target"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionInsertIntermediateResult.java:40
+#: Miradi/source/org/miradi/actions/ActionInsertIntermediateResult.java:41
 msgid "TT|Insert a Intermediate Result"
 msgstr "插入一项中途结果 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionInsertScopeBox.java:40
+#: Miradi/source/org/miradi/actions/ActionInsertScopeBox.java:41
 msgid "TT|Insert a Scope Box"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionInsertStrategy.java:42
+#: Miradi/source/org/miradi/actions/ActionInsertStrategy.java:43
 msgid "TT|Insert a Strategy"
 msgstr "插入一项策略 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionInsertTarget.java:42
+#: Miradi/source/org/miradi/actions/ActionInsertTarget.java:43
 msgid "TT|Insert a Target"
 msgstr "插入一个对象 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionInsertTextBox.java:40
+#: Miradi/source/org/miradi/actions/ActionInsertTextBox.java:41
 msgid "TT|Insert a Text Box"
 msgstr "插入一个文本框 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionInsertThreatReductionResult.java:40
-#: Miradi/source/org/miradi/actions/ActionCreateThreatReductionResult.java:42
+#: Miradi/source/org/miradi/actions/ActionInsertThreatReductionResult.java:41
+#: Miradi/source/org/miradi/actions/ActionCreateThreatReductionResult.java:43
 msgid "TT|Insert a Threat Reduction Result"
 msgstr "插入一项威胁因子减少的结果 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionInsertDraftStrategy.java:40
+#: Miradi/source/org/miradi/actions/ActionInsertDraftStrategy.java:41
 msgid "TT|Insert a draft Strategy"
 msgstr "插入一项策略草案 \t\t"
 
@@ -6379,15 +6379,15 @@ msgstr ""
 msgid "TT|Isolate the selected factor chain in Brainstorm Mode"
 msgstr "在集思广益模式中分离选定的因素链 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionResourceListModify.java:39
+#: Miradi/source/org/miradi/actions/ActionResourceListModify.java:40
 msgid "TT|Modify resource from list"
 msgstr "从列表中修改资源 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionCreateDiagramMargin.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateDiagramMargin.java:41
 msgid "TT|Move factors right and down as needed to create margins"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionActivityMoveDown.java:40
+#: Miradi/source/org/miradi/actions/ActionActivityMoveDown.java:41
 msgid "TT|Move the selected Activity down"
 msgstr "下移选定的活动 \t\t"
 
@@ -6395,7 +6395,7 @@ msgstr "下移选定的活动 \t\t"
 msgid "TT|Move the selected Activity up"
 msgstr "上移选定的活动 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionTreeNodeDown.java:40
+#: Miradi/source/org/miradi/actions/ActionTreeNodeDown.java:41
 msgid "TT|Move the selected item down"
 msgstr "下移选定的条目 \t\t"
 
@@ -6403,52 +6403,52 @@ msgstr "下移选定的条目 \t\t"
 msgid "TT|Move the selected item up"
 msgstr "上移选定的条目 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionPasteFactorContent.java:47
+#: Miradi/source/org/miradi/actions/ActionPasteFactorContent.java:48
 msgid "TT|Paste the Single Factor's content from the clipboard"
 msgstr "从剪贴板中粘贴单一因素的内容 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionPaste.java:47
+#: Miradi/source/org/miradi/actions/ActionPaste.java:48
 msgid "TT|Paste the clipboard"
 msgstr "粘贴剪贴板 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionPasteWithoutLinks.java:47
+#: Miradi/source/org/miradi/actions/ActionPasteWithoutLinks.java:48
 msgid "TT|Paste the clipboard without links"
 msgstr "粘贴剪贴板，不带链接 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionPrint.java:39
+#: Miradi/source/org/miradi/actions/ActionPrint.java:40
 msgid "TT|Print the current view to a printer"
 msgstr "将本视图打印到一台打印机 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionRedo.java:39
+#: Miradi/source/org/miradi/actions/ActionRedo.java:40
 msgid "TT|Redo last undone action"
 msgstr "重做上一次撤销的动作 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionGroupBoxRemoveFactor.java:40
+#: Miradi/source/org/miradi/actions/ActionGroupBoxRemoveFactor.java:41
 msgid "TT|Remove Factor(s) from Group Box"
 msgstr "从组合框中删除（多个）因素 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteTeamMember.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteTeamMember.java:41
 msgid "TT|Remove a member from the team"
 msgstr "从团队中去除一个成员 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionRemoveAssignment.java:40
-#: Miradi/source/org/miradi/actions/ActionResourceListRemove.java:39
+#: Miradi/source/org/miradi/actions/ActionRemoveAssignment.java:41
+#: Miradi/source/org/miradi/actions/ActionResourceListRemove.java:40
 msgid "TT|Remove resource from list"
 msgstr "从列表中去除资源 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:39
+#: Miradi/source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:40
 msgid "TT|Rename the selected Custom Planning View"
 msgstr "重命名选定的定制计划视图 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionRenameConceptualModel.java:39
+#: Miradi/source/org/miradi/actions/ActionRenameConceptualModel.java:40
 msgid "TT|Rename this Conceptual Model Page"
 msgstr "重命名该概念模型页 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionRenameResultsChain.java:39
+#: Miradi/source/org/miradi/actions/ActionRenameResultsChain.java:40
 msgid "TT|Rename this Results Chain"
 msgstr "重命名该结果链 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionRunReportTemplate.java:39
+#: Miradi/source/org/miradi/actions/ActionRunReportTemplate.java:40
 msgid "TT|Run the Selected Report Template"
 msgstr "运行选定的报告模板"
 
@@ -6456,45 +6456,45 @@ msgstr "运行选定的报告模板"
 msgid "TT|Save %s File"
 msgstr "保存 %s 文件  \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionSaveProjectAs.java:39
+#: Miradi/source/org/miradi/actions/ActionSaveProjectAs.java:40
 msgid "TT|Save a copy of this project under a different name and open it"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionSaveImageJPEG.java:39
+#: Miradi/source/org/miradi/actions/ActionSaveImageJPEG.java:40
 msgid "TT|Save the diagram or upper table area as a JPEG Image"
 msgstr "将图表或表格区域上部保存为JPEG图像 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionSaveImagePng.java:39
+#: Miradi/source/org/miradi/actions/ActionSaveImagePng.java:40
 msgid "TT|Save the diagram or upper table area as a PNG Image"
 msgstr "将图表或表格区域上部保存为PNG图像 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionSelectChain.java:39
+#: Miradi/source/org/miradi/actions/ActionSelectChain.java:40
 msgid "TT|Select the entire chain related to this Direct Threat"
 msgstr "选择与该直接威胁因子相关的整个链结 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionTreeShareActivity.java:40
-#: Miradi/source/org/miradi/actions/ActionShareActivity.java:40
+#: Miradi/source/org/miradi/actions/ActionTreeShareActivity.java:41
+#: Miradi/source/org/miradi/actions/ActionShareActivity.java:41
 msgid "TT|Share an existing Activity into this Strategy"
 msgstr "将一个现存的活动共享到该策略 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionTreeShareMethod.java:40
-#: Miradi/source/org/miradi/actions/ActionShareMethod.java:40
+#: Miradi/source/org/miradi/actions/ActionTreeShareMethod.java:41
+#: Miradi/source/org/miradi/actions/ActionShareMethod.java:41
 msgid "TT|Share an existing Method into this Indicator"
 msgstr "将一个现存的方法共享到该指示物 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDiagramProperties.java:39
+#: Miradi/source/org/miradi/actions/ActionDiagramProperties.java:40
 msgid "TT|Show the diagram properties"
 msgstr "显示该图表属性 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionShowFullModelMode.java:44
+#: Miradi/source/org/miradi/actions/ActionShowFullModelMode.java:45
 msgid "TT|Show the full conceptual model page"
 msgstr "显示整个概念模型页面 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionShowActivityBubble.java:39
+#: Miradi/source/org/miradi/actions/ActionShowActivityBubble.java:40
 msgid "TT|Show this Activity so it appears on this Results Chain"
 msgstr "隐藏本活动使之不再出现于该结果链 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionShowStressBubble.java:39
+#: Miradi/source/org/miradi/actions/ActionShowStressBubble.java:40
 msgid "TT|Show this Stress so it appears on this Conceptual Model page"
 msgstr "显示该压力使之出现于该概念模型页面 \t\t"
 
@@ -6554,23 +6554,23 @@ msgstr "切换到对象生存力视图 \t\t"
 msgid "TT|Switch to the Threat Rating View"
 msgstr ">切换到威胁因子评级视图 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionUndo.java:39
+#: Miradi/source/org/miradi/actions/ActionUndo.java:40
 msgid "TT|Undo last action"
 msgstr "撤销上一次动作 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionViewLegacyTncStrategtyRanking.java:39
+#: Miradi/source/org/miradi/actions/ActionViewLegacyTncStrategtyRanking.java:40
 msgid "TT|View Legacy TNC Strategy Ranking."
 msgstr "查看TNC传承策略评级 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionZoomIn.java:39
+#: Miradi/source/org/miradi/actions/ActionZoomIn.java:40
 msgid "TT|Zoom In"
 msgstr "放大 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionZoomOut.java:39
+#: Miradi/source/org/miradi/actions/ActionZoomOut.java:40
 msgid "TT|Zoom Out"
 msgstr "缩小 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionZoomToFit.java:39
+#: Miradi/source/org/miradi/actions/ActionZoomToFit.java:40
 msgid "TT|Zoom To Fit"
 msgstr "放大到匹配 \t\t"
 
