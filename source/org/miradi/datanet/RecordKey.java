@@ -27,6 +27,7 @@ public class RecordKey
 		id = idToUse;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return typeName + ":" + id;
@@ -37,6 +38,7 @@ public class RecordKey
 		return typeName;
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(! (rawOther instanceof RecordKey))
@@ -48,6 +50,7 @@ public class RecordKey
 		return (typeName.equals(other.typeName));
 	}
 	
+	@Override
 	public int hashCode()
 	{
 		return id;

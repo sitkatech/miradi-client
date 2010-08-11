@@ -77,6 +77,7 @@ public class RecordInstance
 		return datanet.getRecord(datanet.getOwnerKey(getKey(), linkageTypeName));
 	}
 
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(! (rawOther instanceof RecordInstance))
@@ -85,6 +86,7 @@ public class RecordInstance
 		return (getKey().equals(other.getKey()));
 	}
 	
+	@Override
 	public int hashCode()
 	{
 		return getKey().hashCode();

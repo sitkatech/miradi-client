@@ -32,11 +32,13 @@ public class LinkageKey
 		return linkageTypeName;
 	}
 
+	@Override
 	public String toString()
 	{
 		return ownerKey.toString() + ":" + linkageTypeName;
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(! (rawOther instanceof LinkageKey))
@@ -48,6 +50,7 @@ public class LinkageKey
 		return (linkageTypeName.equals(other.linkageTypeName));
 	}
 	
+	@Override
 	public int hashCode()
 	{
 		return linkageTypeName.hashCode();
