@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 13:10-0500\n"
+"POT-Creation-Date: 2010-08-11 13:25-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1566,7 +1566,7 @@ msgid "Action|Show Columns..."
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionShowConceptualModel.java:35
-#: Miradi/source/org/miradi/actions/ActionShowConceptualModel.java:40
+#: Miradi/source/org/miradi/actions/ActionShowConceptualModel.java:41
 msgid "Action|Show Conceptual Model"
 msgstr "Tampakkan Model Konsep "
 
@@ -1583,7 +1583,7 @@ msgid "Action|Show Ratings in Cell"
 msgstr "Tampakkan Peringkat dalam Sel "
 
 #: Miradi/source/org/miradi/actions/ActionShowResultsChain.java:36
-#: Miradi/source/org/miradi/actions/ActionShowResultsChain.java:41
+#: Miradi/source/org/miradi/actions/ActionShowResultsChain.java:42
 msgid "Action|Show Results Chain"
 msgstr "Tampakkan Rangkaian Hasil "
 
@@ -1592,7 +1592,7 @@ msgid "Action|Show Stress on this page"
 msgstr "Tampakkan Tekanan pada halaman ini "
 
 #: Miradi/source/org/miradi/actions/ActionCreateOrShowResultsChain.java:35
-#: Miradi/source/org/miradi/actions/ActionCreateOrShowResultsChain.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateOrShowResultsChain.java:41
 msgid "Action|Show/Create Results Chain"
 msgstr "Tunjukkan/Buat Rangkaian Hasil "
 
@@ -6049,77 +6049,77 @@ msgstr "Di seluruh bagian sistem"
 msgid "TNC"
 msgstr "TNC "
 
-#: Miradi/source/org/miradi/actions/ActionResourceListAdd.java:39
+#: Miradi/source/org/miradi/actions/ActionResourceListAdd.java:40
 msgid "TT|Add"
 msgstr "Tambahkan "
 
-#: Miradi/source/org/miradi/actions/ActionGroupBoxAddFactor.java:40
+#: Miradi/source/org/miradi/actions/ActionGroupBoxAddFactor.java:41
 msgid "TT|Add Factor(s) to Group Box"
 msgstr "Tambahkan Faktor(-faktor) ke Kotak Grup "
 
-#: Miradi/source/org/miradi/actions/ActionInsertLink.java:40
+#: Miradi/source/org/miradi/actions/ActionInsertLink.java:41
 msgid "TT|Add a link between two factors"
 msgstr "Tambahkan tautan antara dua faktor "
 
-#: Miradi/source/org/miradi/actions/ActionTeamCreateMember.java:40
+#: Miradi/source/org/miradi/actions/ActionTeamCreateMember.java:41
 msgid "TT|Add member to the team"
 msgstr "Tambahkan anggota ke tim "
 
-#: Miradi/source/org/miradi/actions/ActionViewPossibleResources.java:39
+#: Miradi/source/org/miradi/actions/ActionViewPossibleResources.java:40
 msgid "TT|Add resources to activity"
 msgstr "Tambahkan sumber daya ke kegiatan "
 
-#: Miradi/source/org/miradi/actions/ActionManageFactorTagsFromMenu.java:40
+#: Miradi/source/org/miradi/actions/ActionManageFactorTagsFromMenu.java:41
 msgid "TT|Add/remove tags for the selected factor"
 msgstr "Tambah/Hapus tag dari faktor yang dipilih "
 
-#: Miradi/source/org/miradi/actions/ActionManageFactorTags.java:40
+#: Miradi/source/org/miradi/actions/ActionManageFactorTags.java:41
 msgid "TT|Add/remove tags for this factor"
 msgstr "Tambah/Hapus tag dari faktor ini "
 
-#: Miradi/source/org/miradi/actions/ActionAssignResource.java:40
+#: Miradi/source/org/miradi/actions/ActionAssignResource.java:41
 msgid "TT|Assign a resource to this task"
 msgstr "Alokasikan satu sumber daya ke tugas ini "
 
-#: Miradi/source/org/miradi/actions/ActionArrangeConceptualModel.java:40
+#: Miradi/source/org/miradi/actions/ActionArrangeConceptualModel.java:41
 msgid "TT|Automatically arrange the factors in this Conceptual Model page"
 msgstr ""
 "Secara otomatis mengatur faktor-faktor dalam halaman Model Konseptual ini "
 
-#: Miradi/source/org/miradi/actions/ActionPlanningColumnsEditor.java:39
+#: Miradi/source/org/miradi/actions/ActionPlanningColumnsEditor.java:40
 msgid "TT|Change visible columns"
 msgstr "Ubah kolom yang tampil "
 
-#: Miradi/source/org/miradi/actions/ActionPlanningRowsEditor.java:39
+#: Miradi/source/org/miradi/actions/ActionPlanningRowsEditor.java:40
 msgid "TT|Change visible rows"
 msgstr "Ubah baris yang tampil "
 
-#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:40
+#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:41
 msgid "TT|Change which columns are shown"
 msgstr "Ubah kolom mana yang ditampilkan "
 
-#: Miradi/source/org/miradi/actions/ActionEditTaggedObjectSet.java:39
+#: Miradi/source/org/miradi/actions/ActionEditTaggedObjectSet.java:40
 msgid "TT|Choose which factors are tagged."
 msgstr "Pilih faktor-faktor mana yang ditandai."
 
-#: Miradi/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:39
+#: Miradi/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:40
 msgid "TT|Choose which indicators are relevant to this goal"
 msgstr "Pilih indikator mana yang sesuai dengan sasaran ini "
 
-#: Miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:39
+#: Miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:40
 msgid "TT|Choose which indicators are relevant to this objective"
 msgstr "Pilih indikator mana yang relevan dengan sasaran ini "
 
-#: Miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:39
+#: Miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:40
 msgid "TT|Choose which strategies and activities are relevant to this goal"
 msgstr "Pilih strategi dan aktivitas apa yang sesuai dengan sasaran ini "
 
-#: Miradi/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:39
+#: Miradi/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:40
 msgid ""
 "TT|Choose which strategies and activities are relevant to this objective."
 msgstr "Pilih strategi dan aktivitas mana yang relevan dengan tujuan ini"
 
-#: Miradi/source/org/miradi/actions/ActionCollapseAllRows.java:40
+#: Miradi/source/org/miradi/actions/ActionCollapseAllRows.java:41
 msgid "TT|Collapse All Tree Rows"
 msgstr "Lipat Semua Baris Pohon "
 
@@ -6127,7 +6127,7 @@ msgstr "Lipat Semua Baris Pohon "
 msgid "TT|Configure which rows are displayed"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCopy.java:39
+#: Miradi/source/org/miradi/actions/ActionCopy.java:40
 msgid "TT|Copy the selection to the clipboard"
 msgstr "Salin pilihan ke papan klip "
 
@@ -6135,7 +6135,7 @@ msgstr "Salin pilihan ke papan klip "
 msgid "TT|Create a Audience"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreateBendPoint.java:39
+#: Miradi/source/org/miradi/actions/ActionCreateBendPoint.java:40
 msgid "TT|Create a Bend Point"
 msgstr "Buat satu Titik Belok "
 
@@ -6143,15 +6143,15 @@ msgstr "Buat satu Titik Belok "
 msgid "TT|Create a Create Task at Same Level"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreateFundingSource.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateFundingSource.java:41
 msgid "TT|Create a Funding Source"
 msgstr "Buat satu Sumber Dana "
 
-#: Miradi/source/org/miradi/actions/ActionCreateGoal.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateGoal.java:41
 msgid "TT|Create a Goal"
 msgstr "Buat satu Sasaran "
 
-#: Miradi/source/org/miradi/actions/ActionInsertGroupBox.java:40
+#: Miradi/source/org/miradi/actions/ActionInsertGroupBox.java:41
 msgid "TT|Create a Group Box"
 msgstr "Buat satu Kotak Grup "
 
@@ -6159,7 +6159,7 @@ msgstr "Buat satu Kotak Grup "
 msgid "TT|Create a IUCN Redlist Species"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttribute.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttribute.java:41
 msgid "TT|Create a Key Ecological Attribute"
 msgstr "Buat satu Atribut Ekologi Kunci "
 
@@ -6167,7 +6167,7 @@ msgstr "Buat satu Atribut Ekologi Kunci "
 msgid "TT|Create a Method for the selected Indicator"
 msgstr "Buat Metode untuk Indikator terpilih "
 
-#: Miradi/source/org/miradi/actions/ActionCreateSubTarget.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateSubTarget.java:41
 msgid "TT|Create a Nested Target"
 msgstr "Buat satu Target Bersarang "
 
@@ -6175,23 +6175,23 @@ msgstr "Buat satu Target Bersarang "
 msgid "TT|Create a Other Notable Species"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreateReportTemplate.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateReportTemplate.java:41
 msgid "TT|Create a Report Template"
 msgstr "Buat satu Templat Laporan"
 
-#: Miradi/source/org/miradi/actions/ActionCreateResource.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateResource.java:41
 msgid "TT|Create a Resource (person, team, etc)"
 msgstr "Buat satu Sumber Daya (orang, tim, dsb.) "
 
-#: Miradi/source/org/miradi/actions/ActionCreateStress.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateStress.java:41
 msgid "TT|Create a Stress"
 msgstr "Buat satu Tekanan "
 
-#: Miradi/source/org/miradi/actions/ActionCreateStressFromKea.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateStressFromKea.java:41
 msgid "TT|Create a Stress from a Key Ecological Attribute"
 msgstr "Buat satu Tekanan dari Atribut Ekologi Kunci "
 
-#: Miradi/source/org/miradi/actions/ActionCreateTaggedObjectSet.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateTaggedObjectSet.java:41
 msgid "TT|Create a Tag"
 msgstr "Buat satu Tag"
 
@@ -6199,11 +6199,11 @@ msgstr "Buat satu Tag"
 msgid "TT|Create a child Task for the selected item"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenuDoer.java:39
+#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenuDoer.java:40
 msgid "TT|Create a new Custom Planning View"
 msgstr "Buat satu Tampilan Perencanaan Tersuai baru "
 
-#: Miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttributeIndicator.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttributeIndicator.java:41
 msgid "TT|Create a new Indicator"
 msgstr "Buat Indikator baru "
 
@@ -6211,21 +6211,21 @@ msgstr "Buat Indikator baru "
 msgid "TT|Create a new Measurement"
 msgstr "Buat Pengukuran baru "
 
-#: Miradi/source/org/miradi/actions/ActionCreateMethod.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateMethod.java:41
 msgid "TT|Create a new Method"
 msgstr "Buat satu Metode baru "
 
-#: Miradi/source/org/miradi/actions/ActionCreateProgressPercent.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateProgressPercent.java:41
 msgid "TT|Create a new Progress Percent"
 msgstr "Buat Persentase Kemajuan baru "
 
 #: Miradi/source/org/miradi/views/umbrella/ActionCreateProgressReport.java:41
-#: Miradi/source/org/miradi/actions/ActionCreateTaskProgressReport.java:40
-#: Miradi/source/org/miradi/actions/ActionCreateStrategyProgressReport.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateTaskProgressReport.java:41
+#: Miradi/source/org/miradi/actions/ActionCreateStrategyProgressReport.java:41
 msgid "TT|Create a new Progress Report"
 msgstr "Buat Laporan Kemajuan baru "
 
-#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewEmptyConfiguration.java:40
+#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewEmptyConfiguration.java:41
 msgid "TT|Create a new blank Custom Planning View"
 msgstr "Buat baru Tampilan Perencanaan Khusus yang kosong "
 
@@ -6237,15 +6237,15 @@ msgstr ""
 msgid "TT|Create a new item of type Budget Category #2"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionPlanningCreationMenu.java:39
+#: Miradi/source/org/miradi/actions/ActionPlanningCreationMenu.java:40
 msgid "TT|Create a new object"
 msgstr "Buat objek baru "
 
-#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewPrefilledConfiguration.java:39
+#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewPrefilledConfiguration.java:40
 msgid "TT|Create a new prefilled Custom Planning View"
 msgstr "Buat baru Tampilan Perencanaan Khusus yang sudah diisi "
 
-#: Miradi/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:41
 msgid "TT|Create a new tag"
 msgstr "Buat tag baru "
 
@@ -6261,31 +6261,31 @@ msgstr "Buat satu Kode Akuntansi "
 msgid "TT|Create an Activity for the selected Strategy"
 msgstr "Buat Kegiatan untuk Strategi terpilih "
 
-#: Miradi/source/org/miradi/actions/ActionCreateIncomingJunction.java:39
+#: Miradi/source/org/miradi/actions/ActionCreateIncomingJunction.java:40
 msgid "TT|Create an Incoming Junction Bend Point"
 msgstr "Buat Titik Belok Simpangan Masuk "
 
-#: Miradi/source/org/miradi/actions/ActionCreateIndicator.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateIndicator.java:41
 msgid "TT|Create an Indicator"
 msgstr "Buat satu Indikator "
 
-#: Miradi/source/org/miradi/actions/ActionTreeCreateIndicator.java:45
+#: Miradi/source/org/miradi/actions/ActionTreeCreateIndicator.java:46
 msgid "TT|Create an Indicator for the selected factor"
 msgstr "Buat Indikator untuk faktor yang dipilih "
 
-#: Miradi/source/org/miradi/actions/ActionCreateObjective.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateObjective.java:41
 msgid "TT|Create an Objective"
 msgstr "Buat satu Tujuan Instruksional "
 
-#: Miradi/source/org/miradi/actions/ActionTreeCreateObjective.java:45
+#: Miradi/source/org/miradi/actions/ActionTreeCreateObjective.java:46
 msgid "TT|Create an Objective for the selected factor"
 msgstr "Buat satu Tujuan untuk faktor yang dipilih "
 
-#: Miradi/source/org/miradi/actions/ActionCreateOrganization.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateOrganization.java:41
 msgid "TT|Create an Organization"
 msgstr "Buat satu Organisasi "
 
-#: Miradi/source/org/miradi/actions/ActionCreateOutgoingJunction.java:39
+#: Miradi/source/org/miradi/actions/ActionCreateOutgoingJunction.java:40
 msgid "TT|Create an Outgoing Junction Bend Point"
 msgstr "Buat Titik Belok Simpangan Keluar "
 
@@ -6305,57 +6305,57 @@ msgstr ""
 msgid "TT|Create from an Existing Stress"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionManageStresses.java:40
+#: Miradi/source/org/miradi/actions/ActionManageStresses.java:41
 msgid "TT|Create, Delete, or Edit Stresses"
 msgstr "Buat, Hapus, atau Edit Tekanan "
 
-#: Miradi/source/org/miradi/actions/ActionCut.java:39
+#: Miradi/source/org/miradi/actions/ActionCut.java:40
 msgid "TT|Cut the selection to the clipboard"
 msgstr "Potong pilihan ke papan klip "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteGroupBox.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteGroupBox.java:41
 msgid "TT|Delete Group Box(s) but not children"
 msgstr "Hapus Kotak(-kotak) Grup selain turunannya "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeIndicator.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeIndicator.java:41
 msgid "TT|Delete Indicator"
 msgstr "Hapus Indikator "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteLegacyTncStrategyRanking.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteLegacyTncStrategyRanking.java:41
 msgid "TT|Delete Legacy TNC Strategy Ranking."
 msgstr "Hapus Peringkat Strategi TNC (sistem) Warisan "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteSubTarget.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteSubTarget.java:41
 msgid "TT|Delete Nested Target"
 msgstr "Hapus Target Bersarang "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteOrganization.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteOrganization.java:41
 msgid "TT|Delete Organization"
 msgstr "Hapus Organisasi "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteProgressPercent.java:41
 msgid "TT|Delete Progress Percent"
 msgstr "Hapus Persentase Kemajuan "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteStrategyProgressReport.java:40
-#: Miradi/source/org/miradi/actions/ActionDeleteTaskProgressReport.java:40
-#: Miradi/source/org/miradi/actions/ActionDeleteProgressReport.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteStrategyProgressReport.java:41
+#: Miradi/source/org/miradi/actions/ActionDeleteTaskProgressReport.java:41
+#: Miradi/source/org/miradi/actions/ActionDeleteProgressReport.java:41
 msgid "TT|Delete Progress Report"
 msgstr "\t\tHapus Laporan Kemajuan "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteBendPoint.java:39
+#: Miradi/source/org/miradi/actions/ActionDeleteBendPoint.java:40
 msgid "TT|Delete a Bend Point"
 msgstr "Hapus satu Titik Belok "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeMeasurement.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeMeasurement.java:41
 msgid "TT|Delete a Measurement"
 msgstr "Hapus satu Pengukuran "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteReportTemplate.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteReportTemplate.java:41
 msgid "TT|Delete a Report Template"
 msgstr "Hapus satu Templat Laporan"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteTaggedObjectSet.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteTaggedObjectSet.java:41
 msgid "TT|Delete a Tag"
 msgstr "Hapus satu Tag"
 
@@ -6379,7 +6379,7 @@ msgstr ""
 msgid "TT|Delete the selected Accounting Code"
 msgstr "Hapus Kode Akuntansi terpilih "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteActivity.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteActivity.java:41
 msgid "TT|Delete the selected Activity"
 msgstr "Hapus Kegiatan terpilih "
 
@@ -6391,48 +6391,48 @@ msgstr ""
 msgid "TT|Delete the selected Budget Category #2 item"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:40
+#: Miradi/source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:41
 msgid "TT|Delete the selected Custom Planning View"
 msgstr "Hapus Tampilan Perencanaan Tersuai terpilih "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteFundingSource.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteFundingSource.java:41
 msgid "TT|Delete the selected Funding Source"
 msgstr "Hapus Sumber Dana terpilih "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteGoal.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteGoal.java:41
 msgid "TT|Delete the selected Goal"
 msgstr "Hapus Sasaran terpilih "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteIndicator.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteIndicator.java:41
 msgid "TT|Delete the selected Indicator"
 msgstr "Hapus Indikator terpilih "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttribute.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttribute.java:41
 msgid "TT|Delete the selected Key Ecological Attribute"
 msgstr "Hapus Atribut Ekologi Kunci terpilih "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteMethod.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteMethod.java:41
 msgid "TT|Delete the selected Method"
 msgstr "Hapus Metode terpilih "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteObjective.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteObjective.java:41
 msgid "TT|Delete the selected Objective"
 msgstr "Hapus Tujuan Instruksional terpilih "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteResource.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteResource.java:41
 msgid "TT|Delete the selected Resource (person, team, etc)"
 msgstr "Hapus Sumber Daya terpilih (orang, tim, dsb.) "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteStress.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteStress.java:41
 msgid "TT|Delete the selected Stress"
 msgstr "Hapus Tekanan terpilih "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteWorkPlanNode.java:39
-#: Miradi/source/org/miradi/actions/ActionDeletePlanningViewTreeNode.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteWorkPlanNode.java:40
+#: Miradi/source/org/miradi/actions/ActionDeletePlanningViewTreeNode.java:41
 msgid "TT|Delete the selected item"
 msgstr "Hapus butir terpilih "
 
-#: Miradi/source/org/miradi/actions/ActionDelete.java:40
+#: Miradi/source/org/miradi/actions/ActionDelete.java:41
 msgid "TT|Delete the selection"
 msgstr "Hapus pilihan "
 
@@ -6440,15 +6440,15 @@ msgstr "Hapus pilihan "
 msgid "TT|Develop a work plan and budget"
 msgstr "Buat rencana dan anggaran kerja "
 
-#: Miradi/source/org/miradi/actions/ActionEditEstimatedResource.java:39
+#: Miradi/source/org/miradi/actions/ActionEditEstimatedResource.java:40
 msgid "TT|Edit the list of estimated resources."
 msgstr "Edit daftar perkiraan sumber daya. "
 
-#: Miradi/source/org/miradi/actions/ActionEditMethods.java:39
+#: Miradi/source/org/miradi/actions/ActionEditMethods.java:40
 msgid "TT|Edit the methods for this indicator"
 msgstr "Edit metode untuk indikator ini "
 
-#: Miradi/source/org/miradi/actions/ActionExpandAllRows.java:40
+#: Miradi/source/org/miradi/actions/ActionExpandAllRows.java:41
 msgid "TT|Expand All Tree Rows"
 msgstr "Perluas Semua Baris Pohon "
 
@@ -6480,15 +6480,15 @@ msgstr ""
 msgid "TT|Expand To Type"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionExportConProXml.java:39
+#: Miradi/source/org/miradi/actions/ActionExportConProXml.java:40
 msgid "TT|Export a file that can be imported by ConPro"
 msgstr "Ekspor berkas yang bisa diimpor ConPro "
 
-#: Miradi/source/org/miradi/actions/ActionExportRtf.java:39
+#: Miradi/source/org/miradi/actions/ActionExportRtf.java:40
 msgid "TT|Export current page as an RTF file"
 msgstr "Ekspor halaman yang tampak saat ini sebagai berkas RTF"
 
-#: Miradi/source/org/miradi/actions/ActionExportWcsProjectZip.java:40
+#: Miradi/source/org/miradi/actions/ActionExportWcsProjectZip.java:41
 msgid "TT|Export entire project as a WCS Miradi Project ZIP file"
 msgstr ""
 
@@ -6496,58 +6496,58 @@ msgstr ""
 msgid "TT|Export entire project as an XML file"
 msgstr "Ekspor keseluruhan proyek sebagai berkas XML"
 
-#: Miradi/source/org/miradi/actions/ActionExportBudgetTableTree.java:39
+#: Miradi/source/org/miradi/actions/ActionExportBudgetTableTree.java:40
 msgid "TT|Export finance tree"
 msgstr "Ekspor diagram keuangan "
 
-#: Miradi/source/org/miradi/actions/ActionExportZippedProjectFile.java:39
+#: Miradi/source/org/miradi/actions/ActionExportZippedProjectFile.java:40
 msgid "TT|Export project as a Miradi Project Zip (MPZ) file"
 msgstr "Ekspor proyek sebagai berkas berformat MPZ (Miradi Project Zip)"
 
-#: Miradi/source/org/miradi/actions/ActionExportTable.java:39
+#: Miradi/source/org/miradi/actions/ActionExportTable.java:40
 msgid "TT|Export this view's table to a tab delimited file"
 msgstr "Ekspor tampilan tabel ini menjadi berkas berbatas tab "
 
-#: Miradi/source/org/miradi/actions/ActionFilterWorkPlanByProjectResource.java:40
+#: Miradi/source/org/miradi/actions/ActionFilterWorkPlanByProjectResource.java:41
 msgid "TT|Filter to only display budget data for the selected resource(s)"
 msgstr ""
 "Filter untuk menampilkan hanya data anggaran untuk sumber daya yang dipilih"
 
-#: Miradi/source/org/miradi/actions/ActionWizardNext.java:41
+#: Miradi/source/org/miradi/actions/ActionWizardNext.java:42
 msgid "TT|Go to the Next wizard step"
 msgstr "Ke langkah wizard berikutnya "
 
-#: Miradi/source/org/miradi/actions/ActionWizardPrevious.java:41
+#: Miradi/source/org/miradi/actions/ActionWizardPrevious.java:42
 msgid "TT|Go to the Previous wizard step"
 msgstr "Ke langkah wizard Sebelumnya "
 
-#: Miradi/source/org/miradi/actions/ActionConfigureLayers.java:39
+#: Miradi/source/org/miradi/actions/ActionConfigureLayers.java:40
 msgid "TT|Hide or show portions of the diagram"
 msgstr "Sembunyikan atau tampakkan sebagian diagram "
 
-#: Miradi/source/org/miradi/actions/ActionHideActivityBubble.java:39
+#: Miradi/source/org/miradi/actions/ActionHideActivityBubble.java:40
 msgid "TT|Hide this Activity so it no longer appears on this Results Chain"
 msgstr "Sembunyikan Kegiatan agar tidak lagi muncul dalam Rangkaian Hasil ini "
 
-#: Miradi/source/org/miradi/actions/ActionHideStressBubble.java:39
+#: Miradi/source/org/miradi/actions/ActionHideStressBubble.java:40
 msgid ""
 "TT|Hide this Stress so it no longer appears on this Conceptual Model page"
 msgstr ""
 "Sembunyikan Tekanan agar tidak lagi muncul pada halaman Model Konsep ini "
 
-#: Miradi/source/org/miradi/actions/ActionHowToSave.java:39
+#: Miradi/source/org/miradi/actions/ActionHowToSave.java:40
 msgid "TT|How to save files in Miradi"
 msgstr "Cara menyimpan berkas di Miradi "
 
-#: Miradi/source/org/miradi/actions/ActionImportZippedConproProject.java:39
+#: Miradi/source/org/miradi/actions/ActionImportZippedConproProject.java:40
 msgid "TT|Import a .cpmz file that was exported from ConPro"
 msgstr "Impor berkas .cpmz yang diekspor dari ConPro "
 
-#: Miradi/source/org/miradi/actions/ActionImportZippedProjectFile.java:39
+#: Miradi/source/org/miradi/actions/ActionImportZippedProjectFile.java:40
 msgid "TT|Import a .mpz file that was exported from Miradi"
 msgstr "Impor berkas .mpz yang diekspor dari Miradi "
 
-#: Miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:39
+#: Miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:40
 msgid "TT|Import accounting codes"
 msgstr "Impor Kode Akuntansi "
 
@@ -6555,44 +6555,44 @@ msgstr "Impor Kode Akuntansi "
 msgid "TT|Import entire project from a XML file"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionInsertContributingFactor.java:42
+#: Miradi/source/org/miradi/actions/ActionInsertContributingFactor.java:43
 msgid "TT|Insert a Contributing Factor"
 msgstr "Sisipkan satu Faktor Kontribusi "
 
-#: Miradi/source/org/miradi/actions/ActionInsertDirectThreat.java:42
+#: Miradi/source/org/miradi/actions/ActionInsertDirectThreat.java:43
 msgid "TT|Insert a Direct Threat"
 msgstr "Sisipkan satu Ancaman Langsung "
 
-#: Miradi/source/org/miradi/actions/ActionInsertHumanWelfareTarget.java:43
+#: Miradi/source/org/miradi/actions/ActionInsertHumanWelfareTarget.java:44
 msgid "TT|Insert a Human Welfare Target"
 msgstr "Sisipkan Target Kesejahteraan Manusia "
 
-#: Miradi/source/org/miradi/actions/ActionInsertIntermediateResult.java:40
+#: Miradi/source/org/miradi/actions/ActionInsertIntermediateResult.java:41
 msgid "TT|Insert a Intermediate Result"
 msgstr "Sisipkan satu Hasil Antara "
 
-#: Miradi/source/org/miradi/actions/ActionInsertScopeBox.java:40
+#: Miradi/source/org/miradi/actions/ActionInsertScopeBox.java:41
 msgid "TT|Insert a Scope Box"
 msgstr "Sisipkan satu Kotak Cakupan "
 
-#: Miradi/source/org/miradi/actions/ActionInsertStrategy.java:42
+#: Miradi/source/org/miradi/actions/ActionInsertStrategy.java:43
 msgid "TT|Insert a Strategy"
 msgstr "Sisipkan satu Strategi "
 
-#: Miradi/source/org/miradi/actions/ActionInsertTarget.java:42
+#: Miradi/source/org/miradi/actions/ActionInsertTarget.java:43
 msgid "TT|Insert a Target"
 msgstr "Sisipkan satu Target "
 
-#: Miradi/source/org/miradi/actions/ActionInsertTextBox.java:40
+#: Miradi/source/org/miradi/actions/ActionInsertTextBox.java:41
 msgid "TT|Insert a Text Box"
 msgstr "Sisipkan satu Kotak Teks "
 
-#: Miradi/source/org/miradi/actions/ActionInsertThreatReductionResult.java:40
-#: Miradi/source/org/miradi/actions/ActionCreateThreatReductionResult.java:42
+#: Miradi/source/org/miradi/actions/ActionInsertThreatReductionResult.java:41
+#: Miradi/source/org/miradi/actions/ActionCreateThreatReductionResult.java:43
 msgid "TT|Insert a Threat Reduction Result"
 msgstr "Sisipkan satu Hasil Pengurangan Ancaman "
 
-#: Miradi/source/org/miradi/actions/ActionInsertDraftStrategy.java:40
+#: Miradi/source/org/miradi/actions/ActionInsertDraftStrategy.java:41
 msgid "TT|Insert a draft Strategy"
 msgstr "Sisipkan satu rancangan Strategi "
 
@@ -6604,16 +6604,16 @@ msgstr "Instal paket bahasa yang dipilih "
 msgid "TT|Isolate the selected factor chain in Brainstorm Mode"
 msgstr "Asingkan rangkaian faktor terpilih dalam Mode Sumbang Saran "
 
-#: Miradi/source/org/miradi/actions/ActionResourceListModify.java:39
+#: Miradi/source/org/miradi/actions/ActionResourceListModify.java:40
 msgid "TT|Modify resource from list"
 msgstr "Modifikasi Sumber Daya dari daftar "
 
-#: Miradi/source/org/miradi/actions/ActionCreateDiagramMargin.java:40
+#: Miradi/source/org/miradi/actions/ActionCreateDiagramMargin.java:41
 msgid "TT|Move factors right and down as needed to create margins"
 msgstr ""
 "Pindahkan faktor ke kanan dan bawah yang diperlukan untuk membuat margin "
 
-#: Miradi/source/org/miradi/actions/ActionActivityMoveDown.java:40
+#: Miradi/source/org/miradi/actions/ActionActivityMoveDown.java:41
 msgid "TT|Move the selected Activity down"
 msgstr "Pindahkan Kegiatan terpilih ke bawah "
 
@@ -6621,7 +6621,7 @@ msgstr "Pindahkan Kegiatan terpilih ke bawah "
 msgid "TT|Move the selected Activity up"
 msgstr "Pindahkan Kegiatan terpilih ke atas "
 
-#: Miradi/source/org/miradi/actions/ActionTreeNodeDown.java:40
+#: Miradi/source/org/miradi/actions/ActionTreeNodeDown.java:41
 msgid "TT|Move the selected item down"
 msgstr "Pindahkan butir terpilih ke bawah "
 
@@ -6629,52 +6629,52 @@ msgstr "Pindahkan butir terpilih ke bawah "
 msgid "TT|Move the selected item up"
 msgstr "Pindahkan butir terpilih ke atas "
 
-#: Miradi/source/org/miradi/actions/ActionPasteFactorContent.java:47
+#: Miradi/source/org/miradi/actions/ActionPasteFactorContent.java:48
 msgid "TT|Paste the Single Factor's content from the clipboard"
 msgstr "Tempelkan isi Faktor Tunggal dari papan klip "
 
-#: Miradi/source/org/miradi/actions/ActionPaste.java:47
+#: Miradi/source/org/miradi/actions/ActionPaste.java:48
 msgid "TT|Paste the clipboard"
 msgstr "Tempelkan papan klip "
 
-#: Miradi/source/org/miradi/actions/ActionPasteWithoutLinks.java:47
+#: Miradi/source/org/miradi/actions/ActionPasteWithoutLinks.java:48
 msgid "TT|Paste the clipboard without links"
 msgstr "Tempel papan klip tanpa tautan "
 
-#: Miradi/source/org/miradi/actions/ActionPrint.java:39
+#: Miradi/source/org/miradi/actions/ActionPrint.java:40
 msgid "TT|Print the current view to a printer"
 msgstr "Cetak tampilan saat ini ke mesin pencetak "
 
-#: Miradi/source/org/miradi/actions/ActionRedo.java:39
+#: Miradi/source/org/miradi/actions/ActionRedo.java:40
 msgid "TT|Redo last undone action"
 msgstr "Ulangi tindakan yang terakhir dibatalkan "
 
-#: Miradi/source/org/miradi/actions/ActionGroupBoxRemoveFactor.java:40
+#: Miradi/source/org/miradi/actions/ActionGroupBoxRemoveFactor.java:41
 msgid "TT|Remove Factor(s) from Group Box"
 msgstr "Hapus Faktor(-faktor) dari Kotak Grup "
 
-#: Miradi/source/org/miradi/actions/ActionDeleteTeamMember.java:40
+#: Miradi/source/org/miradi/actions/ActionDeleteTeamMember.java:41
 msgid "TT|Remove a member from the team"
 msgstr "Hilangkan satu anggota dari tim "
 
-#: Miradi/source/org/miradi/actions/ActionRemoveAssignment.java:40
-#: Miradi/source/org/miradi/actions/ActionResourceListRemove.java:39
+#: Miradi/source/org/miradi/actions/ActionRemoveAssignment.java:41
+#: Miradi/source/org/miradi/actions/ActionResourceListRemove.java:40
 msgid "TT|Remove resource from list"
 msgstr "Hilangkan sumber daya dari daftar "
 
-#: Miradi/source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:39
+#: Miradi/source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:40
 msgid "TT|Rename the selected Custom Planning View"
 msgstr "Ganti nama Tampilan Perencanaan Tersuai terpilih "
 
-#: Miradi/source/org/miradi/actions/ActionRenameConceptualModel.java:39
+#: Miradi/source/org/miradi/actions/ActionRenameConceptualModel.java:40
 msgid "TT|Rename this Conceptual Model Page"
 msgstr "Ganti Nama Halaman Model Konsep "
 
-#: Miradi/source/org/miradi/actions/ActionRenameResultsChain.java:39
+#: Miradi/source/org/miradi/actions/ActionRenameResultsChain.java:40
 msgid "TT|Rename this Results Chain"
 msgstr "Ganti nama Rangkaian Hasil ini "
 
-#: Miradi/source/org/miradi/actions/ActionRunReportTemplate.java:39
+#: Miradi/source/org/miradi/actions/ActionRunReportTemplate.java:40
 msgid "TT|Run the Selected Report Template"
 msgstr "Jalankan Templat Laporan yang Terpilih"
 
@@ -6682,45 +6682,45 @@ msgstr "Jalankan Templat Laporan yang Terpilih"
 msgid "TT|Save %s File"
 msgstr "Simpan %s Berkas "
 
-#: Miradi/source/org/miradi/actions/ActionSaveProjectAs.java:39
+#: Miradi/source/org/miradi/actions/ActionSaveProjectAs.java:40
 msgid "TT|Save a copy of this project under a different name and open it"
 msgstr "Simpan salinan proyek ini dengan nama lain lalu buka "
 
-#: Miradi/source/org/miradi/actions/ActionSaveImageJPEG.java:39
+#: Miradi/source/org/miradi/actions/ActionSaveImageJPEG.java:40
 msgid "TT|Save the diagram or upper table area as a JPEG Image"
 msgstr "Simpan diagram atau area tabel atas sebagai Gambar JPEG "
 
-#: Miradi/source/org/miradi/actions/ActionSaveImagePng.java:39
+#: Miradi/source/org/miradi/actions/ActionSaveImagePng.java:40
 msgid "TT|Save the diagram or upper table area as a PNG Image"
 msgstr "Simpan diagram atau area tabel atas sebagai Gambar PNG "
 
-#: Miradi/source/org/miradi/actions/ActionSelectChain.java:39
+#: Miradi/source/org/miradi/actions/ActionSelectChain.java:40
 msgid "TT|Select the entire chain related to this Direct Threat"
 msgstr "Pilih seluruh rangkaian yang terkait dengan Ancaman Langsung ini "
 
-#: Miradi/source/org/miradi/actions/ActionTreeShareActivity.java:40
-#: Miradi/source/org/miradi/actions/ActionShareActivity.java:40
+#: Miradi/source/org/miradi/actions/ActionTreeShareActivity.java:41
+#: Miradi/source/org/miradi/actions/ActionShareActivity.java:41
 msgid "TT|Share an existing Activity into this Strategy"
 msgstr "Berbagi Kegiatan yang ada ke dalam Strategi ini "
 
-#: Miradi/source/org/miradi/actions/ActionTreeShareMethod.java:40
-#: Miradi/source/org/miradi/actions/ActionShareMethod.java:40
+#: Miradi/source/org/miradi/actions/ActionTreeShareMethod.java:41
+#: Miradi/source/org/miradi/actions/ActionShareMethod.java:41
 msgid "TT|Share an existing Method into this Indicator"
 msgstr "Berbagi Metode yang ada ke dalam Indikator ini "
 
-#: Miradi/source/org/miradi/actions/ActionDiagramProperties.java:39
+#: Miradi/source/org/miradi/actions/ActionDiagramProperties.java:40
 msgid "TT|Show the diagram properties"
 msgstr "Tampakkan sifat-sifat diagram "
 
-#: Miradi/source/org/miradi/actions/ActionShowFullModelMode.java:44
+#: Miradi/source/org/miradi/actions/ActionShowFullModelMode.java:45
 msgid "TT|Show the full conceptual model page"
 msgstr "Tampakkan seluruh halaman model konsep "
 
-#: Miradi/source/org/miradi/actions/ActionShowActivityBubble.java:39
+#: Miradi/source/org/miradi/actions/ActionShowActivityBubble.java:40
 msgid "TT|Show this Activity so it appears on this Results Chain"
 msgstr "Tampakkan Kegiatan ini agar muncul dalam Rangkaian Hasil ini"
 
-#: Miradi/source/org/miradi/actions/ActionShowStressBubble.java:39
+#: Miradi/source/org/miradi/actions/ActionShowStressBubble.java:40
 msgid "TT|Show this Stress so it appears on this Conceptual Model page"
 msgstr "Tampakkan Tekanan agar muncul pada halaman Model Konsep ini"
 
@@ -6780,23 +6780,23 @@ msgstr "Ganti ke Tampilan Kelangsungan Target "
 msgid "TT|Switch to the Threat Rating View"
 msgstr "Ganti ke Tampilan Peringkat Ancaman "
 
-#: Miradi/source/org/miradi/actions/ActionUndo.java:39
+#: Miradi/source/org/miradi/actions/ActionUndo.java:40
 msgid "TT|Undo last action"
 msgstr "Batalkan tindakan terakhir "
 
-#: Miradi/source/org/miradi/actions/ActionViewLegacyTncStrategtyRanking.java:39
+#: Miradi/source/org/miradi/actions/ActionViewLegacyTncStrategtyRanking.java:40
 msgid "TT|View Legacy TNC Strategy Ranking."
 msgstr "Lihat Peringkat Strategi TNC (sistem) Warisan. "
 
-#: Miradi/source/org/miradi/actions/ActionZoomIn.java:39
+#: Miradi/source/org/miradi/actions/ActionZoomIn.java:40
 msgid "TT|Zoom In"
 msgstr "Zum Masuk "
 
-#: Miradi/source/org/miradi/actions/ActionZoomOut.java:39
+#: Miradi/source/org/miradi/actions/ActionZoomOut.java:40
 msgid "TT|Zoom Out"
 msgstr "Zum Keluar "
 
-#: Miradi/source/org/miradi/actions/ActionZoomToFit.java:39
+#: Miradi/source/org/miradi/actions/ActionZoomToFit.java:40
 msgid "TT|Zoom To Fit"
 msgstr "Zum sampai Sesuai "
 
