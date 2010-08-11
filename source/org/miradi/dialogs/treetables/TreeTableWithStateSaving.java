@@ -173,7 +173,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		    }
 		}
 
-		saveExpanded(new Vector(hierarchiesToExpand));
+		saveExpanded(new Vector<ORefList>(hierarchiesToExpand));
 	}
 
 	private HashSet<ORefList> createHiarchiesUpToLeaf(ORefList hierarchy)
