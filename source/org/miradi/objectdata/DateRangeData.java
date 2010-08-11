@@ -30,6 +30,7 @@ public class DateRangeData extends ObjectData
 		dateRange = null;
 	}
 
+	@Override
 	public void set(String newValue) throws Exception
 	{
 		if(newValue.length() == 0)
@@ -41,6 +42,7 @@ public class DateRangeData extends ObjectData
 		dateRange = new DateRange(new EnhancedJsonObject(newValue));
 	}
 
+	@Override
 	public String get()
 	{
 		if(dateRange == null)
@@ -54,6 +56,7 @@ public class DateRangeData extends ObjectData
 		return dateRange;
 	}
 
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof DateData))
@@ -63,6 +66,7 @@ public class DateRangeData extends ObjectData
 		return dateRange.equals(other.dateRange);
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return dateRange.hashCode();

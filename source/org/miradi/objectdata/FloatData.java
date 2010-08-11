@@ -28,6 +28,7 @@ public class FloatData extends ObjectData
 		value = 0;
 	}
 	
+	@Override
 	public void set(String newValue) throws Exception
 	{
 		if(newValue.length() == 0)
@@ -39,6 +40,7 @@ public class FloatData extends ObjectData
 		value = Float.parseFloat(newValue);
 	}
 	
+	@Override
 	public String get()
 	{
 		return Float.toString(value);
@@ -49,6 +51,7 @@ public class FloatData extends ObjectData
 		return value;
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof FloatData))
@@ -58,6 +61,7 @@ public class FloatData extends ObjectData
 		return new Float(value).equals(new Float(other.value));
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return new Float(value).hashCode();

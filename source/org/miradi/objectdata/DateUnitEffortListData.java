@@ -34,11 +34,13 @@ public class DateUnitEffortListData extends ObjectData
 		return dateUnitEffortList; 
 	}
 
+	@Override
 	public String get()
 	{
 		return dateUnitEffortList.toString();
 	}
 
+	@Override
 	public void set(String newValue) throws Exception
 	{
 		set(new DateUnitEffortList(newValue));	
@@ -49,11 +51,13 @@ public class DateUnitEffortListData extends ObjectData
 		dateUnitEffortList = dateUnitEffortToUse;
 	}
 	
+	@Override
 	public int hashCode()
 	{
 		return toString().hashCode();
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if (! (rawOther instanceof DateUnitEffortListData))

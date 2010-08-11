@@ -30,6 +30,7 @@ public class DateData extends ObjectData
 		date = null;
 	}
 
+	@Override
 	public void set(String newValue) throws Exception
 	{
 		if(newValue.length() == 0)
@@ -48,6 +49,7 @@ public class DateData extends ObjectData
 		}
 	}
 
+	@Override
 	public String get()
 	{
 		if(date == null)
@@ -60,6 +62,7 @@ public class DateData extends ObjectData
 		return date;
 	}
 
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof DateData))
@@ -69,6 +72,7 @@ public class DateData extends ObjectData
 		return date.equals(other.date);
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return date.hashCode();

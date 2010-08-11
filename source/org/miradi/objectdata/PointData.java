@@ -41,6 +41,7 @@ public class PointData extends ObjectData
 		point = pointToUse;
 	}
 	
+	@Override
 	public void set(String newValue) throws Exception
 	{
 		if(newValue.length() == 0)
@@ -52,6 +53,7 @@ public class PointData extends ObjectData
 		point = EnhancedJsonObject.convertToPoint(newValue);
 	}
 
+	@Override
 	public String get()
 	{
 		if(point == null)
@@ -60,6 +62,7 @@ public class PointData extends ObjectData
 		return EnhancedJsonObject.convertFromPoint(point);
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof PointData))
@@ -69,6 +72,7 @@ public class PointData extends ObjectData
 		return point.equals(other.point);
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return point.hashCode();

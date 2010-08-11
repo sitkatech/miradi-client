@@ -32,11 +32,13 @@ abstract public class AbstractStringListData extends ObjectData
 		data = new CodeList();
 	}
 	
+	@Override
 	public void set(String newValue) throws ParseException
 	{
 		set(new CodeList(newValue));
 	}
 	
+	@Override
 	public String get()
 	{
 		return data.toString();
@@ -72,6 +74,7 @@ abstract public class AbstractStringListData extends ObjectData
 		data.removeCode(code);
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof AbstractStringListData))
@@ -81,6 +84,7 @@ abstract public class AbstractStringListData extends ObjectData
 		return data.equals(other.data);
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return data.hashCode();

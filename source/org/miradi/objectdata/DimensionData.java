@@ -42,6 +42,7 @@ public class DimensionData extends ObjectData
 		dimension = dimensionToUse;
 	}
 
+	@Override
 	public void set(String newValue) throws Exception
 	{
 		if(newValue.length() == 0)
@@ -53,6 +54,7 @@ public class DimensionData extends ObjectData
 		dimension = EnhancedJsonObject.convertToDimension(newValue);		
 	}
 
+	@Override
 	public String get()
 	{
 		if(dimension == null)
@@ -61,6 +63,7 @@ public class DimensionData extends ObjectData
 		return EnhancedJsonObject.convertFromDimension(dimension);
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof DimensionData))
@@ -70,6 +73,7 @@ public class DimensionData extends ObjectData
 		return dimension.equals(other.dimension);
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return dimension.hashCode();
