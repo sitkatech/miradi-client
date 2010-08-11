@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 11:07-0500\n"
+"POT-Creation-Date: 2010-08-11 12:32-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -1789,7 +1789,7 @@ msgstr "Gastos reales "
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr "Software de manejo adaptivo para proyectos de conservación"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:140
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:141
 msgid "Add '%s' to User Dictionary"
 msgstr ""
 
@@ -2667,7 +2667,7 @@ msgstr "Crear carpeta"
 msgid "Create a new Miradi project"
 msgstr "Crear un nuevo proyecto de Miradi"
 
-#: Miradi/source/org/miradi/dialogs/AnnotationSelectionDlg.java:36
+#: Miradi/source/org/miradi/dialogs/AnnotationSelectionDlg.java:37
 msgid "Create from Existing"
 msgstr ""
 
@@ -5130,7 +5130,7 @@ msgstr ""
 "necesaria para la Estrategia denominada:\n"
 "'%s'"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectClassificationChoiceField.java:61
+#: Miradi/source/org/miradi/dialogfields/ObjectClassificationChoiceField.java:62
 msgid ""
 "Please choose a specific classification, instead of a category like:\n"
 "'%s'"
@@ -5138,7 +5138,7 @@ msgstr ""
 "Seleccione una clasificación específica, en lugar de una categoría como :\n"
 "'%s'"
 
-#: Miradi/source/org/miradi/dialogs/AnnotationSelectionDlg.java:41
+#: Miradi/source/org/miradi/dialogs/AnnotationSelectionDlg.java:43
 msgid ""
 "Please select which item should be created into this factor, then press the "
 "Create from Existing  button"
@@ -7617,11 +7617,11 @@ msgstr "Sin definir"
 msgid "Underline"
 msgstr "Subrayar "
 
-#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:136
+#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:137
 msgid "Unexpected call to getText"
 msgstr "Llamada inesperada a getText"
 
-#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:142
+#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:143
 msgid "Unexpected call to setText"
 msgstr "Llamada inesperada a setText"
 
