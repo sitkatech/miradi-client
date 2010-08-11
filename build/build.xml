@@ -274,8 +274,9 @@
 	</antcall>
 	<antcall target='download'>
 		<param name='directory' value='jgraph' />
-		<param name='filename' value='jgraph-license.txt' />
+		<param name='filename' value='LICENSE.jgraph' />
 	</antcall>
+	<move file="${dist.temp.jars}/jgraph/LICENSE.jgraph" tofile="${dist.temp.jars}/jgraph/jgraph.license.txt"/>
 
 	<antcall target='download'>
 		<param name='directory' value='jhlabs' />
