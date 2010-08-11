@@ -197,7 +197,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	public void collapseAll() throws Exception
 	{
 		clearSelection();
-		saveExpanded(new Vector());
+		saveExpanded(new Vector<ORefList>());
 	}
 
 	public ORefList findHierarchyForRef(ORef nodeRef) throws Exception
