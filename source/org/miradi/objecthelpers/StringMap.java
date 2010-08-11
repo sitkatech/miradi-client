@@ -167,6 +167,7 @@ public class StringMap
 		out.writeln("</StringMap>");
 	}
 
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof StringMap))
@@ -176,6 +177,7 @@ public class StringMap
 		return data.equals(other.data);
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return data.hashCode();

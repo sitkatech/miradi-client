@@ -153,6 +153,7 @@ public class StringRefMap
 		return data.containsValue(value);
 	}
 
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof StringRefMap))
@@ -162,6 +163,7 @@ public class StringRefMap
 		return data.equals(other.data);
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return data.hashCode();

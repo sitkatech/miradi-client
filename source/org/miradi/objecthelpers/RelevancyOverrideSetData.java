@@ -29,6 +29,7 @@ public class RelevancyOverrideSetData extends ObjectData
 		relevancyOverrideSet = new RelevancyOverrideSet();
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if (! (rawOther instanceof RelevancyOverrideSetData))
@@ -55,16 +56,19 @@ public class RelevancyOverrideSetData extends ObjectData
 		return rawRelevantOverrideList;
 	}
 	
+	@Override
 	public String get()
 	{
 		return relevancyOverrideSet.toString();
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return toString().hashCode();
 	}
 
+	@Override
 	public void set(String newValue) throws Exception
 	{
 		set(new RelevancyOverrideSet(newValue));	

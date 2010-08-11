@@ -39,6 +39,7 @@ public class CreateThreatStressRatingParameter extends CreateObjectParameter
 		return threatRef;
 	}
 	
+	@Override
 	public String getFormatedDataString()
 	{
 		HashMap<String, Comparable> dataPairs = new HashMap<String, Comparable>();

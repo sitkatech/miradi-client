@@ -29,6 +29,7 @@ public class StringRefMapData extends ObjectData
 		data = new StringRefMap();
 	}
 
+	@Override
 	public String get()
 	{
 		return getStringRefMap().toString();
@@ -39,6 +40,7 @@ public class StringRefMapData extends ObjectData
 		return data;
 	}
 
+	@Override
 	public ORefList getRefList()
 	{
 		ORef[] allRefs = data.getValues().toArray(new ORef[0]);
@@ -47,11 +49,13 @@ public class StringRefMapData extends ObjectData
 		return allValues;
 	}
 
+	@Override
 	public void set(String newValue) throws Exception
 	{
 		data = new StringRefMap(newValue);
 	}
 
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof StringRefMapData))
@@ -61,6 +65,7 @@ public class StringRefMapData extends ObjectData
 		return other.data.equals(data);
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return toString().hashCode();

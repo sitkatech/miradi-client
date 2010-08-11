@@ -40,6 +40,7 @@ public class CreateDiagramFactorParameter extends CreateObjectParameter
 		return factorRef;
 	}
 	
+	@Override
 	public String getFormatedDataString()
 	{
 		HashMap<String, Comparable> dataPairs = new HashMap<String, Comparable>();

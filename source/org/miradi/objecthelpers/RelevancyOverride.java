@@ -63,6 +63,7 @@ public class RelevancyOverride
 		return overrideFlag;
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if (!(rawOther instanceof RelevancyOverride))
@@ -78,11 +79,13 @@ public class RelevancyOverride
 		return true;
 	}
 	
+	@Override
 	public int hashCode()
 	{
 		return getRef().hashCode();
 	}
 	
+	@Override
 	public String toString()
 	{
 		return toJson().toString();
