@@ -38,6 +38,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.views.diagram.CreateAnnotationDoer;
@@ -105,7 +106,7 @@ public class WhoCodeListEditorComponent extends AbstractQuestionBasedComponent
 			clearResourceRef(resourceAssignment);
 			if (getResourceAssignmentRefs().size() > 1)
 			{
-				Vector<Command> deleteResourceAssignment = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, getResourceAssignmentTag());
+				CommandVector deleteResourceAssignment = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, getResourceAssignmentTag());
 				getProject().executeCommandsWithoutTransaction(deleteResourceAssignment);
 			}
 		}

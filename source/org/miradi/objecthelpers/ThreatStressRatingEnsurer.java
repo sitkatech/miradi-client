@@ -20,9 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objecthelpers;
 
 import java.util.HashSet;
-import java.util.Vector;
 
-import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.main.CommandExecutedEvent;
@@ -33,6 +31,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
+import org.miradi.utils.CommandVector;
 
 public class ThreatStressRatingEnsurer implements CommandExecutedListener 
 {
@@ -103,7 +102,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 	
 	private void deleteThreatStressRating(ThreatStressRating threatStressRating) throws Exception
 	{
-		Vector<Command> commandsToDeleteThreatStressRating = new Vector<Command>();
+		CommandVector commandsToDeleteThreatStressRating = new CommandVector();
 		commandsToDeleteThreatStressRating.addAll(threatStressRating.createCommandsToDeleteChildrenAndObject());
 		
 		getProject().executeAsSideEffect(commandsToDeleteThreatStressRating);

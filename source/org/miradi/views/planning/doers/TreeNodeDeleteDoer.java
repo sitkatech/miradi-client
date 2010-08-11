@@ -20,9 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning.doers;
 
 import java.text.ParseException;
-import java.util.Vector;
 
-import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.IdList;
@@ -37,6 +35,7 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
+import org.miradi.utils.CommandVector;
 import org.miradi.views.umbrella.DeleteActivityDoer;
 import org.miradi.views.umbrella.doers.AbstractDeleteDoer;
 
@@ -110,9 +109,9 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 		getProject().executeCommandsAsTransaction(buildCommandsToDeleteAnnotation(getProject(), selected, annotationListTag));
 	}
 	
-	public static Vector<Command> buildCommandsToDeleteAnnotation(Project project, BaseObject objectToRemove, String annotationListTag) throws Exception
+	public static CommandVector buildCommandsToDeleteAnnotation(Project project, BaseObject objectToRemove, String annotationListTag) throws Exception
 	{
-		Vector<Command> commands = new Vector<Command>();
+		CommandVector commands = new CommandVector();
 		ORefList ownerRefs = objectToRemove.findObjectsThatReferToUs();
 		for (int refIndex = 0; refIndex < ownerRefs.size(); ++refIndex)
 		{
@@ -133,9 +132,9 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 		return commands;
 	}
 
-	private static Vector<Command> createCommandToRemoveId(BaseObject owner, BaseObject selected, String annotationListTag) throws ParseException
+	private static CommandVector createCommandToRemoveId(BaseObject owner, BaseObject selected, String annotationListTag) throws ParseException
 	{
-		Vector<Command> commands = new Vector<Command>();
+		CommandVector commands = new CommandVector();
 		IdList idsToRemoveFrom = new IdList(selected.getType(), owner.getData(annotationListTag));
 		if (idsToRemoveFrom.contains(selected.getId()))
 			commands.add(CommandSetObjectData.createRemoveIdCommand(owner, annotationListTag, selected.getId()));
@@ -143,9 +142,9 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 		return commands;
 	}
 	
-	private static Vector<Command> createCommandToRemoveRef(BaseObject owner, BaseObject selected, String annotationListTag) throws ParseException
+	private static CommandVector createCommandToRemoveRef(BaseObject owner, BaseObject selected, String annotationListTag) throws ParseException
 	{
-		Vector<Command> commands = new Vector<Command>();
+		CommandVector commands = new CommandVector();
 		ORefList refsToRemoveFrom = new ORefList(owner.getData(annotationListTag));
 		if (refsToRemoveFrom.contains(selected.getRef()))
 			commands.add(CommandSetObjectData.createRemoveORefCommand(owner, annotationListTag, selected.getRef()));

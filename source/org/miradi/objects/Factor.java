@@ -20,9 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import java.text.ParseException;
-import java.util.Vector;
 
-import org.miradi.commands.Command;
 import org.miradi.diagram.ChainWalker;
 import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.diagram.factortypes.FactorTypeActivity;
@@ -51,6 +49,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class Factor extends BaseObject
@@ -446,9 +445,9 @@ abstract public class Factor extends BaseObject
 		return findObjectsThatReferToUs(TaggedObjectSet.getObjectType());
 	}
 	
-	protected Vector<Command> buildRemoveFromRelevancyListCommands(ORef relevantObjectRefToRemove) throws Exception
+	protected CommandVector buildRemoveFromRelevancyListCommands(ORef relevantObjectRefToRemove) throws Exception
 	{
-		Vector<Command> removeFromRelevancyListCommands = new Vector<Command>();
+		CommandVector removeFromRelevancyListCommands = new CommandVector();
 		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
 		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), Goal.getObjectType(), Goal.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
 		

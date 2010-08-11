@@ -72,6 +72,7 @@ import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
@@ -289,7 +290,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRef);
 		if (resourceAssignment.isEmpty())
 		{
-			Vector<Command> removeAssignmentCommands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
+			CommandVector removeAssignmentCommands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
 			getProject().executeCommandsWithoutTransaction(removeAssignmentCommands);
 		}
 	}
