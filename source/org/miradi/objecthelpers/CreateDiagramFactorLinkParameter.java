@@ -21,7 +21,6 @@ package org.miradi.objecthelpers;
 
 import java.util.HashMap;
 
-import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.objects.DiagramFactor;
