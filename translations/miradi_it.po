@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 11:07-0500\n"
+"POT-Creation-Date: 2010-08-11 12:32-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1649,7 +1649,7 @@ msgstr ""
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:140
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:141
 msgid "Add '%s' to User Dictionary"
 msgstr ""
 
@@ -2474,7 +2474,7 @@ msgstr ""
 msgid "Create a new Miradi project"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/AnnotationSelectionDlg.java:36
+#: Miradi/source/org/miradi/dialogs/AnnotationSelectionDlg.java:37
 msgid "Create from Existing"
 msgstr ""
 
@@ -4805,13 +4805,13 @@ msgid ""
 "'%s'"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/ObjectClassificationChoiceField.java:61
+#: Miradi/source/org/miradi/dialogfields/ObjectClassificationChoiceField.java:62
 msgid ""
 "Please choose a specific classification, instead of a category like:\n"
 "'%s'"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/AnnotationSelectionDlg.java:41
+#: Miradi/source/org/miradi/dialogs/AnnotationSelectionDlg.java:43
 msgid ""
 "Please select which item should be created into this factor, then press the "
 "Create from Existing  button"
@@ -7148,11 +7148,11 @@ msgstr ""
 msgid "Underline"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:136
+#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:137
 msgid "Unexpected call to getText"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:142
+#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:143
 msgid "Unexpected call to setText"
 msgstr ""
 
