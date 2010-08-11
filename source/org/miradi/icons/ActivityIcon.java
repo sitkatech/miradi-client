@@ -26,6 +26,7 @@ import org.miradi.main.EAM;
 
 public class ActivityIcon extends TaskIcon
 {
+	@Override
 	protected Color getIconColor()
 	{
 		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_ACTIVITIES);

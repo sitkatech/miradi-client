@@ -27,11 +27,13 @@ import org.miradi.diagram.renderers.IconHexagonRenderer;
 
 public class DraftStrategyIcon extends AbstractShapeIcon
 {
+	@Override
 	FactorRenderer getRenderer()
 	{
 		return new IconHexagonRenderer(true);
 	}
 	
+	@Override
 	Color getIconColor()
 	{
 		return DiagramConstants.COLOR_DRAFT_STRATEGY;

@@ -30,11 +30,13 @@ import org.miradi.main.EAM;
 
 public class TargetIcon extends AbstractShapeIcon
 {
+	@Override
 	FactorRenderer getRenderer()
 	{
 		return new EllipseRenderer();
 	}
 	
+	@Override
 	Color getIconColor()
 	{
 		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_TARGET);
@@ -47,6 +49,7 @@ public class TargetIcon extends AbstractShapeIcon
 	
 	private static final class TargetIconDisabledIcon extends TargetIcon
 	{
+		@Override
 		Color getIconColor()
 		{
 			return Color.LIGHT_GRAY;

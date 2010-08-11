@@ -52,6 +52,7 @@ public class ColoredIcon extends AbstractMiradiIcon
 		g.fillRect(x + MARGIN, y + MARGIN, getIconWidth() - MARGIN*2, getIconHeight() - MARGIN*2);
 	}
 
+	@Override
 	public int getIconWidth()
 	{
 		return super.getIconWidth() / 2;

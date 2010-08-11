@@ -24,6 +24,7 @@ import java.awt.Graphics;
 
 public class CreateResultsChainIcon extends ResultsChainIcon
 {
+	@Override
 	public void paintIcon(Component c, Graphics g, int x, int y)
 	{
 		super.paintIcon(c, g, x, y);

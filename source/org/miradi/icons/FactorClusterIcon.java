@@ -28,11 +28,13 @@ import org.miradi.diagram.renderers.RectangleRenderer;
 
 public class FactorClusterIcon extends AbstractShapeIcon
 {
+	@Override
 	FactorRenderer getRenderer()
 	{
 		return new RectangleRenderer();
 	}
 
+	@Override
 	Color getIconColor()
 	{
 		return DiagramConstants.COLOR_FACTOR_CLUSTER;

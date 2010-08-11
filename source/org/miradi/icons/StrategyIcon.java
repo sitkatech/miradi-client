@@ -30,11 +30,13 @@ import org.miradi.main.EAM;
 
 public class StrategyIcon extends AbstractShapeIcon
 {
+	@Override
 	FactorRenderer getRenderer()
 	{
 		return new IconHexagonRenderer(false);
 	}
 	
+	@Override
 	Color getIconColor()
 	{
 		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_STRATEGY);
@@ -47,6 +49,7 @@ public class StrategyIcon extends AbstractShapeIcon
 	
 	private static final class StrategyIconDisabledIcon extends StrategyIcon
 	{
+		@Override
 		Color getIconColor()
 		{
 			return Color.LIGHT_GRAY;

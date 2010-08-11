@@ -28,11 +28,13 @@ import org.miradi.main.EAM;
 
 public class IntermediateResultIcon extends AbstractShapeIcon
 {
+	@Override
 	FactorRenderer getRenderer()
 	{
 		return new RectangleRenderer();
 	}
 	
+	@Override
 	Color getIconColor()
 	{
 		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT);
