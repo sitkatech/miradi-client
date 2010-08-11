@@ -31,6 +31,7 @@ public class FormConstant extends FormItem
 		return translatedConstant;
 	}
 	
+	@Override
 	public boolean isFormConstant()
 	{
 		return true;
