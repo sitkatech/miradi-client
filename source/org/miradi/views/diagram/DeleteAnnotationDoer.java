@@ -40,6 +40,7 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Stress;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.Project;
+import org.miradi.utils.CommandVector;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.diagram.doers.HideStressBubbleDoer;
 
@@ -99,7 +100,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	
 	public static Command[] buildCommandsToDeleteAnnotation(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
 	{
-		Vector<Command> commands = new Vector<Command>();
+		CommandVector commands = new CommandVector();
 		commands.addAll(buildCommandsToUntag(project, annotationToDelete.getRef()));
 		commands.add(buildCommandToRemoveAnnotationFromObject(owner, annotationIdListTag, annotationToDelete.getRef()));
 		commands.addAll(buildCommandsToDeleteReferredObjects(project, owner, annotationIdListTag, annotationToDelete));
@@ -109,10 +110,10 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return commands.toArray(new Command[0]);
 	}
 
-	public static Vector<Command> buildCommandsToUntag(Project project, ORef refToUntag) throws Exception
+	public static CommandVector buildCommandsToUntag(Project project, ORef refToUntag) throws Exception
 	{
 		Vector<TaggedObjectSet> taggedObjectSetsWithFactor = project.getTaggedObjectSetPool().findTaggedObjectSetsWithFactor(refToUntag);
-		Vector<Command> commandsToUntag = new Vector<Command>();
+		CommandVector commandsToUntag = new CommandVector();
 		for (int index = 0; index < taggedObjectSetsWithFactor.size(); ++index)
 		{
 			TaggedObjectSet taggedObjectSet = taggedObjectSetsWithFactor.get(index);
@@ -123,9 +124,9 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return commandsToUntag;
 	}
 
-	private static Vector<Command> buildCommandsToDeleteReferredObjects(Project project, BaseObject owner, String annotationIdListTag,	BaseObject annotationToDelete) throws Exception
+	private static CommandVector buildCommandsToDeleteReferredObjects(Project project, BaseObject owner, String annotationIdListTag,	BaseObject annotationToDelete) throws Exception
 	{
-		Vector<Command> commands = new Vector<Command>();
+		CommandVector commands = new CommandVector();
 		if (KeyEcologicalAttribute.is(annotationToDelete.getType()))
 		{
 			commands.addAll(buildCommandsToDeleteKEAIndicators(project, (KeyEcologicalAttribute) annotationToDelete));
@@ -134,18 +135,18 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return commands;
 	}
 	
-	private static Vector<Command> buildCommandsToDeleteReferringObjects(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws Exception
+	private static CommandVector buildCommandsToDeleteReferringObjects(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws Exception
 	{
-		Vector<Command> commands = new Vector<Command>();
+		CommandVector commands = new CommandVector();
 		if (Stress.is(annotationToDelete.getType()))
 			commands.addAll(createCommandsToDeleteStressDiagramFactors(project, annotationToDelete));
 		
 		return commands;
 	}
 
-	private static Vector<Command> createCommandsToDeleteStressDiagramFactors(Project project, BaseObject annotationToDelete) throws Exception
+	private static CommandVector createCommandsToDeleteStressDiagramFactors(Project project, BaseObject annotationToDelete) throws Exception
 	{
-		Vector<Command> commandsToHide = new Vector<Command>();
+		CommandVector commandsToHide = new CommandVector();
 		ORefList diagramFactorRefs = annotationToDelete.findObjectsThatReferToUs(DiagramFactor.getObjectType());
 		for (int index = 0; index < diagramFactorRefs.size(); ++index)
 		{
@@ -183,9 +184,9 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	}
 	
 	
-	public static Vector<Command> buildCommandsToDeleteKEAIndicators(Project project, KeyEcologicalAttribute kea) throws Exception
+	public static CommandVector buildCommandsToDeleteKEAIndicators(Project project, KeyEcologicalAttribute kea) throws Exception
 	{
-		Vector<Command> commands = new Vector<Command>();
+		CommandVector commands = new CommandVector();
 		IdList indicatorList = kea.getIndicatorIds();
 		for (int i  = 0; i < indicatorList.size(); i++)
 		{
