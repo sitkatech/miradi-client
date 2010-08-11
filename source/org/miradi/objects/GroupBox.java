@@ -40,11 +40,13 @@ public class GroupBox extends Factor
 		super(objectManager, idToUse, Factor.TYPE_GROUP_BOX, json);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -61,16 +63,19 @@ public class GroupBox extends Factor
 		return ObjectType.GROUP_BOX;
 	}
 	
+	@Override
 	public boolean isGroupBox()
 	{
 		return true;
 	}
 	
+	@Override
 	public boolean canHaveIndicators()
 	{
 		return false;
 	}
 
+	@Override
 	public ORefList getOwnedObjects(int objectType)
 	{
 		return new ORefList();

@@ -42,11 +42,13 @@ public class ThreatReductionResult extends Factor
 		super(objectManager, idToUse, Factor.TYPE_THREAT_REDUCTION_RESULT, json);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -63,16 +65,19 @@ public class ThreatReductionResult extends Factor
 		return ObjectType.THREAT_REDUCTION_RESULT;
 	}
 	
+	@Override
 	public boolean isThreatReductionResult()
 	{
 		return true;
 	}
 	
+	@Override
 	public boolean canHaveObjectives()
 	{
 		return true;
 	}
 	
+	@Override
 	public ORefList getOwnedObjects(int objectType)
 	{
 		ORefList list = super.getOwnedObjects(objectType);
@@ -124,6 +129,7 @@ public class ThreatReductionResult extends Factor
 		return find(project.getObjectManager(), threatReductionResultRef);
 	}
 	
+	@Override
 	void clear()
 	{
 		super.clear();

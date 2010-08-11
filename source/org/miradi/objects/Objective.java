@@ -41,11 +41,13 @@ public class Objective extends Desire
 	}
 	
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;

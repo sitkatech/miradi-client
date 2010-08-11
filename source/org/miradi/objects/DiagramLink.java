@@ -64,6 +64,7 @@ public class DiagramLink extends BaseObject
 		toId.set(json.getId(TAG_TO_DIAGRAM_FACTOR_ID).toString());
 	}
 	
+	@Override
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = super.toJson();
@@ -74,11 +75,13 @@ public class DiagramLink extends BaseObject
 		return json;
 	}
 
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -98,6 +101,7 @@ public class DiagramLink extends BaseObject
 			};
 	}
 	
+	@Override
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
@@ -208,6 +212,7 @@ public class DiagramLink extends BaseObject
 		return null;
 	}
 	
+	@Override
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_GROUPED_DIAGRAM_LINK_REFS))
@@ -216,6 +221,7 @@ public class DiagramLink extends BaseObject
 		return super.getAnnotationType(tag);
 	}
 	
+	@Override
 	public boolean isRefList(String tag)
 	{
 		if (tag.equals(TAG_GROUPED_DIAGRAM_LINK_REFS))
@@ -269,6 +275,7 @@ public class DiagramLink extends BaseObject
 		return FactorLink.find(getProject(), getWrappedRef());
 	}
 	
+	@Override
 	public String getData(String fieldTag)
 	{
 		if(fieldTag.equals(TAG_WRAPPED_ID))
@@ -320,6 +327,7 @@ public class DiagramLink extends BaseObject
 		return toolTipText;
 	}
 	
+	@Override
 	public CreateObjectParameter getCreationExtraInfo()
 	{
 		return new CreateDiagramFactorLinkParameter(
@@ -375,6 +383,7 @@ public class DiagramLink extends BaseObject
 		return find(project.getObjectManager(), diagramLinkRef);
 	}
 		
+	@Override
 	void clear()
 	{
 		super.clear();

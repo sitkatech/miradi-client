@@ -39,11 +39,13 @@ public class ConceptualModelDiagram extends DiagramObject
 		super(objectManager, idToUse, json);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;

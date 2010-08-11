@@ -47,11 +47,13 @@ public class FactorLink extends BaseObject
 		super(objectManager, new FactorLinkId(idAsInt), jsonObject);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -111,6 +113,7 @@ public class FactorLink extends BaseObject
 		return bidirectionalLink.get().equals(BIDIRECTIONAL_LINK);
 	}
 	
+	@Override
 	public CreateObjectParameter getCreationExtraInfo()
 	{
 		Factor fromFactor = (Factor) objectManager.findObject(getFromFactorRef());
@@ -177,6 +180,7 @@ public class FactorLink extends BaseObject
 		return find(project.getObjectManager(), factorLinkRef);
 	}
 	
+	@Override
 	void clear()
 	{
 		super.clear();

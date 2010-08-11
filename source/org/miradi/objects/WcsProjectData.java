@@ -41,11 +41,13 @@ public class WcsProjectData extends BaseObject
 		super(objectManager, new BaseId(idAsInt), jsonObject);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -77,6 +79,7 @@ public class WcsProjectData extends BaseObject
 		return find(project.getObjectManager(), wcsProjectDataRef);
 	}
 	
+	@Override
 	void clear()
 	{
 		super.clear();
