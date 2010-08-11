@@ -38,10 +38,9 @@ public class TargetSet extends FactorSet
 		attemptToAddAll(nodesToAttemptToAdd);
 	}
 	
+	@Override
 	public boolean isLegal(Factor node)
 	{
 		return (node.isTarget());
 	}
-	
-
 }

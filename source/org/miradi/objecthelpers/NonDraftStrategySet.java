@@ -38,10 +38,9 @@ public class NonDraftStrategySet extends FactorSet
 		attemptToAddAll(nodesToAttemptToAdd);
 	}
 
+	@Override
 	public boolean isLegal(Factor node)
 	{
 		return (node.isStrategy() && !node.isStatusDraft());
 	}
-	
-
 }

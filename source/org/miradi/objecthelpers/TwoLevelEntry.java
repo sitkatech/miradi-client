@@ -38,6 +38,7 @@ public class TwoLevelEntry
 		return entryDescription;
 	}
 
+	@Override
 	public String toString()
 	{
 		return getEntryDescription();

@@ -77,11 +77,13 @@ public class MapList
 		data.remove(key);
 	}
 
+	@Override
 	public String toString()
 	{
 		return data.toString();
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(! (rawOther instanceof MapList))
@@ -91,6 +93,7 @@ public class MapList
 		return data.equals(other.data);
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return data.hashCode();

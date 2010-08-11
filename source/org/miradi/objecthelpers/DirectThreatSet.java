@@ -39,6 +39,7 @@ public class DirectThreatSet extends FactorSet
 		attemptToAddAll(nodesToAttemptToAdd);
 	}
 
+	@Override
 	public boolean isLegal(Factor node)
 	{
 		return (node.isDirectThreat());

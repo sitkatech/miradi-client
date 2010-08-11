@@ -148,6 +148,7 @@ public class FactorSet implements Collection<Factor>
 		return nodes.toArray(a);
 	}
 		
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof FactorSet))
@@ -157,11 +158,13 @@ public class FactorSet implements Collection<Factor>
 		return nodes.equals(other.nodes);
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return nodes.hashCode();
 	}
 	
+	@Override
 	public String toString()
 	{
 		StringBuffer result = new StringBuffer();

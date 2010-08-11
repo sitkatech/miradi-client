@@ -38,6 +38,7 @@ public class AccountingCodeData
 		return label;
 	}
 
+	@Override
 	public String toString()
 	{
 		return getLabel();

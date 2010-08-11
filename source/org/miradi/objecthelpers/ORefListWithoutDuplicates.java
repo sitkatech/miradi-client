@@ -21,6 +21,7 @@ package org.miradi.objecthelpers;
 
 public class ORefListWithoutDuplicates extends ORefList
 {
+	@Override
 	public void add(ORef newRef)
 	{
 		if(contains(newRef))
@@ -28,9 +29,9 @@ public class ORefListWithoutDuplicates extends ORefList
 		super.add(newRef);
 	}
 
+	@Override
 	public void add(int index, ORef objectReferenceToUse)
 	{
 		throw new RuntimeException("Not supported!");
 	}
-
 }
