@@ -77,7 +77,7 @@ public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
 	
 	public String getFormatedDataString()
 	{
-		HashMap<String, BaseId> dataPairs = new HashMap<String, BaseId>();
+		HashMap<String, Comparable> dataPairs = new HashMap<String, Comparable>();
 		dataPairs.put(FactorLinkId.class.getSimpleName(), factorLinkId);
 		dataPairs.put("FactorFromId", fromId);
 		dataPairs.put("FactorToID", toId);

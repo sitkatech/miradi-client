@@ -42,7 +42,7 @@ public class CreateDiagramFactorParameter extends CreateObjectParameter
 	
 	public String getFormatedDataString()
 	{
-		HashMap<String, ORef> dataPairs = new HashMap<String, ORef>();
+		HashMap<String, Comparable> dataPairs = new HashMap<String, Comparable>();
 		dataPairs.put(ORef.class.getSimpleName(), factorRef);
 		
 		return formatDataString(dataPairs);

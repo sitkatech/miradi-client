@@ -27,7 +27,7 @@ public abstract class CreateObjectParameter
 {
 	abstract public String getFormatedDataString();
 	
-	protected String formatDataString(HashMap logData)
+	protected String formatDataString(HashMap<String, Comparable> logData)
 	{
 		return "(" + Command.formatLogData(logData) + ")";
 	}
