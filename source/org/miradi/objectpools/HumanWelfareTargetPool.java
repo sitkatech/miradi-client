@@ -56,7 +56,7 @@ public class HumanWelfareTargetPool extends EAMNormalObjectPool
 	
 	public HumanWelfareTarget[] getSortedHumanWelfareTargets()
 	{
-		HumanWelfareTarget[] humanWelfareTargets = (HumanWelfareTarget[]) getValues().toArray(new HumanWelfareTarget[0]);
+		HumanWelfareTarget[] humanWelfareTargets = getValues().toArray(new HumanWelfareTarget[0]);
 		Arrays.sort(humanWelfareTargets, new BaseObjectByFullNameSorter());
 		return humanWelfareTargets;
 	}
