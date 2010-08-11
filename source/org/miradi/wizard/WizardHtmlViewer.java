@@ -34,6 +34,7 @@ public class WizardHtmlViewer extends MiradiHtmlViewer
 		setBackground(AppPreferences.getWizardBackgroundColor());
 	}
 
+	@Override
 	public void customizeStyleSheet(StyleSheet style)
 	{
 		super.customizeStyleSheet(style);
