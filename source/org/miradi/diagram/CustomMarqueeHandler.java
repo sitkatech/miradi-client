@@ -37,18 +37,21 @@ public class CustomMarqueeHandler extends BasicMarqueeHandler
 		diagram = diagramToUse;
 	}
 	
+	@Override
 	public void mousePressed(MouseEvent e)
 	{
 		super.mousePressed(e);
 		diagram.setMarquee(true);
 	}
 	
+	@Override
 	public void mouseReleased(MouseEvent arg0)
 	{
 		super.mouseReleased(arg0);
 		diagram.setMarquee(false);
 	}
 
+	@Override
 	public void handleMarqueeEvent(MouseEvent e, JGraph graph, Rectangle2D bounds)
 	{
 		super.handleMarqueeEvent(e, graph, bounds);
