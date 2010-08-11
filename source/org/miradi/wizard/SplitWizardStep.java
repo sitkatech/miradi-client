@@ -44,6 +44,7 @@ public class SplitWizardStep extends SkeletonWizardStep
 		add(splitPane);
 	}
 
+	@Override
 	public void refresh() throws Exception
 	{
 		htmlViewerLeft.setText(getTextLeft());
