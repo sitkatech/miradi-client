@@ -45,6 +45,7 @@ public class BaseId implements Comparable
 		return equals(INVALID);
 	}
 	
+	@Override
 	public boolean equals(Object other)
 	{
 		if(!(other instanceof BaseId))
@@ -53,11 +54,13 @@ public class BaseId implements Comparable
 		return (compareTo(other) == 0);
 	}
 	
+	@Override
 	public int hashCode()
 	{
 		return id;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return Integer.toString(id);
