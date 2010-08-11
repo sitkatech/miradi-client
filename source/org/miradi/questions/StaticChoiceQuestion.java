@@ -52,6 +52,7 @@ public class StaticChoiceQuestion extends ChoiceQuestion
 		this(choicesToUse.toArray(new ChoiceItem[0]));
 	}
 
+	@Override
 	public ChoiceItem[] getChoices()
 	{
 		return choices;

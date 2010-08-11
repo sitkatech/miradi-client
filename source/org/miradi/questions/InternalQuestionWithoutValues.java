@@ -21,11 +21,13 @@ package org.miradi.questions;
 
 public class InternalQuestionWithoutValues extends DynamicChoiceQuestion
 {
+	@Override
 	public ChoiceItem[] getChoices()
 	{
 		return new ChoiceItem[0];
 	}
 	
+	@Override
 	public String getValue(String code)
 	{
 		return code;

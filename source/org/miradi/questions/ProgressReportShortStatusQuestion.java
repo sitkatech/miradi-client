@@ -24,31 +24,37 @@ import org.miradi.main.EAM;
 
 public class ProgressReportShortStatusQuestion extends AbstractProgressReportStatusQuestion
 {
+	@Override
 	protected String getAbandonedLabel()
 	{
 		return EAM.text("Abandoned");
 	}
 	
+	@Override
 	protected String getCompletedLabel()
 	{
 		return EAM.text("Completed");
 	}
 
+	@Override
 	protected String getOnTrackLabel()
 	{
 		return EAM.text("On-Track");
 	}
 
+	@Override
 	protected String getMinorIssuesLabel()
 	{
 		return EAM.text("Minor Issues");
 	}
 
+	@Override
 	protected String getMajorIssuesLabel()
 	{
 		return EAM.text("Major Issues");
 	}
 
+	@Override
 	protected String getPlannedLabel()
 	{
 		return EAM.text("Scheduled");
