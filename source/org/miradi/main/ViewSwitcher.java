@@ -81,6 +81,7 @@ public class ViewSwitcher extends PanelComboBox
 		setMaximumRowCount(choices.length);
 	}
 	
+	@Override
 	public Dimension getMaximumSize()
 	{
 		return getPreferredSize();

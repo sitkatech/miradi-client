@@ -98,6 +98,7 @@ abstract class HelpButton extends PanelButton
 		setFocusable(false);
 	}
 
+	@Override
 	public Dimension getMaximumSize()
 	{
 		return super.getPreferredSize();
