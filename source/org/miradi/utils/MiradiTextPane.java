@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.awt.AWTKeyStroke;
 import java.awt.Dimension;
 import java.awt.KeyboardFocusManager;
 import java.util.HashSet;
@@ -71,7 +72,7 @@ public class MiradiTextPane extends JTextPane
 	 * Instead, we will just always return our TAB preferences.
 	 */
 	@Override
-	public Set getFocusTraversalKeys(int category)
+	public Set<AWTKeyStroke> getFocusTraversalKeys(int category)
 	{
 		int UNSHIFTED = 0;
 		if(category == KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS)
@@ -83,9 +84,9 @@ public class MiradiTextPane extends JTextPane
 		return super.getFocusTraversalKeys(category);
 	}
 
-	private Set buildTabKeySet(int shiftMask)
+	private Set<AWTKeyStroke> buildTabKeySet(int shiftMask)
 	{
-		Set<KeyStroke> set = new HashSet<KeyStroke>();
+		Set<AWTKeyStroke> set = new HashSet<AWTKeyStroke>();
 		set.add(KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_TAB, shiftMask));
 		return set;
 	}
