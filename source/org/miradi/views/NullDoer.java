@@ -23,11 +23,13 @@ import org.miradi.exceptions.CommandFailedException;
 
 public class NullDoer extends Doer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		return false;
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		throw new CommandFailedException("Attempted to doIt in NullDoer!");

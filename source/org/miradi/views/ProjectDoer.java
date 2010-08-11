@@ -23,6 +23,7 @@ import org.miradi.project.Project;
 
 abstract public class ProjectDoer extends Doer
 {
+	@Override
 	public void setProject(Project projectToUse)
 	{
 		project = projectToUse;
