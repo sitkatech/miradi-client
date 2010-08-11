@@ -68,6 +68,7 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 		Collections.sort(choices);
 	}
 	
+	@Override
 	public ChoiceItem[] getChoices()
 	{
 		return choices.toArray(new ChoiceItem[0]);

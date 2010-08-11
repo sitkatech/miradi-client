@@ -35,6 +35,7 @@ public class IndicatorChoiceQuestion extends ObjectQuestion
 		return project.getIndicatorPool().getAllIndicators();
 	}
 	
+	@Override
 	protected String getStringToDisplay(BaseObject thisObject)
 	{
 		return thisObject.getFullName() + " (" + thisObject.getDirectOrIndirectOwningFactor().getLabel() + ")";

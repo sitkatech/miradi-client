@@ -31,6 +31,7 @@ abstract public class AbstractProgressReportStatusQuestion extends StaticChoiceQ
 		super();
 	}
 	
+	@Override
 	protected ChoiceItem[] createChoices()
 	{
 		return new ChoiceItem[] {
