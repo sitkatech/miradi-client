@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 09:28-0500\n"
+"POT-Creation-Date: 2010-08-11 09:38-0500\n"
 "PO-Revision-Date: 2010-05-12 13:30-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -6603,7 +6603,7 @@ msgid ""
 "task is represented by a grey flattened oval."
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/Task.java:348
+#: Miradi/source/org/miradi/objects/Task.java:346
 msgid "Task does not have a parent"
 msgstr ""
 
@@ -7521,7 +7521,7 @@ msgid ""
 "migrations. "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:516
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:517
 msgid "[Error]"
 msgstr ""
 

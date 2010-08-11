@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 09:28-0500\n"
+"POT-Creation-Date: 2010-08-11 09:38-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -6748,7 +6748,7 @@ msgstr ""
 "任务——指为展开某个活动或实施某个方法所需的专门行动。如果有必要，任务本身可以"
 "分解成亚任务。在Miradi中，任务是以灰色扁椭圆形来代表的。"
 
-#: Miradi/source/org/miradi/objects/Task.java:348
+#: Miradi/source/org/miradi/objects/Task.java:346
 msgid "Task does not have a parent"
 msgstr ""
 
@@ -7708,7 +7708,7 @@ msgstr ""
 "意：如果您使用导出和导入命令，Miradi将自动为您压缩或解压文件夹。Mirad也会为在"
 "格式迁移过程中创建的项目备份文件而创建压缩文件。"
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:516
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:517
 msgid "[Error]"
 msgstr ""
 
