@@ -21,6 +21,7 @@ package org.miradi.objectpools;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
+import org.miradi.objects.BaseObject;
 
 public class PoolWithIdAssigner extends EAMObjectPool
 {
@@ -30,7 +31,7 @@ public class PoolWithIdAssigner extends EAMObjectPool
 		idAssigner = idAssignerToUse;
 	}
 
-	public void put(BaseId id, Object obj) throws Exception
+	public void put(BaseId id, BaseObject obj) throws Exception
 	{
 		super.put(id, obj);
 		idAssigner.idTaken(id);
