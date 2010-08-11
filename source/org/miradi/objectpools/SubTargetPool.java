@@ -44,6 +44,7 @@ public class SubTargetPool extends EAMNormalObjectPool
 		return (SubTarget) getRawObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new SubTarget(objectManager, actualId);

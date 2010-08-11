@@ -39,6 +39,7 @@ public class AccountingCodePool extends EAMNormalObjectPool
 		return (AccountingCode)findObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new AccountingCode(objectManager, actualId);

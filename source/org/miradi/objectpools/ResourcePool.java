@@ -47,6 +47,7 @@ public class ResourcePool extends EAMNormalObjectPool
 		return (ProjectResource)getRawObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new ProjectResource(objectManager, actualId);

@@ -44,6 +44,7 @@ public class RareProjectDataPool extends EAMNormalObjectPool
 		return (RareProjectData) getRawObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new RareProjectData(objectManager, new BaseId(actualId.asInt()));

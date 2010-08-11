@@ -44,6 +44,7 @@ public class WwfProjectDataPool extends EAMNormalObjectPool
 		return (WwfProjectData) getRawObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new WwfProjectData(objectManager, new BaseId(actualId.asInt()));

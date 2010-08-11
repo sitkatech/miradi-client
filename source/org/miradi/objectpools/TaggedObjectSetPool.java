@@ -76,6 +76,7 @@ public class TaggedObjectSetPool extends EAMNormalObjectPool
 	}
 
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new TaggedObjectSet(objectManager, actualId);

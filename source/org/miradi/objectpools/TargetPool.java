@@ -49,6 +49,7 @@ public class TargetPool extends EAMNormalObjectPool
 		return (Target)getRawObject(id);
 	}
 	
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
 		return new Target(objectManager ,new FactorId(actualId.asInt()));

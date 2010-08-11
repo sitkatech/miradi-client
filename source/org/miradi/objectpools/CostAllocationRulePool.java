@@ -44,6 +44,7 @@ public class CostAllocationRulePool extends EAMNormalObjectPool
 		return (CostAllocationRule) getRawObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new CostAllocationRule(objectManager, new BaseId(actualId.asInt()));

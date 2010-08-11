@@ -45,6 +45,7 @@ public class GroupBoxPool extends EAMNormalObjectPool
 		return (GroupBox) getRawObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new GroupBox(objectManager, new FactorId(actualId.asInt()));

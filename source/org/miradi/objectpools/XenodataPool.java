@@ -44,6 +44,7 @@ public class XenodataPool extends EAMNormalObjectPool
 		return (Xenodata) getRawObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new Xenodata(objectManager, actualId);

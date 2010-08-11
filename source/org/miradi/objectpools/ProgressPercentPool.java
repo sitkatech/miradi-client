@@ -44,6 +44,7 @@ public class ProgressPercentPool extends EAMNormalObjectPool
 		return (ProgressPercent) getRawObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new ProgressPercent(objectManager, actualId);

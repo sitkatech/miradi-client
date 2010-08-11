@@ -39,6 +39,7 @@ public class ObjectivePool extends DesirePool
 		return (Objective)findDesire(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new Objective(objectManager, actualId);

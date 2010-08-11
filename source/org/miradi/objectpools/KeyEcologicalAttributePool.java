@@ -45,6 +45,7 @@ public class KeyEcologicalAttributePool extends EAMNormalObjectPool
 		return (KeyEcologicalAttribute)getRawObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new KeyEcologicalAttribute(objectManager, new KeyEcologicalAttributeId(actualId.asInt()));

@@ -44,6 +44,7 @@ public class OrganizationPool extends EAMNormalObjectPool
 		return (Organization) getRawObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new Organization(objectManager, actualId);

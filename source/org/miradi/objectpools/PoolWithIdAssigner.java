@@ -31,6 +31,7 @@ public class PoolWithIdAssigner extends EAMObjectPool
 		idAssigner = idAssignerToUse;
 	}
 
+	@Override
 	public void put(BaseId id, BaseObject obj) throws Exception
 	{
 		super.put(id, obj);

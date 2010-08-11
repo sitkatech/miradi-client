@@ -45,6 +45,7 @@ public class TextBoxPool extends EAMNormalObjectPool
 		return (TextBox)getRawObject(id);
 	}
 
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new TextBox(objectManager, new FactorId(actualId.asInt()));

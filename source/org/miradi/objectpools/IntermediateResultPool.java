@@ -45,6 +45,7 @@ public class IntermediateResultPool extends EAMNormalObjectPool
 		return (IntermediateResult)getRawObject(id);
 	}
 	
+	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
 		return new IntermediateResult(objectManager ,new FactorId(actualId.asInt()));
