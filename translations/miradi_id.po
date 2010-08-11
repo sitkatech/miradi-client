@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 09:52-0500\n"
+"POT-Creation-Date: 2010-08-11 10:05-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -795,7 +795,7 @@ msgid ""
 "Team for further assistance.  </html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:815
+#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:816
 msgid ""
 "<html>This version of Miradi has changed the Strategy rating options.<br>The "
 "Duration and Cost fields have been removed, and the <br>Impact and "
@@ -4933,7 +4933,7 @@ msgstr "Sesuai Aturan "
 msgid "On-Track - Ongoing, generally on track"
 msgstr "Sesuai Jadwal – Sedang berlangsung, secara umum sesuai jadwal"
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1215
+#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1218
 msgid ""
 "One or more Goals that were associated with KEA Indicators have been "
 "deleted. Please create new Goals as needed, or use the new Future Status "
@@ -5284,7 +5284,7 @@ msgstr "Filter Sumber Daya Proyek Adalah Aktif "
 msgid "Project Resources"
 msgstr "Sumber Daya Proyek "
 
-#: Miradi/source/org/miradi/database/migrations/CreateScopeBoxesSuroundingTargetsMigration.java:309
+#: Miradi/source/org/miradi/database/migrations/CreateScopeBoxesSuroundingTargetsMigration.java:311
 #: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:72
 msgid "Project Scope"
 msgstr "Cakupan Proyek "
