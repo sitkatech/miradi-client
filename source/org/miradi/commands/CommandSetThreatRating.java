@@ -39,21 +39,25 @@ public class CommandSetThreatRating extends Command
 		valueId = valueIdToUse;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getCommandName() + ": " + threatId + ", " + targetId + "," + criterionId + "," + valueId;
 	}
 	
+	@Override
 	public String getCommandName()
 	{
 		return COMMAND_NAME;
 	}
 
+	@Override
 	public void execute(Project project) throws CommandFailedException
 	{
 		previousValueId = setBundleValue(project, valueId, BaseId.INVALID);
 	}
 	
+	@Override
 	public Command getReverseCommand() throws CommandFailedException
 	{
 		return new CommandSetThreatRating(getThreatId(), getTargetId(), getCriterionId(), getPreviousValueId());
@@ -104,6 +108,7 @@ public class CommandSetThreatRating extends Command
 		return previousValueId;
 	}
 
+	@Override
 	public HashMap<String, Comparable> getLogData()
 	{
 		HashMap<String, Comparable> dataPairs = new HashMap<String, Comparable>();
