@@ -53,6 +53,7 @@ public class BooleanData extends IntegerData
 		return "";
 	}
 	
+	@Override
 	public void set(String newValue) throws Exception
 	{
 		super.set(newValue);

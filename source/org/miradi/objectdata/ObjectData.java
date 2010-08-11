@@ -41,9 +41,12 @@ abstract public class ObjectData
 	
 	abstract public void set(String newValue) throws Exception;
 	abstract public String get();
+	@Override
 	abstract public boolean equals(Object rawOther);
+	@Override
 	abstract public int hashCode();
 	
+	@Override
 	final public String toString()
 	{
 		return get();

@@ -32,11 +32,13 @@ public class PointListData extends ObjectData
 		points = new PointList();
 	}
 	
+	@Override
 	public void set(String newValue) throws Exception
 	{
 		set(new PointList(newValue));
 	}
 	
+	@Override
 	public String get()
 	{
 		return points.toString();
@@ -77,6 +79,7 @@ public class PointListData extends ObjectData
 		points.removePoint(point);
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof PointListData))
@@ -86,6 +89,7 @@ public class PointListData extends ObjectData
 		return points.equals(other.points);
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return points.hashCode();

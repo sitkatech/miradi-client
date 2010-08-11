@@ -27,16 +27,19 @@ public class StringData extends ObjectData
 		value = "";
 	}
 	
+	@Override
 	public void set(String newValue) throws Exception
 	{
 		value = newValue;
 	}
 
+	@Override
 	public String get()
 	{
 		return value;
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof StringData))
@@ -46,6 +49,7 @@ public class StringData extends ObjectData
 		return value.equals(other.value);
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return value.hashCode();
