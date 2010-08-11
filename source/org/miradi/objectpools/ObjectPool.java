@@ -34,7 +34,7 @@ public class ObjectPool
 	public ObjectPool(int objectTypeToStore)
 	{
 		objectType = objectTypeToStore;
-		map = new HashMap<BaseId, Object>();
+		map = new HashMap<BaseId, BaseObject>();
 	}
 	
 	public int getObjectType()
@@ -72,7 +72,7 @@ public class ObjectPool
 		put(baseObject.getId(), baseObject);
 	}
 	
-	public void put(BaseId id, Object obj) throws Exception
+	public void put(BaseId id, BaseObject obj) throws Exception
 	{
 		if(map.containsKey(id))
 			throw new RuntimeException("Id Already Exists: " + id.asInt() + " in " + getClass().getName());
@@ -85,7 +85,7 @@ public class ObjectPool
 		return map.keySet();
 	}
 	
-	Collection getValues()
+	Collection<BaseObject> getValues()
 	{
 		return map.values();
 	}
@@ -101,5 +101,5 @@ public class ObjectPool
 	}
 
 	private int objectType;
-	private HashMap<BaseId, Object> map;
+	private HashMap<BaseId, BaseObject> map;
 }

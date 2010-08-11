@@ -27,6 +27,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
@@ -45,7 +46,7 @@ public class FactorLinkPool extends PoolWithIdAssigner
 	}
 	
 	@Override
-	public void put(BaseId id, Object obj) throws Exception
+	public void put(BaseId id, BaseObject obj) throws Exception
 	{
 		super.put(id, obj);
 
