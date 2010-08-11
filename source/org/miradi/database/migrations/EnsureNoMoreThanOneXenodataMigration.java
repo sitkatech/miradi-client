@@ -68,6 +68,7 @@ public class EnsureNoMoreThanOneXenodataMigration
 		return projectIds.size() == 1;
 	}
 
+	@SuppressWarnings("unchecked")
 	private static void removeInPlaceAllButOne(File objectDir, ObjectManifest objectManifestObject, Vector<EnhancedJsonObject> xenodataJsonsToRemove) throws Exception
 	{
 		if (xenodataJsonsToRemove.size() == 1)

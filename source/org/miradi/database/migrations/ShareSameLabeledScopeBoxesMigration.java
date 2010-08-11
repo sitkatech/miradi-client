@@ -145,6 +145,7 @@ public class ShareSameLabeledScopeBoxesMigration
 		return scopeBoxJsonMatch.optString(LABEL_TAG);
 	}
 
+	@SuppressWarnings("unchecked")
 	private static Vector<File> extractScopeBoxDiagramFactorJsonFiles(IdList diagramFactorIds) throws Exception
 	{
 		Vector<File> diagramFactorScopeBoxJsons = new Vector();

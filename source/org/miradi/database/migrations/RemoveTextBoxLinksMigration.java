@@ -33,6 +33,7 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class RemoveTextBoxLinksMigration
 {
+	@SuppressWarnings("unchecked")
 	public static void removeTextBoxLinks() throws Exception
 	{
 		File jsonDir = getJsonDir();
@@ -101,6 +102,7 @@ public class RemoveTextBoxLinksMigration
 		writeManifest(objectDir, objectManifestObject);
 	}
 	
+	@SuppressWarnings("unchecked")
 	private static Vector<BaseId> deleteOwningDiagramLinkIds(BaseId factorLinkId) throws Exception
 	{
 		ObjectManifest diagramLinkManifestObject = new ObjectManifest(JSONFile.read(getDiagramLinkManifestFile(getJsonDir())));
