@@ -28,6 +28,7 @@ public class FormImage extends FormItem
 		bufferedImage = bufferedImageToUse;
 	}
 	
+	@Override
 	public boolean isFormFieldImage()
 	{
 		return true;

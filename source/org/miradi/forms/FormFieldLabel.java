@@ -27,6 +27,7 @@ public class FormFieldLabel extends FieldRelatedFormItem
 		super(objectTypeTouse, objectTagToUse);
 	}
 	
+	@Override
 	public boolean isFormFieldLabel()
 	{
 		return true;

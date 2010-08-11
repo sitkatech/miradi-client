@@ -52,6 +52,7 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 		rows.add(rowToAdd);
 	}
 
+	@Override
 	public FormRow getFormRow(int index)
 	{
 		return rows.get(index);
