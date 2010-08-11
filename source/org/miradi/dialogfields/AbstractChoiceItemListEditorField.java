@@ -60,11 +60,13 @@ abstract public class AbstractChoiceItemListEditorField extends ObjectDataInputF
 		return editorComponent;
 	}
 
+	@Override
 	public JComponent getComponent()
 	{
 		return component;
 	}
 
+	@Override
 	public String getText()
 	{
 		return getComponentText();
@@ -75,11 +77,13 @@ abstract public class AbstractChoiceItemListEditorField extends ObjectDataInputF
 		return codeListEditor.getText();
 	}
 
+	@Override
 	public void setText(String codes)
 	{
 		codeListEditor.setText(codes);
 	}
 
+	@Override
 	public void updateEditableState()
 	{
 		boolean editable = allowEdits() && isValidObject();

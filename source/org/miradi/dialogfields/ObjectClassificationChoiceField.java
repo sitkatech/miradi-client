@@ -38,6 +38,7 @@ public class ObjectClassificationChoiceField extends ObjectChoiceField
 	}
 
 	
+	@Override
 	public void saveSelection()
 	{
 		ChoiceItem taxonomyItem = getTaxonomyItem(combo);
