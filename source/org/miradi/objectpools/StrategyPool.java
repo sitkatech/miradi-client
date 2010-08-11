@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectpools;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.ids.BaseId;
@@ -78,7 +77,7 @@ public class StrategyPool extends EAMNormalObjectPool
 	private Factor[] getNodesOfType(int type)
 	{
 		Vector<Factor> cmNodes = new Vector<Factor>();
-		FactorId[] ids = getModelNodeIds();
+		BaseId[] ids = getIds();
 		Arrays.sort(ids);
 		for(int i = 0; i < ids.length; ++i)
 		{
@@ -89,11 +88,6 @@ public class StrategyPool extends EAMNormalObjectPool
 		return cmNodes.toArray(new Factor[0]);
 	}
 
-	public FactorId[] getModelNodeIds()
-	{
-		return (FactorId[])new HashSet(getRawIds()).toArray(new FactorId[0]);
-	}
-	
 	public ORefList getNonDraftStrategyRefs()
 	{
 		return new ORefList(getNonDraftStrategies());
