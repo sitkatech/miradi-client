@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 09:28-0500\n"
+"POT-Creation-Date: 2010-08-11 09:38-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -6984,7 +6984,7 @@ msgstr ""
 "subtugas-subtugas. Dalam Miradi, tugas diwakili oleh bentuk oval pipih warna "
 "abu-abu."
 
-#: Miradi/source/org/miradi/objects/Task.java:348
+#: Miradi/source/org/miradi/objects/Task.java:346
 msgid "Task does not have a parent"
 msgstr ""
 
@@ -7997,7 +7997,7 @@ msgstr ""
 "impor. Miradi juga akan membuat berkas zip untuk cadangan berkas proyek yang "
 "dibuat selama pemindahan format."
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:516
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:517
 msgid "[Error]"
 msgstr "[Kesalahan] "
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 09:28-0500\n"
+"POT-Creation-Date: 2010-08-11 09:38-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -7026,7 +7026,7 @@ msgstr ""
 "necesario, las tareas en sí mismas pueden dividirse en subtareas. En Miradi, "
 "una tarea está representada por un óvalo plano gris."
 
-#: Miradi/source/org/miradi/objects/Task.java:348
+#: Miradi/source/org/miradi/objects/Task.java:346
 msgid "Task does not have a parent"
 msgstr ""
 
@@ -8032,7 +8032,7 @@ msgstr ""
 "comandos exportar e importar. Miradi también creará archivos zip para las "
 "copias de seguridad del proyecto creadas durante las migraciones de formato."
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:516
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:517
 msgid "[Error]"
 msgstr "[Error]"
 
