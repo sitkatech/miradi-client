@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 13:01-0500\n"
+"POT-Creation-Date: 2010-08-11 13:10-0500\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3124,19 +3124,19 @@ msgstr ""
 msgid "File to import does not validate."
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/CpmzFileFilterForChooserDialog.java:28
+#: Miradi/source/org/miradi/utils/CpmzFileFilterForChooserDialog.java:29
 msgid "FileFilter|ConPro Miradi Zip (*%s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/JPEGFileFilter.java:44
+#: Miradi/source/org/miradi/utils/JPEGFileFilter.java:46
 msgid "FileFilter|JPEG (*.jpg)"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/TreeExportFileFilter.java:39
+#: Miradi/source/org/miradi/utils/TreeExportFileFilter.java:41
 msgid "FileFilter|MTE (*.mte)"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/LanguagePackFileFilter.java:54
+#: Miradi/source/org/miradi/utils/LanguagePackFileFilter.java:56
 msgid "FileFilter|Miradi Language Pack (%s)"
 msgstr ""
 
@@ -3144,15 +3144,15 @@ msgstr ""
 msgid "FileFilter|Miradi Project Zip (*.mpz)"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/PNGFileFilter.java:33
+#: Miradi/source/org/miradi/utils/PNGFileFilter.java:34
 msgid "FileFilter|PNG (*.png)"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/RtfFileFilter.java:40
+#: Miradi/source/org/miradi/utils/RtfFileFilter.java:42
 msgid "FileFilter|Rich Text Format (*.rtf)"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/SVGFileFilter.java:44
+#: Miradi/source/org/miradi/utils/SVGFileFilter.java:46
 msgid "FileFilter|SVG (*.svg)"
 msgstr ""
 
@@ -3160,11 +3160,11 @@ msgstr ""
 msgid "FileFilter|Tab Delimited (*.txt)"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/XLSFileFilter.java:40
+#: Miradi/source/org/miradi/utils/XLSFileFilter.java:42
 msgid "FileFilter|XLS (*.xls)"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/XMLFileFilter.java:40
+#: Miradi/source/org/miradi/utils/XMLFileFilter.java:42
 msgid "FileFilter|XML (*.xml)"
 msgstr ""
 
@@ -3172,7 +3172,7 @@ msgstr ""
 msgid "FileFilter|XMPZ (*"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/ZIPFileFilter.java:40
+#: Miradi/source/org/miradi/utils/ZIPFileFilter.java:42
 msgid "FileFilter|ZIP (*.zip)"
 msgstr ""
 

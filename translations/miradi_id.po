@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 13:01-0500\n"
+"POT-Creation-Date: 2010-08-11 13:10-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3337,19 +3337,19 @@ msgstr ""
 msgid "File to import does not validate."
 msgstr "Berkas yang akan diimpor tidak bisa divalidasi. "
 
-#: Miradi/source/org/miradi/utils/CpmzFileFilterForChooserDialog.java:28
+#: Miradi/source/org/miradi/utils/CpmzFileFilterForChooserDialog.java:29
 msgid "FileFilter|ConPro Miradi Zip (*%s)"
 msgstr "Zip Conpro Miradi (*%s)"
 
-#: Miradi/source/org/miradi/utils/JPEGFileFilter.java:44
+#: Miradi/source/org/miradi/utils/JPEGFileFilter.java:46
 msgid "FileFilter|JPEG (*.jpg)"
 msgstr "JPEG (*.jpg) "
 
-#: Miradi/source/org/miradi/utils/TreeExportFileFilter.java:39
+#: Miradi/source/org/miradi/utils/TreeExportFileFilter.java:41
 msgid "FileFilter|MTE (*.mte)"
 msgstr "MTE (*.mte) "
 
-#: Miradi/source/org/miradi/utils/LanguagePackFileFilter.java:54
+#: Miradi/source/org/miradi/utils/LanguagePackFileFilter.java:56
 msgid "FileFilter|Miradi Language Pack (%s)"
 msgstr "Paket Bahasa Miradi (%s) "
 
@@ -3357,17 +3357,17 @@ msgstr "Paket Bahasa Miradi (%s) "
 msgid "FileFilter|Miradi Project Zip (*.mpz)"
 msgstr "Zip Proyek Miradi (*.mpz) "
 
-#: Miradi/source/org/miradi/utils/PNGFileFilter.java:33
+#: Miradi/source/org/miradi/utils/PNGFileFilter.java:34
 msgid "FileFilter|PNG (*.png)"
 msgstr "PNG (*.png) "
 
 # AB: removed <i> (shows up as text in field instead of italics since not html)
 # Should Format be there twice?
-#: Miradi/source/org/miradi/utils/RtfFileFilter.java:40
+#: Miradi/source/org/miradi/utils/RtfFileFilter.java:42
 msgid "FileFilter|Rich Text Format (*.rtf)"
 msgstr "Format Format Kaya Teks/Rich Text Format (*.rtf)"
 
-#: Miradi/source/org/miradi/utils/SVGFileFilter.java:44
+#: Miradi/source/org/miradi/utils/SVGFileFilter.java:46
 msgid "FileFilter|SVG (*.svg)"
 msgstr "SVG (*.svg) "
 
@@ -3375,11 +3375,11 @@ msgstr "SVG (*.svg) "
 msgid "FileFilter|Tab Delimited (*.txt)"
 msgstr "Berbatas Tab (*.txt) "
 
-#: Miradi/source/org/miradi/utils/XLSFileFilter.java:40
+#: Miradi/source/org/miradi/utils/XLSFileFilter.java:42
 msgid "FileFilter|XLS (*.xls)"
 msgstr "XLS (*.xls) "
 
-#: Miradi/source/org/miradi/utils/XMLFileFilter.java:40
+#: Miradi/source/org/miradi/utils/XMLFileFilter.java:42
 msgid "FileFilter|XML (*.xml)"
 msgstr "XML (*.xml) "
 
@@ -3387,7 +3387,7 @@ msgstr "XML (*.xml) "
 msgid "FileFilter|XMPZ (*"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/ZIPFileFilter.java:40
+#: Miradi/source/org/miradi/utils/ZIPFileFilter.java:42
 msgid "FileFilter|ZIP (*.zip)"
 msgstr "ZIP (*.zip) "
 
