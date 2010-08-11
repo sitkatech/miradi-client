@@ -43,11 +43,13 @@ public class ScopeBox extends Factor
 		super(objectManager, idToUse, Factor.TYPE_SCOPE_BOX, json);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -64,16 +66,19 @@ public class ScopeBox extends Factor
 		return ObjectType.SCOPE_BOX;
 	}
 	
+	@Override
 	public boolean isScopeBox()
 	{
 		return true;
 	}
 
+	@Override
 	public boolean canHaveIndicators()
 	{
 		return false;
 	}
 
+	@Override
 	public ORefList getOwnedObjects(int objectType)
 	{
 		return new ORefList();

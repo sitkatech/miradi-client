@@ -45,11 +45,13 @@ public class ProgressReport extends BaseObject
 		super(objectManager, new BaseId(idAsInt), json);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -80,11 +82,13 @@ public class ProgressReport extends BaseObject
 		return progressDate.get();
 	}
 	
+	@Override
 	public ORefList getOwnedObjects(int objectType)
 	{
 		return new ORefList();
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getDateAsString() + ": " + getProgressStatusChoice().getLabel();
@@ -126,6 +130,7 @@ public class ProgressReport extends BaseObject
 		return find(project.getObjectManager(), progressReportRef);
 	}
 	
+	@Override
 	void clear()
 	{
 		super.clear();

@@ -40,6 +40,7 @@ public class CostAllocationRule extends BaseObject
 		super(objectManager, new BaseId(idAsInt), jsonObject);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
@@ -51,6 +52,7 @@ public class CostAllocationRule extends BaseObject
 		return NO_OWNERS;
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -66,6 +68,7 @@ public class CostAllocationRule extends BaseObject
 		return false;
 	}
 	
+	@Override
 	void clear()
 	{
 		super.clear();

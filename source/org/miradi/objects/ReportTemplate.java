@@ -42,11 +42,13 @@ public class ReportTemplate extends BaseObject
 		super(objectManager, new BaseId(idAsInt), json);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -63,6 +65,7 @@ public class ReportTemplate extends BaseObject
 		return ObjectType.REPORT_TEMPLATE;
 	}
 	
+	@Override
 	public String getShortLabel()
 	{
 		return shortLabel.get();

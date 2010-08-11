@@ -41,11 +41,13 @@ public class Organization extends BaseObject
 		super(objectManager, new BaseId(idAsInt), json);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -67,11 +69,13 @@ public class Organization extends BaseObject
 		return false;
 	}
 
+	@Override
 	public ORefList getOwnedObjects(int objectType)
 	{
 		return new ORefList();
 	}
 	
+	@Override
 	public String getShortLabel()
 	{
 		return getData(TAG_SHORT_LABEL);
@@ -102,6 +106,7 @@ public class Organization extends BaseObject
 		return find(project.getObjectManager(), organizationRef);
 	}
 	
+	@Override
 	void clear()
 	{
 		super.clear();

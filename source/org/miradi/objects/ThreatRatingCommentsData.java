@@ -41,11 +41,13 @@ public class ThreatRatingCommentsData extends BaseObject
 		super(objectManager, new BaseId(idAsInt), jsonObject);
 	}
 
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -123,6 +125,7 @@ public class ThreatRatingCommentsData extends BaseObject
 		return find(project.getObjectManager(), threatRatingCommentsDataRef);
 	}
 
+	@Override
 	void clear()
 	{
 		super.clear();
