@@ -35,7 +35,7 @@ public class MultiTableModel extends AbstractTableModel implements ChoiceItemTab
 	public MultiTableModel(String subViewModelIdentifierToUse)
 	{
 		subViewModelIdentifier = subViewModelIdentifierToUse;
-		models = new Vector();
+		models = new Vector<ChoiceItemTableModel>();
 	}
 	
 	public void removeAllModels()
