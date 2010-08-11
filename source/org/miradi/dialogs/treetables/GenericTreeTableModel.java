@@ -101,7 +101,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 			}
 		}
 
-		Vector<TreePath> treePaths = new Vector();
+		Vector<TreePath> treePaths = new Vector<TreePath>();
 		for(int index = 0; index < nodeToSearch.getChildCount(); ++index)
 		{
 			TreeTableNode thisChild = nodeToSearch.getChild(index);
@@ -115,7 +115,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 
 	private Vector<TreePath> createSingleTreePathVector(TreePath pathToStartSearch)
 	{
-		Vector<TreePath> treePaths = new Vector();
+		Vector<TreePath> treePaths = new Vector<TreePath>();
 		treePaths.add(pathToStartSearch);
 		
 		return treePaths;
@@ -163,7 +163,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 	
 	public Vector<ORefList> getFullyExpandedHierarchyRefListList() throws Exception
 	{
-		Vector<ORefList> fullyExpandedObjectRefs = new Vector();
+		Vector<ORefList> fullyExpandedObjectRefs = new Vector<ORefList>();
 		Vector<TreePath> fullExpandedNodeList = getFullyExpandedTreePathList();
 		for(TreePath treePath : fullExpandedNodeList)
 		{
@@ -188,7 +188,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 	public Vector<TreePath> getFullyExpandedTreePathList() throws Exception
 	{
 		TreePath pathToRoot = getPathToRoot();
-		Vector<TreePath> fullyExpandedTreePathList = new Vector();
+		Vector<TreePath> fullyExpandedTreePathList = new Vector<TreePath>();
 		recursivelyGetFullyExpandedTreePaths(fullyExpandedTreePathList, pathToRoot);
 		
 		return fullyExpandedTreePathList;
