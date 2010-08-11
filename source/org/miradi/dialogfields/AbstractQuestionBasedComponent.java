@@ -108,6 +108,7 @@ abstract public class AbstractQuestionBasedComponent extends AbstractDataValueLi
 		return toolTip;
 	}
 	
+	@Override
 	public void setEnabled(boolean isValidObject)
 	{
 		super.setEnabled(isValidObject);

@@ -62,11 +62,13 @@ public class RadioButtonsField extends ObjectDataInputField
 		return buttons.get(index);
 	}
 
+	@Override
 	public JComponent getComponent()
 	{
 		return null;
 	}
 	
+	@Override
 	public void updateEditableState()
 	{
 		boolean editable = allowEdits() && isValidObject();
@@ -76,6 +78,7 @@ public class RadioButtonsField extends ObjectDataInputField
 		}
 	}
 
+	@Override
 	public String getText()
 	{
 		for(int i = 0; i < question.size(); ++i)
@@ -87,6 +90,7 @@ public class RadioButtonsField extends ObjectDataInputField
 		return "";
 	}
 
+	@Override
 	public void setText(String newValue)
 	{
 		for(int i = 0; i < question.size(); ++i)
