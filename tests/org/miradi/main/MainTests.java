@@ -193,7 +193,6 @@ import org.miradi.utils.TestDiagramCorruptionDetector;
 import org.miradi.utils.TestEnhancedJsonObject;
 import org.miradi.utils.TestFloatingPointFormatter;
 import org.miradi.utils.TestLogging;
-import org.miradi.utils.TestMiradiMap;
 import org.miradi.utils.TestOptionalDouble;
 import org.miradi.utils.TestPointList;
 import org.miradi.utils.TestRtfWriter;
@@ -301,7 +300,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestTaxonomyFileLoader.class));
 		suite.addTest(new TestSuite(TestDateRange.class));
 		suite.addTest(new TestSuite(TestConproMiradiHabitatCodeMap.class));
-		suite.addTest(new TestSuite(TestMiradiMap.class));
 		suite.addTest(new TestSuite(TestBaseObjectDateAndIdComparator.class));
 		suite.addTest(new TestSuite(TestDiagramCorruptionDetector.class));
 		suite.addTest(new TestSuite(TestRtfWriter.class));
