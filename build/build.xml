@@ -382,8 +382,8 @@
 	</antcall>
 	
 	<antcall target='download'>
-			<param name='directory' value='martus-swing/' />
-			<param name='filename' value='martus-swing-license.jar' />
+			<param name='directory' value='martus-swing' />
+			<param name='filename' value='martus-swing-license.txt' />
 		</antcall>
 	
 	<antcall target='download'>
@@ -395,7 +395,7 @@
 		<param name='filename' value='martus-utils-src.jar' />
 	</antcall>
 	<antcall target='download'>
-		<param name='directory' value='martus-utils/' />
+		<param name='directory' value='martus-utils' />
 		<param name='filename' value='martus-utils-license.txt' />
 	</antcall>
 
