@@ -35,6 +35,7 @@ public class ActionInsertIntermediateResult extends LocationAction
 		return EAM.text("Action|Insert|Insert Intermediate Result");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Insert a Intermediate Result");

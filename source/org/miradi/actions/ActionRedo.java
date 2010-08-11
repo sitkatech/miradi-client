@@ -34,6 +34,7 @@ public class ActionRedo extends MainWindowAction
 		return EAM.text("Action|Redo");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Redo last undone action");

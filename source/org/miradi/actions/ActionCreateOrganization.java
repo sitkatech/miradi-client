@@ -35,6 +35,7 @@ public class ActionCreateOrganization extends ObjectsAction
 		return EAM.text("Action|Manage|Create Organization");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create an Organization");

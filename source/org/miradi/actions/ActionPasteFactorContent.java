@@ -42,6 +42,7 @@ public class ActionPasteFactorContent extends LocationAction
 		return EAM.text("Action|Paste Content");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Paste the Single Factor's content from the clipboard");

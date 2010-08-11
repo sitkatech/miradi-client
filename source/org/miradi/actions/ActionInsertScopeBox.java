@@ -35,6 +35,7 @@ public class ActionInsertScopeBox extends LocationAction
 		return EAM.text("Action|Insert|Insert Scope Box");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Insert a Scope Box");

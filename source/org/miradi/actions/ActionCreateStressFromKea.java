@@ -35,6 +35,7 @@ public class ActionCreateStressFromKea extends ObjectsAction
 		return EAM.text("Action|Create Stress from KEA");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a Stress from a Key Ecological Attribute");

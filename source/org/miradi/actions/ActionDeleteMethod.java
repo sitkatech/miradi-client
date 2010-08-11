@@ -35,6 +35,7 @@ public class ActionDeleteMethod extends ObjectsAction
 		return EAM.text("Action|Manage|Delete Method");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete the selected Method");

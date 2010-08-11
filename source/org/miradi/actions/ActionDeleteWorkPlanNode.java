@@ -34,6 +34,7 @@ public class ActionDeleteWorkPlanNode extends ObjectsAction
 		return EAM.text("Action|Delete Item");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete the selected item");

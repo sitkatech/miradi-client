@@ -35,6 +35,7 @@ public class ActionCreateObjective extends ObjectsAction
 		return EAM.text("Action|Manage|Create Objective");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create an Objective");

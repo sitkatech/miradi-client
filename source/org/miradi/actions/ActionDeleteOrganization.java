@@ -35,6 +35,7 @@ public class ActionDeleteOrganization extends ObjectsAction
 		return EAM.text("Action|Delete Organization");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete Organization");

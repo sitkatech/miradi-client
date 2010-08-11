@@ -35,6 +35,7 @@ public class ActionTeamCreateMember extends ObjectsAction
 			return EAM.text("Action|Manage|Create Member");
 		}
 
+		@Override
 		public String getToolTipText()
 		{
 			return EAM.text("TT|Add member to the team");

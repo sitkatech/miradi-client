@@ -35,6 +35,7 @@ public class ActionGroupBoxRemoveFactor extends LocationAction
 		return EAM.text("Action|Remove|Remove Factor(s) from Group Box");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Remove Factor(s) from Group Box");

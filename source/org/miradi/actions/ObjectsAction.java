@@ -54,6 +54,7 @@ public class ObjectsAction extends ViewAction implements ListSelectionListener
 		pickers = new Vector<ObjectPicker>();
 	}
 
+	@Override
 	public boolean isObjectAction()
 	{
 		return true;
@@ -74,6 +75,7 @@ public class ObjectsAction extends ViewAction implements ListSelectionListener
 		pickers.remove(toRemove);
 	}
 
+	@Override
 	public Doer getDoer()
 	{
 		Doer doer = super.getDoer();

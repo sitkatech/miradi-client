@@ -34,6 +34,7 @@ public class ActionCut extends ViewAction
 		return EAM.text("Action|Cut");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Cut the selection to the clipboard");

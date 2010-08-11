@@ -34,6 +34,7 @@ public class ActionViewPossibleResources extends ObjectsAction
 		return EAM.text("Action|Manage|Add Resources...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Add resources to activity");

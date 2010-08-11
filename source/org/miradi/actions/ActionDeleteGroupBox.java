@@ -35,6 +35,7 @@ public class ActionDeleteGroupBox extends LocationAction
 		return EAM.text("Action|Delete Group Box(s)");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete Group Box(s) but not children");

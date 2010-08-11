@@ -35,6 +35,7 @@ public class ActionDeleteStrategyProgressReport extends ObjectsAction
 		return EAM.text("Action|Manage|Delete Progress Report");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete Progress Report");

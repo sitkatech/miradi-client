@@ -34,6 +34,7 @@ public class ActionResourceListAdd extends ObjectsAction
 		return EAM.text("Action|Manage|Add Resource");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Add");

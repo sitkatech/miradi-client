@@ -41,6 +41,7 @@ abstract public class ViewAction extends MainWindowAction
 		super(mainWindowToUse, label, icon);
 	}
 
+	@Override
 	public Doer getDoer()
 	{
 		Doer doer = super.getDoer();

@@ -34,6 +34,7 @@ public class ActionEditMethods extends ObjectsAction
 		return EAM.text("Action|Edit Methods...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Edit the methods for this indicator");

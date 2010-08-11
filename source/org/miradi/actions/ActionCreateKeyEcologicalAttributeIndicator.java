@@ -35,6 +35,7 @@ public class ActionCreateKeyEcologicalAttributeIndicator extends ObjectsAction
 		return EAM.text("Action|Manage|Create Indicator");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a new Indicator");

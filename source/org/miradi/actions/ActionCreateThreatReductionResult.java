@@ -37,11 +37,13 @@ public class ActionCreateThreatReductionResult extends LocationAction
 		return EAM.text("Action|Insert|Insert Threat Reduction Result");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Insert a Threat Reduction Result");
 	}
 
+	@Override
 	public Icon getDisabledIcon()
 	{
 		return ThreatReductionResultIcon.createDisabledIcon();

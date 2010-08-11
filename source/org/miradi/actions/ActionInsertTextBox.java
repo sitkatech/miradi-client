@@ -35,6 +35,7 @@ public class ActionInsertTextBox extends LocationAction
 		return EAM.text("Action|Insert|Insert Text Box");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Insert a Text Box");

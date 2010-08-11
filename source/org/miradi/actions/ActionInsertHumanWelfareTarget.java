@@ -38,11 +38,13 @@ public class ActionInsertHumanWelfareTarget extends LocationAction
 		return EAM.text("Action|Insert|Insert Human Welfare Target");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Insert a Human Welfare Target");
 	}
 
+	@Override
 	public Icon getDisabledIcon()
 	{
 		return HumanWelfareTargetIcon.createDisabledIcon();

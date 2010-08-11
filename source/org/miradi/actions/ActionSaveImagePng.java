@@ -34,6 +34,7 @@ public class ActionSaveImagePng extends MainWindowAction
 		return EAM.text("Action|PNG Image");
 	}
 	
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Save the diagram or upper table area as a PNG Image");

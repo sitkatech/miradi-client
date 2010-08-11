@@ -34,6 +34,7 @@ public class ActionEditTaggedObjectSet extends ObjectsAction
 		return EAM.text("Action|Edit...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Choose which factors are tagged.");

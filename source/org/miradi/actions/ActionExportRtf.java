@@ -34,6 +34,7 @@ public class ActionExportRtf extends MainWindowAction
 		return EAM.text("Action|RTF File");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Export current page as an RTF file");

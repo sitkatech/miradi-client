@@ -34,6 +34,7 @@ public class ActionHideCellRatings extends MainWindowAction
 		return EAM.text("Action|Hide Ratings in Cell");
 	}
 	
+	@Override
 	public String getToolTipText()
 	{
 		return getLabel();

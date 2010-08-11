@@ -35,6 +35,7 @@ public class ActionCreateMethod extends ObjectsAction
 		return EAM.text("Action|Manage|Create Method");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a new Method");

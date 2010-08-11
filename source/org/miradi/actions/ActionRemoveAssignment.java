@@ -35,6 +35,7 @@ public class ActionRemoveAssignment extends ObjectsAction
 		return EAM.text("Action|Remove Resource");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Remove resource from list");

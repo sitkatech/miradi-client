@@ -34,6 +34,7 @@ public class ActionViewLegacyTncStrategtyRanking extends ObjectsAction
 		return EAM.text("Action|View...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|View Legacy TNC Strategy Ranking.");

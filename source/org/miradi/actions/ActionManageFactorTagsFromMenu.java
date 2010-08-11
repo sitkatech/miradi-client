@@ -35,6 +35,7 @@ public class ActionManageFactorTagsFromMenu extends LocationAction
 		return EAM.text("Action|Tag/Untag...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Add/remove tags for the selected factor");

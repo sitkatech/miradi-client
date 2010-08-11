@@ -35,6 +35,7 @@ public class ActionDeleteResource extends ObjectsAction
 		return EAM.text("Action|Manage|Delete Resource");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete the selected Resource (person, team, etc)");

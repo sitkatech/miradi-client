@@ -34,6 +34,7 @@ public class ActionRunReportTemplate extends ObjectsAction
 		return EAM.text("Action|Run Selected...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Run the Selected Report Template");

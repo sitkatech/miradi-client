@@ -34,6 +34,7 @@ public class ActionRenameConceptualModel extends MainWindowAction
 		return EAM.text("Action|Rename Conceptual Model Page");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Rename this Conceptual Model Page");

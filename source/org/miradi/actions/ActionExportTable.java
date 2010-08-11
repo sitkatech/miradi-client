@@ -34,6 +34,7 @@ public class ActionExportTable extends ViewAction
 		return EAM.text("Action|Tab-Delimited Table");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Export this view's table to a tab delimited file");

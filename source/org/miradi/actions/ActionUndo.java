@@ -34,6 +34,7 @@ public class ActionUndo extends MainWindowAction
 		return EAM.text("Action|Undo");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Undo last action");

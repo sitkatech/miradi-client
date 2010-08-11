@@ -34,6 +34,7 @@ public class ActionShowStressBubble extends ObjectsAction
 		return EAM.text("Action|Show Stress on this page");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Show this Stress so it appears on this Conceptual Model page");

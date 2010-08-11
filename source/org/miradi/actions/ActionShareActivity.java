@@ -35,6 +35,7 @@ public class ActionShareActivity extends ObjectsAction
 		return EAM.text("Action|Share Activity");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Share an existing Activity into this Strategy");

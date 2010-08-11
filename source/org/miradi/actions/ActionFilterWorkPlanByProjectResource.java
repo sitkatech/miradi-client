@@ -35,6 +35,7 @@ public class ActionFilterWorkPlanByProjectResource extends ObjectsAction
 		return EAM.text("Action|Filter by Resource...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Filter to only display budget data for the selected resource(s)");

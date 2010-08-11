@@ -35,6 +35,7 @@ public class ActionCreateNamedTaggedObjectSet extends ObjectsAction
 		return EAM.text("Action|Create New Tag...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a new tag");

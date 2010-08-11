@@ -35,6 +35,7 @@ public class ActionExportWcsProjectZip extends MainWindowAction
 		return EAM.text("Action|WCS Miradi Project ZIP (BETA)");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Export entire project as a WCS Miradi Project ZIP file");

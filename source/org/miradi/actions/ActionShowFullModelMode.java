@@ -39,6 +39,7 @@ public class ActionShowFullModelMode extends ViewAction
 		return EAM.text("Action|Show Full Diagram");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Show the full conceptual model page");

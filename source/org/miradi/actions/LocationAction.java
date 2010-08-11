@@ -49,6 +49,7 @@ public abstract class LocationAction extends MainWindowAction
 		createAt = location;
 	}
 
+	@Override
 	public void doAction(EventObject event) throws Exception
 	{
 		LocationHolder invoker = (LocationHolder)event.getSource();
@@ -65,6 +66,7 @@ public abstract class LocationAction extends MainWindowAction
 		return doer.isAvailable();
 	}
 
+	@Override
 	public Doer getDoer()
 	{
 		Doer doer = super.getDoer();

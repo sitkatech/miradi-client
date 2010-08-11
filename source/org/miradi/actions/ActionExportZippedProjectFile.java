@@ -34,6 +34,7 @@ public class ActionExportZippedProjectFile extends MainWindowAction
 		return EAM.text("Action|Miradi Project Zip (MPZ) File");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Export project as a Miradi Project Zip (MPZ) file");

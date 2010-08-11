@@ -34,6 +34,7 @@ public class ActionPrint extends MainWindowAction
 		return EAM.text("Action|Print");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Print the current view to a printer");

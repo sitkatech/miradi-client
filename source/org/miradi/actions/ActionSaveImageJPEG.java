@@ -34,6 +34,7 @@ public class ActionSaveImageJPEG extends MainWindowAction
 		return EAM.text("Action|JPEG Image");
 	}
 	
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Save the diagram or upper table area as a JPEG Image");

@@ -34,6 +34,7 @@ public class ActionPlanningCreationMenu extends ObjectsAction
 		return EAM.text("Action|Table|Create...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a new object");

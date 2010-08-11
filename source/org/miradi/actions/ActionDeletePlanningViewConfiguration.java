@@ -35,6 +35,7 @@ public class ActionDeletePlanningViewConfiguration extends ObjectsAction
 		return EAM.text("Action|Delete Custom");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete the selected Custom Planning View");

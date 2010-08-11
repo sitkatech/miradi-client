@@ -35,6 +35,7 @@ public class ActionCreateProgressPercent extends ObjectsAction
 		return EAM.text("Action|Manage|Create Progress Percent");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a new Progress Percent");

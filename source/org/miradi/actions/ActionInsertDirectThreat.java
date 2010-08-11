@@ -37,11 +37,13 @@ public class ActionInsertDirectThreat extends LocationAction
 		return EAM.text("Action|Insert|Insert Direct Threat");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Insert a Direct Threat");
 	}
 
+	@Override
 	public Icon getDisabledIcon()
 	{
 		return DirectThreatIcon.createDisabledIcon();

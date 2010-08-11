@@ -35,6 +35,7 @@ public class ActionDeleteReportTemplate extends ObjectsAction
 		return EAM.text("Action|Delete");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete a Report Template");

@@ -34,6 +34,7 @@ public class ActionCopy extends ViewAction
 		return EAM.text("Action|Copy");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Copy the selection to the clipboard");

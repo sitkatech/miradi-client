@@ -35,6 +35,7 @@ public class ActionDeleteObjective extends ObjectsAction
 		return EAM.text("Action|Manage|Delete Objective");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete the selected Objective");

@@ -34,6 +34,7 @@ public class ActionConfigureLayers extends MainWindowAction
 		return EAM.text("Action|View|Layer...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Hide or show portions of the diagram");

@@ -34,6 +34,7 @@ public class ActionCreatePlanningViewPrefilledConfiguration extends ObjectsActio
 		return EAM.text("Action|Start with current view");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a new prefilled Custom Planning View");

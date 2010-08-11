@@ -35,6 +35,7 @@ public class ActionDeleteKeyEcologicalAttributeMeasurement extends ObjectsAction
 		return EAM.text("Action|Manage|Delete Measurement");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete a Measurement");

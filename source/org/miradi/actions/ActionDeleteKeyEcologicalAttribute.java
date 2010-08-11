@@ -35,6 +35,7 @@ public class ActionDeleteKeyEcologicalAttribute extends ObjectsAction
 		return EAM.text("Action|Manage|Delete KEA");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete the selected Key Ecological Attribute");

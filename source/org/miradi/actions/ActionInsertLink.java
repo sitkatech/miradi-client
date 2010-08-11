@@ -35,6 +35,7 @@ public class ActionInsertLink extends ViewAction
 		return EAM.text("Action|Insert|Insert Link...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Add a link between two factors");

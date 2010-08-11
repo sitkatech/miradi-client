@@ -37,11 +37,13 @@ public class ActionInsertTarget extends LocationAction
 		return EAM.text("Action|Insert|Insert Target");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Insert a Target");
 	}
 
+	@Override
 	public Icon getDisabledIcon()
 	{
 		return TargetIcon.createDisabledIcon();

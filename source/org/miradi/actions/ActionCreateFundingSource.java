@@ -35,6 +35,7 @@ public class ActionCreateFundingSource extends ObjectsAction
 		return EAM.text("Action|Manage|Create Funding Source");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a Funding Source");

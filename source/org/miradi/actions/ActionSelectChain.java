@@ -34,6 +34,7 @@ public class ActionSelectChain extends ViewAction
 		return EAM.text("Action|Select Factor Chain");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Select the entire chain related to this Direct Threat");

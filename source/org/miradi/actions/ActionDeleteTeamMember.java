@@ -35,6 +35,7 @@ public class ActionDeleteTeamMember extends ObjectsAction
 		return EAM.text("Action|Manage|Delete Member");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Remove a member from the team");

@@ -34,6 +34,7 @@ public class ActionSaveProjectAs extends MainWindowAction
 		return EAM.text("Action|Save As...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Save a copy of this project under a different name and open it");

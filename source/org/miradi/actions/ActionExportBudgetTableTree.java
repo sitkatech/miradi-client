@@ -34,6 +34,7 @@ public class ActionExportBudgetTableTree extends MainWindowAction
 		return EAM.text("Action|Export finance tree");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Export finance tree");

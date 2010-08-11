@@ -35,6 +35,7 @@ public class ActionCreatePlanningViewEmptyConfiguration extends ObjectsAction
 		return EAM.text("Action|Start with blank view");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a new blank Custom Planning View");
