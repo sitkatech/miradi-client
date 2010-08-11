@@ -502,7 +502,7 @@
     	<zipfileset dir="${dist.temp.jars}/martus-utils/bin/" prefix='${JarFolder}' includes="martus-utils.jar" />
     	<zipfileset dir="${dist.temp.jars}/martus-utils/" prefix='${JarFolder}' includes="martus-utils-license.txt" />
        	<zipfileset dir="${dist.temp.jars}/martus-swing/bin/" prefix='${JarFolder}' includes="martus-swing.jar" />
-    	<zipfileset dir="${dist.temp.jars}/martus-swing/" prefix='${JarFolder}' includes="martus-swing-licese.txt" />
+    	<zipfileset dir="${dist.temp.jars}/martus-swing/" prefix='${JarFolder}' includes="martus-swing-license.txt" />
         <zipfileset dir="${dist.temp.jars}/jing/bin/" prefix='${JarFolder}' includes="jing.jar" />
     	<zipfileset dir="${dist.temp.jars}/jing/" prefix='${JarFolder}' includes="jing-license.txt" />
     	<zipfileset dir="${dist.temp.jars}/jing/" prefix='${JarFolder}' includes="xerces-license.txt" />
