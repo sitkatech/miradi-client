@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 12:46-0500\n"
+"POT-Creation-Date: 2010-08-11 12:59-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7712,7 +7712,7 @@ msgstr ""
 msgid "[Error]"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:84
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:86
 msgid "[Main Diagram]"
 msgstr "[主要图表] \t\t"
 
@@ -7728,7 +7728,7 @@ msgstr "[新结果链] \t\t"
 msgid "[No Project]"
 msgstr "[无项目] \t\t"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:85
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:87
 msgid "[Not Named]"
 msgstr "[未命名] \t\t"
 
