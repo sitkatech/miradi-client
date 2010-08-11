@@ -273,7 +273,7 @@ public class CommandSetObjectData extends Command
 	}
 
 	@Override
-	public HashMap getLogData()
+	public HashMap<String, Comparable> getLogData()
 	{
 		HashMap<String, Comparable> dataPairs = new HashMap<String, Comparable>();
 		dataPairs.put("OBJECT_TYPE", new Integer(type));
