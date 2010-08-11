@@ -66,10 +66,9 @@ public class CommandBeginTransaction extends Command
 
 
 	@Override
-	public HashMap getLogData()
+	public HashMap<String, Comparable> getLogData()
 	{
-		HashMap dataPairs = new HashMap();
-		return dataPairs;
+		return new HashMap<String, Comparable>();
 	}
 
 }

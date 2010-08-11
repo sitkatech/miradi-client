@@ -104,9 +104,9 @@ public class CommandSetThreatRating extends Command
 		return previousValueId;
 	}
 
-	public HashMap<String, BaseId> getLogData()
+	public HashMap<String, Comparable> getLogData()
 	{
-		HashMap<String, BaseId> dataPairs = new HashMap<String, BaseId>();
+		HashMap<String, Comparable> dataPairs = new HashMap<String, Comparable>();
 		dataPairs.put("THREAT_ID", threatId);
 		dataPairs.put("TARGET_ID", targetId);
 		dataPairs.put("CRITERION_ID", criterionId);

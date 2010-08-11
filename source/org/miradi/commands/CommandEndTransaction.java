@@ -63,10 +63,9 @@ public class CommandEndTransaction extends Command
 	}
 
 	@Override
-	public HashMap getLogData()
+	public HashMap<String, Comparable> getLogData()
 	{
-		HashMap dataPairs = new HashMap();
-		return dataPairs;
+		return new HashMap<String, Comparable>();
 	}
 	
 	public static final String COMMAND_NAME = "EndTransaction";
