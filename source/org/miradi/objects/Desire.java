@@ -20,9 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import java.util.Arrays;
-import java.util.Vector;
 
-import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
@@ -366,9 +364,9 @@ abstract public class Desire extends BaseObject
 		return new ORefList(relevantRefList);
 	}
 	
-	public static Vector<Command> buildRemoveObjectFromRelevancyListCommands(Project project, int typeWithRelevacnyOverrideSetList, String relevancyTag, ORef relevantObjectRefToRemove) throws Exception
+	public static CommandVector buildRemoveObjectFromRelevancyListCommands(Project project, int typeWithRelevacnyOverrideSetList, String relevancyTag, ORef relevantObjectRefToRemove) throws Exception
 	{
-		Vector<Command> removeFromRelevancyListCommands = new Vector<Command>();
+		CommandVector removeFromRelevancyListCommands = new CommandVector();
 		ORefList objectRefsWithRelevancyOverrides = project.getPool(typeWithRelevacnyOverrideSetList).getORefList();
 		for (int index = 0; index < objectRefsWithRelevancyOverrides.size(); ++index)
 		{

@@ -21,14 +21,7 @@ package org.miradi.commands;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.util.Vector;
 
-import org.miradi.commands.CommandBeginTransaction;
-import org.miradi.commands.CommandCreateObject;
-import org.miradi.commands.CommandDeleteObject;
-import org.miradi.commands.CommandEndTransaction;
-import org.miradi.commands.CommandSetObjectData;
-import org.miradi.commands.CommandSetThreatRating;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
@@ -57,6 +50,7 @@ import org.miradi.objects.RatingCriterion;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TestCommands extends EAMTestCase
@@ -397,7 +391,7 @@ public class TestCommands extends EAMTestCase
 	{
 		public UndoListener()
 		{
-			undoneCommands = new Vector<Command>();
+			undoneCommands = new CommandVector();
 		}
 		
 		public void commandExecuted(CommandExecutedEvent event)
@@ -406,7 +400,7 @@ public class TestCommands extends EAMTestCase
 			
 		}
 
-		Vector<Command> undoneCommands;
+		CommandVector undoneCommands;
 	}
 	
 	public void testUndoFiresCommandUndone() throws Exception

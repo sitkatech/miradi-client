@@ -21,7 +21,6 @@ package org.miradi.views.targetviability.doers;
 
 import java.util.Vector;
 
-import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
@@ -31,6 +30,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
+import org.miradi.utils.CommandVector;
 
 public class DeleteKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcologicalAttributeDoer
 {
@@ -74,7 +74,7 @@ public class DeleteKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcol
 			if (referrerRefs.size() > 0)
 				return;
 			
-			Vector<Command> commandsToDeleteChildrenAndMeasurement = measurement.createCommandsToDeleteChildrenAndObject();
+			CommandVector commandsToDeleteChildrenAndMeasurement = measurement.createCommandsToDeleteChildrenAndObject();
 			getProject().executeCommandsWithoutTransaction(commandsToDeleteChildrenAndMeasurement);
 		}
 		catch(Exception e)

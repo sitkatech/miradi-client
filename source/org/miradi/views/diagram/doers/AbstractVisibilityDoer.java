@@ -21,9 +21,7 @@ package org.miradi.views.diagram.doers;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.util.Vector;
 
-import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.diagram.DiagramModel;
@@ -38,6 +36,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.FactorDeleteHelper;
+import org.miradi.utils.CommandVector;
 import org.miradi.views.ObjectsDoer;
 
 abstract public class AbstractVisibilityDoer extends ObjectsDoer
@@ -83,10 +82,10 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		return selectedHierarchy.getRefForType(selectedType);
 	}
 	
-	private Vector<Command> hideDiagramFactors(ORefList diagramFactorRefs) throws Exception
+	private CommandVector hideDiagramFactors(ORefList diagramFactorRefs) throws Exception
 	{
 		DiagramObject diagramObject = getDiagramObject();
-		Vector<Command> commandsToHide = new Vector<Command>();
+		CommandVector commandsToHide = new CommandVector();
 		for (int refIndex = 0; refIndex < diagramFactorRefs.size(); ++refIndex)
 		{
 			ORef diagramFactorRef = diagramFactorRefs.get(refIndex);
@@ -101,9 +100,9 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 	}
 
 
-	public static Vector<Command> createCommandsToHideDiagramFactorForNonSelectedFactors(DiagramObject diagramObject, DiagramFactor diagramFactorToDelete) throws Exception
+	public static CommandVector createCommandsToHideDiagramFactorForNonSelectedFactors(DiagramObject diagramObject, DiagramFactor diagramFactorToDelete) throws Exception
 	{
-		Vector<Command> commandsToHide = new Vector<Command>();
+		CommandVector commandsToHide = new CommandVector();
 		FactorDeleteHelper helper = FactorDeleteHelper.createFactorDeleteHelperForNonSelectedFactors(diagramObject);
 		commandsToHide.add(helper.buildCommandToRemoveNodeFromDiagram(diagramObject, diagramFactorToDelete.getDiagramFactorId()));
 		commandsToHide.addAll(helper.buildCommandsToDeleteDiagramFactor(diagramFactorToDelete));
@@ -170,7 +169,7 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		ORefList diagramFactorRefsFromCurrentDiagram = getDiagramObject().getAllDiagramFactorRefs();		
 		ORefList diagramFactorRefsToBeRemoved = diagramFactorReferrerRefs.getOverlappingRefs(diagramFactorRefsFromCurrentDiagram);
 		
-		Vector<Command> commandsToHideBubble = hideDiagramFactors(diagramFactorRefsToBeRemoved);
+		CommandVector commandsToHideBubble = hideDiagramFactors(diagramFactorRefsToBeRemoved);
 		getProject().executeCommandsWithoutTransaction(commandsToHideBubble);
 	}
 	

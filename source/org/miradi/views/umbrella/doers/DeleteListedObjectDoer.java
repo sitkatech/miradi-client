@@ -19,14 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.miradi.views.umbrella.doers;
 
-import java.util.Vector;
-
-import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.utils.CommandVector;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 
@@ -69,7 +67,7 @@ public abstract class DeleteListedObjectDoer extends ObjectsDoer
 
 	private void removeBaseObject(Project project, BaseObject baseObjectToRemove) throws Exception
 	{
-		Vector<Command> commands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(project, baseObjectToRemove, getListTag());
+		CommandVector commands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(project, baseObjectToRemove, getListTag());
 		project.executeCommandsWithoutTransaction(commands);
 	}
 

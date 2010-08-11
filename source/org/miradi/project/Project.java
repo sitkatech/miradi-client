@@ -125,6 +125,7 @@ import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Translation;
 import org.miradi.views.diagram.DiagramClipboard;
@@ -1079,7 +1080,7 @@ public class Project
 		getCommandExecutor().executeCommandsWithoutTransaction(commands);
 	}
 
-	public void executeCommandsWithoutTransaction(Vector<Command> commands) throws CommandFailedException
+	public void executeCommandsWithoutTransaction(CommandVector commands) throws CommandFailedException
 	{
 		getCommandExecutor().executeCommandsWithoutTransaction(commands);
 	}
@@ -1089,7 +1090,7 @@ public class Project
 		getCommandExecutor().executeCommandAsTransaction(command);
 	}
 	
-	public void executeCommandsAsTransaction(Vector<Command> commands) throws CommandFailedException
+	public void executeCommandsAsTransaction(CommandVector commands) throws CommandFailedException
 	{
 		getCommandExecutor().executeCommandsAsTransaction(commands);
 	}
@@ -1114,7 +1115,7 @@ public class Project
 		getCommandExecutor().executeWithoutRecording(command);
 	}
 	
-	public void executeAsSideEffect(Vector<Command> commands) throws CommandFailedException
+	public void executeAsSideEffect(CommandVector commands) throws CommandFailedException
 	{
 		getCommandExecutor().executeAsSideEffect(commands);
 	}

@@ -24,7 +24,6 @@ import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Vector;
 
-import org.miradi.commands.Command;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.ids.BaseId;
@@ -41,6 +40,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.ViewData;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class DiagramAliasPaster extends DiagramPaster
@@ -79,7 +79,7 @@ public class DiagramAliasPaster extends DiagramPaster
 			ORefList allReferrers = baseObject.findObjectsThatReferToUs();
 			if (allReferrers.isEmpty())
 			{
-				Vector<Command> commandsToDeleteOrphan = baseObject.createCommandsToDeleteChildrenAndObject();
+				CommandVector commandsToDeleteOrphan = baseObject.createCommandsToDeleteChildrenAndObject();
 				getProject().executeCommandsWithoutTransaction(commandsToDeleteOrphan);
 			} 
 		}
@@ -106,7 +106,7 @@ public class DiagramAliasPaster extends DiagramPaster
 	
 	private void ensureVisible(ORefList refs) throws Exception
 	{
-		Vector<Command> commands = new Vector<Command>();
+		CommandVector commands = new CommandVector();
 		ViewData viewData = getProject().getDiagramViewData();
 		for(int i = 0; i < refs.size(); ++i)
 		{

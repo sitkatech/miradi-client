@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import java.text.ParseException;
-import java.util.Vector;
 
 import org.jgraph.graph.GraphSelectionModel;
 import org.miradi.commands.Command;
@@ -45,6 +44,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.utils.CommandVector;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 import org.miradi.views.umbrella.DeleteActivityDoer;
 
@@ -95,7 +95,7 @@ public class FactorDeleteHelper
 		deleteRelatedFactorDiagramFactors(target.getStressRefs());
 	}
 
-	public Vector<Command> buildCommandsToDeleteDiagramFactor(DiagramFactor diagramFactor) throws Exception
+	public CommandVector buildCommandsToDeleteDiagramFactor(DiagramFactor diagramFactor) throws Exception
 	{
 		//TODO This looks very odd here. either rename method or do something with this. Also check other callers
 		//to clearSelection.

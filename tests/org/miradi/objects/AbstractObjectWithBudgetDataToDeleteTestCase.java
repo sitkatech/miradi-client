@@ -20,11 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
-import java.util.Vector;
-
-import org.miradi.commands.Command;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.utils.CommandVector;
 
 abstract public class AbstractObjectWithBudgetDataToDeleteTestCase extends ObjectTestCase
 {
@@ -45,7 +43,7 @@ abstract public class AbstractObjectWithBudgetDataToDeleteTestCase extends Objec
 		ORefList assignmentRefs = baseObject.getRefList(tag);
 		assertTrue("should have atleast one assignment?", assignmentRefs.size() > 0);
 
-		Vector<Command> commandToDeleteChildren = baseObject.createCommandsToDeleteChildren();
+		CommandVector commandToDeleteChildren = baseObject.createCommandsToDeleteChildren();
 		getProject().executeCommandsAsTransaction(commandToDeleteChildren);
 		assertEquals("should not have any children?", 0, baseObject.getRefList(tag).size());
 

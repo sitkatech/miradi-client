@@ -19,10 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.objects;
 
-import java.util.Vector;
-
 import org.martus.util.MultiCalendar;
-import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.DateUnit;
@@ -31,6 +28,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.utils.CommandVector;
 
 
 public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
@@ -154,7 +152,7 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 		getProject().fillObjectUsingCommand(objective, Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicators.toString());
 		assertEquals("Object's indicator relevancy list was not updated?", 1, objective.getAllIndicatorRefsFromRelevancyOverrides().size());
 		
-		Vector<Command> commandsToDeleteIndicator = indicator.createCommandsToDeleteChildrenAndObject();
+		CommandVector commandsToDeleteIndicator = indicator.createCommandsToDeleteChildrenAndObject();
 		getProject().executeCommandsAsTransaction(commandsToDeleteIndicator);
 		
 		assertEquals("Indicator was not removed from objective relevancy list?", 0, objective.getAllIndicatorRefsFromRelevancyOverrides().size());
