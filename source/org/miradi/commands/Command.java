@@ -65,7 +65,7 @@ public abstract class Command
 		throw new CommandFailedException("Unimplemented getReverseCommand: " + getClass());
 	}
 	
-	private void logData(Project project, HashMap dataPairs) throws CommandFailedException
+	private void logData(Project project, HashMap<String, Comparable> dataPairs) throws CommandFailedException
 	{
 		try
 		{
@@ -82,7 +82,7 @@ public abstract class Command
 		return getCommandName() + ": " + formatLogData(getLogData());
 	}
 	
-	public static String formatLogData(HashMap logData)
+	public static String formatLogData(HashMap<String, Comparable> logData)
 	{
 		String logLine = "";
 		String[] keys = getSortedKeys(logData);
@@ -101,10 +101,10 @@ public abstract class Command
 		return name + "=" + value;
 	}
 	
-	public static String[] getSortedKeys(HashMap logData)
+	public static String[] getSortedKeys(HashMap<String, Comparable> logData)
 	{
-		Set keySet = logData.keySet();
-		String[] keys = (String[])keySet.toArray(new String[0]);
+		Set<String> keySet = logData.keySet();
+		String[] keys = keySet.toArray(new String[0]);
 		Arrays.sort(keys);
 		return keys;
 	}
