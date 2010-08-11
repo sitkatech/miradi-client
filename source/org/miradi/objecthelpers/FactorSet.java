@@ -138,7 +138,7 @@ public class FactorSet implements Collection<Factor>
 		return nodes.retainAll(c);
 	}
 
-	public Iterator iterator()
+	public Iterator<Factor> iterator()
 	{
 		return nodes.iterator();
 	}
@@ -147,7 +147,7 @@ public class FactorSet implements Collection<Factor>
 	{
 		return nodes.toArray(a);
 	}
-	
+		
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof FactorSet))
@@ -178,5 +178,4 @@ public class FactorSet implements Collection<Factor>
 	}
 
 	HashSet<Factor> nodes;
-
 }
