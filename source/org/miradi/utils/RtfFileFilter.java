@@ -27,6 +27,7 @@ import org.miradi.main.EAM;
 
 public class RtfFileFilter extends FileFilter implements MiradiFileFilter
 {
+	@Override
 	public boolean accept(File pathname)
 	{
 		if (pathname.isDirectory())
@@ -35,6 +36,7 @@ public class RtfFileFilter extends FileFilter implements MiradiFileFilter
 		return (pathname.getName().toLowerCase().endsWith(EXTENSION));
 	}
 
+	@Override
 	public String getDescription()
 	{
 		return EAM.text("FileFilter|Rich Text Format (*.rtf)");

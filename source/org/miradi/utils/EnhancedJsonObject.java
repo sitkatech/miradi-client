@@ -61,12 +61,14 @@ public class EnhancedJsonObject extends JSONObject
 	}
 
 	// Don't use this!
+	@Override
 	public JSONObject getJSONObject(String key)
 	{
 		throw new RuntimeException("Use getJson instead!");
 	}
 	
 	// Don't use this!
+	@Override
 	public JSONObject optJSONObject(String key)
 	{
 		throw new RuntimeException("Use optJson instead!");
@@ -87,6 +89,7 @@ public class EnhancedJsonObject extends JSONObject
 	}
 
 	// Override to return empty array instead of null if missing
+	@Override
 	public JSONArray optJSONArray(String key)
 	{
 		throw new RuntimeException("Use optJsonArray instead!");
@@ -100,6 +103,7 @@ public class EnhancedJsonObject extends JSONObject
 		return new EnhancedJsonArray();
 	}
 	
+	@Override
 	public JSONArray getJSONArray(String key)
 	{
 		throw new RuntimeException("Use getJsonArray instead!");
@@ -110,6 +114,7 @@ public class EnhancedJsonObject extends JSONObject
 		return new EnhancedJsonArray(super.getJSONArray(key));
 	}
 	
+	@Override
 	public JSONObject put(String tag, Object value)
 	{
 		if(value instanceof String || 
@@ -289,6 +294,7 @@ public class EnhancedJsonObject extends JSONObject
 		return new CodeList(); 
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(! (rawOther instanceof EnhancedJsonObject))
@@ -333,6 +339,7 @@ public class EnhancedJsonObject extends JSONObject
 	}
 
 	//NOTE: could be improved at some point, but this works
+	@Override
 	public int hashCode()
 	{
 		return length();

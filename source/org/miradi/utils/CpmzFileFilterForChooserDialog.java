@@ -23,6 +23,7 @@ import org.miradi.main.EAM;
 
 public class CpmzFileFilterForChooserDialog extends GenericMiradiFileFilter
 {
+	@Override
 	public String getDescription()
 	{
 		return EAM.substitute(EAM.text("FileFilter|ConPro Miradi Zip (*%s)"), getFileExtension());

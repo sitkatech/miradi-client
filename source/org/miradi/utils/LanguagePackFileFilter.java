@@ -33,6 +33,7 @@ public class LanguagePackFileFilter extends FileFilter implements MiradiFileFilt
 		super();
 	}
 
+	@Override
 	public boolean accept(File pathname)
 	{
 		if(pathname.isDirectory())
@@ -48,6 +49,7 @@ public class LanguagePackFileFilter extends FileFilter implements MiradiFileFilt
 		
 	}
 
+	@Override
 	public String getDescription()
 	{
 		String wildcardSpec = Miradi.LANGUAGE_PACK_PREFIX + "*.jar";

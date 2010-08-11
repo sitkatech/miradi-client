@@ -28,6 +28,7 @@ public class HideableScrollBar extends FastScrollBar
 		visible = true;
 	}
 	
+	@Override
 	public Dimension getPreferredSize()
 	{
 		Dimension dimension = super.getPreferredSize();

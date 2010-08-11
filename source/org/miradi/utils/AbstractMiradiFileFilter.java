@@ -25,6 +25,7 @@ import javax.swing.filechooser.FileFilter;
 
 abstract public class AbstractMiradiFileFilter extends FileFilter implements MiradiFileFilter
 {
+	@Override
 	public boolean accept(File pathname)
 	{
 		if(pathname.isDirectory())

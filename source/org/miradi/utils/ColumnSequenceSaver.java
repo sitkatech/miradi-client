@@ -144,6 +144,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return table.getColumnGroupCode(tableColumn);
 	}
 	
+	@Override
 	public void mouseReleased(MouseEvent event)
 	{
 		try

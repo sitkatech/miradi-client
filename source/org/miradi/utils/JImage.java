@@ -30,6 +30,7 @@ public class JImage extends JComponent
 	{
 		image = imageToUse;
 	}
+	@Override
 	public void paint(Graphics g) 
 	{
 		g.drawImage(image, 0, 0, null);

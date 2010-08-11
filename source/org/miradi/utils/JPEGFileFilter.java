@@ -32,6 +32,7 @@ public class JPEGFileFilter extends FileFilter implements MiradiFileFilter
 		super();
 	}
 
+	@Override
 	public boolean accept(File pathname)
 	{
 		if(pathname.isDirectory())
@@ -39,6 +40,7 @@ public class JPEGFileFilter extends FileFilter implements MiradiFileFilter
 		return(pathname.getName().toLowerCase().endsWith(EXTENSION));
 	}
 
+	@Override
 	public String getDescription()
 	{
 		return EAM.text("FileFilter|JPEG (*.jpg)");

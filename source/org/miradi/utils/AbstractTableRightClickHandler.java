@@ -39,12 +39,14 @@ public abstract class AbstractTableRightClickHandler extends MouseAdapter
 		table = tableToAutoSelectIn;
 	}
 	
+	@Override
 	public void mousePressed(MouseEvent event)
 	{
 		if(event.isPopupTrigger())
 			doRightClickMenu(event);
 	}
 
+	@Override
 	public void mouseReleased(MouseEvent event)
 	{
 		if(event.isPopupTrigger())

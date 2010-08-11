@@ -160,6 +160,7 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 	
 	class CustomMouseListener extends MouseAdapter
 	{
+		@Override
 		public void mouseReleased(MouseEvent e)
 		{
 			super.mouseReleased(e);
@@ -172,6 +173,7 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 			}
 		}
 		
+		@Override
 		public void mousePressed(MouseEvent e)
 		{
 			super.mousePressed(e);
@@ -192,12 +194,14 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 			super();
 		}
 		
+		@Override
 		public void setDate(Date newDate, boolean firePropertyChange)
 		{
 			super.setDate(newDate, firePropertyChange);
 			setForeground(Color.blue);
 		}
 
+		@Override
 		public void focusLost(FocusEvent focusEvent)
 		{
 			checkText();
@@ -228,12 +232,14 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 			}
 		}
 
+		@Override
 		public void caretUpdate(CaretEvent event)
 		{
 			super.caretUpdate(event);
 			setForeground(Color.BLUE);
 		}
 		
+		@Override
 		public void setEnabled(boolean b)
 		{
 			super.setEnabled(b);

@@ -38,6 +38,7 @@ public class TableWithSunBugWorkarounds extends JTable
 	// this is overridden to work around JTable bug#4330950
 	// where if you click on a heading during a cell edit, the 
 	// edits are silently discarded
+	@Override
 	public void columnMoved(TableColumnModelEvent e) 
 	{
 		if (isEditing()) {
@@ -49,6 +50,7 @@ public class TableWithSunBugWorkarounds extends JTable
 	// this is overridden to work around JTable bug#4330950
 	// where if you click on a heading during a cell edit, the 
 	// edits are silently discarded
+	@Override
 	public void columnMarginChanged(ChangeEvent e) 
 	{
 		if (isEditing()) {
@@ -57,6 +59,7 @@ public class TableWithSunBugWorkarounds extends JTable
 		super.columnMarginChanged(e);
 	}
 	
+	@Override
 	public int getSelectedRow()
 	{
 		// NOTE: Java sometimes returns non-empty selected 
@@ -68,6 +71,7 @@ public class TableWithSunBugWorkarounds extends JTable
 		return super.getSelectedRow();
 	}
 	
+	@Override
 	public int[] getSelectedRows()
 	{
 		// NOTE: Java sometimes returns non-empty selected 
@@ -79,6 +83,7 @@ public class TableWithSunBugWorkarounds extends JTable
 		return super.getSelectedRows();
 	}
 
+	@Override
 	public int getSelectedRowCount()
 	{
 		// NOTE: Java sometimes returns non-empty selected 

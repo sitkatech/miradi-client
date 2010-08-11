@@ -28,6 +28,7 @@ public class PNGFileFilter extends AbstractMiradiFileFilter
 		super();
 	}
 
+	@Override
 	public String getDescription()
 	{
 		return EAM.text("FileFilter|PNG (*.png)");

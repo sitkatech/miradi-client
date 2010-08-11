@@ -37,6 +37,7 @@ public class EnhancedJsonArray extends JSONArray
 			put(i, copyFrom.get(i));
 	}
 
+	@Override
 	public JSONObject getJSONObject(int index) throws NoSuchElementException
 	{
 		throw new RuntimeException("Use getJson instead!");

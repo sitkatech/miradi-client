@@ -76,14 +76,17 @@ public class MiradiLogger
 			buffer = new StringBuffer();
 		}
 		
+		@Override
 		public void close() throws SecurityException
 		{
 		}
 
+		@Override
 		public void flush()
 		{
 		}
 
+		@Override
 		public void publish(LogRecord record)
 		{
 			buffer.append(record.getLevel().getName());
