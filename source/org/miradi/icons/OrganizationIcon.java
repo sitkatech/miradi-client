@@ -26,16 +26,19 @@ import org.miradi.diagram.renderers.RectangleRenderer;
 
 public class OrganizationIcon extends AbstractShapeIcon
 {
+	@Override
 	Color getIconColor()
 	{
 		return Color.gray.brighter();
 	}
 
+	@Override
 	FactorRenderer getRenderer()
 	{
 		return new RectangleRenderer();
 	}
 	
+	@Override
 	public int getIconWidth()
 	{
 		return 6;

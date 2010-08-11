@@ -32,11 +32,13 @@ public class ThreatPriorityIcon extends AbstractShapeIcon
 		color = option.getColor();
 	}
 	
+	@Override
 	FactorRenderer getRenderer() 
 	{
 		return new RectangleRenderer();
 	}
 
+	@Override
 	Color getIconColor() 
 	{
 		return color;

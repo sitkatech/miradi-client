@@ -30,11 +30,13 @@ import org.miradi.main.EAM;
 
 public class ThreatReductionResultIcon extends AbstractShapeIcon
 {
+	@Override
 	FactorRenderer getRenderer()
 	{
 		return new RectangleRenderer();
 	}
 	
+	@Override
 	Color getIconColor()
 	{
 		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT); 
@@ -47,6 +49,7 @@ public class ThreatReductionResultIcon extends AbstractShapeIcon
 	
 	private static final class ThreatReductionResultIconDisabledIcon extends TargetIcon
 	{
+		@Override
 		Color getIconColor()
 		{
 			return Color.LIGHT_GRAY;

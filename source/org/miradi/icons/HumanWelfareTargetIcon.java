@@ -31,11 +31,13 @@ import org.miradi.main.EAM;
 
 public class HumanWelfareTargetIcon extends AbstractShapeIcon
 {
+	@Override
 	FactorRenderer getRenderer()
 	{
 		return new EllipseRenderer();
 	}
 	
+	@Override
 	Color getIconColor()
 	{
 		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_HUMAN_WELFARE_TARGET);
@@ -48,6 +50,7 @@ public class HumanWelfareTargetIcon extends AbstractShapeIcon
 	
 	private static final class HumanWelfareTargetIconDisabledIcon extends TargetIcon
 	{
+		@Override
 		Color getIconColor()
 		{
 			return new Color(215, 170, 40).brighter().brighter();

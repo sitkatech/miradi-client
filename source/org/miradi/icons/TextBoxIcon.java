@@ -27,11 +27,13 @@ import org.miradi.diagram.renderers.RoundRectangleRenderer;
 
 public class TextBoxIcon extends AbstractShapeIcon
 {
+	@Override
 	FactorRenderer getRenderer()
 	{
 		return new RoundRectangleRenderer();
 	}
 	
+	@Override
 	Color getIconColor()
 	{ 
 		return DiagramConstants.TEXT_BOX_COLOR;

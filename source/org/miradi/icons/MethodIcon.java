@@ -25,6 +25,7 @@ import org.miradi.main.AppPreferences;
 
 public class MethodIcon extends TaskIcon
 {
+	@Override
 	protected Color getIconColor()
 	{
 		return AppPreferences.INDICATOR_COLOR;

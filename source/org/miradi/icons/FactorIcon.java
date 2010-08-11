@@ -45,11 +45,13 @@ public class FactorIcon extends AbstractShapeIcon
 		return null;
 	}
 
+	@Override
 	Color getIconColor()
 	{
 		return findCorrespondingIcon().getIconColor();
 	}
 
+	@Override
 	FactorRenderer getRenderer()
 	{
 		return findCorrespondingIcon().getRenderer();

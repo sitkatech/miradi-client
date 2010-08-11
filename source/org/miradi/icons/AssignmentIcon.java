@@ -26,16 +26,19 @@ import org.miradi.diagram.renderers.RectangleRenderer;
 
 public class AssignmentIcon extends AbstractShapeIcon
 {
+	@Override
 	Color getIconColor()
 	{
 		return LITE_BROWN;
 	}
 
+	@Override
 	FactorRenderer getRenderer()
 	{
 		return new RectangleRenderer();
 	}
 	
+	@Override
 	public int getIconWidth()
 	{
 		return 6;

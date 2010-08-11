@@ -27,11 +27,13 @@ import org.miradi.diagram.renderers.RectangleRenderer;
 
 public class StressIcon extends AbstractShapeIcon 
 {
+	@Override
 	FactorRenderer getRenderer() 
 	{
 		return new RectangleRenderer();
 	}
 
+	@Override
 	Color getIconColor() 
 	{
 		return DiagramConstants.COLOR_STRESS;

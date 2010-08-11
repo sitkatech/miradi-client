@@ -31,11 +31,13 @@ import org.miradi.main.EAM;
 public class DirectThreatIcon extends AbstractShapeIcon 
 {
 
+	@Override
 	FactorRenderer getRenderer() 
 	{
 		return new RectangleRenderer();
 	}
 
+	@Override
 	Color getIconColor() 
 	{
 		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT);
@@ -48,6 +50,7 @@ public class DirectThreatIcon extends AbstractShapeIcon
 	
 	private static final class DirectThreatIconDisabledIcon extends DirectThreatIcon
 	{
+		@Override
 		Color getIconColor()
 		{
 			return Color.LIGHT_GRAY;
