@@ -416,7 +416,7 @@
 			<param name='directory' value='PersianCalendar/license' />
 			<param name='filename' value='gpl.txt' />
 	</antcall>
-    <move file="${dist.temp.jars}/PersianCalendar/license/gpl.txt" tofile="${dist.temp.jars}/PersianCalendar/license/persianCalendar-license.txt"/>
+    <move file="${dist.temp.jars}/PersianCalendar/license/gpl.txt" tofile="${dist.temp.jars}/PersianCalendar/license/PersianCalendar-license.txt"/>
 	
 	<antcall target='download'>
 		<param name='directory' value='swingx/0.9.7' />
@@ -513,7 +513,7 @@
     	<zipfileset dir="${dist.temp.jars}/jortho/jortho/0.5/" prefix='${JarFolder}' includes="jortho-license.txt"/>
 
     	<zipfileset dir="${dist.temp.jars}/PersianCalendar/bin/" prefix='${JarFolder}' includes="*.jar" />
-    	<zipfileset dir="${dist.temp.jars}/PersianCalendar/license/" prefix='${JarFolder}' includes="persianCalendar-license.txt" />
+    	<zipfileset dir="${dist.temp.jars}/PersianCalendar/license/" prefix='${JarFolder}' includes="PersianCalendar-license.txt" />
     </zip>
 	
 	<!-- Third-party source code -->
