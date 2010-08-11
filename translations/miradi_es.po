@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-10 13:53-0500\n"
+"POT-Creation-Date: 2010-08-11 09:28-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -2828,8 +2828,8 @@ msgstr "Definir alcance del proyecto"
 
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:44
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:45
-#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:60
-#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:62
+#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
+#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
 #: Miradi/source/org/miradi/main/EAM.java:437
 #: Miradi/source/org/miradi/main/EAM.java:438
@@ -5504,7 +5504,7 @@ msgstr "Propiedades de la cadena de resultados"
 msgid "Results Chains"
 msgstr "Cadenas de resultados"
 
-#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:60
+#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/main/EAM.java:437
 msgid "Retain"
 msgstr "Retener"

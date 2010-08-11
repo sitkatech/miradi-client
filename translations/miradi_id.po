@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-10 13:53-0500\n"
+"POT-Creation-Date: 2010-08-11 09:28-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2816,8 +2816,8 @@ msgstr "Definisikan cakupan proyek "
 
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:44
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:45
-#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:60
-#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:62
+#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
+#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
 #: Miradi/source/org/miradi/main/EAM.java:437
 #: Miradi/source/org/miradi/main/EAM.java:438
@@ -5468,7 +5468,7 @@ msgstr "Sifat-sifat Rangkaian Hasil "
 msgid "Results Chains"
 msgstr "Rangkaian Hasil "
 
-#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:60
+#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/main/EAM.java:437
 msgid "Retain"
 msgstr "Pertahankan "
