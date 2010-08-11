@@ -40,6 +40,7 @@ import org.miradi.objecthelpers.RelevancyOverrideSetData;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class Desire extends BaseObject
@@ -56,9 +57,9 @@ abstract public class Desire extends BaseObject
 	}
 	
 	@Override
-	public Vector<Command> createCommandsToDeleteChildren() throws Exception
+	public CommandVector createCommandsToDeleteChildren() throws Exception
 	{
-		Vector<Command> commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
+		CommandVector commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
 		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_PROGRESS_PERCENT_REFS));
 		
 		return commandsToDeleteChildren;

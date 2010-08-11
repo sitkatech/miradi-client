@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import java.util.Vector;
 
-import org.miradi.commands.Command;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
@@ -39,6 +38,7 @@ import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
 
@@ -194,9 +194,9 @@ public class Strategy extends Factor
 	}
 	
 	@Override
-	protected Vector<Command> createCommandsToDereferenceObject() throws Exception
+	protected CommandVector createCommandsToDereferenceObject() throws Exception
 	{
-		Vector<Command> commandsToDereferences = super.createCommandsToDereferenceObject();
+		CommandVector commandsToDereferences = super.createCommandsToDereferenceObject();
 		commandsToDereferences.addAll(buildRemoveFromRelevancyListCommands(getRef()));
 		
 		return commandsToDereferences;

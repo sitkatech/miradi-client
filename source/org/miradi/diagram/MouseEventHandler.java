@@ -24,13 +24,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Vector;
 
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphLayoutCache;
-import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
@@ -43,6 +41,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramLink;
 import org.miradi.project.FactorMoveHandler;
 import org.miradi.project.Project;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.PointList;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.diagram.PropertiesDoer;
@@ -194,7 +193,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 
 	private void moveBendPoints() throws Exception
 	{
-		Vector<Command> bendPointsMoveCommands = new Vector<Command>();
+		CommandVector bendPointsMoveCommands = new CommandVector();
 		LinkCell[] linkCells = selectedAndGroupBoxCoveredLinkCells.toArray(new LinkCell[0]);
 		for (int i = 0; i < linkCells.length; ++i)
 		{

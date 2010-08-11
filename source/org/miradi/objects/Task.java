@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.util.Vector;
-
-import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.UnknownTaskParentTypeException;
 import org.miradi.ids.BaseId;
@@ -37,6 +34,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 
@@ -53,9 +51,9 @@ public class Task extends Factor
 		super(objectManager, idToUse, Factor.TYPE_ACTIVITY, json);
 	}
 		
-	public Vector<Command> getDeleteSelfAndSubtasksCommands(Project project) throws Exception
+	public CommandVector getDeleteSelfAndSubtasksCommands(Project project) throws Exception
 	{
-		Vector<Command> deleteIds = new Vector<Command>();
+		CommandVector deleteIds = new CommandVector();
 		deleteIds.add(new CommandSetObjectData(getType(), getId(), Task.TAG_SUBTASK_IDS, ""));
 		int subTaskCount = getSubtaskCount();
 		for (int index = 0; index < subTaskCount; index++)
@@ -69,18 +67,18 @@ public class Task extends Factor
 	}
 	
 	@Override
-	public Vector<Command> createCommandsToDeleteChildren() throws Exception
+	public CommandVector createCommandsToDeleteChildren() throws Exception
 	{
-		Vector<Command> commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
+		CommandVector commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
 		commandsToDeleteChildren.addAll(getDeleteSelfAndSubtasksCommands(getProject()));
 		
 		return commandsToDeleteChildren;
 	}
 	
 	@Override
-	protected Vector<Command> createCommandsToDereferenceObject() throws Exception
+	protected CommandVector createCommandsToDereferenceObject() throws Exception
 	{
-		Vector<Command> commandsToDereferences = super.createCommandsToDereferenceObject();
+		CommandVector commandsToDereferences = super.createCommandsToDereferenceObject();
 		commandsToDereferences.addAll(buildRemoveFromRelevancyListCommands(getRef()));
 		
 		return commandsToDereferences;

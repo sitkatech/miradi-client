@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import java.util.Vector;
 
-import org.miradi.commands.Command;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.IndicatorId;
@@ -41,6 +40,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.StringMapData;
 
@@ -74,17 +74,17 @@ public class Indicator extends BaseObject
 	}
 	
 	@Override
-	protected Vector<Command> createCommandsToDereferenceObject() throws Exception
+	protected CommandVector createCommandsToDereferenceObject() throws Exception
 	{
-		Vector<Command> commandsToDereferences = super.createCommandsToDereferenceObject();
+		CommandVector commandsToDereferences = super.createCommandsToDereferenceObject();
 		commandsToDereferences.addAll(buildRemoveIndicatorFromRelevancyListCommands(getRef()));
 		
 		return commandsToDereferences;
 	}
 	
-	private Vector<Command> buildRemoveIndicatorFromRelevancyListCommands(ORef relevantIndicatorRefToRemove) throws Exception
+	private CommandVector buildRemoveIndicatorFromRelevancyListCommands(ORef relevantIndicatorRefToRemove) throws Exception
 	{
-		Vector<Command> removeFromRelevancyListCommands = new Vector<Command>();
+		CommandVector removeFromRelevancyListCommands = new CommandVector();
 		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), Objective.getObjectType(), Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
 		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), Goal.getObjectType(), Goal.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
 		
@@ -92,28 +92,28 @@ public class Indicator extends BaseObject
 	}
 		
 	@Override
-	public Vector<Command> createCommandsToDeleteChildren() throws Exception
+	public CommandVector createCommandsToDeleteChildren() throws Exception
 	{
-		Vector<Command> commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
+		CommandVector commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
 		commandsToDeleteChildren.addAll(createCommandsToDeleteMethods());
 		commandsToDeleteChildren.addAll(createCommandsToDeleteMeasurements());
 		
 		return commandsToDeleteChildren;
 	}
 
-	private Vector<Command> createCommandsToDeleteMeasurements() throws Exception
+	private CommandVector createCommandsToDeleteMeasurements() throws Exception
 	{
 		return createCommandsToDeleteAnnotation(getMeasurementRefs());
 	}
 	
-	private Vector<Command> createCommandsToDeleteMethods() throws Exception
+	private CommandVector createCommandsToDeleteMethods() throws Exception
 	{		
 		return createCommandsToDeleteAnnotation(getMethodRefs());
 	}
 	
-	private Vector<Command> createCommandsToDeleteAnnotation(ORefList annotationRefs) throws Exception
+	private CommandVector createCommandsToDeleteAnnotation(ORefList annotationRefs) throws Exception
 	{
-		Vector<Command> commandsToDeleteAnnotation = new Vector<Command>();
+		CommandVector commandsToDeleteAnnotation = new CommandVector();
 		for (int index = 0; index < annotationRefs.size(); ++index)
 		{
 			BaseObject annotationToDelete = BaseObject.find(getProject(), annotationRefs.get(index));

@@ -61,6 +61,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.InvalidNumberException;
@@ -805,9 +806,9 @@ abstract public class BaseObject
 		return commands;
 	}
 	
-	public Vector<Command> createCommandsToDeleteChildrenAndObject() throws Exception
+	public CommandVector createCommandsToDeleteChildrenAndObject() throws Exception
 	{
-		Vector<Command> commandsToDeleteChildrenAndObject = new Vector<Command>();
+		CommandVector commandsToDeleteChildrenAndObject = new CommandVector();
 		commandsToDeleteChildrenAndObject.addAll(createCommandsToClear());
 		commandsToDeleteChildrenAndObject.addAll(createCommandsToDeleteChildren());
 		commandsToDeleteChildrenAndObject.addAll(createCommandsToDereferenceObject());
@@ -816,42 +817,42 @@ abstract public class BaseObject
 		return commandsToDeleteChildrenAndObject;
 	}
 	
-	protected Vector<Command> createCommandsToDereferenceObject() throws Exception
+	protected CommandVector createCommandsToDereferenceObject() throws Exception
 	{
-		return new Vector<Command>();
+		return new CommandVector();
 	}
 
-	public Vector<Command> createCommandsToDeleteChildren() throws Exception
+	public CommandVector createCommandsToDeleteChildren() throws Exception
 	{
-		Vector<Command> commandsToDeleteChildren  = new Vector<Command>();
+		CommandVector commandsToDeleteChildren  = new CommandVector();
 		commandsToDeleteChildren.addAll(createCommandsToDeleteBudgetChildren());
 		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_PROGRESS_REPORT_REFS));
 		
 		return commandsToDeleteChildren;
 	}
 	
-	protected Vector<Command> createCommandsToDeleteBudgetChildren() throws Exception
+	protected CommandVector createCommandsToDeleteBudgetChildren() throws Exception
 	{
-		Vector<Command> commandToDeleteChildren = new Vector<Command>();
+		CommandVector commandToDeleteChildren = new CommandVector();
 		commandToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_EXPENSE_ASSIGNMENT_REFS));
 		commandToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_RESOURCE_ASSIGNMENT_IDS));
 		
 		return commandToDeleteChildren;
 	}
 
-	protected Vector<Command> createCommandsToDeleteRefs(String tag) throws Exception
+	protected CommandVector createCommandsToDeleteRefs(String tag) throws Exception
 	{
 		ORefList refsToDelete = getRefList(tag);
-		Vector<Command> commandsToDeleteRefList = new Vector<Command>();
+		CommandVector commandsToDeleteRefList = new CommandVector();
 		commandsToDeleteRefList.add(new CommandSetObjectData(this, tag, ""));
 		commandsToDeleteRefList.addAll(createDeleteCommands(refsToDelete));
 		
 		return commandsToDeleteRefList;
 	}
 
-	private Vector<Command> createDeleteCommands(ORefList refs)
+	private CommandVector createDeleteCommands(ORefList refs)
 	{
-		Vector<Command> deleteCommands = new Vector<Command>();
+		CommandVector deleteCommands = new CommandVector();
 		for (int index = 0; index < refs.size(); ++index)
 		{
 			BaseObject objectToDelete = BaseObject.find(getProject(), refs.get(index));
@@ -861,9 +862,9 @@ abstract public class BaseObject
 		return deleteCommands;
 	}
 	
-	public Vector<Command> createCommandsToShallowDelete()
+	public CommandVector createCommandsToShallowDelete()
 	{
-		Vector<Command> commandsToShallowDelete = new Vector<Command>();
+		CommandVector commandsToShallowDelete = new CommandVector();
 		commandsToShallowDelete.addAll(createCommandsToClear());
 		commandsToShallowDelete.add(new CommandDeleteObject(this));
 		
