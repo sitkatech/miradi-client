@@ -72,6 +72,7 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
 
@@ -126,7 +127,7 @@ abstract public class DiagramPaster
 	
 	public Command[] createCommandToFixupRefLists(HashMap pastedObjectMap, BaseObject newObject) throws Exception
 	{
-		Vector<Command> commands = new Vector<Command>();
+		CommandVector commands = new CommandVector();
 		String[] fieldTags = newObject.getFieldTags();
 		for (int i = 0; i < fieldTags.length; ++i)
 		{

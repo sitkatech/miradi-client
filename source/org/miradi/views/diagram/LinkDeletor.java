@@ -21,7 +21,6 @@ package org.miradi.views.diagram;
 
 import java.util.Vector;
 
-import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.main.EAM;
@@ -35,6 +34,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.utils.CommandVector;
 
 public class LinkDeletor
 {
@@ -127,7 +127,7 @@ public class LinkDeletor
 		CommandSetObjectData removeDiagramFactorLink = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLink.getDiagramLinkId());
 		project.executeCommand(removeDiagramFactorLink);
 
-		Vector<Command> commandsToDeleteChildrenAndDiagramLink = diagramLink.createCommandsToDeleteChildrenAndObject();
+		CommandVector commandsToDeleteChildrenAndDiagramLink = diagramLink.createCommandsToDeleteChildrenAndObject();
 		getProject().executeCommandsWithoutTransaction(commandsToDeleteChildrenAndDiagramLink);
 	}
 
@@ -150,7 +150,7 @@ public class LinkDeletor
 		if (diagramLinkReferrers.size() != 0)
 			return;
 		
-		Vector<Command> commandsToDeleteChildrenAndFactorLink = factorLink.createCommandsToDeleteChildrenAndObject();
+		CommandVector commandsToDeleteChildrenAndFactorLink = factorLink.createCommandsToDeleteChildrenAndObject();
 		getProject().executeCommandsWithoutTransaction(commandsToDeleteChildrenAndFactorLink);		
 	}
 

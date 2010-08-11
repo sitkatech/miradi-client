@@ -20,18 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import java.io.IOException;
-import java.util.Vector;
 
 import org.miradi.commands.Command;
 import org.miradi.exceptions.NothingToRedoException;
 import org.miradi.exceptions.NothingToUndoException;
+import org.miradi.utils.CommandVector;
 
 public class UndoRedoState
 {
 	public UndoRedoState()
 	{
-		undoableCommands = new Vector<Command>();
-		redoableCommands = new Vector<Command>();
+		undoableCommands = new CommandVector();
+		redoableCommands = new CommandVector();
 	}
 	
 	public int size()
@@ -85,6 +85,6 @@ public class UndoRedoState
 		undoableCommands.remove(0);
 	}
 
-	Vector<Command> undoableCommands;
-	Vector<Command> redoableCommands;
+	CommandVector undoableCommands;
+	CommandVector redoableCommands;
 }

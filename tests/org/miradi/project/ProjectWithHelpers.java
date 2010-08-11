@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.project;
 
-import java.util.Vector;
-
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.database.ProjectServer;
@@ -36,6 +34,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.ConceptualModelDiagramPool;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
+import org.miradi.utils.CommandVector;
 import org.miradi.views.diagram.DiagramModelUpdater;
 
 public class ProjectWithHelpers extends Project implements CommandExecutedListener
@@ -46,7 +45,7 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 
 		addCommandExecutedListener(this);
 		diagramModel = new PersistentDiagramModel(this);
-		commandStack = new Vector<Command>();
+		commandStack = new CommandVector();
 	}
 	
 	public DiagramObject getTestingDiagramObject()
@@ -129,5 +128,5 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 	}
 	
 	private PersistentDiagramModel diagramModel;
-	private Vector<Command> commandStack;
+	private CommandVector commandStack;
 }

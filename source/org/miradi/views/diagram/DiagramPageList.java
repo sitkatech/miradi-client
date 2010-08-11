@@ -42,6 +42,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.utils.CommandVector;
 
 abstract public class DiagramPageList extends ObjectPoolTable
 {
@@ -163,7 +164,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 
 		private void setCurrentDiagram() throws Exception
 		{
-			Vector<Command> commandsToExecute = new Vector<Command>();
+			CommandVector commandsToExecute = new CommandVector();
 			commandsToExecute.addAll(buildCommandsToSetCurrentDiagramObjectRef(getSelectedRef()));
 			
 			if (commandsToExecute.size() == 0)
@@ -173,11 +174,11 @@ abstract public class DiagramPageList extends ObjectPoolTable
 			project.executeCommandsAsTransaction(commandsToExecute.toArray(new Command[0]));		
 		}
 
-		private Vector<Command> createSwitchToDefaultModeCommand() throws Exception
+		private CommandVector createSwitchToDefaultModeCommand() throws Exception
 		{
 			ViewData viewData = project.getCurrentViewData();
 			if (viewData.getData(ViewData.TAG_CURRENT_MODE).equals(ViewData.MODE_DEFAULT))
-				return new Vector<Command>();
+				return new CommandVector();
 			
 			return ShowFullModelModeDoer.createCommandsToSwithToDefaultMode(viewData.getRef());
 		}

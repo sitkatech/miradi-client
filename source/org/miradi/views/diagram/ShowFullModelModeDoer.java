@@ -20,10 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram;
 
 import java.text.ParseException;
-import java.util.Vector;
 
 import org.jgraph.graph.GraphLayoutCache;
-import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
@@ -36,6 +34,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.utils.CommandVector;
 import org.miradi.views.ViewDoer;
 
 public class ShowFullModelModeDoer extends ViewDoer
@@ -98,9 +97,9 @@ public class ShowFullModelModeDoer extends ViewDoer
 		project.executeCommandsWithoutTransaction(createCommandsToSwithToDefaultMode(viewDataRef));
 	}
 	
-	public static Vector<Command> createCommandsToSwithToDefaultMode(ORef viewDataRef)
+	public static CommandVector createCommandsToSwithToDefaultMode(ORef viewDataRef)
 	{
-		Vector<Command> commandsToSwitch = new Vector<Command>();
+		CommandVector commandsToSwitch = new CommandVector();
 		CommandSetObjectData changeToDefaultMode = new CommandSetObjectData(viewDataRef, ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT);
 		commandsToSwitch.add(changeToDefaultMode);
 		

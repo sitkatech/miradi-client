@@ -42,6 +42,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Target;
+import org.miradi.utils.CommandVector;
 
 public class CommandExecutor
 {
@@ -110,19 +111,19 @@ public class CommandExecutor
 		}
 	}
 
-	public void executeCommandsWithoutTransaction(Vector<Command> commands) throws CommandFailedException
+	public void executeCommandsWithoutTransaction(CommandVector commands) throws CommandFailedException
 	{
 		executeCommandsWithoutTransaction(commands.toArray(new Command[0]));
 	}
 	
 	public void executeCommandAsTransaction(Command command) throws CommandFailedException
 	{
-		Vector<Command> singleItemList = new Vector<Command>();
+		CommandVector singleItemList = new CommandVector();
 		singleItemList.add(command);
 		executeCommandsAsTransaction(singleItemList);
 	}
 	
-	public void executeCommandsAsTransaction(Vector<Command> commands) throws CommandFailedException
+	public void executeCommandsAsTransaction(CommandVector commands) throws CommandFailedException
 	{
 		executeCommandsAsTransaction(commands.toArray(new Command[0]));
 	}
@@ -187,7 +188,7 @@ public class CommandExecutor
 		}
 	}
 	
-	public void executeAsSideEffect(Vector<Command> commands) throws CommandFailedException
+	public void executeAsSideEffect(CommandVector commands) throws CommandFailedException
 	{
 		for (int index = 0; index < commands.size(); ++index)
 		{

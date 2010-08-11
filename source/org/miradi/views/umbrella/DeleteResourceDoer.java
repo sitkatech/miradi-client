@@ -34,6 +34,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
+import org.miradi.utils.CommandVector;
 import org.miradi.views.ObjectsDoer;
 
 public class DeleteResourceDoer extends ObjectsDoer
@@ -97,7 +98,7 @@ public class DeleteResourceDoer extends ObjectsDoer
 
 	private Command[] createCommandsToRemoveFromReferrers(ORefList allThatUseThisResource, ORef resourceRef) throws Exception
 	{
-		Vector<Command> commands = new Vector<Command>();
+		CommandVector commands = new CommandVector();
 		for (int i = 0; i < allThatUseThisResource.size(); ++i)
 		{
 			ORef referrerRef = allThatUseThisResource.get(i);
@@ -107,9 +108,9 @@ public class DeleteResourceDoer extends ObjectsDoer
 		return commands.toArray(new Command[0]);
 	}
 
-	private Vector<Command> removeFromAssignment(ORef ref)
+	private CommandVector removeFromAssignment(ORef ref)
 	{
-		Vector<Command> commands = new Vector<Command>();
+		CommandVector commands = new CommandVector();
 		if (ResourceAssignment.is(ref))
 			commands.add(new CommandSetObjectData(ref, ResourceAssignment.TAG_RESOURCE_ID, BaseId.INVALID.toString()));
 		

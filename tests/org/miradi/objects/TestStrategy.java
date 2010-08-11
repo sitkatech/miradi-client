@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.objects;
 
-import java.util.Vector;
-
-import org.miradi.commands.Command;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
@@ -30,6 +27,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
+import org.miradi.utils.CommandVector;
 
 public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 {
@@ -188,7 +186,7 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 		ORefList relevantActivityRefs = relevantStrategyAndActivityRefs.getFilteredBy(itemInRelevancyListToBeDeleted.getType());
 		assertEquals("Desire's activity relevancy list was not updated?", 1, relevantActivityRefs.size());
 		
-		Vector<Command> commandsToDelete = itemInRelevancyListToBeDeleted.createCommandsToDeleteChildrenAndObject();
+		CommandVector commandsToDelete = itemInRelevancyListToBeDeleted.createCommandsToDeleteChildrenAndObject();
 		getProject().executeCommandsAsTransaction(commandsToDelete);
 		
 		ORefList relevantStrategyAndActivityRefsAfterDelete = new ORefList(desire.getAllStrategyAndActivityRefsFromRelevancyOverrides());

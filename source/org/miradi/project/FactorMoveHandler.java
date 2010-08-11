@@ -22,7 +22,6 @@ package org.miradi.project;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.HashSet;
-import java.util.Vector;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
@@ -41,6 +40,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.GroupBox;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
 
@@ -58,7 +58,7 @@ public class FactorMoveHandler
 		{
 			model.factorsWereMoved(diagramFactorRefs);
 			
-			Vector<Command> commandsToExecute = new Vector<Command>();
+			CommandVector commandsToExecute = new CommandVector();
 			for(int i = 0 ; i < diagramFactorRefs.size(); ++i)
 			{
 				FactorCell factorCell = model.getFactorCellByRef(diagramFactorRefs.get(i));
@@ -221,13 +221,13 @@ public class FactorMoveHandler
 		return false;
 	}
 
-	private Vector<Command> buildGroupBoxRelatedMoveCommands(ORefList diagramFactorRefs, FactorCell factorCell)
+	private CommandVector buildGroupBoxRelatedMoveCommands(ORefList diagramFactorRefs, FactorCell factorCell)
 	{
 		int deltaX = factorCell.getLocation().x - factorCell.getDiagramFactor().getLocation().x;
 		int deltaY = factorCell.getLocation().y - factorCell.getDiagramFactor().getLocation().y;
-		Vector<Command> commandsToMove = new Vector<Command>();
+		CommandVector commandsToMove = new CommandVector();
 		if (factorCell.getWrappedType() != GroupBox.getObjectType())
-			return new Vector<Command>();
+			return new CommandVector();
 		
 		ORefList groupChildRefs = factorCell.getDiagramFactor().getGroupBoxChildrenRefs();
 		for (int i = 0; i < groupChildRefs.size(); ++i)

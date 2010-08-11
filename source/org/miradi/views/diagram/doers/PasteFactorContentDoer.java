@@ -22,7 +22,6 @@ package org.miradi.views.diagram.doers;
 import java.util.HashMap;
 import java.util.Vector;
 
-import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
@@ -36,6 +35,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.project.FactorDeleteHelper;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramCopyPaster;
 
@@ -77,11 +77,11 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 			
 			FactorDeleteHelper factorDeleteHelper = FactorDeleteHelper.createFactorDeleteHelper(getDiagramPanel().getCurrentDiagramComponent());
 			factorDeleteHelper.deleteAnnotations(selectedFactorToPasteContentInto);
-			Vector<Command> commandsToClear = new Vector<Command>(selectedFactorToPasteContentInto.createCommandsToClear());
+			CommandVector commandsToClear = new CommandVector(selectedFactorToPasteContentInto.createCommandsToClear());
 			getProject().executeCommandsWithoutTransaction(commandsToClear);
 			
 			DiagramFactor newlyPastedDiagramFactor = getNewlyPastedFactor(paster);
-			Vector<Command> commands = buildCommandsToFill(selectedFactorRefToPasteContentInto, newlyPastedDiagramFactor.getWrappedFactor());
+			CommandVector commands = buildCommandsToFill(selectedFactorRefToPasteContentInto, newlyPastedDiagramFactor.getWrappedFactor());
 			getProject().executeCommandsWithoutTransaction(commands);
 			
 			shallowDeleteDiagramFactorAndUnderlyingFactor(newlyPastedDiagramFactor);
@@ -168,9 +168,9 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		return DiagramFactor.find(getProject(), diagramFactorRef);
 	}
 
-	private Vector<Command> buildCommandsToFill(ORef selectedFactorRef, Factor newlyPastedFactor)
+	private CommandVector buildCommandsToFill(ORef selectedFactorRef, Factor newlyPastedFactor)
 	{
-		Vector<Command> commands = new Vector<Command>();
+		CommandVector commands = new CommandVector();
 		Vector<String> allTags = newlyPastedFactor.getStoredFieldTags();
 		for (int tagIndex = 0; tagIndex < allTags.size(); ++tagIndex)
 		{			

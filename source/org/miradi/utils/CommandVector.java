@@ -23,7 +23,17 @@ package org.miradi.utils;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
+import org.miradi.commands.CommandSetObjectData;
 
 public class CommandVector extends Vector<Command>
 {
+	public CommandVector(Vector<CommandSetObjectData> commands)
+	{
+		super(commands);
+	}
+
+	public CommandVector()
+	{
+		super();
+	}
 }

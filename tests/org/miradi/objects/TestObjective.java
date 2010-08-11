@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.objects;
 
-import java.util.Vector;
-
-import org.miradi.commands.Command;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -29,6 +26,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.utils.CommandVector;
 
 
 public class TestObjective extends ObjectTestCase
@@ -86,7 +84,7 @@ public class TestObjective extends ObjectTestCase
 		
 		projectToUse.fillObjectUsingCommand(parent, annotationTag, singleAnnotationRefList);
 		
-		Vector<Command> commandsToDelete = parent.createCommandsToDeleteChildrenAndObject();
+		CommandVector commandsToDelete = parent.createCommandsToDeleteChildrenAndObject();
 		projectToUse.executeCommandsAsTransaction(commandsToDelete);
 		
 		ORefList shouldBeEmptyRefList = projectToUse.getPool(annotationType).getRefList();
