@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 09:38-0500\n"
+"POT-Creation-Date: 2010-08-11 09:52-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -50,7 +50,7 @@ msgstr ""
 "\n"
 " desde adentro."
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:61
+#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
 msgid ""
 "\n"
 "Are you sure you want to delete the selected %s?"
@@ -58,7 +58,7 @@ msgstr ""
 "\n"
 "¿Está seguro de que desea eliminar la selección de %s? "
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:68
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 msgid ""
 "\n"
 "Are you sure you want to delete this resource?"
@@ -82,7 +82,7 @@ msgstr ""
 msgid " 2) Connect threat to relevant targets"
 msgstr "2) Conectar amenaza a objetos relevantes"
 
-#: Miradi/source/org/miradi/project/Project.java:182
+#: Miradi/source/org/miradi/project/Project.java:183
 msgid " A project by this name already exists: "
 msgstr "Ya existe un proyecto con este nombre:"
 
@@ -836,7 +836,7 @@ msgstr ""
 "con una copia nueva. Probablemente sea más seguro hacer esto, a menos que un "
 "intento de migración anterior haya fallado."
 
-#: Miradi/source/org/miradi/project/Project.java:188
+#: Miradi/source/org/miradi/project/Project.java:189
 msgid "A file or folder exist by the same name:"
 msgstr "Ya existe un archivo o carpeta con este mismo nombre: "
 
@@ -2836,11 +2836,11 @@ msgstr "Definir alcance del proyecto"
 msgid "Delete"
 msgstr "Eliminar"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:60
+#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:58
 msgid "Delete %s"
 msgstr "Eliminar %s"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:71
 msgid "Delete Resource"
 msgstr "Eliminar recurso "
 
@@ -4860,8 +4860,8 @@ msgstr "Nombre de archivo del nuevo proyecto:"
 msgid "New project name: "
 msgstr "Nombre del nuevo proyecto: "
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
+#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
 #: Miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:34
 msgid "No"
 msgstr "No"
@@ -7183,7 +7183,7 @@ msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:66
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:67
 msgid ""
 "This project resource is being used in the Work Plan and Financial Budget."
 msgstr ""
@@ -7996,8 +7996,8 @@ msgstr "Amarillo"
 msgid "Yen (Japan)"
 msgstr "Yen (Japón) "
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
+#: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
 #: Miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:35
 msgid "Yes"
 msgstr "Sí"
@@ -8048,7 +8048,7 @@ msgstr "[NO ESPECIFICADO]"
 msgid "[New Results Chain]"
 msgstr "[Nueva cadena de resultados]"
 
-#: Miradi/source/org/miradi/project/Project.java:984
+#: Miradi/source/org/miradi/project/Project.java:985
 msgid "[No Project]"
 msgstr "[Sin proyecto]"
 
