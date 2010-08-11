@@ -35,6 +35,7 @@ public class ActionCreateSubTarget extends ObjectsAction
 		return EAM.text("Action|Create Nested Target");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a Nested Target");

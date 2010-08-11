@@ -37,11 +37,13 @@ public class ActionInsertStrategy extends LocationAction
 		return EAM.text("Action|Insert|Insert Strategy");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Insert a Strategy");
 	}
 	
+	@Override
 	public Icon getDisabledIcon()
 	{
 		return StrategyIcon.createDisabledIcon();

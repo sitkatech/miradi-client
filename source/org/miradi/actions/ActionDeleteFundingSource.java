@@ -35,6 +35,7 @@ public class ActionDeleteFundingSource extends ObjectsAction
 		return EAM.text("Action|Manage|Delete Funding Source");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete the selected Funding Source");

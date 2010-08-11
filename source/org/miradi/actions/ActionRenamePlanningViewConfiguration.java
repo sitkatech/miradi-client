@@ -34,6 +34,7 @@ public class ActionRenamePlanningViewConfiguration extends ObjectsAction
 		return EAM.text("Action|Rename Custom");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Rename the selected Custom Planning View");

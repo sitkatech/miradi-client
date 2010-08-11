@@ -35,6 +35,7 @@ public class ActionWorkPlanBudgetColumnsEditor extends ObjectsAction
 		return EAM.text("Action|Show Columns...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Change which columns are shown");

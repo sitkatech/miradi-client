@@ -35,6 +35,7 @@ public class ActionDeletePlanningViewTreeNode extends ObjectsAction
 		return EAM.text("Action|Tree|Delete Item");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete the selected item");

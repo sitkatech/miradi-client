@@ -37,11 +37,13 @@ public class ActionInsertContributingFactor extends LocationAction
 		return EAM.text("Action|Insert|Insert Contributing Factor");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Insert a Contributing Factor");
 	}
 	
+	@Override
 	public Icon getDisabledIcon()
 	{
 		return ContributingFactorIcon.createDisabledIcon();

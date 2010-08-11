@@ -34,6 +34,7 @@ public class ActionRenameResultsChain extends MainWindowAction
 		return EAM.text("Action|Rename Results Chain");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Rename this Results Chain");

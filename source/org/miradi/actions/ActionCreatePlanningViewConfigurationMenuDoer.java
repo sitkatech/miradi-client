@@ -34,6 +34,7 @@ public class ActionCreatePlanningViewConfigurationMenuDoer extends ObjectsAction
 		return EAM.text("Action|Create Custom");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a new Custom Planning View");

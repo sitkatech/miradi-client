@@ -34,6 +34,7 @@ public class ActionShowCellRatings extends MainWindowAction
 		return EAM.text("Action|Show Ratings in Cell");
 	}
 	
+	@Override
 	public String getToolTipText()
 	{
 		return getLabel();

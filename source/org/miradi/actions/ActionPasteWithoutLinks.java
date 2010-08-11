@@ -42,6 +42,7 @@ public class ActionPasteWithoutLinks extends LocationAction
 		return EAM.text("Action|Paste Without Links");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Paste the clipboard without links");

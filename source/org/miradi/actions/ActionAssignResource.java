@@ -35,6 +35,7 @@ public class ActionAssignResource extends ObjectsAction
 		return EAM.text("Action|Assign Resource");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Assign a resource to this task");

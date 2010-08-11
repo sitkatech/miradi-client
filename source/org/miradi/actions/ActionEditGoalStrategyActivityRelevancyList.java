@@ -34,6 +34,7 @@ public class ActionEditGoalStrategyActivityRelevancyList extends ObjectsAction
 		return EAM.text("Action|Choose...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Choose which strategies and activities are relevant to this goal");

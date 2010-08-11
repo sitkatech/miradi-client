@@ -35,6 +35,7 @@ public class ActionDeleteProgressPercent extends ObjectsAction
 		return EAM.text("Action|Manage|Delete Progress Percent");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete Progress Percent");

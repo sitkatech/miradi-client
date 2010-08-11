@@ -35,6 +35,7 @@ public class ActionDeleteKeyEcologicalAttributeIndicator extends ObjectsAction
 		return EAM.text("Action|Manage|Delete Indicator");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete Indicator");

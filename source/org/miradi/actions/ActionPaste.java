@@ -42,6 +42,7 @@ public class ActionPaste extends LocationAction
 		return EAM.text("Action|Paste");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Paste the clipboard");

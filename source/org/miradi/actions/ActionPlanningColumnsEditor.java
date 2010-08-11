@@ -34,6 +34,7 @@ public class ActionPlanningColumnsEditor extends ObjectsAction
 		return EAM.text("Action|Table|Show Columns...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Change visible columns");

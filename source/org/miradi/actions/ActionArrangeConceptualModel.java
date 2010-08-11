@@ -35,6 +35,7 @@ public class ActionArrangeConceptualModel extends ViewAction
 		return EAM.text("Action|Auto-Arrange Diagram (BETA)");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Automatically arrange the factors in this Conceptual Model page");

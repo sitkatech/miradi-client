@@ -35,6 +35,7 @@ public class ActionCreateStress extends ObjectsAction
 		return EAM.text("Action|Create Stress");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a Stress");

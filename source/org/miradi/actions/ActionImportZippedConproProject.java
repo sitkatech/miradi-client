@@ -34,6 +34,7 @@ public class ActionImportZippedConproProject extends MainWindowAction
 		return EAM.text("Action|ConPro (CPMZ) File");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Import a .cpmz file that was exported from ConPro");

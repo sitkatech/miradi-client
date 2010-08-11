@@ -34,6 +34,7 @@ public class ActionExportConProXml extends MainWindowAction
 		return EAM.text("Action|Export|ConPro (CPMZ) File");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Export a file that can be imported by ConPro");

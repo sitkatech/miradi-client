@@ -34,6 +34,7 @@ public class ActionEditEstimatedResource extends ObjectsAction
 		return EAM.text("Action|Edit Estimated Resources...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Edit the list of estimated resources.");

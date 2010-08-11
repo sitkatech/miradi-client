@@ -35,6 +35,7 @@ public class ActionDeleteStress extends ObjectsAction
 		return EAM.text("Action|Delete Stress");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete the selected Stress");

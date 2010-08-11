@@ -35,6 +35,7 @@ public class ActionManageStresses extends ObjectsAction
 		return EAM.text("Action|Manage Stresses...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create, Delete, or Edit Stresses");

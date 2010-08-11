@@ -34,6 +34,7 @@ public class ActionCreateOutgoingJunction extends LocationAction
 		return EAM.text("Action|Create Outgoing Junction");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create an Outgoing Junction Bend Point");

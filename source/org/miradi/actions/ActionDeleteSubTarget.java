@@ -35,6 +35,7 @@ public class ActionDeleteSubTarget extends ObjectsAction
 		return EAM.text("Action|Delete Nested Target");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete Nested Target");

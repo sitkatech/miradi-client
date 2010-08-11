@@ -35,6 +35,7 @@ public class ActionShareMethod extends ObjectsAction
 		return EAM.text("Action|Share Method");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Share an existing Method into this Indicator");

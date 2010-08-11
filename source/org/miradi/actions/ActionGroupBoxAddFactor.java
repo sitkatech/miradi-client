@@ -35,6 +35,7 @@ public class ActionGroupBoxAddFactor extends LocationAction
 		return EAM.text("Action|Insert|Add Factor(s) to Group Box");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Add Factor(s) to Group Box");

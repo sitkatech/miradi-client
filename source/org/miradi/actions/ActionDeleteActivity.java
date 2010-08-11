@@ -35,6 +35,7 @@ public class ActionDeleteActivity extends ObjectsAction
 		return EAM.text("Action|Manage|Delete Activity");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete the selected Activity");

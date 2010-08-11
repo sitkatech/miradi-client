@@ -35,6 +35,7 @@ public class ActionInsertGroupBox extends LocationAction
 		return EAM.text("Action|Insert|Create Group Box");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a Group Box");

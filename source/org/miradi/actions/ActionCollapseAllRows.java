@@ -35,6 +35,7 @@ public class ActionCollapseAllRows extends ObjectsAction
 		return EAM.text("Action|Collapse All Rows");
 	}
 	
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Collapse All Tree Rows");

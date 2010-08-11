@@ -35,6 +35,7 @@ public class ActionInsertDraftStrategy extends LocationAction
 		return EAM.text("Action|Insert|Insert Draft Strategy");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Insert a draft Strategy");

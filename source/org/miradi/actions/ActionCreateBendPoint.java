@@ -34,6 +34,7 @@ public class ActionCreateBendPoint extends LocationAction
 		return EAM.text("Action|Create Bend Point");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a Bend Point");

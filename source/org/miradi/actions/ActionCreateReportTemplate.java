@@ -35,6 +35,7 @@ public class ActionCreateReportTemplate extends ObjectsAction
 		return EAM.text("Action|Create");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a Report Template");

@@ -35,6 +35,7 @@ public class ActionCreateKeyEcologicalAttribute extends ObjectsAction
 		return EAM.text("Action|Manage|Create KEA");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a Key Ecological Attribute");

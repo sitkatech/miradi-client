@@ -34,6 +34,7 @@ public class ActionDeleteBendPoint extends LocationAction
 		return EAM.text("Action|Delete Bend Point");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete a Bend Point");

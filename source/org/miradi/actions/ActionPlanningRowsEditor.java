@@ -34,6 +34,7 @@ public class ActionPlanningRowsEditor extends ObjectsAction
 		return EAM.text("Action|Table|Show Rows...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Change visible rows");

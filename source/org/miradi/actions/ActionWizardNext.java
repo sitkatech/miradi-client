@@ -36,6 +36,7 @@ public class ActionWizardNext extends ViewAction
 		return EAM.text("Action|Next >");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Go to the Next wizard step");

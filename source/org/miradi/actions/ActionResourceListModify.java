@@ -34,6 +34,7 @@ public class ActionResourceListModify extends ObjectsAction
 		return EAM.text("Action|Manage|Modify Resource");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Modify resource from list");

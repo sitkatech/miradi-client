@@ -34,6 +34,7 @@ public class ActionEditObjectiveIndicatorRelevancyList extends ObjectsAction
 		return EAM.text("Action|Choose...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Choose which indicators are relevant to this objective");

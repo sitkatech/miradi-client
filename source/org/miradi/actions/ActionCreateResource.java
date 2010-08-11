@@ -35,6 +35,7 @@ public class ActionCreateResource extends ObjectsAction
 		return EAM.text("Action|Manage|Create Resource");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a Resource (person, team, etc)");

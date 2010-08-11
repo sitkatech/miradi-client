@@ -34,6 +34,7 @@ public class ActionZoomToFit extends ViewAction
 		return EAM.text("Action|Zoom To Fit");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Zoom To Fit");

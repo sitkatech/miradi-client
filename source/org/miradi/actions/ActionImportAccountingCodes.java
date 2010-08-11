@@ -34,6 +34,7 @@ public class ActionImportAccountingCodes extends ObjectsAction
 		return EAM.text("Action|Import Accounting Codes");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Import accounting codes");

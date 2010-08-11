@@ -34,6 +34,7 @@ public class ActionZoomOut extends ViewAction
 		return EAM.text("Action|Zoom Out");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Zoom Out");

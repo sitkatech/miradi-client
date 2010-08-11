@@ -34,6 +34,7 @@ public class ActionDiagramProperties extends ObjectsAction
 		return EAM.text("Action|Diagram Properties...");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Show the diagram properties");

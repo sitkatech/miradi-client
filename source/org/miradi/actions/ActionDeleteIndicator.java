@@ -35,6 +35,7 @@ public class ActionDeleteIndicator extends ObjectsAction
 		return EAM.text("Action|Manage|Delete Indicator");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Delete the selected Indicator");

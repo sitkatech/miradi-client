@@ -35,6 +35,7 @@ public class ActionExpandAllRows extends ObjectsAction
 		return EAM.text("Action|Expand All Rows");
 	}
 	
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Expand All Tree Rows");
