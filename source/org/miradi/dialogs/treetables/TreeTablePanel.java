@@ -164,14 +164,14 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		
 		Object[] selectedObjects = treePaths[0].getPath();
 		
-		Vector objects = new Vector();
+		Vector<ORef> objects = new Vector<ORef>();
 		for (int i=0; i< selectedObjects.length; ++i)
 		{
 			TreeTableNode node = (TreeTableNode)selectedObjects[i];
 			objects.insertElementAt(node.getObjectReference(), 0);
 		}
 		
-		getPropertiesPanel().setObjectRefs((ORef[])objects.toArray(new ORef[0]));
+		getPropertiesPanel().setObjectRefs(objects.toArray(new ORef[0]));
 		mainWindow.updateActionStates();
 	}
 	
@@ -204,7 +204,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		String setField = setCommand.getFieldTag();
 		
 		String[] fieldTags = selectedObject.getFieldTags();
-		Vector fields = new Vector(Arrays.asList(fieldTags));
+		Vector<String> fields = new Vector<String>(Arrays.asList(fieldTags));
 	
 		boolean sameType = (selectedObject.getType() == setType);
 		boolean containsField = (fields.contains(setField));
