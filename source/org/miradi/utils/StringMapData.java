@@ -30,6 +30,7 @@ public class StringMapData extends ObjectData
 		data = new StringMap();
 	}
 
+	@Override
 	public String get()
 	{
 		return getStringMap().toString();
@@ -40,11 +41,13 @@ public class StringMapData extends ObjectData
 		return data;
 	}
 
+	@Override
 	public void set(String newValue) throws Exception
 	{
 		data = new StringMap(newValue);
 	}
 
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof StringMapData))
@@ -54,11 +57,13 @@ public class StringMapData extends ObjectData
 		return other.data.equals(data);
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return toString().hashCode();
 	}
 	
+	@Override
 	public boolean isStringMapData()
 	{
 		return true;

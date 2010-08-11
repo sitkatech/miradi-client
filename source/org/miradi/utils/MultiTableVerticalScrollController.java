@@ -31,6 +31,7 @@ public class MultiTableVerticalScrollController extends MultiTableScrollControll
 		super(Adjustable.VERTICAL);
 	}
 	
+	@Override
 	protected JScrollBar getScrollBar(JScrollPane scrollPaneToAdd)
 	{
 		return scrollPaneToAdd.getVerticalScrollBar();

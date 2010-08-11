@@ -40,6 +40,7 @@ class PlainDocumentWithLengthLimit extends PlainDocument
 		maxLength = maxLengthToUse;
 	}
 	
+	@Override
 	public void insertString(int param, String str, javax.swing.text.AttributeSet attributeSet) throws BadLocationException 
 	{
 		int proposedLength = this.getLength() + str.length();

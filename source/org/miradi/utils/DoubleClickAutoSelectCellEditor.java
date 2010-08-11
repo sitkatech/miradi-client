@@ -45,6 +45,7 @@ public class DoubleClickAutoSelectCellEditor extends DefaultCellEditor
 	
 	final class EditorDeletegate extends EditorDelegate
 	{
+		@Override
 		public void setValue(Object value) 
 		{
 			if (value == null)
@@ -53,6 +54,7 @@ public class DoubleClickAutoSelectCellEditor extends DefaultCellEditor
 			((JTextField)editorComponent).setText(value.toString());
 		}
 
+		@Override
 		public Object getCellEditorValue() 
 		{
 			return ((JTextField)editorComponent).getText();

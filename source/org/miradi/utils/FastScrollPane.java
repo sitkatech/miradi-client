@@ -38,6 +38,7 @@ public class FastScrollPane extends UiScrollPane
 		getVerticalScrollBar().setUnitIncrement(SCROLL_UNIT_INCREMENT);
 	}
 
+	@Override
 	public void processMouseWheelEvent(MouseWheelEvent e)
 	{
 		//note: overriding to change visibility

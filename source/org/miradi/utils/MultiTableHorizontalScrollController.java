@@ -31,6 +31,7 @@ public class MultiTableHorizontalScrollController extends MultiTableScrollContro
 		super(Adjustable.HORIZONTAL);
 	}
 	
+	@Override
 	protected JScrollBar getScrollBar(JScrollPane scrollPaneToAdd)
 	{
 		return scrollPaneToAdd.getHorizontalScrollBar();

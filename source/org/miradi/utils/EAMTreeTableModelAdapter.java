@@ -50,11 +50,13 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel
 		return treeTableModel.getColumnCount();
 	}
 
+	@Override
 	public String getColumnName(int column) 
 	{
 		return treeTableModel.getColumnName(column);
 	}
 
+	@Override
 	public Class getColumnClass(int column) 
 	{
 		return treeTableModel.getColumnClass(column);
@@ -76,11 +78,13 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel
 		return treeTableModel.getValueAt(nodeForRow(row), column);
 	}
 
+	@Override
 	public boolean isCellEditable(int row, int column) 
 	{
 		return treeTableModel.isCellEditable(nodeForRow(row), column); 
 	}
 
+	@Override
 	public void setValueAt(Object value, int row, int column) 
 	{
 		treeTableModel.setValueAt(value, nodeForRow(row), column);

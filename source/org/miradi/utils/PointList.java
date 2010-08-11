@@ -144,6 +144,7 @@ public class PointList
 		return json;
 	}
 	
+	@Override
 	public String toString()
 	{
 		if(size() == 0)
@@ -152,6 +153,7 @@ public class PointList
 		return toJson().toString();
 	}
 	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(! (rawOther instanceof PointList))
@@ -161,6 +163,7 @@ public class PointList
 		return points.equals(other.points);
 	}
 	
+	@Override
 	public int hashCode()
 	{
 		return points.hashCode();
