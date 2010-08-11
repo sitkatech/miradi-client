@@ -29,9 +29,9 @@
       <fileEntry mountPoint="95" file="../dist/temp/jars/jortho/jortho/0.5/jortho.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/jortho/jortho/0.5/jortho-license.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/martus-utils/bin/martus-utils.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="../dist/temp/jars/martus-utils/source/martus-utils-license.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/martus-utils/martus-utils-license.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/martus-swing/bin/martus-swing.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="../dist/temp/jars/martus-swing/source/martus-swing-license-txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/martus-swing/martus-swing-license-txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/jing/bin/xml-apis.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/jing/bin/xercesImpl.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/jing/bin/saxon.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
