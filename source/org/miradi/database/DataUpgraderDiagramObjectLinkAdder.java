@@ -221,6 +221,7 @@ public class DataUpgraderDiagramObjectLinkAdder
 		return diagramObjects.length == 1;
 	}
 
+	@SuppressWarnings("unchecked")
 	private EnhancedJsonObject[] getAllDiagramObjects(File conceptualModelDir, File conceptualModelManifestFile, File resultsChainDir, File resultsChainManifestFile) throws Exception
 	{
 		Vector allDiagramObjects = new Vector();
@@ -233,6 +234,7 @@ public class DataUpgraderDiagramObjectLinkAdder
 		return (EnhancedJsonObject[]) allDiagramObjects.toArray(new EnhancedJsonObject[0]);
 	}
 
+	@SuppressWarnings("unchecked")
 	private Vector getDiagramObject(File diagramObjectDir, File diagramObjectManifestFile) throws IOException, ParseException, Exception
 	{
 		Vector allDiagramObjectJsons = new Vector();
@@ -250,6 +252,7 @@ public class DataUpgraderDiagramObjectLinkAdder
 		return allDiagramObjectJsons;
 	}
 
+	@SuppressWarnings("unchecked")
 	private BaseId[] findDiagramFactorsThatWrap(File diagramFactorDir, File diagramFactorManifestFile, ORef wrappedRef) throws Exception
 	{
 		ObjectManifest diagramFactorManifest = new ObjectManifest(JSONFile.read(diagramFactorManifestFile));
@@ -269,6 +272,7 @@ public class DataUpgraderDiagramObjectLinkAdder
 		return (BaseId[]) allDiagramFactorsThatWrap.toArray(new BaseId[0]);
 	}
 
+	@SuppressWarnings("unchecked")
 	private BaseId[] getLinksBetweenStrategiesAndTargets(File factorLinkDir, File factorLinkManifestFile) throws Exception
 	{
 		ObjectManifest factorLinkManifest = new ObjectManifest(JSONFile.read(factorLinkManifestFile));

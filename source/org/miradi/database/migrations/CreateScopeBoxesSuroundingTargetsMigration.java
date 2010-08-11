@@ -103,6 +103,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		createScopeBoxes(resultsChainDir, scopeBoxDir, scopeBoxManifestJson, RESULTS_CHAIN_TYPE);
 	}
 	
+	@SuppressWarnings("unchecked")
 	private Vector<EnhancedJsonObject> loadAllDiagramFactorJsons(BaseId[] diagramFactorIds) throws Exception
 	{
 		Vector<EnhancedJsonObject> diagramFactorJsons = new Vector();
@@ -259,6 +260,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		return unionResult;
 	}
 
+	@SuppressWarnings("unchecked")
 	private Vector<EnhancedJsonObject> extractTargetDiagramFactorJsons(IdList diagramFactorIdsFromDiagramObject) throws Exception
 	{
 		Vector<EnhancedJsonObject> targetDiagramFactorJsons = new Vector();

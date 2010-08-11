@@ -557,6 +557,7 @@ public class MigrationsOlderThanMiradiVersion2
 		return getTaskChildren(strategyDir, strategyManifestFile, "ActivityIds");
 	}
 
+	@SuppressWarnings("unchecked")
 	public static HashSet<BaseId> getTaskChildren(File parentDir, File manifestFile, String taskIdsTag) throws Exception
 	{
 		final int TASK_TYPE = 3;
@@ -1101,6 +1102,7 @@ public class MigrationsOlderThanMiradiVersion2
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	private static Vector getAllFactorManifestFiles(File jsonDir) throws Exception
 	{
 		Vector allManifestFiles = new Vector();
@@ -1121,6 +1123,7 @@ public class MigrationsOlderThanMiradiVersion2
 		return allManifestFiles;
 	}
 
+	@SuppressWarnings("unchecked")
 	private static Vector getAllFactorTypeDirs(File jsonDir)
 	{
 		Vector allFactorTypeDirs = new Vector();
@@ -1267,6 +1270,7 @@ public class MigrationsOlderThanMiradiVersion2
 		return newGoalIds;
 	}
 
+	@SuppressWarnings("unchecked")
 	private static BaseId[] removeGoalIdsFoundInIndicators(IdList goalIdsToBeRemoved, BaseId[] allGoalIds)
 	{
 		Vector newGoalIds = new Vector();
@@ -1398,6 +1402,7 @@ public class MigrationsOlderThanMiradiVersion2
 		DataUpgrader.writeHighestIdToProjectFile(jsonDir, highestId);
 	}
 
+	@SuppressWarnings("unchecked")
 	public static HashMap createDiagramFactorsFromRawFactors() throws Exception
 	{
 		File jsonDir = DataUpgrader.getTopJsonDir();
