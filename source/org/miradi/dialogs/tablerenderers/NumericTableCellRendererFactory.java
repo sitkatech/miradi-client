@@ -22,6 +22,7 @@ package org.miradi.dialogs.tablerenderers;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.JLabel;
@@ -71,9 +72,9 @@ public class NumericTableCellRendererFactory extends SingleLineObjectTableCellRe
 
 	private Font createStrikethroughFont(Font defaultFontToUse)
 	{
-		Map attributesMap = defaultFontToUse.getAttributes();
+		Map<TextAttribute, Object> attributesMap = new HashMap<TextAttribute, Object>(); 
 		attributesMap.put(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON);
 
-		return new Font(attributesMap);
+		return defaultFontToUse.deriveFont(attributesMap);
 	}
 }
