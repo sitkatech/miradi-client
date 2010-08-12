@@ -471,7 +471,7 @@
 	
 	<!-- Third-party source code -->
 	<zip destfile="${dist.dir}/Miradi-Thirdparty-Source.zip">
-    	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='source' includes="**/BrowserLauncher2-all-10rc4.jar" />
+    	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='source' includes="**/BrowserLauncher2-all-10rc4*.jar" />
     	<zipfileset dir="${dist.temp.jars}/jcalendar-1.3.2/" prefix='source' includes="jcalendar-1.3.2-src.zip" />
     	<zipfileset dir="${dist.temp.jars}/jgraph/" prefix='source' includes="miradi-jgraph-5.12.2.2b-src.zip" />
     	<zipfileset dir="${dist.temp.jars}/jing/" prefix='source' includes="jing-src*.zip" />
