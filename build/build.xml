@@ -434,15 +434,6 @@
 			<include name="**/*.ortho"/>
 		</patternset>
 	</unzip>
-	<antcall target='download'>
-		<param name='directory' value='jortho/dictionaries/2009-01' />
-		<param name='filename' value='dictionary_es_2009_01.zip' />
-	</antcall>
-	<unzip src='${dist.temp.jars}/jortho/dictionaries/2009-01/dictionary_es_2009_01.zip' dest='${dist.temp}'>
-		<patternset>
-			<include name="**/*.ortho"/>
-		</patternset>
-	</unzip>
 </target>
 
 <!-- ================================================================== -->
