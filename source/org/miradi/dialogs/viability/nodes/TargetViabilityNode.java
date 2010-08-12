@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.viability.nodes;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Vector;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
@@ -153,7 +152,7 @@ public class TargetViabilityNode extends TreeTableNode
 		return keaNodes;
 	}
 	
-	static public void sortObjectList(KeyEcologicalAttributeNode[] objectList, Comparator comparator)
+	static public void sortObjectList(KeyEcologicalAttributeNode[] objectList, KeaNodeComparator comparator)
 	{
 		Arrays.sort(objectList, comparator);
 	}
