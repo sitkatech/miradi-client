@@ -396,30 +396,6 @@
 		<param name='directory' value='martus-utils' />
 		<param name='filename' value='martus-utils-license.txt' />
 	</antcall>
-
-
-	<antcall target='download'>
-		<param name='directory' value='PersianCalendar/bin' />
-		<param name='filename' value='icu4j_3_2_calendar.jar' />
-	</antcall>
-	<antcall target='download'>
-		<param name='directory' value='PersianCalendar/bin' />
-		<param name='filename' value='persiancalendar.jar' />
-	</antcall>
-	<antcall target='download'>
-		<param name='directory' value='PersianCalendar/source' />
-		<param name='filename' value='PersianCalendar_2_1.zip' />
-	</antcall>
-	<antcall target='download'>
-			<param name='directory' value='PersianCalendar/license' />
-			<param name='filename' value='gpl.txt' />
-	</antcall>
-    <move file="${dist.temp.jars}/PersianCalendar/license/gpl.txt" tofile="${dist.temp.jars}/PersianCalendar/license/PersianCalendar-license.txt"/>
-	
-	<antcall target='download'>
-			<param name='directory' value='PersianCalendar/license' />
-			<param name='filename' value='icu4j_3_2_license.html' />
-	</antcall>
 	
 	<antcall target='download'>
 		<param name='directory' value='swingx/0.9.7' />
@@ -500,10 +476,6 @@
     	<zipfileset dir="${dist.temp.jars}/swingx/0.9.7/" prefix='${JarFolder}' includes="swingx-license.txt" />
     	<zipfileset dir="${dist.temp.jars}/jortho/jortho/0.5/" prefix='${JarFolder}' includes="*.jar"/>
     	<zipfileset dir="${dist.temp.jars}/jortho/jortho/0.5/" prefix='${JarFolder}' includes="jortho-license.txt"/>
-
-    	<zipfileset dir="${dist.temp.jars}/PersianCalendar/bin/" prefix='${JarFolder}' includes="*.jar" />
-    	<zipfileset dir="${dist.temp.jars}/PersianCalendar/license/" prefix='${JarFolder}' includes="PersianCalendar-license.txt" />
-    	<zipfileset dir="${dist.temp.jars}/PersianCalendar/license/" prefix='${JarFolder}' includes="icu4j_3_2_license.html" />
     </zip>
 	
 	<!-- Third-party source code -->
@@ -512,7 +484,6 @@
     	<zipfileset dir="${dist.temp.jars}/jcalendar-1.3.2/" prefix='source' includes="jcalendar-1.3.2-src.zip" />
     	<zipfileset dir="${dist.temp.jars}/jgraph/" prefix='source' includes="miradi-jgraph-5.12.2.2b-src.zip" />
     	<zipfileset dir="${dist.temp.jars}/jing/" prefix='source' includes="jing-src*.zip" />
-   		<zipfileset dir="${dist.temp.jars}/PersianCalendar/source/" prefix='source' includes="PersianCalendar*.zip" />
     	<zipfileset dir="${dist.temp.jars}/swingx/0.9.7" prefix="source" includes="swingx-0.9.7-src.zip" />
 		<zipfileset dir="${dist.temp.jars}/jortho/" prefix="source" includes="**/JOrtho*.zip" />
 		<zipfileset dir="${dist.temp.jars}/jortho/" prefix="source" includes="**/dictionary*.zip" />
