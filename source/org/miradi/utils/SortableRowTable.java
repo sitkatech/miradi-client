@@ -59,7 +59,7 @@ abstract public class SortableRowTable extends TableWithColumnWidthAndSequenceSa
 		}
 
 		Vector unsortedRows = (Vector)rows.clone();
-		Collections.sort(rows, comparator);
+		sortRows(rows, comparator);
 		
 		if (sortByTableColumn == currentSortColumn && rows.equals(unsortedRows))
 			Collections.reverse(rows);
@@ -71,6 +71,14 @@ abstract public class SortableRowTable extends TableWithColumnWidthAndSequenceSa
 		
 		revalidate();
 		repaint();
+	}
+
+	// TODO: Find a way to avoid this annotation, which is required 
+	// because we might be sorting a ChoiceItem column or a String column 
+	@SuppressWarnings("unchecked")
+	private void sortRows(Vector<Integer> rows, Comparator comparator)
+	{
+		Collections.sort(rows, comparator);
 	}
 
 	protected Comparator getComparator(int sortByTableColumn)
