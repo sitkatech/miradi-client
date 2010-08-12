@@ -419,6 +419,11 @@
     <move file="${dist.temp.jars}/PersianCalendar/license/gpl.txt" tofile="${dist.temp.jars}/PersianCalendar/license/PersianCalendar-license.txt"/>
 	
 	<antcall target='download'>
+			<param name='directory' value='PersianCalendar/license' />
+			<param name='filename' value='icu4j_3_2_license.html' />
+	</antcall>
+	
+	<antcall target='download'>
 		<param name='directory' value='swingx/0.9.7' />
 		<param name='filename' value='swingx-0.9.7.jar' />
 	</antcall>
@@ -514,6 +519,7 @@
 
     	<zipfileset dir="${dist.temp.jars}/PersianCalendar/bin/" prefix='${JarFolder}' includes="*.jar" />
     	<zipfileset dir="${dist.temp.jars}/PersianCalendar/license/" prefix='${JarFolder}' includes="PersianCalendar-license.txt" />
+    	<zipfileset dir="${dist.temp.jars}/PersianCalendar/license/" prefix='${JarFolder}' includes="icu4j_3_2_license.html" />
     </zip>
 	
 	<!-- Third-party source code -->
