@@ -24,13 +24,13 @@ import java.util.Comparator;
 
 import org.miradi.objects.KeyEcologicalAttribute;
 
-public class KeaNodeComparator implements Comparator
+public class KeaNodeComparator implements Comparator<KeyEcologicalAttributeNode>
 {
-	public int compare(Object node1, Object node2)
+	public int compare(KeyEcologicalAttributeNode node1, KeyEcologicalAttributeNode node2)
 	{
-		KeyEcologicalAttribute kea1 =(KeyEcologicalAttribute)((KeyEcologicalAttributeNode) node1).getObject();
+		KeyEcologicalAttribute kea1 =(KeyEcologicalAttribute)node1.getObject();
 		String type1 =kea1.getKeyEcologicalAttributeType();
-		KeyEcologicalAttribute kea2 =(KeyEcologicalAttribute)((KeyEcologicalAttributeNode) node2).getObject();
+		KeyEcologicalAttribute kea2 =(KeyEcologicalAttribute)node2.getObject();
 		String type2 =kea2.getKeyEcologicalAttributeType();
 		Collator myCollator = Collator.getInstance();
 		return myCollator.compare(type1, type2);
