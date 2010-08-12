@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/45'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/46'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -287,7 +287,7 @@ BiodiversityTarget.element = element miradi:BiodiversityTarget
   element miradi:BiodiversityTargetId { text }? &
   element miradi:BiodiversityTargetDetails { text }? &
   element miradi:BiodiversityTargetComments { text }? &
-  element miradi:BiodiversityTargetTargetStatus { vocabulary_target_status  } &
+  element miradi:BiodiversityTargetViabilityStatus { vocabulary_target_status  } &
   element miradi:BiodiversityTargetViabilityMode { vocabulary_target_viability_mode  } &
   element miradi:BiodiversityTargetCurrentStatusJustification { text }? &
   element miradi:BiodiversityTargetSubTargetIds { SubTargetId.element* }? &
@@ -308,7 +308,7 @@ HumanWelfareTarget.element = element miradi:HumanWelfareTarget
   element miradi:HumanWelfareTargetId { text }? &
   element miradi:HumanWelfareTargetDetails { text }? &
   element miradi:HumanWelfareTargetComments { text }? &
-  element miradi:HumanWelfareTargetTargetStatus { vocabulary_target_status  } &
+  element miradi:HumanWelfareTargetViabilityStatus { vocabulary_target_status  } &
   element miradi:HumanWelfareTargetViabilityMode { vocabulary_target_viability_mode  } &
   element miradi:HumanWelfareTargetCurrentStatusJustification { text }? &
   element miradi:HumanWelfareTargetSubTargetIds { SubTargetId.element* }? &
@@ -911,7 +911,7 @@ HumanWelfareTargetHabitatAssociationContainer.element = element miradi:HumanWelf
   element miradi:code { vocabulary_biodiversity_target_habitat_association } * 
 }
 
-HumanWelfareTargetTargetStatusContainer.element = element miradi:HumanWelfareTargetTargetStatusContainer
+HumanWelfareTargetViabilityStatusContainer.element = element miradi:HumanWelfareTargetViabilityStatusContainer
 {
   element miradi:code { vocabulary_target_status } * 
 }
@@ -980,3 +980,4 @@ ProjectSummaryLocationCountriesContainer.element = element miradi:ProjectSummary
 {
   element miradi:code { vocabulary_countries } * 
 }
+
