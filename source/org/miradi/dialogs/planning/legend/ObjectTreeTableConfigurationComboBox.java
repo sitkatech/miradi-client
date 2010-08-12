@@ -70,7 +70,7 @@ public class ObjectTreeTableConfigurationComboBox extends PlanningViewComboBox
 	private void removeDeletedItems()
 	{
 		ChoiceItem[] choicesInProjectAsArray = new ObjectTreeTableConfigurationQuestion(getProject()).getChoices();
-		HashSet choicesInProject = new HashSet(Arrays.asList(choicesInProjectAsArray));
+		HashSet choicesInProject = new HashSet<ChoiceItem>(Arrays.asList(choicesInProjectAsArray));
 		for(int i = getItemCount() - 1; i >= 0; --i)
 		{
 			ChoiceItem thisItem = (ChoiceItem)getItemAt(i);
@@ -81,9 +81,9 @@ public class ObjectTreeTableConfigurationComboBox extends PlanningViewComboBox
 
 	private HashSet getCurrentChoicesInList()
 	{
-		HashSet choices = new HashSet();
+		HashSet<ChoiceItem> choices = new HashSet<ChoiceItem>();
 		for(int i = 0; i < getItemCount(); ++i)
-			choices.add(getItemAt(i));
+			choices.add((ChoiceItem)getItemAt(i));
 		return choices;
 	}
 
