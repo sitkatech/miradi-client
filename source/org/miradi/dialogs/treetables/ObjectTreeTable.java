@@ -23,6 +23,7 @@ import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -114,7 +115,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 	
 	public static Font createFristLevelFont(Font defaultFontToUse)
 	{
-		Map map = defaultFontToUse.getAttributes();
+		Map<TextAttribute, Object> map = new HashMap<TextAttribute, Object>(defaultFontToUse.getAttributes());
 	    map.put(TextAttribute.SIZE, new Float(defaultFontToUse.getSize2D() + 2));
 	    map.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
 	    Font customFont = new Font(map);
