@@ -194,7 +194,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 
 	// NOTE: roots member is unchecked in JGraph, so we can't fix it
 	@SuppressWarnings("unchecked")
-	private List<EAMGraphCell> getAllRootCells()
+	public List<EAMGraphCell> getAllRootCells()
 	{
 		return roots;
 	}
