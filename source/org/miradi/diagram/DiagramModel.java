@@ -60,8 +60,8 @@ import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objectpools.DiagramLinkPool;
 import org.miradi.objectpools.DiagramFactorPool;
+import org.miradi.objectpools.DiagramLinkPool;
 import org.miradi.objectpools.FactorLinkPool;
 import org.miradi.objectpools.GoalPool;
 import org.miradi.objectpools.ObjectivePool;
@@ -189,7 +189,14 @@ abstract public class DiagramModel extends DefaultGraphModel
 
 	public void sortLayers()
 	{
-		Collections.sort(roots, new LayerSorter());
+		Collections.sort(getAllRootCells(), new LayerSorter());
+	}
+
+	// NOTE: roots member is unchecked in JGraph, so we can't fix it
+	@SuppressWarnings("unchecked")
+	private List<EAMGraphCell> getAllRootCells()
+	{
+		return roots;
 	}
 	
 	private Hashtable<DefaultGraphCell, AttributeMap> getNestedAttributeMap(DefaultGraphCell cell)
