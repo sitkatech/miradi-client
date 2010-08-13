@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 15:44-0500\n"
+"POT-Creation-Date: 2010-08-13 09:17-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7056,7 +7056,7 @@ msgstr "标题|直接威胁因子属性"
 msgid "Title|Error"
 msgstr "错误 "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:976
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:978
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "因素属性 \t\t"
