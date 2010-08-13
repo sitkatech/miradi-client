@@ -24,6 +24,7 @@ import org.miradi.main.EAM;
 
 public class CloneIndicatorDoer extends CreateIndicator
 {
+	@Override
 	public void doIt() throws Exception
 	{
 		if (!isAvailable())
