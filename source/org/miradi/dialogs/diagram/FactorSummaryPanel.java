@@ -123,6 +123,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 		return (Factor) getProject().findObject(currentDiagramFactor.getWrappedORef());
 	}
 
+	@Override
 	public Icon getIcon()
 	{
 		return detailIcon;
@@ -138,11 +139,13 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 		return currentDiagramFactor.getDiagramFactorId();
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Summary");
 	}
 	
+	@Override
 	public Class getJumpActionClass()
 	{
 		Factor factor = getFactor();
