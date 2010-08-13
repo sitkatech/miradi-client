@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-13 09:20-0500\n"
+"POT-Creation-Date: 2010-08-13 11:35-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -6060,7 +6060,7 @@ msgstr "Las subclases deben reemplazar este método. "
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:37
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:105
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:143
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:145
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:61
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:122
 msgid "Summary"
@@ -6878,7 +6878,7 @@ msgstr "Personalizar"
 msgid "Tab|Goals"
 msgstr "Metas"
 
-#: Miradi/source/org/miradi/dialogs/viability/FactorPropertiesViabilityTreeManagementPanel.java:49
+#: Miradi/source/org/miradi/dialogs/viability/FactorPropertiesViabilityTreeManagementPanel.java:51
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:148
 msgid "Tab|Indicators"
 msgstr "Indicadores"
