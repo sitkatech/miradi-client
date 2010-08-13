@@ -53,10 +53,12 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 		this(questionToUse, SINGLE_COLUMN);
 	}
 	
-	public AbstractQuestionEditorComponent(ChoiceQuestion questionToUse, int columnCount)
+	public AbstractQuestionEditorComponent(ChoiceQuestion questionToUse, int columnCountToUse)
 	{
-		setLayout(new BasicGridLayout(0,columnCount));
 		question = questionToUse;
+		columnCount = columnCountToUse;
+	
+		setLayout(new BasicGridLayout(0, columnCount));
 		choiceItemToToggleButtonMap = new HashMap<ChoiceItem, JToggleButton>();
 		
 		rebuildToggleButtonsBoxes();
@@ -82,7 +84,11 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 		addAdditionalComponent();
 		ChoiceItem[] choices = getQuestion().getChoices();
 		clearChoiceItemToToggleButtonMap();
-		MiradiPanel toggleButtonsPanel = new MiradiPanel(new GridLayoutPlus(0, 3)); 
+		final int ICON_COMPONENT_COUNT = 1;
+		final int TOGGLE_BUTTON_COMPONENT_COUNT = 1;
+		final int DESCRIPTION_COMPONENT_COUNT = 1;
+		final int TOTAL_COMPONENT_COUNT_PER_CHOICE = ICON_COMPONENT_COUNT + TOGGLE_BUTTON_COMPONENT_COUNT + DESCRIPTION_COMPONENT_COUNT;
+		MiradiPanel toggleButtonsPanel = new MiradiPanel(new GridLayoutPlus(0, getColumnCount() * TOTAL_COMPONENT_COUNT_PER_CHOICE)); 
 		toggleButtonsPanel.setBackground(getTogglePanelBackgroundColor());
 		for (int index = 0; index < choices.length; ++index)
 		{
@@ -175,6 +181,11 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 		return question;
 	}
 	
+	private int getColumnCount()
+	{
+		return columnCount;
+	}
+	
 	abstract protected void toggleButtonStateChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception;
 	
 	class ToggleButtonHandler implements ActionListener
@@ -197,5 +208,6 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 	
 	private ChoiceQuestion question;
 	protected HashMap<ChoiceItem, JToggleButton> choiceItemToToggleButtonMap;
+	private int columnCount;
 	protected static final int SINGLE_COLUMN = 1;
 }
