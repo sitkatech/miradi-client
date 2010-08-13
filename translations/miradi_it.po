@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-13 11:35-0500\n"
+"POT-Creation-Date: 2010-08-13 11:38-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -5667,7 +5667,7 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:105
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:145
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:61
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:122
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:123
 msgid "Summary"
 msgstr ""
 
@@ -6519,7 +6519,7 @@ msgstr ""
 msgid "Tagged Items"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:101
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:102
 msgid "Tags"
 msgstr ""
 
@@ -7022,7 +7022,7 @@ msgstr ""
 msgid "Title|Simple Threat Rating"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityFieldsPanel.java:44
+#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityFieldsPanel.java:43
 msgid "Title|Simple Viability"
 msgstr ""
 
