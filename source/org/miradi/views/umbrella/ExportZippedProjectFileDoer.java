@@ -24,30 +24,24 @@ import java.io.File;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.project.Project;
 import org.miradi.project.ProjectZipper;
 import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.MpzFileChooser;
-import org.miradi.views.MainWindowDoer;
 
 
 
-public class ExportZippedProjectFileDoer extends MainWindowDoer
+public class ExportZippedProjectFileDoer extends AbstractFileSaverDoer
 {
 	@Override
-	public boolean isAvailable() 
+	protected EAMFileSaveChooser createFileChooser()
 	{
-		Project project = getProject();
-		return project.isOpen();
+		return new MpzFileChooser(getMainWindow());
 	}
 
 	@Override
-	public void doIt() throws Exception 
+	protected void doWork(File chosen) throws Exception
 	{
-		if (!isAvailable())
-			return;
-
-		perform(getMainWindow(), getProject().getDatabase().getCurrentLocalProjectDirectory()); 
+		export(getProject().getDatabase().getCurrentLocalProjectDirectory(), chosen); 
 	}
 
 	static public void perform(MainWindow mainWindow, File directoryToZip) throws CommandFailedException
