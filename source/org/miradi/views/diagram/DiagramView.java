@@ -770,10 +770,12 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	private void handleTextBoxZOrderChanged(ORef diagramFactorRef) throws Exception
 	{
-		getDiagramModel().sortLayers();
-		
-		FactorCell factorCell = getDiagramModel().getFactorCellByRef(diagramFactorRef);
-		getDiagramModel().updateCell(factorCell);
+		if (getDiagramModel().containsDiagramFactor(diagramFactorRef))
+		{
+			getDiagramModel().sortLayers();
+			FactorCell factorCell = getDiagramModel().getFactorCellByRef(diagramFactorRef);
+			getDiagramModel().updateCell(factorCell);
+		}
 	}
 
 	private void forceDiagramComponentRepaint()
