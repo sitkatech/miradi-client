@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-13 09:17-0500\n"
+"POT-Creation-Date: 2010-08-13 09:20-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -2476,7 +2476,7 @@ msgstr "Seleccione Carpeta."
 msgid "Choose Goal to Create from"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/CloneIndicatorDoer.java:32
+#: Miradi/source/org/miradi/views/diagram/CloneIndicatorDoer.java:33
 msgid "Choose Indicator to Create from"
 msgstr ""
 
