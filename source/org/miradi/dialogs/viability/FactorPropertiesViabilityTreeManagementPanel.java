@@ -31,10 +31,12 @@ public class FactorPropertiesViabilityTreeManagementPanel extends TargetViabilit
 	public FactorPropertiesViabilityTreeManagementPanel(MainWindow mainWindowToUse, ORef factorRef, Actions actions) throws Exception
 	{
 		super(mainWindowToUse, factorRef);
+		
 		panelDescription = PANEL_DESCRIPTION_INDICATORS;
 		icon = new IndicatorIcon();
 	}  
 	
+	@Override
 	public String getSplitterDescription()
 	{
 		return PANEL_DESCRIPTION_INDICATORS + SPLITTER_TAG;
