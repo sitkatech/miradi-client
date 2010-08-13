@@ -85,6 +85,12 @@ public class SubTarget extends BaseObject
 		return getData(TAG_SHORT_LABEL);
 	}
 	
+	@Override
+	public String toString()
+	{
+		return getFullName();
+	}
+	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
