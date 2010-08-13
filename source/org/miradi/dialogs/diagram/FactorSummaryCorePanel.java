@@ -89,6 +89,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 
 		if(factorToEdit.isTarget())
 		{
+			addField(createMultilineField(Target.TAG_CURRENT_STATUS_JUSTIFICATION));
 			addField(createStringField(Target.TAG_SPECIES_LATIN_NAME));
 			addField(createEditableCodeListField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, new HabitatAssociationQuestion(), 1));
 		}
