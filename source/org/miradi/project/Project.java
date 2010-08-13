@@ -761,6 +761,9 @@ public class Project
 
 	private void createDefaultPlanningCustomization() throws Exception
 	{
+		if (getPool(ObjectTreeTableConfiguration.getObjectType()).getORefList().size() > 0)
+			return;
+
 		ViewData planningViewData = getViewData(PlanningView.getViewName());
 		createDefaultConfigurationObject(planningViewData, ViewData.TAG_TREE_CONFIGURATION_REF);
 	}
