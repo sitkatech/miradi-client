@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-13 11:35-0500\n"
+"POT-Creation-Date: 2010-08-13 11:38-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -6024,7 +6024,7 @@ msgstr "Subkelas harus menggantikan metode ini. "
 #: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:105
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:145
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:61
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:122
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:123
 msgid "Summary"
 msgstr "Ringkasan "
 
@@ -6884,7 +6884,7 @@ msgstr "Tag"
 msgid "Tagged Items"
 msgstr "Butir yang Ditandai"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:101
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:102
 msgid "Tags"
 msgstr "Tag "
 
@@ -7440,7 +7440,7 @@ msgstr ""
 msgid "Title|Simple Threat Rating"
 msgstr "Peringkat Ancaman-Target "
 
-#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityFieldsPanel.java:44
+#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityFieldsPanel.java:43
 msgid "Title|Simple Viability"
 msgstr "Kelangsungan Sederhana "
 
