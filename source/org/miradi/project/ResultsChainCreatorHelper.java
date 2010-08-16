@@ -85,7 +85,7 @@ public class ResultsChainCreatorHelper
 			
 			updateAllGroupBoxChildren(clonedDiagramFactors);
 			
-			HashMap clonedDiagramLinks = cloneDiagramLinks(diagramLinks, clonedDiagramFactors);
+			HashMap<DiagramLink, DiagramLink> clonedDiagramLinks = cloneDiagramLinks(diagramLinks, clonedDiagramFactors);
 			ORefList clonedDiagramLinkRefs = extractClonedObjectRefs(clonedDiagramLinks);
 			IdList diagramLinkList = clonedDiagramLinkRefs.convertToIdList(DiagramLink.getObjectType());
 			CommandSetObjectData addLinksToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkList);
@@ -479,7 +479,7 @@ public class ResultsChainCreatorHelper
 		return allDiagramLinks.toArray(new DiagramLink[0]);
 	}
 	
-	private HashMap cloneDiagramLinks(DiagramLink[] diagramLinks, HashMap diagramFactors) throws Exception
+	private HashMap<DiagramLink, DiagramLink> cloneDiagramLinks(DiagramLink[] diagramLinks, HashMap diagramFactors) throws Exception
 	{
 		HashMap<DiagramLink, DiagramLink> originalAndClonedDiagramLinks = new HashMap<DiagramLink, DiagramLink>();
 		for (int i = 0; i < diagramLinks.length; i++)
