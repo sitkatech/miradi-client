@@ -21,7 +21,7 @@ package org.miradi.objecthelpers;
 
 import java.util.Comparator;
 
-public class ObjectToStringSorter implements Comparator
+public class ObjectToStringSorter implements Comparator<Object>
 {
 	public int compare(Object object1, Object object2)
 	{
