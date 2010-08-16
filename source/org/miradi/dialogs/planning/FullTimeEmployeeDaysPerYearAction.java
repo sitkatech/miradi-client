@@ -62,7 +62,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 
 	public void actionPerformed(ActionEvent event)
 	{
-		Vector<Component> buttons = new Vector();
+		Vector<Component> buttons = new Vector<Component>();
 		PanelButton insertButton = new PanelButton(EAM.text("Insert"));
 		insertButton.addActionListener(new InsertButtonHandler());
 		buttons.add(insertButton);
