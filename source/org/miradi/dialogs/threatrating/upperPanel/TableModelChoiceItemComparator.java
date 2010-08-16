@@ -36,10 +36,8 @@ public class TableModelChoiceItemComparator extends AbstractTableModelComparator
 		}
 		
 		@Override
-		public int compare(Object object1, Object object2)
+		public int compare(Integer row1, Integer row2)
 		{
-			Integer row1 = (Integer)object1;
-			Integer row2 = (Integer)object2;
 			Object value1 = getValue(row1.intValue());
 			Object value2 = getValue(row2.intValue());
 			
