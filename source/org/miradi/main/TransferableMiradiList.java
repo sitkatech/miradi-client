@@ -297,12 +297,20 @@ public class TransferableMiradiList implements Transferable, Serializable
 		diagramObjectRefCopiedFrom =  new ORef(diagramType, new BaseId(diagramId)); 
 		
 		projectName = (String) objectIn.readObject();
-		factorDeepCopies = (Vector<String>) objectIn.readObject();
-		diagramFactorDeepCopies = (Vector<String>) objectIn.readObject();
-		threatStressRatingCopies = (Vector<String>) objectIn.readObject();
-		factorLinkDeepCopies = (Vector<String>) objectIn.readObject();
-		diagramLinkDeepCopies = (Vector<String>) objectIn.readObject();
+		factorDeepCopies = readStringVector(objectIn);
+		diagramFactorDeepCopies = readStringVector(objectIn);
+		threatStressRatingCopies = readStringVector(objectIn);
+		factorLinkDeepCopies = readStringVector(objectIn);
+		diagramLinkDeepCopies = readStringVector(objectIn);
 		rectWithUpperMostLeftMostCorner = (Rectangle) objectIn.readObject();
+	}
+
+	// TODO: Is there a way to avoid suppressing warnings here?
+	@SuppressWarnings("unchecked")
+	private Vector<String> readStringVector(ObjectInputStream objectIn)
+			throws IOException, ClassNotFoundException
+	{
+		return (Vector<String>) objectIn.readObject();
 	}
 		
 	public static DataFlavor miradiListDataFlavor = new DataFlavor(TransferableMiradiList.class, "Miradi Objects");
