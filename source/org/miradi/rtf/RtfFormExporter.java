@@ -224,7 +224,7 @@ public class RtfFormExporter
 
 		ObjectData rawObjectData = baseObject.getField(fieldTag);
 		if (rawObjectData.isCodeListData())
-			return createFromCodeList((CodeListData) rawObjectData);
+			return ((CodeListData) rawObjectData).toString();
 		
 		if (rawObjectData.isChoiceItemData())
 			return createFromChoiceData((ChoiceData) rawObjectData);
@@ -241,21 +241,6 @@ public class RtfFormExporter
 		String code = choiceData.get();
 		ChoiceItem choiceItem = question.findChoiceByCode(code);
 		return choiceItem.getLabel();
-	}
-
-	private String createFromCodeList(CodeListData codeListData)
-	{
-		StringBuffer choices = new StringBuffer();
-		CodeList codeList = codeListData.getCodeList();
-		ChoiceQuestion question = codeListData.getChoiceQuestion();
-		for (int index = 0; index < codeList.size(); ++index)
-		{
-			ChoiceItem choiceItem = question.findChoiceByCode(codeList.get(index));
-			choices.append(choiceItem.getLabel());
-			choices.append(FIELD_SPACING);
-		}
-		
-		return choices.toString();
 	}
 	
 	private String createFromStringMapData(StringMapData stringMapData, FormRow formRow)

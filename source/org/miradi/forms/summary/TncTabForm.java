@@ -23,7 +23,14 @@ import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
+import org.miradi.questions.StaticQuestionManager;
+import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
+import org.miradi.questions.TncMarineEcoRegionQuestion;
+import org.miradi.questions.TncOperatingUnitsQuestion;
+import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
+import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.TncProjectSharingQuestion;
+import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.views.summary.TNCSummaryPanel;
 
 
@@ -39,14 +46,14 @@ public class TncTabForm extends FieldPanelSpec
 		addLabelAndField(Xenodata.getObjectType(), Xenodata.TAG_PROJECT_ID);
 		addChoiceField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, new TncProjectSharingQuestion());
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
-		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_PLACE_TYPES);
-		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);
+		addCodeListField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_PLACE_TYPES, StaticQuestionManager.getQuestion(TncProjectPlaceTypeQuestion.class));
+		addCodeListField(TncProjectData.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, StaticQuestionManager.getQuestion(TncOrganizationalPrioritiesQuestion.class));
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
 		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
-		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
-		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION);
-		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_MARINE_ECO_REGION);
-		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION);
+		addCodeListField(projectMetadataType, ProjectMetadata.TAG_TNC_OPERATING_UNITS, StaticQuestionManager.getQuestion(TncOperatingUnitsQuestion.class));
+		addCodeListField(projectMetadataType, ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, StaticQuestionManager.getQuestion(TncTerrestrialEcoRegionQuestion.class));
+		addCodeListField(projectMetadataType, ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, StaticQuestionManager.getQuestion(TncMarineEcoRegionQuestion.class));
+		addCodeListField(projectMetadataType, ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, StaticQuestionManager.getQuestion(TncFreshwaterEcoRegionQuestion.class));
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD);
 		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_LEVEL_COMMENTS);

@@ -21,6 +21,10 @@ package org.miradi.forms.summary;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.WwfProjectData;
+import org.miradi.questions.StaticQuestionManager;
+import org.miradi.questions.WwfEcoRegionsQuestion;
+import org.miradi.questions.WwfManagingOfficesQuestion;
+import org.miradi.questions.WwfRegionsQuestion;
 import org.miradi.views.summary.WWFSummaryPanel;
 
 public class WwfTabForm extends FieldPanelSpec
@@ -29,8 +33,8 @@ public class WwfTabForm extends FieldPanelSpec
 	{
 		setTranslatedTitle(WWFSummaryPanel.getWwfPanelDescription());
 
-		addLabelAndField(WwfProjectData.getObjectType(), WwfProjectData.TAG_MANAGING_OFFICES);
-		addLabelAndField(WwfProjectData.getObjectType(), WwfProjectData.TAG_REGIONS);
-		addLabelAndField(WwfProjectData.getObjectType(), WwfProjectData.TAG_ECOREGIONS);		
+		addCodeListField(WwfProjectData.getObjectType(), WwfProjectData.TAG_MANAGING_OFFICES, StaticQuestionManager.getQuestion(WwfManagingOfficesQuestion.class));
+		addCodeListField(WwfProjectData.getObjectType(), WwfProjectData.TAG_REGIONS, StaticQuestionManager.getQuestion(WwfRegionsQuestion.class));
+		addCodeListField(WwfProjectData.getObjectType(), WwfProjectData.TAG_ECOREGIONS, StaticQuestionManager.getQuestion(WwfEcoRegionsQuestion.class));		
 	}
 }
