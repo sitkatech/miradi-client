@@ -77,7 +77,7 @@ public class ResultsChainCreatorHelper
 			ORef newResultsChainRef = createResultsChain.getObjectRef();
 			ResultsChainDiagram resultsChain = (ResultsChainDiagram) getProject().findObject(newResultsChainRef);
 			
-			HashMap clonedDiagramFactors = cloneDiagramFactors(diagramFactors);
+			HashMap<DiagramFactor, DiagramFactor> clonedDiagramFactors = cloneDiagramFactors(diagramFactors);
 			ORefList clonedDiagramFactorRefs = extractClonedObjectRefs(clonedDiagramFactors);
 			IdList idList = clonedDiagramFactorRefs.convertToIdList(DiagramFactor.getObjectType());
 			CommandSetObjectData addFactorsToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList);
@@ -194,7 +194,7 @@ public class ResultsChainCreatorHelper
 		return EAM.text("Results Chain");
 	}
 
-	private ORefList extractClonedObjectRefs(HashMap<BaseObject, BaseObject> clonedBaseObjects)
+	private ORefList extractClonedObjectRefs(HashMap<? extends BaseObject, ? extends BaseObject> clonedBaseObjects)
 	{
 		ORefList clonedBaseObjectRefs = new ORefList();
 		Vector<BaseObject> baseObjects = new Vector<BaseObject>(clonedBaseObjects.values());
