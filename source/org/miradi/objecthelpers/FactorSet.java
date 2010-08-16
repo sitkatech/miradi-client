@@ -25,18 +25,13 @@ import java.util.Iterator;
 
 import org.miradi.objects.Factor;
 
-public class FactorSet implements Collection<Factor>
+public class FactorSet extends HashSet<Factor>
 {
-	public FactorSet()
-	{
-		nodes = new HashSet<Factor>();
-	}
-	
 	public void attemptToAdd(Factor node)
 	{
 		if(isLegal(node))
 		{
-			nodes.add(node);
+			super.add(node);
 		}
 	}
 	
@@ -54,31 +49,18 @@ public class FactorSet implements Collection<Factor>
 	
 	public boolean isLegal(Factor node)
 	{
-		
 		return true;
-	}
-
-	public int size()
-	{
-		
-		return nodes.size();
-	}
-
-	public Object[] toArray()
-	{
-		return nodes.toArray();
-
 	}
 
 	public Factor[] toFactorArray()
 	{
-		return nodes.toArray(new Factor[0]);
+		return toArray(new Factor[0]);
 	}
 	
 	public ORefSet getFactorRefs()
 	{
 		ORefSet factorRefs = new ORefSet();
-		Iterator factors = nodes.iterator();
+		Iterator factors = iterator();
 		while (factors.hasNext())
 		{
 			Factor factor = (Factor) factors.next();
@@ -88,34 +70,9 @@ public class FactorSet implements Collection<Factor>
 		return factorRefs;
 	}
 	
-	public boolean contains(Factor node)
-	{
-		return nodes.contains(node);
-	}
-
-	public void clear()
-	{
-		nodes.clear();
-	}
-
-	public boolean isEmpty()
-	{
-		return nodes.isEmpty();
-	}
-
 	public boolean add(Factor o)
 	{
 		throw new RuntimeException("Must use attemptToAdd instead of add");
-	}
-
-	public boolean contains(Object o)
-	{
-		return nodes.contains(o);
-	}
-
-	public boolean remove(Object o)
-	{
-		return nodes.remove(o);
 	}
 
 	public boolean addAll(Collection c)
@@ -123,47 +80,6 @@ public class FactorSet implements Collection<Factor>
 		throw new RuntimeException("Must use attemptToAdd instead of addAll");
 	}
 
-	public boolean containsAll(Collection c)
-	{
-		return nodes.containsAll(c);
-	}
-
-	public boolean removeAll(Collection c)
-	{
-		return nodes.retainAll(c);
-	}
-
-	public boolean retainAll(Collection c)
-	{
-		return nodes.retainAll(c);
-	}
-
-	public Iterator<Factor> iterator()
-	{
-		return nodes.iterator();
-	}
-
-	public Object[] toArray(Object[] a)
-	{
-		return nodes.toArray(a);
-	}
-		
-	@Override
-	public boolean equals(Object rawOther)
-	{
-		if(!(rawOther instanceof FactorSet))
-			return false;
-		
-		FactorSet other = (FactorSet)rawOther;
-		return nodes.equals(other.nodes);
-	}
-
-	@Override
-	public int hashCode()
-	{
-		return nodes.hashCode();
-	}
-	
 	@Override
 	public String toString()
 	{
@@ -179,6 +95,4 @@ public class FactorSet implements Collection<Factor>
 		result.append("]");
 		return result.toString();
 	}
-
-	HashSet<Factor> nodes;
 }
