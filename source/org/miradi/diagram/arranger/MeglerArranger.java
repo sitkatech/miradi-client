@@ -194,23 +194,15 @@ public class MeglerArranger
 		return toRemove;
 	}
 
-	class LinkCountComparator implements Comparator
+	class LinkCountComparator implements Comparator<DiagramFactor>
 	{
 		public LinkCountComparator(int directionToUse)
 		{
 			direction = directionToUse;
 		}
 		
-		public int compare(Object arg1, Object arg2)
+		public int compare(DiagramFactor diagramFactor1, DiagramFactor diagramFactor2)
 		{
-			if(!(arg1 instanceof DiagramFactor))
-				throw new RuntimeException("Unexpected type: " + arg1.getClass().getCanonicalName());
-			if(!(arg2 instanceof DiagramFactor))
-				throw new RuntimeException("Unexpected type: " + arg2.getClass().getCanonicalName());
-			
-			DiagramFactor diagramFactor1 = (DiagramFactor)arg1;
-			DiagramFactor diagramFactor2 = (DiagramFactor)arg2;
-			
 			int linkCount1 = getRefsOfRelevantDiagramLinks(diagramFactor1).size();
 			int linkCount2 = getRefsOfRelevantDiagramLinks(diagramFactor2).size();
 
