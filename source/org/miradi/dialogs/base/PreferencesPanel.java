@@ -66,6 +66,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	public PreferencesPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse.getProject());
+		
 		mainWindow = mainWindowToUse;
 		project = getMainWindow().getProject();
 		add(createTabs(), BorderLayout.CENTER);
@@ -101,16 +102,16 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	{
 		JTabbedPane tabPane = new PanelTabbedPane();
 		
-		if(project.isOpen())
+		if(getProject().isOpen())
 		{
 			tabPane.addTab(EAM.text("Systemwide"), createSystemwideTab());
 			tabPane.addTab(EAM.text("Diagram"), createDiagramTab());
 
-			summaryPlanningPanel = new SummaryPlanningPanel(getMainWindow(), project.getMetadata().getRef());
+			summaryPlanningPanel = new SummaryPlanningPanel(getMainWindow(), getProject().getMetadata().getRef());
 			tabPane.addTab(EAM.text("Threat Ratings"), createThreatRatingTab());
 			tabPane.addTab(EAM.text("Planning"), summaryPlanningPanel);
 			
-			projectSettingsPanel = new ProjectSettingsPanel(project);
+			projectSettingsPanel = new ProjectSettingsPanel(getProject());
 			tabPane.addTab(EAM.text("Project Settings"), projectSettingsPanel);
 		}
 		else
@@ -121,7 +122,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		
 		return tabPane;
 	}
-	
+
 	private JPanel createDataLocationTab()
 	{
 		return new DataLocationChooserPanel(getMainWindow());
@@ -203,7 +204,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		cellRatingsVisibleCheckBox.addActionListener(this);
 		threatTab.add(cellRatingsVisibleCheckBox);
 		
-		threatRatingPreferencesPanel = new ThreatRatingPreferencesPanel(project); 
+		threatRatingPreferencesPanel = new ThreatRatingPreferencesPanel(getProject()); 
 		threatTab.add(threatRatingPreferencesPanel);
 		
 		return threatTab;
@@ -376,6 +377,11 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	public void actionPerformed(ActionEvent e)
 	{
 		update();
+	}
+	
+	private Project getProject()
+	{
+		return project;
 	}
 	
 	private MainWindow getMainWindow()
