@@ -110,7 +110,8 @@ public class TreeTableModelAdapter extends AbstractTableModel
 	return treeTableModel.getColumnName(column);
     }
 
-    public Class getColumnClass(int column) {
+	// Modified Benetech 2010-08-16: Added collection typing
+    public Class<?> getColumnClass(int column) {
 	return treeTableModel.getColumnClass(column);
     }
 

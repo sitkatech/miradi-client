@@ -92,7 +92,7 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	}
 
     @Override
-	public Class getColumnClass(int columnIndex) 
+	public Class<?> getColumnClass(int columnIndex) 
     {
     	if (isIsActiveColumn(columnIndex))
     		return Boolean.class;
