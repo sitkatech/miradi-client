@@ -91,7 +91,7 @@ public class ThreatSummaryColumnTableModel extends AbstractThreatPerRowTableMode
 	}
 	
 	@Override
-	public Comparator getComparator(int columnToSortOn)
+	public Comparator<Integer> getComparator(int columnToSortOn)
 	{
 		return new TableModelChoiceItemComparator(this, columnToSortOn, getThreatRatingQuestion());
 	}
