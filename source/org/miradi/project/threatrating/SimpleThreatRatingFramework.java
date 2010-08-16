@@ -149,12 +149,10 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return ratingValueOptions;
 	}
 	
-	class OptionSorter implements Comparator
+	class OptionSorter implements Comparator<ValueOption>
 	{
-		public int compare(Object raw1, Object raw2)
+		public int compare(ValueOption option1, ValueOption option2)
 		{
-			ValueOption option1 = (ValueOption)raw1;
-			ValueOption option2 = (ValueOption)raw2;
 			Integer value1 = new Integer(option1.getNumericValue());
 			Integer value2 = new Integer(option2.getNumericValue());
 			return -(value1.compareTo(value2));
