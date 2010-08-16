@@ -28,7 +28,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 
-public abstract class AbstractTableModelComparator implements Comparator
+public abstract class AbstractTableModelComparator implements Comparator<Integer>
 {
 	public AbstractTableModelComparator(TableModel modelToUse, int columnToSort)
 	{
@@ -72,7 +72,7 @@ public abstract class AbstractTableModelComparator implements Comparator
 		return baseObject.getRef();
 	}
 	
-	abstract public int compare(Object o1, Object o2);
+	abstract public int compare(Integer row1, Integer row2);
 
 	protected TableModel model;
 	protected int columnToSortBy;
