@@ -54,7 +54,7 @@ public class TableModelChoiceItemComparator extends AbstractTableModelComparator
 		protected int compareValues(Comparable element1, Comparable element2)
 		{
 			if (!(element1 instanceof ChoiceItem) || !(element2 instanceof ChoiceItem))
-				return element1.compareTo(element2);
+				return element1.toString().compareToIgnoreCase(element2.toString());
 				
 			ChoiceItem choiceItem1 = (ChoiceItem) element1;
 			ChoiceItem choiceItem2 = (ChoiceItem) element2;
