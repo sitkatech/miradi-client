@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
 
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
@@ -83,5 +85,18 @@ public class AbstractAssignmentDetailsMainTable extends AbstractComponentTable
 	public boolean shouldSaveColumnWidth()
 	{
 		return false;
+	}
+	
+	@Override
+	public String getToolTipText(MouseEvent event)
+	{
+		Point at = new Point(event.getX(), event.getY());
+		int row = rowAtPoint(at);
+		int column = columnAtPoint(at);
+		Object object = getAbstractSummaryTableModel().getValueAt(row, column);
+		if(object == null)
+			return null;
+		
+		return "<html><b>" + object.toString() + "</b><br>";
 	}
 }
