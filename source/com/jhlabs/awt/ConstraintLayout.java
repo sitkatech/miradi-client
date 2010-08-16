@@ -36,7 +36,8 @@ public class ConstraintLayout implements LayoutManager2 {
 
 	protected int hMargin = 0;
 	protected int vMargin = 0;
-	private Hashtable constraints;
+	// Modified Benetech 2010-08-16: Added collection typing
+	private Hashtable<Component, Object> constraints;
 	protected boolean includeInvisible = false;
 
 	public void addLayoutComponent(String constraint, Component c) {
@@ -53,9 +54,10 @@ public class ConstraintLayout implements LayoutManager2 {
 	}
 
 	public void setConstraint(Component c, Object constraint) {
+		// Modified Benetech 2010-08-16: Added collection typing
 		if (constraint != null) {
 			if (constraints == null)
-				constraints = new Hashtable();
+				constraints = new Hashtable<Component, Object>();
 			constraints.put(c, constraint);
 		} else if (constraints != null)
 			constraints.remove(c);
