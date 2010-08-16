@@ -21,6 +21,8 @@ package org.miradi.forms.summary;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.questions.CountriesQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.views.summary.SummaryLocationPanel;
 
 public class LocationTabForm extends FieldPanelSpec
@@ -34,7 +36,7 @@ public class LocationTabForm extends FieldPanelSpec
 		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_LATITUDE);
 		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_LONGITUDE);
 		
-		addLabelAndField(type, ProjectMetadata.TAG_COUNTRIES);
+		addCodeListField(type, ProjectMetadata.TAG_COUNTRIES, StaticQuestionManager.getQuestion(CountriesQuestion.class));
 		
 		addLabelAndField(type, ProjectMetadata.TAG_STATE_AND_PROVINCES);
 		addLabelAndField(type, ProjectMetadata.TAG_MUNICIPALITIES);

@@ -24,9 +24,12 @@ import org.miradi.forms.FormConstant;
 import org.miradi.forms.FormFieldData;
 import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormRow;
+import org.miradi.forms.objects.FormFieldCodeListData;
 import org.miradi.main.EAM;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.WcpaProjectData;
+import org.miradi.questions.ProtectedAreaCategoryQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.views.summary.ProtectedAreaPanel;
 
 public class ScopeTabProtectedAreaSubPanelForm extends FieldPanelSpec
@@ -39,7 +42,7 @@ public class ScopeTabProtectedAreaSubPanelForm extends FieldPanelSpec
 		
 		FormRow categoryRow = new FormRow();
 		categoryRow.addLeftFormItem(new FormConstant(EAM.text("Label|Protected Area Categories")));
-		categoryRow.addRightFormItem(new FormFieldData(type, ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES));
+		categoryRow.addRightFormItem(new FormFieldCodeListData(type, ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, StaticQuestionManager.getQuestion(ProtectedAreaCategoryQuestion.class)));
 		categoryRow.addRightFormItem(new FormFieldLabel(type, ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES));
 		categoryRow.addRightFormItem(new FormFieldData(type, ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES));
 		addFormRow(categoryRow);
