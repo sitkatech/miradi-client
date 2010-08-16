@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 13:16-0500\n"
+"POT-Creation-Date: 2010-08-16 13:52-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1695,7 +1695,7 @@ msgid "An error has occured while writing assignment data."
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:332
-#: Miradi/source/org/miradi/diagram/DiagramModel.java:796
+#: Miradi/source/org/miradi/diagram/DiagramModel.java:798
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
 "the project has gotten corrupted. Please contact the Miradi team for help "
