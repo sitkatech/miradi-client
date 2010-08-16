@@ -27,7 +27,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.HtmlUtilities;
 
-public abstract class TreeTableNode implements Comparable
+public abstract class TreeTableNode implements Comparable<TreeTableNode>
 {
 	abstract public ORef getObjectReference();
 	public abstract int getChildCount();
@@ -108,7 +108,7 @@ public abstract class TreeTableNode implements Comparable
 		Arrays.sort(nodes);
 	}
 	
-	public int compareTo(Object otherObject)
+	public int compareTo(TreeTableNode otherObject)
 	{
 		return toString().compareTo(otherObject.toString());
 	}
