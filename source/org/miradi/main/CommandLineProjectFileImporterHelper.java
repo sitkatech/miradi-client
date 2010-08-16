@@ -157,7 +157,7 @@ public class CommandLineProjectFileImporterHelper
 	
 	private boolean isMpz(ZipFile zipFile)
 	{
-		Enumeration<ZipEntry> entries = (Enumeration<ZipEntry>) zipFile.entries();
+		Enumeration<? extends ZipEntry> entries = zipFile.entries();
 		while (entries.hasMoreElements())
 		{
 			ZipEntry entry = entries.nextElement();
