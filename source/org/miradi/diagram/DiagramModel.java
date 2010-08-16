@@ -423,7 +423,9 @@ abstract public class DiagramModel extends DefaultGraphModel
 		return getFactorLinks(factorCell).size();
 	}
 	
-	public Set getFactorLinks(FactorCell node)
+	// NOTE: Suppressing warnings because we are calling an unchecked JGraph method
+	@SuppressWarnings("unchecked")
+	public Set<LinkCell> getFactorLinks(FactorCell node)
 	{
 		return getEdges(this, new Object[] {node});
 	}
