@@ -84,11 +84,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 		addAdditionalComponent();
 		ChoiceItem[] choices = getQuestion().getChoices();
 		clearChoiceItemToToggleButtonMap();
-		final int ICON_COMPONENT_COUNT = 1;
-		final int TOGGLE_BUTTON_COMPONENT_COUNT = 1;
-		final int DESCRIPTION_COMPONENT_COUNT = 1;
-		final int TOTAL_COMPONENT_COUNT_PER_CHOICE = ICON_COMPONENT_COUNT + TOGGLE_BUTTON_COMPONENT_COUNT + DESCRIPTION_COMPONENT_COUNT;
-		MiradiPanel toggleButtonsPanel = new MiradiPanel(new GridLayoutPlus(0, getColumnCount() * TOTAL_COMPONENT_COUNT_PER_CHOICE)); 
+		MiradiPanel toggleButtonsPanel = new MiradiPanel(new GridLayoutPlus(0, getColumnCount() * getNumberOfComponentsPerChoice())); 
 		toggleButtonsPanel.setBackground(getTogglePanelBackgroundColor());
 		for (int index = 0; index < choices.length; ++index)
 		{
@@ -98,6 +94,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 			toggleButton.addActionListener(new ToggleButtonHandler());
 			choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
 			Icon icon = choiceItem.getIcon();
+			
 			toggleButtonsPanel.add(getSafeIconLabel(icon));
 			toggleButtonsPanel.add(toggleButton);
 			toggleButtonsPanel.add(createDescriptionComponent(choiceItem));
@@ -106,6 +103,15 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 		add(new MiradiScrollPane(toggleButtonsPanel));
 		revalidate();
 		repaint();
+	}
+
+	private int getNumberOfComponentsPerChoice()
+	{
+		final int ICON_COMPONENT_COUNT = 1;
+		final int TOGGLE_BUTTON_COMPONENT_COUNT = 1;
+		final int DESCRIPTION_COMPONENT_COUNT = 1;
+		final int TOTAL_COMPONENT_COUNT_PER_CHOICE = ICON_COMPONENT_COUNT + TOGGLE_BUTTON_COMPONENT_COUNT + DESCRIPTION_COMPONENT_COUNT;
+		return TOTAL_COMPONENT_COUNT_PER_CHOICE;
 	}
 	
 	private Component createDescriptionComponent(ChoiceItem choiceItem)
