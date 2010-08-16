@@ -84,7 +84,8 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 		addAdditionalComponent();
 		ChoiceItem[] choices = getQuestion().getChoices();
 		clearChoiceItemToToggleButtonMap();
-		MiradiPanel toggleButtonsPanel = new MiradiPanel(new GridLayoutPlus(0, getColumnCount() * getNumberOfComponentsPerChoice())); 
+		int gridColumnCount = getColumnCount() * getNumberOfComponentsPerChoice();
+		MiradiPanel toggleButtonsPanel = new MiradiPanel(new GridLayoutPlus(0, gridColumnCount)); 
 		toggleButtonsPanel.setBackground(getTogglePanelBackgroundColor());
 		for (int index = 0; index < choices.length; ++index)
 		{
