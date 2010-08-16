@@ -27,7 +27,6 @@ import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.project.FactorDeleteHelper;
@@ -112,33 +111,34 @@ public class DeleteSelectedItemDoer extends ViewDoer
 
 	private Vector<DiagramLink> extractDiagramLinks(EAMGraphCell[] selectedRelatedCells)
 	{
-		return extractType(selectedRelatedCells, DiagramLink.getObjectType());	
-	}
-
-	private Vector<DiagramFactor> extractDiagramFactors(EAMGraphCell[] selectedRelatedCells)
-	{		
-		return extractType(selectedRelatedCells, DiagramFactor.getObjectType());
-	}
-	
-	private Vector extractType(EAMGraphCell[] selectedRelatedCells, int typeToExtract)
-	{
-		Vector<BaseObject> filteredList = new Vector<BaseObject>();
+		Vector<DiagramLink> filteredList = new Vector<DiagramLink>();
 		for (int i = 0; i < selectedRelatedCells.length; ++i)
 		{
 			EAMGraphCell cell = selectedRelatedCells[i];
-			if (cell.getDiagramFactorRef().getObjectType() == typeToExtract)
-			{
-				filteredList.add(cell.getDiagramFactor());
-			}
-			if (cell.getDiagramLinkRef().getObjectType() == typeToExtract)
+			if (DiagramLink.is(cell.getDiagramLinkRef()))
 			{
 				filteredList.add(cell.getDiagramLink());
 			}
 		}
 		
-		return filteredList;
+		return filteredList;	
 	}
 
+	private Vector<DiagramFactor> extractDiagramFactors(EAMGraphCell[] selectedRelatedCells)
+	{		
+		Vector<DiagramFactor> filteredList = new Vector<DiagramFactor>();
+		for (int i = 0; i < selectedRelatedCells.length; ++i)
+		{
+			EAMGraphCell cell = selectedRelatedCells[i];
+			if (DiagramFactor.is(cell.getDiagramFactorRef()))
+			{
+				filteredList.add(cell.getDiagramFactor());
+			}
+		}
+		
+		return filteredList;
+	}
+	
 	public static final String LINK_DELETE_NOTIFY_TEXT = EAM.text("The link(s) will be deleted from all Conceptual Model pages" +
 	  															  " and Results Chains, not just this one. ");
 }
