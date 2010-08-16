@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.ids;
 
 
-public class BaseId implements Comparable
+public class BaseId implements Comparable<BaseId>
 {
 	public BaseId(String idAsString)
 	{
@@ -51,7 +51,7 @@ public class BaseId implements Comparable
 		if(!(other instanceof BaseId))
 			return false;
 		
-		return (compareTo(other) == 0);
+		return (compareTo((BaseId)other) == 0);
 	}
 	
 	@Override
@@ -66,9 +66,9 @@ public class BaseId implements Comparable
 		return Integer.toString(id);
 	}
 
-	public int compareTo(Object other)
+	public int compareTo(BaseId other)
 	{
-		int otherId = ((BaseId)other).asInt();
+		int otherId = other.asInt();
 		if(id < otherId)
 			return -1;
 		if(id > otherId)
