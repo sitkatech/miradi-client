@@ -59,10 +59,7 @@ public abstract class AbstractTableModelComparator implements Comparator<Integer
 		return 0;
 	}
 
-	protected int compareValues(Comparable element1, Comparable element2)
-	{
-		return element1.compareTo(element2);
-	}
+	abstract protected int compareValues(Comparable element1, Comparable element2);
 	
 	protected ORef getRefForRow(int row)
 	{
