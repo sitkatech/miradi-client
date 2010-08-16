@@ -102,7 +102,7 @@ public class TableHeaderWithExpandCollapseIcons extends JTableHeader
 
 	private Vector<Rectangle> getColumnHeaderBounds()
 	{
-		Vector<Rectangle> columnHeaderBoundsVector = new Vector();
+		Vector<Rectangle> columnHeaderBoundsVector = new Vector<Rectangle>();
 		if(tableWithExpandableColumnsInterface == null)
 			return columnHeaderBoundsVector;
 		
