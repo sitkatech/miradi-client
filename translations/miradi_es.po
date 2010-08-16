@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 13:52-0500\n"
+"POT-Creation-Date: 2010-08-16 16:22-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -4199,7 +4199,7 @@ msgid "Label|Project Dates"
 msgstr "Fechas de proyectos"
 
 #: Miradi/source/org/miradi/views/summary/ProtectedAreaPanel.java:39
-#: Miradi/source/org/miradi/forms/summary/ScopeTabProtectedAreaSubPanelForm.java:41
+#: Miradi/source/org/miradi/forms/summary/ScopeTabProtectedAreaSubPanelForm.java:44
 msgid "Label|Protected Area Categories"
 msgstr "Categorías de área protegida"
 
