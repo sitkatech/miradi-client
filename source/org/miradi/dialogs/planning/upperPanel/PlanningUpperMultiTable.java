@@ -168,7 +168,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		int modelColumn = getCastedModel().findColumnWithinSubTable(multiModelColumn);
 		PlanningViewAbstractTreeTableSyncedTableModel model = getCastedModel().getCastedModel(multiModelColumn);
 
-		Vector<Action> actions = new Vector();
+		Vector<Action> actions = new Vector<Action>();
 		actions.add(getActions().get(ActionDeletePlanningViewTreeNode.class));
 		actions.add(null);
 		actions.add(getActions().get(ActionExpandAllRows.class));
