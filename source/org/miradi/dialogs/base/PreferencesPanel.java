@@ -68,7 +68,6 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		super(mainWindowToUse.getProject());
 		
 		mainWindow = mainWindowToUse;
-		project = getMainWindow().getProject();
 		add(createTabs(), BorderLayout.CENTER);
 		
 		setBackground(AppPreferences.getDarkPanelBackgroundColor());
@@ -381,7 +380,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	
 	private Project getProject()
 	{
-		return project;
+		return getMainWindow().getProject();
 	}
 	
 	private MainWindow getMainWindow()
@@ -389,7 +388,6 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		return mainWindow;
 	}
 
-	private Project project;
 	private MainWindow mainWindow;
 	private DiagramProjectPreferencesPanel diagramProjectPreferencesPanel;
 	private ThreatRatingPreferencesPanel threatRatingPreferencesPanel;
