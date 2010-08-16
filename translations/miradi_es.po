@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 11:14-0500\n"
+"POT-Creation-Date: 2010-08-16 13:16-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -1961,15 +1961,15 @@ msgstr ""
 msgid "Arranging Diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:489
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:481
 msgid "Arranging Strategies..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:482
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:474
 msgid "Arranging Targets..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:471
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:463
 msgid "Arranging Threats..."
 msgstr ""
 
@@ -3303,7 +3303,7 @@ msgid ""
 " CodeList= %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:570
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:562
 msgid "Extracting factors..."
 msgstr ""
 
@@ -5164,7 +5164,7 @@ msgstr "Libra (Reino Unido)"
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:384
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:376
 msgid "Preparing groups..."
 msgstr ""
 
@@ -7679,7 +7679,7 @@ msgstr ""
 msgid "Unspecified"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:396
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:388
 msgid "Updating locations..."
 msgstr ""
 
