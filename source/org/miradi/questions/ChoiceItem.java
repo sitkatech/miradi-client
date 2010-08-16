@@ -23,7 +23,7 @@ import java.awt.Color;
 
 import javax.swing.Icon;
 
-public class ChoiceItem implements Comparable
+public class ChoiceItem implements Comparable<Object>
 {
 	public ChoiceItem(int codeAsInt, String labelToUse, Icon iconToUse)
 	{
