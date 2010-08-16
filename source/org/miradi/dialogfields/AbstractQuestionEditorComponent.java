@@ -35,6 +35,7 @@ import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.ControlPanelHtmlFormViewer;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
@@ -43,7 +44,6 @@ import org.miradi.utils.FillerLabel;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MiradiScrollPane;
 
-import com.jhlabs.awt.BasicGridLayout;
 import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class AbstractQuestionEditorComponent extends DisposablePanel
@@ -57,8 +57,6 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 	{
 		question = questionToUse;
 		columnCount = columnCountToUse;
-	
-		setLayout(new BasicGridLayout(0, columnCount));
 		choiceItemToToggleButtonMap = new HashMap<ChoiceItem, JToggleButton>();
 		
 		rebuildToggleButtonsBoxes();
@@ -84,11 +82,7 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 		addAdditionalComponent();
 		ChoiceItem[] choices = getQuestion().getChoices();
 		clearChoiceItemToToggleButtonMap();
-		final int ICON_COMPONENT_COUNT = 1;
-		final int TOGGLE_BUTTON_COMPONENT_COUNT = 1;
-		final int DESCRIPTION_COMPONENT_COUNT = 1;
-		final int TOTAL_COMPONENT_COUNT_PER_CHOICE = ICON_COMPONENT_COUNT + TOGGLE_BUTTON_COMPONENT_COUNT + DESCRIPTION_COMPONENT_COUNT;
-		MiradiPanel toggleButtonsPanel = new MiradiPanel(new GridLayoutPlus(0, getColumnCount() * TOTAL_COMPONENT_COUNT_PER_CHOICE)); 
+		MiradiPanel toggleButtonsPanel = new MiradiPanel(new GridLayoutPlus(0, getColumnCount())); 
 		toggleButtonsPanel.setBackground(getTogglePanelBackgroundColor());
 		for (int index = 0; index < choices.length; ++index)
 		{
@@ -98,9 +92,14 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 			toggleButton.addActionListener(new ToggleButtonHandler());
 			choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
 			Icon icon = choiceItem.getIcon();
-			toggleButtonsPanel.add(getSafeIconLabel(icon));
-			toggleButtonsPanel.add(toggleButton);
-			toggleButtonsPanel.add(createDescriptionComponent(choiceItem));
+			
+			OneRowPanel oneRowPanel = new OneRowPanel();
+			oneRowPanel.setBackground(Color.WHITE);
+			oneRowPanel.add(getSafeIconLabel(icon));
+			oneRowPanel.add(toggleButton);
+			oneRowPanel.add(createDescriptionComponent(choiceItem));
+			
+			toggleButtonsPanel.add(oneRowPanel);
 		}
 	
 		add(new MiradiScrollPane(toggleButtonsPanel));
