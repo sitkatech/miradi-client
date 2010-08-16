@@ -42,7 +42,7 @@ public class TableModelStringComparator extends AbstractTableModelComparator
 	
 	protected int compareValues(Comparable element1, Comparable element2)
 	{
-		return element1.compareTo(element2);
+		return element1.toString().compareToIgnoreCase(element2.toString());
 	}
 	
 }
