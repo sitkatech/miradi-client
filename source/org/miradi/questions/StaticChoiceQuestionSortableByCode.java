@@ -35,7 +35,7 @@ public class StaticChoiceQuestionSortableByCode extends StaticChoiceQuestion
 	}
 
 	@Override
-	public Comparator getComparator()
+	public Comparator<ChoiceItem> getComparator()
 	{
 		return new ChoiceItemCodeComparator();
 	}
