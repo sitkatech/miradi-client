@@ -37,7 +37,7 @@ abstract public class SingleBooleanColumnEditableModel extends EditableObjectTab
 	}
 	
     @Override
-	public Class getColumnClass(int columnIndex) 
+	public Class<?> getColumnClass(int columnIndex) 
     {
     	return Boolean.class;
     }
