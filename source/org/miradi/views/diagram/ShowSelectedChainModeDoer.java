@@ -159,7 +159,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 	
 	private boolean isLinkedToNonDraft(DiagramModel model, FactorCell draftStrategyCell)
 	{
-		LinkCell[] linkCells = (LinkCell[]) model.getFactorLinks(draftStrategyCell).toArray(new LinkCell[0]);
+		LinkCell[] linkCells = model.getFactorLinks(draftStrategyCell).toArray(new LinkCell[0]);
 		for (int i = 0; i < linkCells.length; ++i)
 		{
 			LinkCell thisLinkCell = linkCells[i];
