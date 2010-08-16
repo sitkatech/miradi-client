@@ -39,4 +39,10 @@ public class TableModelStringComparator extends AbstractTableModelComparator
 		
 		return compareDetails(sortValues1, sortValues2);
 	}
+	
+	protected int compareValues(Comparable element1, Comparable element2)
+	{
+		return element1.compareTo(element2);
+	}
+	
 }
