@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-17 13:05-0500\n"
+"POT-Creation-Date: 2010-08-17 14:53-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -82,7 +82,7 @@ msgstr ""
 msgid " 2) Connect threat to relevant targets"
 msgstr "2) Conectar amenaza a objetos relevantes"
 
-#: Miradi/source/org/miradi/project/Project.java:183
+#: Miradi/source/org/miradi/project/Project.java:182
 msgid " A project by this name already exists: "
 msgstr "Ya existe un proyecto con este nombre:"
 
@@ -836,7 +836,7 @@ msgstr ""
 "con una copia nueva. Probablemente sea más seguro hacer esto, a menos que un "
 "intento de migración anterior haya fallado."
 
-#: Miradi/source/org/miradi/project/Project.java:189
+#: Miradi/source/org/miradi/project/Project.java:188
 msgid "A file or folder exist by the same name:"
 msgstr "Ya existe un archivo o carpeta con este mismo nombre: "
 
@@ -8048,7 +8048,7 @@ msgstr "[NO ESPECIFICADO]"
 msgid "[New Results Chain]"
 msgstr "[Nueva cadena de resultados]"
 
-#: Miradi/source/org/miradi/project/Project.java:988
+#: Miradi/source/org/miradi/project/Project.java:967
 msgid "[No Project]"
 msgstr "[Sin proyecto]"
 
