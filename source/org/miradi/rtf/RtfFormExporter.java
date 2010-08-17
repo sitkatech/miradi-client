@@ -34,7 +34,6 @@ import org.miradi.forms.FormRow;
 import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.forms.objects.FormFieldCodeListData;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -226,7 +225,7 @@ public class RtfFormExporter
 			return rawObjectData.toString();
 		
 		if (rawObjectData.isChoiceItemData())
-			return createFromChoiceData((ChoiceData) rawObjectData);
+			return createFromChoiceData(rawObjectData);
 		
 		if (rawObjectData.isStringMapData())
 			return createFromStringMapData((StringMapData) rawObjectData, formRow);
@@ -234,7 +233,7 @@ public class RtfFormExporter
 		return rawObjectData.get();
 	}
 
-	private String createFromChoiceData(ChoiceData choiceData)
+	private String createFromChoiceData(ObjectData choiceData)
 	{
 		ChoiceQuestion question = choiceData.getChoiceQuestion();
 		String code = choiceData.get();
