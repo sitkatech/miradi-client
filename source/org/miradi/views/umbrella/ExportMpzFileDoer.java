@@ -30,7 +30,7 @@ import org.miradi.utils.MpzFileChooser;
 
 
 
-public class ExportZippedProjectFileDoer extends AbstractFileSaverDoer
+public class ExportMpzFileDoer extends AbstractFileSaverDoer
 {
 	@Override
 	protected EAMFileSaveChooser createFileChooser()

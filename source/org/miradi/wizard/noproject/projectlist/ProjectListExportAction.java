@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.wizard.noproject.projectlist;
 
 import org.miradi.main.EAM;
-import org.miradi.views.umbrella.ExportZippedProjectFileDoer;
+import org.miradi.views.umbrella.ExportMpzFileDoer;
 
 class ProjectListExportAction extends ProjectListAction
 {
@@ -32,7 +32,7 @@ class ProjectListExportAction extends ProjectListAction
 
 	protected void doWork() throws Exception
 	{
-		ExportZippedProjectFileDoer.perform(EAM.getMainWindow(), getSelectedFile());
+		ExportMpzFileDoer.perform(EAM.getMainWindow(), getSelectedFile());
 	}
 	
 	protected String getErrorMessage()
