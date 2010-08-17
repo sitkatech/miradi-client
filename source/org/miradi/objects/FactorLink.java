@@ -88,15 +88,6 @@ public class FactorLink extends BaseObject
 		return new ORef(rawRef.getObjectType(), new FactorId(rawRef.getObjectId().asInt()));
 	}
 	
-	public Factor getToFactor() throws Exception
-	{
-		Factor toFactor = Factor.findFactor(getProject(), getToFactorRef());
-		if (toFactor == null)
-			throw new FactorLinkPointingToMissingEndException("To Factor (ref = " + getToFactorRef() + ")for link (ref = " + getRef() + ") was null.");
-		
-		return toFactor;
-	}
-	
 	public ORef getToFactorRef()
 	{
 		ORef rawRef = toRef.getRef();
