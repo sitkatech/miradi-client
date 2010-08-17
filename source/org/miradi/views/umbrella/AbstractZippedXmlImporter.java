@@ -59,7 +59,7 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 		}
 		catch(Exception e)
 		{
-			deleteIncompleteProject(projectToFill);
+			projectToFill.closeAndDeleteProject();
 			throw e;
 		}
 	}
