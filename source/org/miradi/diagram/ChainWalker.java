@@ -81,7 +81,7 @@ public class ChainWalker
 		HashSet<DiagramFactor> diagramFactors = getReferrerDiagramFactors(factor);
 		for(DiagramFactor diagramFactor : diagramFactors)
 		{	
-			buildDirectlyLinkedUpstreamChain(diagramFactor);
+			buildDirectlyLinkedChain(diagramFactor, DiagramLink.TO);
 			factorsOnAllDiagrams.attemptToAddAll(getFactors());
 		}
 		
@@ -94,7 +94,7 @@ public class ChainWalker
 		HashSet<DiagramFactor> diagramFactors = getReferrerDiagramFactors(factor);
 		for(DiagramFactor diagramFactor : diagramFactors)
 		{	
-			buildDirectlyLinkedDownstreamChain(diagramFactor);
+			buildDirectlyLinkedChain(diagramFactor, DiagramLink.FROM);
 			factorsOnAllDiagrams.attemptToAddAll(getFactors());
 		}
 		
@@ -193,6 +193,12 @@ public class ChainWalker
 	{
 		initializeChain(diagramFactor);
 		resultingFactors.addAll(getDirectlyLinkedUpstreamFactors());
+	}
+	
+	private void buildDirectlyLinkedChain(DiagramFactor diagramFactor, int direction)
+	{
+		initializeChain(diagramFactor);
+		resultingFactors.addAll(getDirectlyLinkedFactors(direction));
 	}
 	
 	private void buildDirectlyLinkedDownstreamChain(DiagramFactor diagramFactor)
