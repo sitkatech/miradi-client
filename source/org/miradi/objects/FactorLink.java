@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import org.miradi.exceptions.FactorLinkPointingToMissingEndException;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.objectdata.BooleanData;
@@ -71,15 +70,6 @@ public class FactorLink extends BaseObject
 			ConceptualModelDiagram.getObjectType(), 
 			ResultsChainDiagram.getObjectType()
 			};
-	}
-	
-	public Factor getFromFactor() throws Exception
-	{
-		Factor fromFactor = Factor.findFactor(getProject(), getFromFactorRef());
-		if (fromFactor == null)
-			throw new FactorLinkPointingToMissingEndException("From Factor (ref = " + getFromFactorRef() + ")for link (ref = " + getRef() + ") was null.");
-		
-		return fromFactor;
 	}
 	
 	public ORef getFromFactorRef()
