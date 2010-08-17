@@ -69,7 +69,7 @@ public abstract class Command
 	{
 		try
 		{
-			project.writeLogLine(logDataAsString());
+			EAM.logVerbose("Command Executed: " +logDataAsString());
 		}
 		catch (Exception e)
 		{

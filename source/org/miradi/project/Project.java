@@ -22,7 +22,6 @@ package org.miradi.project;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Vector;
@@ -59,8 +58,8 @@ import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objectpools.AssignmentPool;
 import org.miradi.objectpools.CausePool;
 import org.miradi.objectpools.ConceptualModelDiagramPool;
-import org.miradi.objectpools.DiagramLinkPool;
 import org.miradi.objectpools.DiagramFactorPool;
+import org.miradi.objectpools.DiagramLinkPool;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objectpools.ExpensePool;
 import org.miradi.objectpools.FactorLinkPool;
@@ -691,25 +690,9 @@ public class Project
 		File commandLogFile = new File(thisProjectDirectory, COMMAND_LOG_FILE_NAME);
 		if (commandLogFile.exists())
 			commandLogFile.delete();
-		writeLogLine("Project Opened by Miradi " + VersionConstants.getVersionAndTimestamp());
+		EAM.logVerbose("Project Opened by Miradi " + VersionConstants.getVersionAndTimestamp());
 	}
 
-	public void writeLogLine(String logLine) throws IOException
-	{
-		File thisProjectDirectory = getProjectDirectory();
-		
-		//NOTE: this line is here to support test code
-		if (!thisProjectDirectory.exists())
-			return;
-		
-		File commandLogFile = new File(thisProjectDirectory, COMMAND_LOG_FILE_NAME);
-		FileOutputStream os = new FileOutputStream(commandLogFile, true);
-		PrintStream logPrintStream = new PrintStream(os);
-		logPrintStream.println(logLine);
-		EAM.logVerbose("Command Executed: " +logLine);
-		os.close();
-	}
-	
 	public File getProjectDirectory()
 	{
 		return getDatabase().getCurrentLocalProjectDirectory();
