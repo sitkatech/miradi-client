@@ -35,7 +35,6 @@ import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.forms.objects.FormFieldCodeListData;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -224,7 +223,7 @@ public class RtfFormExporter
 
 		ObjectData rawObjectData = baseObject.getField(fieldTag);
 		if (rawObjectData.isCodeListData())
-			return ((CodeListData) rawObjectData).toString();
+			return rawObjectData.toString();
 		
 		if (rawObjectData.isChoiceItemData())
 			return createFromChoiceData((ChoiceData) rawObjectData);
