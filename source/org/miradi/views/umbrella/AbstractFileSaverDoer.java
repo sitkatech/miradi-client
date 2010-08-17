@@ -101,5 +101,5 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 	
 	abstract protected EAMFileSaveChooser createFileChooser();
 	
-	abstract protected void doWork(File chosen) throws Exception;
+	abstract protected void doWork(File destinationFile) throws Exception;
 }
