@@ -104,6 +104,11 @@ public class ProjectServer
 		writeVersion();
 	}
 		
+	public void deleteProject(String projectName) throws Exception
+	{
+		currentFileSystem.deleteProject(projectName);
+	}
+
 	public void deleteObject(int type, BaseId id) throws Exception
 	{
 		currentFileSystem.deleteFile(getCurrentProjectName(), getRelativeObjectFile(type, id));
