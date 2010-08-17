@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-17 11:22-0500\n"
+"POT-Creation-Date: 2010-08-17 12:07-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3706,7 +3706,7 @@ msgstr ""
 msgid "Indicator Relevancy Panel"
 msgstr "指示物关联面板 \t\t"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:151
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:153
 msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr ""
 
@@ -5063,7 +5063,7 @@ msgstr "项目顾问"
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:909
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:907
 msgid "Project Description:"
 msgstr ""
 
@@ -5581,7 +5581,7 @@ msgstr "简单威胁因子评级模式"
 msgid "Simple viability"
 msgstr "简单生存力 \t\t"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:914
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:912
 msgid "Site/Scope Description:"
 msgstr ""
 
@@ -6672,7 +6672,7 @@ msgstr "古铜色"
 
 #: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:32
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:347
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:349
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 msgid "Target"
 msgstr "对象"
@@ -6925,7 +6925,7 @@ msgstr ""
 msgid "This will replace the existing file."
 msgstr "这将会替换现有的文件。 \t\t"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:372
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:374
 #: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:59
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
