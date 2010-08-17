@@ -79,13 +79,11 @@ public class ChainWalker
 		if (isNonDraftStrategy(owningFactor))
 			nonDraftStrategyRefs.add(owningFactor.getRef());
 		
-		ORefList relatedFactorLinkRefs = owningFactor.findObjectsThatReferToUs(FactorLink.getObjectType());
-		for (int index = 0; index < relatedFactorLinkRefs.size(); ++index)
+		FactorSet upstreamFactors = buildUpstreamChainAndGetFactors(owningFactor);
+		for(Factor factor : upstreamFactors)
 		{
-			FactorLink relatedFactorLink = FactorLink.find(getProject(), relatedFactorLinkRefs.get(index));
-			Factor fromFactor = relatedFactorLink.getFromFactor();
-			if(isNonDraftStrategy(fromFactor))
-				nonDraftStrategyRefs.add(fromFactor.getRef());
+			if(isNonDraftStrategy(factor))
+				nonDraftStrategyRefs.add(factor.getRef());
 		}
 		
 		return nonDraftStrategyRefs;
@@ -95,6 +93,22 @@ public class ChainWalker
 	{
 		return factor.isStrategy() && !factor.isStatusDraft();
 	}
+	
+	public FactorSet buildUpstreamChainAndGetFactors(Factor factor)
+	{
+		FactorSet factorsOnAllDiagrams = new FactorSet();
+		ChainWalker realWalker = new ChainWalker();
+		ORefList diagramFactorRefs = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		for(int i = 0; i < diagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor df = DiagramFactor.find(factor.getProject(), diagramFactorRefs.get(i));
+			FactorSet factorsOnThisDiagram = realWalker.buildDirectlyLinkedUpstreamChainAndGetFactors(df);
+			factorsOnAllDiagrams.attemptToAddAll(factorsOnThisDiagram);
+		}
+		
+		return factorsOnAllDiagrams;
+	}
+
 	
 	public FactorSet buildNormalChainAndGetFactors(Factor factor)
 	{
