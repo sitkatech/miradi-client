@@ -23,11 +23,13 @@ import java.util.HashSet;
 
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.project.Project;
 
 public class ChainWalker
@@ -91,32 +93,32 @@ public class ChainWalker
 
 	private void buildNormalChain(DiagramObject diagramObjectToUse , DiagramFactor diagramFactor)
 	{
-		initializeChain(diagramObjectToUse, diagramFactor);
+		initializeChain(diagramFactor);
 		buildUpstreamDownstreamChain(diagramObjectToUse, diagramFactor);
 	}
 	
 	private void buildUpstreamDownstreamChain(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
 	{
-		initializeChain(diagramObjectToUse, diagramFactor);
+		initializeChain(diagramFactor);
 		resultingFactors.addAll(getAllDownstreamFactors());
 		resultingFactors.addAll(getAllUpstreamFactors());
 	}
 	
 	private void buildUpstreamChain(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
 	{
-		initializeChain(diagramObjectToUse, diagramFactor);
+		initializeChain(diagramFactor);
 		resultingFactors.addAll(getAllUpstreamFactors());
 	}
 	
 	private void buildDownstreamChain(DiagramObject diagram, DiagramFactor diagramFactor)
 	{
-		initializeChain(diagram, diagramFactor);
+		initializeChain(diagramFactor);
 		resultingFactors.addAll(getAllDownstreamFactors());
 	}
 	
 	private void buildDirectlyLinkedUpstreamChain(DiagramObject diagram, DiagramFactor diagramFactor)
 	{
-		initializeChain(diagram, diagramFactor);
+		initializeChain(diagramFactor);
 		resultingFactors.addAll(getDirectlyLinkedUpstreamFactors());
 	}
 	
@@ -173,9 +175,13 @@ public class ChainWalker
 		return diagramObject.getAllDiagramLinkRefs();
 	}
 		
-	private void initializeChain(DiagramObject diagram, DiagramFactor diagramFactor)
+	private void initializeChain(DiagramFactor diagramFactor)
 	{
-		diagramObject = diagram;
+		ORefList diagramReferrers = diagramFactor.findObjectsThatReferToUs(new int[]{ResultsChainDiagram.getObjectType(), ConceptualModelDiagram.getObjectType(), });
+		if (diagramReferrers.isEmpty() || diagramReferrers.size() > 1)
+			throw new RuntimeException("DiagramFactor (ref= " + diagramFactor.getRef() + ") has incorrect number of diagram object referrers");
+		
+		diagramObject = DiagramObject.findDiagramObject(getProject(), diagramReferrers.getFirstElement());
 		setStartingFactor(diagramFactor);
 		resultingFactors = new HashSet<Factor>();
 		processedLinks = new HashSet<DiagramLink>();

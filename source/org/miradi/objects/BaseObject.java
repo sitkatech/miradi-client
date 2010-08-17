@@ -1021,11 +1021,21 @@ abstract public class BaseObject
 		return new ORefList(getObjectManager().getReferringObjects(getRef()));
 	}
 	
+	public ORefList findObjectsThatReferToUs(int[] objectTypes)
+	{
+		ORefList referrers = new ORefList();
+		for (int index = 0; index < objectTypes.length; ++index)
+		{
+			referrers.addAll(findObjectsThatReferToUs(objectTypes[index]));
+		}
+		
+		return referrers; 
+	}
+	
 	public ORefList findObjectsThatReferToUs(int objectType)
 	{
 		return findObjectsThatReferToUs().getFilteredBy(objectType);
 	}
-	
 	
 	static public ORefList findObjectsThatReferToUs(ObjectManager objectManager, int objectType, ORef oref)
 	{
