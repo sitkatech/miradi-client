@@ -120,14 +120,9 @@ public class FactorLink extends BaseObject
 		return objectType == getObjectType();
 	}
 	
-	public static FactorLink find(ObjectManager objectManager, ORef factorLinkRef)
-	{
-		return (FactorLink) objectManager.findObject(factorLinkRef);
-	}
-	
 	public static FactorLink find(Project project, ORef factorLinkRef)
 	{
-		return find(project.getObjectManager(), factorLinkRef);
+		return (FactorLink) project.getObjectManager().findObject(factorLinkRef);
 	}
 	
 	@Override
