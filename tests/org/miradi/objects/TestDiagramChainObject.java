@@ -83,7 +83,7 @@ public class TestDiagramChainObject extends TestCaseWithProject
 	private void verifyChain(DiagramFactor strartingDiagramFactor, Vector<DiagramFactor> allDiagramFactors)
 	{
 		ChainWalker chainObject = new ChainWalker();
-		HashSet<DiagramFactor> diagramFactorsInChain = chainObject.buildNormalChainAndGetDiagramFactors(getProject().getTestingDiagramObject(), strartingDiagramFactor);
+		HashSet<DiagramFactor> diagramFactorsInChain = chainObject.buildNormalChainAndGetDiagramFactors(strartingDiagramFactor);
 		assertEquals("wrong diagram factor in chain count?", 3, diagramFactorsInChain.size());
 		
 		for (int index = 0; index < allDiagramFactors.size(); ++index)

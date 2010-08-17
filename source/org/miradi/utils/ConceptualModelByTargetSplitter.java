@@ -68,7 +68,7 @@ public class ConceptualModelByTargetSplitter
 	private void createDiagramForTarget(DiagramFactor targetDiagramFactor) throws Exception
 	{
 		ChainWalker chainObject = new ChainWalker();
-		HashSet<DiagramFactor> diagramFactors = chainObject.buildNormalChainAndGetDiagramFactors(getDiagramObjectBeingSplit(), targetDiagramFactor);
+		HashSet<DiagramFactor> diagramFactors = chainObject.buildNormalChainAndGetDiagramFactors(targetDiagramFactor);
 		HashSet<DiagramLink> diagramLinks = chainObject.buildNormalChainAndGetDiagramLinks(targetDiagramFactor);
 		
 		TransferableMiradiList miradiList = createTransferable(diagramFactors, diagramLinks);
