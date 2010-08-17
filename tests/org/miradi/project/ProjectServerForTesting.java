@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.project;
 
-import java.io.File;
-
-import org.martus.util.DirectoryUtils;
 import org.miradi.database.ProjectServer;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
@@ -46,11 +43,9 @@ public class ProjectServerForTesting extends ProjectServer
 	
 	public void close() throws Exception
 	{
-		String dataLocation = getDataLocation();
 		String projectName = getCurrentProjectName();
-		File projectDirectory = new File(dataLocation, projectName);
 		closeAndDontDelete();
-		DirectoryUtils.deleteEntireDirectoryTree(projectDirectory);
+		deleteProject(projectName);
 	}
 
 	public void writeObject(BaseObject object) throws Exception
