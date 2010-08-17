@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-17 15:22-0500\n"
+"POT-Creation-Date: 2010-08-17 15:43-0500\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -62,7 +62,7 @@ msgstr ""
 msgid " 2) Connect threat to relevant targets"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:182
+#: Miradi/source/org/miradi/project/Project.java:183
 msgid " A project by this name already exists: "
 msgstr ""
 
@@ -605,7 +605,7 @@ msgid ""
 "select its replacement on the TNC Tab of the Summary Page.</html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:131
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:129
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr ""
 
@@ -715,7 +715,7 @@ msgid ""
 "safe to do this, unless an earlier migration attempt failed."
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:188
+#: Miradi/source/org/miradi/project/Project.java:189
 msgid "A file or folder exist by the same name:"
 msgstr ""
 
@@ -3561,11 +3561,11 @@ msgstr ""
 msgid "Import Completed"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:111
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:109
 msgid "Import Completed.  Would you like to open %s?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:55
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:53
 msgid "Import Project"
 msgstr ""
 
@@ -4681,7 +4681,7 @@ msgstr ""
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:112
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:110
 msgid "Open Project"
 msgstr ""
 
@@ -6705,7 +6705,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:169
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:160
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -6727,7 +6727,7 @@ msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:76
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:74
 msgid ""
 "This project cannot be imported by this version of Miradi because it \n"
 "is in a newer data format. Please upgrade to the latest version of Miradi."
@@ -7537,7 +7537,7 @@ msgstr ""
 msgid "[New Results Chain]"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:967
+#: Miradi/source/org/miradi/project/Project.java:968
 msgid "[No Project]"
 msgstr ""
 
