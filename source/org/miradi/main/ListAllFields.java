@@ -39,7 +39,6 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
-import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.Translation;
 
 public class ListAllFields
@@ -49,7 +48,9 @@ public class ListAllFields
 		Miradi.addThirdPartyJarsToClasspath();
 		Translation.initialize();
 		
-		ProjectForTesting project = new ProjectForTesting("ListAllFields");
+		Project project = new Project();
+		project.getDatabase().setMemoryDataLocation("Memory");
+
 		project.createOrOpenWithDefaultObjectsAndDiagramHelp("ListAllFields");
 		listFieldsToConsole(project);
 		project.close();
