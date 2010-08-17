@@ -30,12 +30,11 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAMTestCase;
-import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.FactorLink;
+import org.miradi.objects.DiagramLink;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.Target;
 import org.miradi.objects.ValueOption;
@@ -43,6 +42,8 @@ import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.ColorManager;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.views.diagram.LinkCreator;
+import org.miradi.views.diagram.LinkDeletor;
 
 public class TestSimpleThreatRatingFramework extends EAMTestCase
 {
@@ -229,11 +230,17 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 		assertEquals("target2 not very high?", veryHigh, framework.getTargetThreatRatingValue(target2.getWrappedId()));
 	}
 	
-	public static void createLinkageAndBundle(Project projectToUse, DiagramFactor threat, DiagramFactor target, ValueOption value) throws Exception
+	public static void createLinkageAndBundle(ProjectForTesting projectToUse, DiagramFactor threat, DiagramFactor target, ValueOption value) throws Exception
 	{
-		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
-		projectToUse.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
+		createDiagramLink(projectToUse, threat, target);
+		
 		populateBundle(projectToUse.getSimpleThreatRatingFramework(), threat.getWrappedId(), target.getWrappedId(), value);
+	}
+
+	private static ORef createDiagramLink(ProjectForTesting projectToUse, DiagramFactor threat, DiagramFactor target) throws Exception
+	{
+		LinkCreator creator = new LinkCreator(projectToUse);
+		return creator.createFactorLinkAndAddToDiagramUsingCommands(projectToUse.getTestingDiagramObject(), threat, target);
 	}
 	
 	public void testGetThreatRatingSummaryUnlinked() throws Exception
@@ -249,14 +256,15 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 		populateBundle(framework, threatId, targetId, veryHigh);
 		assertEquals("included unlinked bundle in threat value?", none, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("included unlinked bundle in target value?", none, framework.getTargetThreatRatingValue(targetId));
-		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
-		BaseId linkId = project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
+		ORef factorLinkRef = createDiagramLink(project, threat, target);
 		
 		assertEquals("linking didn't include value for threat?", high, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("linking didn't include value for target?", high, framework.getTargetThreatRatingValue(targetId));
 
-		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, linkId));
-		project.deleteObject(factorLink);
+		DiagramLink diagramLink = project.getTestingDiagramObject().getDiagramLinkByWrappedRef(factorLinkRef);
+		LinkDeletor deletor = new LinkDeletor(project);
+		deletor.deleteDiagramLinkAndOrphandFactorLink(diagramLink);
+		
 		assertEquals("threat value included contributing factor?", none, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("target value included contributing factor?", none, framework.getTargetThreatRatingValue(targetId));
 	}
