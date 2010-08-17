@@ -230,6 +230,11 @@ public class ProjectServer
 		writeRelativeJsonFile(getCurrentProjectName(), relativeObjectFile, object.toJson());
 	}
 	
+	public void appendToFile(File relativeFile, String textToAppend) throws Exception
+	{
+		currentFileSystem.appendToFile(getCurrentProjectName(), relativeFile, textToAppend);
+	}
+	
 	public void writeProjectInfo(ProjectInfo info) throws Exception
 	{
 		writeRelativeJsonFile(getCurrentProjectName(), getRelativeProjectInfoFile(), info.toJson());
@@ -383,7 +388,7 @@ public class ProjectServer
 
 	public void appendToQuarantineFile(String textToAppend) throws Exception
 	{
-		currentFileSystem.appendToFile(getCurrentProjectName(), getRelativeQuarantineFile(), textToAppend);
+		appendToFile(getRelativeQuarantineFile(), textToAppend);
 	}
 
 	public String getQuarantineFileContents() throws Exception
