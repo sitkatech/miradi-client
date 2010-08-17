@@ -105,7 +105,8 @@ abstract public class DiagramObject extends BaseObject
 	
 	public DiagramLink getDiagramLinkByWrappedRef(ORef factorLinkRef)
 	{
-		FactorLink.ensure(factorLinkRef);
+		if (!FactorLink.is(factorLinkRef))
+			throw new RuntimeException(factorLinkRef + " is not a factor link ref");
 		
 		FactorLink link = FactorLink.find(getProject(), factorLinkRef);
 		ORefList wrappingDiagramLinkRefs = link.findObjectsThatReferToUs(DiagramLink.getObjectType());
