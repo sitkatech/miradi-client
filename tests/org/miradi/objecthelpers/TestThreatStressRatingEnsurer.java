@@ -19,17 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
-import org.miradi.commands.CommandCreateObject;
-import org.miradi.commands.CommandDeleteObject;
+import java.util.Vector;
+
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
-import org.miradi.objects.FactorLink;
+import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
+import org.miradi.views.diagram.LinkCreator;
+import org.miradi.views.diagram.LinkDeletor;
 
 public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 {
@@ -84,13 +85,13 @@ public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 
 	public void testCreateAndDeleteFactorLink() throws Exception
 	{
-		deleteObject(factorLink);
+		LinkDeletor deletor = new LinkDeletor(getProject());
+		deletor.deleteDiagramLinkAndOrphandFactorLink(new Vector<DiagramFactor>(), diagramLink);
 		
 		verifyThreatStressRatingReferrersToThreat(0);
-		
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(threat.getRef(), target.getRef());
-		CommandCreateObject createFactorlLinkCommand = new CommandCreateObject(FactorLink.getObjectType(), extraInfo);
-		getProject().executeCommand(createFactorlLinkCommand);
+
+		LinkCreator creator = new LinkCreator(getProject());
+		creator.createFactorLinkAndAddToDiagramUsingCommands(getProject().getTestingDiagramObject(), threatDiagramFactor, targetDiagramFactor);
 		
 		verifyThreatStressRatingReferrersToThreat(1);
 	}
@@ -110,27 +111,22 @@ public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 		assertEquals("incorrect threat stress ratings referring to threat?", expected, threatStressRatingReferrerRefs.size());
 	}
 	
-	private void deleteObject(BaseObject objectToDelet) throws CommandFailedException
-	{
-		CommandDeleteObject deleteFactorLinkCommand = new CommandDeleteObject(objectToDelet);
-		getProject().executeCommand(deleteFactorLinkCommand);
-	}
-	
 	private void createFactorLink() throws Exception
 	{
-		ORef factorLinkRef = getProject().createFactorLink(threat.getRef(), target.getRef());
-		factorLink = FactorLink.find(getProject(), factorLinkRef);
+		diagramLink = getProject().createDiagramLinkAndAddToDiagramModel(threatDiagramFactor, targetDiagramFactor);
 	}
 
 	private void createThreat() throws Exception
 	{
-		threat = getProject().createCause();
+		threatDiagramFactor = getProject().createAndAddFactorToDiagram(Cause.getObjectType());
+		threat = (Cause) threatDiagramFactor.getWrappedFactor();
 		getProject().enableAsThreat(threat);
 	}
 
 	private void createTarget() throws Exception
 	{
-		target = getProject().createTarget();
+		targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		target = (Target) targetDiagramFactor.getWrappedFactor();
 	}
 	
 	private void createStress() throws Exception
@@ -153,6 +149,8 @@ public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 	
 	private Cause threat;
 	private Target target;
-	private FactorLink factorLink;
+	private DiagramFactor threatDiagramFactor;
+	private DiagramFactor targetDiagramFactor;
+	private DiagramLink diagramLink;
 	private Stress stress;
 }
