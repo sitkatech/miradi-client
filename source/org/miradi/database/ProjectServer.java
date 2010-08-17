@@ -363,6 +363,11 @@ public class ProjectServer
 		return isExistingProject(fileSystem, projectName);
 	}
 
+	public boolean isLocalProject()
+	{
+		return currentFileSystem.isLocalFileSystem();
+	}
+
 	private static boolean isExistingProject(MiradiFileSystem fileSystem, String projectName) throws Exception
 	{
 		if(projectName == null)

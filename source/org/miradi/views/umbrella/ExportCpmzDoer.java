@@ -38,6 +38,15 @@ import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 public class ExportCpmzDoer extends XmlExporterDoer
 {
 	@Override
+	public boolean isAvailable()
+	{
+		if(!super.isAvailable())
+			return false;
+		
+		return (getProject().getDatabase().isLocalProject());
+	}
+	
+	@Override
 	protected void export(File chosen) throws Exception
 	{
 		createCpmzFile(chosen);

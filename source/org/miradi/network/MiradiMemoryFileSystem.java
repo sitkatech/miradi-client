@@ -34,6 +34,11 @@ public class MiradiMemoryFileSystem extends AbstractNonRemoteMiradiFileSystem
 		projects = new HashMap<String, StoredProject>();
 	}
 
+	public boolean isLocalFileSystem()
+	{
+		return false;
+	}
+
 	public void createProject(String projectName) throws Exception
 	{
 		if(doesProjectDirectoryExist(projectName))

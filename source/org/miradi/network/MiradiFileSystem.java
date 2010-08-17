@@ -29,6 +29,7 @@ public interface MiradiFileSystem
 {
 	public abstract void setDataLocation(String dataLocation) throws Exception;
 	public abstract String getDataLocation();
+	public abstract boolean isLocalFileSystem();
 	
 	public abstract boolean doesProjectDirectoryExist(String projectName) throws Exception;
 	public abstract void createProject(String projectName) throws Exception;
