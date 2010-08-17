@@ -79,10 +79,6 @@ public class ChainWalker
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
 			DiagramFactor df = DiagramFactor.find(project, diagramFactorRefs.get(i));
-			ORefList diagramRefs = df.findDiagramsThatReferToUs();
-			if(diagramRefs.size() != 1)
-				throw new RuntimeException("DF " + df.getRef() + " is in multiple diagrams: " + diagramRefs);
-			
 			FactorSet factorsOnThisDiagram = realWalker.buildNormalChainAndGetFactors(df);
 			factorsOnAllDiagrams.attemptToAddAll(factorsOnThisDiagram);
 		}
@@ -178,7 +174,7 @@ public class ChainWalker
 	{
 		ORefList diagramReferrers = diagramFactor.findObjectsThatReferToUs(new int[]{ResultsChainDiagram.getObjectType(), ConceptualModelDiagram.getObjectType(), });
 		if (diagramReferrers.isEmpty() || diagramReferrers.size() > 1)
-			throw new RuntimeException("DiagramFactor (ref= " + diagramFactor.getRef() + ") has incorrect number of diagram object referrers");
+			throw new RuntimeException("DiagramFactor " + diagramFactor.getRef() + " is in multiple diagrams: " + diagramReferrers);
 		
 		diagramObject = DiagramObject.findDiagramObject(diagramFactor.getProject(), diagramReferrers.getFirstElement());
 		setStartingFactor(diagramFactor);
