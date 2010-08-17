@@ -70,7 +70,7 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 		
 		ChainWalker chain = diagram.getDiagramChainWalker();
 		DiagramFactor targetDiagramFactor = diagram.getDiagramFactor(target.getRef());
-		FactorSet factors = chain.buildDirectlyLinkedUpstreamChainAndGetFactors(diagram, targetDiagramFactor);
+		FactorSet factors = chain.buildDirectlyLinkedUpstreamChainAndGetFactors(targetDiagramFactor);
 		for(Factor factor : factors)
 		{
 			if(factor.isStrategy() && !factor.isStatusDraft())

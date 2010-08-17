@@ -64,7 +64,7 @@ public class ChainWalker
 		return getFactors();
 	}
 	
-	public FactorSet buildDirectlyLinkedUpstreamChainAndGetFactors(DiagramObject diagram, DiagramFactor diagramFactor)
+	public FactorSet buildDirectlyLinkedUpstreamChainAndGetFactors(DiagramFactor diagramFactor)
 	{
 		buildDirectlyLinkedUpstreamChain(diagramFactor);
 		return getFactors();
