@@ -98,13 +98,12 @@ public class ChainWalker
 	
 	public FactorSet buildNormalChainAndGetFactors(Factor factor)
 	{
-		Project project = factor.getProject();
 		FactorSet factorsOnAllDiagrams = new FactorSet();
 		ChainWalker realWalker = new ChainWalker();
 		ORefList diagramFactorRefs = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
-			DiagramFactor df = DiagramFactor.find(project, diagramFactorRefs.get(i));
+			DiagramFactor df = DiagramFactor.find(factor.getProject(), diagramFactorRefs.get(i));
 			FactorSet factorsOnThisDiagram = realWalker.buildNormalChainAndGetFactors(df);
 			factorsOnAllDiagrams.attemptToAddAll(factorsOnThisDiagram);
 		}
