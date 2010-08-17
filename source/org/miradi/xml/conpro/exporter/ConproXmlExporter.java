@@ -28,6 +28,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.diagram.ChainWalker;
 import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.ids.BaseId;
@@ -35,6 +36,7 @@ import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.main.VersionConstants;
 import org.miradi.objecthelpers.BaseObjectByRefSorter;
+import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -43,8 +45,8 @@ import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Desire;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
@@ -651,25 +653,21 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeStrategyThreatAssociations(UnicodeWriter out, ORef threatRef) throws Exception
 	{
 		Cause threat = Cause.find(getProject(), threatRef);
-		ORefList factorLinkReferrers = threat.findObjectsThatReferToUs(FactorLink.getObjectType());
-		for (int refIndex = 0; refIndex < factorLinkReferrers.size(); ++refIndex)
+		ChainWalker walker = new ChainWalker();
+		ORefList diagramFactorReferrerRefs = threat.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		FactorSet directUpstreamDownstreamFactors = new FactorSet();
+		for (int index = 0; index < diagramFactorReferrerRefs.size(); ++index)
 		{
-			FactorLink thisFactorLink = FactorLink.find(getProject(), factorLinkReferrers.get(refIndex));
-			ORef strategyRef = getStrategyRef(thisFactorLink);
-			if (!strategyRef.isInvalid())
-				writeStrategyThreatTargetAssociation(out, threatRef, strategyRef);
+			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), diagramFactorReferrerRefs.get(index));
+			directUpstreamDownstreamFactors.attemptToAddAll(walker.buildDirectlyLinkedDownstreamChainAndGetFactors(diagramFactor));
+			directUpstreamDownstreamFactors.attemptToAddAll(walker.buildDirectlyLinkedUpstreamChainAndGetFactors(diagramFactor));
+		}
+		
+		for(Factor factor : directUpstreamDownstreamFactors)
+		{
+			if (factor.isStrategy())
+				writeStrategyThreatTargetAssociation(out, threatRef, factor.getRef());
 		}	
-	}
-
-	private ORef getStrategyRef(FactorLink thisFactorLink)
-	{
-		if (Strategy.is(thisFactorLink.getFromFactorRef()))
-			return thisFactorLink.getFromFactorRef();
-		
-		if (Strategy.is(thisFactorLink.getToFactorRef()))
-			return thisFactorLink.getToFactorRef();
-		
-		return ORef.INVALID;
 	}
 
 	private void writeStrategyThreatTargetAssociation(UnicodeWriter out, ORef threatRef, ORef strategyRef) throws Exception
