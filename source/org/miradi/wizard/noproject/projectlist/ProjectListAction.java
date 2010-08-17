@@ -67,7 +67,7 @@ abstract class ProjectListAction extends AbstractAction
 	{
 		try
 		{
-			boolean newState = isProjectDirectory();
+			boolean newState = isAvailable();
 			setEnabled(newState);
 		}
 		catch(Exception e)
@@ -75,6 +75,11 @@ abstract class ProjectListAction extends AbstractAction
 			EAM.logException(e);
 			setEnabled(false);
 		}
+	}
+
+	private boolean isAvailable() throws Exception
+	{
+		return isProjectDirectory();
 	}
 
 	protected boolean isProjectDirectory() throws Exception
