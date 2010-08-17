@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-17 11:04-0500\n"
+"POT-Creation-Date: 2010-08-17 11:07-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -634,7 +634,7 @@ msgid ""
 "within ten years or three generations.</html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:109
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:108
 msgid ""
 "<html><br><em><strong>HINT:</strong> You can quickly add links by selecting "
 "both factors in the diagram before hitting the Create Link button. <br>On "
@@ -1961,15 +1961,15 @@ msgstr ""
 msgid "Arranging Diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:481
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:480
 msgid "Arranging Strategies..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:474
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:473
 msgid "Arranging Targets..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:463
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:462
 msgid "Arranging Threats..."
 msgstr ""
 
@@ -2246,7 +2246,7 @@ msgstr "Como copia"
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:234
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:233
 msgid "Button|Cancel"
 msgstr "Cancelar"
 
@@ -2291,7 +2291,7 @@ msgstr "Mover"
 msgid "Button|No"
 msgstr "No"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:231
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:230
 msgid "Button|OK"
 msgstr "OK"
 
@@ -2683,7 +2683,7 @@ msgstr "Crear cadenas de resultados que muestren suposiciones"
 msgid "Create..."
 msgstr "Crear…"
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:78
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:77
 msgid "Creating group boxes..."
 msgstr ""
 
@@ -3303,7 +3303,7 @@ msgid ""
 " CodeList= %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:562
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:561
 msgid "Extracting factors..."
 msgstr ""
 
@@ -3784,7 +3784,7 @@ msgstr "Identificar habilidades clave"
 msgid "Identify stresses (optional)"
 msgstr "Identificar presiones (opcional)"
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:100
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:99
 msgid "Ignoring unlinked factors..."
 msgstr ""
 
@@ -3838,7 +3838,7 @@ msgstr "Importar zip "
 msgid "In Front"
 msgstr "Delante"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:251
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:250
 msgid "Incomplete Link"
 msgstr "Enlace incompleto"
 
@@ -3915,7 +3915,7 @@ msgstr "Insertar"
 msgid "Insert FTE Fraction"
 msgstr "Insertar fracción FTE"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:220
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:219
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr ""
 
@@ -4075,7 +4075,7 @@ msgstr "(Fuente de financiamiento sin definir)"
 msgid "Label|(Undefined Resource)"
 msgstr "(Recurso sin definir)"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:98
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:97
 msgid "Label|--- affects -->"
 msgstr "--- afecta -->"
 
@@ -5164,7 +5164,7 @@ msgstr "Libra (Reino Unido)"
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:376
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:375
 msgid "Preparing groups..."
 msgstr ""
 
@@ -7405,7 +7405,7 @@ msgid "Title|Legacy TNC Strategy Editor Ranking Properties"
 msgstr ""
 "Propiedades de jerarquización del editor de estrategias de TNC heredadas"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:65
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:64
 msgid "Title|Link Create Dialog"
 msgstr "Diálogo para crear Enlace"
 
@@ -7679,7 +7679,7 @@ msgstr ""
 msgid "Unspecified"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:388
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:387
 msgid "Updating locations..."
 msgstr ""
 
@@ -8010,7 +8010,7 @@ msgstr ""
 "Se está quitando este recurso del equipo del proyecto para que ya no "
 "aparezca en la lista de integrantes del equipo en la vista Resumen."
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:252
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:251
 msgid "You must select one item in each of the two lists"
 msgstr "Debe seleccionar un elemento en cada una de las dos listas."
 
