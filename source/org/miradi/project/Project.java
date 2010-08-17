@@ -686,10 +686,6 @@ public class Project
 
 	private void writeStartingLogEntry() throws Exception
 	{
-		File thisProjectDirectory = getProjectDirectory();
-		File commandLogFile = new File(thisProjectDirectory, COMMAND_LOG_FILE_NAME);
-		if (commandLogFile.exists())
-			commandLogFile.delete();
 		EAM.logVerbose("Project Opened by Miradi " + VersionConstants.getVersionAndTimestamp());
 	}
 
@@ -1400,8 +1396,6 @@ public class Project
 	
 
 	public static final int MAX_PROJECT_FILENAME_LENGTH = 32;
-	
-	private static final String COMMAND_LOG_FILE_NAME = "command.log";
 	
 	private ProjectInfo projectInfo;
 	private ObjectManager objectManager;
