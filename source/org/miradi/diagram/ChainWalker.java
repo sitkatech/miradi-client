@@ -54,19 +54,19 @@ public class ChainWalker
 	
 	public FactorSet buildUpstreamChainAndGetFactors(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
 	{
-		buildUpstreamChain(diagramObjectToUse, diagramFactor);
+		buildUpstreamChain(diagramFactor);
 		return getFactors();
 	}
 	
 	public FactorSet buildDownstreamChainAndGetFactors(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
 	{
-		buildDownstreamChain(diagramObjectToUse, diagramFactor);
+		buildDownstreamChain(diagramFactor);
 		return getFactors();
 	}
 	
 	public FactorSet buildDirectlyLinkedUpstreamChainAndGetFactors(DiagramObject diagram, DiagramFactor diagramFactor)
 	{
-		buildDirectlyLinkedUpstreamChain(diagram, diagramFactor);
+		buildDirectlyLinkedUpstreamChain(diagramFactor);
 		return getFactors();
 	}
 	
@@ -94,29 +94,29 @@ public class ChainWalker
 	private void buildNormalChain(DiagramObject diagramObjectToUse , DiagramFactor diagramFactor)
 	{
 		initializeChain(diagramFactor);
-		buildUpstreamDownstreamChain(diagramObjectToUse, diagramFactor);
+		buildUpstreamDownstreamChain(diagramFactor);
 	}
 	
-	private void buildUpstreamDownstreamChain(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
+	private void buildUpstreamDownstreamChain(DiagramFactor diagramFactor)
 	{
 		initializeChain(diagramFactor);
 		resultingFactors.addAll(getAllDownstreamFactors());
 		resultingFactors.addAll(getAllUpstreamFactors());
 	}
 	
-	private void buildUpstreamChain(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
+	private void buildUpstreamChain(DiagramFactor diagramFactor)
 	{
 		initializeChain(diagramFactor);
 		resultingFactors.addAll(getAllUpstreamFactors());
 	}
 	
-	private void buildDownstreamChain(DiagramObject diagram, DiagramFactor diagramFactor)
+	private void buildDownstreamChain(DiagramFactor diagramFactor)
 	{
 		initializeChain(diagramFactor);
 		resultingFactors.addAll(getAllDownstreamFactors());
 	}
 	
-	private void buildDirectlyLinkedUpstreamChain(DiagramObject diagram, DiagramFactor diagramFactor)
+	private void buildDirectlyLinkedUpstreamChain(DiagramFactor diagramFactor)
 	{
 		initializeChain(diagramFactor);
 		resultingFactors.addAll(getDirectlyLinkedUpstreamFactors());
