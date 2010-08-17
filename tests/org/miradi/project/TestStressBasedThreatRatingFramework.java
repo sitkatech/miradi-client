@@ -24,6 +24,8 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.Cause;
+import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Stress;
@@ -48,14 +50,13 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 
 	public void testGetSummaryRating() throws Exception
 	{
-		Target target = getProject().createTarget();
-		Cause threat = getProject().createCause();
-		
-		getProject().enableAsThreat(threat);
+		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor threat = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		getProject().enableAsThreat((Cause) threat.getWrappedFactor());
 		createThreatFactorLink(getProject(), threat, target);
 	
 		StressBasedThreatRatingFramework frameWork = new StressBasedThreatRatingFramework(getProject());
-		assertEquals("wrong summary rating for target?", 3, frameWork.get2PrimeSummaryRatingValue(target));
+		assertEquals("wrong summary rating for target?", 3, frameWork.get2PrimeSummaryRatingValue(target.getWrappedFactor()));
 	}
 
 	public void testGetRollupRatingOfThreats() throws Exception
@@ -69,10 +70,10 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		assertEquals("wrong rollup rating of threats?", 3, frameWork.getRollupRatingOfThreats());
 	}
 	
-	public static void createThreatFactorLink(ProjectForTesting project, Cause cause, Target target) throws Exception
+	public static void createThreatFactorLink(ProjectForTesting project, DiagramFactor cause, DiagramFactor target) throws Exception
 	{
-		ORef threatLinkRef = project.createFactorLink(cause.getRef(), target.getRef());
-		FactorLink factorLink = FactorLink.find(project, threatLinkRef);
+		DiagramLink diagramLink = project.createDiagramLinkAndAddToDiagramModel(cause, target);
+		FactorLink factorLink = diagramLink.getWrappedFactorLink();
 		
 		Stress stress = project.createAndPopulateStress();
 		ORefList stressRefs = new ORefList(stress);
@@ -138,12 +139,12 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 	
 	public void testGetThreatThreatRatingValue() throws Exception
 	{
-		Target target = getProject().createTarget();
-		Cause threat = getProject().createCause();
+		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor threat = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		createThreatFactorLink(getProject(), threat, target);
 		
-		getProject().enableAsThreat(threat);		
+		getProject().enableAsThreat((Cause) threat.getWrappedFactor());		
 		StressBasedThreatRatingFramework framework = getProject().getStressBasedThreatRatingFramework();
-		assertEquals("wrong threat threatRating value?", "3", framework.getThreatThreatRatingValue(threat.getRef()).getCode());
+		assertEquals("wrong threat threatRating value?", "3", framework.getThreatThreatRatingValue(threat.getWrappedORef()).getCode());
 	}
 }
