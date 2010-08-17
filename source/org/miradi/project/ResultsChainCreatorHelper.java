@@ -402,7 +402,7 @@ public class ResultsChainCreatorHelper
 		{
 			DiagramFactor diagramFactor = selectedFactorCells[i].getDiagramFactor();
 			ChainWalker chainObject = diagramFactor.getDiagramChainWalker();
-			FactorSet chainFactors = chainObject.buildNormalChainAndGetFactors(model.getDiagramObject(), diagramFactor);
+			FactorSet chainFactors = chainObject.buildNormalChainAndGetFactors(diagramFactor);
 			Factor[] factorsArray = chainFactors.toFactorArray();
 			
 			Vector<DiagramFactor> diagramFactors = convertToDiagramFactors(factorsArray);

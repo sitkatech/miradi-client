@@ -106,7 +106,7 @@ public class SelectChainDoer extends ViewDoer
 		{
 			FactorCell selectedFactor = factors[i];
 			ChainWalker chainObject = new ChainWalker();
-			FactorSet chainFactors = chainObject.buildNormalChainAndGetFactors(diagramModel.getDiagramObject(), selectedFactor.getDiagramFactor());
+			FactorSet chainFactors = chainObject.buildNormalChainAndGetFactors(selectedFactor.getDiagramFactor());
 			Factor[] chainNodes = chainFactors.toFactorArray();
 			nodes.addAll(Arrays.asList(chainNodes));
 		}
