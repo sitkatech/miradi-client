@@ -97,11 +97,10 @@ public class ChainWalker
 	{
 		FactorSet factorsOnAllDiagrams = new FactorSet();
 		ChainWalker realWalker = new ChainWalker();
-		ORefList diagramFactorRefs = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
-		for(int i = 0; i < diagramFactorRefs.size(); ++i)
-		{
-			DiagramFactor df = DiagramFactor.find(factor.getObjectManager(), diagramFactorRefs.get(i));
-			FactorSet factorsOnThisDiagram = realWalker.buildDirectlyLinkedUpstreamChainAndGetFactors(df);
+		HashSet<DiagramFactor> diagramFactors = getReferrerDiagramFactors(factor);
+		for(DiagramFactor diagramFactor : diagramFactors)
+		{	
+			FactorSet factorsOnThisDiagram = realWalker.buildDirectlyLinkedUpstreamChainAndGetFactors(diagramFactor);
 			factorsOnAllDiagrams.attemptToAddAll(factorsOnThisDiagram);
 		}
 		
@@ -112,15 +111,27 @@ public class ChainWalker
 	{
 		FactorSet factorsOnAllDiagrams = new FactorSet();
 		ChainWalker realWalker = new ChainWalker();
-		ORefList diagramFactorRefs = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
-		for(int i = 0; i < diagramFactorRefs.size(); ++i)
-		{
-			DiagramFactor df = DiagramFactor.find(factor.getObjectManager(), diagramFactorRefs.get(i));
-			FactorSet factorsOnThisDiagram = realWalker.buildNormalChainAndGetFactors(df);
+		HashSet<DiagramFactor> diagramFactors = getReferrerDiagramFactors(factor);
+		for(DiagramFactor diagramFactor : diagramFactors)
+		{	
+			FactorSet factorsOnThisDiagram = realWalker.buildNormalChainAndGetFactors(diagramFactor);
 			factorsOnAllDiagrams.attemptToAddAll(factorsOnThisDiagram);
 		}
 		
 		return factorsOnAllDiagrams;
+	}
+	
+	private HashSet<DiagramFactor> getReferrerDiagramFactors(Factor factor)
+	{
+		HashSet<DiagramFactor> diagramFactors = new HashSet<DiagramFactor>();
+		ORefList diagramFactorRefs = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		for(int i = 0; i < diagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor df = DiagramFactor.find(factor.getObjectManager(), diagramFactorRefs.get(i));
+			diagramFactors.add(df);
+		}
+		
+		return diagramFactors;
 	}
 
 	private void buildNormalChain(DiagramFactor diagramFactor)
