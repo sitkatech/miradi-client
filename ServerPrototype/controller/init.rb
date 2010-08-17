@@ -7,4 +7,4 @@ class Controller < Ramaze::Controller
   engine :None
 end
 
-acquire __DIR__/"*.rb"
+Ramaze.acquire __DIR__ + "/*.rb"
