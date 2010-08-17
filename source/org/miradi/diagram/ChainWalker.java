@@ -181,7 +181,7 @@ public class ChainWalker
 		if (diagramReferrers.isEmpty() || diagramReferrers.size() > 1)
 			throw new RuntimeException("DiagramFactor (ref= " + diagramFactor.getRef() + ") has incorrect number of diagram object referrers");
 		
-		diagramObject = DiagramObject.findDiagramObject(getProject(), diagramReferrers.getFirstElement());
+		diagramObject = DiagramObject.findDiagramObject(diagramFactor.getProject(), diagramReferrers.getFirstElement());
 		setStartingFactor(diagramFactor);
 		resultingFactors = new HashSet<Factor>();
 		processedLinks = new HashSet<DiagramLink>();
