@@ -45,7 +45,6 @@ import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Desire;
-import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -654,14 +653,10 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	{
 		Cause threat = Cause.find(getProject(), threatRef);
 		ChainWalker walker = new ChainWalker();
-		ORefList diagramFactorReferrerRefs = threat.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		
 		FactorSet directUpstreamDownstreamFactors = new FactorSet();
-		for (int index = 0; index < diagramFactorReferrerRefs.size(); ++index)
-		{
-			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), diagramFactorReferrerRefs.get(index));
-			directUpstreamDownstreamFactors.attemptToAddAll(walker.buildDirectlyLinkedDownstreamChainAndGetFactors(diagramFactor));
-			directUpstreamDownstreamFactors.attemptToAddAll(walker.buildDirectlyLinkedUpstreamChainAndGetFactors(diagramFactor));
-		}
+		directUpstreamDownstreamFactors.attemptToAddAll(walker.buildDirectlyLinkedDownstreamChainAndGetFactors(threat));
+		directUpstreamDownstreamFactors.attemptToAddAll(walker.buildDirectlyLinkedUpstreamChainAndGetFactors(threat));
 		
 		for(Factor factor : directUpstreamDownstreamFactors)
 		{

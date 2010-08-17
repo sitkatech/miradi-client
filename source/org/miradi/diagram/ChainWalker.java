@@ -75,6 +75,32 @@ public class ChainWalker
 		return getFactors();
 	}
 	
+	public FactorSet buildDirectlyLinkedUpstreamChainAndGetFactors(Factor factor)
+	{
+		FactorSet factorsOnAllDiagrams = new FactorSet();
+		HashSet<DiagramFactor> diagramFactors = getReferrerDiagramFactors(factor);
+		for(DiagramFactor diagramFactor : diagramFactors)
+		{	
+			buildDirectlyLinkedUpstreamChain(diagramFactor);
+			factorsOnAllDiagrams.attemptToAddAll(getFactors());
+		}
+		
+		return factorsOnAllDiagrams;
+	}
+	
+	public FactorSet buildDirectlyLinkedDownstreamChainAndGetFactors(Factor factor)
+	{
+		FactorSet factorsOnAllDiagrams = new FactorSet();
+		HashSet<DiagramFactor> diagramFactors = getReferrerDiagramFactors(factor);
+		for(DiagramFactor diagramFactor : diagramFactors)
+		{	
+			buildDirectlyLinkedDownstreamChain(diagramFactor);
+			factorsOnAllDiagrams.attemptToAddAll(getFactors());
+		}
+		
+		return factorsOnAllDiagrams;
+	}
+	
 	public ORefList getDirectlyUpstreamNonDraftStrategies(Factor owningFactor) throws Exception
 	{
 		if(owningFactor == null)
