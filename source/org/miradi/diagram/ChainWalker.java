@@ -58,7 +58,7 @@ public class ChainWalker
 		return getFactors();
 	}
 	
-	public FactorSet buildDownstreamChainAndGetFactors(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
+	public FactorSet buildDownstreamChainAndGetFactors(DiagramFactor diagramFactor)
 	{
 		buildDownstreamChain(diagramFactor);
 		return getFactors();
