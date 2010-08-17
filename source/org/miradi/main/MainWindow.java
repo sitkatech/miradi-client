@@ -230,9 +230,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		if(commandLineArguments.contains("--remote"))
 		{
 			// NOTE: This is code for testing the fat client
-			// The server must be running, and /var/local/MiradiServer/project/Test
+			// The server must be running on fxa.org, and 
+			// /var/local/MiradiServer/project/Test
 			// must be a valid Miradi project directory
-			setRemoteDataLocation("http://localhost:7000/MiradiServer/");
+			setRemoteDataLocation("http://fxa.org:7000/MiradiServer/");
 			createOrOpenProject("projects/Test");
 		}
 	}
