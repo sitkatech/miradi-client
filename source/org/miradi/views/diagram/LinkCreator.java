@@ -533,7 +533,7 @@ public class LinkCreator
 		ORef groupBoxDiagramFactorRef = groupBoxDiagramFactor.getRef();
 
 		{
-			ORefSet fromDiagramFactorRefs = getRefsOfDiagramFactorsThatLinkToAllChildren(groupBoxDiagramFactorRef, FactorLink.FROM);
+			ORefSet fromDiagramFactorRefs = getRefsOfDiagramFactorsThatLinkToAllChildren(groupBoxDiagramFactorRef, DiagramLink.FROM);
 			ORefSet toDiagramFactorRefs = new ORefSet(groupBoxDiagramFactorRef);
 			createAllPossibleGroupLinks(diagramObject, fromDiagramFactorRefs, toDiagramFactorRefs);
 		}

@@ -21,14 +21,14 @@ package org.miradi.views.diagram.doers;
 
 import java.awt.Rectangle;
 
-import org.miradi.objects.FactorLink;
+import org.miradi.objects.DiagramLink;
 import org.miradi.utils.PointList;
 
 public class CreateOutgoingJunctionDoer extends AbstractCreateJunctionDoer
 {
 	protected int getDirection()
 	{
-		return FactorLink.FROM;
+		return DiagramLink.FROM;
 	}
 	
 	protected int getInsertBendPointAtIndex(PointList bendPoints)

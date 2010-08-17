@@ -280,7 +280,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		deleteDiagramFactors(getDiagramObject(), diagramFactorsToCutPaste);
 		pasteShared(diagramModelToPasteInto, transferableList);
 		
-		verifyFactorLinkAfterPaste(FactorLink.FROM, threat, diagramModelToPasteInto);
+		verifyFactorLinkAfterPaste(DiagramLink.FROM, threat, diagramModelToPasteInto);
 	}
 	
 	private void verifyFactorLinkAfterPaste(int direction, BaseObject sharedFactor, DiagramModel diagramModel)

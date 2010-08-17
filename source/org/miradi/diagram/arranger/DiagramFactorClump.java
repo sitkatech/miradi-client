@@ -39,7 +39,7 @@ public class DiagramFactorClump
 		diagram = diagramToUse;
 		diagramFactorMaybeGroup = diagramFactorOrGroup;
 		incomingLinks = findLinks(FactorLink.TO);
-		outgoingLinks = findLinks(FactorLink.FROM);
+		outgoingLinks = findLinks(DiagramLink.FROM);
 	}
 	
 	public int getTotalLinkCount()
@@ -61,7 +61,7 @@ public class DiagramFactorClump
 	
 	public Set<DiagramLink> getLinks(int direction)
 	{
-		if(direction == FactorLink.FROM)
+		if(direction == DiagramLink.FROM)
 			return incomingLinks;
 		if(direction == FactorLink.TO)
 			return outgoingLinks;
