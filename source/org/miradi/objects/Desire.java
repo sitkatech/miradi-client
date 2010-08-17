@@ -22,6 +22,7 @@ package org.miradi.objects;
 import java.util.Arrays;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.ChainWalker;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -242,28 +243,8 @@ abstract public class Desire extends BaseObject
 	private ORefList getDirectlyUpstreamNonDraftStrategies() throws Exception
 	{
 		Factor owningFactor = getDirectOrIndirectOwningFactor();
-		if(owningFactor == null)
-			return new ORefList();
 		
-		ORefList nonDraftStrategyRefs = new ORefList();
-		if (isNonDraftStrategy(owningFactor))
-			nonDraftStrategyRefs.add(owningFactor.getRef());
-		
-		ORefList relatedFactorLinkRefs = owningFactor.findObjectsThatReferToUs(FactorLink.getObjectType());
-		for (int index = 0; index < relatedFactorLinkRefs.size(); ++index)
-		{
-			FactorLink relatedFactorLink = FactorLink.find(getProject(), relatedFactorLinkRefs.get(index));
-			Factor fromFactor = relatedFactorLink.getFromFactor();
-			if(isNonDraftStrategy(fromFactor))
-				nonDraftStrategyRefs.add(fromFactor.getRef());
-		}
-		
-		return nonDraftStrategyRefs;
-	}
-	
-	boolean isNonDraftStrategy(Factor factor)
-	{
-		return factor.isStrategy() && !factor.isStatusDraft();
+		return new ChainWalker().getDirectlyUpstreamNonDraftStrategies(owningFactor);
 	}
 	
 	public RelevancyOverrideSet getCalculatedRelevantIndicatorOverrides(ORefList all) throws Exception
