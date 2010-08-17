@@ -69,7 +69,7 @@ public class ExportZippedProjectFileDoer extends AbstractFileSaverDoer
 		catch (Exception e) 
 		{
 			EAM.logException(e);
-			throw new CommandFailedException(EAM.text("Error Export To Miradi Zip: Possible Write Protected: ") + e);
+			throw new CommandFailedException(EAM.text("Error Export To Miradi Zip: Possible Write Protected: "), e);
 		}
 	}
 
