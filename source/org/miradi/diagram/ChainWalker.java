@@ -46,7 +46,7 @@ public class ChainWalker
 		return getFactors();
 	}
 	
-	public HashSet<DiagramFactor> buildNormalChainAndGetDiagramFactors(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
+	public HashSet<DiagramFactor> buildNormalChainAndGetDiagramFactors(DiagramFactor diagramFactor)
 	{
 		buildNormalChain(diagramFactor);
 		return getDiagramFactors();
