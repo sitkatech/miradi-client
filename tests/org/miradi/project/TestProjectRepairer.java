@@ -162,6 +162,28 @@ public class TestProjectRepairer extends TestCaseWithProject
 
 		assertEquals("Incorrect threat stress rating count?", 2, getProject().getThreatStressRatingPool().size());
 	}
+	
+	public void testDeleteFactorLinksToGroupBox() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		GroupBox groupBox = getProject().createGroupBox();
+		Target target = getProject().createTarget();
+		ORef linkRef1 = getProject().createFactorLink(strategy.getRef(), groupBox.getRef());
+		ORef linkRef2 = getProject().createFactorLink(groupBox.getRef(), target.getRef());
+
+		getProject().beginCommandSideEffectMode();
+		try
+		{
+			repairer.repairProblemsWherePossible();
+			assertNull("Didn't delete link1?", getProject().findObject(linkRef1));
+			assertNull("Didn't delete link2?", getProject().findObject(linkRef2));
+		}
+		finally
+		{
+			getProject().endCommandSideEffectMode();
+		}
+		
+	}
 
 	private void createThreatThreatTargetLinkedFactors() throws Exception
 	{

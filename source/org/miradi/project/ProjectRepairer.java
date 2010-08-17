@@ -41,6 +41,8 @@ import org.miradi.objectpools.PoolWithIdAssigner;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.FactorLink;
+import org.miradi.objects.GroupBox;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.ThreatStressRating;
@@ -97,6 +99,21 @@ public class ProjectRepairer
 		fixAnyProblemsWithThreatStressRatings();
 		repairUnsnappedNodes();
 		removeInvalidDiagramLinkRefs();
+		quarantineGroupBoxFactorLinks();
+	}
+
+	private void quarantineGroupBoxFactorLinks() throws Exception
+	{
+		Vector<ORef> groupBoxFactorLinkRefs = new Vector<ORef>();
+		ORefList allFactorLinkRefs = project.getFactorLinkPool().getFactorLinkRefs();
+		for(int i = 0; i < allFactorLinkRefs.size(); ++i)
+		{
+			ORef factorLinkRef = allFactorLinkRefs.get(i);
+			FactorLink link = FactorLink.find(project, factorLinkRef);
+			if(GroupBox.is(link.getFromFactorRef()) || GroupBox.is(link.getToFactorRef()))
+				groupBoxFactorLinkRefs.add(factorLinkRef);
+		}
+		quarantineObjects(groupBoxFactorLinkRefs);
 	}
 
 	private void removeInvalidDiagramLinkRefs() throws Exception
