@@ -40,7 +40,7 @@ public class ChainWalker
 		return processedLinks;
 	}
 	
-	public FactorSet buildNormalChainAndGetFactors(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
+	public FactorSet buildNormalChainAndGetFactors(DiagramFactor diagramFactor)
 	{
 		buildNormalChain(diagramFactor);
 		return getFactors();
@@ -83,8 +83,7 @@ public class ChainWalker
 			if(diagramRefs.size() != 1)
 				throw new RuntimeException("DF " + df.getRef() + " is in multiple diagrams: " + diagramRefs);
 			
-			DiagramObject diagram = DiagramObject.findDiagramObject(project, diagramRefs.getFirstElement());
-			FactorSet factorsOnThisDiagram = realWalker.buildNormalChainAndGetFactors(diagram, df);
+			FactorSet factorsOnThisDiagram = realWalker.buildNormalChainAndGetFactors(df);
 			factorsOnAllDiagrams.attemptToAddAll(factorsOnThisDiagram);
 		}
 		
