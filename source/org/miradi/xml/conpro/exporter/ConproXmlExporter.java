@@ -642,13 +642,13 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		ORefSet upstreamThreatRefs = threatTargetChainObject.getUpstreamThreatRefsFromTarget(target);
 		for(ORef threatRef : upstreamThreatRefs)
 		{
-			writeStrategyThreatTargetAssociations(out, target, threatRef);
+			writeStrategyThreatTargetAssociations(out, threatRef);
 		}
 		
 		writeEndElement(out, STRATEGY_THREAT_TARGET_ASSOCIATIONS);
 	}
 
-	private void writeStrategyThreatTargetAssociations(UnicodeWriter out, Target target, ORef threatRef) throws Exception
+	private void writeStrategyThreatTargetAssociations(UnicodeWriter out, ORef threatRef) throws Exception
 	{
 		Cause threat = Cause.find(getProject(), threatRef);
 		ORefList factorLinkReferrers = threat.findObjectsThatReferToUs(FactorLink.getObjectType());
