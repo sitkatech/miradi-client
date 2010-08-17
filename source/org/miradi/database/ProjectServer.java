@@ -394,6 +394,12 @@ public class ProjectServer
 	public String getQuarantineFileContents() throws Exception
 	{
 		File relativeQuarantineFile = getRelativeQuarantineFile();
+		return readFileContents(relativeQuarantineFile);
+	}
+
+	public String readFileContents(File relativeQuarantineFile)
+			throws Exception
+	{
 		String projectName = getCurrentProjectName();
 		if(!currentFileSystem.doesFileExist(projectName, relativeQuarantineFile))
 			return "";
