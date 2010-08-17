@@ -66,10 +66,9 @@ public class TestWcsExporter extends TestCaseWithProject
 	{
 		getProject().setMetadata(ProjectMetadata.TAG_THREAT_RATING_MODE, ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
 		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		Cause threat = getProject().createCause();
-		getProject().enableAsThreat(threat);
-		Target target = (Target) targetDiagramFactor.getWrappedFactor();
-		TestStressBasedThreatRatingFramework.createThreatFactorLink(getProject(), threat, target);
+		DiagramFactor causeDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		getProject().enableAsThreat((Cause) causeDiagramFactor.getWrappedFactor());
+		TestStressBasedThreatRatingFramework.createThreatFactorLink(getProject(), causeDiagramFactor, targetDiagramFactor);
 		validateProject();
 	}
 	
