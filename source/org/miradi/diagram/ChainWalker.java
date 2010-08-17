@@ -70,6 +70,32 @@ public class ChainWalker
 		return getFactors();
 	}
 	
+	public ORefList getDirectlyUpstreamNonDraftStrategies(Factor owningFactor) throws Exception
+	{
+		if(owningFactor == null)
+			return new ORefList();
+		
+		ORefList nonDraftStrategyRefs = new ORefList();
+		if (isNonDraftStrategy(owningFactor))
+			nonDraftStrategyRefs.add(owningFactor.getRef());
+		
+		ORefList relatedFactorLinkRefs = owningFactor.findObjectsThatReferToUs(FactorLink.getObjectType());
+		for (int index = 0; index < relatedFactorLinkRefs.size(); ++index)
+		{
+			FactorLink relatedFactorLink = FactorLink.find(getProject(), relatedFactorLinkRefs.get(index));
+			Factor fromFactor = relatedFactorLink.getFromFactor();
+			if(isNonDraftStrategy(fromFactor))
+				nonDraftStrategyRefs.add(fromFactor.getRef());
+		}
+		
+		return nonDraftStrategyRefs;
+	}
+	
+	private boolean isNonDraftStrategy(Factor factor)
+	{
+		return factor.isStrategy() && !factor.isStatusDraft();
+	}
+	
 	public FactorSet buildNormalChainAndGetFactors(Factor factor)
 	{
 		Project project = factor.getProject();
