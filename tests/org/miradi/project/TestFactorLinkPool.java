@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.project;
 
-import org.miradi.ids.FactorId;
 import org.miradi.main.TestCaseWithProject;
 
 public class TestFactorLinkPool extends TestCaseWithProject
@@ -34,16 +33,10 @@ public class TestFactorLinkPool extends TestCaseWithProject
 		super.setUp();
 	}
 
-	class LinkageMonitor implements FactorLinkListener
+
+	public void testPlaceHolder() throws Exception
 	{
-		public void factorLinkWasCreated(FactorId linkFromId, FactorId linkToId)
-		{
-		}
-
-		public void factorLinkWasDeleted(FactorId linkFromId, FactorId linkToId)
-		{
-		}		
+		// NOTE: Test classes must have at least one test, and 
+		// I didn't want to delete this test class in case we need it later
 	}
-	
-
 }
