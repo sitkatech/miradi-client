@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-17 16:31-0500\n"
+"POT-Creation-Date: 2010-08-17 16:52-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -3162,7 +3162,7 @@ msgstr "Error"
 msgid "Error Creating: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:72
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:81
 msgid "Error Export To Miradi Zip: Possible Write Protected: "
 msgstr ""
 "Error de exportación al zip de Miradi: Es posible que esté protegido contra "
@@ -5120,7 +5120,7 @@ msgid "PlanningSubViewName|Custom"
 msgstr "Personalizar"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:60
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:68
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:77
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
 "for Strategy named:\n"
@@ -7110,7 +7110,7 @@ msgstr ""
 "trabajan juntos para desarrollar estándares y herramientas comunes como "
 "Miradi. Puede obtener más información en www.ConservationMeasures.org"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:61
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:70
 msgid ""
 "The MPZ file cannot be saved to a folder within the project being exported"
 msgstr ""
@@ -7641,7 +7641,7 @@ msgstr "UniqueModelIdentifier="
 msgid "University"
 msgstr "Universidad "
 
-#: Miradi/source/org/miradi/database/ProjectServer.java:437
+#: Miradi/source/org/miradi/database/ProjectServer.java:442
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:161
 #: Miradi/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:37
 msgid "Unknown"
