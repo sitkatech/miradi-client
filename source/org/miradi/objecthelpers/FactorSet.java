@@ -70,11 +70,13 @@ public class FactorSet extends HashSet<Factor>
 		return factorRefs;
 	}
 	
+	@Override
 	public boolean add(Factor o)
 	{
 		throw new RuntimeException("Must use attemptToAdd instead of add");
 	}
 
+	@Override
 	public boolean addAll(Collection c)
 	{
 		throw new RuntimeException("Must use attemptToAdd instead of addAll");
