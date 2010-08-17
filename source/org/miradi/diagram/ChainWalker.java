@@ -36,19 +36,19 @@ public class ChainWalker
 {
 	public HashSet<DiagramLink> buildNormalChainAndGetDiagramLinks(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
 	{
-		buildNormalChain(diagramObjectToUse, diagramFactor);
+		buildNormalChain(diagramFactor);
 		return processedLinks;
 	}
 	
 	public FactorSet buildNormalChainAndGetFactors(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
 	{
-		buildNormalChain(diagramObjectToUse, diagramFactor);
+		buildNormalChain(diagramFactor);
 		return getFactors();
 	}
 	
 	public HashSet<DiagramFactor> buildNormalChainAndGetDiagramFactors(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
 	{
-		buildNormalChain(diagramObjectToUse, diagramFactor);
+		buildNormalChain(diagramFactor);
 		return getDiagramFactors();
 	}
 	
@@ -91,7 +91,7 @@ public class ChainWalker
 		return factorsOnAllDiagrams;
 	}
 
-	private void buildNormalChain(DiagramObject diagramObjectToUse , DiagramFactor diagramFactor)
+	private void buildNormalChain(DiagramFactor diagramFactor)
 	{
 		initializeChain(diagramFactor);
 		buildUpstreamDownstreamChain(diagramFactor);
