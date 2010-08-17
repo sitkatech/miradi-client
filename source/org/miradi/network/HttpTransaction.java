@@ -61,7 +61,8 @@ class HttpTransaction
 			relativePath += file;
 		}
 		URI uri = new URI(serverURL + relativePath + buildParameterString(parameters));
-		HttpURLConnection connection = (HttpURLConnection) uri.toURL().openConnection();
+		URL url = uri.toURL();
+		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		return connection;
 	}
 
