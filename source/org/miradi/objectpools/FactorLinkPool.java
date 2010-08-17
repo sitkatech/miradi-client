@@ -95,38 +95,6 @@ public class FactorLinkPool extends PoolWithIdAssigner
 		return ORef.INVALID;
 	}
 
-	// NOTE: This method is deprecated! Pass Factors instead!
-	public boolean isLinked(ORef factorRef1, ORef factorRef2)
-	{
-		return !getLinkedRef(factorRef1, factorRef2).isInvalid();
-	}
-	
-	// NOTE: This method is deprecated! Pass Factors instead!
-	public ORef getLinkedRef(ORef factorRef1, ORef factorRef2)
-	{
-		FactorLinkId factorLinkId = getLinkedId(factorRef1, factorRef2);
-		if (factorLinkId == null)
-			return ORef.INVALID;
-			
-		return new ORef(FactorLink.getObjectType(), factorLinkId);
-	}
-	
-	// NOTE: This method is deprecated! Pass Factors instead!
-	public FactorLinkId getLinkedId(ORef ref1, ORef ref2)
-	{
-		for(int i = 0; i < getIds().length; ++i)
-		{
-			FactorLink thisLinkage = getLinkage(i);
-			ORef from = thisLinkage.getFromFactorRef();
-			ORef to = thisLinkage.getToFactorRef();
-			if(from.equals(ref1) && to.equals(ref2))
-				return (FactorLinkId) thisLinkage.getId();
-			if(from.equals(ref2) && to.equals(ref1))
-				return (FactorLinkId) thisLinkage.getId();
-		}
-		return null;
-	}
-	
 	
 	public FactorLinkId[] getFactorLinkIds()
 	{
@@ -142,8 +110,4 @@ public class FactorLinkPool extends PoolWithIdAssigner
 		return new ORefList(FactorLink.getObjectType(), factorLinkIds);
 	}
 	
-	private FactorLink getLinkage(int index)
-	{
-		return find((FactorLinkId)getIds()[index]);
-	}
 }
