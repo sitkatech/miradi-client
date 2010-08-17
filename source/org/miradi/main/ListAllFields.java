@@ -19,11 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.main;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Vector;
 
-import org.martus.util.DirectoryUtils;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorLinkId;
@@ -41,6 +39,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
+import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.Translation;
 
 public class ListAllFields
@@ -50,15 +49,10 @@ public class ListAllFields
 		Miradi.addThirdPartyJarsToClasspath();
 		Translation.initialize();
 		
-		File tempDirectory = File.createTempFile("$$$Miradi-ListAllFields", null);
-		tempDirectory.delete();
-		tempDirectory.mkdirs();
-		Project project = new Project();
-		project.setLocalDataLocation(tempDirectory);
+		ProjectForTesting project = new ProjectForTesting("ListAllFields");
 		project.createOrOpenWithDefaultObjectsAndDiagramHelp("ListAllFields");
 		listFieldsToConsole(project);
 		project.close();
-		DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
 	}
 
 	private static void listFieldsToConsole(Project project) throws IOException, Exception
