@@ -93,14 +93,13 @@ public class ChainWalker
 		return factor.isStrategy() && !factor.isStatusDraft();
 	}
 	
-	public FactorSet buildUpstreamChainAndGetFactors(Factor factor)
+	private FactorSet buildUpstreamChainAndGetFactors(Factor factor)
 	{
 		FactorSet factorsOnAllDiagrams = new FactorSet();
-		ChainWalker realWalker = new ChainWalker();
 		HashSet<DiagramFactor> diagramFactors = getReferrerDiagramFactors(factor);
 		for(DiagramFactor diagramFactor : diagramFactors)
 		{	
-			FactorSet factorsOnThisDiagram = realWalker.buildDirectlyLinkedUpstreamChainAndGetFactors(diagramFactor);
+			FactorSet factorsOnThisDiagram = buildDirectlyLinkedUpstreamChainAndGetFactors(diagramFactor);
 			factorsOnAllDiagrams.attemptToAddAll(factorsOnThisDiagram);
 		}
 		
@@ -110,11 +109,10 @@ public class ChainWalker
 	public FactorSet buildNormalChainAndGetFactors(Factor factor)
 	{
 		FactorSet factorsOnAllDiagrams = new FactorSet();
-		ChainWalker realWalker = new ChainWalker();
 		HashSet<DiagramFactor> diagramFactors = getReferrerDiagramFactors(factor);
 		for(DiagramFactor diagramFactor : diagramFactors)
 		{	
-			FactorSet factorsOnThisDiagram = realWalker.buildNormalChainAndGetFactors(diagramFactor);
+			FactorSet factorsOnThisDiagram = buildNormalChainAndGetFactors(diagramFactor);
 			factorsOnAllDiagrams.attemptToAddAll(factorsOnThisDiagram);
 		}
 		
