@@ -69,7 +69,7 @@ public class ConceptualModelByTargetSplitter
 	{
 		ChainWalker chainObject = new ChainWalker();
 		HashSet<DiagramFactor> diagramFactors = chainObject.buildNormalChainAndGetDiagramFactors(getDiagramObjectBeingSplit(), targetDiagramFactor);
-		HashSet<DiagramLink> diagramLinks = chainObject.buildNormalChainAndGetDiagramLinks(getDiagramObjectBeingSplit(), targetDiagramFactor);
+		HashSet<DiagramLink> diagramLinks = chainObject.buildNormalChainAndGetDiagramLinks(targetDiagramFactor);
 		
 		TransferableMiradiList miradiList = createTransferable(diagramFactors, diagramLinks);
 		ConceptualModelDiagram conceptualModelDiagram = createConceptualModelPage(targetDiagramFactor.getWrappedFactor().toString());

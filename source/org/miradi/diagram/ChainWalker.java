@@ -34,7 +34,7 @@ import org.miradi.project.Project;
 
 public class ChainWalker
 {
-	public HashSet<DiagramLink> buildNormalChainAndGetDiagramLinks(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
+	public HashSet<DiagramLink> buildNormalChainAndGetDiagramLinks(DiagramFactor diagramFactor)
 	{
 		buildNormalChain(diagramFactor);
 		return processedLinks;
