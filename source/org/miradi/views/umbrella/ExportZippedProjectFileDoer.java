@@ -39,9 +39,9 @@ public class ExportZippedProjectFileDoer extends AbstractFileSaverDoer
 	}
 
 	@Override
-	protected void doWork(File chosen) throws Exception
+	protected void doWork(File destinationFile) throws Exception
 	{
-		export(getProject().getDatabase().getCurrentLocalProjectDirectory(), chosen); 
+		export(getProject().getDatabase().getCurrentLocalProjectDirectory(), destinationFile); 
 	}
 
 	static public void perform(MainWindow mainWindow, File directoryToZip) throws CommandFailedException

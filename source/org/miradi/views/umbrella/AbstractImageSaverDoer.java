@@ -40,9 +40,9 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 	}
 
 	@Override
-	protected void doWork(File chosen) throws Exception
+	protected void doWork(File destinationFile) throws Exception
 	{
-		FileOutputStream out = new FileOutputStream(chosen);
+		FileOutputStream out = new FileOutputStream(destinationFile);
 		try
 		{
 			saveImage(out);
