@@ -50,6 +50,11 @@ public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 		return dataDirectory.getAbsolutePath();
 	}
 
+	public boolean isLocalFileSystem()
+	{
+		return true;
+	}
+
 	public void createProject(String projectName) throws Exception
 	{
 		projectPath(projectName).mkdir();

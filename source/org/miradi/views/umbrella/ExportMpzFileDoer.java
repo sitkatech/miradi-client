@@ -33,6 +33,15 @@ import org.miradi.utils.MpzFileChooser;
 public class ExportMpzFileDoer extends AbstractFileSaverDoer
 {
 	@Override
+	public boolean isAvailable()
+	{
+		if(!super.isAvailable())
+			return false;
+		
+		return (getProject().getDatabase().isLocalProject());
+	}
+	
+	@Override
 	protected EAMFileSaveChooser createFileChooser()
 	{
 		return new MpzFileChooser(getMainWindow());

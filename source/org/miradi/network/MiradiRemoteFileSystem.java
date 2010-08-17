@@ -40,6 +40,11 @@ public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
 	{
 	}
 	
+	public boolean isLocalFileSystem()
+	{
+		return false;
+	}
+
 	public void setDataLocation(String dataLocation) throws Exception
 	{
 		serverURL = new URL(dataLocation);
