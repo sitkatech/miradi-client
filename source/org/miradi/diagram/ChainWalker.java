@@ -101,7 +101,7 @@ public class ChainWalker
 		ORefList diagramFactorRefs = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
-			DiagramFactor df = DiagramFactor.find(factor.getProject(), diagramFactorRefs.get(i));
+			DiagramFactor df = DiagramFactor.find(factor.getObjectManager(), diagramFactorRefs.get(i));
 			FactorSet factorsOnThisDiagram = realWalker.buildDirectlyLinkedUpstreamChainAndGetFactors(df);
 			factorsOnAllDiagrams.attemptToAddAll(factorsOnThisDiagram);
 		}
@@ -117,7 +117,7 @@ public class ChainWalker
 		ORefList diagramFactorRefs = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
-			DiagramFactor df = DiagramFactor.find(factor.getProject(), diagramFactorRefs.get(i));
+			DiagramFactor df = DiagramFactor.find(factor.getObjectManager(), diagramFactorRefs.get(i));
 			FactorSet factorsOnThisDiagram = realWalker.buildNormalChainAndGetFactors(df);
 			factorsOnAllDiagrams.attemptToAddAll(factorsOnThisDiagram);
 		}
@@ -215,7 +215,7 @@ public class ChainWalker
 		if (diagramReferrers.isEmpty() || diagramReferrers.size() > 1)
 			throw new RuntimeException("DiagramFactor " + diagramFactor.getRef() + " is in multiple diagrams: " + diagramReferrers);
 		
-		diagramObject = DiagramObject.findDiagramObject(diagramFactor.getProject(), diagramReferrers.getFirstElement());
+		diagramObject = DiagramObject.findDiagramObject(diagramFactor.getObjectManager(), diagramReferrers.getFirstElement());
 		setStartingFactor(diagramFactor);
 		resultingFactors = new HashSet<Factor>();
 		processedLinks = new HashSet<DiagramLink>();
