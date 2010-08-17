@@ -115,12 +115,6 @@ public class FactorLink extends BaseObject
 		throw new RuntimeException("Link: Unknown direction " + direction);
 	}
 	
-	public static void ensure(ORef linkRef)
-	{
-		if (!is(linkRef))
-			throw new RuntimeException(linkRef + " is not a factor link ref");
-	}
-	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
