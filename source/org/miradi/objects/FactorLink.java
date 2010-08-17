@@ -99,32 +99,22 @@ public class FactorLink extends BaseObject
 	
 	public ORef getFactorRef(int direction)
 	{
-		if(isFrom(direction))
+		if(DiagramLink.isFrom(direction))
 			return getFromFactorRef();
-		if(isTo(direction))
+		if(DiagramLink.isTo(direction))
 			return getToFactorRef();
 		throw new RuntimeException("Link: Unknown direction " + direction);
 	}
 
 	public ORef getOppositeFactorRef(int direction)
 	{
-		if(isFrom(direction))
+		if(DiagramLink.isFrom(direction))
 			return getFactorRef(DiagramLink.TO);
-		if(isTo(direction))
+		if(DiagramLink.isTo(direction))
 			return getFactorRef(DiagramLink.FROM);
 		throw new RuntimeException("Link: Unknown direction " + direction);
 	}
 	
-	public static boolean isTo(int direction)
-	{
-		return direction == DiagramLink.TO;
-	}
-
-	public static boolean isFrom(int direction)
-	{
-		return direction == DiagramLink.FROM;
-	}
-		
 	public static void ensure(ORef linkRef)
 	{
 		if (!is(linkRef))
