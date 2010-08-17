@@ -125,7 +125,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		}
 		catch(Exception e)
 		{
-			deleteIncompleteProject(projectToFill);
+			projectToFill.closeAndDeleteProject();
 			throw e;
 		}
 	}

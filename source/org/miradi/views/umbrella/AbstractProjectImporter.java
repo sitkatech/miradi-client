@@ -26,7 +26,6 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
 import org.martus.swing.UiFileChooser;
-import org.martus.util.DirectoryUtils;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.ZipEntryInputStreamWithSeek;
 import org.miradi.exceptions.CpmzVersionTooOldException;
@@ -35,7 +34,6 @@ import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.project.Project;
 import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.views.noproject.NoProjectView;
 import org.miradi.views.noproject.RenameProjectDoer;
@@ -153,13 +151,6 @@ public abstract class AbstractProjectImporter
 		return new ZipEntryInputStreamWithSeek(zipFile, zipFile.getEntry(ExportCpmzDoer.PROJECT_XML_FILE_NAME));
 	}
 
-	protected void deleteIncompleteProject(Project projectToFill)	throws Exception
-	{
-		File projectDirectory = projectToFill.getProjectDirectory();
-		projectToFill.close();
-		DirectoryUtils.deleteEntireDirectoryTree(projectDirectory);
-	}
-	
 	protected MainWindow getMainWindow()
 	{
 		return mainWindow;

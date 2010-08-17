@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Vector;
 
+import org.martus.util.DirectoryUtils;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.database.DataUpgrader;
@@ -990,6 +991,14 @@ public class Project
 		
 	}
 
+	public void closeAndDeleteProject() throws Exception
+	{
+		// FIXME: This needs to be changed for the Fat Client
+		File projectDirectory = getProjectDirectory();
+		close();
+		DirectoryUtils.deleteEntireDirectoryTree(projectDirectory);
+	}
+	
 	public void disableThreatStressRatingEnsurer()
 	{
 		threatStressRatingEnsurer.disable();
