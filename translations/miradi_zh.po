@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 16:22-0500\n"
+"POT-Creation-Date: 2010-08-17 11:04-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -585,7 +585,7 @@ msgid ""
 "within ten years or three generations.</html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:108
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:109
 msgid ""
 "<html><br><em><strong>HINT:</strong> You can quickly add links by selecting "
 "both factors in the diagram before hitting the Create Link button. <br>On "
@@ -2134,7 +2134,7 @@ msgstr "作为拷贝 \t\t"
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:233
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:234
 msgid "Button|Cancel"
 msgstr "取消 \t\t"
 
@@ -2179,7 +2179,7 @@ msgstr ""
 msgid "Button|No"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:230
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:231
 msgid "Button|OK"
 msgstr "确定 \t\t"
 
@@ -3674,7 +3674,7 @@ msgstr "导入Zip"
 msgid "In Front"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:250
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:251
 msgid "Incomplete Link"
 msgstr "不完整链接 \t\t"
 
@@ -3748,7 +3748,7 @@ msgstr ""
 msgid "Insert FTE Fraction"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:219
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:220
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr ""
 
@@ -3904,7 +3904,7 @@ msgstr ""
 msgid "Label|(Undefined Resource)"
 msgstr "（未定义的资源） \t\t"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:97
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:98
 msgid "Label|--- affects -->"
 msgstr "--- 影响 --> \t\t"
 
@@ -7106,7 +7106,7 @@ msgstr "关键生态学属性的特性 \t\t"
 msgid "Title|Legacy TNC Strategy Editor Ranking Properties"
 msgstr "传承TNC（大自然保护协会）策略编辑器排行属性 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:64
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:65
 msgid "Title|Link Create Dialog"
 msgstr "链接创建对话框 \t\t"
 
@@ -7689,7 +7689,7 @@ msgstr ""
 "您正从本项目团队中去除本资源，因此他/她将不会在摘要视图里的团队成员列表中出"
 "现。 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:251
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:252
 msgid "You must select one item in each of the two lists"
 msgstr "您必须在两个列表中各选定一个选项 \t\t"
 
