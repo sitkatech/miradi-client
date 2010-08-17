@@ -46,9 +46,8 @@ public class TestProjectServer extends TestCaseWithProject
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		tempDataDirectory = createTempDirectory();
 		storage = new ProjectServer();
-		storage.setLocalDataLocation(tempDataDirectory);
+		storage.setMemoryDataLocation(getName());
 		storage.createProject(getName());
 		idAssigner = new IdAssigner();
 	}
@@ -56,7 +55,7 @@ public class TestProjectServer extends TestCaseWithProject
 	public void tearDown() throws Exception
 	{
 		storage.close();
-		DirectoryUtils.deleteEntireDirectoryTree(tempDataDirectory);
+		storage.deleteProject(getName());
 		super.tearDown();
 	}
 	
@@ -193,5 +192,4 @@ public class TestProjectServer extends TestCaseWithProject
 
 	IdAssigner idAssigner;
 	private ProjectServer storage;
-	private File tempDataDirectory;
 }
