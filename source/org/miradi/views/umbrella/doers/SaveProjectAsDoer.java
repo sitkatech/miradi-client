@@ -35,7 +35,7 @@ public class SaveProjectAsDoer extends MainWindowDoer
 {
 	public boolean isAvailable()
 	{
-		return getProject().isOpen();
+		return (getProject().isOpen() && getProject().getDatabase().isLocalProject());
 	}
 
 	public void doIt() throws Exception
