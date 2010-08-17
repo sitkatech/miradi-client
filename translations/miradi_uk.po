@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-17 16:04-0500\n"
+"POT-Creation-Date: 2010-08-17 16:28-0500\n"
 "PO-Revision-Date: 2010-05-12 13:30-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -62,7 +62,7 @@ msgstr ""
 msgid " 2) Connect threat to relevant targets"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:183
+#: Miradi/source/org/miradi/project/Project.java:182
 msgid " A project by this name already exists: "
 msgstr ""
 
@@ -715,7 +715,7 @@ msgid ""
 "safe to do this, unless an earlier migration attempt failed."
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:189
+#: Miradi/source/org/miradi/project/Project.java:188
 msgid "A file or folder exist by the same name:"
 msgstr ""
 
@@ -7172,7 +7172,7 @@ msgstr ""
 msgid "University"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/ProjectServer.java:432
+#: Miradi/source/org/miradi/database/ProjectServer.java:437
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:161
 #: Miradi/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:37
 msgid "Unknown"
@@ -7537,7 +7537,7 @@ msgstr ""
 msgid "[New Results Chain]"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:963
+#: Miradi/source/org/miradi/project/Project.java:962
 msgid "[No Project]"
 msgstr ""
 
