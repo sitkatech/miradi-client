@@ -129,7 +129,7 @@ public class MeglerArranger
 
 	private void createThreatGroupsBasedOnStrategies() throws Exception
 	{
-		createGroupBoxes(threats, FactorLink.FROM, Strategy.getObjectType());
+		createGroupBoxes(threats, DiagramLink.FROM, Strategy.getObjectType());
 	}
 
 	private void createThreatGroupsBasedOnTargets() throws Exception
@@ -144,7 +144,7 @@ public class MeglerArranger
 
 	private void createTargetGroups() throws Exception
 	{
-		createGroupBoxes(targets, FactorLink.FROM, Cause.getObjectType());
+		createGroupBoxes(targets, DiagramLink.FROM, Cause.getObjectType());
 	}
 
 	private void createGroupBoxes(Vector<DiagramFactor> diagramFactorsToGroup, int direction, int objectTypeInThatDirection) throws Exception
@@ -481,7 +481,7 @@ public class MeglerArranger
 		progressMeter.setStatusMessage(EAM.text("Arranging Strategies..."), threatClumps.size());
 		for(DiagramFactorClump diagramFactorClump : arrangedThreatClumps)
 		{
-			addRelatedToArrangedList(arrangedStrategyClumps, strategyClumps, diagramFactorClump, FactorLink.FROM);
+			addRelatedToArrangedList(arrangedStrategyClumps, strategyClumps, diagramFactorClump, DiagramLink.FROM);
 			progressMeter.incrementProgress();
 		}
 		

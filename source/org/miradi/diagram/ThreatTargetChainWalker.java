@@ -25,6 +25,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.Cause;
+import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Target;
@@ -155,7 +156,7 @@ public class ThreatTargetChainWalker
 		
 	private void buildDownstreamChain()
 	{
-		buildChain(FactorLink.FROM);
+		buildChain(DiagramLink.FROM);
 	}
 	
 	private void setStartingFactor(Factor startingFactorToUse)

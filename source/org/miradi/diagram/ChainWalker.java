@@ -108,7 +108,6 @@ public class ChainWalker
 		
 		return factorsOnAllDiagrams;
 	}
-
 	
 	public FactorSet buildNormalChainAndGetFactors(Factor factor)
 	{
@@ -284,7 +283,7 @@ public class ChainWalker
 	
 	private HashSet<Factor> getAllDownstreamFactors()
 	{
-		return getAllLinkedFactors(FactorLink.FROM);
+		return getAllLinkedFactors(DiagramLink.FROM);
 	}
 	
 	private void setStartingFactor(DiagramFactor startingFactor)

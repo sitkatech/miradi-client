@@ -111,7 +111,7 @@ public class FactorLink extends BaseObject
 		if(isFrom(direction))
 			return getFactorRef(TO);
 		if(isTo(direction))
-			return getFactorRef(FROM);
+			return getFactorRef(DiagramLink.FROM);
 		throw new RuntimeException("Link: Unknown direction " + direction);
 	}
 	
@@ -122,7 +122,7 @@ public class FactorLink extends BaseObject
 
 	public static boolean isFrom(int direction)
 	{
-		return direction == FROM;
+		return direction == DiagramLink.FROM;
 	}
 		
 	public static void ensure(ORef linkRef)
@@ -174,7 +174,6 @@ public class FactorLink extends BaseObject
 	public static final String TAG_BIDIRECTIONAL_LINK = "BidirectionalLink";
 	
 	public static final String OBJECT_NAME = "Link";
-	public static final int FROM = 1;
 	public static final int TO = 2;
 	public static final String BIDIRECTIONAL_LINK = BooleanData.BOOLEAN_TRUE;
 	

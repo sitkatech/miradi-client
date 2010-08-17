@@ -46,6 +46,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
@@ -78,7 +79,7 @@ public class LinkCreateDialog extends DialogWithButtonBar implements ActionListe
 	
 	private JPanel createFromToBox()
 	{
-		linkFromList = createChoices(FactorLink.FROM);
+		linkFromList = createChoices(DiagramLink.FROM);
 		linkToList = createChoices(FactorLink.TO);
 		DiagramComponent diagram = diagramPanel.getCurrentDiagramComponent();
 

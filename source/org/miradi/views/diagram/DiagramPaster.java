@@ -642,7 +642,7 @@ abstract public class DiagramPaster
 			String movedBendPointsAsString = movePoints(originalBendPoints, offsetToAvoidOverlaying);
 			diagramLinkJson.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
 			
-			DiagramFactor fromDiagramFactor = getNewDiagramFactor(diagramLinkJson, FactorLink.FROM);
+			DiagramFactor fromDiagramFactor = getNewDiagramFactor(diagramLinkJson, DiagramLink.FROM);
 			if(fromDiagramFactor == null)
 				continue;
 			DiagramFactor toDiagramFactor = getNewDiagramFactor(diagramLinkJson, FactorLink.TO);

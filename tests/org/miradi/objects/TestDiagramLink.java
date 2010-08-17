@@ -172,10 +172,10 @@ public class TestDiagramLink extends ObjectTestCase
 	{
 		ORef diagramLinkRef = project.createDiagramLink();
 		DiagramLink diagramLink = DiagramLink.find(project, diagramLinkRef);
-		assertEquals(diagramLink.getFromDiagramFactorRef(), diagramLink.getDiagramFactorRef(FactorLink.FROM));
+		assertEquals(diagramLink.getFromDiagramFactorRef(), diagramLink.getDiagramFactorRef(DiagramLink.FROM));
 		assertEquals(diagramLink.getToDiagramFactorRef(), diagramLink.getDiagramFactorRef(FactorLink.TO));
 		
-		assertEquals(diagramLink.getToDiagramFactorRef(), diagramLink.getOppositeDiagramFactorRef(FactorLink.FROM));
+		assertEquals(diagramLink.getToDiagramFactorRef(), diagramLink.getOppositeDiagramFactorRef(DiagramLink.FROM));
 		assertEquals(diagramLink.getFromDiagramFactorRef(), diagramLink.getOppositeDiagramFactorRef(FactorLink.TO));
 		
 	}

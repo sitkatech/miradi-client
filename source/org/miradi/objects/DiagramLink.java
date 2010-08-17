@@ -112,7 +112,7 @@ public class DiagramLink extends BaseObject
 	
 	public ORef getDiagramFactorRef(int direction)
 	{
-		if(direction == FactorLink.FROM)
+		if(direction == DiagramLink.FROM)
 			return getFromDiagramFactorRef();
 		if(direction == FactorLink.TO)
 			return getToDiagramFactorRef();
@@ -132,7 +132,7 @@ public class DiagramLink extends BaseObject
 	
 	public ORef getOppositeDiagramFactorRef(int direction)
 	{
-		if(direction == FactorLink.FROM)
+		if(direction == DiagramLink.FROM)
 			return getToDiagramFactorRef();
 		if(direction == FactorLink.TO)
 			return getFromDiagramFactorRef();
@@ -409,6 +409,8 @@ public class DiagramLink extends BaseObject
 	public static final String TAG_BEND_POINTS = "BendPoints";
 	public static final String TAG_GROUPED_DIAGRAM_LINK_REFS = "GroupedDiagramLinkRefs";
 	public static final String TAG_COLOR = "Color";
+	
+	public static final int FROM = 1;
 	
 	public static final String OBJECT_NAME = "DiagramLink";
 	
