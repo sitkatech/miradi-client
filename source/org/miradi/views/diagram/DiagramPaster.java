@@ -645,7 +645,7 @@ abstract public class DiagramPaster
 			DiagramFactor fromDiagramFactor = getNewDiagramFactor(diagramLinkJson, DiagramLink.FROM);
 			if(fromDiagramFactor == null)
 				continue;
-			DiagramFactor toDiagramFactor = getNewDiagramFactor(diagramLinkJson, FactorLink.TO);
+			DiagramFactor toDiagramFactor = getNewDiagramFactor(diagramLinkJson, DiagramLink.TO);
 			if(toDiagramFactor == null)
 				continue;
 
@@ -706,7 +706,7 @@ abstract public class DiagramPaster
 	private ORef getGroupLinkDiagramFactorEnd(EnhancedJsonObject json, int direction)
 	{
 		String diagramFactorEndTag = DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID;
-		if (direction == FactorLink.TO)
+		if (direction == DiagramLink.TO)
 			diagramFactorEndTag = DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID;
 		
 		ORef diagramFactorRef = getDiagramFactorId(json, diagramFactorEndTag);

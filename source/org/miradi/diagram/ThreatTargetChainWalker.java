@@ -151,7 +151,7 @@ public class ThreatTargetChainWalker
 	
 	private void  buildUpstreamChain()
 	{
-		buildChain(FactorLink.TO);
+		buildChain(DiagramLink.TO);
 	}
 		
 	private void buildDownstreamChain()
