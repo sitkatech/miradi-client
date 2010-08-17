@@ -77,24 +77,21 @@ public class ChainWalker
 	
 	public FactorSet buildDirectlyLinkedUpstreamChainAndGetFactors(Factor factor)
 	{
-		FactorSet factorsOnAllDiagrams = new FactorSet();
-		HashSet<DiagramFactor> diagramFactors = getReferrerDiagramFactors(factor);
-		for(DiagramFactor diagramFactor : diagramFactors)
-		{	
-			buildDirectlyLinkedChain(diagramFactor, DiagramLink.TO);
-			factorsOnAllDiagrams.attemptToAddAll(getFactors());
-		}
-		
-		return factorsOnAllDiagrams;
+		return buildDirectlyLinkedChain(factor, DiagramLink.TO);
 	}
 	
 	public FactorSet buildDirectlyLinkedDownstreamChainAndGetFactors(Factor factor)
+	{
+		return buildDirectlyLinkedChain(factor, DiagramLink.FROM);
+	}
+
+	private FactorSet buildDirectlyLinkedChain(Factor factor, final int direction)
 	{
 		FactorSet factorsOnAllDiagrams = new FactorSet();
 		HashSet<DiagramFactor> diagramFactors = getReferrerDiagramFactors(factor);
 		for(DiagramFactor diagramFactor : diagramFactors)
 		{	
-			buildDirectlyLinkedChain(diagramFactor, DiagramLink.FROM);
+			buildDirectlyLinkedChain(diagramFactor, direction);
 			factorsOnAllDiagrams.attemptToAddAll(getFactors());
 		}
 		
