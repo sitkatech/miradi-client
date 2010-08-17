@@ -107,7 +107,7 @@ public class ChainWalker
 		if (isNonDraftStrategy(owningFactor))
 			nonDraftStrategyRefs.add(owningFactor.getRef());
 		
-		FactorSet upstreamFactors = buildUpstreamChainAndGetFactors(owningFactor);
+		FactorSet upstreamFactors = buildDirectlyLinkedUpstreamChainAndGetFactors(owningFactor);
 		for(Factor factor : upstreamFactors)
 		{
 			if(isNonDraftStrategy(factor))
@@ -120,19 +120,6 @@ public class ChainWalker
 	private boolean isNonDraftStrategy(Factor factor)
 	{
 		return factor.isStrategy() && !factor.isStatusDraft();
-	}
-	
-	private FactorSet buildUpstreamChainAndGetFactors(Factor factor)
-	{
-		FactorSet factorsOnAllDiagrams = new FactorSet();
-		HashSet<DiagramFactor> diagramFactors = getReferrerDiagramFactors(factor);
-		for(DiagramFactor diagramFactor : diagramFactors)
-		{	
-			FactorSet factorsOnThisDiagram = buildDirectlyLinkedUpstreamChainAndGetFactors(diagramFactor);
-			factorsOnAllDiagrams.attemptToAddAll(factorsOnThisDiagram);
-		}
-		
-		return factorsOnAllDiagrams;
 	}
 	
 	public FactorSet buildNormalChainAndGetFactors(Factor factor)
