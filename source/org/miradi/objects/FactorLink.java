@@ -94,11 +94,6 @@ public class FactorLink extends BaseObject
 		return new ORef(rawRef.getObjectType(), new FactorId(rawRef.getObjectId().asInt()));
 	}
 	
-	public FactorLinkId getFactorLinkId()
-	{
-		return new FactorLinkId(getId().asInt());
-	}
-	
 	public boolean isBidirectional()
 	{
 		return bidirectionalLink.get().equals(BIDIRECTIONAL_LINK);
