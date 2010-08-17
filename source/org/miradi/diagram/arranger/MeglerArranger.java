@@ -40,7 +40,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -134,12 +133,12 @@ public class MeglerArranger
 
 	private void createThreatGroupsBasedOnTargets() throws Exception
 	{
-		createGroupBoxes(threats, FactorLink.TO, Target.getObjectType());
+		createGroupBoxes(threats, DiagramLink.TO, Target.getObjectType());
 	}
 
 	private void ceateStrategyGroups() throws Exception
 	{
-		createGroupBoxes(strategies, FactorLink.TO, Cause.getObjectType());
+		createGroupBoxes(strategies, DiagramLink.TO, Cause.getObjectType());
 	}
 
 	private void createTargetGroups() throws Exception
@@ -293,7 +292,7 @@ public class MeglerArranger
 		{
 			DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), nonGroupedRef);
 			DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), newGroupDiagramFactorRef);
-			if(direction == FactorLink.TO)
+			if(direction == DiagramLink.TO)
 			{
 				DiagramFactor temp = fromDiagramFactor;
 				fromDiagramFactor = toDiagramFactor;
@@ -474,7 +473,7 @@ public class MeglerArranger
 		progressMeter.setStatusMessage(EAM.text("Arranging Targets..."), threatClumps.size());
 		for(DiagramFactorClump diagramFactorClump : arrangedThreatClumps)
 		{
-			addRelatedToArrangedList(arrangedTargetClumps, targetClumps, diagramFactorClump, FactorLink.TO);
+			addRelatedToArrangedList(arrangedTargetClumps, targetClumps, diagramFactorClump, DiagramLink.TO);
 			progressMeter.incrementProgress();
 		}
 		

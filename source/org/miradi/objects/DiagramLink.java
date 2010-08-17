@@ -114,7 +114,7 @@ public class DiagramLink extends BaseObject
 	{
 		if(direction == DiagramLink.FROM)
 			return getFromDiagramFactorRef();
-		if(direction == FactorLink.TO)
+		if(direction == DiagramLink.TO)
 			return getToDiagramFactorRef();
 		throw new RuntimeException("Unknown direction: " + direction);
 	}
@@ -134,7 +134,7 @@ public class DiagramLink extends BaseObject
 	{
 		if(direction == DiagramLink.FROM)
 			return getToDiagramFactorRef();
-		if(direction == FactorLink.TO)
+		if(direction == DiagramLink.TO)
 			return getFromDiagramFactorRef();
 		throw new RuntimeException("Unknown direction: " + direction);
 	}
@@ -411,6 +411,7 @@ public class DiagramLink extends BaseObject
 	public static final String TAG_COLOR = "Color";
 	
 	public static final int FROM = 1;
+	public static final int TO = 2;
 	
 	public static final String OBJECT_NAME = "DiagramLink";
 	

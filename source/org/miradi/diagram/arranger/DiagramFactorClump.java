@@ -28,7 +28,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.project.Project;
 
@@ -38,7 +37,7 @@ public class DiagramFactorClump
 	{
 		diagram = diagramToUse;
 		diagramFactorMaybeGroup = diagramFactorOrGroup;
-		incomingLinks = findLinks(FactorLink.TO);
+		incomingLinks = findLinks(DiagramLink.TO);
 		outgoingLinks = findLinks(DiagramLink.FROM);
 	}
 	
@@ -63,7 +62,7 @@ public class DiagramFactorClump
 	{
 		if(direction == DiagramLink.FROM)
 			return incomingLinks;
-		if(direction == FactorLink.TO)
+		if(direction == DiagramLink.TO)
 			return outgoingLinks;
 		throw new RuntimeException("Unrecognized direction: " + direction);
 	}

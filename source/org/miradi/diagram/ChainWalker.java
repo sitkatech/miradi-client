@@ -28,7 +28,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.project.Project;
 
@@ -273,12 +272,12 @@ public class ChainWalker
 
 	private HashSet<Factor> getDirectlyLinkedUpstreamFactors()
 	{
-		return getDirectlyLinkedFactors(FactorLink.TO);
+		return getDirectlyLinkedFactors(DiagramLink.TO);
 	}
 	
 	private HashSet<Factor> getAllUpstreamFactors()
 	{
-		return getAllLinkedFactors(FactorLink.TO);
+		return getAllLinkedFactors(DiagramLink.TO);
 	}
 	
 	private HashSet<Factor> getAllDownstreamFactors()

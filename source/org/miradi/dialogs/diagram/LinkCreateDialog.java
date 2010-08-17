@@ -48,7 +48,6 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
 import org.miradi.utils.IgnoreCaseStringComparator;
 import org.miradi.utils.MiradiScrollPane;
@@ -80,7 +79,7 @@ public class LinkCreateDialog extends DialogWithButtonBar implements ActionListe
 	private JPanel createFromToBox()
 	{
 		linkFromList = createChoices(DiagramLink.FROM);
-		linkToList = createChoices(FactorLink.TO);
+		linkToList = createChoices(DiagramLink.TO);
 		DiagramComponent diagram = diagramPanel.getCurrentDiagramComponent();
 
 		GridLayoutPlus layout = new GridLayoutPlus(2,1);
