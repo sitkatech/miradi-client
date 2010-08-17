@@ -690,11 +690,6 @@ public class Project
 		EAM.logVerbose("Project Opened by Miradi " + VersionConstants.getVersionAndTimestamp());
 	}
 
-	public File getProjectDirectory()
-	{
-		return getDatabase().getCurrentLocalProjectDirectory();
-	}
-	
 	private void turnOnBudgetRelatedColumnsInWorkPlan() throws Exception
 	{
 		if (TableSettings.exists(this, WorkPlanTreeTablePanel.getTabSpecificModelIdentifier()))
@@ -994,7 +989,7 @@ public class Project
 	public void closeAndDeleteProject() throws Exception
 	{
 		// FIXME: This needs to be changed for the Fat Client
-		File projectDirectory = getProjectDirectory();
+		File projectDirectory = getDatabase().getCurrentLocalProjectDirectory();
 		close();
 		DirectoryUtils.deleteEntireDirectoryTree(projectDirectory);
 	}
