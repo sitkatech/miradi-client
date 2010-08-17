@@ -362,6 +362,16 @@ public class DiagramLink extends BaseObject
 		ORefList groupBoxLinks = findObjectsThatReferToUs(DiagramLink.getObjectType());
 		return (groupBoxLinks.size() > 0);
 	}
+	
+	public static boolean isTo(int direction)
+	{
+		return direction == TO;
+	}
+
+	public static boolean isFrom(int direction)
+	{
+		return direction == FROM;
+	}
 
 	public static boolean is(ORef ref)
 	{
