@@ -69,6 +69,12 @@ public class ChainWalker
 		return getFactors();
 	}
 	
+	public FactorSet buildDirectlyLinkedDownstreamChainAndGetFactors(DiagramFactor diagramFactor)
+	{
+		buildDirectlyLinkedDownstreamChain(diagramFactor);
+		return getFactors();
+	}
+	
 	public ORefList getDirectlyUpstreamNonDraftStrategies(Factor owningFactor) throws Exception
 	{
 		if(owningFactor == null)
@@ -161,6 +167,12 @@ public class ChainWalker
 	{
 		initializeChain(diagramFactor);
 		resultingFactors.addAll(getDirectlyLinkedUpstreamFactors());
+	}
+	
+	private void buildDirectlyLinkedDownstreamChain(DiagramFactor diagramFactor)
+	{
+		initializeChain(diagramFactor);
+		resultingFactors.addAll(getDirectlyLinkedDownstreamFactors());
 	}
 	
 	private HashSet<Factor> getDirectlyLinkedFactors(int direction)
@@ -282,6 +294,11 @@ public class ChainWalker
 	private HashSet<Factor> getDirectlyLinkedUpstreamFactors()
 	{
 		return getDirectlyLinkedFactors(DiagramLink.TO);
+	}
+	
+	private HashSet<Factor> getDirectlyLinkedDownstreamFactors()
+	{
+		return getDirectlyLinkedFactors(DiagramLink.FROM);
 	}
 	
 	private HashSet<Factor> getAllUpstreamFactors()
