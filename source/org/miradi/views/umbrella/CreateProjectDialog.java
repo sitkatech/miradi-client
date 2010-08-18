@@ -150,6 +150,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 			dialog = dialogToControl;
 		}
 
+		@Override
 		public void mouseClicked(MouseEvent e)
 		{
 			if(e.getClickCount() != 2)
