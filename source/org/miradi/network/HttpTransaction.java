@@ -47,6 +47,12 @@ class HttpTransaction
 		return resultData;
 	}
 
+	protected HttpURLConnection createConnection(URL serverURL) throws MalformedURLException, URISyntaxException, IOException
+	{
+		String uriString = serverURL.toString();
+		return createConnection(uriString);
+	}
+
 	protected HttpURLConnection createConnection(URL serverURL, String projectName, File file, String[] parameters)
 			throws URISyntaxException, IOException, MalformedURLException
 	{

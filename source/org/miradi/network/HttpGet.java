@@ -25,21 +25,54 @@ import java.net.URL;
 
 class HttpGet extends HttpTransaction
 {
-	public HttpGet(URL serverURL, String projectName, File file) throws Exception
+	public static HttpTransaction readFile(URL serverURL, String projectName, File file) throws Exception
 	{
-		this(serverURL, projectName, file, new String[0]);
+		HttpGet get = new HttpGet(serverURL, projectName, file);
+		get.performRequest(get.connection);
+		return get;
 	}
 	
-	public HttpGet(URL serverURL, String projectName, String[] parameters) throws Exception
+	public static HttpTransaction readFiles(URL serverURL, String projectName, String[] parameters) throws Exception
 	{
-		HttpURLConnection connection = createConnection(serverURL, projectName, parameters);
-		performRequest(connection);
+		HttpGet get = new HttpGet(serverURL, projectName, parameters);
+		get.performRequest(get.connection);
+		return get;
+	}
+	
+	public static HttpTransaction getFileInformation(URL serverURL, String projectName, File file, String[] parameters) throws Exception
+	{
+		HttpGet get = new HttpGet(serverURL, projectName, file, parameters);
+		get.performRequest(get.connection);
+		return get;
+	}
+	
+	public static HttpTransaction getProjectList(URL serverURL) throws Exception
+	{
+		HttpGet get = new HttpGet(serverURL);
+		get.performRequest(get.connection);
+		return get;
 	}
 
-	public HttpGet(URL serverURL, String projectName, File file, String[] parameters) throws Exception
+	private HttpGet(URL serverURL, String projectName, File file) throws Exception
 	{
-		HttpURLConnection connection = createConnection(serverURL, projectName, file, parameters);
-		performRequest(connection);
+		connection = createConnection(serverURL, projectName, file);
 	}
+	
+	private HttpGet(URL serverURL, String projectName, String[] parameters) throws Exception
+	{
+		connection = createConnection(serverURL, projectName, parameters);
+	}
+
+	private HttpGet(URL serverURL, String projectName, File file, String[] parameters) throws Exception
+	{
+		connection = createConnection(serverURL, projectName, file, parameters);
+	}
+
+	private HttpGet(URL serverURL) throws Exception
+	{
+		connection = createConnection(serverURL);
+	}
+
+	private HttpURLConnection connection;
 
 }

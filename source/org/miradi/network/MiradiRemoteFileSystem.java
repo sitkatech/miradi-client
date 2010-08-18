@@ -57,7 +57,7 @@ public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
 	
 	public Set<String> getProjectList() throws Exception
 	{
-		HttpTransaction get = new HttpGet(serverURL, null, null, null);
+		HttpTransaction get = HttpGet.getProjectList(serverURL);
 		if(get.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(get.getResultMessage());
 		
@@ -75,7 +75,7 @@ public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
 	
 	public boolean doesProjectDirectoryExist(String projectName) throws Exception
 	{
-		HttpTransaction get = new HttpGet(serverURL, projectName, new String[] {EXISTS});
+		HttpTransaction get = HttpGet.readFiles(serverURL, projectName, new String[] {EXISTS});
 		if(get.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(get.getResultMessage());
 		return (get.getResultData().startsWith(EXISTS));
@@ -127,7 +127,7 @@ public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
 	
 	public boolean doesFileExist(String projectName, File file) throws Exception
 	{
-		HttpTransaction get = new HttpGet(serverURL, projectName, file, new String[] {EXISTS});
+		HttpTransaction get = HttpGet.getFileInformation(serverURL, projectName, file, new String[] {EXISTS});
 		if(get.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(get.getResultMessage());
 		return (get.getResultData().startsWith(EXISTS));
@@ -135,7 +135,7 @@ public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
 	
 	public String readFile(String projectName, File file) throws Exception
 	{
-		HttpTransaction get = new HttpGet(serverURL, projectName, file);
+		HttpTransaction get = HttpGet.readFile(serverURL, projectName, file);
 		if(get.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(get.getResultMessage());
 		return get.getResultData();
@@ -144,7 +144,7 @@ public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
 	public Map<Integer, String> readAllManifestFiles(String projectName) throws Exception
 	{
 		HashMap<Integer, String> map = new HashMap<Integer, String>();
-		HttpTransaction get = new HttpGet(serverURL, projectName, new String[] {MANIFESTS});
+		HttpTransaction get = HttpGet.readFiles(serverURL, projectName, new String[] {MANIFESTS});
 		if(get.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(get.getResultMessage());
 		
@@ -174,7 +174,7 @@ public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
 				files.append(",");
 			files.append(file.getPath());
 		}
-		HttpTransaction get = new HttpGet(serverURL, projectName, new String[] {"files=" + files});
+		HttpTransaction get = HttpGet.readFiles(serverURL, projectName, new String[] {"files=" + files});
 		if(get.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(get.getResultMessage());
 		String results = get.getResultData();
