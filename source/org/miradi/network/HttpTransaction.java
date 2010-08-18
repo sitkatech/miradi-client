@@ -56,15 +56,6 @@ class HttpTransaction
 		return createConnection(uriString);
 	}
 
-	private HttpURLConnection createConnection(String uriString)
-			throws URISyntaxException, MalformedURLException, IOException
-	{
-		URI uri = new URI(uriString);
-		URL url = uri.toURL();
-		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-		return connection;
-	}
-
 	protected HttpURLConnection createConnection(URL serverURL,
 			String projectName, String[] parameters) throws URISyntaxException,
 			IOException, MalformedURLException
@@ -114,6 +105,14 @@ class HttpTransaction
 			parameterString += parameters[i];
 		}
 		return parameterString;
+	}
+
+	private HttpURLConnection createConnection(String uriString) throws URISyntaxException, MalformedURLException, IOException
+	{
+		URI uri = new URI(uriString);
+		URL url = uri.toURL();
+		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+		return connection;
 	}
 
 	private int resultCode;
