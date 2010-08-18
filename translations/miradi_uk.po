@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-17 17:56-0500\n"
+"POT-Creation-Date: 2010-08-18 12:41-0500\n"
 "PO-Revision-Date: 2010-05-12 13:30-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3226,6 +3226,7 @@ msgstr ""
 msgid "Folder Chooser"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:51
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:66
 msgid "Font"
 msgstr ""
@@ -7010,7 +7011,7 @@ msgstr ""
 msgid "Title|Save %s File"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:58
 msgid "Title|Scope Box Properties"
 msgstr ""
 
