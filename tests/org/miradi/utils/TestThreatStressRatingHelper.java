@@ -37,7 +37,7 @@ public class TestThreatStressRatingHelper extends TestCaseWithProject
 	{
 		FactorLink threatLink1 = getProject().createAndPopulateDirectThreatDiagramLink();
 		ThreatStressRatingPool threatStressRatingPool = getProject().getThreatStressRatingPool();
-		assertEquals("wrong TSR count?", 2, threatStressRatingPool.getORefList().size());
+		assertEquals("wrong TSR count?", 1, threatStressRatingPool.getORefList().size());
 		
 		ThreatStressRatingHelper helper = new ThreatStressRatingHelper(getProject());
 		Vector<ThreatStressRating> relatedThreatStressRatings = helper.getRelatedThreatStressRatings(threatLink1.getFromFactorRef(), threatLink1.getToFactorRef());
