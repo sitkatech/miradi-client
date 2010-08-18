@@ -23,6 +23,7 @@ import java.io.File;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.HashSet;
 import java.util.Map;
 
 import org.martus.util.UnicodeWriter;
@@ -88,6 +89,40 @@ class HttpPost extends HttpTransaction
 		return post;
 	}
 	
+	public static HttpTransaction deleteProject(URL serverURL, String projectName) throws Exception
+	{
+		String[] parameters = new String[] {DELETE};
+		HttpPost post = new HttpPost(serverURL, projectName, parameters);
+		post.performRequest(post.connection);
+		return post;
+	}
+
+	public static HttpTransaction deleteFile(URL serverURL, String projectName, File file) throws Exception
+	{
+		String[] parameters = new String[] {DELETE};
+		HttpPost post = new HttpPost(serverURL, projectName, file, parameters);
+		post.performRequest(post.connection);
+		return post;
+	}
+
+	public static HttpTransaction deleteFiles(URL serverURL, String projectName, HashSet<File> filesToDelete) throws Exception
+	{
+		StringBuffer data = new StringBuffer();
+		for(File file : filesToDelete)
+		{
+			data.append("File." + URLEncoder.encode(file.getPath(), "UTF-8"));
+			data.append("&");
+		}
+		
+		HttpPost post = new HttpPost(serverURL, projectName, new String[] {DELETE_MULTIPLE});
+		UnicodeWriter writer = new UnicodeWriter(post.connection.getOutputStream());
+		writer.write(data.toString());
+		writer.close();
+		
+		post.performRequest(post.connection);
+		return post;
+	}
+
 	private HttpPost(URL serverURL, String projectName, File file) throws Exception
 	{
 		connection = createConnection(serverURL, projectName, file);
@@ -123,6 +158,8 @@ class HttpPost extends HttpTransaction
 	private static final String CREATE_PROJECT = "CreateProject";
 	private static final String LOCK = "Lock";
 	private static final String WRITE_MULTIPLE = "WriteMultiple=true";
+	private static final String DELETE = "Delete";
+	private static final String DELETE_MULTIPLE = "DeleteMultiple";
 	
 	private HttpURLConnection connection;
 
