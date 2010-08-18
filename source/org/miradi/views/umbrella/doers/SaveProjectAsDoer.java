@@ -33,11 +33,13 @@ import org.miradi.wizard.noproject.projectlist.ProjectListTreeTable;
 
 public class SaveProjectAsDoer extends MainWindowDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		return (getProject().isOpen() && getProject().getDatabase().isLocalProject());
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if (!isAvailable())
