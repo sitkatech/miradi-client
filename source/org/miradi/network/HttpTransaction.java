@@ -69,14 +69,18 @@ class HttpTransaction
 			String projectName, String[] parameters) throws URISyntaxException,
 			IOException, MalformedURLException
 	{
-		return createConnection(serverURL, projectName, null, parameters);
+		String relativePath = buildRelativePathString(projectName, null);
+		String uriString = serverURL + relativePath + buildParameterString(parameters);
+		return createConnection(uriString);
 	}
 
 	protected HttpURLConnection createConnection(URL serverURL,
 			String[] parameters) throws URISyntaxException, IOException,
 			MalformedURLException
 	{
-		return createConnection(serverURL, null, null, parameters);
+		String relativePath = buildRelativePathString(null, null);
+		String uriString = serverURL + relativePath + buildParameterString(parameters);
+		return createConnection(uriString);
 	}
 
 	protected void performRequest(HttpURLConnection connection) throws IOException
