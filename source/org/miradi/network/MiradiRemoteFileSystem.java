@@ -90,7 +90,7 @@ public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
 	
 	public void deleteProject(String projectName) throws Exception
 	{
-		HttpTransaction delete = HttpDelete.deleteProject(serverURL, projectName);
+		HttpTransaction delete = HttpPost.deleteProject(serverURL, projectName);
 		if(delete.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(delete.getResultMessage());
 	}
@@ -120,7 +120,7 @@ public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
 		if(!doesFileExist(projectName, file))
 			return;
 		
-		HttpTransaction unlock = HttpDelete.unlockFile(serverURL, projectName, file);
+		HttpTransaction unlock = HttpPost.deleteFile(serverURL, projectName, file);
 		if(unlock.getResultCode() != HTTP_SUCCESS)
 			throw new RuntimeException("Unlock failed");
 	}
@@ -234,7 +234,7 @@ public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
 		if(wasDeleteHandledByTransaction(projectName, file))
 			return;
 		
-		HttpTransaction delete = HttpDelete.deleteFile(serverURL, projectName, file);
+		HttpTransaction delete = HttpPost.deleteFile(serverURL, projectName, file);
 		if(delete.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(delete.getResultMessage());
 	}
@@ -244,7 +244,7 @@ public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
 		if(filesToDelete.size() == 0)
 			return;
 		
-		HttpTransaction delete = HttpDelete.deleteFiles(serverURL, projectName, filesToDelete);
+		HttpTransaction delete = HttpPost.deleteFiles(serverURL, projectName, filesToDelete);
 		if(delete.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(delete.getResultMessage());
 	}

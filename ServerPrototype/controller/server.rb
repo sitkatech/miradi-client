@@ -32,12 +32,12 @@ class MiradiServerController < Controller
 			attempt_read project, relative_path
 		elsif request.post? && request.params.has_key?("WriteMultiple")
 			attempt_write_multiple project
+		elsif request.post? && request.params.has_key?("Delete")
+			attempt_delete project, relative_path
+		elsif request.post? && request.params.has_key?("DeleteMultiple")
+			attempt_delete_multiple project
 		elsif request.post?
 			attempt_write project, relative_path, request[:data]
-		elsif request.delete? && request.params.has_key?("DeleteMultiple")
-			attempt_delete_multiple project
-		elsif request.delete?
-			attempt_delete project, relative_path
 		end
 	end
 	
