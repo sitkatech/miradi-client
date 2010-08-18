@@ -137,6 +137,7 @@ import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.PointList;
 import org.miradi.utils.Translation;
+import org.miradi.views.diagram.LinkCreator;
 import org.miradi.xml.conpro.ConProMiradiXml;
 
 
@@ -402,6 +403,24 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORef directThreatLinkRef = createFactorLink(threat.getRef(), target.getRef());
 		FactorLink directThreatLink = FactorLink.find(this, directThreatLinkRef);
 		populateDirectThreatLink(directThreatLink, target.getStressRefs());
+
+		return directThreatLink;
+	}
+	
+	public FactorLink createAndPopulateDirectThreatDiagramLink() throws Exception
+	{
+		DiagramFactor targetDiagramFactor = createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		Target target = (Target) targetDiagramFactor.getWrappedFactor();
+		populateTarget(target);
+		
+		DiagramFactor threatDiagramFactor = createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		final Cause threat = (Cause) threatDiagramFactor.getWrappedFactor();
+		enableAsThreat(threat);
+		populateCause(threat);
+		
+		LinkCreator creator = new LinkCreator(this);
+		ORef directThreatLinkRef = creator.createFactorLinkAndAddToDiagramUsingCommands(getTestingDiagramObject(), threatDiagramFactor, targetDiagramFactor);
+		FactorLink directThreatLink = FactorLink.find(this, directThreatLinkRef);
 
 		return directThreatLink;
 	}
@@ -1868,6 +1887,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
 		
 		return createObject(ObjectType.FACTOR_LINK, parameter);
+	}
+	
+	public ORef createThreatTargetLinkAndAddToDiagram() throws Exception
+	{
+		return createAndPopulateDirectThreatDiagramLink().getRef();
 	}
 	
 	public ORef creatThreatTargetBidirectionalLink() throws Exception
