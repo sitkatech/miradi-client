@@ -173,6 +173,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		
 		getPropertiesPanel().setObjectRefs(objects.toArray(new ORef[0]));
 		mainWindow.updateActionStates();
+		getPropertiesPanel().setFocusOnFirstField();
 	}
 	
 	//TODO:Is this needed? Is it the right place/mechanism? 
