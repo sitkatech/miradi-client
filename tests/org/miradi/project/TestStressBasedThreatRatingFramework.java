@@ -87,7 +87,7 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 	
 	private void createFactorLinkWithThreatStressRating() throws Exception
 	{
-		ORef threatLinkRef = getProject().createThreatTargetLink();
+		ORef threatLinkRef = getProject().createThreatTargetLinkAndAddToDiagram();
 		FactorLink factorLink = FactorLink.find(getProject(), threatLinkRef);
 		
 		Stress stress = getProject().createAndPopulateStress();

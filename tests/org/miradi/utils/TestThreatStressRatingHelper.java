@@ -35,7 +35,7 @@ public class TestThreatStressRatingHelper extends TestCaseWithProject
 	
 	public void testGetRelatedThreatStressRatings() throws Exception 
 	{
-		FactorLink threatLink1 = getProject().createAndPopulateDirectThreatLink();
+		FactorLink threatLink1 = getProject().createAndPopulateDirectThreatDiagramLink();
 		ThreatStressRatingPool threatStressRatingPool = getProject().getThreatStressRatingPool();
 		assertEquals("wrong TSR count?", 2, threatStressRatingPool.getORefList().size());
 		
