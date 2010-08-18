@@ -48,6 +48,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.views.diagram.LinkCreator;
 
 public class TestProjectRepairer extends TestCaseWithProject
 {
@@ -95,9 +96,10 @@ public class TestProjectRepairer extends TestCaseWithProject
 	{
 		DiagramFactor targetDF = getProject().createAndAddFactorToDiagram(Target.getObjectType());
 		DiagramFactor causeDF = getProject().createAndAddFactorToDiagram(Cause.getObjectType());
-		getProject().createDiagramLinkAndAddToDiagram(causeDF, targetDF);
+		LinkCreator creator = new LinkCreator(getProject());
+		creator.createFactorLinkAndAddToDiagramUsingCommands(getProject().getTestingDiagramObject(), causeDF, targetDF);
 		DiagramFactor strategyDF = getProject().createAndAddFactorToDiagram(Strategy.getObjectType());
-		getProject().createDiagramLinkAndAddToDiagram(strategyDF, causeDF);
+		creator.createFactorLinkAndAddToDiagramUsingCommands(getProject().getTestingDiagramObject(), strategyDF, causeDF);
 
 		DiagramObject mainDiagram = getProject().getMainDiagramObject();
 		IdList originalDiagramLinkIds = mainDiagram.getAllDiagramFactorLinkIds();

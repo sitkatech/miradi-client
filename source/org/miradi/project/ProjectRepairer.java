@@ -96,10 +96,10 @@ public class ProjectRepairer
 
 	public void repairProblemsWherePossible() throws Exception
 	{
-		fixAnyProblemsWithThreatStressRatings();
 		repairUnsnappedNodes();
 		removeInvalidDiagramLinkRefs();
 		quarantineGroupBoxFactorLinks();
+		fixAnyProblemsWithThreatStressRatings();
 	}
 
 	private void quarantineGroupBoxFactorLinks() throws Exception
