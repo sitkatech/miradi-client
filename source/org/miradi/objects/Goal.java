@@ -65,6 +65,11 @@ public class Goal extends Desire
 		return ObjectType.GOAL;
 	}
 	
+	public static boolean is(BaseObject baseObject)
+	{
+		return is(baseObject.getType());
+	}
+	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
