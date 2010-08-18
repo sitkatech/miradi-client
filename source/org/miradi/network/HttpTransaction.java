@@ -60,7 +60,14 @@ class HttpTransaction
 				relativePath += "/";
 			relativePath += file;
 		}
-		URI uri = new URI(serverURL + relativePath + buildParameterString(parameters));
+		String uriString = serverURL + relativePath + buildParameterString(parameters);
+		return createConnection(uriString);
+	}
+
+	private HttpURLConnection createConnection(String uriString)
+			throws URISyntaxException, MalformedURLException, IOException
+	{
+		URI uri = new URI(uriString);
 		URL url = uri.toURL();
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		return connection;
