@@ -69,8 +69,7 @@ class HttpTransaction
 			String projectName, String[] parameters) throws URISyntaxException,
 			IOException, MalformedURLException
 	{
-		String relativePath = buildRelativePathString(projectName, null);
-		String uriString = serverURL + relativePath + buildParameterString(parameters);
+		String uriString = serverURL + projectName + buildParameterString(parameters);
 		return createConnection(uriString);
 	}
 
@@ -78,8 +77,7 @@ class HttpTransaction
 			String[] parameters) throws URISyntaxException, IOException,
 			MalformedURLException
 	{
-		String relativePath = buildRelativePathString(null, null);
-		String uriString = serverURL + relativePath + buildParameterString(parameters);
+		String uriString = serverURL + buildParameterString(parameters);
 		return createConnection(uriString);
 	}
 
@@ -94,15 +92,10 @@ class HttpTransaction
 
 	private String buildRelativePathString(String projectName, File file)
 	{
-		String relativePath = "";
-		if(projectName != null)
-			relativePath += projectName;
-		if(file != null)
-		{
-			if(!file.getPath().startsWith("/"))
-				relativePath += "/";
-			relativePath += file;
-		}
+		String relativePath = projectName;
+		if(!file.getPath().startsWith("/"))
+			relativePath += "/";
+		relativePath += file;
 		return relativePath;
 	}
 
