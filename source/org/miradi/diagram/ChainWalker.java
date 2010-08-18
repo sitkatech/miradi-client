@@ -57,6 +57,32 @@ public class ChainWalker
 		return getFactors();
 	}
 	
+	public FactorSet buildDownstreamChainAndGetFactors(Factor factor)
+	{
+		FactorSet factorsOnAllDiagrams = new FactorSet();
+		HashSet<DiagramFactor> diagramFactors = getReferrerDiagramFactors(factor);
+		for(DiagramFactor diagramFactor : diagramFactors)
+		{	
+			buildDownstreamChain(diagramFactor);
+			factorsOnAllDiagrams.attemptToAddAll(getFactors());
+		}
+		
+		return factorsOnAllDiagrams;
+	}
+	
+	public FactorSet buildUpstreamChainAndGetFactors(Factor factor)
+	{
+		FactorSet factorsOnAllDiagrams = new FactorSet();
+		HashSet<DiagramFactor> diagramFactors = getReferrerDiagramFactors(factor);
+		for(DiagramFactor diagramFactor : diagramFactors)
+		{	
+			buildUpstreamChain(diagramFactor);
+			factorsOnAllDiagrams.attemptToAddAll(getFactors());
+		}
+		
+		return factorsOnAllDiagrams;
+	}
+	
 	public FactorSet buildDownstreamChainAndGetFactors(DiagramFactor diagramFactor)
 	{
 		buildDownstreamChain(diagramFactor);

@@ -27,7 +27,8 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
-import org.miradi.objects.FactorLink;
+import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
@@ -156,10 +157,10 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 
 	private boolean isThreatStressRatingAffectingCommand(CommandExecutedEvent event)
 	{
-		if (event.isDeleteCommandForThisType(FactorLink.getObjectType()))
+		if (event.isSetDataCommandWithThisTypeAndTag(ResultsChainDiagram.getObjectType(), ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS))
 			return true;
 		
-		if (event.isCreateCommandForThisType(FactorLink.getObjectType()))
+		if (event.isSetDataCommandWithThisTypeAndTag(ConceptualModelDiagram.getObjectType(), ConceptualModelDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS))
 			return true;
 		
 		if (event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_STRESS_REFS))
@@ -178,3 +179,4 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 	
 	private Project project;
 }
+	
