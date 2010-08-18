@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-18 13:46-0500\n"
+"POT-Creation-Date: 2010-08-18 13:52-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2073,7 +2073,7 @@ msgstr ""
 #: Miradi/source/org/miradi/database/DataUpgrader.java:60
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:71
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:52
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:224
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:225
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
@@ -2213,11 +2213,11 @@ msgstr ""
 msgid "Cannot import project file %s because it is a directory, not a file"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:285
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:286
 msgid "Cannot overwrite an open project"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:269
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:270
 msgid "Cannot save a project back to its existing name"
 msgstr ""
 
@@ -3111,7 +3111,7 @@ msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:292
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:293
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr ""
 
@@ -5011,7 +5011,7 @@ msgstr ""
 msgid "Project does not exist: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:310
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:311
 msgid ""
 "Project filenames cannot contain punctuation other than dots, dashes, and "
 "spaces; and they cannot be longer than 32 characters. "
@@ -6763,7 +6763,7 @@ msgid ""
 "the factor that was cut/copied earlier. Are you sure you want to do this?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:298
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:299
 #: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:118
 msgid "This will replace the existing file."
 msgstr ""
@@ -6978,7 +6978,7 @@ msgstr ""
 msgid "Title|Other Orgs"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:297
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:298
 #: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:113
 msgid "Title|Overwrite existing file?"
 msgstr ""
