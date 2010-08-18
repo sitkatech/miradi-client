@@ -28,17 +28,23 @@ class HttpDelete extends HttpTransaction
 {
 	public static HttpTransaction unlockFile(URL serverURL, String projectName, File file) throws Exception
 	{
-		return new HttpDelete(serverURL, projectName, file, new String[] {UNLOCK});
+		HttpDelete delete = new HttpDelete(serverURL, projectName, file, new String[] {UNLOCK});
+		delete.performRequest(delete.connection);
+		return delete;
 	}
 
 	public static HttpDelete deleteProject(URL serverURL, String projectName) throws Exception
 	{
-		return new HttpDelete(serverURL, projectName, null, new String[] {DELETE_PROJECT});
+		HttpDelete delete = new HttpDelete(serverURL, projectName, null, new String[] {DELETE_PROJECT});
+		delete.performRequest(delete.connection);
+		return delete;
 	}
 	
 	public static HttpDelete deleteFile(URL serverURL, String projectName, File file) throws Exception
 	{
-		return new HttpDelete(serverURL, projectName, file, new String[0]);
+		HttpDelete delete = new HttpDelete(serverURL, projectName, file, new String[0]);
+		delete.performRequest(delete.connection);
+		return delete;
 	}
 
 	public static HttpTransaction deleteFiles(URL serverURL, String projectName, HashSet<File> filesToDelete) throws Exception
@@ -49,17 +55,24 @@ class HttpDelete extends HttpTransaction
 		{
 			parameters.add("File." + file.getPath());
 		}
-		return new HttpDelete(serverURL, projectName, null, parameters.toArray(new String[0]));
+		return new HttpDelete(serverURL, projectName, parameters.toArray(new String[0]));
 	}
 
 	private HttpDelete(URL serverURL, String projectName, File file, String[] parameters) throws Exception
 	{
-		HttpURLConnection connection = createConnection(serverURL, projectName, file, parameters);
+		connection = createConnection(serverURL, projectName, file, parameters);
 		connection.setRequestMethod("DELETE");
-		performRequest(connection);
+	}
+
+	private HttpDelete(URL serverURL, String projectName, String[] parameters) throws Exception
+	{
+		connection = createConnection(serverURL, projectName, parameters);
+		connection.setRequestMethod("DELETE");
 	}
 
 	private static final String DELETE_PROJECT = "DeleteProject";
 	private static final String UNLOCK = "Unlock";
 	private static final String DELETE_MULTIPLE = "DeleteMultiple";
+	
+	private HttpURLConnection connection;
 }
