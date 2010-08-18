@@ -51,7 +51,7 @@ class HttpPost extends HttpTransaction
 			data.append("&");
 		}
 		
-		HttpPost post = new HttpPost(serverURL, projectName, null, new String[] {WRITE_MULTIPLE});
+		HttpPost post = new HttpPost(serverURL, projectName, new String[] {WRITE_MULTIPLE});
 		UnicodeWriter writer = new UnicodeWriter(post.connection.getOutputStream());
 		writer.write(data.toString());
 		writer.close();
@@ -90,7 +90,7 @@ class HttpPost extends HttpTransaction
 	
 	private HttpPost(URL serverURL, String projectName, File file) throws Exception
 	{
-		connection = createConnection(serverURL, projectName, file, new String[0]);
+		connection = createConnection(serverURL, projectName, file);
 		connection.setRequestMethod("POST");
 		connection.setDoOutput(true);
 		connection.setChunkedStreamingMode(0);
@@ -99,6 +99,14 @@ class HttpPost extends HttpTransaction
 	private HttpPost(URL serverURL, String[] parameters) throws Exception
 	{
 		connection = createConnection(serverURL, parameters);
+		connection.setRequestMethod("POST");
+		connection.setDoOutput(true);
+		connection.setChunkedStreamingMode(0);
+	}
+	
+	private HttpPost(URL serverURL, String projectName, String[] parameters) throws Exception
+	{
+		connection = createConnection(serverURL, projectName, parameters);
 		connection.setRequestMethod("POST");
 		connection.setDoOutput(true);
 		connection.setChunkedStreamingMode(0);

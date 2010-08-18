@@ -55,6 +55,14 @@ class HttpTransaction
 		return createConnection(uriString);
 	}
 
+	protected HttpURLConnection createConnection(URL serverURL, String projectName, File file)
+		throws URISyntaxException, IOException, MalformedURLException
+	{
+		String relativePath = buildRelativePathString(projectName, file);
+		String uriString = serverURL + relativePath;
+		return createConnection(uriString);
+	}
+
 	protected HttpURLConnection createConnection(URL serverURL,	String projectName, String[] parameters) 
 		throws URISyntaxException, IOException, MalformedURLException
 	{
