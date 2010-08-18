@@ -66,11 +66,12 @@ public class SaveProjectAsDoer extends MainWindowDoer
 	private File saveAs(File chosenFile) throws Exception
 	{
 		String newProjectName = getTrimmedFileName(chosenFile);
-		File newProjectDir = new File(EAM.getHomeDirectory(), newProjectName);
+		File projectDirToCopy = new File(getProject().getDatabase().getDataLocation());
+		File newProjectDir = new File(projectDirToCopy, newProjectName);
 		File tempZipFile = createTempProjectZip(newProjectName);
 		try
 		{			
-			ProjectUnzipper.unzipToProjectDirectory(tempZipFile, EAM.getHomeDirectory(), newProjectName);
+			ProjectUnzipper.unzipToProjectDirectory(tempZipFile, projectDirToCopy, newProjectName);
 			return newProjectDir;
 		}
 		catch (Exception e)
