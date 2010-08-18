@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-18 12:41-0500\n"
+"POT-Creation-Date: 2010-08-18 13:13-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5526,7 +5526,7 @@ msgstr ""
 msgid "Show Ratings in Cell"
 msgstr "在单元格中显示分级 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/ObjectsOnlyPlanningTreeTablePanel.java:42
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/ObjectsOnlyPlanningTreeTablePanel.java:43
 msgid "Show: "
 msgstr ""
 
