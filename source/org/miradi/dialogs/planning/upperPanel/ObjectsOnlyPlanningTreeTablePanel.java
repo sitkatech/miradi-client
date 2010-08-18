@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
+import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.ObjectsOnlyRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningViewObjectsOnlyDropDownPanel;
@@ -33,10 +34,10 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 	protected ObjectsOnlyPlanningTreeTablePanel(MainWindow mainWindowToUse,
 												PlanningTreeTable treeToUse, 
 												PlanningTreeTableModel modelToUse, 
-												RowColumnProvider rowColumnProvider
+												RowColumnProvider rowColumnProvider, Class[] buttonActions
 												) throws Exception
 	{
-		super(mainWindowToUse, treeToUse, modelToUse, new Class[0], rowColumnProvider);
+		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
 		
 		customizationPanel = new PlanningViewObjectsOnlyDropDownPanel(getProject());
 		addToButtonBox(new PanelTitleLabel(EAM.text("Show: ")));
@@ -49,7 +50,7 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 		
 		ObjectsOnlyRowColumnProvider rowColumnProvider = new ObjectsOnlyRowColumnProvider(mainWindowToUse.getProject());
 		
-		return new ObjectsOnlyPlanningTreeTablePanel(mainWindowToUse, treeTable, model, rowColumnProvider);
+		return new ObjectsOnlyPlanningTreeTablePanel(mainWindowToUse, treeTable, model, rowColumnProvider, getButtonActions());
 	}
 	
 	@Override
@@ -72,6 +73,13 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 		super.dispose();
 		
 		customizationPanel.dispose();
+	}
+	
+	private static Class[] getButtonActions()
+	{
+		return new Class[] {
+			ActionDeletePlanningViewTreeNode.class,			
+		};
 	}
 	
 	private PlanningViewObjectsOnlyDropDownPanel customizationPanel; 
