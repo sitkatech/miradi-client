@@ -30,6 +30,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
@@ -264,6 +265,9 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 				return true;
 		
 		if (relevancyTag.equals(Factor.TAG_OBJECTIVE_IDS))
+			return true;
+		
+		if (relevancyTag.equals(AbstractTarget.TAG_GOAL_IDS))
 			return true;
 		
 		return false;

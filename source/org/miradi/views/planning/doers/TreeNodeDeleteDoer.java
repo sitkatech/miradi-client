@@ -27,8 +27,10 @@ import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
+import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
@@ -54,6 +56,9 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 	private boolean canDelete(BaseObject selected)
 	{
 		if (Indicator.is(selected))
+			return true;
+		
+		if (Goal.is(selected))
 			return true;
 		
 		if (Objective.is(selected))
@@ -91,6 +96,9 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 			
 			if (Objective.is(selected))
 				deleteAnnotation(selected, Factor.TAG_OBJECTIVE_IDS);
+			
+			if (Goal.is(selected))
+				deleteAnnotation(selected, AbstractTarget.TAG_GOAL_IDS);
 			
 			if (Measurement.is(selected))
 				deleteAnnotation(selected, Indicator.TAG_MEASUREMENT_REFS);
