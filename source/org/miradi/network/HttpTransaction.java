@@ -51,15 +51,7 @@ class HttpTransaction
 			String projectName, File file, String[] parameters)
 			throws URISyntaxException, IOException, MalformedURLException
 	{
-		String relativePath = "";
-		if(projectName != null)
-			relativePath += projectName;
-		if(file != null)
-		{
-			if(!file.getPath().startsWith("/"))
-				relativePath += "/";
-			relativePath += file;
-		}
+		String relativePath = buildRelativePathString(projectName, file);
 		String uriString = serverURL + relativePath + buildParameterString(parameters);
 		return createConnection(uriString);
 	}
@@ -94,6 +86,20 @@ class HttpTransaction
 		UnicodeReader reader = new UnicodeReader(connection.getInputStream());
 		resultData = reader.readAll();
 		reader.close();
+	}
+
+	private String buildRelativePathString(String projectName, File file)
+	{
+		String relativePath = "";
+		if(projectName != null)
+			relativePath += projectName;
+		if(file != null)
+		{
+			if(!file.getPath().startsWith("/"))
+				relativePath += "/";
+			relativePath += file;
+		}
+		return relativePath;
 	}
 
 	private String buildParameterString(String[] parameters)
