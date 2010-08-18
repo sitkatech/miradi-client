@@ -26,13 +26,6 @@ import java.util.HashSet;
 
 class HttpDelete extends HttpTransaction
 {
-	private HttpDelete(URL serverURL, String projectName, File file, String[] parameters) throws Exception
-	{
-		HttpURLConnection connection = createConnection(serverURL, projectName, file, parameters);
-		connection.setRequestMethod("DELETE");
-		performRequest(connection);
-	}
-
 	public static HttpTransaction unlockFile(URL serverURL, String projectName, File file) throws Exception
 	{
 		return new HttpDelete(serverURL, projectName, file, new String[] {UNLOCK});
@@ -57,6 +50,13 @@ class HttpDelete extends HttpTransaction
 			parameters.add("File." + file.getPath());
 		}
 		return new HttpDelete(serverURL, projectName, null, parameters.toArray(new String[0]));
+	}
+
+	private HttpDelete(URL serverURL, String projectName, File file, String[] parameters) throws Exception
+	{
+		HttpURLConnection connection = createConnection(serverURL, projectName, file, parameters);
+		connection.setRequestMethod("DELETE");
+		performRequest(connection);
 	}
 
 	private static final String DELETE_PROJECT = "DeleteProject";
