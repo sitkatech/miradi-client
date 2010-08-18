@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-18 13:46-0500\n"
+"POT-Creation-Date: 2010-08-18 13:52-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2234,7 +2234,7 @@ msgstr "Sebagai Salinan"
 #: Miradi/source/org/miradi/database/DataUpgrader.java:60
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:71
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:52
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:224
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:225
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
@@ -2374,11 +2374,11 @@ msgstr ""
 msgid "Cannot import project file %s because it is a directory, not a file"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:285
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:286
 msgid "Cannot overwrite an open project"
 msgstr "Tidak bisa menulis tindih proyek yang sedang dibuka "
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:269
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:270
 msgid "Cannot save a project back to its existing name"
 msgstr "Tidak dapat menyimpan proyek dengan namanya saat ini "
 
@@ -3323,7 +3323,7 @@ msgstr ""
 "Berkas tidak bisa dibuat, mungkin karena nama berkas mengandung karakter "
 "yang salah.  "
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:292
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:293
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr "File yang ada: Tidak dapat menimpa folder nonproyek "
 
@@ -5307,7 +5307,7 @@ msgstr "Total Proyek "
 msgid "Project does not exist: "
 msgstr "Tidak ada proyek: "
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:310
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:311
 msgid ""
 "Project filenames cannot contain punctuation other than dots, dashes, and "
 "spaces; and they cannot be longer than 32 characters. "
@@ -7177,7 +7177,7 @@ msgstr ""
 "Ini akan mengganti semua isi faktor terpilih dengan isi faktor yang dipotong/"
 "disalin sebelumnya. Anda yakin ingin melakukan ini?: "
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:298
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:299
 #: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:118
 msgid "This will replace the existing file."
 msgstr "Ini akan mengganti berkas yang ada. "
@@ -7396,7 +7396,7 @@ msgstr ""
 msgid "Title|Other Orgs"
 msgstr "Organisasi Lain "
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:297
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:298
 #: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:113
 msgid "Title|Overwrite existing file?"
 msgstr "Tulis tindih berkas yang ada? "
