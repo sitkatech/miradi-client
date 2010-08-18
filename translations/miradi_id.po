@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-17 17:56-0500\n"
+"POT-Creation-Date: 2010-08-18 12:41-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3448,6 +3448,7 @@ msgstr ""
 msgid "Folder Chooser"
 msgstr "Pemilih Folder "
 
+#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:51
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:66
 msgid "Font"
 msgstr "Fon"
@@ -7428,7 +7429,7 @@ msgstr "Properti Rangkaian Hasil "
 msgid "Title|Save %s File"
 msgstr "Simpan %s Berkas "
 
-#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:58
 msgid "Title|Scope Box Properties"
 msgstr "Properti Kotak Cakupan "
 
