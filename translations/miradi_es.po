@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-18 13:13-0500\n"
+"POT-Creation-Date: 2010-08-18 13:46-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -5581,7 +5581,7 @@ msgid "Save %s"
 msgstr "Grabar %s"
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:52
-#: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:46
+#: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:48
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:45
 msgid "Save As..."
 msgstr "Guardar como... "
