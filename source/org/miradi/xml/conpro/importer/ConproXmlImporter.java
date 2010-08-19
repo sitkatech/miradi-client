@@ -776,7 +776,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 			importSubTargets(targetNode, targetRef);
 			createDiagramFactorAndAddToDiagram(targetRef);
 			importThreatToTargetAssociations(targetNode, targetRef);
-			importStrategyThreatTargetAssociations(targetNode, targetRef);
+			importStrategyThreatAssociations(targetNode, targetRef);
 			importStresses(targetNode, targetRef);
 			
 			importKeyEcologicalAttributes(targetNode, targetRef);
@@ -793,7 +793,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		importCodeField(targetRef, Target.TAG_VIABILITY_MODE, getCodeMapHelper().getConProToMiradiViabilityModeMap(), targetViabilityMode);
 	}
 		
-	private void importStrategyThreatTargetAssociations(Node targetNode, ORef targetRef) throws Exception
+	private void importStrategyThreatAssociations(Node targetNode, ORef targetRef) throws Exception
 	{
 		NodeList strategyThreatTargetAssociations = getNodes(targetNode, STRATEGY_THREAT_TARGET_ASSOCIATIONS, STRATEGY_THREAT_ASSOCIATION);
 		for (int nodeIndex = 0; nodeIndex < strategyThreatTargetAssociations.getLength(); ++nodeIndex)
