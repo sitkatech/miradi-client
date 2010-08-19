@@ -607,7 +607,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeNestedTargets(out, target);
 			writeSimpleTargetLinkRatings(out, target);
 			writeStresses(out, target);
-			writeStrategyThreatTargetAssociations(out, target);
+			writeStrategyThreatAssociations(out, target);
 		
 			writeKeas(out, target);
 			
@@ -635,7 +635,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		return ConProMiradiCodeMapHelper.CONPRO_TARGET_SIMPLE_MODE_VALUE;
 	}
 	
-	private void writeStrategyThreatTargetAssociations(UnicodeWriter out, Target target) throws Exception
+	private void writeStrategyThreatAssociations(UnicodeWriter out, Target target) throws Exception
 	{
 		writeStartElement(out, STRATEGY_THREAT_ASSOCIATIONS);
 		
