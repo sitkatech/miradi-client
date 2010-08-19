@@ -44,21 +44,25 @@ public class TeamManagementPanel extends ObjectManagementPanel
 				new TeamMemberPropertiesPanel(mainWindowToUse.getProject()));
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Team");
 	}
 	
+	@Override
 	public Icon getIcon()
 	{
 		return new TeamIcon();
 	}
 	
+	@Override
 	public boolean isImageAvailable()
 	{
 		return true;
 	}
 	
+	@Override
 	public BufferedImage getImage() throws ImageTooLargeException
 	{
 		TeamPoolTable table = createTable();
@@ -66,11 +70,13 @@ public class TeamManagementPanel extends ObjectManagementPanel
 		return image;
 	}
 	
+	@Override
 	public boolean isExportableTableAvailable()
 	{
 		return true;
 	}
 	
+	@Override
 	public TableExporter getTableExporter() throws Exception
 	{
 		return new ObjectTableModelExporter(createTableModel());
@@ -104,11 +110,13 @@ public class TeamManagementPanel extends ObjectManagementPanel
 		return ActionJumpSummaryWizardDefineTeamMembers.class;
 	}
 	
+	@Override
 	public boolean isRtfExportable()
 	{
 		return true;
 	}
 		
+	@Override
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
 		new RtfManagementExporter(getProject()).writeManagement(getTableExporter(), writer);
