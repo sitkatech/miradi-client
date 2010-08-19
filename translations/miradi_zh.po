@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-18 13:52-0500\n"
+"POT-Creation-Date: 2010-08-19 15:38-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5064,7 +5064,7 @@ msgstr "项目顾问"
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:902
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:901
 msgid "Project Description:"
 msgstr ""
 
@@ -5582,7 +5582,7 @@ msgstr "简单威胁因子评级模式"
 msgid "Simple viability"
 msgstr "简单生存力 \t\t"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:907
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:906
 msgid "Site/Scope Description:"
 msgstr ""
 
