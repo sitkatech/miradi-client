@@ -219,7 +219,7 @@ public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
 		
 		HttpPost post = HttpPost.writeMultiple(serverURL, projectName, fileContentsMap);
 		if(post.getResultCode() != HTTP_SUCCESS)
-			throw new IOException(post.getResultMessage());
+			throw new IOException(post.getResultCode() + ": " + post.getResultMessage());
 	}
 	
 	public void appendToFile(String projectName, File relativeFile, String textToAppend) throws Exception
