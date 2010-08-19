@@ -29,7 +29,7 @@ import java.net.URL;
 
 import org.martus.util.UnicodeReader;
 
-class HttpTransaction
+public class HttpTransaction
 {
 
 	public int getResultCode()
@@ -86,11 +86,11 @@ class HttpTransaction
 
 	protected void performRequest(HttpURLConnection connection) throws IOException
 	{
-		resultCode = connection.getResponseCode();
-		resultMessage = connection.getResponseMessage();
 		UnicodeReader reader = new UnicodeReader(connection.getInputStream());
 		resultData = reader.readAll();
 		reader.close();
+		resultCode = connection.getResponseCode();
+		resultMessage = connection.getResponseMessage();
 	}
 
 	private String buildRelativePathString(String projectName, File file)
