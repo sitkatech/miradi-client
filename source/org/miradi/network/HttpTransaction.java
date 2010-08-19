@@ -121,6 +121,7 @@ public class HttpTransaction
 
 	private HttpURLConnection createConnection(String uriString) throws URISyntaxException, MalformedURLException, IOException
 	{
+		uriString = uriString.replaceAll("\\\\", "/");
 		URI uri = new URI(uriString);
 		URL url = uri.toURL();
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
