@@ -86,12 +86,13 @@ public class HttpPost extends HttpTransaction
 		StringBuffer data = new StringBuffer();
 		for(File file : filesToDelete)
 		{
-			data.append("File." + URLEncoder.encode(file.getPath(), "UTF-8"));
+			data.append("File." + file.getPath());
 			data.append("&");
 		}
 		
+		String postData = data.toString().replaceAll("\\\\", "/"); 
 		HttpPost post = new HttpPost(serverURL, projectName, new String[] {DELETE_MULTIPLE});
-		post.setPostContents(data.toString());
+		post.setPostContents(postData);
 		post.performRequest(post.connection);
 		return post;
 	}
