@@ -660,11 +660,11 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		for(Factor factor : directUpstreamDownstreamFactors)
 		{
 			if (factor.isStrategy())
-				writeStrategyThreatTargetAssociation(out, threatRef, factor.getRef());
+				writeStrategyThreatAssociation(out, threatRef, factor.getRef());
 		}	
 	}
 
-	private void writeStrategyThreatTargetAssociation(UnicodeWriter out, ORef threatRef, ORef strategyRef) throws Exception
+	private void writeStrategyThreatAssociation(UnicodeWriter out, ORef threatRef, ORef strategyRef) throws Exception
 	{
 		writeStartElement(out, STRATEGY_THREAT_TARGET_ASSOCIATION);
 		
