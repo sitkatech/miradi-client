@@ -666,12 +666,12 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeStrategyThreatAssociation(UnicodeWriter out, ORef threatRef, ORef strategyRef) throws Exception
 	{
-		writeStartElement(out, STRATEGY_THREAT_TARGET_ASSOCIATION);
+		writeStartElement(out, STRATEGY_THREAT_ASSOCIATION);
 		
 		writeElement(out, STRATEGY_ID, strategyRef.getObjectId().toString());
 		writeElement(out, THREAT_ID, threatRef.getObjectId().toString());
 		
-		writeEndElement(out, STRATEGY_THREAT_TARGET_ASSOCIATION);
+		writeEndElement(out, STRATEGY_THREAT_ASSOCIATION);
 	}
 
 	private void writeHabitatMappedCodes(UnicodeWriter out, Target target) throws Exception
