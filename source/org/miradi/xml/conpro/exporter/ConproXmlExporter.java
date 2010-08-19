@@ -656,7 +656,6 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		
 		FactorSet directUpstreamDownstreamFactors = new FactorSet();
 		directUpstreamDownstreamFactors.attemptToAddAll(walker.buildDirectlyLinkedDownstreamChainAndGetFactors(threat));
-		directUpstreamDownstreamFactors.attemptToAddAll(walker.buildDirectlyLinkedUpstreamChainAndGetFactors(threat));
 		
 		for(Factor factor : directUpstreamDownstreamFactors)
 		{
