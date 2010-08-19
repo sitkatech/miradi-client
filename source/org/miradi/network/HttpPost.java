@@ -20,27 +20,25 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.network;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashSet;
 import java.util.Map;
 
-import org.martus.util.UnicodeWriter;
-
-class HttpPost extends HttpTransaction
+public class HttpPost extends HttpTransaction
 {
-	public static HttpPost writeFile(URL serverURL, String projectName, File file, String data) throws Exception
+	public static HttpPost writeFile(URL serverURL, String projectName, File file, String contents) throws Exception
 	{
 		HttpPost post = new HttpPost(serverURL, projectName, file);
-		UnicodeWriter writer = new UnicodeWriter(post.connection.getOutputStream());
-		String encoded = URLEncoder.encode(data, "UTF-8");
-		writer.write("data=" + encoded);
-		writer.close();
+		post.setPostContents(contents);
 		post.performRequest(post.connection);
 		return post;
 	}
-	
+
 	public static HttpPost writeMultiple(URL serverURL, String projectName, Map<File, String> fileContentsMap) throws Exception
 	{
 		StringBuffer data = new StringBuffer();
@@ -53,10 +51,7 @@ class HttpPost extends HttpTransaction
 		}
 		
 		HttpPost post = new HttpPost(serverURL, projectName, new String[] {WRITE_MULTIPLE});
-		UnicodeWriter writer = new UnicodeWriter(post.connection.getOutputStream());
-		writer.write(data.toString());
-		writer.close();
-		
+		post.setPostContents(data.toString());
 		post.performRequest(post.connection);
 		return post;
 	}
@@ -64,10 +59,7 @@ class HttpPost extends HttpTransaction
 	public static HttpTransaction appendToFile(URL serverURL, String projectName, File relativeFile, String textToAppend) throws Exception
 	{
 		HttpPost post = new HttpPost(serverURL, projectName, relativeFile);
-		UnicodeWriter writer = new UnicodeWriter(post.connection.getOutputStream());
-		String encoded = URLEncoder.encode(textToAppend, "UTF-8");
-		writer.write("data=" + encoded);
-		writer.close();
+		post.setPostContents(textToAppend);
 		post.performRequest(post.connection);
 		return post;
 	}
@@ -75,8 +67,7 @@ class HttpPost extends HttpTransaction
 	public static HttpTransaction lockFile(URL serverURL, String projectName, File file) throws Exception
 	{
 		HttpPost post = new HttpPost(serverURL, projectName, file, new String[] {LOCK});
-		UnicodeWriter writer = new UnicodeWriter(post.connection.getOutputStream());
-		writer.close();
+		post.setPostContents("");
 		post.performRequest(post.connection);
 		return post;
 	}
@@ -85,6 +76,7 @@ class HttpPost extends HttpTransaction
 	{
 		String[] parameters = new String[] {CREATE_PROJECT + "=" + projectName};
 		HttpPost post = new HttpPost(serverURL, parameters);
+		post.setPostContents("");
 		post.performRequest(post.connection);
 		return post;
 	}
@@ -93,6 +85,7 @@ class HttpPost extends HttpTransaction
 	{
 		String[] parameters = new String[] {DELETE};
 		HttpPost post = new HttpPost(serverURL, projectName, parameters);
+		post.setPostContents("");
 		post.performRequest(post.connection);
 		return post;
 	}
@@ -101,6 +94,7 @@ class HttpPost extends HttpTransaction
 	{
 		String[] parameters = new String[] {DELETE};
 		HttpPost post = new HttpPost(serverURL, projectName, file, parameters);
+		post.setPostContents("");
 		post.performRequest(post.connection);
 		return post;
 	}
@@ -115,10 +109,7 @@ class HttpPost extends HttpTransaction
 		}
 		
 		HttpPost post = new HttpPost(serverURL, projectName, new String[] {DELETE_MULTIPLE});
-		UnicodeWriter writer = new UnicodeWriter(post.connection.getOutputStream());
-		writer.write(data.toString());
-		writer.close();
-		
+		post.setPostContents(data.toString());
 		post.performRequest(post.connection);
 		return post;
 	}
@@ -128,7 +119,7 @@ class HttpPost extends HttpTransaction
 		connection = createConnection(serverURL, projectName, file);
 		connection.setRequestMethod("POST");
 		connection.setDoOutput(true);
-		connection.setChunkedStreamingMode(0);
+		connection.setUseCaches(false);
 	}
 	
 	private HttpPost(URL serverURL, String[] parameters) throws Exception
@@ -136,7 +127,7 @@ class HttpPost extends HttpTransaction
 		connection = createConnection(serverURL, parameters);
 		connection.setRequestMethod("POST");
 		connection.setDoOutput(true);
-		connection.setChunkedStreamingMode(0);
+		connection.setUseCaches(false);
 	}
 	
 	private HttpPost(URL serverURL, String projectName, String[] parameters) throws Exception
@@ -144,7 +135,7 @@ class HttpPost extends HttpTransaction
 		connection = createConnection(serverURL, projectName, parameters);
 		connection.setRequestMethod("POST");
 		connection.setDoOutput(true);
-		connection.setChunkedStreamingMode(0);
+		connection.setUseCaches(false);
 	}
 	
 	public HttpPost(URL serverURL, String projectName, File file, String[] parameters) throws Exception
@@ -152,9 +143,20 @@ class HttpPost extends HttpTransaction
 		connection = createConnection(serverURL, projectName, file, parameters);
 		connection.setRequestMethod("POST");
 		connection.setDoOutput(true);
-		connection.setChunkedStreamingMode(0);
+		connection.setUseCaches(false);
 	}
 
+	private void setPostContents(String contents) throws UnsupportedEncodingException, IOException
+	{
+		String postData = "data=" + contents;
+		// TODO: Confirm that this will be ok for multi-byte UTF strings
+		connection.setRequestProperty("Content-Length", Integer.toString(postData.length()));
+		byte[] bytes = URLEncoder.encode(postData, "UTF-8").getBytes();
+		OutputStream out = connection.getOutputStream();
+		out.write(bytes);
+		out.close();
+	}
+	
 	private static final String CREATE_PROJECT = "CreateProject";
 	private static final String LOCK = "Lock";
 	private static final String WRITE_MULTIPLE = "WriteMultiple=true";
