@@ -795,10 +795,10 @@ public class ConproXmlImporter implements ConProMiradiXml
 		
 	private void importStrategyThreatAssociations(Node targetNode, ORef targetRef) throws Exception
 	{
-		NodeList strategyThreatTargetAssociations = getNodes(targetNode, STRATEGY_THREAT_ASSOCIATIONS, STRATEGY_THREAT_ASSOCIATION);
-		for (int nodeIndex = 0; nodeIndex < strategyThreatTargetAssociations.getLength(); ++nodeIndex)
+		NodeList strategyThreatAssociations = getNodes(targetNode, STRATEGY_THREAT_ASSOCIATIONS, STRATEGY_THREAT_ASSOCIATION);
+		for (int nodeIndex = 0; nodeIndex < strategyThreatAssociations.getLength(); ++nodeIndex)
 		{
-			Node strategyThreatAssociationNode = strategyThreatTargetAssociations.item(nodeIndex);
+			Node strategyThreatAssociationNode = strategyThreatAssociations.item(nodeIndex);
 			ORef threatRef = getNodeAsRef(strategyThreatAssociationNode, THREAT_ID, Cause.getObjectType());
 			ORef strategyRef = getNodeAsRef(strategyThreatAssociationNode, STRATEGY_ID, Strategy.getObjectType());
 			createFactorLinkAndAddToDiagram(strategyRef, threatRef);
