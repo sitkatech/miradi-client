@@ -75,7 +75,7 @@ public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
 	
 	public boolean doesProjectDirectoryExist(String projectName) throws Exception
 	{
-		HttpTransaction get = HttpGet.readFiles(serverURL, projectName, new String[] {EXISTS});
+		HttpTransaction get = HttpGet.getFileInformation(serverURL, projectName, new File("json/project"), new String[] {EXISTS});
 		if(get.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(get.getResultMessage());
 		return (get.getResultData().startsWith(EXISTS));
@@ -216,10 +216,11 @@ public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
 	{
 		if(fileContentsMap.size() == 0)
 			return;
-		
-		HttpPost post = HttpPost.writeMultiple(serverURL, projectName, fileContentsMap);
-		if(post.getResultCode() != HTTP_SUCCESS)
-			throw new IOException(post.getResultCode() + ": " + post.getResultMessage());
+
+		for(File file : fileContentsMap.keySet())
+		{
+			writeFile(projectName, file, fileContentsMap.get(file));
+		}
 	}
 	
 	public void appendToFile(String projectName, File relativeFile, String textToAppend) throws Exception

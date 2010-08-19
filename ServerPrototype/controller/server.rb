@@ -24,20 +24,24 @@ class MiradiServerController < Controller
 		project = args.shift
 		relative_path = args.join('/')
 		
-		if request.get? && request.params.has_key?("Manifests")
-			attempt_get_manifests project
-		elsif request.get? && request.params.has_key?("files")
-			attempt_read_multiple project, request.params["files"]
-		elsif request.get?
-			attempt_read project, relative_path
-		elsif request.post? && request.params.has_key?("WriteMultiple")
-			attempt_write_multiple project
-		elsif request.post? && request.params.has_key?("Delete")
-			attempt_delete project, relative_path
-		elsif request.post? && request.params.has_key?("DeleteMultiple")
-			attempt_delete_multiple project
-		elsif request.post?
-			attempt_write project, relative_path, request[:data]
+		if request.get?
+			if request.params.has_key?("Manifests")
+				return attempt_get_manifests project
+			elsif request.params.has_key?("files")
+				return attempt_read_multiple project, request.params["files"]
+			else
+				return attempt_read project, relative_path
+			end
+		end
+			
+		if request.post?
+			if request.params.has_key?("Delete")
+				return attempt_delete project, relative_path
+			elsif request.params.has_key?("DeleteMultiple")
+				return attempt_delete_multiple project
+			else
+				return attempt_write project, relative_path, request[:data]
+			end
 		end
 	end
 	
@@ -138,18 +142,6 @@ class MiradiServerController < Controller
 		return result
 	end
 	
-	def attempt_write_multiple(project)
-		prefix = "File."
-		prefix_length = prefix.length
-		request.params.each_key do |key|
-			if key.index(prefix) != 0
-				next
-			end
-			file = key[prefix_length..-1]
-			attempt_write(project, file, request.params[key])
-		end
-	end
-
 	def attempt_write(project, relative_path, data)
 		project_path = create_project_path(project)
 		if !File.exists?(project_path) || !File.directory?(project_path)

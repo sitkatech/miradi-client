@@ -27,7 +27,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashSet;
-import java.util.Map;
 
 public class HttpPost extends HttpTransaction
 {
@@ -39,23 +38,6 @@ public class HttpPost extends HttpTransaction
 		return post;
 	}
 
-	public static HttpPost writeMultiple(URL serverURL, String projectName, Map<File, String> fileContentsMap) throws Exception
-	{
-		StringBuffer data = new StringBuffer();
-		for(File file : fileContentsMap.keySet())
-		{
-			data.append("File." + URLEncoder.encode(file.getPath(), "UTF-8"));
-			data.append(URLEncoder.encode("=", "UTF-8"));
-			data.append(URLEncoder.encode(fileContentsMap.get(file), "UTF-8"));
-			data.append("&");
-		}
-		
-		HttpPost post = new HttpPost(serverURL, projectName, new String[] {WRITE_MULTIPLE});
-		post.setPostContents(data.toString());
-		post.performRequest(post.connection);
-		return post;
-	}
-	
 	public static HttpTransaction appendToFile(URL serverURL, String projectName, File relativeFile, String textToAppend) throws Exception
 	{
 		HttpPost post = new HttpPost(serverURL, projectName, relativeFile);
@@ -159,7 +141,6 @@ public class HttpPost extends HttpTransaction
 	
 	private static final String CREATE_PROJECT = "CreateProject";
 	private static final String LOCK = "Lock";
-	private static final String WRITE_MULTIPLE = "WriteMultiple=true";
 	private static final String DELETE = "Delete";
 	private static final String DELETE_MULTIPLE = "DeleteMultiple";
 	
