@@ -798,9 +798,9 @@ public class ConproXmlImporter implements ConProMiradiXml
 		NodeList strategyThreatTargetAssociations = getNodes(targetNode, STRATEGY_THREAT_ASSOCIATIONS, STRATEGY_THREAT_ASSOCIATION);
 		for (int nodeIndex = 0; nodeIndex < strategyThreatTargetAssociations.getLength(); ++nodeIndex)
 		{
-			Node strategyThreatTargetAssociationNode = strategyThreatTargetAssociations.item(nodeIndex);
-			ORef threatRef = getNodeAsRef(strategyThreatTargetAssociationNode, THREAT_ID, Cause.getObjectType());
-			ORef strategyRef = getNodeAsRef(strategyThreatTargetAssociationNode, STRATEGY_ID, Strategy.getObjectType());
+			Node strategyThreatAssociationNode = strategyThreatTargetAssociations.item(nodeIndex);
+			ORef threatRef = getNodeAsRef(strategyThreatAssociationNode, THREAT_ID, Cause.getObjectType());
+			ORef strategyRef = getNodeAsRef(strategyThreatAssociationNode, STRATEGY_ID, Strategy.getObjectType());
 			createFactorLinkAndAddToDiagram(strategyRef, threatRef);
 		}
 	}
