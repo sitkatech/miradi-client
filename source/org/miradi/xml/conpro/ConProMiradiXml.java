@@ -107,7 +107,7 @@ public interface ConProMiradiXml
 	public static final String THREAT_SCOPE = "threat_scope";
 	public static final String THREAT_IRREVERSIBILITY = "threat_irreversibility";
 	public static final String THREAT_TARGET_COMMENT = "threat_target_comment";
-	public static final String STRATEGY_THREAT_TARGET_ASSOCIATIONS = "strategy_threat_target_associations";
+	public static final String STRATEGY_THREAT_ASSOCIATIONS = "strategy_threat_target_associations";
 	public static final String STRATEGY_THREAT_ASSOCIATION = "strategy_threat_target_association";
 	public static final String STRATEGY_ID = "strategy_id";
 	public static final String STRATEGY_TOTAL_COST = "total_cost";

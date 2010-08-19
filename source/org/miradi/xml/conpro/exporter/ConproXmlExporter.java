@@ -637,7 +637,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	
 	private void writeStrategyThreatTargetAssociations(UnicodeWriter out, Target target) throws Exception
 	{
-		writeStartElement(out, STRATEGY_THREAT_TARGET_ASSOCIATIONS);
+		writeStartElement(out, STRATEGY_THREAT_ASSOCIATIONS);
 		
 		ThreatTargetChainWalker threatTargetChainObject = new ThreatTargetChainWalker(getProject());
 		ORefSet upstreamThreatRefs = threatTargetChainObject.getUpstreamThreatRefsFromTarget(target);
@@ -646,7 +646,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeStrategyThreatAssociations(out, threatRef);
 		}
 		
-		writeEndElement(out, STRATEGY_THREAT_TARGET_ASSOCIATIONS);
+		writeEndElement(out, STRATEGY_THREAT_ASSOCIATIONS);
 	}
 
 	private void writeStrategyThreatAssociations(UnicodeWriter out, ORef threatRef) throws Exception
