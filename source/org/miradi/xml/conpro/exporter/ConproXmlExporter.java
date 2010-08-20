@@ -654,8 +654,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		Cause threat = Cause.find(getProject(), threatRef);
 		ChainWalker walker = new ChainWalker();
 		
-		FactorSet directUpstreamDownstreamFactors = new FactorSet();
-		directUpstreamDownstreamFactors.attemptToAddAll(walker.buildDirectlyLinkedDownstreamChainAndGetFactors(threat));
+		FactorSet directUpstreamDownstreamFactors = walker.buildDirectlyLinkedDownstreamChainAndGetFactors(threat);
 		
 		for(Factor factor : directUpstreamDownstreamFactors)
 		{
