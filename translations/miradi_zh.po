@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-20 14:41-0500\n"
+"POT-Creation-Date: 2010-08-20 14:44-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -9295,6 +9295,9 @@ msgid "FieldLabel|57.Code|ID"
 msgstr ""
 
 msgid "FieldLabel|57.Comments|Comments"
+msgstr ""
+
+msgid "FieldLabel|58.Dashboard|Dashboard"
 msgstr ""
 
 msgid ""
