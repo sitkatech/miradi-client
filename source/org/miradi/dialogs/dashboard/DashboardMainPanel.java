@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
 import org.miradi.project.Project;
 
@@ -32,6 +34,35 @@ public class DashboardMainPanel extends PanelTabbedPane
 		project = projectToUse;
 		createTabs();
 		addTabs();
+	}
+	
+	public void dispose()
+	{
+		disposeTab(conceptualizeDashboardTab);
+	}
+	
+	public void becomeActive()
+	{
+		getCurrentTab().becomeActive();
+	}
+	
+	public void becomeInactive()
+	{
+		getCurrentTab().becomeInactive();
+	}
+
+	private AbstractObjectDataInputPanel getCurrentTab()
+	{
+		return (AbstractObjectDataInputPanel) getSelectedComponent();
+	}
+	
+	private void disposeTab(ObjectDataInputPanel tab)
+	{
+		if (tab != null)
+		{
+			tab.dispose();
+			tab = null;
+		}
 	}
 
 	private void createTabs()
