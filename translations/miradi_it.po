@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-19 16:52-0500\n"
+"POT-Creation-Date: 2010-08-20 14:41-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -4955,7 +4955,7 @@ msgstr ""
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:901
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:900
 msgid "Project Description:"
 msgstr ""
 
@@ -5461,7 +5461,7 @@ msgstr ""
 msgid "Simple viability"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:906
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:905
 msgid "Site/Scope Description:"
 msgstr ""
 
