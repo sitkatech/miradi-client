@@ -46,6 +46,7 @@ import org.miradi.objectpools.BudgetCategoryTwoPool;
 import org.miradi.objectpools.CausePool;
 import org.miradi.objectpools.ConceptualModelDiagramPool;
 import org.miradi.objectpools.CostAllocationRulePool;
+import org.miradi.objectpools.DashboardPool;
 import org.miradi.objectpools.DiagramLinkPool;
 import org.miradi.objectpools.DiagramFactorPool;
 import org.miradi.objectpools.EAMNormalObjectPool;
@@ -102,6 +103,7 @@ import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.CostAllocationRule;
+import org.miradi.objects.Dashboard;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.ExpenseAssignment;
@@ -214,6 +216,7 @@ public class ObjectManager
 		addNormalPool(new AudiencePool(ida), Audience.OBJECT_NAME);
 		addNormalPool(new BudgetCategoryOnePool(ida), BudgetCategoryOne.OBJECT_NAME);
 		addNormalPool(new BudgetCategoryTwoPool(ida), BudgetCategoryTwo.OBJECT_NAME);
+		addNormalPool(new DashboardPool(ida), Dashboard.OBJECT_NAME);
 	}
 	
 	public ChainWalker getDiagramChainWalker()
@@ -493,6 +496,7 @@ public class ObjectManager
 			ObjectType.AUDIENCE,
 			ObjectType.BUDGET_CATEGORY_ONE,
 			ObjectType.BUDGET_CATEGORY_TWO,
+			ObjectType.DASHBOARD,
 		};
 		for(int type : types)
 			loadPool(type, extractManifest(manifests, type));
