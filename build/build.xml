@@ -474,8 +474,8 @@
 	<zip destfile="${dist.dir}/Miradi-Thirdparty-Source.zip">
     	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='source' includes="BrowserLauncher2-all-10rc4.jar" />
     	<zipfileset dir="${dist.temp.jars}/jcalendar-1.3.2/" prefix='source' includes="jcalendar-1.3.2-src.zip" />
-    	<zipfileset dir="${dist.temp.jars}/jgraph/" prefix='source' includes="miradi-jgraph-5.12.2.2b-src.zip" />		
-		<zipfileset dir="${dist.temp.jars}/martus-swing/source/" prefix='source' includes="martus-swing-src.jar" />
+    	<zipfileset dir="${dist.temp.jars}/jgraph/" prefix='source' includes="miradi-jgraph-5.12.2.2b-src.zip" />
+    	<zipfileset dir="${dist.temp.jars}/martus-swing/source/" prefix='source' includes="martus-swing-src.jar" />
 		<zipfileset dir="${dist.temp.jars}/martus-utils/source/" prefix='source' includes="martus-utils-src.jar" />
     	<zipfileset dir="${dist.temp.jars}/jing/" prefix='source' includes="jing-src*.zip" />
     	<zipfileset dir="${dist.temp.jars}/swingx/0.9.7" prefix="source" includes="swingx-0.9.7-src.zip" />
