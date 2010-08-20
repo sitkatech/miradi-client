@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-20 14:44-0500\n"
+"POT-Creation-Date: 2010-08-20 15:44-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1053,6 +1053,10 @@ msgstr "Penghargaan "
 #: Miradi/source/org/miradi/actions/ActionCut.java:34
 msgid "Action|Cut"
 msgstr "Potong "
+
+#: Miradi/source/org/miradi/actions/ActionInvokeDashboard.java:35
+msgid "Action|Dashboard"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDatabasesDemo.java:34
 msgid "Action|Databases - demo"
@@ -2553,6 +2557,10 @@ msgstr ""
 "Model konsep – Diagram seperangkat hubungan antara faktor-faktor tertentu "
 "yang dipercayai bisa berdampak atau mengarahkan pada target konservasi. "
 
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:38
+msgid "Conceptualize"
+msgstr ""
+
 #: Miradi/source/org/miradi/main/menu/ProcessMenu5c.java:32
 msgid ""
 "Conduct evaluations and/or audits at appropriate times during the project "
@@ -2772,6 +2780,10 @@ msgstr "Merah Tua"
 #: Miradi/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:51
 msgid "Dark Yellow"
 msgstr "Kuning Tua"
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardDialog.java:33
+msgid "Dashboard"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:118
 msgid "Data Location"
@@ -4586,11 +4598,11 @@ msgstr "Sedang"
 msgid "Medium (Default)"
 msgstr "Sedang (Standar)"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:232
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:234
 msgid "MenuBar|Actions"
 msgstr "Tindakan "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:162
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:164
 msgid "MenuBar|Edit"
 msgstr "Edit "
 
@@ -4598,15 +4610,15 @@ msgstr "Edit "
 msgid "MenuBar|File"
 msgstr "Berkas "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:508
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:510
 msgid "MenuBar|Help"
 msgstr "Bantuan "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:490
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:492
 msgid "MenuBar|Step-by-Step"
 msgstr "Langkah demi Langkah "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:424
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
 msgid "MenuBar|View"
 msgstr "Tampilan "
 
@@ -4634,20 +4646,20 @@ msgstr "5. Tangkap dan Berbagi Pembelajaran "
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Tambahkan Tag ke %n Butir yang Dipilih "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:131
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:133
 msgid "Menu|Export Current Page as..."
 msgstr "Ekspor Halaman Saat Ini sebagai…"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:110
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:112
 msgid "Menu|Export Current Project as..."
 msgstr "Ekspor Proyek Saat Ini sebagai…"
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:412
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:414
 msgid "Menu|Group Box"
 msgstr "Kotak Grup"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:144
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:146
 msgid "Menu|Import"
 msgstr "Impor "
 
