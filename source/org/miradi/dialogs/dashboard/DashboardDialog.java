@@ -26,7 +26,6 @@ import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 
 public class DashboardDialog extends ModelessDialogWithClose
-
 {
 	public DashboardDialog(MainWindow parent)
 	{
@@ -35,6 +34,30 @@ public class DashboardDialog extends ModelessDialogWithClose
 		project = parent.getProject();
 		createPanel();
 		addPanel();
+	}
+	
+	@Override
+	public void dispose()
+	{
+		mainPanel.dispose();
+		
+		super.dispose();
+	}
+	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		
+		mainPanel.becomeActive();
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		mainPanel.becomeInactive();
+		
+		super.becomeInactive();
 	}
 
 	private void createPanel()
