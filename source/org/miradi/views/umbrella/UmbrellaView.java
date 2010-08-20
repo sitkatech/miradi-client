@@ -80,6 +80,7 @@ import org.miradi.actions.ActionHowToSave;
 import org.miradi.actions.ActionImportXmpz;
 import org.miradi.actions.ActionImportZippedConproProject;
 import org.miradi.actions.ActionImportZippedProjectFile;
+import org.miradi.actions.ActionInvokeDashboard;
 import org.miradi.actions.ActionPreferences;
 import org.miradi.actions.ActionPrint;
 import org.miradi.actions.ActionRedo;
@@ -203,6 +204,7 @@ import org.miradi.views.umbrella.doers.CreateIucnRedlistSpeciesDoer;
 import org.miradi.views.umbrella.doers.CreateMethodDoer;
 import org.miradi.views.umbrella.doers.CreateOtherNotableSpeciesDoer;
 import org.miradi.views.umbrella.doers.CreateProgressPercentDoer;
+import org.miradi.views.umbrella.doers.DashboardDoer;
 import org.miradi.views.umbrella.doers.DeleteAudienceDoer;
 import org.miradi.views.umbrella.doers.DeleteExpenseDoer;
 import org.miradi.views.umbrella.doers.DeleteIucnRedlistSpeciesDoer;
@@ -455,6 +457,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 				
 		addDoerToMap(ActionPrint.class, new Print());
 		addDoerToMap(ActionShowCurrentWizardFileName.class, new ShowCurrentWizardFileNameDoer());
+		addDoerToMap(ActionInvokeDashboard.class, new DashboardDoer());
 		
 		addDoerToMap(ActionWizardNext.class, new WizardNextDoer());
 		addDoerToMap(ActionWizardPrevious.class, new WizardPreviousDoer());
