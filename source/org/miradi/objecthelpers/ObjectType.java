@@ -116,12 +116,13 @@ public class ObjectType
 	public static final int AUDIENCE = 55;
 	public static final int BUDGET_CATEGORY_ONE = 56;
 	public static final int BUDGET_CATEGORY_TWO = 57;
+	public static final int DASHBOARD = 58;
 	// When you add a new type, be sure to:
 	// - increment OBJECT_TYPE_COUNT
 	// - IF it is a user-visible object, add a case to getUserFriendlyObjectTypeName below
 	// - IF it is a top-level object, add it to getTopLevelObjectTypes below
 	
-	public static final int OBJECT_TYPE_COUNT = 58;
+	public static final int OBJECT_TYPE_COUNT = 59;
 
 	public static String getUserFriendlyObjectTypeName(Project project, int objectType)
 	{

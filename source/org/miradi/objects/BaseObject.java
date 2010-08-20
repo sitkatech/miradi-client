@@ -415,6 +415,9 @@ abstract public class BaseObject
 				
 			case ObjectType.BUDGET_CATEGORY_TWO:
 				return new BudgetCategoryTwo(objectManager, idAsInt, json);
+			
+			case ObjectType.DASHBOARD:
+				return new Dashboard(objectManager, idAsInt, json);
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
