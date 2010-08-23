@@ -7,7 +7,7 @@ Windows users:
 - Download and install mercurial
 - Add the following to mercurial.ini in the mercurial program directory:
 [ui]
-ssh=
+ssh="<path-to>\plink.exe" -ssh -l <username> -i "<path-to>\<private-key>.ppk"
 - Create a new directory, and try:
 hg clone -v ssh://subversion.benetech.org//opt/hg/Miradi/miradi
 - You should start to see output like:
