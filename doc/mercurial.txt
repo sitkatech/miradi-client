@@ -1,0 +1,17 @@
+Windows users:
+
+- Download and install putty
+- Request ssh access on benetech04
+- Request that you be added to the miradi group on benetech04
+- Get Jake/Ron to help you get putty working with a keypair
+- Download and install mercurial
+- Add the following to mercurial.ini in the mercurial program directory:
+[ui]
+ssh=
+- Create a new directory, and try:
+hg clone -v ssh://subversion.benetech.org//opt/hg/Miradi/miradi
+- You should start to see output like:
+destination directory: miradi
+requesting all changes
+adding changesets
+
