@@ -66,28 +66,19 @@ Common section:
   1. Cancel the push
   2. Switch to Java perspective
   3. Select the top-level miradi project in the package tree
-  4. Right-click/Team/Rebase...
-  5. Accept all the defaults and hit OK/Rebase
-  6. If that works, you should be able to push.
-  7. If that did not work, do Right-click/Team/Merge...
-  8. You should see an entry in the list above the bold item.
+  4. If that did not work, do Right-click/Team/Merge...
+  5. You should see an entry in the list above the bold item.
      Select it, and say merge/ok
-  9. If there are conflicts, you will have to resolve them, 
+  6. If there are conflicts, you will have to resolve them, 
      similar to how was done in svn
-  10. When there are no conflicts, a merge commit dialog will come up
-  11. Accept the default commit description and hit ok
-  12. Now push your changesets, including this new merge commit
+  7. When there are no conflicts, a merge commit dialog will come up
+  8. Accept the default commit description and hit ok
+  9. Now push your changesets, including this new merge commit
   
-
+(Need to experiment more with rebase to see if it can safely avoid 
+some/many merges). 
 
 For reference as needed:
   http://mercurial.selenic.com/wiki/AccessingSshRepositoriesFromWindows
   http://the.earth.li/~sgtatham/putty/0.58/htmldoc/Chapter7.html
   http://mercurial.selenic.com/wiki/Trust
-  
-  
-  
-  
-  
-  
-  
