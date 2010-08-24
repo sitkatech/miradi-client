@@ -26,6 +26,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
+import org.miradi.utils.FillerLabel;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
@@ -37,6 +38,7 @@ public class ConceptualizeDashboardTab extends ObjectDataInputPanel
 		
 		setLayout(new GridLayoutPlus(0, 3));		
 		addTeamMembersRow();
+		addScopeVisionAndTargetsRow();
 	}
 
 	private void addTeamMembersRow()
@@ -44,6 +46,18 @@ public class ConceptualizeDashboardTab extends ObjectDataInputPanel
 		add(new PanelTitleLabel(EAM.text("1A. Define Initial Project Team")));
 		add(new PanelTitleLabel(EAM.text("Team Members:")));
 		add(new PanelTitleLabel(getDashboard().getData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT)));
+	}
+	
+	private void addScopeVisionAndTargetsRow()
+	{
+		add(new PanelTitleLabel(EAM.text("1B. Define Scope Vision and Targets")));
+		add(new FillerLabel());
+		add(new FillerLabel());
+		
+		add(new FillerLabel());
+		add(new PanelTitleLabel(EAM.text("Define Project Scope:")));
+		String scopeVisionCount = getDashboard().getData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT);
+		add(new PanelTitleLabel(EAM.substitute(EAM.text("Created (%s chars)"), scopeVisionCount)));	
 	}
 
 	private Dashboard getDashboard()
