@@ -91,6 +91,7 @@ import org.miradi.objectpools.WcsProjectDataPool;
 import org.miradi.objectpools.WwfProjectDataPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.Dashboard;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
@@ -936,6 +937,7 @@ public class Project
 		createDefaultProjectDataObject(FosProjectData.getObjectType());
 		createDefaultProjectDataObject(WcpaProjectData.getObjectType());
 		createDefaultProjectDataObject(ThreatRatingCommentsData.getObjectType());
+		createDefaultProjectDataObject(Dashboard.getObjectType());
 	}
 
 	private void setDefaultDiagramPage(int objectType) throws Exception
