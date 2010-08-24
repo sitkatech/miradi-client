@@ -87,8 +87,7 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("MenuBar|File"));
 		menu.setMnemonic(KeyEvent.VK_F);
 
-		//FIXME urgent - uncomment and add new dashboard feature
-		//addMenuItem(actions, menu, ActionInvokeDashboard.class);
+		addMenuItem(actions, menu, ActionInvokeDashboard.class);
 		addMenuItem(actions, menu, ActionSaveProjectAs.class, KeyEvent.VK_A);
 		addMenuItem(actions, menu, ActionHowToSave.class, KeyEvent.VK_H);
 		addMenuItem(actions, menu, ActionClose.class, KeyEvent.VK_C);
