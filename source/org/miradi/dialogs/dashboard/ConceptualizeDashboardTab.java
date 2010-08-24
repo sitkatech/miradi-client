@@ -35,6 +35,12 @@ public class ConceptualizeDashboardTab extends ObjectDataInputPanel
 		super(projectToUse, Dashboard.getObjectType());
 		
 		setLayout(new TwoColumnGridLayout());
+		
+		addTeamMembersRow();
+	}
+
+	private void addTeamMembersRow()
+	{
 		addComponent(EAM.text("1A. Define Initial Project Team"), EAM.text("Team Members: %s"), Dashboard.PSEUDO_TEAM_MEMBER_COUNT);
 	}
 
