@@ -1,1 +1,0 @@
-winscp.exe /console /script=win_scp_push.txt
