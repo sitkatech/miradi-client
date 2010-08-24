@@ -30,6 +30,7 @@ import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.CostAllocationRule;
+import org.miradi.objects.Dashboard;
 import org.miradi.objects.FosProjectData;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.IucnRedlistSpecies;
@@ -161,6 +162,7 @@ public class ObjectType
 			Audience.getObjectType(),
 			BudgetCategoryOne.getObjectType(),
 			BudgetCategoryTwo.getObjectType(),
+			Dashboard.getObjectType(),
 		};
 		
 		return new HashSet<Integer>(Arrays.asList(types));
