@@ -64,6 +64,21 @@ public class Dashboard extends BaseObject
 		return OBJECT_NAME;
 	}
 	
+	@Override
+	public String getPseudoData(String fieldTag)
+	{
+		if (fieldTag.equals(PSEUDO_TEAM_MEMBER_COUNT))
+			return getTotalMemeberCount();
+		
+		return super.getPseudoData(fieldTag);
+	}
+	
+	private String getTotalMemeberCount()
+	{
+		int resourceCount = getProject().getResourcePool().size();
+		return Integer.toString(resourceCount);
+	}
+
 	public static boolean is(BaseObject object)
 	{
 		return is(object.getRef());
@@ -89,5 +104,19 @@ public class Dashboard extends BaseObject
 		return find(project.getObjectManager(), ref);
 	}
 	
+	@Override
+	void clear()
+	{
+		super.clear();
+		
+		teamMemberCount = new PseudoStringData(PSEUDO_TEAM_MEMBER_COUNT);
+		
+		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
+	}
+	
 	public static final String OBJECT_NAME = "Dashboard";
+	
+	public static final String PSEUDO_TEAM_MEMBER_COUNT = "TeamMemberCount";
+	
+	private PseudoStringData teamMemberCount;
 }

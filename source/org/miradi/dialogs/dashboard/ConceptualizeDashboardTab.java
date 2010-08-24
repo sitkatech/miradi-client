@@ -21,7 +21,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.dashboard;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.layout.TwoColumnGridLayout;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 
@@ -30,6 +33,19 @@ public class ConceptualizeDashboardTab extends ObjectDataInputPanel
 	public ConceptualizeDashboardTab(Project projectToUse)
 	{
 		super(projectToUse, Dashboard.getObjectType());
+		
+		setLayout(new TwoColumnGridLayout());
+		addComponent(EAM.text("1A. Define Initial Project Team"), EAM.text("Team Members: %s"), Dashboard.PSEUDO_TEAM_MEMBER_COUNT);
+	}
+
+	private void addComponent(String staticLeftLabel, String staticRightLabel, String pseudoTeamMemberCount)
+	{
+		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
+		Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
+		PanelTitleLabel rightComponent = new PanelTitleLabel(EAM.substitute(staticRightLabel, dashboard.getData(pseudoTeamMemberCount)));
+		
+		add(new PanelTitleLabel(staticLeftLabel));
+		add(rightComponent);
 	}
 
 	@Override
