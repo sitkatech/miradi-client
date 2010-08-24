@@ -84,5 +84,3 @@ For reference as needed:
   http://mercurial.selenic.com/wiki/AccessingSshRepositoriesFromWindows
   http://the.earth.li/~sgtatham/putty/0.58/htmldoc/Chapter7.html
   http://mercurial.selenic.com/wiki/Trust
-
-  
