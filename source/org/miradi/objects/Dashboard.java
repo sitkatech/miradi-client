@@ -70,6 +70,9 @@ public class Dashboard extends BaseObject
 		if (fieldTag.equals(PSEUDO_TEAM_MEMBER_COUNT))
 			return getTotalMemeberCount();
 		
+		if (fieldTag.equals(PSEUDO_PROJECT_SCOPE_WORD_COUNT))
+			return getProjectScopeWordCount();
+		
 		return super.getPseudoData(fieldTag);
 	}
 	
@@ -77,6 +80,12 @@ public class Dashboard extends BaseObject
 	{
 		int resourceCount = getProject().getResourcePool().size();
 		return Integer.toString(resourceCount);
+	}
+	
+	private String getProjectScopeWordCount()
+	{
+		int scopeCount = getProject().getMetadata().getProjectScope().length();
+		return Integer.toString(scopeCount);
 	}
 
 	public static boolean is(BaseObject object)
@@ -110,13 +119,17 @@ public class Dashboard extends BaseObject
 		super.clear();
 		
 		teamMemberCount = new PseudoStringData(PSEUDO_TEAM_MEMBER_COUNT);
+		projectScopeWordCount = new PseudoStringData(PSEUDO_PROJECT_SCOPE_WORD_COUNT);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
+		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
 	
 	public static final String PSEUDO_TEAM_MEMBER_COUNT = "TeamMemberCount";
+	public static final String PSEUDO_PROJECT_SCOPE_WORD_COUNT = "ProjectScopeWordCount";
 	
 	private PseudoStringData teamMemberCount;
+	private PseudoStringData projectScopeWordCount;
 }
