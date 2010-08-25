@@ -80,6 +80,9 @@ public class Dashboard extends BaseObject
 		if (fieldTag.equals(PSEUDO_TARGET_WITH_ASSIGNED_STANDARD_CLASSIFICATION_COUNT))
 			return getTargetWithStandardClassificationCount();
 		
+		if (fieldTag.equals(PSEUDO_HUMAN_WELFARE_TARGET_COUNT))
+			return getObjectPoolCount(HumanWelfareTarget.getObjectType());
+		
 		return super.getPseudoData(fieldTag);
 	}
 	
@@ -143,11 +146,13 @@ public class Dashboard extends BaseObject
 		projectScopeWordCount = new PseudoStringData(PSEUDO_PROJECT_SCOPE_WORD_COUNT);
 		targetCount = new PseudoStringData(PSEUDO_TARGET_COUNT);
 		targetWithAssignedStandardClassificationCount = new PseudoStringData(PSEUDO_TARGET_WITH_ASSIGNED_STANDARD_CLASSIFICATION_COUNT);
+		humanWelfareTargetCount = new PseudoStringData(PSEUDO_HUMAN_WELFARE_TARGET_COUNT);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
 		addPresentationDataField(PSEUDO_TARGET_COUNT, targetCount);
 		addPresentationDataField(PSEUDO_TARGET_WITH_ASSIGNED_STANDARD_CLASSIFICATION_COUNT, targetWithAssignedStandardClassificationCount);
+		addPresentationDataField(PSEUDO_HUMAN_WELFARE_TARGET_COUNT, humanWelfareTargetCount);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -156,9 +161,11 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_PROJECT_SCOPE_WORD_COUNT = "ProjectScopeWordCount";
 	public static final String PSEUDO_TARGET_COUNT = "TargetCount";
 	public static final String PSEUDO_TARGET_WITH_ASSIGNED_STANDARD_CLASSIFICATION_COUNT = "TargetWithStandardClassificationCount";
+	public static final String PSEUDO_HUMAN_WELFARE_TARGET_COUNT = "HumanWelfareTargetCount";
 	
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;
 	private PseudoStringData targetCount;
 	private PseudoStringData targetWithAssignedStandardClassificationCount;
+	private PseudoStringData humanWelfareTargetCount;
 }
