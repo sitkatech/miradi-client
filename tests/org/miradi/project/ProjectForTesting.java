@@ -1095,6 +1095,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		threshold.add(StatusQuestion.VERY_GOOD, "very good text");
 		fillObjectUsingCommand(indicator, Indicator.TAG_INDICATOR_THRESHOLD, threshold.toString());
 		
+		StringMap thresholdDetails = new StringMap();
+		thresholdDetails.add(StatusQuestion.POOR, "poor details");
+		thresholdDetails.add(StatusQuestion.FAIR, "fair details");
+		thresholdDetails.add(StatusQuestion.GOOD, "good details");
+		thresholdDetails.add(StatusQuestion.VERY_GOOD, "very good details");
+		fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLD_DETAILS, thresholdDetails.toString());
+		
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_RATING, StatusQuestion.GOOD);
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_DATE, "2020-01-23");
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_COMMENT, "Some Indicator future status comment");
