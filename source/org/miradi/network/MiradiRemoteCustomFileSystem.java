@@ -34,9 +34,9 @@ import java.util.Vector;
 import org.martus.util.UnicodeStringReader;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
 
-public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
+public class MiradiRemoteCustomFileSystem extends MiradiFileSystemWithTransactions
 {
-	public MiradiRemoteFileSystem()
+	public MiradiRemoteCustomFileSystem()
 	{
 	}
 	

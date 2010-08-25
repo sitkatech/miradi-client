@@ -43,7 +43,7 @@ public class TestMiradiFileSystem extends EAMTestCase
 	{
 		super.setUp();
 		tempDirectory = createTempDirectory();
-		remoteFileSystem = new MiradiRemoteFileSystem();
+		remoteFileSystem = new MiradiRemoteCustomFileSystem();
 		remoteFileSystem.setDataLocation(SERVER_URL_STRING);
 		localFileSystem = new MiradiLocalFileSystem();
 		localFileSystem.setDataLocation(tempDirectory.getAbsolutePath());
@@ -388,7 +388,7 @@ public class TestMiradiFileSystem extends EAMTestCase
 			return;
 		
 		// NOTE: Local file system allows the same process to lock a project more than once
-		currentFilingSystem = new MiradiRemoteFileSystem();
+		currentFilingSystem = new MiradiRemoteCustomFileSystem();
 		currentFilingSystem.setDataLocation(SERVER_URL_STRING);
 		
 		String projectName = "TestingLocks";
@@ -475,7 +475,7 @@ public class TestMiradiFileSystem extends EAMTestCase
 	private static final String SERVER_URL_STRING = "http://localhost:7000/MiradiServer/projects/";
 
 	private MiradiLocalFileSystem localFileSystem;
-	private MiradiRemoteFileSystem remoteFileSystem;
+	private MiradiRemoteCustomFileSystem remoteFileSystem;
 	private MiradiMemoryFileSystem memoryFileSystem;
 	
 	private MiradiFileSystem[] filingSystems;
