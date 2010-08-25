@@ -28,7 +28,7 @@ public interface WcsXmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String OPTIONAL_ELEMENT = SINGLE_SPACE + "?" + SINGLE_SPACE;
 	
-	public static final String NAME_SPACE_VERSION = "47";
+	public static final String NAME_SPACE_VERSION = "48";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
@@ -165,6 +165,11 @@ public interface WcsXmlConstants
 	public static final String AUDIENCE = "Audience";
 	public static final String OBJECT_TREE_TABLE_CONFIGURATION = "PlanningViewConfiguration";
 	public static final String METHOD_IDS = "MethodIds";
+	public static final String THRESHOLDS = "Thresholds";
+	public static final String THRESHOLD = "Threshold";
+	public static final String THRESHOLD_VALUE = "ThresholdValue";
+	public static final String THRESHOLD_DETAILS = "ThresholdDetails";
+	public static final String STATUS_CODE = "StatusCode";
 	public static final String SUB_TASK_IDS = "SubTaskIds";
 	public static final String EXTERNAL_APP_ELEMENT_NAME = "ExternalApp";
 	public static final String LOCATION = "Location";
