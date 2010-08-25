@@ -81,4 +81,15 @@ some/many merges).
 For reference as needed:
   http://mercurial.selenic.com/wiki/AccessingSshRepositoriesFromWindows
   http://the.earth.li/~sgtatham/putty/0.58/htmldoc/Chapter7.html
+
+Trusting hgrc files:
   http://mercurial.selenic.com/wiki/Trust
+Hooks:
+  http://mercurial.selenic.com/wiki/Hook
+Spec for hgrc files:
+  http://www.selenic.com/mercurial/hgrc.5.html
+Notify plugin:
+  http://morecode.wordpress.com/2007/08/03/setting-up-mercurial-to-e-mail-on-a-commit/
+More on hooks and notify:
+  http://hgbook.red-bean.com/read/handling-repository-events-with-hooks.html
+  
