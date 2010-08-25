@@ -80,9 +80,6 @@ public class Dashboard extends BaseObject
 		if (fieldTag.equals(PSEUDO_TARGET_COUNT))
 			return getObjectPoolCount(Target.getObjectType());
 		
-		if (fieldTag.equals(PSEUDO_TARGET_WITH_ASSIGNED_STANDARD_CLASSIFICATION_COUNT))
-			return getTargetWithStandardClassificationCount();
-		
 		if (fieldTag.equals(PSEUDO_HUMAN_WELFARE_TARGET_COUNT))
 			return getObjectPoolCount(HumanWelfareTarget.getObjectType());
 		
@@ -163,20 +160,6 @@ public class Dashboard extends BaseObject
 		return Integer.toString(count);
 	}
 
-	private String getTargetWithStandardClassificationCount()
-	{
-		int targetWithStandardClassificationCount = 0;
-		ORefSet targetRefs = getProject().getTargetPool().getRefSet();
-		for (ORef targetRef : targetRefs)
-		{
-			Target target = Target.find(getProject(), targetRef);
-			if (target.getData(Target.TAG_CURRENT_STATUS_JUSTIFICATION).length() > 0)
-				++targetWithStandardClassificationCount;
-		}
-		
-		return Integer.toString(targetWithStandardClassificationCount);
-	}
-
 	private String getObjectPoolCount(int objectType)
 	{
 		int resourceCount = getProject().getPool(objectType).size();
@@ -222,7 +205,6 @@ public class Dashboard extends BaseObject
 		teamMemberCount = new PseudoStringData(PSEUDO_TEAM_MEMBER_COUNT);
 		projectScopeWordCount = new PseudoStringData(PSEUDO_PROJECT_SCOPE_WORD_COUNT);
 		targetCount = new PseudoStringData(PSEUDO_TARGET_COUNT);
-		targetWithAssignedStandardClassificationCount = new PseudoStringData(PSEUDO_TARGET_WITH_ASSIGNED_STANDARD_CLASSIFICATION_COUNT);
 		humanWelfareTargetCount = new PseudoStringData(PSEUDO_HUMAN_WELFARE_TARGET_COUNT);
 		targetWithKeaCount = new PseudoStringData(PSEUDO_TARGET_WITH_KEA_COUNT);
 		targetWithSimpleViabilityCount = new PseudoStringData(PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT);
@@ -234,7 +216,6 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
 		addPresentationDataField(PSEUDO_TARGET_COUNT, targetCount);
-		addPresentationDataField(PSEUDO_TARGET_WITH_ASSIGNED_STANDARD_CLASSIFICATION_COUNT, targetWithAssignedStandardClassificationCount);
 		addPresentationDataField(PSEUDO_HUMAN_WELFARE_TARGET_COUNT, humanWelfareTargetCount);
 		addPresentationDataField(PSEUDO_TARGET_WITH_KEA_COUNT, targetWithKeaCount);
 		addPresentationDataField(PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT, targetWithSimpleViabilityCount);
@@ -249,7 +230,6 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_TEAM_MEMBER_COUNT = "TeamMemberCount";
 	public static final String PSEUDO_PROJECT_SCOPE_WORD_COUNT = "ProjectScopeWordCount";
 	public static final String PSEUDO_TARGET_COUNT = "TargetCount";
-	public static final String PSEUDO_TARGET_WITH_ASSIGNED_STANDARD_CLASSIFICATION_COUNT = "TargetWithStandardClassificationCount";
 	public static final String PSEUDO_HUMAN_WELFARE_TARGET_COUNT = "HumanWelfareTargetCount";
 	public static final String PSEUDO_TARGET_WITH_KEA_COUNT = "TargetWithKeaCount";
 	public static final String PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT = "TargetWithSimpleViabilityCount";
@@ -261,7 +241,6 @@ public class Dashboard extends BaseObject
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;
 	private PseudoStringData targetCount;
-	private PseudoStringData targetWithAssignedStandardClassificationCount;
 	private PseudoStringData humanWelfareTargetCount;
 	private PseudoStringData targetWithKeaCount;
 	private PseudoStringData targetWithSimpleViabilityCount;
