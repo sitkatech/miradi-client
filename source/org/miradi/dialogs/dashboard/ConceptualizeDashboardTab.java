@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
+import java.util.HashMap;
+
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
@@ -56,8 +58,21 @@ public class ConceptualizeDashboardTab extends ObjectDataInputPanel
 		
 		add(new FillerLabel());
 		add(new PanelTitleLabel(EAM.text("Define Project Scope:")));
-		String scopeVisionCount = getDashboard().getData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT);
-		add(new PanelTitleLabel(EAM.substitute(EAM.text("Created (%s chars)"), scopeVisionCount)));	
+		String scopeVisionCount = getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT);
+		add(new PanelTitleLabel(EAM.substitute(EAM.text("Created (%s chars)"), scopeVisionCount)));
+		
+		add(new FillerLabel());
+		add(new PanelTitleLabel(EAM.text("Select Conservation Targets:")));
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%targetCount", getDashboardData(Dashboard.PSEUDO_TARGET_COUNT));
+		tokenReplacementMap.put("%targetWithAssignedStandardClassificationCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_ASSIGNED_STANDARD_CLASSIFICATION_COUNT));
+		String targetTaxonomyStats = EAM.substitute(EAM.text("%targetCount created, %targetWithAssignedStandardClassificationCount of %targetCount have current status justifications"), tokenReplacementMap);
+		add(new PanelTitleLabel(EAM.text(targetTaxonomyStats)));
+	}
+
+	private String getDashboardData(String tag)
+	{
+		return getDashboard().getData(tag);
 	}
 
 	private Dashboard getDashboard()
