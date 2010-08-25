@@ -98,9 +98,26 @@ public class Dashboard extends BaseObject
 		if (fieldTag.equals(PSEUDO_THREAT_WITH_TAXONOMY_COUNT))
 			return getThreatWithTaxonomyCount();
 		
+		if (fieldTag.equals(PSEUDO_THREAT_TARGET_LINK_COUNT))
+			return getThreatTargetLinkCount();
+		
+		if (fieldTag.equals(PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT))
+			return getThreatTargetLinkWithRatingCount();
+		
 		return super.getPseudoData(fieldTag);
 	}
 	
+	private String getThreatTargetLinkWithRatingCount()
+	{
+		return "0";
+	}
+
+	private String getThreatTargetLinkCount()
+	{
+		int count = getProject().getDiagramFactorLinkPool().getThreatLinks().size();
+		return Integer.toString(count);
+	}
+
 	private String getThreatWithTaxonomyCount()
 	{
 		Vector<Cause> threats = getProject().getCausePool().getDirectThreatsAsVector();
@@ -211,6 +228,8 @@ public class Dashboard extends BaseObject
 		targetWithSimpleViabilityCount = new PseudoStringData(PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT);
 		threatCount = new PseudoStringData(PSEUDO_THREAT_COUNT);
 		threatWithTaxonomyCount = new PseudoStringData(PSEUDO_THREAT_WITH_TAXONOMY_COUNT);
+		threatTargetLinkCount = new PseudoStringData(PSEUDO_THREAT_TARGET_LINK_COUNT);
+		threatTargetLinkWithRatingCount = new PseudoStringData(PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -221,6 +240,8 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT, targetWithSimpleViabilityCount);
 		addPresentationDataField(PSEUDO_THREAT_COUNT, threatCount);
 		addPresentationDataField(PSEUDO_THREAT_WITH_TAXONOMY_COUNT, threatWithTaxonomyCount);
+		addPresentationDataField(PSEUDO_THREAT_TARGET_LINK_COUNT, threatTargetLinkCount);
+		addPresentationDataField(PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT, threatTargetLinkWithRatingCount);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -234,6 +255,8 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT = "TargetWithSimpleViabilityCount";
 	public static final String PSEUDO_THREAT_COUNT = "ThreatCount";
 	public static final String PSEUDO_THREAT_WITH_TAXONOMY_COUNT = "ThreatWithTaxonomyCount";
+	public static final String PSEUDO_THREAT_TARGET_LINK_COUNT = "ThreatTargetLinkCount";
+	public static final String PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT = "ThreatTargetLinkWithRatingCount";
 	
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;
@@ -244,4 +267,6 @@ public class Dashboard extends BaseObject
 	private PseudoStringData targetWithSimpleViabilityCount;
 	private PseudoStringData threatCount;
 	private PseudoStringData threatWithTaxonomyCount;
+	private PseudoStringData threatTargetLinkCount;
+	private PseudoStringData threatTargetLinkWithRatingCount;
 }

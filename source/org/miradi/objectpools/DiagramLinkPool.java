@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectpools;
 
+import java.util.Vector;
+
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.IdAssigner;
@@ -82,4 +84,18 @@ public class DiagramLinkPool extends EAMNormalObjectPool
 		}
 		return null;
 	}	
+	
+	public Vector<DiagramLink> getThreatLinks()
+	{
+		Vector<DiagramLink> threatLinks = new Vector<DiagramLink>();
+		Vector<BaseObject> diagramLinks = getAllObjects();
+		for(BaseObject diagramLink : diagramLinks)
+		{
+			DiagramLink castedDiagramLink = (DiagramLink) diagramLink;
+			if (castedDiagramLink.isThreatDiagramLink())
+				threatLinks.add(castedDiagramLink);
+		}
+		
+		return threatLinks;
+	}
 }
