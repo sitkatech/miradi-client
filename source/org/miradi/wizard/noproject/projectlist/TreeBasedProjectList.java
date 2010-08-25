@@ -43,7 +43,7 @@ public class TreeBasedProjectList extends JPanel
 		setLayout(new BorderLayout());
 		actions = new Vector<ProjectListAction>();
 
-		model = ProjectListTreeTableModel.createProjectListTreeTableModel(EAM.getHomeDirectory());
+		model = ProjectListTreeTableModel.createProjectListTreeTableModel(mainWindow.getDatabase());
 		ProjectListTreeTable table = new ProjectListTreeTable(mainWindow, model, handlerToUse);
 
 		actions.add(new ProjectListOpenAction(table));
