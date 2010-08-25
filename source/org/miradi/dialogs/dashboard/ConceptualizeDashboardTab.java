@@ -66,9 +66,8 @@ public class ConceptualizeDashboardTab extends ObjectDataInputPanel
 		add(new PanelTitleLabel(EAM.text("Select Conservation Targets:")));
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%targetCount", getDashboardData(Dashboard.PSEUDO_TARGET_COUNT));
-		tokenReplacementMap.put("%targetWithAssignedStandardClassificationCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_ASSIGNED_STANDARD_CLASSIFICATION_COUNT));
-		String targetTaxonomyStats = EAM.substitute(EAM.text("%targetCount created, %targetWithAssignedStandardClassificationCount of %targetCount have current status justifications"), tokenReplacementMap);
-		add(new PanelTitleLabel(targetTaxonomyStats));
+		String targetStats = EAM.substitute(EAM.text("%targetCount created"), tokenReplacementMap);
+		add(new PanelTitleLabel(targetStats));
 		
 		add(new FillerLabel());
 		add(new PanelTitleLabel(EAM.text("Add Human Welfare Targets:")));
@@ -101,9 +100,9 @@ public class ConceptualizeDashboardTab extends ObjectDataInputPanel
 		add(new FillerLabel());
 		add(new PanelTitleLabel(EAM.text("Rank Direct Threats:")));
 		HashMap<String, String> threatTargetLinksTokenReplacementMap = new HashMap<String, String>();
-		threatTargetLinksTokenReplacementMap.put("%threatCount", getDashboardData(Dashboard.PSEUDO_THREAT_COUNT));
-		threatTargetLinksTokenReplacementMap.put("%threatWithTaxonomyCount", getDashboardData(Dashboard.PSEUDO_THREAT_WITH_TAXONOMY_COUNT));
-		String threatTargetLinkDescription = EAM.substitute(EAM.text("5 of 8 target/threat links ranked  (In Simple Mode/Stress Based Mode)"), threatTargetLinksTokenReplacementMap);
+		threatTargetLinksTokenReplacementMap.put("%threatTargetLinkCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_COUNT));
+		threatTargetLinksTokenReplacementMap.put("%threatTargetWithRatingCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT));
+		String threatTargetLinkDescription = EAM.substitute(EAM.text("%threatTargetLinkCount of %threatTargetWithRatingCount target/threat links ranked  (In Simple Mode/Stress Based Mode)"), threatTargetLinksTokenReplacementMap);
 		add(new PanelTitleLabel(threatTargetLinkDescription));
 	}
 
