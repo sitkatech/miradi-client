@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Task;
@@ -28,6 +29,7 @@ import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 {
@@ -55,5 +57,30 @@ public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 		importResourceAssignmentIds(node, destinationRef);
 		importIds(node, destinationRef, Indicator.TAG_METHOD_IDS, Task.getObjectType(), WcsXmlConstants.METHOD);
 		importRefs(node, WcsXmlConstants.MEASUREMENT_IDS, destinationRef, Indicator.TAG_MEASUREMENT_REFS, Measurement.getObjectType(), WcsXmlConstants.MEASUREMENT);
+		importThresholds(node, destinationRef);
+	}
+
+	private void importThresholds(Node indicatorNode, ORef destinationRef) throws Exception
+	{
+		NodeList thresholdNodes = getImporter().getNodes(indicatorNode, new String[]{getPoolName() + THRESHOLDS, THRESHOLD});
+		StringMap thresholdValues = new StringMap();
+		StringMap thresholdDetails = new StringMap();
+		for (int index = 0; index < thresholdNodes.getLength(); ++index)
+		{
+			Node thrsholdNode = thresholdNodes.item(index);
+			Node statusCodeNode = getImporter().getNode(thrsholdNode, STATUS_CODE);
+			if (statusCodeNode != null)
+			{
+				String statusCode = statusCodeNode.getTextContent();
+				Node thresholdValueNode = getImporter().getNode(thrsholdNode, THRESHOLD_VALUE);
+				thresholdValues.add(statusCode, getImporter().getSafeNodeContent(thresholdValueNode));
+				
+				Node thresholdDetailsNode = getImporter().getNode(thrsholdNode, THRESHOLD_DETAILS);
+				thresholdDetails.add(statusCode, getImporter().getSafeNodeContent(thresholdDetailsNode));
+			}			
+		}
+		
+		getImporter().setData(destinationRef, Indicator.TAG_INDICATOR_THRESHOLD, thresholdValues.toString());
+		getImporter().setData(destinationRef, Indicator.TAG_THRESHOLD_DETAILS, thresholdDetails.toString());
 	}
 }

@@ -22,10 +22,13 @@ package org.miradi.xml.wcs;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.utils.CodeList;
 
 public class IndicatorPoolExporter extends BaseObjectPoolExporter
 {
@@ -54,8 +57,35 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 		writeResourceAssignmentIds(indicator);
 		writeMeasurementIds(indicator.getMeasurementRefs());
 		writeOptionalIds(WcsXmlConstants.METHOD_IDS, WcsXmlConstants.METHOD, indicator.getMethodRefs());
+		writeOptionalThreshold(indicator);
 	}
 	
+	private void writeOptionalThreshold(Indicator indicator) throws Exception
+	{
+		StringMap thresholdValues = indicator.getThreshold().getStringMap();
+		StringMap thresholdDetails = indicator.getThresholdDetails();
+		if (thresholdValues.size() == 0 && thresholdDetails.size() == 0)
+			return;
+		
+		getWcsXmlExporter().writeStartElement(getWriter(), getWcsXmlExporter().createParentAndChildElementName(getPoolName(), THRESHOLDS));
+		ChoiceQuestion question = getProject().getQuestion(StatusQuestion.class);
+		CodeList allCodes = question.getAllCodes();
+		for(int index = 0; index < allCodes.size(); ++index)
+		{
+			getWcsXmlExporter().writeStartElement(getWriter(), THRESHOLD);
+			String code = allCodes.get(index);
+			if (code.equals(StatusQuestion.UNSPECIFIED))
+				continue;
+			
+			getWcsXmlExporter().writeOptionalElement(getWriter(), STATUS_CODE, code);
+			getWcsXmlExporter().writeOptionalElement(getWriter(), THRESHOLD_VALUE, thresholdValues.get(code));
+			getWcsXmlExporter().writeOptionalElement(getWriter(), THRESHOLD_DETAILS, thresholdDetails.get(code));
+			getWcsXmlExporter().writeEndElement(getWriter(), THRESHOLD);			
+		}
+		
+		getWcsXmlExporter().writeEndElement(getWriter(), getWcsXmlExporter().createParentAndChildElementName(getPoolName(), THRESHOLDS));
+	}
+
 	private void writeMeasurementIds(ORefList measurementRefs) throws Exception
 	{
 		writeOptionalIds(WcsXmlConstants.MEASUREMENT_IDS, WcsXmlConstants.MEASUREMENT, measurementRefs);
