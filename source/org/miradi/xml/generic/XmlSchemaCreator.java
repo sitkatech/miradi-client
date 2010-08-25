@@ -263,6 +263,7 @@ public class XmlSchemaCreator implements WcsXmlConstants
 		defineWorkUnitsQuarterElement(writer);
 		defineWorkUnitsMonthElement(writer);
 		defineWorkUnitsDayElement(writer);
+		defineThresholdsElement(writer);
 		
 		defineDateUnitExpense(writer);
 		defineExpenseFullProjectTimeSpanElement(writer);
@@ -396,6 +397,17 @@ public class XmlSchemaCreator implements WcsXmlConstants
 	private void defineWorkUnitsDayElement(SchemaWriter writer)
 	{
 		defineDayElement(writer, "WorkUnitsDay");
+	}
+	
+	private void defineThresholdsElement(SchemaWriter writer)
+	{
+		writer.defineAlias(THRESHOLD + ".element", "element " + WcsXmlConstants.PREFIX + THRESHOLD);
+		writer.startBlock();
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + STATUS_CODE + "{vocabulary_status_code}? &");
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + THRESHOLD_VALUE + " { text }? &");
+		writer.printlnIndented("element " + WcsXmlConstants.PREFIX + THRESHOLD_DETAILS + " { text }?");
+		writer.endBlock();
+		
 	}
 	
 	private void defineFullProjectTimeSpanElement(SchemaWriter writer, String fullProjectTimeSpanElementName)

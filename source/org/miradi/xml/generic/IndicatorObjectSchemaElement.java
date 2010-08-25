@@ -43,5 +43,6 @@ public class IndicatorObjectSchemaElement extends BaseObjectSchemaElementWithLab
 		createOptionalIdListField(Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createOptionalIdListField(WcsXmlConstants.MEASUREMENT_IDS, XmlSchemaCreator.MEASUREMENT_ID_ELEMENT_NAME);
 		createOptionalIdListField(WcsXmlConstants.METHOD_IDS, XmlSchemaCreator.METHOD);
+		createOptionalThresholdsField();
 	}
 }
