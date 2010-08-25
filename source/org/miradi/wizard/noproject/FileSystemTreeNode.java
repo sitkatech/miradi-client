@@ -32,8 +32,9 @@ import org.miradi.objects.BaseObject;
 
 abstract public class FileSystemTreeNode extends TreeTableNode
 {
-	public FileSystemTreeNode(File file, FileSystemProjectSorter sorterToUse) throws Exception
+	public FileSystemTreeNode(ProjectServer databaseToUse, File file, FileSystemProjectSorter sorterToUse) throws Exception
 	{
+		database = databaseToUse;
 		thisFile = file;
 		children = new Vector<FileSystemTreeNode>();
 		sorter =  sorterToUse;
@@ -113,7 +114,7 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 			File file = files[i];
 			if(shouldBeIncluded(file))
 			{
-				children.add(createNode(file, sorter));
+				children.add(createNode(database, file, sorter));
 			}
 		}
 		
@@ -171,14 +172,15 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 		thisFile = file;
 	}
 	
-	abstract protected FileSystemTreeNode createNode(File file, FileSystemProjectSorter sorterToUse) throws Exception;
+	abstract protected FileSystemTreeNode createNode(ProjectServer databaseToUse, File file, FileSystemProjectSorter sorterToUse) throws Exception;
 	
 	abstract protected boolean shouldBeIncluded(File file);
 	
 	private static final String OLD_JASPER_EXTERNAL_REPORTS_DIR_NAME = "ExternalReports";	
 	private static final String OLD_JASPER_CUSTOM_REPORTS_DIR_NAME = "CustomReports";
 	
-	protected File thisFile;
+	private ProjectServer database;
+	private File thisFile;
 	private Vector<FileSystemTreeNode> children;
 	private FileSystemProjectSorter sorter;
 }
