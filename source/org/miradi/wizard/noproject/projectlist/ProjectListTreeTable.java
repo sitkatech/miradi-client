@@ -127,10 +127,10 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 			return;
 		
 		String relativeProjectPath = file.getName();
-		if(!isProjectDirectory(file))
+		MainWindow mainWindow = EAM.getMainWindow();
+		if(!mainWindow.getDatabase().isExistingProject(relativeProjectPath))
 			return;
 		
-		MainWindow mainWindow = EAM.getMainWindow();
 		Cursor cursor = mainWindow.getCursor();
 		mainWindow.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		try
