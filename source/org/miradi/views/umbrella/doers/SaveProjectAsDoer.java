@@ -54,7 +54,7 @@ public class SaveProjectAsDoer extends MainWindowDoer
 		{
 			File newProjectDir = saveAs(chosenFile);
 			getMainWindow().closeProject();
-			ProjectListTreeTable.doProjectOpen(newProjectDir);
+			ProjectListTreeTable.doProjectOpen(getMainWindow(), newProjectDir);
 		}
 		catch(Exception e)
 		{
