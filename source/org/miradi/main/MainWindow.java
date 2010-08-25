@@ -144,6 +144,20 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		
 		File appPreferencesFile = getPreferencesFile();
 		preferences.load(appPreferencesFile);
+
+		if(commandLineArguments.contains("--remote"))
+		{
+			// NOTE: This is code for testing the fat client
+			// The server must be running on fxa.org, and 
+			// /var/local/MiradiServer/project/Test
+			// must be a valid Miradi project directory
+			setRemoteDataLocation("http://fxa.org:7000/MiradiServer/");
+		}
+		else
+		{
+			setLocalDataLocation(EAM.getHomeDirectory());
+		}
+		
 		ensureFontSizeIsSet();
 		
 		project.addCommandExecutedListener(this);
@@ -229,13 +243,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		
 		safelySavePreferences();
 
+		// NOTE: This is code for testing the fat client
 		if(commandLineArguments.contains("--remote"))
 		{
-			// NOTE: This is code for testing the fat client
-			// The server must be running on fxa.org, and 
-			// /var/local/MiradiServer/project/Test
-			// must be a valid Miradi project directory
-			setRemoteDataLocation("http://fxa.org:7000/MiradiServer/");
 			createOrOpenProject("projects/Test");
 		}
 	}
@@ -480,6 +490,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	public Project getProject()
 	{
 		return project;
+	}
+	
+	public ProjectServer getDatabase()
+	{
+		return database;
 	}
 	
 	public WizardManager getWizardManager()
