@@ -315,6 +315,17 @@ public class DiagramLink extends BaseObject
 		return false;
 	}
 	
+	public boolean isThreatDiagramLink()
+	{
+		if (!getFromDiagramFactor().getWrappedFactor().isDirectThreat())
+			return false;
+		
+		if (!getToDiagramFactor().getWrappedFactor().isTarget())
+			return false;
+
+		return true;
+	}
+	
 	public String getToolTipString() 
 	{
 		DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), getFromDiagramFactorRef());

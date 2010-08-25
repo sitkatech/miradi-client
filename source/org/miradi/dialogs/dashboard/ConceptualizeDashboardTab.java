@@ -95,8 +95,16 @@ public class ConceptualizeDashboardTab extends ObjectDataInputPanel
 		HashMap<String, String> threatsTokenReplacementMap = new HashMap<String, String>();
 		threatsTokenReplacementMap.put("%threatCount", getDashboardData(Dashboard.PSEUDO_THREAT_COUNT));
 		threatsTokenReplacementMap.put("%threatWithTaxonomyCount", getDashboardData(Dashboard.PSEUDO_THREAT_WITH_TAXONOMY_COUNT));
-		String targetStatusDescription = EAM.substitute(EAM.text("%threatCount Direct Threats created, %threatWithTaxonomyCount of %threatCount have taxonomy assignments"), threatsTokenReplacementMap);
-		add(new PanelTitleLabel(targetStatusDescription));
+		String directThreatDescription = EAM.substitute(EAM.text("%threatCount Direct Threats created, %threatWithTaxonomyCount of %threatCount have taxonomy assignments"), threatsTokenReplacementMap);
+		add(new PanelTitleLabel(directThreatDescription));
+		
+		add(new FillerLabel());
+		add(new PanelTitleLabel(EAM.text("Rank Direct Threats:")));
+		HashMap<String, String> threatTargetLinksTokenReplacementMap = new HashMap<String, String>();
+		threatTargetLinksTokenReplacementMap.put("%threatCount", getDashboardData(Dashboard.PSEUDO_THREAT_COUNT));
+		threatTargetLinksTokenReplacementMap.put("%threatWithTaxonomyCount", getDashboardData(Dashboard.PSEUDO_THREAT_WITH_TAXONOMY_COUNT));
+		String threatTargetLinkDescription = EAM.substitute(EAM.text("5 of 8 target/threat links ranked  (In Simple Mode/Stress Based Mode)"), threatTargetLinksTokenReplacementMap);
+		add(new PanelTitleLabel(threatTargetLinkDescription));
 	}
 
 	private String getDashboardData(String tag)

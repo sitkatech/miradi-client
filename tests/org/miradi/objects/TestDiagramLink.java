@@ -190,6 +190,17 @@ public class TestDiagramLink extends ObjectTestCase
 		assertEquals("wrong opposite to factor id?", fromRef, diagramLink.getOppositeEndRef(toRef));
 		assertEquals("wrong opposite factor id?", ORef.INVALID, diagramLink.getOppositeEndRef(new ORef(3, new BaseId(4))));
 	}
+	
+	public void testIsThreatDiagramLink() throws Exception
+	{
+		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor target = getProject().createAndAddFactorToDiagram(Target.getObjectType());
+		DiagramLink diagramLink = getProject().createDiagramLinkAndAddToDiagramModel(cause, target);
+		assertFalse("link should not be a threat target link", diagramLink.isThreatDiagramLink());
+		
+		getProject().enableAsThreat(cause.getWrappedORef());
+		assertTrue("link should be a threat target link", diagramLink.isThreatDiagramLink());
+	}
 
 	ProjectForTesting project;
 	DiagramModel model;
