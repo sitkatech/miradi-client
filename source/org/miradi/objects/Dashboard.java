@@ -20,12 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
+import java.util.Vector;
+
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class Dashboard extends BaseObject
@@ -83,9 +86,66 @@ public class Dashboard extends BaseObject
 		if (fieldTag.equals(PSEUDO_HUMAN_WELFARE_TARGET_COUNT))
 			return getObjectPoolCount(HumanWelfareTarget.getObjectType());
 		
+		if (fieldTag.equals(PSEUDO_TARGET_WITH_KEA_COUNT))
+			return getTargetWithKeaCount();
+		
+		if (fieldTag.equals(PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT))
+			return getTargetWithSimpleViabilityCount();
+		
+		if (fieldTag.equals(PSEUDO_THREAT_COUNT))
+			return getThreatCount();
+		
+		if (fieldTag.equals(PSEUDO_THREAT_WITH_TAXONOMY_COUNT))
+			return getThreatWithTaxonomyCount();
+		
 		return super.getPseudoData(fieldTag);
 	}
 	
+	private String getThreatWithTaxonomyCount()
+	{
+		Vector<Cause> threats = getProject().getCausePool().getDirectThreatsAsVector();
+		int count = 0;
+		for(Cause threat : threats)
+		{
+			if (threat.getData(Cause.TAG_TAXONOMY_CODE).length() > 1)
+				++count;
+		}
+		
+		return Integer.toString(count);
+	}
+
+	private String getThreatCount()
+	{
+		int count = getProject().getCausePool().getDirectThreatsAsVector().size();
+		
+		return Integer.toString(count);
+	}
+
+	private String getTargetWithSimpleViabilityCount()
+	{
+		return getTargetCountForMode(ViabilityModeQuestion.SIMPLE_MODE_CODE);
+	}
+
+	private String getTargetWithKeaCount()
+	{
+		return getTargetCountForMode(ViabilityModeQuestion.TNC_STYLE_CODE);
+	}
+
+	private String getTargetCountForMode(String tNCSTYLECODE)
+	{
+		int count = 0;
+		ORefSet targetRefs = getProject().getTargetPool().getRefSet();
+		for (ORef targetRef : targetRefs)
+		{
+			Target target = Target.find(getProject(), targetRef);
+			
+			if (target.getViabilityMode().equals(tNCSTYLECODE))
+				++count;
+		}
+		
+		return Integer.toString(count);
+	}
+
 	private String getTargetWithStandardClassificationCount()
 	{
 		int targetWithStandardClassificationCount = 0;
@@ -147,12 +207,20 @@ public class Dashboard extends BaseObject
 		targetCount = new PseudoStringData(PSEUDO_TARGET_COUNT);
 		targetWithAssignedStandardClassificationCount = new PseudoStringData(PSEUDO_TARGET_WITH_ASSIGNED_STANDARD_CLASSIFICATION_COUNT);
 		humanWelfareTargetCount = new PseudoStringData(PSEUDO_HUMAN_WELFARE_TARGET_COUNT);
+		targetWithKeaCount = new PseudoStringData(PSEUDO_TARGET_WITH_KEA_COUNT);
+		targetWithSimpleViabilityCount = new PseudoStringData(PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT);
+		threatCount = new PseudoStringData(PSEUDO_THREAT_COUNT);
+		threatWithTaxonomyCount = new PseudoStringData(PSEUDO_THREAT_WITH_TAXONOMY_COUNT);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
 		addPresentationDataField(PSEUDO_TARGET_COUNT, targetCount);
 		addPresentationDataField(PSEUDO_TARGET_WITH_ASSIGNED_STANDARD_CLASSIFICATION_COUNT, targetWithAssignedStandardClassificationCount);
 		addPresentationDataField(PSEUDO_HUMAN_WELFARE_TARGET_COUNT, humanWelfareTargetCount);
+		addPresentationDataField(PSEUDO_TARGET_WITH_KEA_COUNT, targetWithKeaCount);
+		addPresentationDataField(PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT, targetWithSimpleViabilityCount);
+		addPresentationDataField(PSEUDO_THREAT_COUNT, threatCount);
+		addPresentationDataField(PSEUDO_THREAT_WITH_TAXONOMY_COUNT, threatWithTaxonomyCount);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -162,10 +230,18 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_TARGET_COUNT = "TargetCount";
 	public static final String PSEUDO_TARGET_WITH_ASSIGNED_STANDARD_CLASSIFICATION_COUNT = "TargetWithStandardClassificationCount";
 	public static final String PSEUDO_HUMAN_WELFARE_TARGET_COUNT = "HumanWelfareTargetCount";
+	public static final String PSEUDO_TARGET_WITH_KEA_COUNT = "TargetWithKeaCount";
+	public static final String PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT = "TargetWithSimpleViabilityCount";
+	public static final String PSEUDO_THREAT_COUNT = "ThreatCount";
+	public static final String PSEUDO_THREAT_WITH_TAXONOMY_COUNT = "ThreatWithTaxonomyCount";
 	
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;
 	private PseudoStringData targetCount;
 	private PseudoStringData targetWithAssignedStandardClassificationCount;
 	private PseudoStringData humanWelfareTargetCount;
+	private PseudoStringData targetWithKeaCount;
+	private PseudoStringData targetWithSimpleViabilityCount;
+	private PseudoStringData threatCount;
+	private PseudoStringData threatWithTaxonomyCount;
 }
