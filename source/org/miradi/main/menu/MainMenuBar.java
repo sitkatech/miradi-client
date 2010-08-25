@@ -87,7 +87,6 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("MenuBar|File"));
 		menu.setMnemonic(KeyEvent.VK_F);
 
-		addMenuItem(actions, menu, ActionInvokeDashboard.class);
 		addMenuItem(actions, menu, ActionSaveProjectAs.class, KeyEvent.VK_A);
 		addMenuItem(actions, menu, ActionHowToSave.class, KeyEvent.VK_H);
 		addMenuItem(actions, menu, ActionClose.class, KeyEvent.VK_C);
@@ -482,6 +481,9 @@ public class MainMenuBar extends JMenuBar
 			addMenuItem(actions, menu, ActionShowCellRatings.class);
 			addMenuItem(actions, menu, ActionHideCellRatings.class);
 		}
+		
+		menu.addSeparator();
+		addMenuItem(actions, menu, ActionInvokeDashboard.class);
 		
 		return menu;
 	}
