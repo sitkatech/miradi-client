@@ -22,6 +22,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -68,20 +69,40 @@ public class Dashboard extends BaseObject
 	public String getPseudoData(String fieldTag)
 	{
 		if (fieldTag.equals(PSEUDO_TEAM_MEMBER_COUNT))
-			return getTotalMemeberCount();
+			return getObjectPoolCount(ProjectResource.getObjectType());
 		
 		if (fieldTag.equals(PSEUDO_PROJECT_SCOPE_WORD_COUNT))
 			return getProjectScopeWordCount();
 		
+		if (fieldTag.equals(PSEUDO_TARGET_COUNT))
+			return getObjectPoolCount(Target.getObjectType());
+		
+		if (fieldTag.equals(PSEUDO_TARGET_WITH_ASSIGNED_STANDARD_CLASSIFICATION_COUNT))
+			return getTargetWithStandardClassificationCount();
+		
 		return super.getPseudoData(fieldTag);
 	}
 	
-	private String getTotalMemeberCount()
+	private String getTargetWithStandardClassificationCount()
 	{
-		int resourceCount = getProject().getResourcePool().size();
+		int targetWithStandardClassificationCount = 0;
+		ORefSet targetRefs = getProject().getTargetPool().getRefSet();
+		for (ORef targetRef : targetRefs)
+		{
+			Target target = Target.find(getProject(), targetRef);
+			if (target.getData(Target.TAG_CURRENT_STATUS_JUSTIFICATION).length() > 0)
+				++targetWithStandardClassificationCount;
+		}
+		
+		return Integer.toString(targetWithStandardClassificationCount);
+	}
+
+	private String getObjectPoolCount(int objectType)
+	{
+		int resourceCount = getProject().getPool(objectType).size();
 		return Integer.toString(resourceCount);
 	}
-	
+
 	private String getProjectScopeWordCount()
 	{
 		int scopeCount = getProject().getMetadata().getProjectScope().length();
@@ -120,16 +141,24 @@ public class Dashboard extends BaseObject
 		
 		teamMemberCount = new PseudoStringData(PSEUDO_TEAM_MEMBER_COUNT);
 		projectScopeWordCount = new PseudoStringData(PSEUDO_PROJECT_SCOPE_WORD_COUNT);
+		targetCount = new PseudoStringData(PSEUDO_TARGET_COUNT);
+		targetWithAssignedStandardClassificationCount = new PseudoStringData(PSEUDO_TARGET_WITH_ASSIGNED_STANDARD_CLASSIFICATION_COUNT);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
+		addPresentationDataField(PSEUDO_TARGET_COUNT, targetCount);
+		addPresentationDataField(PSEUDO_TARGET_WITH_ASSIGNED_STANDARD_CLASSIFICATION_COUNT, targetWithAssignedStandardClassificationCount);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
 	
 	public static final String PSEUDO_TEAM_MEMBER_COUNT = "TeamMemberCount";
 	public static final String PSEUDO_PROJECT_SCOPE_WORD_COUNT = "ProjectScopeWordCount";
+	public static final String PSEUDO_TARGET_COUNT = "TargetCount";
+	public static final String PSEUDO_TARGET_WITH_ASSIGNED_STANDARD_CLASSIFICATION_COUNT = "TargetWithStandardClassificationCount";
 	
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;
+	private PseudoStringData targetCount;
+	private PseudoStringData targetWithAssignedStandardClassificationCount;
 }
