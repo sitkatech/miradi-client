@@ -44,7 +44,8 @@ public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
 			if (!file.isDirectory())
 				return false;
 
-			//TODO is this test neeeded since we return true at the end?
+			//NOTE: Must check if project first, to allow users to have projects
+			// that happen to have names the same as our old special directory names
 			if (ProjectServer.isExistingLocalProject(file))
 				return true;
 			
