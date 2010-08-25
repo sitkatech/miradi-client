@@ -1,0 +1,30 @@
+Once-per-language command to create an initial .po file from the .pot template:
+  cd binaries-miradi/dist
+  msginit --input=miradi.pot --output-file=miradi_xx.po --locale=xx
+  
+(where xx is the language such as 'fr' or 'es', possibly followed by an 
+underline, then a locale country/region code such as US or CA.)
+When prompted for the email address, enter: info@miradi.org
+There will be multibyte errors. Edit the file and update the header comments 
+at the top of the generated .po file to change the file to UTF-8:
+   charset=UTF-8
+
+
+
+The Miradi build script automatically re-creates the .pot file, and 
+then updates the English and Spanish .po files and MiradiContent zip files.
+
+
+
+  
+IMPORTANT NOTES:
+
+1. Never edit the .pot file, because your changes will be erased next time
+xgettext is run.
+
+2. Use \n to insert hard newlines.
+
+3. "Obsolete" entries appear at the bottom of a .po file, commented-out.
+
+4. .pot and .po files are assumed to be in UTF-8
+
