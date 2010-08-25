@@ -41,6 +41,7 @@ public class ConceptualizeDashboardTab extends ObjectDataInputPanel
 		setLayout(new GridLayoutPlus(0, 3));		
 		addTeamMembersRow();
 		addScopeVisionAndTargetsRow();
+		addIdentifyCriticalThreatsRow();
 	}
 
 	private void addTeamMembersRow()
@@ -73,6 +74,29 @@ public class ConceptualizeDashboardTab extends ObjectDataInputPanel
 		add(new PanelTitleLabel(EAM.text("Add Human Welfare Targets:")));
 		String humanWelfareTargetCount = EAM.substitute(EAM.text("%s created"), getDashboardData(Dashboard.PSEUDO_HUMAN_WELFARE_TARGET_COUNT));
 		add(new PanelTitleLabel(humanWelfareTargetCount));
+		
+		add(new FillerLabel());
+		add(new PanelTitleLabel(EAM.text("Describe Status of Targets:")));
+		HashMap<String, String> statusDescriptionTokenReplacementMap = new HashMap<String, String>();
+		statusDescriptionTokenReplacementMap.put("%targetWithKeaCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_KEA_COUNT));
+		statusDescriptionTokenReplacementMap.put("%targetWithSimpleViabilityCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT));
+		String targetStatusDescription = EAM.substitute(EAM.text("%targetWithKeaCount targets have KEA %targetWithSimpleViabilityCount targets have simple viablity information"), statusDescriptionTokenReplacementMap);
+		add(new PanelTitleLabel(targetStatusDescription));
+	}
+	
+	private void addIdentifyCriticalThreatsRow()
+	{
+		add(new PanelTitleLabel(EAM.text("1C. Identify Critical Threats")));
+		add(new FillerLabel());
+		add(new FillerLabel());
+		
+		add(new FillerLabel());
+		add(new PanelTitleLabel(EAM.text("Identify Direct Threats:")));
+		HashMap<String, String> threatsTokenReplacementMap = new HashMap<String, String>();
+		threatsTokenReplacementMap.put("%threatCount", getDashboardData(Dashboard.PSEUDO_THREAT_COUNT));
+		threatsTokenReplacementMap.put("%threatWithTaxonomyCount", getDashboardData(Dashboard.PSEUDO_THREAT_WITH_TAXONOMY_COUNT));
+		String targetStatusDescription = EAM.substitute(EAM.text("%threatCount Direct Threats created, %threatWithTaxonomyCount of %threatCount have taxonomy assignments"), threatsTokenReplacementMap);
+		add(new PanelTitleLabel(targetStatusDescription));
 	}
 
 	private String getDashboardData(String tag)
