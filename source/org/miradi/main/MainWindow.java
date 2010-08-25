@@ -126,6 +126,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		wizardManager = new WizardManager(this);
 		hyperlinkHandler = new DefaultHyperlinkHandler(this);
 		setLanguage(null);
+
+		database = getProject().getDatabase();
 	}
 	
 	public void start(String[] args) throws Exception
@@ -507,12 +509,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	public void setLocalDataLocation(File dataDirectory) throws Exception
 	{
-		getProject().setLocalDataLocation(dataDirectory);
+		database.setLocalDataLocation(dataDirectory);
 	}
 	
 	public void setRemoteDataLocation(String remoteLocation) throws Exception
 	{
-		getProject().setRemoteDataLocation(remoteLocation);
+		database.setRemoteDataLocation(remoteLocation);
 	}
 	
 	static class AlreadyHandledException extends Exception
@@ -1187,7 +1189,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	public static final String DISABLED_CONPRO_IMPORT_EXPORT_MESSAGE = EAM.text("<HTML>Data exchange between Miradi and ConPro is not available in this version of Miradi. <BR> It is currently being tested, and should be available in the next version of Miradi. <BR>If you have questions, contact support@miradi.org.</HTML>");
 
-	protected Actions actions;
+	private ProjectServer database;
+	private Actions actions;
 	private AppPreferences preferences;
 	private Project project;
 	private HyperlinkHandler hyperlinkHandler;
