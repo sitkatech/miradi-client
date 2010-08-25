@@ -212,6 +212,12 @@ class ObjectSchemaElement extends SchemaElement
 		FieldSchemaElement field = new OptionalFiscalYearStartFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
 	}
+	
+	protected void createOptionalThresholdsField()
+	{
+		FieldSchemaElement field = new OptionalThresholdSchemaElement(getObjectTypeName());
+		fields.add(field);
+	}
 
 	public String getObjectTypeName()
 	{
