@@ -67,7 +67,12 @@ public class ConceptualizeDashboardTab extends ObjectDataInputPanel
 		tokenReplacementMap.put("%targetCount", getDashboardData(Dashboard.PSEUDO_TARGET_COUNT));
 		tokenReplacementMap.put("%targetWithAssignedStandardClassificationCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_ASSIGNED_STANDARD_CLASSIFICATION_COUNT));
 		String targetTaxonomyStats = EAM.substitute(EAM.text("%targetCount created, %targetWithAssignedStandardClassificationCount of %targetCount have current status justifications"), tokenReplacementMap);
-		add(new PanelTitleLabel(EAM.text(targetTaxonomyStats)));
+		add(new PanelTitleLabel(targetTaxonomyStats));
+		
+		add(new FillerLabel());
+		add(new PanelTitleLabel(EAM.text("Add Human Welfare Targets:")));
+		String humanWelfareTargetCount = EAM.substitute(EAM.text("%s created"), getDashboardData(Dashboard.PSEUDO_HUMAN_WELFARE_TARGET_COUNT));
+		add(new PanelTitleLabel(humanWelfareTargetCount));
 	}
 
 	private String getDashboardData(String tag)
