@@ -52,7 +52,7 @@ public class DirectoryChooserDialog extends DialogWithButtonBar
 
 	private void addComponents() throws Exception
 	{
-		ProjectListTreeTableModel model = ProjectListTreeTableModel.createDirectoryListTreeTableModel(EAM.getHomeDirectory());
+		ProjectListTreeTableModel model = ProjectListTreeTableModel.createDirectoryListTreeTableModel(getMainWindow().getDatabase(), EAM.getHomeDirectory());
 		table = new ProjectListTreeTable(getMainWindow(), model, null);
 		add(new MiradiScrollPane(table));
 	}
