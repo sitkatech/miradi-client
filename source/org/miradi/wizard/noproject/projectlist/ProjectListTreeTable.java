@@ -126,6 +126,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		if(file == null)
 			return;
 		
+		String relativeProjectPath = file.getName();
 		if(!isProjectDirectory(file))
 			return;
 		
@@ -134,7 +135,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		mainWindow.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		try
 		{
-			mainWindow.createOrOpenProject(file.getName());
+			mainWindow.createOrOpenProject(relativeProjectPath);
 		}
 		catch(Exception e)
 		{
