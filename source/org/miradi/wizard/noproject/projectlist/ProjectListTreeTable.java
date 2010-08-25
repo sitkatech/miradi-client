@@ -121,13 +121,12 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		return ProjectServer.isExistingLocalProject(file);
 	}
 
-	public static void doProjectOpen(File file) throws Exception
+	public static void doProjectOpen(MainWindow mainWindow, File file) throws Exception
 	{
 		if(file == null)
 			return;
 		
 		String relativeProjectPath = file.getName();
-		MainWindow mainWindow = EAM.getMainWindow();
 		if(!mainWindow.getDatabase().isExistingProject(relativeProjectPath))
 			return;
 		
@@ -254,7 +253,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 			try
 			{
 				if(event.getClickCount() == 2)
-					doProjectOpen(getSelectedFile());
+					doProjectOpen(getMainWindow(), getSelectedFile());
 			}
 			catch(Exception e)
 			{
