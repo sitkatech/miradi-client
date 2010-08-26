@@ -93,3 +93,11 @@ Notify plugin:
 More on hooks and notify:
   http://hgbook.red-bean.com/read/handling-repository-events-with-hooks.html
   
+How to avoid the commit/push-fails/sync/pull/update/merge/push problem:
+  http://www.selenic.com/pipermail/mercurial/2008-July/020116.html
+  http://www.selenic.com/pipermail/mercurial/2008-July/020131.html
+
+Merge vs. Rebase:
+  http://blog.experimentalworks.net/2009/03/merge-vs-rebase-a-deep-dive-into-the-mysteries-of-revision-control/
+  
+  
