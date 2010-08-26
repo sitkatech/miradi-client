@@ -95,9 +95,6 @@ public class Dashboard extends BaseObject
 		if (fieldTag.equals(PSEUDO_THREAT_WITH_TAXONOMY_COUNT))
 			return getThreatWithTaxonomyCount();
 		
-		if (fieldTag.equals(PSEUDO_THREAT_TARGET_LINK_COUNT))
-			return getThreatTargetLinkCount();
-		
 		if (fieldTag.equals(PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT))
 			return getThreatTargetLinkWithRatingCount();
 		
@@ -107,12 +104,6 @@ public class Dashboard extends BaseObject
 	private String getThreatTargetLinkWithRatingCount()
 	{
 		return "0";
-	}
-
-	private String getThreatTargetLinkCount()
-	{
-		int count = getProject().getDiagramFactorLinkPool().getThreatLinks().size();
-		return Integer.toString(count);
 	}
 
 	private String getThreatWithTaxonomyCount()
