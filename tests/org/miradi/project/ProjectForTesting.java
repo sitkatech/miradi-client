@@ -1425,6 +1425,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateSubTarget();
 		createAndPopulateTarget();
 		createAndPopulateThreat();
+		createThreatReductionResult();
 		createAndPopulateDraftStrategy();
 		Strategy strategy = createAndPopulateStrategy();
 		createAndPopulateStrategyThreatTargetAssociation();

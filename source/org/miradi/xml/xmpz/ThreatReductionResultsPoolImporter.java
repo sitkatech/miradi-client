@@ -47,6 +47,9 @@ public class ThreatReductionResultsPoolImporter extends FactorPoolImporter
 	private void importThreatId(Node node, ORef destinationRef) throws Exception
 	{
 		Node relatedThreatIdNode = getImporter().getNode(node, getPoolName() + WcsXmlConstants.RELATED_THREAT_ID);
+		if (relatedThreatIdNode == null)
+			return;
+		
 		Node threatIdNode = getImporter().getNode(relatedThreatIdNode, getPoolName() + WcsXmlConstants.THREAT_ID);
 		Node idNode = getImporter().getNode(threatIdNode, WcsXmlConstants.THREAT_ID);
 		BaseId relatedThreatId = new BaseId(idNode.getTextContent());
