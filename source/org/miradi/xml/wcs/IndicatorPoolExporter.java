@@ -72,11 +72,11 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 		CodeList allCodes = question.getAllCodes();
 		for(int index = 0; index < allCodes.size(); ++index)
 		{
-			getWcsXmlExporter().writeStartElement(getWriter(), THRESHOLD);
 			String code = allCodes.get(index);
 			if (code.equals(StatusQuestion.UNSPECIFIED))
 				continue;
 			
+			getWcsXmlExporter().writeStartElement(getWriter(), THRESHOLD);
 			getWcsXmlExporter().writeOptionalElement(getWriter(), STATUS_CODE, code);
 			getWcsXmlExporter().writeOptionalElement(getWriter(), THRESHOLD_VALUE, thresholdValues.get(code));
 			getWcsXmlExporter().writeOptionalElement(getWriter(), THRESHOLD_DETAILS, thresholdDetails.get(code));
