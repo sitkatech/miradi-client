@@ -1,0 +1,8 @@
+ODT files are OpenOffice Writer documents. OpenOffice is a 
+free office suite that you can download from:
+  www.openoffice.org
+  
+ODT files are fully editable with OO Writer, and are nicely 
+formatted. OO Writer can export to PDF, MS Word document, 
+and other formats.
+
