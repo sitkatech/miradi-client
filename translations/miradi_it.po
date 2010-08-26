@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-20 16:08-0500\n"
+"POT-Creation-Date: 2010-08-25 23:34-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -62,7 +62,7 @@ msgstr ""
 msgid " 2) Connect threat to relevant targets"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:182
+#: Miradi/source/org/miradi/project/Project.java:183
 msgid " A project by this name already exists: "
 msgstr ""
 
@@ -72,6 +72,32 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:81
 msgid "%countLabel: %itemCount"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:74
+msgid "%s created"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:69
+msgid "%targetCount created"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:82
+msgid ""
+"%targetWithKeaCount targets have KEA %targetWithSimpleViabilityCount targets "
+"have simple viablity information"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:97
+msgid ""
+"%threatCount Direct Threats created, %threatWithTaxonomyCount of %"
+"threatCount have taxonomy assignments"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:105
+msgid ""
+"%threatTargetLinkCount of %threatTargetWithRatingCount target/threat links "
+"ranked  (In Simple Mode/Stress Based Mode)"
 msgstr ""
 
 #: Miradi/source/org/miradi/utils/DiagramCorruptionDetector.java:222
@@ -189,6 +215,18 @@ msgstr ""
 #: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardChooseBundle.java:51
 #: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressOverviewStep.java:47
 msgid "1) Select target and threat to work on"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:49
+msgid "1A. Define Initial Project Team"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:56
+msgid "1B. Define Scope Vision and Targets"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:88
+msgid "1C. Identify Critical Threats"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/CurrencyDecimalQuestion.java:36
@@ -319,7 +357,7 @@ msgstr ""
 msgid "7C. Create a Learning Environment"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1188
+#: Miradi/source/org/miradi/main/MainWindow.java:1205
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -715,7 +753,7 @@ msgid ""
 "safe to do this, unless an earlier migration attempt failed."
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:188
+#: Miradi/source/org/miradi/project/Project.java:189
 msgid "A file or folder exist by the same name:"
 msgstr ""
 
@@ -1661,6 +1699,10 @@ msgstr ""
 msgid "Add Human Welfare Targets If Desired"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:73
+msgid "Add Human Welfare Targets:"
+msgstr ""
+
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:134
 msgid ""
 "Additional languages are supported by installing Miradi Language Packs,<br> "
@@ -2389,7 +2431,7 @@ msgid ""
 "factors that are believed to impact or lead to a conservation target."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:38
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:123
 msgid "Conceptualize"
 msgstr ""
 
@@ -2496,6 +2538,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpWelcomeCreateStep.java:47
 msgid "Create..."
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:63
+msgid "Created (%s chars)"
 msgstr ""
 
 #: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:77
@@ -2629,6 +2675,10 @@ msgstr ""
 msgid "Default Mode"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:61
+msgid "Define Project Scope:"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardDefineAudienceStep.java:35
 msgid "Define audiences and information needs"
 msgstr ""
@@ -2670,6 +2720,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/SortDirectionQuestion.java:36
 msgid "Descending"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:78
+msgid "Describe Status of Targets:"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpTargetViabilityMethodChoiceStep.java:35
@@ -3043,7 +3097,7 @@ msgstr ""
 msgid "Euro"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:771
+#: Miradi/source/org/miradi/main/MainWindow.java:788
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -3524,6 +3578,10 @@ msgstr ""
 msgid "Identify \"key factors\" and draft strategies"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:93
+msgid "Identify Direct Threats:"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardIdentifyDirectThreatStep.java:35
 msgid "Identify direct threats"
 msgstr ""
@@ -3644,7 +3702,7 @@ msgstr ""
 msgid "Indicators:"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:325
+#: Miradi/source/org/miradi/main/MainWindow.java:337
 msgid "Information"
 msgstr ""
 
@@ -3998,7 +4056,7 @@ msgstr ""
 msgid "Largest"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:104
 msgid "Last Modified"
 msgstr ""
 
@@ -4333,11 +4391,11 @@ msgstr ""
 msgid "Medium (Default)"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:234
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:232
 msgid "MenuBar|Actions"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:164
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:162
 msgid "MenuBar|Edit"
 msgstr ""
 
@@ -4345,15 +4403,15 @@ msgstr ""
 msgid "MenuBar|File"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:510
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:511
 msgid "MenuBar|Help"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:492
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:493
 msgid "MenuBar|Step-by-Step"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:424
 msgid "MenuBar|View"
 msgstr ""
 
@@ -4381,20 +4439,20 @@ msgstr ""
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:133
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:131
 msgid "Menu|Export Current Page as..."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:112
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:110
 msgid "Menu|Export Current Project as..."
 msgstr ""
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:414
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:412
 msgid "Menu|Group Box"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:146
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:144
 msgid "Menu|Import"
 msgstr ""
 
@@ -4468,7 +4526,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:614
+#: Miradi/source/org/miradi/main/MainWindow.java:631
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -4954,7 +5012,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:89
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:104
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
 msgid "Project"
 msgstr ""
@@ -4963,7 +5021,7 @@ msgstr ""
 msgid "Project Advisor"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:612
+#: Miradi/source/org/miradi/main/MainWindow.java:629
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -4992,7 +5050,7 @@ msgstr ""
 msgid "Project Resource Filter Editor"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:769
+#: Miradi/source/org/miradi/main/MainWindow.java:786
 msgid "Project Resource Filter Is On"
 msgstr ""
 
@@ -5078,6 +5136,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/CurrencyTypeQuestion.java:44
 msgid "Rand (South Africa)"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:101
+msgid "Rank Direct Threats:"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpThreatMatrixOverviewStep.java:35
@@ -5310,6 +5372,10 @@ msgid ""
 "relationship to the originals."
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:66
+msgid "Select Conservation Targets:"
+msgstr ""
+
 #: Miradi/source/org/miradi/utils/LanguagePackFileChooser.java:55
 msgid "Select Language Pack to Install"
 msgstr ""
@@ -5531,7 +5597,7 @@ msgstr ""
 msgid "Standard Reports"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:803
+#: Miradi/source/org/miradi/main/MainWindow.java:820
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -6636,6 +6702,10 @@ msgstr ""
 msgid "Team Member"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:50
+msgid "Team Members:"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:82
 msgid "Text Box"
 msgstr ""
@@ -6660,18 +6730,18 @@ msgstr ""
 msgid "That language pack is already installed"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:561
+#: Miradi/source/org/miradi/main/MainWindow.java:578
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:565
+#: Miradi/source/org/miradi/main/MainWindow.java:582
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:557
+#: Miradi/source/org/miradi/main/MainWindow.java:574
 msgid "That project is in use by another copy of this application"
 msgstr ""
 
@@ -6746,7 +6816,7 @@ msgid ""
 "is in a newer data format. Please upgrade to the latest version of Miradi."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:603
+#: Miradi/source/org/miradi/main/MainWindow.java:620
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -7124,7 +7194,7 @@ msgid ""
 "application:\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1172
+#: Miradi/source/org/miradi/main/MainWindow.java:1189
 msgid "Unable to launch external web browser"
 msgstr ""
 
@@ -7143,7 +7213,7 @@ msgid ""
 "application:\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:960
+#: Miradi/source/org/miradi/main/MainWindow.java:977
 msgid "Unable to save preferences"
 msgstr ""
 
@@ -7191,7 +7261,7 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:552
+#: Miradi/source/org/miradi/main/MainWindow.java:569
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -7206,7 +7276,7 @@ msgstr ""
 msgid "Unknown error displaying diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:570
+#: Miradi/source/org/miradi/main/MainWindow.java:587
 msgid "Unknown error prevented opening that project"
 msgstr ""
 
@@ -7550,7 +7620,7 @@ msgstr ""
 msgid "[New Results Chain]"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:962
+#: Miradi/source/org/miradi/project/Project.java:964
 msgid "[No Project]"
 msgstr ""
 
