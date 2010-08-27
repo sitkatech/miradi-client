@@ -301,7 +301,7 @@ public class TestDiagramPaster extends EAMTestCase
 		TransferableMiradiList transferableList = new TransferableMiradiList(getProject(), diagramObjectRef);
 		transferableList.storeData(dataCells);
 		
-		DiagramPaster paster = new DiagramCopyPaster(null, projectToPasteInto.getDiagramModel(), transferableList);
+		DiagramPaster paster = new DiagramCopyPaster(null, projectToPasteInto.getTestingDiagramModel(), transferableList);
 		paster.pasteFactorsAndLinks(new Point(0, 0));
 		
 		return paster;
@@ -309,7 +309,7 @@ public class TestDiagramPaster extends EAMTestCase
 	
 	private DiagramModel getDiagramModel()
 	{
-		return getProject().getDiagramModel();
+		return getProject().getTestingDiagramModel();
 	}
 
 	private ProjectForTesting getProject()

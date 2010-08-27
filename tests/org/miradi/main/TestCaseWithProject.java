@@ -50,7 +50,7 @@ public class TestCaseWithProject extends EAMTestCase
 	
 	public DiagramModel getDiagramModel()
 	{
-		return getProject().getDiagramModel();
+		return getProject().getTestingDiagramModel();
 	}
 	
 	public ObjectManager getObjectManager()

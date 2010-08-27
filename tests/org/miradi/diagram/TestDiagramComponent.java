@@ -45,8 +45,8 @@ public class TestDiagramComponent extends TestCaseWithProject
 	
 	private FactorCell createNode(int nodeType) throws Exception
 	{
-		DiagramModel model = getProject().getDiagramModel();
-		FactorCommandHelper commandHelper = new FactorCommandHelper(getProject(), getProject().getDiagramModel());
+		DiagramModel model = getProject().getTestingDiagramModel();
+		FactorCommandHelper commandHelper = new FactorCommandHelper(getProject(), getProject().getTestingDiagramModel());
 		CommandCreateObject createCommand = commandHelper.createFactorAndDiagramFactor(nodeType);
 		ORef diagramFactorRef = createCommand.getObjectRef();
 		FactorCell factorCell = model.getFactorCellByRef(diagramFactorRef);
@@ -57,8 +57,8 @@ public class TestDiagramComponent extends TestCaseWithProject
 	public void testSelectAll() throws Exception
 	{
 		EAM.setMainWindow(new MainWindow(getProject()));
-		DiagramComponent diagramComponent = new DiagramComponent(EAM.getMainWindow(), getProject().getDiagramModel());
-		diagramComponent.setGraphLayoutCache(getProject().getDiagramModel().getGraphLayoutCache());
+		DiagramComponent diagramComponent = new DiagramComponent(EAM.getMainWindow(), getProject().getTestingDiagramModel());
+		diagramComponent.setGraphLayoutCache(getProject().getTestingDiagramModel().getGraphLayoutCache());
 		
 		DiagramCauseCell hiddenNode = (DiagramCauseCell) createNode(ObjectType.CAUSE);
 		ORef hiddenRef = hiddenNode.getWrappedFactorRef();
@@ -72,8 +72,8 @@ public class TestDiagramComponent extends TestCaseWithProject
 		FactorLink cmLinkage =	FactorLink.find(getProject(), linkRef);
 		
 		LinkCreator linkCreator = new LinkCreator(getProject());
-		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getProject().getDiagramModel(), hiddenNode.getDiagramFactor(), visibleNode.getDiagramFactor());
-		DiagramLink diagramLink = getProject().getDiagramModel().getDiagramLinkByWrappedRef(factorLinkRef);
+		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getProject().getTestingDiagramModel(), hiddenNode.getDiagramFactor(), visibleNode.getDiagramFactor());
+		DiagramLink diagramLink = getProject().getTestingDiagramModel().getDiagramLinkByWrappedRef(factorLinkRef);
 		
 		GraphLayoutCache graphLayoutCache = diagramComponent.getGraphLayoutCache();
 		graphLayoutCache.setVisible(cmLinkage, false);

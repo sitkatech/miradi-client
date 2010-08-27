@@ -99,7 +99,7 @@ public class TestTransferableEamList extends EAMTestCase
 
 	public void testGetTransfeData() throws Exception
 	{
-		DiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getTestingDiagramModel();
 		
 		Point node1Location = new Point(1,2);
 		FactorCommandHelper commandHelper = new FactorCommandHelper(project, model);
@@ -123,8 +123,8 @@ public class TestTransferableEamList extends EAMTestCase
 		project.tagDiagramFactor(diagramFactor1.getWrappedORef());
 		
 		LinkCreator linkCreator = new LinkCreator(project);
-		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
-		DiagramLink diagramLink = project.getDiagramModel().getDiagramLinkByWrappedRef(factorLinkRef);
+		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getTestingDiagramModel(), diagramFactor1, diagramFactor2);
+		DiagramLink diagramLink = project.getTestingDiagramModel().getDiagramLinkByWrappedRef(factorLinkRef);
 		
 		assertEquals("wrong threat stress ratings count?", 1, project.getThreatStressRatingPool().size());
 		
