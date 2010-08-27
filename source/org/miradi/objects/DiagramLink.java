@@ -23,11 +23,14 @@ import java.awt.Color;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import org.miradi.commands.Command;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.objectdata.BaseIdData;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.PointListData;
@@ -363,6 +366,12 @@ public class DiagramLink extends BaseObject
 		return (groupBoxLinks.size() > 0);
 	}
 	
+	public static Command[] createCommandsToEnableBidirectionalFlag(DiagramLink diagramLink)
+	{
+		CommandSetObjectData command = new CommandSetObjectData(diagramLink.getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
+		return new Command[] {command};
+	}
+
 	public static boolean isTo(int direction)
 	{
 		return direction == TO;

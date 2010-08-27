@@ -23,7 +23,6 @@ import java.text.ParseException;
 import java.util.HashSet;
 import java.util.Vector;
 
-import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramModel;
@@ -31,7 +30,6 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
@@ -43,7 +41,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
@@ -267,15 +264,9 @@ public class LinkCreator
 
 	private void enableBidirectional(DiagramLink diagramLink) throws CommandFailedException
 	{
-		project.executeCommandsWithoutTransaction(createCommandsToEnableBidirectionalFlag(diagramLink));
+		project.executeCommandsWithoutTransaction(DiagramLink.createCommandsToEnableBidirectionalFlag(diagramLink));
 	}
 
-	public static Command[] createCommandsToEnableBidirectionalFlag(DiagramLink diagramLink)
-	{
-		CommandSetObjectData command = new CommandSetObjectData(diagramLink.getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
-		return new Command[] {command};
-	}
-	
 	public ORef createFactorLink(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
 		ORef fromFactorRef = fromDiagramFactor.getWrappedORef();
