@@ -481,23 +481,10 @@ public class LinkCreator
 	
 	private void enableBidirectionality(ORefList diagramLinkRefs) throws Exception
 	{
-		ORefList factorLinkRefs = convertToFactorLinks(diagramLinkRefs);
-		for (int index = 0; index < factorLinkRefs.size(); ++index)
-		{
-			enableBidirectional(factorLinkRefs.get(index));
-		}
-	}
-
-	private ORefList convertToFactorLinks(ORefList diagramLinkRefs)
-	{
-		ORefList factorLinkRefs = new ORefList();
 		for (int index = 0; index < diagramLinkRefs.size(); ++index)
 		{
-			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRefs.get(index));
-			factorLinkRefs.add(diagramLink.getWrappedRef());
+			enableBidirectional(DiagramLink.find(getProject(), diagramLinkRefs.get(index)));
 		}
-		
-		return factorLinkRefs;
 	}
 
 	public void createFactorLinkAndDiagramLinkVoid(DiagramObject diagramObject, DiagramFactor from, DiagramFactor to) throws Exception
