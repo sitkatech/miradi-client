@@ -83,19 +83,5 @@ public class DiagramLinkPool extends EAMNormalObjectPool
 				return diagramLink;
 		}
 		return null;
-	}	
-	
-	public Vector<DiagramLink> getThreatLinks()
-	{
-		Vector<DiagramLink> threatLinks = new Vector<DiagramLink>();
-		Vector<BaseObject> diagramLinks = getAllObjects();
-		for(BaseObject diagramLink : diagramLinks)
-		{
-			DiagramLink castedDiagramLink = (DiagramLink) diagramLink;
-			if (castedDiagramLink.isThreatDiagramLink())
-				threatLinks.add(castedDiagramLink);
-		}
-		
-		return threatLinks;
-	}
+	}		
 }

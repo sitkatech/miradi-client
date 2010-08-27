@@ -20,12 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
+import java.util.HashSet;
 import java.util.Vector;
 
+import org.miradi.diagram.ThreatTargetChainWalker;
+import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.ThreatStressPair;
+import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ViabilityModeQuestion;
@@ -104,15 +109,36 @@ public class Dashboard extends BaseObject
 		return super.getPseudoData(fieldTag);
 	}
 	
-	private String getThreatTargetLinkWithRatingCount()
-	{
-		return "0";
-	}
-
 	private String getThreatTargetLinkCount()
 	{
-		int count = getProject().getDiagramFactorLinkPool().getThreatLinks().size();
-		return Integer.toString(count);
+		if (getProject().isStressBaseMode())
+		{
+			ThreatStressRatingEnsurer ensurer = new ThreatStressRatingEnsurer(getProject());
+			HashSet<ThreatStressPair> threatStressPairs = ensurer.createThreatStressPairs();
+			return Integer.toString(threatStressPairs.size());
+		}
+		
+		return getSimpleThreatTargetLinkCount();
+	}
+	
+	private String getSimpleThreatTargetLinkCount()
+	{
+		Vector<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
+		ThreatTargetChainWalker chain = new ThreatTargetChainWalker(getProject());
+		int threatTargetCount = 0;
+		for(Target target : targets)
+		{
+			ORefSet upstreamThreats = chain.getUpstreamThreatRefsFromTarget(target);
+			threatTargetCount =+ upstreamThreats.size();		
+		}
+		
+		return Integer.toString(threatTargetCount);
+	}
+	
+	private String getThreatTargetLinkWithRatingCount()
+	{
+		//FIXME urgent -dashboard, complete this method
+		return "INCOMPLETE";
 	}
 
 	private String getThreatWithTaxonomyCount()
