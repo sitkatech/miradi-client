@@ -394,14 +394,6 @@ public class LinkCreator
 		}
 	}
 	
-	public void enableBidirectionalityForFactorLinks(ORefList factorLinkRefs) throws Exception
-	{
-		for (int index = 0; index < factorLinkRefs.size(); ++index)
-		{
-			enableBidirectional(factorLinkRefs.get(index));		
-		}
-	}
-
 	private boolean anyOppositeLinks(ORefList createdDiagramLinkRefs, ORefList fromDiagramFactorRefs, ORefList toDiagramFactorRefs)
 	{
 		for (int i = 0; i < createdDiagramLinkRefs.size(); ++i)
