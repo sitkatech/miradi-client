@@ -22,9 +22,11 @@ package org.miradi.network;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.channels.OverlappingFileLockException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.Vector;
 
 import org.martus.util.DirectoryLock;
@@ -53,6 +55,15 @@ public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 	public boolean isLocalFileSystem()
 	{
 		return true;
+	}
+	
+	public Set<String> getListOfProjectsIn(String directory)
+	{
+		File directoryFile = new File(dataDirectory, directory);
+		String[] projectNames = directoryFile.list();
+		if(projectNames == null)
+			projectNames = new String[0];
+		return new HashSet<String>(Arrays.asList(projectNames));
 	}
 
 	public void createProject(String projectName) throws Exception

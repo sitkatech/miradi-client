@@ -32,6 +32,7 @@ import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.DefaultHyperlinkHandler;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.wizard.noproject.NoProjectWizardStep;
@@ -66,7 +67,10 @@ public class TreeBasedProjectList extends JPanel
 		OneRowPanel instructionsBar = new OneRowPanel();
 		instructionsBar.add(new FlexibleWidthHtmlViewer(mainWindow, instructions));
 		add(instructionsBar, BorderLayout.BEFORE_FIRST_LINE);
-		add(new MiradiScrollPane(table), BorderLayout.CENTER);
+		if(mainWindow.getDatabase().isLocalProject())
+			add(new MiradiScrollPane(table), BorderLayout.CENTER);
+		else
+			add(new MiradiScrollPane(new ProjectList(mainWindow.getDatabase(), new RemoteFilesHyperlinkHandler(mainWindow))));
 		add(buttonBar, BorderLayout.AFTER_LAST_LINE);
 		
 		table.getSelectionModel().addListSelectionListener(new ActionUpdater());
@@ -94,6 +98,26 @@ public class TreeBasedProjectList extends JPanel
 			{
 				action.updateEnabledState();
 			}
+		}
+	}
+	
+	static class RemoteFilesHyperlinkHandler extends DefaultHyperlinkHandler
+	{
+		public RemoteFilesHyperlinkHandler(MainWindow mainWindowToUse)
+		{
+			super(mainWindowToUse);
+		}
+
+		@Override
+		public void linkClicked(String linkDescription)
+		{
+			System.out.println("Link clicked: " + linkDescription);
+			if(linkDescription.startsWith(NoProjectWizardStep.OPEN_PREFIX))
+			{
+				String projectName = linkDescription.substring(NoProjectWizardStep.OPEN_PREFIX.length());
+				getMainWindow().createOrOpenProject(projectName);
+			}
+			super.linkClicked(linkDescription);
 		}
 	}
 
