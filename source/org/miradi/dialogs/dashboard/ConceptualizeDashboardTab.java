@@ -102,7 +102,7 @@ public class ConceptualizeDashboardTab extends ObjectDataInputPanel
 		HashMap<String, String> threatTargetLinksTokenReplacementMap = new HashMap<String, String>();
 		threatTargetLinksTokenReplacementMap.put("%threatTargetLinkCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_COUNT));
 		threatTargetLinksTokenReplacementMap.put("%threatTargetWithRatingCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT));
-		String threatTargetLinkDescription = EAM.substitute(EAM.text("%threatTargetLinkCount of %threatTargetWithRatingCount target/threat links ranked  (In Simple Mode/Stress Based Mode)"), threatTargetLinksTokenReplacementMap);
+		String threatTargetLinkDescription = EAM.substitute(EAM.text("%threatTargetWithRatingCount of %threatTargetLinkCount target/threat links ranked  (In Simple Mode/Stress Based Mode)"), threatTargetLinksTokenReplacementMap);
 		add(new PanelTitleLabel(threatTargetLinkDescription));
 	}
 

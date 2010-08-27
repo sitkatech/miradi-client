@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
-import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.diagram.ThreatTargetChainWalker;
@@ -30,13 +29,9 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.ThreatStressPair;
-import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
+import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.project.threatrating.ThreatRatingFramework;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -137,20 +132,22 @@ public class Dashboard extends BaseObject
 	
 	private String getThreatTargetLinkWithRatingCount() throws Exception
 	{
-		ThreatRatingFramework threatRatingFramework = getProject().getThreatRatingFramework();
-		Vector<Cause> threats = getProject().getCausePool().getDirectThreatsAsVector();
-		int count = 0;
-		for(Cause threat : threats)
+		ThreatTargetVirtualLinkHelper helper = new ThreatTargetVirtualLinkHelper(getProject());
+		Vector<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
+		ThreatTargetChainWalker chain = new ThreatTargetChainWalker(getProject());
+		int threatTargetWithRatingCount = 0;
+		for(Target target : targets)
 		{
-			ChoiceItem ratingChoice = threatRatingFramework.getThreatThreatRatingValue(threat.getRef());
-			if (ratingChoice == null)
-				continue;
-			
-			if (ratingChoice.getCode() != ThreatRatingQuestion.UNSPECIFIED_CODE)
-				++count;
+			ORefSet upstreamThreats = chain.getUpstreamThreatRefsFromTarget(target);
+			for(ORef threatRef : upstreamThreats)
+			{
+				int ratingValue = helper.calculateThreatRatingBundleValue(threatRef, target.getRef());
+				if (ratingValue > 0)
+					++threatTargetWithRatingCount;
+			}
 		}
 		
-		return Integer.toString(count);
+		return Integer.toString(threatTargetWithRatingCount);
 	}
 
 	private String getThreatWithTaxonomyCount()
