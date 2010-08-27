@@ -55,8 +55,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		DiagramFactor toDiagramFactor = createModelAndDiagramNodeWithCommands(ObjectType.STRATEGY);
 		toFactorRef = toDiagramFactor.getWrappedORef();
 		LinkCreator linkCreator = new LinkCreator(project);
-		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getTestingDiagramObject(), fromDiagramFactor, toDiagramFactor);
-		DiagramLink diagramLink = project.getTestingDiagramModel().getDiagramLinkByWrappedRef(factorLinkRef);
+		DiagramLink diagramLink = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getTestingDiagramObject(), fromDiagramFactor, toDiagramFactor);
 		diagramLinkRef = diagramLink.getRef();
 	}
 	

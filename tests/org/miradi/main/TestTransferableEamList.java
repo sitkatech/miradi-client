@@ -123,8 +123,7 @@ public class TestTransferableEamList extends EAMTestCase
 		project.tagDiagramFactor(diagramFactor1.getWrappedORef());
 		
 		LinkCreator linkCreator = new LinkCreator(project);
-		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getTestingDiagramObject(), diagramFactor1, diagramFactor2);
-		DiagramLink diagramLink = project.getTestingDiagramModel().getDiagramLinkByWrappedRef(factorLinkRef);
+		DiagramLink diagramLink = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getTestingDiagramObject(), diagramFactor1, diagramFactor2);
 		
 		assertEquals("wrong threat stress ratings count?", 1, project.getThreatStressRatingPool().size());
 		
@@ -183,7 +182,7 @@ public class TestTransferableEamList extends EAMTestCase
 		assertEquals(1, factorLinkDeepCopies.size());
 		EnhancedJsonObject factorLinkJson = new EnhancedJsonObject(factorLinkDeepCopies.get(0));
 		BaseId factorLinkIdFromJson = factorLinkJson.getId(FactorLink.TAG_ID);
-		assertEquals("wrong factor link id?", factorLinkRef.getObjectId(), factorLinkIdFromJson);
+		assertEquals("wrong factor link id?", diagramLink.getWrappedRef().getObjectId(), factorLinkIdFromJson);
 		ORef fromRef = factorLinkJson.getRef(FactorLink.TAG_FROM_REF);
 		assertEquals("wrong factor link from ref?", diagramFactor1.getWrappedORef(), fromRef);
 		ORef toRef = factorLinkJson.getRef(FactorLink.TAG_TO_REF);
