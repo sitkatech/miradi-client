@@ -33,6 +33,7 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
 import org.miradi.questions.DiagramLinkColorQuestion;
+import org.miradi.utils.CommandVector;
 
 public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 {
@@ -111,20 +112,19 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 		for (int index = 0; index < groupBoxReferrers.size(); ++index)
 		{
 			DiagramLink groupBoxLink = DiagramLink.find(getProject(), groupBoxReferrers.get(index));
-			ensureChildrenBidirectionality(groupBoxLink, diagramLink.getWrappedFactorLink().getData(FactorLink.TAG_BIDIRECTIONAL_LINK));
+			ensureChildrenBidirectionality(groupBoxLink, diagramLink.isBidirectional());
 		}
 	}
 
-	private void ensureChildrenBidirectionality(DiagramLink groupBoxLink, String bidirectionalMode) throws CommandFailedException
+	private void ensureChildrenBidirectionality(DiagramLink groupBoxLink, boolean desiredMode) throws CommandFailedException
 	{
 		ORefList diagramLinkChildRefs = groupBoxLink.getGroupedDiagramLinkRefs();
 		for (int index = 0; index < diagramLinkChildRefs.size(); ++index)
 		{
 			DiagramLink childLink = DiagramLink.find(getProject(), diagramLinkChildRefs.get(index));
-			String childLinkBidirectionalMode = childLink.getWrappedFactorLink().getData(FactorLink.TAG_BIDIRECTIONAL_LINK);
-			if (!bidirectionalMode.equals(childLinkBidirectionalMode))
+			if(desiredMode != childLink.isBidirectional())
 			{
-				CommandSetObjectData setBidirectionality = new CommandSetObjectData(childLink.getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, bidirectionalMode);
+				CommandVector setBidirectionality = childLink.createCommandsToSetBidirectionalFlag(desiredMode);
 				getProject().executeAsSideEffect(setBidirectionality);
 			}
 		}
