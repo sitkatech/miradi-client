@@ -23,11 +23,13 @@ import java.awt.Color;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.objectdata.BaseIdData;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.PointListData;
@@ -41,6 +43,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramLinkColorQuestion;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
 
@@ -363,6 +366,19 @@ public class DiagramLink extends BaseObject
 		return (groupBoxLinks.size() > 0);
 	}
 	
+	public CommandVector createCommandsToEnableBidirectionalFlag()
+	{
+		return createCommandsToSetBidirectionalFlag(true);
+	}
+	
+	public CommandVector createCommandsToSetBidirectionalFlag(boolean shouldBeBidirectional)
+	{
+		CommandVector commands = new CommandVector();
+		String newBidirectionalValue = BooleanData.toString(shouldBeBidirectional);
+		commands.add(new CommandSetObjectData(getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, newBidirectionalValue));
+		return commands;
+	}
+
 	public static boolean isTo(int direction)
 	{
 		return direction == TO;

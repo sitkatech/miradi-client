@@ -80,7 +80,7 @@ public class InsertLinkDoer extends ViewDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			linkCreator.createFactorLinkAndDiagramLink(model.getDiagramObject(), from, to);
+			linkCreator.createFactorLinkAndDiagramLinkVoid(model.getDiagramObject(), from, to);
 		}
 		catch (Exception e)
 		{

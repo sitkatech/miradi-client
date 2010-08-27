@@ -44,7 +44,7 @@ public class TestDiagramAddFactorLink extends EAMTestCase
 	public void testLinkNodes() throws Exception
 	{
 		ProjectForTesting project = new ProjectForTesting(getName());
-		DiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getTestingDiagramModel();
 
 		FactorCell intervention = project.createFactorCell(ObjectType.STRATEGY);
 		FactorCell factor = project.createFactorCell(ObjectType.CAUSE);
@@ -67,7 +67,7 @@ public class TestDiagramAddFactorLink extends EAMTestCase
 		project.executeCommand(addLink);
 
 		DiagramLink linkage = model.getDiagramLinkByRef(diagramLinkRef);
-		LinkCell cell = project.getDiagramModel().findLinkCell(linkage);
+		LinkCell cell = project.getTestingDiagramModel().findLinkCell(linkage);
 
 		assertEquals("not from intervention?", intervention, cell.getFrom());
 		assertEquals("not to target?", factor, cell.getTo());

@@ -50,10 +50,10 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 	
 	public DiagramObject getTestingDiagramObject()
 	{
-		return getDiagramModel().getDiagramObject();
+		return getTestingDiagramModel().getDiagramObject();
 	}
 	
-	public DiagramModel getDiagramModel()
+	public DiagramModel getTestingDiagramModel()
 	{
 		return diagramModel;
 	}
@@ -88,7 +88,7 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 		ConceptualModelDiagramPool diagramContentsPool = (ConceptualModelDiagramPool) getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 		ORefList oRefs = diagramContentsPool.getORefList();
 		ConceptualModelDiagram diagramContentsObject = getDiagramContentsObject(oRefs);
-		getDiagramModel().fillFrom(diagramContentsObject);
+		getTestingDiagramModel().fillFrom(diagramContentsObject);
 	}
 	
 	ConceptualModelDiagram getDiagramContentsObject(ORefList oRefs) throws Exception
@@ -118,7 +118,7 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 		try
 		{
 			CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
-			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(this, getDiagramModel());
+			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(this, getTestingDiagramModel());
 			modelUpdater.commandSetObjectDataWasExecuted(setCommand);
 		}
 		catch(Exception e)

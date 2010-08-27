@@ -56,7 +56,7 @@ public class TestLayerSorter extends TestCaseWithProject
 		
 		getProject().createDiagramFactorAndAddToDiagram(Stress.getObjectType());
 		
-		List<EAMGraphCell> orderedCells = getProject().getDiagramModel().getAllRootCells();	
+		List<EAMGraphCell> orderedCells = getProject().getTestingDiagramModel().getAllRootCells();	
 		Collections.sort(orderedCells, new LayerSorter());
 		assertEquals("wrong cell count?", 8, orderedCells.size());
 		

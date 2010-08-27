@@ -82,7 +82,7 @@ public class TestDiagramObject extends ObjectTestCase
 	
 	public void testGetFilteredWrappedFactors() throws Exception
 	{
-		DiagramObject diagramObject = getProject().getDiagramModel().getDiagramObject();
+		DiagramObject diagramObject = getProject().getTestingDiagramModel().getDiagramObject();
 		assertEquals("diagram was not empty", 0, diagramObject.getAllWrappedFactors().length);
 		getProject().createAndAddFactorToDiagram(Cause.getObjectType());
 		getProject().createAndAddFactorToDiagram(Target.getObjectType());
@@ -102,7 +102,7 @@ public class TestDiagramObject extends ObjectTestCase
 	
 	public void testGetDiagramLinkByWrappedRef() throws Exception
 	{
-		DiagramObject diagramObject = getProject().getDiagramModel().getDiagramObject();
+		DiagramObject diagramObject = getProject().getTestingDiagramModel().getDiagramObject();
 
 		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
@@ -113,7 +113,7 @@ public class TestDiagramObject extends ObjectTestCase
 
 	public void testAreLinkedEitherDirection() throws Exception
 	{
-		DiagramObject diagramObject = getProject().getDiagramModel().getDiagramObject();
+		DiagramObject diagramObject = getProject().getTestingDiagramModel().getDiagramObject();
 
 		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
 		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
@@ -128,7 +128,7 @@ public class TestDiagramObject extends ObjectTestCase
 	
 	public void testGetDiagramLink() throws Exception
 	{
-		DiagramObject diagramObject = getProject().getDiagramModel().getDiagramObject();
+		DiagramObject diagramObject = getProject().getTestingDiagramModel().getDiagramObject();
 
 		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
 		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
@@ -142,7 +142,7 @@ public class TestDiagramObject extends ObjectTestCase
 	
 	public void testGetDiagramLinkFromDiagramFactors() throws Exception
 	{
-		DiagramObject diagramObject = getProject().getDiagramModel().getDiagramObject();
+		DiagramObject diagramObject = getProject().getTestingDiagramModel().getDiagramObject();
 
 		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
 		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());

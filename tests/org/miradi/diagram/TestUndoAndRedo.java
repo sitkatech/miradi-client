@@ -55,8 +55,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		DiagramFactor toDiagramFactor = createModelAndDiagramNodeWithCommands(ObjectType.STRATEGY);
 		toFactorRef = toDiagramFactor.getWrappedORef();
 		LinkCreator linkCreator = new LinkCreator(project);
-		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), fromDiagramFactor, toDiagramFactor);
-		DiagramLink diagramLink = project.getDiagramModel().getDiagramLinkByWrappedRef(factorLinkRef);
+		DiagramLink diagramLink = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getTestingDiagramObject(), fromDiagramFactor, toDiagramFactor);
 		diagramLinkRef = diagramLink.getRef();
 	}
 	
@@ -69,7 +68,7 @@ public class TestUndoAndRedo extends EAMTestCase
 
 	public void testSingleUndo() throws Exception
 	{
-		DiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getTestingDiagramModel();
 		assertTrue("no link?", model.areDiagramFactorsLinked(model.getDiagramFactor(fromFactorRef).getRef(), model.getDiagramFactor(toFactorRef).getRef()));
 		
 		// undo add linkage to diagram
@@ -83,7 +82,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	
 	public void testMultipleUndo() throws Exception
 	{
-		DiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getTestingDiagramModel();
 		
 		//undo create diagram lingate
 		project.undo();
@@ -199,13 +198,13 @@ public class TestUndoAndRedo extends EAMTestCase
 	
 	private void verifyFactorCellPresent(ORef diagramFactorRef) throws Exception
 	{
-		DiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getTestingDiagramModel();
 		assertNotNull("Node not present?", model.getFactorCellByRef(diagramFactorRef));
 	}
 	
 	private void verifyFactorCellNotPresent(ORef diagramFactorRef)
 	{
-		DiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getTestingDiagramModel();
 		
 		EAM.setLogToString();
 		try
@@ -221,7 +220,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	
 	private void verifyNodeNotPresent(ORef factorRef)
 	{
-		DiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getTestingDiagramModel();
 		
 		EAM.setLogToString();
 		assertNull("Found the deleted factor?", model.getFactorCellByWrappedRef(factorRef));
@@ -230,7 +229,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	
 	private void verifyLinkageNotPresent(ORef diagramLinkRefToUse)
 	{
-		DiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getTestingDiagramModel();
 		
 		EAM.setLogToString();
 		try

@@ -90,7 +90,7 @@ public class TestChainWalker extends EAMTestCase
 		FactorSet downstreamOfThreat = walker.buildNormalChainAndGetFactors(threat);
 		assertEquals("Target not downstream of threat?", 2, downstreamOfThreat.size());
 		
-		DiagramObject diagramObject = getProject().getDiagramModel().getDiagramObject();
+		DiagramObject diagramObject = getProject().getTestingDiagramModel().getDiagramObject();
 		diagramObject.setData(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, "");
 		FactorSet nothingUpstream = walker.buildNormalChainAndGetFactors(target);
 		assertEquals("Didn't reset upstream?", 1, nothingUpstream.size());
