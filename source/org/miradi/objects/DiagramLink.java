@@ -368,7 +368,13 @@ public class DiagramLink extends BaseObject
 	
 	public Command[] createCommandsToEnableBidirectionalFlag()
 	{
-		CommandSetObjectData command = new CommandSetObjectData(getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
+		return createCommandsToSetBidirectionalFlag(true);
+	}
+	
+	public Command[] createCommandsToSetBidirectionalFlag(boolean shouldBeBidirectional)
+	{
+		String newBidirectionalValue = BooleanData.toString(shouldBeBidirectional);
+		CommandSetObjectData command = new CommandSetObjectData(getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, newBidirectionalValue);
 		return new Command[] {command};
 	}
 
