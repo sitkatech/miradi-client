@@ -264,7 +264,7 @@ public class LinkCreator
 
 	private void enableBidirectional(DiagramLink diagramLink) throws CommandFailedException
 	{
-		project.executeCommandsWithoutTransaction(DiagramLink.createCommandsToEnableBidirectionalFlag(diagramLink));
+		project.executeCommandsWithoutTransaction(diagramLink.createCommandsToEnableBidirectionalFlag());
 	}
 
 	public ORef createFactorLink(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
