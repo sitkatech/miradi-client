@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-27 11:29-0500\n"
+"POT-Creation-Date: 2010-08-27 12:21-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -157,6 +157,7 @@ msgid "(Translation: %code %date)"
 msgstr "(Traducción: %code %date)"
 
 #: Miradi/source/org/miradi/objects/DiagramFactor.java:238
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectList.java:67
 msgid "(Unknown)"
 msgstr "(Desconocido)"
 
@@ -377,7 +378,7 @@ msgstr "7B. Compartir lo que aprende"
 msgid "7C. Create a Learning Environment"
 msgstr "7C. Crear un entorno de aprendizaje"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1205
+#: Miradi/source/org/miradi/main/MainWindow.java:1199
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -506,7 +507,7 @@ msgstr ""
 "diálogo que aparece y haga clic en <strong>importar</strong>. "
 
 # buscar = browse as well as find.
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:65
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:66
 msgid ""
 "<div class='WizardText'>To <strong>continue work</strong> on an existing "
 "project, or <strong>browse an example</strong>, choose a project below:"
@@ -3326,7 +3327,7 @@ msgstr "Estimar costos para actividades y monitoreo"
 msgid "Euro"
 msgstr "Euro "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:788
+#: Miradi/source/org/miradi/main/MainWindow.java:782
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -3964,7 +3965,7 @@ msgstr "Indicadores solamente"
 msgid "Indicators:"
 msgstr "Indicadores:"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:337
+#: Miradi/source/org/miradi/main/MainWindow.java:331
 msgid "Information"
 msgstr "Información"
 
@@ -4835,7 +4836,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:631
+#: Miradi/source/org/miradi/main/MainWindow.java:625
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5356,7 +5357,7 @@ msgstr "Proyecto"
 msgid "Project Advisor"
 msgstr "Asesor del proyecto "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:629
+#: Miradi/source/org/miradi/main/MainWindow.java:623
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -5385,7 +5386,7 @@ msgstr "Recurso del proyecto"
 msgid "Project Resource Filter Editor"
 msgstr "Editor del filtro de recursos del proyecto"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:786
+#: Miradi/source/org/miradi/main/MainWindow.java:780
 msgid "Project Resource Filter Is On"
 msgstr "El filtro de recursos del proyecto está activado."
 
@@ -5975,7 +5976,7 @@ msgstr "Parte interesada "
 msgid "Standard Reports"
 msgstr "Informes estándar"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:820
+#: Miradi/source/org/miradi/main/MainWindow.java:814
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -7157,7 +7158,7 @@ msgstr "Dicho paquete de idiomas ya existe. ¿Desea reemplazarlo? "
 msgid "That language pack is already installed"
 msgstr "Dicho paquete de idiomas ya se encuentra instalado."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:578
+#: Miradi/source/org/miradi/main/MainWindow.java:572
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
@@ -7165,13 +7166,13 @@ msgstr ""
 "Ese proyecto no puede abrirse porque se creó con una versión más nueva de "
 "esta aplicación."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:582
+#: Miradi/source/org/miradi/main/MainWindow.java:576
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 "Ese proyecto no puede abrirse hasta que se migre al formato de datos actual."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:574
+#: Miradi/source/org/miradi/main/MainWindow.java:568
 msgid "That project is in use by another copy of this application"
 msgstr "Otra copia de esta aplicación está usando ese proyecto."
 
@@ -7265,7 +7266,7 @@ msgid ""
 "is in a newer data format. Please upgrade to the latest version of Miradi."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:620
+#: Miradi/source/org/miradi/main/MainWindow.java:614
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -7662,7 +7663,7 @@ msgstr ""
 "No se puede eliminar el nombre de este proyecto porque otra copia de esta "
 "aplicación lo está usando:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1189
+#: Miradi/source/org/miradi/main/MainWindow.java:1183
 msgid "Unable to launch external web browser"
 msgstr "No se pudo iniciar el navegador web externo."
 
@@ -7683,7 +7684,7 @@ msgstr ""
 "No se puede cambiar el nombre de este proyecto porque otra copia de esta "
 "aplicación lo está usando:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:977
+#: Miradi/source/org/miradi/main/MainWindow.java:971
 msgid "Unable to save preferences"
 msgstr "No se pudieron grabar las preferencias."
 
@@ -7728,13 +7729,13 @@ msgstr "UniqueModelIdentifier="
 msgid "University"
 msgstr "Universidad "
 
-#: Miradi/source/org/miradi/database/ProjectServer.java:442
+#: Miradi/source/org/miradi/database/ProjectServer.java:448
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:161
 #: Miradi/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:37
 msgid "Unknown"
 msgstr "Desconocido "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:569
+#: Miradi/source/org/miradi/main/MainWindow.java:563
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -7752,7 +7753,7 @@ msgstr "Código desconocido:"
 msgid "Unknown error displaying diagram"
 msgstr "Error desconocido al mostrar el diagrama"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:587
+#: Miradi/source/org/miradi/main/MainWindow.java:581
 msgid "Unknown error prevented opening that project"
 msgstr "Un error desconocido impidió que se abriera ese proyecto."
 
