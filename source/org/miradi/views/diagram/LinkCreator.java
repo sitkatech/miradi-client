@@ -238,7 +238,7 @@ public class LinkCreator
 		return diagramFactor.getSelfAndChildren();
 	}
 
-	public ORef createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
+	public DiagramLink createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
 		Factor fromFactor = Factor.findFactor(getProject(), fromDiagramFactor.getWrappedORef());
 		Factor toFactor = Factor.findFactor(getProject(), toDiagramFactor.getWrappedORef());
@@ -250,7 +250,7 @@ public class LinkCreator
 		ORef diagramLinkRef = createDiagramLink(diagramObject, createDiagramFactorLinkParameter(fromDiagramFactor.getRef(), toDiagramFactor.getRef(), factorLinkRef));
 		ensureLinkGoesOurWay(DiagramLink.find(getProject(), diagramLinkRef), fromDiagramFactor);
 
-		return factorLinkRef; 
+		return DiagramLink.find(getProject(), diagramLinkRef); 
 	}
 
 	private void ensureLinkGoesOurWay(DiagramLink diagramLink, DiagramFactor fromDiagramFactor) throws CommandFailedException
@@ -364,8 +364,7 @@ public class LinkCreator
 					continue;
 				}
 				
-				ORef factorLinkRef = createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
-				DiagramLink diagramLink = diagramObject.getDiagramLinkByWrappedRef(factorLinkRef);
+				DiagramLink diagramLink = createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
 				allNonGroupBoxDiagramLinkRefs.add(diagramLink.getRef());
 			}
 		}
@@ -509,8 +508,8 @@ public class LinkCreator
 	{
 		if (!from.isGroupBoxFactor() && !to.isGroupBoxFactor())
 		{
-			ORef factorLinkRef = createFactorLinkAndAddToDiagramUsingCommands(diagramObject, from, to);
-			return new ORefList(factorLinkRef);
+			DiagramLink created = createFactorLinkAndAddToDiagramUsingCommands(diagramObject, from, to);
+			return new ORefList(created.getWrappedRef());
 		}
 		
 		ORefList groupBoxChildrenDiagramFactorLinkRefs = createGroupBoxChildrenDiagramLinks(diagramObject, from, to);

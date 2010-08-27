@@ -419,8 +419,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		populateCause(threat);
 		
 		LinkCreator creator = new LinkCreator(this);
-		ORef directThreatLinkRef = creator.createFactorLinkAndAddToDiagramUsingCommands(getTestingDiagramObject(), threatDiagramFactor, targetDiagramFactor);
-		FactorLink directThreatLink = FactorLink.find(this, directThreatLinkRef);
+		DiagramLink created = creator.createFactorLinkAndAddToDiagramUsingCommands(getTestingDiagramObject(), threatDiagramFactor, targetDiagramFactor);
+		FactorLink directThreatLink = created.getWrappedFactorLink();
 
 		return directThreatLink;
 	}
