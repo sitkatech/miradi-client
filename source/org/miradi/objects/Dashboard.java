@@ -123,18 +123,6 @@ public class Dashboard extends BaseObject
 	
 	private String getThreatTargetLinkCount()
 	{
-		if (getProject().isStressBaseMode())
-		{
-			ThreatStressRatingEnsurer ensurer = new ThreatStressRatingEnsurer(getProject());
-			HashSet<ThreatStressPair> threatStressPairs = ensurer.createThreatStressPairs();
-			return Integer.toString(threatStressPairs.size());
-		}
-		
-		return getSimpleThreatTargetLinkCount();
-	}
-	
-	private String getSimpleThreatTargetLinkCount()
-	{
 		Vector<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
 		ThreatTargetChainWalker chain = new ThreatTargetChainWalker(getProject());
 		int threatTargetCount = 0;
