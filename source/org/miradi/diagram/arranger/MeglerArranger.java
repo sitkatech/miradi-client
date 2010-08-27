@@ -298,7 +298,7 @@ public class MeglerArranger
 				fromDiagramFactor = toDiagramFactor;
 				toDiagramFactor = temp;
 			}
-			linkCreator.createFactorLinkAndDiagramLink(diagram, fromDiagramFactor, toDiagramFactor);
+			linkCreator.createFactorLinkAndDiagramLinkVoid(diagram, fromDiagramFactor, toDiagramFactor);
 		}
 	}
 
