@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-27 14:46-0500\n"
+"POT-Creation-Date: 2010-08-27 17:17-0500\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2234,16 +2234,16 @@ msgstr ""
 msgid "Calibri"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:114
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:123
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:111
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:120
 msgid "Can't Create Link"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:122
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:119
 msgid "Can't link a group to an item it contains"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:113
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:110
 msgid "Can't link an item to itself"
 msgstr ""
 
@@ -4133,7 +4133,7 @@ msgstr ""
 msgid "Link Direct Threats to Targets"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorLinkPropertiesPanel.java:73
+#: Miradi/source/org/miradi/dialogs/diagram/FactorLinkPropertiesPanel.java:74
 msgid "Link Properties"
 msgstr ""
 
