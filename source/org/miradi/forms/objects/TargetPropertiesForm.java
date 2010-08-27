@@ -23,6 +23,7 @@ import org.miradi.icons.AbstractMiradiIcon;
 import org.miradi.icons.TargetIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.Target;
+import org.miradi.questions.HabitatAssociationQuestion;
 
 public class TargetPropertiesForm extends AbstractTargetPropertiesForm
 {
@@ -48,6 +49,6 @@ public class TargetPropertiesForm extends AbstractTargetPropertiesForm
 	protected void addCustomFields()
 	{
 		addLabelAndField(Target.getObjectType(), Target.TAG_SPECIES_LATIN_NAME);
-		addLabelAndField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION);
+		addCodeListField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, new HabitatAssociationQuestion());
 	}
 }
