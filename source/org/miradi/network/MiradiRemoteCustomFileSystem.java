@@ -55,7 +55,12 @@ public class MiradiRemoteCustomFileSystem extends MiradiFileSystemWithTransactio
 		return serverURL.toString();
 	}
 	
-	public Set<String> getProjectList() throws Exception
+	public Set<String> getListOfProjectsIn(String directory) throws Exception
+	{
+		return getProjectList(directory);
+	}
+	
+	public Set<String> getProjectList(String relativeDirectory) throws Exception
 	{
 		HttpTransaction get = HttpGet.getProjectList(serverURL);
 		if(get.getResultCode() != HTTP_SUCCESS)

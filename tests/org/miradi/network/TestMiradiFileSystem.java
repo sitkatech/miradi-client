@@ -454,13 +454,13 @@ public class TestMiradiFileSystem extends EAMTestCase
 		if(remoteFileSystem.doesProjectDirectoryExist(projectName))
 			remoteFileSystem.deleteProject(projectName);
 		{
-			Set<String> projectNames = remoteFileSystem.getProjectList();
+			Set<String> projectNames = remoteFileSystem.getProjectList("");
 			assertNotContains(projectName, projectNames);
 		}
 		remoteFileSystem.createProject(projectName);
 		try
 		{
-			Set<String> projectNames = remoteFileSystem.getProjectList();
+			Set<String> projectNames = remoteFileSystem.getProjectList("");
 			assertContains(projectName, projectNames);
 		}
 		finally
