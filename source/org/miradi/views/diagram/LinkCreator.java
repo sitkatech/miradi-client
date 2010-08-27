@@ -238,14 +238,6 @@ public class LinkCreator
 		return diagramFactor.getSelfAndChildren();
 	}
 
-	public void createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, ORef fromThreatRef, ORef toTargetRef) throws Exception
-	{
-		DiagramFactor fromDiagramFactor = diagramObject.getDiagramFactor(fromThreatRef);
-		DiagramFactor toDiagramFactor = diagramObject.getDiagramFactor(toTargetRef);
-
-		createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
-	}
-	
 	public ORef createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
 		Factor fromFactor = Factor.findFactor(getProject(), fromDiagramFactor.getWrappedORef());
