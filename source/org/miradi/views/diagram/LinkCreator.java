@@ -29,9 +29,7 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramLinkId;
-import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
@@ -43,7 +41,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
@@ -239,58 +236,37 @@ public class LinkCreator
 		return diagramFactor.getSelfAndChildren();
 	}
 
-	public void createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, ORef fromThreatRef, ORef toTargetRef) throws Exception
-	{
-		DiagramFactor fromDiagramFactor = diagramObject.getDiagramFactor(fromThreatRef);
-		DiagramFactor toDiagramFactor = diagramObject.getDiagramFactor(toTargetRef);
-
-		createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
-	}
-	
-	public ORef createFactorLinkAndAddToDiagramUsingCommands(DiagramModel diagramModel, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
-	{
-		DiagramObject diagramObject = diagramModel.getDiagramObject();
-		return createFactorLinkAndAddToDiagramUsingCommands(diagramObject, diagramFactorFrom, diagramFactorTo);
-	}
-	
-	public ORef createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
+	public DiagramLink createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
 		Factor fromFactor = Factor.findFactor(getProject(), fromDiagramFactor.getWrappedORef());
 		Factor toFactor = Factor.findFactor(getProject(), toDiagramFactor.getWrappedORef());
 		ORef factorLinkRef = project.getFactorLinkPool().getLinkedRef(fromFactor, toFactor);
 		
-		if(!factorLinkRef.isInvalid())
-			ensureLinkGoesOurWay(factorLinkRef, fromFactor.getFactorId());
-		else
+		if(factorLinkRef.isInvalid())
 			factorLinkRef = createFactorLink(fromDiagramFactor, toDiagramFactor);
 
-		createDiagramLink(diagramObject, createDiagramFactorLinkParameter(fromDiagramFactor.getRef(), toDiagramFactor.getRef(), factorLinkRef));
-		return factorLinkRef; 
+		ORef diagramLinkRef = createDiagramLink(diagramObject, createDiagramFactorLinkParameter(fromDiagramFactor.getRef(), toDiagramFactor.getRef(), factorLinkRef));
+		ensureLinkGoesOurWay(DiagramLink.find(getProject(), diagramLinkRef), fromDiagramFactor);
+
+		return DiagramLink.find(getProject(), diagramLinkRef); 
 	}
 
-	private void ensureLinkGoesOurWay(ORef factorLinkRef, FactorId fromFactorId) throws CommandFailedException
+	private void ensureLinkGoesOurWay(DiagramLink diagramLink, DiagramFactor fromDiagramFactor) throws CommandFailedException
 	{
-		FactorLink link = (FactorLink)project.findObject(factorLinkRef);
-		if (link.isBidirectional())
+		if (diagramLink.isBidirectional())
 			return;
 		
-		if(link.getFromFactorRef().getObjectId().equals(fromFactorId))
+		if(diagramLink.getWrappedFactorLink().getFromFactorRef().equals(fromDiagramFactor.getWrappedORef()))
 			return;
 		
-		enableBidirectional(link.getRef());
-	}
-
-	private void enableBidirectional(ORef factorLinkRef) throws CommandFailedException
-	{
-		CommandSetObjectData command = new CommandSetObjectData(factorLinkRef, FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
-		project.executeCommand(command);
+		enableBidirectional(diagramLink);
 	}
 
 	private void enableBidirectional(DiagramLink diagramLink) throws CommandFailedException
 	{
-		enableBidirectional(diagramLink.getWrappedRef());
+		project.executeCommandsWithoutTransaction(diagramLink.createCommandsToEnableBidirectionalFlag());
 	}
-	
+
 	public ORef createFactorLink(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
 		ORef fromFactorRef = fromDiagramFactor.getWrappedORef();
@@ -380,8 +356,7 @@ public class LinkCreator
 					continue;
 				}
 				
-				ORef factorLinkRef = createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
-				DiagramLink diagramLink = diagramObject.getDiagramLinkByWrappedRef(factorLinkRef);
+				DiagramLink diagramLink = createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
 				allNonGroupBoxDiagramLinkRefs.add(diagramLink.getRef());
 			}
 		}
@@ -411,14 +386,6 @@ public class LinkCreator
 		}
 	}
 	
-	public void enableBidirectionalityForFactorLinks(ORefList factorLinkRefs) throws Exception
-	{
-		for (int index = 0; index < factorLinkRefs.size(); ++index)
-		{
-			enableBidirectional(factorLinkRefs.get(index));		
-		}
-	}
-
 	private boolean anyOppositeLinks(ORefList createdDiagramLinkRefs, ORefList fromDiagramFactorRefs, ORefList toDiagramFactorRefs)
 	{
 		for (int i = 0; i < createdDiagramLinkRefs.size(); ++i)
@@ -487,45 +454,37 @@ public class LinkCreator
 		linkDeletor.deleteDiagramLinkAndOrphandFactorLink(diagramLink);
 	
 
-		ORefList newFactorLinkRefs1 = createFactorLinkAndDiagramLink(diagramModel.getDiagramObject(), fromDiagramFactor, newlyInsertedDiagramFactor);
+		ORefList diagramLinkRefs1 = createFactorLinkAndDiagramLink(diagramModel.getDiagramObject(), fromDiagramFactor, newlyInsertedDiagramFactor);
 		if (isBidirectional)
-			enableBidirectionality(newFactorLinkRefs1);
+			enableBidirectionality(diagramLinkRefs1);
 		
-		ORefList newFactorLinkRefs2 = createFactorLinkAndDiagramLink(diagramModel.getDiagramObject(), newlyInsertedDiagramFactor, toDiagramFactor);
+		ORefList diagramLinkRefs2 = createFactorLinkAndDiagramLink(diagramModel.getDiagramObject(), newlyInsertedDiagramFactor, toDiagramFactor);
 		if (isBidirectional)
-			enableBidirectionality(newFactorLinkRefs2);
+			enableBidirectionality(diagramLinkRefs2);
 	}
 	
-	private void enableBidirectionality(ORefList factorLinkRefs) throws Exception
+	private void enableBidirectionality(ORefList diagramLinkRefs) throws Exception
 	{
-		for (int index = 0; index < factorLinkRefs.size(); ++index)
+		for (int index = 0; index < diagramLinkRefs.size(); ++index)
 		{
-			enableBidirectional(factorLinkRefs.get(index));
+			enableBidirectional(DiagramLink.find(getProject(), diagramLinkRefs.get(index)));
 		}
 	}
 
-	private ORefList convertToFactorLinks(ORefList diagramLinkRefs)
+	public void createFactorLinkAndDiagramLinkVoid(DiagramObject diagramObject, DiagramFactor from, DiagramFactor to) throws Exception
 	{
-		ORefList factorLinkRefs = new ORefList();
-		for (int index = 0; index < diagramLinkRefs.size(); ++index)
-		{
-			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRefs.get(index));
-			factorLinkRefs.add(diagramLink.getWrappedRef());
-		}
-		
-		return factorLinkRefs;
+		createFactorLinkAndDiagramLink(diagramObject, from, to);
 	}
 	
-	public ORefList createFactorLinkAndDiagramLink(DiagramObject diagramObject, DiagramFactor from, DiagramFactor to) throws Exception
+	private ORefList createFactorLinkAndDiagramLink(DiagramObject diagramObject, DiagramFactor from, DiagramFactor to) throws Exception
 	{
 		if (!from.isGroupBoxFactor() && !to.isGroupBoxFactor())
 		{
-			ORef factorLinkRef = createFactorLinkAndAddToDiagramUsingCommands(diagramObject, from, to);
-			return new ORefList(factorLinkRef);
+			DiagramLink created = createFactorLinkAndAddToDiagramUsingCommands(diagramObject, from, to);
+			return new ORefList(created.getRef());
 		}
 		
-		ORefList groupBoxChildrenDiagramFactorRefs = createGroupBoxChildrenDiagramLinks(diagramObject, from, to);
-		return convertToFactorLinks(groupBoxChildrenDiagramFactorRefs);
+		return createGroupBoxChildrenDiagramLinks(diagramObject, from, to);
 	}
 	
 	public void createAllPossibleGroupLinks(DiagramObject diagramObject, DiagramFactor groupBoxDiagramFactor) throws Exception

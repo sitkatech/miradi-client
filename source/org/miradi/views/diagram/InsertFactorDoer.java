@@ -313,7 +313,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 			if (getDiagramModel().areLinked(newlyInserted.getWrappedORef(), to.getWrappedORef()))
 				continue;
 			
-			linkCreator.createFactorLinkAndDiagramLink(getDiagramModel().getDiagramObject(), newlyInserted, to);
+			linkCreator.createFactorLinkAndDiagramLinkVoid(getDiagramModel().getDiagramObject(), newlyInserted, to);
 		}
 	}
 

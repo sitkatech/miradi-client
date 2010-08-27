@@ -51,7 +51,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		super.setUp();
 		project = new ProjectForTesting(getName());
-		model = project.getDiagramModel();
+		model = project.getTestingDiagramModel();
 		idAssigner = new IdAssigner();
 	}
 
@@ -399,8 +399,7 @@ public class TestDiagramModel extends EAMTestCase
 	private DiagramLink createLinkage(FactorLinkId id, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
 		LinkCreator linkCreator = new LinkCreator(project);
-		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), fromDiagramFactor, toDiagramFactor);
-		DiagramLink diagramLink = project.getDiagramModel().getDiagramLinkByWrappedRef(factorLinkRef);
+		DiagramLink diagramLink = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getTestingDiagramObject(), fromDiagramFactor, toDiagramFactor);
 		
 		return diagramLink;
 	}

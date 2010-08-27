@@ -239,10 +239,10 @@ public class TestProject extends EAMTestCase
 		DiagramLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedFactorRef(), node2.getWrappedFactorRef());
 		DiagramLink linkage2 = createLinkage(idAssigner.takeNextId(), node1.getWrappedFactorRef(), node3.getWrappedFactorRef());
 		
-		LinkCell cell1 = project.getDiagramModel().findLinkCell(linkage1);
-		LinkCell cell2 = project.getDiagramModel().findLinkCell(linkage2);
+		LinkCell cell1 = project.getTestingDiagramModel().findLinkCell(linkage1);
+		LinkCell cell2 = project.getTestingDiagramModel().findLinkCell(linkage2);
 		EAMGraphCell[] selectedCells = {cell1};
-		DiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getTestingDiagramModel();
 		HashSet<EAMGraphCell> selectedItems = model.getAllSelectedCellsWithRelatedLinkages(selectedCells);
 		assertEquals(1, selectedItems.size());
 		assertContains(cell1, selectedItems);
@@ -268,7 +268,7 @@ public class TestProject extends EAMTestCase
 		
 		DiagramLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedFactorRef(), node2.getWrappedFactorRef());
 		
-		LinkCell cell1 = project.getDiagramModel().findLinkCell(linkage1);
+		LinkCell cell1 = project.getTestingDiagramModel().findLinkCell(linkage1);
 
 		EAMGraphCell[] selectedCells = {cell1};
 		EAMGraphCell[] selectedItems = DiagramPanel.getOnlySelectedFactorCells(selectedCells);
@@ -286,7 +286,7 @@ public class TestProject extends EAMTestCase
 	
 	public void testPasteNodesAndLinksIntoProject() throws Exception
 	{
-		DiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getTestingDiagramModel();
 
 		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
 		DiagramFactor diagramFactor1 = project.createDiagramFactorAndAddToDiagram(ObjectType.STRATEGY);
@@ -305,7 +305,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, model.getFactorLinksSize(diagramFactor1.getRef()));
 		assertEquals(1, model.getFactorLinks(node3).size());
 		
-		new DiagramCopyPaster(null, project.getDiagramModel(), transferableList).pasteFactorsAndLinks(new Point(5,5));
+		new DiagramCopyPaster(null, project.getTestingDiagramModel(), transferableList).pasteFactorsAndLinks(new Point(5,5));
 		DiagramFactorId[] diagramFactorIds = project.getAllDiagramFactorIds();
 		assertEquals(4, diagramFactorIds.length);
 		assertEquals(4, model.getAllDiagramFactorLinks().size());
@@ -316,7 +316,7 @@ public class TestProject extends EAMTestCase
 		
 		//Test when a pasted item has linkages to a previously deleted node
 		model.removeDiagramFactor(diagramFactor1.getRef());
-		new DiagramCopyPaster(null, project.getDiagramModel(), transferableList).pasteFactorsAndLinks(new Point(5,5));
+		new DiagramCopyPaster(null, project.getTestingDiagramModel(), transferableList).pasteFactorsAndLinks(new Point(5,5));
 		assertEquals(2, model.getFactorLinks(node1).size());
 		assertEquals(3, model.getFactorLinks(node3).size());
 	}
@@ -338,7 +338,7 @@ public class TestProject extends EAMTestCase
 		noNodesMoved.add(node1.getDiagramFactorRef());
 	
 		project.executeCommand(new CommandBeginTransaction());
-		new FactorMoveHandler(project, project.getDiagramModel()).factorsWereMovedOrResized(noNodesMoved);
+		new FactorMoveHandler(project, project.getTestingDiagramModel()).factorsWereMovedOrResized(noNodesMoved);
 		project.executeCommand(new CommandEndTransaction());
 		
 		//begin transaction
@@ -370,7 +370,7 @@ public class TestProject extends EAMTestCase
 		diagramFactorRefs.add(node2.getDiagramFactorRef());
 		
 		project.executeCommand(new CommandBeginTransaction());
-		new FactorMoveHandler(project, project.getDiagramModel()).factorsWereMovedOrResized(diagramFactorRefs);
+		new FactorMoveHandler(project, project.getTestingDiagramModel()).factorsWereMovedOrResized(diagramFactorRefs);
 		project.executeCommand(new CommandEndTransaction());
 		
 		project.getLastCommand(); //End Transaction
@@ -414,7 +414,7 @@ public class TestProject extends EAMTestCase
 		diagramFactorRefs.add(node2.getDiagramFactorRef());
 		
 		project.executeCommand(new CommandBeginTransaction());
-		new FactorMoveHandler(project, project.getDiagramModel()).factorsWereMovedOrResized(diagramFactorRefs);
+		new FactorMoveHandler(project, project.getTestingDiagramModel()).factorsWereMovedOrResized(diagramFactorRefs);
 		project.executeCommand(new CommandEndTransaction());
 		
 		project.getLastCommand(); //End Transaction
@@ -491,7 +491,7 @@ public class TestProject extends EAMTestCase
 		diagramFactorRefs.add(nodeNotMovedOrResized.getDiagramFactorRef());
 
 		project.executeCommand(new CommandBeginTransaction());
-		new FactorMoveHandler(project, project.getDiagramModel()).factorsWereMovedOrResized(diagramFactorRefs);
+		new FactorMoveHandler(project, project.getTestingDiagramModel()).factorsWereMovedOrResized(diagramFactorRefs);
 		project.executeCommand(new CommandEndTransaction());
 		
 		project.getLastCommand(); //End Transaction
@@ -521,7 +521,7 @@ public class TestProject extends EAMTestCase
 
 	public void testPasteNodesOnlyIntoProject() throws Exception
 	{
-		DiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getTestingDiagramModel();
 
 		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
 		FactorCell node2 = project.createFactorCell(ObjectType.STRATEGY);
@@ -540,7 +540,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, model.getFactorLinks(node2).size());
 		assertEquals(1, model.getFactorLinks(node3).size());
 		
-		new DiagramCopyPaster(null, project.getDiagramModel(), transferableList).pasteFactors(new Point(5,5));
+		new DiagramCopyPaster(null, project.getTestingDiagramModel(), transferableList).pasteFactors(new Point(5,5));
 		DiagramFactorId[] diagramFactorIds = project.getAllDiagramFactorIds();
 		assertEquals(4, diagramFactorIds.length);
 		assertEquals(2, model.getAllDiagramFactorLinks().size());
@@ -572,7 +572,7 @@ public class TestProject extends EAMTestCase
 		assertEquals("nodes  still in the diagram?", 0, project.getAllDiagramFactorIds().length);
 
 		Point pastePoint = new Point(5,5);
-		DiagramPaster diagramPaster = new DiagramCopyPaster(null, project.getDiagramModel(), transferableList);
+		DiagramPaster diagramPaster = new DiagramCopyPaster(null, project.getTestingDiagramModel(), transferableList);
 		diagramPaster.pasteFactorsAndLinks(pastePoint);
 		DiagramFactor diagramFactors[] = project.getAllDiagramFactors();
 		assertEquals(1, diagramFactors.length);
@@ -637,7 +637,7 @@ public class TestProject extends EAMTestCase
 		CommandSetObjectData addDiagramFactor2 = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId2);
 		project.executeCommand(addDiagramFactor2);
 		assertEquals(4 + existingCalls, database.callsToWriteObject);
-		FactorCell factor = project.getDiagramModel().getFactorCellByWrappedRef(factorRef);
+		FactorCell factor = project.getTestingDiagramModel().getFactorCellByWrappedRef(factorRef);
 		
 		// undo the AddNode
 		project.undo();
@@ -881,8 +881,8 @@ public class TestProject extends EAMTestCase
 	
 	private DiagramLink createLinkage(BaseId id, ORef fromFactorRef, ORef toFactorRef) throws Exception
 	{
-		DiagramFactor fromDiagramFactor = project.getDiagramModel().getFactorCellByWrappedRef(fromFactorRef).getDiagramFactor();
-		DiagramFactor toDiagramFactor = project.getDiagramModel().getFactorCellByWrappedRef(toFactorRef).getDiagramFactor();
+		DiagramFactor fromDiagramFactor = project.getTestingDiagramModel().getFactorCellByWrappedRef(fromFactorRef).getDiagramFactor();
+		DiagramFactor toDiagramFactor = project.getTestingDiagramModel().getFactorCellByWrappedRef(toFactorRef).getDiagramFactor();
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
 		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.FACTOR_LINK, id, parameter);
 		
@@ -893,7 +893,7 @@ public class TestProject extends EAMTestCase
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkRef.getObjectId());
 		project.executeCommand(addLink);
 
-		return project.getDiagramModel().getDiagramLinkByRef(diagramLinkRef);
+		return project.getTestingDiagramModel().getDiagramLinkByRef(diagramLinkRef);
 	}
 
 	public DiagramFactor createNodeAndAddToDiagram(Project projectToUse, DiagramObject diagramObject, int nodeType) throws Exception

@@ -237,7 +237,7 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 		populateBundle(projectToUse.getSimpleThreatRatingFramework(), threat.getWrappedId(), target.getWrappedId(), value);
 	}
 
-	private static ORef createDiagramLink(ProjectForTesting projectToUse, DiagramFactor threat, DiagramFactor target) throws Exception
+	private static DiagramLink createDiagramLink(ProjectForTesting projectToUse, DiagramFactor threat, DiagramFactor target) throws Exception
 	{
 		LinkCreator creator = new LinkCreator(projectToUse);
 		return creator.createFactorLinkAndAddToDiagramUsingCommands(projectToUse.getTestingDiagramObject(), threat, target);
@@ -256,7 +256,8 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 		populateBundle(framework, threatId, targetId, veryHigh);
 		assertEquals("included unlinked bundle in threat value?", none, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("included unlinked bundle in target value?", none, framework.getTargetThreatRatingValue(targetId));
-		ORef factorLinkRef = createDiagramLink(project, threat, target);
+		DiagramLink createdDiagramLink = createDiagramLink(project, threat, target);
+		ORef factorLinkRef = createdDiagramLink.getWrappedRef();
 		
 		assertEquals("linking didn't include value for threat?", high, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("linking didn't include value for target?", high, framework.getTargetThreatRatingValue(targetId));

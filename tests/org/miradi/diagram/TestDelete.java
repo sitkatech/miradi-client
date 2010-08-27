@@ -21,7 +21,6 @@ package org.miradi.diagram;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.EAMTestCase;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -39,14 +38,13 @@ public class TestDelete extends EAMTestCase
 	public void testBasics() throws Exception
 	{
 		ProjectForTesting project = new ProjectForTesting(getName());
-		DiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getTestingDiagramModel();
 		
 		DiagramFactor intervention = project.createAndAddFactorToDiagram(ObjectType.STRATEGY);
 		
 		DiagramFactor cause = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		LinkCreator linkCreator = new LinkCreator(project);
-		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), intervention, cause);
-		DiagramLink diagramLink = model.getDiagramLinkByWrappedRef(factorLinkRef);
+		DiagramLink diagramLink = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getTestingDiagramModel().getDiagramObject(), intervention, cause);
 		
 		assertTrue("link not found?", model.areDiagramFactorsLinked(intervention.getRef(), cause.getRef()));
 

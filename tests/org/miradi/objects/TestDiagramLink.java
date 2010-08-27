@@ -55,7 +55,7 @@ public class TestDiagramLink extends ObjectTestCase
 	{
 		super.setUp();
 		project = new ProjectForTesting(getName());
-		model = project.getDiagramModel();
+		model = project.getTestingDiagramModel();
 
 		ORef strategyRef = project.createObject(ObjectType.STRATEGY);
 		cmIntervention = Factor.findFactor(project, strategyRef);
@@ -84,7 +84,7 @@ public class TestDiagramLink extends ObjectTestCase
 
 	public void testBasics() throws Exception
 	{
-		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project, project.getDiagramModel());
+		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project, project.getTestingDiagramModel());
 		CommandCreateObject createObject1 = factorCommandHelper.createFactorAndDiagramFactor(ObjectType.CAUSE);
 		DiagramFactorId diagramFactorId1 = (DiagramFactorId) createObject1.getCreatedId();
 		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId1);
@@ -94,8 +94,7 @@ public class TestDiagramLink extends ObjectTestCase
 		DiagramFactor diagramFactor2 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId2);
 		
 		LinkCreator linkCreator = new LinkCreator(project);
-		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
-		DiagramLink diagramLink = project.getDiagramModel().getDiagramLinkByWrappedRef(factorLinkRef);
+		DiagramLink diagramLink = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getTestingDiagramObject(), diagramFactor1, diagramFactor2);
 		
 		assertEquals("didn't remember from?", diagramFactor1.getId(), diagramLink.getFromDiagramFactorId());
 		assertEquals("didn't remember to?", diagramFactor2.getId(), diagramLink.getToDiagramFactorId());
@@ -137,7 +136,7 @@ public class TestDiagramLink extends ObjectTestCase
 		assertNotNull("link not in model?", model.getDiagramLinkByRef(diagramLinkRef));
 		
 		ProjectServer server = project.getDatabase();
-		DiagramLink dfl = project.getDiagramModel().getDiagramLinkByRef(diagramLinkRef);
+		DiagramLink dfl = project.getTestingDiagramModel().getDiagramLinkByRef(diagramLinkRef);
 		FactorLink linkage = (FactorLink)server.readObject(project.getObjectManager(), ObjectType.FACTOR_LINK, dfl.getWrappedId());
 		assertEquals("Didn't load from ref?", intervention.getWrappedORef(), linkage.getFromFactorRef());
 		assertEquals("Didn't load to ref?", cause.getWrappedORef(), linkage.getToFactorRef());
@@ -145,7 +144,7 @@ public class TestDiagramLink extends ObjectTestCase
 
 	private static ORef createDiagramFactorLink(ProjectForTesting projectForTesting, ORef strategyRef, ORef factorRef, FactorLinkId modelLinkageId) throws CommandFailedException
 	{
-		DiagramModel diagramModel = projectForTesting.getDiagramModel();
+		DiagramModel diagramModel = projectForTesting.getTestingDiagramModel();
 		FactorCell factorCell = diagramModel.getFactorCellByWrappedRef(strategyRef);
 		DiagramFactorId fromDiagramFactorId = factorCell.getDiagramFactorId();
 		DiagramFactorId toDiagramFactorId = diagramModel.getFactorCellByWrappedRef(factorRef).getDiagramFactorId();
