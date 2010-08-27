@@ -26,6 +26,7 @@ import java.util.Vector;
 import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
@@ -33,6 +34,9 @@ import org.miradi.objecthelpers.ThreatStressPair;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.project.threatrating.ThreatRatingFramework;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -72,41 +76,49 @@ public class Dashboard extends BaseObject
 	{
 		return OBJECT_NAME;
 	}
-	
+
 	@Override
 	public String getPseudoData(String fieldTag)
 	{
-		if (fieldTag.equals(PSEUDO_TEAM_MEMBER_COUNT))
-			return getObjectPoolCount(ProjectResource.getObjectType());
-		
-		if (fieldTag.equals(PSEUDO_PROJECT_SCOPE_WORD_COUNT))
-			return getProjectScopeWordCount();
-		
-		if (fieldTag.equals(PSEUDO_TARGET_COUNT))
-			return getObjectPoolCount(Target.getObjectType());
-		
-		if (fieldTag.equals(PSEUDO_HUMAN_WELFARE_TARGET_COUNT))
-			return getObjectPoolCount(HumanWelfareTarget.getObjectType());
-		
-		if (fieldTag.equals(PSEUDO_TARGET_WITH_KEA_COUNT))
-			return getTargetWithKeaCount();
-		
-		if (fieldTag.equals(PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT))
-			return getTargetWithSimpleViabilityCount();
-		
-		if (fieldTag.equals(PSEUDO_THREAT_COUNT))
-			return getThreatCount();
-		
-		if (fieldTag.equals(PSEUDO_THREAT_WITH_TAXONOMY_COUNT))
-			return getThreatWithTaxonomyCount();
-		
-		if (fieldTag.equals(PSEUDO_THREAT_TARGET_LINK_COUNT))
-			return getThreatTargetLinkCount();
-		
-		if (fieldTag.equals(PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT))
-			return getThreatTargetLinkWithRatingCount();
-		
-		return super.getPseudoData(fieldTag);
+		try
+		{
+			if (fieldTag.equals(PSEUDO_TEAM_MEMBER_COUNT))
+				return getObjectPoolCount(ProjectResource.getObjectType());
+
+			if (fieldTag.equals(PSEUDO_PROJECT_SCOPE_WORD_COUNT))
+				return getProjectScopeWordCount();
+
+			if (fieldTag.equals(PSEUDO_TARGET_COUNT))
+				return getObjectPoolCount(Target.getObjectType());
+
+			if (fieldTag.equals(PSEUDO_HUMAN_WELFARE_TARGET_COUNT))
+				return getObjectPoolCount(HumanWelfareTarget.getObjectType());
+
+			if (fieldTag.equals(PSEUDO_TARGET_WITH_KEA_COUNT))
+				return getTargetWithKeaCount();
+
+			if (fieldTag.equals(PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT))
+				return getTargetWithSimpleViabilityCount();
+
+			if (fieldTag.equals(PSEUDO_THREAT_COUNT))
+				return getThreatCount();
+
+			if (fieldTag.equals(PSEUDO_THREAT_WITH_TAXONOMY_COUNT))
+				return getThreatWithTaxonomyCount();
+
+			if (fieldTag.equals(PSEUDO_THREAT_TARGET_LINK_COUNT))
+				return getThreatTargetLinkCount();
+
+			if (fieldTag.equals(PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT))
+				return getThreatTargetLinkWithRatingCount();
+
+			return super.getPseudoData(fieldTag);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return EAM.text("Error Retrieving Data");
+		}
 	}
 	
 	private String getThreatTargetLinkCount()
@@ -135,10 +147,22 @@ public class Dashboard extends BaseObject
 		return Integer.toString(threatTargetCount);
 	}
 	
-	private String getThreatTargetLinkWithRatingCount()
+	private String getThreatTargetLinkWithRatingCount() throws Exception
 	{
-		//FIXME urgent -dashboard, complete this method
-		return "INCOMPLETE";
+		ThreatRatingFramework threatRatingFramework = getProject().getThreatRatingFramework();
+		Vector<Cause> threats = getProject().getCausePool().getDirectThreatsAsVector();
+		int count = 0;
+		for(Cause threat : threats)
+		{
+			ChoiceItem ratingChoice = threatRatingFramework.getThreatThreatRatingValue(threat.getRef());
+			if (ratingChoice == null)
+				continue;
+			
+			if (ratingChoice.getCode() != ThreatRatingQuestion.UNSPECIFIED_CODE)
+				++count;
+		}
+		
+		return Integer.toString(count);
 	}
 
 	private String getThreatWithTaxonomyCount()

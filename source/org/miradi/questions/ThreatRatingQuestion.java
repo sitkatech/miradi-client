@@ -39,7 +39,7 @@ public class ThreatRatingQuestion extends StaticChoiceQuestionSortableByCode
 	protected ChoiceItem[] createChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", EAM.text("Not Specified"), Color.WHITE, ""),
+				new ChoiceItem(UNSPECIFIED_CODE, EAM.text("Not Specified"), Color.WHITE, UNSPECIFIED_CODE),
 				new ChoiceItem("1", EAM.text("Low"), COLOR_GREAT, getLowRatingChoiceItemDescription()),
 				new ChoiceItem("2", EAM.text("Medium"), COLOR_OK, getMediumRatingChoiceItemDescription()),
 				new ChoiceItem(HIGH_RATING_CODE, EAM.text("High"), COLOR_CAUTION, getHighRatingChoiceItemDescription()),
@@ -66,7 +66,8 @@ public class ThreatRatingQuestion extends StaticChoiceQuestionSortableByCode
 	{
 		return "";
 	}
-	
+
+	public static final String UNSPECIFIED_CODE = "";
 	public static final String HIGH_RATING_CODE = "3";
 	public static final String VERY_HIGH_RATING_CODE = "4";
 }
