@@ -29,7 +29,6 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramLinkId;
-import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
@@ -262,22 +261,21 @@ public class LinkCreator
 		if(factorLinkRef.isInvalid())
 			factorLinkRef = createFactorLink(fromDiagramFactor, toDiagramFactor);
 
-		createDiagramLink(diagramObject, createDiagramFactorLinkParameter(fromDiagramFactor.getRef(), toDiagramFactor.getRef(), factorLinkRef));
-		ensureLinkGoesOurWay(factorLinkRef, fromFactor.getFactorId());
+		ORef diagramLinkRef = createDiagramLink(diagramObject, createDiagramFactorLinkParameter(fromDiagramFactor.getRef(), toDiagramFactor.getRef(), factorLinkRef));
+		ensureLinkGoesOurWay(DiagramLink.find(getProject(), diagramLinkRef), fromDiagramFactor);
 
 		return factorLinkRef; 
 	}
 
-	private void ensureLinkGoesOurWay(ORef factorLinkRef, FactorId fromFactorId) throws CommandFailedException
+	private void ensureLinkGoesOurWay(DiagramLink diagramLink, DiagramFactor fromDiagramFactor) throws CommandFailedException
 	{
-		FactorLink link = (FactorLink)project.findObject(factorLinkRef);
-		if (link.isBidirectional())
+		if (diagramLink.isBidirectional())
 			return;
 		
-		if(link.getFromFactorRef().getObjectId().equals(fromFactorId))
+		if(diagramLink.getWrappedFactorLink().getFromFactorRef().equals(fromDiagramFactor.getWrappedORef()))
 			return;
 		
-		enableBidirectional(link.getRef());
+		enableBidirectional(diagramLink.getWrappedRef());
 	}
 
 	private void enableBidirectional(ORef factorLinkRef) throws CommandFailedException
