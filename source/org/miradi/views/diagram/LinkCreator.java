@@ -264,15 +264,10 @@ public class LinkCreator
 		enableBidirectional(diagramLink);
 	}
 
-	private void enableBidirectional(ORef factorLinkRef) throws CommandFailedException
-	{
-		CommandSetObjectData command = new CommandSetObjectData(factorLinkRef, FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
-		project.executeCommand(command);
-	}
-
 	private void enableBidirectional(DiagramLink diagramLink) throws CommandFailedException
 	{
-		enableBidirectional(diagramLink.getWrappedRef());
+		CommandSetObjectData command = new CommandSetObjectData(diagramLink.getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
+		project.executeCommand(command);
 	}
 	
 	public ORef createFactorLink(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
