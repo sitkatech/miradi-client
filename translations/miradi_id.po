@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-27 10:51-0500\n"
+"POT-Creation-Date: 2010-08-27 11:29-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -116,7 +116,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:105
 msgid ""
-"%threatTargetLinkCount of %threatTargetWithRatingCount target/threat links "
+"%threatTargetWithRatingCount of %threatTargetLinkCount target/threat links "
 "ranked  (In Simple Mode/Stress Based Mode)"
 msgstr ""
 
@@ -3229,7 +3229,7 @@ msgstr ""
 msgid "Error Occurred please try saving under different name."
 msgstr "Terjadi Kesalahan, harap simpan dengan nama lain. "
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:120
+#: Miradi/source/org/miradi/objects/Dashboard.java:115
 msgid "Error Retrieving Data"
 msgstr ""
 
