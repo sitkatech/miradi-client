@@ -275,7 +275,7 @@ public class LinkCreator
 		if(diagramLink.getWrappedFactorLink().getFromFactorRef().equals(fromDiagramFactor.getWrappedORef()))
 			return;
 		
-		enableBidirectional(diagramLink.getWrappedRef());
+		enableBidirectional(diagramLink);
 	}
 
 	private void enableBidirectional(ORef factorLinkRef) throws CommandFailedException
