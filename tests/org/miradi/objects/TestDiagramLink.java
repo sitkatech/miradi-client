@@ -94,7 +94,7 @@ public class TestDiagramLink extends ObjectTestCase
 		DiagramFactor diagramFactor2 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId2);
 		
 		LinkCreator linkCreator = new LinkCreator(project);
-		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getTestingDiagramModel(), diagramFactor1, diagramFactor2);
+		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getTestingDiagramObject(), diagramFactor1, diagramFactor2);
 		DiagramLink diagramLink = project.getTestingDiagramModel().getDiagramLinkByWrappedRef(factorLinkRef);
 		
 		assertEquals("didn't remember from?", diagramFactor1.getId(), diagramLink.getFromDiagramFactorId());

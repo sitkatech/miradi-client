@@ -399,7 +399,7 @@ public class TestDiagramModel extends EAMTestCase
 	private DiagramLink createLinkage(FactorLinkId id, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
 		LinkCreator linkCreator = new LinkCreator(project);
-		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getTestingDiagramModel(), fromDiagramFactor, toDiagramFactor);
+		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getTestingDiagramObject(), fromDiagramFactor, toDiagramFactor);
 		DiagramLink diagramLink = project.getTestingDiagramModel().getDiagramLinkByWrappedRef(factorLinkRef);
 		
 		return diagramLink;

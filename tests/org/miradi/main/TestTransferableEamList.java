@@ -123,7 +123,7 @@ public class TestTransferableEamList extends EAMTestCase
 		project.tagDiagramFactor(diagramFactor1.getWrappedORef());
 		
 		LinkCreator linkCreator = new LinkCreator(project);
-		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getTestingDiagramModel(), diagramFactor1, diagramFactor2);
+		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getTestingDiagramObject(), diagramFactor1, diagramFactor2);
 		DiagramLink diagramLink = project.getTestingDiagramModel().getDiagramLinkByWrappedRef(factorLinkRef);
 		
 		assertEquals("wrong threat stress ratings count?", 1, project.getThreatStressRatingPool().size());
