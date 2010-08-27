@@ -23,6 +23,7 @@ import java.text.ParseException;
 import java.util.HashSet;
 import java.util.Vector;
 
+import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramModel;
@@ -266,8 +267,13 @@ public class LinkCreator
 
 	private void enableBidirectional(DiagramLink diagramLink) throws CommandFailedException
 	{
+		project.executeCommandsWithoutTransaction(createCommandsToEnableBidirectionalFlag(diagramLink));
+	}
+
+	private Command[] createCommandsToEnableBidirectionalFlag(DiagramLink diagramLink)
+	{
 		CommandSetObjectData command = new CommandSetObjectData(diagramLink.getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
-		project.executeCommand(command);
+		return new Command[] {command};
 	}
 	
 	public ORef createFactorLink(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
