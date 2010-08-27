@@ -63,6 +63,7 @@ public class TargetViabilityView extends TabbedView
 		addDoersToMap();
 	}
 	
+	@Override
 	public String cardName()
 	{
 		return getViewName();
@@ -73,17 +74,20 @@ public class TargetViabilityView extends TabbedView
 		return Project.TARGET_VIABILITY_NAME;
 	}
 
+	@Override
 	public MiradiToolBar createToolBar()
 	{
 		return new TargetViabilityToolBar(getActions());
 	}
 
+	@Override
 	public void createTabs() throws Exception
 	{
 		viabilityPanel = new ViabilityViewTreeManagementPanel(getMainWindow(), getMainWindow());
 		addNonScrollingTab(viabilityPanel);
 	}
 
+	@Override
 	public void deleteTabs() throws Exception
 	{
 		viabilityPanel.dispose();
@@ -111,6 +115,7 @@ public class TargetViabilityView extends TabbedView
 	}
 	
 	
+	@Override
 	public BaseObject getSelectedObject()
 	{
 		if (viabilityPanel != null)
