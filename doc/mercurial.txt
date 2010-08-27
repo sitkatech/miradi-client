@@ -1,0 +1,103 @@
+Windows users:
+
+- Download and install putty
+- Request ssh access on benetech04
+- Request that you be added to the miradi group on benetech04
+- Get Jake/Ron to help you get putty working with a keypair
+- Download and install mercurial
+- Add mercurial to the path
+- Create mercurial.ini in the mercurial program directory, if it doesn't exist
+- Add the following to mercurial.ini:
+  [ui]
+  ssh="path-to\plink.exe" -ssh -l yourusername -i "path-to\private-key.ppk"
+  username=First Last <email@address>
+  (where path-to, yourusername, private-key and First Last are your values)
+- Verify by running "hg showconfig". There should be a ui.ssh entry.
+(Skip to common section below)
+
+Linux users:
+- Install ssh and create a private key
+- Request ssh access on benetech04
+- Request that you be added to the miradi group on benetech04
+- Make sure you can ssh to benetech04
+- Install mercurial, ideally via normal distro repository (apt, rpm)
+- Add the following to ~/.hgrc (create it if it doesn't exist)
+  [ui]
+  username=First Last <email@address>
+  (where path-to, yourusername, private-key and First Last are your values)
+(Skip to common section below)
+
+Mac users:
+- Request ssh access on benetech04
+- Request that you be added to the miradi group on benetech04
+- Make sure you can ssh to benetech04
+- Download and install mercurial
+- Add the following to ~/.hgrc (create it if it doesn't exist)
+  [ui]
+  username=First Last <email@address>
+  (where path-to, yourusername, private-key and First Last are your values)
+(Skip to common section below)
+
+
+Common section:
+- On the server, in your home directory, create a file named .hgrc with:
+  [trusted]
+  groups=miradi
+  
+  (NOTE: this is case-sensitive)
+- Create a new miradi-hg directory, and try:
+  hg clone -v ssh://subversion.benetech.org//opt/hg/Miradi/miradi
+- You should start to see output like:
+  destination directory: miradi
+  requesting all changes
+  adding changesets
+- It should take about 10 minutes to get to "adding file changes"
+- After another 10-20 minutes, you should be back to command prompt
+- This will have created a miradi directory inside miradi-hg
+- Install the MercurialEclipse plugin: 
+  http://javaforge.com/project/HGE#download
+- In eclipse, create a new workspace in your miradi-hg directory
+- Windows users only: Window/Prefs/Team/Mercurial: browse so the 
+  mercurial command is the one you installed earlier 
+- Create a new Java project, named miradi. 
+  It should adopt the existing project and 
+  should automatically associate it with mercurial
+- If you get an error when pushing due to multiple heads:
+  1. Cancel the push
+  2. Switch to Java perspective
+  3. Select the top-level miradi project in the package tree
+  4. If that did not work, do Right-click/Team/Merge...
+  5. You should see an entry in the list above the bold item.
+     Select it, and say merge/ok
+  6. If there are conflicts, you will have to resolve them, 
+     similar to how was done in svn
+  7. When there are no conflicts, a merge commit dialog will come up
+  8. Accept the default commit description and hit ok
+  9. Now push your changesets, including this new merge commit
+  
+(Need to experiment more with rebase to see if it can safely avoid 
+some/many merges). 
+
+For reference as needed:
+  http://mercurial.selenic.com/wiki/AccessingSshRepositoriesFromWindows
+  http://the.earth.li/~sgtatham/putty/0.58/htmldoc/Chapter7.html
+
+Trusting hgrc files:
+  http://mercurial.selenic.com/wiki/Trust
+Hooks:
+  http://mercurial.selenic.com/wiki/Hook
+Spec for hgrc files:
+  http://www.selenic.com/mercurial/hgrc.5.html
+Notify plugin:
+  http://morecode.wordpress.com/2007/08/03/setting-up-mercurial-to-e-mail-on-a-commit/
+More on hooks and notify:
+  http://hgbook.red-bean.com/read/handling-repository-events-with-hooks.html
+  
+How to avoid the commit/push-fails/sync/pull/update/merge/push problem:
+  http://www.selenic.com/pipermail/mercurial/2008-July/020116.html
+  http://www.selenic.com/pipermail/mercurial/2008-July/020131.html
+
+Merge vs. Rebase:
+  http://blog.experimentalworks.net/2009/03/merge-vs-rebase-a-deep-dive-into-the-mysteries-of-revision-control/
+  
+  
