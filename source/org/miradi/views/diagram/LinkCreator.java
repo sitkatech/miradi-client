@@ -522,8 +522,8 @@ public class LinkCreator
 			return new ORefList(factorLinkRef);
 		}
 		
-		ORefList groupBoxChildrenDiagramFactorRefs = createGroupBoxChildrenDiagramLinks(diagramObject, from, to);
-		return convertToFactorLinks(groupBoxChildrenDiagramFactorRefs);
+		ORefList groupBoxChildrenDiagramFactorLinkRefs = createGroupBoxChildrenDiagramLinks(diagramObject, from, to);
+		return convertToFactorLinks(groupBoxChildrenDiagramFactorLinkRefs);
 	}
 	
 	public void createAllPossibleGroupLinks(DiagramObject diagramObject, DiagramFactor groupBoxDiagramFactor) throws Exception
