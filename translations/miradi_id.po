@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-27 12:21-0500\n"
+"POT-Creation-Date: 2010-08-27 13:32-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -94,30 +94,35 @@ msgstr "kosong "
 msgid "%countLabel: %itemCount"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:74
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:78
 msgid "%s created"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:69
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:73
 msgid "%targetCount created"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:82
-msgid ""
-"%targetWithKeaCount targets have KEA %targetWithSimpleViabilityCount targets "
-"have simple viablity information"
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:85
+msgid "%targetWithKeaCount targets have KEA"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:97
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:92
 msgid ""
-"%threatCount Direct Threats created, %threatWithTaxonomyCount of %"
-"threatCount have taxonomy assignments"
+"%targetWithSimpleViabilityCount targets have simple viablity information"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:105
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:107
+msgid "%threatCount Direct Threats created"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:118
 msgid ""
-"%threatTargetWithRatingCount of %threatTargetLinkCount target/threat links "
-"ranked  (In Simple Mode/Stress Based Mode)"
+"%threatTargetWithRatingCount of %threatTargetLinkCount threat/target links "
+"ranked"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:111
+msgid "%threatWithTaxonomyCount of %threatCount have taxonomy assignments"
 msgstr ""
 
 #: Miradi/source/org/miradi/utils/DiagramCorruptionDetector.java:222
@@ -242,11 +247,11 @@ msgstr "1) Pilih target dan ancaman yang akan digarap "
 msgid "1A. Define Initial Project Team"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:56
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:60
 msgid "1B. Define Scope Vision and Targets"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:88
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:97
 msgid "1C. Identify Critical Threats"
 msgstr ""
 
@@ -1836,7 +1841,7 @@ msgstr ""
 msgid "Add Human Welfare Targets If Desired"
 msgstr "Tambah Target Kesejahteraan Manusia Bila Perlu "
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:73
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:77
 msgid "Add Human Welfare Targets:"
 msgstr ""
 
@@ -2600,7 +2605,7 @@ msgstr ""
 "Model konsep – Diagram seperangkat hubungan antara faktor-faktor tertentu "
 "yang dipercayai bisa berdampak atau mengarahkan pada target konservasi. "
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:123
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:136
 msgid "Conceptualize"
 msgstr ""
 
@@ -2722,7 +2727,7 @@ msgstr "Buat rangkaian hasil yang menunjukkan asumsi-asumsi "
 msgid "Create..."
 msgstr "Buat… "
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:63
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:67
 msgid "Created (%s chars)"
 msgstr ""
 
@@ -2861,7 +2866,7 @@ msgstr ""
 msgid "Default Mode"
 msgstr "Mode Default "
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:61
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:65
 msgid "Define Project Scope:"
 msgstr ""
 
@@ -2909,7 +2914,7 @@ msgstr ""
 msgid "Descending"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:78
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:82
 msgid "Describe Status of Targets:"
 msgstr ""
 
@@ -3818,7 +3823,7 @@ msgstr ""
 msgid "Identify \"key factors\" and draft strategies"
 msgstr "Kenali \"faktor kunci\" dan rancangan strategi "
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:93
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:106
 msgid "Identify Direct Threats:"
 msgstr ""
 
@@ -5445,7 +5450,7 @@ msgstr "RARE"
 msgid "Rand (South Africa)"
 msgstr "Rand (Afrika Selatan)"
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:101
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:114
 msgid "Rank Direct Threats:"
 msgstr ""
 
@@ -5690,7 +5695,7 @@ msgid ""
 "relationship to the originals."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:66
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:70
 msgid "Select Conservation Targets:"
 msgstr ""
 
@@ -7088,7 +7093,7 @@ msgstr "Kontak Tim"
 msgid "Team Member"
 msgstr "Anggota Tim"
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:50
+#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:54
 msgid "Team Members:"
 msgstr ""
 
