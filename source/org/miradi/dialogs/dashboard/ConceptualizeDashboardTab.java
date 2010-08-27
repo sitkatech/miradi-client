@@ -38,7 +38,7 @@ public class ConceptualizeDashboardTab extends ObjectDataInputPanel
 	{
 		super(projectToUse, Dashboard.getObjectType());
 		
-		setLayout(new GridLayoutPlus(0, 3));		
+		setLayout(new GridLayoutPlus(0, 3, 3, 3));		
 		addTeamMembersRow();
 		addScopeVisionAndTargetsRow();
 		addIdentifyCriticalThreatsRow();
@@ -47,6 +47,10 @@ public class ConceptualizeDashboardTab extends ObjectDataInputPanel
 	private void addTeamMembersRow()
 	{
 		add(new PanelTitleLabel(EAM.text("1A. Define Initial Project Team")));
+		add(new FillerLabel());
+		add(new FillerLabel());
+		
+		add(new FillerLabel());
 		add(new PanelTitleLabel(EAM.text("Team Members:")));
 		add(new PanelTitleLabel(getDashboard().getData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT)));
 	}
@@ -76,11 +80,16 @@ public class ConceptualizeDashboardTab extends ObjectDataInputPanel
 		
 		add(new FillerLabel());
 		add(new PanelTitleLabel(EAM.text("Describe Status of Targets:")));
-		HashMap<String, String> statusDescriptionTokenReplacementMap = new HashMap<String, String>();
-		statusDescriptionTokenReplacementMap.put("%targetWithKeaCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_KEA_COUNT));
-		statusDescriptionTokenReplacementMap.put("%targetWithSimpleViabilityCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT));
-		String targetStatusDescription = EAM.substitute(EAM.text("%targetWithKeaCount targets have KEA %targetWithSimpleViabilityCount targets have simple viablity information"), statusDescriptionTokenReplacementMap);
+		HashMap<String, String> statusDescriptionTokenReplacementMap1 = new HashMap<String, String>();
+		statusDescriptionTokenReplacementMap1.put("%targetWithKeaCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_KEA_COUNT));
+		String targetStatusDescription = EAM.substitute(EAM.text("%targetWithKeaCount targets have KEA"), statusDescriptionTokenReplacementMap1);
 		add(new PanelTitleLabel(targetStatusDescription));
+		
+		add(new FillerLabel());
+		add(new FillerLabel());
+		HashMap<String, String> statusDescriptionTokenReplacementMap2 = new HashMap<String, String>();
+		statusDescriptionTokenReplacementMap2.put("%targetWithSimpleViabilityCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT));
+		add(new PanelTitleLabel(EAM.substitute(EAM.text("%targetWithSimpleViabilityCount targets have simple viablity information"), statusDescriptionTokenReplacementMap2)));
 	}
 	
 	private void addIdentifyCriticalThreatsRow()
@@ -89,20 +98,24 @@ public class ConceptualizeDashboardTab extends ObjectDataInputPanel
 		add(new FillerLabel());
 		add(new FillerLabel());
 		
-		add(new FillerLabel());
-		add(new PanelTitleLabel(EAM.text("Identify Direct Threats:")));
+		
 		HashMap<String, String> threatsTokenReplacementMap = new HashMap<String, String>();
 		threatsTokenReplacementMap.put("%threatCount", getDashboardData(Dashboard.PSEUDO_THREAT_COUNT));
 		threatsTokenReplacementMap.put("%threatWithTaxonomyCount", getDashboardData(Dashboard.PSEUDO_THREAT_WITH_TAXONOMY_COUNT));
-		String directThreatDescription = EAM.substitute(EAM.text("%threatCount Direct Threats created, %threatWithTaxonomyCount of %threatCount have taxonomy assignments"), threatsTokenReplacementMap);
-		add(new PanelTitleLabel(directThreatDescription));
+		add(new FillerLabel());
+		add(new PanelTitleLabel(EAM.text("Identify Direct Threats:")));
+		add(new PanelTitleLabel(EAM.substitute(EAM.text("%threatCount Direct Threats created"), threatsTokenReplacementMap)));
+		
+		add(new FillerLabel());
+		add(new FillerLabel());
+		add(new PanelTitleLabel(EAM.substitute(EAM.text("%threatWithTaxonomyCount of %threatCount have taxonomy assignments"), threatsTokenReplacementMap)));
 		
 		add(new FillerLabel());
 		add(new PanelTitleLabel(EAM.text("Rank Direct Threats:")));
 		HashMap<String, String> threatTargetLinksTokenReplacementMap = new HashMap<String, String>();
 		threatTargetLinksTokenReplacementMap.put("%threatTargetLinkCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_COUNT));
 		threatTargetLinksTokenReplacementMap.put("%threatTargetWithRatingCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT));
-		String threatTargetLinkDescription = EAM.substitute(EAM.text("%threatTargetWithRatingCount of %threatTargetLinkCount target/threat links ranked  (In Simple Mode/Stress Based Mode)"), threatTargetLinksTokenReplacementMap);
+		String threatTargetLinkDescription = EAM.substitute(EAM.text("%threatTargetWithRatingCount of %threatTargetLinkCount threat/target links ranked"), threatTargetLinksTokenReplacementMap);
 		add(new PanelTitleLabel(threatTargetLinkDescription));
 	}
 
