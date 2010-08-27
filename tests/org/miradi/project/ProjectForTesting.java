@@ -180,7 +180,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public DiagramObject getMainDiagramObject()
 	{
-		return getDiagramModel().getDiagramObject();
+		return getTestingDiagramModel().getDiagramObject();
 	}
 	
 	public void fillGeneralProjectData() throws Exception
@@ -1667,13 +1667,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 	private DiagramFactor createAndAddFactorToDiagram(int nodeType, int id) throws Exception
 	{
-		DiagramObject diagramObject = getDiagramModel().getDiagramObject();
+		DiagramObject diagramObject = getTestingDiagramModel().getDiagramObject();
 		return createAndAddFactorToDiagram(diagramObject, nodeType, id);
 	}
 
 	private DiagramFactor createAndAddFactorToDiagram(DiagramObject diagramObject, int objectType, int id) throws Exception
 	{
-		FactorCommandHelper factorHelper = new FactorCommandHelper(this, getDiagramModel());
+		FactorCommandHelper factorHelper = new FactorCommandHelper(this, getTestingDiagramModel());
 		CommandCreateObject createFactor = new CommandCreateObject(objectType);
 		createFactor.setCreatedId(new BaseId(id));
 		executeCommand(createFactor);
@@ -1750,7 +1750,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public FactorCell createFactorCell(int objectType, int factorId) throws Exception
 	{
 		DiagramFactor diagramFactor = createAndAddFactorToDiagram(objectType, factorId);
-		return getDiagramModel().getFactorCellByWrappedRef(diagramFactor.getWrappedORef());
+		return getTestingDiagramModel().getFactorCellByWrappedRef(diagramFactor.getWrappedORef());
 	}
 	
 	public LinkCell createLinkCell() throws Exception
@@ -1759,7 +1759,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		DiagramLink diagramLink = (DiagramLink) findObject(new ORef(ObjectType.DIAGRAM_LINK, diagramLinkId));
 		addDiagramLinkToModel(diagramLink);
 		
-		return getDiagramModel().getLinkCell(diagramLink);	
+		return getTestingDiagramModel().getLinkCell(diagramLink);	
 	}
 	
 	public void addDiagramLinkToModel(DiagramLink diagramLink) throws Exception 

@@ -70,13 +70,13 @@ public class TestUndoRedo extends EAMTestCase
 		project.executeCommand(FactorCommandHelper.createSetLabelCommand(insertedRef, target1Text));
 		
 		project.executeCommand(new CommandEndTransaction());
-		assertEquals("Should have 1 node now.", 1, project.getDiagramModel().getFactorCount());
+		assertEquals("Should have 1 node now.", 1, project.getTestingDiagramModel().getFactorCount());
 		
-		project.getDiagramModel().getFactorCellByWrappedRef(insertedRef);
+		project.getTestingDiagramModel().getFactorCellByWrappedRef(insertedRef);
 		Undo undo = new Undo();
 		undo.setProject(project);
 		undo.doIt();
-		assertEquals("Should have 0 nodes now.", 0, project.getDiagramModel().getFactorCount());
+		assertEquals("Should have 0 nodes now.", 0, project.getTestingDiagramModel().getFactorCount());
 
 		Redo redo = new Redo();
 		redo.setProject(project);
@@ -84,22 +84,22 @@ public class TestUndoRedo extends EAMTestCase
 
 		DiagramFactor[] diagramFactors = project.getAllDiagramFactors();
 		
-		assertEquals("Should have 1 node again after redo.", 1, project.getDiagramModel().getFactorCount());
+		assertEquals("Should have 1 node again after redo.", 1, project.getTestingDiagramModel().getFactorCount());
 		assertEquals("wrong number of nodes after redo?", 1, diagramFactors.length);
 		DiagramFactor node = diagramFactors[0];
-		assertTrue(project.getDiagramModel().doesDiagramFactorExist(node.getRef()));
+		assertTrue(project.getTestingDiagramModel().doesDiagramFactorExist(node.getRef()));
 		
 		Factor factor = Factor.findFactor(project, node.getWrappedORef());
 		assertEquals("Incorrect label?", target1Text, factor.getLabel());
 		
 		undo.doIt();
-		assertEquals("Should have 0 nodes again.", 0, project.getDiagramModel().getFactorCount());
+		assertEquals("Should have 0 nodes again.", 0, project.getTestingDiagramModel().getFactorCount());
 	}
 
 	public void testUndoRedoNodeSize() throws Exception
 	{
 		ORef insertedRef = insertFactor(project);
-		FactorCell node = project.getDiagramModel().getFactorCellByRef(insertedRef);
+		FactorCell node = project.getTestingDiagramModel().getFactorCellByRef(insertedRef);
 		String originalSize = EnhancedJsonObject.convertFromDimension(node.getSize());
 
 		String newSize1 = EnhancedJsonObject.convertFromDimension(new Dimension(5,10));

@@ -262,7 +262,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 	
 	private DiagramObject getConceptualModelDiagramObject()
 	{
-		return getProject().getDiagramModel().getDiagramObject();
+		return getProject().getTestingDiagramModel().getDiagramObject();
 	}
 	
 	private DiagramObject getResultsChainDiagramObject()

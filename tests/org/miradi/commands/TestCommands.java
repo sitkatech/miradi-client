@@ -259,7 +259,7 @@ public class TestCommands extends EAMTestCase
 	{
 		ORef diagramFactorRef = insertTarget();
 		String defaultSize = EnhancedJsonObject.convertFromDimension(new Dimension(120, 60));
-		DiagramModel diagramModel = project.getDiagramModel();
+		DiagramModel diagramModel = project.getTestingDiagramModel();
 		FactorCell node = diagramModel.getFactorCellByRef(diagramFactorRef);
 		String originalSize = EnhancedJsonObject.convertFromDimension(node.getSize());
 		assertEquals(defaultSize, originalSize);
@@ -282,7 +282,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandDiagramAddLinkage() throws Exception
 	{
-		DiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getTestingDiagramModel();
 
 		DiagramFactor from = insertNode(ObjectType.CAUSE);
 		DiagramFactor to = insertNode(ObjectType.TARGET);
@@ -313,11 +313,11 @@ public class TestCommands extends EAMTestCase
 		ORef toDiagramFactorRef = cell.getTo().getDiagramFactorRef();
 		assertEquals("wrong dest?", to.getRef(), toDiagramFactorRef);
 
-		assertTrue("linkage not created?", project.getDiagramModel().areDiagramFactorsLinked(fromDiagramFactorRef, toDiagramFactorRef));
+		assertTrue("linkage not created?", project.getTestingDiagramModel().areDiagramFactorsLinked(fromDiagramFactorRef, toDiagramFactorRef));
 		project.undo();
 		
 		project.undo();
-		assertFalse("didn't remove linkage?", project.getDiagramModel().areDiagramFactorsLinked(fromDiagramFactorRef, toDiagramFactorRef));
+		assertFalse("didn't remove linkage?", project.getTestingDiagramModel().areDiagramFactorsLinked(fromDiagramFactorRef, toDiagramFactorRef));
 		
 		project.undo();
 		assertNull("didn't delete linkage from pool?", project.getFactorLinkPool().find(modelLinkageId));
@@ -366,7 +366,7 @@ public class TestCommands extends EAMTestCase
 		project.undo();
 		project.redo();
 		
-		FactorCell inserted = project.getDiagramModel().getFactorCellByRef(targetRef);
+		FactorCell inserted = project.getTestingDiagramModel().getFactorCellByRef(targetRef);
 		assertTrue("wrong node?", inserted.isTarget());
 		
 	}

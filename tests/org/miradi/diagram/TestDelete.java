@@ -39,13 +39,13 @@ public class TestDelete extends EAMTestCase
 	public void testBasics() throws Exception
 	{
 		ProjectForTesting project = new ProjectForTesting(getName());
-		DiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getTestingDiagramModel();
 		
 		DiagramFactor intervention = project.createAndAddFactorToDiagram(ObjectType.STRATEGY);
 		
 		DiagramFactor cause = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		LinkCreator linkCreator = new LinkCreator(project);
-		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel().getDiagramObject(), intervention, cause);
+		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getTestingDiagramModel().getDiagramObject(), intervention, cause);
 		DiagramLink diagramLink = model.getDiagramLinkByWrappedRef(factorLinkRef);
 		
 		assertTrue("link not found?", model.areDiagramFactorsLinked(intervention.getRef(), cause.getRef()));
