@@ -23,6 +23,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.Vector;
 
 public interface MiradiFileSystem
@@ -31,6 +32,7 @@ public interface MiradiFileSystem
 	public abstract String getDataLocation();
 	public abstract boolean isLocalFileSystem();
 	
+	public abstract Set<String> getListOfProjectsIn(String directory) throws Exception;
 	public abstract boolean doesProjectDirectoryExist(String projectName) throws Exception;
 	public abstract void createProject(String projectName) throws Exception;
 	public abstract void deleteProject(String projectName) throws Exception;

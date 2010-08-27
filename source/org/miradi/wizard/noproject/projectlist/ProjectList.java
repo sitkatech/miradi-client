@@ -20,13 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.wizard.noproject.projectlist;
 
 import java.io.File;
-import java.util.Date;
+import java.util.Collections;
+import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import org.martus.swing.HyperlinkHandler;
-import org.martus.util.MultiCalendar;
+import org.miradi.database.ProjectServer;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -38,8 +39,9 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 public class ProjectList extends JPanel
 {
-	public ProjectList(HyperlinkHandler handlerToUse)
+	public ProjectList(ProjectServer databaseToUse, HyperlinkHandler handlerToUse) throws Exception
 	{
+		database = databaseToUse;
 		handler = handlerToUse;
 
 		int COL_GUTTER = 5;
@@ -52,20 +54,18 @@ public class ProjectList extends JPanel
 		refresh();
 	}
 	
-	public void refresh()
+	public void refresh() throws Exception
 	{
 		removeAll();
 		add(new TableHeadingText("Project Filename"));
 		add(new TableHeadingText("Last Modified"));
 		
-		File[] projectDirectories = getProjectDirectories();
-		for(int i = 0; i < projectDirectories.length; ++i)
+		Vector<String> projectNames = new Vector<String>(database.getListOfProjectsIn(""));
+		Collections.sort(projectNames);
+		for(String name : projectNames)
 		{
-			File projectFile = projectDirectories[i];
-			String name = projectFile.getName();
-			MultiCalendar date = new MultiCalendar(new Date(projectFile.lastModified()));
-			String isoDate = date.toIsoDateString();
-			add(new HyperlinkLabel(name, NoProjectWizardStep.OPEN_PREFIX+name, handler));
+			String isoDate = EAM.text("(Unknown)");
+			add(new HyperlinkLabel(name, NoProjectWizardStep.OPEN_PREFIX+"projects/"+name, handler));
 			add(new HtmlLabel("<font size='%100'>" + isoDate + "</font>"));
 		}
 		
@@ -98,5 +98,6 @@ public class ProjectList extends JPanel
 		
 	}
 
-	HyperlinkHandler handler;
+	private ProjectServer database;
+	private HyperlinkHandler handler;
 }
