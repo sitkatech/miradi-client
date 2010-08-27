@@ -259,12 +259,12 @@ public class LinkCreator
 		Factor toFactor = Factor.findFactor(getProject(), toDiagramFactor.getWrappedORef());
 		ORef factorLinkRef = project.getFactorLinkPool().getLinkedRef(fromFactor, toFactor);
 		
-		if(factorLinkRef.isValid())
-			ensureLinkGoesOurWay(factorLinkRef, fromFactor.getFactorId());
-		else
+		if(factorLinkRef.isInvalid())
 			factorLinkRef = createFactorLink(fromDiagramFactor, toDiagramFactor);
 
 		createDiagramLink(diagramObject, createDiagramFactorLinkParameter(fromDiagramFactor.getRef(), toDiagramFactor.getRef(), factorLinkRef));
+		ensureLinkGoesOurWay(factorLinkRef, fromFactor.getFactorId());
+
 		return factorLinkRef; 
 	}
 
