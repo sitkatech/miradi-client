@@ -242,12 +242,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		}
 		
 		safelySavePreferences();
-
-		// NOTE: This is code for testing the fat client
-		if(commandLineArguments.contains("--remote"))
-		{
-			createOrOpenProject("projects/Test");
-		}
 	}
 
 	public boolean isSpellCheckerActive()

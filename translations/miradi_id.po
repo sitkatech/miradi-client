@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-27 10:51-0500\n"
+"POT-Creation-Date: 2010-08-27 12:21-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -116,7 +116,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:105
 msgid ""
-"%threatTargetLinkCount of %threatTargetWithRatingCount target/threat links "
+"%threatTargetWithRatingCount of %threatTargetLinkCount target/threat links "
 "ranked  (In Simple Mode/Stress Based Mode)"
 msgstr ""
 
@@ -157,6 +157,7 @@ msgid "(Translation: %code %date)"
 msgstr "(Penerjemahan: : %code %date) "
 
 #: Miradi/source/org/miradi/objects/DiagramFactor.java:238
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectList.java:67
 msgid "(Unknown)"
 msgstr "(Tidak Dikenal) "
 
@@ -377,7 +378,7 @@ msgstr "7B. Bagikan Apa yang Anda Pelajari "
 msgid "7C. Create a Learning Environment"
 msgstr "7C. Ciptakan Lingkungan Belajar "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1205
+#: Miradi/source/org/miradi/main/MainWindow.java:1199
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -503,7 +504,7 @@ msgstr ""
 "jenis file yang sesuai, pilih file dalam kotak dialog yang muncul lalu klik "
 "<strong>impor</strong>. "
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:65
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:66
 msgid ""
 "<div class='WizardText'>To <strong>continue work</strong> on an existing "
 "project, or <strong>browse an example</strong>, choose a project below:"
@@ -3229,7 +3230,7 @@ msgstr ""
 msgid "Error Occurred please try saving under different name."
 msgstr "Terjadi Kesalahan, harap simpan dengan nama lain. "
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:120
+#: Miradi/source/org/miradi/objects/Dashboard.java:115
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -3311,7 +3312,7 @@ msgstr "Perkirakan biaya kegiatan dan pemantauan "
 msgid "Euro"
 msgstr "Euro"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:788
+#: Miradi/source/org/miradi/main/MainWindow.java:782
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -3947,7 +3948,7 @@ msgstr "Indikator Saja "
 msgid "Indicators:"
 msgstr "Indikator: "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:337
+#: Miradi/source/org/miradi/main/MainWindow.java:331
 msgid "Information"
 msgstr "Informasi "
 
@@ -4801,7 +4802,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:631
+#: Miradi/source/org/miradi/main/MainWindow.java:625
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5321,7 +5322,7 @@ msgstr "Proyek "
 msgid "Project Advisor"
 msgstr "Penasihat Proyek"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:629
+#: Miradi/source/org/miradi/main/MainWindow.java:623
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -5350,7 +5351,7 @@ msgstr "Sumber Daya Proyek "
 msgid "Project Resource Filter Editor"
 msgstr "Editor Filter Sumber Daya Proyek "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:786
+#: Miradi/source/org/miradi/main/MainWindow.java:780
 msgid "Project Resource Filter Is On"
 msgstr "Filter Sumber Daya Proyek Adalah Aktif "
 
@@ -5936,7 +5937,7 @@ msgstr "Pemilik Kepentingan"
 msgid "Standard Reports"
 msgstr "Laporan Standar "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:820
+#: Miradi/source/org/miradi/main/MainWindow.java:814
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -7115,7 +7116,7 @@ msgstr "Paket bahasa ini sudah ada. Ganti? "
 msgid "That language pack is already installed"
 msgstr "Paket bahasa ini sudah diinstal"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:578
+#: Miradi/source/org/miradi/main/MainWindow.java:572
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
@@ -7123,14 +7124,14 @@ msgstr ""
 "Proyek tersebut tidak bisa dibuka karena dibuat oleh versi baru dari "
 "aplikasi ini "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:582
+#: Miradi/source/org/miradi/main/MainWindow.java:576
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 "Proyek tersebut tidak bisa dibuka sebelum dipindahkan ke format data saat "
 "ini "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:574
+#: Miradi/source/org/miradi/main/MainWindow.java:568
 msgid "That project is in use by another copy of this application"
 msgstr "Proyek tersebut sedang digunakan oleh salinan lain dari aplikasi ini "
 
@@ -7224,7 +7225,7 @@ msgid ""
 "is in a newer data format. Please upgrade to the latest version of Miradi."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:620
+#: Miradi/source/org/miradi/main/MainWindow.java:614
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -7622,7 +7623,7 @@ msgstr ""
 "aplikasi ini:\n"
 " "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1189
+#: Miradi/source/org/miradi/main/MainWindow.java:1183
 msgid "Unable to launch external web browser"
 msgstr "Tidak bisa meluncurkan perambah web eksternal "
 
@@ -7644,7 +7645,7 @@ msgstr ""
 "dari aplikasi ini:\n"
 " "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:977
+#: Miradi/source/org/miradi/main/MainWindow.java:971
 msgid "Unable to save preferences"
 msgstr "Tidak bisa menyimpan preferensi "
 
@@ -7688,13 +7689,13 @@ msgstr "UniqueModelIdentifier= "
 msgid "University"
 msgstr "Universitas"
 
-#: Miradi/source/org/miradi/database/ProjectServer.java:442
+#: Miradi/source/org/miradi/database/ProjectServer.java:448
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:161
 #: Miradi/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:37
 msgid "Unknown"
 msgstr "Tidak Dikenal"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:569
+#: Miradi/source/org/miradi/main/MainWindow.java:563
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -7712,7 +7713,7 @@ msgstr "Kode tak dikenal: "
 msgid "Unknown error displaying diagram"
 msgstr "Kesalahan tak dikenal saat menampilkan diagram "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:587
+#: Miradi/source/org/miradi/main/MainWindow.java:581
 msgid "Unknown error prevented opening that project"
 msgstr "Kesalahan tak dikenal mencegah dibukanya proyek "
 

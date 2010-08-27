@@ -48,7 +48,7 @@ class HttpGet extends HttpTransaction
 	
 	public static HttpTransaction getProjectList(URL serverURL) throws Exception
 	{
-		HttpGet get = new HttpGet(serverURL);
+		HttpGet get = new HttpGet(serverURL, "projects", new String[0]);
 		get.performRequest(get.connection);
 		return get;
 	}

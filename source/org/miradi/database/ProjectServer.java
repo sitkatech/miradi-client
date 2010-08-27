@@ -27,6 +27,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.Vector;
 
 import org.json.JSONObject;
@@ -92,6 +93,11 @@ public class ProjectServer
 		MiradiMemoryFileSystem memoryFileSystem = new MiradiMemoryFileSystem();
 		memoryFileSystem.setDataLocation(memoryLocation);
 		currentFileSystem = memoryFileSystem;
+	}
+
+	public Set<String> getListOfProjectsIn(String directory) throws Exception
+	{
+		return currentFileSystem.getListOfProjectsIn(directory);
 	}
 
 	public void createProject(String projectName) throws Exception

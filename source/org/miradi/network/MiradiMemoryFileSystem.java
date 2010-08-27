@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.Vector;
 
 public class MiradiMemoryFileSystem extends AbstractNonRemoteMiradiFileSystem
@@ -37,6 +38,11 @@ public class MiradiMemoryFileSystem extends AbstractNonRemoteMiradiFileSystem
 	public boolean isLocalFileSystem()
 	{
 		return false;
+	}
+	
+	public Set<String> getListOfProjectsIn(String directory)
+	{
+		return new HashSet<String>();
 	}
 
 	public void createProject(String projectName) throws Exception
