@@ -246,12 +246,6 @@ public class LinkCreator
 		createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
 	}
 	
-	public ORef createFactorLinkAndAddToDiagramUsingCommands(DiagramModel diagramModel, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
-	{
-		DiagramObject diagramObject = diagramModel.getDiagramObject();
-		return createFactorLinkAndAddToDiagramUsingCommands(diagramObject, diagramFactorFrom, diagramFactorTo);
-	}
-	
 	public ORef createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
 		Factor fromFactor = Factor.findFactor(getProject(), fromDiagramFactor.getWrappedORef());
