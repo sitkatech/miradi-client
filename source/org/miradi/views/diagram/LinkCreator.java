@@ -513,8 +513,13 @@ public class LinkCreator
 		
 		return factorLinkRefs;
 	}
+
+	public void createFactorLinkAndDiagramLinkVoid(DiagramObject diagramObject, DiagramFactor from, DiagramFactor to) throws Exception
+	{
+		createFactorLinkAndDiagramLink(diagramObject, from, to);
+	}
 	
-	public ORefList createFactorLinkAndDiagramLink(DiagramObject diagramObject, DiagramFactor from, DiagramFactor to) throws Exception
+	private ORefList createFactorLinkAndDiagramLink(DiagramObject diagramObject, DiagramFactor from, DiagramFactor to) throws Exception
 	{
 		if (!from.isGroupBoxFactor() && !to.isGroupBoxFactor())
 		{
