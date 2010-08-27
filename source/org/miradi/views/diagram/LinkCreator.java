@@ -471,18 +471,17 @@ public class LinkCreator
 	
 
 		ORefList diagramLinkRefs1 = createFactorLinkAndDiagramLink(diagramModel.getDiagramObject(), fromDiagramFactor, newlyInsertedDiagramFactor);
-		ORefList newFactorLinkRefs1 = convertToFactorLinks(diagramLinkRefs1);
 		if (isBidirectional)
-			enableBidirectionality(newFactorLinkRefs1);
+			enableBidirectionality(diagramLinkRefs1);
 		
 		ORefList diagramLinkRefs2 = createFactorLinkAndDiagramLink(diagramModel.getDiagramObject(), newlyInsertedDiagramFactor, toDiagramFactor);
-		ORefList newFactorLinkRefs2 = convertToFactorLinks(diagramLinkRefs2);
 		if (isBidirectional)
-			enableBidirectionality(newFactorLinkRefs2);
+			enableBidirectionality(diagramLinkRefs2);
 	}
 	
-	private void enableBidirectionality(ORefList factorLinkRefs) throws Exception
+	private void enableBidirectionality(ORefList diagramLinkRefs) throws Exception
 	{
+		ORefList factorLinkRefs = convertToFactorLinks(diagramLinkRefs);
 		for (int index = 0; index < factorLinkRefs.size(); ++index)
 		{
 			enableBidirectional(factorLinkRefs.get(index));
