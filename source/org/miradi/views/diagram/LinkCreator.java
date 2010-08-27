@@ -270,7 +270,7 @@ public class LinkCreator
 		project.executeCommandsWithoutTransaction(createCommandsToEnableBidirectionalFlag(diagramLink));
 	}
 
-	private Command[] createCommandsToEnableBidirectionalFlag(DiagramLink diagramLink)
+	public static Command[] createCommandsToEnableBidirectionalFlag(DiagramLink diagramLink)
 	{
 		CommandSetObjectData command = new CommandSetObjectData(diagramLink.getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
 		return new Command[] {command};
