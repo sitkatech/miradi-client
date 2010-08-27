@@ -124,7 +124,7 @@ public class Dashboard extends BaseObject
 		for(Target target : targets)
 		{
 			ORefSet upstreamThreats = chain.getUpstreamThreatRefsFromTarget(target);
-			threatTargetCount =+ upstreamThreats.size();		
+			threatTargetCount += upstreamThreats.size();		
 		}
 		
 		return Integer.toString(threatTargetCount);
