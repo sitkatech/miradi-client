@@ -1789,7 +1789,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef diagramLinkRef = createDiagramLinkAndAddToDiagram(from, to);
 		DiagramLink diagramLink = DiagramLink.find(this, diagramLinkRef);
-		setBidrectionality(diagramLink.getWrappedRef(), isBidirectionalTag);
+		setBidrectionality(diagramLink, isBidirectionalTag);
 		
 		return diagramLinkRef;
 	}
@@ -1902,9 +1902,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return createAndPopulateDirectThreatDiagramLink().getRef();
 	}
 	
-	public void setBidrectionality(ORef factorLinkRef, String isBidirectional)	throws CommandFailedException
+	public void setBidrectionality(DiagramLink diagramLink, String isBidirectional)	throws CommandFailedException
 	{
-		CommandSetObjectData setBidirectionality = new CommandSetObjectData(factorLinkRef, FactorLink.TAG_BIDIRECTIONAL_LINK, isBidirectional);
+		CommandSetObjectData setBidirectionality = new CommandSetObjectData(diagramLink, DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, isBidirectional);
 		executeCommand(setBidirectionality);
 	}
 
