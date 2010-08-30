@@ -1380,7 +1380,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	private void populateDiagramLink(DiagramLink diagramLink) throws Exception
 	{
 		fillObjectUsingCommand(diagramLink, DiagramLink.TAG_COLOR, DiagramLinkColorQuestion.DARK_BLUE_CODE);
-		fillObjectUsingCommand(diagramLink.getWrappedFactorLink(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
+		fillObjectUsingCommand(diagramLink, DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, DiagramLink.BIDIRECTIONAL_LINK);
 		
 		PointList bendPoints = new PointList();
 		bendPoints.add(new Point(100, 100));
