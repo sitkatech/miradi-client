@@ -65,8 +65,7 @@ public class TestDiagramChainObject extends TestCaseWithProject
 		getProject().createDiagramLinkAndAddToDiagram(strategy, causeLinkedTo);
 		ORef diagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(strategy, causeLinkedToFrom);
 		DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);
-		FactorLink factorLink = diagramLink.getWrappedFactorLink();
-		factorLink.setData(FactorLink.TAG_BIDIRECTIONAL_LINK, FactorLink.BIDIRECTIONAL_LINK.toString());
+		diagramLink.setData(DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, DiagramLink.BIDIRECTIONAL_LINK.toString());
 		
 		assertTrue("link is not bidirectional?", diagramLink.isBidirectional());
 		

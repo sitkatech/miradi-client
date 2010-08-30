@@ -55,7 +55,7 @@ public class DiagramLinkPoolExporter extends BaseObjectPoolExporter
 		String NON_BIDIRECTIONAL_LINK = "0";
 		String isBidirectional = NON_BIDIRECTIONAL_LINK; 
 		if (diagramLink.isBidirectional())
-			isBidirectional = FactorLink.BIDIRECTIONAL_LINK;
+			isBidirectional = DiagramLink.BIDIRECTIONAL_LINK;
 		
 		getWcsXmlExporter().writeOptionalElement(getWriter(), getPoolName() + FactorLink.TAG_BIDIRECTIONAL_LINK, isBidirectional);
 	}

@@ -262,15 +262,14 @@ public class DiagramLink extends BaseObject
 	
 	public boolean isBidirectional()
 	{
-		if (getWrappedFactorLink() != null)
-			return getWrappedFactorLink().isBidirectional();
+		if (getGroupedDiagramLinkRefs().hasRefs())
+		{		
+			ORef diagramLinkRef = getGroupedDiagramLinkRefs().getRefForType(DiagramLink.getObjectType());
+			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);
+			return diagramLink.isBidirectional();
+		}
 		
-		if (getGroupedDiagramLinkRefs().size() == 0)
-			return false;
-		
-		ORef diagramLinkRef = getGroupedDiagramLinkRefs().getRefForType(DiagramLink.getObjectType());
-		DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);
-		return diagramLink.isBidirectional();
+		return isBidirectionalLink.get().equals(BIDIRECTIONAL_LINK);
 	}
 	
 	public FactorLink getWrappedFactorLink()
@@ -375,7 +374,7 @@ public class DiagramLink extends BaseObject
 	{
 		CommandVector commands = new CommandVector();
 		String newBidirectionalValue = BooleanData.toString(shouldBeBidirectional);
-		commands.add(new CommandSetObjectData(getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, newBidirectionalValue));
+		commands.add(new CommandSetObjectData(getWrappedRef(), DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, newBidirectionalValue));
 		return commands;
 	}
 
@@ -420,6 +419,7 @@ public class DiagramLink extends BaseObject
 		bendPoints = new PointListData(TAG_BEND_POINTS);
 		groupedDiagramLinkRefs = new ORefListData(TAG_GROUPED_DIAGRAM_LINK_REFS);
 		color = new ChoiceData(TAG_COLOR, getQuestion(DiagramLinkColorQuestion.class));
+		isBidirectionalLink = new BooleanData(TAG_IS_BIDIRECTIONAL_LINK);
 		
 		addNoClearField(TAG_WRAPPED_ID, underlyingObjectId);
 		addNoClearField(TAG_FROM_DIAGRAM_FACTOR_ID, fromId);
@@ -427,6 +427,7 @@ public class DiagramLink extends BaseObject
 		addField(TAG_BEND_POINTS, bendPoints);
 		addField(TAG_GROUPED_DIAGRAM_LINK_REFS, groupedDiagramLinkRefs);
 		addField(TAG_COLOR, color);
+		addField(TAG_IS_BIDIRECTIONAL_LINK, isBidirectionalLink);
 	}
 	
 	public static final String TAG_WRAPPED_ID = "WrappedLinkId";
@@ -435,9 +436,11 @@ public class DiagramLink extends BaseObject
 	public static final String TAG_BEND_POINTS = "BendPoints";
 	public static final String TAG_GROUPED_DIAGRAM_LINK_REFS = "GroupedDiagramLinkRefs";
 	public static final String TAG_COLOR = "Color";
+	public static final String TAG_IS_BIDIRECTIONAL_LINK = "IsBidirectionalLink";
 	
 	public static final int FROM = 1;
 	public static final int TO = 2;
+	public static final String BIDIRECTIONAL_LINK = BooleanData.BOOLEAN_TRUE;
 	
 	public static final String OBJECT_NAME = "DiagramLink";
 	
@@ -447,4 +450,5 @@ public class DiagramLink extends BaseObject
 	private PointListData bendPoints;
 	private ORefListData groupedDiagramLinkRefs;
 	private ChoiceData color;
+	private BooleanData isBidirectionalLink;
 }
