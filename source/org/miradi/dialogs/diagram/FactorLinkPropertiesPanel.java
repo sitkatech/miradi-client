@@ -28,9 +28,7 @@ import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramLink;
-import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
 import org.miradi.questions.DiagramLinkColorQuestion;
 import org.miradi.utils.CommandVector;
@@ -44,9 +42,9 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 	
 	private FactorLinkPropertiesPanel(Project projectToUse, DiagramLink link)
 	{
-		super(projectToUse, ObjectType.FACTOR_LINK, link.getWrappedId());
+		super(projectToUse, link.getRef());
 
-		addField(createCheckBoxField(FactorLink.getObjectType(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
+		addField(createCheckBoxField(DiagramLink.getObjectType(), DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, DiagramLink.BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_FALSE));
 		addField(createChoiceField(DiagramLink.getObjectType(), DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion()));
 		
 		setObjectRefsWithGroupBoxLinkAndChildrenRefs(link);
@@ -56,17 +54,7 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 	private void setObjectRefsWithGroupBoxLinkAndChildrenRefs(DiagramLink groupBoxLink)
 	{
 		ORefList selfOrChildrenRefs = groupBoxLink.getSelfOrChildren();
-		ORefList groupBoxAndChildrenWrappedRefs = new ORefList();
-		for (int refIndex = 0; refIndex < selfOrChildrenRefs.size(); ++refIndex)
-		{
-			DiagramLink childLink = DiagramLink.find(getProject(), selfOrChildrenRefs.get(refIndex));
-			ORef factorLinkRef = childLink.getWrappedRef();
-			groupBoxAndChildrenWrappedRefs.add(factorLinkRef);
-		}
-		
-		ORef diagramLinkRef = groupBoxLink.getRef();
-		groupBoxAndChildrenWrappedRefs.add(diagramLinkRef);
-		setObjectRefs(groupBoxAndChildrenWrappedRefs);
+		setObjectRefs(selfOrChildrenRefs);
 	}
 
 	public String getPanelDescription()
@@ -83,7 +71,7 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		if (event.isSetDataCommandWithThisTypeAndTag(FactorLink.getObjectType(), FactorLink.TAG_BIDIRECTIONAL_LINK))
+		if (event.isSetDataCommandWithThisTypeAndTag(DiagramLink.getObjectType(), DiagramLink.TAG_IS_BIDIRECTIONAL_LINK))
 			ensureSiblingsHaveEqualBidirectionality((CommandSetObjectData) event.getCommand());
 	}
 
@@ -91,14 +79,10 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 	{
 		try
 		{
-			ORef factorLinkRef = command.getObjectORef();
-			FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
-			ORefList diagramLinkReferrerRefs = factorLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
-			for (int index = 0; index < diagramLinkReferrerRefs.size(); ++index)
-			{
-				DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkReferrerRefs.get(index));
-				ensureSiblingsHaveEqualBidirectionality(diagramLink);
-			}
+			ORef diagramLinkRef = command.getObjectORef();
+			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);
+			ensureSiblingsHaveEqualBidirectionality(diagramLink);
+			
 		}
 		catch (Exception e)
 		{

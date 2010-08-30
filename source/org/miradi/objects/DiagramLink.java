@@ -374,7 +374,7 @@ public class DiagramLink extends BaseObject
 	{
 		CommandVector commands = new CommandVector();
 		String newBidirectionalValue = BooleanData.toString(shouldBeBidirectional);
-		commands.add(new CommandSetObjectData(getWrappedRef(), DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, newBidirectionalValue));
+		commands.add(new CommandSetObjectData(getRef(), DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, newBidirectionalValue));
 		return commands;
 	}
 
