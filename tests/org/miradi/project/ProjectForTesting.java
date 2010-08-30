@@ -1902,14 +1902,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return createAndPopulateDirectThreatDiagramLink().getRef();
 	}
 	
-	public ORef creatThreatTargetBidirectionalLink() throws Exception
-	{
-		ORef factorLinkRef = createThreatTargetLink();
-		enableBidrectionality(factorLinkRef);
-		
-		return factorLinkRef;
-	}
-
 	public void enableBidrectionality(ORef factorLinkRef) throws CommandFailedException
 	{
 		setBidrectionality(factorLinkRef, BooleanData.BOOLEAN_TRUE);
