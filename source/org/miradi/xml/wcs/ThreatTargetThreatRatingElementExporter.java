@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.wcs;
 
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.diagram.ThreatTargetChainWalker;
@@ -120,9 +119,12 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 		{
 			Stress stress = Stress.find(getProject(), stressRefs.get(index));
 			ThreatTargetChainWalker chainWalker = new ThreatTargetChainWalker(getProject());
-			HashSet<Cause> upstreamThreatsFromTarget = chainWalker.getUpstreamThreatsFromTarget(target);
-			for(Cause threat : upstreamThreatsFromTarget)
+			ORefSet upstreamThreatsFromTarget = chainWalker.getUpstreamThreatRefsFromTarget(target);
+			ORefList sortedThreatRefs = new ORefList(upstreamThreatsFromTarget);
+			sortedThreatRefs.sort();
+			for(int threatIndex = 0; threatIndex < sortedThreatRefs.size(); ++threatIndex)
 			{
+				Cause threat = Cause.find(getProject(), sortedThreatRefs.get(threatIndex));
 				getWcsXmlExporter().writeStartElement(THREAT_RATING);
 				ORef targetRef = target.getRef();
 				ORef threatRef = threat.getRef();

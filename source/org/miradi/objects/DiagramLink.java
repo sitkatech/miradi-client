@@ -152,6 +152,11 @@ public class DiagramLink extends BaseObject
 		return DiagramFactor.find(objectManager, getOppositeDiagramFactorRef(direction));
 	}
 	
+	public ORef getFromWrappedRef()
+	{
+		return getFromDiagramFactor().getWrappedORef();
+	}
+	
 	public ORef getFromDiagramFactorRef()
 	{
 		return new ORef(DiagramFactor.getObjectType(), getFromDiagramFactorId());
@@ -160,6 +165,11 @@ public class DiagramLink extends BaseObject
 	public DiagramFactor getFromDiagramFactor()
 	{
 		return DiagramFactor.find(getProject(), getFromDiagramFactorRef());
+	}
+	
+	public ORef getToWrappedRef()
+	{
+		return getToDiagramFactor().getWrappedORef();
 	}
 	
 	public ORef getToDiagramFactorRef()

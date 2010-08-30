@@ -131,10 +131,10 @@ public class FactorLink extends BaseObject
 	
 	public static final String TAG_FROM_REF = "FromRef";
 	public static final String TAG_TO_REF = "ToRef";
-	public static final String TAG_BIDIRECTIONAL_LINK = "BidirectionalLink";
+	private static final String TAG_BIDIRECTIONAL_LINK = "BidirectionalLink";
 	
 	public static final String OBJECT_NAME = "Link";
-	public static final String BIDIRECTIONAL_LINK = BooleanData.BOOLEAN_TRUE;
+	private static final String BIDIRECTIONAL_LINK = BooleanData.BOOLEAN_TRUE;
 	
 	private ORefData fromRef;
 	private ORefData toRef;

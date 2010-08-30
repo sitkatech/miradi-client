@@ -23,7 +23,7 @@ import java.util.Vector;
 
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objectpools.ThreatStressRatingPool;
-import org.miradi.objects.FactorLink;
+import org.miradi.objects.DiagramLink;
 import org.miradi.objects.ThreatStressRating;
 
 public class TestThreatStressRatingHelper extends TestCaseWithProject
@@ -35,12 +35,12 @@ public class TestThreatStressRatingHelper extends TestCaseWithProject
 	
 	public void testGetRelatedThreatStressRatings() throws Exception 
 	{
-		FactorLink threatLink1 = getProject().createAndPopulateDirectThreatDiagramLink();
+		DiagramLink threatLink1 = getProject().createAndPopulateDirectThreatDiagramLink();
 		ThreatStressRatingPool threatStressRatingPool = getProject().getThreatStressRatingPool();
-		assertEquals("wrong TSR count?", 1, threatStressRatingPool.getORefList().size());
+		assertEquals("wrong TSR count?", 2, threatStressRatingPool.getORefList().size());
 		
 		ThreatStressRatingHelper helper = new ThreatStressRatingHelper(getProject());
-		Vector<ThreatStressRating> relatedThreatStressRatings = helper.getRelatedThreatStressRatings(threatLink1.getFromFactorRef(), threatLink1.getToFactorRef());
+		Vector<ThreatStressRating> relatedThreatStressRatings = helper.getRelatedThreatStressRatings(threatLink1.getFromWrappedRef(), threatLink1.getToWrappedRef());
 		assertEquals("wrong related TSR count", 1, relatedThreatStressRatings.size());
 	}
 }
