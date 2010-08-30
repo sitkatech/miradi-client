@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/48'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/49'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -276,7 +276,7 @@ DiagramLink.element = element miradi:DiagramLink
   element miradi:DiagramLinkBendPoints{ DiagramPoint.element* } &
   element miradi:DiagramLinkGroupedDiagramLinkIds { DiagramLinkId.element* } &
   element miradi:DiagramLinkColor { vocabulary_diagram_link_color  } &
-  element miradi:DiagramLinkBidirectionalLink { xsd:boolean }?
+  element miradi:DiagramLinkIsBidirectionalLink { xsd:boolean }?
 }
 
 BiodiversityTargetPool.element = element miradi:BiodiversityTargetPool { BiodiversityTarget.element* }
@@ -988,4 +988,3 @@ ProjectSummaryLocationCountriesContainer.element = element miradi:ProjectSummary
 {
   element miradi:code { vocabulary_countries } * 
 }
-

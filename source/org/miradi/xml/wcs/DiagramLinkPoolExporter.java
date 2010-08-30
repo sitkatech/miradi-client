@@ -24,7 +24,6 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.questions.DiagramLinkColorQuestion;
 import org.miradi.utils.PointList;
 
@@ -57,7 +56,7 @@ public class DiagramLinkPoolExporter extends BaseObjectPoolExporter
 		if (diagramLink.isBidirectional())
 			isBidirectional = DiagramLink.BIDIRECTIONAL_LINK;
 		
-		getWcsXmlExporter().writeOptionalElement(getWriter(), getPoolName() + FactorLink.TAG_BIDIRECTIONAL_LINK, isBidirectional);
+		getWcsXmlExporter().writeOptionalElement(getWriter(), getPoolName() + DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, isBidirectional);
 	}
 	
 	private void writeDiagramLinkBendPoints(DiagramLink diagramLink) throws Exception

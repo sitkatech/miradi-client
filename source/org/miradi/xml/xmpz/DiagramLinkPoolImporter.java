@@ -24,7 +24,6 @@ import java.awt.Point;
 
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorLinkId;
-import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
@@ -61,10 +60,10 @@ public class DiagramLinkPoolImporter extends AbstractBaseObjectPoolImporter
 
 	private void importBidirectionalCode(Node node, DiagramLink diagramLink) throws Exception
 	{
-		Node bidirectionalNode = getImporter().getNode(node, getPoolName() + FactorLink.TAG_BIDIRECTIONAL_LINK);
+		Node bidirectionalNode = getImporter().getNode(node, getPoolName() + DiagramLink.TAG_IS_BIDIRECTIONAL_LINK);
 		String bidirectionalNodeValue = bidirectionalNode.getTextContent();
 		if (getImporter().isTrue(bidirectionalNodeValue))
-			getImporter().setData(diagramLink.getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
+			getImporter().setData(diagramLink, DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, DiagramLink.BIDIRECTIONAL_LINK);
 	}
 	
 	private void importBendPoints(Node node, ORef destinationRef) throws Exception
