@@ -26,7 +26,6 @@ import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
@@ -73,41 +72,39 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 	public static void createThreatFactorLink(ProjectForTesting project, DiagramFactor cause, DiagramFactor target) throws Exception
 	{
 		DiagramLink diagramLink = project.createDiagramLinkAndAddToDiagramModel(cause, target);
-		FactorLink factorLink = diagramLink.getWrappedFactorLink();
 		
 		Stress stress = project.createAndPopulateStress();
 		ORefList stressRefs = new ORefList(stress);
-		ORef targetRef = ProjectForTesting.getDownstreamTargetRef(factorLink);
+		ORef targetRef = ProjectForTesting.getDownstreamTargetRef(diagramLink);
 		project.setObjectData(targetRef, Target.TAG_STRESS_REFS, stressRefs.toString());	
 		
-		populateWithThreatStressRating(project, factorLink, stress.getRef());
-		populateWithThreatStressRating(project, factorLink, stress.getRef());
-		populateWithThreatStressRating(project, factorLink, stress.getRef());
+		populateWithThreatStressRating(project, diagramLink, stress.getRef());
+		populateWithThreatStressRating(project, diagramLink, stress.getRef());
+		populateWithThreatStressRating(project, diagramLink, stress.getRef());
 	}
 	
 	private void createFactorLinkWithThreatStressRating() throws Exception
 	{
-		ORef threatLinkRef = getProject().createThreatTargetLinkAndAddToDiagram();
-		FactorLink factorLink = FactorLink.find(getProject(), threatLinkRef);
+		DiagramLink diagramLink = getProject().createAndPopulateDirectThreatDiagramLink();
 		
 		Stress stress = getProject().createAndPopulateStress();
-		ORef targetRef = ProjectForTesting.getDownstreamTargetRef(factorLink);
+		ORef targetRef = ProjectForTesting.getDownstreamTargetRef(diagramLink);
 		ORefList stressRefs = new ORefList(stress);
 		getProject().setObjectData(targetRef, Target.TAG_STRESS_REFS, stressRefs.toString());	
-		getProject().populateDirectThreatLink(factorLink, stressRefs);
+		getProject().populateDirectThreatLink(diagramLink, targetRef);
 		
-		populateWithThreatStressRating(getProject(), factorLink, stress.getRef());
-		populateWithThreatStressRating(getProject(), factorLink, stress.getRef());
-		populateWithThreatStressRating(getProject(), factorLink, stress.getRef());
-		populateWithThreatStressRating(getProject(), factorLink, stress.getRef());
+		populateWithThreatStressRating(getProject(), diagramLink, stress.getRef());
+		populateWithThreatStressRating(getProject(), diagramLink, stress.getRef());
+		populateWithThreatStressRating(getProject(), diagramLink, stress.getRef());
+		populateWithThreatStressRating(getProject(), diagramLink, stress.getRef());
 		
 		ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
-		assertEquals(4, threatTargetVirtualLink.calculateThreatRatingBundleValue(ProjectForTesting.getUpstreamThreatRef(factorLink), targetRef));
+		assertEquals(4, threatTargetVirtualLink.calculateThreatRatingBundleValue(ProjectForTesting.getUpstreamThreatRef(diagramLink), targetRef));
 	}
 
-	private static void populateWithThreatStressRating(ProjectForTesting project, FactorLink factorLink, ORef stressRef) throws Exception
+	private static void populateWithThreatStressRating(ProjectForTesting project, DiagramLink diagramLink, ORef stressRef) throws Exception
 	{
-		project.createAndPopulateThreatStressRating(stressRef, ProjectForTesting.getUpstreamThreatRef(factorLink));
+		project.createAndPopulateThreatStressRating(stressRef, ProjectForTesting.getUpstreamThreatRef(diagramLink));
 	}
 	
 	public void testGetTargetMajorityRating() throws Exception

@@ -136,6 +136,7 @@ import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.PointList;
+import org.miradi.utils.ThreatStressRatingHelper;
 import org.miradi.utils.Translation;
 import org.miradi.views.diagram.LinkCreator;
 import org.miradi.xml.conpro.ConProMiradiXml;
@@ -398,16 +399,15 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public FactorLink createAndPopulateDirectThreatLink() throws Exception
 	{
-		Target target = createAndPopulateTarget();
-		Cause threat = createAndPopulateThreat();
-		ORef directThreatLinkRef = createFactorLink(threat.getRef(), target.getRef());
-		FactorLink directThreatLink = FactorLink.find(this, directThreatLinkRef);
-		populateDirectThreatLink(directThreatLink, target.getStressRefs());
+		DiagramLink diagramLink = createAndPopulateDirectThreatDiagramLink();
+		ORef targetRef = diagramLink.getToWrappedRef();
+		Target target = Target.find(getObjectManager(), targetRef);
+		populateDirectThreatLink(diagramLink, target.getRef());
 
-		return directThreatLink;
+		return diagramLink.getWrappedFactorLink();
 	}
 	
-	public FactorLink createAndPopulateDirectThreatDiagramLink() throws Exception
+	public DiagramLink createAndPopulateDirectThreatDiagramLink() throws Exception
 	{
 		DiagramFactor targetDiagramFactor = createDiagramFactorAndAddToDiagram(Target.getObjectType());
 		Target target = (Target) targetDiagramFactor.getWrappedFactor();
@@ -420,19 +420,27 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		LinkCreator creator = new LinkCreator(this);
 		DiagramLink created = creator.createFactorLinkAndAddToDiagramUsingCommands(getTestingDiagramObject(), threatDiagramFactor, targetDiagramFactor);
-		FactorLink directThreatLink = created.getWrappedFactorLink();
 
-		return directThreatLink;
+		return created;
 	}
 	
-	public FactorLink createAndPopulateDirectThreatLink(Target target) throws Exception
+	private DiagramLink createAndPopulateDirectThreatLink(Target target) throws Exception
 	{
-		Cause threat = createAndPopulateThreat();
-		ORef directThreatLinkRef = createFactorLink(threat.getRef(), target.getRef());
-		FactorLink factorLink = FactorLink.find(this, directThreatLinkRef);
-		populateDirectThreatLink(factorLink, target.getStressRefs());
+		DiagramFactor diagramFactor = createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		enableAsThreat(diagramFactor.getWrappedORef());
+		Cause threat = Cause.find(this, diagramFactor.getWrappedORef());
+		populateCause(threat);
+		
+		FactorCommandHelper factorHelper = new FactorCommandHelper(this, getTestingDiagramModel());
+		CommandCreateObject createDiagramFactor = factorHelper.createDiagramFactor(getTestingDiagramObject(), target.getRef());
+		DiagramFactor targetDiagramFactor = DiagramFactor.find(this, createDiagramFactor.getObjectRef());
+		
+		
+		ORef diagramLinkRef = createDiagramLinkAndAddToDiagram(diagramFactor, targetDiagramFactor);
+		DiagramLink diagramLink = DiagramLink.find(this, diagramLinkRef);		
+		populateDirectThreatLink(diagramLink, target.getRef());
 
-		return factorLink;
+		return diagramLink;
 	}
 	
 	public ThreatStressRating createAndPopulateThreatStressRating() throws Exception
@@ -1014,12 +1022,15 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(stress, Stress.TAG_SCOPE, StatusQuestion.GOOD);
 	}
 	
-	public void populateDirectThreatLink(FactorLink directThreatLink, ORefList stressRefs) throws Exception
+	public void populateDirectThreatLink(DiagramLink directThreatDiagramLink, ORef targetRef) throws Exception
 	{
-		for (int refIndex = 0; refIndex < stressRefs.size(); ++refIndex)
+		ORef threatRef = getUpstreamThreatRef(directThreatDiagramLink);
+		ThreatStressRatingHelper helper = new ThreatStressRatingHelper(this);
+		ORefList threatStressRatingRefs = helper.getRelatedThreatStressRatingRefs(threatRef, targetRef);
+		for (int index = 0; index < threatStressRatingRefs.size(); ++index)
 		{
-			ORef threatRef = getUpstreamThreatRef(directThreatLink);
-			createAndPopulateThreatStressRating(stressRefs.get(refIndex), threatRef).getRef();	
+			ThreatStressRating threatStressRating = ThreatStressRating.find(this, threatStressRatingRefs.get(index));
+			populateThreatStressRating(threatStressRating);
 		}
 	}
 	
@@ -1463,8 +1474,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void createAndPopulateStrategyThreatTargetAssociation() throws Exception
 	{
-		FactorLink factorLink = createAndPopulateDirectThreatLink();
-		ORef threatRef = getUpstreamThreatRef(factorLink);
+		DiagramLink diagramLink = createAndPopulateDirectThreatDiagramLink();
+		ORef threatRef = getUpstreamThreatRef(diagramLink);
 		Strategy strategy = createAndPopulateStrategy();
 		createFactorLink(threatRef, strategy.getRef());
 	}
@@ -1897,11 +1908,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return createObject(ObjectType.FACTOR_LINK, parameter);
 	}
 	
-	public ORef createThreatTargetLinkAndAddToDiagram() throws Exception
-	{
-		return createAndPopulateDirectThreatDiagramLink().getRef();
-	}
-	
 	public void setBidrectionality(DiagramLink diagramLink, String isBidirectional)	throws CommandFailedException
 	{
 		CommandSetObjectData setBidirectionality = new CommandSetObjectData(diagramLink, DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, isBidirectional);
@@ -1934,24 +1940,24 @@ public class ProjectForTesting extends ProjectWithHelpers
 		executeCommand(setThreat);
 	}
 	
-	public static ORef getDownstreamTargetRef(FactorLink factorLink) throws Exception
+	public static ORef getDownstreamTargetRef(DiagramLink diagramLink) throws Exception
 	{
-		if (factorLink.getToFactorRef().getObjectType() == Target.getObjectType())
-			return factorLink.getToFactorRef();
+		if (diagramLink.getToDiagramFactor().getWrappedORef().getObjectType() == Target.getObjectType())
+			return diagramLink.getToWrappedRef();
 		
-		if (factorLink.getFromFactorRef().getObjectType() == Target.getObjectType() && factorLink.isBidirectional())
-			return factorLink.getFromFactorRef();
+		if (diagramLink.getFromDiagramFactor().getWrappedORef().getObjectType() == Target.getObjectType() && diagramLink.isBidirectional())
+			return diagramLink.getFromWrappedRef();
 		
 		throw new Exception();
 	}
 	
-	public static ORef getUpstreamThreatRef(FactorLink factorLink) throws Exception
+	public static ORef getUpstreamThreatRef(DiagramLink diagramLink) throws Exception
 	{
-		if (Cause.is(factorLink.getFromFactorRef()))
-			return factorLink.getFromFactorRef();
+		if (Cause.is(diagramLink.getFromWrappedRef()))
+			return diagramLink.getFromWrappedRef();
 		
-		if (Cause.is(factorLink.getToFactorRef()) && factorLink.isBidirectional())
-			return factorLink.getToFactorRef();
+		if (Cause.is(diagramLink.getToWrappedRef()) && diagramLink.isBidirectional())
+			return diagramLink.getToWrappedRef();
 		
 		throw new Exception();
 	}
