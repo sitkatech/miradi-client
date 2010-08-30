@@ -23,7 +23,6 @@ import java.util.Vector;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
@@ -60,7 +59,7 @@ public class TestDiagramObject extends ObjectTestCase
 	public static void makeLinkBidirectional(Project project, ORef diagramLinkRef) throws Exception
 	{
 		DiagramLink diagramLink = DiagramLink.find(project, diagramLinkRef);
-		CommandSetObjectData cmd = new CommandSetObjectData(diagramLink.getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
+		CommandSetObjectData cmd = new CommandSetObjectData(diagramLink, DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, DiagramLink.BIDIRECTIONAL_LINK);
 		project.executeCommand(cmd);
 	}
 
