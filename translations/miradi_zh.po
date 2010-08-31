@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-27 17:17-0500\n"
+"POT-Creation-Date: 2010-08-31 09:37-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4230,7 +4230,7 @@ msgstr "浅黄色"
 msgid "Link Direct Threats to Targets"
 msgstr "将直接威胁因子链结到对象 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorLinkPropertiesPanel.java:74
+#: Miradi/source/org/miradi/dialogs/diagram/FactorLinkPropertiesPanel.java:57
 msgid "Link Properties"
 msgstr "链接属性 \t\t"
 
@@ -8568,6 +8568,9 @@ msgstr "到: \t\t"
 
 msgid "FieldLabel|13.Color|Color"
 msgstr "颜色 \t\t"
+
+msgid "FieldLabel|13.IsBidirectionalLink|Bidirectional Link"
+msgstr ""
 
 msgid "FieldLabel|14.ResourceAssignment|Assignment"
 msgstr ""

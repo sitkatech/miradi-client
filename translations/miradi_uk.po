@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-27 17:17-0500\n"
+"POT-Creation-Date: 2010-08-31 09:37-0500\n"
 "PO-Revision-Date: 2010-05-12 13:30-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -4133,7 +4133,7 @@ msgstr ""
 msgid "Link Direct Threats to Targets"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorLinkPropertiesPanel.java:74
+#: Miradi/source/org/miradi/dialogs/diagram/FactorLinkPropertiesPanel.java:57
 msgid "Link Properties"
 msgstr ""
 
@@ -8380,6 +8380,9 @@ msgid "FieldLabel|13.ToDiagramFactorId|To"
 msgstr ""
 
 msgid "FieldLabel|13.Color|Color"
+msgstr ""
+
+msgid "FieldLabel|13.IsBidirectionalLink|Bidirectional Link"
 msgstr ""
 
 msgid "FieldLabel|14.ResourceAssignment|Assignment"
