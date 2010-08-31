@@ -647,7 +647,11 @@
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
 <target name="translations" depends="pot, spanish, indonesian, italian, mongolian, ukrainian, chinese" description="Create Translatable Content jars/zips">
-	
+	<exec executable="hg" failonerror="true">
+		<arg value="-m=\"Updated PO files: ${version.timestamp}\""/>
+		<arg value="commit"/>
+		<arg value="translations/*"/>
+	</exec>
 </target>
 	
 <!-- ================================================================== -->
