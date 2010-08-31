@@ -97,6 +97,17 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		verifyBidirectionality(factorLinkStrings, diagramLinkStrings, "1");
 	}
 	
+	public void testMovingDiagramLinkWithNoWrappedRefAndNoGroupBoxChildre() throws Exception
+	{
+		String factorLinkString = "{\"AssignmentIds\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":29}\",\"TimeStampModified\":\"1283269054280\",\"ExpenseRefs\":\"\",\"ToRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":25}\",\"Label\":\"\",\"Id\":31,\"BidirectionalLink\":\"0\",\"ProgressReportRefs\":\"\"}";
+		String diagramLinkString = "{\"FromDiagramFactorId\":34,\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"BendPoints\":\"\",\"Color\":\"\",\"ToDiagramFactorId\":26,\"TimeStampModified\":\"1283270372203\",\"GroupedDiagramLinkRefs\":\"\",\"Id\":35,\"Label\":\"\",\"WrappedLinkId\":-1,\"ProgressReportRefs\":\"\"}";
+		
+		final String[] factorLinkStrings = new String[]{factorLinkString, };
+		final String[] diagramLinkStrings = new String[]{diagramLinkString, };
+		
+		verifyBidirectionality(factorLinkStrings, diagramLinkStrings, "");
+	}
+	
 	private void verifyBidirectionality(final String[] factorLinkStrings, final String[] diagramLinkStrings, String expectedBidiretionalValue) throws Exception, IOException
 	{
 		File jsonDir = createJsonDir();
