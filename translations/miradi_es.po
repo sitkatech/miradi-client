@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-27 17:17-0500\n"
+"POT-Creation-Date: 2010-08-31 09:37-0500\n"
 "PO-Revision-Date: 2010-01-14 18:04-0500\n"
 "Last-Translator: Carly <cgordon@globalarena.com>\n"
 "Language-Team: Spanish\n"
@@ -4401,7 +4401,7 @@ msgstr "Amarillo claro "
 msgid "Link Direct Threats to Targets"
 msgstr "Enlazar amenazas directas a objetos"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorLinkPropertiesPanel.java:74
+#: Miradi/source/org/miradi/dialogs/diagram/FactorLinkPropertiesPanel.java:57
 msgid "Link Properties"
 msgstr "Propiedades del enlace"
 
@@ -8894,6 +8894,9 @@ msgstr "Para"
 
 msgid "FieldLabel|13.Color|Color"
 msgstr "Color"
+
+msgid "FieldLabel|13.IsBidirectionalLink|Bidirectional Link"
+msgstr ""
 
 msgid "FieldLabel|14.ResourceAssignment|Assignment"
 msgstr "Asignación"
