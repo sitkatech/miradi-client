@@ -273,13 +273,6 @@ public class DiagramLink extends BaseObject
 	
 	public boolean isBidirectional()
 	{
-		if (getGroupedDiagramLinkRefs().hasRefs())
-		{		
-			ORef diagramLinkRef = getGroupedDiagramLinkRefs().getRefForType(DiagramLink.getObjectType());
-			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);
-			return diagramLink.isBidirectional();
-		}
-		
 		return isBidirectionalLink.get().equals(BIDIRECTIONAL_LINK);
 	}
 	
