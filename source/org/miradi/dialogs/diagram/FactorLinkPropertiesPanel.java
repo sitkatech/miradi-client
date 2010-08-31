@@ -57,11 +57,13 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 		setObjectRefs(selfOrChildrenRefs);
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Link Properties");
 	}
 	
+	@Override
 	public Class getJumpActionClass()
 	{
 		return ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep.class;
