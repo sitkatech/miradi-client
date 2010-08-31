@@ -47,14 +47,8 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 		addField(createCheckBoxField(DiagramLink.getObjectType(), DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, DiagramLink.BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_FALSE));
 		addField(createChoiceField(DiagramLink.getObjectType(), DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion()));
 		
-		setObjectRefsWithGroupBoxLinkAndChildrenRefs(link);
+		setObjectRefs(new ORefList(link));
 		updateFieldsFromProject();
-	}
-
-	private void setObjectRefsWithGroupBoxLinkAndChildrenRefs(DiagramLink groupBoxLink)
-	{
-		ORefList selfOrChildrenRefs = groupBoxLink.getSelfOrChildren();
-		setObjectRefs(selfOrChildrenRefs);
 	}
 
 	@Override
@@ -83,8 +77,7 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 		{
 			ORef diagramLinkRef = command.getObjectORef();
 			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);
-			ensureSiblingsHaveEqualBidirectionality(diagramLink);
-			
+			ensureGroupedChildrenHaveEqualBidirectionality(diagramLink);
 		}
 		catch (Exception e)
 		{
@@ -93,25 +86,15 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 		}
 	}
 
-	private void ensureSiblingsHaveEqualBidirectionality(DiagramLink diagramLink) throws CommandFailedException
+	private void ensureGroupedChildrenHaveEqualBidirectionality(DiagramLink diagramLink) throws CommandFailedException
 	{
-		ORefList groupBoxReferrers = diagramLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
-		for (int index = 0; index < groupBoxReferrers.size(); ++index)
-		{
-			DiagramLink groupBoxLink = DiagramLink.find(getProject(), groupBoxReferrers.get(index));
-			ensureChildrenBidirectionality(groupBoxLink, diagramLink.isBidirectional());
-		}
-	}
-
-	private void ensureChildrenBidirectionality(DiagramLink groupBoxLink, boolean desiredMode) throws CommandFailedException
-	{
-		ORefList diagramLinkChildRefs = groupBoxLink.getGroupedDiagramLinkRefs();
+		ORefList diagramLinkChildRefs = diagramLink.getGroupedDiagramLinkRefs();
 		for (int index = 0; index < diagramLinkChildRefs.size(); ++index)
 		{
 			DiagramLink childLink = DiagramLink.find(getProject(), diagramLinkChildRefs.get(index));
-			if(desiredMode != childLink.isBidirectional())
+			if(diagramLink.isBidirectional() != childLink.isBidirectional())
 			{
-				CommandVector setBidirectionality = childLink.createCommandsToSetBidirectionalFlag(desiredMode);
+				CommandVector setBidirectionality = childLink.createCommandsToSetBidirectionalFlag(diagramLink.isBidirectional());
 				getProject().executeAsSideEffect(setBidirectionality);
 			}
 		}
