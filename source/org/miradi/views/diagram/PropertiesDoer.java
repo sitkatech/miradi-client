@@ -54,6 +54,7 @@ import org.miradi.views.umbrella.StaticPicker;
 
 public class PropertiesDoer extends LocationDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		try
@@ -105,6 +106,7 @@ public class PropertiesDoer extends LocationDoer
 		return false;
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if(!isAvailable())
