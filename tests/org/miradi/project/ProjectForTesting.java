@@ -130,6 +130,7 @@ import org.miradi.questions.WwfEcoRegionsQuestion;
 import org.miradi.questions.WwfManagingOfficesQuestion;
 import org.miradi.questions.WwfRegionsQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
@@ -1910,8 +1911,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void setBidrectionality(DiagramLink diagramLink, String isBidirectional)	throws CommandFailedException
 	{
-		CommandSetObjectData setBidirectionality = new CommandSetObjectData(diagramLink, DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, isBidirectional);
-		executeCommand(setBidirectionality);
+		CommandVector setBidirectionality = diagramLink.createCommandsToEnableBidirectionalFlag();
+		executeCommandsWithoutTransaction(setBidirectionality);
 	}
 
 	public void disableAsThreat(Cause threat) throws CommandFailedException
