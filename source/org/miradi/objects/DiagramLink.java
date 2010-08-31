@@ -32,6 +32,7 @@ import org.miradi.objectdata.BaseIdData;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.ORefListData;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PointListData;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
@@ -460,5 +461,5 @@ public class DiagramLink extends BaseObject
 	private PointListData bendPoints;
 	private ORefListData groupedDiagramLinkRefs;
 	private ChoiceData color;
-	private BooleanData isBidirectionalLink;
+	private ObjectData isBidirectionalLink;
 }
