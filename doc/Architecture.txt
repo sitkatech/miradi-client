@@ -1,0 +1,168 @@
+Miradi Architecture
+2008-11-04 kbs
+
+A. DATABASE AND OBJECTS
+
+Miradi uses a custom network/object database. The database is 
+stored as a directory on disk. Each object is stored as an
+individual file, in JSON format. When a project is opened, 
+all the objects are loaded into memory for fast access.
+
+Each object type is assigned a type number. For example, 
+Indicators are type 8. On disk, each type is stored in its 
+own subdirectory. In memory, each type has its own "pool".
+
+Each object is assigned an id, which is guaranteed unique 
+within that type. Generally objects are referred to by their 
+Object Reference (ORef or Ref for short), which is a combination
+of the type plus id. Older code tends to deal more with ids, 
+but newer code deals with refs.
+
+Each object consists of a set of fields, each of which consists 
+of a Tag (field name) plus the data. Each field has a type
+(String, Date), but is always stored on disk as a string. So 
+far, the schema is encoded in Java code, but we are moving 
+toward having a more traditional schema in data.
+
+B. COMMANDS
+
+Miradi was designed to eventually be multi-user, with the 
+desktop client relying on a remote project server to manage 
+the database. To this end, data is never written directly to 
+an object using setters. Instead, all writes must be performed 
+using Commands. This also provides a simple but powerful 
+Undo/Redo capability.
+
+The following Commands are available:
+
+  - Create Object
+  - Delete Object
+  - Set Object Data (sets value in a single field)
+  - Set Threat Rating (sets a single threat rating value)
+  - Begin Transaction
+  - End Transaction
+
+The Set Threat Rating command is a legacy implementation that 
+will be replaced with standard Set Object Data when time 
+permits.
+
+Transactions exist to allow a single undo/redo to execute a 
+defined set of commands. Transactions cannot currently be 
+nested.
+
+Miradi maintains an undo/redo stack as long as a project is 
+open. Early versions of Miradi actually stored the stack on 
+disk, allowing a project to be undone all the way back to when 
+it was empty. However, this was confusing for users, and made 
+it much more difficult to modify the database schema.
+
+When a command is executed, an event is generated. Any class 
+can listen for these commands, and respond accordingly. This is 
+used very heavily throughout the UI, because it allows undo and 
+redo to work correctly. Generally, when the user clicks 
+something, the UI is not updated immediately. Instead, a 
+command is executed, and the UI command listener detects what 
+was done, and updates the UI as an effect. This is somewhat 
+unconventional, but is extremely effective.
+
+C. VIEWS AND TABS
+
+Miradi has multiple views (Summary, Diagram, etc.) When one 
+view is active, all the other views are hibernated. When the 
+user switches views (either explicitly or by navigating to a 
+particular wizard page), the current view is made inactive, 
+and the new view is made active. When a view goes inactive, it 
+tears down and disposes of all its components.
+
+Most views consist of multiple tabs. While a view is active, 
+all tabs are constructed and listening for events. This may 
+change in the future.
+
+All views are subclasses of UmbrellaView, which contains the 
+common base functionality.
+
+D. ACTIONS AND DOERS
+
+Actions are conventional extensions of Java's Action interface. 
+They encapsulate the text and icon of a UI element such as a 
+button or menu item, along with the current state (enabled or 
+grayed out). A single action might appear in the main menu, 
+a right-click context menu, and a button.
+
+Miradi maintains a pool of all the possible actions, as 
+singleton objects. After each command is executed, Miradi 
+spins through all the actions, updating their enabled state.
+
+Within each view, Miradi maintains a map of actions to doers. 
+A doer is a class containing the code for an action within the 
+context of a view. Cross-view, app-wide doers, like Help/About, 
+are managed by the UmbrellaView base class.
+
+A doer has two public methods: isAvailable and doIt. When 
+Miradi updates the enabled state of actions, it checks the 
+current view's mapping to find the current doer for that action 
+(if any). If there is no doer, obviously the action is disabled. 
+If there is a doer, that doer's isAvailable is called. When an 
+action is performed by the user, the doer's doIt is called.
+
+E. TABLES, PANELS, AND OBJECTPICKERS
+
+A major UI paradigm in Miradi is having a table in an upper 
+panel, and a properties panel below. The properties panel will 
+display fields appropriate for whatever object is selected in 
+the table above. The table+properties panel is known as a 
+ManagementPanel.
+
+There are three main types of tables: Tree Tables, Pool Tables, 
+and List Tables. Tree Tables are relatively rare, and each is 
+currently a special case. Pool Tables list all the objects of 
+a single type (like Accounting Codes). List Tables list objects 
+of a single type, but only those that are present in a specific 
+list (like Objectives that belong to a single Factor).
+
+Management Panels listen to table events. When a different item 
+is selected, the Management Panel notifies the Properties Panel. 
+Note that a selection is not just a single object, but rather 
+is an object hierarchy. For example, selecting a Task in the 
+Planning View tree also implies that its owning Activity was 
+selected, along with the Strategy containing that Activity, and 
+the Results Chain containing that Strategy.
+
+Each Properties Panel is responsible for updating each of its 
+fields whenever the selection changes. It is also responsible 
+for listening for commands, and updating the field contents as 
+necessary to reflect data changes. (This is most common when an 
+undo or redo is performed).
+
+Tables, and certain other classes, implement an ObjectPicker 
+interface. This provides a standard way for other UI classes to 
+determine which object(s) are currently selected.
+
+F. QUESTIONS AND CHOICE ITEMS
+
+A Question class encapsulates any collection of choices. Each 
+choice item contains the unchanging internal code that is 
+written to the database, the localized value shown to users, 
+and optionally a color and/or icon. 
+
+G. INTERNATIONALIZATION AND LOCALIZATION
+
+Currently, Miradi does not allow configuration of date formats, 
+and only has limited currency localization features. However, 
+it does allow full localization of the UI text.
+
+Externally, almost all the text localization happens via a 
+standard "po" file. This is an open format supported by a 
+variety of tools.
+
+Internally, text falls into one of several categories:
+
+  - Constant strings, surrounded by EAM.text("xx")
+  - Field names
+  - HTML content pages, including wizards
+  - Choice values
+  
+A build script uses standard tools to extract the constant 
+strings. It then runs custom tools that combine the other text 
+into the "po" file.
+
