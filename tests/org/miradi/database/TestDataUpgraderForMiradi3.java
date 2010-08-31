@@ -51,6 +51,70 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		super(name);
 	}
 	
+	public void testMovingUnidirectionalValueToDiagramLink() throws Exception
+	{
+		String unidirectionalFactorLinkString = "{\"AssignmentIds\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":29}\",\"TimeStampModified\":\"1283269054280\",\"ExpenseRefs\":\"\",\"ToRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":25}\",\"Label\":\"\",\"Id\":31,\"BidirectionalLink\":\"\",\"ProgressReportRefs\":\"\"}";
+		String diagramLinkString = "{\"FromDiagramFactorId\":30,\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"BendPoints\":\"\",\"Color\":\"\",\"ToDiagramFactorId\":26,\"TimeStampModified\":\"1283269054287\",\"GroupedDiagramLinkRefs\":\"\",\"Id\":32,\"Label\":\"\",\"WrappedLinkId\":31,\"ProgressReportRefs\":\"\"}";
+		
+		final String[] factorLinkStrings = new String[]{unidirectionalFactorLinkString, };
+		final String[] diagramLinkStrings = new String[]{diagramLinkString, };
+		
+		verifyBidirectionality(factorLinkStrings, diagramLinkStrings, "");
+	}
+
+	public void testMovingBidirectionalValueToDiagramLink() throws Exception
+	{
+		String bidirectionalFactorLinkString = "{\"AssignmentIds\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":29}\",\"TimeStampModified\":\"1283269054280\",\"ExpenseRefs\":\"\",\"ToRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":25}\",\"Label\":\"\",\"Id\":31,\"BidirectionalLink\":\"1\",\"ProgressReportRefs\":\"\"}";
+		String diagramLinkString = "{\"FromDiagramFactorId\":30,\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"BendPoints\":\"\",\"Color\":\"\",\"ToDiagramFactorId\":26,\"TimeStampModified\":\"1283269054287\",\"GroupedDiagramLinkRefs\":\"\",\"Id\":32,\"Label\":\"\",\"WrappedLinkId\":31,\"ProgressReportRefs\":\"\"}";
+		
+		final String[] factorLinkStrings = new String[]{bidirectionalFactorLinkString, };
+		final String[] diagramLinkStrings = new String[]{diagramLinkString, };
+		
+		verifyBidirectionality(factorLinkStrings, diagramLinkStrings, "1");
+	}
+	
+	public void testMovingUnidirectionalValueToGroupBoxDiagramLink() throws Exception
+	{
+		String unidirectionalFactorLinkString = "{\"AssignmentIds\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":29}\",\"TimeStampModified\":\"1283269054280\",\"ExpenseRefs\":\"\",\"ToRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":25}\",\"Label\":\"\",\"Id\":31,\"BidirectionalLink\":\"\",\"ProgressReportRefs\":\"\"}";
+		String groupBoxDiagramLinkString = "{\"FromDiagramFactorId\":34,\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"BendPoints\":\"\",\"Color\":\"\",\"ToDiagramFactorId\":26,\"TimeStampModified\":\"1283270372203\",\"GroupedDiagramLinkRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":13,\\\"ObjectId\\\":32}]}\",\"Id\":35,\"Label\":\"\",\"WrappedLinkId\":-1,\"ProgressReportRefs\":\"\"}";
+		String childDiagamLinkString = "{\"FromDiagramFactorId\":30,\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"BendPoints\":\"\",\"Color\":\"\",\"ToDiagramFactorId\":26,\"TimeStampModified\":\"1283270368780\",\"GroupedDiagramLinkRefs\":\"\",\"Id\":32,\"Label\":\"\",\"WrappedLinkId\":31,\"ProgressReportRefs\":\"\"}";
+		
+		final String[] factorLinkStrings = new String[]{unidirectionalFactorLinkString, };
+		final String[] diagramLinkStrings = new String[]{groupBoxDiagramLinkString, childDiagamLinkString, };
+		
+		verifyBidirectionality(factorLinkStrings, diagramLinkStrings, "");
+	}
+	
+	public void testMovingBidirectionalValueToGroupBoxDiagramLink() throws Exception
+	{	
+		String bidirectionalFactorLinkString = "{\"AssignmentIds\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":29}\",\"TimeStampModified\":\"1283269054280\",\"ExpenseRefs\":\"\",\"ToRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":25}\",\"Label\":\"\",\"Id\":31,\"BidirectionalLink\":\"1\",\"ProgressReportRefs\":\"\"}";
+		String groupBoxDiagramLinkString = "{\"FromDiagramFactorId\":34,\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"BendPoints\":\"\",\"Color\":\"\",\"ToDiagramFactorId\":26,\"TimeStampModified\":\"1283270372203\",\"GroupedDiagramLinkRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":13,\\\"ObjectId\\\":32}]}\",\"Id\":35,\"Label\":\"\",\"WrappedLinkId\":-1,\"ProgressReportRefs\":\"\"}";
+		String childDiagamLinkString = "{\"FromDiagramFactorId\":30,\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"BendPoints\":\"\",\"Color\":\"\",\"ToDiagramFactorId\":26,\"TimeStampModified\":\"1283270368780\",\"GroupedDiagramLinkRefs\":\"\",\"Id\":32,\"Label\":\"\",\"WrappedLinkId\":31,\"ProgressReportRefs\":\"\"}";
+		
+		final String[] factorLinkStrings = new String[]{bidirectionalFactorLinkString, };
+		final String[] diagramLinkStrings = new String[]{groupBoxDiagramLinkString, childDiagamLinkString, };
+		
+		verifyBidirectionality(factorLinkStrings, diagramLinkStrings, "1");
+	}
+	
+	private void verifyBidirectionality(final String[] factorLinkStrings, final String[] diagramLinkStrings, String expectedBidiretionalValue) throws Exception, IOException
+	{
+		File jsonDir = createJsonDir();
+		final int FACTOR_LINK_TYPE = 6;
+		createAndPopulateObjectDir(jsonDir, FACTOR_LINK_TYPE, factorLinkStrings);
+		
+		final int DIAGRAM_LINK_TYPE = 13;
+		File diagramLinkDir = DataUpgrader.getObjectsDir(jsonDir, DIAGRAM_LINK_TYPE);
+		int[] diagramLinkIds = createAndPopulateObjectDir(jsonDir, DIAGRAM_LINK_TYPE, diagramLinkStrings);
+		
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion59();
+		
+		File diagramLinkFile = new File(diagramLinkDir, Integer.toString(diagramLinkIds[0]));
+		EnhancedJsonObject diagramLinkJson = new EnhancedJsonObject(readFile(diagramLinkFile));
+		assertEquals("Wrong diagram link bidi value?", expectedBidiretionalValue, diagramLinkJson.getString("IsBidirectionalLink"));
+	}
+	
 	public void testRemoveBudgetPlaceHoldersForEmptyProject() throws Exception
 	{
 		DataUpgrader.initializeStaticDirectory(tempDirectory);

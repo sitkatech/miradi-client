@@ -221,4 +221,10 @@ public class MigrationsForMiradi3
 		RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.removeBlankBudgetPlaceHoldersFromDetailsField();
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 58);
 	}
+	
+	public static void upgradeToVersion59() throws Exception
+	{
+		MoveBidirectionalValueFromFactorLinkToDiagramLinkMigration.moveBidirectionalValue();
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 59);
+	}
 }
