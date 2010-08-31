@@ -648,10 +648,10 @@
 <!-- ================================================================== -->
 <target name="translations" depends="pot, spanish, indonesian, italian, mongolian, ukrainian, chinese" description="Create Translatable Content jars/zips">
 	<exec executable="hg" failonerror="true">
-		<arg value="--message"/>
-		<arg value="Updated PO files: ${version.timestamp}"/>
 		<arg value="commit"/>
 		<arg value="translations/*"/>
+		<arg value="--message"/>
+		<arg value="Updated PO files: ${version.timestamp}"/>
 	</exec>
 </target>
 	
