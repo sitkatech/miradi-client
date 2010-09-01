@@ -27,7 +27,7 @@ import org.miradi.project.Project;
 
 public class DashboardDialog extends ModelessDialogWithClose
 {
-	public DashboardDialog(MainWindow parent)
+	public DashboardDialog(MainWindow parent) throws Exception
 	{
 		super(parent, EAM.text("Dashboard"));
 		
@@ -60,7 +60,7 @@ public class DashboardDialog extends ModelessDialogWithClose
 		super.becomeInactive();
 	}
 
-	private void createPanel()
+	private void createPanel() throws Exception
 	{
 		mainPanel = new DashboardMainPanel(getProject());
 	}

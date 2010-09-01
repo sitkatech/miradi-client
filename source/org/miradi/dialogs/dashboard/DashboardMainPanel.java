@@ -27,7 +27,7 @@ import org.miradi.project.Project;
 
 public class DashboardMainPanel extends PanelTabbedPane
 {
-	public DashboardMainPanel(Project projectToUse)
+	public DashboardMainPanel(Project projectToUse) throws Exception
 	{
 		super();
 		
@@ -65,7 +65,7 @@ public class DashboardMainPanel extends PanelTabbedPane
 		}
 	}
 
-	private void createTabs()
+	private void createTabs() throws Exception
 	{
 		conceptualizeDashboardTab = new ConceptualizeDashboardTab(getProject());
 	}
