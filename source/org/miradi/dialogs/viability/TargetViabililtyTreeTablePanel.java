@@ -106,11 +106,12 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 			BaseObject selectedObject = getSelectedObject();
 			if(selectedObject != null)
 				selectedRef = selectedObject.getRef();
+			int selectedRow = getTree().getSelectionModel().getMinSelectionIndex();
 				
 			treeTableModel.rebuildEntireTree();
 			restoreTreeExpansionState();
 			
-			tree.selectObjectAfterSwingClearsItDueToTreeStructureChange(new ORefList(selectedRef), 0);
+			tree.selectObjectAfterSwingClearsItDueToTreeStructureChange(new ORefList(selectedRef), selectedRow);
 		} 
 		else if(isTreeExpansionCommand(event))
 		{
