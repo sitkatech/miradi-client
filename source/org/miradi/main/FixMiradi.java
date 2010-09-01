@@ -40,11 +40,11 @@ public class FixMiradi
 		Preferences prefsNode = Preferences.userNodeForPackage(FixMiradi.class);
 		if(prefsNode == null)
 			System.out.println("Missing preferences");
-		String storedDirectory = prefsNode.get(EAM.MIRADI_DATA_DIRECTORY_KEY, "");
+		String storedDirectory = prefsNode.get("MiradiDataDirectory", "");
 		System.out.println("Stored Miradi directory: " + storedDirectory);
 		if(storedDirectory == null || storedDirectory.length() == 0)
 		{
-			prefsNode.put(EAM.MIRADI_DATA_DIRECTORY_KEY, defaultHomeDirectory.getAbsolutePath());
+			prefsNode.put("MiradiDataDirectory", defaultHomeDirectory.getAbsolutePath());
 			System.out.println("Updated preferences");
 		}
 		else
