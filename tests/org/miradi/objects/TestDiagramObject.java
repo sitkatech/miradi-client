@@ -27,6 +27,7 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
+import org.miradi.utils.EnhancedJsonObject;
 
 public class TestDiagramObject extends ObjectTestCase
 {
@@ -34,6 +35,22 @@ public class TestDiagramObject extends ObjectTestCase
 	public TestDiagramObject(String name)
 	{
 		super(name);
+	}
+	
+	public void testZoomSavedWithCommasDueToLocaleChange() throws Exception
+	{
+		verifyZoomValue("4,4", "");
+		verifyZoomValue("4.4", "4.4");
+		
+	}
+
+	private void verifyZoomValue(String zoomValue, String expectedValue) throws Exception
+	{
+		DiagramObject diagramObject = getProject().getTestingDiagramObject();
+		EnhancedJsonObject jsonToManuallyUpdate = diagramObject.toJson();
+		jsonToManuallyUpdate.put(DiagramObject.TAG_ZOOM_SCALE, zoomValue);
+		diagramObject.loadFromJson(jsonToManuallyUpdate);
+		assertEquals("zoom scale with comma was replaced incorrectly", expectedValue, diagramObject.getData(DiagramObject.TAG_ZOOM_SCALE));
 	}
 	
 	public void testAreDiagramFactorsLinkedFromToNonBidirectional() throws Exception
