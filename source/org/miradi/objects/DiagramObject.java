@@ -506,6 +506,15 @@ abstract public class DiagramObject extends BaseObject
 		return combineShortLabelAndLabel();
 	}
 	
+	@Override
+	protected String getRepairedNumberValue(String tag, String value)
+	{
+		if (tag.equals(TAG_ZOOM_SCALE))
+			return ""; 
+			
+		return super.getRepairedNumberValue(tag, value);
+	}
+	
 	public static DiagramObject findDiagramObject(ObjectManager objectManager, ORef diagramObjectRef)
 	{
 		return (DiagramObject) objectManager.findObject(diagramObjectRef);

@@ -140,12 +140,17 @@ abstract public class BaseObject
 				}
 				catch(InvalidNumberException e)
 				{
-					String newValue = value.replaceAll("[^0-9\\-\\.,]", "");
+					String newValue = getRepairedNumberValue(tag, value);
 					EAM.logWarning("Fixing bad numeric data in " + tag + " from " + value + " to " + newValue);
 					setData(tag, newValue);
 				}
 			}
 		}
+	}
+
+	protected String getRepairedNumberValue(String tag, String value)
+	{
+		return value.replaceAll("[^0-9\\-\\.,]", "");
 	}
 
 	private Set<String> getTags()
