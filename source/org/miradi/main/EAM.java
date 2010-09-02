@@ -51,7 +51,7 @@ public class EAM
 		if (Miradi.isWindows())
 			alertIfHomeIsNotOnC();
 		
-		File preferredHomeDir = getPreferredHomeDirectory();
+		File preferredHomeDir = getHomeDirectory();
 		
 		preferredHomeDir.mkdirs();
 		if (!preferredHomeDir.exists() || !preferredHomeDir.isDirectory())
