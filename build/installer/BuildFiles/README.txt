@@ -4,7 +4,7 @@ Copyright 2005-2010, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION 3.2
+VERSION 3.2.1
 
 License and Copying
 
@@ -142,6 +142,16 @@ GNU/Linux:
 
 ---------------------
 Changes
+
+Miradi 3.2.1 fixes two minor problems that were in 3.2.0:
+
+Compatibility:
+- On a computer configured to use commas as decimal separators, 
+  zooming a diagram could cause the project to become corrupted
+- On a Mac/Linux computer that had never run an earlier version, 
+  Miradi 3.2.0 would refuse to run 
+
+
 
 Miradi 3.2 has several significant new features, in addition to many 
 minor fixes and improvements. Here are the highlights:
