@@ -511,6 +511,7 @@ class MainTestSuite extends TestSuite
 
 	public void run(TestResult result)
 	{
+		Miradi.setToUSLocale();
 		reportAnyTempFiles("Existing temp file: ");
 		super.run(result);
 		reportAnyTempFiles("Orphaned temp file: ");
