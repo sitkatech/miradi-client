@@ -26,6 +26,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Vector;
 
 import javax.swing.SwingUtilities;
@@ -44,6 +45,7 @@ public class Miradi
 	{
 		try
 		{
+			setToUSLocale();
 			addThirdPartyJarsToClasspath();
 			setBestLookAndFeel();
 		}
@@ -100,6 +102,11 @@ public class Miradi
 		SpellCheckerManager.initializeSpellChecker();
 
 		Miradi.start(args);
+	}
+
+	public static void setToUSLocale()
+	{
+		Locale.setDefault(Locale.US);
 	}
 
 	public static boolean isDemoMode()
