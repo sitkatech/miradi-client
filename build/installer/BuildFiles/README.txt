@@ -143,13 +143,15 @@ GNU/Linux:
 ---------------------
 Changes
 
-Miradi 3.2.1 fixes two minor problems that were in 3.2.0:
+Miradi 3.2.1 fixes some minor problems that were in 3.2.0:
 
-Compatibility:
+Application-wide:
 - On a computer configured to use commas as decimal separators, 
   zooming a diagram could cause the project to become corrupted
 - On a Mac/Linux computer that had never run an earlier version, 
   Miradi 3.2.0 would refuse to run 
+- "Create From..." buttons (Goal, Objective, Stress) were disabled 
+  unless you first selected a row in the table
 
 
 
