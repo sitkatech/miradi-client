@@ -35,7 +35,7 @@ public class ObjectiveListTablePanel extends ObjectListTablePanel
 		
 		addObjectActionButton(ActionCreateObjective.class, getParentPicker());
 		addUnknownTypeOfButton(ActionDeleteObjective.class);
-		addUnknownTypeOfButton(ActionCloneObjective.class);
+		addObjectActionButton(ActionCloneObjective.class, getParentPicker());
 	}
 	
 	private static final int DEFAULT_SORT_COLUMN = 0;
