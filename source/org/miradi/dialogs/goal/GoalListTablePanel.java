@@ -35,6 +35,6 @@ public class GoalListTablePanel extends ObjectListTablePanel
 		
 		addObjectActionButton(ActionCreateGoal.class, getParentPicker());
 		addUnknownTypeOfButton(ActionDeleteGoal.class);
-		addUnknownTypeOfButton(ActionCloneGoal.class);
+		addObjectActionButton(ActionCloneGoal.class, getParentPicker());
 	}
 }
