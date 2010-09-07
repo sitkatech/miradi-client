@@ -67,7 +67,7 @@ public class DashboardMainPanel extends PanelTabbedPane
 
 	private void createTabs() throws Exception
 	{
-		conceptualizeDashboardTab = new ConceptualizeDashboardTab(getProject());
+		conceptualizeDashboardTab = new ConceptualizeDashboardTabV2(getProject());
 	}
 
 	private void addTabs()
@@ -81,5 +81,5 @@ public class DashboardMainPanel extends PanelTabbedPane
 	}
 	
 	private Project project;
-	private ConceptualizeDashboardTab conceptualizeDashboardTab;
+	private ConceptualizeDashboardTabV2 conceptualizeDashboardTab;
 }
