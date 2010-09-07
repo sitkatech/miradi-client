@@ -57,7 +57,7 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		
 		createTables();
 		
-		addTableToGridBag();
+		addTable();
 		addTablesToSelectionController();
 		synchTableColumns();
 	}
@@ -382,7 +382,7 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		private JComponent matchWidthOf;
 	}
 	
-	private void addTableToGridBag()
+	private void addTable()
 	{
 		ScrollPaneWithSizeConstraints threatSummaryColumnTableScroller = new ScrollPaneWithSizeConstraints(threatSummaryColumnTable);
 		threatSummaryColumnTableScroller.capMinWidth();
