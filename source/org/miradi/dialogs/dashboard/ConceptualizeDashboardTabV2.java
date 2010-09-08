@@ -173,30 +173,44 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 	{
 		addSubHeaderRow(leftMainPanel, EAM.text("1C. Identify Critical Threats"));
 		
-		Box box1 = createBoxWithIndent();
 		HashMap<String, String> threatsTokenReplacementMap = new HashMap<String, String>();
 		threatsTokenReplacementMap.put("%threatCount", getDashboardData(Dashboard.PSEUDO_THREAT_COUNT));
 		threatsTokenReplacementMap.put("%threatWithTaxonomyCount", getDashboardData(Dashboard.PSEUDO_THREAT_WITH_TAXONOMY_COUNT));
-		box1.add(new PanelTitleLabel(EAM.text("Identify Direct Threats:")));
-		box1.add(new PanelTitleLabel(EAM.substitute(EAM.text("%threatCount Direct Threats created"), threatsTokenReplacementMap)));
-		leftMainPanel.add(box1);
-		leftMainPanel.add(new FillerLabel());
+		
+		addDirectThreats(leftMainPanel, threatsTokenReplacementMap);
 		
 		Box box2 = createBoxWithIndent();
 		box2.add(new PanelTitleLabel(EAM.substitute(EAM.text("%threatWithTaxonomyCount of %threatCount have taxonomy assignments"), threatsTokenReplacementMap)));
 		leftMainPanel.add(box2);
 		leftMainPanel.add(new FillerLabel());
 		
-		Box box3 = createBoxWithIndent();
+		addThreatRank(leftMainPanel);
+	}
+
+	private void addDirectThreats(TwoColumnPanel leftMainPanel, HashMap<String, String> threatsTokenReplacementMap)
+	{
+		Box leftColumnBox = createBoxWithIndent();
+		leftColumnBox.add(new PanelTitleLabel(EAM.text("Identify Direct Threats:")));
+		leftMainPanel.add(leftColumnBox);
+		Box rightColumnBox = createBorderedBox();
+		rightColumnBox.add(new PanelTitleLabel(EAM.substitute(EAM.text("%threatCount Direct Threats created"), threatsTokenReplacementMap)));
+		leftMainPanel.add(rightColumnBox);
+	}
+
+	private void addThreatRank(TwoColumnPanel leftMainPanel)
+	{
+		Box firstColumnBox = createBoxWithIndent();
 		String text = EAM.text("Rank Direct Threats:");
+		firstColumnBox.add(new PanelTitleLabel(text));
 		HashMap<String, String> threatTargetLinksTokenReplacementMap = new HashMap<String, String>();
 		threatTargetLinksTokenReplacementMap.put("%threatTargetLinkCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_COUNT));
 		threatTargetLinksTokenReplacementMap.put("%threatTargetWithRatingCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT));
 		String threatTargetLinkDescription = EAM.substitute(EAM.text("%threatTargetWithRatingCount of %threatTargetLinkCount threat/target links ranked"), threatTargetLinksTokenReplacementMap);
-		box3.add(new PanelTitleLabel(text));
-		box3.add(new PanelTitleLabel(threatTargetLinkDescription));
-		leftMainPanel.add(box3);
-		leftMainPanel.add(new FillerLabel());
+
+		Box secondColumnBox = createBorderedBox();
+		secondColumnBox.add(new PanelTitleLabel(threatTargetLinkDescription));
+		leftMainPanel.add(firstColumnBox);
+		leftMainPanel.add(secondColumnBox);
 	}
 	
 	private Box createBorderedBox()
