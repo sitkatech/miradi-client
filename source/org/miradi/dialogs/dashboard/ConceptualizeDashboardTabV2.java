@@ -33,6 +33,7 @@ import javax.swing.JComponent;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.layout.TwoColumnGridLayout;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -43,15 +44,13 @@ import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.Translation;
 import org.miradi.wizard.MiradiHtmlViewer;
 
-import com.jhlabs.awt.GridLayoutPlus;
-
 public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 {
 	public ConceptualizeDashboardTabV2(Project projectToUse) throws Exception
 	{
 		super(projectToUse, Dashboard.getObjectType());
 		
-		setLayout(new GridLayoutPlus(0, 2, 3, 3));
+		setLayout(new TwoColumnGridLayout());
 		clickableComponents = new Vector<JComponent>();
 		
 		addLeftPanel();
@@ -228,7 +227,6 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 		box1.setBackground(Color.GREEN.darker());
 		PanelTitleLabel label = new PanelTitleLabel(text);
 		box1.add(label, BorderLayout.BEFORE_FIRST_LINE);
-		box1.add(Box.createHorizontalStrut(GAP_BETWEEN_LABEL_AND_DROPDOWN));
 		leftMainPanel.add(box1);
 		leftMainPanel.add(new FillerLabel());
 	}
@@ -286,5 +284,4 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 	
 	private Vector<JComponent> clickableComponents;
 	private static final int INDENT_PER_LEVEL = 20;
-	private static final int GAP_BETWEEN_LABEL_AND_DROPDOWN = 4;
 }
