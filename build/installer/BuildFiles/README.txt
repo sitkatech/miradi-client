@@ -146,8 +146,8 @@ Changes
 Miradi 3.2.2 fixes some minor problems that were in 3.2.x:
 
 Application-wide:
-- Pasting factors that contain work planning data between projects 
-  could cause warnings about project corruption
+- Pasting factors between projects could cause warnings about 
+  project corruption, if the factors contained work planning data 
 - Threat Rating view in Simple mode could display incorrect 
   summary ratings for Targets
 
