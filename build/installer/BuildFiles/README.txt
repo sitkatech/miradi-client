@@ -4,7 +4,7 @@ Copyright 2005-2010, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION 3.2.1
+VERSION 3.2.2
 
 License and Copying
 
@@ -142,6 +142,15 @@ GNU/Linux:
 
 ---------------------
 Changes
+
+Miradi 3.2.2 fixes some minor problems that were in 3.2.x:
+
+Application-wide:
+- Pasting factors that contain work planning data between projects 
+  could cause warnings about project corruption
+- Threat Rating view in Simple mode could display incorrect 
+  summary ratings for Targets
+
 
 Miradi 3.2.1 fixes some minor problems that were in 3.2.0:
 
