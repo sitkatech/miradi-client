@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project.threatrating;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Factor;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -63,6 +64,8 @@ abstract public class ThreatRatingFramework
 	}
 
 	abstract public ChoiceItem getThreatThreatRatingValue(ORef threatRef) throws Exception;
+	
+	abstract public int get2PrimeSummaryRatingValue(Factor factor) throws Exception;
 	
 	protected Project project;
 }

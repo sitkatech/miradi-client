@@ -403,6 +403,13 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		int numericResult = formula.getMajority(bundleValues);
 		return findValueOptionByNumericValue(numericResult);
 	}
+	
+	//FIXME urgent - add implementation
+	@Override
+	public int get2PrimeSummaryRatingValue(Factor factor) throws Exception
+	{
+		return -1;
+	}
 
 	public RatingCriterion findCriterionByLabel(String label)
 	{

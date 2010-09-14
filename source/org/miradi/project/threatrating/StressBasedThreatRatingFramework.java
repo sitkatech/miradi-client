@@ -100,6 +100,7 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 		return  threatRatingQuestion.findChoiceByCode(Integer.toString(summaryRatingOfThreat));
 	}
 	
+	@Override
 	public int get2PrimeSummaryRatingValue(Factor factor) throws Exception
 	{
 		return getStressBasedThreatFormula().getSummaryOfBundlesWithTwoPrimeRule(calculateSummaryRatingValues(factor));
