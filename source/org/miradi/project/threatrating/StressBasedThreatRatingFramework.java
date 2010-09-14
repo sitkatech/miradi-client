@@ -119,26 +119,28 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 	private int[] calculateSummaryRatingValue(Target target) throws Exception
 	{
 		ORefSet upstreamThreatRefs = new ThreatTargetVirtualLinkHelper(getProject()).getUpstreamThreatRefsViaTSR(target);
-		Vector<Integer> calculatedSummaryRatingValues = new Vector<Integer>();
-		ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
-		for(ORef threatRef : upstreamThreatRefs)
-		{
-			int threatRatingBundleValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threatRef, target.getRef());
-			calculatedSummaryRatingValues.add(threatRatingBundleValue);
-		}
 
-		return Utility.convertToIntArray(calculatedSummaryRatingValues);
+		return calculateSummaryRatingValue(upstreamThreatRefs, new ORefSet(target));
 	}
 
 	private int[] calculateSummaryRatingValue(Cause threat) throws Exception
 	{
 		ORefSet downStreamTargets = threatTargetChainObject.getDownstreamTargetRefsFromThreat(threat);
+		
+		return calculateSummaryRatingValue(new ORefSet(threat), downStreamTargets);
+	}
+	
+	private int[] calculateSummaryRatingValue(ORefSet upstreamThreats, ORefSet downstreamTargets) throws Exception
+	{
 		Vector<Integer> calculatedSummaryRatingValues = new Vector<Integer>();
 		ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
-		for(ORef targetRef : downStreamTargets)
+		for (ORef threatRef : upstreamThreats)
 		{
-			int threatRatingBundleValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threat.getRef(), targetRef);
-			calculatedSummaryRatingValues.add(threatRatingBundleValue);
+			for(ORef targetRef : downstreamTargets)
+			{
+				int threatRatingBundleValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threatRef, targetRef);
+				calculatedSummaryRatingValues.add(threatRatingBundleValue);
+			}
 		}
 		
 		return Utility.convertToIntArray(calculatedSummaryRatingValues);
