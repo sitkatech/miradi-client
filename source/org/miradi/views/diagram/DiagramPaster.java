@@ -55,6 +55,7 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.FundingSource;
@@ -170,8 +171,29 @@ abstract public class DiagramPaster
 
 			if (ResourceAssignment.TAG_RESOURCE_ID.equals(tag))
 				return getCommandToFixId(pastedObjectMap, newObject, ProjectResource.getObjectType(), tag);
+			
+			if (ResourceAssignment.TAG_CATEGORY_ONE_REF.equals(tag))
+				return getCommandToFixRef(pastedObjectMap, newObject, tag);
+			
+			if (ResourceAssignment.TAG_CATEGORY_TWO_REF.equals(tag))
+				return getCommandToFixRef(pastedObjectMap, newObject, tag);
 		}
 		
+		if (ExpenseAssignment.is(newObject))
+		{
+			if (ExpenseAssignment.TAG_ACCOUNTING_CODE_REF.equals(tag))
+				return getCommandToFixRef(pastedObjectMap, newObject, tag);
+			
+			if (ExpenseAssignment.TAG_FUNDING_SOURCE_REF.equals(tag))
+				return getCommandToFixRef(pastedObjectMap, newObject, tag);
+			
+			if (ExpenseAssignment.TAG_CATEGORY_ONE_REF.equals(tag))
+				return getCommandToFixRef(pastedObjectMap, newObject, tag);
+			
+			if (ExpenseAssignment.TAG_CATEGORY_TWO_REF.equals(tag))
+				return getCommandToFixRef(pastedObjectMap, newObject, tag);
+		}
+				
 		if (ThreatStressRating.getObjectType() == newObject.getType())
 		{
 			if (ThreatStressRating.TAG_STRESS_REF.equals(tag))
