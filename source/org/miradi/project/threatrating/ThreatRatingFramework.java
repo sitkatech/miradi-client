@@ -21,6 +21,7 @@ package org.miradi.project.threatrating;
 
 import java.util.Vector;
 
+import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
@@ -38,6 +39,8 @@ abstract public class ThreatRatingFramework
 	public ThreatRatingFramework(Project projectToUse)
 	{
 		project = projectToUse;
+		
+		threatTargetChainObject = new ThreatTargetChainWalker(getProject());
 	}
 	
 	public Project getProject()
@@ -128,4 +131,5 @@ abstract public class ThreatRatingFramework
 	abstract protected ORefSet getDownstreamTargetRefs(Cause threat);
 		
 	protected Project project;
+	protected ThreatTargetChainWalker threatTargetChainObject;
 }
