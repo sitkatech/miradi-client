@@ -68,6 +68,12 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	
 	public SimpleThreatFormula getSimpleThreatFormula()
 	{
+		return getThreatFormula();
+	}
+
+	@Override
+	protected SimpleThreatFormula getThreatFormula()
+	{
 		return new SimpleThreatFormula(this);
 	}
 		

@@ -50,6 +50,12 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 		return stressBasedThreatFormula; 
 	}
 	
+	@Override
+	protected ThreatFormula getThreatFormula()
+	{
+		return getStressBasedThreatFormula();
+	}
+	
 	public int getOverallProjectRating()
 	{
 		try
@@ -103,7 +109,7 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 	@Override
 	public int get2PrimeSummaryRatingValue(Factor factor) throws Exception
 	{
-		return getStressBasedThreatFormula().getSummaryOfBundlesWithTwoPrimeRule(calculateSummaryRatingValues(factor));
+		return getThreatFormula().getSummaryOfBundlesWithTwoPrimeRule(calculateSummaryRatingValues(factor));
 	}
 		
 	private int[] calculateSummaryRatingValues(Factor factor) throws Exception
@@ -133,6 +139,9 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 	
 	private int[] calculateSummaryRatingValue(ORefSet upstreamThreats, ORefSet downstreamTargets) throws Exception
 	{
+		if (upstreamThreats.size() > 1 && downstreamTargets.size() > 1)
+			throw new RuntimeException("Method should only be used to calculate rating from a sinlge factor to multiple up/downstream factors");
+		
 		Vector<Integer> calculatedSummaryRatingValues = new Vector<Integer>();
 		ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
 		for (ORef threatRef : upstreamThreats)
