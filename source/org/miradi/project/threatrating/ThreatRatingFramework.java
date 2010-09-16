@@ -62,6 +62,8 @@ abstract public class ThreatRatingFramework
 		ChoiceQuestion question = getProject().getQuestion(ThreatRatingQuestion.class);
 		return question.findChoiceByCode(code);
 	}
+	
+	abstract protected ThreatFormula getThreatFormula();
 
 	abstract public ChoiceItem getThreatThreatRatingValue(ORef threatRef) throws Exception;
 	
