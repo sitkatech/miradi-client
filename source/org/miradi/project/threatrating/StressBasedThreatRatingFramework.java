@@ -99,18 +99,21 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 		return getStressBasedThreatFormula().getSummaryOfBundlesWithTwoPrimeRule(summaryValues);
 	}
 	
+	@Override
 	public ChoiceItem getThreatThreatRatingValue(ORef threatRef) throws Exception
 	{
 		Cause threat = Cause.find(getProject(), threatRef);
 		int summaryRatingOfThreat = get2PrimeSummaryRatingValue(threat);
 		return  threatRatingQuestion.findChoiceByCode(Integer.toString(summaryRatingOfThreat));
 	}
-		
+	
+	@Override
 	protected ORefSet getUpstreamThreatRefs(Target target)
 	{
 		return new ThreatTargetVirtualLinkHelper(getProject()).getUpstreamThreatRefsViaTSR(target);
 	}
 	
+	@Override
 	protected ORefSet getDownstreamTargetRefs(Cause threat)
 	{
 		return threatTargetChainObject.getDownstreamTargetRefsFromThreat(threat);
