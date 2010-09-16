@@ -74,7 +74,7 @@ public class TargetSummaryRowTableModel extends AbstractThreatTargetTableModel
 
 	public int calculateThreatSummaryRatingValue(Factor target) throws Exception
 	{
-		return frameWork.get2PrimeSummaryRatingValue(target);
+		return getFramework().get2PrimeSummaryRatingValue(target);
 	}
 
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
