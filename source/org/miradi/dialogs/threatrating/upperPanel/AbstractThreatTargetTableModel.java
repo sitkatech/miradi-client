@@ -34,6 +34,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
+import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.EmptyChoiceItem;
@@ -233,10 +234,15 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel 
 		throw new RuntimeException("Method is currently unused and has no implementation");
 	}
 	
+	public ThreatRatingFramework getFramework()
+	{
+		return frameWork;
+	}
+	
 	public abstract String getUniqueTableModelIdentifier();
 	
 	private Project project;
 	protected Factor[] threatRows;
 	protected Target[] targetColumns;
-	protected StressBasedThreatRatingFramework frameWork;
+	protected ThreatRatingFramework frameWork;
 }
