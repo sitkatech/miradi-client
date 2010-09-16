@@ -21,7 +21,6 @@ package org.miradi.project.threatrating;
 
 import java.util.Vector;
 
-import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
@@ -42,7 +41,6 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 		
 		stressBasedThreatFormula = new StressBasedThreatFormula();
 		threatRatingQuestion = new ThreatRatingQuestion();
-		threatTargetChainObject = new ThreatTargetChainWalker(getProject());
 	}
 	
 	public StressBasedThreatFormula getStressBasedThreatFormula()
@@ -121,5 +119,4 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 
 	private StressBasedThreatFormula stressBasedThreatFormula;
 	private ThreatRatingQuestion threatRatingQuestion;
-	private ThreatTargetChainWalker threatTargetChainObject;
 }
