@@ -75,7 +75,9 @@ abstract public class ThreatRatingFramework
 	
 	public int get2PrimeSummaryRatingValue(Factor factor) throws Exception
 	{
-		return getThreatFormula().getSummaryOfBundlesWithTwoPrimeRule(calculateSummaryRatingValues(factor));
+		int[] summaryRatingValues = calculateSummaryRatingValues(factor);
+		
+		return getThreatFormula().getSummaryOfBundlesWithTwoPrimeRule(summaryRatingValues);
 	}
 		
 	protected int[] calculateSummaryRatingValues(Factor factor) throws Exception
