@@ -34,6 +34,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objectpools.RatingCriterionPool;
@@ -412,9 +413,15 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	
 	//FIXME urgent - add implementation
 	@Override
-	public int get2PrimeSummaryRatingValue(Factor factor) throws Exception
+	protected ORefSet getUpstreamThreatRefs(Target target)
 	{
-		return -1;
+		return new ORefSet();
+	}
+	
+	@Override
+	protected ORefSet getDownstreamTargetRefs(Cause threat)
+	{
+		return new ORefSet();
 	}
 
 	public RatingCriterion findCriterionByLabel(String label)

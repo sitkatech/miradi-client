@@ -105,55 +105,16 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 		int summaryRatingOfThreat = get2PrimeSummaryRatingValue(threat);
 		return  threatRatingQuestion.findChoiceByCode(Integer.toString(summaryRatingOfThreat));
 	}
-	
-	@Override
-	public int get2PrimeSummaryRatingValue(Factor factor) throws Exception
+		
+	protected ORefSet getUpstreamThreatRefs(Target target)
 	{
-		return getThreatFormula().getSummaryOfBundlesWithTwoPrimeRule(calculateSummaryRatingValues(factor));
-	}
-		
-	private int[] calculateSummaryRatingValues(Factor factor) throws Exception
-	{
-		if (factor.isDirectThreat())
-			return calculateSummaryRatingValue((Cause) factor);
-		
-		if (factor.isTarget())
-			return calculateSummaryRatingValue((Target) factor);
-		
-		return new int[0];
+		return new ThreatTargetVirtualLinkHelper(getProject()).getUpstreamThreatRefsViaTSR(target);
 	}
 	
-	private int[] calculateSummaryRatingValue(Target target) throws Exception
-	{
-		ORefSet upstreamThreatRefs = new ThreatTargetVirtualLinkHelper(getProject()).getUpstreamThreatRefsViaTSR(target);
-
-		return calculateSummaryRatingValue(upstreamThreatRefs, new ORefSet(target));
-	}
-
-	private int[] calculateSummaryRatingValue(Cause threat) throws Exception
+	protected ORefSet getDownstreamTargetRefs(Cause threat)
 	{
 		ORefSet downStreamTargets = threatTargetChainObject.getDownstreamTargetRefsFromThreat(threat);
-		
-		return calculateSummaryRatingValue(new ORefSet(threat), downStreamTargets);
-	}
-	
-	private int[] calculateSummaryRatingValue(ORefSet upstreamThreats, ORefSet downstreamTargets) throws Exception
-	{
-		if (upstreamThreats.size() > 1 && downstreamTargets.size() > 1)
-			throw new RuntimeException("Method should only be used to calculate rating from a sinlge factor to multiple up/downstream factors");
-		
-		Vector<Integer> calculatedSummaryRatingValues = new Vector<Integer>();
-		ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
-		for (ORef threatRef : upstreamThreats)
-		{
-			for(ORef targetRef : downstreamTargets)
-			{
-				int threatRatingBundleValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threatRef, targetRef);
-				calculatedSummaryRatingValues.add(threatRatingBundleValue);
-			}
-		}
-		
-		return Utility.convertToIntArray(calculatedSummaryRatingValues);
+		return downStreamTargets;
 	}
 
 	private StressBasedThreatFormula stressBasedThreatFormula;
