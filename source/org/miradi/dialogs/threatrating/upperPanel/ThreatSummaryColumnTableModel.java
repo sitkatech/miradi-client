@@ -87,7 +87,7 @@ public class ThreatSummaryColumnTableModel extends AbstractThreatPerRowTableMode
 	
 	public int calculateThreatSummaryRatingValue(Factor directThreat) throws Exception
 	{
-		return frameWork.get2PrimeSummaryRatingValue(directThreat);
+		return getFramework().get2PrimeSummaryRatingValue(directThreat);
 	}
 	
 	@Override

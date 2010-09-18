@@ -411,17 +411,16 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return findValueOptionByNumericValue(numericResult);
 	}
 	
-	//FIXME urgent - add implementation
 	@Override
 	protected ORefSet getUpstreamThreatRefs(Target target)
 	{
-		return new ORefSet();
+		return threatTargetChainObject.getUpstreamThreatRefsFromTarget(target);
 	}
 	
 	@Override
 	protected ORefSet getDownstreamTargetRefs(Cause threat)
 	{
-		return new ORefSet();
+		return threatTargetChainObject.getDownstreamTargetRefsFromThreat(threat);
 	}
 
 	public RatingCriterion findCriterionByLabel(String label)

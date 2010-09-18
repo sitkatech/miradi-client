@@ -31,6 +31,7 @@ import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
+import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 
 public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
@@ -54,7 +55,7 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		getProject().enableAsThreat((Cause) threat.getWrappedFactor());
 		createThreatFactorLink(getProject(), threat, target);
 	
-		StressBasedThreatRatingFramework frameWork = new StressBasedThreatRatingFramework(getProject());
+		ThreatRatingFramework frameWork = new StressBasedThreatRatingFramework(getProject());
 		assertEquals("wrong summary rating for target?", 3, frameWork.get2PrimeSummaryRatingValue(target.getWrappedFactor()));
 	}
 
@@ -141,7 +142,7 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		createThreatFactorLink(getProject(), threat, target);
 		
 		getProject().enableAsThreat((Cause) threat.getWrappedFactor());		
-		StressBasedThreatRatingFramework framework = getProject().getStressBasedThreatRatingFramework();
+		ThreatRatingFramework framework = getProject().getStressBasedThreatRatingFramework();
 		assertEquals("wrong threat threatRating value?", "3", framework.getThreatThreatRatingValue(threat.getWrappedORef()).getCode());
 	}
 }
