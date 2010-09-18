@@ -216,6 +216,7 @@ import org.miradi.views.planning.TestPlanningTreeObjectiveNode;
 import org.miradi.views.planning.TestPlanningTreeStrategyNode;
 import org.miradi.views.planning.TestPlanningTreeTargetNode;
 import org.miradi.views.planning.TestPlanningViewMainTableModel;
+import org.miradi.views.threatrating.TestTargetSummartyRowTableModel;
 import org.miradi.views.umbrella.TestUndoRedo;
 import org.miradi.views.workplan.TestDeleteActivity;
 import org.miradi.xml.TestXmpzXmlImporter;
@@ -473,6 +474,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(ImportAccountingCodesDoerTest.class));
 		
 		// view.threatmatrix package
+		suite.addTest(new TestSuite(TestTargetSummartyRowTableModel.class));
 		
 		// view.summary.doers package
 

@@ -33,7 +33,6 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
-import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -48,7 +47,6 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel 
 	{
 		project = projectToUse;
 		
-		frameWork = new StressBasedThreatRatingFramework(getProject());
 		resetTargetAndThreats();
 	}
 	
@@ -236,7 +234,7 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel 
 	
 	public ThreatRatingFramework getFramework()
 	{
-		return frameWork;
+		return getProject().getThreatRatingFramework();
 	}
 	
 	public abstract String getUniqueTableModelIdentifier();
@@ -244,5 +242,4 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel 
 	private Project project;
 	protected Factor[] threatRows;
 	protected Target[] targetColumns;
-	protected ThreatRatingFramework frameWork;
 }

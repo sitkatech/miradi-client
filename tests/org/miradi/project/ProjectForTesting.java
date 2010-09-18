@@ -687,7 +687,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return Cause.find(this, threatRef);
 	}
 	
-	public void populateSimpleThreatRatingValues() throws Exception
+	public ORef populateSimpleThreatRatingValues() throws Exception
 	{
 		DiagramLink diagramLink = createThreatTargetDiagramLink();
 		ORef threatRef = diagramLink.getFromDiagramFactor().getWrappedORef();
@@ -697,6 +697,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		framework.setScope(threatRef, targetRef, SimpleThreatRatingFramework.HIGH_RATING_VALUE);
 		framework.setSeverity(threatRef, targetRef, SimpleThreatRatingFramework.MEDIUM_RATING_VALUE);
 		framework.setIrreversibility(threatRef, targetRef, SimpleThreatRatingFramework.MEDIUM_RATING_VALUE);
+		
+		return targetRef;
 	}
 	
 	public DiagramLink createThreatTargetDiagramLinkWithRating() throws Exception
