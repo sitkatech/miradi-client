@@ -38,11 +38,14 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objectpools.ObjectPool;
 import org.miradi.objectpools.PoolWithIdAssigner;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.ThreatStressRating;
@@ -100,6 +103,52 @@ public class ProjectRepairer
 		removeInvalidDiagramLinkRefs();
 		quarantineGroupBoxFactorLinks();
 		fixAnyProblemsWithThreatStressRatings();
+		fixAssignmentsReferringToMissingObjects();
+	}
+	
+	private void fixAssignmentsReferringToMissingObjects() throws Exception
+	{
+		Vector<String> resourceAssignmentTagsToFix = new Vector<String>();
+		resourceAssignmentTagsToFix.add(ResourceAssignment.TAG_ACCOUNTING_CODE_ID);
+		resourceAssignmentTagsToFix.add(ResourceAssignment.TAG_FUNDING_SOURCE_ID);
+		resourceAssignmentTagsToFix.add(ResourceAssignment.TAG_CATEGORY_ONE_REF);
+		resourceAssignmentTagsToFix.add(ResourceAssignment.TAG_CATEGORY_TWO_REF);
+		fixResourceAssignment(ResourceAssignment.getObjectType(), resourceAssignmentTagsToFix);
+		
+		Vector<String> expenseAssignmentTagsToFix = new Vector<String>();
+		expenseAssignmentTagsToFix.add(ExpenseAssignment.TAG_ACCOUNTING_CODE_REF);
+		expenseAssignmentTagsToFix.add(ExpenseAssignment.TAG_FUNDING_SOURCE_REF);
+		expenseAssignmentTagsToFix.add(ExpenseAssignment.TAG_CATEGORY_ONE_REF);
+		expenseAssignmentTagsToFix.add(ExpenseAssignment.TAG_CATEGORY_TWO_REF);
+		fixResourceAssignment(ExpenseAssignment.getObjectType(), expenseAssignmentTagsToFix);
+	}
+
+	private void fixResourceAssignment(int assignmentType, Vector<String> assignmentTagsToFix) throws Exception
+	{
+		ORefSet assignmentRefs = getProject().getPool(assignmentType).getRefSet();
+		for(ORef assignmentRef : assignmentRefs)
+		{
+			Assignment assignment = Assignment.findAssignment(getProject(), assignmentRef);
+			clearFieldReferringToMissingObject(assignment, assignmentTagsToFix);
+		}
+	}
+
+	private void clearFieldReferringToMissingObject(Assignment assignment, Vector<String> assignmentTagsToFix) throws Exception
+	{
+		for(String tagToFix : assignmentTagsToFix)
+		{
+			ORef ref = assignment.getRefData(tagToFix);
+			if (shouldClearDataField(ref))
+				getProject().setObjectData(assignment, tagToFix, "");
+		}
+	}
+
+	private boolean shouldClearDataField(ORef ref)
+	{
+		if (ref.isInvalid())
+			return true;
+		
+		return BaseObject.find(getProject(), ref) == null;
 	}
 
 	private void quarantineGroupBoxFactorLinks() throws Exception
