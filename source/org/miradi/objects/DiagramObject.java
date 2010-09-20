@@ -381,6 +381,9 @@ abstract public class DiagramObject extends BaseObject
 		for (int index = 0; index < allDiagramLinkRefs.size(); ++index)
 		{
 			DiagramLink diagramLink = DiagramLink.find(getProject(), allDiagramLinkRefs.get(index));
+			if (diagramLink.isCoveredByGroupBoxLink())
+				continue;
+			
 			Rectangle bendPointBounds = diagramLink.getBendPointBounds();
 			if (bendPointBounds == null)
 				continue;
