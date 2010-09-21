@@ -43,7 +43,7 @@ public class FloatData extends ObjectData
 	@Override
 	public String get()
 	{
-		return Float.toString(value);
+		return Double.toString(value);
 	}
 	
 	public float asFloat()
