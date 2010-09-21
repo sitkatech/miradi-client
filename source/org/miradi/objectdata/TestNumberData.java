@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objectdata;
 
+import java.util.Locale;
+
 import org.martus.util.TestCaseEnhanced;
 
 public class TestNumberData extends TestCaseEnhanced
@@ -40,5 +42,68 @@ public class TestNumberData extends TestCaseEnhanced
 		assertEquals("Didn't keep zero as zero?", "0", data.get());
 		data.set(".1");
 		assertEquals("Didn't handle .1 properly?", "0.1", data.get());
+	}
+	
+	public void testToDoubleForData() throws Exception
+	{
+		switchToGermanLocale();
+		assertEquals("incorrect value?", 0.5, NumberData.toDoubleForData("0,5"));
+		assertEquals("incorrect value?", 1000.5, NumberData.toDoubleForData("1.000,5"));
+		assertEquals("incorrect value?", -1000.5, NumberData.toDoubleForData("-1.000,5"));	
+
+		switchToUsLocale();
+		assertEquals("incorrect value?", 0.5, NumberData.toDoubleForData("0.5"));
+		assertEquals("incorrect value?", 1000.5, NumberData.toDoubleForData("1,000.5"));
+		assertEquals("incorrect value?", -1000.5, NumberData.toDoubleForData("-1,000.5"));
+	}
+
+	public void testToDoubleForHumans() throws Exception
+	{
+		switchToGermanLocale();
+		assertEquals("incorrect value?", 0.5, NumberData.toDoubleForHumans("0,5"));
+		assertEquals("incorrect value?", 1000.5, NumberData.toDoubleForHumans("1.000,5"));
+		assertEquals("incorrect value?", -1000.5, NumberData.toDoubleForHumans("-1.000,5"));
+		
+		switchToUsLocale();
+		assertEquals("incorrect value?", 0.5, NumberData.toDoubleForHumans("0.5"));
+		assertEquals("incorrect value?", 1000.5, NumberData.toDoubleForHumans("1000.5"));
+		assertEquals("incorrect value?", -1000.5, NumberData.toDoubleForHumans("-1000.5"));
+	}
+	
+	public void testToStringForData()
+	{
+		switchToGermanLocale();
+		assertEquals("incorrect value?", "0.5", NumberData.toStringForData(0.5));
+		assertEquals("incorrect value?", "1000.5", NumberData.toStringForData(1000.5));
+		assertEquals("incorrect value?", "-1000.5", NumberData.toStringForData(-1000.5));
+		
+		switchToUsLocale();
+		assertEquals("incorrect value", "0.5", NumberData.toStringForData(0.5));
+		assertEquals("incorrect value", "1000.5", NumberData.toStringForData(1000.5));
+		assertEquals("incorrect value", "-1000.5", NumberData.toStringForData(-1000.5));
+	}
+	
+	public void testToStringForHumans()
+	{
+		switchToGermanLocale();
+		assertEquals("incorrect value?", "0,5", NumberData.toStringForHumans(0.5));
+		assertEquals("incorrect value?", "1.000,5", NumberData.toStringForHumans(1000.5));
+		assertEquals("incorrect value?", "-1.000,5", NumberData.toStringForHumans(-1000.5));
+		
+		switchToUsLocale();
+		assertEquals("incorrect value?", "0.5", NumberData.toStringForHumans(0.5));
+		assertEquals("incorrect value?", "1,000.5", NumberData.toStringForHumans(1000.5));
+		assertEquals("incorrect value?", "-1,000.5", NumberData.toStringForHumans(-1000.5));
+	}
+	
+	protected void switchToGermanLocale()
+	{
+		Locale.setDefault(Locale.GERMANY);
+		assertEquals("didnt change to german locale", "Deutschland", Locale.getDefault().getDisplayCountry());
+	}
+
+	protected void switchToUsLocale()
+	{
+		Locale.setDefault(Locale.US);
 	}
 }
