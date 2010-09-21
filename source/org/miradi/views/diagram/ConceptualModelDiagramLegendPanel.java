@@ -29,7 +29,6 @@ import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.Stress;
 
 public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
@@ -49,7 +48,7 @@ public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
 	@Override
 	protected void addStressLine(TwoColumnPanel jpanel)
 	{
-		addIconLineWithCheckBox(jpanel, FactorLink.getObjectType(), Stress.OBJECT_NAME, new StressIcon());
+		addIconLineWithCheckBox(jpanel, Stress.getObjectType(), Stress.OBJECT_NAME, new StressIcon());
 	}
 	
 	@Override
