@@ -247,8 +247,8 @@ abstract public class DiagramModel extends DefaultGraphModel
 		FactorCell to = rawGetFactorCellByRef(extraInfo.getToDiagramFactorRef());
 		if(to == null)
 			EAM.logError("Missing to, DFL=" + diagramFactorLink.getId() + ", To=" + extraInfo.getToFactorId());
-		FactorLink factorLink = getRawFactorLink(diagramFactorLink); 
-		LinkCell cell = new LinkCell(factorLink, diagramFactorLink, from, to);
+		
+		LinkCell cell = new LinkCell(diagramFactorLink, from, to);
 		
 		EAMGraphCell[] newLinks = new EAMGraphCell[]{cell};
 		Map<DefaultGraphCell, AttributeMap> nestedMap = getNestedAttributeMap(cell);
