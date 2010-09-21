@@ -50,7 +50,6 @@ public class LinkCell extends EAMGraphCell implements Edge
 {
 	public LinkCell(FactorLink factorLinkToUse, DiagramLink diagramLinkToUse, FactorCell fromToUse, FactorCell toToUse)
 	{
-		factorLink = factorLinkToUse;
 		diagramLink = diagramLinkToUse;
 		from = fromToUse;
 		to = toToUse;
@@ -118,11 +117,6 @@ public class LinkCell extends EAMGraphCell implements Edge
 	public FactorCell getTo()
 	{
 		return to;
-	}
-	
-	public FactorLink getWrappedFactorLink()
-	{
-		return factorLink;
 	}
 	
 	private void updateBendPoints()
@@ -378,7 +372,6 @@ public class LinkCell extends EAMGraphCell implements Edge
 	}
 	
 	private BendPointSelectionHelper bendSelectionHelper;
-	private FactorLink factorLink;
 	private DiagramLink diagramLink;
 	private FactorCell from;
 	private FactorCell to;
