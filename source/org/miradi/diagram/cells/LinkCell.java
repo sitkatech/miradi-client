@@ -125,11 +125,6 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return factorLink;
 	}
 	
-	public ORef getWrappedFactorLinkRef()
-	{
-		return getWrappedFactorLink().getRef();
-	}
-	
 	private void updateBendPoints()
 	{
 		PointList bendPoints = getDiagramLink().getBendPoints();
