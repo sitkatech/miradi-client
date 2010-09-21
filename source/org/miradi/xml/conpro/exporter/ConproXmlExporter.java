@@ -1048,7 +1048,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		if (value == 0)
 			return;
 		
-		writeOptionalElement(out, elementName, Float.toString(value));
+		writeOptionalElement(out, elementName, Double.toString(value));
 	}
 
 	private void writeCodeListElements(UnicodeWriter out, String parentElementName, String elementName, BaseObject object, String tag) throws Exception
