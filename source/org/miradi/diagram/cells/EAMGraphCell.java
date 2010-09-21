@@ -72,11 +72,6 @@ public class EAMGraphCell extends DefaultGraphCell
 		return ORef.INVALID;
 	}
 	
-	public ORef getWrappedFactorLinkRef()
-	{
-		return ORef.INVALID;
-	}
-	
 	public Color getColor()
 	{
 		return Color.BLACK;
