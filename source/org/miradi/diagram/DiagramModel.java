@@ -52,7 +52,6 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramLinkId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
@@ -561,14 +560,6 @@ abstract public class DiagramModel extends DefaultGraphModel
 		return node != null;
 	}
 
-	public FactorLink getRawFactorLink(DiagramLink diagramFactorLink)
-	{
-		FactorLinkId wrappedId = diagramFactorLink.getWrappedId();
-		FactorLink factorLink = (FactorLink) project.findObject(ObjectType.FACTOR_LINK, wrappedId);
-		
-		return factorLink;
-	}
-	
 	private FactorCell rawGetFactorCellByRef(ORef diagramFactorRef)
 	{
 		return cellInventory.getFactorCellByDiagramFactorRef(diagramFactorRef);
