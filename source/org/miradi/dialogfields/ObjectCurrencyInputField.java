@@ -20,7 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.DoubleUtilities;
 
 public class ObjectCurrencyInputField extends ObjectFloatingPointRestrictedInputField
 {
@@ -32,10 +34,18 @@ public class ObjectCurrencyInputField extends ObjectFloatingPointRestrictedInput
 	@Override
 	public void setText(String newValue)
 	{
-		if (newValue.length() > 0)
+		try
 		{
-			double valueToFormat = Double.parseDouble(newValue);
-			newValue = project.getCurrencyFormatterWithoutCommas().format(valueToFormat);
+			if (newValue.length() > 0)
+			{
+				double valueToFormat = DoubleUtilities.toDoubleForHumans(newValue);
+				newValue = project.getCurrencyFormatterWithoutCommas().format(valueToFormat);
+			}
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
 		}
 		
 		super.setText(newValue);
