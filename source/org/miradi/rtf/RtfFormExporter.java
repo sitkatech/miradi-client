@@ -44,6 +44,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.StringMapData;
 
 public class RtfFormExporter
@@ -179,7 +180,7 @@ public class RtfFormExporter
 			if (value.length() == 0)
 				return "";
 			
-			return formatter.format(Double.parseDouble(value));
+			return formatter.format(DoubleUtilities.toDoubleForHumans(value));
 		}
 		else if (formItem.isCodeListFormFieldData())
 		{
