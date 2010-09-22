@@ -27,6 +27,7 @@ public class FloatData extends ObjectData
 	public FloatData(String tagToUse)
 	{
 		super(tagToUse);
+		
 		value = 0;
 	}
 	
@@ -69,6 +70,5 @@ public class FloatData extends ObjectData
 		return new Float(value).hashCode();
 	}
 
-
-	double value;
+	private double value;
 }
