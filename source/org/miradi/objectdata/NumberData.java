@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
-import java.text.NumberFormat;
 
 import org.miradi.utils.FloatingPointFormatter;
 import org.miradi.utils.InvalidNumberException;
@@ -86,28 +85,5 @@ public class NumberData extends ObjectData
 		return value;
 	}
 	
-	public static double toDoubleForData(String doubleAsString) throws Exception
-	{
-		NumberFormat formatter = NumberFormat.getInstance();
-		return formatter.parse(doubleAsString).doubleValue();
-	}
-	
-	public static double toDoubleForHumans(String doubleAsString) throws Exception
-	{
-		NumberFormat formatter = NumberFormat.getInstance();
-		return formatter.parse(doubleAsString).doubleValue();
-	}
-	
-	public static String toStringForData(double doubleToConvert)
-	{
-		return Double.toString(doubleToConvert);
-	}
-	
-	public static String toStringForHumans(double doubleToConvert)
-	{
-		NumberFormat formatter = NumberFormat.getInstance();
-		return formatter.format(doubleToConvert);
-	}
-
 	double value;
 }

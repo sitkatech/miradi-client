@@ -191,6 +191,7 @@ import org.miradi.utils.TestConproMiradiHabitatCodeMap;
 import org.miradi.utils.TestDateRange;
 import org.miradi.utils.TestDelimitedFileLoader;
 import org.miradi.utils.TestDiagramCorruptionDetector;
+import org.miradi.utils.TestDoubleUtilities;
 import org.miradi.utils.TestEnhancedJsonObject;
 import org.miradi.utils.TestFloatingPointFormatter;
 import org.miradi.utils.TestLogging;
@@ -310,7 +311,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestOptionalDouble.class));
 		suite.addTest(new TestSuite(TestAbstractTableExporter.class));
 		suite.addTest(new TestSuite(TestFloatingPointFormatter.class));
-		
+		suite.addTest(new TestSuite(TestDoubleUtilities.class));		
 		// diagram package
 		suite.addTest(new TestSuite(TestDiagramModel.class));
 		suite.addTest(new TestSuite(TestDiagramView.class));

@@ -18,30 +18,32 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.objectdata;
+package org.miradi.utils;
 
-import java.util.Locale;
+import java.text.NumberFormat;
 
-import org.martus.util.TestCaseEnhanced;
-
-public class TestNumberData extends TestCaseEnhanced
+public class DoubleUtilities
 {
-	public TestNumberData(String name)
+	public static double toDoubleForData(String doubleAsString) throws Exception
 	{
-		super(name);
+		NumberFormat formatter = NumberFormat.getInstance();
+		return formatter.parse(doubleAsString).doubleValue();
 	}
 
-	public void testFormatting() throws Exception
+	public static double toDoubleForHumans(String doubleAsString) throws Exception
 	{
-		NumberData data = new NumberData("tag");
-		data.set("5e7");
-		assertEquals("Didn't avoid scientific notation?", "50000000", data.get());
-		data.set("1.23456");
-		assertEquals("Didn't keep decimals?", "1.23456", data.get());
-		data.set("0");
-		assertEquals("Didn't keep zero as zero?", "0", data.get());
-		data.set(".1");
-		assertEquals("Didn't handle .1 properly?", "0.1", data.get());
+		NumberFormat formatter = NumberFormat.getInstance();
+		return formatter.parse(doubleAsString).doubleValue();
 	}
-	
+
+	public static String toStringForData(double doubleToConvert)
+	{
+		return Double.toString(doubleToConvert);
+	}
+
+	public static String toStringForHumans(double doubleToConvert)
+	{
+		NumberFormat formatter = NumberFormat.getInstance();
+		return formatter.format(doubleToConvert);
+	}
 }
