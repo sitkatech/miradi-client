@@ -20,7 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.Locale;
 
 public class DoubleUtilities
 {
@@ -38,7 +40,16 @@ public class DoubleUtilities
 
 	public static String toStringForData(double doubleToConvert)
 	{
-		return Double.toString(doubleToConvert);
+		Locale usLocale = Locale.US;
+		DecimalFormat formatter = (DecimalFormat) DecimalFormat.getNumberInstance(usLocale);
+		applyPatternToVoidScientificNotation(formatter);
+
+		return formatter.format(doubleToConvert).toString();
+	}
+
+	private static void applyPatternToVoidScientificNotation(DecimalFormat formatter)
+	{
+		formatter.applyPattern("#.#");
 	}
 
 	public static String toStringForHumans(double doubleToConvert)
