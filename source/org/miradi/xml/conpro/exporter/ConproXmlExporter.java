@@ -77,6 +77,7 @@ import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
+import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.MiradiMultiCalendar;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.xml.XmlExporter;
@@ -1000,8 +1001,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	
 	private void writeOptionalLocation(UnicodeWriter out) throws IOException, Exception
 	{
-		float latitudeAsFloat = getProjectMetadata().getLatitudeAsFloat();
-		float longitudeAsFloat = getProjectMetadata().getLongitudeAsFloat();
+		double latitudeAsFloat = getProjectMetadata().getLatitudeAsFloat();
+		double longitudeAsFloat = getProjectMetadata().getLongitudeAsFloat();
 		if (latitudeAsFloat == 0 && longitudeAsFloat == 0)
 			return;
 		
@@ -1043,12 +1044,12 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		}
 	}
 	
-	private void writeOptionalFloatElement(UnicodeWriter out, String elementName, float value) throws Exception
+	private void writeOptionalFloatElement(UnicodeWriter out, String elementName, double value) throws Exception
 	{
 		if (value == 0)
 			return;
 		
-		writeOptionalElement(out, elementName, Double.toString(value));
+		writeOptionalElement(out, elementName, DoubleUtilities.toStringForHumans(value));
 	}
 
 	private void writeCodeListElements(UnicodeWriter out, String parentElementName, String elementName, BaseObject object, String tag) throws Exception

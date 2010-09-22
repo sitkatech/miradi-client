@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
+import org.miradi.utils.DoubleUtilities;
+
 
 public class FloatData extends ObjectData
 {
@@ -37,16 +39,16 @@ public class FloatData extends ObjectData
 			return;
 		}
 		
-		value = Float.parseFloat(newValue);
+		value = DoubleUtilities.toDoubleForData(newValue);
 	}
 	
 	@Override
 	public String get()
 	{
-		return Double.toString(value);
+		return DoubleUtilities.toStringForData(value);
 	}
 	
-	public float asFloat()
+	public double asFloat()
 	{
 		return value;
 	}
@@ -68,5 +70,5 @@ public class FloatData extends ObjectData
 	}
 
 
-	float value;
+	double value;
 }

@@ -233,12 +233,12 @@ public class ProjectMetadata extends BaseObject
 		return PlanningTreeTargetPositionQuestion.shouldPutTargetsAtTopLevelOfTree(planningTreeTargetPosition.get());
 	}
 	
-	public float getLongitudeAsFloat()
+	public double getLongitudeAsFloat()
 	{
 		return longitude.asFloat();
 	}
 	
-	public float getLatitudeAsFloat()
+	public double getLatitudeAsFloat()
 	{
 		return latitude.asFloat();
 	}
