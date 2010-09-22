@@ -31,6 +31,22 @@ public class TestDoubleUtilities extends EAMTestCase
 		super(name);
 	}
 	
+	@Override
+	public void setUp() throws Exception
+	{
+		super.setUp();
+		
+		previousLocale = Locale.getDefault();
+	}
+	
+	@Override
+	public void tearDown() throws Exception
+	{
+		setLocale(previousLocale);
+		
+		super.tearDown();
+	}
+	
 	public void testToDoubleForData() throws Exception
 	{
 		switchToGermanLocale();
@@ -83,14 +99,21 @@ public class TestDoubleUtilities extends EAMTestCase
 		assertEquals("incorrect value?", "-1,000.5", DoubleUtilities.toStringForHumans(-1000.5));
 	}
 	
-	protected void switchToGermanLocale()
+	private void switchToGermanLocale()
 	{
-		Locale.setDefault(Locale.GERMANY);
+		setLocale(Locale.GERMANY);
 		assertEquals("didnt change to german locale", "Deutschland", Locale.getDefault().getDisplayCountry());
 	}
 
-	protected void switchToUsLocale()
+	private void switchToUsLocale()
 	{
-		Locale.setDefault(Locale.US);
+		setLocale(Locale.US);
 	}
+
+	private void setLocale(Locale locale)
+	{
+		Locale.setDefault(locale);
+	}
+	
+	private Locale previousLocale;
 }
