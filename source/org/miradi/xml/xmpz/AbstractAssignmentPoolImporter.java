@@ -28,6 +28,7 @@ import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
+import org.miradi.utils.DoubleUtilities;
 import org.miradi.xml.wcs.WcsXmlConstants;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -62,7 +63,7 @@ abstract public class AbstractAssignmentPoolImporter extends AbstractBaseObjectP
 			
 			Node quantityNode = getImporter().getNode(dateUnitEffortNode, getQuantatityElementName());
 			String quantityAsString = quantityNode.getTextContent();
-			DateUnitEffort dateUnitEffort = new DateUnitEffort(dateUnit, Double.parseDouble(quantityAsString));
+			DateUnitEffort dateUnitEffort = new DateUnitEffort(dateUnit, DoubleUtilities.toDoubleForData(quantityAsString));
 			dateUnitEffortList.add(dateUnitEffort);
 		}
 		
