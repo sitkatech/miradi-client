@@ -107,6 +107,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
+import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXml;
@@ -287,7 +288,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		if (totalCostAsString.length() == 0)
 			return;
 		
-		double totalCost = Double.parseDouble(totalCostAsString);
+		double totalCost = DoubleUtilities.toDoubleForData(totalCostAsString);
 		ORef expenseAssignmentRef = getProject().createObject(ExpenseAssignment.getObjectType());
 		DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(new DateUnit(), totalCost);
 		setData(expenseAssignmentRef, ExpenseAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
