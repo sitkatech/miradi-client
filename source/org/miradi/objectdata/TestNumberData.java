@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objectdata;
 
-import java.util.Locale;
-
 import org.martus.util.TestCaseEnhanced;
 
 public class TestNumberData extends TestCaseEnhanced
