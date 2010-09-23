@@ -32,7 +32,7 @@ public class TestNumberData extends TestCaseEnhanced
 	public void testFormatting() throws Exception
 	{
 		NumberData data = new NumberData("tag");
-		data.set("5e7");
+		data.set("5E7");
 		assertEquals("Didn't avoid scientific notation?", "50000000", data.get());
 		data.set("1.23456");
 		assertEquals("Didn't keep decimals?", "1.23456", data.get());
