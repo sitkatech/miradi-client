@@ -51,6 +51,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.ColumnTagProvider;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
+import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.FloatingPointFormatter;
 import org.miradi.utils.OptionalDouble;
 
@@ -333,13 +334,13 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 	}
 	
-	private Object divideValue(Object value, int portionCount)
+	private Object divideValue(Object value, int portionCount) throws Exception
 	{
 		String valueAsString = value.toString().trim();
 		if (valueAsString.equals(""))
 			return value;
 		
-		double parsedValue = Double.parseDouble(valueAsString);
+		double parsedValue = DoubleUtilities.toDoubleForData(valueAsString);
 		return parsedValue  / portionCount;
 	}
 
@@ -353,7 +354,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 		else
 		{
-			double units = Double.parseDouble(valueAsString);
+			double units = DoubleUtilities.toDoubleForData(valueAsString);
 			setUnits(assignment, dateUnit, units);
 		}
 		
@@ -561,14 +562,14 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	}
 	
 	@Override
-	public OptionalDouble getCellFraction(int row, int modelColumn)
+	public OptionalDouble getCellFraction(int row, int modelColumn) throws Exception
 	{
 		ChoiceItem choiceItem = (ChoiceItem) getValueAt(row, modelColumn);
 		String doubleAsString = choiceItem.getLabel();
 		if (doubleAsString.length() == 0)
 			return new OptionalDouble();
 		
-		double value = Double.parseDouble(doubleAsString);
+		double value = DoubleUtilities.toDoubleForData(doubleAsString);
 		double fullTimeEmployeeDaysPerYear = getFullTimeEmployeeDaysPerYear(getProject());	
 		double fraction = calculateFullTimeEmployeeFraction(getDateUnit(modelColumn), value, fullTimeEmployeeDaysPerYear);
 		

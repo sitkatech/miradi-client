@@ -62,31 +62,39 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 
 	public void actionPerformed(ActionEvent event)
 	{
-		Vector<Component> buttons = new Vector<Component>();
-		PanelButton insertButton = new PanelButton(EAM.text("Insert"));
-		insertButton.addActionListener(new InsertButtonHandler());
-		buttons.add(insertButton);
-		PanelButton cancelButton = new PanelButton(EAM.text("Cancel"));
-		buttons.add(cancelButton);
-		
-		dialog = new DialogWithButtonBar(getMainWindow(), EAM.text("Insert FTE Fraction"));
-		dialog.setButtons(buttons);
-		dialog.setModal(true);
-		dialog.setSimpleCloseButton(cancelButton);
-		
-		OneColumnPanel panel = new OneColumnPanel();
-		panel.add(createExplanationHtmlPanel(), BorderLayout.BEFORE_FIRST_LINE);
-		errorField = new PanelTextField(50);
-		errorField.setEditable(false);
-		panel.add(errorField, BorderLayout.AFTER_LAST_LINE);
-		dialog.add(panel, BorderLayout.BEFORE_FIRST_LINE);
-		
-		panel.add(createEditPanel(), BorderLayout.CENTER);
-		dialog.getRootPane().setDefaultButton(insertButton);
-		fractionField.selectAll();
-		fractionField.requestFocusInWindow();
-		Utilities.centerDlg(dialog);
-		dialog.setVisible(true);
+		try
+		{
+			Vector<Component> buttons = new Vector<Component>();
+			PanelButton insertButton = new PanelButton(EAM.text("Insert"));
+			insertButton.addActionListener(new InsertButtonHandler());
+			buttons.add(insertButton);
+			PanelButton cancelButton = new PanelButton(EAM.text("Cancel"));
+			buttons.add(cancelButton);
+
+			dialog = new DialogWithButtonBar(getMainWindow(), EAM.text("Insert FTE Fraction"));
+			dialog.setButtons(buttons);
+			dialog.setModal(true);
+			dialog.setSimpleCloseButton(cancelButton);
+
+			OneColumnPanel panel = new OneColumnPanel();
+			panel.add(createExplanationHtmlPanel(), BorderLayout.BEFORE_FIRST_LINE);
+			errorField = new PanelTextField(50);
+			errorField.setEditable(false);
+			panel.add(errorField, BorderLayout.AFTER_LAST_LINE);
+			dialog.add(panel, BorderLayout.BEFORE_FIRST_LINE);
+
+			panel.add(createEditPanel(), BorderLayout.CENTER);
+			dialog.getRootPane().setDefaultButton(insertButton);
+			fractionField.selectAll();
+			fractionField.requestFocusInWindow();
+			Utilities.centerDlg(dialog);
+			dialog.setVisible(true);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
+		}
 	}
 
 	private FlexibleWidthHtmlViewer createExplanationHtmlPanel()
@@ -113,7 +121,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		return mainWindow;
 	}
 	
-	public JPanel createEditPanel()
+	public JPanel createEditPanel() throws Exception
 	{
 		TwoColumnPanel panel = new TwoColumnPanel();
 		String fullTimeEmployeeDaysPerYear = getFullTimeEmployeeDaysPerYearAsString();
@@ -132,7 +140,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		return panel;
 	}
 
-	private String getPrePopulatedValue()
+	private String getPrePopulatedValue() throws Exception
 	{
 		PlanningViewAbstractTreeTableSyncedTableModel model = getCastedModel().getCastedModel(getSelectedColumn());
 		int columnWithinMultiTableModel = getSelectedColumnWithinMultiTableModel();
