@@ -758,7 +758,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return currencyFormatter;
 	}
 	
-	abstract protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts);
+	abstract protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts) throws Exception;
 	
 	abstract protected boolean isAssignmentForModel(Assignment assignment);
 

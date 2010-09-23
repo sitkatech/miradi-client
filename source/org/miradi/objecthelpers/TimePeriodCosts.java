@@ -117,7 +117,7 @@ public class TimePeriodCosts
 		return totalExpenses;
 	}
 	
-	public OptionalDouble calculateTotalCost(Project projectToUse)
+	public OptionalDouble calculateTotalCost(Project projectToUse) throws Exception
 	{
 		final OptionalDouble expenseToAdd = getTotalExpense();
 		final OptionalDouble totalResourceCost = calculateResourcesTotalCost(projectToUse);
@@ -125,7 +125,7 @@ public class TimePeriodCosts
 		return totalResourceCost.add(expenseToAdd);
 	}
 	
-	private OptionalDouble calculateResourcesTotalCost(Project projectToUse)
+	private OptionalDouble calculateResourcesTotalCost(Project projectToUse) throws Exception
 	{
 		OptionalDouble resourcesTotalCost = new OptionalDouble();
 		Vector<CategorizedQuantity> categorizedQuantities = workUnitCategorizedQuantities;
@@ -140,7 +140,7 @@ public class TimePeriodCosts
 		return resourcesTotalCost;
 	}
 
-	private OptionalDouble getCostPerUnit(Project projectToUse,	ORef projectResourceRef)
+	private OptionalDouble getCostPerUnit(Project projectToUse,	ORef projectResourceRef) throws Exception
 	{
 		if (projectResourceRef.isInvalid())
 			return new OptionalDouble(0.0);
