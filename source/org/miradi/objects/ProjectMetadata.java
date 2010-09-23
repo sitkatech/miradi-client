@@ -56,6 +56,7 @@ import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 
@@ -199,7 +200,7 @@ public class ProjectMetadata extends BaseObject
 			if (size.length() == 0)
 				return new OptionalDouble();
 			
-			return new OptionalDouble(Double.parseDouble(size));
+			return new OptionalDouble(DoubleUtilities.toDoubleForData(size));
 		}
 		catch (Exception e)
 		{
