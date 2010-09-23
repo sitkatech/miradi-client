@@ -552,7 +552,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	}
 	
 	@Override
-	public void updateFullTimeEmployeeDaysPerYearFraction(int row, int modelColumn, double fraction)
+	public void updateFullTimeEmployeeDaysPerYearFraction(int row, int modelColumn, double fraction) throws Exception
 	{
 		double fullTimeEmployeeDaysPerYear = getFullTimeEmployeeDaysPerYear(getProject());
 		DateUnit dateUnit = getDateUnit(modelColumn);
@@ -605,9 +605,10 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		throw new RuntimeException(EAM.text("Should Now Allow Full Time Employee To Be Calculated For ") + "DateUnit = " + dateUnit);
 	}
 	
-	public static double getFullTimeEmployeeDaysPerYear(Project project)
+	private static double getFullTimeEmployeeDaysPerYear(Project project) throws Exception
 	{
-		return Double.parseDouble(getRawFullTimeEmployeeDaysPerYear(project));
+		String rawFullTimeEmployeeDaysPerYear = getRawFullTimeEmployeeDaysPerYear(project);
+		return DoubleUtilities.toDoubleForData(rawFullTimeEmployeeDaysPerYear);
 	}
 
 	public static String getRawFullTimeEmployeeDaysPerYear(Project project)
