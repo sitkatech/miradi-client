@@ -136,7 +136,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	{
 	}
 	
-	public OptionalDouble getCellFraction(int row, int modelColumn)
+	public OptionalDouble getCellFraction(int row, int modelColumn) throws Exception
 	{
 		return new OptionalDouble();
 	}
