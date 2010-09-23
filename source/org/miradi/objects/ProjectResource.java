@@ -39,6 +39,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectResource extends BaseObject
@@ -171,11 +172,12 @@ public class ProjectResource extends BaseObject
 		return resourceType.get();
 	}
 	
-	public double getCostPerUnit()
+	public double getCostPerUnit() throws Exception
 	{
 		if (costPerUnit.toString().length() == 0)
 			return 0;
-		return Double.parseDouble(costPerUnit.toString());
+		
+		return DoubleUtilities.toDoubleForData(costPerUnit.toString());
 	}
 	
 	public static CodeList getSortedProjectResourceCodes(Project project, ORefSet resourceRefs)

@@ -60,7 +60,7 @@ abstract public class AbstractWorkUnitsTableModel extends AssignmentDateUnitsTab
 	}
 
 	@Override
-	protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts)
+	protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts) throws Exception
 	{
 		return timePeriodCosts.getTotalWorkUnits();
 	}

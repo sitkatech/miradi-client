@@ -41,7 +41,7 @@ abstract public class AbstractBudgetDetailsTableModel extends AssignmentDateUnit
 	}
 	
 	@Override
-	protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts)
+	protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts) throws Exception
 	{
 		return timePeriodCosts.calculateTotalCost(getProject());
 	}

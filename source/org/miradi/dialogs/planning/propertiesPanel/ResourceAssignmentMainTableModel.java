@@ -91,9 +91,17 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 		ProjectResource resource = findProjectResource(resourceAssignment);
 		if (resource == null)
 			return "";
-				
-		double cost = resource.getCostPerUnit();
-		return currencyFormatter.format(cost);
+		
+		try
+		{
+			double cost = resource.getCostPerUnit();
+			return currencyFormatter.format(cost);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return EAM.text("Error");
+		}
 	}
 	
 	@Override
