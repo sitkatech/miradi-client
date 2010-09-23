@@ -19,7 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
+import org.miradi.main.EAM;
 import org.miradi.project.FloatingNumberFormat;
+import org.miradi.utils.DoubleUtilities;
 
 
 public class PercentageData extends NumberData
@@ -42,10 +44,18 @@ public class PercentageData extends NumberData
 		if(new Double(value).isNaN())
 			return "";
 		
+		try
+		{
 		String doubleAsString = super.get();
-		double rawDouble = Double.parseDouble(doubleAsString);
+		double rawDouble = DoubleUtilities.toDoubleForData(doubleAsString);
 		FloatingNumberFormat formatter = new FloatingNumberFormat();
 
 		return formatter.format(rawDouble);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
 	}
 }
