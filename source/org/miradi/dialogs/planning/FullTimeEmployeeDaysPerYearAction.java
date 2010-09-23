@@ -228,15 +228,23 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 	{
 		public void actionPerformed(ActionEvent e)
 		{
-			String doubleAsString = fractionField.getText();
-			double parsedDouble = Double.parseDouble(doubleAsString);
-			
-			PlanningViewAbstractTreeTableSyncedTableModel model = getCastedModel().getCastedModel(getSelectedColumn());
-			int columnWithinMultiTableModel = getSelectedColumnWithinMultiTableModel();
-			model.updateFullTimeEmployeeDaysPerYearFraction(getSelectedRow(), columnWithinMultiTableModel, parsedDouble);
-			
-			dialog.dispose();
-			dialog.setVisible(false);
+			try
+			{
+				String doubleAsString = fractionField.getText();
+				double parsedDouble = Double.parseDouble(doubleAsString);
+
+				PlanningViewAbstractTreeTableSyncedTableModel model = getCastedModel().getCastedModel(getSelectedColumn());
+				int columnWithinMultiTableModel = getSelectedColumnWithinMultiTableModel();
+				model.updateFullTimeEmployeeDaysPerYearFraction(getSelectedRow(), columnWithinMultiTableModel, parsedDouble);
+
+				dialog.dispose();
+				dialog.setVisible(false);
+			}
+			catch (Exception exception)
+			{
+				EAM.logException(exception);
+				EAM.unexpectedErrorDialog(exception);
+			}
 		}
 	}
 	
