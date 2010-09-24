@@ -1404,8 +1404,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void populateExpenseAssignment(ExpenseAssignment expenseAssignment) throws Exception
 	{
 		fillObjectUsingCommand(expenseAssignment, ExpenseAssignment.TAG_LABEL, "Some Expense");
-		fillObjectUsingCommand(expenseAssignment, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, createFundingSource().getRef().toString());
-		fillObjectUsingCommand(expenseAssignment, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, createAccountingCode().getRef().toString());
+		fillObjectUsingCommand(expenseAssignment, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, createFundingSource().getRef());
+		fillObjectUsingCommand(expenseAssignment, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, createAccountingCode().getRef());
+		fillObjectUsingCommand(expenseAssignment, ExpenseAssignment.TAG_CATEGORY_ONE_REF, createCategoryOne().getRef());
+		fillObjectUsingCommand(expenseAssignment, ExpenseAssignment.TAG_CATEGORY_TWO_REF, createCategoryTwo().getRef());
 		
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(createDateUnitEffort(2008, 2008, 10.0));
@@ -1415,8 +1417,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void populateResourceAssignment(ResourceAssignment resourceAssignment) throws Exception
 	{
 		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_LABEL, "Some Resource Assignment");
-		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_FUNDING_SOURCE_ID, createFundingSource().getId().toString());
-		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_ACCOUNTING_CODE_ID, createAccountingCode().getId().toString());
+		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_RESOURCE_ID, createProjectResource().getId());
+		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_FUNDING_SOURCE_ID, createFundingSource().getId());
+		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_ACCOUNTING_CODE_ID, createAccountingCode().getId());
+		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_CATEGORY_ONE_REF, createCategoryOne().getRef());
+		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_CATEGORY_TWO_REF, createCategoryTwo().getRef());
 		
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(createDateUnitEffort(2007, 2008, 11.0));
@@ -1558,6 +1563,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void fillObjectUsingCommand(BaseObject object, String fieldTag, String data) throws Exception
 	{
 		fillObjectUsingCommand(object.getRef(), fieldTag, data);
+	}
+	
+	public void fillObjectUsingCommand(BaseObject object, String fieldTag, ORef data) throws Exception
+	{
+		fillObjectUsingCommand(object, fieldTag, data.toString());
+	}
+	
+	public void fillObjectUsingCommand(BaseObject object, String fieldTag, BaseId data) throws Exception
+	{
+		fillObjectUsingCommand(object, fieldTag, data.toString());
 	}
 	
 	public void fillObjectUsingCommand(ORef ref, String fieldTag, ORefList data) throws Exception
