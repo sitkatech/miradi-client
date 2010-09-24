@@ -32,7 +32,7 @@ public class TestIntegerData extends EAMTestCase
 	public void testFormatting() throws Exception
 	{
 		IntegerData data = new IntegerData("tag");
-		data.set("5e7");
+		data.set("5E7");
 		assertEquals("Didn't avoid scientific notation?", "50000000", data.get());
 	}
 	
@@ -51,10 +51,10 @@ public class TestIntegerData extends EAMTestCase
 			try
 			{
 				data.set("2.not a number");
-				fail("should have thrown for not a number");
 			}
 			catch(NumberFormatException ignoreExpected)
 			{
+				fail("should have thrown since format takes care of strings containing non numeric values?");
 			}
 		}
 		finally

@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectdata;
 
 import org.miradi.main.EAM;
+import org.miradi.utils.DoubleUtilities;
 
 
 public class IntegerData extends ObjectData
@@ -47,7 +48,7 @@ public class IntegerData extends ObjectData
 		catch(NumberFormatException e)
 		{
 			EAM.logDebug("Field " + getTag() + " expected integer but got: " + newValue);
-			double valueAsDouble = Double.parseDouble(newValue);
+			double valueAsDouble = DoubleUtilities.toDoubleForData(newValue);
 			value = new Integer((int)valueAsDouble);
 			if(Math.abs(valueAsDouble-value) >= .1)
 				EAM.logWarning("TRUNCATING floating portion of: " + getTag());
