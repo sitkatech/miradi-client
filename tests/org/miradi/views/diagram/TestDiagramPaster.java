@@ -34,7 +34,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
-import org.miradi.main.EAMTestCase;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
