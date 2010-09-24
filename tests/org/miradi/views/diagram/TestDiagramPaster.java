@@ -35,6 +35,7 @@ import org.miradi.ids.IdList;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAMTestCase;
+import org.miradi.main.TestCaseWithProject;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -63,26 +64,11 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.Undo;
 
-public class TestDiagramPaster extends EAMTestCase 
+public class TestDiagramPaster extends TestCaseWithProject 
 {
 	public TestDiagramPaster(String name)
 	{
 		super(name);
-	}
-	
-	@Override
-	public void setUp() throws Exception
-	{
-		super.setUp();
-		project = new ProjectForTesting(getName());
-	}
-
-	@Override
-	public void tearDown() throws Exception
-	{
-		project.close();
-		project = null;
-		super.tearDown();
 	}
 	
 	public void testBudgetItemPasteIntoDifferentProject() throws Exception
@@ -216,23 +202,23 @@ public class TestDiagramPaster extends EAMTestCase
 		
 	public void fixupRefs(int factorType, int annotationType, String annotationFactorTag) throws Exception
 	{
-		DiagramFactor diagramFactor = project.createDiagramFactorAndAddToDiagram(factorType);
-		ORef annotationRef1 = project.createFactorAndReturnRef(annotationType);
-		ORef annotationRef2 = project.createFactorAndReturnRef(annotationType);
+		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(factorType);
+		ORef annotationRef1 = getProject().createFactorAndReturnRef(annotationType);
+		ORef annotationRef2 = getProject().createFactorAndReturnRef(annotationType);
 		
 		IdList annotationIds = new IdList(annotationType);
 		annotationIds.addRef(annotationRef1);
 		annotationIds.addRef(annotationRef2);
 		
 		CommandSetObjectData setFactorAnnotationIds = new CommandSetObjectData(diagramFactor.getWrappedORef(), annotationFactorTag, annotationIds.toString());
-		project.executeCommand(setFactorAnnotationIds);
+		getProject().executeCommand(setFactorAnnotationIds);
 		
-		Factor factor = (Factor) project.findObject(diagramFactor.getWrappedORef());
-		DiagramPaster paster = pasteDiagramFactor(project, diagramFactor);
+		Factor factor = (Factor) getProject().findObject(diagramFactor.getWrappedORef());
+		DiagramPaster paster = pasteDiagramFactor(getProject(), diagramFactor);
 		
 		HashMap oldToNewFactorRefMap = paster.getOldToNewObjectRefMap();
 		ORef newRef = (ORef) oldToNewFactorRefMap.get(factor.getRef());
-		Factor newFactor = (Factor) project.findObject(newRef);
+		Factor newFactor = (Factor) getProject().findObject(newRef);
 		IdList newAnnotationIds = new IdList(annotationType, newFactor.getData(annotationFactorTag));
 		assertFalse("contains wrong old id?", newAnnotationIds.contains(annotationRef1));
 		assertFalse("contains wrong old id?", newAnnotationIds.contains(annotationRef2));
@@ -350,16 +336,4 @@ public class TestDiagramPaster extends EAMTestCase
 		
 		return paster;
 	}
-	
-	private DiagramModel getDiagramModel()
-	{
-		return getProject().getTestingDiagramModel();
-	}
-
-	private ProjectForTesting getProject()
-	{
-		return project;
-	}
-
-	private ProjectForTesting project;
 }
