@@ -40,25 +40,30 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ResourceAssignment;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.Undo;
 
-public class TestDiagramPaster extends EAMTestCase
+public class TestDiagramPaster extends EAMTestCase 
 {
 	public TestDiagramPaster(String name)
 	{
@@ -80,6 +85,45 @@ public class TestDiagramPaster extends EAMTestCase
 		super.tearDown();
 	}
 	
+	public void testBudgetItemPasteIntoDifferentProject() throws Exception
+	{
+		DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(Strategy.getObjectType());
+		Task activity = getProject().createTask(strategyDiagramFactor.getWrappedFactor());
+		
+		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
+		ExpenseAssignment expenseAssignment = getProject().createExpenseAssignment();
+		getProject().fillObjectUsingCommand(activity, Task.TAG_RESOURCE_ASSIGNMENT_IDS, new IdList(resourceAssignment));
+		getProject().fillObjectUsingCommand(activity, Task.TAG_EXPENSE_ASSIGNMENT_REFS, new ORefList(expenseAssignment));
+		
+		Vector<DiagramFactor> diagramFactorsToPaste = new Vector<DiagramFactor>();
+		diagramFactorsToPaste.add(strategyDiagramFactor);
+		
+		ProjectForTesting projectToPasteInto = createNewProject();
+		paste(projectToPasteInto, diagramFactorsToPaste, new Vector<DiagramLink>());
+		
+		ORefList resourceAssignmentRefs = projectToPasteInto.getAssignmentPool().getRefList();
+		assertEquals("ResourceAssignment was not pasted?", 1, resourceAssignmentRefs.size());
+		ResourceAssignment pastedResourceAssignment = ResourceAssignment.find(projectToPasteInto, resourceAssignmentRefs.getFirstElement());
+		verifyEmptyTag(pastedResourceAssignment, ResourceAssignment.TAG_RESOURCE_ID);
+		verifyEmptyTag(pastedResourceAssignment, ResourceAssignment.TAG_FUNDING_SOURCE_ID);
+		verifyEmptyTag(pastedResourceAssignment, ResourceAssignment.TAG_ACCOUNTING_CODE_ID);
+		verifyEmptyTag(pastedResourceAssignment, ResourceAssignment.TAG_CATEGORY_ONE_REF);
+		verifyEmptyTag(pastedResourceAssignment, ResourceAssignment.TAG_CATEGORY_TWO_REF);
+		
+		ORefList expenseAssignmentRefs = projectToPasteInto.getExpenseAssignmentPool().getRefList();
+		assertEquals("ExpenseAssignment was not pasted", 1, expenseAssignmentRefs.size());
+		ExpenseAssignment pastedExpenseAssignment = ExpenseAssignment.find(projectToPasteInto, expenseAssignmentRefs.getFirstElement());
+		verifyEmptyTag(pastedExpenseAssignment, ExpenseAssignment.TAG_FUNDING_SOURCE_REF);
+		verifyEmptyTag(pastedExpenseAssignment, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF);
+		verifyEmptyTag(pastedExpenseAssignment, ExpenseAssignment.TAG_CATEGORY_ONE_REF);
+		verifyEmptyTag(pastedExpenseAssignment, ExpenseAssignment.TAG_CATEGORY_TWO_REF);
+	}
+	
+	private void verifyEmptyTag(Assignment assignment, String tag)
+	{
+		assertEquals("tag was not cleared?", "", assignment.getData(tag));
+	}
+
 	public void testThreatStressRatingPasteIntoDiffererentProject() throws Exception
 	{
 		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
