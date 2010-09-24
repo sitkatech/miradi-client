@@ -46,7 +46,9 @@ import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
+import org.miradi.utils.FloatingPointRestrictedDocument;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.Translation;
 
@@ -131,7 +133,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		panel.add(daysPerYearField);
 
 		fractionField = new PanelTextField(10);
-		fractionField.setDocument(new NumericDocument());
+		fractionField.setDocument(new FloatingPointRestrictedDocument());
 		fractionField.setText(getPrePopulatedValue());
 
 		panel.add(new PanelTitleLabel(EAM.text("Fraction:")));
@@ -206,7 +208,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 	    	 {
 	    		 displayError();
 	    	 }
-	     }
+		}
 
 		private void clearErrorField()
 		{
@@ -231,7 +233,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 			try
 			{
 				String doubleAsString = fractionField.getText();
-				double parsedDouble = Double.parseDouble(doubleAsString);
+				double parsedDouble = DoubleUtilities.toDoubleForData(doubleAsString);
 
 				PlanningViewAbstractTreeTableSyncedTableModel model = getCastedModel().getCastedModel(getSelectedColumn());
 				int columnWithinMultiTableModel = getSelectedColumnWithinMultiTableModel();
