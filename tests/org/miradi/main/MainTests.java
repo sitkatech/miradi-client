@@ -85,6 +85,7 @@ import org.miradi.objecthelpers.TestRelevancyOverrideSet;
 import org.miradi.objecthelpers.TestResultsChainCreatorHelper;
 import org.miradi.objecthelpers.TestStringRefMap;
 import org.miradi.objecthelpers.TestThreatStressRatingEnsurer;
+import org.miradi.objecthelpers.TestThreatTargetVirtualLinkHelper;
 import org.miradi.objecthelpers.TestTimePeriodCosts;
 import org.miradi.objecthelpers.TestTimePeriodCostsMap;
 import org.miradi.objects.TestAccountingCode;
@@ -358,6 +359,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestBaseObjectRollupValues.class));
 		suite.addTest(new TestSuite(TestResultsChainCreatorHelper.class));
 		suite.addTest(new TestSuite(TestCategorizedQuantity.class));
+		suite.addTest(new TestSuite(TestThreatTargetVirtualLinkHelper.class));
 		
 		// objects package
 		suite.addTest(new TestSuite(TestStrategy.class));
