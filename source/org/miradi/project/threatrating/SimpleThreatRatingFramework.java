@@ -131,18 +131,18 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	private BaseId createDefaultValueOption(String label, int numericValue, Color color) throws Exception
 	{
 		int type = ObjectType.VALUE_OPTION;
-		BaseId createdId = project.createObjectAndReturnId(type);
-		project.setObjectData(type, createdId, ValueOption.TAG_LABEL, label);
-		project.setObjectData(type, createdId, ValueOption.TAG_NUMERIC, Integer.toString(numericValue));
-		project.setObjectData(type, createdId, ValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
+		BaseId createdId = getProject().createObjectAndReturnId(type);
+		getProject().setObjectData(type, createdId, ValueOption.TAG_LABEL, label);
+		getProject().setObjectData(type, createdId, ValueOption.TAG_NUMERIC, Integer.toString(numericValue));
+		getProject().setObjectData(type, createdId, ValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
 		return createdId;
 	}
 
 	private BaseId createDefaultCriterion(String label) throws Exception
 	{
 		int type = ObjectType.RATING_CRITERION;
-		BaseId createdId = project.createObjectAndReturnId(type);
-		project.setObjectData(type, createdId, RatingCriterion.TAG_LABEL, label);
+		BaseId createdId = getProject().createObjectAndReturnId(type);
+		getProject().setObjectData(type, createdId, RatingCriterion.TAG_LABEL, label);
 		return createdId;
 	}
 	
@@ -378,7 +378,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	{
 		FactorId threatId = bundle.getThreatId();
 		ORef threatRef = new ORef(Cause.getObjectType(), threatId);
-		Cause threat = Cause.find(project, threatRef);
+		Cause threat = Cause.find(getProject(), threatRef);
 		if(threat == null)
 			return false;
 		
@@ -591,7 +591,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	
 	private ProjectServer getDatabase()
 	{
-		ProjectServer db = project.getDatabase();
+		ProjectServer db = getProject().getDatabase();
 		return db;
 	}
 	
