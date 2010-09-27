@@ -20,28 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
-import javax.swing.JScrollPane;
-
-import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.Translation;
 import org.miradi.wizard.MiradiHtmlViewer;
 
-public class DashboardRightSideDescriptionPanel extends OneColumnPanel
+public class DashboardRightSideDescriptionPanel extends MiradiHtmlViewer
 {
 	public DashboardRightSideDescriptionPanel(MainWindow mainWindow) throws Exception
 	{
-		super();
-		
-		descriptionPanel = new MiradiHtmlViewer(mainWindow, mainWindow.getHyperlinkHandler());
-		add(new JScrollPane(descriptionPanel));
+		super(mainWindow, mainWindow.getHyperlinkHandler());
 	}
 
 	public void setRightSidePanelContent(String resourceFileName) throws Exception
 	{
 		String htmlText = Translation.getHtmlContent(resourceFileName);
-		descriptionPanel.setText(htmlText);
+		setText(htmlText);
 	}
-	
-	private MiradiHtmlViewer descriptionPanel;
 }
