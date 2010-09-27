@@ -114,7 +114,7 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 	@Override
 	protected ORefSet getDownstreamTargetRefs(Cause threat)
 	{
-		return threatTargetChainObject.getDownstreamTargetRefsFromThreat(threat);
+		return new ThreatTargetVirtualLinkHelper(getProject()).getDownstreamTargetsVisTSR(threat);
 	}
 
 	private StressBasedThreatFormula stressBasedThreatFormula;
