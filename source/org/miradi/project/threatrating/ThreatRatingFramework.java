@@ -124,6 +124,11 @@ abstract public class ThreatRatingFramework
 		return Utility.convertToIntArray(calculatedSummaryRatingValues);
 	}
 	
+	protected ThreatTargetChainWalker getThreatTargetChainObject()
+	{
+		return threatTargetChainObject;
+	}
+	
 	abstract protected ThreatFormula getThreatFormula();
 
 	abstract public ChoiceItem getThreatThreatRatingValue(ORef threatRef) throws Exception;
@@ -133,5 +138,5 @@ abstract public class ThreatRatingFramework
 	abstract protected ORefSet getDownstreamTargetRefs(Cause threat);
 		
 	private Project project;
-	protected ThreatTargetChainWalker threatTargetChainObject;
+	private ThreatTargetChainWalker threatTargetChainObject;
 }

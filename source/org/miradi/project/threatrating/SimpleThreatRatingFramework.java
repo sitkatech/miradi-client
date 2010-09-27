@@ -414,13 +414,13 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	@Override
 	protected ORefSet getUpstreamThreatRefs(Target target)
 	{
-		return threatTargetChainObject.getUpstreamThreatRefsFromTarget(target);
+		return getThreatTargetChainObject().getUpstreamThreatRefsFromTarget(target);
 	}
 	
 	@Override
 	protected ORefSet getDownstreamTargetRefs(Cause threat)
 	{
-		return threatTargetChainObject.getDownstreamTargetRefsFromThreat(threat);
+		return getThreatTargetChainObject().getDownstreamTargetRefsFromThreat(threat);
 	}
 
 	public RatingCriterion findCriterionByLabel(String label)
