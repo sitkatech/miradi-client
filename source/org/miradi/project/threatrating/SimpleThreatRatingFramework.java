@@ -591,8 +591,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	
 	private ProjectServer getDatabase()
 	{
-		ProjectServer db = getProject().getDatabase();
-		return db;
+		return getProject().getDatabase();
 	}
 	
 	public static final String TAG_BUNDLE_KEYS = "BundleKeys";
