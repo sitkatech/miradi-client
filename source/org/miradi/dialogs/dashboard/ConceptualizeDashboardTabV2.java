@@ -25,7 +25,7 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
-import java.util.Vector;
+import java.util.Set;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -40,9 +40,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.utils.FillerLabel;
-import org.miradi.utils.FlexibleWidthHtmlViewer;
-import org.miradi.utils.Translation;
-import org.miradi.wizard.MiradiHtmlViewer;
 
 public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 {
@@ -51,22 +48,31 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 		super(projectToUse, Dashboard.getObjectType());
 		
 		setLayout(new TwoColumnGridLayout());
-		clickableComponents = new Vector<JComponent>();
+		clickableComponentToContentsFileNameMap = new HashMap<JComponent, String>();
 		
-		addLeftPanel();
+		addLeftPanel(createLeftPanel());
+		
+		createRightPanel();
 		addRightPanel();		
 	}
 	
 	private void addRightPanel() throws Exception
 	{
-		MiradiHtmlViewer descriptionPanel = new FlexibleWidthHtmlViewer(getMainWindow(), getMainWindow().getHyperlinkHandler());
-		String htmlText = Translation.getHtmlContent("DashboardDescription.html");
-		descriptionPanel.setText(htmlText);
-		
-		add(descriptionPanel);
+		add(rightSideDescriptionPanel);
 	}
 
-	private void addLeftPanel()
+	protected void createRightPanel() throws Exception
+	{
+		rightSideDescriptionPanel = new DashboardRightSideDescriptionPanel(getMainWindow());
+		rightSideDescriptionPanel.setRightSidePanelContent("dashboard/1.html");
+	}
+
+	private void addLeftPanel(TwoColumnPanel leftMainPanel)
+	{
+		add(leftMainPanel);
+	}
+
+	protected TwoColumnPanel createLeftPanel()
 	{
 		TwoColumnPanel leftMainPanel = new TwoColumnPanel();
 		TwoColumnPanel header = new TwoColumnPanel();
@@ -80,12 +86,12 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 		addScopeVisionAndTargetsRow(leftMainPanel);
 		addIdentifyCriticalThreatsRow(leftMainPanel);
 		
-		add(leftMainPanel);
+		return leftMainPanel;
 	}
 
 	private void addTeamMembersRow(TwoColumnPanel leftMainPanel)
 	{
-		addSubHeaderRow(leftMainPanel, EAM.text("1A. Define Initial Project Team"));
+		addSubHeaderRow(leftMainPanel, EAM.text("1A. Define Initial Project Team"), "dashboard/1A.html");
 	
 		Box box2 = createBorderedBox();
 		box2.add(new PanelTitleLabel(EAM.text("Team Members:")), BorderLayout.BEFORE_FIRST_LINE);
@@ -96,7 +102,7 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 
 	private void addScopeVisionAndTargetsRow(TwoColumnPanel leftMainPanel)
 	{
-		addSubHeaderRow(leftMainPanel, EAM.text("1B. Define Scope Vision and Targets"));
+		addSubHeaderRow(leftMainPanel, EAM.text("1B. Define Scope Vision and Targets"), "dashboard/1B.html");
 		addDefineScopeRow(leftMainPanel);
 		addTargetRow(leftMainPanel);
 		addHumanWelfareTargetRow(leftMainPanel);
@@ -170,7 +176,7 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 	
 	private void addIdentifyCriticalThreatsRow(TwoColumnPanel leftMainPanel)
 	{
-		addSubHeaderRow(leftMainPanel, EAM.text("1C. Identify Critical Threats"));
+		addSubHeaderRow(leftMainPanel, EAM.text("1C. Identify Critical Threats"), "dashboard/1C.html");
 		
 		HashMap<String, String> threatsTokenReplacementMap = new HashMap<String, String>();
 		threatsTokenReplacementMap.put("%threatCount", getDashboardData(Dashboard.PSEUDO_THREAT_COUNT));
@@ -214,16 +220,23 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 	
 	private Box createBorderedBox()
 	{
+		return createBorderedBox("");
+	}
+
+	private Box createBorderedBox(String rightPanelHtmlFileName)
+	{
 		Box box = Box.createHorizontalBox();
 		box.setBorder(BorderFactory.createEtchedBorder());
 		box.addMouseListener(new ClickHandler(box));
-		clickableComponents.add(box);
+		clickableComponentToContentsFileNameMap.put(box, rightPanelHtmlFileName);
+		
 		return box;
 	}
 
-	private void addSubHeaderRow(TwoColumnPanel leftMainPanel, String text)
+	private void addSubHeaderRow(TwoColumnPanel leftMainPanel, String text, String rightPanelHtmlFileName)
 	{
-		Box box1 = createBoxWithIndent();
+		Box box1 = createBorderedBox(rightPanelHtmlFileName);
+		box1.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
 		box1.setBackground(Color.GREEN.darker());
 		PanelTitleLabel label = new PanelTitleLabel(text);
 		box1.add(label, BorderLayout.BEFORE_FIRST_LINE);
@@ -267,13 +280,25 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 		{
 			super.mouseClicked(e);
 			
-			resetAllComponentBorders();
-			clickableComponent.setBorder(BorderFactory.createEtchedBorder(Color.BLUE, Color.BLUE));
+			try
+			{
+				resetAllComponentBorders();
+				clickableComponent.setBorder(BorderFactory.createEtchedBorder(Color.BLUE, Color.BLUE));
+				
+				String resourceFileName = clickableComponentToContentsFileNameMap.get(clickableComponent);
+				rightSideDescriptionPanel.setRightSidePanelContent(resourceFileName);
+			}
+			catch (Exception exception)
+			{
+				EAM.logException(exception);
+				EAM.unexpectedErrorDialog(exception);
+			}
 		}
 	
-		private void resetAllComponentBorders()
+		private void resetAllComponentBorders() throws Exception
 		{
-			for(JComponent component : clickableComponents)
+			Set<JComponent> clickables = clickableComponentToContentsFileNameMap.keySet();
+			for(JComponent component : clickables)
 			{
 				component.setBorder(BorderFactory.createEtchedBorder());
 			}
@@ -282,6 +307,7 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 		private JComponent clickableComponent;
 	}
 	
-	private Vector<JComponent> clickableComponents;
+	private HashMap<JComponent, String> clickableComponentToContentsFileNameMap;
+	private DashboardRightSideDescriptionPanel rightSideDescriptionPanel;
 	private static final int INDENT_PER_LEVEL = 20;
 }
