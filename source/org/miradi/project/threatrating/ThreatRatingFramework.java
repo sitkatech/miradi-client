@@ -132,6 +132,6 @@ abstract public class ThreatRatingFramework
 	
 	abstract protected ORefSet getDownstreamTargetRefs(Cause threat);
 		
-	protected Project project;
+	private Project project;
 	protected ThreatTargetChainWalker threatTargetChainObject;
 }
