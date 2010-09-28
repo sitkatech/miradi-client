@@ -48,7 +48,7 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 		super(projectToUse, Dashboard.getObjectType());
 		
 		setLayout(new TwoColumnGridLayout());
-		clickableComponentToContentsFileNameMap = new HashMap<JComponent, String>();
+		clickableComponentToContentsFileNameMap = new HashMap<SelectableRow, String>();
 		
 		addLeftPanel(createLeftPanel());
 		
@@ -93,11 +93,11 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 	{
 		addSubHeaderRow(leftMainPanel, EAM.text("1A. Define Initial Project Team"), TEAM_RIGHT_PANEL_FILE_NAME);
 	
-		Box box2 = createBorderedBox(TEAM_RIGHT_PANEL_FILE_NAME);
-		box2.add(new PanelTitleLabel(EAM.text("Team Members:")), BorderLayout.BEFORE_FIRST_LINE);
-		box2.add(new PanelTitleLabel(getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT)));
+		Box box = createBorderedBox(TEAM_RIGHT_PANEL_FILE_NAME);
+		box.add(new PanelTitleLabel(EAM.text("Team Members:")), BorderLayout.BEFORE_FIRST_LINE);
+		box.add(new PanelTitleLabel(getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT)));
 		leftMainPanel.add(new FillerLabel());
-		leftMainPanel.add(box2);
+		leftMainPanel.add(box);
 	}
 
 	private void addScopeVisionAndTargetsRow(TwoColumnPanel leftMainPanel)
@@ -184,9 +184,9 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 		
 		addDirectThreats(leftMainPanel, threatsTokenReplacementMap);
 		
-		Box box2 = createBoxWithIndent(CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
-		box2.add(new PanelTitleLabel(EAM.substitute(EAM.text("%threatWithTaxonomyCount of %threatCount have taxonomy assignments"), threatsTokenReplacementMap)));
-		leftMainPanel.add(box2);
+		Box box = createBoxWithIndent(CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
+		box.add(new PanelTitleLabel(EAM.substitute(EAM.text("%threatWithTaxonomyCount of %threatCount have taxonomy assignments"), threatsTokenReplacementMap)));
+		leftMainPanel.add(box);
 		leftMainPanel.add(new FillerLabel());
 		
 		addThreatRank(leftMainPanel);
@@ -222,8 +222,9 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 	{
 		Box box = Box.createHorizontalBox();
 		box.setBorder(BorderFactory.createEtchedBorder());
-		box.addMouseListener(new ClickHandler(box));
-		clickableComponentToContentsFileNameMap.put(box, rightPanelHtmlFileName);
+		SelectableRow selectableComponentToUse = new SelectableRow(box, new FillerLabel());
+		box.addMouseListener(new ClickHandler(selectableComponentToUse));
+		clickableComponentToContentsFileNameMap.put(selectableComponentToUse, rightPanelHtmlFileName);
 		
 		return box;
 	}
@@ -247,9 +248,9 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 
 	private Box createBoxWithIndent(String rightPanelHtmlFileName)
 	{
-		Box box1 = createBorderedBox(rightPanelHtmlFileName);
-		box1.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
-		return box1;
+		Box box = createBorderedBox(rightPanelHtmlFileName);
+		box.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
+		return box;
 	}
 
 	private String getDashboardData(String tag)
@@ -271,9 +272,9 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 	
 	private class ClickHandler extends MouseAdapter
 	{
-		public ClickHandler(JComponent clickableComponentToUse)
+		public ClickHandler(SelectableRow clickableComponentToUse)
 		{
-			clickableComponent = clickableComponentToUse;
+			selectableComponent = clickableComponentToUse;
 		}
 		
 		@Override
@@ -283,10 +284,10 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 			
 			try
 			{
-				resetAllComponentBorders();
-				clickableComponent.setBorder(BorderFactory.createEtchedBorder(Color.BLUE, Color.BLUE));
+				clearSelection();
+				selectableComponent.selectRow();
 				
-				String resourceFileName = clickableComponentToContentsFileNameMap.get(clickableComponent);
+				String resourceFileName = clickableComponentToContentsFileNameMap.get(selectableComponent);
 				rightSideDescriptionPanel.setRightSidePanelContent(resourceFileName);
 			}
 			catch (Exception exception)
@@ -296,19 +297,43 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 			}
 		}
 	
-		private void resetAllComponentBorders() throws Exception
+		private void clearSelection() throws Exception
 		{
-			Set<JComponent> clickables = clickableComponentToContentsFileNameMap.keySet();
-			for(JComponent component : clickables)
+			Set<SelectableRow> selectableRows = clickableComponentToContentsFileNameMap.keySet();
+			for(SelectableRow selectableRow : selectableRows)
 			{
-				component.setBorder(BorderFactory.createEtchedBorder());
+				selectableRow.clearSelection();
 			}
 		}
 		
-		private JComponent clickableComponent;
+		private SelectableRow selectableComponent;
 	}
 	
-	private HashMap<JComponent, String> clickableComponentToContentsFileNameMap;
+	private class SelectableRow
+	{
+		protected SelectableRow(JComponent leftSideToUse, JComponent rightSideToUse)
+		{
+			leftSide = leftSideToUse;
+			rightSide = rightSideToUse;
+		}
+		
+		protected void selectRow()
+		{
+			leftSide.setBorder(BorderFactory.createEtchedBorder(Color.BLUE, Color.BLUE));
+			rightSide.setBorder(BorderFactory.createEtchedBorder(Color.BLUE, Color.BLUE));
+		}
+		
+		protected void clearSelection()
+		{
+			leftSide.setBorder(BorderFactory.createEtchedBorder());
+			rightSide.setBorder(BorderFactory.createEtchedBorder());
+		}
+		
+		private JComponent leftSide;
+		private JComponent rightSide;
+	}
+	
+	private HashMap<SelectableRow, String> clickableComponentToContentsFileNameMap;
 	private DashboardRightSideDescriptionPanel rightSideDescriptionPanel;
 	private static final int INDENT_PER_LEVEL = 20;
 	private static final String TEAM_RIGHT_PANEL_FILE_NAME = "dashboard/1A.html";
