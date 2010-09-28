@@ -91,9 +91,9 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 
 	private void addTeamMembersRow(TwoColumnPanel leftMainPanel)
 	{
-		addSubHeaderRow(leftMainPanel, EAM.text("1A. Define Initial Project Team"), "dashboard/1A.html");
+		addSubHeaderRow(leftMainPanel, EAM.text("1A. Define Initial Project Team"), TEAM_RIGHT_PANEL_FILE_NAME);
 	
-		Box box2 = createBorderedBox();
+		Box box2 = createBorderedBox(TEAM_RIGHT_PANEL_FILE_NAME);
 		box2.add(new PanelTitleLabel(EAM.text("Team Members:")), BorderLayout.BEFORE_FIRST_LINE);
 		box2.add(new PanelTitleLabel(getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT)));
 		leftMainPanel.add(new FillerLabel());
@@ -102,7 +102,7 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 
 	private void addScopeVisionAndTargetsRow(TwoColumnPanel leftMainPanel)
 	{
-		addSubHeaderRow(leftMainPanel, EAM.text("1B. Define Scope Vision and Targets"), "dashboard/1B.html");
+		addSubHeaderRow(leftMainPanel, EAM.text("1B. Define Scope Vision and Targets"), SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 		addDefineScopeRow(leftMainPanel);
 		addTargetRow(leftMainPanel);
 		addHumanWelfareTargetRow(leftMainPanel);
@@ -112,7 +112,7 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 
 	private void addTargetViabilityRow(TwoColumnPanel leftMainPanel)
 	{
-		Box firstColumnBox = createBoxWithIndent();
+		Box firstColumnBox = createBoxWithIndent(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 		HashMap<String, String> statusDescriptionTokenReplacementMap2 = new HashMap<String, String>();
 		statusDescriptionTokenReplacementMap2.put("%targetWithSimpleViabilityCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT));
 		firstColumnBox.add(new PanelTitleLabel(EAM.substitute(EAM.text("%targetWithSimpleViabilityCount targets have simple viablity information"), statusDescriptionTokenReplacementMap2)));
@@ -122,13 +122,13 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 
 	private void addTargetStatusRow(TwoColumnPanel leftMainPanel)
 	{
-		Box firstColumnBox = createBoxWithIndent();
+		Box firstColumnBox = createBoxWithIndent(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 		String text = EAM.text("Describe Status of Targets:");
 		HashMap<String, String> statusDescriptionTokenReplacementMap1 = new HashMap<String, String>();
 		statusDescriptionTokenReplacementMap1.put("%targetWithKeaCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_KEA_COUNT));
 		firstColumnBox.add(new PanelTitleLabel(text));
 		
-		Box secondColumnBox = createBorderedBox();
+		Box secondColumnBox = createBorderedBox(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 		String targetStatusDescription = EAM.substitute(EAM.text("%targetWithKeaCount targets have KEA"), statusDescriptionTokenReplacementMap1);
 		secondColumnBox.add(new PanelTitleLabel(targetStatusDescription));
 		
@@ -138,10 +138,10 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 
 	private void addHumanWelfareTargetRow(TwoColumnPanel leftMainPanel)
 	{
-		Box firstColumnBox = createBoxWithIndent();
+		Box firstColumnBox = createBoxWithIndent(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 		firstColumnBox.add(new PanelTitleLabel(EAM.text("Add Human Welfare Targets:")));
 		
-		Box secondColumnBox = createBorderedBox();
+		Box secondColumnBox = createBorderedBox(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 		String humanWelfareTargetCount = EAM.substitute(EAM.text("%s created"), getDashboardData(Dashboard.PSEUDO_HUMAN_WELFARE_TARGET_COUNT));
 		secondColumnBox.add(new PanelTitleLabel(humanWelfareTargetCount));
 		
@@ -151,12 +151,12 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 
 	private void addTargetRow(TwoColumnPanel leftMainPanel)
 	{
-		Box firstColumnBox = createBoxWithIndent();
+		Box firstColumnBox = createBoxWithIndent(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%targetCount", getDashboardData(Dashboard.PSEUDO_TARGET_COUNT));
 		firstColumnBox.add(new PanelTitleLabel(EAM.text("Select Conservation Targets:")));
 		
-		Box secondColumnBox = createBorderedBox();
+		Box secondColumnBox = createBorderedBox(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 		secondColumnBox.add(new PanelTitleLabel(EAM.substitute(EAM.text("%targetCount created"), tokenReplacementMap)));
 		
 		leftMainPanel.add(firstColumnBox);
@@ -165,10 +165,10 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 
 	private void addDefineScopeRow(TwoColumnPanel leftMainPanel)
 	{
-		Box firstColumnBox = createBoxWithIndent();
+		Box firstColumnBox = createBoxWithIndent(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 		firstColumnBox.add(new PanelTitleLabel(EAM.text("Define Project Scope:")), BorderLayout.BEFORE_FIRST_LINE);
 		String scopeVisionCount = getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT);
-		Box secondColumnBox = createBorderedBox();
+		Box secondColumnBox = createBorderedBox(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 		secondColumnBox.add(new PanelTitleLabel(EAM.substitute(EAM.text("Created (%s chars)"), scopeVisionCount)));
 		leftMainPanel.add(firstColumnBox);
 		leftMainPanel.add(secondColumnBox);
@@ -176,7 +176,7 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 	
 	private void addIdentifyCriticalThreatsRow(TwoColumnPanel leftMainPanel)
 	{
-		addSubHeaderRow(leftMainPanel, EAM.text("1C. Identify Critical Threats"), "dashboard/1C.html");
+		addSubHeaderRow(leftMainPanel, EAM.text("1C. Identify Critical Threats"), CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
 		
 		HashMap<String, String> threatsTokenReplacementMap = new HashMap<String, String>();
 		threatsTokenReplacementMap.put("%threatCount", getDashboardData(Dashboard.PSEUDO_THREAT_COUNT));
@@ -184,7 +184,7 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 		
 		addDirectThreats(leftMainPanel, threatsTokenReplacementMap);
 		
-		Box box2 = createBoxWithIndent();
+		Box box2 = createBoxWithIndent(CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
 		box2.add(new PanelTitleLabel(EAM.substitute(EAM.text("%threatWithTaxonomyCount of %threatCount have taxonomy assignments"), threatsTokenReplacementMap)));
 		leftMainPanel.add(box2);
 		leftMainPanel.add(new FillerLabel());
@@ -194,17 +194,17 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 
 	private void addDirectThreats(TwoColumnPanel leftMainPanel, HashMap<String, String> threatsTokenReplacementMap)
 	{
-		Box leftColumnBox = createBoxWithIndent();
+		Box leftColumnBox = createBoxWithIndent(CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
 		leftColumnBox.add(new PanelTitleLabel(EAM.text("Identify Direct Threats:")));
 		leftMainPanel.add(leftColumnBox);
-		Box rightColumnBox = createBorderedBox();
+		Box rightColumnBox = createBorderedBox(CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
 		rightColumnBox.add(new PanelTitleLabel(EAM.substitute(EAM.text("%threatCount Direct Threats created"), threatsTokenReplacementMap)));
 		leftMainPanel.add(rightColumnBox);
 	}
 
 	private void addThreatRank(TwoColumnPanel leftMainPanel)
 	{
-		Box firstColumnBox = createBoxWithIndent();
+		Box firstColumnBox = createBoxWithIndent(CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
 		String text = EAM.text("Rank Direct Threats:");
 		firstColumnBox.add(new PanelTitleLabel(text));
 		HashMap<String, String> threatTargetLinksTokenReplacementMap = new HashMap<String, String>();
@@ -212,17 +212,12 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 		threatTargetLinksTokenReplacementMap.put("%threatTargetWithRatingCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT));
 		String threatTargetLinkDescription = EAM.substitute(EAM.text("%threatTargetWithRatingCount of %threatTargetLinkCount threat/target links ranked"), threatTargetLinksTokenReplacementMap);
 
-		Box secondColumnBox = createBorderedBox();
+		Box secondColumnBox = createBorderedBox(CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
 		secondColumnBox.add(new PanelTitleLabel(threatTargetLinkDescription));
 		leftMainPanel.add(firstColumnBox);
 		leftMainPanel.add(secondColumnBox);
 	}
 	
-	private Box createBorderedBox()
-	{
-		return createBorderedBox("");
-	}
-
 	private Box createBorderedBox(String rightPanelHtmlFileName)
 	{
 		Box box = Box.createHorizontalBox();
@@ -244,9 +239,9 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 		leftMainPanel.add(new FillerLabel());
 	}
 
-	private Box createBoxWithIndent()
+	private Box createBoxWithIndent(String rightPanelHtmlFileName)
 	{
-		Box box1 = createBorderedBox();
+		Box box1 = createBorderedBox(rightPanelHtmlFileName);
 		box1.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
 		return box1;
 	}
@@ -310,4 +305,7 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 	private HashMap<JComponent, String> clickableComponentToContentsFileNameMap;
 	private DashboardRightSideDescriptionPanel rightSideDescriptionPanel;
 	private static final int INDENT_PER_LEVEL = 20;
+	private static final String TEAM_RIGHT_PANEL_FILE_NAME = "dashboard/1A.html";
+	private static final String SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME = "dashboard/1B.html";
+	private static final String CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME = "dashboard/1C.html";
 }
