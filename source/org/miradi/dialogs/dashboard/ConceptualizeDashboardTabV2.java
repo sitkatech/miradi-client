@@ -93,11 +93,9 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 	{
 		addSubHeaderRow(leftMainPanel, EAM.text("1A. Define Initial Project Team"), TEAM_RIGHT_PANEL_FILE_NAME);
 	
-		Box box = createBorderedBox(TEAM_RIGHT_PANEL_FILE_NAME);
-		box.add(new PanelTitleLabel(EAM.text("Team Members:")), BorderLayout.BEFORE_FIRST_LINE);
-		box.add(new PanelTitleLabel(getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT)));
-		leftMainPanel.add(new FillerLabel());
-		leftMainPanel.add(box);
+		PanelTitleLabel leftColumnComponent = new PanelTitleLabel(EAM.text("Team Members:"));
+		PanelTitleLabel rightColumnComponent = new PanelTitleLabel(getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT));
+		createRow(leftMainPanel, leftColumnComponent, rightColumnComponent, TEAM_RIGHT_PANEL_FILE_NAME);
 	}
 
 	private void addScopeVisionAndTargetsRow(TwoColumnPanel leftMainPanel)
@@ -112,66 +110,53 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 
 	private void addTargetViabilityRow(TwoColumnPanel leftMainPanel)
 	{
-		Box firstColumnBox = createBoxWithIndent(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 		HashMap<String, String> statusDescriptionTokenReplacementMap2 = new HashMap<String, String>();
 		statusDescriptionTokenReplacementMap2.put("%targetWithSimpleViabilityCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT));
-		firstColumnBox.add(new PanelTitleLabel(EAM.substitute(EAM.text("%targetWithSimpleViabilityCount targets have simple viablity information"), statusDescriptionTokenReplacementMap2)));
-		leftMainPanel.add(firstColumnBox);
-		leftMainPanel.add(new FillerLabel());
+		PanelTitleLabel leftColumnComponent = new PanelTitleLabel(EAM.substitute(EAM.text("%targetWithSimpleViabilityCount targets have simple viablity information"), statusDescriptionTokenReplacementMap2));
+		
+		createRow(leftMainPanel, leftColumnComponent, new FillerLabel(), SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 	}
 
 	private void addTargetStatusRow(TwoColumnPanel leftMainPanel)
 	{
-		Box firstColumnBox = createBoxWithIndent(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 		String text = EAM.text("Describe Status of Targets:");
 		HashMap<String, String> statusDescriptionTokenReplacementMap1 = new HashMap<String, String>();
 		statusDescriptionTokenReplacementMap1.put("%targetWithKeaCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_KEA_COUNT));
-		firstColumnBox.add(new PanelTitleLabel(text));
+		PanelTitleLabel leftColumnComponent = new PanelTitleLabel(text);
 		
-		Box secondColumnBox = createBorderedBox(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 		String targetStatusDescription = EAM.substitute(EAM.text("%targetWithKeaCount targets have KEA"), statusDescriptionTokenReplacementMap1);
-		secondColumnBox.add(new PanelTitleLabel(targetStatusDescription));
+		PanelTitleLabel rightColumnComponent = new PanelTitleLabel(targetStatusDescription);
 		
-		leftMainPanel.add(firstColumnBox);
-		leftMainPanel.add(secondColumnBox);
+		createRow(leftMainPanel, leftColumnComponent, rightColumnComponent, SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 	}
 
 	private void addHumanWelfareTargetRow(TwoColumnPanel leftMainPanel)
 	{
-		Box firstColumnBox = createBoxWithIndent(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
-		firstColumnBox.add(new PanelTitleLabel(EAM.text("Add Human Welfare Targets:")));
+		PanelTitleLabel leftColumnComponent = new PanelTitleLabel(EAM.text("Add Human Welfare Targets:"));
 		
-		Box secondColumnBox = createBorderedBox(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 		String humanWelfareTargetCount = EAM.substitute(EAM.text("%s created"), getDashboardData(Dashboard.PSEUDO_HUMAN_WELFARE_TARGET_COUNT));
-		secondColumnBox.add(new PanelTitleLabel(humanWelfareTargetCount));
+		PanelTitleLabel rightColumnComponent = new PanelTitleLabel(humanWelfareTargetCount);
 		
-		leftMainPanel.add(firstColumnBox);
-		leftMainPanel.add(new FillerLabel());
+		createRow(leftMainPanel, leftColumnComponent, rightColumnComponent, SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 	}
 
 	private void addTargetRow(TwoColumnPanel leftMainPanel)
 	{
-		Box firstColumnBox = createBoxWithIndent(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%targetCount", getDashboardData(Dashboard.PSEUDO_TARGET_COUNT));
-		firstColumnBox.add(new PanelTitleLabel(EAM.text("Select Conservation Targets:")));
+		PanelTitleLabel leftColumnComponent = new PanelTitleLabel(EAM.text("Select Conservation Targets:"));
+		PanelTitleLabel rightColumnComponent = new PanelTitleLabel(EAM.substitute(EAM.text("%targetCount created"), tokenReplacementMap));
 		
-		Box secondColumnBox = createBorderedBox(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
-		secondColumnBox.add(new PanelTitleLabel(EAM.substitute(EAM.text("%targetCount created"), tokenReplacementMap)));
-		
-		leftMainPanel.add(firstColumnBox);
-		leftMainPanel.add(secondColumnBox);
+		createRow(leftMainPanel, leftColumnComponent, rightColumnComponent, SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 	}
 
 	private void addDefineScopeRow(TwoColumnPanel leftMainPanel)
 	{
-		Box firstColumnBox = createBoxWithIndent(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
-		firstColumnBox.add(new PanelTitleLabel(EAM.text("Define Project Scope:")), BorderLayout.BEFORE_FIRST_LINE);
+		PanelTitleLabel leftColumnComponent = new PanelTitleLabel(EAM.text("Define Project Scope:"));
 		String scopeVisionCount = getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT);
-		Box secondColumnBox = createBorderedBox(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
-		secondColumnBox.add(new PanelTitleLabel(EAM.substitute(EAM.text("Created (%s chars)"), scopeVisionCount)));
-		leftMainPanel.add(firstColumnBox);
-		leftMainPanel.add(secondColumnBox);
+		PanelTitleLabel rightColumnComponent = new PanelTitleLabel(EAM.substitute(EAM.text("Created (%s chars)"), scopeVisionCount));
+		
+		createRow(leftMainPanel, leftColumnComponent, rightColumnComponent, SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 	}
 	
 	private void addIdentifyCriticalThreatsRow(TwoColumnPanel leftMainPanel)
@@ -183,73 +168,67 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 		threatsTokenReplacementMap.put("%threatWithTaxonomyCount", getDashboardData(Dashboard.PSEUDO_THREAT_WITH_TAXONOMY_COUNT));
 		
 		addDirectThreats(leftMainPanel, threatsTokenReplacementMap);
-		
-		Box box = createBoxWithIndent(CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
-		box.add(new PanelTitleLabel(EAM.substitute(EAM.text("%threatWithTaxonomyCount of %threatCount have taxonomy assignments"), threatsTokenReplacementMap)));
-		leftMainPanel.add(box);
-		leftMainPanel.add(new FillerLabel());
-		
+		createRow(leftMainPanel, new PanelTitleLabel(EAM.substitute(EAM.text("%threatWithTaxonomyCount of %threatCount have taxonomy assignments"), threatsTokenReplacementMap)), new FillerLabel(), CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
 		addThreatRank(leftMainPanel);
 	}
 
 	private void addDirectThreats(TwoColumnPanel leftMainPanel, HashMap<String, String> threatsTokenReplacementMap)
 	{
-		Box leftColumnBox = createBoxWithIndent(CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
-		leftColumnBox.add(new PanelTitleLabel(EAM.text("Identify Direct Threats:")));
-		leftMainPanel.add(leftColumnBox);
-		Box rightColumnBox = createBorderedBox(CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
-		rightColumnBox.add(new PanelTitleLabel(EAM.substitute(EAM.text("%threatCount Direct Threats created"), threatsTokenReplacementMap)));
-		leftMainPanel.add(rightColumnBox);
+		PanelTitleLabel rightColumnComponent = new PanelTitleLabel(EAM.substitute(EAM.text("%threatCount Direct Threats created"), threatsTokenReplacementMap));
+		PanelTitleLabel leftColumnComponent = new PanelTitleLabel(EAM.text("Identify Direct Threats:"));
+
+		createRow(leftMainPanel, leftColumnComponent, rightColumnComponent, CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
 	}
 
 	private void addThreatRank(TwoColumnPanel leftMainPanel)
 	{
-		Box firstColumnBox = createBoxWithIndent(CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
 		String text = EAM.text("Rank Direct Threats:");
-		firstColumnBox.add(new PanelTitleLabel(text));
 		HashMap<String, String> threatTargetLinksTokenReplacementMap = new HashMap<String, String>();
 		threatTargetLinksTokenReplacementMap.put("%threatTargetLinkCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_COUNT));
 		threatTargetLinksTokenReplacementMap.put("%threatTargetWithRatingCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT));
 		String threatTargetLinkDescription = EAM.substitute(EAM.text("%threatTargetWithRatingCount of %threatTargetLinkCount threat/target links ranked"), threatTargetLinksTokenReplacementMap);
 
-		Box secondColumnBox = createBorderedBox(CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
-		secondColumnBox.add(new PanelTitleLabel(threatTargetLinkDescription));
-		leftMainPanel.add(firstColumnBox);
-		leftMainPanel.add(secondColumnBox);
+		createRow(leftMainPanel, new PanelTitleLabel(text), new PanelTitleLabel(threatTargetLinkDescription), CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
 	}
 	
-	private Box createBorderedBox(String rightPanelHtmlFileName)
+	private void addSubHeaderRow(TwoColumnPanel leftMainPanel, String text, String rightPanelHtmlFileName)
 	{
-		Box box = Box.createHorizontalBox();
-		box.setBorder(BorderFactory.createEtchedBorder());
-		SelectableRow selectableComponentToUse = new SelectableRow(box, new FillerLabel());
-		box.addMouseListener(new ClickHandler(selectableComponentToUse));
-		clickableComponentToContentsFileNameMap.put(selectableComponentToUse, rightPanelHtmlFileName);
+		PanelTitleLabel label = new PanelTitleLabel(text);
+		SelectableRow selectableRow = createRow(leftMainPanel, label, new FillerLabel(), rightPanelHtmlFileName);
+		selectableRow.setBackgroundColor(Color.GREEN.darker());
+	}
+	
+	private SelectableRow createRow(TwoColumnPanel leftMainPanel, JComponent leftColumnComponent, JComponent rightColumnComponent, String descriptionFileName)
+	{
+		Box firstColumnBox = createBoxWithIndent();
+		firstColumnBox.add(leftColumnComponent, BorderLayout.BEFORE_FIRST_LINE);
+		
+		Box secondColumnBox = createBorderedBox();
+		secondColumnBox.add(rightColumnComponent);
+		
+		SelectableRow selectableRow = new SelectableRow(firstColumnBox, secondColumnBox);
+		clickableComponentToContentsFileNameMap.put(selectableRow, descriptionFileName);
+		firstColumnBox.addMouseListener(new ClickHandler(selectableRow));
+		
+		leftMainPanel.add(firstColumnBox);
+		leftMainPanel.add(secondColumnBox);
+		
+		return selectableRow;
+	}
+	
+	private Box createBoxWithIndent()
+	{
+		Box box = createBorderedBox();
+		box.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
 		
 		return box;
 	}
-
-	private void addSubHeaderRow(TwoColumnPanel leftMainPanel, String text, String rightPanelHtmlFileName)
-	{
-		Box box = createBorderedBox(rightPanelHtmlFileName);
-		setSubheaderBackground(box);
-		box.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
-		PanelTitleLabel label = new PanelTitleLabel(text);
-		box.add(label, BorderLayout.BEFORE_FIRST_LINE);
-		leftMainPanel.add(box);
-		leftMainPanel.add(new FillerLabel());
-	}
 	
-	private void setSubheaderBackground(JComponent component)
+	private Box createBorderedBox()
 	{
-		component.setOpaque(true);
-		component.setBackground(Color.GREEN.darker());
-	}
-
-	private Box createBoxWithIndent(String rightPanelHtmlFileName)
-	{
-		Box box = createBorderedBox(rightPanelHtmlFileName);
-		box.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
+		Box box = Box.createHorizontalBox();
+		box.setBorder(BorderFactory.createEtchedBorder());
+		
 		return box;
 	}
 
@@ -327,6 +306,18 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 		{
 			leftSide.setBorder(BorderFactory.createEtchedBorder());
 			rightSide.setBorder(BorderFactory.createEtchedBorder());
+		}
+		
+		protected void setBackgroundColor(Color backgroundColor)
+		{
+			setBackgroundColor(leftSide, backgroundColor);
+			setBackgroundColor(rightSide, backgroundColor);
+		}
+		
+		private void setBackgroundColor(JComponent component, Color backgroundColor)
+		{
+			component.setOpaque(true);
+			component.setBackground(backgroundColor);
 		}
 		
 		private JComponent leftSide;
