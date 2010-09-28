@@ -93,9 +93,9 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 	{
 		addSubHeaderRow(leftMainPanel, EAM.text("1A. Define Initial Project Team"), TEAM_RIGHT_PANEL_FILE_NAME);
 	
-		PanelTitleLabel leftColumnComponent = new PanelTitleLabel(EAM.text("Team Members:"));
-		PanelTitleLabel rightColumnComponent = new PanelTitleLabel(getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT));
-		createRow(leftMainPanel, leftColumnComponent, rightColumnComponent, TEAM_RIGHT_PANEL_FILE_NAME);
+		String leftColumnTranslatedText = EAM.text("Team Members:");
+		String rightColumnTranslatedText = getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT);
+		createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, TEAM_RIGHT_PANEL_FILE_NAME);
 	}
 
 	private void addScopeVisionAndTargetsRow(TwoColumnPanel leftMainPanel)
@@ -112,51 +112,46 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 	{
 		HashMap<String, String> statusDescriptionTokenReplacementMap2 = new HashMap<String, String>();
 		statusDescriptionTokenReplacementMap2.put("%targetWithSimpleViabilityCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT));
-		PanelTitleLabel leftColumnComponent = new PanelTitleLabel(EAM.substitute(EAM.text("%targetWithSimpleViabilityCount targets have simple viablity information"), statusDescriptionTokenReplacementMap2));
+		String leftColumnTranslatedText = EAM.substitute(EAM.text("%targetWithSimpleViabilityCount targets have simple viablity information"), statusDescriptionTokenReplacementMap2);
 		
-		createRow(leftMainPanel, leftColumnComponent, new FillerLabel(), SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
+		createRow(leftMainPanel, leftColumnTranslatedText, "", SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 	}
 
 	private void addTargetStatusRow(TwoColumnPanel leftMainPanel)
 	{
-		String text = EAM.text("Describe Status of Targets:");
+		String leftColumnTranslatedText = EAM.text("Describe Status of Targets:");
 		HashMap<String, String> statusDescriptionTokenReplacementMap1 = new HashMap<String, String>();
 		statusDescriptionTokenReplacementMap1.put("%targetWithKeaCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_KEA_COUNT));
-		PanelTitleLabel leftColumnComponent = new PanelTitleLabel(text);
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%targetWithKeaCount targets have KEA"), statusDescriptionTokenReplacementMap1);
 		
-		String targetStatusDescription = EAM.substitute(EAM.text("%targetWithKeaCount targets have KEA"), statusDescriptionTokenReplacementMap1);
-		PanelTitleLabel rightColumnComponent = new PanelTitleLabel(targetStatusDescription);
-		
-		createRow(leftMainPanel, leftColumnComponent, rightColumnComponent, SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
+		createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 	}
 
 	private void addHumanWelfareTargetRow(TwoColumnPanel leftMainPanel)
 	{
-		PanelTitleLabel leftColumnComponent = new PanelTitleLabel(EAM.text("Add Human Welfare Targets:"));
+		String leftColumnTranslatedText = EAM.text("Add Human Welfare Targets:");
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%s created"), getDashboardData(Dashboard.PSEUDO_HUMAN_WELFARE_TARGET_COUNT));
 		
-		String humanWelfareTargetCount = EAM.substitute(EAM.text("%s created"), getDashboardData(Dashboard.PSEUDO_HUMAN_WELFARE_TARGET_COUNT));
-		PanelTitleLabel rightColumnComponent = new PanelTitleLabel(humanWelfareTargetCount);
-		
-		createRow(leftMainPanel, leftColumnComponent, rightColumnComponent, SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
+		createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 	}
 
 	private void addTargetRow(TwoColumnPanel leftMainPanel)
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%targetCount", getDashboardData(Dashboard.PSEUDO_TARGET_COUNT));
-		PanelTitleLabel leftColumnComponent = new PanelTitleLabel(EAM.text("Select Conservation Targets:"));
-		PanelTitleLabel rightColumnComponent = new PanelTitleLabel(EAM.substitute(EAM.text("%targetCount created"), tokenReplacementMap));
+		String leftColumnTranslatedText = EAM.text("Select Conservation Targets:");
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%targetCount created"), tokenReplacementMap);
 		
-		createRow(leftMainPanel, leftColumnComponent, rightColumnComponent, SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
+		createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 	}
 
 	private void addDefineScopeRow(TwoColumnPanel leftMainPanel)
 	{
-		PanelTitleLabel leftColumnComponent = new PanelTitleLabel(EAM.text("Define Project Scope:"));
+		String leftColumnTranslatedText = EAM.text("Define Project Scope:");
 		String scopeVisionCount = getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT);
-		PanelTitleLabel rightColumnComponent = new PanelTitleLabel(EAM.substitute(EAM.text("Created (%s chars)"), scopeVisionCount));
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("Created (%s chars)"), scopeVisionCount);
 		
-		createRow(leftMainPanel, leftColumnComponent, rightColumnComponent, SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
+		createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, TEAM_RIGHT_PANEL_FILE_NAME);
 	}
 	
 	private void addIdentifyCriticalThreatsRow(TwoColumnPanel leftMainPanel)
@@ -168,34 +163,40 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 		threatsTokenReplacementMap.put("%threatWithTaxonomyCount", getDashboardData(Dashboard.PSEUDO_THREAT_WITH_TAXONOMY_COUNT));
 		
 		addDirectThreats(leftMainPanel, threatsTokenReplacementMap);
-		createRow(leftMainPanel, new PanelTitleLabel(EAM.substitute(EAM.text("%threatWithTaxonomyCount of %threatCount have taxonomy assignments"), threatsTokenReplacementMap)), new FillerLabel(), CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
+		String leftColumnTranslatedText = EAM.substitute(EAM.text("%threatWithTaxonomyCount of %threatCount have taxonomy assignments"), threatsTokenReplacementMap);
+		createRow(leftMainPanel, leftColumnTranslatedText, "", TEAM_RIGHT_PANEL_FILE_NAME);
+		
 		addThreatRank(leftMainPanel);
 	}
 
 	private void addDirectThreats(TwoColumnPanel leftMainPanel, HashMap<String, String> threatsTokenReplacementMap)
 	{
-		PanelTitleLabel rightColumnComponent = new PanelTitleLabel(EAM.substitute(EAM.text("%threatCount Direct Threats created"), threatsTokenReplacementMap));
-		PanelTitleLabel leftColumnComponent = new PanelTitleLabel(EAM.text("Identify Direct Threats:"));
+		String leftColumnTranslatedText = EAM.text("Identify Direct Threats:");
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%threatCount Direct Threats created"), threatsTokenReplacementMap);
 
-		createRow(leftMainPanel, leftColumnComponent, rightColumnComponent, CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
+		createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
 	}
 
 	private void addThreatRank(TwoColumnPanel leftMainPanel)
 	{
-		String text = EAM.text("Rank Direct Threats:");
+		String leftColumnTranslatedText = EAM.text("Rank Direct Threats:");
 		HashMap<String, String> threatTargetLinksTokenReplacementMap = new HashMap<String, String>();
 		threatTargetLinksTokenReplacementMap.put("%threatTargetLinkCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_COUNT));
 		threatTargetLinksTokenReplacementMap.put("%threatTargetWithRatingCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT));
-		String threatTargetLinkDescription = EAM.substitute(EAM.text("%threatTargetWithRatingCount of %threatTargetLinkCount threat/target links ranked"), threatTargetLinksTokenReplacementMap);
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%threatTargetWithRatingCount of %threatTargetLinkCount threat/target links ranked"), threatTargetLinksTokenReplacementMap);
 
-		createRow(leftMainPanel, new PanelTitleLabel(text), new PanelTitleLabel(threatTargetLinkDescription), CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
+		createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
 	}
 	
-	private void addSubHeaderRow(TwoColumnPanel leftMainPanel, String text, String rightPanelHtmlFileName)
+	private void addSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightPanelHtmlFileName)
 	{
-		PanelTitleLabel label = new PanelTitleLabel(text);
-		SelectableRow selectableRow = createRow(leftMainPanel, label, new FillerLabel(), rightPanelHtmlFileName);
+		SelectableRow selectableRow = createRow(leftMainPanel, leftColumnTranslatedText, "", rightPanelHtmlFileName);
 		selectableRow.setBackgroundColor(Color.GREEN.darker());
+	}
+	
+	private SelectableRow createRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName)
+	{
+		return createRow(leftMainPanel, new PanelTitleLabel(leftColumnTranslatedText), new PanelTitleLabel(rightColumnTranslatedText), descriptionFileName);
 	}
 	
 	private SelectableRow createRow(TwoColumnPanel leftMainPanel, JComponent leftColumnComponent, JComponent rightColumnComponent, String descriptionFileName)
