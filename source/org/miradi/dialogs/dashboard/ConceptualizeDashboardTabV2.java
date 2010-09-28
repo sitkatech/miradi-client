@@ -230,13 +230,19 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 
 	private void addSubHeaderRow(TwoColumnPanel leftMainPanel, String text, String rightPanelHtmlFileName)
 	{
-		Box box1 = createBorderedBox(rightPanelHtmlFileName);
-		box1.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
-		box1.setBackground(Color.GREEN.darker());
+		Box box = createBorderedBox(rightPanelHtmlFileName);
+		setSubheaderBackground(box);
+		box.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
 		PanelTitleLabel label = new PanelTitleLabel(text);
-		box1.add(label, BorderLayout.BEFORE_FIRST_LINE);
-		leftMainPanel.add(box1);
+		box.add(label, BorderLayout.BEFORE_FIRST_LINE);
+		leftMainPanel.add(box);
 		leftMainPanel.add(new FillerLabel());
+	}
+	
+	private void setSubheaderBackground(JComponent component)
+	{
+		component.setOpaque(true);
+		component.setBackground(Color.GREEN.darker());
 	}
 
 	private Box createBoxWithIndent(String rightPanelHtmlFileName)
