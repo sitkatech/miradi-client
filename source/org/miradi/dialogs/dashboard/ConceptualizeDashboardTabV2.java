@@ -196,16 +196,11 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 	
 	private SelectableRow createRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName)
 	{
-		return createRow(leftMainPanel, new PanelTitleLabel(leftColumnTranslatedText), new PanelTitleLabel(rightColumnTranslatedText), descriptionFileName);
-	}
-	
-	private SelectableRow createRow(TwoColumnPanel leftMainPanel, JComponent leftColumnComponent, JComponent rightColumnComponent, String descriptionFileName)
-	{
 		Box firstColumnBox = createBoxWithIndent();
-		firstColumnBox.add(leftColumnComponent, BorderLayout.BEFORE_FIRST_LINE);
+		firstColumnBox.add(new PanelTitleLabel(leftColumnTranslatedText), BorderLayout.BEFORE_FIRST_LINE);
 		
 		Box secondColumnBox = createBorderedBox();
-		secondColumnBox.add(rightColumnComponent);
+		secondColumnBox.add(new PanelTitleLabel(rightColumnTranslatedText));
 		
 		SelectableRow selectableRow = new SelectableRow(firstColumnBox, secondColumnBox);
 		clickableComponentToContentsFileNameMap.put(selectableRow, descriptionFileName);
