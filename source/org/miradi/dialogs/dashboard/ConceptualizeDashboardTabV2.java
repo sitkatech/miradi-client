@@ -208,7 +208,6 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 		
 		SelectableRow selectableRow = new SelectableRow(firstColumnBox, secondColumnBox);
 		clickableComponentToContentsFileNameMap.put(selectableRow, descriptionFileName);
-		firstColumnBox.addMouseListener(new ClickHandler(selectableRow));
 		
 		leftMainPanel.add(firstColumnBox);
 		leftMainPanel.add(secondColumnBox);
@@ -294,6 +293,9 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 		{
 			leftSide = leftSideToUse;
 			rightSide = rightSideToUse;
+			
+			leftSide.addMouseListener(new ClickHandler(this));
+			rightSide.addMouseListener(new ClickHandler(this));
 		}
 		
 		protected void selectRow()
