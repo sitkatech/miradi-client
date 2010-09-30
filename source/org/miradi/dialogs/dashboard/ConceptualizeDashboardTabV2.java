@@ -31,7 +31,6 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JComponent;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
@@ -41,7 +40,7 @@ import org.miradi.project.Project;
 import org.miradi.utils.FillerLabel;
 import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
-public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
+public class ConceptualizeDashboardTabV2 extends AbstractDashboardTag
 {
 	public ConceptualizeDashboardTabV2(Project projectToUse) throws Exception
 	{
