@@ -35,7 +35,7 @@ public class ConceptualizeDashboardTabV2 extends AbstractDashboardTag
 {
 	public ConceptualizeDashboardTabV2(Project projectToUse) throws Exception
 	{
-		super(projectToUse, Dashboard.getObjectType());
+		super(projectToUse);
 		
 		addLeftPanel(createLeftPanel());
 		
