@@ -33,13 +33,13 @@ import javax.swing.JComponent;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.layout.TwoColumnGridLayout;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.utils.FillerLabel;
+import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
 public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 {
@@ -47,18 +47,19 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 	{
 		super(projectToUse, Dashboard.getObjectType());
 		
-		setLayout(new TwoColumnGridLayout());
 		clickableComponentToContentsFileNameMap = new HashMap<SelectableRow, String>();
+		splitPane = new PersistentNonPercentageHorizontalSplitPane(getMainWindow(), getMainWindow(), getPanelDescription());		
 		
 		addLeftPanel(createLeftPanel());
 		
 		createRightPanel();
-		addRightPanel();		
+		addRightPanel();
+		add(splitPane);
 	}
 	
 	private void addRightPanel() throws Exception
 	{
-		add(rightSideDescriptionPanel);
+		splitPane.setRightComponent(rightSideDescriptionPanel);
 	}
 
 	protected void createRightPanel() throws Exception
@@ -69,7 +70,7 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 
 	private void addLeftPanel(TwoColumnPanel leftMainPanel)
 	{
-		add(leftMainPanel);
+		splitPane.setLeftComponent(leftMainPanel);
 	}
 
 	protected TwoColumnPanel createLeftPanel()
@@ -151,7 +152,7 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 		String scopeVisionCount = getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT);
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("Created (%s chars)"), scopeVisionCount);
 		
-		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, TEAM_RIGHT_PANEL_FILE_NAME);
+		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 	}
 	
 	private void addIdentifyCriticalThreatsRow(TwoColumnPanel leftMainPanel)
@@ -164,7 +165,7 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 		
 		addDirectThreats(leftMainPanel, threatsTokenReplacementMap);
 		String leftColumnTranslatedText = EAM.substitute(EAM.text("%threatWithTaxonomyCount of %threatCount have taxonomy assignments"), threatsTokenReplacementMap);
-		createDataRow(leftMainPanel, leftColumnTranslatedText, "", TEAM_RIGHT_PANEL_FILE_NAME);
+		createDataRow(leftMainPanel, leftColumnTranslatedText, "", CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
 		
 		addThreatRank(leftMainPanel);
 	}
@@ -333,6 +334,7 @@ public class ConceptualizeDashboardTabV2 extends ObjectDataInputPanel
 	
 	private HashMap<SelectableRow, String> clickableComponentToContentsFileNameMap;
 	private DashboardRightSideDescriptionPanel rightSideDescriptionPanel;
+	private PersistentNonPercentageHorizontalSplitPane splitPane;
 	private static final int INDENT_PER_LEVEL = 20;
 	private static final String TEAM_RIGHT_PANEL_FILE_NAME = "dashboard/1A.html";
 	private static final String SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME = "dashboard/1B.html";
