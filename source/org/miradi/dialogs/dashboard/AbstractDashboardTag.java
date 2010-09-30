@@ -42,9 +42,9 @@ import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
 abstract public class AbstractDashboardTag extends ObjectDataInputPanel
 {
-	public AbstractDashboardTag(Project projectToUse, int objectType)
+	public AbstractDashboardTag(Project projectToUse)
 	{
-		super(projectToUse, objectType);
+		super(projectToUse, Dashboard.getObjectType());
 		
 		splitPane = new PersistentNonPercentageHorizontalSplitPane(getMainWindow(), getMainWindow(), getPanelDescription());	
 		clickableComponentToContentsFileNameMap = new HashMap<SelectableRow, String>();
