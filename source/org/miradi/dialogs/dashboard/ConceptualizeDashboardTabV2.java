@@ -20,17 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.util.HashMap;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
 
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.utils.FillerLabel;
@@ -181,64 +177,6 @@ public class ConceptualizeDashboardTabV2 extends AbstractDashboardTag
 		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
 	}
 	
-	private void addSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightPanelHtmlFileName)
-	{
-		SelectableRow selectableRow = createSubHeaderRow(leftMainPanel, leftColumnTranslatedText, "", rightPanelHtmlFileName);
-		selectableRow.setBackgroundColor(Color.GREEN.darker());
-	}
-	
-	private SelectableRow createDataRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName)
-	{
-		Box firstColumnBox = createBorderedBox();
-		firstColumnBox.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
-		firstColumnBox.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
-		
-		return createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, descriptionFileName, firstColumnBox);
-	}
-	
-	private SelectableRow createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName)
-	{
-		Box firstColumnBox = createBorderedBox();
-		firstColumnBox.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
-		
-		return createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, descriptionFileName, firstColumnBox);
-	}
-
-	private SelectableRow createRow(TwoColumnPanel leftMainPanel,	String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, Box firstColumnBox)
-	{
-		firstColumnBox.add(new PanelTitleLabel(leftColumnTranslatedText), BorderLayout.BEFORE_FIRST_LINE);
-		
-		Box secondColumnBox = createBorderedBox();
-		secondColumnBox.add(new PanelTitleLabel(rightColumnTranslatedText));
-		
-		SelectableRow selectableRow = new SelectableRow(firstColumnBox, secondColumnBox);
-		clickableComponentToContentsFileNameMap.put(selectableRow, descriptionFileName);
-		
-		leftMainPanel.add(firstColumnBox);
-		leftMainPanel.add(secondColumnBox);
-		
-		return selectableRow;
-	}
-	
-	private Box createBorderedBox()
-	{
-		Box box = Box.createHorizontalBox();
-		box.setBorder(BorderFactory.createEtchedBorder());
-		
-		return box;
-	}
-
-	private String getDashboardData(String tag)
-	{
-		return getDashboard().getData(tag);
-	}
-
-	private Dashboard getDashboard()
-	{
-		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
-		return Dashboard.find(getProject(), dashboardRef);
-	}
-
 	@Override
 	public String getPanelDescription()
 	{
