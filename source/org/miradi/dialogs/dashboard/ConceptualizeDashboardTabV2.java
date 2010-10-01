@@ -31,7 +31,7 @@ import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.utils.FillerLabel;
 
-public class ConceptualizeDashboardTabV2 extends AbstractDashboardTag
+public class ConceptualizeDashboardTabV2 extends AbstractDashboardTab
 {
 	public ConceptualizeDashboardTabV2(Project projectToUse) throws Exception
 	{
