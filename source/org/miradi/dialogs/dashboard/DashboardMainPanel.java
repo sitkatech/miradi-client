@@ -39,6 +39,7 @@ public class DashboardMainPanel extends PanelTabbedPane
 	public void dispose()
 	{
 		disposeTab(conceptualizeDashboardTab);
+		disposeTab(planActionsAndMonitoringTab);
 	}
 	
 	public void becomeActive()
