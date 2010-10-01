@@ -42,14 +42,36 @@ import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
 abstract public class AbstractDashboardTag extends ObjectDataInputPanel
 {
-	public AbstractDashboardTag(Project projectToUse)
+	public AbstractDashboardTag(Project projectToUse) throws Exception
 	{
 		super(projectToUse, Dashboard.getObjectType());
 		
 		splitPane = new PersistentNonPercentageHorizontalSplitPane(getMainWindow(), getMainWindow(), getPanelDescription());	
 		clickableComponentToContentsFileNameMap = new HashMap<SelectableRow, String>();
+		
+		addLeftPanel(createLeftPanel());
+		
+		createRightPanel();
+		addRightPanel();
+		add(splitPane);
 	}
 	
+	private void addRightPanel() throws Exception
+	{
+		splitPane.setRightComponent(rightSideDescriptionPanel);
+	}
+	
+	protected void addLeftPanel(TwoColumnPanel leftMainPanel)
+	{
+		splitPane.setLeftComponent(leftMainPanel);
+	}
+	
+	protected void createRightPanel() throws Exception
+	{
+		rightSideDescriptionPanel = new DashboardRightSideDescriptionPanel(getMainWindow());
+		rightSideDescriptionPanel.setRightSidePanelContent(getMainDescriptionFileName());
+	}
+
 	protected void addSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightPanelHtmlFileName)
 	{
 		SelectableRow selectableRow = createSubHeaderRow(leftMainPanel, leftColumnTranslatedText, "", rightPanelHtmlFileName);
@@ -186,8 +208,12 @@ abstract public class AbstractDashboardTag extends ObjectDataInputPanel
 		private JComponent rightSide;
 	}
 	
-	protected HashMap<SelectableRow, String> clickableComponentToContentsFileNameMap;
-	protected DashboardRightSideDescriptionPanel rightSideDescriptionPanel;
-	protected PersistentNonPercentageHorizontalSplitPane splitPane;
-	protected static final int INDENT_PER_LEVEL = 20;
+	abstract protected String getMainDescriptionFileName();
+	
+	abstract protected TwoColumnPanel createLeftPanel();
+	
+	private HashMap<SelectableRow, String> clickableComponentToContentsFileNameMap;
+	private DashboardRightSideDescriptionPanel rightSideDescriptionPanel;
+	private PersistentNonPercentageHorizontalSplitPane splitPane;
+	private static final int INDENT_PER_LEVEL = 20;
 }

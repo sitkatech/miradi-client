@@ -36,30 +36,15 @@ public class ConceptualizeDashboardTabV2 extends AbstractDashboardTag
 	public ConceptualizeDashboardTabV2(Project projectToUse) throws Exception
 	{
 		super(projectToUse);
-		
-		addLeftPanel(createLeftPanel());
-		
-		createRightPanel();
-		addRightPanel();
-		add(splitPane);
 	}
 	
-	private void addRightPanel() throws Exception
+	@Override
+	protected String getMainDescriptionFileName()
 	{
-		splitPane.setRightComponent(rightSideDescriptionPanel);
+		return "dashboard/1.html";
 	}
-
-	protected void createRightPanel() throws Exception
-	{
-		rightSideDescriptionPanel = new DashboardRightSideDescriptionPanel(getMainWindow());
-		rightSideDescriptionPanel.setRightSidePanelContent("dashboard/1.html");
-	}
-
-	private void addLeftPanel(TwoColumnPanel leftMainPanel)
-	{
-		splitPane.setLeftComponent(leftMainPanel);
-	}
-
+	
+	@Override
 	protected TwoColumnPanel createLeftPanel()
 	{
 		TwoColumnPanel leftMainPanel = new TwoColumnPanel();
