@@ -65,6 +65,42 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 		createRankedDraftStrategiesCountRow(leftMainPanel);
 		createStrategyCountRow(leftMainPanel);
 		createStrategyWithTaxonomyCountRow(leftMainPanel);
+		createResultsChainCountRow(leftMainPanel);
+		createObjectivesCountRow(leftMainPanel);
+		createFinalStrategicPlanRow(leftMainPanel);
+	}
+
+	private void createFinalStrategicPlanRow(TwoColumnPanel leftMainPanel)
+	{
+		String leftColumnTranslatedText = EAM.text("Finalize Strategic Plan");
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%objectivesRelevantToStrategiesPercentage", getDashboardData(Dashboard.PSEUDO_OBJECTIVES_RELEVANT_TO_STRATEGIES_PERCENTAGE));
+		tokenReplacementMap.put("%strategiesIrrelevantToObjectivesCount", getDashboardData(Dashboard.PSEUDO_IRRELEVANT_STRATEGIES_TO_OBJECTIVES_COUNT));
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%objectivesRelevantToStrategiesPercentage % of Objectives relevant to a Strategy. %strategiesIrrelevantToObjectivesCount Strategies that do not contribute to an Objective"), tokenReplacementMap);
+
+		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
+	}
+
+	private void createObjectivesCountRow(TwoColumnPanel leftMainPanel)
+	{
+		String leftColumnTranslatedText = EAM.text("Develop Objectives");
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%objectiveCount", getDashboardData(Dashboard.PSEUDO_OBJECTIVE_COUNT));
+		tokenReplacementMap.put("%resultsChainCount", getDashboardData(Dashboard.PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT));
+		tokenReplacementMap.put("%resultsChainWithObjectiveCount", getDashboardData(Dashboard.PSEUDO_RESULTS_CHAIN_WITH_OBJECTIVE_COUNT));
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%objectiveCount Objectives Created. %resultsChainWithObjectiveCount of %resultsChainCount RCs have at least 1 objective"), tokenReplacementMap);
+
+		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
+	}
+
+	private void createResultsChainCountRow(TwoColumnPanel leftMainPanel)
+	{
+		String leftColumnTranslatedText = EAM.text("Create Results Chains");
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%resultsChainCount", getDashboardData(Dashboard.PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT));
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%resultsChainCount Results Chains Created"), tokenReplacementMap);
+
+		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);	
 	}
 
 	private void createStrategyWithTaxonomyCountRow(TwoColumnPanel leftMainPanel)

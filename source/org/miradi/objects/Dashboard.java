@@ -36,6 +36,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class Dashboard extends BaseObject
@@ -127,6 +128,21 @@ public class Dashboard extends BaseObject
 			
 			if (fieldTag.equals(PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT))
 				return getStrategyWithTaxonomyCount();
+			
+			if (fieldTag.equals(PSEUDO_RESULTS_CHAIN_COUNT))
+				return getObjectPoolCountAsString(ResultsChainDiagram.getObjectType());
+			
+			if (fieldTag.equals(PSEUDO_OBJECTIVE_COUNT))
+				return getObjectPoolCountAsString(Objective.getObjectType());
+			
+			if (fieldTag.equals(PSEUDO_RESULTS_CHAIN_WITH_OBJECTIVE_COUNT))
+				return getResultsChainWithObjectiveCount();
+			
+			if (fieldTag.equals(PSEUDO_OBJECTIVES_RELEVANT_TO_STRATEGIES_PERCENTAGE))
+				return getRelevantObjectivesRelevantToStrategiesPercentage();
+			
+			if (fieldTag.equals(PSEUDO_IRRELEVANT_STRATEGIES_TO_OBJECTIVES_COUNT))
+				return getIrrelenvatStratiesToObjectivesCount();
 
 			return super.getPseudoData(fieldTag);
 		}
@@ -137,6 +153,62 @@ public class Dashboard extends BaseObject
 		}
 	}
 	
+	private String getIrrelenvatStratiesToObjectivesCount() throws Exception
+	{
+		Vector<Strategy> strategies = getProject().getStrategyPool().getNonDraftStrategiesAsVector();
+		Vector<Strategy> irrelevantStrategiesToObjectives = new Vector<Strategy>();
+		ORefSet strategiesRelevantToObjectives = getStrategiesRelevantToObjectives();
+		for (Strategy strategy : strategies)
+		{	
+			if (strategy.getObjectiveRefs().isEmpty() && !strategiesRelevantToObjectives.contains(strategy.getRef()))
+				irrelevantStrategiesToObjectives.add(strategy);
+		}
+		
+		return Integer.toString(irrelevantStrategiesToObjectives.size());
+	}
+
+	private String getRelevantObjectivesRelevantToStrategiesPercentage() throws Exception
+	{
+		ORefSet objectiveRefs = getProject().getObjectivePool().getRefSet();
+		ORefSet objectivesRelevantToStrategies = new ORefSet();
+		for(ORef objectiveRef : objectiveRefs)
+		{
+			Objective objective = Objective.find(getProject(), objectiveRef);
+			if (objective.getRelevantStrategyRefs().hasRefs())
+				objectivesRelevantToStrategies.add(objectiveRef);
+		}
+		
+		double percentage = ((double)objectivesRelevantToStrategies.size() / (double)objectiveRefs.size()) * 100;
+		return DoubleUtilities.toStringForHumans(percentage);
+	}
+	
+	private ORefSet getStrategiesRelevantToObjectives() throws Exception
+	{
+		ORefSet objectiveRefs = getProject().getObjectivePool().getRefSet();
+		ORefSet stratiesReleventToObjectives = new ORefSet();
+		for(ORef objectiveRef : objectiveRefs)
+		{
+			Objective objective = Objective.find(getProject(), objectiveRef);
+			stratiesReleventToObjectives.addAllRefs(objective.getRelevantStrategyRefs());
+		}
+		
+		return stratiesReleventToObjectives;
+	}
+
+	private String getResultsChainWithObjectiveCount()
+	{
+		ORefSet resultsChainRefs = getProject().getResultsChainDiagramPool().getRefSet();
+		ORefSet resultsChainsWithObjectives = new ORefSet();
+		for(ORef resultsChainRef : resultsChainRefs)
+		{
+			ResultsChainDiagram resultsChain = ResultsChainDiagram.find(getProject(), resultsChainRef);
+			if (resultsChain.getAllObjectiveRefs().hasRefs())
+				resultsChainsWithObjectives.add(resultsChainRef);
+		}
+		
+		return Integer.toString(resultsChainsWithObjectives.size());
+	}
+
 	private String getStrategyWithTaxonomyCount()
 	{
 		Vector<Strategy> strategies = getProject().getStrategyPool().getNonDraftStrategiesAsVector();
@@ -332,6 +404,11 @@ public class Dashboard extends BaseObject
 		rankedDraftStrategyCount = new PseudoStringData(PSEUDO_RANKED_DRAFT_STRATEGY_COUNT);
 		stragtegyCount = new PseudoStringData(PSEUDO_STRATEGY_COUNT);
 		strategyWithTaxonomyCount = new PseudoStringData(PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT);
+		resultsChainCount = new PseudoStringData(PSEUDO_RESULTS_CHAIN_COUNT);
+		objectiveCount = new PseudoStringData(PSEUDO_OBJECTIVE_COUNT);
+		resultsChainWithObjectiveCount = new PseudoStringData(PSEUDO_RESULTS_CHAIN_WITH_OBJECTIVE_COUNT);
+		objectivesRelevantToStrategiesPercentage = new PseudoStringData(PSEUDO_OBJECTIVES_RELEVANT_TO_STRATEGIES_PERCENTAGE);
+		irrelenvatStrategiesToObjectivesCount = new PseudoStringData(PSEUDO_IRRELEVANT_STRATEGIES_TO_OBJECTIVES_COUNT);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -348,6 +425,11 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_RANKED_DRAFT_STRATEGY_COUNT, rankedDraftStrategyCount);
 		addPresentationDataField(PSEUDO_STRATEGY_COUNT, stragtegyCount);
 		addPresentationDataField(PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT, strategyWithTaxonomyCount);
+		addPresentationDataField(PSEUDO_RESULTS_CHAIN_COUNT, resultsChainCount);
+		addPresentationDataField(PSEUDO_OBJECTIVE_COUNT, objectiveCount);
+		addPresentationDataField(PSEUDO_RESULTS_CHAIN_WITH_OBJECTIVE_COUNT, resultsChainWithObjectiveCount);
+		addPresentationDataField(PSEUDO_OBJECTIVES_RELEVANT_TO_STRATEGIES_PERCENTAGE, objectivesRelevantToStrategiesPercentage);
+		addPresentationDataField(PSEUDO_IRRELEVANT_STRATEGIES_TO_OBJECTIVES_COUNT, irrelenvatStrategiesToObjectivesCount);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -368,6 +450,11 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_RANKED_DRAFT_STRATEGY_COUNT = "RankedDraftStrategyCount";
 	public static final String PSEUDO_STRATEGY_COUNT = "StrategyCount";
 	public static final String PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT = "StrategyWithTaxonomyCount";
+	public static final String PSEUDO_RESULTS_CHAIN_COUNT = "ResultsChainCount";
+	public static final String PSEUDO_OBJECTIVE_COUNT = "ObjectiveCount";
+	public static final String PSEUDO_RESULTS_CHAIN_WITH_OBJECTIVE_COUNT = "ResultsChainWithObjectiveCount";
+	public static final String PSEUDO_OBJECTIVES_RELEVANT_TO_STRATEGIES_PERCENTAGE = "ObjectivesRelevantToStrategiesPercentage";
+	public static final String PSEUDO_IRRELEVANT_STRATEGIES_TO_OBJECTIVES_COUNT = "IrrelenvatStratgiesToObjectivesCount";
 	
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;
@@ -384,4 +471,9 @@ public class Dashboard extends BaseObject
 	private PseudoStringData rankedDraftStrategyCount;
 	private PseudoStringData stragtegyCount;
 	private PseudoStringData strategyWithTaxonomyCount;
+	private PseudoStringData resultsChainCount;
+	private PseudoStringData objectiveCount;
+	private PseudoStringData resultsChainWithObjectiveCount;
+	private PseudoStringData objectivesRelevantToStrategiesPercentage;
+	private PseudoStringData irrelenvatStrategiesToObjectivesCount;
 }
