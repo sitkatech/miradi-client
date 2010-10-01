@@ -40,9 +40,9 @@ import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
-abstract public class AbstractDashboardTag extends ObjectDataInputPanel
+abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 {
-	public AbstractDashboardTag(Project projectToUse) throws Exception
+	public AbstractDashboardTab(Project projectToUse) throws Exception
 	{
 		super(projectToUse, Dashboard.getObjectType());
 		
