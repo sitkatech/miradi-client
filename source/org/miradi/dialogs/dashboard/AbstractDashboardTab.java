@@ -87,6 +87,13 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		return createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, descriptionFileName, firstColumnBox);
 	}
 	
+	protected SelectableRow createHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName)
+	{
+		Box firstColumnBox = createBorderedBox();
+		
+		return createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, descriptionFileName, firstColumnBox);
+	}
+	
 	private SelectableRow createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName)
 	{
 		Box firstColumnBox = createBorderedBox();

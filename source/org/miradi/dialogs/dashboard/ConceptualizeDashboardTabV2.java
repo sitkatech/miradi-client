@@ -22,14 +22,10 @@ package org.miradi.dialogs.dashboard;
 
 import java.util.HashMap;
 
-import javax.swing.BorderFactory;
-
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
-import org.miradi.utils.FillerLabel;
 
 public class ConceptualizeDashboardTabV2 extends AbstractDashboardTab
 {
@@ -41,19 +37,14 @@ public class ConceptualizeDashboardTabV2 extends AbstractDashboardTab
 	@Override
 	protected String getMainDescriptionFileName()
 	{
-		return "dashboard/1.html";
+		return MAIN_DESCRIPTION_RIGHT_PANEL_FILE_NAME;
 	}
 	
 	@Override
 	protected TwoColumnPanel createLeftPanel()
 	{
 		TwoColumnPanel leftMainPanel = new TwoColumnPanel();
-		TwoColumnPanel header = new TwoColumnPanel();
-		header.setBorder(BorderFactory.createEtchedBorder());
-		header.add(new PanelTitleLabel(EAM.text("1. Conceptualize")));
-		header.add(new FillerLabel());
-		leftMainPanel.add(header);
-		leftMainPanel.add(new FillerLabel());
+		createHeaderRow(leftMainPanel, EAM.text("1. Conceptualize"), "", getMainDescriptionFileName());
 
 		addTeamMembersRow(leftMainPanel);
 		addScopeVisionAndTargetsRow(leftMainPanel);
@@ -165,9 +156,10 @@ public class ConceptualizeDashboardTabV2 extends AbstractDashboardTab
 	@Override
 	public String getPanelDescription()
 	{
-		return "Conceptualize";
+		return EAM.text("Conceptualize");
 	}
-	
+
+	private static final String MAIN_DESCRIPTION_RIGHT_PANEL_FILE_NAME = "dashboard/1.html";
 	private static final String TEAM_RIGHT_PANEL_FILE_NAME = "dashboard/1A.html";
 	private static final String SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME = "dashboard/1B.html";
 	private static final String CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME = "dashboard/1C.html";

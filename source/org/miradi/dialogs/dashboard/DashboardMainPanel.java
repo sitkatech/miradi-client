@@ -68,11 +68,13 @@ public class DashboardMainPanel extends PanelTabbedPane
 	private void createTabs() throws Exception
 	{
 		conceptualizeDashboardTab = new ConceptualizeDashboardTabV2(getProject());
+		planActionsAndMonitoringTab = new PlanActionsAndMonitoringTab(getProject());
 	}
 
 	private void addTabs()
 	{
 		addTab(conceptualizeDashboardTab.getPanelDescription(), conceptualizeDashboardTab);
+		addTab(planActionsAndMonitoringTab.getPanelDescription(), planActionsAndMonitoringTab);
 	}
 	
 	private Project getProject()
@@ -82,4 +84,5 @@ public class DashboardMainPanel extends PanelTabbedPane
 	
 	private Project project;
 	private ConceptualizeDashboardTabV2 conceptualizeDashboardTab;
+	private PlanActionsAndMonitoringTab planActionsAndMonitoringTab;
 }

@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.dashboard;
 
 import org.miradi.layout.TwoColumnPanel;
+import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
 public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
@@ -33,18 +34,22 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 	@Override
 	protected String getMainDescriptionFileName()
 	{
-		return null;
+		return "dashboard/2.html";
 	}
 
 	@Override
 	protected TwoColumnPanel createLeftPanel()
 	{
-		return null;
+		TwoColumnPanel leftMainPanel = new TwoColumnPanel();
+		
+		createHeaderRow(leftMainPanel, EAM.text("2. Plan Actions and Monitoring"), "", getMainDescriptionFileName());
+		
+		return leftMainPanel;
 	}
 
 	@Override
 	public String getPanelDescription()
 	{
-		return null;
+		return EAM.text("Plan Actions and Monitoring");
 	}
 }
