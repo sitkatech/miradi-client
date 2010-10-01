@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
+import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.diagram.ThreatTargetChainWalker;
@@ -27,11 +28,13 @@ import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -78,16 +81,16 @@ public class Dashboard extends BaseObject
 		try
 		{
 			if (fieldTag.equals(PSEUDO_TEAM_MEMBER_COUNT))
-				return getObjectPoolCount(ProjectResource.getObjectType());
+				return getObjectPoolCountAsString(ProjectResource.getObjectType());
 
 			if (fieldTag.equals(PSEUDO_PROJECT_SCOPE_WORD_COUNT))
 				return getProjectScopeWordCount();
 
 			if (fieldTag.equals(PSEUDO_TARGET_COUNT))
-				return getObjectPoolCount(Target.getObjectType());
+				return getObjectPoolCountAsString(Target.getObjectType());
 
 			if (fieldTag.equals(PSEUDO_HUMAN_WELFARE_TARGET_COUNT))
-				return getObjectPoolCount(HumanWelfareTarget.getObjectType());
+				return getObjectPoolCountAsString(HumanWelfareTarget.getObjectType());
 
 			if (fieldTag.equals(PSEUDO_TARGET_WITH_KEA_COUNT))
 				return getTargetWithKeaCount();
@@ -106,6 +109,24 @@ public class Dashboard extends BaseObject
 
 			if (fieldTag.equals(PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT))
 				return getThreatTargetLinkWithRatingCount();
+			
+			if (fieldTag.equals(PSEUDO_TARGETS_WITH_GOALS_COUNT))
+				return getTargetWithGoalCount();
+			
+			if (fieldTag.equals(PSEUDO_GOAL_COUNT))
+				return getObjectPoolCountAsString(Goal.getObjectType());
+			
+			if (fieldTag.equals(PSEUDO_DRAFT_STRATEGY_COUNT))
+				return getDraftStrategyCount();
+			
+			if (fieldTag.equals(PSEUDO_RANKED_DRAFT_STRATEGY_COUNT))
+				return getRankedDraftStrategyCount();
+			
+			if (fieldTag.equals(PSEUDO_STRATEGY_COUNT))
+				return getStrategyCount();
+			
+			if (fieldTag.equals(PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT))
+				return getStrategyWithTaxonomyCount();
 
 			return super.getPseudoData(fieldTag);
 		}
@@ -116,6 +137,60 @@ public class Dashboard extends BaseObject
 		}
 	}
 	
+	private String getStrategyWithTaxonomyCount()
+	{
+		Vector<Strategy> strategies = getProject().getStrategyPool().getNonDraftStrategiesAsVector();
+		HashSet<Strategy> strategiesWithTaxonomyCode = new HashSet<Strategy>();
+		for(Strategy strategy : strategies)
+		{
+			if (strategy.getTaxonomyCode().length() > 0)
+				strategiesWithTaxonomyCode.add(strategy);
+		}
+		
+		return Integer.toString(strategiesWithTaxonomyCode.size());
+	}
+
+	private String getStrategyCount()
+	{
+		int count = getProject().getStrategyPool().getNonDraftStrategyRefs().size();
+		return Integer.toString(count);
+	}
+
+	private String getRankedDraftStrategyCount()
+	{
+		Vector<Strategy> draftStrategies = getProject().getStrategyPool().getDraftStrategiesAsVector();
+		HashSet<Strategy> strategiesWithRanking = new HashSet<Strategy>();
+		for(Strategy draftStrategy : draftStrategies)
+		{
+			if (!draftStrategy.getStrategyRatingSummary().equals(StrategyRatingSummaryQuestion.UNKNOWN_CODE))
+				strategiesWithRanking.add(draftStrategy);
+		}
+		
+		return Integer.toString(strategiesWithRanking.size());
+	}
+
+	private String getDraftStrategyCount()
+	{
+		int count = getProject().getStrategyPool().getDraftStrategiesAsVector().size();
+		return Integer.toString(count);
+	}
+
+	private String getTargetWithGoalCount()
+	{
+		ORefList targetRefs = getProject().getTargetPool().getRefList();
+		targetRefs.addAll(getProject().getHumanWelfareTargetPool().getRefList());
+		ORefSet targetsWithGoals = new ORefSet();
+		for (int index = 0; index < targetRefs.size(); ++index)
+		{
+			ORef targetRef = targetRefs.get(index);
+			AbstractTarget target = AbstractTarget.findTarget(getProject(), targetRef);
+			if (target.getGoalRefs().hasRefs())
+				targetsWithGoals.add(targetRef);
+		}
+		
+		return Integer.toString(targetsWithGoals.size());
+	}
+
 	private String getThreatTargetLinkCount()
 	{
 		Vector<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
@@ -180,7 +255,7 @@ public class Dashboard extends BaseObject
 		return getTargetCountForMode(ViabilityModeQuestion.TNC_STYLE_CODE);
 	}
 
-	private String getTargetCountForMode(String tNCSTYLECODE)
+	private String getTargetCountForMode(String tncModeCode)
 	{
 		int count = 0;
 		ORefSet targetRefs = getProject().getTargetPool().getRefSet();
@@ -188,17 +263,22 @@ public class Dashboard extends BaseObject
 		{
 			Target target = Target.find(getProject(), targetRef);
 			
-			if (target.getViabilityMode().equals(tNCSTYLECODE))
+			if (target.getViabilityMode().equals(tncModeCode))
 				++count;
 		}
 		
 		return Integer.toString(count);
 	}
 
-	private String getObjectPoolCount(int objectType)
+	private String getObjectPoolCountAsString(int objectType)
 	{
-		int resourceCount = getProject().getPool(objectType).size();
+		int resourceCount = getObjectPoolCount(objectType);
 		return Integer.toString(resourceCount);
+	}
+
+	protected int getObjectPoolCount(int objectType)
+	{
+		return getProject().getPool(objectType).size();
 	}
 
 	private String getProjectScopeWordCount()
@@ -247,6 +327,11 @@ public class Dashboard extends BaseObject
 		threatWithTaxonomyCount = new PseudoStringData(PSEUDO_THREAT_WITH_TAXONOMY_COUNT);
 		threatTargetLinkCount = new PseudoStringData(PSEUDO_THREAT_TARGET_LINK_COUNT);
 		threatTargetLinkWithRatingCount = new PseudoStringData(PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT);
+		goalCount = new PseudoStringData(PSEUDO_GOAL_COUNT);
+		draftStrategyCount = new PseudoStringData(PSEUDO_DRAFT_STRATEGY_COUNT);
+		rankedDraftStrategyCount = new PseudoStringData(PSEUDO_RANKED_DRAFT_STRATEGY_COUNT);
+		stragtegyCount = new PseudoStringData(PSEUDO_STRATEGY_COUNT);
+		strategyWithTaxonomyCount = new PseudoStringData(PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -258,6 +343,11 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_THREAT_WITH_TAXONOMY_COUNT, threatWithTaxonomyCount);
 		addPresentationDataField(PSEUDO_THREAT_TARGET_LINK_COUNT, threatTargetLinkCount);
 		addPresentationDataField(PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT, threatTargetLinkWithRatingCount);
+		addPresentationDataField(PSEUDO_GOAL_COUNT, goalCount);
+		addPresentationDataField(PSEUDO_DRAFT_STRATEGY_COUNT, draftStrategyCount);
+		addPresentationDataField(PSEUDO_RANKED_DRAFT_STRATEGY_COUNT, rankedDraftStrategyCount);
+		addPresentationDataField(PSEUDO_STRATEGY_COUNT, stragtegyCount);
+		addPresentationDataField(PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT, strategyWithTaxonomyCount);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -272,6 +362,12 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_THREAT_WITH_TAXONOMY_COUNT = "ThreatWithTaxonomyCount";
 	public static final String PSEUDO_THREAT_TARGET_LINK_COUNT = "ThreatTargetLinkCount";
 	public static final String PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT = "ThreatTargetLinkWithRatingCount";
+	public static final String PSEUDO_TARGETS_WITH_GOALS_COUNT = "TargetsWithGoalsCount";
+	public static final String PSEUDO_GOAL_COUNT = "GoalCount";
+	public static final String PSEUDO_DRAFT_STRATEGY_COUNT = "DraftStrategyCount";
+	public static final String PSEUDO_RANKED_DRAFT_STRATEGY_COUNT = "RankedDraftStrategyCount";
+	public static final String PSEUDO_STRATEGY_COUNT = "StrategyCount";
+	public static final String PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT = "StrategyWithTaxonomyCount";
 	
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;
@@ -283,4 +379,9 @@ public class Dashboard extends BaseObject
 	private PseudoStringData threatWithTaxonomyCount;
 	private PseudoStringData threatTargetLinkCount;
 	private PseudoStringData threatTargetLinkWithRatingCount;
+	private PseudoStringData goalCount;
+	private PseudoStringData draftStrategyCount;
+	private PseudoStringData rankedDraftStrategyCount;
+	private PseudoStringData stragtegyCount;
+	private PseudoStringData strategyWithTaxonomyCount;
 }

@@ -34,7 +34,7 @@ public class StrategyRatingSummaryQuestion extends StaticChoiceQuestionSortableB
 	static ChoiceItem[] getStrategyRatingChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", EAM.text("Unknown"), Color.WHITE),
+			new ChoiceItem(UNKNOWN_CODE, EAM.text("Unknown"), Color.WHITE),
 			new ChoiceItem("1", EAM.text("Not Effective"), COLOR_ALERT),
 			new ChoiceItem("2", EAM.text("Less Effective"), COLOR_CAUTION),
 			new ChoiceItem("3", EAM.text("Effective"), COLOR_OK),
@@ -63,4 +63,6 @@ public class StrategyRatingSummaryQuestion extends StaticChoiceQuestionSortableB
 			return 0;
 		return Integer.parseInt(code);
 	}
+	
+	public static final String UNKNOWN_CODE = "";
 }

@@ -143,7 +143,6 @@ public class ConceptualizeDashboardTabV2 extends AbstractDashboardTab
 
 	private void addThreatRank(TwoColumnPanel leftMainPanel)
 	{
-
 		String leftColumnTranslatedText = EAM.text("Rank Direct Threats:");
 		HashMap<String, String> threatTargetLinksTokenReplacementMap = new HashMap<String, String>();
 		threatTargetLinksTokenReplacementMap.put("%threatTargetLinkCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_COUNT));

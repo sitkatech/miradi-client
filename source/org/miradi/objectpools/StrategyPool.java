@@ -59,6 +59,11 @@ public class StrategyPool extends EAMNormalObjectPool
 	
 	public Factor[] getDraftStrategies()
 	{
+		return getDraftStrategiesAsVector().toArray(new Factor[0]);
+	}
+
+	public Vector<Strategy> getDraftStrategiesAsVector()
+	{
 		Vector<Strategy> draftStrategies = new Vector<Strategy>();
 		Factor[] allStrategies = getDraftAndNonDraftStrategies();
 		for(int i = 0; i < allStrategies.length; ++i)
@@ -67,7 +72,8 @@ public class StrategyPool extends EAMNormalObjectPool
 			if(strategy.isStatusDraft())
 				draftStrategies.add(strategy);
 		}
-		return draftStrategies.toArray(new Factor[0]);
+		
+		return draftStrategies;
 	}
 	
 	public Factor[] getDraftAndNonDraftStrategies()
@@ -96,6 +102,11 @@ public class StrategyPool extends EAMNormalObjectPool
 	
 	public Factor[] getNonDraftStrategies()
 	{
+		return getNonDraftStrategiesAsVector().toArray(new Factor[0]);
+	}
+
+	public Vector<Strategy> getNonDraftStrategiesAsVector()
+	{
 		Vector<Strategy> nonDraftStrategies = new Vector<Strategy>();
 		Factor[] allStrategies = getDraftAndNonDraftStrategies();
 		for(int i = 0; i < allStrategies.length; ++i)
@@ -104,6 +115,6 @@ public class StrategyPool extends EAMNormalObjectPool
 			if(!strategy.isStatusDraft())
 				nonDraftStrategies.add(strategy);
 		}
-		return nonDraftStrategies.toArray(new Factor[0]);
+		return nonDraftStrategies;
 	}
 }
