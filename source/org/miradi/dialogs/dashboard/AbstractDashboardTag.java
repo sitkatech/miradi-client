@@ -169,9 +169,9 @@ abstract public class AbstractDashboardTag extends ObjectDataInputPanel
 		private SelectableRow selectableComponent;
 	}
 	
-	protected class SelectableRow
+	private class SelectableRow
 	{
-		protected SelectableRow(JComponent leftSideToUse, JComponent rightSideToUse)
+		private SelectableRow(JComponent leftSideToUse, JComponent rightSideToUse)
 		{
 			leftSide = leftSideToUse;
 			rightSide = rightSideToUse;
@@ -180,19 +180,29 @@ abstract public class AbstractDashboardTag extends ObjectDataInputPanel
 			rightSide.addMouseListener(new ClickHandler(this));
 		}
 		
-		protected void selectRow()
+		private void selectRow()
 		{
-			leftSide.setBorder(BorderFactory.createEtchedBorder(Color.BLUE, Color.BLUE));
-			rightSide.setBorder(BorderFactory.createEtchedBorder(Color.BLUE, Color.BLUE));
+			setSelectionBorder(leftSide);
+			setSelectionBorder(rightSide);
 		}
 		
-		protected void clearSelection()
+		private void setSelectionBorder(JComponent component)
+		{
+			component.setBorder(BorderFactory.createEtchedBorder(getSelectionColor(), getSelectionColor()));
+		}
+
+		private Color getSelectionColor()
+		{
+			return Color.BLUE;
+		}
+		
+		private void clearSelection()
 		{
 			leftSide.setBorder(BorderFactory.createEtchedBorder());
 			rightSide.setBorder(BorderFactory.createEtchedBorder());
 		}
 		
-		protected void setBackgroundColor(Color backgroundColor)
+		private void setBackgroundColor(Color backgroundColor)
 		{
 			setBackgroundColor(leftSide, backgroundColor);
 			setBackgroundColor(rightSide, backgroundColor);
