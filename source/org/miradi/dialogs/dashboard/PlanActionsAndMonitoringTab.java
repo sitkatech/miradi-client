@@ -51,26 +51,47 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 		createHeaderRow(leftMainPanel, EAM.text("2. Plan Actions and Monitoring"), "", getMainDescriptionFileName());
 		
 		addDevelopStrategicPlanRow(leftMainPanel);
+		addDevelopFormatMonitoringPlanRow(leftMainPanel);
 		
 		return leftMainPanel;
+	}
+
+	private void addDevelopFormatMonitoringPlanRow(TwoColumnPanel leftMainPanel)
+	{
+		addSubHeaderRow(leftMainPanel, EAM.text("2B. Develop a formal monitoring plan"), DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME);
+		
+		createDataRow(leftMainPanel, EAM.text("Define Audiences and Information Needs:"), EAM.text("Use Comments Field?"), DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME);
+		createIndictorsRow(leftMainPanel);
+		
+	}
+
+	private void createIndictorsRow(TwoColumnPanel leftMainPanel)
+	{
+		String leftColumnTranslatedText = EAM.text("Define Indicators:");
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%keaIndicators", getDashboardData(Dashboard.PSEUDO_KEA_INDICATORS_COUNT));
+		tokenReplacementMap.put("%factorIndicators", getDashboardData(Dashboard.PSEUDO_FACTOR_INDICATORS_COUNT));
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%keaIndicators Indicators associated to KEAÕs.  %factorIndicators indicators associate to Factors"), tokenReplacementMap);
+
+		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME);
 	}
 
 	private void addDevelopStrategicPlanRow(TwoColumnPanel leftMainPanel)
 	{
 		addSubHeaderRow(leftMainPanel, EAM.text("2A. Develop Strategic Plan"), DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 		
-		createTargetsWithGoalRow(leftMainPanel);
-		createGoalCountRow(leftMainPanel);
-		createDraftStrategiesCountRow(leftMainPanel);
-		createRankedDraftStrategiesCountRow(leftMainPanel);
-		createStrategyCountRow(leftMainPanel);
-		createStrategyWithTaxonomyCountRow(leftMainPanel);
-		createResultsChainCountRow(leftMainPanel);
-		createObjectivesCountRow(leftMainPanel);
-		createFinalStrategicPlanRow(leftMainPanel);
+		addTargetsWithGoalRow(leftMainPanel);
+		addGoalCountRow(leftMainPanel);
+		addDraftStrategiesCountRow(leftMainPanel);
+		addRankedDraftStrategiesCountRow(leftMainPanel);
+		addStrategyCountRow(leftMainPanel);
+		addStrategyWithTaxonomyCountRow(leftMainPanel);
+		addResultsChainCountRow(leftMainPanel);
+		addObjectivesCountRow(leftMainPanel);
+		addFinalStrategicPlanRow(leftMainPanel);
 	}
 
-	private void createFinalStrategicPlanRow(TwoColumnPanel leftMainPanel)
+	private void addFinalStrategicPlanRow(TwoColumnPanel leftMainPanel)
 	{
 		String leftColumnTranslatedText = EAM.text("Finalize Strategic Plan");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -81,7 +102,7 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
-	private void createObjectivesCountRow(TwoColumnPanel leftMainPanel)
+	private void addObjectivesCountRow(TwoColumnPanel leftMainPanel)
 	{
 		String leftColumnTranslatedText = EAM.text("Develop Objectives");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -93,7 +114,7 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
-	private void createResultsChainCountRow(TwoColumnPanel leftMainPanel)
+	private void addResultsChainCountRow(TwoColumnPanel leftMainPanel)
 	{
 		String leftColumnTranslatedText = EAM.text("Create Results Chains");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -103,7 +124,7 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);	
 	}
 
-	private void createStrategyWithTaxonomyCountRow(TwoColumnPanel leftMainPanel)
+	private void addStrategyWithTaxonomyCountRow(TwoColumnPanel leftMainPanel)
 	{
 		String leftColumnTranslatedText = EAM.text("Strategies with taxonomy assingments");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -113,7 +134,7 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
-	private void createStrategyCountRow(TwoColumnPanel leftMainPanel)
+	private void addStrategyCountRow(TwoColumnPanel leftMainPanel)
 	{
 		String leftColumnTranslatedText = EAM.text("Create Strategies");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -123,7 +144,7 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
-	private void createRankedDraftStrategiesCountRow(TwoColumnPanel leftMainPanel)
+	private void addRankedDraftStrategiesCountRow(TwoColumnPanel leftMainPanel)
 	{
 		String leftColumnTranslatedText = EAM.text("Rank Draft Strategies");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -133,7 +154,7 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
-	private void createDraftStrategiesCountRow(TwoColumnPanel leftMainPanel)
+	private void addDraftStrategiesCountRow(TwoColumnPanel leftMainPanel)
 	{
 		String leftColumnTranslatedText = EAM.text("Create Draft Strategies");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -143,12 +164,12 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
-	private void createGoalCountRow(TwoColumnPanel leftMainPanel)
+	private void addGoalCountRow(TwoColumnPanel leftMainPanel)
 	{
 		createDataRow(leftMainPanel, EAM.text("Total Goals Created:"), getDashboardData(Dashboard.PSEUDO_GOAL_COUNT), DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
-	protected void createTargetsWithGoalRow(TwoColumnPanel leftMainPanel)
+	protected void addTargetsWithGoalRow(TwoColumnPanel leftMainPanel)
 	{
 		String leftColumnTranslatedText = EAM.text("Develop Goals for Each Target:");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -166,4 +187,5 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 	}
 	
 	private static final String DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME = "dashboard/2A.html";
+	private static final String DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME = "dashboard/2B.html";
 }
