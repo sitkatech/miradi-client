@@ -24,13 +24,14 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.utils.DateEditorComponent;
+import org.miradi.utils.DateEditorComponentInsideTable;
 
 public class DayPanel extends TwoColumnPanel
 {
 	public DayPanel(DateUnit dateUnit, String title)
 	{
 		add(new PanelTitleLabel(title));
-		dateEditor = new DateEditorComponent();
+		dateEditor = new DateEditorComponentInsideTable();
 		add(dateEditor);
 		
 		setSelectedDateUnit(dateUnit);
