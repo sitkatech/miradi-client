@@ -143,6 +143,24 @@ GNU/Linux:
 ---------------------
 Changes
 
+Miradi 3.2.3 has improvements and fixes some minor problems in 3.2.x:
+
+- Improvements to the Spanish translations
+- Eliminate incorrect warning that Miradi should be upgraded
+- Work Plan "When" column didn't allow entry of specific days
+- Export to CPMZ didn't include Strategy-Goal association data
+- Updates to the list of Operating Units on the TNC tab 
+
+
+Miradi 3.2.2 fixes some minor problems that were in 3.2.x:
+
+Application-wide:
+- Pasting factors between projects could cause warnings about 
+  project corruption, if the factors contained work planning data 
+- Threat Rating view in Simple mode could display incorrect 
+  summary ratings for Targets
+
+
 Miradi 3.2.1 fixes some minor problems that were in 3.2.0:
 
 Application-wide:
