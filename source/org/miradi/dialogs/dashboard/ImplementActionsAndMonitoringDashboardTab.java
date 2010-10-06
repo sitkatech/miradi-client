@@ -51,8 +51,29 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 		createActivitiesCountRow(leftMainPanel);
 		createActivitiesAndTasksWithAssignmentsRow(leftMainPanel);
 		createDetailMethodsTasksAndResponsibilitiesRow(leftMainPanel);
+		createMethodsCountRow(leftMainPanel);
+		createMethodsAndTasksWithAssignmentsRow(leftMainPanel);
 		
 		return leftMainPanel;
+	}
+
+	private void createMethodsAndTasksWithAssignmentsRow(TwoColumnPanel leftMainPanel)
+	{
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%methodsAndTasksWithAssignmentsCount", getDashboardData(Dashboard.PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT));
+		tokenReplacementMap.put("%methodsAndTasksCount", getDashboardData(Dashboard.PSEUDO_METHODS_AND_TASKS_COUNT));
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("- %methodsAndTasksWithAssignmentsCount of %methodsAndTasksCount Methods and Tasks have assignments"), tokenReplacementMap);
+
+		createDataRow(leftMainPanel, "", rightColumnTranslatedText, DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);
+	}
+
+	private void createMethodsCountRow(TwoColumnPanel leftMainPanel)
+	{
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%methodsCount", getDashboardData(Dashboard.PSEUDO_METHODS_COUNT));
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("- %methodsCount Total methods created"), tokenReplacementMap);
+
+		createDataRow(leftMainPanel, "", rightColumnTranslatedText, DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);		
 	}
 
 	private void createDetailMethodsTasksAndResponsibilitiesRow(TwoColumnPanel leftMainPanel)

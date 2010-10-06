@@ -166,10 +166,10 @@ public class Dashboard extends BaseObject
 				return getActivitiesCount();
 			
 			if (fieldTag.equals(PSEUDO_ACTIVITIES_AND_TASKS_COUNT))
-				return getAcitivitiesAndTasksCount();
+				return getSpecifiedTaskTypeAndTasksCount(Task.ACTIVITY_NAME);
 			
 			if (fieldTag.equals(PSEUDO_ACTIVITIES_AND_TASKS_WITH_ASSIGNMENTS_COUNT))
-				return getActivitiesAndTasksWithAssignmentsCount();
+				return getSpecifiedTaskTypeAndTasksWithAssignmentsCount(Task.ACTIVITY_NAME);
 			
 			if (fieldTag.equals(PSEUDO_INDICATORS_WITH_METHODS_COUNT))
 				return getIndicatorsWithMethodsCount();
@@ -179,6 +179,12 @@ public class Dashboard extends BaseObject
 			
 			if (fieldTag.equals(PSEUDO_INDICATORS_COUNT))
 				return getObjectPoolCountAsString(Indicator.getObjectType());
+			
+			if (fieldTag.equals(PSEUDO_METHODS_AND_TASKS_COUNT))
+				return getSpecifiedTaskTypeAndTasksCount(Task.METHOD_NAME);
+			
+			if (fieldTag.equals(PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT))
+				return getSpecifiedTaskTypeAndTasksWithAssignmentsCount(Task.METHOD_NAME);
 				
 			return super.getPseudoData(fieldTag);
 		}
@@ -209,31 +215,36 @@ public class Dashboard extends BaseObject
 		return Integer.toString(indicatorsWithMethods.size());
 	}
 
-	private String getActivitiesAndTasksWithAssignmentsCount() throws Exception
+	private String getSpecifiedTaskTypeAndTasksWithAssignmentsCount(String taskObjectTypeName) throws Exception
 	{
-		Vector<Task> activitiesAndTasks = new Vector<Task>();
-		activitiesAndTasks.addAll(getProject().getTaskPool().getAllTasks());
-		activitiesAndTasks.addAll(getProject().getTaskPool().getAllActivities());
-		HashSet<Task> tasksAndActivitiesWithAssignments = new HashSet<Task>();
-		for (Task task : activitiesAndTasks)
+		Vector<Task> specifiedTaskAndTasks = getSpecifiedTaskTypeAndTasks(taskObjectTypeName);
+		HashSet<Task> tasksWithAssignments = new HashSet<Task>();
+		for (Task task : specifiedTaskAndTasks)
 		{
 			if (task.getRefList(Task.TAG_EXPENSE_ASSIGNMENT_REFS).hasRefs())
-				tasksAndActivitiesWithAssignments.add(task);
+				tasksWithAssignments.add(task);
 			
 			if (task.getRefList(Task.TAG_RESOURCE_ASSIGNMENT_IDS).hasRefs())
-				tasksAndActivitiesWithAssignments.add(task);
+				tasksWithAssignments.add(task);
 		}
 		
-		return Integer.toString(tasksAndActivitiesWithAssignments.size());
+		return Integer.toString(tasksWithAssignments.size());
 	}
 
-	private String getAcitivitiesAndTasksCount()
+	protected Vector<Task> getSpecifiedTaskTypeAndTasks(String taskObjectTypeName)
 	{
-		int allActivitiesCount = getProject().getTaskPool().getAllActivities().size();
-		int allTasksCount = getProject().getTaskPool().getAllTasks().size();
-		int allActivitiesAndTasksCount = allActivitiesCount + allTasksCount;
+		Vector<Task> specifiedTaskAndTasks = new Vector<Task>();
+		specifiedTaskAndTasks.addAll(getProject().getTaskPool().getAllTasks());
+		specifiedTaskAndTasks.addAll(getProject().getTaskPool().getTasks(taskObjectTypeName));
 		
-		return Integer.toString(allActivitiesAndTasksCount);
+		return specifiedTaskAndTasks;
+	}
+
+	private String getSpecifiedTaskTypeAndTasksCount(String taskObjectTypeName)
+	{
+		int count = getSpecifiedTaskTypeAndTasks(taskObjectTypeName).size();
+		
+		return Integer.toString(count);
 	}
 
 	private String getActivitiesCount()
@@ -573,6 +584,8 @@ public class Dashboard extends BaseObject
 		indictorsWithMethodsCount = new PseudoStringData(PSEUDO_INDICATORS_WITH_METHODS_COUNT);
 		methodsCount = new PseudoStringData(PSEUDO_METHODS_COUNT);
 		indicatorsCount = new PseudoStringData(PSEUDO_INDICATORS_COUNT);
+		methodsAndTasksCount = new PseudoStringData(PSEUDO_METHODS_AND_TASKS_COUNT);
+		methodsAndTasksWithAssignmentsCount = new PseudoStringData(PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -606,6 +619,8 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_INDICATORS_WITH_METHODS_COUNT, indictorsWithMethodsCount);
 		addPresentationDataField(PSEUDO_METHODS_COUNT, methodsCount);
 		addPresentationDataField(PSEUDO_INDICATORS_COUNT, indicatorsCount);
+		addPresentationDataField(PSEUDO_METHODS_AND_TASKS_COUNT, methodsAndTasksCount);
+		addPresentationDataField(PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT, methodsAndTasksWithAssignmentsCount);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -643,6 +658,8 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_INDICATORS_WITH_METHODS_COUNT = "IndicatorsWithMethodsCount";
 	public static final String PSEUDO_METHODS_COUNT = "MethodsCount";
 	public static final String PSEUDO_INDICATORS_COUNT = "IndicatorsCount";
+	public static final String PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT = "MethodsAndTasksWithAssignmentsCount";
+	public static final String PSEUDO_METHODS_AND_TASKS_COUNT = "MethodsAndTasksCount";
 	
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;
@@ -676,4 +693,6 @@ public class Dashboard extends BaseObject
 	private PseudoStringData indictorsWithMethodsCount;
 	private PseudoStringData methodsCount;
 	private PseudoStringData indicatorsCount;
+	private PseudoStringData methodsAndTasksCount;
+	private PseudoStringData methodsAndTasksWithAssignmentsCount;
 }
