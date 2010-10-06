@@ -158,6 +158,18 @@ public class Dashboard extends BaseObject
 			
 			if (fieldTag.equals(PSEUDO_PROJECT_PLANNING_END_DATE))
 				return getProject().getProjectCalendar().getPlanningEndDate();
+			
+			if (fieldTag.equals(PSEUDO_STRATEGIES_WITH_ACTIVITIES_COUNT))
+				return getStrategiesWithActivitiesCount();
+			
+			if (fieldTag.equals(PSEUDO_ACTIVITIES_COUNT))
+				return getActivitiesCount();
+			
+			if (fieldTag.equals(PSEUDO_ACTIVITIES_AND_TASKS_COUNT))
+				return getAcitivitiesAndTasksCount();
+			
+			if (fieldTag.equals(PSEUDO_ACTIVITIES_AND_TASKS_WITH_ASSIGNMENTS_COUNT))
+				return getActivitiesAndTasksWithAssignmentsCount();
 				
 			return super.getPseudoData(fieldTag);
 		}
@@ -168,6 +180,54 @@ public class Dashboard extends BaseObject
 		}
 	}
 	
+	private String getActivitiesAndTasksWithAssignmentsCount() throws Exception
+	{
+		Vector<Task> activitiesAndTasks = new Vector<Task>();
+		activitiesAndTasks.addAll(getProject().getTaskPool().getAllTasks());
+		activitiesAndTasks.addAll(getProject().getTaskPool().getAllActivities());
+		HashSet<Task> tasksAndActivitiesWithAssignments = new HashSet<Task>();
+		for (Task task : activitiesAndTasks)
+		{
+			if (task.getRefList(Task.TAG_EXPENSE_ASSIGNMENT_REFS).hasRefs())
+				tasksAndActivitiesWithAssignments.add(task);
+			
+			if (task.getRefList(Task.TAG_RESOURCE_ASSIGNMENT_IDS).hasRefs())
+				tasksAndActivitiesWithAssignments.add(task);
+		}
+		
+		return Integer.toString(tasksAndActivitiesWithAssignments.size());
+	}
+
+	private String getAcitivitiesAndTasksCount()
+	{
+		int allActivitiesCount = getProject().getTaskPool().getAllActivities().size();
+		int allTasksCount = getProject().getTaskPool().getAllTasks().size();
+		int allActivitiesAndTasksCount = allActivitiesCount + allTasksCount;
+		
+		return Integer.toString(allActivitiesAndTasksCount);
+	}
+
+	private String getActivitiesCount()
+	{
+		int count = getProject().getTaskPool().getAllActivities().size();
+		
+		return Integer.toString(count);
+	}
+
+	private String getStrategiesWithActivitiesCount()
+	{
+		ORefSet strategyRefs = getProject().getStrategyPool().getRefSet();
+		ORefSet strategyWithActivities = new ORefSet();
+		for(ORef strategyRef : strategyRefs)
+		{
+			Strategy strategy = Strategy.find(getProject(), strategyRef);
+			if (strategy.getActivityRefs().hasRefs())
+				strategyWithActivities.add(strategyRef);
+		}
+		
+		return Integer.toString(strategyWithActivities.size());
+	}
+
 	private String getObjectiveRelevantToIndicatorsPercentage() throws Exception
 	{
 		ORefSet objectiveRefs = getProject().getObjectivePool().getRefSet();
@@ -477,6 +537,10 @@ public class Dashboard extends BaseObject
 		objectivesRelevantToIndicatorsPercentage = new PseudoStringData(PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE);
 		projectPlanningStartDate = new PseudoStringData(PSEUDO_PROJECT_PLANNING_START_DATE);
 		projectPlanningEndDate = new PseudoStringData(PSEUDO_PROJECT_PLANNING_END_DATE);
+		strategiesWithActivitiesCount = new PseudoStringData(PSEUDO_STRATEGIES_WITH_ACTIVITIES_COUNT);
+		activitiesCount = new PseudoStringData(PSEUDO_ACTIVITIES_COUNT);
+		activitiesAndTasksCount = new PseudoStringData(PSEUDO_ACTIVITIES_AND_TASKS_COUNT);
+		activitiesAndTasksWithAssignmentsCount = new PseudoStringData(PSEUDO_ACTIVITIES_AND_TASKS_WITH_ASSIGNMENTS_COUNT);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -503,6 +567,10 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE, objectivesRelevantToIndicatorsPercentage);
 		addPresentationDataField(PSEUDO_PROJECT_PLANNING_START_DATE, projectPlanningStartDate);
 		addPresentationDataField(PSEUDO_PROJECT_PLANNING_END_DATE, projectPlanningEndDate);
+		addPresentationDataField(PSEUDO_STRATEGIES_WITH_ACTIVITIES_COUNT, strategiesWithActivitiesCount);
+		addPresentationDataField(PSEUDO_ACTIVITIES_COUNT, activitiesCount);
+		addPresentationDataField(PSEUDO_ACTIVITIES_AND_TASKS_COUNT, activitiesAndTasksCount);
+		addPresentationDataField(PSEUDO_ACTIVITIES_AND_TASKS_WITH_ASSIGNMENTS_COUNT, activitiesAndTasksWithAssignmentsCount);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -533,6 +601,10 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE = "ObjectivesRelevantToIndicatorsPercentage";
 	public static final String PSEUDO_PROJECT_PLANNING_START_DATE = "ProjectPlanningStartDate";
 	public static final String PSEUDO_PROJECT_PLANNING_END_DATE = "ProjectPlanningEndDate";
+	public static final String PSEUDO_STRATEGIES_WITH_ACTIVITIES_COUNT = "StrategiesWithActivitiesCount";
+	public static final String PSEUDO_ACTIVITIES_COUNT = "ActivitiesCount";
+	public static final String PSEUDO_ACTIVITIES_AND_TASKS_COUNT = "ActivitiesAndTasksCount";
+	public static final String PSEUDO_ACTIVITIES_AND_TASKS_WITH_ASSIGNMENTS_COUNT = "ActivitiesAndTasksWithAssignmentsCount";
 	
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;
@@ -559,4 +631,8 @@ public class Dashboard extends BaseObject
 	private PseudoStringData objectivesRelevantToIndicatorsPercentage;
 	private PseudoStringData projectPlanningStartDate;
 	private PseudoStringData projectPlanningEndDate;
+	private PseudoStringData strategiesWithActivitiesCount;
+	private PseudoStringData activitiesCount;
+	private PseudoStringData activitiesAndTasksCount;
+	private PseudoStringData activitiesAndTasksWithAssignmentsCount;
 }

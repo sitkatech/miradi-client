@@ -53,7 +53,7 @@ public class TaskPool extends EAMNormalObjectPool
 		return new Task(objectManager, new FactorId(actualId.asInt()));
 	}
 
-	public Task[] getAllTasks()
+	private Task[] getAllRawTasks()
 	{
 		BaseId[] allIds = getIds();
 		Task[] allTasks = new Task[allIds.length];
@@ -73,10 +73,15 @@ public class TaskPool extends EAMNormalObjectPool
 		return getTasks(Task.METHOD_NAME);
 	}
 	
+	public Vector<Task> getAllTasks()
+	{
+		return getTasks(Task.OBJECT_NAME);
+	}
+	
 	public Vector<Task> getTasks(String taskTypeName)
 	{
 		Vector<Task> allTypedTasks = new Vector<Task>();
-		Task[] allTasks = getAllTasks();
+		Task[] allTasks = getAllRawTasks();
 		for (int index = 0; index < allTasks.length; ++index)
 		{	
 			if (taskTypeName.equals(allTasks[index].getTypeName()))
