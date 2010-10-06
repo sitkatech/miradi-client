@@ -50,14 +50,14 @@ public class TestDoubleUtilities extends EAMTestCase
 	public void testToDoubleForData() throws Exception
 	{
 		switchToGermanLocale();
-		assertEquals("incorrect value?", 0.5, DoubleUtilities.toDoubleForData("0,5"));
-		assertEquals("incorrect value?", 1000.5, DoubleUtilities.toDoubleForData("1.000,5"));
-		assertEquals("incorrect value?", -1000.5, DoubleUtilities.toDoubleForData("-1.000,5"));	
+		assertEquals("incorrect value?", 0.5, DoubleUtilities.toDoubleFromDataFormat("0,5"));
+		assertEquals("incorrect value?", 1000.5, DoubleUtilities.toDoubleFromDataFormat("1.000,5"));
+		assertEquals("incorrect value?", -1000.5, DoubleUtilities.toDoubleFromDataFormat("-1.000,5"));	
 
 		switchToUsLocale();
-		assertEquals("incorrect value?", 0.5, DoubleUtilities.toDoubleForData("0.5"));
-		assertEquals("incorrect value?", 1000.5, DoubleUtilities.toDoubleForData("1,000.5"));
-		assertEquals("incorrect value?", -1000.5, DoubleUtilities.toDoubleForData("-1,000.5"));
+		assertEquals("incorrect value?", 0.5, DoubleUtilities.toDoubleFromDataFormat("0.5"));
+		assertEquals("incorrect value?", 1000.5, DoubleUtilities.toDoubleFromDataFormat("1,000.5"));
+		assertEquals("incorrect value?", -1000.5, DoubleUtilities.toDoubleFromDataFormat("-1,000.5"));
 	}
 
 	public void testToDoubleForHumans() throws Exception

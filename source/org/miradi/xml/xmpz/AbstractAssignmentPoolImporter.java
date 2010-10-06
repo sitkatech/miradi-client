@@ -63,7 +63,7 @@ abstract public class AbstractAssignmentPoolImporter extends AbstractBaseObjectP
 			
 			Node quantityNode = getImporter().getNode(dateUnitEffortNode, getQuantatityElementName());
 			String quantityAsString = quantityNode.getTextContent();
-			DateUnitEffort dateUnitEffort = new DateUnitEffort(dateUnit, DoubleUtilities.toDoubleForData(quantityAsString));
+			DateUnitEffort dateUnitEffort = new DateUnitEffort(dateUnit, DoubleUtilities.toDoubleFromDataFormat(quantityAsString));
 			dateUnitEffortList.add(dateUnitEffort);
 		}
 		

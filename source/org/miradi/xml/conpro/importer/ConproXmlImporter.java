@@ -288,7 +288,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		if (totalCostAsString.length() == 0)
 			return;
 		
-		double totalCost = DoubleUtilities.toDoubleForData(totalCostAsString);
+		double totalCost = DoubleUtilities.toDoubleFromDataFormat(totalCostAsString);
 		ORef expenseAssignmentRef = getProject().createObject(ExpenseAssignment.getObjectType());
 		DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(new DateUnit(), totalCost);
 		setData(expenseAssignmentRef, ExpenseAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());

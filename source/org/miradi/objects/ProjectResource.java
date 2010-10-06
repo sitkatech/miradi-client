@@ -177,7 +177,7 @@ public class ProjectResource extends BaseObject
 		if (costPerUnit.toString().length() == 0)
 			return 0;
 		
-		return DoubleUtilities.toDoubleForData(costPerUnit.toString());
+		return DoubleUtilities.toDoubleFromDataFormat(costPerUnit.toString());
 	}
 	
 	public static CodeList getSortedProjectResourceCodes(Project project, ORefSet resourceRefs)

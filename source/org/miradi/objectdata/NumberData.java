@@ -44,7 +44,7 @@ public class NumberData extends ObjectData
 		
 		try
 		{
-			value = DoubleUtilities.toDoubleForData(newValue);
+			value = DoubleUtilities.toDoubleFromDataFormat(newValue);
 		}
 		catch (NumberFormatException e)
 		{

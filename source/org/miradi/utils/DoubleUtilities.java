@@ -26,7 +26,7 @@ import java.util.Locale;
 
 public class DoubleUtilities
 {
-	public static double toDoubleForData(String doubleAsString) throws Exception
+	public static double toDoubleFromDataFormat(String doubleAsString) throws Exception
 	{
 		NumberFormat formatter = NumberFormat.getInstance();
 		return formatter.parse(doubleAsString).doubleValue();
