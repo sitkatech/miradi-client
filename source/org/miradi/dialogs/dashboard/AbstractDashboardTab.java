@@ -47,7 +47,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		super(projectToUse, Dashboard.getObjectType());
 		
 		splitPane = new PersistentNonPercentageHorizontalSplitPane(getMainWindow(), getMainWindow(), getPanelDescription());	
-		clickableComponentToContentsFileNameMap = new HashMap<SelectableRow, String>();
+		selectableComponentToContentsFileNameMap = new HashMap<SelectableRow, String>();
 		
 		addLeftPanel(createLeftPanel());
 		
@@ -110,7 +110,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		secondColumnBox.add(new PanelTitleLabel(rightColumnTranslatedText));
 		
 		SelectableRow selectableRow = new SelectableRow(firstColumnBox, secondColumnBox);
-		clickableComponentToContentsFileNameMap.put(selectableRow, descriptionFileName);
+		selectableComponentToContentsFileNameMap.put(selectableRow, descriptionFileName);
 		
 		leftMainPanel.add(firstColumnBox);
 		leftMainPanel.add(secondColumnBox);
@@ -139,9 +139,9 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	
 	private class ClickHandler extends MouseAdapter
 	{
-		public ClickHandler(SelectableRow clickableComponentToUse)
+		public ClickHandler(SelectableRow selectableComponentToUse)
 		{
-			selectableComponent = clickableComponentToUse;
+			selectableComponent = selectableComponentToUse;
 		}
 		
 		@Override
@@ -154,7 +154,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 				clearSelection();
 				selectableComponent.selectRow();
 				
-				String resourceFileName = clickableComponentToContentsFileNameMap.get(selectableComponent);
+				String resourceFileName = selectableComponentToContentsFileNameMap.get(selectableComponent);
 				rightSideDescriptionPanel.setRightSidePanelContent(resourceFileName);
 			}
 			catch (Exception exception)
@@ -166,7 +166,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	
 		private void clearSelection() throws Exception
 		{
-			Set<SelectableRow> selectableRows = clickableComponentToContentsFileNameMap.keySet();
+			Set<SelectableRow> selectableRows = selectableComponentToContentsFileNameMap.keySet();
 			for(SelectableRow selectableRow : selectableRows)
 			{
 				selectableRow.clearSelection();
@@ -229,7 +229,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	
 	abstract protected TwoColumnPanel createLeftPanel();
 	
-	private HashMap<SelectableRow, String> clickableComponentToContentsFileNameMap;
+	private HashMap<SelectableRow, String> selectableComponentToContentsFileNameMap;
 	private DashboardRightSideDescriptionPanel rightSideDescriptionPanel;
 	private PersistentNonPercentageHorizontalSplitPane splitPane;
 	private static final int INDENT_PER_LEVEL = 20;
