@@ -50,8 +50,20 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 		createDetailActivitiesTasksAndResponsiblitiesRow(leftMainPanel);
 		createActivitiesCountRow(leftMainPanel);
 		createActivitiesAndTasksWithAssignmentsRow(leftMainPanel);
+		createDetailMethodsTasksAndResponsibilitiesRow(leftMainPanel);
 		
 		return leftMainPanel;
+	}
+
+	private void createDetailMethodsTasksAndResponsibilitiesRow(TwoColumnPanel leftMainPanel)
+	{
+		String leftColumnTranslatedText = EAM.text("Detail Methods, Tasks and Responsibilities");
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%indicatorsWithMethodsCount", getDashboardData(Dashboard.PSEUDO_INDICATORS_WITH_METHODS_COUNT));
+		tokenReplacementMap.put("%indicatorsCount", getDashboardData(Dashboard.PSEUDO_INDICATORS_COUNT));
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("- %indicatorsWithMethodsCount of %indicatorsCount Indicators have Methods."), tokenReplacementMap);
+
+		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
 	private void createActivitiesAndTasksWithAssignmentsRow(TwoColumnPanel leftMainPanel)
