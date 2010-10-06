@@ -58,7 +58,18 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 		
 		createDataRow(leftMainPanel, EAM.text("Define Audiences and Information Needs:"), EAM.text("Use Comments Field?"), DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME);
 		createIndictorsRow(leftMainPanel);
+		createObjectivesWithRelevantIndicatorsRow(leftMainPanel);
 		
+	}
+
+	private void createObjectivesWithRelevantIndicatorsRow(TwoColumnPanel leftMainPanel)
+	{
+		String leftColumnTranslatedText = EAM.text("Finalize Monitoring Plan:");
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%objectivesRelevantToIndicatorsPercentage", getDashboardData(Dashboard.PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE));
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%objectivesRelevantToIndicatorsPercentage % of objectives with relevant indicators"), tokenReplacementMap);
+
+		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME);
 	}
 
 	private void createIndictorsRow(TwoColumnPanel leftMainPanel)

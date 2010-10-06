@@ -149,6 +149,9 @@ public class Dashboard extends BaseObject
 			
 			if (fieldTag.equals(PSEUDO_FACTOR_INDICATORS_COUNT))
 				return getFactorIndicatorCount();
+			
+			if (fieldTag.equals(PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE))
+				return getObjectiveRelevantToIndicatorsPercentage();
 				
 			return super.getPseudoData(fieldTag);
 		}
@@ -159,6 +162,20 @@ public class Dashboard extends BaseObject
 		}
 	}
 	
+	private String getObjectiveRelevantToIndicatorsPercentage() throws Exception
+	{
+		ORefSet objectiveRefs = getProject().getObjectivePool().getRefSet();
+		ORefSet objectivesRelevantToIndictors = new ORefSet();
+		for(ORef objectiveRef : objectiveRefs)
+		{
+			Objective objective = Objective.find(getProject(), objectiveRef);
+			if (objective.getRelevantIndicatorRefList().hasRefs())
+				objectivesRelevantToIndictors.add(objectiveRef);
+		}
+		
+		return calculateRelevantPercentage(objectivesRelevantToIndictors, objectiveRefs);
+	}
+
 	private String getFactorIndicatorCount()
 	{
 		ORefSet keaIndicatorRefs = getKeaIndicatorRefs();
@@ -212,7 +229,13 @@ public class Dashboard extends BaseObject
 				objectivesRelevantToStrategies.add(objectiveRef);
 		}
 		
+		return calculateRelevantPercentage(objectivesRelevantToStrategies, objectiveRefs);
+	}
+
+	private String calculateRelevantPercentage(ORefSet objectivesRelevantToStrategies, ORefSet objectiveRefs)
+	{
 		double percentage = ((double)objectivesRelevantToStrategies.size() / (double)objectiveRefs.size()) * 100;
+		
 		return DoubleUtilities.toStringForHumans(percentage);
 	}
 	
@@ -445,6 +468,7 @@ public class Dashboard extends BaseObject
 		irrelenvatStrategiesToObjectivesCount = new PseudoStringData(PSEUDO_IRRELEVANT_STRATEGIES_TO_OBJECTIVES_COUNT);
 		keaIndicatorsCount = new PseudoStringData(PSEUDO_KEA_INDICATORS_COUNT);
 		factorIndicatorsCount = new PseudoStringData(PSEUDO_FACTOR_INDICATORS_COUNT);
+		objectivesRelevantToIndicatorsPercentage = new PseudoStringData(PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -468,6 +492,7 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_IRRELEVANT_STRATEGIES_TO_OBJECTIVES_COUNT, irrelenvatStrategiesToObjectivesCount);
 		addPresentationDataField(PSEUDO_KEA_INDICATORS_COUNT, keaIndicatorsCount);
 		addPresentationDataField(PSEUDO_FACTOR_INDICATORS_COUNT, factorIndicatorsCount);
+		addPresentationDataField(PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE, objectivesRelevantToIndicatorsPercentage);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -495,6 +520,7 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_IRRELEVANT_STRATEGIES_TO_OBJECTIVES_COUNT = "IrrelenvatStratgiesToObjectivesCount";
 	public static final String PSEUDO_KEA_INDICATORS_COUNT = "KeaIndicatorsCount";
 	public static final String PSEUDO_FACTOR_INDICATORS_COUNT = "FactorIndicatorsCount";
+	public static final String PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE = "ObjectivesRelevantToIndicatorsPercentage";
 	
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;
@@ -518,4 +544,5 @@ public class Dashboard extends BaseObject
 	private PseudoStringData irrelenvatStrategiesToObjectivesCount;
 	private PseudoStringData keaIndicatorsCount;
 	private PseudoStringData factorIndicatorsCount;
+	private PseudoStringData objectivesRelevantToIndicatorsPercentage;
 }
