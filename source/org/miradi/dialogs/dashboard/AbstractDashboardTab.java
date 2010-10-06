@@ -46,6 +46,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	{
 		super(projectToUse, Dashboard.getObjectType());
 		
+		setLayout(new BorderLayout());
 		splitPane = new PersistentHorizontalSplitPane(getMainWindow(), getMainWindow(), getPanelDescription());	
 		selectableComponentToContentsFileNameMap = new HashMap<SelectableRow, String>();
 		
