@@ -75,7 +75,8 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	protected void addSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightPanelHtmlFileName)
 	{
 		SelectableRow selectableRow = createSubHeaderRow(leftMainPanel, leftColumnTranslatedText, "", rightPanelHtmlFileName);
-		selectableRow.setBackgroundColor(Color.GREEN.darker());
+		final Color HEADER_BACKGROUND_COLOR = Color.GREEN.darker();
+		selectableRow.setBackgroundColor(HEADER_BACKGROUND_COLOR);
 	}
 	
 	protected SelectableRow createDataRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName)
