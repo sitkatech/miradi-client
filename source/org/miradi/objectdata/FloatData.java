@@ -40,7 +40,7 @@ public class FloatData extends ObjectData
 			return;
 		}
 		
-		value = DoubleUtilities.toDoubleForData(newValue);
+		value = DoubleUtilities.toDoubleFromDataFormat(newValue);
 	}
 	
 	@Override

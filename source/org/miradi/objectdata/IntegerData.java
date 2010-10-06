@@ -48,7 +48,7 @@ public class IntegerData extends ObjectData
 		catch(NumberFormatException e)
 		{
 			EAM.logDebug("Field " + getTag() + " expected integer but got: " + newValue);
-			double valueAsDouble = DoubleUtilities.toDoubleForData(newValue);
+			double valueAsDouble = DoubleUtilities.toDoubleFromDataFormat(newValue);
 			value = new Integer((int)valueAsDouble);
 			if(Math.abs(valueAsDouble-value) >= .1)
 				EAM.logWarning("TRUNCATING floating portion of: " + getTag());

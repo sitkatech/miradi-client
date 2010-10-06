@@ -200,7 +200,7 @@ public class ProjectMetadata extends BaseObject
 			if (size.length() == 0)
 				return new OptionalDouble();
 			
-			return new OptionalDouble(DoubleUtilities.toDoubleForData(size));
+			return new OptionalDouble(DoubleUtilities.toDoubleFromDataFormat(size));
 		}
 		catch (Exception e)
 		{

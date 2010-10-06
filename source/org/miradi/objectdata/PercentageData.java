@@ -47,7 +47,7 @@ public class PercentageData extends NumberData
 		try
 		{
 		String doubleAsString = super.get();
-		double rawDouble = DoubleUtilities.toDoubleForData(doubleAsString);
+		double rawDouble = DoubleUtilities.toDoubleFromDataFormat(doubleAsString);
 		FloatingNumberFormat formatter = new FloatingNumberFormat();
 
 		return formatter.format(rawDouble);

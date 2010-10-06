@@ -233,7 +233,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 			try
 			{
 				String doubleAsString = fractionField.getText();
-				double parsedDouble = DoubleUtilities.toDoubleForData(doubleAsString);
+				double parsedDouble = DoubleUtilities.toDoubleFromDataFormat(doubleAsString);
 
 				PlanningViewAbstractTreeTableSyncedTableModel model = getCastedModel().getCastedModel(getSelectedColumn());
 				int columnWithinMultiTableModel = getSelectedColumnWithinMultiTableModel();

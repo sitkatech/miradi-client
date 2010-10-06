@@ -340,7 +340,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		if (valueAsString.equals(""))
 			return value;
 		
-		double parsedValue = DoubleUtilities.toDoubleForData(valueAsString);
+		double parsedValue = DoubleUtilities.toDoubleFromDataFormat(valueAsString);
 		return parsedValue  / portionCount;
 	}
 
@@ -354,7 +354,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 		else
 		{
-			double units = DoubleUtilities.toDoubleForData(valueAsString);
+			double units = DoubleUtilities.toDoubleFromDataFormat(valueAsString);
 			setUnits(assignment, dateUnit, units);
 		}
 		
@@ -569,7 +569,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		if (doubleAsString.length() == 0)
 			return new OptionalDouble();
 		
-		double value = DoubleUtilities.toDoubleForData(doubleAsString);
+		double value = DoubleUtilities.toDoubleFromDataFormat(doubleAsString);
 		double fullTimeEmployeeDaysPerYear = getFullTimeEmployeeDaysPerYear(getProject());	
 		double fraction = calculateFullTimeEmployeeFraction(getDateUnit(modelColumn), value, fullTimeEmployeeDaysPerYear);
 		
@@ -608,7 +608,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	private static double getFullTimeEmployeeDaysPerYear(Project project) throws Exception
 	{
 		String rawFullTimeEmployeeDaysPerYear = getRawFullTimeEmployeeDaysPerYear(project);
-		return DoubleUtilities.toDoubleForData(rawFullTimeEmployeeDaysPerYear);
+		return DoubleUtilities.toDoubleFromDataFormat(rawFullTimeEmployeeDaysPerYear);
 	}
 
 	public static String getRawFullTimeEmployeeDaysPerYear(Project project)
