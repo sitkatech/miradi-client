@@ -152,6 +152,12 @@ public class Dashboard extends BaseObject
 			
 			if (fieldTag.equals(PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE))
 				return getObjectiveRelevantToIndicatorsPercentage();
+			
+			if (fieldTag.equals(PSEUDO_PROJECT_PLANNING_START_DATE))
+				return getProject().getProjectCalendar().getPlanningStartDate();
+			
+			if (fieldTag.equals(PSEUDO_PROJECT_PLANNING_END_DATE))
+				return getProject().getProjectCalendar().getPlanningEndDate();
 				
 			return super.getPseudoData(fieldTag);
 		}
@@ -469,6 +475,8 @@ public class Dashboard extends BaseObject
 		keaIndicatorsCount = new PseudoStringData(PSEUDO_KEA_INDICATORS_COUNT);
 		factorIndicatorsCount = new PseudoStringData(PSEUDO_FACTOR_INDICATORS_COUNT);
 		objectivesRelevantToIndicatorsPercentage = new PseudoStringData(PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE);
+		projectPlanningStartDate = new PseudoStringData(PSEUDO_PROJECT_PLANNING_START_DATE);
+		projectPlanningEndDate = new PseudoStringData(PSEUDO_PROJECT_PLANNING_END_DATE);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -493,6 +501,8 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_KEA_INDICATORS_COUNT, keaIndicatorsCount);
 		addPresentationDataField(PSEUDO_FACTOR_INDICATORS_COUNT, factorIndicatorsCount);
 		addPresentationDataField(PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE, objectivesRelevantToIndicatorsPercentage);
+		addPresentationDataField(PSEUDO_PROJECT_PLANNING_START_DATE, projectPlanningStartDate);
+		addPresentationDataField(PSEUDO_PROJECT_PLANNING_END_DATE, projectPlanningEndDate);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -521,6 +531,8 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_KEA_INDICATORS_COUNT = "KeaIndicatorsCount";
 	public static final String PSEUDO_FACTOR_INDICATORS_COUNT = "FactorIndicatorsCount";
 	public static final String PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE = "ObjectivesRelevantToIndicatorsPercentage";
+	public static final String PSEUDO_PROJECT_PLANNING_START_DATE = "ProjectPlanningStartDate";
+	public static final String PSEUDO_PROJECT_PLANNING_END_DATE = "ProjectPlanningEndDate";
 	
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;
@@ -545,4 +557,6 @@ public class Dashboard extends BaseObject
 	private PseudoStringData keaIndicatorsCount;
 	private PseudoStringData factorIndicatorsCount;
 	private PseudoStringData objectivesRelevantToIndicatorsPercentage;
+	private PseudoStringData projectPlanningStartDate;
+	private PseudoStringData projectPlanningEndDate;
 }

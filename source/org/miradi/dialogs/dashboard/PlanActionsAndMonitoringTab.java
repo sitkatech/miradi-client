@@ -48,8 +48,28 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 		
 		addDevelopStrategicPlanRow(leftMainPanel);
 		addDevelopFormatMonitoringPlanRow(leftMainPanel);
+		addDevelopOperationalPlanRow(leftMainPanel);
 		
 		return leftMainPanel;
+	}
+
+	private void addDevelopOperationalPlanRow(TwoColumnPanel leftMainPanel)
+	{
+		addSubHeaderRow(leftMainPanel, EAM.text("2C. Develop Operational Plan"), OPERATIONAL_PLAN_RIGHT_SIDE_FILE_NAME);
+		createDataRow(leftMainPanel, EAM.text("Assess Human Financial and other resources"), "", OPERATIONAL_PLAN_RIGHT_SIDE_FILE_NAME);
+		
+		createProjectPlanningStartEndDateRow(leftMainPanel);
+	}
+
+	protected void createProjectPlanningStartEndDateRow(
+			TwoColumnPanel leftMainPanel)
+	{
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%projectPlanningStartDate", getDashboardData(Dashboard.PSEUDO_PROJECT_PLANNING_START_DATE));
+		tokenReplacementMap.put("%projectPlanningEndDate", getDashboardData(Dashboard.PSEUDO_PROJECT_PLANNING_END_DATE));
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%projectPlanningStartDate - %projectPlanningEndDate"), tokenReplacementMap);
+
+		createDataRow(leftMainPanel, EAM.text("Plan Project Lifespan and Exit Strategy"), rightColumnTranslatedText, OPERATIONAL_PLAN_RIGHT_SIDE_FILE_NAME);
 	}
 
 	private void addDevelopFormatMonitoringPlanRow(TwoColumnPanel leftMainPanel)
@@ -195,4 +215,5 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 	
 	private static final String DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME = "dashboard/2A.html";
 	private static final String DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME = "dashboard/2B.html";
+	private static final String OPERATIONAL_PLAN_RIGHT_SIDE_FILE_NAME = "dashboard/2C.html";
 }
