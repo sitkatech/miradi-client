@@ -20,10 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
-import java.awt.Color;
 import java.util.HashMap;
-
-import javax.swing.BorderFactory;
 
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
@@ -47,7 +44,6 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 	protected TwoColumnPanel createLeftPanel()
 	{
 		TwoColumnPanel leftMainPanel = new TwoColumnPanel();
-		leftMainPanel.setBorder(BorderFactory.createEtchedBorder(Color.red, Color.red));
 		createHeaderRow(leftMainPanel, EAM.text("2. Plan Actions and Monitoring"), "", getMainDescriptionFileName());
 		
 		addDevelopStrategicPlanRow(leftMainPanel);
