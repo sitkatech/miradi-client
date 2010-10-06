@@ -30,6 +30,7 @@ import java.util.Vector;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.miradi.database.ProjectServer;
+import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
@@ -57,6 +58,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	{
 		super(projectToUse);
 		
+		threatTargetChainObject = new ThreatTargetChainWalker(getProject());
 		clear();
 	}
 
@@ -594,6 +596,11 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return getProject().getDatabase();
 	}
 	
+	private ThreatTargetChainWalker getThreatTargetChainObject()
+	{
+		return threatTargetChainObject;
+	}
+	
 	public static final String TAG_BUNDLE_KEYS = "BundleKeys";
 	public static final String TAG_VALUE_OPTION_IDS = "ValueOptionIds";
 	public static final String TAG_CRITERION_IDS = "CriterionIds";
@@ -613,4 +620,5 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	private HashMap<String, ThreatRatingBundle> bundles;
 	private ValueOption[] ratingValueOptions;
 	private RatingCriterion[] criteria;
+	private ThreatTargetChainWalker threatTargetChainObject;
 }
