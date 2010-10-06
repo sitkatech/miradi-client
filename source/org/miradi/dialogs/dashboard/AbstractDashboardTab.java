@@ -38,7 +38,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
-import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
+import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 
 abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 {
@@ -46,7 +46,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	{
 		super(projectToUse, Dashboard.getObjectType());
 		
-		splitPane = new PersistentNonPercentageHorizontalSplitPane(getMainWindow(), getMainWindow(), getPanelDescription());	
+		splitPane = new PersistentHorizontalSplitPane(getMainWindow(), getMainWindow(), getPanelDescription());	
 		selectableComponentToContentsFileNameMap = new HashMap<SelectableRow, String>();
 		
 		addLeftPanel(createLeftPanel());
@@ -232,6 +232,6 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	
 	private HashMap<SelectableRow, String> selectableComponentToContentsFileNameMap;
 	private DashboardRightSideDescriptionPanel rightSideDescriptionPanel;
-	private PersistentNonPercentageHorizontalSplitPane splitPane;
+	private PersistentHorizontalSplitPane splitPane;
 	private static final int INDENT_PER_LEVEL = 20;
 }
