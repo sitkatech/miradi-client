@@ -42,12 +42,12 @@ public class DoubleUtilities
 	{
 		Locale usLocale = Locale.US;
 		DecimalFormat formatter = (DecimalFormat) DecimalFormat.getNumberInstance(usLocale);
-		applyPatternToVoidScientificNotation(formatter);
+		applyPatternToAvoidScientificNotation(formatter);
 
 		return formatter.format(doubleToConvert).toString();
 	}
 
-	private static void applyPatternToVoidScientificNotation(DecimalFormat formatter)
+	private static void applyPatternToAvoidScientificNotation(DecimalFormat formatter)
 	{
 		formatter.applyPattern("#.#");
 	}
