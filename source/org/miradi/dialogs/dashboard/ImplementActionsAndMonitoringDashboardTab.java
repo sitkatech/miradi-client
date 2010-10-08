@@ -55,15 +55,38 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 		createMethodsAndTasksWithAssignmentsRow(leftMainPanel);
 		createProjectPlanningStartEndDateRow(leftMainPanel);
 		createDevelopAndRefineProjectBudgetRow(leftMainPanel);
+		createImplementPlansRow(leftMainPanel);
 		
 		return leftMainPanel;
 	}
 	
+	private void createImplementPlansRow(TwoColumnPanel leftMainPanel)
+	{
+		createSubHeaderRow(leftMainPanel, EAM.text("3C. Implement Plans"), IMPLEMENT_PLANS_RIGHT_SIDE_FILENAME);
+		createImplementStrategicAndMonitoringPlansRow(leftMainPanel);
+	}
+
+	private void createImplementStrategicAndMonitoringPlansRow(TwoColumnPanel leftMainPanel)
+	{
+		createDataRow(leftMainPanel, EAM.text("Implement Strategic and Monitoring Plans"), "", IMPLEMENT_PLANS_RIGHT_SIDE_FILENAME);
+		createStrategiesAndActivitiesWithProgressReportsRow(leftMainPanel);
+	}
+
+	private void createStrategiesAndActivitiesWithProgressReportsRow(TwoColumnPanel leftMainPanel)
+	{
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%strategiesAndActivitiesWithProgressReportsCount", getDashboardData(Dashboard.PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_COUNT));
+		tokenReplacementMap.put("%strategiesAndActivitiesWithProgressReportsPercent", getDashboardData(Dashboard.PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_PERCENT));
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%strategiesAndActivitiesWithProgressReportsCount Strategies/activities (% %strategiesAndActivitiesWithProgressReportsPercent) have progress reports"), tokenReplacementMap);
+
+		createDataRow(leftMainPanel, "", rightColumnTranslatedText, IMPLEMENT_PLANS_RIGHT_SIDE_FILENAME);
+	}
+
 	private void createDevelopAndRefineProjectBudgetRow(TwoColumnPanel leftMainPanel)
 	{
-		createSubHeaderRow(leftMainPanel, EAM.text("3B. Develop and Refine Project Budget"), DEVELOP_AND_REFINE_PROJECT_BUDGET);
+		createSubHeaderRow(leftMainPanel, EAM.text("3B. Develop and Refine Project Budget"), DEVELOP_AND_REFINE_PROJECT_BUDGET_RIGHT_SIDE_FILENAME);
 		createEstimatedCostsForActivitiesAndMonitoring(leftMainPanel);
-		createDataRow(leftMainPanel, EAM.text("Develop and Submit Funding Proposals"), "", DEVELOP_AND_REFINE_PROJECT_BUDGET);
+		createDataRow(leftMainPanel, EAM.text("Develop and Submit Funding Proposals"), "", DEVELOP_AND_REFINE_PROJECT_BUDGET_RIGHT_SIDE_FILENAME);
 		createFinacialResourcesRow(leftMainPanel);
 	}
 
@@ -73,7 +96,7 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 		tokenReplacementMap.put("%budgetSecuredPercent", getDashboardData(Dashboard.PSEUDO_BUDGET_SECURED_PERCENT));
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("Total Budget for Funding: %  %budgetSecuredPercent Budget Secured"), tokenReplacementMap);
 
-		createDataRow(leftMainPanel, EAM.text("Obtain Finacial Resources"), rightColumnTranslatedText, DEVELOP_AND_REFINE_PROJECT_BUDGET);		
+		createDataRow(leftMainPanel, EAM.text("Obtain Finacial Resources"), rightColumnTranslatedText, DEVELOP_AND_REFINE_PROJECT_BUDGET_RIGHT_SIDE_FILENAME);		
 	}
 
 	private void createEstimatedCostsForActivitiesAndMonitoring(TwoColumnPanel leftMainPanel)
@@ -85,7 +108,7 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 		tokenReplacementMap.put("%currencySymbol", getEncodedCurrencySymbol());
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("Work Costs: %currencySymbol %workCosts, Expenses: %currencySymbol %expenses, Project Budget: %currencySymbol %projectBudget"), tokenReplacementMap);
 
-		createDataRow(leftMainPanel, EAM.text("Estimate Costs for Activities and Monitoring"), rightColumnTranslatedText, DEVELOP_AND_REFINE_PROJECT_BUDGET);
+		createDataRow(leftMainPanel, EAM.text("Estimate Costs for Activities and Monitoring"), rightColumnTranslatedText, DEVELOP_AND_REFINE_PROJECT_BUDGET_RIGHT_SIDE_FILENAME);
 	}
 
 	protected String getEncodedCurrencySymbol()
@@ -170,5 +193,6 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 	}
 	
 	private static final String DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME = "dashboard/3A.html";
-	private static final String DEVELOP_AND_REFINE_PROJECT_BUDGET = "dashboard/3B.html";
+	private static final String DEVELOP_AND_REFINE_PROJECT_BUDGET_RIGHT_SIDE_FILENAME = "dashboard/3B.html";
+	private static final String IMPLEMENT_PLANS_RIGHT_SIDE_FILENAME = "dashboard/3c.html";
 }
