@@ -248,10 +248,24 @@ public class Dashboard extends BaseObject
 		
 		return calculatePercentage(strategiesAndActiviesWithProgressReports, allStrategiesAndActivitiesCount);
 	}
+	
+	private Vector<BaseObject> getAllStrategiesAndActivities()
+	{
+		Vector<BaseObject> baseObjects = new Vector<BaseObject>();
+		baseObjects.addAll(getProject().getStrategyPool().getAllObjects());
+		baseObjects.addAll(getProject().getTaskPool().getAllActivities());
+		
+		return baseObjects;
+	}
 
 	private Vector<BaseObject> getStrategiesAndActiviesWithProgressReports() throws Exception
 	{
 		return getBaseObjectsWithProgressReports(getAllStrategiesAndActivities());
+	}
+	
+	private String getStrategiesAndActivitiesWithProgressReportCount() throws Exception
+	{
+		return Integer.toString(getStrategiesAndActiviesWithProgressReports().size());
 	}
 
 	private Vector<BaseObject> getBaseObjectsWithProgressReports(Vector<BaseObject> baseObjects) throws Exception
@@ -264,20 +278,6 @@ public class Dashboard extends BaseObject
 		}
 		
 		return objectsWithProgressReports;
-	}
-
-	private Vector<BaseObject> getAllStrategiesAndActivities()
-	{
-		Vector<BaseObject> baseObjects = new Vector<BaseObject>();
-		baseObjects.addAll(getProject().getStrategyPool().getAllObjects());
-		baseObjects.addAll(getProject().getTaskPool().getAllActivities());
-		
-		return baseObjects;
-	}
-
-	private String getStrategiesAndActivitiesWithProgressReportCount() throws Exception
-	{
-		return Integer.toString(getStrategiesAndActiviesWithProgressReports().size());
 	}
 
 	private String getTotalBudgetSecuredPercent()
