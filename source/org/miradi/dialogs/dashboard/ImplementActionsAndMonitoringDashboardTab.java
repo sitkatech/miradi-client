@@ -71,6 +71,7 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 		createDataRow(leftMainPanel, EAM.text("Implement Strategic and Monitoring Plans"), "", IMPLEMENT_PLANS_RIGHT_SIDE_FILENAME);
 		createStrategiesAndActivitiesWithProgressReportsRow(leftMainPanel);
 		createIndicatorsAndMethodsWithProgressReportsRow(leftMainPanel);
+		createDataRow(leftMainPanel, EAM.text("Implement Work Plans"), "", IMPLEMENT_PLANS_RIGHT_SIDE_FILENAME);
 	}
 
 	private void createIndicatorsAndMethodsWithProgressReportsRow(TwoColumnPanel leftMainPanel)
