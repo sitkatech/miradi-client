@@ -32,6 +32,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
+import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
@@ -191,6 +192,18 @@ public class Dashboard extends BaseObject
 			
 			if (fieldTag.equals(PSEUDO_WORK_PLAN_END_DATE))
 				return getProject().getMetadata().getWorkPlanEndDate();
+			
+			if (fieldTag.equals(PSEUDO_TOTAL_PROJECT_RESOURCES_COSTS))
+				return getTotalProjectResourcesCost();
+			
+			if (fieldTag.equals(PSEUDO_TOTAL_PROJECT_EXPENSES))
+				return getTotalProjectExpenses();
+			
+			if (fieldTag.equals(PSEUDO_PROJECT_BUDGET))
+				return getProjectBudget();
+			
+			if (fieldTag.equals(PSEUDO_CURRENCY_SYMBOL))
+				return getCurrencySymbol();
 				
 			return super.getPseudoData(fieldTag);
 		}
@@ -201,6 +214,31 @@ public class Dashboard extends BaseObject
 		}
 	}
 	
+	private String getTotalProjectResourcesCost() throws Exception
+	{
+		return calculateTotalProjectCost().getTotalWorkUnits().toString();
+	}
+
+	private String getTotalProjectExpenses() throws Exception
+	{
+		return calculateTotalProjectCost().getTotalExpense().toString();
+	}
+
+	private TimePeriodCosts calculateTotalProjectCost() throws Exception
+	{
+		return getProject().getProjectTotalCalculator().calculateProjectTotals().calculateTotalBudgetCost();
+	}
+
+	private String getProjectBudget()
+	{
+		return getProject().getMetadata().getData(ProjectMetadata.TAG_TOTAL_BUDGET_FOR_FUNDING);
+	}
+
+	private String getCurrencySymbol()
+	{
+		return getProject().getMetadata().getData(ProjectMetadata.TAG_CURRENCY_SYMBOL);
+	}
+
 	private String getMethodsCount()
 	{
 		int count = getProject().getTaskPool().getAllMethods().size();
@@ -594,6 +632,10 @@ public class Dashboard extends BaseObject
 		methodsAndTasksWithAssignmentsCount = new PseudoStringData(PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT);
 		workPlanStartDate = new PseudoStringData(PSEUDO_WORK_PLAN_START_DATE);
 		workPlanEndDate = new PseudoStringData(PSEUDO_WORK_PLAN_END_DATE);
+		totalProjectResourcesCost = new PseudoStringData(PSEUDO_TOTAL_PROJECT_RESOURCES_COSTS);
+		totalProjectExpenses = new PseudoStringData(PSEUDO_TOTAL_PROJECT_EXPENSES);
+		projectBudget = new PseudoStringData(PSEUDO_PROJECT_BUDGET);
+		currecnySymbol = new PseudoStringData(PSEUDO_CURRENCY_SYMBOL);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -631,6 +673,10 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT, methodsAndTasksWithAssignmentsCount);
 		addPresentationDataField(PSEUDO_WORK_PLAN_START_DATE, workPlanStartDate);
 		addPresentationDataField(PSEUDO_WORK_PLAN_END_DATE, workPlanEndDate);
+		addPresentationDataField(PSEUDO_TOTAL_PROJECT_RESOURCES_COSTS, totalProjectResourcesCost);
+		addPresentationDataField(PSEUDO_TOTAL_PROJECT_EXPENSES, totalProjectExpenses);
+		addPresentationDataField(PSEUDO_PROJECT_BUDGET, projectBudget);
+		addPresentationDataField(PSEUDO_CURRENCY_SYMBOL, currecnySymbol);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -672,6 +718,10 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_METHODS_AND_TASKS_COUNT = "MethodsAndTasksCount";
 	public static final String PSEUDO_WORK_PLAN_START_DATE = "WorkPlanStartDate";
 	public static final String PSEUDO_WORK_PLAN_END_DATE = "WorkPlanEndDate";
+	public static final String PSEUDO_TOTAL_PROJECT_RESOURCES_COSTS = "TotalProjectResourcesCosts";
+	public static final String PSEUDO_TOTAL_PROJECT_EXPENSES = "TotalProjectExpenses";
+	public static final String PSEUDO_PROJECT_BUDGET = "ProjectBudget";
+	public static final String PSEUDO_CURRENCY_SYMBOL = "CurrencySymbo";
 
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;
@@ -709,4 +759,8 @@ public class Dashboard extends BaseObject
 	private PseudoStringData methodsAndTasksWithAssignmentsCount;
 	private PseudoStringData workPlanStartDate;
 	private PseudoStringData workPlanEndDate;
+	private PseudoStringData totalProjectResourcesCost;
+	private PseudoStringData totalProjectExpenses;
+	private PseudoStringData projectBudget;
+	private PseudoStringData currecnySymbol;
 }

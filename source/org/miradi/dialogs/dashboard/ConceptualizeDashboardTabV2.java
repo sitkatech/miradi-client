@@ -55,7 +55,7 @@ public class ConceptualizeDashboardTabV2 extends AbstractDashboardTab
 
 	private void addTeamMembersRow(TwoColumnPanel leftMainPanel)
 	{
-		addSubHeaderRow(leftMainPanel, EAM.text("1A. Define Initial Project Team"), TEAM_RIGHT_PANEL_FILE_NAME);
+		createSubHeaderRow(leftMainPanel, EAM.text("1A. Define Initial Project Team"), TEAM_RIGHT_PANEL_FILE_NAME);
 	
 		String leftColumnTranslatedText = EAM.text("Team Members:");
 		String rightColumnTranslatedText = getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT);
@@ -64,7 +64,7 @@ public class ConceptualizeDashboardTabV2 extends AbstractDashboardTab
 
 	private void addScopeVisionAndTargetsRow(TwoColumnPanel leftMainPanel)
 	{
-		addSubHeaderRow(leftMainPanel, EAM.text("1B. Define Scope Vision and Targets"), SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
+		createSubHeaderRow(leftMainPanel, EAM.text("1B. Define Scope Vision and Targets"), SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 		addDefineScopeRow(leftMainPanel);
 		addTargetRow(leftMainPanel);
 		addHumanWelfareTargetRow(leftMainPanel);
@@ -120,7 +120,7 @@ public class ConceptualizeDashboardTabV2 extends AbstractDashboardTab
 	
 	private void addIdentifyCriticalThreatsRow(TwoColumnPanel leftMainPanel)
 	{
-		addSubHeaderRow(leftMainPanel, EAM.text("1C. Identify Critical Threats"), CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
+		createSubHeaderRow(leftMainPanel, EAM.text("1C. Identify Critical Threats"), CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
 		
 		HashMap<String, String> threatsTokenReplacementMap = new HashMap<String, String>();
 		threatsTokenReplacementMap.put("%threatCount", getDashboardData(Dashboard.PSEUDO_THREAT_COUNT));

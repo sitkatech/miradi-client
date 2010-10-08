@@ -55,7 +55,7 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 
 	private void addDevelopOperationalPlanRow(TwoColumnPanel leftMainPanel)
 	{
-		addSubHeaderRow(leftMainPanel, EAM.text("2C. Develop Operational Plan"), OPERATIONAL_PLAN_RIGHT_SIDE_FILE_NAME);
+		createSubHeaderRow(leftMainPanel, EAM.text("2C. Develop Operational Plan"), OPERATIONAL_PLAN_RIGHT_SIDE_FILE_NAME);
 		createDataRow(leftMainPanel, EAM.text("Assess Human Financial and other resources"), "", OPERATIONAL_PLAN_RIGHT_SIDE_FILE_NAME);
 		
 		createProjectPlanningStartEndDateRow(leftMainPanel);
@@ -73,7 +73,7 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 
 	private void addDevelopFormatMonitoringPlanRow(TwoColumnPanel leftMainPanel)
 	{
-		addSubHeaderRow(leftMainPanel, EAM.text("2B. Develop a formal monitoring plan"), DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME);
+		createSubHeaderRow(leftMainPanel, EAM.text("2B. Develop a formal monitoring plan"), DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME);
 		
 		createDataRow(leftMainPanel, EAM.text("Define Audiences and Information Needs:"), EAM.text("Use Comments Field?"), DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME);
 		createIndictorsRow(leftMainPanel);
@@ -104,7 +104,7 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 
 	private void addDevelopStrategicPlanRow(TwoColumnPanel leftMainPanel)
 	{
-		addSubHeaderRow(leftMainPanel, EAM.text("2A. Develop Strategic Plan"), DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
+		createSubHeaderRow(leftMainPanel, EAM.text("2A. Develop Strategic Plan"), DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 		
 		addTargetsWithGoalRow(leftMainPanel);
 		addGoalCountRow(leftMainPanel);

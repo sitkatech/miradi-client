@@ -26,6 +26,7 @@ import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
+import org.miradi.rtf.RtfWriter;
 
 public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboardTab
 {
@@ -45,7 +46,7 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 	{
 		TwoColumnPanel leftMainPanel = new TwoColumnPanel();
 		createHeaderRow(leftMainPanel, EAM.text("3. Implement Actions and Monitoring"), "", getMainDescriptionFileName());
-		addSubHeaderRow(leftMainPanel, EAM.text("3A. Develop Short Term Work Plan"), DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);
+		createSubHeaderRow(leftMainPanel, EAM.text("3A. Develop Short Term Work Plan"), DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);
 		
 		createDetailActivitiesTasksAndResponsiblitiesRow(leftMainPanel);
 		createActivitiesCountRow(leftMainPanel);
@@ -54,10 +55,34 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 		createMethodsCountRow(leftMainPanel);
 		createMethodsAndTasksWithAssignmentsRow(leftMainPanel);
 		createProjectPlanningStartEndDateRow(leftMainPanel);
+		createDevelopAndRefineProjectBudgetRow(leftMainPanel);
 		
 		return leftMainPanel;
 	}
 	
+	private void createDevelopAndRefineProjectBudgetRow(TwoColumnPanel leftMainPanel)
+	{
+		createSubHeaderRow(leftMainPanel, EAM.text("3B. Develop and Refine Project Budget"), DEVELOP_AND_REFINE_PROJECT_BUDGET);
+		createEstimatedCostsForActivitiesAndMonitoring(leftMainPanel);
+	}
+
+	private void createEstimatedCostsForActivitiesAndMonitoring(TwoColumnPanel leftMainPanel)
+	{
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%workCosts", getDashboardData(Dashboard.PSEUDO_TOTAL_PROJECT_RESOURCES_COSTS));
+		tokenReplacementMap.put("%expenses", getDashboardData(Dashboard.PSEUDO_TOTAL_PROJECT_EXPENSES));
+		tokenReplacementMap.put("%projectBudget", getDashboardData(Dashboard.PSEUDO_PROJECT_BUDGET));
+		tokenReplacementMap.put("%currencySymbol", getSafeCurrencySymbol());
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("Work Costs: %currencySymbol %workCosts, Expenses: %currencySymbol %expenses, Project Budget: %currencySymbol %projectBudget"), tokenReplacementMap);
+
+		createDataRow(leftMainPanel, EAM.text("Estimate Costs for Activities and Monitoring: r"), rightColumnTranslatedText, DEVELOP_AND_REFINE_PROJECT_BUDGET);
+	}
+
+	protected String getSafeCurrencySymbol()
+	{
+		return RtfWriter.encode(getDashboardData(Dashboard.PSEUDO_CURRENCY_SYMBOL));
+	}
+
 	protected void createProjectPlanningStartEndDateRow(TwoColumnPanel leftMainPanel)
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -135,4 +160,5 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 	}
 	
 	private static final String DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME = "dashboard/3A.html";
+	private static final String DEVELOP_AND_REFINE_PROJECT_BUDGET = "dashboard/3B.html";
 }

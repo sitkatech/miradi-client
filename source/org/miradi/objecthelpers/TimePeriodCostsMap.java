@@ -61,8 +61,13 @@ public class TimePeriodCostsMap
 	
 	public OptionalDouble calculateTotalBudgetCost(Project project) throws Exception
 	{
-		final TimePeriodCosts totalTimePeriodCosts = calculateTimePeriodCosts(new DateUnit());
+		final TimePeriodCosts totalTimePeriodCosts = calculateTotalBudgetCost();
 		return totalTimePeriodCosts.calculateTotalCost(project);
+	}
+
+	public TimePeriodCosts calculateTotalBudgetCost() throws Exception
+	{
+		return calculateTimePeriodCosts(new DateUnit());
 	}
 	
 	public TimePeriodCosts calculateTimePeriodCosts(DateUnit dateUnitToUse) throws Exception
