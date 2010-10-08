@@ -41,6 +41,7 @@ public class DashboardMainPanel extends PanelTabbedPane
 		disposeTab(conceptualizeDashboardTab);
 		disposeTab(planActionsAndMonitoringTab);
 		disposeTab(actionsAndMonitoringTab);
+		disposeTab(analyzeAdaptAndUseTab);
 	}
 	
 	public void becomeActive()
@@ -72,6 +73,7 @@ public class DashboardMainPanel extends PanelTabbedPane
 		conceptualizeDashboardTab = new ConceptualizeDashboardTabV2(getProject());
 		planActionsAndMonitoringTab = new PlanActionsAndMonitoringTab(getProject());
 		actionsAndMonitoringTab = new ImplementActionsAndMonitoringDashboardTab(getProject());
+		analyzeAdaptAndUseTab = new AnalyzeAdaptAndUseTab(getProject());
 	}
 
 	private void addTabs()
@@ -79,6 +81,7 @@ public class DashboardMainPanel extends PanelTabbedPane
 		addTab(conceptualizeDashboardTab.getPanelDescription(), conceptualizeDashboardTab);
 		addTab(planActionsAndMonitoringTab.getPanelDescription(), planActionsAndMonitoringTab);
 		addTab(actionsAndMonitoringTab.getPanelDescription(), actionsAndMonitoringTab);
+		addTab(analyzeAdaptAndUseTab.getPanelDescription(), analyzeAdaptAndUseTab);
 	}
 	
 	private Project getProject()
@@ -87,7 +90,8 @@ public class DashboardMainPanel extends PanelTabbedPane
 	}
 	
 	private Project project;
-	private ConceptualizeDashboardTabV2 conceptualizeDashboardTab;
-	private PlanActionsAndMonitoringTab planActionsAndMonitoringTab;
-	private ImplementActionsAndMonitoringDashboardTab actionsAndMonitoringTab;
+	private AbstractDashboardTab conceptualizeDashboardTab;
+	private AbstractDashboardTab planActionsAndMonitoringTab;
+	private AbstractDashboardTab actionsAndMonitoringTab;
+	private AbstractDashboardTab analyzeAdaptAndUseTab;
 }
