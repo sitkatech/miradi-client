@@ -73,7 +73,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		rightSideDescriptionPanel.setRightSidePanelContent(getMainDescriptionFileName());
 	}
 
-	protected void addSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightPanelHtmlFileName)
+	protected void createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightPanelHtmlFileName)
 	{
 		SelectableRow selectableRow = createSubHeaderRow(leftMainPanel, leftColumnTranslatedText, "", rightPanelHtmlFileName);
 		final Color HEADER_BACKGROUND_COLOR = Color.GREEN.darker();
