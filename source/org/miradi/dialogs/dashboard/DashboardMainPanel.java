@@ -80,11 +80,16 @@ public class DashboardMainPanel extends PanelTabbedPane
 
 	private void addTabs()
 	{
-		addTab(conceptualizeDashboardTab.getPanelDescription(), conceptualizeDashboardTab);
-		addTab(planActionsAndMonitoringTab.getPanelDescription(), planActionsAndMonitoringTab);
-		addTab(actionsAndMonitoringTab.getPanelDescription(), actionsAndMonitoringTab);
-		addTab(analyzeAdaptAndUseTab.getPanelDescription(), analyzeAdaptAndUseTab);
-		addTab(captureAndShareLearningTab.getPanelDescription(), captureAndShareLearningTab);
+		addTab(conceptualizeDashboardTab);
+		addTab(planActionsAndMonitoringTab);
+		addTab(actionsAndMonitoringTab);
+		addTab(analyzeAdaptAndUseTab);
+		addTab(captureAndShareLearningTab);
+	}
+	
+	private void addTab(AbstractDashboardTab tab)
+	{
+		addTab(tab.getPanelDescription(), tab);
 	}
 	
 	private Project getProject()
