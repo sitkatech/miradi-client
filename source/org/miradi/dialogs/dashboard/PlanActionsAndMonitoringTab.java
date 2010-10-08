@@ -61,8 +61,7 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 		createProjectPlanningStartEndDateRow(leftMainPanel);
 	}
 
-	protected void createProjectPlanningStartEndDateRow(
-			TwoColumnPanel leftMainPanel)
+	private void createProjectPlanningStartEndDateRow(TwoColumnPanel leftMainPanel)
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%projectPlanningStartDate", getDashboardData(Dashboard.PSEUDO_PROJECT_PLANNING_START_DATE));
@@ -196,7 +195,7 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 		createDataRow(leftMainPanel, EAM.text("Total Goals Created:"), getDashboardData(Dashboard.PSEUDO_GOAL_COUNT), DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
-	protected void addTargetsWithGoalRow(TwoColumnPanel leftMainPanel)
+	private void addTargetsWithGoalRow(TwoColumnPanel leftMainPanel)
 	{
 		String leftColumnTranslatedText = EAM.text("Develop Goals for Each Target:");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
