@@ -185,6 +185,12 @@ public class Dashboard extends BaseObject
 			
 			if (fieldTag.equals(PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT))
 				return getSpecifiedTaskTypeAndTasksWithAssignmentsCount(Task.METHOD_NAME);
+			
+			if (fieldTag.equals(PSEUDO_WORK_PLAN_START_DATE))
+				return getProject().getMetadata().getWorkPlanStartDateAsString();
+			
+			if (fieldTag.equals(PSEUDO_WORK_PLAN_END_DATE))
+				return getProject().getMetadata().getWorkPlanEndDate();
 				
 			return super.getPseudoData(fieldTag);
 		}
@@ -586,6 +592,8 @@ public class Dashboard extends BaseObject
 		indicatorsCount = new PseudoStringData(PSEUDO_INDICATORS_COUNT);
 		methodsAndTasksCount = new PseudoStringData(PSEUDO_METHODS_AND_TASKS_COUNT);
 		methodsAndTasksWithAssignmentsCount = new PseudoStringData(PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT);
+		workPlanStartDate = new PseudoStringData(PSEUDO_WORK_PLAN_START_DATE);
+		workPlanEndDate = new PseudoStringData(PSEUDO_WORK_PLAN_END_DATE);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -621,6 +629,8 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_INDICATORS_COUNT, indicatorsCount);
 		addPresentationDataField(PSEUDO_METHODS_AND_TASKS_COUNT, methodsAndTasksCount);
 		addPresentationDataField(PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT, methodsAndTasksWithAssignmentsCount);
+		addPresentationDataField(PSEUDO_WORK_PLAN_START_DATE, workPlanStartDate);
+		addPresentationDataField(PSEUDO_WORK_PLAN_END_DATE, workPlanEndDate);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -660,7 +670,9 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_INDICATORS_COUNT = "IndicatorsCount";
 	public static final String PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT = "MethodsAndTasksWithAssignmentsCount";
 	public static final String PSEUDO_METHODS_AND_TASKS_COUNT = "MethodsAndTasksCount";
-	
+	public static final String PSEUDO_WORK_PLAN_START_DATE = "WorkPlanStartDate";
+	public static final String PSEUDO_WORK_PLAN_END_DATE = "WorkPlanStartDate";
+
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;
 	private PseudoStringData targetCount;
@@ -695,4 +707,6 @@ public class Dashboard extends BaseObject
 	private PseudoStringData indicatorsCount;
 	private PseudoStringData methodsAndTasksCount;
 	private PseudoStringData methodsAndTasksWithAssignmentsCount;
+	private PseudoStringData workPlanStartDate;
+	private PseudoStringData workPlanEndDate;
 }

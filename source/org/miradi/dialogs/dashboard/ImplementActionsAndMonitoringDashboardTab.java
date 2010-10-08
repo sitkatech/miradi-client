@@ -53,8 +53,19 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 		createDetailMethodsTasksAndResponsibilitiesRow(leftMainPanel);
 		createMethodsCountRow(leftMainPanel);
 		createMethodsAndTasksWithAssignmentsRow(leftMainPanel);
+		createProjectPlanningStartEndDateRow(leftMainPanel);
 		
 		return leftMainPanel;
+	}
+	
+	protected void createProjectPlanningStartEndDateRow(TwoColumnPanel leftMainPanel)
+	{
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%workPlanStartDate", getDashboardData(Dashboard.PSEUDO_WORK_PLAN_START_DATE));
+		tokenReplacementMap.put("%workPlanEndDate", getDashboardData(Dashboard.PSEUDO_WORK_PLAN_END_DATE));
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%workPlanStartDate - %workPlanEndDate"), tokenReplacementMap);
+
+		createDataRow(leftMainPanel, EAM.text("Develop Project Timeline or Calendar"), rightColumnTranslatedText, DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
 	private void createMethodsAndTasksWithAssignmentsRow(TwoColumnPanel leftMainPanel)
