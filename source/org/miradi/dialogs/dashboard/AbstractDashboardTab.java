@@ -75,7 +75,15 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 
 	protected void createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightPanelHtmlFileName)
 	{
-		SelectableRow selectableRow = createSubHeaderRow(leftMainPanel, leftColumnTranslatedText, "", rightPanelHtmlFileName);
+		String rightColumnTranslatedText = "";
+		createSubHeaderRow(leftMainPanel, leftColumnTranslatedText, rightPanelHtmlFileName, rightColumnTranslatedText);
+	}
+
+	protected void createSubHeaderRow(TwoColumnPanel leftMainPanel,	String leftColumnTranslatedText, String rightColumnTranslatedText, String rightPanelHtmlFileName)
+	{
+		Box firstColumnBox = createBorderedBox();
+		firstColumnBox.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
+		SelectableRow selectableRow = createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, rightPanelHtmlFileName, firstColumnBox);
 		final Color HEADER_BACKGROUND_COLOR = Color.GREEN.darker();
 		selectableRow.setBackgroundColor(HEADER_BACKGROUND_COLOR);
 	}
@@ -92,14 +100,6 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	protected SelectableRow createHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName)
 	{
 		Box firstColumnBox = createBorderedBox();
-		
-		return createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, descriptionFileName, firstColumnBox);
-	}
-	
-	private SelectableRow createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName)
-	{
-		Box firstColumnBox = createBorderedBox();
-		firstColumnBox.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
 		
 		return createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, descriptionFileName, firstColumnBox);
 	}
