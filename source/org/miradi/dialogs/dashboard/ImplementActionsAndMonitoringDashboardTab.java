@@ -26,7 +26,6 @@ import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
-import org.miradi.rtf.RtfWriter;
 
 public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboardTab
 {
@@ -64,6 +63,17 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 	{
 		createSubHeaderRow(leftMainPanel, EAM.text("3B. Develop and Refine Project Budget"), DEVELOP_AND_REFINE_PROJECT_BUDGET);
 		createEstimatedCostsForActivitiesAndMonitoring(leftMainPanel);
+		createDataRow(leftMainPanel, EAM.text("Develop and Submit Funding Proposals"), "", DEVELOP_AND_REFINE_PROJECT_BUDGET);
+		createFinacialResourcesRow(leftMainPanel);
+	}
+
+	private void createFinacialResourcesRow(TwoColumnPanel leftMainPanel)
+	{
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%budgetSecuredPercent", getDashboardData(Dashboard.PSEUDO_BUDGET_SECURED_PERCENT));
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("Total Budget for Funding: %  %budgetSecuredPercent Budget Secured"), tokenReplacementMap);
+
+		createDataRow(leftMainPanel, EAM.text("Obtain Finacial Resources"), rightColumnTranslatedText, DEVELOP_AND_REFINE_PROJECT_BUDGET);		
 	}
 
 	private void createEstimatedCostsForActivitiesAndMonitoring(TwoColumnPanel leftMainPanel)
@@ -72,15 +82,15 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 		tokenReplacementMap.put("%workCosts", getDashboardData(Dashboard.PSEUDO_TOTAL_PROJECT_RESOURCES_COSTS));
 		tokenReplacementMap.put("%expenses", getDashboardData(Dashboard.PSEUDO_TOTAL_PROJECT_EXPENSES));
 		tokenReplacementMap.put("%projectBudget", getDashboardData(Dashboard.PSEUDO_PROJECT_BUDGET));
-		tokenReplacementMap.put("%currencySymbol", getSafeCurrencySymbol());
+		tokenReplacementMap.put("%currencySymbol", getEncodedCurrencySymbol());
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("Work Costs: %currencySymbol %workCosts, Expenses: %currencySymbol %expenses, Project Budget: %currencySymbol %projectBudget"), tokenReplacementMap);
 
-		createDataRow(leftMainPanel, EAM.text("Estimate Costs for Activities and Monitoring: r"), rightColumnTranslatedText, DEVELOP_AND_REFINE_PROJECT_BUDGET);
+		createDataRow(leftMainPanel, EAM.text("Estimate Costs for Activities and Monitoring"), rightColumnTranslatedText, DEVELOP_AND_REFINE_PROJECT_BUDGET);
 	}
 
-	protected String getSafeCurrencySymbol()
+	protected String getEncodedCurrencySymbol()
 	{
-		return RtfWriter.encode(getDashboardData(Dashboard.PSEUDO_CURRENCY_SYMBOL));
+		return "\\" + getDashboardData(Dashboard.PSEUDO_CURRENCY_SYMBOL);
 	}
 
 	protected void createProjectPlanningStartEndDateRow(TwoColumnPanel leftMainPanel)

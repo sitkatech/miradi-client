@@ -204,6 +204,9 @@ public class Dashboard extends BaseObject
 			
 			if (fieldTag.equals(PSEUDO_CURRENCY_SYMBOL))
 				return getCurrencySymbol();
+			
+			if (fieldTag.equals(PSEUDO_BUDGET_SECURED_PERCENT))
+				return getTotalBudgetSecuredPercent();
 				
 			return super.getPseudoData(fieldTag);
 		}
@@ -214,6 +217,11 @@ public class Dashboard extends BaseObject
 		}
 	}
 	
+	private String getTotalBudgetSecuredPercent()
+	{
+		return getProject().getMetadata().getData(ProjectMetadata.TAG_BUDGET_SECURED_PERCENT);
+	}
+
 	private String getTotalProjectResourcesCost() throws Exception
 	{
 		return calculateTotalProjectCost().getTotalWorkUnits().toString();
@@ -636,6 +644,7 @@ public class Dashboard extends BaseObject
 		totalProjectExpenses = new PseudoStringData(PSEUDO_TOTAL_PROJECT_EXPENSES);
 		projectBudget = new PseudoStringData(PSEUDO_PROJECT_BUDGET);
 		currecnySymbol = new PseudoStringData(PSEUDO_CURRENCY_SYMBOL);
+		budgetSecuredPercent = new PseudoStringData(PSEUDO_BUDGET_SECURED_PERCENT);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -677,6 +686,7 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_TOTAL_PROJECT_EXPENSES, totalProjectExpenses);
 		addPresentationDataField(PSEUDO_PROJECT_BUDGET, projectBudget);
 		addPresentationDataField(PSEUDO_CURRENCY_SYMBOL, currecnySymbol);
+		addPresentationDataField(PSEUDO_BUDGET_SECURED_PERCENT, budgetSecuredPercent);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -722,6 +732,7 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_TOTAL_PROJECT_EXPENSES = "TotalProjectExpenses";
 	public static final String PSEUDO_PROJECT_BUDGET = "ProjectBudget";
 	public static final String PSEUDO_CURRENCY_SYMBOL = "CurrencySymbo";
+	public static final String PSEUDO_BUDGET_SECURED_PERCENT = "BudgetSecuredPercent";
 
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;
@@ -763,4 +774,5 @@ public class Dashboard extends BaseObject
 	private PseudoStringData totalProjectExpenses;
 	private PseudoStringData projectBudget;
 	private PseudoStringData currecnySymbol;
+	private PseudoStringData budgetSecuredPercent;
 }
