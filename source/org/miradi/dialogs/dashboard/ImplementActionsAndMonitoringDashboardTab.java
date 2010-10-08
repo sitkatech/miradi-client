@@ -70,6 +70,17 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 	{
 		createDataRow(leftMainPanel, EAM.text("Implement Strategic and Monitoring Plans"), "", IMPLEMENT_PLANS_RIGHT_SIDE_FILENAME);
 		createStrategiesAndActivitiesWithProgressReportsRow(leftMainPanel);
+		createIndicatorsAndMethodsWithProgressReportsRow(leftMainPanel);
+	}
+
+	private void createIndicatorsAndMethodsWithProgressReportsRow(TwoColumnPanel leftMainPanel)
+	{
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%indicatorsAndMethodsWithProgressReportsCount", getDashboardData(Dashboard.PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_COUNT));
+		tokenReplacementMap.put("%indicatorsAndMethodsWithProgressReportsPercent", getDashboardData(Dashboard.PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT));
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%indicatorsAndMethodsWithProgressReportsCount Indicators/methods (% %indicatorsAndMethodsWithProgressReportsPercent) have progress reports"), tokenReplacementMap);
+
+		createDataRow(leftMainPanel, "", rightColumnTranslatedText, IMPLEMENT_PLANS_RIGHT_SIDE_FILENAME);
 	}
 
 	private void createStrategiesAndActivitiesWithProgressReportsRow(TwoColumnPanel leftMainPanel)
