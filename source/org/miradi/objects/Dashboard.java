@@ -213,6 +213,13 @@ public class Dashboard extends BaseObject
 			
 			if (fieldTag.equals(PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_PERCENT))
 				return getStrategiesAndActivitiesWithProgressReportPercent();
+			
+			if (fieldTag.equals(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_COUNT))
+				return getIndicatorsAndMethodsWithProgressReportCount();
+			
+			if (fieldTag.equals(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT))
+				return getIndicatorAndMethodsWithProgressReportPerncet();
+					
 				
 			return super.getPseudoData(fieldTag);
 		}
@@ -223,17 +230,32 @@ public class Dashboard extends BaseObject
 		}
 	}
 	
+	//FIXME urgent - dashboard fix the two methods below
+	private String getIndicatorAndMethodsWithProgressReportPerncet()
+	{
+		return "";
+	}
+
+	private String getIndicatorsAndMethodsWithProgressReportCount()
+	{
+		return "";
+	}
+
 	private String getStrategiesAndActivitiesWithProgressReportPercent() throws Exception
 	{
-		int strategiesAndActiviesWithProgressReports = getStrategiesAndActiviesWithProgressReports();
+		int strategiesAndActiviesWithProgressReports = getStrategiesAndActiviesWithProgressReports().size();
 		int allStrategiesAndActivitiesCount = getAllStrategiesAndActivities().size();
 		
 		return calculatePercentage(strategiesAndActiviesWithProgressReports, allStrategiesAndActivitiesCount);
 	}
 
-	private int getStrategiesAndActiviesWithProgressReports() throws Exception
+	private Vector<BaseObject> getStrategiesAndActiviesWithProgressReports() throws Exception
 	{
-		Vector<BaseObject> baseObjects = getAllStrategiesAndActivities();
+		return getBaseObjectsWithProgressReports(getAllStrategiesAndActivities());
+	}
+
+	private Vector<BaseObject> getBaseObjectsWithProgressReports(Vector<BaseObject> baseObjects) throws Exception
+	{
 		Vector<BaseObject> objectsWithProgressReports = new Vector<BaseObject>();
 		for (BaseObject baseObject : baseObjects)
 		{
@@ -241,10 +263,10 @@ public class Dashboard extends BaseObject
 				objectsWithProgressReports.add(baseObject);
 		}
 		
-		return objectsWithProgressReports.size();
+		return objectsWithProgressReports;
 	}
 
-	protected Vector<BaseObject> getAllStrategiesAndActivities()
+	private Vector<BaseObject> getAllStrategiesAndActivities()
 	{
 		Vector<BaseObject> baseObjects = new Vector<BaseObject>();
 		baseObjects.addAll(getProject().getStrategyPool().getAllObjects());
@@ -255,7 +277,7 @@ public class Dashboard extends BaseObject
 
 	private String getStrategiesAndActivitiesWithProgressReportCount() throws Exception
 	{
-		return Integer.toString(getStrategiesAndActiviesWithProgressReports());
+		return Integer.toString(getStrategiesAndActiviesWithProgressReports().size());
 	}
 
 	private String getTotalBudgetSecuredPercent()
@@ -693,6 +715,8 @@ public class Dashboard extends BaseObject
 		budgetSecuredPercent = new PseudoStringData(PSEUDO_BUDGET_SECURED_PERCENT);
 		strategiesAndActivitiesWithProgressReportCount = new PseudoStringData(PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_COUNT);
 		strategiesAndActivitiesWithProgressReportPercent = new PseudoStringData(PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_PERCENT);
+		indicatorsAndMethodsWithProgressReportCount = new PseudoStringData(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_COUNT);
+		indicatorsAndMethodsWithProgressReportPercent = new PseudoStringData(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -737,6 +761,8 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_BUDGET_SECURED_PERCENT, budgetSecuredPercent);
 		addPresentationDataField(PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_COUNT, strategiesAndActivitiesWithProgressReportCount);
 		addPresentationDataField(PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_PERCENT, strategiesAndActivitiesWithProgressReportPercent);
+		addPresentationDataField(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_COUNT, indicatorsAndMethodsWithProgressReportCount);
+		addPresentationDataField(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT, indicatorsAndMethodsWithProgressReportPercent);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -785,6 +811,8 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_BUDGET_SECURED_PERCENT = "BudgetSecuredPercent";
 	public static final String PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_COUNT = "StrategiesAndAcitivitiesWithProgressReportCount";
 	public static final String PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_PERCENT = "StrategiesAndActivitiesWithProgressReportPercent";
+	public static final String PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_COUNT = "IndicatorsAndMethodsWithProgressReportCount";
+	public static final String PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT = "IndicatorsAndMethodsWithProgressReportPercent";
 
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;
@@ -829,4 +857,6 @@ public class Dashboard extends BaseObject
 	private PseudoStringData budgetSecuredPercent;
 	private PseudoStringData strategiesAndActivitiesWithProgressReportCount;
 	private PseudoStringData strategiesAndActivitiesWithProgressReportPercent;
+	private PseudoStringData indicatorsAndMethodsWithProgressReportCount;
+	private PseudoStringData indicatorsAndMethodsWithProgressReportPercent;
 }
