@@ -207,6 +207,12 @@ public class Dashboard extends BaseObject
 			
 			if (fieldTag.equals(PSEUDO_BUDGET_SECURED_PERCENT))
 				return getTotalBudgetSecuredPercent();
+			
+			if (fieldTag.equals(PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_COUNT))
+				return getStrategiesAndActivitiesWithProgressReportCount();
+			
+			if (fieldTag.equals(PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_PERCENT))
+				return getStrategiesAndActivitiesWithProgressReportPercent();
 				
 			return super.getPseudoData(fieldTag);
 		}
@@ -217,6 +223,41 @@ public class Dashboard extends BaseObject
 		}
 	}
 	
+	private String getStrategiesAndActivitiesWithProgressReportPercent() throws Exception
+	{
+		int strategiesAndActiviesWithProgressReports = getStrategiesAndActiviesWithProgressReports();
+		int allStrategiesAndActivitiesCount = getAllStrategiesAndActivities().size();
+		
+		return calculatePercentage(strategiesAndActiviesWithProgressReports, allStrategiesAndActivitiesCount);
+	}
+
+	private int getStrategiesAndActiviesWithProgressReports() throws Exception
+	{
+		Vector<BaseObject> baseObjects = getAllStrategiesAndActivities();
+		Vector<BaseObject> objectsWithProgressReports = new Vector<BaseObject>();
+		for (BaseObject baseObject : baseObjects)
+		{
+			if (baseObject.getRefList(BaseObject.TAG_PROGRESS_REPORT_REFS).hasRefs())
+				objectsWithProgressReports.add(baseObject);
+		}
+		
+		return objectsWithProgressReports.size();
+	}
+
+	protected Vector<BaseObject> getAllStrategiesAndActivities()
+	{
+		Vector<BaseObject> baseObjects = new Vector<BaseObject>();
+		baseObjects.addAll(getProject().getStrategyPool().getAllObjects());
+		baseObjects.addAll(getProject().getTaskPool().getAllActivities());
+		
+		return baseObjects;
+	}
+
+	private String getStrategiesAndActivitiesWithProgressReportCount() throws Exception
+	{
+		return Integer.toString(getStrategiesAndActiviesWithProgressReports());
+	}
+
 	private String getTotalBudgetSecuredPercent()
 	{
 		return getProject().getMetadata().getData(ProjectMetadata.TAG_BUDGET_SECURED_PERCENT);
@@ -392,7 +433,12 @@ public class Dashboard extends BaseObject
 
 	private String calculateRelevantPercentage(ORefSet objectivesRelevantToStrategies, ORefSet objectiveRefs)
 	{
-		double percentage = ((double)objectivesRelevantToStrategies.size() / (double)objectiveRefs.size()) * 100;
+		return calculatePercentage(objectivesRelevantToStrategies.size(), objectiveRefs.size());
+	}
+
+	private String calculatePercentage(int numinator, int denominator)
+	{
+		double percentage = ((double)numinator / (double)denominator) * 100;
 		
 		return DoubleUtilities.toStringForHumans(percentage);
 	}
@@ -645,6 +691,8 @@ public class Dashboard extends BaseObject
 		projectBudget = new PseudoStringData(PSEUDO_PROJECT_BUDGET);
 		currecnySymbol = new PseudoStringData(PSEUDO_CURRENCY_SYMBOL);
 		budgetSecuredPercent = new PseudoStringData(PSEUDO_BUDGET_SECURED_PERCENT);
+		strategiesAndActivitiesWithProgressReportCount = new PseudoStringData(PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_COUNT);
+		strategiesAndActivitiesWithProgressReportPercent = new PseudoStringData(PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_PERCENT);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -687,6 +735,8 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_PROJECT_BUDGET, projectBudget);
 		addPresentationDataField(PSEUDO_CURRENCY_SYMBOL, currecnySymbol);
 		addPresentationDataField(PSEUDO_BUDGET_SECURED_PERCENT, budgetSecuredPercent);
+		addPresentationDataField(PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_COUNT, strategiesAndActivitiesWithProgressReportCount);
+		addPresentationDataField(PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_PERCENT, strategiesAndActivitiesWithProgressReportPercent);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -733,6 +783,8 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_PROJECT_BUDGET = "ProjectBudget";
 	public static final String PSEUDO_CURRENCY_SYMBOL = "CurrencySymbo";
 	public static final String PSEUDO_BUDGET_SECURED_PERCENT = "BudgetSecuredPercent";
+	public static final String PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_COUNT = "StrategiesAndAcitivitiesWithProgressReportCount";
+	public static final String PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_PERCENT = "StrategiesAndActivitiesWithProgressReportPercent";
 
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;
@@ -775,4 +827,6 @@ public class Dashboard extends BaseObject
 	private PseudoStringData projectBudget;
 	private PseudoStringData currecnySymbol;
 	private PseudoStringData budgetSecuredPercent;
+	private PseudoStringData strategiesAndActivitiesWithProgressReportCount;
+	private PseudoStringData strategiesAndActivitiesWithProgressReportPercent;
 }
