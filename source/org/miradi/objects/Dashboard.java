@@ -671,7 +671,7 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT = "MethodsAndTasksWithAssignmentsCount";
 	public static final String PSEUDO_METHODS_AND_TASKS_COUNT = "MethodsAndTasksCount";
 	public static final String PSEUDO_WORK_PLAN_START_DATE = "WorkPlanStartDate";
-	public static final String PSEUDO_WORK_PLAN_END_DATE = "WorkPlanStartDate";
+	public static final String PSEUDO_WORK_PLAN_END_DATE = "WorkPlanEndDate";
 
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;
