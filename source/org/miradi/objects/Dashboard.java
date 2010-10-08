@@ -219,7 +219,6 @@ public class Dashboard extends BaseObject
 			
 			if (fieldTag.equals(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT))
 				return getIndicatorAndMethodsWithProgressReportPerncet();
-					
 				
 			return super.getPseudoData(fieldTag);
 		}
@@ -230,17 +229,33 @@ public class Dashboard extends BaseObject
 		}
 	}
 	
-	//FIXME urgent - dashboard fix the two methods below
-	private String getIndicatorAndMethodsWithProgressReportPerncet()
+	private String getIndicatorAndMethodsWithProgressReportPerncet() throws Exception
 	{
-		return "";
+		int strategiesAndActiviesWithProgressReports = getIndicatorsAndMethodsWithProgressReports().size();
+		int allStrategiesAndActivitiesCount = getAllIndicatorsAndMethods().size();
+		
+		return calculatePercentage(strategiesAndActiviesWithProgressReports, allStrategiesAndActivitiesCount);
 	}
 
-	private String getIndicatorsAndMethodsWithProgressReportCount()
+	private String getIndicatorsAndMethodsWithProgressReportCount() throws Exception
 	{
-		return "";
+		return Integer.toString(getIndicatorsAndMethodsWithProgressReports().size());
 	}
-
+	
+	private Vector<BaseObject> getAllIndicatorsAndMethods()
+	{
+		Vector<BaseObject> baseObjects = new Vector<BaseObject>();
+		baseObjects.addAll(getProject().getIndicatorPool().getAllObjects());
+		baseObjects.addAll(getProject().getTaskPool().getAllMethods());
+		
+		return baseObjects;
+	}
+	
+	private Vector<BaseObject> getIndicatorsAndMethodsWithProgressReports() throws Exception
+	{
+		return getBaseObjectsWithProgressReports(getAllIndicatorsAndMethods());
+	}
+	
 	private String getStrategiesAndActivitiesWithProgressReportPercent() throws Exception
 	{
 		int strategiesAndActiviesWithProgressReports = getStrategiesAndActiviesWithProgressReports().size();
