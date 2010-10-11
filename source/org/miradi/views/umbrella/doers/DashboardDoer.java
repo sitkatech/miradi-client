@@ -40,6 +40,8 @@ public class DashboardDoer extends MainWindowDoer
 		
 		DashboardDialog dialog = new DashboardDialog(getMainWindow());
 		Utilities.centerDlg(dialog);
+		dialog.becomeActive();
 		dialog.setVisible(true);
+		dialog.becomeInactive();
 	}
 }
