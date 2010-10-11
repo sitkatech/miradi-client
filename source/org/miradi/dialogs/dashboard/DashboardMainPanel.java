@@ -20,22 +20,31 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
+import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
 import org.miradi.project.Project;
 
-public class DashboardMainPanel extends PanelTabbedPane
+public class DashboardMainPanel extends DisposablePanel
 {
 	public DashboardMainPanel(Project projectToUse) throws Exception
 	{
 		super();
 		
 		project = projectToUse;
+		tabs = new PanelTabbedPane();
+		tabs.addChangeListener(new TabChangeListener());
 		createTabs();
 		addTabs();
+		add(tabs);
 	}
 	
+	@Override
 	public void dispose()
 	{
 		disposeTab(conceptualizeDashboardTab);
@@ -45,11 +54,13 @@ public class DashboardMainPanel extends PanelTabbedPane
 		disposeTab(captureAndShareLearningTab);
 	}
 	
+	@Override
 	public void becomeActive()
 	{
 		getCurrentTab().becomeActive();
 	}
 	
+	@Override
 	public void becomeInactive()
 	{
 		getCurrentTab().becomeInactive();
@@ -57,7 +68,7 @@ public class DashboardMainPanel extends PanelTabbedPane
 
 	private AbstractObjectDataInputPanel getCurrentTab()
 	{
-		return (AbstractObjectDataInputPanel) getSelectedComponent();
+		return (AbstractObjectDataInputPanel) tabs.getSelectedComponent();
 	}
 	
 	private void disposeTab(ObjectDataInputPanel tab)
@@ -80,6 +91,7 @@ public class DashboardMainPanel extends PanelTabbedPane
 
 	private void addTabs()
 	{
+		currentTab = conceptualizeDashboardTab;
 		addTab(conceptualizeDashboardTab);
 		addTab(planActionsAndMonitoringTab);
 		addTab(actionsAndMonitoringTab);
@@ -89,7 +101,7 @@ public class DashboardMainPanel extends PanelTabbedPane
 	
 	private void addTab(AbstractDashboardTab tab)
 	{
-		addTab(tab.getPanelDescription(), tab);
+		tabs.addTab(tab.getPanelDescription(), tab);
 	}
 	
 	private Project getProject()
@@ -97,7 +109,20 @@ public class DashboardMainPanel extends PanelTabbedPane
 		return project;
 	}
 	
+	class TabChangeListener implements ChangeListener
+	{
+		public void stateChanged(ChangeEvent event)
+		{
+			currentTab.becomeInactive();
+			AbstractObjectDataInputPanel selectedTab = (AbstractObjectDataInputPanel) tabs.getSelectedComponent();
+			currentTab = selectedTab;
+			currentTab.becomeActive();
+		}
+	}
+	
+	private JTabbedPane tabs;
 	private Project project;
+	private AbstractObjectDataInputPanel currentTab;
 	private AbstractDashboardTab conceptualizeDashboardTab;
 	private AbstractDashboardTab planActionsAndMonitoringTab;
 	private AbstractDashboardTab actionsAndMonitoringTab;

@@ -16,15 +16,18 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
+ */
 
 package org.miradi.dialogs.dashboard;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Set;
 
 import javax.swing.BorderFactory;
@@ -45,18 +48,38 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	public AbstractDashboardTab(Project projectToUse) throws Exception
 	{
 		super(projectToUse, Dashboard.getObjectType());
-		
+
 		setLayout(new BorderLayout());
-		splitPane = new PersistentHorizontalSplitPane(getMainWindow(), getMainWindow(), getPanelDescription());	
-		selectableComponentToContentsFileNameMap = new HashMap<SelectableRow, String>();
-		
-		addLeftPanel(createLeftPanel());
-		
+		splitPane = new PersistentHorizontalSplitPane(getMainWindow(), getMainWindow(), getPanelDescription());
+		selectableComponentToContentsFileNameMap = new LinkedHashMap<SelectableRow, String>();
+
+		TwoColumnPanel leftPanel = createLeftPanel();
+		dispatcher = new KeyDispatcher();
+		addLeftPanel(leftPanel);
+
 		createRightPanel();
 		addRightPanel();
 		add(splitPane);
 	}
 	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+
+		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+		manager.addKeyEventDispatcher(dispatcher);
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+	    manager.removeKeyEventDispatcher(dispatcher);
+
+		super.becomeInactive();
+	}
+
 	private void addRightPanel() throws Exception
 	{
 		splitPane.setRightComponent(rightSideDescriptionPanel);
@@ -79,7 +102,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		createSubHeaderRow(leftMainPanel, leftColumnTranslatedText, rightPanelHtmlFileName, rightColumnTranslatedText);
 	}
 
-	protected void createSubHeaderRow(TwoColumnPanel leftMainPanel,	String leftColumnTranslatedText, String rightColumnTranslatedText, String rightPanelHtmlFileName)
+	protected void createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String rightPanelHtmlFileName)
 	{
 		Box firstColumnBox = createBorderedBox();
 		firstColumnBox.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
@@ -139,6 +162,93 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		return Dashboard.find(getProject(), dashboardRef);
 	}
 	
+	protected void clearSelection() throws Exception
+	{
+		Set<SelectableRow> selectableRows = selectableComponentToContentsFileNameMap.keySet();
+		for(SelectableRow selectableRow : selectableRows)
+		{
+			selectableRow.clearSelection();
+		}
+	}
+
+	private class SingleRowSelectionHandler
+	{
+		private void selectUp() throws Exception
+		{
+			select(1);
+		}
+		
+		private void selectDown() throws Exception
+		{
+			select(-1);
+		}
+
+		private void select(int directionDelta) throws Exception
+		{
+//FIXME urgent - this is under construction, needs to be uncommented and finished 			
+//			Set<SelectableRow> rowsSet = selectableComponentToContentsFileNameMap.keySet();
+//			SelectableRow currenctlySelected = findSelectedRow();
+//			Vector<SelectableRow> rows = new Vector<SelectableRow>(rowsSet);
+//			if(currenctlySelected == null)
+//			{
+//				rows.firstElement().selectRow();
+//				return;
+//			}
+//			
+//			SelectableRow rowToSelect = null;
+//			int indexOfSelectedRow = rows.indexOf(currenctlySelected);
+//			System.out.println(rows.size() + " s = " + indexOfSelectedRow);
+//			
+//			int indexToSelect = 0;
+//			if (indexOfSelectedRow + directionDelta >= 0)
+//				indexToSelect = indexOfSelectedRow + directionDelta;
+//			
+//			if (indexOfSelectedRow - directionDelta  < rows.size())
+//				indexToSelect = indexOfSelectedRow - directionDelta;
+//			
+//			rowToSelect = rows.get(indexToSelect);
+//			clearSelection();
+//			rowToSelect.selectRow();
+		}
+
+//		private SelectableRow findSelectedRow()
+//		{
+//			Set<SelectableRow> rows = selectableComponentToContentsFileNameMap.keySet();
+//			for(SelectableRow selectableRow : rows)
+//			{
+//				if(selectableRow.isSelected())
+//					return selectableRow;
+//			}
+//
+//			return null;
+//		}
+	}
+	
+	private class KeyDispatcher implements KeyEventDispatcher 
+	{
+	    public boolean dispatchKeyEvent(KeyEvent event) 
+	    {
+	    	try
+	    	{
+	    		if (event.getID() == KeyEvent.KEY_RELEASED) 
+	    		{
+	    			if (event.getKeyCode() == KeyEvent.VK_UP)
+	    				new SingleRowSelectionHandler().selectUp();
+	    			if (event.getKeyCode() == KeyEvent.VK_DOWN)
+	    				new SingleRowSelectionHandler().selectDown();
+	    		}
+	    	}
+	    	catch (Exception e)
+	    	{
+	    		EAM.logException(e);
+	    		EAM.unexpectedErrorDialog(e);
+	    	}
+	    	
+	    	//TODO:  is this used and what is the correct value to return
+	    	return false;
+	    }
+	}
+
 	private class ClickHandler extends MouseAdapter
 	{
 		public ClickHandler(SelectableRow selectableComponentToUse)
@@ -159,7 +269,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 				String resourceFileName = selectableComponentToContentsFileNameMap.get(selectableComponent);
 				rightSideDescriptionPanel.setRightSidePanelContent(resourceFileName);
 			}
-			catch (Exception exception)
+			catch(Exception exception)
 			{
 				EAM.logException(exception);
 				EAM.unexpectedErrorDialog(exception);
@@ -178,7 +288,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		private SelectableRow selectableComponent;
 	}
 	
-	private class SelectableRow
+	public class SelectableRow
 	{
 		private SelectableRow(JComponent leftSideToUse, JComponent rightSideToUse)
 		{
@@ -191,10 +301,21 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		
 		private void selectRow()
 		{
+			isSelected = true;
 			setSelectionBorder(leftSide);
 			setSelectionBorder(rightSide);
 		}
 		
+		private void unSelect()
+		{
+			isSelected = false;
+		}
+
+		public boolean isSelected()
+		{
+			return isSelected;
+		}
+
 		private void setSelectionBorder(JComponent component)
 		{
 			component.setBorder(BorderFactory.createEtchedBorder(getSelectionColor(), getSelectionColor()));
@@ -207,6 +328,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		
 		private void clearSelection()
 		{
+			unSelect();
 			leftSide.setBorder(BorderFactory.createEtchedBorder());
 			rightSide.setBorder(BorderFactory.createEtchedBorder());
 		}
@@ -222,17 +344,40 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 			component.setOpaque(true);
 			component.setBackground(backgroundColor);
 		}
-		
+
+		@Override
+		public int hashCode()
+		{
+			return leftSide.hashCode() + rightSide.hashCode();
+		}
+
+		@Override
+		public boolean equals(Object rawObjet)
+		{
+			if(!(rawObjet instanceof SelectableRow))
+				return false;
+
+			SelectableRow selectableRow = (SelectableRow) rawObjet;
+			if(!selectableRow.leftSide.equals(leftSide))
+				return false;
+
+			return selectableRow.rightSide.equals(rightSide);
+		}
+
 		private JComponent leftSide;
+
 		private JComponent rightSide;
+
+		private boolean isSelected;
 	}
-	
+
 	abstract protected String getMainDescriptionFileName();
-	
+
 	abstract protected TwoColumnPanel createLeftPanel();
-	
-	private HashMap<SelectableRow, String> selectableComponentToContentsFileNameMap;
+
+	private LinkedHashMap<SelectableRow, String> selectableComponentToContentsFileNameMap;
 	private DashboardRightSideDescriptionPanel rightSideDescriptionPanel;
 	private PersistentHorizontalSplitPane splitPane;
+	private KeyDispatcher dispatcher;
 	private static final int INDENT_PER_LEVEL = 20;
 }

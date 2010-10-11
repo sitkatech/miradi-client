@@ -67,6 +67,7 @@ public class DashboardDialog extends ModelessDialogWithClose
 
 	private void addPanel()
 	{
+		setMainPanel(mainPanel);
 		add(mainPanel);
 	}
 	
