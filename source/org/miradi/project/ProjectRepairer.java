@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.Vector;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -102,8 +103,69 @@ public class ProjectRepairer
 		repairUnsnappedNodes();
 		removeInvalidDiagramLinkRefs();
 		fixAssignmentsReferringToMissingObjects();
+		fixIndicatorsReferringToSameResourceAssignments();
+	}
+	
+	private void fixIndicatorsReferringToSameResourceAssignments() throws Exception
+	{
+		ORefSet resourceAssignmentsReferredByMultipleIndicators = getResourceAssignmentsReferredByMultipleIndicators();
+		for(ORef resourceAssignmentRef : resourceAssignmentsReferredByMultipleIndicators)
+		{
+			ResourceAssignment sharedResourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRef);
+			ORefList indicatorReferrerRefs = sharedResourceAssignment.findObjectsThatReferToUs(Indicator.getObjectType());
+			fixIndicatorsReferringToSameResourceAssignment(sharedResourceAssignment, indicatorReferrerRefs);
+		}
 	}
 
+	private void fixIndicatorsReferringToSameResourceAssignment(ResourceAssignment sharedResourceAssignment, ORefList indicatorRefs) throws Exception
+	{
+		final int IGNORE_FIRST_INDICATOR = 1;
+		for (int index = IGNORE_FIRST_INDICATOR; index < indicatorRefs.size(); ++index)
+		{
+			Indicator indicator = Indicator.find(getProject(), indicatorRefs.get(index));
+			ORefList resourceAssignmentRefsToUpdate = indicator.getResourceAssignmentRefs();
+			resourceAssignmentRefsToUpdate.remove(sharedResourceAssignment.getRef());
+			
+			ORef clonedResourceAssignmentRef = createClonedResourceAssignment(sharedResourceAssignment);
+			
+			resourceAssignmentRefsToUpdate.add(clonedResourceAssignmentRef);
+			final IdList resourceAssignmentIds = resourceAssignmentRefsToUpdate.convertToIdList(ResourceAssignment.getObjectType());
+			getProject().setObjectData(indicator, Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentIds.toString());
+		}
+	}
+
+	private ORef createClonedResourceAssignment(ResourceAssignment sharedResourceAssignment) throws Exception
+	{
+		ORef clonedResourceAssignmentRef = getProject().createObject(ResourceAssignment.getObjectType());
+		CommandSetObjectData[] commandsToClone = sharedResourceAssignment.createCommandsToClone(clonedResourceAssignmentRef.getObjectId());
+		for (int index = 0; index < commandsToClone.length; ++index)
+		{
+			CommandSetObjectData command = commandsToClone[index];
+			String tag = command.getFieldTag();
+			String dataAsString = command.getDataValue();
+			getProject().setObjectData(clonedResourceAssignmentRef, tag, dataAsString);
+		}
+		
+		return clonedResourceAssignmentRef;
+	}
+
+	private ORefSet getResourceAssignmentsReferredByMultipleIndicators()
+	{
+		ORefSet resourceAssignmentRefs = getProject().getAssignmentPool().getRefSet();
+		ORefSet resourceAssignmentsReferredByMultipleIndicators = new ORefSet();
+		for (ORef resourceAssignmentRef : resourceAssignmentRefs)
+		{
+			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRef);
+			ORefList indicatorReferrerRefs = resourceAssignment.findObjectsThatReferToUs(Indicator.getObjectType());
+			if (indicatorReferrerRefs.size() > 1)
+			{
+				resourceAssignmentsReferredByMultipleIndicators.add(resourceAssignmentRef);
+			}
+		}
+		
+		return resourceAssignmentsReferredByMultipleIndicators;
+	}
+	
 	public ORefSet fixIndicatorsReferringToMissingAssignments() throws Exception
 	{
 		ORefSet allIndicatorRefs = getProject().getIndicatorPool().getRefSet();

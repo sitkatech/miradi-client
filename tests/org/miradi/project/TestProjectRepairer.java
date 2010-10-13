@@ -70,6 +70,66 @@ public class TestProjectRepairer extends TestCaseWithProject
 		repairer = new ProjectRepairer(getProject());
 	}
 	
+	public void testTwoIndicatorsReferringToSameResourceAssignemnts() throws Exception
+	{
+		IdList resourceAssignmentIds = createResourceAssignments();
+		Indicator indicatorA = createIndicatorWithResourceAssignments(resourceAssignmentIds);
+		Indicator indicatorB = createIndicatorWithResourceAssignments(resourceAssignmentIds);
+		
+		new ProjectRepairer(getProject()).repairProblemsWherePossible();
+
+		verifySharedResourceAssignmentRefsGotRepaired(indicatorA, indicatorB);
+	}
+	
+	public void testTwoIndicatorsReferringToDifferentResourceAssignments() throws Exception
+	{
+		Indicator indicatorA = createIndicatorWithResourceAssignments();
+		Indicator indicatorB = createIndicatorWithResourceAssignments();
+		
+		new ProjectRepairer(getProject()).repairProblemsWherePossible();
+		
+		verifySharedResourceAssignmentRefsGotRepaired(indicatorA, indicatorB);
+	}
+	
+	private void verifySharedResourceAssignmentRefsGotRepaired(Indicator indicatorA, Indicator indicatorB)
+	{
+		final ORefList resourceAssignmentRefsA = indicatorA.getResourceAssignmentRefs();
+		final ORefList resourceAssignmentRefsB = indicatorB.getResourceAssignmentRefs();
+		assertFalse("ResourceAssignments are still shared between Indicators", resourceAssignmentRefsA.containsAnyOf(resourceAssignmentRefsB));
+	}
+	
+	private Indicator createIndicatorWithResourceAssignments(IdList resourceAssignmentIds) throws Exception
+	{
+		Indicator indicator = getProject().createIndicator(getProject().createStrategy());
+		addResourceAssignments(indicator, resourceAssignmentIds);
+	
+		return indicator;
+	}
+	
+	private Indicator createIndicatorWithResourceAssignments() throws Exception
+	{
+		IdList resourceAssignmentIds = createResourceAssignments();
+		Indicator indicator = getProject().createIndicator(getProject().createStrategy());
+		addResourceAssignments(indicator, resourceAssignmentIds);
+	
+		return indicator;
+	}
+
+	private void addResourceAssignments(Indicator indicator, IdList resourceAssignmentIds) throws Exception
+	{
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, new IdList(resourceAssignmentIds));
+	}
+
+	private IdList createResourceAssignments() throws Exception
+	{
+		ResourceAssignment resourceAssignmentA = getProject().createResourceAssignment();
+		ResourceAssignment resourceAssignmentB = getProject().createResourceAssignment();
+		IdList resourceAssignmentIds = new IdList(ResourceAssignment.getObjectType());
+		resourceAssignmentIds.addRef(resourceAssignmentA.getRef());
+		resourceAssignmentIds.addRef(resourceAssignmentB.getRef());
+		return resourceAssignmentIds;
+	}
+	
 	public void testIndicatorsWithNoResourceAssignments() throws Exception
 	{
 		Indicator indicator = getProject().createIndicator(getProject().createStrategy());
