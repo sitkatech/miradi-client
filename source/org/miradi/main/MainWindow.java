@@ -68,6 +68,7 @@ import org.miradi.objecthelpers.StringMap;
 import org.miradi.objecthelpers.TwoLevelEntry;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
@@ -558,17 +559,28 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		ProjectRepairer repairer = new ProjectRepairer(project);
 		quarantineOrphans(repairer);
 		repairer.repairProblemsWherePossible();
-		scanForSeriousCorruption(repairer);
 		repairIndicatorsReferringToMissingResourceAssignments(repairer);
+		scanForSeriousCorruption(repairer);
 	}
 
 	protected void repairIndicatorsReferringToMissingResourceAssignments(ProjectRepairer repairer) throws Exception
 	{
-		ORefSet repairedIndicatorRefs = repairer.fixIndicatorsReferringToMissingAssignments();
-		if (repairedIndicatorRefs.size() == 0)
+		ORefSet repairedIndicatorRefSet = repairer.fixIndicatorsReferringToMissingAssignments();
+		if (repairedIndicatorRefSet.size() == 0)
 			return;
 		
-		EAM.notifyDialog(EAM.substitute(EAM.text("%s Indicators referring to missing resource assignments were found and repaired"), Integer.toString(repairedIndicatorRefs.size())));
+		ORefList repairedIndicatorRefs = repairedIndicatorRefSet.toRefList();
+		String repairedIndicatorNames = "";
+		for (int index = 0; index < repairedIndicatorRefs.size(); ++index)
+		{
+			Indicator indicator = Indicator.find(getProject(), repairedIndicatorRefs.get(index));
+			if (index != 0)
+				repairedIndicatorNames += "\n";
+			
+			repairedIndicatorNames += indicator.getFullName();
+		}
+		
+		EAM.notifyDialog(EAM.substitute(EAM.text("The following Indicators had corrupted resource assignments which have been removed:\n%s"), repairedIndicatorNames));
 	}
 
 	private void quarantineOrphans(ProjectRepairer repairer) throws Exception
