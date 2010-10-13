@@ -559,6 +559,16 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		quarantineOrphans(repairer);
 		repairer.repairProblemsWherePossible();
 		scanForSeriousCorruption(repairer);
+		repairIndicatorsReferringToMissingResourceAssignments(repairer);
+	}
+
+	protected void repairIndicatorsReferringToMissingResourceAssignments(ProjectRepairer repairer) throws Exception
+	{
+		ORefSet repairedIndicatorRefs = repairer.fixIndicatorsReferringToMissingAssignments();
+		if (repairedIndicatorRefs.size() == 0)
+			return;
+		
+		EAM.notifyDialog(EAM.substitute(EAM.text("%s Indicators referring to missing resource assignments were found and repaired"), Integer.toString(repairedIndicatorRefs.size())));
 	}
 
 	private void quarantineOrphans(ProjectRepairer repairer) throws Exception

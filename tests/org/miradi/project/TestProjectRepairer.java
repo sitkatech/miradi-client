@@ -28,6 +28,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.AccountingCode;
@@ -69,6 +70,53 @@ public class TestProjectRepairer extends TestCaseWithProject
 		repairer = new ProjectRepairer(getProject());
 	}
 	
+	public void testIndicatorsWithNoResourceAssignments() throws Exception
+	{
+		Indicator indicator = getProject().createIndicator(getProject().createStrategy());
+		
+		verifyRepairingIndicator(indicator, new ORefList(), 0);
+	}
+	
+	public void testIndicatorWithExistingResourceAssignment() throws Exception
+	{
+		Indicator indicator = getProject().createIndicator(getProject().createStrategy());
+		ResourceAssignment resourceAssignment = getProject().createResourceAssignment();
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, new IdList(resourceAssignment));
+		
+		verifyRepairingIndicator(indicator, new ORefList(resourceAssignment), 0);
+	}
+	
+	public void testIndicatorReferringToMissingResourceAssignment() throws Exception
+	{
+		Indicator indicator = getProject().createIndicator(getProject().createStrategy());
+		ORef referringToNonExistingAssginmentRef = new ORef(ResourceAssignment.getObjectType(), new BaseId(99999));
+		IdList resourceAssignmentIds = new IdList(ResourceAssignment.getObjectType());
+		resourceAssignmentIds.addRef(referringToNonExistingAssginmentRef);
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentIds);
+		
+		verifyRepairingIndicator(indicator, new ORefList(), 1);
+	}
+	
+	public void testIndicatorReferringToExistingAndNonExistingResourceAssignment() throws Exception
+	{
+		Indicator indicator = getProject().createIndicator(getProject().createStrategy());
+		ResourceAssignment resourceAssignment = getProject().createResourceAssignment();
+		ORef referringToNonExistingAssginmentRef = new ORef(ResourceAssignment.getObjectType(), new BaseId(99999));
+		IdList resourceAssignmentIds = new IdList(ResourceAssignment.getObjectType());
+		resourceAssignmentIds.addRef(referringToNonExistingAssginmentRef);
+		resourceAssignmentIds.add(resourceAssignment.getId());
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentIds);
+		
+		verifyRepairingIndicator(indicator, new ORefList(resourceAssignment), 1);
+	}
+	
+	private void verifyRepairingIndicator(Indicator indicator, ORefList expectedAssignmentRefs, int expectedRepairedIndicatorCount) throws Exception
+	{
+		ORefSet repairedIndicatorRefs = new ProjectRepairer(getProject()).fixIndicatorsReferringToMissingAssignments();
+		assertEquals("incorrect number if indicators were repaired?", expectedRepairedIndicatorCount, repairedIndicatorRefs.size());
+		assertEquals("indicator's assignment refs were not repaired", expectedAssignmentRefs, indicator.getResourceAssignmentRefs());
+	}
+
 	public void testRepaireAssignmentsReferringToMissingObjects() throws Exception
 	{
 		ResourceAssignment resourceAssignment = getProject().createResourceAssignment();

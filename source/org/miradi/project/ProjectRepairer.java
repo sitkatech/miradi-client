@@ -43,6 +43,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
@@ -101,6 +102,42 @@ public class ProjectRepairer
 		repairUnsnappedNodes();
 		removeInvalidDiagramLinkRefs();
 		fixAssignmentsReferringToMissingObjects();
+	}
+
+	public ORefSet fixIndicatorsReferringToMissingAssignments() throws Exception
+	{
+		ORefSet allIndicatorRefs = getProject().getIndicatorPool().getRefSet();
+		ORefSet repairedIndicatorRefs = new ORefSet();
+		for(ORef indicatorRef : allIndicatorRefs)
+		{
+			Indicator indicator = Indicator.find(getProject(), indicatorRef);
+			ORefList resourceAssignmentRefs = indicator.getResourceAssignmentRefs();
+			ORefList existingResourceAssignmentRefs = extractOnlyExistingResourceAssignmentRefs(resourceAssignmentRefs);
+			IdList resourceAssignmentIds = existingResourceAssignmentRefs.convertToIdList(ResourceAssignment.getObjectType());
+			if (!resourceAssignmentRefs.equals(existingResourceAssignmentRefs))
+			{
+				getProject().setObjectData(indicator, Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentIds.toString());
+				repairedIndicatorRefs.add(indicatorRef);
+			}
+		}
+		
+		return repairedIndicatorRefs;
+	}
+
+	private ORefList extractOnlyExistingResourceAssignmentRefs(ORefList resourceAssignmentRefs)
+	{
+		ORefList existingResourceAssignmentRefs = new ORefList();
+		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
+		{
+			ORef resourceAssignmentRef = resourceAssignmentRefs.get(index);
+			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRef);
+			if (resourceAssignment != null)
+			{
+				existingResourceAssignmentRefs.add(resourceAssignmentRef);
+			}
+		}
+		
+		return existingResourceAssignmentRefs;
 	}
 
 	private void fixAssignmentsReferringToMissingObjects() throws Exception
