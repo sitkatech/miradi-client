@@ -24,6 +24,7 @@ import java.util.Vector;
 import org.martus.util.MultiCalendar;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
@@ -158,6 +159,33 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 		getProject().executeCommandsAsTransaction(commandsToDeleteIndicator);
 		
 		assertEquals("Indicator was not removed from objective relevancy list?", 0, objective.getAllIndicatorRefsFromRelevancyOverrides().size());
+	}
+	
+	public void testCreateCommandsToClone() throws Exception
+	{
+		Cause indicatorOwner = getProject().createCause();
+		Indicator indicator = getProject().createIndicator(indicatorOwner);
+		ResourceAssignment assignment = getProject().createResourceAssignment();
+		IdList assignmentIds = new IdList(ResourceAssignment.getObjectType(), new BaseId[] { assignment.getId() });
+		indicator.setData(Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, assignmentIds.toString());
+		Command[] commandsToClone = indicator.createCommandsToClone(indicator.getId());
+		Vector<String> modifiedTags = extractSetDataCommands(commandsToClone, indicator.getRef());
+		assertNotContains(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, modifiedTags);
+	}
+
+	private Vector<String> extractSetDataCommands(Command[] commandsToClone, ORef ref)
+	{
+		Vector<String> tags = new Vector<String>();
+		for(int i = 0; i < commandsToClone.length; ++i)
+		{
+			if(commandsToClone[i].getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			{
+				CommandSetObjectData command = (CommandSetObjectData) commandsToClone[i];
+				if(command.getObjectORef().equals(ref))
+					tags.add(command.getFieldTag());
+			}
+		}
+		return tags;
 	}
 
 	private ProjectForTesting project;
