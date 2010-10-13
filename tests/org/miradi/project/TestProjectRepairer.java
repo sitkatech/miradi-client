@@ -74,7 +74,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 	{
 		Indicator indicator = getProject().createIndicator(getProject().createStrategy());
 		
-		verifyRepairingIndicator(indicator, new ORefList(), 0);
+		verifyRepairedIndicatorMissingAssignments(indicator, new ORefList(), 0);
 	}
 	
 	public void testIndicatorWithExistingResourceAssignment() throws Exception
@@ -83,7 +83,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		ResourceAssignment resourceAssignment = getProject().createResourceAssignment();
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, new IdList(resourceAssignment));
 		
-		verifyRepairingIndicator(indicator, new ORefList(resourceAssignment), 0);
+		verifyRepairedIndicatorMissingAssignments(indicator, new ORefList(resourceAssignment), 0);
 	}
 	
 	public void testIndicatorReferringToMissingResourceAssignment() throws Exception
@@ -94,7 +94,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		resourceAssignmentIds.addRef(referringToNonExistingAssginmentRef);
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentIds);
 		
-		verifyRepairingIndicator(indicator, new ORefList(), 1);
+		verifyRepairedIndicatorMissingAssignments(indicator, new ORefList(), 1);
 	}
 	
 	public void testIndicatorReferringToExistingAndNonExistingResourceAssignment() throws Exception
@@ -107,10 +107,10 @@ public class TestProjectRepairer extends TestCaseWithProject
 		resourceAssignmentIds.add(resourceAssignment.getId());
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentIds);
 		
-		verifyRepairingIndicator(indicator, new ORefList(resourceAssignment), 1);
+		verifyRepairedIndicatorMissingAssignments(indicator, new ORefList(resourceAssignment), 1);
 	}
 	
-	private void verifyRepairingIndicator(Indicator indicator, ORefList expectedAssignmentRefs, int expectedRepairedIndicatorCount) throws Exception
+	private void verifyRepairedIndicatorMissingAssignments(Indicator indicator, ORefList expectedAssignmentRefs, int expectedRepairedIndicatorCount) throws Exception
 	{
 		ORefSet repairedIndicatorRefs = new ProjectRepairer(getProject()).fixIndicatorsReferringToMissingAssignments();
 		assertEquals("incorrect number if indicators were repaired?", expectedRepairedIndicatorCount, repairedIndicatorRefs.size());
