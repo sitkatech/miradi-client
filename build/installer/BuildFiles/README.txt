@@ -4,7 +4,7 @@ Copyright 2005-2010, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION 3.2.1
+VERSION 3.2.3
 
 License and Copying
 
@@ -143,10 +143,11 @@ GNU/Linux:
 ---------------------
 Changes
 
-Miradi 3.2.3 has improvements and fixes some minor problems in 3.2.x:
+Miradi 3.2.3 has the following improvements:
 
-- Improvements to the Spanish translations
 - Eliminate incorrect warning that Miradi should be upgraded
+- Improvements to the Spanish translations
+- Fixed potential data corruption problem with "Create Indicator From..."
 - Work Plan "When" column didn't allow entry of specific days
 - Export to CPMZ didn't include Strategy-Goal association data
 - Updates to the list of Operating Units on the TNC tab 
