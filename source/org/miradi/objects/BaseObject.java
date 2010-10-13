@@ -886,7 +886,7 @@ abstract public class BaseObject
 				continue;
 			if(isPseudoField(tag))
 				continue;
-			if(isIdListField(tag))
+			if(isIdListTag(tag))
 				continue;
 			if(isRefList(tag))
 				continue;
@@ -896,12 +896,6 @@ abstract public class BaseObject
 		return (CommandSetObjectData[])commands.toArray(new CommandSetObjectData[0]);
 	}
 
-	private boolean isIdListField(String tag)
-	{
-		return tag.indexOf("_IDS")>0;
-	}
-	
-	
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
