@@ -236,7 +236,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	    {
 	    	try
 	    	{
-	    		if (event.getID() == KeyEvent.KEY_RELEASED) 
+	    		if (event.getID() == KeyEvent.KEY_PRESSED) 
 	    		{
 	    			if (event.getKeyCode() == KeyEvent.VK_UP)
 	    				new SingleRowSelectionHandler().selectUp();
