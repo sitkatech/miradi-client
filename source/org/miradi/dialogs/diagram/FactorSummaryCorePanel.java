@@ -99,7 +99,12 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 
 		ObjectsActionButton chooseTagForFactorButton = createObjectsActionButton(actions.getObjectsAction(ActionManageFactorTags.class), getPicker());
 		ObjectDataInputField readOnlyTaggedObjects = createReadOnlyObjectList(factorToEdit.getRef().getObjectType(), Factor.PSEUDO_TAG_REFERRING_TAG_REFS);
-		addFieldWithEditButton(EAM.text("Tags"), readOnlyTaggedObjects, chooseTagForFactorButton);
+		addFieldWithEditButton(getTagsLabel(), readOnlyTaggedObjects, chooseTagForFactorButton);
+	}
+	
+	public static String getTagsLabel()
+	{
+		return EAM.text("Tags");
 	}
 
 	private void addOptionalDraftStatusCheckBox(String tag)

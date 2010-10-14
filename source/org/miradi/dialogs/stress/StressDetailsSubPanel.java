@@ -21,17 +21,21 @@ package org.miradi.dialogs.stress;
 
 import javax.swing.JDialog;
 
+import org.miradi.actions.ActionManageFactorTags;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.diagram.FactorSummaryCorePanel;
 import org.miradi.icons.StressIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Factor;
 import org.miradi.objects.Stress;
 import org.miradi.project.Project;
 import org.miradi.questions.ScopeThreatRatingQuestion;
 import org.miradi.questions.SeverityThreatRatingQuestion;
 import org.miradi.questions.StressRatingChoiceQuestion;
+import org.miradi.utils.ObjectsActionButton;
 
 public class StressDetailsSubPanel extends ObjectDataInputPanel
 {
@@ -48,6 +52,10 @@ public class StressDetailsSubPanel extends ObjectDataInputPanel
 		addField(createMultilineField(Stress.TAG_DETAIL));
 		if (projectToUse.isStressBaseMode())
 			addRatingsFields();
+		
+		ObjectsActionButton chooseTagForFactorButton = createObjectsActionButton(getMainWindow().getActions().getObjectsAction(ActionManageFactorTags.class), getPicker());
+		ObjectDataInputField readOnlyTaggedObjects = createReadOnlyObjectList(Stress.getObjectType(), Factor.PSEUDO_TAG_REFERRING_TAG_REFS);
+		addFieldWithEditButton(FactorSummaryCorePanel.getTagsLabel(), readOnlyTaggedObjects, chooseTagForFactorButton);
 		
 		updateFieldsFromProject();
 	}
