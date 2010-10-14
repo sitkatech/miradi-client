@@ -200,14 +200,14 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 			int indexToSelect = 0;
 			if (directionDelta == MOVE_DOWN_DIRECTION_DELTA)
 			{
-				indexToSelect = indexOfSelectedRow - MOVE_DOWN_DIRECTION_DELTA;
+				indexToSelect = indexOfSelectedRow - directionDelta;
 				if (indexToSelect >= rows.size())
 					indexToSelect = 0;
 			}
 
 			if (directionDelta == MOVE_UP_DIRECTION_DELTA)
 			{
-				indexToSelect = indexOfSelectedRow - MOVE_UP_DIRECTION_DELTA;
+				indexToSelect = indexOfSelectedRow - directionDelta;
 				if (indexToSelect < 0 )
 					indexToSelect = getLastRowIndex(rows);
 			}
@@ -393,5 +393,4 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	private static final int INDENT_PER_LEVEL = 20;
 	private static final int MOVE_UP_DIRECTION_DELTA = 1;
 	private static final int MOVE_DOWN_DIRECTION_DELTA = -1;
-
 }
