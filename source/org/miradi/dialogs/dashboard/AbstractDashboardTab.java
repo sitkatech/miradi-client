@@ -29,6 +29,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.LinkedHashMap;
 import java.util.Set;
+import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -175,53 +176,60 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	{
 		private void selectUp() throws Exception
 		{
-			select(1);
+			select(MOVE_UP_DELTA);
 		}
 		
 		private void selectDown() throws Exception
 		{
-			select(-1);
+			select(MOVE_DOWN_DELTA);
 		}
 
-		private void select(int directionDelta) throws Exception
+		private void select(String directionDelta) throws Exception
 		{
-//FIXME urgent - this is under construction, needs to be uncommented and finished 			
-//			Set<SelectableRow> rowsSet = selectableComponentToContentsFileNameMap.keySet();
-//			SelectableRow currenctlySelected = findSelectedRow();
-//			Vector<SelectableRow> rows = new Vector<SelectableRow>(rowsSet);
-//			if(currenctlySelected == null)
-//			{
-//				rows.firstElement().selectRow();
-//				return;
-//			}
-//			
-//			SelectableRow rowToSelect = null;
-//			int indexOfSelectedRow = rows.indexOf(currenctlySelected);
-//			System.out.println(rows.size() + " s = " + indexOfSelectedRow);
-//			
-//			int indexToSelect = 0;
-//			if (indexOfSelectedRow + directionDelta >= 0)
-//				indexToSelect = indexOfSelectedRow + directionDelta;
-//			
-//			if (indexOfSelectedRow - directionDelta  < rows.size())
-//				indexToSelect = indexOfSelectedRow - directionDelta;
-//			
-//			rowToSelect = rows.get(indexToSelect);
-//			clearSelection();
-//			rowToSelect.selectRow();
+			Set<SelectableRow> rowsSet = selectableComponentToContentsFileNameMap.keySet();
+			SelectableRow currenctlySelected = findSelectedRow();
+			Vector<SelectableRow> rows = new Vector<SelectableRow>(rowsSet);
+			if(currenctlySelected == null)
+			{
+				rows.firstElement().selectRow();
+				return;
+			}
+			
+			SelectableRow rowToSelect = null;
+			int indexOfSelectedRow = rows.indexOf(currenctlySelected);
+			System.out.println(rows.size() + " s = " + indexOfSelectedRow);
+			
+			int indexToSelect = 0;
+			if (directionDelta.equals(MOVE_DOWN_DELTA))
+			{
+				indexToSelect = indexOfSelectedRow + DELTA_MOVE_COUNT;
+				if (indexToSelect >= rows.size())
+					indexToSelect = 0;
+			}
+
+			if (directionDelta.equals(MOVE_UP_DELTA))
+			{
+				indexToSelect = indexOfSelectedRow - DELTA_MOVE_COUNT;
+				if (indexToSelect < 0 )
+					indexToSelect = rows.size() - 1;
+			}
+			
+			rowToSelect = rows.get(indexToSelect);
+			clearSelection();
+			rowToSelect.selectRow();
 		}
 
-//		private SelectableRow findSelectedRow()
-//		{
-//			Set<SelectableRow> rows = selectableComponentToContentsFileNameMap.keySet();
-//			for(SelectableRow selectableRow : rows)
-//			{
-//				if(selectableRow.isSelected())
-//					return selectableRow;
-//			}
-//
-//			return null;
-//		}
+		private SelectableRow findSelectedRow()
+		{
+			Set<SelectableRow> rows = selectableComponentToContentsFileNameMap.keySet();
+			for(SelectableRow selectableRow : rows)
+			{
+				if(selectableRow.isSelected())
+					return selectableRow;
+			}
+
+			return null;
+		}
 	}
 	
 	private class KeyDispatcher implements KeyEventDispatcher 
@@ -380,4 +388,8 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	private PersistentHorizontalSplitPane splitPane;
 	private KeyDispatcher dispatcher;
 	private static final int INDENT_PER_LEVEL = 20;
+	private static final String MOVE_UP_DELTA = "MoveUp";
+	private static final String MOVE_DOWN_DELTA = "MoveDown";
+	private static final int DELTA_MOVE_COUNT = 1;
+
 }
