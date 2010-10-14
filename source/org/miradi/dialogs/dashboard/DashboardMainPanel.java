@@ -48,6 +48,8 @@ public class DashboardMainPanel extends DisposablePanel
 	@Override
 	public void dispose()
 	{
+		super.dispose();
+		
 		disposeTab(conceptualizeDashboardTab);
 		disposeTab(planActionsAndMonitoringTab);
 		disposeTab(actionsAndMonitoringTab);
