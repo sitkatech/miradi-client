@@ -176,12 +176,12 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	{
 		private void selectUp() throws Exception
 		{
-			select(MOVE_UP_DIRECTION_TAG);
+			select(MOVE_UP_DIRECTION_DELTA);
 		}
 		
 		private void selectDown() throws Exception
 		{
-			select(MOVE_DOWN_DIRECTION_TAG);
+			select(MOVE_DOWN_DIRECTION_DELTA);
 		}
 
 		private void select(int directionDelta) throws Exception
@@ -198,16 +198,16 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 			SelectableRow rowToSelect = null;
 			int indexOfSelectedRow = rows.indexOf(currentlySelected);
 			int indexToSelect = 0;
-			if (directionDelta == MOVE_DOWN_DIRECTION_TAG)
+			if (directionDelta == MOVE_DOWN_DIRECTION_DELTA)
 			{
-				indexToSelect = indexOfSelectedRow + DELTA_MOVE_COUNT;
+				indexToSelect = indexOfSelectedRow - MOVE_DOWN_DIRECTION_DELTA;
 				if (indexToSelect >= rows.size())
 					indexToSelect = 0;
 			}
 
-			if (directionDelta == MOVE_UP_DIRECTION_TAG)
+			if (directionDelta == MOVE_UP_DIRECTION_DELTA)
 			{
-				indexToSelect = indexOfSelectedRow - DELTA_MOVE_COUNT;
+				indexToSelect = indexOfSelectedRow - MOVE_UP_DIRECTION_DELTA;
 				if (indexToSelect < 0 )
 					indexToSelect = getLastRowIndex(rows);
 			}
@@ -391,8 +391,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	private PersistentHorizontalSplitPane splitPane;
 	private KeyDispatcher dispatcher;
 	private static final int INDENT_PER_LEVEL = 20;
-	private static final int MOVE_UP_DIRECTION_TAG = 1;
-	private static final int MOVE_DOWN_DIRECTION_TAG = -1;
-	private static final int DELTA_MOVE_COUNT = 1;
+	private static final int MOVE_UP_DIRECTION_DELTA = 1;
+	private static final int MOVE_DOWN_DIRECTION_DELTA = -1;
 
 }
