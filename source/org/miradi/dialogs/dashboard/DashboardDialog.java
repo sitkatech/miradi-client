@@ -37,14 +37,6 @@ public class DashboardDialog extends ModelessDialogWithClose
 	}
 	
 	@Override
-	public void dispose()
-	{
-		mainPanel.dispose();
-		
-		super.dispose();
-	}
-	
-	@Override
 	public void becomeActive()
 	{
 		super.becomeActive();
