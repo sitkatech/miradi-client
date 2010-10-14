@@ -184,7 +184,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 			select(MOVE_DOWN_DIRECTION_TAG);
 		}
 
-		private void select(String directionDelta) throws Exception
+		private void select(int directionDelta) throws Exception
 		{
 			Set<SelectableRow> rowsSet = selectableComponentToContentsFileNameMap.keySet();
 			SelectableRow currentlySelected = findSelectedRow();
@@ -198,14 +198,14 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 			SelectableRow rowToSelect = null;
 			int indexOfSelectedRow = rows.indexOf(currentlySelected);
 			int indexToSelect = 0;
-			if (directionDelta.equals(MOVE_DOWN_DIRECTION_TAG))
+			if (directionDelta == MOVE_DOWN_DIRECTION_TAG)
 			{
 				indexToSelect = indexOfSelectedRow + DELTA_MOVE_COUNT;
 				if (indexToSelect >= rows.size())
 					indexToSelect = 0;
 			}
 
-			if (directionDelta.equals(MOVE_UP_DIRECTION_TAG))
+			if (directionDelta == MOVE_UP_DIRECTION_TAG)
 			{
 				indexToSelect = indexOfSelectedRow - DELTA_MOVE_COUNT;
 				if (indexToSelect < 0 )
@@ -391,8 +391,8 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	private PersistentHorizontalSplitPane splitPane;
 	private KeyDispatcher dispatcher;
 	private static final int INDENT_PER_LEVEL = 20;
-	private static final String MOVE_UP_DIRECTION_TAG = "MoveUp";
-	private static final String MOVE_DOWN_DIRECTION_TAG = "MoveDown";
+	private static final int MOVE_UP_DIRECTION_TAG = 1;
+	private static final int MOVE_DOWN_DIRECTION_TAG = -1;
 	private static final int DELTA_MOVE_COUNT = 1;
 
 }
