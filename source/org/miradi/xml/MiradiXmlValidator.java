@@ -27,6 +27,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.xml.conpro.MiradiValidationDriver;
 import org.xml.sax.InputSource;
+import org.xml.sax.SAXParseException;
 
 import com.thaiopensource.util.PropertyMapBuilder;
 import com.thaiopensource.validate.SchemaReader;
@@ -53,6 +54,13 @@ abstract public class MiradiXmlValidator
 			try
 			{
 				return validationDriver.validate(xmlInputSource);
+			}
+			catch(SAXParseException e)
+			{
+				System.out.println("Parse error line " + e.getLineNumber() + ", column " + e.getColumnNumber());
+				System.out.println(" Public Id: " + e.getPublicId());
+				System.out.println(" System Id: " + e.getSystemId());
+				EAM.logException(e);
 			}
 			catch(Exception e)
 			{
