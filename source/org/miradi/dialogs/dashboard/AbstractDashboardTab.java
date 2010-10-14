@@ -198,20 +198,11 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 			SelectableRow rowToSelect = null;
 			int indexOfSelectedRow = rows.indexOf(currentlySelected);
 			int indexToSelect = indexOfSelectedRow + directionDelta;
-			if (indexToSelect >= rows.size())
-				indexToSelect = 0;
-
-			 if (indexToSelect < 0 )
-				indexToSelect = getLastRowIndex(rows);
 			
+			indexToSelect = (indexToSelect + rows.size()) % rows.size();
 			rowToSelect = rows.get(indexToSelect);
 			clearSelection();
 			rowToSelect.selectRow();
-		}
-
-		private int getLastRowIndex(Vector<SelectableRow> rows)
-		{
-			return rows.size() - 1;
 		}
 
 		private SelectableRow findSelectedRow()
