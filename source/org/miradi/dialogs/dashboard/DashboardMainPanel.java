@@ -40,10 +40,11 @@ public class DashboardMainPanel extends DisposablePanel
 		tabs = new PanelTabbedPane();
 		tabs.addChangeListener(new TabChangeListener());
 		createTabs();
+		setInitialTab();
 		addTabsToTabbedPane();
 		add(tabs);
 	}
-	
+
 	@Override
 	public void dispose()
 	{
@@ -91,12 +92,16 @@ public class DashboardMainPanel extends DisposablePanel
 
 	private void addTabsToTabbedPane()
 	{
-		currentTab = conceptualizeDashboardTab;
 		addTab(conceptualizeDashboardTab);
 		addTab(planActionsAndMonitoringTab);
 		addTab(actionsAndMonitoringTab);
 		addTab(analyzeAdaptAndUseTab);
 		addTab(captureAndShareLearningTab);
+	}
+	
+	private void setInitialTab()
+	{
+		currentTab = conceptualizeDashboardTab;
 	}
 	
 	private void addTab(AbstractDashboardTab tab)
