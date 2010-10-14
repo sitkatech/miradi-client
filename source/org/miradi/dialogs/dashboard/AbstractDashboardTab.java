@@ -209,12 +209,17 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 			{
 				indexToSelect = indexOfSelectedRow - DELTA_MOVE_COUNT;
 				if (indexToSelect < 0 )
-					indexToSelect = rows.size() - 1;
+					indexToSelect = getLastRowIndex(rows);
 			}
 			
 			rowToSelect = rows.get(indexToSelect);
 			clearSelection();
 			rowToSelect.selectRow();
+		}
+
+		private int getLastRowIndex(Vector<SelectableRow> rows)
+		{
+			return rows.size() - 1;
 		}
 
 		private SelectableRow findSelectedRow()
