@@ -187,16 +187,16 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		private void select(String directionDelta) throws Exception
 		{
 			Set<SelectableRow> rowsSet = selectableComponentToContentsFileNameMap.keySet();
-			SelectableRow currenctlySelected = findSelectedRow();
+			SelectableRow currentlySelected = findSelectedRow();
 			Vector<SelectableRow> rows = new Vector<SelectableRow>(rowsSet);
-			if(currenctlySelected == null)
+			if(currentlySelected == null)
 			{
 				rows.firstElement().selectRow();
 				return;
 			}
 			
 			SelectableRow rowToSelect = null;
-			int indexOfSelectedRow = rows.indexOf(currenctlySelected);
+			int indexOfSelectedRow = rows.indexOf(currentlySelected);
 			int indexToSelect = 0;
 			if (directionDelta.equals(MOVE_DOWN_DIRECTION_TAG))
 			{
