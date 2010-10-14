@@ -60,6 +60,8 @@ public class DashboardMainPanel extends DisposablePanel
 	@Override
 	public void becomeActive()
 	{
+		super.becomeActive();
+		
 		getCurrentTab().becomeActive();
 	}
 	
@@ -67,6 +69,8 @@ public class DashboardMainPanel extends DisposablePanel
 	public void becomeInactive()
 	{
 		getCurrentTab().becomeInactive();
+		
+		super.becomeInactive();
 	}
 
 	private AbstractObjectDataInputPanel getCurrentTab()
