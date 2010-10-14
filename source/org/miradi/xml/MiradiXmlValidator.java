@@ -57,9 +57,9 @@ abstract public class MiradiXmlValidator
 			}
 			catch(SAXParseException e)
 			{
-				System.out.println("Parse error line " + e.getLineNumber() + ", column " + e.getColumnNumber());
-				System.out.println(" Public Id: " + e.getPublicId());
-				System.out.println(" System Id: " + e.getSystemId());
+				EAM.logDebug("Parse error line " + e.getLineNumber() + ", column " + e.getColumnNumber());
+				EAM.logDebug(" Public Id: " + e.getPublicId());
+				EAM.logDebug(" System Id: " + e.getSystemId());
 				EAM.logException(e);
 			}
 			catch(Exception e)
