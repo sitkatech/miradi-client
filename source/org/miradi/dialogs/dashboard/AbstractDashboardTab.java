@@ -198,7 +198,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 			SelectableRow rowToSelect = null;
 			int indexOfSelectedRow = rows.indexOf(currentlySelected);
 			int indexToSelect = 0;
-			indexToSelect = indexOfSelectedRow - directionDelta;
+			indexToSelect = indexOfSelectedRow + directionDelta;
 			if (directionDelta == MOVE_DOWN_DIRECTION_DELTA)
 			{
 				if (indexToSelect >= rows.size())
@@ -390,6 +390,6 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	private PersistentHorizontalSplitPane splitPane;
 	private KeyDispatcher dispatcher;
 	private static final int INDENT_PER_LEVEL = 20;
-	private static final int MOVE_UP_DIRECTION_DELTA = 1;
-	private static final int MOVE_DOWN_DIRECTION_DELTA = -1;
+	private static final int MOVE_UP_DIRECTION_DELTA = -1;
+	private static final int MOVE_DOWN_DIRECTION_DELTA = 1;
 }
