@@ -151,6 +151,16 @@ public class IdList
 		return data.contains(id);
 	}
 	
+	public boolean containsAll(IdList other)
+	{
+		return data.containsAll(other.data);
+	}
+	
+	public boolean retainAll(IdList other)
+	{
+		return data.retainAll(other.data);
+	}
+	
 	public int find(BaseId id)
 	{
 		return data.indexOf(id);

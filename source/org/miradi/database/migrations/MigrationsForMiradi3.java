@@ -227,4 +227,10 @@ public class MigrationsForMiradi3
 		MoveBidirectionalValueFromFactorLinkToDiagramLinkMigration.moveBidirectionalValue();
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 59);
 	}
+	
+	public static void upgradeToVersion60() throws Exception
+	{
+		RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.removeMissingResourceAssignmentId();
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 60);
+	}
 }
