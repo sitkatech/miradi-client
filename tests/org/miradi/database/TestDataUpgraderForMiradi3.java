@@ -29,6 +29,7 @@ import org.martus.util.DirectoryUtils;
 import org.miradi.database.migrations.ConvertHighLevelEstimatesIntoAssignments;
 import org.miradi.database.migrations.EnsureNoMoreThanOneXenodataMigration;
 import org.miradi.database.migrations.MigrationsForMiradi3;
+import org.miradi.database.migrations.RemoveMissingResourceAssignmentIdsFromIndicatorsMigration;
 import org.miradi.database.migrations.ShareSameLabeledScopeBoxesMigration;
 import org.miradi.database.migrations.UpdateTncOpertingUnitMigration;
 import org.miradi.ids.BaseId;
@@ -49,6 +50,41 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 	public TestDataUpgraderForMiradi3(String name)
 	{
 		super(name);
+	}
+	
+	public void testCleaningUpIndicatorReferringToMissingResourceAssignmentId() throws Exception
+	{
+		String indicatorWithMissingAssignment = "{\"ThresholdDetails\":\"\",\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"{\\\"Ids\\\":[999]}\",\"FutureStatusSummary\":\"\",\"ExpenseRefs\":\"\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"\",\"Priority\":\"\",\"Detail\":\"\",\"FutureStatusRating\":\"\",\"TaskIds\":\"\",\"TimeStampModified\":\"1287088620511\",\"FutureStatusDate\":\"\",\"Label\":\"\",\"Id\":184,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
+		IdList expectedIdList = new IdList(RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE);
+		File jsonDir = createJsonDir();
+		verifyMissingResourceAssignmentIdsRemovedFromIndicator(jsonDir, indicatorWithMissingAssignment, expectedIdList);
+	}
+	
+	public void testCleaningUpIndicatorReferringToExistingResourceAssignmentId() throws Exception
+	{
+		String indicatorWithExistingAssignmentJsonString = "{\"ThresholdDetails\":\"\",\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"{\\\"Ids\\\":[13]}\",\"FutureStatusSummary\":\"\",\"ExpenseRefs\":\"\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"\",\"Priority\":\"\",\"Detail\":\"\",\"FutureStatusRating\":\"\",\"TaskIds\":\"\",\"TimeStampModified\":\"1287088620511\",\"FutureStatusDate\":\"\",\"Label\":\"\",\"Id\":184,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
+		String resourceAssignment = "{\"CategoryTwoRef\":\"\",\"AssignmentIds\":\"\",\"AccountingCode\":\"\",\"ResourceId\":\"\",\"TimeStampModified\":\"1287088600356\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"FundingSource\":\"\",\"CategoryOneRef\":\"\",\"Label\":\"\",\"Id\":13,\"ProgressReportRefs\":\"\"}";
+		createAndPopulateObjectDir(createJsonDir(), RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE, resourceAssignment);
+		IdList expectedIdList = new IdList(RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE);
+		expectedIdList.add(13);
+	
+		File jsonDir = createJsonDir();
+		verifyMissingResourceAssignmentIdsRemovedFromIndicator(jsonDir, indicatorWithExistingAssignmentJsonString, expectedIdList);
+	}
+
+	private void verifyMissingResourceAssignmentIdsRemovedFromIndicator(File jsonDir, String indicatorJsonString,	IdList expectedIdList)	throws Exception
+	{
+		final int INDICATOR_TYPE = 8;
+		int[] indictorIds = createAndPopulateObjectDir(jsonDir, INDICATOR_TYPE, indicatorJsonString);
+		
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion60();
+		
+		File indicatorDir = DataUpgrader.getObjectsDir(jsonDir, INDICATOR_TYPE);
+		File objectFile = new File(indicatorDir, Integer.toString(indictorIds[0]));
+		EnhancedJsonObject objectJson = new EnhancedJsonObject(readFile(objectFile));
+		IdList resourceAssignmentIds = objectJson.optIdList(RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE, "AssignmentIds");
+		assertEquals("Missing ResourceAssignment's id was not removed from indicator", expectedIdList, resourceAssignmentIds);
 	}
 	
 	public void testMovingUnidirectionalValueToDiagramLink() throws Exception
