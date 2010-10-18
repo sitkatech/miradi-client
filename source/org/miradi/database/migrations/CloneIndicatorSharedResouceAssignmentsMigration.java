@@ -97,10 +97,10 @@ public class CloneIndicatorSharedResouceAssignmentsMigration
 		File clonedResourceAssignmentFile = new File(getResourceAssignmentDir(), Integer.toString(highestId));
 		DataUpgrader.createFile(clonedResourceAssignmentFile, clonedResourceAssignmentJson.toString());
 
+		DataUpgrader.writeHighestIdToProjectFile(getJsonDir(), highestId);
 		ObjectManifest resourceAssignmentManifestObject = new ObjectManifest(JSONFile.read(getResourceAssignmentManifestFile()));
 		resourceAssignmentManifestObject.put(highestId);
 		DataUpgrader.writeJson(getResourceAssignmentManifestFile(), resourceAssignmentManifestObject.toJson());
-		DataUpgrader.writeHighestIdToProjectFile(getJsonDir(), highestId);
 		
 		return highestId;
 	}
