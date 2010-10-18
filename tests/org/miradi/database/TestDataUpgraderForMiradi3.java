@@ -102,8 +102,12 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 
 	public void testCleaningUpIndicatorReferringToMissingResourceAssignmentId() throws Exception
 	{
-		String indicatorWithMissingAssignment = "{\"ThresholdDetails\":\"\",\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"{\\\"Ids\\\":[999]}\",\"FutureStatusSummary\":\"\",\"ExpenseRefs\":\"\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"\",\"Priority\":\"\",\"Detail\":\"\",\"FutureStatusRating\":\"\",\"TaskIds\":\"\",\"TimeStampModified\":\"1287088620511\",\"FutureStatusDate\":\"\",\"Label\":\"\",\"Id\":184,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
+		String indicatorWithMissingAssignment = "{\"ThresholdDetails\":\"\",\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"{\\\"Ids\\\":[13, 999]}\",\"FutureStatusSummary\":\"\",\"ExpenseRefs\":\"\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"\",\"Priority\":\"\",\"Detail\":\"\",\"FutureStatusRating\":\"\",\"TaskIds\":\"\",\"TimeStampModified\":\"1287088620511\",\"FutureStatusDate\":\"\",\"Label\":\"\",\"Id\":184,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
+		String resourceAssignment = "{\"CategoryTwoRef\":\"\",\"AssignmentIds\":\"\",\"AccountingCode\":\"\",\"ResourceId\":\"\",\"TimeStampModified\":\"1287088600356\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"FundingSource\":\"\",\"CategoryOneRef\":\"\",\"Label\":\"\",\"Id\":13,\"ProgressReportRefs\":\"\"}";
+		createAndPopulateObjectDir(createJsonDir(), RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE, resourceAssignment);
+		
 		IdList expectedIdList = new IdList(RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE);
+		expectedIdList.add(13);
 		File jsonDir = createJsonDir();
 		verifyMissingResourceAssignmentIdsRemovedFromIndicator(jsonDir, indicatorWithMissingAssignment, expectedIdList);
 	}
