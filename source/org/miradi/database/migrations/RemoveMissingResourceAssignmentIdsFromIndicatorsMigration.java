@@ -27,17 +27,19 @@ import org.miradi.database.JSONFile;
 import org.miradi.database.ObjectManifest;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
+import org.miradi.objects.Indicator;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class RemoveMissingResourceAssignmentIdsFromIndicatorsMigration
 {
-	public static void removeMissingResourceAssignmentId() throws Exception
+	public static IdList removeMissingResourceAssignmentId() throws Exception
 	{	
+		IdList cleanedUpIndicatorIds = new IdList(Indicator.getObjectType());
 		if (!getIndicatorDir().exists())
-			return;
+			return cleanedUpIndicatorIds;
 		
 		if (!getIndicatorManifestFile().exists())
-			return;
+			return cleanedUpIndicatorIds;
 		
 		ObjectManifest indicatorManifest = new ObjectManifest(JSONFile.read(getIndicatorManifestFile()));
 		BaseId[] indicatorIds = indicatorManifest.getAllKeys();
@@ -52,8 +54,11 @@ public class RemoveMissingResourceAssignmentIdsFromIndicatorsMigration
 			{
 				indicatorJson.put(ASSIGNMENT_IDS_TAG, onlyExistingResourceAssignmentIds.toString());
 				DataUpgrader.writeJson(indicatorFile, indicatorJson);
+				cleanedUpIndicatorIds.add(indicatorId);
 			}
 		}
+		
+		return cleanedUpIndicatorIds;
 	}
 
 	private static IdList extractExistingResourceAssignmentIds(IdList resourceAssignmentIds) throws Exception

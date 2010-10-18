@@ -106,10 +106,15 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		String resourceAssignment = "{\"CategoryTwoRef\":\"\",\"AssignmentIds\":\"\",\"AccountingCode\":\"\",\"ResourceId\":\"\",\"TimeStampModified\":\"1287088600356\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"FundingSource\":\"\",\"CategoryOneRef\":\"\",\"Label\":\"\",\"Id\":13,\"ProgressReportRefs\":\"\"}";
 		createAndPopulateObjectDir(createJsonDir(), RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE, resourceAssignment);
 		
+		final int INDICATOR_TYPE = 8;
+		IdList expectedUpdatedIndicatorIds = new IdList(INDICATOR_TYPE);
+		expectedUpdatedIndicatorIds.add(184);
+		
 		IdList expectedIdList = new IdList(RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE);
 		expectedIdList.add(13);
+		
 		File jsonDir = createJsonDir();
-		verifyMissingResourceAssignmentIdsRemovedFromIndicator(jsonDir, indicatorWithMissingAssignment, expectedIdList);
+		verifyMissingResourceAssignmentIdsRemovedFromIndicator(jsonDir, indicatorWithMissingAssignment, expectedUpdatedIndicatorIds, expectedIdList);
 	}
 	
 	public void testCleaningUpIndicatorReferringToExistingResourceAssignmentId() throws Exception
@@ -119,18 +124,22 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		createAndPopulateObjectDir(createJsonDir(), RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE, resourceAssignment);
 		IdList expectedIdList = new IdList(RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE);
 		expectedIdList.add(13);
+		
+		final int INDICATOR_TYPE = 8;
+		IdList expectedUpdatedIndicatorIds = new IdList(INDICATOR_TYPE);
 	
 		File jsonDir = createJsonDir();
-		verifyMissingResourceAssignmentIdsRemovedFromIndicator(jsonDir, indicatorWithExistingAssignmentJsonString, expectedIdList);
+		verifyMissingResourceAssignmentIdsRemovedFromIndicator(jsonDir, indicatorWithExistingAssignmentJsonString, expectedUpdatedIndicatorIds, expectedIdList);
 	}
 
-	private void verifyMissingResourceAssignmentIdsRemovedFromIndicator(File jsonDir, String indicatorJsonString,	IdList expectedIdList)	throws Exception
+	private void verifyMissingResourceAssignmentIdsRemovedFromIndicator(File jsonDir, String indicatorJsonString, IdList expectedUpdatedIndicatorIds, IdList expectedIdList)	throws Exception
 	{
 		final int INDICATOR_TYPE = 8;
 		int[] indictorIds = createAndPopulateObjectDir(jsonDir, INDICATOR_TYPE, indicatorJsonString);
 		
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
-		MigrationsForMiradi3.upgradeToVersion60();
+		IdList updatedIndicatorIds = RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.removeMissingResourceAssignmentId();
+		assertEquals("Incorrect indicators updated?", expectedUpdatedIndicatorIds, updatedIndicatorIds);
 		
 		File indicatorDir = DataUpgrader.getObjectsDir(jsonDir, INDICATOR_TYPE);
 		File objectFile = new File(indicatorDir, Integer.toString(indictorIds[0]));

@@ -26,6 +26,7 @@ import org.miradi.database.DataUpgrader;
 import org.miradi.database.JSONFile;
 import org.miradi.database.ObjectManifest;
 import org.miradi.ids.BaseId;
+import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.utils.CodeList;
@@ -230,7 +231,10 @@ public class MigrationsForMiradi3
 	
 	public static void upgradeToVersion60() throws Exception
 	{
-		RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.removeMissingResourceAssignmentId();
+		IdList updatedIndicatorIds = RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.removeMissingResourceAssignmentId();
+		if ( updatedIndicatorIds.size() > 0)
+			EAM.notifyDialog(EAM.text("Missing Resource Assignment Id(s) were removed from Indicator(s)."));
+		
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 60);
 	}
 	
