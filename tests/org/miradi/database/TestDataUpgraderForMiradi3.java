@@ -52,6 +52,54 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		super(name);
 	}
 	
+	public void testCloneAndDetachSharedResourceAssignmentFromIndicator() throws Exception
+	{
+		String indicatorWithSharedResourceAssignment = "{\"ThresholdDetails\":\"\",\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"{\\\"Ids\\\":[158]}\",\"FutureStatusSummary\":\"\",\"ExpenseRefs\":\"\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"\",\"Priority\":\"\",\"Detail\":\"\",\"FutureStatusRating\":\"\",\"TaskIds\":\"\",\"TimeStampModified\":\"1287161606486\",\"FutureStatusDate\":\"\",\"Label\":\"\",\"Id\":29,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
+		String indicatorWithSharedAndUnsharedResourceAssignment = "{\"ThresholdDetails\":\"\",\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"{\\\"Ids\\\":[158,170]}\",\"FutureStatusSummary\":\"\",\"ExpenseRefs\":\"\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"\",\"Priority\":\"\",\"Detail\":\"\",\"FutureStatusRating\":\"\",\"TaskIds\":\"\",\"TimeStampModified\":\"1287161612797\",\"FutureStatusDate\":\"\",\"Label\":\"indi\",\"Id\":169,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
+		
+		String sharedResourceAssignment = "{\"CategoryTwoRef\":\"{\\\"ObjectType\\\":57,\\\"ObjectId\\\":164}\",\"AssignmentIds\":\"\",\"AccountingCode\":\"161\",\"ResourceId\":\"160\",\"TimeStampModified\":\"1287161716568\",\"Details\":\"{\\\"DateUnitEfforts\\\":[{\\\"NumberOfUnits\\\":12,\\\"DateUnit\\\":{\\\"DateUnitCode\\\":\\\"\\\"}}]}\",\"ExpenseRefs\":\"\",\"FundingSource\":\"162\",\"CategoryOneRef\":\"{\\\"ObjectType\\\":56,\\\"ObjectId\\\":163}\",\"Label\":\"\",\"Id\":158,\"ProgressReportRefs\":\"\"}";
+		String resourceAssignment = "{\"CategoryTwoRef\":\"\",\"AssignmentIds\":\"\",\"AccountingCode\":\"\",\"ResourceId\":\"\",\"TimeStampModified\":\"1287161804454\",\"Details\":\"{\\\"DateUnitEfforts\\\":[{\\\"NumberOfUnits\\\":13,\\\"DateUnit\\\":{\\\"DateUnitCode\\\":\\\"\\\"}}]}\",\"ExpenseRefs\":\"\",\"FundingSource\":\"\",\"CategoryOneRef\":\"\",\"Label\":\"\",\"Id\":170,\"ProgressReportRefs\":\"\"}";
+		
+		File jsonDir = createJsonDir();
+		File projectFile = new File(jsonDir, "project");
+		createFile(projectFile, "{\"HighestUsedNodeId\":190}");
+		final int INDICATOR_TYPE = 8;
+		createAndPopulateObjectDir(jsonDir, INDICATOR_TYPE, new String[]{indicatorWithSharedResourceAssignment, indicatorWithSharedAndUnsharedResourceAssignment, });
+		createAndPopulateObjectDir(jsonDir, RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE, new String[]{sharedResourceAssignment, resourceAssignment, });
+		
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion61();
+		
+		File resourceAssignmentDir = DataUpgrader.getObjectsDir(jsonDir, RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE);
+		File resourceAssignmentManifestFile = new File(resourceAssignmentDir, "manifest");
+		assertTrue("manifest file could not be found?", resourceAssignmentManifestFile.exists());
+		ObjectManifest resourceAssignmentManifest = new ObjectManifest(JSONFile.read(resourceAssignmentManifestFile));
+		BaseId[] resourceAssignmentIdsAsArray = resourceAssignmentManifest.getAllKeys();
+		assertEquals("shared resource assignment was not cloned?", 3, resourceAssignmentIdsAsArray.length);
+		
+		IdList resourceAssignmentIds = new IdList(RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE, resourceAssignmentIdsAsArray);
+		final BaseId sharedResourceAssignmentId = new BaseId(158);
+		final BaseId clonedResourceAssignmentId = new BaseId(191);
+		assertTrue("list does not contain original resource assignment id?", resourceAssignmentIds.contains(sharedResourceAssignmentId));
+		assertTrue("list does not contain original resource assignment id?", resourceAssignmentIds.contains(new BaseId(170)));
+		assertTrue("list does not contain cloned resource assignment id", resourceAssignmentIds.contains(clonedResourceAssignmentId));
+		
+		File resourceAssignmentToBeCloned = new File(resourceAssignmentDir, sharedResourceAssignmentId.toString());
+		EnhancedJsonObject resourceAssignmentToBeClonedJson = new EnhancedJsonObject(readFile(resourceAssignmentToBeCloned));
+
+		File resourceAssignmentCloned = new File(resourceAssignmentDir, clonedResourceAssignmentId.toString());
+		EnhancedJsonObject resourceAssignmentClonedJson = new EnhancedJsonObject(readFile(resourceAssignmentCloned));
+		
+		verifyAllFieldsExceptIdFieldAreEqual(resourceAssignmentToBeClonedJson,	resourceAssignmentClonedJson);
+	}
+
+	protected void verifyAllFieldsExceptIdFieldAreEqual(EnhancedJsonObject resourceAssignmentToBeClonedJson, EnhancedJsonObject resourceAssignmentClonedJson)
+	{
+		resourceAssignmentToBeClonedJson.remove("Id");
+		resourceAssignmentClonedJson.remove("Id");
+		assertEquals("Resource assignment was not cloned correctly?", resourceAssignmentToBeClonedJson, resourceAssignmentClonedJson);
+	}
+
 	public void testCleaningUpIndicatorReferringToMissingResourceAssignmentId() throws Exception
 	{
 		String indicatorWithMissingAssignment = "{\"ThresholdDetails\":\"\",\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"{\\\"Ids\\\":[999]}\",\"FutureStatusSummary\":\"\",\"ExpenseRefs\":\"\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"\",\"Priority\":\"\",\"Detail\":\"\",\"FutureStatusRating\":\"\",\"TaskIds\":\"\",\"TimeStampModified\":\"1287088620511\",\"FutureStatusDate\":\"\",\"Label\":\"\",\"Id\":184,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
