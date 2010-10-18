@@ -35,7 +35,7 @@ public class CloneIndicatorSharedResouceAssignmentsMigration
 {
 	public static void cloneSharedResourceAssignment() throws Exception
 	{
-		if (!getIndicatorkDir().exists())
+		if (!getIndicatorDir().exists())
 			return;
 		
 		if (!getIndicatorManifestFile().exists())
@@ -68,7 +68,7 @@ public class CloneIndicatorSharedResouceAssignmentsMigration
 		{
 			int clonedIdAsInt = cloneResourceAssignment(resourceAssignmentJson);
 			BaseId indicatorId = indicatorReferrers.get(index).getObjectId();
-			File indicatorFile = new File(getIndicatorkDir(), Integer.toString(indicatorId.asInt()));
+			File indicatorFile = new File(getIndicatorDir(), Integer.toString(indicatorId.asInt()));
 			EnhancedJsonObject indicatorJson = DataUpgrader.readFile(indicatorFile);
 			IdList resourceAssignmentIds = indicatorJson.optIdList(RESOURCE_ASSIGNMENT_TYPE, ASSIGNMENT_IDS_TAG);
 			resourceAssignmentIds.removeId(resourceAssignmentIdToBeCloned);
@@ -106,7 +106,7 @@ public class CloneIndicatorSharedResouceAssignmentsMigration
 		for (int index = 0; index < indicatorIds.length; ++index)
 		{
 			BaseId indicatorId = indicatorIds[index];
-			File indicatorFile = new File(getIndicatorkDir(), Integer.toString(indicatorId.asInt()));
+			File indicatorFile = new File(getIndicatorDir(), Integer.toString(indicatorId.asInt()));
 			EnhancedJsonObject indicatorJson = DataUpgrader.readFile(indicatorFile);
 			IdList resourceAssignmentIds = indicatorJson.optIdList(RESOURCE_ASSIGNMENT_TYPE, ASSIGNMENT_IDS_TAG);
 			if (resourceAssignmentIds.contains(resourceAssignmentId))
@@ -121,7 +121,7 @@ public class CloneIndicatorSharedResouceAssignmentsMigration
 		return getmanifestFile(getResourceAssignmentDir());	
 	}
 
-	private static File getIndicatorkDir()
+	private static File getIndicatorDir()
 	{
 		return getObjectDir(INDICATOR_TYPE);
 	}
@@ -138,7 +138,7 @@ public class CloneIndicatorSharedResouceAssignmentsMigration
 
 	private static File getIndicatorManifestFile()
 	{
-		return getmanifestFile(getIndicatorkDir());
+		return getmanifestFile(getIndicatorDir());
 	}
 
 	private static File getmanifestFile(File factorLinkDir)
