@@ -67,9 +67,10 @@ public class RemoveMissingResourceAssignmentIdsFromIndicatorsMigration
 		ObjectManifest resourceAssignmentManifest = new ObjectManifest(JSONFile.read(getResourceAssignmentManifestFile()));
 		BaseId[] resourceAssignmentIdsAsArray = resourceAssignmentManifest.getAllKeys();
 		IdList allResourceAssignmentIds = new IdList(RESOURCE_ASSIGNMENT_TYPE, resourceAssignmentIdsAsArray);
-		resourceAssignmentIds.retainAll(allResourceAssignmentIds);
+		IdList clonedResourceAssignmentIds = new IdList(resourceAssignmentIds);
+		clonedResourceAssignmentIds.retainAll(allResourceAssignmentIds);
 		
-		return resourceAssignmentIds;
+		return clonedResourceAssignmentIds;
 	}
 
 	private static File getResourceAssignmentManifestFile()
