@@ -33,7 +33,7 @@ public class RemoveMissingResourceAssignmentIdsFromIndicatorsMigration
 {
 	public static void removeMissingResourceAssignmentId() throws Exception
 	{	
-		if (!getIndicatorkDir().exists())
+		if (!getIndicatorDir().exists())
 			return;
 		
 		if (!getIndicatorManifestFile().exists())
@@ -44,7 +44,7 @@ public class RemoveMissingResourceAssignmentIdsFromIndicatorsMigration
 		for (int index = 0; index < indicatorIds.length; ++index)
 		{
 			BaseId indicatorId = indicatorIds[index];
-			File indicatorFile = new File(getIndicatorkDir(), Integer.toString(indicatorId.asInt()));
+			File indicatorFile = new File(getIndicatorDir(), Integer.toString(indicatorId.asInt()));
 			EnhancedJsonObject indicatorJson = DataUpgrader.readFile(indicatorFile);
 			IdList resourceAssignmentIds = indicatorJson.optIdList(RESOURCE_ASSIGNMENT_TYPE, ASSIGNMENT_IDS_TAG);
 			IdList onlyExistingResourceAssignmentIds = extractExistingResourceAssignmentIds(resourceAssignmentIds);
@@ -78,7 +78,7 @@ public class RemoveMissingResourceAssignmentIdsFromIndicatorsMigration
 		return getmanifestFile(getResourceAssignmentDir());	
 	}
 
-	private static File getIndicatorkDir()
+	private static File getIndicatorDir()
 	{
 		return getObjectDir(INDICATOR_TYPE);
 	}
@@ -95,7 +95,7 @@ public class RemoveMissingResourceAssignmentIdsFromIndicatorsMigration
 
 	private static File getIndicatorManifestFile()
 	{
-		return getmanifestFile(getIndicatorkDir());
+		return getmanifestFile(getIndicatorDir());
 	}
 
 	private static File getmanifestFile(File factorLinkDir)
