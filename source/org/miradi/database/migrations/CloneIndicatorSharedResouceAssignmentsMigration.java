@@ -33,19 +33,20 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class CloneIndicatorSharedResouceAssignmentsMigration
 {
-	public static void cloneSharedResourceAssignment() throws Exception
+	public static IdList cloneSharedResourceAssignment() throws Exception
 	{
+		IdList updatedIndicatorIds = new IdList(INDICATOR_TYPE);
 		if (!getIndicatorDir().exists())
-			return;
+			return updatedIndicatorIds;
 		
 		if (!getIndicatorManifestFile().exists())
-			return;
+			return updatedIndicatorIds;
 		
 		if (!getResourceAssignmentDir().exists())
-			return;
+			return updatedIndicatorIds;
 		
 		if (!getResourceAssignmentManifestFile().exists())
-			return;
+			return updatedIndicatorIds;
 		
 		ObjectManifest resourceAssignmentManifest = new ObjectManifest(JSONFile.read(getResourceAssignmentManifestFile()));
 		BaseId[] resourceAssignmentIds = resourceAssignmentManifest.getAllKeys();
@@ -57,17 +58,22 @@ public class CloneIndicatorSharedResouceAssignmentsMigration
 			ORefList indicatorReferrers = findIndicatorReferrers(resourceAssignmentJson);
 			if (indicatorReferrers.size() > 1)
 			{
-				cloneSharedResourceAssignment(indicatorReferrers, resourceAssignmentId, resourceAssignmentJson);
+				IdList thisUpdatedIndicatorIds = cloneSharedResourceAssignment(indicatorReferrers, resourceAssignmentId, resourceAssignmentJson);
+				updatedIndicatorIds.addAll(thisUpdatedIndicatorIds);				
 			}
 		}
+		
+		return updatedIndicatorIds;
 	}
 	
-	private static void cloneSharedResourceAssignment(ORefList indicatorReferrers, BaseId resourceAssignmentIdToBeCloned, EnhancedJsonObject resourceAssignmentJson) throws Exception
+	private static IdList cloneSharedResourceAssignment(ORefList indicatorReferrers, BaseId resourceAssignmentIdToBeCloned, EnhancedJsonObject resourceAssignmentJson) throws Exception
 	{
+		IdList updatedIndicatorIds = new IdList(INDICATOR_TYPE);
 		for (int index = 1; index < indicatorReferrers.size(); ++index)
 		{
 			int clonedIdAsInt = cloneResourceAssignment(resourceAssignmentJson);
 			BaseId indicatorId = indicatorReferrers.get(index).getObjectId();
+			updatedIndicatorIds.add(indicatorId);
 			File indicatorFile = new File(getIndicatorDir(), Integer.toString(indicatorId.asInt()));
 			EnhancedJsonObject indicatorJson = DataUpgrader.readFile(indicatorFile);
 			IdList resourceAssignmentIds = indicatorJson.optIdList(RESOURCE_ASSIGNMENT_TYPE, ASSIGNMENT_IDS_TAG);
@@ -76,6 +82,8 @@ public class CloneIndicatorSharedResouceAssignmentsMigration
 			indicatorJson.put(ASSIGNMENT_IDS_TAG, resourceAssignmentIds.toString());
 			DataUpgrader.writeJson(indicatorFile, indicatorJson);
 		}
+		
+		return updatedIndicatorIds;
 	}
 	
 	private static int cloneResourceAssignment(EnhancedJsonObject resourceAssignmentJson) throws Exception

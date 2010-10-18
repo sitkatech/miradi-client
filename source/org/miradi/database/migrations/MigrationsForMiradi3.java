@@ -240,7 +240,10 @@ public class MigrationsForMiradi3
 	
 	public static void upgradeToVersion61() throws Exception
 	{
-		CloneIndicatorSharedResouceAssignmentsMigration.cloneSharedResourceAssignment();
+		IdList updatedIndicatorIds = CloneIndicatorSharedResouceAssignmentsMigration.cloneSharedResourceAssignment();
+		if (updatedIndicatorIds.size() > 0)
+			EAM.notifyDialog(EAM.text("Indicators no longer referrer to same Resource Assignment"));
+		
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 61);
 	}
 }

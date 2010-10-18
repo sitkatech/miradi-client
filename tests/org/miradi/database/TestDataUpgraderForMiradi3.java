@@ -26,6 +26,7 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import org.martus.util.DirectoryUtils;
+import org.miradi.database.migrations.CloneIndicatorSharedResouceAssignmentsMigration;
 import org.miradi.database.migrations.ConvertHighLevelEstimatesIntoAssignments;
 import org.miradi.database.migrations.EnsureNoMoreThanOneXenodataMigration;
 import org.miradi.database.migrations.MigrationsForMiradi3;
@@ -68,7 +69,10 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		createAndPopulateObjectDir(jsonDir, RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE, new String[]{sharedResourceAssignment, resourceAssignment, });
 		
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
-		MigrationsForMiradi3.upgradeToVersion61();
+		IdList updatedIndicatorIds = CloneIndicatorSharedResouceAssignmentsMigration.cloneSharedResourceAssignment();
+		IdList expectedIndicatorsToBeUpdated = new IdList(INDICATOR_TYPE);
+		expectedIndicatorsToBeUpdated.add(29);
+		assertEquals("Incorrect indicators were udpated?", expectedIndicatorsToBeUpdated, updatedIndicatorIds);
 		
 		File resourceAssignmentDir = DataUpgrader.getObjectsDir(jsonDir, RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE);
 		File resourceAssignmentManifestFile = new File(resourceAssignmentDir, "manifest");
