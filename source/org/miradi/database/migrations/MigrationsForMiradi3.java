@@ -233,4 +233,10 @@ public class MigrationsForMiradi3
 		RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.removeMissingResourceAssignmentId();
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 60);
 	}
+	
+	public static void upgradeToVersion61() throws Exception
+	{
+		CloneIndicatorSharedResouceAssignmentsMigration.cloneSharedResourceAssignment();
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 61);
+	}
 }
