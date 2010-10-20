@@ -201,17 +201,19 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	//create an inverse map of strategy objevive list based on objective relavancy list
 	public ORefSet getRelevantObjectiveRefs(Strategy strategy) throws Exception
 	{
-		ORefSet objectiveRefs = new ORefSet();
-		ORefList allObjectives = getProject().getObjectivePool().getORefList();
-		for (int index = 0; index < allObjectives.size(); ++index)
+		ORefSet desireRefs = new ORefSet();
+		ORefList allDesires = new ORefList();
+		allDesires.addAll(getProject().getObjectivePool().getORefList());
+		allDesires.addAll(getProject().getGoalPool().getRefList());
+		for (int index = 0; index < allDesires.size(); ++index)
 		{
-			Objective objective = Objective.find(getProject(), allObjectives.get(index));
-			ORefList relevantStrategyRefs = objective.getRelevantStrategyAndActivityRefs();
+			Desire desire = Desire.findDesire(getProject(), allDesires.get(index));
+			ORefList relevantStrategyRefs = desire.getRelevantStrategyAndActivityRefs();
 			if (relevantStrategyRefs.contains(strategy.getRef()))
-				objectiveRefs.add(allObjectives.get(index));
+				desireRefs.add(allDesires.get(index));
 		}
 		
-		return objectiveRefs;
+		return desireRefs;
 	}
 		
 	private void writeActivities(UnicodeWriter out, ORefList activityRefs) throws Exception
