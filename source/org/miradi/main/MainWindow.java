@@ -80,7 +80,6 @@ import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
-import org.miradi.utils.Translation;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.library.LibraryView;
 import org.miradi.views.map.MapView;
@@ -187,11 +186,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 		new SampleInstaller(getAppPreferences()).installSampleProjects();
 
-		if(hasExpired() || commandLineArguments.contains("--expired"))
-		{
-			displayExpirationNotice();
-		}
-		
 		setIconImage(new MiradiResourceImageIcon("images/appIcon.png").getImage());
 
 		WizardTitlePanel wizardTitlePanel = new WizardTitlePanel(this);
@@ -325,23 +319,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		}
 	}
 		
-	private void displayExpirationNotice() throws Exception
-	{
-		String html = Translation.getHtmlContent("ExpiredWarning.html");
-		HtmlViewPanelWithMargins viewer = HtmlViewPanelWithMargins.createFromTextString(this, EAM.text("Information"), html);
-		viewer.showAsOkDialog();
-	}
-
-	private boolean hasExpired()
-	{
-		MultiCalendar now = new MultiCalendar();
-		final String isoExpiration = "2010-10-01";
-		EAM.logVerbose("Expires on: " + isoExpiration);
-		MultiCalendar expiresOn = MultiCalendar.createFromIsoDateString(isoExpiration);
-		boolean hasExpired = now.after(expiresOn);
-		return hasExpired;
-	}
-
 	public void hideDivider()
 	{
 		getContentPane().removeAll();
