@@ -27,8 +27,7 @@ import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.LinkedHashMap;
-import java.util.Set;
+import java.util.LinkedHashSet;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -52,7 +51,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 
 		setLayout(new BorderLayout());
 		splitPane = new PersistentHorizontalSplitPane(getMainWindow(), getMainWindow(), getPanelDescription());
-		selectableComponentToContentsFileNameMap = new LinkedHashMap<SelectableRow, String>();
+		selectableComponentToContentsFileNameMap = new LinkedHashSet<SelectableRow>();
 
 		TwoColumnPanel leftPanel = createLeftPanel();
 		dispatcher = new KeyDispatcher();
@@ -136,7 +135,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		secondColumnBox.add(new PanelTitleLabel(rightColumnTranslatedText));
 		
 		SelectableRow selectableRow = new SelectableRow(firstColumnBox, secondColumnBox, descriptionFileName);
-		selectableComponentToContentsFileNameMap.put(selectableRow, descriptionFileName);
+		selectableComponentToContentsFileNameMap.add(selectableRow);
 		
 		leftMainPanel.add(firstColumnBox);
 		leftMainPanel.add(secondColumnBox);
@@ -163,10 +162,9 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		return Dashboard.find(getProject(), dashboardRef);
 	}
 	
-	protected void clearSelection() throws Exception
+	private void clearSelection() throws Exception
 	{
-		Set<SelectableRow> selectableRows = selectableComponentToContentsFileNameMap.keySet();
-		for(SelectableRow selectableRow : selectableRows)
+		for(SelectableRow selectableRow : selectableComponentToContentsFileNameMap)
 		{
 			selectableRow.clearSelection();
 		}
@@ -186,9 +184,8 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 
 		private void select(int directionDelta) throws Exception
 		{
-			Set<SelectableRow> rowsSet = selectableComponentToContentsFileNameMap.keySet();
 			SelectableRow currentlySelected = findSelectedRow();
-			Vector<SelectableRow> rows = new Vector<SelectableRow>(rowsSet);
+			Vector<SelectableRow> rows = new Vector<SelectableRow>(selectableComponentToContentsFileNameMap);
 			if(currentlySelected == null)
 			{
 				rows.firstElement().selectRow();
@@ -207,8 +204,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 
 		private SelectableRow findSelectedRow()
 		{
-			Set<SelectableRow> rows = selectableComponentToContentsFileNameMap.keySet();
-			for(SelectableRow selectableRow : rows)
+			for(SelectableRow selectableRow : selectableComponentToContentsFileNameMap)
 			{
 				if(selectableRow.isSelected())
 					return selectableRow;
@@ -264,15 +260,6 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 			{
 				EAM.logException(exception);
 				EAM.unexpectedErrorDialog(exception);
-			}
-		}
-	
-		private void clearSelection() throws Exception
-		{
-			Set<SelectableRow> selectableRows = selectableComponentToContentsFileNameMap.keySet();
-			for(SelectableRow selectableRow : selectableRows)
-			{
-				selectableRow.clearSelection();
 			}
 		}
 		
@@ -367,7 +354,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 
 	abstract protected TwoColumnPanel createLeftPanel();
 
-	private LinkedHashMap<SelectableRow, String> selectableComponentToContentsFileNameMap;
+	private LinkedHashSet<SelectableRow> selectableComponentToContentsFileNameMap;
 	private DashboardRightSideDescriptionPanel rightSideDescriptionPanel;
 	private PersistentHorizontalSplitPane splitPane;
 	private KeyDispatcher dispatcher;
