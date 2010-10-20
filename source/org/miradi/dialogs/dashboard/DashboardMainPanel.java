@@ -89,7 +89,7 @@ public class DashboardMainPanel extends DisposablePanel
 
 	private void createTabs() throws Exception
 	{
-		conceptualizeDashboardTab = new ConceptualizeDashboardTabV2(getProject());
+		conceptualizeDashboardTab = new ConceptualizeDashboardTab(getProject());
 		planActionsAndMonitoringTab = new PlanActionsAndMonitoringTab(getProject());
 		actionsAndMonitoringTab = new ImplementActionsAndMonitoringDashboardTab(getProject());
 		analyzeAdaptAndUseTab = new AnalyzeAdaptAndUseTab(getProject());
