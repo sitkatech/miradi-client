@@ -2,7 +2,6 @@ OBSOLETE	(Superseded Operating Unit)
 AUSTR	Australia
 CHINA	China
 INDON	Indonesia
-PACIF	Pacific Island Countries
 IL_US	Illinois
 IN_US	Indiana
 IA_US	Iowa
@@ -68,3 +67,6 @@ AFRRO	Africa Program
 LAMRO	Latin America Regional Office
 NAMRO	North America Regional Office
 NASRO	North Asia Regional Office
+MICRO	Micronesia
+SOLOM	Solomon Islands
+PAPUA	Papua New Guinea
