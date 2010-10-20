@@ -135,7 +135,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		Box secondColumnBox = createBorderedBox();
 		secondColumnBox.add(new PanelTitleLabel(rightColumnTranslatedText));
 		
-		SelectableRow selectableRow = new SelectableRow(firstColumnBox, secondColumnBox);
+		SelectableRow selectableRow = new SelectableRow(firstColumnBox, secondColumnBox, descriptionFileName);
 		selectableComponentToContentsFileNameMap.put(selectableRow, descriptionFileName);
 		
 		leftMainPanel.add(firstColumnBox);
@@ -259,9 +259,6 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 			{
 				clearSelection();
 				selectableComponent.selectRow();
-				
-				String resourceFileName = selectableComponentToContentsFileNameMap.get(selectableComponent);
-				rightSideDescriptionPanel.setRightSidePanelContent(resourceFileName);
 			}
 			catch(Exception exception)
 			{
@@ -284,20 +281,22 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	
 	public class SelectableRow
 	{
-		private SelectableRow(JComponent leftSideToUse, JComponent rightSideToUse)
+		private SelectableRow(JComponent leftSideToUse, JComponent rightSideToUse, String descriptionFileNameToUse)
 		{
 			leftSide = leftSideToUse;
 			rightSide = rightSideToUse;
+			descriptionFileName = descriptionFileNameToUse;
 			
 			leftSide.addMouseListener(new ClickHandler(this));
 			rightSide.addMouseListener(new ClickHandler(this));
 		}
 		
-		private void selectRow()
+		private void selectRow() throws Exception
 		{
 			isSelected = true;
 			setSelectionBorder(leftSide);
 			setSelectionBorder(rightSide);
+			rightSideDescriptionPanel.setRightSidePanelContent(descriptionFileName);
 		}
 		
 		private void unSelect()
@@ -359,10 +358,9 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		}
 
 		private JComponent leftSide;
-
 		private JComponent rightSide;
-
 		private boolean isSelected;
+		private String descriptionFileName;
 	}
 
 	abstract protected String getMainDescriptionFileName();
