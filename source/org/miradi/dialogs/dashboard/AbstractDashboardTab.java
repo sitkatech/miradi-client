@@ -100,7 +100,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	protected void createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightPanelHtmlFileName)
 	{
 		String rightColumnTranslatedText = "";
-		createSubHeaderRow(leftMainPanel, leftColumnTranslatedText, rightPanelHtmlFileName, rightColumnTranslatedText);
+		createSubHeaderRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, rightPanelHtmlFileName);
 	}
 
 	protected void createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String rightPanelHtmlFileName)
