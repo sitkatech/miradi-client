@@ -27,7 +27,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressReport;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.EmptyChoiceItem;
+import org.miradi.questions.ProgressReportLongStatusQuestion;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.views.diagram.doers.AbstractCreateProgressDoer;
 
@@ -115,6 +117,24 @@ public class ProgressReportTableModel extends EditableObjectRefsTableModel
 	private ProgressReport getProgressReportForRow(int rowIndex, int columnIndex)
 	{
 		return (ProgressReport) getBaseObjectForRowColumn(rowIndex, columnIndex);
+	}
+	
+	@Override
+	public boolean isChoiceItemColumn(int column)
+	{
+		if (isProgressStatusColumn(column))
+			return true;
+		
+		return super.isChoiceItemColumn(column);
+	}
+	
+	@Override
+	public ChoiceQuestion getColumnQuestion(int column)
+	{
+		if (isProgressStatusColumn(column))
+			return getProject().getQuestion(ProgressReportLongStatusQuestion.class);
+		
+		return super.getColumnQuestion(column);
 	}
 	
 	@Override
