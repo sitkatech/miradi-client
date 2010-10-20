@@ -50,7 +50,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 
 		setLayout(new BorderLayout());
 		splitPane = new PersistentHorizontalSplitPane(getMainWindow(), getMainWindow(), getPanelDescription());
-		selectableComponentToContentsFileNameMap = new Vector<SelectableRow>();
+		selectableRows = new Vector<SelectableRow>();
 
 		TwoColumnPanel leftPanel = createLeftPanel();
 		dispatcher = new KeyDispatcher();
@@ -134,7 +134,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		secondColumnBox.add(new PanelTitleLabel(rightColumnTranslatedText));
 		
 		SelectableRow selectableRow = new SelectableRow(firstColumnBox, secondColumnBox, descriptionFileName);
-		selectableComponentToContentsFileNameMap.add(selectableRow);
+		selectableRows.add(selectableRow);
 		
 		leftMainPanel.add(firstColumnBox);
 		leftMainPanel.add(secondColumnBox);
@@ -163,7 +163,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	
 	private void clearSelection() throws Exception
 	{
-		for(SelectableRow selectableRow : selectableComponentToContentsFileNameMap)
+		for(SelectableRow selectableRow : selectableRows)
 		{
 			selectableRow.clearSelection();
 		}
@@ -186,23 +186,23 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 			SelectableRow currentlySelected = findSelectedRow();
 			if(currentlySelected == null)
 			{
-				selectableComponentToContentsFileNameMap.firstElement().selectRow();
+				selectableRows.firstElement().selectRow();
 				return;
 			}
 			
 			SelectableRow rowToSelect = null;
-			int indexOfSelectedRow = selectableComponentToContentsFileNameMap.indexOf(currentlySelected);
+			int indexOfSelectedRow = selectableRows.indexOf(currentlySelected);
 			int indexToSelect = indexOfSelectedRow + directionDelta;
 			
-			indexToSelect = (indexToSelect + selectableComponentToContentsFileNameMap.size()) % selectableComponentToContentsFileNameMap.size();
-			rowToSelect = selectableComponentToContentsFileNameMap.get(indexToSelect);
+			indexToSelect = (indexToSelect + selectableRows.size()) % selectableRows.size();
+			rowToSelect = selectableRows.get(indexToSelect);
 			clearSelection();
 			rowToSelect.selectRow();
 		}
 
 		private SelectableRow findSelectedRow()
 		{
-			for(SelectableRow selectableRow : selectableComponentToContentsFileNameMap)
+			for(SelectableRow selectableRow : selectableRows)
 			{
 				if(selectableRow.isSelected())
 					return selectableRow;
@@ -352,7 +352,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 
 	abstract protected TwoColumnPanel createLeftPanel();
 
-	private Vector<SelectableRow> selectableComponentToContentsFileNameMap;
+	private Vector<SelectableRow> selectableRows;
 	private DashboardRightSideDescriptionPanel rightSideDescriptionPanel;
 	private PersistentHorizontalSplitPane splitPane;
 	private KeyDispatcher dispatcher;
