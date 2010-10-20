@@ -29,6 +29,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -240,7 +241,7 @@ public class MigrationsForMiradi3
 	
 	public static void upgradeToVersion61() throws Exception
 	{
-		IdList updatedIndicatorIds = CloneIndicatorSharedResouceAssignmentsMigration.cloneSharedResourceAssignment();
+		ORefSet updatedIndicatorIds = CloneIndicatorSharedResouceAssignmentsMigration.cloneSharedResourceAssignment();
 		if (updatedIndicatorIds.size() > 0)
 			EAM.notifyDialog(EAM.text("Indicators no longer referrer to same Resource Assignment"));
 		
