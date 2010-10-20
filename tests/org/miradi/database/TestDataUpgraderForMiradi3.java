@@ -38,6 +38,7 @@ import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.utils.CodeList;
@@ -55,10 +56,11 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 	
 	public void testCloneAndDetachSharedResourceAssignmentFromIndicator() throws Exception
 	{
-		String indicatorWithSharedResourceAssignment = "{\"ThresholdDetails\":\"\",\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"{\\\"Ids\\\":[158]}\",\"FutureStatusSummary\":\"\",\"ExpenseRefs\":\"\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"\",\"Priority\":\"\",\"Detail\":\"\",\"FutureStatusRating\":\"\",\"TaskIds\":\"\",\"TimeStampModified\":\"1287161606486\",\"FutureStatusDate\":\"\",\"Label\":\"\",\"Id\":29,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
-		String indicatorWithSharedAndUnsharedResourceAssignment = "{\"ThresholdDetails\":\"\",\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"{\\\"Ids\\\":[158,170]}\",\"FutureStatusSummary\":\"\",\"ExpenseRefs\":\"\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"\",\"Priority\":\"\",\"Detail\":\"\",\"FutureStatusRating\":\"\",\"TaskIds\":\"\",\"TimeStampModified\":\"1287161612797\",\"FutureStatusDate\":\"\",\"Label\":\"indi\",\"Id\":169,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
+		String indicatorWithSharedResourceAssignment = "{\"ThresholdDetails\":\"\",\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"{\\\"Ids\\\":[158,15]}\",\"FutureStatusSummary\":\"\",\"ExpenseRefs\":\"\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"\",\"Priority\":\"\",\"Detail\":\"\",\"FutureStatusRating\":\"\",\"TaskIds\":\"\",\"TimeStampModified\":\"1287161606486\",\"FutureStatusDate\":\"\",\"Label\":\"\",\"Id\":29,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
+		String indicatorWithSharedAndUnsharedResourceAssignment = "{\"ThresholdDetails\":\"\",\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"{\\\"Ids\\\":[158,15,170]}\",\"FutureStatusSummary\":\"\",\"ExpenseRefs\":\"\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"\",\"Priority\":\"\",\"Detail\":\"\",\"FutureStatusRating\":\"\",\"TaskIds\":\"\",\"TimeStampModified\":\"1287161612797\",\"FutureStatusDate\":\"\",\"Label\":\"indi\",\"Id\":169,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
 		
-		String sharedResourceAssignment = "{\"CategoryTwoRef\":\"{\\\"ObjectType\\\":57,\\\"ObjectId\\\":164}\",\"AssignmentIds\":\"\",\"AccountingCode\":\"161\",\"ResourceId\":\"160\",\"TimeStampModified\":\"1287161716568\",\"Details\":\"{\\\"DateUnitEfforts\\\":[{\\\"NumberOfUnits\\\":12,\\\"DateUnit\\\":{\\\"DateUnitCode\\\":\\\"\\\"}}]}\",\"ExpenseRefs\":\"\",\"FundingSource\":\"162\",\"CategoryOneRef\":\"{\\\"ObjectType\\\":56,\\\"ObjectId\\\":163}\",\"Label\":\"\",\"Id\":158,\"ProgressReportRefs\":\"\"}";
+		String sharedResourceAssignment1 = "{\"CategoryTwoRef\":\"{\\\"ObjectType\\\":57,\\\"ObjectId\\\":164}\",\"AssignmentIds\":\"\",\"AccountingCode\":\"161\",\"ResourceId\":\"160\",\"TimeStampModified\":\"1287161716568\",\"Details\":\"{\\\"DateUnitEfforts\\\":[{\\\"NumberOfUnits\\\":12,\\\"DateUnit\\\":{\\\"DateUnitCode\\\":\\\"\\\"}}]}\",\"ExpenseRefs\":\"\",\"FundingSource\":\"162\",\"CategoryOneRef\":\"{\\\"ObjectType\\\":56,\\\"ObjectId\\\":163}\",\"Label\":\"\",\"Id\":158,\"ProgressReportRefs\":\"\"}";
+		String sharedResourceAssignment2 = "{\"CategoryTwoRef\":\"{\\\"ObjectType\\\":57,\\\"ObjectId\\\":164}\",\"AssignmentIds\":\"\",\"AccountingCode\":\"161\",\"ResourceId\":\"160\",\"TimeStampModified\":\"1287161716568\",\"Details\":\"{\\\"DateUnitEfforts\\\":[{\\\"NumberOfUnits\\\":12,\\\"DateUnit\\\":{\\\"DateUnitCode\\\":\\\"\\\"}}]}\",\"ExpenseRefs\":\"\",\"FundingSource\":\"162\",\"CategoryOneRef\":\"{\\\"ObjectType\\\":56,\\\"ObjectId\\\":163}\",\"Label\":\"\",\"Id\":15,\"ProgressReportRefs\":\"\"}";
 		String resourceAssignment = "{\"CategoryTwoRef\":\"\",\"AssignmentIds\":\"\",\"AccountingCode\":\"\",\"ResourceId\":\"\",\"TimeStampModified\":\"1287161804454\",\"Details\":\"{\\\"DateUnitEfforts\\\":[{\\\"NumberOfUnits\\\":13,\\\"DateUnit\\\":{\\\"DateUnitCode\\\":\\\"\\\"}}]}\",\"ExpenseRefs\":\"\",\"FundingSource\":\"\",\"CategoryOneRef\":\"\",\"Label\":\"\",\"Id\":170,\"ProgressReportRefs\":\"\"}";
 		
 		File jsonDir = createJsonDir();
@@ -66,12 +68,12 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		createFile(projectFile, "{\"HighestUsedNodeId\":190}");
 		final int INDICATOR_TYPE = 8;
 		createAndPopulateObjectDir(jsonDir, INDICATOR_TYPE, new String[]{indicatorWithSharedResourceAssignment, indicatorWithSharedAndUnsharedResourceAssignment, });
-		createAndPopulateObjectDir(jsonDir, RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE, new String[]{sharedResourceAssignment, resourceAssignment, });
+		createAndPopulateObjectDir(jsonDir, RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE, new String[]{sharedResourceAssignment1, sharedResourceAssignment2, resourceAssignment, });
 		
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
-		IdList updatedIndicatorIds = CloneIndicatorSharedResouceAssignmentsMigration.cloneSharedResourceAssignment();
-		IdList expectedIndicatorsToBeUpdated = new IdList(INDICATOR_TYPE);
-		expectedIndicatorsToBeUpdated.add(29);
+		ORefSet updatedIndicatorIds = CloneIndicatorSharedResouceAssignmentsMigration.cloneSharedResourceAssignment();
+		ORefSet expectedIndicatorsToBeUpdated = new ORefSet();
+		expectedIndicatorsToBeUpdated.add(new ORef(INDICATOR_TYPE, new BaseId(29)));
 		assertEquals("Incorrect indicators were udpated?", expectedIndicatorsToBeUpdated, updatedIndicatorIds);
 		
 		File resourceAssignmentDir = DataUpgrader.getObjectsDir(jsonDir, RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE);
@@ -79,26 +81,30 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		assertTrue("manifest file could not be found?", resourceAssignmentManifestFile.exists());
 		ObjectManifest resourceAssignmentManifest = new ObjectManifest(JSONFile.read(resourceAssignmentManifestFile));
 		BaseId[] resourceAssignmentIdsAsArray = resourceAssignmentManifest.getAllKeys();
-		assertEquals("shared resource assignment was not cloned?", 3, resourceAssignmentIdsAsArray.length);
+		assertEquals("shared resource assignment was not cloned?", 5, resourceAssignmentIdsAsArray.length);
 		
 		IdList resourceAssignmentIds = new IdList(RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE, resourceAssignmentIdsAsArray);
-		final BaseId sharedResourceAssignmentId = new BaseId(158);
-		final BaseId clonedResourceAssignmentId = new BaseId(191);
-		assertTrue("list does not contain original resource assignment id?", resourceAssignmentIds.contains(sharedResourceAssignmentId));
+		final BaseId sharedResourceAssignment1Id = new BaseId(158);
+		final BaseId sharedResourceAssignment2Id = new BaseId(15);
+		final BaseId clonedResourceAssignment1Id = new BaseId(191);
+		final BaseId clonedResourceAssignment2Id = new BaseId(192);
+		assertTrue("list does not contain original resource assignment id?", resourceAssignmentIds.contains(sharedResourceAssignment1Id));
+		assertTrue("list does not contain original resource assignment id?", resourceAssignmentIds.contains(sharedResourceAssignment2Id));
 		assertTrue("list does not contain original resource assignment id?", resourceAssignmentIds.contains(new BaseId(170)));
-		assertTrue("list does not contain cloned resource assignment id", resourceAssignmentIds.contains(clonedResourceAssignmentId));
+		assertTrue("list does not contain cloned resource assignment id", resourceAssignmentIds.contains(clonedResourceAssignment1Id));
+		assertTrue("list does not contain cloned resource assignment id", resourceAssignmentIds.contains(clonedResourceAssignment2Id));
 		
-		File resourceAssignmentToBeCloned = new File(resourceAssignmentDir, sharedResourceAssignmentId.toString());
-		EnhancedJsonObject resourceAssignmentToBeClonedJson = new EnhancedJsonObject(readFile(resourceAssignmentToBeCloned));
-
-		File resourceAssignmentCloned = new File(resourceAssignmentDir, clonedResourceAssignmentId.toString());
-		EnhancedJsonObject resourceAssignmentClonedJson = new EnhancedJsonObject(readFile(resourceAssignmentCloned));
-		
-		verifyAllFieldsExceptIdFieldAreEqual(resourceAssignmentToBeClonedJson,	resourceAssignmentClonedJson);
+		verify(resourceAssignmentDir, sharedResourceAssignment1Id, clonedResourceAssignment1Id);
+		verify(resourceAssignmentDir, sharedResourceAssignment2Id, clonedResourceAssignment2Id);
 	}
 
-	protected void verifyAllFieldsExceptIdFieldAreEqual(EnhancedJsonObject resourceAssignmentToBeClonedJson, EnhancedJsonObject resourceAssignmentClonedJson)
+	private void verify(File resourceAssignmentDir, final BaseId sharedResourceAssignmentId,	final BaseId clonedResourceAssignmentId) throws Exception
 	{
+		File resourceAssignmentToBeCloned = new File(resourceAssignmentDir, sharedResourceAssignmentId.toString());
+		EnhancedJsonObject resourceAssignmentToBeClonedJson = new EnhancedJsonObject(readFile(resourceAssignmentToBeCloned));
+		
+		File resourceAssignmentCloned = new File(resourceAssignmentDir, clonedResourceAssignmentId.toString());
+		EnhancedJsonObject resourceAssignmentClonedJson = new EnhancedJsonObject(readFile(resourceAssignmentCloned));
 		resourceAssignmentToBeClonedJson.remove("Id");
 		resourceAssignmentClonedJson.remove("Id");
 		assertEquals("Resource assignment was not cloned correctly?", resourceAssignmentToBeClonedJson, resourceAssignmentClonedJson);

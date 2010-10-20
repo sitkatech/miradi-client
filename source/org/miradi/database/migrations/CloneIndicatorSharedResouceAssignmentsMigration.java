@@ -29,13 +29,14 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class CloneIndicatorSharedResouceAssignmentsMigration
 {
-	public static IdList cloneSharedResourceAssignment() throws Exception
+	public static ORefSet cloneSharedResourceAssignment() throws Exception
 	{
-		IdList updatedIndicatorIds = new IdList(INDICATOR_TYPE);
+		ORefSet updatedIndicatorIds = new ORefSet();
 		if (!getIndicatorDir().exists())
 			return updatedIndicatorIds;
 		
@@ -58,7 +59,7 @@ public class CloneIndicatorSharedResouceAssignmentsMigration
 			ORefList indicatorReferrers = findIndicatorReferrers(resourceAssignmentJson);
 			if (indicatorReferrers.size() > 1)
 			{
-				IdList thisUpdatedIndicatorIds = cloneSharedResourceAssignment(indicatorReferrers, resourceAssignmentId, resourceAssignmentJson);
+				ORefSet thisUpdatedIndicatorIds = cloneSharedResourceAssignment(indicatorReferrers, resourceAssignmentId, resourceAssignmentJson);
 				updatedIndicatorIds.addAll(thisUpdatedIndicatorIds);				
 			}
 		}
@@ -66,14 +67,14 @@ public class CloneIndicatorSharedResouceAssignmentsMigration
 		return updatedIndicatorIds;
 	}
 	
-	private static IdList cloneSharedResourceAssignment(ORefList indicatorReferrers, BaseId resourceAssignmentIdToBeCloned, EnhancedJsonObject resourceAssignmentJson) throws Exception
+	private static ORefSet cloneSharedResourceAssignment(ORefList indicatorReferrers, BaseId resourceAssignmentIdToBeCloned, EnhancedJsonObject resourceAssignmentJson) throws Exception
 	{
-		IdList updatedIndicatorIds = new IdList(INDICATOR_TYPE);
+		ORefSet updatedIndicatorIds = new ORefSet();
 		for (int index = 1; index < indicatorReferrers.size(); ++index)
 		{
 			int clonedIdAsInt = cloneResourceAssignment(resourceAssignmentJson);
 			BaseId indicatorId = indicatorReferrers.get(index).getObjectId();
-			updatedIndicatorIds.add(indicatorId);
+			updatedIndicatorIds.add(new ORef(INDICATOR_TYPE, indicatorId));
 			File indicatorFile = new File(getIndicatorDir(), Integer.toString(indicatorId.asInt()));
 			EnhancedJsonObject indicatorJson = DataUpgrader.readFile(indicatorFile);
 			IdList resourceAssignmentIds = indicatorJson.optIdList(RESOURCE_ASSIGNMENT_TYPE, ASSIGNMENT_IDS_TAG);
