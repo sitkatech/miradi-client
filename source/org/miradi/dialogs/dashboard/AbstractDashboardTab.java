@@ -27,7 +27,6 @@ import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.LinkedHashSet;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -51,7 +50,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 
 		setLayout(new BorderLayout());
 		splitPane = new PersistentHorizontalSplitPane(getMainWindow(), getMainWindow(), getPanelDescription());
-		selectableComponentToContentsFileNameMap = new LinkedHashSet<SelectableRow>();
+		selectableComponentToContentsFileNameMap = new Vector<SelectableRow>();
 
 		TwoColumnPanel leftPanel = createLeftPanel();
 		dispatcher = new KeyDispatcher();
@@ -185,19 +184,18 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		private void select(int directionDelta) throws Exception
 		{
 			SelectableRow currentlySelected = findSelectedRow();
-			Vector<SelectableRow> rows = new Vector<SelectableRow>(selectableComponentToContentsFileNameMap);
 			if(currentlySelected == null)
 			{
-				rows.firstElement().selectRow();
+				selectableComponentToContentsFileNameMap.firstElement().selectRow();
 				return;
 			}
 			
 			SelectableRow rowToSelect = null;
-			int indexOfSelectedRow = rows.indexOf(currentlySelected);
+			int indexOfSelectedRow = selectableComponentToContentsFileNameMap.indexOf(currentlySelected);
 			int indexToSelect = indexOfSelectedRow + directionDelta;
 			
-			indexToSelect = (indexToSelect + rows.size()) % rows.size();
-			rowToSelect = rows.get(indexToSelect);
+			indexToSelect = (indexToSelect + selectableComponentToContentsFileNameMap.size()) % selectableComponentToContentsFileNameMap.size();
+			rowToSelect = selectableComponentToContentsFileNameMap.get(indexToSelect);
 			clearSelection();
 			rowToSelect.selectRow();
 		}
@@ -354,7 +352,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 
 	abstract protected TwoColumnPanel createLeftPanel();
 
-	private LinkedHashSet<SelectableRow> selectableComponentToContentsFileNameMap;
+	private Vector<SelectableRow> selectableComponentToContentsFileNameMap;
 	private DashboardRightSideDescriptionPanel rightSideDescriptionPanel;
 	private PersistentHorizontalSplitPane splitPane;
 	private KeyDispatcher dispatcher;
