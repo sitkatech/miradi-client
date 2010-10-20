@@ -27,9 +27,9 @@ import org.miradi.main.EAM;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 
-public class ConceptualizeDashboardTabV2 extends AbstractDashboardTab
+public class ConceptualizeDashboardTab extends AbstractDashboardTab
 {
-	public ConceptualizeDashboardTabV2(Project projectToUse) throws Exception
+	public ConceptualizeDashboardTab(Project projectToUse) throws Exception
 	{
 		super(projectToUse);
 	}
