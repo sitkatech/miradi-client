@@ -21,7 +21,6 @@ package org.miradi.dialogs.threatrating.upperPanel;
 
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
 
 public class OverallProjectSummaryCellTableModel extends AbstractThreatTargetTableModel
 {
@@ -53,8 +52,7 @@ public class OverallProjectSummaryCellTableModel extends AbstractThreatTargetTab
 
 	public Object getValueAt(int arg0, int arg1)
 	{
-		StressBasedThreatRatingFramework framework = new StressBasedThreatRatingFramework(getProject());
-		int overallProjectRating = framework.getOverallProjectRating();
+		int overallProjectRating = getProject().getProjectSummaryThreatRating();
 		
 		return convertThreatRatingCodeToChoiceItem(convertIntToString(overallProjectRating));
 	}
