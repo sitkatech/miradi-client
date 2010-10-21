@@ -42,9 +42,14 @@ public class CaptureAndShareLearningTab extends AbstractDashboardTab
 	{
 		TwoColumnPanel leftMainPanel = new TwoColumnPanel();
 		createHeaderRow(leftMainPanel, EAM.text("5. Capture and Share Learning"), "", getMainDescriptionFileName());
-		createSubHeaderRow(leftMainPanel, EAM.text("5A. Document Learning"), EAM.text("Document Key Results and Lessons"), PREPARE_DATA_FOR_ANALYSIS_RIGTH_SIDE_FILENAME);
-		createSubHeaderRow(leftMainPanel, EAM.text("5B. Share Learning"), EAM.text("Identify Key Audiences Develop Communications Strategy Report to Project Team and Stakeholders Develop and Share Communication Products Use Other’s Communication Products"), ANALYZE_RESULTS_RIGTH_SIDE_FILENAME);
-		createSubHeaderRow(leftMainPanel, EAM.text("5C. Create a Learning Enviornment"), EAM.text("Share Feedback Formally or Informally Conduct Evaluations... Demonstrate Commitment... Provide Safe Environment... Share Successes and Failures..."), ADAPT_PROJECT_PLAN_RIGTH_SIDE_FILENAME);
+		String title5a = EAM.text("Document Key Results and Lessons");
+		createSubHeaderRow(leftMainPanel, EAM.text("5A. Document Learning"), title5a, PREPARE_DATA_FOR_ANALYSIS_RIGTH_SIDE_FILENAME);
+		String title5b = EAM.text("Identify Key Audiences Develop Communications Strategy Report to Project Team and " +
+				"Stakeholders Develop and Share Communication Products Use Other's Communication Products");
+		createSubHeaderRow(leftMainPanel, EAM.text("5B. Share Learning"), title5b, ANALYZE_RESULTS_RIGTH_SIDE_FILENAME);
+		String title5c = EAM.text("Share Feedback Formally or Informally Conduct Evaluations... Demonstrate Commitment... " +
+				"Provide Safe Environment... Share Successes and Failures...");
+		createSubHeaderRow(leftMainPanel, EAM.text("5C. Create a Learning Enviornment"), title5c, ADAPT_PROJECT_PLAN_RIGTH_SIDE_FILENAME);
 		
 		return leftMainPanel;
 	}

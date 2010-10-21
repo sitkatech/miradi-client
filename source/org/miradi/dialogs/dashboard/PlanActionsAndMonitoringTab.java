@@ -68,12 +68,14 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 		tokenReplacementMap.put("%projectPlanningEndDate", getDashboardData(Dashboard.PSEUDO_PROJECT_PLANNING_END_DATE));
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("%projectPlanningStartDate - %projectPlanningEndDate"), tokenReplacementMap);
 
-		createDataRow(leftMainPanel, EAM.text("Plan Project Lifespan and Exit Strategy"), rightColumnTranslatedText, OPERATIONAL_PLAN_RIGHT_SIDE_FILE_NAME);
+		String title = EAM.text("Plan Project Lifespan and Exit Strategy");
+		createDataRow(leftMainPanel, title, rightColumnTranslatedText, OPERATIONAL_PLAN_RIGHT_SIDE_FILE_NAME);
 	}
 
 	private void addDevelopFormatMonitoringPlanRow(TwoColumnPanel leftMainPanel)
 	{
-		createSubHeaderRow(leftMainPanel, EAM.text("2B. Develop a formal monitoring plan"), DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME);
+		String title2b = EAM.text("2B. Develop a formal monitoring plan");
+		createSubHeaderRow(leftMainPanel, title2b, DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME);
 		
 		createDataRow(leftMainPanel, EAM.text("Define Audiences and Information Needs:"), EAM.text("Use Comments Field?"), DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME);
 		createIndictorsRow(leftMainPanel);
@@ -86,7 +88,8 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 		String leftColumnTranslatedText = EAM.text("Finalize Monitoring Plan:");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%objectivesRelevantToIndicatorsPercentage", getDashboardData(Dashboard.PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE));
-		String rightColumnTranslatedText = EAM.substitute(EAM.text("%objectivesRelevantToIndicatorsPercentage % of objectives with relevant indicators"), tokenReplacementMap);
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%objectivesRelevantToIndicatorsPercentage % of objectives " +
+				"with relevant indicators"), tokenReplacementMap);
 
 		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME);
 	}
@@ -97,7 +100,8 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%keaIndicators", getDashboardData(Dashboard.PSEUDO_KEA_INDICATORS_COUNT));
 		tokenReplacementMap.put("%factorIndicators", getDashboardData(Dashboard.PSEUDO_FACTOR_INDICATORS_COUNT));
-		String rightColumnTranslatedText = EAM.substitute(EAM.text("%keaIndicators Indicators associated to KEAÕs.  %factorIndicators indicators associate to Factors"), tokenReplacementMap);
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%keaIndicators Indicators associated to " +
+				"KEA's.  %factorIndicators indicators associate to Factors"), tokenReplacementMap);
 
 		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME);
 	}
@@ -121,9 +125,13 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 	{
 		String leftColumnTranslatedText = EAM.text("Finalize Strategic Plan");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
-		tokenReplacementMap.put("%objectivesRelevantToStrategiesPercentage", getDashboardData(Dashboard.PSEUDO_OBJECTIVES_RELEVANT_TO_STRATEGIES_PERCENTAGE));
-		tokenReplacementMap.put("%strategiesIrrelevantToObjectivesCount", getDashboardData(Dashboard.PSEUDO_IRRELEVANT_STRATEGIES_TO_OBJECTIVES_COUNT));
-		String rightColumnTranslatedText = EAM.substitute(EAM.text("%objectivesRelevantToStrategiesPercentage % of Objectives relevant to a Strategy. %strategiesIrrelevantToObjectivesCount Strategies that do not contribute to an Objective"), tokenReplacementMap);
+		tokenReplacementMap.put("%objectivesRelevantToStrategiesPercentage", 
+				getDashboardData(Dashboard.PSEUDO_OBJECTIVES_RELEVANT_TO_STRATEGIES_PERCENTAGE));
+		tokenReplacementMap.put("%strategiesIrrelevantToObjectivesCount", 
+				getDashboardData(Dashboard.PSEUDO_IRRELEVANT_STRATEGIES_TO_OBJECTIVES_COUNT));
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%objectivesRelevantToStrategiesPercentage % of Objectives " +
+				"relevant to a Strategy. %strategiesIrrelevantToObjectivesCount Strategies " +
+				"that do not contribute to an Objective"), tokenReplacementMap);
 
 		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
@@ -135,7 +143,8 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 		tokenReplacementMap.put("%objectiveCount", getDashboardData(Dashboard.PSEUDO_OBJECTIVE_COUNT));
 		tokenReplacementMap.put("%resultsChainCount", getDashboardData(Dashboard.PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT));
 		tokenReplacementMap.put("%resultsChainWithObjectiveCount", getDashboardData(Dashboard.PSEUDO_RESULTS_CHAIN_WITH_OBJECTIVE_COUNT));
-		String rightColumnTranslatedText = EAM.substitute(EAM.text("%objectiveCount Objectives Created. %resultsChainWithObjectiveCount of %resultsChainCount RCs have at least 1 objective"), tokenReplacementMap);
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%objectiveCount Objectives " +
+				"Created. %resultsChainWithObjectiveCount of %resultsChainCount RCs have at least 1 objective"), tokenReplacementMap);
 
 		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
@@ -192,7 +201,8 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 
 	private void addGoalCountRow(TwoColumnPanel leftMainPanel)
 	{
-		createDataRow(leftMainPanel, EAM.text("Total Goals Created:"), getDashboardData(Dashboard.PSEUDO_GOAL_COUNT), DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
+		createDataRow(leftMainPanel, EAM.text("Total Goals Created:"), 
+				getDashboardData(Dashboard.PSEUDO_GOAL_COUNT), DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
 	private void addTargetsWithGoalRow(TwoColumnPanel leftMainPanel)
