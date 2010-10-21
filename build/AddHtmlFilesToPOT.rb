@@ -19,12 +19,17 @@ end
 
 def process_html_file(output, root_directory, relative_file)
 	file = File.join(root_directory, relative_file)
-	lines = File.readlines(file)
-	lines = lines.collect do | line |
-		line.chomp
+	begin
+		lines = File.readlines(file)
+		lines = lines.collect do | line |
+			line.chomp
+		end
+		full_text = lines.join.gsub(/<!--.*?-->/, '')
+		append_entry_to_pot(output, "html|#{relative_file}|#{full_text}")
+	rescue Exception
+		puts "Exception while processing #{file}"
+		raise
 	end
-	full_text = lines.join.gsub(/<!--.*?-->/, '')
-	append_entry_to_pot(output, "html|#{relative_file}|#{full_text}")
 end
 
 def process_directory(output, root_directory, relative_directory)
