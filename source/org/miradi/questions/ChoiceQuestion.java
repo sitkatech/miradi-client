@@ -78,6 +78,11 @@ public abstract class ChoiceQuestion
 		return getChoices()[index];
 	}
 	
+	public int findIndexByCode(ChoiceItem choiceItem)
+	{
+		return findIndexByCode(choiceItem.getCode());
+	}
+	
 	public int findIndexByCode(String code)
 	{
 		ChoiceItem[] choices = getChoices();
