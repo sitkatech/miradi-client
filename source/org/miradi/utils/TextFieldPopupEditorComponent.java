@@ -26,8 +26,8 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
 /**
- * FIXME: Eliminate code duplication with QuestionPopupEditorComponent
- * FIXME: This code currently retrieves dialog data after the dialog has been disposed
+ * FIXME medium: Eliminate code duplication with QuestionPopupEditorComponent
+ * FIXME medium: This code currently retrieves dialog data after the dialog has been disposed
  */
 public class TextFieldPopupEditorComponent extends AbstractPopupEditorComponent
 {
