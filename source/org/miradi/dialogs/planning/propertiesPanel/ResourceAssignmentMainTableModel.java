@@ -286,16 +286,14 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 		}
 	}
 	
-	//FIXME medium, need to use method from AbstractSummaryTable.createInvalidObject() instead of the methods
-	//below
-	public static FundingSource createInvalidFundingSource(ObjectManager objectManager)
+	private BaseObject createInvalidFundingSource(ObjectManager objectManager)
 	{
-		return new FundingSource(objectManager, BaseId.INVALID);
+		return AbstractSummaryTableModel.createInvalidObject(objectManager, FundingSource.getObjectType());
 	}
 	
-	public static AccountingCode createInvalidAccountingCode(ObjectManager objectManager)
+	private BaseObject createInvalidAccountingCode(ObjectManager objectManager)
 	{
-		return new AccountingCode(objectManager, BaseId.INVALID);
+		return AbstractSummaryTableModel.createInvalidObject(objectManager, AccountingCode.getObjectType());
 	}
 	
 	private static final String UNIQUE_MODEL_IDENTIFIER = "ResourceAssignmentMainTableModel";
