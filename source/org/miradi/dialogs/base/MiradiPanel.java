@@ -29,7 +29,7 @@ public class MiradiPanel extends JPanel
 {
 	public MiradiPanel()
 	{
-		// FIXME: Shouldn't this call this(layout) so the color gets set?
+		// FIXME low: Shouldn't this call this(layout) so the color gets set?
 		super();
 	}
 	
