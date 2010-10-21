@@ -634,6 +634,11 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	public String getTagForCell(int nodeType, int column)
 	{
 		String columnTag = getColumnTag(column);
+		if (columnTag.equals(WorkPlanColumnConfigurationQuestion.COMMENTS_COLUMN_CODE))
+		{
+			columnTag = Factor.TAG_COMMENTS;
+		}
+		
 		if(ProjectMetadata.is(nodeType))
 		{
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
@@ -743,6 +748,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 	private boolean isDetailsColumn(int column)
 	{
+		if (getColumnTag(column).equals(WorkPlanColumnConfigurationQuestion.DETAILS_COLUMN_CODE))
+			return true;
+		
 		return getColumnTag(column).equals(Desire.TAG_FULL_TEXT);
 	}
 	

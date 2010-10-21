@@ -36,6 +36,8 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE),
 				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE),
 				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE),
+				createChoiceItem(COMMENTS_COLUMN_CODE),
+				createChoiceItem(DETAILS_COLUMN_CODE),
 		};
 	}
 	
@@ -117,4 +119,7 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 	public static final String META_BUDGET_CATEGORY_TWO_WORK_UNITS_COLUMN_CODE = "MetaBudgetCategoryTwoWorkUnitsColumnCode";
 	public static final String META_BUDGET_CATEGORY_TWO_EXPENSE_COLUMN_CODE = "MetaBudgetCategoryTwoExpenseColumnCode";
 	public static final String META_BUDGET_CATEGORY_TWO_BUDGET_DETAILS_COLUMN_CODE = "MetaBudgetCategoryTwoBudgetDetailsColumnCode";
+	
+	public static final String COMMENTS_COLUMN_CODE = "CommentsColumnCode";
+	public static final String DETAILS_COLUMN_CODE = "DetailsColumnCode";
 }
