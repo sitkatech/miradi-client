@@ -20,10 +20,29 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import java.util.Comparator;
+
 public class StaticChoiceQuestionSortableByNaturalOrder extends	StaticChoiceQuestion
 {
 	public StaticChoiceQuestionSortableByNaturalOrder()
 	{
 		super();
+	}
+	
+	@Override
+	public Comparator<ChoiceItem> getComparator()
+	{
+		return new ByNaturalOrderComparator();
+	}
+	
+	private class ByNaturalOrderComparator implements Comparator<ChoiceItem>
+	{
+		public int compare(ChoiceItem choiceItem1, ChoiceItem choiceItem2)
+		{
+			Integer index1 = findIndexByCode(choiceItem1);
+			Integer index2 = findIndexByCode(choiceItem2);
+				
+			return index1.compareTo(index2);
+		}
 	}
 }
