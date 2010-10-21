@@ -151,7 +151,7 @@ abstract public class AbstractXmpzObjectImporter implements WcsXmlConstants
 		if (idNode == null)
 			return ORef.INVALID;
 
-		//FIXME We don not understand where a new line is coming from.  
+		//FIXME low: We don not understand where a new line is coming from.  
 		//Due to lack of source and debugging capabilies, the string is trimmed.
 		//Need to understand where the new line is coming from and remove the trim.
 		String trimmedIdAsString = idNode.getTextContent().trim();
