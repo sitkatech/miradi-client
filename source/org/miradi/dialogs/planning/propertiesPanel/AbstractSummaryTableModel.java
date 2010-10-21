@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.ids.BaseId;
+import org.miradi.dialogs.planning.treenodes.UnspecifiedBaseObject;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AccountingCode;
@@ -79,19 +79,19 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 			return getAccountingCode(baseObjectForRow);
 		
 		if (isCategoryOneColumn(column))
-			return getBaseObject(baseObjectForRow, Assignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOne.getObjectType());
+			return getBaseObject(baseObjectForRow, Assignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOne.getObjectType(), BudgetCategoryOne.OBJECT_NAME);
 		
 		if (isCategoryTwoColumn(column))
-			return getBaseObject(baseObjectForRow, Assignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwo.getObjectType());
+			return getBaseObject(baseObjectForRow, Assignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwo.getObjectType(), BudgetCategoryTwo.OBJECT_NAME);
 		
 		return null;
 	}
 	
-	protected BaseObject getBaseObject(BaseObject baseObjectForRow, String tagForRef, int objectType)
+	private BaseObject getBaseObject(BaseObject baseObjectForRow, String tagForRef, int objectType, String objectTypeName)
 	{
 		ORef ref = baseObjectForRow.getRef(tagForRef);
 		if (ref.isInvalid())
-			return createInvalidObject(getObjectManager(), objectType);
+			return createInvalidObject(getObjectManager(), objectType, objectTypeName);
 			
 		return BaseObject.find(getProject(), ref);
 	}
@@ -123,23 +123,9 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 		return getColumnName(column);
 	}
 	
-	//FIXME medium - this method should not create invalid objects. Having invalid objects, might be saved to disk.  
-	//Should use some unspecified object,  see how unspecified nodes are created in Funding source tree. 
-	public static BaseObject createInvalidObject(ObjectManager objectManager, int objectType)
+	public static BaseObject createInvalidObject(ObjectManager objectManager, int objectType, String objectTypeName)
 	{
-		if (AccountingCode.is(objectType))
-			return new AccountingCode(objectManager, BaseId.INVALID);
-		
-		if (FundingSource.is(objectType))
-			return new FundingSource(objectManager, BaseId.INVALID);
-		
-		if (BudgetCategoryOne.is(objectType))
-			return new BudgetCategoryOne(objectManager, BaseId.INVALID);
-		
-		if (BudgetCategoryTwo.is(objectType))
-			return new BudgetCategoryTwo(objectManager, BaseId.INVALID);
-		
-		throw new RuntimeException("createInvalidObject does not handle the object type: " + objectType);
+		return new UnspecifiedBaseObject(objectManager, objectType, objectTypeName);
 	}
 	
 	public boolean isColumnForType(int column, int objectType)

@@ -52,21 +52,21 @@ public class AbstractAssignmentDetailsMainTable extends AbstractComponentTable
 	{
 		for (int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
 		{
-			createComboColumnWithInvalidObject(tableColumn, FundingSource.getObjectType());
-			createComboColumnWithInvalidObject(tableColumn, AccountingCode.getObjectType());
-			createComboColumnWithInvalidObject(tableColumn, BudgetCategoryOne.getObjectType());
-			createComboColumnWithInvalidObject(tableColumn, BudgetCategoryTwo.getObjectType());
+			createComboColumnWithInvalidObject(tableColumn, FundingSource.getObjectType(), FundingSource.OBJECT_NAME);
+			createComboColumnWithInvalidObject(tableColumn, AccountingCode.getObjectType(), AccountingCode.OBJECT_NAME);
+			createComboColumnWithInvalidObject(tableColumn, BudgetCategoryOne.getObjectType(), BudgetCategoryOne.OBJECT_NAME);
+			createComboColumnWithInvalidObject(tableColumn, BudgetCategoryTwo.getObjectType(), BudgetCategoryTwo.OBJECT_NAME);
 		}
 	}
 	
-	private void createComboColumnWithInvalidObject(int tableColumn, int objectType)
+	private void createComboColumnWithInvalidObject(int tableColumn, int objectType, String objectTypeName)
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		if (! getAbstractSummaryTableModel().isColumnForType(modelColumn, objectType))
 			return;
 		
 		BaseObject[] baseObjects = getObjectManager().getPool(objectType).getAllObjectsAsArray();
-		BaseObject invalidObject = ResourceAssignmentMainTableModel.createInvalidObject(getObjectManager(), objectType);
+		BaseObject invalidObject = ResourceAssignmentMainTableModel.createInvalidObject(getObjectManager(), objectType, objectTypeName);
 		createComboColumn(baseObjects, tableColumn, invalidObject);
 	}
 	
