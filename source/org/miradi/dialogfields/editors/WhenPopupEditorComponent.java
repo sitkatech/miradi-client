@@ -30,7 +30,7 @@ import org.miradi.utils.AbstractPopupEditorComponent;
 import org.miradi.utils.CodeList;
 
 /*
- * FIXME: This code currently retrieves dialog data after the dialog has been disposed
+ * FIXME medium: This code currently retrieves dialog data after the dialog has been disposed
  */
 public class WhenPopupEditorComponent extends AbstractPopupEditorComponent
 {
