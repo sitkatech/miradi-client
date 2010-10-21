@@ -449,7 +449,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		diagramModel.updateVisibilityOfFactorsAndLinks();
 	}
 
-	private void handleGroupBoxTypes(CommandSetObjectData commandSetObjectData)
+	private void handleGroupBoxTypes(CommandSetObjectData commandSetObjectData) throws Exception
 	{
 		if (commandSetObjectData.getObjectType() != DiagramFactor.getObjectType())
 			return;

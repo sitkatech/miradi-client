@@ -895,7 +895,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 		return allFactorCells;
 	}
 	
-	public void updateGroupBoxCells()
+	public void updateGroupBoxCells() throws Exception
 	{
 		Vector<FactorCell> allGroupBoxes = getAllGroupBoxCells();
 		for (int i = 0; i < allGroupBoxes.size(); ++i)

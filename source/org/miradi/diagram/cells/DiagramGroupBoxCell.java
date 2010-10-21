@@ -92,7 +92,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		return GraphConstants.getBounds(getAttributes());
 	}
 	
-	public void autoSurroundChildren()
+	public void autoSurroundChildren() throws Exception
 	{
 		if (getDiagramFactor().getGroupBoxChildrenRefs().size() == 0)
 			return;
@@ -132,21 +132,13 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		return lines.length;
 	}
 
-	private void saveLocationAndSize(Point location, Dimension size)
+	private void saveLocationAndSize(Point location, Dimension size) throws Exception
 	{
-		try
-		{
-			CommandSetObjectData setLocation = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(location));
-			model.getProject().executeAsSideEffect(setLocation);
-			
-			CommandSetObjectData setSize = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(size));
-			model.getProject().executeAsSideEffect(setSize);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			//FIXME medium: do something with this exception
-		}
+		CommandSetObjectData setLocation = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(location));
+		model.getProject().executeAsSideEffect(setLocation);
+
+		CommandSetObjectData setSize = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(size));
+		model.getProject().executeAsSideEffect(setSize);
 	}
 	
 	public Rectangle2D computeCurrentChildrenBounds()
