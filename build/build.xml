@@ -513,6 +513,12 @@
 		<arg value="--output=${miradi.pot}"/>
 		<arg value="--files-from=${java_files}"/>
 	</exec>
+	<!-- Hopefully abort if there are non-UTF-8 characters in the pot -->
+	<exec executable="iconv" failonerror="true">
+		<arg value="${miradi.pot}"/>
+		<arg value="-o"/>
+		<arg value="/dev/null"/>
+		</exec>
 	<delete file="${java_files}"/>
 	<echo message="append FieldLabels.properties strings to pot file"/>
 	<exec executable="ruby" failonerror="true">
