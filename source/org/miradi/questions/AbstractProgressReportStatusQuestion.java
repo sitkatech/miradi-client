@@ -25,7 +25,7 @@ import java.util.Comparator;
 
 import org.miradi.main.EAM;
 
-abstract public class AbstractProgressReportStatusQuestion extends StaticChoiceQuestion
+abstract public class AbstractProgressReportStatusQuestion extends StaticChoiceQuestionSortableByNaturalOrder
 {
 	public AbstractProgressReportStatusQuestion()
 	{
