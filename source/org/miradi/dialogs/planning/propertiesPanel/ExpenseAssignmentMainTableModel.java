@@ -185,14 +185,14 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 	@Override
 	protected void setAccountingCode(Object value, ORef assignmentRefForRow, int column)
 	{
-		AccountingCode accountingCode = (AccountingCode)value;
+		BaseObject accountingCode = (BaseObject)value;
 		setValueUsingCommand(assignmentRefForRow, getAccountingCodeTag(), accountingCode.getRef());
 	}
 
 	@Override
 	protected void setFundingSource(Object value, ORef assignmentRefForRow, int column)
 	{
-		FundingSource fundingSource = (FundingSource)value;
+		BaseObject fundingSource = (BaseObject)value;
 		setValueUsingCommand(assignmentRefForRow, getFundingSourceTag(), fundingSource.getRef());
 	}
 	

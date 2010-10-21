@@ -251,7 +251,7 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 	@Override
 	protected void setAccountingCode(Object value, ORef assignmentRefForRow, int column)
 	{
-		AccountingCode accountingCode = (AccountingCode)value;
+		BaseObject accountingCode = (BaseObject)value;
 		BaseId accountingCodeId = accountingCode.getId();
 		setValueUsingCommand(assignmentRefForRow, getAccountingCodeTag(), accountingCodeId);
 	}
@@ -259,7 +259,7 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 	@Override
 	protected void setFundingSource(Object value, ORef assignmentRefForRow, int column)
 	{
-		FundingSource fundingSource = (FundingSource)value;
+		BaseObject fundingSource = (BaseObject)value;
 		BaseId fundingSourceId = fundingSource.getId();
 		setValueUsingCommand(assignmentRefForRow, getFundingSourceTag(), fundingSourceId);
 	}
@@ -288,12 +288,12 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 	
 	private BaseObject createInvalidFundingSource(ObjectManager objectManager)
 	{
-		return AbstractSummaryTableModel.createInvalidObject(objectManager, FundingSource.getObjectType());
+		return AbstractSummaryTableModel.createInvalidObject(objectManager, FundingSource.getObjectType(), FundingSource.OBJECT_NAME);
 	}
 	
 	private BaseObject createInvalidAccountingCode(ObjectManager objectManager)
 	{
-		return AbstractSummaryTableModel.createInvalidObject(objectManager, AccountingCode.getObjectType());
+		return AbstractSummaryTableModel.createInvalidObject(objectManager, AccountingCode.getObjectType(), AccountingCode.OBJECT_NAME);
 	}
 	
 	private static final String UNIQUE_MODEL_IDENTIFIER = "ResourceAssignmentMainTableModel";
