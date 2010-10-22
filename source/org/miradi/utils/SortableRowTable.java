@@ -34,16 +34,20 @@ abstract public class SortableRowTable extends TableWithColumnWidthAndSequenceSa
 	{
 		super(mainWindowToUse, model, uniqueTableIdentifierToUse);
 		
-		rowSortController = new MultiTableRowSortController(getProject());
-		
-		//FIXME urgent: bubble up exception
+		addAsSortableTable();
+	}
+
+	private void addAsSortableTable()
+	{
 		try
 		{
+			rowSortController = new MultiTableRowSortController(getProject());
 			rowSortController.addTableToSort(this);
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
 		}
 	}
 	
