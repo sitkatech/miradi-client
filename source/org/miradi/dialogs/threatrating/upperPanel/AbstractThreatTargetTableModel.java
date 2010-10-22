@@ -113,7 +113,7 @@ abstract public class AbstractThreatTargetTableModel extends GenericTableModel
 		return getProject().areLinked(threat, target);
 	}
 	
-	public void setThreats(Vector<Integer> rows)
+	public void setSortedRowIndexes(Vector<Integer> rows)
 	{
 		Vector<Factor> newSortedThreatList = new Vector<Factor>();
 		for(int index = 0; index < rows.size(); ++index)
