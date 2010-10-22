@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.upperPanel;
 
-import java.util.Collections;
 import java.util.Vector;
 
 import org.miradi.objecthelpers.ORef;
@@ -33,7 +32,6 @@ import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.EmptyChoiceItem;
-import org.miradi.questions.SortDirectionQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.utils.GenericTableModel;
 
@@ -108,21 +106,6 @@ abstract public class AbstractThreatTargetTableModel extends GenericTableModel
 		return newSortedThreatList.toArray(new Factor[0]);
 	}
 
-	private Vector<Integer> getSortedRowIndexes(int sortByTableColumn, String sortDirectionCode)
-	{
-		Vector<Integer> rows = new Vector<Integer>();
-		for(int index = 0; index < getRowCount(); ++index)
-		{
-			rows.add(new Integer(index));
-		}
-		
-		Collections.sort(rows, createComparator(sortByTableColumn));
-		if (sortDirectionCode.equals(SortDirectionQuestion.REVERSED_SORT_ORDER_CODE))
-			Collections.reverse(rows);
-		
-		return rows;
-	}
-	
 	public boolean isPopupSupportableCell(int row, int modelColumn)
 	{
 		return true;

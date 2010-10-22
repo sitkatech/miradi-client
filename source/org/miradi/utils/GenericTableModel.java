@@ -20,16 +20,34 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.Vector;
 
 import javax.swing.table.AbstractTableModel;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.threatrating.upperPanel.TableModelStringComparator;
+import org.miradi.questions.SortDirectionQuestion;
 
 
 abstract public class GenericTableModel extends AbstractTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
 {
+	protected Vector<Integer> getSortedRowIndexes(int sortByTableColumn, String sortDirectionCode)
+	{
+		Vector<Integer> rows = new Vector<Integer>();
+		for(int index = 0; index < getRowCount(); ++index)
+		{
+			rows.add(new Integer(index));
+		}
+		
+		Collections.sort(rows, createComparator(sortByTableColumn));
+		if (sortDirectionCode.equals(SortDirectionQuestion.REVERSED_SORT_ORDER_CODE))
+			Collections.reverse(rows);
+		
+		return rows;
+	}
+
 	public Comparator<Integer> createComparator(int columnToSortOn)
 	{
 		return new TableModelStringComparator(this, columnToSortOn);
