@@ -113,12 +113,13 @@ abstract public class AbstractThreatTargetTableModel extends GenericTableModel
 		return getProject().areLinked(threat, target);
 	}
 	
-	public void setSortedRowIndexes(Vector<Integer> rows)
+	@Override
+	public void setSortedRowIndexes(Vector<Integer> sortedRowIndexes)
 	{
 		Vector<Factor> newSortedThreatList = new Vector<Factor>();
-		for(int index = 0; index < rows.size(); ++index)
+		for(int index = 0; index < sortedRowIndexes.size(); ++index)
 		{
-			int nextExistingRowIndex = rows.get(index).intValue();
+			int nextExistingRowIndex = sortedRowIndexes.get(index).intValue();
 			newSortedThreatList.add(getDirectThreat(nextExistingRowIndex));
 		}
 		

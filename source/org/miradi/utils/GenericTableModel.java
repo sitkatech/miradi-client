@@ -59,4 +59,9 @@ abstract public class GenericTableModel extends AbstractTableModel implements Co
 	}
 	
 	public abstract String getUniqueTableModelIdentifier();
+
+	public void setSortedRowIndexes(Vector<Integer> sortedRowIndexes)
+	{
+		throw new RuntimeException("This model does not support sorted indexes");
+	}
 }

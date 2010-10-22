@@ -20,65 +20,45 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import java.util.Collections;
 import java.util.Comparator;
-import java.util.Vector;
 
-import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
 import org.miradi.dialogs.base.AbstractObjectTableModel;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-abstract public class SortableRowTable extends TableWithColumnWidthAndSequenceSaver implements SortableTable
+abstract public class SortableRowTable extends TableWithColumnWidthAndSequenceSaver
 {
 	public SortableRowTable(MainWindow mainWindowToUse, TableModel model, String uniqueTableIdentifierToUse)
 	{
 		super(mainWindowToUse, model, uniqueTableIdentifierToUse);
 		
-		currentSortColumn = -1;
+		rowSortController = new MultiTableRowSortController(getProject());
 		
-		enableClickToSortColumnHeaders();
+		//FIXME urgent: bubble up exception
+		try
+		{
+			rowSortController.addTableToSort(this);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
 	}
-
-	private void enableClickToSortColumnHeaders()
+	
+	@Override
+	public void dispose()
 	{
-		JTableHeader columnHeader = getTableHeader();
-		columnHeader.setReorderingAllowed(true);
-		ColumnSortListener sortListener = new ColumnSortListener(this);
-		columnHeader.addMouseListener(sortListener);
+		rowSortController.dispose();
+		
+		super.dispose();
 	}
 	
 	public void sort(int sortByTableColumn) 
 	{
-		Comparator comparator = getComparator(sortByTableColumn);
-		Vector<Integer> rows = new Vector<Integer>();
-		for(int row = 0; row < getRowCount(); ++row)
-		{
-			rows.add(new Integer(row));
-		}
-
-		Vector unsortedRows = (Vector)rows.clone();
-		sortRows(rows, comparator);
-		
-		if (sortByTableColumn == currentSortColumn && rows.equals(unsortedRows))
-			Collections.reverse(rows);
-
-		getAbstractObjectTableModel().setNewRowOrder(rows.toArray(new Integer[0]));
-		
-		// TODO: Should memorize sort order for each table
-		currentSortColumn = sortByTableColumn;
-		
-		revalidate();
-		repaint();
-	}
-
-	// TODO: Find a way to avoid this annotation, which is required 
-	// because we might be sorting a ChoiceItem column or a String column 
-	@SuppressWarnings("unchecked")
-	private void sortRows(Vector<Integer> rows, Comparator comparator)
-	{
-		Collections.sort(rows, comparator);
+		//FIXME urgent: this method is no longer used since sort column and direction are stored by a different mechanism.
+		//Look at both callers of this method and verify that they can be removed.  
 	}
 
 	protected Comparator getComparator(int sortByTableColumn)
@@ -92,5 +72,5 @@ abstract public class SortableRowTable extends TableWithColumnWidthAndSequenceSa
 		return (AbstractObjectTableModel) getModel();
 	}
 	
-	private int currentSortColumn;
+	private MultiTableRowSortController rowSortController;
 }

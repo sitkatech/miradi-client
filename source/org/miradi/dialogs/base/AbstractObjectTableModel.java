@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import java.util.Comparator;
+import java.util.Vector;
 
 import org.miradi.dialogs.threatrating.upperPanel.TableModelChoiceItemComparator;
 import org.miradi.objecthelpers.ORefList;
@@ -55,17 +56,17 @@ abstract public class AbstractObjectTableModel extends GenericTableModel
 		return project;
 	}
 	
-	public void setNewRowOrder(Integer[] existingRowIndexesInNewOrder)
+	public void setSortedRowIndexes(Vector<Integer> sortedRowIndexes)
 	{
 		ORefList newList = new ORefList();
-		for(int i = 0; i < existingRowIndexesInNewOrder.length; ++i)
+		for(int index = 0; index < sortedRowIndexes.size(); ++index)
 		{
-			int nextExistingRowIndex = existingRowIndexesInNewOrder[i].intValue();
+			int nextExistingRowIndex = sortedRowIndexes.get(index).intValue();
 			newList.add(getRowObjectRefs().get(nextExistingRowIndex));
 		}
 		setRowObjectRefs(newList);
 	}
-	
+		
 	@Override
 	public Comparator<Integer> createComparator(int sortColumn)
 	{
