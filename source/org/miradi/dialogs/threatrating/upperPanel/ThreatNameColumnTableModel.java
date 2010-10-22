@@ -58,11 +58,6 @@ public class ThreatNameColumnTableModel extends AbstractThreatPerRowTableModel
 		return EAM.text("Threats") + " \\ " + EAM.text("Targets");
 	}
 	
-	public String getColumnTag(int column)
-	{
-		return "";
-	}
-	
 	public Object getValueAt(int row, int column)
 	{
 		return getChoiceItemAt(row, column);

@@ -77,11 +77,6 @@ public class TargetThreatLinkTableModel extends AbstractThreatPerRowTableModel
 		}
 	}
 
-	public String getColumnTag(int column)
-	{
-		return "";
-	}
-
 	@Override
 	public Comparator<Integer> getComparator(int columnToSortOn)
 	{

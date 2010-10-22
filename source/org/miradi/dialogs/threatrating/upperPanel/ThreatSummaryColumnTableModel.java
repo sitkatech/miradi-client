@@ -55,11 +55,6 @@ public class ThreatSummaryColumnTableModel extends AbstractThreatPerRowTableMode
 		return EAM.text("Summary Threat Rating");
 	}
 	
-	public String getColumnTag(int column)
-	{
-		return "";
-	}
-
 	public int getColumnCount()
 	{
 		return 1;
