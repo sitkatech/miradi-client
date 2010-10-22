@@ -46,6 +46,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.project.ObjectManager;
 
 
 
@@ -118,48 +119,58 @@ public abstract class FactorType
 		return getClass().getName().hashCode();
 	}
 	
-	//FIXME medium - Should use ObjectManager.getInternalObjectName(type)
 	public static String getFactorTypeLabel(Factor factor)
 	{
 		if(factor.isDirectThreat())
-			return EAM.fieldLabel(Cause.getObjectType(), Cause.OBJECT_NAME_THREAT);
+			return getFieldLabel(Cause.getObjectType(), Cause.OBJECT_NAME_THREAT);
 		
 		if (factor.isContributingFactor())
-			return EAM.fieldLabel(Cause.getObjectType(), Cause.OBJECT_NAME_CONTRIBUTING_FACTOR);
+			return getFieldLabel(Cause.getObjectType(), Cause.OBJECT_NAME_CONTRIBUTING_FACTOR);
 		
 		if (factor.isStrategy())
-			return EAM.fieldLabel(Strategy.getObjectType(), Strategy.OBJECT_NAME);
+			return getFactorLabel(factor.getObjectManager(), Strategy.getObjectType());
 		
 		if (factor.isTarget())
-			return EAM.fieldLabel(Target.getObjectType(), Target.OBJECT_NAME);
+			return getFactorLabel(factor.getObjectManager(), Target.getObjectType());
 		
 		if (factor.isHumanWelfareTarget())
-			return EAM.fieldLabel(HumanWelfareTarget.getObjectType(), HumanWelfareTarget.OBJECT_NAME);
+			return getFactorLabel(factor.getObjectManager(), HumanWelfareTarget.getObjectType());
 		
 		if (factor.isIntermediateResult())
-			return EAM.fieldLabel(IntermediateResult.getObjectType(), IntermediateResult.OBJECT_NAME);
+			return getFactorLabel(factor.getObjectManager(), IntermediateResult.getObjectType());
 
 		if (factor.isThreatReductionResult())
-			return EAM.fieldLabel(ThreatReductionResult.getObjectType(), ThreatReductionResult.OBJECT_NAME);
+			return getFactorLabel(factor.getObjectManager(), ThreatReductionResult.getObjectType());
 		
 		if (factor.isTextBox())
-			return EAM.fieldLabel(TextBox.getObjectType(), TextBox.OBJECT_NAME);
+			return getFactorLabel(factor.getObjectManager(), TextBox.getObjectType());
 		
 		if (factor.isScopeBox())
-			return EAM.fieldLabel(ScopeBox.getObjectType(), ScopeBox.OBJECT_NAME);
+			return getFactorLabel(factor.getObjectManager(), ScopeBox.getObjectType());
 		
 		if (factor.isGroupBox())
-			return EAM.fieldLabel(GroupBox.getObjectType(), GroupBox.OBJECT_NAME);
+			return getFactorLabel(factor.getObjectManager(), GroupBox.getObjectType());
 		
 		if (factor.isStress())
-			return EAM.fieldLabel(Stress.getObjectType(), Stress.OBJECT_NAME);
+			return getFactorLabel(factor.getObjectManager(), Stress.getObjectType());
 		
 		if (factor.isActivity())
-			return EAM.fieldLabel(Task.getObjectType(), Task.ACTIVITY_NAME);
+			return getFieldLabel(Task.getObjectType(), Task.ACTIVITY_NAME);
 		
 		throw new RuntimeException("Unknown factor type " + factor.getRef());
 	}
+	
+	private static String getFactorLabel(ObjectManager manager, int objectType)
+	{
+		final String internalObjectTypeName = manager.getInternalObjectTypeName(objectType);
+		
+		return getFieldLabel(objectType, internalObjectTypeName);
+	}
 
+	private static String getFieldLabel(int objectType, String internalObjectTypeName)
+	{
+		return EAM.fieldLabel(objectType, internalObjectTypeName);
+	}
 	
 	public static Icon getFactorIcon(Factor factor) throws Exception
 	{
