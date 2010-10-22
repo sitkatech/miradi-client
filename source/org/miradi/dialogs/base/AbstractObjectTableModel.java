@@ -23,7 +23,6 @@ package org.miradi.dialogs.base;
 import java.util.Comparator;
 
 import org.miradi.dialogs.threatrating.upperPanel.TableModelChoiceItemComparator;
-import org.miradi.dialogs.threatrating.upperPanel.TableModelStringComparator;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -73,7 +72,7 @@ abstract public class AbstractObjectTableModel extends GenericTableModel
 		if (isChoiceItemColumn(sortColumn))
 			return new TableModelChoiceItemComparator(this, sortColumn, getColumnQuestion(sortColumn));
 		
-		return new TableModelStringComparator(this, sortColumn);
+		return super.createComparator(sortColumn);
 	}
 	
 	public int getProportionShares(int row)
