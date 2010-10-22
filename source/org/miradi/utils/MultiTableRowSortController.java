@@ -32,7 +32,6 @@ import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
-import org.miradi.objects.Factor;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.SortDirectionQuestion;
@@ -94,12 +93,12 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		TableSettings tableSettings = findOrCreateTableSettings(model);
 		int modelColumn = tableToSort.convertColumnIndexToModel(columnToSort);
 		String sortDirectionCode = tableSettings.getData(TableSettings.TAG_COLUMN_SORT_DIRECTION);
-		Factor[] sortedThreats = model.getThreatsSortedBy(modelColumn, sortDirectionCode);
+		Vector<Integer> sortedRowIndexes = model.getSortedRowIndexes(modelColumn, sortDirectionCode);
 		for (int index = 0; index < tablesToSort.size(); ++index)
 		{
 			TableWithRowHeightSaver table = tablesToSort.get(index);
 			AbstractThreatTargetTableModel modelToSetThreats = (AbstractThreatTargetTableModel)table.getModel();
-			modelToSetThreats.setThreats(sortedThreats);
+			modelToSetThreats.setThreats(sortedRowIndexes);
 			table.updateAutomaticRowHeights();
 			table.revalidate();
 			table.repaint();
