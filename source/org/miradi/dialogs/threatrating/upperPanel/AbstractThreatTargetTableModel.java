@@ -97,6 +97,19 @@ abstract public class AbstractThreatTargetTableModel extends GenericTableModel
 
 	public Factor[] getThreatsSortedBy(int sortByTableColumn, String sortDirectionCode)
 	{	
+		Vector<Integer> rows = getSortedRowIndexes(sortByTableColumn, sortDirectionCode);
+		Vector<Factor> newSortedThreatList = new Vector<Factor>();
+		for(int index = 0; index < rows.size(); ++index)
+		{
+			int nextExistingRowIndex = rows.get(index).intValue();
+			newSortedThreatList.add(getDirectThreat(nextExistingRowIndex));
+		}
+		
+		return newSortedThreatList.toArray(new Factor[0]);
+	}
+
+	private Vector<Integer> getSortedRowIndexes(int sortByTableColumn, String sortDirectionCode)
+	{
 		Vector<Integer> rows = new Vector<Integer>();
 		for(int index = 0; index < getRowCount(); ++index)
 		{
@@ -107,14 +120,7 @@ abstract public class AbstractThreatTargetTableModel extends GenericTableModel
 		if (sortDirectionCode.equals(SortDirectionQuestion.REVERSED_SORT_ORDER_CODE))
 			Collections.reverse(rows);
 		
-		Vector<Factor> newSortedThreatList = new Vector<Factor>();
-		for(int index = 0; index < rows.size(); ++index)
-		{
-			int nextExistingRowIndex = rows.get(index).intValue();
-			newSortedThreatList.add(getDirectThreat(nextExistingRowIndex));
-		}
-		
-		return newSortedThreatList.toArray(new Factor[0]);
+		return rows;
 	}
 	
 	public boolean isPopupSupportableCell(int row, int modelColumn)
