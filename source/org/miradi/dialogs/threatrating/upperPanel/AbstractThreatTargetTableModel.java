@@ -50,6 +50,11 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel 
 		resetTargetAndThreats();
 	}
 	
+	public String getColumnTag(int column)
+	{
+		return "";
+	}
+	
 	private void resetTargetAndThreats()
 	{
 		threatRows =  getProject().getCausePool().getDirectThreats();

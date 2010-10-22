@@ -37,11 +37,6 @@ public class TargetSummaryRowTableModel extends AbstractThreatTargetTableModel
 		return UNIQUE_IDENTIFIER;
 	}
 
-	public String getColumnTag(int column)
-	{
-		return "";
-	}
-	
 	public int getRowCount()
 	{
 		return 1;
