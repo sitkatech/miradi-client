@@ -98,7 +98,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		{
 			TableWithRowHeightSaver table = tablesToSort.get(index);
 			AbstractThreatTargetTableModel modelToSetThreats = (AbstractThreatTargetTableModel)table.getModel();
-			modelToSetThreats.setThreats(sortedRowIndexes);
+			modelToSetThreats.setSortedRowIndexes(sortedRowIndexes);
 			table.updateAutomaticRowHeights();
 			table.revalidate();
 			table.repaint();
