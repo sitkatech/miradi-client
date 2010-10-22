@@ -104,7 +104,7 @@ abstract public class AbstractThreatTargetTableModel extends GenericTableModel
 			rows.add(new Integer(index));
 		}
 		
-		Collections.sort(rows, getComparator(sortByTableColumn));
+		Collections.sort(rows, createComparator(sortByTableColumn));
 		if (sortDirectionCode.equals(SortDirectionQuestion.REVERSED_SORT_ORDER_CODE))
 			Collections.reverse(rows);
 		
@@ -219,7 +219,7 @@ abstract public class AbstractThreatTargetTableModel extends GenericTableModel
 		return getTargets()[targetIndex].getRef();
 	}
 		
-	public Comparator<Integer> getComparator(int columnToSortOn)
+	public Comparator<Integer> createComparator(int columnToSortOn)
 	{
 		return new TableModelStringComparator(this, columnToSortOn);
 	}
