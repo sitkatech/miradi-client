@@ -4,7 +4,7 @@ Copyright 2005-2010, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION 3.2
+VERSION 3.2.3
 
 License and Copying
 
@@ -142,6 +142,37 @@ GNU/Linux:
 
 ---------------------
 Changes
+
+Miradi 3.2.3 has the following improvements:
+
+- Eliminate incorrect warning that Miradi should be upgraded
+- Improvements to the Spanish translations
+- Fixed potential data corruption problem with "Create Indicator From..."
+- Work Plan "When" column didn't allow entry of specific days
+- Export to CPMZ didn't include Strategy-Goal association data
+- Updates to the list of Operating Units on the TNC tab 
+
+
+
+Miradi 3.2.2 fixes some minor problems that were in 3.2.x:
+
+Application-wide:
+- Pasting factors that contain work planning data between projects 
+  could cause warnings about project corruption
+- Threat Rating view in Simple mode could display incorrect 
+  summary ratings for Targets
+
+
+
+Miradi 3.2.1 fixes two minor problems that were in 3.2.0:
+
+Compatibility:
+- On a computer configured to use commas as decimal separators, 
+  zooming a diagram could cause the project to become corrupted
+- On a Mac/Linux computer that had never run an earlier version, 
+  Miradi 3.2.0 would refuse to run 
+
+
 
 Miradi 3.2 has several significant new features, in addition to many 
 minor fixes and improvements. Here are the highlights:
