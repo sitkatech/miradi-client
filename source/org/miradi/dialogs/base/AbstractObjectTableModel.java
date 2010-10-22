@@ -22,17 +22,14 @@ package org.miradi.dialogs.base;
 
 import java.util.Comparator;
 
-import javax.swing.table.AbstractTableModel;
-
-import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.threatrating.upperPanel.TableModelChoiceItemComparator;
 import org.miradi.dialogs.threatrating.upperPanel.TableModelStringComparator;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.utils.ColumnTagProvider;
+import org.miradi.utils.GenericTableModel;
 
-abstract public class AbstractObjectTableModel extends AbstractTableModel  implements ColumnTagProvider, RowColumnBaseObjectProvider
+abstract public class AbstractObjectTableModel extends GenericTableModel
 {
 	public AbstractObjectTableModel(Project projectToUse)
 	{
@@ -92,8 +89,6 @@ abstract public class AbstractObjectTableModel extends AbstractTableModel  imple
 	{
 		throw new RuntimeException("Method is currently unused and has no implementation");
 	}
-	
-	abstract public String getUniqueTableModelIdentifier();
 	
 	abstract public void setRowObjectRefs(ORefList objectRowRefs);
 	
