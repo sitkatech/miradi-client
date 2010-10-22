@@ -67,7 +67,8 @@ abstract public class AbstractObjectTableModel extends GenericTableModel
 		setRowObjectRefs(newList);
 	}
 	
-	public Comparator createComparator(int sortColumn)
+	@Override
+	public Comparator<Integer> createComparator(int sortColumn)
 	{
 		if (isChoiceItemColumn(sortColumn))
 			return new TableModelChoiceItemComparator(this, sortColumn, getColumnQuestion(sortColumn));

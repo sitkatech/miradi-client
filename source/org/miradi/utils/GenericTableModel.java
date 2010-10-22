@@ -20,12 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.util.Comparator;
+
 import javax.swing.table.AbstractTableModel;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.dialogs.threatrating.upperPanel.TableModelStringComparator;
 
 
 abstract public class GenericTableModel extends AbstractTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
 {
+	public Comparator<Integer> createComparator(int columnToSortOn)
+	{
+		return new TableModelStringComparator(this, columnToSortOn);
+	}
+	
 	public abstract String getUniqueTableModelIdentifier();
 }

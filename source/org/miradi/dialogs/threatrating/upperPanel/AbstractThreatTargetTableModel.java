@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.threatrating.upperPanel;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Vector;
 
 import org.miradi.objecthelpers.ORef;
@@ -217,11 +216,6 @@ abstract public class AbstractThreatTargetTableModel extends GenericTableModel
 	public ORef getTargetRef(int targetIndex)
 	{
 		return getTargets()[targetIndex].getRef();
-	}
-		
-	public Comparator<Integer> createComparator(int columnToSortOn)
-	{
-		return new TableModelStringComparator(this, columnToSortOn);
 	}
 	
 	protected ChoiceQuestion getThreatRatingQuestion()
