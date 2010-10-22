@@ -27,8 +27,6 @@ import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatPerRowTableModel;
-import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
@@ -61,7 +59,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		sortAllTables();
 	}
 
-	private int findColumnToSortBy(AbstractThreatPerRowTableModel model) throws Exception
+	private int findColumnToSortBy(GenericTableModel model) throws Exception
 	{
 		TableSettings tableSettings = findOrCreateTableSettings(model);
 		String columnSortTag = tableSettings.getData(TableSettings.TAG_COLUMN_SORT_TAG);
@@ -85,7 +83,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 
 	private void sortTable(JTable tableToSort) throws Exception
 	{
-		AbstractThreatPerRowTableModel model = getCastedModel(tableToSort);
+		GenericTableModel model = getCastedModel(tableToSort);
 		final int columnToSort = findColumnToSortBy(model);
 		if (columnToSort < 0)
 			return;
@@ -97,7 +95,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		for (int index = 0; index < tablesToSort.size(); ++index)
 		{
 			TableWithRowHeightSaver table = tablesToSort.get(index);
-			AbstractThreatTargetTableModel modelToSetThreats = (AbstractThreatTargetTableModel)table.getModel();
+			GenericTableModel modelToSetThreats = (GenericTableModel)table.getModel();
 			modelToSetThreats.setSortedRowIndexes(sortedRowIndexes);
 			table.updateAutomaticRowHeights();
 			table.revalidate();
@@ -105,7 +103,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		}
 	}
 	
-	private TableSettings findOrCreateTableSettings(AbstractThreatPerRowTableModel model)	throws Exception
+	private TableSettings findOrCreateTableSettings(GenericTableModel model)	throws Exception
 	{
 		String uniqueTableIdentifier = model.getUniqueTableModelIdentifier();
 		return TableSettings.findOrCreate(getProject(), uniqueTableIdentifier);
@@ -115,7 +113,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 	{
 		for (TableWithRowHeightSaver table : tablesToSort)
 		{
-			AbstractThreatPerRowTableModel model = getCastedModel(table);
+			GenericTableModel model = getCastedModel(table);
 			TableSettings tableSettings = findOrCreateTableSettings(model);
 			
 			saveUsingCommand(tableSettings, TableSettings.TAG_COLUMN_SORT_TAG, columnSortTag);
@@ -146,9 +144,9 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		}
 	}
 	
-	private AbstractThreatPerRowTableModel getCastedModel(JTable tableToUse)
+	private GenericTableModel getCastedModel(JTable tableToUse)
 	{
-		return (AbstractThreatPerRowTableModel)tableToUse.getModel();
+		return (GenericTableModel)tableToUse.getModel();
 	}
 
 	private Project getProject()
@@ -156,7 +154,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		return project;
 	}
 	
-	class ColumnSortListener extends MouseAdapter
+	private class ColumnSortListener extends MouseAdapter
 	{
 		@Override
 		public void mouseClicked(MouseEvent event) 
@@ -177,7 +175,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 
 		private void sortByTableColumn(JTable tableClickedOn, int sortByTableColumn) throws Exception
 		{
-			AbstractThreatPerRowTableModel model = getCastedModel(tableClickedOn);
+			GenericTableModel model = getCastedModel(tableClickedOn);
 			TableSettings tableSettings = findOrCreateTableSettings(model);
 			String columnSortTag = model.getColumnGroupCode(sortByTableColumn);
 			String currentSortDirection = getSortDirectionCode(tableSettings, columnSortTag);
