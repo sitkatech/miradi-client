@@ -47,6 +47,11 @@ abstract public class GenericTableModel extends AbstractTableModel implements Co
 		
 		return rows;
 	}
+	
+	public String getColumnGroupCode(int column)
+	{
+		return getColumnTag(column);
+	}
 
 	public Comparator<Integer> createComparator(int columnToSortOn)
 	{
