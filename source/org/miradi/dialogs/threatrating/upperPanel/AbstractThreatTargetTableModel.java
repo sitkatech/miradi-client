@@ -23,9 +23,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Vector;
 
-import javax.swing.table.AbstractTableModel;
-
-import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -39,9 +36,9 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.SortDirectionQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
-import org.miradi.utils.ColumnTagProvider;
+import org.miradi.utils.GenericTableModel;
 
-abstract public class AbstractThreatTargetTableModel extends AbstractTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
+abstract public class AbstractThreatTargetTableModel extends GenericTableModel
 {
 	public AbstractThreatTargetTableModel(Project projectToUse)
 	{
@@ -241,8 +238,6 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel 
 	{
 		return getProject().getThreatRatingFramework();
 	}
-	
-	public abstract String getUniqueTableModelIdentifier();
 	
 	private Project project;
 	protected Factor[] threatRows;
