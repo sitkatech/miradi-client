@@ -91,6 +91,7 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 		objectTableModel.setObjectRefs(new ORefList(hierarchyToSelectedRef));
 		objectTableModel.fireTableDataChanged();		
 		rowCountLanel.setText(getPanelDescription() + ": " + objectTableModel.getRowCount());
+		objectTable.sortTable();
 	}
 	
 	protected Actions getActions()
