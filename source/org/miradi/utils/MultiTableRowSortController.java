@@ -73,7 +73,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		return -1;
 	}
 	
-	private void sortAllTables() throws Exception
+	public void sortAllTables() throws Exception
 	{
 		for(JTable tableToSort : tablesToSort)
 		{

@@ -51,6 +51,19 @@ abstract public class SortableRowTable extends TableWithColumnWidthAndSequenceSa
 		}
 	}
 	
+	public void sortTable()
+	{
+		try
+		{
+			rowSortController.sortAllTables();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
+		}
+	}
+	
 	@Override
 	public void dispose()
 	{
