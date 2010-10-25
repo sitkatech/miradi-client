@@ -56,6 +56,7 @@ abstract public class AbstractObjectTableModel extends GenericTableModel
 		return project;
 	}
 	
+	@Override
 	public void setSortedRowIndexes(Vector<Integer> sortedRowIndexes)
 	{
 		ORefList newList = new ORefList();
