@@ -249,17 +249,15 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 	}
 
 	@Override
-	protected void setAccountingCode(Object value, ORef assignmentRefForRow, int column)
+	protected void setAccountingCode(AccountingCode accountingCode, ORef assignmentRefForRow, int column)
 	{
-		BaseObject accountingCode = (BaseObject)value;
 		BaseId accountingCodeId = accountingCode.getId();
 		setValueUsingCommand(assignmentRefForRow, getAccountingCodeTag(), accountingCodeId);
 	}
 
 	@Override
-	protected void setFundingSource(Object value, ORef assignmentRefForRow, int column)
+	protected void setFundingSource(FundingSource fundingSource, ORef assignmentRefForRow, int column)
 	{
-		BaseObject fundingSource = (BaseObject)value;
 		BaseId fundingSourceId = fundingSource.getId();
 		setValueUsingCommand(assignmentRefForRow, getFundingSourceTag(), fundingSourceId);
 	}
