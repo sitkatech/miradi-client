@@ -53,6 +53,12 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 		baseObject = BaseObject.find(getProject(), selectedRef);
 		baseObjectRefs = getRefsForBaseObject(baseObject);
 	}
+	
+	@Override
+	protected ORefList getRowObjectRefs()
+	{
+		return baseObjectRefs;
+	}
 			
 	public void setBaseObject(BaseObject baseObjectToUse)
 	{
