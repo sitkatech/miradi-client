@@ -23,6 +23,7 @@ import org.miradi.views.diagram.DiagramView;
 
 public class SwitchToDiagramViewDoer extends ViewSwitchDoer
 {
+	@Override
 	protected String getViewName()
 	{
 		return DiagramView.getViewName();
