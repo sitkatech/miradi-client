@@ -161,13 +161,13 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 	}
 	
 	@Override
-	public boolean isCategoryOneColumn(int column)
+	public boolean isBudgetCategoryOneColumn(int column)
 	{
 		return CATEGORY_ONE_COLUMN == column;
 	}
 
 	@Override
-	public boolean isCategoryTwoColumn(int column)
+	public boolean isBudgetCategoryTwoColumn(int column)
 	{
 		return CATEGORY_TWO_COLUMN == column;
 	}

@@ -54,10 +54,10 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 		if (isFundingSourceColumn(column))
 			return EAM.text("Funding Source");
 		
-		if (isCategoryOneColumn(column))
+		if (isBudgetCategoryOneColumn(column))
 			return EAM.text("Category One");
 		
-		if (isCategoryTwoColumn(column))
+		if (isBudgetCategoryTwoColumn(column))
 			return EAM.text("Category Two");
 		
 		return null;
@@ -78,10 +78,10 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 		if (isAccountingCodeColumn(column))
 			return getAccountingCode(baseObjectForRow);
 		
-		if (isCategoryOneColumn(column))
+		if (isBudgetCategoryOneColumn(column))
 			return getBaseObject(baseObjectForRow, Assignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOne.getObjectType(), BudgetCategoryOne.OBJECT_NAME);
 		
-		if (isCategoryTwoColumn(column))
+		if (isBudgetCategoryTwoColumn(column))
 			return getBaseObject(baseObjectForRow, Assignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwo.getObjectType(), BudgetCategoryTwo.OBJECT_NAME);
 		
 		return null;
@@ -106,10 +106,10 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 		if (isFundingSourceColumn(column))
 			setFundingSource(value, refForRow, column);
 		
-		if (isCategoryOneColumn(column))
+		if (isBudgetCategoryOneColumn(column))
 			setRefValue((BaseObject) value, Assignment.TAG_CATEGORY_ONE_REF, refForRow);
 		
-		if (isCategoryTwoColumn(column))
+		if (isBudgetCategoryTwoColumn(column))
 			setRefValue((BaseObject) value, Assignment.TAG_CATEGORY_TWO_REF, refForRow);
 	}
 	
@@ -137,10 +137,10 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 			return isAccountingCodeColumn(column);
 		
 		if (BudgetCategoryOne.is(objectType))
-			return isCategoryOneColumn(column);
+			return isBudgetCategoryOneColumn(column);
 		
 		if (BudgetCategoryTwo.is(objectType))
-			return isCategoryTwoColumn(column);
+			return isBudgetCategoryTwoColumn(column);
 		
 		return false;
 	}
@@ -153,9 +153,9 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 
 	abstract public boolean isAccountingCodeColumn(int column);
 	
-	abstract public boolean isCategoryOneColumn(int column);
+	abstract public boolean isBudgetCategoryOneColumn(int column);
 	
-	abstract public boolean isCategoryTwoColumn(int column);
+	abstract public boolean isBudgetCategoryTwoColumn(int column);
 
 	abstract public int getColumnCount();
 	
