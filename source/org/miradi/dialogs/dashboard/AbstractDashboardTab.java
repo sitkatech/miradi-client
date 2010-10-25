@@ -22,6 +22,7 @@ package org.miradi.dialogs.dashboard;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
@@ -29,13 +30,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Vector;
 
-import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.TwoColumnPanel;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
@@ -104,16 +106,14 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 
 	protected void createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String rightPanelHtmlFileName, String viewName)
 	{
-		Box firstColumnBox = createBorderedBox();
+		Box firstColumnBox = createBox();
 		firstColumnBox.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
-		SelectableRow selectableRow = createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, rightPanelHtmlFileName, firstColumnBox, viewName);
-		final Color HEADER_BACKGROUND_COLOR = Color.GREEN.darker();
-		selectableRow.setBackgroundColor(HEADER_BACKGROUND_COLOR);
+		createSubHeaderRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, rightPanelHtmlFileName, firstColumnBox, viewName);
 	}
 	
 	protected SelectableRow createDataRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, String viewName)
 	{
-		Box firstColumnBox = createBorderedBox();
+		Box firstColumnBox = createBox();
 		firstColumnBox.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
 		firstColumnBox.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
 		
@@ -122,17 +122,42 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	
 	protected SelectableRow createHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, String viewName)
 	{
-		Box firstColumnBox = createBorderedBox();
+		PanelTitleLabel leftLabel = new PanelTitleLabel(leftColumnTranslatedText);
+		Font font = leftLabel.getFont();
+		font = font.deriveFont(Font.BOLD);
+		font = font.deriveFont((float)(font.getSize() * 1.5));
+		leftLabel.setFont(font);
+
+		PanelTitleLabel rightLabel = new PanelTitleLabel(rightColumnTranslatedText);
+		Box firstColumnBox = createBox();
+		return createRow(leftMainPanel, descriptionFileName, firstColumnBox, viewName, leftLabel, rightLabel);
+	}
+	
+	private SelectableRow createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, Box firstColumnBox, String viewName)
+	{
+		PanelTitleLabel leftLabel = new PanelTitleLabel(leftColumnTranslatedText);
+		Font font = leftLabel.getFont();
+		font = font.deriveFont(Font.BOLD);
+		leftLabel.setFont(font);
 		
-		return createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, descriptionFileName, firstColumnBox, viewName);
+		PanelTitleLabel rightLabel = new PanelTitleLabel(rightColumnTranslatedText);
+		return createRow(leftMainPanel, descriptionFileName, firstColumnBox, viewName, leftLabel, rightLabel);
 	}
 	
 	private SelectableRow createRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, Box firstColumnBox, String viewName)
 	{
-		firstColumnBox.add(new PanelTitleLabel(leftColumnTranslatedText), BorderLayout.BEFORE_FIRST_LINE);
+		PanelTitleLabel leftLabel = new PanelTitleLabel(leftColumnTranslatedText);
+		PanelTitleLabel rightLabel = new PanelTitleLabel(rightColumnTranslatedText);
+		return createRow(leftMainPanel, descriptionFileName, firstColumnBox, viewName, leftLabel, rightLabel);
+	}
+
+	private SelectableRow createRow(TwoColumnPanel leftMainPanel,	String descriptionFileName, Box firstColumnBox, String viewName, PanelTitleLabel leftLabel, PanelTitleLabel rightLabel)
+	{
+		firstColumnBox.add(leftLabel, BorderLayout.BEFORE_FIRST_LINE);
 		
-		Box secondColumnBox = createBorderedBox();
-		secondColumnBox.add(new PanelTitleLabel(rightColumnTranslatedText));
+		Box secondColumnBox = createBox();
+		
+		secondColumnBox.add(rightLabel);
 		
 		SelectableRow selectableRow = new SelectableRow(firstColumnBox, secondColumnBox, descriptionFileName, viewName);
 		selectableRows.add(selectableRow);
@@ -143,10 +168,9 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		return selectableRow;
 	}
 
-	private Box createBorderedBox()
+	private Box createBox()
 	{
 		Box box = Box.createHorizontalBox();
-		box.setBorder(BorderFactory.createEtchedBorder());
 		
 		return box;
 	}
@@ -304,25 +328,14 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 
 		private void setSelectionBorder(JComponent component)
 		{
-			component.setBorder(BorderFactory.createEtchedBorder(getSelectionColor(), getSelectionColor()));
+			setBackgroundColor(component, AppPreferences.getWizardBackgroundColor());
 		}
 
-		private Color getSelectionColor()
-		{
-			return Color.BLUE;
-		}
-		
 		private void clearSelection()
 		{
 			unSelect();
-			leftSide.setBorder(BorderFactory.createEtchedBorder());
-			rightSide.setBorder(BorderFactory.createEtchedBorder());
-		}
-		
-		private void setBackgroundColor(Color backgroundColor)
-		{
-			setBackgroundColor(leftSide, backgroundColor);
-			setBackgroundColor(rightSide, backgroundColor);
+			setBackgroundColor(leftSide, new JLabel().getBackground());
+			setBackgroundColor(rightSide, new JLabel().getBackground());
 		}
 		
 		private void setBackgroundColor(JComponent component, Color backgroundColor)
