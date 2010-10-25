@@ -27,9 +27,9 @@ import org.miradi.dialogs.threatrating.upperPanel.TableModelChoiceItemComparator
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.utils.GenericTableModel;
+import org.miradi.utils.SortableTableModel;
 
-abstract public class AbstractObjectTableModel extends GenericTableModel
+abstract public class AbstractObjectTableModel extends SortableTableModel
 {
 	public AbstractObjectTableModel(Project projectToUse)
 	{

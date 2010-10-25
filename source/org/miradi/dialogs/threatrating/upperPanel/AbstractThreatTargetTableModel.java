@@ -33,9 +33,9 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.ThreatRatingQuestion;
-import org.miradi.utils.GenericTableModel;
+import org.miradi.utils.SortableTableModel;
 
-abstract public class AbstractThreatTargetTableModel extends GenericTableModel
+abstract public class AbstractThreatTargetTableModel extends SortableTableModel
 {
 	public AbstractThreatTargetTableModel(Project projectToUse)
 	{
