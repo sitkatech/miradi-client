@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.actions;
 
+import org.miradi.icons.DashboardIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -27,7 +28,7 @@ public class ActionInvokeDashboard extends MainWindowAction
 {
 	public ActionInvokeDashboard(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
+		super(mainWindow, getLabel(), new DashboardIcon());
 	}
 
 	private static String getLabel()
