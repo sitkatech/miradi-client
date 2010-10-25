@@ -31,7 +31,7 @@ import org.miradi.dialogs.threatrating.upperPanel.TableModelStringComparator;
 import org.miradi.questions.SortDirectionQuestion;
 
 
-abstract public class GenericTableModel extends AbstractTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
+abstract public class SortableTableModel extends AbstractTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
 {
 	protected Vector<Integer> getSortedRowIndexes(int sortByTableColumn, String sortDirectionCode)
 	{

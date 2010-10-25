@@ -59,7 +59,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		sortAllTables();
 	}
 
-	private int findColumnToSortBy(GenericTableModel model) throws Exception
+	private int findColumnToSortBy(SortableTableModel model) throws Exception
 	{
 		TableSettings tableSettings = findOrCreateTableSettings(model);
 		String columnSortTag = tableSettings.getData(TableSettings.TAG_COLUMN_SORT_TAG);
@@ -83,7 +83,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 
 	private void sortTable(JTable tableToSort) throws Exception
 	{
-		GenericTableModel model = getCastedModel(tableToSort);
+		SortableTableModel model = getCastedModel(tableToSort);
 		final int columnToSort = findColumnToSortBy(model);
 		if (columnToSort < 0)
 			return;
@@ -95,7 +95,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		for (int index = 0; index < tablesToSort.size(); ++index)
 		{
 			TableWithRowHeightSaver table = tablesToSort.get(index);
-			GenericTableModel modelToSetThreats = (GenericTableModel)table.getModel();
+			SortableTableModel modelToSetThreats = (SortableTableModel)table.getModel();
 			modelToSetThreats.setSortedRowIndexes(sortedRowIndexes);
 			table.updateAutomaticRowHeights();
 			table.revalidate();
@@ -103,7 +103,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		}
 	}
 	
-	private TableSettings findOrCreateTableSettings(GenericTableModel model)	throws Exception
+	private TableSettings findOrCreateTableSettings(SortableTableModel model)	throws Exception
 	{
 		String uniqueTableIdentifier = model.getUniqueTableModelIdentifier();
 		return TableSettings.findOrCreate(getProject(), uniqueTableIdentifier);
@@ -113,7 +113,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 	{
 		for (TableWithRowHeightSaver table : tablesToSort)
 		{
-			GenericTableModel model = getCastedModel(table);
+			SortableTableModel model = getCastedModel(table);
 			TableSettings tableSettings = findOrCreateTableSettings(model);
 			
 			saveUsingCommand(tableSettings, TableSettings.TAG_COLUMN_SORT_TAG, columnSortTag);
@@ -144,9 +144,9 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		}
 	}
 	
-	private GenericTableModel getCastedModel(JTable tableToUse)
+	private SortableTableModel getCastedModel(JTable tableToUse)
 	{
-		return (GenericTableModel)tableToUse.getModel();
+		return (SortableTableModel)tableToUse.getModel();
 	}
 
 	private Project getProject()
@@ -175,7 +175,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 
 		private void sortByTableColumn(JTable tableClickedOn, int sortByTableColumn) throws Exception
 		{
-			GenericTableModel model = getCastedModel(tableClickedOn);
+			SortableTableModel model = getCastedModel(tableClickedOn);
 			TableSettings tableSettings = findOrCreateTableSettings(model);
 			String columnSortTag = model.getColumnGroupCode(sortByTableColumn);
 			String currentSortDirection = getSortDirectionCode(tableSettings, columnSortTag);
