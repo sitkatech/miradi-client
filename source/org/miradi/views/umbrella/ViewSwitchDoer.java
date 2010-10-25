@@ -23,6 +23,7 @@ package org.miradi.views.umbrella;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.main.MainWindow;
 import org.miradi.views.MainWindowDoer;
 import org.miradi.wizard.WizardManager;
 
@@ -30,25 +31,31 @@ abstract public class ViewSwitchDoer extends MainWindowDoer
 {
 	abstract protected String getViewName();
 
+	@Override
 	public boolean isAvailable()
 	{
 		return getProject().isOpen();
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if(!isAvailable())
 			return;
 		
-		String viewName = getViewName();
-		WizardManager wizardManager = getMainWindow().getWizardManager();
+		changeView(getMainWindow(), getViewName());
+	}
+
+	public static void changeView(MainWindow mainWindow, String viewName) throws Exception
+	{
+		WizardManager wizardManager = mainWindow.getWizardManager();
 		String destinationStepName = wizardManager.getOverviewStepName(viewName);
 		
 		String currentStepName = wizardManager.getCurrentStepName();
 		if(destinationStepName.equals(currentStepName))
 			return;
 		
-		getProject().executeCommand(new CommandBeginTransaction());
+		mainWindow.getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
 			wizardManager.setStep(destinationStepName);
@@ -59,7 +66,7 @@ abstract public class ViewSwitchDoer extends MainWindowDoer
 		}
 		finally
 		{
-			getProject().executeCommand(new CommandEndTransaction());
+			mainWindow.getProject().executeCommand(new CommandEndTransaction());
 		}
 	}
 }
