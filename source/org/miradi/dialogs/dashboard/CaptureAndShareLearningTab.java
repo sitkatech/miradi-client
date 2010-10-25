@@ -23,6 +23,7 @@ package org.miradi.dialogs.dashboard;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
+import org.miradi.views.summary.SummaryView;
 
 public class CaptureAndShareLearningTab extends AbstractDashboardTab
 {
@@ -41,7 +42,7 @@ public class CaptureAndShareLearningTab extends AbstractDashboardTab
 	protected TwoColumnPanel createLeftPanel()
 	{
 		TwoColumnPanel leftMainPanel = new TwoColumnPanel();
-		createHeaderRow(leftMainPanel, EAM.text("5. Capture and Share Learning"), "", getMainDescriptionFileName());
+		createHeaderRow(leftMainPanel, EAM.text("5. Capture and Share Learning"), "", getMainDescriptionFileName(), SummaryView.getViewName());
 		String title5a = EAM.text("Document Key Results and Lessons");
 		createSubHeaderRow(leftMainPanel, EAM.text("5A. Document Learning"), title5a, PREPARE_DATA_FOR_ANALYSIS_RIGTH_SIDE_FILENAME);
 		String title5b = EAM.text("Identify Key Audiences Develop Communications Strategy Report to Project Team and " +

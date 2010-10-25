@@ -41,6 +41,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
+import org.miradi.views.umbrella.ViewSwitchDoer;
 
 abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 {
@@ -95,45 +96,45 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		rightSideDescriptionPanel.setRightSidePanelContent(getMainDescriptionFileName());
 	}
 
-	protected void createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightPanelHtmlFileName)
+	protected void createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightPanelHtmlFileName, String viewName)
 	{
 		String rightColumnTranslatedText = "";
-		createSubHeaderRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, rightPanelHtmlFileName);
+		createSubHeaderRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, rightPanelHtmlFileName, viewName);
 	}
 
-	protected void createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String rightPanelHtmlFileName)
+	protected void createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String rightPanelHtmlFileName, String viewName)
 	{
 		Box firstColumnBox = createBorderedBox();
 		firstColumnBox.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
-		SelectableRow selectableRow = createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, rightPanelHtmlFileName, firstColumnBox);
+		SelectableRow selectableRow = createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, rightPanelHtmlFileName, firstColumnBox, viewName);
 		final Color HEADER_BACKGROUND_COLOR = Color.GREEN.darker();
 		selectableRow.setBackgroundColor(HEADER_BACKGROUND_COLOR);
 	}
 	
-	protected SelectableRow createDataRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName)
+	protected SelectableRow createDataRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, String viewName)
 	{
 		Box firstColumnBox = createBorderedBox();
 		firstColumnBox.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
 		firstColumnBox.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
 		
-		return createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, descriptionFileName, firstColumnBox);
+		return createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, descriptionFileName, firstColumnBox, viewName);
 	}
 	
-	protected SelectableRow createHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName)
+	protected SelectableRow createHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, String viewName)
 	{
 		Box firstColumnBox = createBorderedBox();
 		
-		return createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, descriptionFileName, firstColumnBox);
+		return createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, descriptionFileName, firstColumnBox, viewName);
 	}
 	
-	private SelectableRow createRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, Box firstColumnBox)
+	private SelectableRow createRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, Box firstColumnBox, String viewName)
 	{
 		firstColumnBox.add(new PanelTitleLabel(leftColumnTranslatedText), BorderLayout.BEFORE_FIRST_LINE);
 		
 		Box secondColumnBox = createBorderedBox();
 		secondColumnBox.add(new PanelTitleLabel(rightColumnTranslatedText));
 		
-		SelectableRow selectableRow = new SelectableRow(firstColumnBox, secondColumnBox, descriptionFileName);
+		SelectableRow selectableRow = new SelectableRow(firstColumnBox, secondColumnBox, descriptionFileName, viewName);
 		selectableRows.add(selectableRow);
 		
 		leftMainPanel.add(firstColumnBox);
@@ -253,6 +254,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 			{
 				clearSelection();
 				selectableComponent.selectRow();
+				ViewSwitchDoer.changeView(getMainWindow(), selectableComponent.getViewName());
 			}
 			catch(Exception exception)
 			{
@@ -266,14 +268,20 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	
 	public class SelectableRow
 	{
-		private SelectableRow(JComponent leftSideToUse, JComponent rightSideToUse, String descriptionFileNameToUse)
+		private SelectableRow(JComponent leftSideToUse, JComponent rightSideToUse, String descriptionFileNameToUse, String viewNameToUse)
 		{
 			leftSide = leftSideToUse;
 			rightSide = rightSideToUse;
 			descriptionFileName = descriptionFileNameToUse;
+			viewName = viewNameToUse;
 			
 			leftSide.addMouseListener(new ClickHandler(this));
 			rightSide.addMouseListener(new ClickHandler(this));
+		}
+		
+		public String getViewName()
+		{
+			return viewName;
 		}
 		
 		private void selectRow() throws Exception
@@ -346,6 +354,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		private JComponent rightSide;
 		private boolean isSelected;
 		private String descriptionFileName;
+		private String viewName;
 	}
 
 	abstract protected String getMainDescriptionFileName();

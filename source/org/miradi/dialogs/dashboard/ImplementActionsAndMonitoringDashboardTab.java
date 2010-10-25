@@ -26,6 +26,7 @@ import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
+import org.miradi.views.diagram.DiagramView;
 
 public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboardTab
 {
@@ -44,7 +45,7 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 	protected TwoColumnPanel createLeftPanel()
 	{
 		TwoColumnPanel leftMainPanel = new TwoColumnPanel();
-		createHeaderRow(leftMainPanel, EAM.text("3. Implement Actions and Monitoring"), "", getMainDescriptionFileName());
+		createHeaderRow(leftMainPanel, EAM.text("3. Implement Actions and Monitoring"), "", getMainDescriptionFileName(), DiagramView.getViewName());
 		createSubHeaderRow(leftMainPanel, EAM.text("3A. Develop Short Term Work Plan"), DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);
 		
 		createDetailActivitiesTasksAndResponsiblitiesRow(leftMainPanel);
@@ -196,6 +197,16 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("- %strategiesWithActivitiesCount of %strategiesCount Strategies have at least 1 Activity. "), tokenReplacementMap);
 
 		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);
+	}
+	
+	private SelectableRow createDataRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName)
+	{
+		return createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, descriptionFileName, DiagramView.getViewName());
+	}
+	
+	private void createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightPanelHtmlFileName)
+	{
+		createSubHeaderRow(leftMainPanel, leftColumnTranslatedText, rightPanelHtmlFileName, DiagramView.getViewName());
 	}
 
 	@Override
