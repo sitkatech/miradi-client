@@ -124,12 +124,12 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 		createDataRow(leftMainPanel, EAM.text("Estimate Costs for Activities and Monitoring"), rightColumnTranslatedText, DEVELOP_AND_REFINE_PROJECT_BUDGET_RIGHT_SIDE_FILENAME);
 	}
 
-	protected String getEncodedCurrencySymbol()
+	private String getEncodedCurrencySymbol()
 	{
 		return "\\" + getDashboardData(Dashboard.PSEUDO_CURRENCY_SYMBOL);
 	}
 
-	protected void createProjectPlanningStartEndDateRow(TwoColumnPanel leftMainPanel)
+	private void createProjectPlanningStartEndDateRow(TwoColumnPanel leftMainPanel)
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%workPlanStartDate", getDashboardData(Dashboard.PSEUDO_WORK_PLAN_START_DATE));
