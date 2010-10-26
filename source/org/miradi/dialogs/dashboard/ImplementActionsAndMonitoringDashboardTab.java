@@ -97,7 +97,9 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 	private void createDevelopAndRefineProjectBudgetRow(TwoColumnPanel leftMainPanel)
 	{
 		createSubHeaderRow(leftMainPanel, EAM.text("3B. Develop and Refine Project Budget"), DEVELOP_AND_REFINE_PROJECT_BUDGET_RIGHT_SIDE_FILENAME);
-		createEstimatedCostsForActivitiesAndMonitoring(leftMainPanel);
+		createWorkCostsRow(leftMainPanel);
+		createExpensesRow(leftMainPanel);
+		createProjectBudgetRow(leftMainPanel);
 		createDataRow(leftMainPanel, EAM.text("Develop and Submit Funding Proposals"), "", DEVELOP_AND_REFINE_PROJECT_BUDGET_RIGHT_SIDE_FILENAME);
 		createFinacialResourcesRow(leftMainPanel);
 	}
@@ -111,16 +113,34 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 		createDataRow(leftMainPanel, EAM.text("Obtain Finacial Resources"), rightColumnTranslatedText, DEVELOP_AND_REFINE_PROJECT_BUDGET_RIGHT_SIDE_FILENAME);		
 	}
 
-	private void createEstimatedCostsForActivitiesAndMonitoring(TwoColumnPanel leftMainPanel)
+	private void createWorkCostsRow(TwoColumnPanel leftMainPanel)
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%workCosts", getDashboardData(Dashboard.PSEUDO_TOTAL_PROJECT_RESOURCES_COSTS));
-		tokenReplacementMap.put("%expenses", getDashboardData(Dashboard.PSEUDO_TOTAL_PROJECT_EXPENSES));
-		tokenReplacementMap.put("%projectBudget", getDashboardData(Dashboard.PSEUDO_PROJECT_BUDGET));
 		tokenReplacementMap.put("%currencySymbol", getEncodedCurrencySymbol());
-		String rightColumnTranslatedText = EAM.substitute(EAM.text("Work Costs: %currencySymbol %workCosts, Expenses: %currencySymbol %expenses, Project Budget: %currencySymbol %projectBudget"), tokenReplacementMap);
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("Work Costs: %currencySymbol %workCosts"), tokenReplacementMap);
 
 		createDataRow(leftMainPanel, EAM.text("Estimate Costs for Activities and Monitoring"), rightColumnTranslatedText, DEVELOP_AND_REFINE_PROJECT_BUDGET_RIGHT_SIDE_FILENAME);
+	}
+	
+	private void createExpensesRow(TwoColumnPanel leftMainPanel)
+	{
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%expenses", getDashboardData(Dashboard.PSEUDO_TOTAL_PROJECT_EXPENSES));
+		tokenReplacementMap.put("%currencySymbol", getEncodedCurrencySymbol());
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("Expenses: %currencySymbol %expenses"), tokenReplacementMap);
+
+		createDataRow(leftMainPanel, "", rightColumnTranslatedText, DEVELOP_AND_REFINE_PROJECT_BUDGET_RIGHT_SIDE_FILENAME);
+	}
+	
+	private void createProjectBudgetRow(TwoColumnPanel leftMainPanel)
+	{
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%projectBudget", getDashboardData(Dashboard.PSEUDO_PROJECT_BUDGET));
+		tokenReplacementMap.put("%currencySymbol", getEncodedCurrencySymbol());
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("Project Budget: %currencySymbol %projectBudget"), tokenReplacementMap);
+
+		createDataRow(leftMainPanel, "", rightColumnTranslatedText, DEVELOP_AND_REFINE_PROJECT_BUDGET_RIGHT_SIDE_FILENAME);
 	}
 
 	private String getEncodedCurrencySymbol()
