@@ -221,8 +221,11 @@ public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
 
 	private void addGoalCountRow(TwoColumnPanel leftMainPanel)
 	{
-		createDataRow(leftMainPanel, EAM.text("Total Goals Created:"), 
-				getDashboardData(Dashboard.PSEUDO_GOAL_COUNT), DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%goalsCount", getDashboardData(Dashboard.PSEUDO_GOAL_COUNT));
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%goalsCount goals Created"), tokenReplacementMap);
+
+		createDataRow(leftMainPanel, "", rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
 	private void addTargetsWithGoalRow(TwoColumnPanel leftMainPanel)
