@@ -144,7 +144,7 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%methodsAndTasksWithAssignmentsCount", getDashboardData(Dashboard.PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT));
 		tokenReplacementMap.put("%methodsAndTasksCount", getDashboardData(Dashboard.PSEUDO_METHODS_AND_TASKS_COUNT));
-		String rightColumnTranslatedText = EAM.substitute(EAM.text("- %methodsAndTasksWithAssignmentsCount of %methodsAndTasksCount Methods and Tasks have assignments"), tokenReplacementMap);
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%methodsAndTasksWithAssignmentsCount of %methodsAndTasksCount Methods and Tasks have assignments"), tokenReplacementMap);
 
 		createDataRow(leftMainPanel, "", rightColumnTranslatedText, DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);
 	}
@@ -153,7 +153,7 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%methodsCount", getDashboardData(Dashboard.PSEUDO_METHODS_COUNT));
-		String rightColumnTranslatedText = EAM.substitute(EAM.text("- %methodsCount Total methods created"), tokenReplacementMap);
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%methodsCount Total methods created"), tokenReplacementMap);
 
 		createDataRow(leftMainPanel, "", rightColumnTranslatedText, DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);		
 	}
@@ -164,7 +164,7 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%indicatorsWithMethodsCount", getDashboardData(Dashboard.PSEUDO_INDICATORS_WITH_METHODS_COUNT));
 		tokenReplacementMap.put("%indicatorsCount", getDashboardData(Dashboard.PSEUDO_INDICATORS_COUNT));
-		String rightColumnTranslatedText = EAM.substitute(EAM.text("- %indicatorsWithMethodsCount of %indicatorsCount Indicators have Methods."), tokenReplacementMap);
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%indicatorsWithMethodsCount of %indicatorsCount Indicators have Methods."), tokenReplacementMap);
 
 		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);
 	}
@@ -174,7 +174,7 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%activitiesAndTasksCount", getDashboardData(Dashboard.PSEUDO_ACTIVITIES_AND_TASKS_COUNT));
 		tokenReplacementMap.put("%activitiesAndTasksWithAssignmentsCount", getDashboardData(Dashboard.PSEUDO_ACTIVITIES_AND_TASKS_WITH_ASSIGNMENTS_COUNT));
-		String rightColumnTranslatedText = EAM.substitute(EAM.text("- %activitiesAndTasksWithAssignmentsCount of %activitiesAndTasksCount Activities and tasks have assignments"), tokenReplacementMap);
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%activitiesAndTasksWithAssignmentsCount of %activitiesAndTasksCount Activities and tasks have assignments"), tokenReplacementMap);
 
 		createDataRow(leftMainPanel, "", rightColumnTranslatedText, DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);
 	}
@@ -183,7 +183,7 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%activitiesCount", getDashboardData(Dashboard.PSEUDO_ACTIVITIES_COUNT));
-		String rightColumnTranslatedText = EAM.substitute(EAM.text("- %activitiesCount Total activities created"), tokenReplacementMap);
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%activitiesCount Total activities created"), tokenReplacementMap);
 
 		createDataRow(leftMainPanel, "", rightColumnTranslatedText, DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);
 	}
@@ -194,7 +194,7 @@ public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboard
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%strategiesWithActivitiesCount", getDashboardData(Dashboard.PSEUDO_STRATEGIES_WITH_ACTIVITIES_COUNT));
 		tokenReplacementMap.put("%strategiesCount", getDashboardData(Dashboard.PSEUDO_STRATEGY_COUNT));
-		String rightColumnTranslatedText = EAM.substitute(EAM.text("- %strategiesWithActivitiesCount of %strategiesCount Strategies have at least 1 Activity. "), tokenReplacementMap);
+		String rightColumnTranslatedText = EAM.substitute(EAM.text("%strategiesWithActivitiesCount of %strategiesCount Strategies have at least 1 Activity. "), tokenReplacementMap);
 
 		createDataRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);
 	}
