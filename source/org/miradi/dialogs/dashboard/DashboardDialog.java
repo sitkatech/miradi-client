@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
-import org.miradi.dialogs.base.ModelessDialogWithClose;
+import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 
-public class DashboardDialog extends ModelessDialogWithClose
+public class DashboardDialog extends ModalDialogWithClose
 {
 	public DashboardDialog(MainWindow parent) throws Exception
 	{
