@@ -390,7 +390,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	private DashboardRightSideDescriptionPanel rightSideDescriptionPanel;
 	private PersistentHorizontalSplitPane splitPane;
 	private KeyDispatcher dispatcher;
-	private static final int INDENT_PER_LEVEL = 20;
+	private static final int INDENT_PER_LEVEL = 25;
 	private static final int MOVE_UP_DIRECTION_DELTA = -1;
 	private static final int MOVE_DOWN_DIRECTION_DELTA = 1;
 }
