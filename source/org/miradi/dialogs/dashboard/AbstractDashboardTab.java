@@ -42,6 +42,8 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
+import org.miradi.views.diagram.DiagramView;
+import org.miradi.views.summary.SummaryView;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 import org.miradi.views.umbrella.ViewSwitchDoer;
 
@@ -98,29 +100,29 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		rightSideDescriptionPanel.setRightSidePanelContent(getMainDescriptionFileName());
 	}
 
-	protected void createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightPanelHtmlFileName, String viewName)
+	protected void createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightPanelHtmlFileName, String wizardStepName)
 	{
 		String rightColumnTranslatedText = "";
-		createSubHeaderRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, rightPanelHtmlFileName, viewName);
+		createSubHeaderRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, rightPanelHtmlFileName, wizardStepName);
 	}
 
-	protected void createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String rightPanelHtmlFileName, String viewName)
+	protected void createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String rightPanelHtmlFileName, String wizardStepName)
 	{
 		Box firstColumnBox = createBox();
 		firstColumnBox.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
-		createSubHeaderRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, rightPanelHtmlFileName, firstColumnBox, viewName);
+		createSubHeaderRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, rightPanelHtmlFileName, firstColumnBox, wizardStepName);
 	}
 	
-	protected SelectableRow createDataRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, String viewName)
+	protected SelectableRow createDataRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, String wizardStepName)
 	{
 		Box firstColumnBox = createBox();
 		firstColumnBox.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
 		firstColumnBox.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
 		
-		return createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, descriptionFileName, firstColumnBox, viewName);
+		return createRow(leftMainPanel, leftColumnTranslatedText, rightColumnTranslatedText, descriptionFileName, firstColumnBox, wizardStepName);
 	}
 	
-	protected SelectableRow createHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, String viewName)
+	protected SelectableRow createHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, String wizardStepName)
 	{
 		PanelTitleLabel leftLabel = new PanelTitleLabel(leftColumnTranslatedText);
 		Font font = leftLabel.getFont();
@@ -130,10 +132,10 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 
 		PanelTitleLabel rightLabel = new PanelTitleLabel(rightColumnTranslatedText);
 		Box firstColumnBox = createBox();
-		return createRow(leftMainPanel, descriptionFileName, firstColumnBox, viewName, leftLabel, rightLabel);
+		return createRow(leftMainPanel, descriptionFileName, firstColumnBox, wizardStepName, leftLabel, rightLabel);
 	}
 	
-	private SelectableRow createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, Box firstColumnBox, String viewName)
+	private SelectableRow createSubHeaderRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, Box firstColumnBox, String wizardStepName)
 	{
 		PanelTitleLabel leftLabel = new PanelTitleLabel(leftColumnTranslatedText);
 		Font font = leftLabel.getFont();
@@ -141,17 +143,17 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		leftLabel.setFont(font);
 		
 		PanelTitleLabel rightLabel = new PanelTitleLabel(rightColumnTranslatedText);
-		return createRow(leftMainPanel, descriptionFileName, firstColumnBox, viewName, leftLabel, rightLabel);
+		return createRow(leftMainPanel, descriptionFileName, firstColumnBox, wizardStepName, leftLabel, rightLabel);
 	}
 	
-	private SelectableRow createRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, Box firstColumnBox, String viewName)
+	private SelectableRow createRow(TwoColumnPanel leftMainPanel, String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, Box firstColumnBox, String wizardStepName)
 	{
 		PanelTitleLabel leftLabel = new PanelTitleLabel(leftColumnTranslatedText);
 		PanelTitleLabel rightLabel = new PanelTitleLabel(rightColumnTranslatedText);
-		return createRow(leftMainPanel, descriptionFileName, firstColumnBox, viewName, leftLabel, rightLabel);
+		return createRow(leftMainPanel, descriptionFileName, firstColumnBox, wizardStepName, leftLabel, rightLabel);
 	}
 
-	private SelectableRow createRow(TwoColumnPanel leftMainPanel,	String descriptionFileName, Box firstColumnBox, String viewName, PanelTitleLabel leftLabel, PanelTitleLabel rightLabel)
+	private SelectableRow createRow(TwoColumnPanel leftMainPanel,	String descriptionFileName, Box firstColumnBox, String wizardStepName, PanelTitleLabel leftLabel, PanelTitleLabel rightLabel)
 	{
 		firstColumnBox.add(leftLabel, BorderLayout.BEFORE_FIRST_LINE);
 		
@@ -159,7 +161,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		
 		secondColumnBox.add(rightLabel);
 		
-		SelectableRow selectableRow = new SelectableRow(firstColumnBox, secondColumnBox, descriptionFileName, viewName);
+		SelectableRow selectableRow = new SelectableRow(firstColumnBox, secondColumnBox, descriptionFileName, wizardStepName);
 		selectableRows.add(selectableRow);
 		
 		leftMainPanel.add(firstColumnBox);
@@ -192,6 +194,16 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		{
 			selectableRow.clearSelection();
 		}
+	}
+	
+	protected String getDiagramOverviewStepName()
+	{
+		return getMainWindow().getWizardManager().getOverviewStepName(DiagramView.getViewName());
+	}
+	
+	protected String getSummaryOverviewStepName()
+	{
+		return getMainWindow().getWizardManager().getOverviewStepName(SummaryView.getViewName());
 	}
 
 	private class SingleRowSelectionHandler
@@ -278,7 +290,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 			{
 				clearSelection();
 				selectableComponent.selectRow();
-				ViewSwitchDoer.changeView(getMainWindow(), selectableComponent.getViewName());
+				ViewSwitchDoer.changeView(getMainWindow(), selectableComponent.getWizardStepName());
 			}
 			catch(Exception exception)
 			{
@@ -292,20 +304,20 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	
 	public class SelectableRow
 	{
-		private SelectableRow(JComponent leftSideToUse, JComponent rightSideToUse, String descriptionFileNameToUse, String viewNameToUse)
+		private SelectableRow(JComponent leftSideToUse, JComponent rightSideToUse, String descriptionFileNameToUse, String wizardStepNameToUse)
 		{
 			leftSide = leftSideToUse;
 			rightSide = rightSideToUse;
 			descriptionFileName = descriptionFileNameToUse;
-			viewName = viewNameToUse;
+			wizardStepName = wizardStepNameToUse;
 			
 			leftSide.addMouseListener(new ClickHandler(this));
 			rightSide.addMouseListener(new ClickHandler(this));
 		}
 		
-		public String getViewName()
+		public String getWizardStepName()
 		{
-			return viewName;
+			return wizardStepName;
 		}
 		
 		private void selectRow() throws Exception
@@ -367,7 +379,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 		private JComponent rightSide;
 		private boolean isSelected;
 		private String descriptionFileName;
-		private String viewName;
+		private String wizardStepName;
 	}
 
 	abstract protected String getMainDescriptionFileName();

@@ -43,14 +43,15 @@ abstract public class ViewSwitchDoer extends MainWindowDoer
 		if(!isAvailable())
 			return;
 		
-		changeView(getMainWindow(), getViewName());
+		WizardManager wizardManager = getMainWindow().getWizardManager();
+		String destinationStepName = wizardManager.getOverviewStepName(getViewName());
+		
+		changeView(getMainWindow(), destinationStepName);
 	}
 
-	public static void changeView(MainWindow mainWindow, String viewName) throws Exception
+	public static void changeView(MainWindow mainWindow, String destinationStepName) throws Exception
 	{
 		WizardManager wizardManager = mainWindow.getWizardManager();
-		String destinationStepName = wizardManager.getOverviewStepName(viewName);
-		
 		String currentStepName = wizardManager.getCurrentStepName();
 		if(destinationStepName.equals(currentStepName))
 			return;
