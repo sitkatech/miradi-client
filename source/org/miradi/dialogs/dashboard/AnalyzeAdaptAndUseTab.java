@@ -23,7 +23,6 @@ package org.miradi.dialogs.dashboard;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
-import org.miradi.views.summary.SummaryView;
 
 public class AnalyzeAdaptAndUseTab extends AbstractDashboardTab
 {
@@ -42,10 +41,10 @@ public class AnalyzeAdaptAndUseTab extends AbstractDashboardTab
 	protected TwoColumnPanel createLeftPanel()
 	{
 		TwoColumnPanel leftMainPanel = new TwoColumnPanel();
-		createHeaderRow(leftMainPanel, EAM.text("4. Analyze, Use and Adapt"), "", getMainDescriptionFileName(), SummaryView.getViewName());
-		createSubHeaderRow(leftMainPanel, EAM.text("4A. Prepare Data for Analysis"), EAM.text("Develop Systems for Recording, Storing, Processing and Backing Up Project Data"), PREPARE_DATA_FOR_ANALYSIS_RIGTH_SIDE_FILENAME, "");
-		createSubHeaderRow(leftMainPanel, EAM.text("4B. Analyze Results"), EAM.text("Analyze Project Results and Assumptions Analyze Operational and Financial Data Document Discussions and Decisions"), ANALYZE_RESULTS_RIGTH_SIDE_FILENAME, "");
-		createSubHeaderRow(leftMainPanel, EAM.text("4C. Adapt Project Plan"), EAM.text("Revise Project Plan: Strategic Monitoring Operational Work Plan"), ADAPT_PROJECT_PLAN_RIGTH_SIDE_FILENAME, "");
+		createHeaderRow(leftMainPanel, EAM.text("4. Analyze, Use and Adapt"), "", getMainDescriptionFileName(), getSummaryOverviewStepName());
+		createSubHeaderRow(leftMainPanel, EAM.text("4A. Prepare Data for Analysis"), EAM.text("Develop Systems for Recording, Storing, Processing and Backing Up Project Data"), PREPARE_DATA_FOR_ANALYSIS_RIGTH_SIDE_FILENAME, getSummaryOverviewStepName());
+		createSubHeaderRow(leftMainPanel, EAM.text("4B. Analyze Results"), EAM.text("Analyze Project Results and Assumptions Analyze Operational and Financial Data Document Discussions and Decisions"), ANALYZE_RESULTS_RIGTH_SIDE_FILENAME, getSummaryOverviewStepName());
+		createSubHeaderRow(leftMainPanel, EAM.text("4C. Adapt Project Plan"), EAM.text("Revise Project Plan: Strategic Monitoring Operational Work Plan"), ADAPT_PROJECT_PLAN_RIGTH_SIDE_FILENAME, getSummaryOverviewStepName());
 		
 		return leftMainPanel;
 	}
