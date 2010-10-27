@@ -976,6 +976,10 @@ public class Project
 		
 		try
 		{
+			getProjectCalendar().dispose();
+			getProjectTotalCalculator().dispose();
+			disableThreatStressRatingEnsurer();
+			planningPreferencesChangeHandler.disable();
 			getDatabase().close();
 			clear();
 			EAM.setExceptionLoggingDestination();

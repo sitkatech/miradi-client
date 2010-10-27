@@ -41,6 +41,11 @@ public class PlanningPreferencesChangeHandler implements CommandExecutedListener
 		getProject().addCommandExecutedListener(this);
 	}
 	
+	public void disable()
+	{
+		getProject().removeCommandExecutedListener(this);
+	}
+	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		try

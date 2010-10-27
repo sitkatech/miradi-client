@@ -43,6 +43,11 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 		project.addCommandExecutedListener(this);
 	}
 	
+	public void dispose()
+	{
+		getProject().removeCommandExecutedListener(this);
+	}
+	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		// TODO: Only clear the cache when it actually needs it
