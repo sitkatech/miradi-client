@@ -406,11 +406,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		if(currentView != null)
 		{
 			currentView.becomeInactive();
-			if(getProject().getCommandListenerCount() != existingCommandListenerCount)
-			{
-				EAM.logError("CommandListener count wrong (was " + existingCommandListenerCount + ")");
-				getProject().logCommandListeners(System.err);
-			}
+			possiblyLogIncorrectCommandListenerCount();
 		}
 
 		CardLayout layout = (CardLayout)viewHolder.getLayout();
@@ -429,6 +425,15 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			allowActionUpdates();
 			updateMenuOptions();
 			updateActionsAndStatusBar();
+		}
+	}
+
+	private void possiblyLogIncorrectCommandListenerCount()
+	{
+		if(getProject().getCommandListenerCount() != existingCommandListenerCount)
+		{
+			EAM.logError("CommandListener count wrong (was " + existingCommandListenerCount + ")");
+			getProject().logCommandListeners(System.err);
 		}
 	}
 
