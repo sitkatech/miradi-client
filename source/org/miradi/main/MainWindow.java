@@ -104,7 +104,7 @@ import org.miradi.wizard.WizardTitlePanel;
 import edu.stanford.ejalbert.BrowserLauncher;
 import edu.stanford.ejalbert.BrowserLauncherRunner;
 
-public class MainWindow extends JFrame implements CommandExecutedListener, ClipboardOwner, SplitterPositionSaverAndGetter
+public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositionSaverAndGetter
 {
 	public static MainWindow create() throws Exception
 	{
@@ -159,7 +159,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		
 		ensureFontSizeIsSet();
 		
-		project.addCommandExecutedListener(this);
+		getProject().addCommandExecutedListener(new HumanWelfareTargetModeChangeHandler());
+		getProject().addCommandExecutedListener(new RefreshWizardHandler());
+		getProject().addCommandExecutedListener(new WarnLowMemoryHandler());
 		
 		ToolTipManager.sharedInstance().setInitialDelay(TOOP_TIP_DELAY_MILLIS);
 		ToolTipManager.sharedInstance().setReshowDelay(0);
@@ -702,14 +704,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		}
 	}
 	
-	public void commandExecuted(CommandExecutedEvent event)
-	{
-		updateAfterCommand(event);
-		warnOnceIfLowOnMemory();
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE))
-			updateMenuOptions();
-	}
-	
 	private void warnOnceIfLowOnMemory()
 	{
 		if(hasMemoryWarningBeenShown)
@@ -1122,6 +1116,31 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 				EAM.logException(e);
 				System.exit(1);
 			}
+		}
+	}
+	
+	private class HumanWelfareTargetModeChangeHandler implements CommandExecutedListener
+	{
+		public void commandExecuted(CommandExecutedEvent event)
+		{
+			if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE))
+				updateMenuOptions();
+		}
+	}
+	
+	private class RefreshWizardHandler implements CommandExecutedListener
+	{
+		public void commandExecuted(CommandExecutedEvent event)
+		{
+			updateAfterCommand(event);
+		}
+	}
+	
+	private class WarnLowMemoryHandler implements CommandExecutedListener
+	{
+		public void commandExecuted(CommandExecutedEvent event)
+		{
+			warnOnceIfLowOnMemory();	
 		}
 	}
 	
