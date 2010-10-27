@@ -36,22 +36,6 @@ public class DashboardDialog extends ModalDialogWithClose
 		addPanel();
 	}
 	
-	@Override
-	public void becomeActive()
-	{
-		super.becomeActive();
-		
-		mainPanel.becomeActive();
-	}
-	
-	@Override
-	public void becomeInactive()
-	{
-		mainPanel.becomeInactive();
-		
-		super.becomeInactive();
-	}
-
 	private void createPanel() throws Exception
 	{
 		mainPanel = new DashboardMainPanel(getProject());
@@ -60,7 +44,6 @@ public class DashboardDialog extends ModalDialogWithClose
 	private void addPanel()
 	{
 		setMainPanel(mainPanel);
-		add(mainPanel);
 	}
 	
 	private Project getProject()
