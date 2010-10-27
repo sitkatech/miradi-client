@@ -159,9 +159,13 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		
 		ensureFontSizeIsSet();
 		
-		getProject().addCommandExecutedListener(new HumanWelfareTargetModeChangeHandler());
-		getProject().addCommandExecutedListener(new RefreshWizardHandler());
-		getProject().addCommandExecutedListener(new WarnLowMemoryHandler());
+		humanWelfareModeHandler = new HumanWelfareTargetModeChangeHandler();
+		lowMemoryHandler = new WarnLowMemoryHandler();
+		refreshWizardHandler = new RefreshWizardHandler();
+		
+		getProject().addCommandExecutedListener(humanWelfareModeHandler);
+		getProject().addCommandExecutedListener(refreshWizardHandler);
+		getProject().addCommandExecutedListener(lowMemoryHandler);
 		
 		ToolTipManager.sharedInstance().setInitialDelay(TOOP_TIP_DELAY_MILLIS);
 		ToolTipManager.sharedInstance().setReshowDelay(0);
@@ -693,6 +697,9 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	{
 		try
 		{
+			getProject().removeCommandExecutedListener(humanWelfareModeHandler);
+			getProject().removeCommandExecutedListener(lowMemoryHandler);
+			getProject().removeCommandExecutedListener(refreshWizardHandler);
 			closeProject();
 			savePreferences();
 			System.exit(0);
@@ -1226,4 +1233,8 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	private int preventActionUpdatesCount;
 	
 	private boolean hasMemoryWarningBeenShown;
+	private HumanWelfareTargetModeChangeHandler humanWelfareModeHandler;
+	private WarnLowMemoryHandler lowMemoryHandler;
+	private RefreshWizardHandler refreshWizardHandler;
+	
 }
