@@ -702,6 +702,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			getProject().removeCommandExecutedListener(refreshWizardHandler);
 			closeProject();
 			savePreferences();
+			getCurrentView().becomeInactive();
 			System.exit(0);
 		}
 		catch (Exception e)
