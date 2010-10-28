@@ -174,12 +174,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		finishOpening();
 	}
 	
-	@Override
-	public void close() throws Exception
-	{
-		super.close();
-	}
-	
 	public DiagramObject getMainDiagramObject()
 	{
 		return getTestingDiagramModel().getDiagramObject();
