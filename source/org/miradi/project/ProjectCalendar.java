@@ -40,12 +40,17 @@ public class ProjectCalendar implements CommandExecutedListener
 	public ProjectCalendar(Project projectToUse) throws Exception
 	{
 		project = projectToUse;
-		project.addCommandExecutedListener(this);
+		enable();
+	}
+	
+	public void enable()
+	{
+		getProject().addCommandExecutedListener(this);
 	}
 	
 	public void dispose()
 	{
-		project.removeCommandExecutedListener(this);
+		getProject().removeCommandExecutedListener(this);
 	}
 	
 	public void clearDateRanges()
