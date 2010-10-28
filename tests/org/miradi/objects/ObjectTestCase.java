@@ -89,31 +89,23 @@ public class ObjectTestCase extends TestCaseWithProject
 
 	public void verifyFields(int objectType, CreateObjectParameter extraInfo) throws Exception
 	{
-		Project project = createAndOpenProject();
-		try
-		{
-			BaseId id = project.createObject(objectType, BaseId.INVALID, extraInfo);
-			BaseObject object = project.findObject(objectType, id);
-			verifyTypeName(object);
-			
-			Vector<String> fieldTags = object.getStoredFieldTags();
-			for(int i = 0; i < fieldTags.size(); ++i)
-			{
-				verifyShortLabelField(object, fieldTags.get(i));
-				verifyFieldLifecycle(project, object, fieldTags.get(i));
+		BaseId id = getProject().createObject(objectType, BaseId.INVALID, extraInfo);
+		BaseObject object = getProject().findObject(objectType, id);
+		verifyTypeName(object);
 
-				if (!object.getNonClearedFieldTags().contains(fieldTags.get(i)))
-					assertFalse("object is empty?", object.isEmpty());
-				
-				object.clear();
-				assertTrue("object is not empty?", object.isEmpty());
-			}
-		}
-		finally
+		Vector<String> fieldTags = object.getStoredFieldTags();
+		for(int i = 0; i < fieldTags.size(); ++i)
 		{
-			project.close();
+			verifyShortLabelField(object, fieldTags.get(i));
+			verifyFieldLifecycle(getProject(), object, fieldTags.get(i));
+
+			if (!object.getNonClearedFieldTags().contains(fieldTags.get(i)))
+				assertFalse("object is empty?", object.isEmpty());
+
+			object.clear();
+			assertTrue("object is not empty?", object.isEmpty());
 		}
-		
+
 		verifyLoadPool(objectType, extraInfo);
 	}
 
@@ -155,19 +147,11 @@ public class ObjectTestCase extends TestCaseWithProject
 	 
 	private void verifyLoadPool(int objectType, CreateObjectParameter extraInfo) throws Exception
 	{
-		ProjectForTesting project= createAndOpenProject();
-		try
-		{
-			BaseId id = BaseId.INVALID;
-			id = project.createObject(objectType, BaseId.INVALID, extraInfo);
-			project.closeAndReopen();
-			BaseObject object = project.findObject(objectType, id);
-			assertNotNull("Didn't load pool?", object);
-		}
-		finally
-		{
-			project.close();
-		}
+		BaseId id = BaseId.INVALID;
+		id = getProject().createObject(objectType, BaseId.INVALID, extraInfo);
+		getProject().closeAndReopen();
+		BaseObject object = getProject().findObject(objectType, id);
+		assertNotNull("Didn't load pool?", object);
 	}
 	
 	private void verifyFieldLifecycle(Project project, BaseObject object, String tag) throws Exception

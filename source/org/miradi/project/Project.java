@@ -152,12 +152,9 @@ public class Project
 		projectCalendar = new ProjectCalendar(this);
 		projectTotalCalculator = new ProjectTotalCalculator(this);
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
-		enableThreatStressRatingEnsurer();
+		planningPreferencesChangeHandler = new PlanningPreferencesChangeHandler(this);		
 		enableIsDoNothingCommandOptimization();
 		
-		planningPreferencesChangeHandler = new PlanningPreferencesChangeHandler(this);
-		planningPreferencesChangeHandler.enable();		
-
 		clear();
 	}
 
@@ -904,8 +901,17 @@ public class Project
 	
 	protected void finishOpening() throws Exception
 	{
+		enableListeners();
 		createMissingBuiltInObjects();
 		loadThreatRatingFramework();		
+	}
+
+	protected void enableListeners()
+	{
+		getProjectCalendar().enable();
+		getProjectTotalCalculator().enable();
+		enableThreatStressRatingEnsurer();
+		planningPreferencesChangeHandler.enable();
 	}
 
 	protected void applyDefaultBehavior() throws Exception
@@ -976,10 +982,7 @@ public class Project
 		
 		try
 		{
-			getProjectCalendar().dispose();
-			getProjectTotalCalculator().dispose();
-			disableThreatStressRatingEnsurer();
-			planningPreferencesChangeHandler.disable();
+			disableListeners();
 			getDatabase().close();
 			clear();
 			EAM.setExceptionLoggingDestination();
@@ -988,7 +991,14 @@ public class Project
 		{
 			EAM.logException(e);
 		}
-		
+	}
+
+	protected void disableListeners()
+	{
+		getProjectCalendar().dispose();
+		getProjectTotalCalculator().dispose();
+		disableThreatStressRatingEnsurer();
+		planningPreferencesChangeHandler.disable();
 	}
 
 	public void closeAndDeleteProject() throws Exception
@@ -1148,6 +1158,11 @@ public class Project
 	public void logCommandListeners(PrintStream out)
 	{
 		getCommandExecutor().logCommandListeners(out);
+	}
+	
+	public void logDebugCommandListeners()
+	{
+		getCommandExecutor().logDebugCommandListeners();
 	}
 
 	public boolean canUndo()

@@ -69,8 +69,14 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 	public void closeAndReopen() throws Exception
 	{
 		String projectName = getDatabase().getCurrentProjectName();
-		getTestDatabase().closeAndDontDelete();
+		closeWithoutDeleting();
 		createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
+	}
+
+	private void closeWithoutDeleting() throws Exception
+	{
+		getTestDatabase().closeAndDontDelete();
+		disableListeners();
 	}
 
 	protected Command getLastCommand()
