@@ -170,17 +170,16 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 
 	public void updateEditableState(JToggleButton toggleButton, boolean isValidObject)
 	{
-			toggleButton.setEnabled(isValidObject);
-			Color fg = EAM.EDITABLE_FOREGROUND_COLOR;
-			Color bg = EAM.EDITABLE_BACKGROUND_COLOR;
-			if(!isValidObject)
-			{
-				fg = EAM.READONLY_FOREGROUND_COLOR;
-				bg = EAM.READONLY_BACKGROUND_COLOR;
-			}
-			toggleButton.setForeground(fg);
-			toggleButton.setBackground(bg);
-	
+		toggleButton.setEnabled(isValidObject);
+		Color fg = EAM.EDITABLE_FOREGROUND_COLOR;
+		Color bg = EAM.EDITABLE_BACKGROUND_COLOR;
+		if(!isValidObject)
+		{
+			fg = EAM.READONLY_FOREGROUND_COLOR;
+			bg = EAM.READONLY_BACKGROUND_COLOR;
+		}
+		toggleButton.setForeground(fg);
+		toggleButton.setBackground(bg);
 	}
 	
 	protected ChoiceQuestion getQuestion()
