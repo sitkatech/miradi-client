@@ -531,7 +531,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return objectCodeListField;
 	}
 	
-	public ObjectDataInputField createConfigureAnaysisRowsField(ORef refToUse, String tagToUse, ChoiceQuestion question)
+	public ObjectDataInputField createConfigureAnalysisRowsField(ORef refToUse, String tagToUse, ChoiceQuestion question)
 	{
 		return new AnalysisLevelsChooserField(getProject(), refToUse, tagToUse, question);
 	}
