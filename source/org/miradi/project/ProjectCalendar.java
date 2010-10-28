@@ -40,7 +40,6 @@ public class ProjectCalendar implements CommandExecutedListener
 	public ProjectCalendar(Project projectToUse) throws Exception
 	{
 		project = projectToUse;
-		enable();
 	}
 	
 	public void enable()

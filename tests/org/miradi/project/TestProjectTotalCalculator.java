@@ -59,7 +59,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		resultsChainDiagramModel.fillFrom(resultsChain);
 		
 		fred = getProject().createAndPopulateProjectResource();
-		calculator = new ProjectTotalCalculator(getProject());
+		calculator = getProject().getProjectTotalCalculator();
 		dateUnit = getProject().createDateUnit(YEAR_2008, YEAR_2009);
 	}
 	

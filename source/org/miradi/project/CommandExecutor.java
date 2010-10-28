@@ -345,6 +345,15 @@ public class CommandExecutor
 			out.println(listener.getClass());
 		}
 	}
+	
+	public void logDebugCommandListeners()
+	{
+		for(int i=0; i < getCommandListenerCount(); ++i)
+		{
+			CommandExecutedListener listener = commandExecutedListeners.get(i);
+			EAM.logDebug("orphan listener: " + listener.getClass().getName());
+		}
+	}
 
 	public boolean canUndo()
 	{

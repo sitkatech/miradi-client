@@ -432,8 +432,8 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	{
 		if(getProject().getCommandListenerCount() != existingCommandListenerCount)
 		{
-			EAM.logError("CommandListener count wrong (was " + existingCommandListenerCount + ")");
-			getProject().logCommandListeners(System.err);
+			EAM.logDebug("CommandListener count wrong (was " + existingCommandListenerCount + ")");
+			getProject().logDebugCommandListeners();
 		}
 	}
 
@@ -708,12 +708,22 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			closeProject();
 			savePreferences();
 			getCurrentView().becomeInactive();
+			logExistingCommandListeners();
 			System.exit(0);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			System.exit(1);
+		}
+	}
+
+	private void logExistingCommandListeners()
+	{
+		if(getProject().getCommandListenerCount() != 0)
+		{
+			EAM.logError("CommandListener count wrong (was " + getProject().getCommandListenerCount() + ")");
+			getProject().logDebugCommandListeners();
 		}
 	}
 	
