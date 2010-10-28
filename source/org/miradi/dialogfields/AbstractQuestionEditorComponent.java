@@ -192,8 +192,6 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 		return columnCount;
 	}
 	
-	abstract protected void toggleButtonStateChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception;
-	
 	class ToggleButtonHandler implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
@@ -211,6 +209,8 @@ abstract public class AbstractQuestionEditorComponent extends DisposablePanel
 			}			
 		}
 	}
+	
+	abstract protected void toggleButtonStateChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception;
 	
 	private ChoiceQuestion question;
 	protected HashMap<ChoiceItem, JToggleButton> choiceItemToToggleButtonMap;
