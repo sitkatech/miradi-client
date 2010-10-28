@@ -40,7 +40,12 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 	public ProjectTotalCalculator(Project projectToUse)
 	{
 		project = projectToUse;
-		project.addCommandExecutedListener(this);
+		enable();
+	}
+	
+	public void enable()
+	{
+		getProject().addCommandExecutedListener(this);
 	}
 	
 	public void dispose()
