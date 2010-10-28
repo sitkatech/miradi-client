@@ -103,8 +103,6 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 		popupInvokeButton.setEnabled(isEnabled);
 	}
 	
-	abstract protected void invokePopupEditor() throws Exception;
-
 	private class PopUpEditorHandler extends MouseAdapter implements ActionListener 
 	{
 		@Override
@@ -133,6 +131,8 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 		}
 	}
 	
+	abstract protected void invokePopupEditor() throws Exception;
+
 	private PanelButton popupInvokeButton;
 	private PopUpEditorHandler popupEditHandler;
 	private PanelTextArea currentSelectionText;
