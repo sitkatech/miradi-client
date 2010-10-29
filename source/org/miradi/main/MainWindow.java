@@ -708,7 +708,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			closeProject();
 			savePreferences();
 			getCurrentView().becomeInactive();
-			logExistingCommandListeners();
+			logOrphanedCommandListeners();
 			System.exit(0);
 		}
 		catch (Exception e)
@@ -718,7 +718,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		}
 	}
 
-	private void logExistingCommandListeners()
+	private void logOrphanedCommandListeners()
 	{
 		if(getProject().getCommandListenerCount() != 0)
 		{
