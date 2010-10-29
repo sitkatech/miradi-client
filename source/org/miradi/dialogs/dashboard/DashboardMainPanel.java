@@ -24,7 +24,6 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
 import org.miradi.main.MainWindow;
@@ -72,9 +71,9 @@ public class DashboardMainPanel extends DisposablePanel
 		super.becomeInactive();
 	}
 
-	private AbstractObjectDataInputPanel getCurrentTab()
+	private DisposablePanel getCurrentTab()
 	{
-		return (AbstractObjectDataInputPanel) tabs.getSelectedComponent();
+		return (DisposablePanel) tabs.getSelectedComponent();
 	}
 	
 	private void disposeTab(DisposablePanel tab)
@@ -124,7 +123,7 @@ public class DashboardMainPanel extends DisposablePanel
 		public void stateChanged(ChangeEvent event)
 		{
 			currentTab.becomeInactive();
-			AbstractObjectDataInputPanel selectedTab = (AbstractObjectDataInputPanel) tabs.getSelectedComponent();
+			DisposablePanel selectedTab = (DisposablePanel) tabs.getSelectedComponent();
 			currentTab = selectedTab;
 			currentTab.becomeActive();
 		}
