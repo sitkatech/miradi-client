@@ -22,13 +22,13 @@ package org.miradi.dialogs.dashboard;
 
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 
 public class CaptureAndShareLearningTab extends AbstractDashboardTab
 {
-	public CaptureAndShareLearningTab(Project projectToUse) throws Exception
+	public CaptureAndShareLearningTab(MainWindow mainWindowToUse) throws Exception
 	{
-		super(projectToUse);
+		super(mainWindowToUse);
 	}
 
 	@Override

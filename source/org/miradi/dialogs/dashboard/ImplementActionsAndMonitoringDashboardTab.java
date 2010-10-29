@@ -24,14 +24,14 @@ import java.util.HashMap;
 
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objects.Dashboard;
-import org.miradi.project.Project;
 
 public class ImplementActionsAndMonitoringDashboardTab extends AbstractDashboardTab
 {
-	public ImplementActionsAndMonitoringDashboardTab(Project projectToUse) throws Exception
+	public ImplementActionsAndMonitoringDashboardTab(MainWindow mainWindowToUse) throws Exception
 	{
-		super(projectToUse);
+		super(mainWindowToUse);
 	}
 
 	@Override
