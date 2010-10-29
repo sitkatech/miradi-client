@@ -996,7 +996,7 @@ public class Project
 	protected void disableListeners()
 	{
 		getProjectCalendar().disable();
-		getProjectTotalCalculator().dispose();
+		getProjectTotalCalculator().disable();
 		disableThreatStressRatingEnsurer();
 		planningPreferencesChangeHandler.disable();
 	}
