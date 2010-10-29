@@ -34,11 +34,12 @@ import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
@@ -47,14 +48,14 @@ import org.miradi.views.summary.SummaryView;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 import org.miradi.views.umbrella.ViewSwitchDoer;
 
-abstract public class AbstractDashboardTab extends ObjectDataInputPanel
+abstract public class AbstractDashboardTab extends DisposablePanelWithDescription
 {
-	public AbstractDashboardTab(Project projectToUse) throws Exception
+	public AbstractDashboardTab(MainWindow mainWindowToUse) throws Exception
 	{
-		super(projectToUse, Dashboard.getObjectType());
-
+		mainWindow = mainWindowToUse;
+		
 		setLayout(new BorderLayout());
-		splitPane = new PersistentHorizontalSplitPane(getMainWindow(), getMainWindow(), getPanelDescription());
+		splitPane = new PersistentHorizontalSplitPane(mainWindowToUse, mainWindowToUse, getPanelDescription());
 		selectableRows = new Vector<SelectableRow>();
 
 		TwoColumnPanel leftPanel = createLeftPanel();
@@ -204,6 +205,16 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 	protected String getSummaryOverviewStepName()
 	{
 		return getMainWindow().getWizardManager().getOverviewStepName(SummaryView.getViewName());
+	}
+	
+	private MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
+	
+	protected Project getProject()
+	{
+		return getMainWindow().getProject();
 	}
 
 	private class SingleRowSelectionHandler
@@ -386,6 +397,7 @@ abstract public class AbstractDashboardTab extends ObjectDataInputPanel
 
 	abstract protected TwoColumnPanel createLeftPanel();
 
+	private MainWindow mainWindow;
 	private Vector<SelectableRow> selectableRows;
 	private DashboardRightSideDescriptionPanel rightSideDescriptionPanel;
 	private PersistentHorizontalSplitPane splitPane;

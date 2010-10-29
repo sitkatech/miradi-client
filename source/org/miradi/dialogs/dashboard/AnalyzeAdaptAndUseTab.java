@@ -22,13 +22,13 @@ package org.miradi.dialogs.dashboard;
 
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 
 public class AnalyzeAdaptAndUseTab extends AbstractDashboardTab
 {
-	public AnalyzeAdaptAndUseTab(Project projectToUse) throws Exception
+	public AnalyzeAdaptAndUseTab(MainWindow mainWindowToUse) throws Exception
 	{
-		super(projectToUse);
+		super(mainWindowToUse);
 	}
 
 	@Override

@@ -26,17 +26,16 @@ import javax.swing.event.ChangeListener;
 
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 
 public class DashboardMainPanel extends DisposablePanel
 {
-	public DashboardMainPanel(Project projectToUse) throws Exception
+	public DashboardMainPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super();
 		
-		project = projectToUse;
+		mainWindow = mainWindowToUse;
 		tabs = new PanelTabbedPane();
 		tabs.addChangeListener(new TabChangeListener());
 		createTabs();
@@ -78,7 +77,7 @@ public class DashboardMainPanel extends DisposablePanel
 		return (AbstractObjectDataInputPanel) tabs.getSelectedComponent();
 	}
 	
-	private void disposeTab(ObjectDataInputPanel tab)
+	private void disposeTab(DisposablePanel tab)
 	{
 		if (tab != null)
 		{
@@ -89,11 +88,11 @@ public class DashboardMainPanel extends DisposablePanel
 
 	private void createTabs() throws Exception
 	{
-		conceptualizeDashboardTab = new ConceptualizeDashboardTab(getProject());
-		planActionsAndMonitoringTab = new PlanActionsAndMonitoringTab(getProject());
-		actionsAndMonitoringTab = new ImplementActionsAndMonitoringDashboardTab(getProject());
-		analyzeAdaptAndUseTab = new AnalyzeAdaptAndUseTab(getProject());
-		captureAndShareLearningTab = new CaptureAndShareLearningTab(getProject());
+		conceptualizeDashboardTab = new ConceptualizeDashboardTab(getMainWindow());
+		planActionsAndMonitoringTab = new PlanActionsAndMonitoringTab(getMainWindow());
+		actionsAndMonitoringTab = new ImplementActionsAndMonitoringDashboardTab(getMainWindow());
+		analyzeAdaptAndUseTab = new AnalyzeAdaptAndUseTab(getMainWindow());
+		captureAndShareLearningTab = new CaptureAndShareLearningTab(getMainWindow());
 	}
 
 	private void addTabsToTabbedPane()
@@ -115,9 +114,9 @@ public class DashboardMainPanel extends DisposablePanel
 		tabs.addTab(tab.getPanelDescription(), tab);
 	}
 	
-	private Project getProject()
+	private MainWindow getMainWindow()
 	{
-		return project;
+		return mainWindow;
 	}
 	
 	class TabChangeListener implements ChangeListener
@@ -132,8 +131,8 @@ public class DashboardMainPanel extends DisposablePanel
 	}
 	
 	private JTabbedPane tabs;
-	private Project project;
-	private AbstractObjectDataInputPanel currentTab;
+	private MainWindow mainWindow;
+	private DisposablePanel currentTab;
 	private AbstractDashboardTab conceptualizeDashboardTab;
 	private AbstractDashboardTab planActionsAndMonitoringTab;
 	private AbstractDashboardTab actionsAndMonitoringTab;

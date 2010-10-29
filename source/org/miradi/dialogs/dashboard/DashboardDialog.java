@@ -23,7 +23,6 @@ package org.miradi.dialogs.dashboard;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.project.Project;
 
 public class DashboardDialog extends ModalDialogWithClose
 {
@@ -31,14 +30,13 @@ public class DashboardDialog extends ModalDialogWithClose
 	{
 		super(parent, EAM.text("Dashboard"));
 		
-		project = parent.getProject();
 		createPanel();
 		addPanel();
 	}
 	
 	private void createPanel() throws Exception
 	{
-		mainPanel = new DashboardMainPanel(getProject());
+		mainPanel = new DashboardMainPanel(getMainWindow());
 	}
 
 	private void addPanel()
@@ -46,11 +44,5 @@ public class DashboardDialog extends ModalDialogWithClose
 		setMainPanel(mainPanel);
 	}
 	
-	private Project getProject()
-	{
-		return project;
-	}
-
-	private Project project;
 	private DashboardMainPanel mainPanel;
 }
