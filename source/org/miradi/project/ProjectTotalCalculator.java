@@ -47,7 +47,7 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 		getProject().addCommandExecutedListener(this);
 	}
 	
-	public void dispose()
+	public void disable()
 	{
 		getProject().removeCommandExecutedListener(this);
 	}
