@@ -41,6 +41,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.martus.swing.UiLabel;
 import org.miradi.commands.CommandDeleteObject;
+import org.miradi.dialogfields.CodeListPopupWithDescriptionPanelField;
 import org.miradi.dialogfields.EditableCodeListField;
 import org.miradi.dialogfields.IndicatorRelevancyOverrideListField;
 import org.miradi.dialogfields.ObjectCheckBoxField;
@@ -559,6 +560,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public ObjectDataInputField createChoiceField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
 		return new ObjectChoiceField(project, objectType, getObjectIdForType(objectType), tagToUse, question);
+	}
+	
+	public ObjectDataInputField createQuestionFieldWithDescriptionPanel(int objectType, String tagToUse, ChoiceQuestion question) throws Exception
+	{
+		return new CodeListPopupWithDescriptionPanelField(getMainWindow(), getRefForType(objectType), tagToUse, question);
 	}
 	
 	public ObjectDataInputField createClassificationChoiceField(String tagToUse, ChoiceQuestion question)
