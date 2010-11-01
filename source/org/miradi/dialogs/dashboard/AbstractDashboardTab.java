@@ -33,6 +33,7 @@ import java.util.Vector;
 import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -92,7 +93,7 @@ abstract public class AbstractDashboardTab extends DisposablePanelWithDescriptio
 	
 	protected void addLeftPanel(TwoColumnPanel leftMainPanel)
 	{
-		splitPane.setLeftComponent(leftMainPanel);
+		splitPane.setLeftComponent(new JScrollPane(leftMainPanel));
 	}
 	
 	protected void createRightPanel() throws Exception
