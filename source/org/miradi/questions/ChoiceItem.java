@@ -40,6 +40,13 @@ public class ChoiceItem implements Comparable<Object>
 		this(codeToUse, labelToUse, (Color)null);
 	}
 	
+	public ChoiceItem(String codeToUse, String labelToUse, boolean isSelectableToUse)
+	{
+		this(codeToUse, labelToUse);
+		
+		setSelectable(isSelectableToUse);
+	}
+	
 	public ChoiceItem(String codeToUse, String labelToUse, Color colorToUse)
 	{
 		this(codeToUse, labelToUse, colorToUse, "");
@@ -58,6 +65,7 @@ public class ChoiceItem implements Comparable<Object>
 		label = labelToUse;
 		color = colorToUse;
 		description = descriptionToUse;
+		selectable = true;
 	}
 
 	public String getCode()
