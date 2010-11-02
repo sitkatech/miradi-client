@@ -91,12 +91,12 @@ abstract public class AbstractDashboardTab extends DisposablePanelWithDescriptio
 		splitPane.setRightComponent(rightSideDescriptionPanel);
 	}
 	
-	protected void addLeftPanel(TwoColumnPanel leftMainPanel)
+	private void addLeftPanel(TwoColumnPanel leftMainPanel)
 	{
 		splitPane.setLeftComponent(new JScrollPane(leftMainPanel));
 	}
 	
-	protected void createRightPanel() throws Exception
+	private void createRightPanel() throws Exception
 	{
 		rightSideDescriptionPanel = new DashboardRightSideDescriptionPanel(getMainWindow());
 		rightSideDescriptionPanel.setRightSidePanelContent(getMainDescriptionFileName());
