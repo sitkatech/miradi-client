@@ -20,31 +20,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import javax.swing.event.ListSelectionEvent;
 
-public class AnalyzeAdaptAndUseTab extends AbstractDashboardTab
+public class RowSelectionEvent extends ListSelectionEvent
 {
-	public AnalyzeAdaptAndUseTab(MainWindow mainWindowToUse) throws Exception
+	public RowSelectionEvent(Object source, String descriptionFileNameToUse, String wizardStepNameToUse)
 	{
-		super(mainWindowToUse);
+		super(source, 0, 0, false);
+		
+		descriptionFileName = descriptionFileNameToUse;
+		wizardStepName = wizardStepNameToUse;
+	}
+	
+	public String getDescriptionFileName()
+	{
+		return descriptionFileName;
 	}
 
-	@Override
-	protected String getMainDescriptionFileName()
+	public String getWizardStepName()
 	{
-		return "dashboard/4.html";
+		return wizardStepName;
 	}
-
-	@Override
-	protected LeftSidePanelWithSelectableRows createLeftPanel()
-	{
-		return new AnalyzeAdaptAndUseLeftSidePanel(getMainWindow());
-	}
-
-	@Override
-	public String getPanelDescription()
-	{
-		return EAM.text("Analyze, Use and Adapt");
-	}
+	
+	private String wizardStepName;
+	private String descriptionFileName;
 }

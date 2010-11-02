@@ -27,6 +27,7 @@ import javax.swing.event.ListSelectionListener;
 import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogfields.QuestionBasedEditorComponent;
 import org.miradi.dialogs.dashboard.AbstractDashboardTab;
+import org.miradi.dialogs.dashboard.LeftSidePanelWithSelectableRows;
 import org.miradi.dialogs.fieldComponents.PanelCheckBox;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
@@ -66,12 +67,9 @@ public class QuestionWithDescriptionEditorPanel extends AbstractDashboardTab imp
 	}
 
 	@Override
-	protected TwoColumnPanel createLeftPanel()
+	protected LeftSidePanelWithSelectableRows createLeftPanel()
 	{
-		TwoColumnPanel leftMainPanel = new TwoColumnPanel();
-		
-		
-		return leftMainPanel;
+		return null;
 	}
 	
 	protected JComponent createLeftComponent(String leftColumnTranslatedText)

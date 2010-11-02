@@ -24,26 +24,55 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.text.html.StyleSheet;
 
 import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.Translation;
+import org.miradi.views.umbrella.ViewSwitchDoer;
 
-public class DashboardRightSideDescriptionPanel extends JPanel
+public class DashboardRightSideDescriptionPanel extends JPanel implements ListSelectionListener
 {
-	public DashboardRightSideDescriptionPanel(MainWindow mainWindow) throws Exception
+	public DashboardRightSideDescriptionPanel(MainWindow mainWindowToUse, String mainDescriptionFileName) throws Exception
 	{
+		mainWindow = mainWindowToUse;
 		setLayout(new BorderLayout());
 		viewer = new DashboardDescriptionHtmlViewer(mainWindow);
 		add(new JScrollPane(viewer));
+		
+		setRightSideHtmlContent(mainDescriptionFileName);
+	}
+	
+	public void valueChanged(ListSelectionEvent rawEvent)
+	{
+		try
+		{
+			RowSelectionEvent castedEvent = (RowSelectionEvent) rawEvent;
+			String descriptionFileName = castedEvent.getDescriptionFileName();
+			setRightSideHtmlContent(descriptionFileName);
+			ViewSwitchDoer.changeView(getMainWindow(), castedEvent.getWizardStepName());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
+		}
 	}
 
-	public void setRightSidePanelContent(String resourceFileName) throws Exception
+	protected void setRightSideHtmlContent(String descriptionFileName)
+			throws Exception
 	{
-		String htmlText = Translation.getHtmlContent(resourceFileName);
+		String htmlText = Translation.getHtmlContent(descriptionFileName);
 		viewer.setText(htmlText);
+	}
+	
+	private MainWindow getMainWindow()
+	{
+		return mainWindow;
 	}
 	
 	public static class DashboardDescriptionHtmlViewer extends FlexibleWidthHtmlViewer
@@ -62,5 +91,6 @@ public class DashboardRightSideDescriptionPanel extends JPanel
 		}	
 	}
 	
+	private MainWindow mainWindow;
 	private DashboardDescriptionHtmlViewer viewer;
 }
