@@ -135,6 +135,6 @@ public class DashboardMainPanel extends DisposablePanel
 	private AbstractDashboardTab conceptualizeDashboardTab;
 	private AbstractDashboardTab planActionsAndMonitoringTab;
 	private AbstractDashboardTab actionsAndMonitoringTab;
-	private AbstractDashboardTab analyzeAdaptAndUseTab;
+	private	AbstractDashboardTab analyzeAdaptAndUseTab;
 	private AbstractDashboardTab captureAndShareLearningTab;
 }
