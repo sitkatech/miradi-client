@@ -23,7 +23,7 @@ package org.miradi.dialogs.dashboard;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class PlanActionsAndMonitoringTab extends AbstractDashboardTab
+public class PlanActionsAndMonitoringTab extends LeftSideRightSideSplitterContainerTab
 {
 	public PlanActionsAndMonitoringTab(MainWindow mainWindowToUse) throws Exception
 	{

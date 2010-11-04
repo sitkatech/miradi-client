@@ -23,7 +23,7 @@ package org.miradi.dialogs.dashboard;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class AnalyzeAdaptAndUseTab extends AbstractDashboardTab
+public class AnalyzeAdaptAndUseTab extends LeftSideRightSideSplitterContainerTab
 {
 	public AnalyzeAdaptAndUseTab(MainWindow mainWindowToUse) throws Exception
 	{

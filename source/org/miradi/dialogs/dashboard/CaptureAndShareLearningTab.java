@@ -23,7 +23,7 @@ package org.miradi.dialogs.dashboard;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class CaptureAndShareLearningTab extends AbstractDashboardTab
+public class CaptureAndShareLearningTab extends LeftSideRightSideSplitterContainerTab
 {
 	public CaptureAndShareLearningTab(MainWindow mainWindowToUse) throws Exception
 	{

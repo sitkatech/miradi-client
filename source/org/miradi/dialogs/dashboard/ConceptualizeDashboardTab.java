@@ -23,7 +23,7 @@ package org.miradi.dialogs.dashboard;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ConceptualizeDashboardTab extends AbstractDashboardTab
+public class ConceptualizeDashboardTab extends LeftSideRightSideSplitterContainerTab
 {
 	public ConceptualizeDashboardTab(MainWindow mainWindowToUse) throws Exception
 	{
