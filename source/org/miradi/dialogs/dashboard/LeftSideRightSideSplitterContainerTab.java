@@ -29,9 +29,9 @@ import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 
-abstract public class AbstractDashboardTab extends DisposablePanelWithDescription
+abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePanelWithDescription
 {
-	public AbstractDashboardTab(MainWindow mainWindowToUse) throws Exception
+	public LeftSideRightSideSplitterContainerTab(MainWindow mainWindowToUse) throws Exception
 	{
 		mainWindow = mainWindowToUse;
 		
