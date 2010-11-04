@@ -31,14 +31,14 @@ import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 
 abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePanelWithDescription
 {
-	public LeftSideRightSideSplitterContainerTab(MainWindow mainWindowToUse) throws Exception
+	public LeftSideRightSideSplitterContainerTab(MainWindow mainWindowToUse, LeftSidePanelWithSelectableRows leftPanelToUse) throws Exception
 	{
 		mainWindow = mainWindowToUse;
 		
 		setLayout(new BorderLayout());
 		splitPane = new PersistentHorizontalSplitPane(mainWindowToUse, mainWindowToUse, getPanelDescription());
 		
-		leftPanel = createLeftPanel();
+		leftPanel = leftPanelToUse;
 		
 		addLeftPanel(leftPanel);
 
@@ -86,8 +86,6 @@ abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePa
 	}
 	
 	abstract protected String getMainDescriptionFileName();
-
-	abstract protected LeftSidePanelWithSelectableRows createLeftPanel();
 	
 	private MainWindow mainWindow;
 	private PersistentHorizontalSplitPane splitPane;

@@ -25,9 +25,14 @@ import org.miradi.main.MainWindow;
 
 public class CaptureAndShareLearningTab extends LeftSideRightSideSplitterContainerTab
 {
-	public CaptureAndShareLearningTab(MainWindow mainWindowToUse) throws Exception
+	public CaptureAndShareLearningTab(MainWindow mainWindowToUse, LeftSidePanelWithSelectableRows leftPanelToUse) throws Exception
 	{
-		super(mainWindowToUse);
+		super(mainWindowToUse, leftPanelToUse);
+	}
+	
+	public static CaptureAndShareLearningTab createTab(MainWindow mainWindowToUse) throws Exception
+	{
+		return new CaptureAndShareLearningTab(mainWindowToUse, createLeftPanel(mainWindowToUse));
 	}
 
 	@Override
@@ -36,10 +41,9 @@ public class CaptureAndShareLearningTab extends LeftSideRightSideSplitterContain
 		return "dashboard/5.html";
 	}
 
-	@Override
-	protected LeftSidePanelWithSelectableRows createLeftPanel()
+	private static LeftSidePanelWithSelectableRows createLeftPanel(MainWindow mainWindowToUse)
 	{
-		return new CaptureAndShareLearningLeftPanel(getMainWindow());
+ 		return new CaptureAndShareLearningLeftPanel(mainWindowToUse);
 	}
 
 	@Override

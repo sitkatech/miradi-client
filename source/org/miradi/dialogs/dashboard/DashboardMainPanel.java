@@ -87,11 +87,11 @@ public class DashboardMainPanel extends DisposablePanel
 
 	private void createTabs() throws Exception
 	{
-		conceptualizeDashboardTab = new ConceptualizeDashboardTab(getMainWindow());
-		planActionsAndMonitoringTab = new PlanActionsAndMonitoringTab(getMainWindow());
-		actionsAndMonitoringTab = new ImplementActionsAndMonitoringDashboardTab(getMainWindow());
-		analyzeAdaptAndUseTab = new AnalyzeAdaptAndUseTab(getMainWindow());
-		captureAndShareLearningTab = new CaptureAndShareLearningTab(getMainWindow());
+		conceptualizeDashboardTab = ConceptualizeDashboardTab.createTab(getMainWindow());
+		planActionsAndMonitoringTab = PlanActionsAndMonitoringTab.createTab(getMainWindow());
+		actionsAndMonitoringTab = ImplementActionsAndMonitoringDashboardTab.createTab(getMainWindow());
+		analyzeAdaptAndUseTab = AnalyzeAdaptAndUseTab.createTab(getMainWindow());
+		captureAndShareLearningTab = CaptureAndShareLearningTab.createTab(getMainWindow());
 	}
 
 	private void addTabsToTabbedPane()

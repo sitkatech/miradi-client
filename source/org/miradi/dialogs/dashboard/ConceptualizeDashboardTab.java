@@ -25,9 +25,14 @@ import org.miradi.main.MainWindow;
 
 public class ConceptualizeDashboardTab extends LeftSideRightSideSplitterContainerTab
 {
-	public ConceptualizeDashboardTab(MainWindow mainWindowToUse) throws Exception
+	public ConceptualizeDashboardTab(MainWindow mainWindowToUse, LeftSidePanelWithSelectableRows leftPanelToUse) throws Exception
 	{
-		super(mainWindowToUse);
+		super(mainWindowToUse, leftPanelToUse);
+	}
+	
+	public static ConceptualizeDashboardTab createTab(MainWindow mainWindowToUse) throws Exception
+	{
+		return new ConceptualizeDashboardTab(mainWindowToUse, createLeftPanel(mainWindowToUse));
 	}
 	
 	@Override
@@ -42,9 +47,8 @@ public class ConceptualizeDashboardTab extends LeftSideRightSideSplitterContaine
 		return EAM.text("Conceptualize");
 	}
 
-	@Override
-	protected LeftSidePanelWithSelectableRows createLeftPanel()
+	private static LeftSidePanelWithSelectableRows createLeftPanel(MainWindow mainWindowToUse)
 	{
-		return new ConceptualizeLeftSide(getMainWindow());
+		return new ConceptualizeLeftSide(mainWindowToUse);
 	}
 }

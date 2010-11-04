@@ -22,6 +22,7 @@ package org.miradi.dialogfields.editors;
 
 import org.martus.swing.Utilities;
 import org.miradi.dialogfields.FieldSaver;
+import org.miradi.dialogfields.QuestionBasedEditorComponent;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -40,7 +41,8 @@ public class CodeListPopupWithDescriptionPanelEditor extends AbstractPopupEditor
 	protected void invokePopupEditor() throws Exception
 	{
 		ModalDialogWithClose dialog = new ModalDialogWithClose(mainWindow, EAM.text("Edit..."));
-		editorPanel = new QuestionWithDescriptionEditorPanel(mainWindow, question);
+		QuestionBasedEditorComponent editorComponent = new QuestionBasedEditorComponent(question, 1);
+		editorPanel = new QuestionWithDescriptionEditorPanel(mainWindow, question, editorComponent);
 		dialog.setMainPanel(editorPanel);
 		dialog.pack();
 		Utilities.centerFrame(dialog);

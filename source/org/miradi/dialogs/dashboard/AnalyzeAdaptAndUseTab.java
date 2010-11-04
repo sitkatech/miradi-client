@@ -25,21 +25,25 @@ import org.miradi.main.MainWindow;
 
 public class AnalyzeAdaptAndUseTab extends LeftSideRightSideSplitterContainerTab
 {
-	public AnalyzeAdaptAndUseTab(MainWindow mainWindowToUse) throws Exception
+	private AnalyzeAdaptAndUseTab(MainWindow mainWindowToUse, LeftSidePanelWithSelectableRows leftPanelToUse) throws Exception
 	{
-		super(mainWindowToUse);
+		super(mainWindowToUse, leftPanelToUse);
 	}
-
+	
+	public static AnalyzeAdaptAndUseTab createTab(MainWindow mainWindowToUse) throws Exception
+	{
+		return new AnalyzeAdaptAndUseTab(mainWindowToUse, createLeftPanel(mainWindowToUse));
+	}
+	
 	@Override
 	protected String getMainDescriptionFileName()
 	{
 		return "dashboard/4.html";
 	}
 
-	@Override
-	protected LeftSidePanelWithSelectableRows createLeftPanel()
+	private static LeftSidePanelWithSelectableRows createLeftPanel(MainWindow mainWindowToUse)
 	{
-		return new AnalyzeAdaptAndUseLeftSidePanel(getMainWindow());
+		return new AnalyzeAdaptAndUseLeftSidePanel(mainWindowToUse);
 	}
 
 	@Override

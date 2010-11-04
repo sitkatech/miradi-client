@@ -25,9 +25,14 @@ import org.miradi.main.MainWindow;
 
 public class PlanActionsAndMonitoringTab extends LeftSideRightSideSplitterContainerTab
 {
-	public PlanActionsAndMonitoringTab(MainWindow mainWindowToUse) throws Exception
+	private PlanActionsAndMonitoringTab(MainWindow mainWindowToUse, LeftSidePanelWithSelectableRows leftPanelToUse) throws Exception
 	{
-		super(mainWindowToUse);
+		super(mainWindowToUse, leftPanelToUse);
+	}
+	
+	public static PlanActionsAndMonitoringTab createTab(MainWindow mainWindowToUse) throws Exception
+	{
+		return new PlanActionsAndMonitoringTab(mainWindowToUse, createLeftPanel(mainWindowToUse));
 	}
 
 	@Override
@@ -42,10 +47,9 @@ public class PlanActionsAndMonitoringTab extends LeftSideRightSideSplitterContai
 		return EAM.text("Plan Actions and Monitoring");
 	}
 
-	@Override
-	protected LeftSidePanelWithSelectableRows createLeftPanel()
+	private static LeftSidePanelWithSelectableRows createLeftPanel(MainWindow mainWindowToUse)
 	{
-		return new PlanActionsAndMonitoringLeftSide(getMainWindow());
+		return new PlanActionsAndMonitoringLeftSide(mainWindowToUse);
 	}
 }
 
