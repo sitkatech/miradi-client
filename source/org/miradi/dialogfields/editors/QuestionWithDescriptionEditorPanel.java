@@ -27,7 +27,6 @@ import javax.swing.event.ListSelectionListener;
 import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogfields.QuestionBasedEditorComponent;
 import org.miradi.dialogs.dashboard.LeftSideRightSideSplitterContainerTab;
-import org.miradi.dialogs.dashboard.LeftSidePanelWithSelectableRows;
 import org.miradi.dialogs.fieldComponents.PanelCheckBox;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
@@ -37,9 +36,9 @@ import org.miradi.questions.ChoiceQuestion;
 //FIXME this class is under construction and needs full review
 public class QuestionWithDescriptionEditorPanel extends LeftSideRightSideSplitterContainerTab implements ListSelectionListener
 {
-	public QuestionWithDescriptionEditorPanel(MainWindow mainWindowToUse, ChoiceQuestion questionToUse)	throws Exception
+	public QuestionWithDescriptionEditorPanel(MainWindow mainWindowToUse, ChoiceQuestion questionToUse, QuestionBasedEditorComponent editorComponent) throws Exception
 	{
-		super(mainWindowToUse);
+		super(mainWindowToUse, null);
 		
 		TwoColumnPanel leftMainPanel = new TwoColumnPanel();
 		
@@ -66,12 +65,6 @@ public class QuestionWithDescriptionEditorPanel extends LeftSideRightSideSplitte
 		return "dashboard/1.html";
 	}
 
-	@Override
-	protected LeftSidePanelWithSelectableRows createLeftPanel()
-	{
-		return null;
-	}
-	
 	protected JComponent createLeftComponent(String leftColumnTranslatedText)
 	{
 		return new PanelCheckBox(leftColumnTranslatedText);

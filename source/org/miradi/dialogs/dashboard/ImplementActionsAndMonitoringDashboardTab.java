@@ -25,9 +25,14 @@ import org.miradi.main.MainWindow;
 
 public class ImplementActionsAndMonitoringDashboardTab extends LeftSideRightSideSplitterContainerTab
 {
-	public ImplementActionsAndMonitoringDashboardTab(MainWindow mainWindowToUse) throws Exception
+	private ImplementActionsAndMonitoringDashboardTab(MainWindow mainWindowToUse, LeftSidePanelWithSelectableRows leftPanelToUse) throws Exception
 	{
-		super(mainWindowToUse);
+		super(mainWindowToUse, leftPanelToUse);
+	}
+	
+	public static ImplementActionsAndMonitoringDashboardTab createTab(MainWindow mainWindowToUse) throws Exception
+	{
+		return new ImplementActionsAndMonitoringDashboardTab(mainWindowToUse, createLeftPanel(mainWindowToUse));
 	}
 
 	@Override
@@ -42,9 +47,8 @@ public class ImplementActionsAndMonitoringDashboardTab extends LeftSideRightSide
 		return EAM.text("Implement Actions and Monitoring");
 	}
 
-	@Override
-	protected LeftSidePanelWithSelectableRows createLeftPanel()
+	private static LeftSidePanelWithSelectableRows createLeftPanel(MainWindow mainWindowToUse)
 	{
-		return new ImplementActionsAndMonitoringDashboardLeftPanel(getMainWindow());
+		return new ImplementActionsAndMonitoringDashboardLeftPanel(mainWindowToUse);
 	}
 }
