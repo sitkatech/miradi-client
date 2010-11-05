@@ -20,12 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
+import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
 public class CaptureAndShareLearningTab extends LeftSideRightSideSplitterContainerTab
 {
-	public CaptureAndShareLearningTab(MainWindow mainWindowToUse, LeftSidePanelWithSelectableRows leftPanelToUse) throws Exception
+	public CaptureAndShareLearningTab(MainWindow mainWindowToUse, OneFieldObjectDataInputPanel leftPanelToUse) throws Exception
 	{
 		super(mainWindowToUse, leftPanelToUse);
 	}
@@ -41,9 +42,11 @@ public class CaptureAndShareLearningTab extends LeftSideRightSideSplitterContain
 		return "dashboard/5.html";
 	}
 
-	private static LeftSidePanelWithSelectableRows createLeftPanel(MainWindow mainWindowToUse)
+	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse)
 	{
- 		return new CaptureAndShareLearningLeftPanel(mainWindowToUse);
+ 		CaptureAndShareLearningLeftPanel component = new CaptureAndShareLearningLeftPanel(mainWindowToUse);
+ 		
+ 		return new OneFieldObjectDataInputPanel(mainWindowToUse.getProject(), component);
 	}
 
 	@Override

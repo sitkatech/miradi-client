@@ -31,7 +31,6 @@ import javax.swing.JCheckBox;
 import javax.swing.JToggleButton;
 
 import org.martus.swing.Utilities;
-import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.ControlPanelHtmlFormViewer;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -46,7 +45,7 @@ import org.miradi.utils.MiradiScrollPane;
 import com.jhlabs.awt.BasicGridLayout;
 import com.jhlabs.awt.GridLayoutPlus;
 
-abstract public class AbstractQuestionEditorComponent extends DisposablePanel
+abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 {	
 	public AbstractQuestionEditorComponent(ChoiceQuestion questionToUse)
 	{

@@ -68,6 +68,18 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 			add(createFactorLabelPanelWithIcon());
 	}
 	
+	@Override
+	public String getText()
+	{
+		throw new RuntimeException(EAM.text("Unexpected call to getText"));
+	}
+
+	@Override
+	public void setText(String codesToUse)
+	{
+		throw new RuntimeException(EAM.text("Unexpected call to setText"));
+	}
+	
 	private JPanel createFactorLabelPanelWithIcon()
 	{
 		TwoColumnPanel labelPanelWithIcon = new TwoColumnPanel();

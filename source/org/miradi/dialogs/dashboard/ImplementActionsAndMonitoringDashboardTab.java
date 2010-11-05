@@ -20,14 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
+import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
 public class ImplementActionsAndMonitoringDashboardTab extends LeftSideRightSideSplitterContainerTab
 {
-	private ImplementActionsAndMonitoringDashboardTab(MainWindow mainWindowToUse, LeftSidePanelWithSelectableRows leftPanelToUse) throws Exception
+	private ImplementActionsAndMonitoringDashboardTab(MainWindow mainWindowToUse, OneFieldObjectDataInputPanel oneFieldObjectDataInputPanel) throws Exception
 	{
-		super(mainWindowToUse, leftPanelToUse);
+		super(mainWindowToUse, oneFieldObjectDataInputPanel);
 	}
 	
 	public static ImplementActionsAndMonitoringDashboardTab createTab(MainWindow mainWindowToUse) throws Exception
@@ -47,8 +48,9 @@ public class ImplementActionsAndMonitoringDashboardTab extends LeftSideRightSide
 		return EAM.text("Implement Actions and Monitoring");
 	}
 
-	private static LeftSidePanelWithSelectableRows createLeftPanel(MainWindow mainWindowToUse)
+	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse)
 	{
-		return new ImplementActionsAndMonitoringDashboardLeftPanel(mainWindowToUse);
+		ImplementActionsAndMonitoringDashboardLeftPanel component = new ImplementActionsAndMonitoringDashboardLeftPanel(mainWindowToUse);
+		return new OneFieldObjectDataInputPanel(mainWindowToUse.getProject(), component);
 	}
 }

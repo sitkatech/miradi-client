@@ -20,12 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
+import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
 public class ConceptualizeDashboardTab extends LeftSideRightSideSplitterContainerTab
 {
-	public ConceptualizeDashboardTab(MainWindow mainWindowToUse, LeftSidePanelWithSelectableRows leftPanelToUse) throws Exception
+	public ConceptualizeDashboardTab(MainWindow mainWindowToUse, OneFieldObjectDataInputPanel leftPanelToUse) throws Exception
 	{
 		super(mainWindowToUse, leftPanelToUse);
 	}
@@ -47,8 +48,9 @@ public class ConceptualizeDashboardTab extends LeftSideRightSideSplitterContaine
 		return EAM.text("Conceptualize");
 	}
 
-	private static LeftSidePanelWithSelectableRows createLeftPanel(MainWindow mainWindowToUse)
+	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse)
 	{
-		return new ConceptualizeLeftSide(mainWindowToUse);
+		ConceptualizeLeftSide component = new ConceptualizeLeftSide(mainWindowToUse);
+		return new OneFieldObjectDataInputPanel(mainWindowToUse.getProject(), component);
 	}
 }
