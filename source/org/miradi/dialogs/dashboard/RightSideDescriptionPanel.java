@@ -39,8 +39,8 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 {
 	public RightSideDescriptionPanel(MainWindow mainWindowToUse, String mainDescriptionFileName) throws Exception
 	{
-		mainWindow = mainWindowToUse;
 		setLayout(new BorderLayout());
+		mainWindow = mainWindowToUse;
 		viewer = new DashboardDescriptionHtmlViewer(mainWindow);
 		add(new JScrollPane(viewer));
 		
