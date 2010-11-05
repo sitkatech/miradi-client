@@ -41,7 +41,7 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 	{
 		setLayout(new BorderLayout());
 		mainWindow = mainWindowToUse;
-		viewer = new DashboardDescriptionHtmlViewer(mainWindow);
+		viewer = new RighSideDescriptionHtmlViewer(mainWindow);
 		add(new JScrollPane(viewer));
 		
 		setRightSideHtmlContent(mainDescriptionFileName);
@@ -76,9 +76,9 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 		return mainWindow;
 	}
 	
-	public static class DashboardDescriptionHtmlViewer extends FlexibleWidthHtmlViewer
+	public static class RighSideDescriptionHtmlViewer extends FlexibleWidthHtmlViewer
 	{
-		private DashboardDescriptionHtmlViewer(MainWindow mainWindow)
+		private RighSideDescriptionHtmlViewer(MainWindow mainWindow)
 		{
 			super(mainWindow);
 		}
@@ -93,5 +93,5 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 	}
 	
 	private MainWindow mainWindow;
-	private DashboardDescriptionHtmlViewer viewer;
+	private RighSideDescriptionHtmlViewer viewer;
 }
