@@ -51,7 +51,7 @@ public class QuestionBasedLeftSideEditorComponent extends LeftSidePanelWithSelec
 		JToggleButton toggleButton = createToggleButton(choiceItem.getLabel());
 		toggleButton.setBackground(Color.red);
 		toggleButton.addActionListener(new ToggleButtonHandler());		
-		SelectableRow selectableRow = new SelectableRow(toggleButton, toggleButton , getMainDescriptionFileName());
+		SelectableRow selectableRow = new SelectableRow(toggleButton, toggleButton , new StringRowDescriptionProvider(choiceItem.getDescription()));
 		selectableRow.addMouseListener(new ClickHandler(selectableRow));
 		getSafeSelectableRows().add(selectableRow);
 		

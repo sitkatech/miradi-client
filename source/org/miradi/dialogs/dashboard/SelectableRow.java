@@ -29,17 +29,11 @@ import org.miradi.main.AppPreferences;
 
 public class SelectableRow
 {
-	public SelectableRow(JComponent leftSideToUse, JComponent rightSideToUse, String descriptionFileNameToUse)
-	{
-		this(leftSideToUse, rightSideToUse, descriptionFileNameToUse, null);
-	}
-	
-	public SelectableRow(JComponent leftSideToUse, JComponent rightSideToUse, String descriptionFileNameToUse, String wizardStepNameToUse)
+	public SelectableRow(JComponent leftSideToUse, JComponent rightSideToUse, AbstractRowDescriptionProvider descriptionProviderToUse)
 	{
 		leftSide = leftSideToUse;
 		rightSide = rightSideToUse;
-		descriptionFileName = descriptionFileNameToUse;
-		wizardStepName = wizardStepNameToUse;
+		descriptionProvider = descriptionProviderToUse;
 	}
 	
 	public void addMouseListener(MouseListener listener)
@@ -48,14 +42,9 @@ public class SelectableRow
 		rightSide.addMouseListener(listener);
 	}
 	
-	public String getWizardStepName()
+	public AbstractRowDescriptionProvider getDescriptionProvider()
 	{
-		return wizardStepName;
-	}
-	
-	public String getDescriptionFileName()
-	{
-		return descriptionFileName;
+		return descriptionProvider;
 	}
 	
 	public void selectRow() throws Exception
@@ -115,6 +104,5 @@ public class SelectableRow
 	private JComponent leftSide;
 	private JComponent rightSide;
 	private boolean isSelected;
-	private String descriptionFileName;
-	private String wizardStepName;
+	private AbstractRowDescriptionProvider descriptionProvider;
 }

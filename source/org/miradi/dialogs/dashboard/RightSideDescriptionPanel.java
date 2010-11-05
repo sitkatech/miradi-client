@@ -32,7 +32,6 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
-import org.miradi.utils.Translation;
 import org.miradi.views.umbrella.ViewSwitchDoer;
 
 public class RightSideDescriptionPanel extends JPanel implements ListSelectionListener
@@ -52,11 +51,10 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 		try
 		{
 			RowSelectionEvent castedEvent = (RowSelectionEvent) rawEvent;
-			String descriptionFileName = castedEvent.getDescriptionFileName();
-			setRightSideHtmlContent(descriptionFileName);
-			String wizardStepName = castedEvent.getWizardStepName();
-			if (wizardStepName != null)
-				ViewSwitchDoer.changeView(getMainWindow(), wizardStepName);
+			AbstractRowDescriptionProvider descriptiobnProvider = castedEvent.getDescriptionProvider();
+			setRightSideHtmlContent(descriptiobnProvider.getDescription());
+			if (descriptiobnProvider.hasWizardStepName())
+				ViewSwitchDoer.changeView(getMainWindow(), descriptiobnProvider.getWizardStepName());
 		}
 		catch (Exception e)
 		{
@@ -65,9 +63,8 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 		}
 	}
 
-	private void setRightSideHtmlContent(String descriptionFileName) throws Exception
+	private void setRightSideHtmlContent(String htmlText) throws Exception
 	{
-		String htmlText = Translation.getHtmlContent(descriptionFileName);
 		viewer.setText(htmlText);
 	}
 	
