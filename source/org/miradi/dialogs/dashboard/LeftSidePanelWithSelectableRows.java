@@ -95,7 +95,7 @@ abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEdito
 	{
 		for (ListSelectionListener panel : rowSelectionListeners)
 		{
-			panel.valueChanged(new RowSelectionEvent(panel, selectedRow.getDescriptionFileName(), selectedRow.getWizardStepName()));
+			panel.valueChanged(new RowSelectionEvent(panel, selectedRow.getDescriptionProvider()));
 		}
 	}
 	
@@ -157,20 +157,30 @@ abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEdito
 
 	private SelectableRow createRow(String descriptionFileName, Box firstColumnBox, String wizardStepName, PanelTitleLabel leftLabel, PanelTitleLabel rightLabel)
 	{
-		firstColumnBox.add(leftLabel, BorderLayout.BEFORE_FIRST_LINE);
-		
-		Box secondColumnBox = createBox();
-		
-		secondColumnBox.add(rightLabel);
-		
-		SelectableRow selectableRow = new SelectableRow(firstColumnBox, secondColumnBox, descriptionFileName, wizardStepName);
-		selectableRow.addMouseListener(new ClickHandler(selectableRow));
-		selectableRows.add(selectableRow);
-		
-		add(firstColumnBox);
-		add(secondColumnBox);
-		
-		return selectableRow;
+		//FIXME urgent, bubble up this exception instead of catching it
+		try
+		{
+			firstColumnBox.add(leftLabel, BorderLayout.BEFORE_FIRST_LINE);
+
+			Box secondColumnBox = createBox();
+
+			secondColumnBox.add(rightLabel);
+
+			SelectableRow selectableRow = new SelectableRow(firstColumnBox, secondColumnBox, new HtmlResourceRowDescriptionProvider(descriptionFileName, wizardStepName));
+			selectableRow.addMouseListener(new ClickHandler(selectableRow));
+			selectableRows.add(selectableRow);
+
+			add(firstColumnBox);
+			add(secondColumnBox);
+
+			return selectableRow;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
+			return null;
+		}
 	}
 
 	protected Box createBox()

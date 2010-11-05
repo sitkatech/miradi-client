@@ -20,21 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
-import javax.swing.event.ListSelectionEvent;
-
-public class RowSelectionEvent extends ListSelectionEvent
+public class StringRowDescriptionProvider extends AbstractRowDescriptionProvider
 {
-	public RowSelectionEvent(Object source, AbstractRowDescriptionProvider descriptionProviderToUse)
+	public StringRowDescriptionProvider(String descriptionToUse)
 	{
-		super(source, 0, 0, false);
-		
-		descriptionProvider = descriptionProviderToUse;
+		super(descriptionToUse, null);
 	}
 	
-	public AbstractRowDescriptionProvider getDescriptionProvider()
+	@Override
+	public boolean hasWizardStepName()
 	{
-		return descriptionProvider;
+		return false;
 	}
-
-	private AbstractRowDescriptionProvider descriptionProvider;
 }
