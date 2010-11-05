@@ -24,18 +24,22 @@ import javax.swing.JComponent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.miradi.dialogs.dashboard.LeftSidePanelWithSelectableRows;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 
-public class LeftSideComponentWrapperObjectDataInputField extends ObjectDataInputField implements ListSelectionListener
+public class ComponentWrapperObjectDataInputField extends ObjectDataInputField implements ListSelectionListener
 {
-	public LeftSideComponentWrapperObjectDataInputField(Project projectToUse, ORef refToUse, String tagToUse, LeftSidePanelWithSelectableRows componentToUse)
+	public ComponentWrapperObjectDataInputField(Project projectToUse, ORef refToUse, String tagToUse, SavebleComponent componentToUse)
 	{
 		super(projectToUse, refToUse, tagToUse);
 		
 		component = componentToUse;
 		component.addListSelectionListener(this);
+	}
+
+	public void valueChanged(ListSelectionEvent e)
+	{
+		forceSave();
 	}
 
 	@Override
@@ -64,10 +68,5 @@ public class LeftSideComponentWrapperObjectDataInputField extends ObjectDataInpu
 		component.setEnabled(isValidObject());			
 	}
 	
-	public void valueChanged(ListSelectionEvent e)
-	{
-		forceSave();
-	}
-	
-	private LeftSidePanelWithSelectableRows component;
+	private SavebleComponent component;
 }

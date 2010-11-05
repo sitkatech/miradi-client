@@ -20,22 +20,22 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
-import org.miradi.dialogfields.LeftSideComponentWrapperObjectDataInputField;
+import org.miradi.dialogfields.ComponentWrapperObjectDataInputField;
 import org.miradi.dialogfields.ObjectDataInputField;
-import org.miradi.dialogs.dashboard.LeftSidePanelWithSelectableRows;
+import org.miradi.dialogfields.SavebleComponent;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 
 public class OneFieldObjectDataInputPanel extends ObjectDataInputPanel
 {
-	public OneFieldObjectDataInputPanel(Project projectToUse, LeftSidePanelWithSelectableRows savebleComponentToUse)
+	public OneFieldObjectDataInputPanel(Project projectToUse, SavebleComponent savebleComponentToUse)
 	{
 		this (projectToUse, ORef.INVALID, "", savebleComponentToUse);
 	}
 	
-	public OneFieldObjectDataInputPanel(Project projectToUse, ORef orefToUse, String tagToUse, LeftSidePanelWithSelectableRows savebleComponentToUse)
+	public OneFieldObjectDataInputPanel(Project projectToUse, ORef orefToUse, String tagToUse, SavebleComponent savebleComponentToUse)
 	{
-		this(projectToUse, orefToUse,tagToUse,  new LeftSideComponentWrapperObjectDataInputField(projectToUse, orefToUse, tagToUse, savebleComponentToUse));
+		this(projectToUse, orefToUse,tagToUse,  new ComponentWrapperObjectDataInputField(projectToUse, orefToUse, tagToUse, savebleComponentToUse));
 	}
 	
 	public OneFieldObjectDataInputPanel(Project projectToUse, ORef orefToUse, String tagToUse, ObjectDataInputField singleField)

@@ -25,6 +25,7 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
+import javax.swing.event.ListSelectionListener;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.factortypes.FactorType;
@@ -78,6 +79,17 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 	public void setText(String codesToUse)
 	{
 		throw new RuntimeException(EAM.text("Unexpected call to setText"));
+	}
+	
+	@Override
+	public void addListSelectionListener(ListSelectionListener listener)
+	{
+		throw new RuntimeException(EAM.text("Unexpected call to addListSelectionListener"));
+	}
+	
+	public void removeListSelectionListener(ListSelectionListener listener)
+	{
+		throw new RuntimeException(EAM.text("Unexpected call to removeListSelectionListener"));
 	}
 	
 	private JPanel createFactorLabelPanelWithIcon()
