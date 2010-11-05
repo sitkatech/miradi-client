@@ -41,7 +41,7 @@ abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePa
 		splitPane = new PersistentHorizontalSplitPane(mainWindowToUse, mainWindowToUse, getPanelDescription());
 		
 		addLeftPanel(leftPanel);
-		DashboardRightSideDescriptionPanel rightPanel = createRightPanel(getMainDescriptionFileName());
+		RightSideDescriptionPanel rightPanel = createRightPanel(getMainDescriptionFileName());
 		
 		//FIXME urgent - need to come up with better way to communicate a row selection change to the right panel
 		LeftSidePanelWithSelectableRows component = (LeftSidePanelWithSelectableRows) leftPanel.getSingleField().getComponent();
@@ -75,7 +75,7 @@ abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePa
 		super.becomeInactive();
 	}
 	
-	private void addRightPanel(DashboardRightSideDescriptionPanel rightPanel) throws Exception
+	private void addRightPanel(RightSideDescriptionPanel rightPanel) throws Exception
 	{
 		splitPane.setRightComponent(rightPanel);
 	}
@@ -85,9 +85,9 @@ abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePa
 		splitPane.setLeftComponent(new JScrollPane(leftMainPanel));
 	}
 	
-	private DashboardRightSideDescriptionPanel createRightPanel(String mainDescriptionFileName) throws Exception
+	private RightSideDescriptionPanel createRightPanel(String mainDescriptionFileName) throws Exception
 	{
-		return new DashboardRightSideDescriptionPanel(getMainWindow(), mainDescriptionFileName);
+		return new RightSideDescriptionPanel(getMainWindow(), mainDescriptionFileName);
 	}
 	
 	protected MainWindow getMainWindow()
