@@ -54,9 +54,9 @@ abstract public class AbstractDataValueListComponent extends AbstractQuestionEdi
 			listSelectionListeners.add(listSelectionListenerToAdd);
 	}
 	
-	public void removeListSelectionListener(ListSelectionListener listSelectionListenerToAdd)
+	public void removeListSelectionListener(ListSelectionListener listSelectionListenerToRemove)
 	{
-		listSelectionListeners.remove(listSelectionListenerToAdd);
+		listSelectionListeners.remove(listSelectionListenerToRemove);
 	}
 
 	private boolean shouldSkipNotification()
