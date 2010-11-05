@@ -96,7 +96,7 @@ public class CodeListPopupWithDescriptionPanelField extends	ObjectDataInputField
 			try
 			{
 				QuestionBasedLeftSideEditorComponent leftComponent = new QuestionBasedLeftSideEditorComponent(mainWindow, question);
-				LeftSideComponentWrapperObjectDataInputField field = new LeftSideComponentWrapperObjectDataInputField(getProject(), getORef(), getTag(), leftComponent);
+				ComponentWrapperObjectDataInputField field = new ComponentWrapperObjectDataInputField(getProject(), getORef(), getTag(), leftComponent);
 				OneFieldObjectDataInputPanel leftPanel = new OneFieldObjectDataInputPanel(getProject(), getORef(), getTag(), field);
 				QuestionWithDescriptionEditorPanel editorPanel = new QuestionWithDescriptionEditorPanel(mainWindow, question, leftPanel);
 				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), EAM.text("Selection Dialog"));

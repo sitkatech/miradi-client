@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
+import javax.swing.event.ListSelectionListener;
+
 import org.miradi.dialogs.base.DisposablePanel;
 
 abstract public class SavebleComponent extends DisposablePanel
@@ -27,4 +29,8 @@ abstract public class SavebleComponent extends DisposablePanel
 	abstract public String getText();
 	
 	abstract public void setText(String newValue);
+	
+	abstract public void addListSelectionListener(ListSelectionListener listener);
+	
+	abstract public void removeListSelectionListener(ListSelectionListener listener);
 }
