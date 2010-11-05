@@ -54,7 +54,9 @@ public class DashboardRightSideDescriptionPanel extends JPanel implements ListSe
 			RowSelectionEvent castedEvent = (RowSelectionEvent) rawEvent;
 			String descriptionFileName = castedEvent.getDescriptionFileName();
 			setRightSideHtmlContent(descriptionFileName);
-			ViewSwitchDoer.changeView(getMainWindow(), castedEvent.getWizardStepName());
+			String wizardStepName = castedEvent.getWizardStepName();
+			if (wizardStepName != null)
+				ViewSwitchDoer.changeView(getMainWindow(), wizardStepName);
 		}
 		catch (Exception e)
 		{
@@ -63,8 +65,7 @@ public class DashboardRightSideDescriptionPanel extends JPanel implements ListSe
 		}
 	}
 
-	protected void setRightSideHtmlContent(String descriptionFileName)
-			throws Exception
+	protected void setRightSideHtmlContent(String descriptionFileName) throws Exception
 	{
 		String htmlText = Translation.getHtmlContent(descriptionFileName);
 		viewer.setText(htmlText);

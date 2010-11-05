@@ -83,30 +83,40 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		addAdditionalComponent();
 		ChoiceItem[] choices = getQuestion().getChoices();
 		clearChoiceItemToToggleButtonMap();
-		int gridColumnCount = getColumnCount() * getNumberOfComponentsPerChoice();
-		MiradiPanel toggleButtonsPanel = new MiradiPanel(new GridLayoutPlus(0, gridColumnCount)); 
+		MiradiPanel toggleButtonsPanel = new MiradiPanel(new GridLayoutPlus(0, getColumnCount())); 
 		toggleButtonsPanel.setBackground(getTogglePanelBackgroundColor());
 		for (int index = 0; index < choices.length; ++index)
 		{
 			ChoiceItem choiceItem = choices[index];
-			JToggleButton toggleButton = createToggleButton(choiceItem.getLabel());
-			toggleButton.setBackground(choiceItem.getColor());
-			toggleButton.addActionListener(new ToggleButtonHandler());
-			choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
-			Icon icon = choiceItem.getIcon();
-			
-			toggleButtonsPanel.add(getSafeIconLabel(icon));
-			if (choiceItem.isSelectable())
-				toggleButtonsPanel.add(toggleButton);
-			else
-				toggleButtonsPanel.add(new PanelTitleLabel(choiceItem.getLabel()));
-			
-			toggleButtonsPanel.add(createDescriptionComponent(choiceItem));
+			MiradiPanel rowPanel = createRowPanel(choiceItem);
+			rowPanel.setBackground(getTogglePanelBackgroundColor());
+			toggleButtonsPanel.add(rowPanel);
 		}
 	
 		add(new MiradiScrollPane(toggleButtonsPanel));
 		revalidate();
 		repaint();
+	}
+
+	protected MiradiPanel createRowPanel(ChoiceItem choiceItem)
+	{
+		int gridColumnCount = getColumnCount() * getNumberOfComponentsPerChoice();
+		MiradiPanel rowPanel = new MiradiPanel(new GridLayoutPlus(0, gridColumnCount));
+		JToggleButton toggleButton = createToggleButton(choiceItem.getLabel());
+		toggleButton.setBackground(choiceItem.getColor());
+		toggleButton.addActionListener(new ToggleButtonHandler());
+		choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
+		Icon icon = choiceItem.getIcon();
+		
+		rowPanel.add(getSafeIconLabel(icon));
+		if (choiceItem.isSelectable())
+			rowPanel.add(toggleButton);
+		else
+			rowPanel.add(new PanelTitleLabel(choiceItem.getLabel()));
+		
+		rowPanel.add(createDescriptionComponent(choiceItem));
+		
+		return rowPanel;
 	}
 
 	private int getNumberOfComponentsPerChoice()
@@ -195,8 +205,12 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		return columnCount;
 	}
 	
-	class ToggleButtonHandler implements ActionListener
+	protected class ToggleButtonHandler implements ActionListener
 	{
+		public ToggleButtonHandler()
+		{
+		}
+		
 		public void actionPerformed(ActionEvent event)
 		{
 			try
