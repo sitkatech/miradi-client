@@ -35,9 +35,9 @@ import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.Translation;
 import org.miradi.views.umbrella.ViewSwitchDoer;
 
-public class DashboardRightSideDescriptionPanel extends JPanel implements ListSelectionListener
+public class RightSideDescriptionPanel extends JPanel implements ListSelectionListener
 {
-	public DashboardRightSideDescriptionPanel(MainWindow mainWindowToUse, String mainDescriptionFileName) throws Exception
+	public RightSideDescriptionPanel(MainWindow mainWindowToUse, String mainDescriptionFileName) throws Exception
 	{
 		mainWindow = mainWindowToUse;
 		setLayout(new BorderLayout());
