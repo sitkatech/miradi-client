@@ -173,7 +173,7 @@ abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEdito
 		return selectableRow;
 	}
 
-	private Box createBox()
+	protected Box createBox()
 	{
 		Box box = Box.createHorizontalBox();
 		
@@ -302,7 +302,7 @@ abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEdito
 	    }
 	}
 	
-	private class ClickHandler extends MouseAdapter
+	class ClickHandler extends MouseAdapter
 	{
 		public ClickHandler(SelectableRow selectableComponentToUse)
 		{
@@ -314,6 +314,19 @@ abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEdito
 		{
 			super.mouseClicked(e);
 			
+			select();
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e)
+		{
+			super.mouseEntered(e);
+			
+			select();
+		}
+
+		protected void select()
+		{
 			try
 			{
 				selectRow(selectableComponent);
@@ -332,7 +345,7 @@ abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEdito
 	abstract protected String getMainDescriptionFileName();
 	
 	private MainWindow mainWindow;
-	private Vector<SelectableRow> selectableRows;
+	protected Vector<SelectableRow> selectableRows;
 	private KeyDispatcher dispatcher;
 	private Vector<ListSelectionListener> rowSelectionListeners;
 	
