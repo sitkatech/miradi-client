@@ -46,6 +46,11 @@ public class OneFieldObjectDataInputPanel extends ObjectDataInputPanel
 		
 		updateFieldsFromProject();
 	}
+	
+	public ComponentWrapperObjectDataInputField getSingleField()
+	{
+		return (ComponentWrapperObjectDataInputField) getFields().firstElement();
+	}
 
 	@Override
 	public String getPanelDescription()
