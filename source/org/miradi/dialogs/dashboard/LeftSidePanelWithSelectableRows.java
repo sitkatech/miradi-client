@@ -59,7 +59,7 @@ abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEdito
 		setLayout(new TwoColumnGridLayout());
 		mainWindow = mainWindowToUse;
 		dispatcher = new KeyDispatcher();
-		selectableRows = new Vector<SelectableRow>();
+		selectableRows = getSafeSelectableRows();
 		rowSelectionListeners = new Vector<ListSelectionListener>();
 	}
 	
@@ -226,6 +226,14 @@ abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEdito
 		notifyListeners(rowToSelect);
 	}
 	
+	protected Vector<SelectableRow> getSafeSelectableRows()
+	{
+		if (selectableRows == null)
+			selectableRows = new Vector<SelectableRow>();
+
+		return selectableRows;
+	}
+	
 	private static class EmptyQuestion extends ChoiceQuestion
 	{
 		@Override
@@ -345,7 +353,7 @@ abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEdito
 	abstract protected String getMainDescriptionFileName();
 	
 	private MainWindow mainWindow;
-	protected Vector<SelectableRow> selectableRows;
+	private Vector<SelectableRow> selectableRows;
 	private KeyDispatcher dispatcher;
 	private Vector<ListSelectionListener> rowSelectionListeners;
 	

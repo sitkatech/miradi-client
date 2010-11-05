@@ -20,8 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
+import java.awt.Color;
+
+import javax.swing.JToggleButton;
+
+import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+
+import com.jhlabs.awt.GridLayoutPlus;
 
 public class QuestionBasedLeftSideEditorComponent extends LeftSidePanelWithSelectableRows
 {
@@ -33,6 +41,24 @@ public class QuestionBasedLeftSideEditorComponent extends LeftSidePanelWithSelec
 	@Override
 	protected String getMainDescriptionFileName()
 	{
-		return "dashboard/1,html";
+		return "dashboard/1.html";
+	}
+	
+	@Override
+	protected MiradiPanel createRowPanel(ChoiceItem choiceItem)
+	{
+		MiradiPanel rowPanel = new MiradiPanel(new GridLayoutPlus());
+		JToggleButton toggleButton = createToggleButton(choiceItem.getLabel());
+		toggleButton.setBackground(Color.red);
+		toggleButton.addActionListener(new ToggleButtonHandler());		
+		SelectableRow selectableRow = new SelectableRow(toggleButton, toggleButton , getMainDescriptionFileName());
+		selectableRow.addMouseListener(new ClickHandler(selectableRow));
+		getSafeSelectableRows().add(selectableRow);
+		
+		rowPanel.add(toggleButton);
+		
+		choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
+		
+		return rowPanel;
 	}
 }

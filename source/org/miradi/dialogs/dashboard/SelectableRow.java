@@ -29,6 +29,11 @@ import org.miradi.main.AppPreferences;
 
 public class SelectableRow
 {
+	public SelectableRow(JComponent leftSideToUse, JComponent rightSideToUse, String descriptionFileNameToUse)
+	{
+		this(leftSideToUse, rightSideToUse, descriptionFileNameToUse, null);
+	}
+	
 	public SelectableRow(JComponent leftSideToUse, JComponent rightSideToUse, String descriptionFileNameToUse, String wizardStepNameToUse)
 	{
 		leftSide = leftSideToUse;
