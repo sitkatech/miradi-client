@@ -26,7 +26,6 @@ import javax.swing.JScrollPane;
 
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
@@ -42,8 +41,11 @@ abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePa
 		splitPane = new PersistentHorizontalSplitPane(mainWindowToUse, mainWindowToUse, getPanelDescription());
 		
 		addLeftPanel(leftPanel);
-		DashboardRightSideDescriptionPanel rightPanel = createRightPanel("");
-		//leftPanel.addSelectionListener(rightPanel);
+		DashboardRightSideDescriptionPanel rightPanel = createRightPanel(getMainDescriptionFileName());
+		
+		//FIXME urgent - need to come up with better way to communicate a row selection change to the right panel
+		LeftSidePanelWithSelectableRows component = (LeftSidePanelWithSelectableRows) leftPanel.getSingleField().getComponent();
+		component.addSelectionListener(rightPanel);
 		addRightPanel(rightPanel);
 		
 		add(splitPane);
@@ -97,5 +99,5 @@ abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePa
 	
 	private MainWindow mainWindow;
 	private PersistentHorizontalSplitPane splitPane;
-	private ObjectDataInputPanel leftPanel;
+	private OneFieldObjectDataInputPanel leftPanel;
 }
