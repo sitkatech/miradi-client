@@ -65,7 +65,7 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 		}
 	}
 
-	protected void setRightSideHtmlContent(String descriptionFileName) throws Exception
+	private void setRightSideHtmlContent(String descriptionFileName) throws Exception
 	{
 		String htmlText = Translation.getHtmlContent(descriptionFileName);
 		viewer.setText(htmlText);
