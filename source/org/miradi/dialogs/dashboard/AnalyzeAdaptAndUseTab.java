@@ -20,12 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
+import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
 public class AnalyzeAdaptAndUseTab extends LeftSideRightSideSplitterContainerTab
 {
-	private AnalyzeAdaptAndUseTab(MainWindow mainWindowToUse, LeftSidePanelWithSelectableRows leftPanelToUse) throws Exception
+	private AnalyzeAdaptAndUseTab(MainWindow mainWindowToUse, OneFieldObjectDataInputPanel leftPanelToUse) throws Exception
 	{
 		super(mainWindowToUse, leftPanelToUse);
 	}
@@ -41,9 +42,11 @@ public class AnalyzeAdaptAndUseTab extends LeftSideRightSideSplitterContainerTab
 		return "dashboard/4.html";
 	}
 
-	private static LeftSidePanelWithSelectableRows createLeftPanel(MainWindow mainWindowToUse)
+	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse)
 	{
-		return new AnalyzeAdaptAndUseLeftSidePanel(mainWindowToUse);
+		AnalyzeAdaptAndUseLeftSidePanel component = new AnalyzeAdaptAndUseLeftSidePanel(mainWindowToUse);
+		
+		return new OneFieldObjectDataInputPanel(mainWindowToUse.getProject(), component);
 	}
 
 	@Override

@@ -32,20 +32,31 @@ import java.util.Vector;
 import javax.swing.Box;
 import javax.swing.event.ListSelectionListener;
 
+import org.miradi.dialogfields.QuestionBasedEditorComponent;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.layout.TwoColumnPanel;
+import org.miradi.layout.TwoColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.summary.SummaryView;
 
-abstract public class LeftSidePanelWithSelectableRows extends TwoColumnPanel
+abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEditorComponent
 {
 	public LeftSidePanelWithSelectableRows(MainWindow mainWindowToUse)
 	{
+		this(mainWindowToUse, new EmptyQuestion());
+	}
+	
+	public LeftSidePanelWithSelectableRows(MainWindow mainWindowToUse, ChoiceQuestion questionToUse)
+	{
+		super(questionToUse, 1);
+		
+		setLayout(new TwoColumnGridLayout());
 		mainWindow = mainWindowToUse;
 		dispatcher = new KeyDispatcher();
 		selectableRows = new Vector<SelectableRow>();
@@ -213,6 +224,15 @@ abstract public class LeftSidePanelWithSelectableRows extends TwoColumnPanel
 		clearSelection();
 		rowToSelect.selectRow();
 		notifyListeners(rowToSelect);
+	}
+	
+	private static class EmptyQuestion extends ChoiceQuestion
+	{
+		@Override
+		public ChoiceItem[] getChoices()
+		{
+			return new ChoiceItem[0];
+		}
 	}
 	
 	private class SingleRowSelectionHandler

@@ -24,29 +24,37 @@ import java.awt.BorderLayout;
 
 import javax.swing.JScrollPane;
 
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
-import org.miradi.layout.TwoColumnPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 
 abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePanelWithDescription
 {
-	public LeftSideRightSideSplitterContainerTab(MainWindow mainWindowToUse, LeftSidePanelWithSelectableRows leftPanelToUse) throws Exception
+	public LeftSideRightSideSplitterContainerTab(MainWindow mainWindowToUse, OneFieldObjectDataInputPanel leftPanelToUse) throws Exception
 	{
-		mainWindow = mainWindowToUse;
-		
 		setLayout(new BorderLayout());
+		mainWindow = mainWindowToUse;
+		leftPanel = leftPanelToUse;
+
 		splitPane = new PersistentHorizontalSplitPane(mainWindowToUse, mainWindowToUse, getPanelDescription());
 		
-		leftPanel = leftPanelToUse;
-		
 		addLeftPanel(leftPanel);
-
-		DashboardRightSideDescriptionPanel rightPanel = createRightPanel(leftPanel.getMainDescriptionFileName());
-		leftPanel.addSelectionListener(rightPanel);
+		DashboardRightSideDescriptionPanel rightPanel = createRightPanel("");
+		//leftPanel.addSelectionListener(rightPanel);
 		addRightPanel(rightPanel);
 		
 		add(splitPane);
+	}
+	
+	@Override
+	public void dispose()
+	{
+		leftPanel.dispose();
+		
+		super.dispose();
 	}
 	
 	@Override
@@ -70,7 +78,7 @@ abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePa
 		splitPane.setRightComponent(rightPanel);
 	}
 	
-	protected void addLeftPanel(TwoColumnPanel leftMainPanel)
+	protected void addLeftPanel(DisposablePanel leftMainPanel)
 	{
 		splitPane.setLeftComponent(new JScrollPane(leftMainPanel));
 	}
@@ -89,5 +97,5 @@ abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePa
 	
 	private MainWindow mainWindow;
 	private PersistentHorizontalSplitPane splitPane;
-	private LeftSidePanelWithSelectableRows leftPanel;
+	private ObjectDataInputPanel leftPanel;
 }
