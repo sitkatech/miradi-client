@@ -24,7 +24,6 @@ import java.awt.Color;
 import java.awt.event.MouseListener;
 
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 
 import org.miradi.main.AppPreferences;
 
@@ -79,8 +78,8 @@ public class SelectableRow
 	void clearSelection()
 	{
 		unSelect();
-		setBackgroundColor(leftSide, new JLabel().getBackground());
-		setBackgroundColor(rightSide, new JLabel().getBackground());
+		setBackgroundColor(leftSide, AppPreferences.getDataPanelBackgroundColor());
+		setBackgroundColor(rightSide, AppPreferences.getDataPanelBackgroundColor());
 	}
 	
 	private void setBackgroundColor(JComponent component, Color backgroundColor)
