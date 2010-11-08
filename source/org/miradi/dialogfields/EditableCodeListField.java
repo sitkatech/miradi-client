@@ -36,11 +36,11 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
-public class EditableCodeListField extends ObjectDataInputField
+public class EditableCodeListField extends AbstractEditableCodeListField
 {
 	public EditableCodeListField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
 	{
-		super(projectToUse, refToUse, tagToUse);
+		super(projectToUse, refToUse, tagToUse, questionToUse, columnCount);
 		
 		question = questionToUse;
 		component = new MiradiPanel(new BorderLayout());
