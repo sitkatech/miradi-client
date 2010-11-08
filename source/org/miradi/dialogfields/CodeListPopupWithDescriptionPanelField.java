@@ -89,16 +89,22 @@ public class CodeListPopupWithDescriptionPanelField extends	AbstractEditableCode
 		codeListComponent.setText(newValue);
 	}
 	
+	protected QuestionWithDescriptionEditorPanel createEditorPanel() throws Exception
+	{
+		QuestionBasedLeftSideEditorComponent leftComponent = new QuestionBasedLeftSideEditorComponent(mainWindow, question);
+		ComponentWrapperObjectDataInputField field = new ComponentWrapperObjectDataInputField(getProject(), getORef(), getTag(), leftComponent);
+		OneFieldObjectDataInputPanel leftPanel = new OneFieldObjectDataInputPanel(getProject(), getORef(), getTag(), field);
+		
+		return new QuestionWithDescriptionEditorPanel(mainWindow, question, leftPanel);
+	}
+	
 	public class SelectButtonHandler implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
 		{
 			try
 			{
-				QuestionBasedLeftSideEditorComponent leftComponent = new QuestionBasedLeftSideEditorComponent(mainWindow, question);
-				ComponentWrapperObjectDataInputField field = new ComponentWrapperObjectDataInputField(getProject(), getORef(), getTag(), leftComponent);
-				OneFieldObjectDataInputPanel leftPanel = new OneFieldObjectDataInputPanel(getProject(), getORef(), getTag(), field);
-				QuestionWithDescriptionEditorPanel editorPanel = new QuestionWithDescriptionEditorPanel(mainWindow, question, leftPanel);
+				QuestionWithDescriptionEditorPanel editorPanel = createEditorPanel();
 				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), EAM.text("Selection Dialog"));
 				dialog.setScrollableMainPanel(editorPanel);
 				Utilities.centerDlg(dialog);
