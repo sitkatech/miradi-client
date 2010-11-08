@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -30,4 +31,6 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 	{
 		super(projectToUse, refToUse, tagToUse);
 	}	
+	
+	abstract protected DisposablePanel createEditorPanel() throws Exception;
 }

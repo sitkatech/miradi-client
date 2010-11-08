@@ -27,6 +27,7 @@ import javax.swing.JComponent;
 
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.CodeListEditorPanel;
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelButton;
@@ -84,7 +85,7 @@ public class EditableCodeListField extends AbstractEditableCodeListField
 		codeListComponent.setText(newValue);
 	}
 	
-	protected CodeListEditorPanel createEditorPanel()
+	protected DisposablePanel createEditorPanel() throws Exception
 	{
 		return new CodeListEditorPanel(getProject(), getORef(), getTag(), question, 1);
 	}
@@ -93,11 +94,19 @@ public class EditableCodeListField extends AbstractEditableCodeListField
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			CodeListEditorPanel codeListPanel = createEditorPanel();
-			ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), EAM.text("Selection Dialog"));
-			dialog.setScrollableMainPanel(codeListPanel);
-			Utilities.centerDlg(dialog);
-			dialog.setVisible(true);	
+			try
+			{
+				DisposablePanel codeListPanel = createEditorPanel();
+				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), EAM.text("Selection Dialog"));
+				dialog.setScrollableMainPanel(codeListPanel);
+				Utilities.centerDlg(dialog);
+				dialog.setVisible(true);
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+				EAM.unexpectedErrorDialog(e);
+			}
 		}
 	}
 	
