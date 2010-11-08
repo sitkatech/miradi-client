@@ -22,6 +22,11 @@ package org.miradi.dialogs.dashboard;
 
 public class StringRowDescriptionProvider extends AbstractRowDescriptionProvider
 {
+	public StringRowDescriptionProvider()
+	{
+		this("");
+	}
+
 	public StringRowDescriptionProvider(String descriptionToUse)
 	{
 		super(descriptionToUse, null);

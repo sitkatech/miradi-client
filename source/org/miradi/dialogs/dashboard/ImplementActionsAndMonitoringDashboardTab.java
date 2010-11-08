@@ -37,9 +37,9 @@ public class ImplementActionsAndMonitoringDashboardTab extends LeftSideRightSide
 	}
 
 	@Override
-	protected String getMainDescriptionFileName()
+	protected AbstractRowDescriptionProvider getMainDescriptionFileName() throws Exception
 	{
-		return "dashboard/3.html";
+		return new HtmlResourceRowDescriptionProvider("dashboard/3.html");
 	}
 
 	@Override

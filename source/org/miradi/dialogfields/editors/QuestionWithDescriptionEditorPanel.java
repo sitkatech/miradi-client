@@ -25,7 +25,9 @@ import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
+import org.miradi.dialogs.dashboard.AbstractRowDescriptionProvider;
 import org.miradi.dialogs.dashboard.LeftSideRightSideSplitterContainerTab;
+import org.miradi.dialogs.dashboard.StringRowDescriptionProvider;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ChoiceQuestion;
@@ -39,9 +41,9 @@ public class QuestionWithDescriptionEditorPanel extends LeftSideRightSideSplitte
 	}		
 		
 	@Override
-	protected String getMainDescriptionFileName()
+	protected AbstractRowDescriptionProvider getMainDescriptionFileName() throws Exception
 	{
-		return "dashboard/1.html";
+		return new StringRowDescriptionProvider();
 	}
 
 	@Override

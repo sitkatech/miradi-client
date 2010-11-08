@@ -37,9 +37,9 @@ public class AnalyzeAdaptAndUseTab extends LeftSideRightSideSplitterContainerTab
 	}
 	
 	@Override
-	protected String getMainDescriptionFileName()
+	protected AbstractRowDescriptionProvider getMainDescriptionFileName() throws Exception
 	{
-		return "dashboard/4.html";
+		return new HtmlResourceRowDescriptionProvider("dashboard/4.html");
 	}
 
 	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse) throws Exception
