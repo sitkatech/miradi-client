@@ -32,6 +32,7 @@ public class EditableCodeListField extends AbstractEditableCodeListField
 		super(projectToUse, refToUse, tagToUse, questionToUse, columnCount);		
 	}
 	
+	@Override
 	protected DisposablePanel createEditorPanel() throws Exception
 	{
 		return new CodeListEditorPanel(getProject(), getORef(), getTag(), question, 1);
