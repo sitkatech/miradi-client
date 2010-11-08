@@ -42,7 +42,7 @@ public class AnalyzeAdaptAndUseTab extends LeftSideRightSideSplitterContainerTab
 		return "dashboard/4.html";
 	}
 
-	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse)
+	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		AnalyzeAdaptAndUseLeftSidePanel component = new AnalyzeAdaptAndUseLeftSidePanel(mainWindowToUse);
 		

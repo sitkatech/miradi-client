@@ -28,7 +28,7 @@ import org.miradi.objects.Dashboard;
 
 public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectableRows
 {
-	public PlanActionsAndMonitoringLeftSide(MainWindow mainWindowToUse)
+	public PlanActionsAndMonitoringLeftSide(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse);
 		
@@ -39,7 +39,7 @@ public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectabl
 		addDevelopOperationalPlanRow();
 	}
 
-	private void addDevelopOperationalPlanRow()
+	private void addDevelopOperationalPlanRow() throws Exception
 	{
 		createSubHeaderRow(EAM.text("2C. Develop Operational Plan"), OPERATIONAL_PLAN_RIGHT_SIDE_FILE_NAME);
 		createDataRow(EAM.text("Assess Human Financial and other resources"), "", OPERATIONAL_PLAN_RIGHT_SIDE_FILE_NAME);
@@ -47,7 +47,7 @@ public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectabl
 		createProjectPlanningStartEndDateRow();
 	}
 
-	private void createProjectPlanningStartEndDateRow()
+	private void createProjectPlanningStartEndDateRow() throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%projectPlanningStartDate", getDashboardData(Dashboard.PSEUDO_PROJECT_PLANNING_START_DATE));
@@ -58,7 +58,7 @@ public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectabl
 		createDataRow(title, rightColumnTranslatedText, OPERATIONAL_PLAN_RIGHT_SIDE_FILE_NAME);
 	}
 
-	private void addDevelopFormatMonitoringPlanRow()
+	private void addDevelopFormatMonitoringPlanRow() throws Exception
 	{
 		String title2b = EAM.text("2B. Develop a formal monitoring plan");
 		createSubHeaderRow(title2b, DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME);
@@ -70,7 +70,7 @@ public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectabl
 		
 	}
 
-	private void createObjectivesWithRelevantIndicatorsRow()
+	private void createObjectivesWithRelevantIndicatorsRow() throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Finalize Monitoring Plan:");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -80,7 +80,7 @@ public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectabl
 		createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME);
 	}
 
-	private void createIndictorsRow()
+	private void createIndictorsRow() throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Define Indicators:");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -90,7 +90,7 @@ public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectabl
 		createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME);
 	}
 	
-	private void createFactorIndictorsRow()
+	private void createFactorIndictorsRow() throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%factorIndicators", getDashboardData(Dashboard.PSEUDO_FACTOR_INDICATORS_COUNT));
@@ -99,7 +99,7 @@ public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectabl
 		createDataRow("", rightColumnTranslatedText, DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME);
 	}
 
-	private void addDevelopStrategicPlanRow()
+	private void addDevelopStrategicPlanRow() throws Exception
 	{
 		createSubHeaderRow(EAM.text("2A. Develop Strategic Plan"), DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 		
@@ -116,7 +116,7 @@ public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectabl
 		addNonContributingStrategiesRow();
 	}
 
-	private void addFinalStrategicPlanRow()
+	private void addFinalStrategicPlanRow() throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Finalize Strategic Plan");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -126,7 +126,7 @@ public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectabl
 		createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
 	
-	private void addNonContributingStrategiesRow()
+	private void addNonContributingStrategiesRow() throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%strategiesIrrelevantToObjectivesCount", getDashboardData(Dashboard.PSEUDO_IRRELEVANT_STRATEGIES_TO_OBJECTIVES_COUNT));
@@ -135,7 +135,7 @@ public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectabl
 		createDataRow("", rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
-	private void addObjectivesCountRow()
+	private void addObjectivesCountRow() throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Develop Objectives");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -145,7 +145,7 @@ public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectabl
 		createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
 	
-	private void addObjectivesInResultsChainsRow()
+	private void addObjectivesInResultsChainsRow() throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%resultsChainCount", getDashboardData(Dashboard.PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT));
@@ -155,7 +155,7 @@ public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectabl
 		createDataRow("", rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);		
 	}
 
-	private void addResultsChainCountRow()
+	private void addResultsChainCountRow() throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Create Results Chains");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -165,7 +165,7 @@ public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectabl
 		createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);	
 	}
 
-	private void addStrategyWithTaxonomyCountRow()
+	private void addStrategyWithTaxonomyCountRow() throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Strategies with taxonomy assingments");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -175,7 +175,7 @@ public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectabl
 		createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
-	private void addStrategyCountRow()
+	private void addStrategyCountRow() throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Create Strategies");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -185,7 +185,7 @@ public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectabl
 		createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
-	private void addRankedDraftStrategiesCountRow()
+	private void addRankedDraftStrategiesCountRow() throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Rank Draft Strategies");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -195,7 +195,7 @@ public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectabl
 		createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
-	private void addDraftStrategiesCountRow()
+	private void addDraftStrategiesCountRow() throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Create Draft Strategies");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -205,7 +205,7 @@ public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectabl
 		createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
-	private void addGoalCountRow()
+	private void addGoalCountRow() throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%goalsCount", getDashboardData(Dashboard.PSEUDO_GOAL_COUNT));
@@ -214,7 +214,7 @@ public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectabl
 		createDataRow("", rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
-	private void addTargetsWithGoalRow()
+	private void addTargetsWithGoalRow() throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Develop Goals for Each Target:");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -225,12 +225,12 @@ public class PlanActionsAndMonitoringLeftSide extends LeftSidePanelWithSelectabl
 		createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME);
 	}
 	
-	private SelectableRow createDataRow(String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName)
+	private SelectableRow createDataRow(String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName) throws Exception
 	{
 		return createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, descriptionFileName, getSummaryOverviewStepName());
 	}
 	
-	private void createSubHeaderRow(String leftColumnTranslatedText, String rightPanelHtmlFileName)
+	private void createSubHeaderRow(String leftColumnTranslatedText, String rightPanelHtmlFileName) throws Exception
 	{
 		createSubHeaderRow(leftColumnTranslatedText, rightPanelHtmlFileName, getSummaryOverviewStepName());
 	}

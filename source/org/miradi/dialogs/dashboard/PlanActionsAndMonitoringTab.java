@@ -48,7 +48,7 @@ public class PlanActionsAndMonitoringTab extends LeftSideRightSideSplitterContai
 		return EAM.text("Plan Actions and Monitoring");
 	}
 
-	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse)
+	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		PlanActionsAndMonitoringLeftSide component = new PlanActionsAndMonitoringLeftSide(mainWindowToUse);
 		

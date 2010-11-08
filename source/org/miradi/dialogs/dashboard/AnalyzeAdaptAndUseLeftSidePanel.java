@@ -25,7 +25,7 @@ import org.miradi.main.MainWindow;
 
 public class AnalyzeAdaptAndUseLeftSidePanel extends LeftSidePanelWithSelectableRows
 {
-	public AnalyzeAdaptAndUseLeftSidePanel(MainWindow mainWindowToUse)
+	public AnalyzeAdaptAndUseLeftSidePanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse);
 

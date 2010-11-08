@@ -99,20 +99,20 @@ abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEdito
 		}
 	}
 	
-	protected void createSubHeaderRow(String leftColumnTranslatedText, String rightPanelHtmlFileName, String wizardStepName)
+	protected void createSubHeaderRow(String leftColumnTranslatedText, String rightPanelHtmlFileName, String wizardStepName) throws Exception
 	{
 		String rightColumnTranslatedText = "";
 		createSubHeaderRow(leftColumnTranslatedText, rightColumnTranslatedText, rightPanelHtmlFileName, wizardStepName);
 	}
 
-	protected void createSubHeaderRow(String leftColumnTranslatedText, String rightColumnTranslatedText, String rightPanelHtmlFileName, String wizardStepName)
+	protected void createSubHeaderRow(String leftColumnTranslatedText, String rightColumnTranslatedText, String rightPanelHtmlFileName, String wizardStepName) throws Exception
 	{
 		Box firstColumnBox = createBox();
 		firstColumnBox.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
 		createSubHeaderRow(leftColumnTranslatedText, rightColumnTranslatedText, rightPanelHtmlFileName, firstColumnBox, wizardStepName);
 	}
 	
-	protected SelectableRow createDataRow( String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, String wizardStepName)
+	protected SelectableRow createDataRow( String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, String wizardStepName) throws Exception
 	{
 		Box firstColumnBox = createBox();
 		firstColumnBox.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
@@ -121,7 +121,7 @@ abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEdito
 		return createRow(leftColumnTranslatedText, rightColumnTranslatedText, descriptionFileName, firstColumnBox, wizardStepName);
 	}
 	
-	protected SelectableRow createHeaderRow(String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, String wizardStepName)
+	protected SelectableRow createHeaderRow(String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, String wizardStepName) throws Exception
 	{
 		PanelTitleLabel leftLabel = new PanelTitleLabel(leftColumnTranslatedText);
 		Font font = leftLabel.getFont();
@@ -137,7 +137,7 @@ abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEdito
 		return headerRow;
 	}
 	
-	private SelectableRow createSubHeaderRow(String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, Box firstColumnBox, String wizardStepName)
+	private SelectableRow createSubHeaderRow(String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, Box firstColumnBox, String wizardStepName) throws Exception
 	{
 		PanelTitleLabel leftLabel = new PanelTitleLabel(leftColumnTranslatedText);
 		Font font = leftLabel.getFont();
@@ -148,39 +148,29 @@ abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEdito
 		return createRow(descriptionFileName, firstColumnBox, wizardStepName, leftLabel, rightLabel);
 	}
 	
-	private SelectableRow createRow(String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, Box firstColumnBox, String wizardStepName)
+	private SelectableRow createRow(String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName, Box firstColumnBox, String wizardStepName) throws Exception
 	{
 		PanelTitleLabel leftLabel = new PanelTitleLabel(leftColumnTranslatedText);
 		PanelTitleLabel rightLabel = new PanelTitleLabel(rightColumnTranslatedText);
 		return createRow(descriptionFileName, firstColumnBox, wizardStepName, leftLabel, rightLabel);
 	}
 
-	private SelectableRow createRow(String descriptionFileName, Box firstColumnBox, String wizardStepName, PanelTitleLabel leftLabel, PanelTitleLabel rightLabel)
+	private SelectableRow createRow(String descriptionFileName, Box firstColumnBox, String wizardStepName, PanelTitleLabel leftLabel, PanelTitleLabel rightLabel) throws Exception
 	{
-		//FIXME urgent, bubble up this exception instead of catching it
-		try
-		{
-			firstColumnBox.add(leftLabel, BorderLayout.BEFORE_FIRST_LINE);
+		firstColumnBox.add(leftLabel, BorderLayout.BEFORE_FIRST_LINE);
 
-			Box secondColumnBox = createBox();
+		Box secondColumnBox = createBox();
 
-			secondColumnBox.add(rightLabel);
+		secondColumnBox.add(rightLabel);
 
-			SelectableRow selectableRow = new SelectableRow(firstColumnBox, secondColumnBox, new HtmlResourceRowDescriptionProvider(descriptionFileName, wizardStepName));
-			selectableRow.addMouseListener(new ClickHandler(selectableRow));
-			selectableRows.add(selectableRow);
+		SelectableRow selectableRow = new SelectableRow(firstColumnBox, secondColumnBox, new HtmlResourceRowDescriptionProvider(descriptionFileName, wizardStepName));
+		selectableRow.addMouseListener(new ClickHandler(selectableRow));
+		selectableRows.add(selectableRow);
 
-			add(firstColumnBox);
-			add(secondColumnBox);
+		add(firstColumnBox);
+		add(secondColumnBox);
 
-			return selectableRow;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			EAM.unexpectedErrorDialog(e);
-			return null;
-		}
+		return selectableRow;
 	}
 
 	protected Box createBox()

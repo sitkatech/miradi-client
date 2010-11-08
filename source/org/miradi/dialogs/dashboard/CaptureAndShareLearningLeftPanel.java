@@ -25,7 +25,7 @@ import org.miradi.main.MainWindow;
 
 public class CaptureAndShareLearningLeftPanel extends LeftSidePanelWithSelectableRows
 {
-	public CaptureAndShareLearningLeftPanel(MainWindow mainWindowToUse)
+	public CaptureAndShareLearningLeftPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse);
 		

@@ -48,7 +48,7 @@ public class ImplementActionsAndMonitoringDashboardTab extends LeftSideRightSide
 		return EAM.text("Implement Actions and Monitoring");
 	}
 
-	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse)
+	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		ImplementActionsAndMonitoringDashboardLeftPanel component = new ImplementActionsAndMonitoringDashboardLeftPanel(mainWindowToUse);
 		return new OneFieldObjectDataInputPanel(mainWindowToUse.getProject(), component);

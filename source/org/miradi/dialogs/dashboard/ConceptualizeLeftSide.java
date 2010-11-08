@@ -28,7 +28,7 @@ import org.miradi.objects.Dashboard;
 
 public class ConceptualizeLeftSide extends LeftSidePanelWithSelectableRows
 {
-	public ConceptualizeLeftSide(MainWindow mainWindowToUse)
+	public ConceptualizeLeftSide(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse);
 
@@ -44,7 +44,7 @@ public class ConceptualizeLeftSide extends LeftSidePanelWithSelectableRows
 		return MAIN_DESCRIPTION_RIGHT_PANEL_FILE_NAME;
 	}
 
-	private void addTeamMembersRow()
+	private void addTeamMembersRow() throws Exception
 	{
 		createSubHeaderRow(EAM.text("1A. Define Initial Project Team"), TEAM_RIGHT_PANEL_FILE_NAME);
 	
@@ -53,7 +53,7 @@ public class ConceptualizeLeftSide extends LeftSidePanelWithSelectableRows
 		createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, TEAM_RIGHT_PANEL_FILE_NAME);
 	}
 
-	private void addScopeVisionAndTargetsRow()
+	private void addScopeVisionAndTargetsRow() throws Exception
 	{
 		createSubHeaderRow(EAM.text("1B. Define Scope Vision and Targets"), SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 		addDefineScopeRow();
@@ -63,7 +63,7 @@ public class ConceptualizeLeftSide extends LeftSidePanelWithSelectableRows
 		addTargetViabilityRow();
 	}
 
-	private void addTargetViabilityRow()
+	private void addTargetViabilityRow() throws Exception
 	{
 		HashMap<String, String> statusDescriptionTokenReplacementMap2 = new HashMap<String, String>();
 		statusDescriptionTokenReplacementMap2.put("%targetWithSimpleViabilityCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT));
@@ -72,7 +72,7 @@ public class ConceptualizeLeftSide extends LeftSidePanelWithSelectableRows
 		createDataRow(leftColumnTranslatedText, "", SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 	}
 
-	private void addTargetStatusRow()
+	private void addTargetStatusRow() throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Describe Status of Targets:");
 		HashMap<String, String> statusDescriptionTokenReplacementMap1 = new HashMap<String, String>();
@@ -82,7 +82,7 @@ public class ConceptualizeLeftSide extends LeftSidePanelWithSelectableRows
 		createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 	}
 
-	private void addHumanWelfareTargetRow()
+	private void addHumanWelfareTargetRow() throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Add Human Welfare Targets:");
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("%s created"), getDashboardData(Dashboard.PSEUDO_HUMAN_WELFARE_TARGET_COUNT));
@@ -90,7 +90,7 @@ public class ConceptualizeLeftSide extends LeftSidePanelWithSelectableRows
 		createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 	}
 
-	private void addTargetRow()
+	private void addTargetRow() throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%targetCount", getDashboardData(Dashboard.PSEUDO_TARGET_COUNT));
@@ -100,7 +100,7 @@ public class ConceptualizeLeftSide extends LeftSidePanelWithSelectableRows
 		createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 	}
 
-	private void addDefineScopeRow()
+	private void addDefineScopeRow() throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Define Project Scope:");
 		String scopeVisionCount = getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT);
@@ -109,7 +109,7 @@ public class ConceptualizeLeftSide extends LeftSidePanelWithSelectableRows
 		createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME);
 	}
 	
-	private void addIdentifyCriticalThreatsRow()
+	private void addIdentifyCriticalThreatsRow() throws Exception
 	{
 		createSubHeaderRow(EAM.text("1C. Identify Critical Threats"), CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
 		
@@ -124,7 +124,7 @@ public class ConceptualizeLeftSide extends LeftSidePanelWithSelectableRows
 		addThreatRank();
 	}
 
-	private void addDirectThreats(HashMap<String, String> threatsTokenReplacementMap)
+	private void addDirectThreats(HashMap<String, String> threatsTokenReplacementMap) throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Identify Direct Threats:");
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("%threatCount Direct Threats created"), threatsTokenReplacementMap);
@@ -132,7 +132,7 @@ public class ConceptualizeLeftSide extends LeftSidePanelWithSelectableRows
 		createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
 	}
 
-	private void addThreatRank()
+	private void addThreatRank() throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Rank Direct Threats:");
 		HashMap<String, String> threatTargetLinksTokenReplacementMap = new HashMap<String, String>();
@@ -143,12 +143,12 @@ public class ConceptualizeLeftSide extends LeftSidePanelWithSelectableRows
 		createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME);
 	}
 	
-	private SelectableRow createDataRow(String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName)
+	private SelectableRow createDataRow(String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName) throws Exception
 	{
 		return createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, descriptionFileName, getSummaryOverviewStepName());
 	}
 	
-	private void createSubHeaderRow(String leftColumnTranslatedText, String rightPanelHtmlFileName)
+	private void createSubHeaderRow(String leftColumnTranslatedText, String rightPanelHtmlFileName) throws Exception
 	{
 		createSubHeaderRow(leftColumnTranslatedText, rightPanelHtmlFileName, getSummaryOverviewStepName());
 	}

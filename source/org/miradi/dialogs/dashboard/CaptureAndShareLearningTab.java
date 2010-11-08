@@ -42,7 +42,7 @@ public class CaptureAndShareLearningTab extends LeftSideRightSideSplitterContain
 		return "dashboard/5.html";
 	}
 
-	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse)
+	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse) throws Exception
 	{
  		CaptureAndShareLearningLeftPanel component = new CaptureAndShareLearningLeftPanel(mainWindowToUse);
  		
