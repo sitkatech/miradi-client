@@ -40,11 +40,11 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.questions.ChoiceQuestion;
 
 //FIXME urgent - this class has been duplicated from EditableCodeListField
-public class CodeListPopupWithDescriptionPanelField extends	ObjectDataInputField
+public class CodeListPopupWithDescriptionPanelField extends	AbstractEditableCodeListField
 {
 	public CodeListPopupWithDescriptionPanelField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(mainWindowToUse.getProject(), refToUse, tagToUse);
+		super(mainWindowToUse.getProject(), refToUse, tagToUse, questionToUse, 1);
 		
 		mainWindow = mainWindowToUse;
 		question = questionToUse;
@@ -102,7 +102,7 @@ public class CodeListPopupWithDescriptionPanelField extends	ObjectDataInputField
 				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), EAM.text("Selection Dialog"));
 				dialog.setScrollableMainPanel(editorPanel);
 				Utilities.centerDlg(dialog);
-				dialog.becomeActive();
+				//dialog.becomeActive();
 				dialog.setVisible(true);
 			}
 			catch (Exception e)
