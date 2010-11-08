@@ -28,6 +28,7 @@ import javax.swing.JComponent;
 
 import org.martus.swing.Utilities;
 import org.miradi.dialogfields.editors.QuestionWithDescriptionEditorPanel;
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
@@ -89,7 +90,7 @@ public class CodeListPopupWithDescriptionPanelField extends	AbstractEditableCode
 		codeListComponent.setText(newValue);
 	}
 	
-	protected QuestionWithDescriptionEditorPanel createEditorPanel() throws Exception
+	protected DisposablePanel createEditorPanel() throws Exception
 	{
 		QuestionBasedLeftSideEditorComponent leftComponent = new QuestionBasedLeftSideEditorComponent(mainWindow, question);
 		ComponentWrapperObjectDataInputField field = new ComponentWrapperObjectDataInputField(getProject(), getORef(), getTag(), leftComponent);
@@ -104,7 +105,7 @@ public class CodeListPopupWithDescriptionPanelField extends	AbstractEditableCode
 		{
 			try
 			{
-				QuestionWithDescriptionEditorPanel editorPanel = createEditorPanel();
+				DisposablePanel editorPanel = createEditorPanel();
 				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), EAM.text("Selection Dialog"));
 				dialog.setScrollableMainPanel(editorPanel);
 				Utilities.centerDlg(dialog);
