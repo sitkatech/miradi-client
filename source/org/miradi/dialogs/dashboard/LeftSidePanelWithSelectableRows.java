@@ -35,6 +35,7 @@ import javax.swing.event.ListSelectionListener;
 import org.miradi.dialogfields.QuestionBasedEditorComponent;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.TwoColumnGridLayout;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -61,6 +62,7 @@ abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEdito
 		dispatcher = new KeyDispatcher();
 		selectableRows = getSafeSelectableRows();
 		rowSelectionListeners = new Vector<ListSelectionListener>();
+		setBackground(AppPreferences.getDataPanelBackgroundColor());
 	}
 	
 	@Override
