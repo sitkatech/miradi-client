@@ -84,11 +84,16 @@ public class EditableCodeListField extends AbstractEditableCodeListField
 		codeListComponent.setText(newValue);
 	}
 	
+	protected CodeListEditorPanel createEditorPanel()
+	{
+		return new CodeListEditorPanel(getProject(), getORef(), getTag(), question, 1);
+	}
+	
 	public class SelectButtonHandler implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			CodeListEditorPanel codeListPanel = new CodeListEditorPanel(getProject(), getORef(), getTag(), question, 1);
+			CodeListEditorPanel codeListPanel = createEditorPanel();
 			ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), EAM.text("Selection Dialog"));
 			dialog.setScrollableMainPanel(codeListPanel);
 			Utilities.centerDlg(dialog);
