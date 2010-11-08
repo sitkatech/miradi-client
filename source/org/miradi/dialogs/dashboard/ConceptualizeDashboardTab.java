@@ -37,9 +37,9 @@ public class ConceptualizeDashboardTab extends LeftSideRightSideSplitterContaine
 	}
 	
 	@Override
-	protected String getMainDescriptionFileName()
+	protected AbstractRowDescriptionProvider getMainDescriptionFileName() throws Exception
 	{
-		return ConceptualizeLeftSide.MAIN_DESCRIPTION_RIGHT_PANEL_FILE_NAME;
+		return new HtmlResourceRowDescriptionProvider(ConceptualizeLeftSide.MAIN_DESCRIPTION_RIGHT_PANEL_FILE_NAME);
 	}
 	
 	@Override

@@ -36,14 +36,14 @@ import org.miradi.views.umbrella.ViewSwitchDoer;
 
 public class RightSideDescriptionPanel extends JPanel implements ListSelectionListener
 {
-	public RightSideDescriptionPanel(MainWindow mainWindowToUse, String mainDescriptionFileName) throws Exception
+	public RightSideDescriptionPanel(MainWindow mainWindowToUse, AbstractRowDescriptionProvider mainDescriptionProvider) throws Exception
 	{
 		setLayout(new BorderLayout());
 		mainWindow = mainWindowToUse;
 		viewer = new RighSideDescriptionHtmlViewer(mainWindow);
 		add(new JScrollPane(viewer));
 		
-		setRightSideHtmlContent(mainDescriptionFileName);
+		setRightSideHtmlContent(mainDescriptionProvider.getDescription());
 	}
 	
 	public void valueChanged(ListSelectionEvent rawEvent)

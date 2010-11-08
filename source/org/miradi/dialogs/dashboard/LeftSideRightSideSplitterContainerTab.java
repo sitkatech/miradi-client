@@ -85,9 +85,9 @@ abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePa
 		splitPane.setLeftComponent(new JScrollPane(leftMainPanel));
 	}
 	
-	private RightSideDescriptionPanel createRightPanel(String mainDescriptionFileName) throws Exception
+	private RightSideDescriptionPanel createRightPanel(AbstractRowDescriptionProvider mainDescriptionProvider) throws Exception
 	{
-		return new RightSideDescriptionPanel(getMainWindow(), mainDescriptionFileName);
+		return new RightSideDescriptionPanel(getMainWindow(), mainDescriptionProvider);
 	}
 	
 	protected MainWindow getMainWindow()
@@ -95,7 +95,7 @@ abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePa
 		return mainWindow;
 	}
 	
-	abstract protected String getMainDescriptionFileName();
+	abstract protected AbstractRowDescriptionProvider getMainDescriptionFileName() throws Exception;
 	
 	private MainWindow mainWindow;
 	private PersistentHorizontalSplitPane splitPane;

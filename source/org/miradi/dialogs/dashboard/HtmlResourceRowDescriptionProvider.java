@@ -24,6 +24,11 @@ import org.miradi.utils.Translation;
 
 public class HtmlResourceRowDescriptionProvider extends AbstractRowDescriptionProvider
 {
+	public HtmlResourceRowDescriptionProvider(String htmlFileName) throws Exception
+	{
+		super(Translation.getHtmlContent(htmlFileName), null);
+	}
+
 	public HtmlResourceRowDescriptionProvider(String htmlFileName, String wizardStepNameToUse) throws Exception
 	{
 		super(Translation.getHtmlContent(htmlFileName), wizardStepNameToUse);
@@ -32,6 +37,9 @@ public class HtmlResourceRowDescriptionProvider extends AbstractRowDescriptionPr
 	@Override
 	public boolean hasWizardStepName()
 	{
+		if (getWizardStepName() == null)
+			return false;
+		
 		return true;
 	}
 }
