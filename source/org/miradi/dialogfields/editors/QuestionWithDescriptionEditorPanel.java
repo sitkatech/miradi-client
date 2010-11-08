@@ -20,10 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
-import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.dialogs.dashboard.AbstractRowDescriptionProvider;
 import org.miradi.dialogs.dashboard.LeftSideRightSideSplitterContainerTab;
@@ -33,7 +29,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.questions.ChoiceQuestion;
 
 //FIXME this class is under construction and needs full review
-public class QuestionWithDescriptionEditorPanel extends LeftSideRightSideSplitterContainerTab implements ListSelectionListener
+public class QuestionWithDescriptionEditorPanel extends LeftSideRightSideSplitterContainerTab
 {
 	public QuestionWithDescriptionEditorPanel(MainWindow mainWindowToUse, ChoiceQuestion questionToUse, OneFieldObjectDataInputPanel leftPanelEditorComponentToUse) throws Exception
 	{
@@ -50,10 +46,5 @@ public class QuestionWithDescriptionEditorPanel extends LeftSideRightSideSplitte
 	public String getPanelDescription()
 	{
 		return EAM.text("Edit..");
-	}
-
-	public void valueChanged(ListSelectionEvent e)
-	{
-		FieldSaver.savePendingEdits();
 	}
 }
