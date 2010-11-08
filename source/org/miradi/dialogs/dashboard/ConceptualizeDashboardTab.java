@@ -48,7 +48,7 @@ public class ConceptualizeDashboardTab extends LeftSideRightSideSplitterContaine
 		return EAM.text("Conceptualize");
 	}
 
-	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse)
+	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		ConceptualizeLeftSide component = new ConceptualizeLeftSide(mainWindowToUse);
 		return new OneFieldObjectDataInputPanel(mainWindowToUse.getProject(), component);

@@ -28,7 +28,7 @@ import org.miradi.objects.Dashboard;
 
 public class ImplementActionsAndMonitoringDashboardLeftPanel extends LeftSidePanelWithSelectableRows
 {
-	public ImplementActionsAndMonitoringDashboardLeftPanel(MainWindow mainWindowToUse)
+	public ImplementActionsAndMonitoringDashboardLeftPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse);
 		
@@ -51,13 +51,13 @@ public class ImplementActionsAndMonitoringDashboardLeftPanel extends LeftSidePan
 		return "dashboard/3.html";
 	}
 	
-	private void createImplementPlansRow()
+	private void createImplementPlansRow() throws Exception
 	{
 		createSubHeaderRow(EAM.text("3C. Implement Plans"), IMPLEMENT_PLANS_RIGHT_SIDE_FILENAME);
 		createImplementStrategicAndMonitoringPlansRow();
 	}
 
-	private void createImplementStrategicAndMonitoringPlansRow()
+	private void createImplementStrategicAndMonitoringPlansRow() throws Exception
 	{
 		createDataRow(EAM.text("Implement Strategic and Monitoring Plans"), "", IMPLEMENT_PLANS_RIGHT_SIDE_FILENAME);
 		createStrategiesAndActivitiesWithProgressReportsRow();
@@ -65,7 +65,7 @@ public class ImplementActionsAndMonitoringDashboardLeftPanel extends LeftSidePan
 		createDataRow(EAM.text("Implement Work Plans"), "", IMPLEMENT_PLANS_RIGHT_SIDE_FILENAME);
 	}
 
-	private void createIndicatorsAndMethodsWithProgressReportsRow()
+	private void createIndicatorsAndMethodsWithProgressReportsRow() throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%indicatorsAndMethodsWithProgressReportsCount", getDashboardData(Dashboard.PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_COUNT));
@@ -75,7 +75,7 @@ public class ImplementActionsAndMonitoringDashboardLeftPanel extends LeftSidePan
 		createDataRow("", rightColumnTranslatedText, IMPLEMENT_PLANS_RIGHT_SIDE_FILENAME);
 	}
 
-	private void createStrategiesAndActivitiesWithProgressReportsRow()
+	private void createStrategiesAndActivitiesWithProgressReportsRow() throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%strategiesAndActivitiesWithProgressReportsCount", getDashboardData(Dashboard.PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_COUNT));
@@ -85,7 +85,7 @@ public class ImplementActionsAndMonitoringDashboardLeftPanel extends LeftSidePan
 		createDataRow("", rightColumnTranslatedText, IMPLEMENT_PLANS_RIGHT_SIDE_FILENAME);
 	}
 
-	private void createDevelopAndRefineProjectBudgetRow()
+	private void createDevelopAndRefineProjectBudgetRow() throws Exception
 	{
 		createSubHeaderRow(EAM.text("3B. Develop and Refine Project Budget"), DEVELOP_AND_REFINE_PROJECT_BUDGET_RIGHT_SIDE_FILENAME);
 		createWorkCostsRow();
@@ -95,7 +95,7 @@ public class ImplementActionsAndMonitoringDashboardLeftPanel extends LeftSidePan
 		createFinacialResourcesRow();
 	}
 
-	private void createFinacialResourcesRow()
+	private void createFinacialResourcesRow() throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%budgetSecuredPercent", getDashboardData(Dashboard.PSEUDO_BUDGET_SECURED_PERCENT));
@@ -104,7 +104,7 @@ public class ImplementActionsAndMonitoringDashboardLeftPanel extends LeftSidePan
 		createDataRow(EAM.text("Obtain Finacial Resources"), rightColumnTranslatedText, DEVELOP_AND_REFINE_PROJECT_BUDGET_RIGHT_SIDE_FILENAME);		
 	}
 
-	private void createWorkCostsRow()
+	private void createWorkCostsRow() throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%workCosts", getDashboardData(Dashboard.PSEUDO_TOTAL_PROJECT_RESOURCES_COSTS));
@@ -114,7 +114,7 @@ public class ImplementActionsAndMonitoringDashboardLeftPanel extends LeftSidePan
 		createDataRow(EAM.text("Estimate Costs for Activities and Monitoring"), rightColumnTranslatedText, DEVELOP_AND_REFINE_PROJECT_BUDGET_RIGHT_SIDE_FILENAME);
 	}
 	
-	private void createExpensesRow()
+	private void createExpensesRow() throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%expenses", getDashboardData(Dashboard.PSEUDO_TOTAL_PROJECT_EXPENSES));
@@ -124,7 +124,7 @@ public class ImplementActionsAndMonitoringDashboardLeftPanel extends LeftSidePan
 		createDataRow("", rightColumnTranslatedText, DEVELOP_AND_REFINE_PROJECT_BUDGET_RIGHT_SIDE_FILENAME);
 	}
 	
-	private void createProjectBudgetRow()
+	private void createProjectBudgetRow() throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%projectBudget", getDashboardData(Dashboard.PSEUDO_PROJECT_BUDGET));
@@ -139,7 +139,7 @@ public class ImplementActionsAndMonitoringDashboardLeftPanel extends LeftSidePan
 		return "\\" + getDashboardData(Dashboard.PSEUDO_CURRENCY_SYMBOL);
 	}
 
-	private void createProjectPlanningStartEndDateRow()
+	private void createProjectPlanningStartEndDateRow() throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%workPlanStartDate", getDashboardData(Dashboard.PSEUDO_WORK_PLAN_START_DATE));
@@ -149,7 +149,7 @@ public class ImplementActionsAndMonitoringDashboardLeftPanel extends LeftSidePan
 		createDataRow(EAM.text("Develop Project Timeline or Calendar"), rightColumnTranslatedText, DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
-	private void createMethodsAndTasksWithAssignmentsRow()
+	private void createMethodsAndTasksWithAssignmentsRow() throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%methodsAndTasksWithAssignmentsCount", getDashboardData(Dashboard.PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT));
@@ -159,7 +159,7 @@ public class ImplementActionsAndMonitoringDashboardLeftPanel extends LeftSidePan
 		createDataRow("", rightColumnTranslatedText, DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
-	private void createMethodsCountRow()
+	private void createMethodsCountRow() throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%methodsCount", getDashboardData(Dashboard.PSEUDO_METHODS_COUNT));
@@ -168,7 +168,7 @@ public class ImplementActionsAndMonitoringDashboardLeftPanel extends LeftSidePan
 		createDataRow("", rightColumnTranslatedText, DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);		
 	}
 
-	private void createDetailMethodsTasksAndResponsibilitiesRow()
+	private void createDetailMethodsTasksAndResponsibilitiesRow() throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Detail Methods, Tasks and Responsibilities");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -179,7 +179,7 @@ public class ImplementActionsAndMonitoringDashboardLeftPanel extends LeftSidePan
 		createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
-	private void createActivitiesAndTasksWithAssignmentsRow()
+	private void createActivitiesAndTasksWithAssignmentsRow() throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%activitiesAndTasksCount", getDashboardData(Dashboard.PSEUDO_ACTIVITIES_AND_TASKS_COUNT));
@@ -189,7 +189,7 @@ public class ImplementActionsAndMonitoringDashboardLeftPanel extends LeftSidePan
 		createDataRow("", rightColumnTranslatedText, DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
-	private void createActivitiesCountRow()
+	private void createActivitiesCountRow() throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%activitiesCount", getDashboardData(Dashboard.PSEUDO_ACTIVITIES_COUNT));
@@ -198,7 +198,7 @@ public class ImplementActionsAndMonitoringDashboardLeftPanel extends LeftSidePan
 		createDataRow("", rightColumnTranslatedText, DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);
 	}
 
-	private void createDetailActivitiesTasksAndResponsiblitiesRow()
+	private void createDetailActivitiesTasksAndResponsiblitiesRow() throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Detail Activities Tasks and Responsiblities");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -209,12 +209,12 @@ public class ImplementActionsAndMonitoringDashboardLeftPanel extends LeftSidePan
 		createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME);
 	}
 	
-	private SelectableRow createDataRow(String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName)
+	private SelectableRow createDataRow(String leftColumnTranslatedText, String rightColumnTranslatedText, String descriptionFileName) throws Exception
 	{
 		return createDataRow(leftColumnTranslatedText, rightColumnTranslatedText, descriptionFileName, getDiagramOverviewStepName());
 	}
 	
-	private void createSubHeaderRow(String leftColumnTranslatedText, String rightPanelHtmlFileName)
+	private void createSubHeaderRow(String leftColumnTranslatedText, String rightPanelHtmlFileName) throws Exception
 	{
 		createSubHeaderRow(leftColumnTranslatedText, rightPanelHtmlFileName, getDiagramOverviewStepName());
 	}
