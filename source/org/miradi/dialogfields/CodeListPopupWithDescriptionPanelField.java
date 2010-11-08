@@ -37,6 +37,7 @@ public class CodeListPopupWithDescriptionPanelField extends	AbstractEditableCode
 		mainWindow = mainWindowToUse;
 	}
 	
+	@Override
 	protected DisposablePanel createEditorPanel() throws Exception
 	{
 		QuestionBasedLeftSideEditorComponent leftComponent = new QuestionBasedLeftSideEditorComponent(mainWindow, question);
