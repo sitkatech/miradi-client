@@ -102,7 +102,6 @@ public class CodeListPopupWithDescriptionPanelField extends	AbstractEditableCode
 				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), EAM.text("Selection Dialog"));
 				dialog.setScrollableMainPanel(editorPanel);
 				Utilities.centerDlg(dialog);
-				//dialog.becomeActive();
 				dialog.setVisible(true);
 			}
 			catch (Exception e)
