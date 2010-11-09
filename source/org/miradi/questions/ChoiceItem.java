@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.questions;
 
 import java.awt.Color;
+import java.util.Vector;
 
 import javax.swing.Icon;
 
@@ -112,6 +113,26 @@ public class ChoiceItem implements Comparable<Object>
 	public void setSelectable(boolean selectableToUse)
 	{
 		selectable = selectableToUse;
+	}
+	
+	public int getChildrenCount()
+	{
+		return 0;
+	}
+	
+	public Vector<ChoiceItem> getChildren()
+	{
+		return new Vector<ChoiceItem>();
+	}
+	
+	public ChoiceItem getChild(int childIndex)
+	{
+		throw new RuntimeException("ChoiceItem does not support getChild");
+	}
+	
+	public void addChild(ChoiceItem childChoiceItem)
+	{
+		getChildren().add(childChoiceItem);
 	}
 	
 	@Override
