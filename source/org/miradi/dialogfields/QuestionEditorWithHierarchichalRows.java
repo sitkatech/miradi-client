@@ -44,7 +44,6 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceItemWithChildren;
 import org.miradi.questions.ChoiceQuestion;
 
-//FIXME urgent this class is under construction
 public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComponent
 {
 	public QuestionEditorWithHierarchichalRows(MainWindow mainWindowToUse, ChoiceQuestion questionToUse)
