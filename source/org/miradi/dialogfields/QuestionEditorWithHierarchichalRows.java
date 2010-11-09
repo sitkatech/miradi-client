@@ -48,7 +48,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 {
 	public QuestionEditorWithHierarchichalRows(MainWindow mainWindowToUse, ChoiceQuestion questionToUse)
 	{
-		super(questionToUse);
+		super(questionToUse, SINGLE_COLUMN);
 		
 		mainWindow = mainWindowToUse;
 		mainWindow = mainWindowToUse;

@@ -30,9 +30,7 @@ abstract public class AbstractDataValueListComponent extends AbstractQuestionEdi
 {
 	public AbstractDataValueListComponent(ChoiceQuestion questionToUse)
 	{
-		super(questionToUse);
-		
-		listSelectionListeners = new Vector<ListSelectionListener>();
+		this(questionToUse, SINGLE_COLUMN);
 	}
 	
 	public AbstractDataValueListComponent(ChoiceQuestion questionToUse,	int columnCount)

@@ -46,7 +46,7 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 {
 	public FactorTagListEditor(Project projectToUse, Factor selectedFactorToUse)
 	{
-		super(createQuestion(projectToUse));
+		super(createQuestion(projectToUse), SINGLE_COLUMN);
 		
 		project = projectToUse;
 		selectedFactor = selectedFactorToUse;
