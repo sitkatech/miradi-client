@@ -29,6 +29,7 @@ import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 import javax.swing.Box;
+import javax.swing.JComponent;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogs.base.MiradiPanel;
@@ -137,21 +138,25 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 	{
 		final int HEADER_INDENT_COUNT = 0;
 		
-		PanelTitleLabel leftLabel = createHeaderTitleLabel(choiceItem.getLeftLabel());
-		PanelTitleLabel rightLabel = createHeaderTitleLabel(choiceItem.getRightLabel());
+		Font font = createHeaderTitleFont();
+		JComponent leftComponent = createToggleButton(choiceItem);
+		leftComponent.setFont(font);
 		
-		return createSelectableRow(choiceItem, HEADER_INDENT_COUNT, leftLabel, rightLabel);
+		PanelTitleLabel rightComponent = new PanelTitleLabel(choiceItem.getRightLabel());
+		rightComponent.setFont(font);
+		
+		return createSelectableRow(choiceItem, HEADER_INDENT_COUNT, leftComponent, rightComponent);
 	}
 	
 	private Box createSelectableRow(ChoiceItemWithChildren choiceItem, int indentCount) throws Exception
 	{
-		PanelTitleLabel leftLabel = new PanelTitleLabel(choiceItem.getLeftLabel());
+		JComponent leftLabel = createToggleButton(choiceItem);
 		PanelTitleLabel rightLabel = new PanelTitleLabel(choiceItem.getRightLabel());
 		
 		return createSelectableRow(choiceItem, indentCount, leftLabel, rightLabel);
 	}
 
-	protected Box createSelectableRow(ChoiceItemWithChildren choiceItem, int indentCount, PanelTitleLabel leftLabel, PanelTitleLabel rightLabel)
+	protected Box createSelectableRow(ChoiceItemWithChildren choiceItem, int indentCount, JComponent leftLabel, JComponent rightLabel)
 	{
 		Box box = createHorizontalBoxWithIndents(indentCount);
 		box.add(leftLabel);
@@ -162,6 +167,14 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		getSafeSelectableRows().add(selectableRow);
 
 		return box;
+	}
+	
+	private JComponent createToggleButton(ChoiceItemWithChildren choiceItem)
+	{
+		if (choiceItem.isSelectable())
+			return createToggleButton(choiceItem.getLabel());
+		
+		return new PanelTitleLabel(choiceItem.getLabel());
 	}
 
 	protected Box createHorizontalBoxWithIndents(int indentCount)
@@ -175,15 +188,15 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		return box;
 	}
 	
-	private PanelTitleLabel createHeaderTitleLabel(String labelToUse)
+	private Font createHeaderTitleFont()
 	{
-		PanelTitleLabel label = new PanelTitleLabel(labelToUse);
+		PanelTitleLabel label = new PanelTitleLabel();
 		Font font = label.getFont();
 		font = font.deriveFont(Font.BOLD);
 		font = font.deriveFont((float)(font.getSize() * 1.5));
 		label.setFont(font);
 		
-		return label;
+		return font;
 	}
 	
 	protected String getMainDescriptionFileName()
