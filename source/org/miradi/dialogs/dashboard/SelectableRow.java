@@ -69,7 +69,7 @@ public class SelectableRow
 		setBackgroundColor(component, AppPreferences.getWizardBackgroundColor());
 	}
 
-	void clearSelection()
+	public void clearSelection()
 	{
 		unSelect();
 		setBackgroundColor(leftSide, AppPreferences.getDataPanelBackgroundColor());

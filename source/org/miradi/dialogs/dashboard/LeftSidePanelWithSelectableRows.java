@@ -22,21 +22,13 @@ package org.miradi.dialogs.dashboard;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
-import java.awt.KeyEventDispatcher;
-import java.awt.KeyboardFocusManager;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.Vector;
 
 import javax.swing.Box;
-import javax.swing.event.ListSelectionListener;
 
-import org.miradi.dialogfields.QuestionBasedEditorComponent;
+import org.miradi.dialogfields.QuestionEditorWithHierarchichalRows;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.TwoColumnGridLayout;
 import org.miradi.main.AppPreferences;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
@@ -46,7 +38,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.summary.SummaryView;
 
-abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEditorComponent
+abstract public class LeftSidePanelWithSelectableRows extends QuestionEditorWithHierarchichalRows
 {
 	public LeftSidePanelWithSelectableRows(MainWindow mainWindowToUse)
 	{
@@ -55,53 +47,13 @@ abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEdito
 	
 	public LeftSidePanelWithSelectableRows(MainWindow mainWindowToUse, ChoiceQuestion questionToUse)
 	{
-		super(questionToUse);
+		super(mainWindowToUse, questionToUse);
 		
 		setLayout(new TwoColumnGridLayout());
-		mainWindow = mainWindowToUse;
-		dispatcher = new KeyDispatcher();
-		selectableRows = getSafeSelectableRows();
-		rowSelectionListeners = new Vector<ListSelectionListener>();
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 	}
 	
-	@Override
-	public void becomeActive()
-	{
-		super.becomeActive();
-
-		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
-		manager.addKeyEventDispatcher(dispatcher);
-	}
-	
-	@Override
-	public void becomeInactive()
-	{
-		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
-	    manager.removeKeyEventDispatcher(dispatcher);
-
-		super.becomeInactive();
-	}
-
-	public void addSelectionListener(ListSelectionListener rightSideDescriptionPanel)
-	{
-		rowSelectionListeners.add(rightSideDescriptionPanel);
-	}
-	
-	public void removeSelectionListener(ListSelectionListener rightSideDescriptionPanel)
-	{
-		rowSelectionListeners.remove(rightSideDescriptionPanel);
-	}
-	
-	private void notifyListeners(SelectableRow selectedRow)
-	{
-		for (ListSelectionListener panel : rowSelectionListeners)
-		{
-			panel.valueChanged(new RowSelectionEvent(panel, selectedRow.getDescriptionProvider()));
-		}
-	}
-	
-	protected void createSubHeaderRow(String leftColumnTranslatedText, String rightPanelHtmlFileName, String wizardStepName) throws Exception
+		protected void createSubHeaderRow(String leftColumnTranslatedText, String rightPanelHtmlFileName, String wizardStepName) throws Exception
 	{
 		String rightColumnTranslatedText = "";
 		createSubHeaderRow(leftColumnTranslatedText, rightColumnTranslatedText, rightPanelHtmlFileName, wizardStepName);
@@ -193,22 +145,10 @@ abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEdito
 		return Dashboard.find(getProject(), dashboardRef);
 	}
 	
-	private void clearSelection() throws Exception
-	{
-		for(SelectableRow selectableRow : selectableRows)
-		{
-			selectableRow.clearSelection();
-		}
-	}
 	
 	private Project getProject()
 	{
 		return getMainWindow().getProject();
-	}
-	
-	public MainWindow getMainWindow()
-	{
-		return mainWindow;
 	}
 	
 	protected String getDiagramOverviewStepName()
@@ -221,21 +161,7 @@ abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEdito
 		return getMainWindow().getWizardManager().getOverviewStepName(SummaryView.getViewName());
 	}
 	
-	protected void selectRow(SelectableRow rowToSelect) throws Exception
-	{
-		clearSelection();
-		rowToSelect.selectRow();
-		notifyListeners(rowToSelect);
-	}
-	
-	protected Vector<SelectableRow> getSafeSelectableRows()
-	{
-		if (selectableRows == null)
-			selectableRows = new Vector<SelectableRow>();
 
-		return selectableRows;
-	}
-	
 	private static class EmptyQuestion extends ChoiceQuestion
 	{
 		@Override
@@ -244,122 +170,6 @@ abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEdito
 			return new ChoiceItem[0];
 		}
 	}
-	
-	private class SingleRowSelectionHandler
-	{
-		private void selectUp() throws Exception
-		{
-			select(MOVE_UP_DIRECTION_DELTA);
-		}
 		
-		private void selectDown() throws Exception
-		{
-			select(MOVE_DOWN_DIRECTION_DELTA);
-		}
-
-		private void select(int directionDelta) throws Exception
-		{
-			SelectableRow currentlySelected = findSelectedRow();
-			if(currentlySelected == null)
-			{
-				selectableRows.firstElement().selectRow();
-				return;
-			}
-			
-			SelectableRow rowToSelect = null;
-			int indexOfSelectedRow = selectableRows.indexOf(currentlySelected);
-			int indexToSelect = indexOfSelectedRow + directionDelta;
-			
-			indexToSelect = (indexToSelect + selectableRows.size()) % selectableRows.size();
-			rowToSelect = selectableRows.get(indexToSelect);
-			selectRow(rowToSelect);
-		}
-
-		private SelectableRow findSelectedRow()
-		{
-			for(SelectableRow selectableRow : selectableRows)
-			{
-				if(selectableRow.isSelected())
-					return selectableRow;
-			}
-
-			return null;
-		}
-	}
-	
-	private class KeyDispatcher implements KeyEventDispatcher 
-	{
-	    public boolean dispatchKeyEvent(KeyEvent event) 
-	    {
-	    	try
-	    	{
-	    		if (event.getID() == KeyEvent.KEY_PRESSED) 
-	    		{
-	    			if (event.getKeyCode() == KeyEvent.VK_UP)
-	    				new SingleRowSelectionHandler().selectUp();
-	    			if (event.getKeyCode() == KeyEvent.VK_DOWN)
-	    				new SingleRowSelectionHandler().selectDown();
-	    		}
-	    	}
-	    	catch (Exception e)
-	    	{
-	    		EAM.logException(e);
-	    		EAM.unexpectedErrorDialog(e);
-	    	}
-	    	
-	    	//TODO:  is this used and what is the correct value to return
-	    	return false;
-	    }
-	}
-	
-	class ClickHandler extends MouseAdapter
-	{
-		public ClickHandler(SelectableRow selectableComponentToUse)
-		{
-			selectableComponent = selectableComponentToUse;
-		}
-		
-		@Override
-		public void mouseClicked(MouseEvent e)
-		{
-			super.mouseClicked(e);
-			
-			select();
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e)
-		{
-			super.mouseEntered(e);
-			
-			select();
-		}
-
-		protected void select()
-		{
-			try
-			{
-				selectRow(selectableComponent);
-				notifyListeners(selectableComponent);
-			}
-			catch(Exception exception)
-			{
-				EAM.logException(exception);
-				EAM.unexpectedErrorDialog(exception);
-			}
-		}
-
-		private SelectableRow selectableComponent;
-	}
-	
 	abstract protected String getMainDescriptionFileName();
-	
-	private MainWindow mainWindow;
-	private Vector<SelectableRow> selectableRows;
-	private KeyDispatcher dispatcher;
-	private Vector<ListSelectionListener> rowSelectionListeners;
-	
-	private static final int INDENT_PER_LEVEL = 25;
-	private static final int MOVE_UP_DIRECTION_DELTA = -1;
-	private static final int MOVE_DOWN_DIRECTION_DELTA = 1;
 }
