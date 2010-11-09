@@ -48,7 +48,7 @@ public class WhoCodeListEditorComponent extends AbstractQuestionBasedComponent
 {
 	public WhoCodeListEditorComponent(BaseObject parentObjectToUse, ChoiceQuestion questionToUse)
 	{
-		super(questionToUse);
+		super(questionToUse, SINGLE_COLUMN);
 		
 		parentObject = parentObjectToUse;
 		updateToggleButtonSelections(getWhoTotalCodes(parentObject));
