@@ -130,14 +130,19 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 	protected Box createSubHeaderSelectableRow(ChoiceItemWithChildren choiceItem) throws Exception
 	{
 		final int SUBHEADER_INDENT_COUNT = 1;
-		return createSelectableRow(choiceItem, SUBHEADER_INDENT_COUNT);
+		
+		return createSelectableRow(choiceItem, SUBHEADER_INDENT_COUNT, createSubHeaderFont());
 	}
 
 	private Box createHeaderSelectableRow(ChoiceItemWithChildren choiceItem) throws Exception
 	{
 		final int HEADER_INDENT_COUNT = 0;
 		
-		Font font = createHeaderTitleFont();
+		return createSelectableRow(choiceItem, HEADER_INDENT_COUNT, createHeaderTitleFont());
+	}
+
+	private Box createSelectableRow(ChoiceItemWithChildren choiceItem, final int HEADER_INDENT_COUNT, Font font)
+	{
 		JComponent leftComponent = createToggleButton(choiceItem);
 		leftComponent.setFont(font);
 		
@@ -147,14 +152,6 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		return createSelectableRow(choiceItem, HEADER_INDENT_COUNT, leftComponent, rightComponent);
 	}
 	
-	private Box createSelectableRow(ChoiceItemWithChildren choiceItem, int indentCount) throws Exception
-	{
-		JComponent leftLabel = createToggleButton(choiceItem);
-		PanelTitleLabel rightLabel = new PanelTitleLabel(choiceItem.getRightLabel());
-		
-		return createSelectableRow(choiceItem, indentCount, leftLabel, rightLabel);
-	}
-
 	protected Box createSelectableRow(ChoiceItemWithChildren choiceItem, int indentCount, JComponent leftLabel, JComponent rightLabel)
 	{
 		Box box = createHorizontalBoxWithIndents(indentCount);
@@ -194,6 +191,15 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		font = font.deriveFont(Font.BOLD);
 		font = font.deriveFont((float)(font.getSize() * 1.5));
 		label.setFont(font);
+		
+		return font;
+	}
+	
+	private Font createSubHeaderFont()
+	{
+		PanelTitleLabel label = new PanelTitleLabel();
+		Font font = label.getFont();
+		font = font.deriveFont(Font.BOLD);
 		
 		return font;
 	}
