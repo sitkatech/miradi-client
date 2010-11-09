@@ -47,11 +47,6 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 {	
-	public AbstractQuestionEditorComponent(ChoiceQuestion questionToUse)
-	{
-		this(questionToUse, SINGLE_COLUMN);
-	}
-	
 	public AbstractQuestionEditorComponent(ChoiceQuestion questionToUse, int columnCountToUse)
 	{
 		question = questionToUse;
@@ -232,5 +227,5 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 	private ChoiceQuestion question;
 	protected HashMap<ChoiceItem, JToggleButton> choiceItemToToggleButtonMap;
 	private int columnCount;
-	private static final int SINGLE_COLUMN = 1;
+	protected static final int SINGLE_COLUMN = 1;
 }
