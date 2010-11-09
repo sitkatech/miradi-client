@@ -32,6 +32,13 @@ import org.miradi.utils.CodeList;
 
 abstract public class AbstractQuestionBasedComponent extends AbstractDataValueListComponent
 {
+	public AbstractQuestionBasedComponent(ChoiceQuestion questionToUse)
+	{
+		super(questionToUse);
+		
+		codesToDisable = new CodeList();
+	}
+	
 	public AbstractQuestionBasedComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
 		super(questionToUse, columnCount);

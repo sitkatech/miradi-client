@@ -31,9 +31,9 @@ import org.miradi.questions.ChoiceQuestion;
 
 public class RefListComponent extends AbstractDataValueListComponent
 {
-	public RefListComponent(ChoiceQuestion questionToUse, int columnCount)
+	public RefListComponent(ChoiceQuestion questionToUse)
 	{
-		super(questionToUse, columnCount);
+		super(questionToUse);
 	}
 
 	@Override

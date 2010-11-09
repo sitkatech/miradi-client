@@ -47,7 +47,6 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 {	
-	//FIXME low - bubble up this constructor without columnCount.  There are duplicate cases where a 1 is being passed into super
 	public AbstractQuestionEditorComponent(ChoiceQuestion questionToUse)
 	{
 		this(questionToUse, SINGLE_COLUMN);
@@ -233,5 +232,5 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 	private ChoiceQuestion question;
 	protected HashMap<ChoiceItem, JToggleButton> choiceItemToToggleButtonMap;
 	private int columnCount;
-	protected static final int SINGLE_COLUMN = 1;
+	private static final int SINGLE_COLUMN = 1;
 }
