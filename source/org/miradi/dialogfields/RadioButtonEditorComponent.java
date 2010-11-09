@@ -34,7 +34,7 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 {
 	public RadioButtonEditorComponent(ChoiceQuestion questionToUse)
 	{
-		super(questionToUse, SINGLE_COLUMN);
+		super(questionToUse);
 		
 		setEtchedBorder();
 	}

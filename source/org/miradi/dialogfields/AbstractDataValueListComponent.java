@@ -28,6 +28,13 @@ import org.miradi.questions.ChoiceQuestion;
 
 abstract public class AbstractDataValueListComponent extends AbstractQuestionEditorComponent
 {
+	public AbstractDataValueListComponent(ChoiceQuestion questionToUse)
+	{
+		super(questionToUse);
+		
+		listSelectionListeners = new Vector<ListSelectionListener>();
+	}
+	
 	public AbstractDataValueListComponent(ChoiceQuestion questionToUse,	int columnCount)
 	{
 		super(questionToUse, columnCount);

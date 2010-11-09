@@ -34,7 +34,7 @@ public class RefListEditorField extends ObjectDataInputField implements ListSele
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
 		
-		refListEditor = new RefListComponent(questionToUse, 1);
+		refListEditor = new RefListComponent(questionToUse);
 		refListEditor.addListSelectionListener(this);
 		//TODO Panels that use this component are still needing to place the component into a scroll pane.
 		//IF they dont, the list will not be scrollable.  

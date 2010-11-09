@@ -55,7 +55,7 @@ abstract public class LeftSidePanelWithSelectableRows extends QuestionBasedEdito
 	
 	public LeftSidePanelWithSelectableRows(MainWindow mainWindowToUse, ChoiceQuestion questionToUse)
 	{
-		super(questionToUse, 1);
+		super(questionToUse);
 		
 		setLayout(new TwoColumnGridLayout());
 		mainWindow = mainWindowToUse;
