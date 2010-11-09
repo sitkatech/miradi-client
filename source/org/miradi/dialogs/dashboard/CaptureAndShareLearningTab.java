@@ -20,9 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
+import org.miradi.dialogfields.QuestionEditorWithHierarchichalRows;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.CaptureAndShareLearningQuestion;
+import org.miradi.wizard.WizardManager;
 
 public class CaptureAndShareLearningTab extends LeftSideRightSideSplitterContainerTab
 {
@@ -44,7 +47,9 @@ public class CaptureAndShareLearningTab extends LeftSideRightSideSplitterContain
 
 	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse) throws Exception
 	{
- 		CaptureAndShareLearningLeftPanel component = new CaptureAndShareLearningLeftPanel(mainWindowToUse);
+		WizardManager wizardManager = mainWindowToUse.getWizardManager();
+		CaptureAndShareLearningQuestion question = new CaptureAndShareLearningQuestion(wizardManager);
+		QuestionEditorWithHierarchichalRows component = new QuestionEditorWithHierarchichalRows(mainWindowToUse, question);
  		
  		return new OneFieldObjectDataInputPanel(mainWindowToUse.getProject(), component);
 	}
