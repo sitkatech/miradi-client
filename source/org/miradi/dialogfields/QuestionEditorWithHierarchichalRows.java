@@ -106,36 +106,84 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 	protected MiradiPanel createRowPanel(ChoiceItem choiceItem)
 	{
 		MiradiPanel miradiPanel = new MiradiPanel(new OneColumnGridLayout());
-		ChoiceItemWithChildren castedChoiceItem = (ChoiceItemWithChildren) choiceItem;
-		miradiPanel.add(createHeaderTitleLabel(castedChoiceItem.getLeftLabel()));
-		miradiPanel.add(createHeaderTitleLabel(castedChoiceItem.getRightLabel()));
-		
-		Vector<ChoiceItem> children = castedChoiceItem.getChildren();
-		for(ChoiceItem childChoiceItem : children)
+		try
 		{
-			Box box = Box.createHorizontalBox();
-			box.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
-			box.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
-			ChoiceItemWithChildren thisChoiceItem = (ChoiceItemWithChildren) childChoiceItem;
-			box.add(new PanelTitleLabel(thisChoiceItem.getLeftLabel()));
-			box.add(new PanelTitleLabel(thisChoiceItem.getRightLabel()));
-			
-			miradiPanel.add(box);
+			ChoiceItemWithChildren castedChoiceItem = (ChoiceItemWithChildren) choiceItem;
+			miradiPanel.add(createHeaderSelectableRow(castedChoiceItem));
+
+			Vector<ChoiceItem> children = castedChoiceItem.getChildren();
+			for(ChoiceItem childChoiceItem : children)
+			{
+				ChoiceItemWithChildren thisChoiceItem = (ChoiceItemWithChildren) childChoiceItem;
+				miradiPanel.add(createSubHeaderSelectableRow(thisChoiceItem));
+			}
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
 		}
 		
 		return miradiPanel;
 	}
+
+	protected Box createSubHeaderSelectableRow(ChoiceItemWithChildren choiceItem) throws Exception
+	{
+		final int SUBHEADER_INDENT_COUNT = 1;
+		return createSelectableRow(choiceItem, SUBHEADER_INDENT_COUNT);
+	}
+
+	private Box createHeaderSelectableRow(ChoiceItemWithChildren choiceItem) throws Exception
+	{
+		final int HEADER_INDENT_COUNT = 0;
+		
+		PanelTitleLabel leftLabel = createHeaderTitleLabel(choiceItem.getLeftLabel());
+		PanelTitleLabel rightLabel = createHeaderTitleLabel(choiceItem.getRightLabel());
+		
+		return createSelectableRow(choiceItem, HEADER_INDENT_COUNT, leftLabel, rightLabel);
+	}
 	
+	private Box createSelectableRow(ChoiceItemWithChildren choiceItem, int indentCount) throws Exception
+	{
+		PanelTitleLabel leftLabel = new PanelTitleLabel(choiceItem.getLeftLabel());
+		PanelTitleLabel rightLabel = new PanelTitleLabel(choiceItem.getRightLabel());
+		
+		return createSelectableRow(choiceItem, indentCount, leftLabel, rightLabel);
+	}
+
+	protected Box createSelectableRow(ChoiceItemWithChildren choiceItem, int indentCount, PanelTitleLabel leftLabel, PanelTitleLabel rightLabel)
+	{
+		Box box = createHorizontalBoxWithIndents(indentCount);
+		box.add(leftLabel);
+		box.add(rightLabel);
+
+		SelectableRow selectableRow = new SelectableRow(leftLabel, rightLabel, choiceItem.getProvider());
+		selectableRow.addMouseListener(new ClickHandler(selectableRow));
+		getSafeSelectableRows().add(selectableRow);
+
+		return box;
+	}
+
+	protected Box createHorizontalBoxWithIndents(int indentCount)
+	{
+		Box box = Box.createHorizontalBox();
+		for (int index = 0; index < indentCount; ++index)
+		{
+			box.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
+		}
+		
+		return box;
+	}
 	
 	private PanelTitleLabel createHeaderTitleLabel(String labelToUse)
 	{
-		PanelTitleLabel leftLabel = new PanelTitleLabel(labelToUse);
-		Font font = leftLabel.getFont();
+		PanelTitleLabel label = new PanelTitleLabel(labelToUse);
+		Font font = label.getFont();
 		font = font.deriveFont(Font.BOLD);
 		font = font.deriveFont((float)(font.getSize() * 1.5));
-		leftLabel.setFont(font);
+		label.setFont(font);
 		
-		return leftLabel;
+		return label;
 	}
 	
 	protected String getMainDescriptionFileName()
