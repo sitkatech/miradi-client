@@ -37,6 +37,7 @@ public class ChoiceItemWithChildren extends ChoiceItemWithRowDescriptionProvider
 		
 		rightLabel = rightLabelToUse;
 		children = new Vector<ChoiceItem>();
+		setSelectable(false);
 	}
 	
 	@Override
