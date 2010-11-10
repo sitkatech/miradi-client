@@ -20,9 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
+import org.miradi.dialogfields.QuestionEditorWithHierarchichalRows;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.ConceptualizeQuestion;
+import org.miradi.wizard.WizardManager;
 
 public class ConceptualizeDashboardTab extends LeftSideRightSideSplitterContainerTab
 {
@@ -39,7 +42,7 @@ public class ConceptualizeDashboardTab extends LeftSideRightSideSplitterContaine
 	@Override
 	protected AbstractRowDescriptionProvider getMainDescriptionFileName() throws Exception
 	{
-		return new HtmlResourceRowDescriptionProvider(ConceptualizeLeftSide.MAIN_DESCRIPTION_RIGHT_PANEL_FILE_NAME);
+		return new HtmlResourceRowDescriptionProvider(ConceptualizeQuestion.MAIN_DESCRIPTION_RIGHT_PANEL_FILE_NAME);
 	}
 	
 	@Override
@@ -50,7 +53,10 @@ public class ConceptualizeDashboardTab extends LeftSideRightSideSplitterContaine
 
 	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		ConceptualizeLeftSide component = new ConceptualizeLeftSide(mainWindowToUse);
+		WizardManager wizardManager = mainWindowToUse.getWizardManager();
+		ConceptualizeQuestion question = new ConceptualizeQuestion(mainWindowToUse.getProject(), wizardManager);
+		QuestionEditorWithHierarchichalRows component = new QuestionEditorWithHierarchichalRows(mainWindowToUse, question);
+
 		return new OneFieldObjectDataInputPanel(mainWindowToUse.getProject(), component);
 	}
 }
