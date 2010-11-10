@@ -36,7 +36,7 @@ import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.dashboard.RowSelectionEvent;
 import org.miradi.dialogs.dashboard.SelectableRow;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.layout.OneColumnGridLayout;
+import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -105,13 +105,14 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 	@Override
 	protected MiradiPanel createRowPanel(ChoiceItem choiceItem)
 	{
-		MiradiPanel miradiPanel = new MiradiPanel(new OneColumnGridLayout());
+		TwoColumnPanel mainRowsPanel = new TwoColumnPanel();
+		mainRowsPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		try
 		{
 			ChoiceItemWithChildren castedChoiceItem = (ChoiceItemWithChildren) choiceItem;
-			miradiPanel.add(createHeaderSelectableRow(castedChoiceItem));
+			createHeaderSelectableRow(mainRowsPanel, castedChoiceItem);
 
-			addSubHeaderRows(miradiPanel, castedChoiceItem);
+			addSubHeaderRows(mainRowsPanel, castedChoiceItem);
 		}
 		catch (Exception e)
 		{
@@ -119,52 +120,54 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 			EAM.unexpectedErrorDialog(e);
 		}
 		
-		return miradiPanel;
+		MiradiPanel wrapperPanel = new MiradiPanel();
+		wrapperPanel.add(mainRowsPanel);
+		return wrapperPanel;
 	}
 
-	protected void addSubHeaderRows(MiradiPanel miradiPanel, ChoiceItemWithChildren parentChoiceItem) throws Exception
+	protected void addSubHeaderRows(TwoColumnPanel mainRowsPanel, ChoiceItemWithChildren parentChoiceItem) throws Exception
 	{
 		Vector<ChoiceItem> children = parentChoiceItem.getChildren();
 		for(ChoiceItem childChoiceItem : children)
 		{
 			ChoiceItemWithChildren thisChoiceItem = (ChoiceItemWithChildren) childChoiceItem;
-			miradiPanel.add(createSubHeaderSelectableRow(thisChoiceItem));
-			addLeafRows(miradiPanel, thisChoiceItem);
+			createSubHeaderSelectableRow(mainRowsPanel, thisChoiceItem);
+			addLeafRows(mainRowsPanel, thisChoiceItem);
 		}
 	}
 
-	private void addLeafRows(MiradiPanel miradiPanel, ChoiceItemWithChildren parentChoiceItem) throws Exception
+	private void addLeafRows(TwoColumnPanel mainRowsPanel, ChoiceItemWithChildren parentChoiceItem) throws Exception
 	{
 		Vector<ChoiceItem> children = parentChoiceItem.getChildren();
 		for(ChoiceItem childChoiceItem : children)
 		{
 			ChoiceItemWithChildren thisChoiceItem = (ChoiceItemWithChildren) childChoiceItem;
-			miradiPanel.add(createLeafSelectableRow(thisChoiceItem));
+			createLeafSelectableRow(mainRowsPanel, thisChoiceItem);
 		}		
 	}
 	
-	private Box createLeafSelectableRow(ChoiceItemWithChildren choiceItem) throws Exception
+	private void createLeafSelectableRow(TwoColumnPanel mainRowsPanel, ChoiceItemWithChildren choiceItem) throws Exception
 	{
 	 	final int LEAF_INDENT_COUNT = 2;
 		
-		return createSelectableRow(choiceItem, LEAF_INDENT_COUNT, getLeafTitleFont());
+		createSelectableRow(mainRowsPanel, choiceItem, LEAF_INDENT_COUNT, getLeafTitleFont());
 	}
 
-	private Box createSubHeaderSelectableRow(ChoiceItemWithChildren choiceItem) throws Exception
+	private void createSubHeaderSelectableRow(TwoColumnPanel mainRowsPanel, ChoiceItemWithChildren choiceItem) throws Exception
 	{
 		final int SUBHEADER_INDENT_COUNT = 1;
 		
-		return createSelectableRow(choiceItem, SUBHEADER_INDENT_COUNT, createSubHeaderFont());
+		createSelectableRow(mainRowsPanel, choiceItem, SUBHEADER_INDENT_COUNT, createSubHeaderFont());
 	}
 
-	private Box createHeaderSelectableRow(ChoiceItemWithChildren choiceItem) throws Exception
+	private void createHeaderSelectableRow(TwoColumnPanel mainRowsPanel, ChoiceItemWithChildren choiceItem) throws Exception
 	{
 		final int HEADER_INDENT_COUNT = 0;
 		
-		return createSelectableRow(choiceItem, HEADER_INDENT_COUNT, createHeaderTitleFont());
+		createSelectableRow(mainRowsPanel, choiceItem, HEADER_INDENT_COUNT, createHeaderTitleFont());
 	}
 
-	private Box createSelectableRow(ChoiceItemWithChildren choiceItem, final int indentCount, Font font)
+	private void createSelectableRow(TwoColumnPanel mainRowsPanel, ChoiceItemWithChildren choiceItem, final int indentCount, Font font)
 	{
 		JComponent leftComponent = createToggleButton(choiceItem);
 		leftComponent.setFont(font);
@@ -172,20 +175,14 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		PanelTitleLabel rightComponent = new PanelTitleLabel(choiceItem.getRightLabel());
 		rightComponent.setFont(font);
 		
-		return createSelectableRow(choiceItem, indentCount, leftComponent, rightComponent);
-	}
-	
-	protected Box createSelectableRow(ChoiceItemWithChildren choiceItem, int indentCount, JComponent leftLabel, JComponent rightLabel)
-	{
 		Box box = createHorizontalBoxWithIndents(indentCount);
-		box.add(leftLabel);
-		box.add(rightLabel);
-
-		SelectableRow selectableRow = new SelectableRow(leftLabel, rightLabel, choiceItem.getProvider());
+		box.add(leftComponent);
+		mainRowsPanel.add(box);
+		mainRowsPanel.add(rightComponent);
+		
+		SelectableRow selectableRow = new SelectableRow(leftComponent, rightComponent, choiceItem.getProvider());
 		selectableRow.addMouseListener(new ClickHandler(selectableRow));
 		getSafeSelectableRows().add(selectableRow);
-
-		return box;
 	}
 	
 	private JComponent createToggleButton(ChoiceItemWithChildren choiceItem)
