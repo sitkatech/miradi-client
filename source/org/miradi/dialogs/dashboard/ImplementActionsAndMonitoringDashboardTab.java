@@ -20,9 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
+import org.miradi.dialogfields.QuestionEditorWithHierarchichalRows;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.ImplementActionsAndMonitoringQuestion;
+import org.miradi.wizard.WizardManager;
 
 public class ImplementActionsAndMonitoringDashboardTab extends LeftSideRightSideSplitterContainerTab
 {
@@ -50,7 +53,10 @@ public class ImplementActionsAndMonitoringDashboardTab extends LeftSideRightSide
 
 	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		ImplementActionsAndMonitoringDashboardLeftPanel component = new ImplementActionsAndMonitoringDashboardLeftPanel(mainWindowToUse);
+		WizardManager wizardManager = mainWindowToUse.getWizardManager();
+		ImplementActionsAndMonitoringQuestion question = new ImplementActionsAndMonitoringQuestion(mainWindowToUse.getProject(), wizardManager);
+		QuestionEditorWithHierarchichalRows component = new QuestionEditorWithHierarchichalRows(mainWindowToUse, question);
+		
 		return new OneFieldObjectDataInputPanel(mainWindowToUse.getProject(), component);
 	}
 }
