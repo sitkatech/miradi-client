@@ -45,8 +45,8 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 		
 		question = questionToUse;
 		component = new MiradiPanel(new BorderLayout());
-		codeListComponent = new ReadOnlyCodeListComponent(questionToUse.getChoices(), columnCount);
-		component.add(codeListComponent, BorderLayout.CENTER);
+		readOnlyCodeListComponent = new ReadOnlyCodeListComponent(questionToUse.getChoices(), columnCount);
+		component.add(readOnlyCodeListComponent, BorderLayout.CENTER);
 		
 		selectButton = new PanelButton(EAM.text("Select..."));
 
@@ -76,13 +76,13 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 	@Override
 	public String getText()
 	{
-		return codeListComponent.getText();
+		return readOnlyCodeListComponent.getText();
 	}
 
 	@Override
 	public void setText(String newValue)
 	{
-		codeListComponent.setText(newValue);
+		readOnlyCodeListComponent.setText(newValue);
 	}
 	
 	public class SelectButtonHandler implements ActionListener
@@ -109,6 +109,6 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 	
 	protected ChoiceQuestion question;
 	private MiradiPanel component;
-	private ReadOnlyCodeListComponent codeListComponent;
+	private ReadOnlyCodeListComponent readOnlyCodeListComponent;
 	private PanelButton selectButton;
 }
