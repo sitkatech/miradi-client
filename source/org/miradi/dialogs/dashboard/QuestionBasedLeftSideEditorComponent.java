@@ -24,6 +24,7 @@ import java.awt.Color;
 
 import javax.swing.JToggleButton;
 
+import org.miradi.dialogfields.QuestionEditorWithHierarchichalRows;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ChoiceItem;
@@ -31,7 +32,7 @@ import org.miradi.questions.ChoiceQuestion;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
-public class QuestionBasedLeftSideEditorComponent extends LeftSidePanelWithSelectableRows
+public class QuestionBasedLeftSideEditorComponent extends QuestionEditorWithHierarchichalRows
 {
 	public QuestionBasedLeftSideEditorComponent(MainWindow mainWindowToUse, ChoiceQuestion questionToUse)
 	{
