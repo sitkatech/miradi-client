@@ -26,6 +26,11 @@ import org.miradi.dialogs.dashboard.AbstractRowDescriptionProvider;
 
 public class ChoiceItemWithChildren extends ChoiceItemWithRowDescriptionProvider
 {
+	public ChoiceItemWithChildren(String codeToUse, AbstractRowDescriptionProvider providerToUse)
+	{
+		this(codeToUse, "", "", providerToUse);
+	}
+	
 	public ChoiceItemWithChildren(String codeToUse, String leftLabelToUse, AbstractRowDescriptionProvider providerToUse)
 	{
 		this(codeToUse, leftLabelToUse, "", providerToUse);
@@ -38,6 +43,11 @@ public class ChoiceItemWithChildren extends ChoiceItemWithRowDescriptionProvider
 		rightLabel = rightLabelToUse;
 		children = new Vector<ChoiceItem>();
 		setSelectable(false);
+	}
+
+	public void setRightLabel(String rightLabelToUse)
+	{
+		rightLabel = rightLabelToUse;
 	}
 	
 	@Override

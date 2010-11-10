@@ -111,12 +111,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 			ChoiceItemWithChildren castedChoiceItem = (ChoiceItemWithChildren) choiceItem;
 			miradiPanel.add(createHeaderSelectableRow(castedChoiceItem));
 
-			Vector<ChoiceItem> children = castedChoiceItem.getChildren();
-			for(ChoiceItem childChoiceItem : children)
-			{
-				ChoiceItemWithChildren thisChoiceItem = (ChoiceItemWithChildren) childChoiceItem;
-				miradiPanel.add(createSubHeaderSelectableRow(thisChoiceItem));
-			}
+			addSubHeaderRows(miradiPanel, castedChoiceItem);
 		}
 		catch (Exception e)
 		{
@@ -127,7 +122,35 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		return miradiPanel;
 	}
 
-	protected Box createSubHeaderSelectableRow(ChoiceItemWithChildren choiceItem) throws Exception
+	protected void addSubHeaderRows(MiradiPanel miradiPanel, ChoiceItemWithChildren parentChoiceItem) throws Exception
+	{
+		Vector<ChoiceItem> children = parentChoiceItem.getChildren();
+		for(ChoiceItem childChoiceItem : children)
+		{
+			ChoiceItemWithChildren thisChoiceItem = (ChoiceItemWithChildren) childChoiceItem;
+			miradiPanel.add(createSubHeaderSelectableRow(thisChoiceItem));
+			addLeafRows(miradiPanel, thisChoiceItem);
+		}
+	}
+
+	private void addLeafRows(MiradiPanel miradiPanel, ChoiceItemWithChildren parentChoiceItem) throws Exception
+	{
+		Vector<ChoiceItem> children = parentChoiceItem.getChildren();
+		for(ChoiceItem childChoiceItem : children)
+		{
+			ChoiceItemWithChildren thisChoiceItem = (ChoiceItemWithChildren) childChoiceItem;
+			miradiPanel.add(createLeafSelectableRow(thisChoiceItem));
+		}		
+	}
+	
+	private Box createLeafSelectableRow(ChoiceItemWithChildren choiceItem) throws Exception
+	{
+	 	final int LEAF_INDENT_COUNT = 2;
+		
+		return createSelectableRow(choiceItem, LEAF_INDENT_COUNT, getLeafTitleFont());
+	}
+
+	private Box createSubHeaderSelectableRow(ChoiceItemWithChildren choiceItem) throws Exception
 	{
 		final int SUBHEADER_INDENT_COUNT = 1;
 		
@@ -141,7 +164,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		return createSelectableRow(choiceItem, HEADER_INDENT_COUNT, createHeaderTitleFont());
 	}
 
-	private Box createSelectableRow(ChoiceItemWithChildren choiceItem, final int HEADER_INDENT_COUNT, Font font)
+	private Box createSelectableRow(ChoiceItemWithChildren choiceItem, final int indentCount, Font font)
 	{
 		JComponent leftComponent = createToggleButton(choiceItem);
 		leftComponent.setFont(font);
@@ -149,7 +172,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		PanelTitleLabel rightComponent = new PanelTitleLabel(choiceItem.getRightLabel());
 		rightComponent.setFont(font);
 		
-		return createSelectableRow(choiceItem, HEADER_INDENT_COUNT, leftComponent, rightComponent);
+		return createSelectableRow(choiceItem, indentCount, leftComponent, rightComponent);
 	}
 	
 	protected Box createSelectableRow(ChoiceItemWithChildren choiceItem, int indentCount, JComponent leftLabel, JComponent rightLabel)
@@ -186,22 +209,29 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 	
 	private Font createHeaderTitleFont()
 	{
-		PanelTitleLabel label = new PanelTitleLabel();
-		Font font = label.getFont();
+		Font font = getRawFont();
 		font = font.deriveFont(Font.BOLD);
 		font = font.deriveFont((float)(font.getSize() * 1.5));
-		label.setFont(font);
 		
 		return font;
 	}
 	
 	private Font createSubHeaderFont()
 	{
-		PanelTitleLabel label = new PanelTitleLabel();
-		Font font = label.getFont();
+		Font font = getRawFont();
 		font = font.deriveFont(Font.BOLD);
 		
 		return font;
+	}
+	
+	private Font getLeafTitleFont()
+	{
+		return getRawFont();
+	}
+
+	private Font getRawFont()
+	{
+		return new PanelTitleLabel().getFont();
 	}
 	
 	protected String getMainDescriptionFileName()
