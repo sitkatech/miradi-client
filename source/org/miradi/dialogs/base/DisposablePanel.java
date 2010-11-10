@@ -24,13 +24,15 @@ import java.awt.Dimension;
 import java.awt.LayoutManager2;
 import java.util.Vector;
 
+import javax.swing.JPanel;
+
 import org.martus.swing.Utilities;
 import org.miradi.actions.ObjectsAction;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class DisposablePanel extends MiradiPanel
+public class DisposablePanel extends JPanel
 {
 	public DisposablePanel()
 	{
