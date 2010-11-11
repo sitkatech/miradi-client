@@ -22,9 +22,9 @@ package org.miradi.objecthelpers;
 
 public class LeafTwoLevelEntry extends TwoLevelEntry
 {
-	public LeafTwoLevelEntry(String code, String description)
+	public LeafTwoLevelEntry(String code, String label)
 	{
-		super(code, description);
+		super(code, label);
 	}
 	
 	@Override
