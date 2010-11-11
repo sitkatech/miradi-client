@@ -120,6 +120,11 @@ public class ChoiceItem implements Comparable<Object>
 		return 0;
 	}
 	
+	public boolean hasChildren()
+	{
+		return !getChildren().isEmpty();
+	}
+	
 	public Vector<ChoiceItem> getChildren()
 	{
 		return new Vector<ChoiceItem>();

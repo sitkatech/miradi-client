@@ -21,12 +21,23 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.questions;
 
 import org.miradi.dialogs.dashboard.AbstractRowDescriptionProvider;
+import org.miradi.dialogs.dashboard.StringRowDescriptionProvider;
 
-public class ChoiceItemWithRowDescriptionProvider extends ChoiceItem
-{
-	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, AbstractRowDescriptionProvider providerToUse)
+public class ChoiceItemWithRowDescriptionProvider extends ChoiceItemWithLeftRightLabel
+{	
+	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse)
 	{
-		super(codeToUse, labelToUse);
+		this(codeToUse, labelToUse, "", new StringRowDescriptionProvider());
+	}
+
+	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String rightLabelToUse)
+	{
+		this(codeToUse, labelToUse, rightLabelToUse, new StringRowDescriptionProvider());
+	}
+	
+	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String rightLabelToUse, AbstractRowDescriptionProvider providerToUse)
+	{
+		super(codeToUse, labelToUse, rightLabelToUse);
 		
 		provider = providerToUse;
 	}

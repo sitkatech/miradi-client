@@ -20,12 +20,40 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
-public class NonSelectableChoiceItem extends ChoiceItemWithRowDescriptionProvider
+
+public class ChoiceItemWithLeftRightLabel extends ChoiceItem
 {
-	public NonSelectableChoiceItem(String codeToUse, String labelToUse)
+	public ChoiceItemWithLeftRightLabel(String codeToUse)
 	{
-		super(codeToUse, labelToUse);
-		
-		setSelectable(false);
+		this(codeToUse, "", "");
 	}
+	
+	public ChoiceItemWithLeftRightLabel(String codeToUse, String leftLabelToUse)
+	{
+		this(codeToUse, leftLabelToUse, "");
+	}
+	
+	public ChoiceItemWithLeftRightLabel(String codeToUse, String leftLabelToUse, String rightLabelToUse)
+	{
+		super(codeToUse, leftLabelToUse);
+		
+		rightLabel = rightLabelToUse;
+	}
+
+	public void setRightLabel(String rightLabelToUse)
+	{
+		rightLabel = rightLabelToUse;
+	}
+	
+	public String getRightLabel()
+	{
+		return rightLabel;
+	}
+	
+	public String getLeftLabel()
+	{
+		return getLabel();
+	}
+	
+	private String rightLabel;
 }
