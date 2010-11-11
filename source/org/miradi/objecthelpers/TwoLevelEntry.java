@@ -21,7 +21,6 @@ package org.miradi.objecthelpers;
 
 public class TwoLevelEntry
 {
-	
 	public TwoLevelEntry(String code, String description)
 	{
 		entryCode = code;
@@ -48,8 +47,10 @@ public class TwoLevelEntry
 	{
 		if(isEmptyItem())
 			return true;
+
 		if(entryCode.indexOf(".") >= 0)
 			return true;
+		
 		return false;
 	}
 
