@@ -299,22 +299,22 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			{
 				TwoLevelEntry colorEntry = colors[i];
 				if (colorEntry.getEntryCode().equals("WizardBorder"))
-					getAppPreferences().setWizardTitleBackground(colorEntry.getEntryDescription());
+					getAppPreferences().setWizardTitleBackground(colorEntry.getEntryLabel());
 
 				if (colorEntry.getEntryCode().equals("WizardPanel"))
-					getAppPreferences().setWizardBackgroundColor(colorEntry.getEntryDescription());
+					getAppPreferences().setWizardBackgroundColor(colorEntry.getEntryLabel());
 
 				if (colorEntry.getEntryCode().equals("WizardSidebar"))
-					getAppPreferences().setWizardSidebarBackgroundColor(colorEntry.getEntryDescription());
+					getAppPreferences().setWizardSidebarBackgroundColor(colorEntry.getEntryLabel());
 
 				if (colorEntry.getEntryCode().equals("DataBorder"))
-					getAppPreferences().setDarkControlPanelBackgroundColor(colorEntry.getEntryDescription());
+					getAppPreferences().setDarkControlPanelBackgroundColor(colorEntry.getEntryLabel());
 
 				if (colorEntry.getEntryCode().equals("DataPanel"))
-					getAppPreferences().setDataPanelBackgroundColor(colorEntry.getEntryDescription());
+					getAppPreferences().setDataPanelBackgroundColor(colorEntry.getEntryLabel());
 
 				if (colorEntry.getEntryCode().equals("ControlBar"))
-					getAppPreferences().setControlPanelBackgroundColor(colorEntry.getEntryDescription());
+					getAppPreferences().setControlPanelBackgroundColor(colorEntry.getEntryLabel());
 			}
 			
 			EAM.logVerbose("Loaded colors from file");

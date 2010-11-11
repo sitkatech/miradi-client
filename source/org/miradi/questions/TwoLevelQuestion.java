@@ -48,7 +48,7 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 			for (int i = 0; i < twoLevelEntry.length; ++i)
 			{
 				String code = twoLevelEntry[i].getEntryCode();
-				String label = twoLevelEntry[i].getEntryDescription();
+				String label = twoLevelEntry[i].getEntryLabel();
 				ChoiceItem choice = new ChoiceItem(code, label);
 				choice.setSelectable(twoLevelEntry[i].isLeaf());
 				chocies.add(choice);
