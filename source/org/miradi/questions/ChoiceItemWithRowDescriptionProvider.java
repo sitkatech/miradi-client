@@ -35,6 +35,11 @@ public class ChoiceItemWithRowDescriptionProvider extends ChoiceItemWithLeftRigh
 		this(codeToUse, labelToUse, rightLabelToUse, new StringRowDescriptionProvider());
 	}
 	
+	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, AbstractRowDescriptionProvider providerToUse)
+	{
+		this(codeToUse, labelToUse, "", providerToUse);
+	}
+	
 	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String rightLabelToUse, AbstractRowDescriptionProvider providerToUse)
 	{
 		super(codeToUse, labelToUse, rightLabelToUse);

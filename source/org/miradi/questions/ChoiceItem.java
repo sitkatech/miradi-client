@@ -41,6 +41,11 @@ public class ChoiceItem implements Comparable<Object>
 		this(codeToUse, labelToUse, (Color)null);
 	}
 	
+	public ChoiceItem(String codeToUse, String labelToUse, String description)
+	{
+		this(codeToUse, labelToUse, (Color)null, description);
+	}
+	
 	public ChoiceItem(String codeToUse, String labelToUse, boolean isSelectableToUse)
 	{
 		this(codeToUse, labelToUse);

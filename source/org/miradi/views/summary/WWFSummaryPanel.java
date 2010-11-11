@@ -40,13 +40,13 @@ import org.miradi.rtf.RtfWriter;
 public class WWFSummaryPanel extends ObjectDataInputPanel
 {
 	
-	public WWFSummaryPanel(Project projectToUse, ProjectMetadata metaDataToUse)
+	public WWFSummaryPanel(Project projectToUse, ProjectMetadata metaDataToUse) throws Exception
 	{
 		super(projectToUse, ORef.INVALID);
 
 		addField(createEditableCodeListField(WwfProjectData.getObjectType(), WwfProjectData.TAG_MANAGING_OFFICES, new WwfManagingOfficesQuestion(), 1));
 		addField(createEditableCodeListField(WwfProjectData.getObjectType(), WwfProjectData.TAG_REGIONS, new WwfRegionsQuestion(), 1));
-		addField(createEditableCodeListField(WwfProjectData.getObjectType(), WwfProjectData.TAG_ECOREGIONS, new WwfEcoRegionsQuestion(), 1));		
+		addField(createQuestionFieldWithDescriptionPanel(WwfProjectData.getObjectType(), WwfProjectData.TAG_ECOREGIONS, new WwfEcoRegionsQuestion()));
 		
 		setObjectRefs(new ORef[] {metaDataToUse.getRef(), getWwfProjectDataRef()});
 	}
