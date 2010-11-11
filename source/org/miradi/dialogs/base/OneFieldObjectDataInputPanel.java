@@ -24,13 +24,14 @@ import org.miradi.dialogfields.ComponentWrapperObjectDataInputField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogfields.SavebleComponent;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 
 public class OneFieldObjectDataInputPanel extends ObjectDataInputPanel
 {
 	public OneFieldObjectDataInputPanel(Project projectToUse, SavebleComponent savebleComponentToUse)
 	{
-		this (projectToUse, ORef.INVALID, "", savebleComponentToUse);
+		this (projectToUse, ORef.INVALID, Dashboard.PSEUDO_TEMP_TAG, savebleComponentToUse);
 	}
 	
 	public OneFieldObjectDataInputPanel(Project projectToUse, ORef orefToUse, String tagToUse, SavebleComponent savebleComponentToUse)

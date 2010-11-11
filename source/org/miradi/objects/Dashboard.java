@@ -782,6 +782,7 @@ public class Dashboard extends BaseObject
 	
 	public static final String OBJECT_NAME = "Dashboard";
 	
+	public static final String PSEUDO_TEMP_TAG = "TempTag";
 	public static final String PSEUDO_TEAM_MEMBER_COUNT = "TeamMemberCount";
 	public static final String PSEUDO_PROJECT_SCOPE_WORD_COUNT = "ProjectScopeWordCount";
 	public static final String PSEUDO_TARGET_COUNT = "TargetCount";
