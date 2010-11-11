@@ -22,6 +22,11 @@ package org.miradi.objecthelpers;
 
 public class LeafTwoLevelEntry extends TwoLevelEntry
 {
+	public LeafTwoLevelEntry(String code, String label, String description)
+	{
+		super(code, label, description);
+	}
+	
 	public LeafTwoLevelEntry(String code, String label)
 	{
 		super(code, label);

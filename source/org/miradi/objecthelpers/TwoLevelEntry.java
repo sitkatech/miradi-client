@@ -23,8 +23,14 @@ public class TwoLevelEntry
 {
 	public TwoLevelEntry(String code, String labelToUse)
 	{
+		this(code, labelToUse, "");
+	}
+	
+	public TwoLevelEntry(String code, String labelToUse, String descriptionToUse)
+	{
 		entryCode = code;
 		entryLabel = labelToUse;
+		description = descriptionToUse;
 	}
 
 	public String getEntryCode()
@@ -35,6 +41,11 @@ public class TwoLevelEntry
 	public String getEntryLabel()
 	{
 		return entryLabel;
+	}
+	
+	public String getDescription()
+	{
+		return description;
 	}
 
 	@Override
@@ -61,4 +72,5 @@ public class TwoLevelEntry
 
 	private String entryCode;
 	private String entryLabel;
+	private String description;
 }

@@ -49,7 +49,8 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 			{
 				String code = twoLevelEntry[i].getEntryCode();
 				String label = twoLevelEntry[i].getEntryLabel();
-				ChoiceItem choice = new ChoiceItem(code, label);
+				String description  = twoLevelEntry[i].getDescription();
+				ChoiceItem choice = createChoiceItem(code, label, description);
 				choice.setSelectable(twoLevelEntry[i].isLeaf());
 				chocies.add(choice);
 			}
@@ -61,6 +62,11 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 			EAM.logException(e);
 			throw new RuntimeException("error processing two level entry inside:" + twoLevelFileLoader.getFileName());
 		}
+	}
+
+	protected ChoiceItem createChoiceItem(String code, String label, String description) throws Exception
+	{
+		return new ChoiceItem(code, label, description);
 	}
 	
 	public void sortChoices()
