@@ -23,7 +23,6 @@ package org.miradi.dialogfields;
 import org.miradi.dialogfields.editors.QuestionWithDescriptionEditorPanel;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
-import org.miradi.dialogs.dashboard.QuestionBasedLeftSideEditorComponent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.questions.ChoiceQuestion;
@@ -40,7 +39,7 @@ public class CodeListPopupWithDescriptionPanelField extends	AbstractEditableCode
 	@Override
 	protected DisposablePanel createEditorPanel() throws Exception
 	{
-		QuestionBasedLeftSideEditorComponent leftComponent = new QuestionBasedLeftSideEditorComponent(mainWindow, question);
+		SingleLevelQuestionEditor leftComponent = new SingleLevelQuestionEditor(mainWindow, question);
 		ComponentWrapperObjectDataInputField field = new ComponentWrapperObjectDataInputField(getProject(), getORef(), getTag(), leftComponent);
 		OneFieldObjectDataInputPanel leftPanel = new OneFieldObjectDataInputPanel(getProject(), getORef(), getTag(), field);
 		

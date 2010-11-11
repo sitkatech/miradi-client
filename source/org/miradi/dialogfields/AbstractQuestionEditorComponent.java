@@ -83,7 +83,12 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		for (int index = 0; index < choices.length; ++index)
 		{
 			ChoiceItem choiceItem = choices[index];
-			MiradiPanel rowPanel = createRowPanel(choiceItem);
+			JToggleButton toggleButton = createToggleButton(choiceItem.getLabel());
+			toggleButton.setBackground(choiceItem.getColor());
+			toggleButton.addActionListener(new ToggleButtonHandler());
+			choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
+
+			MiradiPanel rowPanel = createRowPanel(toggleButton, choiceItem);
 			rowPanel.setBackground(getTogglePanelBackgroundColor());
 			toggleButtonsPanel.add(rowPanel);
 		}
@@ -93,16 +98,11 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		repaint();
 	}
 
-	protected MiradiPanel createRowPanel(ChoiceItem choiceItem)
+	protected MiradiPanel createRowPanel(JToggleButton toggleButton, ChoiceItem choiceItem)
 	{
 		int gridColumnCount = getColumnCount() * getNumberOfComponentsPerChoice();
 		MiradiPanel rowPanel = new MiradiPanel(new GridLayoutPlus(0, gridColumnCount));
-		JToggleButton toggleButton = createToggleButton(choiceItem.getLabel());
-		toggleButton.setBackground(choiceItem.getColor());
-		toggleButton.addActionListener(new ToggleButtonHandler());
-		choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
 		Icon icon = choiceItem.getIcon();
-		
 		rowPanel.add(getSafeIconLabel(icon));
 		if (choiceItem.isSelectable())
 			rowPanel.add(toggleButton);

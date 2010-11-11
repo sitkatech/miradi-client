@@ -38,18 +38,12 @@ public class ChoiceItemWithChildren extends ChoiceItemWithRowDescriptionProvider
 	
 	public ChoiceItemWithChildren(String codeToUse, String leftLabelToUse, String rightLabelToUse, AbstractRowDescriptionProvider providerToUse)
 	{
-		super(codeToUse, leftLabelToUse, providerToUse);
+		super(codeToUse, leftLabelToUse, rightLabelToUse, providerToUse);
 		
-		rightLabel = rightLabelToUse;
 		children = new Vector<ChoiceItem>();
 		setSelectable(false);
 	}
 
-	public void setRightLabel(String rightLabelToUse)
-	{
-		rightLabel = rightLabelToUse;
-	}
-	
 	@Override
 	public void addChild(ChoiceItem childChoiceItem)
 	{
@@ -74,16 +68,5 @@ public class ChoiceItemWithChildren extends ChoiceItemWithRowDescriptionProvider
 		return new Vector<ChoiceItem>(children);
 	}
 	
-	public String getRightLabel()
-	{
-		return rightLabel;
-	}
-	
-	public String getLeftLabel()
-	{
-		return getLabel();
-	}
-	
 	private Vector<ChoiceItem> children;
-	private String rightLabel;
 }
