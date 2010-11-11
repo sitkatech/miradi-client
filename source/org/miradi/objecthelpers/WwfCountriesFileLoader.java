@@ -38,7 +38,7 @@ public class WwfCountriesFileLoader extends TwoLevelFileLoader
 			String officeCode = (String) row.get(0);
 			String officeName = (String) row.get(1);
 		
-			entries.add(new TwoLevelEntry(officeCode, officeName));
+			entries.add(new LeafTwoLevelEntry(officeCode, officeName));
 		}
 		return entries;
 	}
