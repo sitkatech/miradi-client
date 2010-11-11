@@ -21,10 +21,10 @@ package org.miradi.objecthelpers;
 
 public class TwoLevelEntry
 {
-	public TwoLevelEntry(String code, String description)
+	public TwoLevelEntry(String code, String labelToUse)
 	{
 		entryCode = code;
-		entryLabel = description;
+		entryLabel = labelToUse;
 	}
 
 	public String getEntryCode()
