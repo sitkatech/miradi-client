@@ -38,7 +38,7 @@ public class ManagingOfficeFileLoader extends TwoLevelFileLoader
 			String officeCode = (String) row.get(0);
 			String officeName = (String) row.get(3);
 		
-			entries.add(new TwoLevelEntry(officeCode, officeName));
+			entries.add(new LeafTwoLevelEntry(officeCode, officeName));
 		}
 		return entries;
 	}
