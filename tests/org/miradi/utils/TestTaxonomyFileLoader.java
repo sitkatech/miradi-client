@@ -45,11 +45,11 @@ public class TestTaxonomyFileLoader extends EAMTestCase
 		TwoLevelEntry[] twoLevelItem = loadDelimitedData(new StringReader("# \t \"header\" \t \"xxxx\" \n" +
 				" H10.10 \t \"my level 1 descriptor\"  \t  \"my level 2 descriptor\" "));
 		assertEquals(3, twoLevelItem.length);
-		assertEquals("--Select a classification--", twoLevelItem[0].getEntryDescription());
+		assertEquals("--Select a classification--", twoLevelItem[0].getEntryLabel());
 		assertEquals("H10", twoLevelItem[1].getEntryCode());		
-		assertEquals(true, twoLevelItem[1].getEntryDescription().endsWith("my level 1 descriptor"));
+		assertEquals(true, twoLevelItem[1].getEntryLabel().endsWith("my level 1 descriptor"));
 		assertEquals("H10.10", twoLevelItem[2].getEntryCode());
-		assertEquals(true, twoLevelItem[2].getEntryDescription().endsWith("my level 2 descriptor"));
+		assertEquals(true, twoLevelItem[2].getEntryLabel().endsWith("my level 2 descriptor"));
 	}
 	
 

@@ -32,7 +32,7 @@ public class TwoLevelEntry
 		return entryCode;
 	}
 
-	public String getEntryDescription()
+	public String getEntryLabel()
 	{
 		return entryDescription;
 	}
@@ -40,7 +40,7 @@ public class TwoLevelEntry
 	@Override
 	public String toString()
 	{
-		return getEntryDescription();
+		return getEntryLabel();
 	}
 	
 	public boolean isLeaf() 
