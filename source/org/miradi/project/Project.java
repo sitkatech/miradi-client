@@ -649,8 +649,7 @@ public class Project
 			createDefaultHelpTextBoxDiagramFactor();
 	}
 
-	public void createOrOpenWithDefaultObjects(String projectName)
-			throws Exception
+	public void createOrOpenWithDefaultObjects(String projectName) throws Exception
 	{
 		rawCreateorOpen(projectName);
 		createMissingDefaultObjects();
