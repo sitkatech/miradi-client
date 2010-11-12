@@ -59,11 +59,15 @@ abstract public class AbstractObjectTableModel extends SortableTableModel
 	@Override
 	public void setSortedRowIndexes(Vector<Integer> sortedRowIndexes)
 	{
+		ORefList rowObjectRefs = getRowObjectRefs();
+		if (rowObjectRefs.isEmpty())
+			return;
+		
 		ORefList newList = new ORefList();
 		for(int index = 0; index < sortedRowIndexes.size(); ++index)
 		{
 			int nextExistingRowIndex = sortedRowIndexes.get(index).intValue();
-			newList.add(getRowObjectRefs().get(nextExistingRowIndex));
+			newList.add(rowObjectRefs.get(nextExistingRowIndex));
 		}
 		setRowObjectRefs(newList);
 	}
