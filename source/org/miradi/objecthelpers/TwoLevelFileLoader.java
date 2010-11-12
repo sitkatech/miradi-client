@@ -74,7 +74,10 @@ abstract public class TwoLevelFileLoader extends DelimitedFileLoader
 		String path = ResourcesHandler.RESOURCES_PATH + "fieldoptions/" + getFileName();
 		return path;
 	}
-
+	
+	//FIXME medium - there is a lot of duplication in the overriding processVector methods.
+	//The only real difference is the index the code name and description within a line tht is read.
+	//Maybe have each subclass return the index for code, name, description, or a map.  
 	abstract protected Vector<TwoLevelEntry> processVector(Vector<Vector<String>> fileVector);
 
 	private String fileName;
