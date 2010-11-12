@@ -432,7 +432,16 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	{
 		if(getProject().getCommandListenerCount() != existingCommandListenerCount)
 		{
-			EAM.logDebug("CommandListener count wrong (was " + existingCommandListenerCount + ")");
+			EAM.logDebug("CommandListener count wrong during view change (was " + existingCommandListenerCount + ")");
+			getProject().logDebugCommandListeners();
+		}
+	}
+	
+	private void logOrphanedCommandListeners()
+	{
+		if(getProject().getCommandListenerCount() != 0)
+		{
+			EAM.logError("CommandListener count wrong (was " + getProject().getCommandListenerCount() + ")");
 			getProject().logDebugCommandListeners();
 		}
 	}
@@ -718,15 +727,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		}
 	}
 
-	private void logOrphanedCommandListeners()
-	{
-		if(getProject().getCommandListenerCount() != 0)
-		{
-			EAM.logError("CommandListener count wrong (was " + getProject().getCommandListenerCount() + ")");
-			getProject().logDebugCommandListeners();
-		}
-	}
-	
 	private void warnOnceIfLowOnMemory()
 	{
 		if(hasMemoryWarningBeenShown)
