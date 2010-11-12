@@ -403,7 +403,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	
 	private void setCurrentView(UmbrellaView view) throws Exception
 	{
-		System.out.println("view swtiched");
 		if(currentView != null)
 		{
 			currentView.becomeInactive();
@@ -716,6 +715,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			getProject().removeCommandExecutedListener(humanWelfareModeHandler);
 			getProject().removeCommandExecutedListener(lowMemoryHandler);
 			getProject().removeCommandExecutedListener(refreshWizardHandler);
+			getProject().dispose();
 			savePreferences();
 			getCurrentView().becomeInactive();
 			logOrphanedCommandListeners();
