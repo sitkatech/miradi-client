@@ -19,20 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
-import org.miradi.dialogs.dashboard.StringRowDescriptionProvider;
 import org.miradi.objecthelpers.EcoRegionsFileLoader;
 import org.miradi.objecthelpers.TwoLevelFileLoader;
 
-public class WwfEcoRegionsQuestion extends TwoLevelQuestion
+public class WwfEcoRegionsQuestion extends TwoLevelQuestionWithDescription
 {
 	public WwfEcoRegionsQuestion()
 	{
 		super(new EcoRegionsFileLoader(TwoLevelFileLoader.WWF_ECO_REGIONS_FILE));
-	}
-	
-	@Override
-	protected ChoiceItem createChoiceItem(String code, String label, String description) throws Exception
-	{
-		return new ChoiceItemWithRowDescriptionProvider(code, label, new StringRowDescriptionProvider(description));
 	}
 }
