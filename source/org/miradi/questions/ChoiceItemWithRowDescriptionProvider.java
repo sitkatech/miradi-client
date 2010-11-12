@@ -20,11 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import java.awt.Color;
+
 import org.miradi.dialogs.dashboard.AbstractRowDescriptionProvider;
 import org.miradi.dialogs.dashboard.StringRowDescriptionProvider;
 
 public class ChoiceItemWithRowDescriptionProvider extends ChoiceItemWithLeftRightLabel
 {	
+	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, Color colorToUse)
+	{
+		this(codeToUse, labelToUse, "", colorToUse, new StringRowDescriptionProvider());
+	}
+	
 	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse)
 	{
 		this(codeToUse, labelToUse, "", new StringRowDescriptionProvider());
@@ -42,7 +49,12 @@ public class ChoiceItemWithRowDescriptionProvider extends ChoiceItemWithLeftRigh
 	
 	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String rightLabelToUse, AbstractRowDescriptionProvider providerToUse)
 	{
-		super(codeToUse, labelToUse, rightLabelToUse);
+		this(codeToUse, labelToUse, rightLabelToUse, (Color)null, providerToUse);
+	}
+	
+	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String rightLabelToUse, Color colorToUse, AbstractRowDescriptionProvider providerToUse)
+	{
+		super(codeToUse, labelToUse, rightLabelToUse, colorToUse);
 		
 		provider = providerToUse;
 	}
