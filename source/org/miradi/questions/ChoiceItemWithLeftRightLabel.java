@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import java.awt.Color;
 
 public class ChoiceItemWithLeftRightLabel extends ChoiceItem
 {
@@ -35,7 +36,12 @@ public class ChoiceItemWithLeftRightLabel extends ChoiceItem
 	
 	public ChoiceItemWithLeftRightLabel(String codeToUse, String leftLabelToUse, String rightLabelToUse)
 	{
-		super(codeToUse, leftLabelToUse);
+		this(codeToUse, leftLabelToUse, rightLabelToUse, (Color)null);
+	}
+	
+	public ChoiceItemWithLeftRightLabel(String codeToUse, String leftLabelToUse, String rightLabelToUse, Color colorToUse)
+	{
+		super(codeToUse, leftLabelToUse, colorToUse);
 		
 		rightLabel = rightLabelToUse;
 	}
