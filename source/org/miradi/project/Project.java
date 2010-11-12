@@ -154,6 +154,7 @@ public class Project
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
 		planningPreferencesChangeHandler = new PlanningPreferencesChangeHandler(this);		
 		enableIsDoNothingCommandOptimization();
+		enableListeners();
 		
 		clear();
 	}
@@ -900,7 +901,6 @@ public class Project
 	
 	protected void finishOpening() throws Exception
 	{
-		enableListeners();
 		createMissingBuiltInObjects();
 		loadThreatRatingFramework();		
 	}
@@ -981,7 +981,6 @@ public class Project
 		
 		try
 		{
-			disableListeners();
 			getDatabase().close();
 			clear();
 			EAM.setExceptionLoggingDestination();
@@ -990,6 +989,11 @@ public class Project
 		{
 			EAM.logException(e);
 		}
+	}
+	
+	public void dispose()
+	{
+		disableListeners();	
 	}
 
 	protected void disableListeners()
