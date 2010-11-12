@@ -62,7 +62,7 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 
 		addField(createSingleColumnCodeListField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TNC_OPERATING_UNITS, new TncOperatingUnitsQuestion()));
 
-		addField(createSingleColumnCodeListField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, new TncTerrestrialEcoRegionQuestion()));
+		addField(createQuestionFieldWithDescriptionPanel(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, new TncTerrestrialEcoRegionQuestion()));
 		addField(createSingleColumnCodeListField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, new TncMarineEcoRegionQuestion()));
 		addField(createSingleColumnCodeListField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, new TncFreshwaterEcoRegionQuestion()));
 		addField(createMultilineField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED));
