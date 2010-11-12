@@ -1,0 +1,56 @@
+/* 
+Copyright 2005-2010, Foundations of Success, Bethesda, Maryland 
+(on behalf of the Conservation Measures Partnership, "CMP") and 
+Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+
+This file is part of Miradi
+
+Miradi is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License version 3, 
+as published by the Free Software Foundation.
+
+Miradi is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
+*/ 
+
+package org.miradi.questions;
+
+import org.miradi.dialogs.dashboard.AbstractRowDescriptionProvider;
+import org.miradi.dialogs.dashboard.StringRowDescriptionProvider;
+
+public class ChoiceItemWithRowDescriptionProvider extends ChoiceItemWithLeftRightLabel
+{	
+	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse)
+	{
+		this(codeToUse, labelToUse, "", new StringRowDescriptionProvider());
+	}
+
+	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String rightLabelToUse)
+	{
+		this(codeToUse, labelToUse, rightLabelToUse, new StringRowDescriptionProvider());
+	}
+	
+	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, AbstractRowDescriptionProvider providerToUse)
+	{
+		this(codeToUse, labelToUse, "", providerToUse);
+	}
+	
+	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String rightLabelToUse, AbstractRowDescriptionProvider providerToUse)
+	{
+		super(codeToUse, labelToUse, rightLabelToUse);
+		
+		provider = providerToUse;
+	}
+	
+	public AbstractRowDescriptionProvider getProvider()
+	{
+		return provider;
+	}
+	
+	private AbstractRowDescriptionProvider provider;
+}

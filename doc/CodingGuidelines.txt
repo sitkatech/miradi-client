@@ -1,0 +1,95 @@
+Miradi Coding Guidelines
+2008-11-04 kbs
+
+A. INDENTING, WHITESPACE, COMPILER SETTINGS, ETC.
+
+Generally, follow Sun's standard Java conventions. 
+
+One notable exception is that left curly braces should go on 
+the line below, outdented to match the line above. The effect 
+is that open and close braces are in the same column, making 
+them easy to visually match. Also, it provides a little extra 
+vertical whitespace, which is not a bad idea.
+
+Another deviation is that within a class, all variables and 
+constants should go at the bottom of the class, not the top. 
+Since most variables are private, they are less interesting 
+to someone browsing the class, so it makes sense to hide them 
+at the end.
+
+Generally, constructors (and static factory methods) should 
+come first, then other public members, then private members. 
+However, this is not strictly followed.
+
+The code must be warning-free at all times. As many compiler 
+warnings as possible should be enabled. 
+
+B. COMMENTS
+
+Most comments are a hint that the code should be improved. 
+There are a few exceptions, where comments are encouraged, 
+including:
+
+  - Workarounds for compiler or third-party library bugs
+  - Necessary speed optimizations that impair clarity
+  - TODO or FIXME comments indicating code that cannot be 
+    improved right now, generally due to release deadlines
+
+Class-level comments are neither encouraged nor discouraged.
+
+C. NAMING (CLASSES, METHODS, VARIABLES, PACKAGES)
+
+Naming is extremely important. Whenever possible, choose standard 
+or conventional names. Match Java's built-in naming when possible, 
+such as XxxTableModel. Follow app-specific conventions, such as 
+reference variables ending with Ref. 
+
+Class names should be MixedCase. Variable names should be 
+camelCase. Constants should be ALL_CAPS.
+
+Don't be afraid of long names. A long method name that is clear 
+is much better than a short one that is ambiguous. For simple 
+loops, i is acceptable, but discouraged. Method arguments and 
+class members should almost always have clearer names.
+
+Generally, mehods should be named with a verb, and variables 
+should be named with a noun. Booleans should start with is, 
+has or similar. 
+
+D. MODULARITY AND TESTABILITY, CODE DUPLICATION
+
+The goal is to have as much code as possible be covered by 
+automated tests (using junit). To achieve this, the UI layer 
+should be as thin as possible (as it is difficult to test).
+
+Generally, in order to be easily testable, code must be 
+pretty modular. Even code that does not have automated tests 
+should be modular, because modular code tends to be easier 
+to understand, maintain, and enhance. 
+
+All automated tests must pass at all times.
+
+Code duplication must be avoided whenever possible. Any 
+duplicated logic, no matter how small, is an opportunity for 
+a future coder to change one occurance but not the other, 
+generating a bug. 
+
+The only acceptable cases where duplication is allowed are:
+
+  - When the Java langage requires it
+  - When eliminating it would make the code extremely ugly
+  - In cases where required for necessary optimizations
+
+E. LOGIC, SPEED OPTIMIZATION
+
+When possible, choose the simplest algorithm. The most direct 
+approach (even "brute force") should be used unless there is 
+a compelling reason to do something fancy. Don't optimize code 
+for speed until it can be demonstrated that the simplest 
+implementation is too slow.
+
+On the other hand, data should be optimized for both simplicity 
+and speed. It is easy to change code, but difficult to change 
+data, so each new data structure should be considered from 
+a speed standpoint before being locked in.
+
