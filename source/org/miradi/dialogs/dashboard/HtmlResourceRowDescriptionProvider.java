@@ -22,7 +22,7 @@ package org.miradi.dialogs.dashboard;
 
 import org.miradi.utils.Translation;
 
-public class HtmlResourceRowDescriptionProvider extends AbstractRowDescriptionProvider
+public class HtmlResourceRowDescriptionProvider extends AbstractLongDescriptionProvider
 {
 	public HtmlResourceRowDescriptionProvider(String htmlFileName) throws Exception
 	{

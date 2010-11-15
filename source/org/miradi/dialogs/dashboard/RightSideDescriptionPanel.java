@@ -36,7 +36,7 @@ import org.miradi.views.umbrella.ViewSwitchDoer;
 
 public class RightSideDescriptionPanel extends JPanel implements ListSelectionListener
 {
-	public RightSideDescriptionPanel(MainWindow mainWindowToUse, AbstractRowDescriptionProvider mainDescriptionProvider) throws Exception
+	public RightSideDescriptionPanel(MainWindow mainWindowToUse, AbstractLongDescriptionProvider mainDescriptionProvider) throws Exception
 	{
 		setLayout(new BorderLayout());
 		mainWindow = mainWindowToUse;
@@ -51,7 +51,7 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 		try
 		{
 			RowSelectionEvent castedEvent = (RowSelectionEvent) rawEvent;
-			AbstractRowDescriptionProvider descriptiobnProvider = castedEvent.getDescriptionProvider();
+			AbstractLongDescriptionProvider descriptiobnProvider = castedEvent.getDescriptionProvider();
 			setRightSideHtmlContent(descriptiobnProvider.getDescription());
 			if (descriptiobnProvider.hasWizardStepName())
 				ViewSwitchDoer.changeView(getMainWindow(), descriptiobnProvider.getWizardStepName());

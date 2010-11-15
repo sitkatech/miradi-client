@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
-abstract public class AbstractRowDescriptionProvider
+abstract public class AbstractLongDescriptionProvider
 {
-	public AbstractRowDescriptionProvider(String descriptionToUse, String wizardStepNameToUse)
+	public AbstractLongDescriptionProvider(String descriptionToUse, String wizardStepNameToUse)
 	{
 		description = descriptionToUse;
 		wizardStepName = wizardStepNameToUse;
