@@ -55,11 +55,6 @@ public class ChoiceItemWithAdditionalText extends ChoiceItem
 	{
 		return additionalText;
 	}
-	
-	public String getLeftLabel()
-	{
-		return getLabel();
-	}
-	
+
 	private String additionalText;
 }
