@@ -31,14 +31,14 @@ public class ChoiceItemWithChildren extends ChoiceItemWithRowDescriptionProvider
 		this(codeToUse, "", "", providerToUse);
 	}
 	
-	public ChoiceItemWithChildren(String codeToUse, String leftLabelToUse, StaticLongDescriptionProvider providerToUse)
+	public ChoiceItemWithChildren(String codeToUse, String additionalTextToUse, StaticLongDescriptionProvider providerToUse)
 	{
-		this(codeToUse, leftLabelToUse, "", providerToUse);
+		this(codeToUse, additionalTextToUse, "", providerToUse);
 	}
 	
-	public ChoiceItemWithChildren(String codeToUse, String leftLabelToUse, String rightLabelToUse, StaticLongDescriptionProvider providerToUse)
+	public ChoiceItemWithChildren(String codeToUse, String labelToUse, String additionalTextToUse, StaticLongDescriptionProvider providerToUse)
 	{
-		super(codeToUse, leftLabelToUse, rightLabelToUse, providerToUse);
+		super(codeToUse, labelToUse, additionalTextToUse, providerToUse);
 		
 		children = new Vector<ChoiceItem>();
 		setSelectable(false);

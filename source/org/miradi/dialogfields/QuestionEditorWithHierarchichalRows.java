@@ -176,7 +176,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		JComponent leftComponent = createToggleButton(toggleButton, choiceItem);
 		leftComponent.setFont(font);
 		
-		PanelTitleLabel rightComponent = new PanelTitleLabel(choiceItem.getRightLabel());
+		PanelTitleLabel rightComponent = new PanelTitleLabel(choiceItem.getAdditionalText());
 		rightComponent.setFont(font);
 		
 		Box box = createHorizontalBoxWithIndents(indentCount);
