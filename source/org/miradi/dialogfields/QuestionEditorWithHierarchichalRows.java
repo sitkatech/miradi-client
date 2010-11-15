@@ -358,7 +358,6 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 			try
 			{
 				selectRow(selectableComponent);
-				notifyListeners(selectableComponent);
 			}
 			catch(Exception exception)
 			{
