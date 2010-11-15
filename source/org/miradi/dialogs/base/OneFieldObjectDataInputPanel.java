@@ -43,7 +43,7 @@ public class OneFieldObjectDataInputPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 		
-		addField(singleField);
+		addFieldWithoutLabel(singleField);
 		
 		updateFieldsFromProject();
 	}
