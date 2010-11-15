@@ -80,7 +80,7 @@ public class HabitatAssociationQuestion extends StaticChoiceQuestion
 				new ChoiceItemWithLongDescriptionProvider("5.16", EAM.text("Wetlands - Permanent Saline, Brackish or Alkaline Marshes/Pools")),
 				new ChoiceItemWithLongDescriptionProvider("5.17", EAM.text("Wetlands - Seasonal/Intermittent Saline, Brackish or Alkaline Marshes/Pools")),
 				new ChoiceItemWithLongDescriptionProvider("5.18", EAM.text("Wetlands - Karst and Other Subterranean Hydrological Systems [inland]")),
-				new NonSelectableChoiceItem("6", EAM.text("Rocky Areas [e.g. inland cliffs, mountain peaks]")),
+				new ChoiceItemWithLongDescriptionProvider("6", EAM.text("Rocky Areas [e.g. inland cliffs, mountain peaks]")),
 				new NonSelectableChoiceItem("7", EAM.text("Caves and Subterranean Habitats (non-aquatic)")),
 				new ChoiceItemWithLongDescriptionProvider("7.1", EAM.text("- Caves")),
 				new ChoiceItemWithLongDescriptionProvider("7.2", EAM.text("- Other Subterranean Habitats")),
