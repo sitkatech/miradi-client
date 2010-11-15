@@ -24,7 +24,7 @@ import java.util.Vector;
 
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 
-public class ChoiceItemWithChildren extends ChoiceItemWithRowDescriptionProvider
+public class ChoiceItemWithChildren extends ChoiceItemWithLongDescriptionProvider
 {
 	public ChoiceItemWithChildren(String codeToUse, AbstractLongDescriptionProvider providerToUse)
 	{

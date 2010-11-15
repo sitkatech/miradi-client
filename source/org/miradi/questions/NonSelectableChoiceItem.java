@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
-public class NonSelectableChoiceItem extends ChoiceItemWithRowDescriptionProvider
+public class NonSelectableChoiceItem extends ChoiceItemWithLongDescriptionProvider
 {
 	public NonSelectableChoiceItem(String codeToUse, String labelToUse)
 	{

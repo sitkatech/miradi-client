@@ -33,6 +33,6 @@ public class TncTerrestrialEcoRegionQuestion extends TwoLevelQuestionWithDescrip
 	@Override
 	protected ChoiceItem createChoiceItem(String code, String label, String description) throws Exception
 	{
-		return new ChoiceItemWithRowDescriptionProvider(code, label, description, new StaticLongDescriptionProvider());
+		return new ChoiceItemWithLongDescriptionProvider(code, label, description, new StaticLongDescriptionProvider());
 	}
 }

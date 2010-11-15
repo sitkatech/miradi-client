@@ -43,7 +43,7 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceItemWithRowDescriptionProvider;
+import org.miradi.questions.ChoiceItemWithLongDescriptionProvider;
 import org.miradi.questions.ChoiceQuestion;
 
 public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComponent
@@ -126,7 +126,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 
 	protected void createRowPanel(TwoColumnPanel mainRowsPanel,	JToggleButton toggleButton, ChoiceItem choiceItem) throws Exception
 	{
-		ChoiceItemWithRowDescriptionProvider castedChoiceItem = (ChoiceItemWithRowDescriptionProvider) choiceItem;
+		ChoiceItemWithLongDescriptionProvider castedChoiceItem = (ChoiceItemWithLongDescriptionProvider) choiceItem;
 		createHeaderSelectableRow(mainRowsPanel, toggleButton, castedChoiceItem);
 		addSubHeaderRows(mainRowsPanel, toggleButton, choiceItem.getChildren());
 	}
@@ -135,43 +135,43 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 	{
 		for(ChoiceItem childChoiceItem : children)
 		{
-			ChoiceItemWithRowDescriptionProvider castedChoiceItem = (ChoiceItemWithRowDescriptionProvider) childChoiceItem;
+			ChoiceItemWithLongDescriptionProvider castedChoiceItem = (ChoiceItemWithLongDescriptionProvider) childChoiceItem;
 			createSubHeaderSelectableRow(mainRowsPanel, toggleButton, castedChoiceItem);
 			addLeafRows(mainRowsPanel, toggleButton, castedChoiceItem);
 		}
 	}
 
-	private void addLeafRows(TwoColumnPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithRowDescriptionProvider parentChoiceItem) throws Exception
+	private void addLeafRows(TwoColumnPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider parentChoiceItem) throws Exception
 	{
 		Vector<ChoiceItem> children = parentChoiceItem.getChildren();
 		for(ChoiceItem childChoiceItem : children)
 		{
-			createLeafSelectableRow(mainRowsPanel, toggleButton, (ChoiceItemWithRowDescriptionProvider) childChoiceItem);
+			createLeafSelectableRow(mainRowsPanel, toggleButton, (ChoiceItemWithLongDescriptionProvider) childChoiceItem);
 		}		
 	}
 	
-	private void createLeafSelectableRow(TwoColumnPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithRowDescriptionProvider choiceItem) throws Exception
+	private void createLeafSelectableRow(TwoColumnPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
 	{
 	 	final int LEAF_INDENT_COUNT = 2;
 		
 		createSelectableRow(mainRowsPanel, toggleButton, choiceItem, LEAF_INDENT_COUNT, getLeafTitleFont());
 	}
 
-	private void createSubHeaderSelectableRow(TwoColumnPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithRowDescriptionProvider choiceItem) throws Exception
+	private void createSubHeaderSelectableRow(TwoColumnPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
 	{
 		final int SUBHEADER_INDENT_COUNT = 1;
 		
 		createSelectableRow(mainRowsPanel, toggleButton, choiceItem, SUBHEADER_INDENT_COUNT, createSubHeaderFont());
 	}
 
-	private void createHeaderSelectableRow(TwoColumnPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithRowDescriptionProvider choiceItem) throws Exception
+	private void createHeaderSelectableRow(TwoColumnPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
 	{
 		final int HEADER_INDENT_COUNT = 0;
 		
 		createSelectableRow(mainRowsPanel, toggleButton, choiceItem, HEADER_INDENT_COUNT, createHeaderTitleFont());
 	}
 
-	protected void createSelectableRow(TwoColumnPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithRowDescriptionProvider choiceItem, final int indentCount, Font font)
+	protected void createSelectableRow(TwoColumnPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem, final int indentCount, Font font)
 	{
 		JComponent leftComponent = createToggleButton(toggleButton, choiceItem);
 		leftComponent.setFont(font);

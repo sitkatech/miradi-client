@@ -25,34 +25,34 @@ import java.awt.Color;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
 
-public class ChoiceItemWithRowDescriptionProvider extends ChoiceItemWithAdditionalText
+public class ChoiceItemWithLongDescriptionProvider extends ChoiceItemWithAdditionalText
 {	
-	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, Color colorToUse)
+	public ChoiceItemWithLongDescriptionProvider(String codeToUse, String labelToUse, Color colorToUse)
 	{
 		this(codeToUse, labelToUse, "", colorToUse, new StaticLongDescriptionProvider());
 	}
 	
-	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse)
+	public ChoiceItemWithLongDescriptionProvider(String codeToUse, String labelToUse)
 	{
 		this(codeToUse, labelToUse, "", new StaticLongDescriptionProvider());
 	}
 
-	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String additionalTextToUse)
+	public ChoiceItemWithLongDescriptionProvider(String codeToUse, String labelToUse, String additionalTextToUse)
 	{
 		this(codeToUse, labelToUse, additionalTextToUse, new StaticLongDescriptionProvider());
 	}
 	
-	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, AbstractLongDescriptionProvider providerToUse)
+	public ChoiceItemWithLongDescriptionProvider(String codeToUse, String labelToUse, AbstractLongDescriptionProvider providerToUse)
 	{
 		this(codeToUse, labelToUse, "", providerToUse);
 	}
 	
-	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String additionalTextToUse, AbstractLongDescriptionProvider providerToUse)
+	public ChoiceItemWithLongDescriptionProvider(String codeToUse, String labelToUse, String additionalTextToUse, AbstractLongDescriptionProvider providerToUse)
 	{
 		this(codeToUse, labelToUse, additionalTextToUse, (Color)null, providerToUse);
 	}
 	
-	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String additionalTextToUse, Color colorToUse, AbstractLongDescriptionProvider providerToUse)
+	public ChoiceItemWithLongDescriptionProvider(String codeToUse, String labelToUse, String additionalTextToUse, Color colorToUse, AbstractLongDescriptionProvider providerToUse)
 	{
 		super(codeToUse, labelToUse, additionalTextToUse, colorToUse);
 		
