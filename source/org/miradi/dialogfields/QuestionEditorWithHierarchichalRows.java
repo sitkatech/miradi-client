@@ -86,7 +86,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		rowSelectionListeners.remove(rightSideDescriptionPanel);
 	}
 	
-	protected void notifyListeners(SelectableRow selectedRow)
+	private void notifyListeners(SelectableRow selectedRow)
 	{
 		for (ListSelectionListener panel : rowSelectionListeners)
 		{
