@@ -35,4 +35,16 @@ public class TwoLevelQuestionWithDescription extends TwoLevelQuestion
 	{
 		return new ChoiceItemWithLongDescriptionProvider(code, label, new StaticLongDescriptionProvider(description));
 	}
+
+	@Override
+	public boolean hasAdditionalText()
+	{
+		return false;
+	}
+	
+	@Override
+	public boolean hasLongDescriptionProvider()
+	{
+		return true;
+	}
 }

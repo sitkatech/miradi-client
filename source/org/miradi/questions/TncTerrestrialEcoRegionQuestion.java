@@ -35,4 +35,10 @@ public class TncTerrestrialEcoRegionQuestion extends TwoLevelQuestionWithDescrip
 	{
 		return new ChoiceItemWithLongDescriptionProvider(code, label, description, new StaticLongDescriptionProvider());
 	}
+	
+	@Override
+	public boolean hasAdditionalText()
+	{
+		return true;
+	}
 }
