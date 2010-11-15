@@ -22,21 +22,21 @@ package org.miradi.questions;
 
 import java.util.Vector;
 
-import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
+import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
 
 public class ChoiceItemWithChildren extends ChoiceItemWithRowDescriptionProvider
 {
-	public ChoiceItemWithChildren(String codeToUse, AbstractLongDescriptionProvider providerToUse)
+	public ChoiceItemWithChildren(String codeToUse, StaticLongDescriptionProvider providerToUse)
 	{
 		this(codeToUse, "", "", providerToUse);
 	}
 	
-	public ChoiceItemWithChildren(String codeToUse, String leftLabelToUse, AbstractLongDescriptionProvider providerToUse)
+	public ChoiceItemWithChildren(String codeToUse, String leftLabelToUse, StaticLongDescriptionProvider providerToUse)
 	{
 		this(codeToUse, leftLabelToUse, "", providerToUse);
 	}
 	
-	public ChoiceItemWithChildren(String codeToUse, String leftLabelToUse, String rightLabelToUse, AbstractLongDescriptionProvider providerToUse)
+	public ChoiceItemWithChildren(String codeToUse, String leftLabelToUse, String rightLabelToUse, StaticLongDescriptionProvider providerToUse)
 	{
 		super(codeToUse, leftLabelToUse, rightLabelToUse, providerToUse);
 		

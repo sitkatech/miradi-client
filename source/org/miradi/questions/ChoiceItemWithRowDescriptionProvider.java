@@ -22,7 +22,7 @@ package org.miradi.questions;
 
 import java.awt.Color;
 
-import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
+import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
 import org.miradi.dialogs.dashboard.StringRowDescriptionProvider;
 
 public class ChoiceItemWithRowDescriptionProvider extends ChoiceItemWithLeftRightLabel
@@ -42,27 +42,27 @@ public class ChoiceItemWithRowDescriptionProvider extends ChoiceItemWithLeftRigh
 		this(codeToUse, labelToUse, rightLabelToUse, new StringRowDescriptionProvider());
 	}
 	
-	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, AbstractLongDescriptionProvider providerToUse)
+	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, StaticLongDescriptionProvider providerToUse)
 	{
 		this(codeToUse, labelToUse, "", providerToUse);
 	}
 	
-	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String rightLabelToUse, AbstractLongDescriptionProvider providerToUse)
+	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String rightLabelToUse, StaticLongDescriptionProvider providerToUse)
 	{
 		this(codeToUse, labelToUse, rightLabelToUse, (Color)null, providerToUse);
 	}
 	
-	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String rightLabelToUse, Color colorToUse, AbstractLongDescriptionProvider providerToUse)
+	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String rightLabelToUse, Color colorToUse, StaticLongDescriptionProvider providerToUse)
 	{
 		super(codeToUse, labelToUse, rightLabelToUse, colorToUse);
 		
 		provider = providerToUse;
 	}
 	
-	public AbstractLongDescriptionProvider getProvider()
+	public StaticLongDescriptionProvider getProvider()
 	{
 		return provider;
 	}
 	
-	private AbstractLongDescriptionProvider provider;
+	private StaticLongDescriptionProvider provider;
 }
