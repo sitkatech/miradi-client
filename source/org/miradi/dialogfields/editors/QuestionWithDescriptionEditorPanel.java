@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields.editors;
 
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
-import org.miradi.dialogs.dashboard.AbstractRowDescriptionProvider;
+import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.dashboard.LeftSideRightSideSplitterContainerTab;
 import org.miradi.dialogs.dashboard.StringRowDescriptionProvider;
 import org.miradi.main.EAM;
@@ -36,7 +36,7 @@ public class QuestionWithDescriptionEditorPanel extends LeftSideRightSideSplitte
 	}		
 		
 	@Override
-	protected AbstractRowDescriptionProvider getMainDescriptionFileName() throws Exception
+	protected AbstractLongDescriptionProvider getMainDescriptionFileName() throws Exception
 	{
 		return new StringRowDescriptionProvider();
 	}

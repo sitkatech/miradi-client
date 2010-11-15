@@ -40,7 +40,7 @@ public class CaptureAndShareLearningTab extends LeftSideRightSideSplitterContain
 	}
 
 	@Override
-	protected AbstractRowDescriptionProvider getMainDescriptionFileName() throws Exception
+	protected AbstractLongDescriptionProvider getMainDescriptionFileName() throws Exception
 	{
 		return new HtmlResourceRowDescriptionProvider("dashboard/5.html");
 	}
