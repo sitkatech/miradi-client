@@ -184,7 +184,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		mainRowsPanel.add(box);
 		mainRowsPanel.add(rightComponent);
 		
-		SelectableRow selectableRow = new SelectableRow(leftComponent, rightComponent, choiceItem.getProvider());
+		SelectableRow selectableRow = new SelectableRow(leftComponent, rightComponent, choiceItem.getLongDescriptionProvider());
 		selectableRow.addMouseListener(new ClickHandler(selectableRow));
 		getSafeSelectableRows().add(selectableRow);
 	}
