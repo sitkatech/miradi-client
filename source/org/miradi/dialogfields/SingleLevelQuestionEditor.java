@@ -25,7 +25,7 @@ import javax.swing.JToggleButton;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceItemWithRowDescriptionProvider;
+import org.miradi.questions.ChoiceItemWithLongDescriptionProvider;
 import org.miradi.questions.ChoiceQuestion;
 
 public class SingleLevelQuestionEditor extends QuestionEditorWithHierarchichalRows
@@ -38,6 +38,6 @@ public class SingleLevelQuestionEditor extends QuestionEditorWithHierarchichalRo
 	@Override
 	protected void createRowPanel(TwoColumnPanel mainRowsPanel,	JToggleButton toggleButton, ChoiceItem choiceItem) throws Exception
 	{
-		createSelectableRow(mainRowsPanel, toggleButton, (ChoiceItemWithRowDescriptionProvider) choiceItem, 0, getRawFont());
+		createSelectableRow(mainRowsPanel, toggleButton, (ChoiceItemWithLongDescriptionProvider) choiceItem, 0, getRawFont());
 	}
 }

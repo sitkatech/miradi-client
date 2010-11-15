@@ -33,6 +33,6 @@ public class TwoLevelQuestionWithDescription extends TwoLevelQuestion
 	@Override
 	protected ChoiceItem createChoiceItem(String code, String label, String description) throws Exception
 	{
-		return new ChoiceItemWithRowDescriptionProvider(code, label, new StaticLongDescriptionProvider(description));
+		return new ChoiceItemWithLongDescriptionProvider(code, label, new StaticLongDescriptionProvider(description));
 	}
 }
