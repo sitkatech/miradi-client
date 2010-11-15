@@ -107,11 +107,11 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 	@Override
 	protected MiradiPanel createRowPanel(JToggleButton toggleButton, ChoiceItem choiceItem)
 	{
-		TwoColumnPanel mainRowsPanel = new TwoColumnPanel();
-		mainRowsPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		TwoColumnPanel mainRowPanel = new TwoColumnPanel();
+		mainRowPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		try
 		{
-			createRowPanel(mainRowsPanel, toggleButton, choiceItem);
+			createRowPanel(mainRowPanel, toggleButton, choiceItem);
 		}
 		catch (Exception e)
 		{
@@ -120,7 +120,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		}
 		
 		MiradiPanel wrapperPanel = new MiradiPanel(new BorderLayout());
-		wrapperPanel.add(mainRowsPanel);
+		wrapperPanel.add(mainRowPanel);
 		return wrapperPanel;
 	}
 
