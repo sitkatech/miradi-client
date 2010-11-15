@@ -78,7 +78,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		addAdditionalComponent();
 		ChoiceItem[] choices = getQuestion().getChoices();
 		clearChoiceItemToToggleButtonMap();
-		MiradiPanel toggleButtonsPanel = new MiradiPanel(new GridLayoutPlus(0, getColumnCount())); 
+		MiradiPanel toggleButtonsPanel = new MiradiPanel(new GridLayoutPlus(0, calculateColumnCount())); 
 		toggleButtonsPanel.setBackground(getTogglePanelBackgroundColor());
 		for (int index = 0; index < choices.length; ++index)
 		{
@@ -88,9 +88,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 			toggleButton.addActionListener(new ToggleButtonHandler());
 			choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
 
-			MiradiPanel rowPanel = createRowPanel(toggleButton, choiceItem);
-			rowPanel.setBackground(getTogglePanelBackgroundColor());
-			toggleButtonsPanel.add(rowPanel);
+			createRowPanel(toggleButtonsPanel, toggleButton, choiceItem);
 		}
 	
 		add(new MiradiScrollPane(toggleButtonsPanel));
@@ -98,20 +96,21 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		repaint();
 	}
 
-	protected MiradiPanel createRowPanel(JToggleButton toggleButton, ChoiceItem choiceItem)
+	protected int calculateColumnCount()
 	{
-		int gridColumnCount = getColumnCount() * getNumberOfComponentsPerChoice();
-		MiradiPanel rowPanel = new MiradiPanel(new GridLayoutPlus(0, gridColumnCount));
+		return getColumnCount() * getNumberOfComponentsPerChoice();
+	}
+
+	protected void createRowPanel(MiradiPanel toggleButtonsPanel, JToggleButton toggleButton, ChoiceItem choiceItem)
+	{
 		Icon icon = choiceItem.getIcon();
-		rowPanel.add(getSafeIconLabel(icon));
+		toggleButtonsPanel.add(getSafeIconLabel(icon));
 		if (choiceItem.isSelectable())
-			rowPanel.add(toggleButton);
+			toggleButtonsPanel.add(toggleButton);
 		else
-			rowPanel.add(new PanelTitleLabel(choiceItem.getLabel()));
+			toggleButtonsPanel.add(new PanelTitleLabel(choiceItem.getLabel()));
 		
-		rowPanel.add(createDescriptionComponent(choiceItem));
-		
-		return rowPanel;
+		toggleButtonsPanel.add(createDescriptionComponent(choiceItem));
 	}
 
 	private int getNumberOfComponentsPerChoice()
@@ -195,7 +194,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		return question;
 	}
 	
-	private int getColumnCount()
+	protected int getColumnCount()
 	{
 		return columnCount;
 	}
