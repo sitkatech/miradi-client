@@ -37,9 +37,9 @@ public class ChoiceItemWithRowDescriptionProvider extends ChoiceItemWithLeftRigh
 		this(codeToUse, labelToUse, "", new StringRowDescriptionProvider());
 	}
 
-	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String rightLabelToUse)
+	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String additionalTextToUse)
 	{
-		this(codeToUse, labelToUse, rightLabelToUse, new StringRowDescriptionProvider());
+		this(codeToUse, labelToUse, additionalTextToUse, new StringRowDescriptionProvider());
 	}
 	
 	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, StaticLongDescriptionProvider providerToUse)
@@ -47,14 +47,14 @@ public class ChoiceItemWithRowDescriptionProvider extends ChoiceItemWithLeftRigh
 		this(codeToUse, labelToUse, "", providerToUse);
 	}
 	
-	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String rightLabelToUse, StaticLongDescriptionProvider providerToUse)
+	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String additionalTextToUse, StaticLongDescriptionProvider providerToUse)
 	{
-		this(codeToUse, labelToUse, rightLabelToUse, (Color)null, providerToUse);
+		this(codeToUse, labelToUse, additionalTextToUse, (Color)null, providerToUse);
 	}
 	
-	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String rightLabelToUse, Color colorToUse, StaticLongDescriptionProvider providerToUse)
+	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String additionalTextToUse, Color colorToUse, StaticLongDescriptionProvider providerToUse)
 	{
-		super(codeToUse, labelToUse, rightLabelToUse, colorToUse);
+		super(codeToUse, labelToUse, additionalTextToUse, colorToUse);
 		
 		provider = providerToUse;
 	}

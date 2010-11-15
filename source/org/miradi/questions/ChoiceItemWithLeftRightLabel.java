@@ -29,31 +29,31 @@ public class ChoiceItemWithLeftRightLabel extends ChoiceItem
 		this(codeToUse, "", "");
 	}
 	
-	public ChoiceItemWithLeftRightLabel(String codeToUse, String leftLabelToUse)
+	public ChoiceItemWithLeftRightLabel(String codeToUse, String additionalTextToUse)
 	{
-		this(codeToUse, leftLabelToUse, "");
+		this(codeToUse, additionalTextToUse, "");
 	}
 	
-	public ChoiceItemWithLeftRightLabel(String codeToUse, String leftLabelToUse, String rightLabelToUse)
+	public ChoiceItemWithLeftRightLabel(String codeToUse, String leftLabelToUse, String additionalTextToUse)
 	{
-		this(codeToUse, leftLabelToUse, rightLabelToUse, (Color)null);
+		this(codeToUse, leftLabelToUse, additionalTextToUse, (Color)null);
 	}
 	
-	public ChoiceItemWithLeftRightLabel(String codeToUse, String leftLabelToUse, String rightLabelToUse, Color colorToUse)
+	public ChoiceItemWithLeftRightLabel(String codeToUse, String leftLabelToUse, String additionalTextToUse, Color colorToUse)
 	{
 		super(codeToUse, leftLabelToUse, colorToUse);
 		
-		rightLabel = rightLabelToUse;
+		additionalText = additionalTextToUse;
 	}
 
-	public void setRightLabel(String rightLabelToUse)
+	public void setRightLabel(String additionalTextToUse)
 	{
-		rightLabel = rightLabelToUse;
+		additionalText = additionalTextToUse;
 	}
 	
-	public String getRightLabel()
+	public String getAdditionalText()
 	{
-		return rightLabel;
+		return additionalText;
 	}
 	
 	public String getLeftLabel()
@@ -61,5 +61,5 @@ public class ChoiceItemWithLeftRightLabel extends ChoiceItem
 		return getLabel();
 	}
 	
-	private String rightLabel;
+	private String additionalText;
 }
