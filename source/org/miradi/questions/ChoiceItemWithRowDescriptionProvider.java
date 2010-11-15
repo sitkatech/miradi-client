@@ -59,7 +59,7 @@ public class ChoiceItemWithRowDescriptionProvider extends ChoiceItemWithAddition
 		provider = providerToUse;
 	}
 	
-	public AbstractLongDescriptionProvider getProvider()
+	public AbstractLongDescriptionProvider getLongDescriptionProvider()
 	{
 		return provider;
 	}
