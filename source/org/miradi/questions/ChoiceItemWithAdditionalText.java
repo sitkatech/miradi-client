@@ -51,6 +51,7 @@ public class ChoiceItemWithAdditionalText extends ChoiceItem
 		additionalText = additionalTextToUse;
 	}
 	
+	@Override
 	public String getAdditionalText()
 	{
 		return additionalText;

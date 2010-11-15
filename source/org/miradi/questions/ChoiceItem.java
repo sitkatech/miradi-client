@@ -173,6 +173,11 @@ public class ChoiceItem implements Comparable<Object>
 		String otherString = rawObject.toString();
 		return thisString.compareToIgnoreCase(otherString);
 	}
+	
+	public String getAdditionalText()
+	{
+		return null;
+	}
 
 	private boolean selectable;
 	private String code;
