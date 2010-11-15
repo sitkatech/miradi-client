@@ -24,17 +24,17 @@ import javax.swing.event.ListSelectionEvent;
 
 public class RowSelectionEvent extends ListSelectionEvent
 {
-	public RowSelectionEvent(Object source, StaticLongDescriptionProvider descriptionProviderToUse)
+	public RowSelectionEvent(Object source, AbstractLongDescriptionProvider descriptionProviderToUse)
 	{
 		super(source, 0, 0, false);
 		
 		descriptionProvider = descriptionProviderToUse;
 	}
 	
-	public StaticLongDescriptionProvider getDescriptionProvider()
+	public AbstractLongDescriptionProvider getDescriptionProvider()
 	{
 		return descriptionProvider;
 	}
 
-	private StaticLongDescriptionProvider descriptionProvider;
+	private AbstractLongDescriptionProvider descriptionProvider;
 }

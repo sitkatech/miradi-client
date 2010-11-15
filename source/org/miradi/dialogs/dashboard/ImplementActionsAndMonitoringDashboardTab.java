@@ -40,7 +40,7 @@ public class ImplementActionsAndMonitoringDashboardTab extends LeftSideRightSide
 	}
 
 	@Override
-	protected StaticLongDescriptionProvider getMainDescriptionFileName() throws Exception
+	protected AbstractLongDescriptionProvider getMainDescriptionFileName() throws Exception
 	{
 		return new HtmlResourceLongDescriptionProvider("dashboard/3.html");
 	}
