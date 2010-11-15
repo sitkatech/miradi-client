@@ -42,7 +42,7 @@ public class AnalyzeAdaptAndUseTab extends LeftSideRightSideSplitterContainerTab
 	@Override
 	protected AbstractLongDescriptionProvider getMainDescriptionFileName() throws Exception
 	{
-		return new HtmlResourceRowDescriptionProvider("dashboard/4.html");
+		return new HtmlResourceLongDescriptionProvider("dashboard/4.html");
 	}
 
 	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse) throws Exception

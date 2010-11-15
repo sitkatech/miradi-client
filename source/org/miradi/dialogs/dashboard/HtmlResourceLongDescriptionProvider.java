@@ -22,14 +22,14 @@ package org.miradi.dialogs.dashboard;
 
 import org.miradi.utils.Translation;
 
-public class HtmlResourceRowDescriptionProvider extends AbstractLongDescriptionProvider
+public class HtmlResourceLongDescriptionProvider extends AbstractLongDescriptionProvider
 {
-	public HtmlResourceRowDescriptionProvider(String htmlFileName) throws Exception
+	public HtmlResourceLongDescriptionProvider(String htmlFileName) throws Exception
 	{
 		super(Translation.getHtmlContent(htmlFileName), null);
 	}
 
-	public HtmlResourceRowDescriptionProvider(String htmlFileName, String wizardStepNameToUse) throws Exception
+	public HtmlResourceLongDescriptionProvider(String htmlFileName, String wizardStepNameToUse) throws Exception
 	{
 		super(Translation.getHtmlContent(htmlFileName), wizardStepNameToUse);
 	}
