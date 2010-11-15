@@ -22,24 +22,24 @@ package org.miradi.questions;
 
 import java.awt.Color;
 
-public class ChoiceItemWithLeftRightLabel extends ChoiceItem
+public class ChoiceItemWithAdditionalText extends ChoiceItem
 {
-	public ChoiceItemWithLeftRightLabel(String codeToUse)
+	public ChoiceItemWithAdditionalText(String codeToUse)
 	{
 		this(codeToUse, "", "");
 	}
 	
-	public ChoiceItemWithLeftRightLabel(String codeToUse, String additionalTextToUse)
+	public ChoiceItemWithAdditionalText(String codeToUse, String additionalTextToUse)
 	{
 		this(codeToUse, additionalTextToUse, "");
 	}
 	
-	public ChoiceItemWithLeftRightLabel(String codeToUse, String leftLabelToUse, String additionalTextToUse)
+	public ChoiceItemWithAdditionalText(String codeToUse, String leftLabelToUse, String additionalTextToUse)
 	{
 		this(codeToUse, leftLabelToUse, additionalTextToUse, (Color)null);
 	}
 	
-	public ChoiceItemWithLeftRightLabel(String codeToUse, String leftLabelToUse, String additionalTextToUse, Color colorToUse)
+	public ChoiceItemWithAdditionalText(String codeToUse, String leftLabelToUse, String additionalTextToUse, Color colorToUse)
 	{
 		super(codeToUse, leftLabelToUse, colorToUse);
 		

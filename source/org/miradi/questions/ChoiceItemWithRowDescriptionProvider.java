@@ -25,7 +25,7 @@ import java.awt.Color;
 import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
 import org.miradi.dialogs.dashboard.StringRowDescriptionProvider;
 
-public class ChoiceItemWithRowDescriptionProvider extends ChoiceItemWithLeftRightLabel
+public class ChoiceItemWithRowDescriptionProvider extends ChoiceItemWithAdditionalText
 {	
 	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, Color colorToUse)
 	{
