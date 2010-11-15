@@ -39,6 +39,18 @@ abstract public class DynamicChoiceWithRootChoiceItem extends DynamicChoiceQuest
 			return new ChoiceItem[0];
 		}
 	}
+	
+	@Override
+	public boolean hasAdditionalText()
+	{
+		return true;
+	}
+	
+	@Override
+	public boolean hasLongDescriptionProvider()
+	{
+		return true;
+	}
 
 	abstract ChoiceItemWithChildren createHeaderChoiceItem() throws Exception;
 }

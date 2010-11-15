@@ -177,6 +177,16 @@ public abstract class ChoiceQuestion
 	{
 	}
 	
+	public boolean hasAdditionalText()
+	{
+		return false;
+	}
+	
+	public boolean hasLongDescriptionProvider()
+	{
+		return false;
+	}
+	
 	public static final Color COLOR_ALERT = Color.RED;
 	public static final Color COLOR_CAUTION = ColorManager.DARK_YELLOW;
 	public static final Color COLOR_OK = ColorManager.LIGHT_GREEN;
