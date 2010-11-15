@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
@@ -38,7 +37,6 @@ import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.dashboard.RowSelectionEvent;
 import org.miradi.dialogs.dashboard.SelectableRow;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -105,33 +103,38 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 	}
 	
 	@Override
-	protected MiradiPanel createRowPanel(JToggleButton toggleButton, ChoiceItem choiceItem)
+	protected void createRowPanel(MiradiPanel toggleButtonsPanel, JToggleButton toggleButton, ChoiceItem choiceItem)
 	{
-		TwoColumnPanel mainRowPanel = new TwoColumnPanel();
-		mainRowPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		toggleButtonsPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		try
 		{
-			createRowPanel(mainRowPanel, toggleButton, choiceItem);
+			createRowPanel2(toggleButtonsPanel, toggleButton, choiceItem);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 		}
+	}
+	
+	@Override
+	protected int calculateColumnCount()
+	{
+		int columnPerRowCount = getColumnCount();
+		if (getQuestion().hasAdditionalText())
+			++columnPerRowCount;
 		
-		MiradiPanel wrapperPanel = new MiradiPanel(new BorderLayout());
-		wrapperPanel.add(mainRowPanel);
-		return wrapperPanel;
+		return columnPerRowCount;
 	}
 
-	protected void createRowPanel(TwoColumnPanel mainRowsPanel,	JToggleButton toggleButton, ChoiceItem choiceItem) throws Exception
+	protected void createRowPanel2(MiradiPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItem choiceItem) throws Exception
 	{
 		ChoiceItemWithLongDescriptionProvider castedChoiceItem = (ChoiceItemWithLongDescriptionProvider) choiceItem;
 		createHeaderSelectableRow(mainRowsPanel, toggleButton, castedChoiceItem);
 		addSubHeaderRows(mainRowsPanel, toggleButton, choiceItem.getChildren());
 	}
 
-	protected void addSubHeaderRows(TwoColumnPanel mainRowsPanel, JToggleButton toggleButton, Vector<ChoiceItem> children) throws Exception
+	protected void addSubHeaderRows(MiradiPanel mainRowsPanel, JToggleButton toggleButton, Vector<ChoiceItem> children) throws Exception
 	{
 		for(ChoiceItem childChoiceItem : children)
 		{
@@ -141,7 +144,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		}
 	}
 
-	private void addLeafRows(TwoColumnPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider parentChoiceItem) throws Exception
+	private void addLeafRows(MiradiPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider parentChoiceItem) throws Exception
 	{
 		Vector<ChoiceItem> children = parentChoiceItem.getChildren();
 		for(ChoiceItem childChoiceItem : children)
@@ -150,28 +153,28 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		}		
 	}
 	
-	private void createLeafSelectableRow(TwoColumnPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
+	private void createLeafSelectableRow(MiradiPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
 	{
 	 	final int LEAF_INDENT_COUNT = 2;
 		
 		createSelectableRow(mainRowsPanel, toggleButton, choiceItem, LEAF_INDENT_COUNT, getLeafTitleFont());
 	}
 
-	private void createSubHeaderSelectableRow(TwoColumnPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
+	private void createSubHeaderSelectableRow(MiradiPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
 	{
 		final int SUBHEADER_INDENT_COUNT = 1;
 		
 		createSelectableRow(mainRowsPanel, toggleButton, choiceItem, SUBHEADER_INDENT_COUNT, createSubHeaderFont());
 	}
 
-	private void createHeaderSelectableRow(TwoColumnPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
+	private void createHeaderSelectableRow(MiradiPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
 	{
 		final int HEADER_INDENT_COUNT = 0;
 		
 		createSelectableRow(mainRowsPanel, toggleButton, choiceItem, HEADER_INDENT_COUNT, createHeaderTitleFont());
 	}
 
-	protected void createSelectableRow(TwoColumnPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem, final int indentCount, Font font)
+	protected void createSelectableRow(MiradiPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem, final int indentCount, Font font)
 	{
 		JComponent leftComponent = createToggleButton(toggleButton, choiceItem);
 		leftComponent.setFont(font);
