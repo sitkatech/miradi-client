@@ -26,6 +26,7 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Set;
 
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.JCheckBox;
 import javax.swing.JToggleButton;
@@ -91,7 +92,9 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 			createRowPanel(toggleButtonsPanel, toggleButton, choiceItem);
 		}
 	
-		add(new MiradiScrollPane(toggleButtonsPanel));
+		MiradiScrollPane scrollPane = new MiradiScrollPane(toggleButtonsPanel);
+		scrollPane.setBorder(BorderFactory.createEmptyBorder());
+		add(scrollPane);
 		revalidate();
 		repaint();
 	}
