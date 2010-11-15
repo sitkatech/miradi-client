@@ -22,7 +22,7 @@ package org.miradi.questions;
 
 import java.util.HashMap;
 
-import org.miradi.dialogs.dashboard.HtmlResourceRowDescriptionProvider;
+import org.miradi.dialogs.dashboard.HtmlResourceLongDescriptionProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
@@ -41,7 +41,7 @@ public class PlanActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoic
 	@Override
 	public ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
-		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("2Header", EAM.text("2. Plan Actions and Monitoring"), new HtmlResourceRowDescriptionProvider(getMainDescriptionFileName(), getSummaryOverviewStepName()));
+		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("2Header", EAM.text("2. Plan Actions and Monitoring"), new HtmlResourceLongDescriptionProvider(getMainDescriptionFileName(), getSummaryOverviewStepName()));
 		
 		headerChoiceItem.addChild(addDevelopStrategicPlanRow());
 		headerChoiceItem.addChild(addDevelopFormatMonitoringPlanRow());
@@ -53,7 +53,7 @@ public class PlanActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoic
 	
 	private ChoiceItemWithChildren addDevelopOperationalPlanRow() throws Exception
 	{
-		HtmlResourceRowDescriptionProvider providerToUse = new HtmlResourceRowDescriptionProvider(OPERATIONAL_PLAN_RIGHT_SIDE_FILE_NAME, getSummaryOverviewStepName());
+		HtmlResourceLongDescriptionProvider providerToUse = new HtmlResourceLongDescriptionProvider(OPERATIONAL_PLAN_RIGHT_SIDE_FILE_NAME, getSummaryOverviewStepName());
 		ChoiceItemWithChildren subHeaderChoiceItem = new ChoiceItemWithChildren("2C", EAM.text("2C. Develop Operational Plan"), providerToUse);
 		
 		subHeaderChoiceItem.addChild(new ChoiceItemWithChildren("AssessHumanFinancialAndResources", EAM.text("Assess Human Financial and other resources"), providerToUse));
@@ -62,7 +62,7 @@ public class PlanActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoic
 		return subHeaderChoiceItem;
 	}
 
-	private ChoiceItemWithChildren createProjectPlanningStartEndDateRow(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createProjectPlanningStartEndDateRow(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%projectPlanningStartDate", getDashboardData(Dashboard.PSEUDO_PROJECT_PLANNING_START_DATE));
@@ -75,7 +75,7 @@ public class PlanActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoic
 
 	private ChoiceItemWithChildren addDevelopFormatMonitoringPlanRow() throws Exception
 	{
-		HtmlResourceRowDescriptionProvider providerToUse = new HtmlResourceRowDescriptionProvider(DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME, getSummaryOverviewStepName());
+		HtmlResourceLongDescriptionProvider providerToUse = new HtmlResourceLongDescriptionProvider(DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME, getSummaryOverviewStepName());
 		ChoiceItemWithChildren subHeaderChoiceItem = new ChoiceItemWithChildren("2B", EAM.text("2B. Develop a formal monitoring plan"), providerToUse);
 		
 		subHeaderChoiceItem.addChild(new ChoiceItemWithChildren("DefineAudiencesAndInformationNeeds", EAM.text("Define Audiences and Information Needs:"), EAM.text("Use Comments Field?"), providerToUse));
@@ -86,7 +86,7 @@ public class PlanActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoic
 		return subHeaderChoiceItem;
 	}
 
-	private ChoiceItemWithChildren createObjectivesWithRelevantIndicatorsRow(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createObjectivesWithRelevantIndicatorsRow(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Finalize Monitoring Plan:");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -96,7 +96,7 @@ public class PlanActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoic
 		return new ChoiceItemWithChildren("ObjectiveRelevantIndicators", leftColumnTranslatedText, rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createIndictorsChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createIndictorsChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Define Indicators:");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -106,7 +106,7 @@ public class PlanActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoic
 		return new ChoiceItemWithChildren("KeaIndicators", leftColumnTranslatedText, rightColumnTranslatedText, providerToUse);
 	}
 	
-	private ChoiceItemWithChildren createFactorIndictorsRow(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createFactorIndictorsRow(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%factorIndicators", getDashboardData(Dashboard.PSEUDO_FACTOR_INDICATORS_COUNT));
@@ -117,7 +117,7 @@ public class PlanActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoic
 
 	private ChoiceItemWithChildren addDevelopStrategicPlanRow() throws Exception
 	{
-		HtmlResourceRowDescriptionProvider providerToUse = new HtmlResourceRowDescriptionProvider(DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME, getSummaryOverviewStepName());
+		HtmlResourceLongDescriptionProvider providerToUse = new HtmlResourceLongDescriptionProvider(DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME, getSummaryOverviewStepName());
 		ChoiceItemWithChildren subHeaderChoiceItem = new ChoiceItemWithChildren("2A", EAM.text("2A. Develop Strategic Plan"), providerToUse);
 
 		subHeaderChoiceItem.addChild(createTargetsWithGoalChoiceItem(providerToUse));
@@ -135,7 +135,7 @@ public class PlanActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoic
 		return subHeaderChoiceItem;
 	}
 
-	private ChoiceItemWithChildren createFinalStrategicPlanChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createFinalStrategicPlanChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Finalize Strategic Plan");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -145,7 +145,7 @@ public class PlanActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoic
 		return new ChoiceItemWithChildren("ObjectivesRelevantToStrategiesPercentage", leftColumnTranslatedText, rightColumnTranslatedText, providerToUse);
 	}
 	
-	private ChoiceItemWithChildren createNonContributingStrategiesChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createNonContributingStrategiesChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%strategiesIrrelevantToObjectivesCount", getDashboardData(Dashboard.PSEUDO_IRRELEVANT_STRATEGIES_TO_OBJECTIVES_COUNT));
@@ -154,7 +154,7 @@ public class PlanActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoic
 		return new ChoiceItemWithChildren("StrategiesIrrelevantToObjectivesCount", "", rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createObjectivesCountChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createObjectivesCountChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Develop Objectives");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -164,7 +164,7 @@ public class PlanActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoic
 		return new ChoiceItemWithChildren("ObjectivesCreated", leftColumnTranslatedText, rightColumnTranslatedText, providerToUse);
 	}
 	
-	private ChoiceItemWithChildren createObjectivesInResultsChainsChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createObjectivesInResultsChainsChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%resultsChainCount", getDashboardData(Dashboard.PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT));
@@ -174,7 +174,7 @@ public class PlanActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoic
 		return new ChoiceItemWithChildren("ResultsChainsWithObjectives", "", rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createResultsChainCountChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createResultsChainCountChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Create Results Chains");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -184,7 +184,7 @@ public class PlanActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoic
 		return new ChoiceItemWithChildren("ResultsChainsCreated", leftColumnTranslatedText, rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createStrategyWithTaxonomyCountChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createStrategyWithTaxonomyCountChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Strategies with taxonomy assingments");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -194,7 +194,7 @@ public class PlanActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoic
 		return new ChoiceItemWithChildren("StrategyWithTaxonomyCount", leftColumnTranslatedText, rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createStrategyCountChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createStrategyCountChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Create Strategies");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -204,7 +204,7 @@ public class PlanActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoic
 		return new ChoiceItemWithChildren("StrategiesCreated", leftColumnTranslatedText, rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createRankedDraftStrategiesCountChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createRankedDraftStrategiesCountChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Rank Draft Strategies");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -214,7 +214,7 @@ public class PlanActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoic
 		return new ChoiceItemWithChildren("DraftStrategiesRanked", leftColumnTranslatedText, rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createDraftStrategiesCountChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createDraftStrategiesCountChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Create Draft Strategies");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -224,7 +224,7 @@ public class PlanActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoic
 		return new ChoiceItemWithChildren("DraftStrategiesCount", leftColumnTranslatedText, rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createGoalCountChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createGoalCountChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%goalsCount", getDashboardData(Dashboard.PSEUDO_GOAL_COUNT));
@@ -233,7 +233,7 @@ public class PlanActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoic
 		return new ChoiceItemWithChildren("GoalsCount", "", rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createTargetsWithGoalChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createTargetsWithGoalChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Develop Goals for Each Target:");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();

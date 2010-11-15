@@ -22,7 +22,7 @@ package org.miradi.questions;
 
 import java.util.HashMap;
 
-import org.miradi.dialogs.dashboard.HtmlResourceRowDescriptionProvider;
+import org.miradi.dialogs.dashboard.HtmlResourceLongDescriptionProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
@@ -41,7 +41,7 @@ public class ImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRoot
 	@Override
 	public ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
-		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("3Header", EAM.text("3. Implement Actions and Monitoring"), new HtmlResourceRowDescriptionProvider(getMainDescriptionFileName(), getDiagramOverviewStepName()));
+		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("3Header", EAM.text("3. Implement Actions and Monitoring"), new HtmlResourceLongDescriptionProvider(getMainDescriptionFileName(), getDiagramOverviewStepName()));
 
 		headerChoiceItem.addChild(createDevelopShortTermWorkPlanChoiceItem());
 		headerChoiceItem.addChild(createDevelopAndRefineProjectBudgetRow());
@@ -57,7 +57,7 @@ public class ImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRoot
 
 	private ChoiceItemWithChildren createImplementPlansRow() throws Exception
 	{
-		HtmlResourceRowDescriptionProvider providerToUse = new HtmlResourceRowDescriptionProvider(IMPLEMENT_PLANS_RIGHT_SIDE_FILENAME, getDiagramOverviewStepName());
+		HtmlResourceLongDescriptionProvider providerToUse = new HtmlResourceLongDescriptionProvider(IMPLEMENT_PLANS_RIGHT_SIDE_FILENAME, getDiagramOverviewStepName());
 		ChoiceItemWithChildren subHeaderChoiceItem = new ChoiceItemWithChildren("3B", EAM.text("3C. Implement Plans"), providerToUse);
 
 		subHeaderChoiceItem.addChild(new ChoiceItemWithChildren("ImplementStrategicAndMonitoringPlans", EAM.text("Implement Strategic and Monitoring Plans"), "", providerToUse));
@@ -68,7 +68,7 @@ public class ImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRoot
 		return subHeaderChoiceItem;
 	}
 
-	private ChoiceItemWithChildren createIndicatorsAndMethodsWithProgressReportsRow(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createIndicatorsAndMethodsWithProgressReportsRow(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%indicatorsAndMethodsWithProgressReportsCount", getDashboardData(Dashboard.PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_COUNT));
@@ -78,7 +78,7 @@ public class ImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRoot
 		return new ChoiceItemWithChildren("ObtainFinancialResources", "", rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createStrategiesAndActivitiesWithProgressReportsRow(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createStrategiesAndActivitiesWithProgressReportsRow(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%strategiesAndActivitiesWithProgressReportsCount", getDashboardData(Dashboard.PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_COUNT));
@@ -90,7 +90,7 @@ public class ImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRoot
 
 	private ChoiceItemWithChildren createDevelopAndRefineProjectBudgetRow() throws Exception
 	{
-		HtmlResourceRowDescriptionProvider providerToUse = new HtmlResourceRowDescriptionProvider(DEVELOP_AND_REFINE_PROJECT_BUDGET_RIGHT_SIDE_FILENAME, getDiagramOverviewStepName());
+		HtmlResourceLongDescriptionProvider providerToUse = new HtmlResourceLongDescriptionProvider(DEVELOP_AND_REFINE_PROJECT_BUDGET_RIGHT_SIDE_FILENAME, getDiagramOverviewStepName());
 		ChoiceItemWithChildren subHeaderChoiceItem = new ChoiceItemWithChildren("3B", EAM.text("3B. Develop and Refine Project Budget"), providerToUse);
 
 		subHeaderChoiceItem.addChild(createWorkCostsChoiceItem(providerToUse));
@@ -102,7 +102,7 @@ public class ImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRoot
 		return subHeaderChoiceItem;
 	}
 
-	private ChoiceItemWithChildren createFinacialResourcesRow(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createFinacialResourcesRow(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%budgetSecuredPercent", getDashboardData(Dashboard.PSEUDO_BUDGET_SECURED_PERCENT));
@@ -111,7 +111,7 @@ public class ImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRoot
 		return new ChoiceItemWithChildren("ObtainFinancialResources", EAM.text("Obtain Finacial Resources"), rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createWorkCostsChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createWorkCostsChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%workCosts", getDashboardData(Dashboard.PSEUDO_TOTAL_PROJECT_RESOURCES_COSTS));
@@ -121,7 +121,7 @@ public class ImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRoot
 		return new ChoiceItemWithChildren("EstimateCostsForActivitiesAndMonitoring", EAM.text("Estimate Costs for Activities and Monitoring"), rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createExpensesChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createExpensesChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%expenses", getDashboardData(Dashboard.PSEUDO_TOTAL_PROJECT_EXPENSES));
@@ -131,7 +131,7 @@ public class ImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRoot
 		return new ChoiceItemWithChildren("Expenses", "", rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createProjectBudgetChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createProjectBudgetChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%projectBudget", getDashboardData(Dashboard.PSEUDO_PROJECT_BUDGET));
@@ -148,7 +148,7 @@ public class ImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRoot
 	
 	private ChoiceItemWithChildren createDevelopShortTermWorkPlanChoiceItem() throws Exception
 	{
-		HtmlResourceRowDescriptionProvider providerToUse = new HtmlResourceRowDescriptionProvider(DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME, getDiagramOverviewStepName());
+		HtmlResourceLongDescriptionProvider providerToUse = new HtmlResourceLongDescriptionProvider(DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME, getDiagramOverviewStepName());
 		ChoiceItemWithChildren subHeaderChoiceItem = new ChoiceItemWithChildren("3A", EAM.text("3A. Develop Short Term Work Plan"), providerToUse);
 
 		subHeaderChoiceItem.addChild(createDetailActivitiesTasksAndResponsiblitiesChoiceItem(providerToUse));
@@ -162,7 +162,7 @@ public class ImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRoot
 		return subHeaderChoiceItem;
 	}
  
-	private ChoiceItemWithChildren createProjectPlanningStartEndDateRow(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createProjectPlanningStartEndDateRow(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%workPlanStartDate", getDashboardData(Dashboard.PSEUDO_WORK_PLAN_START_DATE));
@@ -172,7 +172,7 @@ public class ImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRoot
 		return new ChoiceItemWithChildren("DevelopProjectTimelineOrCalendar", EAM.text("Develop Project Timeline or Calendar"), rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createMethodsAndTasksWithAssignmentsChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createMethodsAndTasksWithAssignmentsChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%methodsAndTasksWithAssignmentsCount", getDashboardData(Dashboard.PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT));
@@ -182,7 +182,7 @@ public class ImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRoot
 		return new ChoiceItemWithChildren("MethodsAndTasksWithAssignments", "", rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createMethodsCountChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createMethodsCountChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%methodsCount", getDashboardData(Dashboard.PSEUDO_METHODS_COUNT));
@@ -191,7 +191,7 @@ public class ImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRoot
 		return new ChoiceItemWithChildren("TotalMethodsCreated", "", rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createDetailMethodsTasksAndResponsibilitiesChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createDetailMethodsTasksAndResponsibilitiesChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Detail Methods, Tasks and Responsibilities");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -202,7 +202,7 @@ public class ImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRoot
 		return new ChoiceItemWithChildren("DetailMethodsTasksAndResponsibilities", leftColumnTranslatedText, rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createActivitiesAndTasksWithAssignmentsChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createActivitiesAndTasksWithAssignmentsChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%activitiesAndTasksCount", getDashboardData(Dashboard.PSEUDO_ACTIVITIES_AND_TASKS_COUNT));
@@ -212,7 +212,7 @@ public class ImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRoot
 		return new ChoiceItemWithChildren("TasksWithAssignmentsCount", "", rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createActivitiesCountChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createActivitiesCountChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%activitiesCount", getDashboardData(Dashboard.PSEUDO_ACTIVITIES_COUNT));
@@ -221,7 +221,7 @@ public class ImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRoot
 		return new ChoiceItemWithChildren("TotalActivitiesCreated", "", rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createDetailActivitiesTasksAndResponsiblitiesChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createDetailActivitiesTasksAndResponsiblitiesChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Detail Activities Tasks and Responsiblities");
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();

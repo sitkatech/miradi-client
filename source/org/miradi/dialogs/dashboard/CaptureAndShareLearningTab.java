@@ -42,7 +42,7 @@ public class CaptureAndShareLearningTab extends LeftSideRightSideSplitterContain
 	@Override
 	protected AbstractLongDescriptionProvider getMainDescriptionFileName() throws Exception
 	{
-		return new HtmlResourceRowDescriptionProvider("dashboard/5.html");
+		return new HtmlResourceLongDescriptionProvider("dashboard/5.html");
 	}
 
 	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse) throws Exception

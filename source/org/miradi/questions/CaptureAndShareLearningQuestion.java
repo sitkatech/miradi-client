@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
-import org.miradi.dialogs.dashboard.HtmlResourceRowDescriptionProvider;
+import org.miradi.dialogs.dashboard.HtmlResourceLongDescriptionProvider;
 import org.miradi.main.EAM;
 import org.miradi.views.summary.SummaryView;
 import org.miradi.wizard.WizardManager;
@@ -35,11 +35,11 @@ public class CaptureAndShareLearningQuestion extends DynamicChoiceWithRootChoice
 	@Override
 	public ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
-		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("5Header", EAM.text("5. Capture and Share Learning"), new HtmlResourceRowDescriptionProvider("dashboard/5.html", wizardManager.getOverviewStepName(SummaryView.getViewName())));
+		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("5Header", EAM.text("5. Capture and Share Learning"), new HtmlResourceLongDescriptionProvider("dashboard/5.html", wizardManager.getOverviewStepName(SummaryView.getViewName())));
 
-		headerChoiceItem.addChild(new ChoiceItemWithChildren("5A", EAM.text("5A. Document Learning"), EAM.text("Document Key Results and Lessons"), new HtmlResourceRowDescriptionProvider(DOCUMENT_LEARNING_RIGHT_SIDE_FILENAME, wizardManager.getOverviewStepName(SummaryView.getViewName()))));
-		headerChoiceItem.addChild(new ChoiceItemWithChildren("5B", EAM.text("5B. Share Learning"), EAM.text("Identify Key Audiences Develop Communications Strategy Report to Project Team and Stakeholders Develop and Share Communication Products Use Other's Communication Products"), new HtmlResourceRowDescriptionProvider(SHARE_LEARNING_RIGHT_SIDE_FILENAME, wizardManager.getOverviewStepName(SummaryView.getViewName()))));
-		headerChoiceItem.addChild(new ChoiceItemWithChildren("5C", EAM.text("5C. Create a Learning Enviornment"), EAM.text("Share Feedback Formally or Informally Conduct Evaluations... Demonstrate Commitment... Provide Safe Environment... Share Successes and Failures..."), new HtmlResourceRowDescriptionProvider(CREATE_LEARNING_ENVIRONMENT_RIGHT_SIDE_FILENAME, wizardManager.getOverviewStepName(SummaryView.getViewName()))));
+		headerChoiceItem.addChild(new ChoiceItemWithChildren("5A", EAM.text("5A. Document Learning"), EAM.text("Document Key Results and Lessons"), new HtmlResourceLongDescriptionProvider(DOCUMENT_LEARNING_RIGHT_SIDE_FILENAME, wizardManager.getOverviewStepName(SummaryView.getViewName()))));
+		headerChoiceItem.addChild(new ChoiceItemWithChildren("5B", EAM.text("5B. Share Learning"), EAM.text("Identify Key Audiences Develop Communications Strategy Report to Project Team and Stakeholders Develop and Share Communication Products Use Other's Communication Products"), new HtmlResourceLongDescriptionProvider(SHARE_LEARNING_RIGHT_SIDE_FILENAME, wizardManager.getOverviewStepName(SummaryView.getViewName()))));
+		headerChoiceItem.addChild(new ChoiceItemWithChildren("5C", EAM.text("5C. Create a Learning Enviornment"), EAM.text("Share Feedback Formally or Informally Conduct Evaluations... Demonstrate Commitment... Provide Safe Environment... Share Successes and Failures..."), new HtmlResourceLongDescriptionProvider(CREATE_LEARNING_ENVIRONMENT_RIGHT_SIDE_FILENAME, wizardManager.getOverviewStepName(SummaryView.getViewName()))));
 
 		return headerChoiceItem;
 	}

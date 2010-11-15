@@ -22,7 +22,7 @@ package org.miradi.questions;
 
 import java.util.HashMap;
 
-import org.miradi.dialogs.dashboard.HtmlResourceRowDescriptionProvider;
+import org.miradi.dialogs.dashboard.HtmlResourceLongDescriptionProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
@@ -41,7 +41,7 @@ public class ConceptualizeQuestion extends DynamicChoiceWithRootChoiceItem
 	@Override
 	public ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
-		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("1Header", EAM.text("1. Conceptualize"), new HtmlResourceRowDescriptionProvider("dashboard/1.html", getSummaryOverviewStepName()));
+		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("1Header", EAM.text("1. Conceptualize"), new HtmlResourceLongDescriptionProvider("dashboard/1.html", getSummaryOverviewStepName()));
 
 		headerChoiceItem.addChild(createTeamMembersChoiceItem());
 		headerChoiceItem.addChild(createScopeVisionAndTargetsChoiceItem());
@@ -57,7 +57,7 @@ public class ConceptualizeQuestion extends DynamicChoiceWithRootChoiceItem
 
 	private ChoiceItem createTeamMembersChoiceItem() throws Exception
 	{
-		HtmlResourceRowDescriptionProvider provider = new HtmlResourceRowDescriptionProvider(TEAM_RIGHT_PANEL_FILE_NAME, getSummaryOverviewStepName());
+		HtmlResourceLongDescriptionProvider provider = new HtmlResourceLongDescriptionProvider(TEAM_RIGHT_PANEL_FILE_NAME, getSummaryOverviewStepName());
 		ChoiceItemWithChildren subHeaderChoiceItem = new ChoiceItemWithChildren("1A", EAM.text("1A. Define Initial Project Team"), provider);
 
 		String leftColumnTranslatedText = EAM.text("Team Members:");
@@ -69,7 +69,7 @@ public class ConceptualizeQuestion extends DynamicChoiceWithRootChoiceItem
 
 	private ChoiceItem createScopeVisionAndTargetsChoiceItem() throws Exception
 	{
-		HtmlResourceRowDescriptionProvider provider = new HtmlResourceRowDescriptionProvider(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME, getSummaryOverviewStepName());
+		HtmlResourceLongDescriptionProvider provider = new HtmlResourceLongDescriptionProvider(SCOPE_AND_VISION_RIGHT_PANEL_FILE_NAME, getSummaryOverviewStepName());
 		ChoiceItemWithChildren subHeaderChoiceItem = new ChoiceItemWithChildren("1B", EAM.text("1B. Define Scope Vision and Targets"), provider);
 		
 		subHeaderChoiceItem.addChild(createDefineScopeChoiceItem(provider));
@@ -81,7 +81,7 @@ public class ConceptualizeQuestion extends DynamicChoiceWithRootChoiceItem
 		return subHeaderChoiceItem;
 	}
 
-	private ChoiceItemWithChildren createTargetViabilityChoiceItem(ChoiceItemWithChildren subHeaderChoiceItem, HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createTargetViabilityChoiceItem(ChoiceItemWithChildren subHeaderChoiceItem, HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		HashMap<String, String> statusDescriptionTokenReplacementMap2 = new HashMap<String, String>();
 		statusDescriptionTokenReplacementMap2.put("%targetWithSimpleViabilityCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT));
@@ -90,7 +90,7 @@ public class ConceptualizeQuestion extends DynamicChoiceWithRootChoiceItem
 		return new ChoiceItemWithChildren("DescribeStatusOfTargets", leftColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createTargetStatusChoiceItem(ChoiceItemWithChildren subHeaderChoiceItem, HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createTargetStatusChoiceItem(ChoiceItemWithChildren subHeaderChoiceItem, HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Describe Status of Targets:");
 		HashMap<String, String> statusDescriptionTokenReplacementMap1 = new HashMap<String, String>();
@@ -100,7 +100,7 @@ public class ConceptualizeQuestion extends DynamicChoiceWithRootChoiceItem
 		return new ChoiceItemWithChildren("DescribeStatusOfTargets", leftColumnTranslatedText, rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createHumanWelfareTargetChoiceItem(ChoiceItemWithChildren subHeaderChoiceItem, HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createHumanWelfareTargetChoiceItem(ChoiceItemWithChildren subHeaderChoiceItem, HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Add Human Welfare Targets:");
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("%s created"), getDashboardData(Dashboard.PSEUDO_HUMAN_WELFARE_TARGET_COUNT));
@@ -108,7 +108,7 @@ public class ConceptualizeQuestion extends DynamicChoiceWithRootChoiceItem
 		return new ChoiceItemWithChildren("AddHumanWelfareTargets", leftColumnTranslatedText, rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createTargetChoiceItem(ChoiceItemWithChildren subHeaderChoiceItem, HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createTargetChoiceItem(ChoiceItemWithChildren subHeaderChoiceItem, HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%targetCount", getDashboardData(Dashboard.PSEUDO_TARGET_COUNT));
@@ -118,7 +118,7 @@ public class ConceptualizeQuestion extends DynamicChoiceWithRootChoiceItem
 		return new ChoiceItemWithChildren("SelectConservationTargets", leftColumnTranslatedText, rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createDefineScopeChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createDefineScopeChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Define Project Scope:");
 		String scopeVisionCount = getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT);
@@ -129,7 +129,7 @@ public class ConceptualizeQuestion extends DynamicChoiceWithRootChoiceItem
 	
 	private ChoiceItemWithChildren createIdentifyCriticalThreatsChoiceItem() throws Exception
 	{
-		HtmlResourceRowDescriptionProvider provider = new HtmlResourceRowDescriptionProvider(CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME, getSummaryOverviewStepName());
+		HtmlResourceLongDescriptionProvider provider = new HtmlResourceLongDescriptionProvider(CRITICAL_THREATS_RIGHT_PANEL_FILE_NAME, getSummaryOverviewStepName());
 		ChoiceItemWithChildren subHeaderChoiceItem = new ChoiceItemWithChildren("1C", EAM.text("1C. Identify Critical Threats"), provider);
 
 		HashMap<String, String> threatsTokenReplacementMap = new HashMap<String, String>();
@@ -143,14 +143,14 @@ public class ConceptualizeQuestion extends DynamicChoiceWithRootChoiceItem
 		return subHeaderChoiceItem;
 	}
 
-	protected ChoiceItemWithChildren createTaxonomyCountChoiceItem(HashMap<String, String> threatsTokenReplacementMap,	HtmlResourceRowDescriptionProvider providerToUse)
+	protected ChoiceItemWithChildren createTaxonomyCountChoiceItem(HashMap<String, String> threatsTokenReplacementMap,	HtmlResourceLongDescriptionProvider providerToUse)
 	{
 		String leftColumnTranslatedText = EAM.substitute(EAM.text("%threatWithTaxonomyCount of %threatCount have taxonomy assignments"), threatsTokenReplacementMap);
 		
 		return new ChoiceItemWithChildren("threatWithTaxonomyCount", leftColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createDirectThreatsChoiceItem(HashMap<String, String> threatsTokenReplacementMap, HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createDirectThreatsChoiceItem(HashMap<String, String> threatsTokenReplacementMap, HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Identify Direct Threats:");
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("%threatCount Direct Threats created"), threatsTokenReplacementMap);
@@ -158,7 +158,7 @@ public class ConceptualizeQuestion extends DynamicChoiceWithRootChoiceItem
 		return new ChoiceItemWithChildren("IdentifyDirectThreats", leftColumnTranslatedText, rightColumnTranslatedText, providerToUse);
 	}
 
-	private ChoiceItemWithChildren createThreatRankChoiceItem(HtmlResourceRowDescriptionProvider providerToUse) throws Exception
+	private ChoiceItemWithChildren createThreatRankChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Rank Direct Threats:");
 		HashMap<String, String> threatTargetLinksTokenReplacementMap = new HashMap<String, String>();
