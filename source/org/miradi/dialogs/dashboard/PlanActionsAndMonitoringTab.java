@@ -40,7 +40,7 @@ public class PlanActionsAndMonitoringTab extends LeftSideRightSideSplitterContai
 	}
 
 	@Override
-	protected StaticLongDescriptionProvider getMainDescriptionFileName() throws Exception
+	protected AbstractLongDescriptionProvider getMainDescriptionFileName() throws Exception
 	{
 		return new HtmlResourceLongDescriptionProvider("dashboard/2.html");
 	}

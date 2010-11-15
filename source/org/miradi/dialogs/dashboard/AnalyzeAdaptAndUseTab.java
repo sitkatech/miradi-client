@@ -40,7 +40,7 @@ public class AnalyzeAdaptAndUseTab extends LeftSideRightSideSplitterContainerTab
 	}
 	
 	@Override
-	protected StaticLongDescriptionProvider getMainDescriptionFileName() throws Exception
+	protected AbstractLongDescriptionProvider getMainDescriptionFileName() throws Exception
 	{
 		return new HtmlResourceLongDescriptionProvider("dashboard/4.html");
 	}
