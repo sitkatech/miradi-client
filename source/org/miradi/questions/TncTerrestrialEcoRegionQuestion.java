@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
-import org.miradi.dialogs.dashboard.StringRowDescriptionProvider;
+import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
 import org.miradi.objecthelpers.TncTerrestrialEcoRegionFileLoader;
 import org.miradi.objecthelpers.TwoLevelFileLoader;
 
@@ -33,6 +33,6 @@ public class TncTerrestrialEcoRegionQuestion extends TwoLevelQuestionWithDescrip
 	@Override
 	protected ChoiceItem createChoiceItem(String code, String label, String description) throws Exception
 	{
-		return new ChoiceItemWithRowDescriptionProvider(code, label, description, new StringRowDescriptionProvider());
+		return new ChoiceItemWithRowDescriptionProvider(code, label, description, new StaticLongDescriptionProvider());
 	}
 }

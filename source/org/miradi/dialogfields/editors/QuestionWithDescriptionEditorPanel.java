@@ -23,7 +23,7 @@ package org.miradi.dialogfields.editors;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.dashboard.LeftSideRightSideSplitterContainerTab;
-import org.miradi.dialogs.dashboard.StringRowDescriptionProvider;
+import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ChoiceQuestion;
@@ -38,7 +38,7 @@ public class QuestionWithDescriptionEditorPanel extends LeftSideRightSideSplitte
 	@Override
 	protected AbstractLongDescriptionProvider getMainDescriptionFileName() throws Exception
 	{
-		return new StringRowDescriptionProvider();
+		return new StaticLongDescriptionProvider();
 	}
 
 	@Override
