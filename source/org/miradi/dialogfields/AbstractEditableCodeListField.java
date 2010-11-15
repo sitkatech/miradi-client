@@ -36,6 +36,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.Translation;
 
 abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 {
@@ -92,7 +93,7 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 			try
 			{
 				DisposablePanel editorPanel = createEditorPanel();
-				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), EAM.text("Selection Dialog"));
+				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), Translation.fieldLabel(getObjectType(), getTag()));
 				dialog.setScrollableMainPanel(editorPanel);
 				Utilities.centerDlg(dialog);
 				dialog.setVisible(true);
