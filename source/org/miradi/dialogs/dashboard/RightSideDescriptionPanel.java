@@ -53,14 +53,20 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 			RowSelectionEvent castedEvent = (RowSelectionEvent) rawEvent;
 			AbstractLongDescriptionProvider descriptiobnProvider = castedEvent.getDescriptionProvider();
 			setRightSideHtmlContent(descriptiobnProvider.getDescription());
-			if (descriptiobnProvider.hasWizardStepName())
-				ViewSwitchDoer.changeView(getMainWindow(), descriptiobnProvider.getWizardStepName());
+			if (castedEvent.isViewChangeEvent())
+				changeView(descriptiobnProvider);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 		}
+	}
+
+	private void changeView(AbstractLongDescriptionProvider descriptiobnProvider) throws Exception
+	{
+		if (descriptiobnProvider.hasWizardStepName())
+			ViewSwitchDoer.changeView(getMainWindow(), descriptiobnProvider.getWizardStepName());
 	}
 
 	private void setRightSideHtmlContent(String htmlText) throws Exception
