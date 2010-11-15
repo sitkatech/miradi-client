@@ -23,23 +23,23 @@ package org.miradi.questions;
 import java.awt.Color;
 
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
-import org.miradi.dialogs.dashboard.StringRowDescriptionProvider;
+import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
 
 public class ChoiceItemWithRowDescriptionProvider extends ChoiceItemWithAdditionalText
 {	
 	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, Color colorToUse)
 	{
-		this(codeToUse, labelToUse, "", colorToUse, new StringRowDescriptionProvider());
+		this(codeToUse, labelToUse, "", colorToUse, new StaticLongDescriptionProvider());
 	}
 	
 	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse)
 	{
-		this(codeToUse, labelToUse, "", new StringRowDescriptionProvider());
+		this(codeToUse, labelToUse, "", new StaticLongDescriptionProvider());
 	}
 
 	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, String additionalTextToUse)
 	{
-		this(codeToUse, labelToUse, additionalTextToUse, new StringRowDescriptionProvider());
+		this(codeToUse, labelToUse, additionalTextToUse, new StaticLongDescriptionProvider());
 	}
 	
 	public ChoiceItemWithRowDescriptionProvider(String codeToUse, String labelToUse, AbstractLongDescriptionProvider providerToUse)
