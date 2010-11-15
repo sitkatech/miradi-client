@@ -29,7 +29,7 @@ import org.miradi.main.AppPreferences;
 
 public class SelectableRow
 {
-	public SelectableRow(JComponent leftSideToUse, JComponent rightSideToUse, AbstractLongDescriptionProvider descriptionProviderToUse)
+	public SelectableRow(JComponent leftSideToUse, JComponent rightSideToUse, StaticLongDescriptionProvider descriptionProviderToUse)
 	{
 		leftSide = leftSideToUse;
 		rightSide = rightSideToUse;
@@ -42,7 +42,7 @@ public class SelectableRow
 		rightSide.addMouseListener(listener);
 	}
 	
-	public AbstractLongDescriptionProvider getDescriptionProvider()
+	public StaticLongDescriptionProvider getDescriptionProvider()
 	{
 		return descriptionProvider;
 	}
@@ -104,5 +104,5 @@ public class SelectableRow
 	private JComponent leftSide;
 	private JComponent rightSide;
 	private boolean isSelected;
-	private AbstractLongDescriptionProvider descriptionProvider;
+	private StaticLongDescriptionProvider descriptionProvider;
 }

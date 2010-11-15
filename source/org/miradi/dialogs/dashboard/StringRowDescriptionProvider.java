@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
-public class StringRowDescriptionProvider extends AbstractLongDescriptionProvider
+public class StringRowDescriptionProvider extends StaticLongDescriptionProvider
 {
 	public StringRowDescriptionProvider()
 	{
