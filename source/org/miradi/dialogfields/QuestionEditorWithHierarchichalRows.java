@@ -149,13 +149,12 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		{
 			ChoiceItemWithLongDescriptionProvider castedChoiceItem = (ChoiceItemWithLongDescriptionProvider) childChoiceItem;
 			addSubHeaderSelectableComponents(mainRowsPanel, toggleButton, castedChoiceItem);
-			addLeafComponents(mainRowsPanel, toggleButton, castedChoiceItem);
+			addLeafComponents(mainRowsPanel, toggleButton, castedChoiceItem.getChildren());
 		}
 	}
 
-	private void addLeafComponents(MiradiPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider parentChoiceItem) throws Exception
+	private void addLeafComponents(MiradiPanel mainRowsPanel, JToggleButton toggleButton, Vector<ChoiceItem> children) throws Exception
 	{
-		Vector<ChoiceItem> children = parentChoiceItem.getChildren();
 		for(ChoiceItem childChoiceItem : children)
 		{
 			addLeafSelectableComponents(mainRowsPanel, toggleButton, (ChoiceItemWithLongDescriptionProvider) childChoiceItem);
