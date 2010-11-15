@@ -36,6 +36,7 @@ import javax.swing.event.ListSelectionListener;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.dashboard.RowSelectionEvent;
 import org.miradi.dialogs.dashboard.SelectableRow;
+import org.miradi.dialogs.dashboard.WithoutViewChangeEvent;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -86,11 +87,19 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		rowSelectionListeners.remove(rightSideDescriptionPanel);
 	}
 	
-	private void notifyListeners(SelectableRow selectedRow)
+	private void notifyListenersToChangeView(SelectableRow selectedRow)
 	{
 		for (ListSelectionListener panel : rowSelectionListeners)
 		{
 			panel.valueChanged(new RowSelectionEvent(panel, selectedRow.getDescriptionProvider()));
+		}
+	}
+	
+	private void notifyListeners(SelectableRow selectedRow)
+	{
+		for (ListSelectionListener panel : rowSelectionListeners)
+		{
+			panel.valueChanged(new WithoutViewChangeEvent(panel, selectedRow.getDescriptionProvider()));
 		}
 	}
 	
@@ -247,7 +256,6 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 	{
 		clearSelection();
 		rowToSelect.selectRow();
-		notifyListeners(rowToSelect);
 	}
 	
 	private void clearSelection() throws Exception
@@ -291,6 +299,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 			indexToSelect = (indexToSelect + selectableRows.size()) % selectableRows.size();
 			rowToSelect = selectableRows.get(indexToSelect);
 			selectRow(rowToSelect);
+			notifyListenersToChangeView(rowToSelect);
 		}
 
 		private SelectableRow findSelectedRow()
@@ -343,6 +352,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 			super.mouseClicked(e);
 			
 			select();
+			notifyListenersToChangeView(selectableComponent);
 		}
 
 		@Override
@@ -351,6 +361,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 			super.mouseEntered(e);
 			
 			select();
+			notifyListeners(selectableComponent);
 		}
 
 		protected void select()
