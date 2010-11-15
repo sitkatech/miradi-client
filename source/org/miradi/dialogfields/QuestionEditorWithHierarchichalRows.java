@@ -87,7 +87,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		rowSelectionListeners.remove(rightSideDescriptionPanel);
 	}
 	
-	private void notifyListenersToChangeView(SelectableRow selectedRow)
+	private void notifyListenersWithViewChangeEvent(SelectableRow selectedRow)
 	{
 		for (ListSelectionListener panel : rowSelectionListeners)
 		{
@@ -95,7 +95,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		}
 	}
 	
-	private void notifyListeners(SelectableRow selectedRow)
+	private void notifyListenersWithoutViewChangeEvent(SelectableRow selectedRow)
 	{
 		for (ListSelectionListener panel : rowSelectionListeners)
 		{
@@ -299,7 +299,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 			indexToSelect = (indexToSelect + selectableRows.size()) % selectableRows.size();
 			rowToSelect = selectableRows.get(indexToSelect);
 			selectRow(rowToSelect);
-			notifyListenersToChangeView(rowToSelect);
+			notifyListenersWithViewChangeEvent(rowToSelect);
 		}
 
 		private SelectableRow findSelectedRow()
@@ -352,7 +352,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 			super.mouseClicked(e);
 			
 			select();
-			notifyListenersToChangeView(selectableComponent);
+			notifyListenersWithViewChangeEvent(selectableComponent);
 		}
 
 		@Override
@@ -361,7 +361,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 			super.mouseEntered(e);
 			
 			select();
-			notifyListeners(selectableComponent);
+			notifyListenersWithoutViewChangeEvent(selectableComponent);
 		}
 
 		protected void select()
