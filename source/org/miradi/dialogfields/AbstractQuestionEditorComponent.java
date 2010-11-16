@@ -99,12 +99,17 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 
 	private JComponent createLeftColumnComponent(ChoiceItem choiceItem)
 	{
-		JToggleButton toggleButton = createToggleButton(choiceItem.getLabel());
-		toggleButton.setBackground(choiceItem.getColor());
-		toggleButton.addActionListener(new ToggleButtonHandler());
-		choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
+		if (choiceItem.isSelectable())
+		{
+			JToggleButton toggleButton = createToggleButton(choiceItem.getLabel());
+			toggleButton.setBackground(choiceItem.getColor());
+			toggleButton.addActionListener(new ToggleButtonHandler());
+			choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
+
+			return toggleButton;
+		}
 		
-		return toggleButton;
+		return new PanelTitleLabel(choiceItem.getLabel());
 	}
 
 	protected int calculateColumnCount()
@@ -115,11 +120,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 	protected void addComponentToRowPanel(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItem choiceItem)
 	{
 		mainRowsPanel.add(getSafeIconLabel(choiceItem.getIcon()));
-		if (choiceItem.isSelectable())
-			mainRowsPanel.add(leftColumnComponent);
-		else
-			mainRowsPanel.add(new PanelTitleLabel(choiceItem.getLabel()));
-		
+		mainRowsPanel.add(leftColumnComponent);
 		mainRowsPanel.add(createDescriptionComponent(choiceItem));
 	}
 
