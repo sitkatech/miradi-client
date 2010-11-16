@@ -25,6 +25,7 @@ import java.util.Vector;
 import javax.swing.Icon;
 
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
+import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
 
 public class ChoiceItem implements Comparable<Object>
 {
@@ -69,10 +70,15 @@ public class ChoiceItem implements Comparable<Object>
 	
 	public ChoiceItem(String codeToUse, String labelToUse, Color colorToUse, String descriptionToUse)
 	{
+		this(codeToUse, labelToUse, colorToUse, new StaticLongDescriptionProvider(descriptionToUse));
+	}
+	
+	public ChoiceItem(String codeToUse, String labelToUse, Color colorToUse, AbstractLongDescriptionProvider descriptionProviderToUse)
+	{
 		code = codeToUse;
 		label = labelToUse;
 		color = colorToUse;
-		description = descriptionToUse;
+		descriptionProvider = descriptionProviderToUse;
 		selectable = true;
 	}
 
@@ -98,7 +104,7 @@ public class ChoiceItem implements Comparable<Object>
 	
 	public String getDescription()
 	{
-		return description;
+		return descriptionProvider.getDescription();
 	}
 	
 	public void setIcon(Icon iconToUse)
@@ -140,11 +146,6 @@ public class ChoiceItem implements Comparable<Object>
 	public ChoiceItem getChild(int childIndex)
 	{
 		throw new RuntimeException("ChoiceItem does not support getChild");
-	}
-	
-	public void addChild(ChoiceItem childChoiceItem)
-	{
-		getChildren().add(childChoiceItem);
 	}
 	
 	@Override
@@ -191,5 +192,5 @@ public class ChoiceItem implements Comparable<Object>
 	private String label;
 	private Color color;
 	private Icon icon;
-	private String description;
+	private AbstractLongDescriptionProvider descriptionProvider;
 }

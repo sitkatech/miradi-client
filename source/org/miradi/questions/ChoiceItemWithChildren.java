@@ -44,7 +44,6 @@ public class ChoiceItemWithChildren extends ChoiceItemWithLongDescriptionProvide
 		setSelectable(false);
 	}
 
-	@Override
 	public void addChild(ChoiceItem childChoiceItem)
 	{
 		children.add(childChoiceItem);
