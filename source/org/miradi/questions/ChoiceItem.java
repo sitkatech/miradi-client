@@ -70,10 +70,15 @@ public class ChoiceItem implements Comparable<Object>
 	
 	public ChoiceItem(String codeToUse, String labelToUse, Color colorToUse, String descriptionToUse)
 	{
+		this(codeToUse, labelToUse, colorToUse, new StaticLongDescriptionProvider(descriptionToUse));
+	}
+	
+	public ChoiceItem(String codeToUse, String labelToUse, Color colorToUse, AbstractLongDescriptionProvider descriptionProviderToUse)
+	{
 		code = codeToUse;
 		label = labelToUse;
 		color = colorToUse;
-		descriptionProvider = new StaticLongDescriptionProvider(descriptionToUse);
+		descriptionProvider = descriptionProviderToUse;
 		selectable = true;
 	}
 
