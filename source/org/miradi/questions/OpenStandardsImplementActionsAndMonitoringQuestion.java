@@ -30,9 +30,9 @@ import org.miradi.project.Project;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.wizard.WizardManager;
 
-public class ImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoiceItem
+public class OpenStandardsImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoiceItem
 {
-	public ImplementActionsAndMonitoringQuestion(Project projectToUse, WizardManager wizardManagerToUse)
+	public OpenStandardsImplementActionsAndMonitoringQuestion(Project projectToUse, WizardManager wizardManagerToUse)
 	{
 		project = projectToUse;
 		wizardManager = wizardManagerToUse;
