@@ -25,9 +25,9 @@ import org.miradi.main.EAM;
 import org.miradi.views.summary.SummaryView;
 import org.miradi.wizard.WizardManager;
 
-public class CaptureAndShareLearningQuestion extends DynamicChoiceWithRootChoiceItem
+public class OpenStandardsCaptureAndShareLearningQuestion extends DynamicChoiceWithRootChoiceItem
 {
-	public CaptureAndShareLearningQuestion(WizardManager wizardManagerToUse)
+	public OpenStandardsCaptureAndShareLearningQuestion(WizardManager wizardManagerToUse)
 	{
 		wizardManager = wizardManagerToUse;
 	}
