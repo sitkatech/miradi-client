@@ -39,25 +39,21 @@ abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePa
 		leftPanel = leftPanelToUse;
 
 		if (getCastedLeftComponent().getQuestion().hasLongDescriptionProvider())
-		{
-			createSplitPane(mainWindowToUse);
-			add(splitPane);
-		}
+			add(createSplitPane(mainWindowToUse));
 		else
-		{
 			add(leftPanel);
-		}
 	}
 
-	private void createSplitPane(MainWindow mainWindowToUse) throws Exception
+	private PersistentHorizontalSplitPane createSplitPane(MainWindow mainWindowToUse) throws Exception
 	{
-		splitPane = new PersistentHorizontalSplitPane(mainWindowToUse, mainWindowToUse, getPanelDescription());
+		PersistentHorizontalSplitPane splitPane = new PersistentHorizontalSplitPane(mainWindowToUse, mainWindowToUse, getPanelDescription());
 		RightSideDescriptionPanel rightPanel = createRightPanel(getMainDescriptionFileName());
 		//FIXME urgent - need to come up with better way to communicate a row selection change to the right panel
 		getCastedLeftComponent().addSelectionListener(rightPanel);
 		
 		splitPane.setLeftComponent(new JScrollPane(leftPanel));
 		splitPane.setRightComponent(rightPanel);
+		return splitPane;
 	}
 
 	private QuestionEditorWithHierarchichalRows getCastedLeftComponent()
@@ -102,6 +98,5 @@ abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePa
 	abstract protected AbstractLongDescriptionProvider getMainDescriptionFileName() throws Exception;
 	
 	private MainWindow mainWindow;
-	private PersistentHorizontalSplitPane splitPane;
 	private OneFieldObjectDataInputPanel leftPanel;
 }
