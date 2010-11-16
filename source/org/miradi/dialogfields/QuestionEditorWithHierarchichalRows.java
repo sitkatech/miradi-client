@@ -135,55 +135,55 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		return columnPerRowCount;
 	}
 
-	protected void addRowComponents(MiradiPanel mainRowsPanel, JComponent toggleButton, ChoiceItem choiceItem) throws Exception
+	protected void addRowComponents(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItem choiceItem) throws Exception
 	{
 		ChoiceItemWithLongDescriptionProvider castedChoiceItem = (ChoiceItemWithLongDescriptionProvider) choiceItem;
-		addHeaderSelectableRow(mainRowsPanel, toggleButton, castedChoiceItem);
-		addSubHeaderComponents(mainRowsPanel, toggleButton, choiceItem.getChildren());
+		addHeaderSelectableRow(mainRowsPanel, leftColumnComponent, castedChoiceItem);
+		addSubHeaderComponents(mainRowsPanel, leftColumnComponent, choiceItem.getChildren());
 	}
 
-	protected void addSubHeaderComponents(MiradiPanel mainRowsPanel, JComponent toggleButton, Vector<ChoiceItem> children) throws Exception
+	protected void addSubHeaderComponents(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, Vector<ChoiceItem> children) throws Exception
 	{
 		for(ChoiceItem childChoiceItem : children)
 		{
 			ChoiceItemWithLongDescriptionProvider castedChoiceItem = (ChoiceItemWithLongDescriptionProvider) childChoiceItem;
-			addSubHeaderSelectableComponents(mainRowsPanel, toggleButton, castedChoiceItem);
-			addLeafComponents(mainRowsPanel, toggleButton, castedChoiceItem.getChildren());
+			addSubHeaderSelectableComponents(mainRowsPanel, leftColumnComponent, castedChoiceItem);
+			addLeafComponents(mainRowsPanel, leftColumnComponent, castedChoiceItem.getChildren());
 		}
 	}
 
-	private void addLeafComponents(MiradiPanel mainRowsPanel, JComponent toggleButton, Vector<ChoiceItem> children) throws Exception
+	private void addLeafComponents(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, Vector<ChoiceItem> children) throws Exception
 	{
 		for(ChoiceItem childChoiceItem : children)
 		{
-			addLeafSelectableComponents(mainRowsPanel, toggleButton, (ChoiceItemWithLongDescriptionProvider) childChoiceItem);
+			addLeafSelectableComponents(mainRowsPanel, leftColumnComponent, (ChoiceItemWithLongDescriptionProvider) childChoiceItem);
 		}		
 	}
 	
-	private void addLeafSelectableComponents(MiradiPanel mainRowsPanel, JComponent toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
+	private void addLeafSelectableComponents(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
 	{
 	 	final int LEAF_INDENT_COUNT = 2;
 		
-		addSelectableRow(mainRowsPanel, toggleButton, choiceItem, LEAF_INDENT_COUNT, getLeafTitleFont());
+		addSelectableRow(mainRowsPanel, leftColumnComponent, choiceItem, LEAF_INDENT_COUNT, getLeafTitleFont());
 	}
 
-	private void addSubHeaderSelectableComponents(MiradiPanel mainRowsPanel, JComponent toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
+	private void addSubHeaderSelectableComponents(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
 	{
 		final int SUBHEADER_INDENT_COUNT = 1;
 		
-		addSelectableRow(mainRowsPanel, toggleButton, choiceItem, SUBHEADER_INDENT_COUNT, createSubHeaderFont());
+		addSelectableRow(mainRowsPanel, leftColumnComponent, choiceItem, SUBHEADER_INDENT_COUNT, createSubHeaderFont());
 	}
 
-	private void addHeaderSelectableRow(MiradiPanel mainRowsPanel, JComponent toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
+	private void addHeaderSelectableRow(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
 	{
 		final int HEADER_INDENT_COUNT = 0;
 		
-		addSelectableRow(mainRowsPanel, toggleButton, choiceItem, HEADER_INDENT_COUNT, createHeaderTitleFont());
+		addSelectableRow(mainRowsPanel, leftColumnComponent, choiceItem, HEADER_INDENT_COUNT, createHeaderTitleFont());
 	}
 
-	protected void addSelectableRow(MiradiPanel mainRowsPanel, JComponent toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem, final int indentCount, Font font)
+	protected void addSelectableRow(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItemWithLongDescriptionProvider choiceItem, final int indentCount, Font font)
 	{
-		JComponent leftComponent = createToggleButton(toggleButton, choiceItem);
+		JComponent leftComponent = createToggleButton(leftColumnComponent, choiceItem);
 		leftComponent.setFont(font);
 		
 		PanelTitleLabel rightComponent = new PanelTitleLabel(choiceItem.getAdditionalText());
