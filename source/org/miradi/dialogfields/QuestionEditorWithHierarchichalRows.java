@@ -30,7 +30,6 @@ import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
-import javax.swing.JToggleButton;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogs.base.MiradiPanel;
@@ -112,7 +111,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 	}
 	
 	@Override
-	protected void createRowPanel(MiradiPanel toggleButtonsPanel, JToggleButton toggleButton, ChoiceItem choiceItem)
+	protected void createRowPanel(MiradiPanel toggleButtonsPanel, JComponent toggleButton, ChoiceItem choiceItem)
 	{
 		toggleButtonsPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		try
@@ -136,14 +135,14 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		return columnPerRowCount;
 	}
 
-	protected void addRowComponents(MiradiPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItem choiceItem) throws Exception
+	protected void addRowComponents(MiradiPanel mainRowsPanel, JComponent toggleButton, ChoiceItem choiceItem) throws Exception
 	{
 		ChoiceItemWithLongDescriptionProvider castedChoiceItem = (ChoiceItemWithLongDescriptionProvider) choiceItem;
 		addHeaderSelectableRow(mainRowsPanel, toggleButton, castedChoiceItem);
 		addSubHeaderComponents(mainRowsPanel, toggleButton, choiceItem.getChildren());
 	}
 
-	protected void addSubHeaderComponents(MiradiPanel mainRowsPanel, JToggleButton toggleButton, Vector<ChoiceItem> children) throws Exception
+	protected void addSubHeaderComponents(MiradiPanel mainRowsPanel, JComponent toggleButton, Vector<ChoiceItem> children) throws Exception
 	{
 		for(ChoiceItem childChoiceItem : children)
 		{
@@ -153,7 +152,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		}
 	}
 
-	private void addLeafComponents(MiradiPanel mainRowsPanel, JToggleButton toggleButton, Vector<ChoiceItem> children) throws Exception
+	private void addLeafComponents(MiradiPanel mainRowsPanel, JComponent toggleButton, Vector<ChoiceItem> children) throws Exception
 	{
 		for(ChoiceItem childChoiceItem : children)
 		{
@@ -161,28 +160,28 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		}		
 	}
 	
-	private void addLeafSelectableComponents(MiradiPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
+	private void addLeafSelectableComponents(MiradiPanel mainRowsPanel, JComponent toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
 	{
 	 	final int LEAF_INDENT_COUNT = 2;
 		
 		addSelectableRow(mainRowsPanel, toggleButton, choiceItem, LEAF_INDENT_COUNT, getLeafTitleFont());
 	}
 
-	private void addSubHeaderSelectableComponents(MiradiPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
+	private void addSubHeaderSelectableComponents(MiradiPanel mainRowsPanel, JComponent toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
 	{
 		final int SUBHEADER_INDENT_COUNT = 1;
 		
 		addSelectableRow(mainRowsPanel, toggleButton, choiceItem, SUBHEADER_INDENT_COUNT, createSubHeaderFont());
 	}
 
-	private void addHeaderSelectableRow(MiradiPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
+	private void addHeaderSelectableRow(MiradiPanel mainRowsPanel, JComponent toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem) throws Exception
 	{
 		final int HEADER_INDENT_COUNT = 0;
 		
 		addSelectableRow(mainRowsPanel, toggleButton, choiceItem, HEADER_INDENT_COUNT, createHeaderTitleFont());
 	}
 
-	protected void addSelectableRow(MiradiPanel mainRowsPanel, JToggleButton toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem, final int indentCount, Font font)
+	protected void addSelectableRow(MiradiPanel mainRowsPanel, JComponent toggleButton, ChoiceItemWithLongDescriptionProvider choiceItem, final int indentCount, Font font)
 	{
 		JComponent leftComponent = createToggleButton(toggleButton, choiceItem);
 		leftComponent.setFont(font);
@@ -200,7 +199,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		getSafeSelectableRows().add(selectableRow);
 	}
 	
-	private JComponent createToggleButton(JToggleButton toggleButton, ChoiceItem choiceItem)
+	private JComponent createToggleButton(JComponent toggleButton, ChoiceItem choiceItem)
 	{
 		if (choiceItem.isSelectable())
 			return toggleButton;
