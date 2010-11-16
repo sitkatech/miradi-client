@@ -35,7 +35,7 @@ import javax.swing.event.ListSelectionListener;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.dashboard.RowSelectionEvent;
 import org.miradi.dialogs.dashboard.SelectableRow;
-import org.miradi.dialogs.dashboard.WithoutViewChangeEvent;
+import org.miradi.dialogs.dashboard.MouseOverRowEvent;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -98,7 +98,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 	{
 		for (ListSelectionListener panel : rowSelectionListeners)
 		{
-			panel.valueChanged(new WithoutViewChangeEvent(panel, selectedRow.getDescriptionProvider()));
+			panel.valueChanged(new MouseOverRowEvent(panel, selectedRow.getDescriptionProvider()));
 		}
 	}
 	
