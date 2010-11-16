@@ -29,6 +29,7 @@ import java.util.Set;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.JCheckBox;
+import javax.swing.JComponent;
 import javax.swing.JToggleButton;
 
 import org.martus.swing.Utilities;
@@ -104,7 +105,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		return getColumnCount() * getNumberOfComponentsPerChoice();
 	}
 
-	protected void createRowPanel(MiradiPanel toggleButtonsPanel, JToggleButton toggleButton, ChoiceItem choiceItem)
+	protected void createRowPanel(MiradiPanel toggleButtonsPanel, JComponent toggleButton, ChoiceItem choiceItem)
 	{
 		Icon icon = choiceItem.getIcon();
 		toggleButtonsPanel.add(getSafeIconLabel(icon));

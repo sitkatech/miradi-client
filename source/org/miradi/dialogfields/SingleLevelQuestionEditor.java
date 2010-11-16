@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import javax.swing.JToggleButton;
+import javax.swing.JComponent;
 
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.main.MainWindow;
@@ -36,7 +36,7 @@ public class SingleLevelQuestionEditor extends QuestionEditorWithHierarchichalRo
 	}
 	
 	@Override
-	protected void addRowComponents(MiradiPanel mainRowsPanel,	JToggleButton toggleButton, ChoiceItem choiceItem) throws Exception
+	protected void addRowComponents(MiradiPanel mainRowsPanel,	JComponent toggleButton, ChoiceItem choiceItem) throws Exception
 	{
 		addSelectableRow(mainRowsPanel, toggleButton, (ChoiceItemWithLongDescriptionProvider) choiceItem, 0, getRawFont());
 	}
