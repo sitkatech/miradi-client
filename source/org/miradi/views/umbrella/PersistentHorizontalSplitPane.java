@@ -28,12 +28,13 @@ public class PersistentHorizontalSplitPane extends PersistentSplitPane
 	public PersistentHorizontalSplitPane(Container futureParent, SplitterPositionSaverAndGetter splitPositionSaverToUse, String splitterNameToUse)
 	{
 		super(futureParent, splitPositionSaverToUse, splitterNameToUse);
+		
 		setOrientation(HORIZONTAL_SPLIT);
 	}
 
+	@Override
 	protected int getContainerHeightOrWidth()
 	{
 		return getParent().getWidth();
 	}
-
 }
