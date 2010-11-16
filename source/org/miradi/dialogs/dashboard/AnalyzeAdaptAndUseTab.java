@@ -22,7 +22,6 @@ package org.miradi.dialogs.dashboard;
 
 import org.miradi.dialogfields.QuestionEditorWithHierarchichalRows;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.OpenStandardsAnalyzeAdaptAndUseQuestion;
 import org.miradi.wizard.WizardManager;
@@ -57,6 +56,6 @@ public class AnalyzeAdaptAndUseTab extends LeftSideRightSideSplitterContainerTab
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Analyze, Use and Adapt");
+		return OpenStandardsAnalyzeAdaptAndUseQuestion.getHeaderLabel();
 	}
 }

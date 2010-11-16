@@ -35,13 +35,18 @@ public class OpenStandardsCaptureAndShareLearningQuestion extends DynamicChoiceW
 	@Override
 	public ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
-		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("5Header", EAM.text("5. Capture and Share Learning"), new HtmlResourceLongDescriptionProvider("dashboard/5.html", wizardManager.getOverviewStepName(SummaryView.getViewName())));
+		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("5Header", getHeaderLabel(), new HtmlResourceLongDescriptionProvider("dashboard/5.html", wizardManager.getOverviewStepName(SummaryView.getViewName())));
 
 		headerChoiceItem.addChild(new ChoiceItemWithChildren("5A", EAM.text("5A. Document Learning"), EAM.text("Document Key Results and Lessons"), new HtmlResourceLongDescriptionProvider(DOCUMENT_LEARNING_RIGHT_SIDE_FILENAME, wizardManager.getOverviewStepName(SummaryView.getViewName()))));
 		headerChoiceItem.addChild(new ChoiceItemWithChildren("5B", EAM.text("5B. Share Learning"), EAM.text("Identify Key Audiences Develop Communications Strategy Report to Project Team and Stakeholders Develop and Share Communication Products Use Other's Communication Products"), new HtmlResourceLongDescriptionProvider(SHARE_LEARNING_RIGHT_SIDE_FILENAME, wizardManager.getOverviewStepName(SummaryView.getViewName()))));
 		headerChoiceItem.addChild(new ChoiceItemWithChildren("5C", EAM.text("5C. Create a Learning Enviornment"), EAM.text("Share Feedback Formally or Informally Conduct Evaluations... Demonstrate Commitment... Provide Safe Environment... Share Successes and Failures..."), new HtmlResourceLongDescriptionProvider(CREATE_LEARNING_ENVIRONMENT_RIGHT_SIDE_FILENAME, wizardManager.getOverviewStepName(SummaryView.getViewName()))));
 
 		return headerChoiceItem;
+	}
+
+	public static String getHeaderLabel()
+	{
+		return EAM.text("5. Capture and Share Learning");
 	}
 	
 	private WizardManager wizardManager;

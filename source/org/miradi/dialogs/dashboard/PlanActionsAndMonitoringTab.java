@@ -22,7 +22,6 @@ package org.miradi.dialogs.dashboard;
 
 import org.miradi.dialogfields.QuestionEditorWithHierarchichalRows;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
 import org.miradi.wizard.WizardManager;
@@ -48,7 +47,7 @@ public class PlanActionsAndMonitoringTab extends LeftSideRightSideSplitterContai
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Plan Actions and Monitoring");
+		return OpenStandardsPlanActionsAndMonitoringQuestion.getHeaderLabel();
 	}
 
 	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse) throws Exception
