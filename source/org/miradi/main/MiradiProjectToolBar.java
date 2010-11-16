@@ -111,7 +111,7 @@ class DashboardButton extends HelpButton
 {
 	public DashboardButton(Action action)
 	{
-		super(action, Color.decode("#99CCFF"));
+		super(action, AppPreferences.getWizardBackgroundColor());
 	}
 }
 
@@ -120,6 +120,7 @@ class MoreInfoButton extends HelpButton
 	public MoreInfoButton(Action action)
 	{
 		super(action, Color.decode("#99CCFF"));
+		
 		putClientProperty(HelpButtonData.class, new ViewSpecificHelpButtonData(getMainWindow(), HelpButtonData.MORE_INFO, HelpButtonData.MORE_INFO_HTML));
 	}
 }
@@ -129,6 +130,7 @@ class ExamplesButton extends HelpButton
 	public ExamplesButton(Action action)
 	{
 		super(action, Color.decode("#FFFF77"));
+
 		putClientProperty(HelpButtonData.class, new ViewSpecificHelpButtonData(getMainWindow(), HelpButtonData.EXAMPLES, HelpButtonData.EXAMPLES_HTML));
 	}
 }
@@ -138,6 +140,7 @@ class WorkshopButton extends HelpButton
 	public WorkshopButton(Action action)
 	{
 		super(action, Color.decode("#77FF77"));
+		
 		putClientProperty(HelpButtonData.class, new ViewSpecificHelpButtonData(getMainWindow(), HelpButtonData.WORKSHOP, HelpButtonData.WORKSHOP_HTML));
 	}
 }
