@@ -202,7 +202,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		toggleButton.setBackground(bg);
 	}
 	
-	protected ChoiceQuestion getQuestion()
+	public ChoiceQuestion getQuestion()
 	{
 		return question;
 	}

@@ -45,6 +45,6 @@ public class TwoLevelQuestionWithDescription extends TwoLevelQuestion
 	@Override
 	public boolean hasLongDescriptionProvider()
 	{
-		return true;
+		return false;
 	}
 }

@@ -39,17 +39,31 @@ abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePa
 		mainWindow = mainWindowToUse;
 		leftPanel = leftPanelToUse;
 
+		if (getCastedLeftComponent().getQuestion().hasLongDescriptionProvider())
+		{
+			createSplitPane(mainWindowToUse);
+			add(splitPane);
+		}
+		else
+		{
+			add(leftPanel);
+		}
+	}
+
+	private void createSplitPane(MainWindow mainWindowToUse) throws Exception
+	{
 		splitPane = new PersistentHorizontalSplitPane(mainWindowToUse, mainWindowToUse, getPanelDescription());
+		RightSideDescriptionPanel rightPanel = createRightPanel(getMainDescriptionFileName());
+		//FIXME urgent - need to come up with better way to communicate a row selection change to the right panel
+		getCastedLeftComponent().addSelectionListener(rightPanel);
 		
 		addLeftPanel(leftPanel);
-		RightSideDescriptionPanel rightPanel = createRightPanel(getMainDescriptionFileName());
-		
-		//FIXME urgent - need to come up with better way to communicate a row selection change to the right panel
-		QuestionEditorWithHierarchichalRows component = (QuestionEditorWithHierarchichalRows) leftPanel.getSingleField().getComponent();
-		component.addSelectionListener(rightPanel);
 		addRightPanel(rightPanel);
-		
-		add(splitPane);
+	}
+
+	private QuestionEditorWithHierarchichalRows getCastedLeftComponent()
+	{
+		return (QuestionEditorWithHierarchichalRows) leftPanel.getSingleField().getComponent();
 	}
 	
 	@Override
@@ -81,7 +95,7 @@ abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePa
 		splitPane.setRightComponent(rightPanel);
 	}
 	
-	protected void addLeftPanel(DisposablePanel leftMainPanel)
+	private void addLeftPanel(DisposablePanel leftMainPanel)
 	{
 		splitPane.setLeftComponent(new JScrollPane(leftMainPanel));
 	}
@@ -91,7 +105,7 @@ abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePa
 		return new RightSideDescriptionPanel(getMainWindow(), mainDescriptionProvider);
 	}
 	
-	protected MainWindow getMainWindow()
+	private MainWindow getMainWindow()
 	{
 		return mainWindow;
 	}
