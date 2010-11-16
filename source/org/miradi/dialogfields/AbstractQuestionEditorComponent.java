@@ -85,10 +85,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		for (int index = 0; index < choices.length; ++index)
 		{
 			ChoiceItem choiceItem = choices[index];
-			JToggleButton toggleButton = createToggleButton(choiceItem.getLabel());
-			toggleButton.setBackground(choiceItem.getColor());
-			toggleButton.addActionListener(new ToggleButtonHandler());
-			choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
+			JComponent toggleButton = createLeftColumnComponent(choiceItem);
 
 			addComponentToRowPanel(mainRowsPanel, toggleButton, choiceItem);
 		}
@@ -98,6 +95,16 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		add(scrollPane);
 		revalidate();
 		repaint();
+	}
+
+	private JComponent createLeftColumnComponent(ChoiceItem choiceItem)
+	{
+		JToggleButton toggleButton = createToggleButton(choiceItem.getLabel());
+		toggleButton.setBackground(choiceItem.getColor());
+		toggleButton.addActionListener(new ToggleButtonHandler());
+		choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
+		
+		return toggleButton;
 	}
 
 	protected int calculateColumnCount()
