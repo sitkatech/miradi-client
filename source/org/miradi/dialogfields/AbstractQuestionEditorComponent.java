@@ -80,8 +80,8 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		addAdditionalComponent();
 		ChoiceItem[] choices = getQuestion().getChoices();
 		clearChoiceItemToToggleButtonMap();
-		MiradiPanel toggleButtonsPanel = new MiradiPanel(new GridLayoutPlus(0, calculateColumnCount())); 
-		toggleButtonsPanel.setBackground(getTogglePanelBackgroundColor());
+		MiradiPanel mainRowsPanel = new MiradiPanel(new GridLayoutPlus(0, calculateColumnCount())); 
+		mainRowsPanel.setBackground(getTogglePanelBackgroundColor());
 		for (int index = 0; index < choices.length; ++index)
 		{
 			ChoiceItem choiceItem = choices[index];
@@ -90,10 +90,10 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 			toggleButton.addActionListener(new ToggleButtonHandler());
 			choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
 
-			addComponentToRowPanel(toggleButtonsPanel, toggleButton, choiceItem);
+			addComponentToRowPanel(mainRowsPanel, toggleButton, choiceItem);
 		}
 	
-		MiradiScrollPane scrollPane = new MiradiScrollPane(toggleButtonsPanel);
+		MiradiScrollPane scrollPane = new MiradiScrollPane(mainRowsPanel);
 		scrollPane.setBorder(BorderFactory.createEmptyBorder());
 		add(scrollPane);
 		revalidate();
@@ -105,16 +105,16 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		return getColumnCount() * getNumberOfComponentsPerChoice();
 	}
 
-	protected void addComponentToRowPanel(MiradiPanel toggleButtonsPanel, JComponent leftColumnComponent, ChoiceItem choiceItem)
+	protected void addComponentToRowPanel(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItem choiceItem)
 	{
 		Icon icon = choiceItem.getIcon();
-		toggleButtonsPanel.add(getSafeIconLabel(icon));
+		mainRowsPanel.add(getSafeIconLabel(icon));
 		if (choiceItem.isSelectable())
-			toggleButtonsPanel.add(leftColumnComponent);
+			mainRowsPanel.add(leftColumnComponent);
 		else
-			toggleButtonsPanel.add(new PanelTitleLabel(choiceItem.getLabel()));
+			mainRowsPanel.add(new PanelTitleLabel(choiceItem.getLabel()));
 		
-		toggleButtonsPanel.add(createDescriptionComponent(choiceItem));
+		mainRowsPanel.add(createDescriptionComponent(choiceItem));
 	}
 
 	private int getNumberOfComponentsPerChoice()
