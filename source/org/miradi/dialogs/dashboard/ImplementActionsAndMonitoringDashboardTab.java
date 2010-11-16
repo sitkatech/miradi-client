@@ -24,7 +24,7 @@ import org.miradi.dialogfields.QuestionEditorWithHierarchichalRows;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.questions.ImplementActionsAndMonitoringQuestion;
+import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
 import org.miradi.wizard.WizardManager;
 
 public class ImplementActionsAndMonitoringDashboardTab extends LeftSideRightSideSplitterContainerTab
@@ -54,7 +54,7 @@ public class ImplementActionsAndMonitoringDashboardTab extends LeftSideRightSide
 	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		WizardManager wizardManager = mainWindowToUse.getWizardManager();
-		ImplementActionsAndMonitoringQuestion question = new ImplementActionsAndMonitoringQuestion(mainWindowToUse.getProject(), wizardManager);
+		OpenStandardsImplementActionsAndMonitoringQuestion question = new OpenStandardsImplementActionsAndMonitoringQuestion(mainWindowToUse.getProject(), wizardManager);
 		QuestionEditorWithHierarchichalRows component = new QuestionEditorWithHierarchichalRows(mainWindowToUse, question);
 		
 		return new OneFieldObjectDataInputPanel(mainWindowToUse.getProject(), component);
