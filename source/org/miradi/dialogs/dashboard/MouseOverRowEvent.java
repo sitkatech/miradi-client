@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
-public class WithoutViewChangeEvent extends AbstractRowSelectionEvent
+public class MouseOverRowEvent extends AbstractRowSelectionEvent
 {
-	public WithoutViewChangeEvent(Object source, AbstractLongDescriptionProvider descriptionProviderToUse)
+	public MouseOverRowEvent(Object source, AbstractLongDescriptionProvider descriptionProviderToUse)
 	{
 		super(source, descriptionProviderToUse);
 	}
