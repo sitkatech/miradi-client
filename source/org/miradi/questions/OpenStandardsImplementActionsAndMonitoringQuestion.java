@@ -257,5 +257,5 @@ public class OpenStandardsImplementActionsAndMonitoringQuestion extends DynamicC
 	private WizardManager wizardManager;
 	private static final String DEVELOP_SHORT_TERM_WORK_PLAN_RIGHT_SIDE_FILENAME = "dashboard/3A.html";
 	private static final String DEVELOP_AND_REFINE_PROJECT_BUDGET_RIGHT_SIDE_FILENAME = "dashboard/3B.html";
-	private static final String IMPLEMENT_PLANS_RIGHT_SIDE_FILENAME = "dashboard/3c.html";
+	private static final String IMPLEMENT_PLANS_RIGHT_SIDE_FILENAME = "dashboard/3C.html";
 }
