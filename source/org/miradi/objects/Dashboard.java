@@ -476,7 +476,9 @@ public class Dashboard extends BaseObject
 	private String calculatePercentage(int numinator, int denominator)
 	{
 		double percentage = ((double)numinator / (double)denominator) * 100;
-		
+		if (Double.isNaN(percentage))
+			return "";
+
 		return DoubleUtilities.toStringForHumans(percentage);
 	}
 	
