@@ -148,11 +148,6 @@ public class ChoiceItem implements Comparable<Object>
 		throw new RuntimeException("ChoiceItem does not support getChild");
 	}
 	
-	public void addChild(ChoiceItem childChoiceItem)
-	{
-		getChildren().add(childChoiceItem);
-	}
-	
 	@Override
 	public boolean equals(Object other)
 	{
