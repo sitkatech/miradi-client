@@ -25,9 +25,9 @@ import org.miradi.main.EAM;
 import org.miradi.views.summary.SummaryView;
 import org.miradi.wizard.WizardManager;
 
-public class AnalyzeAdaptAndUseQuestion extends DynamicChoiceWithRootChoiceItem
+public class OpenStandardsAnalyzeAdaptAndUseQuestion extends DynamicChoiceWithRootChoiceItem
 {
-	public AnalyzeAdaptAndUseQuestion(WizardManager wizardManagerToUse)
+	public OpenStandardsAnalyzeAdaptAndUseQuestion(WizardManager wizardManagerToUse)
 	{
 		wizardManager = wizardManagerToUse;
 	}
