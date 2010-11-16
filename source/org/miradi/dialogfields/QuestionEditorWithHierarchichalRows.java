@@ -183,7 +183,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 
 	protected void addSelectableRow(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItemWithLongDescriptionProvider choiceItem, final int indentCount, Font font)
 	{
-		JComponent leftComponent = createToggleButton(leftColumnComponent, choiceItem);
+		JComponent leftComponent = createLeftColumnComponent(choiceItem, leftColumnComponent);
 		leftComponent.setFont(font);
 		
 		PanelTitleLabel rightComponent = new PanelTitleLabel(choiceItem.getAdditionalText());
@@ -199,14 +199,6 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		getSafeSelectableRows().add(selectableRow);
 	}
 	
-	private JComponent createToggleButton(JComponent toggleButton, ChoiceItem choiceItem)
-	{
-		if (choiceItem.isSelectable())
-			return toggleButton;
-		
-		return new PanelTitleLabel(choiceItem.getLabel());
-	}
-
 	protected Box createHorizontalBoxWithIndents(int indentCount)
 	{
 		Box box = Box.createHorizontalBox();
