@@ -107,8 +107,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 
 	protected void addComponentToRowPanel(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItem choiceItem)
 	{
-		Icon icon = choiceItem.getIcon();
-		mainRowsPanel.add(getSafeIconLabel(icon));
+		mainRowsPanel.add(getSafeIconLabel(choiceItem.getIcon()));
 		if (choiceItem.isSelectable())
 			mainRowsPanel.add(leftColumnComponent);
 		else
