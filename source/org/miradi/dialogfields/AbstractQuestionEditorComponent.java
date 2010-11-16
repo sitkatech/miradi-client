@@ -90,7 +90,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 			toggleButton.addActionListener(new ToggleButtonHandler());
 			choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
 
-			createRowPanel(toggleButtonsPanel, toggleButton, choiceItem);
+			addComponentToRowPanel(toggleButtonsPanel, toggleButton, choiceItem);
 		}
 	
 		MiradiScrollPane scrollPane = new MiradiScrollPane(toggleButtonsPanel);
@@ -105,7 +105,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		return getColumnCount() * getNumberOfComponentsPerChoice();
 	}
 
-	protected void createRowPanel(MiradiPanel toggleButtonsPanel, JComponent leftColumnComponent, ChoiceItem choiceItem)
+	protected void addComponentToRowPanel(MiradiPanel toggleButtonsPanel, JComponent leftColumnComponent, ChoiceItem choiceItem)
 	{
 		Icon icon = choiceItem.getIcon();
 		toggleButtonsPanel.add(getSafeIconLabel(icon));

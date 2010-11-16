@@ -111,7 +111,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 	}
 	
 	@Override
-	protected void createRowPanel(MiradiPanel toggleButtonsPanel, JComponent leftColumnComponent, ChoiceItem choiceItem)
+	protected void addComponentToRowPanel(MiradiPanel toggleButtonsPanel, JComponent leftColumnComponent, ChoiceItem choiceItem)
 	{
 		toggleButtonsPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		try
