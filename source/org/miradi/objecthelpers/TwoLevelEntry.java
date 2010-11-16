@@ -54,7 +54,7 @@ public class TwoLevelEntry
 		return getEntryLabel();
 	}
 	
-	public boolean isLeaf() 
+	public boolean isSelectable() 
 	{
 		if(isEmptyItem())
 			return true;

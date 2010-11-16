@@ -33,7 +33,7 @@ public class LeafTwoLevelEntry extends TwoLevelEntry
 	}
 	
 	@Override
-	public boolean isLeaf()
+	public boolean isSelectable()
 	{
 		return true;
 	}
