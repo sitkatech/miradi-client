@@ -38,7 +38,7 @@ public class TncOperatingUnitsFileLoader extends TwoLevelFileLoader
 			String operatingUnitCode = (String) row.get(0);
 			String operatingUnitSourceName = (String) row.get(1);
 		
-			entries.add(new LeafTwoLevelEntry(operatingUnitCode, operatingUnitSourceName));
+			entries.add(new AlwaysSelectableTwoLevelEntry(operatingUnitCode, operatingUnitSourceName));
 		}
 		return entries;
 	}
