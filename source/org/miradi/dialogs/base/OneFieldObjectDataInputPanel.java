@@ -29,8 +29,8 @@ import org.miradi.project.Project;
 
 public class OneFieldObjectDataInputPanel extends ObjectDataInputPanel
 {
-	//FIXME this constructor does not take a tag but uses a Fake "" tag.  The field is saveble, and needs to be non saveble to avoid
-	//the need for a tag
+	//FIXME: This panel will contain multiple ODIF's, 
+	// eliminating the need for a fake field with a fake tag
 	public OneFieldObjectDataInputPanel(Project projectToUse, SavebleComponent savebleComponentToUse)
 	{
 		this (projectToUse, ORef.INVALID, Dashboard.PSEUDO_TEMP_TAG, savebleComponentToUse);
