@@ -1,3 +1,55 @@
+=begin
+	PROPOSED NEW API:
+	
+	ping - make sure server is up; returns API version; no credentials required
+		returns: server version
+
+	verify_account(user, pw) - test login, without actually doing anything
+		returns: success/error
+	create_user(user, pw, newuser, newuserpw)
+		returns: success/error
+	change_password(user, oldpw, newpw)
+		returns: success/error
+
+	list_projects(user, pw) - list all projects this user has access to:
+			returns: path, date_modified, tags, owner, rights
+	create_project(user, pw, project_path)
+		returns: success/error
+	delete_project(user, pw, project_path)
+		returns: success/error
+	add_project_user(user, pw, project_path, other_user, rights)
+		returns: success/error
+	modify_project_rights(user, pw, project_path, other_user, rights)
+		returns: success/error
+	remove_project_user(user, pw, project_path, other_user, rights)
+		returns: success/error
+
+	open_project(user, pw, project_path, read_or_write_mode, revision_id)
+		returns: success/error
+	close_project(user, pw, project_path)
+		returns: success/error
+
+	lock_for_writing(user, pw, project_path, revision_id)
+		returns: success/error
+	unlock(user, pw, project_path)
+		returns: success/error
+	refresh_lock(user, pw, project_path)
+		returns: success/error
+	
+	read_manifests(user, pw, project_path)
+		returns: {path->data}
+	read_files(user, pw, project_path, relative_paths[])
+		returns: {path->data}
+	
+	begin_transaction(user, pw, project_path, revision_id)
+	end_transaction(user, pw, project_path, transaction_id)
+
+	write_file(user, pw, project_path, transaction_id, relative_path, data)
+	delete_file(user, pw, project_path, transaction_id, relative_path)
+	delete_files(user, pw, project_path, transaction_id, relative_paths[])
+=end
+
+
 class MiradiServerController < Controller
 	map '/MiradiServer'
 	engine :None
