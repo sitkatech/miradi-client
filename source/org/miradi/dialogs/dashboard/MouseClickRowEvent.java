@@ -21,9 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.dashboard;
 
 
-public class RowSelectionEvent extends AbstractRowSelectionEvent
+public class MouseClickRowEvent extends AbstractRowSelectionEvent
 {
-	public RowSelectionEvent(Object source, AbstractLongDescriptionProvider descriptionProviderToUse)
+	public MouseClickRowEvent(Object source, AbstractLongDescriptionProvider descriptionProviderToUse)
 	{
 		super(source, descriptionProviderToUse);
 	}
