@@ -105,12 +105,12 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		return getColumnCount() * getNumberOfComponentsPerChoice();
 	}
 
-	protected void createRowPanel(MiradiPanel toggleButtonsPanel, JComponent toggleButton, ChoiceItem choiceItem)
+	protected void createRowPanel(MiradiPanel toggleButtonsPanel, JComponent leftColumnComponent, ChoiceItem choiceItem)
 	{
 		Icon icon = choiceItem.getIcon();
 		toggleButtonsPanel.add(getSafeIconLabel(icon));
 		if (choiceItem.isSelectable())
-			toggleButtonsPanel.add(toggleButton);
+			toggleButtonsPanel.add(leftColumnComponent);
 		else
 			toggleButtonsPanel.add(new PanelTitleLabel(choiceItem.getLabel()));
 		
