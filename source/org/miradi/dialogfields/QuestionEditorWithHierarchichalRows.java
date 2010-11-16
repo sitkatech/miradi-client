@@ -111,12 +111,12 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 	}
 	
 	@Override
-	protected void addComponentToRowPanel(MiradiPanel toggleButtonsPanel, JComponent leftColumnComponent, ChoiceItem choiceItem)
+	protected void addComponentToRowPanel(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItem choiceItem)
 	{
-		toggleButtonsPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		mainRowsPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		try
 		{
-			addRowComponents(toggleButtonsPanel, leftColumnComponent, choiceItem);
+			addRowComponents(mainRowsPanel, leftColumnComponent, choiceItem);
 		}
 		catch (Exception e)
 		{
