@@ -85,9 +85,8 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		for (int index = 0; index < choices.length; ++index)
 		{
 			ChoiceItem choiceItem = choices[index];
-			JComponent toggleButton = createLeftColumnComponent(choiceItem);
-
-			addComponentToRowPanel(mainRowsPanel, toggleButton, choiceItem);
+			JComponent leftColumnComponent = createLeftColumnComponent(choiceItem);
+			addComponentToRowPanel(mainRowsPanel, leftColumnComponent, choiceItem);
 		}
 	
 		MiradiScrollPane scrollPane = new MiradiScrollPane(mainRowsPanel);
