@@ -126,7 +126,7 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 	private ChoiceItemWithChildren createDefineScopeChoiceItem(HtmlResourceLongDescriptionProvider providerToUse) throws Exception
 	{
 		String leftColumnTranslatedText = EAM.text("Define Project Scope:");
-		String scopeVisionCount = getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT);
+		String scopeVisionCount = getDashboardData(Dashboard.PSEUDO_PROJECT_SCOPE_WORD_COUNT);
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("Created (%s chars)"), scopeVisionCount);
 		
 		return new ChoiceItemWithChildren("DefineProjectScope", leftColumnTranslatedText, rightColumnTranslatedText, providerToUse);
