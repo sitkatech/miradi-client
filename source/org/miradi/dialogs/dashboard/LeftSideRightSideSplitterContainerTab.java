@@ -25,7 +25,6 @@ import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 
 import org.miradi.dialogfields.QuestionEditorWithHierarchichalRows;
-import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.main.MainWindow;
@@ -57,8 +56,8 @@ abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePa
 		//FIXME urgent - need to come up with better way to communicate a row selection change to the right panel
 		getCastedLeftComponent().addSelectionListener(rightPanel);
 		
-		addLeftPanel(leftPanel);
-		addRightPanel(rightPanel);
+		splitPane.setLeftComponent(new JScrollPane(leftPanel));
+		splitPane.setRightComponent(rightPanel);
 	}
 
 	private QuestionEditorWithHierarchichalRows getCastedLeftComponent()
@@ -88,16 +87,6 @@ abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePa
 		leftPanel.becomeInactive();
 		
 		super.becomeInactive();
-	}
-	
-	private void addRightPanel(RightSideDescriptionPanel rightPanel) throws Exception
-	{
-		splitPane.setRightComponent(rightPanel);
-	}
-	
-	private void addLeftPanel(DisposablePanel leftMainPanel)
-	{
-		splitPane.setLeftComponent(new JScrollPane(leftMainPanel));
 	}
 	
 	private RightSideDescriptionPanel createRightPanel(AbstractLongDescriptionProvider mainDescriptionProvider) throws Exception
