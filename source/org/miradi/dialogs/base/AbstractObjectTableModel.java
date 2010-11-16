@@ -25,6 +25,7 @@ import java.util.Vector;
 
 import org.miradi.dialogs.threatrating.upperPanel.TableModelChoiceItemComparator;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.SortableTableModel;
@@ -59,15 +60,12 @@ abstract public class AbstractObjectTableModel extends SortableTableModel
 	@Override
 	public void setSortedRowIndexes(Vector<Integer> sortedRowIndexes)
 	{
-		ORefList rowObjectRefs = getRowObjectRefs();
-		if (rowObjectRefs.isEmpty())
-			return;
-		
 		ORefList newList = new ORefList();
 		for(int index = 0; index < sortedRowIndexes.size(); ++index)
 		{
 			int nextExistingRowIndex = sortedRowIndexes.get(index).intValue();
-			newList.add(rowObjectRefs.get(nextExistingRowIndex));
+			BaseObject baseObject = getBaseObjectForRowColumn(nextExistingRowIndex, 0);
+			newList.add(baseObject.getRef());
 		}
 		setRowObjectRefs(newList);
 	}
