@@ -30,9 +30,9 @@ import org.miradi.project.Project;
 import org.miradi.views.summary.SummaryView;
 import org.miradi.wizard.WizardManager;
 
-public class ConceptualizeQuestion extends DynamicChoiceWithRootChoiceItem
+public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootChoiceItem
 {
-	public ConceptualizeQuestion(Project projectToUse, WizardManager wizardManagerToUse)
+	public OpenStandardsConceptualizeQuestion(Project projectToUse, WizardManager wizardManagerToUse)
 	{
 		project = projectToUse;
 		wizardManager = wizardManagerToUse;
