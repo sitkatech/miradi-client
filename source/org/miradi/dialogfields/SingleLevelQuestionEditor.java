@@ -36,8 +36,8 @@ public class SingleLevelQuestionEditor extends QuestionEditorWithHierarchichalRo
 	}
 	
 	@Override
-	protected void addRowComponents(MiradiPanel mainRowsPanel,	JComponent toggleButton, ChoiceItem choiceItem) throws Exception
+	protected void addRowComponents(MiradiPanel mainRowsPanel,	JComponent leftColumnComponent, ChoiceItem choiceItem) throws Exception
 	{
-		addSelectableRow(mainRowsPanel, toggleButton, (ChoiceItemWithLongDescriptionProvider) choiceItem, 0, getRawFont());
+		addSelectableRow(mainRowsPanel, leftColumnComponent, (ChoiceItemWithLongDescriptionProvider) choiceItem, 0, getRawFont());
 	}
 }
