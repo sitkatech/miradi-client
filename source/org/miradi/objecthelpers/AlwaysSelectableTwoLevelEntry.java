@@ -20,14 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objecthelpers;
 
-public class LeafTwoLevelEntry extends TwoLevelEntry
+public class AlwaysSelectableTwoLevelEntry extends TwoLevelEntry
 {
-	public LeafTwoLevelEntry(String code, String label, String description)
+	public AlwaysSelectableTwoLevelEntry(String code, String label, String description)
 	{
 		super(code, label, description);
 	}
 	
-	public LeafTwoLevelEntry(String code, String label)
+	public AlwaysSelectableTwoLevelEntry(String code, String label)
 	{
 		super(code, label);
 	}

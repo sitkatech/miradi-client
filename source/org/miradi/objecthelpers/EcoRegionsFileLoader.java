@@ -40,7 +40,7 @@ public class EcoRegionsFileLoader extends TwoLevelFileLoader
 			String regionName = (String) row.get(1) + " - " + (String) row.get(2) + " - " +(String) row.get(3);
 			String description = (String) row.get(4);
 		
-			entries.add(new LeafTwoLevelEntry(regionCode, regionName, description));
+			entries.add(new AlwaysSelectableTwoLevelEntry(regionCode, regionName, description));
 		}
 		return entries;
 	}
