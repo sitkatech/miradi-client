@@ -41,13 +41,18 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 	@Override
 	public ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
-		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("1Header", EAM.text("1. Conceptualize"), new HtmlResourceLongDescriptionProvider("dashboard/1.html", getSummaryOverviewStepName()));
+		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("1Header", getHeaderLabel(), new HtmlResourceLongDescriptionProvider("dashboard/1.html", getSummaryOverviewStepName()));
 
 		headerChoiceItem.addChild(createTeamMembersChoiceItem());
 		headerChoiceItem.addChild(createScopeVisionAndTargetsChoiceItem());
 		headerChoiceItem.addChild(createIdentifyCriticalThreatsChoiceItem());
 	
 		return headerChoiceItem;
+	}
+
+	public static String getHeaderLabel()
+	{
+		return EAM.text("1. Conceptualize");
 	}
 	
 	protected String getMainDescriptionFileName()

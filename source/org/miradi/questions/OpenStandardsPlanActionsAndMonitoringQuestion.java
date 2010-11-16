@@ -41,7 +41,7 @@ public class OpenStandardsPlanActionsAndMonitoringQuestion extends DynamicChoice
 	@Override
 	public ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
-		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("2Header", EAM.text("2. Plan Actions and Monitoring"), new HtmlResourceLongDescriptionProvider(getMainDescriptionFileName(), getSummaryOverviewStepName()));
+		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("2Header", getHeaderLabel(), new HtmlResourceLongDescriptionProvider(getMainDescriptionFileName(), getSummaryOverviewStepName()));
 		
 		headerChoiceItem.addChild(addDevelopStrategicPlanRow());
 		headerChoiceItem.addChild(addDevelopFormatMonitoringPlanRow());
@@ -50,6 +50,10 @@ public class OpenStandardsPlanActionsAndMonitoringQuestion extends DynamicChoice
 		return headerChoiceItem;
 	}
 
+	public static String getHeaderLabel()
+	{
+		return EAM.text("2. Plan Actions and Monitoring");
+	}
 	
 	private ChoiceItemWithChildren addDevelopOperationalPlanRow() throws Exception
 	{
