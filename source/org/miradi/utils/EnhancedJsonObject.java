@@ -196,6 +196,14 @@ public class EnhancedJsonObject extends JSONObject
 		size.put(TAG_HEIGHT, value.height);
 		put(tag, size);
 	}
+	
+	public Point optPoint(String tag) throws Exception
+	{
+		if (has(tag))
+			return getPoint(tag);
+		
+		return null;
+	}
 
 	public Point getPoint(String tag) throws Exception
 	{
@@ -203,6 +211,14 @@ public class EnhancedJsonObject extends JSONObject
 		return convertToPoint(pointAsString);
 	}
 
+	public Dimension optDimension(String tag) throws Exception
+	{
+		if (has(tag))
+			return getDimension(tag);
+		
+		return null;
+	}
+	
 	public Dimension getDimension(String tag) throws ParseException
 	{
 		String dimensionAsString = getString(tag);
