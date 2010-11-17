@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
-import java.awt.BorderLayout;
-
 import javax.swing.JScrollPane;
 
 import org.miradi.dialogfields.QuestionEditorWithHierarchichalRows;
@@ -34,7 +32,8 @@ abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescr
 {
 	public PanelWithDescriptionPanel(MainWindow mainWindowToUse, OneFieldObjectDataInputPanel leftPanelToUse) throws Exception
 	{
-		setLayout(new BorderLayout());
+		super();
+		
 		mainWindow = mainWindowToUse;
 		leftPanel = leftPanelToUse;
 
