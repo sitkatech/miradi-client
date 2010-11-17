@@ -43,7 +43,7 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 		viewer = new RightSideDescriptionHtmlViewer(mainWindow);
 		add(new JScrollPane(viewer));
 		
-		setRightSideHtmlContent(mainDescriptionProvider.getDescription());
+		setRightSideHtmlContent(mainDescriptionProvider);
 	}
 	
 	public void valueChanged(ListSelectionEvent rawEvent)
@@ -52,7 +52,7 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 		{
 			AbstractRowSelectionEvent castedEvent = (AbstractRowSelectionEvent) rawEvent;
 			AbstractLongDescriptionProvider descriptionProvider = castedEvent.getDescriptionProvider();
-			setRightSideHtmlContent(descriptionProvider.getDescription());
+			setRightSideHtmlContent(descriptionProvider);
 			if (castedEvent.isViewChangeEvent())
 				changeView(descriptionProvider);
 		}
@@ -69,9 +69,9 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 			ViewSwitchDoer.changeView(getMainWindow(), descriptionProvider.getWizardStepName());
 	}
 
-	private void setRightSideHtmlContent(String htmlText) throws Exception
+	private void setRightSideHtmlContent(AbstractLongDescriptionProvider descriptionProvider) throws Exception
 	{
-		viewer.setText(htmlText);
+		viewer.setText(descriptionProvider.getDescription());
 	}
 	
 	private MainWindow getMainWindow()
