@@ -77,7 +77,7 @@ abstract public class AbstractQuestionBasedComponent extends AbstractDataValueLi
 		}
 	}
 
-	protected String setSameToolTipForAllToggleButtons()
+	protected void setSameToolTipForAllToggleButtons()
 	{
 		String partialToolTip = ""; 
 		int selectionCount = 0;
@@ -98,14 +98,14 @@ abstract public class AbstractQuestionBasedComponent extends AbstractDataValueLi
 		if (getSelectedCodes().size() > (MAX_ITEMS_COUNT_IN_TOOLTIP  + 1))
 			moreText = "...more";
 		
-		String toolTip = "<HTML>" + partialToolTip + moreText + "</HTML>";
+		String rawCombinedText = partialToolTip + moreText;
+		String toolTip = "<HTML>" + rawCombinedText + "</HTML>";
 		for(ChoiceItem choiceItem : choices)
 		{
 			JToggleButton toggleButton = choiceItemToToggleButtonMap.get(choiceItem);
-			toggleButton.setToolTipText(toolTip);
+			if (rawCombinedText.length() != 0)
+				toggleButton.setToolTipText(toolTip);
 		}
-		
-		return toolTip;
 	}
 	
 	@Override
