@@ -41,7 +41,7 @@ public class OpenStandardsImplementActionsAndMonitoringQuestion extends DynamicC
 	@Override
 	public ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
-		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("3Header", getHeaderLabel(), new HtmlResourceLongDescriptionProvider(getMainDescriptionFileName(), getDiagramOverviewStepName()));
+		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("3Header", getHeaderLabel(), new HtmlResourceLongDescriptionProvider(getHeaderDescriptionFileName(), getDiagramOverviewStepName()));
 
 		headerChoiceItem.addChild(createDevelopShortTermWorkPlanChoiceItem());
 		headerChoiceItem.addChild(createDevelopAndRefineProjectBudgetRow());
@@ -55,7 +55,7 @@ public class OpenStandardsImplementActionsAndMonitoringQuestion extends DynamicC
 		return EAM.text("3. Implement Actions and Monitoring");
 	}
 
-	protected String getMainDescriptionFileName()
+	public static String getHeaderDescriptionFileName()
 	{
 		return "dashboard/3.html";
 	}

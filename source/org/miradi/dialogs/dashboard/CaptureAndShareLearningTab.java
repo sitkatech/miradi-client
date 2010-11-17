@@ -41,7 +41,7 @@ public class CaptureAndShareLearningTab extends PanelWithDescriptionPanel
 	@Override
 	protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception
 	{
-		return new HtmlResourceLongDescriptionProvider("dashboard/5.html");
+		return new HtmlResourceLongDescriptionProvider(OpenStandardsCaptureAndShareLearningQuestion.getHeaderDescriptionFileName());
 	}
 
 	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse) throws Exception

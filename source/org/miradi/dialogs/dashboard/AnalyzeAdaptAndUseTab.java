@@ -41,7 +41,7 @@ public class AnalyzeAdaptAndUseTab extends PanelWithDescriptionPanel
 	@Override
 	protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception
 	{
-		return new HtmlResourceLongDescriptionProvider("dashboard/4.html");
+		return new HtmlResourceLongDescriptionProvider(OpenStandardsAnalyzeAdaptAndUseQuestion.getHeaderDescriptionFileName());
 	}
 
 	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse) throws Exception
