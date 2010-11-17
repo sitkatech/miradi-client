@@ -26,7 +26,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.questions.OpenStandardsCaptureAndShareLearningQuestion;
 import org.miradi.wizard.WizardManager;
 
-public class CaptureAndShareLearningTab extends PanelWithOptionalDescriptionPanel
+public class CaptureAndShareLearningTab extends PanelWithDescriptionPanel
 {
 	public CaptureAndShareLearningTab(MainWindow mainWindowToUse, OneFieldObjectDataInputPanel leftPanelToUse) throws Exception
 	{

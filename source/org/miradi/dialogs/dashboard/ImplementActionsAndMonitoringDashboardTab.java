@@ -26,7 +26,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
 import org.miradi.wizard.WizardManager;
 
-public class ImplementActionsAndMonitoringDashboardTab extends PanelWithOptionalDescriptionPanel
+public class ImplementActionsAndMonitoringDashboardTab extends PanelWithDescriptionPanel
 {
 	private ImplementActionsAndMonitoringDashboardTab(MainWindow mainWindowToUse, OneFieldObjectDataInputPanel oneFieldObjectDataInputPanel) throws Exception
 	{
