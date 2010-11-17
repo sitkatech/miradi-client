@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.umbrella.doers;
 
-import java.awt.Dimension;
-
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.dashboard.DashboardDialog;
 import org.miradi.views.MainWindowDoer;
@@ -41,17 +39,7 @@ public class DashboardDoer extends MainWindowDoer
 			return;
 		
 		DashboardDialog dialog = new DashboardDialog(getMainWindow());
-		setPreferredDialogSize(dialog);
 		Utilities.centerDlg(dialog);
 		dialog.setVisible(true);
-	}
-
-	private void setPreferredDialogSize(DashboardDialog dialog)
-	{
-		Dimension screenRect = Utilities.getViewableScreenSize();
-		int width = screenRect.width * 3 / 4;
-		int height = screenRect.height * 3 / 4;
-		
-		dialog.setPreferredSize(new Dimension(width, height));
 	}
 }
