@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.main;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -27,6 +29,8 @@ import java.util.Iterator;
 
 import org.miradi.database.JSONFile;
 import org.miradi.diagram.DiagramConstants;
+import org.miradi.objectdata.DimensionData;
+import org.miradi.objectdata.PointData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -117,6 +121,26 @@ public class AppPreferences
 	public int getMainWindowWidth()
 	{
 		return mainWindowWidth;
+	}
+	
+	public void setDashboardWindowSize(Dimension dashboardWindowSizeToUse)
+	{
+		dashboardWindowSize.setDimension(dashboardWindowSizeToUse);
+	}
+	
+	public void setDashboardWindowPosition(Point dashboardWindowPosistionToUse)
+	{
+		dashboardWindowPosition.setPoint(dashboardWindowPosistionToUse);
+	}
+	
+	public Dimension getDashboardWindowSize()
+	{
+		return dashboardWindowSize.getDimension();
+	}
+	
+	public Point getDashboardWindowPosition()
+	{
+		return dashboardWindowPosition.getPoint();
 	}
 	
 	public void setLanguageCode(String newLanguageCode)
@@ -344,6 +368,8 @@ public class AppPreferences
 		json.put(TAG_NEWS_TEXT, newsText);
 		json.put(TAG_NEWS_DATE, newsDate);
 		json.put(TAG_INSTALLED_SAMPLE_VERSIONS, installedSampleVersions.toString());
+		json.put(TAG_DASHBOARD_WINDOW_POSITION, dashboardWindowPosition.toString());
+		json.put(TAG_DASHBOARD_WINDOW_SIZE, dashboardWindowSize.toString());
 		
 		json.put(TAG_WIZARD_FONT_FAMILY, wizardFontFamily);
 		json.put(TAG_WIZARD_FONT_SIZE, Integer.toString(wizardFontSize));
@@ -411,6 +437,9 @@ public class AppPreferences
 		newsText = json.optString(TAG_NEWS_TEXT);
 		newsDate = json.optString(TAG_NEWS_DATE);
 		installedSampleVersions = new CodeList(json.optString(TAG_INSTALLED_SAMPLE_VERSIONS));
+		
+		dashboardWindowPosition = new PointData(TAG_DASHBOARD_WINDOW_POSITION);
+		dashboardWindowSize = new DimensionData(TAG_DASHBOARD_WINDOW_SIZE);
 		
 		wizardFontFamily = json.optString(TAG_WIZARD_FONT_FAMILY);
 		wizardFontSize = json.optInt(TAG_WIZARD_FONT_SIZE);
@@ -613,6 +642,8 @@ public class AppPreferences
 	public static final String TAG_NEWS_TEXT = "NewsText";
 	public static final String TAG_NEWS_DATE = "NewsDate";
 	public static final String TAG_INSTALLED_SAMPLE_VERSIONS = "InstalledSampleVersions";
+	public static final String TAG_DASHBOARD_WINDOW_SIZE = "DashboardWindowSize";
+	public static final String TAG_DASHBOARD_WINDOW_POSITION = "DashbaoardWindowPosition";
 	
 	public static final String TAG_GRID_VISIBLE = "GridVisible";
 	public static final String TAG_CELL_RATINGS_VISIBLE = "CellRatingsVisible";
@@ -702,6 +733,8 @@ public class AppPreferences
 	private String newsText;
 	private String newsDate;
 	private CodeList installedSampleVersions;
+	private DimensionData dashboardWindowSize;
+	private PointData dashboardWindowPosition;
 	
 	private String wizardFontFamily;
 	private int wizardFontSize;
