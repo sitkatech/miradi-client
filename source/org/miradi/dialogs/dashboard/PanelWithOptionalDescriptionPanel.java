@@ -38,10 +38,7 @@ abstract public class PanelWithOptionalDescriptionPanel extends DisposablePanelW
 		mainWindow = mainWindowToUse;
 		leftPanel = leftPanelToUse;
 
-		if (getCastedLeftComponent().getQuestion().hasLongDescriptionProvider())
-			add(createSplitPane(mainWindowToUse));
-		else
-			add(leftPanel);
+		add(createSplitPane(mainWindowToUse));
 	}
 
 	private PersistentHorizontalSplitPane createSplitPane(MainWindow mainWindowToUse) throws Exception
