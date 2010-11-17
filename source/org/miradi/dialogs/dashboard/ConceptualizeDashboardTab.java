@@ -39,7 +39,7 @@ public class ConceptualizeDashboardTab extends PanelWithOptionalDescriptionPanel
 	}
 	
 	@Override
-	protected AbstractLongDescriptionProvider getMainDescriptionFileName() throws Exception
+	protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception
 	{
 		return new HtmlResourceLongDescriptionProvider(OpenStandardsConceptualizeQuestion.MAIN_DESCRIPTION_RIGHT_PANEL_FILE_NAME);
 	}

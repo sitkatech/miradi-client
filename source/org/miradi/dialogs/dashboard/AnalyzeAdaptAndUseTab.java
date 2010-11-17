@@ -39,7 +39,7 @@ public class AnalyzeAdaptAndUseTab extends PanelWithOptionalDescriptionPanel
 	}
 	
 	@Override
-	protected AbstractLongDescriptionProvider getMainDescriptionFileName() throws Exception
+	protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception
 	{
 		return new HtmlResourceLongDescriptionProvider("dashboard/4.html");
 	}

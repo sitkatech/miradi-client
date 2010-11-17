@@ -47,7 +47,7 @@ abstract public class PanelWithOptionalDescriptionPanel extends DisposablePanelW
 	private PersistentHorizontalSplitPane createSplitPane(MainWindow mainWindowToUse) throws Exception
 	{
 		PersistentHorizontalSplitPane splitPane = new PersistentHorizontalSplitPane(mainWindowToUse, mainWindowToUse, getPanelDescription());
-		RightSideDescriptionPanel rightPanel = createRightPanel(getMainDescriptionFileName());
+		RightSideDescriptionPanel rightPanel = createRightPanel(getDefaultDescriptionProvider());
 		//FIXME urgent - need to come up with better way to communicate a row selection change to the right panel
 		getCastedLeftComponent().addSelectionListener(rightPanel);
 		
@@ -95,7 +95,7 @@ abstract public class PanelWithOptionalDescriptionPanel extends DisposablePanelW
 		return mainWindow;
 	}
 	
-	abstract protected AbstractLongDescriptionProvider getMainDescriptionFileName() throws Exception;
+	abstract protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception;
 	
 	private MainWindow mainWindow;
 	private OneFieldObjectDataInputPanel leftPanel;
