@@ -26,7 +26,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.questions.OpenStandardsAnalyzeAdaptAndUseQuestion;
 import org.miradi.wizard.WizardManager;
 
-public class AnalyzeAdaptAndUseTab extends LeftSideRightSideSplitterContainerTab
+public class AnalyzeAdaptAndUseTab extends PanelWithOptionalDescriptionPanel
 {
 	private AnalyzeAdaptAndUseTab(MainWindow mainWindowToUse, OneFieldObjectDataInputPanel leftPanelToUse) throws Exception
 	{

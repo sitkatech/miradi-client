@@ -30,9 +30,9 @@ import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 
-abstract public class LeftSideRightSideSplitterContainerTab extends DisposablePanelWithDescription
+abstract public class PanelWithOptionalDescriptionPanel extends DisposablePanelWithDescription
 {
-	public LeftSideRightSideSplitterContainerTab(MainWindow mainWindowToUse, OneFieldObjectDataInputPanel leftPanelToUse) throws Exception
+	public PanelWithOptionalDescriptionPanel(MainWindow mainWindowToUse, OneFieldObjectDataInputPanel leftPanelToUse) throws Exception
 	{
 		setLayout(new BorderLayout());
 		mainWindow = mainWindowToUse;

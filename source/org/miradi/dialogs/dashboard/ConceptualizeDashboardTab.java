@@ -26,7 +26,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 import org.miradi.wizard.WizardManager;
 
-public class ConceptualizeDashboardTab extends LeftSideRightSideSplitterContainerTab
+public class ConceptualizeDashboardTab extends PanelWithOptionalDescriptionPanel
 {
 	public ConceptualizeDashboardTab(MainWindow mainWindowToUse, OneFieldObjectDataInputPanel leftPanelToUse) throws Exception
 	{

@@ -26,7 +26,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
 import org.miradi.wizard.WizardManager;
 
-public class PlanActionsAndMonitoringTab extends LeftSideRightSideSplitterContainerTab
+public class PlanActionsAndMonitoringTab extends PanelWithOptionalDescriptionPanel
 {
 	private PlanActionsAndMonitoringTab(MainWindow mainWindowToUse, OneFieldObjectDataInputPanel oneFieldObjectDataInputPanel) throws Exception
 	{

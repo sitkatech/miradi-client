@@ -108,7 +108,7 @@ public class DashboardMainPanel extends DisposablePanel
 		currentTab = conceptualizeDashboardTab;
 	}
 	
-	private void addTab(LeftSideRightSideSplitterContainerTab tab)
+	private void addTab(PanelWithOptionalDescriptionPanel tab)
 	{
 		tabs.addTab(tab.getPanelDescription(), tab);
 	}
@@ -132,9 +132,9 @@ public class DashboardMainPanel extends DisposablePanel
 	private JTabbedPane tabs;
 	private MainWindow mainWindow;
 	private DisposablePanel currentTab;
-	private LeftSideRightSideSplitterContainerTab conceptualizeDashboardTab;
-	private LeftSideRightSideSplitterContainerTab planActionsAndMonitoringTab;
-	private LeftSideRightSideSplitterContainerTab actionsAndMonitoringTab;
-	private	LeftSideRightSideSplitterContainerTab analyzeAdaptAndUseTab;
-	private LeftSideRightSideSplitterContainerTab captureAndShareLearningTab;
+	private PanelWithOptionalDescriptionPanel conceptualizeDashboardTab;
+	private PanelWithOptionalDescriptionPanel planActionsAndMonitoringTab;
+	private PanelWithOptionalDescriptionPanel actionsAndMonitoringTab;
+	private	PanelWithOptionalDescriptionPanel analyzeAdaptAndUseTab;
+	private PanelWithOptionalDescriptionPanel captureAndShareLearningTab;
 }
