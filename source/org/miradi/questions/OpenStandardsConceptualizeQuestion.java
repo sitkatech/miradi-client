@@ -92,7 +92,7 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 		statusDescriptionTokenReplacementMap2.put("%targetWithSimpleViabilityCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT));
 		String leftColumnTranslatedText = EAM.substitute(EAM.text("%targetWithSimpleViabilityCount targets have simple viablity information"), statusDescriptionTokenReplacementMap2);
 		
-		return new ChoiceItemWithChildren("DescribeStatusOfTargets", leftColumnTranslatedText, providerToUse);
+		return new ChoiceItemWithChildren("DescribeStatusOfTargets", "", leftColumnTranslatedText, providerToUse);
 	}
 
 	private ChoiceItemWithChildren createTargetStatusChoiceItem(ChoiceItemWithChildren subHeaderChoiceItem, HtmlResourceLongDescriptionProvider providerToUse) throws Exception
@@ -152,7 +152,7 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 	{
 		String leftColumnTranslatedText = EAM.substitute(EAM.text("%threatWithTaxonomyCount of %threatCount have taxonomy assignments"), threatsTokenReplacementMap);
 		
-		return new ChoiceItemWithChildren("threatWithTaxonomyCount", leftColumnTranslatedText, providerToUse);
+		return new ChoiceItemWithChildren("threatWithTaxonomyCount", "", leftColumnTranslatedText, providerToUse);
 	}
 
 	private ChoiceItemWithChildren createDirectThreatsChoiceItem(HashMap<String, String> threatsTokenReplacementMap, HtmlResourceLongDescriptionProvider providerToUse) throws Exception
