@@ -43,7 +43,10 @@ public class CodeListPopupWithDescriptionPanelField extends	AbstractEditableCode
 		ComponentWrapperObjectDataInputField field = new ComponentWrapperObjectDataInputField(getProject(), getORef(), getTag(), leftComponent);
 		OneFieldObjectDataInputPanel leftPanel = new OneFieldObjectDataInputPanel(getProject(), getORef(), getTag(), field);
 		
-		return new QuestionWithDescriptionEditorPanel(mainWindow, question, leftPanel);
+		if (leftComponent.getQuestion().hasLongDescriptionProvider())
+			return new QuestionWithDescriptionEditorPanel(mainWindow, question, leftPanel);
+
+		return leftPanel;
 	}
 	
 	private MainWindow mainWindow;
