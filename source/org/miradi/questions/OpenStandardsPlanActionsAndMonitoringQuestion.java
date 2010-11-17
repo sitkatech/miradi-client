@@ -41,7 +41,7 @@ public class OpenStandardsPlanActionsAndMonitoringQuestion extends DynamicChoice
 	@Override
 	public ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
-		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("2Header", getHeaderLabel(), new HtmlResourceLongDescriptionProvider(getMainDescriptionFileName(), getSummaryOverviewStepName()));
+		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("2Header", getHeaderLabel(), new HtmlResourceLongDescriptionProvider(getHeaderDescriptionFileName(), getSummaryOverviewStepName()));
 		
 		headerChoiceItem.addChild(addDevelopStrategicPlanRow());
 		headerChoiceItem.addChild(addDevelopFormatMonitoringPlanRow());
@@ -248,7 +248,7 @@ public class OpenStandardsPlanActionsAndMonitoringQuestion extends DynamicChoice
 		return new ChoiceItemWithChildren("DevelopGoalsForEachTarget", leftColumnTranslatedText, rightColumnTranslatedText, providerToUse);
 	}
 	
-	private String getMainDescriptionFileName()
+	public static String getHeaderDescriptionFileName()
 	{
 		return "dashboard/2.html";
 	}
