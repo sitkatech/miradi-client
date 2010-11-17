@@ -46,18 +46,13 @@ abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescr
 		PersistentHorizontalSplitPane splitPane = new PersistentHorizontalSplitPane(mainWindowToUse, mainWindowToUse, getPanelDescription());
 		RightSideDescriptionPanel rightPanel = createRightPanel(getDefaultDescriptionProvider());
 		//FIXME urgent - need to come up with better way to communicate a row selection change to the right panel
-		getCastedLeftComponent().addSelectionListener(rightPanel);
+		((QuestionEditorWithHierarchichalRows) leftPanel.getSingleField().getComponent()).addSelectionListener(rightPanel);
 		
 		splitPane.setLeftComponent(new JScrollPane(leftPanel));
 		splitPane.setRightComponent(rightPanel);
 		return splitPane;
 	}
 
-	private QuestionEditorWithHierarchichalRows getCastedLeftComponent()
-	{
-		return (QuestionEditorWithHierarchichalRows) leftPanel.getSingleField().getComponent();
-	}
-	
 	@Override
 	public void dispose()
 	{
