@@ -39,7 +39,7 @@ public class CaptureAndShareLearningTab extends PanelWithOptionalDescriptionPane
 	}
 
 	@Override
-	protected AbstractLongDescriptionProvider getMainDescriptionFileName() throws Exception
+	protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception
 	{
 		return new HtmlResourceLongDescriptionProvider("dashboard/5.html");
 	}

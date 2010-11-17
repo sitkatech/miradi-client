@@ -39,7 +39,7 @@ public class PlanActionsAndMonitoringTab extends PanelWithOptionalDescriptionPan
 	}
 
 	@Override
-	protected AbstractLongDescriptionProvider getMainDescriptionFileName() throws Exception
+	protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception
 	{
 		return new HtmlResourceLongDescriptionProvider("dashboard/2.html");
 	}

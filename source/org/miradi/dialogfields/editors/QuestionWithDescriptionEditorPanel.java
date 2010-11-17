@@ -36,7 +36,7 @@ public class QuestionWithDescriptionEditorPanel extends PanelWithOptionalDescrip
 	}		
 		
 	@Override
-	protected AbstractLongDescriptionProvider getMainDescriptionFileName() throws Exception
+	protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception
 	{
 		return new StaticLongDescriptionProvider();
 	}
