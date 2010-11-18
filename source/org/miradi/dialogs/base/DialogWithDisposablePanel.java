@@ -26,6 +26,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import org.martus.swing.Utilities;
 import org.miradi.utils.MiradiScrollPane;
 
 public class DialogWithDisposablePanel extends DialogWithButtonBar
@@ -77,6 +78,13 @@ public class DialogWithDisposablePanel extends DialogWithButtonBar
 	public JPanel getWrappedPanel()
 	{
 		return wrappedPanel;
+	}
+	
+	public void showDialog()
+	{
+		Utilities.centerDlg(this);
+		becomeActive();
+		setVisible(true);
 	}
 	
 	private DisposablePanel wrappedPanel;

@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.umbrella.doers;
 
-import org.martus.swing.Utilities;
 import org.miradi.dialogs.dashboard.DashboardDialog;
 import org.miradi.views.MainWindowDoer;
 
@@ -39,7 +38,6 @@ public class DashboardDoer extends MainWindowDoer
 			return;
 		
 		DashboardDialog dialog = new DashboardDialog(getMainWindow());
-		Utilities.centerDlg(dialog);
-		dialog.setVisible(true);
+		dialog.showDialog();
 	}
 }
