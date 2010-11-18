@@ -66,6 +66,7 @@ public class ThreatRatingUpperPanel extends MultiTableUpperPanel
 		return getMultiTablePanel();
 	}
 
+	@Override
 	public void valueChanged(ListSelectionEvent event)
 	{
 		super.valueChanged(event);
@@ -73,11 +74,13 @@ public class ThreatRatingUpperPanel extends MultiTableUpperPanel
 		propertiesPanel.setObjectRefs(selectedHierarcies[0]);
 	}
 	
+	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		repaint();	
 	}
 
+	@Override
 	public BaseObject getSelectedObject()
 	{
 		return null;
