@@ -161,7 +161,7 @@ public class ThreatMatrixView extends CardedView
 	@Override
 	public void becomeInactive() throws Exception
 	{
-		threatStressRatingManagementPanel.becomeActive();
+		threatStressRatingManagementPanel.becomeInactive();
 		super.becomeInactive();
 	}
 	
