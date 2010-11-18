@@ -27,8 +27,14 @@ public class PointData extends ObjectData
 {
 	public PointData(String tagToUse)
 	{
+		this(tagToUse, new Point(0, 0));
+	}
+	
+	public PointData(String tagToUse, Point pointToUse)
+	{
 		super(tagToUse);
-		point = new Point(0, 0);
+		
+		setPoint(pointToUse);
 	}
 
 	public Point getPoint()

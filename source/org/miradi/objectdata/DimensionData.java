@@ -28,8 +28,14 @@ public class DimensionData extends ObjectData
 
 	public DimensionData(String tagToUse)
 	{
+		this(tagToUse, new Dimension(0, 0));
+	}
+	
+	public DimensionData(String tagToUse, Dimension dimensionToUse)
+	{
 		super(tagToUse);
-		dimension = new Dimension(0, 0);
+		
+		setDimension(dimensionToUse);
 	}
 
 	public Dimension getDimension()

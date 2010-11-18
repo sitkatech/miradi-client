@@ -135,12 +135,20 @@ public class AppPreferences
 	
 	public Dimension getDashboardWindowSize()
 	{
-		return dashboardWindowSize.getDimension();
+		Dimension dimension = dashboardWindowSize.getDimension();
+		if (dimension == null)
+			return new Dimension();
+		
+		return dimension;
 	}
 	
 	public Point getDashboardWindowPosition()
 	{
-		return dashboardWindowPosition.getPoint();
+		Point point = dashboardWindowPosition.getPoint();
+		if (point == null)
+			return new Point();
+		
+		return point;
 	}
 	
 	public void setLanguageCode(String newLanguageCode)
@@ -438,8 +446,8 @@ public class AppPreferences
 		newsDate = json.optString(TAG_NEWS_DATE);
 		installedSampleVersions = new CodeList(json.optString(TAG_INSTALLED_SAMPLE_VERSIONS));
 		
-		dashboardWindowPosition = new PointData(TAG_DASHBOARD_WINDOW_POSITION);
-		dashboardWindowSize = new DimensionData(TAG_DASHBOARD_WINDOW_SIZE);
+		dashboardWindowPosition = new PointData(TAG_DASHBOARD_WINDOW_POSITION, json.optPoint(TAG_DASHBOARD_WINDOW_POSITION));
+		dashboardWindowSize = new DimensionData(TAG_DASHBOARD_WINDOW_SIZE, json.optDimension(TAG_DASHBOARD_WINDOW_SIZE));
 		
 		wizardFontFamily = json.optString(TAG_WIZARD_FONT_FAMILY);
 		wizardFontSize = json.optInt(TAG_WIZARD_FONT_SIZE);
