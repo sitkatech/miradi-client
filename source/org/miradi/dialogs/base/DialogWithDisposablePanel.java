@@ -82,6 +82,7 @@ public class DialogWithDisposablePanel extends DialogWithButtonBar
 	
 	public void showDialog()
 	{
+		Utilities.fitInScreen(this);
 		Utilities.centerDlg(this);
 		becomeActive();
 		setVisible(true);
