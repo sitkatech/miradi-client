@@ -522,7 +522,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		//TODO: refactor entire tab add remove mechisisim
+		//TODO: Rfactor entire tab add remove mechanism
 		if (shouldRebuildPanel(event))
 			rebuildPanel();
 		
