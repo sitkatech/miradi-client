@@ -53,6 +53,13 @@ public class ReportsView extends TabbedView
 		reportTemplateManagementPanel.becomeActive();
 	}
 	
+	@Override
+	public void becomeInactive() throws Exception
+	{
+		reportTemplateManagementPanel.becomeInactive();
+		super.becomeInactive();
+	}
+	
 	private void addDoersToMap()
 	{
 		addDoerToMap(ActionCreateReportTemplate.class, new CreateReportTemplateDoer());
