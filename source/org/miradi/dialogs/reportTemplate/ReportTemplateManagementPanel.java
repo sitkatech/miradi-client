@@ -33,11 +33,13 @@ public class ReportTemplateManagementPanel extends ObjectPoolManagementPanel
 		super(mainWindowToUse, new ReportTemplatePoolTablePanel(mainWindowToUse), new ReportTemplatePropertiesPanel(mainWindowToUse.getProject()));
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return PANEL_DESCRIPTION;
 	}
 	
+	@Override
 	public Icon getIcon()
 	{
 		return new ReportTemplateIcon();
