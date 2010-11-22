@@ -22,6 +22,7 @@ package org.miradi.main.menu;
 import java.awt.HeadlessException;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.util.Vector;
 
 import javax.swing.Action;
 import javax.swing.JMenu;
@@ -37,6 +38,10 @@ import org.miradi.main.EAMenuItem;
 import org.miradi.main.MainWindow;
 import org.miradi.main.Miradi;
 import org.miradi.main.ViewSwitcher;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceItemWithChildren;
+import org.miradi.questions.DynamicChoiceWithRootChoiceItem;
+import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 import org.miradi.utils.MenuItemWithoutLocation;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.noproject.NoProjectView;
@@ -490,20 +495,61 @@ public class MainMenuBar extends JMenuBar
 	
 	private JMenu createProcessMenu(Actions actions)
 	{
-		JMenu menu = new JMenu(EAM.text("MenuBar|Step-by-Step"));
-		menu.setMnemonic(KeyEvent.VK_S);
+		try
+		{
+			JMenu menu = new JMenu(EAM.text("MenuBar|Step-by-Step"));
+			menu.setMnemonic(KeyEvent.VK_S);
+
+			menu.add(createQuestionBasedMenu(actions, new OpenStandardsConceptualizeQuestion()));
+			menu.add(new ProcessMenu2(actions));
+			menu.add(new ProcessMenu3(actions));
+			menu.add(new ProcessMenu4(actions));
+			menu.add(new ProcessMenu5(actions));
+			menu.add(new JMenuItem(actions.get(ActionJumpCloseTheLoop.class)));
+
+			if (Miradi.isDeveloperMode())
+				addMenuItem(actions, menu, ActionShowCurrentWizardFileName.class, KeyEvent.VK_S);
+
+			return menu;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
+			
+			return null;
+		}
+	}
+
+	public JMenu createQuestionBasedMenu(Actions actions, DynamicChoiceWithRootChoiceItem question) throws Exception
+	{
+		ChoiceItem headerChoiceItem  = question.getHeaderCHoiceItem();
+		JMenu headerMenu = new JMenu(headerChoiceItem.getLabel());
+
+		addSubMenus(actions, headerMenu, headerChoiceItem.getChildren());
 		
-		menu.add(new ProcessMenu1(actions));
-		menu.add(new ProcessMenu2(actions));
-		menu.add(new ProcessMenu3(actions));
-		menu.add(new ProcessMenu4(actions));
-		menu.add(new ProcessMenu5(actions));
-		menu.add(new JMenuItem(actions.get(ActionJumpCloseTheLoop.class)));
-		
-		if (Miradi.isDeveloperMode())
-			addMenuItem(actions, menu, ActionShowCurrentWizardFileName.class, KeyEvent.VK_S);
-		
-		return menu;
+		return headerMenu;
+	}
+	
+	private void addSubMenus(Actions actions, JMenu headerMenu, Vector<ChoiceItem> children)
+	{
+		for(ChoiceItem subHeaderChoiceItem : children)
+		{
+			JMenu subHeaderMenu = new JMenu(subHeaderChoiceItem.getLabel());
+			headerMenu.add(subHeaderMenu);
+			ChoiceItemWithChildren leafChildren = (ChoiceItemWithChildren) subHeaderChoiceItem;
+			addLeafMenus(actions, subHeaderMenu, leafChildren.getChildren());
+		}
+	}
+
+	private void addLeafMenus(Actions actions, JMenu subHeaderMenu, Vector<ChoiceItem> leafChildren)
+	{
+		for(ChoiceItem leafChoiceItem : leafChildren)
+		{
+			OpenStandardsMenuMap map = new OpenStandardsMenuMap();
+			MenuItemDetailsProvider provider = map.get(leafChoiceItem.getCode());
+			subHeaderMenu.add(new EAMenuItem(actions.get(provider.getMenuItemAction()), provider.getMenomic()));
+		}
 	}
 
 	private JMenu createHelpMenu(Actions actions)

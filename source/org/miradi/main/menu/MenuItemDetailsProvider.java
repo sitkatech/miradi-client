@@ -18,44 +18,28 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.questions;
+package org.miradi.main.menu;
 
-import org.miradi.main.EAM;
 
-abstract public class DynamicChoiceWithRootChoiceItem extends DynamicChoiceQuestion
+public class MenuItemDetailsProvider
 {
-	@Override
-	public ChoiceItem[] getChoices()
+	public MenuItemDetailsProvider(Class menuItemActionToUse, int mnemonicToUse)
 	{
-		try
-		{
-			return new ChoiceItem[]{ createHeaderChoiceItem(), };
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			EAM.unexpectedErrorDialog(e);
-			
-			return new ChoiceItem[0];
-		}
+		menuItemAction = menuItemActionToUse;
+		menomic = mnemonicToUse;
 	}
 	
-	public ChoiceItem getHeaderCHoiceItem() throws Exception
+	public Class getMenuItemAction()
 	{
-		return createHeaderChoiceItem();
+		return menuItemAction;
 	}
 	
-	@Override
-	public boolean hasAdditionalText()
+	public int getMenomic()
 	{
-		return true;
+		return menomic;
 	}
 	
-	@Override
-	public boolean hasLongDescriptionProvider()
-	{
-		return true;
-	}
-
-	protected abstract ChoiceItemWithChildren createHeaderChoiceItem() throws Exception;
+	private Class menuItemAction;
+	private int menomic;
+	
 }
