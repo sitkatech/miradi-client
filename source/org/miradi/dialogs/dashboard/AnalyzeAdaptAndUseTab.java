@@ -23,7 +23,7 @@ package org.miradi.dialogs.dashboard;
 import org.miradi.dialogfields.QuestionEditorWithHierarchichalRows;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.main.MainWindow;
-import org.miradi.questions.OpenStandardsAnalyzeAdaptAndUseQuestion;
+import org.miradi.questions.DashboardAnalyzeAdaptAndUseQuestion;
 import org.miradi.wizard.WizardManager;
 
 public class AnalyzeAdaptAndUseTab extends PanelWithDescriptionPanel
@@ -41,13 +41,13 @@ public class AnalyzeAdaptAndUseTab extends PanelWithDescriptionPanel
 	@Override
 	protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception
 	{
-		return new HtmlResourceLongDescriptionProvider(OpenStandardsAnalyzeAdaptAndUseQuestion.getHeaderDescriptionFileName());
+		return new HtmlResourceLongDescriptionProvider(DashboardAnalyzeAdaptAndUseQuestion.getHeaderDescriptionFileName());
 	}
 
 	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		WizardManager wizardManager = mainWindowToUse.getWizardManager();
-		OpenStandardsAnalyzeAdaptAndUseQuestion question = new OpenStandardsAnalyzeAdaptAndUseQuestion(wizardManager);
+		DashboardAnalyzeAdaptAndUseQuestion question = new DashboardAnalyzeAdaptAndUseQuestion(wizardManager);
 		QuestionEditorWithHierarchichalRows component = new QuestionEditorWithHierarchichalRows(mainWindowToUse, question);
 		
 		return new OneFieldObjectDataInputPanel(mainWindowToUse.getProject(), component);
@@ -56,6 +56,6 @@ public class AnalyzeAdaptAndUseTab extends PanelWithDescriptionPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return OpenStandardsAnalyzeAdaptAndUseQuestion.getHeaderLabel();
+		return DashboardAnalyzeAdaptAndUseQuestion.getHeaderLabel();
 	}
 }
