@@ -29,6 +29,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
+import org.miradi.objectdata.DimensionData;
+import org.miradi.objectdata.PointData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 
@@ -200,7 +202,12 @@ public class EnhancedJsonObject extends JSONObject
 	public Point optPoint(String tag) throws Exception
 	{
 		if (has(tag))
-			return getPoint(tag);
+		{
+			PointData dataValue = new PointData(tag);
+			dataValue.set(getString(tag));
+			
+			return dataValue.getPoint();
+		}
 		
 		return null;
 	}
@@ -214,7 +221,12 @@ public class EnhancedJsonObject extends JSONObject
 	public Dimension optDimension(String tag) throws Exception
 	{
 		if (has(tag))
-			return getDimension(tag);
+		{
+			DimensionData davaValue = new DimensionData(tag);
+			davaValue.set(getString(tag));
+			
+			return davaValue.getDimension();
+		}
 		
 		return null;
 	}
