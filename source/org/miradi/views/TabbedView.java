@@ -443,9 +443,9 @@ abstract public class TabbedView extends UmbrellaView
 	{
 		FieldSaver.savePendingEdits();
 		closeActivePropertiesDialog();
-		if(currentTab >= 0)
+		if(currentTabIndex >= 0)
 		{
-			MiradiTabContentsPanelInterface oldPanel = getTabPanel(currentTab);
+			MiradiTabContentsPanelInterface oldPanel = getTabPanel(currentTabIndex);
 			if(oldPanel != null)
 				oldPanel.becomeInactive();
 		}
@@ -462,8 +462,8 @@ abstract public class TabbedView extends UmbrellaView
 			if(!ignoreTabChanges)
 				recordTabChangeCommand(newTab);
 
-			int oldTab = currentTab;
-			currentTab = newTab;
+			int oldTab = currentTabIndex;
+			currentTabIndex = newTab;
 			if(!ignoreTabChanges)
 				tabWasSelected();
 
@@ -496,7 +496,7 @@ abstract public class TabbedView extends UmbrellaView
 		Command createTabChangeCommand(int newTab) throws Exception
 		{
 			CommandSetObjectData cmd = new CommandSetObjectData(ObjectType.VIEW_DATA, getViewData().getId(), ViewData.TAG_CURRENT_TAB, Integer.toString(newTab));
-			cmd.setPreviousDataValue(Integer.toString(currentTab));
+			cmd.setPreviousDataValue(Integer.toString(currentTabIndex));
 			return cmd;
 		}
 
@@ -525,7 +525,7 @@ abstract public class TabbedView extends UmbrellaView
 	}
 
 	private JTabbedPane tabs;
-	private int currentTab;
+	private int currentTabIndex;
 	private boolean ignoreTabChanges;
 	private HashMap<String, MiradiTabContentsPanelInterface> tabPanels;
 }
