@@ -23,7 +23,7 @@ package org.miradi.dialogs.dashboard;
 import org.miradi.dialogfields.QuestionEditorWithHierarchichalRows;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.main.MainWindow;
-import org.miradi.questions.OpenStandardsCaptureAndShareLearningQuestion;
+import org.miradi.questions.DashboardCaptureAndShareLearningQuestion;
 import org.miradi.wizard.WizardManager;
 
 public class CaptureAndShareLearningTab extends PanelWithDescriptionPanel
@@ -41,13 +41,13 @@ public class CaptureAndShareLearningTab extends PanelWithDescriptionPanel
 	@Override
 	protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception
 	{
-		return new HtmlResourceLongDescriptionProvider(OpenStandardsCaptureAndShareLearningQuestion.getHeaderDescriptionFileName());
+		return new HtmlResourceLongDescriptionProvider(DashboardCaptureAndShareLearningQuestion.getHeaderDescriptionFileName());
 	}
 
 	private static OneFieldObjectDataInputPanel createLeftPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		WizardManager wizardManager = mainWindowToUse.getWizardManager();
-		OpenStandardsCaptureAndShareLearningQuestion question = new OpenStandardsCaptureAndShareLearningQuestion(wizardManager);
+		DashboardCaptureAndShareLearningQuestion question = new DashboardCaptureAndShareLearningQuestion(wizardManager);
 		QuestionEditorWithHierarchichalRows component = new QuestionEditorWithHierarchichalRows(mainWindowToUse, question);
  		
  		return new OneFieldObjectDataInputPanel(mainWindowToUse.getProject(), component);
@@ -56,6 +56,6 @@ public class CaptureAndShareLearningTab extends PanelWithDescriptionPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return OpenStandardsCaptureAndShareLearningQuestion.getHeaderLabel();
+		return DashboardCaptureAndShareLearningQuestion.getHeaderLabel();
 	}
 }
