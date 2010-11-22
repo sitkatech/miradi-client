@@ -987,7 +987,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		nodePropertiesPanel = newPropertiesPanel;
 		nodePropertiesDlg = newPropertiesDialog;
 
-		nodePropertiesPanel.becomeActive();
 		nodePropertiesDlg.setVisible(true);
 	}
 

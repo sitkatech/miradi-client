@@ -28,6 +28,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.text.html.StyleSheet;
 
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -36,9 +37,11 @@ import org.miradi.views.umbrella.ViewSwitchDoer;
 
 public class RightSideDescriptionPanel extends JPanel implements ListSelectionListener
 {
-	public RightSideDescriptionPanel(MainWindow mainWindowToUse, AbstractLongDescriptionProvider mainDescriptionProvider) throws Exception
+	public RightSideDescriptionPanel(MainWindow mainWindowToUse, AbstractLongDescriptionProvider mainDescriptionProvider, DisposablePanel activeParentPanelToUse) throws Exception
 	{
 		setLayout(new BorderLayout());
+		
+		activeParentPanel = activeParentPanelToUse;
 		mainWindow = mainWindowToUse;
 		viewer = new RightSideDescriptionHtmlViewer(mainWindow);
 		add(new JScrollPane(viewer));
@@ -66,7 +69,11 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 	private void changeView(AbstractLongDescriptionProvider descriptionProvider) throws Exception
 	{
 		if (descriptionProvider.hasWizardStepName())
+		{
+			activeParentPanel.becomeInactive();
 			ViewSwitchDoer.changeView(getMainWindow(), descriptionProvider.getWizardStepName());
+			activeParentPanel.becomeActive();
+		}
 	}
 
 	private void setRightSideHtmlContent(AbstractLongDescriptionProvider descriptionProvider) throws Exception
@@ -97,4 +104,5 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 	
 	private MainWindow mainWindow;
 	private RightSideDescriptionHtmlViewer viewer;
+	private DisposablePanel activeParentPanel;
 }

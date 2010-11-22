@@ -443,7 +443,6 @@ abstract public class TabbedView extends UmbrellaView
 	{
 		FieldSaver.savePendingEdits();
 		closeActivePropertiesDialog();
-		
 		if(currentTab >= 0)
 		{
 			MiradiTabContentsPanelInterface oldPanel = getTabPanel(currentTab);
@@ -456,7 +455,9 @@ abstract public class TabbedView extends UmbrellaView
 	{
 		public void stateChanged(ChangeEvent event)
 		{
-			prepareForTabSwitch();
+			if(!ignoreTabChanges)
+				prepareForTabSwitch();
+			
 			int newTab = tabs.getSelectedIndex();
 			if(!ignoreTabChanges)
 				recordTabChangeCommand(newTab);

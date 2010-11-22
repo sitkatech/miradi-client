@@ -343,6 +343,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		closeActivePropertiesDialog();
 		
 		activePropertiesDlg = newDialog;
+		activePropertiesDlg.becomeActive();
 		activePropertiesDlg.pack();
 		Utilities.centerDlg(activePropertiesDlg);
 		activePropertiesDlg.setVisible(true);

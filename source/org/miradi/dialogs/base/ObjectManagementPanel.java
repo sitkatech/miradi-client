@@ -59,7 +59,6 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 	@Override
 	public void dispose()
 	{
-		becomeInactive();
 		disposePanel(listComponent);
 		disposePanel(propertiesPanel);
 		

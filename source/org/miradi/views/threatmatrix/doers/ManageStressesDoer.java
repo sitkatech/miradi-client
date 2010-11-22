@@ -55,7 +55,6 @@ public class ManageStressesDoer extends ObjectsDoer
 			Utilities.centerDlg(manageStressesDialog);
 			stressListManagementPanel.updateSplitterLocation();
 			manageStressesDialog.setVisible(true);
-			stressListManagementPanel.becomeInactive();
 		}
 		catch (Exception e)
 		{

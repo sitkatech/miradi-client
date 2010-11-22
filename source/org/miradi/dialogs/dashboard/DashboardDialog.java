@@ -45,7 +45,6 @@ public class DashboardDialog extends ModalDialogWithClose
 		AppPreferences preferences = getMainWindow().getAppPreferences();
 		preferences.setDashboardWindowSize(getSize());
 		preferences.setDashboardWindowPosition(getLocation());
-		getMainWindow().safelySavePreferences();
 
 		super.dispose();
 	}
