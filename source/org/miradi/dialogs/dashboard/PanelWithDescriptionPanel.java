@@ -78,7 +78,7 @@ abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescr
 	
 	private RightSideDescriptionPanel createRightPanel(AbstractLongDescriptionProvider mainDescriptionProvider) throws Exception
 	{
-		return new RightSideDescriptionPanel(getMainWindow(), mainDescriptionProvider);
+		return new RightSideDescriptionPanel(getMainWindow(), mainDescriptionProvider, this);
 	}
 	
 	private MainWindow getMainWindow()

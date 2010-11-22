@@ -95,6 +95,7 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 				DisposablePanel editorPanel = createEditorPanel();
 				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), Translation.fieldLabel(getObjectType(), getTag()));
 				dialog.setScrollableMainPanel(editorPanel);
+				dialog.becomeActive();
 				Utilities.centerDlg(dialog);
 				dialog.setVisible(true);
 			}

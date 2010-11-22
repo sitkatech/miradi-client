@@ -70,21 +70,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 		setObjectRefs(new ORef[] {diagramFactorToEdit.getWrappedORef(), diagramFactorToEdit.getRef(),});
 		updateFieldsFromProject();
 	}
-	
-	@Override
-	public void becomeActive()
-	{
-		super.becomeActive();
-		corePanel.becomeActive();
-	}
-	
-	@Override
-	public void becomeInactive()
-	{
-		corePanel.becomeInactive();
-		super.becomeInactive();
-	}
-	
+
 	@Override
 	public void setFocusOnFirstField()
 	{

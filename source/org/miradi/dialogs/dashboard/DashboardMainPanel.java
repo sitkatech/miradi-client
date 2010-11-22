@@ -36,11 +36,11 @@ public class DashboardMainPanel extends DisposablePanel
 		
 		mainWindow = mainWindowToUse;
 		tabs = new PanelTabbedPane();
-		tabs.addChangeListener(new TabChangeListener());
 		createTabs();
 		setInitialTab();
 		addTabsToTabbedPane();
 		add(tabs);
+		tabs.addChangeListener(new TabChangeListener());
 	}
 
 	@Override

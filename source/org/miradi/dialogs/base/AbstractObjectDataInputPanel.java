@@ -114,7 +114,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		subPanels = new Vector<AbstractObjectDataInputPanel>();
 
 		setObjectRefsWithoutUpdatingFields(orefsToUse);
-		project.addCommandExecutedListener(this);
 		final int HORIZONTAL_MARGIN = 2;
 		final int VERTICAL_MARGIN = 5;
 		setBorder(new EmptyBorder(VERTICAL_MARGIN,HORIZONTAL_MARGIN,VERTICAL_MARGIN,HORIZONTAL_MARGIN));
@@ -125,7 +124,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	@Override
 	public void dispose()
 	{
-		project.removeCommandExecutedListener(this);
 		for(AbstractObjectDataInputPanel subPanel : subPanels)
 		{
 			subPanel.dispose();
@@ -139,6 +137,22 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		}
 		
 		super.dispose();
+	}
+	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		
+		project.addCommandExecutedListener(this);
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		project.removeCommandExecutedListener(this);
+		
+		super.becomeInactive();
 	}
 
 	public Project getProject()

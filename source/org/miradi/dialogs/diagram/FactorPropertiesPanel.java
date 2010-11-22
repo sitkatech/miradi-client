@@ -84,28 +84,26 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	{
 		mainWindow = parent;
 		diagram = diagramToUse;
+		currentTabIndex = 0;
 		tabs = new FactorPropertiesTabbedPane();
 
 		setBackground(AppPreferences.getDarkPanelBackgroundColor());
 		setBorder(BorderFactory.createEmptyBorder(0,3,3,3));
 		tabChangeHandler = new TabChangeHandler();
 		tabs.addChangeListener(tabChangeHandler);
-
-		getProject().addCommandExecutedListener(this);
 	}
 	
-	//TODO: can put a loop of disposable panels and move the code to DIsposablePanel passing in list
+	//TODO: can put a loop of disposable panels and move the code to DisposablePanel passing in list
 	@Override
 	public void dispose()
 	{
 		disposeTabs();
-		getProject().removeCommandExecutedListener(this);
+		
 		super.dispose();
 	}
 
 	private void disposeTabs()
 	{
-		becomeInactive();
 		if(detailsTab != null)
 		{
 			detailsTab.dispose();
@@ -161,9 +159,11 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	@Override
 	public void becomeInactive()
 	{
+		getProject().removeCommandExecutedListener(this);
 		deactivateCurrentTab();
 		if(grid != null)
 			grid.becomeInactive();
+		
 		super.becomeInactive();
 	}
 	
@@ -171,10 +171,12 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	public void becomeActive()
 	{
 		super.becomeActive();
+		
 		if (grid != null)
 			grid.becomeActive();
 		
 		activateCurrentTab();
+		getProject().addCommandExecutedListener(this);
 	}
 	
 	class FactorPropertiesTabbedPane extends PanelTabbedPane
@@ -213,7 +215,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 
 	private Component rebuildTabs(DiagramFactor diagramFactor) throws Exception
 	{
-		deactivateAllTabs();
+		deactivateCurrentTab();
 		tabs.setFocusable(false);
 		tabs.removeAll();
 		disposeTabs();
@@ -291,43 +293,38 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	{
 		public void stateChanged(ChangeEvent e)
 		{
-			deactivateAllTabs();
-			activateCurrentTab();
+			int newTab = tabs.getSelectedIndex();
+			if (!ignoreTabChanges)
+			{
+				 deactivateCurrentTab();
+				 currentTabIndex = newTab;
+				 activateCurrentTab();
+			}
 		}
 	}
 
 	private void activateCurrentTab()
 	{
-		DisposablePanelWithDescription panel = (DisposablePanelWithDescription)tabs.getSelectedComponent();
+		DisposablePanelWithDescription panel = getCastedCurrentTab();		
 		if(panel != null)
 			panel.becomeActive();
 	}
-	
+
 	private void deactivateCurrentTab()
 	{
-		DisposablePanelWithDescription panel = (DisposablePanelWithDescription)tabs.getSelectedComponent();
-		deactivateTab(panel);
-	}
-
-	private void deactivateTab(DisposablePanelWithDescription panel)
-	{
+		DisposablePanelWithDescription panel = getCastedCurrentTab();
 		if(panel != null)
 			panel.becomeInactive();
 	}
 
-	private void deactivateAllTabs()
+	private DisposablePanelWithDescription getCastedCurrentTab()
 	{
-		deactivateTab(detailsTab);
-		deactivateTab(indicatorsTab);
-		deactivateTab(goalsTab);
-		deactivateTab(objectivesTab);
-		deactivateTab(activitiesTab);
-		deactivateTab(viabilityTab);
-		deactivateTab(simpleViabilityTab);
-		deactivateTab(stressTab);
-		deactivateTab(subTargetTab);
+		if (tabs.getTabCount() > 0)
+			return (DisposablePanelWithDescription)tabs.getComponent(currentTabIndex);
+		
+		return null;
 	}
-	
+
 	public void selectTab(int tabIdentifier)
 	{
 		switch(tabIdentifier)
@@ -408,6 +405,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 
 	private void rebuildPanel()
 	{
+		ignoreTabChanges = true;
 		try
 		{
 			removeAll();
@@ -423,6 +421,10 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		{
 			EAM.logException(e);
 			EAM.errorDialog("Error reading factor information:" + e.getMessage());
+		}
+		finally
+		{
+			ignoreTabChanges = false;
 		}
 	}
 
@@ -608,6 +610,8 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	public static final int TAB_SIMPLE_VIABILITY = 7;
 
 	protected JTabbedPane tabs;
+	private int currentTabIndex;
+	private boolean ignoreTabChanges;
 	private FactorSummaryScrollablePanel detailsTab;
 	private ObjectiveListManagementPanel objectivesTab;
 	private TargetViabilityManagementPanel indicatorsTab;
