@@ -36,6 +36,7 @@ import org.miradi.actions.jump.ActionJumpSummaryWizardDefineTeamMembers;
 import org.miradi.actions.jump.ActionJumpSummaryWizardRolesAndResponsibilities;
 import org.miradi.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
 import org.miradi.actions.jump.ActionJumpThreatMatrixOverviewStep;
+import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
 public class OpenStandardsMenuMap extends HashMap<String, MenuItemDetailsProvider>
 {
@@ -46,21 +47,21 @@ public class OpenStandardsMenuMap extends HashMap<String, MenuItemDetailsProvide
 
 	private void setup()
 	{
-		put("SelectInitialTeamMembers", new MenuItemDetailsProvider(ActionJumpSummaryWizardDefineTeamMembers.class, KeyEvent.VK_S));
-		put("AgreeOnRolesAndResponsibilities", new MenuItemDetailsProvider(ActionJumpSummaryWizardRolesAndResponsibilities.class, KeyEvent.VK_R));
+		put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, new MenuItemDetailsProvider(ActionJumpSummaryWizardDefineTeamMembers.class, KeyEvent.VK_S));
+		put(OpenStandardsConceptualizeQuestion.AGREE_ON_ROLES_AND_RESPONSIBILITIES_CODE, new MenuItemDetailsProvider(ActionJumpSummaryWizardRolesAndResponsibilities.class, KeyEvent.VK_R));
 		
-		put("DefineProjectScope", new MenuItemDetailsProvider(ActionJumpSummaryWizardDefineProjecScope.class, KeyEvent.VK_D));
-		put("DevelopMapOfProjectArea", new MenuItemDetailsProvider(ActionJumpDevelopMap.class, KeyEvent.VK_M));
-		put("SelectConservationTargets", new MenuItemDetailsProvider(ActionJumpDiagramWizardDefineTargetsStep.class, KeyEvent.VK_I));
-		put("AddHumanWelfareTargetsIfDesired", new MenuItemDetailsProvider(ActionJumpDiagramWizardHumanWelfareTargetsStep.class, KeyEvent.VK_A));
-		put("DescribeStatusOfTargets", new MenuItemDetailsProvider(ActionJumpTargetViabilityMethodChoiceStep.class, KeyEvent.VK_V));
+		put(OpenStandardsConceptualizeQuestion.DEFINE_PROJECT_SCOPE_CODE, new MenuItemDetailsProvider(ActionJumpSummaryWizardDefineProjecScope.class, KeyEvent.VK_D));
+		put(OpenStandardsConceptualizeQuestion.DEVELOP_MAP_OF_PROJECT_AREA_CODE, new MenuItemDetailsProvider(ActionJumpDevelopMap.class, KeyEvent.VK_M));
+		put(OpenStandardsConceptualizeQuestion.SELECT_CONSERVATION_TARGETS_CODE, new MenuItemDetailsProvider(ActionJumpDiagramWizardDefineTargetsStep.class, KeyEvent.VK_I));
+		put(OpenStandardsConceptualizeQuestion.ADD_HUMAN_WELFARE_TARGETS_IF_DESIRED_CODE, new MenuItemDetailsProvider(ActionJumpDiagramWizardHumanWelfareTargetsStep.class, KeyEvent.VK_A));
+		put(OpenStandardsConceptualizeQuestion.DESCRIBE_STATUS_OF_TARGETS_CODE, new MenuItemDetailsProvider(ActionJumpTargetViabilityMethodChoiceStep.class, KeyEvent.VK_V));
 		
-		put("IdentifyDirectThreats", new MenuItemDetailsProvider(ActionJumpDiagramWizardIdentifyDirectThreatStep.class, KeyEvent.VK_I));
-		put("RankDirectThreats", new MenuItemDetailsProvider(ActionJumpThreatMatrixOverviewStep.class, KeyEvent.VK_R));
+		put(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE, new MenuItemDetailsProvider(ActionJumpDiagramWizardIdentifyDirectThreatStep.class, KeyEvent.VK_I));
+		put(OpenStandardsConceptualizeQuestion.RANK_DIRECT_THREATS_CODE, new MenuItemDetailsProvider(ActionJumpThreatMatrixOverviewStep.class, KeyEvent.VK_R));
 		
-		put("IdentifyIndirectThreatsAndOpportunities", new MenuItemDetailsProvider(ActionJumpDiagramWizardIdentifyIndirectThreatStep.class, KeyEvent.VK_I));
-		put("AssessStakeholders", new MenuItemDetailsProvider(ActionJumpAssessStakeholders.class, KeyEvent.VK_S));
-		put("CreateInitialConceptualModel", new MenuItemDetailsProvider(ActionJumpDiagramWizardCreateInitialModelStep.class, KeyEvent.VK_C));
-		put("Ground-truthAndReviseModel", new MenuItemDetailsProvider(ActionJumpDiagramWizardReviewModelAndAdjustStep.class, KeyEvent.VK_R));
+		put(OpenStandardsConceptualizeQuestion.IDENTIFY_INDIRECT_THREATS_AND_OPPORTUNITIES_CODE, new MenuItemDetailsProvider(ActionJumpDiagramWizardIdentifyIndirectThreatStep.class, KeyEvent.VK_I));
+		put(OpenStandardsConceptualizeQuestion.ASSESS_STAKEHOLDERS_CODE, new MenuItemDetailsProvider(ActionJumpAssessStakeholders.class, KeyEvent.VK_S));
+		put(OpenStandardsConceptualizeQuestion.CREATE_INITIAL_CONCEPTUAL_MODEL_CODE, new MenuItemDetailsProvider(ActionJumpDiagramWizardCreateInitialModelStep.class, KeyEvent.VK_C));
+		put(OpenStandardsConceptualizeQuestion.GROUND_THRUTH_AND_REVISE_MODEL_CODE, new MenuItemDetailsProvider(ActionJumpDiagramWizardReviewModelAndAdjustStep.class, KeyEvent.VK_R));
 	}
 }
