@@ -22,7 +22,6 @@ package org.miradi.actions.jump;
 import java.awt.event.KeyEvent;
 
 import org.miradi.actions.AbstractMenuAction;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
@@ -30,12 +29,7 @@ public class ActionJumpSummaryWizardDefineTeamMembers extends AbstractMenuAction
 {
 	public ActionJumpSummaryWizardDefineTeamMembers(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
-	}
-
-	private static String getLabel()
-	{
-		return EAM.text("Select initial team members");
+		super(mainWindowToUse, OpenStandardsConceptualizeQuestion.getSelectIntialTeamMembersLabel());
 	}
 
 	@Override

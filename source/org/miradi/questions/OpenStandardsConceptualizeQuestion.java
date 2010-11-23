@@ -34,30 +34,95 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 		ChoiceItemWithChildren processStep1A = new ChoiceItemWithChildren("ProcessStep1A", EAM.text("ProcessStep|1A. Define Initial Project Team"), EAM.text(""), provider);
 		headerChoiceItem.addChild(processStep1A);
 		
-		processStep1A.addChild(new ChoiceItem(SELECT_INTIAL_TEAM_MEMBERS_CODE, EAM.text("Select initial team members")));
-		processStep1A.addChild(new ChoiceItem(AGREE_ON_ROLES_AND_RESPONSIBILITIES_CODE, EAM.text("Agree on roles and responsibilities")));
+		processStep1A.addChild(new ChoiceItem(SELECT_INTIAL_TEAM_MEMBERS_CODE, getSelectIntialTeamMembersLabel()));
+		processStep1A.addChild(new ChoiceItem(AGREE_ON_ROLES_AND_RESPONSIBILITIES_CODE, getAgreeOnRolesAndResponsibilitiesLabel()));
 		
 		ChoiceItemWithChildren processStep1BChoiceItem = new ChoiceItemWithChildren("ProcessStep1B", EAM.text("ProcessStep|1B. Define Scope, Vision, and Targets"), EAM.text(""), provider);
 		headerChoiceItem.addChild(processStep1BChoiceItem);
-		processStep1BChoiceItem.addChild(new ChoiceItem(DEFINE_PROJECT_SCOPE_CODE, EAM.text("Define project scope")));
-		processStep1BChoiceItem.addChild(new ChoiceItem(DEVELOP_MAP_OF_PROJECT_AREA_CODE, EAM.text("Develop map of project area")));
-		processStep1BChoiceItem.addChild(new ChoiceItem(SELECT_CONSERVATION_TARGETS_CODE, EAM.text("Select conservation targets")));
-		processStep1BChoiceItem.addChild(new ChoiceItem(ADD_HUMAN_WELFARE_TARGETS_IF_DESIRED_CODE, EAM.text("Add Human Welfare Targets If Desired")));
-		processStep1BChoiceItem.addChild(new ChoiceItem(DESCRIBE_STATUS_OF_TARGETS_CODE, EAM.text("Describe status of targets")));
+		processStep1BChoiceItem.addChild(new ChoiceItem(DEFINE_PROJECT_SCOPE_CODE, getDefineProjectScopeLabel()));
+		processStep1BChoiceItem.addChild(new ChoiceItem(DEVELOP_MAP_OF_PROJECT_AREA_CODE, getDevelopMapOfProjectAreaLabel()));
+		processStep1BChoiceItem.addChild(new ChoiceItem(SELECT_CONSERVATION_TARGETS_CODE, getSelectConservationTargetsLabel()));
+		processStep1BChoiceItem.addChild(new ChoiceItem(ADD_HUMAN_WELFARE_TARGETS_IF_DESIRED_CODE, getAddHumanWelfareTargetsIfDesiredLabel()));
+		processStep1BChoiceItem.addChild(new ChoiceItem(DESCRIBE_STATUS_OF_TARGETS_CODE, getDescribeStatusOfTargetsLabel()));
 		
 		ChoiceItemWithChildren processStep1CChoiceItem = new ChoiceItemWithChildren("ProcessStep1C", EAM.text("ProcessStep|1C. Identify Critical Threats"), EAM.text(""), provider);
 		headerChoiceItem.addChild(processStep1CChoiceItem);
-		processStep1CChoiceItem.addChild(new ChoiceItem(IDENTIFY_DIRECT_THREATS_CODE, EAM.text("Identify direct threats")));
-		processStep1CChoiceItem.addChild(new ChoiceItem(RANK_DIRECT_THREATS_CODE, EAM.text("Rank direct threats")));
+		processStep1CChoiceItem.addChild(new ChoiceItem(IDENTIFY_DIRECT_THREATS_CODE, getIdentifyDirectThreatsLabel()));
+		processStep1CChoiceItem.addChild(new ChoiceItem(RANK_DIRECT_THREATS_CODE, getRankDirectThreatsLabel()));
 		
 		ChoiceItemWithChildren processStep1DChoiceItem = new ChoiceItemWithChildren("ProcessStep1D", EAM.text("ProcessStep|1D. Complete Situation Analysis"), EAM.text(""), provider);
 		headerChoiceItem.addChild(processStep1DChoiceItem);
-		processStep1DChoiceItem.addChild(new ChoiceItem(IDENTIFY_INDIRECT_THREATS_AND_OPPORTUNITIES_CODE, EAM.text("Identify indirect threats and opportunities")));
-		processStep1DChoiceItem.addChild(new ChoiceItem(ASSESS_STAKEHOLDERS_CODE, EAM.text("Assess Stakeholders")));
-		processStep1DChoiceItem.addChild(new ChoiceItem(CREATE_INITIAL_CONCEPTUAL_MODEL_CODE, EAM.text("Create initial conceptual model")));
-		processStep1DChoiceItem.addChild(new ChoiceItem(GROUND_THRUTH_AND_REVISE_MODEL_CODE, EAM.text("Ground-truth and revise model")));
+		processStep1DChoiceItem.addChild(new ChoiceItem(IDENTIFY_INDIRECT_THREATS_AND_OPPORTUNITIES_CODE, getIdentifyIndirectThreatsAndOpportunitiesLabel()));
+		processStep1DChoiceItem.addChild(new ChoiceItem(ASSESS_STAKEHOLDERS_CODE, getAssessStakeholdersLabel()));
+		processStep1DChoiceItem.addChild(new ChoiceItem(CREATE_INITIAL_CONCEPTUAL_MODEL_CODE, getCreateInitialConceptualModelLabel()));
+		processStep1DChoiceItem.addChild(new ChoiceItem(GROUND_THRUTH_AND_REVISE_MODEL_CODE, getGroundTruthAndReviseModelLabel()));
 		
 		return headerChoiceItem;
+	}
+	
+	public static String getSelectIntialTeamMembersLabel()
+	{
+		return EAM.text("Select initial team members");
+	}
+	
+	public static String getAgreeOnRolesAndResponsibilitiesLabel()
+	{
+		return EAM.text("Agree on roles and responsibilities"); 
+	}
+	
+	public static String getDefineProjectScopeLabel()
+	{
+		return EAM.text("Define project scope");
+	}
+	
+	public static String getDevelopMapOfProjectAreaLabel()
+	{
+		return EAM.text("Develop map of project area");
+	}
+	
+	public static String getSelectConservationTargetsLabel()
+	{
+		return EAM.text("Select conservation targets");
+	}
+	
+	public static String getAddHumanWelfareTargetsIfDesiredLabel()
+	{
+		return EAM.text("Add Human Welfare Targets If Desired");
+	}
+	
+	public static String getDescribeStatusOfTargetsLabel()
+	{
+		return EAM.text("Describe status of targets"); 
+	}
+	
+	public static String getIdentifyDirectThreatsLabel()
+	{
+		return EAM.text("Identify direct threats");
+	}
+
+	public static String getRankDirectThreatsLabel()
+	{
+		return EAM.text("Rank direct threats");
+	}
+
+	public static String getIdentifyIndirectThreatsAndOpportunitiesLabel()
+	{
+		return EAM.text("Identify indirect threats and opportunities");
+	}
+	
+	public static String getAssessStakeholdersLabel()
+	{
+		return EAM.text("Assess Stakeholders");
+	}
+
+	public static String getCreateInitialConceptualModelLabel()
+	{
+		return EAM.text("Create initial conceptual model");
+	}
+	
+	public static String getGroundTruthAndReviseModelLabel()
+	{
+		return EAM.text("Ground-truth and revise model");
 	}
 
 	public static final String SELECT_INTIAL_TEAM_MEMBERS_CODE = "SelectInitialTeamMembers";

@@ -22,7 +22,6 @@ package org.miradi.actions.jump;
 import java.awt.event.KeyEvent;
 
 import org.miradi.actions.AbstractMenuAction;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
@@ -30,12 +29,7 @@ public class ActionJumpDiagramWizardCreateInitialModelStep extends AbstractMenuA
 {
 	public ActionJumpDiagramWizardCreateInitialModelStep(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
-	}
-
-	static String getLabel()
-	{
-		return EAM.text("Create initial conceptual model");
+		super(mainWindowToUse, OpenStandardsConceptualizeQuestion.getCreateInitialConceptualModelLabel());
 	}
 
 	@Override
