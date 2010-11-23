@@ -40,7 +40,7 @@ abstract public class DynamicChoiceWithRootChoiceItem extends DynamicChoiceQuest
 		}
 	}
 	
-	public ChoiceItem getHeaderCHoiceItem() throws Exception
+	public ChoiceItem getHeaderChoiceItem() throws Exception
 	{
 		return createHeaderChoiceItem();
 	}
