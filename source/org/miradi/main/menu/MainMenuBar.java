@@ -523,7 +523,7 @@ public class MainMenuBar extends JMenuBar
 
 	public JMenu createQuestionBasedMenu(Actions actions, DynamicChoiceWithRootChoiceItem question) throws Exception
 	{
-		ChoiceItem headerChoiceItem  = question.getHeaderCHoiceItem();
+		ChoiceItem headerChoiceItem  = question.getHeaderChoiceItem();
 		JMenu headerMenu = new JMenu(headerChoiceItem.getLabel());
 
 		addSubMenus(actions, headerMenu, headerChoiceItem.getChildren());
