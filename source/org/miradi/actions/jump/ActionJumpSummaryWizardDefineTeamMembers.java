@@ -19,20 +19,34 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
+import java.awt.event.KeyEvent;
+
+import org.miradi.actions.AbstractMenuAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
-public class ActionJumpSummaryWizardDefineTeamMembers extends MainWindowAction
+public class ActionJumpSummaryWizardDefineTeamMembers extends AbstractMenuAction
 {
 	public ActionJumpSummaryWizardDefineTeamMembers(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
-	static String getLabel()
+	private static String getLabel()
 	{
 		return EAM.text("Select initial team members");
 	}
-	
+
+	@Override
+	public int getMnemonic()
+	{
+		return KeyEvent.VK_S;
+	}
+
+	@Override
+	public String getCode()
+	{
+		return OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE;
+	}
 }

@@ -19,11 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
+import java.awt.event.KeyEvent;
+
+import org.miradi.actions.AbstractMenuAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
-public class ActionJumpSummaryWizardRolesAndResponsibilities extends MainWindowAction
+public class ActionJumpSummaryWizardRolesAndResponsibilities extends AbstractMenuAction
 {
 	public ActionJumpSummaryWizardRolesAndResponsibilities(MainWindow mainWindowToUse)
 	{
@@ -33,6 +36,18 @@ public class ActionJumpSummaryWizardRolesAndResponsibilities extends MainWindowA
 	private static String getLabel()
 	{
 		return EAM.text("Agree on roles and responsibilities"); 
+	}
+
+	@Override
+	public int getMnemonic()
+	{
+		return KeyEvent.VK_R;
+	}
+
+	@Override
+	public String getCode()
+	{
+		return OpenStandardsConceptualizeQuestion.AGREE_ON_ROLES_AND_RESPONSIBILITIES_CODE;
 	}
 }
 	

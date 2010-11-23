@@ -18,28 +18,18 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.main.menu;
+package org.miradi.actions;
 
+import org.miradi.main.MainWindow;
 
-public class MenuItemDetailsProvider
+abstract public class AbstractMenuAction extends MainWindowAction
 {
-	public MenuItemDetailsProvider(Class menuItemActionToUse, int mnemonicToUse)
+	public AbstractMenuAction(MainWindow mainWindowToUse, String label)
 	{
-		menuItemAction = menuItemActionToUse;
-		menomic = mnemonicToUse;
+		super(mainWindowToUse, label);
 	}
 	
-	public Class getMenuItemAction()
-	{
-		return menuItemAction;
-	}
+	abstract public int getMnemonic();
 	
-	public int getMenomic()
-	{
-		return menomic;
-	}
-	
-	private Class menuItemAction;
-	private int menomic;
-	
+	abstract public String getCode();
 }

@@ -19,11 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
+import java.awt.event.KeyEvent;
+
+import org.miradi.actions.AbstractMenuAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
-public class ActionJumpAssessStakeholders extends MainWindowAction
+public class ActionJumpAssessStakeholders extends AbstractMenuAction
 {
 	public ActionJumpAssessStakeholders(MainWindow mainWindowToUse)
 	{
@@ -34,5 +37,16 @@ public class ActionJumpAssessStakeholders extends MainWindowAction
 	{
 		return EAM.text("Assess Stakeholders");
 	}
-	
+
+	@Override
+	public int getMnemonic()
+	{
+		return KeyEvent.VK_S;
+	}
+
+	@Override
+	public String getCode()
+	{
+		return OpenStandardsConceptualizeQuestion.ASSESS_STAKEHOLDERS_CODE;
+	}
 }

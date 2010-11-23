@@ -19,11 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
+import java.awt.event.KeyEvent;
+
+import org.miradi.actions.AbstractMenuAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
-public class ActionJumpThreatMatrixOverviewStep extends MainWindowAction
+public class ActionJumpThreatMatrixOverviewStep extends AbstractMenuAction
 {
 	public ActionJumpThreatMatrixOverviewStep(MainWindow mainWindowToUse)
 	{
@@ -34,5 +37,16 @@ public class ActionJumpThreatMatrixOverviewStep extends MainWindowAction
 	{
 		return EAM.text("Rank direct threats");
 	}
-	
+
+	@Override
+	public int getMnemonic()
+	{
+		return KeyEvent.VK_R;
+	}
+
+	@Override
+	public String getCode()
+	{
+		return OpenStandardsConceptualizeQuestion.RANK_DIRECT_THREATS_CODE;
+	}
 }

@@ -19,11 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
+import java.awt.event.KeyEvent;
+
+import org.miradi.actions.AbstractMenuAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
-public class ActionJumpTargetViabilityMethodChoiceStep extends MainWindowAction
+public class ActionJumpTargetViabilityMethodChoiceStep extends AbstractMenuAction
 {
 	public ActionJumpTargetViabilityMethodChoiceStep(MainWindow mainWindowToUse)
 	{
@@ -35,4 +38,15 @@ public class ActionJumpTargetViabilityMethodChoiceStep extends MainWindowAction
 		return EAM.text("Describe status of targets"); 
 	}
 
+	@Override
+	public int getMnemonic()
+	{
+		return KeyEvent.VK_V;
+	}
+
+	@Override
+	public String getCode()
+	{
+		return OpenStandardsConceptualizeQuestion.DESCRIBE_STATUS_OF_TARGETS_CODE;
+	}
 }
