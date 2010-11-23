@@ -42,6 +42,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceItemWithChildren;
 import org.miradi.questions.DynamicChoiceWithRootChoiceItem;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
+import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
 import org.miradi.utils.MenuItemWithoutLocation;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.noproject.NoProjectView;
@@ -501,7 +502,7 @@ public class MainMenuBar extends JMenuBar
 			menu.setMnemonic(KeyEvent.VK_S);
 
 			menu.add(createQuestionBasedMenu(actions, new OpenStandardsConceptualizeQuestion()));
-			menu.add(new ProcessMenu2(actions));
+			menu.add(createQuestionBasedMenu(actions, new OpenStandardsPlanActionsAndMonitoringQuestion()));
 			menu.add(new ProcessMenu3(actions));
 			menu.add(new ProcessMenu4(actions));
 			menu.add(new ProcessMenu5(actions));

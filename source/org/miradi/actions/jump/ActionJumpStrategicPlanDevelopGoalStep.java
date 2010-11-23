@@ -19,20 +19,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import java.awt.event.KeyEvent;
 
-public class ActionJumpStrategicPlanDevelopGoalStep extends MainWindowAction
+import org.miradi.actions.AbstractMenuAction;
+import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
+
+public class ActionJumpStrategicPlanDevelopGoalStep extends AbstractMenuAction
 {
 	public ActionJumpStrategicPlanDevelopGoalStep(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, OpenStandardsPlanActionsAndMonitoringQuestion.getDevelopGoalsForEachTargetLabel());
 	}
 	
-	private static String getLabel()
+	@Override
+	public int getMnemonic()
 	{
-		return EAM.text("Develop goals for each target"); 
+		return KeyEvent.VK_G;
 	}
 
+	@Override
+	public String getCode()
+	{
+		return OpenStandardsPlanActionsAndMonitoringQuestion.DEVELOP_GOALS_FOR_EACH_TARGET_CODE;
+	}
 }

@@ -19,20 +19,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import java.awt.event.KeyEvent;
 
-public class ActionJumpDiagramWizardDefineAudienceStep extends MainWindowAction
+import org.miradi.actions.AbstractMenuAction;
+import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
+
+public class ActionJumpDiagramWizardDefineAudienceStep extends AbstractMenuAction
 {
 	public ActionJumpDiagramWizardDefineAudienceStep(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, OpenStandardsPlanActionsAndMonitoringQuestion.getDefineAudiencesAndInformationNeedsLabel());
 	}
 	
-	static String getLabel()
+	@Override
+	public int getMnemonic()
 	{
-		return EAM.text("Define audiences and information needs");
+		return KeyEvent.VK_M;
 	}
-	
+
+	@Override
+	public String getCode()
+	{
+		return OpenStandardsPlanActionsAndMonitoringQuestion.DEFINE_AUDIENCES_AND_INFORMATION_NEEDS_CODE;
+	}
 }

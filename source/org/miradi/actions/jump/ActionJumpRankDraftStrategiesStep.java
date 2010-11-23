@@ -19,20 +19,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import java.awt.event.KeyEvent;
 
-public class ActionJumpRankDraftStrategiesStep extends MainWindowAction
+import org.miradi.actions.AbstractMenuAction;
+import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
+
+public class ActionJumpRankDraftStrategiesStep extends AbstractMenuAction
 {
 	public ActionJumpRankDraftStrategiesStep(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, OpenStandardsPlanActionsAndMonitoringQuestion.getRankDraftStrategiesLabel());
 	}
 	
-	private static String getLabel()
+	@Override
+	public int getMnemonic()
 	{
-		return EAM.text("Rank draft strategies"); 
+		return KeyEvent.VK_S;
 	}
 
+	@Override
+	public String getCode()
+	{
+		return OpenStandardsPlanActionsAndMonitoringQuestion.RANK_DRAFT_STRATEGIES_CODE;
+	}
 }

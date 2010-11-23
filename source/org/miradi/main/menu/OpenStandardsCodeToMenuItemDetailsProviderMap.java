@@ -22,20 +22,33 @@ package org.miradi.main.menu;
 
 import java.util.HashMap;
 
+import org.miradi.actions.jump.ActionJumpAssessResources;
+import org.miradi.actions.jump.ActionJumpAssessRisks;
 import org.miradi.actions.jump.ActionJumpAssessStakeholders;
 import org.miradi.actions.jump.ActionJumpDevelopMap;
 import org.miradi.actions.jump.ActionJumpDiagramWizardCreateInitialModelStep;
+import org.miradi.actions.jump.ActionJumpDiagramWizardDefineAudienceStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardHumanWelfareTargetsStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
+import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainSelectStrategyStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardReviewModelAndAdjustStep;
+import org.miradi.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
+import org.miradi.actions.jump.ActionJumpPlanProjectLifespan;
+import org.miradi.actions.jump.ActionJumpPlanningWizardFinalizeMonitoringPlanStep;
+import org.miradi.actions.jump.ActionJumpPlanningWizardFinalizeStrategicPlanStep;
+import org.miradi.actions.jump.ActionJumpRankDraftStrategiesStep;
+import org.miradi.actions.jump.ActionJumpSelectChainStep;
+import org.miradi.actions.jump.ActionJumpStrategicPlanDevelopGoalStep;
+import org.miradi.actions.jump.ActionJumpStrategicPlanDevelopObjectivesStep;
 import org.miradi.actions.jump.ActionJumpSummaryWizardDefineProjecScope;
 import org.miradi.actions.jump.ActionJumpSummaryWizardDefineTeamMembers;
 import org.miradi.actions.jump.ActionJumpSummaryWizardRolesAndResponsibilities;
 import org.miradi.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
 import org.miradi.actions.jump.ActionJumpThreatMatrixOverviewStep;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
+import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
 
 public class OpenStandardsCodeToMenuItemDetailsProviderMap extends HashMap<String, Class>
 {
@@ -57,5 +70,19 @@ public class OpenStandardsCodeToMenuItemDetailsProviderMap extends HashMap<Strin
 		put(OpenStandardsConceptualizeQuestion.ASSESS_STAKEHOLDERS_CODE, ActionJumpAssessStakeholders.class);
 		put(OpenStandardsConceptualizeQuestion.CREATE_INITIAL_CONCEPTUAL_MODEL_CODE, ActionJumpDiagramWizardCreateInitialModelStep.class);
 		put(OpenStandardsConceptualizeQuestion.GROUND_THRUTH_AND_REVISE_MODEL_CODE, ActionJumpDiagramWizardReviewModelAndAdjustStep.class);
+		
+				
+		put(OpenStandardsPlanActionsAndMonitoringQuestion.DEVELOP_GOALS_FOR_EACH_TARGET_CODE ,ActionJumpStrategicPlanDevelopGoalStep.class);
+		put(OpenStandardsPlanActionsAndMonitoringQuestion.IDENTIFY_KEY_FACTORS_AND_DRAFT_STRATEGIES_CODE, ActionJumpSelectChainStep.class);
+		put(OpenStandardsPlanActionsAndMonitoringQuestion.RANK_DRAFT_STRATEGIES_CODE, ActionJumpRankDraftStrategiesStep.class);
+		put(OpenStandardsPlanActionsAndMonitoringQuestion.CREATE_RESULTS_CHAINS_SHOWING_ASSUMPTIONS_CODE, ActionJumpDiagramWizardResultsChainSelectStrategyStep.class);
+		put(OpenStandardsPlanActionsAndMonitoringQuestion.DEVELOP_OBJECTIVES_CODE, ActionJumpStrategicPlanDevelopObjectivesStep.class);
+		put(OpenStandardsPlanActionsAndMonitoringQuestion.FINALIZE_STRATEGIC_PLAN_CODE, ActionJumpPlanningWizardFinalizeStrategicPlanStep.class);
+		put(OpenStandardsPlanActionsAndMonitoringQuestion.DEFINE_AUDIENCES_AND_INFORMATION_NEEDS_CODE, ActionJumpDiagramWizardDefineAudienceStep.class);
+		put(OpenStandardsPlanActionsAndMonitoringQuestion.DEFINE_INDICATORS_CODE, ActionJumpMonitoringWizardDefineIndicatorsStep.class);
+		put(OpenStandardsPlanActionsAndMonitoringQuestion.FINALIZE_MONITORING_PLAN_CODE, ActionJumpPlanningWizardFinalizeMonitoringPlanStep.class);
+		put(OpenStandardsPlanActionsAndMonitoringQuestion.ASSESS_HUMAN_FINANCIAL_AND_OTHER_RESOURCES_CODE, ActionJumpAssessResources.class);
+		put(OpenStandardsPlanActionsAndMonitoringQuestion.ASSESS_RISKS_CODE, ActionJumpAssessRisks.class);
+		put(OpenStandardsPlanActionsAndMonitoringQuestion.PLAN_PROJECT_LIFESPAN_AND_EXIT_STRATEGY_CODE, ActionJumpPlanProjectLifespan.class);
 	}
 }
