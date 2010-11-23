@@ -42,11 +42,6 @@ public class OpenStandardsCodeToMenuItemDetailsProviderMap extends HashMap<Strin
 {
 	public OpenStandardsCodeToMenuItemDetailsProviderMap()
 	{
-		setup();
-	}
-
-	private void setup()
-	{
 		put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, new MenuItemDetailsProvider(ActionJumpSummaryWizardDefineTeamMembers.class, KeyEvent.VK_S));
 		put(OpenStandardsConceptualizeQuestion.AGREE_ON_ROLES_AND_RESPONSIBILITIES_CODE, new MenuItemDetailsProvider(ActionJumpSummaryWizardRolesAndResponsibilities.class, KeyEvent.VK_R));
 		
