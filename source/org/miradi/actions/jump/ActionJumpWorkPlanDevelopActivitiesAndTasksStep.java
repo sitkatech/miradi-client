@@ -19,19 +19,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import java.awt.event.KeyEvent;
 
-public class ActionJumpWorkPlanDevelopActivitiesAndTasksStep extends MainWindowAction
+import org.miradi.actions.AbstractMenuAction;
+import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
+
+public class ActionJumpWorkPlanDevelopActivitiesAndTasksStep extends AbstractMenuAction
 {
 	public ActionJumpWorkPlanDevelopActivitiesAndTasksStep(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, OpenStandardsImplementActionsAndMonitoringQuestion.getDetailActivitiesTasksAndResponsibilitiesLabel());
 	}
 	
-	static String getLabel()
+	@Override
+	public int getMnemonic()
 	{
-		return EAM.text("Detail activities, tasks, and responsibilities");
+		return KeyEvent.VK_A;
+	}
+
+	@Override
+	public String getCode()
+	{
+		return OpenStandardsImplementActionsAndMonitoringQuestion.DETAIL_ACTIVITIES_TASKS_AND_RESPONSIBILITIES_CODE;
 	}
 }

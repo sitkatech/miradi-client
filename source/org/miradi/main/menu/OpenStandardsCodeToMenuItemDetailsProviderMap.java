@@ -25,7 +25,10 @@ import java.util.HashMap;
 import org.miradi.actions.jump.ActionJumpAssessResources;
 import org.miradi.actions.jump.ActionJumpAssessRisks;
 import org.miradi.actions.jump.ActionJumpAssessStakeholders;
+import org.miradi.actions.jump.ActionJumpBudgetWizardAccountingAndFunding;
+import org.miradi.actions.jump.ActionJumpDevelopFundingProposals;
 import org.miradi.actions.jump.ActionJumpDevelopMap;
+import org.miradi.actions.jump.ActionJumpDevelopSchedule;
 import org.miradi.actions.jump.ActionJumpDiagramWizardCreateInitialModelStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardDefineAudienceStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
@@ -34,7 +37,10 @@ import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainSelectStrategyStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardReviewModelAndAdjustStep;
+import org.miradi.actions.jump.ActionJumpImplementStrategicAndMonitoringPlans;
+import org.miradi.actions.jump.ActionJumpImplementWorkPlan;
 import org.miradi.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
+import org.miradi.actions.jump.ActionJumpObtainFinancing;
 import org.miradi.actions.jump.ActionJumpPlanProjectLifespan;
 import org.miradi.actions.jump.ActionJumpPlanningWizardFinalizeMonitoringPlanStep;
 import org.miradi.actions.jump.ActionJumpPlanningWizardFinalizeStrategicPlanStep;
@@ -47,7 +53,10 @@ import org.miradi.actions.jump.ActionJumpSummaryWizardDefineTeamMembers;
 import org.miradi.actions.jump.ActionJumpSummaryWizardRolesAndResponsibilities;
 import org.miradi.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
 import org.miradi.actions.jump.ActionJumpThreatMatrixOverviewStep;
+import org.miradi.actions.jump.ActionJumpWorkPlanDevelopActivitiesAndTasksStep;
+import org.miradi.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
+import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
 import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
 
 public class OpenStandardsCodeToMenuItemDetailsProviderMap extends HashMap<String, Class>
@@ -84,5 +93,15 @@ public class OpenStandardsCodeToMenuItemDetailsProviderMap extends HashMap<Strin
 		put(OpenStandardsPlanActionsAndMonitoringQuestion.ASSESS_HUMAN_FINANCIAL_AND_OTHER_RESOURCES_CODE, ActionJumpAssessResources.class);
 		put(OpenStandardsPlanActionsAndMonitoringQuestion.ASSESS_RISKS_CODE, ActionJumpAssessRisks.class);
 		put(OpenStandardsPlanActionsAndMonitoringQuestion.PLAN_PROJECT_LIFESPAN_AND_EXIT_STRATEGY_CODE, ActionJumpPlanProjectLifespan.class);
+		
+		put(OpenStandardsImplementActionsAndMonitoringQuestion.DETAIL_ACTIVITIES_TASKS_AND_RESPONSIBILITIES_CODE, ActionJumpWorkPlanDevelopActivitiesAndTasksStep.class);
+		put(OpenStandardsImplementActionsAndMonitoringQuestion.DETAIL_METHODS_TASKS_AND_RESPONSIBILITIES_CODE, ActionJumpWorkPlanDevelopMethodsAndTasksStep.class);
+		put(OpenStandardsImplementActionsAndMonitoringQuestion.DEVELOP_PROJECT_TIMELINE_OR_CALENDAR_CODE, ActionJumpDevelopSchedule.class);
+		put(OpenStandardsImplementActionsAndMonitoringQuestion.ESTIMATE_COSTS_FOR_ACTIVITIES_AND_MONITORING_CODE, ActionJumpBudgetWizardAccountingAndFunding.class);
+		put(OpenStandardsImplementActionsAndMonitoringQuestion.DEVELOP_AND_SUBMIT_FUNDING_PROPOSALS_CODE, ActionJumpDevelopFundingProposals.class);
+		put(OpenStandardsImplementActionsAndMonitoringQuestion.OBTAIN_FINANCIAL_RESOURCES_CODE, ActionJumpObtainFinancing.class);
+		put(OpenStandardsImplementActionsAndMonitoringQuestion.IMPLEMENT_STRATEGIC_AND_MONITORING_PLANS, ActionJumpImplementStrategicAndMonitoringPlans.class);
+		put(OpenStandardsImplementActionsAndMonitoringQuestion.IMPLEMENT_WORK_PLAN_CODE, ActionJumpImplementWorkPlan.class);
+
 	}
 }

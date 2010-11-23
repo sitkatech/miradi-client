@@ -19,20 +19,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import java.awt.event.KeyEvent;
 
-public class ActionJumpObtainFinancing extends MainWindowAction
+import org.miradi.actions.AbstractMenuAction;
+import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
+
+public class ActionJumpObtainFinancing extends AbstractMenuAction
 {
 	public ActionJumpObtainFinancing(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, OpenStandardsImplementActionsAndMonitoringQuestion.getObtainFinancialResourcesLabel());
 	}
 
-	private static String getLabel()
+	@Override
+	public int getMnemonic()
 	{
-		return EAM.text("Obtain financial resources");
+		return KeyEvent.VK_O;
 	}
 
+	@Override
+	public String getCode()
+	{
+		return OpenStandardsImplementActionsAndMonitoringQuestion.OBTAIN_FINANCIAL_RESOURCES_CODE;
+	}
 }

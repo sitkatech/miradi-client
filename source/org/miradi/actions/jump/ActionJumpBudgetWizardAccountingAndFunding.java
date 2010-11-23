@@ -19,21 +19,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import java.awt.event.KeyEvent;
 
-public class ActionJumpBudgetWizardAccountingAndFunding extends
-		MainWindowAction
+import org.miradi.actions.AbstractMenuAction;
+import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
+
+public class ActionJumpBudgetWizardAccountingAndFunding extends	AbstractMenuAction
 {
 	public ActionJumpBudgetWizardAccountingAndFunding(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, OpenStandardsImplementActionsAndMonitoringQuestion.getEstimateCostsForActivitiesAndMonitoringLabel());
 	}
 
-	private static String getLabel()
+	@Override
+	public int getMnemonic()
 	{
-		return EAM.text("Estimate costs for activities and monitoring");
+		return KeyEvent.VK_E;
 	}
 
+	@Override
+	public String getCode()
+	{
+		return OpenStandardsImplementActionsAndMonitoringQuestion.ESTIMATE_COSTS_FOR_ACTIVITIES_AND_MONITORING_CODE;
+	}
 }
