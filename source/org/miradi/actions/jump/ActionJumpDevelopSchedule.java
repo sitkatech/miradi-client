@@ -19,20 +19,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import java.awt.event.KeyEvent;
 
-public class ActionJumpDevelopSchedule extends MainWindowAction
+import org.miradi.actions.AbstractMenuAction;
+import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
+
+public class ActionJumpDevelopSchedule extends AbstractMenuAction
 {
 	public ActionJumpDevelopSchedule(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, OpenStandardsImplementActionsAndMonitoringQuestion.getDevelopProjectTimelineOrCalendarLabel());
 	}
 
-	private static String getLabel()
+	@Override
+	public int getMnemonic()
 	{
-		return EAM.text("Develop project timeline or calendar");
+		return KeyEvent.VK_D;
 	}
 
+	@Override
+	public String getCode()
+	{
+		return OpenStandardsImplementActionsAndMonitoringQuestion.DEVELOP_PROJECT_TIMELINE_OR_CALENDAR_CODE;
+	}
 }

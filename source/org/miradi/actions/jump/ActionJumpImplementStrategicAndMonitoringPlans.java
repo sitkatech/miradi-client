@@ -19,21 +19,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import java.awt.event.KeyEvent;
 
-public class ActionJumpImplementStrategicAndMonitoringPlans extends
-		MainWindowAction
+import org.miradi.actions.AbstractMenuAction;
+import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
+
+public class ActionJumpImplementStrategicAndMonitoringPlans extends	AbstractMenuAction
 {
 	public ActionJumpImplementStrategicAndMonitoringPlans(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, OpenStandardsImplementActionsAndMonitoringQuestion.getImplementStrategicAndMonitoringPlansLabel());
 	}
 
-	private static String getLabel()
+	@Override
+	public int getMnemonic()
 	{
-		return EAM.text("Implement strategic and monitoring plans");
+		return KeyEvent.VK_S;
 	}
 
+	@Override
+	public String getCode()
+	{
+		return OpenStandardsImplementActionsAndMonitoringQuestion.IMPLEMENT_STRATEGIC_AND_MONITORING_PLANS;
+	}
 }
