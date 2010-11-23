@@ -38,9 +38,9 @@ import org.miradi.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
 import org.miradi.actions.jump.ActionJumpThreatMatrixOverviewStep;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
-public class OpenStandardsMenuMap extends HashMap<String, MenuItemDetailsProvider>
+public class OpenStandardsCodeToMenuItemDetailsProviderMap extends HashMap<String, MenuItemDetailsProvider>
 {
-	public OpenStandardsMenuMap()
+	public OpenStandardsCodeToMenuItemDetailsProviderMap()
 	{
 		setup();
 	}
