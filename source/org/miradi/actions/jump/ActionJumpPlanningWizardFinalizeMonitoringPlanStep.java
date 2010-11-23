@@ -19,19 +19,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import java.awt.event.KeyEvent;
 
-public class ActionJumpPlanningWizardFinalizeMonitoringPlanStep extends MainWindowAction
+import org.miradi.actions.AbstractMenuAction;
+import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
+
+public class ActionJumpPlanningWizardFinalizeMonitoringPlanStep extends AbstractMenuAction
 {
 	public ActionJumpPlanningWizardFinalizeMonitoringPlanStep(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, OpenStandardsPlanActionsAndMonitoringQuestion.getFinalizeMonitoringPlanLabel());
 	}
 
-	private static String getLabel()
+	@Override
+	public int getMnemonic()
 	{
-		return EAM.text("Finalize monitoring plan");
+		return KeyEvent.VK_F;
+	}
+
+	@Override
+	public String getCode()
+	{
+		return OpenStandardsPlanActionsAndMonitoringQuestion.FINALIZE_MONITORING_PLAN_CODE;
 	}
 }
