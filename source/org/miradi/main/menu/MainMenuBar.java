@@ -41,6 +41,8 @@ import org.miradi.main.ViewSwitcher;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceItemWithChildren;
 import org.miradi.questions.DynamicChoiceWithRootChoiceItem;
+import org.miradi.questions.OpenStandardsAnalyzeUseAndAdaptQuestion;
+import org.miradi.questions.OpenStandardsCaptureAndShareLearningQuestion;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
 import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
@@ -505,8 +507,8 @@ public class MainMenuBar extends JMenuBar
 			menu.add(createQuestionBasedMenu(actions, new OpenStandardsConceptualizeQuestion()));
 			menu.add(createQuestionBasedMenu(actions, new OpenStandardsPlanActionsAndMonitoringQuestion()));
 			menu.add(createQuestionBasedMenu(actions, new OpenStandardsImplementActionsAndMonitoringQuestion()));
-			menu.add(new ProcessMenu4(actions));
-			menu.add(new ProcessMenu5(actions));
+			menu.add(createQuestionBasedMenu(actions, new OpenStandardsAnalyzeUseAndAdaptQuestion()));
+			menu.add(createQuestionBasedMenu(actions, new OpenStandardsCaptureAndShareLearningQuestion()));
 			menu.add(new JMenuItem(actions.get(ActionJumpCloseTheLoop.class)));
 
 			if (Miradi.isDeveloperMode())
@@ -550,8 +552,17 @@ public class MainMenuBar extends JMenuBar
 		{
 			OpenStandardsCodeToMenuItemDetailsProviderMap map = new OpenStandardsCodeToMenuItemDetailsProviderMap();
 			Class actionClass = map.get(leafChoiceItem.getCode());
-			AbstractMenuAction action = (AbstractMenuAction) actions.get(actionClass);
-			subHeaderMenu.add(new EAMenuItem(action, action.getMnemonic()));
+			if (actionClass != null)
+			{
+				AbstractMenuAction action = (AbstractMenuAction) actions.get(actionClass);
+				subHeaderMenu.add(new EAMenuItem(action, action.getMnemonic()));
+			}
+			else 
+			{
+				JMenuItem menuItem = new JMenuItem(leafChoiceItem.getLabel());
+				menuItem.setEnabled(false);
+				subHeaderMenu.add(menuItem);
+			}
 		}
 	}
 

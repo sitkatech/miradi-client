@@ -65,21 +65,17 @@ public class OpenStandardsCodeToMenuItemDetailsProviderMap extends HashMap<Strin
 	{
 		put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, ActionJumpSummaryWizardDefineTeamMembers.class);
 		put(OpenStandardsConceptualizeQuestion.AGREE_ON_ROLES_AND_RESPONSIBILITIES_CODE, ActionJumpSummaryWizardRolesAndResponsibilities.class);
-		
 		put(OpenStandardsConceptualizeQuestion.DEFINE_PROJECT_SCOPE_CODE, ActionJumpSummaryWizardDefineProjecScope.class);
 		put(OpenStandardsConceptualizeQuestion.DEVELOP_MAP_OF_PROJECT_AREA_CODE, ActionJumpDevelopMap.class);
 		put(OpenStandardsConceptualizeQuestion.SELECT_CONSERVATION_TARGETS_CODE, ActionJumpDiagramWizardDefineTargetsStep.class);
 		put(OpenStandardsConceptualizeQuestion.ADD_HUMAN_WELFARE_TARGETS_IF_DESIRED_CODE, ActionJumpDiagramWizardHumanWelfareTargetsStep.class);
 		put(OpenStandardsConceptualizeQuestion.DESCRIBE_STATUS_OF_TARGETS_CODE, ActionJumpTargetViabilityMethodChoiceStep.class);
-		
 		put(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE, ActionJumpDiagramWizardIdentifyDirectThreatStep.class);
 		put(OpenStandardsConceptualizeQuestion.RANK_DIRECT_THREATS_CODE, ActionJumpThreatMatrixOverviewStep.class);
-		
 		put(OpenStandardsConceptualizeQuestion.IDENTIFY_INDIRECT_THREATS_AND_OPPORTUNITIES_CODE, ActionJumpDiagramWizardIdentifyIndirectThreatStep.class);
 		put(OpenStandardsConceptualizeQuestion.ASSESS_STAKEHOLDERS_CODE, ActionJumpAssessStakeholders.class);
 		put(OpenStandardsConceptualizeQuestion.CREATE_INITIAL_CONCEPTUAL_MODEL_CODE, ActionJumpDiagramWizardCreateInitialModelStep.class);
 		put(OpenStandardsConceptualizeQuestion.GROUND_THRUTH_AND_REVISE_MODEL_CODE, ActionJumpDiagramWizardReviewModelAndAdjustStep.class);
-		
 				
 		put(OpenStandardsPlanActionsAndMonitoringQuestion.DEVELOP_GOALS_FOR_EACH_TARGET_CODE ,ActionJumpStrategicPlanDevelopGoalStep.class);
 		put(OpenStandardsPlanActionsAndMonitoringQuestion.IDENTIFY_KEY_FACTORS_AND_DRAFT_STRATEGIES_CODE, ActionJumpSelectChainStep.class);
@@ -102,6 +98,5 @@ public class OpenStandardsCodeToMenuItemDetailsProviderMap extends HashMap<Strin
 		put(OpenStandardsImplementActionsAndMonitoringQuestion.OBTAIN_FINANCIAL_RESOURCES_CODE, ActionJumpObtainFinancing.class);
 		put(OpenStandardsImplementActionsAndMonitoringQuestion.IMPLEMENT_STRATEGIC_AND_MONITORING_PLANS, ActionJumpImplementStrategicAndMonitoringPlans.class);
 		put(OpenStandardsImplementActionsAndMonitoringQuestion.IMPLEMENT_WORK_PLAN_CODE, ActionJumpImplementWorkPlan.class);
-
 	}
 }
