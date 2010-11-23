@@ -23,7 +23,6 @@ package org.miradi.actions.jump;
 import java.awt.event.KeyEvent;
 
 import org.miradi.actions.AbstractMenuAction;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
@@ -31,14 +30,9 @@ public class ActionJumpDiagramWizardHumanWelfareTargetsStep extends AbstractMenu
 {
 	public ActionJumpDiagramWizardHumanWelfareTargetsStep(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, OpenStandardsConceptualizeQuestion.getAddHumanWelfareTargetsIfDesiredLabel());
 	}
 	
-	static String getLabel()
-	{
-		return EAM.text("Add Human Welfare Targets If Desired");
-	}
-
 	@Override
 	public int getMnemonic()
 	{

@@ -22,7 +22,6 @@ package org.miradi.actions.jump;
 import java.awt.event.KeyEvent;
 
 import org.miradi.actions.AbstractMenuAction;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
@@ -30,14 +29,9 @@ public class ActionJumpSummaryWizardRolesAndResponsibilities extends AbstractMen
 {
 	public ActionJumpSummaryWizardRolesAndResponsibilities(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, OpenStandardsConceptualizeQuestion.getAgreeOnRolesAndResponsibilitiesLabel());
 	}
 	
-	private static String getLabel()
-	{
-		return EAM.text("Agree on roles and responsibilities"); 
-	}
-
 	@Override
 	public int getMnemonic()
 	{

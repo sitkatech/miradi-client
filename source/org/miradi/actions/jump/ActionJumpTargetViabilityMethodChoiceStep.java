@@ -22,7 +22,6 @@ package org.miradi.actions.jump;
 import java.awt.event.KeyEvent;
 
 import org.miradi.actions.AbstractMenuAction;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
@@ -30,14 +29,9 @@ public class ActionJumpTargetViabilityMethodChoiceStep extends AbstractMenuActio
 {
 	public ActionJumpTargetViabilityMethodChoiceStep(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, OpenStandardsConceptualizeQuestion.getDescribeStatusOfTargetsLabel());
 	}
 	
-	private static String getLabel()
-	{
-		return EAM.text("Describe status of targets"); 
-	}
-
 	@Override
 	public int getMnemonic()
 	{
