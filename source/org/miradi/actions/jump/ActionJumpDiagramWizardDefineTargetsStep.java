@@ -19,11 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
+import java.awt.event.KeyEvent;
+
+import org.miradi.actions.AbstractMenuAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
-public class ActionJumpDiagramWizardDefineTargetsStep extends MainWindowAction
+public class ActionJumpDiagramWizardDefineTargetsStep extends AbstractMenuAction
 {
 	public ActionJumpDiagramWizardDefineTargetsStep(MainWindow mainWindowToUse)
 	{
@@ -34,5 +37,16 @@ public class ActionJumpDiagramWizardDefineTargetsStep extends MainWindowAction
 	{
 		return EAM.text("Select conservation targets");
 	}
-	
+
+	@Override
+	public int getMnemonic()
+	{
+		return  KeyEvent.VK_I;
+	}
+
+	@Override
+	public String getCode()
+	{
+		return OpenStandardsConceptualizeQuestion.SELECT_CONSERVATION_TARGETS_CODE;
+	}
 }

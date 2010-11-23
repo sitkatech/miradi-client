@@ -19,11 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
+import java.awt.event.KeyEvent;
+
+import org.miradi.actions.AbstractMenuAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
-public class ActionJumpDiagramWizardReviewModelAndAdjustStep extends MainWindowAction
+public class ActionJumpDiagramWizardReviewModelAndAdjustStep extends AbstractMenuAction
 {
 	public ActionJumpDiagramWizardReviewModelAndAdjustStep(MainWindow mainWindowToUse)
 	{
@@ -34,5 +37,16 @@ public class ActionJumpDiagramWizardReviewModelAndAdjustStep extends MainWindowA
 	{
 		return EAM.text("Ground-truth and revise model");
 	}
-	
+
+	@Override
+	public int getMnemonic()
+	{
+		return KeyEvent.VK_R;
+	}
+
+	@Override
+	public String getCode()
+	{
+		return OpenStandardsConceptualizeQuestion.GROUND_THRUTH_AND_REVISE_MODEL_CODE;
+	}
 }

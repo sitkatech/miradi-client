@@ -20,11 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
+import java.awt.event.KeyEvent;
+
+import org.miradi.actions.AbstractMenuAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
-public class ActionJumpDiagramWizardHumanWelfareTargetsStep extends MainWindowAction
+public class ActionJumpDiagramWizardHumanWelfareTargetsStep extends AbstractMenuAction
 {
 	public ActionJumpDiagramWizardHumanWelfareTargetsStep(MainWindow mainWindowToUse)
 	{
@@ -36,4 +39,15 @@ public class ActionJumpDiagramWizardHumanWelfareTargetsStep extends MainWindowAc
 		return EAM.text("Add Human Welfare Targets If Desired");
 	}
 
+	@Override
+	public int getMnemonic()
+	{
+		return KeyEvent.VK_A;
+	}
+
+	@Override
+	public String getCode()
+	{
+		return OpenStandardsConceptualizeQuestion.ADD_HUMAN_WELFARE_TARGETS_IF_DESIRED_CODE;
+	}
 }

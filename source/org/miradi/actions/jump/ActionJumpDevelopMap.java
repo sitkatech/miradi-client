@@ -19,11 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
+import java.awt.event.KeyEvent;
+
+import org.miradi.actions.AbstractMenuAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
-public class ActionJumpDevelopMap extends MainWindowAction
+public class ActionJumpDevelopMap extends AbstractMenuAction
 {
 	public ActionJumpDevelopMap(MainWindow mainWindowToUse)
 	{
@@ -34,6 +37,16 @@ public class ActionJumpDevelopMap extends MainWindowAction
 	{
 		return EAM.text("Develop map of project area");
 	}
-	
 
+	@Override
+	public int getMnemonic()
+	{
+		return KeyEvent.VK_M;
+	}
+
+	@Override
+	public String getCode()
+	{
+		return OpenStandardsConceptualizeQuestion.DEVELOP_MAP_OF_PROJECT_AREA_CODE;
+	}
 }

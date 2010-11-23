@@ -19,11 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
+import java.awt.event.KeyEvent;
+
+import org.miradi.actions.AbstractMenuAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
-public class ActionJumpSummaryWizardDefineProjecScope extends MainWindowAction
+public class ActionJumpSummaryWizardDefineProjecScope extends AbstractMenuAction
 {
 	public ActionJumpSummaryWizardDefineProjecScope(MainWindow mainWindowToUse)
 	{
@@ -34,5 +37,16 @@ public class ActionJumpSummaryWizardDefineProjecScope extends MainWindowAction
 	{
 		return EAM.text("Define project scope");
 	}
-	
+
+	@Override
+	public int getMnemonic()
+	{
+		return KeyEvent.VK_D;
+	}
+
+	@Override
+	public String getCode()
+	{
+		return OpenStandardsConceptualizeQuestion.DEFINE_PROJECT_SCOPE_CODE;
+	}
 }

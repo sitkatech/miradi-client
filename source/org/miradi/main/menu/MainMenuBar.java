@@ -547,8 +547,9 @@ public class MainMenuBar extends JMenuBar
 		for(ChoiceItem leafChoiceItem : leafChildren)
 		{
 			OpenStandardsCodeToMenuItemDetailsProviderMap map = new OpenStandardsCodeToMenuItemDetailsProviderMap();
-			MenuItemDetailsProvider provider = map.get(leafChoiceItem.getCode());
-			subHeaderMenu.add(new EAMenuItem(actions.get(provider.getMenuItemAction()), provider.getMenomic()));
+			Class actionClass = map.get(leafChoiceItem.getCode());
+			AbstractMenuAction action = (AbstractMenuAction) actions.get(actionClass);
+			subHeaderMenu.add(new EAMenuItem(action, action.getMnemonic()));
 		}
 	}
 
