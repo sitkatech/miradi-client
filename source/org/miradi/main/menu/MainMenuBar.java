@@ -528,38 +528,34 @@ public class MainMenuBar extends JMenuBar
 	public JMenu createQuestionBasedMenu(Actions actions, DynamicChoiceWithRootChoiceItem question) throws Exception
 	{
 		ChoiceItem headerChoiceItem  = question.getHeaderChoiceItem();
-		OpenStandardsCodeToMenuItemDetailsProviderMap map = new OpenStandardsCodeToMenuItemDetailsProviderMap();
-		Class actionClass = map.get(headerChoiceItem.getCode());
-		
-		AbstractMenuAction action = (AbstractMenuAction) actions.get(actionClass);
+		AbstractMenuAction action = actions.getMenuAction(headerChoiceItem.getCode());
 		JMenu headerMenu = new JMenu(headerChoiceItem.getLabel());
 		headerMenu.setMnemonic(action.getMnemonic());
-		addSubMenus(actions, map, headerMenu, headerChoiceItem.getChildren());
+		addSubMenus(actions, headerMenu, headerChoiceItem.getChildren());
 		
 		return headerMenu;
 	}
 	
-	private void addSubMenus(Actions actions, OpenStandardsCodeToMenuItemDetailsProviderMap map, JMenu headerMenu, Vector<ChoiceItem> children)
+	private void addSubMenus(Actions actions, JMenu headerMenu, Vector<ChoiceItem> children)
 	{
 		for(ChoiceItem subHeaderChoiceItem : children)
 		{
 			JMenu subHeaderMenu = new JMenu(subHeaderChoiceItem.getLabel());
-			
-			Class actionClass = map.get(subHeaderChoiceItem.getCode());
-			AbstractMenuAction action = (AbstractMenuAction) actions.get(actionClass);
+			String code = subHeaderChoiceItem.getCode();
+			AbstractMenuAction action = actions.getMenuAction(code);
 			subHeaderMenu.setMnemonic(action.getMnemonic());
 			headerMenu.add(subHeaderMenu);
 			ChoiceItemWithChildren leafChildren = (ChoiceItemWithChildren) subHeaderChoiceItem;
-			addLeafMenus(actions, map, subHeaderMenu, leafChildren.getChildren());
+			addLeafMenus(actions, subHeaderMenu, leafChildren.getChildren());
 		}
 	}
 
-	private void addLeafMenus(Actions actions, OpenStandardsCodeToMenuItemDetailsProviderMap map, JMenu subHeaderMenu, Vector<ChoiceItem> leafChildren)
+	private void addLeafMenus(Actions actions, JMenu subHeaderMenu, Vector<ChoiceItem> leafChildren)
 	{
 		for(ChoiceItem leafChoiceItem : leafChildren)
 		{
-			Class actionClass = map.get(leafChoiceItem.getCode());
-			if (actionClass == null)
+			AbstractMenuAction action = actions.getMenuAction(leafChoiceItem.getCode());
+			if (action == null)
 			{
 				JMenuItem disabledMenuItem = new JMenuItem(leafChoiceItem.getLabel());
 				disabledMenuItem.setEnabled(false);
@@ -567,7 +563,6 @@ public class MainMenuBar extends JMenuBar
 			}
 			else
 			{
-				AbstractMenuAction action = (AbstractMenuAction) actions.get(actionClass);
 				subHeaderMenu.add(new EAMenuItem(action, action.getMnemonic()));
 			}
 		}
