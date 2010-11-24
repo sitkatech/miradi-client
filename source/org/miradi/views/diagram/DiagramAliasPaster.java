@@ -57,8 +57,6 @@ public class DiagramAliasPaster extends DiagramPaster
 		createNewFactorLinks();
 		createNewDiagramLinks();
 		updateAutoCreatedThreatStressRatings();
-		selectNewlyPastedItems();
-
 		deleteOrphansCreatedDuringPaste();
 	}
 	

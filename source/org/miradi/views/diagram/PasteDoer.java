@@ -165,6 +165,8 @@ public class PasteDoer extends AbstractPasteDoer
 	protected void paste(DiagramPaster diagramPaster) throws Exception
 	{
 		diagramPaster.pasteFactorsAndLinks(getLocation());
+		diagramPaster.selectNewlyPastedItems();
+
 	}
 	
 	public boolean atLeastOneClipboardMethodExistsInTargetProject(TransferableMiradiList list) throws Exception

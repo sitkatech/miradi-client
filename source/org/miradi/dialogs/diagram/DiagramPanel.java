@@ -78,6 +78,11 @@ abstract public class DiagramPanel extends DisposablePanelWithDescription implem
 		diagram.setSelectionModel(selectionModelToUse);
 	}
 
+	public void clearSelection()
+	{
+		getCurrentDiagramComponent().clearSelection();
+	}
+
 	public EAMGraphCell[] getSelectedAndRelatedCells()
 	{
 		return getCurrentDiagramComponent().getSelectedAndRelatedCells();

@@ -110,7 +110,7 @@ abstract public class DiagramPaster
 		//NOTE if-test only exists for tests
 		if (diagramPanel == null)
 			return;
-
+		diagramPanel.clearSelection();
 		EAMGraphCell[] cellsToSelect = pastedCellsToSelect.toArray(new EAMGraphCell[0]);  
 		diagramPanel.selectCells(cellsToSelect);
 	}
