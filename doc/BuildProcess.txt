@@ -1,0 +1,100 @@
+Miradi Build (and Release) Process
+2009-09-11 kbs
+
+-------------------
+1. Third-party jars
+
+The Miradi build process pulls them from:
+  http://artifacts.miradi.org/repo/
+which is on benetech05 at:
+  /var/www/domains/miradi.org/artifacts/htdocs/repo
+
+Whenever a new version of a third-party jar is used, 
+we need to commit the jar and source to the CVS mirad-thirdparty
+repo, AND push it to the above repo using scp. 
+Older jars should never be removed from the above repo, 
+and any new version must have new filenames to avoid conflicts.
+
+Be sure all third-party jars are compatible with Java 5, 
+since that is what most Mac's still have to run. 
+For jars that we build, it is easiest to make sure that your 
+JAVA_HOME and/or operating system path point to Java 5 and not 6.
+
+At this time, I believe the only jar we build ourselves is
+miradi-jgraph, whose source code is in its own CVS repository.
+
+---------
+2. Miradi
+
+The Miradi build script is a standard ant build.xml,
+and it is built automatically by a Hudson instance 
+that runs on bentech04.
+
+The script builds the jar file, and then creates installers 
+for Windows (using install4j), and Mac (using free tools), 
+plus it creates a zip file mostly for Linux users, but which 
+can also be installed on either other platform.
+
+The build output is automatically copied to the "rawbuild" 
+directory within miradi.org, so it is available *immediately* 
+to testers who are aware that rawbuild exists.
+
+Most of the build script can run on a Linux desktop 
+for testing purposes, but some can't without setting up 
+an extensive production-like environment. 
+It probably can't be run on Windows at all.
+
+------------------
+3. Doing a Release
+
+a. Using the Jira "Miradi: Resolved" filter, write up a 
+summary of what has changed since the last release
+
+b. Have someone download and "smoke test" rawbuild.
+This means installing it, running it, opening a project, 
+and flipping through each of the views. Five minutes, tops.
+Ideally it would be done on each platform, but generally 
+we only smoke test on Windows.
+
+c. Create the next Jira Version, if it doesn't already exist.
+
+d. Update the "Miradi: Current Iteration" filter to point to 
+the next iteration.
+
+e. Edit the Jira version description to mention a few
+most important features or changes
+
+f. In Jira, "release" the release being released
+
+g. In Hudson, tag the build with something like:
+   ...Miradi/tags/pre-3.0-build19
+NOTE: Hudson tagging is not currently working, 
+so use svn directly to tag any important builds
+
+h. Copy rawbuild to alpha:
+ssh to benetech05
+cd /var/www/domains/miradi.org/downloadable_files
+su miradi-deployment
+cp rawbuild/* alpha/
+
+i. Check the miradi.org/files/alpha page to make sure the 
+latest timestamp appears
+
+j. Send the release announcement to the MiradiDevelopment
+exchange mailing list/group
+
+
+----------------
+4. Windows JRE's
+
+JRE's that can be downloaded by the Windows installer are stored at:
+  http://artifacts.miradi.org/jres/
+which is on benetech05 at:
+  /var/www/domains/miradi.org/artifacts/htdocs/jres
+  
+When we switch to a new JRE, put it there.
+Do not remove old JRE's unless they are so badly broken 
+that users should never ever use them.
+
+ 
+ 
