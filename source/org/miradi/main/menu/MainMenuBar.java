@@ -42,6 +42,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceItemWithChildren;
 import org.miradi.questions.DynamicChoiceWithRootChoiceItem;
 import org.miradi.questions.OpenStandardsAnalyzeUseAndAdaptQuestion;
+import org.miradi.questions.OpenStandardsCaptureAndShareLearningQuestion;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
 import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
@@ -507,7 +508,7 @@ public class MainMenuBar extends JMenuBar
 			menu.add(createQuestionBasedMenu(actions, new OpenStandardsPlanActionsAndMonitoringQuestion()));
 			menu.add(createQuestionBasedMenu(actions, new OpenStandardsImplementActionsAndMonitoringQuestion()));
 			menu.add(createQuestionBasedMenu(actions, new OpenStandardsAnalyzeUseAndAdaptQuestion()));
-			//menu.add(createQuestionBasedMenu(actions, new OpenStandardsCaptureAndShareLearningQuestion()));
+			menu.add(createQuestionBasedMenu(actions, new OpenStandardsCaptureAndShareLearningQuestion()));
 			menu.add(new JMenuItem(actions.get(ActionJumpCloseTheLoop.class)));
 
 			if (Miradi.isDeveloperMode())
