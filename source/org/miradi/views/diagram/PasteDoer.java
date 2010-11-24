@@ -196,7 +196,7 @@ public class PasteDoer extends AbstractPasteDoer
 		EAM.showHtmlMessageOkDialog(messageFileName, "Paste");
 	}
 
-	private final String AS_COPY_BUTTON = EAM.text("Button|As Copy");
-	private final String AS_SHARED_BUTTON = EAM.text("Button|Shared");
+	private final static String AS_COPY_BUTTON = EAM.text("Button|As Copy");
+	private final static String AS_SHARED_BUTTON = EAM.text("Button|Shared");
 	private final static String messageFileName = "NothingPastedMessage.html";
 }
