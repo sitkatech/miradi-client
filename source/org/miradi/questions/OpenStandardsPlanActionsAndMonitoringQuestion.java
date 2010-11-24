@@ -29,9 +29,10 @@ public class OpenStandardsPlanActionsAndMonitoringQuestion extends DynamicChoice
 	protected ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
 		StaticLongDescriptionProvider provider = new StaticLongDescriptionProvider();
-		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("PlanActionsAndMonitoring", EAM.text("Menu|2. Plan Actions and Monitoring"), provider);
 		
-		ChoiceItemWithChildren processStep2a = new ChoiceItemWithChildren("ProcessStep2A", EAM.text("ProcessStep|2A. Develop Strategic Plan"), EAM.text(""), provider);
+		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren(PLAN_ACTIONS_AND_MONITORING_CODE, getPlanActionsAndMonitoringHeaderLabel(), provider);
+		
+		ChoiceItemWithChildren processStep2a = new ChoiceItemWithChildren(PROCESS_STEP_2A_CODE, getProcessStep2aLabel(), EAM.text(""), provider);
 		headerChoiceItem.addChild(processStep2a);
 		processStep2a.addChild(new ChoiceItem(DEVELOP_GOALS_FOR_EACH_TARGET_CODE, getDevelopGoalsForEachTargetLabel()));
 		processStep2a.addChild(new ChoiceItem(IDENTIFY_KEY_FACTORS_AND_DRAFT_STRATEGIES_CODE, getIdentifyKeyFactorsAndDraftStrategiesLabel()));
@@ -41,18 +42,38 @@ public class OpenStandardsPlanActionsAndMonitoringQuestion extends DynamicChoice
 		processStep2a.addChild(new ChoiceItem(FINALIZE_STRATEGIC_PLAN_CODE, getFinalizeStrategicPlanLabel()));
 		processStep2a.addChild(new ChoiceItem(FINALIZE_MONITORING_PLAN_CODE, getFinalizeMonitoringPlanLabel()));
 		
-		ChoiceItemWithChildren processStep2bChoiceItem = new ChoiceItemWithChildren("ProcessStep2B", EAM.text("Menu|2. Plan Actions and Monitoring"), EAM.text(""), provider);
+		ChoiceItemWithChildren processStep2bChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_2B_CODE, getPlanActionsAndMonitoringHeaderLabel(), EAM.text(""), provider);
 		headerChoiceItem.addChild(processStep2bChoiceItem);
 		processStep2bChoiceItem.addChild(new ChoiceItem(DEFINE_AUDIENCES_AND_INFORMATION_NEEDS_CODE, getDefineAudiencesAndInformationNeedsLabel()));
 		processStep2bChoiceItem.addChild(new ChoiceItem(DEFINE_INDICATORS_CODE, getDefineIndicatorsLabel()));
 		
-		ChoiceItemWithChildren processStep2cChoiceItem = new ChoiceItemWithChildren("ProcessStep2C", EAM.text("ProcessStep|2C. Develop Operational Plan"), EAM.text(""), provider);
+		ChoiceItemWithChildren processStep2cChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_2C_CODE, getProcessStep2cLabel(), EAM.text(""), provider);
 		headerChoiceItem.addChild(processStep2cChoiceItem);
 		processStep2cChoiceItem.addChild(new ChoiceItem(ASSESS_HUMAN_FINANCIAL_AND_OTHER_RESOURCES_CODE, getAssessHumanFinacialAndOtherResourcesLabel()));
 		processStep2cChoiceItem.addChild(new ChoiceItem(ASSESS_RISKS_CODE, getAssessRisksLabel()));
 		processStep2cChoiceItem.addChild(new ChoiceItem(PLAN_PROJECT_LIFESPAN_AND_EXIT_STRATEGY_CODE, getPlanProjectLifespanAndExitStrategyLabel()));
 		
 		return headerChoiceItem;
+	}
+
+	public static String getPlanActionsAndMonitoringHeaderLabel()
+	{
+		return EAM.text("Menu|2. Plan Actions and Monitoring");
+	}
+	
+	public static String getProcessStep2aLabel()
+	{
+		return EAM.text("ProcessStep|2A. Develop Strategic Plan");
+	}
+	
+	public static String getProcessStep2bLabel()
+	{
+		return EAM.text("ProcessStep|2B. Develop Monitoring Plan");
+	}
+
+	public static String getProcessStep2cLabel()
+	{
+		return EAM.text("ProcessStep|2C. Develop Operational Plan");
 	}
 
 	public static String getDevelopGoalsForEachTargetLabel()
@@ -115,6 +136,10 @@ public class OpenStandardsPlanActionsAndMonitoringQuestion extends DynamicChoice
 		return EAM.text("Plan project lifespan and exit strategy");
 	}
 
+	public static final String PLAN_ACTIONS_AND_MONITORING_CODE = "PlanActionsAndMonitoring";
+	public static final String PROCESS_STEP_2A_CODE = "ProcessStep2A";
+	public static final String PROCESS_STEP_2B_CODE = "ProcessStep2B";
+	public static final String PROCESS_STEP_2C_CODE = "ProcessStep2C";
 	public static final String DEVELOP_GOALS_FOR_EACH_TARGET_CODE = "DevelopGoalsGorEachTarget";
 	public static final String IDENTIFY_KEY_FACTORS_AND_DRAFT_STRATEGIES_CODE = "IdentifyKeyFactorsAndDraftStrategies";
 	public static final String RANK_DRAFT_STRATEGIES_CODE = "RankDraftStrategies";
