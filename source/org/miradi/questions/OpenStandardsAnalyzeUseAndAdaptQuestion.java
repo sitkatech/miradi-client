@@ -70,7 +70,7 @@ public class OpenStandardsAnalyzeUseAndAdaptQuestion extends DynamicChoiceWithRo
 	}
 
 	public static final String ANALYZE_USE_AND_ADAPT_HEADER_CODE = "AnalyzeUseAndAdapt";
-	public static final String PROCESS_STEP_4A_CODE = "ProcessStep4";
+	public static final String PROCESS_STEP_4A_CODE = "ProcessStep4A";
 	public static final String PROCESS_STEP_4B_CODE = "ProcessStep4B";
 	public static final String PROCESS_STEP_4C_CODE = "ProcessStep4C";
 }
