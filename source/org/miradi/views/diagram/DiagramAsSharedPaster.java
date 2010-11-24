@@ -43,9 +43,9 @@ import org.miradi.objects.ViewData;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class DiagramAliasPaster extends DiagramPaster
+public class DiagramAsSharedPaster extends DiagramPaster
 {
-	public DiagramAliasPaster(DiagramPanel diagramPanelToUse, DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
+	public DiagramAsSharedPaster(DiagramPanel diagramPanelToUse, DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
 	{
 		super(diagramPanelToUse, modelToUse, transferableListToUse);
 	}

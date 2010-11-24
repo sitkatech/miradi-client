@@ -96,7 +96,7 @@ public class PasteDoer extends AbstractPasteDoer
 		if (isPastingInSameDiagramAsCopiedFrom(list))
 			return AS_COPY_BUTTON;
 		
-		DiagramAliasPaster aliasPaster = new DiagramAliasPaster(getDiagramPanel(), getDiagramModel(), list);
+		DiagramAsSharedPaster aliasPaster = new DiagramAsSharedPaster(getDiagramPanel(), getDiagramModel(), list);
 		if(!aliasPaster.canPaste())
 		{
 			String bodyText = EAM.text("<HTML>One or more of these factors cannot be pasted as shared into this diagram.<BR><BR>" +
@@ -137,7 +137,7 @@ public class PasteDoer extends AbstractPasteDoer
 	private DiagramPaster createDiagramPasterBaseOnUserChoice(TransferableMiradiList list, String usersChoice) throws Exception
 	{		
 		if (usersChoice.equals(AS_SHARED_BUTTON))
-			return new DiagramAliasPaster(getDiagramPanel(), getDiagramModel(), list);
+			return new DiagramAsSharedPaster(getDiagramPanel(), getDiagramModel(), list);
 		
 		return new DiagramCopyPaster(getDiagramPanel(), getDiagramModel(), list);
 	}

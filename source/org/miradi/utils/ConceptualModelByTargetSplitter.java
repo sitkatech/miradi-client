@@ -40,7 +40,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
-import org.miradi.views.diagram.DiagramAliasPaster;
+import org.miradi.views.diagram.DiagramAsSharedPaster;
 import org.miradi.views.diagram.doers.CreateMarginDoer;
 
 public class ConceptualModelByTargetSplitter
@@ -75,7 +75,7 @@ public class ConceptualModelByTargetSplitter
 		ConceptualModelDiagram conceptualModelDiagram = createConceptualModelPage(targetDiagramFactor.getWrappedFactor().toString());
 		DiagramModel toDiagramModel = createDiagramModel(conceptualModelDiagram);
 
-		DiagramAliasPaster paster = new DiagramAliasPaster(null, toDiagramModel, miradiList);
+		DiagramAsSharedPaster paster = new DiagramAsSharedPaster(null, toDiagramModel, miradiList);
 		paster.pasteFactors(PASTE_START_POINT);
 		reloadDiagramModelToIncludeNewlyPastedFactors(toDiagramModel, conceptualModelDiagram);
 		paster.pasteDiagramLinks();
