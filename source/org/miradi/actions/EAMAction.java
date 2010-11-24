@@ -40,11 +40,6 @@ public abstract class EAMAction extends AbstractAction
 	public abstract void doAction() throws Exception;
 	public abstract Doer getDoer();
 	
-	public boolean isParentMenuAction()
-	{
-		return true;
-	}
-	
 	public boolean isObjectAction()
 	{
 		return false;
