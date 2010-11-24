@@ -480,7 +480,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 
 	private void pasteShared(DiagramModel diagramModelToPasteIntoToUse, TransferableMiradiList transferableList) throws Exception
 	{
-		DiagramPaster sharedPaster = new DiagramAliasPaster(null, diagramModelToPasteIntoToUse, transferableList);
+		DiagramPaster sharedPaster = new DiagramAsSharedPaster(null, diagramModelToPasteIntoToUse, transferableList);
 		sharedPaster.pasteFactorsAndLinks(new Point(0, 0));
 	}
 	
