@@ -29,7 +29,7 @@ public class ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4a extends	ParentMe
 {
 	public ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4a(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, OpenStandardsAnalyzeUseAndAdaptQuestion.PROCESS_STEP_4A_CODE);
+		super(mainWindowToUse, OpenStandardsAnalyzeUseAndAdaptQuestion.getProcessStep4a());
 	}
 
 	@Override
@@ -41,6 +41,6 @@ public class ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4a extends	ParentMe
 	@Override
 	public String getCode()
 	{
-		return OpenStandardsAnalyzeUseAndAdaptQuestion.getProcessStep4a();
+		return OpenStandardsAnalyzeUseAndAdaptQuestion.PROCESS_STEP_4A_CODE;
 	}
 }
