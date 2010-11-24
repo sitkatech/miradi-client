@@ -96,8 +96,8 @@ public class PasteDoer extends AbstractPasteDoer
 		if (isPastingInSameDiagramAsCopiedFrom(list))
 			return AS_COPY_BUTTON;
 		
-		DiagramAsSharedPaster aliasPaster = new DiagramAsSharedPaster(getDiagramPanel(), getDiagramModel(), list);
-		if(!aliasPaster.canPaste())
+		DiagramAsSharedPaster asSharedPaster = new DiagramAsSharedPaster(getDiagramPanel(), getDiagramModel(), list);
+		if(!asSharedPaster.canPaste())
 		{
 			String bodyText = EAM.text("<HTML>One or more of these factors cannot be pasted as shared into this diagram.<BR><BR>" +
 								  "Contributing Factors and Direct Threats cannot be pasted as shared into a Results Chain.<BR>" +
