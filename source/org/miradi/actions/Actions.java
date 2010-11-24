@@ -391,6 +391,27 @@ public class Actions
 		registerAction(new ActionJumpImplementStrategicAndMonitoringPlans(mainWindow));
 		registerAction(new ActionJumpPlanningWizardImplementPlans(mainWindow));
 		
+		registerAction(new ActionOpenStandardsConceptualizeParentMenu(mainWindow));
+		registerAction(new ActionOpenStandardsConceptualizeProcessStep1a(mainWindow));
+		registerAction(new ActionOpenStandardsConceptualizeProcessStep1b(mainWindow));
+		registerAction(new ActionOpenStandardsConceptualizeProcessStep1c(mainWindow));
+		registerAction(new ActionOpenStandardsConceptualizeProcessStep1d(mainWindow));
+		
+		registerAction(new ActionOpenStandardsPlanActionsAndMonitoringParentMenu(mainWindow));
+		registerAction(new ActionOpenStandardsPlanActionsAndMonitoringProcessStep2a(mainWindow));
+		registerAction(new ActionOpenStandardsPlanActionsAndMonitoringProcessStep2b(mainWindow));
+		registerAction(new ActionOpenStandardsPlanActionsAndMonitoringProcessStep2c(mainWindow));
+		
+		registerAction(new ActionOpenStandardsImplementActionsAndMonitoringParentMenu(mainWindow));
+		registerAction(new ActionOpenStandardsImplementActionsAndMonitoringProcessStep3a(mainWindow));
+		registerAction(new ActionOpenStandardsImplementActionsAndMonitoringProcessStep3b(mainWindow));
+		registerAction(new ActionOpenStandardsImplementActionsAndMonitoringProcessStep3c(mainWindow));
+		
+		registerAction(new ActionOpenStandardsAnalyzeUseAndAdaptParentMenu(mainWindow));
+		registerAction(new ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4a(mainWindow));
+		registerAction(new ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4b(mainWindow));
+		registerAction(new ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4c(mainWindow));
+		
 		registerAction(new ActionJumpScheduleOverviewStep(mainWindow));
 //		registerAction(new ActionJumpFinancialOverviewStep(mainWindow));
 		registerAction(new ActionJumpBudgetFutureDemo(mainWindow));
