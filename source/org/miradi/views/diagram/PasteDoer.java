@@ -110,7 +110,7 @@ public class PasteDoer extends AbstractPasteDoer
 			return buttons[result];
 		}
 		
-		String[] buttons = {AS_ALIAS_BUTTON, AS_COPY_BUTTON, CANCEL_BUTTON};
+		String[] buttons = {AS_SHARED_BUTTON, AS_COPY_BUTTON, CANCEL_BUTTON};
 		String title = EAM.text("Paste As...");
 		String[] body = {EAM.text("Select \"Shared\" to show the original factors again in this diagram. " +
 				"Edits to the pasted, shared factors will also affect the originals. " +
@@ -136,7 +136,7 @@ public class PasteDoer extends AbstractPasteDoer
 	
 	private DiagramPaster createDiagramPasterBaseOnUserChoice(TransferableMiradiList list, String usersChoice) throws Exception
 	{		
-		if (usersChoice.equals(AS_ALIAS_BUTTON))
+		if (usersChoice.equals(AS_SHARED_BUTTON))
 			return new DiagramAliasPaster(getDiagramPanel(), getDiagramModel(), list);
 		
 		return new DiagramCopyPaster(getDiagramPanel(), getDiagramModel(), list);
@@ -197,6 +197,6 @@ public class PasteDoer extends AbstractPasteDoer
 	}
 
 	private final String AS_COPY_BUTTON = EAM.text("Button|As Copy");
-	private final String AS_ALIAS_BUTTON = EAM.text("Button|Shared");
+	private final String AS_SHARED_BUTTON = EAM.text("Button|Shared");
 	private final static String messageFileName = "NothingPastedMessage.html";
 }
