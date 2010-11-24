@@ -42,7 +42,6 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceItemWithChildren;
 import org.miradi.questions.DynamicChoiceWithRootChoiceItem;
 import org.miradi.questions.OpenStandardsAnalyzeUseAndAdaptQuestion;
-import org.miradi.questions.OpenStandardsCaptureAndShareLearningQuestion;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
 import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
@@ -508,7 +507,7 @@ public class MainMenuBar extends JMenuBar
 			menu.add(createQuestionBasedMenu(actions, new OpenStandardsPlanActionsAndMonitoringQuestion()));
 			menu.add(createQuestionBasedMenu(actions, new OpenStandardsImplementActionsAndMonitoringQuestion()));
 			menu.add(createQuestionBasedMenu(actions, new OpenStandardsAnalyzeUseAndAdaptQuestion()));
-			menu.add(createQuestionBasedMenu(actions, new OpenStandardsCaptureAndShareLearningQuestion()));
+			//menu.add(createQuestionBasedMenu(actions, new OpenStandardsCaptureAndShareLearningQuestion()));
 			menu.add(new JMenuItem(actions.get(ActionJumpCloseTheLoop.class)));
 
 			if (Miradi.isDeveloperMode())
@@ -528,40 +527,47 @@ public class MainMenuBar extends JMenuBar
 	public JMenu createQuestionBasedMenu(Actions actions, DynamicChoiceWithRootChoiceItem question) throws Exception
 	{
 		ChoiceItem headerChoiceItem  = question.getHeaderChoiceItem();
+		OpenStandardsCodeToMenuItemDetailsProviderMap map = new OpenStandardsCodeToMenuItemDetailsProviderMap();
+		Class actionClass = map.get(headerChoiceItem.getCode());
+		
+		AbstractMenuAction action = (AbstractMenuAction) actions.get(actionClass);
 		JMenu headerMenu = new JMenu(headerChoiceItem.getLabel());
-
-		addSubMenus(actions, headerMenu, headerChoiceItem.getChildren());
+		headerMenu.setMnemonic(action.getMnemonic());
+		addSubMenus(actions, map, headerMenu, headerChoiceItem.getChildren());
 		
 		return headerMenu;
 	}
 	
-	private void addSubMenus(Actions actions, JMenu headerMenu, Vector<ChoiceItem> children)
+	private void addSubMenus(Actions actions, OpenStandardsCodeToMenuItemDetailsProviderMap map, JMenu headerMenu, Vector<ChoiceItem> children)
 	{
 		for(ChoiceItem subHeaderChoiceItem : children)
 		{
 			JMenu subHeaderMenu = new JMenu(subHeaderChoiceItem.getLabel());
+			
+			Class actionClass = map.get(subHeaderChoiceItem.getCode());
+			AbstractMenuAction action = (AbstractMenuAction) actions.get(actionClass);
+			subHeaderMenu.setMnemonic(action.getMnemonic());
 			headerMenu.add(subHeaderMenu);
 			ChoiceItemWithChildren leafChildren = (ChoiceItemWithChildren) subHeaderChoiceItem;
-			addLeafMenus(actions, subHeaderMenu, leafChildren.getChildren());
+			addLeafMenus(actions, map, subHeaderMenu, leafChildren.getChildren());
 		}
 	}
 
-	private void addLeafMenus(Actions actions, JMenu subHeaderMenu, Vector<ChoiceItem> leafChildren)
+	private void addLeafMenus(Actions actions, OpenStandardsCodeToMenuItemDetailsProviderMap map, JMenu subHeaderMenu, Vector<ChoiceItem> leafChildren)
 	{
 		for(ChoiceItem leafChoiceItem : leafChildren)
 		{
-			OpenStandardsCodeToMenuItemDetailsProviderMap map = new OpenStandardsCodeToMenuItemDetailsProviderMap();
 			Class actionClass = map.get(leafChoiceItem.getCode());
-			if (actionClass != null)
+			if (actionClass == null)
+			{
+				JMenuItem disabledMenuItem = new JMenuItem(leafChoiceItem.getLabel());
+				disabledMenuItem.setEnabled(false);
+				subHeaderMenu.add(disabledMenuItem);
+			}
+			else
 			{
 				AbstractMenuAction action = (AbstractMenuAction) actions.get(actionClass);
 				subHeaderMenu.add(new EAMenuItem(action, action.getMnemonic()));
-			}
-			else 
-			{
-				JMenuItem menuItem = new JMenuItem(leafChoiceItem.getLabel());
-				menuItem.setEnabled(false);
-				subHeaderMenu.add(menuItem);
 			}
 		}
 	}

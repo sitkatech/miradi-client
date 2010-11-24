@@ -29,15 +29,14 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 	protected ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
 		StaticLongDescriptionProvider provider = new StaticLongDescriptionProvider();
-		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("Conceptualize", EAM.text("Menu|1. Conceptualize Project"), provider);
+		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren(CONCEPTUALIZE_CODE, getConceptualizeHeaderLabel(), provider);
 		
-		ChoiceItemWithChildren processStep1A = new ChoiceItemWithChildren("ProcessStep1A", EAM.text("ProcessStep|1A. Define Initial Project Team"), EAM.text(""), provider);
-		headerChoiceItem.addChild(processStep1A);
-		
+		ChoiceItemWithChildren processStep1A = new ChoiceItemWithChildren(PROCESS_STEP_1A_CODE, getProcessStep1aLabel(), EAM.text(""), provider);
+		headerChoiceItem.addChild(processStep1A);		
 		processStep1A.addChild(new ChoiceItem(SELECT_INTIAL_TEAM_MEMBERS_CODE, getSelectIntialTeamMembersLabel()));
 		processStep1A.addChild(new ChoiceItem(AGREE_ON_ROLES_AND_RESPONSIBILITIES_CODE, getAgreeOnRolesAndResponsibilitiesLabel()));
 		
-		ChoiceItemWithChildren processStep1BChoiceItem = new ChoiceItemWithChildren("ProcessStep1B", EAM.text("ProcessStep|1B. Define Scope, Vision, and Targets"), EAM.text(""), provider);
+		ChoiceItemWithChildren processStep1BChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_1B_CODE, getProcessStep1bLabel(), EAM.text(""), provider);
 		headerChoiceItem.addChild(processStep1BChoiceItem);
 		processStep1BChoiceItem.addChild(new ChoiceItem(DEFINE_PROJECT_SCOPE_CODE, getDefineProjectScopeLabel()));
 		processStep1BChoiceItem.addChild(new ChoiceItem(DEVELOP_MAP_OF_PROJECT_AREA_CODE, getDevelopMapOfProjectAreaLabel()));
@@ -45,12 +44,12 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 		processStep1BChoiceItem.addChild(new ChoiceItem(ADD_HUMAN_WELFARE_TARGETS_IF_DESIRED_CODE, getAddHumanWelfareTargetsIfDesiredLabel()));
 		processStep1BChoiceItem.addChild(new ChoiceItem(DESCRIBE_STATUS_OF_TARGETS_CODE, getDescribeStatusOfTargetsLabel()));
 		
-		ChoiceItemWithChildren processStep1CChoiceItem = new ChoiceItemWithChildren("ProcessStep1C", EAM.text("ProcessStep|1C. Identify Critical Threats"), EAM.text(""), provider);
+		ChoiceItemWithChildren processStep1CChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_1C_CODE, getProcessStep1cLabel(), EAM.text(""), provider);
 		headerChoiceItem.addChild(processStep1CChoiceItem);
 		processStep1CChoiceItem.addChild(new ChoiceItem(IDENTIFY_DIRECT_THREATS_CODE, getIdentifyDirectThreatsLabel()));
 		processStep1CChoiceItem.addChild(new ChoiceItem(RANK_DIRECT_THREATS_CODE, getRankDirectThreatsLabel()));
 		
-		ChoiceItemWithChildren processStep1DChoiceItem = new ChoiceItemWithChildren("ProcessStep1D", EAM.text("ProcessStep|1D. Complete Situation Analysis"), EAM.text(""), provider);
+		ChoiceItemWithChildren processStep1DChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_1D_CODE, getProcessStep1dLabel(), EAM.text(""), provider);
 		headerChoiceItem.addChild(processStep1DChoiceItem);
 		processStep1DChoiceItem.addChild(new ChoiceItem(IDENTIFY_INDIRECT_THREATS_AND_OPPORTUNITIES_CODE, getIdentifyIndirectThreatsAndOpportunitiesLabel()));
 		processStep1DChoiceItem.addChild(new ChoiceItem(ASSESS_STAKEHOLDERS_CODE, getAssessStakeholdersLabel()));
@@ -58,6 +57,31 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 		processStep1DChoiceItem.addChild(new ChoiceItem(GROUND_THRUTH_AND_REVISE_MODEL_CODE, getGroundTruthAndReviseModelLabel()));
 		
 		return headerChoiceItem;
+	}
+
+	public static String getConceptualizeHeaderLabel()
+	{
+		return EAM.text("Menu|1. Conceptualize Project");
+	}
+	
+	public static String getProcessStep1aLabel()
+	{
+		return EAM.text("ProcessStep|1A. Define Initial Project Team");
+	}
+	
+	public static String getProcessStep1bLabel()
+	{
+		return EAM.text("ProcessStep|1B. Define Scope, Vision, and Targets");
+	}
+	
+	public static String getProcessStep1cLabel()
+	{
+		return EAM.text("ProcessStep|1C. Identify Critical Threats");
+	}
+
+	public static String getProcessStep1dLabel()
+	{
+		return EAM.text("ProcessStep|1D. Complete Situation Analysis");
 	}
 	
 	public static String getSelectIntialTeamMembersLabel()
@@ -124,6 +148,12 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 	{
 		return EAM.text("Ground-truth and revise model");
 	}
+
+	public static final String CONCEPTUALIZE_CODE = "Conceptualize";
+	public static final String PROCESS_STEP_1A_CODE = "ProcessStep1A";
+	public static final String PROCESS_STEP_1B_CODE = "ProcessStep1B";
+	public static final String PROCESS_STEP_1C_CODE = "ProcessStep1C";
+	public static final String PROCESS_STEP_1D_CODE = "ProcessStep1D";
 
 	public static final String SELECT_INTIAL_TEAM_MEMBERS_CODE = "SelectInitialTeamMembers";
 	public static final String AGREE_ON_ROLES_AND_RESPONSIBILITIES_CODE = "AgreeOnRolesAndResponsibilities";
