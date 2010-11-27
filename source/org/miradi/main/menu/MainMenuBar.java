@@ -528,8 +528,9 @@ public class MainMenuBar extends JMenuBar
 	public JMenu createQuestionBasedMenu(Actions actions, DynamicChoiceWithRootChoiceItem question) throws Exception
 	{
 		ChoiceItem headerChoiceItem  = question.getHeaderChoiceItem();
+		AbstractMenuAction action = actions.getMenuAction(headerChoiceItem.getCode());
 		JMenu headerMenu = new JMenu(headerChoiceItem.getLabel());
-
+		headerMenu.setMnemonic(action.getMnemonic());
 		addSubMenus(actions, headerMenu, headerChoiceItem.getChildren());
 		
 		return headerMenu;
@@ -540,6 +541,9 @@ public class MainMenuBar extends JMenuBar
 		for(ChoiceItem subHeaderChoiceItem : children)
 		{
 			JMenu subHeaderMenu = new JMenu(subHeaderChoiceItem.getLabel());
+			String code = subHeaderChoiceItem.getCode();
+			AbstractMenuAction action = actions.getMenuAction(code);
+			subHeaderMenu.setMnemonic(action.getMnemonic());
 			headerMenu.add(subHeaderMenu);
 			ChoiceItemWithChildren leafChildren = (ChoiceItemWithChildren) subHeaderChoiceItem;
 			addLeafMenus(actions, subHeaderMenu, leafChildren.getChildren());
@@ -550,18 +554,16 @@ public class MainMenuBar extends JMenuBar
 	{
 		for(ChoiceItem leafChoiceItem : leafChildren)
 		{
-			OpenStandardsCodeToMenuItemDetailsProviderMap map = new OpenStandardsCodeToMenuItemDetailsProviderMap();
-			Class actionClass = map.get(leafChoiceItem.getCode());
-			if (actionClass != null)
+			AbstractMenuAction action = actions.getMenuAction(leafChoiceItem.getCode());
+			if (action == null)
 			{
-				AbstractMenuAction action = (AbstractMenuAction) actions.get(actionClass);
-				subHeaderMenu.add(new EAMenuItem(action, action.getMnemonic()));
+				JMenuItem disabledMenuItem = new JMenuItem(leafChoiceItem.getLabel());
+				disabledMenuItem.setEnabled(false);
+				subHeaderMenu.add(disabledMenuItem);
 			}
-			else 
+			else
 			{
-				JMenuItem menuItem = new JMenuItem(leafChoiceItem.getLabel());
-				menuItem.setEnabled(false);
-				subHeaderMenu.add(menuItem);
+				subHeaderMenu.add(new EAMenuItem(action, action.getMnemonic()));
 			}
 		}
 	}

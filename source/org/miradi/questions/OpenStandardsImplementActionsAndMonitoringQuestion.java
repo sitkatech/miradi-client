@@ -29,20 +29,19 @@ public class OpenStandardsImplementActionsAndMonitoringQuestion extends DynamicC
 	protected ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
 		StaticLongDescriptionProvider provider = new StaticLongDescriptionProvider();
-		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("ImplementActionsAndMonitoring", EAM.text("Menu|3. Implement Actions &  Monitoring"), provider);
-		
-		ChoiceItemWithChildren processStep3a = new ChoiceItemWithChildren("ProcessStep3A", EAM.text("ProcessStep|3A. Develop Short-Term Work Plan"), EAM.text(""), provider);
+		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren(IMPLEMENT_ACTIONS_AND_MONITORING_HEADER_CODE, getHeaderLabel(), provider);
+		ChoiceItemWithChildren processStep3a = new ChoiceItemWithChildren(PROCESS_STEP_3A_CODE, getProcessStep3a(), EAM.text(""), provider);
 		headerChoiceItem.addChild(processStep3a);
 		processStep3a.addChild(new ChoiceItem(DETAIL_ACTIVITIES_TASKS_AND_RESPONSIBILITIES_CODE, getDetailActivitiesTasksAndResponsibilitiesLabel()));
 		processStep3a.addChild(new ChoiceItem(DETAIL_METHODS_TASKS_AND_RESPONSIBILITIES_CODE, getDetailMethodsTasksAndResponsibilitiesLabel()));
 		processStep3a.addChild(new ChoiceItem(DEVELOP_PROJECT_TIMELINE_OR_CALENDAR_CODE, getDevelopProjectTimelineOrCalendarLabel()));
 		
-		ChoiceItemWithChildren processStep3bChoiceItem = new ChoiceItemWithChildren("ProcessStep3B", EAM.text("ProcessStep|3B. Develop and Refine Project Budget"), EAM.text(""), provider);
+		ChoiceItemWithChildren processStep3bChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_3B_CODE, getProcessStep3b(), EAM.text(""), provider);
 		headerChoiceItem.addChild(processStep3bChoiceItem);
 		processStep3bChoiceItem.addChild(new ChoiceItem(ESTIMATE_COSTS_FOR_ACTIVITIES_AND_MONITORING_CODE, getEstimateCostsForActivitiesAndMonitoringLabel()));
 		processStep3bChoiceItem.addChild(new ChoiceItem(DEVELOP_AND_SUBMIT_FUNDING_PROPOSALS_CODE, getDevelopAndSubmitFundingProposalsLabel()));
 		
-		ChoiceItemWithChildren processStep3cChoiceItem = new ChoiceItemWithChildren("ProcessStep3C", EAM.text("ProcessStep|3C. Implement Plans"), EAM.text(""), provider);
+		ChoiceItemWithChildren processStep3cChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_3C_CODE, getProcessStep3c(), EAM.text(""), provider);
 		headerChoiceItem.addChild(processStep3cChoiceItem);
 		processStep3cChoiceItem.addChild(new ChoiceItem(IMPLEMENT_STRATEGIC_AND_MONITORING_PLANS, getImplementStrategicAndMonitoringPlansLabel()));
 		processStep3cChoiceItem.addChild(new ChoiceItem(IMPLEMENT_WORK_PLAN_CODE, getImplementWorkPlanLabel()));
@@ -50,6 +49,26 @@ public class OpenStandardsImplementActionsAndMonitoringQuestion extends DynamicC
 		return headerChoiceItem;
 	}
 	
+	public static String getHeaderLabel()
+	{
+		return EAM.text("Menu|3. Implement Actions &  Monitoring");
+	}
+	
+	public static String getProcessStep3a()
+	{
+		return EAM.text("ProcessStep|3A. Develop Short-Term Work Plan");
+	}
+	
+	public static String getProcessStep3b()
+	{
+		return EAM.text("ProcessStep|3B. Develop and Refine Project Budget");
+	}
+
+	public static String getProcessStep3c()
+	{
+		return EAM.text("ProcessStep|3C. Implement Plans");
+	}
+
 	public static String getDetailActivitiesTasksAndResponsibilitiesLabel()
 	{
 		return EAM.text("Detail activities, tasks, and responsibilities");
@@ -90,6 +109,10 @@ public class OpenStandardsImplementActionsAndMonitoringQuestion extends DynamicC
 		return EAM.text("Implement work plan");
 	}
 
+	public static final String IMPLEMENT_ACTIONS_AND_MONITORING_HEADER_CODE = "ImplementActionsAndMonitoring";
+	public static final String PROCESS_STEP_3A_CODE = "ProcessStep3A";
+	public static final String PROCESS_STEP_3B_CODE = "ProcessStep3B";
+	public static final String PROCESS_STEP_3C_CODE = "ProcessStep3C";
 	public static final String DETAIL_ACTIVITIES_TASKS_AND_RESPONSIBILITIES_CODE = "DetailActivitiesTasksAndResponsibilities";
 	public static final String DETAIL_METHODS_TASKS_AND_RESPONSIBILITIES_CODE = "DetailMethodsTasksAndResponsibilities";
 	public static final String DEVELOP_PROJECT_TIMELINE_OR_CALENDAR_CODE = "DevelopProjectTimelineOrCalendar";
