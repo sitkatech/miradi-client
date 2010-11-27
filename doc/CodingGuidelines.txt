@@ -92,4 +92,3 @@ On the other hand, data should be optimized for both simplicity
 and speed. It is easy to change code, but difficult to change 
 data, so each new data structure should be considered from 
 a speed standpoint before being locked in.
-
