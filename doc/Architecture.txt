@@ -165,4 +165,3 @@ Internally, text falls into one of several categories:
 A build script uses standard tools to extract the constant 
 strings. It then runs custom tools that combine the other text 
 into the "po" file.
-
