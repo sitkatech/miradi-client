@@ -536,6 +536,22 @@ abstract public class DiagramObject extends BaseObject
 		return false;
 	}
 	
+	public boolean canContainFactorType(int objectType)
+	{
+		if(Strategy.is(objectType))
+			return true;
+		if(Target.is(objectType))
+			return true;
+		if(HumanWelfareTarget.is(objectType))
+			return true;
+		if(TextBox.is(objectType))
+			return true;
+		if(GroupBox.is(objectType))
+			return true;
+		
+		return false;
+	}
+
 	@Override
 	public void clear()
 	{
@@ -581,4 +597,5 @@ abstract public class DiagramObject extends BaseObject
 	private NumberData zoomScale;
 	
 	private PseudoStringData combinedLabel;
+
 }

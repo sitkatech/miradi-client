@@ -33,12 +33,15 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
-import org.miradi.objects.GroupBox;
-import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.HumanWelfareTarget;
+import org.miradi.objects.IntermediateResult;
+import org.miradi.objects.Strategy;
+import org.miradi.objects.Stress;
+import org.miradi.objects.Target;
+import org.miradi.objects.Task;
+import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -157,32 +160,43 @@ public class DiagramAsSharedPaster extends DiagramPaster
 	}
 	
 	@Override
-	protected boolean canPasteTypeInDiagram(int type)
-	{
-		if (isPastingInSameDiagramType())
-			return true;
-		
-		boolean isResultsChain = ResultsChainDiagram.is(getDiagramObject().getType());
-		if (isResultsChain && Cause.is(type))
-			return false;
-		
-		boolean isConceptualModel = ConceptualModelDiagram.is(getDiagramObject().getType());
-		if (isConceptualModel && containsType(getResultsChainPastableTypes(), type))
-			return false;
-		
-		return true;
-	}
-	
-	@Override
 	protected boolean shouldCreateObject(ORef ref, EnhancedJsonObject json)
 	{
-		if (shouldCreateCopy(ref, json))
+		if(!isTypeThatCanBeShared(ref.getObjectType()))
+			return true;
+		
+		if(!getDiagramObject().canContainFactorType(ref.getObjectType()))
 			return true;
 		
 		BaseObject foundObject = getProject().findObject(ref);
-		return foundObject == null;
+		if(foundObject == null)
+			return true;
+		
+		return false;
 	}
 	
+	private boolean isTypeThatCanBeShared(int objectType)
+	{
+		if(Strategy.is(objectType))
+			return true;
+		if(Target.is(objectType))
+			return true;
+		if(HumanWelfareTarget.is(objectType))
+			return true;
+		if(Cause.is(objectType))
+			return true;
+		if(IntermediateResult.is(objectType))
+			return true;
+		if(ThreatReductionResult.is(objectType))
+			return true;
+		if(Stress.is(objectType))
+			return true;
+		if(Task.is(objectType))
+			return true;
+		
+		return false;
+	}
+
 	@Override
 	protected FactorLink createFactorLink(EnhancedJsonObject json) throws Exception
 	{
@@ -194,20 +208,5 @@ public class DiagramAsSharedPaster extends DiagramPaster
 			return existingLink;
 		
 		return super.createFactorLink(json);
-	}
-	
-	private boolean shouldCreateCopy(ORef ref, EnhancedJsonObject json)
-	{
-		if(GroupBox.is(ref))
-			return true;
-		
-		if(DiagramFactor.is(ref))
-		{
-			ORef wrappedRef = json.optRef(DiagramFactor.TAG_WRAPPED_REF);
-			if(GroupBox.is(wrappedRef))
-				return true;
-		}
-		
-		return false;
 	}
 }
