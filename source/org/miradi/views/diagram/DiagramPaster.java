@@ -919,23 +919,6 @@ abstract public class DiagramPaster
 		return currentModel.getDiagramObject();
 	}
 	
-	public boolean canPaste() throws Exception
-	{
-		for (int i = 0; i < factorDeepCopies.size(); i++) 
-		{
-			String jsonAsString = factorDeepCopies.get(i);
-			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-			int type = getTypeFromJson(json);
-			if (!canPasteTypeInDiagram(type))
-			{
-				EAM.logDebug("Cannot paste type " + type);
-				return false;
-			}
-		}
-		
-		return true;
-	}
-
 	protected int getTypeFromJson(EnhancedJsonObject json)
 	{
 		return json.getInt(FAKE_TAG_TYPE);
@@ -1006,8 +989,6 @@ abstract public class DiagramPaster
 	abstract public void pasteFactorsAndLinks(Point startPoint) throws Exception;
 	
 	abstract public ORef getCorrospondingNewRef(ORef oldWrappedRef) throws Exception;
-	
-	abstract protected boolean canPasteTypeInDiagram(int type);
 	
 	abstract protected boolean shouldCreateObject(ORef ref, EnhancedJsonObject json);
 	

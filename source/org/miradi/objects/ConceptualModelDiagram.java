@@ -46,6 +46,17 @@ public class ConceptualModelDiagram extends DiagramObject
 	}
 
 	@Override
+	public boolean canContainFactorType(int objectType)
+	{
+		if(Cause.is(objectType))
+			return true;
+		if(Stress.is(objectType))
+			return true;
+		
+		return super.canContainFactorType(objectType);
+	}
+
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;

@@ -81,5 +81,18 @@ public class ResultsChainDiagram extends DiagramObject
 		return find(project.getObjectManager(), refToFind);
 	}
 	
+	@Override
+	public boolean canContainFactorType(int objectType)
+	{
+		if(IntermediateResult.is(objectType))
+			return true;
+		if(ThreatReductionResult.is(objectType))
+			return true;
+		if(Task.is(objectType))
+			return true;
+		
+		return super.canContainFactorType(objectType);
+	}
+	
 	public static final String OBJECT_NAME = "ResultsChainDiagram";
 }
