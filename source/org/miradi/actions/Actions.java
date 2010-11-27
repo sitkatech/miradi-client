@@ -127,6 +127,7 @@ public class Actions
 	public Actions(MainWindow mainWindow)
 	{
 		actions = new HashMap<Class, EAMAction>();
+		codeToMenuActionMap = new HashMap<String, AbstractMenuAction>();
 		
 		registerAction(new ActionAbout(mainWindow));
 		registerAction(new ActionAboutBenetech(mainWindow));
@@ -391,6 +392,32 @@ public class Actions
 		registerAction(new ActionJumpImplementStrategicAndMonitoringPlans(mainWindow));
 		registerAction(new ActionJumpPlanningWizardImplementPlans(mainWindow));
 		
+		registerMenuAction(new ActionOpenStandardsConceptualizeParentMenu(mainWindow));
+		registerMenuAction(new ActionOpenStandardsConceptualizeProcessStep1a(mainWindow));
+		registerMenuAction(new ActionOpenStandardsConceptualizeProcessStep1b(mainWindow));
+		registerMenuAction(new ActionOpenStandardsConceptualizeProcessStep1c(mainWindow));
+		registerMenuAction(new ActionOpenStandardsConceptualizeProcessStep1d(mainWindow));
+		
+		registerMenuAction(new ActionOpenStandardsPlanActionsAndMonitoringParentMenu(mainWindow));
+		registerMenuAction(new ActionOpenStandardsPlanActionsAndMonitoringProcessStep2a(mainWindow));
+		registerMenuAction(new ActionOpenStandardsPlanActionsAndMonitoringProcessStep2b(mainWindow));
+		registerMenuAction(new ActionOpenStandardsPlanActionsAndMonitoringProcessStep2c(mainWindow));
+		
+		registerMenuAction(new ActionOpenStandardsImplementActionsAndMonitoringParentMenu(mainWindow));
+		registerMenuAction(new ActionOpenStandardsImplementActionsAndMonitoringProcessStep3a(mainWindow));
+		registerMenuAction(new ActionOpenStandardsImplementActionsAndMonitoringProcessStep3b(mainWindow));
+		registerMenuAction(new ActionOpenStandardsImplementActionsAndMonitoringProcessStep3c(mainWindow));
+		
+		registerMenuAction(new ActionOpenStandardsAnalyzeUseAndAdaptParentMenu(mainWindow));
+		registerMenuAction(new ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4a(mainWindow));
+		registerMenuAction(new ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4b(mainWindow));
+		registerMenuAction(new ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4c(mainWindow));
+		
+		registerMenuAction(new ActionOpenStandardsCaptureAndShareLearningParentMenu(mainWindow));
+		registerMenuAction(new ActionOpenStandardsCaptureAndShareLearningProcessStep5a(mainWindow));
+		registerMenuAction(new ActionOpenStandardsCaptureAndShareLearningProcessStep5b(mainWindow));
+		registerMenuAction(new ActionOpenStandardsCaptureAndShareLearningProcessStep5c(mainWindow));
+		
 		registerAction(new ActionJumpScheduleOverviewStep(mainWindow));
 //		registerAction(new ActionJumpFinancialOverviewStep(mainWindow));
 		registerAction(new ActionJumpBudgetFutureDemo(mainWindow));
@@ -533,6 +560,18 @@ public class Actions
 	{
 		actions.put(action.getClass(), action);
 	}
+	
+	private void registerMenuAction(AbstractMenuAction menuAction)
+	{
+		codeToMenuActionMap.put(menuAction.getCode(), menuAction);
+		registerAction(menuAction);
+	}
+	
+	public AbstractMenuAction getMenuAction(String code)
+	{
+		return codeToMenuActionMap.get(code);
+	}
 
-	Map<Class, EAMAction> actions;
+	private Map<Class, EAMAction> actions;
+	private HashMap<String, AbstractMenuAction> codeToMenuActionMap;
 }

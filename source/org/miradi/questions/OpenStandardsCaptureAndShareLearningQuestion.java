@@ -29,13 +29,13 @@ public class OpenStandardsCaptureAndShareLearningQuestion extends DynamicChoiceW
 	protected ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
 		StaticLongDescriptionProvider provider = new StaticLongDescriptionProvider();
-		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren("CaptureAndShareLearning", EAM.text("Menu|5. Capture and Share Learning"), provider);
+		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren(HEADER_CODE, getHeaderLabel(), provider);
 		
-		ChoiceItemWithChildren processStep5a = new ChoiceItemWithChildren("ProcessStep5A", EAM.text("ProcessStep|5A. Document Learning"), EAM.text(""), provider);
+		ChoiceItemWithChildren processStep5a = new ChoiceItemWithChildren(PROCESS_STEP_5A_CODE, EAM.text(getProcessStep5aLabel()), EAM.text(""), provider);
 		headerChoiceItem.addChild(processStep5a);
 		processStep5a.addChild(new ChoiceItem("DocumentKeyResultsAndLessons", EAM.text("Document key results and lessons")));
 		
-		ChoiceItemWithChildren processStep5bChoiceItem = new ChoiceItemWithChildren("ProcessStep5B", EAM.text("ProcessStep|5B. Share Learning"), EAM.text(""), provider);
+		ChoiceItemWithChildren processStep5bChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_5B_CODE, getProcessStep5bLabel(), EAM.text(""), provider);
 		headerChoiceItem.addChild(processStep5bChoiceItem);
 		processStep5bChoiceItem.addChild(new ChoiceItem("IdentifyKeyAudiences", EAM.text("Identify key audiences")));
 		processStep5bChoiceItem.addChild(new ChoiceItem("DevelopCommunicationsStrategy", EAM.text("Develop communications strategy")));
@@ -43,7 +43,7 @@ public class OpenStandardsCaptureAndShareLearningQuestion extends DynamicChoiceW
 		processStep5bChoiceItem.addChild(new ChoiceItem("DevelopAndShareCommunicationProducts", EAM.text("Develop and share communication products")));
 		processStep5bChoiceItem.addChild(new ChoiceItem("UseOthersCommunicationProducts", EAM.text("Use other's communication products")));
 		
-		ChoiceItemWithChildren processStep5cChoiceItem = new ChoiceItemWithChildren("ProcessStep5C", EAM.text("ProcessStep|5C. Create a Learning Environment"), EAM.text(""), provider);
+		ChoiceItemWithChildren processStep5cChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_5C_CODE, getProcessStep5cLabel(), EAM.text(""), provider);
 		headerChoiceItem.addChild(processStep5cChoiceItem);
 		processStep5cChoiceItem.addChild(new ChoiceItem("ShareFeedbackFormallyOrInformally", EAM.text("Share feedback formally or informally")));
 		processStep5cChoiceItem.addChild(new ChoiceItem("ConductEvaluationsAndOrAuditsAtAppropriateTimesDuringTheProjectCycle", EAM.text("Conduct evaluations and/or audits at appropriate times during the project cycle")));
@@ -53,4 +53,29 @@ public class OpenStandardsCaptureAndShareLearningQuestion extends DynamicChoiceW
 
 		return headerChoiceItem;
 	}
+
+	public static String getHeaderLabel()
+	{
+		return EAM.text("Menu|5. Capture and Share Learning");
+	}
+
+	public static String getProcessStep5aLabel()
+	{
+		return "ProcessStep|5A. Document Learning";
+	}
+	
+	public static String getProcessStep5bLabel()
+	{
+		return EAM.text("ProcessStep|5B. Share Learning");
+	}
+
+	public static String getProcessStep5cLabel()
+	{
+		return EAM.text("ProcessStep|5C. Create a Learning Environment");
+	}
+
+	public static final String HEADER_CODE = "CaptureAndShareLearning";
+	public static final String PROCESS_STEP_5A_CODE = "ProcessStep5A";
+	public static final String PROCESS_STEP_5B_CODE = "ProcessStep5B";
+	public static final String PROCESS_STEP_5C_CODE = "ProcessStep5C";
 }
