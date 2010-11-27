@@ -95,6 +95,3 @@ which is on benetech05 at:
 When we switch to a new JRE, put it there.
 Do not remove old JRE's unless they are so badly broken 
 that users should never ever use them.
-
- 
- 
