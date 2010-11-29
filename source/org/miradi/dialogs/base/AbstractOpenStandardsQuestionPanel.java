@@ -33,6 +33,7 @@ import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.DynamicChoiceWithRootChoiceItem;
+import org.miradi.utils.FillerLabel;
 
 abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectDataInputPanel
 {
@@ -68,7 +69,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		JComponent leftComponent = new PanelTitleLabel(choiceItem.getLabel());
 		leftComponent.setFont(font);
 		
-		PanelTitleLabel rightComponent = new PanelTitleLabel(choiceItem.getAdditionalText());
+		PanelTitleLabel rightComponent = new FillerLabel();
 		rightComponent.setFont(font);
 		
 		Box box = createHorizontalBoxWithIndents(indentCount);
