@@ -34,7 +34,7 @@ import org.martus.swing.UiMenu;
 import org.miradi.actions.*;
 import org.miradi.actions.jump.ActionJumpCloseTheLoop;
 import org.miradi.main.EAM;
-import org.miradi.main.EAMenuItem;
+import org.miradi.main.MiradiMenuItem;
 import org.miradi.main.MainWindow;
 import org.miradi.main.Miradi;
 import org.miradi.main.ViewSwitcher;
@@ -563,7 +563,7 @@ public class MainMenuBar extends JMenuBar
 			}
 			else
 			{
-				subHeaderMenu.add(new EAMenuItem(action, action.getMnemonic()));
+				subHeaderMenu.add(new MiradiMenuItem(action, action.getMnemonic()));
 			}
 		}
 	}
@@ -635,14 +635,14 @@ public class MainMenuBar extends JMenuBar
 	
 	private JMenuItem addMenuItem(Actions actions, JMenu menu, Class class1)
 	{
-		EAMenuItem menuItemNewProject = new EAMenuItem(actions.get(class1));
+		MiradiMenuItem menuItemNewProject = new MiradiMenuItem(actions.get(class1));
 		menu.add(menuItemNewProject);
 		return menuItemNewProject; 
 	}
 	
 	private JMenuItem addMenuItem(Actions actions, JMenu menu, Class class1, int mnemonic)
 	{
-		EAMenuItem menuItemNewProject = new EAMenuItem(actions.get(class1), mnemonic);
+		MiradiMenuItem menuItemNewProject = new MiradiMenuItem(actions.get(class1), mnemonic);
 		menu.add(menuItemNewProject);
 		return menuItemNewProject; 
 	}

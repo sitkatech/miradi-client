@@ -26,7 +26,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 
 import org.miradi.dialogs.planning.RightClickActionProvider;
-import org.miradi.main.EAMenuItem;
+import org.miradi.main.MiradiMenuItem;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.AbstractTableRightClickHandler;
 
@@ -47,7 +47,7 @@ public class PlanningRightClickHandler extends AbstractTableRightClickHandler
 			if(action == null)
 				popupMenu.addSeparator();
 			else
-				popupMenu.add(new EAMenuItem(action));
+				popupMenu.add(new MiradiMenuItem(action));
 		}
 	}
 	
