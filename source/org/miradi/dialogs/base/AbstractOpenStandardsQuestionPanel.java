@@ -49,9 +49,9 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 
 	private void addFirstLevelRow(ChoiceItem choiceItem) throws Exception
 	{
-		final int HEADER_INDENT_COUNT = 0;
+		final int FIRST_LEVEL_INDENT_COUNT = 0;
 		
-		addRow(choiceItem, HEADER_INDENT_COUNT, createFirstLevelFont());
+		addRow(choiceItem, FIRST_LEVEL_INDENT_COUNT, createFirstLevelFont());
 	}
 
 	private void addSecondLevelRows(Vector<ChoiceItem> children) throws Exception
