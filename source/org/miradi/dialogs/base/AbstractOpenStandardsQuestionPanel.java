@@ -58,17 +58,12 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	{
 		for(ChoiceItem firstLevelChild : children)
 		{
-			addThirdLevelRows(firstLevelChild);
+			final int SUBHEADER_INDENT_COUNT = 1;
+			
+			addRow(firstLevelChild, SUBHEADER_INDENT_COUNT, createSecondLevelFont());
 		}
 	}
 	
-	private void addThirdLevelRows(ChoiceItem choiceItem) throws Exception
-	{
-		final int SUBHEADER_INDENT_COUNT = 1;
-		
-		addRow(choiceItem, SUBHEADER_INDENT_COUNT, createSecondLevelFont());
-	}
-
 	private void addRow(ChoiceItem choiceItem, final int indentCount, Font font)
 	{
 		JComponent leftComponent = new PanelTitleLabel(choiceItem.getLabel());
