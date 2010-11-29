@@ -55,20 +55,20 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addRow(choiceItem, FIRST_LEVEL_INDENT_COUNT, createFirstLevelFont());
 	}
 
-	private void addSecondLevelRows(Vector<ChoiceItem> children) throws Exception
+	private void addSecondLevelRows(Vector<ChoiceItem> secondLevelChildren) throws Exception
 	{
 		final int SECOND_LEVEL_INDENT_COUNT = 1;
-		for(ChoiceItem secondLevelChild : children)
+		for(ChoiceItem secondLevelChild : secondLevelChildren)
 		{
 			addRow(secondLevelChild, SECOND_LEVEL_INDENT_COUNT, createSecondLevelFont());
 			addThirdLevelRows(secondLevelChild.getChildren());
 		}
 	}
 	
-	private void addThirdLevelRows(Vector<ChoiceItem> children)
+	private void addThirdLevelRows(Vector<ChoiceItem> thirdLevelChildren)
 	{
 		final int THIRD_LEVEL_INDENT_COUNT = 2;
-		for (ChoiceItem thirdLevelChild : children)
+		for (ChoiceItem thirdLevelChild : thirdLevelChildren)
 		{
 			addRow(thirdLevelChild, THIRD_LEVEL_INDENT_COUNT, getRawFont());
 		}
