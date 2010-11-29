@@ -56,10 +56,10 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 
 	private void addSecondLevelRows(Vector<ChoiceItem> children) throws Exception
 	{
-		final int SECOND_INDENT_COUNT = 1;
+		final int SECOND_LEVEL_INDENT_COUNT = 1;
 		for(ChoiceItem firstLevelChild : children)
 		{
-			addRow(firstLevelChild, SECOND_INDENT_COUNT, createSecondLevelFont());
+			addRow(firstLevelChild, SECOND_LEVEL_INDENT_COUNT, createSecondLevelFont());
 		}
 	}
 	
