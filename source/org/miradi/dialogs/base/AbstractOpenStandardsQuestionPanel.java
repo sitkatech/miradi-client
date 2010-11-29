@@ -61,9 +61,19 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		for(ChoiceItem secondLevelChild : children)
 		{
 			addRow(secondLevelChild, SECOND_LEVEL_INDENT_COUNT, createSecondLevelFont());
+			addThirdLevelRows(secondLevelChild.getChildren());
 		}
 	}
 	
+	private void addThirdLevelRows(Vector<ChoiceItem> children)
+	{
+		final int THIRD_LEVEL_INDENT_COUNT = 2;
+		for (ChoiceItem thirdLevelChild : children)
+		{
+			addRow(thirdLevelChild, THIRD_LEVEL_INDENT_COUNT, getRawFont());
+		}
+	}
+
 	private void addRow(ChoiceItem choiceItem, final int indentCount, Font font)
 	{
 		JComponent leftComponent = new PanelTitleLabel(choiceItem.getLabel());
