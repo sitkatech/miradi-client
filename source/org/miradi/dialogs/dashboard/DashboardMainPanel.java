@@ -49,6 +49,7 @@ public class DashboardMainPanel extends DisposablePanel
 		super.dispose();
 		
 		disposeTab(conceptualizeDashboardTab);
+		disposeTab(OldConceptualizeDashboardTab);
 		disposeTab(planActionsAndMonitoringTab);
 		disposeTab(actionsAndMonitoringTab);
 		disposeTab(analyzeAdaptAndUseTab);
@@ -87,7 +88,8 @@ public class DashboardMainPanel extends DisposablePanel
 
 	private void createTabs() throws Exception
 	{
-		conceptualizeDashboardTab = ConceptualizeDashboardTab.createTab(getMainWindow());
+		conceptualizeDashboardTab = OpenStandardsConceptualizeDashboardTab.createLeftPanel(getMainWindow());
+		OldConceptualizeDashboardTab = ConceptualizeDashboardTab.createTab(getMainWindow());
 		planActionsAndMonitoringTab = PlanActionsAndMonitoringTab.createTab(getMainWindow());
 		actionsAndMonitoringTab = ImplementActionsAndMonitoringDashboardTab.createTab(getMainWindow());
 		analyzeAdaptAndUseTab = AnalyzeAdaptAndUseTab.createTab(getMainWindow());
@@ -97,6 +99,7 @@ public class DashboardMainPanel extends DisposablePanel
 	private void addTabsToTabbedPane()
 	{
 		addTab(conceptualizeDashboardTab);
+		addTab(OldConceptualizeDashboardTab);
 		addTab(planActionsAndMonitoringTab);
 		addTab(actionsAndMonitoringTab);
 		addTab(analyzeAdaptAndUseTab);
@@ -132,7 +135,8 @@ public class DashboardMainPanel extends DisposablePanel
 	private JTabbedPane tabs;
 	private MainWindow mainWindow;
 	private DisposablePanel currentTab;
-	private PanelWithDescriptionPanel conceptualizeDashboardTab;
+	private OpenStandardsConceptualizeDashboardTab conceptualizeDashboardTab;
+	private PanelWithDescriptionPanel OldConceptualizeDashboardTab;
 	private PanelWithDescriptionPanel planActionsAndMonitoringTab;
 	private PanelWithDescriptionPanel actionsAndMonitoringTab;
 	private	PanelWithDescriptionPanel analyzeAdaptAndUseTab;
