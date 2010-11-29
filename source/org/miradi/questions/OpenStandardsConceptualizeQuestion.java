@@ -167,5 +167,5 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 	public static final String IDENTIFY_INDIRECT_THREATS_AND_OPPORTUNITIES_CODE = "IdentifyIndirectThreatsAndOpportunities";
 	public static final String ASSESS_STAKEHOLDERS_CODE = "AssessStakeholders";
 	public static final String CREATE_INITIAL_CONCEPTUAL_MODEL_CODE = "CreateInitialConceptualModel";
-	public static final String GROUND_THRUTH_AND_REVISE_MODEL_CODE = "Ground-truthAndReviseModel";
+	public static final String GROUND_THRUTH_AND_REVISE_MODEL_CODE = "GroundTruthAndReviseModel";
 }
