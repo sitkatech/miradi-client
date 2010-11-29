@@ -72,6 +72,11 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		PanelTitleLabel rightComponent = new FillerLabel();
 		rightComponent.setFont(font);
 		
+		addRow(leftComponent, rightComponent, indentCount);
+	}
+
+	private void addRow(JComponent leftComponent, PanelTitleLabel rightComponent, final int indentCount)
+	{
 		Box box = createHorizontalBoxWithIndents(indentCount);
 		box.add(leftComponent);
 		add(box);
