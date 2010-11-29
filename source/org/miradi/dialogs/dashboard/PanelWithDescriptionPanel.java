@@ -23,6 +23,7 @@ package org.miradi.dialogs.dashboard;
 import javax.swing.JScrollPane;
 
 import org.miradi.dialogfields.QuestionEditorWithHierarchichalRows;
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.main.MainWindow;
@@ -30,7 +31,7 @@ import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 
 abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescription
 {
-	public PanelWithDescriptionPanel(MainWindow mainWindowToUse, OneFieldObjectDataInputPanel leftPanelToUse) throws Exception
+	public PanelWithDescriptionPanel(MainWindow mainWindowToUse, AbstractObjectDataInputPanel leftPanelToUse) throws Exception
 	{
 		super();
 		
@@ -44,14 +45,19 @@ abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescr
 	{
 		PersistentHorizontalSplitPane splitPane = new PersistentHorizontalSplitPane(mainWindowToUse, mainWindowToUse, getPanelDescription());
 		RightSideDescriptionPanel rightPanel = createRightPanel(getDefaultDescriptionProvider());
-		//FIXME urgent - need to come up with better way to communicate a row selection change to the right panel
-		((QuestionEditorWithHierarchichalRows) leftPanel.getSingleField().getComponent()).addSelectionListener(rightPanel);
+		setupCommunicationBetweenLeftAndRightPanels(rightPanel);
 		
 		splitPane.setLeftComponent(new JScrollPane(leftPanel));
 		splitPane.setRightComponent(rightPanel);
 		return splitPane;
 	}
 
+	protected void setupCommunicationBetweenLeftAndRightPanels(RightSideDescriptionPanel rightPanel)
+	{
+		//FIXME urgent - need to come up with better way to communicate a row selection change to the right panel
+		((QuestionEditorWithHierarchichalRows) ((OneFieldObjectDataInputPanel)leftPanel).getSingleField().getComponent()).addSelectionListener(rightPanel);
+	}
+	
 	@Override
 	public void dispose()
 	{
@@ -81,7 +87,7 @@ abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescr
 		return new RightSideDescriptionPanel(getMainWindow(), mainDescriptionProvider, this);
 	}
 	
-	private MainWindow getMainWindow()
+	protected MainWindow getMainWindow()
 	{
 		return mainWindow;
 	}
@@ -89,5 +95,5 @@ abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescr
 	abstract protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception;
 	
 	private MainWindow mainWindow;
-	private OneFieldObjectDataInputPanel leftPanel;
+	private AbstractObjectDataInputPanel leftPanel;
 }
