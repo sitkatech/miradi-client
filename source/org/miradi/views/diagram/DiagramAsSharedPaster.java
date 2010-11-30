@@ -22,11 +22,15 @@ package org.miradi.views.diagram;
 import java.awt.Point;
 import java.text.ParseException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Vector;
 
+import org.miradi.commands.CommandDeleteObject;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.ids.BaseId;
+import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -65,25 +69,68 @@ public class DiagramAsSharedPaster extends DiagramPaster
 	
 	private void deleteOrphansCreatedDuringPaste() throws Exception
 	{
-		Vector<String> factorDeepCopies = getFactorDeepCopies();
-		for(String jsonString : factorDeepCopies)
+		RemoveDeletionsFromMapHandler removeDeletionsFromMapHandler = new RemoveDeletionsFromMapHandler();
+		getProject().addCommandExecutedListener(removeDeletionsFromMapHandler);
+		try
 		{
-			EnhancedJsonObject json = new EnhancedJsonObject(jsonString);
-			int type = getTypeFromJson(json);
-			int id = json.getInt(BaseObject.TAG_ID);
-			ORef oldRef = new ORef(type, new BaseId(id));
-			ORef newRef = getOldToNewObjectRefMap().get(oldRef);
-			if (newRef == null)
-				continue;
-			
-			BaseObject baseObject = BaseObject.find(getProject(), newRef);
-			ORefList allReferrers = baseObject.findObjectsThatReferToUs();
-			if (allReferrers.isEmpty())
+			Vector<String> factorDeepCopies = getFactorDeepCopies();
+			for(String jsonString : factorDeepCopies)
 			{
-				CommandVector commandsToDeleteOrphan = baseObject.createCommandsToDeleteChildrenAndObject();
-				getProject().executeCommandsWithoutTransaction(commandsToDeleteOrphan);
-			} 
+				EnhancedJsonObject json = new EnhancedJsonObject(jsonString);
+				int type = getTypeFromJson(json);
+				int id = json.getInt(BaseObject.TAG_ID);
+				ORef oldRef = new ORef(type, new BaseId(id));
+				ORef newRef = getOldToNewObjectRefMap().get(oldRef);
+				if (newRef == null)
+					continue;
+				
+				BaseObject baseObject = BaseObject.find(getProject(), newRef);
+				ORefList allReferrers = baseObject.findObjectsThatReferToUs();
+				if (allReferrers.isEmpty())
+				{
+					CommandVector commandsToDeleteOrphan = baseObject.createCommandsToDeleteChildrenAndObject();
+					getProject().executeCommandsWithoutTransaction(commandsToDeleteOrphan);
+				} 
+			}
 		}
+		finally
+		{
+			getProject().removeCommandExecutedListener(removeDeletionsFromMapHandler);
+		}
+	}
+	
+	class RemoveDeletionsFromMapHandler implements CommandExecutedListener
+	{
+		public RemoveDeletionsFromMapHandler()
+		{
+			newToOldORefMap = createInvertedMap(getOldToNewObjectRefMap());
+		}
+		
+		public void commandExecuted(CommandExecutedEvent event)
+		{
+			if(event.isDeleteObjectCommand())
+				removeObjectFromMap((CommandDeleteObject)event.getCommand());
+		}
+
+		private HashMap<ORef, ORef> createInvertedMap(HashMap<ORef, ORef> originalMap)
+		{
+			HashMap<ORef, ORef> invertedMap = new HashMap<ORef, ORef>();
+			for(ORef oldRef : originalMap.keySet())
+			{
+				invertedMap.put(getOldToNewObjectRefMap().get(oldRef), oldRef);
+			}
+			return invertedMap;
+		}
+		
+		private void removeObjectFromMap(CommandDeleteObject command)
+		{
+			ORef newRef = command.getObjectRef();
+			ORef oldRef = newToOldORefMap.get(newRef);
+			if(oldRef != null)
+				getOldToNewObjectRefMap().remove(oldRef);
+		}
+
+		private HashMap<ORef, ORef> newToOldORefMap;
 	}
 
 	public void pasteDiagramLinks() throws Exception
