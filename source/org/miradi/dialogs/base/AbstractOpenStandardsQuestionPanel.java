@@ -70,8 +70,27 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		final int THIRD_LEVEL_INDENT_COUNT = 2;
 		for (ChoiceItem thirdLevelChild : thirdLevelChildren)
 		{
-			addRow(thirdLevelChild, THIRD_LEVEL_INDENT_COUNT, getRawFont());
+			JComponent leftComponent = createThirdLevelStaticLabelColumnCoponent(thirdLevelChild.getLabel());
+			JComponent rightComponent = createThirdLevelStatusColumnComponent(thirdLevelChild.getCode());
+			
+			addRow(leftComponent, rightComponent, THIRD_LEVEL_INDENT_COUNT);
 		}
+	}
+
+	private JComponent createThirdLevelStaticLabelColumnCoponent(String  labelToUse)
+	{
+		JComponent leftComponent = new PanelTitleLabel(labelToUse);
+		leftComponent.setFont(getRawFont());
+		
+		return leftComponent;
+	}
+
+	protected JComponent createThirdLevelStatusColumnComponent(String code)
+	{
+		JComponent rightComponent = new FillerLabel();
+		rightComponent.setFont(getRawFont());
+		
+		return rightComponent;
 	}
 
 	private void addRow(ChoiceItem choiceItem, final int indentCount, Font font)
@@ -85,7 +104,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addRow(leftComponent, rightComponent, indentCount);
 	}
 
-	private void addRow(JComponent leftComponent, PanelTitleLabel rightComponent, final int indentCount)
+	private void addRow(JComponent leftComponent, JComponent rightComponent, final int indentCount)
 	{
 		Box box = createHorizontalBoxWithIndents(indentCount);
 		box.add(leftComponent);
