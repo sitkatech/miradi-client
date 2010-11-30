@@ -47,7 +47,9 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
 import org.miradi.project.FactorDeleteHelper;
 import org.miradi.project.ProjectRepairer;
 
@@ -70,6 +72,22 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		getProject().enableAsThreat(threatDiagramFactor.getWrappedORef());
 		
 		diagramModelToPasteInto = createDiagramModelToPasteInto();
+	}
+	
+	public void testPasteSharedDeletingOrphanedStrategyWithChildren() throws Exception
+	{
+		DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(Strategy.getObjectType());
+		Strategy strategy = (Strategy) strategyDiagramFactor.getWrappedFactor();
+		ORef activityRef = getProject().addActivityToStratey(strategy.getRef(), Strategy.TAG_ACTIVITY_IDS);
+		Task activity = Task.find(getProject(), activityRef);
+		getProject().addProgressReport(activity);
+		TransferableMiradiList transferable = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector<DiagramLink>());
+		pasteShared(diagramModelToPasteInto, transferable);
+		// There was a bug that would throw a null pointer exception here, 
+		// because we would create new copies of the strat/activity/progress, 
+		// and they would all be orphans, so we would delete them, strat-first, 
+		// so when we would try to delete the progress, it no longer existed.
+		assertEquals(3, diagramModelToPasteInto.getFactorCount());
 	}
 	
 	public void testPasteSharedDeletingOrphanedIndicatorAfterCopy() throws Exception
