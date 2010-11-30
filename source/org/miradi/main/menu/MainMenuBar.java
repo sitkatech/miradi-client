@@ -540,13 +540,13 @@ public class MainMenuBar extends JMenuBar
 	{
 		for(ChoiceItem subHeaderChoiceItem : children)
 		{
-			JMenu choiceItemWithChildren = new JMenu(subHeaderChoiceItem.getLabel());
+			JMenu menu = new JMenu(subHeaderChoiceItem.getLabel());
 			String code = subHeaderChoiceItem.getCode();
 			AbstractMenuAction action = actions.getMenuAction(code);
-			choiceItemWithChildren.setMnemonic(action.getMnemonic());
-			headerMenu.add(choiceItemWithChildren);
+			menu.setMnemonic(action.getMnemonic());
+			headerMenu.add(menu);
 			ChoiceItemWithChildren leafChildren = (ChoiceItemWithChildren) subHeaderChoiceItem;
-			addLeafMenus(actions, choiceItemWithChildren, leafChildren.getChildren());
+			addLeafMenus(actions, menu, leafChildren.getChildren());
 		}
 	}
 

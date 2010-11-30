@@ -65,13 +65,36 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		}
 	}
 	
-	private void addThirdLevelRows(Vector<ChoiceItem> thirdLevelChildren)
+	private void addThirdLevelRows(Vector<ChoiceItem> thirdLevelChildren) throws Exception
 	{
-		final int THIRD_LEVEL_INDENT_COUNT = 2;
 		for (ChoiceItem thirdLevelChild : thirdLevelChildren)
 		{
-			addRow(thirdLevelChild, THIRD_LEVEL_INDENT_COUNT, getRawFont());
+			addThirdLevelRow(thirdLevelChild.getLabel());
+			addFourthLevelRow(thirdLevelChild.getCode());
 		}
+	}
+
+	private void addThirdLevelRow(String label)
+	{
+		JComponent leftComponent = new PanelTitleLabel(label);
+		leftComponent.setFont(getRawFont());
+		
+		JComponent rightComponent = new FillerLabel();
+		rightComponent.setFont(getRawFont());
+		
+		final int THIRD_LEVEL_INDENT_COUNT = 2;
+		addRow(leftComponent, rightComponent, THIRD_LEVEL_INDENT_COUNT);
+	}
+
+	protected void addFourthLevelRow(String code)
+	{
+		addFourthLevelRow(new FillerLabel(), new FillerLabel());
+	}
+
+	protected void addFourthLevelRow(JComponent leftComponent,	JComponent rightComponent)
+	{
+		final int FORTH_LEVEL_INDENT_COUNT = 3;
+		addRow(leftComponent, rightComponent, FORTH_LEVEL_INDENT_COUNT);
 	}
 
 	private void addRow(ChoiceItem choiceItem, final int indentCount, Font font)
@@ -85,7 +108,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addRow(leftComponent, rightComponent, indentCount);
 	}
 
-	private void addRow(JComponent leftComponent, PanelTitleLabel rightComponent, final int indentCount)
+	protected void addRow(JComponent leftComponent, JComponent rightComponent, final int indentCount)
 	{
 		Box box = createHorizontalBoxWithIndents(indentCount);
 		box.add(leftComponent);
@@ -121,9 +144,20 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		return font;
 	}
 	
-	private Font getRawFont()
+	protected Font getRawFont()
 	{
 		return new PanelTitleLabel().getFont();
+	}
+	
+	protected String getDashboardData(String tag)
+	{
+		return getDashboard().getData(tag);
+	}
+	
+	private Dashboard getDashboard()
+	{
+		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
+		return Dashboard.find(getProject(), dashboardRef);
 	}
 
 	private DynamicChoiceWithRootChoiceItem question;

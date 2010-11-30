@@ -20,6 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
+import javax.swing.JComponent;
+
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.main.EAM;
+import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
@@ -34,5 +39,24 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 	public String getPanelDescription()
 	{
 		return "OpenStandardsConceptualizeQuestionPanel";
+	}
+	
+	@Override
+	protected void addFourthLevelRow(String code)
+	{
+		if (code.equals(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE))
+			addTeamMembersRow();
+	}
+
+	public void addTeamMembersRow()
+	{
+		String leftColumnTranslatedText = EAM.text("Team Members:");
+		String rightColumnTranslatedText = getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT);
+		
+		JComponent leftComponent = new PanelTitleLabel(leftColumnTranslatedText);
+		JComponent rightComponent = new PanelTitleLabel(rightColumnTranslatedText);
+		rightComponent.setFont(getRawFont());
+		
+		addFourthLevelRow(leftComponent, rightComponent);
 	}
 }
