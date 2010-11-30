@@ -120,7 +120,6 @@ import org.miradi.actions.views.ActionViewThreatMatrix;
 import org.miradi.actions.views.ActionViewWorkPlan;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 import org.miradi.views.umbrella.ActionCreateProgressReport;
 
 public class Actions
@@ -570,7 +569,6 @@ public class Actions
 	
 	public AbstractMenuAction getMenuAction(String code)
 	{
-		System.out.println("iiisss= "  + codeToMenuActionMap.containsKey(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE));
 		return codeToMenuActionMap.get(code);
 	}
 
