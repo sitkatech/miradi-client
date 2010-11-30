@@ -90,6 +90,14 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	{
 		addFourthLevelRow(new FillerLabel(), new FillerLabel());
 	}
+	
+	public void addFourthLevelRow(String leftColumnTranslatedText, String rightColumnTranslatedText)
+	{
+		JComponent leftComponent = new PanelTitleLabel(leftColumnTranslatedText);
+		JComponent rightComponent = new PanelTitleLabel(rightColumnTranslatedText);
+		
+		addFourthLevelRow(leftComponent, rightComponent);
+	}
 
 	protected void addFourthLevelRow(JComponent leftComponent,	JComponent rightComponent)
 	{
