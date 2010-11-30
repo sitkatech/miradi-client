@@ -1636,9 +1636,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return addItemToList(ref, Task.getObjectType(), tag);
 	}
 	
-	public ORef addActivityToStratey(ORef ref, String tag) throws Exception
+	public ORef addActivityToStratey(ORef strategyRef, String strategyTagForActivities) throws Exception
 	{
-		return new ORef(Task.getObjectType(), addItemToList(ref, Task.getObjectType(), tag));
+		return new ORef(Task.getObjectType(), addItemToList(strategyRef, Task.getObjectType(), strategyTagForActivities));
 	}
 	
 	public BaseId addActivityToStrateyList(ORef ref, String tag) throws Exception
