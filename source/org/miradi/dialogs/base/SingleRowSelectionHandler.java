@@ -20,6 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Vector;
@@ -37,8 +40,22 @@ public class SingleRowSelectionHandler
 {
 	public SingleRowSelectionHandler()
 	{
+		dispatcher = new KeyDispatcher();
 		selectableRows = getSafeSelectableRows();
 		rowSelectionListeners = new Vector<ListSelectionListener>();
+	}
+	
+	public void becomeActive()
+	{
+		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+		manager.addKeyEventDispatcher(dispatcher);
+	}
+	
+	public void becomeInactive()
+	{
+		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+	    manager.removeKeyEventDispatcher(dispatcher);
+
 	}
 	
 	public void addSelectableRow(JComponent leftComponent, JComponent rightComponent, AbstractLongDescriptionProvider descriptionProviderToUse)
@@ -138,6 +155,78 @@ public class SingleRowSelectionHandler
 		private SelectableRow selectableComponent;
 	}
 	
+	private class KeyDispatcher implements KeyEventDispatcher 
+	{
+	    public boolean dispatchKeyEvent(KeyEvent event) 
+	    {
+	    	try
+	    	{
+	    		if (event.getID() == KeyEvent.KEY_PRESSED) 
+	    		{
+	    			if (event.getKeyCode() == KeyEvent.VK_UP)
+	    				new KeyboardSingleRowSelectionHandler().selectUp();
+	    			if (event.getKeyCode() == KeyEvent.VK_DOWN)
+	    				new KeyboardSingleRowSelectionHandler().selectDown();
+	    		}
+	    	}
+	    	catch (Exception e)
+	    	{
+	    		EAM.logException(e);
+	    		EAM.unexpectedErrorDialog(e);
+	    	}
+	    	
+	    	//TODO:  is this used and what is the correct value to return
+	    	return false;
+	    }
+	}
+	
+	private class KeyboardSingleRowSelectionHandler
+	{
+		private void selectUp() throws Exception
+		{
+			select(MOVE_UP_DIRECTION_DELTA);
+		}
+		
+		private void selectDown() throws Exception
+		{
+			select(MOVE_DOWN_DIRECTION_DELTA);
+		}
+
+		private void select(int directionDelta) throws Exception
+		{
+			SelectableRow currentlySelected = findSelectedRow();
+			if(currentlySelected == null)
+			{
+				selectableRows.firstElement().selectRow();
+				return;
+			}
+			
+			SelectableRow rowToSelect = null;
+			int indexOfSelectedRow = selectableRows.indexOf(currentlySelected);
+			int indexToSelect = indexOfSelectedRow + directionDelta;
+			
+			indexToSelect = (indexToSelect + selectableRows.size()) % selectableRows.size();
+			rowToSelect = selectableRows.get(indexToSelect);
+			selectRow(rowToSelect);
+			notifyListenersWithViewChangeEvent(rowToSelect);
+		}
+
+		private SelectableRow findSelectedRow()
+		{
+			for(SelectableRow selectableRow : selectableRows)
+			{
+				if(selectableRow.isSelected())
+					return selectableRow;
+			}
+
+			return null;
+		}
+	}
+
+	private static final int MOVE_UP_DIRECTION_DELTA = -1;
+	private static final int MOVE_DOWN_DIRECTION_DELTA = 1;
+
+	protected KeyDispatcher dispatcher;
 	protected Vector<SelectableRow> selectableRows;
 	private Vector<ListSelectionListener> rowSelectionListeners;
 }
