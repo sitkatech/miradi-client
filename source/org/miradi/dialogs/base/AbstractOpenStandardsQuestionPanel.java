@@ -27,7 +27,7 @@ import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.event.ListSelectionListener;
 
-import org.miradi.dialogs.dashboard.HtmlResourceLongDescriptionProvider;
+import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.TwoColumnGridLayout;
 import org.miradi.objecthelpers.ORef;
@@ -82,12 +82,12 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	{
 		for (ChoiceItem thirdLevelChild : thirdLevelChildren)
 		{
-			addThirdLevelRow(thirdLevelChild.getLabel());
-			addFourthLevelRow(thirdLevelChild.getCode());
+			addThirdLevelRow(thirdLevelChild.getLabel(), thirdLevelChild.getLongDescriptionProvider());
+			addFourthLevelRow(thirdLevelChild.getCode(), thirdLevelChild.getLongDescriptionProvider());
 		}
 	}
 
-	private void addThirdLevelRow(String label) throws Exception
+	private void addThirdLevelRow(String label, AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
 	{
 		JComponent leftComponent = new PanelTitleLabel(label);
 		leftComponent.setFont(getRawFont());
@@ -96,26 +96,26 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		rightComponent.setFont(getRawFont());
 		
 		final int THIRD_LEVEL_INDENT_COUNT = 2;
-		addRow(leftComponent, rightComponent, THIRD_LEVEL_INDENT_COUNT);
+		addRow(leftComponent, rightComponent, THIRD_LEVEL_INDENT_COUNT, longDescriptionProvider);
 	}
 
-	protected void addFourthLevelRow(String code) throws Exception
+	protected void addFourthLevelRow(String code, AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
 	{
-		addFourthLevelRow(new FillerLabel(), new FillerLabel());
+		addFourthLevelRow(new FillerLabel(), new FillerLabel(), longDescriptionProvider);
 	}
 	
-	public void addFourthLevelRow(String leftColumnTranslatedText, String rightColumnTranslatedText) throws Exception
+	public void addFourthLevelRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
 	{
 		JComponent leftComponent = new PanelTitleLabel(leftColumnTranslatedText);
 		JComponent rightComponent = new PanelTitleLabel(rightColumnTranslatedText);
 		
-		addFourthLevelRow(leftComponent, rightComponent);
+		addFourthLevelRow(leftComponent, rightComponent, longDescriptionProvider);
 	}
 
-	private void addFourthLevelRow(JComponent leftComponent,	JComponent rightComponent) throws Exception
+	private void addFourthLevelRow(JComponent leftComponent, JComponent rightComponent, AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
 	{
 		final int FORTH_LEVEL_INDENT_COUNT = 3;
-		addRow(leftComponent, rightComponent, FORTH_LEVEL_INDENT_COUNT);
+		addRow(leftComponent, rightComponent, FORTH_LEVEL_INDENT_COUNT, longDescriptionProvider);
 	}
 
 	private void addRow(ChoiceItem choiceItem, final int indentCount, Font font) throws Exception
@@ -126,13 +126,12 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		PanelTitleLabel rightComponent = new FillerLabel();
 		rightComponent.setFont(font);
 		
-		addRow(leftComponent, rightComponent, indentCount);
+		addRow(leftComponent, rightComponent, indentCount, choiceItem.getLongDescriptionProvider());
 	}
 
-	private void addRow(JComponent leftComponent, JComponent rightComponent, final int indentCount) throws Exception
+	private void addRow(JComponent leftComponent, JComponent rightComponent, final int indentCount, AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
 	{
-		//FIXME urgent - need to create provider with correct file name and step name
-		rowSelectionHandler.addSelectableRow(leftComponent, rightComponent, new HtmlResourceLongDescriptionProvider("dashboard/1.html"));
+		rowSelectionHandler.addSelectableRow(leftComponent, rightComponent, longDescriptionProvider);
 		Box box = createHorizontalBoxWithIndents(indentCount);
 		box.add(leftComponent);
 		add(box);
