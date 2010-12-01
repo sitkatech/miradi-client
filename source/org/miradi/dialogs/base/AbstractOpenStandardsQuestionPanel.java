@@ -112,7 +112,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addFourthLevelRow(leftComponent, rightComponent);
 	}
 
-	protected void addFourthLevelRow(JComponent leftComponent,	JComponent rightComponent) throws Exception
+	private void addFourthLevelRow(JComponent leftComponent,	JComponent rightComponent) throws Exception
 	{
 		final int FORTH_LEVEL_INDENT_COUNT = 3;
 		addRow(leftComponent, rightComponent, FORTH_LEVEL_INDENT_COUNT);
