@@ -31,7 +31,7 @@ public class HtmlResourceLongDescriptionProvider extends AbstractLongDescription
 	
 	public HtmlResourceLongDescriptionProvider(String htmlFileName) throws Exception
 	{
-		super(Translation.getHtmlContent(htmlFileName), null);
+		this(htmlFileName, null);
 	}
 
 	public HtmlResourceLongDescriptionProvider(String htmlFileName, String wizardStepNameToUse) throws Exception
