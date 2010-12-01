@@ -24,6 +24,11 @@ import org.miradi.utils.Translation;
 
 public class HtmlResourceLongDescriptionProvider extends AbstractLongDescriptionProvider
 {
+	public HtmlResourceLongDescriptionProvider() throws Exception
+	{
+		super("", null);
+	}
+	
 	public HtmlResourceLongDescriptionProvider(String htmlFileName) throws Exception
 	{
 		super(Translation.getHtmlContent(htmlFileName), null);
