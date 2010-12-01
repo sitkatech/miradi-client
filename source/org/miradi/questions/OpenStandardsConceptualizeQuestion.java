@@ -49,11 +49,12 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 		processStep1CChoiceItem.addChild(new ChoiceItem(IDENTIFY_DIRECT_THREATS_CODE, getIdentifyDirectThreatsLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_1C_FILE_NAME)));
 		processStep1CChoiceItem.addChild(new ChoiceItem(RANK_DIRECT_THREATS_CODE, getRankDirectThreatsLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_1C_FILE_NAME)));
 		
-		headerChoiceItem.addChild(new ChoiceItemWithChildren(PROCESS_STEP_1D_CODE, getProcessStep1dLabel(), "", new StaticLongDescriptionProvider()));
-		new ChoiceItemWithChildren(PROCESS_STEP_1D_CODE, getProcessStep1dLabel(), "", new StaticLongDescriptionProvider()).addChild(new ChoiceItem(IDENTIFY_INDIRECT_THREATS_AND_OPPORTUNITIES_CODE, getIdentifyIndirectThreatsAndOpportunitiesLabel()));
-		new ChoiceItemWithChildren(PROCESS_STEP_1D_CODE, getProcessStep1dLabel(), "", new StaticLongDescriptionProvider()).addChild(new ChoiceItem(ASSESS_STAKEHOLDERS_CODE, getAssessStakeholdersLabel()));
-		new ChoiceItemWithChildren(PROCESS_STEP_1D_CODE, getProcessStep1dLabel(), "", new StaticLongDescriptionProvider()).addChild(new ChoiceItem(CREATE_INITIAL_CONCEPTUAL_MODEL_CODE, getCreateInitialConceptualModelLabel()));
-		new ChoiceItemWithChildren(PROCESS_STEP_1D_CODE, getProcessStep1dLabel(), "", new StaticLongDescriptionProvider()).addChild(new ChoiceItem(GROUND_THRUTH_AND_REVISE_MODEL_CODE, getGroundTruthAndReviseModelLabel()));
+		ChoiceItemWithChildren processStep1dChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_1D_CODE, getProcessStep1dLabel(), "", new StaticLongDescriptionProvider());
+		headerChoiceItem.addChild(processStep1dChoiceItem);
+		processStep1dChoiceItem.addChild(new ChoiceItem(IDENTIFY_INDIRECT_THREATS_AND_OPPORTUNITIES_CODE, getIdentifyIndirectThreatsAndOpportunitiesLabel(), new HtmlResourceLongDescriptionProvider()));
+		processStep1dChoiceItem.addChild(new ChoiceItem(ASSESS_STAKEHOLDERS_CODE, getAssessStakeholdersLabel(), new HtmlResourceLongDescriptionProvider()));
+		processStep1dChoiceItem.addChild(new ChoiceItem(CREATE_INITIAL_CONCEPTUAL_MODEL_CODE, getCreateInitialConceptualModelLabel(), new HtmlResourceLongDescriptionProvider()));
+		processStep1dChoiceItem.addChild(new ChoiceItem(GROUND_THRUTH_AND_REVISE_MODEL_CODE, getGroundTruthAndReviseModelLabel(), new HtmlResourceLongDescriptionProvider()));
 		
 		return headerChoiceItem;
 	}
