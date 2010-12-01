@@ -129,7 +129,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addRow(leftComponent, rightComponent, indentCount);
 	}
 
-	protected void addRow(JComponent leftComponent, JComponent rightComponent, final int indentCount) throws Exception
+	private void addRow(JComponent leftComponent, JComponent rightComponent, final int indentCount) throws Exception
 	{
 		//FIXME urgent - need to create provider with correct file name and step name
 		rowSelectionHandler.addSelectableRow(leftComponent, rightComponent, new HtmlResourceLongDescriptionProvider("dashboard/1.html"));
