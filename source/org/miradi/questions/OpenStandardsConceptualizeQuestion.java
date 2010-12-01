@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import org.miradi.dialogs.dashboard.HtmlResourceLongDescriptionProvider;
 import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
 import org.miradi.main.EAM;
 
@@ -28,28 +29,30 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 	@Override
 	protected ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
-		StaticLongDescriptionProvider provider = new StaticLongDescriptionProvider();
-		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren(CONCEPTUALIZE_CODE, getConceptualizeHeaderLabel(), provider);
+		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren(CONCEPTUALIZE_CODE, getConceptualizeHeaderLabel(), new HtmlResourceLongDescriptionProvider(MAIN_DESCRIPTION_RIGHT_PANEL_FILE_NAME));
 		
-		ChoiceItemWithChildren processStep1A = new ChoiceItemWithChildren(PROCESS_STEP_1A_CODE, getProcessStep1aLabel(), EAM.text(""), provider);
+		HtmlResourceLongDescriptionProvider londDescriptionProvider1A = new HtmlResourceLongDescriptionProvider(DESCRIPTION_1A_FILE_NAME);
+		ChoiceItemWithChildren processStep1A = new ChoiceItemWithChildren(PROCESS_STEP_1A_CODE, getProcessStep1aLabel(), "", londDescriptionProvider1A);
 		headerChoiceItem.addChild(processStep1A);		
-		processStep1A.addChild(new ChoiceItem(SELECT_INTIAL_TEAM_MEMBERS_CODE, getSelectIntialTeamMembersLabel()));
-		processStep1A.addChild(new ChoiceItem(AGREE_ON_ROLES_AND_RESPONSIBILITIES_CODE, getAgreeOnRolesAndResponsibilitiesLabel()));
+		processStep1A.addChild(new ChoiceItem(SELECT_INTIAL_TEAM_MEMBERS_CODE, getSelectIntialTeamMembersLabel(), londDescriptionProvider1A));
+		processStep1A.addChild(new ChoiceItem(AGREE_ON_ROLES_AND_RESPONSIBILITIES_CODE, getAgreeOnRolesAndResponsibilitiesLabel(), londDescriptionProvider1A));
 		
-		ChoiceItemWithChildren processStep1BChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_1B_CODE, getProcessStep1bLabel(), EAM.text(""), provider);
+		HtmlResourceLongDescriptionProvider londDescriptionProvider1B = new HtmlResourceLongDescriptionProvider(DESCRIPTION_1B_FILE_NAME);
+		ChoiceItemWithChildren processStep1BChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_1B_CODE, getProcessStep1bLabel(), "", londDescriptionProvider1B);
 		headerChoiceItem.addChild(processStep1BChoiceItem);
-		processStep1BChoiceItem.addChild(new ChoiceItem(DEFINE_PROJECT_SCOPE_CODE, getDefineProjectScopeLabel()));
-		processStep1BChoiceItem.addChild(new ChoiceItem(DEVELOP_MAP_OF_PROJECT_AREA_CODE, getDevelopMapOfProjectAreaLabel()));
-		processStep1BChoiceItem.addChild(new ChoiceItem(SELECT_CONSERVATION_TARGETS_CODE, getSelectConservationTargetsLabel()));
-		processStep1BChoiceItem.addChild(new ChoiceItem(ADD_HUMAN_WELFARE_TARGETS_IF_DESIRED_CODE, getAddHumanWelfareTargetsIfDesiredLabel()));
-		processStep1BChoiceItem.addChild(new ChoiceItem(DESCRIBE_STATUS_OF_TARGETS_CODE, getDescribeStatusOfTargetsLabel()));
+		processStep1BChoiceItem.addChild(new ChoiceItem(DEFINE_PROJECT_SCOPE_CODE, getDefineProjectScopeLabel(), londDescriptionProvider1B));
+		processStep1BChoiceItem.addChild(new ChoiceItem(DEVELOP_MAP_OF_PROJECT_AREA_CODE, getDevelopMapOfProjectAreaLabel(), londDescriptionProvider1B));
+		processStep1BChoiceItem.addChild(new ChoiceItem(SELECT_CONSERVATION_TARGETS_CODE, getSelectConservationTargetsLabel(), londDescriptionProvider1B));
+		processStep1BChoiceItem.addChild(new ChoiceItem(ADD_HUMAN_WELFARE_TARGETS_IF_DESIRED_CODE, getAddHumanWelfareTargetsIfDesiredLabel(), londDescriptionProvider1B));
+		processStep1BChoiceItem.addChild(new ChoiceItem(DESCRIBE_STATUS_OF_TARGETS_CODE, getDescribeStatusOfTargetsLabel(), londDescriptionProvider1B));
 		
-		ChoiceItemWithChildren processStep1CChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_1C_CODE, getProcessStep1cLabel(), EAM.text(""), provider);
+		HtmlResourceLongDescriptionProvider londDescriptionProvider1C = new HtmlResourceLongDescriptionProvider(DESCRIPTION_1C_FILE_NAME);
+		ChoiceItemWithChildren processStep1CChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_1C_CODE, getProcessStep1cLabel(), "", londDescriptionProvider1C);
 		headerChoiceItem.addChild(processStep1CChoiceItem);
-		processStep1CChoiceItem.addChild(new ChoiceItem(IDENTIFY_DIRECT_THREATS_CODE, getIdentifyDirectThreatsLabel()));
-		processStep1CChoiceItem.addChild(new ChoiceItem(RANK_DIRECT_THREATS_CODE, getRankDirectThreatsLabel()));
+		processStep1CChoiceItem.addChild(new ChoiceItem(IDENTIFY_DIRECT_THREATS_CODE, getIdentifyDirectThreatsLabel(), londDescriptionProvider1C));
+		processStep1CChoiceItem.addChild(new ChoiceItem(RANK_DIRECT_THREATS_CODE, getRankDirectThreatsLabel(), londDescriptionProvider1C));
 		
-		ChoiceItemWithChildren processStep1DChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_1D_CODE, getProcessStep1dLabel(), EAM.text(""), provider);
+		ChoiceItemWithChildren processStep1DChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_1D_CODE, getProcessStep1dLabel(), "", new StaticLongDescriptionProvider());
 		headerChoiceItem.addChild(processStep1DChoiceItem);
 		processStep1DChoiceItem.addChild(new ChoiceItem(IDENTIFY_INDIRECT_THREATS_AND_OPPORTUNITIES_CODE, getIdentifyIndirectThreatsAndOpportunitiesLabel()));
 		processStep1DChoiceItem.addChild(new ChoiceItem(ASSESS_STAKEHOLDERS_CODE, getAssessStakeholdersLabel()));
@@ -168,4 +171,9 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 	public static final String ASSESS_STAKEHOLDERS_CODE = "AssessStakeholders";
 	public static final String CREATE_INITIAL_CONCEPTUAL_MODEL_CODE = "CreateInitialConceptualModel";
 	public static final String GROUND_THRUTH_AND_REVISE_MODEL_CODE = "GroundTruthAndReviseModel";
+	
+	private static final String MAIN_DESCRIPTION_RIGHT_PANEL_FILE_NAME = "dashboard/1.html";
+	private static final String DESCRIPTION_1A_FILE_NAME = "dashboard/1A.html";
+	private static final String DESCRIPTION_1B_FILE_NAME = "dashboard/1B.html";
+	private static final String DESCRIPTION_1C_FILE_NAME = "dashboard/1C.html";
 }
