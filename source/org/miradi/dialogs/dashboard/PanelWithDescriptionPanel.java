@@ -95,5 +95,5 @@ abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescr
 	abstract protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception;
 	
 	private MainWindow mainWindow;
-	private AbstractObjectDataInputPanel leftPanel;
+	protected AbstractObjectDataInputPanel leftPanel;
 }

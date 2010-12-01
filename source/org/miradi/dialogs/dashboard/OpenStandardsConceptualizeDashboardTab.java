@@ -40,7 +40,8 @@ public class OpenStandardsConceptualizeDashboardTab extends	PanelWithDescription
 	@Override
 	protected void setupCommunicationBetweenLeftAndRightPanels(RightSideDescriptionPanel rightPanel)
 	{
-		//FIXME urgent - ignoring left side row selection updating right side description panel
+		//FIXME medium - find a way to remove casting.  Try this when dashboard tabs have been converted
+		((OpenStandardsConceptualizeQuestionPanel) leftPanel).addRowSelectionListener(rightPanel);
 	}
 
 	@Override

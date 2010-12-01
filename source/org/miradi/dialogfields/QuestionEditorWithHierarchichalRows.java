@@ -44,6 +44,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceItemWithLongDescriptionProvider;
 import org.miradi.questions.ChoiceQuestion;
 
+//FIXME urgent - Use new SingleRowSelectionHandler and remove duplicated code
 public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComponent
 {
 	public QuestionEditorWithHierarchichalRows(MainWindow mainWindowToUse, ChoiceQuestion questionToUse)
