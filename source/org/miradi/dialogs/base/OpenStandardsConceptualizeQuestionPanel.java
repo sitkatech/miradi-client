@@ -41,7 +41,7 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 	}
 	
 	@Override
-	protected void addFourthLevelRow(String code)
+	protected void addFourthLevelRow(String code) throws Exception
 	{
 		if (code.equals(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE))
 			addTeamMembersRow();
@@ -83,7 +83,7 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 			addGroundTruthAndReviseModel();
 	}
 
-	public void addTeamMembersRow()
+	private void addTeamMembersRow() throws Exception
 	{
 		addFourthLevelRow(EAM.text("Team Members:"), getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT));
 	}
@@ -92,7 +92,7 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 	{
 	}
 
-	private void addDefineProjectScope()
+	private void addDefineProjectScope() throws Exception
 	{
 		String scopeVisionCount = getDashboardData(Dashboard.PSEUDO_PROJECT_SCOPE_WORD_COUNT);
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("Created (%s chars)"), scopeVisionCount);
@@ -103,7 +103,7 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 	{
 	}
 
-	private void addSelectConservationTargets()
+	private void addSelectConservationTargets() throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%targetCount", getDashboardData(Dashboard.PSEUDO_TARGET_COUNT));
@@ -112,13 +112,13 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 		addFourthLevelRow("", rightColumnTranslatedText);
 	}
 
-	private void addAddHumanWelfareTargetsIfDesired()
+	private void addAddHumanWelfareTargetsIfDesired() throws Exception
 	{
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("%s created"), getDashboardData(Dashboard.PSEUDO_HUMAN_WELFARE_TARGET_COUNT));
 		addFourthLevelRow("", rightColumnTranslatedText);
 	}
 
-	private void addDescribeStatusOfTargets()
+	private void addDescribeStatusOfTargets() throws Exception
 	{
 		HashMap<String, String> statusDescriptionTokenReplacementMap1 = new HashMap<String, String>();
 		statusDescriptionTokenReplacementMap1.put("%targetWithKeaCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_KEA_COUNT));
@@ -131,7 +131,7 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 		addFourthLevelRow("", leftColumnTranslatedText);
 	}
 
-	private void addIdentifyDirectThreats()
+	private void addIdentifyDirectThreats() throws Exception
 	{
 		HashMap<String, String> threatsTokenReplacementMap = new HashMap<String, String>();
 		threatsTokenReplacementMap.put("%threatCount", getDashboardData(Dashboard.PSEUDO_THREAT_COUNT));
@@ -144,7 +144,7 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 		addFourthLevelRow("", taxonomyCountRightColumn);
 	}
 
-	private void addRankDirectThreats()
+	private void addRankDirectThreats() throws Exception
 	{
 		HashMap<String, String> threatTargetLinksTokenReplacementMap = new HashMap<String, String>();
 		threatTargetLinksTokenReplacementMap.put("%threatTargetLinkCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_COUNT));
