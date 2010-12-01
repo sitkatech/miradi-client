@@ -25,7 +25,6 @@ import java.util.Vector;
 import javax.swing.Icon;
 
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
-import org.miradi.dialogs.dashboard.HtmlResourceLongDescriptionProvider;
 import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
 
 public class ChoiceItem implements Comparable<Object>
@@ -74,7 +73,7 @@ public class ChoiceItem implements Comparable<Object>
 		this(codeToUse, labelToUse, colorToUse, new StaticLongDescriptionProvider(descriptionToUse));
 	}
 	
-	public ChoiceItem(String codeToUse, String labelToUse, HtmlResourceLongDescriptionProvider longDescriptionProviderToUse)
+	public ChoiceItem(String codeToUse, String labelToUse, AbstractLongDescriptionProvider longDescriptionProviderToUse)
 	{
 		this(codeToUse, labelToUse, (Color)null, longDescriptionProviderToUse);
 	}
