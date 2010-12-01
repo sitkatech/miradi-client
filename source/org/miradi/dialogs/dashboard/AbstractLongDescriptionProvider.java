@@ -38,6 +38,11 @@ abstract public class AbstractLongDescriptionProvider
 		return wizardStepName;
 	}
 	
+	public void setWizardStepName(String wizardStepNameToUse)
+	{
+		wizardStepName = wizardStepNameToUse;
+	}
+	
 	abstract public boolean hasWizardStepName();
 	
 	private String description;
