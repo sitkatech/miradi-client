@@ -132,7 +132,7 @@ public class DashboardMainPanel extends DisposablePanel
 	private JTabbedPane tabs;
 	private MainWindow mainWindow;
 	private DisposablePanel currentTab;
-	private OpenStandardsConceptualizeDashboardTab conceptualizeDashboardTab;
+	private PanelWithDescriptionPanel conceptualizeDashboardTab;
 	private PanelWithDescriptionPanel planActionsAndMonitoringTab;
 	private PanelWithDescriptionPanel actionsAndMonitoringTab;
 	private	PanelWithDescriptionPanel analyzeAdaptAndUseTab;
