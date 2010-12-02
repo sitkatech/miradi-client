@@ -25,7 +25,7 @@ import java.awt.event.ActionEvent;
 import java.util.Vector;
 
 import org.martus.swing.UiButton;
-import org.miradi.actions.EAMAction;
+import org.miradi.actions.MiradiAction;
 import org.miradi.actions.MainWindowAction;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.main.EAM;
@@ -79,7 +79,7 @@ public class ModelessDialogWithDirections extends ModelessDialogWithClose
 		@Override
 		public void doAction() throws Exception
 		{
-			EAMAction action = getRealJumpAction();
+			MiradiAction action = getRealJumpAction();
 			if(action == null)
 				return;
 			
@@ -102,14 +102,14 @@ public class ModelessDialogWithDirections extends ModelessDialogWithClose
 		@Override
 		public boolean shouldBeEnabled()
 		{
-			EAMAction action = getRealJumpAction();
+			MiradiAction action = getRealJumpAction();
 			if(action == null)
 				return false;
 			
 			return action.shouldBeEnabled();
 		}
 		
-		private EAMAction getRealJumpAction()
+		private MiradiAction getRealJumpAction()
 		{
 			Class jumpActionClass = getJumpAction();
 			if (jumpActionClass == null)

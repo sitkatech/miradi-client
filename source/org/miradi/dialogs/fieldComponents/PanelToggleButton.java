@@ -22,14 +22,14 @@ package org.miradi.dialogs.fieldComponents;
 
 import java.awt.Insets;
 
-import org.miradi.actions.EAMAction;
+import org.miradi.actions.MiradiAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
 
 public class PanelToggleButton extends UiToggleButton
 {
-	public PanelToggleButton(EAMAction action)
+	public PanelToggleButton(MiradiAction action)
 	{
 		super(action);
 		setMargin(new Insets(2,2,2,2));

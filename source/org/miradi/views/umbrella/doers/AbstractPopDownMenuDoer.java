@@ -27,7 +27,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
 import org.miradi.actions.Actions;
-import org.miradi.actions.EAMAction;
+import org.miradi.actions.MiradiAction;
 import org.miradi.actions.MainWindowAction;
 import org.miradi.main.EAM;
 import org.miradi.views.Doer;
@@ -71,8 +71,8 @@ abstract public class AbstractPopDownMenuDoer extends ObjectsDoer
 	private void populateMenu(JPopupMenu menuToFill)
 	{
 		menuToFill.removeAll();
-		Vector<EAMAction> actions = getAvailableActions();
-		for(EAMAction action : actions)
+		Vector<MiradiAction> actions = getAvailableActions();
+		for(MiradiAction action : actions)
 		{
 			if(action == null)
 				menuToFill.addSeparator();
@@ -81,10 +81,10 @@ abstract public class AbstractPopDownMenuDoer extends ObjectsDoer
 		}
 	}
 	
-	private Vector<EAMAction> getAvailableActions()
+	private Vector<MiradiAction> getAvailableActions()
 	{
 		Actions actions = getMainWindow().getActions();
-		Vector<EAMAction> available = new Vector<EAMAction>();
+		Vector<MiradiAction> available = new Vector<MiradiAction>();
 		Class[] allPossible = getAllPossibleActionClasses();
 		for(Class actionClass : allPossible)
 		{
@@ -104,7 +104,7 @@ abstract public class AbstractPopDownMenuDoer extends ObjectsDoer
 		return available;
 	}
 
-	private void stripExtraSeparators(Vector<EAMAction> actions)
+	private void stripExtraSeparators(Vector<MiradiAction> actions)
 	{
 		for(int i = 0; i < actions.size()-1; ++i)
 		{

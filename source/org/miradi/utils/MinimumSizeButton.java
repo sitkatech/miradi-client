@@ -24,12 +24,12 @@ import java.awt.Dimension;
 
 import javax.swing.Icon;
 
-import org.miradi.actions.EAMAction;
+import org.miradi.actions.MiradiAction;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 
 public class MinimumSizeButton extends PanelButton
 {
-	public MinimumSizeButton(EAMAction action)
+	public MinimumSizeButton(MiradiAction action)
 	{
 		super(action);
 	}

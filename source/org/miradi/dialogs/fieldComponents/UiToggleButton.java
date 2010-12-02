@@ -25,11 +25,11 @@ import java.awt.Dimension;
 import javax.swing.JToggleButton;
 
 import org.martus.swing.Utilities;
-import org.miradi.actions.EAMAction;
+import org.miradi.actions.MiradiAction;
 
 public class UiToggleButton extends JToggleButton
 {
-	public UiToggleButton(EAMAction action)
+	public UiToggleButton(MiradiAction action)
 	{
 		super(action);
 	}

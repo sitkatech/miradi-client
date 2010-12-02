@@ -28,7 +28,7 @@ import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import org.miradi.actions.EAMAction;
+import org.miradi.actions.MiradiAction;
 import org.miradi.actions.jump.ActionJumpWelcomeCreateStep;
 import org.miradi.actions.jump.ActionJumpWelcomeImportStep;
 import org.miradi.dialogs.fieldComponents.PanelButton;
@@ -97,7 +97,7 @@ public class NoProjectOverviewStep extends NoProjectWizardStep
 
 		private Component createButtonRow(Class jumpActionClass, String description)
 		{
-			EAMAction action = getMainWindow().getActions().get(jumpActionClass);
+			MiradiAction action = getMainWindow().getActions().get(jumpActionClass);
 			OneRowPanel panel = new OneRowPanel();
 			panel.setGaps(20);
 			panel.setBackground(AppPreferences.getWizardBackgroundColor());

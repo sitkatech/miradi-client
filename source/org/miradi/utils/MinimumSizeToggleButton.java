@@ -22,12 +22,12 @@ package org.miradi.utils;
 
 import java.awt.Dimension;
 
-import org.miradi.actions.EAMAction;
+import org.miradi.actions.MiradiAction;
 import org.miradi.dialogs.fieldComponents.PanelToggleButton;
 
 public class MinimumSizeToggleButton extends PanelToggleButton
 {
-	public MinimumSizeToggleButton(EAMAction action)
+	public MinimumSizeToggleButton(MiradiAction action)
 	{
 		super(action);
 	}

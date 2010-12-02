@@ -29,7 +29,7 @@ import javax.swing.JPanel;
 import org.martus.swing.HyperlinkHandler;
 import org.miradi.actions.ActionImportZippedConproProject;
 import org.miradi.actions.ActionImportZippedProjectFile;
-import org.miradi.actions.EAMAction;
+import org.miradi.actions.MiradiAction;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -109,12 +109,12 @@ public class WelcomeImportStep extends NoProjectWizardStep
 		{
 			if(buttonName.equals(CONTROL_IMPORT_MIRADI))
 			{
-				EAMAction action = getMainWindow().getActions().get(ActionImportZippedProjectFile.class);
+				MiradiAction action = getMainWindow().getActions().get(ActionImportZippedProjectFile.class);
 				action.doAction();
 			}
 			if (buttonName.equals(CONTROL_IMPORT_CONPRO))
 			{
-				EAMAction action = getMainWindow().getActions().get(ActionImportZippedConproProject.class);
+				MiradiAction action = getMainWindow().getActions().get(ActionImportZippedConproProject.class);
 				action.doAction();
 			}
 			else 

@@ -648,7 +648,7 @@ public class MainMenuBar extends JMenuBar
 	}
 	
 	
-	private JMenuItem createJMenuItemCenterLocation(EAMAction action, int mnemonic)
+	private JMenuItem createJMenuItemCenterLocation(MiradiAction action, int mnemonic)
 	{
 		JMenuItem centeredLocationAction = new MenuItemWithoutLocation(action);
 		centeredLocationAction.setMnemonic(mnemonic);
