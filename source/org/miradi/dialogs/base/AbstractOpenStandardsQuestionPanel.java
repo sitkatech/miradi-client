@@ -84,13 +84,12 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addRow(leftComponent, rightComponent, indentCount, choiceItem.getLongDescriptionProvider());
 	}
 	
-	protected void addFourthLevelRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
+	protected void addFourthLevelRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
 		JComponent leftComponent = new PanelTitleLabel(leftColumnTranslatedText);
 		JComponent rightComponent = new PanelTitleLabel(rightColumnTranslatedText);
 		
-		final int FORTH_LEVEL_INDENT_COUNT = 3;
-		addRow(leftComponent, rightComponent, FORTH_LEVEL_INDENT_COUNT, longDescriptionProvider);
+		addRow(leftComponent, rightComponent, indentCount, longDescriptionProvider);
 	}
 
 	private void addRow(JComponent leftComponent, JComponent rightComponent, final int indentCount, AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
