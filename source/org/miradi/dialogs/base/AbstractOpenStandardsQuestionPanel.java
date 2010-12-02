@@ -35,7 +35,6 @@ import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.DynamicChoiceWithRootChoiceItem;
-import org.miradi.utils.FillerLabel;
 
 abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectDataInputPanel
 {
@@ -74,10 +73,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	
 	protected void addRow(ChoiceItem choiceItem, int indentCount) throws Exception
 	{
-		JComponent leftComponent = new PanelTitleLabel(choiceItem.getLabel());
-		PanelTitleLabel rightComponent = new FillerLabel();
-		
-		addRow(leftComponent, rightComponent, indentCount, choiceItem.getLongDescriptionProvider());
+		addRow(choiceItem.getLabel(), "", choiceItem.getLongDescriptionProvider(), indentCount);
 	}
 	
 	protected void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
