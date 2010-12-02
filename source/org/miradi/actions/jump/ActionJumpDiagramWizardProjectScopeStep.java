@@ -19,11 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
+import org.miradi.actions.AbstractJumpAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionJumpDiagramWizardProjectScopeStep extends MainWindowAction
+public class ActionJumpDiagramWizardProjectScopeStep extends AbstractJumpAction
 {
 	public ActionJumpDiagramWizardProjectScopeStep(MainWindow mainWindowToUse)
 	{
@@ -34,6 +34,4 @@ public class ActionJumpDiagramWizardProjectScopeStep extends MainWindowAction
 	{
 		return EAM.text("Place scope on diagram");
 	}
-	
-
 }

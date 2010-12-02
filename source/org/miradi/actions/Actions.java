@@ -309,79 +309,79 @@ public class Actions
 		registerAction(new ActionCreateNamedTaggedObjectSet(mainWindow));
 		registerAction(new ActionInvokeDashboard(mainWindow));
 		
-		registerAction(new ActionJumpWelcomeCreateStep(mainWindow));
-		registerAction(new ActionJumpWelcomeImportStep(mainWindow));
-		registerAction(new ActionJumpSummaryWizardDefineProjectLeader(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpWelcomeCreateStep(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpWelcomeImportStep(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpSummaryWizardDefineProjectLeader(mainWindow));
 		registerJumpMenuAction(new ActionJumpSummaryWizardRolesAndResponsibilities(mainWindow));
 		registerJumpMenuAction(new ActionJumpSummaryWizardDefineTeamMembers(mainWindow));
 		registerJumpMenuAction(new ActionJumpSummaryWizardDefineProjecScope(mainWindow));
-		registerAction(new ActionJumpSummaryWizardDefineProjectVision(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpSummaryWizardDefineProjectVision(mainWindow));
 		registerJumpMenuAction(new ActionJumpDiagramWizardDefineTargetsStep(mainWindow));
-		registerAction(new ActionJumpDiagramWizardProjectScopeStep(mainWindow));
-		registerAction(new ActionJumpDiagramWizardReviewAndModifyTargetsStep(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpDiagramWizardProjectScopeStep(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpDiagramWizardReviewAndModifyTargetsStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpDiagramWizardHumanWelfareTargetsStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpTargetViabilityMethodChoiceStep(mainWindow));
-		registerAction(new ActionJumpTargetViability3Step(mainWindow));
-		registerAction(new ActionJumpTargetStressesStep(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpTargetViability3Step(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpTargetStressesStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpDiagramWizardIdentifyDirectThreatStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpThreatMatrixOverviewStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpDiagramWizardIdentifyIndirectThreatStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpAssessStakeholders(mainWindow));
-		registerAction(new ActionJumpAnalyzeProjectCapacity(mainWindow));
-		registerAction(new ActionJumpArticulateCoreAssumptions(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpAnalyzeProjectCapacity(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpArticulateCoreAssumptions(mainWindow));
 		registerJumpMenuAction(new ActionJumpDiagramWizardReviewModelAndAdjustStep(mainWindow));
-		registerAction(new ActionJumpGroundTruthRevise(mainWindow));
-		registerAction(new ActionJumpPlanningOverviewStep(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpGroundTruthRevise(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpPlanningOverviewStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpStrategicPlanDevelopGoalStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpSelectChainStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpStrategicPlanDevelopObjectivesStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpRankDraftStrategiesStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpDiagramWizardResultsChainSelectStrategyStep(mainWindow));
-		registerAction(new ActionJumpActivitiesAndActionPlan(mainWindow));
-		registerAction(new ActionJumpDevelopDraftStrategiesStep(mainWindow));
-		registerAction(new ActionJumpAnalyzeResourcesFeasibilityAndRisk(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpActivitiesAndActionPlan(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpDevelopDraftStrategiesStep(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpAnalyzeResourcesFeasibilityAndRisk(mainWindow));
 		registerJumpMenuAction(new ActionJumpDiagramWizardDefineAudienceStep(mainWindow));
-		registerAction(new ActionJumpDefineAudiences(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpDefineAudiences(mainWindow));
 		registerJumpMenuAction(new ActionJumpMonitoringWizardDefineIndicatorsStep(mainWindow));
-		registerAction(new ActionJumpSelectAppropriateMethods(mainWindow));
-		registerAction(new ActionJumpPlanDataStorage(mainWindow));
-		registerAction(new ActionJumpShorttermPlans(mainWindow));
-		registerAction(new ActionJumpScheduleOverviewStep(mainWindow));
-		registerAction(new ActionJumpDefineTasks(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpSelectAppropriateMethods(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpPlanDataStorage(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpShorttermPlans(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpScheduleOverviewStep(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpDefineTasks(mainWindow));
 //		registerAction(new ActionJumpFinancialOverviewStep(mainWindow));
-		registerAction(new ActionJumpTeamRoles(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpTeamRoles(mainWindow));
 		registerJumpMenuAction(new ActionJumpImplementWorkPlan(mainWindow));
-		registerAction(new ActionJumpRefinePlans(mainWindow));
-		registerAction(new ActionJumpAnalyzeData(mainWindow));
-		registerAction(new ActionJumpAnalyzeStrategies(mainWindow));
-		registerAction(new ActionJumpCommunicateResults(mainWindow));
-		registerAction(new ActionJumpAdaptAndMonitorPlans(mainWindow));
-		registerAction(new ActionJumpDocument(mainWindow));
-		registerAction(new ActionJumpShare(mainWindow));
-		registerAction(new ActionJumpCreate(mainWindow));
-		registerAction(new ActionJumpCloseTheLoop(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpRefinePlans(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpAnalyzeData(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpAnalyzeStrategies(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpCommunicateResults(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpAdaptAndMonitorPlans(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpDocument(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpShare(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpCreate(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpCloseTheLoop(mainWindow));
 		registerJumpMenuAction(new ActionJumpPlanningWizardFinalizeStrategicPlanStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpPlanningWizardFinalizeMonitoringPlanStep(mainWindow));
-		registerAction(new ActionJumpPlanningWizardDevelopOperationalPlan(mainWindow));
-		registerAction(new ActionJumpStrategicPlanViewAllGoals(mainWindow));
-		registerAction(new ActionJumpStrategicPlanViewAllObjectives(mainWindow));
-		registerAction(new ActionJumpStrategicPlanHowToConstructStep(mainWindow));
-		registerAction(new ActionJumpMonitoringWizardEditIndicatorsStep(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpPlanningWizardDevelopOperationalPlan(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpStrategicPlanViewAllGoals(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpStrategicPlanViewAllObjectives(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpStrategicPlanHowToConstructStep(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpMonitoringWizardEditIndicatorsStep(mainWindow));
 //		registerAction(new ActionJumpMonitoringPlanOverviewStep(mainWindow));
-		registerAction(new ActionJumpMonitoringWizardSelectMethodsStep(mainWindow));
-		registerAction(new ActionJumpWorkPlanAssignResourcesStep(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpMonitoringWizardSelectMethodsStep(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpWorkPlanAssignResourcesStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpWorkPlanDevelopMethodsAndTasksStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpWorkPlanDevelopActivitiesAndTasksStep(mainWindow));
-		registerAction(new ActionJumpWorkPlanAssignResourcesStep(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpWorkPlanAssignResourcesStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpDiagramWizardReviewModelAndAdjustStep(mainWindow));
-		registerAction(new ActionJumpThreatRatingWizardCheckTotalsStep(mainWindow));
-		registerAction(new ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep(mainWindow));
-		registerAction(new ActionJumpEditAllStrategiesStep(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpThreatRatingWizardCheckTotalsStep(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpEditAllStrategiesStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpWorkPlanDevelopActivitiesAndTasksStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpWorkPlanDevelopMethodsAndTasksStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpDevelopMap(mainWindow));
 		registerJumpMenuAction(new ActionJumpDiagramWizardCreateInitialModelStep(mainWindow));
-		registerAction(new ActionJumpFinalizeConceptualModel(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpFinalizeConceptualModel(mainWindow));
 		registerJumpMenuAction(new ActionJumpAssessResources(mainWindow));
 		registerJumpMenuAction(new ActionJumpAssessRisks(mainWindow));
 		registerJumpMenuAction(new ActionJumpPlanProjectLifespan(mainWindow));
@@ -390,7 +390,7 @@ public class Actions
 		registerJumpMenuAction(new ActionJumpDevelopFundingProposals(mainWindow));
 		registerJumpMenuAction(new ActionJumpObtainFinancing(mainWindow));
 		registerJumpMenuAction(new ActionJumpImplementStrategicAndMonitoringPlans(mainWindow));
-		registerAction(new ActionJumpPlanningWizardImplementPlans(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpPlanningWizardImplementPlans(mainWindow));
 		
 		registerJumpMenuAction(new ActionOpenStandardsConceptualizeParentMenu(mainWindow));
 		registerJumpMenuAction(new ActionOpenStandardsConceptualizeProcessStep1a(mainWindow));
@@ -418,13 +418,13 @@ public class Actions
 		registerJumpMenuAction(new ActionOpenStandardsCaptureAndShareLearningProcessStep5b(mainWindow));
 		registerJumpMenuAction(new ActionOpenStandardsCaptureAndShareLearningProcessStep5c(mainWindow));
 		
-		registerAction(new ActionJumpScheduleOverviewStep(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpScheduleOverviewStep(mainWindow));
 //		registerAction(new ActionJumpFinancialOverviewStep(mainWindow));
-		registerAction(new ActionJumpBudgetFutureDemo(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpBudgetFutureDemo(mainWindow));
 		registerAction(new ActionConfigureExport(mainWindow));
 		registerAction(new ActionDatabasesDemo(mainWindow));
 		registerAction(new ActionReportsDemo(mainWindow));
-		registerAction(new ActionJumpDiagramOverviewStep(mainWindow));
+		registerNonMenuJumpAction(new ActionJumpDiagramOverviewStep(mainWindow));
 //		registerAction(new ActionJumpWorkPlanOverviewStep(mainWindow));
 		registerAction(new ActionExportBudgetTableTree(mainWindow));
 		registerAction(new ActionCreateBendPoint(mainWindow));
@@ -559,6 +559,14 @@ public class Actions
 	private void registerAction(EAMAction action)
 	{
 		actions.put(action.getClass(), action);
+	}
+
+	private void registerNonMenuJumpAction(AbstractJumpAction action)
+	{
+		if (action.hasCode())
+			throw new RuntimeException("Attempting to register a menu action as a non menu action: " + action.getClass().getSimpleName());
+				
+		registerAction(action);
 	}
 	
 	private void registerJumpMenuAction(AbstractJumpMenuAction menuAction)

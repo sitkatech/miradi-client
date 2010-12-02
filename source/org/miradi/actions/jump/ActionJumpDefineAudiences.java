@@ -19,11 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
+import org.miradi.actions.AbstractJumpAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionJumpDefineAudiences extends MainWindowAction
+public class ActionJumpDefineAudiences extends AbstractJumpAction
 {
 	public ActionJumpDefineAudiences(MainWindow mainWindowToUse)
 	{
@@ -34,5 +34,4 @@ public class ActionJumpDefineAudiences extends MainWindowAction
 	{
 		return EAM.text("Clearly Define Audiences");
 	}
-	
 }

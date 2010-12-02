@@ -20,11 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
+import org.miradi.actions.AbstractJumpAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionJumpPlanningWizardImplementPlans extends MainWindowAction
+public class ActionJumpPlanningWizardImplementPlans extends AbstractJumpAction
 {
 	public ActionJumpPlanningWizardImplementPlans(MainWindow mainWindowToUse)
 	{
@@ -35,5 +35,4 @@ public class ActionJumpPlanningWizardImplementPlans extends MainWindowAction
 	{
 		return EAM.text("Implement plans");
 	}
-
 }
