@@ -556,7 +556,7 @@ public class Actions
 		HashMap<EAMAction,Boolean> newStates;
 	}
 	
-	void registerAction(EAMAction action)
+	private void registerAction(EAMAction action)
 	{
 		actions.put(action.getClass(), action);
 	}
