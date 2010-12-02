@@ -45,7 +45,7 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 	@Override
 	protected void addFourthLevelRow(String code, AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
 	{
-		AbstractJumpMenuAction action = getMainWindow().getActions().getMenuAction(code);
+		AbstractJumpMenuAction action = getMainWindow().getActions().getJumpMenuAction(code);
 		String stepName = getMainWindow().getWizardManager().stripJumpPrefix(action.getClass());
 		longDescriptionProvider.setWizardStepName(stepName);
 		if (code.equals(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE))

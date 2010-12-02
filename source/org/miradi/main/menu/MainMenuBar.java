@@ -528,7 +528,7 @@ public class MainMenuBar extends JMenuBar
 	public JMenu createQuestionBasedMenu(Actions actions, DynamicChoiceWithRootChoiceItem question) throws Exception
 	{
 		ChoiceItem headerChoiceItem  = question.getHeaderChoiceItem();
-		AbstractJumpMenuAction action = actions.getMenuAction(headerChoiceItem.getCode());
+		AbstractJumpMenuAction action = actions.getJumpMenuAction(headerChoiceItem.getCode());
 		JMenu headerMenu = new JMenu(headerChoiceItem.getLabel());
 		headerMenu.setMnemonic(action.getMnemonic());
 		addSubMenus(actions, headerMenu, headerChoiceItem.getChildren());
@@ -542,7 +542,7 @@ public class MainMenuBar extends JMenuBar
 		{
 			JMenu menu = new JMenu(subHeaderChoiceItem.getLabel());
 			String code = subHeaderChoiceItem.getCode();
-			AbstractJumpMenuAction action = actions.getMenuAction(code);
+			AbstractJumpMenuAction action = actions.getJumpMenuAction(code);
 			menu.setMnemonic(action.getMnemonic());
 			headerMenu.add(menu);
 			ChoiceItemWithChildren leafChildren = (ChoiceItemWithChildren) subHeaderChoiceItem;
@@ -554,7 +554,7 @@ public class MainMenuBar extends JMenuBar
 	{
 		for(ChoiceItem leafChoiceItem : leafChildren)
 		{
-			AbstractJumpMenuAction action = actions.getMenuAction(leafChoiceItem.getCode());
+			AbstractJumpMenuAction action = actions.getJumpMenuAction(leafChoiceItem.getCode());
 			if (action == null)
 			{
 				JMenuItem disabledMenuItem = new JMenuItem(leafChoiceItem.getLabel());
