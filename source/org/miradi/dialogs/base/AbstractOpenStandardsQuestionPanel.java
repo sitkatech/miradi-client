@@ -81,11 +81,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		JComponent leftComponent = new PanelTitleLabel(leftColumnTranslatedText);
 		JComponent rightComponent = new PanelTitleLabel(rightColumnTranslatedText);
 		
-		addRow(leftComponent, rightComponent, indentCount, longDescriptionProvider);
-	}
-
-	private void addRow(JComponent leftComponent, JComponent rightComponent, final int indentCount, AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
-	{
 		Font font = getFontBasedOnIndentation(indentCount);
 		leftComponent.setFont(font);
 		rightComponent.setFont(font);
@@ -95,7 +90,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		add(box);
 		add(rightComponent);
 	}
-	
+
 	private Box createHorizontalBoxWithIndents(int indentCount)
 	{
 		Box box = Box.createHorizontalBox();
