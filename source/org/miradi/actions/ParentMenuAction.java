@@ -22,7 +22,7 @@ package org.miradi.actions;
 
 import org.miradi.main.MainWindow;
 
-abstract public class ParentMenuAction extends AbstractMenuAction
+abstract public class ParentMenuAction extends AbstractJumpMenuAction
 {
 	public ParentMenuAction(MainWindow mainWindowToUse, String labelToUse)
 	{

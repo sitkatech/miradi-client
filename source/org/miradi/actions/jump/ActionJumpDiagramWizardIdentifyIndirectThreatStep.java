@@ -21,11 +21,11 @@ package org.miradi.actions.jump;
 
 import java.awt.event.KeyEvent;
 
-import org.miradi.actions.AbstractMenuAction;
+import org.miradi.actions.AbstractJumpMenuAction;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
-public class ActionJumpDiagramWizardIdentifyIndirectThreatStep extends AbstractMenuAction
+public class ActionJumpDiagramWizardIdentifyIndirectThreatStep extends AbstractJumpMenuAction
 {
 	public ActionJumpDiagramWizardIdentifyIndirectThreatStep(MainWindow mainWindowToUse)
 	{

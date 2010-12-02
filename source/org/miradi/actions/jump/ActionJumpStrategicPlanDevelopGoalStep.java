@@ -21,11 +21,11 @@ package org.miradi.actions.jump;
 
 import java.awt.event.KeyEvent;
 
-import org.miradi.actions.AbstractMenuAction;
+import org.miradi.actions.AbstractJumpMenuAction;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
 
-public class ActionJumpStrategicPlanDevelopGoalStep extends AbstractMenuAction
+public class ActionJumpStrategicPlanDevelopGoalStep extends AbstractJumpMenuAction
 {
 	public ActionJumpStrategicPlanDevelopGoalStep(MainWindow mainWindowToUse)
 	{

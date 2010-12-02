@@ -22,7 +22,7 @@ package org.miradi.dialogs.base;
 
 import java.util.HashMap;
 
-import org.miradi.actions.AbstractMenuAction;
+import org.miradi.actions.AbstractJumpMenuAction;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.main.EAM;
 import org.miradi.objects.Dashboard;
@@ -45,7 +45,7 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 	@Override
 	protected void addFourthLevelRow(String code, AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
 	{
-		AbstractMenuAction action = getMainWindow().getActions().getMenuAction(code);
+		AbstractJumpMenuAction action = getMainWindow().getActions().getMenuAction(code);
 		String stepName = getMainWindow().getWizardManager().stripJumpPrefix(action.getClass());
 		longDescriptionProvider.setWizardStepName(stepName);
 		if (code.equals(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE))
