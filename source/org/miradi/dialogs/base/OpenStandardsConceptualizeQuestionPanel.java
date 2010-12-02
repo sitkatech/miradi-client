@@ -94,7 +94,7 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 
 	private void addTeamMembersRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addFourthLevelRow(EAM.text("Team Members:"), getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT), longDescriptionProvider, indentCount);
+		addRow(EAM.text("Team Members:"), getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT), longDescriptionProvider, indentCount);
 	}
 
 	private void addAgreeOnRolesAndResponsibilities()
@@ -105,7 +105,7 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 	{
 		String scopeVisionCount = getDashboardData(Dashboard.PSEUDO_PROJECT_SCOPE_WORD_COUNT);
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("Created (%s chars)"), scopeVisionCount);
-		addFourthLevelRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
+		addRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
 	}
 
 	private void addDevelopMapOfProjectArea()
@@ -118,13 +118,13 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 		tokenReplacementMap.put("%targetCount", getDashboardData(Dashboard.PSEUDO_TARGET_COUNT));
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("%targetCount created"), tokenReplacementMap);
 		
-		addFourthLevelRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
+		addRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
 	}
 
 	private void addAddHumanWelfareTargetsIfDesired(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("%s created"), getDashboardData(Dashboard.PSEUDO_HUMAN_WELFARE_TARGET_COUNT));
-		addFourthLevelRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
+		addRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
 	}
 
 	private void addDescribeStatusOfTargets(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
@@ -132,12 +132,12 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 		HashMap<String, String> statusDescriptionTokenReplacementMap1 = new HashMap<String, String>();
 		statusDescriptionTokenReplacementMap1.put("%targetWithKeaCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_KEA_COUNT));
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("%targetWithKeaCount targets have KEA"), statusDescriptionTokenReplacementMap1);
-		addFourthLevelRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
+		addRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
 		
 		HashMap<String, String> statusDescriptionTokenReplacementMap2 = new HashMap<String, String>();
 		statusDescriptionTokenReplacementMap2.put("%targetWithSimpleViabilityCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT));
 		String leftColumnTranslatedText = EAM.substitute(EAM.text("%targetWithSimpleViabilityCount targets have simple viablity information"), statusDescriptionTokenReplacementMap2);
-		addFourthLevelRow("", leftColumnTranslatedText, longDescriptionProvider, indentCount);
+		addRow("", leftColumnTranslatedText, longDescriptionProvider, indentCount);
 	}
 
 	private void addIdentifyDirectThreats(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
@@ -147,10 +147,10 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 		threatsTokenReplacementMap.put("%threatWithTaxonomyCount", getDashboardData(Dashboard.PSEUDO_THREAT_WITH_TAXONOMY_COUNT));
 
 		String threatCountRightColumn = EAM.substitute(EAM.text("%threatCount Direct Threats created"), threatsTokenReplacementMap);
-		addFourthLevelRow("", threatCountRightColumn, longDescriptionProvider, indentCount);
+		addRow("", threatCountRightColumn, longDescriptionProvider, indentCount);
 		
 		String taxonomyCountRightColumn = EAM.substitute(EAM.text("%threatWithTaxonomyCount of %threatCount have taxonomy assignments"), threatsTokenReplacementMap);
-		addFourthLevelRow("", taxonomyCountRightColumn, longDescriptionProvider, indentCount);
+		addRow("", taxonomyCountRightColumn, longDescriptionProvider, indentCount);
 	}
 
 	private void addRankDirectThreats(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
@@ -160,7 +160,7 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 		threatTargetLinksTokenReplacementMap.put("%threatTargetWithRatingCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT));
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("%threatTargetWithRatingCount of %threatTargetLinkCount threat/target links ranked"), threatTargetLinksTokenReplacementMap);
 
-		addFourthLevelRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
+		addRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
 	}
 
 	private void addIdentifyIndirectThreatsAndOpportunities()
