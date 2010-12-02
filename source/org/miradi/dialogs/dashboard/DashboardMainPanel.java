@@ -50,7 +50,7 @@ public class DashboardMainPanel extends DisposablePanel
 		
 		disposeTab(conceptualizeDashboardTab);
 		disposeTab(planActionsAndMonitoringTab);
-		disposeTab(actionsAndMonitoringTab);
+		disposeTab(implementActionsAndMonitoringTab);
 		disposeTab(analyzeAdaptAndUseTab);
 		disposeTab(captureAndShareLearningTab);
 	}
@@ -89,7 +89,7 @@ public class DashboardMainPanel extends DisposablePanel
 	{
 		conceptualizeDashboardTab = OpenStandardsConceptualizeDashboardTab.createLeftPanel(getMainWindow());
 		planActionsAndMonitoringTab = OpenStandarsPlanActionsAndMonitoringTab.createLeftPanel(getMainWindow());
-		actionsAndMonitoringTab = ImplementActionsAndMonitoringDashboardTab.createTab(getMainWindow());
+		implementActionsAndMonitoringTab = OpenStandardsImplementActionsAndMonitoringTab.createLeftPanel(getMainWindow());
 		analyzeAdaptAndUseTab = AnalyzeAdaptAndUseTab.createTab(getMainWindow());
 		captureAndShareLearningTab = CaptureAndShareLearningTab.createTab(getMainWindow());
 	}
@@ -98,7 +98,7 @@ public class DashboardMainPanel extends DisposablePanel
 	{
 		addTab(conceptualizeDashboardTab);
 		addTab(planActionsAndMonitoringTab);
-		addTab(actionsAndMonitoringTab);
+		addTab(implementActionsAndMonitoringTab);
 		addTab(analyzeAdaptAndUseTab);
 		addTab(captureAndShareLearningTab);
 	}
@@ -134,7 +134,7 @@ public class DashboardMainPanel extends DisposablePanel
 	private DisposablePanel currentTab;
 	private PanelWithDescriptionPanel conceptualizeDashboardTab;
 	private PanelWithDescriptionPanel planActionsAndMonitoringTab;
-	private PanelWithDescriptionPanel actionsAndMonitoringTab;
+	private PanelWithDescriptionPanel implementActionsAndMonitoringTab;
 	private	PanelWithDescriptionPanel analyzeAdaptAndUseTab;
 	private PanelWithDescriptionPanel captureAndShareLearningTab;
 }
