@@ -47,7 +47,8 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		question = questionToUse;
 		rowSelectionHandler = new SingleRowSelectionHandler();
 		
-		addRows(question.getHeaderChoiceItem());
+		final int FIRST_LEVEL_INDENT_COUNT = 0;
+		addRows(question.getHeaderChoiceItem(), FIRST_LEVEL_INDENT_COUNT);
 	}
 	
 	public void addRowSelectionListener(ListSelectionListener listener)
@@ -60,17 +61,19 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		rowSelectionHandler.removeSelectionListener(listener);
 	}
 	
-	private void addRows(ChoiceItem choiceItem) throws Exception
+	//NOTE this recursive method is still in progress.  Some of the commented code will be used later.
+	private void addRows(ChoiceItem choiceItem, int indentCount) throws Exception
 	{
 		Vector<ChoiceItem> children = choiceItem.getChildren();
-		addRow(choiceItem);
+		addRow(choiceItem, indentCount);
+		++indentCount; 
 		for (ChoiceItem thisChoiceItem : children)
 		{
-			addRows(thisChoiceItem);
+			addRows(thisChoiceItem, indentCount);
 		}
 	}
 	
-	protected void addRow(ChoiceItem choiceItem) throws Exception
+	protected void addRow(ChoiceItem choiceItem, int indentCount) throws Exception
 	{
 		JComponent leftComponent = new PanelTitleLabel(choiceItem.getLabel());
 		leftComponent.setFont(getRawFont());
@@ -78,7 +81,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		PanelTitleLabel rightComponent = new FillerLabel();
 		rightComponent.setFont(getRawFont());
 		
-		addRow(leftComponent, rightComponent, 0, choiceItem.getLongDescriptionProvider());
+		addRow(leftComponent, rightComponent, indentCount, choiceItem.getLongDescriptionProvider());
 	}
 
 	
