@@ -61,7 +61,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		rowSelectionHandler.removeSelectionListener(listener);
 	}
 	
-	//NOTE this recursive method is still in progress.  Some of the commented code will be used later.
 	private void addRows(ChoiceItem choiceItem, int indentCount) throws Exception
 	{
 		Vector<ChoiceItem> children = choiceItem.getChildren();
@@ -93,17 +92,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		final int FORTH_LEVEL_INDENT_COUNT = 3;
 		addRow(leftComponent, rightComponent, FORTH_LEVEL_INDENT_COUNT, longDescriptionProvider);
 	}
-
-//	private void addRow(ChoiceItem choiceItem, final int indentCount, Font font) throws Exception
-//	{
-//		JComponent leftComponent = new PanelTitleLabel(choiceItem.getLabel());
-//		leftComponent.setFont(font);
-//		
-//		PanelTitleLabel rightComponent = new FillerLabel();
-//		rightComponent.setFont(font);
-//		
-//		addRow(leftComponent, rightComponent, indentCount, choiceItem.getLongDescriptionProvider());
-//	}
 
 	private void addRow(JComponent leftComponent, JComponent rightComponent, final int indentCount, AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
 	{
