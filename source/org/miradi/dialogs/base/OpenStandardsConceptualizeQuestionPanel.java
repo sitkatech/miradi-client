@@ -53,31 +53,31 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 		String stepName = getMainWindow().getWizardManager().stripJumpPrefix(action.getClass());
 		longDescriptionProvider.setWizardStepName(stepName);
 		if (code.equals(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE))
-			addTeamMembersRow(longDescriptionProvider);
+			addTeamMembersRow(longDescriptionProvider, indentCount);
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.AGREE_ON_ROLES_AND_RESPONSIBILITIES_CODE))
 			addAgreeOnRolesAndResponsibilities();
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.DEFINE_PROJECT_SCOPE_CODE))
-			addDefineProjectScope(longDescriptionProvider);
+			addDefineProjectScope(longDescriptionProvider, indentCount);
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.DEVELOP_MAP_OF_PROJECT_AREA_CODE))
 			addDevelopMapOfProjectArea();
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.SELECT_CONSERVATION_TARGETS_CODE))
-			addSelectConservationTargets(longDescriptionProvider);
+			addSelectConservationTargets(longDescriptionProvider, indentCount);
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.ADD_HUMAN_WELFARE_TARGETS_IF_DESIRED_CODE))
-			addAddHumanWelfareTargetsIfDesired(longDescriptionProvider);
+			addAddHumanWelfareTargetsIfDesired(longDescriptionProvider, indentCount);
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.DESCRIBE_STATUS_OF_TARGETS_CODE))
-			addDescribeStatusOfTargets(longDescriptionProvider);
+			addDescribeStatusOfTargets(longDescriptionProvider, indentCount);
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE))
-			addIdentifyDirectThreats(longDescriptionProvider);
+			addIdentifyDirectThreats(longDescriptionProvider, indentCount);
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.RANK_DIRECT_THREATS_CODE))
-			addRankDirectThreats(longDescriptionProvider);
+			addRankDirectThreats(longDescriptionProvider, indentCount);
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.IDENTIFY_INDIRECT_THREATS_AND_OPPORTUNITIES_CODE))
 			addIdentifyIndirectThreatsAndOpportunities();
@@ -92,75 +92,75 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 			addGroundTruthAndReviseModel();
 	}
 
-	private void addTeamMembersRow(AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
+	private void addTeamMembersRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addFourthLevelRow(EAM.text("Team Members:"), getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT), longDescriptionProvider);
+		addFourthLevelRow(EAM.text("Team Members:"), getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT), longDescriptionProvider, indentCount);
 	}
 
 	private void addAgreeOnRolesAndResponsibilities()
 	{
 	}
 
-	private void addDefineProjectScope(AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
+	private void addDefineProjectScope(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
 		String scopeVisionCount = getDashboardData(Dashboard.PSEUDO_PROJECT_SCOPE_WORD_COUNT);
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("Created (%s chars)"), scopeVisionCount);
-		addFourthLevelRow("", rightColumnTranslatedText, longDescriptionProvider);
+		addFourthLevelRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
 	}
 
 	private void addDevelopMapOfProjectArea()
 	{
 	}
 
-	private void addSelectConservationTargets(AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
+	private void addSelectConservationTargets(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%targetCount", getDashboardData(Dashboard.PSEUDO_TARGET_COUNT));
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("%targetCount created"), tokenReplacementMap);
 		
-		addFourthLevelRow("", rightColumnTranslatedText, longDescriptionProvider);
+		addFourthLevelRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
 	}
 
-	private void addAddHumanWelfareTargetsIfDesired(AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
+	private void addAddHumanWelfareTargetsIfDesired(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("%s created"), getDashboardData(Dashboard.PSEUDO_HUMAN_WELFARE_TARGET_COUNT));
-		addFourthLevelRow("", rightColumnTranslatedText, longDescriptionProvider);
+		addFourthLevelRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
 	}
 
-	private void addDescribeStatusOfTargets(AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
+	private void addDescribeStatusOfTargets(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
 		HashMap<String, String> statusDescriptionTokenReplacementMap1 = new HashMap<String, String>();
 		statusDescriptionTokenReplacementMap1.put("%targetWithKeaCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_KEA_COUNT));
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("%targetWithKeaCount targets have KEA"), statusDescriptionTokenReplacementMap1);
-		addFourthLevelRow("", rightColumnTranslatedText, longDescriptionProvider);
+		addFourthLevelRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
 		
 		HashMap<String, String> statusDescriptionTokenReplacementMap2 = new HashMap<String, String>();
 		statusDescriptionTokenReplacementMap2.put("%targetWithSimpleViabilityCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT));
 		String leftColumnTranslatedText = EAM.substitute(EAM.text("%targetWithSimpleViabilityCount targets have simple viablity information"), statusDescriptionTokenReplacementMap2);
-		addFourthLevelRow("", leftColumnTranslatedText, longDescriptionProvider);
+		addFourthLevelRow("", leftColumnTranslatedText, longDescriptionProvider, indentCount);
 	}
 
-	private void addIdentifyDirectThreats(AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
+	private void addIdentifyDirectThreats(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
 		HashMap<String, String> threatsTokenReplacementMap = new HashMap<String, String>();
 		threatsTokenReplacementMap.put("%threatCount", getDashboardData(Dashboard.PSEUDO_THREAT_COUNT));
 		threatsTokenReplacementMap.put("%threatWithTaxonomyCount", getDashboardData(Dashboard.PSEUDO_THREAT_WITH_TAXONOMY_COUNT));
 
 		String threatCountRightColumn = EAM.substitute(EAM.text("%threatCount Direct Threats created"), threatsTokenReplacementMap);
-		addFourthLevelRow("", threatCountRightColumn, longDescriptionProvider);
+		addFourthLevelRow("", threatCountRightColumn, longDescriptionProvider, indentCount);
 		
 		String taxonomyCountRightColumn = EAM.substitute(EAM.text("%threatWithTaxonomyCount of %threatCount have taxonomy assignments"), threatsTokenReplacementMap);
-		addFourthLevelRow("", taxonomyCountRightColumn, longDescriptionProvider);
+		addFourthLevelRow("", taxonomyCountRightColumn, longDescriptionProvider, indentCount);
 	}
 
-	private void addRankDirectThreats(AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
+	private void addRankDirectThreats(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
 		HashMap<String, String> threatTargetLinksTokenReplacementMap = new HashMap<String, String>();
 		threatTargetLinksTokenReplacementMap.put("%threatTargetLinkCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_COUNT));
 		threatTargetLinksTokenReplacementMap.put("%threatTargetWithRatingCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT));
 		String rightColumnTranslatedText = EAM.substitute(EAM.text("%threatTargetWithRatingCount of %threatTargetLinkCount threat/target links ranked"), threatTargetLinksTokenReplacementMap);
 
-		addFourthLevelRow("", rightColumnTranslatedText, longDescriptionProvider);
+		addFourthLevelRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
 	}
 
 	private void addIdentifyIndirectThreatsAndOpportunities()
