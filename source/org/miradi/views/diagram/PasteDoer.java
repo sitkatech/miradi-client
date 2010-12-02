@@ -21,6 +21,7 @@ package org.miradi.views.diagram;
 
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
+import org.miradi.dialogs.base.ConfirmDialog;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.TransferableMiradiList;
@@ -88,7 +89,24 @@ public class PasteDoer extends AbstractPasteDoer
 		if (isPastingInSameDiagramAsCopiedFrom(list))
 			return AS_COPY_BUTTON;
 		
-		return AS_SHARED_BUTTON;
+		String confirmationTextToUse = "<html><div class='WizardText'>" + EAM.text(
+				"This will paste shared copies of the factors, " +
+				"meaning that any changes made in this diagram will also be reflected " +
+				"in other diagrams that these factors appear. " +
+				"In other words, each factor will only exist once in this project, " +
+				"but will be visible in multiple diagram pages. " +
+				"Normally, this is what you want.<br><br>" +
+				"If you really wanted to create duplicate copies of the factors, " +
+				"separate from the originals, " +
+				"you must cancel this operation, " +
+				"return to the diagram where these factors originated, " +
+				"and paste them there. " +
+				"Then use the &lt;Cut&gt; command to move them to the clipboard, " +
+				"return to this diagram, and paste the new copies here.");
+		if(ConfirmDialog.confirm(getMainWindow(), EAM.text("Confirm Paste Shared Factors"), confirmationTextToUse, AS_SHARED_BUTTON))
+			return AS_SHARED_BUTTON;
+		
+		return CANCEL_BUTTON;
 	}
 
 	private boolean isPastingInSameDiagramAsCopiedFrom(TransferableMiradiList list)
@@ -167,7 +185,7 @@ public class PasteDoer extends AbstractPasteDoer
 		EAM.showHtmlMessageOkDialog(messageFileName, "Paste");
 	}
 
-	private final static String AS_COPY_BUTTON = EAM.text("Button|As Copy");
-	private final static String AS_SHARED_BUTTON = EAM.text("Button|Shared");
+	private final static String AS_COPY_BUTTON = EAM.text("Button|Paste As Copies");
+	private final static String AS_SHARED_BUTTON = EAM.text("Button|Paste Shared");
 	private final static String messageFileName = "NothingPastedMessage.html";
 }
