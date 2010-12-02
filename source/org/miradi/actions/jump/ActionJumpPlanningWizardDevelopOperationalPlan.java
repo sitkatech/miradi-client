@@ -20,12 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.actions.jump;
 
-import org.miradi.actions.MainWindowAction;
+import org.miradi.actions.AbstractJumpAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionJumpPlanningWizardDevelopOperationalPlan extends
-		MainWindowAction
+public class ActionJumpPlanningWizardDevelopOperationalPlan extends AbstractJumpAction
 {
 	public ActionJumpPlanningWizardDevelopOperationalPlan(MainWindow mainWindowToUse)
 	{
