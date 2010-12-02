@@ -23,7 +23,7 @@ package org.miradi.actions;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.OpenStandardsCaptureAndShareLearningQuestion;
 
-public class ActionOpenStandardsCaptureAndShareLearningProcessStep5c extends AbstractMenuAction
+public class ActionOpenStandardsCaptureAndShareLearningProcessStep5c extends AbstractJumpMenuAction
 {
 	public ActionOpenStandardsCaptureAndShareLearningProcessStep5c(MainWindow mainWindowToUse)
 	{

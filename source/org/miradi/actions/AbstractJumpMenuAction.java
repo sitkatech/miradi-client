@@ -22,9 +22,9 @@ package org.miradi.actions;
 
 import org.miradi.main.MainWindow;
 
-abstract public class AbstractMenuAction extends AbstractJumpAction
+abstract public class AbstractJumpMenuAction extends AbstractJumpAction
 {
-	public AbstractMenuAction(MainWindow mainWindowToUse, String label)
+	public AbstractJumpMenuAction(MainWindow mainWindowToUse, String label)
 	{
 		super(mainWindowToUse, label);
 	}
