@@ -47,6 +47,7 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 	protected void addRow(ChoiceItem choiceItem, int indentCount) throws Exception
 	{
 		super.addRow(choiceItem, indentCount);
+		
 		String code = choiceItem.getCode();
 		AbstractLongDescriptionProvider longDescriptionProvider = choiceItem.getLongDescriptionProvider();
 		AbstractJumpMenuAction action = getMainWindow().getActions().getJumpMenuAction(code);
