@@ -85,44 +85,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addRow(leftComponent, rightComponent, indentCount, choiceItem.getLongDescriptionProvider());
 	}
 
-//	private void addFirstLevelRow(ChoiceItem choiceItem) throws Exception
-//	{
-//		final int FIRST_LEVEL_INDENT_COUNT = 0;
-//		
-//		addRow(choiceItem, FIRST_LEVEL_INDENT_COUNT, createFirstLevelFont());
-//	}
-//
-//	private void addSecondLevelRows(Vector<ChoiceItem> secondLevelChildren) throws Exception
-//	{
-//		final int SECOND_LEVEL_INDENT_COUNT = 1;
-//		for(ChoiceItem secondLevelChild : secondLevelChildren)
-//		{
-//			addRow(secondLevelChild, SECOND_LEVEL_INDENT_COUNT, createSecondLevelFont());
-//			addThirdLevelRows(secondLevelChild.getChildren());
-//		}
-//	}
-//	
-//	private void addThirdLevelRows(Vector<ChoiceItem> thirdLevelChildren) throws Exception
-//	{
-//		for (ChoiceItem thirdLevelChild : thirdLevelChildren)
-//		{
-//			addThirdLevelRow(thirdLevelChild.getLabel(), thirdLevelChild.getLongDescriptionProvider());
-//			addFourthLevelRow(thirdLevelChild.getCode(), thirdLevelChild.getLongDescriptionProvider());
-//		}
-//	}
-
-//	private void addThirdLevelRow(String label, AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
-//	{
-//		JComponent leftComponent = new PanelTitleLabel(label);
-//		leftComponent.setFont(getRawFont());
-//		
-//		JComponent rightComponent = new FillerLabel();
-//		rightComponent.setFont(getRawFont());
-//		
-//		final int THIRD_LEVEL_INDENT_COUNT = 2;
-//		addRow(leftComponent, rightComponent, THIRD_LEVEL_INDENT_COUNT, longDescriptionProvider);
-//	}
-
 	protected void addFourthLevelRow(String code, AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
 	{
 		addFourthLevelRow(new FillerLabel(), new FillerLabel(), longDescriptionProvider);
