@@ -127,7 +127,7 @@ public class Actions
 	public Actions(MainWindow mainWindow)
 	{
 		actions = new HashMap<Class, EAMAction>();
-		codeToMenuActionMap = new HashMap<String, AbstractMenuAction>();
+		codeToMenuActionMap = new HashMap<String, AbstractJumpMenuAction>();
 		
 		registerAction(new ActionAbout(mainWindow));
 		registerAction(new ActionAboutBenetech(mainWindow));
@@ -561,17 +561,17 @@ public class Actions
 		actions.put(action.getClass(), action);
 	}
 	
-	private void registerMenuAction(AbstractMenuAction menuAction)
+	private void registerMenuAction(AbstractJumpMenuAction menuAction)
 	{
 		codeToMenuActionMap.put(menuAction.getCode(), menuAction);
 		registerAction(menuAction);
 	}
 	
-	public AbstractMenuAction getMenuAction(String code)
+	public AbstractJumpMenuAction getMenuAction(String code)
 	{
 		return codeToMenuActionMap.get(code);
 	}
 
 	private Map<Class, EAMAction> actions;
-	private HashMap<String, AbstractMenuAction> codeToMenuActionMap;
+	private HashMap<String, AbstractJumpMenuAction> codeToMenuActionMap;
 }
