@@ -22,20 +22,15 @@ package org.miradi.actions;
 
 import org.miradi.main.MainWindow;
 
-abstract public class AbstractMenuAction extends AbstractJumpAction
+abstract public class AbstractJumpAction extends MainWindowAction
 {
-	public AbstractMenuAction(MainWindow mainWindowToUse, String label)
+	public AbstractJumpAction(MainWindow mainWindowToUse, String label)
 	{
 		super(mainWindowToUse, label);
 	}
 	
-	@Override
 	public boolean hasCode()
 	{
-		return true;
+		return false;
 	}
-	
-	abstract public int getMnemonic();
-	
-	abstract public String getCode();
 }
