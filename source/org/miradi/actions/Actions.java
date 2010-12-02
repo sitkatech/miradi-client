@@ -563,6 +563,9 @@ public class Actions
 	
 	private void registerJumpMenuAction(AbstractJumpMenuAction menuAction)
 	{
+		if (!menuAction.hasCode())
+			throw new RuntimeException("Trying to register a non menu action as a menu action");
+		
 		codeToJumpMenuActionMap.put(menuAction.getCode(), menuAction);
 		registerAction(menuAction);
 	}
