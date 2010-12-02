@@ -567,7 +567,7 @@ public class Actions
 		registerAction(menuAction);
 	}
 	
-	public AbstractJumpMenuAction getMenuAction(String code)
+	public AbstractJumpMenuAction getJumpMenuAction(String code)
 	{
 		return codeToMenuActionMap.get(code);
 	}
