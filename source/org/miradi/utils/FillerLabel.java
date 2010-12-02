@@ -24,4 +24,8 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 
 public class FillerLabel extends PanelTitleLabel
 {
+	public FillerLabel()
+	{
+		super(" ");
+	}
 }
