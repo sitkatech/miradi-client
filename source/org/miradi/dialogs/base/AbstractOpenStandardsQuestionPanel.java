@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import java.awt.Font;
+import java.util.HashMap;
 import java.util.Vector;
 
 import javax.swing.Box;
@@ -30,6 +31,7 @@ import javax.swing.event.ListSelectionListener;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.TwoColumnGridLayout;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
@@ -89,6 +91,18 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		box.add(leftComponent);
 		add(box);
 		add(rightComponent);
+	}
+	
+	protected void addRow(HashMap<String, String> tokenReplacementMap, String text, AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
+	{
+		String rightColumnTranslatedText = EAM.substitute(text, tokenReplacementMap);		
+		addRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
+	}
+	
+	protected void addRow(AbstractLongDescriptionProvider longDescriptionProvider,	int indentCount, String tag, String text) throws Exception
+	{
+		String rightColumnTranslatedText = EAM.substitute(text, getDashboardData(tag));
+		addRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
 	}
 
 	private Box createHorizontalBoxWithIndents(int indentCount)
