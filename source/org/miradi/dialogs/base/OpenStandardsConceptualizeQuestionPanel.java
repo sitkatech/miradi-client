@@ -27,6 +27,7 @@ import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.main.EAM;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
 public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandardsQuestionPanel
@@ -43,8 +44,11 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 	}
 	
 	@Override
-	protected void addFourthLevelRow(String code, AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
+	protected void addRow(ChoiceItem choiceItem, int indentCount) throws Exception
 	{
+		super.addRow(choiceItem, indentCount);
+		String code = choiceItem.getCode();
+		AbstractLongDescriptionProvider longDescriptionProvider = choiceItem.getLongDescriptionProvider();
 		AbstractJumpMenuAction action = getMainWindow().getActions().getJumpMenuAction(code);
 		String stepName = getMainWindow().getWizardManager().stripJumpPrefix(action.getClass());
 		longDescriptionProvider.setWizardStepName(stepName);
