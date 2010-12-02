@@ -25,7 +25,7 @@ import javax.swing.Action;
 import javax.swing.Icon;
 
 import org.martus.swing.UiButton;
-import org.miradi.actions.EAMAction;
+import org.miradi.actions.MiradiAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -55,7 +55,7 @@ public class PanelButton extends UiButton
 		setFont(getMainWindow().getUserDataPanelFont());
 	}
 
-	public PanelButton(EAMAction action)
+	public PanelButton(MiradiAction action)
 	{
 		this((Action)action);
 		setToolTipText(action.getToolTipText());

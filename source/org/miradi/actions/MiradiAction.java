@@ -25,14 +25,14 @@ import javax.swing.Icon;
 import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.views.Doer;
 
-public abstract class EAMAction extends AbstractAction
+public abstract class MiradiAction extends AbstractAction
 {
-	public EAMAction(String label, String icon)
+	public MiradiAction(String label, String icon)
 	{
 		this(label, new MiradiResourceImageIcon(icon));
 	}
 	
-	public EAMAction(String label, Icon icon)
+	public MiradiAction(String label, Icon icon)
 	{
 		super(label, icon);
 	}

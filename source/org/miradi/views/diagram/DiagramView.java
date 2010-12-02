@@ -123,7 +123,7 @@ import org.miradi.actions.ActionTreeCreateRelevancyActivity;
 import org.miradi.actions.ActionZoomIn;
 import org.miradi.actions.ActionZoomOut;
 import org.miradi.actions.ActionZoomToFit;
-import org.miradi.actions.EAMAction;
+import org.miradi.actions.MiradiAction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.ChainWalker;
 import org.miradi.diagram.DiagramComponent;
@@ -422,7 +422,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if (!isStategyBrainstormMode())
 			return;
 	
-		EAMAction actionShowFullModelMode = getActions().get(ActionShowFullModelMode.class);
+		MiradiAction actionShowFullModelMode = getActions().get(ActionShowFullModelMode.class);
 		actionShowFullModelMode.doAction();
 	}
 

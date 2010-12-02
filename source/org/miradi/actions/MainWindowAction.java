@@ -35,7 +35,7 @@ import org.miradi.project.Project;
 import org.miradi.views.Doer;
 import org.miradi.views.umbrella.UmbrellaView;
 
-public abstract class MainWindowAction extends EAMAction
+public abstract class MainWindowAction extends MiradiAction
 {
 	public MainWindowAction(MainWindow mainWindowToUse, String label)
 	{

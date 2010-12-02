@@ -26,7 +26,7 @@ import javax.swing.JComponent;
 
 import org.martus.swing.UiButton;
 import org.miradi.actions.Actions;
-import org.miradi.actions.EAMAction;
+import org.miradi.actions.MiradiAction;
 import org.miradi.actions.ObjectsAction;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.layout.OneRowPanel;
@@ -98,14 +98,14 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 	
 	protected void addNonObjectActionButton(Class nonObjectsActionClass)
 	{
-		EAMAction action = getActions().get(nonObjectsActionClass);
+		MiradiAction action = getActions().get(nonObjectsActionClass);
 		addButton(new PanelButton(action));
 	}
 	
 	//TODO Should call specific methods to add OA or NonOA buttons
 	protected void addUnknownTypeOfButton(Class actionClass)
 	{
-		EAMAction action = getActions().get(actionClass);
+		MiradiAction action = getActions().get(actionClass);
 		if (action.isObjectAction())
 			addObjectActionButton(actionClass, component);
 		else

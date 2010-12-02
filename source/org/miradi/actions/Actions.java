@@ -126,7 +126,7 @@ public class Actions
 {
 	public Actions(MainWindow mainWindow)
 	{
-		actions = new HashMap<Class, EAMAction>();
+		actions = new HashMap<Class, MiradiAction>();
 		codeToJumpMenuActionMap = new HashMap<String, AbstractJumpMenuAction>();
 		
 		registerAction(new ActionAbout(mainWindow));
@@ -492,13 +492,13 @@ public class Actions
 		registerAction(new ActionCollapseAllRows(mainWindow));
 	}
 	
-	public EAMAction get(Class c)
+	public MiradiAction get(Class c)
 	{
 		Object action = actions.get(c);
 		if(action == null)
 			throw new RuntimeException("Unknown action: " + c);
 		
-		return (EAMAction)action;
+		return (MiradiAction)action;
 	}
 	
 	public MainWindowAction getMainWindowAction(Class c)
@@ -526,12 +526,12 @@ public class Actions
 			}
 		}
 		EAM.logVerbose("updateActionStates");
-		HashMap<EAMAction,Boolean> newStates = new HashMap<EAMAction, Boolean>();
+		HashMap<MiradiAction,Boolean> newStates = new HashMap<MiradiAction, Boolean>();
 		Collection actualActions = actions.values();
 		Iterator iter = actualActions.iterator();
 		while(iter.hasNext())
 		{
-			EAMAction action = (EAMAction)iter.next();
+			MiradiAction action = (MiradiAction)iter.next();
 			boolean shouldBeEnabled = action.shouldBeEnabled();
 			newStates.put(action, shouldBeEnabled);
 		}
@@ -540,23 +540,23 @@ public class Actions
 	
 	class DelayedActionSetEnabled implements Runnable
 	{
-		public DelayedActionSetEnabled(HashMap<EAMAction,Boolean> newStatesToApply)
+		public DelayedActionSetEnabled(HashMap<MiradiAction,Boolean> newStatesToApply)
 		{
 			newStates = newStatesToApply;
 		}
 
 		public void run()
 		{
-			for(EAMAction action : newStates.keySet())
+			for(MiradiAction action : newStates.keySet())
 			{
 				action.setEnabled(newStates.get(action));
 			}
 		}
 		
-		HashMap<EAMAction,Boolean> newStates;
+		HashMap<MiradiAction,Boolean> newStates;
 	}
 	
-	private void registerAction(EAMAction action)
+	private void registerAction(MiradiAction action)
 	{
 		actions.put(action.getClass(), action);
 	}
@@ -583,6 +583,6 @@ public class Actions
 		return codeToJumpMenuActionMap.get(code);
 	}
 
-	private Map<Class, EAMAction> actions;
+	private Map<Class, MiradiAction> actions;
 	private HashMap<String, AbstractJumpMenuAction> codeToJumpMenuActionMap;
 }

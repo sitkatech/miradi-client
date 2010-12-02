@@ -35,7 +35,7 @@ import javax.swing.text.JTextComponent;
 import org.miradi.actions.ActionRedo;
 import org.miradi.actions.ActionUndo;
 import org.miradi.actions.Actions;
-import org.miradi.actions.EAMAction;
+import org.miradi.actions.MiradiAction;
 import org.miradi.main.EAM;
 import org.miradi.utils.MenuItemWithoutLocation;
 import org.miradi.utils.MiradiResourceImageIcon;
@@ -152,12 +152,12 @@ class TextAreaContextMenuListener extends MiradiCheckerListener
 		return menuItem;
 	}
 	
-	private EAMAction getUndoAction()
+	private MiradiAction getUndoAction()
 	{
 		return getActions().get(ActionUndo.class);
 	}
 	
-	private EAMAction getRedoAction()
+	private MiradiAction getRedoAction()
 	{
 		return getActions().get(ActionRedo.class);
 	}

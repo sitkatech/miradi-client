@@ -28,7 +28,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 
-import org.miradi.actions.EAMAction;
+import org.miradi.actions.MiradiAction;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelCheckBox;
@@ -108,7 +108,7 @@ abstract public class LegendPanel extends DisposablePanel implements ActionListe
 		addIconLine(panel, foundLabel, icon, foundCheckBox);
 	}
 
-	protected void addButtonLineWithCheckBox(JComponent panel, int objectType, String objectName, EAMAction action)
+	protected void addButtonLineWithCheckBox(JComponent panel, int objectType, String objectName, MiradiAction action)
 	{
 		JButton button = new LocationButton(action);
 
@@ -124,7 +124,7 @@ abstract public class LegendPanel extends DisposablePanel implements ActionListe
 	
 	protected static class LocationButton extends PanelButton implements LocationHolder
 	{
-		public LocationButton(EAMAction action)
+		public LocationButton(MiradiAction action)
 		{
 			super(action);
 		}

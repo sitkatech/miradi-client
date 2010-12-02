@@ -21,7 +21,7 @@ package org.miradi.utils;
 
 
 import org.miradi.actions.Actions;
-import org.miradi.actions.EAMAction;
+import org.miradi.actions.MiradiAction;
 
 public class ToolBarButton extends MinimumSizeButton implements LocationHolder
 {
@@ -36,7 +36,7 @@ public class ToolBarButton extends MinimumSizeButton implements LocationHolder
 	}
 
 
-	public ToolBarButton(EAMAction action, String buttonName)
+	public ToolBarButton(MiradiAction action, String buttonName)
 	{
 		super(action);
 		setText(null);

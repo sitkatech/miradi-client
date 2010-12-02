@@ -73,7 +73,7 @@ import org.miradi.actions.ActionShowResultsChain;
 import org.miradi.actions.ActionShowSelectedChainMode;
 import org.miradi.actions.ActionUndo;
 import org.miradi.actions.Actions;
-import org.miradi.actions.EAMAction;
+import org.miradi.actions.MiradiAction;
 import org.miradi.actions.LocationAction;
 import org.miradi.actions.MainWindowAction;
 import org.miradi.commands.CommandSetObjectData;
@@ -330,7 +330,7 @@ public class DiagramContextMenuHandler
 		menu.show(diagramComponent, e.getX(), e.getY());
 	}
 	
-	public static EAMAction getDiagamModeSwitchItem(DiagramView diagramView, Actions actions)
+	public static MiradiAction getDiagamModeSwitchItem(DiagramView diagramView, Actions actions)
 	{
 		if (diagramView.isResultsChainTab())
 			return actions.get(ActionShowConceptualModel.class);

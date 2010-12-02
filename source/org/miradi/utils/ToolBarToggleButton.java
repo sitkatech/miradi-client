@@ -22,7 +22,7 @@ package org.miradi.utils;
 
 import org.miradi.actions.ActionToggleSpellChecker;
 import org.miradi.actions.Actions;
-import org.miradi.actions.EAMAction;
+import org.miradi.actions.MiradiAction;
 
 public class ToolBarToggleButton extends MinimumSizeToggleButton
 {
@@ -31,7 +31,7 @@ public class ToolBarToggleButton extends MinimumSizeToggleButton
 		this(actions.get(actionClass), "");
 	}
 
-	public ToolBarToggleButton(EAMAction action, String buttonName)
+	public ToolBarToggleButton(MiradiAction action, String buttonName)
 	{
 		super(action);
 		setText(null);

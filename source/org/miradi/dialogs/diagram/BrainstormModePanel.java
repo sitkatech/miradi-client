@@ -23,7 +23,7 @@ import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 import org.miradi.actions.ActionShowFullModelMode;
 import org.miradi.actions.Actions;
-import org.miradi.actions.EAMAction;
+import org.miradi.actions.MiradiAction;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.EAM;
 
@@ -43,5 +43,5 @@ public class BrainstormModePanel extends OneRowPanel
 		setVisible(fullModelAction.getDoer().isAvailable());
 	}
 	
-	EAMAction fullModelAction;
+	MiradiAction fullModelAction;
 }

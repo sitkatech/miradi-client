@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import org.miradi.actions.EAMAction;
+import org.miradi.actions.MiradiAction;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.exceptions.CommandFailedException;
@@ -45,7 +45,7 @@ public class JumpDoer extends MainWindowDoer
 		if(getProject().isOpen())
 			return true;
 		
-		EAMAction action = getMainWindow().getActions().get(actionClass);
+		MiradiAction action = getMainWindow().getActions().get(actionClass);
 		return action.isAvailableWithoutProject();
 	}
 

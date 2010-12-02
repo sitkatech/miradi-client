@@ -28,7 +28,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
-import org.miradi.actions.EAMAction;
+import org.miradi.actions.MiradiAction;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.main.EAM;
@@ -73,7 +73,7 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 		Class associatedActionClass = getAssociatedActionClass();
 		if(associatedActionClass != null)
 		{
-			EAMAction action = getMainWindow().getActions().get(associatedActionClass);
+			MiradiAction action = getMainWindow().getActions().get(associatedActionClass);
 			if(action != null)
 				return (String)action.getValue(Action.NAME);
 		}
