@@ -75,16 +75,15 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	
 	protected void addRow(ChoiceItem choiceItem, int indentCount) throws Exception
 	{
+		Font font = getFontBasedOnIndentation(indentCount);
 		JComponent leftComponent = new PanelTitleLabel(choiceItem.getLabel());
-		leftComponent.setFont(getRawFont());
+		leftComponent.setFont(font);
 		
 		PanelTitleLabel rightComponent = new FillerLabel();
-		rightComponent.setFont(getRawFont());
+		rightComponent.setFont(font);
 		
 		addRow(leftComponent, rightComponent, indentCount, choiceItem.getLongDescriptionProvider());
 	}
-
-	
 
 //	private void addFirstLevelRow(ChoiceItem choiceItem) throws Exception
 //	{
@@ -174,22 +173,33 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		return box;
 	}
 	
-//	private Font createFirstLevelFont()
-//	{
-//		Font font = getRawFont();
-//		font = font.deriveFont(Font.BOLD);
-//		font = font.deriveFont((float)(font.getSize() * 1.5));
-//		
-//		return font;
-//	}
-//	
-//	private Font createSecondLevelFont()
-//	{
-//		Font font = getRawFont();
-//		font = font.deriveFont(Font.BOLD);
-//		
-//		return font;
-//	}
+	private Font getFontBasedOnIndentation(int indentCount)
+	{
+		if (indentCount == 0)
+			return createFirstLevelFont();
+		
+		if (indentCount == 1)
+			return createSecondLevelFont();
+		
+		return getRawFont();
+	}
+	
+	private Font createFirstLevelFont()
+	{
+		Font font = getRawFont();
+		font = font.deriveFont(Font.BOLD);
+		font = font.deriveFont((float)(font.getSize() * 1.5));
+		
+		return font;
+	}
+	
+	private Font createSecondLevelFont()
+	{
+		Font font = getRawFont();
+		font = font.deriveFont(Font.BOLD);
+		
+		return font;
+	}
 	
 	protected Font getRawFont()
 	{
