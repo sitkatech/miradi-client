@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
-import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
+import org.miradi.dialogs.dashboard.HtmlResourceLongDescriptionProvider;
 import org.miradi.main.EAM;
 
 public class OpenStandardsImplementActionsAndMonitoringQuestion extends DynamicChoiceWithRootChoiceItem
@@ -28,23 +28,22 @@ public class OpenStandardsImplementActionsAndMonitoringQuestion extends DynamicC
 	@Override
 	protected ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
-		StaticLongDescriptionProvider provider = new StaticLongDescriptionProvider();
-		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren(IMPLEMENT_ACTIONS_AND_MONITORING_HEADER_CODE, getHeaderLabel(), provider);
-		ChoiceItemWithChildren processStep3a = new ChoiceItemWithChildren(PROCESS_STEP_3A_CODE, getProcessStep3a(), EAM.text(""), provider);
+		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren(IMPLEMENT_ACTIONS_AND_MONITORING_HEADER_CODE, getHeaderLabel(), new HtmlResourceLongDescriptionProvider(MAIN_DESCRIPTION_RIGHT_PANEL_FILE_NAME));
+		ChoiceItemWithChildren processStep3a = new ChoiceItemWithChildren(PROCESS_STEP_3A_CODE, getProcessStep3a(), EAM.text(""), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3A_FILE_NAME));
 		headerChoiceItem.addChild(processStep3a);
-		processStep3a.addChild(new ChoiceItem(DETAIL_ACTIVITIES_TASKS_AND_RESPONSIBILITIES_CODE, getDetailActivitiesTasksAndResponsibilitiesLabel()));
-		processStep3a.addChild(new ChoiceItem(DETAIL_METHODS_TASKS_AND_RESPONSIBILITIES_CODE, getDetailMethodsTasksAndResponsibilitiesLabel()));
-		processStep3a.addChild(new ChoiceItem(DEVELOP_PROJECT_TIMELINE_OR_CALENDAR_CODE, getDevelopProjectTimelineOrCalendarLabel()));
+		processStep3a.addChild(new ChoiceItem(DETAIL_ACTIVITIES_TASKS_AND_RESPONSIBILITIES_CODE, getDetailActivitiesTasksAndResponsibilitiesLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3A_FILE_NAME)));
+		processStep3a.addChild(new ChoiceItem(DETAIL_METHODS_TASKS_AND_RESPONSIBILITIES_CODE, getDetailMethodsTasksAndResponsibilitiesLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3A_FILE_NAME)));
+		processStep3a.addChild(new ChoiceItem(DEVELOP_PROJECT_TIMELINE_OR_CALENDAR_CODE, getDevelopProjectTimelineOrCalendarLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3A_FILE_NAME)));
 		
-		ChoiceItemWithChildren processStep3bChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_3B_CODE, getProcessStep3b(), EAM.text(""), provider);
+		ChoiceItemWithChildren processStep3bChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_3B_CODE, getProcessStep3b(), EAM.text(""), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3B_FILE_NAME));
 		headerChoiceItem.addChild(processStep3bChoiceItem);
-		processStep3bChoiceItem.addChild(new ChoiceItem(ESTIMATE_COSTS_FOR_ACTIVITIES_AND_MONITORING_CODE, getEstimateCostsForActivitiesAndMonitoringLabel()));
-		processStep3bChoiceItem.addChild(new ChoiceItem(DEVELOP_AND_SUBMIT_FUNDING_PROPOSALS_CODE, getDevelopAndSubmitFundingProposalsLabel()));
+		processStep3bChoiceItem.addChild(new ChoiceItem(ESTIMATE_COSTS_FOR_ACTIVITIES_AND_MONITORING_CODE, getEstimateCostsForActivitiesAndMonitoringLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3B_FILE_NAME)));
+		processStep3bChoiceItem.addChild(new ChoiceItem(DEVELOP_AND_SUBMIT_FUNDING_PROPOSALS_CODE, getDevelopAndSubmitFundingProposalsLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3B_FILE_NAME)));
 		
-		ChoiceItemWithChildren processStep3cChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_3C_CODE, getProcessStep3c(), EAM.text(""), provider);
+		ChoiceItemWithChildren processStep3cChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_3C_CODE, getProcessStep3c(), EAM.text(""), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3C_FILE_NAME));
 		headerChoiceItem.addChild(processStep3cChoiceItem);
-		processStep3cChoiceItem.addChild(new ChoiceItem(IMPLEMENT_STRATEGIC_AND_MONITORING_PLANS, getImplementStrategicAndMonitoringPlansLabel()));
-		processStep3cChoiceItem.addChild(new ChoiceItem(IMPLEMENT_WORK_PLAN_CODE, getImplementWorkPlanLabel()));
+		processStep3cChoiceItem.addChild(new ChoiceItem(IMPLEMENT_STRATEGIC_AND_MONITORING_PLANS, getImplementStrategicAndMonitoringPlansLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3C_FILE_NAME)));
+		processStep3cChoiceItem.addChild(new ChoiceItem(IMPLEMENT_WORK_PLAN_CODE, getImplementWorkPlanLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3C_FILE_NAME)));
 		
 		return headerChoiceItem;
 	}
@@ -121,4 +120,9 @@ public class OpenStandardsImplementActionsAndMonitoringQuestion extends DynamicC
 	public static final String OBTAIN_FINANCIAL_RESOURCES_CODE = "ObtainFinancialResources";
 	public static final String IMPLEMENT_STRATEGIC_AND_MONITORING_PLANS = "ImplementStrategicAndMonitoringPlans";
 	public static final String IMPLEMENT_WORK_PLAN_CODE = "ImplementWorkPlan";
+	
+	private static final String MAIN_DESCRIPTION_RIGHT_PANEL_FILE_NAME = "dashboard/1.html";
+	private static final String DESCRIPTION_3A_FILE_NAME = "dashboard/3A.html";
+	private static final String DESCRIPTION_3B_FILE_NAME = "dashboard/3B.html";
+	private static final String DESCRIPTION_3C_FILE_NAME = "dashboard/3C.html";
 }
