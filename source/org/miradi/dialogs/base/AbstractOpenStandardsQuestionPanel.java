@@ -47,8 +47,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		question = questionToUse;
 		rowSelectionHandler = new SingleRowSelectionHandler();
 		
-		addFirstLevelRow(question.getHeaderChoiceItem());
-		addSecondLevelRows(question.getHeaderChoiceItem().getChildren());
+		addRows(question.getHeaderChoiceItem());
 	}
 	
 	public void addRowSelectionListener(ListSelectionListener listener)
@@ -60,44 +59,67 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	{
 		rowSelectionHandler.removeSelectionListener(listener);
 	}
-
-	private void addFirstLevelRow(ChoiceItem choiceItem) throws Exception
+	
+	private void addRows(ChoiceItem choiceItem) throws Exception
 	{
-		final int FIRST_LEVEL_INDENT_COUNT = 0;
-		
-		addRow(choiceItem, FIRST_LEVEL_INDENT_COUNT, createFirstLevelFont());
-	}
-
-	private void addSecondLevelRows(Vector<ChoiceItem> secondLevelChildren) throws Exception
-	{
-		final int SECOND_LEVEL_INDENT_COUNT = 1;
-		for(ChoiceItem secondLevelChild : secondLevelChildren)
+		Vector<ChoiceItem> children = choiceItem.getChildren();
+		addRow(choiceItem);
+		for (ChoiceItem thisChoiceItem : children)
 		{
-			addRow(secondLevelChild, SECOND_LEVEL_INDENT_COUNT, createSecondLevelFont());
-			addThirdLevelRows(secondLevelChild.getChildren());
+			addRows(thisChoiceItem);
 		}
 	}
 	
-	private void addThirdLevelRows(Vector<ChoiceItem> thirdLevelChildren) throws Exception
+	protected void addRow(ChoiceItem choiceItem) throws Exception
 	{
-		for (ChoiceItem thirdLevelChild : thirdLevelChildren)
-		{
-			addThirdLevelRow(thirdLevelChild.getLabel(), thirdLevelChild.getLongDescriptionProvider());
-			addFourthLevelRow(thirdLevelChild.getCode(), thirdLevelChild.getLongDescriptionProvider());
-		}
-	}
-
-	private void addThirdLevelRow(String label, AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
-	{
-		JComponent leftComponent = new PanelTitleLabel(label);
+		JComponent leftComponent = new PanelTitleLabel(choiceItem.getLabel());
 		leftComponent.setFont(getRawFont());
 		
-		JComponent rightComponent = new FillerLabel();
+		PanelTitleLabel rightComponent = new FillerLabel();
 		rightComponent.setFont(getRawFont());
 		
-		final int THIRD_LEVEL_INDENT_COUNT = 2;
-		addRow(leftComponent, rightComponent, THIRD_LEVEL_INDENT_COUNT, longDescriptionProvider);
+		addRow(leftComponent, rightComponent, 0, choiceItem.getLongDescriptionProvider());
 	}
+
+	
+
+//	private void addFirstLevelRow(ChoiceItem choiceItem) throws Exception
+//	{
+//		final int FIRST_LEVEL_INDENT_COUNT = 0;
+//		
+//		addRow(choiceItem, FIRST_LEVEL_INDENT_COUNT, createFirstLevelFont());
+//	}
+//
+//	private void addSecondLevelRows(Vector<ChoiceItem> secondLevelChildren) throws Exception
+//	{
+//		final int SECOND_LEVEL_INDENT_COUNT = 1;
+//		for(ChoiceItem secondLevelChild : secondLevelChildren)
+//		{
+//			addRow(secondLevelChild, SECOND_LEVEL_INDENT_COUNT, createSecondLevelFont());
+//			addThirdLevelRows(secondLevelChild.getChildren());
+//		}
+//	}
+//	
+//	private void addThirdLevelRows(Vector<ChoiceItem> thirdLevelChildren) throws Exception
+//	{
+//		for (ChoiceItem thirdLevelChild : thirdLevelChildren)
+//		{
+//			addThirdLevelRow(thirdLevelChild.getLabel(), thirdLevelChild.getLongDescriptionProvider());
+//			addFourthLevelRow(thirdLevelChild.getCode(), thirdLevelChild.getLongDescriptionProvider());
+//		}
+//	}
+
+//	private void addThirdLevelRow(String label, AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
+//	{
+//		JComponent leftComponent = new PanelTitleLabel(label);
+//		leftComponent.setFont(getRawFont());
+//		
+//		JComponent rightComponent = new FillerLabel();
+//		rightComponent.setFont(getRawFont());
+//		
+//		final int THIRD_LEVEL_INDENT_COUNT = 2;
+//		addRow(leftComponent, rightComponent, THIRD_LEVEL_INDENT_COUNT, longDescriptionProvider);
+//	}
 
 	protected void addFourthLevelRow(String code, AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
 	{
@@ -118,16 +140,16 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addRow(leftComponent, rightComponent, FORTH_LEVEL_INDENT_COUNT, longDescriptionProvider);
 	}
 
-	private void addRow(ChoiceItem choiceItem, final int indentCount, Font font) throws Exception
-	{
-		JComponent leftComponent = new PanelTitleLabel(choiceItem.getLabel());
-		leftComponent.setFont(font);
-		
-		PanelTitleLabel rightComponent = new FillerLabel();
-		rightComponent.setFont(font);
-		
-		addRow(leftComponent, rightComponent, indentCount, choiceItem.getLongDescriptionProvider());
-	}
+//	private void addRow(ChoiceItem choiceItem, final int indentCount, Font font) throws Exception
+//	{
+//		JComponent leftComponent = new PanelTitleLabel(choiceItem.getLabel());
+//		leftComponent.setFont(font);
+//		
+//		PanelTitleLabel rightComponent = new FillerLabel();
+//		rightComponent.setFont(font);
+//		
+//		addRow(leftComponent, rightComponent, indentCount, choiceItem.getLongDescriptionProvider());
+//	}
 
 	private void addRow(JComponent leftComponent, JComponent rightComponent, final int indentCount, AbstractLongDescriptionProvider longDescriptionProvider) throws Exception
 	{
@@ -149,22 +171,22 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		return box;
 	}
 	
-	private Font createFirstLevelFont()
-	{
-		Font font = getRawFont();
-		font = font.deriveFont(Font.BOLD);
-		font = font.deriveFont((float)(font.getSize() * 1.5));
-		
-		return font;
-	}
-	
-	private Font createSecondLevelFont()
-	{
-		Font font = getRawFont();
-		font = font.deriveFont(Font.BOLD);
-		
-		return font;
-	}
+//	private Font createFirstLevelFont()
+//	{
+//		Font font = getRawFont();
+//		font = font.deriveFont(Font.BOLD);
+//		font = font.deriveFont((float)(font.getSize() * 1.5));
+//		
+//		return font;
+//	}
+//	
+//	private Font createSecondLevelFont()
+//	{
+//		Font font = getRawFont();
+//		font = font.deriveFont(Font.BOLD);
+//		
+//		return font;
+//	}
 	
 	protected Font getRawFont()
 	{
