@@ -29,18 +29,18 @@ public class OpenStandardsImplementActionsAndMonitoringQuestion extends DynamicC
 	protected ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
 		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren(IMPLEMENT_ACTIONS_AND_MONITORING_HEADER_CODE, getHeaderLabel(), new HtmlResourceLongDescriptionProvider(MAIN_DESCRIPTION_FILE_NAME));
-		ChoiceItemWithChildren processStep3a = new ChoiceItemWithChildren(PROCESS_STEP_3A_CODE, getProcessStep3a(), EAM.text(""), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3A_FILE_NAME));
+		ChoiceItemWithChildren processStep3a = new ChoiceItemWithChildren(PROCESS_STEP_3A_CODE, getProcessStep3a(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3A_FILE_NAME));
 		headerChoiceItem.addChild(processStep3a);
 		processStep3a.addChild(new ChoiceItem(DETAIL_ACTIVITIES_TASKS_AND_RESPONSIBILITIES_CODE, getDetailActivitiesTasksAndResponsibilitiesLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3A_FILE_NAME)));
 		processStep3a.addChild(new ChoiceItem(DETAIL_METHODS_TASKS_AND_RESPONSIBILITIES_CODE, getDetailMethodsTasksAndResponsibilitiesLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3A_FILE_NAME)));
 		processStep3a.addChild(new ChoiceItem(DEVELOP_PROJECT_TIMELINE_OR_CALENDAR_CODE, getDevelopProjectTimelineOrCalendarLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3A_FILE_NAME)));
 		
-		ChoiceItemWithChildren processStep3bChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_3B_CODE, getProcessStep3b(), EAM.text(""), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3B_FILE_NAME));
+		ChoiceItemWithChildren processStep3bChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_3B_CODE, getProcessStep3b(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3B_FILE_NAME));
 		headerChoiceItem.addChild(processStep3bChoiceItem);
 		processStep3bChoiceItem.addChild(new ChoiceItem(ESTIMATE_COSTS_FOR_ACTIVITIES_AND_MONITORING_CODE, getEstimateCostsForActivitiesAndMonitoringLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3B_FILE_NAME)));
 		processStep3bChoiceItem.addChild(new ChoiceItem(DEVELOP_AND_SUBMIT_FUNDING_PROPOSALS_CODE, getDevelopAndSubmitFundingProposalsLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3B_FILE_NAME)));
 		
-		ChoiceItemWithChildren processStep3cChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_3C_CODE, getProcessStep3c(), EAM.text(""), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3C_FILE_NAME));
+		ChoiceItemWithChildren processStep3cChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_3C_CODE, getProcessStep3c(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3C_FILE_NAME));
 		headerChoiceItem.addChild(processStep3cChoiceItem);
 		processStep3cChoiceItem.addChild(new ChoiceItem(IMPLEMENT_STRATEGIC_AND_MONITORING_PLANS, getImplementStrategicAndMonitoringPlansLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3C_FILE_NAME)));
 		processStep3cChoiceItem.addChild(new ChoiceItem(IMPLEMENT_WORK_PLAN_CODE, getImplementWorkPlanLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3C_FILE_NAME)));
