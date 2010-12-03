@@ -99,12 +99,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addRow(EMPTY_LEFT_COLUMN_TEXT, rightColumnTranslatedText, longDescriptionProvider, level);
 	}
 	
-	protected void addRow(AbstractLongDescriptionProvider longDescriptionProvider,	int indentCount, String tag, String text) throws Exception
-	{
-		String rightColumnTranslatedText = EAM.substitute(text, getDashboardData(tag));
-		addRow(EMPTY_LEFT_COLUMN_TEXT, rightColumnTranslatedText, longDescriptionProvider, indentCount);
-	}
-	
 	protected void addRowWithTemplateAndPseudoField(String rightColumnTemplate, AbstractLongDescriptionProvider longDescriptionProvider, int level, String pseudoTag) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
