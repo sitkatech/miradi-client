@@ -734,6 +734,7 @@ public class Dashboard extends BaseObject
 		strategiesAndActivitiesWithProgressReportPercent = new PseudoStringData(PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_PERCENT);
 		indicatorsAndMethodsWithProgressReportCount = new PseudoStringData(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_COUNT);
 		indicatorsAndMethodsWithProgressReportPercent = new PseudoStringData(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT);
+		targetWithGoalsCount = new PseudoStringData(PSEUDO_TARGETS_WITH_GOALS_COUNT);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -780,6 +781,7 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_PERCENT, strategiesAndActivitiesWithProgressReportPercent);
 		addPresentationDataField(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_COUNT, indicatorsAndMethodsWithProgressReportCount);
 		addPresentationDataField(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT, indicatorsAndMethodsWithProgressReportPercent);
+		addPresentationDataField(PSEUDO_TARGETS_WITH_GOALS_COUNT, targetWithGoalsCount);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -877,4 +879,5 @@ public class Dashboard extends BaseObject
 	private PseudoStringData strategiesAndActivitiesWithProgressReportPercent;
 	private PseudoStringData indicatorsAndMethodsWithProgressReportCount;
 	private PseudoStringData indicatorsAndMethodsWithProgressReportPercent;
+	private PseudoStringData targetWithGoalsCount;
 }
