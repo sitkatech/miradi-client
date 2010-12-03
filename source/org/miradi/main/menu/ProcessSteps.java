@@ -35,13 +35,5 @@ public class ProcessSteps
 	
 	public static final String PROCESS_STEP_3A = EAM.text("ProcessStep|3A. Develop Short-Term Work Plan");
 	public static final String PROCESS_STEP_3B = EAM.text("ProcessStep|3B. Develop and Refine Project Budget");
-	public static final String PROCESS_STEP_3C = EAM.text("ProcessStep|3C. Implement Plans");
-	
-	public static final String PROCESS_STEP_4A = EAM.text("ProcessStep|4A. Prepare Data for Analysis");
-	public static final String PROCESS_STEP_4B = EAM.text("ProcessStep|4B. Analyze Results");
-	public static final String PROCESS_STEP_4C = EAM.text("ProcessStep|4C. Adapt Project Plan");
-
-	public static final String PROCESS_STEP_5A = EAM.text("ProcessStep|5A. Document Learning");
-	public static final String PROCESS_STEP_5B = EAM.text("ProcessStep|5B. Share Learning");
-	public static final String PROCESS_STEP_5C = EAM.text("ProcessStep|5C. Create a Learning Environment");
+	public static final String PROCESS_STEP_3C = EAM.text("ProcessStep|3C. Implement Plans");	
 }
