@@ -85,42 +85,42 @@ public class OpenStandardsPlanActionsAndMonitoringQuestionPanel extends Abstract
 
 	private void addDevelopGoalsForEachTargetRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRowHelper(EAM.text("%X of %Y Targets have Goals"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_TARGETS_WITH_GOALS_COUNT, Dashboard.PSEUDO_TARGET_COUNT);
-		addRowHelper(EAM.text("%X goals Created"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_GOAL_COUNT);
+		addRowWithTemplateAndTwoPseudoFields(EAM.text("%X of %Y Targets have Goals"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_TARGETS_WITH_GOALS_COUNT, Dashboard.PSEUDO_TARGET_COUNT);
+		addRowWithTemplateAndPseudoField(EAM.text("%X goals Created"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_GOAL_COUNT);
 	}
 
 	private void addIdentifyKeyFactorsAndDraftStrategiesRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRowHelper(EAM.text("%X Draft Strategies Created"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_DRAFT_STRATEGY_COUNT);
+		addRowWithTemplateAndPseudoField(EAM.text("%X Draft Strategies Created"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_DRAFT_STRATEGY_COUNT);
 	}
 
 	private void addRankDraftStrategiesrow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRowHelper(EAM.text("%X Draft Strategies Ranked"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_RANKED_DRAFT_STRATEGY_COUNT);
+		addRowWithTemplateAndPseudoField(EAM.text("%X Draft Strategies Ranked"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_RANKED_DRAFT_STRATEGY_COUNT);
 	}
 
 	private void addCreateResultsChainsShowingAssumptionsRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRowHelper(EAM.text("%X Strategies Created"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_STRATEGY_COUNT);
-		addRowHelper(EAM.text("%X with taxonomy assignments"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT);
-		addRowHelper(EAM.text("%X Results Chains Created"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_RESULTS_CHAIN_COUNT);
+		addRowWithTemplateAndPseudoField(EAM.text("%X Strategies Created"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_STRATEGY_COUNT);
+		addRowWithTemplateAndPseudoField(EAM.text("%X with taxonomy assignments"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT);
+		addRowWithTemplateAndPseudoField(EAM.text("%X Results Chains Created"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_RESULTS_CHAIN_COUNT);
 	}
 
 	private void addDevelopObjectivesRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRowHelper(EAM.text("%X Objectives Created"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_OBJECTIVE_COUNT);
-		addRowHelper(EAM.text("%Y of %X RCs have at least 1 objective"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT, Dashboard.PSEUDO_RESULTS_CHAIN_WITH_OBJECTIVE_COUNT);
+		addRowWithTemplateAndPseudoField(EAM.text("%X Objectives Created"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_OBJECTIVE_COUNT);
+		addRowWithTemplateAndTwoPseudoFields(EAM.text("%Y of %X RCs have at least 1 objective"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT, Dashboard.PSEUDO_RESULTS_CHAIN_WITH_OBJECTIVE_COUNT);
 	}
 
 	private void addFinalizeStrategicPlanRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRowHelper(EAM.text("%X % of Objectives relevant to a Strategy"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_OBJECTIVES_RELEVANT_TO_STRATEGIES_PERCENTAGE);		
-		addRowHelper(EAM.text("%X Strategies that do not contribute to an Objective"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_IRRELEVANT_STRATEGIES_TO_OBJECTIVES_COUNT);
+		addRowWithTemplateAndPseudoField(EAM.text("%X % of Objectives relevant to a Strategy"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_OBJECTIVES_RELEVANT_TO_STRATEGIES_PERCENTAGE);		
+		addRowWithTemplateAndPseudoField(EAM.text("%X Strategies that do not contribute to an Objective"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_IRRELEVANT_STRATEGIES_TO_OBJECTIVES_COUNT);
 	}
 
 	private void addFinalizeMonitoringPlanRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRowHelper(EAM.text("%X % of objectives with relevant indicators"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE);
+		addRowWithTemplateAndPseudoField(EAM.text("%X % of objectives with relevant indicators"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE);
 	}
 
 	private void addDefineAudiencesAndInformationNeedsRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
@@ -130,8 +130,8 @@ public class OpenStandardsPlanActionsAndMonitoringQuestionPanel extends Abstract
 
 	private void addDefineIndicatorsRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRowHelper(EAM.text("%X Indicators associated to KEA's"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_KEA_INDICATORS_COUNT);
-		addRowHelper(EAM.text("%X indicators associate to Factors"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_FACTOR_INDICATORS_COUNT);
+		addRowWithTemplateAndPseudoField(EAM.text("%X Indicators associated to KEA's"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_KEA_INDICATORS_COUNT);
+		addRowWithTemplateAndPseudoField(EAM.text("%X indicators associate to Factors"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_FACTOR_INDICATORS_COUNT);
 	}
 
 	private void addAssessHumanFinacialAndOtherResourcesRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount)
@@ -144,7 +144,7 @@ public class OpenStandardsPlanActionsAndMonitoringQuestionPanel extends Abstract
 
 	private void addPlanProjectLifespanAndExitStrategyRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRowHelper(EAM.text("%Y - %X"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_PROJECT_PLANNING_START_DATE, Dashboard.PSEUDO_PROJECT_PLANNING_END_DATE);
+		addRowWithTemplateAndTwoPseudoFields(EAM.text("%Y - %X"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_PROJECT_PLANNING_START_DATE, Dashboard.PSEUDO_PROJECT_PLANNING_END_DATE);
 	}
 
 	@Override
