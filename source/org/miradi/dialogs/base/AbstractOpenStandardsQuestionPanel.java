@@ -86,9 +86,10 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		Font font = getFontBasedOnLevel(level);
 		leftComponent.setFont(font);
 		rightComponent.setFont(font);
-		rowSelectionHandler.addSelectableRow(leftComponent, rightComponent, longDescriptionProvider);
 		Box box = createHorizontalBoxWithIndents(level);
 		box.add(leftComponent);
+		rowSelectionHandler.addSelectableRow(box, rightComponent, longDescriptionProvider);
+		
 		add(box);
 		add(rightComponent);
 	}
