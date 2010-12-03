@@ -21,7 +21,7 @@ package org.miradi.views.diagram;
 
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
-import org.miradi.dialogs.base.ConfirmDialog;
+import org.miradi.dialogs.confirm.ConfirmDialog;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.TransferableMiradiList;

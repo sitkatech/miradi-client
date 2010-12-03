@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.base;
+package org.miradi.dialogs.confirm;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -32,6 +32,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import org.miradi.dialogs.base.DialogWithDisposablePanelAndMainWindowUpdating;
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
