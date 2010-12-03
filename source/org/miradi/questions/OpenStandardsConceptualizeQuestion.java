@@ -169,7 +169,7 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 	public static final String CREATE_INITIAL_CONCEPTUAL_MODEL_CODE = "CreateInitialConceptualModel";
 	public static final String GROUND_THRUTH_AND_REVISE_MODEL_CODE = "GroundTruthAndReviseModel";
 	
-	private static final String MAIN_DESCRIPTION_RIGHT_PANEL_FILE_NAME = "dashboard/1.html";
+	public static final String MAIN_DESCRIPTION_RIGHT_PANEL_FILE_NAME = "dashboard/1.html";
 	private static final String DESCRIPTION_1A_FILE_NAME = "dashboard/1A.html";
 	private static final String DESCRIPTION_1B_FILE_NAME = "dashboard/1B.html";
 	private static final String DESCRIPTION_1C_FILE_NAME = "dashboard/1C.html";

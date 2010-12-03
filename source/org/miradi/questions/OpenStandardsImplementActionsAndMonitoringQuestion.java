@@ -121,7 +121,7 @@ public class OpenStandardsImplementActionsAndMonitoringQuestion extends DynamicC
 	public static final String IMPLEMENT_STRATEGIC_AND_MONITORING_PLANS = "ImplementStrategicAndMonitoringPlans";
 	public static final String IMPLEMENT_WORK_PLAN_CODE = "ImplementWorkPlan";
 	
-	private static final String MAIN_DESCRIPTION_FILE_NAME = "dashboard/3.html";
+	public static final String MAIN_DESCRIPTION_FILE_NAME = "dashboard/3.html";
 	private static final String DESCRIPTION_3A_FILE_NAME = "dashboard/3A.html";
 	private static final String DESCRIPTION_3B_FILE_NAME = "dashboard/3B.html";
 	private static final String DESCRIPTION_3C_FILE_NAME = "dashboard/3C.html";

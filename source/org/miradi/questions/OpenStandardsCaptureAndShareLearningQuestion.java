@@ -73,7 +73,7 @@ public class OpenStandardsCaptureAndShareLearningQuestion extends DynamicChoiceW
 		return EAM.text("ProcessStep|5C. Create a Learning Environment");
 	}
 	
-	private static final String MAIN_DESCRIPTION_FILENAME =  "dashboard/5.html";
+	public static final String MAIN_DESCRIPTION_FILENAME =  "dashboard/5.html";
 	private static final String PROCESS_STEP_5A_FILENAME = "dashboard/5A.html";
 	private static final String PROCESS_STEP_5B_FILENAME = "dashboard/5B.html";
 	private static final String PROCESS_STEP_5C_FILENAME = "dashboard/5C.html";

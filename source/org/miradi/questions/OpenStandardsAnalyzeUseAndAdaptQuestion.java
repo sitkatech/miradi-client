@@ -68,11 +68,10 @@ public class OpenStandardsAnalyzeUseAndAdaptQuestion extends DynamicChoiceWithRo
 		return EAM.text("ProcessStep|4C. Adapt Project Plan");
 	}
 	
-	private static final String MAIN_DESCRIPTION_FILENAME =  "dashboard/4.html";
+	public static final String MAIN_DESCRIPTION_FILENAME =  "dashboard/4.html";
 	private static final String PROCESS_STEP_4A_FILENAME = "dashboard/4A.html";
 	private static final String PROCESS_STEP_4B_FILENAME = "dashboard/4B.html";
 	private static final String PROCESS_STEP_4C_FILENAME = "dashboard/4C.html";
-
 
 	public static final String ANALYZE_USE_AND_ADAPT_HEADER_CODE = "AnalyzeUseAndAdapt";
 	public static final String PROCESS_STEP_4A_CODE = "ProcessStep4A";

@@ -40,7 +40,7 @@ public class OpenStandardsImplementActionsAndMonitoringTab extends PanelWithDesc
 	@Override
 	protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception
 	{
-		return new StaticLongDescriptionProvider();
+		return new HtmlResourceLongDescriptionProvider(OpenStandardsImplementActionsAndMonitoringQuestion.MAIN_DESCRIPTION_FILE_NAME);
 	}
 
 	@Override

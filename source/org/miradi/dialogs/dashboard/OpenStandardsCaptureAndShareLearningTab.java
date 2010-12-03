@@ -40,7 +40,7 @@ public class OpenStandardsCaptureAndShareLearningTab extends PanelWithDescriptio
 	@Override
 	protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception
 	{
-		return new StaticLongDescriptionProvider();
+		return new HtmlResourceLongDescriptionProvider(OpenStandardsCaptureAndShareLearningQuestion.MAIN_DESCRIPTION_FILENAME);
 	}
 
 	@Override
