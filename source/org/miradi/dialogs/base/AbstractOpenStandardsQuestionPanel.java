@@ -104,6 +104,21 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		String rightColumnTranslatedText = EAM.substitute(text, getDashboardData(tag));
 		addRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
 	}
+	
+	protected void addRowHelper(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount, String rightColumnTemplate, String pseudoTag) throws Exception
+	{
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%X", getDashboardData(pseudoTag));
+		addRow(tokenReplacementMap, rightColumnTemplate, longDescriptionProvider, indentCount);
+	}
+	
+	protected void addRowHelper(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount, String rightColumnTemplate, String pseudoTag1, String pseudoTag2) throws Exception
+	{
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%X", getDashboardData(pseudoTag1));
+		tokenReplacementMap.put("%Y", getDashboardData(pseudoTag2));
+		addRow(tokenReplacementMap, rightColumnTemplate, longDescriptionProvider, indentCount);
+	}
 
 	private Box createHorizontalBoxWithIndents(int indentCount)
 	{
