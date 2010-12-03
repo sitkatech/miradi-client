@@ -40,7 +40,7 @@ public class OpenStandardsAnalyzeAdaptAndUseTab extends PanelWithDescriptionPane
 	@Override
 	protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception
 	{
-		return new StaticLongDescriptionProvider();
+		return new HtmlResourceLongDescriptionProvider(OpenStandardsAnalyzeUseAndAdaptQuestion.MAIN_DESCRIPTION_FILENAME);
 	}
 
 	@Override

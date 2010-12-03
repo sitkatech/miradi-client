@@ -28,7 +28,7 @@ public class OpenStandardsPlanActionsAndMonitoringQuestion extends DynamicChoice
 	@Override
 	protected ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
-		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren(PLAN_ACTIONS_AND_MONITORING_CODE, getPlanActionsAndMonitoringHeaderLabel(), new HtmlResourceLongDescriptionProvider(DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME));
+		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren(PLAN_ACTIONS_AND_MONITORING_CODE, getPlanActionsAndMonitoringHeaderLabel(), new HtmlResourceLongDescriptionProvider(MAIN_DESCRIPTION_FILENAME));
 		
 		ChoiceItemWithChildren processStep2a = new ChoiceItemWithChildren(PROCESS_STEP_2A_CODE, getProcessStep2aLabel(), EAM.text(""), new HtmlResourceLongDescriptionProvider(DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME));
 		headerChoiceItem.addChild(processStep2a);
@@ -151,6 +151,7 @@ public class OpenStandardsPlanActionsAndMonitoringQuestion extends DynamicChoice
 	public static final String ASSESS_RISKS_CODE = "AssessRisks";
 	public static final String PLAN_PROJECT_LIFESPAN_AND_EXIT_STRATEGY_CODE = "PlanProjectLifespanAndExitStrategy";
 	
+	public static final String MAIN_DESCRIPTION_FILENAME =  "dashboard/2.html"; 
 	private static final String DEVELOP_STRATEGIC_PLAN_RIGHT_SIDE_FILENAME = "dashboard/2A.html";
 	private static final String DEVELOP_FORMAL_MONITORING_PLAN_RIGHT_SIDE_FILE_NAME = "dashboard/2B.html";
 	private static final String OPERATIONAL_PLAN_RIGHT_SIDE_FILE_NAME = "dashboard/2C.html";
