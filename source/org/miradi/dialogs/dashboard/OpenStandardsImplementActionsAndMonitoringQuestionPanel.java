@@ -74,44 +74,21 @@ public class OpenStandardsImplementActionsAndMonitoringQuestionPanel extends Abs
 	
 	private void addDetailActivitiesTasksAndResponsibilitiesRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		HashMap<String, String> tokenReplacementMap1 = new HashMap<String, String>();
-		tokenReplacementMap1.put("%strategiesWithActivitiesCount", getDashboardData(Dashboard.PSEUDO_STRATEGIES_WITH_ACTIVITIES_COUNT));
-		tokenReplacementMap1.put("%strategiesCount", getDashboardData(Dashboard.PSEUDO_STRATEGY_COUNT));
-		addRow(tokenReplacementMap1, EAM.text("%strategiesWithActivitiesCount of %strategiesCount Strategies have at least 1 Activity. "), longDescriptionProvider, indentCount);
-		
-		HashMap<String, String> tokenReplacementMap2 = new HashMap<String, String>();
-		tokenReplacementMap2.put("%activitiesCount", getDashboardData(Dashboard.PSEUDO_ACTIVITIES_COUNT));
-		addRow(tokenReplacementMap2, EAM.text("%activitiesCount Total activities created"), longDescriptionProvider, indentCount);
-		
-		HashMap<String, String> tokenReplacementMap3 = new HashMap<String, String>();
-		tokenReplacementMap3.put("%activitiesAndTasksCount", getDashboardData(Dashboard.PSEUDO_ACTIVITIES_AND_TASKS_COUNT));
-		tokenReplacementMap3.put("%activitiesAndTasksWithAssignmentsCount", getDashboardData(Dashboard.PSEUDO_ACTIVITIES_AND_TASKS_WITH_ASSIGNMENTS_COUNT));
-		addRow(tokenReplacementMap3, EAM.text("%activitiesAndTasksWithAssignmentsCount of %activitiesAndTasksCount Activities and tasks have assignments"), longDescriptionProvider, indentCount);
+		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%X of %Y Strategies have at least 1 Activity."), Dashboard.PSEUDO_STRATEGIES_WITH_ACTIVITIES_COUNT, Dashboard.PSEUDO_STRATEGY_COUNT);
+		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%X Total activities created"), Dashboard.PSEUDO_ACTIVITIES_COUNT);
+		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%Y of %X Activities and tasks have assignments"), Dashboard.PSEUDO_ACTIVITIES_AND_TASKS_COUNT, Dashboard.PSEUDO_ACTIVITIES_AND_TASKS_WITH_ASSIGNMENTS_COUNT);
 	}
 
 	private void addDetailMethodsTasksAndResponsibilitiesRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		HashMap<String, String> tokenReplacementMap1 = new HashMap<String, String>();
-		tokenReplacementMap1.put("%indicatorsWithMethodsCount", getDashboardData(Dashboard.PSEUDO_INDICATORS_WITH_METHODS_COUNT));
-		tokenReplacementMap1.put("%indicatorsCount", getDashboardData(Dashboard.PSEUDO_INDICATORS_COUNT));
-		addRow(tokenReplacementMap1, EAM.text("%indicatorsWithMethodsCount of %indicatorsCount Indicators have Methods."), longDescriptionProvider, indentCount);
-		
-		HashMap<String, String> tokenReplacementMap2 = new HashMap<String, String>();
-		tokenReplacementMap2.put("%methodsCount", getDashboardData(Dashboard.PSEUDO_METHODS_COUNT));
-		addRow(tokenReplacementMap2, EAM.text("%methodsCount Total methods created"), longDescriptionProvider, indentCount);
-		
-		HashMap<String, String> tokenReplacementMap3 = new HashMap<String, String>();
-		tokenReplacementMap3.put("%methodsAndTasksWithAssignmentsCount", getDashboardData(Dashboard.PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT));
-		tokenReplacementMap3.put("%methodsAndTasksCount", getDashboardData(Dashboard.PSEUDO_METHODS_AND_TASKS_COUNT));
-		addRow(tokenReplacementMap3, EAM.text("%methodsAndTasksWithAssignmentsCount of %methodsAndTasksCount Methods and Tasks have assignments"), longDescriptionProvider, indentCount);
+		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%X of %Y Indicators have Methods."), Dashboard.PSEUDO_INDICATORS_WITH_METHODS_COUNT, Dashboard.PSEUDO_INDICATORS_COUNT);
+		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%X Total methods created"), Dashboard.PSEUDO_METHODS_COUNT);
+		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%X of %Y Methods and Tasks have assignments"), Dashboard.PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT, Dashboard.PSEUDO_METHODS_AND_TASKS_COUNT);
 	}
 
 	private void addDevelopProjectTimelineOrCalendarRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
-		tokenReplacementMap.put("%workPlanStartDate", getDashboardData(Dashboard.PSEUDO_WORK_PLAN_START_DATE));
-		tokenReplacementMap.put("%workPlanEndDate", getDashboardData(Dashboard.PSEUDO_WORK_PLAN_END_DATE));
-		addRow(tokenReplacementMap, EAM.text("%workPlanStartDate - %workPlanEndDate"), longDescriptionProvider, indentCount);
+		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%X - %Y"), Dashboard.PSEUDO_WORK_PLAN_START_DATE, Dashboard.PSEUDO_WORK_PLAN_END_DATE);
 	}
 
 	private void addEstimateCostsForActivitiesAndMonitoringrow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
@@ -134,22 +111,13 @@ public class OpenStandardsImplementActionsAndMonitoringQuestionPanel extends Abs
 
 	private void addDevelopAndSubmitFundingProposalsrow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
-		tokenReplacementMap.put("%budgetSecuredPercent", getDashboardData(Dashboard.PSEUDO_BUDGET_SECURED_PERCENT));
-		addRow(tokenReplacementMap, EAM.text("Total Budget for Funding: %  %budgetSecuredPercent Budget Secured"), longDescriptionProvider, indentCount);
+		addRowHelper(longDescriptionProvider, indentCount, EAM.text("Total Budget for Funding: %  %X Budget Secured"), Dashboard.PSEUDO_BUDGET_SECURED_PERCENT);
 	}
 
 	private void addImplementStrategicAndMonitoringPlansrow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		HashMap<String, String> tokenReplacementMap1 = new HashMap<String, String>();
-		tokenReplacementMap1.put("%strategiesAndActivitiesWithProgressReportsCount", getDashboardData(Dashboard.PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_COUNT));
-		tokenReplacementMap1.put("%strategiesAndActivitiesWithProgressReportsPercent", getDashboardData(Dashboard.PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_PERCENT));
-		addRow(tokenReplacementMap1, EAM.text("%strategiesAndActivitiesWithProgressReportsCount Strategies/activities (% %strategiesAndActivitiesWithProgressReportsPercent) have progress reports"), longDescriptionProvider, indentCount);
-		
-		HashMap<String, String> tokenReplacementMap2 = new HashMap<String, String>();
-		tokenReplacementMap2.put("%indicatorsAndMethodsWithProgressReportsCount", getDashboardData(Dashboard.PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_COUNT));
-		tokenReplacementMap2.put("%indicatorsAndMethodsWithProgressReportsPercent", getDashboardData(Dashboard.PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT));
-		addRow(tokenReplacementMap2, EAM.text("%indicatorsAndMethodsWithProgressReportsCount Indicators/methods (% %indicatorsAndMethodsWithProgressReportsPercent) have progress reports"), longDescriptionProvider, indentCount);
+		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%X Strategies/activities (% %Y) have progress reports"), Dashboard.PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_COUNT, Dashboard.PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_PERCENT);
+		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%X Indicators/methods (% %Y) have progress reports"), Dashboard.PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_COUNT, Dashboard.PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT);
 	}
 
 	private void addImplementWorkPlanrow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount)
