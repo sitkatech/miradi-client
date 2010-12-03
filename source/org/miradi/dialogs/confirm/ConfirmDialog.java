@@ -171,39 +171,5 @@ public class ConfirmDialog extends DialogWithDisposablePanelAndMainWindowUpdatin
 		private boolean result;
 	}
 	
-	public static class ConfirmDialogTemplate
-	{
-		public ConfirmDialogTemplate(String titleToUse, String confirmationTextToUse, String yesButtonTextToUse)
-		{
-			title = titleToUse;
-			confirmationText = confirmationTextToUse;
-			yesText = yesButtonTextToUse;
-			
-			noText = CANCEL_TEXT;
-		}
-		
-		public String getConfirmationText()
-		{
-			return confirmationText;
-		}
-
-		public String getTitle()
-		{
-			return title;
-		}
-
-		public String[] getButtonLabels()
-		{
-			return new String[] {yesText, noText};
-		}
-
-		private final String CANCEL_TEXT = EAM.text("Button|Cancel");
-		
-		private String title;
-		private String confirmationText;
-		private String yesText;
-		private String noText;
-	}
-	
 	private int pressedButtonIndex;
 }
