@@ -36,9 +36,9 @@ public class OpenStandardsPlanActionsAndMonitoringQuestionPanel extends Abstract
 	}
 	
 	@Override
-	protected void addRow(ChoiceItem choiceItem, int indentCount) throws Exception
+	protected void addRow(ChoiceItem choiceItem, int level) throws Exception
 	{
-		super.addRow(choiceItem, indentCount);
+		super.addRow(choiceItem, level);
 		
 		String code = choiceItem.getCode();
 		AbstractLongDescriptionProvider longDescriptionProvider = choiceItem.getLongDescriptionProvider();
@@ -47,40 +47,40 @@ public class OpenStandardsPlanActionsAndMonitoringQuestionPanel extends Abstract
 		longDescriptionProvider.setWizardStepName(stepName);
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.DEVELOP_GOALS_FOR_EACH_TARGET_CODE))
-			addDevelopGoalsForEachTargetRow(longDescriptionProvider, indentCount);
+			addDevelopGoalsForEachTargetRow(longDescriptionProvider, level);
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.IDENTIFY_KEY_FACTORS_AND_DRAFT_STRATEGIES_CODE))
-			addIdentifyKeyFactorsAndDraftStrategiesRow(longDescriptionProvider, indentCount);
+			addIdentifyKeyFactorsAndDraftStrategiesRow(longDescriptionProvider, level);
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.RANK_DRAFT_STRATEGIES_CODE))
-			addRankDraftStrategiesrow(longDescriptionProvider, indentCount);
+			addRankDraftStrategiesrow(longDescriptionProvider, level);
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.CREATE_RESULTS_CHAINS_SHOWING_ASSUMPTIONS_CODE))
-			addCreateResultsChainsShowingAssumptionsRow(longDescriptionProvider, indentCount);
+			addCreateResultsChainsShowingAssumptionsRow(longDescriptionProvider, level);
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.DEVELOP_OBJECTIVES_CODE))
-			addDevelopObjectivesRow(longDescriptionProvider, indentCount);
+			addDevelopObjectivesRow(longDescriptionProvider, level);
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.FINALIZE_STRATEGIC_PLAN_CODE))
-			addFinalizeStrategicPlanRow(longDescriptionProvider, indentCount);
+			addFinalizeStrategicPlanRow(longDescriptionProvider, level);
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.FINALIZE_MONITORING_PLAN_CODE))
-			addFinalizeMonitoringPlanRow(longDescriptionProvider, indentCount);
+			addFinalizeMonitoringPlanRow(longDescriptionProvider, level);
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.DEFINE_AUDIENCES_AND_INFORMATION_NEEDS_CODE))
-			addDefineAudiencesAndInformationNeedsRow(longDescriptionProvider, indentCount);
+			addDefineAudiencesAndInformationNeedsRow(longDescriptionProvider, level);
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.DEFINE_INDICATORS_CODE))
-			addDefineIndicatorsRow(longDescriptionProvider, indentCount);
+			addDefineIndicatorsRow(longDescriptionProvider, level);
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.ASSESS_HUMAN_FINANCIAL_AND_OTHER_RESOURCES_CODE))
-			addAssessHumanFinacialAndOtherResourcesRow(longDescriptionProvider, indentCount);
+			addAssessHumanFinacialAndOtherResourcesRow(longDescriptionProvider, level);
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.ASSESS_RISKS_CODE))
-			addAssessRisksRow(longDescriptionProvider, indentCount);
+			addAssessRisksRow(longDescriptionProvider, level);
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.PLAN_PROJECT_LIFESPAN_AND_EXIT_STRATEGY_CODE))
-			addPlanProjectLifespanAndExitStrategyRow(longDescriptionProvider, indentCount);
+			addPlanProjectLifespanAndExitStrategyRow(longDescriptionProvider, level);
 	}
 
 	private void addDevelopGoalsForEachTargetRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception

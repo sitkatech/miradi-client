@@ -62,41 +62,41 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		rowSelectionHandler.removeSelectionListener(listener);
 	}
 	
-	private void addRows(ChoiceItem choiceItem, int indentCount) throws Exception
+	private void addRows(ChoiceItem choiceItem, int level) throws Exception
 	{
 		Vector<ChoiceItem> children = choiceItem.getChildren();
-		addRow(choiceItem, indentCount);
-		++indentCount; 
+		addRow(choiceItem, level);
+		int childLevel = level + 1;
 		for (ChoiceItem thisChoiceItem : children)
 		{
-			addRows(thisChoiceItem, indentCount);
+			addRows(thisChoiceItem, childLevel);
 		}
 	}
 	
-	protected void addRow(ChoiceItem choiceItem, int indentCount) throws Exception
+	protected void addRow(ChoiceItem choiceItem, int level) throws Exception
 	{
-		addRow(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, choiceItem.getLongDescriptionProvider(), indentCount);
+		addRow(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, choiceItem.getLongDescriptionProvider(), level);
 	}
 	
-	protected void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
+	protected void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
 	{
 		JComponent leftComponent = new PanelTitleLabel(leftColumnTranslatedText);
 		JComponent rightComponent = new PanelTitleLabel(rightColumnTranslatedText);
 		
-		Font font = getFontBasedOnIndentation(indentCount);
+		Font font = getFontBasedForLevel(level);
 		leftComponent.setFont(font);
 		rightComponent.setFont(font);
 		rowSelectionHandler.addSelectableRow(leftComponent, rightComponent, longDescriptionProvider);
-		Box box = createHorizontalBoxWithIndents(indentCount);
+		Box box = createHorizontalBoxWithIndents(level);
 		box.add(leftComponent);
 		add(box);
 		add(rightComponent);
 	}
 	
-	protected void addRow(HashMap<String, String> tokenReplacementMap, String text, AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
+	protected void addRow(HashMap<String, String> tokenReplacementMap, String text, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
 	{
 		String rightColumnTranslatedText = EAM.substitute(text, tokenReplacementMap);		
-		addRow(EMPTY_LEFT_COLUMN_TEXT, rightColumnTranslatedText, longDescriptionProvider, indentCount);
+		addRow(EMPTY_LEFT_COLUMN_TEXT, rightColumnTranslatedText, longDescriptionProvider, level);
 	}
 	
 	protected void addRow(AbstractLongDescriptionProvider longDescriptionProvider,	int indentCount, String tag, String text) throws Exception
@@ -105,25 +105,25 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addRow(EMPTY_LEFT_COLUMN_TEXT, rightColumnTranslatedText, longDescriptionProvider, indentCount);
 	}
 	
-	protected void addRowWithTemplateAndPseudoField(String rightColumnTemplate, AbstractLongDescriptionProvider longDescriptionProvider, int indentCount, String pseudoTag) throws Exception
+	protected void addRowWithTemplateAndPseudoField(String rightColumnTemplate, AbstractLongDescriptionProvider longDescriptionProvider, int level, String pseudoTag) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%X", getDashboardData(pseudoTag));
-		addRow(tokenReplacementMap, rightColumnTemplate, longDescriptionProvider, indentCount);
+		addRow(tokenReplacementMap, rightColumnTemplate, longDescriptionProvider, level);
 	}
 	
-	protected void addRowWithTemplateAndTwoPseudoFields(String rightColumnTemplate, AbstractLongDescriptionProvider longDescriptionProvider, int indentCount, String pseudoTag1, String pseudoTag2) throws Exception
+	protected void addRowWithTemplateAndTwoPseudoFields(String rightColumnTemplate, AbstractLongDescriptionProvider longDescriptionProvider, int level, String pseudoTag1, String pseudoTag2) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%X", getDashboardData(pseudoTag1));
 		tokenReplacementMap.put("%Y", getDashboardData(pseudoTag2));
-		addRow(tokenReplacementMap, rightColumnTemplate, longDescriptionProvider, indentCount);
+		addRow(tokenReplacementMap, rightColumnTemplate, longDescriptionProvider, level);
 	}
 
-	private Box createHorizontalBoxWithIndents(int indentCount)
+	private Box createHorizontalBoxWithIndents(int level)
 	{
 		Box box = Box.createHorizontalBox();
-		for (int index = 0; index < indentCount; ++index)
+		for (int index = 0; index < level; ++index)
 		{
 			box.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
 		}
@@ -131,12 +131,12 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		return box;
 	}
 	
-	private Font getFontBasedOnIndentation(int indentCount)
+	private Font getFontBasedForLevel(int level)
 	{
-		if (indentCount == 0)
+		if (level == 0)
 			return createFirstLevelFont();
 		
-		if (indentCount == 1)
+		if (level == 1)
 			return createSecondLevelFont();
 		
 		return getRawFont();
