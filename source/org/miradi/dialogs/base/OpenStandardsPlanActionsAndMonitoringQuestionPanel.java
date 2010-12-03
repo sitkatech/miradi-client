@@ -85,7 +85,7 @@ public class OpenStandardsPlanActionsAndMonitoringQuestionPanel extends Abstract
 
 	private void addDevelopGoalsForEachTargetRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%X of %Y Targets have Goals"), Dashboard.PSEUDO_TARGETS_WITH_GOALS_COUNT, Dashboard.PSEUDO_TARGET_COUNT);
+		addRowHelper(EAM.text("%X of %Y Targets have Goals"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_TARGETS_WITH_GOALS_COUNT, Dashboard.PSEUDO_TARGET_COUNT);
 		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%X goals Created"), Dashboard.PSEUDO_GOAL_COUNT);
 	}
 
@@ -109,7 +109,7 @@ public class OpenStandardsPlanActionsAndMonitoringQuestionPanel extends Abstract
 	private void addDevelopObjectivesRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
 		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%X Objectives Created"), Dashboard.PSEUDO_OBJECTIVE_COUNT);
-		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%Y of %X RCs have at least 1 objective"), Dashboard.PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT, Dashboard.PSEUDO_RESULTS_CHAIN_WITH_OBJECTIVE_COUNT);
+		addRowHelper(EAM.text("%Y of %X RCs have at least 1 objective"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT, Dashboard.PSEUDO_RESULTS_CHAIN_WITH_OBJECTIVE_COUNT);
 	}
 
 	private void addFinalizeStrategicPlanRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
@@ -144,7 +144,7 @@ public class OpenStandardsPlanActionsAndMonitoringQuestionPanel extends Abstract
 
 	private void addPlanProjectLifespanAndExitStrategyRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%Y - %X"), Dashboard.PSEUDO_PROJECT_PLANNING_START_DATE, Dashboard.PSEUDO_PROJECT_PLANNING_END_DATE);
+		addRowHelper(EAM.text("%Y - %X"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_PROJECT_PLANNING_START_DATE, Dashboard.PSEUDO_PROJECT_PLANNING_END_DATE);
 	}
 
 	@Override

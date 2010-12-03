@@ -128,12 +128,12 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 	private void addIdentifyDirectThreats(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
 		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%X Direct Threats created"), Dashboard.PSEUDO_THREAT_COUNT);
-		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%Y of %X have taxonomy assignments"), Dashboard.PSEUDO_THREAT_WITH_TAXONOMY_COUNT, Dashboard.PSEUDO_THREAT_COUNT);
+		addRowHelper(EAM.text("%Y of %X have taxonomy assignments"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_THREAT_WITH_TAXONOMY_COUNT, Dashboard.PSEUDO_THREAT_COUNT);
 	}
 
 	private void addRankDirectThreats(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%Y of %X threat/target links ranked"), Dashboard.PSEUDO_THREAT_TARGET_LINK_COUNT, Dashboard.PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT);
+		addRowHelper(EAM.text("%Y of %X threat/target links ranked"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_THREAT_TARGET_LINK_COUNT, Dashboard.PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT);
 	}
 
 	private void addIdentifyIndirectThreatsAndOpportunities()
