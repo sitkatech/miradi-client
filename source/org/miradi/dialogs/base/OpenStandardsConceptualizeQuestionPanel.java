@@ -42,9 +42,9 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 	}
 	
 	@Override
-	protected void addRow(ChoiceItem choiceItem, int indentCount) throws Exception
+	protected void addRow(ChoiceItem choiceItem, int level) throws Exception
 	{
-		super.addRow(choiceItem, indentCount);
+		super.addRow(choiceItem, level);
 		
 		String code = choiceItem.getCode();
 		AbstractLongDescriptionProvider longDescriptionProvider = choiceItem.getLongDescriptionProvider();
@@ -52,31 +52,31 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 		String stepName = getMainWindow().getWizardManager().stripJumpPrefix(action.getClass());
 		longDescriptionProvider.setWizardStepName(stepName);
 		if (code.equals(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE))
-			addTeamMembersRow(longDescriptionProvider, indentCount);
+			addTeamMembersRow(longDescriptionProvider, level);
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.AGREE_ON_ROLES_AND_RESPONSIBILITIES_CODE))
 			addAgreeOnRolesAndResponsibilities();
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.DEFINE_PROJECT_SCOPE_CODE))
-			addDefineProjectScope(longDescriptionProvider, indentCount);
+			addDefineProjectScope(longDescriptionProvider, level);
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.DEVELOP_MAP_OF_PROJECT_AREA_CODE))
 			addDevelopMapOfProjectArea();
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.SELECT_CONSERVATION_TARGETS_CODE))
-			addSelectConservationTargets(longDescriptionProvider, indentCount);
+			addSelectConservationTargets(longDescriptionProvider, level);
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.ADD_HUMAN_WELFARE_TARGETS_IF_DESIRED_CODE))
-			addAddHumanWelfareTargetsIfDesired(longDescriptionProvider, indentCount);
+			addAddHumanWelfareTargetsIfDesired(longDescriptionProvider, level);
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.DESCRIBE_STATUS_OF_TARGETS_CODE))
-			addDescribeStatusOfTargets(longDescriptionProvider, indentCount);
+			addDescribeStatusOfTargets(longDescriptionProvider, level);
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE))
-			addIdentifyDirectThreats(longDescriptionProvider, indentCount);
+			addIdentifyDirectThreats(longDescriptionProvider, level);
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.RANK_DIRECT_THREATS_CODE))
-			addRankDirectThreats(longDescriptionProvider, indentCount);
+			addRankDirectThreats(longDescriptionProvider, level);
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.IDENTIFY_INDIRECT_THREATS_AND_OPPORTUNITIES_CODE))
 			addIdentifyIndirectThreatsAndOpportunities();
