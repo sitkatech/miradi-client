@@ -75,7 +75,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	
 	protected void addRow(ChoiceItem choiceItem, int indentCount) throws Exception
 	{
-		addRow(choiceItem.getLabel(), "", choiceItem.getLongDescriptionProvider(), indentCount);
+		addRow(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, choiceItem.getLongDescriptionProvider(), indentCount);
 	}
 	
 	protected void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
@@ -96,13 +96,13 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	protected void addRow(HashMap<String, String> tokenReplacementMap, String text, AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
 		String rightColumnTranslatedText = EAM.substitute(text, tokenReplacementMap);		
-		addRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
+		addRow(EMPTY_LEFT_COLUMN_TEXT, rightColumnTranslatedText, longDescriptionProvider, indentCount);
 	}
 	
 	protected void addRow(AbstractLongDescriptionProvider longDescriptionProvider,	int indentCount, String tag, String text) throws Exception
 	{
 		String rightColumnTranslatedText = EAM.substitute(text, getDashboardData(tag));
-		addRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
+		addRow(EMPTY_LEFT_COLUMN_TEXT, rightColumnTranslatedText, longDescriptionProvider, indentCount);
 	}
 	
 	protected void addRowWithTemplateAndPseudoField(String rightColumnTemplate, AbstractLongDescriptionProvider longDescriptionProvider, int indentCount, String pseudoTag) throws Exception
@@ -178,4 +178,5 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	private DynamicChoiceWithRootChoiceItem question;
 	private SingleRowSelectionHandler rowSelectionHandler;
 	protected static final int INDENT_PER_LEVEL = 25;
+	private static final String EMPTY_LEFT_COLUMN_TEXT = "";
 }
