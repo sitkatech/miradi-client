@@ -75,14 +75,14 @@ public class OpenStandardsImplementActionsAndMonitoringQuestionPanel extends Abs
 	private void addDetailActivitiesTasksAndResponsibilitiesRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
 		addRowHelper(EAM.text("%X of %Y Strategies have at least 1 Activity."), longDescriptionProvider, indentCount, Dashboard.PSEUDO_STRATEGIES_WITH_ACTIVITIES_COUNT, Dashboard.PSEUDO_STRATEGY_COUNT);
-		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%X Total activities created"), Dashboard.PSEUDO_ACTIVITIES_COUNT);
+		addRowHelper(EAM.text("%X Total activities created"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_ACTIVITIES_COUNT);
 		addRowHelper(EAM.text("%Y of %X Activities and tasks have assignments"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_ACTIVITIES_AND_TASKS_COUNT, Dashboard.PSEUDO_ACTIVITIES_AND_TASKS_WITH_ASSIGNMENTS_COUNT);
 	}
 
 	private void addDetailMethodsTasksAndResponsibilitiesRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
 		addRowHelper(EAM.text("%X of %Y Indicators have Methods."), longDescriptionProvider, indentCount, Dashboard.PSEUDO_INDICATORS_WITH_METHODS_COUNT, Dashboard.PSEUDO_INDICATORS_COUNT);
-		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%X Total methods created"), Dashboard.PSEUDO_METHODS_COUNT);
+		addRowHelper(EAM.text("%X Total methods created"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_METHODS_COUNT);
 		addRowHelper(EAM.text("%X of %Y Methods and Tasks have assignments"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT, Dashboard.PSEUDO_METHODS_AND_TASKS_COUNT);
 	}
 
@@ -111,7 +111,7 @@ public class OpenStandardsImplementActionsAndMonitoringQuestionPanel extends Abs
 
 	private void addDevelopAndSubmitFundingProposalsrow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRowHelper(longDescriptionProvider, indentCount, EAM.text("Total Budget for Funding: %  %X Budget Secured"), Dashboard.PSEUDO_BUDGET_SECURED_PERCENT);
+		addRowHelper(EAM.text("Total Budget for Funding: %  %X Budget Secured"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_BUDGET_SECURED_PERCENT);
 	}
 
 	private void addImplementStrategicAndMonitoringPlansrow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
