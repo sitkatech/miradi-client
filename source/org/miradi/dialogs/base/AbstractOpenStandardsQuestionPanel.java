@@ -112,7 +112,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addRow(tokenReplacementMap, rightColumnTemplate, longDescriptionProvider, indentCount);
 	}
 	
-	protected void addRowHelper(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount, String rightColumnTemplate, String pseudoTag1, String pseudoTag2) throws Exception
+	protected void addRowHelper(String rightColumnTemplate, AbstractLongDescriptionProvider longDescriptionProvider, int indentCount, String pseudoTag1, String pseudoTag2) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%X", getDashboardData(pseudoTag1));
