@@ -20,11 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
-import org.miradi.dialogfields.QuestionEditorWithHierarchichalRows;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.AbstractOpenStandardsQuestionPanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
-import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.FastScrollPane;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
