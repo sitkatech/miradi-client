@@ -21,9 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import java.awt.Color;
-import java.awt.Dialog;
 import java.awt.Dimension;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.InvocationTargetException;
@@ -44,18 +42,18 @@ public class ConfirmDialog extends DialogWithDisposablePanelAndMainWindowUpdatin
 {
 	public static boolean confirm(MainWindow mainWindowToUse, String titleToUse, String confirmationTextToUse, String yesButtonTextToUse)
 	{
-		ConfirmDialogTemplate template = new ConfirmDialogTemplate(mainWindowToUse, titleToUse, confirmationTextToUse, yesButtonTextToUse);
-		return confirm(template);
+		ConfirmDialogTemplate template = new ConfirmDialogTemplate(titleToUse, confirmationTextToUse, yesButtonTextToUse);
+		return confirm(mainWindowToUse, template);
 	}
 	
-	public static boolean confirm(ConfirmDialogTemplate template)
+	public static boolean confirm(MainWindow mainWindow, ConfirmDialogTemplate template)
 	{
-		return isYesButton(showDialog(template));
+		return isYesButton(showDialog(mainWindow, template));
 	}
 	
-	private ConfirmDialog(ConfirmDialogTemplate template)
+	private ConfirmDialog(MainWindow mainWindow, ConfirmDialogTemplate template)
 	{
-		super(template.getMainWindow(), new DisposablePanel(new OneColumnGridLayout()));
+		super(mainWindow, new DisposablePanel(new OneColumnGridLayout()));
 		
 		pressedButtonIndex = -1;
 		
@@ -66,7 +64,7 @@ public class ConfirmDialog extends DialogWithDisposablePanelAndMainWindowUpdatin
 		panel.setBackground(backgroundColor);
 		panel.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
 
-		FlexibleWidthHtmlViewer htmlPanel = new FlexibleWidthHtmlViewer(template.getMainWindow(), template.getConfirmationText());
+		FlexibleWidthHtmlViewer htmlPanel = new FlexibleWidthHtmlViewer(mainWindow, template.getConfirmationText());
 		panel.add(htmlPanel);
 
 		panel.add(new FillerLabel());
@@ -94,9 +92,9 @@ public class ConfirmDialog extends DialogWithDisposablePanelAndMainWindowUpdatin
 		pack();
 	}
 
-	private static int showDialog(ConfirmDialogTemplate template)
+	private static int showDialog(MainWindow mainWindow, ConfirmDialogTemplate template)
 	{
-		ConfirmDialog dialog = new ConfirmDialog(template);
+		ConfirmDialog dialog = new ConfirmDialog(mainWindow, template);
 		dialog.showDialog();
 		return dialog.pressedButtonIndex;
 	}
@@ -130,9 +128,9 @@ public class ConfirmDialog extends DialogWithDisposablePanelAndMainWindowUpdatin
 		return false;
 	}
 	
-	public static boolean confirmWithinThread(ConfirmDialogTemplate templateToUse)
+	public static boolean confirmWithinThread(MainWindow mainWindowToUse, ConfirmDialogTemplate templateToUse)
 	{
-		ThreadedConfirmDialogLauncher launcher = new ThreadedConfirmDialogLauncher(templateToUse);
+		ThreadedConfirmDialogLauncher launcher = new ThreadedConfirmDialogLauncher(mainWindowToUse, templateToUse);
 		try
 		{
 			SwingUtilities.invokeAndWait(launcher);
@@ -150,14 +148,15 @@ public class ConfirmDialog extends DialogWithDisposablePanelAndMainWindowUpdatin
 	
 	public static class ThreadedConfirmDialogLauncher implements Runnable
 	{
-		public ThreadedConfirmDialogLauncher(ConfirmDialogTemplate templateToUse)
+		public ThreadedConfirmDialogLauncher(MainWindow mainWindowToUse, ConfirmDialogTemplate templateToUse)
 		{
+			mainWindow = mainWindowToUse;
 			template = templateToUse;
 		}
 		
 		public void run()
 		{
-			result = confirm(template);
+			result = confirm(mainWindow, template);
 		}
 
 		public boolean confirmed()
@@ -165,43 +164,22 @@ public class ConfirmDialog extends DialogWithDisposablePanelAndMainWindowUpdatin
 			return result;
 		}
 		
+		private MainWindow mainWindow;
 		private ConfirmDialogTemplate template;
 		private boolean result;
 	}
 	
 	public static class ConfirmDialogTemplate
 	{
-		public ConfirmDialogTemplate(MainWindow mainWindowToUse, String titleToUse, String confirmationTextToUse, String yesButtonTextToUse)
+		public ConfirmDialogTemplate(String titleToUse, String confirmationTextToUse, String yesButtonTextToUse)
 		{
-			mainWindow = mainWindowToUse;
 			title = titleToUse;
 			confirmationText = confirmationTextToUse;
 			yesText = yesButtonTextToUse;
 			
-			owningWindow = getMainWindow();
 			noText = CANCEL_TEXT;
 		}
 		
-		public MainWindow getMainWindow()
-		{
-			return mainWindow;
-		}
-
-		public boolean hasOwningDialog()
-		{
-			return owningDialog != null;
-		}
-
-		public Window getOwningWindow()
-		{
-			return owningWindow;
-		}
-
-		public Dialog getOwningDialog()
-		{
-			return owningDialog;
-		}
-
 		public String getConfirmationText()
 		{
 			return confirmationText;
@@ -219,9 +197,6 @@ public class ConfirmDialog extends DialogWithDisposablePanelAndMainWindowUpdatin
 
 		private final String CANCEL_TEXT = EAM.text("Button|Cancel");
 		
-		private MainWindow mainWindow;
-		private Dialog owningDialog;
-		private Window owningWindow;
 		private String title;
 		private String confirmationText;
 		private String yesText;
