@@ -153,7 +153,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		return font;
 	}
 	
-	protected Font getRawFont()
+	private Font getRawFont()
 	{
 		return new PanelTitleLabel().getFont();
 	}
