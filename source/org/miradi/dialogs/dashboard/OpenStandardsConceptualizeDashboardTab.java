@@ -38,13 +38,6 @@ public class OpenStandardsConceptualizeDashboardTab extends	PanelWithDescription
 	}
 	
 	@Override
-	protected void setupCommunicationBetweenLeftAndRightPanels(RightSideDescriptionPanel rightPanel)
-	{
-		//FIXME medium - find a way to remove casting.  Try this when dashboard tabs have been converted
-		((OpenStandardsConceptualizeQuestionPanel) leftPanel).addRowSelectionListener(rightPanel);
-	}
-
-	@Override
 	protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception
 	{
 		return new StaticLongDescriptionProvider();

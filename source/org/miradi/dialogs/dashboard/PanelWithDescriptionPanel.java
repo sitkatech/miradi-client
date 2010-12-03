@@ -22,6 +22,7 @@ package org.miradi.dialogs.dashboard;
 
 import org.miradi.dialogfields.QuestionEditorWithHierarchichalRows;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
+import org.miradi.dialogs.base.AbstractOpenStandardsQuestionPanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.main.MainWindow;
@@ -51,10 +52,9 @@ abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescr
 		return splitPane;
 	}
 
-	protected void setupCommunicationBetweenLeftAndRightPanels(RightSideDescriptionPanel rightPanel)
+	private void setupCommunicationBetweenLeftAndRightPanels(RightSideDescriptionPanel rightPanel)
 	{
-		//FIXME urgent - need to come up with better way to communicate a row selection change to the right panel
-		((QuestionEditorWithHierarchichalRows) ((OneFieldObjectDataInputPanel)leftPanel).getSingleField().getComponent()).addSelectionListener(rightPanel);
+		((AbstractOpenStandardsQuestionPanel) leftPanel).addRowSelectionListener(rightPanel);	
 	}
 	
 	@Override
