@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
-import java.util.HashMap;
-
 import org.miradi.actions.AbstractJumpMenuAction;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.main.EAM;
@@ -104,7 +102,7 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 
 	private void addDefineProjectScope(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRow(longDescriptionProvider, indentCount, Dashboard.PSEUDO_PROJECT_SCOPE_WORD_COUNT, EAM.text("Created (%s chars)"));
+		addRowHelper(longDescriptionProvider, indentCount, EAM.text("Created (%X chars)"), Dashboard.PSEUDO_PROJECT_SCOPE_WORD_COUNT);
 	}
 
 	private void addDevelopMapOfProjectArea()
@@ -113,52 +111,29 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 
 	private void addSelectConservationTargets(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
-		tokenReplacementMap.put("%targetCount", getDashboardData(Dashboard.PSEUDO_TARGET_COUNT));
-		String text = EAM.text("%targetCount created");
-		
-		addRow(tokenReplacementMap, text, longDescriptionProvider, indentCount);
+		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%X created"), Dashboard.PSEUDO_TARGET_COUNT);
 	}
 
 	private void addAddHumanWelfareTargetsIfDesired(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRow(longDescriptionProvider, indentCount, Dashboard.PSEUDO_HUMAN_WELFARE_TARGET_COUNT, EAM.text("%s created"));
+		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%X created"), Dashboard.PSEUDO_HUMAN_WELFARE_TARGET_COUNT);
 	}
 
 	private void addDescribeStatusOfTargets(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		HashMap<String, String> statusDescriptionTokenReplacementMap1 = new HashMap<String, String>();
-		statusDescriptionTokenReplacementMap1.put("%targetWithKeaCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_KEA_COUNT));
-		String rightColumnTranslatedText = EAM.substitute(EAM.text("%targetWithKeaCount targets have KEA"), statusDescriptionTokenReplacementMap1);
-		addRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
-		
-		HashMap<String, String> statusDescriptionTokenReplacementMap2 = new HashMap<String, String>();
-		statusDescriptionTokenReplacementMap2.put("%targetWithSimpleViabilityCount", getDashboardData(Dashboard.PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT));
-		String leftColumnTranslatedText = EAM.substitute(EAM.text("%targetWithSimpleViabilityCount targets have simple viablity information"), statusDescriptionTokenReplacementMap2);
-		addRow("", leftColumnTranslatedText, longDescriptionProvider, indentCount);
+		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%X targets have KEA"), Dashboard.PSEUDO_TARGET_WITH_KEA_COUNT);
+		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%X targets have simple viablity information"), Dashboard.PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT);
 	}
 
 	private void addIdentifyDirectThreats(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		HashMap<String, String> threatsTokenReplacementMap = new HashMap<String, String>();
-		threatsTokenReplacementMap.put("%threatCount", getDashboardData(Dashboard.PSEUDO_THREAT_COUNT));
-		threatsTokenReplacementMap.put("%threatWithTaxonomyCount", getDashboardData(Dashboard.PSEUDO_THREAT_WITH_TAXONOMY_COUNT));
-
-		String threatCountRightColumn = EAM.substitute(EAM.text("%threatCount Direct Threats created"), threatsTokenReplacementMap);
-		addRow("", threatCountRightColumn, longDescriptionProvider, indentCount);
-		
-		String taxonomyCountRightColumn = EAM.substitute(EAM.text("%threatWithTaxonomyCount of %threatCount have taxonomy assignments"), threatsTokenReplacementMap);
-		addRow("", taxonomyCountRightColumn, longDescriptionProvider, indentCount);
+		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%X Direct Threats created"), Dashboard.PSEUDO_THREAT_COUNT);
+		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%Y of %X have taxonomy assignments"), Dashboard.PSEUDO_THREAT_WITH_TAXONOMY_COUNT, Dashboard.PSEUDO_THREAT_COUNT);
 	}
 
 	private void addRankDirectThreats(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		HashMap<String, String> threatTargetLinksTokenReplacementMap = new HashMap<String, String>();
-		threatTargetLinksTokenReplacementMap.put("%threatTargetLinkCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_COUNT));
-		threatTargetLinksTokenReplacementMap.put("%threatTargetWithRatingCount", getDashboardData(Dashboard.PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT));
-		String text = EAM.text("%threatTargetWithRatingCount of %threatTargetLinkCount threat/target links ranked");
-		
-		addRow(threatTargetLinksTokenReplacementMap, text, longDescriptionProvider, indentCount);
+		addRowHelper(longDescriptionProvider, indentCount, EAM.text("%Y of %X threat/target links ranked"), Dashboard.PSEUDO_THREAT_TARGET_LINK_COUNT, Dashboard.PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT);
 	}
 
 	private void addIdentifyIndirectThreatsAndOpportunities()
