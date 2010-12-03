@@ -20,13 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
-import javax.swing.JScrollPane;
-
 import org.miradi.dialogfields.QuestionEditorWithHierarchichalRows;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.FastScrollPane;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 
 abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescription
@@ -47,7 +46,7 @@ abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescr
 		RightSideDescriptionPanel rightPanel = createRightPanel(getDefaultDescriptionProvider());
 		setupCommunicationBetweenLeftAndRightPanels(rightPanel);
 		
-		splitPane.setLeftComponent(new JScrollPane(leftPanel));
+		splitPane.setLeftComponent(new FastScrollPane(leftPanel));
 		splitPane.setRightComponent(rightPanel);
 		return splitPane;
 	}
