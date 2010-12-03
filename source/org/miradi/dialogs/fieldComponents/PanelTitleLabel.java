@@ -48,7 +48,6 @@ public class PanelTitleLabel extends UiLabel
 	public PanelTitleLabel(String text, Icon icon)
 	{
 		super(text, icon, JLabel.LEADING);
-		setFont(getMainWindow().getUserDataPanelFont());
 		initialize();
 	}
 	
@@ -67,6 +66,7 @@ public class PanelTitleLabel extends UiLabel
 	private void initialize()
 	{
 		setBackground(AppPreferences.getControlPanelBackgroundColor());
+		setFont(getMainWindow().getUserDataPanelFont());
 	}
 	
 	//TODO should not use static ref here
