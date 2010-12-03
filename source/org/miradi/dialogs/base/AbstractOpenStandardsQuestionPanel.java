@@ -83,7 +83,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		JComponent leftComponent = new PanelTitleLabel(leftColumnTranslatedText);
 		JComponent rightComponent = new PanelTitleLabel(rightColumnTranslatedText);
 		
-		Font font = getFontBasedForLevel(level);
+		Font font = getFontBasedOnLevel(level);
 		leftComponent.setFont(font);
 		rightComponent.setFont(font);
 		rowSelectionHandler.addSelectableRow(leftComponent, rightComponent, longDescriptionProvider);
@@ -125,7 +125,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		return box;
 	}
 	
-	private Font getFontBasedForLevel(int level)
+	private Font getFontBasedOnLevel(int level)
 	{
 		if (level == 0)
 			return createFirstLevelFont();
