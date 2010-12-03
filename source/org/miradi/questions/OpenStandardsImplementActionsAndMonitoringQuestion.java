@@ -28,7 +28,7 @@ public class OpenStandardsImplementActionsAndMonitoringQuestion extends DynamicC
 	@Override
 	protected ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
-		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren(IMPLEMENT_ACTIONS_AND_MONITORING_HEADER_CODE, getHeaderLabel(), new HtmlResourceLongDescriptionProvider(MAIN_DESCRIPTION_RIGHT_PANEL_FILE_NAME));
+		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren(IMPLEMENT_ACTIONS_AND_MONITORING_HEADER_CODE, getHeaderLabel(), new HtmlResourceLongDescriptionProvider(MAIN_DESCRIPTION_FILE_NAME));
 		ChoiceItemWithChildren processStep3a = new ChoiceItemWithChildren(PROCESS_STEP_3A_CODE, getProcessStep3a(), EAM.text(""), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3A_FILE_NAME));
 		headerChoiceItem.addChild(processStep3a);
 		processStep3a.addChild(new ChoiceItem(DETAIL_ACTIVITIES_TASKS_AND_RESPONSIBILITIES_CODE, getDetailActivitiesTasksAndResponsibilitiesLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3A_FILE_NAME)));
@@ -121,7 +121,7 @@ public class OpenStandardsImplementActionsAndMonitoringQuestion extends DynamicC
 	public static final String IMPLEMENT_STRATEGIC_AND_MONITORING_PLANS = "ImplementStrategicAndMonitoringPlans";
 	public static final String IMPLEMENT_WORK_PLAN_CODE = "ImplementWorkPlan";
 	
-	private static final String MAIN_DESCRIPTION_RIGHT_PANEL_FILE_NAME = "dashboard/1.html";
+	private static final String MAIN_DESCRIPTION_FILE_NAME = "dashboard/3.html";
 	private static final String DESCRIPTION_3A_FILE_NAME = "dashboard/3A.html";
 	private static final String DESCRIPTION_3B_FILE_NAME = "dashboard/3B.html";
 	private static final String DESCRIPTION_3C_FILE_NAME = "dashboard/3C.html";
