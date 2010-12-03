@@ -42,12 +42,6 @@ import org.miradi.utils.FlexibleWidthHtmlViewer;
 
 public class ConfirmDialog extends DialogWithDisposablePanelAndMainWindowUpdating
 {
-	public static boolean confirm(MainWindow mainWindowToUse, String titleToUse, String confirmationTextToUse, String yesButtonTextToUse)
-	{
-		ConfirmDialogTemplate template = new ConfirmDialogTemplate(titleToUse, confirmationTextToUse, yesButtonTextToUse);
-		return confirm(mainWindowToUse, template);
-	}
-	
 	public static boolean confirm(MainWindow mainWindow, ConfirmDialogTemplate template)
 	{
 		return isYesButton(showDialog(mainWindow, template));
