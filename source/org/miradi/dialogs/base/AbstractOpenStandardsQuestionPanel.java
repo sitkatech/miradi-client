@@ -105,14 +105,14 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addRow("", rightColumnTranslatedText, longDescriptionProvider, indentCount);
 	}
 	
-	protected void addRowHelper(String rightColumnTemplate, AbstractLongDescriptionProvider longDescriptionProvider, int indentCount, String pseudoTag) throws Exception
+	protected void addRowWithTemplateAndPseudoField(String rightColumnTemplate, AbstractLongDescriptionProvider longDescriptionProvider, int indentCount, String pseudoTag) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%X", getDashboardData(pseudoTag));
 		addRow(tokenReplacementMap, rightColumnTemplate, longDescriptionProvider, indentCount);
 	}
 	
-	protected void addRowHelper(String rightColumnTemplate, AbstractLongDescriptionProvider longDescriptionProvider, int indentCount, String pseudoTag1, String pseudoTag2) throws Exception
+	protected void addRowWithTemplateAndTwoPseudoFields(String rightColumnTemplate, AbstractLongDescriptionProvider longDescriptionProvider, int indentCount, String pseudoTag1, String pseudoTag2) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%X", getDashboardData(pseudoTag1));

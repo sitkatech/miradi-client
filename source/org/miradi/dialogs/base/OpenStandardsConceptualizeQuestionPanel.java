@@ -102,7 +102,7 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 
 	private void addDefineProjectScope(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRowHelper(EAM.text("Created (%X chars)"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_PROJECT_SCOPE_WORD_COUNT);
+		addRowWithTemplateAndPseudoField(EAM.text("Created (%X chars)"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_PROJECT_SCOPE_WORD_COUNT);
 	}
 
 	private void addDevelopMapOfProjectArea()
@@ -111,29 +111,29 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 
 	private void addSelectConservationTargets(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRowHelper(EAM.text("%X created"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_TARGET_COUNT);
+		addRowWithTemplateAndPseudoField(EAM.text("%X created"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_TARGET_COUNT);
 	}
 
 	private void addAddHumanWelfareTargetsIfDesired(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRowHelper(EAM.text("%X created"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_HUMAN_WELFARE_TARGET_COUNT);
+		addRowWithTemplateAndPseudoField(EAM.text("%X created"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_HUMAN_WELFARE_TARGET_COUNT);
 	}
 
 	private void addDescribeStatusOfTargets(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRowHelper(EAM.text("%X targets have KEA"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_TARGET_WITH_KEA_COUNT);
-		addRowHelper(EAM.text("%X targets have simple viablity information"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT);
+		addRowWithTemplateAndPseudoField(EAM.text("%X targets have KEA"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_TARGET_WITH_KEA_COUNT);
+		addRowWithTemplateAndPseudoField(EAM.text("%X targets have simple viablity information"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT);
 	}
 
 	private void addIdentifyDirectThreats(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRowHelper(EAM.text("%X Direct Threats created"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_THREAT_COUNT);
-		addRowHelper(EAM.text("%Y of %X have taxonomy assignments"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_THREAT_WITH_TAXONOMY_COUNT, Dashboard.PSEUDO_THREAT_COUNT);
+		addRowWithTemplateAndPseudoField(EAM.text("%X Direct Threats created"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_THREAT_COUNT);
+		addRowWithTemplateAndTwoPseudoFields(EAM.text("%Y of %X have taxonomy assignments"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_THREAT_WITH_TAXONOMY_COUNT, Dashboard.PSEUDO_THREAT_COUNT);
 	}
 
 	private void addRankDirectThreats(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRowHelper(EAM.text("%Y of %X threat/target links ranked"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_THREAT_TARGET_LINK_COUNT, Dashboard.PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT);
+		addRowWithTemplateAndTwoPseudoFields(EAM.text("%Y of %X threat/target links ranked"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_THREAT_TARGET_LINK_COUNT, Dashboard.PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT);
 	}
 
 	private void addIdentifyIndirectThreatsAndOpportunities()
