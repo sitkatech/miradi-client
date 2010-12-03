@@ -38,12 +38,6 @@ public class OpenStandardsAnalyzeAdaptAndUseTab extends PanelWithDescriptionPane
 	}
 	
 	@Override
-	protected void setupCommunicationBetweenLeftAndRightPanels(RightSideDescriptionPanel rightPanel)
-	{
-		((AbstractOpenStandardsQuestionPanel) leftPanel).addRowSelectionListener(rightPanel);
-	}
-
-	@Override
 	protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception
 	{
 		return new StaticLongDescriptionProvider();

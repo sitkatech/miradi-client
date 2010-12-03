@@ -38,12 +38,6 @@ public class OpenStandarsPlanActionsAndMonitoringTab extends PanelWithDescriptio
 	}
 	
 	@Override
-	protected void setupCommunicationBetweenLeftAndRightPanels(RightSideDescriptionPanel rightPanel)
-	{
-		((OpenStandardsPlanActionsAndMonitoringQuestionPanel) leftPanel).addRowSelectionListener(rightPanel);
-	}
-
-	@Override
 	protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception
 	{
 		return new StaticLongDescriptionProvider();
