@@ -23,7 +23,6 @@ package org.miradi.dialogs.dashboard;
 import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.text.html.StyleSheet;
@@ -32,6 +31,7 @@ import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.FastScrollPane;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.views.umbrella.ViewSwitchDoer;
 import org.miradi.wizard.SkeletonWizardStep;
@@ -45,7 +45,7 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 		activeParentPanel = activeParentPanelToUse;
 		mainWindow = mainWindowToUse;
 		viewer = new RightSideDescriptionHtmlViewer(mainWindow);
-		add(new JScrollPane(viewer));
+		add(new FastScrollPane(viewer));
 		
 		setRightSideHtmlContent(mainDescriptionProvider);
 	}
