@@ -24,7 +24,7 @@ import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.AbstractOpenStandardsQuestionPanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.FastScrollPane;
+import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 
 abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescription
@@ -45,7 +45,7 @@ abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescr
 		RightSideDescriptionPanel rightPanel = createRightPanel(getDefaultDescriptionProvider());
 		setupCommunicationBetweenLeftAndRightPanels(rightPanel);
 		
-		splitPane.setLeftComponent(new FastScrollPane(leftPanel));
+		splitPane.setLeftComponent(new MiradiScrollPane(leftPanel));
 		splitPane.setRightComponent(rightPanel);
 		return splitPane;
 	}
