@@ -26,7 +26,6 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Set;
 
-import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
@@ -42,7 +41,6 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.FillerLabel;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
-import org.miradi.utils.MiradiScrollPane;
 
 import com.jhlabs.awt.BasicGridLayout;
 import com.jhlabs.awt.GridLayoutPlus;
@@ -89,9 +87,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 			addComponentToRowPanel(mainRowsPanel, leftColumnComponent, choiceItem);
 		}
 	
-		MiradiScrollPane scrollPane = new MiradiScrollPane(mainRowsPanel);
-		scrollPane.setBorder(BorderFactory.createEmptyBorder());
-		add(scrollPane);
+		add(mainRowsPanel);
 		revalidate();
 		repaint();
 	}
