@@ -27,8 +27,6 @@ import org.miradi.project.Project;
 
 public class OneFieldObjectDataInputPanel extends ObjectDataInputPanel
 {
-	//FIXME: This panel will contain multiple ODIF's, 
-	// eliminating the need for a fake field with a fake tag
 	public OneFieldObjectDataInputPanel(Project projectToUse, ORef orefToUse, String tagToUse, ObjectDataInputField singleField)
 	{
 		super(projectToUse, orefToUse);
