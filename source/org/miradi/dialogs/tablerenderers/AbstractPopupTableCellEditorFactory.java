@@ -39,7 +39,6 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.utils.MiradiScrollPane;
 
 abstract public class AbstractPopupTableCellEditorFactory extends AbstractCellEditor implements TableCellEditor
 {
@@ -88,11 +87,10 @@ abstract public class AbstractPopupTableCellEditorFactory extends AbstractCellEd
 
 			final BaseObject baseObjectForRow = table.getBaseObjectForRowColumn(table.getSelectedRow(), table.getSelectedColumn());
 			DisposablePanel codeListEditor = createEditorComponenet(baseObjectForRow);
-			MiradiScrollPane codeListEditorScrollPane = new MiradiScrollPane(codeListEditor);
 			ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), getDialogTitle());
 			String dialogObjectDescription = ObjectTreeTable.getToolTipString(baseObjectForRow);
 			dialog.add(new PanelTitleLabel(dialogObjectDescription), BorderLayout.BEFORE_FIRST_LINE);
-			dialog.add(codeListEditorScrollPane, BorderLayout.CENTER);
+			dialog.setScrollableMainPanel(codeListEditor);
 			dialog.pack();
 			getMainWindow().getCurrentView().showFloatingPropertiesDialog(dialog);
 		}
