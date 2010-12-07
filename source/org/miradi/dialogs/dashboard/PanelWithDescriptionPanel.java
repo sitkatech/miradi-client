@@ -26,6 +26,7 @@ import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
+import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
 abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescription
 {
@@ -41,7 +42,7 @@ abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescr
 
 	private PersistentHorizontalSplitPane createSplitPane(MainWindow mainWindowToUse) throws Exception
 	{
-		PersistentHorizontalSplitPane splitPane = new PersistentHorizontalSplitPane(mainWindowToUse, mainWindowToUse, getPanelDescription());
+		splitPane = new PersistentNonPercentageHorizontalSplitPane(this, mainWindowToUse, getPanelIdentifier());
 		RightSideDescriptionPanel rightPanel = createRightPanel(getDefaultDescriptionProvider());
 		setupCommunicationBetweenLeftAndRightPanels(rightPanel);
 		
@@ -69,11 +70,13 @@ abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescr
 		super.becomeActive();
 		
 		leftPanel.becomeActive();
+		splitPane.restoreSavedLocation();
 	}
 	
 	@Override
 	public void becomeInactive()
 	{
+		splitPane.saveCurrentLocation();
 		leftPanel.becomeInactive();
 		
 		super.becomeInactive();
@@ -93,4 +96,5 @@ abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescr
 	
 	private MainWindow mainWindow;
 	protected AbstractObjectDataInputPanel leftPanel;
+	private PersistentHorizontalSplitPane splitPane;
 }
