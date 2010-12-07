@@ -45,7 +45,15 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	{
 		super(projectToUse, ORef.createInvalidWithType(Dashboard.getObjectType()));
 		
-		setLayout(new TwoColumnGridLayout());
+		TwoColumnGridLayout twoColumnGridLayout = new TwoColumnGridLayout();
+		final int LEFT_COLUMN = 0;
+		final int RIGHT_COLUMN = 1;
+		final int DO_NOT_GROW = 0;
+		final int GROW_TO_FILL = 1;
+		twoColumnGridLayout.setColWeight(LEFT_COLUMN, DO_NOT_GROW);
+		twoColumnGridLayout.setColWeight(RIGHT_COLUMN, GROW_TO_FILL);
+		
+		setLayout(twoColumnGridLayout);
 		question = questionToUse;
 		rowSelectionHandler = new SingleRowSelectionHandler();
 		
