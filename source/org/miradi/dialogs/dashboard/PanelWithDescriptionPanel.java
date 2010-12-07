@@ -42,7 +42,7 @@ abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescr
 
 	private PersistentHorizontalSplitPane createSplitPane(MainWindow mainWindowToUse) throws Exception
 	{
-		splitPane = new PersistentNonPercentageHorizontalSplitPane(this, mainWindowToUse, getPanelIdentifier());
+		splitPane = new PersistentNonPercentageHorizontalSplitPane(this, mainWindowToUse, SAME_SPLITTER_IDENTIFIER_FOR_ALL_TABS);
 		RightSideDescriptionPanel rightPanel = createRightPanel(getDefaultDescriptionProvider());
 		setupCommunicationBetweenLeftAndRightPanels(rightPanel);
 		
@@ -97,4 +97,5 @@ abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescr
 	private MainWindow mainWindow;
 	protected AbstractObjectDataInputPanel leftPanel;
 	private PersistentHorizontalSplitPane splitPane;
+	private static final String SAME_SPLITTER_IDENTIFIER_FOR_ALL_TABS = "PanelWithDescriptionPanel";
 }
