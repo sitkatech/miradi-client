@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.questions;
 
 import org.miradi.dialogs.dashboard.HtmlResourceLongDescriptionProvider;
-import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
 import org.miradi.main.EAM;
 
 public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootChoiceItem
