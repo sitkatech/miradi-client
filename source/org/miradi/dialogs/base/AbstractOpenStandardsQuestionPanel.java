@@ -29,6 +29,7 @@ import javax.swing.JComponent;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
+import org.miradi.dialogs.fieldComponents.PanelLabelWithSelectableText;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.TwoColumnGridLayout;
 import org.miradi.main.EAM;
@@ -80,15 +81,15 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	
 	protected void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
 	{
-		JComponent leftComponent = new PanelTitleLabel(leftColumnTranslatedText);
-		JComponent rightComponent = new PanelTitleLabel(rightColumnTranslatedText);
+		JComponent leftComponent = new PanelLabelWithSelectableText(leftColumnTranslatedText);
+		JComponent rightComponent = new PanelLabelWithSelectableText(rightColumnTranslatedText);
 		
 		Font font = getFontBasedOnLevel(level);
 		leftComponent.setFont(font);
 		rightComponent.setFont(font);
 		Box box = createHorizontalBoxWithIndents(level);
 		box.add(leftComponent);
-		rowSelectionHandler.addSelectableRow(box, rightComponent, longDescriptionProvider);
+		rowSelectionHandler.addSelectableRow(leftComponent, rightComponent, longDescriptionProvider);
 		
 		add(box);
 		add(rightComponent);
