@@ -22,23 +22,27 @@ package org.miradi.dialogs.base;
 
 import java.awt.Font;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.Box;
+import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.fieldComponents.PanelLabelWithSelectableText;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.icons.OpenStandardsNoStartedIcon;
+import org.miradi.icons.EmptyIcon;
 import org.miradi.layout.MiradiGridLayoutPlus;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DynamicChoiceWithRootChoiceItem;
+import org.miradi.questions.OpenStandardsProgessQuestion;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
@@ -130,12 +134,38 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	private void addRow(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
 	{
 		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
-		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level);
+		Icon statusCode = getStatusIcon(tokenReplacementMap);
+		
+		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, statusCode);
+	}
+
+	public Icon getStatusIcon(HashMap<String, String> tokenReplacementMap)
+	{
+		if (tokenReplacementMap.isEmpty())
+			return new EmptyIcon();
+		
+		ChoiceQuestion progressQuestion = getProject().getQuestion(OpenStandardsProgessQuestion.class);
+		ChoiceItem choiceItem = progressQuestion.findChoiceByCode(getStatusCode(tokenReplacementMap));
+
+		return choiceItem.getIcon();
 	}
 	
-	private void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
+	private String getStatusCode(HashMap<String, String> tokenReplacementMap)
 	{
-		JComponent iconComponent = new PanelTitleLabel(new OpenStandardsNoStartedIcon());
+		Set<String> keys = tokenReplacementMap.keySet();
+		for (String key : keys)
+		{
+			String rawData = tokenReplacementMap.get(key);
+			if (rawData.length() > 0 && !rawData.equals("0"))
+				return OpenStandardsProgessQuestion.IN_PROGRESS_CODE;
+		}
+		
+		return OpenStandardsProgessQuestion.NOT_STARTED_CODE;
+	}
+	
+	private void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level, Icon statusIcon) throws Exception
+	{
+		JComponent iconComponent = new PanelTitleLabel(statusIcon);
 		JComponent leftComponent = new PanelLabelWithSelectableText(leftColumnTranslatedText);
 		JComponent rightComponent = new PanelLabelWithSelectableText(rightColumnTranslatedText);
 		
