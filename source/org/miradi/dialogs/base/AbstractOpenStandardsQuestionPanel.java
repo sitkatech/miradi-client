@@ -94,7 +94,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addRow(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, choiceItem.getLongDescriptionProvider(), level);
 	}
 	
-	protected void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
+	private void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
 	{
 		JComponent iconComponent = new PanelTitleLabel(new OpenStandardsNoStartedIcon());
 		JComponent leftComponent = new PanelLabelWithSelectableText(leftColumnTranslatedText);
@@ -110,6 +110,19 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 
 		add(box);
 		add(rightComponent);
+	}
+	
+	protected void addRowWithNoPseudoTag(String rightColumnText, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
+	{
+		addRow(EMPTY_LEFT_COLUMN_TEXT, rightColumnText, new HashMap<String, String>(), longDescriptionProvider, level);
+	}
+	
+	protected void addRowWithLeftColumnText(String leftColumnText, AbstractLongDescriptionProvider longDescriptionProvider, int level, String pseudoTag) throws Exception
+	{
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%X", getDashboardData(pseudoTag));
+
+		addRow(leftColumnText, EAM.text("%X"), tokenReplacementMap, longDescriptionProvider, level);
 	}
 	
 	protected void addRowWithTemplateAndPseudoField(String rightColumnTemplate, AbstractLongDescriptionProvider longDescriptionProvider, int level, String pseudoTag) throws Exception
@@ -131,6 +144,12 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	{
 		String rightColumnTranslatedText = EAM.substitute(text, tokenReplacementMap);		
 		addRow(EMPTY_LEFT_COLUMN_TEXT, rightColumnTranslatedText, longDescriptionProvider, level);
+	}
+	
+	private void addRow(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
+	{
+		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
+		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level);
 	}
 	
 	private Box createHorizontalBoxWithIndents(int level)
