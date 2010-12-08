@@ -31,7 +31,7 @@ import javax.swing.event.ListSelectionListener;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.fieldComponents.PanelLabelWithSelectableText;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.layout.TwoColumnGridLayout;
+import org.miradi.icons.OpenStandardsNoStartedIcon;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
@@ -39,26 +39,35 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.DynamicChoiceWithRootChoiceItem;
 
+import com.jhlabs.awt.GridLayoutPlus;
+
 abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectDataInputPanel
 {
 	public AbstractOpenStandardsQuestionPanel(Project projectToUse, DynamicChoiceWithRootChoiceItem questionToUse) throws Exception
 	{
 		super(projectToUse, ORef.createInvalidWithType(Dashboard.getObjectType()));
 		
-		TwoColumnGridLayout twoColumnGridLayout = new TwoColumnGridLayout();
-		final int LEFT_COLUMN = 0;
-		final int RIGHT_COLUMN = 1;
-		final int DO_NOT_GROW = 0;
-		final int GROW_TO_FILL = 1;
-		twoColumnGridLayout.setColWeight(LEFT_COLUMN, DO_NOT_GROW);
-		twoColumnGridLayout.setColWeight(RIGHT_COLUMN, GROW_TO_FILL);
-		
-		setLayout(twoColumnGridLayout);
+		setLayout(createLayoutManager());
 		question = questionToUse;
 		rowSelectionHandler = new SingleRowSelectionHandler();
 		
 		final int FIRST_LEVEL_INDENT_COUNT = 0;
 		addRows(question.getHeaderChoiceItem(), FIRST_LEVEL_INDENT_COUNT);
+	}
+
+	private GridLayoutPlus createLayoutManager()
+	{
+		final int TEXT_COLUMN = 0;
+		final int RIGHT_COLUMN = 1;
+		
+		final int DO_NOT_GROW = 0;
+		final int GROW_TO_FILL = 1;
+
+		GridLayoutPlus gridLayout = new GridLayoutPlus(0, 2);
+		gridLayout.setColWeight(TEXT_COLUMN, DO_NOT_GROW);
+		gridLayout.setColWeight(RIGHT_COLUMN, GROW_TO_FILL);
+		
+		return gridLayout;
 	}
 	
 	public void addRowSelectionListener(ListSelectionListener listener)
@@ -89,6 +98,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	
 	protected void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
 	{
+		JComponent iconComponent = new PanelTitleLabel(new OpenStandardsNoStartedIcon());
 		JComponent leftComponent = new PanelLabelWithSelectableText(leftColumnTranslatedText);
 		JComponent rightComponent = new PanelLabelWithSelectableText(rightColumnTranslatedText);
 		
@@ -96,9 +106,10 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		leftComponent.setFont(font);
 		rightComponent.setFont(font);
 		Box box = createHorizontalBoxWithIndents(level);
+		box.add(iconComponent);
 		box.add(leftComponent);
 		rowSelectionHandler.addSelectableRow(leftComponent, rightComponent, longDescriptionProvider);
-		
+
 		add(box);
 		add(rightComponent);
 	}
