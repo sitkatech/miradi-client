@@ -112,12 +112,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		add(rightComponent);
 	}
 	
-	private void addRow(HashMap<String, String> tokenReplacementMap, String text, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
-	{
-		String rightColumnTranslatedText = EAM.substitute(text, tokenReplacementMap);		
-		addRow(EMPTY_LEFT_COLUMN_TEXT, rightColumnTranslatedText, longDescriptionProvider, level);
-	}
-	
 	protected void addRowWithTemplateAndPseudoField(String rightColumnTemplate, AbstractLongDescriptionProvider longDescriptionProvider, int level, String pseudoTag) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
@@ -132,7 +126,13 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		tokenReplacementMap.put("%Y", getDashboardData(pseudoTag2));
 		addRow(tokenReplacementMap, rightColumnTemplate, longDescriptionProvider, level);
 	}
-
+	
+	private void addRow(HashMap<String, String> tokenReplacementMap, String text, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
+	{
+		String rightColumnTranslatedText = EAM.substitute(text, tokenReplacementMap);		
+		addRow(EMPTY_LEFT_COLUMN_TEXT, rightColumnTranslatedText, longDescriptionProvider, level);
+	}
+	
 	private Box createHorizontalBoxWithIndents(int level)
 	{
 		Box box = Box.createHorizontalBox();
