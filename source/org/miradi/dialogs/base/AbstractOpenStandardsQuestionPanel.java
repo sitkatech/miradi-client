@@ -134,18 +134,18 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	private void addRow(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
 	{
 		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
-		Icon statusCode = getStatusIcon(tokenReplacementMap);
+		Icon statusCode = getStatusIcon(tokenReplacementMap.values());
 		
 		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, statusCode);
 	}
 
-	public Icon getStatusIcon(HashMap<String, String> tokenReplacementMap)
+	public Icon getStatusIcon(Collection<String> rawDataValues)
 	{
-		if (tokenReplacementMap.isEmpty())
+		if (rawDataValues.isEmpty())
 			return new EmptyIcon();
 		
 		ChoiceQuestion progressQuestion = getProject().getQuestion(OpenStandardsProgressQuestion.class);
-		String statusCode = getStatusCode(tokenReplacementMap.values());
+		String statusCode = getStatusCode(rawDataValues);
 		ChoiceItem choiceItem = progressQuestion.findChoiceByCode(statusCode);
 
 		return choiceItem.getIcon();
