@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
-import java.util.HashMap;
-
 import org.miradi.actions.AbstractJumpMenuAction;
 import org.miradi.dialogs.base.AbstractOpenStandardsQuestionPanel;
 import org.miradi.main.EAM;
@@ -93,20 +91,9 @@ public class OpenStandardsImplementActionsAndMonitoringQuestionPanel extends Abs
 
 	private void addEstimateCostsForActivitiesAndMonitoringrow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		HashMap<String, String> tokenReplacementMap1 = new HashMap<String, String>();
-		tokenReplacementMap1.put("%workCosts", getDashboardData(Dashboard.PSEUDO_TOTAL_PROJECT_RESOURCES_COSTS));
-		tokenReplacementMap1.put("%currencySymbol", getEncodedCurrencySymbol());
-		addRow(tokenReplacementMap1, EAM.text("Work Costs: %currencySymbol %workCosts"), longDescriptionProvider, indentCount);
-
-		HashMap<String, String> tokenReplacementMap2 = new HashMap<String, String>();
-		tokenReplacementMap2.put("%expenses", getDashboardData(Dashboard.PSEUDO_TOTAL_PROJECT_EXPENSES));
-		tokenReplacementMap2.put("%currencySymbol", getEncodedCurrencySymbol());
-		addRow(tokenReplacementMap2, EAM.text("Expenses: %currencySymbol %expenses"), longDescriptionProvider, indentCount);
-		
-		HashMap<String, String> tokenReplacementMap3 = new HashMap<String, String>();
-		tokenReplacementMap3.put("%projectBudget", getDashboardData(Dashboard.PSEUDO_PROJECT_BUDGET));
-		tokenReplacementMap3.put("%currencySymbol", getEncodedCurrencySymbol());
-		addRow(tokenReplacementMap3, EAM.text("Project Budget: %currencySymbol %projectBudget"), longDescriptionProvider, indentCount);
+		addRowWithTemplateAndTwoPseudoFields(EAM.text("Work Costs: %X %Y"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_CURRENCY_SYMBOL, Dashboard.PSEUDO_TOTAL_PROJECT_RESOURCES_COSTS);
+		addRowWithTemplateAndTwoPseudoFields(EAM.text("Expenses: %X %Y"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_CURRENCY_SYMBOL, Dashboard.PSEUDO_TOTAL_PROJECT_EXPENSES);
+		addRowWithTemplateAndTwoPseudoFields(EAM.text("Project Budget: %X %Y"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_CURRENCY_SYMBOL, Dashboard.PSEUDO_PROJECT_BUDGET);
 	}
 
 	private void addDevelopAndSubmitFundingProposalsrow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
@@ -124,11 +111,6 @@ public class OpenStandardsImplementActionsAndMonitoringQuestionPanel extends Abs
 	{
 	}
 	
-	private String getEncodedCurrencySymbol()
-	{
-		return "\\" + getDashboardData(Dashboard.PSEUDO_CURRENCY_SYMBOL);
-	}
-
 	@Override
 	public String getPanelDescription()
 	{
