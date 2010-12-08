@@ -20,9 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.layout;
 
 import com.jhlabs.awt.Alignment;
-import com.jhlabs.awt.GridLayoutPlus;
 
-public class TwoColumnGridLayout extends GridLayoutPlus
+public class TwoColumnGridLayout extends MiradiGridLayoutPlus
 {
 	public TwoColumnGridLayout()
 	{

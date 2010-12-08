@@ -32,6 +32,7 @@ import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.fieldComponents.PanelLabelWithSelectableText;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.OpenStandardsNoStartedIcon;
+import org.miradi.layout.MiradiGridLayoutPlus;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
@@ -63,7 +64,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		final int DO_NOT_GROW = 0;
 		final int GROW_TO_FILL = 1;
 
-		GridLayoutPlus gridLayout = new GridLayoutPlus(0, 2);
+		MiradiGridLayoutPlus gridLayout = new MiradiGridLayoutPlus(0, 2);
 		gridLayout.setColWeight(TEXT_COLUMN, DO_NOT_GROW);
 		gridLayout.setColWeight(RIGHT_COLUMN, GROW_TO_FILL);
 		
