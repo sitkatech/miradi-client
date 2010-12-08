@@ -36,15 +36,17 @@ public class OpenStandardsProgessQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] getProgressChoices()
 	{
 		return new ChoiceItem[] {
+				new ChoiceItem(NOT_SPECIFIED_CODE, EAM.text("Not Specified")),
 				new ChoiceItem(NOT_STARTED_CODE, EAM.text("Not Started"), new OpenStandardsNoStartedIcon()),
 				new ChoiceItem(IN_PROGRESS_CODE, EAM.text("In Progress"), new OpenStandardsInProgressIcon()),
 				new ChoiceItem(COMPLETE_CODE, EAM.text("Complete"), new OpenStandardsCompleteIcon()),
 				new ChoiceItem(NOT_APPLICABLE_CODE, EAM.text("Not Applicable"), new OpenStandardsNotApplicableIcon()),
 		};
 	}
-	
-	private static final String NOT_STARTED_CODE = "";
-	private static final String IN_PROGRESS_CODE = "1";
-	private static final String COMPLETE_CODE = "2";
-	private static final String NOT_APPLICABLE_CODE = "3";
+
+	private static final String NOT_SPECIFIED_CODE = "";
+	private static final String NOT_STARTED_CODE = "1";
+	private static final String IN_PROGRESS_CODE = "2";
+	private static final String COMPLETE_CODE = "3";
+	private static final String NOT_APPLICABLE_CODE = "4";
 }
