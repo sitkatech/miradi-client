@@ -33,4 +33,17 @@ public class MiradiGridLayoutPlus extends GridLayoutPlus
 	{
 		super(rows, cols, hGap, vGap, hMargin, vMargin);
 	}
+	
+	public void growToFillColumn(int column)
+	{
+		setColWeight(column, GROW_TO_FILL);
+	}
+	
+	public void doNotGrowColumn(int column)
+	{
+		setColWeight(column, DO_NOT_GROW);	
+	}
+	
+	private static final int DO_NOT_GROW = 0;
+	private static final int GROW_TO_FILL = 1;
 }
