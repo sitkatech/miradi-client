@@ -89,11 +89,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		}
 	}
 	
-	protected void addRow(ChoiceItem choiceItem, int level) throws Exception
-	{
-		addRow(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, choiceItem.getLongDescriptionProvider(), level);
-	}
-	
 	private void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
 	{
 		JComponent iconComponent = new PanelTitleLabel(new OpenStandardsNoStartedIcon());
@@ -110,6 +105,11 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 
 		add(box);
 		add(rightComponent);
+	}
+	
+	protected void addRow(ChoiceItem choiceItem, int level) throws Exception
+	{
+		addRow(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, choiceItem.getLongDescriptionProvider(), level);
 	}
 	
 	protected void addRowWithNoPseudoTag(String rightColumnText, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
