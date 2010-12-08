@@ -26,9 +26,9 @@ import org.miradi.icons.OpenStandardsNoStartedIcon;
 import org.miradi.icons.OpenStandardsNotApplicableIcon;
 import org.miradi.main.EAM;
 
-public class OpenStandardsProgessQuestion extends StaticChoiceQuestion
+public class OpenStandardsProgressQuestion extends StaticChoiceQuestion
 {
-	public OpenStandardsProgessQuestion()
+	public OpenStandardsProgressQuestion()
 	{
 		super(getProgressChoices());
 	}

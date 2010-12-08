@@ -42,7 +42,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DynamicChoiceWithRootChoiceItem;
-import org.miradi.questions.OpenStandardsProgessQuestion;
+import org.miradi.questions.OpenStandardsProgressQuestion;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
@@ -144,7 +144,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		if (tokenReplacementMap.isEmpty())
 			return new EmptyIcon();
 		
-		ChoiceQuestion progressQuestion = getProject().getQuestion(OpenStandardsProgessQuestion.class);
+		ChoiceQuestion progressQuestion = getProject().getQuestion(OpenStandardsProgressQuestion.class);
 		ChoiceItem choiceItem = progressQuestion.findChoiceByCode(getStatusCode(tokenReplacementMap));
 
 		return choiceItem.getIcon();
@@ -157,10 +157,10 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		{
 			String rawData = tokenReplacementMap.get(key);
 			if (rawData.length() > 0 && !rawData.equals("0"))
-				return OpenStandardsProgessQuestion.IN_PROGRESS_CODE;
+				return OpenStandardsProgressQuestion.IN_PROGRESS_CODE;
 		}
 		
-		return OpenStandardsProgessQuestion.NOT_STARTED_CODE;
+		return OpenStandardsProgressQuestion.NOT_STARTED_CODE;
 	}
 	
 	private void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level, Icon statusIcon) throws Exception
