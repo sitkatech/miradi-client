@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import org.miradi.icons.EmptyIcon;
 import org.miradi.icons.OpenStandardsCompleteIcon;
 import org.miradi.icons.OpenStandardsInProgressIcon;
 import org.miradi.icons.OpenStandardsNotStartedIcon;
@@ -36,7 +37,7 @@ public class OpenStandardsProgressQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] getProgressChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem(NOT_SPECIFIED_CODE, EAM.text("Not Specified")),
+				new ChoiceItem(NOT_SPECIFIED_CODE, EAM.text("Not Specified"), new EmptyIcon()),
 				new ChoiceItem(NOT_STARTED_CODE, EAM.text("Not Started"), new OpenStandardsNotStartedIcon()),
 				new ChoiceItem(IN_PROGRESS_CODE, EAM.text("In Progress"), new OpenStandardsInProgressIcon()),
 				new ChoiceItem(COMPLETE_CODE, EAM.text("Complete"), new OpenStandardsCompleteIcon()),
