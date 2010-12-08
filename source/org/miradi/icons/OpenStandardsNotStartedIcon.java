@@ -22,9 +22,9 @@ package org.miradi.icons;
 
 import org.miradi.utils.MiradiResourceImageIcon;
 
-public class OpenStandardsNoStartedIcon extends MiradiResourceImageIcon
+public class OpenStandardsNotStartedIcon extends MiradiResourceImageIcon
 {
-	public OpenStandardsNoStartedIcon()
+	public OpenStandardsNotStartedIcon()
 	{
 		super("icons/openStandardsNotStartedIcon.png");
 	}
