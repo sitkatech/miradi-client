@@ -125,7 +125,7 @@ public class OpenStandardsPlanActionsAndMonitoringQuestionPanel extends Abstract
 
 	private void addDefineAudiencesAndInformationNeedsRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRow("", EAM.text("Use Comments Field?"), longDescriptionProvider, indentCount);
+		addRowWithNoPseudoTag(EAM.text("Use Comments Field?"), longDescriptionProvider, indentCount);
 	}
 
 	private void addDefineIndicatorsRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception

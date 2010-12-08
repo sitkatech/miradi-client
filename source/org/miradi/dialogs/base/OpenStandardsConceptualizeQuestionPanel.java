@@ -93,7 +93,7 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 
 	private void addTeamMembersRow(AbstractLongDescriptionProvider longDescriptionProvider, int indentCount) throws Exception
 	{
-		addRow(EAM.text("Team Members:"), getDashboardData(Dashboard.PSEUDO_TEAM_MEMBER_COUNT), longDescriptionProvider, indentCount);
+		addRowWithLeftColumnText(EAM.text("Team Members:"), longDescriptionProvider, indentCount, Dashboard.PSEUDO_TEAM_MEMBER_COUNT);
 	}
 
 	private void addAgreeOnRolesAndResponsibilities()
