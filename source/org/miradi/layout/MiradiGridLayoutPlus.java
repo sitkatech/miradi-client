@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2010, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -17,27 +17,20 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+
 package org.miradi.layout;
 
-import com.jhlabs.awt.Alignment;
+import com.jhlabs.awt.GridLayoutPlus;
 
-public class OneColumnGridLayout extends MiradiGridLayoutPlus
+public class MiradiGridLayoutPlus extends GridLayoutPlus
 {
-	public OneColumnGridLayout()
+	public MiradiGridLayoutPlus(int rows, int cols)
 	{
-		super(0, 1, 0, 0, 0, 0);
-		setFill(Alignment.FILL_NONE);
-		setAlignment(Alignment.NORTHWEST);
+		super(rows, cols);
 	}
 
-	public void setFullWidth()
+	public MiradiGridLayoutPlus(int rows, int cols, int hGap, int vGap, int hMargin, int vMargin)
 	{
-		setFill(Alignment.FILL_HORIZONTAL);
-	}
-
-	public void setGaps(int gap)
-	{
-		hGap = gap;
-		vGap = gap;
+		super(rows, cols, hGap, vGap, hMargin, vMargin);
 	}
 }
