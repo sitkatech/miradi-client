@@ -153,13 +153,20 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	
 	private String getStatusCode(Collection<String> rawDataValues)
 	{
+		int valuesWithDataCount = 0;
 		for (String rawData : rawDataValues)
 		{
 			if (rawData.length() > 0 && !rawData.equals("0"))
-				return OpenStandardsProgressQuestion.IN_PROGRESS_CODE;
+				++valuesWithDataCount;
 		}
-		
-		return OpenStandardsProgressQuestion.NOT_STARTED_CODE;
+
+		if (valuesWithDataCount == 0)
+			return OpenStandardsProgressQuestion.NOT_STARTED_CODE;
+			
+		if (valuesWithDataCount < rawDataValues.size())
+			return OpenStandardsProgressQuestion.NOT_STARTED_CODE;
+			
+		return OpenStandardsProgressQuestion.IN_PROGRESS_CODE;
 	}
 	
 	private void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level, Icon statusIcon) throws Exception
