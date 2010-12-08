@@ -30,6 +30,7 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.event.ListSelectionListener;
 
+import org.miradi.dialogfields.ReadonlyChoiceItemIconField;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.fieldComponents.PanelLabelWithSelectableText;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -136,7 +137,8 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
 		Icon statusIcon = getStatusIcon(tokenReplacementMap.values());
 		
-		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, statusIcon);
+		ReadonlyChoiceItemIconField field = new ReadonlyChoiceItemIconField(getProject(), ORef.INVALID, "", statusIcon);
+		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, field.getComponent());
 	}
 
 	public Icon getStatusIcon(Collection<String> rawDataValues)
@@ -169,9 +171,8 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		return OpenStandardsProgressQuestion.IN_PROGRESS_CODE;
 	}
 	
-	private void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level, Icon statusIcon) throws Exception
+	private void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level, JComponent iconComponent) throws Exception
 	{
-		JComponent iconComponent = new PanelTitleLabel(statusIcon);
 		JComponent leftComponent = new PanelLabelWithSelectableText(leftColumnTranslatedText);
 		JComponent rightComponent = new PanelLabelWithSelectableText(rightColumnTranslatedText);
 		
