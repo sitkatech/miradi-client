@@ -44,9 +44,9 @@ public class OpenStandardsProgessQuestion extends StaticChoiceQuestion
 		};
 	}
 
-	private static final String NOT_SPECIFIED_CODE = "";
-	private static final String NOT_STARTED_CODE = "1";
-	private static final String IN_PROGRESS_CODE = "2";
-	private static final String COMPLETE_CODE = "3";
-	private static final String NOT_APPLICABLE_CODE = "4";
+	public static final String NOT_SPECIFIED_CODE = "";
+	public static final String NOT_STARTED_CODE = "1";
+	public static final String IN_PROGRESS_CODE = "2";
+	public static final String COMPLETE_CODE = "3";
+	public static final String NOT_APPLICABLE_CODE = "4";
 }
