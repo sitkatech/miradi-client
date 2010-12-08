@@ -21,8 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import java.awt.Font;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.Box;
@@ -145,17 +145,16 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 			return new EmptyIcon();
 		
 		ChoiceQuestion progressQuestion = getProject().getQuestion(OpenStandardsProgressQuestion.class);
-		ChoiceItem choiceItem = progressQuestion.findChoiceByCode(getStatusCode(tokenReplacementMap));
+		String statusCode = getStatusCode(tokenReplacementMap.values());
+		ChoiceItem choiceItem = progressQuestion.findChoiceByCode(statusCode);
 
 		return choiceItem.getIcon();
 	}
 	
-	private String getStatusCode(HashMap<String, String> tokenReplacementMap)
+	private String getStatusCode(Collection<String> rawDataValues)
 	{
-		Set<String> keys = tokenReplacementMap.keySet();
-		for (String key : keys)
+		for (String rawData : rawDataValues)
 		{
-			String rawData = tokenReplacementMap.get(key);
 			if (rawData.length() > 0 && !rawData.equals("0"))
 				return OpenStandardsProgressQuestion.IN_PROGRESS_CODE;
 		}
