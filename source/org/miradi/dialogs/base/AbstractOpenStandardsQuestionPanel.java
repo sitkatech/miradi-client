@@ -61,12 +61,9 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		final int TEXT_COLUMN = 0;
 		final int RIGHT_COLUMN = 1;
 		
-		final int DO_NOT_GROW = 0;
-		final int GROW_TO_FILL = 1;
-
 		MiradiGridLayoutPlus gridLayout = new MiradiGridLayoutPlus(0, 2);
-		gridLayout.setColWeight(TEXT_COLUMN, DO_NOT_GROW);
-		gridLayout.setColWeight(RIGHT_COLUMN, GROW_TO_FILL);
+		gridLayout.doNotGrowColumn(TEXT_COLUMN);
+		gridLayout.growToFillColumn(RIGHT_COLUMN);
 		
 		return gridLayout;
 	}
