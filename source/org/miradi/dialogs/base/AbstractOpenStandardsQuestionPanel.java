@@ -89,24 +89,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		}
 	}
 	
-	private void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
-	{
-		JComponent iconComponent = new PanelTitleLabel(new OpenStandardsNoStartedIcon());
-		JComponent leftComponent = new PanelLabelWithSelectableText(leftColumnTranslatedText);
-		JComponent rightComponent = new PanelLabelWithSelectableText(rightColumnTranslatedText);
-		
-		Font font = getFontBasedOnLevel(level);
-		leftComponent.setFont(font);
-		rightComponent.setFont(font);
-		Box box = createHorizontalBoxWithIndents(level);
-		box.add(iconComponent);
-		box.add(leftComponent);
-		rowSelectionHandler.addSelectableRow(leftComponent, rightComponent, longDescriptionProvider);
-
-		add(box);
-		add(rightComponent);
-	}
-	
 	protected void addRow(ChoiceItem choiceItem, int level) throws Exception
 	{
 		addRow(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, choiceItem.getLongDescriptionProvider(), level);
@@ -149,6 +131,24 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	{
 		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
 		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level);
+	}
+	
+	private void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
+	{
+		JComponent iconComponent = new PanelTitleLabel(new OpenStandardsNoStartedIcon());
+		JComponent leftComponent = new PanelLabelWithSelectableText(leftColumnTranslatedText);
+		JComponent rightComponent = new PanelLabelWithSelectableText(rightColumnTranslatedText);
+		
+		Font font = getFontBasedOnLevel(level);
+		leftComponent.setFont(font);
+		rightComponent.setFont(font);
+		Box box = createHorizontalBoxWithIndents(level);
+		box.add(iconComponent);
+		box.add(leftComponent);
+		rowSelectionHandler.addSelectableRow(leftComponent, rightComponent, longDescriptionProvider);
+
+		add(box);
+		add(rightComponent);
 	}
 	
 	private Box createHorizontalBoxWithIndents(int level)
