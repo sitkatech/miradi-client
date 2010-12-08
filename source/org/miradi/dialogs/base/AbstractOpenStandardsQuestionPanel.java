@@ -134,9 +134,9 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	private void addRow(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
 	{
 		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
-		Icon statusCode = getStatusIcon(tokenReplacementMap.values());
+		Icon statusIcon = getStatusIcon(tokenReplacementMap.values());
 		
-		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, statusCode);
+		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, statusIcon);
 	}
 
 	public Icon getStatusIcon(Collection<String> rawDataValues)
