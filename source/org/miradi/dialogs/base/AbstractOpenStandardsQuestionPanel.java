@@ -112,7 +112,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		add(rightComponent);
 	}
 	
-	protected void addRow(HashMap<String, String> tokenReplacementMap, String text, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
+	private void addRow(HashMap<String, String> tokenReplacementMap, String text, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
 	{
 		String rightColumnTranslatedText = EAM.substitute(text, tokenReplacementMap);		
 		addRow(EMPTY_LEFT_COLUMN_TEXT, rightColumnTranslatedText, longDescriptionProvider, level);

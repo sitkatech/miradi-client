@@ -322,7 +322,7 @@ public class Dashboard extends BaseObject
 
 	private String getCurrencySymbol()
 	{
-		return getProject().getMetadata().getData(ProjectMetadata.TAG_CURRENCY_SYMBOL);
+		return "\\" + getProject().getMetadata().getData(ProjectMetadata.TAG_CURRENCY_SYMBOL);
 	}
 
 	private String getMethodsCount()
