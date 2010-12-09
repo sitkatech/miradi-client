@@ -21,6 +21,7 @@ package org.miradi.database;
 
 import org.json.JSONObject;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objectpools.ObjectPool;
 
 public class ObjectManifest extends Manifest
 {
@@ -35,9 +36,10 @@ public class ObjectManifest extends Manifest
 		// TODO: Fail if wrong type
 	}
 
-	public ObjectManifest(ORefList refsToAdd)
+	public ObjectManifest(ObjectPool pool)
 	{
 		this();
+		ORefList refsToAdd = pool.getRefList();
 		for(int i = 0; i < refsToAdd.size(); ++i)
 		{
 			put(refsToAdd.get(i).getObjectId());
