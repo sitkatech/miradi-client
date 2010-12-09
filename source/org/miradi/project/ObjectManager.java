@@ -381,7 +381,7 @@ public class ObjectManager
 
 	private ObjectManifest createManifest(EAMObjectPool pool)
 	{
-		return new ObjectManifest(pool.getRefList());
+		return new ObjectManifest(pool);
 	}
 
 	public void deleteObject(BaseObject object) throws Exception
