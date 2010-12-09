@@ -477,9 +477,10 @@ abstract public class TabbedView extends UmbrellaView
 			closeActivePropertiesDialog();
 			try
 			{
+				// NOTE: We can't execute a command here, but need to set the data, 
+				// and might need to record the command
 				CommandSetObjectData tabChangeCommand = createTabChangeCommand(newTab);
-				getViewData().setCurrentTab(newTab);
-				getProject().getDatabase().writeObject(getViewData());
+				getProject().setObjectData(tabChangeCommand.getObjectORef(), tabChangeCommand.getFieldTag(), tabChangeCommand.getDataValue());
 				if(!getProject().isExecutingACommand())
 				{
 					getProject().recordCommand(tabChangeCommand);
