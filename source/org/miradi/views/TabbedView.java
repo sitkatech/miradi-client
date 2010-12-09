@@ -477,7 +477,7 @@ abstract public class TabbedView extends UmbrellaView
 			closeActivePropertiesDialog();
 			try
 			{
-				Command tabChangeCommand = createTabChangeCommand(newTab);
+				CommandSetObjectData tabChangeCommand = createTabChangeCommand(newTab);
 				getViewData().setCurrentTab(newTab);
 				getProject().getDatabase().writeObject(getViewData());
 				if(!getProject().isExecutingACommand())
@@ -493,7 +493,7 @@ abstract public class TabbedView extends UmbrellaView
 			}
 		}
 		
-		Command createTabChangeCommand(int newTab) throws Exception
+		CommandSetObjectData createTabChangeCommand(int newTab) throws Exception
 		{
 			CommandSetObjectData cmd = new CommandSetObjectData(ObjectType.VIEW_DATA, getViewData().getId(), ViewData.TAG_CURRENT_TAB, Integer.toString(newTab));
 			cmd.setPreviousDataValue(Integer.toString(currentTabIndex));
