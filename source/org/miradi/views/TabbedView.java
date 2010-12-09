@@ -477,9 +477,10 @@ abstract public class TabbedView extends UmbrellaView
 			closeActivePropertiesDialog();
 			try
 			{
-				Command tabChangeCommand = createTabChangeCommand(newTab);
-				getViewData().setCurrentTab(newTab);
-				getProject().getDatabase().writeObject(getViewData());
+				// NOTE: We can't execute a command here, but need to set the data, 
+				// and might need to record the command
+				CommandSetObjectData tabChangeCommand = createTabChangeCommand(newTab);
+				getProject().setObjectData(tabChangeCommand.getObjectORef(), tabChangeCommand.getFieldTag(), tabChangeCommand.getDataValue());
 				if(!getProject().isExecutingACommand())
 				{
 					getProject().recordCommand(tabChangeCommand);
@@ -493,7 +494,7 @@ abstract public class TabbedView extends UmbrellaView
 			}
 		}
 		
-		Command createTabChangeCommand(int newTab) throws Exception
+		CommandSetObjectData createTabChangeCommand(int newTab) throws Exception
 		{
 			CommandSetObjectData cmd = new CommandSetObjectData(ObjectType.VIEW_DATA, getViewData().getId(), ViewData.TAG_CURRENT_TAB, Integer.toString(newTab));
 			cmd.setPreviousDataValue(Integer.toString(currentTabIndex));
