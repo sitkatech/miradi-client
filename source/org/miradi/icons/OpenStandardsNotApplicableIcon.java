@@ -26,6 +26,6 @@ public class OpenStandardsNotApplicableIcon extends MiradiResourceImageIcon
 {
 	public OpenStandardsNotApplicableIcon()
 	{
-		super("icons/openStandardsNotApplicableIcon.png");
+		super("icons/OpenStandardsNotApplicableIcon.png");
 	}
 }

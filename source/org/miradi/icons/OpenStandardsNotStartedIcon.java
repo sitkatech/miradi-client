@@ -26,6 +26,6 @@ public class OpenStandardsNotStartedIcon extends MiradiResourceImageIcon
 {
 	public OpenStandardsNotStartedIcon()
 	{
-		super("icons/openStandardsNotStartedIcon.png");
+		super("icons/OpenStandardsNotStartedIcon.png");
 	}
 }
