@@ -45,5 +45,14 @@ abstract public class TestAbstractStringMap extends EAMTestCase
 		assertEquals("bad get 2?", value2, list.get(key2));
 	}
 	
+	protected AbstractStringMap createSampleStringMap()
+	{
+		AbstractStringMap list = createAbstractMap();
+		list.add("A", "RoleA");
+		list.add("B", "RoleB");
+		list.add("C", "RoleC");
+		return list;
+	}
+	
 	abstract protected AbstractStringMap createAbstractMap();
 }

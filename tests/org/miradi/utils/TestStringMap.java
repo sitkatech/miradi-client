@@ -74,15 +74,6 @@ public class TestStringMap  extends TestAbstractStringMap
 		assertEquals("Can't rount trip?", list, new StringMap(list));
 	}
 
-	private AbstractStringMap createSampleStringMap()
-	{
-		AbstractStringMap list = createAbstractMap();
-		list.add("A", "RoleA");
-		list.add("B", "RoleB");
-		list.add("C", "RoleC");
-		return list;
-	}
-
 	public void testEquals()
 	{
 		AbstractStringMap list = createSampleStringMap();
