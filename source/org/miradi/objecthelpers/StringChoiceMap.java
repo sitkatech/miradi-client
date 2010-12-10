@@ -30,6 +30,11 @@ public class StringChoiceMap extends AbstractStringMap
 	{
 		super();
 	}
+	
+	public StringChoiceMap(StringChoiceMap copyFrom)
+	{
+		super(copyFrom);
+	}
 
 	public StringChoiceMap(EnhancedJsonObject json)
 	{

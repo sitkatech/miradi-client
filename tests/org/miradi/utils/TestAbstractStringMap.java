@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.util.Iterator;
+
 import org.miradi.main.EAMTestCase;
 import org.miradi.objecthelpers.AbstractStringMap;
 
@@ -101,6 +103,23 @@ abstract public class TestAbstractStringMap extends EAMTestCase
 			assertEquals("Couldn't find " + i + "?", values[i], list.get(keys[i]));
 		assertEquals("Found non-existant?", null, list.find(new String("Role27")));
 	}
+	
+	public void testJson()
+	{
+		AbstractStringMap list = createMapWithSampleData();
+		EnhancedJsonObject json = list.toJson();
+		
+		AbstractStringMap loaded = createAbstractMap(json);
+		assertEquals("wrong size?", list.size(), loaded.size());
+		Iterator iterator = list.toHashMap().keySet().iterator();
+		while (iterator.hasNext())
+		{
+			String key = (String)iterator.next();
+			assertEquals("wrong member?", list.get(key), loaded.get(key));
+		}
+	}
+
+	abstract protected AbstractStringMap createAbstractMap(EnhancedJsonObject json);
 	
 	abstract protected AbstractStringMap createAbstractMap();
 }
