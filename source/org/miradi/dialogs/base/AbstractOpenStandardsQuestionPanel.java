@@ -108,17 +108,10 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		{
 			Vector<String> pseudoTags = rowDefinition.getPseudoTags();
 			HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
-			//FIXME urgent dashboard panel - when all other tabs are converted using the RowDefinitionManager, convert these ifs into
-			// a loop using %1, %2... (looping through pseudoTags
-			if (pseudoTags.size() == 1)
-			{
-				tokenReplacementMap.put("%X", getDashboardData(pseudoTags.get(0)));
-			}
 			
-			if (pseudoTags.size() == 2)
+			for (int index = 0; index < pseudoTags.size(); ++index)
 			{
-				tokenReplacementMap.put("%X", getDashboardData(pseudoTags.get(0)));
-				tokenReplacementMap.put("%Y", getDashboardData(pseudoTags.get(1)));
+				tokenReplacementMap.put("%" + Integer.toString(index + 1), getDashboardData(pseudoTags.get(index)));
 			}
 
 			String code = choiceItem.getCode();
