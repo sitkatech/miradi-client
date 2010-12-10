@@ -246,7 +246,7 @@ public class Dashboard extends BaseObject
 		{
 			String thirdLevelCode = allThirdLevelCodes.get(index);
 			Vector<DashboardRowDefinition> rowDefinitions = getDashboardRowDefinitionManager().getRowDefinitions(thirdLevelCode);
-			map.add(thirdLevelCode, getEffectiveStatusCode(rowDefinitions));
+			map.add(thirdLevelCode, computeStatusCodeFromStatistics(rowDefinitions));
 		}
 		
 		return map.toString();
@@ -260,7 +260,7 @@ public class Dashboard extends BaseObject
 		return rowDefinitionManager;
 	}
 
-	private String getEffectiveStatusCode(Vector<DashboardRowDefinition> rowDefinitions)
+	private String computeStatusCodeFromStatistics(Vector<DashboardRowDefinition> rowDefinitions)
 	{
 		Vector<String> pseudoValues = new Vector<String>();
 		for (DashboardRowDefinition rowDefinition: rowDefinitions)
