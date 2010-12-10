@@ -25,6 +25,7 @@ import java.util.Vector;
 import org.miradi.main.EAM;
 import org.miradi.objects.Dashboard;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
+import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
 import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
 import org.miradi.utils.CodeList;
 
@@ -35,6 +36,7 @@ public class DashboardRowDefinitionManager
 		CodeList allCodes = new CodeList();
 		allCodes.addAll(new OpenStandardsConceptualizeQuestion().getAllCodes());
 		allCodes.addAll(new OpenStandardsPlanActionsAndMonitoringQuestion().getAllCodes());
+		allCodes.addAll(new OpenStandardsImplementActionsAndMonitoringQuestion().getAllCodes());
 		
 		return allCodes;
 	}
@@ -44,6 +46,56 @@ public class DashboardRowDefinitionManager
 		Vector<DashboardRowDefinition> rowDefinitions = new Vector<DashboardRowDefinition>();
 		rowDefinitions.addAll(addConceptualizeRowDefinitions(code));
 		rowDefinitions.addAll(addPlanActionsAndMonitoringDefinitions(code));
+		rowDefinitions.addAll(addImplementActionsAndMonitoringDefinitions(code));
+		
+		return rowDefinitions;
+	}
+
+	private Vector<DashboardRowDefinition> addImplementActionsAndMonitoringDefinitions(String code)
+	{
+		Vector<DashboardRowDefinition> rowDefinitions = new Vector<DashboardRowDefinition>();
+		
+		if (code.equals(OpenStandardsImplementActionsAndMonitoringQuestion.DETAIL_ACTIVITIES_TASKS_AND_RESPONSIBILITIES_CODE))
+		{
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%X of %Y Strategies have at least 1 Activity."), Dashboard.PSEUDO_STRATEGIES_WITH_ACTIVITIES_COUNT, Dashboard.PSEUDO_STRATEGY_COUNT));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%X Total activities created"), Dashboard.PSEUDO_ACTIVITIES_COUNT));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%Y of %X Activities and tasks have assignments"), Dashboard.PSEUDO_ACTIVITIES_AND_TASKS_COUNT, Dashboard.PSEUDO_ACTIVITIES_AND_TASKS_WITH_ASSIGNMENTS_COUNT));
+		}
+	
+		if (code.equals(OpenStandardsImplementActionsAndMonitoringQuestion.DETAIL_METHODS_TASKS_AND_RESPONSIBILITIES_CODE))
+		{
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%X of %Y Indicators have Methods."), Dashboard.PSEUDO_INDICATORS_WITH_METHODS_COUNT, Dashboard.PSEUDO_INDICATORS_COUNT));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%X Total methods created"), Dashboard.PSEUDO_METHODS_COUNT));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%X of %Y Methods and Tasks have assignments"), Dashboard.PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT, Dashboard.PSEUDO_METHODS_AND_TASKS_COUNT));
+		}
+		
+		if (code.equals(OpenStandardsImplementActionsAndMonitoringQuestion.DEVELOP_PROJECT_TIMELINE_OR_CALENDAR_CODE))
+		{
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%X - %Y"), Dashboard.PSEUDO_WORK_PLAN_START_DATE, Dashboard.PSEUDO_WORK_PLAN_END_DATE));
+		}
+		
+		if (code.equals(OpenStandardsImplementActionsAndMonitoringQuestion.ESTIMATE_COSTS_FOR_ACTIVITIES_AND_MONITORING_CODE))
+		{
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("Work Costs: %X %Y"), Dashboard.PSEUDO_CURRENCY_SYMBOL, Dashboard.PSEUDO_TOTAL_PROJECT_RESOURCES_COSTS));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("Expenses: %X %Y"), Dashboard.PSEUDO_CURRENCY_SYMBOL, Dashboard.PSEUDO_TOTAL_PROJECT_EXPENSES));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("Project Budget: %X %Y"), Dashboard.PSEUDO_CURRENCY_SYMBOL, Dashboard.PSEUDO_PROJECT_BUDGET));
+		}
+		
+		if (code.equals(OpenStandardsImplementActionsAndMonitoringQuestion.DEVELOP_AND_SUBMIT_FUNDING_PROPOSALS_CODE))
+		{
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("Total Budget for Funding: %  %X Budget Secured"), Dashboard.PSEUDO_BUDGET_SECURED_PERCENT));
+		}
+		
+		if (code.equals(OpenStandardsImplementActionsAndMonitoringQuestion.IMPLEMENT_STRATEGIC_AND_MONITORING_PLANS))
+		{
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%X Strategies/activities (% %Y) have progress reports"), Dashboard.PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_COUNT, Dashboard.PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_PERCENT));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%X Indicators/methods (% %Y) have progress reports"), Dashboard.PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_COUNT, Dashboard.PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT));
+		}
+		
+		if (code.equals(OpenStandardsImplementActionsAndMonitoringQuestion.IMPLEMENT_WORK_PLAN_CODE))
+		{
+			;
+		}
 		
 		return rowDefinitions;
 	}
