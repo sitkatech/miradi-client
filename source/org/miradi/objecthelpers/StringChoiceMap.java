@@ -27,7 +27,7 @@ import java.util.Map;
 
 import org.miradi.utils.EnhancedJsonObject;
 
-public class StringChoiceMap
+public class StringChoiceMap extends AbstractStringMap
 {
 	public StringChoiceMap()
 	{
