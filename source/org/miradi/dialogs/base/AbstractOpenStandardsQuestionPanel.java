@@ -124,14 +124,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 
 	}
 	
-	protected void addRowWithLeftColumnText(String leftColumnText, AbstractLongDescriptionProvider longDescriptionProvider, int level, String pseudoTag) throws Exception
-	{
-		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
-		tokenReplacementMap.put("%X", getDashboardData(pseudoTag));
-
-		addRow(leftColumnText, EAM.text("%X"), tokenReplacementMap, longDescriptionProvider, level);
-	}
-	
 	protected void addRowWithTemplateAndPseudoField(String rightColumnTemplate, AbstractLongDescriptionProvider longDescriptionProvider, int level, String pseudoTag) throws Exception
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
