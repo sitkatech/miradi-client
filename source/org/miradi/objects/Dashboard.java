@@ -241,16 +241,23 @@ public class Dashboard extends BaseObject
 	private String effectiveStatusMap() throws Exception
 	{
 		StringChoiceMap map = new StringChoiceMap();
-		DashboardRowDefinitionManager rowDefinitionManager = new DashboardRowDefinitionManager();
-		CodeList allThirdLevelCodes = rowDefinitionManager.getThridLevelCodes();
+		CodeList allThirdLevelCodes = getDashboardRowDefinitionManager().getThridLevelCodes();
 		for (int index = 0; index < allThirdLevelCodes.size(); ++index)
 		{
 			String thirdLevelCode = allThirdLevelCodes.get(index);
-			Vector<DashboardRowDefinition> rowDefinitions = rowDefinitionManager.getRowDefinitions(thirdLevelCode);
+			Vector<DashboardRowDefinition> rowDefinitions = getDashboardRowDefinitionManager().getRowDefinitions(thirdLevelCode);
 			map.add(thirdLevelCode, getEffectiveStatusCode(rowDefinitions));
 		}
 		
 		return map.toString();
+	}
+
+	public DashboardRowDefinitionManager getDashboardRowDefinitionManager()
+	{
+		if (rowDefinitionManager == null)
+			rowDefinitionManager = new DashboardRowDefinitionManager();
+		
+		return rowDefinitionManager;
 	}
 
 	private String getEffectiveStatusCode(Vector<DashboardRowDefinition> rowDefinitions)
@@ -898,6 +905,8 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT = "IndicatorsAndMethodsWithProgressReportPercent";
 	public static final String PSEUDO_EFFECTIVE_STATUS_MAP = "effectiveStatusMap";
 
+	private DashboardRowDefinitionManager rowDefinitionManager;
+	
 	private PseudoStringChoiceMapData effectiveStatusMap;
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;

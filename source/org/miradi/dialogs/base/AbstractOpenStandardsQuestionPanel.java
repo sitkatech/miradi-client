@@ -32,6 +32,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogfields.ReadonlyChoiceItemIconField;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
+import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.dialogs.fieldComponents.PanelLabelWithSelectableText;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.EmptyIcon;
@@ -249,6 +250,11 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	{
 		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
 		return Dashboard.find(getProject(), dashboardRef);
+	}
+	
+	protected DashboardRowDefinitionManager getDashboardRowDefinitionManager()
+	{
+		return getDashboard().getDashboardRowDefinitionManager();
 	}
 
 	private DynamicChoiceWithRootChoiceItem question;

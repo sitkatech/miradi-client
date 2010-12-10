@@ -26,7 +26,6 @@ import java.util.Vector;
 import org.miradi.actions.AbstractJumpMenuAction;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.dashboard.DashboardRowDefinition;
-import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
@@ -49,8 +48,7 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 	{		
 		super.addRow(choiceItem, level);
 		
-		DashboardRowDefinitionManager manager = new DashboardRowDefinitionManager();
-		Vector<DashboardRowDefinition> rowDefinitions = manager.getRowDefinitions(choiceItem.getCode());
+		Vector<DashboardRowDefinition> rowDefinitions = getDashboardRowDefinitionManager().getRowDefinitions(choiceItem.getCode());
 		
 		for (DashboardRowDefinition rowDefinition: rowDefinitions)
 		{
