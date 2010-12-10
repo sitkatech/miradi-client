@@ -53,7 +53,7 @@ public class StringChoiceMap
 	private void copyFromJson(EnhancedJsonObject json)
 	{
 		data.clear();
-		EnhancedJsonObject array = json.optJson(TAG_STRING_CHOICE_MAP);
+		EnhancedJsonObject array = json.optJson(getMapTag());
 		if(array == null)
 			array = new EnhancedJsonObject();
 		Iterator iterator = array.keys();
@@ -63,6 +63,11 @@ public class StringChoiceMap
 			String code = array.getString(key);
 			add(key, code);
 		}
+	}
+
+	private String getMapTag()
+	{
+		return TAG_STRING_CHOICE_MAP;
 	}
 	
 	public EnhancedJsonObject toJson()
@@ -76,7 +81,7 @@ public class StringChoiceMap
 			String key = iterator.next();
 			array.put(key, get(key).toString());
 		}
-		json.put(TAG_STRING_CHOICE_MAP, array);
+		json.put(getMapTag(), array);
 
 		return json;
 	}
