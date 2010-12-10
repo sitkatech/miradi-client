@@ -51,39 +51,10 @@ public class TestStringMap  extends TestAbstractStringMap
 		}
 	}
 	
-	public void testRemove()
-	{
-		AbstractStringMap list = createMapWithSampleData();
-		list.removeCode("A");
-		assertEquals(2, list.size());
-		assertEquals("RoleC", list.get("C"));
-		
-		try
-		{
-			list.removeCode("RolaB");
-			fail("Should have thrown removing non-existant id");
-		}
-		catch (RuntimeException ignoreExpected)
-		{
-		}
-	}
-	
 	public void testToString() throws Exception
 	{
 		StringMap list = (StringMap) createMapWithSampleData();
 		assertEquals("Can't rount trip?", list, new StringMap(list));
-	}
-
-	public void testFind()
-	{
-		String[] values = new String[] { new String("Role1"), new String("Role19"), new String("Role3"), };
-		String[] keys = new String[] { new String("1"), new String("19"), new String("3"), };
-		AbstractStringMap list = createAbstractMap();
-		for(int i = 0; i < values.length; ++i)
-			list.add(keys[i], values[i]);
-		for(int i = 0; i < values.length; ++i)
-			assertEquals("Couldn't find " + i + "?", values[i], list.get(keys[i]));
-		assertEquals("Found non-existant?", null, list.find(new String("Role27")));
 	}
 }
 
