@@ -46,7 +46,7 @@ public class TestStringMap  extends TestAbstractStringMap
 		assertEquals("bad get 2?", value2, list.get(key2));
 	}
 
-	private AbstractStringMap createAbstractMap()
+	protected AbstractStringMap createAbstractMap()
 	{
 		return new StringMap();
 	}

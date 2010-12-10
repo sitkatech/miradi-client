@@ -16,10 +16,12 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
+ */
 
 package org.miradi.utils;
 
+import org.miradi.objecthelpers.AbstractStringMap;
+import org.miradi.objecthelpers.StringChoiceMap;
 
 public class TestStringChoiceMap extends TestAbstractStringMap
 {
@@ -27,8 +29,10 @@ public class TestStringChoiceMap extends TestAbstractStringMap
 	{
 		super(name);
 	}
-	
-	public void testBasics()
+
+	@Override
+	protected AbstractStringMap createAbstractMap()
 	{
+		return new StringChoiceMap();
 	}
 }
