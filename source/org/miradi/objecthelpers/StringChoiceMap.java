@@ -140,6 +140,4 @@ public class StringChoiceMap extends AbstractStringMap
 	}
 
 	private static final String TAG_STRING_CHOICE_MAP = "StringChoiceMap";
-
-	private HashMap<String, String> data;
 }
