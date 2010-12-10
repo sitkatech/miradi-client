@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import java.util.Iterator;
-
 import org.miradi.objecthelpers.AbstractStringMap;
 import org.miradi.objecthelpers.StringMap;
 
@@ -36,19 +34,9 @@ public class TestStringMap  extends TestAbstractStringMap
 		return new StringMap();
 	}
 	
-	public void testJson()
+	protected AbstractStringMap createAbstractMap(EnhancedJsonObject json)
 	{
-		AbstractStringMap list = createMapWithSampleData();
-		EnhancedJsonObject json = list.toJson();
-		
-		StringMap loaded = new StringMap(json);
-		assertEquals("wrong size?", list.size(), loaded.size());
-		Iterator iterator = list.toHashMap().keySet().iterator();
-		while (iterator.hasNext())
-		{
-			String key = (String)iterator.next();
-			assertEquals("wrong member?", list.get(key), loaded.get(key));
-		}
+		return new StringMap(json);
 	}
 	
 	public void testToString() throws Exception

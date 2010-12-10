@@ -35,4 +35,16 @@ public class TestStringChoiceMap extends TestAbstractStringMap
 	{
 		return new StringChoiceMap();
 	}
+
+	@Override
+	protected AbstractStringMap createAbstractMap(EnhancedJsonObject json)
+	{
+		return new StringChoiceMap(json);
+	}
+	
+	public void testToString() throws Exception
+	{
+		StringChoiceMap list = (StringChoiceMap) createMapWithSampleData();
+		assertEquals("Can't rount trip?", list, new StringChoiceMap(list));
+	}
 }
