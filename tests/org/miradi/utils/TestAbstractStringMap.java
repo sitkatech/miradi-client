@@ -20,15 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import org.miradi.main.EAMTestCase;
 
-public class TestStringChoiceMap extends TestAbstractStringMap
+public class TestAbstractStringMap extends EAMTestCase
 {
-	public TestStringChoiceMap(String name)
+	public TestAbstractStringMap(String name)
 	{
 		super(name);
-	}
-	
-	public void testBasics()
-	{
 	}
 }
