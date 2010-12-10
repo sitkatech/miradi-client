@@ -93,16 +93,6 @@ public class StringMap extends AbstractStringMap
 		return TAG_STRING_MAP;
 	}
 
-	public int size()
-	{
-		return data.size();
-	}
-
-	public void add(String code, String object)
-	{
-		data.put(code, object);
-	}
-
 	public HashMap<String, String> toHashMap()
 	{
 		return data;
@@ -181,21 +171,6 @@ public class StringMap extends AbstractStringMap
 
 		StringMap other = (StringMap) rawOther;
 		return data.equals(other.data);
-	}
-
-	@Override
-	public int hashCode()
-	{
-		return data.hashCode();
-	}
-	
-	@Override
-	public String toString()
-	{
-		if(size() == 0)
-			return "";
-
-		return toJson().toString();
 	}
 
 	private static final String TAG_STRING_MAP = "StringMap";
