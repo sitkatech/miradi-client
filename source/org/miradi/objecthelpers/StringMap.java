@@ -199,6 +199,4 @@ public class StringMap extends AbstractStringMap
 	}
 
 	private static final String TAG_STRING_MAP = "StringMap";
-
-	private HashMap<String, String> data;
 }
