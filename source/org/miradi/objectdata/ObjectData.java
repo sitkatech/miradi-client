@@ -97,6 +97,11 @@ abstract public class ObjectData
 		return false;
 	}
 	
+	public boolean isStringChoiceMapData()
+	{
+		return false;
+	}
+	
 	public ChoiceQuestion getChoiceQuestion()
 	{
 		return null;

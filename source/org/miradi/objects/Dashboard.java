@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.diagram.ThreatTargetChainWalker;
+import org.miradi.dialogs.dashboard.DashboardRowDefinition;
+import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
@@ -31,12 +34,15 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.OpenStandardsProgressQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -219,6 +225,9 @@ public class Dashboard extends BaseObject
 			
 			if (fieldTag.equals(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT))
 				return getIndicatorAndMethodsWithProgressReportPerncet();
+			
+			if (fieldTag.equals(PSEUDO_EFFECTIVE_STATUS_MAP))
+				return effectiveStatusMap();
 				
 			return super.getPseudoData(fieldTag);
 		}
@@ -227,6 +236,58 @@ public class Dashboard extends BaseObject
 			EAM.logException(e);
 			return EAM.text("Error Retrieving Data");
 		}
+	}
+	
+	private String effectiveStatusMap() throws Exception
+	{
+		StringChoiceMap map = new StringChoiceMap();
+		DashboardRowDefinitionManager rowDefinitionManager = new DashboardRowDefinitionManager();
+		CodeList allThirdLevelCodes = rowDefinitionManager.getThridLevelCodes();
+		for (int index = 0; index < allThirdLevelCodes.size(); ++index)
+		{
+			String thirdLevelCode = allThirdLevelCodes.get(index);
+			Vector<DashboardRowDefinition> rowDefinitions = rowDefinitionManager.getRowDefinitions(thirdLevelCode);
+			map.add(thirdLevelCode, getEffectiveStatusCode(rowDefinitions));
+		}
+		
+		return map.toString();
+	}
+
+	private String getEffectiveStatusCode(Vector<DashboardRowDefinition> rowDefinitions)
+	{
+		Vector<String> pseudoValues = new Vector<String>();
+		for (DashboardRowDefinition rowDefinition: rowDefinitions)
+		{
+			Vector<String> pseudoTags = rowDefinition.getPseudoTags();
+			for (String pseudoTag: pseudoTags)
+			{
+				String pseudoDataValue = getPseudoData(pseudoTag);
+				pseudoValues.add(pseudoDataValue);
+			}
+		}
+		
+		return getStatusCode(pseudoValues);
+	}
+	
+	private String getStatusCode(Collection<String> rawDataValues)
+	{
+		if (rawDataValues.isEmpty())
+			return OpenStandardsProgressQuestion.NOT_SPECIFIED_CODE;
+		
+		int valuesWithDataCount = 0;
+		for (String rawData : rawDataValues)
+		{
+			if (rawData.length() > 0 && !rawData.equals("0"))
+				++valuesWithDataCount;
+		}
+		
+		if (valuesWithDataCount == 0)
+			return OpenStandardsProgressQuestion.NOT_STARTED_CODE;
+			
+		if (valuesWithDataCount < rawDataValues.size())
+			return OpenStandardsProgressQuestion.NOT_STARTED_CODE;
+			
+		return OpenStandardsProgressQuestion.IN_PROGRESS_CODE;
 	}
 	
 	private String getIndicatorAndMethodsWithProgressReportPerncet() throws Exception
@@ -735,6 +796,7 @@ public class Dashboard extends BaseObject
 		indicatorsAndMethodsWithProgressReportCount = new PseudoStringData(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_COUNT);
 		indicatorsAndMethodsWithProgressReportPercent = new PseudoStringData(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT);
 		targetWithGoalsCount = new PseudoStringData(PSEUDO_TARGETS_WITH_GOALS_COUNT);
+		effectiveStatusMap = new PseudoStringChoiceMapData(PSEUDO_EFFECTIVE_STATUS_MAP);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -782,6 +844,7 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_COUNT, indicatorsAndMethodsWithProgressReportCount);
 		addPresentationDataField(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT, indicatorsAndMethodsWithProgressReportPercent);
 		addPresentationDataField(PSEUDO_TARGETS_WITH_GOALS_COUNT, targetWithGoalsCount);
+		addPresentationDataField(PSEUDO_EFFECTIVE_STATUS_MAP, effectiveStatusMap);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -833,7 +896,9 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_PERCENT = "StrategiesAndActivitiesWithProgressReportPercent";
 	public static final String PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_COUNT = "IndicatorsAndMethodsWithProgressReportCount";
 	public static final String PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT = "IndicatorsAndMethodsWithProgressReportPercent";
+	public static final String PSEUDO_EFFECTIVE_STATUS_MAP = "effectiveStatusMap";
 
+	private PseudoStringChoiceMapData effectiveStatusMap;
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;
 	private PseudoStringData targetCount;

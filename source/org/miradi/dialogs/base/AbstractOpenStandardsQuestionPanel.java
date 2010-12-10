@@ -137,7 +137,15 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
 		Icon statusIcon = getStatusIcon(tokenReplacementMap.values());
 		
-		ReadonlyChoiceItemIconField field = new ReadonlyChoiceItemIconField(getProject(), ORef.INVALID, "", statusIcon);
+		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, new PanelTitleLabel(statusIcon));
+	}
+	
+	protected void addRow(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, String code, int level) throws Exception
+	{
+		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
+		ChoiceQuestion thisQuestion = getProject().getQuestion(OpenStandardsProgressQuestion.class);
+		ReadonlyChoiceItemIconField field = new ReadonlyChoiceItemIconField(getProject(), getDashboard().getRef(), Dashboard.PSEUDO_EFFECTIVE_STATUS_MAP, code, thisQuestion);
+		field.updateFromObject();
 		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, field.getComponent());
 	}
 
@@ -246,5 +254,5 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	private DynamicChoiceWithRootChoiceItem question;
 	private SingleRowSelectionHandler rowSelectionHandler;
 	protected static final int INDENT_PER_LEVEL = 25;
-	private static final String EMPTY_LEFT_COLUMN_TEXT = "";
+	protected static final String EMPTY_LEFT_COLUMN_TEXT = "";
 }
