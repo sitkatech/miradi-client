@@ -241,7 +241,7 @@ public class Dashboard extends BaseObject
 	private String effectiveStatusMap() throws Exception
 	{
 		StringChoiceMap map = new StringChoiceMap();
-		CodeList allThirdLevelCodes = getDashboardRowDefinitionManager().getThridLevelCodes();
+		CodeList allThirdLevelCodes = getDashboardRowDefinitionManager().getThirdLevelCodes();
 		for (int index = 0; index < allThirdLevelCodes.size(); ++index)
 		{
 			String thirdLevelCode = allThirdLevelCodes.get(index);
