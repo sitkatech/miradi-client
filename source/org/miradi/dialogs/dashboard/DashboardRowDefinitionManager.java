@@ -30,7 +30,7 @@ import org.miradi.utils.CodeList;
 
 public class DashboardRowDefinitionManager
 {
-	public CodeList getThridLevelCodes()
+	public CodeList getThirdLevelCodes()
 	{
 		ChoiceQuestion question = new OpenStandardsConceptualizeQuestion();
 		return question.getAllCodes();
