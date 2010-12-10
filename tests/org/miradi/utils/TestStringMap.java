@@ -29,11 +29,13 @@ public class TestStringMap  extends TestAbstractStringMap
 		super(name);
 	}
 
+	@Override
 	protected AbstractStringMap createAbstractMap()
 	{
 		return new StringMap();
 	}
 	
+	@Override
 	protected AbstractStringMap createAbstractMap(EnhancedJsonObject json)
 	{
 		return new StringMap(json);
