@@ -21,11 +21,9 @@ package org.miradi.utils;
 
 import java.util.Iterator;
 
-import org.miradi.main.EAMTestCase;
 import org.miradi.objecthelpers.StringMap;
-import org.miradi.utils.EnhancedJsonObject;
 
-public class TestStringMap  extends EAMTestCase
+public class TestStringMap  extends TestAbstractStringMap
 {
 	public TestStringMap(String name)
 	{
