@@ -31,9 +31,9 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
-public class ReadonlyChoiceItemIconField extends ObjectDataInputField
+public class ReadonlyClickableIconField extends ObjectDataInputField
 {
-	public ReadonlyChoiceItemIconField(Project projectToUse, ORef refToUse,	String tagToUse, String stringMapCodeToUse, ChoiceQuestion questionToUse)
+	public ReadonlyClickableIconField(Project projectToUse, ORef refToUse,	String tagToUse, String stringMapCodeToUse, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, refToUse, tagToUse);
 		
