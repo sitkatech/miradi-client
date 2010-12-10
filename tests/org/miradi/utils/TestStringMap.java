@@ -74,27 +74,6 @@ public class TestStringMap  extends TestAbstractStringMap
 		assertEquals("Can't rount trip?", list, new StringMap(list));
 	}
 
-	public void testEquals()
-	{
-		AbstractStringMap list = createMapWithSampleData();
-		AbstractStringMap identical = createMapWithSampleData();
-		assertEquals(list, identical);
-		assertEquals(list.hashCode(), identical.hashCode());
-		
-		AbstractStringMap different = createAbstractMap();
-		different.add("A", list.get("A"));
-		different.add("C", list.get("C"));
-		different.add("B", list.get("B"));
-		assertEquals(true, list.equals(different));
-		assertEquals(list.hashCode(), different.hashCode());
-		assertNotEquals("didn't check type?", list, new Object());
-		
-		different.removeCode("A");
-		assertEquals(false, list.equals(different));
-		
-	}
-	
-
 	public void testFind()
 	{
 		String[] values = new String[] { new String("Role1"), new String("Role19"), new String("Role3"), };
