@@ -21,9 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objecthelpers;
 
 import java.text.ParseException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -31,79 +28,25 @@ public class StringChoiceMap extends AbstractStringMap
 {
 	public StringChoiceMap()
 	{
-		this(new HashMap<String, String>());
+		super();
 	}
 
 	public StringChoiceMap(EnhancedJsonObject json)
 	{
-		this();
-		copyFromJson(json);
+		super(json);
 	}
 	
 	public StringChoiceMap(String mapAsJsonString) throws ParseException
 	{
-		this(new EnhancedJsonObject(mapAsJsonString));
+		super(mapAsJsonString);
 	}
 	
-	private StringChoiceMap(Map<String, String> dataToUse)
-	{
-		data = new HashMap<String, String>(dataToUse);
-	}
-
-	private void copyFromJson(EnhancedJsonObject json)
-	{
-		data.clear();
-		EnhancedJsonObject array = json.optJson(getMapTag());
-		if(array == null)
-			array = new EnhancedJsonObject();
-		Iterator iterator = array.keys();
-		while (iterator.hasNext())
-		{
-			String key = (String)iterator.next();
-			String code = array.getString(key);
-			add(key, code);
-		}
-	}
-
 	@Override
 	protected String getMapTag()
 	{
 		return TAG_STRING_CHOICE_MAP;
 	}
 	
-	public EnhancedJsonObject toJson()
-	{
-		EnhancedJsonObject json = new EnhancedJsonObject();
-		EnhancedJsonObject array = new EnhancedJsonObject();
-		
-		Iterator<String> iterator = data.keySet().iterator();
-		while (iterator.hasNext())
-		{
-			String key = iterator.next();
-			array.put(key, get(key).toString());
-		}
-		json.put(getMapTag(), array);
-
-		return json;
-	}
-
-	public String get(String code)
-	{
-		String value = data.get(code);
-		if (value == null)
-			return null;
-		
-		return value;
-	}
-
-	public String get()
-	{
-		if(size() == 0)
-			return "";
-		
-		return toJson().toString();
-	}
-
 	@Override
 	public boolean equals(Object rawOther)
 	{
@@ -112,15 +55,6 @@ public class StringChoiceMap extends AbstractStringMap
 
 		StringChoiceMap other = (StringChoiceMap) rawOther;
 		return data.equals(other.data);
-	}
-
-	@Override
-	public String toString()
-	{
-		if(size() == 0)
-			return "";
-
-		return toJson().toString();
 	}
 
 	private static final String TAG_STRING_CHOICE_MAP = "StringChoiceMap";
