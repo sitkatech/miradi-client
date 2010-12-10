@@ -21,9 +21,7 @@ package org.miradi.objecthelpers;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 
 import org.martus.util.UnicodeWriter;
@@ -34,88 +32,27 @@ public class StringMap extends AbstractStringMap
 {
 	public StringMap()
 	{
-		this(new HashMap<String, String>());
+		super();
 	}
 
 	public StringMap(StringMap copyFrom)
 	{
-		this(new HashMap<String, String>(copyFrom.data));
+		super(copyFrom);
 	}
 
 	public StringMap(EnhancedJsonObject json)
 	{
-		this();
-		copyFromJson(json);
+		super(json);
 	}
 	
 	public StringMap(String mapAsJsonString) throws ParseException
 	{
-		this(new EnhancedJsonObject(mapAsJsonString));
+		super(mapAsJsonString);
 	}
 	
-	private StringMap(Map<String, String> dataToUse)
-	{
-		data = new HashMap<String, String>(dataToUse);
-	}
-
-	private void copyFromJson(EnhancedJsonObject json)
-	{
-		data.clear();
-		EnhancedJsonObject array = json.optJson(getMapTag());
-		if(array == null)
-			array = new EnhancedJsonObject();
-		Iterator iterator = array.keys();
-		while (iterator.hasNext())
-		{
-			String key = (String)iterator.next();
-			add(key, (String)array.get(key));
-		}
-	}
-	
-	public EnhancedJsonObject toJson()
-	{
-		EnhancedJsonObject json = new EnhancedJsonObject();
-		EnhancedJsonObject array = new EnhancedJsonObject();
-		
-		Iterator<String> iterator = data.keySet().iterator();
-		while (iterator.hasNext())
-		{
-			String key = iterator.next();
-			array.put(key, get(key));
-		}
-		json.put(getMapTag(), array);
-		return json;
-	}
-
-	@Override
 	protected String getMapTag()
 	{
 		return TAG_STRING_MAP;
-	}
-
-	public HashMap<String, String> toHashMap()
-	{
-		return data;
-	}
-	
-	public String get(String code)
-	{
-		String value = data.get(code);
-		if (value==null)
-			return "";
-		return value;
-	}
-
-	public String get()
-	{
-		if(size() == 0)
-			return "";
-		return toJson().toString();
-	}
-
-	public void set(String newValue) throws Exception
-	{
-		copyFromJson(new EnhancedJsonObject(newValue));
 	}
 
 	public String find(String object)
@@ -128,12 +65,6 @@ public class StringMap extends AbstractStringMap
 				return key;
 		}
 		return null;
-	}
-
-	
-	public boolean contains(String code)
-	{
-		return data.containsKey(code);
 	}
 
 	public void removeCode(String code)
