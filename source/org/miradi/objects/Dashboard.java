@@ -227,7 +227,7 @@ public class Dashboard extends BaseObject
 				return getIndicatorAndMethodsWithProgressReportPerncet();
 			
 			if (fieldTag.equals(PSEUDO_EFFECTIVE_STATUS_MAP))
-				return effectiveStatusMap();
+				return getEffectiveStatusMap();
 				
 			return super.getPseudoData(fieldTag);
 		}
@@ -238,7 +238,7 @@ public class Dashboard extends BaseObject
 		}
 	}
 	
-	private String effectiveStatusMap() throws Exception
+	private String getEffectiveStatusMap() throws Exception
 	{
 		StringChoiceMap map = new StringChoiceMap();
 		CodeList allThirdLevelCodes = getDashboardRowDefinitionManager().getThirdLevelCodes();
