@@ -125,12 +125,6 @@ public class StringChoiceMap extends AbstractStringMap
 	}
 
 	@Override
-	public int hashCode()
-	{
-		return data.hashCode();
-	}
-	
-	@Override
 	public String toString()
 	{
 		if(size() == 0)
