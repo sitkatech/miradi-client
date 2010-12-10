@@ -65,7 +65,8 @@ public class StringChoiceMap extends AbstractStringMap
 		}
 	}
 
-	private String getMapTag()
+	@Override
+	protected String getMapTag()
 	{
 		return TAG_STRING_CHOICE_MAP;
 	}

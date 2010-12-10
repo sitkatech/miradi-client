@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objecthelpers;
 
-public class AbstractStringMap
+abstract public class AbstractStringMap
 {
-
+	abstract protected String getMapTag();
 }
