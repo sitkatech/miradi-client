@@ -24,6 +24,8 @@ import java.util.Vector;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.Dashboard;
+import org.miradi.questions.OpenStandardsAnalyzeUseAndAdaptQuestion;
+import org.miradi.questions.OpenStandardsCaptureAndShareLearningQuestion;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
 import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
@@ -37,6 +39,8 @@ public class DashboardRowDefinitionManager
 		allCodes.addAll(new OpenStandardsConceptualizeQuestion().getAllCodes());
 		allCodes.addAll(new OpenStandardsPlanActionsAndMonitoringQuestion().getAllCodes());
 		allCodes.addAll(new OpenStandardsImplementActionsAndMonitoringQuestion().getAllCodes());
+		allCodes.addAll(new OpenStandardsAnalyzeUseAndAdaptQuestion().getAllCodes());
+		allCodes.addAll(new OpenStandardsCaptureAndShareLearningQuestion().getAllCodes());
 		
 		return allCodes;
 	}
