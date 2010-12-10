@@ -31,21 +31,6 @@ public class TestStringMap  extends TestAbstractStringMap
 		super(name);
 	}
 
-	public void testBasics()
-	{
-		AbstractStringMap list = createAbstractMap();
-		assertEquals("wrong initial size?", 0, list.size());
-		String key1 = new String("A");
-		String value1 = new String("RoleA");
-		String key2 = new String("B");
-		String value2 = new String("RoleB");
-		list.add(key1, value1);
-		list.add(key2, value2);
-		assertEquals("wrong size?", 2, list.size());
-		assertEquals("bad get 1?", value1, list.get(key1));
-		assertEquals("bad get 2?", value2, list.get(key2));
-	}
-
 	protected AbstractStringMap createAbstractMap()
 	{
 		return new StringMap();
