@@ -61,7 +61,7 @@ public class StringMap
 	private void copyFromJson(EnhancedJsonObject json)
 	{
 		data.clear();
-		EnhancedJsonObject array = json.optJson(TAG_STRING_MAP);
+		EnhancedJsonObject array = json.optJson(getMapTag());
 		if(array == null)
 			array = new EnhancedJsonObject();
 		Iterator iterator = array.keys();
@@ -83,8 +83,13 @@ public class StringMap
 			String key = iterator.next();
 			array.put(key, get(key));
 		}
-		json.put(TAG_STRING_MAP, array);
+		json.put(getMapTag(), array);
 		return json;
+	}
+
+	private String getMapTag()
+	{
+		return TAG_STRING_MAP;
 	}
 
 	public int size()
