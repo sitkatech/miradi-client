@@ -44,6 +44,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DynamicChoiceWithRootChoiceItem;
 import org.miradi.questions.OpenStandardsProgressQuestion;
+import org.miradi.utils.FillerLabel;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
@@ -94,9 +95,10 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		}
 	}
 	
-	protected void addRow(ChoiceItem choiceItem, int level) throws Exception
+	private void addRow(ChoiceItem choiceItem, int level) throws Exception
 	{
-		addRow(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, new HashMap<String, String>(), choiceItem.getLongDescriptionProvider(), choiceItem.getCode(), level);
+		setRowWizardStep(choiceItem);
+		addRowWithStatusIcon(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, new HashMap<String, String>(), choiceItem.getLongDescriptionProvider(), choiceItem.getCode(), level);
 		
 		Vector<DashboardRowDefinition> rowDefinitions = getDashboardRowDefinitionManager().getRowDefinitions(choiceItem.getCode());
 		for (DashboardRowDefinition rowDefinition: rowDefinitions)
@@ -109,23 +111,34 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 				tokenReplacementMap.put("%" + Integer.toString(index + 1), getDashboardData(pseudoTags.get(index)));
 			}
 
-			String code = choiceItem.getCode();
-			AbstractLongDescriptionProvider longDescriptionProvider = choiceItem.getLongDescriptionProvider();
-			AbstractJumpMenuAction action = getMainWindow().getActions().getJumpMenuAction(code);
+			addRowWithoutIcon(EMPTY_LEFT_COLUMN_TEXT, rowDefinition.getRightColumnTemplate(), tokenReplacementMap, choiceItem.getLongDescriptionProvider(), level);
+		}
+	}
+
+	private void setRowWizardStep(ChoiceItem choiceItem)
+	{
+		AbstractLongDescriptionProvider longDescriptionProvider = choiceItem.getLongDescriptionProvider();
+		AbstractJumpMenuAction action = getMainWindow().getActions().getJumpMenuAction(choiceItem.getCode());
+		if (action != null)
+		{
 			String stepName = getMainWindow().getWizardManager().stripJumpPrefix(action.getClass());
 			longDescriptionProvider.setWizardStepName(stepName);
-
-			addRow(EMPTY_LEFT_COLUMN_TEXT, rowDefinition.getRightColumnTemplate(), tokenReplacementMap, longDescriptionProvider, choiceItem.getCode(), level);
 		}
 	}
 	
-	private void addRow(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, String code, int level) throws Exception
+	private void addRowWithStatusIcon(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, String code, int level) throws Exception
 	{
 		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
 		ChoiceQuestion thisQuestion = getProject().getQuestion(OpenStandardsProgressQuestion.class);
 		ReadonlyChoiceItemIconField field = new ReadonlyChoiceItemIconField(getProject(), getDashboard().getRef(), Dashboard.PSEUDO_EFFECTIVE_STATUS_MAP, code, thisQuestion);
 		field.updateFromObject();
 		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, field.getComponent());
+	}
+	
+	private void addRowWithoutIcon(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
+	{
+		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
+		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, new FillerLabel());
 	}
 
 	private void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level, JComponent iconComponent) throws Exception
