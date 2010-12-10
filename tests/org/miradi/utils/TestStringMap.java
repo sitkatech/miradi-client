@@ -21,6 +21,7 @@ package org.miradi.utils;
 
 import java.util.Iterator;
 
+import org.miradi.objecthelpers.AbstractStringMap;
 import org.miradi.objecthelpers.StringMap;
 
 public class TestStringMap  extends TestAbstractStringMap
@@ -32,7 +33,7 @@ public class TestStringMap  extends TestAbstractStringMap
 
 	public void testBasics()
 	{
-		StringMap list = new StringMap();
+		AbstractStringMap list = createAbstractMap();
 		assertEquals("wrong initial size?", 0, list.size());
 		String key1 = new String("A");
 		String value1 = new String("RoleA");
@@ -44,10 +45,15 @@ public class TestStringMap  extends TestAbstractStringMap
 		assertEquals("bad get 1?", value1, list.get(key1));
 		assertEquals("bad get 2?", value2, list.get(key2));
 	}
+
+	private AbstractStringMap createAbstractMap()
+	{
+		return new StringMap();
+	}
 	
 	public void testJson()
 	{
-		StringMap list = createSampleStringMap();
+		AbstractStringMap list = createSampleStringMap();
 		EnhancedJsonObject json = list.toJson();
 		
 		StringMap loaded = new StringMap(json);
@@ -62,7 +68,7 @@ public class TestStringMap  extends TestAbstractStringMap
 	
 	public void testRemove()
 	{
-		StringMap list = createSampleStringMap();
+		AbstractStringMap list = createSampleStringMap();
 		list.removeCode("A");
 		assertEquals(2, list.size());
 		assertEquals("RoleC", list.get("C"));
@@ -79,13 +85,13 @@ public class TestStringMap  extends TestAbstractStringMap
 	
 	public void testToString() throws Exception
 	{
-		StringMap list = createSampleStringMap();
+		StringMap list = (StringMap) createSampleStringMap();
 		assertEquals("Can't rount trip?", list, new StringMap(list));
 	}
 
-	private StringMap createSampleStringMap()
+	private AbstractStringMap createSampleStringMap()
 	{
-		StringMap list = new StringMap();
+		AbstractStringMap list = createAbstractMap();
 		list.add("A", "RoleA");
 		list.add("B", "RoleB");
 		list.add("C", "RoleC");
@@ -94,12 +100,12 @@ public class TestStringMap  extends TestAbstractStringMap
 
 	public void testEquals()
 	{
-		StringMap list = createSampleStringMap();
-		StringMap identical = createSampleStringMap();
+		AbstractStringMap list = createSampleStringMap();
+		AbstractStringMap identical = createSampleStringMap();
 		assertEquals(list, identical);
 		assertEquals(list.hashCode(), identical.hashCode());
 		
-		StringMap different = new StringMap();
+		AbstractStringMap different = createAbstractMap();
 		different.add("A", list.get("A"));
 		different.add("C", list.get("C"));
 		different.add("B", list.get("B"));
@@ -117,7 +123,7 @@ public class TestStringMap  extends TestAbstractStringMap
 	{
 		String[] values = new String[] { new String("Role1"), new String("Role19"), new String("Role3"), };
 		String[] keys = new String[] { new String("1"), new String("19"), new String("3"), };
-		StringMap list = new StringMap();
+		AbstractStringMap list = createAbstractMap();
 		for(int i = 0; i < values.length; ++i)
 			list.add(keys[i], values[i]);
 		for(int i = 0; i < values.length; ++i)
