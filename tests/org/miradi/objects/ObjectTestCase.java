@@ -55,6 +55,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.RelevancyOverrideSetData;
+import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.BaseObject.PseudoQuestionData;
 import org.miradi.objects.BaseObject.PseudoStringData;
@@ -66,6 +67,7 @@ import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
+import org.miradi.utils.StringChoiceMapData;
 import org.miradi.utils.StringMapData;
 
 public class ObjectTestCase extends TestCaseWithProject
@@ -233,6 +235,12 @@ public class ObjectTestCase extends TestCaseWithProject
 			StringMap list = new StringMap();
 			list.add("A","RolaA");
 			return list.toString();
+		}
+		else if (field instanceof StringChoiceMapData)
+		{
+			StringChoiceMap map = new StringChoiceMap();
+			map.add("a", "code");
+			return map.toString();
 		}
 		else if(field instanceof ChoiceData)
 		{

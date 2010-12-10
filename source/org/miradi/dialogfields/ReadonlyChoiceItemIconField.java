@@ -23,31 +23,53 @@ package org.miradi.dialogfields;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
-import org.martus.swing.UiLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 
 public class ReadonlyChoiceItemIconField extends ObjectDataInputField
 {
-	public ReadonlyChoiceItemIconField(Project projectToUse, ORef refToUse,	String tagToUse, Icon statusIconToUse)
+	public ReadonlyChoiceItemIconField(Project projectToUse, ORef refToUse,	String tagToUse, String stringMapCodeToUse, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, refToUse, tagToUse);
 		
-		statusIcon = statusIconToUse;
-		component = new PanelTitleLabel();
-		component.setIcon(statusIcon);
+		stringMapCode = stringMapCodeToUse;
+		iconComponent = new PanelTitleLabel();
+		question = questionToUse;
 	}
 	
 	@Override
-	public void setText(String code)
+	public void setText(String stringCodeMapAsString)
 	{
+		try
+		{
+			StringChoiceMap map = new StringChoiceMap(stringCodeMapAsString);
+			String code = map.get(stringMapCode);
+			ChoiceItem progressChoiceItem = question.findChoiceByCode(code);
+			Icon icon = progressChoiceItem.getIcon();
+			iconComponent.setIcon(icon);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
+		}
+	}
+	
+	@Override
+	public void updateEditableState()
+	{
+		iconComponent.setEnabled(true);
 	}
 
 	@Override
 	public JComponent getComponent()
 	{
-		return component;
+		return iconComponent;
 	}
 
 	@Override
@@ -56,6 +78,7 @@ public class ReadonlyChoiceItemIconField extends ObjectDataInputField
 		return "";
 	}
 
-	private Icon statusIcon;
-	private UiLabel component;
+	private PanelTitleLabel iconComponent;
+	private String stringMapCode;
+	private ChoiceQuestion question;
 }

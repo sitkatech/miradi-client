@@ -20,10 +20,40 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import java.util.Vector;
+
 import org.miradi.main.EAM;
+import org.miradi.utils.CodeList;
 
 abstract public class DynamicChoiceWithRootChoiceItem extends DynamicChoiceQuestion
 {
+	@Override
+	public CodeList getAllCodes()
+	{
+		CodeList allCodes = new CodeList();
+		ChoiceItem[] choices = getChoices();
+		for (int index = 0; index < choices.length; ++index)
+		{
+			ChoiceItem choiceItem = choices[index];
+			allCodes.addAll(getCodes(choiceItem));
+		}
+		
+		return allCodes;
+	}
+
+	private CodeList getCodes(ChoiceItem parentChoiceItem)
+	{
+		CodeList allCodes = new CodeList();
+		allCodes.add(parentChoiceItem.getCode());
+		Vector<ChoiceItem> children = parentChoiceItem.getChildren();
+		for (ChoiceItem choiceItem: children)
+		{
+			allCodes.addAll(getCodes(choiceItem));
+		}
+		
+		return allCodes;
+	}
+
 	@Override
 	public ChoiceItem[] getChoices()
 	{
