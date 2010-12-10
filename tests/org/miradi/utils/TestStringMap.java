@@ -38,7 +38,7 @@ public class TestStringMap  extends TestAbstractStringMap
 	
 	public void testJson()
 	{
-		AbstractStringMap list = createSampleStringMap();
+		AbstractStringMap list = createMapWithSampleData();
 		EnhancedJsonObject json = list.toJson();
 		
 		StringMap loaded = new StringMap(json);
@@ -53,7 +53,7 @@ public class TestStringMap  extends TestAbstractStringMap
 	
 	public void testRemove()
 	{
-		AbstractStringMap list = createSampleStringMap();
+		AbstractStringMap list = createMapWithSampleData();
 		list.removeCode("A");
 		assertEquals(2, list.size());
 		assertEquals("RoleC", list.get("C"));
@@ -70,14 +70,14 @@ public class TestStringMap  extends TestAbstractStringMap
 	
 	public void testToString() throws Exception
 	{
-		StringMap list = (StringMap) createSampleStringMap();
+		StringMap list = (StringMap) createMapWithSampleData();
 		assertEquals("Can't rount trip?", list, new StringMap(list));
 	}
 
 	public void testEquals()
 	{
-		AbstractStringMap list = createSampleStringMap();
-		AbstractStringMap identical = createSampleStringMap();
+		AbstractStringMap list = createMapWithSampleData();
+		AbstractStringMap identical = createMapWithSampleData();
 		assertEquals(list, identical);
 		assertEquals(list.hashCode(), identical.hashCode());
 		
