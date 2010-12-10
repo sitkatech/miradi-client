@@ -34,11 +34,6 @@ public class StringChoiceMap
 		this(new HashMap<String, String>());
 	}
 
-	public StringChoiceMap(StringChoiceMap copyFrom)
-	{
-		this(new HashMap<String, String>(copyFrom.data));
-	}
-
 	public StringChoiceMap(EnhancedJsonObject json)
 	{
 		this();
@@ -96,11 +91,6 @@ public class StringChoiceMap
 		data.put(code, object);
 	}
 
-	public HashMap<String, String> toHashMap()
-	{
-		return data;
-	}
-	
 	public String get(String code)
 	{
 		String value = data.get(code);
@@ -116,24 +106,6 @@ public class StringChoiceMap
 			return "";
 		
 		return toJson().toString();
-	}
-
-	public void set(String newValue) throws Exception
-	{
-		copyFromJson(new EnhancedJsonObject(newValue));
-	}
-
-	public String find(String object)
-	{
-		Iterator<String> iterator = data.keySet().iterator();
-		while (iterator.hasNext())
-		{
-			String key = iterator.next();
-			if (object.equals(data.get(key)))
-				return key;
-		}
-		
-		return null;
 	}
 
 	@Override
