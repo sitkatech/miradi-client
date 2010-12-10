@@ -21,7 +21,6 @@ package org.miradi.objecthelpers;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Iterator;
 import java.util.Set;
 
 import org.martus.util.UnicodeWriter;
@@ -55,27 +54,6 @@ public class StringMap extends AbstractStringMap
 		return TAG_STRING_MAP;
 	}
 
-	public String find(String object)
-	{
-		Iterator<String> iterator = data.keySet().iterator();
-		while (iterator.hasNext())
-		{
-			String key = iterator.next();
-			if (object.equals(data.get(key)))
-				return key;
-		}
-		return null;
-	}
-
-	public void removeCode(String code)
-	{
-		if(!data.containsKey(code))
-			throw new RuntimeException(
-					"Attempted to remove non-existant code: " + code
-							+ " from: " + toString());
-		data.remove(code);
-	}
-	
 	public void toXml(UnicodeWriter out) throws IOException
 	{
 		out.writeln("<StringMap>");

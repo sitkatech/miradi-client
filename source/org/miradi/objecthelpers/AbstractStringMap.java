@@ -142,6 +142,27 @@ abstract public class AbstractStringMap
 		return data.containsKey(code);
 	}
 	
+	public String find(String object)
+	{
+		Iterator<String> iterator = data.keySet().iterator();
+		while (iterator.hasNext())
+		{
+			String key = iterator.next();
+			if (object.equals(data.get(key)))
+				return key;
+		}
+		return null;
+	}
+
+	public void removeCode(String code)
+	{
+		if(!data.containsKey(code))
+			throw new RuntimeException(
+					"Attempted to remove non-existant code: " + code
+							+ " from: " + toString());
+		data.remove(code);
+	}
+	
 	abstract protected String getMapTag();
 	
 	protected HashMap<String, String> data;
