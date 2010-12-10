@@ -227,7 +227,7 @@ public class Dashboard extends BaseObject
 				return getIndicatorAndMethodsWithProgressReportPerncet();
 			
 			if (fieldTag.equals(PSEUDO_EFFECTIVE_STATUS_MAP))
-				return getEffectiveStatusMap();
+				return getEffectiveStatusMapAsString();
 				
 			return super.getPseudoData(fieldTag);
 		}
@@ -238,7 +238,12 @@ public class Dashboard extends BaseObject
 		}
 	}
 	
-	private String getEffectiveStatusMap() throws Exception
+	private String getEffectiveStatusMapAsString() throws Exception
+	{
+		return getEffectiveStatusMap().toString();
+	}
+	
+	public StringChoiceMap getEffectiveStatusMap() throws Exception
 	{
 		StringChoiceMap map = new StringChoiceMap();
 		CodeList allThirdLevelCodes = getDashboardRowDefinitionManager().getThirdLevelCodes();
@@ -249,7 +254,7 @@ public class Dashboard extends BaseObject
 			map.add(thirdLevelCode, computeStatusCodeFromStatistics(rowDefinitions));
 		}
 		
-		return map.toString();
+		return map;
 	}
 
 	public DashboardRowDefinitionManager getDashboardRowDefinitionManager()
@@ -289,7 +294,7 @@ public class Dashboard extends BaseObject
 		}
 		
 		if (valuesWithDataCount == 0)
-			return OpenStandardsProgressQuestion.NOT_STARTED_CODE;
+			return OpenStandardsProgressQuestion.NOT_SPECIFIED_CODE;
 			
 		if (valuesWithDataCount < rawDataValues.size())
 			return OpenStandardsProgressQuestion.NOT_STARTED_CODE;
