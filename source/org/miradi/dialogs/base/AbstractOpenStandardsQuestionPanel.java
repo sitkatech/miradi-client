@@ -30,8 +30,10 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.event.ListSelectionListener;
 
+import org.miradi.actions.AbstractJumpMenuAction;
 import org.miradi.dialogfields.ReadonlyChoiceItemIconField;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
+import org.miradi.dialogs.dashboard.DashboardRowDefinition;
 import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.dialogs.fieldComponents.PanelLabelWithSelectableText;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -99,6 +101,35 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	protected void addRow(ChoiceItem choiceItem, int level) throws Exception
 	{
 		addRow(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, new HashMap<String, String>(), choiceItem.getLongDescriptionProvider(), level);
+		
+		Vector<DashboardRowDefinition> rowDefinitions = getDashboardRowDefinitionManager().getRowDefinitions(choiceItem.getCode());
+		
+		for (DashboardRowDefinition rowDefinition: rowDefinitions)
+		{
+			Vector<String> pseudoTags = rowDefinition.getPseudoTags();
+			HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+			//FIXME urgent dashboard panel - when all other tabs are converted using the RowDefinitionManager, convert these ifs into
+			// a loop using %1, %2... (looping through pseudoTags
+			if (pseudoTags.size() == 1)
+			{
+				tokenReplacementMap.put("%X", getDashboardData(pseudoTags.get(0)));
+			}
+			
+			if (pseudoTags.size() == 2)
+			{
+				tokenReplacementMap.put("%X", getDashboardData(pseudoTags.get(0)));
+				tokenReplacementMap.put("%Y", getDashboardData(pseudoTags.get(1)));
+			}
+
+			String code = choiceItem.getCode();
+			AbstractLongDescriptionProvider longDescriptionProvider = choiceItem.getLongDescriptionProvider();
+			AbstractJumpMenuAction action = getMainWindow().getActions().getJumpMenuAction(code);
+			String stepName = getMainWindow().getWizardManager().stripJumpPrefix(action.getClass());
+			longDescriptionProvider.setWizardStepName(stepName);
+
+			addRow(EMPTY_LEFT_COLUMN_TEXT, rowDefinition.getRightColumnTemplate(), tokenReplacementMap, longDescriptionProvider, choiceItem.getCode(), level);
+		}
+
 	}
 	
 	protected void addRowWithNoPseudoTag(String rightColumnText, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
