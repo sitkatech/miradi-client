@@ -21,12 +21,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import java.awt.Font;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Vector;
 
 import javax.swing.Box;
-import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.event.ListSelectionListener;
 
@@ -37,7 +35,6 @@ import org.miradi.dialogs.dashboard.DashboardRowDefinition;
 import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.dialogs.fieldComponents.PanelLabelWithSelectableText;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.icons.EmptyIcon;
 import org.miradi.layout.MiradiGridLayoutPlus;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -99,7 +96,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	
 	protected void addRow(ChoiceItem choiceItem, int level) throws Exception
 	{
-		addRow(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, new HashMap<String, String>(), choiceItem.getLongDescriptionProvider(), level);
+		addRow(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, new HashMap<String, String>(), choiceItem.getLongDescriptionProvider(), choiceItem.getCode(), level);
 		
 		Vector<DashboardRowDefinition> rowDefinitions = getDashboardRowDefinitionManager().getRowDefinitions(choiceItem.getCode());
 		for (DashboardRowDefinition rowDefinition: rowDefinitions)
@@ -122,14 +119,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		}
 	}
 	
-	private void addRow(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
-	{
-		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
-		Icon statusIcon = getStatusIcon(tokenReplacementMap.values());
-		
-		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, new PanelTitleLabel(statusIcon));
-	}
-	
 	private void addRow(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, String code, int level) throws Exception
 	{
 		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
@@ -139,36 +128,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, field.getComponent());
 	}
 
-	private Icon getStatusIcon(Collection<String> rawDataValues)
-	{
-		if (rawDataValues.isEmpty())
-			return new EmptyIcon();
-		
-		ChoiceQuestion progressQuestion = getProject().getQuestion(OpenStandardsProgressQuestion.class);
-		String statusCode = getStatusCode(rawDataValues);
-		ChoiceItem choiceItem = progressQuestion.findChoiceByCode(statusCode);
-
-		return choiceItem.getIcon();
-	}
-	
-	private String getStatusCode(Collection<String> rawDataValues)
-	{
-		int valuesWithDataCount = 0;
-		for (String rawData : rawDataValues)
-		{
-			if (rawData.length() > 0 && !rawData.equals("0"))
-				++valuesWithDataCount;
-		}
-
-		if (valuesWithDataCount == 0)
-			return OpenStandardsProgressQuestion.NOT_STARTED_CODE;
-			
-		if (valuesWithDataCount < rawDataValues.size())
-			return OpenStandardsProgressQuestion.NOT_STARTED_CODE;
-			
-		return OpenStandardsProgressQuestion.IN_PROGRESS_CODE;
-	}
-	
 	private void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level, JComponent iconComponent) throws Exception
 	{
 		JComponent leftComponent = new PanelLabelWithSelectableText(leftColumnTranslatedText);
