@@ -87,7 +87,8 @@ public class StringMap extends AbstractStringMap
 		return json;
 	}
 
-	private String getMapTag()
+	@Override
+	protected String getMapTag()
 	{
 		return TAG_STRING_MAP;
 	}
