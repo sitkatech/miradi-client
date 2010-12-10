@@ -54,6 +54,8 @@ public class OpenStandardsConceptualizeQuestionPanel extends AbstractOpenStandar
 		{
 			Vector<String> pseudoTags = rowDefinition.getPseudoTags();
 			HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+			//FIXME urgent dashboard panel - when all other tabs are converted using the RowDefinitionManager, convert these ifs into
+			// a loop using %1, %2... (looping through pseudoTags
 			if (pseudoTags.size() == 1)
 			{
 				tokenReplacementMap.put("%X", getDashboardData(pseudoTags.get(0)));
