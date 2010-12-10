@@ -24,6 +24,22 @@ import java.util.HashMap;
 
 abstract public class AbstractStringMap
 {
+	public int size()
+	{
+		return data.size();
+	}
+
+	public void add(String code, String object)
+	{
+		data.put(code, object);
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return data.hashCode();
+	}
+	
 	abstract protected String getMapTag();
 	
 	protected HashMap<String, String> data;

@@ -87,16 +87,6 @@ public class StringChoiceMap extends AbstractStringMap
 		return json;
 	}
 
-	public int size()
-	{
-		return data.size();
-	}
-
-	public void add(String code, String object)
-	{
-		data.put(code, object);
-	}
-
 	public String get(String code)
 	{
 		String value = data.get(code);
