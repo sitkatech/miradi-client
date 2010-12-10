@@ -35,20 +35,20 @@ abstract public class DynamicChoiceWithRootChoiceItem extends DynamicChoiceQuest
 		for (int index = 0; index < choices.length; ++index)
 		{
 			ChoiceItem choiceItem = choices[index];
-			allCodes.addAll(getCodes(choiceItem));
+			allCodes.addAll(getCodesOfItemAndChidren(choiceItem));
 		}
 		
 		return allCodes;
 	}
 
-	private CodeList getCodes(ChoiceItem parentChoiceItem)
+	private CodeList getCodesOfItemAndChidren(ChoiceItem parentChoiceItem)
 	{
 		CodeList allCodes = new CodeList();
 		allCodes.add(parentChoiceItem.getCode());
 		Vector<ChoiceItem> children = parentChoiceItem.getChildren();
 		for (ChoiceItem choiceItem: children)
 		{
-			allCodes.addAll(getCodes(choiceItem));
+			allCodes.addAll(getCodesOfItemAndChidren(choiceItem));
 		}
 		
 		return allCodes;
