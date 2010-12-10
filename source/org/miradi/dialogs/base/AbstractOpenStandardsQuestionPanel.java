@@ -102,7 +102,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addRow(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, new HashMap<String, String>(), choiceItem.getLongDescriptionProvider(), level);
 		
 		Vector<DashboardRowDefinition> rowDefinitions = getDashboardRowDefinitionManager().getRowDefinitions(choiceItem.getCode());
-		
 		for (DashboardRowDefinition rowDefinition: rowDefinitions)
 		{
 			Vector<String> pseudoTags = rowDefinition.getPseudoTags();
@@ -121,7 +120,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 
 			addRow(EMPTY_LEFT_COLUMN_TEXT, rowDefinition.getRightColumnTemplate(), tokenReplacementMap, longDescriptionProvider, choiceItem.getCode(), level);
 		}
-
 	}
 	
 	private void addRow(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
@@ -141,7 +139,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, field.getComponent());
 	}
 
-	public Icon getStatusIcon(Collection<String> rawDataValues)
+	private Icon getStatusIcon(Collection<String> rawDataValues)
 	{
 		if (rawDataValues.isEmpty())
 			return new EmptyIcon();
