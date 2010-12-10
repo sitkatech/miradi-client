@@ -21,11 +21,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import org.miradi.main.EAMTestCase;
+import org.miradi.objecthelpers.AbstractStringMap;
 
-public class TestAbstractStringMap extends EAMTestCase
+abstract public class TestAbstractStringMap extends EAMTestCase
 {
 	public TestAbstractStringMap(String name)
 	{
 		super(name);
 	}
+	
+	abstract protected AbstractStringMap createAbstractMap();
 }
